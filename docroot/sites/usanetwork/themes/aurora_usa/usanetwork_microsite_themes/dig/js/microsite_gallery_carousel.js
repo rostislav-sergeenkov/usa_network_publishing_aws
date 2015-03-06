@@ -97,7 +97,7 @@
             var current_offset = $(".microsite-gallery").offset()['left'] + $(".microsite-gallery").width() - $(".gig-simpleShareUI").width();
             $(".gig-simpleShareUI").css('left', current_offset);
           }
-        }, 500);
+        }, 50);
 
       });
     }

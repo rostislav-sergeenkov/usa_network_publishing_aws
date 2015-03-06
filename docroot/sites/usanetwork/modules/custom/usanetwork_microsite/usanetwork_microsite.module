@@ -7,9 +7,11 @@ define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_usa_vod_noauth');
 define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_usa_vod');
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
+define('USANETWORK_MICROSITE_GALLERY_NODE_TYPE', 'media_gallery');
 define("USANETWORK_MICROSITE_ALL_VIDEOS", "All videos");
 define("USANETWORK_MICROSITE_FULL_VIDEO", "Full videos");
 define("USANETWORK_MICROSITE_VIDEOS_LIMIT", "12");
+
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -1542,6 +1544,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         if(isset($video_file) && !empty($video_file->filename) && empty($page_title)) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
+        $file_video = $video_file; 
       }
       else {
         $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
@@ -1560,9 +1563,32 @@ function usanetwork_microsite_preprocess_html(&$vars) {
                 $head_title = $page_title;
               }
             }
+            $file_video = $attached_video;
           }
         }
       }
+      
+      $image = media_theplatform_mpx_file_formatter_image_view($file_video, array('settings' => array('image_style' => 'video_full')), '');
+      $renderable_image = file_create_url($image['#path']);
+      $tag_card = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:image',
+          'content' => $renderable_image,
+         ),
+      );
+      drupal_add_html_head($tag_card, 'microsite_video:image');
+      
+      $tag_title = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:title',
+          'content' => $file_video->filename,
+         ),
+      );
+      drupal_add_html_head($tag_title, 'microsite_video:title');
       break;
     case 'characters':
       $head_title = t('Characters | ' . $title . ' | USA Network');
@@ -2327,6 +2353,9 @@ function _usanetwork_microsite_get_h1_for_for_node($node) {
   if (empty($h1) && $node->type == USANETWORK_MICROSITE_PERSON_NODE_TYPE) {
     $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
     $h1 = $person_names['person_title'];
+  }
+  elseif (empty($h1) && $node->type == USANETWORK_MICROSITE_GALLERY_NODE_TYPE) {
+    $h1 = '';
   }
   elseif (empty($h1)) {
     $h1 = $node->title;

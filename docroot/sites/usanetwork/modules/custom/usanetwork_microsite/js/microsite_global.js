@@ -135,21 +135,35 @@
           pageName = itemTitle + ' | Video | ' + pageName;
           break;
         case 'galleries':
+          var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
+              $slider = slider.data('flexslider'),
+              currentSlide = $slider.currentSlide + 1;
+          if (!currentSlide) currentSlide = 1;
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';
           if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
           if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
           s.prop5 = siteName + ' : Gallery : ' + itemTitle;
-          s.pageName = s.prop5 + ' : Photo 1';
+          s.pageName = s.prop5 + ' : Photo ' + currentSlide;
           pageName = itemTitle + ' | Gallery | ' + pageName;
           break;
         case 'characters':
           s.prop3 = 'Bio';
-          s.prop4 = siteName + ' : Profile Page'; // This is intentional per Loretta!
+          s.prop4 = 'Profile Page'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
           s.prop5 = siteName + ' : Bio : ' + itemTitle;
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Bio | ' + pageName;
+          break;
+        case 'episodes':
+          s.prop3 = 'Episode Guide';
+          s.prop4 = siteName + ' : Episode Guide';
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1').text();
+          s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Episode Guide | ' + pageName;
           break;
       }
       $('title').text(pageName);
@@ -349,12 +363,12 @@
 						description = data.description_template,
 						player = data.player;
 
-					if(playerAuth.hasClass('active-player')){
+					if (playerAuth.hasClass('active-player')) {
 						playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
 						playerAuth.find('#player .loginButton').html(image);
 						playerAuth.find(playerWrap).html(player);
 					}
-					if(playerNoAuth.hasClass('active-player')){
+					if (playerNoAuth.hasClass('active-player')) {
 						playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
 						playerNoAuth.find(playerWrap).html(player);
 					}
@@ -365,12 +379,11 @@
 
 				},
 				error: function () {
-					console.info('This content is not available');
+					console.info('error');
 				}
 			});
 		},
-		// set video player on click thumbnail
-		micrositeSetVideoPlayer: function (autoplay, selector, data) {
+		micrositeSetVideoPlayer : function(autoplay, selector, data){
 
 			var autoplay = autoplay || true,
 				selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
@@ -550,9 +563,11 @@
 		},
 		//click Thumbnail
 		micrositeClickThumbnail: function (elem) {
+
 			var previewItem = $('#thumbnail-list .item-list ul li.thumbnail'),
 				refreshAdsOmniture = 0,
 				videoContainer = $('#video-container');
+
 			if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
 				previewItem.removeClass('active');
 				elem.addClass('active');
@@ -564,6 +579,7 @@
 				Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
 				return false;
 			}
+
 			var siteName = Drupal.settings.microsites_settings.title,
 				basePath = Drupal.settings.microsites_settings.base_path,
 				basePageName = siteName + ' | USA Network',
@@ -648,7 +664,7 @@
 					});
 				},
 				error: function () {
-					console.info('Thumbnail: This content is not available');
+					console.info('error');
 				}
 			});
 		},

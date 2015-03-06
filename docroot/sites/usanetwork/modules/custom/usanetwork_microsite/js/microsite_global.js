@@ -100,10 +100,6 @@
     // OMNITURE
     // setOmnitureData
     micrositeSetOmnitureData: function setOmnitureData(anchor, itemTitle) {
-
-			console.info(anchor);
-			console.info(itemTitle);
-
       var anchor = anchor || null,
         itemTitle = itemTitle || '',
         siteName = Drupal.settings.microsites_settings.title,
@@ -183,9 +179,6 @@
 
     //=========== Init one page scroll for microsite ===============//
     micrositeSectionScroll: function sectionScroll(anchor, item, itemTitle) {
-			console.info(anchor);
-			console.info(itemTitle);
-
       item = item || '';
       itemTitle = itemTitle || '';
       var basePath = Drupal.settings.microsites_settings.base_path,

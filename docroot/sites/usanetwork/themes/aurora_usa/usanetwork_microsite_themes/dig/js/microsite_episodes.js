@@ -23,8 +23,10 @@
         episNavWidth = episNavListWidth + (nextPrevWidth * 2);
         navHeight = (navHeight * 2) + 6;
       }
-      episodesNav.find('ul').width(episNavListWidth).height(navHeight);
-      episodesNav.width(episNavWidth).height(navHeight).animate({'opacity': 1}, 600);
+      if (episodesNav.length > 0) {
+        episodesNav.find('ul').width(episNavListWidth).height(navHeight);
+        episodesNav.width(episNavWidth).height(navHeight).animate({'opacity': 1}, 600);
+      }
     },
 
     micrositeSetNavNextPrevState: function setNavNextPreState() {

@@ -21,6 +21,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'nid' => NULL,
             'title' => NULL,
             'url' => NULL,
+            'status' => NULL,
           ),
         ),
       ),
@@ -112,6 +113,16 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
     ),
     'usanetwork_microsite_dig_page_games' => array(
       'template' => 'usanetwork-microsite-dig-page-games',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
+        ),
+      ),
+    ),
+    'usanetwork_microsite_dig_page_quizzes' => array(
+      'template' => 'usanetwork-microsite-dig-page-quizzes',
       'path' => $subtheme_path,
       'variables' => array(
         'page' => array(

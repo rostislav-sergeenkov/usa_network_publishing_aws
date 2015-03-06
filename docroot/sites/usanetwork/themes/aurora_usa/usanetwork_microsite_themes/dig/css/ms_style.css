@@ -595,6 +595,7 @@ you can use the generic selector below, but it's slower:
   cursor: pointer;
   /*opacity: 0;*/
   margin-top: 7px;
+  margin-left: -1px;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein #line2 {
   letter-spacing: 13px;

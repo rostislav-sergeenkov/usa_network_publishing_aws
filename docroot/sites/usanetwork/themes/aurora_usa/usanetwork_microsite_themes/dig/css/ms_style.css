@@ -1026,7 +1026,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   border: 14px solid transparent;
   border-bottom: 14px solid #1f1f1f;
   border-right: 14px solid transparent;
-  bottom: 0;
+  bottom: -1px;
   top: auto;
   left: 16%;
   right: auto;

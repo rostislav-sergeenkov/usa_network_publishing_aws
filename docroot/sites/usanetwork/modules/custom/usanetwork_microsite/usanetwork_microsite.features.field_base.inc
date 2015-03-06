@@ -369,6 +369,7 @@ function usanetwork_microsite_field_default_field_bases() {
         'games' => 'Games',
         'videos' => 'Videos',
         'episodes' => 'Episodes',
+        'quizzes' => 'Quizzes',
       ),
       'allowed_values_function' => '',
     ),

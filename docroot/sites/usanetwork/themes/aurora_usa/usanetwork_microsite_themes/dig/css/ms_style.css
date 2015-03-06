@@ -679,6 +679,12 @@ you can use the generic selector below, but it's slower:
 }
 
 /* sub-nav */
+.page-node-microsite #left-nav #left-nav-links li.active li a {
+  color: #FFF;
+}
+.page-node-microsite #left-nav #left-nav-links li.active li.active a {
+  color: #e5ce96;
+}
 .page-node-microsite #left-nav #left-nav-links ul ul {
   display: none;
   margin-left: 16px;
@@ -1727,7 +1733,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #galleries-content {
     background-image: url("../images/dig_bg_gallery.jpg");
   }
-  #microsite #games-content {
+  #microsite #games-content,
+  #microsite #quizzes-content {
     background-image: url("../images/dig_bg_games.jpg");
   }
   #microsite #videos-content {

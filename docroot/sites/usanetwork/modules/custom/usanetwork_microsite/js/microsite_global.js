@@ -104,9 +104,6 @@
         itemTitle = itemTitle || '',
         siteName = Drupal.settings.microsites_settings.title,
         basePageName = siteName + ' | USA Network';
-
-			console.info(siteName);
-			console.info(itemTitle);
       if (!anchor) {
         var sectionData = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
         anchor = sectionData['section'];

@@ -395,6 +395,13 @@
       });
 
     },
+		micrositeMobileModal : function(){
+			// check if user uses mobile device
+			if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
+				var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
+				Drupal.behaviors.video_mobile.showMobileVideoModal(os);
+			}
+		},
     // set video player on click thumbnail
     micrositeSetVideoPlayer: function (autoplay, selector, data) {
       var autoplay = autoplay || true,
@@ -435,6 +442,7 @@
       url = defaultUrl + '/' + dataFid + '/' + autoplay;
 
       if (dataFullEpisode == 'true') {
+				Drupal.behaviors.microsite_scroll.micrositeMobileModal();
         if(ad_300x250_1){
           ad_300x250_1.closest('li.ad').hide();
           ad_300x250_1.attr('id', 'ad_300x250').empty();
@@ -442,10 +450,8 @@
         if(ad_728x90.attr('id') != 'ad_728x90_1'){
           ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
         }
-
         $('#videos .full-pane').addClass('full-desc');
         ad_300x60_1.show();
-
       } else {
         $('#videos .full-pane').removeClass('full-desc');
         ad_300x60_1.hide();

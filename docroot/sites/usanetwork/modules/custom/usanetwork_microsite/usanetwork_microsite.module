@@ -7,6 +7,7 @@ define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_usa_vod_noauth');
 define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_usa_vod');
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
+define('USANETWORK_MICROSITE_QUIZ_NODE_TYPE', 'quiz');
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -703,15 +704,35 @@ function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $galler
 function _usanetwork_microsite_render_page_games($section_wrapper) {
   //$section_object = $section_wrapper->value();
 
-  $theme_variables = array(
-    'page' => array(),
-  );
+//  $theme_variables = array(
+//    'page' => array(),
+//  );
 
-  $quiz_node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_quiz);
+//  $quiz_node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_quiz);
+//
+//  if(!empty($quiz_node)) {
+//    $theme_variables['page'] = usanetwork_microsite_get_quiz($quiz_node);
+//  }
 
-  if(!empty($quiz_node)) {
-    $theme_variables['page'] = usanetwork_microsite_get_quiz($quiz_node);
+  $games_nodes = _usnetwork_microsite_get_games_content_by_section_wrapper($section_wrapper);
+  $current_game_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+  $gemes_count = 0;
+  $quizzes = array();
+  foreach ($games_nodes as $game_node) {
+    // While we will output only quizzes.
+    $game_url = _usanetwork_microsite_get_suggested_url($game_node);
+    if($game_node->type == USANETWORK_MICROSITE_QUIZ_NODE_TYPE && $game_node->status == NODE_PUBLISHED) {
+      if((!empty($current_game_arg) && $current_game_arg == $game_url) || (empty($current_game_arg) && $gemes_count == 0)) {
+        $theme_variables['page'] = usanetwork_microsite_get_quiz($game_node);
+      }
+      $quizzes[] = array(
+        'nid' => $game_node->nid,
+        'url' => _usanetwork_microsite_get_suggested_url($game_node),
+      );
+      $gemes_count++;
+    }
   }
+  drupal_add_js(array('quizzes' => $quizzes), 'setting');
 
 //  if (!empty($section_object->field_ms_catchall_page)) {
 //    foreach ($section_wrapper->field_ms_catchall_page as $game_page_wrapper) {
@@ -747,6 +768,7 @@ function _usanetwork_microsite_get_rendered_quiz($node) {
 
 function usanetwork_microsite_get_quiz($node) {
   return array(
+    'nid' => $node->nid,
     'quiz_html' => _usanetwork_microsite_get_rendered_quiz($node),
   );
 }
@@ -966,9 +988,19 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
     return $section_wrapper->field_ms_episode->value();
   }
   elseif($type == 'games') {
-    return array_merge($section_wrapper->field_ms_quiz->value(), $section_wrapper->field_ms_catchall_page->value());
+    return _usnetwork_microsite_get_games_content_by_section_wrapper($section_wrapper);
   }
   return NULL;
+}
+
+/**
+ * Get games content from section wrapper.
+ *
+ * @param $section_wrapper
+ * @return array
+ */
+function _usnetwork_microsite_get_games_content_by_section_wrapper($section_wrapper) {
+  return array_merge($section_wrapper->field_ms_quiz->value(), $section_wrapper->field_ms_catchall_page->value());
 }
 
 /**
@@ -1048,6 +1080,25 @@ function _usanetwork_microsite_get_episode_by_url($node, $param) {
   //@todo may be it can make in one function with _usanetwork_microsite_get_person_by_url
   $episodes = _usanetwork_microsite_get_related_content_from_node($node, 'episodes');
   foreach($episodes as $node) {
+    if ($param == _usanetwork_microsite_get_suggested_url($node)) {
+      return $node;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Get game node by url parameter.
+ *
+ * @param $node
+ * @param $param
+ *
+ * @return mixed
+ */
+function _usanetwork_microsite_get_game_by_url($node, $param) {
+  //@todo may be it can make in one function with other similar functions
+  $games = _usanetwork_microsite_get_related_content_from_node($node, 'games');
+  foreach($games as $node) {
     if ($param == _usanetwork_microsite_get_suggested_url($node)) {
       return $node;
     }
@@ -1161,19 +1212,28 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $theme_variables['sections'] = $pages;
     $theme_variables['games'] = $games;
 
-    // @TODO: get quiz info dynamically!!
-    $theme_variables['quizzes'] = array(
-      0 => array(
-        'nid' => '51506',
-        'title' => 'Suits Quiz - Trivia Questions Season 3 | USA Network',
-        'url' => 'suits-quiz---trivia-questions-season-3-|-usa-network',
-      ),
-      1 => array(
-        'nid' => '51811',
-        'title' => 'Suits Which Character Are You?',
-        'url' => 'suits-which-character-are-you',
-      ),
-    );
+    // Games links.
+    $games_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'games');
+    $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
+    $current_game_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    $gemes_count = 0;
+    foreach ($games_nodes as $game_node) {
+      // While we will output only quizzes.
+      $game_url = _usanetwork_microsite_get_suggested_url($game_node);
+      if($game_node->type == USANETWORK_MICROSITE_QUIZ_NODE_TYPE && $game_node->status == NODE_PUBLISHED) {
+        $status = '';
+        if((!empty($current_game_arg) && $current_game_arg == $game_url) || (empty($current_game_arg) && $gemes_count == 0)) {
+          $status = 'active';
+        }
+        $theme_variables['games'][] = array(
+          'nid' => $game_node->nid,
+          'title' => $game_node->title,
+          'url' => $game_url,
+          'status' => $status,
+        );
+        $gemes_count++;
+      }
+    }
 
     end($theme_variables['sections']);
     $last_section_key = key($theme_variables['sections']);

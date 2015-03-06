@@ -114,8 +114,9 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-dig-page-games',
       'path' => $subtheme_path,
       'variables' => array(
-        'pages' => array(
-          'html' => NULL,
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
         ),
       ),
     ),

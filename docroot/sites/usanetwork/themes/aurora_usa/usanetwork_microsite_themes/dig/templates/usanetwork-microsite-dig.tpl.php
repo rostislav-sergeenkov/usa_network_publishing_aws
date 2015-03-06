@@ -88,12 +88,12 @@
                 <?php if ($section['type'] == $current_section): ?>
                   <li id="nav-<?php print $section['type']; ?>" class="internal active" data-menuanchor="<?php print $section['type']; ?>">
                     <?php print $section['link']; ?>
-                    <?php if ($section['type'] == 'games' && !empty($quizzes)): ?>
+                    <?php if ($section['type'] == 'games' && !empty($games)): ?>
                     <?php /* @TODO: Can we make the quiz url's dynamic instead of hard-coding /dig/games? */ ?>
                     <ul>
-                      <?php foreach ($quizzes as $quiz_key => $quiz): ?>
-                      <?php if (!empty($quiz['nid']) && !empty($quiz['title'])): ?>
-                      <li id="nav-quiz-<?php print $quiz['nid']; ?>" class="internal<?php if ($quiz_key == 0) print ' active'; ?>" data-menuanchor="<?php print $quiz['title']; ?>"><a href="/dig/games/<?php print $quiz['url']; ?>"><?php print $quiz['title']; ?></a></li>
+                      <?php foreach ($games as $game_key => $game): ?>
+                      <?php if (!empty($game['nid']) && !empty($game['title'])): ?>
+                      <li id="nav-quiz-<?php print $game['nid']; ?>" class="internal<?php if ($game_key == 0) print ' active'; ?>" data-menuanchor="<?php print $game['title']; ?>"><a href="/dig/games/<?php print $game['url']; ?>"><?php print $game['title']; ?></a></li>
                       <?php endif; ?>
                       <?php endforeach; ?>
                     </ul>
@@ -102,12 +102,12 @@
                 <?php else: ?>
                   <li id="nav-<?php print $section['type']; ?>" class="internal" data-menuanchor="<?php print $section['type']; ?>">
                     <?php print $section['link']; ?>
-                    <?php if ($section['type'] == 'games' && !empty($quizzes)): ?>
+                    <?php if ($section['type'] == 'games' && !empty($games)): ?>
                     <?php /* @TODO: Can we make the quiz url's dynamic instead of hard-coding /dig/games? */ ?>
                     <ul>
-                      <?php foreach ($quizzes as $quiz_key => $quiz): ?>
-                      <?php if (!empty($quiz['nid']) && !empty($quiz['title'])): ?>
-                      <li id="nav-quiz-<?php print $quiz['nid']; ?>" class="internal<?php if ($quiz_key == 0) print ' active'; ?>" data-menuanchor="<?php print $quiz['title']; ?>"><a href="/dig/games/<?php print $quiz['url']; ?>"><?php print $quiz['title']; ?></a></li>
+                      <?php foreach ($games as $game_key => $game): ?>
+                      <?php if (!empty($game['nid']) && !empty($game['title'])): ?>
+                      <li id="nav-quiz-<?php print $game['nid']; ?>" class="internal<?php if ($game_key == 0) print ' active'; ?>" data-menuanchor="<?php print $game['title']; ?>"><a href="/dig/games/<?php print $game['url']; ?>"><?php print $game['title']; ?></a></li>
                       <?php endif; ?>
                       <?php endforeach; ?>
                     </ul>

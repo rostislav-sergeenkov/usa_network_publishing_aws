@@ -12,7 +12,6 @@
   Drupal.behaviors.microsite_scroll = {
 
 
-    quoteCount: 0,
     quotationAnimation: function(listSelector) {
       var wwidth = $(window).width(),
           fadeDuration = 1000,
@@ -40,7 +39,7 @@
                 .animate({'opacity' : '0'}, fadeDuration, function(){
                   (j == jmax) ? j=0 : j++;
                   $(this).removeClass('active');
-usa_debug('*****************\nquotationAnimation\ncount: ' + Drupal.behaviors.microsite_scroll.quoteCount + '\nlistSelector: ' + listSelector + ', listId: ' + listId + ', j: ' + j);
+usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector + ', listId: ' + listId + ', j: ' + j);
                   cycleThru(0);
                 });
             }

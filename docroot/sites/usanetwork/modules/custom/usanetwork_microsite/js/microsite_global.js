@@ -100,10 +100,17 @@
     // OMNITURE
     // setOmnitureData
     micrositeSetOmnitureData: function setOmnitureData(anchor, itemTitle) {
+
+			console.info(anchor);
+			console.info(itemTitle);
+
       var anchor = anchor || null,
         itemTitle = itemTitle || '',
         siteName = Drupal.settings.microsites_settings.title,
         basePageName = siteName + ' | USA Network';
+
+			console.info(siteName);
+			console.info(itemTitle);
       if (!anchor) {
         var sectionData = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
         anchor = sectionData['section'];
@@ -176,6 +183,9 @@
 
     //=========== Init one page scroll for microsite ===============//
     micrositeSectionScroll: function sectionScroll(anchor, item, itemTitle) {
+			console.info(anchor);
+			console.info(itemTitle);
+
       item = item || '';
       itemTitle = itemTitle || '';
       var basePath = Drupal.settings.microsites_settings.base_path,

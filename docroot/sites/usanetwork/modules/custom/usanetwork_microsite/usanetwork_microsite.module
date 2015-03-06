@@ -1488,15 +1488,6 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           ),
         );
         drupal_add_html_head($tag_card, 'microsite_home:image');
-        $tag_title = array(
-          '#type' => 'html_tag',
-          '#tag' => 'meta',
-          '#attributes' => array(
-            'property' => 'og:title',
-            'content' => $section_wrapper->field_ms_section_title->value(),
-          ),
-        );
-        drupal_add_html_head($tag_title, 'microsite_home:title');
       }
       break;
     case 'videos':

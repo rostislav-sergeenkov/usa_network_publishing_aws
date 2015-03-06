@@ -657,6 +657,7 @@ function usanetwork_microsite_get_rendered_gallery($node) {
   return array(
     'gallery_nid' => $node->nid,
     'title' => $node->title,
+    'h1' => _usanetwork_microsite_get_h1_for_for_node($node),
     'description' => $body_value,
     'rendered' => drupal_render($gallery_view),
   );
@@ -1487,7 +1488,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         if(isset($video_file) && !empty($video_file->filename) && empty($page_title)) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
-        $file_video = $video_file; 
+        $file_video = $video_file;
       }
       else {
         $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
@@ -1510,7 +1511,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           }
         }
       }
-      
+
       $image = media_theplatform_mpx_file_formatter_image_view($file_video, array('settings' => array('image_style' => 'video_full')), '');
       $renderable_image = file_create_url($image['#path']);
       $tag_card = array(
@@ -1522,7 +1523,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
          ),
       );
       drupal_add_html_head($tag_card, 'microsite_video:image');
-      
+
       $tag_title = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',

@@ -389,7 +389,7 @@
     margin-left: 0;
     clear: left;
   }
-  #microsite #galleries .galleries-nav .bx-wrapper .bx-viewport {
+  #microsite #galleries .galleries-nav .bx-wrapper {
     height: 144px !important;
   }
   #microsite #galleries .galleries-nav .bx-wrapper .gallery-nav-img {

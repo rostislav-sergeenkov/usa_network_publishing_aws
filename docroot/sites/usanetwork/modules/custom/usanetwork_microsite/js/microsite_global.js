@@ -136,17 +136,21 @@
           pageName = itemTitle + ' | Video | ' + pageName;
           break;
         case 'galleries':
+          var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
+              $slider = slider.data('flexslider'),
+              currentSlide = $slider.currentSlide + 1;
+          if (!currentSlide) currentSlide = 1;
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';
           if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
           if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
           s.prop5 = siteName + ' : Gallery : ' + itemTitle;
-          s.pageName = s.prop5 + ' : Photo 1';
+          s.pageName = s.prop5 + ' : Photo ' + currentSlide;
           pageName = itemTitle + ' | Gallery | ' + pageName;
           break;
         case 'characters':
           s.prop3 = 'Bio';
-          s.prop4 = siteName + ' : Profile Page'; // This is intentional per Loretta!
+          s.prop4 = 'Profile Page'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
           if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
           s.prop5 = siteName + ' : Bio : ' + itemTitle;

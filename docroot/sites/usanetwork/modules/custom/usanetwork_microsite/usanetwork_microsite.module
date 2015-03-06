@@ -760,6 +760,11 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $first_output_id = NULL;
 
     $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    // If video section is current, will add itunes app metatag
+    if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
+      usanetwork_microsite_add_itunes_app_metatag();
+    }
+    usanetwork_microsite_full_video_for_mobile_device();
     foreach ($video_files as $v_key => $current_video_file) {
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
       if ($first_output_id === NULL && $published) {
@@ -2345,4 +2350,37 @@ function _usanetwork_microsite_set_status_and_h1_variables($object, $section_wra
     $theme_variables['h1'] = $h1;
   }
   return $theme_variables;
+}
+
+function usanetwork_microsite_full_video_for_mobile_device() {
+  $data = array(
+    'usanetwork_video_mobile' => array(
+      'url' => array(
+        'iOS' => USANETWORK_USANOW_IOS_URL,
+        'android' => USANETWORK_USANOW_ANDROID_URL,
+      ),
+      'modal' => '<div class="wrap"><h3>' . t('Want to watch episodes of your favorite shows?') . '</h3><hr>'
+        . '<img class="mobile-logo-exp" src="' . url(drupal_get_path('module', 'usanetwork_video_mobile') . '/img/logo-mobile-exp.png') . '">'
+        . '<div id="mobileVideoModalButtons">'
+        . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
+        . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">'. '</div>'
+        . '</div>',
+    ),
+  );
+  // attach javascript
+  drupal_add_js($data, 'setting');
+}
+
+/**
+ * Add itunes app metatag to header.
+ */
+function usanetwork_microsite_add_itunes_app_metatag() {
+  $metatag = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'apple-itunes-app',
+      'content' => 'app-id=' . USANETWORK_USANOW_ITUNES_ID . ', affiliate-data=, app-argument=/usa',
+    ),
+  );
+  drupal_add_html_head($metatag, 'apple_itunes_app');
 }

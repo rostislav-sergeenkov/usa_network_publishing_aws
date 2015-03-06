@@ -3,6 +3,7 @@
   Drupal.behaviors.micrositeGalleriesBxSliders = {
 
     activeGalleryNavItem: null,
+    galleryIsLoading: null,
 
     getNumSlidesToDisplay: function(navCategory) {
       var wwidth = $(window).width(),
@@ -128,18 +129,20 @@
       var activeGallery = $('#galleries .microsite-gallery'),
           gLoader = $('#galleries #gallery-loader'),
           gHeight = activeGallery.find('.flex-viewport').height();
+
       gLoader.height(gHeight);
-      if (gLoader.css('opacity') == 0) {
+
+      if (Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading) {
         // show spinner
         gLoader.show().animate({'opacity': 1}, 1000);
-      }
-      else {
+      } else {
         // hide spinner
         gLoader.animate({'opacity': 0}, 1000).delay(1000).hide();
       }
     },
 
     switchGallery: function(nid, callback) {
+      Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = true;
       Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
 
       // Make ajax call to '/ajax/get-gallery/' + nid
@@ -156,9 +159,13 @@
 
         callback();
 
+        Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = false;
+
         activeGallery.animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
           if (activeGalleryMeta.find('h2').length > 0) {
             activeGalleryMeta.find('h2').text(data.title);
+          } else {
+            $('#gigya-share_gig_containerParent').before('<h2>' + data.title + '</h2>');
           }
           if (activeGalleryMeta.find('h1').length > 0) {
             activeGalleryMeta.find('h1').text(data.h1);

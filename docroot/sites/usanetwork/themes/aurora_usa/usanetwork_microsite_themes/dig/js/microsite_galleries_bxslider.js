@@ -165,7 +165,7 @@
           if (activeGalleryMeta.find('h2').length > 0) {
             activeGalleryMeta.find('h2').text(data.title);
           } else {
-            $('<h2></h2>').before('#gigya-share_gig_containerParent').text(data.title);
+            $('#gigya-share_gig_containerParent').before('<h2>' + data.title + '</h2>');
           }
           if (activeGalleryMeta.find('h1').length > 0) {
             activeGalleryMeta.find('h1').text(data.h1);

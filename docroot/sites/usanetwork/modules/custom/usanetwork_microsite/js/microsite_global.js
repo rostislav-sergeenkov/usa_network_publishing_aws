@@ -147,20 +147,35 @@
           pageName = itemTitle + ' | Video | ' + pageName;
           break;
         case 'galleries':
+          var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
+              $slider = slider.data('flexslider'),
+              currentSlide = $slider.currentSlide + 1;
+          if (!currentSlide) currentSlide = 1;
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';
           if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
           s.prop5 = siteName + ' : Gallery : ' + itemTitle;
-          s.pageName = s.prop5 + ' : Photo 1';
+          s.pageName = s.prop5 + ' : Photo ' + currentSlide;
           pageName = itemTitle + ' | Gallery | ' + pageName;
           break;
         case 'characters':
           s.prop3 = 'Bio';
-          s.prop4 = siteName + ' : Profile Page'; // This is intentional per Loretta!
+          s.prop4 = 'Profile Page'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
           s.prop5 = siteName + ' : Bio : ' + itemTitle;
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Bio | ' + pageName;
+          break;
+        case 'episodes':
+          s.prop3 = 'Episode Guide';
+          s.prop4 = siteName + ' : Episode Guide';
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1').text();
+          s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Episode Guide | ' + pageName;
           break;
       }
       $('title').text(pageName);
@@ -246,7 +261,6 @@
         }
         else if (nextSectionId == 'characters') {
           var activeCharacterId = $('#microsite #characters #character-info li.active').attr('id');
-usa_debug('*****************\nactiveCharacterId: ' + activeCharacterId);
           Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.' + activeCharacterId);
         }
 
@@ -388,11 +402,18 @@ usa_debug('*****************\nactiveCharacterId: ' + activeCharacterId);
 
         },
         error: function () {
-          alert('error');
+          console.info('error');
         }
       });
 
     },
+		micrositeMobileModal : function(){
+			// check if user uses mobile device
+			if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
+				var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
+				Drupal.behaviors.video_mobile.showMobileVideoModal(os);
+			}
+		},
     // set video player on click thumbnail
     micrositeSetVideoPlayer: function (autoplay, selector, data) {
       var autoplay = autoplay || true,
@@ -433,6 +454,7 @@ usa_debug('*****************\nactiveCharacterId: ' + activeCharacterId);
       url = defaultUrl + '/' + dataFid + '/' + autoplay;
 
       if (dataFullEpisode == 'true') {
+				Drupal.behaviors.microsite_scroll.micrositeMobileModal();
         if(ad_300x250_1){
           ad_300x250_1.closest('li.ad').hide();
           ad_300x250_1.attr('id', 'ad_300x250').empty();
@@ -440,10 +462,8 @@ usa_debug('*****************\nactiveCharacterId: ' + activeCharacterId);
         if(ad_728x90.attr('id') != 'ad_728x90_1'){
           ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
         }
-
         $('#videos .full-pane').addClass('full-desc');
         ad_300x60_1.show();
-
       } else {
         $('#videos .full-pane').removeClass('full-desc');
         ad_300x60_1.hide();

@@ -164,10 +164,6 @@
           else {
             if ($('#bg-' + nextEpisodeId).css('background-image') == 'none') Drupal.behaviors.microsite_episodes.micrositeSetEpisBackground(nextEpisodeId);
 
-            // stop quotation animations and hide quotes
-            Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
-            $('#microsite #episodes .quotes').fadeOut(1000);
-
             // prepare next or previous background and episode-info
             $('#microsite #episodes .' + nextEpisodeId).addClass(direction);
 
@@ -194,12 +190,6 @@
                     Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
                     Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
                   }
-
-                  // start quotation animations and show quotes
-                  Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-                  $('#microsite #episodes .quotes').removeClass('active');
-                  $('#microsite #episodes .quotes.' + nextEpisodeClass).addClass('active').fadeIn(1000);
-//                  Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
 
                   // remove disabled
                   navItems.find('li.disabled').removeClass('disabled');
@@ -234,12 +224,6 @@
                       Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
                       Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
                     }
-
-                    // start quotation animations and show quotes
-                    Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-                    $('#microsite #episodes .quotes').removeClass('active');
-                    $('#microsite #episodes .quotes.' + nextEpisodeClass).addClass('active').fadeIn(1000);
-//                    Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
 
                     // remove disabled
                     navItems.find('li.disabled').removeClass('disabled');

@@ -369,27 +369,26 @@ you can use the generic selector below, but it's slower:
   text-align: center;
 }
 #microsite #about .quotes {
-  margin-top: 580px;
+  margin-top: -4px;
 }
-#microsite #characters .quotes {
-  width: 55%;
+#microsite #characters #character-quotes {
+  width: calc((100% - 190px) * 0.55);
   position: fixed;
-  margin-left: 190px;
-  margin-top: 600px;
+  margin-top: -4px;
 }
-#microsite #characters .quotes li,
+#microsite #characters #character-quotes .quotes li,
 #microsite .left-pane .quotes li {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 6%;
   opacity: 0;
   width: 88%;
 }
-#microsite #characters .quotes li.active,
+#microsite #characters #character-quotes .quotes.active li.active,
 #microsite .left-pane .quotes li.active {
   opacity: 1;
 }
-#microsite #characters .quotes .quote-source,
+#microsite #characters #character-quotes .quotes .quote-source,
 #microsite .left-pane .quotes .quote-source {
   color: #e5ce96;
   font-size: 0.6em;
@@ -1285,6 +1284,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin: 0 0 0 calc(-50% - 2em + 86px);
   }
 }
+
 @media (min-width: 641px) {
   #video-container .featured-asset .tve-help {
     font-size: 16px;
@@ -1395,6 +1395,10 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (max-width: 1020px) {
   #microsite #about section .microsite-section-container .right-pane {
     width: 100%;
+  }
+  #microsite #characters .left-pane,
+  #microsite #about .left-pane {
+    display: none;
   }
 }
 

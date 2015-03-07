@@ -19,6 +19,7 @@
           listId = list.attr('id');
 
       $(listSelector + ' li:eq(' + j + ')')
+        .css('display', 'block')
         .animate({'opacity' : '1'} , fadeDuration)
         .delay(tweenDuration)
         .addClass('active')

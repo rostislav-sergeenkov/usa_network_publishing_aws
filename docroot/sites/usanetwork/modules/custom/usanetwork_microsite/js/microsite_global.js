@@ -12,46 +12,41 @@
   Drupal.behaviors.microsite_scroll = {
 
 
-    quotationAnimation: function(listSelector) {
-      var wwidth = $(window).width(),
-          fadeDuration = 1000,
+    animateQuote: function(listSelector, j, jmax) {
+      var fadeDuration = 1000,
           tweenDuration = 10000,
+          list = $('#microsite ' + listSelector),
+          listId = list.attr('id');
+
+      $(listSelector + ' li:eq(' + j + ')')
+        .animate({'opacity' : '1'} , fadeDuration)
+        .delay(tweenDuration)
+        .addClass('active')
+        .animate({'opacity' : '0'}, fadeDuration, function(){
+          (j == jmax) ? j=0 : j++;
+          $(this).removeClass('active');
+//usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector + ', listId: ' + listId + ', j: ' + j);
+          if ($('#' + listId).hasClass('active')) {
+            Drupal.behaviors.microsite_scroll.animateQuote(listSelector, j, jmax);
+          }
+        });
+    },
+
+    quotationAnimation: function(listSelector, initialPageLoad) {
+      initialPageLoad = initialPageLoad || 0;
+      var wwidth = $(window).width(),
           list = $('#microsite ' + listSelector),
           listId = list.attr('id'),
           numQuotes = list.find('li').length;
 
+      if (!initialPageLoad) $('#microsite .quotes, #microsite .quotes li').removeClass('active').fadeOut(1000);
       if (wwidth > 1020) {
         if (numQuotes > 1) {
-          var j = j || 0,
-              jmax = numQuotes - 1;
-
-          function cycleThru(reset) {
-            if ($('#' + listId).hasClass('active')) {
-              $('#' + listId).css('opacity', 1);
-              if (reset) {
-                $('#' + listId + ' li').removeClass('active').css('opacity', 0);
-                j = 0;
-              }
-              $(listSelector + ' li:eq(' + j + ')')
-                .animate({'opacity' : '1'} , fadeDuration)
-                .delay(tweenDuration)
-                .addClass('active')
-                .animate({'opacity' : '0'}, fadeDuration, function(){
-                  (j == jmax) ? j=0 : j++;
-                  $(this).removeClass('active');
-usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector + ', listId: ' + listId + ', j: ' + j);
-                  cycleThru(0);
-                });
-            }
-            else {
-              $('#' + listId).css('opacity', 0);
-            }
-          };
-
-          cycleThru(1);
+          $('#' + listId).addClass('active').fadeIn(1000);
+          Drupal.behaviors.microsite_scroll.animateQuote(listSelector, 0, (numQuotes - 1));
         }
         else if (numQuotes == 1) {
-          $(listSelector + ', ' + listSelector + ' li').addClass('active');
+          $(listSelector + ', ' + listSelector + ' li').addClass('active').fadeIn(1000);
         }
       }
     },
@@ -64,17 +59,19 @@ usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector
       });
     },
 
+/*
     // Animation for logo in left nav.
-    //micrositeLogoAnim: function logoAnim(show_logo) {
-    //  if (show_logo) {
-    //    $('#left-nav-inner').animate({'top': '0'}, 400);
-    //    $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
-    //  }
-    //  else {
-    //    $('#left-nav-inner').animate({'top': '-130px'}, 400);
-    //    $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
-    //  }
-    //},
+    micrositeLogoAnim: function logoAnim(show_logo) {
+      if (show_logo) {
+        $('#left-nav-inner').animate({'top': '0'}, 400);
+        $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
+      }
+      else {
+        $('#left-nav-inner').animate({'top': '-130px'}, 400);
+        $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
+      }
+    },
+*/
 
     // getUrlPath
     // url: (string) url to parse
@@ -214,12 +211,12 @@ usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector
 
       // if needed, stop quotation animations and fade them out
       if (currentSectionId == 'about' || currentSectionId == 'characters') {
-        $('#microsite .quotes.active').removeClass('active').fadeOut(1000);
+        $('#microsite .quotes').removeClass('active').fadeOut(1000);
         quoteDelay = 1000;
       }
 
       // now start animating the section
-      $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().delay(quoteDelay).animate({'top': '0'}, 1000, 'jswing', function () {
+      $(nextSection).delay(quoteDelay).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function () {
         $('.section-info').removeClass('active');
         $(nextSection).addClass('active').removeClass('transition');
 
@@ -245,18 +242,12 @@ usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector
 
         // if needed, start quotation animations again
         if (nextSectionId == 'about') {
-//          Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-          $('#microsite .quotes').removeClass('active');
-          $('#microsite #about .quotes').addClass('active').fadeIn(1000);
-          Drupal.behaviors.microsite_scroll.quotationAnimation('#about .quotes.active');
+          Drupal.behaviors.microsite_scroll.quotationAnimation('#about .quotes');
         }
         else if (nextSectionId == 'characters') {
           var activeCharacterId = $('#microsite #characters #character-info li.active').attr('id');
-//          Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
 usa_debug('*****************\nactiveCharacterId: ' + activeCharacterId);
-          $('#microsite .quotes').removeClass('active');
-          $('#microsite #characters .quotes.' + activeCharacterId).addClass('active').fadeIn(1000);
-          Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
+          Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.' + activeCharacterId);
         }
 
         Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
@@ -667,10 +658,7 @@ usa_debug('*****************\nactiveCharacterId: ' + activeCharacterId);
 
       var urlItem = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
       if (urlItem.section == 'about' || urlItem.section == 'characters') {
-//        $('#microsite .quotes').removeClass('active');
-//        $('#microsite #' + urlItem.section + ' .quotes').addClass('active');
-//        Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-        Drupal.behaviors.microsite_scroll.quotationAnimation('#' + urlItem.section + ' .quotes.active');
+        Drupal.behaviors.microsite_scroll.quotationAnimation('#' + urlItem.section + ' .quotes.active', 1);
       }
 
       // initialize left nav clicks

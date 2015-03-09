@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * usanetwork_microsite module installation.
+ */
+
+/**
+ * Set default values for all existing nodes.
+ */
+function usanetwork_microsite_update_7000() {
+
+  db_update('field_data_field_video_adding_type')
+    ->fields(array(
+      'field_video_adding_type_value' => 0,
+    ))
+    ->execute();
+  db_update('field_revision_field_video_adding_type')
+    ->fields(array(
+      'field_video_adding_type_value' => 0,
+    ))
+    ->execute();
+}

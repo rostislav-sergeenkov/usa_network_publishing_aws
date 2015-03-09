@@ -872,7 +872,7 @@ function usanetwork_quiz_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1454,6 +1454,72 @@ function usanetwork_quiz_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-quiz-field_thumbnail'
+  $field_instances['node-quiz-field_thumbnail'] = array(
+    'bundle' => 'quiz',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 21,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_thumbnail',
+    'label' => 'Thumbnail',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'quiz/thumbnail',
+      'file_extensions' => 'txt',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'mpx' => 0,
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'mpx_player' => 0,
+          'mpx_video_1' => 0,
+          'mpx_video_2' => 0,
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'pub_mpx_video' => 0,
+          'theplatform_mpx_mpxmedia' => 0,
+          'theplatform_mpx_mpxplayer' => 0,
+          'upload' => 0,
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
+      'weight' => 24,
+    ),
+  );
+
   // Exported field_instance: 'node-quiz-field_usa_catchall_js'
   $field_instances['node-quiz-field_usa_catchall_js'] = array(
     'bundle' => 'quiz',
@@ -1796,6 +1862,7 @@ function usanetwork_quiz_field_default_field_instances() {
   t('Splash Image');
   t('Text');
   t('Theme');
+  t('Thumbnail');
   t('Title');
   t('Type');
   t('Value');

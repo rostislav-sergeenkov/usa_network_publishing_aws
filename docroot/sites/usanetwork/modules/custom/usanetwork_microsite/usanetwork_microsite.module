@@ -765,14 +765,18 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
     $current_quiz_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     $quizzes_count = 0;
     $quizzes = array();
+    $quizzes_nav = array();
     foreach ($quizzes_nodes as $quiz_node) {
-      // While we will output only quizzes.
       $quiz_url = _usanetwork_microsite_get_suggested_url($quiz_node);
-      if ($quiz_node->type == USANETWORK_MICROSITE_QUIZ_NODE_TYPE && $quiz_node->status == NODE_PUBLISHED) {
+      if ($quiz_node->status == NODE_PUBLISHED) {
         if ((!empty($current_quiz_arg) && $current_quiz_arg == $quiz_url) || (empty($current_quiz_arg) && $quizzes_count == 0)) {
           $theme_variables['page'] = usanetwork_microsite_get_quiz($quiz_node);
         }
         $quizzes[] = array(
+          'nid' => $quiz_node->nid,
+          'url' => _usanetwork_microsite_get_suggested_url($quiz_node),
+        );
+        $quizzes_nav[] = array(
           'nid' => $quiz_node->nid,
           'url' => _usanetwork_microsite_get_suggested_url($quiz_node),
         );

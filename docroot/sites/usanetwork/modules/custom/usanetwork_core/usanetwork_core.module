@@ -1,5 +1,7 @@
 ﻿<?php
 
+require_once 'usanetwork_core.api.inc';
+
 /**
  * Implements hook_js_alter().
  */

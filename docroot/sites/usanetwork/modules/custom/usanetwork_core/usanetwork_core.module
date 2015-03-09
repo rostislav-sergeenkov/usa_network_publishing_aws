@@ -1,11 +1,6 @@
 ﻿<?php
 
-/**
- *  Implements hook_init().
- */
-function usanetwork_core_init() {
-  require_once 'usanetwork_core.api.inc';
-}
+require_once 'usanetwork_core.api.inc';
 
 /**
  * Implements hook_js_alter().

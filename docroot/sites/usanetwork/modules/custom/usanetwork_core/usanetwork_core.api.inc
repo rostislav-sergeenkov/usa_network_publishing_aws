@@ -1,50 +1,5 @@
 <?php
 
-/*function usanetwork_core_api_get_content_data($entity_type, $entity) {
-
-  $content_data = array(
-    'url' => NULL,
-    'image_url' => NULL,
-    'title' => !empty($entity->title) ? $entity->title : NULL,
-    'caption' => FALSE,
-    'season_number' => FALSE,
-    'episode_number' => FALSE,
-    'time' => NULL,
-    'cta_text' => NULL,
-    'show_class' => '',
-    'icon_type' => '',
-    'more_link_text' => FALSE,
-    'more_link_url' => FALSE,
-    'published' => FALSE,
-    'image_url_wide' => FALSE,
-  );
-
-  if (empty($entity_type) || empty($entity)) {
-    watchdog('usa_coreapi_debug', __FUNCTION__ . ': entity type or entity is empty', $entity);
-
-    return NULL;
-  }
-
-  if (!is_object($entity)) {
-    $entity_id = $entity;
-
-    $entity = entity_load($entity_type, array($entity));
-
-    if (isset($entity[$entity_id])) {
-      $entity = $entity[$entity_id];
-    }
-  }
-
-  if ($entity_type == 'node') {
-    $content_data['url'] = url('node/' . $entity->nid);
-  }
-  elseif ($entity_type == 'file') {
-    $content_data['url'] = url('node/' . $entity->fid);
-  }
-
-  $content_data['image_url'] = usanetwork_core_api_get_content_image($entity_type, $entity);
-}*/
-
 /**
  * @param $entity_type - type of entity.
  * @param $entity - entity object or entity id.
@@ -258,17 +213,3 @@ function _usanetwork_core_api_get_node_image_field_names() {
     ),
   );
 }
-
-/*function _usanetwork_core_api_get_file_caption_field_names() {
-  return array(
-    'mpx_video_1' => 'title',
-    'mpx_video_2' => 'title',
-  );
-}
-
-function _usanetwork_core_api_get_node_caption_field_names() {
-  return array(
-    'media_gallery' => 'field_promo_text_line_1',
-    'usanetwork_promo' => 'field_promo_text_line_1',
-  );
-}*/

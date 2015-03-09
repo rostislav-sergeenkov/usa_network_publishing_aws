@@ -763,6 +763,13 @@ function _usanetwork_microsite_get_suggested_video_url($video_file) {
 function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
   $section_object = $section_wrapper->value();
   $theme_variables = array();
+  // Get videos automatically.
+  if (isset($section_object->field_video_adding_type)) {
+    $auto = $section_wrapper->field_video_adding_type->value();
+    if (!empty($auto) && $files_array =_usanetwork_microsite_get_related_videos_for_microsite($node)) {
+      $section_wrapper->field_ms_videos->set($files_array);
+    }
+  }
   if (!empty($section_object->field_ms_videos)) {
     $video_files = $section_wrapper->field_ms_videos->value();
     // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
@@ -991,6 +998,13 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_type($node, $type);
   // @todo necessary use relationship array with main fields for section types. For example array('video' => 'field_ms_videos').
   if($type == 'videos') {
+    // Get videos automatically.
+    if (isset($section_wrapper->field_video_adding_type)) {
+      $auto = $section_wrapper->field_video_adding_type->value();
+      if (!empty($auto) && $files_array =_usanetwork_microsite_get_related_videos_for_microsite($node)) {
+        $section_wrapper->field_ms_videos->set($files_array);
+      }
+    }
     return $section_wrapper->field_ms_videos->value();
   }
   elseif($type == 'characters') {
@@ -2672,4 +2686,47 @@ function _usanetwork_microsite_get_video_category($video_file) {
   else {
     return FALSE;
   }
+}
+
+
+/**
+ * Returns list of related video files id.
+ */
+function _usanetwork_microsite_get_related_videos_for_microsite($node) {
+  $field_item = field_get_items('node', $node, 'field_show');
+  $show_id = $field_item[0]['target_id'];
+  if (!empty($show_id)) {
+    $cache_name = 'microsite_videos_' . $show_id;
+    if ($cache = cache_get($cache_name)) {
+      return $cache->data;
+    }
+    $full_video = db_and()
+      ->condition('fm.type', 'mpx_video_2', '=')
+      ->condition('mfe.field_mpx_full_episode_value', '1', '=');
+    $small_video = db_and()
+      ->condition('fm.type', 'mpx_video_1', '=')
+      ->condition('mfe.field_mpx_full_episode_value', '0', '=');
+    $db_or = db_or()
+      ->condition($small_video)
+      ->condition($full_video);
+    $query = db_select('mpx_video', 'mpx');
+    $query->fields('mpx', array('fid'));
+    $query->innerJoin('file_managed', 'fm', 'mpx.fid = fm.fid');
+    $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = fm.fid');
+    $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
+    $query->condition($db_or);
+    $query->condition('fs.field_show_target_id', $show_id, '=');
+    $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
+    $query->orderBy('fm.timestamp', 'DESC');
+    $query_results = $query->execute()->fetchAll();
+    if (!empty($query_results)) {
+      $files_array = array();
+      foreach($query_results as $query_result) {
+        $files_array[] = $query_result->fid;
+      }
+      cache_set($cache_name, $files_array, 'cache', REQUEST_TIME + 60*60);
+      return $files_array;
+    }
+  }
+  return FALSE;
 }

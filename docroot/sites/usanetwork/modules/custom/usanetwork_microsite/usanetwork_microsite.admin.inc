@@ -26,7 +26,7 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
 function _usanetwork_microsite_section_after_build($form, &$form_state) {
   $lang = $form['#language'];
   foreach($form as $k => $v) {
-    if(is_numeric($k) && isset($v['#entity_type']) && $v['#entity_type']=='field_collection_item'){
+    if(is_numeric($k) && isset($v['#entity_type']) && $v['#entity_type']=='field_collection_item') {
 
       //home section
       $form[$k]['field_usa_tv_a_spot']['#states'] = array(
@@ -104,6 +104,18 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
       $form[$k]['field_ms_episode']['#states'] = array(
         'visible' => array(
           ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'episodes'),
+        ),
+      );
+
+      // Videos.
+      $form[$k]['field_ms_videos']['#states'] = array(
+        'disabled' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_video_adding_type][' . $lang . ']"]' => array('value' => '1'),
+        ),
+      );
+      $form[$k]['field_video_adding_type']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'videos'),
         ),
       );
     }

@@ -11,32 +11,42 @@
 
 	Drupal.behaviors.microsite_scroll = {
 
-		quotationAnimation: function(listId) {
+		animateQuote: function(listSelector, j, jmax) {
 			var fadeDuration = 1000,
 				tweenDuration = 10000,
-				list = $('#microsite ' + listId),
+				list = $('#microsite ' + listSelector),
+				listId = list.attr('id');
+
+			$(listSelector + ' li:eq(' + j + ')')
+				.css('display', 'block')
+				.animate({'opacity' : '1'} , fadeDuration)
+				.delay(tweenDuration)
+				.addClass('active')
+				.animate({'opacity' : '0'}, fadeDuration, function(){
+					(j == jmax) ? j=0 : j++;
+					$(this).removeClass('active');
+//usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector + ', listId: ' + listId + ', j: ' + j);
+					if ($('#' + listId).hasClass('active')) {
+						Drupal.behaviors.microsite_scroll.animateQuote(listSelector, j, jmax);
+					}
+				});
+		},
+
+		quotationAnimation: function(listSelector, initialPageLoad) {
+			initialPageLoad = initialPageLoad || 0;
+			var wwidth = $(window).width(),
+				list = $('#microsite ' + listSelector),
+				listId = list.attr('id'),
 				numQuotes = list.find('li').length;
-			if (numQuotes > 0) {
-				var j = 0,
-					jmax = numQuotes - 1;
 
-				function cycleThru() {
-					$(listId + ' li:eq(' + j + ')')
-						.animate({'opacity' : '1'} , fadeDuration)
-						.delay(tweenDuration)
-						.animate({'opacity' : '0'}, fadeDuration, function(){
-							(j == jmax) ? j=0 : j++;
-//usa_debug('*****************\nquotationAnimation\nstop: ' + Drupal.behaviors.microsite_scroll.quotationAnimationStop + ', listId: ' + listId + ', j: ' + j);
-							if (!Drupal.behaviors.microsite_scroll.quotationAnimationStop) cycleThru();
-						});
-				};
-
-				if (Drupal.behaviors.microsite_scroll.quotationAnimationStop) {
-					$(listId).fadeOut(fadeDuration);
+			if (!initialPageLoad) $('#microsite .quotes, #microsite .quotes li').removeClass('active').fadeOut(1000);
+			if (wwidth > 1020) {
+				if (numQuotes > 1) {
+					$('#' + listId).addClass('active').fadeIn(1000);
+					Drupal.behaviors.microsite_scroll.animateQuote(listSelector, 0, (numQuotes - 1));
 				}
-				else {
-					$(listId).fadeIn(fadeDuration);
-					cycleThru();
+				else if (numQuotes == 1) {
+					$(listSelector + ', ' + listSelector + ' li').addClass('active').fadeIn(1000);
 				}
 			}
 		},
@@ -49,17 +59,19 @@
 			});
 		},
 
-		// Animation for logo in left nav.
-		//micrositeLogoAnim: function logoAnim(show_logo) {
-		//  if (show_logo) {
-		//    $('#left-nav-inner').animate({'top': '0'}, 400);
-		//    $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
-		//  }
-		//  else {
-		//    $('#left-nav-inner').animate({'top': '-130px'}, 400);
-		//    $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
-		//  }
-		//},
+		/*
+		 // Animation for logo in left nav.
+		 micrositeLogoAnim: function logoAnim(show_logo) {
+		 if (show_logo) {
+		 $('#left-nav-inner').animate({'top': '0'}, 400);
+		 $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
+		 }
+		 else {
+		 $('#left-nav-inner').animate({'top': '-130px'}, 400);
+		 $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
+		 }
+		 },
+		 */
 
 		// getUrlPath
 		// url: (string) url to parse
@@ -96,77 +108,77 @@
 			return '';
 		},
 
-    // OMNITURE
-    // setOmnitureData
-    micrositeSetOmnitureData: function setOmnitureData(anchor, itemTitle) {
-      var anchor = anchor || null,
-        itemTitle = itemTitle || '',
-        siteName = Drupal.settings.microsites_settings.title,
-        basePageName = siteName + ' | USA Network';
-      if (!anchor) {
-        var sectionData = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
-        anchor = sectionData['section'];
-        if (sectionData['item'] != '') itemTitle = Drupal.behaviors.microsite_scroll.micrositeGetItemTitle(sectionData['item']);
-      }
-      var sectionTitle = Drupal.behaviors.microsite_scroll.micrositeToTitleCase(anchor),
-        pageName = basePageName;
-      s.pageName = siteName;
-      s.prop3 = sectionTitle;
-      s.prop4 = siteName + ' : ' + sectionTitle;
-      s.prop5 = s.prop4;
-      if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries')) {
-        pageName = sectionTitle + ' | ' + pageName;
-        s.pageName += ' : ' + sectionTitle;
-      }
-      if ((anchor == 'home') || (anchor == 'about')) {
-        pageName = 'Dig Deeper | '  + pageName;
-      }
-      if (itemTitle != '') {
-        pageName = itemTitle + ' | ' + pageName;
-        s.pageName += ' : ' + itemTitle;
-      }
-      switch (anchor) {
-        case 'videos':
-          s.prop3 = 'Video';
-          s.prop4 = siteName + ' : Video';
-          if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
-          s.prop5 = siteName + ' : Video : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Video | ' + pageName;
-          break;
-        case 'galleries':
-          var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
-              $slider = slider.data('flexslider'),
-              currentSlide = $slider.currentSlide + 1;
-          if (!currentSlide) currentSlide = 1;
-          s.prop3 = 'Gallery';
-          s.prop4 = siteName + ' : Gallery';
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
-          s.prop5 = siteName + ' : Gallery : ' + itemTitle;
-          s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-          pageName = itemTitle + ' | Gallery | ' + pageName;
-          break;
-        case 'characters':
-          s.prop3 = 'Bio';
-          s.prop4 = 'Profile Page'; // This is intentional per Loretta!
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
-          s.prop5 = siteName + ' : Bio : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Bio | ' + pageName;
-          break;
-        case 'episodes':
-          s.prop3 = 'Episode Guide';
-          s.prop4 = siteName + ' : Episode Guide';
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1').text();
-          s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Episode Guide | ' + pageName;
-          break;
-      }
-      $('title').text(pageName);
+		// OMNITURE
+		// setOmnitureData
+		micrositeSetOmnitureData: function setOmnitureData(anchor, itemTitle) {
+			var anchor = anchor || null,
+				itemTitle = itemTitle || '',
+				siteName = Drupal.settings.microsites_settings.title,
+				basePageName = siteName + ' | USA Network';
+			if (!anchor) {
+				var sectionData = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
+				anchor = sectionData['section'];
+				if (sectionData['item'] != '') itemTitle = Drupal.behaviors.microsite_scroll.micrositeGetItemTitle(sectionData['item']);
+			}
+			var sectionTitle = Drupal.behaviors.microsite_scroll.micrositeToTitleCase(anchor),
+				pageName = basePageName;
+			s.pageName = siteName;
+			s.prop3 = sectionTitle;
+			s.prop4 = siteName + ' : ' + sectionTitle;
+			s.prop5 = s.prop4;
+			if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries')) {
+				pageName = sectionTitle + ' | ' + pageName;
+				s.pageName += ' : ' + sectionTitle;
+			}
+			if ((anchor == 'home') || (anchor == 'about')) {
+				pageName = 'Dig Deeper | '  + pageName;
+			}
+			if (itemTitle != '') {
+				pageName = itemTitle + ' | ' + pageName;
+				s.pageName += ' : ' + itemTitle;
+			}
+			switch (anchor) {
+				case 'videos':
+					s.prop3 = 'Video';
+					s.prop4 = siteName + ' : Video';
+					if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
+					s.prop5 = siteName + ' : Video : ' + itemTitle;
+					s.pageName = s.prop5;
+					pageName = itemTitle + ' | Video | ' + pageName;
+					break;
+				case 'galleries':
+					var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
+						$slider = slider.data('flexslider'),
+						currentSlide = $slider.currentSlide + 1;
+					if (!currentSlide) currentSlide = 1;
+					s.prop3 = 'Gallery';
+					s.prop4 = siteName + ' : Gallery';
+					if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+					if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
+					s.prop5 = siteName + ' : Gallery : ' + itemTitle;
+					s.pageName = s.prop5 + ' : Photo ' + currentSlide;
+					pageName = itemTitle + ' | Gallery | ' + pageName;
+					break;
+				case 'characters':
+					s.prop3 = 'Bio';
+					s.prop4 = 'Profile Page'; // This is intentional per Loretta!
+					if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
+					if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
+					s.prop5 = siteName + ' : Bio : ' + itemTitle;
+					s.pageName = s.prop5;
+					pageName = itemTitle + ' | Bio | ' + pageName;
+					break;
+				case 'episodes':
+					s.prop3 = 'Episode Guide';
+					s.prop4 = siteName + ' : Episode Guide';
+					if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3').text();
+					if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1').text();
+					s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
+					s.pageName = s.prop5;
+					pageName = itemTitle + ' | Episode Guide | ' + pageName;
+					break;
+			}
+			$('title').text(pageName);
 
 			if (typeof s_gi != 'undefined') {
 				void(s.t()); // omniture page call
@@ -182,10 +194,13 @@
 				anchorNum = anchorItem.find('a').attr('data-menuitem'),
 				anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
 				nextSection = '#' + anchor,
+				nextSectionId = $(nextSection).attr('id'),
 				sectionHeight = window.innerHeight,
 				currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
+				currentSectionId = $('#left-nav-links-list li.active').attr('id').replace('nav-', ''),
 				direction = (anchorNum > currentSectionNum) ? '' : '-',
-				otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
+				otherDirection = (anchorNum > currentSectionNum) ? '-' : '',
+				quoteDelay = 0;
 
 			// if this is IE9, reload the correct page
 			if ($('html.ie9').length > 0) {
@@ -211,19 +226,27 @@
 			if ($('#microsite #episodes #episode-background li').length > 0) {
 				$('#microsite #episodes #episode-background li').css('position', 'absolute');
 			}
-			$(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function () {
+
+			// if needed, stop quotation animations and fade them out
+			if (currentSectionId == 'about' || currentSectionId == 'characters') {
+				$('#microsite .quotes').removeClass('active').fadeOut(1000);
+				quoteDelay = 1000;
+			}
+
+			// now start animating the section
+			$(nextSection).delay(quoteDelay).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function () {
 				$('.section-info').removeClass('active');
 				$(nextSection).addClass('active').removeClass('transition');
 
 				var videoContainer = $('#video-container');
 
-				if ($(nextSection).attr('id') == 'videos') {
+				if (nextSectionId == 'videos') {
 					if(!videoContainer.hasClass('active')){
 						videoContainer.addClass('active');
 						Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
 					}
 				}
-				if ($(nextSection).attr('id') != 'videos') {
+				if (nextSectionId != 'videos') {
 					Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
 					if(videoContainer.attr('data-ad-start') == 'true'){
 						videoContainer.find('.active-player .custom-play').addClass('active').show();
@@ -235,10 +258,12 @@
 					}
 				}
 
-				// start quotation animations
-				if ($(nextSection).attr('id') == 'about' || $(nextSection).attr('id') == 'characters') {
-					Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-//          Drupal.behaviors.microsite_scroll.quotationAnimation('#' + nextSectionId + ' .quotes.active');
+				// if needed, start quotation animations again
+				if (nextSectionId == 'about') {
+					Drupal.behaviors.microsite_scroll.quotationAnimation('#about .quotes');
+				}else if (nextSectionId == 'characters') {
+					var activeCharacterId = $('#microsite #characters #character-info li.active').attr('id');
+					Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.' + activeCharacterId);
 				}
 
 				Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
@@ -260,7 +285,7 @@
 				}
 
 			});
-			$('.section-info.active').animate({'top': otherDirection + Math.ceil(sectionHeight / 2) + 'px'}, 1000, 'jswing', function () {
+			$('.section-info.active').delay(quoteDelay).animate({'top': otherDirection + Math.ceil(sectionHeight / 2) + 'px'}, 1000, 'jswing', function () {
 				$('.section-info').css({'top': '0'});
 				$('#left-nav').removeClass('stop');
 				$(this).animate({
@@ -363,12 +388,12 @@
 						description = data.description_template,
 						player = data.player;
 
-					if (playerAuth.hasClass('active-player')) {
+					if(playerAuth.hasClass('active-player')){
 						playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
 						playerAuth.find('#player .loginButton').html(image);
 						playerAuth.find(playerWrap).html(player);
 					}
-					if (playerNoAuth.hasClass('active-player')) {
+					if(playerNoAuth.hasClass('active-player')){
 						playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
 						playerNoAuth.find(playerWrap).html(player);
 					}
@@ -383,7 +408,15 @@
 				}
 			});
 		},
-		micrositeSetVideoPlayer : function(autoplay, selector, data){
+		micrositeMobileModal : function(){
+			// check if user uses mobile device
+			if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
+				var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
+				Drupal.behaviors.video_mobile.showMobileVideoModal(os);
+			}
+		},
+		// set video player on click thumbnail
+		micrositeSetVideoPlayer: function (autoplay, selector, data) {
 
 			var autoplay = autoplay || true,
 				selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
@@ -410,6 +443,7 @@
 			}
 
 			if (dataFullEpisode == 'true') {
+				Drupal.behaviors.microsite_scroll.micrositeMobileModal();
 				if(ad_300x250_1){
 					ad_300x250_1.closest('li.ad').hide();
 					ad_300x250_1.attr('id', 'ad_300x250').empty();
@@ -814,7 +848,7 @@
 			var urlItem = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
 			Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
 			if (urlItem.section == 'about' || urlItem.section == 'characters') {
-//        Drupal.behaviors.microsite_scroll.quotationAnimation('#' + urlItem.section + ' .quotes.active');
+				Drupal.behaviors.microsite_scroll.quotationAnimation('#' + urlItem.section + ' .quotes.active', 1);
 			}
 
 			// init change url address

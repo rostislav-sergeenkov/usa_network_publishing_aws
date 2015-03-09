@@ -668,6 +668,7 @@ function usanetwork_microsite_get_rendered_gallery($node) {
   return array(
     'gallery_nid' => $node->nid,
     'title' => $node->title,
+    'h1' => _usanetwork_microsite_get_h1_for_for_node($node),
     'description' => $body_value,
     'rendered' => drupal_render($gallery_view),
   );
@@ -775,6 +776,11 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $active_filter = USANETWORK_MICROSITE_ALL_VIDEOS;
     $video_types[$active_filter] = $active_filter;
     $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    // If video section is current, will add itunes app metatag
+    if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
+      usanetwork_microsite_add_itunes_app_metatag();
+    }
+    usanetwork_microsite_full_video_for_mobile_device();
     if (!empty($video_for_player)) {
       if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
         $active_filter = _usanetwork_microsite_get_video_category($video_file);
@@ -1531,6 +1537,19 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       if(empty($head_title)) {
         $head_title = usanetwork_microsite_get_default_title($node, $section_type);
       }
+      $aspot = reset($section_wrapper->field_usa_tv_a_spot->value());
+      if (!empty($aspot)) {
+        $aspot_desctop = reset(field_get_items('node', $aspot, 'field_usa_aspot_desktop'));
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' =>  file_create_url($aspot_desctop['uri']),
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_home:image');
+      }
       break;
     case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');
@@ -1544,7 +1563,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         if(isset($video_file) && !empty($video_file->filename) && empty($page_title)) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
-        $file_video = $video_file; 
+        $file_video = $video_file;
       }
       else {
         $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
@@ -1567,7 +1586,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           }
         }
       }
-      
+
       $image = media_theplatform_mpx_file_formatter_image_view($file_video, array('settings' => array('image_style' => 'video_full')), '');
       $renderable_image = file_create_url($image['#path']);
       $tag_card = array(
@@ -1579,7 +1598,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
          ),
       );
       drupal_add_html_head($tag_card, 'microsite_video:image');
-      
+
       $tag_title = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
@@ -1628,6 +1647,38 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           }
         }
       }
+
+      if (!empty($character_node->field_person_cover_photo)) {
+        $photo_url = $character_node_wrapper->field_person_cover_photo->file->url->value();
+
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => $photo_url,
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_character:image');
+      }
+
+      if (empty($person_names)) {
+        $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
+      }
+
+      if (!empty($person_names)) {
+        $person_name = $person_names['person_title'];
+
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $person_name,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_character:title');
+      }
       break;
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');
@@ -1644,6 +1695,27 @@ function usanetwork_microsite_preprocess_html(&$vars) {
             $head_title = _usanetwork_microsite_set_title_and_description($gallery_node, $head_title);
           }
         }
+      }
+      if (!empty($gallery_node)) {
+        $cover_item = reset(field_get_items('node', $gallery_node, 'field_cover_item'));
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => file_create_url($cover_item['uri']),
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_galleries:image');
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $gallery_node->title,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_galleries:title');
       }
       break;
     case 'episodes':
@@ -1662,6 +1734,32 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           }
         }
       }
+
+      if (!empty($episode_node->field_tv_cover_media)) {
+        $episode_wrapper = entity_metadata_wrapper('node', $episode_node);
+        $image_url = $episode_wrapper->field_tv_cover_media->file->url->value();
+
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => $image_url,
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_episode:image');
+
+        $episode_title = $episode_wrapper->title->value();
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $episode_title,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_episode:title');
+      }
       break;
     case 'about':
       $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, $section_type);
@@ -1670,6 +1768,25 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       if(empty($head_title)) {
         $head_title = usanetwork_microsite_get_default_title($node, $section_type);
       }
+      $background_image = _usanetwork_microsite_get_section_background_image($section_wrapper, '600x500');
+      $tag_card = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:image',
+          'content' => $background_image,
+        ),
+      );
+      drupal_add_html_head($tag_card, 'microsite_about:image');
+      $tag_title = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:title',
+          'content' => $section_wrapper->field_ms_section_title->value(),
+        ),
+      );
+      drupal_add_html_head($tag_title, 'microsite_about:title');
       break;
     case 'games':
       $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
@@ -2509,6 +2626,39 @@ function _usanetwork_microsite_set_status_and_h1_variables($object, $section_wra
     $theme_variables['h1'] = $h1;
   }
   return $theme_variables;
+}
+
+function usanetwork_microsite_full_video_for_mobile_device() {
+  $data = array(
+    'usanetwork_video_mobile' => array(
+      'url' => array(
+        'iOS' => USANETWORK_USANOW_IOS_URL,
+        'android' => USANETWORK_USANOW_ANDROID_URL,
+      ),
+      'modal' => '<div class="wrap"><h3>' . t('Want to watch episodes of your favorite shows?') . '</h3><hr>'
+        . '<img class="mobile-logo-exp" src="' . url(drupal_get_path('module', 'usanetwork_video_mobile') . '/img/logo-mobile-exp.png') . '">'
+        . '<div id="mobileVideoModalButtons">'
+        . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
+        . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">'. '</div>'
+        . '</div>',
+    ),
+  );
+  // attach javascript
+  drupal_add_js($data, 'setting');
+}
+
+/**
+ * Add itunes app metatag to header.
+ */
+function usanetwork_microsite_add_itunes_app_metatag() {
+  $metatag = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'apple-itunes-app',
+      'content' => 'app-id=' . USANETWORK_USANOW_ITUNES_ID . ', affiliate-data=, app-argument=/usa',
+    ),
+  );
+  drupal_add_html_head($metatag, 'apple_itunes_app');
 }
 
 function _usanetwork_microsite_get_video_category($video_file) {

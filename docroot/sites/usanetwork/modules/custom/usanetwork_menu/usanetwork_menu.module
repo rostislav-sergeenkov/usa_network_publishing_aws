@@ -951,6 +951,9 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'episode_title' => $on_now->title,
       'syndicated_url' => _usanetwork_menu_get_reminder_url($on_now->nid),
       'episode_full_url' => '#',
+      'episode_class' => !empty($on_now->nid)
+        ? usanetwork_tv_shows_color_show_css_class($on_now->nid) . ' show-color-border'
+        : NULL,
     );
   }
 
@@ -966,6 +969,9 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'day_part' => date('A', $up_next->start_time),
       'syndicated_url' => _usanetwork_menu_get_reminder_url($up_next->nid),
       'episode_full_url' => '#',
+      'episode_class' => !empty($up_next->nid)
+        ? usanetwork_tv_shows_color_show_css_class($up_next->nid) . ' show-color-border'
+        : NULL,
     );
   }
 
@@ -977,6 +983,9 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
         'day_part' => date('A', $tonight_item->start_time),
         'syndicated_url' => _usanetwork_menu_get_reminder_url($tonight_item->nid),
         'episode_full_url' => '#',
+        'episode_class' => !empty($tonight_item->nid)
+          ? usanetwork_tv_shows_color_show_css_class($tonight_item->nid) . ' show-color-border'
+          : NULL,
       );
     }
   }

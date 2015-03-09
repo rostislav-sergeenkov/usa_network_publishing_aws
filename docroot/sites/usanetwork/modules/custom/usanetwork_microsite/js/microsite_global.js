@@ -25,9 +25,12 @@
           .animate({'opacity': '0'}, fadeDuration, function () {
             (j == jmax) ? j = 0 : j++;
             $(this).removeClass('active');
-//usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector + ', listId: ' + listId + ', j: ' + j);
             if ($('#' + listId).hasClass('active')) {
+              $('#' + listId).addClass('cycling');
               Drupal.behaviors.microsite_scroll.animateQuote(listSelector, j, jmax);
+            }
+            else {
+              $('#' + listId).removeClass('cycling');
             }
           });
     },
@@ -42,8 +45,18 @@
       if (!initialPageLoad) $('#microsite .quotes, #microsite .quotes li').removeClass('active').fadeOut(1000);
       if (wwidth > 1020) {
         if (numQuotes > 1) {
-          $('#' + listId).addClass('active').fadeIn(1000);
-          Drupal.behaviors.microsite_scroll.animateQuote(listSelector, 0, (numQuotes - 1));
+          // check to see if the previous quote animation is still cycling
+          // if it isn't, then start a new cycle
+          if (!$('#' + listId).hasClass('cycling')) {
+            $('#' + listId).addClass('active').fadeIn(1000);
+            Drupal.behaviors.microsite_scroll.animateQuote(listSelector, 0, (numQuotes - 1));
+          }
+          // else wait for previous cycling to finish
+          else {
+            setTimeout(function(){
+              Drupal.behaviors.microsite_scroll.quotationAnimation(listSelector, initialPageLoad);
+            }, 1000);
+          }
         }
         else if (numQuotes == 1) {
           $(listSelector + ', ' + listSelector + ' li').addClass('active').fadeIn(1000);
@@ -214,9 +227,6 @@
       //else {
       //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
       //}
-
-      // stop quotation animations
-      Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
 
       // prep character section background for move
       if ($('#microsite #characters #character-background li').length > 0) {
@@ -854,26 +864,9 @@
       }
 
       var urlItem = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
-      Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
       if (urlItem.section == 'about' || urlItem.section == 'characters') {
         Drupal.behaviors.microsite_scroll.quotationAnimation('#' + urlItem.section + ' .quotes.active', 1);
       }
-
-      // init change url address
-      function changeUrl(anchor, anchorFull) {
-        // if this is IE9, reload the correct page
-        if ($('html.ie9').length > 0) {
-          window.location.href = anchorFull.replace('/home', '');
-          return false;
-        }
-
-        if (anchor != 'home') {
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-        }
-        else {
-          history.pushState({"state": basePath}, basePath, basePath);
-        }
-      };
 
       // initialize left nav clicks
       $('.internal a.scroll-link').click(function (e) {

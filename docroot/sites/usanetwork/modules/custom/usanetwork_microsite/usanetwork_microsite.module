@@ -791,6 +791,7 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
         $quizzes_count++;
       }
     }
+    $theme_variables['quizzes_nav'] = $quizzes_nav;
     drupal_add_js(array('quizzes' => $quizzes), 'setting');
   }
 

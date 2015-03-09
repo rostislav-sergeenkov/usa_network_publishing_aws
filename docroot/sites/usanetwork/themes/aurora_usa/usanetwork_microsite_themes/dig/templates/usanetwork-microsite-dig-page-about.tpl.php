@@ -18,10 +18,9 @@
 
   <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_about"></div>
 
-<?php /* @TODO: Finish quotes code ?>
   <?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
   <div class="left-pane">
-    <div class="quotes active">
+    <div id="about-quotes" class="quotes active">
       <ul>
         <?php foreach ($about_quotations as $about_quotation_key => $about_quotation): ?>
           <?php if (!empty($about_quotation['quote']) && !empty($about_quotation['source'])): ?>
@@ -39,7 +38,6 @@
     </div>
   </div>
   <?php endif; ?>
-<?php */ ?>
 
   <?php if (!empty($title) || !empty($description)): ?>
   <div class="right-pane">

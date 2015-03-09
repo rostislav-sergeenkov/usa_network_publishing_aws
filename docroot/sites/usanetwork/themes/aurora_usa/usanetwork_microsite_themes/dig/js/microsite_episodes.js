@@ -23,8 +23,10 @@
         episNavWidth = episNavListWidth + (nextPrevWidth * 2);
         navHeight = (navHeight * 2) + 6;
       }
-      episodesNav.find('ul').width(episNavListWidth).height(navHeight);
-      episodesNav.width(episNavWidth).height(navHeight).animate({'opacity': 1}, 600);
+      if (episodesNav.length > 0) {
+        episodesNav.find('ul').width(episNavListWidth).height(navHeight);
+        episodesNav.width(episNavWidth).height(navHeight).animate({'opacity': 1}, 600);
+      }
     },
 
     micrositeSetNavNextPrevState: function setNavNextPreState() {
@@ -93,6 +95,7 @@
       if (itemTitle != '') {
         pageName = itemTitle + ' | ' + pageName;
         s.pageName += ' : ' + itemTitle;
+        s.prop5 += ' : ' + itemTitle;
       }
       $('title').text(pageName);
 
@@ -132,11 +135,13 @@
             nextItemNum = nextItem.index(),
             nextEpisodeId = (nextItemId != null) ? nextItemId.replace('nav-', '') : null,
             nextEpisodeClass = (nextItemId != null) ? nextItemId.replace('#', '') : null,
+            nextEpisodeTitle = $('#' + nextEpisodeId + ' > h3').text(),
             nextEpisodeInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '',
             oppositeSign = (direction == 'next') ? '' : '-',
             activeSection = $('#microsite #sections > .active').attr('id');
+        if (nextEpisodeTitle == '') nextEpisodeTitle = $('#' + nextEpisodeId + ' > h1').text();
 
         if (nextEpisodeId && currentEpisodeId) {
           if (nextEpisodeId == currentEpisodeId) {
@@ -148,7 +153,7 @@
               Drupal.behaviors.microsite_scroll.micrositeSectionScroll('episodes', nextItemId);
             }
             else {
-              Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData($('#' + nextEpisodeId + ' > h3').text());
+              Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
               Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
             }
 
@@ -158,10 +163,6 @@
           }
           else {
             if ($('#bg-' + nextEpisodeId).css('background-image') == 'none') Drupal.behaviors.microsite_episodes.micrositeSetEpisBackground(nextEpisodeId);
-
-            // stop quotation animations and hide quotes
-            Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
-            $('#microsite #episodes .quotes').fadeOut(1000);
 
             // prepare next or previous background and episode-info
             $('#microsite #episodes .' + nextEpisodeId).addClass(direction);
@@ -186,15 +187,9 @@
                     Drupal.behaviors.microsite_scroll.micrositeSectionScroll('episodes', nextItemId);
                   }
                   else {
-                    Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData($('#' + nextEpisodeId + ' > h3').text());
+                    Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
                     Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
                   }
-
-                  // start quotation animations and show quotes
-                  Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-                  $('#microsite #episodes .quotes').removeClass('active');
-                  $('#microsite #episodes .quotes.' + nextEpisodeClass).addClass('active').fadeIn(1000);
-//                  Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
 
                   // remove disabled
                   navItems.find('li.disabled').removeClass('disabled');
@@ -226,15 +221,9 @@
                       Drupal.behaviors.microsite_scroll.micrositeSectionScroll('episodes', nextItemId);
                     }
                     else {
-                      Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData($('#' + nextEpisodeId + ' > h3').text());
+                      Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
                       Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
                     }
-
-                    // start quotation animations and show quotes
-                    Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-                    $('#microsite #episodes .quotes').removeClass('active');
-                    $('#microsite #episodes .quotes.' + nextEpisodeClass).addClass('active').fadeIn(1000);
-//                    Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
 
                     // remove disabled
                     navItems.find('li.disabled').removeClass('disabled');

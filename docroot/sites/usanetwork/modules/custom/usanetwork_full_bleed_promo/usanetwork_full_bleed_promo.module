@@ -1,0 +1,90 @@
+<?php
+/**
+ * @file
+ * Code for the Full Bleed Promo feature.
+ */
+
+include_once 'usanetwork_full_bleed_promo.features.inc';
+
+/**
+ *  Implements hook_block_info().
+ */
+function usanetwork_full_bleed_promo_block_info() {
+  $blocks = array();
+
+  $blocks['usanetwork_fbp_block'] = array(
+    'info' => t('Homepage: Full bleed promo'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_full_bleed_promo_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_fbp_block':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_full_bleed_promo_render_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_full_bleed_promo_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_fbp_block' => array(
+      'variables' => array(
+        'url' => NULL,
+        'desktop_url' => NULL,
+        'mobile_url' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-full-bleed-promo',
+    ),
+  );
+}
+
+/**
+ * Renders usanetwork_full_bleed_promo block according current homepage.
+ */
+function _usanetwork_full_bleed_promo_render_block() {
+  if (!module_exists('usanetwork_home') || arg(0) == 'admin') {
+    return '';
+  }
+
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  if (!empty($homepage['node'])) {
+    $homepage_node = node_load(reset($homepage['node'])->nid);
+    $homepage_wrapper = entity_metadata_wrapper('node', $homepage_node);
+
+    if (!empty($homepage_node->field_hp_full_bleed_promo)) {
+      $promo_node = $homepage_wrapper->field_hp_full_bleed_promo->value();
+
+      $theme_variables = array(
+        'url' => !empty($promo_node->field_usa_fbp_cta_link)
+          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_cta_link->url->value()
+          : NULL,
+        'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
+          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
+          : NULL,
+        'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
+          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
+          : NULL,
+      );
+
+      return theme('usanetwork_fbp_block', $theme_variables);
+    }
+  }
+
+  return '';
+}

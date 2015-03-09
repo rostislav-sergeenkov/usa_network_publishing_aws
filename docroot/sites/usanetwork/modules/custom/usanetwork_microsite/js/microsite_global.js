@@ -48,8 +48,10 @@
           // check to see if the previous quote animation is still cycling
           // if it isn't, then start a new cycle
           if (!$('#' + listId).hasClass('cycling')) {
-            $('#' + listId).addClass('active').fadeIn(1000);
-            Drupal.behaviors.microsite_scroll.animateQuote(listSelector, 0, (numQuotes - 1));
+            $('#' + listId + ' li').removeClass('active').fadeOut(1000, function(){
+              $('#' + listId).addClass('active').fadeIn(1000);
+              Drupal.behaviors.microsite_scroll.animateQuote(listSelector, 0, (numQuotes - 1));
+            });
           }
           // else wait for previous cycling to finish
           else {

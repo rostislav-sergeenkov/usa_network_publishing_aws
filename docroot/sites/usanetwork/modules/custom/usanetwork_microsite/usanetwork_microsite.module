@@ -767,18 +767,26 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
     $quizzes = array();
     $quizzes_nav = array();
     foreach ($quizzes_nodes as $quiz_node) {
-      $quiz_url = _usanetwork_microsite_get_suggested_url($quiz_node);
       if ($quiz_node->status == NODE_PUBLISHED) {
+        $quiz_url = _usanetwork_microsite_get_suggested_url($quiz_node);
+        $quiz_node_wrapper = entity_metadata_wrapper('node', $quiz_node);
         if ((!empty($current_quiz_arg) && $current_quiz_arg == $quiz_url) || (empty($current_quiz_arg) && $quizzes_count == 0)) {
           $theme_variables['page'] = usanetwork_microsite_get_quiz($quiz_node);
         }
         $quizzes[] = array(
           'nid' => $quiz_node->nid,
-          'url' => _usanetwork_microsite_get_suggested_url($quiz_node),
+          'url' => $quiz_url,
         );
+        $image_field = $quiz_node_wrapper->field_quiz_thumbnail->value();
+        $quiz_preview_image = NULL;
+        if (!empty($image_field)) {
+          $quiz_preview_image = image_style_url('300x250', $image_field['uri']);
+        }
         $quizzes_nav[] = array(
           'nid' => $quiz_node->nid,
-          'url' => _usanetwork_microsite_get_suggested_url($quiz_node),
+          'title' => $quiz_node->title,
+          'url' => $quiz_url,
+          'cover_img' => $quiz_preview_image,
         );
         $quizzes_count++;
       }

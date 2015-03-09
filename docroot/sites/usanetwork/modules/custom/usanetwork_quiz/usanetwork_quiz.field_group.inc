@@ -88,14 +88,14 @@ function usanetwork_quiz_field_group_info() {
     'label' => 'Microsite Info',
     'weight' => '6',
     'children' => array(
-      0 => 'field_thumbnail',
+      0 => 'field_quiz_thumbnail',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ms-info field-group-tab',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),

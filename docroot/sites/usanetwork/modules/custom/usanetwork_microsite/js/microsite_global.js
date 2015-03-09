@@ -645,7 +645,7 @@
       }
     },
     //Get Thumbnail List
-    micrositeGetThumbnailList: function (url, offset) {
+    micrositeGetThumbnailList: function (url, offset,$toggler) {
       console.info(url);
       $.ajax({
         type: 'GET',
@@ -688,6 +688,8 @@
             $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler').addClass('active');
             $('#thumbnail-list').removeClass('expanded');
           }
+
+          $toggler.removeClass('processed');
 
           thumbnail.unbind('click');
           thumbnail.bind('click', function (e) {
@@ -760,7 +762,13 @@
           if (expandableToggle.hasClass('active')) {
 
             var url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + itemList;
-            Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, itemList);
+
+            if(!$toggler.hasClass('processed')){
+              Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, itemList, $toggler);
+              $toggler.addClass('processed');
+            }else{
+              return false;
+            }
 
           } else if (expandableToggle.hasClass('spoiler')) {
 

@@ -1029,3 +1029,12 @@ function usanetwork_core_update_7165() {
     module_enable(array('usanetwork_dynamic_entity_reference'));
   }
 }
+
+/**
+ * Enables module usanetwork_full_bleed_promo.
+ */
+function usanetwork_core_update_7167() {
+  if (!module_exists('usanetwork_full_bleed_promo')) {
+    module_enable(array('usanetwork_full_bleed_promo'));
+  }
+}

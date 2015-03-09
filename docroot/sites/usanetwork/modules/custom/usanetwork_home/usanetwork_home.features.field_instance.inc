@@ -2025,6 +2025,82 @@ function usanetwork_home_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usa_homepage-field_hp_full_bleed_promo'
+  $field_instances['node-usa_homepage-field_hp_full_bleed_promo'] = array(
+    'bundle' => 'usa_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This item renders under A-Spot "On-now Tonight" bar.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_more' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_shows' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_hp_full_bleed_promo',
+    'label' => 'Promo',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 34,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('A-spot references');
@@ -2059,6 +2135,7 @@ function usanetwork_home_field_default_field_instances() {
   t('Slide');
   t('Type');
   t('Carousel items');
+  t('Promo');
 
   return $field_instances;
 }

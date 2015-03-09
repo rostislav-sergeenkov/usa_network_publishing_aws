@@ -2,7 +2,7 @@ name = usanetwork_home
 description = homepage content type and custom tools; global nav blocks
 core = 7.x
 package = USA Network
-version = 7.x-2.12.12
+version = 7.x-2.12.13
 project = usanetwork_home
 
 dependencies[] = auto_nodetitle
@@ -19,6 +19,7 @@ dependencies[] = text
 dependencies[] = usanetwork_tv_shows
 dependencies[] = views
 dependencies[] = usanetwork_dynamic_entity_reference
+dependencies[] = usanetwork_full_bleed_promo
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = page_manager:pages_default:1

@@ -272,5 +272,32 @@ If more than 4 are added a carousel will be triggered on page load so content ca
   );
   $export['group_hp_content_carousels|node|usa_homepage|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_hp_full_bleed_promo|node|usa_homepage|form';
+  $field_group->group_name = 'group_hp_full_bleed_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Full Bleed Promo',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_hp_full_bleed_promo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-hp-full-bleed-promo field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_hp_full_bleed_promo|node|usa_homepage|form'] = $field_group;
+
   return $export;
 }

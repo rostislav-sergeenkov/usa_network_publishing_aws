@@ -18,6 +18,9 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
         $field_ms_section_items[$key]['field_seo_page_title'][$langcode][0]['value']['#description'] = 'DEFAULT: ' . usanetwork_microsite_get_default_title($node, $type);
         $field_ms_section_items[$key]['field_seo_h1'][$langcode][0]['value']['#description'] = 'DEFAULT: ' . _usanetwork_microsite_get_default_h1($node, $type);
       }
+      if ($type != 'videos') {
+        unset($field_ms_section_items[$key]['field_video_adding_type']);
+      }
     }
   }
 }
@@ -111,11 +114,6 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
       $form[$k]['field_ms_videos']['#states'] = array(
         'disabled' => array(
           ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_video_adding_type][' . $lang . ']"]' => array('value' => '1'),
-        ),
-      );
-      $form[$k]['field_video_adding_type']['#states'] = array(
-        'visible' => array(
-          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'videos'),
         ),
       );
     }

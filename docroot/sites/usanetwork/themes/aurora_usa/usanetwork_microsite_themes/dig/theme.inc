@@ -197,6 +197,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes.js',
       $module_path . '/js/usanetwork_video_endcard.js',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
     'css' => array(
       $module_path . '/css/jquery.bxslider.css',
@@ -204,7 +205,8 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
+      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
   );
 }

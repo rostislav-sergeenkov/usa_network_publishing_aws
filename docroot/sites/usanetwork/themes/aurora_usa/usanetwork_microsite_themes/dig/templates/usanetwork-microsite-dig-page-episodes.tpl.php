@@ -47,7 +47,7 @@
       <h2 class="content"><?php print $section_title; ?></h2>
     <?php endif; ?>
     <div class="underline content"></div>
-    <?php if (!empty($episodes)): ?>
+    <?php if (!empty($episodes) && count($episodes) > 1): ?>
     <div class="episode-nav content">
       <div id="nav-prev" class="prev btns">Previous</div>
       <ul>

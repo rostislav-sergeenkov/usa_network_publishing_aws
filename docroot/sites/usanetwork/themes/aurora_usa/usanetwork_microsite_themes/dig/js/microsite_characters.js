@@ -90,11 +90,12 @@
           pageName = sectionTitle + ' | ' + pageName;
       s.pageName = siteName + ' : ' + sectionTitle;
       s.prop3 = sectionTitle;
-      s.prop4 = 'Profile Page';
+      s.prop4 = 'Profile Page'; // This is intentional per Loretta
       s.prop5 = siteName + ' : ' + sectionTitle;
       if (itemTitle != '') {
         pageName = itemTitle + ' | ' + pageName;
         s.pageName += ' : ' + itemTitle;
+        s.prop5 += ' : ' + itemTitle;
       }
       $('title').text(pageName);
 
@@ -133,14 +134,16 @@
             nextItemId = nextItem.attr('id'),
             nextItemNum = nextItem.index(),
             nextCharacterId = (nextItemId != null) ? nextItemId.replace('nav-', '') : null,
-            nextCharacterClass = (nextItemId != null) ? nextItemId.replace('#', '') : null,
+            nextItemTitle = (nextCharacterId != null) ? $('#' + nextCharacterId + ' > h3').text() : '',
             nextCharacterInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '',
             oppositeSign = (direction == 'next') ? '' : '-',
             activeSection = $('#microsite #sections > .active').attr('id');
+        if (nextItemTitle == '') nextItemTitle = $('#' + nextCharacterId + ' > h1').text();
 
         if (nextCharacterId && currentCharacterId) {
+          // if user clicked same character as already being shown -- especially in the Meet the Cast carousel
           if (nextCharacterId == currentCharacterId) {
             $('#microsite #characters .' + nextCharacterId).addClass('active');
 
@@ -150,7 +153,7 @@
               Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
             }
             else {
-              Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
+              Drupal.behaviors.microsite_characters.micrositeSetOmnitureData(nextItemTitle);
               Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
             }
 
@@ -158,12 +161,12 @@
             navItems.find('li.disabled').removeClass('disabled');
             $('#characters-content').css('overflow-y', 'auto');
           }
+          // else switch chararcters
           else {
             if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
             // stop quotation animations and hide quotes
-            Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
-            $('#microsite #characters .quotes').fadeOut(1000);
+            $('#microsite #characters .quotes').removeClass('active').fadeOut(1000);
 
             // prepare next or previous background and character-info
             $('#microsite #characters .' + nextCharacterId).addClass(direction);
@@ -188,15 +191,12 @@
                     Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
                   }
                   else {
-                    Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
+                    Drupal.behaviors.microsite_characters.micrositeSetOmnitureData(nextItemTitle);
                     Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
                   }
 
                   // start quotation animations and show quotes
-                  Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-                  $('#microsite #characters .quotes').removeClass('active');
-                  $('#microsite #characters .quotes.' + nextCharacterClass).addClass('active').fadeIn(1000);
-//                  Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
+                  Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.' + nextCharacterId);
 
                   // remove disabled
                   navItems.find('li.disabled').removeClass('disabled');
@@ -204,6 +204,7 @@
                 });
               });
             }
+            // else window width not less than 875
             else {
               $('#character-info li.' + direction).css('top', '-40px');
               // animate active character-info
@@ -228,15 +229,12 @@
                       Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
                     }
                     else {
-                      Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
+                      Drupal.behaviors.microsite_characters.micrositeSetOmnitureData(nextItemTitle);
                       Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
                     }
 
                     // start quotation animations and show quotes
-                    Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-                    $('#microsite #characters .quotes').removeClass('active');
-                    $('#microsite #characters .quotes.' + nextCharacterClass).addClass('active').fadeIn(1000);
-//                    Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
+                    Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.' + nextCharacterId);
 
                     // remove disabled
                     navItems.find('li.disabled').removeClass('disabled');

@@ -95,7 +95,7 @@
         });
 
         // Click to close button when show-info-block open
-        $('.show-info-block .close-button').click(function() {
+        $('.close-button').click(function() {
           var item = $(this).closest('li');
 
           Drupal.behaviors.global_carousels.showClose(item);

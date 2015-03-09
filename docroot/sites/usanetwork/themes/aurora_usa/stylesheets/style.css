@@ -9790,6 +9790,42 @@ footer h2 {
   position: relative;
   width: 100%;
 }
+@media (min-width: 769px) {
+  .shows-block .show-carousel > ul > li > .node:before {
+    left: auto;
+    right: 0;
+    width: 7px;
+  }
+}
+.shows-block .show-carousel > ul > li img.desktop {
+  webkit-transition: all 0.5s ease-out 0.3s;
+  -moz-transition: all 0.5s ease-out 0.3s;
+  -o-transition: all 0.5s ease-out 0.3s;
+  transition: all 0.5s ease-out 0.3s;
+}
+.shows-block .show-carousel > ul > li img.mobile {
+  display: none;
+}
+@media (min-width: 769px) {
+  .shows-block .show-carousel > ul > li:not(.active) > .node:hover:before {
+    -webkit-transition: width 0.5s ease-out 0.3s;
+    -moz-transition: width 0.5s ease-out 0.3s;
+    -o-transition: width 0.5s ease-out 0.3s;
+    transition: width 0.5s ease-out 0.3s;
+    width: 15px;
+  }
+  .shows-block .show-carousel > ul > li:not(.active) > .node:hover .desktop {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+@media (min-width: 769px) {
+  .shows-block .show-carousel > ul > li.active > .node:before {
+    width: 15px;
+  }
+}
 @media (max-width: 1024px) {
   .shows-block {
     padding: 40px;
@@ -9839,11 +9875,37 @@ footer h2 {
     content: "\e60a";
   }
 }
+@media (min-width: 769px) {
+  .shows-block .carousel ul li.active a.close-button {
+    display: block;
+  }
+}
 .shows-block .carousel ul li a.show-open {
   height: 100%;
   overflow: hidden;
   position: relative;
   width: 310px;
+}
+.shows-block .carousel ul li a.close-button {
+  display: none;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 15px;
+  z-index: 3;
+}
+.shows-block .carousel ul li a.close-button:after {
+  color: #ffffff;
+  content: "\e607";
+  display: block;
+  font-family: "ico-font";
+  font-size: 14px;
+  margin-right: -7px;
+  margin-top: -7px;
+  position: absolute;
+  right: 50%;
+  top: 50%;
 }
 .shows-block .carousel ul li .meta-wrapper {
   background: none;
@@ -9884,7 +9946,6 @@ footer h2 {
   background: #000000;
   bottom: 0;
   height: 100%;
-  margin-left: 10px;
   opacity: 0.6;
   overflow: hidden;
   position: absolute;
@@ -10010,6 +10071,9 @@ footer h2 {
   .shows-block .show-carousel > ul > li img.desktop {
     display: none;
   }
+  .shows-block .show-carousel > ul > li img.mobile {
+    display: block;
+  }
   .shows-block .show-carousel > ul > li a.show-open {
     height: 100%;
     width: 100%;
@@ -10082,33 +10146,6 @@ footer h2 {
     left: 0px;
     position: relative;
     width: 100%;
-    display: none;
-  }
-}
-.shows-block .show-info-block .close-button {
-  display: block;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background-image: url('../images/sprites-seef14b3c82.png');
-  background-position: 0 -1396px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 21px;
-  width: 21px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .shows-block .show-info-block .close-button {
-    background-image: url('../images/sprites-retina-s8a084e9f88.png');
-    background-size: 65px 1462.5px;
-    background-position: 0 -1352px;
-    height: 21px;
-    width: 21px;
-  }
-}
-@media (max-width: 768px) {
-  .shows-block .show-info-block .close-button {
     display: none;
   }
 }

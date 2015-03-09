@@ -4,6 +4,7 @@
  */
 ?>
 <div class="node node-usanetwork-promo show-color-border<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?>">
+  <a class="close-button" href="#"></a>
   <a class="show-open" href="javascript:void(0)">
     <div class="meta-wrapper">
       <div class="meta-back"></div>
@@ -32,7 +33,6 @@
     <?php endif; ?>
   </a>
   <div class="show-info-block">
-    <a class="close-button" href="#"></a>
     <div class="show-link">
       <?php if (!empty($show_url)): ?>
         <a class="show-color<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?> hover-avail" href="<?php print $show_url; ?>"><?php print t('Show Page'); ?></a>

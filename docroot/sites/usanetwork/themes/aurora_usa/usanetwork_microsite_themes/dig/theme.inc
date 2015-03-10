@@ -129,6 +129,14 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           'quiz_html' => NULL,
           'nid' => NULL,
         ),
+        'quizzes_nav' => array(
+          0 => array(
+            'nid' => NULL,
+            'title' => NULL,
+            'url' => NULL,
+            'cover_img' => NULL,
+          ),
+        ),
       ),
     ),
     'usanetwork_microsite_dig_page_videos' => array(

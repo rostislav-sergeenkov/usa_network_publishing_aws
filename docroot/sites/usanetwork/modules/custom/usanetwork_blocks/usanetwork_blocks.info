@@ -15,13 +15,6 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[menu_custom][] = menu-apps-services
-features[menu_links][] = menu-apps-services_character-arcade:http://www.characterarcade.com
-features[menu_links][] = menu-apps-services_characters-unite:http://www.charactersunite.com
-features[menu_links][] = menu-apps-services_live-tv:videos/live
-features[menu_links][] = menu-apps-services_movies:node/51
-features[menu_links][] = menu-apps-services_shop:http://www.nbcuniversalstore.com/?v=usa
-features[menu_links][] = menu-apps-services_usa-now-viewing-apps:node/37016
-features[menu_links][] = menu-apps-services_viewing-schedule:schedule
 features[variable][] = usanetwork_social_links
 features[views_view][] = usa_nav
 project path = sites/usanetwork/modules/custom

@@ -2,8 +2,6 @@
 
 define('USANETWORK_SEEIT_DEFAULT_URL', 'https://seeitstage.sv.comcast.com/external/embedded/seeit-remind.js');
 
-include_once 'usanetwork.features.inc';
-
 /**
  * Implementation of hook_permission().
  */

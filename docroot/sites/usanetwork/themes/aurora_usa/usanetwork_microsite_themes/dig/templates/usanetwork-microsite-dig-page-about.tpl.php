@@ -39,24 +39,25 @@
   </div>
   <?php endif; ?>
 
-  <?php if (!empty($title) || !empty($description)): ?>
-  <div class="right-pane">
-    <?php if (!empty($h1) && $status == 'active'): ?>
+  <div class="right-pane clearfix">
+    <?php if (!empty($title) || !empty($description)): ?>
+      <?php if (!empty($h1) && $status == 'active'): ?>
       <h1><?php print $h1; ?></h1>
-    <?php elseif (!empty($h1)): ?>
+      <?php elseif (!empty($h1)): ?>
       <h2><?php print $h1; ?></h2>
-    <?php else: ?>
-      <?php if (!empty($title)): ?>
+      <?php else: ?>
+        <?php if (!empty($title)): ?>
         <h2><?php print $title; ?></h2>
+        <?php endif; ?>
+      <div class="underline"></div>
+      <?php endif; ?>
+      <?php if (!empty($description)): ?>
+      <div class="text">
+        <?php print $description ?>
+      </div>
       <?php endif; ?>
     <?php endif; ?>
-    <div class="underline"></div>
-    <div class="text">
-      <?php if (!empty($description)): ?>
-        <?php print $description ?>
-      <?php endif; ?>
-    </div>
     <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_about"></div>
   </div>
-  <?php endif; ?>
 </div>
+

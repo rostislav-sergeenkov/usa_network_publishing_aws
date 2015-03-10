@@ -451,6 +451,7 @@ you can use the generic selector below, but it's slower:
 #microsite section .microsite-section-container .right-pane {
   width: 50%;
   margin-left: auto;
+  padding-bottom: 80px; /* To allow more space for next button */
 }
 #microsite .right-pane h1,
 #microsite .right-pane h2 {

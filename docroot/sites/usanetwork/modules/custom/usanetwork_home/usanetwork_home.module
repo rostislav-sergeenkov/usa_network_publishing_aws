@@ -122,8 +122,26 @@ function _usanetwork_home_featured_carousel() {
 
     _usanetwork_tv_shows_discription_item($homepage_node, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
 
-    $output['description'] = theme('usanetwork_home_carousel_description_item', $description_vars);
+    _usanetwork_tv_shows_discription_item($homepage_node, array(
+      'title' => 'field_hp_promos_block_title',
+      'caption' => 'field_caption_text',
+      'additional_text' => 'field_additional_text',
+      'logo' => 'field_hp_promo_logo',
+      'background' => 'field_hp_promo_background',
+    ), $description_vars);
 
+    if (!empty($homepage_node->field_hp_promo_logo)) {
+      $logo_field = field_get_items('node', $homepage_node, 'field_hp_promo_logo');
+
+      $description_vars['logo'] = file_create_url($logo_field[0]['uri']);
+    }
+
+    if (!empty($homepage_node->field_hp_promo_background)) {
+      $bg_field = field_get_items('node', $homepage_node, 'field_hp_promo_background');
+
+      $description_vars['background'] = file_create_url($bg_field[0]['uri']);
+    }
+    
     $field_hp_promos = field_get_items('node', $homepage_node, 'field_hp_promos');
     if ($field_hp_promos) {
       $i = 0;

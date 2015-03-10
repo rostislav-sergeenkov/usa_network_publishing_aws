@@ -4,10 +4,17 @@
       <div class="schedule-item-wrapper">
         <?php if (!empty($on_now_block_item['on_now'])): ?>
           <div class="schedule-item">
-            <div class="time"><span><?php print t('On now'); ?></span></div>
+            <div class="time">
+              <span><?php print t('On now'); ?></span>
+              <div class="watch-now"><?php print t('Watch now'); ?></div>
+            </div>
             <div class="episode-info">
               <?php if (!empty($on_now_block_item['on_now']['show_title']) && !empty($on_now_block_item['on_now']['episode_title'])): ?>
-                <div class="episode-show<?php print !empty($on_now_block_item['on_now']['episode_class']) ? (' ' . $on_now_block_item['on_now']['episode_class']) : ''; ?>"><?php print $on_now_block_item['on_now']['show_title']; ?><br><?php print $on_now_block_item['on_now']['episode_title']; ?></div>
+                <div class="episode-show<?php print !empty($on_now_block_item['on_now']['episode_class']) ? (' ' . $on_now_block_item['on_now']['episode_class']) : ''; ?>">
+                  <div class="episode-show-wrapper">
+                    <?php print $on_now_block_item['on_now']['show_title']; ?><br><?php print $on_now_block_item['on_now']['episode_title']; ?>
+                  </div>
+                </div>
               <?php endif; ?>
               <div class="icons-block">
                 <?php if (!empty($on_now_block_item['on_now']['syndicated_url'])): ?>
@@ -30,7 +37,11 @@
             <?php endif; ?>
             <div class="episode-info">
               <?php if (!empty($on_now_block_item['up_next']['show_title']) && !empty($on_now_block_item['up_next']['episode_title'])): ?>
-                <div class="episode-show<?php print !empty($on_now_block_item['up_next']['episode_class']) ? (' ' . $on_now_block_item['up_next']['episode_class']) : ''; ?>"><?php print $on_now_block_item['up_next']['show_title']; ?><br><?php print $on_now_block_item['up_next']['epidose_title']; ?></div>
+                <div class="episode-show<?php print !empty($on_now_block_item['up_next']['episode_class']) ? (' ' . $on_now_block_item['up_next']['episode_class']) : ''; ?>">
+                  <div class="episode-show-wrapper">
+                    <?php print $on_now_block_item['up_next']['show_title']; ?><br><?php print $on_now_block_item['up_next']['epidose_title']; ?>
+                  </div>
+                </div>
               <?php endif; ?>
               <div class="icons-block">
                 <?php if (!empty($on_now_block_item['up_next']['syndicated_url'])): ?>
@@ -51,7 +62,11 @@
           <div class="schedule-item">
             <div class="time"><span><?php print $tonight_block_item['time']; ?></span><br><?php print $tonight_block_item['day_part']; ?></div>
             <div class="episode-info">
-              <div class="episode-show<?php print !empty($tonight_block_item['episode_class']) ? (' ' . $tonight_block_item['episode_class']) : ''; ?>"><?php print $tonight_block_item['show_title']; ?></div>
+              <div class="episode-show<?php print !empty($tonight_block_item['episode_class']) ? (' ' . $tonight_block_item['episode_class']) : ''; ?>">
+                <div class="episode-show-wrapper">
+                  <?php print $tonight_block_item['show_title']; ?>
+                </div>
+              </div>
               <div class="icons-block">
                 <?php if (!empty($tonight_block_item['syndicated_url'])): ?>
                   <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $tonight_block_item['syndicated_url']; ?>"></a>

@@ -21,6 +21,7 @@
   position: relative;
   margin: 0 0 0 190px;
   max-width: none;
+  padding-bottom: 80px; /* To allow more space for the next button */
 }
 #microsite #episodes #episode-background li {
   display: none;

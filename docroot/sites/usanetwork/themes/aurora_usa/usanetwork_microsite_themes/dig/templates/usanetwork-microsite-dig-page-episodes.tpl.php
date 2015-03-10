@@ -34,7 +34,7 @@
 <?php endif; ?>
 <!-- end backgounds -->
 
-<div id="episode-inner-container">
+<div id="episode-inner-container" class="clearfix">
   <!-- right pane -->
   <div id="right-pane-bg"></div>
 

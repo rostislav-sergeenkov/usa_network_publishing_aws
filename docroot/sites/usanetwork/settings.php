@@ -36,6 +36,19 @@ if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
 }
 
+if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
+  $prod_include = '/var/www/site-php/usanetwork/D7-usanetwork-settings.inc';
+  if (file_exists($prod_include)) {
+    include($prod_include);
+  }
+  else {
+    // fallback behavior, e.g., a 404 page
+  }
+}
+elseif (file_exists('/var/www/site-php')) {
+  require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
+}
+
 // Next, determine the environment we're in.  Environment types (qa, acceptance,
 // stage and prod) are defined in project-config.yml.
 $conf['environment_indicator_overwrite'] = TRUE;
@@ -140,6 +153,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     break;
 
   case 'prod':
+  case 'edit':
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'LIVE';
     $conf['environment_indicator_overwritten_color'] = '#990000';
@@ -149,6 +163,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
     $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/default/files-private';
+    $conf['plupload_temporary_uri'] = $conf['file_private_path'] . '/tmp';
 
     // Memchache settings.
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';

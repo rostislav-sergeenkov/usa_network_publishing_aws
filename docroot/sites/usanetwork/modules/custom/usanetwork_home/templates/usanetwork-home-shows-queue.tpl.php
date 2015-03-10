@@ -5,8 +5,6 @@
 ?>
 <div class="shows-block">
   <div class="carousel-description-item start">
-    <a href="javascript:void(0)" class="description-button"></a>
-
     <div class="description-wrapper">
       <div class="description-block">
         <?php if (!empty($caption)): ?>

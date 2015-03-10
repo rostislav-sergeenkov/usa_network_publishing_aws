@@ -192,7 +192,7 @@ On page load, only the first promo in each spot will be displayed.',
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Featured',
+    'label' => 'Featured-Themed',
     'weight' => '7',
     'children' => array(
       0 => 'field_hp_promos',
@@ -203,7 +203,7 @@ On page load, only the first promo in each spot will be displayed.',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Featured',
+      'label' => 'Featured-Themed',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',

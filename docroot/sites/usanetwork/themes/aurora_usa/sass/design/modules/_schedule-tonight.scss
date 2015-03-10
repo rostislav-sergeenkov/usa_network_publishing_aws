@@ -53,7 +53,7 @@
     }
     &.on-now {
       left: 100%;
-      margin-left: -240px;
+      margin-left: -120px;
     }
     a {
       background: $schedule-on-now;
@@ -71,6 +71,7 @@
       text-transform: uppercase;
       width: 120px;
       &.disabled {
+        display: none !important;
         background: transparent;
         cursor: default;
       }
@@ -100,12 +101,25 @@
       }
     }
   }
+  .episode-show{
+    padding-left: 22px;
+    &:before{
+      width: 7px;
+    }
+  }
+  .icons-block{
+    margin-left: 22px;
+    margin-top: 10px;
+  }
   .schedule-block {
     float: left;
     height: 120px;
     @include clear();
     &.on-tonight {
-      margin-left: 240px;
+      margin-left: 195px;
+      @include breakpoint($bp-1024-width) {
+        margin-left: 180px;
+      }
       .schedule-item {
         float: left;
         margin-top: 25px;
@@ -121,7 +135,7 @@
           }
         }
         &:first-child {
-          margin-left: 10%;
+          //margin-left: 10%;
           @include breakpoint($bp-1280-width) {
             margin-left: 0;
           }
@@ -134,7 +148,7 @@
       }
     }
     &.on-now {
-      margin-right: 240px;
+      margin-right: 120px;
       .schedule-item-wrapper {
         @include clear;
         text-align: right;
@@ -216,12 +230,17 @@
     .episode-show {
       height: 30px;
       line-height: 1.2;
-      max-width: 130px;
+      max-width: 152px;
       margin-bottom: 10px;
       overflow: hidden;
       text-overflow: ellipsis;
       @include breakpoint($bp-1280-width) {
         margin-bottom: 5px;
+      }
+      & .episode-show-wrapper{
+        display: table-cell;
+        height: 30px;
+        vertical-align: middle;
       }
     }
     .icons-block {

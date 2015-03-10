@@ -28,14 +28,3 @@ function usanetwork_home_update_7212() {
     }
   }
 }
-
-/**
- * Remove old field instance
- */
-function usanetwork_home_update_7213() {
-  $field_instance = field_info_instance('node', 'field_hp_content_carousel', 'usa_homepage');
-
-  if ($field_instance) {
-    field_delete_instance($field_instance);
-  }
-}

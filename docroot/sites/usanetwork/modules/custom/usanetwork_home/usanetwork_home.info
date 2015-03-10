@@ -2,7 +2,7 @@ name = usanetwork_home
 description = homepage content type and custom tools; global nav blocks
 core = 7.x
 package = USA Network
-version = 7.x-2.13.14
+version = 7.x-2.12.14
 project = usanetwork_home
 
 dependencies[] = auto_nodetitle

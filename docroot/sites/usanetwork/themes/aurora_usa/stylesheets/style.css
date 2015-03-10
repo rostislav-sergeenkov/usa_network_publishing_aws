@@ -18682,6 +18682,11 @@ yx-axis
   position: relative;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
+  opacity: 0.5;
+  -moz-opacity: 0.5;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  background-color: #000000;
   -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
   -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
   -o-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
@@ -18699,7 +18704,10 @@ yx-axis
   }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:hover {
-  opacity: 0.5;
+  opacity: 0.2;
+  -moz-opacity: 0.2;
+  filter: alpha(opacity=20);
+  -khtml-opacity: 0.2;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:after {
   color: #ffffff;

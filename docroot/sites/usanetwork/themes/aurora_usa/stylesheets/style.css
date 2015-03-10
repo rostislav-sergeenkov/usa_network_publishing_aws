@@ -20472,7 +20472,7 @@ yx-axis
 }
 .schedule-on-tonight .schedule-buttons.on-now {
   left: 100%;
-  margin-left: -240px;
+  margin-left: -120px;
 }
 .schedule-on-tonight .schedule-buttons a {
   background: #474747;
@@ -20491,6 +20491,7 @@ yx-axis
   width: 120px;
 }
 .schedule-on-tonight .schedule-buttons a.disabled {
+  display: none !important;
   background: transparent;
   cursor: default;
 }
@@ -20514,6 +20515,16 @@ yx-axis
 .schedule-on-tonight .schedule-buttons a.on-tonight:after {
   content: "\e608";
 }
+.schedule-on-tonight .episode-show {
+  padding-left: 22px;
+}
+.schedule-on-tonight .episode-show:before {
+  width: 7px;
+}
+.schedule-on-tonight .icons-block {
+  margin-left: 22px;
+  margin-top: 10px;
+}
 .schedule-on-tonight .schedule-block {
   float: left;
   height: 120px;
@@ -20524,7 +20535,12 @@ yx-axis
   display: table;
 }
 .schedule-on-tonight .schedule-block.on-tonight {
-  margin-left: 240px;
+  margin-left: 195px;
+}
+@media (max-width: 1024px) {
+  .schedule-on-tonight .schedule-block.on-tonight {
+    margin-left: 180px;
+  }
 }
 .schedule-on-tonight .schedule-block.on-tonight .schedule-item {
   float: left;
@@ -20545,9 +20561,6 @@ yx-axis
     display: none;
   }
 }
-.schedule-on-tonight .schedule-block.on-tonight .schedule-item:first-child {
-  margin-left: 10%;
-}
 @media (max-width: 1280px) {
   .schedule-on-tonight .schedule-block.on-tonight .schedule-item:first-child {
     margin-left: 0;
@@ -20559,7 +20572,7 @@ yx-axis
   }
 }
 .schedule-on-tonight .schedule-block.on-now {
-  margin-right: 240px;
+  margin-right: 120px;
 }
 .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper {
   text-align: right;
@@ -20659,7 +20672,7 @@ yx-axis
 .schedule-on-tonight .schedule-block .episode-show {
   height: 30px;
   line-height: 1.2;
-  max-width: 130px;
+  max-width: 152px;
   margin-bottom: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -20668,6 +20681,11 @@ yx-axis
   .schedule-on-tonight .schedule-block .episode-show {
     margin-bottom: 5px;
   }
+}
+.schedule-on-tonight .schedule-block .episode-show .episode-show-wrapper {
+  display: table-cell;
+  height: 30px;
+  vertical-align: middle;
 }
 .schedule-on-tonight .schedule-block .icons-block:after {
   clear: both;

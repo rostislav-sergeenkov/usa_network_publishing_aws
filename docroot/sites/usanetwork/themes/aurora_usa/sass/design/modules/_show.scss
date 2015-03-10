@@ -411,6 +411,10 @@
     }
     .social-icons {
       background: rgba(0, 0, 0, 0.5);
+      -webkit-box-shadows: 2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+      -moz-box-shadows: 2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+      -o-box-shadows: 2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+      box-shadow: 2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
       display: none;
       position: absolute;
       height: 100%;

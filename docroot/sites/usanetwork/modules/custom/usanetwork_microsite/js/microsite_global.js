@@ -654,13 +654,15 @@
       }
     },
     //Get Thumbnail List
-    micrositeGetThumbnailList: function (url, offset,$toggler) {
+    micrositeGetThumbnailList: function (url, offset, $toggler, categoryName) {
       console.info(url);
       $.ajax({
         type: 'GET',
         url: url,
         dataType: 'json',
         success: function (data) {
+
+          tpController.shareCardCategory = categoryName;
 
           var videoList = data.videos,
               infoMore = data.info.more,
@@ -698,7 +700,9 @@
             $('#thumbnail-list').removeClass('expanded');
           }
 
-          $toggler.removeClass('processed');
+          if ($toggler.length) {
+            $toggler.removeClass('processed');
+          }
 
           thumbnail.unbind('click');
           thumbnail.bind('click', function (e) {
@@ -752,7 +756,7 @@
           $('#thumbnail-list .expandable-toggle li').removeClass('less').addClass('more');
           $('#thumbnail-list').removeClass('expanded');
 
-          Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, offset);
+          Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, offset, null, categoryName);
         }
       });
 
@@ -773,7 +777,7 @@
             var url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + itemList;
 
             if(!$toggler.hasClass('processed')){
-              Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, itemList, $toggler);
+              Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, itemList, $toggler, categoryName);
               $toggler.addClass('processed');
             }else{
               return false;

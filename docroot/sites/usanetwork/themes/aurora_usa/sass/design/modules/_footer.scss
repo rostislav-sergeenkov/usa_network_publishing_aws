@@ -1,5 +1,5 @@
 footer {
-  background: $footer-back;
+  background: $footer-back-home;
   min-width: 300px;
   position: relative;
   width: 100%;
@@ -9,7 +9,7 @@ footer {
     position: relative;
   }
   .legal-and-social {
-    background: $bottom-footer-back;
+    background: $bottom-footer-back-home;
     padding: 20px 45px;
     position: relative;
     width: 100%;
@@ -115,7 +115,7 @@ footer {
           text-decoration: none;
           text-transform: uppercase;
           span {
-            color: $bottom-footer-back;
+            color: $footer-new-show;
           }
           &:hover {
             text-decoration: underline;

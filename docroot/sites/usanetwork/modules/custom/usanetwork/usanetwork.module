@@ -369,11 +369,6 @@ function usanetwork_bottom_footer() {
   }
 
   return theme('usanetwork_item_list', array(
-    'warpper_attributes' => array(
-      'class' => array(
-        'legal-and-social',
-      ),
-    ),
     'title' => NULL,
     'items' => $items,
     'type' => 'ul',

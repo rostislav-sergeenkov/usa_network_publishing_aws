@@ -1,6 +1,10 @@
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
   position: relative;
   .next-button {
+    -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+    -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+    -o-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+    box-shadow: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
     cursor: pointer;
     height: 100%;
     position: absolute;
@@ -13,46 +17,17 @@
     &:hover {
       opacity: 0.5;
     }
-    &:before {
-      color: #ffffff;
-      content: "Coming next";
-      display: block;
-      font-family: $tex-gyreschola-italic;
-      font-size: 20px;
-      left: 50%;
-      line-height: 1.5;
-      margin-left: -50px;
-      position: absolute;
-      text-indent: 0px;
-      text-transform: uppercase;
-      top: 10%;
-      width: 80px;
-      @include breakpoint($bp-1024-width) {
-        font-size: 16px;
-        margin-left: -33px;
-        width: 66px;
-      }
-
-    }
     &:after {
       color: #ffffff;
       content: "\e608";
       display: block;
       font-family: $ico-font;
-      font-size: 14px;
+      font-size: 28px;
       position: absolute;
-      margin-right: -50px;
-      margin-top: 39px;
+      margin-right: -14px;
+      margin-top: -14px;
       right: 50%;
-      top: 10%;
-      @include breakpoint($bp-1024-width) {
-        font-size: 12px;
-        margin-top: 30px;
-        margin-right: -40px;
-      }
-      @include breakpoint($bp-768-width) {
-        margin-right: -33px;
-      }
+      top: 50%;
     }
   }
   .asset-img {

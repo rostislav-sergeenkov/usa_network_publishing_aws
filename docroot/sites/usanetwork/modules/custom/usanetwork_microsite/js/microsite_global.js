@@ -11,42 +11,53 @@
 
   Drupal.behaviors.microsite_scroll = {
 
-    animateQuote: function (listSelector, j, jmax) {
-      var fadeDuration = 1000,
-          tweenDuration = 10000,
-          list = $('#microsite ' + listSelector),
-          listId = list.attr('id');
+    quoteAnimationTimer: null,
 
-      $(listSelector + ' li:eq(' + j + ')')
-          .css('display', 'block')
-          .animate({'opacity': '1'}, fadeDuration)
-          .delay(tweenDuration)
-          .addClass('active')
-          .animate({'opacity': '0'}, fadeDuration, function () {
-            (j == jmax) ? j = 0 : j++;
-            $(this).removeClass('active');
-//usa_debug('*****************\nquotationAnimation\nlistSelector: ' + listSelector + ', listId: ' + listId + ', j: ' + j);
-            if ($('#' + listId).hasClass('active')) {
-              Drupal.behaviors.microsite_scroll.animateQuote(listSelector, j, jmax);
-            }
-          });
+    animateQuote: function (listSelector, k, kmax, tweenDuration) {
+      var list = $('#microsite ' + listSelector),
+          listId = list.attr('id'),
+          listItem = $('#' + listId + ' li:eq(' + k + ')');
+
+      listItem.addClass('active');
+      setTimeout(function(){
+        listItem.removeClass('active');
+      }, tweenDuration);
     },
 
-    quotationAnimation: function (listSelector, initialPageLoad) {
-      initialPageLoad = initialPageLoad || 0;
+    quotationAnimation: function (listSelector) {
       var wwidth = $(window).width(),
           list = $('#microsite ' + listSelector),
           listId = list.attr('id'),
-          numQuotes = list.find('li').length;
+          listFound = (list.length > 0) ? 1 : 0,
+          numQuotes = list.find('li').length
+          kmax = numQuotes - 1,
+          k = 0,
+          fadeDuration = 700,
+          tweenDuration = 7000,
+          totalDuration = fadeDuration + tweenDuration + fadeDuration;
 
-      if (!initialPageLoad) $('#microsite .quotes, #microsite .quotes li').removeClass('active').fadeOut(1000);
-      if (wwidth > 1020) {
-        if (numQuotes > 1) {
-          $('#' + listId).addClass('active').fadeIn(1000);
-          Drupal.behaviors.microsite_scroll.animateQuote(listSelector, 0, (numQuotes - 1));
-        }
-        else if (numQuotes == 1) {
-          $(listSelector + ', ' + listSelector + ' li').addClass('active').fadeIn(1000);
+      $('#microsite .quotes').removeClass('active');
+
+      if (listFound) {
+        $('#' + listId).addClass('active');
+        $('#' + listId + ' li').removeClass('active');
+        if (wwidth > 1020) {
+          if (numQuotes > 1) {
+            // clearInterval
+            if (typeof Drupal.behaviors.microsite_scroll.quoteAnimationTimer != 'undefined') clearInterval(Drupal.behaviors.microsite_scroll.quoteAnimationTimer);
+
+            // show 1st quote
+            Drupal.behaviors.microsite_scroll.animateQuote(listSelector, k, kmax, tweenDuration);
+
+            // setInterval
+            Drupal.behaviors.microsite_scroll.quoteAnimationTimer = setInterval(function(){
+              k = (k >= kmax) ? 0 : k + 1;
+              Drupal.behaviors.microsite_scroll.animateQuote(listSelector, k, kmax, tweenDuration);
+            }, totalDuration);
+          }
+          else if (numQuotes == 1) {
+            $('#microsite ' + listSelector + ', #microsite ' + listSelector + ' li').addClass('active');
+          }
         }
       }
     },
@@ -215,9 +226,6 @@
       //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
       //}
 
-      // stop quotation animations
-      Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
-
       // prep character section background for move
       if ($('#microsite #characters #character-background li').length > 0) {
         $('#microsite #characters #character-background li').css('position', 'absolute');
@@ -229,8 +237,9 @@
 
       // if needed, stop quotation animations and fade them out
       if (currentSectionId == 'about' || currentSectionId == 'characters') {
-        $('#microsite .quotes').removeClass('active').fadeOut(1000);
-        quoteDelay = 1000;
+        if (typeof Drupal.behaviors.microsite_scroll.quoteAnimationTimer != 'undefined') clearInterval(Drupal.behaviors.microsite_scroll.quoteAnimationTimer);
+        $('#microsite .quotes').removeClass('active');
+        quoteDelay = 700;
       }
 
       // now start animating the section
@@ -263,7 +272,7 @@
           Drupal.behaviors.microsite_scroll.quotationAnimation('#about .quotes');
         } else if (nextSectionId == 'characters') {
           var activeCharacterId = $('#microsite #characters #character-info li.active').attr('id');
-          Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.' + activeCharacterId);
+          Drupal.behaviors.microsite_scroll.quotationAnimation('#characters #character-quotes .quotes.' + activeCharacterId);
         }
 
         Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
@@ -854,26 +863,12 @@
       }
 
       var urlItem = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
-      Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-      if (urlItem.section == 'about' || urlItem.section == 'characters') {
-        Drupal.behaviors.microsite_scroll.quotationAnimation('#' + urlItem.section + ' .quotes.active', 1);
+      if (urlItem.section == 'about') {
+        Drupal.behaviors.microsite_scroll.quotationAnimation('#about .quotes');
       }
-
-      // init change url address
-      function changeUrl(anchor, anchorFull) {
-        // if this is IE9, reload the correct page
-        if ($('html.ie9').length > 0) {
-          window.location.href = anchorFull.replace('/home', '');
-          return false;
-        }
-
-        if (anchor != 'home') {
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-        }
-        else {
-          history.pushState({"state": basePath}, basePath, basePath);
-        }
-      };
+      else if (urlItem.section == 'characters') {
+        Drupal.behaviors.microsite_scroll.quotationAnimation('#characters #character-quotes .quotes.active');
+      }
 
       // initialize left nav clicks
       $('.internal a.scroll-link').click(function (e) {

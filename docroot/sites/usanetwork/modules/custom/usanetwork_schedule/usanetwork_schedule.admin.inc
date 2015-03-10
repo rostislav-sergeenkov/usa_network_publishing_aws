@@ -40,6 +40,14 @@ function usanetwork_schedule_settings_form($form, &$form_state) {
     '#default_value' => 0,
   );
 
+  $form['usanetwork_schedule_show_aliases'] = array(
+    '#type' => 'textarea',
+    '#title' => t('TV Show aliases for connecting the service with database'),
+    '#description' => t('Divide aliases by "|" symbol like this: "tv_show_name_from_service | tv_show_name_from_database".'),
+    '#default_value' => variable_get('usanetwork_schedule_show_aliases', array()),
+    '#required' => FALSE,
+  );
+
   $form['program_guide_delete_after_interval']['#options'][0] = t('Never');
   $form['#submit'][] = 'usanetwork_schedule_settings_form_submit';
 

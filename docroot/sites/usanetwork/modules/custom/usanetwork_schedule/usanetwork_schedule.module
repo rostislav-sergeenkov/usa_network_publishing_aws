@@ -22,6 +22,35 @@ function usanetwork_schedule_menu() {
 }
 
 /**
+ * Implementation of hook_ctools_plugin_api().
+ *
+ * Example of a CTools plugin hook that needs to be implemented to make
+ * hook_strongarm() discoverable by CTools and Strongarm. The hook specifies
+ * that the hook_strongarm() returns Strongarm API version 1 style plugins.
+ */
+function usanetwork_schedule_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => 1);
+  }
+}
+
+/**
+ * Implements hook_strongarm().
+ */
+function usanetwork_schedule_strongarm() {
+  $export = array();
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE;
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_schedule_show_aliases';
+  $strongarm->value = 'WWE Monday Night Raw | WWE Raw';
+  $export[$strongarm->name] = $strongarm;
+
+  return $export;
+}
+
+/**
  *  Implements hook_cron().
  */
 function usanetwork_schedule_cron() {
@@ -176,7 +205,10 @@ function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
   $query->orderBy('s.start_time', $order);
   $query->range(0, $limit);
 
-  return $query->execute()->fetchAll();
+  $result = $query->execute()->fetchAll();
+  _usanetwork_schedule_fill_schedule_show_nids($result);
+
+  return $result;
 }
 
 /**
@@ -201,7 +233,68 @@ function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1,
   $query->range(0, $limit);
   $query->orderBy('s.start_time', 'ASC');
 
-  return $query->execute()->fetchAll();
+  $result = $query->execute()->fetchAll();
+  _usanetwork_schedule_fill_schedule_show_nids($result);
+
+  return $result;
+}
+
+/**
+ * Some show titles are differs between Node table and data that returns from the service.
+ * This function is used for correct wrapping with real show name in the additional field
+ * and assigning the correct node id.
+ *
+ * @param $data - result for wrapping that returns from usanetwork_schedule_pull_by_timerange().
+ */
+function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
+  if (empty($data)) {
+    return;
+  }
+
+  $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
+
+  foreach ($data as &$schedule_item) {
+    if (empty($schedule_item->nid) && !empty($show_title_aliases[$schedule_item->show_title])) {
+      $schedule_item->database_show_title = $show_title_aliases[$schedule_item->show_title];
+      $schedule_item->nid = _usanetwork_schedule_find_node($schedule_item->database_show_title);
+    }
+  }
+}
+
+/**
+ * Returns aliases for connecting show names from database with names that returns from the service.
+ */
+function _usanetwork_schedule_get_show_alias_names() {
+  $data = array();
+  $aliases = variable_get('usanetwork_schedule_show_aliases', array());
+
+  if (!empty($aliases)) {
+    $aliases_array = explode("\n", $aliases);
+
+    if (!empty($aliases_array)) {
+      foreach ($aliases_array as $alias) {
+        $matches = array();
+
+        if (preg_match("/^(.+)\s*\|\s*(.+)$/", $alias, $matches)) {
+          $data[$matches[1]] = $matches[2];
+        }
+      }
+    }
+  }
+
+  return $data;
+}
+
+/**
+ * Returns node nid by title.
+ */
+function _usanetwork_schedule_find_node($title) {
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid'));
+  $query->condition('n.title', $title);
+  $query->range(0, 1);
+
+  return $query->execute()->fetchField();
 }
 
 /**

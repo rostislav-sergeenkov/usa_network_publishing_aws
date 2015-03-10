@@ -116,3 +116,13 @@ function usanetwork_schedule_update_7110() {
   variable_set('usanetwork_schedule_last_update', 0);
   usanetwork_schedule_cron();
 }
+
+/**
+ * Updates schedule show aliases
+ */
+function usanetwork_schedule_update_7125() {
+  if (module_exists('features')) {
+    variable_set('usanetwork_schedule_show_aliases', 'WWE Monday Night Raw | WWE Raw');
+      strongarm_flush_caches();
+  }
+}

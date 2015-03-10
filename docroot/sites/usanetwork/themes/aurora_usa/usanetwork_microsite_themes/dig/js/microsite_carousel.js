@@ -182,9 +182,9 @@
 
   var doit;
   $(window).resize(function() {
-    usa_debug('window resize called');
     if (doit == null) {
       doit = setTimeout(function() {
+        usa_debug('window resize called');
         Drupal.behaviors.microsite_carousel.initCarousel();
         clearTimeout(doit);
         doit = null

@@ -866,6 +866,7 @@
         }
       }
 
+      // add quotations if viewing about or characters sections
       var urlItem = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
       if (urlItem.section == 'about') {
         Drupal.behaviors.microsite_scroll.quotationAnimation('#about .quotes');
@@ -1024,8 +1025,25 @@
       });
 
 
-      $(window).bind('resize', function () {
-        setSectionHeight();
+      var resizeTimer;
+      $(window).bind('resize', function() {
+        if (typeof resizeTimer != 'undefined') clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          usa_debug('another resize event');
+          setSectionHeight();
+
+          // clearInterval
+          if (typeof Drupal.behaviors.microsite_scroll.quoteAnimationTimer != 'undefined') clearInterval(Drupal.behaviors.microsite_scroll.quoteAnimationTimer);
+
+          // add quotations if viewing about or characters sections
+          var urlItem = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
+          if (urlItem.section == 'about') {
+            Drupal.behaviors.microsite_scroll.quotationAnimation('#about .quotes');
+          }
+          else if (urlItem.section == 'characters') {
+            Drupal.behaviors.microsite_scroll.quotationAnimation('#characters #character-quotes .quotes.active');
+          }
+        }, 1000);
       });
       window.addEventListener('orientationchange', setSectionHeight);
 

@@ -32,9 +32,6 @@ $conf['acquia_hosting_disable_sa_2014_005_fix'] = TRUE;
 
 // Next, include the environment-agnostic file owned by this project.
 //require_once dirname(__FILE__) . "/settings.site.php";
-if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
-}
 
 if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
   $prod_include = '/var/www/site-php/usanetwork/D7-usanetwork-settings.inc';

@@ -7115,7 +7115,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 
 footer {
-  background: darkgrey;
+  background: #3d3d3d;
   min-width: 300px;
   position: relative;
   width: 100%;
@@ -7126,7 +7126,7 @@ footer .footer-menu-wrapper {
   position: relative;
 }
 footer .legal-and-social {
-  background: #757575;
+  background: #262626;
   padding: 20px 45px;
   position: relative;
   width: 100%;
@@ -7296,7 +7296,7 @@ footer .shows-menu ul li a, footer .app-and-services-menu ul li a {
   text-transform: uppercase;
 }
 footer .shows-menu ul li a span, footer .app-and-services-menu ul li a span {
-  color: #757575;
+  color: #9097a3;
 }
 footer .shows-menu ul li a:hover, footer .app-and-services-menu ul li a:hover {
   text-decoration: underline;
@@ -18682,6 +18682,15 @@ yx-axis
   position: relative;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
+  opacity: 0.5;
+  -moz-opacity: 0.5;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  background-color: #000000;
+  -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+  -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+  -o-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+  box-shadow: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
   cursor: pointer;
   height: 100%;
   position: absolute;
@@ -18695,53 +18704,22 @@ yx-axis
   }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:hover {
-  opacity: 0.5;
-}
-#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:before {
-  color: #ffffff;
-  content: "Coming next";
-  display: block;
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 20px;
-  left: 50%;
-  line-height: 1.5;
-  margin-left: -50px;
-  position: absolute;
-  text-indent: 0px;
-  text-transform: uppercase;
-  top: 10%;
-  width: 80px;
-}
-@media (max-width: 1024px) {
-  #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:before {
-    font-size: 16px;
-    margin-left: -33px;
-    width: 66px;
-  }
+  opacity: 0.2;
+  -moz-opacity: 0.2;
+  filter: alpha(opacity=20);
+  -khtml-opacity: 0.2;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:after {
   color: #ffffff;
   content: "\e608";
   display: block;
   font-family: "ico-font";
-  font-size: 14px;
+  font-size: 28px;
   position: absolute;
-  margin-right: -50px;
-  margin-top: 39px;
+  margin-right: -14px;
+  margin-top: -14px;
   right: 50%;
-  top: 10%;
-}
-@media (max-width: 1024px) {
-  #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:after {
-    font-size: 12px;
-    margin-top: 30px;
-    margin-right: -40px;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:after {
-    margin-right: -33px;
-  }
+  top: 50%;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
   width: 100%;

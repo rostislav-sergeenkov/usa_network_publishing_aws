@@ -1189,7 +1189,6 @@ function _usanetwork_microsite_get_theme_variables($node) {
   if (!empty($node->field_ms_section)) {
     $pages = array();
     $games = array();
-//    $quiz = array();
     $quizzes = array();
 
     // Walk through connected sections
@@ -1263,12 +1262,11 @@ function _usanetwork_microsite_get_theme_variables($node) {
     // Quizzes links.
     $quizzes_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'quizzes');
     $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'quizzes');
-    $current_quizzes_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    $current_quiz_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     $quizzes_count = 0;
     foreach ($quizzes_nodes as $quiz_node) {
-      // While we will output only quizzes.
       $quiz_url = _usanetwork_microsite_get_suggested_url($quiz_node);
-      if ($quiz_node->type == USANETWORK_MICROSITE_QUIZ_NODE_TYPE && $quiz_node->status == NODE_PUBLISHED) {
+      if ($quiz_node->status == NODE_PUBLISHED) {
         $status = '';
         if ((!empty($current_quiz_arg) && $current_quiz_arg == $quiz_url) || (empty($current_quiz_arg) && $quizzes_count == 0)) {
           $status = 'active';
@@ -1628,6 +1626,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       $aspot = reset($section_wrapper->field_usa_tv_a_spot->value());
       if (!empty($aspot)) {
         $aspot_desctop = reset(field_get_items('node', $aspot, 'field_usa_aspot_desktop'));
+        //@todo use function for all metatag outputs.
         $tag_card = array(
           '#type' => 'html_tag',
           '#tag' => 'meta',
@@ -1882,11 +1881,45 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'quizzes':
-      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'quizzes');
-      $head_title = $section_wrapper->field_seo_page_title->value();
-      if (empty($head_title)) {
-        $head_title = t('Quizzes | ' . $title . ' | USA Network');
+      //@todo we can use function for code from below and in other section
+      $head_title = t('Quizzes | ' . $title . ' | USA Network');
+      if(isset($args[4])) {
+        $quiz_node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'quizzes');
+        $head_title = _usanetwork_microsite_set_title_and_description($quiz_node, $head_title);
       }
+      else {
+        $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'quizzes');
+        if (!empty($section_wrapper)) {
+          $section_object = $section_wrapper->value();
+          if (!empty($section_object->field_ms_quiz)) {
+            $quiz_node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_quiz);
+            $head_title = _usanetwork_microsite_set_title_and_description($quiz_node, $head_title);
+          }
+        }
+      }
+      $quiz_wrapper = entity_metadata_wrapper('node', $quiz_node);
+      if (!empty($quiz_node->field_quiz_thumbnail)) {
+        $image_url = $quiz_wrapper->field_quiz_thumbnail->file->url->value();
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => $image_url,
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_episode:image');
+      }
+      $title = $quiz_wrapper->title->value();
+      $tag_title = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:title',
+          'content' => $title,
+        ),
+      );
+      drupal_add_html_head($tag_title, 'microsite_episode:title');
       break;
     default:
       $head_title = t($title . ' | USA Network');
@@ -2143,6 +2176,26 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'quizzes':
           $omniture_prop3 = 'Quizzes/Trivia';
+          if(isset($args[4])) {
+            $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'quizzes');
+            if(!empty($node)) {
+              $omniture_prop5 = $entity->title . ' : Quizzes/Trivia : ' .  $node->title;
+              $omniture_pagename = $entity->title . ' : Quizzes/Trivia : ' . $node->title;
+            }
+          }
+          else {
+            $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'quizzes');
+            if (!empty($section_wrapper)) {
+              $section_object = $section_wrapper->value();
+              if (!empty($section_object->field_ms_quiz)) {
+                $node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_quiz);
+                if (!empty($node)) {
+                  $omniture_prop5 = $entity->title . ' : Quizzes/Trivia : ' .  $node->title;
+                  $omniture_pagename = $entity->title . ' : Quizzes/Trivia : ' . $node->title;
+                }
+              }
+            }
+          }
           break;
       }
       if (!empty($omniture_prop3)) {

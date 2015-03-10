@@ -700,7 +700,7 @@
             $('#thumbnail-list').removeClass('expanded');
           }
 
-          if ($toggler.length) {
+          if ($toggler) {
             $toggler.removeClass('processed');
           }
 

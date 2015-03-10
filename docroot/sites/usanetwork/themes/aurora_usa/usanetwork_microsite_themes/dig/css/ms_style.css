@@ -397,7 +397,7 @@ you can use the generic selector below, but it's slower:
   float: left;
 }
 #microsite #characters .quotes,
-#microsite .left-pane .quotes {
+#microsite #about .quotes {
   position: relative;
   top: 0;
   left: 0;
@@ -408,6 +408,15 @@ you can use the generic selector below, but it's slower:
   text-transform: uppercase;
   text-shadow: 1px 1px 3px #000;
   text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity 0.7s ease;
+  -moz-transition: opacity 0.7s ease;
+  -o-transition: opacity 0.7s ease;
+  transition: opacity 0.7s ease;
+}
+#microsite #characters .quotes.active,
+#microsite #about .quotes.active {
+  opacity: 1;
 }
 #microsite #about .quotes {
   margin-top: -4px;
@@ -422,8 +431,12 @@ you can use the generic selector below, but it's slower:
   position: absolute;
   top: 0;
   left: 6%;
-  opacity: 0;
   width: 88%;
+  opacity: 0;
+  -webkit-transition: opacity 0.7s ease;
+  -moz-transition: opacity 0.7s ease;
+  -o-transition: opacity 0.7s ease;
+  transition: opacity 0.7s ease;
 }
 #microsite #characters #character-quotes .quotes.active li.active,
 #microsite .left-pane .quotes li.active {

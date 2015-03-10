@@ -20,11 +20,11 @@
 
   <?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
   <div class="left-pane">
-    <div id="about-quotes" class="quotes active">
+    <div id="about-quotes" class="quotes">
       <ul>
         <?php foreach ($about_quotations as $about_quotation_key => $about_quotation): ?>
           <?php if (!empty($about_quotation['quote']) && !empty($about_quotation['source'])): ?>
-            <li id="quote<?php print $about_quotation_key; ?>" <?php if ($about_quotation_key == 0): print ' class="active"'; endif; ?>>
+            <li id="quote<?php print $about_quotation_key; ?>">
               <?php if (!empty($about_quotation['quote'])): ?>
                 <div class="quote"><?php print $about_quotation['quote']; ?></div>
               <?php endif; ?>

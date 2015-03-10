@@ -38,10 +38,10 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/microcite/endcard/related/%node/%'] = array(
+  $items['ajax/microcite/endcard/related/%node/%/%'] = array(
     'title' => 'Related items',
     'page callback' => 'usanetwork_microsite_endcard_related_items',
-    'page arguments' => array(4, 5),
+    'page arguments' => array(4, 5, 6),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
@@ -761,22 +761,13 @@ function _usanetwork_microsite_get_suggested_video_url($video_file) {
  * Renders videos page.
  */
 function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
-  $section_object = $section_wrapper->value();
   $theme_variables = array();
-  // Get videos automatically.
-  if (isset($section_object->field_video_adding_type)) {
-    $auto = $section_wrapper->field_video_adding_type->value();
-    if (!empty($auto) && $files_array =_usanetwork_microsite_get_related_videos_for_microsite($node)) {
-      $section_wrapper->field_ms_videos->set($files_array);
-    }
-  }
-  if (!empty($section_object->field_ms_videos)) {
-    $video_files = $section_wrapper->field_ms_videos->value();
+  $video_files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+  if (!empty($video_files)) {
     // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
     if (!is_array($video_files)) {
       $video_files = array($video_files);
     }
-
     $show_in_player = 0;
     $first_output_id = NULL;
 
@@ -1884,7 +1875,7 @@ function _usanetwork_microsite_get_first_published_item($entity_wrapper) {
  * Menu callback for related items.
  *
  */
-function  usanetwork_microsite_endcard_related_items($node, $guid) {
+function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NULL) {
   $items = array();
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
 
@@ -1894,6 +1885,9 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
     $current_episode = NULL;
 
     foreach ($files as $related_file) {
+      if ($filter && $filter != USANETWORK_MICROSITE_ALL_VIDEOS && $filter != _usanetwork_microsite_get_video_category($related_file)) {
+        continue;
+      }
       if ($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
         $video_account = _media_theplatform_mpx_get_account_data($related_file->mpx_video_data['parent_account']);
         $account_id = $video_account->account_pid;
@@ -2724,7 +2718,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
       foreach($query_results as $query_result) {
         $files_array[] = $query_result->fid;
       }
-      cache_set($cache_name, $files_array, 'cache', REQUEST_TIME + 60*60);
+      cache_set($cache_name, $files_array, 'cache', REQUEST_TIME + 60 * 60);
       return $files_array;
     }
   }

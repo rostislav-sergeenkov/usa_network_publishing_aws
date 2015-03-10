@@ -489,9 +489,15 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
 
 
 /* CHARACTERS SECTION MEDIA QUERY START */
+@media (min-width: 1181px) {
+  #microsite #about-content {
+    background-position: 0 75px;
+  }
+}
+
 @media (max-width: 1180px) {
   #microsite #about section {
-    background-position: -150px 0;
+    background-position: -150px 75px;
   }
 }
 

@@ -807,6 +807,10 @@ function _usanetwork_microsite_get_rendered_quiz($node) {
 function usanetwork_microsite_get_quiz($node) {
   return array(
     'nid' => $node->nid,
+    'title' => $node->title,
+    'quiz_type' => $node->field_quiz_type['und'][0]['value'],
+    'quiz_show' => $node->field_show['und'][0]['target_id'], // @TODO: Get the show name from this target_id!
+    'calc_method' => $node->field_quiz_calculation['und'][0]['value'],
     'quiz_html' => _usanetwork_microsite_get_rendered_quiz($node),
   );
 }

@@ -216,6 +216,9 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
   margin: 0 0 0 190px;
   max-width: none;
 }
+#microsite #characters #character-inner-container {
+  padding-bottom: 80px; /* To allow more space for next button */
+}
 #microsite #characters #character-background li {
   display: none;
   width: calc(100% - 10px); /* Subtract scrollbar width from overall width so user can still grab and move scrollbar */
@@ -489,9 +492,15 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
 
 
 /* CHARACTERS SECTION MEDIA QUERY START */
+@media (min-width: 1181px) {
+  #microsite #about-content {
+    background-position: 0 75px;
+  }
+}
+
 @media (max-width: 1180px) {
   #microsite #about section {
-    background-position: -150px 0;
+    background-position: -150px 75px;
   }
 }
 

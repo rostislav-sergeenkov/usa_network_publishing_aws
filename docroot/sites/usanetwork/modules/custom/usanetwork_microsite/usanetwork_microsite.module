@@ -141,6 +141,25 @@ function usanetwork_microsite_library_alter(&$libraries, $module) {
 }
 
 /**
+ * Implements hook_entity_info_alter().
+ */
+function usanetwork_microsite_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['microsite_output'] = array(
+    'label' => t('Microcite output'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function usanetwork_microsite_preprocess_node(&$variables) {
+  if($variables['view_mode'] == 'microsite_output') {
+    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__microsite_output';
+  }
+}
+
+/**
  * Microsite node rendering callback.
  */
 function usanetwork_microsite_page_callback($entity_type, $node) {
@@ -816,12 +835,18 @@ function _usanetwork_microsite_get_rendered_quiz($node) {
 }
 
 function usanetwork_microsite_get_quiz($node) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $show = $node_wrapper->field_show->value();
+  $show_name = '';
+  if (!empty($show)) {
+    $show_name = $show->title;
+  }
   return array(
-    'nid' => $node->nid,
-    'title' => $node->title,
-    'quiz_type' => $node->field_quiz_type['und'][0]['value'],
-    'quiz_show' => $node->field_show['und'][0]['target_id'], // @TODO: Get the show name from this target_id!
-    'calc_method' => $node->field_quiz_calculation['und'][0]['value'],
+    'nid' => $node_wrapper->nid->value(),
+    'title' => $node_wrapper->title->value(),
+    'quiz_type' => $node_wrapper->field_quiz_type->value(),
+    'quiz_show' => $show_name,
+    'calc_method' => $node_wrapper->field_quiz_calculation->value(),
     'quiz_html' => _usanetwork_microsite_get_rendered_quiz($node),
   );
 }

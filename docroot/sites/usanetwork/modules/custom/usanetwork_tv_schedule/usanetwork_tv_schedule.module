@@ -967,7 +967,6 @@ function usanetwork_tv_schedule_schedule_page() {
   if (!empty($filter_show_nid)) {
     $filter_show_node = node_load($filter_show_nid);
   }
-  
   $theme_variables = array(
     'filter' => array(
       'show_name' => array(

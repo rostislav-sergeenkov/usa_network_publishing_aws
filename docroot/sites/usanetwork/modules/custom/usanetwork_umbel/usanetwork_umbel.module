@@ -19,38 +19,25 @@ function usanetwork_umbel_menu() {
   return $items;
 }
 
-
-///**
-// * Implements hook_init().
-// */
-//function usanetwork_umbel_init() {
-//  drupal_add_js('_satellite.pageBottom();', array('type' => 'inline', 'scope' => 'footer', 'every_page' => TRUE, 'preprocess' => FALSE));
-//}
-
 /**
  * Implements hook_page_alter().
  */
-function usanetwork_umbel_alter(&$page) {
-
-  $footer = '_umbel.push({"type":"send","name":"action.tag","value": ["<Show Name>","<Content Type>", "<Title>"]});';
-  
-//  if ($omniture_hooked_vars = module_invoke_all('omniture_variables')) {
-//    if (isset($omniture_hooked_vars['header'])) {
-//      $header = $omniture_hooked_vars['header'];
-//    }
-//    if (isset($omniture_hooked_vars['variables'])) {
-//      $extra_variables_formatted .= _omniture_format_variables($omniture_hooked_vars['variables']);
-//    }
-//    if (isset($omniture_hooked_vars['footer'])) {
-//      $footer = $omniture_hooked_vars['footer'];
-//    }
-//  }
+function usanetwork_umbel_page_alter(&$page) {
+// initiating umbel
+  $footer = "<script type=\"text/javascript\">
+window._umbel = window._umbel || [];
+(function() {
+  var u = document.createElement('script'); u.type = 'text/javascript'; u.async = true;
+  u.src = document.location.protocol + '//tags.api.umbel.com/" . variable_get('usanetwork_umbel_tracking_code', 'iwgdlxrtqfiiortz') . "/w.js?d=' + new   Date().getMonth() + '-' + new Date().getDate();
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(u, s);
+})();
+</script>";
+// set variables from page
+  $footer .= '<script type="text/javascript">
+_umbel.push({"type":"send","name":"action.tag","value": [s.prop10, s.prop4, s.pageName]}); 
+</script>';
 
   $page['page_bottom']['umbel'] =  array(
-//    'variables'=> array(
-//      '#type' => 'markup',
-//      '#markup' => $extra_variables_formatted,
-//    ),
     'footer'=> array(
       '#type' => 'markup',
       '#markup' => $footer,

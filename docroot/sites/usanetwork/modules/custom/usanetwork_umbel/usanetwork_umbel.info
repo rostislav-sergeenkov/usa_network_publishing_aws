@@ -4,5 +4,5 @@ core = 7.x
 package = USA Network
 version = 7.x-1.0
 project = usanetwork_umbel
-dependencies[] = omniture
 dependencies[] = sitecatalyst
+scripts[] = js/usanetwork_umbel.js 

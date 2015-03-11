@@ -44,7 +44,7 @@ function usanetwork_schedule_strongarm() {
   $strongarm->disabled = FALSE;
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_schedule_show_aliases';
-  $strongarm->value = 'WWE Monday Night Raw | WWE Raw';
+  $strongarm->value = 'WWE Monday Night Raw|WWE Raw';
   $export[$strongarm->name] = $strongarm;
 
   return $export;

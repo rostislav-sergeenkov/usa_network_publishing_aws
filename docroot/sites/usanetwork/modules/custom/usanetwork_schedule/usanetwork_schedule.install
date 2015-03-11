@@ -122,7 +122,7 @@ function usanetwork_schedule_update_7110() {
  */
 function usanetwork_schedule_update_7125() {
   if (module_exists('features')) {
-    variable_set('usanetwork_schedule_show_aliases', 'WWE Monday Night Raw | WWE Raw');
+    variable_set('usanetwork_schedule_show_aliases', 'WWE Monday Night Raw|WWE Raw');
       strongarm_flush_caches();
   }
 }

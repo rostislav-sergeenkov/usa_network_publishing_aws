@@ -200,6 +200,8 @@ On page load, only the first promo in each spot will be displayed.',
       2 => 'field_hp_promos_block_title',
       3 => 'field_caption_text',
       4 => 'field_additional_text',
+      5 => 'field_hp_promo_logo',
+      6 => 'field_hp_promo_background',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

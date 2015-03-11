@@ -120,8 +120,6 @@ function _usanetwork_home_featured_carousel() {
       'additional_text' => t('Episodes, clips & photos'),
     );
 
-    _usanetwork_tv_shows_discription_item($homepage_node, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
-
     _usanetwork_tv_shows_discription_item($homepage_node, array(
       'title' => 'field_hp_promos_block_title',
       'caption' => 'field_caption_text',
@@ -141,6 +139,8 @@ function _usanetwork_home_featured_carousel() {
 
       $description_vars['background'] = file_create_url($bg_field[0]['uri']);
     }
+
+    $output['description'] = theme('usanetwork_home_carousel_description_item', $description_vars);
     
     $field_hp_promos = field_get_items('node', $homepage_node, 'field_hp_promos');
     if ($field_hp_promos) {
@@ -166,13 +166,16 @@ function _usanetwork_home_featured_carousel() {
           'caption' => isset($promo_data['caption']) ? $promo_data['caption'] : NULL,
           'title' => $promo_data['title'],
           'more_link' => isset($more_link) ? $more_link : NULL,
+          'class' => ($i == 0) ? 'featured-large' : 'featured-small',
         );
         $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
-        $i++;
-        if ($i % 2 == 0) {
+
+        if ($i % 2 == 0 || $i == 0) {
           $featured_promo_items[] = implode(PHP_EOL, $list_item_promo);
           $list_item_promo = array();
         }
+
+        $i++;
       }
 
       if (count($list_item_promo) == 1) {

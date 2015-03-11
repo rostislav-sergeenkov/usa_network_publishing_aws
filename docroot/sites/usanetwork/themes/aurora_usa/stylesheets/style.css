@@ -9807,14 +9807,43 @@ footer h2 {
   display: none;
 }
 @media (min-width: 769px) {
-  .shows-block .show-carousel > ul > li:not(.active) > .node:hover:before {
-    -webkit-transition: width 0.5s ease-out 0.3s;
-    -moz-transition: width 0.5s ease-out 0.3s;
-    -o-transition: width 0.5s ease-out 0.3s;
-    transition: width 0.5s ease-out 0.3s;
+  .shows-block .show-carousel > ul > li.active > .node:before {
+    -webkit-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+    -moz-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+    -o-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+    box-shadow: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
     width: 18px;
   }
-  .shows-block .show-carousel > ul > li:not(.active) > .node:hover .desktop {
+}
+@media (min-width: 769px) {
+  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:before {
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s;
+    width: 18px;
+  }
+  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:after {
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    display: block;
+    color: #ffffff;
+    content: 'open';
+    cursor: pointer;
+    font-family: "avalonregular", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    line-height: 120px;
+    height: 120px;
+    left: 50%;
+    margin-left: -69px;
+    margin-top: -60px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 50%;
+    width: 120px;
+  }
+  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover .desktop {
     opacity: 0.8;
     -moz-opacity: 0.8;
     filter: alpha(opacity=80);
@@ -9823,15 +9852,10 @@ footer h2 {
     -moz-transform: scale(1.05);
     -o-transform: scale(1.05);
     transform: scale(1.05);
-  }
-}
-@media (min-width: 769px) {
-  .shows-block .show-carousel > ul > li.active > .node:before {
-    -webkit-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
-    -moz-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
-    -o-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
-    box-shadow: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
-    width: 18px;
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s;
   }
 }
 @media (max-width: 1024px) {

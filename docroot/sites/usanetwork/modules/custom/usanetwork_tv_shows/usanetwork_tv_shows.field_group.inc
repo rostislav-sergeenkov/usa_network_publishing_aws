@@ -1076,6 +1076,7 @@ function usanetwork_tv_shows_field_group_info() {
       7 => 'group_tv_shows_latest',
       8 => 'group_usa_tv_promo_vids',
       9 => 'group_usa_tv_promo',
+      10 => 'field_tvs_about',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -6,6 +6,7 @@
 
 <?php if (!empty($desktop_url) || !empty($mobile_url)): ?>
   <div id="full-bleed-promo" class="homepage-block">
+    <div class="block-advert"></div>
     <div class="block-content">
       <?php if (!empty($url)): ?>
         <a href="<?php print $url; ?>">
@@ -18,9 +19,8 @@
         <?php if (!empty($mobile_url)): ?>
           <div class="block-content-image hidden mobile-content" data-url="<?php print $mobile_url; ?>"></div>
         <?php endif; ?>
-        <img class="responsive-image hidden" />
+        <img class="responsive-image" />
       </a>
     </div>
-    <div class="block-advert"></div>
   </div>
 <?php endif; ?>

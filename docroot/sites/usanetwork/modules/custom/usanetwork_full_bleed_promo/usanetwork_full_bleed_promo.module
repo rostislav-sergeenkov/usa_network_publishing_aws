@@ -29,7 +29,14 @@ function usanetwork_full_bleed_promo_block_view($delta = '') {
   switch ($delta) {
     case 'usanetwork_fbp_block':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_full_bleed_promo_render_block();
+      $block['content'] = array(
+          '#markup' => _usanetwork_full_bleed_promo_render_block(),
+          '#attached' => array(
+              'js' => array(
+                  path_to_theme('aurora_usa') . '/javascripts/full-bleed-promo.js',
+              ),
+          ),
+      );
       break;
   }
 

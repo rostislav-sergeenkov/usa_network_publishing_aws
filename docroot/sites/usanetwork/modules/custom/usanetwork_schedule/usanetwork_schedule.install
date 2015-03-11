@@ -122,7 +122,10 @@ function usanetwork_schedule_update_7110() {
  */
 function usanetwork_schedule_update_7125() {
   if (module_exists('features')) {
-    variable_set('usanetwork_schedule_show_aliases', 'WWE Monday Night Raw|WWE Raw');
-      strongarm_flush_caches();
+    require_once drupal_get_path('module', 'usanetwork_schedule') . '/usanetwork_schedule.module';
+
+    variable_set('usanetwork_schedule_show_aliases', _usanetwork_schedule_get_default_tvshow_aliases());
+
+    strongarm_flush_caches();
   }
 }

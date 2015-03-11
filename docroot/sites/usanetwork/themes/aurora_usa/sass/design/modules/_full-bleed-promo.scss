@@ -1,29 +1,29 @@
-#full-bleed-promo{
+#full-bleed-promo {
   margin: 0 auto;
   position: relative;
   max-height: 500px;
   max-width: 1650px;
   min-width: 300px;
-  @include breakpoint($bp-768-width){
+  @include breakpoint($bp-768-width) {
     @include clear;
   }
-  .block-content > a{
+  .block-content > a {
     display: block;
     line-height: 0;
     margin-right: 315px;
     max-width: 1350px;
-    @include breakpoint($bp-1600-width){
+    @include breakpoint($bp-1600-width) {
       margin-right: 330px;
     }
-    @include breakpoint($bp-1024-width){
+    @include breakpoint($bp-1024-width) {
       margin-right: 320px;
     }
-    @include breakpoint($bp-640-width){
+    @include breakpoint($bp-640-width) {
       margin-right: 0;
       text-align: center;
     }
   }
-  .block-advert{
+  .block-advert {
     background: #002525;
     height: 250px;
     right: 0;
@@ -31,18 +31,18 @@
     position: absolute;
     top: 50%;
     width: 300px;
-    @include breakpoint($bp-1600-width){
+    @include breakpoint($bp-1600-width) {
       right: 15px;
     }
-    @include breakpoint($bp-1024-width){
+    @include breakpoint($bp-1024-width) {
       right: 10px;
     }
-    @include breakpoint($bp-768-width){
+    @include breakpoint($bp-768-width) {
       float: right;
       margin: 30px 10px 30px 0;
       position: static;
     }
-    @include breakpoint($bp-640-width){
+    @include breakpoint($bp-640-width) {
       display: none;
     }
   }

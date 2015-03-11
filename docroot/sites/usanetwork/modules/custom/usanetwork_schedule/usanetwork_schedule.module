@@ -439,5 +439,7 @@ function usanetwork_schedule_remove_duplicates() {
 function _usanetwork_schedule_get_default_tvshow_aliases() {
   return "WWE Monday Night Raw|WWE Raw
 Law & Order: Special Victims|Law & Order: SVU
-CSI: Crime Scene Investigation|CSI";
+CSI: Crime Scene Investigation|CSI
+DIG (SERIES PREMIERE)|Dig
+LAW & ORDER: CRIMINAL INTENT (S)|Law & Order: Criminal Intent";
 }

@@ -7,7 +7,7 @@
  *  'caption'
  */
 ?>
-<div class="node node-usanetwork-promo show-color-border <?php print $show_code; ?>">
+<div class="node node-usanetwork-promo show-color-border <?php print $show_code; ?><?php print !empty($class) ? (' '.$class) : ''; ?>">
   <a href="<?php print $url; ?>">
     <div class="meta-wrapper">
       <div class="meta-back"></div>

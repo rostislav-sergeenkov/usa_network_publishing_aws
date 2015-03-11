@@ -163,7 +163,7 @@
           vertical-align: top;
           width: 49%;
           @include breakpoint($bp-1280-width) {
-            margin-top: 5px;
+            margin-top: 0;
             &:first-child {
               margin-left: 0;
             }

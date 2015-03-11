@@ -17,22 +17,22 @@
     }
     @include breakpoint($between-769-1024) {
       &.start {
-        margin-left: -370px;
+        margin-left: 200px;
         overflow: hidden;
         &:hover {
           .jcarousel-control-next {
-            left: 330px;
+            right: 160px;
           }
         }
       }
     }
     @include breakpoint($bp-min-1025-width) {
       &.start {
-        margin-left: -355px;
+        margin-left: 250px;
         overflow: hidden;
         &:hover {
           .jcarousel-control-next {
-            left: 295px;
+            right: 190px;
           }
         }
       }
@@ -40,9 +40,12 @@
     ul {
       position: relative;
       li {
-        height: auto;
+        height: 556px;
         position: relative;
         width: 476px;
+        /*&.first {
+          width: 670px;
+        }*/
         @include breakpoint($bp-1024-width) {
           width: 370px;
         }
@@ -63,7 +66,7 @@
         }
         > div {
           &:first-child {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             @include breakpoint($bp-min-1601-width) {
               margin-bottom: 15px;
             }
@@ -211,14 +214,6 @@
             }
           }
         }
-      }
-    }
-  }
-  &.carousel-block-right {
-    .carousel-description-item {
-      right: -300px;
-      @include breakpoint($bp-768-width) {
-        right: auto;
       }
     }
   }

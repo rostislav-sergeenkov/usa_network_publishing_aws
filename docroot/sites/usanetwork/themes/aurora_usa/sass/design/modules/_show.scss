@@ -54,26 +54,6 @@
                 transition: all 0.3s ease-out 0s;
                 width: 18px;
               }
-              &:after {
-                border: 3px solid #ffffff;
-                border-radius: 50%;
-                display: block;
-                color: #ffffff;
-                content: 'open';
-                cursor: pointer;
-                font-family: $avalon-book;
-                font-size: 30px;
-                line-height: 120px;
-                height: 120px;
-                left: 50%;
-                margin-left: -69px;
-                margin-top: -60px;
-                position: absolute;
-                text-align: center;
-                text-transform: uppercase;
-                top: 50%;
-                width: 120px;
-              }
               .desktop {
                 opacity:0.8;
                 -moz-opacity:0.8;
@@ -87,6 +67,32 @@
                 -moz-transition: all 0.3s ease-out 0s;
                 -o-transition: all 0.3s ease-out 0s;
                 transition: all 0.3s ease-out 0s;
+              }
+            }
+          }
+          .show-open {
+            @include breakpoint($bp-min-769-width) {
+              &:hover {
+                &:after {
+                  border: 3px solid #ffffff;
+                  border-radius: 50%;
+                  display: block;
+                  color: #ffffff;
+                  content: 'open';
+                  cursor: pointer;
+                  font-family: $avalon-book;
+                  font-size: 30px;
+                  line-height: 120px;
+                  height: 120px;
+                  left: 50%;
+                  margin-left: -69px;
+                  margin-top: -60px;
+                  position: absolute;
+                  text-align: center;
+                  text-transform: uppercase;
+                  top: 50%;
+                  width: 120px;
+                }
               }
             }
           }

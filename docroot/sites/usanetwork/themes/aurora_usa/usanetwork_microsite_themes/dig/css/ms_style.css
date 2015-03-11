@@ -191,6 +191,10 @@
   -o-animation-fill-mode:forwards;
   animation-fill-mode:forwards;
 }
+.ie9 .fadein {
+  opacity: 1;
+}
+
 /* Animation Times - Time for image to fade in
 ---------------------------------------------------- */
 .fadein-1s {

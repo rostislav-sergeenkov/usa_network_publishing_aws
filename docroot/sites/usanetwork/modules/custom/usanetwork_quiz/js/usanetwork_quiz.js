@@ -272,8 +272,8 @@
         $ads.appendTo($visible.find('.sidebar'));
       }
     },
-    attach: function(context, settings) {
-      var quizes = settings.usanetwork_quiz;
+
+    initQuizzes: function(quizes) {
       for (nid in quizes) {
         var quiz_setting = quizes[nid];
         var $container = $(quiz_setting.container);
@@ -324,6 +324,15 @@
           }
         });
       }
+    },
+
+    attach: function(context, settings) {
+      var quizes = settings.usanetwork_quiz,
+          self = this;
+
+      self.initQuizzes(quizes);
+
+
     }
   };
 })(jQuery);

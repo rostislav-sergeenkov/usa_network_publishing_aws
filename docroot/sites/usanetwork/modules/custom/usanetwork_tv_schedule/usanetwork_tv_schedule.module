@@ -850,6 +850,7 @@ function usanetwork_tv_schedule_schedule_page() {
     'primetime' => t('Primetime'),
   );
 
+  $aliases = _usanetwork_schedule_get_show_alias_names();
   $tv_schedule = usanetwork_tv_schedule_fetch_schedule($sdate);
   $schedule_rows = array();
 
@@ -874,7 +875,19 @@ function usanetwork_tv_schedule_schedule_page() {
       $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
 
       if (empty($show_node)) {
-        continue;
+        if (isset($aliases[$show_name])) {
+          $show_nid = _usanetwork_tv_schedule_get_nid_by_title($aliases[$show_name], 'tv_show');
+
+          if ($show_nid) {
+            $show_node = node_load($show_nid);
+          }
+          else {
+            continue;
+          }
+        }
+        else {
+          continue;
+        }
       }
 
       if (!empty($filter_show_nid) && !empty($show_nid) && $filter_show_nid != $show_nid) {
@@ -954,7 +967,7 @@ function usanetwork_tv_schedule_schedule_page() {
   if (!empty($filter_show_nid)) {
     $filter_show_node = node_load($filter_show_nid);
   }
-
+  
   $theme_variables = array(
     'filter' => array(
       'show_name' => array(

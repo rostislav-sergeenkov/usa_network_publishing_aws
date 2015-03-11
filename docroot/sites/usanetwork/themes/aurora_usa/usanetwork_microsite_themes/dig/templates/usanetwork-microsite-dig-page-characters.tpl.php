@@ -31,19 +31,27 @@
   <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>">&nbsp;</li>
   <?php endforeach; ?>
 </ul>
+<?php endif; ?>
 <!-- end backgounds -->
 
-<div id="character-inner-container">
-<?php /* @TODO: COMMENTING QUOTES FOR NOW ?>
+<div id="character-inner-container" class="clearfix">
+  <!-- right pane -->
+  <div id="right-pane-bg"></div>
+
+  <!-- 728x90 ad -->
+  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
+
   <!-- quotes -->
-  <ul id="quotes">
-    <?php foreach ($people as $person_key => $person): ?>
-    <?php if (!empty($person['quotes'])): ?>
-    <div class="caption">
+  <?php if (!empty($people)): ?>
+    <div id="character-quotes">
       <ul>
-        <?php foreach ($person['quotes'] as $quotation_key => $quotation): ?>
+      <?php foreach ($people as $person_key => $person): ?>
+      <?php if (!empty($person['quotes'])): ?>
+        <li id="quotes-<?php if (!empty($person['id'])) print $person['id']; ?>" class="quotes<?php if (!empty($person['id'])) print ' ' . $person['id']; ?><?php if(!empty($person['status'])) print ' ' . $person['status']; ?>">
+          <ul>
+          <?php foreach ($person['quotes'] as $quotation): ?>
           <?php if (!empty($quotation['quote']) && !empty($quotation['source'])): ?>
-            <li class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($quotation_key == 0) print ' active'; ?>">
+            <li>
               <?php if (!empty($quotation['quote'])): ?>
                 <div class="quote">
                   <?php print $quotation['quote']; ?>
@@ -56,21 +64,15 @@
               <?php endif; ?>
             </li>
           <?php endif; ?>
-        <?php endforeach; ?>
+          <?php endforeach; ?>
+          </ul>
+        </li>
+      <?php endif; ?>
+      <?php endforeach; ?>
       </ul>
     </div>
-    <?php endif; ?>
-    <?php endforeach; ?>
-  </ul>
-<?php */ ?>
   <?php endif; ?>
   <!-- end quotes -->
-
-  <!-- right pane -->
-  <div id="right-pane-bg"></div>
-
-  <!-- 728x90 ad -->
-  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
 
   <!-- characters title and navigation -->
   <div class="right-pane-content">
@@ -107,8 +109,12 @@
             <?php if (!empty($person['preview_image_url'])): ?>
             <img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['preview_image_url']; ?>">
             <?php endif; ?>
-            <?php if (!empty($person['title'])): ?>
-              <h3><?php print $person['title']; ?></h3>
+            <?php if ($person['status'] == 'active' && !empty($h1) && $status == 'active'): ?>
+              <h1><?php print $h1; ?></h1>
+            <?php else: ?>
+              <?php if (!empty($person['title'])): ?>
+                <h3><?php print $person['title']; ?></h3>
+              <?php endif; ?>
             <?php endif; ?>
             <?php if (!empty($person['social'])): ?>
               <div class="character-social">

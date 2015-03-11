@@ -4,7 +4,14 @@ define('USANETWORK_MICROSITE_NODE_TYPE', 'usanetwork_microsite');
 define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
 define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
 define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
-define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_vod_noauth_endcard');
+define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_usa_vod_noauth');
+define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_usa_vod');
+define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
+define('USANETWORK_MICROSITE_GALLERY_NODE_TYPE', 'media_gallery');
+define("USANETWORK_MICROSITE_ALL_VIDEOS", "All videos");
+define("USANETWORK_MICROSITE_FULL_VIDEO", "Full videos");
+define("USANETWORK_MICROSITE_VIDEOS_LIMIT", "12");
+
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -27,22 +34,22 @@ function usanetwork_microsite_menu() {
     'page callback' => 'usanetwork_microsite_get_video_in_player',
     'page arguments' => array(2),
     'access arguments' => array('access content'),
-    'delivery callback' => 'usanetwork_microsite_get_video_in_player_ajax_callback',
+//    'delivery callback' => 'usanetwork_microsite_get_video_in_player_ajax_callback',
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/get-video-in-player/%node/%'] = array(
-    'page callback' => 'usanetwork_microsite_get_video_in_player',
-    'page arguments' => array(2, 3),
-    'access arguments' => array('access content'),
-    'delivery callback' => 'usanetwork_microsite_get_video_in_player_ajax_callback',
-    'type' => MENU_CALLBACK,
-  );
-
-  $items['ajax/microcite/endcard/related/%node/%'] = array(
+  $items['ajax/microcite/endcard/related/%node/%/%'] = array(
     'title' => 'Related items',
     'page callback' => 'usanetwork_microsite_endcard_related_items',
-    'page arguments' => array(4, 5),
+    'page arguments' => array(4, 5, 6),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+  $items['ajax/microcite/get/videos/%node/%/%'] = array(
+    'title' => 'Videos',
+    'page callback' => '_usanetwork_microsite_get_videos',
+    'page arguments' => array(4, 5, 6),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
@@ -106,7 +113,7 @@ function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
   if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
     unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
-    unset($javascript['http://pdk.theplatform.com/pdk/tpPdkController.js']);
+    //unset($javascript['http://pdk.theplatform.com/pdk/tpPdkController.js']);
   }
 }
 
@@ -285,6 +292,7 @@ function _usanetwork_microsite_include_default_js() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.1.3.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.compatibility.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_global.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_angular.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite-tve-player-directive.js', array('scope' => 'footer', 'weight' => -1));
 }
 
@@ -417,6 +425,16 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
     $theme_variables['about_quotations'] = _usanetwork_microsite_get_quotations($section_wrapper->field_quotation);
   }
 
+  $h1 = _usanetwork_microsite_get_h1_tag($section_wrapper);
+  $theme_variables['h1'] = '';
+  $theme_variables['status'] = '';
+  if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
+    $theme_variables['status'] = 'active';
+  }
+  if(!empty($h1)) {
+    $theme_variables['h1'] = $h1;
+  }
+
   return $theme_variables;
 }
 
@@ -444,12 +462,11 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
     $character_count = 0;
     $is_active_slide = FALSE;
     foreach ($person_nodes as $person_node_key => $current_person_node) {
-      if ($current_person_node->current_state != 'published' || empty($current_person_node->status)) {
+      if (empty($current_person_node->status)) {
         continue;
       }
       $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
       $person_names = _usanetwork_microsite_get_person_title_and_role_name($current_person_node);
-      $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_names['person_title'])));
 
       $image_field = $person_node_wrapper->field_person_ms_background->value();
       $background_img = file_create_url($image_field['uri']);
@@ -466,17 +483,18 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
       $character_url = _usanetwork_microsite_get_suggested_character_url($current_person_node);
       $status = '';
       if (empty($current_character) && $character_count == 0) {
+        $current_person = $current_person_node;
         $status = 'active';
         $is_active_slide = TRUE;
       }
       elseif (!empty($current_character) && $current_character == $character_url) {
+        $current_person = $current_person_node;
         $status = 'active';
         $is_active_slide = TRUE;
       }
       $theme_variables['people'][] = array(
-        'id' => $person_id,
+        'id' => $character_url,
         'title' => $person_names['person_title'],
-        'url' => $character_url,
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
@@ -497,11 +515,90 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
     drupal_not_found();
   }
 
+  $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_person, $section_wrapper));
+
+/*
   if (!empty($theme_variables['characters_navigation'])) {
     $theme_variables['characters_navigation'] = implode('', $theme_variables['characters_navigation']);
   }
+*/
 
   $theme_variables['section_title'] = $section_wrapper->field_ms_section_title->value();
+  return $theme_variables;
+}
+
+/**
+ * Renders episodes page.
+ */
+function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
+  module_load_include('inc', 'pathauto', 'pathauto');
+  $section_object = $section_wrapper->value();
+  $is_active_slide_found = FALSE;
+
+  $theme_variables = array(
+    'episodes' => array(),
+    'section_title' => !empty($section_object->field_ms_section_title)
+      ? $section_wrapper->field_ms_section_title->value()
+      : '',
+  );
+
+  $episode_count = 0;
+
+  if (!empty($section_object->field_ms_episode)) {
+    foreach ($section_wrapper->field_ms_episode as $episode_wrapper) {
+      $episode_node = $episode_wrapper->value();
+      $episode_id = str_replace(' ', '-', strtolower($episode_node->title));
+      $status = '';
+      $is_active_slide = FALSE;
+
+      if ($episode_node->status != NODE_PUBLISHED) {
+        continue;
+      }
+
+      $current_episode = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+
+      if (
+        (empty($current_episode) && $episode_count == 0) ||
+        (!empty($current_episode) && $current_episode == $episode_id)
+      ) {
+        $current_episode_node = $episode_node;
+        $is_active_slide = $is_active_slide_found = TRUE;
+        $status = 'active';
+      }
+
+      $preview_image = NULL;
+      if (!empty($episode_node->field_usa_ms_episode_thumb)) {
+        $preview_image = $episode_wrapper->field_usa_ms_episode_thumb->value();
+      }
+      $episode_url = _usanetwork_microsite_get_suggested_url($episode_node);
+      $episode_variables = array(
+        'id' => $episode_url,
+        'title' => $episode_wrapper->title->value(),
+        'optional_h1' => !empty($episode_node->field_seo_h1)
+          ? $episode_wrapper->field_seo_h1->value()
+          : '',
+        'description' => $episode_wrapper->body->value->value(),
+        'background_url' => !empty($episode_node->field_tv_cover_media)
+          ? $episode_wrapper->field_tv_cover_media->file->url->value()
+          : '',
+        'preview_image_url' => !empty($preview_image['uri'])
+          ? image_style_url('media_thumbnail', $preview_image['uri'])
+          : '',
+        'status' => $status,
+      );
+
+      $theme_variables['episodes'][] = $episode_variables;
+
+      $episode_count++;
+    }
+  }
+
+  if (!$episode_count || !$is_active_slide_found) {
+    drupal_not_found();
+  }
+
+  $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_episode_node, $section_wrapper));
+
   return $theme_variables;
 }
 
@@ -523,6 +620,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       $gallery_nodes = array($gallery_nodes);
     }
 
+    //@todo comment this logic.
     $gallery_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     foreach ($gallery_nodes as $current_gallery_node) {
       if($current_gallery_node->status != NODE_PUBLISHED) {
@@ -539,12 +637,14 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       drupal_not_found();
     }
 
+    $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_gallery_node, $section_wrapper));
+
     $gallery_types = array('Episodic Gallery');
     $theme_variables['episodic_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
     $gallery_types = array(
       'Character Gallery',
       'GIF Gallery',
-      0,
+      '0',
     );
     $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
   }
@@ -568,6 +668,7 @@ function usanetwork_microsite_get_rendered_gallery($node) {
   return array(
     'gallery_nid' => $node->nid,
     'title' => $node->title,
+    'h1' => _usanetwork_microsite_get_h1_for_for_node($node),
     'description' => $body_value,
     'rendered' => drupal_render($gallery_view),
   );
@@ -587,7 +688,7 @@ function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $galler
     $gallery_type = $node_wrapper->field_gallery_type->value();
     $image_field = $node_wrapper->field_cover_item->value();
     $gallery_preview_image =  image_style_url('300x250', $image_field['uri']);
-    if($node->status == 1 && in_array($gallery_type, $gallery_types)) {
+    if($node->status == 1 && in_array($gallery_type, $gallery_types, true) !== false) {
       $title = $node->title;
       $cover_img = $gallery_preview_image;
       $items[] = array(
@@ -660,21 +761,45 @@ function _usanetwork_microsite_get_suggested_video_url($video_file) {
  * Renders videos page.
  */
 function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
-  $section_object = $section_wrapper->value();
   $theme_variables = array();
-  if (!empty($section_object->field_ms_videos)) {
-    $video_files = $section_wrapper->field_ms_videos->value();
+  $video_files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+  if (!empty($video_files)) {
     // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
     if (!is_array($video_files)) {
       $video_files = array($video_files);
     }
-
     $show_in_player = 0;
     $first_output_id = NULL;
 
+    $active_filter = USANETWORK_MICROSITE_ALL_VIDEOS;
+    $video_types[$active_filter] = $active_filter;
     $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    // If video section is current, will add itunes app metatag
+    if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
+      usanetwork_microsite_add_itunes_app_metatag();
+    }
+    usanetwork_microsite_full_video_for_mobile_device();
+    if (!empty($video_for_player)) {
+      if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
+        $active_filter = _usanetwork_microsite_get_video_category($video_file);
+      }
+    }
+    // Counting added video files.
+    $count = 0;
+    // How many videos remain.
+    $theme_variables['more_videos'] = 0;
     foreach ($video_files as $v_key => $current_video_file) {
+      // Filter by first video category.
+      $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
+      if ($published) {
+        if ($current_video_type = _usanetwork_microsite_get_video_category($current_video_file)) {
+          $video_types[$current_video_type] = $current_video_type;
+        }
+        if ($active_filter != USANETWORK_MICROSITE_ALL_VIDEOS && $active_filter !== $current_video_type) {
+          continue;
+        }
+      }
       if ($first_output_id === NULL && $published) {
         $first_output_id = $v_key;
       }
@@ -691,40 +816,93 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       }
       $video_account = _media_theplatform_mpx_get_account_data($current_video_file->mpx_video_data['parent_account']);
       $account_id = $video_account->account_pid;
-      $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
+      $player_id = _usanetwork_microsite_define_videoplayer($current_video_file);
+
       $is_full_episode = 'false';
       if($full_episode) {
         $is_full_episode = 'true';
       }
       if ($published) {
-        $theme_variables['videos'][] = array(
-          'fid' => $current_video_file->fid,
-          'url' => $suggested_video_url,
-          'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
-          'account_id' => $account_id,
-          'video_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
-          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
-          'is_full_episode' => $is_full_episode,
-          'state' => $state,
-        );
+        if ($count < USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+          $theme_variables['videos'][] = array(
+            'fid' => $current_video_file->fid,
+            'url' => $suggested_video_url,
+            'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
+            'account_id' => $account_id,
+            'video_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
+            'player_id' => $player_id,
+            'is_full_episode' => $is_full_episode,
+            'state' => $state,
+          );
+          $count++;
+        }
+        else {
+          $theme_variables['more_videos']++;
+        }
       }
     }
-
+    // Create filter menu.
+    if (!empty($video_types) && is_array($video_types)) {
+      $id = 0;
+      foreach ($video_types as $type) {
+        $items[$id] = array('data' => $type, 'class' => array('filter-item'));
+        if ($type == $active_filter) {
+          $items[$id]['class'][] = 'active';
+        }
+        // Set Full video criteria to position two.
+        if ($type == USANETWORK_MICROSITE_FULL_VIDEO && $id > 1) {
+          $buffer = $items[1];
+          $items[1] = $items[$id];
+          $items[$id] = $buffer;
+        }
+        $id++;
+      }
+      $theme_variables['filter_list_active'] = $active_filter;
+      $theme_variables['filter_list'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => array('filter-menu'))));
+    }
     // Get video file.
     $file = $video_files[$show_in_player];
     // Get player variables.
     $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
     $microsite_theme_name = _usanetwork_microsite_get_current_theme_name();
 
+    $menu_items = _usa_auth_prepare_menu_items();
+    $links = array(
+      '#theme' => 'item_list',
+      '#items' => $menu_items,
+      '#attributes' => array('class' => array('tve-header-links', 'inline')),
+      '#prefix' => '<div class="links-wrapper">',
+      '#suffix' => '</div>',
+    );
+
     $theme_variables['in_player'] = array(
-      'url' => !empty($file->filename)
-        ? _usanetwork_microsite_get_suggested_video_url($file)
-        : NULL,
+      'links' => $links
     );
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
-    $theme_variables['video_desc'] = theme($theme_registry_name, array('in_player' => $video_desc));
+    $video_desc = array_merge($video_desc, _usanetwork_microsite_set_status_and_h1_variables($file, $section_wrapper));
+    $theme_variables['video_desc'] = theme($theme_registry_name, $video_desc);
   }
   return $theme_variables;
+}
+
+/*
+ * Heplper function for define correct video player
+ */
+function _usanetwork_microsite_define_videoplayer($file) {
+  $full_episode = _usanetwork_microsite_define_full_episode($file);
+  $auth_episode = _usanetwork_microsite_define_auth($file);
+
+  if ($full_episode) {
+    if ($auth_episode) {
+      $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;
+    } else {
+      $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER;
+    }
+  } else {
+    $player_id = USANETWORK_MICROSITE_USA_PLAYER;
+  }
+
+  return $player_id;
 }
 
 /**
@@ -735,6 +913,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
  */
 function _usanetwork_microsite_set_variables_for_video_description($file) {
   $file_wrapper = entity_metadata_wrapper('file', $file);
+
+  $is_full = _usanetwork_microsite_define_full_episode($file);
 
   return array(
     'title' => !empty($file->field_mpx_title)
@@ -749,25 +929,53 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
     'episode_number' => !empty($file->field_mpx_episode_number)
       ? $file_wrapper->field_mpx_episode_number->value()
       : NULL,
-    'duration' => !empty($file->field_mpx_duration)
-      ? gmdate("H:i:s", $file_wrapper->field_mpx_duration->value())
+    'duration' => (!$is_full)
+      ? ( !empty($file->field_mpx_duration)
+        ? gmdate("H:i:s", $file_wrapper->field_mpx_duration->value())
+        : NULL )
       : NULL,
   );
 }
 
-function usanetwork_microsite_get_video_in_player($node, $fid = NULL) {
+function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay = 'fasle') {
+  global $base_url;
   if(!empty($fid)) {
     $file = file_load($fid);
   }
   else {
     $video_files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
-    $file = reset($video_files);
+    $file = reset($video_files); //@todo get first published video
   }
+
+  //set video player
+  $player_id = _usanetwork_microsite_define_videoplayer($file);
+  $video = theme('pub_mpx_video', array(
+    'file' => $file,
+    'pub_mpx_player_parameters' => array('autoPlay' => $autoplay, 'form' => 'html', 'nid' => $node->nid),
+    'player_id' => $player_id,
+    'pub_mpx_player_url' => $base_url . '/dig/videos/' . _usanetwork_microsite_get_suggested_video_url($file),
+  ));
+
+  //set image for not loggined user
+  $auth_episode = _usanetwork_microsite_define_auth($file);
+  if ($auth_episode) {
+    $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
+    $renderable_image = theme('image', array('path' =>$image['#path']));
+  }
+
+  //set video descriprion
   $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
   $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
-
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
-  return theme($theme_registry_name, array('in_player' => $video_desc));;
+
+  $result = array(
+     'default_image' => isset($renderable_image) ? $renderable_image : '',
+     'player' => $video,
+     'description_template' => theme($theme_registry_name, $video_desc),
+  );
+  drupal_json_output($result);
+  exit();
+//  return theme($theme_registry_name, array('in_player' => $video_desc));
 }
 
 /**
@@ -781,6 +989,13 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_type($node, $type);
   // @todo necessary use relationship array with main fields for section types. For example array('video' => 'field_ms_videos').
   if($type == 'videos') {
+    // Get videos automatically.
+    if (isset($section_wrapper->field_video_adding_type)) {
+      $auto = $section_wrapper->field_video_adding_type->value();
+      if (!empty($auto) && $files_array =_usanetwork_microsite_get_related_videos_for_microsite($node)) {
+        $section_wrapper->field_ms_videos->set($files_array);
+      }
+    }
     return $section_wrapper->field_ms_videos->value();
   }
   elseif($type == 'characters') {
@@ -788,6 +1003,9 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   }
   elseif($type == 'galleries') {
     return $section_wrapper->field_ms_media_gallery->value();
+  }
+  elseif($type == 'episodes') {
+    return $section_wrapper->field_ms_episode->value();
   }
   return NULL;
 }
@@ -798,7 +1016,7 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
  * @param $node
  * @return mixed
  */
-function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url = TRUE) {
+function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url = FALSE) {
   //@todo Sections name to constant or other way that would hold it.
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   foreach($files as $file) {
@@ -851,6 +1069,25 @@ function _usanetwork_microsite_get_gallery_by_url($node, $param) {
   $galleries = _usanetwork_microsite_get_related_content_from_node($node, 'galleries');
   foreach($galleries as $node) {
     if ($param == _usanetwork_microsite_get_suggested_gallery_url($node)) {
+      return $node;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Get episode node by url parameter.
+ *
+ * @param $node
+ * @param $param
+ *
+ * @return mixed
+ */
+function _usanetwork_microsite_get_episode_by_url($node, $param) {
+  //@todo may be it can make in one function with _usanetwork_microsite_get_person_by_url
+  $episodes = _usanetwork_microsite_get_related_content_from_node($node, 'episodes');
+  foreach($episodes as $node) {
+    if ($param == _usanetwork_microsite_get_suggested_url($node)) {
       return $node;
     }
   }
@@ -967,10 +1204,17 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $last_section_key = key($theme_variables['sections']);
     $theme_variables['footer'] = _usanetwork_microsite_get_footer();
     $theme_variables['sections'][$last_section_key]['is_last'] = TRUE;
-    $theme_variables['current_section'] = (arg(3) != '') ? arg(3) : 'home';
+    $theme_variables['current_section'] = _usanetwork_microsite_get_current_section_type();
   }
 
   $theme_variables['sections_navlinks'] = $navigation_links;
+
+  $theme_variables['h1'] = '';
+  $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'home');
+  $h1 = _usanetwork_microsite_get_h1_tag($section_wrapper);
+  if(!empty($h1)) {
+    $theme_variables['h1'] = $h1;
+  }
 
   return $theme_variables;
 }
@@ -1287,92 +1531,274 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   }
   $title = !empty($node->title) ? $node->title : 'USA Network Microsite';
   $args = arg();
-  $path = isset($args[3]) ? $args[3] : '';
-  switch ($path) {
-    case '':
+  $section_type = _usanetwork_microsite_get_current_section_type();
+  switch ($section_type) {
     case 'home':
-      // @TODO: Use Page Title field for that when it will be done
-      $head_title = t('Dig Deeper | ' . $title . ' | USA Network');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, $section_type);
+      _usanetwork_microsite_set_meta_description($section_wrapper);
+      if (!empty($section_wrapper->field_seo_page_title)) {
+        $head_title = $section_wrapper->field_seo_page_title->value();
+      }
+      if(empty($head_title)) {
+        $head_title = usanetwork_microsite_get_default_title($node, $section_type);
+      }
+      $aspot = reset($section_wrapper->field_usa_tv_a_spot->value());
+      if (!empty($aspot)) {
+        $aspot_desctop = reset(field_get_items('node', $aspot, 'field_usa_aspot_desktop'));
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' =>  file_create_url($aspot_desctop['uri']),
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_home:image');
+      }
       break;
     case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');
       if(isset($args[4])) {
-        $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4]);
-        if(isset($video_file) && !empty($video_file->filename)) {
+        $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4], FALSE);
+        _usanetwork_microsite_set_meta_description($video_file);
+        $video_file_wrapper = entity_metadata_wrapper('file', $video_file);
+        if (!empty($video_file_wrapper->field_seo_page_title)) {
+          $page_title = $video_file_wrapper->field_seo_page_title->value();
+        }
+        if(isset($video_file) && !empty($video_file->filename) && empty($page_title)) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
+        $file_video = $video_file;
       }
       else {
         $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
-
         if (!empty($videos_section_wrapper)) {
           $videos_section_object = $videos_section_wrapper->value();
-
           if (!empty($videos_section_object->field_ms_videos)) {
-
-
             $attached_video = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
-
             if (!empty($attached_video)) {
-              $head_title = $attached_video->filename . ' | ' . $head_title;
+              $video_file_wrapper = entity_metadata_wrapper('file', $attached_video);
+              $page_title = $video_file_wrapper->field_seo_page_title->value();
+              _usanetwork_microsite_set_meta_description($attached_video);
+              if (empty($page_title)) {
+                $head_title = $attached_video->filename . ' | ' . $head_title;
+              }
+              else {
+                $head_title = $page_title;
+              }
             }
+            $file_video = $attached_video;
           }
         }
       }
+
+      $image = media_theplatform_mpx_file_formatter_image_view($file_video, array('settings' => array('image_style' => 'video_full')), '');
+      $renderable_image = file_create_url($image['#path']);
+      $tag_card = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:image',
+          'content' => $renderable_image,
+         ),
+      );
+      drupal_add_html_head($tag_card, 'microsite_video:image');
+
+      $tag_title = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:title',
+          'content' => $file_video->filename,
+         ),
+      );
+      drupal_add_html_head($tag_title, 'microsite_video:title');
       break;
     case 'characters':
       $head_title = t('Characters | ' . $title . ' | USA Network');
       if (isset($args[4])) {
         $character_node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
+        _usanetwork_microsite_set_meta_description($character_node);
         if(!empty($character_node)) {
-          $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
-          $head_title = $person_names['person_title'] . ' | ' . $head_title;
+          $character_node_wrapper = entity_metadata_wrapper('node', $character_node);
+          $page_title = $character_node_wrapper->field_seo_page_title->value();
+          if(empty($page_title)) {
+            $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
+            $head_title = $person_names['person_title'] . ' | ' . $head_title;
+          }
+          else {
+            $head_title = $page_title;
+          }
         }
       }
       else {
         $characters_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
-
         if (!empty($characters_section_wrapper)) {
           $characters_section_object = $characters_section_wrapper->value();
-
           if (!empty($characters_section_object->field_ms_person)) {
-            $characters_nodes = $characters_section_wrapper->field_ms_person->value();
-            $person_names = _usanetwork_microsite_get_person_title_and_role_name($characters_nodes[0]);
-            $head_title = $person_names['person_title'] . ' | ' . $head_title;
+            $character_node = _usanetwork_microsite_get_first_published_item($characters_section_wrapper->field_ms_person);
+            if(!empty($character_node)) {
+              $character_node_wrapper = entity_metadata_wrapper('node', $character_node);
+              $page_title = $character_node_wrapper->field_seo_page_title->value();
+              _usanetwork_microsite_set_meta_description($character_node);
+              if (empty($page_title)) {
+                $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
+                $head_title = $person_names['person_title'] . ' | ' . $head_title;
+              }
+              else {
+                $head_title = $page_title;
+              }
+            }
           }
         }
+      }
+
+      if (!empty($character_node->field_person_cover_photo)) {
+        $photo_url = $character_node_wrapper->field_person_cover_photo->file->url->value();
+
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => $photo_url,
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_character:image');
+      }
+
+      if (empty($person_names)) {
+        $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
+      }
+
+      if (!empty($person_names)) {
+        $person_name = $person_names['person_title'];
+
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $person_name,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_character:title');
       }
       break;
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');
       if(isset($args[4])) {
         $gallery_node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
-        if(!empty($gallery_node)) {
-          $head_title = $gallery_node->title . ' | ' . $head_title;
-        }
+        $head_title = _usanetwork_microsite_set_title_and_description($gallery_node, $head_title);
       }
       else {
         $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
-
         if (!empty($galleries_section_wrapper)) {
           $galleries_section_object = $galleries_section_wrapper->value();
-
-          if (!empty($galleries_section_object->field_media_gallery)) {
-            $attached_gallery = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_media_gallery);
-
-            if (!empty($attached_gallery)) {
-              $head_title = $attached_gallery->title . ' | ' . $head_title;
-            }
+          if (!empty($galleries_section_object->field_ms_media_gallery)) {
+            $gallery_node = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
+            $head_title = _usanetwork_microsite_set_title_and_description($gallery_node, $head_title);
           }
         }
       }
+      if (!empty($gallery_node)) {
+        $cover_item = reset(field_get_items('node', $gallery_node, 'field_cover_item'));
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => file_create_url($cover_item['uri']),
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_galleries:image');
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $gallery_node->title,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_galleries:title');
+      }
+      break;
+    case 'episodes':
+      $head_title = t('Episode Guide | ' . $title . ' | USA Network');
+      if(isset($args[4])) {
+        $episode_node = _usanetwork_microsite_get_episode_by_url($node, $args[4]);
+        $head_title = _usanetwork_microsite_set_title_and_description($episode_node, $head_title);
+      }
+      else {
+        $episodes_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'episodes');
+        if (!empty($episodes_section_wrapper)) {
+          $episodes_section_object = $episodes_section_wrapper->value();
+          if (!empty($episodes_section_object->field_ms_episode)) {
+            $episode_node = _usanetwork_microsite_get_first_published_item($episodes_section_wrapper->field_ms_episode);
+            $head_title = _usanetwork_microsite_set_title_and_description($episode_node, $head_title);
+          }
+        }
+      }
+
+      if (!empty($episode_node->field_tv_cover_media)) {
+        $episode_wrapper = entity_metadata_wrapper('node', $episode_node);
+        $image_url = $episode_wrapper->field_tv_cover_media->file->url->value();
+
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => $image_url,
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_episode:image');
+
+        $episode_title = $episode_wrapper->title->value();
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $episode_title,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_episode:title');
+      }
       break;
     case 'about':
-      // @TODO: Use Page Title field for that when it will be done
-      $head_title = t('Dig Deeper | About | ' . $title . ' | USA Network');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, $section_type);
+      _usanetwork_microsite_set_meta_description($section_wrapper);
+      $head_title = $section_wrapper->field_seo_page_title->value();
+      if(empty($head_title)) {
+        $head_title = usanetwork_microsite_get_default_title($node, $section_type);
+      }
+      $background_image = _usanetwork_microsite_get_section_background_image($section_wrapper, '600x500');
+      $tag_card = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:image',
+          'content' => $background_image,
+        ),
+      );
+      drupal_add_html_head($tag_card, 'microsite_about:image');
+      $tag_title = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:title',
+          'content' => $section_wrapper->field_ms_section_title->value(),
+        ),
+      );
+      drupal_add_html_head($tag_title, 'microsite_about:title');
       break;
     case 'games':
-      $head_title = t('Games | ' . $title . ' | USA Network');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
+      $head_title = $section_wrapper->field_seo_page_title->value();
+      if(empty($head_title)) {
+        $head_title = t('Games | ' . $title . ' | USA Network');
+      }
       break;
     default:
       $head_title = t($title . ' | USA Network');
@@ -1383,6 +1809,40 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   if (!empty($head_title)) {
     $vars['head_title'] = $head_title;
   }
+}
+
+/**
+ * Set title and description for section.
+ *
+ * @param $node
+ * @param $head_title
+ *  Default part of title.
+ * @return string
+ */
+function _usanetwork_microsite_set_title_and_description($node, $head_title) {
+  if(!empty($node)) {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $page_title = $node_wrapper->field_seo_page_title->value();
+    _usanetwork_microsite_set_meta_description($node);
+    if(empty($page_title)) {
+      $head_title = $node->title . ' | ' . $head_title;
+    }
+    else {
+      $head_title = $page_title;
+    }
+  }
+  return $head_title;
+}
+
+function usanetwork_microsite_get_default_title($node, $section_type) {
+  $title = !empty($node->title) ? $node->title : 'USA Network Microsite';
+  if ($section_type == 'home') {
+   $head_title = $title . ' | USA Network';
+  }
+  elseif ($section_type == 'about') {
+    $head_title = 'About | ' . $title . ' | USA Network';
+  }
+  return $head_title;
 }
 
 /**
@@ -1415,12 +1875,20 @@ function _usanetwork_microsite_get_first_published_item($entity_wrapper) {
  * Menu callback for related items.
  *
  */
-function  usanetwork_microsite_endcard_related_items($node, $guid) {
+function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NULL) {
   $items = array();
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+
   if ($files) {
+    $current_processed_index = 0;
+    $current_position_index = -1;
+    $current_episode = NULL;
+
     foreach ($files as $related_file) {
-      if($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
+      if ($filter && $filter != USANETWORK_MICROSITE_ALL_VIDEOS && $filter != _usanetwork_microsite_get_video_category($related_file)) {
+        continue;
+      }
+      if ($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
         $video_account = _media_theplatform_mpx_get_account_data($related_file->mpx_video_data['parent_account']);
         $account_id = $video_account->account_pid;
         $full_episode = _usanetwork_microsite_define_full_episode($related_file);
@@ -1442,15 +1910,114 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
         );
         $items[] = $item;
       }
+      else {
+        if ($related_file->mpx_video_data['guid'] == $guid) {
+          $current_position_index = $current_processed_index;
+          $current_episode = _usanetwork_microsite_endcard_prepare_related_item($node->nid, $related_file, $account_id, $url_param, $full_episode);
+        }
+      }
     }
   }
+
+  if ($current_position_index > 0) {
+    $episodes_to_go = array_slice($items, $current_position_index);
+    $old_episodes = array_slice($items, 0, $current_position_index);
+
+    $items = array_merge($episodes_to_go, $old_episodes, array($current_episode));
+  }
+
   return $items;
+}
+
+/**
+ * Menu ajax callback for microsite videos.
+ *
+ */
+function  _usanetwork_microsite_get_videos($node, $category, $offset) {
+  $data = array();
+  // No more videos as default.
+  $data['info']['more'] = FALSE;
+  $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+  if ($files) {
+    $position = 0;
+    $count = 0;
+    $items = '';
+    foreach ($files as $file) {
+      $published = !empty($file->mpx_video_data['status']) ? $file->mpx_video_data['status'] : NULL;
+      if ($published) {
+        if ($category && $category != USANETWORK_MICROSITE_ALL_VIDEOS  && $category != _usanetwork_microsite_get_video_category($file)) {
+          continue;
+        }
+        if ($offset <= $position && $count < USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+          $full_episode = _usanetwork_microsite_define_full_episode($file);
+          $video_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+          $suggested_video_url = _usanetwork_microsite_get_suggested_video_url($file);
+          $account_id = $video_account->account_pid;
+          $is_full_episode = ($full_episode) ? 'true' : 'false';
+          $player_id = _usanetwork_microsite_define_videoplayer($file);
+          $items .= theme('html_tag', array(
+            'element' => array(
+              '#tag' => 'li',
+              '#attributes' => array(
+                'class' =>
+                  array(
+                    'views-row',
+                    'grid-item',
+                    'thumbnail'
+                  ),
+                'data-video-url' => $suggested_video_url,
+                'data-fid' => $file->fid,
+                'data-account-id' => $account_id,
+                'data-player-id' => $player_id,
+                'data-video-id' => $file->mpx_video_data['default_released_file_pid'],
+                'data-full-episode' => $is_full_episode,
+              ),
+              '#value' => drupal_render(file_view($file, 'vid_teaser_show_general')),
+            ),
+          ));
+          $count++;
+        }
+        elseif ($count >= USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+          $data['info']['more'] = TRUE;
+          break;
+        }
+        $position++;
+      }
+    }
+    if (!empty($items)) {
+      $data['videos'] = $items;
+    }
+  }
+  return $data;
+}
+
+
+/**
+ * Wraps data array for endcard.
+ */
+function _usanetwork_microsite_endcard_prepare_related_item($node_nid, $related_file, $account_id, $url_param, $full_episode) {
+  return array(
+    'fid' => $related_file->fid,
+    'account_id' => $account_id,
+    'video_id' => $related_file->mpx_video_data['default_released_file_pid'],
+    'player_id' => _usanetwork_microsite_define_videoplayer($related_file),
+    'guid' => $related_file->mpx_video_data['guid'],
+    'url' => url('node/' . $node_nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
+    'title' => $related_file->filename,
+    'url_param' => $url_param,
+    'media$thumbnails' => array(
+      array(
+        'plfile$url' => $related_file->mpx_video_data['thumbnail_url'],
+      ),
+    ),
+  );
 }
 
 /**
  * Alter sitecatalyst variables variables.
  */
 function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context) {
+  // @todo I think we shouldn't use t() for string for omniture. If need, we shouldn't do it twice.
   if ($context['entity']){
     $entity = $context['entity'];
     if ($entity->type == 'usanetwork_microsite') {
@@ -1474,10 +2041,23 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $omniture_pagename = $omniture_prop5;
             }
           }
+          else {
+            $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
+            if (!empty($videos_section_wrapper)) {
+              $videos_section_object = $videos_section_wrapper->value();
+              if (!empty($videos_section_object->field_ms_videos)) {
+                $video_file = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
+                if (!empty($video_file)) {
+                  $omniture_prop5 = t('!entity_title : Video : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
+                  $omniture_pagename = $omniture_prop5;
+                }
+              }
+            }
+          }
           break;
         case 'characters':
           $omniture_prop3 = 'Bio';
-          $omniture_prop4 = 'Profile Page';
+          $omniture_prop4 = 'Profile Page'; // This is intentional per Loretta!
           if (isset($args[4])) {
             $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
             if(!empty($node)) {
@@ -1486,14 +2066,62 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
             }
           }
+          else {
+            $characters_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
+            if (!empty($characters_section_wrapper)) {
+              $characters_section_object = $characters_section_wrapper->value();
+              if (!empty($characters_section_object->field_ms_person)) {
+                $node = _usanetwork_microsite_get_first_published_item($characters_section_wrapper->field_ms_person);
+                if (!empty($node)) {
+                  $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
+                  $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+                  $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+                }
+              }
+            }
+          }
           break;
         case 'galleries':
           $omniture_prop3 = 'Gallery';
           if(isset($args[4])) {
             $node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
             if(!empty($node)) {
-              $omniture_prop5 = t($entity->title . ' : ' . $node->title);
-              $omniture_pagename = t($entity->title . ' : ' . $node->title);
+              $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
+              $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+            }
+          }
+          else {
+            $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
+            if (!empty($galleries_section_wrapper)) {
+              $galleries_section_object = $galleries_section_wrapper->value();
+              if (!empty($galleries_section_object->field_ms_media_gallery)) {
+                $node = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
+                $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
+                $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+              }
+            }
+          }
+          break;
+        case 'episodes':
+          $omniture_prop3 = 'Episode Guide';
+          if(isset($args[4])) {
+            $node = _usanetwork_microsite_get_episode_by_url($node, $args[4]);
+            if(!empty($node)) {
+              $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
+              $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+            }
+          }
+          else {
+            $episodes_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'episodes');
+            if (!empty($episodes_section_wrapper)) {
+              $episodes_section_object = $episodes_section_wrapper->value();
+              if (!empty($episodes_section_object->field_ms_episode)) {
+                $node = _usanetwork_microsite_get_first_published_item($episodes_section_wrapper->field_ms_episode);
+                if (!empty($node)) {
+                  $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
+                  $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+                }
+              }
             }
           }
           break;
@@ -1580,6 +2208,18 @@ function _usanetwork_microsite_define_full_episode($file) {
 }
 
 /**
+ * Define auth episode or not.
+ */
+function _usanetwork_microsite_define_auth($file) {
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  $auth_episode = $file_wrapper->field_mpx_entitlement->value();
+  if($auth_episode == 'auth') {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
  * Get url part for characters.
  *
  * @param $person_node
@@ -1589,6 +2229,17 @@ function _usanetwork_microsite_get_suggested_character_url($person_node) {
   module_load_include('inc', 'pathauto', 'pathauto');
   $person_names = _usanetwork_microsite_get_person_title_and_role_name($person_node);
   return pathauto_cleanstring($person_names['person_title']);
+}
+
+/**
+ * Get url part.
+ *
+ * @param $node
+ * @return mixed|string
+ */
+function _usanetwork_microsite_get_suggested_url($node) {
+  module_load_include('inc', 'pathauto', 'pathauto');
+  return pathauto_cleanstring($node->title);
 }
 
 /**
@@ -1643,10 +2294,214 @@ function _usanetwork_microsite_get_section_wrapper_by_section_type($node, $secti
  * @return null
  */
 function _usanetwork_microsite_get_arg_for_current_content($section_wrapper) {
-  if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+  if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
     return (arg(4) !== NULL) ? arg(4) : NULL;
   }
   return NULL;
+}
+
+
+/**
+ * @param $object.
+ *  Object can be field collection or node.
+ *
+ * Add meta description for object.
+ */
+function _usanetwork_microsite_set_meta_description($object) {
+  if (is_object($object)) {
+    if (get_class($object) == 'EntityDrupalWrapper') {
+      _usanetwork_microsite_set_meta_description_for_field_collection($object);
+    }
+    elseif (isset($object->fid)) {
+      _usanetwork_microsite_set_meta_description_for_file($object);
+    }
+    else {
+      _usanetwork_microsite_set_meta_description_for_node($object);
+    }
+  }
+}
+
+/**
+ * Set description for current content.
+ *
+ * @param $node
+ */
+function _usanetwork_microsite_set_meta_description_for_node($node) {
+  $description = '';
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $metatags = usanetwork_microsite_get_metategs($node, 'node');
+  if(!empty($node->field_usa_og_description)) {
+    $description = $node_wrapper->field_usa_og_description->value();
+  }
+  if(empty($description)) {
+    $description = $metatags['description']['#attached']['drupal_add_html_head'];
+    $description = current($description);
+    $description = $description[0]['#value'];
+  }
+  if(!empty($description)) {
+    _usanetwork_microsite_set_meta_description_text($description);
+  }
+}
+
+/**
+ * Set description for current file.
+ *
+ * @param $file
+ */
+function _usanetwork_microsite_set_meta_description_for_file($file) {
+  $metatags = usanetwork_microsite_get_metategs($file, 'file');
+
+  $description = $metatags['description']['#attached']['drupal_add_html_head'];
+  $description = reset($description);
+  $description = $description[0]['#value'];
+
+  if(!empty($description)) {
+    _usanetwork_microsite_set_meta_description_text($description);
+  }
+}
+
+
+/**
+ * Set description for current section.
+ *
+ * @param $section_wrapper
+ */
+function _usanetwork_microsite_set_meta_description_for_field_collection($section_wrapper) {
+  $description = '';
+  $section_object = $section_wrapper->value();
+  if(!empty($section_object->field_usa_og_description)) {
+    $description = $section_wrapper->field_usa_og_description->value();
+  }
+  if(empty($description)) {
+    $desc_metatag = metatag_get_info('tags', 'description');
+    $description = $desc_metatag['description'];
+  }
+  if(!empty($description)) {
+    _usanetwork_microsite_set_meta_description_text($description);
+  }
+}
+
+/**
+ * Add meta description.
+ */
+function _usanetwork_microsite_set_meta_description_text($desc) {
+  $page_description = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'description',
+      'property' => 'og:description',
+      'content' => $desc,
+    )
+  );
+  drupal_add_html_head($page_description, 'meta_description');
+}
+
+function _usanetwork_microsite_get_h1_tag($object) {
+  $h1 = '';
+  if(!empty($object) && is_object($object)) {
+    if (get_class($object) == 'EntityDrupalWrapper' && $object->getBundle() == 'field_ms_section') {
+      $h1 = _usanetwork_microsite_get_h1_for_field_collection($object);
+    }
+    elseif (isset($object->fid)) {
+      $h1 = _usanetwork_microsite_get_h1_for_file($object);
+    }
+    else {
+      $h1 = _usanetwork_microsite_get_h1_for_for_node($object);
+    }
+  }
+  return $h1;
+}
+
+/**
+ * Get h1 text for current section.
+ *
+ * @param $section_wrapper
+ * @return string
+ */
+function _usanetwork_microsite_get_h1_for_field_collection($section_wrapper) {
+  $h1 = '';
+  $section_type = $section_wrapper->field_ms_section_type->value();
+  if($section_type == 'home') {
+    $section_object = $section_wrapper->value();
+    if(!empty($section_object->field_seo_h1)) {
+      $h1 = $section_wrapper->field_seo_h1->value();
+    }
+    else {
+      $node = menu_get_object();
+      $h1 = _usanetwork_microsite_get_default_h1($node, $section_type);
+    }
+  }
+  elseif($section_type == 'about') {
+    $section_object = $section_wrapper->value();
+    if(!empty($section_object->field_seo_h1)) {
+      $h1 = $section_wrapper->field_seo_h1->value();
+    }
+    else {
+      $node = menu_get_object();
+      $h1 = _usanetwork_microsite_get_default_h1($node, $section_type);
+    }
+  }
+  return $h1;
+}
+
+/**
+ * Get default h1 text.
+ *
+ * @param $node
+ * @param $section_type
+ * @return string
+ */
+function _usanetwork_microsite_get_default_h1($node, $section_type) {
+  $h1 = '';
+  if ($section_type == 'home') {
+    $h1 = $node->title;
+  }
+  elseif ($section_type == 'about') {
+    $h1 = 'About ' . $node->title;
+  }
+  return $h1;
+}
+/**
+ * Get h1 text for current content.
+ *
+ * @param $node
+ * @return string
+ */
+function _usanetwork_microsite_get_h1_for_for_node($node) {
+  $h1 = '';
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  if (!empty($node->field_seo_h1)) {
+    $h1 = $node_wrapper->field_seo_h1->value();
+  }
+  // Exception for person node type.
+  if (empty($h1) && $node->type == USANETWORK_MICROSITE_PERSON_NODE_TYPE) {
+    $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
+    $h1 = $person_names['person_title'];
+  }
+  elseif (empty($h1) && $node->type == USANETWORK_MICROSITE_GALLERY_NODE_TYPE) {
+    $h1 = '';
+  }
+  elseif (empty($h1)) {
+    $h1 = $node->title;
+  }
+  return $h1;
+}
+
+/**
+ * Get h1 text for current file.
+ *
+ * @param $file
+ * @return string
+ */
+function _usanetwork_microsite_get_h1_for_file($file) {
+  $h1 = $file->filename;
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  $field_seo_h1 = $file_wrapper->field_seo_h1->value();
+  if (!empty($field_seo_h1)) {
+    $h1 = $field_seo_h1;
+  }
+  return $h1;
 }
 
 /**
@@ -1710,4 +2565,162 @@ function _usanetwork_microsite_get_facebook_tracking_html() {
   }
 
   return _usanetwork_facebook_tracking_post_render('', array());
+}
+
+function usanetwork_microsite_get_metategs($entity, $entity_type) {
+  list($entity_id, $revision_id, $bundle) = entity_extract_ids($entity_type, $entity);
+  $instance = "{$entity_type}:{$bundle}";
+  $metatags = isset($entity->metatags) ? $entity->metatags : array();
+
+  $entity_language = metatag_entity_get_language($entity_type, $entity);
+
+  if ($entity_language == LANGUAGE_NONE) {
+    $langcode = LANGUAGE_NONE;
+  }
+  else {
+    $enabled_languages = field_content_languages();
+    foreach (field_language($entity_type, $entity) as $field => $lang) {
+      // Only accept actual language values that are properly enabled.
+      if ($lang != LANGUAGE_NONE && in_array($lang, $enabled_languages)) {
+        $langcode = $lang;
+      }
+    }
+  }
+
+  // Build options for meta tag rendering.
+  $options = array(
+    'entity' => $entity,
+    'entity_type' => $entity_type,
+    'view_mode' => 'full',
+  );
+
+  // Ensure we actually pass a language object rather than language code.
+  $languages = language_list();
+  if (isset($languages[$langcode])) {
+    $options['language'] = $languages[$langcode];
+  }
+
+  // Reload the entity object from cache as it may have been altered.
+  $token_type = token_get_entity_mapping('entity', $entity_type);
+  $entities = entity_load($entity_type, array($entity_id));
+  $options['token data'][$token_type] = $entities[$entity_id];
+  $options['entity'] = $entities[$entity_id];
+
+  // Render the metatags and save to the cache.
+  $output = metatag_metatags_view($instance, $metatags, $options);
+
+  return $output;
+}
+
+/**
+ * Get current section type.
+ *
+ * @return string
+ */
+function _usanetwork_microsite_get_current_section_type() {
+  return (arg(3) != '') ? arg(3) : 'home';
+}
+
+function _usanetwork_microsite_set_status_and_h1_variables($object, $section_wrapper) {
+  $theme_variables = array(
+    'h1' => '',
+    'status' => '',
+  );
+  $h1 = _usanetwork_microsite_get_h1_tag($object);
+  if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
+    $theme_variables['status'] = 'active';
+  }
+  if(!empty($h1)) {
+    $theme_variables['h1'] = $h1;
+  }
+  return $theme_variables;
+}
+
+function usanetwork_microsite_full_video_for_mobile_device() {
+  $data = array(
+    'usanetwork_video_mobile' => array(
+      'url' => array(
+        'iOS' => USANETWORK_USANOW_IOS_URL,
+        'android' => USANETWORK_USANOW_ANDROID_URL,
+      ),
+      'modal' => '<div class="wrap"><h3>' . t('Want to watch episodes of your favorite shows?') . '</h3><hr>'
+        . '<img class="mobile-logo-exp" src="' . url(drupal_get_path('module', 'usanetwork_video_mobile') . '/img/logo-mobile-exp.png') . '">'
+        . '<div id="mobileVideoModalButtons">'
+        . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
+        . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">'. '</div>'
+        . '</div>',
+    ),
+  );
+  // attach javascript
+  drupal_add_js($data, 'setting');
+}
+
+/**
+ * Add itunes app metatag to header.
+ */
+function usanetwork_microsite_add_itunes_app_metatag() {
+  $metatag = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'apple-itunes-app',
+      'content' => 'app-id=' . USANETWORK_USANOW_ITUNES_ID . ', affiliate-data=, app-argument=/usa',
+    ),
+  );
+  drupal_add_html_head($metatag, 'apple_itunes_app');
+}
+
+function _usanetwork_microsite_get_video_category($video_file) {
+  if (_usanetwork_microsite_define_full_episode($video_file)) {
+    return USANETWORK_MICROSITE_FULL_VIDEO;
+  }
+  elseif (!empty($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id'])) {
+    $term = taxonomy_term_load($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id']);
+    return $term->name;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+
+/**
+ * Returns list of related video files id.
+ */
+function _usanetwork_microsite_get_related_videos_for_microsite($node) {
+  $field_item = field_get_items('node', $node, 'field_show');
+  $show_id = $field_item[0]['target_id'];
+  if (!empty($show_id)) {
+    $cache_name = 'microsite_videos_' . $show_id;
+    if ($cache = cache_get($cache_name)) {
+      return $cache->data;
+    }
+    $full_video = db_and()
+      ->condition('fm.type', 'mpx_video_2', '=')
+      ->condition('mfe.field_mpx_full_episode_value', '1', '=');
+    $small_video = db_and()
+      ->condition('fm.type', 'mpx_video_1', '=')
+      ->condition('mfe.field_mpx_full_episode_value', '0', '=');
+    $db_or = db_or()
+      ->condition($small_video)
+      ->condition($full_video);
+    $query = db_select('mpx_video', 'mpx');
+    $query->fields('mpx', array('fid'));
+    $query->innerJoin('file_managed', 'fm', 'mpx.fid = fm.fid');
+    $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = fm.fid');
+    $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
+    $query->condition($db_or);
+    $query->condition('fs.field_show_target_id', $show_id, '=');
+    $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
+    $query->orderBy('fm.timestamp', 'DESC');
+    $query_results = $query->execute()->fetchAll();
+    if (!empty($query_results)) {
+      $files_array = array();
+      foreach($query_results as $query_result) {
+        $files_array[] = $query_result->fid;
+      }
+      cache_set($cache_name, $files_array, 'cache', REQUEST_TIME + 60 * 60);
+      return $files_array;
+    }
+  }
+  return FALSE;
 }

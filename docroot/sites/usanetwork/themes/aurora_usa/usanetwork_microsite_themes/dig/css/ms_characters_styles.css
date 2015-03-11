@@ -40,6 +40,9 @@ body{
   top: 0;
   left: 0;
   max-width: 1245px;
+  opacity: 0;
+  max-height: 370px;
+  overflow: hidden;
 }
 #microsite #home .characters-cast h2 {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
@@ -47,7 +50,7 @@ body{
   font-size: 1.6em;
   margin: 1.4em 0 0.83em;
 }
-#microsite #home .characters-cast .bx-wrapper .bx-viewport {
+#microsite #home .characters-cast .bx-wrapper{
   background-color: #000;
   border-color: #000;
   -mox-box-shadow: none;
@@ -58,23 +61,18 @@ body{
 #microsite #home .characters-cast .bx-wrapper .bx-pager.bx-default-pager a.active {
   background-color: #FFF;
 }
-#microsite #home #characters-cast-list {
-  opacity: 0;
-}
 #microsite #home .characters-cast li {
   background-color: #1F1F1F;
-  max-width: 145px;
-  min-width: 90px;
+  float: left;
 }
 #microsite #home .characters-cast li a .person-title {
-  font-size: 1.17em;
-  height: 65px;
-  letter-spacing: 0.05em;
-  line-height: 22.5px;
-  padding: 5px;
+  font-size: 1em;
+  height: 46px;
+  letter-spacing: 0.03em;
+  line-height: 18px;
+  padding: 14px 5px;
   color: #FFF;
   text-align: center;
-  line-height: 1.2em;
   background-color: rgba(0, 0, 0, 0.85);
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, black));
@@ -90,11 +88,31 @@ body{
   top: 40%;
 }
 #microsite #home .characters-cast .btns.prev {
-  left: -31px;
+  left: -35px;
 }
 #microsite #home .characters-cast .btns.next {
-  right: -22px;
+  right: -35px;
 }
+/* for ie 9*/
+html.ie9 #microsite #home .characters-cast .btns a{
+  display: block;
+}
+html.ie9 #microsite #home .characters-cast .btns a.disabled {
+  display: none;
+}
+html.ie9 #microsite #home .characters-cast .btns a.bx-prev{
+  background-image: url('../images/icons/arrow-prev.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 18px 30px;
+}
+html.ie9 #microsite #home .characters-cast .btns a.bx-next{
+  background-image: url('../images/icons/arrow-next.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 18px 30px;
+}
+/*end*/
 #microsite #home .characters-cast .btns a {
   color: #FFF;
   color: rgba(255, 255, 255, 0.5);
@@ -133,31 +151,36 @@ body{
   top: -9999px;
   left: -9999px;
 }
+/* HOME SECTION MEDIA QUERY START */
 @media (max-width: 1580px) {
-#microsite #home .characters-cast {
-  width: 930px;
-}
+  #microsite #home .characters-cast {
+    width: 930px;
+  }
 }
 @media (max-width: 1200px) {
-#microsite #home .characters-cast {
-  width: 615px;
+  #microsite #home .characters-cast {
+    width: 615px;
+  }
+  #microsite #home .characters-cast li a .person-title {
+    height: 64px;
+    padding: 14px 11px;
+  }
 }
-#microsite #home .characters-cast li a .person-title {
-  height: 86px;
-}
-}
+
 @media (max-width: 640px) {
-#microsite #home .characters-cast {
-  width: 300px;
-}
-#microsite #home .characters-cast h2 {
-  font-size: 1.6em;
-  margin: 1.1em 0 0.27em;
-}
-#microsite #home .characters-cast li a .person-title {
-  font-size: 0.75em;
-  height: 52px;
-}
+  #microsite #home .characters-cast {
+    width: 300px;
+  }
+  #microsite #home .characters-cast h2 {
+    font-size: 1.6em;
+    margin: 1.1em 0 0.27em;
+  }
+  #microsite #home .characters-cast li a .person-title {
+    font-size: 0.75em;
+    line-height: 16px;
+    padding: 14px 19px;
+    height: 60px;
+  }
 }
 
 
@@ -178,6 +201,7 @@ body{
 #microsite #characters section {
   overflow-x: hidden !important;
 }
+#microsite #about .microsite-section-container,
 #microsite #characters .microsite-section-container {
   width: 100%;
   margin: 0;
@@ -185,11 +209,15 @@ body{
   max-width: 100%;
   overflow: hidden;
 }
+#microsite #about #about-inner-container,
 #microsite #characters #character-inner-container {
   width: calc(100% - 190px);
   position: relative;
   margin: 0 0 0 190px;
   max-width: none;
+}
+#microsite #characters #character-inner-container {
+  padding-bottom: 80px; /* To allow more space for next button */
 }
 #microsite #characters #character-background li {
   display: none;
@@ -216,6 +244,7 @@ body{
   left: -100%;
   display: block;
 }
+#microsite #about #right-pane-bg,
 #microsite #characters #right-pane-bg {
   position: absolute;
   top: 0;
@@ -225,7 +254,11 @@ body{
   background: rgb(0, 0, 0) transparent;
   background-color: rgba(0, 0, 0, 0.75);
   width: 45%;
-  margin-left: 55%; /* calc(((100% - 190px) * 0.55) + 190px); */
+  margin-left: 55%;
+}
+#microsite #about section .microsite-section-container .right-pane {
+  width: 45%;
+  position: relative;
 }
 #microsite #characters .right-pane-content {
   width: 45%;
@@ -287,49 +320,6 @@ body{
 #microsite #characters .character-nav li .tooltip {
   display: none;
 }
-
-@media (min-width: 875px) {
-#microsite #characters .character-nav li .tooltip {
-  display: block;
-  pointer-events: none;
-  position: absolute;
-  bottom: 21px;
-  left: -148px;
-  width: 300px;
-  height: 80px;
-  text-align: center;
-  font-size: 0.8em;
-  opacity: 0;
-  transition: opacity .5s ease-in-out;
-  -moz-transition: opacity .5s ease-in-out;
-  -webkit-transition: opacity .5s ease-in-out;
-}
-#microsite #characters .character-nav li .character-nav-link:hover + .tooltip {
-  opacity: 1;
-}
-html.ie9 #microsite #characters .character-nav li .tooltip,
-html.ie10 #microsite #characters .character-nav li .tooltip {
-  display: none;
-  opacity: 1;
-}
-html.ie9 #microsite #characters .character-nav li .character-nav-link:hover + .tooltip,
-html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
-  display: block;
-}
-#microsite #characters .character-nav li .tooltip div {
-  line-height: 1em;
-  text-transform: uppercase;
-  margin-top: 3px;
-}
-#microsite #characters .character-nav li .tooltip img {
-  border: 2px solid #FFF;
-  width: 59px;
-  height: 60px;
-  margin: 0 auto;
-}
-}
-
-
 #microsite #characters .btns {
   color: #FFF;
   font-size: 1.5em;
@@ -338,13 +328,10 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 }
 #microsite #characters .character-nav #nav-prev,
 #microsite #characters .character-nav #nav-next {
-  margin: 0;
+  margin: -9px 0 0;
   padding: 0;
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   width: 20px;
   font-size: 1.5em;
   cursor: pointer;
@@ -404,7 +391,9 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
   opacity: 0;
   top: -40px;
 }
+#microsite #characters h1,
 #microsite #characters h3 {
+  color: #ffffff;
   display: inline-block;
   margin: 0 15px 0 0;
   font-size: 1.4em;
@@ -502,24 +491,95 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 }
 
 
-/* BEGIN BREAKPOINTS */
+/* CHARACTERS SECTION MEDIA QUERY START */
+@media (min-width: 1181px) {
+  #microsite #about-content {
+    background-position: 0 75px;
+  }
+}
+
+@media (max-width: 1180px) {
+  #microsite #about section {
+    background-position: -150px 75px;
+  }
+}
+
 @media (max-width: 1020px) {
-#microsite #characters #right-pane-bg {
-  width: 100%;
-  margin-left: 0;
+  #microsite #about #right-pane-bg,
+  #microsite #characters #right-pane-bg {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about .right-pane > div,
+  #microsite #about .right-pane > h3,
+  #microsite #characters .content {
+    width: 86%;
+  }
 }
-#microsite #characters .right-pane-content {
-  width: 100%;
-  margin-left: 0;
+
+@media (min-width: 875px) {
+  #microsite #characters .character-nav li .tooltip {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    bottom: 21px;
+    left: -148px;
+    width: 300px;
+    height: 80px;
+    text-align: center;
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+  }
+  #microsite #characters .character-nav li .character-nav-link:hover + .tooltip {
+    opacity: 1;
+  }
+  html.ie9 #microsite #characters .character-nav li .tooltip,
+  html.ie10 #microsite #characters .character-nav li .tooltip {
+    display: none;
+    opacity: 1;
+  }
+  html.ie9 #microsite #characters .character-nav li .character-nav-link:hover + .tooltip,
+  html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
+    display: block;
+  }
+  #microsite #characters .character-nav li .tooltip div {
+    line-height: 1em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  #microsite #characters .character-nav li .tooltip img {
+    border: 2px solid #FFF;
+    width: 59px;
+    height: 60px;
+    margin: 0 auto;
+  }
 }
-#microsite #about .right-pane > div,
-#microsite #about .right-pane > h3,
-#microsite #characters .content {
-  width: 86%;
-}
+@media (max-width: 1020px) {
+  #microsite #characters #right-pane-bg {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #characters .right-pane-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about .right-pane > div,
+  #microsite #about .right-pane > h3,
+  #microsite #characters .content {
+    width: 86%;
+  }
 }
 
 @media (max-width: 874px) {
+  #microsite #about #about-inner-container,
   #microsite #characters #character-inner-container {
     width: 100%;
     margin: 0 auto;
@@ -527,6 +587,7 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
   #microsite #characters #right-pane-bg {
     background-color: transparent;
   }
+  #microsite #about section .microsite-section-container .right-pane,
   #microsite #characters .right-pane-content {
     width: 75%;
     margin: 0 auto;
@@ -564,52 +625,77 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 }
 
 @media (max-width: 542px) {
-#microsite #characters #character-inner-container {
-  width: 100%;
-  margin: 0 auto;
+  #microsite #about #about-inner-container,
+  #microsite #characters #character-inner-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #microsite #characters #right-pane-bg {
+    background-color: transparent;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
-#microsite #characters #right-pane-bg {
-  background-color: transparent;
-}
-#microsite #characters .right-pane-content {
-  width: 90%;
-  margin: 0 auto;
-}
+
+@media (max-width: 480px) {
+  #microsite #about section {
+    background-position: top left;
+  }
+  #microsite #about-content,
+  #microsite #galleries-content,
+  #microsite #games-content,
+  #microsite #videos-content {
+    background-image: url("../images/dig_mobile_bg.jpg");
+  }
+  #microsite #about #right-pane-bg {
+    background-color: transparent;
+  }
 }
 
 /* Smartphone */
 @media only screen
 and (min-device-width : 200px)
 and (max-device-width : 568px) {
-#microsite #home .characters-cast .btns.prev,
-#microsite #home .characters-cast .btns.next {
-  display: none;
-}
-#microsite #about section .microsite-section-container .right-pane {
-  width: 98%;
-}
-#microsite #characters .right-pane-content {
-  width: 98%;
-}
-#microsite #characters #character-info li {
-  position: relative;
-}
-#microsite #characters .character-bio-tabs {
-  font-size: 0.84em;
-}
-#microsite #characters .text {
-  overflow: visible;
-  max-height: unset;
-  min-height: 100%;
-  height: 100%;
-  position: relative;
-  display: none;
-  float: left;
-}
-#microsite #characters .text.active {
-  display: block;
-}
-#microsite #characters .ad300x250 {
-  height: 0;
-}
+  #microsite #home .characters-cast .btns.prev {
+    left: 0px;
+    z-index: 30;
+  }
+  #microsite #home .characters-cast .btns.next {
+    right: 0px;
+  }
+  #microsite #about section .microsite-section-container .right-pane {
+    width: 98%;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 98%;
+  }
+  #microsite #characters #character-info li {
+    position: relative;
+  }
+  #microsite #characters .character-nav #nav-prev,
+  #microsite #characters .character-nav #nav-next {
+    top: 40%;
+  }
+  #microsite #characters .character-bio-tabs {
+    font-size: 0.84em;
+  }
+  #microsite #characters .text {
+    overflow: visible;
+    max-height: unset;
+    min-height: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+    float: left;
+  }
+  #microsite #characters .text.active {
+    display: block;
+  }
+  #microsite #characters .ad300x250 {
+    height: 0;
+  }
 }

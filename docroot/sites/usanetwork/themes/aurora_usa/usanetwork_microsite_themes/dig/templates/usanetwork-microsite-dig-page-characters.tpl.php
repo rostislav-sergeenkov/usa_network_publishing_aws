@@ -34,7 +34,7 @@
 <?php endif; ?>
 <!-- end backgounds -->
 
-<div id="character-inner-container">
+<div id="character-inner-container" class="clearfix">
   <!-- right pane -->
   <div id="right-pane-bg"></div>
 
@@ -49,9 +49,9 @@
       <?php if (!empty($person['quotes'])): ?>
         <li id="quotes-<?php if (!empty($person['id'])) print $person['id']; ?>" class="quotes<?php if (!empty($person['id'])) print ' ' . $person['id']; ?><?php if(!empty($person['status'])) print ' ' . $person['status']; ?>">
           <ul>
-          <?php foreach ($person['quotes'] as $quotation_key => $quotation): ?>
+          <?php foreach ($person['quotes'] as $quotation): ?>
           <?php if (!empty($quotation['quote']) && !empty($quotation['source'])): ?>
-            <li class="<?php if ($quotation_key == 0) print ' active'; ?>">
+            <li>
               <?php if (!empty($quotation['quote'])): ?>
                 <div class="quote">
                   <?php print $quotation['quote']; ?>

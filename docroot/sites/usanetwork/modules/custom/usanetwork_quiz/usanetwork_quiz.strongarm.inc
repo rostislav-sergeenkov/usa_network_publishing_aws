@@ -146,6 +146,9 @@ function usanetwork_quiz_strongarm() {
       'promo_teaser_large' => array(
         'custom_settings' => FALSE,
       ),
+      'microsite_output' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -168,6 +171,10 @@ function usanetwork_quiz_strongarm() {
       'display' => array(
         'quiz' => array(
           'default' => array(
+            'weight' => '2',
+            'visible' => TRUE,
+          ),
+          'microsite_output' => array(
             'weight' => '2',
             'visible' => TRUE,
           ),

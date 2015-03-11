@@ -166,7 +166,8 @@
             if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
             // stop quotation animations and hide quotes
-            $('#microsite #characters .quotes').removeClass('active').fadeOut(1000);
+            if (typeof Drupal.behaviors.microsite_scroll.quoteAnimationTimer != 'undefined') clearInterval(Drupal.behaviors.microsite_scroll.quoteAnimationTimer);
+            $('#microsite .quotes').removeClass('active');
 
             // prepare next or previous background and character-info
             $('#microsite #characters .' + nextCharacterId).addClass(direction);

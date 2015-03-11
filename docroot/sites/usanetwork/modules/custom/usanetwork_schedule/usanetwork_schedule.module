@@ -326,7 +326,10 @@ function usanetwork_schedule_pull_up_next_item($time_correlation = 0) {
   $query->orderBy('s.start_time', 'ASC');
   $query->range(0, 1);
 
-  return $query->execute()->fetchAll();
+  $result = $query->execute()->fetchAll();
+  _usanetwork_schedule_fill_schedule_show_nids($result);
+
+  return $result;
 }
 
 /**

@@ -1939,13 +1939,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-7',
         ),
-        //@TODO: check if usanetwork_home_featured_promos is outdated
-        /*'usanetwork_home-usanetwork_home_featured_promos' => array(
+        'usanetwork_home-usanetwork_home_featured_promos' => array(
           'module' => 'usanetwork_home',
           'delta' => 'usanetwork_home_featured_promos',
           'region' => 'content',
-          'weight' => '-5',
-        ),*/
+          'weight' => '-6',
+        ),
       ),
     ),
   );

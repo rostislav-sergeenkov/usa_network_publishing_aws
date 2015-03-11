@@ -156,6 +156,9 @@ function usanetwork_microsite_entity_info_alter(&$entity_info) {
 function usanetwork_microsite_preprocess_node(&$variables) {
   if($variables['view_mode'] == 'microsite_output') {
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__microsite_output';
+    if ($variables['type'] == 'quiz') {
+      $variables['page'] = TRUE;
+    }
   }
 }
 
@@ -802,6 +805,7 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
         $quiz_node_wrapper = entity_metadata_wrapper('node', $quiz_node);
         if ((!empty($current_quiz_arg) && $current_quiz_arg == $quiz_url) || (empty($current_quiz_arg) && $quizzes_count == 0)) {
           $theme_variables['page'] = usanetwork_microsite_get_quiz($quiz_node);
+          $current_quiz = $quiz_node;
         }
         $quizzes[] = array(
           'nid' => $quiz_node->nid,
@@ -821,7 +825,11 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
         $quizzes_count++;
       }
     }
+    if(empty($theme_variables['page'])) {
+      drupal_not_found();
+    }
     $theme_variables['quizzes_nav'] = $quizzes_nav;
+    $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_quiz, $section_wrapper));
     drupal_add_js(array('quizzes' => $quizzes), 'setting');
   }
 
@@ -830,7 +838,7 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
 
 
 function _usanetwork_microsite_get_rendered_quiz($node) {
-  $quiz_node_view = node_view($node);
+  $quiz_node_view = node_view($node, 'microsite_output');
   return drupal_render($quiz_node_view);
 }
 

@@ -662,7 +662,7 @@
         dataType: 'json',
         success: function (data) {
 
-          tpController.shareCardCategory = categoryName;
+          $pdk.controller.shareCardCategory = categoryName;
 
           var videoList = data.videos,
               infoMore = data.info.more,

@@ -99,7 +99,7 @@
                     if (!$carousel.hasClass('stop')) {
                       var visible_item = (!$container.hasClass('inner-carousel')) ? $container.jcarousel('visible').index($container.find('li.first')) : -1;
                       if (visible_item >= 0 && !$container.hasClass('start')) {
-                        Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
+                        Drupal.behaviors.global_carousels.swipeShowDescription($container);
                       }
                       var swipeElements = '-=' + Drupal.behaviors.global_carousels.swipeItems($carousel);
                       $container.jcarousel('scroll', swipeElements);
@@ -108,7 +108,7 @@
                   swipeLeft: function () {
                     if (!$carousel.hasClass('stop')) {
                       if ($container.hasClass('start')) {
-                        Drupal.behaviors.global_carousels.swipeHideDescription($container.prev());
+                        Drupal.behaviors.global_carousels.swipeHideDescription($container);
                         var count = (Drupal.behaviors.global_carousels.swipeItems($carousel) <= 1) ? 1 : Drupal.behaviors.global_carousels.swipeItems($carousel) - 1;
                         $container.jcarousel('scroll', '+=' + count);
                       } else {
@@ -127,7 +127,7 @@
                         } else {
                           if (window.innerWidth >= window_size_tablet_portrait) {
                             if ($container.hasClass('start')) {
-                              Drupal.behaviors.global_carousels.swipeHideDescription($container.prev());
+                              Drupal.behaviors.global_carousels.swipeHideDescription($container);
                               setTimeout(function () {
                                 Drupal.behaviors.global_carousels.showOpen($(target), false);
                               }, 600);
@@ -148,7 +148,7 @@
                         else {
                           if (window.innerWidth >= window_size_tablet_portrait) {
                             if ($container.hasClass('start')) {
-                              Drupal.behaviors.global_carousels.swipeHideDescription($container.prev());
+                              Drupal.behaviors.global_carousels.swipeHideDescription($container);
                               setTimeout(function () {
                                 Drupal.behaviors.global_carousels.showOpen($(target), false);
                               }, 600);
@@ -171,7 +171,7 @@
                 });
                 $container.on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
                   if (!$carousel.hasClass('stop') && !$container.hasClass('inner-carousel')) {
-                    Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
+                    Drupal.behaviors.global_carousels.swipeShowDescription($container);
                   }
                 })
               })
@@ -212,14 +212,14 @@
                 swipeLeft: function () {
                   var visible_item = (!$container.hasClass('inner-carousel')) ? $container.jcarousel('visible').index($container.find('li.first')) : -1;
                   if (visible_item >= 0 && !$container.hasClass('start')) {
-                    Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
+                    Drupal.behaviors.global_carousels.swipeShowDescription($container);
                   }
                   var swipeElements = '-=' + Drupal.behaviors.global_carousels.swipeItems($carousel);
                   $container.jcarousel('scroll', swipeElements);
                 },
                 swipeRight: function () {
                   if ($container.hasClass('start')) {
-                    Drupal.behaviors.global_carousels.swipeHideDescription($container.prev());
+                    Drupal.behaviors.global_carousels.swipeHideDescription($container);
                     var count = (Drupal.behaviors.global_carousels.swipeItems($carousel) <= 1) ? 1 : Drupal.behaviors.global_carousels.swipeItems($carousel) - 1;
                     $container.jcarousel('scroll', '+=' + count);
                   } else {
@@ -249,7 +249,7 @@
                 }
               });
               $container.on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
-                Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
+                Drupal.behaviors.global_carousels.swipeShowDescription($container);
               })
             })
             .on('jcarousel:reloadend', function (event, carousel) {
@@ -310,7 +310,7 @@
         $(second)
             .on('click', function () {
               if ($(this).hasClass('inactive') && $(this).hasClass('jcarousel-control-prev')) {
-                Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
+                Drupal.behaviors.global_carousels.swipeShowDescription($container);
               }
             })
             .jcarouselControl({
@@ -328,11 +328,11 @@
     },
     swipeHideDescription: function (element) {
       element.removeClass('start');
-      element.next().removeClass('start');
+      element.prev().removeClass('start');
     },
     swipeShowDescription: function (element) {
       element.addClass('start');
-      element.next().addClass('start');
+      element.prev().addClass('start');
     },
     showOpen: function (target, mobile) {
       var current_item = target.closest('li');
@@ -394,7 +394,7 @@
           }
 
           e.preventDefault();
-          Drupal.behaviors.global_carousels.swipeHideDescription($(this).parent().parent().find('.carousel-description-item'));
+          Drupal.behaviors.global_carousels.swipeHideDescription($(this).parent());
 
           count = (Drupal.behaviors.global_carousels.swipeItems($(carousel).find('ul')) <= 1) ? 1 : Drupal.behaviors.global_carousels.swipeItems($(carousel).find('ul')) - 1;
           carousel.jcarousel('scroll', '+=' + count);
@@ -403,7 +403,7 @@
         $(".carousel .jcarousel-control-prev").click(function (e) {
           if($(this).hasClass('inactive') && !$(this).closest('.carousel').hasClass('start')){
             var carousel = $(this).closest('.carousel');
-            Drupal.behaviors.global_carousels.swipeShowDescription(carousel.prev());
+            Drupal.behaviors.global_carousels.swipeShowDescription(carousel);
           }
 
         });

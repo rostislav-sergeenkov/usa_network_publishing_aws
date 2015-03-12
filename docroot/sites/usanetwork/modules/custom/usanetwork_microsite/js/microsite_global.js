@@ -719,6 +719,7 @@
     },
     attach: function (context, settings) {
 
+/*
       history.pushState(
           {
             "state": window.location.pathname
@@ -726,6 +727,7 @@
           window.location.pathname,
           window.location.pathname
       );
+*/
 
       var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
       //change video on click to preview elements

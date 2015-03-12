@@ -755,6 +755,13 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   height: 100%;
   width: 100%;
 }
+@media (max-width: 768px) {
+  .featured-block .carousel ul li .featured-large:before {
+    bottom: 0;
+    height: 40%;
+    top: auto;
+  }
+}
 .featured-block .carousel ul li .featured-large img {
   height: 100%;
   width: 100%;
@@ -8577,6 +8584,8 @@ footer h2 {
   margin: 0px 17px 0px 0px;
   position: relative;
   width: 476px;
+  /**/
+  /**/
 }
 @media (min-width: 1601px) {
   .featured-block .carousel ul li {

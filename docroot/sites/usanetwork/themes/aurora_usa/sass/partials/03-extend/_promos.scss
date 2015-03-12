@@ -2,6 +2,13 @@
   .featured-large {
     height: 100%;
     width: 100%;
+    @include breakpoint($bp-768-width) {
+      &:before {
+        bottom: 0;
+        height: 40%;
+        top: auto;
+      }
+    }
     img {
       height: 100%;
       width: 100%;

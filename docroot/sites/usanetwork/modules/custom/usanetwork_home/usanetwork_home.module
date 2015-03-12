@@ -147,7 +147,62 @@ function usanetwork_home_default_queues_type() {
   return $items;
 }
 
-function _usanetwork_home_featured_carousel() {
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_home_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: 757x628.
+  $styles['757x628'] = array(
+    'name' => '757x628',
+    'effects' => array(
+      0 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 757,
+          'height' => 628,
+        ),
+        'weight' => 0,
+      ),
+    ),
+    'label' => '757x628',
+  );
+
+  // Exported image style: 539x303.
+  $styles['539x303'] = array(
+    'name' => '539x303',
+    'effects' => array(
+      0 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 539,
+          'height' => 303,
+        ),
+        'weight' => 1,
+      ),
+    ),
+    'label' => '539x303',
+  );
+
+  return $styles;
+}
+
+function _usanetwork_home_featured_carousel() {return 'asd';
   $content = array();
 
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
@@ -197,18 +252,24 @@ function _usanetwork_home_featured_carousel() {
           $more_link = l($promo_data['more_link_text'], $promo_data['more_link_url'], array('attributes' => array('class' => array('more'))));
         }
 
+        $is_first = ($i == 0) ? TRUE : FALSE;
+
         $featured_vars = array(
           'show_code' => isset($promo_data['show_class']) ? $promo_data['show_class']
                 : NULL,
           'url' => isset($promo_data['url']) ? $promo_data['url'] : NULL,
-          'image' => isset($promo_data['image_url_wide']) ? theme('image_style', array('style_name' => 'fh476x268', 'path' => $promo_data['image_url_wide']))
-                : NULL,
+          'image' => isset($promo_data['image_url_wide'])
+            ? ($is_first
+              ? theme('image_style', array('style_name' => '757x628', 'path' => $promo_data['image_url_wide']))
+              : theme('image_style', array('style_name' => '539x303', 'path' => $promo_data['image_url_wide']))
+            )
+            : NULL,
           'icon_type' => $promo_data['icon_type'] ? $promo_data['icon_type'] : NULL,
           'caption' => isset($promo_data['caption']) ? $promo_data['caption'] : NULL,
           'title' => $promo_data['title'],
           'more_link' => isset($more_link) ? $more_link : NULL,
-          'class' => ($i == 0) ? 'featured-large' : 'featured-small',
-          'is_first' => ($i == 0) ? TRUE : FALSE,
+          'class' => $is_first ? 'featured-large' : 'featured-small',
+          'is_first' => $is_first,
         );
         $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
 
@@ -321,7 +382,7 @@ function _usanetwork_home_bspot_cspot() {
  */
 function usanetwork_home_preprocess_block(&$variables) {
   $block = $variables['block'];
-  if (isset($block->bid) && ($block->bid == 'views-usa_video-front_full_episodes' || $block->bid == 'views-usa_mpx_video-front_full_epsds' || $block->bid == 'usanetwork_home-usanetwork_home_promo_carousel')) {
+  if (0 && isset($block->bid) && ($block->bid == 'views-usa_video-front_full_episodes' || $block->bid == 'views-usa_mpx_video-front_full_epsds' || $block->bid == 'usanetwork_home-usanetwork_home_promo_carousel')) {
     $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
     //carousel-promo
 
@@ -341,6 +402,18 @@ function usanetwork_home_preprocess_block(&$variables) {
             $block->subject = $title['safe_value'];
           }
         }
+      }
+    }
+  }
+  if ($block->bid == 'usanetwork_home-usanetwork_home_featured_promos') {
+    $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+    if ($homepage) {
+      $homepage_node = usanetwork_home_get_homepage_node($homepage);
+      $bg_field = field_get_items('node', $homepage_node, 'field_hp_promo_background');
+
+      if ($bg_field) {
+        $variables['attributes_array']['data-url'] = array(file_create_url($bg_field[0]['uri']));
       }
     }
   }

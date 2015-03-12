@@ -273,5 +273,34 @@ If more than 4 are added a carousel will be triggered on page load so content ca
   );
   $export['group_slide_settings|node|usa_homepage|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_social_promo_carousel|node|usa_homepage|form';
+  $field_group->group_name = 'group_social_promo_carousel';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Social carousel',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_social_promo_title',
+      1 => 'field_social_promo_additional',
+      2 => 'field_social_promo_carousel',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-social-promo-carousel field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_social_promo_carousel|node|usa_homepage|form'] = $field_group;
+
   return $export;
 }

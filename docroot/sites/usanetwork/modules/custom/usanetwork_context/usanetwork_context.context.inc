@@ -1945,6 +1945,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-6',
         ),
+        'usanetwork_blocks-usanetwork_social_carousel' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usanetwork_social_carousel',
+          'region' => 'content',
+          'weight' => '-5',
+        ),
       ),
     ),
   );

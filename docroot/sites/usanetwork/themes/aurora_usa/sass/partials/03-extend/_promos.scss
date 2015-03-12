@@ -21,6 +21,16 @@
     }
     .meta-back {
       display: none;
+      @include breakpoint($bp-768-width) {
+        background: #000000;
+        bottom: 0;
+        display: block;
+        height: 100%;
+        opacity: 0.6;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+      }
     }
     .meta {
       .meta-icon {
@@ -36,6 +46,15 @@
           line-height: 52px;
           width: 52px;
         }
+        @include breakpoint($bp-768-width) {
+          position: absolute;
+          left: 20px;
+          margin-left: 0;
+          margin-top: -26px;
+          ~ .caption, ~ .title, ~ .additional-text {
+            padding-left: 80px;
+          }
+        }
       }
       .caption {
         font-family: $avalon-demi;
@@ -43,12 +62,26 @@
         line-height: 18px;
         margin-bottom: 8px;
         text-align: center;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 16px;
+          line-height: 20px;
+          margin-bottom: 10px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: 12px;
+          line-height: 14px;
+        }
       }
       .title {
         font-size: 16px;
         line-height: 20px;
         margin-bottom: 8px;
         text-align: center;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 18px;
+          line-height: 24px;
+          margin-bottom: 10px;
+        }
       }
       .additional-text {
         font-family: $tex-gyreschola-italic;
@@ -56,6 +89,16 @@
         line-height: 14px;
         text-align: center;
         text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+      .caption, .title, .additional-text {
+        @include breakpoint($bp-768-width) {
+          padding-left: 20px;
+          text-align: left;
+        }
       }
     }
 
@@ -67,6 +110,67 @@
       bottom: 0;
       height: 40%;
       top: auto;
+    }
+    .meta-wrapper {
+      background: none;
+      bottom: 0;
+      height: 40%;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+      .meta-wrapper-inner {
+        height: 100%;
+        display: table;
+        padding-bottom: 30px;
+        width: 100%;
+      }
+    }
+    .meta-back {
+      background: #000000;
+      bottom: 0;
+      height: 100%;
+      opacity: 0.6;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+    }
+    .meta-icon {
+      display: block;
+      height: 37px;
+      left: 20px;
+      margin-top: -34px;
+      position: absolute;
+      top: 50%;
+      width: 37px;
+      @include breakpoint($bp-480-width) {
+        margin-top: -35px;
+      }
+      ~ .meta {
+        padding-left: 69px;
+      }
+    }
+    .meta {
+      display: table-cell;
+      max-width: 100px;
+      overflow: hidden;
+      padding-left: 20px;
+      position: relative;
+      vertical-align: middle;
+      width: 100%;
+      .caption {
+        font-size: 14px;
+        line-height: 18px;
+      }
+      .title {
+        font-size: 16px;
+        line-height: 20px;
+      }
+      .additional-text {
+        font-family: $tex-gyreschola-italic;
+        font-size: 12px;
+        line-height: 14px;
+        text-transform: uppercase;
+      }
     }
   }
 }

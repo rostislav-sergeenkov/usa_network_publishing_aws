@@ -2,6 +2,29 @@
   Drupal.behaviors.featured_carousel = {
     attach: function (context) {
 
+      if (window.innerWidth < window_size_tablet_portrait){
+        $('.featured-carousel').addClass('destroy');
+        $('.featured-carousel > ul > li:gt(2)').addClass('hidden');
+      }
+
+      $(window).bind('resize', function () {
+
+        if (window.innerWidth >= window_size_tablet_portrait){
+          if ($('.featured-carousel').hasClass('destroy')) {
+            $('.featured-carousel').removeClass('destroy');
+            $('.featured-carousel > ul > li').removeClass('hidden');
+            $('.featured-block a.more').removeClass('hidden');
+          }
+        } else {
+          if (!$('.featured-carousel').hasClass('destroy')) {
+            $('.featured-carousel').jcarousel('destroy');
+            $('.featured-carousel').addClass('destroy');
+            $('.featured-carousel > ul > li:gt(2)').addClass('hidden');
+          }
+        }
+
+      });
+
       /*function featuredRebuiltTwoOne() {
         $('.featured-carousel li').each(function(){
           if(!$(this).hasClass('last')){

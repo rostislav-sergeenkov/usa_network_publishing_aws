@@ -5,7 +5,7 @@
 ?>
 <h3><?php print $title; ?></h3>
 <div class="node node-usanetwork-promo show-color-border<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?>">
-  <a href="javascript:void(0)">
+  <a href="<?php print !empty($episode_url) ? $episode_url : 'javascript:void(0)'; ?>">
     <div class="meta-wrap">
       <div class="meta">
         <?php if (!empty($episode_title)): ?>

@@ -92,16 +92,6 @@
                 <?php else: ?>
                   <li id="nav-<?php print $section['type']; ?>" class="internal" data-menuanchor="<?php print $section['type']; ?>">
                     <?php print $section['link']; ?>
-                    <?php if ($section['type'] == 'quizzes' && !empty($quizzes)): ?>
-                    <?php /* @TODO: Can we make the quiz url's dynamic instead of hard-coding /dig/games? */ ?>
-                    <ul>
-                      <?php foreach ($quizzes as $quiz): ?>
-                      <?php if (!empty($quiz['nid']) && !empty($quiz['title']) && !empty($quiz['url'])): ?>
-                      <li id="nav-quiz-<?php print $quiz['nid']; ?>" class="internal<?php if (!empty($quiz['status'])) print ' ' . $quiz['status']; ?>" data-menuanchor="<?php print $quiz['title']; ?>"><a href="/dig/quizzes/<?php print $quiz['url']; ?>"><?php print $quiz['title']; ?></a></li>
-                      <?php endif; ?>
-                      <?php endforeach; ?>
-                    </ul>
-                    <?php endif; ?>
                   </li>
                 <?php endif; ?>
               <?php endif; ?>

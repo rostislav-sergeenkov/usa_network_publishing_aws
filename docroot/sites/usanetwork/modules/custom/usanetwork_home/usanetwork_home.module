@@ -407,6 +407,8 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
     'usanetwork_home_shows_queue_social' => array(
       'variables' => array(
         'show_class' => NULL,
+        'about_show' => NULL,
+        'show_url' => NULL,
       ),
       'template' => 'templates/usanetwork-home-shows-queue-social',
     ),
@@ -1133,9 +1135,17 @@ function _usanetwork_home_shows_queue_get_advert_content($show_node_wrapper) {
 function _usanetwork_home_shows_queue_get_social_content($show_node_wrapper) {
   $show_node = $show_node_wrapper->value();
 
+  $about_field_value = NULL;
+
+  if (!empty($show_node->field_tvs_about)) {
+    $about_field_value = $show_node_wrapper->field_tvs_about->value();
+  }
+
   $theme_variables = array(
     'show_class' => !empty($show_node->nid) ? usanetwork_tv_shows_color_show_css_class($show_node->nid)
           : '',
+    'about_show' => $about_field_value,
+    'show_url' => url('node/' . $show_node->nid),
   );
 
   return theme('usanetwork_home_shows_queue_social', $theme_variables);

@@ -808,6 +808,8 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-left: 0;
     margin-top: -26px;
   }
+}
+@media (max-width: 768px) {
   .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .caption, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .title, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .additional-text {
     padding-left: 80px;
   }
@@ -884,6 +886,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   padding-bottom: 30px;
   width: 100%;
 }
+@media (max-width: 768px) {
+  .featured-block .carousel ul li .featured-small .meta-wrapper .meta-wrapper-inner {
+    padding-bottom: 0px;
+  }
+}
 .featured-block .carousel ul li .featured-small .meta-back {
   background: #000000;
   bottom: 0;
@@ -902,13 +909,32 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   top: 50%;
   width: 37px;
 }
+@media (max-width: 768px) {
+  .featured-block .carousel ul li .featured-small .meta-icon {
+    margin-top: -19px;
+  }
+}
 @media (max-width: 480px) {
   .featured-block .carousel ul li .featured-small .meta-icon {
-    margin-top: -35px;
+    height: 30px;
+    left: 12px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .featured-block .carousel ul li .featured-small .meta-icon:before {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
   }
 }
 .featured-block .carousel ul li .featured-small .meta-icon ~ .meta {
   padding-left: 69px;
+}
+@media (max-width: 480px) {
+  .featured-block .carousel ul li .featured-small .meta-icon ~ .meta {
+    padding-left: 48px;
+  }
 }
 .featured-block .carousel ul li .featured-small .meta {
   display: table-cell;
@@ -923,15 +949,51 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-size: 14px;
   line-height: 18px;
 }
+@media (max-width: 640px) {
+  .featured-block .carousel ul li .featured-small .meta .caption {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .featured-block .carousel ul li .featured-small .meta .caption {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
 .featured-block .carousel ul li .featured-small .meta .title {
   font-size: 16px;
   line-height: 20px;
+}
+@media (max-width: 640px) {
+  .featured-block .carousel ul li .featured-small .meta .title {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .featured-block .carousel ul li .featured-small .meta .title {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }
 .featured-block .carousel ul li .featured-small .meta .additional-text {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .featured-block .carousel ul li .featured-small .meta .additional-text {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .featured-block .carousel ul li .featured-small .meta .additional-text {
+    font-size: 8px;
+    line-height: 10px;
+  }
 }
 
 .play-icon:before, .video-icon:before, .play-icon-half:before, .article-icon:before, .game-icon:before, .photo-icon:before, .poll-icon:before {
@@ -8425,6 +8487,54 @@ footer h2 {
   position: relative;
   width: 100%;
 }
+.featured-block > .more-button {
+  display: none;
+}
+.featured-block > .more-button:after {
+  color: #ffffff;
+  content: "\e609";
+  display: block;
+  font-family: "ico-font";
+  font-size: 24px;
+  left: 50%;
+  line-height: 24px;
+  margin-left: -12px;
+  margin-top: 5px;
+  position: absolute;
+  top: 50%;
+}
+.featured-block > .more-button.more .close-text {
+  display: none;
+}
+.featured-block > .more-button.close:after {
+  content: "\e60a";
+}
+.featured-block > .more-button.close .more-text {
+  display: none;
+}
+@media (max-width: 768px) {
+  .featured-block > .more-button {
+    background: #3a3a3a;
+    color: #ffffff;
+    display: block;
+    font-family: "avalonbold", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    height: 100px;
+    line-height: 80px;
+    letter-spacing: 1px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .featured-block > .more-button {
+    font-size: 15px;
+    height: 60px;
+    line-height: 48px;
+  }
+}
 @media (max-width: 768px) {
   .featured-block .carousel.start {
     margin-left: 0;
@@ -8476,7 +8586,10 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li {
+    height: auto;
     margin-bottom: 15px;
+    margin-right: 0;
+    width: 100%;
   }
 }
 .featured-block .carousel ul li.first {
@@ -8489,7 +8602,6 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li.first {
-    height: auto;
     width: 100%;
   }
   .featured-block .carousel ul li.first img {
@@ -8507,6 +8619,12 @@ footer h2 {
     width: 539px;
   }
 }
+@media (max-width: 768px) {
+  .featured-block .carousel ul li img {
+    height: auto;
+    width: 100%;
+  }
+}
 .featured-block .carousel ul li > div:not(.featured-large) {
   height: 268px;
   width: 476px;
@@ -8515,6 +8633,13 @@ footer h2 {
   .featured-block .carousel ul li > div:not(.featured-large) {
     height: 303px;
     width: 539px;
+  }
+}
+@media (max-width: 768px) {
+  .featured-block .carousel ul li > div:not(.featured-large) {
+    float: left;
+    height: auto;
+    width: 49%;
   }
 }
 .featured-block .carousel ul li > div:not(.featured-large):first-child {
@@ -8528,6 +8653,7 @@ footer h2 {
 @media (max-width: 768px) {
   .featured-block .carousel ul li > div:not(.featured-large):first-child {
     margin-bottom: 0px;
+    margin-right: 2%;
   }
 }
 .featured-block .carousel ul li .node-usanetwork-promo {
@@ -8643,13 +8769,14 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .featured-block.carousel-block {
-    padding: 60px 10px 0px;
+    padding: 60px 0px;
   }
   .featured-block .carousel {
     position: relative;
     margin-left: 0;
     margin-bottom: 0px;
     margin-top: 20px;
+    padding: 0 10px;
   }
   .featured-block .carousel-description-item {
     left: 0px;
@@ -8664,7 +8791,7 @@ footer h2 {
     display: block;
     float: none;
     margin-right: 0;
-    padding: 0px 0px 0px 10px;
+    padding: 0px 0px 0px 20px;
     width: 100%;
   }
   .featured-block .carousel-description-item .description-block {

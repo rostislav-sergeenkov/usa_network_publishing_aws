@@ -5,9 +5,7 @@
  *  $additional_text
  */
 ?>
-<?php if (!empty($background)): ?>
-  <div class="hidden background-image" data-url="<?php print $background; ?>"></div>
-<?php endif; ?>
+
 <div class="carousel-description-item start">
   <div class="description-wrapper">
     <div class="description-block">

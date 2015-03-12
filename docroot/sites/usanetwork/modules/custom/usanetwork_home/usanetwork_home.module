@@ -106,6 +106,47 @@ function usanetwork_home_block_view($delta = '') {
   return $block;
 }
 
+/**
+ * Implements hook_default_queues_type().
+ */
+function usanetwork_home_default_queues_type() {
+  $items = array();
+
+  $items['tv_shows_queue'] = entity_import('queues_type', '{
+    "label" : "TV Shows Queue",
+    "type" : "tv_shows_queue",
+    "target" : "node",
+    "settings" : {
+      "entityreference_field" : {
+        "cardinality" : "-1",
+        "target_bundles" : {
+          "tv_show" : "tv_show",
+          "usanetwork_aspot" : 0,
+          "catchall_page" : 0,
+          "global_nav_image" : 0,
+          "usa_homepage" : 0,
+          "media_gallery" : 0,
+          "person" : 0,
+          "post" : 0,
+          "usanetwork_promo" : 0,
+          "usanetwork_promo_iframe" : 0,
+          "quiz" : 0,
+          "catchall_seo_page" : 0,
+          "snipe" : 0,
+          "usanetwork_static_page" : 0,
+          "tv_episode" : 0,
+          "tv_season" : 0,
+          "usa_video" : 0,
+          "usa_tve_video" : 0,
+          "webform" : 0
+        }
+      }
+    }
+  }');
+
+  return $items;
+}
+
 function _usanetwork_home_featured_carousel() {
   $content = array();
 
@@ -167,6 +208,7 @@ function _usanetwork_home_featured_carousel() {
           'title' => $promo_data['title'],
           'more_link' => isset($more_link) ? $more_link : NULL,
           'class' => ($i == 0) ? 'featured-large' : 'featured-small',
+          'is_first' => ($i == 0) ? TRUE : FALSE,
         );
         $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
 
@@ -456,6 +498,7 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
         'title' => NULL,
         'caption' => NULL,
         'more_link' => NULL,
+        'is_first' => NULL,
       ),
       'path' => $path . '/templates',
       'template' => 'usanetwork-home-featured-promo'

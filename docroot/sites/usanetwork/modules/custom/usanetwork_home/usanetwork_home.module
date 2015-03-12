@@ -167,6 +167,7 @@ function _usanetwork_home_featured_carousel() {
           'title' => $promo_data['title'],
           'more_link' => isset($more_link) ? $more_link : NULL,
           'class' => ($i == 0) ? 'featured-large' : 'featured-small',
+          'is_first' => ($i == 0) ? TRUE : FALSE,
         );
         $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
 
@@ -457,6 +458,7 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
         'title' => NULL,
         'caption' => NULL,
         'more_link' => NULL,
+        'is_first' => NULL,
       ),
       'path' => $path . '/templates',
       'template' => 'usanetwork-home-featured-promo'

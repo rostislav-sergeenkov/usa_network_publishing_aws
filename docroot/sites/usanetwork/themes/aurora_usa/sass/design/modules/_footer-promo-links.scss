@@ -1,0 +1,47 @@
+#block-usanetwork-blocks-usa-footer-promos {
+  background-color: $footer-promo-links;
+  width: 100%;
+  #footer-promo-links {
+    display: table;
+    margin: 0 auto;
+    padding: 25px 0;
+    max-width: 1100px;
+    width: 100%;
+    .footer-promo-link-item {
+      display: table-cell;
+      cursor: pointer;
+      padding: 0 10px;
+      text-align: center;
+      vertical-align: middle;
+      @include breakpoint($bp-768-width) {
+        padding: 0 5px;
+      }
+      .image {
+        line-height: 0;
+        img {
+          max-width: 50px;
+          width: 100%;
+          @include breakpoint($bp-768-width) {
+            max-width: 46px;
+          }
+        }
+      }
+      .title {
+        color: $poll-color;
+        font-family: $avalon-medium;
+        font-size: 13px;
+        margin-top: 5px;
+        overflow: hidden;
+        text-transform: uppercase;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        @include breakpoint($bp-768-width) {
+          font-size: 12px;
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 8px;
+        }
+      }
+    }
+  }
+}

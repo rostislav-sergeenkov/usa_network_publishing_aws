@@ -30,17 +30,26 @@
 
           if (typeof callback == 'function') callback();
 
-          activeQuizContainer.find('li').animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
-            $(this).html('<li>' + data.quiz_html + '</li>');
+          // change quiz title
+          $('#microsite #quizzes h1, #microsite #quizzes h2').animate({'opacity': 0}, 1000, function(){
+            $(this).html(data.title).animate({'opacity': 1}, 1000);
+          });
+          // change quiz
+          activeQuizContainer.find('li').attr({'id': 'quiz-' + data.nid, 'data-node-id': data.nid}).animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
+            $(this).html(data.quiz_html);
+            activeQuizContainer.find('li#quiz-' + data.nid).animate({'opacity': 1}, 1000, function(){
+              // re-initialize quiz
+              Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
 
-            // reset quiz behavior
-            Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
+              // update 300x250 ad, if needed
+              setTimeout(function(){
+                $('#microsite #usanetwork-quiz-' + data.nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center><noscript>&lt;a href="http://ad.doubleclick.net/jump/nbcu.usa/default;pos=7;sz=300x250;site=usa;!c=usa;tile=1;ord=5685412765?"&gt;&lt;img src="http://ad.doubleclick.net/ad/nbcu.usa/default;pos=7;sz=300x250;site=usa;!c=usa;tile=1;ord=5685412765?" alt="" /&gt;&lt;/a&gt;</noscript>');
+                }, 1000);
 
-            quizzesNav.find('li.active').removeClass('active disabled');
-            quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
-            activeQuizContainer.find('li[data-node-id]').animate({'opacity': 1}, 1000, function(){
-//Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
-
+              // change quiz navigation
+              quizzesNav.find('li.active').removeClass('active disabled');
+              quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
+  //Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
             });
           });
         })

@@ -382,7 +382,7 @@ function _usanetwork_home_bspot_cspot() {
  */
 function usanetwork_home_preprocess_block(&$variables) {
   $block = $variables['block'];
-  if (0 && isset($block->bid) && ($block->bid == 'views-usa_video-front_full_episodes' || $block->bid == 'views-usa_mpx_video-front_full_epsds' || $block->bid == 'usanetwork_home-usanetwork_home_promo_carousel')) {
+  if (isset($block->bid) && ($block->bid == 'views-usa_video-front_full_episodes' || $block->bid == 'views-usa_mpx_video-front_full_epsds' || $block->bid == 'usanetwork_home-usanetwork_home_promo_carousel')) {
     $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
     //carousel-promo
 

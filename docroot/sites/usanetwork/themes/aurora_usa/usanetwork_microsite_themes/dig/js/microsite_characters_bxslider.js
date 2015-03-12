@@ -1,4 +1,4 @@
-// BXSLIDER for characters
+// BXSLIDER for characters -- MEET THE CAST carousel in home section
 (function ($) {
   Drupal.behaviors.micrositeBxSliders = {
 
@@ -78,7 +78,13 @@
           var item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
 
           if (anchor == 'characters') {
-            if (item != '') Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10, 1);
+            if (item != '') {
+              Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10, 1);
+            }
+            else {
+              Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+            }
           }
         }
       });

@@ -1,7 +1,7 @@
 name = Full Bleed Promo
 core = 7.x
 version = "7.x-1.0.0"
-package = Features
+package = USA Network
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = file

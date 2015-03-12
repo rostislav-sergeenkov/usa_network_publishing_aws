@@ -12,7 +12,6 @@
             &:before {
               left: auto;
               right: 0;
-              width: 7px;
             }
           }
         }
@@ -363,9 +362,6 @@
       position: relative;
       top: 0;
       width: 100%;
-      .description-button {
-        display: none;
-      }
       &.start {
         left: 0px;
       }

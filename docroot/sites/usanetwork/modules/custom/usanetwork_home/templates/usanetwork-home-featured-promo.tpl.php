@@ -12,10 +12,13 @@
     <div class="meta-wrapper">
       <div class="meta-back"></div>
       <div class="meta-wrapper-inner">
-        <?php if ($icon_type): ?>
-          <div class="meta-icon <?php print $icon_type; ?>"></div>
+        <?php if ($icon_type && !$is_first): ?>
+            <div class="meta-icon <?php print $icon_type; ?>"></div>
         <?php endif; ?>
         <div class="meta">
+          <?php if ($icon_type && $is_first): ?>
+            <div class="meta-icon <?php print $icon_type; ?>"></div>
+          <?php endif; ?>
           <div class="caption"><?php print $caption; ?></div>
           <div class="title"><?php print $title; ?></div>
         </div>
@@ -29,6 +32,3 @@
     <?php print $more_link; ?>
   <?php endif; ?>
 </div>
-
-
-

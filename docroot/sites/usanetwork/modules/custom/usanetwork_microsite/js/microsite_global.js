@@ -19,7 +19,7 @@
           listItem = $('#' + listId + ' li:eq(' + k + ')');
 
       listItem.addClass('active');
-      setTimeout(function(){
+      setTimeout(function () {
         listItem.removeClass('active');
       }, tweenDuration);
     },
@@ -30,7 +30,7 @@
           listId = list.attr('id'),
           listFound = (list.length > 0) ? 1 : 0,
           numQuotes = list.find('li').length
-          kmax = numQuotes - 1,
+      kmax = numQuotes - 1,
           k = 0,
           fadeDuration = 700,
           tweenDuration = 7000,
@@ -50,7 +50,7 @@
             Drupal.behaviors.microsite_scroll.animateQuote(listSelector, k, kmax, tweenDuration);
 
             // setInterval
-            Drupal.behaviors.microsite_scroll.quoteAnimationTimer = setInterval(function(){
+            Drupal.behaviors.microsite_scroll.quoteAnimationTimer = setInterval(function () {
               k = (k >= kmax) ? 0 : k + 1;
               Drupal.behaviors.microsite_scroll.animateQuote(listSelector, k, kmax, tweenDuration);
             }, totalDuration);
@@ -655,14 +655,13 @@
     },
     //Get Thumbnail List
     micrositeGetThumbnailList: function (url, offset, $toggler, categoryName) {
-      console.info(url);
       $.ajax({
         type: 'GET',
         url: url,
         dataType: 'json',
         success: function (data) {
 
-          tpController.shareCardCategory = categoryName;
+          $pdk.controller.shareCardCategory = categoryName;
 
           var videoList = data.videos,
               infoMore = data.info.more,
@@ -718,16 +717,11 @@
       });
     },
     attach: function (context, settings) {
-
-/*
-      history.pushState(
-        {
-          "state": window.location.pathname
-        },
-        window.location.pathname,
-        window.location.pathname
-      );
-*/
+      var startPathname = window.location.pathname;
+      
+      if (!$('html.ie9').length) {
+        history.pushState({"state": startPathname}, startPathname, startPathname);
+      }
 
       var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
       //change video on click to preview elements
@@ -738,10 +732,24 @@
       });
 
       //filters toggles
-      $('#video-filter .filter-label').click(function () {
-        $('#video-filter .filter-label').toggleClass('open');
-        $('#video-filter .filter-menu').toggle();
+      $('#video-filter .filter-label').bind('click', function () {
+        if ($('#video-filter .filter-label').hasClass('open')) {
+          $('#video-filter .filter-label').removeClass('open');
+          $('#video-filter .filter-menu').hide();
+        } else {
+          $('#video-filter .filter-label').addClass('open');
+          $('#video-filter .filter-menu').show();
+        }
       });
+      $('body').live('click', function (e) {
+        if($(e.target).parents().filter('#video-filter').length != 1){
+          if ($('#video-filter .filter-label').hasClass('open')) {
+            $('#video-filter .filter-label').removeClass('open');
+            $('#video-filter .filter-menu').hide();
+          }
+        }
+      });
+
       $('#video-filter .filter-item').click(function () {
 
         var filterLabel = $('#video-filter .filter-label'),
@@ -750,13 +758,14 @@
 
         if ($(this).hasClass('active')) {
           filterLabel.removeClass('open');
-          filterMenu.toggle();
+          filterMenu.hide();
           return false;
         } else {
           filterItem.removeClass('active');
           $(this).addClass('active');
-          filterLabel.find('span').text($(this).text()).removeClass('open');
-          filterMenu.toggle();
+          filterLabel.find('span').text($(this).text());
+          filterLabel.removeClass('open');
+          filterMenu.hide();
 
           var categoryName = $('#video-filter .filter-item.active').text(),
               offset = 0,
@@ -786,10 +795,10 @@
 
             var url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + itemList;
 
-            if(!$toggler.hasClass('processed')){
+            if (!$toggler.hasClass('processed')) {
               Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, itemList, $toggler, categoryName);
               $toggler.addClass('processed');
-            }else{
+            } else {
               return false;
             }
 
@@ -1058,9 +1067,9 @@
 
 
       var resizeTimer;
-      $(window).bind('resize', function() {
+      $(window).bind('resize', function () {
         if (typeof resizeTimer != 'undefined') clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
+        resizeTimer = setTimeout(function () {
           usa_debug('another resize event');
           setSectionHeight();
 

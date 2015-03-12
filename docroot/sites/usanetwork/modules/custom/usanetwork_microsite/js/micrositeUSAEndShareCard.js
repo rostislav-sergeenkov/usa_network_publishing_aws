@@ -163,9 +163,6 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     var currentGuid = encodeURIComponent(NBCUEndShareCard.NowPlaying.guid);
     var currentNid = tpconfig.nid;
     var url = NBCUEndShareCard.Feed + '/' + currentNid + '/' + currentGuid;
-    if (tpController.shareCardCategory) {
-      url += '/' + tpController.shareCardCategory;
-    }
     if (!NBCUEndShareCard.AppearsToBeIE) {
       $.ajax({
         type: "GET",

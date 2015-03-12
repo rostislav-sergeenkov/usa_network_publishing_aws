@@ -1951,6 +1951,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-5',
         ),
+        'usanetwork_blocks-usa_footer_promos' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_promos',
+          'region' => 'content',
+          'weight' => '-4',
+        ),
       ),
     ),
   );

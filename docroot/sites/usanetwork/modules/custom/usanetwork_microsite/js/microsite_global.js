@@ -655,7 +655,6 @@
     },
     //Get Thumbnail List
     micrositeGetThumbnailList: function (url, offset, $toggler, categoryName) {
-      console.info(url);
       $.ajax({
         type: 'GET',
         url: url,
@@ -738,13 +737,21 @@
       });
 
       //filters toggles
-      $('#video-filter .filter-label').click(function () {
+      $('#video-filter .filter-label').bind('click', function () {
         if ($('#video-filter .filter-label').hasClass('open')) {
           $('#video-filter .filter-label').removeClass('open');
           $('#video-filter .filter-menu').hide();
         } else {
           $('#video-filter .filter-label').addClass('open');
           $('#video-filter .filter-menu').show();
+        }
+      });
+      $('body').live('click', function (e) {
+        if($(e.target).parents().filter('#video-filter').length != 1){
+          if ($('#video-filter .filter-label').hasClass('open')) {
+            $('#video-filter .filter-label').removeClass('open');
+            $('#video-filter .filter-menu').hide();
+          }
         }
       });
 

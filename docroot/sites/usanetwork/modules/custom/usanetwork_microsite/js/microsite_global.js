@@ -661,7 +661,7 @@
         dataType: 'json',
         success: function (data) {
 
-          tpController.shareCardCategory = categoryName;
+          $pdk.controller.shareCardCategory = categoryName;
 
           var videoList = data.videos,
               infoMore = data.info.more,
@@ -717,16 +717,11 @@
       });
     },
     attach: function (context, settings) {
-
-/*
-      history.pushState(
-          {
-            "state": window.location.pathname
-          },
-          window.location.pathname,
-          window.location.pathname
-      );
-*/
+      var startPathname = window.location.pathname;
+      
+      if (!$('html.ie9').length) {
+        history.pushState({"state": startPathname}, startPathname, startPathname);
+      }
 
       var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
       //change video on click to preview elements

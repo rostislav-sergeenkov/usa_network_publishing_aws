@@ -1625,10 +1625,9 @@ function usanetwork_quiz_field_default_field_instances() {
       ),
       'microsite_output' => array(
         'label' => 'hidden',
-        'module' => 'usanetwork_field_formatters',
         'settings' => array(),
-        'type' => 'custom_js',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1686,7 +1685,7 @@ function usanetwork_quiz_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'usanetwork_field_formatters',
         'settings' => array(),
-        'type' => 'custom_css',
+        'type' => 'custom_css_ajax',
         'weight' => 0,
       ),
       'teaser' => array(

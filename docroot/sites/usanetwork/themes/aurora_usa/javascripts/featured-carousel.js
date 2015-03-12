@@ -7,6 +7,11 @@
         $('.featured-carousel > ul > li:gt(1)').addClass('hidden');
       }
 
+      if ($('.featured-block').attr('data-url')) {
+        var back_url = $('.featured-block').attr('data-url');
+        $('.featured-block').attr('data-url').css({'background' : 'url('+ back_url +') no-repeat', 'background-size' : 'cover'});
+      }
+
       $(window).bind('resize', function () {
 
         if (window.innerWidth >= window_size_tablet_portrait){

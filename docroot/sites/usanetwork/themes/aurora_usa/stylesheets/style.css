@@ -8778,7 +8778,7 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .featured-block.carousel-block {
-    padding: 60px 0px;
+    padding: 60px 0px 0px;
   }
   .featured-block .carousel {
     position: relative;

@@ -34,23 +34,24 @@
 <?php endif; ?>
 <!-- end backgounds -->
 
-<div id="character-inner-container">
+<div id="character-inner-container" class="clearfix">
   <!-- right pane -->
   <div id="right-pane-bg"></div>
 
   <!-- 728x90 ad -->
   <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
 
-<?php /* @TODO: FINISH QUOTES CODE ?>
   <!-- quotes -->
   <?php if (!empty($people)): ?>
-    <?php foreach ($people as $person_key => $person): ?>
-    <?php if (!empty($person['quotes'])): ?>
-    <div class="<?php if (!empty($person['id'])) print $person['id'] . ' '; ?><?php if(!empty($person['status'])) print $person['status'] . ' '; ?>quotes">
+    <div id="character-quotes">
       <ul>
-        <?php foreach ($person['quotes'] as $quotation_key => $quotation): ?>
+      <?php foreach ($people as $person_key => $person): ?>
+      <?php if (!empty($person['quotes'])): ?>
+        <li id="quotes-<?php if (!empty($person['id'])) print $person['id']; ?>" class="quotes<?php if (!empty($person['id'])) print ' ' . $person['id']; ?><?php if(!empty($person['status'])) print ' ' . $person['status']; ?>">
+          <ul>
+          <?php foreach ($person['quotes'] as $quotation): ?>
           <?php if (!empty($quotation['quote']) && !empty($quotation['source'])): ?>
-            <li class="<?php if ($quotation_key == 0) print ' active'; ?>">
+            <li>
               <?php if (!empty($quotation['quote'])): ?>
                 <div class="quote">
                   <?php print $quotation['quote']; ?>
@@ -63,14 +64,15 @@
               <?php endif; ?>
             </li>
           <?php endif; ?>
-        <?php endforeach; ?>
+          <?php endforeach; ?>
+          </ul>
+        </li>
+      <?php endif; ?>
+      <?php endforeach; ?>
       </ul>
     </div>
-    <?php endif; ?>
-    <?php endforeach; ?>
   <?php endif; ?>
   <!-- end quotes -->
-<?php */ ?>
 
   <!-- characters title and navigation -->
   <div class="right-pane-content">

@@ -86,7 +86,6 @@
 								videoContainer.addClass('pause');
 							}
 							function _onReleaseStart(){
-
 								videoContainer.removeClass('play pause');
 
 								if(!$('#videos').hasClass('active')){
@@ -96,6 +95,7 @@
 								}else{
 									videoContainer.addClass('start play');
 								}
+								Drupal.behaviors.microsite_scroll.micrositeAdAdded();
 							}
 
 							function _showPicker() {

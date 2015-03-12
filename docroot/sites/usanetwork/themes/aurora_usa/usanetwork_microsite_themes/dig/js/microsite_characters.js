@@ -166,8 +166,8 @@
             if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
             // stop quotation animations and hide quotes
-            Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
-            $('#microsite #characters .quotes').fadeOut(1000);
+            if (typeof Drupal.behaviors.microsite_scroll.quoteAnimationTimer != 'undefined') clearInterval(Drupal.behaviors.microsite_scroll.quoteAnimationTimer);
+            $('#microsite .quotes').removeClass('active');
 
             // prepare next or previous background and character-info
             $('#microsite #characters .' + nextCharacterId).addClass(direction);
@@ -197,10 +197,7 @@
                   }
 
                   // start quotation animations and show quotes
-                  Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-                  $('#microsite #characters .quotes').removeClass('active');
-                  $('#microsite #characters .quotes.' + nextCharacterId).addClass('active').fadeIn(1000);
-//                  Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
+                  Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.' + nextCharacterId);
 
                   // remove disabled
                   navItems.find('li.disabled').removeClass('disabled');
@@ -238,10 +235,7 @@
                     }
 
                     // start quotation animations and show quotes
-                    Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-                    $('#microsite #characters .quotes').removeClass('active');
-                    $('#microsite #characters .quotes.' + nextCharacterId).addClass('active').fadeIn(1000);
-//                    Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
+                    Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.' + nextCharacterId);
 
                     // remove disabled
                     navItems.find('li.disabled').removeClass('disabled');

@@ -126,11 +126,13 @@
           </a>
         </div>
       </div>
-      <div class="guide-filter-wrapper">
-        <?php foreach ($seasons as $season): ?>
-          <?php print $season; ?>
-        <?php endforeach; ?>
-      </div>
+      <?php if (!empty($seasons)): ?>
+        <div class="guide-filter-wrapper">
+          <?php foreach ($seasons as $season): ?>
+            <?php print $season; ?>
+          <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>

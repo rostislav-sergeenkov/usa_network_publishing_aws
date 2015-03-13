@@ -1,7 +1,7 @@
 <div class="video-block">
   <div class="player-wrapper">
     <div class="node usanetwork-aspot player">
-      <?php if ($video_inactive): ?>
+      <?php if (!empty($video_inactive)): ?>
         <div class="video-player-wrapper inactive">
           <?php print $video_inactive; ?>
         </div>

@@ -245,10 +245,14 @@ function usanetwork_post_preprocess_node(&$vars) {
     }
 
     if (isset($vars['content']['author'])) {
-      $override_default_author = reset(field_get_items('node', $node, 'field_override_display_author'));
-      if ($override_default_author['value'] == 1) {
-        $field_display_author = reset(field_get_items('node', $node, 'field_blog_display_author'));
-        if ($field_display_author['value'] == 1) {
+      $override_display_author_field = field_get_items('node', $node, 'field_override_display_author');
+      $override_default_author = !empty($override_display_author_field) ? reset($override_display_author_field) : array();
+
+      if (isset($override_default_author['value']) && $override_default_author['value'] == 1) {
+        $blog_display_author_field = field_get_items('node', $node, 'field_blog_display_author');
+        $field_display_author = !empty($blog_display_author_field) ? reset($blog_display_author_field) : array();
+
+        if (isset($field_display_author['value']) && $field_display_author['value'] == 1) {
           $display_author = TRUE;
         }
         else {
@@ -286,8 +290,10 @@ function usanetwork_post_preprocess_node(&$vars) {
         }
       }
       if ($display_author) {
-        $conributor = reset(field_get_items('node', $node, 'field_contributor'));
-        if ($conributor) {
+        $contributor_field = field_get_items('node', $node, 'field_contributor');
+        $conributor = !empty($contributor_field) ? reset($contributor_field) : array();
+
+        if (!empty($conributor)) {
           $author = user_load($conributor['target_id']);
         }
         else {
@@ -954,21 +960,29 @@ function usanetwork_post_theme() {
  */
 function theme_usanetwork_post_author_display($variables) {
   $author = $variables['author'];
+  $author_info = array();
   $post_date = $variables['post_date'];
   $display_full = $variables['display_full'];
-  $author_image = reset(field_get_items('user', $author, 'field_profile_image'));
-  if ($author_image) {
+  $profile_image_field = field_get_items('user', $author, 'field_profile_image');
+  $author_image = !empty($profile_image_field) ? reset($profile_image_field) : array();
+
+  if (!empty($author_image)) {
     $image = theme('image_style', array('path' => $author_image['uri'], 'style_name' => 'medium'));
   }
   else {
     $image = '';
   }
-  $author_info = reset(field_get_items('user', $author, 'field_biography'));
+  $biography_field = field_get_items('user', $author, 'field_biography');
+
+  if (!empty($biography_field)) {
+    $author_info = reset($biography_field);
+  }
+
   $output = '';
   $output .= '<div class="post-author">' . t('By') . ' ' . $author->name . '</div>';
   $output .= '<div class="post-date">' . $post_date . '</div>';
   $output .= '<div class="post-author-image show-border">' . $image . '</div>';
-  if ($display_full) {
+  if ($display_full && !empty($author_info['value'])) {
     $output .= '<div class="post-author-info">' . $author_info['value'] . '</div>';
   }
   return $output;

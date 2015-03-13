@@ -506,7 +506,7 @@ function _usanetwork_ads_get_entity_dart_settings($entity, $entity_type) {
   }
 
   // Entity uses default settings
-  if (empty($entity_settings) || $entity_settings['default']) {
+  if (empty($entity_settings) || (!empty($entity_settings['default']) && $entity_settings['default'])) {
     return $entity_dart_settings;
   }
 
@@ -550,7 +550,7 @@ function _usanetwork_ads_is_entity_sponsored($entity, $entity_type) {
   $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
 
   if (empty($entity_settings)
-    || $entity_settings['default']
+    || (!empty($entity_settings['default']) && $entity_settings['default'])
     || !isset($entity_settings['is_sponsored'])
     || $entity_settings['is_sponsored'] == -1
   ) {
@@ -769,7 +769,11 @@ function _usanetwork_ads_get_entity_omniture_variables($entity, $entity_type) {
   }
   //
 
-  if (!empty($entity_settings) && !$entity_settings['default']) {
+  if (empty($entity_settings['default'])) {
+    $entity_settings['default'] = FALSE;
+  }
+
+  if (!empty($entity_settings) && !$entity_settings['default'] && isset($entity_settings['omniture']['variables'])) {
     // override parent settings
     $variables[] = _usanetwork_ads_get_omniture_variables($entity_settings['omniture']['variables']);
   }

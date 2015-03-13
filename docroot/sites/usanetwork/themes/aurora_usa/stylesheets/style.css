@@ -817,7 +817,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 768px) {
-  .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .caption, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .title, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .additional-text {
+  .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .caption, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .title, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .additional {
     padding-left: 80px;
   }
 }
@@ -854,7 +854,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-bottom: 10px;
   }
 }
-.featured-block .carousel ul li .featured-large .meta .additional-text {
+.featured-block .carousel ul li .featured-large .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
   line-height: 14px;
@@ -862,13 +862,13 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .featured-block .carousel ul li .featured-large .meta .additional-text {
+  .featured-block .carousel ul li .featured-large .meta .additional {
     font-size: 14px;
     line-height: 16px;
   }
 }
 @media (max-width: 768px) {
-  .featured-block .carousel ul li .featured-large .meta .caption, .featured-block .carousel ul li .featured-large .meta .title, .featured-block .carousel ul li .featured-large .meta .additional-text {
+  .featured-block .carousel ul li .featured-large .meta .caption, .featured-block .carousel ul li .featured-large .meta .title, .featured-block .carousel ul li .featured-large .meta .additional {
     padding-left: 20px;
     text-align: left;
   }
@@ -984,20 +984,20 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     line-height: 14px;
   }
 }
-.featured-block .carousel ul li .featured-small .meta .additional-text {
+.featured-block .carousel ul li .featured-small .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
 }
 @media (max-width: 640px) {
-  .featured-block .carousel ul li .featured-small .meta .additional-text {
+  .featured-block .carousel ul li .featured-small .meta .additional {
     font-size: 10px;
     line-height: 12px;
   }
 }
 @media (max-width: 480px) {
-  .featured-block .carousel ul li .featured-small .meta .additional-text {
+  .featured-block .carousel ul li .featured-small .meta .additional {
     font-size: 8px;
     line-height: 10px;
   }

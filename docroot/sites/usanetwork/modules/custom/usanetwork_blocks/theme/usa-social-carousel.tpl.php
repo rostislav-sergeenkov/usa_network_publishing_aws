@@ -24,22 +24,26 @@
       <ul class="slides">
         <?php foreach ($promos as $promo): ?>
           <li<?php if (!empty($promo['class'])): print ' class="' . $promo['class'] . '"'; endif;?>>
-            <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
-              <div class="meta">
-                <?php if (!empty($promo['title'])): ?>
-                  <div class="title"><?php print $promo['title']; ?></div>
+            <div class="node node-usanetwork-promo show-color-border social-promo">
+              <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
+                <div class="meta-wrapper">
+                  <div class="meta">
+                    <?php if (!empty($promo['title'])): ?>
+                      <div class="title"><?php print $promo['title']; ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($promo['series_and_number']) && !empty($promo['duration'])): ?>
+                      <div class="additional"><span><?php print $promo['series_and_number']; ?></span> <?php print $promo['duration']; ?></div>
+                    <?php elseif (!empty($promo['additional'])) : ?>
+                      <div class="additional"><span><?php print $promo['additional']; ?></span></div>
+                    <?php endif; ?>
+                    <div class="meta-icon play-icon resize-avail-1024"></div>
+                  </div>
+                </div>
+                <?php if (!empty($promo['image_url'])): ?>
+                  <div class="asset-img"><img src="<?php print $promo['image_url']; ?>" alt=""></div>
                 <?php endif; ?>
-                <?php if (!empty($promo['series_and_number']) && !empty($promo['duration'])): ?>
-                  <div class="additional"><span><?php print $promo['series_and_number']; ?></span> <?php print $promo['duration']; ?></div>
-                <?php elseif (!empty($promo['additional'])) : ?>
-                  <div class="additional"><span><?php print $promo['additional']; ?></span></div>
-                <?php endif; ?>
-                <div class="meta-icon play-icon resize-avail-1024"></div>
-              </div>
-              <?php if (!empty($promo['image_url'])): ?>
-                <div class="asset-img"><img src="<?php print $promo['image_url']; ?>" alt=""></div>
-              <?php endif; ?>
-            </a>
+              </a>
+            </div>
           </li>
         <?php endforeach; ?>
       </ul>

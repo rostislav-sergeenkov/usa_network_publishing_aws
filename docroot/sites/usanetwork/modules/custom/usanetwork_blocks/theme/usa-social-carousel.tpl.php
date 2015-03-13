@@ -3,17 +3,27 @@
  * Template for blocks.
 */
 ?>
-<div class="social-block <?php print !empty($episodes)? 'episodes-'.count($episodes): 'episodes-empty'; ?>">
-  <div class="social-text">
-      <?php print $title?>
-      <br>
-      <?php print $additional?>
+<div class="social-block">
+  <div class="carousel-description-item start">
+    <div class="description-wrapper">
+      <div class="description-block">
+        <?php if (!empty($caption)):?>
+          <div class="caption"><?php print $caption; ?></div>
+        <?php endif; ?>
+        <?php if (!empty($title)):?>
+          <div class="title"><?php print $title; ?></div>
+        <?php endif; ?>
+        <?php if (!empty($additional)):?>
+          <div class="additional-text"><?php print $additional; ?></div>
+        <?php endif; ?>
+      </div>
+    </div>
   </div>
   <?php if (!empty($promos)): ?>
-    <div class="promos-list">
-      <ul>
+    <div class="carousel social-carousel carousel-left start" data-carousel-id="4">
+      <ul class="slides">
         <?php foreach ($promos as $promo): ?>
-          <li>
+          <li<?php if (!empty($promo['class'])): print ' class="' . $promo['class'] . '"'; endif;?>>
             <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
               <div class="meta">
                 <?php if (!empty($promo['title'])): ?>
@@ -33,6 +43,8 @@
           </li>
         <?php endforeach; ?>
       </ul>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>
     </div>
   <?php endif; ?>
 </div>

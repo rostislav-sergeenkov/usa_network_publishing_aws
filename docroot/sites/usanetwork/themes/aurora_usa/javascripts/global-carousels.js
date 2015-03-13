@@ -85,7 +85,6 @@
         var $container = $(this),
             $carousel = $container.find('ul').eq(0),
             carousel_id = $container.eq(0).attr('data-carousel-id');
-
         if ((!$carousel.hasClass('stop')) && (!$container.hasClass('destroy'))) {
           $container
               .on('jcarousel:createend', function () {

@@ -899,7 +899,13 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       usanetwork_microsite_add_itunes_app_metatag();
     }
     usanetwork_microsite_full_video_for_mobile_device();
-    if (!empty($video_for_player)) {
+    if (isset($section_wrapper->field_video_adding_type)) {
+      $auto = $section_wrapper->field_video_adding_type->value();
+    }
+    $filter_enabled = !empty($auto);
+    unset($auto);
+    $theme_variables['filter_enabled'] = $filter_enabled;
+    if (!empty($video_for_player) && $filter_enabled) {
       if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
         $active_filter = _usanetwork_microsite_get_video_category($video_file);
       }
@@ -943,7 +949,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         $is_full_episode = 'true';
       }
       if ($published) {
-        if ($count < USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+        if ($count < USANETWORK_MICROSITE_VIDEOS_LIMIT || FALSE == $filter_enabled) {
           $theme_variables['videos'][] = array(
             'fid' => $current_video_file->fid,
             'url' => $suggested_video_url,

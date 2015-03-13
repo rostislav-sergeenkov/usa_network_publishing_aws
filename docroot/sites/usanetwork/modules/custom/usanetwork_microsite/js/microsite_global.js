@@ -655,14 +655,13 @@
     },
     //Get Thumbnail List
     micrositeGetThumbnailList: function (url, offset, $toggler, categoryName) {
-      console.info(url);
       $.ajax({
         type: 'GET',
         url: url,
         dataType: 'json',
         success: function (data) {
 
-          tpController.shareCardCategory = categoryName;
+          $pdk.controller.shareCardCategory = categoryName;
 
           var videoList = data.videos,
               infoMore = data.info.more,
@@ -718,16 +717,11 @@
       });
     },
     attach: function (context, settings) {
-
-/*
-      history.pushState(
-          {
-            "state": window.location.pathname
-          },
-          window.location.pathname,
-          window.location.pathname
-      );
-*/
+      var startPathname = window.location.pathname;
+      
+      if (!$('html.ie9').length) {
+        history.pushState({"state": startPathname}, startPathname, startPathname);
+      }
 
       var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
       //change video on click to preview elements
@@ -738,13 +732,21 @@
       });
 
       //filters toggles
-      $('#video-filter .filter-label').click(function () {
+      $('#video-filter .filter-label').bind('click', function () {
         if ($('#video-filter .filter-label').hasClass('open')) {
           $('#video-filter .filter-label').removeClass('open');
           $('#video-filter .filter-menu').hide();
         } else {
           $('#video-filter .filter-label').addClass('open');
           $('#video-filter .filter-menu').show();
+        }
+      });
+      $('body').live('click', function (e) {
+        if($(e.target).parents().filter('#video-filter').length != 1){
+          if ($('#video-filter .filter-label').hasClass('open')) {
+            $('#video-filter .filter-label').removeClass('open');
+            $('#video-filter .filter-menu').hide();
+          }
         }
       });
 
@@ -1002,6 +1004,7 @@
           anchorSection = Drupal.behaviors.microsite_scroll.micrositeToTitleCase(anchor);
           item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
 
+          // if video
           if (anchor == 'videos') {
             var currentThumb = $('#thumbnail-list .item-list ul li.thumbnail[data-video-url="' + anchorPathParts[2] + '"]');
             var withInit = true;
@@ -1032,7 +1035,28 @@
               $pdk.controller.pause(false);
             }
           }
-          else if (anchor == 'galleries') {
+          // if characters
+          else if (anchor == 'characters') {
+            if (item != '') {
+              Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10, 1);
+            }
+            else {
+              Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+            }
+          }
+          // if episodes
+          else if (anchor == 'episodes') {
+            if (item != '') {
+              Drupal.behaviors.microsite_episodes.micrositeSwitchEpisodes(item, 10, 1);
+            }
+            else {
+              Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+            }
+          }
+          // if any other section type
+          else { //if (anchor == 'galleries') {
             var anchorFull = basePath + '/' + anchor;
             Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
             Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);

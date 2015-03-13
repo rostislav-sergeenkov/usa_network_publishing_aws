@@ -8855,12 +8855,30 @@ footer h2 {
     padding: 40px 0px 40px 20px;
   }
 }
-.social-block .carousel.start {
-  margin-left: 240px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .social-block .carousel.start {
+    margin-left: 165px;
+    overflow: hidden;
+  }
+  .social-block .carousel.start:hover .jcarousel-control-next {
+    right: 125px;
+  }
+}
+@media (min-width: 1025px) {
+  .social-block .carousel.start {
+    margin-left: 165px;
+    overflow: hidden;
+  }
+  .social-block .carousel.start:hover .jcarousel-control-next {
+    right: 105px;
+  }
 }
 @media (min-width: 1601px) {
   .social-block .carousel.start {
-    margin-left: 340px;
+    margin-left: 265px;
+  }
+  .social-block .carousel.start:hover .jcarousel-control-next {
+    right: 205px;
   }
 }
 @media (max-width: 768px) {
@@ -8903,7 +8921,7 @@ footer h2 {
   text-decoration: none;
   width: 100%;
 }
-.social-block .carousel ul li .meta-wrap {
+.social-block .carousel ul li .meta-wrapper {
   background: none;
   bottom: auto;
   color: #ffffff;
@@ -8912,7 +8930,7 @@ footer h2 {
   position: absolute;
   text-transform: uppercase;
 }
-.social-block .carousel ul li .meta-wrap .meta {
+.social-block .carousel ul li .meta-wrapper .meta {
   left: auto;
   margin: 0 auto;
   width: 80%;
@@ -8926,12 +8944,12 @@ footer h2 {
   font-size: 12px;
   line-height: 50px;
 }
-.social-block .carousel ul li .meta-social-title {
+.social-block .carousel ul li .title {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 20px;
 }
-.social-block .carousel ul li .meta-additional {
+.social-block .carousel ul li .additional {
   font-family: "texgyrescholaregular", Times, serif;
   font-style: italic;
   font-size: 12px;
@@ -8940,6 +8958,13 @@ footer h2 {
 .social-block .carousel ul li .meta-text {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 15px;
+}
+.social-block .carousel-description-item {
+  left: -225px;
+  width: 225px;
+}
+.social-block .carousel-description-item.start {
+  left: 0;
 }
 @media (min-width: 1601px) {
   .social-block .carousel-description-item .description-wrapper {
@@ -8975,9 +9000,6 @@ footer h2 {
     position: relative;
     top: 0;
     width: 100%;
-  }
-  .social-block .carousel-description-item .description-button {
-    display: none;
   }
   .social-block .carousel-description-item.start {
     left: 0px;

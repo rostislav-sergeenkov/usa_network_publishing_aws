@@ -11,10 +11,36 @@
     padding: 40px 0px 40px 20px;
   }
   .carousel {
-    &.start {
-      margin-left: 240px;
-      @include breakpoint($bp-min-1601-width) {
-        margin-left: 340px;
+    @include breakpoint($between-769-1024) {
+      &.start {
+        margin-left: 165px;
+        overflow: hidden;
+        &:hover {
+          .jcarousel-control-next {
+            right: 125px;
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-min-1025-width) {
+      &.start {
+        margin-left: 165px;
+        overflow: hidden;
+        &:hover {
+          .jcarousel-control-next {
+            right: 105px;
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-min-1601-width) {
+      &.start {
+        margin-left: 265px;
+        &:hover {
+          .jcarousel-control-next {
+            right: 205px;
+          }
+        }
       }
     }
     @include breakpoint($bp-768-width) {
@@ -53,7 +79,7 @@
           text-decoration: none;
           width: 100%;
         }
-        .meta-wrap {
+        .meta-wrapper {
           background: none;
           bottom: auto;
           color: #ffffff;
@@ -76,12 +102,12 @@
           font-size: 12px;
           line-height: 50px;
         }
-        .meta-social-title {
+        .title {
           font-family: $avalon-demi;
           font-size: 20px;
           line-height: 20px;
         }
-        .meta-additional {
+        .additional {
           font-family: $cent-725BT-italic;
           font-style: italic;
           font-size: 12px;
@@ -95,6 +121,11 @@
     }
   }
   .carousel-description-item {
+    left: -225px;
+    width: 225px;
+    &.start {
+      left: 0;
+    }
     @include breakpoint($bp-min-1601-width) {
       .description-wrapper {
         width: 100%;
@@ -122,9 +153,6 @@
       margin-top: 20px;
     }
     .carousel-description-item {
-      .description-button {
-        display: none;
-      }
       left: 0px;
       position: relative;
       top: 0;

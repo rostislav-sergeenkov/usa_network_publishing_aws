@@ -7521,6 +7521,7 @@ footer .shows-menu ul, footer .app-and-services-menu ul {
   -o-column-gap: 2em;
   column-gap: 2em;
   margin: 20px 0px 40px 155px;
+  margin-bottom: 10px;
 }
 @media (max-width: 1024px) {
   footer .shows-menu ul, footer .app-and-services-menu ul {
@@ -7537,26 +7538,24 @@ footer .shows-menu ul, footer .app-and-services-menu ul {
     margin: 20px 0px 40px 55px;
   }
 }
-footer .shows-menu ul li, footer .app-and-services-menu ul li {
-  margin-bottom: 10px;
-}
-footer .shows-menu ul li a, footer .app-and-services-menu ul li a {
+footer .shows-menu ul a, footer .app-and-services-menu ul a {
   color: #dcddde;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
   text-decoration: none;
   text-transform: uppercase;
 }
-footer .shows-menu ul li a span, footer .app-and-services-menu ul li a span {
+footer .shows-menu ul a span, footer .app-and-services-menu ul a span {
   color: #9097a3;
 }
-footer .shows-menu ul li a:hover, footer .app-and-services-menu ul li a:hover {
+footer .shows-menu ul a:hover, footer .app-and-services-menu ul a:hover {
   text-decoration: underline;
 }
 footer h2 {
   color: #dcddde;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;
+  margin-top: 0;
   padding-left: 50px;
   padding-top: 40px;
   text-transform: uppercase;
@@ -22155,6 +22154,62 @@ body.blog .view-display-id-blog_content .views-row {
 @media (max-width: 640px) {
   #full-bleed-promo .block-advert {
     display: none;
+  }
+}
+
+#block-usanetwork-blocks-usa-footer-promos {
+  background-color: #dbdcdd;
+  width: 100%;
+}
+#block-usanetwork-blocks-usa-footer-promos #footer-promo-links {
+  display: table;
+  margin: 0 auto;
+  padding: 25px 0;
+  max-width: 1100px;
+  width: 100%;
+}
+#block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item {
+  display: table-cell;
+  cursor: pointer;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item {
+    padding: 0 5px;
+  }
+}
+#block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item .image {
+  line-height: 0;
+}
+#block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item .image img {
+  max-width: 50px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item .image img {
+    max-width: 46px;
+  }
+}
+#block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item .title {
+  color: #545454;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  margin-top: 5px;
+  overflow: hidden;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item .title {
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item .title {
+    font-size: 8px;
   }
 }
 

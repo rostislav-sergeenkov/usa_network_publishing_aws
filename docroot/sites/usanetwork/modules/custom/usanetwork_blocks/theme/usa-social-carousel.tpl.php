@@ -24,7 +24,7 @@
       <ul class="slides">
         <?php foreach ($promos as $promo): ?>
           <li<?php if (!empty($promo['class'])): print ' class="' . $promo['class'] . '"'; endif;?>>
-            <div class="node node-usanetwork-promo show-color-border social-promo">
+            <div class="node node-usanetwork-promo show-color-border <?php print !empty($promo['color_class']) ? $promo['color_class'] : ''; ?> social-promo">
               <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
                 <div class="meta-wrapper">
                   <div class="meta">

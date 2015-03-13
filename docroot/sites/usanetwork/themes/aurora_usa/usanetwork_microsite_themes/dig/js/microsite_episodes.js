@@ -174,12 +174,12 @@
                 // animate next episode-info
                 $('#episode-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
                   // update classes
-                  $('#microsite #episodes .' + direction).addClass('active').removeClass(direction);
-                  $('#microsite #episodes .' + currentEpisodeId).removeClass('active ');
+                  $('#microsite #episodes .' + direction).addClass('active').removeClass(direction + ' disabled');
+                  $('#microsite #episodes .' + currentEpisodeId).removeClass('active disabled');
 
                   // update active nav item
                   navItems.find('li.active').removeClass('active');
-                  nextItem.addClass('active');
+                  navItems.find('#nav-' + nextItemId.replace('nav-', '')).addClass('active');
 
                   Drupal.behaviors.microsite_episodes.micrositeSetPath(nextEpisodeId);
                   Drupal.behaviors.microsite_episodes.micrositeSetNavNextPrevState();
@@ -192,7 +192,7 @@
                   }
 
                   // remove disabled
-                  navItems.find('li.disabled').removeClass('disabled');
+                  navItems.find('li').removeClass('disabled');
                   $('#episodes-content').css('overflow-y', 'auto');
                 });
               });
@@ -208,12 +208,12 @@
                   $('#episode-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
 
                     // update classes
-                    $('#microsite #episodes .' + direction).addClass('active').removeClass(direction);
-                    $('#microsite #episodes .' + currentEpisodeId).removeClass('active ');
+                    $('#microsite #episodes .' + direction).addClass('active').removeClass(direction + ' disabled');
+                    $('#microsite #episodes .' + currentEpisodeId).removeClass('active disabled');
 
                     // update active nav item
-                    navItems.find('li.active').removeClass('active');
-                    nextItem.addClass('active');
+                    navItems.find('li').removeClass('active');
+                    navItems.find('#nav-' + nextItemId.replace('nav-', '')).addClass('active');
 
                     Drupal.behaviors.microsite_episodes.micrositeSetPath(nextEpisodeId);
                     Drupal.behaviors.microsite_episodes.micrositeSetNavNextPrevState();
@@ -226,7 +226,7 @@
                     }
 
                     // remove disabled
-                    navItems.find('li.disabled').removeClass('disabled');
+                    navItems.find('li').removeClass('disabled');
                     $('#episodes-content').css('overflow-y', 'auto');
                   });
                 });

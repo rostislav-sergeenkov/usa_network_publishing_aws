@@ -1625,9 +1625,10 @@ function usanetwork_quiz_field_default_field_instances() {
       ),
       'microsite_output' => array(
         'label' => 'hidden',
+        'module' => 'usanetwork_field_formatters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
+        'type' => 'custom_js_ajax',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',

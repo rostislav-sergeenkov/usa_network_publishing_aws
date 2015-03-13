@@ -175,7 +175,7 @@ function usanetwork_quiz_strongarm() {
             'visible' => TRUE,
           ),
           'microsite_output' => array(
-            'weight' => '1',
+            'weight' => '2',
             'visible' => TRUE,
           ),
         ),

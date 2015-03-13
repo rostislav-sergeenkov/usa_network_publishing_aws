@@ -8839,7 +8839,7 @@ footer h2 {
 }
 
 .social-block {
-  background: #dcddde;
+  background: #e9eaeb;
   overflow: hidden;
   padding: 40px 60px;
   position: relative;
@@ -8966,27 +8966,76 @@ footer h2 {
 .social-block .carousel-description-item.start {
   left: 0;
 }
+.social-block .carousel-description-item .description-wrapper {
+  padding: 0 30px 0 10px;
+  width: 100%;
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .social-block .carousel-description-item .description-wrapper {
+    padding: 0 20px 0 10px;
+  }
+}
 @media (min-width: 1601px) {
   .social-block .carousel-description-item .description-wrapper {
-    width: 100%;
-    max-width: 250px;
+    padding: 0 35px 0 15px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .social-block .carousel-description-item {
+    left: -205px;
+    width: 205px;
+  }
+}
+@media (min-width: 1601px) {
+  .social-block .carousel-description-item {
+    left: -325px;
+    width: 325px;
   }
 }
 .social-block .carousel-description-item .caption, .social-block .carousel-description-item .additional-text {
-  text-align: right;
+  font-size: 12px;
+  text-align: left;
 }
 @media (min-width: 1601px) {
   .social-block .carousel-description-item .caption, .social-block .carousel-description-item .additional-text {
-    font-size: 23px;
+    font-size: 17px;
   }
 }
 .social-block .carousel-description-item .title {
-  text-align: right;
+  background: #dcddde;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  font-size: 22px;
+  margin: 0 0 30px;
+  padding: 24px;
+  position: relative;
+  text-align: left;
+}
+.social-block .carousel-description-item .title:after {
+  border: 20px solid transparent;
+  border-left: 40px solid #dcddde;
+  border-top: 0px solid #dcddde;
+  content: '';
+  display: block;
+  left: 0;
+  position: absolute;
+  top: 100%;
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .social-block .carousel-description-item .title {
+    padding: 19px;
+  }
 }
 @media (min-width: 1601px) {
   .social-block .carousel-description-item .title {
-    font-size: 37px;
-    line-height: 43px;
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 35px;
+  }
+  .social-block .carousel-description-item .title:after {
+    border: 25px solid transparent;
+    border-left: 50px solid #dcddde;
+    border-top: 0px solid #dcddde;
   }
 }
 @media (max-width: 768px) {

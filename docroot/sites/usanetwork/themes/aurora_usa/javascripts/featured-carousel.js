@@ -9,7 +9,7 @@
 
       if ($('.featured-block').attr('data-url')) {
         var back_url = $('.featured-block').attr('data-url');
-        $('.featured-block').attr('data-url').css({'background' : 'url('+ back_url +') no-repeat', 'background-size' : 'cover'});
+        $('.featured-block').css({'background' : 'url('+ back_url +') no-repeat', 'background-size' : 'cover'});
       }
 
       $(window).bind('resize', function () {

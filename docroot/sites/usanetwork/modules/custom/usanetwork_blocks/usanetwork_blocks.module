@@ -657,6 +657,7 @@ function _usanetwork_blocks_social_carousel_block_content() {
             'title' => $promo_content['title'],
             'additional' => $promo_content['caption'],
             'image_url' => image_style_url('300x169_video', $promo_content['image_url']),
+            'color_class' => !empty($promo_content['show_class']) ? $promo_content['show_class'] : NULL,
           );
           $theme_variables['promos'][] = $episode_theme_variables;
         }

@@ -273,6 +273,26 @@
       }
     },
 
+    refreshSharebar: function($result, container, elem) {
+      var $container = $result.closest(container);
+      var $sharebar = $container.find(elem);
+
+      $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+        if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
+          var image = $result.find('.result-image img').attr('src');
+          if (image) {
+            sharebar.gigyaSharebar.ua.imageBhev = 'url';
+            sharebar.gigyaSharebar.ua.imageUrl = image;
+          }
+          else {
+            sharebar.gigyaSharebar.ua.imageBhev = 'default';
+          }
+          sharebar.gigyaSharebar.ua.description = $result.find('.result-description .share').text();
+          Drupal.gigya.showSharebar(sharebar);
+        }
+      });
+    },
+
     initQuizzes: function(quizes) {
       for (nid in quizes) {
         var quiz_setting = quizes[nid];
@@ -299,23 +319,7 @@
                 }
               },
               onBeforeResult: function(e, $result) {
-                var $container = $result.closest('.container');
-                var $sharebar = $container.find('.field-name-field-gigya-share-bar > div');
-
-                $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-                  if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
-                    var image = $result.find('.result-image img').attr('src');
-                    if (image) {
-                      sharebar.gigyaSharebar.ua.imageBhev = 'url';
-                      sharebar.gigyaSharebar.ua.imageUrl = image;
-                    }
-                    else {
-                      sharebar.gigyaSharebar.ua.imageBhev = 'default';
-                    }
-                    sharebar.gigyaSharebar.ua.description = $result.find('.result-description .share').text();
-                    Drupal.gigya.showSharebar(sharebar);
-                  }
-                });
+                Drupal.behaviors.usanetwork_quiz.refreshSharebar($result, '.container', '.field-name-field-gigya-share-bar > div');
               },
               onShowResult: function(e, $result) {
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);

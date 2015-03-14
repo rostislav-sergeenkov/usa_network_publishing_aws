@@ -837,6 +837,41 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
 }
 
 
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_sidebar template.
+ */
+/*
+function usanetwork_microsite_preprocess_usanetwork_quiz_sidebar(&$vars) {
+  $vars['content'] = isset($vars['content']) ? $vars['content'] : array();
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+  $phase = $vars['phase'];
+
+  // add share bar
+  $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+  $sharebar['#title'] = t('Share:');
+  if ($phase == 'results') {
+    $sharebar['#title'] = t('Share result:');
+  }
+  $sharebar['#prefix'] = '<div class="sharebar">';
+  $sharebar['#suffix'] = '</div>';
+  unset($sharebar['#weight']);
+  $vars['content']['sharebar'] = $sharebar;
+
+  // add ads
+  $splash = theme('usanetwork_quiz_splash');
+  if (($phase == 'splash' && !empty($splash)) || ($phase == 'questions' && empty($splash))) {
+    $block = block_load('dart', 'dart-tag-300x250_ifr_reload');
+    $vars['content']['ads'] = _block_get_renderable_array(_block_render_blocks(array($block)));
+    $vars['content']['ads']['#prefix'] = '<div class="ad-container">';
+    $vars['content']['ads']['#suffix'] = '</div>';
+  }
+}
+*/
+
 function _usanetwork_microsite_get_rendered_quiz($node) {
   $quiz_node_view = node_view($node, 'microsite_output');
   return drupal_render($quiz_node_view);
@@ -849,9 +884,14 @@ function usanetwork_microsite_get_quiz($node) {
   if (!empty($show)) {
     $show_name = $show->title;
   }
+  $description = $node_wrapper->body->value();
+  // html tags are not allowed in the sharing description, so strip them out
+  $description = (array_key_exists('value', $description)) ? strip_tags($description['value']) : '';
   return array(
     'nid' => $node_wrapper->nid->value(),
     'title' => $node_wrapper->title->value(),
+    'description' => $description,
+    'url' => _usanetwork_microsite_get_suggested_url($node),
     'quiz_type' => $node_wrapper->field_quiz_type->value(),
     'quiz_show' => $show_name,
     'calc_method' => $node_wrapper->field_quiz_calculation->value(),

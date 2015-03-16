@@ -160,6 +160,11 @@ function usanetwork_blocks_block_view($delta) {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_blocks_social_carousel_block_content(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/social-carousel.js'
+          ),
+        ),
       );
       break;
   }
@@ -658,6 +663,8 @@ function _usanetwork_blocks_social_carousel_block_content() {
             'additional' => $promo_content['caption'],
             'image_url' => image_style_url('300x169_video', $promo_content['image_url']),
             'color_class' => !empty($promo_content['show_class']) ? $promo_content['show_class'] : NULL,
+            'icon_type' => $promo_content['icon_type'] ? $promo_content['icon_type'] : NULL,
+            'show_title' => !empty($promo_content['show_title']) ? $promo_content['show_title'] : NULL,
           );
           $theme_variables['promos'][] = $episode_theme_variables;
         }

@@ -1031,6 +1031,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   position: absolute;
   top: 50%;
   width: 100px;
+  z-index: 1;
 }
 /* corrected player style */
 .video-auth-player-wrapper {

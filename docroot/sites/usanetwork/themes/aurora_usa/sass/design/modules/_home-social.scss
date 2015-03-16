@@ -1,4 +1,4 @@
-.social-block {
+.social-block.carousel-block {
   background: $poll-back;
   overflow: hidden;
   padding: 40px 60px;
@@ -7,8 +7,8 @@
   @include breakpoint($bp-1024-width) {
     padding: 40px;
   }
-  @include breakpoint($bp-480-width) {
-    padding: 40px 0px 40px 20px;
+  @include breakpoint($bp-768-width) {
+    padding: 60px 0px 0px;
   }
   .carousel {
     @include breakpoint($between-769-1024) {
@@ -47,75 +47,35 @@
       &.start {
         margin-left: 0px;
       }
+      .jcarousel-controls {
+        display: none;
+      }
     }
     ul {
       position: relative;
       li {
         float: left;
         margin: 0;
+        margin-right: 5px;
         position: relative;
-        height: 310px;
-        width: 310px;
-        @include breakpoint($bp-480-width) {
-          height: 250px;
-          width: 260px;
-          img {
-            max-height: 250px;
-          }
+        height: 200px;
+        width: 375px;
+        @include breakpoint($bp-min-1601-width) {
+          height: 284px;
+          width: 533px;
         }
-        .node-usanetwork-promo {
-          height: 100%;
-          text-align: center;
-          &.social-usa {
-            background: $header-tab-back-hover;
-          }
-          &.social-twitter {
-            background: $social-twitter-back;
-          }
+        @include breakpoint($bp-768-width) {
+          height: calc((100vw - 20px) * 9 / 16 );
+          margin: 0;
+          margin-bottom: 20px;
+          width: 100%;
         }
+        @extend %social-promo;
         a {
           display: block;
           height: 100%;
           text-decoration: none;
           width: 100%;
-        }
-        .meta-wrapper {
-          background: none;
-          bottom: auto;
-          color: #ffffff;
-          height: 100%;
-          margin-left: 10px;
-          position: absolute;
-          text-transform: uppercase;
-          .meta {
-            left: auto;
-            margin: 0 auto;
-            width: 80%;
-            padding-right: 0px;
-            position: relative;
-            top: auto;
-          }
-        }
-        .time {
-          font-family: $cent-725BT-italic;
-          font-style: italic;
-          font-size: 12px;
-          line-height: 50px;
-        }
-        .title {
-          font-family: $avalon-demi;
-          font-size: 20px;
-          line-height: 20px;
-        }
-        .additional {
-          font-family: $cent-725BT-italic;
-          font-style: italic;
-          font-size: 12px;
-          line-height: 50px;
-        }
-        .meta-text {
-          font-family: $avalon-medium;
-          font-size: 15px;
         }
       }
     }
@@ -126,14 +86,17 @@
     &.start {
       left: 0;
     }
+    .description-block {
+      vertical-align: top;
+    }
     .description-wrapper {
-      padding: 0 30px 0 10px;
+      padding: 40px 30px 40px 10px;
       width: 100%;
       @include breakpoint($between-769-1024) {
-        padding: 0 20px 0 10px;
+        padding: 40px 20px 40px 10px;
       }
       @include breakpoint($bp-min-1601-width) {
-        padding: 0 35px 0 15px;
+        padding: 40px 35px 40px 15px;
       }
     }
     @include breakpoint($between-769-1024) {
@@ -157,7 +120,7 @@
       border-top-left-radius: 15px;
       font-size: 22px;
       margin: 0 0 30px;
-      padding: 24px;
+      padding: 30px 24px;
       position: relative;
       text-align: left;
       &:after {
@@ -171,7 +134,7 @@
         top: 100%;
       }
       @include breakpoint($between-769-1024) {
-        padding: 19px;
+        padding: 24px 19px;
       }
       @include breakpoint($bp-min-1601-width) {
         font-size: 32px;
@@ -189,11 +152,13 @@
   @include breakpoint($bp-768-width) {
     .carousel {
       margin-left: 0;
-      margin-bottom: 20px;
-      margin-top: 20px;
+      margin-bottom: 10px;
+      margin-top: 50px;
+      padding: 0 10px;
     }
     .carousel-description-item {
       left: 0px;
+      padding: 0px 10px;
       position: relative;
       top: 0;
       width: 100%;
@@ -203,17 +168,29 @@
       .description-wrapper {
         display: block;
         float: none;
+        padding: 0;
         width: 100%;
       }
       .description-block {
         display: block;
       }
+      .title {
+        background: none;
+        font-size: 34px;
+        line-height: 40px;
+        padding: 0 10px 0 0;
+        margin: 0;
+        max-width: 300px;
+        &:after {
+          display: none;
+        }
+      }
+      .additional-text {
+        font-size: 22px;
+        line-height: 22px;
+      }
       .caption, .title, .additional-text {
         text-align: left;
-      }
-      .title {
-        margin: 10px 0;
-        max-width: 200px;
       }
     }
   }

@@ -4,54 +4,6 @@
   padding: 40px 0px;
   position: relative;
   width: 100%;
-  > .more-button {
-    display: none;
-    &:after {
-      color: #ffffff;
-      content: "\e609";
-      display: block;
-      font-family: "ico-font";
-      font-size: 24px;
-      left: 50%;
-      line-height: 24px;
-      margin-left: -12px;
-      margin-top: 5px;
-      position: absolute;
-      top: 50%;
-    }
-    &.more {
-      .close-text {
-        display: none;
-      }
-    }
-    &.close {
-      &:after {
-        content: "\e60a";
-      }
-      .more-text {
-        display: none;
-      }
-    }
-    @include breakpoint($bp-768-width) {
-      background: $social-twitter-back;
-      color: #ffffff;
-      display: block;
-      font-family: $avalon-demi;
-      font-size: 20px;
-      height: 100px;
-      line-height: 80px;
-      letter-spacing: 1px;
-      position: relative;
-      text-align: center;
-      text-transform: uppercase;
-      width: 100%;
-    }
-    @include breakpoint($bp-480-width) {
-      font-size: 15px;
-      height: 60px;
-      line-height: 48px;
-    }
-  }
   .carousel {
     @include breakpoint($bp-768-width) {
       &.start {

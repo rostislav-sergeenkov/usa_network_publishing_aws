@@ -136,6 +136,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
     'time' => NULL,
     'cta_text' => NULL,
     'show_class' => '',
+    'show_title' => '',
     'icon_type' => '',
     'more_link_text' => FALSE,
     'more_link_url' => FALSE,
@@ -240,7 +241,9 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
       
       if ($show_field_value = field_get_items('node', $node, 'field_show')) {
         $show_field = reset($show_field_value);
-        $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
+        $show_node = node_load($show_field['target_id']);
+        $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_node);
+        $featutred_content['show_title'] = $show_node->title;
       }
 
       if ($field_promo_regular_image_field = field_get_items('node', $node, 'field_promo_regular_image')) {

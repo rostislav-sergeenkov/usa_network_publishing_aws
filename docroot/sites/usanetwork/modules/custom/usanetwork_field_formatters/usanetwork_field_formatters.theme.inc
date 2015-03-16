@@ -39,9 +39,5 @@ function theme_flexslider_file_entity($vars) {
 }
 
 function theme_custom_css_ajax_formatter($vars) {
-  return '<style media="screen">' . $vars['data'] . '</style>';
-}
-
-function theme_custom_js_ajax_formatter($vars) {
-  return '<script>' . $vars['data'] . '</script>';
+  print '<style media="screen">' . $vars['data'] . '</style>';
 }

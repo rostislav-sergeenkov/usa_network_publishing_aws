@@ -263,7 +263,7 @@
   }
   @include breakpoint($bp-768-width) {
     &.carousel-block {
-      padding: 60px 0px;
+      padding: 60px 0px 0px;
     }
     .carousel {
       position: relative;

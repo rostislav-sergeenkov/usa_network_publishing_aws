@@ -59,7 +59,7 @@
           margin-left: 0;
           margin-top: -26px;
         }
-        ~ .caption, ~ .title, ~ .additional-text {
+        ~ .caption, ~ .title, ~ .additional {
           @include breakpoint($bp-768-width) {
             padding-left: 80px;
           }
@@ -92,7 +92,7 @@
           margin-bottom: 10px;
         }
       }
-      .additional-text {
+      .additional {
         font-family: $tex-gyreschola-italic;
         font-size: 12px;
         line-height: 14px;
@@ -103,7 +103,7 @@
           line-height: 16px;
         }
       }
-      .caption, .title, .additional-text {
+      .caption, .title, .additional {
         @include breakpoint($bp-768-width) {
           padding-left: 20px;
           text-align: left;
@@ -208,7 +208,7 @@
           line-height: 14px;
         }
       }
-      .additional-text {
+      .additional {
         font-family: $tex-gyreschola-italic;
         font-size: 12px;
         line-height: 14px;

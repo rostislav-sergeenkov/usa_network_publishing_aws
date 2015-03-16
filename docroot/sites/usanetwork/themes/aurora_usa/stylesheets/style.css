@@ -22251,6 +22251,9 @@ body.blog .view-display-id-blog_content .views-row {
     padding: 0 5px;
   }
 }
+#block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item a:focus {
+  outline: none;
+}
 #block-usanetwork-blocks-usa-footer-promos #footer-promo-links .footer-promo-link-item .image {
   line-height: 0;
 }

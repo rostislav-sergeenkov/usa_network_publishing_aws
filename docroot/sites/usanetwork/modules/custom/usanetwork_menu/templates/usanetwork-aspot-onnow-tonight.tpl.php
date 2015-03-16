@@ -39,7 +39,8 @@
               <?php if (!empty($on_now_block_item['up_next']['show_title']) && !empty($on_now_block_item['up_next']['episode_title'])): ?>
                 <div class="episode-show<?php print !empty($on_now_block_item['up_next']['episode_class']) ? (' ' . $on_now_block_item['up_next']['episode_class']) : ''; ?>">
                   <div class="episode-show-wrapper">
-                    <?php print $on_now_block_item['up_next']['show_title']; ?><br><?php print $on_now_block_item['up_next']['epidose_title']; ?>
+                    <?php print !empty($on_now_block_item['up_next']['show_title']) ? $on_now_block_item['up_next']['show_title'] : ''; ?><br/>
+                    <?php print !empty($on_now_block_item['up_next']['episode_title']) ? $on_now_block_item['up_next']['episode_title'] : ''; ?>
                   </div>
                 </div>
               <?php endif; ?>

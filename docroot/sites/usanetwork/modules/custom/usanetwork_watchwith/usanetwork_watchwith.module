@@ -38,9 +38,13 @@ function usanetwork_watchwith_page_alter(&$page) {
   $view_watchwith = FALSE;
 
   if ($current_menu_item_path == 'videos') {
-    $result = reset(views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx'));
-    $file = file_load($result->fid);
-    $view_watchwith = _usanetwork_watchwith_is_watchwith_show_required($file);
+    $latest_episode_view = views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx');
+
+    if (!empty($latest_episode_view)) {
+      $result = reset($latest_episode_view);
+      $file = file_load($result->fid);
+      $view_watchwith = _usanetwork_watchwith_is_watchwith_show_required($file);
+    }
   }
   else {
     $file = menu_get_object('file');

@@ -1190,7 +1190,6 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
     return $section_wrapper->field_ms_episode->value();
   }
   elseif($type == 'games') {
-//    return _usnetwork_microsite_get_games_content_by_section_wrapper($section_wrapper);
     return $section_wrapper->field_ms_catchall_page->value();
   }
   elseif($type == 'quizzes') {
@@ -1369,14 +1368,14 @@ function _usanetwork_microsite_get_theme_variables($node) {
       );
       $i++;
 
-      if ($section_base_variables['type'] == 'games') {
-        foreach ($section_wrapper->field_ms_catchall_page as $games_page_wrapper) {
-          $games = array(
-            'nid' => $games_page_wrapper->nid->value(),
-            'title' => $games_page_wrapper->title->value(),
-          );
-        }
-      }
+//      if ($section_base_variables['type'] == 'games') {
+//        foreach ($section_wrapper->field_ms_catchall_page as $games_page_wrapper) {
+//          $games = array(
+//            'nid' => $games_page_wrapper->nid->value(),
+//            'title' => $games_page_wrapper->title->value(),
+//          );
+//        }
+//      }
 /*
       if ($section_base_variables['type'] == 'quizzes') {
         foreach ($section_wrapper->field_ms_quiz as $quizzes_page_wrapper) {
@@ -1393,7 +1392,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $theme_variables['games'] = $games;
 //    $theme_variables['quiz'] = $quiz;
 
-/*
+
     // Games links.
     $games_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'games');
     $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
@@ -1402,7 +1401,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
     foreach ($games_nodes as $game_node) {
       // While we will output only quizzes.
       $game_url = _usanetwork_microsite_get_suggested_url($game_node);
-      if($game_node->type == USANETWORK_MICROSITE_QUIZ_NODE_TYPE && $game_node->status == NODE_PUBLISHED) {
+      if($game_node->status == NODE_PUBLISHED) {
         $status = '';
         if((!empty($current_game_arg) && $current_game_arg == $game_url) || (empty($current_game_arg) && $games_count == 0)) {
           $status = 'active';
@@ -1416,29 +1415,29 @@ function _usanetwork_microsite_get_theme_variables($node) {
         $games_count++;
       }
     }
-*/
+
 
     // Quizzes links.
-    $quizzes_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'quizzes');
-    $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'quizzes');
-    $current_quiz_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
-    $quizzes_count = 0;
-    foreach ($quizzes_nodes as $quiz_node) {
-      $quiz_url = _usanetwork_microsite_get_suggested_url($quiz_node);
-      if ($quiz_node->status == NODE_PUBLISHED) {
-        $status = '';
-        if ((!empty($current_quiz_arg) && $current_quiz_arg == $quiz_url) || (empty($current_quiz_arg) && $quizzes_count == 0)) {
-          $status = 'active';
-        }
-        $theme_variables['quizzes'][] = array(
-          'nid' => $quiz_node->nid,
-          'title' => $quiz_node->title,
-          'url' => $quiz_url,
-          'status' => $status,
-        );
-        $quizzes_count++;
-      }
-    }
+//    $quizzes_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'quizzes');
+//    $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'quizzes');
+//    $current_quiz_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+//    $quizzes_count = 0;
+//    foreach ($quizzes_nodes as $quiz_node) {
+//      $quiz_url = _usanetwork_microsite_get_suggested_url($quiz_node);
+//      if ($quiz_node->status == NODE_PUBLISHED) {
+//        $status = '';
+//        if ((!empty($current_quiz_arg) && $current_quiz_arg == $quiz_url) || (empty($current_quiz_arg) && $quizzes_count == 0)) {
+//          $status = 'active';
+//        }
+//        $theme_variables['quizzes'][] = array(
+//          'nid' => $quiz_node->nid,
+//          'title' => $quiz_node->title,
+//          'url' => $quiz_url,
+//          'status' => $status,
+//        );
+//        $quizzes_count++;
+//      }
+//    }
 
     end($theme_variables['sections']);
     $last_section_key = key($theme_variables['sections']);

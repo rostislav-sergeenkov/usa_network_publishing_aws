@@ -1916,22 +1916,9 @@ function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NUL
         $account_id = $video_account->account_pid;
         $full_episode = _usanetwork_microsite_define_full_episode($related_file);
         $url_param = _usanetwork_microsite_get_suggested_video_url($related_file);
-        $item = array(
-          'fid' => $related_file->fid,
-          'account_id' => $account_id,
-          'video_id' => $related_file->mpx_video_data['default_released_file_pid'],
-          'player_id' => _usanetwork_microsite_define_videoplayer($related_file),
-          'guid' => $related_file->mpx_video_data['guid'],
-          'url' => url('node/' . $node->nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
-          'title' => $related_file->filename,
-          'url_param' => $url_param,
-          'media$thumbnails' => array(
-            array(
-              'plfile$url' => $related_file->mpx_video_data['thumbnail_url'],
-            ),
-          ),
-        );
-        $items[] = $item;
+        $item = _usanetwork_microsite_endcard_prepare_related_item($node->nid, $related_file, $account_id, $url_param, $full_episode);
+        $items[$current_processed_index] = $item;
+        $current_processed_index++;
       }
       else {
         if ($related_file->mpx_video_data['guid'] == $guid) {

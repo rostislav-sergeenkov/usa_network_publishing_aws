@@ -1911,7 +1911,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NUL
       if ($filter && $filter != USANETWORK_MICROSITE_ALL_VIDEOS && $filter != _usanetwork_microsite_get_video_category($related_file)) {
         continue;
       }
-      if ($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
+      if ($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->mpx_video_data['status'])) {
         $video_account = _media_theplatform_mpx_get_account_data($related_file->mpx_video_data['parent_account']);
         $account_id = $video_account->account_pid;
         $full_episode = _usanetwork_microsite_define_full_episode($related_file);

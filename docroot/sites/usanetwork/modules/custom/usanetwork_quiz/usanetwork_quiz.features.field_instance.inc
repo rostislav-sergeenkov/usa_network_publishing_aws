@@ -1627,7 +1627,7 @@ function usanetwork_quiz_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'usanetwork_field_formatters',
         'settings' => array(),
-        'type' => 'custom_js_ajax',
+        'type' => 'custom_js',
         'weight' => 1,
       ),
       'teaser' => array(

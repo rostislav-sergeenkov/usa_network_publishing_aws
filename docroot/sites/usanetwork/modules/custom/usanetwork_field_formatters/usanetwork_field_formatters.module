@@ -26,11 +26,6 @@ function usanetwork_field_formatters_field_formatter_info() {
     'field types' => array('text_long'), //This will only be available to long text fields
     'description' => t('This formatter should be used for outputting custom js inserted in a long text/plain text field.'),
   );
-  $custom_formatters['custom_js_ajax'] = array(
-    'label' => t('Custom JS For Ajax'),
-    'field types' => array('text_long'), //This will only be available to long text fields
-    'description' => t('This formatter should be used for outputting custom js inserted in a long text/plain text field when entity is loaded by ajax call.'),
-  );
 
   // formatter to display file entity in a flex slider
   if (module_exists('file_entity')) {
@@ -221,14 +216,6 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
         );
       }
       break;
-    case 'custom_js_ajax':
-      foreach ($items as $delta => $item) {
-        $element[$delta] = array(
-          '#theme' => 'custom_js_ajax_formatter',
-          '#data' => $item['value'],
-        );
-      }
-      break;
     case 'flexslider_file_entity':
       $element = array(
         '#theme' => 'flexslider_file_entity',
@@ -257,14 +244,11 @@ function usanetwork_field_formatters_theme() {
   );
 
   $items['custom_css_ajax_formatter'] = array(
+    //'render element' => 'element',
     'variables' => array('data' => NULL),
     'file' => 'usanetwork_field_formatters.theme.inc',
   );
 
-  $items['custom_js_ajax_formatter'] = array(
-    'variables' => array('data' => NULL),
-    'file' => 'usanetwork_field_formatters.theme.inc',
-  );
 
   return $items;
 }

@@ -836,7 +836,6 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
   return $theme_variables;
 }
 
-
 function _usanetwork_microsite_get_rendered_quiz($node) {
   $quiz_node_view = node_view($node, 'microsite_output');
   return drupal_render($quiz_node_view);
@@ -849,9 +848,14 @@ function usanetwork_microsite_get_quiz($node) {
   if (!empty($show)) {
     $show_name = $show->title;
   }
+  $description = $node_wrapper->body->value();
+  // html tags are not allowed in the Gigya sharing description, so we must strip them out
+  $description = (array_key_exists('value', $description)) ? strip_tags($description['value']) : '';
   return array(
     'nid' => $node_wrapper->nid->value(),
     'title' => $node_wrapper->title->value(),
+    'description' => $description,
+    'url' => _usanetwork_microsite_get_suggested_url($node),
     'quiz_type' => $node_wrapper->field_quiz_type->value(),
     'quiz_show' => $show_name,
     'calc_method' => $node_wrapper->field_quiz_calculation->value(),

@@ -25,6 +25,11 @@
 //usa_debug('================= Drupal.settings.usanetwork_quiz: ');
 //usa_debug(Drupal.settings.usanetwork_quiz);
 
+          // reset Gigya share bar
+          var link = window.location.protocol + '//' + window.location.hostname + '/quizzes/' + data.url;
+          Drupal.settings.gigyaSharebars = [];
+          Drupal.settings.gigyaSharebars = [{"gigyaSharebar": {"ua": {"linkBack": link,"title": data.title,"description": data.description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "quiz-gigya-share","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": data.title,"description": data.description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--2","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": data.title,"description": data.description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--3","showCounts": "none","layout": "horizontal","iconsOnly": true}}];
+
           var activeQuizContainer = $('#microsite #quizzes #viewport'),
               quizzesNav = $('#microsite #quizzes-nav-list');
 
@@ -36,20 +41,54 @@
           });
           // change quiz
           activeQuizContainer.find('li').attr({'id': 'quiz-' + data.nid, 'data-node-id': data.nid}).animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
-            $(this).html(data.quiz_html);
+            $(this).html(data.quiz_html.replace('id="gigya-share', 'id="quiz-gigya-share'));
             activeQuizContainer.find('li#quiz-' + data.nid).animate({'opacity': 1}, 1000, function(){
               // re-initialize quiz
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
 
               // update 300x250 ad, if needed
               setTimeout(function(){
-                $('#microsite #usanetwork-quiz-' + data.nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center><noscript>&lt;a href="http://ad.doubleclick.net/jump/nbcu.usa/default;pos=7;sz=300x250;site=usa;!c=usa;tile=1;ord=5685412765?"&gt;&lt;img src="http://ad.doubleclick.net/ad/nbcu.usa/default;pos=7;sz=300x250;site=usa;!c=usa;tile=1;ord=5685412765?" alt="" /&gt;&lt;/a&gt;</noscript>');
-                }, 1000);
+                // show 300x250 ad on splash page
+                $('#microsite #usanetwork-quiz-' + data.nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center>');
+
+                // show Gigya share bar on splash page
+//                Drupal.behaviors.usanetwork_quiz.refreshSharebar('.container', '.field-name-field-gigya-share-bar > div');
+/*
+          sharebar = new Object();
+          sharebar.gigyaSharebar = {
+            containerID: "gigya-share",
+            iconsOnly: true,
+            layout: "horizontal",
+            shareButtons: "facebook, twitter, tumblr, pinterest, share",
+            shortURLs: "never",
+            showCounts: "none"
+          }
+
+          var url = window.location.href.split('#')[0];
+          sharebar.gigyaSharebar.ua = {
+            description: $currentCaption,
+            imageBhev: "url",
+            imageUrl: $currentImage.attr('src'),
+            linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
+            title: $title
+          }
+          Drupal.gigya.showSharebar(sharebar);
+*/
+        if (typeof gigya !== 'undefined') {
+          if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
+            $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+//usa_debug('===================\nDrupal.gigya.showSharebar: ');
+//usa_debug(sharebar);
+              Drupal.gigya.showSharebar(sharebar);
+            });
+          }
+        }
+              }, 1000);
 
               // change quiz navigation
               quizzesNav.find('li.active').removeClass('active disabled');
               quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
-  //Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
+//Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
             });
           });
         })

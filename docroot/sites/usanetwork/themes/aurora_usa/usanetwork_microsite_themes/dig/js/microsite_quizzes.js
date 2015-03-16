@@ -52,11 +52,18 @@
   //Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
             });
           });
+          // Get js from custom field for current quiz.
+          $.getScript( '/ajax/get-custom-js/' + quizNodeId, function( data, textStatus, jqxhr ) {
+            console.log( data ); // Data returned
+            console.log( textStatus ); // Success
+            console.log( jqxhr.status ); // 200
+            console.log( 'Load was performed.' );
+          });
         })
         .fail(function(jqXHR, textStatus, errorThrown){
           usa_debug('********************\najax fail: ');
           usa_debug(errorThrown);
-        })
+        });
 
       }
     },

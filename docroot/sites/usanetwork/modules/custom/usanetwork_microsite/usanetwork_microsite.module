@@ -71,6 +71,13 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/get-custom-js/%node'] = array(
+    'page callback' => 'usanetwork_microsite_get_custom_js',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'usanetwork_microsite_deliver_js',
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -2963,4 +2970,15 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     }
   }
   return FALSE;
+}
+
+function usanetwork_microsite_get_custom_js($node) {
+  if(!empty($node->field_usa_catchall_js)) {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    return $node_wrapper->field_usa_catchall_js->value();
+  }
+}
+
+function usanetwork_microsite_deliver_js($js) {
+  print $js;
 }

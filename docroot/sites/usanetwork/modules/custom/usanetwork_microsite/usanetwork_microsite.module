@@ -6,6 +6,11 @@ define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
 define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_usa_vod_noauth');
 define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_usa_vod');
+
+define('USANETWORK_MICROSITE_USA_PLAYER_QA', 'microsites_usa_player_endcard_qa');
+define('USANETWORK_MICROSITE_NOAUTH_PLAYER_QA', 'microsite_usa_vod_noauth_qa');
+define('USANETWORK_MICROSITE_AUTH_PLAYER_QA', 'microsite_usa_vod_qa');
+
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 define('USANETWORK_MICROSITE_GALLERY_NODE_TYPE', 'media_gallery');
 define("USANETWORK_MICROSITE_ALL_VIDEOS", "All videos");
@@ -38,10 +43,10 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/microcite/endcard/related/%node/%/%'] = array(
+  $items['ajax/microcite/endcard/related/%node/%'] = array(
     'title' => 'Related items',
     'page callback' => 'usanetwork_microsite_endcard_related_items',
-    'page arguments' => array(4, 5, 6),
+    'page arguments' => array(4, 5),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
@@ -898,14 +903,26 @@ function _usanetwork_microsite_define_videoplayer($file) {
   $full_episode = _usanetwork_microsite_define_full_episode($file);
   $auth_episode = _usanetwork_microsite_define_auth($file);
 
-  if ($full_episode) {
-    if ($auth_episode) {
-      $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;
+  if (_usanetwork_widget_get_environment() == 'prod') { 
+    if ($full_episode) {
+      if ($auth_episode) {
+        $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;
+      } else {
+        $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER;
+      }
     } else {
-      $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER;
+      $player_id = USANETWORK_MICROSITE_USA_PLAYER;
     }
   } else {
-    $player_id = USANETWORK_MICROSITE_USA_PLAYER;
+    if ($full_episode) {
+      if ($auth_episode) {
+        $player_id = USANETWORK_MICROSITE_AUTH_PLAYER_QA;
+      } else {
+        $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER_QA;
+      }
+    } else {
+      $player_id = USANETWORK_MICROSITE_USA_PLAYER_QA;
+    }
   }
 
   return $player_id;
@@ -1894,7 +1911,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NUL
       if ($filter && $filter != USANETWORK_MICROSITE_ALL_VIDEOS && $filter != _usanetwork_microsite_get_video_category($related_file)) {
         continue;
       }
-      if ($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
+      if ($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->mpx_video_data['status'])) {
         $video_account = _media_theplatform_mpx_get_account_data($related_file->mpx_video_data['parent_account']);
         $account_id = $video_account->account_pid;
         $full_episode = _usanetwork_microsite_define_full_episode($related_file);
@@ -1903,7 +1920,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NUL
           'fid' => $related_file->fid,
           'account_id' => $account_id,
           'video_id' => $related_file->mpx_video_data['default_released_file_pid'],
-          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
+          'player_id' => _usanetwork_microsite_define_videoplayer($related_file),
           'guid' => $related_file->mpx_video_data['guid'],
           'url' => url('node/' . $node->nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
           'title' => $related_file->filename,

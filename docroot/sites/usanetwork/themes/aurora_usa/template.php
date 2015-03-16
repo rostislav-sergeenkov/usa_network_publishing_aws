@@ -381,11 +381,16 @@ function aurora_usa_preprocess_region(&$vars) {
     $current_menu_object = _usanetwork_menu_get_object($entity_type);
     if ($entity_type == 'node') {
       if ($current_menu_object && ($current_menu_object->type == 'post')) {
-        $category_field = reset(field_get_items('node', $current_menu_object, USANETWORK_FIELD_BLOG));
-        if ($category_field) {
-          $category = taxonomy_term_load($category_field['tid']);
-          module_load_include('inc', 'pathauto', 'pathauto');
-          $vars['classes_array'][] = 'blog-term-' . pathauto_cleanstring($category->name);
+        $blog_field = field_get_items('node', $current_menu_object, USANETWORK_FIELD_BLOG);
+
+        if ($blog_field) {
+          $category_field = reset($blog_field);
+
+          if ($category_field) {
+            $category = taxonomy_term_load($category_field['tid']);
+            module_load_include('inc', 'pathauto', 'pathauto');
+            $vars['classes_array'][] = 'blog-term-' . pathauto_cleanstring($category->name);
+          }
         }
       }
     } elseif ($entity_type == 'taxonomy_term') {
@@ -1181,8 +1186,7 @@ function aurora_usa_field__field_tv_cover_media($variables) {
 }
 
 function aurora_usa_field__field_target($vars) {
-  $target = $vars['items'][0]['value'];
-  return $target;
+  return !empty($vars['items'][0]['value']) ? $vars['items'][0]['value'] : NULL;
 }
 function aurora_usa_field__field_video_thumbnail($variables) {
   if ($variables['element']['#view_mode'] == 'full') {

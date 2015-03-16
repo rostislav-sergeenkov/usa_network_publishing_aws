@@ -7,35 +7,7 @@
 
     getNumSlidesToDisplay: function() {
       var wwidth = $(window).width(),
-          numSlides = 4;
-
-      if (1860 > wwidth && wwidth >= 1550) {
-        numSlides = 3;
-      }
-      else if (1550 > wwidth && wwidth >= 1270) {
-        numSlides = 2;
-      }
-      else if (1270 > wwidth && wwidth >= 1160) {
-        numSlides = 2;
-      }
-      else if (1160 > wwidth && wwidth >= 890) {
-        numSlides = 2;
-      }
-      else if (890 > wwidth && wwidth >= 874) {
-        numSlides = 2;
-      }
-      else if (874 > wwidth && wwidth >= 866) {
-        numSlides = 3;
-      }
-      else if (866 > wwidth && wwidth >= 640) {
-        numSlides = 2;
-      }
-      else if (640 > wwidth && wwidth >= 505) {
-        numSlides = 3;
-      }
-      else if (505 > wwidth) {
-        numSlides = 2;
-      }
+          numSlides = 3;
 
       return numSlides;
     },
@@ -55,6 +27,7 @@
       else {
         $quizNavContainer.find('.quizzes-page-controls').hide();
       }
+//usa_debug('================== showHidePager(' + quizId + ', ' + numQuizzesShown + ')\nnumQuizzes: ' + numQuizzes + '\nfinalWidthQuizNav: ' + finalWidthQuizNav);
     },
 
     setActiveQuizHeight: function() {
@@ -199,7 +172,7 @@
           infiniteLoop: false,
           hideControlOnEnd: true,
           onSliderLoad: function(){
-            Drupal.behaviors.micrositeQuizzesBxSliders.showHidePager('#quizzes-nav-page-controls', numSlides);
+            Drupal.behaviors.micrositeQuizzesBxSliders.showHidePager('#quizzes-nav', numSlides);
             $('#microsite #quizzes #quizzes-nav-page-controls').animate({ 'opacity': 1 }, 1000, 'jswing');
           }
         });

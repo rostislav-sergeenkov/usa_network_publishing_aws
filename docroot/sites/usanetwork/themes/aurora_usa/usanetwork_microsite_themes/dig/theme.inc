@@ -226,6 +226,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_quizzes.css',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
   );

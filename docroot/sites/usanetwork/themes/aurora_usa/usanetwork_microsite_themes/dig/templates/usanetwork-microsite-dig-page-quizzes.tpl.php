@@ -16,43 +16,51 @@
 ?>
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_quizzes"></div>
 
-<?php if (!empty($h1) && $status == 'active'): ?>
-  <h1><?php print $h1; ?></h1>
-<?php elseif (!empty($h1)): ?>
-  <h2><?php print $h1; ?></h2>
-<?php else: ?>
+<div class="full-pane">
   <?php if (!empty($title)): ?>
-    <h2><?php print $title; ?></h2>
+    <?php if (empty($h1) && $status == 'active'): ?>
+    <h1><?php print $title; ?></h1>
+    <?php else: ?>
+    <h3><?php print $title; ?></h3>
+    <?php endif; ?>
   <?php endif; ?>
-<?php endif; ?>
 
-<?php if (!empty($page['quiz_html']) && !empty($page['nid'])): ?>
-<div id="viewport">
-  <ul>
-    <li id="quiz-<?php print $page['nid']; ?>" data-node-id="<?php print $page['nid']; ?>">
-      <?php print $page['quiz_html']; ?>
-    </li>
-  </ul>
-  <div id="quiz-loader"><img src="/sites/usanetwork/themes/aurora_usa/images/ajax-loader.gif" alt="loading animation"></div>
-</div>
-<?php endif; ?>
+  <?php if (!empty($h1)): ?>
+    <?php if ($status == 'active'): ?>
+    <h1 class="seo-h1"><?php print $h1; ?></h1>
+    <?php else: ?>
+    <h3 class="seo-h1"><?php print $h1; ?></h3>
+    <?php endif; ?>
+  <?php endif; ?>
 
-<?php if (!empty($quizzes_nav)): ?>
-<div id="quizzes-nav" class="quizzes-nav">
-  <div id="quizzes-nav-bxslider-container" class="bxslider-container">
-    <h3>More Quizzes</h3>
-    <div id="quizzes-nav-page-controls" class="quizzes-page-controls">
-      <div id="quizzes-nav-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
-      <div id="quizzes-nav-pagers" class="quizzes-nav-pagers bx-controls bx-has-pager"></div>
-      <div id="quizzes-nav-next" class="next btns"><span class="screen-reader-text">Next</span></div>
-    </div>
-    <ul id="quizzes-nav-list" class="quizzes-nav-bxslider">
-    <?php foreach ($quizzes_nav as $quiz_nav): ?>
-      <?php if (!empty($quiz_nav['url']) && !empty($quiz_nav['nid']) && !empty($quiz_nav['title'])): ?>
-      <li id="nav-quiz-<?php print $quiz_nav['nid']; ?>" data-node-id="<?php print $quiz_nav['nid']; ?>"><a href="<?php print url('node/' . arg(1) . '/microsite'); ?>/quizzes/<?php print $quiz_nav['url']; ?>"><div class="quiz-nav-img"><img src="<?php if (!empty($quiz_nav['cover_img'])) print $quiz_nav['cover_img']; ?>" alt="<?php print $quiz_nav['title']; ?>"></div><div class="quiz-title"><?php print $quiz_nav['title']; ?></div></a></li>
-      <?php endif; ?>
-    <?php endforeach; ?>
+  <?php if (!empty($page['quiz_html']) && !empty($page['nid'])): ?>
+  <div id="viewport">
+    <ul>
+      <li id="quiz-<?php print $page['nid']; ?>" data-node-id="<?php print $page['nid']; ?>">
+        <?php print $page['quiz_html']; ?>
+      </li>
     </ul>
+    <div id="quiz-loader"><img src="/sites/usanetwork/themes/aurora_usa/images/ajax-loader.gif" alt="loading animation"></div>
   </div>
+  <?php endif; ?>
+
+  <?php if (!empty($quizzes_nav)): ?>
+  <div id="quizzes-nav" class="quizzes-nav">
+    <div id="quizzes-nav-bxslider-container" class="bxslider-container">
+      <h3>More Quizzes</h3>
+      <div id="quizzes-nav-page-controls" class="quizzes-page-controls">
+        <div id="quizzes-nav-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
+        <div id="quizzes-nav-pagers" class="quiz-pagers bx-controls bx-has-pager"></div>
+        <div id="quizzes-nav-next" class="next btns"><span class="screen-reader-text">Next</span></div>
+      </div>
+      <ul id="quizzes-nav-list" class="quizzes-nav-bxslider">
+      <?php foreach ($quizzes_nav as $quiz_nav): ?>
+        <?php if (!empty($quiz_nav['url']) && !empty($quiz_nav['nid']) && !empty($quiz_nav['title'])): ?>
+        <li id="nav-quiz-<?php print $quiz_nav['nid']; ?>" data-node-id="<?php print $quiz_nav['nid']; ?>" class="<?php if (!empty($quiz_nav['status'])) print $quiz_nav['status']; ?>"><a href="<?php print url('node/' . arg(1) . '/microsite'); ?>/quizzes/<?php print $quiz_nav['url']; ?>"><div class="quiz-nav-img"><img src="<?php if (!empty($quiz_nav['cover_img'])) print $quiz_nav['cover_img']; ?>" alt="<?php print $quiz_nav['title']; ?>"></div><div class="quiz-title"><?php print $quiz_nav['title']; ?></div></a></li>
+        <?php endif; ?>
+      <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+  <?php endif; ?>
 </div>
-<?php endif; ?>

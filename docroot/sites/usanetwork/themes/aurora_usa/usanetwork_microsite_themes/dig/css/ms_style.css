@@ -1131,6 +1131,17 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   position: relative;
   width: 300px;
 }
+#videos #video-filter .filter-menu {
+  background-color: #121212;
+  border-bottom: 2px solid #13242a;
+  border-left: 2px solid #13242a;
+  border-right: 2px solid #13242a;
+  display: none;
+  padding: 25px 0;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
 #videos #video-filter .filter-label {
   background-color: #13242a;
   cursor: pointer;

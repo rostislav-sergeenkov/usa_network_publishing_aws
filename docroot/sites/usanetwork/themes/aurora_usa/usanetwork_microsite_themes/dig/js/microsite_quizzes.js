@@ -16,16 +16,16 @@
           dataType: 'json'
         })
         .done(function(data, textStatus, jqXHR){
-usa_debug('================= data: ');
-usa_debug(data);
+//usa_debug('================= data: ');
+//usa_debug(data);
 
           // reset quiz js settings
           Drupal.settings.usanetwork_quiz = {};
           Drupal.settings.usanetwork_quiz[data.nid] = {"container":"#usanetwork-quiz-" + data.nid, "quizType":data.quiz_type, "calculationMethod":data.calc_method, "quizShow":data.quiz_show, "quizTitle":data.title};
-usa_debug('================= Drupal.settings.usanetwork_quiz: ');
-usa_debug(Drupal.settings.usanetwork_quiz);
+//usa_debug('================= Drupal.settings.usanetwork_quiz: ');
+//usa_debug(Drupal.settings.usanetwork_quiz);
 
-          // reset Gigya share bar settings
+          // reset Gigya share bar
           var link = window.location.protocol + '//' + window.location.hostname + '/quizzes/' + data.url;
           Drupal.settings.gigyaSharebars = [];
           Drupal.settings.gigyaSharebars = [{"gigyaSharebar": {"ua": {"linkBack": link,"title": data.title,"description": data.description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "quiz-gigya-share","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": data.title,"description": data.description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--2","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": data.title,"description": data.description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--3","showCounts": "none","layout": "horizontal","iconsOnly": true}}];
@@ -74,15 +74,12 @@ usa_debug(Drupal.settings.usanetwork_quiz);
           }
           Drupal.gigya.showSharebar(sharebar);
 */
-//        var shareBarCount = 0;
         if (typeof gigya !== 'undefined') {
           if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
             $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-//              if (shareBarCount == 0)
-usa_debug('===================\nDrupal.gigya.showSharebar: ');
-usa_debug(sharebar);
+//usa_debug('===================\nDrupal.gigya.showSharebar: ');
+//usa_debug(sharebar);
               Drupal.gigya.showSharebar(sharebar);
-//              shareBarCount++;
             });
           }
         }
@@ -91,7 +88,7 @@ usa_debug(sharebar);
               // change quiz navigation
               quizzesNav.find('li.active').removeClass('active disabled');
               quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
-  //Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
+//Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
             });
           });
         })

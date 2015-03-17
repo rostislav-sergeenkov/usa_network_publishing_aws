@@ -847,7 +847,7 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
     if(empty($theme_variables['page'])) {
       drupal_not_found();
     }
-    $theme_variables['quizzes_nav'] = $quizzes_nav;
+    $theme_variables['quizzes_nav'] = (count($quizzes_nav) > 1) ? $quizzes_nav : array();
     $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_quiz, $section_wrapper));
     drupal_add_js(array('quizzes' => $quizzes), 'setting');
   }

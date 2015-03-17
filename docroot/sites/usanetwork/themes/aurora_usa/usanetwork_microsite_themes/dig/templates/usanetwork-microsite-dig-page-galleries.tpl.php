@@ -59,7 +59,7 @@
     <?php if (!empty($episodic_galleries)): ?>
     <div id="ep-galleries" class="galleries-nav narrow">
       <div id="ep-galleries-bxslider-container" class="bxslider-container">
-        <h3>Episodic</h3>
+        <h3>Episodes</h3>
         <div id="ep-galleries-page-controls" class="galleries-page-controls">
           <div id="ep-galleries-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
           <div id="ep-galleries-pagers" class="gallery-pagers bx-controls bx-has-pager"></div>
@@ -81,7 +81,7 @@
     <?php if (!empty($character_galleries)): ?>
     <div id="character-galleries" class="galleries-nav<?php if (empty($episodic_galleries)): ?> narrow<?php endif; ?>">
       <div id="ep-galleries-bxslider-container" class="bxslider-container">
-        <h3>Cast, Crew &amp; Set</h3>
+        <h3>Featured</h3>
         <div id="character-galleries-page-controls" class="galleries-page-controls">
           <div id="character-galleries-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
           <div id="character-galleries-pagers" class="gallery-pagers bx-controls bx-has-pager"></div>

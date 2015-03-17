@@ -1,6 +1,18 @@
 /* Displayed quiz */
-#microsite h1, #microsite h2 {
+#microsite h1,
+#microsite h2,
+#microsite h3 {
   line-height: 1em;
+}
+#microsite #quizzes .full-pane > h1,
+#microsite #quizzes .full-pane > h3 {
+  font-size: 1.9em;
+  margin: 1em 0 0;
+}
+#microsite #quizzes .full-pane > h1.seo-h1,
+#microsite #quizzes .full-pane > h3.seo-h1 {
+  font-size: 1em;
+  text-transform: none;
 }
 #microsite #quizzes .microsite-section-container {
   max-width: 1244px; /* 1400px; */
@@ -140,7 +152,7 @@
 #microsite #quizzes .quizzes-nav li a .quiz-title {
   font-size: 1em;
   line-height: 18px;
-  height: 64px;
+  height: 70px;
   letter-spacing: 0.03em;
   padding: 14px 5px;
   color: #FFF;

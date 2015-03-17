@@ -3325,7 +3325,7 @@ header .header-nav-bar .no-refresh {
   position: relative;
 }
 header .header-nav-bar .no-refresh.active:before {
-  background: #757575;
+  background: #454545;
   bottom: -1px;
   content: '';
   display: block;
@@ -3602,11 +3602,11 @@ header .nav-bar-tabs {
     text-transform: uppercase;
   }
   header .nav-bar-tabs a.active {
-    background: #757575;
+    background: #454545;
     color: #ffffff;
   }
   header .nav-bar-tabs a.active:hover {
-    background: #757575;
+    background: #454545;
   }
   header .nav-bar-tabs a:hover {
     background: darkgrey;
@@ -4116,12 +4116,12 @@ header .tab-content:after {
   }
 }
 header .tab-item {
-  background: #757575;
+  background: #454545;
   border-top: 1px solid transparent;
   display: none;
   letter-spacing: 0.5px;
   height: auto;
-  padding: 40px;
+  padding: 60px;
   position: relative;
   width: 100%;
 }
@@ -4630,6 +4630,7 @@ header .tab-item.schedule-tab .on-now-panel .node.on-now .on-now-panel-title {
 }
 header .tab-item.schedule-tab .on-now-panel .node.up-next h2 {
   float: left;
+  font-size: 18px;
 }
 header .tab-item.schedule-tab .on-now-panel .node .asset-img {
   float: left;
@@ -4670,11 +4671,10 @@ header .tab-item.schedule-tab .on-now-panel .node .meta .description {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 header .tab-item.schedule-tab .on-now-panel .on-now-panel-title {
   color: #dcddde;
-  font-size: 20px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   left: 0;
   position: absolute;
@@ -4682,7 +4682,9 @@ header .tab-item.schedule-tab .on-now-panel .on-now-panel-title {
   text-transform: uppercase;
 }
 header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
-  font-size: 20px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 24px;
+  letter-spacing: 2px;
 }
 header .tab-item.schedule-tab .on-now-panel .on-now-panel-title .episode-airtime {
   float: left;
@@ -4695,6 +4697,16 @@ header .tab-item.schedule-tab .on-now-panel .icons-block {
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block a {
   color: #ffffff !important;
+}
+header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon {
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  line-height: 22px;
+  padding: 0 4px;
+  text-transform: uppercase;
 }
 header .tab-item.schedule-tab .primetime-panel {
   float: left;
@@ -4713,7 +4725,7 @@ header .tab-item.schedule-tab .primetime-panel:before {
   width: 1px;
 }
 header .tab-item.schedule-tab .primetime-panel .more-link {
-  bottom: -25px;
+  bottom: -40px;
   right: 0px;
   padding-right: 20px;
   position: absolute;
@@ -4725,9 +4737,9 @@ header .tab-item.schedule-tab .primetime-panel .more-link {
 }
 header .tab-item.schedule-tab .primetime-panel .more-link a {
   color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 18px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 16px;
+  line-height: 20px;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -4739,16 +4751,16 @@ header .tab-item.schedule-tab .primetime-panel .more-link a:after {
   content: "\e608";
   display: block;
   font-family: "ico-font";
-  font-size: 10px;
+  font-size: 13px;
   right: 0;
-  margin-top: -8px;
+  margin-top: -10px;
   position: absolute;
   top: 50%;
 }
 header .tab-item.schedule-tab .primetime-panel .pane-title {
   color: #dcddde;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 24px;
   position: absolute;
   text-transform: uppercase;
   top: -40px;
@@ -4804,7 +4816,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info {
   color: #ffffff;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 12px;
-  line-height: 1.2;
+  line-height: 1.3;
   margin-top: 20px;
   text-transform: uppercase;
 }

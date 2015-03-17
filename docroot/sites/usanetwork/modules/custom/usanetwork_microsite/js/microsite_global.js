@@ -188,6 +188,15 @@
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Episode Guide | ' + pageName;
           break;
+        case 'quizzes':
+          s.prop3 = 'Quizzes/Trivia';
+          s.prop4 = siteName + ' : Quizzes/Trivia';
+          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h1').text();
+          s.prop5 = siteName + ' : Quizzes/Trivia : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Quizzes/Trivia | ' + pageName;
+          break;
       }
       $('title').text(pageName);
 
@@ -718,7 +727,7 @@
     },
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
-      
+
       if (!$('html.ie9').length) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }

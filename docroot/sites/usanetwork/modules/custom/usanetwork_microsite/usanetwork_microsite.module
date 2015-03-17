@@ -824,15 +824,22 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
           'url' => $quiz_url,
         );
         $image_field = $quiz_node_wrapper->field_quiz_thumbnail->value();
+        $quiz_h1 = $quiz_node_wrapper->field_seo_h1->value();
         $quiz_preview_image = NULL;
         if (!empty($image_field)) {
           $quiz_preview_image = image_style_url('300x250', $image_field['uri']);
         }
+        $status = '';
+        if ((empty($current_quiz_arg) && $quizzes_count == 0) || ($current_quiz_arg == $quiz_url)) {
+          $status = 'active';
+        }
         $quizzes_nav[] = array(
           'nid' => $quiz_node->nid,
           'title' => $quiz_node->title,
+          'h1' => $quiz_h1,
           'url' => $quiz_url,
           'cover_img' => $quiz_preview_image,
+          'status' => $status,
         );
         $quizzes_count++;
       }
@@ -850,7 +857,13 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
 
 function _usanetwork_microsite_get_rendered_quiz($node) {
   $quiz_node_view = node_view($node, 'microsite_output');
-  return drupal_render($quiz_node_view);
+  $rendered_quiz = drupal_render($quiz_node_view);
+  // @TODO: If there is more than one #gigya-share selector on a microsite,
+  // the js that renders the Gigya share bar doesn't work.
+  // Is there a better way to fix this problem than the following line of code?
+  // NOTE: There are other fixes in the javascript related to this problem too.
+  $rendered_quiz = str_replace('id="gigya-share"', 'id="quiz-gigya-share"', $rendered_quiz);
+  return $rendered_quiz;
 }
 
 function usanetwork_microsite_get_quiz($node) {
@@ -861,11 +874,13 @@ function usanetwork_microsite_get_quiz($node) {
     $show_name = $show->title;
   }
   $description = $node_wrapper->body->value();
+  // @TODO: DV: Is there a better way to get rid of html tags in the description?
   // html tags are not allowed in the Gigya sharing description, so we must strip them out
   $description = (array_key_exists('value', $description)) ? strip_tags($description['value']) : '';
   return array(
     'nid' => $node_wrapper->nid->value(),
     'title' => $node_wrapper->title->value(),
+    'h1' => _usanetwork_microsite_get_h1_tag($node_wrapper),
     'description' => $description,
     'url' => _usanetwork_microsite_get_suggested_url($node),
     'quiz_type' => $node_wrapper->field_quiz_type->value(),
@@ -1034,7 +1049,7 @@ function _usanetwork_microsite_define_videoplayer($file) {
   $full_episode = _usanetwork_microsite_define_full_episode($file);
   $auth_episode = _usanetwork_microsite_define_auth($file);
 
-  if (_usanetwork_widget_get_environment() == 'prod') { 
+  if (_usanetwork_widget_get_environment() == 'prod') {
     if ($full_episode) {
       if ($auth_episode) {
         $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;

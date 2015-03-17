@@ -214,9 +214,9 @@
         });
       }
 
+/*
       self.setActiveQuizNav();
 
-/*
       var changeQuizHandler = function(e){
         var anchorFull = this.href,
             anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull),

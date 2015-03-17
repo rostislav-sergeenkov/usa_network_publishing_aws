@@ -493,7 +493,7 @@
 
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
 
-      if (dataPlayerId == 'microsite_usa_vod_qa') { //todo replace on 'microsite_usa_vod'
+      if ($('#thumbnail-list .item-list ul li.thumbnail.active > div').hasClass('tve-video-auth')) {
         videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       } else {

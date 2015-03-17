@@ -43,7 +43,7 @@
           <?php endif; ?>
         </div>
         <div class="icons-block">
-          <?php print l(t('Live'), 'videos/live', array('attributes' => array('class' => array('live-icon', 'icon'))));?>
+          <?php print l(t('Live'), 'videos/live', array('attributes' => array('class' => array('live-icon', 'icon')), 'absolute' => true ));?>
           <?php if (!empty($on_now['syndicated_url'])): ?>
             <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $on_now['syndicated_url']; ?>"></a>
           <?php endif; ?>

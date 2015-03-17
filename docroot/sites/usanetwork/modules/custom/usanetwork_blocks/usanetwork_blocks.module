@@ -654,7 +654,7 @@ function _usanetwork_blocks_social_carousel_block_content() {
       if (isset($homepage_wrapper->field_social_promo_additional)) {
         $theme_variables['additional'] = $homepage_wrapper->field_social_promo_additional->value();
       }
-      if (isset($homepage_wrapper->field_social_promo_carousel)) {
+      if (!empty($homepage_node->field_social_promo_carousel)) {
         foreach ($homepage_wrapper->field_social_promo_carousel->value() as $promo) {
           $promo_content = _usanetwork_promo_featured_content($promo);
           $episode_theme_variables = array(
@@ -670,8 +670,8 @@ function _usanetwork_blocks_social_carousel_block_content() {
         }
         $theme_variables['promos'][count($theme_variables['promos']) -1 ]['class'] = 'last';
         $theme_variables['promos'][0]['class'] = 'first';
+        return theme('usanetwork_social_carousel', $theme_variables);
       }
-      return theme('usanetwork_social_carousel', $theme_variables);
     }
   }
   return '';

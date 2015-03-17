@@ -438,14 +438,22 @@
           ad_728x90_1 = $('#videos .ad_728x90_1'),
           ad_300x60_1 = $('#videos #ad_300x60_1'),
           ad_300x250 = $('#videos #ad_300x250'),
-          ad_300x250_1 = $('#videos #ad_300x250_1');
+          ad_300x250_1 = $('#videos #ad_300x250_1'),
+          filter, url;
+
+
 
       if (data) {
         dataPlayerId = data.data.player_id;
         dataFid = data.data.fid;
       }
 
-      var url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay;
+      if($('#video-filter').length){
+        filter = $('#video-filter .filter-item.active').text();
+        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
+      } else {
+        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay;
+      }
 
       if (videoContainer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
         videoContainer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
@@ -485,7 +493,7 @@
 
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
 
-      if (dataPlayerId == 'microsite_usa_vod') {
+      if (dataPlayerId == 'microsite_usa_vod_qa') { //todo replace on 'microsite_usa_vod'
         videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       } else {

@@ -162,7 +162,8 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     var feedAnnex = '';
     var currentGuid = encodeURIComponent(NBCUEndShareCard.NowPlaying.guid);
     var currentNid = tpconfig.nid;
-    var url = NBCUEndShareCard.Feed + '/' + currentNid + '/' + currentGuid;
+    var filter = tpconfig.filter;
+    var url = NBCUEndShareCard.Feed + '/' + currentNid + '/' + currentGuid + '/' + filter;
     if (!NBCUEndShareCard.AppearsToBeIE) {
       $.ajax({
         type: "GET",

@@ -177,7 +177,7 @@ function usanetwork_microsite_entity_info_alter(&$entity_info) {
 function usanetwork_microsite_preprocess_node(&$variables) {
   if($variables['view_mode'] == 'microsite_output') {
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__microsite_output';
-    if ($variables['type'] == 'quiz') {
+    if ($variables['type'] == 'quiz' || $variables['type'] == 'catchall_page') {
       $variables['page'] = TRUE;
     }
   }
@@ -2450,6 +2450,26 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'games':
           $omniture_prop3 = 'Games';
+          if(isset($args[4])) {
+            $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'games');
+            if(!empty($node)) {
+              $omniture_prop5 = $entity->title . ' : Games : ' .  $node->title;
+              $omniture_pagename = $entity->title . ' : Games : ' . $node->title;
+            }
+          }
+          else {
+            $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
+            if (!empty($section_wrapper)) {
+              $section_object = $section_wrapper->value();
+              if (!empty($section_object->field_ms_catchall_page)) {
+                $node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_catchall_page);
+                if (!empty($node)) {
+                  $omniture_prop5 = $entity->title . ' : Games : ' .  $node->title;
+                  $omniture_pagename = $entity->title . ' : Games : ' . $node->title;
+                }
+              }
+            }
+          }
           break;
         case 'quizzes':
           $omniture_prop3 = 'Quizzes/Trivia';

@@ -2567,7 +2567,7 @@ function usanetwork_home_field_default_field_instances() {
   t('The upper text on the carousel tab');
   t('This item renders under A-Spot "On-now Tonight" bar.');
   t('Title');
-  t('Uses one row by deafult');
+  t('Uses one row by default');
   t('slideshowSpeed');
 
   return $field_instances;

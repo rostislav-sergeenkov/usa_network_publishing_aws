@@ -9301,6 +9301,105 @@ footer h2 {
   }
 }
 
+.full-episodes-block.carousel-block {
+  background: #e9eaeb;
+  overflow: hidden;
+  padding: 40px 60px;
+  position: relative;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .full-episodes-block.carousel-block {
+    padding: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block {
+    padding: 60px 0px 0px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .full-episodes-block.carousel-block .carousel.start {
+    margin-left: 165px;
+    overflow: hidden;
+  }
+  .full-episodes-block.carousel-block .carousel.start:hover .jcarousel-control-next {
+    right: 125px;
+  }
+}
+@media (min-width: 1025px) {
+  .full-episodes-block.carousel-block .carousel.start {
+    margin-left: 165px;
+    overflow: hidden;
+  }
+  .full-episodes-block.carousel-block .carousel.start:hover .jcarousel-control-next {
+    right: 105px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel.start {
+    margin-left: 265px;
+  }
+  .full-episodes-block.carousel-block .carousel.start:hover .jcarousel-control-next {
+    right: 205px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel.start {
+    margin-left: 0px;
+  }
+  .full-episodes-block.carousel-block .carousel .jcarousel-controls {
+    display: none;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item {
+  left: -225px;
+  width: 225px;
+}
+.full-episodes-block.carousel-block .carousel-description-item.start {
+  left: 0;
+}
+.full-episodes-block.carousel-block .carousel-description-item .description-wrapper {
+  padding: 40px;
+  width: 100%;
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .full-episodes-block.carousel-block .carousel-description-item {
+    left: -205px;
+    width: 205px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel-description-item {
+    left: -325px;
+    width: 325px;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item .caption, .full-episodes-block.carousel-block .carousel-description-item .additional-text {
+  font-size: 12px;
+  line-height: 14px;
+  text-align: right;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel-description-item .caption, .full-episodes-block.carousel-block .carousel-description-item .additional-text {
+    font-size: 17px;
+    line-height: 20px;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item .title {
+  font-size: 22px;
+  margin: 10px 0;
+  position: relative;
+  text-align: right;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel-description-item .title {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 15px 0;
+  }
+}
+
 .consumptionator-page .video-block {
   margin: 0 auto 10px;
   max-width: 2260px;

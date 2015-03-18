@@ -1,0 +1,94 @@
+.full-episodes-block.carousel-block {
+  background: $poll-back;
+  overflow: hidden;
+  padding: 40px 60px;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-1024-width) {
+    padding: 40px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: 60px 0px 0px;
+  }
+  .carousel {
+    @include breakpoint($between-769-1024) {
+      &.start {
+        margin-left: 165px;
+        overflow: hidden;
+        &:hover {
+          .jcarousel-control-next {
+            right: 125px;
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-min-1025-width) {
+      &.start {
+        margin-left: 165px;
+        overflow: hidden;
+        &:hover {
+          .jcarousel-control-next {
+            right: 105px;
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-min-1601-width) {
+      &.start {
+        margin-left: 265px;
+        &:hover {
+          .jcarousel-control-next {
+            right: 205px;
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-768-width) {
+      &.start {
+        margin-left: 0px;
+      }
+      .jcarousel-controls {
+        display: none;
+      }
+    }
+  }
+  .carousel-description-item {
+    left: -225px;
+    width: 225px;
+    &.start {
+      left: 0;
+    }
+    .description-wrapper {
+      padding: 40px;
+      width: 100%;
+    }
+    @include breakpoint($between-769-1024) {
+      left: -205px;
+      width: 205px;
+    }
+    @include breakpoint($bp-min-1601-width) {
+      left: -325px;
+      width: 325px;
+    }
+    .caption, .additional-text {
+      font-size: 12px;
+      line-height: 14px;
+      text-align: right;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 17px;
+        line-height: 20px;
+      }
+    }
+    .title {
+      font-size: 22px;
+      margin: 10px 0;
+      position: relative;
+      text-align: right;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 32px;
+        line-height: 40px;
+        margin: 15px 0;
+      }
+    }
+  }
+}

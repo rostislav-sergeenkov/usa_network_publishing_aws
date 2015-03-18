@@ -155,6 +155,34 @@ On page load, only the first promo in each spot will be displayed.',
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_hp_full_episodes_carousel|node|usa_homepage|form';
+  $field_group->group_name = 'group_hp_full_episodes_carousel';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Full episode carousel',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_hp_episodes_block_title',
+      1 => 'field_carousel_rows_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-hp-full-episodes-carousel field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_hp_full_episodes_carousel|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_hp_globalnav_img|node|usa_homepage|form';
   $field_group->group_name = 'group_hp_globalnav_img';
   $field_group->entity_type = 'node';

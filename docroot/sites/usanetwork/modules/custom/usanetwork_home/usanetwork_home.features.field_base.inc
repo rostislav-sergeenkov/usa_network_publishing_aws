@@ -68,6 +68,32 @@ function usanetwork_home_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_carousel_rows_number'
+  $field_bases['field_carousel_rows_number'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_carousel_rows_number',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        1 => 'One row',
+        2 => 'Two rows',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_floodlight_category'
   $field_bases['field_floodlight_category'] = array(
     'active' => 1,

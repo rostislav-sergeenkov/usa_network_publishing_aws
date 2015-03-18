@@ -338,6 +338,78 @@ function usanetwork_home_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usa_homepage-field_carousel_rows_number'
+  $field_instances['node-usa_homepage-field_carousel_rows_number'] = array(
+    'bundle' => 'usa_homepage',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Uses one row by deafult',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 24,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_more' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_shows' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_carousel_rows_number',
+    'label' => 'Rows number',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 35,
+    ),
+  );
+
   // Exported field_instance: 'node-usa_homepage-field_floodlight_category'
   $field_instances['node-usa_homepage-field_floodlight_category'] = array(
     'bundle' => 'usa_homepage',
@@ -651,7 +723,7 @@ function usanetwork_home_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 23,
+      'weight' => 36,
     ),
   );
 
@@ -2485,6 +2557,7 @@ function usanetwork_home_field_default_field_instances() {
   t('Promo');
   t('Promo carousel');
   t('Promo carousel title');
+  t('Rows number');
   t('Set the speed of the slideshow cycling, in milliseconds, example: 7000');
   t('Social promo');
   t('Social Title');
@@ -2494,6 +2567,7 @@ function usanetwork_home_field_default_field_instances() {
   t('The upper text on the carousel tab');
   t('This item renders under A-Spot "On-now Tonight" bar.');
   t('Title');
+  t('Uses one row by default');
   t('slideshowSpeed');
 
   return $field_instances;

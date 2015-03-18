@@ -180,7 +180,8 @@
         backgroundPreviewingContainer.find('input[type="number"]').val(settings.giui_settings.bg_offset_value);
         backgroundPreviewingBlock.css({
           'background-image': 'url("' + settings.giui_settings.bg_offset_image_url + '")',
-          'background-position': settings.giui_settings.bg_offset_value + 'px 0'
+          'background-position': settings.giui_settings.bg_offset_value + 'px 0',
+          'height': $('#edit-field-aspot-enabled-gi-preview').height()
         });
       }
 

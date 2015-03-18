@@ -26,7 +26,7 @@
     <div id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
     <?php endif; ?>
       <div class="mcs-scroll">
-        <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
+        <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix fadein fadein-1s fadein-delay-1s">
           <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
             <?php print $section['content']; ?>
           <?php if (empty($section['is_last'])): ?>
@@ -60,7 +60,7 @@
           <?php endif; ?>
             <a class="scroll-link" href="#section-home" data-menuitem="1">
               <?php if ($current_section == 'home' && !empty($h1)): ?>
-                <h1 id="left-nav-logo" style="opacity: 0;"><span><?php print $h1; ?></span></h1>
+                <h1 id="left-nav-logo"><span><?php print $h1; ?></span></h1>
               <?php elseif (!empty($h1)): ?>
                 <div id="left-nav-logo"></div>
               <?php else: ?>
@@ -75,6 +75,7 @@
               <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
               <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
               <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
+              <a class="youtube" href="https://www.youtube.com/user/DIGonUSA" target="_blank"></a>
             </div>
           </li>
           <?php if (!empty($sections)): ?>
@@ -94,7 +95,7 @@
           <?php endif; ?>
           <li class="separator"></li>
           <li class="external"><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
-          <li class="external"><a href="http://digescapetheroom.com" target="_blank">Escape the Room</a></li>
+          <!-- <li class="external"><a href="http://digescapetheroom.com" target="_blank">Escape the Room</a></li> -->
           <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
           <li class="external"><a href="/dig/videos/the-making-of-dig">Making of DIG</a></li>
           <li class="external"><a href="https://twitter.com/search?q=%23digdeeper" target="_blank">#DIGDEEPER</a></li>

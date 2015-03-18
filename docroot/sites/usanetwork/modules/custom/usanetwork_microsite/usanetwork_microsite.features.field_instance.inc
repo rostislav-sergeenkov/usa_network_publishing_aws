@@ -442,7 +442,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -786,6 +786,51 @@ function usanetwork_microsite_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 23,
+    ),
+  );
+  // Exported field_instance: 'field_collection_item-field_ms_section-field_video_adding_type'
+  $field_instances['field_collection_item-field_ms_section-field_video_adding_type'] = array(
+    'bundle' => 'field_ms_section',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 26,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_video_adding_type',
+    'label' => 'Video adding type',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_buttons',
+      'weight' => 11,
     ),
   );
 
@@ -1788,6 +1833,55 @@ function usanetwork_microsite_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_ms_section-field_ms_episode'
+  $field_instances['field_collection_item-field_ms_section-field_ms_episode'] = array(
+    'bundle' => 'field_ms_section',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 29,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_ms_episode',
+    'label' => 'Episode',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 12,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('A Spot');
@@ -1827,7 +1921,9 @@ function usanetwork_microsite_field_default_field_instances() {
   t('Tune-in');
   t('Twitter page');
   t('Video');
+  t('Video adding type');
   t('slideshowSpeed');
+  t('Episode');
 
   return $field_instances;
 }

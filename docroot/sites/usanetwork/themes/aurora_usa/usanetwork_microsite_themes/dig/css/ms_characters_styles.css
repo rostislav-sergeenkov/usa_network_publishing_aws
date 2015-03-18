@@ -216,6 +216,9 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
   margin: 0 0 0 190px;
   max-width: none;
 }
+#microsite #characters #character-inner-container {
+  padding-bottom: 80px; /* To allow more space for next button */
+}
 #microsite #characters #character-background li {
   display: none;
   width: calc(100% - 10px); /* Subtract scrollbar width from overall width so user can still grab and move scrollbar */
@@ -325,13 +328,10 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
 }
 #microsite #characters .character-nav #nav-prev,
 #microsite #characters .character-nav #nav-next {
-  margin: 0;
+  margin: -9px 0 0;
   padding: 0;
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   width: 20px;
   font-size: 1.5em;
   cursor: pointer;
@@ -391,7 +391,9 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
   opacity: 0;
   top: -40px;
 }
+#microsite #characters h1,
 #microsite #characters h3 {
+  color: #ffffff;
   display: inline-block;
   margin: 0 15px 0 0;
   font-size: 1.4em;
@@ -490,9 +492,15 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
 
 
 /* CHARACTERS SECTION MEDIA QUERY START */
+@media (min-width: 1181px) {
+  #microsite #about-content {
+    background-position: 0 75px;
+  }
+}
+
 @media (max-width: 1180px) {
   #microsite #about section {
-    background-position: -150px 0;
+    background-position: -150px 75px;
   }
 }
 
@@ -652,11 +660,11 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
 and (min-device-width : 200px)
 and (max-device-width : 568px) {
   #microsite #home .characters-cast .btns.prev {
-    left: -2px;
+    left: 0px;
     z-index: 30;
   }
   #microsite #home .characters-cast .btns.next {
-    right: 8px;
+    right: 0px;
   }
   #microsite #about section .microsite-section-container .right-pane {
     width: 98%;

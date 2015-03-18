@@ -139,6 +139,25 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         ),
       ),
     ),
+    'usanetwork_microsite_dig_page_episodes' => array(
+      'template' => 'usanetwork-microsite-dig-page-episodes',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'episodes' => array(
+          0 => array(
+            'id' => NULL,
+            'content_url' => NULL,
+            'title' => NULL,
+            'optional_h1' => NULL,
+            'description' => NULL,
+            'background_url' => NULL,
+            'preview_image_url' => NULL,
+            'status' => NULL,
+          ),
+        ),
+        'section_title' => NULL,
+      ),
+    ),
   );
 }
 
@@ -153,9 +172,9 @@ function usanetwork_microsite_dig_get_theme_includes() {
 
   return array(
     'js' => array(
-       // 'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
+        //'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
         //'http://pdk.theplatform.com/current/pdk/tpPdkController.js',
-        'http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js',
+        //'http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js',
         //'http://pdk.theplatform.com/pdk/tpPdkController.js',
 //      $theme_path . '/javascripts/video-dropdowns.js',
 //      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
@@ -165,16 +184,20 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_episodes.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
       $module_path . '/js/usanetwork_video_endcard.js',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
     'css' => array(
       $module_path . '/css/jquery.bxslider.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
+      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
   );
 }

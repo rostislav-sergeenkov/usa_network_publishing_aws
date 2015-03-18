@@ -2684,12 +2684,14 @@ function _usanetwork_microsite_get_video_category($video_file) {
     return USANETWORK_MICROSITE_FULL_VIDEO;
   }
   elseif (!empty($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id'])) {
-    $term = taxonomy_term_load($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id']);
-    return $term->name;
+    $term_id = $video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id'];
+    $term_child = taxonomy_get_children($term_id);
+    if (empty($term_child)) {
+      $term = taxonomy_term_load($term_id);
+      return $term->name;
+    }
   }
-  else {
-    return FALSE;
-  }
+  return FALSE;
 }
 
 

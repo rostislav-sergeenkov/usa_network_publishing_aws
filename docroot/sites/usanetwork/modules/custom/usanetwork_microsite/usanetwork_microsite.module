@@ -2721,7 +2721,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     $query->condition($db_or);
     $query->condition('fs.field_show_target_id', $show_id, '=');
     $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
-    $query->orderBy('fm.timestamp', 'DESC');
+    $query->orderBy('mpx.airdate', 'DESC');
     $query_results = $query->execute()->fetchAll();
     if (!empty($query_results)) {
       $files_array = array();

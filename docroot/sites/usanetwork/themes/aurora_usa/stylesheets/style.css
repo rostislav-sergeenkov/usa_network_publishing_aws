@@ -1302,6 +1302,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     height: 87px;
   }
 }
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo:before {
+    height: 32.4%;
+  }
+}
 .full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img {
   height: 100%;
   width: 100%;
@@ -1323,6 +1328,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     height: 87px;
   }
 }
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper {
+    height: 32.4%;
+  }
+}
 .full-episodes-block.carousel-block .carousel ul li .meta-wrapper-inner {
   height: 100%;
   display: table;
@@ -1335,6 +1345,72 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   overflow: hidden;
   position: absolute;
   width: 100%;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta {
+  padding-left: 15px;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta .caption {
+  font-size: 11px;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta .caption span {
+  font-size: 11px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span {
+    font-size: 8px;
+    line-height: 14px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption {
+    font-size: 8px;
+    line-height: 14px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 .full-episodes-block.carousel-block .carousel ul li .meta-icon {
   left: 15px;
@@ -1353,6 +1429,20 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     width: 47px;
   }
 }
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon {
+    height: 30px;
+    left: 14px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon:before {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+  }
+}
 .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta {
   padding-left: 60px;
 }
@@ -1361,31 +1451,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     padding-left: 80px;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .caption {
-  font-size: 11px;
-}
-.full-episodes-block.carousel-block .carousel ul li .meta .caption span {
-  font-size: 11px;
-  font-family: "texgyrescholaitalic", Times, serif;
-  line-height: 18px;
-  text-transform: uppercase;
-}
-@media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption span {
-    font-size: 13px;
-    line-height: 20px;
-  }
-}
-@media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption {
-    font-size: 13px;
-    line-height: 20px;
-  }
-}
-@media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .title {
-    font-size: 18px;
-    line-height: 20px;
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta {
+    padding-left: 50px;
   }
 }
 
@@ -9398,6 +9466,10 @@ footer h2 {
   }
 }
 
+#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest {
+  width: 100%;
+}
+
 .full-episodes-block.carousel-block {
   background: #e9eaeb;
   overflow: hidden;
@@ -9447,6 +9519,17 @@ footer h2 {
   }
   .full-episodes-block.carousel-block .carousel .jcarousel-controls {
     display: none;
+  }
+}
+.full-episodes-block.carousel-block .carousel.carousel_2_rows {
+  height: 515px;
+}
+.full-episodes-block.carousel-block .carousel.carousel_2_rows .node-usanetwork-promo {
+  margin-bottom: 15px;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows {
+    height: 573px;
   }
 }
 .full-episodes-block.carousel-block .carousel ul li {
@@ -9505,6 +9588,26 @@ footer h2 {
     margin: 15px 0;
   }
 }
+.full-episodes-block.carousel-block .carousel-description-item .link {
+  text-align: right;
+}
+.full-episodes-block.carousel-block .carousel-description-item .link a {
+  color: #545454;
+  font-family: "texgyrescholabold_italic", Times, serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel-description-item .link a {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item .link a:hover {
+  text-decoration: underline;
+}
 @media (max-width: 768px) {
   .full-episodes-block.carousel-block .carousel {
     margin-left: 0;
@@ -9512,9 +9615,40 @@ footer h2 {
     margin-top: 50px;
     padding: 0 10px;
   }
+  .full-episodes-block.carousel-block .carousel ul {
+    width: 100%;
+  }
+  .full-episodes-block.carousel-block .carousel ul li {
+    margin-bottom: 15px;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_1_rows ul li {
+    float: left;
+    height: auto;
+    margin-right: 2%;
+    min-height: 115px;
+    width: 49%;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_1_rows ul li:nth-child(2n) {
+    margin-right: 0;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows li {
+    height: auto;
+    margin-right: 0;
+    width: 100%;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows li .node-usanetwork-promo {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 2%;
+    min-height: 115px;
+    width: 49%;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows li .node-usanetwork-promo:nth-child(2n) {
+    margin-right: 0;
+  }
   .full-episodes-block.carousel-block .carousel-description-item {
     left: 0px;
-    padding: 0px 10px;
+    padding: 0px 20px;
     position: relative;
     top: 0;
     width: 100%;
@@ -9540,11 +9674,15 @@ footer h2 {
   .full-episodes-block.carousel-block .carousel-description-item .title:after {
     display: none;
   }
+  .full-episodes-block.carousel-block .carousel-description-item .link a {
+    font-size: 17px;
+    line-height: 20px;
+  }
   .full-episodes-block.carousel-block .carousel-description-item .additional-text {
     font-size: 17px;
     line-height: 20px;
   }
-  .full-episodes-block.carousel-block .carousel-description-item .caption, .full-episodes-block.carousel-block .carousel-description-item .title, .full-episodes-block.carousel-block .carousel-description-item .additional-text {
+  .full-episodes-block.carousel-block .carousel-description-item .caption, .full-episodes-block.carousel-block .carousel-description-item .title, .full-episodes-block.carousel-block .carousel-description-item .additional-text, .full-episodes-block.carousel-block .carousel-description-item .link {
     text-align: left;
   }
 }

@@ -1,3 +1,6 @@
+#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest {
+  width: 100%;
+}
 .full-episodes-block.carousel-block {
   background: $poll-back;
   overflow: hidden;
@@ -51,6 +54,15 @@
         display: none;
       }
     }
+    &.carousel_2_rows {
+      height: 515px;
+      .node-usanetwork-promo {
+        margin-bottom: 15px;
+      }
+      @include breakpoint($bp-min-1601-width) {
+        height: 573px;
+      }
+    }
     ul {
       li {
         margin-right: 15px;
@@ -59,7 +71,6 @@
           width: 335px;
         }
         @extend %video-promo;
-
       }
     }
   }
@@ -101,6 +112,24 @@
         margin: 15px 0;
       }
     }
+    .link {
+      text-align: right;
+      a {
+        color: $poll-color;
+        font-family: $tex-gyreschola-bold;
+        font-size: 12px;
+        letter-spacing: 1px;
+        line-height: 14px;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 14px;
+          line-height: 16px;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
   @include breakpoint($bp-768-width) {
     .carousel {
@@ -108,10 +137,47 @@
       margin-bottom: 10px;
       margin-top: 50px;
       padding: 0 10px;
+      ul {
+        width: 100%;
+        li {
+          margin-bottom: 15px;
+        }
+      }
+      &.carousel_1_rows {
+        ul {
+          li {
+            float: left;
+            height: auto;
+            margin-right: 2%;
+            min-height: 115px;
+            width: 49%;
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      &.carousel_2_rows {
+        li {
+          height: auto;
+          margin-right: 0;
+          width: 100%;
+          .node-usanetwork-promo {
+            float: left;
+            margin-bottom: 0;
+            margin-right: 2%;
+            min-height: 115px;
+            width: 49%;
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
     }
     .carousel-description-item {
       left: 0px;
-      padding: 0px 10px;
+      padding: 0px 20px;
       position: relative;
       top: 0;
       width: 100%;
@@ -136,11 +202,17 @@
           display: none;
         }
       }
+      .link {
+        a {
+          font-size: 17px;
+          line-height: 20px;
+        }
+      }
       .additional-text {
         font-size: 17px;
         line-height: 20px;
       }
-      .caption, .title, .additional-text {
+      .caption, .title, .additional-text, .link {
         text-align: left;
       }
     }

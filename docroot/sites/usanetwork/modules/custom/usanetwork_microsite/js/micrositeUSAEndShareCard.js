@@ -162,7 +162,15 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     var feedAnnex = '';
     var currentGuid = encodeURIComponent(NBCUEndShareCard.NowPlaying.guid);
     var currentNid = tpconfig.nid;
-    var url = NBCUEndShareCard.Feed + '/' + currentNid + '/' + currentGuid;
+    var filter = tpconfig.filter;
+    var url;
+
+    if (filter) {
+      url = NBCUEndShareCard.Feed + '/' + currentNid + '/' + currentGuid + '/' + filter;
+    } else {
+      url = NBCUEndShareCard.Feed + '/' + currentNid + '/' + currentGuid;
+    }
+
     if (!NBCUEndShareCard.AppearsToBeIE) {
       $.ajax({
         type: "GET",

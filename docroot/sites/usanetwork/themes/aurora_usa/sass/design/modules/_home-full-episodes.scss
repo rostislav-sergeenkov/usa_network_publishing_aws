@@ -51,6 +51,17 @@
         display: none;
       }
     }
+    ul {
+      li {
+        margin-right: 15px;
+        @include breakpoint($bp-min-1601-width) {
+          height: 279px;
+          width: 335px;
+        }
+        @extend %video-promo;
+
+      }
+    }
   }
   .carousel-description-item {
     left: -225px;
@@ -88,6 +99,49 @@
         font-size: 32px;
         line-height: 40px;
         margin: 15px 0;
+      }
+    }
+  }
+  @include breakpoint($bp-768-width) {
+    .carousel {
+      margin-left: 0;
+      margin-bottom: 10px;
+      margin-top: 50px;
+      padding: 0 10px;
+    }
+    .carousel-description-item {
+      left: 0px;
+      padding: 0px 10px;
+      position: relative;
+      top: 0;
+      width: 100%;
+      &.start {
+        left: 0px;
+      }
+      .description-wrapper {
+        display: block;
+        float: none;
+        padding: 0;
+        width: 100%;
+      }
+      .description-block {
+        display: block;
+      }
+      .title {
+        background: none;
+        font-size: 34px;
+        line-height: 40px;
+        margin: 0;
+        &:after {
+          display: none;
+        }
+      }
+      .additional-text {
+        font-size: 17px;
+        line-height: 20px;
+      }
+      .caption, .title, .additional-text {
+        text-align: left;
       }
     }
   }

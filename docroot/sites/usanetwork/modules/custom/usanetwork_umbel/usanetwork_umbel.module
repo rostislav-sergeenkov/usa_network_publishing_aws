@@ -34,7 +34,13 @@ window._umbel = window._umbel || [];
 </script>";
 // set variables from page
   $footer .= '<script type="text/javascript">
-_umbel.push({"type":"send","name":"action.tag","value": [s.prop10, s.prop4, s.pageName]}); 
+var umbel_parametr;
+if (typeof umbel != \'undefined\') {
+  umbel_parametr = umbel;
+} else {
+  umbel_parametr = s.pageName;
+}
+_umbel.push({"type":"send","name":"action.tag","value": [s.prop10, s.prop4, umbel_parametr]}); 
 </script>';
 
   $page['page_bottom']['umbel'] =  array(

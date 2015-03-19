@@ -60,11 +60,6 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
-  $blocks['usanetwork_menu_sm_featured'] = array(
-    'info' => t('Homepage Menu: Featured items'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
   $blocks['usanetwork_menu_sm_primetime'] = array(
     'info' => t('Homepage Menu: Primetime tonight'),
     'cache' => DRUPAL_NO_CACHE,
@@ -128,11 +123,6 @@ function usanetwork_menu_block_view($delta = '') {
     case 'usanetwork_menu_sm_main':
       $block['subject'] = '';
       $block['content'] = _usanetwork_menu_main_menu_block();
-      break;
-
-    case 'usanetwork_menu_sm_featured':
-      $block['subject'] = t('Featured');
-      $block['content'] = _usanetwork_menu_show_menu_featured_block();
       break;
 
     case 'usanetwork_menu_sm_primetime':
@@ -207,25 +197,6 @@ function usanetwork_menu_block_view($delta = '') {
  */
 function usanetwork_menu_theme() {
   return array(
-    'usanetwork_menu_smnav_img_show_item' => array(
-      'variables' => array(
-        'url' => NULL,
-        'title' => NULL,
-        'subtitle' => NULL,
-        'caption' => NULL,
-        'time' => NULL,
-        'cta_text' => NULL,
-        'show_class' => NULL,
-        'icon_type' => NULL,
-      ),
-      'template' => 'templates/usanetwork-menu-smnav-img-show-item',
-    ),
-    'usanetwork_menu_smnav_img_show_container' => array(
-      'variables' => array(
-        'elements' => NULL
-      ),
-      'template' => 'templates/usanetwork-menu-smnav-img-show-container',
-    ),
     'usanetwork_menu_smnav_primetime_item' => array(
       'variables' => array(
         'time' => NULL,
@@ -391,52 +362,6 @@ function _usanetwork_menu_main_menu_block() {
       )
     ),
   ));
-}
-
-/**
- * Renders featured content block.
- * The callback is only FOR TESTING and POC!
- */
-function _usanetwork_menu_show_menu_featured_block() {
-  if (path_is_admin(current_path())) {
-    return '';
-  }
-
-  $output = array();
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-
-  if (!empty($homepage['node'])) {
-    $node_data = reset($homepage['node']);
-    $node = node_load($node_data->nid);
-
-    $featured_header_elements = field_get_items('node', $node, 'field_hp_nav_img_more');
-    if (!empty($featured_header_elements)) {
-      foreach ($featured_header_elements as $featured_header_element) {
-        $associated_content = _usanetwork_promo_featured_content($featured_header_element['target_id']);
-        if ($associated_content['published']) {
-          $output[] = theme('usanetwork_menu_smnav_img_show_item', array(
-            'url' => $associated_content['url'],
-            'image' => theme('image_style', array(
-              'path' => $associated_content['image_url'],
-              'style_name' => '300x169_video',
-            )),
-            'caption' => $associated_content['caption'],
-            'title' => $associated_content['title'],
-            'time' => $associated_content['time'],
-            'cta_text' => $associated_content['cta_text'],
-            'show_class' => $associated_content['show_class'],
-            'icon_type' => $associated_content['icon_type'],
-          ));
-        }
-      }
-    }
-  }
-
-  if (!empty($output)) {
-    return theme('usanetwork_menu_smnav_img_show_container', array('elements' => $output));
-  }
-
-  return '';
 }
 
 /**

@@ -74,20 +74,21 @@
     },
 
     setActiveGalleryHeight: function() {
-      var activeGallery = $('#microsite #galleries-content .flexslider'),
-          activeGalleryWidth = activeGallery.width(),
-          newHeight = Math.ceil(activeGalleryWidth * 9/16);
-      $('#microsite #galleries-content .flexslider').height(newHeight);
+      var galleryWidth = $('#microsite #galleries .full-pane').width(),
+          height = Math.ceil(galleryWidth * 9/16),
+          captionHeight = 75;
+      $('#microsite #galleries .flexslider, #microsite #galleries .flexslider .slides li').height(height);
+      $('#microsite #galleries .center-wrapper').css('min-height', (height + captionHeight) + 'px');
     },
 
     setActiveGalleryNav: function() {
       var activeGalleryNid = $('#microsite #galleries-content .microsite-gallery').attr('data-node-id');
       $('#galleries .galleries-bxslider li').removeClass('active');
       $('#galleries .galleries-bxslider li[data-node-id="' + activeGalleryNid + '"]').addClass('active');
-
     },
 
-    initCarousel: function() {
+    initCarousel: function(callback) {
+      callback = callback || null;
       $slideSelector = $('.microsite-gallery .flexslider');
       $touch = true;
       if ($slideSelector.find('li').length <= 1) {
@@ -105,6 +106,7 @@
           controlNav: true,
           directionNav: true,
           start: function() {
+            Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryHeight();
             var $slider = $slideSelector;
             Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
             var current_gallery = $slider.closest('.microsite-gallery');
@@ -114,6 +116,8 @@
             }
             $slider.append('<div class="counter"></div>');
             Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+
+            if (callback) callback();
           },
           after: function() {
             var $slider = $slideSelector;
@@ -141,6 +145,12 @@
       }
     },
 
+    showGallery: function($activeGallery) {
+      $activeGallery.animate({'opacity': 1}, 1000, function(){
+        Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
+      });
+    },
+
     switchGallery: function(nid, callback) {
       Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = true;
       Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
@@ -154,14 +164,9 @@
       .done(function(data, textStatus, jqXHR){
         var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
             activeGallery = $('#galleries .microsite-gallery'),
-            activeGalleryHeight = activeGallery.height(),
             galleryNavItems = $('#galleries .galleries-bxslider li');
 
-        callback();
-
-        Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = false;
-
-        activeGallery.animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
+        activeGallery.animate({'opacity': 0}, 1000, function(){
           if (activeGalleryMeta.find('h2').length > 0) {
             activeGalleryMeta.find('h2').text(data.title);
           } else {
@@ -171,14 +176,14 @@
             activeGalleryMeta.find('h1').text(data.h1);
           }
           activeGallery.find('.center-wrapper').html(data.rendered);
-          activeGallery.find('.flexslider').height(activeGalleryHeight);
           Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
           galleryNavItems.removeClass('active');
           $('#galleries .galleries-bxslider li[data-node-id="' + nid + '"]').addClass('active');
-          Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryHeight();
-          activeGallery.animate({'opacity': 1}, 1000, function(){
-            Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
-          });
+          setTimeout(function(){
+            Drupal.behaviors.micrositeGalleriesBxSliders.showGallery(activeGallery);
+            Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = false;
+            callback();
+          }, 1000);
         });
       })
       .fail(function(jqXHR, textStatus, errorThrown){
@@ -320,6 +325,10 @@
             return false;
           }
 
+          // scroll to top of galleries section
+          $('#microsite #galleries').animate({ scrollTop: 0 }, 1000);
+
+          // switch gallery
           var nid = $(this).parent().attr('data-node-id');
           Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
           self.switchGallery(nid, function() {

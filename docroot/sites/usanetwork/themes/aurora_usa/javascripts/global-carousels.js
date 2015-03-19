@@ -105,13 +105,18 @@
                     }
                   },
                   swipeLeft: function () {
+                    var count = Drupal.behaviors.global_carousels.swipeItems($carousel);
+
                     if (!$carousel.hasClass('stop')) {
                       if ($container.hasClass('start')) {
-                        Drupal.behaviors.global_carousels.swipeHideDescription($container);
-                        var count = (Drupal.behaviors.global_carousels.swipeItems($carousel) <= 1) ? 1 : Drupal.behaviors.global_carousels.swipeItems($carousel) - 1;
-                        $container.jcarousel('scroll', '+=' + count);
+                        if (Drupal.behaviors.global_carousels.checkFirstSlideOverflow($container)) {
+                          Drupal.behaviors.global_carousels.swipeHideDescription($container);
+                        } else {
+                          Drupal.behaviors.global_carousels.swipeHideDescription($container);
+                          $container.jcarousel('scroll', '+=' + count);
+                        }
                       } else {
-                        $container.jcarousel('scroll', '+=' + Drupal.behaviors.global_carousels.swipeItems($carousel));
+                        $container.jcarousel('scroll', '+=' + count);
                       }
                     }
                   },
@@ -374,6 +379,14 @@
       carousel.removeClass('stop');
     },
 
+    checkFirstSlideOverflow: function($carousel) {
+      var first_slide_width = $carousel.find('ul.slides .first').width(),
+          desc_width = $carousel.parent().find('.carousel-description-item').width(),
+          window_width = $(window).width();
+
+      return (first_slide_width + desc_width > window_width);
+    },
+
     attach: function (context, settings) {
 
 
@@ -384,27 +397,33 @@
       $(window).load(function () {
         Drupal.behaviors.global_carousels.carouselInit();
 
+        $(".carousel.start .jcarousel-control-next").unbind('click');
         $(".carousel.start .jcarousel-control-next").click(function (e) {
-          var carousel = $(this).closest('.carousel'),
-              count = null;
+          var $carousel = $(this).closest('.carousel'),
+              overflow = Drupal.behaviors.global_carousels.checkFirstSlideOverflow($carousel),
+              count;
 
-          if (carousel.length > 1) {
-            carousel = $(carousel.get(0));
-          }
+          if ($carousel.length > 1) $carousel = $($carousel.get(0));
 
           e.preventDefault();
-          Drupal.behaviors.global_carousels.swipeHideDescription($(this).parent());
 
-          count = (Drupal.behaviors.global_carousels.swipeItems($(carousel).find('ul')) <= 1) ? 1 : Drupal.behaviors.global_carousels.swipeItems($(carousel).find('ul')) - 1;
-          carousel.jcarousel('scroll', '+=' + count);
+          count = (Drupal.behaviors.global_carousels.swipeItems($($carousel).find('ul')) <= 1)
+            ? 1 : Drupal.behaviors.global_carousels.swipeItems($($carousel).find('ul')) - 1;
+
+          if (overflow && $carousel.hasClass('start')) {
+            Drupal.behaviors.global_carousels.swipeHideDescription($(this).parent());
+          } else {
+            Drupal.behaviors.global_carousels.swipeHideDescription($(this).parent());
+            $carousel.jcarousel('scroll', '+=' + count);
+          }
         });
 
         $(".carousel .jcarousel-control-prev").click(function (e) {
-          if($(this).hasClass('inactive') && !$(this).closest('.carousel').hasClass('start')){
+          if ($(this).hasClass('inactive') && !$(this).closest('.carousel').hasClass('start')){
             var carousel = $(this).closest('.carousel');
+
             Drupal.behaviors.global_carousels.swipeShowDescription(carousel);
           }
-
         });
 
       });

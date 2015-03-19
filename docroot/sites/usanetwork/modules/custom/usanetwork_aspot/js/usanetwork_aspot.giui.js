@@ -10,6 +10,12 @@
       usanetwork_aspot_giui_setup_draggable_elements();
       usanetwork_aspot_giui_setup_draggable_background();
       usanetwork_aspot_giui_fill_draggable_items_input();
+      var giImage = ($('<img>',{id:'gi-image', style: 'max-width: 100%; height: auto;', src: settings.giui_settings.bg_offset_image_url})).load(function() {
+        backgroundPreviewingBlock.css({
+          'height': this.height
+        });
+      });
+      carouselElementPreviewingBlock.prepend(giImage);
       aspotElementsCheckboxes.change(function () {
         if ($(this).is(':checked')) {
           usanetwork_aspot_giui_enable_element($(this).val());
@@ -38,7 +44,7 @@
           usanetwork_aspot_giui_lock_ajax_form_submits();
         }
       };
-      $('.aspot-draggable-element').draggable(draggableOptions);
+      $('.aspot-draggable-element').draggable(draggableOptions).css("position", "absolute");
 
       /**
        * Collects draggable elements, calculates positions and saves data in form field.
@@ -120,9 +126,6 @@
         else {
           carouselElementPreviewingBlock = $('#edit-field-aspot-enabled-gi-preview');
         }
-        carouselElementPreviewingBlock.css({
-          'background-image': 'url("' + settings.giui_settings.bg_offset_image_url + '")'
-        });
         var draggableElementsData = Object.keys(settings.giui_settings.aspot_elements);
 // At the beginning when it's debugging some deprecated elements could presents in view. All the
 // deprecated elements must be removed. This function only for early stage of development but can
@@ -181,7 +184,6 @@
         backgroundPreviewingBlock.css({
           'background-image': 'url("' + settings.giui_settings.bg_offset_image_url + '")',
           'background-position': settings.giui_settings.bg_offset_value + 'px 0',
-          'height': $('#edit-field-aspot-enabled-gi-preview').height()
         });
       }
 

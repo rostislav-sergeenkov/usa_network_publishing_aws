@@ -585,7 +585,9 @@ function usanetwork_aspot_render($show_node) {
 function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
   $output = "";
 
-  $output .= 'top: ' . $draggable_data_element->top . '; ' .
+  $output .=
+    'position : relative;' .
+    'top: ' . $draggable_data_element->top . '; ' .
     'left: ' . $draggable_data_element->left . '; ';
 
   return $output;

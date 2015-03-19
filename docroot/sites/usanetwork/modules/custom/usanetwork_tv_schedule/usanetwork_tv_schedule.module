@@ -854,6 +854,7 @@ function usanetwork_tv_schedule_schedule_page() {
   $tv_schedule = usanetwork_tv_schedule_fetch_schedule($sdate);
   $schedule_rows = array();
 
+  $shows_filter = array();
   if (!empty($tv_schedule)) {
     foreach ($tv_schedule as $tv_schedule_item) {
       $show_name = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'ProgramName');
@@ -890,9 +891,6 @@ function usanetwork_tv_schedule_schedule_page() {
         }
       }
 
-      if (!empty($filter_show_nid) && !empty($show_nid) && $filter_show_nid != $show_nid) {
-        continue;
-      }
 
       if (!empty($filter_show_time) && !empty($start_time)) {
         // Featured time filters
@@ -906,6 +904,11 @@ function usanetwork_tv_schedule_schedule_page() {
         }
       }
 
+      $show_name = !empty($show_node->title) ? $show_node->title : $show_name;
+      $shows_filter[$show_nid] = $show_name;
+      if (!empty($filter_show_nid) && !empty($show_nid) && $filter_show_nid != $show_nid) {
+        continue;
+      }
       $tv_episode = _usanetwork_tv_schedule_get_episode($episode_title, $show_nid);
 
       if (!empty($tv_episode)) {
@@ -947,7 +950,7 @@ function usanetwork_tv_schedule_schedule_page() {
               : '',
         'time' => date('g:i', $start_time),
         'day_part' => date('A', $start_time),
-        'episode_show' => !empty($show_node->title) ? $show_node->title : $show_name,
+        'episode_show' => $show_name,
         'episode_title' => !empty($tv_episode) ? $tv_episode->title : $episode_title,
         'episode_fid' => !empty($tv_episode) ? $tv_episode->fid : '',
         'icon_reminder_url' => !empty($show_nid) ? _usanetwork_menu_get_reminder_url($show_nid)
@@ -964,6 +967,8 @@ function usanetwork_tv_schedule_schedule_page() {
     }
   }
 
+  asort($shows_filter);
+  $shows_filter = array(t('Show all')) + $shows_filter;
   if (!empty($filter_show_nid)) {
     $filter_show_node = node_load($filter_show_nid);
   }
@@ -974,7 +979,7 @@ function usanetwork_tv_schedule_schedule_page() {
           'nid' => !empty($filter_show_nid) ? $filter_show_nid : 0,
           'title' => !empty($filter_show_nid) ? $filter_show_node->title : t('Show all'),
         ),
-        'list' => _usanetwork_tv_schedule_get_shows_list(TRUE),
+        'list' => $shows_filter,
       ),
       'show_time' => array(
         'selected' => array(

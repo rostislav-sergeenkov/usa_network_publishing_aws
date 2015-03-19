@@ -187,30 +187,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane = new stdClass();
   $pane->pid = 'new-7';
   $pane->panel = 'reg_tab_shows';
-  $pane->type = 'block';
-  $pane->subtype = 'usanetwork_menu-usanetwork_menu_sm_featured';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'featured-view',
-  );
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $display->content['new-7'] = $pane;
-  $display->panels['reg_tab_shows'][0] = 'new-7';
-  $pane = new stdClass();
-  $pane->pid = 'new-8';
-  $pane->panel = 'reg_tab_shows';
   $pane->type = 'views';
   $pane->subtype = 'usa_nav';
   $pane->shown = TRUE;
@@ -240,12 +216,12 @@ function usanetwork_menu_default_panels_mini() {
     'css_class' => 'originals-shows-menu',
   );
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 0;
   $pane->locks = array();
-  $display->content['new-8'] = $pane;
-  $display->panels['reg_tab_shows'][1] = 'new-8';
+  $display->content['new-7'] = $pane;
+  $display->panels['reg_tab_shows'][0] = 'new-7';
   $pane = new stdClass();
-  $pane->pid = 'new-9';
+  $pane->pid = 'new-8';
   $pane->panel = 'reg_tab_shows';
   $pane->type = 'views';
   $pane->subtype = 'usa_nav';
@@ -276,10 +252,10 @@ function usanetwork_menu_default_panels_mini() {
     'css_class' => 'syndicated-shows-menu',
   );
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 1;
   $pane->locks = array();
-  $display->content['new-9'] = $pane;
-  $display->panels['reg_tab_shows'][2] = 'new-9';
+  $display->content['new-8'] = $pane;
+  $display->panels['reg_tab_shows'][1] = 'new-8';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $mini->display = $display;

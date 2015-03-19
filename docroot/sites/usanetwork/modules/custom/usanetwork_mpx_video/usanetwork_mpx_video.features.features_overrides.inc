@@ -12,10 +12,6 @@ function usanetwork_mpx_video_features_override_default_overrides() {
   $overrides = array();
 
   // Exported overrides for: ds_view_modes
-  $overrides["ds_view_modes.vid_teaser_episode.entities|file"] = 'file';
-  $overrides["ds_view_modes.vid_teaser_general.entities|file"] = 'file';
-  $overrides["ds_view_modes.vid_teaser_show_episode.entities|file"] = 'file';
-  $overrides["ds_view_modes.vid_teaser_show_general.entities|file"] = 'file';
 
  return $overrides;
 }

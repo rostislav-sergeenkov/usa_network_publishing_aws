@@ -155,21 +155,30 @@
         var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
             activeGallery = $('#galleries .microsite-gallery'),
             activeGalleryHeight = activeGallery.height(),
-            galleryNavItems = $('#galleries .galleries-bxslider li');
+            galleryNavItems = $('#galleries .galleries-bxslider li'),
+            $metaH1 = activeGalleryMeta.find('h1'),
+            $metaH2 = activeGalleryMeta.find('h2'),
+            $metaH1Place = activeGalleryMeta.find('.h1-place');
 
         callback();
 
         Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = false;
 
         activeGallery.animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
-          if (activeGalleryMeta.find('h2').length > 0) {
-            activeGalleryMeta.find('h2').text(data.title);
-          } else {
-            $('#gigya-share_gig_containerParent').before('<h2>' + data.title + '</h2>');
+
+          if ($metaH1.length && $metaH2.length) {
+            $metaH1.text(data.h1);
+            $metaH2.text(data.title);
+
+          } else if ($metaH1Place.length && $metaH1.length) {
+            $metaH1Place.text(data.h1);
+            $metaH1.text(data.title);
+
+          } else if ($metaH1Place.length && $metaH2.length) {
+            $metaH1Place.text(data.h1);
+            $metaH2.text(data.title);
           }
-          if (activeGalleryMeta.find('h1').length > 0) {
-            activeGalleryMeta.find('h1').text(data.h1);
-          }
+
           activeGallery.find('.center-wrapper').html(data.rendered);
           activeGallery.find('.flexslider').height(activeGalleryHeight);
           Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();

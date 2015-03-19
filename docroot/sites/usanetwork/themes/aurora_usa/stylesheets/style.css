@@ -4340,40 +4340,6 @@ header .tab-item.shows-tab > div li a span {
 header .tab-item.shows-tab > div li a:hover {
   text-decoration: underline;
 }
-header .tab-item.shows-tab .featured-view {
-  width: 36%;
-}
-@media (max-width: 1280px) {
-  header .tab-item.shows-tab .featured-view {
-    width: 38%;
-  }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  header .tab-item.shows-tab .featured-view {
-    float: none;
-    width: 100%;
-  }
-  header .tab-item.shows-tab .featured-view:after {
-    clear: both;
-    content: '';
-    display: table;
-  }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  header .tab-item.shows-tab .featured-view .node {
-    float: left;
-    padding-right: 10px;
-    margin-bottom: 40px;
-    width: 33.33333%;
-  }
-}
-header .tab-item.shows-tab .featured-view .node img {
-  height: 81px;
-  width: 143px;
-}
-header .tab-item.shows-tab .featured-view h2 {
-  margin-bottom: 30px;
-}
 header .tab-item.shows-tab .originals-shows-menu {
   width: 36%;
 }
@@ -5001,56 +4967,56 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   margin-top: 5px;
 }
 
-.featured-view .node, .show-menu-video .node {
+.show-menu-video .node {
   margin-bottom: 23px;
   position: relative;
   width: 100%;
 }
-.featured-view .node:after, .show-menu-video .node:after {
+.show-menu-video .node:after {
   clear: both;
   content: '';
   display: table;
 }
-.featured-view.panel-pane .node, .show-menu-video.panel-pane .node {
+.show-menu-video.panel-pane .node {
   margin-bottom: 23px;
 }
-.featured-view a:before, .show-menu-video a:before {
+.show-menu-video a:before {
   left: 159px;
   top: 21px;
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .featured-view a:before, .show-menu-video a:before {
+  .show-menu-video a:before {
     left: 0px;
     top: 104px;
   }
 }
-.featured-view .asset-img, .show-menu-video .asset-img {
+.show-menu-video .asset-img {
   float: left;
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .featured-view .asset-img, .show-menu-video .asset-img {
+  .show-menu-video .asset-img {
     float: none;
   }
 }
-.featured-view .meta, .show-menu-video .meta {
+.show-menu-video .meta {
   float: left;
   margin-left: 67px;
   margin-top: 10px;
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .featured-view .meta, .show-menu-video .meta {
+  .show-menu-video .meta {
     margin-left: 50px;
   }
 }
-.featured-view .meta > div, .show-menu-video .meta > div {
+.show-menu-video .meta > div {
   margin-bottom: 5px;
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .featured-view .meta > div, .show-menu-video .meta > div {
+  .show-menu-video .meta > div {
     width: 144px;
   }
 }
-.featured-view .meta .title, .show-menu-video .meta .title {
+.show-menu-video .meta .title {
   color: #ffffff;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 12px;
@@ -5058,7 +5024,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   line-height: 16px;
   text-transform: uppercase;
 }
-.featured-view .meta .type-and-time, .show-menu-video .meta .type-and-time {
+.show-menu-video .meta .type-and-time {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
@@ -5066,11 +5032,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   line-height: 16px;
   text-transform: uppercase;
 }
-.featured-view .meta .type-and-time span, .show-menu-video .meta .type-and-time span {
+.show-menu-video .meta .type-and-time span {
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
 }
-.featured-view .meta .caption, .show-menu-video .meta .caption {
+.show-menu-video .meta .caption {
   color: #3a3a3a;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 12px;

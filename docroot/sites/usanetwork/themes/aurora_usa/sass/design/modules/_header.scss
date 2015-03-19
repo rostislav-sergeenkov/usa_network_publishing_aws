@@ -728,32 +728,6 @@ header {
           }
         }
       }
-      .featured-view {
-        width: 36%;
-        @include breakpoint($bp-1280-width) {
-          width: 38%;
-        }
-        @include breakpoint($between-769-1024) {
-          @include clear;
-          float: none;
-          width: 100%;
-        }
-        .node {
-          @include breakpoint($between-769-1024) {
-            float: left;
-            padding-right: 10px;
-            margin-bottom: 40px;
-            width: (100% / 3);
-          }
-          img {
-            height: 81px;
-            width: 143px;
-          }
-        }
-        h2 {
-          margin-bottom: 30px;
-        }
-      }
       .originals-shows-menu {
         width: 36%;
         @include breakpoint($between-769-1024) {
@@ -1309,7 +1283,7 @@ header {
   }
 }
 
-.featured-view, .show-menu-video {
+.show-menu-video {
   .node {
     @include clear();
     margin-bottom: 23px;

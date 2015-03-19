@@ -293,7 +293,7 @@ function _usanetwork_home_featured_carousel() {
             'carousel-left',
             'start',
           ),
-          'data-carousel-id' => 2,
+          'data-carousel-id' => 3,
         ),
         'title_tag' => 'h2',
         'title_attributes' => array(

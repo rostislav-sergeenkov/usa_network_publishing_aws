@@ -8,7 +8,7 @@
       </div>
     </div>
   </div>
-  <div class="carousel full-episodes-carousel carousel-left start <?php print $carousel_class; ?>">
+  <div class="carousel full-episodes-carousel carousel-left start <?php print $carousel_class; ?>" data-carousel-id="2">
     <ul class="slides">
       <?php foreach ($carousel_items as $key => $item): ?>
         <li<?php print ($key == 0) ? ' class="first"' : ''; ?>><?php print $item; ?></li>

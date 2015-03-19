@@ -1292,6 +1292,171 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
+.full-episodes-block.carousel-block .carousel ul li .video-promo:before {
+  bottom: 0;
+  height: 81px;
+  top: auto;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo:before {
+    height: 87px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo:before {
+    height: 32.4%;
+  }
+}
+.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img {
+  height: 100%;
+  width: 100%;
+}
+.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img img {
+  height: 100%;
+  width: 100%;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta-wrapper {
+  background: none;
+  bottom: 0;
+  height: 81px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper {
+    height: 87px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper {
+    height: 32.4%;
+  }
+}
+.full-episodes-block.carousel-block .carousel ul li .meta-wrapper-inner {
+  height: 100%;
+  display: table;
+  width: 100%;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta-back {
+  background: #323232;
+  bottom: 0;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta {
+  padding-left: 15px;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta .caption {
+  font-size: 11px;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta .caption span {
+  font-size: 11px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span {
+    font-size: 8px;
+    line-height: 14px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption {
+    font-size: 8px;
+    line-height: 14px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+.full-episodes-block.carousel-block .carousel ul li .meta-icon {
+  left: 15px;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon {
+    height: 47px;
+    left: 20px;
+    margin-top: -24px;
+    width: 47px;
+  }
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon:before {
+    font-size: 24px;
+    height: 47px;
+    line-height: 47px;
+    width: 47px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon {
+    height: 30px;
+    left: 14px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon:before {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+  }
+}
+.full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta {
+  padding-left: 60px;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta {
+    padding-left: 80px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta {
+    padding-left: 50px;
+  }
+}
+
 .play-icon:before, .video-icon:before, .play-icon-half:before, .article-icon:before, .game-icon:before, .photo-icon:before, .poll-icon:before {
   background: #ffffff;
   border-radius: 50%;
@@ -9297,6 +9462,227 @@ footer h2 {
     line-height: 22px;
   }
   .social-block.carousel-block .carousel-description-item .caption, .social-block.carousel-block .carousel-description-item .title, .social-block.carousel-block .carousel-description-item .additional-text {
+    text-align: left;
+  }
+}
+
+#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest {
+  width: 100%;
+}
+
+.full-episodes-block.carousel-block {
+  background: #e9eaeb;
+  overflow: hidden;
+  padding: 40px 60px;
+  position: relative;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .full-episodes-block.carousel-block {
+    padding: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block {
+    padding: 60px 0px 0px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .full-episodes-block.carousel-block .carousel.start {
+    margin-left: 165px;
+    overflow: hidden;
+  }
+  .full-episodes-block.carousel-block .carousel.start:hover .jcarousel-control-next {
+    right: 125px;
+  }
+}
+@media (min-width: 1025px) {
+  .full-episodes-block.carousel-block .carousel.start {
+    margin-left: 165px;
+    overflow: hidden;
+  }
+  .full-episodes-block.carousel-block .carousel.start:hover .jcarousel-control-next {
+    right: 105px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel.start {
+    margin-left: 265px;
+  }
+  .full-episodes-block.carousel-block .carousel.start:hover .jcarousel-control-next {
+    right: 205px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel.start {
+    margin-left: 0px;
+  }
+  .full-episodes-block.carousel-block .carousel .jcarousel-controls {
+    display: none;
+  }
+}
+.full-episodes-block.carousel-block .carousel.carousel_2_rows {
+  height: 515px;
+}
+.full-episodes-block.carousel-block .carousel.carousel_2_rows .node-usanetwork-promo {
+  margin-bottom: 15px;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows {
+    height: 573px;
+  }
+}
+.full-episodes-block.carousel-block .carousel ul li {
+  margin-right: 15px;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li {
+    height: 279px;
+    width: 335px;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item {
+  left: -225px;
+  width: 225px;
+}
+.full-episodes-block.carousel-block .carousel-description-item.start {
+  left: 0;
+}
+.full-episodes-block.carousel-block .carousel-description-item .description-wrapper {
+  padding: 40px;
+  width: 100%;
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .full-episodes-block.carousel-block .carousel-description-item {
+    left: -205px;
+    width: 205px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel-description-item {
+    left: -325px;
+    width: 325px;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item .caption, .full-episodes-block.carousel-block .carousel-description-item .additional-text {
+  font-size: 12px;
+  line-height: 14px;
+  text-align: right;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel-description-item .caption, .full-episodes-block.carousel-block .carousel-description-item .additional-text {
+    font-size: 17px;
+    line-height: 20px;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item .title {
+  font-size: 22px;
+  margin: 10px 0;
+  position: relative;
+  text-align: right;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel-description-item .title {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 15px 0;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item .link {
+  text-align: right;
+}
+.full-episodes-block.carousel-block .carousel-description-item .link a {
+  color: #545454;
+  font-family: "texgyrescholabold_italic", Times, serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel-description-item .link a {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+.full-episodes-block.carousel-block .carousel-description-item .link a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel {
+    margin-left: 0;
+    margin-bottom: 10px;
+    margin-top: 50px;
+    padding: 0 10px;
+  }
+  .full-episodes-block.carousel-block .carousel ul {
+    width: 100%;
+  }
+  .full-episodes-block.carousel-block .carousel ul li {
+    margin-bottom: 15px;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_1_rows ul li {
+    float: left;
+    height: auto;
+    margin-right: 2%;
+    min-height: 115px;
+    width: 49%;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_1_rows ul li:nth-child(2n) {
+    margin-right: 0;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows li {
+    height: auto;
+    margin-right: 0;
+    width: 100%;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows li .node-usanetwork-promo {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 2%;
+    min-height: 115px;
+    width: 49%;
+  }
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows li .node-usanetwork-promo:nth-child(2n) {
+    margin-right: 0;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item {
+    left: 0px;
+    padding: 0px 20px;
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item.start {
+    left: 0px;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item .description-wrapper {
+    display: block;
+    float: none;
+    padding: 0;
+    width: 100%;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item .description-block {
+    display: block;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item .title {
+    background: none;
+    font-size: 34px;
+    line-height: 40px;
+    margin: 0;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item .title:after {
+    display: none;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item .link a {
+    font-size: 17px;
+    line-height: 20px;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item .additional-text {
+    font-size: 17px;
+    line-height: 20px;
+  }
+  .full-episodes-block.carousel-block .carousel-description-item .caption, .full-episodes-block.carousel-block .carousel-description-item .title, .full-episodes-block.carousel-block .carousel-description-item .additional-text, .full-episodes-block.carousel-block .carousel-description-item .link {
     text-align: left;
   }
 }

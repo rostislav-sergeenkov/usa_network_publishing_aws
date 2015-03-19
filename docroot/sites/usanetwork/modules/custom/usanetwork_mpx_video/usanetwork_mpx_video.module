@@ -136,7 +136,14 @@ function usanetwork_mpx_video_block_view($delta) {
       break;
      case 'usa_mpx_video_home_full_latest':
       $block['subject'] = '';
-      $block['content'] = usanetwork_mpx_video_full_latest_episodes_carouse();
+       $block['content'] = array(
+         '#markup' => usanetwork_mpx_video_full_latest_episodes_carousel(),
+         '#attached' => array(
+           'js' => array(
+             drupal_get_path('theme', 'aurora_usa') . '/javascripts/full-episodes-carousel.js',
+           ),
+         ),
+       );
       break;
   }
 
@@ -625,7 +632,7 @@ function _usanetwork_mpx_video_get_latest_episodes_for_show($range = NULL) {
 /**
  * Latest Full Episodes Block on HomePage
  */
-function usanetwork_mpx_video_full_latest_episodes_carouse() {
+function usanetwork_mpx_video_full_latest_episodes_carousel() {
   $output = '';
 
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
@@ -653,7 +660,7 @@ function usanetwork_mpx_video_full_latest_episodes_carouse() {
     $wrapper = file_stream_wrapper_get_instance_by_uri($episode->uri);
     $video_image = theme('image_style', array(
       'path' => $wrapper->getLocalThumbnailPath(),
-      'style_name' => '300x169_video',
+      'style_name' => '300x250',
     ));
     $episode_element = array(
       'show_class' => $show_color,

@@ -461,3 +461,140 @@
     }
   }
 }
+
+%video-promo {
+  .video-promo {
+    &:before {
+      bottom: 0;
+      height: 81px;
+      top: auto;
+      @include breakpoint($bp-min-1601-width) {
+        height: 87px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: 32.4%;
+      }
+    }
+    .asset-img {
+      height: 100%;
+      width: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  .meta-wrapper {
+    background: none;
+    bottom: 0;
+    height: 81px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    @include breakpoint($bp-min-1601-width) {
+      height: 87px;
+    }
+    @include breakpoint($bp-768-width) {
+      height: 32.4%;
+    }
+  }
+  .meta-wrapper-inner {
+    height: 100%;
+    display: table;
+    width: 100%;
+  }
+  .meta-back {
+    background: $video-promo-back;
+    bottom: 0;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+  }
+  .meta {
+    padding-left: 15px;
+    .caption {
+      font-size: 11px;
+      span {
+        font-size: 11px;
+        font-family: $tex-gyreschola-italic;
+        line-height: 18px;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 13px;
+          line-height: 20px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: 10px;
+          line-height: 16px;
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 8px;
+          line-height: 14px;
+        }
+      }
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 13px;
+        line-height: 20px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: 10px;
+        line-height: 16px;
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 8px;
+        line-height: 14px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 18px;
+        line-height: 20px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: 14px;
+        line-height: 18px;
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
+  .meta-icon {
+    left: 15px;
+    @include breakpoint($bp-min-1601-width) {
+      height: 47px;
+      left: 20px;
+      margin-top: -24px;
+      width: 47px;
+      &:before {
+        font-size: 24px;
+        height: 47px;
+        line-height: 47px;
+        width: 47px;
+      }
+    }
+    @include breakpoint($bp-480-width) {
+      height: 30px;
+      left: 14px;
+      margin-top: -15px;
+      width: 30px;
+      &:before {
+        font-size: 16px;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+      }
+    }
+    ~ .meta {
+      padding-left: 60px;
+      @include breakpoint($bp-min-1601-width) {
+        padding-left: 80px;
+      }
+      @include breakpoint($bp-480-width) {
+        padding-left: 50px;
+      }
+    }
+  }
+}

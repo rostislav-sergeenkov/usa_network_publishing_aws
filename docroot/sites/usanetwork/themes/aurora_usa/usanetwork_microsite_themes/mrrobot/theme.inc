@@ -175,6 +175,7 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
 /*
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_characters_bxslider.js',
 */
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_global.js',
       $module_path . '/js/jquery.bxslider.min.js',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_carousel.js',
@@ -190,6 +191,7 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
     'css' => array(
       $module_path . '/css/jquery.bxslider.css',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_style.css',
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/mrrobot_styles.css',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_galleries_styles.css',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_characters_styles.css',
 /*

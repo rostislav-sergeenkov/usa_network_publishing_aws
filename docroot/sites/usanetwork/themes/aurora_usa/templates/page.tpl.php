@@ -67,6 +67,8 @@
  * - $page['sidebar_first']: Items for the first sidebar.
  * - $page['sidebar_second']: Items for the second sidebar.
  * - $page['footer']: Items for the footer region.
+ * - $page['no_utilities']: Boolean to display or not display the show top header.
+ * - $page['display_global_nav']: Boolean to display or not display the usanetwork global bottom nav.
  *
  * @see template_preprocess()
  * @see template_preprocess_page()
@@ -78,6 +80,7 @@
     <span id="site-name">
       <?php print $site_name; ?>
     </span>
+    <?php if (!isset($page['display_global_nav']) || $page['display_global_nav'] == true): ?>
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <?php print render($page['personalization_trigger']); ?>
@@ -89,6 +92,7 @@
         <?php print render($page['header']); ?>
       </div>
     </div>
+    <?php endif; ?>
   </header>
 
   <?php if (!isset($page['no_utilities'])): ?>

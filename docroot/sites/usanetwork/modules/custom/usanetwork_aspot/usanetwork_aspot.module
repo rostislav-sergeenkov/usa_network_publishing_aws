@@ -58,12 +58,14 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
     'airdate' => $airdate,
   );
 
-  foreach ($draggable_items_data as $element_name => $element) {
-    if (isset($previewing_settings['aspot_elements'][$element_name]['value'])) {
-      $element->value = $previewing_settings['aspot_elements'][$element_name]['value'];
+  if (!empty($draggable_items_data)) {
+    foreach ($draggable_items_data as $element_name => $element) {
+      if (isset($previewing_settings['aspot_elements'][$element_name]['value'])) {
+        $element->value = $previewing_settings['aspot_elements'][$element_name]['value'];
+      }
+      $previewing_settings['aspot_elements'][$element_name] = _usanetwork_aspot_fill_draggable_ui_settings_element($element);
+      $previewing_settings['aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_gi, $lang, $element_name);
     }
-    $previewing_settings['aspot_elements'][$element_name] = _usanetwork_aspot_fill_draggable_ui_settings_element($element);
-    $previewing_settings['aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_gi, $lang, $element_name);
   }
   if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
     _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_state['node'], $lang, $previewing_settings['aspot_elements']);
@@ -267,10 +269,10 @@ function usanetwork_aspot_theme() {
 function usanetwork_aspot_image_default_styles() {
   $styles = array();
 
-  // Exported image style: Desktop 2500x1407.
-  $styles['2500x1407'] = array(
-    'name' => '2500x1407',
-    'label' => '2500x1407',
+  // Exported image style: Desktop 2500x1094.
+  $styles['2500x1094'] = array(
+    'name' => '2500x1094',
+    'label' => '2500x1094',
     'effects' => array(
       1 => array(
         'label' => 'Scale and crop',
@@ -283,40 +285,40 @@ function usanetwork_aspot_image_default_styles() {
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 2500,
-          'height' => 1407,
+          'height' => 1094,
         ),
         'weight' => 1,
       ),
     ),
   );
 
-  // Exported image style: Desktop retina 5000x2814.
-  $styles['5000x2814'] = array(
-    'name' => '5000x2814',
-    'label' => '5000x2814',
-    'effects' => array(
-      2 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 5000,
-          'height' => 2814,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
+//  // Exported image style: Desktop retina 5000x2814.
+//  $styles['5000x2814'] = array(
+//    'name' => '5000x2814',
+//    'label' => '5000x2814',
+//    'effects' => array(
+//      2 => array(
+//        'label' => 'Scale and crop',
+//        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+//        'effect callback' => 'image_scale_and_crop_effect',
+//        'dimensions callback' => 'image_resize_dimensions',
+//        'form callback' => 'image_resize_form',
+//        'summary theme' => 'image_resize_summary',
+//        'module' => 'image',
+//        'name' => 'image_scale_and_crop',
+//        'data' => array(
+//          'width' => 5000,
+//          'height' => 2814,
+//        ),
+//        'weight' => 1,
+//      ),
+//    ),
+//  );
 
-  // Exported image style: Tablet 1024px x 576px.
-  $styles['1024x576'] = array(
-    'name' => '1024x576',
-    'label' => '1024x576',
+  // Exported image style: Tablet 1024px x 448px.
+  $styles['1024x448'] = array(
+    'name' => '1024x448',
+    'label' => '1024x448',
     'effects' => array(
       3 => array(
         'label' => 'Scale and crop',
@@ -329,17 +331,17 @@ function usanetwork_aspot_image_default_styles() {
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 1024,
-          'height' => 576,
+          'height' => 448,
         ),
         'weight' => 1,
       ),
     ),
   );
 
-  // Exported image style: Tablet retina 2048x1152.
-  $styles['2048x1152'] = array(
-    'name' => '2048x1152',
-    'label' => '2048x1152',
+  // Exported image style: Tablet retina 2048x896.
+  $styles['2048x896'] = array(
+    'name' => '2048x896',
+    'label' => '2048x896',
     'effects' => array(
       4 => array(
         'label' => 'Scale and crop',
@@ -352,7 +354,7 @@ function usanetwork_aspot_image_default_styles() {
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 2048,
-          'height' => 1152,
+          'height' => 896,
         ),
         'weight' => 1,
       ),
@@ -502,10 +504,9 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
     'show_poster' => array(
       'mobile' => image_style_url('640x640', $banner_images['mobile']),
       'mobile_retina' => image_style_url('1280x1280', $banner_images['mobile']),
-      'tablet' => image_style_url('1024x576', $banner_images['tablet']),
-      'tablet_retina' => image_style_url('2048x1152', $banner_images['tablet']),
-      'desktop' => image_style_url('2500x1407', $banner_images['desktop']),
-      'desktop_retina' => image_style_url('5000x2814', $banner_images['desktop']),
+      'tablet' => image_style_url('1024x448', $banner_images['tablet']),
+      'tablet_retina' => image_style_url('2048x896', $banner_images['tablet']),
+      'desktop' => image_style_url('2500x1094', $banner_images['desktop']),
     ),
     'show_title_prefix_style' => isset($draggable_data->title_prefix)
       ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix)
@@ -718,9 +719,11 @@ function _usanetwork_aspot_fill_draggable_ui_settings_element($setting) {
  * Checks if draggable element is enabled in administrative panel.
  */
 function _usanetwork_aspot_is_ui_draggable_element_enabled($element_field, $language, $element_name) {
-  foreach ($element_field[$language] as $element_field_setting) {
-    if (!empty($element_field_setting['value']) && $element_field_setting['value'] == $element_name) {
-      return TRUE;
+  if (!empty($element_field)) {
+    foreach ($element_field[$language] as $element_field_setting) {
+      if (!empty($element_field_setting['value']) && $element_field_setting['value'] == $element_name) {
+        return TRUE;
+      }
     }
   }
 

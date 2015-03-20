@@ -1,8 +1,9 @@
 // Use Modernizr to detect font features to allow a fallback for webfont ligatures
 (function ($) {
+  var Modernizr_origin = Modernizr;
   Drupal.behaviors.fontFeatureDetection = {
     attach: function (context, settings) {
-      if (Modernizr.hasOwnProperty('prefixed') && Modernizr.prefixed("fontFeatureSettings")) {
+      if (Modernizr_origin.prefixed("fontFeatureSettings")) {
         //ligatures supported
         $('html').addClass('font-feature-settings');
       } else {

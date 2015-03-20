@@ -875,13 +875,11 @@ function usanetwork_microsite_get_quiz($node) {
     $show_name = $show->title;
   }
   $description = $node_wrapper->body->value();
-  // @TODO: DV: Is there a better way to get rid of html tags in the description?
-  // html tags are not allowed in the Gigya sharing description, so we must strip them out
-  $description = (array_key_exists('value', $description)) ? strip_tags($description['value']) : '';
+  $description = (array_key_exists('value', $description)) ? drupal_html_to_text($description['value']) : '';
   return array(
     'nid' => $node_wrapper->nid->value(),
     'title' => $node_wrapper->title->value(),
-    'h1' => _usanetwork_microsite_get_h1_tag($node_wrapper),
+    'h1' => _usanetwork_microsite_get_h1_tag($node),
     'description' => $description,
     'url' => _usanetwork_microsite_get_suggested_url($node),
     'quiz_type' => $node_wrapper->field_quiz_type->value(),
@@ -2679,7 +2677,7 @@ function _usanetwork_microsite_get_h1_tag($object) {
     elseif (isset($object->fid)) {
       $h1 = _usanetwork_microsite_get_h1_for_file($object);
     }
-    else {
+    elseif (isset($object->nid)) {
       $h1 = _usanetwork_microsite_get_h1_for_for_node($object);
     }
   }

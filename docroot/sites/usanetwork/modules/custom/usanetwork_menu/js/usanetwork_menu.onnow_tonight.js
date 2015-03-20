@@ -11,7 +11,7 @@
           type: 'POST',
           dataType: 'JSON',
           data: {},
-          url: 'ajax/render-onnow-tonight/' + timezoneOffset,
+          url: Drupal.settings.basePath + 'ajax/render-onnow-tonight/' + timezoneOffset,
           success: function(message) {
             var onnowTonightBlock = $('#block-usanetwork-menu-usanetwork-menu-aspot-ot .content');
 

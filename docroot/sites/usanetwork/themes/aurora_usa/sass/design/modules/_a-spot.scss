@@ -7,6 +7,10 @@
     box-shadow: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
     cursor: pointer;
     height: 100%;
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    filter: alpha(opacity=50);
+    -khtml-opacity: 0.5;
     position: absolute;
     right: 0;
     top: 0;
@@ -16,10 +20,17 @@
       display: none !important;
     }
     &:hover {
+      opacity: 1;
+      -moz-opacity: 1;
+      filter: alpha(opacity=100);
+      -khtml-opacity: 1;
       & ~ .bx-wrapper {
         .slide {
           .wrp {
-            opacity: 1!important;
+            > .node {
+              opacity: 1!important;
+            }
+
           }
         }
       }

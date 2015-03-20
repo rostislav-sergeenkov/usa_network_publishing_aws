@@ -45,7 +45,8 @@
           shiftPercent = ((shiftPercent != 'undefined') || (shiftPercent != '')) ? shiftPercent : 0;
 
           $(nextSlideImg).css('margin-left', '-' + shiftPercent + '%');
-          $(nextSlideInner).css({'width' : parseInt($(window).width()), 'opacity' : 0.5}).animate({
+          $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 0.5);
+          $(nextSlideInner).css('width', parseInt($(window).width())).animate({
             'margin-left': '-=10%'
           }, 600, 'easeOutBack', function() {
             $('.next-button').fadeIn(500).removeClass('disabled');
@@ -65,13 +66,13 @@
         var moveIt = function(index) {
           var nextSlideInner = el.get(0).children[index + 1].children[0],
               nextSlideImg = $(nextSlideInner).find('img').get(0);
-
+          $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 1);
           $(nextSlideImg).animate({
             'margin-left': '0'
           }, 800, null);
           $(nextSlideInner).animate({
             'margin-left': '0'
-          }, 800, null).css({'width' : parseInt($(window).width()), 'opacity' : 1});
+          }, 800, null).css('width', parseInt($(window).width()));
 
           $('.next-button').fadeOut(200).addClass('disabled');
         };

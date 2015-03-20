@@ -903,7 +903,7 @@ function _usanetwork_microsite_define_videoplayer($file) {
   $full_episode = _usanetwork_microsite_define_full_episode($file);
   $auth_episode = _usanetwork_microsite_define_auth($file);
 
-  if (_usanetwork_widget_get_environment() == 'prod') { 
+  if (_usanetwork_widget_get_environment() == 'prod') {
     if ($full_episode) {
       if ($auth_episode) {
         $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;
@@ -962,6 +962,8 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
 
 function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay = 'fasle', $filter) {
   global $base_url;
+  $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
+
   if(!empty($fid)) {
     $file = file_load($fid);
   }
@@ -976,10 +978,10 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
     'file' => $file,
     'pub_mpx_player_parameters' => array('autoPlay' => $autoplay, 'form' => 'html', 'nid' => $node->nid, 'filter' => $filter),
     'player_id' => $player_id,
-    'pub_mpx_player_url' => $base_url . '/dig/videos/' . _usanetwork_microsite_get_suggested_video_url($file),
+    'pub_mpx_player_url' => $base_url . '/' . $microsite_theme_name . '/videos/' . _usanetwork_microsite_get_suggested_video_url($file),
   ));
 
-  //set image for not loggined user
+  //set image for not logged in user
   $auth_episode = _usanetwork_microsite_define_auth($file);
   if ($auth_episode) {
     $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
@@ -988,7 +990,6 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
 
   //set video descriprion
   $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
-  $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
 
   $result = array(
@@ -1565,7 +1566,10 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       if(empty($head_title)) {
         $head_title = usanetwork_microsite_get_default_title($node, $section_type);
       }
-      $aspot = reset($section_wrapper->field_usa_tv_a_spot->value());
+      $aspot = NULL;
+      if (!empty($section_wrapper->field_usa_tv_a_spot)) {
+        $aspot = reset($section_wrapper->field_usa_tv_a_spot->value());
+      }
       if (!empty($aspot)) {
         $aspot_desctop = reset(field_get_items('node', $aspot, 'field_usa_aspot_desktop'));
         $tag_card = array(

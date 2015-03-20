@@ -1,0 +1,701 @@
+/* IE scrollbars */
+body{
+  scrollbar-base-color: #000;
+  scrollbar-face-color: #333;
+  scrollbar-3dlight-color: #333;
+  scrollbar-highlight-color: #333;
+  scrollbar-track-color: #000;
+  scrollbar-arrow-color: #000;
+  scrollbar-shadow-color: #222;
+  scrollbar-dark-shadow-color: #000;
+}
+/* Webkit scrollbars - Safari, Chrome */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #000;
+  border-left: 0 solid transparent;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #333;
+  background: rgba(255,255,255,0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255,255,255,0.8);
+}
+
+/* HOME PEOPLE CAROUSEL */
+#microsite #home .characters-cast {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 1245px;
+  opacity: 0;
+  max-height: 370px;
+  overflow: hidden;
+}
+#microsite #home .characters-cast h2 {
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  color: #e5ce96;
+  font-size: 1.6em;
+  margin: 1.4em 0 0.83em;
+}
+#microsite #home .characters-cast .bx-wrapper{
+  background-color: #000;
+  border-color: #000;
+  -mox-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#microsite #home .characters-cast .bx-wrapper .bx-pager.bx-default-pager a:hover,
+#microsite #home .characters-cast .bx-wrapper .bx-pager.bx-default-pager a.active {
+  background-color: #FFF;
+}
+#microsite #home .characters-cast li {
+  background-color: #1F1F1F;
+  float: left;
+}
+#microsite #home .characters-cast li a .person-title {
+  font-size: 1em;
+  height: 46px;
+  letter-spacing: 0.03em;
+  line-height: 18px;
+  padding: 14px 5px;
+  color: #FFF;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, black));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#000000',GradientType=0 );
+}
+#microsite #home .characters-cast .btns {
+  display: inline-block; /* Fix for clickability issue in WebKit */
+  position: absolute;
+  top: 40%;
+}
+#microsite #home .characters-cast .btns.prev {
+  left: -35px;
+}
+#microsite #home .characters-cast .btns.next {
+  right: -35px;
+}
+/* for ie 9*/
+html.ie9 #microsite #home .characters-cast .btns a{
+  display: block;
+}
+html.ie9 #microsite #home .characters-cast .btns a.disabled {
+  display: none;
+}
+html.ie9 #microsite #home .characters-cast .btns a.bx-prev{
+  background-image: url('../images/icons/arrow-prev.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 18px 30px;
+}
+html.ie9 #microsite #home .characters-cast .btns a.bx-next{
+  background-image: url('../images/icons/arrow-next.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 18px 30px;
+}
+/*end*/
+#microsite #home .characters-cast .btns a {
+  color: #FFF;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 35px;
+  height: 80px;
+  font-size: 28px;
+  line-height: 80px;
+  cursor: pointer;
+  font-family: 'usanetwork';
+  speak: none;
+  -webkit-font-feature-settings: "liga","dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -moz-font-feature-settings: "liga","dlig";
+  -ms-font-feature-settings: "liga","dlig";
+  -o-font-feature-settings: "liga","dlig";
+  font-feature-settings: "liga","dlig";
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-align: center;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  z-index: 96;
+}
+#microsite #home .characters-cast .btns a:hover {
+  color: #FFF;
+}
+#microsite #home .characters-cast .btns a.disabled {
+  display: none;
+}
+#microsite #home .characters-cast .btns .screen-reader-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+/* HOME SECTION MEDIA QUERY START */
+@media (max-width: 1580px) {
+  #microsite #home .characters-cast {
+    width: 930px;
+  }
+}
+@media (max-width: 1200px) {
+  #microsite #home .characters-cast {
+    width: 615px;
+  }
+  #microsite #home .characters-cast li a .person-title {
+    height: 64px;
+    padding: 14px 11px;
+  }
+}
+
+@media (max-width: 640px) {
+  #microsite #home .characters-cast {
+    width: 300px;
+  }
+  #microsite #home .characters-cast h2 {
+    font-size: 1.6em;
+    margin: 1.1em 0 0.27em;
+  }
+  #microsite #home .characters-cast li a .person-title {
+    font-size: 0.75em;
+    line-height: 16px;
+    padding: 14px 19px;
+    height: 60px;
+  }
+}
+
+
+
+/* CHARACTERS SECTION */
+#microsite #characters {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#microsite #characters li {
+  background-image: none;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+}
+#microsite #characters section {
+  overflow-x: hidden !important;
+}
+#microsite #about .microsite-section-container,
+#microsite #characters .microsite-section-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+#microsite #about #about-inner-container,
+#microsite #characters #character-inner-container {
+  width: calc(100% - 190px);
+  position: relative;
+  margin: 0 0 0 190px;
+  max-width: none;
+}
+#microsite #characters #character-inner-container {
+  padding-bottom: 80px; /* To allow more space for next button */
+}
+#microsite #characters #character-background li {
+  display: none;
+  width: calc(100% - 10px); /* Subtract scrollbar width from overall width so user can still grab and move scrollbar */
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: none;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+}
+#microsite #characters #character-background li.active {
+  display: block;
+}
+#microsite #characters #character-background li.next {
+  left: 100%;
+  display: block;
+}
+#microsite #characters #character-background li.prev {
+  left: -100%;
+  display: block;
+}
+#microsite #about #right-pane-bg,
+#microsite #characters #right-pane-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  min-height: 100%;
+  background: rgb(0, 0, 0) transparent;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 45%;
+  margin-left: 55%;
+}
+#microsite #about section .microsite-section-container .right-pane {
+  width: 45%;
+  position: relative;
+}
+#microsite #characters .right-pane-content {
+  width: 45%;
+  margin-left: 55%;
+}
+#microsite #characters .ad-leaderboard {
+  position: relative;
+}
+#microsite #characters h2 {
+  line-height: 0.9em;
+  position: relative;
+  text-align: center;
+}
+#microsite #characters .content {
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+  width: 82%;
+}
+#microsite #characters .underline {
+  border-bottom: 1px solid #FFF;
+  margin-top: 12px;
+  margin-bottom: 28px;
+}
+#microsite #characters .character-nav {
+  width: 220px;
+  height: 24px;
+  margin: 30px auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  color: #FFF;
+  opacity: 0;
+}
+#microsite #characters .character-nav ul {
+  float: left;
+  width: 180px;
+}
+#microsite #characters .character-nav li {
+  float: left;
+  width: 12px;
+  height: 12px;
+  margin: 0 10px 6px;
+  overflow: visible;
+  position: relative;
+  top: 5px;
+  left: 0;
+}
+#microsite #characters .character-nav li .character-nav-link {
+  width: 12px;
+  height: 12px;
+  background: #FFF;
+  cursor: pointer;
+}
+#microsite #characters .character-nav li .character-nav-link:hover,
+#microsite #characters .character-nav li.active .character-nav-link {
+  background: #e5ce96;
+}
+#microsite #characters .character-nav li .tooltip {
+  display: none;
+}
+#microsite #characters .btns {
+  color: #FFF;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 96;
+}
+#microsite #characters .character-nav #nav-prev,
+#microsite #characters .character-nav #nav-next {
+  margin: -9px 0 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  width: 20px;
+  font-size: 1.5em;
+  cursor: pointer;
+  font-family: 'usanetwork';
+  speak: none;
+  -webkit-font-feature-settings: "liga","dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -moz-font-feature-settings: "liga","dlig";
+  -ms-font-feature-settings: "liga","dlig";
+  -o-font-feature-settings: "liga","dlig";
+  font-feature-settings: "liga","dlig";
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+#microsite #characters .character-nav #nav-prev {
+  float: left;
+}
+#microsite #characters .character-nav #nav-next {
+  float: right;
+}
+#microsite #characters .character-nav #nav-prev.disabled,
+#microsite #characters .character-nav #nav-next.disabled {
+  color: #333;
+}
+#microsite #characters .character-nav #nav-prev:hover,
+#microsite #characters .character-nav #nav-next:hover {
+  color: #e5ce96;
+}
+#microsite #characters .character-nav #nav-prev.disabled:hover,
+#microsite #characters .character-nav #nav-next.disabled:hover {
+  color: #333;
+}
+#microsite #characters #character-info-container {
+  position: relative;
+  min-height: 200px;
+}
+#microsite #characters #character-info li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+}
+#microsite #characters #character-info li.active {
+  display: block;
+  opacity: 1;
+}
+#microsite #characters #character-info li.next,
+#microsite #characters #character-info li.prev {
+  display: block;
+  height: 0;
+  opacity: 0;
+  top: -40px;
+}
+#microsite #characters h1,
+#microsite #characters h3 {
+  color: #ffffff;
+  display: inline-block;
+  margin: 0 15px 0 0;
+  font-size: 1.4em;
+  letter-spacing: .05em;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+#microsite #characters .character-social {
+  display: inline-block;
+  line-height: 0.6em;
+  position: relative;
+  top: 2px;
+  left: 0;
+}
+#microsite #characters .character-social div {
+  float: left;
+  padding-right: 8px;
+}
+#microsite #characters .icons-social a {
+  color: #FFF;
+  background-color: #0ab6e8;
+  font-size: 1em;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  padding: 4px 3px 3px;
+  height: 22px;
+  width: 22px;
+  display: inline-block;
+  margin-left: 5px;
+}
+#microsite #characters .icons-social a.person-facebook {
+  padding-left: 6px;
+}
+#microsite #characters .character-role {
+  color: #e5ce96;
+  font-style: italic;
+  margin-top: 0.1em;
+  margin-bottom: 1em;
+}
+#microsite #characters .character-bio-tabs {
+  clear: left;
+  height: 28px;
+  margin-bottom: 15px;
+  font-size: 1em;
+}
+#microsite #characters .character-bio-tabs div {
+  float: left;
+  display: block;
+  background-color: #000;
+  color: #FFF;
+  border: 1px solid #FFF;
+  text-transform: uppercase;
+  padding: 6px 8px 4px;
+  line-height: 1em;
+  cursor: pointer;
+}
+#microsite #characters .character-bio-tabs div:first-child {
+  margin-right: 20px;
+}
+#microsite #characters .character-bio-tabs div:hover,
+#microsite #characters .character-bio-tabs div.active {
+  background-color: #FFF;
+  color: #000;
+}
+#microsite .character-bios-container {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+#microsite #characters .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  padding-right: 10px;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+  z-index: 10;
+}
+#microsite #characters .text.active {
+  opacity: 1;
+  z-index: 20;
+}
+#microsite #characters .ad300x250 {
+  height: 250px;
+}
+#microsite #characters .mobile {
+  display: none;
+}
+
+
+/* CHARACTERS SECTION MEDIA QUERY START */
+@media (min-width: 1181px) {
+  #microsite #about-content {
+    background-position: 0 75px;
+  }
+}
+
+@media (max-width: 1180px) {
+  #microsite #about section {
+    background-position: -150px 75px;
+  }
+}
+
+@media (max-width: 1020px) {
+  #microsite #about #right-pane-bg,
+  #microsite #characters #right-pane-bg {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about .right-pane > div,
+  #microsite #about .right-pane > h3,
+  #microsite #characters .content {
+    width: 86%;
+  }
+}
+
+@media (min-width: 875px) {
+  #microsite #characters .character-nav li .tooltip {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    bottom: 21px;
+    left: -148px;
+    width: 300px;
+    height: 80px;
+    text-align: center;
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+  }
+  #microsite #characters .character-nav li .character-nav-link:hover + .tooltip {
+    opacity: 1;
+  }
+  html.ie9 #microsite #characters .character-nav li .tooltip,
+  html.ie10 #microsite #characters .character-nav li .tooltip {
+    display: none;
+    opacity: 1;
+  }
+  html.ie9 #microsite #characters .character-nav li .character-nav-link:hover + .tooltip,
+  html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
+    display: block;
+  }
+  #microsite #characters .character-nav li .tooltip div {
+    line-height: 1em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  #microsite #characters .character-nav li .tooltip img {
+    border: 2px solid #FFF;
+    width: 59px;
+    height: 60px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1020px) {
+  #microsite #characters #right-pane-bg {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #characters .right-pane-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about .right-pane > div,
+  #microsite #about .right-pane > h3,
+  #microsite #characters .content {
+    width: 86%;
+  }
+}
+
+@media (max-width: 874px) {
+  #microsite #about #about-inner-container,
+  #microsite #characters #character-inner-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #microsite #characters #right-pane-bg {
+    background-color: transparent;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 75%;
+    margin: 0 auto;
+  }
+  #microsite #characters .character-nav li:hover .tooltip {
+    display: none;
+  }
+  #microsite #characters .mobile {
+    display: block;
+    width: 25%;
+    float: left;
+    margin-right: 12px;
+  }
+  #microsite #characters h3 {
+    margin: 0;
+    font-size: 1.2em;
+    letter-spacing: 3px;
+    float: left;
+    width: calc(75% - 12px);
+  }
+  #microsite #characters .character-social {
+    line-height: 0.6em;
+    float: left;
+    width: calc(75% - 12px);
+  }
+  #microsite #characters .character-role {
+    margin-top: 0.1em;
+    margin-bottom: 1em;
+    clear: left;
+  }
+  /*hot fix for Hamburger menu not working on smartphone*/
+  body[data-menu-position=open] #jPanelMenu-menu {
+    z-index: 2!important;
+  }
+}
+
+@media (max-width: 542px) {
+  #microsite #about #about-inner-container,
+  #microsite #characters #character-inner-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #microsite #characters #right-pane-bg {
+    background-color: transparent;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #microsite #about section {
+    background-position: top left;
+  }
+  #microsite #about-content,
+  #microsite #galleries-content,
+  #microsite #games-content,
+  #microsite #videos-content {
+    background-image: url("../images/dig_mobile_bg.jpg");
+  }
+  #microsite #about #right-pane-bg {
+    background-color: transparent;
+  }
+}
+
+/* Smartphone */
+@media only screen
+and (min-device-width : 200px)
+and (max-device-width : 568px) {
+  #microsite #home .characters-cast .btns.prev {
+    left: 0px;
+    z-index: 30;
+  }
+  #microsite #home .characters-cast .btns.next {
+    right: 0px;
+  }
+  #microsite #about section .microsite-section-container .right-pane {
+    width: 98%;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 98%;
+  }
+  #microsite #characters #character-info li {
+    position: relative;
+  }
+  #microsite #characters .character-nav #nav-prev,
+  #microsite #characters .character-nav #nav-next {
+    top: 40%;
+  }
+  #microsite #characters .character-bio-tabs {
+    font-size: 0.84em;
+  }
+  #microsite #characters .text {
+    overflow: visible;
+    max-height: unset;
+    min-height: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+    float: left;
+  }
+  #microsite #characters .text.active {
+    display: block;
+  }
+  #microsite #characters .ad300x250 {
+    height: 0;
+  }
+}

@@ -16,7 +16,7 @@
       $('.view-mode-inline_content .flexslider').once('gallery-content', function() {
         if ($(this).parents('#microsite')) {
           // do nothing, because microsite galleries are handled in the
-          // microsite theme js files, such as:
+          // microsite theme js files, such as for dig:
           // usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js
         }
         else {

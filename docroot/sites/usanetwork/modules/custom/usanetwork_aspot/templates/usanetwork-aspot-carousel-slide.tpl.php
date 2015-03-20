@@ -27,9 +27,6 @@
             <div data-src="<?php print $show_poster['desktop']; ?>"></div>
             <![endif]-->
           <?php endif; ?>
-          <?php if (!empty($show_poster['desktop_retina'])): ?>
-            <div data-media="(min-width: 1025px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['desktop_retina']; ?>"></div>
-          <?php endif; ?>
           <?php if (!empty($show_poster['desktop'])): ?>
             <noscript><img src="<?php print $show_poster['desktop']; ?>" width="2500" height="1407" alt="" title="" /></noscript>
           <?php endif; ?>

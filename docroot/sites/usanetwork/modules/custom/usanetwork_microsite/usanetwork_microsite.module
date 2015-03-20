@@ -157,11 +157,11 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
       $theme_registry_name = 'usanetwork_microsite_' . $theme_name;
       $theme_variables = _usanetwork_microsite_get_theme_variables($node);
 
-      $theme_includes_callback_name = 'usanetwork_microsite_dig_get_theme_includes';
+      $theme_includes_callback_name = 'usanetwork_microsite_' . $theme_name . '_get_theme_includes';
 
       // Load theme-oriented CSS and JS files.
       if (is_callable($theme_includes_callback_name)) {
-        $includes = usanetwork_microsite_dig_get_theme_includes();
+        $includes = $theme_includes_callback_name();
 
         if (!empty($includes)) {
           if (!empty($includes['css'])) {
@@ -179,10 +179,6 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
       }
 
 
-      $base_path_field = field_get_items('node', $node, 'field_pathauto_alias');
-      if ($base_path_field) {
-        $base_path_field = reset($base_path_field);
-      }
 //      $share_title_field = field_get_items('node', $node, 'field_share_title');
 //      if ($share_title_field) {
 //        $share_title_field = reset($share_title_field);
@@ -198,10 +194,11 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 //          $image_path = file_create_url($share_image_field['uri']);
 //        }
 //      }
+      $base_path = url('node/' . arg(1) . '/microsite');
       $microsites_settings = array(
         'nid' => $node->nid,
         'title' => $node->title,
-        'base_path' => ($base_path_field) ? '/' . $base_path_field['value'] : '/dig',
+        'base_path' => !empty($base_path) ? '/' . $base_path : '/dig',
 //        'share_title' => ($share_title_field) ? $share_title_field['value'] : 'Dig Gallery Testing Sharebar Title',
 //        'share_description' => ($share_description_field) ? $share_description_field['value'] : 'Dig Gallery Testing Sharebar: This is the description',
 //        'share_image' => ($image_path) ? $image_path : 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
@@ -363,6 +360,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
   $theme_variables = array(
     'aspots' => array(),
     'featured' => array(),
+    'sitePath' => url('node/' . arg(1) . '/microsite'),
 /*
     'bspots' => NULL,
     'cspots' => NULL,
@@ -1011,6 +1009,9 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
 function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   // @todo May be necessary use static cash.
   $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_type($node, $type);
+  if(empty($section_wrapper)) {
+    return NULL;
+  }
   // @todo necessary use relationship array with main fields for section types. For example array('video' => 'field_ms_videos').
   if($type == 'videos') {
     // Get videos automatically.

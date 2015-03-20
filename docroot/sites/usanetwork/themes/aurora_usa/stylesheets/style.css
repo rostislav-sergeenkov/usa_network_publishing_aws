@@ -11199,6 +11199,15 @@ footer h2 {
     max-width: 200px;
   }
 }
+@media (max-width: 480px) {
+  .shows-block .show-carousel > ul > li {
+    height: 430px;
+    width: 200px;
+  }
+  .shows-block .show-carousel > ul > li .meta {
+    max-width: 200px;
+  }
+}
 .shows-block .show-info-block {
   background: #bbb7b7;
   display: none;
@@ -19822,9 +19831,9 @@ yx-axis
   }
 }
 .usanetwork-aspot .meta-wrap {
-  left: 15%;
+  left: 8%;
   position: absolute;
-  top: 5%;
+  top: 10%;
 }
 @media (max-width: 1024px) {
   .usanetwork-aspot .meta-wrap {

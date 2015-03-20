@@ -344,6 +344,19 @@
       }
     }
   }
+  @include breakpoint($bp-480-width) {
+    .show-carousel {
+      > ul {
+        > li {
+          height: 430px;
+          width: 200px;
+          .meta {
+            max-width: 200px;
+          }
+        }
+      }
+    }
+  }
   .show-info-block {
     background: $show-info-block;
     display: none;

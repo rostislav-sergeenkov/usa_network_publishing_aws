@@ -8,11 +8,9 @@
     > ul {
       > li {
         > .node {
-          @include breakpoint($bp-min-769-width) {
-            &:before {
-              left: auto;
-              right: 0;
-            }
+          &:before {
+            left: auto;
+            right: 0;
           }
         }
         img {
@@ -103,7 +101,7 @@
     padding: 40px;
   }
   @include breakpoint($bp-768-width) {
-    padding: 37px 0px 0px;
+    padding: 37px 0px 0px 20px;
   }
   .carousel {
     .jcarousel-controls {
@@ -135,13 +133,6 @@
         &.active {
           .show-info-block {
             display: block;
-          }
-          .meta-wrapper {
-            &:after {
-              @include breakpoint($bp-768-width) {
-                content: "\e60a";
-              }
-            }
           }
           a {
             @include breakpoint($bp-min-769-width) {
@@ -190,19 +181,6 @@
           z-index: 1;
           @include breakpoint($bp-768-width) {
             height: 25%;
-          }
-          &:after {
-            @include breakpoint($bp-768-width) {
-              color: #ffffff;
-              content: "\e609";
-              display: block;
-              font-family: $ico-font;
-              font-size: 12px;
-              margin-top: -3px;
-              position: absolute;
-              right: 18px;
-              top: 50%;
-            }
           }
         }
         .meta-wrapper-inner {
@@ -318,31 +296,12 @@
       }
       > ul {
         > li {
-          float: none;
-          height: auto;
-          width: 100% !important;
-          &.hidden {
-            display: none;
-          }
           img {
             width: 100%;
-            &.desktop {
-              display: none;
-            }
-            &.mobile {
-              display: block;
-            }
           }
           a.show-open {
             height: 100%;
             width: 100%;
-          }
-          > .node {
-            &:before {
-              top: 0px;
-              height: 10px;
-              width: 100%;
-            }
           }
           .meta-back {
             margin-left: 0px;
@@ -358,7 +317,6 @@
     .carousel-description-item {
       margin-bottom: 30px;
       left: 0px;
-      padding-left: 20px;
       position: relative;
       top: 0;
       width: 100%;
@@ -383,6 +341,19 @@
         line-height: 35px;
         margin: 10px 0;
         max-width: 200px;
+      }
+    }
+  }
+  @include breakpoint($bp-480-width) {
+    .show-carousel {
+      > ul {
+        > li {
+          height: 430px;
+          width: 200px;
+          .meta {
+            max-width: 200px;
+          }
+        }
       }
     }
   }

@@ -31,68 +31,18 @@
 
       innerCarouselMoving();
 
-      if (window.innerWidth < window_size_tablet_portrait){
-        $('.show-carousel').addClass('destroy');
-        $('.show-carousel > ul > li:gt(2)').addClass('hidden');
-      }
-
       $(window).bind('resize', function () {
         $('.show-carousel li.active').each(function (){
           var mobile = false;
 
-          if (window.innerWidth < window_size_tablet_portrait) {
-            mobile = true;
-          }
-
           Drupal.behaviors.global_carousels.showClose($(this), mobile);
         });
-
-        if (window.innerWidth >= window_size_tablet_portrait){
-          if ($('.show-carousel').hasClass('destroy')) {
-            $('.show-carousel').removeClass('destroy');
-            $('.show-carousel > ul > li').removeClass('hidden');
-            $('.shows-block a.more').removeClass('hidden');
-          }
-        } else {
-          if (!$('.show-carousel').hasClass('destroy')) {
-            $('.show-carousel').jcarousel('destroy');
-            $('.show-carousel').addClass('destroy');
-            $('.show-carousel > ul > li:gt(2)').addClass('hidden');
-          }
-        }
 
         innerCarouselMoving();
 
       });
 
       $(window).load(function () {
-        //!!!!!!
-        //click show-open when carousel destroy
-        $('.show-open').click(function (e) {
-          if (window.innerWidth < window_size_tablet_portrait) {
-            e.preventDefault();
-
-            if (!$(this).closest('li').hasClass('active')) {
-              Drupal.behaviors.global_carousels.showOpen($(this).closest('li'), true);
-            } else {
-              Drupal.behaviors.global_carousels.showClose($(this).closest('li'), true);
-            }
-          }
-        });
-
-        // Show carousel more-button click
-        $('.shows-block a.more').click(function(e) {
-
-          var index = $(".show-carousel > ul > li.hidden").index() + 3;
-
-          e.preventDefault();
-          $('.show-carousel > ul > li:lt('+ index + ')').removeClass('hidden');
-          index = $(".show-carousel > ul > li.hidden").index();
-
-          if (index == -1) {
-            $('.shows-block a.more').addClass('hidden');
-          }
-        });
 
         // Click to close button when show-info-block open
         $('.close-button').click(function() {

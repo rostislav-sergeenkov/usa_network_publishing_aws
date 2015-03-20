@@ -15,10 +15,10 @@
           </div>
         </div>
       <?php endif; ?>
-      <?php if (!empty($episode_show) && !empty($episode_title)): ?>
+      <?php if (!empty($episode_show)): ?>
         <div class="episode-info">
           <div class="episode-show"><?php print $episode_show; ?></div>
-          <div class="episode-title"><?php print $episode_title; ?></div>
+          <div class="episode-title"><?php if(!empty($episode_title)): print $episode_title; endif;?></div>
         </div>
       <?php endif; ?>
       <div class="icons-block">

@@ -861,34 +861,13 @@ function usanetwork_tv_schedule_schedule_page() {
       $episode_title = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'TitleName');
       $rating = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'Rating');
       $episode_image_uri = '';
+      $theme_row_variables = array();
       $filter_show_node = NULL;
 
       _usanetwork_tv_schedule_correct_show_title($show_name);
 
       $start_time = strtotime($tv_schedule_item->StartTime);
       $link_name = gmdate('gA', strtolower($start_time));
-      $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
-
-      if (empty($show_nid)) {
-        $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'catchall_page');
-      }
-
-
-      // TODO: I think, we need to remove alias system.
-      if (empty($show_nid)) {
-        if (isset($aliases[$show_name])) {
-          $show_nid = _usanetwork_tv_schedule_get_nid_by_title($aliases[$show_name], 'tv_show');
-
-        }
-      }
-      if (empty($show_nid)) {
-        $show_nid = _usanetwork_tv_schedule_find_show_by_title($show_name);
-      }
-      $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
-      if (empty($show_node)) {
-        continue;
-      }
-
 
       if (!empty($filter_show_time) && !empty($start_time)) {
         // Featured time filters
@@ -901,10 +880,27 @@ function usanetwork_tv_schedule_schedule_page() {
           }
         }
       }
-
-      $show_name = !empty($show_node->title) ? $show_node->title : $show_name;
-      $shows_filter[$show_nid] = $show_name;
-      if (!empty($filter_show_nid) && !empty($show_nid) && $filter_show_nid != $show_nid) {
+      $show_nid = NULL;
+      $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+      if (empty($show_nid)) {
+        $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'catchall_page');
+      }
+      if (empty($show_nid)) {
+        $show_nid = _usanetwork_tv_schedule_find_show_by_title($show_name);
+      }
+      $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
+      if (!empty($show_node)) {
+        $show_name = $show_node->title;
+        $shows_filter[$show_nid] = $show_name;
+      }
+      if (!empty($filter_show_nid) && $filter_show_nid != $show_nid) {
+        continue;
+      }
+      if (empty($show_node)) {
+        $theme_row_variables['episode_show'] = $show_name;
+        $theme_row_variables['time'] = date('g:i', $start_time);
+        $theme_row_variables['day_part'] = date('A', $start_time);
+        $schedule_rows[$start_time] = theme('usanetwork_tv_schedule_table_element', $theme_row_variables);
         continue;
       }
       $tv_episode = _usanetwork_tv_schedule_get_episode($episode_title, $show_nid);

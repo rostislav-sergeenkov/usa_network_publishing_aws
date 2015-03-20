@@ -10,7 +10,6 @@
  * -    $characters[n]['url'] - machine-readable part of url for person
  * -    $characters[n]['title'] - name of person
  * -    $characters[n]['image_url'] - url for profile image
- * - $promo_carousel - array of pre-rendered promo-carousel items
  * - $background_url - the URL of page background
  */
 ?>
@@ -82,17 +81,6 @@
       </div>
       <?php endif; ?>
 
-      <?php /* @TODO: DO WE STILL NEED THIS? ?>
-      <?php if (!empty($promo_carousel)): ?>
-      <ul>
-        <?php foreach ($promo_carousel as $carousel_item): ?>
-        <li>
-          <?php print $carousel_item; ?>
-        </li>
-        <?php endforeach; ?>
-      </ul>
-      <?php endif; ?>
-      <?php */ ?>
     </div>
   </div>
 </div>

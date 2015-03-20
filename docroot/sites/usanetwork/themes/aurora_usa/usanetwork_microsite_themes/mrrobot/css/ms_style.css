@@ -349,11 +349,7 @@ you can use the generic selector below, but it's slower:
   opacity: 1;
 }
 #microsite section {
-  background-image: none;
-  background-position: top left; /* please don't change this! */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #000;
+  background-color: transparent;
   width: 100%;
   position: relative;
   top: 0;

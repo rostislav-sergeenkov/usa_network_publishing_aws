@@ -1,0 +1,110 @@
+/* GENERAL */
+html, body {
+  background-color: #000;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+/* SECTIONS */
+#microsite .full-pane {
+  padding: 20px;
+  border: 2px solid #FFF;
+  background-color: #000;
+}
+#microsite #home {
+  display: block;
+  opacity: 1;
+}
+#microsite #about {
+  top: 50%;
+  left: 50%;
+  display: block;
+  opacity: 1;
+}
+#microsite div.section.active {
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+}
+#microsite #home {
+  top: 0;
+  left: 0;
+  width: 80%;
+  z-index: 100;
+}
+
+
+/* HOME SECTION */
+#microsite #mrrobot-home {
+  background-color: transparent;
+  max-width: 641px;
+  max-height: 844px;
+  width: 100%;
+  height: 844px;
+  min-width: 300px;
+  min-height: 395px;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: none;
+}
+#microsite .mr-forehead,
+#microsite .mr-right-eye,
+#microsite .mr-left-eye,
+#microsite .mr-nose-mouth,
+#microsite .mr-left-mouth,
+#microsite .mr-chin {
+  position: absolute;
+  height: auto;
+}
+#microsite .mr-forehead {
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+#microsite .mr-right-eye {
+  width: 37.0%;
+  top: 14.8%;
+  left: 8.2%;
+}
+#microsite .mr-left-eye {
+  width: 52.3%;
+  top: 17.5%;
+  left: 47.3%;
+}
+#microsite .mr-nose-mouth {
+  width: 72.8%;
+  top: 38.6%;
+  left: 4.7%;
+}
+#microsite .mr-left-mouth {
+  width: 41.2%;
+  top: 54.5%;
+  left: 54.6%;
+}
+#microsite .mr-chin {
+  width: 71.3%;
+  top: 68.5%;
+  left: 13.4%;
+}
+#microsite .mr-right-eye img,
+#microsite .mr-left-eye img,
+#microsite .mr-nose-mouth img,
+#microsite .mr-left-mouth img {
+  max-width: 100%;
+  height: auto;
+}
+#microsite #home #mrrobot-home > div {
+  z-index: 10;
+}
+
+
+/* BEGIN MEDIA QUERIES */
+@media (max-width: 640px) {
+  #microsite section .microsite-section-container {
+    margin: 0 auto;
+    width: 88%;
+  }
+}

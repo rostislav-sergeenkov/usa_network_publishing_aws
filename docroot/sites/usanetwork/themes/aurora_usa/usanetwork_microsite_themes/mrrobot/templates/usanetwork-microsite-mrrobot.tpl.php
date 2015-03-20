@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * Global template of Mr. Robot theme
+ * Global template for Mr. Robot theme
  *
  * Variables:
  * - $classes - a string list of classes that should be added to microsite template
@@ -48,6 +48,7 @@
     <?php endif; ?>
     <?php endforeach; ?>
     <?php endif; ?>
+    <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_about"></div>
   </div>
   <div id="left-nav">
     <div id="left-nav-inner">
@@ -66,17 +67,16 @@
               <?php else: ?>
                 <div id="left-nav-logo"></div>
               <?php endif; ?>
-              <?php /* if (!empty($tune_in)): ?>
-                <div id="left-nav-tunein"><?php print $tune_in; ?></div>
-              <?php endif; */ ?>
               <div id="left-nav-tunein"></div>
             </a>
+<!--
             <div id="left-nav-social" class="clearfix">
               <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
               <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
               <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
               <a class="youtube" href="https://www.youtube.com/user/DIGonUSA" target="_blank"></a>
             </div>
+-->
           </li>
           <?php if (!empty($sections)): ?>
             <?php foreach ($sections as $section): ?>

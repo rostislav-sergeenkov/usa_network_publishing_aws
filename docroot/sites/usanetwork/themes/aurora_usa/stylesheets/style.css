@@ -19822,9 +19822,9 @@ yx-axis
   }
 }
 .usanetwork-aspot .meta-wrap {
-  left: 8%;
+  left: 15%;
   position: absolute;
-  top: 10%;
+  top: 5%;
 }
 @media (max-width: 1024px) {
   .usanetwork-aspot .meta-wrap {

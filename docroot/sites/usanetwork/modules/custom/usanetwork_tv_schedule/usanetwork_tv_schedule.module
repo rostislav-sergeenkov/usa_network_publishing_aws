@@ -854,6 +854,7 @@ function usanetwork_tv_schedule_schedule_page() {
   $tv_schedule = usanetwork_tv_schedule_fetch_schedule($sdate);
   $schedule_rows = array();
 
+  $shows_filter = array();
   if (!empty($tv_schedule)) {
     foreach ($tv_schedule as $tv_schedule_item) {
       $show_name = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'ProgramName');
@@ -872,27 +873,22 @@ function usanetwork_tv_schedule_schedule_page() {
         $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'catchall_page');
       }
 
-      $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
 
-      if (empty($show_node)) {
+      // TODO: I think, we need to remove alias system.
+      if (empty($show_nid)) {
         if (isset($aliases[$show_name])) {
           $show_nid = _usanetwork_tv_schedule_get_nid_by_title($aliases[$show_name], 'tv_show');
 
-          if ($show_nid) {
-            $show_node = node_load($show_nid);
-          }
-          else {
-            continue;
-          }
-        }
-        else {
-          continue;
         }
       }
-
-      if (!empty($filter_show_nid) && !empty($show_nid) && $filter_show_nid != $show_nid) {
+      if (empty($show_nid)) {
+        $show_nid = _usanetwork_tv_schedule_find_show_by_title($show_name);
+      }
+      $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
+      if (empty($show_node)) {
         continue;
       }
+
 
       if (!empty($filter_show_time) && !empty($start_time)) {
         // Featured time filters
@@ -906,6 +902,11 @@ function usanetwork_tv_schedule_schedule_page() {
         }
       }
 
+      $show_name = !empty($show_node->title) ? $show_node->title : $show_name;
+      $shows_filter[$show_nid] = $show_name;
+      if (!empty($filter_show_nid) && !empty($show_nid) && $filter_show_nid != $show_nid) {
+        continue;
+      }
       $tv_episode = _usanetwork_tv_schedule_get_episode($episode_title, $show_nid);
 
       if (!empty($tv_episode)) {
@@ -947,7 +948,7 @@ function usanetwork_tv_schedule_schedule_page() {
               : '',
         'time' => date('g:i', $start_time),
         'day_part' => date('A', $start_time),
-        'episode_show' => !empty($show_node->title) ? $show_node->title : $show_name,
+        'episode_show' => $show_name,
         'episode_title' => !empty($tv_episode) ? $tv_episode->title : $episode_title,
         'episode_fid' => !empty($tv_episode) ? $tv_episode->fid : '',
         'icon_reminder_url' => !empty($show_nid) ? _usanetwork_menu_get_reminder_url($show_nid)
@@ -963,7 +964,8 @@ function usanetwork_tv_schedule_schedule_page() {
       $schedule_rows[$start_time] = theme('usanetwork_tv_schedule_table_element', $theme_row_variables);
     }
   }
-
+  asort($shows_filter);
+  $shows_filter = array(t('Show all')) + $shows_filter;
   if (!empty($filter_show_nid)) {
     $filter_show_node = node_load($filter_show_nid);
   }
@@ -974,7 +976,7 @@ function usanetwork_tv_schedule_schedule_page() {
           'nid' => !empty($filter_show_nid) ? $filter_show_nid : 0,
           'title' => !empty($filter_show_nid) ? $filter_show_node->title : t('Show all'),
         ),
-        'list' => _usanetwork_tv_schedule_get_shows_list(TRUE),
+        'list' => $shows_filter,
       ),
       'show_time' => array(
         'selected' => array(
@@ -1837,4 +1839,25 @@ function usanetwork_tv_schedule_get_running_show_ajax($user_timezone, $periods =
   }
 
   return $wrap_with_json ? drupal_json_output($data) : $data;
+}
+
+function _usanetwork_tv_schedule_find_show_by_title($show_name) {
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'title'));
+  $query->condition('n.type', 'tv_show');
+  $shows = $query->execute()->fetchAll();
+  $finded_show_id = NULL;
+  if (!empty($shows) && is_array($shows)) {
+    $subj_show_name_elements = explode(' ', strtolower($show_name));
+    $max_matches = 0;
+    foreach($shows as $show) {
+      $show_name_elements = explode(' ', strtolower($show->title));
+      $matches = count(array_intersect($subj_show_name_elements, $show_name_elements));
+      if ($matches > $max_matches) {
+        $max_matches = $matches;
+        $finded_show_id = $show->nid;
+      }
+    }
+  }
+  return $finded_show_id;
 }

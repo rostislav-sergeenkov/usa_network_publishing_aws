@@ -8,8 +8,9 @@
 #edit-field-aspot-enabled-gi-preview {
     display: block;
     width: 100%;
-    height: 600px;
+   /* height: 600px; */
     border: solid #aaa 1px;
+    position: relative;
 }
 
 .aspot-draggable-element {

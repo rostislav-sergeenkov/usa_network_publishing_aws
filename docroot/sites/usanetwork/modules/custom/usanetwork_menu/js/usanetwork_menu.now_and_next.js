@@ -11,7 +11,7 @@
           type: 'POST',
           dataType: 'JSON',
           data: {},
-          url: 'ajax/render-running-show/' + timezoneOffset + '/' + periods,
+          url: Drupal.settings.basePath + 'ajax/render-running-show/' + timezoneOffset + '/' + periods,
           success: function(message) {
             var nowNextBlock = $('.pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .pane-content');
 

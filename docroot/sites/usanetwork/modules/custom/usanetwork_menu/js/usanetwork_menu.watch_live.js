@@ -11,7 +11,7 @@
           type: 'POST',
           dataType: 'JSON',
           data: {},
-          url: 'ajax/render-watch-live/' + timezoneOffset,
+          url: Drupal.settings.basePath + 'ajax/render-watch-live/' + timezoneOffset,
           success: function(message) {
             var watchNowBlock = $('.pane-usanetwork-menu-usanetwork-menu-sm-watch-live .pane-content');
 

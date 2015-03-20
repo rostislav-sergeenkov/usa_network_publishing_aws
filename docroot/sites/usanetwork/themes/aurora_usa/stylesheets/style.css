@@ -19800,6 +19800,7 @@ yx-axis
   right: 0;
   top: 0;
   width: 10%;
+  z-index: 1;
 }
 @media (max-width: 640px) {
   #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
@@ -19823,6 +19824,9 @@ yx-axis
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
   width: 100%;
+}
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slide .wrp {
+  background: #000000;
 }
 
 @media (min-width: 1601px) {

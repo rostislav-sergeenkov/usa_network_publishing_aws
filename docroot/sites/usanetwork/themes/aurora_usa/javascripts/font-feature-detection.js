@@ -2,7 +2,7 @@
 (function ($) {
   Drupal.behaviors.fontFeatureDetection = {
     attach: function (context, settings) {
-      if (Modernizr.prefixed("fontFeatureSettings")) {
+      if (Modernizr.hasOwnProperty('prefixed') && Modernizr.prefixed("fontFeatureSettings")) {
         //ligatures supported
         $('html').addClass('font-feature-settings');
       } else {

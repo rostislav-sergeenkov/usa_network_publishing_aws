@@ -59,7 +59,7 @@
               <?php endif; ?>
               <?php if (!empty($quotation['source'])): ?>
                 <div class="quote-source">
-                  <?php print $quotation['source']; ?>
+                  <?php print '-' . $quotation['source']; ?>
                 </div>
               <?php endif; ?>
             </li>

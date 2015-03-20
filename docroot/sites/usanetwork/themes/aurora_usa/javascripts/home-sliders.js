@@ -45,7 +45,7 @@
           shiftPercent = ((shiftPercent != 'undefined') || (shiftPercent != '')) ? shiftPercent : 0;
 
           $(nextSlideImg).css('margin-left', '-' + shiftPercent + '%');
-          $(nextSlideInner).css('width', parseInt($(window).width())).animate({
+          $(nextSlideInner).css({'width' : parseInt($(window).width()), 'opacity' : 0.5}).animate({
             'margin-left': '-=10%'
           }, 600, 'easeOutBack', function() {
             $('.next-button').fadeIn(500).removeClass('disabled');
@@ -71,7 +71,7 @@
           }, 800, null);
           $(nextSlideInner).animate({
             'margin-left': '0'
-          }, 800, null).css('width', parseInt($(window).width()));
+          }, 800, null).css({'width' : parseInt($(window).width()), 'opacity' : 1});
 
           $('.next-button').fadeOut(200).addClass('disabled');
         };

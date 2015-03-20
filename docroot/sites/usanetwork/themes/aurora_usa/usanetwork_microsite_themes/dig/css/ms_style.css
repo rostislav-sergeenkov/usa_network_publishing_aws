@@ -409,7 +409,6 @@ you can use the generic selector below, but it's slower:
   width: 100%;
   font-size: 1.3em;
   line-height: 1.3em;
-  text-transform: uppercase;
   text-shadow: 1px 1px 3px #000;
   text-align: center;
   opacity: 0;
@@ -451,6 +450,7 @@ you can use the generic selector below, but it's slower:
   color: #e5ce96;
   font-size: 0.6em;
   line-height: 1.3em;
+  text-transform: uppercase;
 }
 #microsite section .microsite-section-container .right-pane {
   width: 50%;

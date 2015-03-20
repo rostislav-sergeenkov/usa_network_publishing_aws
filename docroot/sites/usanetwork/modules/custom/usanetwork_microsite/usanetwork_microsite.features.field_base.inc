@@ -384,6 +384,7 @@ function usanetwork_microsite_field_default_field_bases() {
         'old' => 'Old Design',
         'new' => 'New Design',
         'dig' => 'Dig',
+        'mrrobot' => 'Mr. Robot',
       ),
       'allowed_values_function' => '',
     ),

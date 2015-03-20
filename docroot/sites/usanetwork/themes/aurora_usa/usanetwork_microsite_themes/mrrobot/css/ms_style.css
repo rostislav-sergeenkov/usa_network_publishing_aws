@@ -1806,6 +1806,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (min-width: 481px) {
+/*
   #microsite #home-content {
     background-image: url("../images/dig_bg_home.jpg");
   }
@@ -1822,8 +1823,10 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     background-image: url("../images/dig_bg_videos.jpg");
     background-size: contain;
   }
+*/
 }
 @media (max-width: 480px) {
+/*
   #microsite #home-content,
   #microsite #about-content,
   #microsite #galleries-content,
@@ -1832,6 +1835,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     background-image: url("../images/dig_mobile_bg.jpg");
   }
 }
+*/
 }
 
 /* height media queries */

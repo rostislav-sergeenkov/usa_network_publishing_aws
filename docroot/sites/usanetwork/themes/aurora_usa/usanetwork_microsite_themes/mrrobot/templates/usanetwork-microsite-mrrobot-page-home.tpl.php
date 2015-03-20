@@ -18,8 +18,7 @@
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
 
 <?php
-$imagePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/';
-$sitePath = '/node/56352/microsite';
+$imagePath = '/' . $directory . '/usanetwork_microsite_themes/mrrobot/images/';
 ?>
 <style>
 html, body {

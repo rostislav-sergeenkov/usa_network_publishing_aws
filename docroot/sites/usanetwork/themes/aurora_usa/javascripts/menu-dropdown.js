@@ -22,8 +22,8 @@
     },
 
     attach: function(context){
-
       var tablet = false;
+
       if (window.innerWidth < window_size_tablet_portrait) {
         tablet = true;
       }
@@ -40,10 +40,8 @@
         if ($('body').hasClass('usa-tv-show')) {
           if ($(window).scrollTop() > show_title_offset) {
             $('.show-title-block-wrapper').addClass('fixed');
-            $('.show-menu-tab').addClass('fixed');
           } else {
             $('.show-title-block-wrapper').removeClass('fixed');
-            $('.show-menu-tab').removeClass('fixed');
           }
         }
       }
@@ -62,20 +60,10 @@
       }
 
       function showMenuMove() {
-        if (window.innerWidth < window_size_tablet_portrait && !($('.show-menu').hasClass('inner'))) {
-          $('.show-menu-tab .show-menu').addClass('inner');
-          $('.show-menu-tab .show-menu').appendTo('.header-show-menu');
+        if (window.innerWidth < window_size_tablet_portrait) {
           $('.nav-bar-tabs .expanded > a:not(.no-refresh)').bind('click', tabNavHandler);
-          $(".show-menu > li > a").unbind('hover');
-          $('.show-menu > li, .show-menu > li > a').removeClass('active');
-        }
-        else if(window.innerWidth >= window_size_tablet_portrait && ($('.show-menu').hasClass('inner'))) {
-          $('.header-show-menu .show-menu').removeClass('inner');
+        } else if(window.innerWidth >= window_size_tablet_portrait) {
           $('.nav-bar-tabs .expanded > a:not(.no-refresh)').unbind('click');
-          $('.header-show-menu .show-menu').appendTo('.show-menu-tab');
-          $(".show-menu > li > a").bind('hover', showMenuHoverItem);
-          $('.show-menu > li, .show-menu > li > a').removeClass('active');
-          $('.show-menu > li.expanded:eq(0)').addClass('active').children().addClass('active');
         }
       }
 
@@ -98,11 +86,6 @@
             getShowTitleOffset();
           }).addClass('active');
 
-          // HIDE 'SHOW MENU' WHEN OPEN THIS
-          $(".menu-open a").parent().removeClass('active');
-          $(".menu-open a").removeClass('active');
-          $('.show-menu-tab').slideUp(350).removeClass('active');
-
           // HIDE SIGN TAB IF EXIST
           if ($('.page-videos .sign-in-link').length) {
             $('.page-videos .sign-in-link').removeClass('active');
@@ -121,6 +104,7 @@
             }).removeClass('active');
           } else {
             tabs.removeClass('active').attr('data-state', '');
+
             if (tab_container_act.length) {
               $(".tab .no-refresh").unbind('click');
               tab_container_act
@@ -145,7 +129,6 @@
         if (window.innerWidth < window_size_tablet_portrait && $(this).hasClass('no-refresh') && this.href) {
           window.location = this.href;
         }
-
       };
 
       var menuOpenHandler = function (e) {
@@ -196,56 +179,21 @@
         }
       };
 
-      var showMenuOpenHandler = function (e) {
-        e.preventDefault();
-
-        if (!$(this).hasClass('active')) {
-          $(this).parent().addClass('active');
-          $(this).addClass('active');
-          $('.show-menu-tab').slideDown(350).addClass('active');
-
-          // HIDE MAIN NAVIGATION TABS
-          $('header .tab .no-refresh').removeClass('active').attr('data-state', '');
-          $('header .tab-item.active').removeClass('active').slideUp(450, function(){
-            getShowTitleOffset();
-            setShowTitleOffset();
-          });
-
-          // HIDE SEARCH BLOCK
-          $('.search-input-block, .search a').removeClass('active');
-        }
-        else {
-          $(this).parent().removeClass('active');
-          $(this).removeClass('active');
-          $('.show-menu-tab').slideUp(350).removeClass('active');
-        }
-      };
-
-      var showMenuHoverItem = function () {
-        $('.show-menu > li, .show-menu > li > a').removeClass('active');
-        $(this).parent().addClass('active');
-        $(this).addClass('active');
-      };
-
       var seeitClose = function () {
         $('.seeit-iframe-wrapper').remove();
       };
-
 
       showTitleMove();
       showMenuMove();
 
       $(".tab .no-refresh").removeClass('active').bind('click', tabNavHandler);
       $(".main-menu-open a").bind('click', menuOpenHandler);
-      $(".menu-open a").bind('click', showMenuOpenHandler);
 
       $(window).load(function () {
         Drupal.behaviors.usanetwork_menu_dropdown.stickyHeader();
 
         if ($('body').hasClass('usa-tv-show') && window.innerWidth >= window_size_tablet_portrait) {
           getShowTitleOffset();
-          $(".show-menu > li > a").bind('hover', showMenuHoverItem);
-          $('.show-menu > li.expanded:eq(0)').addClass('active').children().addClass('active');
         }
 
         $('.calendar-reminder').click(function() {
@@ -266,32 +214,28 @@
             $('header .tab-item.active').removeClass('active').removeAttr('style');
             $(".tab .no-refresh.active").removeClass('active').attr('data-state', '');
           }
+
           tablet = true;
         }
+
         if (window.innerWidth >= window_size_tablet_portrait && tablet) {
           if ($('body').hasClass('page-home') || $('body').hasClass('usa-tv-show')) {
             if($(".main-menu-open").hasClass('active')) {
-              menuOpenHandler();
               $('.nav-bar-tabs .expanded.active').removeClass('active');
               $('.nav-bar-tabs .expanded > a.active').removeClass('active');
             }
           }
+
           tablet = false;
         }
+
         if (window.innerWidth >= window_size_tablet_portrait) {
           getShowTitleOffset();
           setShowTitleOffset();
         }
-        if (window.innerWidth < window_size_tablet_portrait) {
-          if ($('body').hasClass('usa-tv-show')){
-            $('.show-menu-tab.active').removeClass('active').removeAttr('style');
-            $(".menu-open a").parent().removeClass('active');
-            $(".menu-open a").removeClass('active');
-          }
-        }
+
         if (window.innerWidth < window_size_tablet_portrait && $('.show-title-block-wrapper').hasClass('fixed')) {
           $('.show-title-block-wrapper').removeClass('fixed');
-          $('.show-menu-tab').removeClass('fixed');
         }
       });
 
@@ -302,7 +246,6 @@
           setShowTitleOffset();
         }
       });
-
     }
   }
 })(jQuery);

@@ -218,5 +218,31 @@
 }
 
 /* Begin media queries */
-@media (max-width: 1334px) {
+@media (max-width: 1200px) {
+  #microsite #quizzes .full-pane {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  #microsite #quizzes .usanetwork-quiz .content-wrap .center {
+    width: 100%;
+    float: left;
+    margin: 0;
+  }
+}
+
+@media (max-width: 884px) {
+  #microsite #quizzes .full-pane {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 640px) {
+  #microsite #quizzes .full-pane {
+    max-width: 90%;
+  }
+  #microsite #quizzes .usanetwork-quiz .content-wrap .sidebar {
+    margin-left: 0;
+  }
 }

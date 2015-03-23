@@ -16,40 +16,8 @@
  */
 ?>
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
-  <div id="sections">
-    <?php if (!empty($sections)): ?>
-    <?php foreach ($sections as $section): ?>
-    <?php if (!empty($section['content'])): ?>
-    <?php if ($section['type'] == $current_section): ?>
-    <div id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
-    <?php else: ?>
-    <div id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
-    <?php endif; ?>
-      <div class="mcs-scroll">
-        <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix fadein fadein-1s fadein-delay-1s">
-          <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
-            <?php print $section['content']; ?>
-          <?php if (empty($section['is_last'])): ?>
-            <?php print $section_separator; ?>
-          <?php endif; ?>
-          </div>
-        </section>
-        <?php if (!empty($section['is_last'])): ?>
-          <!-- FOOTER -->
-          <footer id="footer-microsite" role="contentinfo" class="clearfix">
-            <div class="region region-footer">
-              <?php print $footer; ?>
-            </div>
-          </footer>
-          <!-- /FOOTER -->
-        <?php endif; ?>
-      </div>
-    </div>
-    <?php endif; ?>
-    <?php endforeach; ?>
-    <?php endif; ?>
-    <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_about"></div>
-  </div>
+  <div id="ad728x90" class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
+
   <div id="left-nav">
     <div id="left-nav-inner">
       <div id="left-nav-links">
@@ -111,6 +79,35 @@
       </div>
     </div>
   </div>
+
+  <div id="sections">
+    <?php if (!empty($sections)): ?>
+    <?php foreach ($sections as $section): ?>
+    <?php if (!empty($section['type']) && !empty($section['content'])): ?>
+    <div id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info<?php if ($section['type'] == $current_section) print ' active'; ?>">
+      <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix fadein fadein-1s fadein-delay-1s">
+        <?php print $section['content']; ?>
+        <?php if (empty($section['is_last'])): ?>
+          <?php print $section_separator; ?>
+        <?php endif; ?>
+      </section>
+      <?php if (!empty($section['is_last'])): ?>
+        <!-- FOOTER -->
+        <footer id="footer-microsite" role="contentinfo" class="clearfix">
+          <div class="region region-footer">
+            <?php print $footer; ?>
+          </div>
+        </footer>
+        <!-- /FOOTER -->
+      <?php endif; ?>
+    </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
+    <?php endif; ?>
+  </div>
+
+  <div id="ad300x250" class="ad300x250 dart-tag dart-name-300x250_ifr_reload_about"></div>
+
   <?php if (!empty($facebook_tracking_html)): ?>
     <?php print $facebook_tracking_html; ?>
   <?php endif; ?>

@@ -194,14 +194,11 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 //          $image_path = file_create_url($share_image_field['uri']);
 //        }
 //      }
-      $base_path_field = field_get_items('node', $node, 'field_pathauto_alias');
-      if ($base_path_field) {
-        $base_path_field = reset($base_path_field);
-      }
+      $base_path = url('node/' . arg(1) . '/microsite');
       $microsites_settings = array(
         'nid' => $node->nid,
         'title' => $node->title,
-        'base_path' => ($base_path_field) ? '/' . $base_path_field['value'] : '/dig',
+        'base_path' => ($base_path) ? $base_path : '/dig',
 //        'share_title' => ($share_title_field) ? $share_title_field['value'] : 'Dig Gallery Testing Sharebar Title',
 //        'share_description' => ($share_description_field) ? $share_description_field['value'] : 'Dig Gallery Testing Sharebar: This is the description',
 //        'share_image' => ($image_path) ? $image_path : 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
@@ -363,7 +360,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
   $theme_variables = array(
     'aspots' => array(),
     'featured' => array(),
-    'sitePath' => url('node/' . arg(1) . '/microsite'),
+    'base_path' => url('node/' . arg(1) . '/microsite'),
 /*
     'bspots' => NULL,
     'cspots' => NULL,
@@ -1833,6 +1830,17 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   // If there are head titles print the new ones
   if (!empty($head_title)) {
     $vars['head_title'] = $head_title;
+  }
+}
+
+/**
+ * Implements hook_preprocess_page
+ */
+function usanetwork_microsite_preprocess_page(&$vars, $hook) {
+  if (isset($vars['node']->type) && $vars['node']->type == 'usanetwork_microsite') {
+    $node_wrapper = entity_metadata_wrapper('node', $vars['node']);
+    $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
+    $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type . '__' . $node_wrapper->field_ms_theme->value();
   }
 }
 

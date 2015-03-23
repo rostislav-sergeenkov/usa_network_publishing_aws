@@ -166,21 +166,6 @@ function aurora_usa_preprocess_page(&$vars) {
     $vars['page'] = array('content' => $content);
     $vars['ajax'] = true;
   }
-
-  // if microsite, determine whether to display certain sections
-  // NOTE: The following settings affect what content is displayed
-  // in this template file: sites/usanetwork/themes/aurora_usa/templates/page.tpl.php
-  if ($node && $node->type == 'usanetwork_microsite') {
-    // @TODO: DV - If needed, let's move the following settings into the CMS
-    // so that editors have access to them. Before changing these though, we
-    // should discuss whether editors SHOULD have access to change these
-    // and how changing them would affect the look and functionality of the
-    // microsite.
-    $vars['page']['no_utilities'] = true;
-    $vars['page']['no_leaderboard'] = true;
-    $vars['page']['no_footer'] = true;
-    $vars['page']['display_global_nav'] = (stristr($_SERVER['REQUEST_URI'], 'dig') !== false) ? true : false;
-  }
 }
 
 /**

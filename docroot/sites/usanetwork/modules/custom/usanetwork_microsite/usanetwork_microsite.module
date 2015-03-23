@@ -1182,6 +1182,10 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
     return $section_wrapper->field_ms_catchall_page->value();
   }
   elseif($type == 'quizzes') {
+    // @TODO: DV -- If no quiz section is set, the following line throws the
+    // error "Fatal error: Call to a member function value() on a non-object in /Users/donnavaughan/Sites/publisher7/docroot/sites/usanetwork/modules/custom/usanetwork_microsite/usanetwork_microsite.module on line 1189"
+    // Be sure to check the above if / else statements to see if they generate the
+    // same error when there is no section of that type.
     return $section_wrapper->field_ms_quiz->value();
   }
   return NULL;

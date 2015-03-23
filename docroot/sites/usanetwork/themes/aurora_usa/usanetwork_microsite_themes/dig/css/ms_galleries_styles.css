@@ -92,10 +92,21 @@
 }
 #microsite #galleries-content .flexslider li {
   background-color: #000;
+  position: relative;
 }
 #microsite #galleries-content .flexslider .slides > li img {
   max-height: 100%;
   width: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+#microsite #galleries-content .flex-direction-nav {
+  position: relative;
+  top: -50%;
 }
 #microsite #galleries-content .flexslider .counter {
   position: absolute;

@@ -1036,44 +1036,6 @@
       display: none;
     }
   }
-  .show-menu-video {
-    float: left;
-    width: 30%;
-    @include breakpoint($between-769-1280) {
-      width: 200px;
-    }
-    & ~ .show-menu {
-      border-left: 1px solid $footer-links;
-      float: left;
-      @include breakpoint($between-769-1280) {
-        float: none;
-        margin-left: 200px;
-        width: 70%;
-      }
-    }
-    .node {
-      margin-bottom: 0px;
-    }
-    a {
-      &:before {
-        @include breakpoint($between-769-1280) {
-          left: 0px;
-          top: 104px;
-        }
-      }
-    }
-    .asset-img {
-      @include breakpoint($between-769-1280) {
-        float: none;
-      }
-    }
-    .meta {
-      margin-top: 21px;
-      @include breakpoint($between-769-1280) {
-        margin-left: 50px;
-      }
-    }
-  }
   .show-menu {
     display: table;
     height: 100%;

@@ -23,9 +23,9 @@ $imagePath = '/' . $directory . '/usanetwork_microsite_themes/mrrobot/images/';
 
 <div id="mrrobot-home">
   <div id="" class="mr-forehead"><img src="<?php print $imagePath; ?>mrrobot_forehead.png" alt="forehead"></div>
-  <div id="nav-about" class="mr-right-eye"><a href="<?php print $sitePath; ?>/about"><img src="<?php print $imagePath; ?>mrrobot_right_eye.png" alt="right eye"></a></div>
-  <div id="nav-videos" class="mr-left-eye"><a href="<?php print $sitePath; ?>/videos"><img src="<?php print $imagePath; ?>mrrobot_left_eye.png" alt="left eye"></a></div>
-  <div id="nav-characters" class="mr-nose-mouth"><a href="<?php print $sitePath; ?>/characters"><img src="<?php print $imagePath; ?>mrrobot_nose_mouth.png" alt="nose and mouth"></a></div>
-  <div id="nav-galleries" class="mr-left-mouth"><a href="<?php print $sitePath; ?>/galleries"><img src="<?php print $imagePath; ?>mrrobot_left_mouth.png" alt="left part of mouth"></a></div>
+  <div id="nav-about" class="mr-right-eye"><a href="<?php print $base_path; ?>/about"><img src="<?php print $imagePath; ?>mrrobot_right_eye.png" alt="right eye"></a></div>
+  <div id="nav-videos" class="mr-left-eye"><a href="<?php print $base_path; ?>/videos"><img src="<?php print $imagePath; ?>mrrobot_left_eye.png" alt="left eye"></a></div>
+  <div id="nav-characters" class="mr-nose-mouth"><a href="<?php print $base_path; ?>/characters"><img src="<?php print $imagePath; ?>mrrobot_nose_mouth.png" alt="nose and mouth"></a></div>
+  <div id="nav-galleries" class="mr-left-mouth"><a href="<?php print $base_path; ?>/galleries"><img src="<?php print $imagePath; ?>mrrobot_left_mouth.png" alt="left part of mouth"></a></div>
   <div id="" class="mr-chin"><img src="<?php print $imagePath; ?>mrrobot_chin.png" alt="chin"></div>
 </div>

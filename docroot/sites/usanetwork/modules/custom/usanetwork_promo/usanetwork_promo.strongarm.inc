@@ -82,6 +82,9 @@ function usanetwork_promo_strongarm() {
         'redirect' => array(
           'weight' => '30',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'usanetwork_promo_preview' => array(

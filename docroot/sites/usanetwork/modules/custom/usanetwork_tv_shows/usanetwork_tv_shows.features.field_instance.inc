@@ -2293,7 +2293,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   $field_instances['node-tv_show-field_banner'] = array(
     'bundle' => 'tv_show',
     'deleted' => 0,
-    'description' => 'This field is not used by USA',
+    'description' => 'Used for logos in  Menu Full Episodes Block ',
     'display' => array(
       'block_cover_title' => array(
         'label' => 'above',
@@ -2351,16 +2351,13 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_banner',
-    'label' => 'Banner',
+    'label' => 'Show Logo ',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
-      'focus' => 0,
-      'focus_lock_ratio' => 0,
-      'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
@@ -2372,20 +2369,26 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'mpx' => 0,
           'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
-          0 => 0,
           'audio' => 0,
           'document' => 0,
           'image' => 'image',
+          'mpx_player' => 0,
+          'mpx_video_1' => 0,
+          'mpx_video_2' => 0,
           'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 0,
+          'pub_mpx_video' => 0,
+          'theplatform_mpx_mpxmedia' => 0,
+          'theplatform_mpx_mpxplayer' => 0,
           'upload' => 'upload',
         ),
         'progress_indicator' => 'throbber',
@@ -8983,16 +8986,13 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'figure',
     'field_name' => 'field_logo',
-    'label' => 'Logo',
+    'label' => 'Show Image (Logo)',
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
-      'focus' => 0,
-      'focus_lock_ratio' => 0,
-      'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
@@ -9004,20 +9004,26 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'mpx' => 0,
           'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
-          0 => 0,
           'audio' => 0,
           'document' => 0,
           'image' => 'image',
+          'mpx_player' => 0,
+          'mpx_video_1' => 0,
+          'mpx_video_2' => 0,
           'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 0,
+          'pub_mpx_video' => 0,
+          'theplatform_mpx_mpxmedia' => 0,
+          'theplatform_mpx_mpxplayer' => 0,
           'upload' => 'upload',
         ),
         'progress_indicator' => 'throbber',
@@ -15034,7 +15040,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
 
 ');
   t('Autoscroll A-spot carousel');
-  t('Banner');
   t('Base URL');
   t('Block title');
   t('CHILDREN');
@@ -15102,7 +15107,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Latest carousel content');
   t('Legal Copy');
   t('Limited to 20 characters or less. This displays in the show header.');
-  t('Logo');
   t('Lyris List ID');
   t('MARKERS');
   t('Main_link');
@@ -15147,7 +15151,9 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Show Facebook Page');
   t('Show Getglue');
   t('Show ID');
+  t('Show Image (Logo)');
   t('Show Instagram Page');
+  t('Show Logo ');
   t('Show Marquee');
   t('Show Newsletter');
   t('Show Path');
@@ -15175,6 +15181,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Twitter page');
   t('URL Params');
   t('Use Eastern time and a 24-hour clock.');
+  t('Used for logos in  Menu Full Episodes Block ');
   t('Used in show carousels.');
   t('YMAL block title');
   t('Youtube page');

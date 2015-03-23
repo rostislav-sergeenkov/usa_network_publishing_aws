@@ -78,45 +78,11 @@
     <span id="site-name">
       <?php print $site_name; ?>
     </span>
-    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-      <div class="primary-nav">
-        <?php print render($page['personalization_trigger']); ?>
-        <?php if ($site_name): ?>
-          <div id="logo">
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
-          </div>
-        <?php endif; ?>
-        <?php print render($page['header']); ?>
-      </div>
-    </div>
   </header>
-
-  <!-- TOP TITLE AND TOOLS BAR -->
-  <div id="utilities" class="clearfix <?php print $util_classes; ?>">
-    <div id="utilities-wrap" class="clearfix">
-    <?php if ($page['search']) : ?>
-      <div class="utilties-main-group">
-    <?php endif; ?>
-    <?php print render($title_prefix); ?>
-    <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
-    <?php if ($page['catchall_seo_title']): ?><h2 class="title" id="page-title"><?php print $page['catchall_seo_title']; ?></h2><?php endif; ?>
-    <?php print render($title_suffix); ?>
-    <?php if ($page['head_show']): ?><div id="head-show"><?php print render($page['head_show']); ?></div><?php endif; ?>
-    <?php if ($page['head_general']): ?><div id="head-general"><?php print render($page['head_general']); ?></div><?php endif; ?>
-    <?php if ($page['sponsored']): ?><div id="head-sponsored"><?php print render($page['sponsored']); ?></div><?php endif; ?>
-    <?php if ($page['search']): ?>
-      </div>
-    <?php endif; ?>
-    <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
-    </div>
-  </div>
 <?php endif; ?>
 <!-- /TOP TITLE AND TOOLS BAR -->
 
 <div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>
-  <!-- leaderboard ad -->
-    <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
-  <!-- /leaderboard -->
 
   <!-- MAIN CONTENT -->
   <div id="main" role="main" class="clearfix">
@@ -166,10 +132,4 @@
     <?php print render($page['personalization']); ?>
   </aside>
   <!-- /PERSONALIZATION -->
-
-  <!-- FOOTER -->
-  <footer id="footer" role="contentinfo" class="clearfix">
-    <?php print render($page['footer']); ?>
-  </footer>
-  <!-- /FOOTER -->
 </div>

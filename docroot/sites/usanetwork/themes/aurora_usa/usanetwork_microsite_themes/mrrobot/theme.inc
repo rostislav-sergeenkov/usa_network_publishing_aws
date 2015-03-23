@@ -176,12 +176,12 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_characters_bxslider.js',
 */
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_global.js',
-      $module_path . '/js/jquery.bxslider.min.js',
+//      $module_path . '/js/jquery.bxslider.min.js',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_gallery_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_galleries_bxslider.js',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_characters.js',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_galleries_bxslider.js',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_characters.js',
 /*
       $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_episodes.js',
 */
@@ -189,11 +189,11 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
     'css' => array(
-      $module_path . '/css/jquery.bxslider.css',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_style.css',
+//      $module_path . '/css/jquery.bxslider.css',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_style.css',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/css/mrrobot_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_galleries_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_characters_styles.css',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_galleries_styles.css',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_characters_styles.css',
 /*
       $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_episodes.css',
       $theme_path . '/usanetwork_microsite_themes/mrrobot/css/trivia.css',

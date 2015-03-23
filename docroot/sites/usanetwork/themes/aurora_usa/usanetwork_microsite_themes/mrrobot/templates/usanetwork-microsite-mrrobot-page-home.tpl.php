@@ -14,8 +14,6 @@
  */
 ?>
 
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
-
 <?php
 // @TODO: DV - Move this into usanetwork_microsite.module or wherever it should be.
 $imagePath = '/' . $directory . '/usanetwork_microsite_themes/mrrobot/images/';

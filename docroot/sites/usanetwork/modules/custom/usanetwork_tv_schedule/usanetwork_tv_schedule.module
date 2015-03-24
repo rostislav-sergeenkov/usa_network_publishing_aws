@@ -246,12 +246,12 @@ function usanetwork_tv_schedule_on_now_block() {
     'attributes' => array('width' => '63')));
 
   foreach ($tv_schedule_prev_day as $item) {
-    $cal_date = (array) $item->CalendarScheduleDate;
+    $cal_date = (array) $item->start_date_text;
 
     if ($cal_date[0] == $today) {
-      $end_time = (array) $item->EndTime;
-      $program = (array) $item->ProgramName;
-      $episode = (array) $item->TitleName;
+      $end_time = (array) $item->end_time_text;
+      $program = (array) $item->show_title;
+      $episode = (array) $item->title;
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $tv_show_name = $tv_show;
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
@@ -305,11 +305,11 @@ function usanetwork_tv_schedule_on_now_block() {
   }
   // get the tv schedule from 6:00 AM till end of the day
   foreach ($tv_schedule as $item) {
-    $cal_date = (array) $item->CalendarScheduleDate;
+    $cal_date = (array) $item->start_date_text;
 
-    $end_time = (array) $item->EndTime;
-    $program = (array) $item->ProgramName;
-    $episode = (array) $item->TitleName;
+    $end_time = (array) $item->end_time_text;
+    $program = (array) $item->show_title;
+    $episode = (array) $item->title;
 
     $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $tv_show_name = $tv_show;
@@ -749,6 +749,7 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
   foreach ($tv_schedule as $item) {
     $classes = array();
 
+    // @TODO: Change this in accord with the new fetch function.
     $start_time = (array) $item->StartTime;
     $end_time = (array) $item->EndTime;
     $program = (array) $item->ProgramName;
@@ -850,23 +851,22 @@ function usanetwork_tv_schedule_schedule_page() {
     'primetime' => t('Primetime'),
   );
 
-  $aliases = _usanetwork_schedule_get_show_alias_names();
   $tv_schedule = usanetwork_tv_schedule_fetch_schedule($sdate);
   $schedule_rows = array();
 
   $shows_filter = array();
   if (!empty($tv_schedule)) {
     foreach ($tv_schedule as $tv_schedule_item) {
-      $show_name = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'ProgramName');
-      $episode_title = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'TitleName');
-      $rating = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'Rating');
+      $show_name = $tv_schedule_item->show_title;
+      $episode_title = $tv_schedule_item->title;
+      $rating = $tv_schedule_item->rating_type;
       $episode_image_uri = '';
       $theme_row_variables = array();
       $filter_show_node = NULL;
 
       _usanetwork_tv_schedule_correct_show_title($show_name);
 
-      $start_time = strtotime($tv_schedule_item->StartTime);
+      $start_time = $tv_schedule_item->start_time;
       $link_name = gmdate('gA', strtolower($start_time));
 
       if (!empty($filter_show_time) && !empty($start_time)) {
@@ -1125,49 +1125,33 @@ function _usanetwork_tv_schedule_get_program_rating($program_rating) {
 /**
  * Fetch TV schedule from compass xml feed
  */
-function usanetwork_tv_schedule_fetch_schedule($sdate = '') {
-  $xml_feed = variable_get('usanetwork_tv_schedule_xml_feed', '');
-
-  if (empty($xml_feed) || empty($sdate)) {
-    return NULL;
-  }
-
-  // replace the tokens in the Compass XML URL
-  $xml_feed = str_replace('YYYY_MM_DD', $sdate, $xml_feed);
-
-  $cache_name = 'schedule_fetch_schedule_' . $sdate;
+function usanetwork_tv_schedule_fetch_schedule($sdate = '', $days = 1) {
+  $sdate_args = explode('_', $sdate);
+  $start_time = mktime(6, 0, 0, $sdate_args[1], $sdate_args[2], $sdate_args[0]);
+  $cache_name = 'schedule_fetch_schedule_' . $sdate . '_' . $days;
   if (!$cache = cache_get($cache_name)) {
-    $result = drupal_http_request($xml_feed);
+    $query = db_select('usanetwork_schedule', 's');
+    $query->fields('s', array());
+    $query->condition('s.start_time', $start_time, '>=');
+    if (!empty($days)) {
+      $end_time = mktime(6, 0, 0, $sdate_args[1], $sdate_args[2] + $days, $sdate_args[0]);
+      $query->condition('s.end_time', $end_time, '<=');
+    }
+    $query->orderBy('s.start_time', 'ASC');
+    $result = $query->execute()->fetchAll();
+    if (!empty($result) && is_array($result)) {
+      foreach($result as $item) {
+        $item->start_date_text = date('Y-m-d', $item->start_time);
+        $item->start_time_text = date('h:m:s A', $item->start_time);
+        $item->end_time_text = date('h:m:s A', $item->end_time);
+      }
+    }
     cache_set($cache_name, $result, 'cache', time() + 900);
-  } else {
-    $result = $cache->data;
-  }
-
-  if (!isset($result->headers['content-type']) || $result->headers['content-type'] != 'application/xml') {
-    return NULL;
-  }
-
-  $proxy = variable_get('pub_utilities_proxy', '');
-  if (!empty($proxy)) {
-    $default_context = stream_context_get_default(
-        array('http' =>
-          array(
-            'proxy' => $proxy,
-            'request_fulluri' => true,
-          ),
-        )
-    );
-    libxml_set_streams_context($default_context);
-  }
-  $tvs = simplexml_load_string($result->data);
-  //$tvs = simplexml_load_file(drupal_get_path('module', 'usanetwork_tv_schedule') . '/test.xml','SimpleXMLElement',LIBXML_NOCDATA);
-
-  if (!isset($tvs->Schedules->Schedule->ScheduleItem) || empty($tvs->Schedules->Schedule->ScheduleItem)) {
-    return NULL;
   }
   else {
-    return $tvs->Schedules->Schedule->ScheduleItem;
+    $result = $cache->data;
   }
+  return $result;
 }
 
 /*
@@ -1435,10 +1419,8 @@ function _usanetwork_onnow_upnext_node() {
 
     foreach ($tv_schedule as $item) {
       $item = (array) $item;
-      $start_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['StartTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
-      $start_time = $start_time->getTimestamp();
-      $end_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['EndTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
-      $end_time = $end_time->getTimestamp();
+      $start_time = $item['start_time'];
+      $end_time = $item['end_time'];
       $show_name = trim(preg_replace('/\(.*\)/', '', $item['ProgramName']));
 
       if ($start_time <= $now && $end_time >= $now) {

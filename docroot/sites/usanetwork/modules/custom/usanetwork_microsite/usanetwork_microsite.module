@@ -2301,6 +2301,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if(isset($video_file) && !empty($video_file->filename)) {
               $omniture_prop5 = t('!entity_title : Video : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
               $omniture_pagename = $omniture_prop5;
+              $umbel = $video_file->filename;
             }
           }
           else {
@@ -2312,6 +2313,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 if (!empty($video_file)) {
                   $omniture_prop5 = t('!entity_title : Video : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
                   $omniture_pagename = $omniture_prop5;
+                  $umbel = $video_file->filename;
                 }
               }
             }
@@ -2326,6 +2328,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
               $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
               $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+              $umbel = $person_names['person_title'];
             }
           }
           else {
@@ -2338,6 +2341,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                   $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
                   $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
                   $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+                  $umbel = $person_names['person_title'];
                 }
               }
             }
@@ -2350,6 +2354,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if(!empty($node)) {
               $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
               $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+              $umbel = $node->title;
             }
           }
           else {
@@ -2360,6 +2365,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 $node = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
                 $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
                 $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+                $umbel = $node->title;
               }
             }
           }
@@ -2371,6 +2377,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if(!empty($node)) {
               $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
               $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+              $umbel = $node->title;
             }
           }
           else {
@@ -2382,6 +2389,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 if (!empty($node)) {
                   $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
                   $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+                  $umbel = $node->title;
                 }
               }
             }
@@ -2389,6 +2397,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'about':
           $omniture_prop3 = 'About';
+          $umbel = $omniture_prop3;
           break;
         case 'games':
           $omniture_prop3 = 'Games';
@@ -2425,6 +2434,9 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
       if (!empty($omniture_prop5)) {
         $omniture_variables['s.prop5'] = $omniture_prop5;
         $omniture_variables['s.pageName'] = $omniture_pagename;
+      }
+      if (!empty($umbel)) {
+        $omniture_variables['umbel'] = $umbel;
       }
     }
   }

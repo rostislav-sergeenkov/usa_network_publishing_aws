@@ -1447,24 +1447,26 @@ function _usanetwork_microsite_get_theme_variables($node) {
 
     // Games links.
     $games_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'games');
-    $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
-    $current_game_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
-    $games_count = 0;
-    foreach ($games_nodes as $game_node) {
-      // While we will output only quizzes.
-      $game_url = _usanetwork_microsite_get_suggested_url($game_node);
-      if($game_node->status == NODE_PUBLISHED) {
-        $status = '';
-        if((!empty($current_game_arg) && $current_game_arg == $game_url) || (empty($current_game_arg) && $games_count == 0)) {
-          $status = 'active';
+    if(!empty($games_nodes)) {
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
+      $current_game_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+      $games_count = 0;
+      foreach ($games_nodes as $game_node) {
+        // While we will output only quizzes.
+        $game_url = _usanetwork_microsite_get_suggested_url($game_node);
+        if ($game_node->status == NODE_PUBLISHED) {
+          $status = '';
+          if ((!empty($current_game_arg) && $current_game_arg == $game_url) || (empty($current_game_arg) && $games_count == 0)) {
+            $status = 'active';
+          }
+          $theme_variables['games'][] = array(
+            'nid' => $game_node->nid,
+            'title' => $game_node->title,
+            'url' => $game_url,
+            'status' => $status,
+          );
+          $games_count++;
         }
-        $theme_variables['games'][] = array(
-          'nid' => $game_node->nid,
-          'title' => $game_node->title,
-          'url' => $game_url,
-          'status' => $status,
-        );
-        $games_count++;
       }
     }
 

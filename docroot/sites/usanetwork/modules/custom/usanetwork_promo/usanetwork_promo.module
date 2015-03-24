@@ -270,3 +270,38 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
   return $featutred_content;
   
 }
+
+/**
+ * Returns Promo details.
+ *
+ * @param $promo_node - node object or node id of promo.
+ */
+function _usanetwork_promo_get_promo_details($promo_node) {
+  if (!is_object($promo_node)) {
+    $promo_node = node_load(($promo_node));
+  }
+
+  if (!empty($promo_node)) {
+    $promo_wrapper = entity_metadata_wrapper('node', $promo_node);
+
+    return array(
+      'topic' => !empty($promo_node->field_promo_topic)
+        ? $promo_wrapper->field_promo_topic->value()
+        : '',
+      'show_name' => !empty($promo_node->field_promo_violator_name)
+        ? $promo_wrapper->field_promo_violator_name->value()
+        : '',
+      'promo_title' => !empty($promo_node->field_promo_title)
+        ? $promo_wrapper->field_promo_title->value()
+        : '',
+      'description' => !empty($promo_node->field_promo_long_description)
+        ? $promo_wrapper->field_promo_long_description->value()
+        : '',
+      'cta' => !empty($promo_node->field_promo_call_to_action_text)
+        ? $promo_wrapper->field_promo_call_to_action_text->value()
+        : '',
+    );
+  }
+
+  return NULL;
+}

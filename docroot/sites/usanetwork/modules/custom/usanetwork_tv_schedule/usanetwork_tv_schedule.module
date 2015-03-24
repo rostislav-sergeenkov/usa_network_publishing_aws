@@ -846,15 +846,13 @@ function usanetwork_tv_schedule_schedule_page() {
     'all_time' => t('All time'),
     'primetime' => t('Primetime'),
   );
-  $time_stamp = (!empty($filter_day) ? $filter_day : time());
+  $time_stamp = (!empty($filter_day) && empty($filter_show_nid)) ? $filter_day : time();
   $sday = date('d', $time_stamp);
   $smonth = date('m', $time_stamp);
   $syear = date('Y', $time_stamp);
   $string_date = $syear . '_' . $smonth . '_' . $sday;
   $current_day_end_time = mktime(USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR, 0, 0, $smonth, $sday +1, $syear);
   $tv_schedule = usanetwork_tv_schedule_fetch_schedule($string_date, false);
-  // If we search by show id without filter day - we turn on full list flag.
-  $full_list_flag = !empty($filter_show_nid) && empty($filter_day);
   $next_day_flag = NULL;
   $schedule_rows = array();
 
@@ -900,7 +898,7 @@ function usanetwork_tv_schedule_schedule_page() {
       if (!empty($filter_show_nid) && $filter_show_nid != $show_nid) {
         continue;
       }
-      if ($start_time >= $current_day_end_time && FALSE == $full_list_flag) {
+      if ($start_time >= $current_day_end_time && empty($filter_show_nid)) {
         continue;
       }
       if (empty($show_node)) {
@@ -965,7 +963,7 @@ function usanetwork_tv_schedule_schedule_page() {
       );
 
       $schedule_rows[$start_time] = '';
-      if ($full_list_flag) {
+      if (!empty($filter_show_nid)) {
         $day = date('l', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
         if ($day != $next_day_flag) {
           $next_day_flag = $day;
@@ -1001,7 +999,7 @@ function usanetwork_tv_schedule_schedule_page() {
         'list' => $filter_show_time_values,
       ),
     ),
-    'navigation' => _usanetwork_tv_schedule_get_week_navigation(),
+    'navigation' => empty($filter_show_nid) ? _usanetwork_tv_schedule_get_week_navigation() : '',
     'schedule_table' => $schedule_rows,
   );
 

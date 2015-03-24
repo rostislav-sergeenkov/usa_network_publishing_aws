@@ -656,7 +656,10 @@ function _usanetwork_blocks_social_carousel_block_content() {
       }
       if (!empty($homepage_node->field_social_promo_carousel)) {
         foreach ($homepage_wrapper->field_social_promo_carousel->value() as $promo) {
+
+          $promo_details = _usanetwork_promo_get_promo_details($promo);
           $promo_content = _usanetwork_promo_featured_content($promo);
+
           $episode_theme_variables = array(
             'url' => $promo_content['url'],
             'title' => $promo_content['title'],
@@ -666,7 +669,8 @@ function _usanetwork_blocks_social_carousel_block_content() {
             'icon_type' => $promo_content['icon_type'] ? $promo_content['icon_type'] : NULL,
             'show_title' => !empty($promo_content['show_title']) ? $promo_content['show_title'] : NULL,
           );
-          $theme_variables['promos'][] = $episode_theme_variables;
+
+          $theme_variables['promos'][] = $episode_theme_variables + $promo_details;
         }
         $theme_variables['promos'][count($theme_variables['promos']) -1 ]['class'] = 'last';
         $theme_variables['promos'][0]['class'] = 'first';

@@ -1,5 +1,7 @@
 <?php
 
+define('USANETWORK_MENU_FULL_EPISODES_NUMBER', 6);
+
 /**
  * Implements hook_ctools_plugin_api().
  */
@@ -26,14 +28,6 @@ function usanetwork_menu_menu() {
     'title' => 'Running show',
     'page callback' => 'usanetwork_menu_render_running_show_ajax',
     'page arguments' => array(2, 3),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
-  $items['ajax/render-watch-live/%'] = array(
-    'title' => 'Running show',
-    'page callback' => 'usanetwork_menu_render_watch_live_show_ajax',
-    'page arguments' => array(2),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
@@ -70,8 +64,8 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
-  $blocks['usanetwork_menu_sm_watch_live'] = array(
-    'info' => t('Homepage Menu: Watch live'),
+  $blocks['usanetwork_menu_sm_full_episodes'] = array(
+    'info' => t('Homepage Menu: Full Episodes'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -135,9 +129,9 @@ function usanetwork_menu_block_view($delta = '') {
       $block['content'] = _usanetwork_menu_show_menu_now_and_next_block();
       break;
 
-    case 'usanetwork_menu_sm_watch_live':
-      $block['subject'] = t('Watch live!');
-      $block['content'] = _usanetwork_menu_show_menu_watch_live_block();
+    case 'usanetwork_menu_sm_full_episodes':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_full_episodes_block();
       break;
 
     case 'usanetwork_menu_sm_menu':
@@ -223,16 +217,17 @@ function usanetwork_menu_theme() {
       ),
       'template' => 'templates/usanetwork-smnav-now-next',
     ),
-    'usanetwork_menu_smnav_watch_live' => array(
+    'usanetwork_menu_full_episodes' => array(
       'variables' => array(
-        'image' => NULL,
-        'title' => NULL,
-        'season' => NULL,
-        'episode' => NULL,
-        'season_and_episode' => NULL,
-        'node_url' => NULL,
+        'items' => array(
+          'logo' => NULL,
+          'url' => NULL,
+          'title' => NULL,
+          'additional' => NULL,
+          'image' => NULL,
+        ),
       ),
-      'template' => 'templates/usanetwork-smnav-watch-live',
+      'template' => 'templates/usanetwork-menu-full-episodes',
     ),
     'usanetwork_menu_aspot_onnow_tonight' => array(
       'variables' => array(
@@ -312,6 +307,28 @@ function usanetwork_menu_image_default_styles() {
           'height' => 81,
         ),
         'weight' => 0,
+      ),
+    ),
+  );
+
+  $styles['full_episodes_633x356'] = array(
+    'name' => '633x356',
+    'label' => '633x356',
+    'effects' => array(
+      array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 633,
+          'height' => 356,
+        ),
+        'weight' => 1,
       ),
     ),
   );
@@ -602,78 +619,57 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
   return drupal_json_output(NULL);
 }
 
-/**
- * Renders AJAX block using users timezone
- */
-function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
-  $data = usanetwork_tv_schedule_get_running_show_ajax($user_timezone, 'now', FALSE);
-  $theme_variables = array();
+function _usanetwork_menu_full_episodes_block() {
+  $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USANETWORK_MENU_FULL_EPISODES_NUMBER);
+  $carousel_episodes = file_load_multiple(array_keys($episodes));
 
-  if ($data && isset($data['now'])) {
-    $theme_variables = array(
-      'image' => !empty($data['now']->nid)
-          ? theme('image', array(
-            'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['now']->nid),
-            'attributes' => array(
-              'class' => array(
-                'watch-live-show-preview-image'
-              ),
-            ),
-          ))
-          : '',
-      'title' => !empty($data['now']->title)
-          ? $data['now']->title
-          : '',
-      'season' => !empty($data['now']->season_number)
-          ? $data['now']->season_number
-          : '',
-      'episode' => !empty($data['now']->season_episode_number)
-          ? $data['now']->season_episode_number
-          : '',
-      'season_and_episode' => (!empty($data['now']->season_number) && !empty($data['now']->season_episode_number))
-          ? ('S' . $data['now']->season_number . ' ' . t('Episode') . ' ' . $data['now']->season_episode_number)
-          : '',
-      'node_url' => !empty($data['now']->nid)
-          ? url('node/' . $data['now']->nid, array(
-            'alias' => TRUE,
-          ))
-          : '',
-    );
+  $items = array();
+
+  foreach ($carousel_episodes as $episode) {
+    $episode_wrapper = entity_metadata_wrapper('file', $episode);
+    $show = !empty($episode->field_show)
+      ? $episode_wrapper->field_show->value()
+      : NULL;
+
+    if (!empty($show)) {
+      $logo = usanetwork_core_api_get_content_image('node', $show, 'banner');
+      if (isset($logo)) {
+        $logo_image = theme('image', array(
+          'path' => $logo,
+        ));
+      }
+      $episode_season = !empty($episode->field_mpx_season_number)
+        ? $episode_wrapper->field_mpx_season_number->value()
+        : NULL;
+      $episode_number = !empty($episode->field_mpx_episode_number)
+        ? $episode_wrapper->field_mpx_episode_number->value()
+        : NULL;
+      $wrapper = file_stream_wrapper_get_instance_by_uri($episode->uri);
+      $video_image = theme('image_style', array(
+        'path' => $wrapper->getLocalThumbnailPath(),
+        'style_name' => 'full_episodes_633x356',
+      ));
+
+      $items_variables = array(
+        'logo' => $logo_image,
+        'url' => url('file/' . $episode->fid),
+        'title' => isset($logo_image) ? $logo_image : NULL,
+        'additional' => t('S@season Episode @episode_number', array(
+            '@season' => $episode_season,
+            '@episode_number' => $episode_number
+          )),
+        'image' => $video_image,
+      );
+
+      $items[] = $items_variables;
+    }
   }
 
-  return drupal_json_output(array(
-    'html' => theme('usanetwork_menu_smnav_watch_live', $theme_variables),
-  ));
-
-  return drupal_json_output(NULL);
-}
-
-/**
- * Renders "Watch Live" block.
- */
-function _usanetwork_menu_show_menu_watch_live_block() {
-  if (path_is_admin(current_path())) {
-    return '';
-  }
-
-  $block_form = array();
-
-  $spinner_options = array(
-    'path' => drupal_get_path('theme', 'aurora_usa') . '/images/ajax-loader.gif',
-    'alt' => t('Please wait...'),
-    'title' => t('Please wait'),
-    'attributes' => array('class' => 'spinner'),
+  $theme_variables = array(
+    'items' => $items,
   );
 
-  $block_form['#attached']['js'][] = libraries_get_path('jstz') . '/jstz-1.0.4.min.js';
-  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js';
-  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.watch_live.js';
-  $block_form['test'] = array(
-    '#type' => 'item',
-    '#markup' => theme('image', $spinner_options),
-  );
-
-  return render($block_form);
+  return theme('usanetwork_menu_full_episodes', $theme_variables);
 }
 
 /**

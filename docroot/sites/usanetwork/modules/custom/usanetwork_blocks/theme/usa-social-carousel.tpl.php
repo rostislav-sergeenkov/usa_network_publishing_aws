@@ -31,21 +31,22 @@
                 <?php endif; ?>
                 <div class="meta-wrapper show-color-border <?php print !empty($promo['color_class']) ? $promo['color_class'] : ''; ?>">
                   <div class="meta">
-                    <?php if (!empty($promo['time'])): ?>
-                      <div class="time"><?php print $promo['time']; ?></div>
+                    <?php if (!empty($promo['topic'])): ?>
+                      <div class="topic"><?php print $promo['topic']; ?></div>
                     <?php endif; ?>
-                    <?php if (!empty($promo['show_title'])): ?>
-                      <div class="show-title"><?php print $promo['show_title']; ?></div>
+                    <?php if (!empty($promo['show_name'])): ?>
+                      <div class="show-title"><?php print $promo['show_name']; ?></div>
                     <?php endif; ?>
-                    <?php if (!empty($promo['title'])): ?>
-                      <div class="hashtag"><?php print $promo['title']; ?></div>
+                    <?php if (!empty($promo['promo_title'])): ?>
+                      <div class="title"><?php print $promo['promo_title']; ?></div>
                     <?php endif; ?>
-                    <?php if (!empty($promo['additional'])) : ?>
-                      <div class="additional"><?php print $promo['additional']; ?></div>
+                    <?php if (!empty($promo['description'])): ?>
+                      <div class="additional"><?php print $promo['description']; ?></div>
                     <?php endif; ?>
-                    <?php if (!empty($promo['question_button'])) : ?>
-                      <div class="meta-button show-color tertiary <?php print !empty($promo['color_class']) ? $promo['color_class'] : ''; ?>"><?php print $promo['question_button']; ?></div>
+                    <?php if (!empty($promo['cta'])): ?>
+                      <div class="meta-button show-color tertiary <?php print !empty($promo['color_class']) ? $promo['color_class'] : ''; ?>"><?php print $promo['cta']; ?></div>
                     <?php endif; ?>
+
                   </div>
                 </div>
                 <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'play-icon'; ?> resize-avail-1024"></div>

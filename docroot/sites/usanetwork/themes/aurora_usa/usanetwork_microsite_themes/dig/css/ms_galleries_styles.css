@@ -118,13 +118,13 @@
 }
 
 /* gigya */
-#microsite .field-type-gigya-sharebar {
+#microsite #galleries .field-type-gigya-sharebar {
   margin-bottom: 0;
   position: absolute;
   bottom: 0;
   right: -16px;
 }
-#microsite #gigya-share {
+#microsite #galleries #gigya-share {
   width: 196px;
   float: left;
   margin-left: 20px;

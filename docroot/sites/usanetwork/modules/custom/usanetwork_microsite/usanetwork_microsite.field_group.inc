@@ -54,8 +54,8 @@ function usanetwork_microsite_field_group_info() {
       0 => 'field_ms_small_logo',
       1 => 'field_ms_theme',
       2 => 'field_ms_tune_in',
-      3 => 'field_show',
-      4 => 'field_pathauto_alias',
+      3 => 'field_pathauto_alias',
+      4 => 'field_show',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -214,6 +214,33 @@ function usanetwork_microsite_field_group_info() {
     ),
   );
   $export['group_seo|field_collection_item|field_ms_section|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_settings|node|usanetwork_microsite|form';
+  $field_group->group_name = 'group_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usanetwork_microsite';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Settings',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_ms_display_global_nav',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_settings|node|usanetwork_microsite|form'] = $field_group;
 
   return $export;
 }

@@ -1,0 +1,248 @@
+/* Displayed quiz */
+#microsite h1,
+#microsite h2,
+#microsite h3 {
+  line-height: 1em;
+}
+#microsite #quizzes .full-pane > h1,
+#microsite #quizzes .full-pane > h3 {
+  font-size: 1.9em;
+  margin: 1em 0 0;
+}
+#microsite #quizzes .full-pane > h1.seo-h1,
+#microsite #quizzes .full-pane > h3.seo-h1 {
+  font-size: 1em;
+  text-transform: none;
+}
+#microsite #quizzes .microsite-section-container {
+  max-width: 1244px; /* 1400px; */
+}
+#microsite #quizzes .usanetwork-quiz {
+  width: 100%;
+  max-width: 1244px; /* 1400px; */
+}
+#microsite #quizzes .usanetwork-quiz .content-wrap .center {
+  width: calc(100% - 340px);
+  float: left;
+  margin: 0;
+}
+#microsite #quizzes .usanetwork-quiz .content-wrap .sidebar {
+  margin-left: 40px;
+  width: 300px;
+  float: left;
+}
+
+/* Quiz answers */
+#microsite #quizzes .usanetwork-quiz-answer > .inner {
+  margin: 0 5% 0 0 !important;
+  max-width: 95%;
+}
+#microsite #quizzes .usanetwork-quiz-answer.answer-type-text .answer-title {
+  min-height: 150px;
+  font-size: 18px;
+  margin: 0 5px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row /* works with row or column */ flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+}
+
+
+/* Quiz Nav */
+#microsite #quizzes .quizzes-nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  float: left;
+  width: 100%;
+  margin-top: 40px;
+}
+#microsite #quizzes .galleries-nav.narrow {
+  width: calc(100% - 340px);
+}
+#microsite #quizzes .quizzes-nav .bxslider-container {
+  position: relative;
+  margin: 0;
+}
+#microsite #quizzes .quizzes-nav h3 {
+  margin: 0 0 8px;
+  text-shadow: 1px 1px 3px #000;
+}
+#microsite #quizzes .bx-wrapper {
+  margin: 0 0 60px;
+}
+#microsite #quizzes .quizzes-nav .bx-wrapper {
+  background-color: #000;
+  border-color: #000;
+  -mox-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  height: 216px !important;
+}
+#microsite #quizzes .quizzes-nav .bx-wrapper .quiz-nav-img {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+}
+#microsite #quizzes .quizzes-nav .bx-wrapper img {
+  width: 100%;
+}
+#microsite #quizzes .quizzes-nav .quizzes-page-controls {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  height: 18px;
+}
+#microsite #quizzes .quizzes-nav .quizzes-page-controls > div {
+  float: left;
+}
+#microsite #quizzes .quizzes-nav .bx-wrapper .bx-controls {
+  display: none;
+}
+#microsite #quizzes .quizzes-nav .bx-pager.bx-default-pager a:hover,
+#microsite #quizzes .quizzes-nav .bx-pager.bx-default-pager a.active {
+  background: #000;
+}
+#microsite #quizzes .quizzes-nav .bx-pager.bx-default-pager a {
+  background: #666;
+  text-indent: -9999px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  outline: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+#microsite #quizzes .quizzes-nav .bx-wrapper .bx-pager.bx-default-pager a:hover,
+#microsite #quizzes .quizzes-nav .bx-wrapper .bx-pager.bx-default-pager a.active,
+#microsite #quizzes .quizzes-nav .bx-pager.bx-default-pager a:hover,
+#microsite #quizzes .quizzes-nav .bx-pager.bx-default-pager a.active {
+  background-color: #FFF;
+}
+#microsite #quizzes .quizzes-nav .bx-pager .bx-pager-item,
+#microsite #quizzes .quizzes-nav .bx-controls-auto .bx-controls-auto-item {
+  display: inline-block;
+}
+#microsite #quizzes #ep-galleries,
+#microsite #quizzes #character-galleries {
+  opacity: 0;
+}
+#microsite #quizzes .quizzes-nav li {
+  background-color: #1F1F1F;
+  width: 250px;
+}
+#microsite #quizzes .quizzes-nav li a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#microsite #quizzes .quizzes-nav li a {
+  border: 1px solid #000;
+}
+#microsite #quizzes .quizzes-nav li.active a {
+  border: 1px solid #FFF;
+}
+#microsite #quizzes .quizzes-nav li a .quiz-title {
+  font-size: 1em;
+  line-height: 18px;
+  height: 70px;
+  letter-spacing: 0.03em;
+  padding: 14px 5px;
+  color: #FFF;
+  background-color: #000;
+  text-align: left;
+}
+#microsite #quizzes .quizzes-nav .quiz-pagers {
+  position: relative;
+  margin: 0;
+  height: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#microsite #quizzes .bx-pager.bx-default-pager {
+  height: 10px;
+  line-height: 10px;
+}
+#microsite #quizzes .quizzes-nav .btns.prev,
+#microsite #quizzes .quizzes-nav .btns.next {
+  line-height: 18px;
+}
+#microsite #quizzes .quizzes-nav .btns.prev {
+  margin-right: 4px;
+}
+#microsite #quizzes .quizzes-nav .btns.next {
+  margin-left: 4px;
+}
+#microsite #quizzes .quizzes-nav .btns a {
+  color: #FFF;
+  width: 35px;
+  font-size: 1em;
+  line-height: 1em;
+  cursor: pointer;
+  font-family: 'usanetwork';
+  speak: none;
+  -webkit-font-feature-settings: "liga","dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -moz-font-feature-settings: "liga","dlig";
+  -ms-font-feature-settings: "liga","dlig";
+  -o-font-feature-settings: "liga","dlig";
+  font-feature-settings: "liga","dlig";
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-align: center;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  z-index: 96;
+}
+#microsite #quizzes .quizzes-nav .btns a:hover {
+  color: #FFF;
+}
+#microsite #quizzes .quizzes-nav .btns a.disabled {
+  cursor: default;
+}
+#microsite #quizzes .quizzes-nav .btns .screen-reader-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+/* Begin media queries */
+@media (max-width: 1200px) {
+  #microsite #quizzes .full-pane {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  #microsite #quizzes .usanetwork-quiz .content-wrap .center {
+    width: 100%;
+    float: left;
+    margin: 0;
+  }
+}
+
+@media (max-width: 884px) {
+  #microsite #quizzes .full-pane {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 640px) {
+  #microsite #quizzes .full-pane {
+    max-width: 90%;
+  }
+  #microsite #quizzes .usanetwork-quiz .content-wrap .sidebar {
+    margin-left: 0;
+  }
+}

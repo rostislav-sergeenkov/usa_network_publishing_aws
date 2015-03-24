@@ -5,11 +5,18 @@
 ?>
 
 <?php if (!empty($h1) && $status == 'active'): ?>
-  <div class="video-title"><h1><?php print $h1; ?></h1></div>
-<?php elseif (!empty($h1)): ?>
-  <div class="video-title"><?php print $h1; ?></div>
+  <h1><?php print $h1; ?></h1>
+  <?php if (!empty($title)): ?>
+    <div class="video-title"><?php print $title; ?></div>
+  <?php endif; ?>
+<?php elseif (empty($h1) && $status == 'active'): ?>
+  <?php if (!empty($title)): ?>
+    <div class="h1-place"></div>
+    <h1><?php print $title; ?></h1>
+  <?php endif; ?>
 <?php else: ?>
   <?php if (!empty($title)): ?>
+    <div class="h1-place"><?php print $h1 ?></div>
     <div class="video-title"><?php print $title; ?></div>
   <?php endif; ?>
 <?php endif; ?>

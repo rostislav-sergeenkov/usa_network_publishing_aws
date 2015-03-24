@@ -84,6 +84,15 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/get-catchall-page/%node'] = array(
+    'page callback' => 'usanetwork_microsite_get_game',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+
+
   return $items;
 }
 
@@ -173,7 +182,7 @@ function usanetwork_microsite_entity_info_alter(&$entity_info) {
 function usanetwork_microsite_preprocess_node(&$variables) {
   if($variables['view_mode'] == 'microsite_output') {
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__microsite_output';
-    if ($variables['type'] == 'quiz') {
+    if ($variables['type'] == 'quiz' || $variables['type'] == 'catchall_page') {
       $variables['page'] = TRUE;
     }
   }
@@ -774,6 +783,37 @@ function _usanetwork_microsite_render_page_games($section_wrapper) {
 //  }
 //  drupal_add_js(array('quizzes' => $quizzes), 'setting');
 
+  $section_object = $section_wrapper->value();
+  $theme_variables = array();
+  if (!empty($section_object->field_ms_catchall_page)) {
+    $games_nodes = $section_wrapper->field_ms_catchall_page->value();
+
+    $current_game_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    $games_count = 0;
+    $games = array();
+    foreach ($games_nodes as $game_node) {
+      if ($game_node->status == NODE_PUBLISHED) {
+        $game_url = _usanetwork_microsite_get_suggested_url($game_node);
+        if ((!empty($current_game_arg) && $current_game_arg == $game_url) || (empty($current_game_arg) && $games_count == 0)) {
+          $theme_variables['page'] = usanetwork_microsite_get_game($game_node);
+          $current_quiz = $game_node;
+        }
+        $games[] = array(
+          'nid' => $game_node->nid,
+          'url' => $game_url,
+        );
+        $games_count++;
+      }
+    }
+    if(empty($theme_variables['page'])) {
+      drupal_not_found();
+    }
+    $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_quiz, $section_wrapper));
+    drupal_add_js(array('games' => $games), 'setting');
+  }
+
+  return $theme_variables;
+//  $section_object = $section_wrapper->value();
 //  if (!empty($section_object->field_ms_catchall_page)) {
 //    foreach ($section_wrapper->field_ms_catchall_page as $game_page_wrapper) {
 //      $game_page_object = $game_page_wrapper->value();
@@ -797,8 +837,22 @@ function _usanetwork_microsite_render_page_games($section_wrapper) {
 //      break;
 //    }
 //  }
+//
+//  return $theme_variables;
+}
 
-  return $theme_variables;
+function usanetwork_microsite_get_game($node) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  return array(
+    'nid' => $node_wrapper->nid->value(),
+    'title' => $node_wrapper->title->value(),
+    'catchall_pagez_html' =>_usanetwork_microsite_get_rendered_microsite_output_node($node),
+  );
+}
+
+function _usanetwork_microsite_get_rendered_microsite_output_node($node) {
+  $node_view = node_view($node, 'microsite_output');
+  return drupal_render($node_view);
 }
 
 /**
@@ -887,7 +941,7 @@ function usanetwork_microsite_get_quiz($node) {
     'quiz_type' => $node_wrapper->field_quiz_type->value(),
     'quiz_show' => $show_name,
     'calc_method' => $node_wrapper->field_quiz_calculation->value(),
-    'quiz_html' => _usanetwork_microsite_get_rendered_quiz($node),
+    'quiz_html' => _usanetwork_microsite_get_rendered_microsite_output_node($node),
   );
 }
 
@@ -1184,7 +1238,6 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
     return $section_wrapper->field_ms_episode->value();
   }
   elseif($type == 'games') {
-//    return _usnetwork_microsite_get_games_content_by_section_wrapper($section_wrapper);
     return $section_wrapper->field_ms_catchall_page->value();
   }
   elseif($type == 'quizzes') {
@@ -1367,14 +1420,14 @@ function _usanetwork_microsite_get_theme_variables($node) {
       );
       $i++;
 
-      if ($section_base_variables['type'] == 'games') {
-        foreach ($section_wrapper->field_ms_catchall_page as $games_page_wrapper) {
-          $games = array(
-            'nid' => $games_page_wrapper->nid->value(),
-            'title' => $games_page_wrapper->title->value(),
-          );
-        }
-      }
+//      if ($section_base_variables['type'] == 'games') {
+//        foreach ($section_wrapper->field_ms_catchall_page as $games_page_wrapper) {
+//          $games = array(
+//            'nid' => $games_page_wrapper->nid->value(),
+//            'title' => $games_page_wrapper->title->value(),
+//          );
+//        }
+//      }
 /*
       if ($section_base_variables['type'] == 'quizzes') {
         foreach ($section_wrapper->field_ms_quiz as $quizzes_page_wrapper) {
@@ -1391,7 +1444,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $theme_variables['games'] = $games;
 //    $theme_variables['quiz'] = $quiz;
 
-/*
+
     // Games links.
     $games_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'games');
     $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
@@ -1400,7 +1453,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
     foreach ($games_nodes as $game_node) {
       // While we will output only quizzes.
       $game_url = _usanetwork_microsite_get_suggested_url($game_node);
-      if($game_node->type == USANETWORK_MICROSITE_QUIZ_NODE_TYPE && $game_node->status == NODE_PUBLISHED) {
+      if($game_node->status == NODE_PUBLISHED) {
         $status = '';
         if((!empty($current_game_arg) && $current_game_arg == $game_url) || (empty($current_game_arg) && $games_count == 0)) {
           $status = 'active';
@@ -1414,29 +1467,29 @@ function _usanetwork_microsite_get_theme_variables($node) {
         $games_count++;
       }
     }
-*/
+
 
     // Quizzes links.
-    $quizzes_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'quizzes');
-    $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'quizzes');
-    $current_quiz_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
-    $quizzes_count = 0;
-    foreach ($quizzes_nodes as $quiz_node) {
-      $quiz_url = _usanetwork_microsite_get_suggested_url($quiz_node);
-      if ($quiz_node->status == NODE_PUBLISHED) {
-        $status = '';
-        if ((!empty($current_quiz_arg) && $current_quiz_arg == $quiz_url) || (empty($current_quiz_arg) && $quizzes_count == 0)) {
-          $status = 'active';
-        }
-        $theme_variables['quizzes'][] = array(
-          'nid' => $quiz_node->nid,
-          'title' => $quiz_node->title,
-          'url' => $quiz_url,
-          'status' => $status,
-        );
-        $quizzes_count++;
-      }
-    }
+//    $quizzes_nodes = _usanetwork_microsite_get_related_content_from_node($node, 'quizzes');
+//    $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'quizzes');
+//    $current_quiz_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+//    $quizzes_count = 0;
+//    foreach ($quizzes_nodes as $quiz_node) {
+//      $quiz_url = _usanetwork_microsite_get_suggested_url($quiz_node);
+//      if ($quiz_node->status == NODE_PUBLISHED) {
+//        $status = '';
+//        if ((!empty($current_quiz_arg) && $current_quiz_arg == $quiz_url) || (empty($current_quiz_arg) && $quizzes_count == 0)) {
+//          $status = 'active';
+//        }
+//        $theme_variables['quizzes'][] = array(
+//          'nid' => $quiz_node->nid,
+//          'title' => $quiz_node->title,
+//          'url' => $quiz_url,
+//          'status' => $status,
+//        );
+//        $quizzes_count++;
+//      }
+//    }
 
     end($theme_variables['sections']);
     $last_section_key = key($theme_variables['sections']);
@@ -2031,11 +2084,45 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       drupal_add_html_head($tag_title, 'microsite_about:title');
       break;
     case 'games':
-      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
-      $head_title = $section_wrapper->field_seo_page_title->value();
-      if(empty($head_title)) {
-        $head_title = t('Games | ' . $title . ' | USA Network');
+      //@todo we can use function for code from below and in other section
+      $head_title = t('Games | ' . $title . ' | USA Network');
+      if(isset($args[4])) {
+        $game_node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'games');
+        $head_title = _usanetwork_microsite_set_title_and_description($game_node, $head_title);
       }
+      else {
+        $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
+        if (!empty($section_wrapper)) {
+          $section_object = $section_wrapper->value();
+          if (!empty($section_object->field_ms_catchall_page)) {
+            $game_node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_catchall_page);
+            $head_title = _usanetwork_microsite_set_title_and_description($game_node, $head_title);
+          }
+        }
+      }
+      $game_wrapper = entity_metadata_wrapper('node', $game_node);
+      if (!empty($game_node->field_usa_og_image)) {
+        $image_url = $game_wrapper->field_usa_og_image->file->url->value();
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => $image_url,
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_episode:image');
+      }
+      $title = $game_wrapper->title->value();
+      $tag_title = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:title',
+          'content' => $title,
+        ),
+      );
+      drupal_add_html_head($tag_title, 'microsite_episode:title');
       break;
     case 'quizzes':
       //@todo we can use function for code from below and in other section
@@ -2417,6 +2504,26 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'games':
           $omniture_prop3 = 'Games';
+          if(isset($args[4])) {
+            $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'games');
+            if(!empty($node)) {
+              $omniture_prop5 = $entity->title . ' : Games : ' .  $node->title;
+              $omniture_pagename = $entity->title . ' : Games : ' . $node->title;
+            }
+          }
+          else {
+            $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
+            if (!empty($section_wrapper)) {
+              $section_object = $section_wrapper->value();
+              if (!empty($section_object->field_ms_catchall_page)) {
+                $node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_catchall_page);
+                if (!empty($node)) {
+                  $omniture_prop5 = $entity->title . ' : Games : ' .  $node->title;
+                  $omniture_pagename = $entity->title . ' : Games : ' . $node->title;
+                }
+              }
+            }
+          }
           break;
         case 'quizzes':
           $omniture_prop3 = 'Quizzes/Trivia';

@@ -13,7 +13,7 @@
 
       if ($cookies['nbcu_ap_loginpending']) {
         authService.promise.then(function() {
-          initLivePlayer(mvpdId);
+          initLivePlayer();
         });
       }
 

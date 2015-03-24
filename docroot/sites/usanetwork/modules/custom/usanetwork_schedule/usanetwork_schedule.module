@@ -254,8 +254,10 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
   $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
 
   foreach ($data as &$schedule_item) {
-    if (empty($schedule_item->nid) && !empty($show_title_aliases[$schedule_item->show_title])) {
-      $schedule_item->database_show_title = $show_title_aliases[$schedule_item->show_title];
+    $alias_title = trim($schedule_item->show_title);
+
+    if (empty($schedule_item->nid) && !empty($show_title_aliases[$alias_title])) {
+      $schedule_item->database_show_title = trim($show_title_aliases[$alias_title]);
       $schedule_item->nid = _usanetwork_schedule_find_node($schedule_item->database_show_title);
     }
   }

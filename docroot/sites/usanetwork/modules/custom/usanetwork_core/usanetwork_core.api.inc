@@ -10,8 +10,6 @@
 function usanetwork_core_api_get_content_image($entity_type, $entity, $image_type = 'main', $limit = 1, $return_uri = TRUE) {
 
   if (empty($entity_type) || empty($entity)) {
-    watchdog('usa_coreapi_debug', __FUNCTION__ . ': entity type or entity is empty', $entity);
-
     return NULL;
   }
 
@@ -40,8 +38,6 @@ function usanetwork_core_api_get_content_image($entity_type, $entity, $image_typ
       $entity_field_names = $entity_field_aliases_callback();
 
       if (empty($entity_field_names)) {
-        watchdog('usa_coreapi_debug', __FUNCTION__ . ': there is no field names found for ' . $entity->type, $entity);
-
         return NULL;
       }
 
@@ -55,20 +51,16 @@ function usanetwork_core_api_get_content_image($entity_type, $entity, $image_typ
           $field_name = $entity_field_names[$entity->type]['main'];
         }
         else {
-          watchdog('usa_coreapi_debug', __FUNCTION__ . ': there are no default type of image field', $entity);
-
           return NULL;
         }
       }
       else {
-        watchdog('usa_coreapi_debug', __FUNCTION__ . ': target type ' . $entity->type . ' is not presended in field alias names', $entity);
-
         return NULL;
       }
 
       $entity_field_data = field_get_items($entity_type, $entity, $field_name);
 
-      if ($entity_field_data) {
+      if (!empty($entity_field_data)) {
         if ($limit == 1) {
           $file_object = reset($entity_field_data);
 
@@ -107,8 +99,6 @@ function usanetwork_core_api_get_content_image($entity_type, $entity, $image_typ
       }
     }
   }
-
-  watchdog('usa_coreapi_debug', __FUNCTION__ . ': callback for ' . $entity_type . ' does not found', $entity);
 
   return NULL;
 }

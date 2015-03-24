@@ -133,8 +133,13 @@ function usanetwork_microsite_permission() {
 function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
   if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $theme_path = drupal_get_path('theme', 'aurora_usa');
+    if(!_usanetwork_microsite_process_setting_field($node_wrapper, 'field_ms_display_global_nav')) {
+      unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);
+      unset($javascript[$theme_path . '/javascripts/main-navigation.js']);
+    }
     unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
-    //unset($javascript['http://pdk.theplatform.com/pdk/tpPdkController.js']);
   }
 }
 
@@ -2090,6 +2095,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
 function usanetwork_microsite_preprocess_page(&$vars, $hook) {
   if (isset($vars['node']->type) && $vars['node']->type == 'usanetwork_microsite') {
     $node_wrapper = entity_metadata_wrapper('node', $vars['node']);
+    $vars['page']['display_global_nav'] = _usanetwork_microsite_process_setting_field($node_wrapper, 'field_ms_display_global_nav');
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type . '__' . $node_wrapper->field_ms_theme->value();
   }
@@ -3036,4 +3042,12 @@ function usanetwork_microsite_get_custom_js($node) {
 
 function usanetwork_microsite_deliver_js($js) {
   print $js;
+}
+
+function _usanetwork_microsite_process_setting_field($node_wrapper, $field) {
+  $setting = $node_wrapper->{$field}->value();;
+  if($setting === NULL) {
+    $setting = TRUE;
+  }
+  return $setting;
 }

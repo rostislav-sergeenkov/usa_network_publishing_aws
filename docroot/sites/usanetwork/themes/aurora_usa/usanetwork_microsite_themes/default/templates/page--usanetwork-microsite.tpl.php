@@ -78,7 +78,7 @@
     <span id="site-name">
       <?php print $site_name; ?>
     </span>
-    <?php if (!isset($page['display_global_nav']) || $page['display_global_nav'] == true): ?>
+    <?php if ($page['display_global_nav']): ?>
       <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
         <div class="primary-nav">
           <?php print render($page['personalization_trigger']); ?>

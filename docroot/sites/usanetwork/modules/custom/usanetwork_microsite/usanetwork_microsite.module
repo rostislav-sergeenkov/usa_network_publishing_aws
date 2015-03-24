@@ -117,8 +117,13 @@ function usanetwork_microsite_permission() {
 function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
   if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $theme_path = drupal_get_path('theme', 'aurora_usa');
+    if(!_usanetwork_microsite_process_setting_field($node_wrapper, 'field_ms_display_global_nav')) {
+      unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);
+      unset($javascript[$theme_path . '/javascripts/main-navigation.js']);
+    }
     unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
-    //unset($javascript['http://pdk.theplatform.com/pdk/tpPdkController.js']);
   }
 }
 
@@ -1839,6 +1844,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
 function usanetwork_microsite_preprocess_page(&$vars, $hook) {
   if (isset($vars['node']->type) && $vars['node']->type == 'usanetwork_microsite') {
     $node_wrapper = entity_metadata_wrapper('node', $vars['node']);
+    $vars['page']['display_global_nav'] = _usanetwork_microsite_process_setting_field($node_wrapper, 'field_ms_display_global_nav');
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type . '__' . $node_wrapper->field_ms_theme->value();
   }
@@ -2086,6 +2092,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
               $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
               $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+              $umbel = $person_names['person_title'];
             }
           }
           else {
@@ -2098,6 +2105,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                   $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
                   $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
                   $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+                  $umbel = $person_names['person_title'];
                 }
               }
             }
@@ -2110,6 +2118,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if(!empty($node)) {
               $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
               $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+              $umbel = $node->title;
             }
           }
           else {
@@ -2120,6 +2129,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 $node = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
                 $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
                 $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+                $umbel = $node->title;
               }
             }
           }
@@ -2131,6 +2141,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if(!empty($node)) {
               $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
               $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+              $umbel = $node->title;
             }
           }
           else {
@@ -2142,6 +2153,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 if (!empty($node)) {
                   $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
                   $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+                  $umbel = $node->title;
                 }
               }
             }
@@ -2149,6 +2161,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'about':
           $omniture_prop3 = 'About';
+          $umbel = $omniture_prop3;
           break;
         case 'games':
           $omniture_prop3 = 'Games';
@@ -2750,4 +2763,12 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     }
   }
   return FALSE;
+}
+
+function _usanetwork_microsite_process_setting_field($node_wrapper, $field) {
+  $setting = $node_wrapper->{$field}->value();;
+  if($setting === NULL) {
+    $setting = TRUE;
+  }
+  return $setting;
 }

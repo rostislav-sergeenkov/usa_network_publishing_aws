@@ -3,12 +3,12 @@
 /**
  * Implements hook usanetwork_microsite_MICROSITE_SUB_THEME_NAME_get_theme_registry_variables().
  */
-function usanetwork_microsite_dig_get_theme_registry_variables() {
-  $subtheme_path = drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/dig/templates';
+function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
+  $subtheme_path = drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/mrrobot/templates';
 
   return array(
-    'usanetwork_microsite_dig' => array(
-      'template' => 'usanetwork-microsite-dig',
+    'usanetwork_microsite_mrrobot' => array(
+      'template' => 'usanetwork-microsite-mrrobot',
       'path' => $subtheme_path,
       'variables' => array(
         'classes' => NULL,
@@ -16,18 +16,10 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'tune_in' => NULL,
         'sections_navlinks' => array(),
         'facebook_tracking_html' => NULL,
-        'quizzes' => array(
-          0 => array(
-            'nid' => NULL,
-            'title' => NULL,
-            'url' => NULL,
-            'status' => NULL,
-          ),
-        ),
       ),
     ),
-    'usanetwork_microsite_dig_page_home' => array(
-      'template' => 'usanetwork-microsite-dig-page-home',
+    'usanetwork_microsite_mrrobot_page_home' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-home',
       'path' => $subtheme_path,
       'variables' => array(
         'aspots' => array(),
@@ -41,8 +33,8 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         ),
       ),
     ),
-    'usanetwork_microsite_dig_page_about' => array(
-      'template' => 'usanetwork-microsite-dig-page-about',
+    'usanetwork_microsite_mrrobot_page_about' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-about',
       'path' => $subtheme_path,
       'variables' => array(
         'title' => NULL,
@@ -55,8 +47,8 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         ),
       ),
     ),
-    'usanetwork_microsite_dig_page_characters' => array(
-      'template' => 'usanetwork-microsite-dig-page-characters',
+    'usanetwork_microsite_mrrobot_page_characters' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-characters',
       'path' => $subtheme_path,
       'variables' => array(
         'people' => array(
@@ -87,8 +79,8 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'section_title' => NULL,
       ),
     ),
-    'usanetwork_microsite_dig_page_galleries' => array(
-      'template' => 'usanetwork-microsite-dig-page-galleries',
+    'usanetwork_microsite_mrrobot_page_galleries' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-galleries',
       'path' => $subtheme_path,
       'variables' => array(
         'background_url' => NULL,
@@ -111,36 +103,17 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         ),
       ),
     ),
-    'usanetwork_microsite_dig_page_games' => array(
-      'template' => 'usanetwork-microsite-dig-page-games',
+    'usanetwork_microsite_mrrobot_page_games' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-games',
       'path' => $subtheme_path,
       'variables' => array(
-        'page' => array(
-          'quiz_html' => NULL,
-          'nid' => NULL,
+        'pages' => array(
+          'html' => NULL,
         ),
       ),
     ),
-    'usanetwork_microsite_dig_page_quizzes' => array(
-      'template' => 'usanetwork-microsite-dig-page-quizzes',
-      'path' => $subtheme_path,
-      'variables' => array(
-        'page' => array(
-          'quiz_html' => NULL,
-          'nid' => NULL,
-        ),
-        'quizzes_nav' => array(
-          0 => array(
-            'nid' => NULL,
-            'title' => NULL,
-            'url' => NULL,
-            'cover_img' => NULL,
-          ),
-        ),
-      ),
-    ),
-    'usanetwork_microsite_dig_page_videos' => array(
-      'template' => 'usanetwork-microsite-dig-page-videos',
+    'usanetwork_microsite_mrrobot_page_videos' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-videos',
       'path' => $subtheme_path,
       'variables' => array(
         'videos' => array(
@@ -152,8 +125,8 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'in_player' => NULL,
       ),
     ),
-    'usanetwork_microsite_dig_video_desc' => array(
-      'template' => 'usanetwork-microsite-dig-video-desc',
+    'usanetwork_microsite_mrrobot_video_desc' => array(
+      'template' => 'usanetwork-microsite-mrrobot-video-desc',
       'path' => $subtheme_path,
       'variables' => array(
         'video_desc' => array(
@@ -166,8 +139,8 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         ),
       ),
     ),
-    'usanetwork_microsite_dig_page_episodes' => array(
-      'template' => 'usanetwork-microsite-dig-page-episodes',
+    'usanetwork_microsite_mrrobot_page_episodes' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-episodes',
       'path' => $subtheme_path,
       'variables' => array(
         'episodes' => array(
@@ -192,43 +165,40 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
  * Returns a list of theme-oriented JS and CSS files. The function name should be next:
  * usanetwork_microsite_MICROSITE_SUB_THEME_NAME_get_theme_includes().
  */
-function usanetwork_microsite_dig_get_theme_includes() {
+function usanetwork_microsite_mrrobot_get_theme_includes() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
   return array(
     'js' => array(
-        //'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
-        //'http://pdk.theplatform.com/current/pdk/tpPdkController.js',
-        //'http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js',
-        //'http://pdk.theplatform.com/pdk/tpPdkController.js',
-//      $theme_path . '/javascripts/video-dropdowns.js',
-//      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
-//      $theme_path . '/javascripts/jquery.carouFredSel.min.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_global.js',
-      $module_path . '/js/jquery.bxslider.min.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_episodes.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters_bxslider.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes_bxslider.js',
+/*
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_characters_bxslider.js',
+*/
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_global.js',
+//      $module_path . '/js/jquery.bxslider.min.js',
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_flexslider.js',
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_carousel.js',
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_gallery_carousel.js',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_galleries_bxslider.js',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_characters.js',
+/*
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_episodes.js',
+*/
       $module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
     'css' => array(
-      $module_path . '/css/jquery.bxslider.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_quizzes.css',
+//      $module_path . '/css/jquery.bxslider.css',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_style.css',
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/mrrobot_styles.css',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_galleries_styles.css',
+//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_characters_styles.css',
+/*
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_episodes.css',
+      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/trivia.css',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
+*/
     ),
   );
 }

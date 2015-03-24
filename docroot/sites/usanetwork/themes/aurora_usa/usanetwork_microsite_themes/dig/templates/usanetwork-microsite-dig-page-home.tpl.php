@@ -10,7 +10,6 @@
  * -    $characters[n]['url'] - machine-readable part of url for person
  * -    $characters[n]['title'] - name of person
  * -    $characters[n]['image_url'] - url for profile image
- * - $promo_carousel - array of pre-rendered promo-carousel items
  * - $background_url - the URL of page background
  */
 ?>
@@ -73,8 +72,7 @@
         <ul id="characters-cast-list" class="characters-cast-bxslider">
         <?php foreach ($characters as $character): ?>
           <?php if (!empty($character['url']) && !empty($character['title']) && !empty($character['image_url'])): ?>
-          <?php /* @TODO: Dynamically create the /dig/characters part of the following url */ ?>
-          <li><a href="/dig/characters/<?php print $character['url']; ?>"><img src="<?php print $character['image_url']; ?>" alt="<?php print $character['title']; ?>"><div class="person-title"><?php print $character['title']; ?></div></a></li>
+          <li><a href="<?php print $base_path; ?>/characters/<?php print $character['url']; ?>"><img src="<?php print $character['image_url']; ?>" alt="<?php print $character['title']; ?>"><div class="person-title"><?php print $character['title']; ?></div></a></li>
           <?php endif; ?>
         <?php endforeach; ?>
         </ul>
@@ -82,17 +80,6 @@
       </div>
       <?php endif; ?>
 
-      <?php /* @TODO: DO WE STILL NEED THIS? ?>
-      <?php if (!empty($promo_carousel)): ?>
-      <ul>
-        <?php foreach ($promo_carousel as $carousel_item): ?>
-        <li>
-          <?php print $carousel_item; ?>
-        </li>
-        <?php endforeach; ?>
-      </ul>
-      <?php endif; ?>
-      <?php */ ?>
     </div>
   </div>
 </div>

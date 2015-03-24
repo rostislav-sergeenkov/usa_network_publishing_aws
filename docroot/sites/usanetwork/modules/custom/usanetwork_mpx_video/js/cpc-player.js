@@ -34,7 +34,7 @@
       var parameters = new NBCUniCPC.PlayerParameters();
       parameters.autoPlay = false;
       parameters.mvpdId = mvpdId;
-      $cpc = NBCUniCPC.load("pdk-player", NBCUniCPC.Account.CNBC, contentInitObj, parameters);
+      $cpc = NBCUniCPC.load("pdk-player", NBCUniCPC.Account.USA, contentInitObj, parameters);
     }
   })
 

@@ -12,7 +12,6 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   if (playerurl) {
     NBCUEndShareCard.ShareURL = decodeURIComponent(playerurl[1]);
   }
-
   /**
    * NBCUEndShareCard Overrides
    */

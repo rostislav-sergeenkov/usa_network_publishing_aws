@@ -9,11 +9,11 @@
  */
 ?>
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_games"></div>
-<?php if (!empty($pages['html'])): ?>
+<?php if (!empty($page['quiz_html'])): ?>
 <div id="viewport">
   <ul>
     <li>
-      <?php print $pages['html']; ?>
+      <?php print $page['quiz_html']; ?>
     </li>
   </ul>
 </div>

@@ -103,6 +103,20 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
         ),
       );
 
+/*
+      $form[$k]['field_ms_quiz']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'games'),
+        ),
+      );
+*/
+      //quizzes
+      $form[$k]['field_ms_quiz']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'quizzes'),
+        ),
+      );
+
       //episodes
       $form[$k]['field_ms_episode']['#states'] = array(
         'visible' => array(

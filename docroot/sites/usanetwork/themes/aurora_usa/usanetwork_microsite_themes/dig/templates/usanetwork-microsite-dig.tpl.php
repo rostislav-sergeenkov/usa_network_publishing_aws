@@ -13,6 +13,10 @@
  * - $tune_in - pre-rendered content of Tune In field
  * - $sections_navlinks - pre-rendered array of navigation items:
  * -  - $sections_navlinks[n][] = '<li><a>Name</a></li>
+ * - $quizzes - array of quizzes:
+ * -  - $quizzes[n]['nid'] - the quiz node id
+ * -  - $quizzes[n]['title'] - the title of the quiz
+ * -  - $quizzes[n]['url'] - machine-readable version of the quiz title
  */
 ?>
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>

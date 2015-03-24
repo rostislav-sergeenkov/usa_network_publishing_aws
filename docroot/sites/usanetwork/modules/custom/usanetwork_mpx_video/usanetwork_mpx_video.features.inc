@@ -30,24 +30,6 @@ function usanetwork_mpx_video_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_ds_view_modes_info_alter().
- */
-function usanetwork_mpx_video_ds_view_modes_info_alter(&$data) {
-  if (isset($data['vid_teaser_episode'])) {
-    $data['vid_teaser_episode']->entities['file'] = 'file'; /* WAS: '' */
-  }
-  if (isset($data['vid_teaser_general'])) {
-    $data['vid_teaser_general']->entities['file'] = 'file'; /* WAS: '' */
-  }
-  if (isset($data['vid_teaser_show_episode'])) {
-    $data['vid_teaser_show_episode']->entities['file'] = 'file'; /* WAS: '' */
-  }
-  if (isset($data['vid_teaser_show_general'])) {
-    $data['vid_teaser_show_general']->entities['file'] = 'file'; /* WAS: '' */
-  }
-}
-
-/**
  * Implements hook_default_queues_type().
  */
 function usanetwork_mpx_video_default_queues_type() {

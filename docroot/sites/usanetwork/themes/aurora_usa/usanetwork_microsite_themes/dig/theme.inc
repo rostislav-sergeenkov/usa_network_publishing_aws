@@ -16,6 +16,14 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'tune_in' => NULL,
         'sections_navlinks' => array(),
         'facebook_tracking_html' => NULL,
+        'quizzes' => array(
+          0 => array(
+            'nid' => NULL,
+            'title' => NULL,
+            'url' => NULL,
+            'status' => NULL,
+          ),
+        ),
       ),
     ),
     'usanetwork_microsite_dig_page_home' => array(
@@ -107,8 +115,27 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-dig-page-games',
       'path' => $subtheme_path,
       'variables' => array(
-        'pages' => array(
-          'html' => NULL,
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
+        ),
+      ),
+    ),
+    'usanetwork_microsite_dig_page_quizzes' => array(
+      'template' => 'usanetwork-microsite-dig-page-quizzes',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
+        ),
+        'quizzes_nav' => array(
+          0 => array(
+            'nid' => NULL,
+            'title' => NULL,
+            'url' => NULL,
+            'cover_img' => NULL,
+          ),
         ),
       ),
     ),
@@ -187,6 +214,8 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_episodes.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes_bxslider.js',
       $module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
@@ -197,6 +226,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_quizzes.css',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
   );

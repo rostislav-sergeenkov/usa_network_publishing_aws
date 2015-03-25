@@ -272,35 +272,67 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
 }
 
 /**
- * Returns Promo details.
+ * Pulls promo data from entity wrapper.
  *
- * @param $promo_node - node object or node id of promo.
+ * @param $entity_object - stdClass of entity
+ * @param $entity_wrapper - entity_metadata_wrapper of entity
+ * @return array
  */
-function _usanetwork_promo_get_promo_details($promo_node) {
-  if (!is_object($promo_node)) {
-    $promo_node = node_load(($promo_node));
+function _usanetwork_promo_pull_entity_promo_details($entity_object, $entity_wrapper) {
+  return array(
+    'topic' => !empty($entity_object->field_promo_topic)
+      ? $entity_wrapper->field_promo_topic->value()
+      : '',
+    'show_name' => !empty($entity_object->field_promo_violator_name)
+      ? $entity_wrapper->field_promo_violator_name->value()
+      : '',
+    'promo_title' => !empty($entity_object->field_promo_title)
+      ? $entity_wrapper->field_promo_title->value()
+      : '',
+    'description' => !empty($entity_object->field_promo_long_description)
+      ? $entity_wrapper->field_promo_long_description->value()
+      : '',
+    'cta' => !empty($entity_object->field_promo_call_to_action_text)
+      ? $entity_wrapper->field_promo_call_to_action_text->value()
+      : '',
+  );
+}
+
+/**
+ * Pulls promo data from node.
+ *
+ * @param $entity_object - node object
+ * @return array|null
+ */
+function _usanetwork_promo_pull_node_promo_details($entity_object) {
+  if (!is_object($entity_object)) {
+    $entity_object = node_load($entity_object);
   }
 
-  if (!empty($promo_node)) {
-    $promo_wrapper = entity_metadata_wrapper('node', $promo_node);
+  if (!empty($entity_object)) {
+    $promo_wrapper = entity_metadata_wrapper('node', $entity_object);
 
-    return array(
-      'topic' => !empty($promo_node->field_promo_topic)
-        ? $promo_wrapper->field_promo_topic->value()
-        : '',
-      'show_name' => !empty($promo_node->field_promo_violator_name)
-        ? $promo_wrapper->field_promo_violator_name->value()
-        : '',
-      'promo_title' => !empty($promo_node->field_promo_title)
-        ? $promo_wrapper->field_promo_title->value()
-        : '',
-      'description' => !empty($promo_node->field_promo_long_description)
-        ? $promo_wrapper->field_promo_long_description->value()
-        : '',
-      'cta' => !empty($promo_node->field_promo_call_to_action_text)
-        ? $promo_wrapper->field_promo_call_to_action_text->value()
-        : '',
-    );
+    return _usanetwork_promo_pull_entity_promo_details($entity_object, $promo_wrapper);
+  }
+
+  return NULL;
+}
+
+/**
+ * Pulls promo data from file.
+ *
+ * @param $entity_object - file object
+ * @return array|null
+ */
+function _usanetwork_promo_pull_file_promo_details($entity_object) {
+  if (!is_object($entity_object)) {
+    $entity_object = file_load($entity_object);
+  }
+
+  if (!empty($entity_object)) {
+    $file_wrapper = entity_metadata_wrapper('file', $entity_object);
+
+    return _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper);
   }
 
   return NULL;

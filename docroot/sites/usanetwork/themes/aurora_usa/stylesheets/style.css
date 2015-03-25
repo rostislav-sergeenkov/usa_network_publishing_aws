@@ -2147,6 +2147,12 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
+.eye-icon:before {
+  display: block;
+  content: '\e613';
+  font-family: "ico-font";
+}
+
 .icons-block {
   display: block;
 }
@@ -4374,36 +4380,18 @@ header .tab-item.shows-tab .syndicated-shows-menu {
   }
 }
 header .tab-item.full-episode-tab {
+  padding: 60px 45px;
   color: #ffffff;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab {
-    padding: 70px 55px 70px 70px;
-  }
 }
 header .tab-item.full-episode-tab .full-episode-tab-wrapper {
   margin: 0 auto;
-  max-width: 1475px;
+  position: relative;
+  width: 100%;
 }
 header .tab-item.full-episode-tab .full-episode-tab-wrapper:after {
   clear: both;
   content: '';
   display: table;
-}
-@media (max-width: 1600px) {
-  header .tab-item.full-episode-tab .full-episode-tab-wrapper {
-    max-width: 1180px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .full-episode-tab-wrapper {
-    max-width: 945px;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .full-episode-tab-wrapper {
-    max-width: 100%;
-  }
 }
 header .tab-item.full-episode-tab:after {
   clear: both;
@@ -4417,319 +4405,233 @@ header .tab-item.full-episode-tab h2 {
   margin-bottom: 30px;
   text-transform: uppercase;
 }
-header .tab-item.full-episode-tab .watch-live {
-  width: 265px;
-  margin-right: 50px;
-  float: left;
+header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list {
+  margin-right: 15.76%;
+  width: 84.24%;
 }
-@media (max-width: 1600px) {
-  header .tab-item.full-episode-tab .watch-live {
-    width: 200px;
-  }
+header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list:after {
+  clear: both;
+  content: '';
+  display: table;
 }
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .watch-live {
-    margin-right: 20px;
-    width: 170px;
-  }
+header .tab-item.full-episode-tab .latest-full-episodes .links-block {
+  float: right;
+  width: 15.76%;
 }
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .watch-live {
-    float: none;
-    margin-left: 0;
-    margin-bottom: 65px;
-    padding-right: 15px;
-    width: 100%;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .watch-live .node {
-    display: table;
-    width: 100%;
-  }
-}
-header .tab-item.full-episode-tab .watch-live .node > a {
-  display: block;
-  margin-bottom: 10px;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .watch-live .node > a {
-    display: table-cell;
-    max-width: 400px;
-    padding-right: 30px;
-    width: 40%;
-  }
-}
-header .tab-item.full-episode-tab .watch-live .node > a .asset-img {
-  max-height: 146px;
-  overflow: hidden;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  header .tab-item.full-episode-tab .watch-live .node > a .asset-img {
-    max-height: 110px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .watch-live .node > a .asset-img {
-    max-height: 91px;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .watch-live .node > a .asset-img {
-    max-height: 100%;
-  }
-}
-header .tab-item.full-episode-tab .watch-live .node > a .asset-img img {
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a {
+  background: #1c1c1c;
+  display: table;
+  height: 13.8vw;
+  opacity: 0.7;
   width: 100%;
 }
-header .tab-item.full-episode-tab .watch-live .node .meta-wrapper {
-  padding-left: 45px;
-  padding-right: 50px;
-  position: relative;
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a:hover {
+  opacity: 1;
 }
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .watch-live .node .meta-wrapper {
-    padding-right: 40px;
-  }
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a:first-child {
+  margin-bottom: 1.33vw;
 }
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .watch-live .node .meta-wrapper {
-    display: table-cell;
-    padding-right: 75px;
-    vertical-align: middle;
-    width: 60%;
-  }
-}
-header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta-icon:before {
-  left: 0;
-  margin-top: -18.5px;
-  top: 50%;
-}
-header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta {
-  border-right: 2px solid #ffffff;
-  padding-right: 5px;
-}
-header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .title {
-  font-size: 14px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  letter-spacing: 1px;
-  line-height: 18px;
-  text-transform: uppercase;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .title {
-    font-size: 10px;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .title {
-    font-size: 20px;
-    line-height: 26px;
-  }
-}
-header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .type-and-time span {
-  font-size: 12px;
-  font-family: "texgyrescholaitalic", Times, serif;
-  letter-spacing: 1px;
-  line-height: 16px;
-  text-transform: uppercase;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .type-and-time span {
-    font-size: 9px;
-  }
-}
-header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .sign-in-link {
-  position: absolute;
-  margin-top: -9px;
-  right: 0;
-  top: 50%;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .sign-in-link {
-    margin-top: -14px;
-  }
-}
-header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .sign-in-link a {
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
   color: #ffffff;
-  font-size: 12px;
+  display: table-cell;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 18px;
-  text-decoration: none;
+  font-size: 32px;
+  line-height: 36px;
+  text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
 }
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .sign-in-link a {
-    font-size: 10px;
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
+    font-size: 36px;
+    line-height: 40px;
   }
 }
 @media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .sign-in-link a {
-    font-size: 20px;
-    line-height: 26px;
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
+    font-size: 24px;
+    line-height: 28px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes {
-  margin-left: 315px;
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
+  display: block;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 5px;
 }
-@media (max-width: 1600px) {
-  header .tab-item.full-episode-tab .latest-full-episodes {
-    margin-left: 260px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .latest-full-episodes {
-    margin-left: 190px;
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
+    font-size: 18px;
+    line-height: 22px;
   }
 }
 @media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes {
-    margin-left: 0;
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
+    font-size: 13px;
+    line-height: 16px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul:after {
-  clear: both;
-  content: '';
-  display: table;
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a .icon {
+  display: block;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li {
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-icon {
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  letter-spacing: 1.5px;
+  line-height: 22px;
+  margin: 15px auto 0;
+  padding: 0 4px;
+  text-transform: uppercase;
+  width: 46px;
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-icon {
+    margin: 10px auto 0;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a .eye-icon {
+  font-style: normal;
+  margin: 0 auto;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node {
   float: left;
-  margin-right: 20px;
+  height: 13.8vw;
+  margin-right: 1.71%;
   position: relative;
-  width: 275px;
+  width: 31.62%;
 }
-@media (max-width: 1600px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li {
-    margin-right: 25px;
-    width: 210px;
-  }
+header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(1), header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(2), header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(3) {
+  margin-bottom: 1.33vw;
 }
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li {
-    margin-right: 15px;
-    width: 170px;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li {
-    margin: 0;
-    padding-right: 15px;
-    width: 25%;
-  }
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li:last-child {
-  margin-right: 0;
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li a {
+header .tab-item.full-episode-tab .latest-full-episodes .node a {
   color: #ffffff;
   display: block;
+  height: 100%;
   text-decoration: none;
   text-transform: uppercase;
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li a:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .asset-img {
-  margin-bottom: 10px;
-  overflow: hidden;
-  max-height: 146px;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li a .asset-img {
-    max-height: 110px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li a .asset-img {
-    max-height: 91px;
-  }
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .asset-img img {
   width: 100%;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper {
-  position: relative;
+header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .asset-img {
+  opacity: 1;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta-icon:before {
-  margin-top: -18.5px;
+header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta {
+  display: block;
+  margin-top: -19px;
+  position: absolute;
   top: 50%;
 }
-@media (min-width: 769px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta-icon:before {
-    left: 5px;
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta {
+    margin-top: -15px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta {
-  padding-left: 45px;
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta {
+    margin-top: -22px;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .meta-icon {
+  display: block;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .additional {
+  display: block;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .asset-img {
+  background: #1c1c1c;
+  height: 100%;
   overflow: hidden;
+  opacity: 0.3;
+  width: 100%;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .asset-img img {
+  height: 100%;
+  width: 100%;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper-inner {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta {
+  display: table-cell;
+  overflow: hidden;
+  text-align: center;
   text-overflow: ellipsis;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .title {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 15px;
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .caption {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 18px;
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .type-and-time {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 15px;
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .type-and-time span {
-  font-family: "texgyrescholaitalic", Times, serif;
-  letter-spacing: 1px;
-}
-@media (max-width: 1280px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .title {
-    font-size: 10px;
-  }
-  header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .caption {
-    font-size: 10px;
-  }
-  header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .type-and-time {
-    font-size: 10px;
-  }
-}
-header .tab-item.full-episode-tab .latest-full-episodes .more-link {
-  float: right;
-  margin-top: 40px;
-  padding-right: 20px;
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
+  display: none;
+  height: 37px;
+  margin: 0 auto 5px;
   position: relative;
+  width: 37px;
 }
 @media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .more-link {
-    margin-right: 15px;
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
+    height: 26px;
+    width: 26px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes .more-link a {
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
+    height: 44px;
+    width: 44px;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon:before {
+  background: none;
+  border: 2px solid #ffffff;
   color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon:before {
+    font-size: 14px;
+    height: 26px;
+    line-height: 26px;
+    width: 26px;
+  }
+}
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon:before {
+    font-size: 24px;
+    height: 44px;
+    line-height: 44px;
+    width: 44px;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .logo {
+  margin: 0 auto;
+  max-width: 60%;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .additional {
+  display: none;
+  font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
-  line-height: 18px;
-  text-decoration: none;
-  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 15px;
 }
-header .tab-item.full-episode-tab .latest-full-episodes .more-link a:hover {
-  text-decoration: underline;
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .additional {
+    font-size: 9px;
+    line-height: 11px;
+  }
 }
-header .tab-item.full-episode-tab .latest-full-episodes .more-link a:after {
-  color: #ffffff;
-  content: "\e608";
-  display: block;
-  font-family: "ico-font";
-  font-size: 10px;
-  right: 0;
-  margin-top: -8px;
-  position: absolute;
-  top: 50%;
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .additional {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 header .tab-item.schedule-tab .on-now-panel {
   float: left;
@@ -4965,83 +4867,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
   margin-top: 5px;
-}
-
-.show-menu-video .node {
-  margin-bottom: 23px;
-  position: relative;
-  width: 100%;
-}
-.show-menu-video .node:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-.show-menu-video.panel-pane .node {
-  margin-bottom: 23px;
-}
-.show-menu-video a:before {
-  left: 159px;
-  top: 21px;
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .show-menu-video a:before {
-    left: 0px;
-    top: 104px;
-  }
-}
-.show-menu-video .asset-img {
-  float: left;
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .show-menu-video .asset-img {
-    float: none;
-  }
-}
-.show-menu-video .meta {
-  float: left;
-  margin-left: 67px;
-  margin-top: 10px;
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .show-menu-video .meta {
-    margin-left: 50px;
-  }
-}
-.show-menu-video .meta > div {
-  margin-bottom: 5px;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .show-menu-video .meta > div {
-    width: 144px;
-  }
-}
-.show-menu-video .meta .title {
-  color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 1px;
-  line-height: 16px;
-  text-transform: uppercase;
-}
-.show-menu-video .meta .type-and-time {
-  color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 1px;
-  line-height: 16px;
-  text-transform: uppercase;
-}
-.show-menu-video .meta .type-and-time span {
-  font-family: "texgyrescholaitalic", Times, serif;
-  letter-spacing: 1px;
-}
-.show-menu-video .meta .caption {
-  color: #3a3a3a;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  text-transform: uppercase;
 }
 
 .consumptionator-page header .tab-item.active, .search-show header .tab-item.active {
@@ -12277,48 +12102,6 @@ footer h2 {
 @media (max-width: 768px) {
   .show-menu-tab.active {
     display: none;
-  }
-}
-.show-menu-tab .show-menu-video {
-  float: left;
-  width: 30%;
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .show-menu-tab .show-menu-video {
-    width: 200px;
-  }
-}
-.show-menu-tab .show-menu-video ~ .show-menu {
-  border-left: 1px solid #dcddde;
-  float: left;
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .show-menu-tab .show-menu-video ~ .show-menu {
-    float: none;
-    margin-left: 200px;
-    width: 70%;
-  }
-}
-.show-menu-tab .show-menu-video .node {
-  margin-bottom: 0px;
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .show-menu-tab .show-menu-video a:before {
-    left: 0px;
-    top: 104px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .show-menu-tab .show-menu-video .asset-img {
-    float: none;
-  }
-}
-.show-menu-tab .show-menu-video .meta {
-  margin-top: 21px;
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .show-menu-tab .show-menu-video .meta {
-    margin-left: 50px;
   }
 }
 .show-menu-tab .show-menu {

@@ -2,6 +2,8 @@
 
 define('USANETWORK_MENU_FULL_EPISODES_NUMBER', 6);
 
+include_once 'usanetwork_menu.features.inc';
+
 /**
  * Implements hook_ctools_plugin_api().
  */

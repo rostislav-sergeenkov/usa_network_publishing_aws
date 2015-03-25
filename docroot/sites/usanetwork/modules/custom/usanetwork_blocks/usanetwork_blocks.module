@@ -657,7 +657,7 @@ function _usanetwork_blocks_social_carousel_block_content() {
       if (!empty($homepage_node->field_social_promo_carousel)) {
         foreach ($homepage_wrapper->field_social_promo_carousel->value() as $promo) {
 
-          $promo_details = _usanetwork_promo_get_promo_details($promo);
+          $promo_details = _usanetwork_promo_pull_node_promo_details($promo);
           $promo_content = _usanetwork_promo_featured_content($promo);
 
           $episode_theme_variables = array(

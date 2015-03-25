@@ -358,7 +358,8 @@ function _usanetwork_home_featured_carousel() {
       return implode(PHP_EOL, $output);
     }
   }
-  return array();
+
+  return '';
 }
 
 /**

@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Removes countdown data from A-Spot content type.
+ */
+function usanetwork_aspot_update_7101() {
+  $query = db_delete('field_data_field_aspot_enabled_gi')
+    ->condition('field_aspot_enabled_gi_value', array('countdown_prefix', 'countdown'), 'IN')
+    ->execute();
+}

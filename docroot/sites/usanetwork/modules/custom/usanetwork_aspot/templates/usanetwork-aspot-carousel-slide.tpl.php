@@ -9,6 +9,7 @@
       <a href="<?php print $show_url; ?>" target="_self">
       <?php if (!empty($show_poster)): ?>
         <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+          <div class="hidden offset-data" data-desktop-offset="<?php print $show_image_bg_offset; ?>" data-mobile-offset="<?php print $show_image_mbg_offset; ?>"></div>
           <?php if (!empty($show_poster['mobile'])): ?>
             <div data-src="<?php print $show_poster['mobile']; ?>"></div>
           <?php endif; ?>

@@ -1034,21 +1034,16 @@ function _usanetwork_mpx_video_get_all_file_types() {
 }
 
 /**
- * Gets the 'pl%d' pattern prefix.
+ * Finds and returns $media_data array key with a pl#$ namespace prefix.
  *
- * @param $media_data
- * @return string
+ * @param string $key
+ * @param array $media_data
+ *
+ * @return string|null
  */
-function _usanetwork_mpx_video_parse_pl_prefix($media_data) {
-  if (isset($media_data['$xmlns'])) {
-    foreach ($media_data['$xmlns'] as $key => $data) {
-      if (preg_match('/pl\d/', $key)) {
-        return $key . '$';
-      }
-    }
-  }
-
-  return 'pl1$';
+function _tve_mpx_get_pl_key($key, $media_data) {
+  $pl_key = preg_grep('/^pl\d+\$' . $key . '$/', array_keys($media_data));
+  return reset($pl_key);
 }
 
 function _usanetwork_mpx_video_parse_data($path, $data) {
@@ -1087,7 +1082,7 @@ function _usanetwork_mpx_video_parse_data($path, $data) {
  * Prepares ingested metadata to be saved into file entity.
  * Implements hook_media_theplatform_mpx_media_import_item_alter().
  */
-function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$media_item, &$media_data, $account) {
+function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$media_item, &$media_data, $account){
   if (!isset($media_item['field_data'])) {
     $media_item['field_data'] = array();
   }
@@ -1102,17 +1097,16 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
       }
 
       $field_pattern = $field['widget']['settings']['pub_mpx']['media_data_fieldpath'];
-      $pl_prefix = _usanetwork_mpx_video_parse_pl_prefix($media_data);
-      $pattern = str_replace('pl1$', $pl_prefix, $field_pattern);
-      $value = _usanetwork_mpx_video_parse_data($pattern, $media_data);
+      
+      $key = _tve_mpx_get_pl_key($field_pattern, $media_data);
+      $value = $media_data[$key];    
 
       if ($field['field_name'] == 'field_mpx_full_episode') {
         $media_item['field_data'][$field['field_name']] = (int) ($value == 'true');
-      }
-      else if ($field['field_name'] == 'field_mpx_duration') {
-        $media_item['field_data'][$field['field_name']] = round($value[0]);
-      }
-      else {
+      } else if ($field['field_name'] == 'field_mpx_duration') {
+        $duration_value = _usanetwork_mpx_video_parse_data($field_pattern, $media_data);
+        $media_item['field_data'][$field['field_name']] = round($duration_value[0]);
+      } else {
         $media_item['field_data'][$field['field_name']] = $value;
       }
     }

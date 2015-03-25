@@ -38,18 +38,16 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
     'bg_offset_width' => 370,
     'bg_offset_height' => 500,
     'bg_offset_image_url' => file_create_url($form_state['node']->field_usa_aspot_desktop[$lang][0]['uri']),
+    'mbg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_mbg_offset', $lang, 0),
+    'mbg_offset_width' => 370,
+    'mbg_offset_height' => 500,
+    'mbg_offset_image_url' => file_create_url($form_state['node']->field_usa_aspot_mobile[$lang][0]['uri']),
     'aspot_elements' => array(
       'title_prefix' => array(
         'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title_prefix', $lang, t('Title prefix')),
       ),
       'title' => array(
         'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title', $lang, $form_state['node']->title),
-      ),
-      'countdown_prefix' => array(
-        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_cd_prefix', $lang, t('Countdown prefix')),
-      ),
-      'countdown' => array(
-        'value' => t('Countdown'),
       ),
       'social_meter' => array(
         'value' => t('Social Meter'),
@@ -226,13 +224,8 @@ function usanetwork_aspot_theme() {
         'show_title_prefix_style' => NULL,
         'show_title' => NULL,
         'show_title_style' => NULL,
-        'show_timer' => array(
-          'title_prefix' => NULL,
-          'title_prefix_style' => NULL,
-          'value' => '',
-          'countdown_style' => NULL,
-        ),
         'show_image_bg_offset' => NULL,
+        'show_image_mbg_offset' => NULL,
         'cta_buttons' => array(
           0 => array(
             'url' => NULL,
@@ -291,29 +284,6 @@ function usanetwork_aspot_image_default_styles() {
       ),
     ),
   );
-
-//  // Exported image style: Desktop retina 5000x2814.
-//  $styles['5000x2814'] = array(
-//    'name' => '5000x2814',
-//    'label' => '5000x2814',
-//    'effects' => array(
-//      2 => array(
-//        'label' => 'Scale and crop',
-//        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-//        'effect callback' => 'image_scale_and_crop_effect',
-//        'dimensions callback' => 'image_resize_dimensions',
-//        'form callback' => 'image_resize_form',
-//        'summary theme' => 'image_resize_summary',
-//        'module' => 'image',
-//        'name' => 'image_scale_and_crop',
-//        'data' => array(
-//          'width' => 5000,
-//          'height' => 2814,
-//        ),
-//        'weight' => 1,
-//      ),
-//    ),
-//  );
 
   // Exported image style: Tablet 1024px x 448px.
   $styles['1024x448'] = array(
@@ -517,6 +487,9 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
     'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
       ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
       : '',
+    'show_image_mbg_offset' => !empty($aspot_node->field_aspot_preview_mbg_offset)
+      ? $aspot_node_wrapper->field_aspot_preview_mbg_offset->value()
+      : '',
     'show_draggable_data' => !empty($aspot_node->field_aspot_gi_draggable_data)
       ? $aspot_node_wrapper->field_aspot_gi_draggable_data->value()
       : '',
@@ -528,22 +501,6 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   if (!empty($aspot_node->field_aspot_gi_title)) {
     $value =  $aspot_node_wrapper->field_aspot_gi_title->value();
     $theme_array['show_title'] = $value['value'];
-  }
-
-  if (in_array('countdown', $enabled_elements)) {
-    $theme_array['show_timer'] = array(
-      'title_prefix_style' => isset($draggable_data->countdown_prefix)
-        ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown_prefix)
-        : '',
-      'value' => 10000,
-      'countdown_style' => isset($draggable_data->countdown)
-        ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown)
-        : '',
-    );
-    if (!empty($aspot_node->field_aspot_gi_cd_prefix)) {
-      $value =  $aspot_node_wrapper->field_aspot_gi_cd_prefix->value();
-      $theme_array['show_timer']['title_prefix'] = $value['value'];
-    }
   }
 
   $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
@@ -794,12 +751,6 @@ function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
       'state_name' => 'visible',
       'field_name' => 'field_aspot_enabled_gi',
       'field_item_name' => 'title',
-    ),
-    'field_aspot_gi_cd_prefix' => array(
-      'altering_element' => 'field_aspot_gi_cd_prefix',
-      'state_name' => 'visible',
-      'field_name' => 'field_aspot_enabled_gi',
-      'field_item_name' => 'countdown_prefix',
     ),
     'field_aspot_gi_cta' => array(
       'altering_element' => 'field_aspot_gi_cta',

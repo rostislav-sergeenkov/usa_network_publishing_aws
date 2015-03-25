@@ -4,6 +4,7 @@
     siteName: 'Dig',
     basePath: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig',
     basePageName: 'Dig | USA Network',
+    quizIsLoading: null,
 
     micrositeInit300x250Ad: function(nid) {
       $('#microsite #usanetwork-quiz-' + nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center>');
@@ -162,14 +163,15 @@
 
     micrositeGetCustomJs: function(quizNodeId) {
       $.getScript( '/ajax/get-custom-js/' + quizNodeId, function( data, textStatus, jqxhr ) {
-        usa_debug( data ); // Data returned
-        usa_debug( textStatus ); // Success
-        usa_debug( jqxhr.status ); // 200
-        usa_debug( 'Load was performed.' );
+//        usa_debug( '============= micrositeGetCustomJs\ndata: ' );
+//        usa_debug( data ); // Data returned
       });
     },
 
     micrositeSwitchQuizzes: function(quizNodeId, callback) {
+      Drupal.behaviors.micrositeQuizzesBxSliders.quizIsLoading = true;
+      Drupal.behaviors.micrositeQuizzesBxSliders.showHideLoader();
+
       var currentQuizNodeId = $('#microsite #quizzes article').attr('id').replace('node-', '');
 
       if (currentQuizNodeId != quizNodeId) {
@@ -207,7 +209,7 @@
           activeQuizContainer.find('li').attr({'id': 'quiz-' + data.nid, 'data-node-id': data.nid}).animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
 
             // @TODO: DV: The following line of code was added because the
-            // Dig microsite has more than #gigya-share element in the html,
+            // Dig microsite has more than one #gigya-share element in the html,
             // which breaks the Gigya share bar. Is there a better way to
             // fix this?
             $(this).html(data.quiz_html.replace('id="gigya-share"', 'id="quiz-gigya-share"'));
@@ -226,6 +228,9 @@
 
               // update 300x250 ad, if needed
               setTimeout(function(){
+                // refresh the 728x90 ad
+                Drupal.behaviors.microsite_scroll.create728x90Ad();
+
                 // show 300x250 ad on splash page
                 Drupal.behaviors.microsite_quizzes.micrositeInit300x250Ad(data.nid);
 
@@ -246,7 +251,9 @@
               // change quiz navigation
               quizzesNav.find('li.active').removeClass('active disabled');
               quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
-//Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
+
+              Drupal.behaviors.micrositeQuizzesBxSliders.quizIsLoading = false;
+              Drupal.behaviors.micrositeQuizzesBxSliders.showHideLoader();
             });
           });
         })

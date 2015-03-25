@@ -26,28 +26,20 @@
 <div class="full-pane">
   <?php if (!empty($gallery)): ?>
   <div class="microsite-gallery-meta clearfix">
-    <?php if (!empty($h1) && $status == 'active'): ?>
+    <?php if (empty($h1) && !empty($gallery['title']) && $status == 'active'): ?>
+      <h1><?php print $gallery['title']; ?></h1>
+    <?php elseif (!empty($gallery['title'])): ?>
+      <h2><?php print $gallery['title']; ?></h2>
+    <?php endif; ?>
 
-      <h1><?php print $h1; ?></h1>
-      <?php if (!empty($gallery['title'])): ?>
-        <h2><?php print $gallery['title']; ?></h2>
-      <?php endif; ?>
-
-    <?php elseif (empty($h1) && $status == 'active'): ?>
-      <?php if (!empty($gallery['title'])): ?>
-
-        <div class="h1-place"></div>
-        <h1><?php print $gallery['title']; ?></h1>
-
-      <?php endif; ?>
-    <?php else: ?>
-      <?php if (!empty($gallery['title'])): ?>
-
-        <div class="h1-place"><?php print $h1 ?></div>
-        <h2><?php print $gallery['title']; ?></h2>
-
+    <?php if (!empty($h1)): ?>
+      <?php if ($status == 'active'): ?>
+      <h1 class="seo-h1"><?php print $h1; ?></h1>
+      <?php else: ?>
+      <h2 class="seo-h1"><?php print $h1; ?></h2>
       <?php endif; ?>
     <?php endif; ?>
+
     <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden">
       <div id="gigya-share"></div>
     </div>
@@ -82,10 +74,12 @@
               <div class="gallery-nav-img"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>">
               </div>
               <div class="gallery-title">
-                <?php print $ep_gallery['title']; ?>
-              </div>
-              <div class="gallery-h1">
-                <?php print $ep_gallery['h1']; ?>
+                <div><?php print $ep_gallery['title']; ?></div>
+                <?php if (!empty($ep_gallery['h1'])): ?>
+                <div class="gallery-h1">
+                  <?php print $ep_gallery['h1']; ?>
+                </div>
+                <?php endif; ?>
               </div>
             </a>
           </li>
@@ -116,10 +110,12 @@
                 <img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>">
               </div>
               <div class="gallery-title">
-                <?php print $char_gallery['title']; ?>
-              </div>
-              <div class="gallery-h1">
-                <?php print $char_gallery['h1']; ?>
+                <div><?php print $char_gallery['title']; ?></div>
+                <?php if (!empty($char_gallery['h1'])): ?>
+                <div class="gallery-h1">
+                  <?php print $char_gallery['h1']; ?>
+                </div>
+                <?php endif; ?>
               </div>
             </a>
           </li>

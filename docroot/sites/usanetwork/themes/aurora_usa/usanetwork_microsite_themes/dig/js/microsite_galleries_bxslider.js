@@ -162,27 +162,22 @@
         dataType: 'json'
       })
       .done(function(data, textStatus, jqXHR){
+//usa_debug('=================== switchGallery\ndata: ');
+//usa_debug(data);
         var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
             activeGallery = $('#galleries .microsite-gallery'),
             activeGalleryHeight = activeGallery.height(),
             galleryNavItems = $('#galleries .galleries-bxslider li'),
-            $metaH1 = activeGalleryMeta.find('h1'),
-            $metaH2 = activeGalleryMeta.find('h2'),
-            $metaH1Place = activeGalleryMeta.find('.h1-place');
+            shareBarHtml = '<div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden"><div id="gigya-share"></div></div>';
 
           activeGallery.animate({'opacity': 0}, 1000, function(){
 
-          if ($metaH1.length && $metaH2.length) {
-            $metaH1.text(data.h1);
-            $metaH2.text(data.title);
-
-          } else if ($metaH1Place.length && $metaH1.length) {
-            $metaH1Place.text(data.h1);
-            $metaH1.text(data.title);
-
-          } else if ($metaH1Place.length && $metaH2.length) {
-            $metaH1Place.text(data.h1);
-            $metaH2.text(data.title);
+          if (data.h1.length > 0 && data.title.length > 0) {
+            titleHtml = '<h2 class="seo-h1">' + data.h1 + '</h2><h2>' + data.title + '</h2>' + shareBarHtml;
+            activeGalleryMeta.html(titleHtml);
+          } else if (data.title.length > 0) {
+            titleHtml = '<h2>' + data.title + '</h2>' + shareBarHtml;
+            activeGalleryMeta.html(titleHtml);
           }
 
           activeGallery.find('.center-wrapper').html(data.rendered);

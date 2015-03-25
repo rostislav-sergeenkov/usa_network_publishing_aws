@@ -15,6 +15,7 @@
  */
 ?>
 
+<?php print 'status: ' . $status; ?>
 <!-- backgrounds -->
 <?php if (!empty($episodes)): ?>
 <ul id="episode-background">
@@ -64,14 +65,14 @@
       <ul id="episode-info" class="content">
       <?php foreach ($episodes as $episode_key => $episode): ?>
         <li id ="<?php if (!empty($episode['id'])) print $episode['id']; ?>" class="<?php if (!empty($episode['id'])) print $episode['id']; ?><?php if ($episode['status'] != '') print ' ' . $episode['status']; ?>">
-          <?php if (empty($episode['optional_h1']) && !empty($episode['title']) && $episode['status'] == 'active'): ?>
+          <?php if (empty($episode['optional_h1']) && !empty($episode['title']) && $episode['status'] == 'active' && $status == 'active'): ?>
           <h1><?php print $episode['title']; ?></h1>
           <?php else: ?>
           <h3><?php print $episode['title']; ?></h3>
           <?php endif; ?>
 
           <?php if (!empty($episode['optional_h1'])): ?>
-            <?php if ($episode['status'] == 'active'): ?>
+            <?php if ($episode['status'] == 'active' && $status == 'active'): ?>
             <h1 class="seo-h1"><?php print $episode['optional_h1']; ?></h1>
             <?php else: ?>
             <h3 class="seo-h1"><?php print $episode['optional_h1']; ?></h3>

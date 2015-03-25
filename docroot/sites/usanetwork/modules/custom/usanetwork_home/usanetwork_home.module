@@ -60,7 +60,7 @@ function usanetwork_home_block_info() {
 
   $blocks['usanetwork_home_featured_promos'] = array(
     'info' => t('Homepage: Featured Carousel'),
-    'cache' => DRUPAL_NO_CACHE,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
   return $blocks;

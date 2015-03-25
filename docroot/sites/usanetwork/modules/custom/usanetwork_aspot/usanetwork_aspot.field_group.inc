@@ -129,6 +129,93 @@ function usanetwork_aspot_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_aspot_ui_desktop|node|usanetwork_aspot|form';
+  $field_group->group_name = 'group_usa_aspot_ui_desktop';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usanetwork_aspot';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_aspot_ui';
+  $field_group->data = array(
+    'label' => 'Desktop',
+    'weight' => '56',
+    'children' => array(
+      0 => 'field_aspot_preview_bg_offset',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-usa-aspot-ui-desktop field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_usa_aspot_ui_desktop|node|usanetwork_aspot|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_aspot_ui_mobile|node|usanetwork_aspot|form';
+  $field_group->group_name = 'group_usa_aspot_ui_mobile';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usanetwork_aspot';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_aspot_ui';
+  $field_group->data = array(
+    'label' => 'Mobile',
+    'weight' => '55',
+    'children' => array(
+      0 => 'field_aspot_preview_mbg_offset',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-usa-aspot-ui-mobile field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_usa_aspot_ui_mobile|node|usanetwork_aspot|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_aspot_ui|node|usanetwork_aspot|form';
+  $field_group->group_name = 'group_usa_aspot_ui';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usanetwork_aspot';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'A-spot UI',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_aspot_enabled_gi',
+      1 => 'field_aspot_gi_title',
+      2 => 'field_aspot_gi_title_prefix',
+      3 => 'field_aspot_gi_draggable_data',
+      4 => 'field_aspot_gi_cta',
+      5 => 'group_usa_aspot_ui_desktop',
+      6 => 'group_usa_aspot_ui_mobile',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_usa_aspot_ui|node|usanetwork_aspot|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_usa_media|node|usanetwork_aspot|form';
   $field_group->group_name = 'group_usa_media';
   $field_group->entity_type = 'node';
@@ -154,39 +241,6 @@ function usanetwork_aspot_field_group_info() {
     ),
   );
   $export['group_usa_media|node|usanetwork_aspot|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_usa_aspot_ui|node|usanetwork_aspot|form';
-  $field_group->group_name = 'group_usa_aspot_ui';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'usanetwork_aspot';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'A-spot UI',
-    'weight' => '4',
-    'children' => array(
-      0 => 'field_aspot_preview_bg_offset',
-      1 => 'field_aspot_enabled_gi',
-      2 => 'field_aspot_gi_title_prefix',
-      3 => 'field_aspot_gi_title',
-      4 => 'field_aspot_gi_cd_prefix',
-      5 => 'field_aspot_gi_draggable_data',
-      6 => 'field_aspot_gi_cta',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_usa_aspot_ui|node|usanetwork_aspot|form'] = $field_group;
 
   return $export;
 }

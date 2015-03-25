@@ -60,7 +60,7 @@ function usanetwork_home_block_info() {
 
   $blocks['usanetwork_home_featured_promos'] = array(
     'info' => t('Homepage: Featured Carousel'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   return $blocks;
@@ -237,40 +237,82 @@ function _usanetwork_home_featured_carousel() {
     }
 
     $output['description'] = theme('usanetwork_home_carousel_description_item', $description_vars);
-    
-    $field_hp_promos = field_get_items('node', $homepage_node, 'field_hp_promos');
-    if ($field_hp_promos) {
-      $i = 0;
-      foreach ($field_hp_promos as $delta => $promo) {
-        $promo_data = _usanetwork_promo_featured_content($promo['target_id']);
 
-        if ($promo_data === FALSE || $promo_data['published'] === FALSE) {
+    $field_promo_items = field_get_items('node', $homepage_node, 'field_hp_ft_featured');
+
+    if (!empty($field_promo_items)) {
+      $i = 0;
+
+      foreach ($field_promo_items as $delta => $promo_reference) {
+        $promo_entity = entity_load($promo_reference['target_type'], array($promo_reference['target_id']));
+        $show_class = '';
+        $icon_type = '';
+        $more_link = '';
+
+        if (empty($promo_entity)) {
+          continue;
+        }
+        else {
+          $promo_entity = reset($promo_entity);
+        }
+
+        $promo_data = array();
+        $is_first = ($i == 0) ? TRUE : FALSE;
+
+        switch ($promo_reference['target_type']) {
+          case 'node':
+            $promo_data = _usanetwork_promo_pull_node_promo_details($promo_entity);
+            break;
+          case 'file':
+            $promo_data = _usanetwork_promo_pull_file_promo_details($promo_entity);
+            break;
+        }
+
+        if (empty($promo_data)) {
           continue;
         }
 
-        if ($promo_data['more_link_text'] && $promo_data['more_link_url']) {
-          $more_link = l($promo_data['more_link_text'], $promo_data['more_link_url'], array('attributes' => array('class' => array('more'))));
+        $promo_image_url = usanetwork_core_api_get_content_image($promo_reference['target_type'], $promo_entity);
+
+        if (!empty($promo_entity->field_show)) {
+          $show_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_show');
+
+          if (!empty($show_field)) {
+            $show_class = usanetwork_tv_shows_color_show_css_class(reset(reset($show_field)));
+          }
         }
 
-        $is_first = ($i == 0) ? TRUE : FALSE;
+        if (!empty($promo_entity->field_call_to_action_type)) {
+          $icon_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_call_to_action_type');
+          $icon_type_value = reset($icon_field);
+          $icon = taxonomy_term_load($icon_type_value['tid']);
+
+          $icon_type = $icon->name . '-icon';
+        }
+
+        if (!empty($promo_entity->field_promo_call_to_action_text)) {
+          $promo_call_to_action_text = reset($promo_call_to_action_text_field);
+          $more_link = $promo_call_to_action_text['value'];
+        }
 
         $featured_vars = array(
-          'show_code' => isset($promo_data['show_class']) ? $promo_data['show_class']
-                : NULL,
-          'url' => isset($promo_data['url']) ? $promo_data['url'] : NULL,
-          'image' => isset($promo_data['image_url_wide'])
+          'show_code' => $show_class,
+          'url' => url($promo_reference['target_type'] . '/' . $promo_reference['target_id']),
+          'image' => !empty($promo_image_url)
             ? ($is_first
-              ? theme('image_style', array('style_name' => '757x628', 'path' => $promo_data['image_url_wide']))
-              : theme('image_style', array('style_name' => '539x303', 'path' => $promo_data['image_url_wide']))
+              ? theme('image_style', array('style_name' => '757x628', 'path' => $promo_image_url))
+              : theme('image_style', array('style_name' => '539x303', 'path' => $promo_image_url))
             )
             : NULL,
-          'icon_type' => $promo_data['icon_type'] ? $promo_data['icon_type'] : NULL,
-          'caption' => isset($promo_data['caption']) ? $promo_data['caption'] : NULL,
-          'title' => $promo_data['title'],
-          'more_link' => isset($more_link) ? $more_link : NULL,
+          'icon_type' => $icon_type,
+          'caption' => $promo_data['show_name'],
+          'title' => $promo_data['promo_title'],
+          'description' => $promo_data['description'],
+          'more_link' => $more_link,
           'class' => $is_first ? 'featured-large' : 'featured-small',
           'is_first' => $is_first,
         );
+
         $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
 
         if ($i % 2 == 0 || $i == 0) {

@@ -13,7 +13,7 @@
       <div class="meta-back"></div>
       <div class="meta-wrapper-inner">
         <?php if ($icon_type && !$is_first): ?>
-            <div class="meta-icon <?php print $icon_type; ?>"></div>
+          <div class="meta-icon <?php print $icon_type; ?>"></div>
         <?php endif; ?>
         <div class="meta">
           <?php if ($icon_type && $is_first): ?>
@@ -21,6 +21,7 @@
           <?php endif; ?>
           <div class="caption"><?php print $caption; ?></div>
           <div class="title"><?php print $title; ?></div>
+          <div class="description"><?php print $description; ?></div>
         </div>
       </div>
     </div>

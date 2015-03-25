@@ -268,9 +268,12 @@
       // better way to fix this?
       var quizId = $('#microsite #quizzes #viewport li').attr('data-node-id'),
           quiz = Drupal.settings.usanetwork_quiz[quizId],
-          link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + quiz.url;
+          link = window.location.protocol + '//' + window.location.hostname + $('#microsite #quizzes #quizzes-nav-list li#nav-quiz-' + quizId + ' a').attr('href'); //Drupal.settings.microsites_settings.base_path + '/quizzes/' + quiz.url;
+///usa_debug('==================== link: ' + link);
+//usa_debug('===================== quiz: ');
+//usa_debug(quiz);
       self.micrositeUpdateSettingsGigyaSharebars(quiz.quizTitle, link, quiz.quizDescription);
-      $('#microsite #quizzes #gigya-share').attr('id', '#quiz-gigya-share');
+      $('#microsite #quizzes #gigya-share').attr('id', 'quiz-gigya-share');
 
       setTimeout(function(){
         // load Gigya share bar

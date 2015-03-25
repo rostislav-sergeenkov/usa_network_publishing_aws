@@ -31,6 +31,10 @@
   width: 300px;
   float: left;
 }
+#microsite #quizzes .usanetwork-quiz-questions.questions .page-note {
+  top: 4px;
+  right: 4px;
+}
 
 /* Quiz answers */
 #microsite #quizzes .usanetwork-quiz-answer > .inner {
@@ -243,6 +247,26 @@
     max-width: 90%;
   }
   #microsite #quizzes .usanetwork-quiz .content-wrap .sidebar {
-    margin-left: 0;
+    width: 300px;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #microsite section .microsite-section-container {
+    width: 90%;
+  }
+  #microsite #quizzes .usanetwork-quiz-question .question-title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  #microsite #quizzes .usanetwork-quiz-answer.answer-type-text .answer-title {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .usanetwork-quiz .content-wrap .sidebar .ad-container {
+    margin: 30px 0 0 -20px;
   }
 }

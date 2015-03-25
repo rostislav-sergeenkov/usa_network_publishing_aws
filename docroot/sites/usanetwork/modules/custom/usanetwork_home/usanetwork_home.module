@@ -582,6 +582,7 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
         'show_class' => NULL,
         'episode_title' => NULL,
         'image_url' => NULL,
+        'icon_type' => NULL,
       ),
       'template' => 'templates/usanetwork-home-shows-queue-show-inner-slide',
     ),
@@ -1323,6 +1324,13 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
   if (!empty($show_node->field_tvs_promo_items)) {
     foreach ($show_node_wrapper->field_tvs_promo_items as $promo_wrapper) {
       $promo = $promo_wrapper->value();
+      $icon_type = '';
+
+      if (!empty($promo->field_call_to_action_type)) {
+        $cta_type = $promo_wrapper->field_call_to_action_type->value();
+
+        $icon_type = $cta_type->name . '-icon';
+      }
 
       $theme_variables = array(
         'title' => !empty($promo->field_promo_text_line_1)
@@ -1336,6 +1344,7 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
           ? url($promo_wrapper->field_promo_link->url->value())
           : '',
         'image_url' => $promo_wrapper->field_promo_regular_image->file->url->value(),
+        'icon_type' => $icon_type,
       );
 
       $output_array[] = theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);

@@ -829,10 +829,7 @@ header {
             }
             .icon {
               display: block;
-              margin: 15px auto 0;
-              @include breakpoint($bp-1024-width) {
-                margin: 10px auto 0;
-              }
+
             }
             .live-icon {
               border: 1px solid #ffffff;
@@ -842,12 +839,17 @@ header {
               font-style: normal;
               letter-spacing: 1.5px;
               line-height: 22px;
+              margin: 15px auto 0;
               padding: 0 4px;
               text-transform: uppercase;
               width: 46px;
+              @include breakpoint($bp-1024-width) {
+                margin: 10px auto 0;
+              }
             }
             .eye-icon {
               font-style: normal;
+              margin: 0 auto;
             }
           }
         }

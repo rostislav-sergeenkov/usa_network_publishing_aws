@@ -2149,7 +2149,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .eye-icon:before {
   display: block;
-  content: '\e601';
+  content: '\e613';
   font-family: "ico-font";
 }
 
@@ -4474,12 +4474,6 @@ header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
 }
 header .tab-item.full-episode-tab .latest-full-episodes .links-block a .icon {
   display: block;
-  margin: 15px auto 0;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .links-block a .icon {
-    margin: 10px auto 0;
-  }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-icon {
   border: 1px solid #ffffff;
@@ -4489,12 +4483,19 @@ header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-ico
   font-style: normal;
   letter-spacing: 1.5px;
   line-height: 22px;
+  margin: 15px auto 0;
   padding: 0 4px;
   text-transform: uppercase;
   width: 46px;
 }
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-icon {
+    margin: 10px auto 0;
+  }
+}
 header .tab-item.full-episode-tab .latest-full-episodes .links-block a .eye-icon {
   font-style: normal;
+  margin: 0 auto;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node {
   float: left;

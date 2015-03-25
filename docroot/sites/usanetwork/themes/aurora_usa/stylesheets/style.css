@@ -20924,6 +20924,31 @@ yx-axis
   height: 100%;
   width: 100%;
 }
+.page-schedule .schedule-wrapper .schedule-table ul li.date-separate {
+  background-color: #757575 !important;
+  color: #ffffff;
+  font-size: 32px;
+  line-height: 60px;
+  padding-left: calc((10% - 90px) / 2 + 7px);
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li.date-separate {
+    font-size: 22px;
+    line-height: 50px;
+    padding-left: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li.date-separate {
+    padding-left: 15px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li.date-separate .day-shcedule {
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li.date-separate .date-shcedule {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+}
 .page-schedule .schedule-wrapper .schedule-table ul li {
   float: none;
   margin: 0;
@@ -20935,7 +20960,7 @@ yx-axis
 }
 .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item {
   box-sizing: border-box;
-  padding: 20px 0 20px 10px;
+  padding: 20px 0 20px 7px;
   width: 100%;
 }
 @media (max-width: 1024px) {

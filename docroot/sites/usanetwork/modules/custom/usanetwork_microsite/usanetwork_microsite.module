@@ -304,7 +304,7 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 /**
  * Includes 'theme.inc' file of each subtheme of microsite.
  */
-function _usanetwork_microsite_include_themes_info($current_theme) {
+function _usanetwork_microsite_include_themes_info($current_theme = NULL) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $dir_path = $theme_path . '/usanetwork_microsite_themes';
   $found_theme_names = array();
@@ -316,7 +316,7 @@ function _usanetwork_microsite_include_themes_info($current_theme) {
       if ($filename != '.' && $filename != '..') {
         $target_dir_path = $dir_path . '/' . $filename;
 
-        if (!is_dir($target_dir_path) || $filename != $current_theme) {
+        if (!is_dir($target_dir_path) || (!empty($current_theme) && $filename != $current_theme)) {
           continue;
         }
 

@@ -4692,6 +4692,11 @@ header .tab-item.schedule-tab .on-now-panel .node .meta .title {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+@media (min-width: 1025px) {
+  header .tab-item.schedule-tab .on-now-panel .node .meta .title {
+    padding-right: 70px;
+  }
+}
 header .tab-item.schedule-tab .on-now-panel .node .meta .caption {
   color: #dcddde;
   font-family: "texgyrescholaitalic", Times, serif;
@@ -4730,6 +4735,13 @@ header .tab-item.schedule-tab .on-now-panel .icons-block {
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block a {
   color: #ffffff !important;
+  display: inline-block;
+  float: none;
+}
+@media (max-width: 1280px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a {
+    margin-right: 20px;
+  }
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon {
   border: 1px solid #ffffff;

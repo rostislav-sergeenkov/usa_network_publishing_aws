@@ -1038,6 +1038,9 @@ header {
               font-size: 20px;
               letter-spacing: 1px;
               text-transform: uppercase;
+              @include breakpoint($bp-min-1025-width){
+                padding-right: 70px;
+              }
             }
             .caption {
               color: $footer-links;
@@ -1078,6 +1081,11 @@ header {
           right: -15%;
           a {
             color: #ffffff !important;
+            display: inline-block;
+            float: none;
+            @include breakpoint($bp-1280-width){
+              margin-right: 20px;
+            }
             &.live-icon {
               border: 1px solid #ffffff;
               border-radius: 4px;

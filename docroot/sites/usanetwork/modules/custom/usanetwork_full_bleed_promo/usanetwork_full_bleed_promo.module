@@ -112,7 +112,7 @@ function _usanetwork_full_bleed_promo_validate_url(&$form, &$form_state) {
     $url = $form_state['values']['field_usa_fbp_cta_link'][$language][0]['url'];
 
     if (empty($url) || (!empty($url) && !drupal_valid_path($url))) {
-      form_set_error('field_usa_fbp_cta_link', t('The URL is invalid'));
+      form_set_error('field_usa_fbp_cta_link', t('Link is not valid. Please enter the internal link without domain name or full external link.'));
     }
   }
 }

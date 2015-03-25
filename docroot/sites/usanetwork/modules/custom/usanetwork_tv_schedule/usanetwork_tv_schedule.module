@@ -940,6 +940,12 @@ function usanetwork_tv_schedule_schedule_page() {
         $show_description = $show_body_field[0]['value'];
       }
 
+      if (empty($tv_schedule_item->program_description) && empty($tv_episode->description)) {
+        $description = '';
+      }
+      else {
+        $description = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : $tv_episode->description;
+      }
       $theme_row_variables = array(
         'show_nid' => $show_nid,
         'show_url' => url('node/' . $show_nid),
@@ -958,7 +964,7 @@ function usanetwork_tv_schedule_schedule_page() {
         'episode_url' => !empty($tv_episode) ? url('file/' . $tv_episode->fid) : '',
         'episode_image_url' => $episode_image_uri,
         'show_image_url' => $show_logo_url,
-        'episode_description' => !empty($tv_episode) ? $tv_episode->description : '',
+        'episode_description' => $description,
         'show_description' => $show_description,
       );
 

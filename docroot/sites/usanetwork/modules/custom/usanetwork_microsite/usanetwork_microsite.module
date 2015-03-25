@@ -142,9 +142,8 @@ function usanetwork_microsite_permission() {
 function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
   if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
-    $node_wrapper = entity_metadata_wrapper('node', $node);
     $theme_path = drupal_get_path('theme', 'aurora_usa');
-    if(!_usanetwork_microsite_process_setting_field($node_wrapper, 'field_ms_display_global_nav')) {
+    if(!_usanetwork_microsite_process_setting_data('display_global_nav')) {
       unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);
       unset($javascript[$theme_path . '/javascripts/main-navigation.js']);
     }
@@ -200,7 +199,11 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
     $theme_name_field = field_get_items('node', $node, 'field_ms_theme');
 
     if ($theme_name_field) {
-      _usanetwork_microsite_include_themes_info();
+      $microsite_wrapper = entity_metadata_wrapper('node', $node);
+      $current_theme = $microsite_wrapper->field_ms_theme->value();
+      if(!empty($current_theme)) {
+        _usanetwork_microsite_include_themes_info($microsite_wrapper->field_ms_theme->value());
+      }
       _usanetwork_microsite_include_default_css();
       _usanetwork_microsite_include_default_js();
 
@@ -273,7 +276,6 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 
       // Add facebook tracking data.
       if (!empty($node->field_show)) {
-        $microsite_wrapper = entity_metadata_wrapper('node', $node);
         $tracking_enabled = _usanetwork_facebook_tracking_enabled($microsite_wrapper->field_show->value(), 'node');
         $tracking_html = _usanetwork_microsite_get_facebook_tracking_html();
 
@@ -302,7 +304,7 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 /**
  * Includes 'theme.inc' file of each subtheme of microsite.
  */
-function _usanetwork_microsite_include_themes_info() {
+function _usanetwork_microsite_include_themes_info($current_theme) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $dir_path = $theme_path . '/usanetwork_microsite_themes';
   $found_theme_names = array();
@@ -314,7 +316,7 @@ function _usanetwork_microsite_include_themes_info() {
       if ($filename != '.' && $filename != '..') {
         $target_dir_path = $dir_path . '/' . $filename;
 
-        if (!is_dir($target_dir_path)) {
+        if (!is_dir($target_dir_path) || $filename != $current_theme) {
           continue;
         }
 
@@ -2184,7 +2186,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
 function usanetwork_microsite_preprocess_page(&$vars, $hook) {
   if (isset($vars['node']->type) && $vars['node']->type == 'usanetwork_microsite') {
     $node_wrapper = entity_metadata_wrapper('node', $vars['node']);
-    $vars['page']['display_global_nav'] = _usanetwork_microsite_process_setting_field($node_wrapper, 'field_ms_display_global_nav');
+    $vars['page']['display_global_nav'] = _usanetwork_microsite_process_setting_data('display_global_nav');
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type . '__' . $node_wrapper->field_ms_theme->value();
   }
@@ -3153,9 +3155,10 @@ function usanetwork_microsite_deliver_js($js) {
   print $js;
 }
 
-function _usanetwork_microsite_process_setting_field($node_wrapper, $field) {
-  $setting = $node_wrapper->{$field}->value();;
-  if($setting === NULL) {
+function _usanetwork_microsite_process_setting_data($setting_key) {
+  $settings = usanetwork_microsite_get_theme_settings();
+  $setting = $settings[$setting_key];
+  if(!isset($setting) || $setting === NULL) {
     $setting = TRUE;
   }
   return $setting;

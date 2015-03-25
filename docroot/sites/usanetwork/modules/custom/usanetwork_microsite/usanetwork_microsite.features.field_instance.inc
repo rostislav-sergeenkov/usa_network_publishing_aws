@@ -1180,64 +1180,6 @@ function usanetwork_microsite_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-usanetwork_microsite-field_ms_display_global_nav'
-  $field_instances['node-usanetwork_microsite-field_ms_display_global_nav'] = array(
-    'bundle' => 'usanetwork_microsite',
-    'default_value' => array(
-      0 => array(
-        'value' => 1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 13,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_ms_display_global_nav',
-    'label' => 'Display global navigation.',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-      ),
-      'type' => 'options_buttons',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-usanetwork_microsite-field_ms_section'
   $field_instances['node-usanetwork_microsite-field_ms_section'] = array(
     'bundle' => 'usanetwork_microsite',
@@ -1259,6 +1201,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'weight' => 1,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1309,6 +1257,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'weight' => 4,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1372,6 +1326,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'weight' => 6,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1445,6 +1405,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1490,6 +1456,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'weight' => 5,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1554,6 +1526,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'weight' => 12,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1625,6 +1603,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1670,6 +1654,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'weight' => 11,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1742,6 +1732,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1804,6 +1800,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'weight' => 8,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1876,6 +1878,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1943,6 +1951,12 @@ function usanetwork_microsite_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1998,7 +2012,6 @@ function usanetwork_microsite_field_default_field_instances() {
   t('Base Path');
   t('Catchall Page');
   t('Description');
-  t('Display global navigation.');
   t('Enabled');
   t('Enter quotations along with their source here.');
   t('Episode');
@@ -2013,6 +2026,7 @@ function usanetwork_microsite_field_default_field_instances() {
   t('Page Title');
   t('Person');
   t('Pinterest page');
+  t('Quiz');
   t('Quotation');
   t('Quote');
   t('Rows');
@@ -2033,8 +2047,6 @@ function usanetwork_microsite_field_default_field_instances() {
   t('Video');
   t('Video adding type');
   t('slideshowSpeed');
-  t('Episode');
-  t('Quiz');
 
   return $field_instances;
 }

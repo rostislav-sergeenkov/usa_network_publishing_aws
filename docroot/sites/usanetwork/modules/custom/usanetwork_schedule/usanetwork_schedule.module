@@ -1,5 +1,6 @@
 <?php
 
+define('USANETWORK_SCHEDULE_DAYS_INTERVAL', 4);
 define('USANETWORK_SCHEDULE_SERVICE_DEFAULT_URL', 'http://feed.entertainment.tv.theplatform.com/f/HNK2IC/prod_usa_listing?form=json&range=1-*&sort=startTime');
 
 /**
@@ -63,11 +64,10 @@ function usanetwork_schedule_cron() {
     variable_set('usanetwork_schedule_last_update', REQUEST_TIME);
   }
 
-  if ($interval) {
-    $query = db_delete('usanetwork_schedule', array());
-    $query->condition('start_time', time() - $interval, '<=');
-    $query->execute();
-  }
+  $limit = USANETWORK_SCHEDULE_DAYS_INTERVAL * 24 * 60 * 60;
+  $query = db_delete('usanetwork_schedule', array());
+  $query->condition('start_time', time() - $limit, '<');
+  $query->execute();
 }
 
 /**

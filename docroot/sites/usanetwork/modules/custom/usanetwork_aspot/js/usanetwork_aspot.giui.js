@@ -2,9 +2,11 @@
   Drupal.behaviors.usanetwork_aspot_giui = {
     attach: function (context, settings) {
       var backgroundPreviewingContainer = $('#edit-field-aspot-preview-bg-offset');
+      var backgroundMobilePreviewingContainer = $('#edit-field-aspot-preview-mbg-offset');
       var carouselElementPreviewingContainer = $('#edit-field-aspot-enabled-gi');
       var aspotElementsCheckboxes = $('#edit-field-aspot-enabled-gi-und input.form-checkbox');
       var backgroundPreviewingBlock = $('<div id="edit-field-aspot-preview-bg-offset-preview"></div>');
+      var backgroundMobilePreviewingBlock = $('<div id="edit-field-aspot-preview-mbg-offset-preview"></div>');
       var carouselElementPreviewingBlock = $('<div id="edit-field-aspot-enabled-gi-preview"></div>');
       var draggableElements = [];
       usanetwork_aspot_giui_setup_draggable_elements();
@@ -12,6 +14,11 @@
       usanetwork_aspot_giui_fill_draggable_items_input();
       var giImage = ($('<img>',{id:'gi-image', style: 'max-width: 100%; height: auto;', src: settings.giui_settings.bg_offset_image_url})).load(function() {
         backgroundPreviewingBlock.css({
+          'height': this.height
+        });
+      });
+      var gimImage = ($('<img>',{id:'gi-image', style: 'max-width: 100%; height: auto;', src: settings.giui_settings.mbg_offset_image_url})).load(function() {
+        backgroundMobilePreviewingBlock.css({
           'height': this.height
         });
       });
@@ -24,6 +31,7 @@
           usanetwork_aspot_giui_disable_element($(this).val());
         }
       });
+
       backgroundPreviewingBlock.backgroundDraggable({
         axis: "x",
         done: function () {
@@ -31,8 +39,21 @@
           $("#field-aspot-preview-bg-offset-add-more-wrapper input").val(value[0].replace('px', ''));
         }
       });
+      backgroundMobilePreviewingBlock.backgroundDraggable({
+        axis: "x",
+        done: function () {
+          var value = backgroundMobilePreviewingBlock.css('backgroundPosition').split(' ');
+          $("#field-aspot-preview-mbg-offset-add-more-wrapper input").val(value[0].replace('px', ''));
+        }
+      });
+
       $("#field-aspot-preview-bg-offset-add-more-wrapper input").change(function () {
         backgroundPreviewingBlock.css({
+          'background-position': $(this).val() + 'px 0px'
+        });
+      });
+      $("#field-aspot-preview-mbg-offset-add-more-wrapper input").change(function () {
+        backgroundMobilePreviewingBlock.css({
           'background-position': $(this).val() + 'px 0px'
         });
       });
@@ -183,7 +204,20 @@
         backgroundPreviewingContainer.find('input[type="number"]').val(settings.giui_settings.bg_offset_value);
         backgroundPreviewingBlock.css({
           'background-image': 'url("' + settings.giui_settings.bg_offset_image_url + '")',
-          'background-position': settings.giui_settings.bg_offset_value + 'px 0',
+          'background-position': settings.giui_settings.bg_offset_value + 'px 0'
+        });
+
+        var backgroundMobilePreviewObject = document.getElementById('edit-field-aspot-preview-mbg-offset-preview');
+        if (backgroundMobilePreviewObject == null) {
+          backgroundMobilePreviewingContainer.prepend(backgroundMobilePreviewingBlock);
+        }
+        else {
+          backgroundMobilePreviewingBlock = $('#edit-field-aspot-preview-mbg-offset-preview');
+        }
+        backgroundMobilePreviewingContainer.find('input[type="number"]').val(settings.giui_settings.mbg_offset_value);
+        backgroundMobilePreviewingBlock.css({
+          'background-image': 'url("' + settings.giui_settings.mbg_offset_image_url + '")',
+          'background-position': settings.giui_settings.mbg_offset_value + 'px 0'
         });
       }
 

@@ -28,3 +28,20 @@ function usanetwork_home_update_7212() {
     }
   }
 }
+
+/**
+ * Remove old "Featured Promos" field from Themed-Carousel
+ */
+function usanetwork_home_update_7213() {
+  $field_instance = field_read_instance('node', 'field_hp_promos', 'usa_homepage');
+
+  if ($field_instance) {
+    field_delete_instance($field_instance);
+  }
+
+  $field = field_read_field('field_hp_promos');
+
+  if ($field) {
+    field_delete_field($field);
+  }
+}

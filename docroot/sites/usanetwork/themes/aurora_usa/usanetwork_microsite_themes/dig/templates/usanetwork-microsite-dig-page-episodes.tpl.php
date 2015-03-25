@@ -15,7 +15,6 @@
  */
 ?>
 
-<?php print 'status: ' . $status; ?>
 <!-- backgrounds -->
 <?php if (!empty($episodes)): ?>
 <ul id="episode-background">

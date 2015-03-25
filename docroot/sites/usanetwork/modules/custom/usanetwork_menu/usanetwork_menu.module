@@ -222,7 +222,6 @@ function usanetwork_menu_theme() {
         'items' => array(
           'logo' => NULL,
           'url' => NULL,
-          'title' => NULL,
           'additional' => NULL,
           'image' => NULL,
         ),
@@ -638,31 +637,30 @@ function _usanetwork_menu_full_episodes_block() {
           'path' => $logo,
         ));
       }
-      $episode_season = !empty($episode->field_mpx_season_number)
-        ? $episode_wrapper->field_mpx_season_number->value()
-        : NULL;
-      $episode_number = !empty($episode->field_mpx_episode_number)
-        ? $episode_wrapper->field_mpx_episode_number->value()
-        : NULL;
-      $wrapper = file_stream_wrapper_get_instance_by_uri($episode->uri);
-      $video_image = theme('image_style', array(
-        'path' => $wrapper->getLocalThumbnailPath(),
-        'style_name' => 'full_episodes_633x356',
-      ));
-
-      $items_variables = array(
-        'logo' => $logo_image,
-        'url' => url('file/' . $episode->fid),
-        'title' => isset($logo_image) ? $logo_image : NULL,
-        'additional' => t('S@season Episode @episode_number', array(
-            '@season' => $episode_season,
-            '@episode_number' => $episode_number
-          )),
-        'image' => $video_image,
-      );
-
-      $items[] = $items_variables;
     }
+    $episode_season = !empty($episode->field_mpx_season_number)
+      ? $episode_wrapper->field_mpx_season_number->value()
+      : NULL;
+    $episode_number = !empty($episode->field_mpx_episode_number)
+      ? $episode_wrapper->field_mpx_episode_number->value()
+      : NULL;
+    $wrapper = file_stream_wrapper_get_instance_by_uri($episode->uri);
+    $video_image = theme('image_style', array(
+      'path' => $wrapper->getLocalThumbnailPath(),
+      'style_name' => 'full_episodes_633x356',
+    ));
+
+    $items_variables = array(
+      'url' => url('file/' . $episode->fid),
+      'logo' => isset($logo) ? $logo_image : NULL,
+      'additional' => t('S@season Episode @episode_number', array(
+        '@season' => $episode_season,
+        '@episode_number' => $episode_number
+       )),
+       'image' => $video_image,
+    );
+
+    $items[] = $items_variables;
   }
 
   $theme_variables = array(

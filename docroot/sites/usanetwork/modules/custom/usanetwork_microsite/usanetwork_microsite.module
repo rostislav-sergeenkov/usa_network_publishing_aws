@@ -878,7 +878,7 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
           $theme_variables['page'] = usanetwork_microsite_get_quiz($quiz_node);
           $current_quiz = $quiz_node;
         }
-        $quizzes[] = array(
+        $quizzes[$quiz_node->nid] = array(
           'nid' => $quiz_node->nid,
           'url' => $quiz_url,
         );
@@ -3156,12 +3156,10 @@ function usanetwork_microsite_deliver_js($js) {
 }
 
 function _usanetwork_microsite_process_setting_data($setting_key) {
- // if(is_callable('usanetwork_microsite_get_theme_settings')) {
-    $settings = usanetwork_microsite_get_theme_settings();
-    $setting = $settings[$setting_key];
-    if (!isset($setting) || $setting === NULL) {
-      $setting = TRUE;
-    }
- // }
+  $settings = usanetwork_microsite_get_theme_settings();
+  $setting = $settings[$setting_key];
+  if (!isset($setting) || $setting === NULL) {
+    $setting = TRUE;
+  }
   return $setting;
 }

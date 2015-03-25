@@ -2147,6 +2147,12 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
+.eye-icon:before {
+  display: block;
+  content: '\e601';
+  font-family: "ico-font";
+}
+
 .icons-block {
   display: block;
 }
@@ -4413,17 +4419,82 @@ header .tab-item.full-episode-tab .latest-full-episodes .links-block {
   width: 15.76%;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .links-block a {
+  background: #1c1c1c;
   display: table;
   height: 13.8vw;
+  opacity: 0.7;
   width: 100%;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a:hover {
+  opacity: 1;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .links-block a:first-child {
   margin-bottom: 1.33vw;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
+  color: #ffffff;
   display: table-cell;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  line-height: 36px;
   text-align: center;
+  text-transform: uppercase;
   vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
+    font-size: 36px;
+    line-height: 40px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
+  display: block;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a .icon {
+  display: block;
+  margin: 15px auto 0;
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .links-block a .icon {
+    margin: 10px auto 0;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-icon {
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  letter-spacing: 1.5px;
+  line-height: 22px;
+  padding: 0 4px;
+  text-transform: uppercase;
+  width: 46px;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .links-block a .eye-icon {
+  font-style: normal;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node {
   float: left;
@@ -4469,10 +4540,10 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrap
   display: block;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a .asset-img {
-  background: #000000;
+  background: #1c1c1c;
   height: 100%;
   overflow: hidden;
-  opacity: 0.5;
+  opacity: 0.3;
   width: 100%;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a .asset-img img {
@@ -4507,8 +4578,8 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .m
 }
 @media (max-width: 1024px) {
   header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
-    height: 30px;
-    width: 30px;
+    height: 26px;
+    width: 26px;
   }
 }
 @media (min-width: 1601px) {
@@ -4524,10 +4595,10 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .m
 }
 @media (max-width: 1024px) {
   header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
-    width: 30px;
+    font-size: 14px;
+    height: 26px;
+    line-height: 26px;
+    width: 26px;
   }
 }
 @media (min-width: 1601px) {
@@ -4551,8 +4622,8 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .m
 }
 @media (max-width: 1024px) {
   header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .additional {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 9px;
+    line-height: 11px;
   }
 }
 @media (min-width: 1601px) {
@@ -4560,39 +4631,6 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .m
     font-size: 14px;
     line-height: 17px;
   }
-}
-header .tab-item.full-episode-tab .latest-full-episodes .more-link {
-  float: right;
-  margin-top: 40px;
-  padding-right: 20px;
-  position: relative;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .more-link {
-    margin-right: 15px;
-  }
-}
-header .tab-item.full-episode-tab .latest-full-episodes .more-link a {
-  color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 18px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-header .tab-item.full-episode-tab .latest-full-episodes .more-link a:hover {
-  text-decoration: underline;
-}
-header .tab-item.full-episode-tab .latest-full-episodes .more-link a:after {
-  color: #ffffff;
-  content: "\e608";
-  display: block;
-  font-family: "ico-font";
-  font-size: 10px;
-  right: 0;
-  margin-top: -8px;
-  position: absolute;
-  top: 50%;
 }
 header .tab-item.schedule-tab .on-now-panel {
   float: left;

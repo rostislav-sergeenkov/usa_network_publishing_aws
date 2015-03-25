@@ -136,6 +136,14 @@
   }
 }
 
+.eye-icon {
+  &:before {
+    display: block;
+    content: '\e601';
+    font-family: $ico-font;
+  }
+}
+
 .icons-block {
   display: block;
   a {

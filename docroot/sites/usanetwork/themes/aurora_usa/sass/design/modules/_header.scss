@@ -783,16 +783,71 @@ header {
           float: right;
           width: 15.76%;
           a {
+            background: $header-full-episodes-back;
             display: table;
             height: 13.8vw;
+            opacity: 0.7;
             width: 100%;
+            &:hover {
+              opacity: 1;
+            }
             &:first-child {
               margin-bottom: 1.33vw;
             }
             > div {
+              color: #ffffff;
               display: table-cell;
+              font-family: $avalon-medium;
+              font-size: 32px;
+              line-height: 36px;
               text-align: center;
+              text-transform: uppercase;
               vertical-align: middle;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 36px;
+                line-height: 40px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 24px;
+                line-height: 28px;
+              }
+            }
+            span {
+              display: block;
+              font-family: $tex-gyreschola-italic;
+              font-size: 16px;
+              line-height: 20px;
+              margin-bottom: 5px;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 18px;
+                line-height: 22px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 13px;
+                line-height: 16px;
+              }
+            }
+            .icon {
+              display: block;
+              margin: 15px auto 0;
+              @include breakpoint($bp-1024-width) {
+                margin: 10px auto 0;
+              }
+            }
+            .live-icon {
+              border: 1px solid #ffffff;
+              border-radius: 4px;
+              font-family: $avalon-demi;
+              font-size: 18px;
+              font-style: normal;
+              letter-spacing: 1.5px;
+              line-height: 22px;
+              padding: 0 4px;
+              text-transform: uppercase;
+              width: 46px;
+            }
+            .eye-icon {
+              font-style: normal;
             }
           }
         }
@@ -838,10 +893,10 @@ header {
               }
             }
             .asset-img {
-              background: #000000;
+              background: $header-full-episodes-back;
               height: 100%;
               overflow: hidden;
-              opacity: 0.5;
+              opacity: 0.3;
               width: 100%;
               img {
                 height: 100%;
@@ -872,8 +927,8 @@ header {
                   position: relative;
                   width: 37px;
                   @include breakpoint($bp-1024-width) {
-                    height: 30px;
-                    width: 30px;
+                    height: 26px;
+                    width: 26px;
                   }
                   @include breakpoint($bp-min-1601-width) {
                     height: 44px;
@@ -884,10 +939,10 @@ header {
                     border: 2px solid #ffffff;
                     color: #ffffff;
                     @include breakpoint($bp-1024-width) {
-                      font-size: 16px;
-                      height: 30px;
-                      line-height: 30px;
-                      width: 30px;
+                      font-size: 14px;
+                      height: 26px;
+                      line-height: 26px;
+                      width: 26px;
                     }
                     @include breakpoint($bp-min-1601-width) {
                       font-size: 24px;
@@ -909,8 +964,8 @@ header {
                   letter-spacing: 1px;
                   line-height: 15px;
                   @include breakpoint($bp-1024-width) {
-                    font-size: 10px;
-                    line-height: 12px;
+                    font-size: 9px;
+                    line-height: 11px;
                   }
                   @include breakpoint($bp-min-1601-width) {
                     font-size: 14px;
@@ -919,38 +974,6 @@ header {
                 }
               }
             }
-          }
-        }
-        .more-link {
-          float: right;
-          margin-top: 40px;
-          padding-right: 20px;
-          position: relative;
-          @include breakpoint($bp-1024-width) {
-            margin-right: 15px;
-          }
-          a {
-            color: #ffffff;
-            font-family: $avalon-medium;
-            font-size: 12px;
-            line-height: 18px;
-            text-decoration: none;
-            text-transform: uppercase;
-            &:hover{
-              text-decoration: underline;
-            }
-            &:after {
-              color: #ffffff;
-              content: "\e608";
-              display: block;
-              font-family: $ico-font;
-              font-size: 10px;
-              right: 0;
-              margin-top: -8px;
-              position: absolute;
-              top: 50%;
-            }
-
           }
         }
       }

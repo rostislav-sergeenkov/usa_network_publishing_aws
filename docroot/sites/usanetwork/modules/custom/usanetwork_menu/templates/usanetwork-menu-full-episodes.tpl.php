@@ -1,6 +1,6 @@
 <div class="links-block">
-  <a href="/videos"><div><span>View All</span> Full Episodes</div></a>
-  <a href="/videos/live"><div><span>Watch</span> Live TV</div></a>
+  <a href="/videos"><div><span>View All</span> Full<br> Episodes <i class="eye-icon icon"></i></div></a>
+  <a href="/videos/live"><div><span>Watch</span> Live TV <i class="live-icon icon">live</i></div></a>
 </div>
 <div class="full-episodes-list">
   <?php foreach ($items as $item) :?>

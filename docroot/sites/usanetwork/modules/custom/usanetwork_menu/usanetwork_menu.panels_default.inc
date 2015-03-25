@@ -168,8 +168,8 @@ function usanetwork_menu_default_panels_mini() {
     'args' => '',
     'url' => '',
     'display' => 'originals_show',
-    'override_title' => 0,
-    'override_title_text' => '',
+    'override_title' => 1,
+    'override_title_text' => 'Current Shows',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -187,23 +187,21 @@ function usanetwork_menu_default_panels_mini() {
   $pane = new stdClass();
   $pane->pid = 'new-7';
   $pane->panel = 'reg_tab_shows';
-  $pane->type = 'views';
-  $pane->subtype = 'usa_nav';
+  $pane->type = 'menu_tree';
+  $pane->subtype = 'menu-also-on-usa';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'syndicated_shows',
+    'menu_name' => 'menu-also-on-usa',
+    'parent_mlid' => 0,
+    'parent' => 'menu-also-on-usa:0',
+    'title_link' => 0,
+    'admin_title' => '',
+    'level' => '1',
+    'follow' => 0,
+    'depth' => '1',
+    'expanded' => 0,
+    'sort' => 0,
     'override_title' => 0,
     'override_title_text' => '',
   );
@@ -211,10 +209,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'syndicated-shows-menu',
-  );
+  $pane->css = array();
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();

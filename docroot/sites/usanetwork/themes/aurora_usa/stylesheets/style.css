@@ -21931,6 +21931,28 @@ yx-axis
     line-height: 19px;
   }
 }
+.schedule-on-tonight .schedule-block .time .watch-now span {
+  color: #606060;
+  font-size: 11px;
+  line-height: 11px;
+  letter-spacing: 0.5px;
+}
+@media (min-width: 1701px) {
+  .schedule-on-tonight .schedule-block .time .watch-now span {
+    font-size: 19px;
+    line-height: 19px;
+  }
+}
+.schedule-on-tonight .schedule-block .time .watch-now span.live {
+  border: 1px solid #606060;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+@media (min-width: 1701px) {
+  .schedule-on-tonight .schedule-block .time .watch-now span.live {
+    border: 2px solid #606060;
+  }
+}
 .schedule-on-tonight .schedule-block .episode-info {
   color: #ffffff;
   float: left;

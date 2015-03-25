@@ -42,8 +42,10 @@
             <div class="schedule-item-wrap">
               <div class="time">
                 <span><?php print t('On now'); ?></span>
-
-                <div class="watch-now"><?php print t('Watch now'); ?></div>
+                <div class="watch-now">
+                  <span class="live"><?php print t('live'); ?></span>
+                  <span><?php print t('Watch now'); ?></span>
+                </div>
               </div>
               <div class="episode-info">
                 <?php if (!empty($on_now_block_item['on_now']['show_title']) && !empty($on_now_block_item['on_now']['episode_title'])): ?>

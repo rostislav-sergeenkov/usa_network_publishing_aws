@@ -18,20 +18,18 @@
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_quizzes"></div>
 
 <div class="full-pane">
-  <?php if (!empty($page['title'])): ?>
-    <?php if (empty($h1) && $status == 'active'): ?>
-    <h1><?php print $page['title']; ?></h1>
-    <?php else: ?>
-    <h3><?php print $page['title']; ?></h3>
-    <?php endif; ?>
+  <?php if (empty($h1) && !empty($page['title']) && $status == 'active'): ?>
+  <h1><?php print $page['title']; ?></h1>
+  <?php else: ?>
+  <h3><?php print $page['title']; ?></h3>
   <?php endif; ?>
 
   <?php if (!empty($h1)): ?>
-    <?php if ($status == 'active'): ?>
-    <h1 class="seo-h1"><?php print $h1; ?></h1>
-    <?php else: ?>
-    <h3 class="seo-h1"><?php print $h1; ?></h3>
-    <?php endif; ?>
+  <?php if ($status == 'active'): ?>
+  <h1 class="seo-h1"><?php print $h1; ?></h1>
+  <?php else: ?>
+  <h3 class="seo-h1"><?php print $h1; ?></h3>
+  <?php endif; ?>
   <?php endif; ?>
 
   <?php if (!empty($page['quiz_html']) && !empty($page['nid'])): ?>

@@ -40,23 +40,32 @@
   <?php endif; ?>
 
   <div class="right-pane clearfix">
-    <?php if (!empty($title) || !empty($description)): ?>
-      <?php if (!empty($h1) && $status == 'active'): ?>
-      <h1><?php print $h1; ?></h1>
-      <?php elseif (!empty($h1)): ?>
-      <h2><?php print $h1; ?></h2>
-      <?php else: ?>
-        <?php if (!empty($title)): ?>
-        <h2><?php print $title; ?></h2>
-        <?php endif; ?>
-      <div class="underline"></div>
-      <?php endif; ?>
-      <?php if (!empty($description)): ?>
-      <div class="text">
-        <?php print $description ?>
-      </div>
-      <?php endif; ?>
+    <?php if (!empty($h1)): ?>
+    <?php if ($status == 'active'): ?>
+    <h1 class="seo-h1"><?php print $h1; ?></h1>
+    <?php else: ?>
+    <h3 class="seo-h1"><?php print $h1; ?></h3>
     <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if (empty($h1)): ?>
+    <?php if (!empty($title) && $status == 'active'): ?>
+    <h1><?php print $title; ?></h1>
+    <?php else: ?>
+    <h3><?php print $title; ?></h3>
+    <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if (!empty($title) || !empty($h1)): ?>
+    <div class="underline"></div>
+    <?php endif; ?>
+
+    <?php if (!empty($description)): ?>
+    <div class="text">
+      <?php print $description ?>
+    </div>
+    <?php endif; ?>
+
     <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_about"></div>
   </div>
 </div>

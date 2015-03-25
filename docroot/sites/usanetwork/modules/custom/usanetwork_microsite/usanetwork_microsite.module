@@ -141,7 +141,7 @@ function usanetwork_microsite_permission() {
  */
 function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
-  if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
+  if(!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
     $theme_path = drupal_get_path('theme', 'aurora_usa');
     if(!_usanetwork_microsite_process_setting_data('display_global_nav')) {
       unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);
@@ -158,7 +158,7 @@ function usanetwork_microsite_js_alter(&$javascript) {
  */
 function usanetwork_microsite_library_alter(&$libraries, $module) {
   $node = menu_get_object();
-  if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
+  if(!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
     if ($module == 'tve_auth') {
       unset($libraries['tve_auth']['js'][drupal_get_path('module', 'tve_auth') . '/js/directives/tve-player-directive.js']);
     }
@@ -3156,10 +3156,12 @@ function usanetwork_microsite_deliver_js($js) {
 }
 
 function _usanetwork_microsite_process_setting_data($setting_key) {
-  $settings = usanetwork_microsite_get_theme_settings();
-  $setting = $settings[$setting_key];
-  if(!isset($setting) || $setting === NULL) {
-    $setting = TRUE;
-  }
+ // if(is_callable('usanetwork_microsite_get_theme_settings')) {
+    $settings = usanetwork_microsite_get_theme_settings();
+    $setting = $settings[$setting_key];
+    if (!isset($setting) || $setting === NULL) {
+      $setting = TRUE;
+    }
+ // }
   return $setting;
 }

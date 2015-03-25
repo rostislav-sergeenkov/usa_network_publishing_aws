@@ -4347,36 +4347,42 @@ header .tab-item.shows-tab > div li a:hover {
   text-decoration: underline;
 }
 header .tab-item.shows-tab .originals-shows-menu {
-  width: 36%;
+  width: 100%;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-  header .tab-item.shows-tab .originals-shows-menu {
-    width: 66.66667%;
+header .tab-item.shows-tab .originals-shows-menu h2 {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+@media (min-width: 1601px) {
+  header .tab-item.shows-tab .originals-shows-menu h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
   }
 }
 header .tab-item.shows-tab .originals-shows-menu ul {
-  -webkit-column-count: 2;
-  -moz-column-count: 2;
-  -ms-column-count: 2;
-  -o-column-count: 2;
-  column-count: 2;
-  -webkit-column-gap: 2em;
-  -moz-column-gap: 2em;
-  -ms-column-gap: 2em;
-  -o-column-gap: 2em;
-  column-gap: 2em;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  -ms-column-count: 3;
+  -o-column-count: 3;
+  column-count: 3;
+  -webkit-column-gap: 3em;
+  -moz-column-gap: 3em;
+  -ms-column-gap: 3em;
+  -o-column-gap: 3em;
+  column-gap: 3em;
 }
-header .tab-item.shows-tab .syndicated-shows-menu {
-  width: 28%;
-}
-@media (max-width: 1280px) {
-  header .tab-item.shows-tab .syndicated-shows-menu {
-    width: 26%;
+@media (min-width: 1601px) {
+  header .tab-item.shows-tab .originals-shows-menu ul li {
+    margin-bottom: 20px;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-  header .tab-item.shows-tab .syndicated-shows-menu {
-    width: 33.33333%;
+header .tab-item.shows-tab .originals-shows-menu .mega-sub-nav-link {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+@media (min-width: 1601px) {
+  header .tab-item.shows-tab .originals-shows-menu .mega-sub-nav-link {
+    font-size: 22px;
   }
 }
 header .tab-item.full-episode-tab {
@@ -4401,9 +4407,16 @@ header .tab-item.full-episode-tab:after {
 header .tab-item.full-episode-tab h2 {
   color: #dcddde;
   font-size: 20px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "texgyrescholaitalic", Times, serif;
+  letter-spacing: 2px;
   margin-bottom: 30px;
   text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  header .tab-item.full-episode-tab h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list {
   margin-right: 15.76%;
@@ -4692,6 +4705,11 @@ header .tab-item.schedule-tab .on-now-panel .node .meta .title {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+@media (min-width: 1025px) {
+  header .tab-item.schedule-tab .on-now-panel .node .meta .title {
+    padding-right: 70px;
+  }
+}
 header .tab-item.schedule-tab .on-now-panel .node .meta .caption {
   color: #dcddde;
   font-family: "texgyrescholaitalic", Times, serif;
@@ -4719,6 +4737,11 @@ header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
   font-size: 24px;
   letter-spacing: 2px;
 }
+@media (min-width: 1601px) {
+  header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
+    font-size: 32px;
+  }
+}
 header .tab-item.schedule-tab .on-now-panel .on-now-panel-title .episode-airtime {
   float: left;
   margin-left: 40px;
@@ -4730,6 +4753,14 @@ header .tab-item.schedule-tab .on-now-panel .icons-block {
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block a {
   color: #ffffff !important;
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+@media (max-width: 1280px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a {
+    margin-right: 20px;
+  }
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon {
   border: 1px solid #ffffff;
@@ -4790,13 +4821,18 @@ header .tab-item.schedule-tab .primetime-panel .more-link a:after {
   position: absolute;
   top: 50%;
 }
-header .tab-item.schedule-tab .primetime-panel .pane-title {
+header .tab-item.schedule-tab .primetime-panel h2 {
   color: #dcddde;
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 24px;
   position: absolute;
   text-transform: uppercase;
   top: -40px;
+}
+@media (min-width: 1601px) {
+  header .tab-item.schedule-tab .primetime-panel h2 {
+    font-size: 32px;
+  }
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item {
   height: 75px;
@@ -13500,7 +13536,7 @@ body.person-page #main {
   float: left;
   margin-left: 0;
   padding-left: 1.5em;
-  width: 50%;
+  width: 33.33333%;
 }
 .ie8 img {
   /*    width: inherit; */
@@ -14041,7 +14077,7 @@ body.person-page #main {
   float: left;
   margin-left: 0;
   padding-left: 1.5em;
-  width: 50%;
+  width: 33.33333%;
 }
 .ie9 footer .shows-menu ul.menu:after, .ie9 footer .app-and-services-menu ul.menu:after {
   clear: both;

@@ -7,11 +7,13 @@
 #microsite #quizzes .full-pane > h1,
 #microsite #quizzes .full-pane > h3 {
   font-size: 1.9em;
-  margin: 1em 0 0;
+  line-height: 1em;
+  margin: 0;
 }
 #microsite #quizzes .full-pane > h1.seo-h1,
 #microsite #quizzes .full-pane > h3.seo-h1 {
   font-size: 1em;
+  line-height: 1.5em;
   text-transform: none;
 }
 #microsite #quizzes .microsite-section-container {

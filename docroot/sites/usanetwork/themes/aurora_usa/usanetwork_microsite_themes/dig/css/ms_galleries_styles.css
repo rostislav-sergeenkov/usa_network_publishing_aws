@@ -43,11 +43,10 @@
   text-shadow: 1px 1px 3px #000;
   width: calc(100% - 220px);
 }
-#microsite #galleries-content .microsite-gallery-meta h1 {
+#microsite #galleries-content .microsite-gallery-meta h1.seo-h1,
+#microsite #galleries-content .microsite-gallery-meta h2.seo-h1 {
   font-size: 0.7em;
-}
-#microsite #galleries-content .microsite-gallery-meta h1:nth-last-child(2) {
-  font-size: 1.7em;
+  margin: -0.2em 0 0.2em;
 }
 #microsite .node-media-gallery.view-mode-inline_content {
   max-width: 100%;

@@ -213,8 +213,10 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
  *
  * )
  */
+/* @TODO: DV -- We're not allowed to have more than one of these!!
 function usanetwork_microsite_get_theme_settings() {
   return array(
     'display_global_nav' => TRUE,
   );
 }
+*/

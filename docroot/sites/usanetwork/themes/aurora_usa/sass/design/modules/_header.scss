@@ -734,7 +734,7 @@ header {
           font-family: $tex-gyreschola-italic;
           font-size: 24px;
           letter-spacing: 2px;
-          @include breakpoint($bp-min-1601-width){
+          @include breakpoint($bp-min-1601-width) {
             font-size: 32px;
             margin-bottom: 50px;
           }
@@ -750,13 +750,13 @@ header {
           -ms-column-gap: 3em;
           -o-column-gap: 3em;
           column-gap: 3em;
-          li{
+          li {
             @include breakpoint($bp-min-1601-width) {
               margin-bottom: 20px;
             }
           }
         }
-        .mega-sub-nav-link{
+        .mega-sub-nav-link {
           font-family: $avalon-medium;
           @include breakpoint($bp-min-1601-width) {
             font-size: 22px;

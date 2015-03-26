@@ -14,8 +14,8 @@
       if (typeof gigya !== 'undefined') {
         if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
           $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-//usa_debug('===================\nDrupal.gigya.showSharebar: ');
-//usa_debug(sharebar);
+usa_debug('===================\nDrupal.gigya.showSharebar: ');
+usa_debug(sharebar);
             Drupal.gigya.showSharebar(sharebar);
           });
         }
@@ -45,9 +45,9 @@
       }
     },
 
-    micrositeUpdateSettingsGigyaSharebars: function(title, link, description) {
+    micrositeUpdateSettingsGigyaSharebars: function(title, link, description, imageUrl) {
       Drupal.settings.gigyaSharebars = [];
-      Drupal.settings.gigyaSharebars = [{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "quiz-gigya-share","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--2","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--3","showCounts": "none","layout": "horizontal","iconsOnly": true}}];
+      Drupal.settings.gigyaSharebars = [{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": imageUrl},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "quiz-gigya-share","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": imageUrl},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--2","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": imageUrl},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--3","showCounts": "none","layout": "horizontal","iconsOnly": true}}];
     },
 
     micrositeResetOmnitureClicks: function(activeQuizNid) {
@@ -215,7 +215,8 @@
             $(this).html(data.quiz_html.replace('id="gigya-share"', 'id="quiz-gigya-share"'));
             activeQuizContainer.find('li#quiz-' + data.nid).animate({'opacity': 1}, 1000, function(){
               // reset Gigya share bar
-              var link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + data.url;
+              var link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + Drupal.settings.quizzes[quizNodeId].url,
+                  imageUrl = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img').attr('src');
 
               // send Omniture data
               Drupal.behaviors.microsite_quizzes.micrositeSetOmnitureData(data.title);
@@ -238,7 +239,7 @@
                 Drupal.behaviors.microsite_quizzes.micrositeInitGigyaSharebar();
 
                 // reset Gigya share bar
-                Drupal.behaviors.microsite_quizzes.micrositeUpdateSettingsGigyaSharebars(data.title, link, data.description);
+                Drupal.behaviors.microsite_quizzes.micrositeUpdateSettingsGigyaSharebars(data.title, link, data.description, imageUrl);
               }, 1000);
 
 
@@ -275,11 +276,12 @@
       // better way to fix this?
       var quizId = $('#microsite #quizzes #viewport li').attr('data-node-id'),
           quiz = Drupal.settings.usanetwork_quiz[quizId],
-          link = window.location.protocol + '//' + window.location.hostname + $('#microsite #quizzes #quizzes-nav-list li#nav-quiz-' + quizId + ' a').attr('href'); //Drupal.settings.microsites_settings.base_path + '/quizzes/' + quiz.url;
-///usa_debug('==================== link: ' + link);
+          link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + Drupal.settings.quizzes[quizId].url,
+          imageUrl = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img').attr('src');
+//usa_debug('==================== link: ' + link);
 //usa_debug('===================== quiz: ');
 //usa_debug(quiz);
-      self.micrositeUpdateSettingsGigyaSharebars(quiz.quizTitle, link, quiz.quizDescription);
+      self.micrositeUpdateSettingsGigyaSharebars(quiz.quizTitle, link, quiz.quizDescription, imageUrl);
       $('#microsite #quizzes #gigya-share').attr('id', 'quiz-gigya-share');
 
       setTimeout(function(){

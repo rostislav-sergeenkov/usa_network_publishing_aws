@@ -204,19 +204,11 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
 }
 
 /**
- * Return array with theme settings
- * @todo create parent function in usanetwork module and override it if exist in
- *   particular function in theme.inc
- *
- * @return array(
- *  'display_global_nav' - Show or not global navigation menu.
- *
- * )
+ * Return array with theme settings for mrrobot theme
  */
-/* @TODO: DV -- We're not allowed to have more than one of these!!
-function usanetwork_microsite_get_theme_settings() {
+function usanetwork_microsite_mrrobot_get_theme_settings() {
   return array(
-    'display_global_nav' => TRUE,
+    'display_global_nav' => FALSE,
   );
 }
-*/
+

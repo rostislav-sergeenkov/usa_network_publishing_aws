@@ -27,12 +27,16 @@
       }
       > li.active {
         > .node {
-          @include breakpoint($bp-min-769-width) {
-            &:before {
-              -webkit-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
-              -moz-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
-              -o-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
-              box-shadow: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+          &:before {
+            -webkit-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+            -moz-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+            -o-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+            box-shadow: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
+            width: 18px;
+            @include breakpoint($bp-640-width) {
+              width: 30px;
+            }
+            @include breakpoint($bp-480-width) {
               width: 18px;
             }
           }
@@ -124,21 +128,27 @@
       position: relative;
       li {
         float: left;
-        height: 666px;
+        height: 580px;
         margin: 0;
-        max-width: 1490px;
+        max-width: 1450px;
         overflow: hidden;
         position: relative;
-        width: 310px;
+        width: 270px;
+        @include breakpoint($bp-1024-width) {
+          height: 734px;
+          width: 342px;
+        }
+        @include breakpoint($bp-640-width) {
+          height: 120.3vw;
+          width: 56vw;
+        }
         &.active {
           .show-info-block {
             display: block;
           }
           a {
-            @include breakpoint($bp-min-769-width) {
-              &.close-button {
-                display: block;
-              }
+            &.close-button {
+              display: block;
             }
           }
         }
@@ -148,7 +158,7 @@
             height: 100%;
             overflow: hidden;
             position: relative;
-            width: 310px;
+            width: 100%;
           }
           &.close-button {
             display: none;
@@ -158,6 +168,12 @@
             top: 0px;
             width: 18px;
             z-index: 3;
+            @include breakpoint($bp-640-width) {
+              width: 30px;
+            }
+            @include breakpoint($bp-480-width) {
+              width: 18px;
+            }
             &:after {
               color: #ffffff;
               content: "\e607";
@@ -201,11 +217,17 @@
         .meta {
           display: table-cell;
           overflow: hidden;
-          max-width: 310px;
+          max-width: 270px;
           padding-left: 20px;
           position: relative;
           vertical-align: middle;
           width: 100%;
+          @include breakpoint($bp-1024-width) {
+            max-width: 342px;
+          }
+          @include breakpoint($bp-640-width) {
+            max-width: 56vw;
+          }
           @include breakpoint($bp-480-width) {
             margin-top: -18px;
             padding-left: 10px;
@@ -261,30 +283,6 @@
       text-transform: uppercase;
     }
   }
-  .more {
-    background: $footer-back;
-    color: #ffffff;
-    display: none;
-    float: none;
-    font-family: $avalon-demi;
-    font-size: 20px;
-    height: 98px;
-    line-height: 98px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 100%;
-    @include breakpoint($bp-768-width) {
-      display: block;
-      &.hidden {
-        display: none;
-      }
-    }
-    @include breakpoint($bp-480-width) {
-      height: 60px;
-      line-height: 60px;
-    }
-  }
   @include breakpoint($bp-768-width) {
     .show-carousel {
       margin-left: 0px;
@@ -297,10 +295,6 @@
       > ul {
         > li {
           img {
-            width: 100%;
-          }
-          a.show-open {
-            height: 100%;
             width: 100%;
           }
           .meta-back {
@@ -344,47 +338,38 @@
       }
     }
   }
-  @include breakpoint($bp-480-width) {
-    .show-carousel {
-      > ul {
-        > li {
-          height: 430px;
-          width: 200px;
-          .meta {
-            max-width: 200px;
-          }
-        }
-      }
-    }
-  }
   .show-info-block {
     background: $show-info-block;
     display: none;
-    left: 310px;
+    left: 270px;
     height: 100%;
     position: absolute;
     top: 0px;
     width: auto;
     z-index: 1; //temp value
-    @include breakpoint($between-769-1280) {
+    @include breakpoint($between-1025-1280) {
       min-width: 670px;
       width: calc(100% - #{$show-carousel-item-width});
     }
-    @include breakpoint($bp-768-width) {
-      background: $show-card-back;
-      height: 380px;
-      left: 0px;
-      position: relative;
-      width: 100%;
-      display: none;
+    @include breakpoint($bp-1024-width) {
+      left: 342px;
+      min-width: 670px;
+      width: calc(100% - #{$show-carousel-item-width-less-1024});
+    }
+    @include breakpoint($bp-640-width) {
+      left: calc(56vw - 15px);
+      min-width: 240px;
+      width: calc(100% - 56vw - 15px);
+    }
+    @include breakpoint($bp-480-width) {
+      width: calc(100% - 56vw - 3px);
     }
     .show-link {
       right: 40px;
       position: absolute;
-      top: 40px;
-      @include breakpoint($bp-768-width) {
-        bottom: 25px;
-        top: auto;
+      top: 25px;
+      @include breakpoint($bp-640-width) {
+        right: 20px;
       }
       a {
         display: block;
@@ -395,6 +380,11 @@
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
+        @include breakpoint($bp-480-width) {
+          line-height: 10px;
+          padding: 8px 20px 8px 8px;
+          font-size: 10px;
+        }
         &:after {
           color: #ffffff;
           content: "\e608";
@@ -405,6 +395,11 @@
           margin-top: -8px;
           right: 10px;
           top: 50%;
+          @include breakpoint($bp-480-width) {
+            font-size: 8px;
+            margin-top: -5px;
+            right: 6px
+          }
         }
       }
     }
@@ -421,6 +416,9 @@
       padding-top: 90px;
       top: 0px;
       width: 50px;
+      @include breakpoint($bp-768-width) {
+        display: none!important;
+      }
       a {
         display: block;
         margin: 0px 0px 20px 10px;
@@ -454,36 +452,50 @@
     .show-info-block-wrapper {
       box-shadow: inset 45px 0px 60px -8px rgba(1, 1, 1, 0.2), inset -45px 0px 60px -8px rgba(1, 1, 1, 0.2);
       height: 100%;
-      padding: 30px 40px;
+      padding: 20px 40px;
       text-transform: uppercase;
       width: 100%;
       @include breakpoint($bp-1280-width) {
         padding: 20px 40px 20px 20px;
       }
-      @include breakpoint($bp-768-width) {
-        box-shadow: inset 0px -5px 6px -2px rgba(1, 1, 1, 0.3), inset 0px 6px 7px -2px rgba(1, 1, 1, 0.5);
-        padding: 20px 0px 20px 20px;
+      @include breakpoint($bp-640-width) {
+        padding: 70px 20px 20px;
       }
     }
 
     .show-top-info {
       @include clear();
       margin-right: 130px;
-      @include breakpoint($bp-768-width) {
-        display: none;
+      @include breakpoint($bp-640-width) {
+        position: absolute;
+        height: 50px;
+        top: 13px;
       }
-
       .schedule {
         float: left;
+        @include breakpoint($bp-480-width) {
+          display: table;
+          position: relative;
+          height: 100%;
+        }
         .title {
           color: #ffffff;
           float: left;
           font-family: $avalon-demi;
           font-size: 24px;
           letter-spacing: 3px;
-          line-height: 59px;
+          line-height: 50px;
           margin-right: 27px;
           text-transform: uppercase;
+          @include breakpoint($bp-480-width) {
+            display: table-cell;
+            font-size: 16px;
+            float: none;
+            line-height: 20px;
+            margin: 0;
+            position: relative;
+            vertical-align: middle;
+          }
         }
         .time {
           float: left;
@@ -502,14 +514,24 @@
     }
 
     .show-central-info {
-      @include clear();
+      float: left;
       height: 250px;
       overflow: hidden;
-      @include breakpoint($bp-1280-width) {
-        margin-top: 10px;
+      position: relative;
+      @include breakpoint($between-1025-1280) {
+        width: 76%;
       }
-      @include breakpoint($bp-768-width) {
-        display: none;
+      @include breakpoint($bp-1024-width) {
+        float: none;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        width: 100%;
+      }
+      @include breakpoint($bp-640-width) {
+        float: left;
+        height: 30.6%;
+        margin: 0;
+        width: 49%;
       }
       .node-wrapper {
         float: left;
@@ -519,9 +541,19 @@
         position: relative;
         margin-right: 40px;
         width: 460px;
-        @include breakpoint($bp-1280-width) {
-          margin-right: 0px;
+        @include breakpoint($between-1025-1280) {
+          float: none;
+          padding-right: 360px;
+          width: 100%;
+        }
+        @include breakpoint($bp-1024-width) {
+          margin-right: 30px;
           width: 300px;
+        }
+        @include breakpoint($bp-640-width) {
+          height: 100%;
+          margin: 0;
+          width: 100%;
         }
         .node {
           height: 100%;
@@ -595,9 +627,18 @@
         height: 250px;
         margin-right: 40px;
         width: 300px;
-        @include breakpoint($bp-1280-width) {
+        @include breakpoint($between-1025-1280) {
+          margin-right: 0px;
+          right: 30px;
+          position: absolute;
+          top: 0;
+        }
+        @include breakpoint($bp-1024-width) {
           float: right;
           margin-right: 0px;
+        }
+        @include breakpoint($bp-640-width) {
+          display: none;
         }
         .advertisement {
           & a {
@@ -612,98 +653,142 @@
           }
         }
       }
-      .social {
-        @include breakpoint($bp-1280-width) {
-          display: none;
+    }
+    .show-description {
+      float: right;
+      @include breakpoint($between-1025-1280) {
+        width: 24%;
+      }
+      @include breakpoint($bp-1024-width) {
+        float: left;
+        margin-right: 2%;
+        width: 28%;
+      }
+      @include breakpoint($bp-640-width) {
+        float: right;
+        height: 30.6%;
+        margin: 0;
+        width: 49%;
+      }
+      .node {
+        background-color: $poll-back;
+        text-align: center;
+        position: relative;
+        height: 250px;
+        width: 260px;
+        @include breakpoint($between-1025-1280) {
+          width: 100%;
         }
-        .node {
-          background-color: $poll-back;
-          text-align: center;
-          position: relative;
-          height: 250px;
-          width: 260px;
-          & a {
-            display: block;
+        @include breakpoint($bp-1024-width) {
+          height: 355px;
+          width: 100%;
+        }
+        @include breakpoint($bp-640-width) {
+          height: 100%;
+          width: 100%;
+        }
+        & a {
+          display: block;
+          height: 100%;
+          text-decoration: none;
+          width: 100%;
+          .meta-wrap {
+            background: none;
+            bottom: auto;
+            color: $poll-color;
             height: 100%;
-            text-decoration: none;
-            width: 100%;
-            .meta-wrap {
-              background: none;
-              bottom: auto;
+            margin-left: 10px;
+            position: absolute;
+            text-transform: uppercase;
+            .meta {
               color: $poll-color;
-              height: 100%;
-              margin-left: 10px;
-              position: absolute;
-              text-transform: uppercase;
-              .meta {
-                color: $poll-color;
-                height: auto;
-                left: -10px;
-                overflow: hidden;
-                position: relative;
-                margin: 0 auto;
-                top: auto;
-                width: 85%;
-                &:after {
-                  display: none;
-                }
+              height: auto;
+              left: -10px;
+              overflow: hidden;
+              position: relative;
+              margin: 0 auto;
+              top: auto;
+              width: 85%;
+              &:after {
+                display: none;
               }
-              .time, .meta-additional {
-                font-family: $tex-gyreschola-italic;
-                font-size: 12px;
-                line-height: 35px;
-              }
-              .meta-social-title {
-                font-family: $avalon-demi;
-                font-size: 20px;
-                line-height: 20px;
-              }
-              .meta-text {
-                font-family: $avalon-medium;
-                font-size: 15px;
-              }
-
             }
+            .time, .meta-additional {
+              font-family: $tex-gyreschola-italic;
+              font-size: 12px;
+              line-height: 35px;
+            }
+            .meta-social-title {
+              font-family: $avalon-demi;
+              font-size: 20px;
+              line-height: 20px;
+            }
+            .meta-text {
+              font-family: $avalon-medium;
+              font-size: 15px;
+            }
+
           }
         }
       }
-
     }
-
     .show-bottom-info {
       @include clear();
+      clear: both;
       height: auto;
       position: relative;
       margin-top: 20px;
-      @include breakpoint($bp-1280-width) {
-        margin-top: 10px;
+      @include breakpoint($bp-1024-width) {
+        clear: none;
+        float: left;
+        height: 355px;
+        margin-top: 0px;
+        overflow: hidden;
+        width: 70%;
       }
       @include breakpoint($bp-768-width) {
         margin-top: 0px;
       }
-
-      .carousel-block {
-        background: none;
-        height: auto;
-        padding: 10px 0px;
-        @include breakpoint($bp-768-width) {
-          padding: 0px;
-        }
+      @include breakpoint($bp-640-width) {
+        height: 69.4%;
+        width: 100%;
       }
-      .inner-carousel {
+      ul {
+        width: 100%;
+        @include breakpoint($bp-1024-width) {
+          height: 100%;
+        }
         @include breakpoint($bp-768-width) {
           padding-left: 0px;
         }
         li {
-          height: 212.5px;
+          height: 217px;
           margin: 20px 20px 20px 0px;
           overflow: visible;
-          width: 255px;
-          @include breakpoint($bp-1280-width) {
+          width: 260px;
+          @include breakpoint($between-1025-1280) {
+            margin-right: 1.33%;
+            width: 24%;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+          @include breakpoint($bp-1024-width) {
             float: left;
-            height: 250px;
-            margin: 20px 10px 20px 0px;
-            width: 300px;
+            height: 48%;
+            margin: 0px 2% 0px 0px;
+            width: 49%;
+            &:nth-child(2), &:nth-child(4) {
+              margin-right: 0;
+            }
+            &:nth-child(1), &:nth-child(1) {
+              margin-bottom: 4%;
+            }
+          }
+          @include breakpoint($bp-640-width) {
+            height: 44.1%;
+            margin-bottom: 0px!important;
+            margin-top: 6%;
           }
           &.last-full-video {
             .meta-back {

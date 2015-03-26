@@ -431,7 +431,8 @@ $between-1281-1600: 1281px 1600px;
 $between-1281-1920: 1281px 1920px;
 
 //
-$show-carousel-item-width : 310px;
+$show-carousel-item-width : 270px;
+$show-carousel-item-width-less-1024 : 342px;
 
 //sprites/
 $sprites: sprite-map("sprites/*.png");

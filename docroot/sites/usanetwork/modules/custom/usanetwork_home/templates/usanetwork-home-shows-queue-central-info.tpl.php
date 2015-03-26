@@ -10,7 +10,7 @@
   <?php if (!empty($advert)): ?>
     <?php print $advert; ?>
   <?php endif; ?>
-  <?php if (!empty($social)): ?>
-    <?php print $social; ?>
-  <?php endif; ?>
 </div>
+<?php if (!empty($social)): ?>
+  <?php print $social; ?>
+<?php endif; ?>

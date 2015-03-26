@@ -3,9 +3,8 @@ var window_size_desktop = 1281;
 var window_size_tablet_portrait = 769;
 var window_size_tablet = 1025;
 var window_size_mobile = 481;
-var show_carousel_item_width = 310;
-var show_carousel_margin = 50;
-var desktop_show_open_width = 1490;
+var show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
+var desktop_show_open_width = 1450;
 var show_title_offset_desktop = 200;
 var show_title_offset_tablet = 160;
 var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;
@@ -45,5 +44,11 @@ function getInternetExplorerVersion()
   }
   return rv;
 }
+
+$(window).bind('resize', function () {
+
+  show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
+
+});
 
 

@@ -56,6 +56,11 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['usanetwork_menu_sm_all_shows'] = array(
+    'info' => t('Homepage Menu: Shows: All Shows'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
   $blocks['usanetwork_menu_sm_primetime'] = array(
     'info' => t('Homepage Menu: Primetime tonight'),
     'cache' => DRUPAL_NO_CACHE,
@@ -121,6 +126,11 @@ function usanetwork_menu_block_view($delta = '') {
       $block['content'] = _usanetwork_menu_main_menu_block();
       break;
 
+    case 'usanetwork_menu_sm_all_shows':
+      $block['subject'] = t('Current Shows');
+      $block['content'] = _usanetwork_menu_all_shows_block(TRUE);
+      break;
+
     case 'usanetwork_menu_sm_primetime':
       $block['subject'] = t('Primetime tonight');
       $block['content'] = _usanetwork_menu_show_menu_primetime_block();
@@ -150,7 +160,7 @@ function usanetwork_menu_block_view($delta = '') {
 
     case 'usanetwork_menu_fm_shows':
       $block['subject'] = t('Shows');
-      $block['content'] = usanetwork_tv_shows_footer_links();
+      $block['content'] = _usanetwork_menu_all_shows_block(FALSE);
       break;
 
     case 'usanetwork_menu_fm_apps_services':
@@ -380,6 +390,51 @@ function _usanetwork_menu_main_menu_block() {
       )
     ),
   ));
+}
+
+/**
+ * Render shows menu items
+ */
+function _usanetwork_menu_all_shows_block($header = TRUE) {
+  $query_result = views_get_view_result('usa_nav', 'block');
+  $links = array();
+  foreach ($query_result as $row) {
+    $new = '';
+    if (!$header) {
+      if ($row->flag_content_node_timestamp) {
+        $new = '<span>' . t('New!') . '</span> ';
+      }
+    }
+    $links[] = array(
+      'data' => l($new . $row->node_title, 'node/' . $row->nid, array('html' => TRUE)),
+      'class' => array(
+        'menu-item'
+      ),
+    );
+  }
+  return theme('usanetwork_item_list', array(
+      'warpper_attributes' => array(
+        'class' => array(
+          'shows-menu',
+        ),
+      ),
+      'title_tag' => 'h2',
+      'title_attributes' => array(
+        'class' => array(
+          'menu-title',
+          'shows-menu-title',
+        ),
+      ),
+      'title' => t('Shows'),
+      'items' => $links,
+      'type' => 'ul',
+      'attributes' => array(
+        'class' => array(
+          'menu'
+        )
+      ),
+    )
+  );
 }
 
 /**

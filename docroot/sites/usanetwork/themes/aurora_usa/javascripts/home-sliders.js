@@ -90,6 +90,7 @@
           speed: 1000,
           pause: 10000,
           useCSS: false,
+          preloadImages: 'all',
           onSlideBefore: hideFocusSlide,
           onSlideAfter: showFocusSlide,
           onSliderLoad: function(el, slide, old, active){

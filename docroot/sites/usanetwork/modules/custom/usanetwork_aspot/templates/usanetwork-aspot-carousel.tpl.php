@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="bx-preload" style="display: none;">
+<div class="bx-preload" style="visibility: hidden; height: 0;">
 <?php if (!empty($slides)): ?>
   <div class="next-button"></div>
   <div class="slider">

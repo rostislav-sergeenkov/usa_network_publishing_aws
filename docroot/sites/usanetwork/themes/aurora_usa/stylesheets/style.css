@@ -10919,7 +10919,12 @@ footer h2 {
   box-shadow: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
   width: 18px;
 }
-@media (max-width: 640px) {
+@media (min-width: 1920px) {
+  .shows-block .show-carousel > ul > li.active > .node:before {
+    width: 30px;
+  }
+}
+@media (max-width: 768px) {
   .shows-block .show-carousel > ul > li.active > .node:before {
     width: 30px;
   }
@@ -10950,6 +10955,11 @@ footer h2 {
     -moz-transition: all 0.3s ease-out 0s;
     -o-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
+  }
+}
+@media (min-width: 769px) and (min-width: 1920px) {
+  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:before {
+    width: 30px;
   }
 }
 @media (min-width: 769px) {
@@ -11007,10 +11017,16 @@ footer h2 {
   float: left;
   height: 580px;
   margin: 0;
-  max-width: 1450px;
+  max-width: 2183px;
   overflow: hidden;
   position: relative;
   width: 270px;
+}
+@media (min-width: 1920px) {
+  .shows-block .carousel ul li {
+    height: 973px;
+    width: 453px;
+  }
 }
 @media (max-width: 1024px) {
   .shows-block .carousel ul li {
@@ -11018,7 +11034,7 @@ footer h2 {
     width: 342px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .carousel ul li {
     height: 120.3vw;
     width: 56vw;
@@ -11046,7 +11062,12 @@ footer h2 {
   width: 18px;
   z-index: 3;
 }
-@media (max-width: 640px) {
+@media (min-width: 1920px) {
+  .shows-block .carousel ul li a.close-button {
+    width: 30px;
+  }
+}
+@media (max-width: 768px) {
   .shows-block .carousel ul li a.close-button {
     width: 30px;
   }
@@ -11104,12 +11125,17 @@ footer h2 {
   vertical-align: middle;
   width: 100%;
 }
+@media (min-width: 1920px) {
+  .shows-block .carousel ul li .meta {
+    max-width: 453px;
+  }
+}
 @media (max-width: 1024px) {
   .shows-block .carousel ul li .meta {
     max-width: 342px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .carousel ul li .meta {
     max-width: 56vw;
   }
@@ -11232,6 +11258,13 @@ footer h2 {
   width: auto;
   z-index: 1;
 }
+@media (min-width: 1920px) {
+  .shows-block .show-info-block {
+    left: 453px;
+    min-width: 1730px;
+    width: calc(100% - 453px);
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .shows-block .show-info-block {
     min-width: 670px;
@@ -11245,7 +11278,7 @@ footer h2 {
     width: calc(100% - 342px);
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block {
     left: calc(56vw - 15px);
     min-width: 240px;
@@ -11262,7 +11295,13 @@ footer h2 {
   position: absolute;
   top: 25px;
 }
-@media (max-width: 640px) {
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-link {
+    right: 60px;
+    top: 65px;
+  }
+}
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-link {
     right: 20px;
   }
@@ -11276,6 +11315,13 @@ footer h2 {
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
+}
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-link a {
+    font-size: 20px;
+    line-height: 20px;
+    padding: 12px 30px 12px 12px;
+  }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-link a {
@@ -11294,6 +11340,12 @@ footer h2 {
   margin-top: -8px;
   right: 10px;
   top: 50%;
+}
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-link a:after {
+    font-size: 14px;
+    margin-top: -11px;
+  }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-link a:after {
@@ -11315,6 +11367,12 @@ footer h2 {
   padding-top: 90px;
   top: 0px;
   width: 50px;
+}
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .social-icons {
+    left: -90px;
+    width: 90px;
+  }
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .social-icons {
@@ -11449,12 +11507,17 @@ footer h2 {
   text-transform: uppercase;
   width: 100%;
 }
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-info-block-wrapper {
+    padding: 60px;
+  }
+}
 @media (max-width: 1280px) {
   .shows-block .show-info-block .show-info-block-wrapper {
     padding: 20px 40px 20px 20px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-info-block-wrapper {
     padding: 70px 20px 20px;
   }
@@ -11467,7 +11530,12 @@ footer h2 {
   content: '';
   display: table;
 }
-@media (max-width: 640px) {
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-top-info {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-top-info {
     position: absolute;
     height: 50px;
@@ -11493,6 +11561,11 @@ footer h2 {
   line-height: 50px;
   margin-right: 27px;
   text-transform: uppercase;
+}
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-top-info .schedule .title {
+    font-size: 32px;
+  }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-top-info .schedule .title {
@@ -11524,6 +11597,12 @@ footer h2 {
   overflow: hidden;
   position: relative;
 }
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-central-info {
+    height: 378px;
+    margin-bottom: 75px;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .shows-block .show-info-block .show-central-info {
     width: 76%;
@@ -11537,7 +11616,7 @@ footer h2 {
     width: 100%;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-central-info {
     float: left;
     height: 30.6%;
@@ -11554,6 +11633,12 @@ footer h2 {
   margin-right: 40px;
   width: 460px;
 }
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-central-info .promo {
+    height: 378px;
+    width: 689px;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .shows-block .show-info-block .show-central-info .promo {
     float: none;
@@ -11563,11 +11648,11 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .shows-block .show-info-block .show-central-info .promo {
-    margin-right: 30px;
+    margin-right: 0px;
     width: 300px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-central-info .promo {
     height: 100%;
     margin: 0;
@@ -11649,6 +11734,13 @@ footer h2 {
   margin-right: 40px;
   width: 300px;
 }
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-central-info .advert {
+    display: none;
+    height: 315px;
+    width: 378px;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .shows-block .show-info-block .show-central-info .advert {
     margin-right: 0px;
@@ -11663,7 +11755,7 @@ footer h2 {
     margin-right: 0px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-central-info .advert {
     display: none;
   }
@@ -11680,6 +11772,12 @@ footer h2 {
 .shows-block .show-info-block .show-description {
   float: right;
 }
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-description {
+    height: 378px;
+    width: 387px;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .shows-block .show-info-block .show-description {
     width: 24%;
@@ -11688,15 +11786,16 @@ footer h2 {
 @media (max-width: 1024px) {
   .shows-block .show-info-block .show-description {
     float: left;
-    margin-right: 2%;
-    width: 28%;
+    padding-right: 8.5px;
+    width: calc(100% - 427px);
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-description {
     float: right;
     height: 30.6%;
     margin: 0;
+    padding-right: 0px;
     width: 49%;
   }
 }
@@ -11706,6 +11805,12 @@ footer h2 {
   position: relative;
   height: 250px;
   width: 260px;
+}
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-description .node {
+    height: 378px;
+    width: 387px;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .shows-block .show-info-block .show-description .node {
@@ -11718,7 +11823,7 @@ footer h2 {
     width: 100%;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-description .node {
     height: 100%;
     width: 100%;
@@ -11780,20 +11885,16 @@ footer h2 {
 @media (max-width: 1024px) {
   .shows-block .show-info-block .show-bottom-info {
     clear: none;
-    float: left;
+    float: right;
     height: 355px;
     margin-top: 0px;
     overflow: hidden;
-    width: 70%;
+    width: 427px;
   }
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .show-bottom-info {
-    margin-top: 0px;
-  }
-}
-@media (max-width: 640px) {
-  .shows-block .show-info-block .show-bottom-info {
+    float: none;
     height: 69.4%;
     width: 100%;
   }
@@ -11816,6 +11917,13 @@ footer h2 {
   margin: 20px 20px 20px 0px;
   overflow: visible;
   width: 260px;
+}
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-bottom-info ul li {
+    height: 320px;
+    margin: 20px 26px 20px 0px;
+    width: 383px;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .shows-block .show-info-block .show-bottom-info ul li {
@@ -11840,7 +11948,7 @@ footer h2 {
     margin-bottom: 4%;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-bottom-info ul li {
     height: 44.1%;
     margin-bottom: 0px !important;
@@ -21680,13 +21788,13 @@ yx-axis
   margin-right: 120px;
   position: relative;
 }
-@media (min-width: 1281px) and (max-width: 1920px) {
+@media (min-width: 1281px) and (max-width: 1919px) {
   .schedule-on-tonight {
     margin-right: 9.375vw;
     height: 9.375vw;
   }
 }
-@media (min-width: 1921px) {
+@media (min-width: 1920px) {
   .schedule-on-tonight {
     margin-right: 180px;
     height: 180px;
@@ -21711,7 +21819,7 @@ yx-axis
   width: 120px;
   z-index: 1;
 }
-@media (min-width: 1281px) and (max-width: 1920px) {
+@media (min-width: 1281px) and (max-width: 1919px) {
   .schedule-on-tonight .view-schedule {
     min-width: 120px;
     max-width: 180px;
@@ -21720,7 +21828,7 @@ yx-axis
     width: 9.375vw;
   }
 }
-@media (min-width: 1921px) {
+@media (min-width: 1920px) {
   .schedule-on-tonight .view-schedule {
     height: 180px;
     right: -180px;
@@ -21775,7 +21883,7 @@ yx-axis
   -o-transition-timing-function: ease;
   transition-timing-function: ease;
 }
-@media (min-width: 1281px) and (max-width: 1920px) {
+@media (min-width: 1281px) and (max-width: 1919px) {
   .schedule-on-tonight .schedule-buttons {
     min-width: 120px;
     max-width: 180px;
@@ -21783,7 +21891,7 @@ yx-axis
     width: 9.375vw;
   }
 }
-@media (min-width: 1921px) {
+@media (min-width: 1920px) {
   .schedule-on-tonight .schedule-buttons {
     height: 180px;
     width: 180px;
@@ -21796,12 +21904,12 @@ yx-axis
   left: 100%;
   margin-left: -120px;
 }
-@media (min-width: 1281px) and (max-width: 1920px) {
+@media (min-width: 1281px) and (max-width: 1919px) {
   .schedule-on-tonight .schedule-buttons.on-now {
     margin-left: -9.375vw;
   }
 }
-@media (min-width: 1921px) {
+@media (min-width: 1920px) {
   .schedule-on-tonight .schedule-buttons.on-now {
     margin-left: 180px;
   }
@@ -21916,12 +22024,12 @@ yx-axis
 .schedule-on-tonight .schedule-block.on-tonight {
   margin-left: 120px;
 }
-@media (min-width: 1281px) and (max-width: 1920px) {
+@media (min-width: 1281px) and (max-width: 1919px) {
   .schedule-on-tonight .schedule-block.on-tonight {
     margin-left: 9.375vw;
   }
 }
-@media (min-width: 1921px) {
+@media (min-width: 1920px) {
   .schedule-on-tonight .schedule-block.on-tonight {
     margin-left: 180px;
   }
@@ -21969,12 +22077,12 @@ yx-axis
 .schedule-on-tonight .schedule-block.on-now {
   margin-right: 120px;
 }
-@media (min-width: 1281px) and (max-width: 1920px) {
+@media (min-width: 1281px) and (max-width: 1919px) {
   .schedule-on-tonight .schedule-block.on-now {
     margin-right: 9.375vw;
   }
 }
-@media (min-width: 1921px) {
+@media (min-width: 1920px) {
   .schedule-on-tonight .schedule-block.on-now {
     margin-right: 180px;
   }
@@ -22050,7 +22158,7 @@ yx-axis
   margin-right: 25px;
   text-transform: uppercase;
 }
-@media (min-width: 1921px) {
+@media (min-width: 1920px) {
   .schedule-on-tonight .schedule-block .time {
     margin-left: 112px;
   }
@@ -22153,7 +22261,7 @@ yx-axis
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 1921px) {
+@media (min-width: 1920px) {
   .schedule-on-tonight .schedule-block .episode-show {
     max-width: 135px;
   }

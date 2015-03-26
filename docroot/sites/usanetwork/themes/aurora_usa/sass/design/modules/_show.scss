@@ -33,7 +33,10 @@
             -o-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
             box-shadow: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
             width: 18px;
-            @include breakpoint($bp-640-width) {
+            @include breakpoint($bp-min-1920-width) {
+              width: 30px;
+            }
+            @include breakpoint($bp-768-width) {
               width: 30px;
             }
             @include breakpoint($bp-480-width) {
@@ -54,6 +57,9 @@
                 -o-transition: all 0.3s ease-out 0s;
                 transition: all 0.3s ease-out 0s;
                 width: 18px;
+                @include breakpoint($bp-min-1920-width) {
+                  width: 30px;
+                }
               }
               .desktop {
                 opacity:0.8;
@@ -130,15 +136,19 @@
         float: left;
         height: 580px;
         margin: 0;
-        max-width: 1450px;
+        max-width: 2183px;
         overflow: hidden;
         position: relative;
         width: 270px;
+        @include breakpoint($bp-min-1920-width) {
+          height: 973px;
+          width: 453px;
+        }
         @include breakpoint($bp-1024-width) {
           height: 734px;
           width: 342px;
         }
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($bp-768-width) {
           height: 120.3vw;
           width: 56vw;
         }
@@ -168,7 +178,10 @@
             top: 0px;
             width: 18px;
             z-index: 3;
-            @include breakpoint($bp-640-width) {
+            @include breakpoint($bp-min-1920-width) {
+              width: 30px;
+            }
+            @include breakpoint($bp-768-width) {
               width: 30px;
             }
             @include breakpoint($bp-480-width) {
@@ -222,10 +235,13 @@
           position: relative;
           vertical-align: middle;
           width: 100%;
+          @include breakpoint($bp-min-1920-width) {
+            max-width: 453px;
+          }
           @include breakpoint($bp-1024-width) {
             max-width: 342px;
           }
-          @include breakpoint($bp-640-width) {
+          @include breakpoint($bp-768-width) {
             max-width: 56vw;
           }
           @include breakpoint($bp-480-width) {
@@ -347,6 +363,11 @@
     top: 0px;
     width: auto;
     z-index: 1; //temp value
+    @include breakpoint($bp-min-1920-width) {
+      left: 453px;
+      min-width: 1730px;
+      width: calc(100% - 453px);
+    }
     @include breakpoint($between-1025-1280) {
       min-width: 670px;
       width: calc(100% - #{$show-carousel-item-width});
@@ -356,7 +377,7 @@
       min-width: 670px;
       width: calc(100% - #{$show-carousel-item-width-less-1024});
     }
-    @include breakpoint($bp-640-width) {
+    @include breakpoint($bp-768-width) {
       left: calc(56vw - 15px);
       min-width: 240px;
       width: calc(100% - 56vw - 15px);
@@ -368,7 +389,11 @@
       right: 40px;
       position: absolute;
       top: 25px;
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-min-1920-width) {
+        right: 60px;
+        top: 65px;
+      }
+      @include breakpoint($bp-768-width) {
         right: 20px;
       }
       a {
@@ -380,6 +405,11 @@
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
+        @include breakpoint($bp-min-1920-width) {
+          font-size: 20px;
+          line-height: 20px;
+          padding: 12px 30px 12px 12px;
+        }
         @include breakpoint($bp-480-width) {
           line-height: 10px;
           padding: 8px 20px 8px 8px;
@@ -395,6 +425,10 @@
           margin-top: -8px;
           right: 10px;
           top: 50%;
+          @include breakpoint($bp-min-1920-width) {
+            font-size: 14px;
+            margin-top: -11px;
+          }
           @include breakpoint($bp-480-width) {
             font-size: 8px;
             margin-top: -5px;
@@ -416,6 +450,10 @@
       padding-top: 90px;
       top: 0px;
       width: 50px;
+      @include breakpoint($bp-min-1920-width) {
+        left: -90px;
+        width: 90px;
+      }
       @include breakpoint($bp-768-width) {
         display: none!important;
       }
@@ -455,10 +493,13 @@
       padding: 20px 40px;
       text-transform: uppercase;
       width: 100%;
+      @include breakpoint($bp-min-1920-width) {
+        padding: 60px;
+      }
       @include breakpoint($bp-1280-width) {
         padding: 20px 40px 20px 20px;
       }
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-768-width) {
         padding: 70px 20px 20px;
       }
     }
@@ -466,7 +507,10 @@
     .show-top-info {
       @include clear();
       margin-right: 130px;
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-min-1920-width) {
+        margin-bottom: 10px;
+      }
+      @include breakpoint($bp-768-width) {
         position: absolute;
         height: 50px;
         top: 13px;
@@ -487,6 +531,9 @@
           line-height: 50px;
           margin-right: 27px;
           text-transform: uppercase;
+          @include breakpoint($bp-min-1920-width) {
+            font-size: 32px;
+          }
           @include breakpoint($bp-480-width) {
             display: table-cell;
             font-size: 16px;
@@ -518,6 +565,10 @@
       height: 250px;
       overflow: hidden;
       position: relative;
+      @include breakpoint($bp-min-1920-width) {
+        height: 378px;
+        margin-bottom: 75px;
+      }
       @include breakpoint($between-1025-1280) {
         width: 76%;
       }
@@ -527,7 +578,7 @@
         margin-top: 10px;
         width: 100%;
       }
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-768-width) {
         float: left;
         height: 30.6%;
         margin: 0;
@@ -541,16 +592,20 @@
         position: relative;
         margin-right: 40px;
         width: 460px;
+        @include breakpoint($bp-min-1920-width) {
+          height: 378px;
+          width: 689px;
+        }
         @include breakpoint($between-1025-1280) {
           float: none;
           padding-right: 360px;
           width: 100%;
         }
         @include breakpoint($bp-1024-width) {
-          margin-right: 30px;
+          margin-right: 0px;
           width: 300px;
         }
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($bp-768-width) {
           height: 100%;
           margin: 0;
           width: 100%;
@@ -627,6 +682,11 @@
         height: 250px;
         margin-right: 40px;
         width: 300px;
+        @include breakpoint($bp-min-1920-width) {
+          display: none;
+          height: 315px;
+          width: 378px;
+        }
         @include breakpoint($between-1025-1280) {
           margin-right: 0px;
           right: 30px;
@@ -637,7 +697,7 @@
           float: right;
           margin-right: 0px;
         }
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($bp-768-width) {
           display: none;
         }
         .advertisement {
@@ -656,18 +716,23 @@
     }
     .show-description {
       float: right;
+      @include breakpoint($bp-min-1920-width) {
+        height: 378px;
+        width: 387px;
+      }
       @include breakpoint($between-1025-1280) {
         width: 24%;
       }
       @include breakpoint($bp-1024-width) {
         float: left;
-        margin-right: 2%;
-        width: 28%;
+        padding-right: 8.5px;
+        width: calc(100% - 427px);
       }
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-768-width) {
         float: right;
         height: 30.6%;
         margin: 0;
+        padding-right: 0px;
         width: 49%;
       }
       .node {
@@ -676,6 +741,10 @@
         position: relative;
         height: 250px;
         width: 260px;
+        @include breakpoint($bp-min-1920-width) {
+          height: 378px;
+          width: 387px;
+        }
         @include breakpoint($between-1025-1280) {
           width: 100%;
         }
@@ -683,7 +752,7 @@
           height: 355px;
           width: 100%;
         }
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($bp-768-width) {
           height: 100%;
           width: 100%;
         }
@@ -740,16 +809,14 @@
       margin-top: 20px;
       @include breakpoint($bp-1024-width) {
         clear: none;
-        float: left;
+        float: right;
         height: 355px;
         margin-top: 0px;
         overflow: hidden;
-        width: 70%;
+        width: 427px;
       }
       @include breakpoint($bp-768-width) {
-        margin-top: 0px;
-      }
-      @include breakpoint($bp-640-width) {
+        float: none;
         height: 69.4%;
         width: 100%;
       }
@@ -766,6 +833,11 @@
           margin: 20px 20px 20px 0px;
           overflow: visible;
           width: 260px;
+          @include breakpoint($bp-min-1920-width) {
+            height: 320px;
+            margin: 20px 26px 20px 0px;
+            width: 383px;
+          }
           @include breakpoint($between-1025-1280) {
             margin-right: 1.33%;
             width: 24%;
@@ -785,7 +857,7 @@
               margin-bottom: 4%;
             }
           }
-          @include breakpoint($bp-640-width) {
+          @include breakpoint($bp-768-width) {
             height: 44.1%;
             margin-bottom: 0px!important;
             margin-top: 6%;

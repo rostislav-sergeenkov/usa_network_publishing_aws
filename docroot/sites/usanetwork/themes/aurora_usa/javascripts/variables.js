@@ -1,10 +1,12 @@
 var $ = jQuery;
+var window_size_desktop_large = 1920;
 var window_size_desktop = 1281;
 var window_size_tablet_portrait = 769;
 var window_size_tablet = 1025;
 var window_size_mobile = 481;
 var show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
 var desktop_show_open_width = 1450;
+var desktop_show_open_width_large = 2183;
 var show_title_offset_desktop = 200;
 var show_title_offset_tablet = 160;
 var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;

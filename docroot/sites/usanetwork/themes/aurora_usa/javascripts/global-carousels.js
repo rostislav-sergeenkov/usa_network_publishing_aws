@@ -338,12 +338,13 @@
       var current_left = parseInt(carousel.css('left'));
       var width = desktop_show_open_width;
       var item_width = current_item.width();
+      if (window.innerWidth >= window_size_desktop_large) {
+        var width = desktop_show_open_width_large;
+      }
       if (window.innerWidth < window_size_desktop) {
         width = window.innerWidth - 2*show_carousel_margin + item_width;
-        console.info(width);
       }
       var width_block = width - item_width;
-      console.info(width);
       var left = (window.innerWidth - width_block) / 2 - item_width - current_item.offset()['left'] + current_left;
       carousel.animate({left: left}, 500);
       current_item.animate({width: width}, 500, 'easeInCubic');

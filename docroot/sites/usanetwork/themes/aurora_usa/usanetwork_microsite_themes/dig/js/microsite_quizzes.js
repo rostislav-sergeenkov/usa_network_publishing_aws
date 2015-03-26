@@ -45,9 +45,9 @@
       }
     },
 
-    micrositeUpdateSettingsGigyaSharebars: function(title, link, description) {
+    micrositeUpdateSettingsGigyaSharebars: function(title, link, description, imageUrl) {
       Drupal.settings.gigyaSharebars = [];
-      Drupal.settings.gigyaSharebars = [{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "quiz-gigya-share","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--2","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "default","imageUrl": ""},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--3","showCounts": "none","layout": "horizontal","iconsOnly": true}}];
+      Drupal.settings.gigyaSharebars = [{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "url","imageUrl": imageUrl},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "quiz-gigya-share","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "url","imageUrl": imageUrl},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--2","showCounts": "none","layout": "horizontal","iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link,"title": title,"description": description,"imageBhev": "url","imageUrl": imageUrl},"shareButtons": "facebook, twitter, tumblr, pinterest, share","shortURLs": "never","containerID": "gigya-share--3","showCounts": "none","layout": "horizontal","iconsOnly": true}}];
     },
 
     micrositeResetOmnitureClicks: function(activeQuizNid) {
@@ -94,7 +94,6 @@
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
 //usa_debug('================== settings.usanetwork_quiz: ');
 //usa_debug(settings.usanetwork_quiz);
-//            var quizes = settings.usanetwork_quiz;
             var quiz_setting = settings.usanetwork_quiz; // quizes[nid];
             var quizShow = quiz_setting['quizShow'],
             quizTitle = quiz_setting['quizTitle'],
@@ -169,12 +168,12 @@
     },
 
     micrositeSwitchQuizzes: function(quizNodeId, callback) {
-      Drupal.behaviors.micrositeQuizzesBxSliders.quizIsLoading = true;
-      Drupal.behaviors.micrositeQuizzesBxSliders.showHideLoader();
-
       var currentQuizNodeId = $('#microsite #quizzes article').attr('id').replace('node-', '');
 
       if (currentQuizNodeId != quizNodeId) {
+        Drupal.behaviors.microsite_quizzes.quizIsLoading = true;
+        Drupal.behaviors.microsite_quizzes.showHideLoader();
+
         var newQuiz = $.ajax({
           url: '/ajax/get-quiz/' + quizNodeId,
           type: 'GET',
@@ -195,65 +194,66 @@
 
           if (typeof callback == 'function') callback();
 
-          // change quiz title
-          $('#microsite #quizzes .full-pane > h1, #microsite #quizzes .full-pane > h3').animate({'opacity': 0}, 1000, function(){
-            if ($(this).hasClass('seo-h1')) {
-              $(this).html(data.h1).animate({'opacity': 1}, 1000);
-            }
-            else {
-              $(this).html(data.title).animate({'opacity': 1}, 1000);
-            }
-          });
-
           // change quiz
+          // quiz is hidden here
           activeQuizContainer.find('li').attr({'id': 'quiz-' + data.nid, 'data-node-id': data.nid}).animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
+
+            // change quiz title
+            $('#microsite #quizzes .full-pane > h1, #microsite #quizzes .full-pane > h3').animate({'opacity': 0}, 1000, function(){
+              if ($(this).hasClass('seo-h1')) {
+                $(this).html(data.h1).animate({'opacity': 1}, 1000);
+              }
+              else {
+                $(this).html(data.title).animate({'opacity': 1}, 1000);
+              }
+            });
 
             // @TODO: DV: The following line of code was added because the
             // Dig microsite has more than one #gigya-share element in the html,
             // which breaks the Gigya share bar. Is there a better way to
             // fix this?
             $(this).html(data.quiz_html.replace('id="gigya-share"', 'id="quiz-gigya-share"'));
-            activeQuizContainer.find('li#quiz-' + data.nid).animate({'opacity': 1}, 1000, function(){
-              // reset Gigya share bar
-              var link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + data.url;
 
+            // reset Gigya share bar
+            var link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + Drupal.settings.quizzes[quizNodeId].url,
+                imageUrl = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img').attr('src');
+            // reset Gigya share bar
+            Drupal.behaviors.microsite_quizzes.micrositeUpdateSettingsGigyaSharebars(data.title, link, data.description, imageUrl);
+            // show Gigya share bar
+            Drupal.behaviors.microsite_quizzes.micrositeInitGigyaSharebar();
+
+            // reset quiz to track clicks in Omniture
+            Drupal.behaviors.microsite_quizzes.micrositeResetOmnitureClicks(data.nid);
+
+            // re-initialize quiz
+            Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
+
+            // get js from custom field for current quiz
+            Drupal.behaviors.microsite_quizzes.micrositeGetCustomJs(data.nid);
+
+            // show the quiz now
+            activeQuizContainer.find('li#quiz-' + data.nid).animate({'opacity': 1}, 1000, function(){
               // send Omniture data
               Drupal.behaviors.microsite_quizzes.micrositeSetOmnitureData(data.title);
 
-              // reset quiz to track clicks in Omniture
-              Drupal.behaviors.microsite_quizzes.micrositeResetOmnitureClicks(data.nid);
-
-              // re-initialize quiz
-              Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
-
-              // update 300x250 ad, if needed
-              setTimeout(function(){
+//              setTimeout(function(){
                 // refresh the 728x90 ad
                 Drupal.behaviors.microsite_scroll.create728x90Ad();
 
                 // show 300x250 ad on splash page
                 Drupal.behaviors.microsite_quizzes.micrositeInit300x250Ad(data.nid);
-
-                // show Gigya share bar
-                Drupal.behaviors.microsite_quizzes.micrositeInitGigyaSharebar();
-
-                // reset Gigya share bar
-                Drupal.behaviors.microsite_quizzes.micrositeUpdateSettingsGigyaSharebars(data.title, link, data.description);
-              }, 1000);
-
-
-              // get js from custom field for current quiz
-              Drupal.behaviors.microsite_quizzes.micrositeGetCustomJs(data.nid);
+//              }, 1000);
 
               // set url
               Drupal.behaviors.microsite_scroll.micrositeChangeUrl('quizzes', link);
 
-              // change quiz navigation
+              // update quiz navigation
               quizzesNav.find('li.active').removeClass('active disabled');
               quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
 
-              Drupal.behaviors.micrositeQuizzesBxSliders.quizIsLoading = false;
-              Drupal.behaviors.micrositeQuizzesBxSliders.showHideLoader();
+              // hide loader
+              Drupal.behaviors.microsite_quizzes.quizIsLoading = false;
+              Drupal.behaviors.microsite_quizzes.showHideLoader();
             });
           });
         })
@@ -261,46 +261,181 @@
           usa_debug('********************\najax fail: ');
           usa_debug(errorThrown);
         });
-
+      }
+      else {
+        // already looking at this quiz, so do nothing
       }
     },
 
+
+    // QUIZ NAVIGATION CODE
+    activeQuizNavItem: null,
+    quizIsLoading: null,
+
+    getNumSlidesToDisplay: function() {
+      var wwidth = $(window).width(),
+          numSlides = 3;
+
+      return numSlides;
+    },
+
+    showHidePager: function(quizId, numQuizzesShown) {
+      // set quiz nav container width
+      var $quizNavContainer = $('#microsite #quizzes ' + quizId),
+          numQuizzes = $quizNavContainer.find('li').length,
+          widthOneQuizNavItem = $quizNavContainer.find('li').width(),
+          finalWidthQuizNav = Math.ceil(numQuizzesShown * (widthOneQuizNavItem + 10));
+      $quizNavContainer.find('.bxslider-container').width(finalWidthQuizNav);
+
+      // show or hide the pager
+      if (numQuizzes > numQuizzesShown) {
+        $quizNavContainer.find('.quizzes-page-controls').show();
+      }
+      else {
+        $quizNavContainer.find('.quizzes-page-controls').hide();
+      }
+//usa_debug('================== showHidePager(' + quizId + ', ' + numQuizzesShown + ')\nnumQuizzes: ' + numQuizzes + '\nfinalWidthQuizNav: ' + finalWidthQuizNav);
+    },
+
+    setActiveQuizHeight: function() {
+      var activeQuiz = $('#microsite #quizzes-content .flexslider'),
+          activeQuizWidth = activeQuiz.width(),
+          newHeight = Math.ceil(activeQuizWidth * 9/16);
+      $('#microsite #quizzes-content .flexslider').height(newHeight);
+    },
+
+    setActiveQuizNav: function() {
+      var activeQuizNid = $('#microsite #quizzes-content #viewport > li').attr('data-node-id');
+      $('#quizzes .quizzes-nav-bxslider li').removeClass('active');
+      $('#quizzes .quizzes-nav-bxslider li[data-node-id="' + activeQuizNid + '"]').addClass('active');
+    },
+
+    showHideLoader: function() {
+      var activeQuiz = $('#quizzes #viewport li'),
+          qLoader = $('#quizzes #quiz-loader'),
+          qHeight = activeQuiz.height();
+
+      qLoader.height(qHeight);
+
+      if (Drupal.behaviors.microsite_quizzes.quizIsLoading) {
+        // show spinner
+        qLoader.show().animate({'opacity': 1}, 1000);
+      } else {
+        // hide spinner
+        qLoader.animate({'opacity': 0}, 1000).delay(1000).hide();
+      }
+    },
+
+    micrositeReloadSliders: function() {
+      $('#microsite #quizzes .bxslider-container').width('100%');
+
+      // set defaults
+      var wwidth = $(window).width(),
+          transitionWidth = 640,
+          numSlides = Drupal.behaviors.microsite_quizzes.getNumSlidesToDisplay(),
+          slideWidth = (wwidth > transitionWidth) ? 250 : 140,
+          slideMargin = 10;
+
+      Drupal.behaviors.microsite_quizzes.setActiveQuizHeight();
+
+      if (typeof Drupal.behaviors.microsite_quizzes.quizBxSlider == 'object') {
+        Drupal.behaviors.microsite_quizzes.quizBxSlider.reloadSlider({
+          slideWidth: slideWidth,
+          minSlides: numSlides,
+          maxSlides: numSlides,
+          slideMargin: slideMargin,
+          nextSelector: '#quizzes-nav-next',
+          prevSelector: '#quizzes-nav-prev',
+          nextText: 'Next',
+          prevText: 'Previous',
+          pagerSelector: '#quizzes-nav-pagers',
+          infiniteLoop: false,
+          hideControlOnEnd: true,
+          onSliderLoad: function(){
+            Drupal.behaviors.microsite_quizzes.showHidePager('#quizzes-nav', numSlides);
+            $('#microsite #quizzes #quizzes-nav-page-controls').animate({ 'opacity': 1 }, 1000, 'jswing');
+          }
+        });
+      }
+
+      $('#quizzes .quizzes-nav-bxslider li[data-node-id="' + Drupal.behaviors.microsite_quizzes.activeQuizNavItem + '"]').addClass('active');
+    },
+
+    // ATTACH
     attach: function (context, settings) {
       var self = this;
 
-      // reset Gigya share bar
-      // @TODO: DV added the following reset for Gigya sharebar settings
-      // because there is more than one #gigya-share element in the Dig
-      // microsite html, which breaks the sharebar on page load. Is there a
-      // better way to fix this?
-      var quizId = $('#microsite #quizzes #viewport li').attr('data-node-id'),
-          quiz = Drupal.settings.usanetwork_quiz[quizId],
-          link = window.location.protocol + '//' + window.location.hostname + $('#microsite #quizzes #quizzes-nav-list li#nav-quiz-' + quizId + ' a').attr('href'); //Drupal.settings.microsites_settings.base_path + '/quizzes/' + quiz.url;
-///usa_debug('==================== link: ' + link);
-//usa_debug('===================== quiz: ');
-//usa_debug(quiz);
-      self.micrositeUpdateSettingsGigyaSharebars(quiz.quizTitle, link, quiz.quizDescription);
-      $('#microsite #quizzes #gigya-share').attr('id', 'quiz-gigya-share');
+      // check to see if there is a quizzes section
+      if ($('#microsite #quizzes').length > 0) {
+        // reset Gigya share bar
+        // @TODO: DV added the following reset for Gigya sharebar settings
+        // because there is more than one #gigya-share element in the Dig
+        // microsite html, which breaks the sharebar on page load. Is there a
+        // better way to fix this?
+        var quizId = $('#microsite #quizzes #viewport li').attr('data-node-id'),
+            quiz = Drupal.settings.usanetwork_quiz[quizId],
+            link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + Drupal.settings.quizzes[quizId].url,
+            imageUrl = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img').attr('src');
+  //usa_debug('==================== link: ' + link + '\nquiz: ');
+  //usa_debug(quiz);
+        $('#microsite #quizzes #gigya-share').attr('id', 'quiz-gigya-share');
+        self.micrositeUpdateSettingsGigyaSharebars(quiz.quizTitle, link, quiz.quizDescription, imageUrl);
 
-      setTimeout(function(){
-        // load Gigya share bar
-        self.micrositeInitGigyaSharebar();
-      }, 500);
+  //      setTimeout(function(){
+          // load Gigya share bar
+          self.micrositeInitGigyaSharebar();
+  //      }, 500);
 
 
-      if ($('#quizzes').length > 0) {
-        $('#microsite #quizzes-nav-list li a').click(function(e){
-          e.preventDefault();
+        // set defaults for quiz navigation
+        var wwidth = $(window).width(),
+            transitionWidth = 640,
+            numSlides = Drupal.behaviors.microsite_quizzes.getNumSlidesToDisplay(),
+            slideWidth = (wwidth > transitionWidth) ? 250 : 140,
+            slideMargin = 10,
+            self = this;
 
-          if ($(this).hasClass('disabled')) {
-            // do nothing
-          }
-          else {
-            var clickedNodeId = $(this).parent().attr('data-node-id');
-            $(this).parent().addClass('disabled');
-            self.micrositeSwitchQuizzes(clickedNodeId);
-          }
+        self.setActiveQuizHeight();
+
+        if ($('#microsite #quizzes #quizzes-nav li').length > 1) {
+          self.quizBxSlider = $('#microsite #quizzes #quizzes-nav .quizzes-nav-bxslider').bxSlider({
+            minSlides: numSlides,
+            maxSlides: numSlides,
+            slideWidth: slideWidth,
+            slideMargin: slideMargin,
+            nextSelector: '#quizzes-nav-next',
+            prevSelector: '#quizzes-nav-prev',
+            nextText: 'Next',
+            prevText: 'Previous',
+            pagerSelector: '#quizzes-nav-pagers',
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            onSliderLoad: function(){
+              self.showHidePager('#quizzes-nav', numSlides);
+              $('#microsite #quizzes #quizzes-nav').animate({ 'opacity': 1 }, 1000, 'jswing');
+            }
+          });
+
+          // initialize quiz nav clicks
+          $('#microsite #quizzes-nav-list li a').click(function(e){
+            e.preventDefault();
+
+            if ($(this).hasClass('disabled')) {
+              // do nothing
+            }
+            else {
+              var clickedNodeId = $(this).parent().attr('data-node-id');
+              $(this).parent().addClass('disabled');
+              self.micrositeSwitchQuizzes(clickedNodeId);
+            }
+          });
+        }
+
+        // set resize and orientation change
+        $(window).bind('resize', function () {
+          self.micrositeReloadSliders();
         });
+        window.addEventListener('orientationchange', self.micrositeReloadSliders);
       }
     }
   }

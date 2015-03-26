@@ -216,7 +216,6 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes_bxslider.js',
       $module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),

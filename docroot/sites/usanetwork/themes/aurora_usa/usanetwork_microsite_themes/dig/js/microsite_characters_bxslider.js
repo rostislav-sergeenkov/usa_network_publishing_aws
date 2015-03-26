@@ -30,85 +30,85 @@
     },
 
     attach: function (context, settings) {
+      // check to make sure there's a home section with characters-cast section
+      if ($('#microsite #home .characters-cast').length > 0) {
+        // set defaults
+        var wwidth = $(window).width(),
+            transitionWidth = 640,
+            numSlides = (wwidth > transitionWidth) ? 6 : 3,
+            slideWidth = (wwidth > transitionWidth) ? 240 : 100,
+            slideMargin = 10,
+            self = this;
 
 
-      // set defaults
-      var wwidth = $(window).width(),
-          transitionWidth = 640,
-          numSlides = (wwidth > transitionWidth) ? 6 : 3,
-          slideWidth = (wwidth > transitionWidth) ? 240 : 100,
-          slideMargin = 10,
-          self = this;
-
-
-      self.charactersCastBxSlider = $('#microsite #home .characters-cast-bxslider').bxSlider({
-        slideWidth: slideWidth,
-        minSlides: numSlides,
-        maxSlides: numSlides,
-        //useCSS: true,
-        slideMargin: slideMargin,
-        nextSelector: '#characters-cast-next',
-        prevSelector: '#characters-cast-prev',
-        nextText: 'Next',
-        prevText: 'Previous',
-        infiniteLoop: false,
-        hideControlOnEnd: true,
-        onSliderLoad: function(){
-          $('#microsite #home .characters-cast').css('overflow', 'visible').animate({ 'opacity': 1 }, 1000, 'jswing');
-        }
-      });
-
-      $('#microsite #home .characters-cast li a').click(function(e){
-        var anchorFull = this.href,
-            anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull);
-
-        // if this is an internal microsite url
-        // prevent the default action
-        // and show the correct microsite item without a page reload
-        if (anchorPathParts[0] == 'dig') {
-          e.preventDefault();
-
-          // if this is IE9, reload the correct page
-          if ($('html.ie9').length > 0) {
-            window.location.href = anchorFull;
-            return false;
+        self.charactersCastBxSlider = $('#microsite #home .characters-cast-bxslider').bxSlider({
+          slideWidth: slideWidth,
+          minSlides: numSlides,
+          maxSlides: numSlides,
+          //useCSS: true,
+          slideMargin: slideMargin,
+          nextSelector: '#characters-cast-next',
+          prevSelector: '#characters-cast-prev',
+          nextText: 'Next',
+          prevText: 'Previous',
+          infiniteLoop: false,
+          hideControlOnEnd: true,
+          onSliderLoad: function(){
+            $('#microsite #home .characters-cast').css('overflow', 'visible').animate({ 'opacity': 1 }, 1000, 'jswing');
           }
+        });
 
-          anchor = anchorPathParts[1];
-          var item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
+        $('#microsite #home .characters-cast li a').click(function(e){
+          var anchorFull = this.href,
+              anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull);
 
-          if (anchor == 'characters') {
-            if (item != '') {
-              Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10, 1);
+          // if this is an internal microsite url
+          // prevent the default action
+          // and show the correct microsite item without a page reload
+          if (anchorPathParts[0] == 'dig') {
+            e.preventDefault();
+
+            // if this is IE9, reload the correct page
+            if ($('html.ie9').length > 0) {
+              window.location.href = anchorFull;
+              return false;
             }
-            else {
-              Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+
+            anchor = anchorPathParts[1];
+            var item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
+
+            if (anchor == 'characters') {
+              if (item != '') {
+                Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10, 1);
+              }
+              else {
+                Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+                Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+              }
             }
           }
-        }
-      });
+        });
 
-      var waitForFinalEvent = (function () {
-        var timers = {};
-        return function (callback, ms, uniqueId) {
-          if (!uniqueId) {
-            uniqueId = "Don't call this twice without a uniqueId";
-          }
-          if (timers[uniqueId]) {
-            clearTimeout (timers[uniqueId]);
-          }
-          timers[uniqueId] = setTimeout(callback, ms);
-        };
-      })();
+        var waitForFinalEvent = (function () {
+          var timers = {};
+          return function (callback, ms, uniqueId) {
+            if (!uniqueId) {
+              uniqueId = "Don't call this twice without a uniqueId";
+            }
+            if (timers[uniqueId]) {
+              clearTimeout (timers[uniqueId]);
+            }
+            timers[uniqueId] = setTimeout(callback, ms);
+          };
+        })();
 
-      $(window).bind('resize', function () {
-        waitForFinalEvent(function(){
-          self.micrositeReloadBxSlider();
-        }, 500, "home Cast & Crew gallery");
-      });
-      window.addEventListener('orientationchange', self.micrositeReloadBxSlider);
-
+        $(window).bind('resize', function () {
+          waitForFinalEvent(function(){
+            self.micrositeReloadBxSlider();
+          }, 500, "home Cast & Crew gallery");
+        });
+        window.addEventListener('orientationchange', self.micrositeReloadBxSlider);
+      }
     }
   }
 }(jQuery));

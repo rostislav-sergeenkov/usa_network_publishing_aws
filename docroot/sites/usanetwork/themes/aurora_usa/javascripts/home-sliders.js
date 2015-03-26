@@ -5,13 +5,35 @@
 
       USAN.aspotSlider = {};
 
-      var hideContent = function(selector) {
+      var slideshowAutoplay,
+          slideshowSpeed = 6000,
+          sliderAuto = true,
+          slideMove = slideshowSpeed * 0.40;
+
+      if (Drupal.settings.sliderAspot) {
+        slideshowAutoplay = Drupal.settings.sliderAspot.slideshowAutoplay;
+        slideshowSpeed = Drupal.settings.sliderAspot.slideshowSpeed;
+
+        if (slideshowSpeed <= 0) {
+          slideshowSpeed = 6000;
+        } else {
+          slideMove = slideshowSpeed * 0.40;
+        }
+
+        if (slideshowAutoplay === 1) {
+          sliderAuto = true;
+        } else if (slideshowAutoplay === 0) {
+          sliderAuto = false;
+        }
+      }
+
+      var hideContent = function (selector) {
         $(selector).css({
           'opacity': 0
         });
       };
 
-      var changeLogoColor = function(element) {
+      var changeLogoColor = function (element) {
         var logo = $('.home-logo');
         var show = $(element).closest('.node').attr('data-show');
         var old_show = logo.attr('data-show');
@@ -22,23 +44,23 @@
         }
       };
 
-      var animateContent = function(element) {
+      var animateContent = function (element) {
         changeLogoColor(element);
         $(element).animate({
           'opacity': 1
         }, 500)
       };
 
-      var showFocusSlide = function(el, slide, old, active) {
+      var showFocusSlide = function (el, slide, old, active) {
         var index = active + 1,
             nextSlideInner = el.get(0).children[index].children[0],
             nextSlideContent = $(nextSlideInner).find('.slide-content').get(0);
 
-        USAN.aspotSlider.animateTimeout = setTimeout(function() {
+        USAN.aspotSlider.animateTimeout = setTimeout(function () {
           animateContent(nextSlideContent);
         }, 600);
 
-        var moveIt = function(index) {
+        var moveIt = function (index) {
           var nextSlideInner = el.get(0).children[index + 1].children[0],
               nextSlideImg = $(nextSlideInner).find('img').get(0),
               shiftPercent = parseInt($(nextSlideImg).attr('data-shift-percent'));
@@ -48,22 +70,22 @@
           $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 0.5);
           $(nextSlideInner).css('width', parseInt($(window).width())).animate({
             'margin-left': '-=10%'
-          }, 600, 'easeOutBack', function() {
+          }, 600, 'easeOutBack', function () {
             $('.next-button').fadeIn(500).removeClass('disabled');
           });
         };
 
-        USAN.aspotSlider.showTimeout = setTimeout(function() {
+        USAN.aspotSlider.showTimeout = setTimeout(function () {
           moveIt(index);
-        }, 4000);
+        }, slideMove);
       };
 
-      var hideFocusSlide = function(el, slide, old, active) {
+      var hideFocusSlide = function (el, slide, old, active) {
         var index = old + 1,
             nextSlideInner = el.get(0).children[index + 1].children[0],
             nextSlideContent = $(nextSlideInner).find('.slide-content').get(0);
 
-        var moveIt = function(index) {
+        var moveIt = function (index) {
           var nextSlideInner = el.get(0).children[index + 1].children[0],
               nextSlideImg = $(nextSlideInner).find('img').get(0);
           $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 1);
@@ -81,19 +103,19 @@
         moveIt(index);
       };
 
-      var initSlider = function(options) {
+      var initSlider = function (options) {
         var settings = $.extend({
           pager: false,
           controls: false,
-          auto: true,
+          auto: sliderAuto,
           autoHover: true,
           speed: 1000,
-          pause: 10000,
+          pause: slideshowSpeed,
           useCSS: false,
           onSlideBefore: hideFocusSlide,
           onSlideAfter: showFocusSlide,
-          onSliderLoad: function(el, slide, old, active){
-            var first_slide = $('#main-slider-wrapper .slide').not($( '.slide.bx-clone')).get(0);
+          onSliderLoad: function (el, slide, old, active) {
+            var first_slide = $('#main-slider-wrapper .slide').not($('.slide.bx-clone')).get(0);
             changeLogoColor($(first_slide).find('.slide-content'));
             showFocusSlide(el, slide, old, active);
           }
@@ -108,7 +130,7 @@
             changeLogoColor(slide.find('.slide-content'));
           };
           settings.onSliderLoad = function () {
-            var first_slide = $('#main-slider-wrapper .slide').not($( '.slide.bx-clone')).get(0);
+            var first_slide = $('#main-slider-wrapper .slide').not($('.slide.bx-clone')).get(0);
             changeLogoColor($(first_slide).find('.slide-content'));
           };
         }
@@ -118,24 +140,24 @@
 
       var aspotSlider = null;
 
-      $(window).load(function(){
+      $(window).load(function () {
 
         aspotSlider = initSlider();
 
         $('.next-button')
             .hide()
             .addClass('disabled')
-            .click(function() {
+            .click(function () {
               aspotSlider.goToNextSlide();
             });
 
       });
 
-      $(window).bind('resize', function() {
+      $(window).bind('resize', function () {
         $('.next-button').hide().addClass('disabled');
         aspotSlider.stopAuto();
 
-        waitForFinalEvent(function() {
+        waitForFinalEvent(function () {
           var currentSlide = aspotSlider.getCurrentSlide();
 
           aspotSlider.destroySlider();

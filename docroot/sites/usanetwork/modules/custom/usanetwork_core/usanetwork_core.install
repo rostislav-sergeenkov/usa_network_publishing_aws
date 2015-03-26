@@ -1042,7 +1042,7 @@ function usanetwork_core_update_7167() {
 /**
  * Enable usanetwork_microsite module
  */
-function usanetwork_core_update_7152() {
+function usanetwork_core_update_7168() {
   $modules_en = array(
     'usanetwork_microsite',
   );
@@ -1052,7 +1052,7 @@ function usanetwork_core_update_7152() {
 /**
  * Disable WatchWith modules
  */
-function usanetwork_core_update_7154() {
+function usanetwork_core_update_7169() {
   $modules_dis = array(
     'usanetwork_watchwith',
     'tve_watchwith',

@@ -42,6 +42,15 @@ function usanetwork_menu_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  // Show autocompliter.
+  $items['usanetwork_menu/full_shows/autocomplete'] = array(
+    'title' => 'Select content',
+    'page callback' => 'usanetwork_menu_full_shows_autocomplete',
+    'access arguments' => array('administer nodes'),
+    'delivery callback' => 'drupal_deliver_html_page',
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -1018,4 +1027,76 @@ function _usanetwork_menu_get_reminder_url($show_nid = NULL) {
   }
 
   return NULL;
+}
+
+/*
+ * Show with full episodes autocomplete callback
+ */
+function usanetwork_menu_full_shows_autocomplete($title) {
+  $query = db_select('node', 'n');
+  $query->fields('n',array('nid','title'));
+  $query->condition('n.title', '%' . $title . '%' ,'LIKE');
+  $query->condition('n.type', 'tv_show' ,'=');
+  $query->join('field_data_field_show', 'fdfs', 'fdfs.field_show_target_id = n.nid');
+  $query->join('mpx_video', 'mv', 'mv.fid = fdfs.entity_id');
+  $query->condition('mv.status', '1');
+  $query->condition('mv.parent_account', '2');
+  $query->range(0, 10);
+  $result = $query->execute()->fetchAll();
+
+  $output = array();
+  if (!empty($result) && is_array($result)) {
+    foreach($result as $row) {
+      $row->title = check_plain($row->title);
+      $key = $row->title . ' [node:' . $row->nid . ']';
+      $output[$key] = $row->title;
+    }
+  }
+  drupal_json_output($output);
+}
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $header_full_episodes_shows = variable_get('header_full_episodes_shows', array());
+
+  $form['header_shows'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Full Episodes Shows for Header'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  for ($i = 0; $i < USANETWORK_MENU_FULL_EPISODES_NUMBER; $i++) {
+    $form['header_shows']['usa_full_episodes_show_' . $i] = array(
+      '#type' => 'textfield',
+      '#required' => FALSE,
+      '#default_value' => !empty($header_full_episodes_shows[$i])
+        ? $header_full_episodes_shows[$i]
+        : '',
+      '#autocomplete_path' => 'usanetwork_menu/full_shows/autocomplete',
+    );
+  }
+
+  $form['#submit'][] = 'usanetwork_menu_form_usanetwork_settings_form_submit';
+}
+
+/**
+ * Form submit: functionality for saving shows in header for tab "Full Episodes"
+ */
+function usanetwork_menu_form_usanetwork_settings_form_submit(&$form, &$form_state) {
+  if (!empty($form_state['values'])) {
+    $header_full_episodes_shows = array();
+
+    foreach ($form_state['values'] as $value_name => $value) {
+      if (strpos($value_name, 'usa_full_episodes_show_') !== FALSE) {
+        if (!empty($value)) {
+          $header_full_episodes_shows[] = $value;
+        }
+      }
+    }
+  }
+
+  variable_set('header_full_episodes_shows', $header_full_episodes_shows);
 }

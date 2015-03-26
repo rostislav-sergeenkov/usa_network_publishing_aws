@@ -97,6 +97,7 @@
             var first_slide = $('#main-slider-wrapper .slide').not($( '.slide.bx-clone')).get(0);
             changeLogoColor($(first_slide).find('.slide-content'));
             showFocusSlide(el, slide, old, active);
+            $('.bx-preload').show('fade');
           }
         }, options);
 

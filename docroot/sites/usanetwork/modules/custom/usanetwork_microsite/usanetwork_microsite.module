@@ -233,30 +233,15 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
         }
       }
 
-
-//      $share_title_field = field_get_items('node', $node, 'field_share_title');
-//      if ($share_title_field) {
-//        $share_title_field = reset($share_title_field);
-//      }
-//      $share_description_field = field_get_items('node', $node, 'field_share_description');
-//      if ($share_description_field) {
-//        $share_description_field = reset($share_description_field);
-//      }
-//      $share_image_field = field_get_items('node', $node, 'field_share_image');
-//      if ($share_image_field) {
-//        $share_image_field = reset($share_image_field);
-//        if ($share_image_field) {
-//          $image_path = file_create_url($share_image_field['uri']);
-//        }
-//      }
-      $base_path = url('node/' . arg(1) . '/microsite');
+      $microsite_url = url('node/' . arg(1) . '/microsite');
+      $microsite_theme_path = '/' . drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/' . $microsite_wrapper->field_ms_theme->value();
       $microsites_settings = array(
         'nid' => $node->nid,
         'title' => $node->title,
-        'base_path' => ($base_path) ? $base_path : '/dig',
-//        'share_title' => ($share_title_field) ? $share_title_field['value'] : 'Dig Gallery Testing Sharebar Title',
-//        'share_description' => ($share_description_field) ? $share_description_field['value'] : 'Dig Gallery Testing Sharebar: This is the description',
-//        'share_image' => ($image_path) ? $image_path : 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
+        'base_path' => ($microsite_url) ? $microsite_url : '/dig',
+        'site_name' => $node->title,
+        'microsite_theme_path' => $microsite_theme_path,
+
       );
       drupal_add_js(array('microsites_settings' => $microsites_settings), 'setting');
 
@@ -418,11 +403,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
   $theme_variables = array(
     'aspots' => array(),
     'featured' => array(),
-    'base_path' => url('node/' . arg(1) . '/microsite'),
-/*
-    'bspots' => NULL,
-    'cspots' => NULL,
-*/
+    'microsite_url' => url('node/' . arg(1) . '/microsite'),
   );
 
   if (!empty($section_object->field_usa_tv_a_spot)) {
@@ -494,7 +475,7 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
   if(!empty($h1)) {
     $theme_variables['h1'] = $h1;
   }
-
+  $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
   return $theme_variables;
 }
 
@@ -502,7 +483,6 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
  * Renders Characters page.
  */
 function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
-  $theme_path = drupal_get_path('theme', 'aurora_usa');
   $section_object = $section_wrapper->value();
 
   $theme_variables = array(
@@ -584,6 +564,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
 */
 
   $theme_variables['section_title'] = $section_wrapper->field_ms_section_title->value();
+  $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
   return $theme_variables;
 }
 
@@ -609,7 +590,6 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
       $episode_node = $episode_wrapper->value();
       $episode_id = str_replace(' ', '-', strtolower($episode_node->title));
       $status = '';
-      $is_active_slide = FALSE;
 
       if ($episode_node->status != NODE_PUBLISHED) {
         continue;
@@ -622,7 +602,7 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
         (!empty($current_episode) && $current_episode == $episode_id)
       ) {
         $current_episode_node = $episode_node;
-        $is_active_slide = $is_active_slide_found = TRUE;
+        $is_active_slide_found = TRUE;
         $status = 'active';
       }
 
@@ -648,7 +628,7 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
       );
 
       $theme_variables['episodes'][] = $episode_variables;
-
+      $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
       $episode_count++;
     }
   }
@@ -707,6 +687,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       '0',
     );
     $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
+    $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
   }
 
   return $theme_variables;
@@ -767,7 +748,6 @@ function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $galler
  * Renders games page.
  */
 function _usanetwork_microsite_render_page_games($section_wrapper) {
-  $theme_variables = array();
 
 //  $games_nodes = $section_wrapper->field_ms_catchall_page->value();
 //  $current_game_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
@@ -817,6 +797,7 @@ function _usanetwork_microsite_render_page_games($section_wrapper) {
     $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_quiz, $section_wrapper));
     drupal_add_js(array('games' => $games), 'setting');
   }
+  $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
 
   return $theme_variables;
 //  $section_object = $section_wrapper->value();
@@ -914,6 +895,7 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
     $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_quiz, $section_wrapper));
     drupal_add_js(array('quizzes' => $quizzes), 'setting');
   }
+  $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
 
   return $theme_variables;
 }
@@ -1247,10 +1229,6 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
     return $section_wrapper->field_ms_catchall_page->value();
   }
   elseif($type == 'quizzes') {
-    // @TODO: DV -- If no quiz section is set, the following line throws the
-    // error "Fatal error: Call to a member function value() on a non-object in /Users/donnavaughan/Sites/publisher7/docroot/sites/usanetwork/modules/custom/usanetwork_microsite/usanetwork_microsite.module on line 1189"
-    // Be sure to check the above if / else statements to see if they generate the
-    // same error when there is no section of that type.
     return $section_wrapper->field_ms_quiz->value();
   }
   return NULL;

@@ -106,7 +106,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -500,7 +500,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -980,7 +980,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_multiselect',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -1530,7 +1530,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 24,
+      'weight' => 3,
     ),
   );
 
@@ -1812,7 +1812,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 4,
     ),
   );
 

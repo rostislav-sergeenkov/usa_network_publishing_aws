@@ -336,7 +336,7 @@ function usanetwork_episodes_default_page_manager_handlers() {
     $pane->panel = 'two';
     $pane->type = 'node_title';
     $pane->subtype = 'node_title';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'link' => 0,

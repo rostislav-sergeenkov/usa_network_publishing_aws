@@ -141,13 +141,20 @@ function usanetwork_aspot_preprocess_node(&$vars) {
     }
   }
   if ($vars['type'] == 'usanetwork_aspot') {
+    $vars['image_alt'] = '';
+    $node_wrapper = entity_metadata_wrapper('node', $vars['node']);
+    if(!empty($vars['node']->field_usa_aspot_desktop)) {
+      $image_file = $node_wrapper->field_usa_aspot_desktop->value();
+      $image_alt = $image_file['alt'];
+      $vars['image_alt'] = $image_alt;
+    }
     $current_path = current_path();
     if ($current_path == 'node/' . $vars['nid']) {
       $lang = $vars['language'];
       if ($vars['field_animated_a_spot'][$lang][0]['value']) {
         $vars['aspot_page'] = TRUE;
         $show = 'aspot';
-        $mp4_url = $vars['field_mp4_video_url'][$lang][0]['value'];
+        $mp4_url = $vars['field_mp4_video_url'][$lang][0]['value']; // @todo use $node_wrapper
         $webm_url = $vars['field_webm_video_url'][$lang][0]['value'];
         $aspot_settings = array(
           'show' => $show,

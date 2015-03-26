@@ -228,6 +228,11 @@ function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
   $settings['calculationMethod'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_calculation', 'value');
   $settings['quizShow'] = $quiz_show->title;
   $settings['quizTitle'] = $node->title;
+  // @TODO: DV: Description was added to allow the display of Gigya share bars
+  // in the quizzes section of microsites. Gigya share does not allow html tags,
+  // so this code removes the tags. Is there a better way to do this?
+  $description = _usanetwork_quiz_get_field_item_value($node, 'body', 'value');
+  $settings['quizDescription'] = strip_tags($description);
   drupal_add_js(array(
     'usanetwork_quiz' => array(
       $node->nid => $settings,
@@ -553,7 +558,6 @@ function usanetwork_quiz_form_quiz_node_form_alter(&$form, &$form_state) {
   // add questions validation
   $lang = $form['field_quiz_questions']['#language'];
   $form['field_quiz_questions'][$lang]['#element_validate'][] = '_usanetwork_quiz_question_validate';
-  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_quiz').'/js/usanetwork_quiz_seo.js';
 }
 
 /**

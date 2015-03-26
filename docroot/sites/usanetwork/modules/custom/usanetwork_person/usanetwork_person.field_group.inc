@@ -13,6 +13,35 @@ function usanetwork_person_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_ms_character_info|node|person|form';
+  $field_group->group_name = 'group_ms_character_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Microsite Character Info',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_person_ms_character_bio',
+      1 => 'field_person_ms_background',
+      2 => 'field_quotation',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-ms-character-info field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_ms_character_info|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_person_additional|node|person|form';
   $field_group->group_name = 'group_person_additional';
   $field_group->entity_type = 'node';
@@ -21,7 +50,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '2',
+    'weight' => '1',
     'children' => array(
       0 => 'field_person_birth_date',
       1 => 'field_person_birth_location',
@@ -50,7 +79,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Person\'s Information',
-    'weight' => '1',
+    'weight' => '0',
     'children' => array(
       0 => 'body',
       1 => 'field_person_cover_photo',
@@ -116,7 +145,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Nitro',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_enable_nitro',
       1 => 'field_nitro_action_name',
@@ -132,6 +161,35 @@ function usanetwork_person_field_group_info() {
     ),
   );
   $export['group_person_nitro|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|person|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_usa_og_description',
+      1 => 'field_seo_h1',
+      2 => 'field_seo_page_title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|person|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -174,7 +232,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_role',
       1 => 'field_show',
@@ -182,9 +240,7 @@ function usanetwork_person_field_group_info() {
       3 => 'field_usa_character_thumb',
       4 => 'field_hide_cast_carousel',
       5 => 'field_hide_social_follow',
-      6 => 'field_seo_h1',
-      7 => 'field_seo_page_title',
-      8 => 'group_social',
+      6 => 'group_social',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -209,10 +265,9 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_usa_og_image',
+      0 => 'field_usa_og_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

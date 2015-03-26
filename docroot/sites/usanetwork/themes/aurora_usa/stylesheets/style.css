@@ -4340,6 +4340,11 @@ header .tab-item.shows-tab > div li a {
   text-decoration: none;
   text-transform: uppercase;
 }
+@media (min-width: 1281px) {
+  header .tab-item.shows-tab > div li a {
+    font-size: 14px;
+  }
+}
 header .tab-item.shows-tab > div li a span {
   color: #000000;
 }
@@ -4347,7 +4352,27 @@ header .tab-item.shows-tab > div li a:hover {
   text-decoration: underline;
 }
 header .tab-item.shows-tab .originals-shows-menu {
+  width: 70%;
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  header .tab-item.shows-tab .originals-shows-menu {
+    width: 66.66667%;
+  }
+}
+header .tab-item.shows-tab .originals-shows-menu:only-child {
   width: 100%;
+}
+header .tab-item.shows-tab .originals-shows-menu:only-child ul {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  -ms-column-count: 3;
+  -o-column-count: 3;
+  column-count: 3;
+  -webkit-column-gap: 3em;
+  -moz-column-gap: 3em;
+  -ms-column-gap: 3em;
+  -o-column-gap: 3em;
+  column-gap: 3em;
 }
 header .tab-item.shows-tab .originals-shows-menu h2 {
   font-family: "texgyrescholaitalic", Times, serif;
@@ -4360,7 +4385,53 @@ header .tab-item.shows-tab .originals-shows-menu h2 {
     margin-bottom: 50px;
   }
 }
+@media (max-width: 1280px) {
+  header .tab-item.shows-tab .originals-shows-menu h2 {
+    font-size: 20px;
+  }
+}
 header .tab-item.shows-tab .originals-shows-menu ul {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  -ms-column-count: 2;
+  -o-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 2em;
+  -moz-column-gap: 2em;
+  -ms-column-gap: 2em;
+  -o-column-gap: 2em;
+  column-gap: 2em;
+}
+@media (min-width: 1601px) {
+  header .tab-item.shows-tab .originals-shows-menu ul li {
+    margin-bottom: 20px;
+  }
+}
+header .tab-item.shows-tab .originals-shows-menu ul li a {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+@media (min-width: 1601px) {
+  header .tab-item.shows-tab .originals-shows-menu ul li a {
+    font-size: 22px;
+  }
+}
+header .tab-item.shows-tab .pane-menu-also-on-usa {
+  width: 30%;
+}
+@media (max-width: 1280px) {
+  header .tab-item.shows-tab .pane-menu-also-on-usa {
+    width: 26%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  header .tab-item.shows-tab .pane-menu-also-on-usa {
+    width: 33.33333%;
+  }
+}
+header .tab-item.shows-tab .pane-menu-also-on-usa:only-child {
+  width: 100%;
+}
+header .tab-item.shows-tab .pane-menu-also-on-usa:only-child ul {
   -webkit-column-count: 3;
   -moz-column-count: 3;
   -ms-column-count: 3;
@@ -4372,16 +4443,35 @@ header .tab-item.shows-tab .originals-shows-menu ul {
   -o-column-gap: 3em;
   column-gap: 3em;
 }
+header .tab-item.shows-tab .pane-menu-also-on-usa h2 {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
 @media (min-width: 1601px) {
-  header .tab-item.shows-tab .originals-shows-menu ul li {
+  header .tab-item.shows-tab .pane-menu-also-on-usa h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 1280px) {
+  header .tab-item.shows-tab .pane-menu-also-on-usa h2 {
+    font-size: 20px;
+  }
+}
+header .tab-item.shows-tab .pane-menu-also-on-usa ul li {
+  list-style: none;
+}
+@media (min-width: 1601px) {
+  header .tab-item.shows-tab .pane-menu-also-on-usa ul li {
     margin-bottom: 20px;
   }
 }
-header .tab-item.shows-tab .originals-shows-menu .mega-sub-nav-link {
+header .tab-item.shows-tab .pane-menu-also-on-usa ul li a {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 1601px) {
-  header .tab-item.shows-tab .originals-shows-menu .mega-sub-nav-link {
+  header .tab-item.shows-tab .pane-menu-also-on-usa ul li a {
     font-size: 22px;
   }
 }
@@ -4416,6 +4506,11 @@ header .tab-item.full-episode-tab h2 {
   header .tab-item.full-episode-tab h2 {
     font-size: 32px;
     margin-bottom: 50px;
+  }
+}
+@media (max-width: 1280px) {
+  header .tab-item.full-episode-tab h2 {
+    font-size: 20px;
   }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list {
@@ -4742,6 +4837,11 @@ header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
     font-size: 32px;
   }
 }
+@media (max-width: 1280px) {
+  header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
+    font-size: 20px;
+  }
+}
 header .tab-item.schedule-tab .on-now-panel .on-now-panel-title .episode-airtime {
   float: left;
   margin-left: 40px;
@@ -4832,6 +4932,11 @@ header .tab-item.schedule-tab .primetime-panel h2 {
 @media (min-width: 1601px) {
   header .tab-item.schedule-tab .primetime-panel h2 {
     font-size: 32px;
+  }
+}
+@media (max-width: 1280px) {
+  header .tab-item.schedule-tab .primetime-panel h2 {
+    font-size: 20px;
   }
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item {
@@ -13536,7 +13641,7 @@ body.person-page #main {
   float: left;
   margin-left: 0;
   padding-left: 1.5em;
-  width: 33.33333%;
+  width: 50%;
 }
 .ie8 img {
   /*    width: inherit; */
@@ -14077,7 +14182,7 @@ body.person-page #main {
   float: left;
   margin-left: 0;
   padding-left: 1.5em;
-  width: 33.33333%;
+  width: 50%;
 }
 .ie9 footer .shows-menu ul.menu:after, .ie9 footer .app-and-services-menu ul.menu:after {
   clear: both;

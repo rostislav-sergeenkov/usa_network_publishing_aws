@@ -19978,6 +19978,7 @@ yx-axis
   display: block;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 12px;
+  line-height: 24px;
   padding: 25px 40px 25px 28px;
   position: relative;
   text-decoration: none;
@@ -20006,7 +20007,7 @@ yx-axis
   font-family: "ico-font";
   font-size: 11px;
   position: absolute;
-  margin-top: -5px;
+  margin-top: -12px;
   right: 26px;
   top: 50%;
 }

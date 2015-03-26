@@ -674,12 +674,28 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
   return drupal_json_output(NULL);
 }
 
+/**
+ * Render Block for Menu Tab "Full Episodes"
+ */
 function _usanetwork_menu_full_episodes_block() {
-  $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USANETWORK_MENU_FULL_EPISODES_NUMBER);
-  $carousel_episodes = file_load_multiple(array_keys($episodes));
+  $header_full_episodes_shows = variable_get('header_full_episodes_shows', array());
+  if (!empty($header_full_episodes_shows)) {
+    $carousel_episodes = array();
+    foreach ($header_full_episodes_shows as $needed_show) {
+      if (preg_match("/^(.+)\[node:(\d+)\]$/", $needed_show, $matches)) {
+        $file = usanetwork_schedule_pull_latest_episodes($matches[2], 1);
+        if (!empty($file)) {
+          $file = reset($file);
+          $carousel_episodes[] = file_load($file->fid);
+        }
+      }
+    }
+  } else {
+    $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USANETWORK_MENU_FULL_EPISODES_NUMBER);
+    $carousel_episodes = file_load_multiple(array_keys($episodes));
+  }
 
   $items = array();
-
   foreach ($carousel_episodes as $episode) {
     $episode_wrapper = entity_metadata_wrapper('file', $episode);
     $show = !empty($episode->field_show)

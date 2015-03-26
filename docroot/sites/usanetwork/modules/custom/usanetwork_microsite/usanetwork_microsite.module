@@ -327,6 +327,10 @@ function _usanetwork_microsite_include_themes_info($current_theme = NULL) {
 
           $found_theme_names[] = $filename;
         }
+
+        if (!empty($current_theme) && $filename == $current_theme) {
+          break;
+        }
       }
     }
   }
@@ -2885,9 +2889,6 @@ function _usanetwork_microsite_get_default_h1($node, $section_type) {
 function _usanetwork_microsite_get_h1_for_for_node($node) {
   $h1 = '';
   $node_wrapper = entity_metadata_wrapper('node', $node);
-  $types_without_override = array(
-    USANETWORK_MICROSITE_GALLERY_NODE_TYPE,
-  );
   if (!empty($node->field_seo_h1)) {
     $h1 = $node_wrapper->field_seo_h1->value();
   }
@@ -2896,11 +2897,8 @@ function _usanetwork_microsite_get_h1_for_for_node($node) {
     $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
     $h1 = $person_names['person_title'];
   }
-  elseif (empty($h1) && in_array($node->type, $types_without_override)) {
-    $h1 = '';
-  }
   elseif (empty($h1)) {
-    $h1 = $node->title;
+    $h1 = '';
   }
   return $h1;
 }
@@ -3162,4 +3160,39 @@ function _usanetwork_microsite_process_setting_data($setting_key) {
     $setting = TRUE;
   }
   return $setting;
+}
+
+
+/**
+ * Return array with default theme settings.
+ * Settings witch is returned form this function can be overridden by function
+ * from theme.inc file.
+ *
+ * @return array()
+ */
+function usanetwork_microsite_default_get_theme_settings() {
+  return array(
+    'display_global_nav' => TRUE,
+    'setting_from_default' => 'gjghj'
+  );
+}
+
+/**
+ * Return array with theme settings.
+ *
+ * @return array()
+ */
+function usanetwork_microsite_get_theme_settings() {
+  $settings_theme = array();
+  $node = menu_get_object();
+  $settinga_default = usanetwork_microsite_default_get_theme_settings();
+  if(empty($node)) {
+    return $settinga_default;
+  }
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $theme_function = 'usanetwork_microsite_' . $node_wrapper->field_ms_theme->value() . '_get_theme_settings';
+  if (is_callable($theme_function)) {
+    $settings_theme = $theme_function();
+  }
+  return $settings_theme + $settinga_default;
 }

@@ -402,6 +402,7 @@ $default-transition-duration: 0.2s;
 
 //NEW SETTINGS!!!!!!!!!!!!
 //breakpoints
+$bp-1920-width: max-width 1920px;
 $bp-1600-width: max-width 1600px;
 $bp-1400-width: max-width 1400px;
 $bp-1280-width: max-width 1280px;
@@ -418,7 +419,7 @@ $bp-min-1025-width: 1025px;
 $bp-min-1281-width: 1281px;
 $bp-min-1601-width: 1601px;
 $bp-min-1701-width: 1701px;
-$bp-min-1921-width: 1921px;
+$bp-min-1920-width: 1920px;
 
 $between-641-768: 641px 768px;
 $between-641-1024: 641px 1024px;
@@ -428,10 +429,11 @@ $between-769-1024: 769px 1024px;
 $between-769-1280: 769px 1280px;
 $between-1025-1280: 1025px 1280px;
 $between-1281-1600: 1281px 1600px;
-$between-1281-1920: 1281px 1920px;
+$between-1281-1919: 1281px 1919px;
 
 //
-$show-carousel-item-width : 310px;
+$show-carousel-item-width : 270px;
+$show-carousel-item-width-less-1024 : 342px;
 
 //sprites/
 $sprites: sprite-map("sprites/*.png");

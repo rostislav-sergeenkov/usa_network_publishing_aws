@@ -21,7 +21,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_additional_genres',
       1 => 'field_content_tags',
@@ -229,7 +229,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_content_tags',
       1 => 'field_original_air_date',
@@ -258,7 +258,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Cast/Crew',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_episode_credit',
     ),
@@ -292,9 +292,7 @@ function usanetwork_tv_shows_field_group_info() {
       2 => 'field_season',
       3 => 'field_show',
       4 => 'field_tv_cover_media',
-      5 => 'field_seo_h1',
-      6 => 'field_seo_page_title',
-      7 => 'title',
+      5 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -319,7 +317,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA IdeaMelt',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_ideamelt_action_type',
       1 => 'field_send_ideamelt_notification',
@@ -618,9 +616,7 @@ function usanetwork_tv_shows_field_group_info() {
       1 => 'field_banner',
       2 => 'field_logo',
       3 => 'field_tv_cover_media',
-      4 => 'field_seo_h1',
-      5 => 'field_seo_page_title',
-      6 => 'title',
+      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -695,6 +691,64 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|tv_episode|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_episode';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_usa_og_description',
+      1 => 'field_seo_h1',
+      2 => 'field_seo_page_title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|tv_episode|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|tv_show|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_usa_og_description',
+      1 => 'field_seo_h1',
+      2 => 'field_seo_page_title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_show_aspots|node|tv_show|form';
   $field_group->group_name = 'group_show_aspots';
   $field_group->entity_type = 'node';
@@ -732,7 +786,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Menu',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_show_links',
       1 => 'field_featured_in_menu',
@@ -790,7 +844,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Social Information',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_hide_cast_carousel',
       1 => 'field_hide_social_follow',
@@ -891,7 +945,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Nitro',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_enable_nitro',
       1 => 'field_nitro_action_name',
@@ -1057,7 +1111,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_display_title',
       1 => 'field_usa_tv_on_now',
@@ -1094,10 +1148,9 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_usa_og_image',
+      0 => 'field_usa_og_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1125,8 +1178,7 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'USA OG fields',
     'weight' => '6',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_usa_og_image',
+      0 => 'field_usa_og_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1175,6 +1227,33 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_usa_show_follow|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_ms_info|node|tv_episode|form';
+  $field_group->group_name = 'group_usa_ms_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_episode';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Microsite Information',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_usa_ms_episode_thumb',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-usa-ms-info field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_usa_ms_info|node|tv_episode|form'] = $field_group;
 
   return $export;
 }

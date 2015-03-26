@@ -2411,7 +2411,7 @@ function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form
     '#collapsed' => FALSE,
   );
 
-  for ($i = 0; $i < USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS; $i++) {
+  for ($i = 0; $i < USANETWORK_MENU_FULL_EPISODES_NUMBER; $i++) {
     $form['header_shows']['usa_full_episodes_show_' . $i] = array(
       '#type' => 'textfield',
       '#required' => FALSE,

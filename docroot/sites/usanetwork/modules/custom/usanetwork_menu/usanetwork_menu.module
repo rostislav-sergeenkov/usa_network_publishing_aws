@@ -425,7 +425,6 @@ function _usanetwork_menu_all_shows_block($header = TRUE) {
           'shows-menu-title',
         ),
       ),
-      'title' => t('Shows'),
       'items' => $links,
       'type' => 'ul',
       'attributes' => array(

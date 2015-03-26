@@ -255,102 +255,103 @@
 
     attach: function (context, settings) {
 
-      // set defaults
-      var wwidth = $(window).width(),
-          transitionWidth = 640,
-          episodesNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('episodes'),
-          charsNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('other'),
-          slideWidth = (wwidth > transitionWidth) ? 250 : 140,
-          slideMargin = 10,
-          self = this;
+      // check to make sure there's a galleries section
+      if ($('#microsite #galleries').length > 0) {
+        // set defaults
+        var wwidth = $(window).width(),
+            transitionWidth = 640,
+            episodesNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('episodes'),
+            charsNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('other'),
+            slideWidth = (wwidth > transitionWidth) ? 250 : 140,
+            slideMargin = 10,
+            self = this;
 
-      self.setActiveGalleryHeight();
+        self.setActiveGalleryHeight();
 
-      if ($('#microsite #galleries #ep-galleries').length > 0) {
-        self.epGalleryBxSlider = $('#microsite #galleries #ep-galleries .galleries-bxslider').bxSlider({
-          slideWidth: slideWidth,
-          minSlides: episodesNumSlides,
-          maxSlides: episodesNumSlides,
-          slideMargin: slideMargin,
-          nextSelector: '#ep-galleries-next',
-          prevSelector: '#ep-galleries-prev',
-          nextText: 'Next',
-          prevText: 'Previous',
-          pagerSelector: '#ep-galleries-pagers',
-          infiniteLoop: false,
-          hideControlOnEnd: true,
-          onSliderLoad: function(){
-            self.showHidePager('#ep-galleries', episodesNumSlides);
-            $('#microsite #galleries #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
-          }
-        });
-      }
-
-      if ($('#microsite #galleries #character-galleries').length > 0) {
-        self.characterGalleryBxSlider = $('#microsite #galleries #character-galleries .galleries-bxslider').bxSlider({
-          slideWidth: slideWidth,
-          minSlides: charsNumSlides,
-          maxSlides: charsNumSlides,
-          slideMargin: slideMargin,
-          nextSelector: '#character-galleries-next',
-          prevSelector: '#character-galleries-prev',
-          nextText: 'Next',
-          prevText: 'Previous',
-          pagerSelector: '#character-galleries-pagers',
-          infiniteLoop: false,
-          hideControlOnEnd: true,
-          onSliderLoad: function(){
-            self.showHidePager('#character-galleries', charsNumSlides);
-            $('#microsite #galleries #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
-          }
-        });
-      }
-
-      self.setActiveGalleryNav();
-
-      var changeGalleryHandler = function(e){
-        var anchorFull = this.href,
-            anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull),
-            $navItems = $('#microsite #galleries .galleries-bxslider li a');
-
-        // Unbind click while selected gallery loading
-        $navItems.unbind('click').bind('click', function(e) {
-          e.preventDefault();
-        });
-
-        // if this is an internal microsite url
-        // prevent the default action
-        // and show the correct microsite item without a page reload
-        if (anchorPathParts[0] == 'dig') {
-          e.preventDefault();
-
-          // if this is IE9, reload the correct page
-          if ($('html.ie9').length > 0) {
-            window.location.href = anchorFull;
-            return false;
-          }
-
-          // scroll to top of galleries section
-          $('#microsite #galleries').animate({ scrollTop: 0 }, 1000);
-
-          // switch gallery
-          var nid = $(this).parent().attr('data-node-id');
-          Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
-          self.switchGallery(nid, function() {
-            $navItems.bind('click', changeGalleryHandler);
+        if ($('#microsite #galleries #ep-galleries').length > 0) {
+          self.epGalleryBxSlider = $('#microsite #galleries #ep-galleries .galleries-bxslider').bxSlider({
+            slideWidth: slideWidth,
+            minSlides: episodesNumSlides,
+            maxSlides: episodesNumSlides,
+            slideMargin: slideMargin,
+            nextSelector: '#ep-galleries-next',
+            prevSelector: '#ep-galleries-prev',
+            nextText: 'Next',
+            prevText: 'Previous',
+            pagerSelector: '#ep-galleries-pagers',
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            onSliderLoad: function(){
+              self.showHidePager('#ep-galleries', episodesNumSlides);
+              $('#microsite #galleries #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
+            }
           });
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         }
-      };
 
-      $('#microsite #galleries .galleries-bxslider li a').bind('click', changeGalleryHandler);
+        if ($('#microsite #galleries #character-galleries').length > 0) {
+          self.characterGalleryBxSlider = $('#microsite #galleries #character-galleries .galleries-bxslider').bxSlider({
+            slideWidth: slideWidth,
+            minSlides: charsNumSlides,
+            maxSlides: charsNumSlides,
+            slideMargin: slideMargin,
+            nextSelector: '#character-galleries-next',
+            prevSelector: '#character-galleries-prev',
+            nextText: 'Next',
+            prevText: 'Previous',
+            pagerSelector: '#character-galleries-pagers',
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            onSliderLoad: function(){
+              self.showHidePager('#character-galleries', charsNumSlides);
+              $('#microsite #galleries #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
+            }
+          });
+        }
 
-      $(window).bind('resize', function () {
-        self.micrositeReloadSliders();
-      });
-      window.addEventListener('orientationchange', self.micrositeReloadSliders);
+        self.setActiveGalleryNav();
 
+        var changeGalleryHandler = function(e){
+          var anchorFull = this.href,
+              anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull),
+              $navItems = $('#microsite #galleries .galleries-bxslider li a');
 
+          // Unbind click while selected gallery loading
+          $navItems.unbind('click').bind('click', function(e) {
+            e.preventDefault();
+          });
+
+          // if this is an internal microsite url
+          // prevent the default action
+          // and show the correct microsite item without a page reload
+          if (anchorPathParts[0] == 'dig') {
+            e.preventDefault();
+
+            // if this is IE9, reload the correct page
+            if ($('html.ie9').length > 0) {
+              window.location.href = anchorFull;
+              return false;
+            }
+
+            // scroll to top of galleries section
+            $('#microsite #galleries').animate({ scrollTop: 0 }, 1000);
+
+            // switch gallery
+            var nid = $(this).parent().attr('data-node-id');
+            Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
+            self.switchGallery(nid, function() {
+              $navItems.bind('click', changeGalleryHandler);
+            });
+            history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+          }
+        };
+
+        $('#microsite #galleries .galleries-bxslider li a').bind('click', changeGalleryHandler);
+
+        $(window).bind('resize', function () {
+          self.micrositeReloadSliders();
+        });
+        window.addEventListener('orientationchange', self.micrositeReloadSliders);
+      }
     }
   }
 }(jQuery));

@@ -242,7 +242,8 @@
     },
 
     attach: function (context, settings) {
-      if ($('#episodes').length > 0) {
+      // check to make sure there's an episodes section
+      if ($('#microsite #episodes').length > 0) {
         Drupal.behaviors.microsite_episodes.micrositeSetEpisNavWidthHeight();
         var episodes = $('#microsite #episode-info'),
             activeEpisode = episodes.find('li.active').attr('id');

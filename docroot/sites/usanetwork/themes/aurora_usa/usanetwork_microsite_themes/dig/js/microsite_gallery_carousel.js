@@ -71,35 +71,37 @@
       current_gallery.find('.description-block').html(current_description);
     },
     attach: function(settings, context) {
-      $('.microsite-gallery .flexslider').once('microsite-gallery-carousel', function() {
-        $(this).on('start', function() {
-          var $slider = $(this);
-          Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, 1);
-          var current_gallery = $slider.closest('.microsite-gallery');
-          var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
-          if (current_description) {
-            current_gallery.find('.description-block').html(current_description);
-          }
-          $slider.append('<div class="counter"></div>');
-          Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+      // check to make sure there's a galleries section
+      if ($('#microsite #galleries').length > 0) {
+        $('.microsite-gallery .flexslider').once('microsite-gallery-carousel', function() {
+          $(this).on('start', function() {
+            var $slider = $(this);
+            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, 1);
+            var current_gallery = $slider.closest('.microsite-gallery');
+            var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
+            if (current_description) {
+              current_gallery.find('.description-block').html(current_description);
+            }
+            $slider.append('<div class="counter"></div>');
+            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+          });
+          $(this).on('after', function() {
+            var $slider = $(this);
+            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
+            Drupal.behaviors.microsite_gallery_carousel.refreshBannerAd();
+            Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
+            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+          });
         });
-        $(this).on('after', function() {
-          var $slider = $(this);
-          Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
-          Drupal.behaviors.microsite_gallery_carousel.refreshBannerAd();
-          Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
-          Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+        $(window).bind('resize', function () {
+          setTimeout(function() {
+            if ($(".gig-simpleShareUI").length > 0) {
+              var current_offset = $(".microsite-gallery").offset()['left'] + $(".microsite-gallery").width() - $(".gig-simpleShareUI").width();
+              $(".gig-simpleShareUI").css('left', current_offset);
+            }
+          }, 50);
         });
-      });
-      $(window).bind('resize', function () {
-        setTimeout(function() {
-          if ($(".gig-simpleShareUI").length > 0) {
-            var current_offset = $(".microsite-gallery").offset()['left'] + $(".microsite-gallery").width() - $(".gig-simpleShareUI").width();
-            $(".gig-simpleShareUI").css('left', current_offset);
-          }
-        }, 50);
-
-      });
+      }
     }
   };
 })(jQuery);

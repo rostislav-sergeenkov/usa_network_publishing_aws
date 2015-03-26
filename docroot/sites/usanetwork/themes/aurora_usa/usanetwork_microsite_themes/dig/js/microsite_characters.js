@@ -254,6 +254,7 @@
     },
 
     attach: function (context, settings) {
+      // check to make sure there's a characters section
       if ($('#characters').length > 0) {
         Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
         var characters = $('#microsite #character-info'),

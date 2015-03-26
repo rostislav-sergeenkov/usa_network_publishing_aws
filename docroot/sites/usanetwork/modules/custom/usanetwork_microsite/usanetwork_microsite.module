@@ -327,6 +327,10 @@ function _usanetwork_microsite_include_themes_info($current_theme = NULL) {
 
           $found_theme_names[] = $filename;
         }
+
+        if (!empty($current_theme) && $filename == $current_theme) {
+          break;
+        }
       }
     }
   }
@@ -3162,4 +3166,39 @@ function _usanetwork_microsite_process_setting_data($setting_key) {
     $setting = TRUE;
   }
   return $setting;
+}
+
+
+/**
+ * Return array with default theme settings.
+ * Settings witch is returned form this function can be overridden by function
+ * from theme.inc file.
+ *
+ * @return array()
+ */
+function usanetwork_microsite_default_get_theme_settings() {
+  return array(
+    'display_global_nav' => TRUE,
+    'setting_from_default' => 'gjghj'
+  );
+}
+
+/**
+ * Return array with theme settings.
+ *
+ * @return array()
+ */
+function usanetwork_microsite_get_theme_settings() {
+  $settings_theme = array();
+  $node = menu_get_object();
+  $settinga_default = usanetwork_microsite_default_get_theme_settings();
+  if(empty($node)) {
+    return $settinga_default;
+  }
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $theme_function = 'usanetwork_microsite_' . $node_wrapper->field_ms_theme->value() . '_get_theme_settings';
+  if (is_callable($theme_function)) {
+    $settings_theme = $theme_function();
+  }
+  return $settings_theme + $settinga_default;
 }

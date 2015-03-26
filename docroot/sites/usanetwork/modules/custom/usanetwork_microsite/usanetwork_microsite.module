@@ -2889,9 +2889,6 @@ function _usanetwork_microsite_get_default_h1($node, $section_type) {
 function _usanetwork_microsite_get_h1_for_for_node($node) {
   $h1 = '';
   $node_wrapper = entity_metadata_wrapper('node', $node);
-  $types_without_override = array(
-    USANETWORK_MICROSITE_GALLERY_NODE_TYPE,
-  );
   if (!empty($node->field_seo_h1)) {
     $h1 = $node_wrapper->field_seo_h1->value();
   }
@@ -2900,11 +2897,8 @@ function _usanetwork_microsite_get_h1_for_for_node($node) {
     $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
     $h1 = $person_names['person_title'];
   }
-  elseif (empty($h1) && in_array($node->type, $types_without_override)) {
-    $h1 = '';
-  }
   elseif (empty($h1)) {
-    $h1 = $node->title;
+    $h1 = '';
   }
   return $h1;
 }

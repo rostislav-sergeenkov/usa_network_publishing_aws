@@ -431,10 +431,10 @@ function _usanetwork_aspot_carousel_block() {
     $slide_speed = reset(field_get_items('node', $homepage_node, 'field_usa_slide_speed'));
     $slide_speed = !empty($slide_speed['value']) ? $slide_speed['value'] : 6000;
     $slide_autoscroll = reset(field_get_items('node', $homepage_node, 'field_usa_autoscroll'));
-    $slide_autoscroll = !empty($slide_autoscroll['value']) ? $slide_autoscroll['value'] : true;
+    $slide_autoscroll = !empty($slide_autoscroll['value']) ? $slide_autoscroll['value'] : 0;
     $js_settings = array(
-      'slideshowAutoplay' => $slide_speed,
-      'slideshowSpeed' => $slide_autoscroll
+      'slideshowAutoplay' => $slide_autoscroll,
+      'slideshowSpeed' => $slide_speed
     );
     drupal_add_js(array('sliderAspot' => $js_settings), array('type' => 'setting'));
     foreach ($carousel_nodes as $carousel_node) {

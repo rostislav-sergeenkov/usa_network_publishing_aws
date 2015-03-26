@@ -68,6 +68,7 @@ function usanetwork_episodes_image_default_styles() {
         'weight' => -9,
       ),
     ),
+    'label' => 'episode_wide',
   );
 
   return $styles;

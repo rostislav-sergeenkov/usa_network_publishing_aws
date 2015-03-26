@@ -14,19 +14,26 @@
     },
     attach: function(settings, context) {
       $('.view-mode-inline_content .flexslider').once('gallery-content', function() {
-        $(this).on('start', function() {
-          var $slider = $(this);
-          // init counter
-          $slider.append('<div class="counter"></div>');
-          Drupal.behaviors.usanetwork_gallery_content.updateCounter($slider);
-        });
-        $(this).on('after', function() {
-          var $slider = $(this);
-          Drupal.behaviors.usanetwork_gallery_content.updateCounter($slider);
-          if (typeof usa_refreshBannerAd != 'undefined') {
-            usa_refreshBannerAd(); // refresh ads on slides change
-          }
-        });
+        if ($(this).parents('#microsite')) {
+          // do nothing, because microsite galleries are handled in the
+          // microsite theme js files, such as for dig:
+          // usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js
+        }
+        else {
+          $(this).on('start', function() {
+            var $slider = $(this);
+            // init counter
+            $slider.append('<div class="counter"></div>');
+            Drupal.behaviors.usanetwork_gallery_content.updateCounter($slider);
+          });
+          $(this).on('after', function() {
+            var $slider = $(this);
+            Drupal.behaviors.usanetwork_gallery_content.updateCounter($slider);
+            if (typeof usa_refreshBannerAd != 'undefined') {
+              usa_refreshBannerAd(); // refresh ads on slides change
+            }
+          });
+        }
       });
     }
   };

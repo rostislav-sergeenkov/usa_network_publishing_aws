@@ -1,7 +1,8 @@
 name = usanetwork_ads
 description = dart settings etc
 core = 7.x
-version = 7.x-1.0
+version = 7.x-1.1
+project = usanetwork_ads
 package = USA Network
 php = 5.2.4
 dependencies[] = ctools

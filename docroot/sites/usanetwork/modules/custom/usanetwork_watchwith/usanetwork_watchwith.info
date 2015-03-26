@@ -19,4 +19,3 @@ features[variable][] = tve_watchwith_show_all_events
 features[variable][] = tve_watchwith_sidecar_layout
 features[variable][] = tve_watchwith_social_configuration
 features[variable][] = tve_watchwith_widget_display_path
-features[variable][] = usanetwork_watchwith_show_settings

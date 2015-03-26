@@ -156,19 +156,19 @@ function usanetwork_person_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
-        ),
-        'title' => array(
-          'weight' => '9',
-        ),
-        'path' => array(
-          'weight' => '6',
-        ),
-        'redirect' => array(
           'weight' => '8',
         ),
-        'xmlsitemap' => array(
+        'title' => array(
           'weight' => '10',
+        ),
+        'path' => array(
+          'weight' => '7',
+        ),
+        'redirect' => array(
+          'weight' => '9',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '11',
         ),
       ),
       'display' => array(),

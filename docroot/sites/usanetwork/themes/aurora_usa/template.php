@@ -181,7 +181,6 @@ function aurora_usa_preprocess_page(&$vars) {
     $vars['page'] = array('content' => $content);
     $vars['ajax'] = true;
   }
-
 }
 
 /**
@@ -769,17 +768,52 @@ function aurora_usa_preprocess_flexslider_file_entity(&$vars) {
 function append_cover_to_media(&$vars) {
   $node = $vars['element']['#object'];
   $language = $node->language;
-  array_unshift($vars['items'], $vars['items'][0]);
   $cover = $node->field_cover_item[$language][0];
-  $vars['items'][0]['#file'] = file_load($cover['fid']);
-  $vars['items'][0]['file']['#path'] = $cover['uri'];
-  $vars['items'][0]['file']['#width'] = $cover['image_dimensions']['width'];
-  $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
-  $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'][$language][0]['safe_value'];
-  $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
-  $vars['items'][0]['field_caption']['#items'] = $cover['field_caption'][$language];
-  $vars['items'][0]['field_caption'][0]['#markup'] = $cover['field_caption'][$language][0]['value'];
-  
+
+  $cover_attributes = array(
+    'file' => array(
+      '#theme' => 'image_style',
+      '#style_name' => '1400_wide',
+      '#path' => $cover['uri'],
+      '#width' => $cover['image_dimensions']['width'],
+      '#height' => $cover['image_dimensions']['height'],
+      '#alt' => $cover['field_file_image_alt_text'][$language][0]['safe_value'],
+      '#title' => $cover['field_file_image_title_text'],
+      '#prefix' => '<div class="content">',
+      '#suffix' => '</div>',
+    ),
+    'field_caption' => array(
+      '#theme' => 'field',
+      '#weight' => 1,
+      '#title' => '',
+      '#access' => 1,
+      '#label_display' => 'hidden',
+      '#view_mode' => 'gallery_flexslider',
+      '#language' => $language,
+      '#field_name' => 'field_caption',
+      '#field_type' => 'text_with_summary',
+      '#field_translatable' => 0,
+      '#entity_type' => 'file',
+      '#bundle' => 'image',
+      '#object' => file_load($cover['fid']),
+      '#formatter' => 'text_default',
+      '#items' => array(
+        0 => array(
+          'value' => '',
+          'summary' => '',
+          'format' => 'wysiwyg_mini',
+          'safe_value' => '',
+          'safe_summary' => '',
+        ),
+      ),
+      0 => array(
+        '#markup' => $cover['field_caption'][$language][0]['value'],
+      ),
+    ),
+  );
+
+  array_unshift($vars['items'], $cover_attributes);
+
   // REMOVED in favor of node titles
   // $new_caption = '<div class="caption-body">' . $node->body[$language][0]['safe_value'] . '</div>';
   // $vars['items'][0]['field_caption']['#items'][0]['value'] = $new_caption;
@@ -1010,6 +1044,8 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
+  $item = current($vars['items']);
+  $alt = !empty($item['#item']['alt']) ? $item['#item']['alt'] : '';
   if ((!isset($vars['element']['#object']->field_usa_aspot_tablet_portrait)) || (empty($vars['element']['#object']->field_usa_aspot_tablet_portrait))) {
     $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
     $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
@@ -1021,7 +1057,7 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
   $output .= '<![endif]-->';
 
   $output .= '<noscript>';
-  $output .= theme('image_style', array('style_name' => '1245x709', 'path' => $filepath, 'alt' => '', 'title' => ''));
+  $output .= theme('image_style', array('style_name' => '1245x709', 'path' => $filepath, 'alt' => $alt, 'title' => ''));
   $output .= '</noscript>';
 
   return $output;
@@ -1239,7 +1275,7 @@ function _aurora_usa_search_keywords() {
 * Implements hook_html_head_alter().
 */
 function aurora_usa_html_head_alter(&$head_elements) {
-  
+
   if ($node = menu_get_object()) {
     if (($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) {
       if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0') {

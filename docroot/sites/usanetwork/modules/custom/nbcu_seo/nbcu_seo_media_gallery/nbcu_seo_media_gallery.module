@@ -40,7 +40,7 @@ function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_xml_element_alter(&$element,
         'language' => language_default(),
       );
       $url = parse_url(file_create_url($file->uri));
-      $path = $url['path'];
+      $path = ltrim($url['path'], '/');
       $element[$delta]['loc'] = url($path, $url_options);
 
       // Process caption field (field_get_items does not allow to get clean value if it flooded by WYSIWYG editor)

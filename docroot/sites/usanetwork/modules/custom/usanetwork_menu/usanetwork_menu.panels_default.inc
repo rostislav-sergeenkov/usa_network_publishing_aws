@@ -151,34 +151,19 @@ function usanetwork_menu_default_panels_mini() {
   $pane = new stdClass();
   $pane->pid = 'new-6';
   $pane->panel = 'reg_tab_shows';
-  $pane->type = 'views';
-  $pane->subtype = 'usa_nav';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_sm_all_shows';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'originals_show',
-    'override_title' => 1,
-    'override_title_text' => 'Current Shows',
+    'override_title' => 0,
+    'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'originals-shows-menu',
-  );
+  $pane->css = array();
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
@@ -247,7 +232,6 @@ function usanetwork_menu_default_panels_mini() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-  
   $pane = new stdClass();
   $pane->pid = 'new-1';
   $pane->panel = 'reg_footer_menu';
@@ -256,7 +240,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
+    'override_title' => 0,
     'override_title_text' => '',
   );
   $pane->cache = array();
@@ -269,7 +253,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-1'] = $pane;
   $display->panels['reg_footer_menu'][0] = 'new-1';
-  
   $pane = new stdClass();
   $pane->pid = 'new-2';
   $pane->panel = 'reg_footer_menu';
@@ -291,7 +274,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-2'] = $pane;
   $display->panels['reg_footer_menu'][1] = 'new-2';
-  
   $pane = new stdClass();
   $pane->pid = 'new-3';
   $pane->panel = 'reg_legal_and_social';

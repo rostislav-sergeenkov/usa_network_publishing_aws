@@ -14,10 +14,3 @@ function usanetwork_gallery_content_node_view($node, $view_mode, $langcode) {
     $node->content['#attached']['js'][] = drupal_get_path('module', 'usanetwork_gallery_content') . '/js/usanetwork_gallery_content.js';
   }
 }
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function usanetwork_gallery_content_form_media_gallery_node_form_alter(&$form, &$form_state, $form_id) {
-  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_gallery_content') . '/js/usanetwork_gallery.js';
-}

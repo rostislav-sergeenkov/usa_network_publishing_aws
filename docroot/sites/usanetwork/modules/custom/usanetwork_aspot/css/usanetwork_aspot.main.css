@@ -5,6 +5,13 @@
     border: solid #aaa 1px;
 }
 
+#edit-field-aspot-preview-mbg-offset-preview {
+    display: block;
+    width: 200px;
+    height: 480px;
+    border: solid #aaa 1px;
+}
+
 #edit-field-aspot-enabled-gi-preview {
     display: block;
     width: 100%;

@@ -96,7 +96,7 @@
                   excludedElements: "button, input, select, textarea, .noSwipe",
                   swipeRight: function () {
                     if (!$carousel.hasClass('stop')) {
-                      var visible_item = (!$container.hasClass('inner-carousel')) ? $container.jcarousel('visible').index($container.find('li.first')) : -1;
+                      var visible_item = $container.jcarousel('visible').index($container.find('li.first'));
                       if (visible_item >= 0 && !$container.hasClass('start')) {
                         Drupal.behaviors.global_carousels.swipeShowDescription($container);
                       }
@@ -170,7 +170,7 @@
                   }
                 });
                 $container.on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
-                  if (!$carousel.hasClass('stop') && !$container.hasClass('inner-carousel')) {
+                  if (!$carousel.hasClass('stop')) {
                     Drupal.behaviors.global_carousels.swipeShowDescription($container);
                   }
                 })
@@ -210,7 +210,7 @@
               $container.swipe({
                 excludedElements: "button, input, select, textarea, .noSwipe",
                 swipeLeft: function () {
-                  var visible_item = (!$container.hasClass('inner-carousel')) ? $container.jcarousel('visible').index($container.find('li.first')) : -1;
+                  var visible_item = $container.jcarousel('visible').index($container.find('li.first'))
                   if (visible_item >= 0 && !$container.hasClass('start')) {
                     Drupal.behaviors.global_carousels.swipeShowDescription($container);
                   }
@@ -319,11 +319,9 @@
       }
     },
     swipeItems: function (carousel) {
-      var width = window.innerWidth;
-      if (carousel.closest('.carousel').hasClass('inner-carousel')) {
-        width = carousel.closest('.show-info-block-wrapper').width();
-      }
-      var item_width = carousel.find('> li').eq(0).width() + parseInt(carousel.find('> li').eq(0).css('margin-right'));
+      var width = window.innerWidth,
+          item_width = carousel.find('> li').eq(0).width() + parseInt(carousel.find('> li').eq(0).css('margin-right'));
+
       return Math.floor(width / item_width);
     },
     swipeHideDescription: function (element) {

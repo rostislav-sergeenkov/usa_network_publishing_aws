@@ -19,16 +19,16 @@ function usanetwork_menu_default_panels_mini() {
   $display->layout = 'usanetwork-show-menu';
   $display->layout_settings = array();
   $display->panel_settings = array(
-    'style_settings' => array(
-      'default' => NULL,
-      'reg_menu' => NULL,
-      'reg_mobile_menu' => NULL,
-      'reg_tab_shows' => NULL,
-      'reg_tab_full_episodes' => NULL,
-      'reg_tab_schedule' => NULL,
-      'reg_tab_user_profile' => NULL,
-      'reg_show_menu' => NULL,
-    ),
+      'style_settings' => array(
+          'default' => NULL,
+          'reg_menu' => NULL,
+          'reg_mobile_menu' => NULL,
+          'reg_tab_shows' => NULL,
+          'reg_tab_full_episodes' => NULL,
+          'reg_tab_schedule' => NULL,
+          'reg_tab_user_profile' => NULL,
+          'reg_show_menu' => NULL,
+      ),
   );
   $display->cache = array();
   $display->title = '';
@@ -42,12 +42,12 @@ function usanetwork_menu_default_panels_mini() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
+      'override_title' => 0,
+      'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
-    'settings' => NULL,
+      'settings' => NULL,
   );
   $pane->css = array();
   $pane->extras = array();
@@ -63,16 +63,16 @@ function usanetwork_menu_default_panels_mini() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
+      'override_title' => 0,
+      'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
-    'settings' => NULL,
+      'settings' => NULL,
   );
   $pane->css = array(
-    'css_id' => '',
-    'css_class' => '',
+      'css_id' => '',
+      'css_class' => '',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -87,16 +87,16 @@ function usanetwork_menu_default_panels_mini() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
+      'override_title' => 0,
+      'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
-    'settings' => NULL,
+      'settings' => NULL,
   );
   $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'latest-full-episodes',
+      'css_id' => '',
+      'css_class' => 'latest-full-episodes',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -111,12 +111,12 @@ function usanetwork_menu_default_panels_mini() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
-    'settings' => NULL,
+      'settings' => NULL,
   );
   $pane->css = array();
   $pane->extras = array();
@@ -132,16 +132,16 @@ function usanetwork_menu_default_panels_mini() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
+      'override_title' => 0,
+      'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
-    'settings' => NULL,
+      'settings' => NULL,
   );
   $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'primetime-panel',
+      'css_id' => '',
+      'css_class' => 'primetime-panel',
   );
   $pane->extras = array();
   $pane->position = 1;
@@ -151,33 +151,21 @@ function usanetwork_menu_default_panels_mini() {
   $pane = new stdClass();
   $pane->pid = 'new-6';
   $pane->panel = 'reg_tab_shows';
-  $pane->type = 'views';
-  $pane->subtype = 'usa_nav';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_sm_all_shows';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'originals_show',
-    'override_title' => 0,
-    'override_title_text' => '',
+      'override_title' => 0,
+      'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
-    'settings' => NULL,
+      'settings' => NULL,
   );
   $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'originals-shows-menu',
+      'css_id' => '',
+      'css_class' => 'originals-shows-menu',
   );
   $pane->extras = array();
   $pane->position = 0;
@@ -187,34 +175,29 @@ function usanetwork_menu_default_panels_mini() {
   $pane = new stdClass();
   $pane->pid = 'new-7';
   $pane->panel = 'reg_tab_shows';
-  $pane->type = 'views';
-  $pane->subtype = 'usa_nav';
+  $pane->type = 'menu_tree';
+  $pane->subtype = 'menu-also-on-usa';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'syndicated_shows',
-    'override_title' => 0,
-    'override_title_text' => '',
+      'menu_name' => 'menu-also-on-usa',
+      'parent_mlid' => 0,
+      'parent' => 'menu-also-on-usa:0',
+      'title_link' => 0,
+      'admin_title' => '',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => '1',
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 0,
+      'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
-    'settings' => NULL,
+      'settings' => NULL,
   );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'syndicated-shows-menu',
-  );
+  $pane->css = array();
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();
@@ -252,7 +235,6 @@ function usanetwork_menu_default_panels_mini() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-  
   $pane = new stdClass();
   $pane->pid = 'new-1';
   $pane->panel = 'reg_footer_menu';
@@ -261,7 +243,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
+    'override_title' => 0,
     'override_title_text' => '',
   );
   $pane->cache = array();
@@ -274,7 +256,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-1'] = $pane;
   $display->panels['reg_footer_menu'][0] = 'new-1';
-  
   $pane = new stdClass();
   $pane->pid = 'new-2';
   $pane->panel = 'reg_footer_menu';
@@ -296,7 +277,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-2'] = $pane;
   $display->panels['reg_footer_menu'][1] = 'new-2';
-  
   $pane = new stdClass();
   $pane->pid = 'new-3';
   $pane->panel = 'reg_legal_and_social';

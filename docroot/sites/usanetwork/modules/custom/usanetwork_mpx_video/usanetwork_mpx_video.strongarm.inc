@@ -85,6 +85,9 @@ function usanetwork_mpx_video_strongarm() {
       'post_cover' => array(
         'custom_settings' => FALSE,
       ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -132,6 +135,10 @@ function usanetwork_mpx_video_strongarm() {
             'visible' => TRUE,
           ),
           'inline_content' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'microsite_thumbnail' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),
@@ -204,6 +211,12 @@ function usanetwork_mpx_video_strongarm() {
       'vid_teaser_front' => array(
         'custom_settings' => TRUE,
       ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -247,6 +260,10 @@ function usanetwork_mpx_video_strongarm() {
             'visible' => TRUE,
           ),
           'vid_teaser_front' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'microsite_thumbnail' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),

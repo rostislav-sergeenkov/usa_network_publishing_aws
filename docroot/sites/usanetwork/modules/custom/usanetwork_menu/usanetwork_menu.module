@@ -2,6 +2,8 @@
 
 define('USANETWORK_MENU_FULL_EPISODES_NUMBER', 6);
 
+include_once 'usanetwork_menu.features.inc';
+
 /**
  * Implements hook_ctools_plugin_api().
  */
@@ -51,6 +53,11 @@ function usanetwork_menu_block_info() {
 
   $blocks['usanetwork_menu_sm_main'] = array(
     'info' => t('Homepage Menu: Main menu'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  $blocks['usanetwork_menu_sm_all_shows'] = array(
+    'info' => t('Homepage Menu: Shows: All Shows'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
@@ -119,6 +126,11 @@ function usanetwork_menu_block_view($delta = '') {
       $block['content'] = _usanetwork_menu_main_menu_block();
       break;
 
+    case 'usanetwork_menu_sm_all_shows':
+      $block['subject'] = t('Current Shows');
+      $block['content'] = _usanetwork_menu_all_shows_block(TRUE);
+      break;
+
     case 'usanetwork_menu_sm_primetime':
       $block['subject'] = t('Primetime tonight');
       $block['content'] = _usanetwork_menu_show_menu_primetime_block();
@@ -148,7 +160,7 @@ function usanetwork_menu_block_view($delta = '') {
 
     case 'usanetwork_menu_fm_shows':
       $block['subject'] = t('Shows');
-      $block['content'] = usanetwork_tv_shows_footer_links();
+      $block['content'] = _usanetwork_menu_all_shows_block(FALSE);
       break;
 
     case 'usanetwork_menu_fm_apps_services':
@@ -222,7 +234,6 @@ function usanetwork_menu_theme() {
         'items' => array(
           'logo' => NULL,
           'url' => NULL,
-          'title' => NULL,
           'additional' => NULL,
           'image' => NULL,
         ),
@@ -379,6 +390,50 @@ function _usanetwork_menu_main_menu_block() {
       )
     ),
   ));
+}
+
+/**
+ * Render shows menu items
+ */
+function _usanetwork_menu_all_shows_block($header = TRUE) {
+  $query_result = views_get_view_result('usa_nav', 'block');
+  $links = array();
+  foreach ($query_result as $row) {
+    $new = '';
+    if (!$header) {
+      if ($row->flag_content_node_timestamp) {
+        $new = '<span>' . t('New!') . '</span> ';
+      }
+    }
+    $links[] = array(
+      'data' => l($new . $row->node_title, 'node/' . $row->nid, array('html' => TRUE)),
+      'class' => array(
+        'menu-item'
+      ),
+    );
+  }
+  return theme('usanetwork_item_list', array(
+      'warpper_attributes' => array(
+        'class' => array(
+          'shows-menu',
+        ),
+      ),
+      'title_tag' => 'h2',
+      'title_attributes' => array(
+        'class' => array(
+          'menu-title',
+          'shows-menu-title',
+        ),
+      ),
+      'items' => $links,
+      'type' => 'ul',
+      'attributes' => array(
+        'class' => array(
+          'menu'
+        )
+      ),
+    )
+  );
 }
 
 /**
@@ -638,31 +693,30 @@ function _usanetwork_menu_full_episodes_block() {
           'path' => $logo,
         ));
       }
-      $episode_season = !empty($episode->field_mpx_season_number)
-        ? $episode_wrapper->field_mpx_season_number->value()
-        : NULL;
-      $episode_number = !empty($episode->field_mpx_episode_number)
-        ? $episode_wrapper->field_mpx_episode_number->value()
-        : NULL;
-      $wrapper = file_stream_wrapper_get_instance_by_uri($episode->uri);
-      $video_image = theme('image_style', array(
-        'path' => $wrapper->getLocalThumbnailPath(),
-        'style_name' => 'full_episodes_633x356',
-      ));
-
-      $items_variables = array(
-        'logo' => $logo_image,
-        'url' => url('file/' . $episode->fid),
-        'title' => isset($logo_image) ? $logo_image : NULL,
-        'additional' => t('S@season Episode @episode_number', array(
-            '@season' => $episode_season,
-            '@episode_number' => $episode_number
-          )),
-        'image' => $video_image,
-      );
-
-      $items[] = $items_variables;
     }
+    $episode_season = !empty($episode->field_mpx_season_number)
+      ? $episode_wrapper->field_mpx_season_number->value()
+      : NULL;
+    $episode_number = !empty($episode->field_mpx_episode_number)
+      ? $episode_wrapper->field_mpx_episode_number->value()
+      : NULL;
+    $wrapper = file_stream_wrapper_get_instance_by_uri($episode->uri);
+    $video_image = theme('image_style', array(
+      'path' => $wrapper->getLocalThumbnailPath(),
+      'style_name' => 'full_episodes_633x356',
+    ));
+
+    $items_variables = array(
+      'url' => url('file/' . $episode->fid),
+      'logo' => isset($logo) ? $logo_image : NULL,
+      'additional' => t('S@season Episode @episode_number', array(
+        '@season' => $episode_season,
+        '@episode_number' => $episode_number
+       )),
+       'image' => $video_image,
+    );
+
+    $items[] = $items_variables;
   }
 
   $theme_variables = array(

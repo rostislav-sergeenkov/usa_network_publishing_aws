@@ -226,7 +226,7 @@
     }
     .time-zone {
       padding: 0 30px;
-      @include breakpoint($bp-480-width){
+      @include breakpoint($bp-480-width) {
         text-align: center;
       }
       a {
@@ -240,7 +240,7 @@
       margin-top: 20px;
       position: relative;
       padding: 10px 0;
-      .carousel-vert{
+      .carousel-vert {
         overflow: hidden;
         position: static;
         margin: 0;
@@ -291,6 +291,27 @@
       ul {
         height: 100%;
         width: 100%;
+        li.date-separate {
+          background-color: $bottom-footer-back !important;
+          color: #ffffff;
+          font-size: 32px;
+          line-height: 60px;
+          padding-left: calc((10% - 90px) / 2 + 7px);
+          @include breakpoint($bp-1024-width) {
+            font-size: 22px;
+            line-height: 50px;
+            padding-left: 30px;
+          }
+          @include breakpoint($bp-480-width) {
+            padding-left: 15px;
+          }
+          .day-shcedule {
+            font-family: $avalon-demi;
+          }
+          .date-shcedule {
+            font-family: $avalon-book;
+          }
+        }
         li {
           float: none;
           margin: 0;
@@ -301,7 +322,7 @@
           }
           .schedule-item {
             box-sizing: border-box;
-            padding: 20px 0 20px 10px;
+            padding: 20px 0 20px 7px;
             width: 100%;
             @include breakpoint($bp-1024-width) {
               padding-left: 30px;
@@ -537,7 +558,7 @@
                         font-family: $cent-725BT-italic;
                         font-style: italic;
                         margin-right: 100px;
-                        @include breakpoint($bp-480-width){
+                        @include breakpoint($bp-480-width) {
                           font-size: 14px;
                         }
                       }

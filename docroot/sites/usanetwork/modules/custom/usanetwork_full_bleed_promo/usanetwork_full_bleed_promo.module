@@ -61,6 +61,13 @@ function usanetwork_full_bleed_promo_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_full_bleed_promo_form_usanetwork_full_bleed_promo_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['#validate'][] = '_usanetwork_full_bleed_promo_validate_url';
+}
+
+/**
  * Renders usanetwork_full_bleed_promo block according current homepage.
  */
 function _usanetwork_full_bleed_promo_render_block() {
@@ -94,4 +101,18 @@ function _usanetwork_full_bleed_promo_render_block() {
   }
 
   return '';
+}
+
+/**
+ * Validates URL on Full bleed promo submitting,
+ */
+function _usanetwork_full_bleed_promo_validate_url(&$form, &$form_state) {
+  if (!empty($form_state['values']['field_usa_fbp_cta_link'])) {
+    $language = $form_state['values']['language'];
+    $url = $form_state['values']['field_usa_fbp_cta_link'][$language][0]['url'];
+
+    if (empty($url) || (!empty($url) && !drupal_valid_path($url))) {
+      form_set_error('field_usa_fbp_cta_link', t('Link is not valid. Please enter the internal link without domain name or full external link.'));
+    }
+  }
 }

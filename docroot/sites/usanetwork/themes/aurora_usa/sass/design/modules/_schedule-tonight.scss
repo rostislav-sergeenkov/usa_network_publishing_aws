@@ -354,6 +354,26 @@
           }
         }
       }
+      .watch-now{
+        span{
+          color: $schedule-pm-color;
+          font-size: 11px;
+          line-height: 11px;
+          letter-spacing: 0.5px;
+          @include breakpoint($bp-min-1701-width) {
+            font-size: 19px;
+            line-height: 19px;
+          }
+          &.live{
+            border: 1px solid $schedule-pm-color;
+            border-radius: 3px;
+            padding: 0 3px;
+            @include breakpoint($bp-min-1701-width) {
+              border: 2px solid $schedule-pm-color;
+            }
+          }
+        }
+      }
     }
     .episode-info {
       color: #ffffff;

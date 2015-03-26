@@ -32,6 +32,12 @@
         }
       });
 
+      $(document).click(function(e){
+        if (e.target.className != 'filter-label') {
+          $('.item-filter.open').removeClass('open');
+        }
+      });
+
       // Adds and applies a filter (applies if 'applyFilter' is true)
       function addFilter(filterName, filterValue, applyFilter) {
         filters[filterName] = filterValue;

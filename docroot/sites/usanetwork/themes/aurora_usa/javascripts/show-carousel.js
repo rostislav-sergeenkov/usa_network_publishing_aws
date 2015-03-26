@@ -2,16 +2,7 @@
 (function ($) {
   Drupal.behaviors.show_carousel = {
     attach: function (context, settings) {
-
-      $(window).bind('resize', function () {
-        $('.show-carousel li.active').each(function (){
-          var mobile = false;
-
-          Drupal.behaviors.global_carousels.showClose($(this));
-        });
-
-      });
-
+      
       $(window).load(function () {
 
         // Click to close button when show-info-block open

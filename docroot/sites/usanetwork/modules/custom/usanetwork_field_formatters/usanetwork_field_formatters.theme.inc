@@ -37,3 +37,7 @@ function theme_flexslider_file_entity($vars) {
   $output = drupal_render($output);
   return $output;
 }
+
+function theme_custom_css_ajax_formatter($vars) {
+  return '<style media="screen">' . $vars['data'] . '</style>';
+}

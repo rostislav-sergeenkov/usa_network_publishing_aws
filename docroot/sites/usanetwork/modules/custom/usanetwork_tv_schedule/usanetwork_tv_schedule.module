@@ -202,6 +202,13 @@ function usanetwork_tv_schedule_theme() {
       ),
       'template' => 'templates/usanetwork-tv-schedule-table-element',
     ),
+    'usanetwork_tv_schedule_table_day_label' => array(
+      'variables' => array(
+        'day' => NULL,
+        'date' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-schedule-table-day-label',
+    ),
   );
 }
 
@@ -831,27 +838,22 @@ function usanetwork_tv_schedule_schedule_page() {
 
   date_default_timezone_set('America/New_York');
 
-  // ET is currently unused
-  //$et_time = floatval(date('U'));
-
-  $sdate = date('Y_m_d');
-  if (isset($query_params['sdate'])) {
-    $sdate = date('Y_m_d', check_plain($query_params['sdate']));
-    //$et_time = strtotime(str_replace('_', '-', $sdate) . date(' H:i:s'));
-  }
-
-  $filter_show_nid = !empty($query_params['show_nid']) ? $query_params['show_nid']
-        : NULL;
-
-  $filter_show_time = !empty($query_params['show_time']) ? $query_params['show_time']
-        : NULL;
+  $filter_show_nid = !empty($query_params['show_nid']) ? check_plain($query_params['show_nid']) : NULL;
+  $filter_show_time = !empty($query_params['show_time']) ? check_plain($query_params['show_time']) : NULL;
+  $filter_day = !empty($query_params['sdate']) ? check_plain($query_params['sdate']) : NULL;
 
   $filter_show_time_values = array(
     'all_time' => t('All time'),
     'primetime' => t('Primetime'),
   );
-
-  $tv_schedule = usanetwork_tv_schedule_fetch_schedule($sdate);
+  $time_stamp = (!empty($filter_day) && empty($filter_show_nid)) ? $filter_day : time();
+  $sday = date('d', $time_stamp);
+  $smonth = date('m', $time_stamp);
+  $syear = date('Y', $time_stamp);
+  $string_date = $syear . '_' . $smonth . '_' . $sday;
+  $current_day_end_time = mktime(USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR, 0, 0, $smonth, $sday +1, $syear);
+  $tv_schedule = usanetwork_tv_schedule_fetch_schedule($string_date, false);
+  $next_day_flag = NULL;
   $schedule_rows = array();
 
   $shows_filter = array();
@@ -896,6 +898,9 @@ function usanetwork_tv_schedule_schedule_page() {
       if (!empty($filter_show_nid) && $filter_show_nid != $show_nid) {
         continue;
       }
+      if ($start_time >= $current_day_end_time && empty($filter_show_nid)) {
+        continue;
+      }
       if (empty($show_node)) {
         $theme_row_variables['episode_show'] = $show_name;
         $theme_row_variables['time'] = date('g:i', $start_time);
@@ -935,6 +940,12 @@ function usanetwork_tv_schedule_schedule_page() {
         $show_description = $show_body_field[0]['value'];
       }
 
+      if (empty($tv_schedule_item->program_description) && empty($tv_episode->description)) {
+        $description = '';
+      }
+      else {
+        $description = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : $tv_episode->description;
+      }
       $theme_row_variables = array(
         'show_nid' => $show_nid,
         'show_url' => url('node/' . $show_nid),
@@ -953,11 +964,21 @@ function usanetwork_tv_schedule_schedule_page() {
         'episode_url' => !empty($tv_episode) ? url('file/' . $tv_episode->fid) : '',
         'episode_image_url' => $episode_image_uri,
         'show_image_url' => $show_logo_url,
-        'episode_description' => !empty($tv_episode) ? $tv_episode->description : '',
+        'episode_description' => $description,
         'show_description' => $show_description,
       );
 
-      $schedule_rows[$start_time] = theme('usanetwork_tv_schedule_table_element', $theme_row_variables);
+      $schedule_rows[$start_time] = '';
+      if (!empty($filter_show_nid)) {
+        $day = date('l', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
+        if ($day != $next_day_flag) {
+          $next_day_flag = $day;
+          $variables['day'] = $next_day_flag;
+          $variables['date'] = date('m/d', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
+          $schedule_rows[$start_time] .= theme('usanetwork_tv_schedule_table_day_label', $variables);
+        }
+      }
+      $schedule_rows[$start_time] .= theme('usanetwork_tv_schedule_table_element', $theme_row_variables);
     }
   }
   asort($shows_filter);
@@ -984,7 +1005,7 @@ function usanetwork_tv_schedule_schedule_page() {
         'list' => $filter_show_time_values,
       ),
     ),
-    'navigation' => _usanetwork_tv_schedule_get_week_navigation(),
+    'navigation' => empty($filter_show_nid) ? _usanetwork_tv_schedule_get_week_navigation() : '',
     'schedule_table' => $schedule_rows,
   );
 
@@ -1085,10 +1106,13 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0) {
         $active = TRUE;
       }
     }
-    else {
+    elseif (!isset($query_params['show_nid'])) {
       if ($current_day == $new_day) {
         $active = TRUE;
       }
+    }
+    else {
+      $active = FALSE;
     }
 
     $date_array[$day_number] = array(

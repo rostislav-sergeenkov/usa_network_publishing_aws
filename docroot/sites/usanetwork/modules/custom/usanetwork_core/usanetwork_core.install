@@ -1038,3 +1038,24 @@ function usanetwork_core_update_7167() {
     module_enable(array('usanetwork_full_bleed_promo'));
   }
 }
+
+/**
+ * Enable usanetwork_microsite module
+ */
+function usanetwork_core_update_7168() {
+  $modules_en = array(
+    'usanetwork_microsite',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Disable WatchWith modules
+ */
+function usanetwork_core_update_7169() {
+  $modules_dis = array(
+    'usanetwork_watchwith',
+    'tve_watchwith',
+  );
+  module_disable($modules_dis);
+}

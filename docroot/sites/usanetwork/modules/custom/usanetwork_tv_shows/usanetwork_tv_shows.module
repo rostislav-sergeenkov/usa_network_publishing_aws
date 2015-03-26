@@ -713,49 +713,6 @@ function _usanetwork_tv_shows_detect_related_content_view_mode($query_item, $con
 }
 
 /**
- * Render shows menu items
- */
-function usanetwork_tv_shows_footer_links() {
-  $query_result = views_get_view_result('usa_nav', 'block');
-  $links = array();
-  foreach ($query_result as $row) {
-    $new = '';
-    if ($row->flag_content_node_timestamp) {
-      $new = '<span>' . t('New!') . '</span> ';
-    }
-    $links[] = array(
-      'data' => l($new . $row->node_title, 'node/' . $row->nid, array('html' => TRUE)),
-      'class' => array(
-        'menu-item'
-      ),
-    );
-  }
-  return theme('usanetwork_item_list', array(
-    'warpper_attributes' => array(
-      'class' => array(
-        'shows-menu',
-      ),
-    ),
-    'title_tag' => 'h2',
-    'title_attributes' => array(
-      'class' => array(
-        'menu-title',
-        'shows-menu-title',
-      ),
-    ),
-    'title' => t('Shows'),
-    'items' => $links,
-    'type' => 'ul',
-    'attributes' => array(
-      'class' => array(
-        'menu'
-      )
-    ),
-      )
-  );
-}
-
-/**
  * @param $file_fid
  */
 function _usanetwork_tv_shows_get_video_file_info($associated_video) {

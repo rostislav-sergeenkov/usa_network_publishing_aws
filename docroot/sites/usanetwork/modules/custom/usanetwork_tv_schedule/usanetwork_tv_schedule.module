@@ -859,7 +859,7 @@ function usanetwork_tv_schedule_schedule_page() {
   $shows_filter = array();
   if (!empty($tv_schedule)) {
     foreach ($tv_schedule as $tv_schedule_item) {
-      $show_name = $tv_schedule_item->show_title;
+      $show_name = ($tv_schedule_item->program_type == 'movie') ?  t('USA MOVIE') : $tv_schedule_item->show_title;
       $episode_title = $tv_schedule_item->title;
       $rating = $tv_schedule_item->rating_type;
       $episode_image_uri = '';
@@ -903,6 +903,7 @@ function usanetwork_tv_schedule_schedule_page() {
       }
       if (empty($show_node)) {
         $theme_row_variables['episode_show'] = $show_name;
+        $theme_row_variables['episode_description'] = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : '';
         $theme_row_variables['time'] = date('g:i', $start_time);
         $theme_row_variables['day_part'] = date('A', $start_time);
         $schedule_rows[$start_time] = theme('usanetwork_tv_schedule_table_element', $theme_row_variables);

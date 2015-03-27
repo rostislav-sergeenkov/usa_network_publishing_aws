@@ -653,7 +653,7 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
   if ($needed_count > 0) {
     $query = db_select('file_managed', 'fm')
       ->fields('fm',array('fid'))
-      ->condition('fm.type', array('audio', 'document', 'image', 'mpx_player', 'video'), 'NOT IN')
+      ->condition('fm.type',  _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
       ->condition('fm.fid', $episodes_fids, 'NOT IN')
       ->condition('fm.published', '1');
     $query->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');

@@ -166,9 +166,16 @@
           &.show-open {
             background-color: #000000;
             height: 100%;
+            max-width: 270px;
             overflow: hidden;
             position: relative;
             width: 100%;
+          }
+          @include breakpoint($bp-min-1920-width) {
+            max-width: 453px;
+          }
+          @include breakpoint($between-769-1024) {
+            max-width: 342px;
           }
           &.close-button {
             display: none;

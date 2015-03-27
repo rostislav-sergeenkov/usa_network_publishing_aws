@@ -105,6 +105,37 @@ function usanetwork_quiz_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo_details|node|quiz|form';
+  $field_group->group_name = 'group_promo_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'quiz';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo Details',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_promo_title',
+      1 => 'field_promo_violator_name',
+      2 => 'field_promo_call_to_action_text',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo-details field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo_details|node|quiz|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_quiz_quiestions|node|quiz|form';
   $field_group->group_name = 'group_quiz_quiestions';
   $field_group->entity_type = 'node';

@@ -530,21 +530,8 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
 
   $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
 
-  if (in_array('social_meter', $enabled_elements)) {
-    $theme_array['social_meter'] = array(
-      'value' => 50,
-      'multiplier' => 'k',
-      'tag' => 'Test',
-      'hot' => 1,
-      'link' => array(
-        'url' => 'http://google.ru?q=WAT',
-        'text' => t('Google'),
-        'class' => 'some-class',
-      ),
-      'style' => isset($draggable_data->social_meter)
-        ? _usanetwork_aspot_get_draggable_style_data($draggable_data->social_meter)
-        : '',
-    );
+  if (in_array('social_meter', $enabled_elements) && module_exists('usanetwork_social_meter')) {
+    $theme_array['social_meter'] = usanetwork_social_meter_get($aspot_node);
   }
 
   return theme('usanetwork_aspot_carousel_slide', $theme_array);

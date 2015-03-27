@@ -1059,3 +1059,12 @@ function usanetwork_core_update_7169() {
   );
   module_disable($modules_dis);
 }
+
+/**
+ * Enables usanetwork_social_meter module.
+ */
+function usanetwork_core_update_7170() {
+  if (!module_exists('usanetwork_social_meter')) {
+    module_enable(array('usanetwork_social_meter'));
+  }
+}

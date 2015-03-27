@@ -21812,6 +21812,9 @@ yx-axis
     display: none;
   }
 }
+.schedule-on-tonight .caroufredsel_wrapper {
+  height: 100% !important;
+}
 .schedule-on-tonight .view-schedule {
   height: 120px;
   position: absolute;

@@ -3,6 +3,7 @@
  * $show_image_bg_offset
  */
 ?>
+
 <div class="slide">
   <div class="wrp">
     <div class="node usanetwork-aspot <?php print $show_class; ?>" data-show="<?php print $show_class; ?>">
@@ -80,6 +81,9 @@
             <?php endif; ?>
           </div>
         <?php endif; */?>
+        <?php if (!empty($show_draggable_data)): ?>
+          <div class="hidden draggable-data-hidden"><?php print $show_draggable_data; ?></div>
+        <?php endif; ?>
       </div>
     </div>
   </div>

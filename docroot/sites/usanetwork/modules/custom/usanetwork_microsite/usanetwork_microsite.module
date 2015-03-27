@@ -900,6 +900,17 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
   return $theme_variables;
 }
 
+function usanetwork_microsite_process_usanetwork_quiz_sidebar(&$vars) {
+  $microsite_node = menu_get_object();
+  if (!empty($microsite_node) && $microsite_node->type == 'usanetwork_microsite') {
+    $splash = theme('usanetwork_quiz_splash');
+    $phase = $vars['phase'];
+    if (($phase == 'splash' && !empty($splash)) || ($phase == 'questions' && empty($splash))) {
+        $vars['content']['ads']['dart_dart-tag-300x250_ifr_reload']['#markup'] = '<div  class="dart-tag dart-name-300x250_ifr_reload_quizzes"></div>';
+    }
+  }
+}
+
 function _usanetwork_microsite_get_rendered_quiz($node) {
   $quiz_node_view = node_view($node, 'microsite_output');
   $rendered_quiz = drupal_render($quiz_node_view);

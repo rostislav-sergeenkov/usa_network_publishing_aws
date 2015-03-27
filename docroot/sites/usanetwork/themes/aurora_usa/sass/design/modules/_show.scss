@@ -231,7 +231,7 @@
           display: table-cell;
           overflow: hidden;
           max-width: 270px;
-          padding-left: 20px;
+          padding-left: 0px;
           position: relative;
           vertical-align: middle;
           width: 100%;
@@ -257,6 +257,10 @@
               font-size: 18px;
               line-height: 24px;
             }
+            @include breakpoint($bp-min-1920-width) {
+              font-size: 30px;
+              line-height: 36px;
+            }
           }
           .additional {
             font-size: 12px;
@@ -265,10 +269,18 @@
             @include breakpoint($bp-480-width) {
               font-size: 10px;
             }
+            @include breakpoint($bp-min-1920-width) {
+              font-size: 16px;
+              line-height: 20px;
+            }
             span {
               font-size: 12px;
               @include breakpoint($bp-480-width) {
                 font-size: 10px;
+              }
+              @include breakpoint($bp-min-1920-width) {
+                font-size: 16px;
+                line-height: 20px;
               }
             }
           }
@@ -619,6 +631,11 @@
             color: #ffffff;
             height: 100%;
             width: 100%;
+            .asset-img {
+              height: 100%;
+              position: relative;
+              width: 100%;
+            }
             img {
               height: 100%;
               width: 100%;
@@ -631,9 +648,6 @@
               opacity: 0.6;
               position: absolute;
               width: 100%;
-              @include breakpoint($bp-1280-width) {
-                height: 81px;
-              }
             }
             .meta-wrapper {
               bottom: 0px;
@@ -643,37 +657,124 @@
               &:after {
                 display: none;
               }
-              @include breakpoint($bp-1280-width) {
-                height: 81px;
-              }
               .meta-icon {
                 position: absolute;
                 margin-top: -18.5px;
-                margin-left: -18.5px;
+                margin-left: 0px;
                 top: 50%;
-                left: 40px;
+                left: 20px;
+                @include breakpoint($bp-min-1920-width) {
+                  height: 50px;
+                  left: 25px;
+                  margin-top: -25px;
+                  width: 50px;
+                  &:before {
+                    font-size: 26px;
+                    line-height: 50px;
+                    height: 50px;
+                    width: 50px;
+                  }
+                }
+                @include breakpoint($bp-768-width) {
+                  height: 30px;
+                  left: 15px;
+                  margin-top: -15px;
+                  width: 30px;
+                  &:before {
+                    font-size: 16px;
+                    line-height: 30px;
+                    height: 30px;
+                    width: 30px;
+                  }
+                }
+                @include breakpoint($bp-480-width) {
+                  height: 24px;
+                  left: 10px;
+                  margin-top: -12px;
+                  width: 24px;
+                  &:before {
+                    font-size: 13px;
+                    line-height: 24px;
+                    height: 24px;
+                    width: 24px;
+                  }
+                }
+                & ~ .meta {
+                  padding-left: 70px;
+                  @include breakpoint($bp-min-1920-width) {
+                    padding-left: 95px;
+                  }
+                  @include breakpoint($bp-768-width) {
+                    padding-left: 55px;
+                  }
+                  @include breakpoint($bp-480-width) {
+                    padding-left: 40px;
+                  }
+                }
               }
               @extend %meta;
               .meta {
-                margin-top: -21px;
-                margin-left: 70px;
+                display: table-cell;
                 padding-left: 0px;
-                position: absolute;
-                top: 50%;
+                vertical-align: middle;
                 width: 100%;
+                @include breakpoint($between-769-1024) {
+                  max-width: 300px;
+                }
                 &:after {
                   display: none;
                 }
                 .title {
-                  font-size: 20px;
-                  line-height: 26px;
+                  font-size: 18px;
+                  line-height: 24px;
                   margin-left: 0;
+                  margin-right: 0;
+                  @include breakpoint($bp-min-1920-width) {
+                    font-size: 24px;
+                    line-height: 30px;
+                  }
+                  @include breakpoint($bp-768-width) {
+                    font-size: 14px;
+                    line-height: 18px;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    font-size: 13px;
+                    line-height: 16px;
+                  }
+                  @include breakpoint($bp-480-width) {
+                    font-size: 10px;
+                    line-height: 13px;
+                  }
                 }
                 .additional {
+                  font-family: $tex-gyreschola-italic;
                   font-size: 12px;
                   margin-left: 0;
+                  margin-right: 0;
+                  text-transform: uppercase;
+                  @include breakpoint($bp-min-1920-width) {
+                    font-size: 14px;
+                    line-height: 20px;
+                  }
+                  @include breakpoint($bp-768-width) {
+                    font-size: 11px;
+                    line-height: 14px;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    font-size: 10px;
+                    line-height: 13px;
+                  }
+                  @include breakpoint($bp-480-width) {
+                    font-size: 8px;
+                    line-height: 10px;
+                  }
                 }
               }
+            }
+            .meta-wrapper-inner {
+              display: table;
+              height: 100%;
+              width: 100%;
             }
           }
         }
@@ -862,140 +963,13 @@
             margin-bottom: 0px!important;
             margin-top: 6%;
           }
-          &.last-full-video {
-            .meta-back {
-              height: 81px;
-            }
-            .meta-wrapper {
-              bottom: 0px;
-              height: 81px;
-              position: absolute;
-              width: 100%;
-            }
-            .meta-icon {
-              position: absolute;
-              margin-top: -18.5px;
-              margin-left: -18.5px;
-              top: 50%;
-              left: 40px;
-            }
-            @extend %meta;
-            .meta {
-              margin-top: -21px;
-              margin-left: 70px;
-              padding-left: 0px;
-              position: absolute;
-              top: 50%;
-              width: 100%;
-              &:after {
-                display: none;
-              }
-              .caption {
-                font-size: 20px;
-                line-height: 26px;
-              }
-              .additional {
-                font-size: 12px;
-              }
-            }
-          }
-          &.social-item {
-            background-color: $poll-back;
-            text-align: center;
-            position: relative;
-            height: 250px;
-            width: 300px;
-            & a {
-              display: block;
-              height: 100%;
-              text-decoration: none;
-              width: 100%;
-              .meta-wrap {
-                background: none;
-                bottom: auto;
-                height: 100%;
-                margin-left: 10px;
-                position: absolute;
-                text-transform: uppercase;
-                .meta {
-                  color: $poll-color;
-                  height: auto;
-                  left: -10px;
-                  overflow: hidden;
-                  position: relative;
-                  margin: 0 auto;
-                  top: auto;
-                  width: 85%;
-                  &:after {
-                    display: none;
-                  }
-                }
-                .time, .meta-additional {
-                  font-family: $tex-gyreschola-italic;
-                  font-size: 12px;
-                  line-height: 35px;
-                }
-                .meta-social-title {
-                  font-family: $avalon-demi;
-                  font-size: 20px;
-                  line-height: 20px;
-                }
-                .meta-text {
-                  font-family: $avalon-medium;
-                  font-size: 15px;
-                }
-
-              }
-            }
-          }
           &:last-child {
             @include breakpoint($bp-min-1281-width) {
               margin-right: 0px;
             }
           }
-          h3 {
-            left: 0;
-            color: #545454;
-            font-family: $tex-gyreschola-italic;
-            font-size: 12px;
-            position: absolute;
-            text-transform: uppercase;
-            top: -20px;
-            z-index: 1;
-            @include breakpoint($bp-768-width) {
-              color: #ffffff;
-            }
-          }
-          .meta-wrap {
-            background: $social-twitter-back;
-            bottom: 0;
-            height: 69px;
-            position: absolute;
-            width: 100%;
-            @include breakpoint($bp-1280-width) {
-              height: 82px;
-            }
-          }
+          @extend %show-inner-promo;
           @extend %meta;
-          .meta {
-            left: 0px;
-            margin-top: -19px;
-            position: absolute;
-            top: 50%;
-            .title, .additional {
-              font-size: 12px;
-              line-height: 38px;
-              margin-left: 45px;
-            }
-            &:after {
-              display: none;
-            }
-            .meta-icon {
-              &:before {
-                top: 0px;
-              }
-            }
-          }
         }
       }
     }

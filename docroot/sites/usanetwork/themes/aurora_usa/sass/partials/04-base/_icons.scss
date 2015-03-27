@@ -69,7 +69,7 @@
   }
 }
 
-.photo-icon {
+.photo-icon, .gallery-icon {
   &:before {
     @extend %meta-icon;
     content: '\e610';

@@ -4,14 +4,17 @@
  */
 ?>
 <a href="<?php print !empty($episode_url) ? $episode_url : 'javascript:void(0)'; ?>">
-  <div class="node node-usanetwork-promo show-color-border<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?>">
+  <div class="node node-usanetwork-promo show-color-border<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?> show-inner">
+    <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'photo-icon'; ?>"></div>
     <div class="meta-wrapper">
       <div class="meta-wrapper-inner">
         <div class="meta">
-          <?php if (!empty($episode_title)): ?>
-            <div class="meta-title"><?php print $episode_title; ?></div>
+          <?php if (!empty($topic)): ?>
+            <div class="caption"><?php print $topic; ?></div>
           <?php endif; ?>
-          <div class="meta-icon photo-icon"></div>
+          <?php if (!empty($violator)): ?>
+            <div class="title"><?php print $violator; ?></div>
+          <?php endif; ?>
         </div>
       </div>
     </div>

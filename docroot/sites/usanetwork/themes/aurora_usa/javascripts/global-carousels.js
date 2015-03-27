@@ -349,6 +349,7 @@
       carousel.animate({left: left}, 500);
       current_item.animate({width: width}, 500, 'easeInCubic');
       current_item.addClass('active');
+      current_item.find('.show-open').css('max-width', item_width);
       setTimeout(function () {
         current_item.find('.social-icons').show();
       }, 500);
@@ -363,6 +364,7 @@
       carousel.animate({left: left}, 500);
       item.animate({width: item_width}, 500, 'easeOutQuint', function(){
         item.removeAttr('style');
+        item.find('.show-open').removeAttr('style');
       });
       setTimeout(function () {
         item.removeClass('active');

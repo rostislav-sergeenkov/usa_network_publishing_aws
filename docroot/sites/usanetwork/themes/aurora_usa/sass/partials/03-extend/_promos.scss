@@ -598,3 +598,72 @@
     }
   }
 }
+%show-inner-promo {
+  .show-inner {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    &:before {
+      height: 7px;
+      margin-top: -3px;
+      top: 55%;
+      width: 100%;
+    }
+    .asset-img {
+      bottom: 0;
+      height: 45%;
+      position: absolute;
+      width: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .meta-wrapper {
+      background: $header-show-caption;
+      top: 0;
+      height: 55%;
+      position: absolute;
+      width: 100%;
+    }
+    .meta-icon {
+      height: 42px;
+      left: 50%;
+      margin-left: -21px;
+      margin-top: -21px;
+      top: 55%;
+      width: 42px;
+      z-index: 3;
+      &:before {
+        font-size: 24px;
+        height: 42px;
+        line-height: 42px;
+        width: 42px;
+      }
+      @include breakpoint($bp-min-1920-width) {
+        height: 60px;
+        margin-left: -30px;
+        margin-top: -30px;
+        width: 60px;
+        &:before {
+          font-size: 34px;
+          height: 60px;
+          line-height: 60px;
+          width: 60px;
+        }
+      }
+      @include breakpoint($bp-480-width) {
+        height: 30px;
+        margin-left: -15px;
+        margin-top: -15px;
+        width: 30px;
+        &:before {
+          font-size: 16px;
+          height: 30px;
+          line-height: 30px;
+          width: 30px;
+        }
+      }
+    }
+  }
+}

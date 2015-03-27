@@ -16,7 +16,7 @@ define('USA_MPX_VIDEO_USA_VIDEO_TERMS_VID', '66');
 define('USA_MPX_VIDEO_STAGE_ACCOUNT', '2297296056');
 define('USA_MPX_VIDEO_PROD_ACCOUNT', '2304992029');
 define('USA_MPX_VIDEO_USA_ACCOUNT_ID', '2140458126');
-define('USA_MPX_VIDEO_MENU_VIDEOS_FULL_COUNT', 4);
+define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 10);
 
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 /**
@@ -646,7 +646,29 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
   }
 
   $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show();
-  $carousel_episodes = file_load_multiple(array_keys($episodes));
+  $episodes_fids = array_keys($episodes);
+  $result_count = count($episodes);
+  $needed_count = USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL - $result_count;
+
+  if ($needed_count > 0) {
+    $query = db_select('file_managed', 'fm')
+      ->fields('fm',array('fid'))
+      ->condition('fm.type',  _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+      ->condition('fm.fid', $episodes_fids, 'NOT IN')
+      ->condition('fm.published', '1');
+    $query->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
+    $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+    $query->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
+    $query->addField('fm', 'timestamp', 'file_managed_created');
+    $query->addField('mv', 'available_date', 'mpx_video_airdate');
+    $query->orderBy('mv.airdate', 'DESC');
+    $query->range(0, $needed_count);
+    $query_result = $query->execute()->fetchAllKeyed();
+
+    $episodes_fids = array_merge($episodes_fids, array_keys($query_result));
+  }
+
+  $carousel_episodes = file_load_multiple($episodes_fids);
 
   $items = array();
   $block_items = '';

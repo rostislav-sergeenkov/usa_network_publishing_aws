@@ -19,6 +19,9 @@
   @include breakpoint($bp-768-width) {
     display: none;
   }
+  .caroufredsel_wrapper{
+    height: 100% !important;
+  }
   .view-schedule {
     height: 120px;
     position: absolute;

@@ -1346,6 +1346,8 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
           ? url($promo_wrapper->field_promo_link->url->value())
           : '',
         'image_url' => $promo_wrapper->field_promo_regular_image->file->url->value(),
+        'topic' => !empty($promo->field_promo_topic) ? $promo_wrapper->field_promo_topic->value() : '',
+        'violator' => !empty($promo->field_promo_violator_name) ? $promo_wrapper->field_promo_violator_name->value() : '',
         'icon_type' => $icon_type,
       );
 

@@ -1521,6 +1521,70 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     width: 30px;
   }
 }
+.shows-block .show-info-block .show-bottom-info ul li .show-inner .meta {
+  padding: 0;
+  text-align: center;
+}
+.shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 5%;
+  text-transform: uppercase;
+}
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 1280px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 640px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
+    font-size: 9px;
+    line-height: 11px;
+  }
+}
+.shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0 5%;
+}
+@media (min-width: 1920px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+@media (max-width: 1280px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 640px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
+    font-size: 13px;
+    line-height: 15px;
+  }
+}
 
 .play-icon:before, .video-icon:before, .play-icon-half:before, .article-icon:before, .game-icon:before, .photo-icon:before, .gallery-icon:before, .poll-icon:before {
   background: #ffffff;
@@ -11192,7 +11256,7 @@ footer h2 {
   display: table-cell;
   overflow: hidden;
   max-width: 270px;
-  padding-left: 20px;
+  padding-left: 0px;
   position: relative;
   vertical-align: middle;
   width: 100%;

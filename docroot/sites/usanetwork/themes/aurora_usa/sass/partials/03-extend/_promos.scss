@@ -665,5 +665,53 @@
         }
       }
     }
+    .meta {
+      padding: 0;
+      text-align: center;
+      .caption {
+        font-family: $tex-gyreschola-italic;
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0 5%;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1920-width) {
+          font-size: 18px;
+          line-height: 24px;
+        }
+        @include breakpoint($bp-1280-width) {
+          font-size: 13px;
+          line-height: 18px;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 11px;
+          line-height: 14px;
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 9px;
+          line-height: 11px;
+        }
+      }
+      .title {
+        font-size: 20px;
+        line-height: 24px;
+        margin: 0 5%;
+        @include breakpoint($bp-min-1920-width) {
+          font-size: 24px;
+          line-height: 30px;
+        }
+        @include breakpoint($bp-1280-width) {
+          font-size: 20px;
+          line-height: 26px;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 16px;
+          line-height: 20px;
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 13px;
+          line-height: 15px;
+        }
+      }
+    }
   }
 }

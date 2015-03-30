@@ -22047,7 +22047,7 @@ yx-axis
 }
 @media (min-width: 1920px) {
   .schedule-on-tonight .schedule-buttons.on-now {
-    margin-left: 180px;
+    margin-left: -180px;
   }
 }
 .schedule-on-tonight .schedule-buttons a {

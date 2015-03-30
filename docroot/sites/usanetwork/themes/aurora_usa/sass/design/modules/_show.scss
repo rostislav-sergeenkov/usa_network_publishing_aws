@@ -130,6 +130,48 @@
         }
       }
     }
+    .show-link {
+      a {
+        display: block;
+        font-family: $avalon-demi;
+        color: #fff;
+        line-height: 16px;
+        padding: 10px 25px 10px 10px;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1920-width) {
+          font-size: 20px;
+          line-height: 20px;
+          padding: 12px 30px 12px 12px;
+        }
+        @include breakpoint($bp-480-width) {
+          line-height: 10px;
+          padding: 8px 20px 8px 8px;
+          font-size: 10px;
+        }
+        &:after {
+          color: #ffffff;
+          content: "\e608";
+          display: block;
+          font-family: $ico-font;
+          font-size: 12px;
+          position: absolute;
+          margin-top: -8px;
+          right: 10px;
+          top: 50%;
+          @include breakpoint($bp-min-1920-width) {
+            font-size: 14px;
+            margin-top: -11px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 8px;
+            margin-top: -5px;
+            right: 6px
+          }
+        }
+      }
+    }
     ul {
       position: relative;
       li {
@@ -395,7 +437,7 @@
       width: calc(100% - 56vw - 15px);
     }
     @include breakpoint($bp-480-width) {
-      width: calc(100% - 56vw - 3px);
+      width: calc(100% - 56vw);
     }
     .show-link {
       right: 40px;
@@ -408,45 +450,8 @@
       @include breakpoint($bp-768-width) {
         right: 20px;
       }
-      a {
-        display: block;
-        font-family: $avalon-demi;
-        color: #fff;
-        line-height: 16px;
-        padding: 10px 25px 10px 10px;
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        @include breakpoint($bp-min-1920-width) {
-          font-size: 20px;
-          line-height: 20px;
-          padding: 12px 30px 12px 12px;
-        }
-        @include breakpoint($bp-480-width) {
-          line-height: 10px;
-          padding: 8px 20px 8px 8px;
-          font-size: 10px;
-        }
-        &:after {
-          color: #ffffff;
-          content: "\e608";
-          display: block;
-          font-family: $ico-font;
-          font-size: 12px;
-          position: absolute;
-          margin-top: -8px;
-          right: 10px;
-          top: 50%;
-          @include breakpoint($bp-min-1920-width) {
-            font-size: 14px;
-            margin-top: -11px;
-          }
-          @include breakpoint($bp-480-width) {
-            font-size: 8px;
-            margin-top: -5px;
-            right: 6px
-          }
-        }
+      @include breakpoint($bp-480-width) {
+        right: 15px;
       }
     }
     .social-icons {
@@ -513,6 +518,9 @@
       }
       @include breakpoint($bp-768-width) {
         padding: 70px 20px 20px;
+      }
+      @include breakpoint($bp-480-width) {
+        padding: 70px 15px 20px;
       }
     }
 
@@ -817,6 +825,9 @@
     }
     .show-description {
       float: right;
+      height: 250px;
+      position: relative;
+      width: 260px;
       @include breakpoint($bp-min-1920-width) {
         height: 378px;
         width: 387px;
@@ -826,6 +837,7 @@
       }
       @include breakpoint($bp-1024-width) {
         float: left;
+        height: 355px;
         padding-right: 8.5px;
         width: calc(100% - 427px);
       }
@@ -837,67 +849,98 @@
         width: 49%;
       }
       .node {
-        background-color: $poll-back;
-        text-align: center;
+        background-color: $social-twitter-back;
+        height: 100%;
+        overflow: hidden;
         position: relative;
-        height: 250px;
-        width: 260px;
-        @include breakpoint($bp-min-1920-width) {
-          height: 378px;
-          width: 387px;
-        }
-        @include breakpoint($between-1025-1280) {
-          width: 100%;
-        }
-        @include breakpoint($bp-1024-width) {
-          height: 355px;
-          width: 100%;
-        }
-        @include breakpoint($bp-768-width) {
+        text-align: center;
+        width: 100%;
+        .meta-wrapper {
           height: 100%;
-          width: 100%;
+          padding: 20px 0 55px;
+          margin: 0 auto;
+          overflow: hidden;
+          position: relative;
+          width: 80%;
+          @include breakpoint($bp-min-1920-width) {
+            padding: 20px 0 70px;
+          }
+          @include breakpoint($bp-640-width) {
+            padding: 12px 0 55px;
+          }
+          @include breakpoint($bp-640-width) {
+            padding: 8px 0 35px;
+          }
         }
-        & a {
-          display: block;
-          height: 100%;
-          text-decoration: none;
-          width: 100%;
-          .meta-wrap {
-            background: none;
-            bottom: auto;
-            color: $poll-color;
-            height: 100%;
-            margin-left: 10px;
-            position: absolute;
-            text-transform: uppercase;
-            .meta {
-              color: $poll-color;
-              height: auto;
-              left: -10px;
-              overflow: hidden;
-              position: relative;
-              margin: 0 auto;
-              top: auto;
-              width: 85%;
-              &:after {
-                display: none;
-              }
-            }
-            .time, .meta-additional {
-              font-family: $tex-gyreschola-italic;
-              font-size: 12px;
-              line-height: 35px;
-            }
-            .meta-social-title {
-              font-family: $avalon-demi;
-              font-size: 20px;
-              line-height: 20px;
-            }
-            .meta-text {
-              font-family: $avalon-medium;
-              font-size: 15px;
-            }
-
+        .heading {
+          font-family: $tex-gyreschola-italic;
+          font-size: 12px;
+          line-height: 20px;
+          @include breakpoint($bp-min-1920-width) {
+            font-size: 15px;
+            line-height: 24px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 11px;
+            line-height: 18px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 9px;
+            line-height: 14px;
+          }
+        }
+        .subheading {
+          font-family: $avalon-demi;
+          font-size: 24px;
+          line-height: 30px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          @include breakpoint($bp-min-1920-width) {
+            font-size: 26px;
+            line-height: 34px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 22px;
+            line-height: 26px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 16px;
+            line-height: 18px;
+          }
+        }
+        .about-content {
+          font-family: $avalon-medium;
+          font-size: 12px;
+          line-height: 15px;
+          margin-top: 15px;
+          text-transform: none;
+          @include breakpoint($bp-min-1920-width) {
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 20px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 11px;
+            line-height: 14px;
+            margin-top: 10px;
+          }
+          @include breakpoint($bp-480-width) {
+            display: none;
+          }
+        }
+        .show-link {
+          bottom: 10px;
+          margin-right: -61px;
+          right: 50%;
+          top: auto;
+          @include breakpoint($bp-min-1920-width) {
+            bottom: 15px;
+            right: 50%;
+            margin-right: -76px;
+          }
+          @include breakpoint($bp-480-width) {
+            bottom: 5px;
+            margin-right: -43px;
           }
         }
       }

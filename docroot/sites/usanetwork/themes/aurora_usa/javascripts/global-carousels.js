@@ -344,6 +344,10 @@
       if (window.innerWidth < window_size_desktop) {
         width = window.innerWidth - 2*show_carousel_margin + item_width;
       }
+      if (window.innerWidth < window_size_mobile) {
+        var scrollWidth = window.innerWidth - document.body.clientWidth;
+        width = width + scrollWidth;
+      }
       var width_block = width - item_width;
       var left = (window.innerWidth - width_block) / 2 - item_width - current_item.offset()['left'] + current_left;
       carousel.animate({left: left}, 500);

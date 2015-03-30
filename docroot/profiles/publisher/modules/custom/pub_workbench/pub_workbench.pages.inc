@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Page callbacks for pub_workbench.
+ */
+
+/**
  * Page callback for admin/workbench/scheduled.
  *
  * This contains some teaser views.

@@ -43,15 +43,13 @@
 ?>
 <span id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
-  <?php if ($title_prefix or $block->subject or $title_suffix): ?>
-    <header>
-      <?php print render($title_prefix); ?>
-      <?php if ($block->subject): ?>
-        <h2<?php print $title_attributes; ?>><?php print $block->subject ?></h2>
-      <?php endif;?>
-      <?php print render($title_suffix); ?>
-    </header>
-  <?php endif; ?>
+  <header>
+    <?php print render($title_prefix); ?>
+    <?php if ($block->subject): ?>
+      <h2<?php print $title_attributes; ?>><?php print $block->subject ?></h2>
+    <?php endif;?>
+    <?php print render($title_suffix); ?>
+  </header>
 
   <?php print $content ?>
 </span>

@@ -1,11 +1,12 @@
 <?php
 
-/*
- * Load files with base classes of the contained classes.
+/**
+ * @file
+ * Contains Views hooks to register Views plugins and handlers.
  */
 
 /**
- * Implementation of hook_views_plugins().
+ * Implements of hook_views_plugins().
  */
 function apachesolr_views_views_plugins() {
   return array(
@@ -23,7 +24,7 @@ function apachesolr_views_views_plugins() {
 }
 
 /**
- * Implementation of hook_views_data().
+ * Implements of hook_views_data().
  */
 function apachesolr_views_views_data() {
   foreach (apachesolr_load_all_environments() as $env_id => $environment) {
@@ -44,7 +45,7 @@ function apachesolr_views_views_data() {
     }
     catch (Exception $e) {
       $solr_fields = array();
-      watchdog('Apache Solr Views', nl2br(check_plain($e->getMessage())), NULL, WATCHDOG_ERROR);
+      watchdog('Apache Solr Views', nl2br(check_plain($e->getMessage())), NULL, WATCHDOG_WARNING);
     }
 
     foreach ($solr_fields as $solr_field_name => $solr_field) {
@@ -61,6 +62,7 @@ function apachesolr_views_views_data() {
         case 'tdate':
           $filter_handler = 'apachesolr_views_handler_filter_date';
           break;
+
         case 'text':
         case 'string':
           $filter_handler = 'apachesolr_views_handler_filter_string';
@@ -127,6 +129,9 @@ function apachesolr_views_views_data() {
       'field' => array(
         'handler' => 'apachesolr_views_handler_field',
         'click sortable' => TRUE,
+      ),
+      'sort' => array(
+        'handler' => 'apachesolr_views_handler_sort',
       ),
     );
   }

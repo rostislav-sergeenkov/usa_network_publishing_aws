@@ -18,7 +18,16 @@ class date_views_filter_handler_simple extends views_handler_filter_date {
         $this->date_handler->date_type = $field['type'];
       }
       $this->date_handler->db_timezone = date_get_timezone_db($field['settings']['tz_handling']);
-      $this->date_handler->local_timezone = date_get_timezone($field['settings']['tz_handling']);
+
+      if (!isset($options['timezone']) || $options['timezone'] == 'dates_timezone') {
+        $this->date_handler->local_timezone = date_get_timezone($field['settings']['tz_handling']);
+      }
+      elseif ($options['timezone'] === 'current_user_timezone') {
+        $this->date_handler->local_timezone = date_default_timezone();
+      }
+      else {
+        $this->date_handler->local_timezone = $options['timezone'];
+      }
     }
     $this->form_submitted = FALSE;
     $this->date_handler->granularity = isset($options['granularity']) ? $options['granularity'] : 'day';
@@ -37,6 +46,7 @@ class date_views_filter_handler_simple extends views_handler_filter_date {
     $options['form_type'] = array('default' => 'date_select');
     $options['default_date'] = array('default' => '');
     $options['default_to_date'] = array('default' => '');
+    $options['timezone'] = array('default' => 'dates_timezone');
     $options['year_range'] = array('default' => '-3:+3');
     $options['add_delta'] = array('default' => '');
     return $options;
@@ -311,6 +321,17 @@ class date_views_filter_handler_simple extends views_handler_filter_date {
       $form['value']['#element_validate'] = array('date_views_select_validate');
     }
 
+    $zones = array(
+      'dates_timezone' => t('Date fields default timezone'),
+      'current_user_timezone' => t('Current users timezone'),
+    );
+    $zones += system_time_zones();
+    $form['value']['timezone'] = array(
+      '#type' => 'select',
+      '#title' => t('Timezone'),
+      '#default_value' => $this->options['timezone'],
+      '#options' => $zones,
+    );
   }
 
   /**

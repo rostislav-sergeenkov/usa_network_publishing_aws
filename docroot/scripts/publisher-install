@@ -13,9 +13,9 @@ if [ -d "docroot" ]; then
   TMPDIR=$(mktemp -d /tmp/pub-build.XXXXXXX) || { echo "Failed to create temp file"; exit 1; }
 
   # Assume the first multisite has the same perms as any other multisite dirs.
-  FIRSTMULTI=`find docroot/sites -depth 1 -type d -not -name 'all' -not -name 'example' | cut -c15- | head -1`
+  FIRSTMULTI=`find docroot/sites/* -maxdepth 0 -type d -not -name 'all' -not -name 'example' | cut -c15- | head -1`
   [ `uname` = "Darwin" ] && PERMS=$(stat -f %Mp%Lp docroot/sites/$FIRSTMULTI) || PERMS=$(stat -c "%a %n" docroot/sites/$FIRSTMULTI) # OMG, I hate non-GNU toolchains.
-  for MULTISITE in `find docroot/sites -depth 1 -type d -not -name 'all' -not -name 'example'`; do
+  for MULTISITE in `find docroot/sites/* -maxdepth 0 -type d -not -name 'all' -not -name 'example'`; do
     chmod 0755 $MULTISITE
   done
 
@@ -33,8 +33,13 @@ if [ $EXISTS ]; then
   rsync -aq $TMPDIR/ docroot/
   rm -rf $TMPDIR
 
-  for MULTISITE in `find docroot/sites -depth 1 -type d -not -name 'all' -not -name 'example'`; do
+
+  for MULTISITE in `find docroot/sites/* -maxdepth 0 -type d -not -name 'all' -not -name 'example'`; do
     # Chmod multisite dirs back to what they were before.
     chmod $PERMS $MULTISITE
   done
 fi
+
+# simplesmlphp Library
+# Make sure we also keep the simplesamlphp outside of docroot.
+rsync -aq --delete $SRC/simplesamlphp/ simplesamlphp

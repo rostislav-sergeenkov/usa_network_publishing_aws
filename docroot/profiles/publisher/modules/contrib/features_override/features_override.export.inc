@@ -65,7 +65,7 @@ function features_get_ignore_keys($component) {
 }
 
 /**
- * Calculautes what overrides exist for by component/element.
+ * Calculates what overrides exist for by component/element.
  *
  * @param $component_key
  *   A component key that's defined via hook_features_api.
@@ -107,6 +107,45 @@ function features_override_get_overrides($component_key = FALSE, $element_key = 
   return $cache;
 }
 
+/**
+ * Determine if two references refer to the same variable.
+ *
+ * This works by accepting a unique identifier, and then assigning it to the
+ * second reference $b. If the first reference $a refers to the same data, then
+ * it will be updated and we know that it refers to the same data as $b.
+ *
+ * Credit to http://stackoverflow.com/a/4263181
+ *
+ * @param mixed &$a
+ *   A reference.
+ * @param mixed &$b
+ *   A reference to compare.
+ *
+ * @see _features_override_remove_recursion()
+ *
+ * @return bool
+ *   TRUE if $a and $b refer to the same variable, FALSE otherwise.
+ */
+function _features_override_is_ref_to(&$a, &$b, $uniqid) {
+  $temp_a = $a;
+  $temp_b = $b;
+
+  $b = $uniqid;
+
+  if ($a === $uniqid) {
+    $return = TRUE;
+  }
+  else {
+    $return = FALSE;
+  }
+
+  // We have to restore from two separate variables in case $a and $b are not
+  // equal.
+  $a = $temp_a;
+  $b = $temp_b;
+
+  return $return;
+}
 
 /**
  * Get overrides for specific module/component.
@@ -350,8 +389,12 @@ function features_override_export_keys($keys) {
   $line = '';
   if (is_array($keys)) {
     foreach ($keys as $key) {
-      if ($key['type'] == 'object') {
-        $line .= "->{$key['key']}";
+      $key_value = $key['key'];
+      if (is_numeric($key_value)) {
+        $line .= '[' . $key_value . ']';
+      }
+      elseif ($key['type'] == 'object') {
+        $line .= '->' . $key_value;
       }
       else {
         $line .= "['{$key['key']}']";
@@ -368,34 +411,73 @@ function features_override_export_keys($keys) {
  *   An object or array passed by reference.
  */
 function features_override_remove_recursion(&$item) {
-  _features_override_remove_recursion($item);
+  $uniqid = __FUNCTION__ . mt_rand(); // use of uniqid() here impacts performance
+  $stackObject = array();
+  $stackArray = array();
+  _features_override_remove_recursion($item, $stackObject, $stackArray, $uniqid);
 }
 
 /**
  * Helper to removes recursion from an object/array.
  *
- * @param $item
+ * @param object|array &$object
  *   An object or array passed by reference.
+ * @param array &$stackObject
+ *   An array of objects that have been previously seen.
+ * @param array &$stackArray
+ *   An array of arrays that have been previously seen.
+ * @param string $uniqid
+ *   A unique identifier used to help determine equality of references.
+ *
+ * @return bool
+ *   TRUE if $object has been seen previously and is recursive, FALSE otherwise.
  */
-function _features_override_remove_recursion(&$object, &$stack = array()) {
-  if ((is_object($object) || is_array($object)) && $object) {
-    if (!in_array($object, $stack, true)) {
-      $stack[] = $object;
-      foreach ($object as $key => &$subobject) {
-        if (_features_override_remove_recursion($subobject, $stack)) {
-          if (is_object($object)) {
-            unset($object->$key);
-        }
-        else {
-            unset($object[$key]);
-    }
-  }
-}
+function _features_override_remove_recursion(&$object, &$stackObject = array(), &$stackArray = array(), $uniqid) {
+  if ($object) {
+    $is_object = is_object($object);
+    $is_array = is_array($object);
+    if ($is_object || $is_array) {
+      if ($is_object) {
+        $in_stack = in_array($object, $stackObject, TRUE);
       }
       else {
-      return TRUE;
+        $in_stack = FALSE;
+        foreach (array_keys($stackArray, $object, TRUE) as $found_key) {
+          $item = &$stackArray[$found_key];
+          if (_features_override_is_ref_to($object, $item, $uniqid)) {
+            $in_stack = TRUE;
+            break;
+          }
+        }
+      }
+      if (!$in_stack) {
+        // Add to stack.
+        if ($is_object) {
+          $stackObject[] = $object;
+        }
+        else {
+          $stackArray[] = $object;
+        }
+
+        // Recurse to object keys.
+        foreach ($object as $key => &$subobject) {
+          if (_features_override_remove_recursion($subobject, $stackObject, $stackArray, $uniqid)) {
+            if ($is_object) {
+              unset($object->$key);
+            }
+            else {
+              unset($object[$key]);
+            }
+          }
+        }
+      }
+      else {
+        // Found in stack, $object is a recursion.
+        return TRUE;
+      }
     }
   }
+
   return FALSE;
 }
 
@@ -412,6 +494,9 @@ function _features_override_remove_recursion(&$object, &$stack = array()) {
  */
 function _features_override_remove_ignores(&$item, $ignore_keys, $level = -1) {
   $is_object = is_object($item);
+  if (!is_array($item) && !is_object($item)) {
+    return;
+  }
   foreach ($item as $key => $value) {
     if (isset($ignore_keys[$key]) && ($ignore_keys[$key] == $level)) {
       if ($is_object) {
@@ -497,11 +582,12 @@ function features_override_features_export_render_addition($alter, $element, $co
     $component_start = "\$data['$element']";
     $code_line = features_override_export_keys($alter['keys']);
     $value_export = features_override_var_export($alter['value'], '    ');
-    if ($is_change) {
-      $original_export = (isset($alter['original'])) ? ' /* WAS: ' . features_override_var_export($alter['original'], '    ') . ' */' : '';
-    }
-    else {
-      $original_export = '';
+    $original_export = '';
+    if ($is_change && isset($alter['original'])) {
+      $original_export = features_override_var_export($alter['original'], '    ');
+      $original_export = str_replace('/*', '\/*', $original_export);
+      $original_export = str_replace('*/', '*\/', $original_export);
+      $original_export = ' /* WAS: ' . $original_export . ' */';
     }
     $code[] = "    " . $component_start . $code_line . ' = ' . $value_export . ';' . $original_export;
     return $code;

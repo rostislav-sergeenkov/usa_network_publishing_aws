@@ -23,16 +23,13 @@ function revision_scheduler_list_page($entity_type, $entity) {
 
   $rows = array();
   foreach ($operations as $id => $operation) {
+    $revision = !empty($revisions[$operation->revision_id]) ? $revisions[$operation->revision_id] : FALSE;
     $operation_info = revision_scheduler_entity_revision_operation_get_info($entity_type, $operation->operation);
-    $row = array();
 
-    if (!empty($revisions[$operation->revision_id])) {
-      $revision = $revisions[$operation->revision_id];
-      $row[] = t('Revision @id: @label', array('@id' => $operation->revision_id, '@label' => entity_label($entity_type, $revision)));
-    }
-    else {
-      $row[] = t('Revision @id: (deleted)', array('@id' => $operation->revision_id));
-    }
+    $row = array(
+      t('Revision @id: @label', array('@id' => $operation->revision_id, '@label' => $revision ? entity_label($entity_type, $revision) : t('(Deleted)'))),
+      check_plain($operation_info['label']),
+    );
 
     $row[] = check_plain($operation_info['label']);
 

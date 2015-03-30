@@ -181,6 +181,7 @@ function pub_releases_release_form_submit($form, $form_state) {
       $batch = _pub_releases_build_batch($form_state['values']);
       batch_set($batch);
       break;
+
     case t('Clear Build Files'):
       $batch = _pub_releases_clear_batch();
       batch_set($batch);
@@ -188,6 +189,12 @@ function pub_releases_release_form_submit($form, $form_state) {
   }
 }
 
+/**
+ * Provide information for the process of clearing build files.
+ *
+ * @return array
+ *   An associative array providing information on the clear process.
+ */
 function _pub_releases_clear_batch() {
   $batch = array(
     'title' => t('Clearing all build files.'),
@@ -220,36 +227,41 @@ function _pub_releases_build_batch($values) {
   $batch = array(
     'title' => t('Releasing to %destination', array('%destination' => $destination['repository'])),
     'operations' => array(
-      array('pub_releases_clone_repo', array(
-        $site_source['site_name'],
-        $pub_core_source['repository'],
-        $pub_core_git_repo_url,
-        $pub_core_source['tag_or_branch'],
-      )),
-      array('pub_releases_clone_repo', array(
-        $site_source['site_name'],
-        $site_source['repository'],
-        $site_git_repo_url,
-        $site_source['tag_or_branch'],
-      )),
-      array('pub_releases_clone_repo', array(
-        $site_source['site_name'],
-        $destination['repository'],
-        $destination_git_repo_url,
-        '',
-      )),
-      array('pub_releases_sync_code', array(
-        $site_source['site_name'],
-        $pub_core_source['repository'],
-        $site_source['repository'],
-        $destination['repository']
-      )),
-      array('pub_releases_create_tag', array(
-        $site_source['site_name'],
-        $destination['repository'],
-        $pub_core_source['tag_or_branch'],
-        $site_source['tag_or_branch'],
-      )),
+      array('pub_releases_clone_repo',
+        array(
+          $site_source['site_name'],
+          $pub_core_source['repository'],
+          $pub_core_git_repo_url,
+          $pub_core_source['tag_or_branch'],
+        )),
+      array('pub_releases_clone_repo',
+        array(
+          $site_source['site_name'],
+          $site_source['repository'],
+          $site_git_repo_url,
+          $site_source['tag_or_branch'],
+        )),
+      array('pub_releases_clone_repo',
+        array(
+          $site_source['site_name'],
+          $destination['repository'],
+          $destination_git_repo_url,
+          '',
+        )),
+      array('pub_releases_sync_code',
+        array(
+          $site_source['site_name'],
+          $pub_core_source['repository'],
+          $site_source['repository'],
+          $destination['repository'],
+        )),
+      array('pub_releases_create_tag',
+        array(
+          $site_source['site_name'],
+          $destination['repository'],
+          $pub_core_source['tag_or_branch'],
+          $site_source['tag_or_branch'],
+        )),
       array('pub_releases_sync_db', array($values)),
       array('pub_releases_sync_files', array($values)),
     ),

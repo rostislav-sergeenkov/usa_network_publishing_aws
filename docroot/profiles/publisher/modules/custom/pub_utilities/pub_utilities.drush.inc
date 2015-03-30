@@ -1,17 +1,19 @@
 <?php
 
 /**
- * Implements hook_drush_help().
+ * Implementation of hook_drush_help().
  */
 function pub_utilities_drush_help($section) {
   switch ($section) {
     case 'meta:pub_utilities:title':
       return dt("Publisher utilities");
+      break;
   }
 }
 
+
 /**
- * Implements hook_drush_command().
+ * Implementation of hook_drush_command().
  */
 function pub_utilities_drush_command() {
 
@@ -57,25 +59,6 @@ function pub_utilities_drush_command() {
   return $items;
 }
 
-/**
- * Build an instance of Publisher.
- *
- * @param string $site
- *   The site to build.
- * @param string $site_source
- *   The site source.
- * @param string $site_tag_or_branch
- *   The git tag or branch used to build the site.
- * @param string $core_source
- *   The source used for core.
- * @param string $core_tag_or_branch
- *   The git tag or branch used for core.
- * @param string $destination
- *   The destination environment for this instance.
- *
- * @return mixed
- *   An error message.
- */
 function drush_pub_utilities_pub_build($site, $site_source, $site_tag_or_branch, $core_source = 'NBCUOTS/Publisher7', $core_tag_or_branch = 'transition-master', $destination = 'releases') {
   $alias = drush_get_context('alias');
 
@@ -113,7 +96,7 @@ function drush_pub_utilities_pub_build($site, $site_source, $site_tag_or_branch,
     _pub_utilities_clone_repo($path_files_private . '/' . $path_core_clone, $source_core_git_repo_url, $core_tag_or_branch);
     _pub_utilities_clone_repo($path_files_private . '/' . $path_destination_clone, $destination_git_repo_url, 'master');
 
-    // Use rsync to move all the code to the proper location.
+    // rsync all the code to the proper location.
     _pub_utilities_sync_core($path_files_private, $path_core_clone, $path_destination_clone, $alias);
     _pub_utilities_drush_exec($path_files_private, 'rsync -aq --exclude ".git/" --delete --force ' . $path_site_clone . '/ ' . $path_destination_clone . '/docroot/sites/' . $site);
     drush_log(dt('Synced the site code'), 'success');
@@ -124,19 +107,6 @@ function drush_pub_utilities_pub_build($site, $site_source, $site_tag_or_branch,
   }
 }
 
-/**
- * Build an instance of Publisher on the QA environments.
- *
- * @param string $source
- *   The location of the tag or branch.
- * @param string $tag_or_branch
- *   The tag or branch itself.
- * @param string $destination
- *   The destination environment for this instance.
- *
- * @return mixed
- *   An error message.
- */
 function drush_pub_utilities_pub_build_qa($source = 'NBCUOTS/Publisher7', $tag_or_branch = 'transition-master', $destination = 'qa5') {
   $alias = drush_get_context('alias');
 
@@ -168,7 +138,7 @@ function drush_pub_utilities_pub_build_qa($source = 'NBCUOTS/Publisher7', $tag_o
     _pub_utilities_clone_repo($path_files_private . '/' . $path_source_clone, $source_git_repo_url, $tag_or_branch);
     _pub_utilities_clone_repo($path_files_private . '/' . $path_destination_clone, $destination_git_repo_url, 'master');
 
-    // Use rsync from source to destination.
+    // rsync source to destination.
     _pub_utilities_sync_core($path_files_private, $path_source_clone, $path_destination_clone, $alias);
 
     // Tag and release.
@@ -177,9 +147,6 @@ function drush_pub_utilities_pub_build_qa($source = 'NBCUOTS/Publisher7', $tag_o
   }
 }
 
-/**
- * Clears the files left over from a build.
- */
 function drush_pub_utilities_pub_build_clear_files() {
   $path_files_private = variable_get('file_private_path', '');
   _pub_utilities_drush_exec($path_files_private, 'rm -rf pub_releases');
@@ -187,8 +154,6 @@ function drush_pub_utilities_pub_build_clear_files() {
 }
 
 /**
- * Ensure that the root of executed commands is the docroot of the current site.
- *
  * Wrapper function for drush_shell_cd_and_exec() that ensures the root of all
  * commands is the docroot of the current site.
  *
@@ -210,11 +175,11 @@ function _pub_utilities_drush_exec($effective_wd, $cmd) {
 /**
  * Get the destination repository URL.
  *
- * @param string $destination_name
+ * @param $destination_name
  *   The name of the destination. This should match a key in the $destinations
  *   array in the alias.drushrc file being used.
  *
- * @param array $alias
+ * @param $alias
  *   An array of the alias information retrieved from
  *   drush_get_context('alias').
  *
@@ -234,19 +199,18 @@ function _pub_utilities_get_destination_repo($destination_name, $alias) {
 }
 
 /**
- * Clone or pull a repository into the given directory.
- *
  * Clone a repository to the given directory. If it exists already, then pull
  * instead.
  *
- * @param string $path
+ * @param $path
  *   The directory in which to clone our repository.
  *
- * @param string $git_repo_url
+ * @param $git_repo_url
  *   The URL to the repo to clone.
  *
- * @param string $tag_or_branch
+ * @param $tag_or_branch
  *   The branch or tag to checkout.
+ *
  */
 function _pub_utilities_clone_repo($path, $git_repo_url, $tag_or_branch = 'transition-master') {
   if (file_exists($path . '/.git')) {
@@ -257,20 +221,20 @@ function _pub_utilities_clone_repo($path, $git_repo_url, $tag_or_branch = 'trans
     _pub_utilities_drush_exec($path, 'git clone ' . $git_repo_url . ' .');
   }
 
-  // Make sure we got all the tags.
+  // make sure we got all the tags
   _pub_utilities_drush_exec($path, 'git fetch origin --tags');
 
   if (_pub_utilities_drush_tag_exists($path, $tag_or_branch)) {
-    // If tag exists, checkout that tag.
+    // if tag exists, checkout that tag
     _pub_utilities_drush_exec($path, 'git checkout -f ' . $tag_or_branch);
   }
   elseif (_pub_utilities_drush_branch_exists($path, $tag_or_branch, 'origin')) {
-    // If remote branch exists, force checkout the branch (and create if it
-    // doesn't exist), with the remote branch as a starting point.
+    // if remote branch exists, force checkout the branch (and create if it
+    // doesn't exist), with the remote branch as a starting point
     _pub_utilities_drush_exec($path, 'git checkout -B ' . $tag_or_branch . ' origin/' . $tag_or_branch);
   }
   else {
-    // Neither the tag nor branch exists, something went wrong!
+    // neither the tag nor branch exists, something went wrong!
     $error = dt('Sorry, !tag_or_branch is not a valid tag or branch in !git_repo_url.', array('!tag_or_branch' => $tag_or_branch, '!git_repo_url' => $git_repo_url));
     drush_set_error('pub_build_invalid_tag_or_branch', $error);
     drush_die(dt('Invalid tag or branch.'));
@@ -293,7 +257,7 @@ function _pub_utilities_clone_repo($path, $git_repo_url, $tag_or_branch = 'trans
  * @param string $path_destination_clone
  *   Path (relative to private files directory) to the destination clone.
  *
- * @param array $alias
+ * @param $alias
  *   An array of the alias information retrieved from
  *   drush_get_context('alias').
  */
@@ -306,10 +270,10 @@ function _pub_utilities_sync_core($path_files_private, $path_source_clone, $path
 /**
  * Tag and push changes to the destination repository.
  *
- * @param string $path
+ * @param $path
  *   The directory in which to tag our repository.
  *
- * @param string $tag
+ * @param $tag
  *   The tag name to use.
  */
 function _pub_utilities_tag($path, $tag) {
@@ -326,13 +290,14 @@ function _pub_utilities_tag($path, $tag) {
 /**
  * Check if a tag exists in a git repository.
  *
- * @param string $path
+ * @param $path
  *   The directory in which to check for the tag.
- * @param string $tag
- *   The tag we want to check.
  *
- * @return bool
- *   TRUE on success or FALSE on failure.
+ * @param string $tag
+ *    The tag we want to check.
+ *
+ * @return boolean
+ *    TRUE on success or FALSE on failure.
  */
 function _pub_utilities_drush_tag_exists($path, $tag) {
   $tag_exists = _pub_utilities_drush_exec($path, 'git show-ref --verify --quiet refs/tags/' . $tag);
@@ -348,15 +313,17 @@ function _pub_utilities_drush_tag_exists($path, $tag) {
 /**
  * Check if a branch exists in a git repository.
  *
- * @param string $path
+ * @param $path
  *   The directory in which to check for the branch.
- * @param string $branch
- *   The branch we want to check.
- * @param string $remote
- *   The remote we want to check, if not supplied, will check local repo.
  *
- * @return bool
- *   TRUE on success or FALSE on failure.
+ * @param string $branch
+ *    The branch we want to check.
+ *
+ * @param string $remote
+ *    The remote we want to check, if not supplied, will check local repo.
+ *
+ * @return boolean
+ *    TRUE on success or FALSE on failure.
  */
 function _pub_utilities_drush_branch_exists($path, $branch, $remote = NULL) {
   $ref = 'refs/' . ($remote ? 'remotes/' . $remote : 'heads') . '/' . $branch;

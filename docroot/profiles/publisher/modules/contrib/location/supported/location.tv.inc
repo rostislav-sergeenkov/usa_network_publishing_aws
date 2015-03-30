@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Tuvalu.
- */
+// Tuvalu
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_tv() {
   return array(
     'NMG' => "Nanumanga",

@@ -8,7 +8,7 @@
 /**
  * Alters the list of links in the pub_editorial operations views field.
  *
- * @param array $links
+ * @param $links
  *   An array of links to render using theme_links.
  */
 function hook_pub_editorial_operations_links_alter(&$links) {

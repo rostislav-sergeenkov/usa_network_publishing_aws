@@ -1,3 +1,0 @@
-name = RestWS Schema UI
-core = 7.x
-dependencies[] = restws_schema

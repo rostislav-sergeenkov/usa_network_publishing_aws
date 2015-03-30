@@ -7,8 +7,7 @@
  */
 
 /**
- * An object to make the Gigya api calls
- * for a user object(load, delete, get info etc...).
+ * An object to make the Gigya api calls for a user object(load, delete, get info etc...).
  */
 class GigyaUser {
 
@@ -22,7 +21,7 @@ class GigyaUser {
   /**
    * Constructs a GigyaUser object.
    *
-   * @param int $gigya_uid
+   * @param $gigya_uid
    *   The gigya user id.
    */
   public function __construct($gigya_uid) {
@@ -30,7 +29,7 @@ class GigyaUser {
   }
 
   /**
-   * Get user info from gigya.
+   * Get user info from gigya
    * @see gigya_get_user_info()
    *
    * @return array
@@ -45,22 +44,20 @@ class GigyaUser {
   }
 
   /**
-   * Publishes a user action to the newsfeed stream on all connected providers.
+   * Publishes a user action to the newsfeed stream on all the connected providers that support this feature.
    * @see gigya_publish_user_action()
    *
-   * @param array $content
+   * @param array $content.
    *   an associative array containing:
-   *     template :  the template.
-   *     action : the action.
-   *     title : the action title.
-   *     path : the path.
+   *     - template :  the template.
+   *     - action : the action.
+   *     - title : the action title.
+   *     - path : the path.
+   *  @return the array response from gigya if the user has the Actions capability or FALSE if not.
    *
-   * @return array
-   *   The array response from gigya if the user has the Actions
-   *   capability or FALSE if not.
    */
   public function publishUserAction($content) {
-    // If the user dont have the Actions capability return FALSE.
+    //if the user dont have the Actions capability return FALSE.
     if (!$this->hasCapability('Actions')) {
       return FALSE;
     }
@@ -70,12 +67,12 @@ class GigyaUser {
   /**
    * Attach the Gigya object to the user object.
    *
-   * @param object $account
+   * @param stdClass $account
    *   The user object we need to attache to.
    */
   public static function load(&$account) {
-    // Attache to user if the user is logged in.
-    $account->gigya = (isset($account->uid) ? new GigyaUser($account->uid) : NULL);
+    //Attache to user if the user is logged in.
+    $account->gigya = (isset($account->uid) ? new GigyaUser($account->uid): NULL);
   }
 
   /**
@@ -88,11 +85,10 @@ class GigyaUser {
   /**
    * Fetches information about the user friends.
    *
-   * @param array $params
+   * @param array $params.
    *   an associative array of params to pass to gigya
-   *   see http://developers.gigya.com/020_Client_API/020_Methods/socialize.getFriends
-   *   see gigya_get_friends_info()
-   *
+   *   @see http://developers.gigya.com/020_Client_API/020_Methods/socialize.getFriends
+   *   @see gigya_get_friends_info()
    * @return array
    *   the response from gigya.
    */
@@ -104,8 +100,7 @@ class GigyaUser {
    * Fetches information about the user capabilities.
    *
    * @return array
-   *   The response from gigya if we successfuly get
-   *   the data from gigya or empty array if not.
+   *   the response from gigya if we successfuly get the data from gigya or empty array if not.
    */
   public function getCapabilities() {
     if ($bio = $this->getUserInfo()) {
@@ -119,13 +114,12 @@ class GigyaUser {
   }
 
   /**
-   * Check if the user has a specific capability.
+   *  Check if the user has a specific capability.
    *
-   * @param array $capability
-   *   the capability we checking.
-   *
-   * @return bool
-   *   TRUE if the user has the capability FALSE if not.
+   *  @param $capability
+   *    the capability we checking.
+   *  @return boolean
+   *    TRUE if the user has the capability FALSE if not.
    */
   public function hasCapability($capability) {
     $capabilities = $this->getCapabilities();
@@ -140,12 +134,12 @@ class GigyaUser {
    *
    * @param array $edit
    *   The array of form values submitted by the user.
-   *   see gigya_user_insert().
+   *   @see gigya_user_insert()
    */
   public function mapExtendedProfileFields($edit) {
     $bio = $this->getUserInfo();
 
-    if (function_exists('profile_categories')) {
+    if (module_exists('profile')) {
       $temp_edit = array();
       if ($profile_categories = profile_categories()) {
 
@@ -176,30 +170,54 @@ class GigyaUser {
    * Sets the Gigya UID to match the Drupal UID.
    * @see gigya_set_uid()
    *
-   * @param int $uid
+   * @param $uid
    *   The drupal uid to set.
-   *
    * @return array
    *   the response from gigya.
-   */
+  */
   public function setUID($uid) {
     return gigya_set_uid($this->uid, $uid);
   }
 
 
   /**
-   * Informs Gigya that this user has completed site registration.
+   * Informs Gigya that this user has completed site registration
    */
   public function notifyRegistration($uid) {
     return gigya_notify_registration($this->uid, $uid);
   }
 
   /**
-   * Delete user from Gigya's DB.
+   * Delete user from Gigya's DB
    * @see gigya_delete_account()
    */
   public function deleteAccount() {
     gigya_delete_account($this->uid);
     return TRUE;
+  }
+
+  /**
+   * Get a gigya user object from the url query string.
+   * @retrun
+   *   A GigyaUser object if the signature is correct , false if not.
+   */
+  public static function userFromUrl() {
+    if (!empty($_GET['signature']) && !empty($_GET['timestamp']) && !empty($_GET['UID'])) {
+      // First, verify signature.
+      $localkey = _gigya_calculate_signature($_GET['timestamp'], $_GET['UID']);
+      if ($localkey != $_GET['signature']) {
+        drupal_set_message(t('Unable to authenticate. Gigya signature does not match.'), 'error');
+        if ($user->uid == 1) {
+          drupal_set_message(t('Signature is %gigya, Site sig is %site.', array('%gigya' => $form_values['signature'], '%site' => $localkey)), 'error');
+        }
+        return FALSE;
+      }
+      else {
+        return new GigyaUser($_GET['UID']);
+      }
+    }
+    else {
+      return FALSE;
+    }
   }
 }

@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Tunisia.
- */
+// Tunisia
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_tn() {
   return array(
     'AR' => "Ariana",

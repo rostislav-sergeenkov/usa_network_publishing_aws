@@ -33,6 +33,32 @@ Drupal.behaviors.plupload = {
       var elementSettings = (id && settings.plupload[id]) ? settings.plupload[id] : {};
       var pluploadSettings = $.extend({}, defaultSettings, elementSettings);
 
+      // Do additional requirements testing to prevent a less than ideal runtime
+      // from being used. For example, the Plupload library treats Firefox 3.5
+      // as supporting HTML 5, but this is incorrect, because Firefox 3.5
+      // doesn't support the 'multiple' attribute for file input controls. So,
+      // if settings.plupload._requirements.html5.mozilla = '1.9.2', then we
+      // remove 'html5' from pluploadSettings.runtimes if $.browser.mozilla is
+      // true and if $.browser.version is less than '1.9.2'.
+      if (settings.plupload['_requirements'] && pluploadSettings.runtimes) {
+        var runtimes = pluploadSettings.runtimes.split(',');
+        var filteredRuntimes = [];
+        for (var i = 0; i < runtimes.length; i++) {
+          var includeRuntime = true;
+          if (settings.plupload['_requirements'][runtimes[i]]) {
+            var requirements = settings.plupload['_requirements'][runtimes[i]];
+            for (var browser in requirements) {
+              if ($.browser[browser] && Drupal.plupload.compareVersions($.browser.version, requirements[browser]) < 0) {
+                includeRuntime = false;
+              }
+            }
+          }
+          if (includeRuntime) {
+            filteredRuntimes.push(runtimes[i]);
+          }
+        }
+        pluploadSettings.runtimes = filteredRuntimes.join(',');
+      }
       // Process Plupload events.
       if (elementSettings['init'] || false) {
         if (!pluploadSettings.init) {
@@ -115,9 +141,6 @@ Drupal.behaviors.pluploadform = {
                     for (var attr in originalFormAttributes) {
                       $form.attr(attr, originalFormAttributes[attr]);
                     }
-                    // We're going to automatically submit the form.
-                    // Disable the button until we do it.
-                    $("[type=submit]", $form).attr("disabled", true);
                     // Click a specific element if one is specified.
                     if (settings.plupload[id].submit_element) {
                       $(settings.plupload[id].submit_element).click();

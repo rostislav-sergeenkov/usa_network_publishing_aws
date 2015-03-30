@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Iran, Islamic Republic Of.
- */
+// Iran, Islamic Republic Of
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ir() {
   return array(
     'TEH' => "Tehran",

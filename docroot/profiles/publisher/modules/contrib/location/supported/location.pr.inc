@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Puerto Rico.
- */
+// Puerto Rico
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_pr() {
   return array();
 }

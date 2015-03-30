@@ -3,10 +3,3 @@ description = Provides 'ThePlatform mpx' reporting.
 package = "Media"
 core = 7.x
 dependencies[] = media_theplatform_mpx
-
-; Information added by Drupal.org packaging script on 2015-01-31
-version = "7.x-3.x-dev"
-core = "7.x"
-project = "media_theplatform_mpx"
-datestamp = "1422725343"
-

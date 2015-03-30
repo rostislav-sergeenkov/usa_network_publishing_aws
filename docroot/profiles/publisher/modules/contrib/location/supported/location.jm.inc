@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Jamaica.
- */
+// Jamaica
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_jm() {
   return array(
     'CLA' => "Clarendon Parish",

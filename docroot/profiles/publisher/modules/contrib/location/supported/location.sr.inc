@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Suriname.
- */
+// Suriname
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_sr() {
   return array(
     'BR' => "Brokopondo",

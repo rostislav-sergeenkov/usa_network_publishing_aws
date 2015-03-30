@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Eritrea.
- */
+// Eritrea
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_er() {
   return array(
     'MA' => "Central (Maekel)",

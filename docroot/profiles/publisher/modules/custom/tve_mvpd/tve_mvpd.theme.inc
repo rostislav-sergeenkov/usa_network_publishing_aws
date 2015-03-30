@@ -3,14 +3,20 @@
 /**
  * @file
  * Contains theme implementations for the TVE MVPD.
+ *
+ * @ingroup tve_mvpd
  */
 
 /**
  * Theme function for custom radio buttons.
+ *
+ * @param array $variables
+ *
+ * @return string
  */
 function theme_tve_mvpd_custom_radios($variables) {
   $element = $variables['element'];
-  // Get keys from parent's "#options".
+  // Get keys from parent's "#optoins".
   $keys = array_keys($element['#options']);
   $output = '';
   foreach ($keys as $key) {
@@ -23,6 +29,10 @@ function theme_tve_mvpd_custom_radios($variables) {
 
 /**
  * Theme for a single radio button.
+ *
+ * @param array $variables
+ *
+ * @return string
  */
 function theme_tve_mvpd_custom_radio($variables) {
   $element = $variables['element'];
@@ -46,7 +56,7 @@ function theme_tve_mvpd_custom_radio($variables) {
   $label = _tve_mvpd_get_radio_button_label($element['#return_value']);
   // Add styles for custom element.
   drupal_add_css(drupal_get_path('module', 'tve_mvpd') . '/css/tve_mvpd.css');
-  // Create "label" HTML element.
+  // Create "label" html element.
   $html_label = theme('html_tag', array(
     'element' => array(
       '#tag' => 'label',

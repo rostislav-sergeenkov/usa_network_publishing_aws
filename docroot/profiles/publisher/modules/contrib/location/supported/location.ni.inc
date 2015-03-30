@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Nicaragua.
- */
+// Nicaragua
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ni() {
   return array(
     'BO' => "Boaco",

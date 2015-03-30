@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Cape Verde.
- */
+// Cape Verde
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_cv() {
   return array(
     'BV' => "Boa Vista",

@@ -13,7 +13,7 @@ function pub_utilities_menu() {
   );
   $items['admin/utilities/config'] = array(
     'title' => 'Configure Publisher Utilities',
-    'description' => 'Configure the various settings associated with Publisher\'s utilities',
+    'description' =>  'Configure the various settings associated with Publisher\'s utilities',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('pub_utilities_admin_settings'),
     'file' => 'pub_utilities.admin.inc',
@@ -31,7 +31,7 @@ function pub_utilities_permission() {
   return array(
     'administer publisher utilities' => array(
       'title' => t('administer publisher utilities'),
-      'description' => t("Configure how Publisher's administrative utilities work."),
+      'description' => t('Configure how Publisher\'s administrative utilities work.'),
       'restrict access' => TRUE,
     ),
     'use publisher utilities' => array(
@@ -43,13 +43,10 @@ function pub_utilities_permission() {
 }
 
 /**
- * Return a list of publisher sites based upon the drush alias file.
- *
  * Return a list of publisher sites based on the existence of a drush alias
  * file in the sites/all/drush folder.
  *
  * @return array
- *   A list of sites.
  */
 function publisher_utilities_sites() {
   $sites = array();
@@ -67,18 +64,16 @@ function publisher_utilities_sites() {
 }
 
 /**
- * Return the git repository destinations for a given site.
- *
  * Return the git repository destinations information for the given site as it
  * is defined in the sites aliases file.
  *
- * @param string $site_name
+ * @param  string $site_name
  *   The short name of the site in question.
- * @param bool $return_keys
+ *
+ * @param  boolean $return_keys
  *   If TRUE only return the human-readible names of the destinations.
  *
  * @return array
- *   A list of git repository destinations.
  */
 function publisher_utilities_destinations($site_name, $return_keys = FALSE) {
   $destinations = array();
@@ -91,7 +86,7 @@ function publisher_utilities_destinations($site_name, $return_keys = FALSE) {
 }
 
 /**
- * Callback function that displays links to all utilities.
+ * Callback function that displays links to all utilites.
  */
 function pub_utilities_list_page() {
   $item = menu_get_item();
@@ -105,6 +100,7 @@ function pub_utilities_list_page() {
  *
  * @param mixed $var
  *   The variable or message to print.
+ *
  * @param string $label
  *   An optional label to display with the message.
  */
@@ -117,14 +113,16 @@ function pub_utilities_debug($var, $label = '') {
 /**
  * Helper function for executing a command line command.
  *
- * @param string $cmd
+ * @param sting $cmd
  *   The command line command to run.
+ *
  * @param string $msg
  *   An error message to display if something goes wrong.
- * @param bool $die_on_error
- *   If TRUE, discontinue processing on an error.
  *
- * @return bool
+ * @param boolean $error_check
+ *   If TRUE, check the comands exit status for errors.
+ *
+ * @return boolean
  *   TRUE on success or FALSE on failure.
  */
 function _pub_utilities_exec($cmd, $msg = '', $die_on_error = TRUE) {
@@ -147,7 +145,7 @@ function _pub_utilities_exec($cmd, $msg = '', $die_on_error = TRUE) {
   pub_utilities_debug('Status: ' . $status . ' | Output: ');
   pub_utilities_debug($output);
 
-  /*
+  /**
    * If this is a git command, and the output contains 'nothing to commit
    * (working directory clean)', don't make the script die.
    *
@@ -170,18 +168,15 @@ function _pub_utilities_exec($cmd, $msg = '', $die_on_error = TRUE) {
 }
 
 /**
- * Helper function for determining if a command line error occurred.
- *
  * Helper function for determining if a command line error occured. When an
  * error occurs the script exits.
  *
  * @param int $status
  *   The exit status of a command line command. If this is 0 then no error has
- *   occurred.
+ *   occured.
+ *
  * @param string $message
- *   The error message to display.
- * @param bool $die_on_error
- *   If TRUE, discontinue processing on an error.
+ *   The error mesage to display.
  */
 function _pub_utilities_batch_error_check($status, $message = '', $die_on_error = TRUE) {
   if ($status != 0) {
@@ -194,8 +189,6 @@ function _pub_utilities_batch_error_check($status, $message = '', $die_on_error 
 }
 
 /**
- * Helper function for changing directory on the command line.
- *
  * Helper function for changing directory on the command line. If the directory
  * does not exist, it will be created.
  *
@@ -203,7 +196,7 @@ function _pub_utilities_batch_error_check($status, $message = '', $die_on_error 
  *   The path of the directory to create and change to.
  *
  * @return string
- *   The current working directory.
+ *   The curent working directory.
  */
 function _pub_utilities_chdir($path) {
   _pub_utilities_mkdir($path);
@@ -219,9 +212,6 @@ function _pub_utilities_chdir($path) {
  *
  * @param string $path
  *   The path of the directory to create.
- *
- * @return string
- *   The supplied path.
  */
 function _pub_utilities_mkdir($path) {
   if (!file_exists($path)) {
@@ -231,10 +221,10 @@ function _pub_utilities_mkdir($path) {
 }
 
 /**
- * Helper function that returns the private files path.
+ * Helper funcion that returns the private files path.
  *
  * @return string
- *   Path to the private files directory.
+ *   path to the private files directory.
  */
 function _pub_utilities_get_private_files_path() {
   $files_private_path = variable_get('file_private_path', '');
@@ -249,8 +239,6 @@ function _pub_utilities_get_private_files_path() {
 }
 
 /**
- * Helper function used to connect to the GitHub API.
- *
  * Helper function used to connect to the GitHub API. The JSON object returned
  * by the GitHub API is converted to an array before it is returned.
  *
@@ -323,23 +311,22 @@ function _pub_utilities_github_api_call($url, $method = 'GET', $data = NULL) {
 }
 
 /**
- * Helper function used to retrieve a list of forks from the GitHub API.
- *
- * Helper function used to retrieve a list of forks from the GitHub API. The
+ * Helper function used to retireive a list of forks from the GitHub API. The
  * returned array is keyed by $key and contains the full repo object as it was
  * returned by the GitHub API.
  *
  * @param string $repo
  *   The name of the repository to check for forks.
+ *
  * @param bool $include_original
  *   If TRUE the original repository from which the forks were forked is
  *   included.
- * @param string $key
+ *
+ * @param key $string
  *   The object key that contains the information that should be used as the
  *   array key in returned array.
  *
  * @return array
- *   A list of forks of the supplied repository.
  */
 function _pub_utilities_github_get_forks($repo, $include_original = TRUE, $key = 'full_name') {
   $forks = array();
@@ -376,7 +363,7 @@ function _pub_utilities_github_get_forks($repo, $include_original = TRUE, $key =
     'ElijahLynn/Publisher7',
     'ericduran/Publisher7',
     'richburke-nbc/Publisher7',
-    'msound/Publisher7',
+    'gvorbeck/Publisher7',
     'breathingrock/Publisher7',
   );
 
@@ -388,22 +375,21 @@ function _pub_utilities_github_get_forks($repo, $include_original = TRUE, $key =
 }
 
 /**
- * Helper function used to retrieve a list of refs from the GitHub API.
- *
- * Helper function used to retrieve a list of refs from the GitHub API. The
+ * Helper function used to retireive a list of refs from the GitHub API. The
  * returned array is keyed by $key and contains the full ref object as it was
  * returned by the GitHub API.
  *
  * @param string $type
- *   Either "branches" or "tags".
+ *    Either "branches" or "tags".
+ *
  * @param string $user
  *   The name of the user who owns the repo in question.
  *   included.
+ *
  * @param string $repo
  *   The name of the repository to check for forks.
  *
  * @return array
- *   A list of refs.
  */
 function _pub_utilities_github_get_refs($type, $user, $repo) {
   $refs = array();
@@ -424,11 +410,13 @@ function _pub_utilities_github_get_refs($type, $user, $repo) {
 /**
  * Create a github pull request.
  *
- * @param string $repository
+ * @param  string $repository
  *   The repository containing code changes.
- * @param string $branch
+ *
+ * @param  string $branch
  *   The branch where the code changes are implemented.
- * @param string $destination_branch
+ *
+ * @param  string $destination_branch
  *   The branch in which the code changes should be merged.
  *
  * @return mixed
@@ -445,11 +433,7 @@ function _pub_utilities_github_pull_request($repository, $branch, $destination_b
 
   $data = array(
     'title' => t('Pull request: @branch', array('@branch' => $branch)),
-    'body' => t('@user has certified the "@branch" branch. cc @@github_user', array(
-      '@user' => $user->name,
-      '@branch' => $branch,
-      '@github_user' => $github_user,
-    )),
+    'body' => t('@user has certified the "@branch" branch. cc @@github_user', array('@user' => $user->name, '@branch' => $branch, '@github_user' => $github_user)),
     'head' => $github_user . ':' . $branch,
     'base' => $destination_branch,
   );
@@ -468,16 +452,14 @@ function _pub_utilities_github_pull_request($repository, $branch, $destination_b
 }
 
 /**
- * Check if a tag exists in a git repository.
- *
  * Check if a tag exists in a git repository. This function assumes you are
  * working in the directory of your repository before calling the function.
  *
  * @param string $tag
- *   The tag we want to check
+ *    The tag we want to check
  *
- * @return bool
- *   TRUE on success or FALSE on failure.
+ * @return boolean
+ *    TRUE on success or FALSE on failure.
  */
 function _pub_utilities_tag_exists($tag) {
   $git = variable_get('pub_utilities_git_bin', '');
@@ -487,9 +469,8 @@ function _pub_utilities_tag_exists($tag) {
 
 /**
  * Run post deploy commands.
- *
  * @param string $site_alias
- *   The alias of the site on which to run the commands.
+ *    The alias of the site on which to run the commands.
  */
 function _pub_utilities_post_deploy($site_alias) {
   $drush = realpath(variable_get('pub_utilities_drush_bin', ''));
@@ -509,14 +490,11 @@ function _pub_utilities_post_deploy($site_alias) {
 
 /**
  * Get the desired site alias.
- *
  * @param string $instance
- *   The instance on which we want the site alias
- * @param string $site_name
- *   The site name for which we want the site alias
+ *    The instance on which we want the site alias
  *
- * @return string
- *   The site alias.
+ * @param string $site_name
+ *    The site name for which we want the site alias
  */
 function _pub_utilities_get_site_alias($instance, $site_name) {
   // If the instance is local, then we want the local alias for the given site,
@@ -530,3 +508,4 @@ function _pub_utilities_get_site_alias($instance, $site_name) {
     return '@' . $site_name . '.' . $instance . '.dev';
   }
 }
+

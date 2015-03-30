@@ -17,9 +17,10 @@
         // Set some variables for the different pieces at play.
         var $indicator = $(this);
         var $img = $(this).siblings('img');
-        var focalPointID = $(this).attr('id');
-        var $field = $('.focal-point[data-focal-point-id="' + focalPointID + '"]', context);
-        var $previewLink = $('.focal-point-preview-link[data-focal-point-id="' + focalPointID + '"]', context);
+        var $fieldDelta = $(this).attr('data-delta');
+        var $fieldName = $(context).find('#file-entity-add-upload').length > 0 ? 'media' : $(this).attr('data-field-name');
+        var $field = $(".focal-point-" + $fieldName + '-' + $fieldDelta);
+        var $previewLink = $(".focal-point-preview-link-" + $fieldName + '-' + $fieldDelta);
 
         // Hide the focal_point form item. We do this with js so that a non-js
         // user can still set the focal point values. Also, add functionality so
@@ -49,22 +50,18 @@
         $(this).draggable({
           containment: $img,
           stop: function() {
-            focalPointSetValue($indicator, $img, $field);
+            var imgOffset = $img.offset();
+            var focalPointOffset = $(this).offset();
+
+            var leftDelta = focalPointOffset.left - imgOffset.left;
+            var topDelta = focalPointOffset.top - imgOffset.top;
+
+            var leftOffset = focalPointRound(100 * leftDelta / $img.width(), 0, 100);
+            var topOffset = focalPointRound(100 * topDelta / $img.height(), 0, 100);
+
+            $field.val(leftOffset + ',' + topOffset).trigger('change');
           }
         });
-
-        // Allow users to click on the image preview in order to set the focal_point
-        // and set a cursor.
-        $img.click(function(event) {
-          $indicator.css('left', parseInt(event.offsetX, 10));
-          $indicator.css('top', parseInt(event.offsetY, 10));
-          focalPointSetValue($indicator, $img, $field);
-        });
-        $img.css('cursor', 'crosshair');
-
-        // Wrap the focal point indicator and thumbnail image in a div so that
-        // everything still works with RTL languages.
-        $(this).add($img).wrapAll("<div class='focal-point-wrapper' />");
 
         // Add a change event to the focal point field so it will properly
         // update the indicator position and the preview link.
@@ -85,32 +82,6 @@
     }
 
   };
-
-  /**
-   * Change the value of the focal point field.
-   *
-   * Use the current position of the indicator to calculate the focal point and
-   * set the focal point field to that value.
-   *
-   * @param object $indicator
-   *   The indicator jQuery object whose position should be set.
-   * @param object $img
-   *   The image jQuery object to which the indicator is attached.
-   * @param array $field
-   *   The field jQuery object where the position can be found.
-   */
-  function focalPointSetValue($indicator, $img, $field) {
-    var imgOffset = $img.offset();
-    var focalPointOffset = $indicator.offset();
-
-    var leftDelta = focalPointOffset.left - imgOffset.left;
-    var topDelta = focalPointOffset.top - imgOffset.top;
-
-    var leftOffset = focalPointRound(100 * leftDelta / $img.width(), 0, 100);
-    var topOffset = focalPointRound(100 * topDelta / $img.height(), 0, 100);
-
-    $field.val(leftOffset + ',' + topOffset).trigger('change');
-  }
 
   /**
    * Change the position of the focal point indicator. This may not work in IE7.

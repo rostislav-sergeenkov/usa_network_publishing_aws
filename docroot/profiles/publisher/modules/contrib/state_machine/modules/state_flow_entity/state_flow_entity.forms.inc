@@ -14,6 +14,7 @@ function state_flow_entity_events_revision($form, &$form_state, $entity_revision
 
   $form = _state_flow_entity_events_revision($form, $form_state, $entity_revision, $entity_type, $new_event, $form_options);
 
+
   // confirm_form() always calls drupal_set_title() and that is unwanted in some
   // usages of this function.
   if (!empty($form['#page_title'])) {
@@ -83,7 +84,7 @@ function _state_flow_entity_events_revision($form, &$form_state, $entity_revisio
   }
   // Set any other form options that haven't been set already.
   $form_options += array(
-    'event_element_label' => t('Choose the event to fire'),
+    'event_element_label' =>  t('Choose the event to fire'),
     'event_element_type' => 'radios',
     'show_only_validated_events' => TRUE,
     'require_log_message' => TRUE,
@@ -97,16 +98,14 @@ function _state_flow_entity_events_revision($form, &$form_state, $entity_revisio
     drupal_set_message(t('You cannot perform any workflow transitions on this revision.'), 'warning');
   }
   else {
-    if (empty($new_event) || !array_key_exists($new_event, $events)) {
+    if (empty($new_event) || !array_key_exists($new_event, $events) ) {
 
       // Don't set a title based on the revision key if there isn't one.
       // @todo, titles should only be set when this is a state alone form.
       if (!empty($entity_revision->{$revision_key}) && $form_options['assemble_page_title'] === TRUE) {
 
         // Construct a page title that can be passed to confirm_form().
-        $form['#page_title'] = t('Transition revision @rev-vid to a new state', array(
-          '@rev-vid' => $entity_revision->{$revision_key},
-        ));
+        $form['#page_title'] =  t('Transition revision @rev-vid to a new state', array('@rev-vid' => $entity_revision->{$revision_key}));
       }
 
       $form['event'] = array(
@@ -126,10 +125,7 @@ function _state_flow_entity_events_revision($form, &$form_state, $entity_revisio
 
       if (!empty($entity_revision->{$revision_key}) && $form_options['assemble_page_title'] === TRUE) {
         // Construct a page title that can be passed to confirm_form().
-        $form['#page_title'] = t('Transition revision @rev-vid to %state', array(
-          '@rev-vid' => $entity_revision->{$revision_key},
-          '%state' => $new_event,
-        ));
+        $form['#page_title'] =  t('Transition revision @rev-vid to %state', array('@rev-vid' => $entity_revision->{$revision_key}, '%state' => $new_event));
       }
 
       $form['event'] = array(
@@ -142,7 +138,7 @@ function _state_flow_entity_events_revision($form, &$form_state, $entity_revisio
       '#type' => 'textarea',
       '#title' => t('Log message for this state change'),
       '#default_value' => '',
-      '#required' => $form_options['require_log_message'],
+      '#required' => $form_options['require_log_message']
     );
 
     $form['entity_type'] = array(
@@ -176,8 +172,8 @@ function _state_flow_entity_events_revision($form, &$form_state, $entity_revisio
  */
 function state_flow_entity_events_revision_validate($form, &$form_state) {
   // Validate the Field API fields.
-  $state_flow = $form_state['values']['state_flow'];
-  $state_flow->history_entity_form_field_validate($form, $form_state);
+   $state_flow = $form_state['values']['state_flow'];
+   $state_flow->history_entity_form_field_validate($form, $form_state);
 }
 
 /**

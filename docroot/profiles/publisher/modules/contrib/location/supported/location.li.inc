@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Liechtenstein.
- */
+// Liechtenstein
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_li() {
   return array(
     'V' => "Vaduz",

@@ -7,24 +7,21 @@
 
 require_once drupal_get_path('module', 'location') . '/tests/location_testcase.test';
 
-/**
- * Class LocationCCKTest.
- */
 class LocationCCKTest extends LocationCCK2Test {
   /**
    * A global administrative user.
    */
-  public $admin_user;
+  var $admin_user;
 
   /**
    * A global normal user.
    */
-  public $normal_user;
+  var $normal_user;
 
   /**
    * A default content type.
    */
-  public $content_type;
+  var $content_type;
 
   public static function getInfo() {
     return array(
@@ -34,7 +31,7 @@ class LocationCCKTest extends LocationCCK2Test {
     );
   }
 
-  public function setUp() {
+  function setUp() {
     parent::setUp('location', 'location_cck', 'devel', 'field_ui');
     $this->admin_user = $this->drupalCreateUser(array_keys(module_invoke_all('permission')));
     $this->normal_user = $this->drupalCreateUser(array('access content'));
@@ -62,6 +59,7 @@ class LocationCCKTest extends LocationCCK2Test {
 
     $name = strtolower($this->randomName(8));
 
+
     $form = array(
       'name' => $name,
       'type' => $name,
@@ -86,44 +84,43 @@ class LocationCCKTest extends LocationCCK2Test {
 
     $form = array();
     $this->drupalPost(NULL, $form, 'Save field settings');
-
     return $name;
   }
 
   /**
    * @
    */
-  public function testCreateLocation() {
+  function testCreateLocation() {
     // @todo fixme
     return TRUE;
   }
 
-  public function testLocpickOnly() {
+  function testLocpickOnly() {
     // @todo fixme
     return TRUE;
   }
 
-  public function testMultipleLocationOnSingleNode() {
+  function testMultipleLocationOnSingleNode() {
     // @todo fixme
     return TRUE;
   }
 
-  public function testSharedLocation() {
+  function testSharedLocation() {
     // @todo fixme
     return TRUE;
   }
 
-  public function testNodeRevisionCOW() {
+  function testNodeRevisionCOW() {
     // @todo fixme
     return TRUE;
   }
 
-  public function testNodeRevisionCleanup() {
+  function testNodeRevisionCleanup() {
     // @todo fixme
     return TRUE;
   }
 
-  public function testCOWConservation() {
+  function testCOWConservation() {
     // @todo fixme
     return TRUE;
   }

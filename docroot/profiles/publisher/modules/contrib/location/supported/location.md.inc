@@ -1,55 +1,20 @@
 <?php
 
-/**
- * @file
- * Moldova, Republic of.
- */
+// Moldova, Republic of
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_md() {
   return array(
-    'C' => "Chișinău",
-    'AN' => "Anenii Noi",
-    'BS' => "Basarabeasca",
-    'BE' => "Bender",
-    'BR' => "Briceni",
-    'CH' => "Cahul",
-    'CC' => "Camenca",
-    'CT' => "Cantemir",
-    'CL' => "Călărași",
-    'CS' => "Căușeni",
-    'CM' => "Cimișlia",
-    'CR' => "Criuleni",
-    'DN' => "Dondușeni",
-    'DR' => "Drochia",
-    'DB' => "Dubăsari",
-    'ED' => "Edineț",
-    'FL' => "Fălești",
-    'FR' => "Florești",
-    'GL' => "Glodeni",
-    'GR' => "Grigoriopol",
-    'HN' => "Hîncești",
-    'IL' => "Ialoveni",
-    'LV' => "Leova",
-    'NS' => "Nisporeni",
-    'OC' => "Ocnița",
+    'GA' => "Gagauzia",
+    'CU' => "Chisinau",
+    'BA' => "Balti",
+    'CA' => "Cahul",
+    'ED' => "Edinet",
+    'LA' => "Lapusna",
     'OR' => "Orhei",
-    'RZ' => "Rezina",
-    'RB' => "Rîbnița",
-    'RS' => "Rîșcani",
-    'SG' => "Sîngerei",
-    'SL' => "Slobozia",
-    'SR' => "Soroca",
-    'ST' => "Strășeni",
-    'SD' => "Șoldănești",
-    'SV' => "Ștefan Vodă",
-    'TR' => "Taraclia",
-    'TL' => "Telenești",
-    'TS' => "Tiraspol",
+    'SO' => "Soroca",
+    'TI' => "Tighina",
     'UN' => "Ungheni",
-    'GE' => "UTA Găgăuzia",
+    'SN' => "Stînga Nistrului",
   );
 }
 

@@ -15,7 +15,7 @@ function pub_qa_releases_clone_repo($repo_name, $repo_path, $tag_or_branch, &$co
     _pub_utilities_exec($git . ' fetch origin', t('The !repo repository could not be updated.', array('!repo' => $repo_name)));
   }
   else {
-    _pub_utilities_exec($git . ' clone ' . $repo_path . ' ./', t('The !repo repository could not be cloned.', array('!repo' => $repo_name)));
+    _pub_utilities_exec($git .' clone ' . $repo_path . ' ./', t('The !repo repository could not be cloned.', array('!repo' => $repo_name)));
     if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'local') {
       _pub_utilities_exec($git . ' config user.email "pub_releases@otstv.publisher.nbcuni.com"');
       _pub_utilities_exec($git . ' config user.name "Publisher Releases"');
@@ -26,7 +26,7 @@ function pub_qa_releases_clone_repo($repo_name, $repo_path, $tag_or_branch, &$co
   _pub_utilities_exec($git . ' checkout -f ' . $tag_or_branch);
 
   // If this is a branch, merge from origin into this branch.
-  if (!_pub_utilities_tag_exists($tag_or_branch)) {
+  if(!_pub_utilities_tag_exists($tag_or_branch)) {
     _pub_utilities_exec($git . ' merge origin/' . $tag_or_branch);
   }
 
@@ -42,7 +42,7 @@ function pub_qa_releases_clone_repo($repo_name, $repo_path, $tag_or_branch, &$co
  * Batch operation for mushing the source code from two repositories into one.
  */
 function pub_qa_releases_sync_code($pubcore_repo_name, $destination_repo_name, &$context) {
-  $path = _pub_qa_releases_path() . 'pub7/';
+  $path = _pub_qa_releases_path() .'pub7/';
 
   // Use rsync to move the code inot the destiation repository.
   _pub_utilities_exec('rsync -aq --exclude ".git/" --exclude "/sites/' . $site_name . '" --delete --force ' . $path . $pubcore_repo_name . '/ ' . $path . $destination_repo_name);
@@ -58,7 +58,7 @@ function pub_qa_releases_sync_code($pubcore_repo_name, $destination_repo_name, &
 }
 
 /**
- * Batch operation for creating a new tag in the unified repository.
+ * Batch operation for creating a new tag in the unified repository
  */
 function pub_qa_releases_create_tag($repo_name, $pubcore_tag_or_branch, &$context) {
   $git = variable_get('pub_utilities_git_bin', '');
@@ -119,10 +119,8 @@ function pub_qa_releases_clear_batch_complete($success, $results, $operations) {
 }
 
 /**
- * Helper function that returns the files path for pub releases.
- *
- * Helper function that returns the correct files path.  All the git clones
- * should live here for the various release operations.
+ * Helper funcion that returns the correct files path here all the git clones
+ * should live for the various release operations.
  *
  * @return string
  *   path to pub_releases in the private files directory.
@@ -132,16 +130,17 @@ function _pub_qa_releases_path() {
 }
 
 /**
- * Helper function for changing directory on the command line.
- *
  * Helper function for changing directory on the command line. If the directory
  * does not exist, it will be created.
+ *
+ * @param sting $site_name
+ *   The short name of the site.
  *
  * @param string $path
  *   The path relative to files/pub_releases/site_name/
  *
  * @return string
- *   The current working directory.
+ *   The curent working directory.
  */
 function _pub_qa_releases_batch_chdir($path) {
   // Create the releases directory in the files directory.

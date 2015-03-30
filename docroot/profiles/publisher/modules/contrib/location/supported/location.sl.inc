@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Sierra Leone.
- */
+// Sierra Leone
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_sl() {
   return array(
     'E' => "Eastern",

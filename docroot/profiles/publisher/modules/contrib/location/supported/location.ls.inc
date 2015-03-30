@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Lesotho.
- */
+// Lesotho
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ls() {
   return array(
     'BE' => "Berea",

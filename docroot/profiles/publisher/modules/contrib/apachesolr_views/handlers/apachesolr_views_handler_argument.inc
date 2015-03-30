@@ -1,16 +1,10 @@
 <?php
 
 /**
- * @file
- * Argument handler for Apache Solr Views.
+ * Class that allows searching the site with Apache Solr through a view.
  */
-
 class apachesolr_views_handler_argument extends views_handler_argument {
-
-  /**
-   * Set up the query parameters for this argument.
-   */
-  public function query($group_by = FALSE) {
+  public function query() {
     $this->query->add_filter($this->real_field, $this->argument);
   }
 }

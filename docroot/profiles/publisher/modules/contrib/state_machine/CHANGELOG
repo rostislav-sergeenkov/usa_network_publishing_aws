@@ -1,12 +1,5 @@
 7.x-3.x
 ------------
-#1759138: Allow any transition to be scheduled, not just publish
-#2130159: State Flow Scheduler is now entity type agnostic
-Coding standard cleanups
-#2031355: Fixed Blows up when state_flow_entity_load_state_machine doesn't return a state_machine object.
-#1728554: Fixed New revision is always created from node form.
-#2130149: Fixed Wrong entity type used in state_flow_entity_state_flow_history_entity_view().
-#2132191: Fixed Rules event doesn't get wrapped history entity.
 Create a revision history entity
 Implement new revision juggling based on ERS model
 Create entity agnostic state_flow_entity submodule

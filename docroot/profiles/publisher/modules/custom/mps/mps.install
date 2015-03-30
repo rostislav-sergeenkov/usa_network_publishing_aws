@@ -17,7 +17,7 @@ function mps_requirements($phase) {
 
   $requirements['mps'] = array(
     'title' => $t('MPS'),
-    'description' => $t('Master Page Service'),
+    'description' => t('Master Page Service'),
   );
 
   if (module_exists('pixelman')) {
@@ -51,11 +51,11 @@ function mps_schema() {
     'export' => array(
       'key' => 'machine_name',
       'primary key' => 'block_id',
-      'identifier' => 'block',
-      'default hook' => 'default_mps_block',
+      'identifier' => 'block', // Exports will be available as $block
+      'default hook' => 'default_mps_block', // Function hook name.
       'api' => array(
         'owner' => 'mps',
-        'api' => 'default_mps_tags',
+        'api' => 'default_mps_tags', // Base name for api include files.
         'minimum_version' => 1,
         'current_version' => 1,
       ),
@@ -68,7 +68,7 @@ function mps_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
         'description' => 'Primary ID field for the table. Not used for anything except internal lookups.',
-        'no export' => TRUE,
+        'no export' => TRUE, // Do not export database-only keys.
       ),
       'machine_name' => array(
         'type' => 'varchar',
@@ -92,14 +92,4 @@ function mps_schema() {
   );
 
   return $schema;
-}
-
-/**
- * Implements hook_enable().
- */
-function mps_enable() {
-  module_load_include('module', 'mps');
-
-  // When we enable the module, load the MPS ad blocks right away.
-  _mps_sync_ad_blocks();
 }

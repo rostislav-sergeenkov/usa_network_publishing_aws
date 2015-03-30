@@ -1,15 +1,8 @@
 <?php
 
-/**
- * @file
- * Guernsey.
- *
- * @see http://www.statoids.com/ugg.html
- */
+// Guernsey
+// See http://www.statoids.com/ugg.html
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_gg() {
   return array(
     'AL' => 'Alderney',

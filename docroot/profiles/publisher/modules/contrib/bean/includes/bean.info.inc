@@ -47,7 +47,7 @@ class BeanMetadataController extends EntityDefaultMetadataController {
     );
 
     $properties['type'] = array(
-      'type' => 'token',
+      'type' => 'bean_type',
       'getter callback' => 'entity_property_verbatim_get',
       'setter callback' => 'entity_property_verbatim_set',
       'setter permission' => 'administer beans',

@@ -35,10 +35,10 @@
   background-image: url( ../images/ico_draft.png );
 }
 
-/* Views date picker fields */
+/* Padding for Views' date picker fields */
 #views-exposed-form-content-content .form-type-date-popup .form-item-changed-date,
 #views-exposed-form-media-galleries-media-galleries .form-type-date-popup .form-item-changed-date,
 #views-exposed-form-content-files-page .form-type-date-popup .form-item-timestamp-date,
 #views-exposed-form-content-revisions-page .form-type-date-popup .form-item-timestamp-date {
-  margin-top: 0;
+  padding-top: 9px;
 }

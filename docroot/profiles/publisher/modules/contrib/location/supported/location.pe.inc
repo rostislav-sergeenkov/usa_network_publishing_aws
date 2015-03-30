@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Peru.
- */
+// Peru
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_pe() {
   return array(
     'AM' => "Amazonas",

@@ -4,9 +4,6 @@ namespace Drupal\xautoload\Tests;
 
 class XAutoloadWebTestCase extends \DrupalWebTestCase {
 
-  /**
-   * {@inheritdoc}
-   */
   static function getInfo() {
     return array(
       'name' => 'X Autoload web test',
@@ -15,121 +12,92 @@ class XAutoloadWebTestCase extends \DrupalWebTestCase {
     );
   }
 
-  /**
-   * {@inheritdoc}
-   */
   function setUp() {
     parent::setUp();
   }
 
-  /**
-   *
-   */
   function testNoCache() {
-    $this->xautoloadTestWithCacheTypes(array(), TRUE);
+    $this->xautoloadCheckCacheMode('dev');
   }
 
-  /**
-   *
-   */
   function testApcCache() {
-    $cache_types = array(
-      'apc' => 'apc',
-      'xcache' => 'xcache',
-      'wincache' => 'wincache',
-    );
-    $this->xautoloadTestWithCacheTypes($cache_types, TRUE);
+    $this->xautoloadCheckCacheMode('apc');
   }
 
-  /**
-   * @param array $cache_types
-   *   The autoloader modes that are enabled, e.g.
-   *   array('apc' => 'apc', 'xcache' => 'xcache')
-   * @param bool $cache_lazy
-   *   Whether the "lazy" mode is enabled.
-   */
-  protected function xautoloadTestWithCacheTypes($cache_types, $cache_lazy) {
+  function testApcLazyCache() {
+    $this->xautoloadCheckCacheMode('apc_lazy');
+  }
 
-    variable_set('xautoload_cache_types', $cache_types);
-    $this->pass("Set cache types: " . var_export($cache_types, TRUE));
+  protected function xautoloadCheckCacheMode($mode) {
 
-    variable_set('xautoload_cache_lazy', $cache_lazy);
-    $this->pass("Set cache lazy mode: " . var_export($cache_lazy, TRUE));
+    variable_set('xautoload_cache_mode', $mode);
+    $this->pass("Set cache mode: '$mode'");
 
     // Enable xautoload.
     module_enable(array('xautoload'), FALSE);
 
     // At this time the xautoload_cache_mode setting is not in effect yet,
     // so we have to clear old cached values from APC cache.
-    xautoload()->cacheManager->renewCachePrefix();
+    xautoload('apcKeyManager')->renewApcPrefix();
 
-    module_enable(array(
-      'xautoload_test_1',
-      'xautoload_test_2',
-      'xautoload_test_3',
-      'xautoload_test_4',
-      'xautoload_test_5',
-    ), FALSE);
+    $modules = array(
+      'xautoload_test_1' => FALSE,
+      'xautoload_test_2' => TRUE,
+    );
+
+    module_enable(array_keys($modules));
     menu_rebuild();
 
-    foreach (array(
-      'xautoload_test_1' => array('Drupal\xautoload_test_1\ExampleClass'),
-      'xautoload_test_2' => array('xautoload_test_2_ExampleClass'),
-      'xautoload_test_3' => array('Drupal\xautoload_test_3\ExampleClass'),
-    ) as $module => $classes) {
-      $classes_on_include = in_array($module, array('xautoload_test_2', 'xautoload_test_3'));
+    foreach ($modules as $module => $classes_on_include) {
+      $classes = array(
+        'Drupal\\' . $module . '\\ExampleClass',
+        $module . '_ExampleClass',
+      );
       $this->xautoloadModuleEnabled($module, $classes, $classes_on_include);
-      $this->xautoloadModuleCheckJson($module, $cache_types, $cache_lazy, $classes);
+      $this->xautoloadModuleCheckJson($module, $mode, $classes);
     }
   }
 
-  /**
-   * @param string $module
-   * @param string[] $classes
-   * @param bool $classes_on_include
-   */
   protected function xautoloadModuleEnabled($module, $classes, $classes_on_include) {
 
-    EnvironmentSnapshotMaker::takeSnapshot($module, 'later', $classes);
+    $observation_function = '_' . $module . '_early_boot_observations';
+    $observation_function('later');
 
-    $all = EnvironmentSnapshotMaker::getSnapshots($module);
+    $all = $observation_function();
 
     foreach ($all as $phase => $observations) {
-      $when = ($phase === 'early')
-        ? 'on drupal_load() during module_enable()'
-        : (($phase === 'later')
-          ? 'after hook_modules_enabled()'
-          : 'at an undefined time'
-        );
+      $when =
+        ($phase === 'early') ? 'on drupal_load() during module_enable()' : (
+        ($phase === 'later') ? 'after hook_modules_enabled()' : (
+        'at an undefined time'
+      ));
 
       // Test the classes of the example module.
       foreach ($classes as $class) {
         // Test that the class was already found in $phase.
-        $this->assertTrue(isset($observations['class_exists'][$class]), "Class $class was checked $when.");
         if ($classes_on_include || $phase !== 'early') {
-          $this->assertTrue($observations['class_exists'][$class], "Class $class was found $when.");
+          $this->assertTrue($observations[$class], "Class $class was found $when.");
         }
         else {
-          $this->assertFalse($observations['class_exists'][$class], "Class $class cannot be found $when.");
+          $this->assertFalse($observations[$class], "Class $class cannot be found $when.");
         }
       }
     }
   }
 
-  /**
-   * @param string $module
-   * @param array $cache_types
-   *   The autoloader modes that are enabled, e.g.
-   *   array('apc' => 'apc', 'xcache' => 'xcache')
-   * @param bool $cache_lazy
-   *   Whether the "lazy" mode is enabled.
-   * @param string[] $classes
-   */
-  protected function xautoloadModuleCheckJson($module, $cache_types, $cache_lazy, $classes) {
+  protected function xautoloadModuleCheckJson($module, $mode, $classes) {
 
     $path = "$module.json";
     $json = $this->drupalGet($path);
+    if (empty($json)) {
+      $this->fail("$path returned an empty string.");
+    }
+
     $all = json_decode($json, TRUE);
+    if (NULL === $all && 'null' !== $json && 'NULL' !== $json) {
+      $json_safe = htmlentities($json);
+      $this->fail("Failed to parse the following json:<pre>$json_safe</pre>");
+    }
 
     if (!is_array($all) || empty($all)) {
       $this->fail("$path must return a non-empty json array.");
@@ -137,128 +105,87 @@ class XAutoloadWebTestCase extends \DrupalWebTestCase {
     }
 
     foreach ($all as $phase => $observations) {
-
-      $when = ($phase === 'early')
-        ? 'on early bootstrap'
-        : (($phase === 'boot')
-          ? 'during hook_boot()'
-          : 'at an undefined time'
-        );
-
-      $this->xautoloadCheckTestEnvironment($observations, $cache_types, $cache_lazy, $when);
+      $when =
+        ($phase === 'early') ? 'on early bootstrap' : (
+        ($phase === 'boot')  ? 'during hook_boot()' : (
+        'at an undefined time'
+      ));
+      $this->xautoloadCheckTestEnvironment($observations, $mode, $phase, $when);
 
       // Test the classes of the example module.
       foreach ($classes as $class) {
         // Test that the class was already found in $phase.
-        $this->assertTrue($observations['class_exists'][$class], "Class $class was found $when.");
+        $this->assertTrue($observations[$class], "Class $class was found $when.");
       }
     }
   }
 
-  /**
-   * @param array $observations
-   * @param array $cache_types
-   *   The autoloader modes that are enabled, e.g.
-   *   array('apc' => 'apc', 'xcache' => 'xcache')
-   * @param bool $lazy
-   *   Whether the "lazy" mode is enabled.
-   * @param $when
-   */
-  protected function xautoloadCheckTestEnvironment($observations, $cache_types, $lazy, $when) {
+  protected function xautoloadCheckTestEnvironment($observations, $mode, $phase, $when) {
 
     // Check early-bootstrap variables.
-    $label = "$when: xautoload_cache_types:";
-    $this->assertEqualBlock($cache_types, $observations['xautoload_cache_types'], $label);
-
-    $label = "$when: xautoload_cache_lazy:";
-    $this->assertEqualInline($lazy, $observations['xautoload_cache_lazy'], $label);
+    $this->assertEqual($observations['xautoload_cache_mode'], $mode,
+      "xautoload_cache_mode was '$mode' $when.");
 
     // Check registered class loaders.
-    $expected = $this->expectedAutoloadStackOrder($cache_types);
-    $actual = $observations['spl_autoload_functions'];
-    $label = "$when: spl autoload stack:";
-    $this->assertEqualBlock($expected, $actual, $label);
+    $this->assertAutoloadStackOrder($observations['spl_autoload_functions'], $mode);
   }
 
-  /**
-   * @param string $cache_types
-   *   The autoloader modes that are enabled, e.g.
-   *   array('apc' => 'apc', 'xcache' => 'xcache')
-   *
-   * @return string[]
-   *   Expected order of class loaders on the spl autoload stack for the given
-   *   autoloader mode. Each represented by a string.
-   */
-  protected function expectedAutoloadStackOrder($cache_types) {
+  protected function expectedAutoloadStackOrder($mode) {
 
-    if (!empty($cache_types['apc']) && extension_loaded('apc') && function_exists('apc_store')) {
-      $loader = 'Drupal\xautoload\ClassLoader\ApcClassLoader->loadClass()';
-    }
-    elseif (!empty($cache_types['wincache']) && extension_loaded('wincache') && function_exists('wincache_ucache_get')) {
-      $loader = 'Drupal\xautoload\ClassLoader\WinCacheClassLoader->loadClass()';
-    }
-    elseif (!empty($cache_types['xcache']) && extension_loaded('Xcache') && function_exists('xcache_get')) {
-      $loader = 'Drupal\xautoload\ClassLoader\XCacheClassLoader->loadClass()';
-    }
-    else {
-      $loader = 'Drupal\xautoload\ClassFinder\ClassFinder->loadClass()';
+    switch ($mode) {
+      case 'apc':
+      case 'apc_lazy':
+        $loader = 'xautoload_ClassLoader_ApcCache->loadClass()';
+        break;
+      default:
+        $loader = 'xautoload_ClassLoader_NoCache->loadClass()';
     }
 
     return array(
       'drupal_autoload_class',
       'drupal_autoload_interface',
       $loader,
+      '_simpletest_autoload_psr0',
     );
   }
 
-  /**
-   * Assert that a module is disabled.
-   *
-   * @param string $module
-   */
+  protected function assertAutoloadStackOrder($autoload_stack, $mode) {
+
+    $expected = $this->expectedAutoloadStackOrder($mode);
+
+    foreach ($autoload_stack as $index => $str) {
+      if (!isset($expected[$index])) {
+        break;
+      }
+      $expected_str = $expected[$index];
+      if ($expected_str === $str) {
+        $this->pass("Autoload callback at index $index must be $expected_str.");
+      }
+      else {
+        $this->fail("Autoload callback at index $index must be $expected_str instead of $str.");
+      }
+    }
+
+    for (++$index; isset($autoload_stack[$index]); ++$index) {
+      $str = $autoload_stack[$index];
+      $this->fail("Autoload callback at index $index must be empty instead of $str.");
+    }
+
+    for (++$index; isset($expected[$index]); ++$index) {
+      $expected_str = $expected[$index];
+      $this->fail("Autoload callback at index $index must be $expected_str instead being empty.");
+    }
+  }
+
   protected function assertModuleDisabled($module) {
     $this->assertFalse(module_exists($module), "Module $module is disabled.");
   }
 
-  /**
-   * Assert that a module is enabled.
-   *
-   * @param string $module
-   */
   protected function assertModuleEnabled($module) {
     $this->assertTrue(module_exists($module), "Module $module is enabled.");
   }
 
-  /**
-   * Assert that a class is defined.
-   *
-   * @param string $class
-   */
   protected function assertClassExists($class) {
     $this->assertTrue(class_exists($class), "Class '$class' must exist.");
-  }
-
-  /**
-   * @param mixed $expected
-   * @param mixed $actual
-   * @param string $label
-   */
-  protected function assertEqualBlock($expected, $actual, $label) {
-    $label .=
-      'Expected: <pre>' . var_export($expected, TRUE) . '</pre>' .
-      'Actual: <pre>' . var_export($actual, TRUE) . '</pre>';
-    $this->assertEqual($expected, $actual, $label);
-  }
-
-  /**
-   * @param mixed $expected
-   * @param mixed $actual
-   * @param string $label
-   */
-  protected function assertEqualInline($expected, $actual, $label) {
-    $label .= '<br/>' .
-      'Expected: <code>' . var_export($expected, TRUE) . '</code><br/>' .
-      'Actual: <code>' . var_export($actual, TRUE) . '</code>';
-    $this->assertEqual($expected, $actual, $label);
   }
 }

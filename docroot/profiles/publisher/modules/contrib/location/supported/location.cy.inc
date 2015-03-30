@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Cyprus.
- */
+// Cyprus
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_cy() {
   return array(
     'F' => "Famagusta",

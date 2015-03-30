@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Guinea.
- */
+// Guinea
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_gn() {
   return array(
     'CNK' => "Conakry",

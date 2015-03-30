@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Iraq.
- */
+// Iraq
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_iq() {
   return array(
     'BD' => "Baghdad",

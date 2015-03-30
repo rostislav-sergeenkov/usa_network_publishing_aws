@@ -27,38 +27,3 @@ function html5_tools_uninstall() {
   db_query("DELETE FROM {variable} WHERE name LIKE 'html5_tools_%'");
   cache_clear_all('variables', 'cache');
 }
-
-/**
- * Implements hook_requirements().
- */
-function html5_tools_requirements($phase) {
-  $requirements = array();
-  $t = get_t();
-
-  if ($phase === 'runtime') {
-    $requirements['html5_tools_html5_php'] = array(
-      'title' => $t('HTML5-PHP Library'),
-    );
-
-    if (libraries_detect('html5-php') === FALSE) {
-      $requirements['html5_tools_html5_php']['description'] = $t('The html5-php library is not installed');
-      $requirements['html5_tools_html5_php']['severity'] = REQUIREMENT_ERROR;
-      $requirements['html5_tools_html5_php']['value'] = $t('Not installed');
-    }
-    else {
-      $requirements['html5_tools_html5_php']['description'] = $t('The html5-php library is installed');
-      $requirements['html5_tools_html5_php']['severity'] = REQUIREMENT_OK;
-      $requirements['html5_tools_html5_php']['value'] = $t('Installed');
-    }
-  }
-
-  return $requirements;
-}
-
-/**
- * Implements hook_update_N().
- */
-function html5_tools_update_7001() {
-  cache_clear_all(NULL, 'cache_filter');
-  filter_get_filters();
-}

@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Holy See (Vatican City State).
- */
+// Holy See (Vatican City State)
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_va() {
   return array();
 }

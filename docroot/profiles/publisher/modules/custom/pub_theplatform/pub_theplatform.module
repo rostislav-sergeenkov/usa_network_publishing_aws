@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Primarily Drupal hooks and global API functions for pub_theplatform.
- */
 
 /**
  * Implements hook_menu().
@@ -11,7 +7,7 @@ function pub_theplatform_menu() {
   return array(
     'admin/config/services/theplatform' => array(
       'title' => 'thePlatform API settings',
-      'description' => "Settings for thePlatform's API",
+      'description' => t('Settings for thePlatform\'s API'),
       'page callback' => 'drupal_get_form',
       'page arguments' => array('pub_theplatform_admin_form'),
       'access arguments' => array('administer theplatform'),
@@ -19,7 +15,7 @@ function pub_theplatform_menu() {
     ),
     'admin/config/services/theplatform/fields' => array(
       'title' => 'Field Links',
-      'description' => "Settings for thePlatform's field information to populate Druapl fields",
+      'description' => t('Settings for thePlatform\'s field information to populate Druapl fields'),
       'page callback' => 'drupal_get_form',
       'page arguments' => array('pub_theplatform_fields_form'),
       'access arguments' => array('administer theplatform'),
@@ -27,7 +23,7 @@ function pub_theplatform_menu() {
     ),
     'pub_theplatform/select/%' => array(
       'title' => 'thePlatform API callback',
-      'description' => "Settings for thePlatform's API",
+      'description' => t('Settings for thePlatform\'s API'),
       'page callback' => 'pub_theplatform_video_data',
       'page arguments' => array(2),
       'access arguments' => array('import media'),
@@ -115,49 +111,45 @@ function pub_theplatform_field_widget_form(&$form, &$form_state, $field, $instan
 }
 
 /**
- * Implements hook_field_attach_load().
+ *  Implements hook_field_attach_load().
  *
- * This is done to make the values from thePlatform replace into the fields.
+ *  This is done to make the values from thePlatform replace into the fields.
  */
 function pub_theplatform_field_attach_load($entity_type, $entities, $age, $options) {
-  if ($entity_type !== 'file') {
-    // Only act on files.
+  if($entity_type !== 'file') //  Only act on files.
     return;
-  }
 
-  foreach ($entities as $file) {
-    if ($file->filemime !== 'video/theplatform') {
-      // Only edit thePlatform videos.
+  foreach($entities as $file) {
+    if($file->filemime !== 'video/theplatform') //  Only edit thePlatform videos.
       continue;
-    }
 
-    // Get the mapping for the fields from Drupal to thePlatform.
-    $field_map = variable_get('pub_theplatform_fields', NULL);
+    //  Get the mapping for the fields from Drupal to thePlatform.
+    $fieldMap = variable_get('pub_theplatform_fields', NULL);
 
     // If we don't have any fields to map bail early.
-    if (!isset($field_map)) {
+    if (!isset($fieldMap)) {
       return;
     }
 
-    // Prep the request that will load the information we need for the node.
-    $the_platform = new pubThePlatformAPIRequest(variable_get('theplatform_feed_url', ''));
-    $the_platform->setID(file_uri_target($file->uri));
-    foreach ($field_map as $drupal_name => $the_platform_name) {
-      if (isset($file->{$drupal_name})) {
-        $the_platform->addField($the_platform_name);
-      }
+    //  Prep the request that will load the information we need for the node.
+    $theP = new pubThePlatformAPIRequest(variable_get('theplatform_feed_url', ''));
+    $theP->setID(file_uri_target($file->uri));
+    foreach($fieldMap as $drupalName => $thePName) {
+      if(isset($file->$drupalName))
+        $theP->addField($thePName);
     }
-    $data = $the_platform->execute();
-    // We should only have one item - and exactly one item.
+    $data = $theP->execute();
+    //  We should only have one item - and exactly one item.
     $data = array_shift($data);
 
-    // Parse everything and make sure we fill in everywhere each row + each
-    // lang. This should be und and 0 all the time, but why not support more?
-    $field_map = array_flip($field_map);
-    foreach ($data as $field => $value) {
-      foreach ($file->{$field_map[$field]} as $lang => $row) {
-        foreach ($row as $offset => $data) {
-          $file->{$field_map[$field]}[$lang][$offset] = array(
+    //  Parse everything and make sure we fill in everywhere,
+    //  each row + each lang - this should be und and 0 all
+    //  the time, but why not support more?
+    $fieldMap = array_flip($fieldMap);
+    foreach($data as $field => $value) {
+      foreach($file->{$fieldMap[$field]} as $lang => $row) {
+        foreach($row as $offset => $data) {
+          $file->{$fieldMap[$field]}[$lang][$offset] = array(
             "value" => $value,
             "summary" => $value,
             "format" => "filtered_html",
@@ -166,10 +158,9 @@ function pub_theplatform_field_attach_load($entity_type, $entities, $age, $optio
           );
         }
       }
-
-      // If there is no array, just make one.
-      if (empty($file->{$field_map[$field]})) {
-        $file->{$field_map[$field]} = array(
+      //  If there is no array, just make one.
+      if(empty($file->{$fieldMap[$field]})) {
+        $file->{$fieldMap[$field]} = array(
           LANGUAGE_NONE => array(
             0 => array(
               "value" => $value,
@@ -193,14 +184,13 @@ function pub_theplatform_field_attach_load($entity_type, $entities, $age, $optio
  * For thePlatform goto thePlatform to edit them.
  */
 function pub_theplatform_form_file_entity_edit_alter(&$form, &$form_state, $form_id) {
-  if (isset($form['preview']['#file']->filemime) && $form['preview']['#file']->filemime == 'video/theplatform') {
-    foreach ($form as $name => $field) {
-      if (substr($name, 0, 1) != '#' && isset($field['#type']) && $field['#type'] != 'value' && $field['#type'] != 'actions') {
+  if(isset($form['preview']['#file']->filemime) && $form['preview']['#file']->filemime == 'video/theplatform') {
+    foreach($form as $name=>$field) {
+      if(substr($name, 0, 1) != '#' && isset($field['#type']) && $field['#type'] != 'value' && $field['#type'] != 'actions')
         $form[$name]['#disabled'] = TRUE;
-      }
     }
-    // Display a message telling a user there are no fields to edit when trying
-    // to edit a video media field.
+    // Display a message telling a user there are no fields to edit when trying to
+    // edit a video media field
     drupal_set_message(t('Video metadata from thePlatform cannot be edited from this location. To edit a video from thePlatform, go to MPX (<a target="_blank" href="@mpx">http://mpx.theplatform.com</a>).', array('@mpx' => 'http://mpx.theplatform.com')));
   }
 }
@@ -222,8 +212,8 @@ function pub_theplatform_views_api() {
  * plugin info array may have the following keys:
  * - title (required): A name for the tab in the media browser.
  * - class (required): The class name of the handler. This class must
- *   implement a view() method, and may (should) extend the @link
- *   MediaBrowserPlugin MediaBrowserPlugin @endlink class.
+ *   implement a view() method, and may (should) extend the
+ *   @link MediaBrowserPlugin MediaBrowserPlugin @endlink class.
  * - weight (optional): Integer to determine the tab order. Defaults to 0.
  * - access callback (optional): A callback for user access checks.
  * - access arguments (optional): An array of arguments for the user access
@@ -235,8 +225,8 @@ function pub_theplatform_views_api() {
  * @see media_get_browser_plugin_info()
  */
 function pub_theplatform_media_browser_plugin_info() {
-  return array(
-    'pub_theplatform' => array(
+  return array('pub_theplatform' =>
+    array(
       'title' => t('thePlatform'),
       'class' => 'MediaBrowserThePlatform',
     ),
@@ -244,10 +234,8 @@ function pub_theplatform_media_browser_plugin_info() {
 }
 
 /**
- * Gathers information on internet providers.
- *
- * Implementers return an multi-dimensional array, keyed by a class name with
- * the following elements:
+ * Implementors return an multidim array, keyed by a class name
+ * with the following elements:
  *
  * - title
  * - image (optional)
@@ -257,7 +245,7 @@ function pub_theplatform_media_browser_plugin_info() {
 function pub_theplatform_media_internet_providers() {
   return array(
     'MediaInternetThePlatformHandler' => array(
-      'title' => 'thePlatform',
+      'title' => 'thePlatform'
     ),
   );
 }
@@ -285,7 +273,7 @@ function pub_theplatform_theme($existing, $type, $theme, $path) {
       'variables' => array('platform_file_id' => NULL, 'theplatform_player' => NULL),
       'path' => $path . '/templates',
       'template' => 'theplatform-player',
-      'preprocess functions' => array('pub_theplatform_load_css', 'template_preprocess'),
+      'preprocess functions' => array('pub_theplatform_load_css', 'template_preprocess'), // Add in the css with a pre-process function, but keep the default one.
     ),
   );
 }
@@ -313,19 +301,18 @@ function pub_theplatform_file_default_types_alter(&$types) {
  */
 function pub_theplatform_load_css() {
   $path = drupal_get_path('module', 'pub_theplatform');
-  drupal_add_css($path . '/pub_theplatform.css', 'file');
+  drupal_add_css($path.'/pub_theplatform.css', 'file');
 }
 
 /**
  * Function to fetch and return an array of the categories from thePlatform.
  */
 function pub_theplatform_get_categories() {
-  // Get the categories that exist in our feed.
-  $the_platform = new pubThePlatformAPIRequest(variable_get('theplatform_feed_url', ''));
-  $categories = $the_platform->getCategories()->addField('plcategory$fullTitle')->execute();
+  $theP = new pubThePlatformAPIRequest(variable_get('theplatform_feed_url', ''));  //  Get the categories that exist in our feed.
+  $categories = $theP->getCategories()->addField('plcategory$fullTitle')->execute();
 
-  $options = array('' => 'Any');
-  foreach ($categories as $c) {
+  $options = array('' => 'Any'); // Make them options
+  foreach($categories as $c) {
     $options[$c->{'plcategory$fullTitle'}] = $c->{'plcategory$fullTitle'};
   }
 
@@ -336,30 +323,27 @@ function pub_theplatform_get_categories() {
  * Helper function that will load file IDs from a media item's GUID.
  */
 function _pub_the_platform_get_file_id($guid) {
-  require_once 'pub_theplatform.api.inc';
+  require_once('pub_theplatform.api.inc');
 
   $api = new pubThePlatformAPIRequest(variable_get('theplatform_feed_url', ''));
 
-  // Load the file info for the item we're trying to view, and cur us down to
-  // the media$content items.
+  //  Load the file info for the item we're trying to view, and cur us down to the media$content items.
   $file_info = $api->addField('media:content')->setID($guid)->execute();
-  // Handle error conditions, we may have nothing come back.
-  if (!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'})) {
-    return FALSE;
-  }
+  //  Handle error conditions, we may have nothing come back.
+  if(!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
+    return False;
   $file_info = $file_info[0]->{'media$content'};
 
-  // Run through everything and grab the first video in the feed.
-  foreach ($file_info as $file) {
-    if (in_array('Video', $file->{'plfile$assetTypes'})) {
+  //  Run through everything and grab the first video in the feed.
+  foreach($file_info as $file) {
+    if(in_array('Video', $file->{'plfile$assetTypes'}))
       break;
-    }
   }
 
-  // Extract the file id from the URL.
-  list($file_id) = explode('?', $file->{'plfile$url'});
-  $file_id = explode('/', $file_id);
-  $file_id = array_pop($file_id);
+  //  Extract the file id from the URL
+  list($file_id) = explode('?', $file->{'plfile$url'}); //  The part before the ?
+  $file_id = explode('/', $file_id);  //  Get the parts of the url.
+  $file_id = array_pop($file_id); //  And just last part of the URL's path.
 
   return $file_id;
 }

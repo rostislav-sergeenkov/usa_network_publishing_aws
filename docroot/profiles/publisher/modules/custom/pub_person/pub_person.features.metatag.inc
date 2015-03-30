@@ -23,7 +23,7 @@ function pub_person_metatag_export_default() {
       'og:image' => array(
         'value' => '[node:field_person_cover_photo]',
       ),
-      'twitter:image:src' => array(
+      'twitter:image' => array(
         'value' => '[node:field_person_cover_photo]',
       ),
     ),

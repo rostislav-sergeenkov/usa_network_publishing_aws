@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Mayotte.
- */
+// Mayotte
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_yt() {
   return array();
 }

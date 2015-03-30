@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * United States Minor Outlying Islands.
- */
+// United States Minor Outlying Islands
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_um() {
   return array(
     'BI' => "Baker Island",

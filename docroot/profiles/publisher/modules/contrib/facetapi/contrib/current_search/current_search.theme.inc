@@ -65,7 +65,6 @@ function theme_current_search_item_wrapper(array $variables) {
     'class' => array(
       'current-search-item',
       drupal_html_class('current-search-item-' . $element['#current_search_id']),
-      drupal_html_class('current-search-item-' . $element['#current_search_name']),
     ),
   );
   return '<div' . drupal_attributes($attributes) . '>' . $element['#children'] . '</div>';
@@ -82,7 +81,7 @@ function theme_current_search_item_wrapper(array $variables) {
  */
 function theme_current_search_group_wrapper(array $variables) {
   $element = $variables['element'];
-  $attributes = array('class' => array('current-search-group current-search-group-' . drupal_html_class($element['#facet_name'])), 'id' => $element['#id']);
+  $attributes = array('class' => array('current-search-group'));
   return '<div' . drupal_attributes($attributes) . '>' . $element['#children'] . '</div>';
 }
 

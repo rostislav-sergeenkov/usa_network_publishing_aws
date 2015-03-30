@@ -162,12 +162,9 @@ function sitecatalyst_page_alter(&$page) {
   $footer .= 'var s_code=s.t();if(s_code)document.write(s_code)//--></script>'."\n";
   $footer .= '<script type="text/javascript"><!--'."\n";
   $footer .= "if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')"."\n";
-  $footer .= '//--></script>' . "\n";
-  $nojs = variable_get("sitecatalyst_image_file_location", 'http://examplecom.112.2O7.net/b/ss/examplecom/1/H.20.3--NS/0');
-  if (!empty($nojs)) {
-    $footer .= '<noscript><img src="' . check_url($nojs . '/' . rand(0, 10000000)) . '" height="1" width="1" alt=""></noscript>' . "\n";
-  }
-  $footer .= '<!--/DO NOT REMOVE/-->' . "\n";
+  $footer .= '//--></script><noscript><div><a href="http://www.omniture.com" title="Web Analytics"><img src="';
+  $footer .= check_url(variable_get("sitecatalyst_image_file_location", 'http://examplecom.112.2O7.net/b/ss/examplecom/1/H.20.3--NS/0')).'/'.rand(0, 10000000).'"'."\n";
+  $footer .= 'height="1" width="1" alt="" /></a></div></noscript><!--/DO NOT REMOVE/-->'."\n";
   $footer .= '<!-- End SiteCatalyst code version: ';
   $footer .=  check_plain(variable_get("sitecatalyst_version", 'H.20.3.'));
   $footer .= ' -->'."\n";
@@ -630,8 +627,7 @@ function _sitecatalyst_variable_form(&$form, $key, $data = array()) {
     '#element_validate' => array('sitecatalyst_validate_variable_name'),
   );
   $form['sitecatalyst_variables'][$key]['value'] = array(
-    '#type' => 'textarea',
-    '#rows' => 1,
+    '#type' => 'textfield',
     '#title_display' => 'invisible',
     '#title' => t('Value'),
     '#default_value' => isset($data['value']) ? $data['value'] : '',

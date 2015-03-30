@@ -18,15 +18,13 @@ function pub_state_flow_theme($existing, $type, $theme, $path) {
 /**
  * Theme implementation.
  *
- * @see pub_state_flow_theme()
+ * @see pub_state_flow_theme().
  */
 function theme_edit_revision_text($variables) {
   return '<div class="revision-text highlight-text">' . t('You are editing a published revision. A new draft will be created on save.') . '</div>';
 }
 
 /**
- * Set new content types to be unpublished with a new revision as the default.
- *
  * Set all new content types to unpublished and new revision by default. Also
  * allow existing content types to override the published default value.
  *
@@ -117,22 +115,20 @@ function pub_state_flow_form_node_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Submit callback from node form.
  *
- * @see pub_state_flow_form_node_form_alter()
+ * @see pub_state_flow_form_node_form_alter().
  */
 function pub_state_flow_node_form_save($form, &$form_state) {
   drupal_set_message(t('This revision is now available to be published.'));
 }
 
 /**
- * Remove specified items from the "Update options" drop down.
- *
  * Remove demote, promote, sticky & unsticky from "Update options" drop down on
  * admin/content form.
  *
  * Implements hook_form_FORM_ID_alter().
  */
 function pub_state_flow_form_node_admin_content_alter(&$form, &$form_state, $form_id) {
-  $options = array('demote', 'promote', 'sticky', 'unsticky');
+  $options = array('demote', 'promote', 'sticky', 'unsticky', );
   foreach ($options as $key) {
     unset($form['admin']['options']['operation']['#options'][$key]);
   }
@@ -160,10 +156,10 @@ function pub_state_flow_state_flow_events_page_alter(&$output, $node, $events) {
     // Add the revision date and author from node_revision_state_history to the
     // block.
     $output['content']['current_revision']['current_revision_date'] = array(
-      '#type' => 'item',
-      '#title' => 'Last Updated:',
-      '#markup' => format_date($revision_history->timestamp, 'edit_date') . " by " . $revision_history->name,
-      '#weight' => 3,
+       '#type' => 'item',
+       '#title' => 'Last Updated:',
+       '#markup' => format_date($revision_history->timestamp, 'edit_date') . " by " . $revision_history->name,
+       '#weight' => 3,
     );
   }
 
@@ -175,8 +171,6 @@ function pub_state_flow_state_flow_events_page_alter(&$output, $node, $events) {
 }
 
 /**
- * Retrieve information about the date and the user who updated a node.
- *
  * Retrieve the correct information to display the actual date and user who
  * updated the state of a node.
  */
@@ -198,12 +192,12 @@ function pub_state_flow_get_latest_history($node) {
   foreach ($result as $revision) {
     $revision_history[$revision->vid][$revision->timestamp] = $revision;
   }
-
   if (!empty($revision_history)) {
     return end($revision_history[$node->vid]);
   }
-
-  return $revision_history;
+  else {
+	  return $revision_history;
+  }
 }
 
 /**

@@ -15,7 +15,7 @@ class MetaTagsUnitTest extends MetaTagsTestHelper {
     return array(
       'name' => 'Meta tag unit tests',
       'description' => 'Test basic meta tag functionality.',
-      'group' => 'Metatag',
+      'group' => 'Meta tags',
     );
   }
 

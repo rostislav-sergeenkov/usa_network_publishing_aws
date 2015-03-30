@@ -52,10 +52,6 @@ function publisher_install_tasks() {
  */
 function publisher_install_final_tasks() {
   _publisher_setup_permissions(PUB_PROFILE);
-
-  // Need to clear caches late in the install process after xautoload was
-  // updated to 7.x-5.1.
-  cache_clear_all();
 }
 
 /**
@@ -114,8 +110,8 @@ function publisher_modules_installed($modules) {
         user_role_grant_permissions($rids['editor'], array('stick to Acquia web node'));
         user_role_grant_permissions($rids['senior editor'], array('stick to Acquia web node'));
       case 'admin_menu':
-        user_role_grant_permissions($rids['editor'], array('access navbar'));
-        user_role_grant_permissions($rids['senior editor'], array('access navbar'));
+        user_role_grant_permissions($rids['editor'], array('access administration menu'));
+        user_role_grant_permissions($rids['senior editor'], array('access administration menu'));
         break;
 
       case 'collections':
@@ -154,28 +150,25 @@ function publisher_modules_installed($modules) {
         user_role_grant_permissions($rids['administrator'], array(
           'administer filters',
           'use text format ds_code',
-          'use text format markdown',
           'use text format wysiwyg_basic',
           'use text format wysiwyg_mini',
         ));
         user_role_grant_permissions($rids['editor'], array(
           'administer filters',
           'use text format ds_code',
-          'use text format markdown',
           'use text format wysiwyg_basic',
           'use text format wysiwyg_mini',
         ));
         user_role_grant_permissions($rids['senior editor'], array(
           'administer filters',
           'use text format ds_code',
-          'use text format markdown',
           'use text format wysiwyg_basic',
           'use text format wysiwyg_mini',));
         break;
 
       case 'media':
-        user_role_grant_permissions($rids['editor'], array('access media browser'));
-        user_role_grant_permissions($rids['senior editor'], array('access media browser'));
+        user_role_grant_permissions($rids['editor'], array('import media'));
+        user_role_grant_permissions($rids['senior editor'], array('import media'));
         break;
 
       case 'media_internet':

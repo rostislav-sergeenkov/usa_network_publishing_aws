@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Macedonia, The Former Yugoslav Republic of.
- */
+// Macedonia, The Former Yugoslav Republic of
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_mk() {
   return array();
 }

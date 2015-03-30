@@ -1,13 +1,6 @@
 <?php
 
-/**
- * @file
- * Class wp_report_server_handler_filter_sitename
- */
 class wp_report_server_handler_filter_sitename extends views_handler_filter {
-  /**
-   * {@inheritdoc}
-   */
   function exposed_form(&$form, &$form_state) {
     parent::exposed_form($form, $form_state);
 

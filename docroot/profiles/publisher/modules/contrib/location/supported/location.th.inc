@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Thailand.
- */
+// Thailand
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_th() {
   return array(
     '10' => "Bangkok",

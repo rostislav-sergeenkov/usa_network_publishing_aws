@@ -2,28 +2,31 @@
 
 /**
  * @file
- * Gigya default token.
+ * @todo file description.
+ *
+ * Development of this module is sponsered by Gigya, Inc.
  */
 
 /**
  * Implements hook_install().
  */
 function gigya_default_token_install() {
+
 }
 
 /**
  * Implements hook_uninstall().
  */
 function gigya_default_token_uninstall() {
-  db_delete('variable')->condition('name',db_like('gigya_default_token_extra_weights_%'), 'LIKE')->execute();
+  db_query("DELETE FROM {variable} WHERE name LIKE 'gigya_default_token_extra_weights_%'");
 }
 
 /**
  * Implements hook_schema().
  *
- * Create a table to hold data for field settings gigya_default_token
- * is managing, like custom PHP code for
- * Allowed values and default values that we don't want in core.
+ * Create a table to hold data for field settings gigya_default_token is managing,
+ * like custom PHP code for Allowed values and default values that we don't
+ * want in core.
  */
 function gigya_default_token_schema() {
   $schema['gigya_default_token_field_settings'] = array(
@@ -47,7 +50,7 @@ function gigya_default_token_schema() {
         'not null' => FALSE,
         'description' => 'The name of the bundle, NULL for field settings.',
       ),
-      'language' => array(
+     'language' => array(
         'type' => 'varchar',
         'length' => 32,
         'not null' => FALSE,
@@ -76,8 +79,8 @@ function gigya_default_token_schema() {
   return $schema;
 }
 
-/**
- * Updated token table.
+/*
+ * @todo Properly document this function.
  */
 function gigya_default_token_update_7000() {
   if (!db_field_exists('gigya_default_token_field_settings', 'entity_type')) {
@@ -100,3 +103,4 @@ function gigya_default_token_update_7000() {
     db_add_field('gigya_default_token_field_settings', 'language', $field);
   }
 }
+

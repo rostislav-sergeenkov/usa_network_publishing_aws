@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Guam.
- */
+// Guam
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_gu() {
   return array();
 }

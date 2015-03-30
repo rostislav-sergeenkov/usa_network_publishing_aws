@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Italy.
- */
+// Italy
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_it() {
   return array(
     'AG' => "Agrigento",

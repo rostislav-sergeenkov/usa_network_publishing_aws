@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Egypt.
- */
+// Egypt
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_eg() {
   return array(
     'DHY' => "Ad Daqahliyah",

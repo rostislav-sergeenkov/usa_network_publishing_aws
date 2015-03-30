@@ -1,15 +1,14 @@
 <?php
 
-/**
- * @file
- * Install functions for pub_relationships_tv_enhanced.
- */
 
 /**
  * Implements hook_field_schema().
+ *
+ * @param $field
+ * @return array
  */
 function pub_relationships_tv_enhanced_field_schema($field) {
-  switch ($field['type']) {
+  switch($field['type']) {
     case 'pub_tv_relationship_field':
       $columns = array(
         'show' => array(
@@ -38,20 +37,9 @@ function pub_relationships_tv_enhanced_field_schema($field) {
       return array(
         'columns' => $columns,
         'indexes' => array(
-          'shows' => array('show', 'season', 'episode'),
-        ),
-        'foreign keys' => array(
-          'node' => array(
-            'table' => 'node',
-            'columns' => array(
-              'show' => 'nid',
-              'season' => 'nid',
-              'episode' => 'nid',
-            ),
-          ),
+          'shows' => array('show','season', 'episode'),
         ),
       );
     break;
-
   }
 }

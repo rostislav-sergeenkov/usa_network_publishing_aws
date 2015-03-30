@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * French Polynesia.
- */
+// French Polynesia
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_pf() {
   return array(
     'M' => "Archipel des Marquises",

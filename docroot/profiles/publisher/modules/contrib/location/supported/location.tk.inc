@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Tokelau.
- */
+// Tokelau
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_tk() {
   return array(
     'A' => "Atafu",
@@ -28,3 +22,4 @@ function location_bounds_tk() {
     'maxlat' => -8.43977,
   );
 }
+

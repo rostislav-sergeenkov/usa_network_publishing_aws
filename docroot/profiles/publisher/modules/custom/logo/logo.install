@@ -14,25 +14,25 @@ function logo_install() {
   // Create a logo upload field.
   if (field_read_field('field_logo') === FALSE) {
     $field = array(
-      'field_name' => 'field_logo',
-      'type' => 'image',
-      'cardinality' => 1,
+        'field_name' => 'field_logo',
+        'type' => 'image',
+        'cardinality' => 1,
     );
     field_create_field($field);
   }
 
-  // Create an instance to the above field.
-  $instance = array(
-    'field_name' => 'field_logo',
-    'label' => $t('Upload logo'),
-    'required' => TRUE,
-    'widget' => array(
-      'type' => 'image_image',
-    ),
-  );
-  $instance['entity_type'] = 'logo';
-  $instance['bundle'] = 'logo';
-  field_create_instance($instance);
+ // Create an instance to the above field.
+ $instance = array(   
+   'field_name' => 'field_logo',
+     'label' => $t('Upload logo'),
+     'required' => TRUE,
+     'widget' => array(
+       'type' => 'image_image',
+     ), 
+ );
+ $instance['entity_type'] = 'logo';
+ $instance['bundle'] = 'logo';
+ field_create_instance($instance);
 }
 
 /**
@@ -43,7 +43,7 @@ function logo_uninstall() {
 }
 
 /**
- * Implements hook_schema().
+ * Implementation of hook_schema().
  */
 function logo_schema() {
   $schema['logo'] = array(
@@ -59,7 +59,7 @@ function logo_schema() {
         'description' => 'Title of the logo.',
         'type' => 'varchar',
         'length' => '255',
-        'not null' => TRUE,
+        'not null' => TRUE
       ),
       'start' => array(
         'description' => 'Date on which to display the logo.',

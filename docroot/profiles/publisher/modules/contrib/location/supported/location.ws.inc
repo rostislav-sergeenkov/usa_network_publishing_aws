@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Samoa.
- */
+// Samoa
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ws() {
   return array(
     'AN' => "A'ana",

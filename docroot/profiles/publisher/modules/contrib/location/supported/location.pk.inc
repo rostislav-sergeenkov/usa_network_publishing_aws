@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Pakistan.
- */
+// Pakistan
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_pk() {
   return array(
     'B' => "Balochistan",

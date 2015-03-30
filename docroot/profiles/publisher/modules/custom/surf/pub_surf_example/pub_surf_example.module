@@ -2,6 +2,7 @@
 
 /**
  * @file
+ *
  * Pub SURF example module file.
  *
  * Example module for surf configurations.
@@ -36,8 +37,9 @@ function pub_surf_example_library() {
  * Implements hook_surf_settings_alter().
  */
 function pub_surf_example_surf_settings_alter(&$data) {
-  // $data['responsive'] = FALSE;
+  //$data['responsive'] = FALSE;
 }
+
 
 /**
  * Implements hook_block_info().
@@ -59,6 +61,10 @@ function pub_surf_example_block_info() {
 
 /**
  * Implements hook_block_view().
+ *
+ * @param string $delta
+ *
+ * @return array
  */
 function pub_surf_example_block_view($delta = '') {
   $block = array();
@@ -70,7 +76,6 @@ function pub_surf_example_block_view($delta = '') {
         '#theme' => 'surf_actions_block',
       );
       break;
-
     case 'surf-content':
       $block['subject'] = '';
       $block['content'] = array(
@@ -83,17 +88,19 @@ function pub_surf_example_block_view($delta = '') {
 }
 
 /**
- * Implements hook_theme().
+ * Implement hook_theme().
+ *
+ * @return array
  */
 function pub_surf_example_theme() {
   return array(
     'surf_actions_block' => array(
       'variables' => array(),
-      'template' => 'templates/surf-actions',
+      'template' => 'templates/surf-actions'
     ),
     'surf_content_block' => array(
       'variables' => array(),
-      'template' => 'templates/surf-content',
+      'template' => 'templates/surf-content'
     ),
   );
 }

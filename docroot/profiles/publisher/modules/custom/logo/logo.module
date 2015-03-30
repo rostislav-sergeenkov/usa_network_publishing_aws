@@ -97,22 +97,10 @@ class LogoController extends DrupalDefaultEntityController {
     return $entity;
   }
 
-  /**
-   * Delete a logo entity.
-   *
-   * @param object $entity
-   *   The entity to be deleted.
-   */
   public function delete($entity) {
     $this->delete_multiple(array($entity));
   }
 
-  /**
-   * Delete a set of logo entities.
-   *
-   * @param array $entities
-   *   An array of logo entities to be deleted.
-   */
   public function delete_multiple($entities) {
     $lids = array();
     if (!empty($entities)) {
@@ -152,12 +140,12 @@ function logo_load($lid = NULL, $reset = FALSE) {
 /**
  * Loads multiple logo entity objects.
  *
- * @param array|bool $lids
+ * @param array $lids
  *   (optional) Array of integers specifying the lid(s) [entity id] to load.
  *   If the array is empty, all entity objects will be loaded.
  * @param array $conditions
  *   (optional)
- * @param bool $reset
+ * @param boolean $reset
  *   (optional)
  *
  * @return mixed

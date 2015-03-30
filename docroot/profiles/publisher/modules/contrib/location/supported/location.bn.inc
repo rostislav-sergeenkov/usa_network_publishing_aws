@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Brunei Darussalam.
- */
+// Brunei Darussalam
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_bn() {
   return array(
     'BEL' => "Belait",

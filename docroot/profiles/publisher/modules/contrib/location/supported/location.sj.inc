@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Svalbard and Jan Mayen.
- */
+// Svalbard and Jan Mayen
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_sj() {
   return array();
 }

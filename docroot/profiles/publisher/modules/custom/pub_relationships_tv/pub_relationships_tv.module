@@ -6,7 +6,7 @@
  */
 
 define('TV_FIELD_NAME', 'field_pub_relation_tv_shows');
-require_once __DIR__ . '/pub_relationships_tv.field.inc';
+require __DIR__ . '/pub_relationships_tv.field.inc';
 
 
 /**

@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Belarus.
- */
+// Belarus
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_by() {
   return array(
     'BR' => "Brest voblast",

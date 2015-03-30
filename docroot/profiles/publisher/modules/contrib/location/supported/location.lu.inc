@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Luxembourg.
- */
+// Luxembourg
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_lu() {
   return array(
     'DD' => "Diekirch",

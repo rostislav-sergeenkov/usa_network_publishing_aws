@@ -106,12 +106,6 @@ function html5_tools_admin_settings() {
   $form['html5_tools_help_text'] = array(
     '#markup' => t("If one of these is not working, it might be because your theme is overriding what is specified here. Themes always get the last say in how something is outputted. Check your theme's template.php file."),
   );
-  $form['html5_tools_overrides']['html5_tools_replace_filters'] = array(
-    '#type' => 'checkbox',
-    '#default_value' => variable_get('html5_tools_replace_filters', 1),
-    '#title' => t('Replace core text filters with HTML5-aware versions'),
-    '#description' => t('HTML5 Tools implements versions of the HTML Corrector filter and the Limit Allowed HTML Tags filter that are HTML5-aware.'),
-  );
 
   $form['#submit'][] = 'html5_tools_admin_settings_submit';
 

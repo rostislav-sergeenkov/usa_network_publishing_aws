@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @file
- * Pixelman Integration module.
- */
-
-/**
  * Implements hook_page_alter().
  */
 function pixelman_page_alter(&$page) {

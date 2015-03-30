@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Swaziland.
- */
+// Swaziland
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_sz() {
   return array(
     'H' => "Hhohho",

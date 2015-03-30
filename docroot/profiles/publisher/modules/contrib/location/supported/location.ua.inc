@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Ukraine.
- */
+// Ukraine
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ua() {
   return array(
     'CK' => "Cherkasy",

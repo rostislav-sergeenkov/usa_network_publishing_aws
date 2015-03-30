@@ -1,8 +1,5 @@
 <?php
-/**
- * @file
- * @codingStandardsIgnoreStart
- *
+/**IDX
  * IDX Client.  A PHP wrapper around the IDX member.* APIs
  *
  * This client requires the curl module with SSL support enabled.
@@ -11,7 +8,6 @@
  *
  * @author Josh Mast <joshua.mast@nbcuni.com>
  * @author Chris Nelson <chris.z.nelson@nbcuni.com>
- *
  */
 
 /**

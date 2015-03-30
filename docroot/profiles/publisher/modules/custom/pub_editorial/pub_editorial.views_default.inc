@@ -135,22 +135,8 @@ function pub_editorial_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::clone_action_clone' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::views_bulk_operations_delete_item' => array(
       'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
@@ -228,14 +214,14 @@ function pub_editorial_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::revision_scheduler_schedule_revision' => array(
-      'selected' => 1,
+    'action::system_send_email_action' => array(
+      'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
     ),
-    'action::system_send_email_action' => array(
+    'action::gigya_shareui_node_action' => array(
       'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
@@ -652,13 +638,6 @@ function pub_editorial_views_default_views() {
     6 => 0,
     7 => 0,
   );
-  /* Filter criterion: File: Status */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = array(
-    1 => '1',
-  );
 
   /* Display: Files */
   $handler = $view->new_display('page', 'Files', 'page');
@@ -876,7 +855,7 @@ function pub_editorial_views_default_views() {
   $handler->display->display_options['fields']['pub_editorial']['id'] = 'pub_editorial';
   $handler->display->display_options['fields']['pub_editorial']['table'] = 'file_managed';
   $handler->display->display_options['fields']['pub_editorial']['field'] = 'pub_editorial';
-  /* Field: : field_mpx_available_date */
+  /* Field: File: MPX Media Available Date */
   $handler->display->display_options['fields']['field_mpx_available_date']['id'] = 'field_mpx_available_date';
   $handler->display->display_options['fields']['field_mpx_available_date']['table'] = 'field_data_field_mpx_available_date';
   $handler->display->display_options['fields']['field_mpx_available_date']['field'] = 'field_mpx_available_date';
@@ -894,7 +873,7 @@ function pub_editorial_views_default_views() {
     'multiple_to' => '',
   );
   $handler->display->display_options['fields']['field_mpx_available_date']['field_api_classes'] = TRUE;
-  /* Field: : field_mpx_expiration_date */
+  /* Field: File: MPX Media Expiration Date */
   $handler->display->display_options['fields']['field_mpx_expiration_date']['id'] = 'field_mpx_expiration_date';
   $handler->display->display_options['fields']['field_mpx_expiration_date']['table'] = 'field_data_field_mpx_expiration_date';
   $handler->display->display_options['fields']['field_mpx_expiration_date']['field'] = 'field_mpx_expiration_date';

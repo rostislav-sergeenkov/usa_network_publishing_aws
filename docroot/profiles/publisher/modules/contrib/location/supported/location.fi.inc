@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Finland.
- */
+// Finland
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_fi() {
   return array(
     'ES' => "Etela-Suomen laani",

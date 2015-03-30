@@ -6,5 +6,3 @@ version = 7.x-1.0
 
 dependencies[] = iib
 dependencies[] = sps
-
-files[] = tests/pubSPSPurgeTest.test

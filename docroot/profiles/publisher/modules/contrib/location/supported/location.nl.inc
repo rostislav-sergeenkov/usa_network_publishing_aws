@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Netherlands.
- */
+// Netherlands
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_nl() {
   return array(
     'DR' => "Drenthe",
@@ -25,9 +19,6 @@ function location_province_list_nl() {
   );
 }
 
-/**
- * Link providers.
- */
 function location_map_link_nl_providers() {
   return array(
     'google' => array(
@@ -38,16 +29,10 @@ function location_map_link_nl_providers() {
   );
 }
 
-/**
- * Default providers.
- */
 function location_map_link_nl_default_providers() {
   return array('google');
 }
 
-/**
- * Google link.
- */
 function location_map_link_nl_google($location = array()) {
   $query_params = array();
 

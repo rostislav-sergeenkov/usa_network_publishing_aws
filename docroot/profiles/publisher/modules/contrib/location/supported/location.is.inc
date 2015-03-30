@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Iceland.
- */
+// Iceland
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_is() {
   return array(
     'AL' => "Austurland",

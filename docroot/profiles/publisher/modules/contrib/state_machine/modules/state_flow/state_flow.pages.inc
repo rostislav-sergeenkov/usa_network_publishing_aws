@@ -23,6 +23,9 @@ function state_flow_events($node) {
       $current_revision_actions[] = l($event->get_option('label'), 'node/' . $node->nid . '/revisions/' . $node->published_revision_id . '/workflow/' . $event_machine_name);
     }
   }
+  // Give other modules a chance to modify the Current Revision Actions.
+  drupal_alter('state_flow_current_revision_actions', $current_revision_actions, $node, $state_flow);
+
   $current_revision_actions_str = implode(' | ', $current_revision_actions);
 
   // Build table for the active draft revisions and other revisions of this node
@@ -127,7 +130,7 @@ function state_flow_events($node) {
         'current_revision_status' => array(
           '#type' => 'item',
           '#title' => t('Status'),
-          '#markup' => check_plain($node->current_state),
+          '#markup' => check_plain($state_flow_entity->object->current_state),
         ),
         'current_revision_vid' => array(
           '#type' => 'item',

@@ -14,12 +14,12 @@ class pub_theplatform_views_handler_field_thumb extends views_handler_field {
    *
    * This uses an api that Views exposes for exactly this simplicity.
    *
-   * @param mixed $values
+   * @param $values
    *   An object containing all retrieved values.
-   * @param null $field
+   * @param $field
    *   Optional name of the field where the value is stored.
    */
-  public function get_value($values, $field = NULL) {
+  function get_value($values, $field = NULL) {
     $alias = isset($field) ? $this->aliases[$field] : $this->field_alias;
     if (isset($values->{$alias})) {
       return $values->{$alias};
@@ -29,13 +29,10 @@ class pub_theplatform_views_handler_field_thumb extends views_handler_field {
   /**
    * Render the field.
    *
-   * @param mixed $values
+   * @param $values
    *   The values retrieved from the database.
-   *
-   * @return string
-   *   A string representing the themed image.
    */
-  public function render($values) {
+  function render($values) {
     $value = $this->get_value($values);
     return theme_image(array('path' => $value, 'attributes' => array('class' => 'pub-theplatform-thumb')));
   }

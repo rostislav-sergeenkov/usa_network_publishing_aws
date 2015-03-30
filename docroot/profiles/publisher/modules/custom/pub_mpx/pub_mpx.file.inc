@@ -5,24 +5,17 @@
  * Implements hook_file_formatter_info().
  */
 function pub_mpx_file_formatter_info() {
+
   $formatters = array();
 
   $formatters['pub_mpx_video'] = array(
-    'label' => t('Pub MPX Video (Deprecated)'),
+    'label' => t('Pub MPX Video'),
     'file types' => _pub_mpx_get_mpx_account_video_file_types(TRUE),
-    'description' => t('Uses the older video lookup method, by Media ID.'),
     'default settings' => array(
       'pub_mpx_video_width' => '',
       'pub_mpx_video_height' => '',
     ),
     'view callback' => 'pub_mpx_file_formatter_video_view',
-    'settings callback' => 'pub_mpx_file_formatter_video_settings',
-  );
-  $formatters['pub_mpx_video_by_guid'] = array(
-    'label' => t('Pub MPX Video'),
-    'description' => t('Uses the newer video lookup method, by Media guid. Recommended by The Platform.'),
-    'file types' => _pub_mpx_get_mpx_account_video_file_types(TRUE),
-    'view callback' => 'pub_mpx_file_formatter_video_view_by_guid',
     'settings callback' => 'pub_mpx_file_formatter_video_settings',
   );
   $formatters['pub_mpx_image'] = array(
@@ -50,15 +43,15 @@ function pub_mpx_file_formatter_video_settings($form, &$form_state, $settings) {
     $account = _media_theplatform_mpx_get_account_data($account_id);
 
     $acccount_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($account->default_player);
-    $element['pub_mpx_video_player_id'][$account->id] = array(
+    $element['pub_mpx_video_player_id'][ $account->id ] = array(
       '#title' => t('Pub MPX Video Player for Account @account',
         array('@account' => basename($account->account_id))),
       '#type' => 'select',
       '#options' => array_merge(array('' => t('--- Default ---')), media_theplatform_mpx_get_players_select(NULL, 'pid')),
-      '#default_value' => isset($settings['pub_mpx_video_player_id'][$account->id]) ?
-        $settings['pub_mpx_video_player_id'][$account->id] :
-        (!empty($acccount_default_player) && !empty($acccount_default_player['player_id']) ?
-        $acccount_default_player['player_id'] : ''),
+      '#default_value' => isset($settings['pub_mpx_video_player_id'][ $account->id ]) ?
+          $settings['pub_mpx_video_player_id'][ $account->id ] :
+          (!empty($acccount_default_player) && !empty($acccount_default_player['player_id']) ?
+            $acccount_default_player['player_id'] : ''),
     );
   }
   return $element;
@@ -76,7 +69,26 @@ function pub_mpx_file_formatter_video_view($file, $display, $langcode) {
   }
 
   // Determine video player.
-  $video_player_pid = _pub_mpx_file_formatter_get_player_pid($file, $display);
+  $video_player_pid = NULL;
+  // Use the player assigned directly to the video if it exists.
+  if (!empty($file->mpx_video_data['player_id'])) {
+    $player = media_theplatform_mpx_get_mpx_player_by_player_id($file->mpx_video_data['player_id']);
+    if (!empty($player['pid'])) {
+      $video_player_pid = $player['pid'];
+    }
+  }
+  // ...if not, then the player chosen in the formatter settings.
+  if (!$video_player_pid) {
+    $account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+    if (!empty($display['settings']['pub_mpx_video_player_id'][ $account->id ])) {
+      $video_player_pid = $display['settings']['pub_mpx_video_player_id'][ $account->id ];
+    }
+    // ...finally use the default player for the video's account.
+    else {
+      $player = media_theplatform_mpx_get_mpx_player_by_player_id($account->default_player);
+      $video_player_pid = $player['pid'];
+    }
+  }
 
   // If this file is inactive, display the themed inactive video.
   if (isset($file->mpx_video_data['status']) && !$file->mpx_video_data['status']) {
@@ -95,56 +107,6 @@ function pub_mpx_file_formatter_video_view($file, $display, $langcode) {
   }
 
   return $element;
-}
-
-/**
- * View callback for the pub_mpx_video_by_guid file formatter.
- *
- * @see pub_mpx_file_formatter_info()
- */
-function pub_mpx_file_formatter_video_view_by_guid($file, $display) {
-  // If this isn't a valid MPX video, simply return.
-  if (file_uri_scheme($file->uri) != 'mpx' || empty($file->mpx_video_data)) {
-    return array();
-  }
-
-  $theme_hook = 'pub_mpx_video_by_guid';
-  // If this file is inactive, use the inactive video theme hook.
-  if (isset($file->mpx_video_data['status']) && !$file->mpx_video_data['status']) {
-    $theme_hook = 'pub_mpx_inactive_video';
-  }
-  return array(
-    '#theme' => $theme_hook,
-    '#file' => $file,
-    '#player_pid' => _pub_mpx_file_formatter_get_player_pid($file, $display),
-  );
-}
-
-/**
- * Helper function to return the MPX player id (pid) for a file.
- *
- * @param stdClass $file
- *   The MPX file object.
- * @param array $display
- *   The display settings for this file formatter.
- * @return string
- *   The player id, or an empty string if none was found.
- */
-function _pub_mpx_file_formatter_get_player_pid(stdClass $file, array $display) {
-  // Use the player assigned directly to the video if it exists.
-  if (!empty($file->mpx_video_data['player_id'])) {
-    $player = media_theplatform_mpx_get_mpx_player_by_player_id($file->mpx_video_data['player_id']);
-    if (!empty($player['pid'])) {
-      return $player['pid'];
-    }
-  }
-  $account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
-  if (!empty($display['settings']['pub_mpx_video_player_id'][$account->id])) {
-    return $display['settings']['pub_mpx_video_player_id'][$account->id];
-  }
-  // If we've gotten here, use the default player for this account.
-  $player = media_theplatform_mpx_get_mpx_player_by_player_id($account->default_player);
-  return isset($player['pid']) ? $player['pid'] : '';
 }
 
 /**

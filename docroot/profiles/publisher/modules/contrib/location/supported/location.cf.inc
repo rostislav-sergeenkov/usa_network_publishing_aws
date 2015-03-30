@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Central African Republic.
- */
+// Central African Republic
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_cf() {
   return array(
     'BBA' => "Bamingui-Bangoran",

@@ -12,17 +12,11 @@
  */
 class logo_views_handler_field_operations extends views_handler_field {
 
-  /**
-   * {@inheritdoc}
-   */
-  public function query() {
+  function query() {
     // Do nothing -- to override the parent query.
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function render($values) {
+  function render($values) {
     $output = '';
 
     $type = 'logo';
@@ -41,7 +35,7 @@ class logo_views_handler_field_operations extends views_handler_field {
       $output = theme('links__ctools_dropbutton', array('title' => t('operations'), 'links' => $links));
     }
 
-    $this->logoCSS();
+    $this->logo_css();
 
     return $output;
   }
@@ -49,7 +43,7 @@ class logo_views_handler_field_operations extends views_handler_field {
   /**
    * Add any CSS necessary.
    */
-  private function logoCSS() {
+  function logo_css() {
     // Include the Ctools Dropbutton CSS from Views.
     drupal_add_css(drupal_get_path('module', 'views') . '/css/views-admin.css');
     drupal_add_css(drupal_get_path('module', 'views') . '/css/views-admin.ctools.css');

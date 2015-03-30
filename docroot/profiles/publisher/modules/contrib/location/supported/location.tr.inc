@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Turkey.
- */
+// Turkey
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_tr() {
   return array(
     'ADA' => "Adana",

@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Grenada.
- */
+// Grenada
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_gd() {
   return array(
     'A' => "Saint Andrew",

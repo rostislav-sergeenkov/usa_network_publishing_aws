@@ -1,16 +1,12 @@
 <?php
 
 /**
- * @file
- * Snippet field handler for Apache Solr Views.
+ * Field handler for Solr fields.
  */
-
 class apachesolr_views_snippet_handler_field extends views_handler_field {
 
-  /**
-   * Retrieve value from Solr result document.
-   */
-  public function get_value($doc, $field = NULL) {
+  // Retrieve value from Solr result document.
+  function get_value($doc, $field = NULL) {
     $response = $this->query->apachesolr_response;
 
     // We default to getting snippets from the body content and comments.
@@ -50,10 +46,7 @@ class apachesolr_views_snippet_handler_field extends views_handler_field {
     return theme($hook, array('doc' => $doc, 'snippets' => $snippets));
   }
 
-  /**
-   * Render the snippet field.
-   */
-  public function render($values) {
+  function render($values) {
     $value = $this->get_value($values);
     return $this->sanitize_value($value, 'xss');
   }

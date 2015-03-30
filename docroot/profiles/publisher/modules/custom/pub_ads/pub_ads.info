@@ -32,3 +32,4 @@ features[pub_ads_paths][] = smartadserver
 features[pub_ads_paths][] = unicast
 features[pub_ads_paths][] = videoegg
 features[pub_ads_paths][] = viewpoint
+files[] = plugins/export_ui/pub_ads.export.class.php

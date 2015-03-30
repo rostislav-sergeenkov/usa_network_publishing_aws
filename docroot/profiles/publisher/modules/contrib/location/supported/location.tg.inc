@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Togo.
- */
+// Togo
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_tg() {
   return array(
     'K' => "Kara",

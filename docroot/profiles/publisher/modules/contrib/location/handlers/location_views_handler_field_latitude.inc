@@ -5,23 +5,15 @@
  * Latitude field handler.
  */
 
-// @codingStandardsIgnoreStart
 class location_views_handler_field_latitude extends views_handler_field {
 
-  /**
-   * {@inheritdoc}
-   */
-  public function option_definition() {
+  function option_definition() {
     $options = parent::option_definition();
     $options['style'] = array('default' => 'dms');
-
     return $options;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function options_form(&$form, &$form_state) {
+  function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
     $form['style'] = array(
       '#title' => t('Display style'),
@@ -34,10 +26,7 @@ class location_views_handler_field_latitude extends views_handler_field {
     );
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function render($values) {
+  function render($values) {
     if ($this->options['style'] == 'dd') {
       return check_plain($values->{$this->field_alias});
     }
@@ -46,4 +35,3 @@ class location_views_handler_field_latitude extends views_handler_field {
     }
   }
 }
-// @codingStandardsIgnoreEnd

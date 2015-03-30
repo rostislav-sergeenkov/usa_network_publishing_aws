@@ -94,54 +94,37 @@ function facetapi_get_next_date_gap($gap, $min_gap = FACETAPI_DATE_SECOND) {
  * This function uses Unix timestamps for its computation and so is not useful
  * for dates outside that range.
  *
- * @param int $start_time
+ * @param $start_date
  *   A string containing the start date as an ISO date string.
- * @param int $end_time
+ * @param $end_date
  *   A string containing the end date as an ISO date string.
- * @param string|NULL $min_gap
- *   (Optional) The minimum gap that should be returned.
  *
- * @return string
+ * @return
  *   A string containing the gap, see FACETAPI_DATE_* constants for valid
  *   values. Returns FALSE of either of the dates cannot be converted to a
  *   timestamp.
  */
-function facetapi_get_timestamp_gap($start_time, $end_time, $min_gap = NULL) {
+function facetapi_get_timestamp_gap($start_time, $end_time) {
   $time_diff = $end_time - $start_time;
   switch (TRUE) {
     // NOTE: 31536000 == 60 * 60 * 24 * 365
     case ($time_diff >= 31536000):
-      $gap = FACETAPI_DATE_YEAR;
-      break;
+      return FACETAPI_DATE_YEAR;
 
     case ($time_diff >= 86400 * gmdate('t', $start_time)):
-      $gap = FACETAPI_DATE_MONTH;
-      break;
+      return FACETAPI_DATE_MONTH;
 
     case ($time_diff >= 86400):
-      $gap = FACETAPI_DATE_DAY;
-      break;
+      return FACETAPI_DATE_DAY;
 
     case ($time_diff >= 3600):
-      $gap = FACETAPI_DATE_HOUR;
-      break;
+      return FACETAPI_DATE_HOUR;
 
     case ($time_diff >= 60):
-      $gap = FACETAPI_DATE_MINUTE;
-      break;
+      return FACETAPI_DATE_MINUTE;
 
     default:
-      $gap = FACETAPI_DATE_SECOND;
-      break;
-  }
-
-  // Return the calculated gap if a minimum gap was not passed of the calculated
-  // gap is a larger interval than the minimum gap.
-  if (null === $min_gap || facetapi_gap_compare($gap, $min_gap) >= 0) {
-    return $gap;
-  }
-  else {
-    return $min_gap;
+      return FACETAPI_DATE_SECOND;
   }
 }
 
@@ -153,20 +136,18 @@ function facetapi_get_timestamp_gap($start_time, $end_time, $min_gap = NULL) {
  *   A string containing the start date as an ISO date string.
  * @param $end_date
  *   A string containing the end date as an ISO date string.
- * @param string|NULL $min_gap
- *   (Optional) The minimum gap that should be returned.
  *
- * @return string
+ * @return
  *   A string containing the gap, see FACETAPI_DATE_* constants for valid
  *   values. Returns FALSE of either of the dates cannot be converted to a
  *   timestamp.
  *
  * @see facetapi_get_timestamp_gap()
  */
-function facetapi_get_date_gap($start_date, $end_date, $min_gap = NULL) {
+function facetapi_get_date_gap($start_date, $end_date) {
   $range = array(strtotime($start_date), strtotime($end_date));
   if (!in_array(FALSE, $range, TRUE)) {
-    return facetapi_get_timestamp_gap($range[0], $range[1], $min_gap);
+    return facetapi_get_timestamp_gap($range[0], $range[1]);
   }
   return FALSE;
 }
@@ -276,36 +257,4 @@ function facetapi_get_next_date_increment($date, $gap) {
     );
   }
   return FALSE;
-}
-
-/**
- * Compares two timestamp gaps.
- *
- * @param string $gap1
- * @param string $gap2
- *
- * @return int
- *   Returns -1 if gap1 is less than gap2, 1 if gap1 is greater than gap2, and 0
- *   if they are equal.
- */
-function facetapi_gap_compare($gap1, $gap2) {
-
-  $gap_numbers = array(
-    FACETAPI_DATE_YEAR => 6,
-    FACETAPI_DATE_MONTH => 5,
-    FACETAPI_DATE_DAY => 4,
-    FACETAPI_DATE_HOUR => 3,
-    FACETAPI_DATE_MINUTE => 2,
-    FACETAPI_DATE_SECOND => 1,
-  );
-
-  $gap1_num = isset($gap_numbers[$gap1]) ? $gap_numbers[$gap1] : 6;
-  $gap2_num = isset($gap_numbers[$gap2]) ? $gap_numbers[$gap2] : 6;
-
-  if ($gap1_num == $gap2_num) {
-    return 0;
-  }
-  else {
-    return ($gap1_num < $gap2_num) ? -1 : 1;
-  }
 }

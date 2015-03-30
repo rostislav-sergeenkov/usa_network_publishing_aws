@@ -21,6 +21,7 @@ features[field_instance][] = node-tv_episode-field_gigya_share_bar
 features[field_instance][] = node-tv_season-field_gigya_share_bar
 features[field_instance][] = node-tv_show-field_gigya_share_bar
 features[variable][] = gigya_comments_enabled
+features[variable][] = gigya_login_enabled
 features[variable][] = gigya_network_list
 features[variable][] = gigya_share_advanced
 features[variable][] = gigya_share_buttons

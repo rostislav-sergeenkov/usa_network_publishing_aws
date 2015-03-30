@@ -5,16 +5,6 @@
  * Hooks provided by X Autoload.
  */
 
-/**
- * Example method showing how to register namespaces from anywhere.
- */
-function EXAMPLE_foo() {
-  // Register stuff directly to the class finder.
-  xautoload()->finder->addPsr4('Aaa\Bbb\\', 'sites/all/libraries/aaa-bbb/src');
-
-  // Or use an adapter with more powerful methods.
-  xautoload()->adapter->composerDir('sites/all/vendor/composer');
-}
 
 /**
  * Implements hook_xautoload()
@@ -22,28 +12,27 @@ function EXAMPLE_foo() {
  * Register additional classes, namespaces, autoload patterns, that are not
  * already registered by default.
  *
- * @param \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter
- *   An adapter object that can register stuff into the class loader.
+ * @param xautoload_InjectedAPI_hookXautoload $api
+ *
+ *   Object with a number of methods, which are documented at the class
+ *   definition of xautoload_InjectedAPI_hookXautoload.
+ *
+ *   The object already knows which module we are at, so we don't need
+ *   drupal_get_path().
+ *
+ *   TODO: The $api object should be specified by an interface.
  */
-function hook_xautoload($adapter) {
+function hook_xautoload($api) {
 
-  // Register a namespace with PSR-0.
-  $adapter->add(
-    // Namespace of a 3rd party package included in the module directory.
-    'Acme\GardenKit\\',
-    // Path to the 3rd party package, relative to the module directory.
-    'shrubbery/lib');
+  // Declare a foreign namespace in (module dir)/lib/ForeignNamespace/
+  $api->namespaceRoot('ForeignNamespace');
 
-  // Register a namespace with PSR-4.
-  $adapter->absolute()->addPsr4(
-    // The namespace.
-    'Acme\ShrubGardens\\',
-    // Absolute path to the PSR-4 base directory.
-    '/home/karnouffle/php/shrub-gardens/src');
+  // Declare a foreign namespace in (module dir)/vendor/ForeignNamespace/
+  $api->namespaceRoot('ForeignNamespace', 'vendor');
 
-  // Scan sites/all/vendor/composer for Composer-generated autoload files, e.g.
-  // 'sites/all/vendor/composer/autoload_namespaces.php', etc.
-  $adapter->absolute()->composerDir('sites/all/vendor/composer');
+  // Declare a foreign namespace in /home/username/lib/ForeignNamespace/,
+  // setting the $relative argument to FALSE.
+  $api->namespaceRoot('ForeignNamespace', '/home/username/lib', FALSE);
 }
 
 
@@ -58,38 +47,28 @@ function hook_xautoload($adapter) {
  *
  * X Autoload extends the capabilities of this hook, by adding an "xautoload"
  * key. This key takes a callback or closure function, which has the same
- * signature as hook_xautoload($adapter).
+ * signature as hook_xautoload($api).
  * This means, you can use the same methods on the $api object.
  *
- * @return array[]
+ * TODO: The $api object should be specified by an interface.
+ *
+ * @return array
  *   Same as explained in libraries module, but with added key 'xautoload'.
  */
 function mymodule_libraries_info() {
 
   return array(
-    'ruebenkraut' => array(
-      'name' => 'Rübenkraut library',
+    'example-lib' => array(
+      'name' => 'Example library',
       'vendor url' => 'http://www.example.com',
-      'download url' => 'http://github.com/example/ruebenkraut',
+      'download url' => 'http://github.com/example/my-php-api',
       'version' => '1.0',
-      'xautoload' => function($adapter) {
-          /**
-           * @var \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter
-           *   An adapter object that can register stuff into the class loader.
-           */
-          // Register a namespace with PSR-0 root in
-          // 'sites/all/libraries/ruebenkraut/src'.
-          $adapter->add('Rueben\Kraut\\', 'src');
-        },
+      'xautoload' => function($api) {
+        // Register a namespace with PSR-0 root in <library dir>/lib/.
+        // The second argument is relative to the directory of the library, so
+        // PSR-0 root will be e.g. "sites/all/libraries/example-lib/lib".
+        $api->namespaceRoot('ExampleVendor\ExampleLib', 'lib');
+      },
     ),
-    'gurkentraum' => array(
-      'name' => 'Gurkentraum library',
-      'xautoload' => function($adapter) {
-          /** @var \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter */
-          // Scan sites/all/libraries/ruebenkraut/composer.json to look for
-          // autoload information.
-          $adapter->composerJson('composer.json');
-        }
-    )
   );
 }

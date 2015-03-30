@@ -17,7 +17,6 @@ class dfp_tag_ui extends ctools_export_ui {
     // Since the targeting form is reusable it isn't already in the settings
     // array so we grab it here.
     $form_state['values']['settings']['targeting'] = $form_state['values']['targeting'];
-    $form_state['values']['settings']['breakpoints'] = $form_state['values']['breakpoints'];
 
     parent::edit_form_submit($form, $form_state);
   }
@@ -92,10 +91,6 @@ class dfp_tag_ui extends ctools_export_ui {
     $output = drupal_build_form('ctools_export_ui_edit_item_form', $form_state);
 
     if (!empty($form_state['executed']) && !$form_state['rebuild']) {
-      // Interstitial slots are not displayed as a block.
-      if (!empty($form_state['values']['settings']['out_of_page'])) {
-        $form_state['item']->block = '0';
-      }
       $this->edit_save_form($form_state);
     }
     else {

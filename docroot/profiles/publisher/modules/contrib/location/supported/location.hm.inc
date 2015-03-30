@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Heard Island and McDonald Islands.
- */
+// Heard Island and McDonald Islands
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_hm() {
   return array(
     'F' => "Flat Island",

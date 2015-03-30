@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Angola.
- */
+// Angola
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ao() {
   return array(
     'BGO' => "Bengo",

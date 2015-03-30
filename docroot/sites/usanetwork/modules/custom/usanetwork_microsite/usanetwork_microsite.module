@@ -2333,7 +2333,7 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
                 'data-video-id' => $file->mpx_video_data['default_released_file_pid'],
                 'data-full-episode' => $is_full_episode,
               ),
-              '#value' => drupal_render(file_view($file, 'vid_teaser_show_general')),
+              '#value' => drupal_render(file_view($file, 'microsite_thumbnail')),
             ),
           ));
           $count++;

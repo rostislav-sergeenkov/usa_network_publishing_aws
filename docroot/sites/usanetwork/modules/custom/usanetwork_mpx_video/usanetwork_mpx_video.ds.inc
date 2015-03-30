@@ -269,14 +269,18 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'regions' => array(
       'media' => array(
         0 => 'file',
-        1 => 'field_mpx_title',
-        2 => 'field_seo_h1',
+      ),
+      'title' => array(
+        0 => 'field_mpx_title',
+      ),
+      'caption' => array(
+        0 => 'field_seo_h1',
       ),
     ),
     'fields' => array(
       'file' => 'media',
-      'field_mpx_title' => 'media',
-      'field_seo_h1' => 'media',
+      'field_mpx_title' => 'title',
+      'field_seo_h1' => 'caption',
     ),
     'classes' => array(),
   );
@@ -509,14 +513,18 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'regions' => array(
       'media' => array(
         0 => 'file',
-        1 => 'field_mpx_title',
-        2 => 'field_seo_h1',
+      ),
+      'title' => array(
+        0 => 'field_mpx_title',
+      ),
+      'caption' => array(
+        0 => 'field_seo_h1',
       ),
     ),
     'fields' => array(
       'file' => 'media',
-      'field_mpx_title' => 'media',
-      'field_seo_h1' => 'media',
+      'field_mpx_title' => 'title',
+      'field_seo_h1' => 'caption',
     ),
     'classes' => array(),
   );

@@ -39,7 +39,7 @@ function pub_display_suite_ds_view_modes_info() {
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;
   $ds_view_mode->view_mode = 'admin_reference_preview';
-  $ds_view_mode->label = 'Administrative Refrence Preview';
+  $ds_view_mode->label = 'Administrative Reference Preview';
   $ds_view_mode->entities = array(
     'node' => 'node',
   );

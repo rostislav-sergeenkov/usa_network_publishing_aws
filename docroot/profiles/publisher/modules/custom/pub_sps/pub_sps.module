@@ -202,14 +202,17 @@ function pub_sps_sps_condition_preview_form_submit($form, &$form_state) {
  * Here we add our Ajax settings since we cannot add them in our
  * pub_sps_admin_menu_output_build() since it gets cached.
  *
- * @todo Only add this when needed.
+ * @todo Only add this when absolutely needed.
  */
 function pub_sps_page_build(&$page) {
+  // This is not required for anonymous users.
+  if (!user_is_logged_in()) {
+    return;
+  }
   // drupal_add_library()'s Ajax magic is invoked automatically when a form
   // element has the '#ajax' property, but since we are not rendering a form
   // here, we have to do it ourselves.
-  drupal_add_library('system', 'drupal.ajax');
-
+  $page['page_top']['#attached']['library'][] = array('system', 'drupal.ajax');
   $page['page_top']['#attached']['css'][] = drupal_get_path('module', 'pub_sps') . '/pub_sps.css';
   $page['page_top']['#attached']['js'][] = drupal_get_path('module', 'pub_sps') . '/pub_sps.js';
 }

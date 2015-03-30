@@ -27,11 +27,6 @@ function pub_media_filter_default_formats() {
           'filter_html_nofollow' => 1,
         ),
       ),
-      'media_filter' => array(
-        'weight' => -46,
-        'status' => 1,
-        'settings' => array(),
-      ),
       'filter_url' => array(
         'weight' => -45,
         'status' => 1,

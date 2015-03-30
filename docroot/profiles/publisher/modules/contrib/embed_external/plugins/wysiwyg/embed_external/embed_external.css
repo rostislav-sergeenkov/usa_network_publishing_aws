@@ -1,0 +1,13 @@
+.embed-external-wrapper {
+  position: relative;
+}
+.embed-external-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+iframe.embed-external {
+  padding: 20px;
+}

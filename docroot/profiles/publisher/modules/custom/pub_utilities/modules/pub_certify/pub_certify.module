@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implemenats hook_menu().
+ * Implements hook_menu().
  */
 function pub_certify_menu() {
   $items['admin/utilities/certify_branch'] = array(
@@ -18,6 +18,7 @@ function pub_certify_menu() {
  * Page callback including the certify form as well as the certification log.
  *
  * @return array
+ *   An associative array with information about the admin page.
  */
 function pub_certify_admin_page() {
   $form = drupal_get_form('pub_certify_certify_form');
@@ -138,13 +139,13 @@ function pub_certify_certify_form_submit($form, $form_state) {
 /**
  * Adds a record to the pub_certify_log.
  *
- * @param  string $repository
+ * @param string $repository
  *   The name of the repository containing the branch being certified.
- *
- * @param  string $branch
+ * @param string $branch
  *   The name of the branch being certified.
  *
- * @return boolean
+ * @return bool
+ *   The result (success or failure) of writing a DB record.
  */
 function pub_certify_log($repository, $branch) {
   global $user;

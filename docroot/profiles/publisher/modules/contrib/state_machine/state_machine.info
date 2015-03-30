@@ -5,3 +5,10 @@ package = "State Machine"
 version = "7.x-3.x"
 files[] = inc/base.inc
 files[] = state_machine.api.php
+
+; Information added by Drupal.org packaging script on 2015-03-08
+version = "7.x-3.x-dev"
+core = "7.x"
+project = "state_machine"
+datestamp = "1425795192"
+

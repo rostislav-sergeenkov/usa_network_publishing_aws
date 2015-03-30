@@ -52,6 +52,12 @@ function common_test_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['common-test/css-render-inline-full-page'] = array(
+    'title' => 'Test rendering inline stylesheets through a full page request.',
+    'page callback' => 'common_test_render_inline_full_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -106,6 +112,14 @@ function common_test_destination() {
 function common_test_drupal_render_printing_pre_render($elements) {
   $elements['#printed'] = TRUE;
   return $elements;
+}
+
+/**
+ * Render a page with inline CSS.
+ */
+function common_test_render_inline_full_page() {
+ $css = 'body { font-size: 254px; }';
+ return t('This tests the inline CSS!') . drupal_add_css($css, 'inline');
 }
 
 /**

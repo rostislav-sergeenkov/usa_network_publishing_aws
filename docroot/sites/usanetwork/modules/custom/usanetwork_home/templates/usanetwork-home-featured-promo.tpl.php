@@ -21,7 +21,7 @@
           <?php endif; ?>
           <div class="caption"><?php print $caption; ?></div>
           <div class="title"><?php print $title; ?></div>
-          <div class="description"><?php print $description; ?></div>
+          <div class="additional"><?php print $description; ?></div>
         </div>
       </div>
     </div>

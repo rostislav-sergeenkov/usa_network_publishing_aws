@@ -1034,92 +1034,61 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  @include breakpoint($bp-min-1920-width) {
+    height: 100px;
+  }
   @include breakpoint($bp-1024-width) {
     height: 50px;
   }
   @include breakpoint($bp-768-width) {
     text-align: center;
   }
-  .menu-open {
-    border-right: 1px solid transparent;
+  h1 {
+    color: #ffffff;
     float: left;
-    height: 67px;
-    position: relative;
-    width: 65px;
+    font-family: $avalon-demi;
+    font-size: 24px;
+    letter-spacing: 1px;
+    line-height: 67px;
+    margin: 0 30px 0 20px;
+    max-width: 260px;
+    text-transform: uppercase;
     @include breakpoint($bp-1024-width) {
-      height: 50px;
-      width: 50px;
+      font-size: 18px;
+      line-height: 50px;
+      max-width: 194px;
     }
-    @include breakpoint($bp-768-width) {
-      display: none;
-    }
-    &.active {
-      background: $bottom-footer-back;
-      border-color: transparent !important;
-    }
-    a {
-      display: block;
-      height: 100%;
-      width: 100%;
-      &.active {
-        &:after {
-          @include sprite-background(x-icon);
-          margin-left: -10px;
-          margin-top: -10px;
-          @include breakpoint($bp-1024-width) {
-            margin-top: -10px;
-            margin-left: -11px;
-          }
-        }
-      }
-      &:after {
-        content: '';
-        display: block;
-        left: 50%;
-        margin-top: -8px;
-        margin-left: -13px;
-        position: absolute;
-        top: 50%;
-        @include sprite-background(menu-icon);
-        @include breakpoint($bp-1024-width) {
-          @include sprite-background(menu-icon-small);
-          margin-top: -6px;
-          margin-left: -12px;
-
-        }
-      }
+    @include breakpoint($bp-min-1920-width) {
+      font-size: 36px;
+      line-height: 100px;
+      max-width: 380px;
     }
   }
   .schedule {
-    float: left;
-    margin-left: 40px;
+    float: right;
+    max-width: 135px;
     @include breakpoint($bp-1024-width) {
-      margin-left: 20px;
+      max-width: 110px;
     }
-    h1 {
-      color: #ffffff;
-      float: left;
-      font-family: $avalon-demi;
-      font-size: 24px;
-      letter-spacing: 3px;
-      line-height: 67px;
-      margin: 0;
-      margin-right: 27px;
-      text-transform: uppercase;
-      @include breakpoint($bp-1024-width) {
-        line-height: 50px;
-      }
+    @include breakpoint($bp-min-1920-width) {
+      max-width: 205px;
     }
     .time {
-      float: left;
       color: #ffffff;
       font-family: $avalon-demi;
       font-size: 12px;
       line-height: 18px;
       margin-top: 16px;
       text-transform: uppercase;
+      @include breakpoint($bp-min-1920-width) {
+        font-size: 18px;
+        line-height: 26px;
+        margin-top: 25px;
+      }
       @include breakpoint($bp-1024-width) {
         margin-top: 8px;
+        font-size: 10px;
+        line-height: 16px;
       }
       @include breakpoint($bp-768-width) {
         display: none;
@@ -1127,12 +1096,17 @@
       span {
         display: block;
         font-family: $tex-gyreschola-italic;
+        letter-spacing: 2px;
       }
     }
   }
   .social-icons {
     float: right;
+    margin-left: 20px;
     margin-top: 21px;
+    @include breakpoint($bp-min-1920-width) {
+      margin-top: 38px;
+    }
     @include breakpoint($bp-1024-width) {
       margin-top: 15px;
     }
@@ -1142,7 +1116,7 @@
     a {
       float: left;
       display: block;
-      margin-right: 40px;
+      margin-right: 30px;
       opacity: 0.6;
       @include breakpoint($bp-1024-width) {
         margin-right: 15px;
@@ -1186,85 +1160,65 @@
           @include sprite-background(gplus-icon-header-small);
         }
       }
+      &:nth-child(n + 3) {
+        display: none;
+      }
     }
   }
 }
 
 .show-menu-tab {
-  @include clear();
-  background: $bottom-footer-back;
-  display: none;
-  height: 190px;
-  padding: 20px 40px;
+  float: left;
+  height: 100%;
+  max-width: 55%;
   position: relative;
-  width: 100%;
-  &.fixed {
-    top: 67px;
-    @include breakpoint($bp-1024-width) {
-      top: 50px;
-    }
+  width: calc(100% - 560px);
+  @include breakpoint($bp-min-1920-width) {
+    width: calc(100% - 650px);
   }
-  &.active {
-    display: block;
-    @include breakpoint($bp-768-width) {
-      display: none;
-    }
+  @include breakpoint($bp-1024-width) {
+    width: calc(100% - 448px);
+  }
+  @include breakpoint($bp-768-width) {
+    display: none;
   }
   .show-menu {
     display: table;
     height: 100%;
-    padding-left: 30px;
     position: relative;
-    width: 70%;
+    width: 100%;
     > li {
       display: table-cell;
-      height: 30px;
-      > .menu {
-        list-style: none;
-        -webkit-column-count: 3;
-        -moz-column-count: 3;
-        -ms-column-count: 3;
-        -o-column-count: 3;
-        column-count: 3;
-        -webkit-column-gap: 2em;
-        -moz-column-gap: 2em;
-        -ms-column-gap: 2em;
-        -o-column-gap: 2em;
-        column-gap: 2em;
-        display: none;
-        left: 30px;
-        padding: 15px;
-        position: absolute;
-        top: 30px;
-        width: 100%;
-        a {
-          color: #ffffff;
-          font-size: 12px;
-          font-family: $avalon-medium;
-          letter-spacing: 0.5px;
-          text-decoration: none;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
+      height: 67px;
+      padding: 0;
+      vertical-align: middle;
+      @include breakpoint($bp-min-1920-width) {
+        height: 100px;
       }
-      &.active {
-        > .menu {
-          display: block;
-        }
+      @include breakpoint($bp-1024-width) {
+        height: 50px;
+      }
+      .menu {
+        display: none;
       }
       > a {
         color: #ffffff;
         display: block;
         font-family: $avalon-medium;
         font-size: 12px;
-        line-height: 30px;
-        height: 30px;
+        line-height: 67px;
+        height: 67px;
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
-        &:hover, &.active {
-          background: $header-tab-back-hover;
+        @include breakpoint($bp-min-1920-width) {
+          font-size: 20px;
+          line-height: 100px;
+          height: 100px;
+        }
+        @include breakpoint($bp-1024-width) {
+          height: 50px;
+          line-height: 50px;
         }
       }
     }

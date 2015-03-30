@@ -138,4 +138,22 @@ class MPSTestCase extends PublisherWebTestCase {
     $category = _mps_build_cat(array('aliased-path' => 'brand/show/season/episode/cast'));
     $this->assertEqual($category, 'brand|season|' . date('Y') .  '|episode', 'The cat parameter matches the expected pattern.');
   }
+
+  /**
+   * Test error pages.
+   */
+  public function testMpsError() {
+    // Login the admin user.
+    $this->admin = $this->drupalCreateUserWithRole('administrator');
+    $this->drupalLogin($this->admin);
+
+    // Confirm that we're passing the fact that this is an error page to MPS.
+    $this->drupalGet("/" . $this->randomName(8));
+    $this->assertRaw('"path":"ERROR/40', 'The path indicates this is an error page.');
+    $this->assertRaw('"content_id":"ERROR"', 'The content ID indicates this is an error page.');
+
+    // Ensure that we're not registering an error on admin pages.
+    $this->drupalGet("/admin");
+    $this->assertNoRaw('"path":"ERROR/40', 'Admin pages should not register an error.');
+  }
 }

@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = pub_editorial
 dependencies[] = ctools
 dependencies[] = entity
+dependencies[] = markdown
 dependencies[] = permission_sets
 dependencies[] = prepopulate
 dependencies[] = representative_image

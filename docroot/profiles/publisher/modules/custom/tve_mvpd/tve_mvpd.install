@@ -11,7 +11,7 @@
  * Implements hook_uninstall().
  */
 function tve_mvpd_uninstall() {
-  variable_del('tve_mvpd_providers');
+  variable_del('tve_mvpd_configured_providers');
   variable_del('tve_mvpd_default_settings');
   variable_del('tve_mvpd_service');
   variable_del('tve_mvpd_brand_id');
@@ -54,5 +54,17 @@ function tve_mvpd_requirements($phase) {
     }
 
     return $requirements;
+  }
+}
+
+/**
+ * Rename variable 'tve_mvpd_providers' to 'tve_mvpd_configured_providers'.
+ */
+function tve_mvpd_update_7100($phase) {
+  // @todo Move variable tve_mvpd_overridden_providers
+  $old_variable = variable_get('tve_mvpd_providers');
+  if (!empty($old_variable)) {
+    variable_set('tve_mvpd_configured_providers', $old_variable);
+    variable_del('tve_mvpd_providers');
   }
 }

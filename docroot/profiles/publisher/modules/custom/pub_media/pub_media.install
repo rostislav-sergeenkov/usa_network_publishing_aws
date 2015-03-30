@@ -52,3 +52,12 @@ function pub_media_update_7004() {
 function pub_media_update_7005() {
   module_enable(array('media_edit_all'));
 }
+
+/**
+ * Enable imagemagick
+ */
+function pub_media_update_7006() {
+  if (!module_exists('imagemagick')) {
+    module_enable(array('imagemagick', 'imagemagick_advanced'));
+  }
+}

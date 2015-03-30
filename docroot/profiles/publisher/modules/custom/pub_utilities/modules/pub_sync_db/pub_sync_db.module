@@ -43,7 +43,7 @@ function pub_sync_db_sync_form($form, &$form_state) {
 
   $form['site_source'] = array(
     '#type' => 'fieldset',
-    '#description' => t('Choose the source site which the database will be sync\'d from.'),
+    '#description' => t("Choose the source site which the database will be sync'd from."),
     '#collabsible' => FALSE,
     '#title' => 'Source: site',
     '#tree' => TRUE,
@@ -140,9 +140,9 @@ function _pub_sync_db_do_sync($values) {
   $cmd = $drush . ' sql-sync ' . $source_site_alias . ' ' . $destination_site_alias . ' --target-dump --source-dump --structure-tables-key=common --no-cache -v -y';
   _pub_utilities_exec($cmd);
 
-  // sqlsan resets the user passwords and email addresses in the target db to
-  // the value indicated with --sanitize-password, and a drush default for the
-  // emails.
+  // The sqlsan process resets the user passwords and email addresses in the
+  // target db to the value indicated with --sanitize-password, and a drush
+  // default for the emails.
   $cmd = $drush . ' ' . $destination_site_alias . ' sqlsan --sanitize-password=pa55word --sanitize-email=user+%uid@example.com -y';
   _pub_utilities_exec($cmd);
 }

@@ -1,29 +1,51 @@
 <?php
 
 /**
- * @file pub_theplatform.api.inc
+ * @file
+ * pub_theplatform.api.inc
  */
 
 
 /**
  * Class that describes a request to thePlatform's feeds.
  *
- * The methods are designed to be chained together until the ->execute() call.  That one returns the response data.
+ * The methods are designed to be chained together until the ->execute() call.
+ * That one returns the response data.
  */
 class thePlatformAPIRequest {
-  //  These are our basic config elements.
-  protected $base_url;      //  Initalized when the class is instantaited.
-  protected $args = array();    //  These are added by ->addArg calls (and can be chained).
-  protected $refid = 0;     //  Reference ID for a particular video to load the extended metadata for.
-  protected $fields_to_load = array();  //  These are the fields that need to come back from the thePlatform servers.
-  protected $get_categories = False;
-  protected $sort_field = '';
-  protected $sort_desc = False;
+
+  // Initialized when the class is instantiated.
+  protected $base_url;
+
+  // These are added by ->addArg calls (and can be chained).
+  protected $args = array();
+
+  // Reference ID for a particular video to load the extended metadata for.
+  protected $refid = 0;
+
+  // These are the fields that need to come back from the thePlatform servers.
+  protected $fieldsToLoad = array();
+
+  // Whether or not ot retrieve categories.
+  protected $getCategories = FALSE;
+
+  // The name of the field to sort on.
+  protected $sortField = '';
+
+  // Sort descending.
+  protected $sortDesc = FALSE;
+
+  // The query range.
+  protected $range = NULL;
 
   /**
-   * Construct the object
+   * Construct the object.
    *
-   * @param base_url: overwrite the base URL when constructing the class. Defaults to the Drupal set value.
+   * @param string $base_url
+   *   (optional) Overwrite the base URL when constructing the class. Defaults
+   *   to the Drupal set value.
+   *
+   * @throws Exception
    */
   public function __construct($base_url = '') {
     $this->base_url = $base_url;
@@ -33,32 +55,41 @@ class thePlatformAPIRequest {
     }
   }
 
-   /**
-    * Set the range for our query
-    * @param $lower_limit: The lower limit for our desired range.
-    * @param $upper_limit: The upper limit for our desired range.
-    */
-   public function setRange($lower_limit = 0, $upper_limit = 100) {
-     $this->range = $lower_limit . '-' . $upper_limit;
-     return $this;
-   }
+  /**
+   * Set the range for our query.
+   *
+   * @param int $lower_limit
+   *   (optional) The lower limit for our desired range.
+   *
+   * @param int $upper_limit
+   *   (optional) The upper limit for our desired range.
+   *
+   * @return obj
+   *   Reference to $this for chainability.
+   */
+  public function setRange($lower_limit = 0, $upper_limit = 100) {
+    $this->range = $lower_limit . '-' . $upper_limit;
+    return $this;
+  }
 
   /**
    * Set the video's ID that we want to query for.
    *
-   * @param $refid: the reference ID that we're going to want to get back.
+   * @param int $refid
+   *   The reference ID that we're going to want to get back.
    *
-   * @return: reference to $this for chainability.
+   * @return obj
+   *   Reference to $this for chainability.
    */
   public function setID($refid) {
-    // If we have a ref id coming in, we need it to be a number or a string of
-    // some length.
     if (is_int($refid) || strlen($refid) > 0) {
+      // If we have a ref id coming in, we need it to be a number or a string of
+      // some length.
       $this->refid = $refid;
     }
-    // If we fail these tests, then we assume the user is trying to reset it to
-    // nothing. So we remove the filter.
     else {
+      // If we fail these tests, then we assume the user is trying to reset it
+      // to nothing. So we remove the filter.
       $this->refid = 0;
     }
     return $this;
@@ -67,22 +98,28 @@ class thePlatformAPIRequest {
   /**
    * Set that we want to get categories instead.
    *
-   * @param $get_categories: boolean for if we should get the categories instead of videos (defaults to true).
+   * @param bool $get_categories
+   *   (optional) Whether or not we should get the categories instead of videos
+   *   (defaults to TRUE).
    *
-   * @return: reference to $this for chainability.
+   * @return obj
+   *   Reference to $this for chainability.
    */
-  public function getCategories($get_categories = True) {
-    $this->get_categories = $get_categories;
+  public function getCategories($get_categories = TRUE) {
+    $this->getCategories = $get_categories;
     return $this;
   }
 
   /**
-   * Add an argument to the query we pass to thePlatform
+   * Add an argument to the query we pass to thePlatform.
    *
-   * @param $name: Name of the filter to apply.
-   * @param $value: Value to filter for.
+   * @param string $name
+   *   Name of the filter to apply.
+   * @param mixed $value
+   *   Value to filter for.
    *
-   * @return: reference to $this for chainability
+   * @return obj
+   *   Reference to $this for chainability.
    */
   public function addArg($name, $value) {
     // Remove the value if there is an empty string.
@@ -97,52 +134,63 @@ class thePlatformAPIRequest {
   }
 
   /**
-   * Add a field that we want to return to the query we pass to thePlatform
+   * Add a field that we want to return to the query we pass to thePlatform.
    *
-   * @param $field: Name of the field to get.
+   * @param string $field
+   *   Name of the field to get.
    *
-   * @return: reference to $this for chainability
+   * @return obj
+   *   Reference to $this for chainability.
    */
   public function addField($field) {
-    $this->fields_to_load[] = $field;
+    $this->fieldsToLoad[] = $field;
     return $this;
   }
 
   /**
    * Set the sort field for the query.
    *
-   * @param $field: Name of the field to sort on.
-   * @param $desc: boolean for asc or desc (True = desc, False = asc)
+   * @param string $field
+   *   Name of the field to sort on.
    *
-   * @return: reference to $this for chainability
+   * @param bool $desc
+   *   Whether or not to sort descending.
+   *
+   * @return obj
+   *   Reference to $this for chainability.
    */
-  public function sort($field, $desc = True) {
-    $this->sort_field = $field;
-    $this->sort_desc = $desc;
+  public function sort($field, $desc = TRUE) {
+    $this->sortField = $field;
+    $this->sortDesc = $desc;
     return $this;
   }
 
   /**
-   *  Helper that will generate the query args for this request.
+   * Helper that will generate the query args for this request.
    *
-   *  @return: Array of query args.
+   * @return array
+   *   query args.
    */
   protected function buildQueryArgs() {
-    $query_args = array('fields' => implode(',', $this->fields_to_load), 'form' => 'json', 'pretty' => 'true');
+    $query_args = array(
+      'fields' => implode(',', $this->fieldsToLoad), 'form' => 'json',
+      'pretty' => 'true',
+    );
     // If we have a refid set, then we go for them as the values to use.
-    if($this->refid) {
+    if ($this->refid) {
       $query_args = array_merge($query_args, array('byGuid' => $this->refid));
     }
     else {
       $query_args = array_merge($query_args, $this->args);
     }
 
-    if(strlen($this->sort_field) > 0) {
-      $query_args['sort'] = $this->sort_field.($this->sort_desc?'|DESC':'');
+    if (strlen($this->sortField) > 0) {
+      $query_args['sort'] = $this->sortField . ($this->sortDesc ? '|DESC' : '');
     }
 
-    // If we have a range set, use it to limit the number of results in our query.
-    if(isset($this->range)) {
+    // If we have a range set, use it to limit the number of results in our
+    // query.
+    if (isset($this->range)) {
       $query_args['range'] = $this->range;
     }
 
@@ -154,12 +202,15 @@ class thePlatformAPIRequest {
   /**
    * Execute the request to thePlatform and get the data back.
    *
-   * @return: the object from thePlatform's servers.
+   * @return obj
+   *   Reference to $this for chainability.
+   *
+   * @throws Exception
    */
   public function execute() {
     $query_args = $this->buildQueryArgs();
 
-    $base = $this->base_url.($this->get_categories?'/categories':'');
+    $base = $this->base_url . ($this->getCategories ? '/categories' : '');
 
     $response = drupal_http_request($base . '?' . drupal_http_build_query($query_args));
 
@@ -173,7 +224,7 @@ class thePlatformAPIRequest {
       }
     }
     else {
-      return (object)array();
+      return (object) array();
     }
   }
 }

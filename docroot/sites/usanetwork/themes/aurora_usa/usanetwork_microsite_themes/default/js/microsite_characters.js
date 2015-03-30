@@ -1,12 +1,6 @@
 (function ($) {
   Drupal.behaviors.microsite_characters = {
 
-    siteName: Drupal.settings.microsites_settings.title,
-    basePath: Drupal.settings.microsites_settings.microsite_theme_path,
-    basePageName: Drupal.settings.microsites_settings.title + ' | USA Network',
-    defaultCharBg: Drupal.settings.microsite_characters.default_char_bg,
-    defaultMobileCharBg: Drupal.settings.microsite_characters.default_mobile_char_bg,
-
     micrositeSetCharNavWidthHeight: function setCharNavWidth() {
       var charactersNav = $('#characters .character-nav'),
           numCharacters = charactersNav.find('li').length,
@@ -105,7 +99,7 @@
     },
 
     micrositeSetPath : function setPath(nextItemId) {
-      var anchorFull = Drupal.settings.microsites_settings.base_path + '/characters/' + nextItemId;
+      var anchorFull = Drupal.behaviors.microsite_characters.basePath + '/characters/' + nextItemId;
       // if this is IE9, reload the correct page
       if ($('html.ie9').length > 0) {
         window.location.href = anchorFull;
@@ -258,7 +252,12 @@
       if ($('#characters').length > 0) {
         Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
         var characters = $('#microsite #character-info'),
-            activeCharacter = characters.find('li.active').attr('id');
+            activeCharacter = characters.find('li.active').attr('id'),
+            siteName = Drupal.settings.microsites_settings.title,
+            basePath = Drupal.settings.microsites_settings.microsite_theme_path,
+            basePageName = Drupal.settings.microsites_settings.title + ' | USA Network',
+            defaultCharBg = Drupal.settings.microsite_characters.default_char_bg,
+            defaultMobileCharBg = Drupal.settings.microsite_characters.default_mobile_char_bg;
         Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
         Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
 

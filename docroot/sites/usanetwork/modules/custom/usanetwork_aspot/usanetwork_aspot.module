@@ -243,18 +243,7 @@ function usanetwork_aspot_theme() {
             'text' => NULL,
           ),
         ),
-        'social_meter' => array(
-          'value' => NULL,
-          'multiplier' => NULL,
-          'tag' => NULL,
-          'hot' => NULL,
-          'link' => array(
-            'url' => NULL,
-            'link' => NULL,
-            'class' => NULL,
-            'style' => NULL,
-          ),
-        ),
+        'social_meter' => array(),
       ),
       'template' => 'templates/usanetwork-aspot-carousel-slide',
     ),
@@ -602,6 +591,8 @@ function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
 
   if (!empty($arefs)) {
     foreach ($arefs as $aref) {
+      $show_node = NULL;
+
       if (empty($aref['entity'])) {
         $aref['entity'] = node_load($aref['target_id']);
       }
@@ -609,11 +600,9 @@ function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
       $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
       $aspot_node = $aref['entity'];
 
-      if (empty($show_node_field[0]['target_id'])) {
-        continue;
+      if (!empty($show_node_field[0]['target_id'])) {
+        $show_node = node_load($show_node_field[0]['target_id']);
       }
-
-      $show_node = node_load($show_node_field[0]['target_id']);
 
       $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
         'aspot_node' => $aspot_node,

@@ -113,10 +113,8 @@
                           $container.jcarousel('scroll', '+=' + count);
                         } else {
                           if (Drupal.behaviors.global_carousels.checkFirstSlideOverflow($container)) {
-                            console.log(1);
                             Drupal.behaviors.global_carousels.swipeHideDescription($container);
                           } else {
-                            console.log(2);
                             Drupal.behaviors.global_carousels.swipeHideDescription($container);
                             $container.jcarousel('scroll', '+=' + count);
                           }

@@ -900,7 +900,7 @@ function usanetwork_tv_schedule_schedule_page() {
       if ($start_time >= $current_day_end_time && empty($filter_show_nid)) {
         continue;
       }
-      $show_name = ($tv_schedule_item->program_type == 'movie') ?  t('USA MOVIE') : $show_name;
+      $show_name = ($tv_schedule_item->program_type == 'movie') ?  t('USA MOVIE') : $tv_schedule_item->show_title;
       if (empty($show_node)) {
         $theme_row_variables['episode_show'] = $show_name;
         $theme_row_variables['episode_description'] = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : '';

@@ -598,3 +598,120 @@
     }
   }
 }
+%show-inner-promo {
+  .show-inner {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    &:before {
+      height: 7px;
+      margin-top: -3px;
+      top: 55%;
+      width: 100%;
+    }
+    .asset-img {
+      bottom: 0;
+      height: 45%;
+      position: absolute;
+      width: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .meta-wrapper {
+      background: $header-show-caption;
+      top: 0;
+      height: 55%;
+      position: absolute;
+      width: 100%;
+    }
+    .meta-icon {
+      height: 42px;
+      left: 50%;
+      margin-left: -21px;
+      margin-top: -21px;
+      top: 55%;
+      width: 42px;
+      z-index: 3;
+      &:before {
+        font-size: 24px;
+        height: 42px;
+        line-height: 42px;
+        width: 42px;
+      }
+      @include breakpoint($bp-min-1920-width) {
+        height: 60px;
+        margin-left: -30px;
+        margin-top: -30px;
+        width: 60px;
+        &:before {
+          font-size: 34px;
+          height: 60px;
+          line-height: 60px;
+          width: 60px;
+        }
+      }
+      @include breakpoint($bp-480-width) {
+        height: 30px;
+        margin-left: -15px;
+        margin-top: -15px;
+        width: 30px;
+        &:before {
+          font-size: 16px;
+          height: 30px;
+          line-height: 30px;
+          width: 30px;
+        }
+      }
+    }
+    .meta {
+      padding: 0;
+      text-align: center;
+      .caption {
+        font-family: $tex-gyreschola-italic;
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0 5%;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1920-width) {
+          font-size: 18px;
+          line-height: 24px;
+        }
+        @include breakpoint($bp-1280-width) {
+          font-size: 13px;
+          line-height: 18px;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 11px;
+          line-height: 14px;
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 9px;
+          line-height: 11px;
+        }
+      }
+      .title {
+        font-size: 20px;
+        line-height: 24px;
+        margin: 0 5%;
+        @include breakpoint($bp-min-1920-width) {
+          font-size: 24px;
+          line-height: 30px;
+        }
+        @include breakpoint($bp-1280-width) {
+          font-size: 20px;
+          line-height: 26px;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 16px;
+          line-height: 20px;
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 13px;
+          line-height: 15px;
+        }
+      }
+    }
+  }
+}

@@ -144,9 +144,9 @@ Drupal.behaviors.usanetwork_tv_schedule = {
     //js for custom scroll bar
     $('.item-filter .filter-menu').each(function(){
       $(this).mCustomScrollbar({
-        axis:"y",
-        theme: "minimal-dark",
-        scrollEasing:"easeOut"
+        axis: "y",
+        theme: "dark-3",
+        scrollEasing: "easeOut"
       });
     });
 

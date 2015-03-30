@@ -242,6 +242,9 @@ function usanetwork_tv_shows_color_show_css_class($show_node) {
       return $show_css_class;
     }
     $show_node = node_load($show_node);
+    if (empty($show_node)) {
+      return false;
+    }
   }
   else {
     $show_id = $show_node->nid;

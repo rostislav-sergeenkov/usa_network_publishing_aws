@@ -7,7 +7,7 @@ class pub_theplatform_views_handler_filter_title extends views_handler_filter {
   /**
    * Provide the form for choosing a category.
    */
-  function value_form(&$form, &$form_state) {
+  public function value_form(&$form, &$form_state) {
     $form['value'] = array(
       '#type' => 'textfield',
       '#title' => t('Title'),
@@ -22,9 +22,9 @@ class pub_theplatform_views_handler_filter_title extends views_handler_filter {
   }
 
   /**
-   * Provide simple equality operator
+   * Provide simple equality operator.
    */
-  function operator_options() {
+  public function operator_options() {
     return array(
       'starts' => t('Starts with'),
     );
@@ -33,12 +33,12 @@ class pub_theplatform_views_handler_filter_title extends views_handler_filter {
   /**
    * Add this filter to the request.
    */
-  function query() {
-    if(is_array($this->value)) {
+  public function query() {
+    if (is_array($this->value)) {
       $this->value = array_pop($this->value);
     }
-    if(strlen($this->value) > 0) {
-      $this->query->theP->addArg('byTitlePrefix', $this->value);
+    if (strlen($this->value) > 0) {
+      $this->query->thePlatform->addArg('byTitlePrefix', $this->value);
     }
   }
 }

@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install file for Dynamic Queue Workbench
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function dynamic_queue_workbench_uninstall() {
+  db_delete('state_flow_history')->condition('entity_type', 'dynamic_queue')->execute();
+  db_delete('state_flow_states')->condition('entity_type', 'dynamic_queue')->execute();
+}

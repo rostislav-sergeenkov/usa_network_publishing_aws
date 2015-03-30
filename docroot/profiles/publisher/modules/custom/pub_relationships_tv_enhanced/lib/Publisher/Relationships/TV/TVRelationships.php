@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * TVRelationships class.
+ */
+
 namespace Publisher\Relationships\TV;
 
 /**
@@ -7,8 +12,11 @@ namespace Publisher\Relationships\TV;
  * @package Publisher\Relationships\TV
  */
 class TVRelationships {
-  public $elements, $show, $season, $episode, $delta;
-  private $is_ajax = FALSE, $ajax_field, $ajax_delta, $ajax_element;
+  public $elements;
+  public $show;
+  public $season;
+  public $episode;
+  public $delta;
 
   /**
    * TVRelationships Constructor.
@@ -29,51 +37,31 @@ class TVRelationships {
     $this->delta = $delta;
     $this->field_name = $field['field_name'];
 
+
     $this->show = $this->elements['show'] = isset($items[$delta]['show']) ? $items[$delta]['show'] : '';
     $this->season = $this->elements['season'] = isset($items[$delta]['season']) ? $items[$delta]['season'] : '';
     $this->episode = $this->elements['episode'] = isset($items[$delta]['episode']) ? $items[$delta]['episode'] : '';
 
-    $this->ajaxSetUp();
-  }
-
-  private function ajaxSetUp() {
-    // Is this an ajax request?
+    // If the values are set & is an ajax request always take those over anything.
     if (!empty($this->form_state['triggering_element'])) {
+      if (isset($this->form_state['values'][$this->field_name][$this->langcode][$delta]['show'])) {
+        $this->show = $this->elements['show'] = $this->form_state['values'][$this->field_name][$this->langcode][$delta]['show'];
+      }
+      if (isset($this->form_state['values'][$this->field_name][$this->langcode][$delta]['season'])) {
+        $this->season = $this->elements['season'] = $this->form_state['values'][$this->field_name][$this->langcode][$delta]['season'];
+      }
+      if (isset($this->form_state['values'][$this->field_name][$this->langcode][$delta]['episode'])) {
+        $this->episode = $this->elements['episode'] = $this->form_state['values'][$this->field_name][$this->langcode][$delta]['episode'];
+      }
+
+      // If the triggering element is show we MUST clear out the season.
       $trigger = $this->form_state['triggering_element'];
-      $parents = $trigger['#parents'];
-
-      if (isset($parents[3]) && is_string($parents[3])) {
-        $this->ajax_field = $parents[0];
-        $this->ajax_delta = $parents[2];
-        $this->ajax_element = $parents[3];
-
-        // Only mark it as an ajax request if the the deltas are the same.
-        if ($this->delta === $this->ajax_delta) {
-          $this->is_ajax = TRUE;
-          $this->prepare_ajax_fields();
+      if ($trigger['#title'] === t('Show')) {
+        $delta_hack = $trigger['#parents'][2];
+        if ($delta_hack === $delta) {
+          $this->season = $this->elements['season'] = '';
         }
       }
-    }
-  }
-
-  /**
-   * Ajax logic. This makes it easy for us to not have to worry about
-   * form_state.
-   */
-  private function prepare_ajax_fields() {
-    // Move the values from the form_state to this object.
-    if (!$this->is_ajax) {
-      return;
-    }
-
-    $this->show = $this->elements['show'] = $this->form_state['values'][$this->field_name][$this->langcode][$this->ajax_delta]['show'];
-    $this->season = $this->elements['season'] = $this->form_state['values'][$this->field_name][$this->langcode][$this->ajax_delta]['season'];
-    $this->episode = $this->elements['episode'] = $this->form_state['values'][$this->field_name][$this->langcode][$this->ajax_delta]['episode'];
- 
-    // If the triggering element is show we MUST clear out the season.
-    $trigger = $this->form_state['triggering_element'];
-    if ($trigger['#title'] === 'Show') {
-      $this->season = $this->elements['season'] = '';
     }
   }
 
@@ -83,6 +71,7 @@ class TVRelationships {
    * @see pub_relationships_tv_enhanced_field_widget_form
    *
    * @param $element_name
+   *
    * @return string
    */
   public function default_value($element_name) {
@@ -97,6 +86,7 @@ class TVRelationships {
    * Simple Entity Type Mapper from Element Name to Content Type Name.
    *
    * @param $element_name
+   *
    * @return bool
    */
   private function entity_type_map($element_name) {
@@ -124,6 +114,7 @@ class TVRelationships {
    * Returns options for Season element.
    *
    * @see pub_relationships_tv_enhanced_field_widget_form()
+   *
    * @return array
    */
   public function options_season() {
@@ -150,6 +141,7 @@ class TVRelationships {
    * Returns options for Episode element.
    *
    * @see pub_relationships_tv_enhanced_field_widget_form()
+   *
    * @return array
    */
   public function options_episode() {
@@ -176,6 +168,7 @@ class TVRelationships {
    * @param array $ids
    * @param int $limit
    * @param bool $published
+   *
    * @return array
    */
   private function query($element_name, $ids = array(), $limit = 0, $published = TRUE) {
@@ -200,7 +193,8 @@ class TVRelationships {
     if ($published === FALSE) {
       // Allow anyone to select unpublished nodes. This is required when they're
       // trying to set up a bunch of content to be published together. The user
-      // still requires access to the content because we use the node_access tag.
+      // still requires access to the content because we use the node_access
+      // tag.
       $query->condition('status', 0);
     }
 
@@ -208,6 +202,9 @@ class TVRelationships {
     foreach ($results as $record) {
       $options[$record->nid] = filter_xss($record->title);
     }
+
+    // Make sure results are sorted naturally.
+    natcasesort($options);
 
     return $options;
   }

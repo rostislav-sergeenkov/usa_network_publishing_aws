@@ -311,8 +311,7 @@ function _publisher_setup_menus($profile) {
  */
 function _publisher_setup_themes($profile) {
   // Set the default admin theme - Pub Sauce.
-  theme_enable(array("pub_sauce"));
-  variable_set("admin_theme", "pub_sauce");
+  variable_set("admin_theme", "pub_ember");
   variable_set('node_admin_theme', '1');
 
   // Disable the Seven theme.
@@ -558,6 +557,32 @@ function _publisher_setup_settings($profile) {
     'image_style' => 'thumbnail',
   );
   variable_set('nodequeue_image', $nodequeue_image_settings);
+
+  // Enable performance settings.
+  variable_set('cache', 1);
+  variable_set('preprocess_css', 1);
+  variable_set('preprocess_js', 1);
+  variable_set('xautoload_cache_lazy', 1);
+  variable_set('xautoload_cache_types', array(
+    'dbcache' => 'dbcache',
+    'apc' => 0,
+    'apcu' => 0,
+    'wincache' => 0,
+    'xcache' => 0,
+  ));
+
+  // Setup default simple_exif mappings
+  variable_set('simple_exif_mappings', array(
+    'field_file_image_alt_text' => 'getTitle',
+    'field_file_image_title_text' => 'getTitle',
+    'field_caption' => 'getCaption',
+    'field_copyright' => 'getCopyright',
+    'field_credit' => 'getCredit',
+    'field_keywords' => 'getKeywords',
+    'field_media_categories' => '_none',
+    'field_media_tags' => '_none',
+    'field_source' => 'getSource',
+  ));
 }
 
 /**
@@ -696,6 +721,9 @@ function publisher_wysiwyg_editor_settings_alter(&$settings, $context) {
   }
 }
 
+/**
+ * Publisher Profile Switch.
+ */
 function publisher_update_profiles() {
   drupal_static_reset();
 
@@ -724,6 +752,7 @@ function publisher_update_profiles() {
   db_update('system')
     ->fields(array(
       'status' => 0,
+      'schema_version' => 0,
     ))
     ->condition('name', $old_profile, '=')
     ->execute();
@@ -732,10 +761,90 @@ function publisher_update_profiles() {
 }
 
 /**
- * Rebuild the module data and clear the cache, in anticipation of the
- * profiles/all directory being removed.
+ * Implements hook_form_FORM_ID_alter().
+ */
+function publisher_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
+  $directory = '';
+  if (isset($form['instance']['settings']['file_directory']['#default_value'])) {
+    $directory = $form['instance']['settings']['file_directory']['#default_value'];
+  }
+
+  if (strpos($directory, '[current-date:custom:Y]' . '/' . '[current-date:custom:m]') === FALSE) {
+    if (strlen($directory) > 0) {
+      $directory .= '/';
+    }
+    $directory .= '[current-date:custom:Y]' . '/' . '[current-date:custom:m]';
+  }
+
+  $description = t('Optional subdirectory within the upload destination where files will be stored.  Defaults to subdirectories grouped by years and their months.  Do not include preceding or trailing slashes.');
+
+  $form['instance']['settings']['file_directory']['#default_value'] = $directory;
+  $form['instance']['settings']['file_directory']['#description'] = $description;
+  $form['instance']['settings']['file_directory']['#disabled'] = TRUE;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function publisher_form_simple_exif_mappings_alter(&$form, &$form_state) {
+  $form['exiftool_path']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function publisher_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'init') {
+    unset($implementations['update']);
+  }
+}
+
+/**
+ * Rebuild the module data and clear the cache.
+ *
+ * In anticipation of the profiles/all directory being removed.
  */
 function publisher_update_7001() {
   registry_rebuild();
   drupal_flush_all_caches();
+}
+
+/**
+ * Update the Publisher profile schema to be 0, not -1.
+ *
+ * @see pub_editorial_update_7003()
+ */
+function publisher_update_7002() {
+  db_update('system')
+    ->fields(array(
+      'schema_version' => 0,
+    ))
+  ->condition('schema_version', 0, '<')
+  ->condition('name', 'publisher')
+  ->execute();
+}
+
+/**
+ * Enable the Media bulk upload module.
+ *
+ * As of media 2.0-alpha4, bulk upload is a separate module.
+ */
+function publisher_update_7003() {
+  if (module_exists('media')) {
+    module_enable(array('media_bulk_upload'));
+  }
+}
+
+/**
+ * Enable the status_watchdog module.
+ */
+function publisher_update_7004() {
+  module_enable(array('status_watchdog'));
+}
+
+/**
+ * Enable the readonlymode module.
+ */
+function publisher_update_7005() {
+  module_enable(array('readonlymode'));
 }

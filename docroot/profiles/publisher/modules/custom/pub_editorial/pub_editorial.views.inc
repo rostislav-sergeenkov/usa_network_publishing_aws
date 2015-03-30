@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * The views.inc for pub_editorial.
+ */
+
 
 /**
  * Implements hook_views_data_alter().

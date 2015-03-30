@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * IDX admin functionality.
+ */
 
 /**
  * Form builder for the IDX settings form.

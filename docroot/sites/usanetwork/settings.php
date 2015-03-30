@@ -8,12 +8,17 @@
  *
  * See docroot/.p7settings/README.settings.php.md for more information.
  */
+/**
+ * Start with a reasonable minimum php memory limit.
+ */
+ini_set('memory_limit', '512M');
 
 // Set $site to the string shortname of the current multisite.
 $conf['pub_site_shortname'] = 'usanetwork';
 
 // Include the environment-agnostic file from Publisher7 core.
-require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+//require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+require_once dirname(__FILE__) . "/../../profiles/publisher/settings.publisher.php";
 
 // Include the local settings file if we're on a local machine. This
 // is still included conditionally because Jenkins clones lack a settings.local.

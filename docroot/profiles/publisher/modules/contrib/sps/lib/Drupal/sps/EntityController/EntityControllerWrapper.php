@@ -4,7 +4,7 @@ namespace Drupal\sps\EntityController;
 
 
 class EntityControllerWrapper implements  \DrupalEntityControllerInterface {
-
+  
   protected $controller;
   protected $info;
   protected $type;
@@ -19,7 +19,7 @@ class EntityControllerWrapper implements  \DrupalEntityControllerInterface {
     $class = $this->info['controller class base'];
     $this->controller = new $class($entityType);
     $this->type = $entityType;
-
+     
   }
 
   /**

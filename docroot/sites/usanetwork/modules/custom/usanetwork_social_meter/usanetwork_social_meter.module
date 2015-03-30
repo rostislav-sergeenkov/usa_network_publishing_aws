@@ -1,0 +1,116 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_social_meter feature.
+ */
+
+define('USANETWORK_SOCIAL_METER_NOT_REFERENCED', -1);
+define('USANETWORK_SOCIAL_METER_DISABLED', -2);
+define('USANETWORK_SOCIAL_METER_NOT_FOUND', -3);
+
+define('USANETWORK_SOCIAL_METER_SERVICE_URL', 'http://usa-network.massrel.io');
+
+include_once 'usanetwork_social_meter.features.inc';
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_social_meter_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_social_meter' => array(
+      'variables' => array(
+        'link' => NULL,
+        'link_text' => NULL,
+        'upper_line' => NULL,
+        'middle_line' => NULL,
+        'hashtag' => NULL,
+      ),
+      'template' => 'templates/usanetwork-social-meter',
+    ),
+  );
+}
+
+/**
+ * @param $aspot_node - A-Spot node object or nid.
+ */
+function usanetwork_social_meter_get($aspot_node) {
+  if (!is_object($aspot_node)) {
+    $aspot_node = node_load($aspot_node);
+  }
+
+  $social_meter_data = _usanetwork_social_meter_get_data($aspot_node);
+
+  if (is_array($social_meter_data)) {
+    $theme_variables = array(
+      'link' => !empty($social_meter_data['sfs_id'])
+        ? url(USANETWORK_SOCIAL_METER_SERVICE_URL . '/' . $social_meter_data['sfs_id'])
+        : '',
+      'link_text' => t("See what everyone's saying"),
+      'upper_line' => NULL,
+      'middle_line' => t('Talking about'),
+      'hashtag' => !empty($social_meter_data['hashtag'])
+        ? $social_meter_data['hashtag']
+        : '',
+    );
+
+    $result = theme('usanetwork_social_meter', $theme_variables);
+
+    kpr($result);die;
+  }
+}
+
+/**
+ * @param $aspot_node - A-Spot node object or nid.
+ */
+function _usanetwork_social_meter_get_data($aspot_node) {
+  if (!is_object($aspot_node)) {
+    $aspot_node = node_load($aspot_node);
+  }
+
+  if (!empty($aspot_node->field_aspot_linked_content)) {
+    $linked_content_reference = field_get_items('node', $aspot_node, 'field_aspot_linked_content');
+
+    if (!empty($linked_content_reference)) {
+      $linked_content_reference = reset($linked_content_reference);
+    }
+    else {
+      return USANETWORK_SOCIAL_METER_NOT_REFERENCED;
+    }
+
+    $linked_entity = NULL;
+    $linked_entity_wrapper = NULL;
+
+    switch ($linked_content_reference['target_type']) {
+      case 'node':
+        $linked_entity = node_load($linked_content_reference['target_id']);
+        $linked_entity_wrapper = entity_metadata_wrapper('node', $linked_entity);
+        break;
+
+      case 'file':
+        $linked_entity = file_load($linked_content_reference['target_id']);
+        $linked_entity_wrapper = entity_metadata_wrapper('file', $linked_entity);
+        break;
+    }
+
+    if (!empty($linked_entity->field_social_enable)) {
+      if ($linked_entity_wrapper->field_social_enable->value() == 1) {
+        return array(
+          'hashtag' => !empty($linked_entity->field_social_hashtag)
+            ? $linked_entity_wrapper->field_social_hashtag->value()
+            : '',
+          'sfs_id' => !empty($linked_entity->field_social_sfs_id)
+            ? $linked_entity_wrapper->field_social_sfs_id->value()
+            : '',
+        );
+      }
+      else {
+        return USANETWORK_SOCIAL_METER_DISABLED;
+      }
+    }
+    else {
+      return USANETWORK_SOCIAL_METER_DISABLED;
+    }
+  }
+
+  return USANETWORK_SOCIAL_METER_NOT_FOUND;
+}

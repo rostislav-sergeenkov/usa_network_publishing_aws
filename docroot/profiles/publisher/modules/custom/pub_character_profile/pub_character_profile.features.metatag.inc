@@ -23,7 +23,7 @@ function pub_character_profile_metatag_export_default() {
       'og:image' => array(
         'value' => '[node:field_character_cover_photo]',
       ),
-      'twitter:image' => array(
+      'twitter:image:src' => array(
         'value' => '[node:field_character_cover_photo]',
       ),
     ),

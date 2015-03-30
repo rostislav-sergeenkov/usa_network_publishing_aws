@@ -1,11 +1,5 @@
 {
-  "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/ericduran/php-exif"
-        }
-  ],
   "require": {
-    "miljar/php-exif": "dev-extra-iptc"
+    "miljar/php-exif": "dev-master"
   }
 }

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Handles the admin functionality for Program Guide.
+ */
 
 /**
  * Form builder for the Program Guide configuration form.

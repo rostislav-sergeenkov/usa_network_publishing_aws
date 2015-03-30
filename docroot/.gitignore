@@ -8,4 +8,3 @@ sites/*/files-private*
 
 # Ignore the config files for local SSO settings.
 sites/*/sso/*-local.inc
-

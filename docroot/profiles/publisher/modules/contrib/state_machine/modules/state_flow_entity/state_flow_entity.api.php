@@ -52,7 +52,8 @@ function hook_state_flow_entity_plugins() {
       'parent' => 'state_flow_entity',
       'workflow_options' => $workflow_options,
       'entity_type' => 'node',
-      'event_form_options' => array(), // see state_flow.forms.inc for details
+      // See state_flow.forms.inc for details on event_form_options.
+      'event_form_options' => array(),
     ),
   );
   return $info;
@@ -62,13 +63,31 @@ function hook_state_flow_entity_plugins() {
  * Implements hook_state_flow_machine_type_alter().
  *
  * @param string $machine_type
+ *   The machine time.
  * @param object $entity
+ *   The entity object.
  * @param string $entity_type
+ *   The entity type.
  */
 function hook_state_flow_entity_machine_type_alter(&$machine_type, $entity, $entity_type) {
   $machine_type = 'state_flow_test';
 }
 
+/**
+ * Respond to an entity state change.
+ *
+ * @param string $state
+ *   The state that the entity is changing to.
+ * @param object $entity
+ *   The entity that has changed.
+ * @param string $event_name
+ *   The name of the event that triggered the state change.
+ * @param object $history_event
+ *   The history event that just occurred.
+ */
+function hook_state_flow_event($state, $entity, $event_name, $history_event) {
+
+}
 
 /**
  * Define a new workflow for a custom entity type.
@@ -95,5 +114,4 @@ class StateFlowTest extends StateFlowEntity {
   public function on_exit_published() {
     // @todo.
   }
-
 }

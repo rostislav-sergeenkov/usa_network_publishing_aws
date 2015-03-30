@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Class TVRelationshipsTest
+ */
+
 include_once __DIR__ . '/../lib/Publisher/Relationships/TV/TVRelationships.php';
 
 use Publisher\Relationships\TV\TVRelationships;
@@ -23,12 +28,21 @@ class TVRelationshipsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(25, $this->tv_relationship->default_value('episode'));
   }
 
+  public function testAjaxSetUpWithDelta() {
+    $this->setUp(TRUE, 1);
+
+    $this->assertEquals(7, $this->tv_relationship->default_value('show'));
+    $this->assertEquals(13, $this->tv_relationship->default_value('season'));
+    $this->assertEquals(25, $this->tv_relationship->default_value('episode'));
+  }
+
   /**
    * Set up the fake arrays require for testing our functionality.
-   * When $ajax is passed in the ajax form_state is passed in to see if our
+   *
+   * When $ajax is passed in the Ajax form_state is passed in to see if our
    * default values are modified.
    */
-  protected function setUp($ajax = FALSE) {
+  protected function setUp($ajax = FALSE, $delta = 0) {
     $form = array();
     $form_state = array();
     $delta = 0;
@@ -40,10 +54,20 @@ class TVRelationshipsTest extends PHPUnit_Framework_TestCase {
       // Fake ajax form_state.
       $form_state = array(
         'triggering_element' => array(
-          '#parents' => array('sample_tv_relationship_field', '', 0, 'sample_tv_relationship')
+          '#title' => 'Episode',
+          '#parents' => array('sample_tv_relationship_field', '', 0, 'sample_tv_relationship'),
+          '#title' => 'TV Relationship',
         ),
         'values' => array(
-          'sample_tv_relationship' => array($langcode => array($delta => array('show' => 7, 'season' => 13, 'episode' => 25)))
+          'sample_tv_relationship' => array(
+            $langcode => array(
+              $delta => array(
+                'show' => 7,
+                'season' => 13,
+                'episode' => 25,
+              ),
+            ),
+          ),
         ),
       );
     }

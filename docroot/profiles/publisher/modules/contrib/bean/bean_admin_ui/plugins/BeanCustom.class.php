@@ -25,7 +25,7 @@ class BeanCustom extends BeanPlugin {
   }
 
   /**
-   * Save the record to the database.
+   * Save the record to the database
    */
   public function save($new = FALSE) {
     $bean_type = array(
@@ -50,7 +50,7 @@ class BeanCustom extends BeanPlugin {
   }
 
   /**
-   * Get the export status.
+   * Get the export status
    */
   public function getExportStatus() {
     return $this->plugin_info['export_status'];
@@ -59,7 +59,7 @@ class BeanCustom extends BeanPlugin {
   /**
    * Set the label.
    *
-   * @param $label
+   * @param label
    */
   public function setLabel($label) {
     $this->plugin_info['label'] = $label;
@@ -68,7 +68,7 @@ class BeanCustom extends BeanPlugin {
   /**
    * Set the description.
    *
-   * @param $description
+   * @param description
    */
   public function setDescription($description) {
     $this->plugin_info['description'] = $description;

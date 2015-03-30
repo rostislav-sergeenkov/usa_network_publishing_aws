@@ -865,7 +865,6 @@ function usanetwork_tv_schedule_schedule_page() {
       $episode_image_uri = '';
       $theme_row_variables = array();
       $filter_show_node = NULL;
-
       _usanetwork_tv_schedule_correct_show_title($show_name);
 
       $start_time = $tv_schedule_item->start_time;
@@ -901,6 +900,7 @@ function usanetwork_tv_schedule_schedule_page() {
       if ($start_time >= $current_day_end_time && empty($filter_show_nid)) {
         continue;
       }
+      $show_name = ($tv_schedule_item->program_type == 'movie') ?  t('USA MOVIE') : $show_name;
       if (empty($show_node)) {
         $theme_row_variables['episode_show'] = $show_name;
         $theme_row_variables['episode_description'] = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : '';

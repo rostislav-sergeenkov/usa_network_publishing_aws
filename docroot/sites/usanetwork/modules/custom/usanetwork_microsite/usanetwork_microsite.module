@@ -143,7 +143,7 @@ function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
   if(!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
     $theme_path = drupal_get_path('theme', 'aurora_usa');
-    if(!_usanetwork_microsite_process_setting_data('display_global_nav')) {
+    if(!_usanetwork_microsite_process_setting_data('display_global_nav', 'bool')) {
       unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);
       unset($javascript[$theme_path . '/javascripts/main-navigation.js']);
     }
@@ -239,7 +239,6 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
         'nid' => $node->nid,
         'title' => $node->title,
         'base_path' => ($microsite_url) ? $microsite_url : '/dig',
-        'site_name' => $node->title,
         'microsite_theme_path' => $microsite_theme_path,
 
       );
@@ -554,6 +553,13 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
   if (!empty($current_character) && !$is_active_slide) {
     drupal_not_found();
   }
+
+  $characters_settings = array(
+    'default_char_bg' =>  _usanetwork_microsite_process_setting_data('default_char_bg'),
+    'default_mobile_char_bg' => _usanetwork_microsite_process_setting_data('default_mobile_char_bg'),
+  );
+
+  drupal_add_js(array('microsite_characters' => $characters_settings), 'setting');
 
   $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_person, $section_wrapper));
 
@@ -898,6 +904,17 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
   $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
 
   return $theme_variables;
+}
+
+function usanetwork_microsite_process_usanetwork_quiz_sidebar(&$vars) {
+  $microsite_node = menu_get_object();
+  if (!empty($microsite_node) && $microsite_node->type == 'usanetwork_microsite') {
+    $splash = theme('usanetwork_quiz_splash');
+    $phase = $vars['phase'];
+    if (($phase == 'splash' && !empty($splash)) || ($phase == 'questions' && empty($splash))) {
+        $vars['content']['ads']['dart_dart-tag-300x250_ifr_reload']['#markup'] = '<div  class="dart-tag dart-name-300x250_ifr_reload_quizzes"></div>';
+    }
+  }
 }
 
 function _usanetwork_microsite_get_rendered_quiz($node) {
@@ -2168,7 +2185,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
 function usanetwork_microsite_preprocess_page(&$vars, $hook) {
   if (isset($vars['node']->type) && $vars['node']->type == 'usanetwork_microsite') {
     $node_wrapper = entity_metadata_wrapper('node', $vars['node']);
-    $vars['page']['display_global_nav'] = _usanetwork_microsite_process_setting_data('display_global_nav');
+    $vars['page']['display_global_nav'] = _usanetwork_microsite_process_setting_data('display_global_nav', 'bool');
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type . '__' . $node_wrapper->field_ms_theme->value();
   }
@@ -2322,7 +2339,7 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
                 'data-video-id' => $file->mpx_video_data['default_released_file_pid'],
                 'data-full-episode' => $is_full_episode,
               ),
-              '#value' => drupal_render(file_view($file, 'vid_teaser_show_general')),
+              '#value' => drupal_render(file_view($file, 'microsite_thumbnail')),
             ),
           ));
           $count++;
@@ -3131,11 +3148,34 @@ function usanetwork_microsite_deliver_js($js) {
   print $js;
 }
 
-function _usanetwork_microsite_process_setting_data($setting_key) {
+/**
+ * @param $setting_key
+ * @param $value_type
+ *  It can be:
+ *    - bool
+ *    - string
+ *    - numeric
+ * @return mixed
+ */
+function _usanetwork_microsite_process_setting_data($setting_key, $value_type = 'string') {
   $settings = usanetwork_microsite_get_theme_settings();
   $setting = $settings[$setting_key];
-  if (!isset($setting) || $setting === NULL) {
-    $setting = TRUE;
+  switch ($value_type) {
+    case 'bool':
+      if (!isset($setting) || $setting === NULL) {
+        $setting = TRUE;
+      }
+      break;
+    case 'string':
+      if (!isset($setting) || $setting === NULL) {
+        $setting = '';
+      }
+      break;
+    case 'numeric':
+      if (!isset($setting) || $setting === NULL) {
+        $setting = 0;
+      }
+      break;
   }
   return $setting;
 }
@@ -3151,26 +3191,36 @@ function _usanetwork_microsite_process_setting_data($setting_key) {
 function usanetwork_microsite_default_get_theme_settings() {
   return array(
     'display_global_nav' => TRUE,
-    'setting_from_default' => 'gjghj'
+    'default_char_bg' => '',
+    'default_mobile_char_bg' => '',
   );
 }
 
 /**
  * Return array with theme settings.
  *
+ * @param $reset
+ *  Reset the action info static cache.
+ *
  * @return array()
  */
-function usanetwork_microsite_get_theme_settings() {
-  $settings_theme = array();
-  $node = menu_get_object();
-  $settinga_default = usanetwork_microsite_default_get_theme_settings();
-  if(empty($node)) {
-    return $settinga_default;
+function usanetwork_microsite_get_theme_settings($reset = FALSE) {
+  $settings = &drupal_static(__FUNCTION__);
+  if (!isset($settings_theme) || $reset) {
+    $settings_theme = array();
+    $node = menu_get_object();
+    $settinga_default = usanetwork_microsite_default_get_theme_settings();
+    if (empty($node)) {
+      return $settinga_default;
+    }
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $theme_function = 'usanetwork_microsite_' . $node_wrapper->field_ms_theme->value() . '_get_theme_settings';
+    if (is_callable($theme_function)) {
+      $settings_theme = $theme_function();
+    }
+    $settings = $settings_theme + $settinga_default;
   }
-  $node_wrapper = entity_metadata_wrapper('node', $node);
-  $theme_function = 'usanetwork_microsite_' . $node_wrapper->field_ms_theme->value() . '_get_theme_settings';
-  if (is_callable($theme_function)) {
-    $settings_theme = $theme_function();
-  }
-  return $settings_theme + $settinga_default;
+  return (array) $settings;
 }
+
+

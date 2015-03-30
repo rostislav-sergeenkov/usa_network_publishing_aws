@@ -211,7 +211,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters.js',
+      $theme_path . '/usanetwork_microsite_themes/default/js/microsite_characters.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_episodes.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
@@ -238,7 +238,10 @@ function usanetwork_microsite_dig_get_theme_includes() {
  * instance of microsite.
  */
 function usanetwork_microsite_dig_get_theme_settings() {
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
   return array(
     'display_global_nav' => TRUE,
+    'default_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
+    'default_mobile_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
   );
 }

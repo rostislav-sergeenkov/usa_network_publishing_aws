@@ -617,7 +617,7 @@
 
       // if home section, make sure the flexslider carousel has been
       // initialized before loading the 300x250 ad
-      if (section != 'videos' && section != 'quizzes') {
+      if (section != 'videos') {
         Drupal.behaviors.microsite_scroll.create300x250Ad(section);
       }
     },

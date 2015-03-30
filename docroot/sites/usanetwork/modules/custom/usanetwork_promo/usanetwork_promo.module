@@ -329,10 +329,12 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
     $entity_object = file_load($entity_object);
   }
 
-  if (!empty($entity_object)) {
-    $file_wrapper = entity_metadata_wrapper('file', $entity_object);
+  if ($entity_object->mpx_video_data['status'] == FILE_PUBLISHED) {
+    if (!empty($entity_object)) {
+      $file_wrapper = entity_metadata_wrapper('file', $entity_object);
 
-    return _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper);
+      return _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper);
+    }
   }
 
   return NULL;

@@ -50,9 +50,9 @@ if (class_exists('Memcache')) {
  */
 $local = FALSE;
 
-if (file_exists('/var/www/sitescripts/siteinfo.php')) {
+if (file_exists('/var/www/site-scripts/site-info.php')) {
   // Extract environment info using Acquia's own tool for it.
-  require_once '/var/www/sitescripts/siteinfo.php';
+  require_once '//var/www/site-scripts/site-info.php';
   list($ah_site_name, $ah_site_group, $ah_site_env) = ah_site_info();
 
   if (!isset($_ENV['AH_SITE_NAME'])) {

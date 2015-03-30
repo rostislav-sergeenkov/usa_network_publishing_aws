@@ -61,26 +61,9 @@
             <?php endif; ?>
           </div>
         </div>
-        <?php /*if (!empty($social_meter)): ?>
-          <div class="social-meter"<?php if (!empty($social_meter['style'])): print ' style="' . $social_meter['style'] . '"'; endif; ?>>
-            <div class="subscribe-and-hot">
-              <div class="subscribe show-color show-border">
-                <div class="quantity">
-                  <span><?php print $social_meter['value'];?></span><?php print $social_meter['multiplier']; ?>
-                </div>
-                <div class="hashtag"><?php print $social_meter['tag']; ?></div>
-              </div>
-              <?php if (!empty($social_meter['hot'])): ?>
-                <div class="hot-block">
-                  <meter low="20" high="50" max="100" optimum="100" value="70"><?php print $social_meter['hot']; ?></meter>
-                </div>
-              <?php endif; ?>
-            </div>
-            <?php if (!empty($social_meter['link'])): ?>
-              <a href="<?php print $social_meter['link']['url']; ?>" class="<?php $social_meter['link']['class']; ?>"><?php print $social_meter['link']['text']; ?></a>
-            <?php endif; ?>
-          </div>
-        <?php endif; */?>
+        <?php if (!empty($social_meter)): ?>
+          <?php print $social_meter; ?>
+        <?php endif; ?>
         <?php if (!empty($show_draggable_data)): ?>
           <div class="hidden draggable-data-hidden"><?php print $show_draggable_data; ?></div>
         <?php endif; ?>

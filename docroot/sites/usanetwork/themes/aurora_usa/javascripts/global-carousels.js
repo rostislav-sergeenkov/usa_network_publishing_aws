@@ -109,11 +109,17 @@
 
                     if (!$carousel.hasClass('stop')) {
                       if ($container.hasClass('start')) {
-                        if (Drupal.behaviors.global_carousels.checkFirstSlideOverflow($container)) {
-                          Drupal.behaviors.global_carousels.swipeHideDescription($container);
-                        } else {
-                          Drupal.behaviors.global_carousels.swipeHideDescription($container);
+                        if ($(window).width() <= 768) {
                           $container.jcarousel('scroll', '+=' + count);
+                        } else {
+                          if (Drupal.behaviors.global_carousels.checkFirstSlideOverflow($container)) {
+                            console.log(1);
+                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
+                          } else {
+                            console.log(2);
+                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
+                            $container.jcarousel('scroll', '+=' + count);
+                          }
                         }
                       } else {
                         $container.jcarousel('scroll', '+=' + count);

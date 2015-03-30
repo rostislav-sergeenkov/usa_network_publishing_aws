@@ -13,7 +13,8 @@
 $conf['pub_site_shortname'] = 'usanetwork';
 
 // Include the environment-agnostic file from Publisher7 core.
-require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+//require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+require_once __DIR__ . '/../../profiles/publisher/settings.publisher.php';
 
 // Include the local settings file if we're on a local machine. This
 // is still included conditionally because Jenkins clones lack a settings.local.

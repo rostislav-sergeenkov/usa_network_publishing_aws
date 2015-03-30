@@ -1,12 +1,17 @@
 <?php
 
 /**
+ * @file
+ * Module file for media_edit_all.
+ */
+
+/**
  * Implements hook_menu().
  */
 function media_edit_all_menu() {
   $items = array();
 
-  $items['admin/content/file/media-edit-all/%ctools_js/%media_multi'] = array(
+  $items['admin/content/file/media-edit-all/%ctools_js/%media_bulk_upload_multi'] = array(
     'title' => 'Edit multiple files',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('media_edit_all_file_page_edit_multiple', 4, 5),
@@ -20,20 +25,25 @@ function media_edit_all_menu() {
 /**
  * Multi Files Ajax Upload Callback.
  *
- * @see media_edit_all_menu()
- *
  * @param array $form
+ *   The form array.
  * @param array $form_state
- * @param array $ajax
- * @param string $files
+ *   The form_state array.
+ * @param string $ajax
+ *   The AJAX mode of this request.
+ * @param object[] $files
+ *   Array of file entities, magic loaded by media_bulk_upload_multi_load().
  *
- * @return int|mixed
+ * @return array
+ *   Returns form array in case this is not an AJAX call.
+ *
+ * @see media_edit_all_menu()
  */
 function media_edit_all_file_page_edit_multiple($form, &$form_state, $ajax, $files) {
   module_load_include('inc', 'file_entity', 'file_entity.pages');
-  module_load_include('inc', 'media', 'includes/media.pages');
+  module_load_include('inc', 'media_bulk_upload', 'includes/media_bulk_upload.pages');
 
-  $form += media_file_page_edit_multiple($files);
+  $form += media_bulk_upload_file_page_edit_multiple($files);
 
   if ($ajax) {
     ctools_include('modal');
@@ -44,6 +54,10 @@ function media_edit_all_file_page_edit_multiple($form, &$form_state, $ajax, $fil
       're_render' => FALSE,
       'no_redirect' => !empty($form_state['ajax']),
     );
+
+    // Make sure the Cancel link doesn't redirect us away from the node page.
+    $form['buttons']['cancel']['#attributes']['class'] = array('media-edit-all-cancel', 'overlay-exclude');
+    $form['buttons']['cancel']['#attached']['js'][] = drupal_get_path('module', 'media_edit_all') . '/js/media-edit-all-modal.js';
 
     $commands = ctools_modal_form_render($form_state, $form);
 
@@ -75,18 +89,6 @@ function media_edit_all_multiform_get_form_alter(&$form_state_save, &$redirect, 
   // the multi-file upload.
   if (arg(3) === 'media-edit-all') {
     $form_state_save['input'] = FALSE;
-  }
-}
-
-/**
- * Implements hook_media_edit_multiple_form_alter().
- */
-function media_edit_all_media_edit_multiple_form_alter(&$form) {
-  // It is literally impossible to do anything but an arg() check.
-  if (arg(3) === 'media-edit-all' && arg(4) === 'ajax') {
-    // Replace the cancel button with a ajax-dismissed.
-    $form['buttons']['cancel']['#attributes']['class'] = array('media-edit-all-cancel', 'overlay-exclude');
-    $form['buttons']['cancel']['#attached']['js'][] = drupal_get_path('module', 'media_edit_all') . '/js/media-edit-all-modal.js';
   }
 }
 

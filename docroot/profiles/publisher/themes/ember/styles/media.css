@@ -121,3 +121,55 @@ body.page-media-format-form #media-browser-page .plupload_start {
   margin-bottom: 1em;
   margin-top: 1.5em;
 }
+
+/* Media browser and ctools modals */
+.media-wrapper .ui-dialog-titlebar,
+#modalContent .modal-header {
+  background: #303030;
+  padding: 1em 2.25em 0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  color: #cccccc;
+  box-sizing: border-box;
+  border: none;
+}
+.media-wrapper .ui-dialog-titlebar .ui-dialog-title,
+#modalContent .modal-header .modal-title {
+  font-size: 1.8em;
+  font-family: "Helvetica Neue", helvetica, "Segoe UI", segoe, "Ubuntu", "Droid Sans", "Arial", sans-serif;
+  font-weight: 200;
+  margin: 0;
+}
+#modalContent .modal-header .modal-title {
+  position: relative;
+  top: -0.2em;
+}
+.media-wrapper .ui-dialog-titlebar .ui-dialog-titlebar-close,
+#modalContent .modal-header .close {
+  position: absolute;
+  top: 1.5em;
+  right: 1em;
+  padding: 0; /* tweak to contrib styles that fixes moving "X" box on hover */
+}
+#modalContent .modal-header .close {
+  top: 1em;
+}
+.media-wrapper .ui-dialog-titlebar .ui-dialog-titlebar-close .ui-icon,
+#modalContent .modal-header .close img {
+  background-color: #ccc;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #fff;
+}
+#modalContent .modal-header .close img {
+  display: inline-block;
+  float: right;
+  margin: 0 0 0 5px;
+}
+

@@ -1,3 +1,7 @@
+/**
+ * @file
+ * Gigya comments
+ */
 (function ($) {
     /**
      * @todo Undocumented Code!

@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @file pub_theplatform_views_hander_sort_pubdate.inc
+ * @file
+ * pub_theplatform_views_hander_sort_pubdate.inc
  */
 
 /**

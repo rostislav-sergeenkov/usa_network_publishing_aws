@@ -1,9 +1,9 @@
 <?php
-
 /**
  * @file
  * Contains state_flow_entity_handler_area_events_form
  */
+
 /**
  * Views area handlers. Insert a state flow entity form in a view.
  *
@@ -11,7 +11,10 @@
  */
 class state_flow_entity_handler_area_events_form extends views_handler_area_text {
 
-  function option_definition() {
+  /**
+   * {@inheritdoc}
+   */
+  public function option_definition() {
     $options = parent::option_definition();
 
     $options['entity_type'] = array('default' => 'node');
@@ -21,10 +24,11 @@ class state_flow_entity_handler_area_events_form extends views_handler_area_text
   }
 
   /**
-   * Default options form that provides the label widget that all fields
-   * should have.
+   * Default options form.
+   *
+   * Provides the label widget that all fields should have.
    */
-  function options_form(&$form, &$form_state) {
+  public function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
 
     unset($form['content']);
@@ -50,22 +54,23 @@ class state_flow_entity_handler_area_events_form extends views_handler_area_text
         'active' => 'Active',
         'default' => 'Default',
       ),
-      '#default_value' => $conf['entity_to_use'],
+      '#default_value' => $this->options['entity_to_use'],
       '#description' => t('The active entity is the one that most recently has had a state change or edit. This may or may not be the entity that loads from entity_load(). "Active" is recommended for most usages.'),
     );
   }
 
   /**
-   * Render the area
+   * Render the area.
    */
-  function render($empty = FALSE) {
+  public function render($empty = FALSE) {
     if (!$empty || !empty($this->options['empty'])) {
 
       if (!empty($this->options['entity_type'])) {
         $entity_type = $this->options['entity_type'];
 
-        // The default text format might return the entity wrapped in p tags and with a line break.
-        // Remove those and the result should be a numeric id.
+        // The default text format might return the entity wrapped in p tags and
+        // with a line break. Remove those and the result should be a numeric
+        // id.
         $entity_id = trim(strip_tags($this->render_textarea($this->options['entity_id'], NULL)));
         if (!empty($entity_id) && is_numeric($entity_id)) {
 

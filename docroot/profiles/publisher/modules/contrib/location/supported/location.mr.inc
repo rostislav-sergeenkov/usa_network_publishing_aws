@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Mauritania.
- */
+// Mauritania
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_mr() {
   return array(
     'AD' => "Adrar",

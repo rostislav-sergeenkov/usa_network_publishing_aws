@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Anguilla.
- */
+// Anguilla
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ai() {
   return array();
 }

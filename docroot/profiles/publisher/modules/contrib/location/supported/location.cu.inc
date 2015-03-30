@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Cuba.
- */
+// Cuba
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_cu() {
   return array(
     'IJU' => "Isla de la Juventud",

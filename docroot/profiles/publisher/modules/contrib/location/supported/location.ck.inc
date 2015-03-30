@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Cook Islands.
- */
+// Cook Islands
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ck() {
   return array(
     'PU' => "Pukapuka",

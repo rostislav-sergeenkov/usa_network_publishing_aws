@@ -1,7 +1,3 @@
-/**
- * @file
- * Gigya ratings
- */
 (function ($) {
     /**
      * @todo Undocumented Code!

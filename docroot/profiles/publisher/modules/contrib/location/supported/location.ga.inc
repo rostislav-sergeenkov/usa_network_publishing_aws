@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Gabon.
- */
+// Gabon
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ga() {
   return array(
     'ES' => "Estuaire",

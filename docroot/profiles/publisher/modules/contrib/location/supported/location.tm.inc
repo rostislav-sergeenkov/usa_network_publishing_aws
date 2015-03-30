@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Turkmenistan.
- */
+// Turkmenistan
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_tm() {
   return array(
     'A' => "Ahal Welayaty",

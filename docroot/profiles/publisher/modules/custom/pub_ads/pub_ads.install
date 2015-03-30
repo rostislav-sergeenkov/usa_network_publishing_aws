@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Install file for the Pub Ads feature.
- */
 
 /**
  * Implements hook_install().
@@ -137,10 +133,9 @@ function pub_ads_uninstall() {
  * Implements hook_schema().
  */
 function pub_ads_schema() {
-  $t = get_t();
 
   $schema['pub_ads_paths'] = array(
-    'description' => $t('Table storing paths definitions for pub ads.'),
+    'description' => t('Table storing paths definitions for pub ads.'),
     'export' => array(
       'key' => 'machine_name',
       'key name' => 'Machine name',

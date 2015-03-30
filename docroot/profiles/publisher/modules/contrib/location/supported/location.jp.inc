@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Japan.
- */
+// Japan
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_jp() {
   return array(
     '01' => "Hokkaido",

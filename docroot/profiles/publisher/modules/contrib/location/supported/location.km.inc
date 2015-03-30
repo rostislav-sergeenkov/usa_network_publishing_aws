@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Comoros.
- */
+// Comoros
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_km() {
   return array(
     'G' => "Grande Comore",

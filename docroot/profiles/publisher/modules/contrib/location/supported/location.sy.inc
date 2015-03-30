@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Syrian Arab Republic.
- */
+// Syrian Arab Republic
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_sy() {
   return array(
     'HA' => "Al Hasakah",

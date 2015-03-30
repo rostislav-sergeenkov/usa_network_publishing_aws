@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Antigua and Barbuda.
- */
+// Antigua and Barbuda
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ag() {
   return array(
     'ASG' => "Saint George",

@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Bulgaria.
- */
+// Bulgaria
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_bg() {
   return array(
     '01' => "Blagoevgrad",

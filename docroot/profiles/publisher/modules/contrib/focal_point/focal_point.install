@@ -9,12 +9,10 @@
  * Implements hook_install().
  */
 function focal_point_install() {
-  $t = get_t();
   $count = focal_point_migrate_imagefield_focus_data();
-  $count_plural = format_plural($count, '%count image', '%count images', array('%count' => $count));
 
   if (!empty($count)) {
-    drupal_set_message($t('Migrated the imagefield_focus data for %count. Any changes you make to imagefield_focus data from now on will not be reflected in your focal point data.', array('%count' => $count_plural)));
+    drupal_set_message(t('Migrated the imagefield_focus data for %count. Any changes you make to imagefield_focus data from now on will not be reflected in your focal point data.', array('%count' => format_plural($count, '%count image', '%count images', array('%count' => $count)))));
   }
 
   focal_point_update_7001();
@@ -48,10 +46,9 @@ function focal_point_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
-      // The longest possible value of this is 100,100 which is 7 characters.
       'focal_point' => array(
         'type' => 'varchar',
-        'length' => 7,
+        'length' => 7, // The longest possible value of this is 100,100
         'not null' => TRUE,
         'default' => '',
       ),
@@ -63,13 +60,13 @@ function focal_point_schema() {
 }
 
 /**
- * Convert existing imagefield_focus data to focal point.
+ * Convert existing imagefield_focus data to focal point. Return the number of
+ * images that were converted or NULL.
  *
  * @param bool $overwrite
  *   If TRUE, existing focal point data will be overwritten
  *
  * @return int|NULL
- *   Returns the number of images that were converted or NULL.
  */
 function focal_point_migrate_imagefield_focus_data($overwrite = FALSE) {
   if (module_exists('imagefield_focus')) {
@@ -133,7 +130,8 @@ function focal_point_update_7001() {
 }
 
 /**
- * Removing the 'focal_point_preview_image_style' variable.
+ * Removing the 'focal_point_preview_image_style' variable which is no longer
+ * being used.
  */
 function focal_point_update_7002() {
   variable_del('focal_point_preview_image_style');

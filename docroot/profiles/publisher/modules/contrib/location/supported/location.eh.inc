@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Western Sahara.
- */
+// Western Sahara
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_eh() {
   return array();
 }

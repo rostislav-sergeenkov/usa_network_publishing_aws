@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Kiribati.
- */
+// Kiribati
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ki() {
   return array(
     'AG' => "Abaiang",

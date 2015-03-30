@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Jordan.
- */
+// Jordan
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_jo() {
   return array(
     'AJ' => "Ajlun",

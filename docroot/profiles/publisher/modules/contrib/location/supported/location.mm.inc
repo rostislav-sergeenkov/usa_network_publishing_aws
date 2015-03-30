@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Myanmar.
- */
+// Myanmar
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_mm() {
   return array(
     'AY' => "Ayeyarwady",

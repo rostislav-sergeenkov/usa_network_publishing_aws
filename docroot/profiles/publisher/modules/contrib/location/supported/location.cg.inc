@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Congo.
- */
+// Congo
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_cg() {
   return array(
     'BO' => "Bouenza",

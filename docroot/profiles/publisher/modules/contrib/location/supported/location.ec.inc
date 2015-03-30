@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Ecuador.
- */
+// Ecuador
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ec() {
   return array(
     'A' => "Azuay",

@@ -19,9 +19,9 @@ test_dependencies[] = state_machine (3.x)
 files[]=includes/workbench_moderation_handler_filter_state.inc
 files[] = tests/workbench_moderation.test
 
-; Information added by drupal.org packaging script on 2013-10-26
+; Information added by drupal.org packaging script on 2013-05-07
 version = "7.x-2.x-dev"
 core = "7.x"
 project = "workbench_moderation"
-datestamp = "1382797181"
+datestamp = "1367890957"
 

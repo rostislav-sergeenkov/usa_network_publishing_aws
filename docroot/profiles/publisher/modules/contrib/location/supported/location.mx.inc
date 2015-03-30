@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Mexico.
- */
+// Mexico
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_mx() {
   return array(
     'AGU' => "Aguascalientes",

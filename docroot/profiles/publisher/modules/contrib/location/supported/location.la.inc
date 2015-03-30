@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Lao People's Democratic Republic.
- */
+// Lao People's Democratic Republic
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_la() {
   return array(
     'VT' => "Vientiane",

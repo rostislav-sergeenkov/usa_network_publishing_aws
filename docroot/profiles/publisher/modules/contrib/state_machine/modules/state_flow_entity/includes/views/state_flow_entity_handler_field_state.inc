@@ -2,15 +2,11 @@
 
 /**
  * @file
- * Field handler for states. Takes state machine name columns and renders the
- * labels.
+ * Field handler for states. Takes state machine name columns and renders the labels.
  */
 
 class state_flow_entity_handler_field_state extends views_handler_field {
 
-  /**
-   * {@inheritdoc}
-   */
   public function render($values) {
     $return = '';
 
@@ -27,3 +23,4 @@ class state_flow_entity_handler_field_state extends views_handler_field {
     return $return;
   }
 }
+

@@ -10,13 +10,6 @@ use PHPExif\Exif;
  */
 function simple_exif_mappings($form, $form_state) {
 
-  $form['exiftool_path'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Exiftool path'),
-    '#default_value' => variable_get('simple_exif_exiftool_path', ''),
-    '#description' => t('If exiftool is in your $PATH, leave this blank.'),
-  );
-
   $default_values = variable_get('simple_exif_mappings', array());
   $mappings = _simple_exif_fields();
 
@@ -61,11 +54,5 @@ function simple_exif_mappings($form, $form_state) {
  */
 function simple_exif_mappings_submit($form, $form_state) {
   variable_set('simple_exif_mappings', $form_state['values']['mappings']);
-  if ($form_state['values']['exiftool_path'] == '') {
-    variable_del('simple_exif_exiftool_path');
-  }
-  else {
-    variable_set('simple_exif_exiftool_path', $form_state['values']['exiftool_path']);
-  }
 }
 

@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Kuwait.
- */
+// Kuwait
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_kw() {
   return array(
     'D' => "Al Ahmadi",

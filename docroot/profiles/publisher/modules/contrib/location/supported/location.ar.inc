@@ -1,22 +1,7 @@
 <?php
 
-/**
- * @file
- * Argentina.
- */
+// Argentina
 
-/**
- * Returns an associative array of states/territories where.
- *
- *   -> the keys are integers starting from 1
- *   -> the values are the English names for those states/territories
- *
- * The states are grouped together at the beginning of the array and sorted
- * alphabetically.
- *
- * The territories are grouped together at the end of the array and sorted
- * alphabetically.
- */
 function location_province_list_ar() {
   return array(
     'A' => "Salta",
@@ -42,7 +27,7 @@ function location_province_list_ar() {
     'W' => "Corrientes",
     'X' => "Cordoba",
     'Y' => "Jujuy",
-    'Z' => "Santa Cruz",
+    'Z' => "Santa Cruz"
   );
 }
 

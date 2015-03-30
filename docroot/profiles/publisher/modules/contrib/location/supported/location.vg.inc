@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Virgin Islands, British.
- */
+// Virgin Islands, British
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_vg() {
   return array();
 }

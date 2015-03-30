@@ -249,57 +249,26 @@ function pub_relationships_tv_return_seasons($selected_show, $include_unpublishe
 function pub_relationships_tv_show_valid_fields(&$form, $bundle) {
   $field = & $form[TV_FIELD_NAME][LANGUAGE_NONE][0];
   $drop_key = 'pub_relationships_tv_content_type_' . $bundle . '_level';
-  $config = variable_get($drop_key, FALSE);
+  $config =variable_get($drop_key, FALSE);
   if ($config !== FALSE) {
     switch ($config) {
       case 'show':
         // We hide the season, and episode.
-        // Entity reference builds out #options for each field, and by default
-        // they are not filtered by show or season. We could write a new ER
-        // plugin to fix things there, but this module is already deprecated
-        // for pub_relationships_tv_enhanced. To prevent caching #options in
-        // the form cache, we hardcode #value instead.
         $field['field_season']['#access'] = FALSE;
-        $field['field_season'][LANGUAGE_NONE]['#value'] = $field['field_season'][LANGUAGE_NONE]['#default_value'];
-        if ($field['field_season'][LANGUAGE_NONE]['#value']) {
-          $field['field_season'][LANGUAGE_NONE]['#options'] = array(
-            $field['field_season'][LANGUAGE_NONE]['#value'] => $field['field_season'][LANGUAGE_NONE]['#value'],
-          );
-        }
-        else {
-          $field['field_season'][LANGUAGE_NONE]['#options'] = $field['field_season'][LANGUAGE_NONE]['#value'];
-        }
-
         $field['field_episode']['#access'] = FALSE;
-        $field['field_episode'][LANGUAGE_NONE]['#value'] = $field['field_episode'][LANGUAGE_NONE]['#default_value'];
-        if ($field['field_episode'][LANGUAGE_NONE]['#value']) {
-          $field['field_episode'][LANGUAGE_NONE]['#options'] = array(
-            $field['field_episode'][LANGUAGE_NONE]['#value'] => $field['field_episode'][LANGUAGE_NONE]['#value'],
-          );
-        }
-        else {
-          $field['field_episode'][LANGUAGE_NONE]['#options'] = $field['field_episode'][LANGUAGE_NONE]['#value'];
-        }
         break;
-
       case 'season':
         // We hide episode.
         $field['field_season']['#prefix'] = '<div id="season-wrapper">';
         $field['field_season']['#suffix'] = '</div>';
         $field['field_episode']['#access'] = FALSE;
-        $field['field_episode'][LANGUAGE_NONE]['#value'] = $field['field_episode'][LANGUAGE_NONE]['#default_value'];
-        $field['field_episode'][LANGUAGE_NONE]['#options'] = array(
-          $field['field_episode'][LANGUAGE_NONE]['#value'] => $field['field_episode'][LANGUAGE_NONE]['#value'],
-        );
         break;
-
       case 'episode':
         $field['field_season']['#prefix'] = '<div id="season-wrapper">';
         $field['field_season']['#suffix'] = '</div>';
         $field['field_episode']['#prefix'] = '<div id="episode-wrapper">';
         $field['field_episode']['#suffix'] = '</div>';
         break;
-
       default:
         // We do nada.
         break;

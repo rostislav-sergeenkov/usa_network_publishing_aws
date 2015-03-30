@@ -22,9 +22,9 @@ class StateFlowEntity extends StateMachine {
   }
 
   public function init($workflow = array()) {
-    // Initialize states.
+    // Initialize states
     foreach ($workflow['states'] as $name => $options) {
-      // Some methods require $this when called by State Machine e.g. on_exit().
+      // some methods require $this when called by State Machine e.g. on_exit()
       foreach ($options as $key => $value) {
         if ($key == 'on_exit' || $key == 'on_enter') {
           $options[$key] = array($this, $value);
@@ -33,16 +33,18 @@ class StateFlowEntity extends StateMachine {
       $this->create_state($name, $options);
     }
 
-    // Initialize events.
+    // Initialize events
     foreach ($workflow['events'] as $name => $options) {
       $this->create_event($name, $options);
     }
   }
 
   /**
-   * Set the appropriate revision id that can be stored in the entity table.
+   * Set the appropriate revision id that can be stored in the entity table
+   * e.g. which vid is stored in the node table
    *
-   * E.g. which vid is stored in the node table
+   * @param array arguments needed for updating the current status.
+   * @return boolean
    */
   public function update_entity_state() {
 
@@ -51,8 +53,7 @@ class StateFlowEntity extends StateMachine {
 
     $entity = $this->get_object();
 
-    // Write history record for all except if a new revision is not being
-    // created.
+    // write history record for all except if a new revision is not being created
     if (!empty($entity->revision)) {
       $this->write_history($user_id);
       $this->write_active();
@@ -87,10 +88,9 @@ class StateFlowEntity extends StateMachine {
   }
 
   /**
-   * Get the label for the current state.
+   * Get the label for the current state
    *
    * @return string
-   *   Label for the current state.
    */
   public function get_label_for_current_state() {
     $state_key = $this->get_current_state();
@@ -205,15 +205,12 @@ class StateFlowEntity extends StateMachine {
   /**
    * Get available events as an array suitable for FAPI.
    *
-   * @param bool $validate_options
+   * @param boolean $validate_options
    *   A boolean for whether events should be validated. For instance, a node in
    *   'Draft' state might have 'Needs Review' and 'Published' as available next
-   *   states/events. However the currently logged in user might not have
-   *   permission to perform the publishing event. Passing TRUE to
-   *   $validate_events would exclude the 'Published' option for that user.
-   *
-   * @return array
-   *   Array of events. Keyed by the machine name, value is the label.
+   *   states/events. However the currently logged in user might not have permission
+   *   to perform the publishing event. Passing TRUE to $validate_events would
+   *   exclude the 'Published' option for that user.
    */
   public function get_available_events_options($validate_options = TRUE) {
     $events = $this->get_available_events();
@@ -235,12 +232,13 @@ class StateFlowEntity extends StateMachine {
   }
 
   /**
-   * Removes all non Entity API properties from the history_entity.
+   * Removes all properties from the history_entity that are not fields or properties
+   * declared by Entity API.
    */
   public function clean_history_entity($history_entity) {
 
-    // If entity module is available, uses it's function to get all the
-    // properties and fields on the state_flow_history_entity.
+    // If entity module is available, uses it's function to get all the properties
+    // and fields on the state_flow_history_entity.
     if (module_exists('entity')) {
       $sfhe_properties = array_keys(entity_get_all_property_info('state_flow_history_entity'));
     }
@@ -255,7 +253,7 @@ class StateFlowEntity extends StateMachine {
     $sfhe_properties = array_merge(array('event', 'event_comment'), $sfhe_properties);
 
     $clean_history_entity = new stdClass();
-    foreach ($sfhe_properties as $property) {
+    foreach($sfhe_properties as $property) {
       if (!empty($history_entity->{$property})) {
         $clean_history_entity->{$property} = $history_entity->{$property};
       }
@@ -265,7 +263,7 @@ class StateFlowEntity extends StateMachine {
   }
 
   /**
-   * Validate the filed API from values with state_flow_history_entity values.
+   * Validate the filed API values within a form that has a state_flow_history_enitity.
    */
   public function history_entity_form_field_validate($form, &$form_state) {
     entity_form_field_validate('state_flow_history_entity', $form, $form_state);
@@ -294,17 +292,14 @@ class StateFlowEntity extends StateMachine {
     LEFT JOIN {users} u ON u.uid = sfh.uid
     WHERE sfh.entity_id = :entity_id
     ORDER BY sfh.timestamp DESC',
-          // Add entity_type where.
+          // Add entity_type where
     array(
-      ':entity_id' => $this->object->entity_id,
+      ':entity_id' => $this->object->entity_id
     ))->fetchAll();
-
-    return $history;
+  return $history;
   }
 
   /**
-   * Extending fire_event() from state_machine's base.inc.
-   *
    * Extending fire_event() from state_machine's base.inc to add uid and log
    * arguments.
    */
@@ -338,11 +333,13 @@ class StateFlowEntity extends StateMachine {
       $event->finish();
 
       // Allow state_flow to provide other hooks or event triggers.
-      //
-      // @todo the original hook in 7.x-2.x looks like this:
-      //   state_flow_invoke_event_handlers($this, $key, $uid, $log);
-      // We should review to see if other code uses this hook and update as
-      // needed.
+      /**
+       * @todo the original hook in 7.x-2.x looks like this:
+       *    state_flow_invoke_event_handlers($this, $key, $uid, $log);
+       * We should review to see if other code uses this hook and update as
+       * needed.
+       */
+
       state_flow_entity_invoke_event_handlers($this->object, $new_state, $this->get_history_entity());
 
       // Update entity tables.
@@ -355,15 +352,13 @@ class StateFlowEntity extends StateMachine {
   }
 
   /**
-   * Helper function for calling state_flow_entity_set_entity_saved().
-   *
-   * Helper function for calling state_flow_entity_set_entity_saved() from
-   * update_state.
+   * Helper function for calling state_flow_entity_set_entity_saved()
+   * from update_state
    */
   public function state_flow_entity_set_saved() {
 
-    // Get the published revision and re-save it if it is different that the
-    // revision in this entity.
+    // Get the published revision and resave it if it is different that the revision
+    // in this entity.
 
     $entity = $this->get_object();
     $revision_key = $this->get_revision_key();
@@ -376,13 +371,6 @@ class StateFlowEntity extends StateMachine {
       $conditions = array($revision_key => $entity->published_revision_id);
       $published_revisions = entity_load($entity_type, array($entity_id), $conditions);
       $published_revision = $published_revisions[$entity_id];
-
-      // @todo, is this the best place for this function?
-      // Ensures other modules are aware of the update. Important for files
-      // handling as otherwise files might get deleted on cleanup as the usage
-      // isn't properly registered.
-      field_attach_update($entity_type, $entity);
-
       state_flow_entity_set_entity_saved($entity_type, $entity_id, $published_revision);
     }
   }
@@ -391,20 +379,15 @@ class StateFlowEntity extends StateMachine {
    * Write the transaction to the history table.
    *
    * @param int $uid
-   *   The user id.
    * @param string $log
-   *   The message to log.
-   *
    * @return object
-   *   The history entity object.
    */
   public function write_history($uid, $log = '') {
-    // Start with what the db has.
+    // start with what the db has
     $history_entity = $this->get_history_entity();
 
-    // @todo, this was added to accommodate the double saving that happens with
-    // node forms.
-    // Reevaluate if necessary.
+    // @todo, this was added to accomodate the double saving that happens with node forms.
+    // reevaluate if necessary.
     if (empty($log) && !empty($history_entity->event_comment)) {
       $log = $history_entity->event_comment;
     }
@@ -414,7 +397,7 @@ class StateFlowEntity extends StateMachine {
     $id_key = $entity_info['entity keys']['id'];
     $revision_key = $entity_info['entity keys']['revision'];
 
-    // Apply current settings.
+    // apply current settings
     if (!empty($this->object->$revision_key)) {
       $history_entity->revision_id = $this->object->$revision_key;
     }
@@ -437,8 +420,7 @@ class StateFlowEntity extends StateMachine {
     }
     $history_entity->entity_type = $entity_type;
 
-    // Often we are writing a new history entity and this property doesn't
-    // exist.
+    // Often we are writing a new history entity and this property doesn't exist.
     // The way node form submitting requires writing a history on form submit
     // and then updating it in entity_update when the new vid is available. That
     // means a hid might be present.
@@ -452,7 +434,7 @@ class StateFlowEntity extends StateMachine {
     // @todo, tests needed here.
     field_attach_presave('state_flow_history_entity', $history_entity);
 
-    // Update the state_flow_history table.
+    // Update the state_flow_history table
     drupal_write_record('state_flow_history', $history_entity, $primary_keys);
     // Update field tables.
     field_attach_update('state_flow_history_entity', $history_entity);
@@ -462,17 +444,15 @@ class StateFlowEntity extends StateMachine {
   }
 
   /**
-   * Get the active revision.
-   *
-   * The active revision is not necessarily the published revision.
+   * Get the active revision. The active revision is not necessarily the
+   * published revision.
    *
    * @todo I am not sure I like this method. confirm that we need this. There
    * may be a better way.
    *
-   * @return int
-   *   The revision_id.
+   * @return int revision_id
    */
-  public function get_active_revision() {
+  function get_active_revision() {
     if (empty($this->object->active_revision_id)) {
       $entity_type = $this->get_entity_type();
       $entity_info = entity_get_info($entity_type);
@@ -481,8 +461,8 @@ class StateFlowEntity extends StateMachine {
 
       $revision_id = db_select('state_flow_states', 'sfs')
         ->fields('sfs', array('revision_id'))
-        ->condition('entity_type', $entity_type)
         ->condition('entity_id', $this->object->$id_key)
+        ->condition('entity_type', $entity_type)
         ->condition('active', 1)
         ->execute()
         ->fetchCol();
@@ -494,39 +474,9 @@ class StateFlowEntity extends StateMachine {
   }
 
   /**
-   * Get the latest revision id.
-   *
-   * @param int $entity_id
-   *   The entity id of the entity to fetch the latest revision id for.
-   *   DEPRECATED!
-   *
-   * @return int|FALSE
-   *   The latest revision id or FALSE on failure.
-   */
-  public function get_latest_revision($entity_id = NULL) {
-    $entity_type = $this->get_entity_type();
-    $entity_info = entity_get_info($entity_type);
-    if (isset($entity_info['revision table'])) {
-      $id_key = $entity_info['entity keys']['id'];
-      $revision_key = $entity_info['entity keys']['revision'];
-      if (empty($entity_id)) {
-        $entity_id = $this->object->{$id_key};
-      }
-      $query = db_select($entity_info['revision table'])
-        ->fields($entity_info['revision table'], array($revision_key))
-        ->condition($id_key, $entity_id)
-        ->orderBy($revision_key, 'DESC')
-        ->range(0, 1);
-      return $query->execute()->fetchField();
-    }
-    return FALSE;
-  }
-
-  /**
-   * Update the current status record for the revision.
-   *
-   * Only one revision may be active at a time. If additional revisions need to
-   * be active, please use fields for now.
+   * Update the current status record for the revision.  Only one revision
+   * may be active at a time.  If additional revisions need to be active,
+   * please use fields for now.
    *
    * Using $this->history_entity assumes that write_history() has already
    * been called.
@@ -534,13 +484,13 @@ class StateFlowEntity extends StateMachine {
    * called from fire_event() and update_entity_state() when the user is
    * submitting the entity's edit form (like node edit for example).  When
    * called twice we must match the hid but if it's straight from the
-   * state_flow_entity transition form state_flow_entity_events_revision() we
-   * know that the revision exists and is not new
-   *
+   * state_flow_entity transition form
    * @see state_flow_entity_events_revision()
+   * we know that the revision exists and is not new
+   *
    */
   public function write_active() {
-    // First default all revisions to inactive status.
+    // first default all revisions to inactive status
     // @todo, can this happen in a less hard-coded fashion to accommodate sites
     // That may need multiple active revisions?
     db_update('state_flow_states')
@@ -567,8 +517,10 @@ class StateFlowEntity extends StateMachine {
           ->execute();
       }
       else {
-        // Set existing revision as active so we can hit this call twice when
-        // editing a node. Require hid so that only one record is updated.
+        /**
+         * Set existing revision as active so we can hit this call twice when
+         * editing a node. Require hid so that only one record is updated.
+         */
         db_update('state_flow_states')
           ->fields(array(
             'active' => 1,
@@ -582,20 +534,23 @@ class StateFlowEntity extends StateMachine {
       }
     }
     else {
-      // Not a new revision AND transition only i.e. the user did not come
-      // from an entity edit form like node/%node/edit unlike the db_update
-      // above, we do not need to require the hid because a transition-only
-      // operation only hits this method once.
-      db_update('state_flow_states')
-        ->fields(array(
-          'active' => 1,
-          'state' => $this->get_current_state(),
-          'hid' => $this->history_entity->hid,
-        ))
-        ->condition('entity_id', $this->history_entity->entity_id)
-        ->condition('entity_type', $this->history_entity->entity_type)
-        ->condition('revision_id', $this->history_entity->revision_id)
-        ->execute();
+        /**
+         * Not a new revision AND transition only
+         * i.e. the user did not come from an entity edit
+         * form like node/%node/edit
+         * unlike the db_update above, we do not need to require the hid
+         * because a transition-only operation only hits this method once
+         */
+        db_update('state_flow_states')
+          ->fields(array(
+            'active' => 1,
+            'state' => $this->get_current_state(),
+            'hid' => $this->history_entity->hid,
+          ))
+          ->condition('entity_id', $this->history_entity->entity_id)
+          ->condition('entity_type', $this->history_entity->entity_type)
+          ->condition('revision_id', $this->history_entity->revision_id)
+          ->execute();
     }
   }
 
@@ -604,12 +559,12 @@ class StateFlowEntity extends StateMachine {
     field_attach_delete_revision('state_flow_history_entity', $this->get_history_entity());
     // Delete entity records.
     db_delete('state_flow_history')
-      // ->condition('entity_id', $entity_id)
+      //->condition('entity_id', $entity_id)
       ->condition('revision_id', $revision_id)
       ->condition('entity_type', $entity_type)
       ->execute();
     db_delete('state_flow_states')
-      // ->condition('entity_id', $entity_id)
+      //->condition('entity_id', $entity_id)
       ->condition('revision_id', $revision_id)
       ->condition('entity_type', $entity_type)
       ->execute();
@@ -618,8 +573,7 @@ class StateFlowEntity extends StateMachine {
   /**
    * Provide the current state of this revision or entity.
    *
-   * @return string
-   *   The state machine name.
+   * @return string state machine name
    */
   public function load() {
     $state = FALSE;
@@ -637,9 +591,7 @@ class StateFlowEntity extends StateMachine {
     return $state;
   }
 
-  /**
-  * Return the state of the revision
-  */
+    // Return the state of the revision
   public function revision_state($entity_id, $revision_id) {
     $latest_state = db_select('state_flow_history', 'sfh')
       ->fields('sfh', array('state'))
@@ -668,12 +620,11 @@ class StateFlowEntity extends StateMachine {
   /**
    * Get a default event.
    *
-   * When the event form is embedded on the node edit form or elsewhere it may
-   * be the case that the state does not change. The method checks for an event
-   * that has a target state that matches the current state.
+   * When the event form is embedded on the node edit form or elsewhere it may be
+   * the case that the state does not change. The method checks for an event that
+   * has a target state that matches the current state.
    *
-   * @return string|NULL
-   *   An event name or NULL.
+   * @return a string for an event name or NULL.
    */
   public function get_default_event_name() {
 
@@ -698,21 +649,16 @@ class StateFlowEntity extends StateMachine {
   *
   */
 
-  /**
-   * Remove scheduled events if the new state isn't scheduled.
-   */
+
   public function on_exit_scheduled() {
-    $event = $this->get_event($this->get_history_entity()->event);
-    if (module_exists('state_flow_schedule') && $event->get_option('target') !== 'schedule') {
+    if (module_exists('state_flow_schedule')) {
       db_query('
         DELETE FROM state_flow_schedule
-        WHERE entity_type = :entity_type
-        AND entity_id = :entity_id
-        AND revision_id = :revision_id',
+        WHERE nid = :nid
+        AND vid = :vid',
         array(
-          ':entity_type' => $this->get_entity_type(),
-          ':entity_id' => $this->object->{$this->get_entity_id_key()},
-          ':revision_id' => $this->object->{$this->get_revision_key()},
+          ':nid' => $this->object->nid,
+          ':vid' => $this->object->vid,
         )
       );
     }

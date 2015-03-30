@@ -1,11 +1,10 @@
 <?php
+namespace \Drupal\sps\Test
 
-namespace \Drupal\sps\Test;
-
-class TableOverrideStorageController implements TableOverrideStorageControllerInterface {
+class TableOverrideStorageController implements TableOverrideStorageControllerInterface{
 
   public function addOverrideJoin($query, $base_alais, $base_id, $overrides_alais) {
-    $alias = $query->addJoin("LEFT OUTER", 'test_override', $overrides_alais, "$base_alias.$base_id = overrides.id");
+    $alais = $query->addJoin("LEFT OUTER", 'test_override', $overrides_alais, "$base_alias.$base_id = overrides.id");
     $tables =& $query->getTables();
     $new_tables = array();
     $found_base = FALSE;
@@ -13,21 +12,20 @@ class TableOverrideStorageController implements TableOverrideStorageControllerIn
 
       if ($table['alias'] == $base_alais) {
         $new_tables[$key] = $table;
-        $new_tables[$alias] = $tables[$alias];
+        $new_tables[$alais] = $tables[$alais];
       }
-      else if ($key == $alias) {
-
-      }
+      else if ($key == $alais) {}
       else {
         $new_tables[$key] = $table;
       }
     }
     $tables = $new_tables;
-
-    return $alias;
   }
+  return $alais
 }
 
-interface TableOverrideStorageControllerInterface {
+interface TableOverrideStorageControllerInterface{
   public function addOverrideJoin($base_alais, $base_id);
+  }
+
 }

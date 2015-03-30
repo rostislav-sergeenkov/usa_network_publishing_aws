@@ -16,38 +16,23 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     );
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setup() {
-    parent::setup('state_machine', 'state_flow', 'state_flow_entity', 'views', 'views_ui');
-
-    // Create a revision for nodes by default.
-    foreach (array('page', 'article') as $node_type) {
-      $node_options = variable_get('node_options_' . $node_type, array('status', 'promote'));
-      $node_options[] = 'revision';
-      variable_set('node_options_' . $node_type, $node_options);
-    }
-
+  function setup() {
+    parent::setup('state_machine', 'state_flow', 'state_flow_entity', 'views');
     $this->stateFlowLoginAdmin();
   }
 
-  public function stateFlowLoginAdmin() {
-    $web_user = $this->drupalCreateUser(array(
-      'administer nodes',
-      'bypass node access',
-      'manage content workflow',
-    ));
+  function stateFlowLoginAdmin() {
+    $web_user = $this->drupalCreateUser(array('administer nodes', 'bypass node access', 'manage content workflow'));
     $this->drupalLogin($web_user);
   }
 
   /**
    * Test basic state changes and forward revisions.
    *
-   * @todo, can this test be broken up to test forward revisions separate from
-   * the basic state changes.
+   * @todo, can this test be broken up to test forward revisions separate from the
+   * basic state changes.
    */
-  public function testStateFlowStateMachine() {
+  function testStateFlowStateMachine() {
 
     $node = $this->drupalCreateNode(array('status' => 0));
 
@@ -64,7 +49,7 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     $this->assert(!empty($history), t('There is a record in state_flow_history after a programmatic save'));
     $this->assert(!empty($states), t('There is a record in state_flow_states after a programmatic save'));
 
-    // Make sure first (default) state is draft.
+    // Make sure first (default) state is draft
     $machine = state_flow_entity_load_state_machine($node, 'node');
     $this->assertEqual($machine->get_current_state(), 'draft', t('New nodes should default to the "draft" state.'));
 
@@ -72,7 +57,7 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     $this->drupalGet("node/{$node->nid}/edit");
     $this->assertRaw('<option value="keep in draft" selected="selected">', t('Keep in Draft is the default when editing a draft.'));
 
-    // Publish node by firing event.
+    //publish node by firing event
     $machine->fire_event('publish');
     $this->assertEqual($machine->get_current_state(), 'published', t('State should be "published" after firing the "publish" event.'));
 
@@ -82,14 +67,14 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     // Check for Duplicate State records.
     $this->_testOfDuplicateStates();
 
-    // Choose edit link
-    // Make sure revision checkbox is checked.
+    //choose edit link
+    //make sure revision checkbox is checked
     $this->drupalGet("node/{$node->nid}/edit");
     $this->assertFieldChecked('edit-revision', t('Revision checkbox should be checked after editing a "published" node.'));
 
-    // Edit node (new title)
-    // Submit node, confirm creation
-    // Ensure new title is updated, but not currently visible.
+    //edit node (new title)
+    //submit node, confirm creation
+    //ensure new title is updated, but not currently visible
     $old_title = $node->title;
     $edit = array();
     $new_title = $this->randomName(8);
@@ -118,16 +103,15 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     $this->drupalGet("node/$node->nid/revisions/" . $forward_revision_vid . "/view");
     $this->assertText($new_title, t('New title text is present on forward version of node.'));
 
-    // Load the forward node.
+    // Load the forward node
     $forward_revision_node = node_load($node->nid, $forward_revision_vid, TRUE);
     $forward_machine = state_flow_entity_load_state_machine($forward_revision_node, 'node');
 
-    // Check state of second revision.
-    // Should be unpublished.
+    //check state of second revision
+    //should be unpublished
     $this->assertEqual($forward_machine->get_current_state(), 'draft', t('Updated published nodes should default to the "draft" state for their latest revision.'));
 
-    // Verify that the forward revision vid is greater than the live revision
-    // vid.
+    // Verify that the forward revision vid is greater than the live revision vid.
     $live_revision = db_select('node', 'n')
       ->fields('n', array('vid'))
       ->condition('nid', $node->nid)
@@ -136,7 +120,7 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     $live_revision_vid = $live_revision[0];
     $this->assertTrue($forward_revision_vid > $live_revision_vid, 'Forward revision vid is greater than live revision vid.');
 
-    // Publish second revision.
+    //publish second revision
     $forward_machine->fire_event('publish');
 
     // The publish action event requires hook_exit to run.
@@ -154,12 +138,10 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
   }
 
   /**
-   * Test that adding a node in the UI doesn't create NULL records.
-   *
    * Test that when an node is added in the UI, there are no NULL records in
    * the state_flow_states table.
    */
-  public function testStateFlowStatesTableNullRecords() {
+  function testStateFlowStatesTableNullRecords() {
 
     $edit = array();
     $new_title = $this->randomName(8);
@@ -185,7 +167,7 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
   /**
    * Verify that two node objects are not saved.
    */
-  public function testOfStraightToPublished() {
+  function testOfStraightToPublished() {
 
     $edit = array();
     $title = $this->randomName(8);
@@ -218,7 +200,7 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
   /**
    * Verify that two node objects are not saved.
    */
-  public function testOfFieldValidation() {
+  function testOfFieldValidation() {
 
     // Add the text integer field.
     $this->_addintegerfield();
@@ -260,15 +242,14 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
   /**
    * Add a text field to the state flow history entity.
    */
-  public function _addtextfield() {
+  function _addtextfield() {
     module_load_include('inc', 'state_flow', 'tests/state_flow.test');
     state_flow_add_test_text_field();
   }
-
   /**
    * Add a text field to the state flow history entity.
    */
-  public function _addintegerfield() {
+  function _addintegerfield() {
     module_load_include('inc', 'state_flow', 'tests/state_flow.test');
     state_flow_add_test_integer_field();
   }
@@ -276,7 +257,7 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
   /**
    * Helper function to check that there are no duplicate states.
    */
-  public function _testOfDuplicateStates() {
+  function _testOfDuplicateStates() {
 
     $states = db_select('state_flow_states')
                 ->fields('state_flow_states', array())
@@ -305,29 +286,22 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
   }
 
   /**
-   * Test state_flow_handler_field_is_node_revision_published.inc.
-   *
-   * Test state_flow_handler_field_is_node_revision_published.inc  and some of
-   * the other columns used at
-   * node/1/revisions-state-flow-states and node/1/state-flow-history
+   * Test state_flow_handler_field_is_node_revision_published.inc and some of the
+   * other columns used at node/1/revisions-state-flow-states and node/1/state-flow-history
    */
-  public function testOfPublishedViewsHandler() {
+  function testOfPublishedViewsHandler() {
 
-    // Add fields to the state_flow_history_entity Field API integration can be
-    // tested.
+    // Add fields to the state_flow_history_entity Field API integration can be tested.
     $this->_addtextfield();
 
-    // This array holds values added to Field API fields on a
-    // state_flow_history_entity.
-    // The 0 index in the array is a dummy value so that the next '1' index
-    // value syncs up with
+    // This array holds values added to Field API fields on a state_flow_history_entity.
+    // The 0 index in the array is a dummy value so that the next '1' index value syncs up with
     // node revision 1.
     $field_text = array(
       'placeholder_at_zero_key',
     );
 
-    // Make a dummy node to offset revision ids. This accommodates that Views
-    // bug in http://drupal.org/node/1862014
+    // Make a dummy node to offset revision ids. This accommodates that Views bug in http://drupal.org/node/1862014
     $edit = array();
     $new_title = $this->randomName(8);
     $edit['title'] = $new_title;
@@ -346,7 +320,8 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     $field_text[] = $edit['field_sfhe_text[und][0][value]'] = $this->randomName(8);
     $this->drupalPost("node/1/edit", $edit, t('Save'));
 
-    // // Here's the real test.
+
+    //// Here's the real test.
 
     // Make a new node.
     $edit = array();
@@ -401,8 +376,7 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     // Check the states page.
     $this->drupalGet('node/2/revisions-state-flow-states');
 
-    // Make sure that the list handler is present.
-    // (state_flow_entity_handler_field_state_flow_states_history_list.inc)
+    // Make sure that the list handler is present. (state_flow_entity_handler_field_state_flow_states_history_list.inc)
     // @todo, shouldn't this be xpath?
     $this->assertRaw('views-field-history-list');
 
@@ -491,7 +465,9 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     $tr = $this->xpath($xpath_string, $xpath_replacements);
     $this->assertEqual(count($tr), 1, 'There is a table row with for revision 6. It is in a Draft state and not in the node table.');
 
-    // Test the unpublish step and verify the Views results.
+    /**
+     * Test the unpublish step and verify the Views results.
+     */
 
     // Unpublish the whole node.
     $edit = array();
@@ -522,9 +498,9 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
   }
 
   /**
-   * Test just the unpublish event, verify access/non-access of anonymous users.
+   * Test the just the unpublish event and verify access/non-access for anonymous users.
    */
-  public function testUnpublish() {
+  function testUnpublish() {
 
     $edit = array();
     $edit['title'] = $this->randomName(8);
@@ -579,65 +555,10 @@ class StateFlowWebTestCase extends DrupalWebTestCase {
     $this->drupalGet('node/1');
     $this->assertResponse(403, 'The node is not publicly accessible.');
   }
-
-  /**
-   * Test the make new revision checkbox.
-   */
-  public function testRevisionCheckbox() {
-
-    // Make a new node.
-    $edit = array();
-    $new_title = $this->randomName(8);
-    $edit['title'] = $new_title;
-    $edit['event'] = 'keep in draft';
-    $edit['revision'] = TRUE;
-    $edit['event_comment'] = $this->randomName(8);
-    $this->drupalPost("node/add/page", $edit, t('Save'));
-
-    // Make a revision of the first node.
-    $edit = array();
-    $new_title = $this->randomName(8);
-    $edit['title'] = $new_title;
-    $edit['event'] = 'publish';
-    $edit['revision'] = TRUE;
-    $edit['event_comment'] = $this->randomName(8);
-    $this->drupalPost("node/1/edit", $edit, t('Save'));
-
-    // Then change the state of the node without making a revision.
-    $edit = array();
-    $new_title = $this->randomName(8);
-    $edit['title'] = $new_title;
-    $edit['event'] = 'unpublish';
-    $edit['revision'] = FALSE;
-    $edit['event_comment'] = $this->randomName(8);
-    $this->drupalPost("node/1/edit", $edit, t('Save'));
-
-    // Check to make sure that there are 3 database records for the 3 state
-    // changes.
-    $state_flow_history = db_select('state_flow_history', 'sfh')
-      ->fields('sfh')
-      ->condition('entity_id', 1)
-      ->condition('entity_type', 'node')
-      ->execute()
-      ->fetchAll();
-
-    $this->assertEqual(count($state_flow_history), 3, t('There are 3 changes to the revision state.'));
-
-    // Check to make sure there are 2 database records for the 2 revisions of
-    // the node.
-    $state_flow_history = db_select('state_flow_states', 'sfs')
-      ->fields('sfs')
-      ->condition('entity_id', 1)
-      ->condition('entity_type', 'node')
-      ->execute()
-      ->fetchAll();
-
-    $this->assertEqual(count($state_flow_history), 2, t('There are 2 revisions.'));
-  }
 }
 
 /**
- * Tests for State Flow when nodes are created before installing state machine.
+ * Tests for the State Flow when there are nodes created before installing state machine.
  */
 class StateFlowWebTestCaseInstallOnExistingSite extends DrupalWebTestCase {
   public static function getInfo() {
@@ -648,39 +569,22 @@ class StateFlowWebTestCaseInstallOnExistingSite extends DrupalWebTestCase {
     );
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setup() {
+  function setup() {
     parent::setup();
-    // Create a revision for nodes by default.
-    foreach (array('page', 'article') as $node_type) {
-      $node_options = variable_get('node_options_' . $node_type, array('status', 'promote'));
-      $node_options[] = 'revision';
-      variable_set('node_options_' . $node_type, $node_options);
-    }
-
-    $web_user = $this->drupalCreateUser(array(
-      'administer nodes',
-      'bypass node access',
-      'administer modules',
-    ));
+    $web_user = $this->drupalCreateUser(array('administer nodes', 'bypass node access', 'administer modules'));
     $this->drupalLogin($web_user);
   }
 
   /**
-   * Test adding node by the UI doesn't create NULL records.
-   *
    * Test that when an node is added in the UI, there are no NULL records in
    * the state_flow_states table.
    */
-  public function testStateFlowPreexistingNode() {
+  function testStateFlowPreexistingNode() {
     $node = $this->drupalCreateNode();
     $unpublished_node = $this->drupalCreateNode(array('status' => 0));
 
     // @todo, Some time between Ctools 1.0 and 1.2, this module_enable() call
-    // stopped working for the tests below. The UI enabling of the modules
-    // works.
+    // stopped working for the tests below. The UI enabling of the modules works.
     // module_enable(array('state_machine', 'state_flow', 'state_flow_entity'));
     $edit = array(
       'modules[State Machine][state_flow][enable]' => TRUE,
@@ -690,66 +594,13 @@ class StateFlowWebTestCaseInstallOnExistingSite extends DrupalWebTestCase {
     );
     $this->drupalPost("admin/modules", $edit, t('Save configuration'));
     cache_clear_all();
-    $this->drupalGet("node/add/article");
-    // For some reason clearing the static cache after the Get request works
-    // better.
     drupal_static_reset();
+    $this->drupalGet("node/add/article");
     // /end cache clearing gymnastics.
 
     $machine = state_flow_entity_load_state_machine($node, 'node');
     $unpublished_machine = state_flow_entity_load_state_machine($unpublished_node, 'node');
     $this->assert('published' === $machine->get_current_state(), 'Nodes published before installing are considered in the "published" state.');
     $this->assert('draft' === $unpublished_machine->get_current_state(), 'Nodes unpublished before installing are considered in the "draft" state.');
-  }
-}
-
-/**
- * Tests for the State Flow when there are nodes created before installing state machine.
- */
-class StateFlowWebTestFiles extends FileFieldTestCase {
-  public static function getInfo() {
-    return array(
-      'name' => 'StateFlow tests for files',
-      'description' => 'Test how State Flow behaves with files attached to nodes.',
-      'group' => 'State Machine',
-    );
-  }
-
-  function setup() {
-    parent::setup('state_machine', 'state_flow', 'state_flow_entity');
-    // Create a revision for nodes by default.
-    foreach (array('page', 'article') as $node_type) {
-      $node_options = variable_get('node_options_' . $node_type, array('status', 'promote'));
-      $node_options[] = 'revision';
-      variable_set('node_options_' . $node_type, $node_options);
-    }
-    $web_user = $this->drupalCreateUser(array('administer nodes', 'bypass node access', 'manage content workflow'));
-    $this->drupalLogin($web_user);
-  }
-
-  /**
-   * Test that when an node is added in the UI, there are no NULL records in
-   * the state_flow_states table.
-   */
-  function testStateFlowImageOnForwardRevision() {
-
-    // Create node, straight to published.
-    $edit = array();
-    $edit['event'] = 'publish';
-    $edit['event_comment'] = $this->randomName(8);
-    $edit['title'] = $title = $this->randomName(8);
-    $this->drupalPost("node/add/article", $edit, t('Save'));
-
-    // Edit node, add image, save as DRAFT
-    $file = $this->getTestFile('image');
-    $edit = array();
-    $edit['event'] = 'to draft';
-    $edit['event_comment'] = $this->randomName(8);
-    $edit['files[field_image_' . LANGUAGE_NONE . '_0]'] = drupal_realpath($file->uri);
-    $this->drupalPost("node/1/edit", $edit, t('Save'));
-
-    // Verify there is an image on the revision page.
-    $this->drupalGet("node/1/revisions/2/view");
-    $this->assertRaw('image-test.png');
   }
 }

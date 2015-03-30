@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Tonga.
- */
+// Tonga
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_to() {
   return array(
     'H' => "Ha'apai",

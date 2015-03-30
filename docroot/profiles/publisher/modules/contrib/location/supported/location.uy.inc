@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Uruguay.
- */
+// Uruguay
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_uy() {
   return array(
     'AR' => "Artigas",

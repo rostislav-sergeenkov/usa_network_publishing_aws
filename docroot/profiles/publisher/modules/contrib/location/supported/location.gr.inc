@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Greece.
- */
+// Greece
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_gr() {
   return array(
     'AT' => "Attica",
@@ -22,7 +16,7 @@ function location_province_list_gr() {
     'SA' => "South Aegean",
     'TH' => "Thessaly",
     'WG' => "West Greece",
-    'WM' => "West Macedonia",
+    'WM' => "West Macedonia"
   );
 }
 
@@ -38,9 +32,6 @@ function location_bounds_gr() {
   );
 }
 
-/**
- * Google link.
- */
 function location_map_link_gr_google($location = array()) {
   $query_params = array();
 
@@ -49,11 +40,11 @@ function location_map_link_gr_google($location = array()) {
       $query_params[] = $location[$field];
     }
   }
-  // Country always exists.
+  //country always exists
   if (count($query_params) != 0 && isset($location['country']) && $location['country'] != '') {
     $query_params[] = $location['country'];
   }
-  // When no address provided, but coordinates do, link to coordinates.
+  //when no address provided, but coordinates do, link to coordinates
   if (count($query_params) == 0) {
     foreach (array('latitude', 'longitude') as $field) {
       if (isset($location[$field])) {
@@ -70,22 +61,16 @@ function location_map_link_gr_google($location = array()) {
   }
 }
 
-/**
- * Providers.
- */
 function location_map_link_gr_providers() {
   return array(
     'google' => array(
       'name' => t('Google Maps'),
       'url' => 'http://maps.google.gr',
-      'tos' => 'http://www.google.gr/help/terms_maps.html',
-    ),
+      'tos' => 'http://www.google.gr/help/terms_maps.html'
+    )
   );
 }
 
-/**
- * Default providers.
- */
 function location_map_link_gr_default_providers() {
   return array('google');
 }

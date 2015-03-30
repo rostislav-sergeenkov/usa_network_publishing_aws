@@ -20,6 +20,13 @@ function pub_gigya_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_login_enabled';
+  $strongarm->value = 0;
+  $export['gigya_login_enabled'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'gigya_network_list';
   $strongarm->value = 'Facebook, Twitter';
   $export['gigya_network_list'] = $strongarm;

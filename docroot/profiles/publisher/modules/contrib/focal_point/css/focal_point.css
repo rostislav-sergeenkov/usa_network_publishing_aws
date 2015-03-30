@@ -18,11 +18,6 @@
   top: -.375em;
   left: -.375em;
 }
-.focal-point-wrapper {
-  display: inline-block;
-  position: relative;
-  direction: ltr;
-}
 .focal-point-preview-link {
   display: block;
 }

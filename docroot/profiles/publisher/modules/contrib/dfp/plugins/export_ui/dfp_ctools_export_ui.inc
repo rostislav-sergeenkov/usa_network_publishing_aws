@@ -89,18 +89,10 @@ function dfp_tag_form(&$form, &$form_state) {
     ),
   ) + $form['info']['machinename'];
   unset($form['info']);
-  $form['tag_settings']['out_of_page'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Out of page (interstitial) ad slot'),
-    '#description' => t('Use Context module to place the Ad slot on the page.'),
-    '#default_value' => isset($tag->settings['out_of_page']) ? $tag->settings['out_of_page'] : 0,
-    '#parents' => array('settings', 'out_of_page'),
-    '#weight' => 0,
-  );
   $form['tag_settings']['size'] = array(
     '#type' => 'textfield',
     '#title' => t('Size(s)'),
-    '#description' => t('Example: 300x600,300x250. For Out Of Page slots, use 0x0'),
+    '#description' => t('Example: 300x600,300x250'),
     '#required' => TRUE,
     '#maxlength' => 64,
     '#default_value' => $tag->size,
@@ -141,7 +133,7 @@ function dfp_tag_form(&$form, &$form_state) {
   $form['tag_display_options']['block'] = array(
     '#type' => 'checkbox',
     '#title' => t('Create a block for this ad tag'),
-    '#description' => t('Display this ad in a block configurable at !url.', array('!url' => l(t('admin/structure/block'), 'admin/structure/block'))),
+    '#description' => t('Display this ad in a block configurable at !url.', array('!url' => l(t('admin/build/block'), 'admin/build/block'))),
     '#default_value' => $tag->block,
   );
   $form['tag_display_options']['short_tag'] = array(
@@ -151,17 +143,6 @@ function dfp_tag_form(&$form, &$form_state) {
     '#default_value' => $tag->settings['short_tag'],
     '#parents' => array('settings', 'short_tag'),
   );
-
-  // Responsive settings.
-  $form['breakpoint_settings'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Responsive Settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-    '#group' => 'settings',
-  );
-  $existing_breakpoints = _dfp_breakpoints_get_existing($form_state, isset($tag->settings['breakpoints']) ? $tag->settings['breakpoints'] : array());
-  _dfp_breakpoints_form($form['breakpoint_settings'], $existing_breakpoints);
 
   // Targeting options.
   $form['targeting_settings'] = array(
@@ -244,6 +225,7 @@ function dfp_tag_form(&$form, &$form_state) {
       '#parents' => array('settings', 'adsense_colors', $setting),
     );
   }
+
 }
 
 /**

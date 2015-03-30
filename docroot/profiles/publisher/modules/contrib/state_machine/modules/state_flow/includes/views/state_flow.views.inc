@@ -31,9 +31,9 @@ function state_flow_views_data_alter(&$data) {
       array(
         'field' => 'entity_type',
         'value' => 'node',
-        'operator' => '=',
-      ),
-    ),
+        'operator' => '='
+      )
+    )
   );
 
   $data['state_flow_states']['table']['join']['node'] = array(
@@ -44,9 +44,9 @@ function state_flow_views_data_alter(&$data) {
       array(
         'field' => 'entity_type',
         'value' => 'node',
-        'operator' => '=',
-      ),
-    ),
+        'operator' => '='
+      )
+    )
   );
 
   $data['state_flow_history']['table']['join']['node_revision'] = array(
@@ -63,9 +63,9 @@ function state_flow_views_data_alter(&$data) {
       array(
         'field' => 'entity_type',
         'value' => 'node',
-        'operator' => '=',
-      ),
-    ),
+        'operator' => '='
+      )
+    )
   );
 
   $data['state_flow_history']['revision_id']['relationship'] = array(
@@ -73,19 +73,19 @@ function state_flow_views_data_alter(&$data) {
     'label' => t('Content Revision'),
     'base' => 'node_revision',
     'base field' => 'vid',
-    'type' => 'INNER',
+   'type' => 'INNER',
   );
 
   $data['state_flow_history']['nid'] = array(
-    'title' => t('Node'),
-    'help' => t('The node according to the State Flow.'),
-    'relationship' => array(
-      'base' => 'node',
-      'field' => 'entity_id',
-      'handler' => 'views_handler_relationship',
-      'label' => t('Node'),
-    ),
-  );
+     'title' => t('Node'),
+     'help' => t('The node according to the State Flow.'),
+     'relationship' => array(
+         'base' => 'node',
+         'field' => 'entity_id',
+         'handler' => 'views_handler_relationship',
+         'label' => t('Node'),
+     ),
+   );
 
   $data['node_revision']['is_published'] = array(
     'real field' => 'vid',

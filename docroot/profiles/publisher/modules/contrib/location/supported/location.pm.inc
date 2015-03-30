@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Saint Pierre and Miquelon.
- */
+// Saint Pierre and Miquelon
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_pm() {
   return array(
     'P' => "Saint Pierre",

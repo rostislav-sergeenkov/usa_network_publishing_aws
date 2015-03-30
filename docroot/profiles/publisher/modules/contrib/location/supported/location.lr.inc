@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Liberia.
- */
+// Liberia
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_lr() {
   return array(
     'BI' => "Bomi",

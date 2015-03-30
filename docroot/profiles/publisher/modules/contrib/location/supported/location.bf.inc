@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Burkina Faso.
- */
+// Burkina Faso
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_bf() {
   return array(
     'BAL' => "Bale",

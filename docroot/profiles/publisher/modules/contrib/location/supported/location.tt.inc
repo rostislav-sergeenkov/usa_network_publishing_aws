@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Trinidad and Tobago.
- */
+// Trinidad and Tobago
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_tt() {
   return array(
     'CT' => "Couva/Tabaquite/Talparo",

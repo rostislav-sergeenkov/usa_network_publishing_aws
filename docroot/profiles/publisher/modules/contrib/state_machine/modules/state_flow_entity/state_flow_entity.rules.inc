@@ -110,7 +110,7 @@ function state_flow_entity_rules_action_info() {
       'event' => array(
         'type' => 'text',
         'label' => t("State Flow Event Machine Name"),
-        // @todo, need a function to get a list of all available transitions.
+        //@todo, need a function to get a list of all available transitions.
         // 'options list' => 'callback_function',
         'restriction' => 'input',
       ),
@@ -135,9 +135,11 @@ function state_flow_entity_rules_action_info() {
       ),
     ),
     'provides' => array(
-      'active_id' => array('type' => 'integer', 'label' => t('Active id')),
+    'active_id' => array('type' => 'integer', 'label' => t('Active id')),
     ),
   );
+
+
 
   return $items;
 }

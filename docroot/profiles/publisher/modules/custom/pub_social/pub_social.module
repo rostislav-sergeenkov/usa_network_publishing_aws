@@ -273,9 +273,7 @@ function pub_social_share_form_submit($form, &$form_state) {
     $node->fb_stream_from_token = variable_get('fb_stream_token');
     $node->fb_stream_message = $form_state['values']['facebook']['stream_post'];
 
-    // Since this is not a node insert or update, we can skip the shutdown registration,
-    // and directly invoke fb_stream_post_on_shutdown().
-    fb_stream_post_on_shutdown($node);
+    module_invoke('fb_stream','node_insert', $node);
   }
 
   $commands[] = ctools_modal_command_dismiss();

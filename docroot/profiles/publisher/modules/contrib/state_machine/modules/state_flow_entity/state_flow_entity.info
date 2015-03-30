@@ -24,9 +24,9 @@ files[] = includes/views/state_flow_entity_handler_field_events_form.inc
 files[] = includes/views/state_flow_entity_handler_area_events_form.inc
 files[] = includes/views/state_flow_entity_handler_field_available_events.inc
 
-; Information added by Drupal.org packaging script on 2015-03-08
+; Information added by drupal.org packaging script on 2013-05-07
 version = "7.x-3.x-dev"
 core = "7.x"
 project = "state_machine"
-datestamp = "1425795192"
+datestamp = "1367890083"
 

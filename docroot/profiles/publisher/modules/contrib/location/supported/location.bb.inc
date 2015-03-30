@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Barbados.
- */
+// Barbados
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_bb() {
   return array(
     'CC' => "Christ Church",

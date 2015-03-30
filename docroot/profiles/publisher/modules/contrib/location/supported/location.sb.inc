@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Solomon Islands.
- */
+// Solomon Islands
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_sb() {
   return array(
     'CE' => "Central",

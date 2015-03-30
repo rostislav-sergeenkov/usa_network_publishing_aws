@@ -52,8 +52,7 @@ function pub_tv_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'field_collection_item-field_episode_credit-field_episode_credit_person'
+  // Exported field_instance: 'field_collection_item-field_episode_credit-field_episode_credit_person'
   $field_instances['field_collection_item-field_episode_credit-field_episode_credit_person'] = array(
     'bundle' => 'field_episode_credit',
     'default_value' => NULL,
@@ -95,8 +94,7 @@ function pub_tv_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'field_collection_item-field_episode_credit-field_episode_credit_role'
+  // Exported field_instance: 'field_collection_item-field_episode_credit-field_episode_credit_role'
   $field_instances['field_collection_item-field_episode_credit-field_episode_credit_role'] = array(
     'bundle' => 'field_episode_credit',
     'default_value' => NULL,
@@ -805,9 +803,9 @@ function pub_tv_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'pub_relationships_tv_enhanced',
+        'module' => NULL,
         'settings' => array(),
-        'type' => 'pub_relationships_links',
+        'type' => 'pub_tv_relationship_formatter',
         'weight' => 10,
       ),
       'teaser' => array(
@@ -1275,7 +1273,6 @@ function pub_tv_field_default_field_instances() {
     'label' => 'External Links',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,

@@ -241,6 +241,15 @@ function borealis_ri_responsive_image_styles(&$vars) {
 function borealis_ri_image_style_list(&$variables) {
   $styles = $variables['styles'];
 
+  $borealis_children = variable_get('borealis_ri_children', array());
+  $sizes = variable_get('borealis_responsive_builds', '');
+
+  foreach ($borealis_children as $style) {
+    foreach ($sizes as $key => $value) {
+      unset($styles['borealis_' . $style . '_' . $key]);
+    }
+  }
+
   $header = array(t('Style name'), t('Settings'), array('data' => t('Operations'), 'colspan' => 3));
   $rows = array();
   foreach ($styles as $style) {

@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Turks and Caicos Islands.
- */
+// Turks and Caicos Islands
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_tc() {
   return array(
     'AC' => "Ambergris Cays",

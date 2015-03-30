@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Saint Kitts and Nevis.
- */
+// Saint Kitts and Nevis
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_kn() {
   return array(
     'CCN' => "Christ Church Nichola Town",

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Template for a rendered state_flow_history_entity.
+ *   Template for a rendered state_flow_history_entity.
  */
 ?>
 <?php

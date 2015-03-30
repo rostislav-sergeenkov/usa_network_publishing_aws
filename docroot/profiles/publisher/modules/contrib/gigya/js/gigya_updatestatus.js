@@ -1,6 +1,3 @@
-/**
- * Gigya update user status.
- */
 (function ($) {
   /**
    * Limits update status to 140 characters.

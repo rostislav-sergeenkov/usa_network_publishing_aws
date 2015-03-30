@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Kazakhstan.
- */
+// Kazakhstan
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_kz() {
   return array(
     'ALA' => "Almaty",

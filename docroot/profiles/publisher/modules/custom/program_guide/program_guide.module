@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * The module file for Program Guide.
- */
 
 /**
  * Implements hook_menu().
@@ -61,8 +57,12 @@ function program_guide_cron() {
     if ($program_data) {
       $queue = DrupalQueue::get('programGuideQueue');
 
-      foreach ($program_data['entries'] as $entry) {
-        $queue->createItem($entry);
+      foreach($program_data['entries'] as $entry) {
+        // Check if this program has already been imported at an earlier date.
+        $guid = $entry['pllisting$program']['pl$guid'];
+        if (!program_guide_program_exists($guid)) {
+          $queue->createItem($entry);
+        }
       }
     }
 
@@ -116,46 +116,28 @@ function program_guide_program_save($program) {
   $values['created'] = time();
   $values['raw'] = $program;
 
-  if (program_guide_program_exists($values['guid'])) {
-    $entities = entity_load('program', array($values['guid']));
-
-    $program = $entities[$values['guid']];
-    $program->program_guid = $values['program_guid'];
-    $program->title = $values['title'];
-    $program->parent_title = $values['parent_title'];
-    $program->start_time = $values['start_time'];
-    $program->end_time = $values['end_time'];
-    $program->run_time = $values['run_time'];
-    $program->series_episode_number = $values['series_episode_number'];
-    $program->season_episode_number = $values['season_episode_number'];
-    $program->season_number = $values['season_number'];
-    $program->raw = $values['raw'];
-  }
-  else {
+  if (!program_guide_program_exists($values['guid'])) {
     $program = entity_create('program', $values);
   }
-
   entity_save('program', $program);
 }
 
 /**
  * Given a guid check if a program entity exists.
  *
- * @param string $guid
+ * @param $guid
  *   The unique identifier of the program in question.
  *
  * @return bool
- *   TRUE if the particular program already exists in the database.
  */
 function program_guide_program_exists($guid) {
-  return (bool) db_query('SELECT p.guid FROM {programs} p WHERE p.guid = :guid', array(':guid' => $guid))->rowCount();
+  return db_query('SELECT p.guid FROM {programs} p WHERE p.guid = :guid', array(':guid' => $guid))->rowCount();
 }
 
 /**
  * Import program guide data from the feed.
  *
- * @return object|FALSE
- *   Returns the imported data object or FALSE on failure.
+ * @return object | FALSE
  */
 function _program_guide_import_data() {
   $feed_url = variable_get('program_guide_data_url', '');

@@ -1,25 +1,22 @@
 <?php
 
 /**
- * @file
- * Standard views.inc for pub_theplatform.
+ * @file pub_theplatform.views.inc
  */
 
 /**
- * Implements hook_views_default_views().
+ * Implementation of hook_views_default_views().
  */
 function pub_theplatform_views_default_views() {
-  // We use the same media module function, since we depend on that heavily.
-  // Otherwise we could roll our own.
+  // We use the same media module function, since we depend on that heavily.  Otherwise we could roll our own.
   return media_load_all_exports('pub_theplatform', 'views', 'view.inc', 'view');
 }
 
 /**
  * Implements hook_views_data().
  *
- * Note, that for items you'd like to add that should be media$, they're media_
- * because of how Views does object access. Ditto for the plmedia$ items.
- * Thank you XML translations....
+ * Note, that for items you'd like to add that should be media$, they're media_ because of how Views does object access.
+ * Ditto for the plmedia$ items.  Thank you XML translations....
  */
 function pub_theplatform_views_data() {
   $data = array();
@@ -34,7 +31,7 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // Reference ID.
+  // Reference ID
   $data['thePlatform']['guid'] = array(
     'title' => t('Reference ID'),
     'help' => t('Reference ID in thePlatform.'),
@@ -53,7 +50,7 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // Title.
+  // Title
   $data['thePlatform']['title'] = array(
     'title' => t('Title'),
     'help' => t('Title of the video in thePlatform.'),
@@ -69,7 +66,7 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // Description.
+  // Description
   $data['thePlatform']['description'] = array(
     'title' => t('Description'),
     'help' => t('Description of the video in thePlatform.'),
@@ -78,7 +75,7 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // Short Description.
+  // Short Description
   $data['thePlatform']['pl1_shortDescription'] = array(
     'title' => t('Short Description'),
     'help' => t('Short description of the video in thePlatform.'),
@@ -91,7 +88,7 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // Categories.
+  // Categories
   $data['thePlatform']['media_categories'] = array(
     'title' => t('Categories'),
     'help' => t('thePlatform categories that apply to this video.'),
@@ -106,7 +103,7 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // Thumbnails.
+  // Thumbnails
   $data['thePlatform']['plmedia_defaultThumbnailUrl'] = array(
     'title' => t('Thumbnail'),
     'help' => t('thePlatform default thumbnail for this video.'),
@@ -115,7 +112,7 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // Runtime.
+  // Runtime
   $data['thePlatform']['custom_runtime'] = array(
     'title' => t('Runtime'),
     'help' => t('Runtime of the clip in seconds.'),
@@ -124,7 +121,7 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // PubDate.
+  // pubDate
   $data['thePlatform']['pubDate'] = array(
     'title' => t('pubDate'),
     'help' => t('The publication date from the feed.'),
@@ -136,10 +133,10 @@ function pub_theplatform_views_data() {
     ),
   );
 
-  // FullEpisode.
+  // fullEpisode
   $data['thePlatform']['pl1_fullEpisode'] = array(
-    'title' => t('Full Episode'),
-    'help' => t('The full episode flag.'),
+    'title' => t('Full Epsiode'),
+    'help' => t('The full epsiode flag.'),
     'argument' => array(
       'handler' => 'pub_theplatform_views_handler_argument_customvalue',
     ),

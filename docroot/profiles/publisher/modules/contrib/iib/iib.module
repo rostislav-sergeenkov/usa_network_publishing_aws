@@ -59,46 +59,13 @@ function iib_set_item($renderable) {
  * other modules to add data throughout the page load process.
  */
 function iib_page_alter(&$page) {
-  $iib_page_top = &drupal_static('iib_page_top', array());
-
   if (iib_should_show_view()) {
     $items = iib_get_page_data();
-    if (empty($items)) {
-      return;
-    }
-    if (!module_exists('navbar')) {
-      if (iib_is_hidden()) {
-        $page['page_top']['iib'] = iib_create_render_array($items, array('page-iib', 'iib-hidden'));
-      }
-      else {
-        $page['page_top']['iib'] = iib_create_render_array($items, array('page-iib'));
-      }
-      _iib_add_libraries();
-    }
-    else {
-      if (iib_is_hidden()) {
-        $iib_page_top = iib_create_render_array($items, array('page-iib', 'iib-hidden'));
-      }
-      else {
-        $iib_page_top = iib_create_render_array($items, array('page-iib'));
-      }
+    if (!empty($items)) {
+      $page['page_top']['iib'] = iib_create_render_array($items, array('page-iib'));
     }
   }
 }
-
-/**
- * Should the IIB be hidden
- *
- * @return bool
- *
- * @see iib.api.php
- */
-function iib_is_hidden() {
-  $hidden = path_is_admin($_GET['q']);
-  drupal_alter('iib_hidden', $hidden);
-  return $hidden;
-}
-
 
 /**
  * Retreive entity data for IIB.
@@ -133,18 +100,8 @@ function iib_entity_view($entity, $type, $view_mode, $langcode) {
     $items = iib_get_entity_data($entity, $type, $view_mode);
     if (!empty($items)) {
       $entity->content['iib'] = iib_create_render_array($items, array('entity-iib'));
-      _iib_add_libraries();
     }
   }
-}
-
-/**
- * A helper function to add js and css to the page.
- *
- */
-function _iib_add_libraries() {
-  drupal_add_css(drupal_get_path('module', 'iib') . '/css/iib.css');
-  drupal_add_js(drupal_get_path('module', 'iib') . '/js/iib.js');
 }
 
 /**
@@ -173,9 +130,7 @@ function iib_create_render_array($items, $classes) {
  *  A boolean representing whether or not the iib should be shown
  */
 function iib_should_show_view() {
-  $should_view = user_access('view interactive information bar');
-  drupal_alter('iib_view', $should_view);
-  return $should_view;
+  return user_access('view interactive information bar');
 }
 
 /**
@@ -213,99 +168,4 @@ function iib_hook_info() {
     );
   }
   return $hooks;
-}
-
-/**
- * Implements template_preprocess_toolbar()
- *
- * Place a link in the toolbar
- */
-function iib_preprocess_toolbar(&$vars) {
-  $vars['toolbar']['toolbar_drawer'][0]['iib'] = array(
-    '#type' => 'link',
-    '#title' => t('Information Bar'),
-    '#href' => '',
-    '#options' => array(
-      'attributes' => array(
-        'id' => 'iib-toolbar-link',
-        'class' => 'iib-trigger',
-      ),
-    ),
-  );
-}
-
-/**
- * Implements hook_library().
- */
-function iib_library() {
-  $path = drupal_get_path('module', 'iib');
-  $options = array(
-    'scope' => 'header',
-    'defer' => FALSE,
-  );
-  $libraries['iib-navbar'] = array(
-    'title' => 'Interactive information bar',
-    'version' => VERSION,
-    'css' => array(
-      $path . '/css/iib.navbar.base.css',
-      $path . '/css/iib.navbar.icons.css',
-      $path . '/css/iib.navbar.theme.css',
-    ),
-    'js' => array(
-      $path . '/js/iib.navbar.js' => $options,
-    ),
-    'dependencies' => array(
-      array('system', 'jquery'),
-      array('navbar', 'underscore'),
-      array('navbar', 'backbone'),
-    ),
-  );
-  return $libraries;
-}
-
-/**
- * Implements hook_navbar().
- */
-function iib_navbar() {
-  $items = array();
-  $data = iib_get_page_data();
-  $iib_page_top = &drupal_static('iib_page_top', array());
-  if (!empty($data)) {
-    $items['iib_navbar'] = array(
-      '#type' => 'navbar_item',
-      'tab' => array(
-        'trigger' => array(
-            '#theme' => 'html_tag',
-            '#tag' => 'button',
-            '#value' => t('iib'),
-            '#value_prefix' => '<span class="element-invisible">',
-            '#value_suffix' => '</span>',
-            '#attributes' => array(
-              'title' => t('Interactive Preview'),
-              'class' => array('iib-icon', 'iib-icon-iib', 'iib-trigger'),
-            ),
-        ),
-        'iib_options' => array(
-          '#theme' => 'html_tag',
-          '#tag' => 'div',
-          '#attributes' => array(
-            'class' => array('iib-options', 'item-list'),
-          ),
-          '#value' => render($iib_page_top),
-        ),
-      ),
-      '#wrapper_attributes' => array(
-        'id' => 'iib-navbar-tab',
-        'class' => array('navbar-tab-iib'),
-      ),
-      '#weight' => 190,
-      '#access' => iib_should_show_view(),
-      '#attached' => array(
-        'library' => array(
-          array('iib', 'iib-navbar'),
-        ),
-      ),
-    );
-  }
-  return $items;
 }

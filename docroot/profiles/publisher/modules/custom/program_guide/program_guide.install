@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * The install file for program_guide.
- */
 
 /**
  * Implements hook_uninstall().
@@ -23,17 +19,17 @@ function program_guide_schema() {
     'fields' => array(
       'guid' => array(
         'description' => 'The primary identifier for this program airing at the given time.',
-        'type' => 'varchar',
-        'length' => '32',
-        'default' => '',
+        'type' => 'int',
+        'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => 0,
       ),
       'program_guid' => array(
         'description' => 'The primary identifier for this program regardless of when it airs.',
-        'type' => 'varchar',
-        'length' => '32',
-        'default' => '',
+        'type' => 'int',
+        'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => 0,
       ),
       'title' => array(
         'type' => 'varchar',
@@ -118,22 +114,4 @@ function program_guide_requirements($phase) {
   }
 
   return $requirements;
-}
-
-/**
- * Convert the guid column from an int to a varchar to support strings.
- */
-function program_guide_update_7000() {
-  db_change_field('programs', 'guid', 'guid', array(
-    'type' => 'varchar',
-    'length' => 32,
-    'not null' => TRUE,
-    'default' => '',
-  ));
-  db_change_field('programs', 'program_guid', 'program_guid', array(
-    'type' => 'varchar',
-    'length' => 32,
-    'not null' => TRUE,
-    'default' => '',
-  ));
 }

@@ -1,4 +1,4 @@
-name = Publisher State Flow (deprecated)
+name = Publisher State Flow
 description = General modifications to compliment State Flow.
 package = Publisher
 core = 7.x

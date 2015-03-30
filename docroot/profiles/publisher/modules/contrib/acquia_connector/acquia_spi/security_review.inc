@@ -544,7 +544,7 @@ function acquia_spi_security_review_check_executable_php($last_check = NULL) {
     $contents = file_get_contents($directory . '/.htaccess');
     // Text from includes/file.inc.
     $expected = file_htaccess_lines(FALSE);
-    if (trim($contents) !== trim($expected)) {
+    if ($contents !== $expected) {
       $result = FALSE;
       $check_result_value[] = 'incorrect_htaccess';
     }

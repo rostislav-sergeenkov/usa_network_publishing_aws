@@ -5,6 +5,7 @@ site."
 core = 7.x
 version = 7.x-2.0
 package = Publisher
+dependencies[] = entitycache
 dependencies[] = file_entity
 dependencies[] = file_admin
 dependencies[] = feature_pub_mpx_views

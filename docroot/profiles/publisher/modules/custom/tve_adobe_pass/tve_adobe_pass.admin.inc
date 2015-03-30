@@ -116,6 +116,9 @@ function tve_adobe_pass_admin_form($form, &$form_state) {
  * Additional form submit callback for Adobe Pass settings form.
  *
  * Tests the Adobe Pass configurations.
+ *
+ * @param array $form
+ * @param array $form_state
  */
 function tve_adobe_pass_admin_form_submit_test_configuration($form, &$form_state) {
   $configurations = $form_state['values'];
@@ -123,7 +126,7 @@ function tve_adobe_pass_admin_form_submit_test_configuration($form, &$form_state
   $accessenabler_loc = $configurations['tve_adobe_pass_accessenabler_loc'];
   $response = drupal_http_request($accessenabler_loc);
 
-  if (empty($response->data)) {
+  if (isset($response->error)) {
     drupal_set_message(t('Access Enabler Location is invalid.'), 'error');
     return;
   }
@@ -151,18 +154,13 @@ function tve_adobe_pass_admin_form_submit_test_configuration($form, &$form_state
 }
 
 /**
- * Validates the current site domain.
- *
- * Domains are validated against the white listed domains in the Adobe config.
+ * Validates the current site domain with the white listed domains in Adobe config.
+ * Returns true if domain is whitelisted.
  *
  * @param string $current_domain
- *   The domain to validate.
- *
  * @param array $white_listed_domains
- *   The domains with which to validate against.
  *
  * @return bool
- *   TRUE if domain is white listed.
  */
 function _tve_adobe_pass_validate_domain($current_domain, $white_listed_domains) {
   foreach ($white_listed_domains as $value) {
@@ -194,7 +192,12 @@ function tve_adobe_pass_admin_page_error_logs() {
 }
 
 /**
- * Confirmation form builder.
+ * Page callback for the "admin/config/services/adobe-pass/error-logs/cleanup" path.
+ *
+ * @param $form
+ * @param $form_state
+ *
+ * @return mixed
  */
 function tve_adobe_pass_admin_page_error_logs_cleanup_confirm($form, &$form_state) {
   return confirm_form(
@@ -208,9 +211,11 @@ function tve_adobe_pass_admin_page_error_logs_cleanup_confirm($form, &$form_stat
 }
 
 /**
- * Confirmation form submit function.
+ * Error logs cleanup confirmation callback.
+ * Deletes the log files.
  *
- * Deletes the error log files.
+ * @param $form
+ * @param $form_state
  */
 function tve_adobe_pass_admin_page_error_logs_cleanup_confirm_submit($form, &$form_state) {
   $files = file_scan_directory(_tve_adobe_pass_error_log_get_dir(), '/.*\.csv/');

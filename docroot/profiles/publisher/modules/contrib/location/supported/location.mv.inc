@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Maldives.
- */
+// Maldives
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_mv() {
   return array(
     'THU' => "Thiladhunmathi Uthuru",

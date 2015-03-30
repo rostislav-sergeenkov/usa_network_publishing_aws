@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Albania.
- */
+// Albania
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_al() {
   return array(
     'BR' => "Berat",

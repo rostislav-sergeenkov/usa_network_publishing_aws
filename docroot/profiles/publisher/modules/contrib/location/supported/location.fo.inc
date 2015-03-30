@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Faroe Islands.
- */
+// Faroe Islands
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_fo() {
   return array();
 }

@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Latvia.
- */
+// Latvia
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_lv() {
   return array(
     'AIZ' => "Aizkraukles Rajons",

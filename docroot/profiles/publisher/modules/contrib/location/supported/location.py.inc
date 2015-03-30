@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Paraguay.
- */
+// Paraguay
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_py() {
   return array(
     'AG' => "Alto Paraguay",

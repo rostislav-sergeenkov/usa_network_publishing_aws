@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Sudan.
- */
+// Sudan
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_sd() {
   return array(
     'RS' => "Al Bahr al Ahmar",

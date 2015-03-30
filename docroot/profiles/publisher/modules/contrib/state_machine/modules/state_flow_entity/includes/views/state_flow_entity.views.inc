@@ -12,7 +12,7 @@ function state_flow_entity_views_data() {
 
   $data = array();
 
-  // @todo, add vid edit/delete links.
+  // @todo, add vid edit/delete links
 
   $data['state_flow_states']['table']['group'] = t('State Flow States');
   $data['state_flow_states']['table']['join'] = array(
@@ -113,8 +113,8 @@ function state_flow_entity_views_data() {
     ),
   );
 
-  // Since state_flow_entity does not have a table for states, a simple string
-  // filter is used.
+  // since state_flow_entity does not have a table for states,
+  // a simple string filter is used
   $data['state_flow_states']['state'] = array(
     'title' => t('Revision current state'),
     'help' => t('Content moderation state of the entity revisision.'),
@@ -188,10 +188,11 @@ function state_flow_entity_views_data() {
     ),
   );
 
+
   // Begin the state_flow_history section.
   $data['state_flow_history']['table']['group'] = t('State Flow History Record');
   $data['state_flow_history']['table']['base'] = array(
-    'field' => 'hid',
+    'field' =>  'hid',
     'title' => 'state_flow_history_entity',
     'weight' => 100,
     'entity type' => 'state_flow_history_entity',
@@ -237,8 +238,7 @@ function state_flow_entity_views_data() {
     ),
     'argument' => array(
       'handler' => 'views_handler_argument_string',
-      // @todo, what is this? Ah, I don't know how to update that for this case
-      // since state_flow doesn't own it's state names.
+      // @todo, what is this? Ah, I don't know how to update that for this case since state_flow doesn't own it's state names.
       'name table' => 'workbench_moderation_states',
       'name field' => 'label',
     ),
@@ -259,12 +259,12 @@ function state_flow_entity_views_data() {
     ),
     'argument' => array(
       'handler' => 'views_handler_argument_string',
-      // @todo, what is this? Ah, I don't know how to update that for this case
-      // since state_flow doesn't own it's state names.
+      // @todo, what is this? Ah, I don't know how to update that for this case since state_flow doesn't own it's state names.
       'name table' => 'workbench_moderation_states',
       'name field' => 'label',
     ),
   );
+
 
   $data['state_flow_history']['entity_type'] = array(
     'title' => t('Entity Type'),
@@ -322,6 +322,7 @@ function state_flow_entity_views_data() {
       'handler' => 'views_handler_filter_date',
     ),
   );
+
 
   $data['views']['state_flow_entity_handler_area_events_form'] = array(
     'title' => t('State Flow Entity Events Form'),

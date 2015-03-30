@@ -123,6 +123,7 @@ function zeebox_example_create_beans() {
   $beans['zeebox_tv_room']->title = 'Zeebox TV Room example block';
   $beans['zeebox_tv_room']->view_mode = 'default';
 
+
   // Save and inform the user.
   foreach ($beans as $bean) {
     bean_save($bean);

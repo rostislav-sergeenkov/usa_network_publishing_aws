@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * South Georgia and the South Sandwich Islands.
- */
+// South Georgia and the South Sandwich Islands
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_gs() {
   return array();
 }

@@ -4,24 +4,21 @@
 use PHPExif\Exif;
 
 /**
- * Implements hook_menu()
- *
- * @return $items
- * A menu array
+ * Implements hook_menu().
  */
-function simple_exif_menu(){
+function simple_exif_menu() {
 
   $items['admin/config/media/simple-exif'] = array(
     'title' => 'Simple EXIF/IPTC Mappings',
+    'description' => 'Customize mappings of EXIF/IPTC data',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('simple_exif_mappings'),
-    'access arguments' => array(
-      'administer files'
-    ),
-    'description' => t('Customize mappings of EXIF/IPTC data'),
     'access callback' => 'user_access',
+    'access arguments' => array(
+      'administer files',
+    ),
     'file' => 'simple_exif.admin.inc',
-    'type' => MENU_NORMAL_ITEM
+    'type' => MENU_NORMAL_ITEM,
   );
 
   return $items;
@@ -29,46 +26,14 @@ function simple_exif_menu(){
 
 /**
  * Simple Exif Library Loader.
+ *
+ * Composer Manager does not auto-load :-/
  */
 function _simple_exif_load_lib() {
-  if (($library = libraries_load('php-exif')) && !empty($library['loaded'])) {
-    $adapter = new SimpleExifAdapter();
-    $adapter->setToolPath(variable_get('simple_exif_exiftool_path', ''));
-    $reader = new PHPExif\Reader($adapter);
-    return $reader;
-  }
-
-  throw new Exception('PHPExif could not be loaded!');
-}
-
-/**
- * Implements hook_libraries_info().
- */
-function simple_exif_libraries_info() {
-  return array(
-    'php-exif' => array(
-      'name' => 'PHP Exif',
-      'vendor url' => 'https://github.com/Miljar/php-exif',
-      'download url' => 'https://github.com/Miljar/php-exif',
-      'version' => '0.x',
-      'xautoload' => function($adapter) {
-        /**
-         * @var \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter
-         *   An adapter object that can register stuff into the class loader.
-         */
-        $adapter->composerJson('composer.json');
-      },
-      // This should be autoloaded, but libraries was reporting that the library
-      // was not loaded unless I added this. I suspect that libraries doesn't
-      // know about the concept of a library with no explicitly loaded files,
-      // but that's about as much care as I gave it.
-      'files' => array(
-        'php' => array(
-          'lib/PHPExif/Reader.php',
-        ),
-      ),
-    ),
-  );
+  module_load_include('php', 'simple_exif', 'php-exif-master/lib/PHPExif/Reader');
+  module_load_include('php', 'simple_exif', 'php-exif-master/lib/PHPExif/Exif');
+  $reader = new PHPExif\Reader();
+  return $reader;
 }
 
 /**
@@ -188,114 +153,85 @@ function _simple_exif_read_exif_data($FileEntity) {
  * Implements hook_form_alter().
  */
 function simple_exif_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id === 'file_entity_add_upload' && isset($form['#step']) && $form['#step'] == 4) {
-    simple_exif_populate_form_data($form);
-  }
-  if (preg_match('/^media_edit_(\d+)/', $form_id)) {
-    simple_exif_populate_form_data($form);
-  }
-  if ($form_id === 'file_entity_edit') {
-    simple_exif_populate_form_data($form);
-  }
-}
-
-/**
- * Populate exif data where we can.
- */
-function simple_exif_populate_form_data(&$form) {
-  // If we don't have an entity to work with, we can't really do anything.
+  // Make sure we have an entity to work with.
   if (!isset($form['#entity'])) {
     return;
   }
 
-  $entity = $form['#entity'];
-  $exif = _simple_exif_read_exif_data($entity);
+  if ((($form_id === 'file_entity_add_upload' && isset($form['#step']) && $form['#step'] == 4) || (strpos($form_id, 'media_edit') === 0)) && (strstr($form['#entity']->filemime, "image")) || $form_id === 'file_entity_edit' && strstr($form['#entity']->filemime, "image")) {
+    $exif = _simple_exif_read_exif_data($form['#entity']);
+    if ($exif !== FALSE) {
+      $field_mapping = variable_get('simple_exif_mappings', array());
+      // $field_mapping = array_flip($default_values);
 
-  if ($exif === FALSE) {
-    return;
-  }
-
-  $field_mapping = variable_get('simple_exif_mappings', array());
-  foreach ($field_mapping as $key => $value) {
-    if ($value == '_none') {
-      continue;
-    }
-    if (isset($form[$key])) {
-      if (array_key_exists('#default_value', $form[$key][LANGUAGE_NONE])) {
-        $form[$key][LANGUAGE_NONE]['#default_value'] = _simple_exif_get_value(call_user_func(array($exif, $value)), $form[$key][LANGUAGE_NONE]['#default_value']);
-        continue;
+      foreach ($field_mapping as $key => $value) {
+        if (isset($form[$key]) && ($value != '_none')) {
+          // TODO: Fix this.
+          if ($form_id === 'file_entity_edit' && strstr($form['#entity']->filemime, "image")) {
+            if (!isset($form[$key][LANGUAGE_NONE][0]['#pre_render'])) {
+              $form[$key][LANGUAGE_NONE][0]['#pre_render'] = array();
+            }
+            array_unshift($form[$key][LANGUAGE_NONE][0]['#pre_render'], 'simple_exif_form_pre_render_file_entity_item');
+          }
+          else {
+            // The default value is not always under the 'value' key, find out
+            // where it should go.
+            if (isset($form[$key][LANGUAGE_NONE][0])) {
+              $form_element_keys = array_keys($form[$key][LANGUAGE_NONE][0]);
+              foreach ($form[$key][LANGUAGE_NONE][0]['#columns'] as $column) {
+                if ($column != 'format' && in_array($column, $form_element_keys)) {
+                  if (empty($form[$key][LANGUAGE_NONE][0][$column]['#default_value'])) {
+                    _simple_exif_apply_value_to_field($form[$key][LANGUAGE_NONE][0][$column]['#default_value'], $exif->{$value}());
+                  }
+                }
+              }
+              if (in_array('#default_value', $form_element_keys)) {
+                _simple_exif_apply_value_to_field($form[$key][LANGUAGE_NONE][0]['#default_value'], $exif->{$value}());
+              }
+            }
+          }
+        }
       }
-      if (array_key_exists('value', $form[$key][LANGUAGE_NONE][0])) {
-        $form[$key][LANGUAGE_NONE][0]['value']['#default_value'] = _simple_exif_get_value(call_user_func(array($exif, $value)), $form[$key][LANGUAGE_NONE][0]['value']['#default_value']);
-        continue;
-      }
-
-      $form[$key][LANGUAGE_NONE][0]['#default_value'] = _simple_exif_get_value(call_user_func(array($exif, $value)), $form[$key][LANGUAGE_NONE][0]['#default_value']);
     }
   }
+}
+
+/**
+ * Sets the EXIF value for an individual field.
+ *
+ * @param $element
+ * @return $element
+ */
+function simple_exif_form_pre_render_file_entity_item($element) {
+  $exif = _simple_exif_read_exif_data($element['#entity']);
+  if ($exif !== FALSE) {
+    $field_mapping = variable_get('simple_exif_mappings', array());
+    if (isset($field_mapping[$element['#field_name']])) {
+      $value = $field_mapping[$element['#field_name']];
+      if ($value != '_none') {
+        if (empty($element['value']['#value'])) {
+          _simple_exif_apply_value_to_field($element['value']['#value'], $exif->{$value}());
+        }
+      }
+    }
+  }
+  return $element;
 }
 
 /**
  * Ajax callback to update the field values on the fly.
- *
- * @todo Reduce code duplication between this function and simple_exif_populate_form_data().
  */
-function simple_exif_reapply_exif_metadata(&$form, &$form_state) {
+function simple_exif_update_form_values(&$form, &$form_state) {
   $commands = array();
-
-  // If we don't have an entity to work with, we can't really do anything.
-  if (!isset($form['#entity'])) {
-    return;
-  }
-
-  $entity = $form['#entity'];
-  $exif = _simple_exif_read_exif_data($entity);
-
-  if ($exif === FALSE) {
-    return;
-  }
-
-  $field_mapping = variable_get('simple_exif_mappings', array());
-  foreach ($field_mapping as $key => $value) {
-    if ($value == '_none') {
-      continue;
-    }
-    if (isset($form[$key])) {
-      $old_value = $form_state['values'][$key][LANGUAGE_NONE][0]['value'];
-      // @todo Should this behavior be changed to always use the new value?
-      if ($old_value !== '') {
-        continue;
-      }
-
-      $class_selector = '.';
-      foreach ($form[$key]['#attributes']['class'] as $class) {
-        if (preg_match('/^field-name/', $class)) {
-          $class_selector .= $class;
-        }
-      }
-
-      if (array_key_exists('#default_value', $form[$key][LANGUAGE_NONE])) {
-        $new_value = _simple_exif_get_value(call_user_func(array($exif, $value)), $form[$key][LANGUAGE_NONE]['#default_value'], TRUE);
-        if ($old_value != $new_value) {
-          $form[$key][LANGUAGE_NONE]['#default_value'] = $new_value;
-          $form[$key][LANGUAGE_NONE]['#value'] = $new_value;
-          $commands[] = ajax_command_replace($class_selector, drupal_render($form[$key]));
-        }
-      }
-      elseif (array_key_exists('value', $form[$key][LANGUAGE_NONE][0])) {
-        $new_value = _simple_exif_get_value(call_user_func(array($exif, $value)), $form[$key][LANGUAGE_NONE][0]['value']['#default_value'], TRUE);
-        if ($old_value != $new_value) {
-          $form[$key][LANGUAGE_NONE][0]['value']['#default_value'] = $new_value;
-          $form[$key][LANGUAGE_NONE][0]['value']['#value'] = $new_value;
-          $commands[] = ajax_command_replace($class_selector, drupal_render($form[$key]));
-        }
-      }
-      else {
-        $new_value = _simple_exif_get_value(call_user_func(array($exif, $value)), $form[$key][LANGUAGE_NONE][0]['#default_value'], TRUE);
-        if ($old_value != $new_value) {
-          $form[$key][LANGUAGE_NONE][0]['#default_value'] = $new_value;
-          $form[$key][LANGUAGE_NONE][0]['#value'] = $new_value;
-          $commands[] = ajax_command_replace($class_selector, drupal_render($form[$key]));
+  $exif = _simple_exif_read_exif_data($form['#entity']);
+  if ($exif !== FALSE) {
+    $field_mapping = variable_get('simple_exif_mappings', array());
+    foreach ($field_mapping as $key => $value) {
+      if (isset($form[$key]) && ($value != '_none')) {
+        if (empty($form[$key][LANGUAGE_NONE][0]['value']['#value'])) {
+          $form[$key][LANGUAGE_NONE][0]['value']['#value'] = $exif->{$value}();
+          $form_selector = '#edit-' . drupal_html_id($key);
+          $commands[] = ajax_command_replace($form_selector , drupal_render($form[$key]));
         }
       }
     }
@@ -305,24 +241,16 @@ function simple_exif_reapply_exif_metadata(&$form, &$form_state) {
 }
 
 /**
- * Get a formatted form value.
+ * Apply the supplied value to the form element.
  *
+ * @param $element
  * @param $value
  */
-function _simple_exif_get_value($value, $old_value = NULL, $force = FALSE) {
+function _simple_exif_apply_value_to_field(&$element, $value) {
   if (is_array($value)) {
-    $value = implode(', ', $value);
+    $element = implode(', ', $value);
   }
   else {
-    if (is_string($value) && !mb_check_encoding($value, 'UTF-8')) {
-      $value = utf8_encode($value);
-    }
+    $element = $value;
   }
-
-  // If we don't have anything for the old value, we should use the exif data.
-  // @todo Should this behavior be changed to always use the new value if $force == TRUE?
-  if ($old_value === '' || is_null($old_value)) {
-    return $value;
-  }
-  return $old_value;
 }

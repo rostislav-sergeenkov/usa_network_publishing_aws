@@ -9,9 +9,6 @@
  * Tests basic Modernizr API functions.
  */
 class ModernizrUnitTestCase extends DrupalUnitTestCase {
-  /**
-   * Displays a description in testing UI.
-   */
   public static function getInfo() {
     return array(
       'name' => 'Modernizr module unit tests',
@@ -20,16 +17,13 @@ class ModernizrUnitTestCase extends DrupalUnitTestCase {
     );
   }
 
-  /**
-   * Basic setup for Modernizr module tests.
-   */
   function setUp() {
     drupal_load('module', 'modernizr');
     parent::setUp();
   }
 
   /**
-   * Tests that Modernizr is implementing hook_modernizr_info() correctly.
+   * Tests that modernizr's own implementation of hook_modernizr_info works.
    */
   function testModernizrInfo() {
     $tests = modernizr_api_list();

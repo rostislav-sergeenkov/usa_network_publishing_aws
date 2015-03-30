@@ -86,11 +86,6 @@ function ctools_entity_from_field_get_children($parent_plugin, $parent) {
                     $plugin['source key'] = current(array_keys($info['columns']));
                     $plugin['parent'] = $parent;
 
-                    if (count($info['columns']) > 1) {
-                      $plugin['title'] .= ' ' . t('[DEPRECATED]');
-                      $plugin['description'] .= ' ' . t('This relationship should be substituted for one of the derivative relationships.');
-                    }
-
                     $plugins[$plugin_id] = $plugin;
 
 /*
@@ -125,43 +120,6 @@ function ctools_entity_from_field_get_children($parent_plugin, $parent) {
                     $plugins[$plugin_id] = $plugin;
 */
                   }
-
-                  // Derrivitive plugins for multiple fields.
-                  if (count($info['columns']) > 1) {
-                    foreach ($info['columns'] as $column => $column_key) {
-                      $name = $field_name . '|' . $column . '-' . $from_entity . '-' . $to_entity;
-                      $plugin_id = $parent . ':' . $name;
-
-                      // Record the bundle for later.
-                      $context_types[$plugin_id]['types'][$bundle] = $from_entity_info['bundles'][$bundle]['label'];
-
-                      // We check for every bundle; this plugin may already have
-                      // been created, so don't recreate it.
-                      if (!isset($plugins[$plugin_id])) {
-                        $plugin = $parent_plugin;
-                        $replacements = array(
-                          '@to_entity' => $to_entity_info['label'],
-                          '@from_entity' => $from_entity_info['label'],
-                          '@field_name' => $field_name,
-                          '@key' => $column,
-                          '@field_label' => ctools_field_label($field_name),
-                        );
-                        $plugin['title'] = t('@to_entity from @from_entity (on @from_entity: @field_label [@field_name:@key])', $replacements);
-                        $plugin['keyword'] = $to_entity . '_' . $column;
-                        $plugin['context name'] = $name;
-                        $plugin['name'] = $plugin_id;
-                        $plugin['description'] = t('Creates a @to_entity context from @from_entity using the @field_name:@key field on @from_entity.', $replacements);
-                        $plugin['from entity'] = $from_entity;
-                        $plugin['to entity'] = $to_entity;
-                        $plugin['field name'] = $field_name;
-                        $plugin['join key'] = $key;
-                        $plugin['source key'] = $column;
-                        $plugin['parent'] = $parent;
-
-                        $plugins[$plugin_id] = $plugin;
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -173,13 +131,8 @@ function ctools_entity_from_field_get_children($parent_plugin, $parent) {
 
   foreach ($context_types as $key => $context) {
     list($parent, $plugin_name) = explode(':', $key);
-    list($field_name_key, $from_entity, $to_entity) = explode('-', $plugin_name);
-    if (strstr($field_name_key, '|')) {
-      list($field_name, $column_key) = explode('|', $field_name_key);
-    }
-    else {
-      $field_name = $field_name_key;
-    }
+    list($field_name, $from_entity, $to_entity) = explode('-', $plugin_name);
+
     $from_entity_info = $entities[$from_entity];
     $to_entity_info = $entities[$to_entity];
 
@@ -201,21 +154,10 @@ function ctools_entity_from_field_get_children($parent_plugin, $parent) {
  * Return a new context based on an existing context.
  */
 function ctools_entity_from_field_context($context, $conf) {
-  // Perform access check on current logged in user.
-  global $user;
-  // Clone user object so account can be passed by value to access callback.
-  $account = clone $user;
-
   $delta = !empty($conf['delta']) ? intval($conf['delta']) : 0;
   $plugin = $conf['name'];
   list($plugin, $plugin_name) = explode(':', $plugin);
-  list($field_name_key, $from_entity, $to_entity) = explode('-', $plugin_name);
-  if (strstr($field_name_key, '|')) {
-    list($field_name, $column_key) = explode('|', $field_name_key);
-  }
-  else {
-    $field_name = $field_name_key;
-  }
+  list($field_name, $from_entity, $to_entity) = explode('-', $plugin_name);
   // If unset it wants a generic, unfilled context, which is just NULL.
   $entity_info = entity_get_info($from_entity);
   if (empty($context->data) || !isset($context->data->{$entity_info['entity keys']['id']})) {
@@ -234,11 +176,8 @@ function ctools_entity_from_field_context($context, $conf) {
 
         $plugin_info = ctools_get_relationship($conf['name']);
         $to_entity_id = $items[$delta][$plugin_info['source key']];
-        $loaded_to_entity = entity_load($to_entity, array($to_entity_id));
-        $loaded_to_entity = array_shift($loaded_to_entity);
-
-        // Pass current user account and entity type to access callback.
-        if (function_exists($to_entity_info['access callback']) && !call_user_func($to_entity_info['access callback'], 'view', $loaded_to_entity, $account, $to_entity)) {
+        $loaded_to_entity = array_shift(entity_load($to_entity, array($to_entity_id)));
+        if(function_exists($to_entity_info['access callback']) && !call_user_func($to_entity_info['access callback'], 'view', $loaded_to_entity)) {
           return ctools_context_create_empty('entity:' . $to_entity, NULL);
         }
         else {

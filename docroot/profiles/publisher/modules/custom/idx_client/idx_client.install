@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Installation functions for the IDX module.
- */
 
 /**
  * Implements hook_uninstall().

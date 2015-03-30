@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Uganda.
- */
+// Uganda
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_ug() {
   return array(
     'KAL' => "Kalangala",

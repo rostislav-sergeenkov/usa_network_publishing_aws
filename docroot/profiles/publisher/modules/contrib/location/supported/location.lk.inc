@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Sri Lanka.
- */
+// Sri Lanka
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_lk() {
   return array(
     'CE' => "Central",

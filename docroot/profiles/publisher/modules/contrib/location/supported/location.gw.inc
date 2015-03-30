@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Guinea-Bissau.
- */
+// Guinea-Bissau
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_gw() {
   return array(
     'BF' => "Bafata Region",

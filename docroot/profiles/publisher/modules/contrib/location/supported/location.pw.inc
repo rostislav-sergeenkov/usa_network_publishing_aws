@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Palau.
- */
+// Palau
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_pw() {
   return array(
     'AM' => "Aimeliik",

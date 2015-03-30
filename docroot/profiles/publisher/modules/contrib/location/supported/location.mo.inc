@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Macau.
- */
+// Macau
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_mo() {
   return array(
     'OLF' => "Our Lady Fatima Parish",

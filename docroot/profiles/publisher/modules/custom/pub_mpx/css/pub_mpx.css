@@ -22,3 +22,8 @@
 .view-content-files .mpx-media--status--Expired .views-field-status div {
   background-image: url( ../images/ico_unpublished.png );
 }
+
+/* Padding for Views' date picker fields */
+#views-exposed-form-content-files-mpx-files-page .form-type-date-popup .form-item-timestamp-date {
+  padding-top: 9px;
+}

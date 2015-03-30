@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Mauritius.
- */
+// Mauritius
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_mu() {
   return array(
     'BR' => "Beau Bassin-Rose Hill",

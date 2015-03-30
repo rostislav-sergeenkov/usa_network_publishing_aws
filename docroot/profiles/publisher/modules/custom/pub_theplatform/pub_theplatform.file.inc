@@ -1,8 +1,5 @@
 <?php
-/**
- * @file
- * File specific functionality.
- */
+
 
 /**
  * Implements hook_file_formatter_info().
@@ -39,8 +36,8 @@ function pub_theplatform_file_formatter_video_view($file, $display, $langcode) {
     $guid = file_uri_target($file->uri);
     $platform_file_id = _pub_the_platform_get_file_id($guid);
 
-    // Collapse this area if there is no video.
-    if ($platform_file_id === FALSE) {
+    //   Collapse this area if there is no video.
+    if($platform_file_id === False) {
       return array();
     }
 

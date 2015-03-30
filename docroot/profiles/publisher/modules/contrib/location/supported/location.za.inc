@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * South Africa.
- */
+// South Africa
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_za() {
   return array(
     'WC' => "Western Cape",

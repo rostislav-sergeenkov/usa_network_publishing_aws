@@ -1,11 +1,7 @@
 @import "compass/css3/transition";
 
 img.borealis {
-  max-width: 100%;
-
-  .loaded & {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 div.borealis {

@@ -18,6 +18,7 @@ class DateWidget extends Widget {
     $element['preview_date'] = array(
       '#type' => 'date_popup',
       '#title' => t('Date to Preview'),
+      '#date_format' => 'm/d/Y - h:i a',
       '#default_value' => isset($form_state['values']['preview_date']) ? $form_state['values']['preview_date'] : NULL,
     );
 

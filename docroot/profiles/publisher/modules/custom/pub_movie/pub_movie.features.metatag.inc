@@ -23,7 +23,7 @@ function pub_movie_metatag_export_default() {
       'og:image' => array(
         'value' => '[node:field_movie_cover_media]',
       ),
-      'twitter:image:src' => array(
+      'twitter:image' => array(
         'value' => '[node:field_movie_cover_media]',
       ),
     ),

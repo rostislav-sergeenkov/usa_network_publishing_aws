@@ -192,7 +192,10 @@
 
     for (var i = 0; i < imageLength; i++) {
       var image = images[i];
-      borealisFindImage(image);
+
+      if (elementInViewport(image)) {
+        borealisFindImage(image);
+      }
     } // End Image Loop
   }
 

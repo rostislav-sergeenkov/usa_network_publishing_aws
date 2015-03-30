@@ -13,9 +13,6 @@ configured are how often the site should check for new data (**this is specified
 in hours**) and how old a piece program guide content should be before being
 auto-deleted (**this is specified in days**).
 
-Example feed:
-http://feed.entertainment.tv.theplatform.com/f/dCK2IC/stage_usa_listing?range=1-*&form=json
-
 How it works
 ---------------
 Once the feed is specified, the site will check for updated data every 8 hours

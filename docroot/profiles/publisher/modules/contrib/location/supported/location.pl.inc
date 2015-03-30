@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Poland.
- */
+// Poland
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_pl() {
   return array(
     'DO' => "Dolnoslaskie",

@@ -633,16 +633,7 @@ function pub_tv_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tv_shows',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'episode' => 'nid',
-          'season' => 'nid',
-          'show' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
+    'foreign keys' => array(),
     'indexes' => array(
       'shows' => array(
         0 => 'show',

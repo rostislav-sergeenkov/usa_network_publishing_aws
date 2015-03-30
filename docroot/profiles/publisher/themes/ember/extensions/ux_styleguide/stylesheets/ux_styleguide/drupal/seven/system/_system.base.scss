@@ -78,7 +78,8 @@ html.js {
  */
 html.js {
   .collapsed {
-    height: auto;
+    height: $rhythm-space;
+    margin-bottom: $rhythm-space * 2;
     border-color: transparent;
 
     .fieldset-wrapper {
@@ -190,11 +191,10 @@ body.drag {
 
 .indentation {
   display: inline-block;
-  width: 2em;
+  width: 1em;
   vertical-align: baseline;
   font-family: Times, serif;
   color: $color-border;
-  float:left;
 
   [dir="ltr"] & {
     text-align: left;
@@ -414,43 +414,4 @@ html.js {
  */
 .clearfix {
   @include clearfix;
-}
-
-/*
- * Styles for the admin/appearance page
- */
-
-/* Remove clearfix rule for selectors */
-.theme-selector {
-  clear: inherit;
-  float: left;
-  /* Give all theme selectors the same padding */
-  padding: 20px 20px 20px 0;
-}
-
-/* Remove the theme list wrappers' clearfix rule */
-.system-themes-list {
-  clear: inherit;
-}
-
-/* Set the font size on <h3> tags to be a bit smaller */
-.theme-info {
-  h3 {
-    font-size: 1.3em;
-  }
-}
-
-/* Give the enabled themes info section padding, and place it under the screenshot */
-.system-themes-list-enabled {
-  .theme-info {
-    clear: both;
-    padding-top: 10px;
-  }
-}
-
-.system-themes-list-disabled {
-  .theme-selector {
-    /* Set static height to match width, to that themes align properly */
-    height: 300px;
-  }
 }

@@ -8,9 +8,9 @@ dependencies[] = field_ui
 dependencies[] = gigya
 dependencies[] = token
 
-; Information added by Drupal.org packaging script on 2014-10-14
-version = "7.x-4.6"
+; Information added by  packaging script on 2013-11-18
+version = "7.x-4.4"
 core = "7.x"
 project = "gigya"
-datestamp = "1413281943"
+datestamp = "1384767810"
 

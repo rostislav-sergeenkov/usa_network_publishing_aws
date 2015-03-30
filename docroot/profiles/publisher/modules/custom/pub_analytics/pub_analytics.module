@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Module file for pub_analytics.
- */
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -59,7 +55,7 @@ function pub_analytics_page_alter(&$page) {
           'analytics' => array(
             'brandSuiteId' => variable_get('sitecatalyst_report_suite_id', ''),
             'tveSuiteId' => variable_get('sitecatalyst_tve_report_suite_id', ''),
-          ),
+          )
         ), 'setting');
         drupal_add_js(drupal_get_path('module', 'pub_analytics') . '/js/tve-analytics.js', array('type' => 'file', 'scope' => 'footer'));
       }

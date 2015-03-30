@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Vietnam.
- */
+// Vietnam
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_vn() {
   return array(
     'AG' => "An Giang",

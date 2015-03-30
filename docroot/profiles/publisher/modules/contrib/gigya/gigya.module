@@ -15,6 +15,7 @@ include_once dirname(__FILE__) . '/includes/gigya_comments.inc';
  * Constants defined for various Gigya settings.
  */
 define('GIGYA_ALREADY_DRUPAL_USER', 'already_drupal_user');
+define('ONLY_SOCIALIZE_USER', 'only_socialize_user');
 define('GIGYA_DEFAULT_ICONSIZE', 30);
 define('GIGYA_DEFAULT_LOGINUI_WIDTH', '210');
 define('GIGYA_DEFAULT_LOGINUI_HEIGHT', '110');
@@ -48,31 +49,24 @@ function gigya_init() {
   $networks = trim(variable_get('gigya_network_list', '*'));
   $gigya_apikey = trim(variable_get('gigya_APIKey', ''));
   $lang = variable_get('gigya_language', 'en');
-  $cookie_params = session_get_cookie_params();
-  $expire = $cookie_params['lifetime'] ? $cookie_params['lifetime'] : 0;
   $gigya_js_settings = array(
     'enabledProviders' => $networks,
     'lang' => $lang,
-    'sessionExpiration' => $expire,
   );
   $gigya_js_settings['connectWithoutLoginBehavior'] = variable_get('gigya_login_plugins_login', 'loginExistingUser');
 
   // Merge configuration from global configuration.
   $extra_global = variable_get('gigya_global_extra', array());
   if (!empty($extra_global)) {
-    if (is_array($extra_global)) {
-      foreach ($extra_global as $key => $parm) {
-        $gigya_js_settings[$key] = $parm;
-      }
-    } else {
-      $gigya_js_settings = array_merge($gigya_js_settings, drupal_json_decode($extra_global));
+    foreach ($extra_global as $key => $parm) {
+      $gigya_js_settings[$key] = gigya_json_to_php($parm);
     }
   }
-  // Allow other modules to modify global configuration.
+  // Allow other modules to modify global configuration
   drupal_alter('gigya_global_conf', $gigya_js_settings);
 
-  // Add all the js here, to speed page load w/ aggregation enabled.
-  // Also add the basic JS needed for the module.
+  // Add all the js here, to speed page load w/ aggregation enabled. Also add the
+  // basic JS needed for the module.
 
   $uri_prefix = !empty($_SERVER['HTTPS']) ? 'https://cdns' : 'http://cdn';
   $gigya_ga = variable_get('gigya_social_analytics', 0);
@@ -80,12 +74,11 @@ function gigya_init() {
     drupal_add_js($uri_prefix . '.gigya.com/js/gigyaGAIntegration.js', 'external');
   }
   $global_js = '<script src="' . check_url(url($uri_prefix . '.gigya.com/JS/socialize.js?apikey=' . $gigya_apikey)) . '">' . json_encode($gigya_js_settings) . '</script>';
-  $global_tag = array(
+  $head = array(
     '#type' => 'markup',
     '#markup' => $global_js,
-    '#weight' => 25,
   );
-  _gigya_add_html_footer($global_tag, 'gigya');
+  drupal_add_html_head($head, 'gigya');
   $gigya_js_settings['mv'] = GIGYA_MV;
   drupal_add_js(array('gigya' => $gigya_js_settings), 'setting');
   drupal_add_js($path . '/js/gigya.js');
@@ -93,15 +86,11 @@ function gigya_init() {
   drupal_add_library('system', 'drupal.ajax');
   drupal_add_library('system', 'jquery.cookie');
   ctools_add_js('ajax-responder');
-  // Added Gamification notification if enabled.
+  // Added Gamification notification if enabled
   if (variable_get('gigya_gm_enable', FALSE) && variable_get('gigya_gm_enable_notifications', FALSE)) {
-    // Show notifications only to logged in users.
+    //show notifications only to logged in users
     if (user_is_logged_in()) {
       $notification_settings = array('enable' => 'true');
-      $advanced_notification_settings = gigya_get_gm_advanced_params("notifications");
-      if (!empty($advanced_notification_settings)) {
-        $notification_settings = $notification_settings + $advanced_notification_settings;
-      }
       drupal_alter('gigya_gm_notifications', $notification_settings);
       drupal_add_js(array('gigyaGMnotification' => $notification_settings), 'setting');
     }
@@ -109,9 +98,8 @@ function gigya_init() {
 
   $login_mode = variable_get('gigya_login_mode', 'drupal_and_gigya');
   drupal_add_js(array('gigya' => array('loginMode' => $login_mode)), 'setting');
-  // If the user is logged in & Raas is on then attach the Gigya object to the
-  // user object.
-  if (user_is_logged_in() && $login_mode === 'raas') {
+  // If the user is logged in Attach the gigya object to the user object.
+  if (user_is_logged_in()) {
     global $user;
 
     // Attach the Gigya object to the user object.
@@ -124,9 +112,9 @@ function gigya_init() {
 
   }
   else {
-    // Add raas vars.
+    // Add raas vars
     if ($login_mode == 'raas') {
-      // Raas settings.
+      //raas settings
       $raas_login = array(
         'screenSet' => variable_get('web_screen_id', 'Login-web'),
         'mobileScreenSet' => variable_get('mobile_screen_id', 'Login-mobile'),
@@ -148,44 +136,6 @@ function gigya_init() {
 }
 
 /**
- * Implements hook_page_build().
- */
-function gigya_page_build(&$page) {
-  $stored_footer = _gigya_add_html_footer();
-  foreach ($stored_footer as $key => $data) {
-    $page['page_bottom'][$key] = $data;
-  }
-}
-
-/**
- * Adds output to the bottom of the HTML page.
- *
- * Modeled from drupal_add_html_head().
- *
- * @param array $data
- *   A renderable array. If the '#type' key is not set then 'html_tag' will be
- *   added as the default '#type'.
- * @param string $key
- *   A unique string key to identify the element in $data.
- *   Required if $data is not NULL.
- *
- * @return array
- *   An array of all stored FOOTER elements.
- *
- * @see drupal_add_html_head()
- */
-function _gigya_add_html_footer($data = NULL, $key = NULL) {
-  $stored_footer = &drupal_static(__FUNCTION__, array());
-  if (isset($data) && isset($key)) {
-    if (!isset($data['#type'])) {
-      $data['#type'] = 'html_tag';
-    }
-    $stored_footer[$key] = $data;
-  }
-  return $stored_footer;
-}
-
-/**
  * Implements hook_permission().
  */
 function gigya_permission() {
@@ -194,10 +144,10 @@ function gigya_permission() {
       'title' => t('administer gigya'),
       'description' => t('Configure And Set Up Gigya Socialization'),
     ),
-    'bypass_gigya_raas' => array(
-      'title' => t('Bypass Registration-as-a-Service'),
-      'description' => t("Allow bypassing Gigya's Registration-as-a-Service and logging-in via Drupal standard login ( /user)."),
-    ),
+      'bypass_gigya_raas' => array(
+        'title' => t('Bypass Registration-as-a-Service'),
+        'description' => t('Allow bypassing Gigya\'s Registration-as-a-Service and logging-in via Drupal standard login ( /user).')
+    )
   );
 }
 
@@ -207,14 +157,7 @@ function gigya_permission() {
 function gigya_help($path, $arg) {
   switch ($path) {
     case 'admin/config/services/gigya':
-      return '<p>' . t('Server-wide setup of the Gigya module. for more info goto the gigya !website',
-        array('!website' => l('website', 'http://www.gigya.com/products/',
-          array('external' => TRUE,
-            'attributes' => array('target' => '_blank')
-          )
-        )
-        )
-      ) . '</p>';
+      return '<p>' . t('Server-wide setup of the Gigya module.') . '</p>';
   }
 }
 
@@ -224,6 +167,9 @@ function gigya_help($path, $arg) {
 function gigya_theme() {
   $themes = array(
     'gigya_connect_display' => array(),
+    'gigya_friends' => array(
+      'variables' => array('friends' => NULL),
+    ),
     'gigya_link_accounts' => array(
       'render element' => 'form',
       'template' => 'gigya-link-accounts',
@@ -262,10 +208,6 @@ function gigya_theme() {
       'variables' => array('continer_id' => variable_get('gigya_activety_feed_container_id', 'ActivityFeedDiv')),
       'template' => 'gigya-activity-feed-block',
       'path' => drupal_get_path('module', 'gigya') . '/theme',
-    ),
-    'gigya_raas_mappings_tbl' => array(
-      'render element' => 'element',
-      'file' => 'gigya.admin.inc'
     )
   );
   return $themes;
@@ -363,17 +305,6 @@ function gigya_menu() {
     'weight' => 6,
     'file' => 'gigya.admin.inc',
   );
-  // Add the Follow bar component config tab.
-  $items['admin/config/services/gigya/follow-bar'] = array(
-    'title' => 'Follow Bar',
-    'description' => 'Gigya follow bar settings.',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('gigya_follow_bar_settings_form'),
-    'access arguments' => array('administer gigya'),
-    'type' => MENU_LOCAL_TASK,
-    'weight' => 7,
-    'file' => 'gigya.admin.inc',
-  );
   // Add the comments component ajax callback.
   $items['gigya/comments'] = array(
     'title' => 'comments ajax',
@@ -381,6 +312,17 @@ function gigya_menu() {
     'access arguments' => array('access content'),
     'file' => 'includes/gigya_comments.inc',
     'type' => MENU_CALLBACK,
+  );
+
+
+  $items['user/%user/friends'] = array(
+    'title' => 'My Friends',
+    'page callback' => 'gigya_get_friends',
+    'type' => MENU_LOCAL_TASK,
+    'page arguments' => array(1),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+    'file' => 'gigya.pages.inc',
   );
   $items['user/%user/gigyainfo'] = array(
     'title' => 'Gigya User Info (debug)',
@@ -423,13 +365,7 @@ function gigya_menu() {
     'delivery callback' => 'ajax_deliver',
     'file' => 'gigya.pages.inc',
   );
-  $items['raas-profile-update'] = array(
-    'page callback' => 'gigya_raas_profile_edit_ajax',
-    'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
-    'delivery callback' => 'ajax_deliver',
-    'file' => 'gigya.pages.inc',
-  );
+
   return $items;
 }
 
@@ -440,38 +376,38 @@ function gigya_block_info() {
   $blocks = array();
   $blocks['gigya-login'] = array(
     'info' => t('Gigya login'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['gigya-rass'] = array(
     'info' => t('Gigya RaaS links'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['gigya_raas_login'] = array(
     'info' => t('Gigya RaaS Login'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['gigya_raas_register'] = array(
     'info' => t('Gigya RaaS Register'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['gigya_raas_profile'] = array(
     'info' => t('Gigya RaaS Profile'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['gigya-connect'] = array(
     'info' => t('Gigya connectUI'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['gigya_activity_feed'] = array(
     'info' => t('Gigya Activity Feed'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $gm_blocks = variable_get('gigya_gm_blobks', array());
   if (!empty($gm_blocks)) {
     foreach ($gm_blocks as $block_id => $gm_block) {
       $blocks[$block_id] = array(
         'info' => $gm_block['block_name'],
-        'cache' => DRUPAL_CACHE_PER_PAGE,
+        'cache' => DRUPAL_NO_CACHE,
       );
     }
   }
@@ -492,14 +428,13 @@ function gigya_block_view($delta) {
           'content' => theme('gigya_login_block', array('form_id' => $form_id, 'suppress_title' => TRUE)),
         );
       }
-      break;
-
+    break;
     case 'gigya-connect':
       return array(
         'subject' => t('Social network connections'),
         'content' => theme('gigya_connect_display'),
       );
-
+      break;
     case 'gigya_activity_feed':
       if (variable_get('gigya_activety_feed_enable', FALSE)) {
         $gigya_activity_feed_js = array(
@@ -508,9 +443,9 @@ function gigya_block_view($delta) {
           'siteName' => variable_get('site_name', ''),
           'width' => variable_get('gigya_activety_feed_width', '309'),
           'height' => variable_get('gigya_activety_feed_height', '270'),
-          'context' => array('id' => variable_get('gigya_activety_feed_container_id', 'ActivityFeedDiv')),
+          'context' => array('id' => variable_get('gigya_activety_feed_container_id', 'ActivityFeedDiv'))
         );
-        // Allow other modules to change the settings.
+        // Allow other modules to change the settings
         drupal_alter('gigya_activety_feed', $gigya_activity_feed_js);
         drupal_add_js(array('gigyaActivityFeed' => $gigya_activity_feed_js), 'setting');
         return array(
@@ -518,37 +453,38 @@ function gigya_block_view($delta) {
           'content' => theme('gigya_activity_feed_block'),
         );
       }
+    break;
     case 'gigya-rass':
       drupal_add_css(drupal_get_path('module', 'gigya') . '/css/gigya.css');
       $login_lable = variable_get('raas_login_label', 'Login');
       $reg_label = variable_get('raas_register_label', 'Register');
       $prof_lable = variable_get('raas_profile_label', 'Profile');
       if (user_is_logged_in()) {
-        $links['profile'] = l($prof_lable, '', array(
+        $links['profile'] = l(t($prof_lable), '', array(
             'attributes' => array(
               'class' => 'gigya-raas-prof',
-              'id' => 'gigya-raas-prof',
+              'id' => 'gigya-raas-prof'
             ),
-            'fragment' => 'raas-profile',
+            'fragment' => 'raas-profile'
           )
         );
       }
       else {
         $links = array(
-          'login' => l($login_lable, '', array(
+          'login' => l(t($login_lable), '', array(
               'attributes' => array(
                 'class' => 'gigya-raas-login',
-                'id' => 'gigya-raas-login',
+                'id' => 'gigya-raas-login'
               ),
-              'fragment' => 'raas-login',
+              'fragment' => 'raas-login'
             )
           ),
-          'register' => l($reg_label, '', array(
+          'register' => l(t($reg_label), '', array(
               'attributes' => array(
                 'class' => 'gigya-raas-reg',
-                'id' => 'gigya-raas-reg',
+                'id' => 'gigya-raas-reg'
               ),
-              'fragment' => 'raas-register',
+              'fragment' => 'raas-register'
             )
           ),
         );
@@ -557,90 +493,63 @@ function gigya_block_view($delta) {
         'subject' => t('Gigya Login'),
         'content' => theme('gigya_raas_block', array('links' => $links)),
       );
-
+    break;
     case 'gigya_raas_login':
       return array(
         'subject' => t('Gigya RaaS Login'),
-        'content' => '<div id="gigya-raas-login-div"></div>',
+        'content' => '<div id="gigya-raas-login-div"></div>'
       );
-
+    break;
     case 'gigya_raas_register':
       return array(
         'subject' => t('Gigya RaaS Register'),
-        'content' => '<div id="gigya-raas-register-div"></div>',
+        'content' => '<div id="gigya-raas-register-div"></div>'
       );
-
+    break;
     case 'gigya_raas_profile':
       return array(
         'subject' => t('Gigya RaaS Profile'),
-        'content' => '<div id="gigya-raas-profile-div"></div>',
+        'content' => '<div id="gigya-raas-profile-div"></div>'
       );
+    break;
+
   }
-  // GM blocks.
+  // gm blocks
   if (user_is_logged_in()) {
     if (array_key_exists($delta, $gm_blocks) && variable_get('gigya_gm_enable', FALSE)) {
       return array(
-        'subject' => $gm_blocks[$delta]['block_name'],
+        'subject' => t($gm_blocks[$delta]['block_name']),
         'content' => gigya_gm_build_block($gm_blocks[$delta]),
       );
     }
   }
 }
 
-/**
- * Builds GM blocks HTML.
- *
- * @param $block_settings.
- *
- * @return string
- *   returns the block HTML.
- */
 function gigya_gm_build_block($block_settings) {
-  // Build html.
+  // Build html
   $comps = $block_settings['componentes'];
   $comps = array_reverse($comps);
   uasort($comps, 'drupal_sort_weight');
   $out = '<div id="' . drupal_html_id($block_settings['block_name']) . '">';
   $block_id = $block_id = str_replace(' ', '_', $block_settings['block_name']);
-  $js_block_name = lcfirst(implode('', array_map('ucwords', explode('_', $block_id))));
+  $js_block_name = lcfirst(join('', array_map('ucwords', explode('_', $block_id))));
   $js_array = array();
   foreach ($comps as $key => $comp) {
     if (!empty($comp['enable'])) {
       $out .= '<div id="' . $comp['div-id'] . '"></div>';
-      // camelCase for js.
-      $js_key = lcfirst(implode('', array_map('ucwords', explode('_', $key))));
-      $params = array('containerID' => $comp['div-id']);
+      // camelCase for js
+      $js_key = lcfirst(join('', array_map('ucwords', explode('_', $key))));
+      $js_array[$js_key . 'Params'] = array('containerID' => $comp['div-id']);
       if ($key == 'leaderboard') {
-        //$js_array[$js_key . 'Params']['period'] = variable_get('gigya_gm_leaderboard_period', '7day');
-        //$js_array[$js_key . 'Params']['totalCount'] = variable_get('gigya_gm_total_count', '12');
-        $params['totalCount'] = variable_get('gigya_gm_total_count', '12');
-        $params['period'] = variable_get('gigya_gm_leaderboard_period', '7day');
+        $js_array[$js_key . 'Params']['period'] = variable_get('gigya_gm_leaderboard_period', '7day');
+        $js_array[$js_key . 'Params']['totalCount'] = variable_get('gya_gm_total_count', '12');
       }
-      $advanced = gigya_get_gm_advanced_params($key);
-      if (!empty($advanced)) {
-        $params = array_merge($params, $advanced);
-      }
-      $js_array[$js_key . 'Params'] = $params;
     }
   }
   drupal_alter('gigya_gm_block', $js_array, $js_block_name);
   drupal_add_js(array('gigyaGM' => array($js_block_name => $js_array)), 'setting');
   $out .= '</div>';
   return $out;
-}
-
-/**
- * Implements hook_ctools_block_info().
- *
- * @see ctools_block_content_type_content_types().
- * Add all Gigya blocks to the Gigya category in panels.
- */
-function gigya_ctools_block_info($module, $delta, &$info) {
-  $info['category'] = 'Gigya';
-}
-
-function gigya_get_gm_advanced_params($plugin_name) {
-  return drupal_json_decode(variable_get('gigya_gm_' . $plugin_name . '_advanced', null));
 }
 
 /**
@@ -675,7 +584,7 @@ function gigya_user_insert(&$edit, $account, $category) {
       $_gigya_user = new GigyaUser($_SESSION['gigya_uid']);
       unset($_SESSION['gigya_uid']);
 
-      // We can suppress the notify login JS because,
+      // We can suppress the notify login JS because
       // the user is clearly already logged into Gigya.
       $_SESSION['gigya_suppress_notifylogin_js'] = TRUE;
       // Create profile2
@@ -711,22 +620,17 @@ function gigya_user_login(&$edit, $account) {
         'nickname' => $account->name,
       );
 
-      /* Allow other modules to add info valid fields are nickname, photoURL,
-      thumbnailURL, firstName, lastName, gender, age, email. */
+      // Allow other modules to add info valid fields are nickname, photoURL, thumbnailURL, firstName, lastName, gender, age, email
       drupal_alter('gigya_notify_login_user_info', $gigya_user_info);
       $user_info = drupal_json_encode($gigya_user_info);
       gigya_notify_login($account->uid, FALSE, $user_info);
     }
   }
-  /* We only want to let admin user and users with the
-  "bypass_gigya_raas" permission to login via standard drupal login. */
   elseif ($login_mode == 'raas' && ($account->uid > 1 && !user_access('bypass_gigya_raas', $account))) {
-    global $_gigya_raas_login;
-    // If user didn't login via RaaS.
-    if (!isset($_gigya_raas_login)) {
-      // Query Gigya to make sure that only users
-      // that are in Gigya can login excluding admin user.
-      // @ignore sql_curly
+    global $raas_login;
+    // If user didn't login via RaaS
+    if (!$raas_login) {
+      // Make sure that only users that are in Gigya can login excluding admin user
       $query = 'select UID from accounts where loginIDs.emails = ' . $account->mail;
       $res = _gigya_api('accounts.search', array('query' => $query));
       if (empty($res['results'])) {
@@ -734,14 +638,12 @@ function gigya_user_login(&$edit, $account) {
         $account->status = 0;
         user_save($account);
         if (user_is_logged_in()) {
-          // so we could user user_logout
-          require_once drupal_get_path('module', 'user') . '/user.pages.inc';
+          require_once(drupal_get_path('module', 'user') . '/user.pages.inc');
           user_logout();
         }
-        drupal_set_message(t('Your account was disabled please register for a new one.'));
+        drupal_set_message('Your account was disabled please register for a new one.');
       }
-    }
-    else {
+    } else {
       if (!empty($_SESSION['gigya_raas_uid'])) {
         $res = _gigya_api('accounts.getAccountInfo', array('UID' => $_SESSION['gigya_raas_uid']));
         $account->raas_account = $res;
@@ -837,7 +739,7 @@ function gigya_user_operations() {
  * @param array $accounts
  *   Array of Drupal UIDs to be unlinked from Gigya.
  *
- * @TODO: Perhaps follow the same pattern used in core: @link
+ * @todo: Perhaps follow the same pattern used in core: @link
  * http://api.drupal.org/api/drupal/modules%21node%21node.module/function/node_delete/7
  * @endlink i.e. gigya_delete_account(), gigya_delete_account_multiple().
  */
@@ -856,74 +758,73 @@ function gigya_delete_account_bulk($accounts) {
  * Implements hook_form_alter().
  */
 function gigya_form_alter(&$form, $form_state, $form_id) {
-  if ($form_id == 'user_register_form') {
-    // Modify the user registration form.
-    $gigya_mode = variable_get('gigya_login_mode', 'drupal_and_gigya');
-    if ($gigya_mode == 'drupal_and_gigya' || $gigya_mode == 'gigya') {
-      $hide_title = variable_get('gigya_login_hide_title', FALSE);
-      module_load_include('inc', 'gigya');
-      module_load_include('.inc', 'user', 'user.pages');
+  $hide_title = variable_get('gigya_login_hide_title', FALSE);
 
-      // If they haven't logged into Gigya and they're not already logged in
-      // simply add the Gigya login block.
-      if (!user_is_logged_in() && empty($form_state['gigya'])) {
-        if ($gigya_mode !== 'drupal') {
-          $form['gigya'] = array(
-            '#markup' => theme('gigya_login_block', $variables = array(
-                'form_id' => $form_id,
-                'suppress_title' => $hide_title,
-              )
-            ),
-            '#weight' => -100,
-          );
-        }
-      }
+  // Modify the user registration form.
+  $gigya_mode = variable_get('gigya_login_mode', 'drupal_and_gigya');
+  if ($form_id == 'user_register_form' && ($gigya_mode == 'drupal_and_gigya' || $gigya_mode == 'gigya')) {
+    module_load_include('inc', 'gigya');
+    module_load_include('.inc', 'user', 'user.pages');
 
-      if (!empty($form_state['gigya'])) {
-        form_clear_error();
-        drupal_get_messages('error');
-        $form['account']['pass']['#type'] = 'hidden';
-        $form['account']['pass']['#value'] = user_password();
-        $form['account']['mail']['#type'] = 'hidden';
-        $form['account']['name']['#type'] = 'hidden';
-        $form['account']['message'] = array(
-          '#markup' => t('Additional information is required in order to complete your registration. Please fill-in the following info:'),
-        );
-        $form['gigya_uid'] = array(
-          '#type' => 'hidden',
-          '#attributes' => array('class' => 'gigyaUid'),
-        );
-        $form['actions']['submit']['#ajax'] = array(
-          'callback' => 'gigya_register_ajax',
-        );
-      }
-      $form['#attached']['css'] = array(
-        drupal_get_path('module', 'gigya') . '/css/gigya.css',
-      );
-    }
-  } elseif ($form_id == 'user_login') {
-    // Modify the user login page.
-    $gigya_mode = variable_get('gigya_login_mode', 'drupal_and_gigya');
-    if ($gigya_mode == 'drupal_and_gigya' || $gigya_mode == 'gigya') {
-      $hide_title = variable_get('gigya_login_hide_title', FALSE);
-      module_load_include('inc', 'gigya');
+    // If they haven't logged into Gigya and they're not already logged in
+    // simply add the Gigya login block.
+    if (!user_is_logged_in() && empty($form_state['gigya'])) {
       if ($gigya_mode !== 'drupal') {
         $form['gigya'] = array(
           '#markup' => theme('gigya_login_block', $variables = array(
               'form_id' => $form_id,
-              'suppress_title' => $hide_title,
+              'suppress_title' => $hide_title
             )
           ),
           '#weight' => -100,
         );
       }
-      $form['#attached']['css'] = array(
-        drupal_get_path('module', 'gigya') . '/css/gigya.css',
+    }
+
+    if (!empty($form_state['gigya'])) {
+      form_clear_error();
+      drupal_get_messages('error');
+      $form['account']['pass']['#type'] = 'hidden';
+      $form['account']['pass']['#value'] = user_password();
+      $form['account']['mail']['#type'] = 'hidden';
+      $form['account']['name']['#type'] = 'hidden';
+      $form['account']['message'] = array(
+        '#markup' => t('Additional information is required in order to complete your registration. Please fill-in the following info:'),
+      );
+      $form['gigya_uid'] = array(
+        '#type' => 'hidden',
+        '#attributes' => array('class' => 'gigyaUid'),
+      );
+      $form['actions']['submit']['#ajax'] = array(
+        'callback' => 'gigya_register_ajax',
       );
     }
-  }elseif ($form_id == 'user_login_block') {
-    // Modify the user login block.
-    $hide_title = variable_get('gigya_login_hide_title', FALSE);
+    $form['#attached']['css'] = array(
+      drupal_get_path('module', 'gigya') . '/css/gigya.css',
+    );
+  }
+
+  // Modify the user login page.
+  $gigya_mode = variable_get('gigya_login_mode', 'drupal_and_gigya');
+  if ($form_id == 'user_login' && ($gigya_mode == 'drupal_and_gigya' || $gigya_mode == 'gigya')) {
+    module_load_include('inc', 'gigya');
+    if ($gigya_mode !== 'drupal') {
+      $form['gigya'] = array(
+        '#markup' => theme('gigya_login_block', $variables = array(
+            'form_id' => $form_id,
+            'suppress_title' => $hide_title
+          )
+        ),
+        '#weight' => -100,
+      );
+    }
+    $form['#attached']['css'] = array(
+      drupal_get_path('module', 'gigya') . '/css/gigya.css',
+    );
+  }
+
+  // Modify the user login block.
+  if ($form_id == 'user_login_block') {
     module_load_include('inc', 'gigya');
     $gigya_mode = variable_get('gigya_login_mode', 'drupal_and_gigya');
     if ($gigya_mode == 'gigya') {
@@ -937,7 +838,7 @@ function gigya_form_alter(&$form, $form_state, $form_id) {
       $form['gigya'] = array(
         '#markup' => theme('gigya_login_block', $variables = array(
             'form_id' => $form_id,
-            'suppress_title' => $hide_title,
+            'suppress_title' => $hide_title
           )
         ),
         '#weight' => -100,
@@ -946,14 +847,18 @@ function gigya_form_alter(&$form, $form_state, $form_id) {
     $form['#attached']['css'] = array(
       drupal_get_path('module', 'gigya') . '/css/gigya.css',
     );
-  } elseif ($form_id == 'gigya_admin_form') {
-    // Modify the Gigya administration form.
+  }
+
+  // Modify the Gigya administration form.
+  if ($form_id == 'gigya_admin_form') {
     variable_get('need_validation_msg', FALSE);
     unset($form['buttons']['reset']);
-  } elseif ($form_id == 'user_pass') {
-    // Modify user pass form
+  }
+
+  if ($form_id == 'user_pass') {
     $form['actions']['submit']['#value'] = t('Reset password');
   }
+  return $form;
 }
 
 /**
@@ -1007,7 +912,6 @@ function gigya_action_info() {
  * Implements hook_node_view().
  */
 function gigya_node_view($node, $view_mode, $langcode) {
-  module_load_include('inc', 'gigya', 'includes/gigya_comments');
   gigya_add_comments_ui($node);
 }
 
@@ -1022,7 +926,7 @@ function gigya_node_view_alter(&$build) {
     unset($build['links']['comment']['#links']['comment-add']);
     $unset = variable_get('gigya_comments_hide_drupal_comments', TRUE);
     if ($unset) {
-      // If we have comments removed them.
+      //if we have comments removed them
       if (!empty($build['comments'])) {
         $id = variable_get('gigya_comments_container', 'comments');
         unset($build['comments']);
@@ -1033,13 +937,41 @@ function gigya_node_view_alter(&$build) {
 }
 
 /**
+ * Implements hook_field_extra_fields().
+ *
+ * Adds the sharebar into the drag and drop field order form.
+ */
+/*
+function gigya_field_extra_fields(){
+
+  //Check if sharebar component is enabled.
+  if (function_exists('_gigya_is_component_enabled') && _gigya_is_component_enabled('sharebar')) {
+    //sharebar code.
+    $extra = array();
+    $types = variable_get('sharebar_nodetypes', array());
+    foreach ($types as $type => $t) {
+      $extra['node'][$type] = array(
+          'display' => array(
+              'gigya_sharebar' => array(
+                  'label' => t('Share Bar'),
+                  'description' => t('Gigya Share Bar.'),
+                  'weight' => 10,
+              )
+          )
+      );
+    }
+    return $extra;
+  }
+}
+ */
+
+/**
  * Action to remove a user's Gigya linkages.
  *
- * @param object $user
+ * @param $user
  *   The user to delete.
- * @param array $context
- *   Unused param, the drupal action module need to pass it,
- *   but we have no use for it.
+ * @param $context
+ *   Unused param, the drupal action module need to pass it, but we have no use for it.
  */
 function gigya_delete_account_action($user, $context = array()) {
   $account = user_load($user->uid);
@@ -1049,10 +981,9 @@ function gigya_delete_account_action($user, $context = array()) {
 /**
  * Defines action tokens.
  *
- * @param string $object_type
+ * @param $object_type
  *   The object type could by 'node' or 'nodeapi' or 'comment' or 'user'.
- *
- * @return array
+ * @return
  *   An array containing the types of action tokens to display.
  */
 function gigya_action_tokens($object_type) {
@@ -1072,12 +1003,12 @@ function gigya_action_tokens($object_type) {
  *
  * @param string $type
  *   The object type could by 'node' or 'nodeapi' or 'comment' or 'user'.
- * @param object $object
+ * @param stdClass $object
  *   The object 'node' or 'comment' or 'user'
- * @param bool $help
+ * @param boolean $help
  *   Used to know if we need to return the help table, or the data.
  *
- * @return array|string
+ * @return
  *   Help table if help == true, or array of the tokens if not.
  */
 function gigya_replacements($type, $object = NULL, $help = FALSE) {
@@ -1101,7 +1032,7 @@ function gigya_replacements($type, $object = NULL, $help = FALSE) {
               array('!teaser', 'node teaser'),
               array('!user', 'Drupal user who performed the action'),
               array('{actor}', 'user\'s remote social network username, linked to their profile'),
-            ),
+            )
           )
         );
       }
@@ -1114,7 +1045,6 @@ function gigya_replacements($type, $object = NULL, $help = FALSE) {
         );
       }
       break;
-
     case 'user':
       if ($help) {
         return theme('table', array(
@@ -1131,7 +1061,7 @@ function gigya_replacements($type, $object = NULL, $help = FALSE) {
               array('!profile', 'profile url'),
               array('!user', 'user who performed the action'),
               array('{actor}', 'user\'s remote social network username, linked to their profile'),
-            ),
+            )
           )
         );
       }
@@ -1143,7 +1073,6 @@ function gigya_replacements($type, $object = NULL, $help = FALSE) {
         );
       }
       break;
-
     case 'comment':
       if ($help) {
         return theme('table', array(
@@ -1162,7 +1091,7 @@ function gigya_replacements($type, $object = NULL, $help = FALSE) {
               array('!url', 'comment url'),
               array('!user', 'user who performed the action'),
               array('{actor}', 'user\'s remote social network username, linked to their profile'),
-            ),
+            )
           )
         );
       }
@@ -1190,17 +1119,71 @@ function theme_gigya_connect_display() {
   }
 }
 
+/**
+ * Returns HTML for the Gigya friends list.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - friends : An array of friend associative array.
+ *
+ * @ingroup themeable
+ */
+function theme_gigya_friends($variables) {
+  $friends = $variables['friends'];
+  global $user, $base_url;
+  $content = '';
+
+  $content .= '<div id="gigya_friends">';
+  $content .= '<table id="gigya_friends_table" style="border:0" cellpadding="0" cellspacing="0">';
+  $content .= '<tr class="gigya table">';
+  $friend_count = count($friends);
+
+  $rows = $friend_count / 5;
+  $tail = $friend_count % 5;
+  $rowcount = 1;
+  $colcount = 0;
+  foreach ($friends as $friend) {
+    $colcount++;
+    if (isset($friend['thumbnailURL'])) {
+      $friend_photo = $friend['thumbnailURL'];
+    }
+    elseif (isset($friend['photoURL'])) {
+      $friend_photo = $friend['photoURL'];
+    }
+    else {
+      $friend_photo = $base_url . '/' . drupal_get_path('module', 'gigya') . '/silhouette.gif';
+    }
+    $friend_link = l($friend['nickname'], 'user/' . $friend['UID']);
+    $content .= '<td width="20%" class="friend_bio"><img width="50" height="50" src="' . $friend_photo . '" /><br /><span class="friend_nickname">' . $friend_link . '</span></td>';
+    if (($colcount * $rowcount) == $friend_count) {
+      $remainder = 5 - $colcount;
+      $content .= '<td width="' . (20 * $remainder) . '% colspan="' . $remainder . '">&nbsp;</td></tr>';
+    }
+    elseif ($colcount == 5) {
+      $content .= '</tr><tr class="gigya table">';
+      $rowcount++;
+      $colcount = 0;
+    }
+  }
+  if ($colcount == 0 && $rowcount == 1) {
+    $content .= '<td><span class="gigya no-friends">' . t('You currently have no social network friends connected to this site. !connect', array('!connect' => l('Have you connected to a social network?', 'user/' . $user->uid . '/edit/gigya'))) . '</span></td></tr>';
+  }
+  $content .= '</table>';
+  $content .= '</div>';
+
+  return $content;
+}
 
 /**
  * Process variables for gigya-link-accounts.tpl.php.
  *
  * @param array $variables
- *   The variables.
+ * - $form: Gigya link accounts form.
  *
  * @see gigya-link-accounts.tpl.php
  */
 function template_preprocess_gigya_link_accounts(&$variables) {
-  $parms = drupal_get_query_parameters();
+  $parms = $_GET;
   unset($parms['q']);
   if (!empty($parms['email'])) {
     $variables['form_title'] = t('The Email provided is already in use. If you want to link to an existing account, please provide your username and password.');
@@ -1215,9 +1198,9 @@ function template_preprocess_gigya_link_accounts(&$variables) {
  * Process variables for gigya-register.tpl.php.
  *
  * @param array $variables
- *   $bio: Gigya user object.
- *   $registration_form: Drupal user registration form.
- *   $link_accounts_form: Gigya link accounts form.
+ * - $bio: Gigya user object.
+ * - $registration_form: Drupal user registration form.
+ * - $link_accounts_form: Gigya link accounts form.
  *
  * @see gigya-register-form.tpl.php
  */
@@ -1236,12 +1219,13 @@ function template_preprocess_gigya_register(&$variables) {
  * Process variables for gigya-login-block.tpl.php.
  *
  * @param array $variables
- *   $form_id
- *   $suppress_title
+ * - $form_id
+ * - $suppress_title
  *
  * @see gigya-login-block.tpl.php
  */
 function template_preprocess_gigya_login_block(&$variables) {
+  $variables['login_div'] = '';
   if (_gigya_is_component_enabled('login')) {
     $variables['login_div'] = gigya_loginui_js();
     if (!$variables['suppress_title']) {
@@ -1254,7 +1238,7 @@ function template_preprocess_gigya_login_block(&$variables) {
  * Process variables for gigya_user-profile.tpl.php.
  *
  * @param array $variables
- *   $bio
+ * - $bio
  *
  * @see gigya-user-profile.tpl.php
  */
@@ -1266,12 +1250,13 @@ function template_preprocess_gigya_user_profile(&$variables) {
 
   // Figure out what to print for the picture.
   if (!empty($bio['thumbnailURL'])) {
+    //$variables['photo'] = '<img id="photo" src="' . $bio['thumbnailURL'] . '" />';
     $variables['photo'] = theme('image', array(
         'path' => $bio['thumbnailURL'],
         'width' => 'Photo of' . $bio['nickname'],
         'height' => 'Photo of' . $bio['nickname'],
         'alt' => array('id' => 'photo'),
-        'title' => FALSE,
+        'title' => FALSE
       )
     );
   }
@@ -1281,7 +1266,7 @@ function template_preprocess_gigya_user_profile(&$variables) {
         'width' => 'Photo of' . $bio['nickname'],
         'height' => 'Photo of' . $bio['nickname'],
         'alt' => array('id' => 'photo'),
-        'title' => FALSE,
+        'title' => FALSE
       )
     );
   }
@@ -1292,7 +1277,7 @@ function template_preprocess_gigya_user_profile(&$variables) {
         'width' => 'Photo of' . $bio['nickname'],
         'height' => 'Photo of' . $bio['nickname'],
         'alt' => array('id' => 'photo'),
-        'title' => FALSE,
+        'title' => FALSE
       )
     );
   }
@@ -1344,6 +1329,8 @@ function gigya_link_accounts_form($form, &$form_state) {
     '#type' => 'hidden',
     '#attributes' => array('class' => 'gigyaUid'),
   );
+
+
   $form['#validate'] = user_login_default_validators();
   $form['submit'] = array(
     '#type' => 'submit',
@@ -1394,14 +1381,13 @@ function gigya_link_accounts_form_submit(&$form, &$form_state) {
   return array('#type' => 'ajax', '#commands' => $commands);
 }
 
-/**
+/*
  * Gigya JavaScript settings for loginUI.
  *
  * Loads up the needed capabilities and variables for loginUI parameters.
  *
- * @return string
- *   The basic login ui if the gigya_login_advanced_raw variable
- *   is empty or the advanced login ui if not.
+ * @return
+ *   The basic login ui if the gigya_login_advanced_raw variable is empty or the advanced login ui if not.
  */
 function gigya_loginui_js() {
   drupal_add_library('system', 'drupal.ajax');
@@ -1425,15 +1411,11 @@ function gigya_loginui_js() {
   if ($index > 0) {
     $gigya_login_params['containerID'] = variable_get('gigya_login_uiconfig_containerID', GIGYA_DEFAULT_LOGINUI_CONTAINERID) . '-' . $index;
   }
-  // Merge configuration from advanced configuration.
+  // Merge configuration from advanced configuration
   $extra_login = variable_get('gigya_login_extra', array());
   if (!empty($extra_login)) {
-    if (is_array($extra_login)) {
-      foreach ($extra_login as $key => $parm) {
-        $gigya_login_params[$key] = $parm;
-      }
-    } else {
-      $gigya_login_params = array_merge($gigya_login_params, drupal_json_decode($extra_login));
+    foreach ($extra_login as $key => $parm) {
+      $gigya_login_params[$key] = gigya_json_to_php($parm);
     }
   }
 
@@ -1453,8 +1435,9 @@ function gigya_loginui_js() {
  *
  * Loads up the needed capabilities and variables for connectUI parameters.
  *
- * @return string
+ * @return
  *   The basic Gigya connect UI if the gigya_connect_uiconfig_raw variable is
+ *   empty or the advanced gigya connect ui if not.
  */
 function gigya_connectui_js() {
   $gigya_connect_params = array(
@@ -1466,17 +1449,6 @@ function gigya_connectui_js() {
     'requiredCapabilities' => 'login, friends',
   );
   $gigya_connect_params['containerID'] = variable_get('gigya_connect_uiconfig_containerID', GIGYA_DEFAULT_CONNECTUI_CONTAINERID);
-  $extra_connect = variable_get('gigya_connect_extra', array());
-  if (!empty($extra_connect)) {
-    if (is_array($extra_connect)) {
-      foreach ($extra_connect as $key => $parm) {
-        $gigya_connect_params[$key] = $parm;
-      }
-    } else {
-      $gigya_connect_params = array_merge($gigya_connect_params, drupal_json_decode($extra_connect));
-    }
-  }
-
   // Allow modules to alter the object before adding the JS to the page.
   drupal_alter('gigya_connectui', $gigya_connect_params);
   drupal_add_js(array('gigya' => array('connectUIParams' => $gigya_connect_params)), 'setting');
@@ -1502,19 +1474,18 @@ function gigya_tokens($type, $tokens, array $data = array(), array $options = ar
     if ($login_mode == 'raas') {
       if (!empty($_SESSION['gigya_raas_uid'])) {
         include_once dirname(__FILE__) . '/includes/GigyaAccount.inc';
-        $gigya_account = & drupal_static(__FUNCTION__);
-        if (!isset($gigya_account)) {
+        $gigya_account = &drupal_static(__FUNCTION__);
+        if (!isset($gigya_account)){
           $gigya_account = new GigyaAccount($_SESSION['gigya_raas_uid']);
         }
         $gigya_user_info = $gigya_account->getProfile();
         $gigya_user_info['data'] = $gigya_account->getData();
       }
-    }
-    else {
+    } else {
       if (!empty($_SESSION['gigya_uid'])) {
         $gigya_user = new GigyaUser($_SESSION['gigya_uid']);
       }
-      // Just in case the gigya object didn't get attached to the user object.
+      // Just in case the gigya object didn't get attached to the user object
       if (empty($gigya_user)) {
         global $user;
         $gigya_user = new GigyaUser($user->uid);
@@ -1534,7 +1505,7 @@ function gigya_tokens($type, $tokens, array $data = array(), array $options = ar
         $replacements[$original] = NULL;
       }
     }
-    // Allow other modules to add/change the tokens.
+    // Allow other modules to add/change the tokens
     drupal_alter('gigya_tokens', $replacements, $tokens, $gigya_user_info);
     return $replacements;
   }
@@ -1555,8 +1526,8 @@ function gigya_token_info() {
 
   foreach ($gigya_fields as $gigya_field_key => $gigya_field_value) {
     $gigya_tokens['gigya-' . $gigya_field_key] = array(
-      'name' => check_plain($gigya_field_key),
-      'description' => check_plain($gigya_field_value),
+      'name' => t(check_plain($gigya_field_key)),
+      'description' => t(check_plain($gigya_field_value)),
     );
   }
 
@@ -1589,110 +1560,60 @@ function gigya_menu_access_user_debug() {
   }
 }
 
+/**
+ * Helper function to make redirects.
+ */
+function gigya_redirect_to_complete_registration_page() {
+  // Get the destinattion from the url query string.
+  if (!empty($_GET['destinattion'])) {
+    $dest = $_GET['destinattion'];
+  }
+  else {
+    $dest = '<front>';
+  }
+  unset($_GET['destination']);
+  drupal_goto('socialize-register', array(
+      'query' => array(
+        'signature' => $_GET['signature'],
+        'UID' => $_GET['UID'],
+        'timestamp' => $_GET['timestamp'],
+        'destination' => $dest
+      )
+    )
+  );
+}
 
 /**
- * Checks if the component is enabled.
+ * _gigya_is_component_enabled
  *
- * @param string $component
- *   The name of the component.
- *
- * @return bool
- *   if enabled.
+ * @param $component the name of the component
+ * @return true if enabled
  */
 function _gigya_is_component_enabled($component) {
   return (bool) variable_get('gigya_' . $component . '_enabled', TRUE);
 }
 
-/**
- * Validates the key value format.
- *
- * @param array $element
- *   The element to validate.
- * @param array $form_state
- *   Form state.
- */
 function gigya_key_val_filed_validate($element, &$form_state) {
-  $t = substr($element['#value'], 0, 1);
-  if (substr($element['#value'], 0, 1) === "{") {
-    $errors = gigya_validate_json($element['#value']);
-    if ($errors !== TRUE) {
-      if (is_array($errors)) {
-        $err = join(", ", $errors);
-      } else {
-        $err = $errors;
-      }
-      form_set_error($element['name'],$err);
-    }
-  } else {
-    $values = gigya_values_string_to_array($element['#value']);
-    if (!is_array($values)) {
-      form_error($element, t('invalid input.'));
-    }
-    else {
-      form_set_value($element, $values, $form_state);
-    }
+  $values = gigya_values_string_to_array($element['#value']);
+  if (!is_array($values)) {
+    form_error($element, t('invalid input.'));
+  }
+  else {
+    form_set_value($element, $values, $form_state);
   }
 }
 
-/**
- * Checks if the json in parameters is valid.
- *
- * @param array $parms_array
- *   An array of the parameters.
- *
- * @return array|bool
- *   A php array if valid false if not.
- */
-function gigya_validate_json($parm) {
-  json_decode($parm);
-  $err = json_last_error();
-  if ($err !== JSON_ERROR_NONE) {
-    switch ($err) {
-      case JSON_ERROR_DEPTH:
-        $msg = 'json error - Maximum stack depth exceeded';
-        break;
-
-      case JSON_ERROR_STATE_MISMATCH:
-        $msg = 'json error - Underflow or the modes mismatch';
-        break;
-
-      case JSON_ERROR_CTRL_CHAR:
-        $msg = 'json error - Unexpected control character found';
-        break;
-
-      case JSON_ERROR_SYNTAX:
-        $msg = 'json error - Syntax error, malformed JSON';
-        break;
-
-      case JSON_ERROR_UTF8:
-        $msg = 'json error - Malformed UTF-8 characters, possibly incorrectly encoded';
-        break;
-
-      default:
-        $msg = 'json error - Unknown error';
-        break;
-    }
-    $json_errors[] = $msg;
-  }
-  if (!empty($json_errors)) {
-    return $json_errors;
-  }
-  return TRUE;
-}
-
-/**
+/*
  * Helper function to convert a text field key|value to an array.
  *
  * @param string $values
- *   The values to convert to array.
  *
  * @return array
- *   An associative array from the string.
  */
 function gigya_values_string_to_array($values) {
   $lines = array();
   $values = explode("\n", $values);
-  // Some clean up.
+  // Some clean up
   $values = array_map('trim', $values);
   $values = array_filter($values, 'strlen');
   foreach ($values as $value) {
@@ -1702,37 +1623,24 @@ function gigya_values_string_to_array($values) {
   return $lines;
 }
 
-/**
- * Convert Json string to php array.
- *
- * @param string $ent
- *   json string
- *
- * @return mixed
- *   Returns php array if json is valid.
- */
 function gigya_json_to_php($ent) {
   return drupal_json_decode($ent);
 }
 
-/**
+/*
  * Helper function to convert an array to text field key|value.
  *
  * @param array $array_vals
- *   An array to join in to a string.
  *
  * @return string
- *   Returns a string in the format of key|val.
+ * @todo Perhaps this should be a theme function?
  */
 function gigya_values_array_to_string($array_vals) {
-  if (is_array($array_vals)) {
   $lines = '';
   foreach ($array_vals as $key => $val) {
     $lines_array[] = "$key|$val";
   }
   $lines = implode($lines_array, "\n");
   return $lines;
-  } else {
-    return $array_vals;
-  }
 }
+

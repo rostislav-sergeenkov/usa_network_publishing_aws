@@ -1,15 +1,8 @@
 <?php
 
-/**
- * @file
- * Isle of Man.
- *
- * @see http://www.statoids.com/uim.html
- */
+// Isle of Man
+// See http://www.statoids.com/uim.html
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_im() {
   return array(
     'AY' => 'Ayre',

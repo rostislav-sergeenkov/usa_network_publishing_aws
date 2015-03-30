@@ -1,13 +1,7 @@
 <?php
 
-/**
- * @file
- * Panama.
- */
+// Panama
 
-/**
- * Returns an associative array of states/territories.
- */
 function location_province_list_pa() {
   return array(
     'BT' => "Bocas del Toro",

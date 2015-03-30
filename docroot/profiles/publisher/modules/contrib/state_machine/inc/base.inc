@@ -1,11 +1,7 @@
 <?php
 /**
  * @file
- * Defines the base classes of the state machine.
- */
-
-/**
- * The base class.
+ * base.inc
  */
 class StateMachine {
   protected $states = array();
@@ -14,12 +10,6 @@ class StateMachine {
   protected $current;
   protected $object;
 
-  /**
-   * Create instance of StateMachine.
-   *
-   * @param object $object
-   *   The object to set.
-   */
   public function __construct($object = NULL) {
     $this->object = $object;
     if (!$this->ignore()) {
@@ -29,9 +19,8 @@ class StateMachine {
   }
 
   /**
-   * Initialize the state machine.
-   *
-   * Uses the provided create_state and create_event methods.
+   * Initialize the state machine using the provided create_state and create_event
+   * methods.
    */
   protected function init() {}
 
@@ -41,20 +30,20 @@ class StateMachine {
   protected function persist() {}
 
   /**
-   * Load the current state from the given state storage.
+   * Load the current state from the given state storage
+   *
    */
   protected function load() {}
 
   /**
-   * Create a new state.
+   * Create a new state. This method does not actually create a state instance,
+   * it only stores the options array until an instance is requested from
+   * get_state().
    *
-   * This method does not actually create a state instance, it only stores the
-   * options array until an instance is requested from get_state().
-   *
-   * @param string $key
+   * @param $key string
    *   The string identifier for this state.  Must be unique within the scope
    *   of the State Machine.
-   * @param array $options
+   * @param $options array
    *   An array of options that will be passed into the State constructor.
    *   - title: The human-readable title of the state.
    *   - on_enter: An array of callbacks to be fired when entering this state.
@@ -67,9 +56,8 @@ class StateMachine {
   /**
    * Return a state instance by key, lazy-loading the instance if necessary.
    *
-   * @param string $key
+   * @param $key string
    *   The string identifier of the state to be returned.
-   *
    * @return StateMachine_State
    *   An instance of StateMachine_State, or FALSE if the key specified does
    *   not represent a valid state.
@@ -109,9 +97,8 @@ class StateMachine {
   }
 
   /**
-   * Set the initial state for this machine.
-   *
-   * By default, the initial state is set the the first created state.
+   * Set the initial state for this machine.  By default, the initial state is
+   * set the the first created state.
    */
   protected function set_initial_state($key) {
     if (array_key_exists($key, $this->states)) {
@@ -122,15 +109,14 @@ class StateMachine {
   }
 
   /**
-   * Create a new event.
+   * Create a new event. This method does not actually create an event instance,
+   * it only stores the options array until an instance is requested from
+   * get_event().
    *
-   * This method does not actually create an event instance, it only stores the
-   * options array until an instance is requested from get_event().
-   *
-   * @param string $key
+   * @param $key
    *   The string identifier for this event.  Must be unique within the scope
    *   of the State Machine.
-   * @param array $options
+   * @param $options
    *   An array of options that will be passed into the Event constructor.
    *   - title: The human-readable title of the event.
    *   - origin: A key or array of keys representing the valid origin state(s)
@@ -150,10 +136,9 @@ class StateMachine {
   /**
    * Return an event instance by key, lazy-loading the instance if necessary.
    *
-   * @param string $key
+   * @param $key
    *   The string identifier of the event to be returned.
-   *
-   * @return StateMachine_Event|FALSE
+   * @return
    *   An instance of StateMachine_Event, or FALSE if the key specified does
    *   not represent a valid event.
    */
@@ -171,9 +156,8 @@ class StateMachine {
   }
 
   /**
-   * Trigger an event to process a transition.
-   *
-   * Callbacks and guard conditions will be processed in the following order:
+   * Trigger an event to process a transition. Callbacks and guard conditions
+   * will be processed in the following order:
    * - event:before_transition
    * - event:guard, exits if guard condition return FALSE
    * - oldstate:on_exit
@@ -225,41 +209,23 @@ class StateMachine {
   }
 
   /**
-   * Get all of the events.
+   * Get all of the events
    */
   public function get_all_events() {
     return $this->events;
   }
 
   /**
-   * Whether State Machine to be ignored.
-   *
-   * @return bool
-   *   Whether State Machine to be ignored.
+   * Whether State Machine to be ignored
    */
-  public function ignore() {
-    return FALSE;
-  }
+  public function ignore() { return FALSE; }
 }
 
-/**
- * Base class for states.
- */
 class StateMachine_State {
   public $key;
   protected $machine;
   protected $options;
 
-  /**
-   * Instantiate state.
-   *
-   * @param string $name
-   *   The machine readable name of the state.
-   * @param StateMachine $machine
-   *   The related machine.
-   * @param array $options
-   *   The options array.
-   */
   public function __construct($name, $machine, $options = array()) {
     $this->name = $name;
     $this->machine = $machine;
@@ -268,23 +234,14 @@ class StateMachine_State {
   }
 
   /**
-   * Return the $options array.
-   *
-   * @return array
-   *   The options array.
+   * Return the $options array
    */
   public function get_options() {
     return $this->options;
   }
 
   /**
-   * Return a specific key value from the $options array.
-   *
-   * @param string $key
-   *   The options key.
-   *
-   * @return mixed
-   *   The value of the option or FALSE if the option wasn't found.
+   * Return a specific key value from the $options array
    */
   public function get_option($key) {
     return array_key_exists($key, $this->options) ? $this->options[$key] : FALSE;
@@ -311,24 +268,11 @@ class StateMachine_State {
   }
 }
 
-/**
- * Base class for events.
- */
 class StateMachine_Event {
   public $name;
   protected $machine;
   protected $options;
 
-  /**
-   * Instantiate event.
-   *
-   * @param string $name
-   *   The machine readable name of the state.
-   * @param StateMachine $machine
-   *   The related machine.
-   * @param array $options
-   *   The options array.
-   */
   public function __construct($name, $machine, $options = array()) {
     $this->name = $name;
     $this->machine = $machine;
@@ -340,23 +284,14 @@ class StateMachine_Event {
   }
 
   /**
-   * Return the $options array.
-   *
-   * @return array
-   *   The options array.
+   * Return the $options array
    */
   public function get_options() {
     return $this->options;
   }
 
   /**
-   * Return a specific key value from the $options array.
-   *
-   * @param string $key
-   *   The options key.
-   *
-   * @return mixed
-   *   The value of the option or FALSE if the option wasn't found.
+   * Return a specific key value from the $options array
    */
   public function get_option($key) {
     return array_key_exists($key, $this->options) ? $this->options[$key] : FALSE;
@@ -405,7 +340,7 @@ class StateMachine_Event {
   }
 
   /**
-   * Evaluates if this event can be used to transition from the specified state.
+   * Can this event be used to transition from the specified state?
    */
   public function can_transition_from($state) {
     return in_array($state, $this->options['origin']);

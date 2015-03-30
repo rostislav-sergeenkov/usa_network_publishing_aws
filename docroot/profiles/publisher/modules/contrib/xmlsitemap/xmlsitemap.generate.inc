@@ -217,11 +217,11 @@ function xmlsitemap_generate_chunk(stdClass $sitemap, XMLSitemapWriter $writer, 
       // with a short changefreq but updated two years ago show decay.
       // We use abs() here just incase items were created on this same cron run
       // because lastmod would be greater than REQUEST_TIME.
-      $link['changefreq'] = (abs(REQUEST_TIME - $link['lastmod']) + $link['changefreq']) / 2;
+//      $link['changefreq'] = (abs(REQUEST_TIME - $link['lastmod']) + $link['changefreq']) / 2;
     }
-    if (!empty($output_elements['changefreq']) && $link['changefreq']) {
-      $element['changefreq'] = xmlsitemap_get_changefreq($link['changefreq']);
-    }
+//    if (!empty($output_elements['changefreq']) && $link['changefreq']) {
+//      $element['changefreq'] = xmlsitemap_get_changefreq($link['changefreq']);
+//    }
     if (!empty($output_elements['priority']) && isset($link['priority']) && $link['priority'] != 0.5) {
       // Don't output the priority value for links that have 0.5 priority. This
       // is the default 'assumed' value if priority is not included as per the

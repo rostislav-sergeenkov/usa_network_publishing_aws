@@ -13,4 +13,3 @@ if (!is_dir("/tmp/{$conf['pub_site_shortname']}")) {
 }
 $conf['file_temporary_path'] = "/tmp/{$conf['pub_site_shortname']}";
 $conf['file_public_path'] = "sites/{$conf['pub_site_shortname']}/files";
- 

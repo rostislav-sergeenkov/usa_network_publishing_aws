@@ -8,6 +8,10 @@
  *
  * See docroot/.p7settings/README.settings.php.md for more information.
  */
+/**
+ * Start with a reasonable minimum php memory limit.
+ */
+ini_set('memory_limit', '512M');
 
 // Set $site to the string shortname of the current multisite.
 $conf['pub_site_shortname'] = 'usanetwork';

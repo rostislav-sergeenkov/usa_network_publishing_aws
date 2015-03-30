@@ -211,7 +211,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/default/js/microsite_characters.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_episodes.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',

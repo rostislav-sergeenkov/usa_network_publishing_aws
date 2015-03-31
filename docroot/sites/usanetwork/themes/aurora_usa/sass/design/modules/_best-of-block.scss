@@ -17,6 +17,9 @@
       overflow: hidden;
       position: relative;
       width: 49.6%;
+      @include breakpoint($bp-768-width) {
+        width: 100%;
+      }
       > div {
         height: 100%;
         overflow: hidden;

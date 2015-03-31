@@ -1613,7 +1613,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
-  padding-left: 15px;
+  padding-left: 4%;
   vertical-align: middle;
   width: 100%;
 }
@@ -1681,7 +1681,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 .best-of-block ul li:nth-child(2) .meta-icon, .best-of-block ul li .last .meta-icon {
-  left: 15px;
+  left: 4%;
   margin-top: -19px;
   position: absolute;
   top: 50%;
@@ -1689,7 +1689,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 @media (min-width: 1601px) {
   .best-of-block ul li:nth-child(2) .meta-icon, .best-of-block ul li .last .meta-icon {
     height: 47px;
-    left: 20px;
     margin-top: -24px;
     width: 47px;
   }
@@ -1703,7 +1702,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 @media (max-width: 480px) {
   .best-of-block ul li:nth-child(2) .meta-icon, .best-of-block ul li .last .meta-icon {
     height: 30px;
-    left: 14px;
     margin-top: -15px;
     width: 30px;
   }
@@ -1715,16 +1713,16 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 .best-of-block ul li:nth-child(2) .meta-icon ~ .meta, .best-of-block ul li .last .meta-icon ~ .meta {
-  padding-left: 60px;
+  padding-left: calc(8% + 37px);
 }
 @media (min-width: 1601px) {
   .best-of-block ul li:nth-child(2) .meta-icon ~ .meta, .best-of-block ul li .last .meta-icon ~ .meta {
-    padding-left: 80px;
+    padding-left: calc(8% + 47px);
   }
 }
 @media (max-width: 480px) {
   .best-of-block ul li:nth-child(2) .meta-icon ~ .meta, .best-of-block ul li .last .meta-icon ~ .meta {
-    padding-left: 50px;
+    padding-left: calc(8% + 30px);
   }
 }
 
@@ -7224,6 +7222,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   overflow: hidden;
   position: relative;
   width: 49.6%;
+}
+@media (max-width: 768px) {
+  .best-of-block ul li {
+    width: 100%;
+  }
 }
 .best-of-block ul li > div {
   height: 100%;

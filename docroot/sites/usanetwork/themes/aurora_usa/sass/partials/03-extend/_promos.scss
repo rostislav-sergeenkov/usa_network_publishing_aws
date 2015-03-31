@@ -745,7 +745,7 @@
     display: table-cell;
     max-width: 100px;
     overflow: hidden;
-    padding-left: 15px;
+    padding-left: 4%;
     vertical-align: middle;
     width: 100%;
     .caption {
@@ -800,13 +800,12 @@
     }
   }
   .meta-icon {
-    left: 15px;
+    left: 4%;
     margin-top: -19px;
     position: absolute;
     top: 50%;
     @include breakpoint($bp-min-1601-width) {
       height: 47px;
-      left: 20px;
       margin-top: -24px;
       width: 47px;
       &:before {
@@ -818,7 +817,6 @@
     }
     @include breakpoint($bp-480-width) {
       height: 30px;
-      left: 14px;
       margin-top: -15px;
       width: 30px;
       &:before {
@@ -829,12 +827,12 @@
       }
     }
     ~ .meta {
-      padding-left: 60px;
+      padding-left: calc(8% + 37px);
       @include breakpoint($bp-min-1601-width) {
-        padding-left: 80px;
+        padding-left: calc(8% + 47px);
       }
       @include breakpoint($bp-480-width) {
-        padding-left: 50px;
+        padding-left: calc(8% + 30px);
       }
     }
   }

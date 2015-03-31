@@ -36,6 +36,10 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_tv_shows_fbp'] = array(
+    'info' => t('Tv Shows: Full bleed promo'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -77,6 +81,17 @@ function usanetwork_tv_shows_block_view($delta = '') {
     case 'usanetwork_tv_shows_coex':
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_catchup_explore_block();
+      break;
+    case 'usanetwork_tv_shows_fbp':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_tv_shows_render_fbp_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/full-bleed-promo.js',
+          ),
+        ),
+      );
       break;
   }
 
@@ -278,7 +293,7 @@ function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_stat
  * Implements hook_usanetwork_overlay_prerender().
  */
 function usanetwork_tv_shows_usanetwork_overlay_prerender() {
-  
+
 }
 
 /**
@@ -750,13 +765,9 @@ function _usanetwork_tv_shows_aspot_block() {
   $theme_variables = array();
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
 
-  $episodes_block_title_field = field_get_items('node', $show_node, 'field_tvs_aspot_promo_btitle');
-
-  $theme_variables['episodes_block_title'] = !empty($episodes_block_title_field)
-    ? $episodes_block_title_field[0]['value']
-    : t('Latest full episodes');
-
   if (!empty($show_node)) {
+    $episodes_block_title_field = field_get_items('node', $show_node, 'field_tvs_aspot_promo_btitle');
+    $theme_variables['episodes_block_title'] = !empty($episodes_block_title_field) ? $episodes_block_title_field[0]['value'] : t('Latest full episodes');
     $theme_variables['show'] = usanetwork_aspot_render($show_node);
     $featured_items_field = field_get_items('node', $show_node, 'field_usa_tv_promo');
 
@@ -765,7 +776,7 @@ function _usanetwork_tv_shows_aspot_block() {
         $related_nid = $featured_items_field_item['target_id'];
         $related_node = node_load($related_nid);
 
-        
+
         if ($related_node) {
           $promo_content = _usanetwork_promo_featured_content($related_node);
 
@@ -960,38 +971,11 @@ function _usanetwork_tv_shows_submenu() {
   }
 
   $social_links = array();
-  foreach (array('facebook', 'twitter', 'instagram', 'pinterest', 'youtube', 'googleplus') as $social_network) {
-    $social_bar_link_field = field_get_items('node', $show, 'field_usa_link_' . $social_network);
-    if ($social_bar_link_field) {
+//  foreach (array('facebook', 'twitter', 'instagram', 'pinterest', 'youtube', 'googleplus') as $social_network) {
+  foreach (array('facebook', 'twitter') as $social_network) {
+  $social_bar_link_field = field_get_items('node', $show, 'field_usa_link_' . $social_network);
+  if ($social_bar_link_field) {
       $social_links[] = l('', $social_bar_link_field[0]['url'], array('attributes' => array('class' => $social_network, 'target' => '_blank')));
-    }
-  }
-
-  $promo_target = field_get_items('node', $show, 'field_featured_in_menu');
-  if ($promo_target) {
-    $promo_item = node_load($promo_target[0]['target_id']);
-    $promo_image = field_get_items('node', $promo_item, 'field_promo_regular_image');
-    $promo_link = field_get_items('node', $promo_item, 'field_promo_link');
-    $promo_text_line1 = field_get_items('node', $promo_item, 'field_promo_text_line_1');
-    $promo_text_line2 = field_get_items('node', $promo_item, 'field_promo_text_line_2');
-
-    if ($promo_image) {
-      $preview_image = theme('image_style', array(
-        'style_name' => 'episode_preview_temp',
-        'path' => $promo_image[0]['uri'],
-      ));
-    }
-
-    if ($promo_link) {
-      $promo_link_url = $promo_link[0]['url'];
-    }
-
-    if ($promo_text_line1) {
-      $promo_text_title = $promo_text_line1[0]['value'];
-    }
-
-    if ($promo_text_line2) {
-      $promo_text_caption = $promo_text_line2[0]['value'];
     }
   }
 
@@ -1019,11 +1003,6 @@ function _usanetwork_tv_shows_submenu() {
     'weekday' => isset($show_weekday) ? $show_weekday : NULL,
     'time' => isset($show_time) ? $show_time : NULL,
     'social_icons' => $social_links,
-    'show_menu_video_url' => isset($promo_link_url) ? $promo_link_url : NULL,
-    'show_menu_video_img' => isset($preview_image) ? $preview_image : NULL,
-    'show_menu_video_title' => isset($promo_text_title) ? $promo_text_title : NULL,
-    'show_menu_video_caption' => isset($promo_text_caption) ? $promo_text_caption
-          : NULL,
     'show_menu_tab_items' => $show_menus,
   ));
 }
@@ -1184,4 +1163,30 @@ function usanetwork_tv_shows_field_widget_form_alter(&$element, &$form_state, $c
       ),
     );
   }
+}
+
+/**
+ * Renders full bleed promo block according current show.
+ */
+function _usanetwork_tv_shows_render_fbp_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  if (!empty($show_node)) {
+    $show_wrapper = entity_metadata_wrapper('node', $show_node);
+    if (!empty($show_node->field_hp_full_bleed_promo)) {
+      $promo_node = $show_wrapper->field_hp_full_bleed_promo->value();
+      $theme_variables = array(
+        'url' => !empty($promo_node->field_usa_fbp_cta_link)
+            ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_cta_link->url->value()
+            : NULL,
+        'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
+            ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
+            : NULL,
+        'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
+            ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
+            : NULL,
+      );
+      return theme('usanetwork_fbp_block', $theme_variables);
+    }
+  }
+  return '';
 }

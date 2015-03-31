@@ -444,6 +444,33 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_full_bleed_promo|node|tv_show|form';
+  $field_group->group_name = 'group_full_bleed_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_custom_tab';
+  $field_group->data = array(
+    'label' => 'Full Bleed Promo',
+    'weight' => '82',
+    'children' => array(
+      0 => 'field_hp_full_bleed_promo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-full-bleed-promo field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_full_bleed_promo|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_getglue_settings|node|tv_show|form';
   $field_group->group_name = 'group_getglue_settings';
   $field_group->entity_type = 'node';
@@ -789,7 +816,6 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_show_links',
-      1 => 'field_featured_in_menu',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1124,6 +1150,7 @@ function usanetwork_tv_shows_field_group_info() {
       8 => 'group_usa_tv_promo',
       9 => 'group_show_aspots',
       10 => 'group_tv_shows_latest',
+      11 => 'group_full_bleed_promo',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

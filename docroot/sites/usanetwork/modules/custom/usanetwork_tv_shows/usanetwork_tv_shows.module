@@ -161,6 +161,12 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-submenu',
     ),
+    'usanetwork_tv_shows_best_of' => array(
+      'variables' => array(
+        'promos' => array(),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-best-of',
+    ),
   );
 }
 
@@ -1134,6 +1140,7 @@ function _usanetwork_tv_shows_render_best_of_block() {
     $field_promo_items = field_get_items('node', $show_node, 'field_hp_ft_featured');
     if (!empty($field_promo_items) && is_array($field_promo_items)) {
       $i = 0;
+      $promos = array();
       foreach ($field_promo_items as $promo_reference) {
         $promo_entity = entity_load($promo_reference['target_type'], array($promo_reference['target_id']));
         if (empty($promo_entity)) {
@@ -1157,7 +1164,7 @@ function _usanetwork_tv_shows_render_best_of_block() {
         $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
-        $featured_vars = array(
+        $promos[] = array(
           'url' => $promo_link,
           'image' => !empty($promo_image_url)
               ? ($is_first
@@ -1173,8 +1180,10 @@ function _usanetwork_tv_shows_render_best_of_block() {
           'class' => $is_first ? 'featured-large' : 'featured-small',
           'is_first' => $is_first,
         );
-        echo $promo_data;
       }
+      $theme_variables['promos'] = $promos;
+      return theme('usanetwork_tv_shows_best_of', $theme_variables);
     }
   }
+  return '';
 }

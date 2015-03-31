@@ -17,6 +17,12 @@
 
             if (typeof message.html != undefined) {
               nowNextBlock.html(message.html);
+
+              var trackingObject = Drupal.behaviors.omniture_tracking;
+
+              if (typeof trackingObject != 'undefined') {
+                trackingObject.attach(context, settings);
+              }
             }
           }
         });

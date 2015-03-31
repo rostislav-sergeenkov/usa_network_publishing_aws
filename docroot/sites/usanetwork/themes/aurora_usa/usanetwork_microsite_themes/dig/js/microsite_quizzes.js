@@ -63,7 +63,7 @@
         }
       });
       Drupal.settings.gigyaSharebars = [];
-      Drupal.settings.gigyaSharebars = newSharebarObj;
+      //Drupal.settings.gigyaSharebars = newSharebarObj;
 //      Drupal.settings.gigyaSharebars = [{"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": "quiz-gigya-share", "showCounts": "none", "layout": "horizontal", "iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": "gigya-share--2", "showCounts": "none", "layout": "horizontal", "iconsOnly": true}},{"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": "gigya-share--3", "showCounts": "none", "layout": "horizontal", "iconsOnly": true}}];
     },
 

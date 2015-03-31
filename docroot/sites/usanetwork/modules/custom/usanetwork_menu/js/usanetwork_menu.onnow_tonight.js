@@ -43,7 +43,7 @@
             pauseOnHover: true
           },
           onCreate: function () {
-            $(".schedule-buttons a").click(scheduleBtnClick);
+            $(".schedule-buttons a, .schedule-on-tonight a.calendar-reminder").click(scheduleBtnClick);
           }
         });
       }
@@ -55,7 +55,7 @@
         if (!$(this).hasClass('active')) {
           var current_class = $(this).attr('data-class');
 
-          $(".schedule-buttons a").removeClass('active');
+          $(".schedule-buttons a, .schedule-on-tonight a.calendar-reminder").removeClass('active');
           $(this).parent().removeClass('on-tonight on-now');
           $(this).parent().addClass(current_class);
           $(this).addClass('active');

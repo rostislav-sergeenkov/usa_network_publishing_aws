@@ -40,6 +40,10 @@ function usanetwork_tv_shows_block_info() {
     'info' => t('Tv Shows: Full bleed promo'),
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['usanetwork_tv_shows_best_of'] = array(
+    'info' => t('Tv Shows: Best of'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -91,6 +95,12 @@ function usanetwork_tv_shows_block_view($delta = '') {
             path_to_theme('aurora_usa') . '/javascripts/full-bleed-promo.js',
           ),
         ),
+      );
+      break;
+    case 'usanetwork_tv_shows_best_of':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_tv_shows_render_best_of_block(),
       );
       break;
   }
@@ -1221,4 +1231,58 @@ function _usanetwork_tv_shows_render_fbp_block() {
     }
   }
   return '';
+}
+
+/**
+ * Renders best of block according current show.
+ */
+function _usanetwork_tv_shows_render_best_of_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  if (!empty($show_node)) {
+    $field_promo_items = field_get_items('node', $show_node, 'field_hp_ft_featured');
+    if (!empty($field_promo_items) && is_array($field_promo_items)) {
+      $i = 0;
+      foreach ($field_promo_items as $promo_reference) {
+        $promo_entity = entity_load($promo_reference['target_type'], array($promo_reference['target_id']));
+        if (empty($promo_entity)) {
+          continue;
+        }
+        else {
+          $promo_entity = reset($promo_entity);
+        }
+       switch ($promo_reference['target_type']) {
+          case 'node':
+            $promo_data = _usanetwork_promo_pull_node_promo_details($promo_entity);
+            break;
+          case 'file':
+            $promo_data = _usanetwork_promo_pull_file_promo_details($promo_entity);
+            break;
+        }
+        if (empty($promo_data)) {
+          continue;
+        }
+        $promo_image_url = usanetwork_core_api_get_content_image($promo_reference['target_type'], $promo_entity);
+        $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        $is_first = ($i == 0) ? TRUE : FALSE;
+        $i++;
+        $featured_vars = array(
+          'url' => $promo_link,
+          'image' => !empty($promo_image_url)
+              ? ($is_first
+                ? theme('image_style', array('style_name' => '757x628', 'path' => $promo_image_url))
+                : theme('image_style', array('style_name' => '539x303', 'path' => $promo_image_url))
+              )
+              : NULL,
+          'icon_type' => 'play-icon',
+          'caption' => $promo_data['show_name'],
+          'title' => $promo_data['promo_title'],
+          'description' => $promo_data['description'],
+          'more_link' => $promo_data['cta'],
+          'class' => $is_first ? 'featured-large' : 'featured-small',
+          'is_first' => $is_first,
+        );
+        echo $promo_data;
+      }
+    }
+  }
 }

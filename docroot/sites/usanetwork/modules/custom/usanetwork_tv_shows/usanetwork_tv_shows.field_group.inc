@@ -1178,6 +1178,7 @@ function usanetwork_tv_shows_field_group_info() {
       9 => 'group_show_aspots',
       10 => 'group_tv_shows_latest',
       11 => 'group_full_bleed_promo',
+      12 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

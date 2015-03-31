@@ -8,6 +8,7 @@ include_once 'usanetwork_tv_shows.features.inc';
 
 define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
 define('USANETWORK_TV_SHOWS_CAROUSEL_NUMBER', 3);
+define('USA_TV_SHOW_LATEST_FULL_NUMBER', 6);
 
 /**
  *  Implements hook_block_info().
@@ -766,33 +767,69 @@ function _usanetwork_tv_shows_aspot_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
 
   if (!empty($show_node)) {
-    $episodes_block_title_field = field_get_items('node', $show_node, 'field_tvs_aspot_promo_btitle');
-    $theme_variables['episodes_block_title'] = !empty($episodes_block_title_field) ? $episodes_block_title_field[0]['value'] : t('Latest full episodes');
+    $theme_variables['episodes_block_title'] = t('Latest full episodes');
     $theme_variables['show'] = usanetwork_aspot_render($show_node);
-    $featured_items_field = field_get_items('node', $show_node, 'field_usa_tv_promo');
 
-    if (!empty($featured_items_field)) {
-      foreach ($featured_items_field as $featured_items_field_item) {
-        $related_nid = $featured_items_field_item['target_id'];
-        $related_node = node_load($related_nid);
+    $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USA_TV_SHOW_LATEST_FULL_NUMBER);
 
+    $result_count = count($episodes);
+    if ($result_count > 0) {
+      $episodes_fids = array_keys($episodes);
+    } else {
+      $episodes_fids = array();
+    }
+    $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER - $result_count;
 
-        if ($related_node) {
-          $promo_content = _usanetwork_promo_featured_content($related_node);
+    if ($needed_count > 0) {
+      $query = db_select('file_managed', 'fm')
+        ->fields('fm',array('fid', 'filename'))
+        ->condition('fm.type',  _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+        ->condition('fm.fid', $episodes_fids, 'NOT IN')
+        ->condition('fm.published', '1');
+      $query->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
+      $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+      $query->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
+      $query->condition('mv.status', '1');
+      $query->orderBy('mv.airdate', 'DESC');
+      $query->range(0, $needed_count);
+      $query_result = $query->execute()->fetchAllKeyed();
 
-          $episode_theme_variables = array(
-            'url' => $promo_content['url'],
-            'title' => $promo_content['title'],
-            'additional' => $promo_content['caption'],
-            'image_url' => image_style_url('300x169_video', $promo_content['image_url']),
-          );
+      $episodes_fids = array_merge($episodes_fids, array_keys($query_result));
+    }
 
-          if (!empty($promo_content['season_number']) && !empty($promo_content['episode_number'])) {
-            $episode_theme_variables['series_and_number'] = 'S' . $promo_content['season_number'] . ' ' . t('Episode') . ' ' . $promo_content['episode_number'];
-          }
+    $full_latest_episodes = file_load_multiple($episodes_fids);
 
-          $theme_variables['episodes'][] = $episode_theme_variables;
+    if (!empty($full_latest_episodes)) {
+      foreach ($full_latest_episodes as $full_latest_episode) {
+        $episode_wrapper = entity_metadata_wrapper('file', $full_latest_episode);
+        if ($full_latest_episode->field_promo_violator_name) {
+          $violator = $episode_wrapper->field_promo_violator_name->value();
         }
+        if ($full_latest_episode->field_promo_title) {
+          $title = $episode_wrapper->field_promo_title->value();
+        }
+        if ($full_latest_episode->field_promo_long_description) {
+          $description = $episode_wrapper->field_promo_long_description->value();
+        } else {
+          if ($full_latest_episode->field_mpx_description) {
+            $description = $episode_wrapper->field_mpx_description->value();
+          }
+        }
+        $wrapper = file_stream_wrapper_get_instance_by_uri($full_latest_episode->uri);
+        $video_image = theme('image_style', array(
+          'path' => $wrapper->getLocalThumbnailPath(),
+          'style_name' => '300x250',
+        ));
+
+        $episode_theme_variables = array(
+          'url' => url('file/' . $full_latest_episode->fid),
+          'violator' => isset($violator) ? $violator : NULL,
+          'title' => isset($title) ? $title : $full_latest_episode->filename,
+          'description' => $description,
+          'image_url' => $video_image,
+        );
+
+        $theme_variables['episodes'][] = $episode_theme_variables;
       }
     }
   }

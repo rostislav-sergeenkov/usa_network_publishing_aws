@@ -1,0 +1,45 @@
+.best-of-block {
+  @include clear();
+  background: $footer-links;
+  border-bottom: 2px solid;
+  padding: 40px 16px;
+  position: relative;
+  width: 100%;
+  ul {
+    @include clear();
+    margin: 40px 0 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    li {
+      float: left;
+      height: 37.2vw;
+      overflow: hidden;
+      position: relative;
+      width: 49.6%;
+      > div {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+      &:nth-child(2), .last {
+        float: right;
+        @extend %three-line-video-promo;
+        @extend %meta;
+        > div {
+          float: left;
+          height: 49.2%;
+          margin-right: 1.6%;
+          width: 49.2%;
+          &:nth-child(1), &:nth-child(2) {
+            margin-bottom: 1.6%;
+          }
+          &:nth-child(2), &:nth-child(4) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

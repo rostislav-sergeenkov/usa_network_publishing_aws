@@ -28,12 +28,12 @@
 .show-<?php print $node_code; ?> .show-color.hover-avail:hover, .show-<?php print $node_code; ?>.show-color.hover-avail:hover {
   background: <?php print $tertiary_color_code; ?>;
 }
-.show-<?php print $node_code; ?> .show-border {
+.show-<?php print $node_code; ?> .show-border, .show-<?php print $node_code; ?> .show-border:before, .show-<?php print $node_code; ?> .show-border:after {
   border-color: <?php print $primary_color_code; ?> !important;
 }
-.show-<?php print $node_code; ?> .show-border.secondary {
+.show-<?php print $node_code; ?> .show-border.secondary, .show-<?php print $node_code; ?> .show-border.secondary:before,  .show-<?php print $node_code; ?> .show-border.secondary:after {
   border-color: <?php print $secondary_color_code; ?> !important;
 }
-.show-<?php print $node_code; ?> .show-border.tertiary {
+.show-<?php print $node_code; ?> .show-border.tertiary, .show-<?php print $node_code; ?> .show-border.tertiary:before, .show-<?php print $node_code; ?> .show-border.tertiary:after {
   border-color: <?php print $tertiary_color_code; ?> !important;
 }

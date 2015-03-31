@@ -41,22 +41,22 @@ function usanetwork_social_meter_get($aspot_node) {
   $social_meter_data = _usanetwork_social_meter_get_data($aspot_node);
 
   if (is_array($social_meter_data)) {
+    if (empty($social_meter_data['sfs_id']) || empty($social_meter_data['hashtag'])) {
+      return '';
+    }
+
     $theme_variables = array(
-      'link' => !empty($social_meter_data['sfs_id'])
-        ? url(USANETWORK_SOCIAL_METER_SERVICE_URL . '/' . $social_meter_data['sfs_id'])
-        : '',
+      'link' => url(USANETWORK_SOCIAL_METER_SERVICE_URL . '/' . $social_meter_data['sfs_id']),
       'link_text' => t("See what everyone's saying"),
       'upper_line' => NULL,
       'middle_line' => t('Talking about'),
-      'hashtag' => !empty($social_meter_data['hashtag'])
-        ? $social_meter_data['hashtag']
-        : '',
+      'hashtag' => $social_meter_data['hashtag'],
     );
 
-    $result = theme('usanetwork_social_meter', $theme_variables);
-
-    kpr($result);die;
+    return theme('usanetwork_social_meter', $theme_variables);
   }
+
+  return '';
 }
 
 /**

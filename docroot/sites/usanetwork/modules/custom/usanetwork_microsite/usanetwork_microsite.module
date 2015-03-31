@@ -903,6 +903,9 @@ function _usanetwork_microsite_render_page_quizzes($section_wrapper) {
   }
   $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
 
+  $sharebars['gigyaSharebars'] = array();
+  drupal_add_js($sharebars, 'setting');
+
   return $theme_variables;
 }
 

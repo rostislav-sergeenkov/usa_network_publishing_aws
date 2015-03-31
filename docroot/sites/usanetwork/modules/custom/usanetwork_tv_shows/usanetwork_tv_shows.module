@@ -962,38 +962,11 @@ function _usanetwork_tv_shows_submenu() {
   }
 
   $social_links = array();
-  foreach (array('facebook', 'twitter', 'instagram', 'pinterest', 'youtube', 'googleplus') as $social_network) {
-    $social_bar_link_field = field_get_items('node', $show, 'field_usa_link_' . $social_network);
-    if ($social_bar_link_field) {
+//  foreach (array('facebook', 'twitter', 'instagram', 'pinterest', 'youtube', 'googleplus') as $social_network) {
+  foreach (array('facebook', 'twitter') as $social_network) {
+  $social_bar_link_field = field_get_items('node', $show, 'field_usa_link_' . $social_network);
+  if ($social_bar_link_field) {
       $social_links[] = l('', $social_bar_link_field[0]['url'], array('attributes' => array('class' => $social_network, 'target' => '_blank')));
-    }
-  }
-
-  $promo_target = field_get_items('node', $show, 'field_featured_in_menu');
-  if ($promo_target) {
-    $promo_item = node_load($promo_target[0]['target_id']);
-    $promo_image = field_get_items('node', $promo_item, 'field_promo_regular_image');
-    $promo_link = field_get_items('node', $promo_item, 'field_promo_link');
-    $promo_text_line1 = field_get_items('node', $promo_item, 'field_promo_text_line_1');
-    $promo_text_line2 = field_get_items('node', $promo_item, 'field_promo_text_line_2');
-
-    if ($promo_image) {
-      $preview_image = theme('image_style', array(
-        'style_name' => 'episode_preview_temp',
-        'path' => $promo_image[0]['uri'],
-      ));
-    }
-
-    if ($promo_link) {
-      $promo_link_url = $promo_link[0]['url'];
-    }
-
-    if ($promo_text_line1) {
-      $promo_text_title = $promo_text_line1[0]['value'];
-    }
-
-    if ($promo_text_line2) {
-      $promo_text_caption = $promo_text_line2[0]['value'];
     }
   }
 
@@ -1021,11 +994,6 @@ function _usanetwork_tv_shows_submenu() {
     'weekday' => isset($show_weekday) ? $show_weekday : NULL,
     'time' => isset($show_time) ? $show_time : NULL,
     'social_icons' => $social_links,
-    'show_menu_video_url' => isset($promo_link_url) ? $promo_link_url : NULL,
-    'show_menu_video_img' => isset($preview_image) ? $preview_image : NULL,
-    'show_menu_video_title' => isset($promo_text_title) ? $promo_text_title : NULL,
-    'show_menu_video_caption' => isset($promo_text_caption) ? $promo_text_caption
-          : NULL,
     'show_menu_tab_items' => $show_menus,
   ));
 }

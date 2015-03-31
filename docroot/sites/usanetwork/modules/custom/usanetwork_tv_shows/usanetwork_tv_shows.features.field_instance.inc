@@ -16341,7 +16341,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Featured');
   t('Featured Items');
   t('Featured Video Promos');
-  t('Featured in menu');
   t('Floodlight Category');
   t('Floodlight Type');
   t('Google+ page');

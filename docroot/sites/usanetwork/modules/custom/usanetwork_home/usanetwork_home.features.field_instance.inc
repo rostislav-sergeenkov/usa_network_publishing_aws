@@ -406,7 +406,7 @@ function usanetwork_home_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 35,
+      'weight' => 27,
     ),
   );
 
@@ -702,7 +702,7 @@ function usanetwork_home_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_hp_episodes_block_title',
-    'label' => 'Episodes block title',
+    'label' => 'Full Episodes block title',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -2527,10 +2527,10 @@ function usanetwork_home_field_default_field_instances() {
   t('Carousel');
   t('Day');
   t('Display Promo carousel');
-  t('Episodes block title');
   t('Featured Items');
   t('Floodlight Category');
   t('Floodlight Type');
+  t('Full Episodes block title');
   t('Global Nav Images - Show drawer');
   t('Global Nav Promos');
   t('H1');

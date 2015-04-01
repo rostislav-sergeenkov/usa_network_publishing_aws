@@ -8,7 +8,8 @@ include_once 'usanetwork_tv_shows.features.inc';
 
 define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
 define('USANETWORK_TV_SHOWS_CAROUSEL_NUMBER', 3);
-define('USA_TV_SHOW_LATEST_FULL_NUMBER', 5);
+define('USA_TV_SHOW_LATEST_FULL_NUMBER', 6);
+define('USA_TV_SHOW_RELATED_ITEMS_ON_PAGE', 5);
 define('USA_TV_SHOW_RELATED_CACHE_SIZE', 250);
 
 /**
@@ -791,7 +792,7 @@ function _usanetwork_tv_shows_aspot_block() {
     $theme_variables['episodes_block_title'] = t('Latest full episodes');
     $theme_variables['show'] = usanetwork_aspot_render($show_node);
 
-    $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USA_TV_SHOW_LATEST_FULL_NUMBER);
+    $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
 
     $result_count = count($episodes);
     if ($result_count > 0) {
@@ -800,7 +801,7 @@ function _usanetwork_tv_shows_aspot_block() {
     else {
       $episodes_fids = array();
     }
-    $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER - $result_count;
+    $needed_count = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE - $result_count;
 
     if ($needed_count > 0) {
       $query = db_select('file_managed', 'fm')
@@ -1113,7 +1114,7 @@ function _usanetwork_tv_shows_cache_get_related_show_content($tv_show_node, $ful
  * @param int $start_from
  * @param $limit = 0, if = 0 it returns all data.
  */
-function _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, $start_from = 0, $limit = USA_TV_SHOW_LATEST_FULL_NUMBER) {
+function _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
   $data = _usanetwork_tv_shows_cache_get_related_show_content($tv_show_node);
 
   if (!empty($data)) {
@@ -1153,7 +1154,7 @@ function _usanetwork_tv_shows_related_content_block() {
     return '';
   }
 
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_TV_SHOW_LATEST_FULL_NUMBER);
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
 
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');

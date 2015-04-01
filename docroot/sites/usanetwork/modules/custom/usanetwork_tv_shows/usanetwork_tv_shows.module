@@ -8,7 +8,26 @@ include_once 'usanetwork_tv_shows.features.inc';
 
 define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
 define('USANETWORK_TV_SHOWS_CAROUSEL_NUMBER', 3);
-define('USA_TV_SHOW_LATEST_FULL_NUMBER', 6);
+define('USA_TV_SHOW_LATEST_FULL_NUMBER', 5);
+define('USA_TV_SHOW_RELATED_CACHE_SIZE', 250);
+
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_tv_shows_menu() {
+  $items = array();
+
+  // Ajax callback for loading more items.
+  $items['ajax/usanetwork-tv-shows/get-related/%node/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_tv_shows_get_related_content_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
 
 /**
  *  Implements hook_block_info().
@@ -26,11 +45,6 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
-  $blocks['usanetwork_tv_shows_latest'] = array(
-    'info' => t('TV Show: latest block'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
   // Catch up & Explore
   $blocks['usanetwork_tv_shows_coex'] = array(
     'info' => t('TV Shows: Catch up, Explore'),
@@ -41,6 +55,12 @@ function usanetwork_tv_shows_block_info() {
     'info' => t('Tv Shows: Full bleed promo'),
     'cache' => DRUPAL_NO_CACHE,
   );
+
+  $blocks['usanetwork_tv_shows_related'] = array(
+    'info' => t('TV Shows: Latest content'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -70,19 +90,11 @@ function usanetwork_tv_shows_block_view($delta = '') {
       );
       break;
 
-    case 'usanetwork_tv_shows_latest':
-      $show = menu_get_object();
-      if (!is_object($show) || (!isset($show->type) && $show->type != 'tv_show')) {
-        return '';
-      }
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_tv_shows_latest($show);
-      break;
-
     case 'usanetwork_tv_shows_coex':
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_catchup_explore_block();
       break;
+
     case 'usanetwork_tv_shows_fbp':
       $block['subject'] = '';
       $block['content'] = array(
@@ -93,6 +105,11 @@ function usanetwork_tv_shows_block_view($delta = '') {
           ),
         ),
       );
+      break;
+
+    case 'usanetwork_tv_shows_related':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_related_content_block();
       break;
   }
 
@@ -176,6 +193,24 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'image' => NULL,
       ),
       'template' => 'templates/usanetwork-tv-shows-latest-item',
+    ),
+    'usanetwork_tv_shows_related_item' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'target_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-related-item',
+    ),
+    'usanetwork_tv_shows_related_items' => array(
+      'variables' => array(
+        'related_items' => array(),
+        'load_more_link' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-related-items',
     ),
   );
 }
@@ -298,6 +333,113 @@ function usanetwork_tv_shows_usanetwork_overlay_prerender() {
 }
 
 /**
+ *  Implements hook_entity_update().
+ */
+function usanetwork_tv_shows_entity_update($entity, $type) {
+  if (!empty($entity->field_show)) {
+    $show_nid = !empty($entity->field_show[$entity->language][0]['target_id'])
+      ? $entity->field_show[$entity->language][0]['target_id']
+      : NULL;
+
+    if (!empty($show_nid)) {
+      $tv_show_node = node_load($show_nid);
+
+      _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
+    }
+  }
+}
+
+/**
+ *  Implements hook_entity_insert().
+ */
+function usanetwork_tv_shows_entity_insert($entity) {
+  if (!empty($entity->field_show)) {
+    $show_nid = !empty($entity->field_show[$entity->language][0]['target_id'])
+      ? $entity->field_show[$entity->language][0]['target_id']
+      : NULL;
+
+    if (!empty($show_nid)) {
+      $tv_show_node = node_load($show_nid);
+
+      _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
+    }
+  }
+}
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_tv_shows_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['tvshows_related_data'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('TV Shows related content settings'),
+    '#description' => t('Select TV Shows for rebuilding cache of related content.'),
+    '#collapsed' => FALSE,
+    '#collapsible' => TRUE,
+  );
+
+  $tv_shows = entity_load('node', NULL, array(
+    'type' => 'tv_show',
+    'status' => NODE_PUBLISHED,
+  ));
+
+  // Sort shows according title
+  usort($tv_shows, function($a, $b) {
+    if ($a->title == $b->title) {
+      return 0;
+    }
+    else {
+      if ($a->title > $b->title) {
+        return 1;
+      }
+      return -1;
+    }
+  });
+
+  if (!empty($tv_shows)) {
+    foreach ($tv_shows as $tv_show_node) {
+      // Ignore unpublished items
+      if ($tv_show_node->current_state != 'published') {
+        continue;
+      }
+
+      $current_cache = _usanetwork_tv_shows_cache_get_related_show_content($tv_show_node, TRUE, TRUE);
+
+      $form['tvshows_related_data']['tvshow_rebuild_' . $tv_show_node->nid] = array(
+        '#type' => 'checkbox',
+        '#title' => $tv_show_node->title,
+        '#description' => isset($current_cache->created)
+          ? t('Created at !date, !elements related content items are cached', array(
+            '!date' => format_date($current_cache->created, 'short'),
+            '!elements' => count($current_cache->data)
+          ))
+          : t('Never created'),
+        '#default_value' => 0,
+        '#required' => FALSE,
+      );
+    }
+
+    // Rebuild cache of related content of TV Show node
+    $form['#submit'][] = 'usanetwork_tv_shows_form_usanetwork_settings_form_submit';
+  }
+}
+
+/**
+ * Submit callback of 'usanetwork_tv_shows_form_usanetwork_settings_form_alter'.
+ */
+function usanetwork_tv_shows_form_usanetwork_settings_form_submit(&$form, &$form_state) {
+  foreach ($form_state['values'] as $setting_name => $setting_value) {
+    $matches = array();
+
+    if (preg_match("/^tvshow_rebuild_(\d+)$/", $setting_name, $matches) && $setting_value == 1) {
+      $tv_show_node = node_load($matches[1]);
+
+      _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
+    }
+  }
+}
+
+/**
  * AJAX callback function that populates the "season" entity reference field
  * with seasons for the user specifid show.
  *
@@ -353,100 +495,6 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
 }
 
 /**
- * Selects content related with show content.
- *
- * @param integer $limit - limits query items, 0 means that all the available
- * pieces of content should be pulled.
- *
- * @param string $sort - sorting order
- *
- * @param string $sort_by - sorting field name
- *
- * @param array $filters - consists of filters for query
- * (you may ignore this param if you want to select all the content):
- * array(
- *   'bundle' => array(
- *     'values' => array('media_gallery', 'post'),
- *     // OR 'values' => 'media_gallery',
- *     'operator' => 'IN', // default 'IN' if array and default '=' if not array
- *   ),
- * );
- */
-function _usanetwork_tv_shows_get_related_content($show_id, $limit = 0, $sort = 'DESC', $sort_by = 'entity_id', $filters = array()) {
-  $content_items = array();
-
-  // Apply sorter alias for nodes
-  $node_sorter = _usanetwork_tv_shows_detect_related_content_node_sorter($sort_by);
-
-  // Apply sorter alias for files
-  $file_sorter = _usanetwork_tv_shows_detect_related_content_file_sorter($sort_by);
-
-  // Pull nodes
-  $nodes = _usanetwork_tv_shows_pull_related_nodes($show_id, 0, $limit, $sort, $node_sorter, $filters);
-
-  // Pull files
-  $files = _usanetwork_tv_shows_pull_related_files($show_id, $limit, $sort, $file_sorter, $filters);
-
-  // Merge nodes and files
-  if (!empty($nodes) && !empty($files)) {
-    $content_items = array_merge($nodes, $files);
-  }
-  elseif (!empty($nodes)) {
-    $content_items = $nodes;
-  }
-  elseif (!empty($files)) {
-    $content_items = $files;
-  }
-
-  // Sort items according sorter alias
-  usort($content_items, function($a, $b) use ($node_sorter, $file_sorter, $sort) {
-    $a_sorter = $a->entity_type == 'node' ? $node_sorter : $file_sorter;
-
-    $b_sorter = $b->entity_type == 'node' ? $node_sorter : $file_sorter;
-
-    if ($a->$a_sorter == $b->$b_sorter) {
-      return 0;
-    }
-    else {
-      if ($a->$a_sorter > $b->$b_sorter) {
-        return $sort == 'ASC' ? 1 : -1;
-      }
-      return $sort == 'ASC' ? -1 : 1;
-    }
-  });
-
-  // Crop extra elements
-  if ($limit > 0) {
-    array_splice($content_items, $limit);
-  }
-
-  return $content_items;
-}
-
-/**
- * Alters node filters
- */
-function _usanetwork_tv_shows_detect_related_content_node_sorter($sort_by) {
-  // There are no available aliases at the moment.
-  return $sort_by;
-}
-
-/**
- * Alters file filters
- */
-function _usanetwork_tv_shows_detect_related_content_file_sorter($sort_by) {
-  $filter_aliases = array(
-    'changed' => 'timestamp',
-  );
-
-  if (isset($filter_aliases[$sort_by])) {
-    return $filter_aliases[$sort_by];
-  }
-
-  return $sort_by;
-}
-
-/**
  * Pulls nodes related with show content.
  *
  * @param integer $show_id - node id of the show
@@ -477,8 +525,8 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
   $query->join('node', 'n', 'fshow.entity_id=n.nid');
   $query->fields('n', array('nid', 'title', 'created', 'changed'));
   // Attach promo title
-  $query->leftJoin('field_data_field_promo_text_line_1', 'fp_title', 'n.nid=fp_title.entity_id');
-  $query->addField('fp_title', 'field_promo_text_line_1_value', 'promo_title');
+  //$query->leftJoin('field_data_field_promo_text_line_1', 'fp_title', 'n.nid=fp_title.entity_id');
+  //$query->addField('fp_title', 'field_promo_text_line_1_value', 'promo_title');
   // Attach show node
   $query->join('node', 'sn', 'fshow.field_show_target_id=sn.nid');
   $query->addField('sn', 'title', 'show_title');
@@ -494,6 +542,21 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
   // Attach promo duration value
   $query->leftJoin('field_data_field_mpx_duration', 'fvp_duration', 'fvp_duration.entity_id=assoc.field_promo_assoc_video_target_id');
   $query->addField('fvp_duration', 'field_mpx_duration_value', 'promo_duration');
+  // Attach promo topic
+  $query->leftJoin('field_data_field_promo_topic', 'fnp_topic', 'fnp_topic.entity_id=n.nid');
+  $query->addField('fnp_topic', 'field_promo_topic_value', 'promo_topic');
+  // Attach promo topic
+  $query->leftJoin('field_data_field_promo_violator_name', 'fnp_violator', 'fnp_violator.entity_id=n.nid');
+  $query->addField('fnp_violator', 'field_promo_violator_name_value', 'promo_violator');
+  // Attach promo topic
+  $query->leftJoin('field_data_field_promo_title', 'fnp_title', 'fnp_title.entity_id=n.nid');
+  $query->addField('fnp_title', 'field_promo_title_value', 'promo_title');
+  // Attach promo topic
+  $query->leftJoin('field_data_field_promo_long_description', 'fnp_description', 'fnp_description.entity_id=n.nid');
+  $query->addField('fnp_description', 'field_promo_long_description_value', 'promo_description');
+  // Attach promo topic
+  $query->leftJoin('field_data_field_promo_call_to_action_text', 'fnp_cta', 'fnp_cta.entity_id=n.nid');
+  $query->addField('fnp_cta', 'field_promo_call_to_action_text_value', 'promo_cta');
 
   $query->condition('fshow.field_show_target_id', $show_id);
   $query->condition('fshow.deleted', 0);
@@ -551,7 +614,7 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
  *   ),
  * );
  */
-function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array(), $season_num = FALSE, $episode_num = FALSE) {
+function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array(), $season_num = FALSE, $episode_num = FALSE) {
   $query = db_select('field_data_field_show', 'fshow');
   $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
   $query->join('file_managed', 'f', 'fshow.entity_id=f.fid');
@@ -584,7 +647,7 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
   $query->orderBy($sort_by, $direction);
 
   if ($limit > 0) {
-    $query->range(0, $limit);
+    $query->range($start_from, $limit);
   }
 
   if (!empty($filters)) {
@@ -605,40 +668,6 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
   }
 
   return $query->execute()->fetchAll();
-}
-
-/**
- * Renders content from returned settings array of "_usanetwork_tv_shows_get_related_content()".
- *
- * @param array $query_result - the result of "_usanetwork_tv_shows_get_related_content()"
- * @param array $content_view_modes - array of applicable view modes for content:
- * array(
- *   'view_mode_name' => array(
- *     'node' => array(           // applies only for listed nodes
- *       'node_bundle_name1',
- *       'node_bundle_name2'
- *     ),
- *   ),
- *   'view_mode_name2' => array(
- *     'node' => array(),         // applies for all listed nodes
- *     'file' => array('image'),  // applies for files with type "image"
- *   ),
- * );
- */
-function _usanetwork_tv_shows_render_related_content($query_result, $content_view_modes) {
-  $content = array();
-
-  if (!empty($query_result) && !empty($content_view_modes)) {
-    foreach ($query_result as $query_item) {
-      $view_mode = _usanetwork_tv_shows_detect_related_content_view_mode($query_item, $content_view_modes);
-
-      if (!empty($view_mode)) {
-        $content[] = _usanetwork_tv_shows_render_related_content_item($query_item, $view_mode);
-      }
-    }
-  }
-
-  return $content;
 }
 
 /**
@@ -687,25 +716,6 @@ function _usanetwork_tv_shows_pull_videos($ignore_show_nids = array(), $start_fr
   }
 
   return $query->execute()->fetchAll();
-}
-
-/**
- * Renders related content item from db_select array.
- */
-function _usanetwork_tv_shows_render_related_content_item($query_item, $view_mode) {
-  $content_item = array();
-
-  switch ($query_item->entity_type) {
-    case 'node':
-      $content_item = node_view(node_load($query_item->entity_id), $view_mode);
-      break;
-
-    case 'file':
-      $content_item = file_view(file_load($query_item->entity_id), $view_mode);
-      break;
-  }
-
-  return !empty($content_item) ? render($content_item) : '';
 }
 
 /**
@@ -1069,127 +1079,6 @@ function _usanetwork_tv_shows_discription_item($show, $field_list, &$description
 }
 
 /**
- * Get latest content from field_latest_carousel field of tv_show content type
- */
-function _usanetwork_tv_shows_get_latest_content($show) {
-  $show_latests_items = field_get_items('node', $show, 'field_latest_carousel_items');
-
-  $items = FALSE;
-  if ($show_latests_items) {
-    foreach ($show_latests_items as $item) {
-      $item_object = field_collection_item_load($item['value']);
-
-      $show_latest_entity_target_id = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_latest_carousel', 'target_id');
-      $show_latest_entity_target_type = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_latest_carousel', 'target_type');
-      $show_latest_entity_is_ymal = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_is_ymal', 'value');
-      if ($show_latest_entity_is_ymal) {
-        $show_latest_entity_ymal_title = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_ymal_block_title', 'value');
-      }
-
-      if ($show_latest_entity_target_id && $show_latest_entity_target_type) {
-        $item = array(
-          'entity_id' => $show_latest_entity_target_id,
-          'entity_type' => $show_latest_entity_target_type,
-        );
-
-        if ($show_latest_entity_is_ymal && $show_latest_entity_ymal_title) {
-          $item['ymal'] = $show_latest_entity_ymal_title;
-        }
-        else if ($show_latest_entity_is_ymal) {
-          $item['ymal'] = t('You might also like');
-        }
-        $items[] = (object) $item;
-      }
-    }
-  }
-  return $items;
-}
-
-function _usanetwork_tv_shows_latest($show) {
-  $show_latest = _usanetwork_tv_shows_get_latest_content($show);
-
-  if ($show_latest === FALSE) {
-    return '';
-  }
-
-  $description_vars = array(
-    'caption' => t('All new!'),
-    'title' => t('Latest'),
-    'additional_text' => t('Photos, polls & more'),
-  );
-
-  _usanetwork_tv_shows_discription_item($show, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
-
-  $output[] = theme('usanetwork_home_carousel_description_item', $description_vars);
-
-  foreach ($show_latest as $entity_data) {
-    $entity = entity_load_single($entity_data->entity_type, $entity_data->entity_id);
-
-    if ($entity_data->entity_type == 'node') {
-      $type = $entity->type;
-    }
-    else if ($entity_data->entity_type == 'file') {
-      $type = $entity->filemime;
-    }
-    else {
-      continue;
-    }
-
-    $related_content_data = _usanetwork_related_content($type, $entity, FALSE);
-
-    if ($related_content_data['season_number'] && $related_content_data['episode_number']) {
-      $additional = t('S@season_num episode @episode_num', array(
-        '@season_num' => $related_content_data['season_number']['value'],
-        '@episode_num' => $related_content_data['episode_number']['value']
-          )
-      );
-    }
-
-    $image = theme_image_style(array(
-      'style_name' => '300x250',
-      'path' => $related_content_data['image_url'],
-      'width' => 300,
-      'height' => 250,
-    ));
-
-    $latest_items[] = theme('usanetwork_tv_shows_latest_item', array(
-      'block_title' => isset($entity_data->ymal) ? $entity_data->ymal : NULL,
-      'show_class' => isset($entity_data->ymal) ? $related_content_data['show_class'] : NULL,
-      'url' => $related_content_data['url'],
-      'show_title' => $show->title,
-      'additional' => isset($additional) ? $additional : NULL,
-      'duration' => $related_content_data['time'],
-      'icon_type' => $related_content_data['icon_type'],
-      'image' => $image,
-        )
-    );
-  }
-  $output[] = theme('usanetwork_item_list', array(
-    'warpper_attributes' => array(
-      'class' => array(
-        'carousel',
-        'carousel-left',
-        'start',
-      ),
-      'data-carousel-id' => 'show-page-latest',
-    ),
-    'title_tag' => 'h2',
-    'title_attributes' => array(
-      'class' => NULL
-    ),
-    'title' => NULL,
-    'items' => $latest_items,
-    'type' => 'ul',
-    'attributes' => array(),
-    'suffix' => array(
-      '<a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
-      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>'
-    )
-  ));
-  return implode(PHP_EOL, $output);
-}
-
-/**
  *  Implements hook_field_widget_form_alter().
  */
 function usanetwork_tv_shows_field_widget_form_alter(&$element, &$form_state, $context) {
@@ -1226,4 +1115,235 @@ function _usanetwork_tv_shows_render_fbp_block() {
     }
   }
   return '';
+}
+
+/**
+ * Returns related content of $show_node TV Show.
+ * @param $show_node
+ * @param int $start_from
+ * @param int $limit
+ */
+function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0, $limit = 1) {
+  $content_items = array();
+
+  // Pull nodes
+  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'changed');
+
+  // Pull files
+  $files = _usanetwork_tv_shows_pull_related_files($tv_show_node->nid, $start_from, $limit, 'DESC', 'timestamp');
+
+  // Merge nodes and files
+  if (!empty($nodes) && !empty($files)) {
+    $content_items = array_merge($nodes, $files);
+  }
+  elseif (!empty($nodes)) {
+    $content_items = $nodes;
+  }
+  elseif (!empty($files)) {
+    $content_items = $files;
+  }
+
+  // Sort items according sorter alias
+  usort($content_items, function($a, $b) {
+    $a_sorter = $a->entity_type == 'node' ? 'changed' : 'timestamp';
+
+    $b_sorter = $b->entity_type == 'node' ? 'changed' : 'timestamp';
+
+    if ($a->$a_sorter == $b->$b_sorter) {
+      return 0;
+    }
+    else {
+      if ($a->$a_sorter > $b->$b_sorter) {
+        return -1;
+      }
+      return 1;
+    }
+  });
+
+  // Crop extra elements
+  if ($limit > 0) {
+    array_splice($content_items, $limit);
+  }
+
+  return $content_items;
+}
+
+/**
+ * Caches a list of node and files of related show.
+ *
+ * @param $tv_show_node
+ */
+function _usanetwork_tv_shows_cache_set_related_show_content($tv_show_node) {
+  $cached_data = usanetwork_tv_shows_get_related_content($tv_show_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE);
+
+  if (!empty($cached_data)) {
+    foreach ($cached_data as $cached_id => &$cached_data_item) {
+      $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $cached_data_item->entity_id);
+
+      if (!empty($content_image)) {
+        $cached_data_item->raw_image_uri = $content_image;
+      }
+    }
+  }
+
+  cache_set('usa_tv_shows_related_' . $tv_show_node->nid, $cached_data);
+}
+
+/**
+ * Pulls from cache a list of node and files of related show. If the cache is empty - it makes the data.
+ *
+ * @param $tv_show_node
+ * @param $full_object - if true returns full object of Drupal cache
+ * @param $accurate - if true cache will be create if it does not exist
+ * @return bool|int|null|object|stdClass
+ */
+function _usanetwork_tv_shows_cache_get_related_show_content($tv_show_node, $full_object = FALSE, $accurate = FALSE) {
+  $data = cache_get('usa_tv_shows_related_' . $tv_show_node->nid);
+
+  if (!$accurate && empty($data)) {
+    _usanetwork_tv_shows_cache_set_related_show_content($tv_show_node);
+
+    $data = cache_get('usa_tv_shows_related_' . $tv_show_node->nid);
+  }
+
+  return $full_object
+    ? $data
+    : $data->data;
+}
+
+/**
+ * Returns limited number of cached records.
+ *
+ * @param $tv_show_node
+ * @param int $start_from
+ * @param $limit = 0, if = 0 it returns all data.
+ */
+function _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, $start_from = 0, $limit = USA_TV_SHOW_LATEST_FULL_NUMBER) {
+  $data = _usanetwork_tv_shows_cache_get_related_show_content($tv_show_node);
+
+  if (!empty($data)) {
+    if ($limit == 0) {
+      return array_splice($data, $start_from, count($data));
+    }
+    else {
+      return array_splice($data, $start_from, $limit);
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Rebuilds cahce for TV Show.
+ *
+ * @param $tv_show_node
+ */
+function _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node) {
+  cache_clear_all('usa_tv_shows_related_' . $tv_show_node->nid, 'cache');
+
+  _usanetwork_tv_shows_cache_get_related_show_content($tv_show_node);
+}
+
+/**
+ * Renders latest elements for show.
+ */
+function _usanetwork_tv_shows_related_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $tv_show_node = menu_get_object();
+
+  if (empty($tv_show_node) || (!empty($tv_show_node) && isset($tv_show_node->type) && $tv_show_node->type != 'tv_show')) {
+    return '';
+  }
+
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_TV_SHOW_LATEST_FULL_NUMBER);
+
+  if (!empty($related_content)) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+    drupal_add_js(array(
+      'usanetwork_tv_show_nid' => $tv_show_node->nid
+    ), 'setting');
+
+    return _usanetwork_tv_shows_render_related_content_items($related_content);
+  }
+
+  return '';
+}
+
+/**
+ * AJAX callback for getting related content of show.
+ */
+function _usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'rendered' => '',
+  );
+
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, $start_from, $limit);
+
+  if (!empty($related_content)) {
+    $response['found'] = TRUE;
+    $response['total'] = count($related_content);
+    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items($related_content);
+
+    return drupal_json_output($response);
+  }
+
+  return drupal_json_output($response);
+}
+
+/**
+ * Renders related show data elements.
+ * @param $data
+ */
+function _usanetwork_tv_shows_render_related_content_items($data) {
+  if (!empty($data)) {
+    $theme_variables = array(
+      'related_items' => array(),
+    );
+
+    foreach ($data as $data_index => $data_item) {
+      $theme_variables['related_items'][] = _usanetwork_tv_shows_render_related_content_item($data_item);
+    }
+
+    return theme('usanetwork_tv_shows_related_items', $theme_variables);
+  }
+
+  return '';
+}
+
+/**
+ * Renders one Related show data element.
+ * @param $data
+ * @return mixed|string
+ */
+function _usanetwork_tv_shows_render_related_content_item($data) {
+  $target_url = '<front>';
+  $style_name = '634x349';
+
+  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array('file', 'node'))) {
+    $target_url = url($data->entity_type . '/' . $data->entity_id);
+  }
+
+  $theme_variables = array(
+    'classes' => NULL,
+    'target_url' => $target_url,
+    'caption' => !empty($data->promo_topic)
+      ? $data->promo_topic
+      : $data->show_title,
+    'title' => !empty($data->promo_title)
+      ? $data->promo_title
+      : $data->title,
+    'additional' => !empty($data->promo_description)
+      ? $data->promo_description
+      : '',
+    'image_url' => !empty($data->raw_image_uri)
+      ? image_style_url($style_name, $data->raw_image_uri)
+      : '',
+  );
+
+  return theme('usanetwork_tv_shows_related_item', $theme_variables);
 }

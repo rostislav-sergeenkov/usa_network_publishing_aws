@@ -26,13 +26,6 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
-
-  // Catch up & Explore
-  $blocks['usanetwork_tv_shows_coex'] = array(
-    'info' => t('TV Shows: Catch up, Explore'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
-
   $blocks['usanetwork_tv_shows_fbp'] = array(
     'info' => t('Tv Shows: Full bleed promo'),
     'cache' => DRUPAL_NO_CACHE,
@@ -70,11 +63,6 @@ function usanetwork_tv_shows_block_view($delta = '') {
       );
       break;
 
-
-    case 'usanetwork_tv_shows_coex':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_tv_shows_catchup_explore_block();
-      break;
     case 'usanetwork_tv_shows_fbp':
       $block['subject'] = '';
       $block['content'] = array(
@@ -118,36 +106,6 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-aspot',
     ),
-    'usanetwork_tv_shows_catchup_explore' => array(
-      'variables' => array(
-        'is_catch_up' => NULL,
-        'is_explore' => NULL,
-        'catch_up' => array(// Carousel lines
-          0 => array(
-            'caption' => NULL,
-            'title' => NULL,
-            'additional_text' => NULL,
-            'elements' => array(), // Array of pre-rendered 'usanetwork_tv_shows_catchup_explore_content_element' elements
-          )
-        ),
-        'explore' => array(
-        ),
-      ),
-      'template' => 'templates/usanetwork-tv-shows-catchup-explore',
-    ),
-    'usanetwork_tv_shows_catchup_explore_content_element' => array(
-      'variables' => array(
-        'class' => NULL,
-        'node_classes' => array(),
-        'title' => NULL,
-        'additional' => array(
-          'normal' => NULL,
-          'span' => NULL,
-        ),
-        'media_player_icon' => TRUE,
-      ),
-      'template' => 'templates/usanetwork-tv-shows-catchup-explore-content-element',
-    ),
     'usanetwork_tv_shows_submenu' => array(
       'variables' => array(
         'show_title' => NULL,
@@ -190,6 +148,54 @@ function usanetwork_tv_shows_image_default_styles() {
     ),
   );
 
+  $styles['928x714'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 928,
+          'height' => 714,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['457x351'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 457,
+          'height' => 351,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['431x350'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 431,
+          'height' => 350,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['212x172'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 212,
+          'height' => 172,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
   return $styles;
 }
 
@@ -833,90 +839,6 @@ function _usanetwork_tv_shows_aspot_block() {
 }
 
 /**
- * Renders "Catch up, Explore block".
- */
-function _usanetwork_tv_shows_catchup_explore_block() {
-  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
-
-  if (!empty($show_node)) {
-
-    $theme_variables = array();
-    //Analyze catch-up carousel
-    $theme_variables['is_catch_up'] = FALSE;
-    for ($i = 1; $i <= USANETWORK_TV_SHOWS_CAROUSEL_NUMBER; $i++) {
-      $field_ctchup_carousel = field_get_items('node', $show_node, "field_ctchup_carousel_$i");
-      if ($field_ctchup_carousel) {
-        $theme_variables['is_catch_up'] = TRUE;
-        $theme_variables['catch_up'][$i]['elements'] = _usanetwork_tv_shows_get_cuexcarousel($field_ctchup_carousel);
-        $theme_variables['catch_up'][$i]['caption'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_pretitle_$i", 'value');
-        $theme_variables['catch_up'][$i]['title'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_title_$i", 'value');
-        $theme_variables['catch_up'][$i]['additional_text'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_posttitle_$i", 'value');
-        $theme_variables['catch_up'][$i]['carousel_position'] = ($i % 2 == 0) ? 'right'
-              : 'left';
-      }
-    }
-
-    //Analyze explore carousel
-    $theme_variables['is_explore'] = FALSE;
-    for ($i = 1; $i <= USANETWORK_TV_SHOWS_CAROUSEL_NUMBER; $i++) {
-      $field_explr_carousel = field_get_items('node', $show_node, "field_explr_carousel_$i");
-      if ($field_explr_carousel) {
-        $theme_variables['is_explore'] = TRUE;
-        $theme_variables['explore'][$i]['elements'] = _usanetwork_tv_shows_get_cuexcarousel($field_explr_carousel);
-        $theme_variables['explore'][$i]['caption'] = _usanetwork_get_field_item('node', $show_node, "field_explr_pretitle_$i", 'value');
-        $theme_variables['explore'][$i]['title'] = _usanetwork_get_field_item('node', $show_node, "field_explr_title_$i", 'value');
-        $theme_variables['explore'][$i]['additional_text'] = _usanetwork_get_field_item('node', $show_node, "field_explr_posttitle_$i", 'value');
-        $theme_variables['catch_up'][$i]['carousel_position'] = ($i % 2 == 0) ? 'right'
-              : 'left';
-      }
-    }
-
-    if (!empty($theme_variables)) {
-      $tets = theme('usanetwork_tv_shows_catchup_explore', $theme_variables);
-      return $tets;
-    }
-  }
-
-  return '';
-}
-
-/**
- * Wraps elements for "Catch Up - Explore" block carousel.
- */
-function _usanetwork_tv_shows_get_cuexcarousel($carousel) {
-  $items = array();
-
-  foreach ($carousel as $show_number => $carousel_item) {
-    $episode_class = NULL;
-
-    if ($show_number == 0) {
-      $episode_class = 'first';
-    }
-
-    if ($show_number == count($carousel) - 1) {
-      $episode_class = 'last';
-    }
-
-    $promo = _usanetwork_promo_featured_content($carousel_item['target_id']);
-
-    $theme_variables = array(
-      'class' => $promo['show_class'],
-      'title' => $promo['caption'],
-      'title' => $promo['title'],
-      'additional' => array(
-        'normal' => NULL,
-        'span' => NULL,
-      ),
-      'media_player_icon' => $promo['icon-type'],
-    );
-
-    $items[] = theme('usanetwork_tv_shows_catchup_explore_content_element', $theme_variables);
-  }
-
-  return $items;
-}
-
-/**
  * Counts number of images in media gallery with nid=$node_nid.
  */
 function _usanetwork_tv_shows_get_media_items_count($node_nid) {
@@ -1171,12 +1093,20 @@ function _usanetwork_tv_shows_render_best_of_block() {
         $i++;
         $promos[] = array(
           'url' => $promo_link,
-          'image' => !empty($promo_image_url)
-              ? ($is_first
-                ? theme('image_style', array('style_name' => '757x628', 'path' => $promo_image_url))
-                : theme('image_style', array('style_name' => '539x303', 'path' => $promo_image_url))
-              )
-              : NULL,
+          'image' => array(
+            'mobile' => !empty($promo_image_url)
+                ? ($is_first
+                  ? image_style_url('431x350', $promo_image_url)
+                  : image_style_url('212x172', $promo_image_url)
+                )
+                : NULL,
+            'desktop' => !empty($promo_image_url)
+                ? ($is_first
+                  ? image_style_url('928x714', $promo_image_url)
+                  : image_style_url('457x351', $promo_image_url)
+                )
+                : NULL,
+          ),
           'icon_type' => 'play-icon',
           'caption' => $promo_data['show_name'],
           'title' => $promo_data['promo_title'],

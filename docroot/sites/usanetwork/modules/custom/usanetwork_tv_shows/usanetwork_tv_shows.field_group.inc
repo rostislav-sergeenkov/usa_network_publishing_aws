@@ -46,32 +46,6 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_catchup_carousel|node|tv_show|form';
-  $field_group->group_name = 'group_catchup_carousel';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_cuexcarousel';
-  $field_group->data = array(
-    'label' => 'Catch-Up Carousel',
-    'weight' => '95',
-    'children' => array(),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Catch-Up Carousel',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_catchup_carousel|node|tv_show|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_chat_settings|node|tv_show|form';
   $field_group->group_name = 'group_chat_settings';
   $field_group->entity_type = 'node';
@@ -192,35 +166,6 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_cuexcarousel|node|tv_show|form';
-  $field_group->group_name = 'group_cuexcarousel';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Catch-Up/Explore Carousel',
-    'weight' => '9',
-    'children' => array(
-      0 => 'group_catchup_carousel',
-      1 => 'group_explore_carousel',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'label' => 'Catch-Up/Explore Carousel',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_cuexcarousel|node|tv_show|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_ep_additional|node|tv_episode|form';
   $field_group->group_name = 'group_ep_additional';
   $field_group->entity_type = 'node';
@@ -333,45 +278,6 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_episode_ideamelt|node|tv_episode|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_explore_carousel|node|tv_show|form';
-  $field_group->group_name = 'group_explore_carousel';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_cuexcarousel';
-  $field_group->data = array(
-    'label' => 'Explore Carousel',
-    'weight' => '96',
-    'children' => array(
-      0 => 'field_explr_carousel_1',
-      1 => 'field_explr_carousel_2',
-      2 => 'field_explr_carousel_3',
-      3 => 'field_explr_posttitle_1',
-      4 => 'field_explr_posttitle_2',
-      5 => 'field_explr_posttitle_3',
-      6 => 'field_explr_pretitle_1',
-      7 => 'field_explr_pretitle_2',
-      8 => 'field_explr_pretitle_3',
-      9 => 'field_explr_title_1',
-      10 => 'field_explr_title_2',
-      11 => 'field_explr_title_3',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Explore Carousel',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_explore_carousel|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

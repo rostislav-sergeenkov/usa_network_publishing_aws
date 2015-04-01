@@ -6,7 +6,6 @@ dependencies[] = "migrate"
 dependencies[] = "migrate_ui"
 dependencies[] = "migrate_extras"
 dependencies[] = "date_migrate"
-dependencies[] = "usanetwork_video"
 
 # files that contain the Migrate classes
 files[] = usanetwork_migrate.migrate.inc

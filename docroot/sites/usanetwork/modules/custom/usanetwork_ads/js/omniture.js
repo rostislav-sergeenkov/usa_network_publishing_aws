@@ -563,13 +563,13 @@
 
             var $quizQuestion = $(this).parents('.usanetwork-quiz-question');
             var quizQuestionNumber = $quizQuestion.index() + 1;
+            var quizQuestionTitle = $(this).closest('.usanetwork-quiz-question').find('.question-title').text();
             var quizQuestionValue = $(this).attr('value');
 
             s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question '+quizQuestionNumber;
             s.linkTrackVars='events,prop58,eVar58';
             s.linkTrackEvents=s.events='event89';
-            s.eVar58=s.pageName;
-            s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question '+quizQuestionNumber+' : Answer : ' + quizQuestionValue;
+            s.eVar58=s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle + ' : Answer : ' + quizQuestionValue;
             s.tl(this,'o','Poll/Question Answered');
             s.manageVars('clearVars',s.linkTrackVars,1);
           }

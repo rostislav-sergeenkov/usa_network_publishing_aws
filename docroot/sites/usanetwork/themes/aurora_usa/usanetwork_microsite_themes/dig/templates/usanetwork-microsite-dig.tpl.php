@@ -101,7 +101,7 @@
           <li class="external"><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
           <!-- <li class="external"><a href="http://digescapetheroom.com" target="_blank">Escape the Room</a></li> -->
           <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
-          <li class="external"><a href="/dig/videos/the-making-of-dig">Making of DIG</a></li>
+          <!-- <li class="external"><a href="/dig/videos/the-making-of-dig">Making of DIG</a></li> -->
           <li class="external"><a href="https://twitter.com/search?q=%23digdeeper" target="_blank">#DIGDEEPER</a></li>
           <li class="external">Tour Israel
             <ul>

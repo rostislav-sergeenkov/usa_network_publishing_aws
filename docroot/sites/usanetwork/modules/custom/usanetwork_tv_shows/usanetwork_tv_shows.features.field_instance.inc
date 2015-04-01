@@ -12576,105 +12576,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'weight' => 77,
     ),
   );
-
-  // Exported field_instance: 'node-tv_show-field_tvs_aspot_promo_btitle'
-  $field_instances['node-tv_show-field_tvs_aspot_promo_btitle'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => array(
-      0 => array(
-        'value' => 'Latest full episodes',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'The block consists of related videos and appears on A-Spot region when show viewed.',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 169,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_tvs_aspot_promo_btitle',
-    'label' => 'Block title',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 119,
-    ),
-  );
-
+  
   // Exported field_instance: 'node-tv_show-field_tvs_desktop_cimage'
   $field_instances['node-tv_show-field_tvs_desktop_cimage'] = array(
     'bundle' => 'tv_show',
@@ -16290,7 +16192,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
 ');
   t('Autoscroll A-spot carousel');
   t('Base URL');
-  t('Block title');
   t('CHILDREN');
   t('CHILDRENOF');
   t('Caption text');
@@ -16422,7 +16323,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Synopsis');
   t('TAGS');
   t('Tags');
-  t('The block consists of related videos and appears on A-Spot region when show viewed.');
   t('The tokenized Echo query string. Values in the string will be replaced with the following EQL Tokens.');
   t('This field is not used by USA');
   t('This text will be placed upper right corner of the tv show page. (Ex: WEDNESDAYS 10/9C)');

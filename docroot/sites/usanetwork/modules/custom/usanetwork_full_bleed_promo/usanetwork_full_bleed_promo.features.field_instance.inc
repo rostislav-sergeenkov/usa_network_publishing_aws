@@ -70,20 +70,10 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
     'description' => 'Minimum 1350w x 530h',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 4,
-      ),
-      'microsite_output' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -129,7 +119,6 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
           'theplatform_mpx_mpxplayer' => 0,
           'upload' => 'upload',
         ),
-
       ),
       'type' => 'media_generic',
       'weight' => 1,
@@ -143,17 +132,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
     'description' => 'Minimum 450w x 320h',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 5,
-      ),
-      'microsite_output' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -202,7 +181,6 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
           'theplatform_mpx_mpxplayer' => 0,
           'upload' => 'upload',
         ),
-
       ),
       'type' => 'media_generic',
       'weight' => 2,

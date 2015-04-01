@@ -190,6 +190,54 @@ function usanetwork_tv_shows_image_default_styles() {
     ),
   );
 
+  $styles['928x714'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 928,
+          'height' => 714,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['457x351'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 457,
+          'height' => 351,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['431x350'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 431,
+          'height' => 350,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['212x172'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 212,
+          'height' => 172,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
   return $styles;
 }
 
@@ -1171,12 +1219,20 @@ function _usanetwork_tv_shows_render_best_of_block() {
         $i++;
         $promos[] = array(
           'url' => $promo_link,
-          'image' => !empty($promo_image_url)
-              ? ($is_first
-                ? theme('image_style', array('style_name' => '757x628', 'path' => $promo_image_url))
-                : theme('image_style', array('style_name' => '539x303', 'path' => $promo_image_url))
-              )
-              : NULL,
+          'image' => array(
+            'mobile' => !empty($promo_image_url)
+                ? ($is_first
+                  ? image_style_url('431x350', $promo_image_url)
+                  : image_style_url('212x172', $promo_image_url)
+                )
+                : NULL,
+            'desktop' => !empty($promo_image_url)
+                ? ($is_first
+                  ? image_style_url('928x714', $promo_image_url)
+                  : image_style_url('457x351', $promo_image_url)
+                )
+                : NULL,
+          ),
           'icon_type' => 'play-icon',
           'caption' => $promo_data['show_name'],
           'title' => $promo_data['promo_title'],

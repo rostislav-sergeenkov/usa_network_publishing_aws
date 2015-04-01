@@ -824,6 +824,7 @@
       }
     }
     .show-description {
+      color: $poll-color;
       float: right;
       height: 250px;
       position: relative;
@@ -849,7 +850,7 @@
         width: 49%;
       }
       .node {
-        background-color: $social-twitter-back;
+        background-color: $poll-back;
         height: 100%;
         overflow: hidden;
         position: relative;
@@ -930,6 +931,7 @@
         }
         .show-link {
           bottom: 10px;
+          color: #ffffff;
           margin-right: -61px;
           right: 50%;
           top: auto;

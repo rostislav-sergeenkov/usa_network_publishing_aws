@@ -9690,6 +9690,9 @@ footer h2 {
     margin-top: 20px;
     padding: 0 10px;
   }
+  .featured-block .carousel ul {
+    width: 100%;
+  }
   .featured-block .carousel-description-item {
     left: 0px;
     position: relative;
@@ -9912,6 +9915,9 @@ footer h2 {
     margin-bottom: 10px;
     margin-top: 50px;
     padding: 0 10px;
+  }
+  .social-block.carousel-block .carousel ul {
+    width: 100%;
   }
   .social-block.carousel-block .carousel-description-item {
     left: 0px;
@@ -12416,6 +12422,7 @@ footer h2 {
   width: 100%;
 }
 .shows-block .show-info-block .show-description {
+  color: #545454;
   float: right;
   height: 250px;
   position: relative;
@@ -12450,7 +12457,7 @@ footer h2 {
   }
 }
 .shows-block .show-info-block .show-description .node {
-  background-color: #3a3a3a;
+  background-color: #e9eaeb;
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -12556,6 +12563,7 @@ footer h2 {
 }
 .shows-block .show-info-block .show-description .node .show-link {
   bottom: 10px;
+  color: #ffffff;
   margin-right: -61px;
   right: 50%;
   top: auto;

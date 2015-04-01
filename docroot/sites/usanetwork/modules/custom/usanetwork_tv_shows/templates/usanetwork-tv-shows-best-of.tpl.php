@@ -25,8 +25,19 @@
               </div>
             </div>
           </div>
-          <div class="asset-img">
-            <?php print (!empty($promo['image']))? $promo['image']: ''; ?>
+          <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+            <?php if (!empty($promo['image']['mobile'])): ?>
+              <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
+            <?php endif; ?>
+            <?php if (!empty($promo['image']['desktop'])): ?>
+              <div data-media="(min-width: 481px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
+              <!--[if (IE 8) & (!IEMobile)]>
+              <div data-src="<?php print $promo['image']['desktop']; ?>"></div>
+              <![endif]-->
+            <?php endif; ?>
+            <?php if (!empty($promo['image']['desktop'])): ?>
+              <noscript><img src="<?php print $promo['image']['desktop']; ?>" alt="" title="" /></noscript>
+            <?php endif; ?>
           </div>
         </a>
       </div>
@@ -48,8 +59,19 @@
                   </div>
                 </div>
               </div>
-              <div class="asset-img">
-                <?php print (!empty($promo['image']))? $promo['image']: ''; ?>
+              <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+                <?php if (!empty($promo['image']['mobile'])): ?>
+                  <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
+                <?php endif; ?>
+                <?php if (!empty($promo['image']['desktop'])): ?>
+                  <div data-media="(min-width: 481px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
+                  <!--[if (IE 8) & (!IEMobile)]>
+                  <div data-src="<?php print $promo['image']['desktop']; ?>"></div>
+                  <![endif]-->
+                <?php endif; ?>
+                <?php if (!empty($promo['image']['desktop'])): ?>
+                  <noscript><img src="<?php print $promo['image']['desktop']; ?>" alt="" title="" /></noscript>
+                <?php endif; ?>
               </div>
             </a>
           </div>

@@ -1063,6 +1063,7 @@ function _usanetwork_tv_shows_render_fbp_block() {
  */
 function _usanetwork_tv_shows_render_best_of_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  $theme_variables = array();
   if (!empty($show_node)) {
     $field_promo_items = field_get_items('node', $show_node, 'field_hp_ft_featured');
     if (!empty($field_promo_items) && is_array($field_promo_items)) {
@@ -1116,6 +1117,12 @@ function _usanetwork_tv_shows_render_best_of_block() {
           'is_first' => $is_first,
         );
       }
+      $best_of_title = field_get_items('node', $show_node, 'field_tvs_best_of_title');
+      if (!empty($best_of_title)) {
+        $best_of_title = reset($best_of_title);
+        $best_of_title = $best_of_title['value'];
+      }
+      $theme_variables['title'] = $best_of_title;
       $theme_variables['promos'] = $promos;
       return theme('usanetwork_tv_shows_best_of', $theme_variables);
     }

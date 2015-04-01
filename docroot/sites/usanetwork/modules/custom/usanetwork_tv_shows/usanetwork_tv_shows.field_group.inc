@@ -938,6 +938,7 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '76',
     'children' => array(
       0 => 'field_hp_ft_featured',
+      1 => 'field_tvs_best_of_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

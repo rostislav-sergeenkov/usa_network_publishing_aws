@@ -1,7 +1,7 @@
 name = USANetwork Panels
 description = Panels for USA Network
 core = 7.x
-version = 7.x-1.0.3
+version = 7.x-1.0.4
 package = USA Network
 php = 5.2.4
 project = usanetwork_panels

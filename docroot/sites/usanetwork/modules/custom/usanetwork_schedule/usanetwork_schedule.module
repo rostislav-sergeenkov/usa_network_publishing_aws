@@ -206,6 +206,7 @@ function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
   $query->range(0, $limit);
 
   $result = $query->execute()->fetchAll();
+
   _usanetwork_schedule_fill_schedule_show_nids($result);
 
   return $result;
@@ -254,11 +255,31 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
   $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
 
   foreach ($data as &$schedule_item) {
+    $show_nid = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('n.title', $schedule_item->show_title)
+      ->condition('n.type', 'tv_show')
+      ->range(0, 1)
+      ->execute()->fetchCol();
+
+    if (!empty($show_nid)) {
+      $show_nid = reset($show_nid);
+
+      $schedule_item->database_show_title = $schedule_item->show_title;
+      $schedule_item->nid = $show_nid;
+
+      //continue;
+    }
+
     $alias_title = trim($schedule_item->show_title);
 
     if (empty($schedule_item->nid) && !empty($show_title_aliases[$alias_title])) {
       $schedule_item->database_show_title = trim($show_title_aliases[$alias_title]);
       $schedule_item->nid = _usanetwork_schedule_find_node($schedule_item->database_show_title);
+    }
+    elseif (empty($schedule_item->nid) && empty($show_title_aliases[$alias_title])) {
+      $schedule_item->database_show_title = $schedule_item->title;
+      $schedule_item->nid = NULL;
     }
   }
 }
@@ -313,22 +334,19 @@ function usanetwork_schedule_pull_on_now_item($time_correlation = 0) {
  */
 function usanetwork_schedule_pull_up_next_item($time_correlation = 0) {
   $time = REQUEST_TIME + $time_correlation;
-
   $query = db_select('usanetwork_schedule', 's');
-  $query->leftJoin('node', 'n', 's.show_title=n.title');
   $query->fields('s', array());
-  $query->fields('n', array('nid'));
   $query->condition('s.start_time', $time, '>');
 
-  $db_or = db_or();
-  $db_or->condition('n.type', 'tv_show');
-  $db_or->condition('n.type', NULL, 'IS NULL');
-
-  $query->condition($db_or);
   $query->orderBy('s.start_time', 'ASC');
   $query->range(0, 1);
 
   $result = $query->execute()->fetchAll();
+
+  if (empty($result)) {
+    return array();
+  }
+
   _usanetwork_schedule_fill_schedule_show_nids($result);
 
   return $result;

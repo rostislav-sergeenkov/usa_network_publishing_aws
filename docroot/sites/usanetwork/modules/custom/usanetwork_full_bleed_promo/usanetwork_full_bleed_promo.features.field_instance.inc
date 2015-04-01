@@ -67,25 +67,39 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
   $field_instances['node-usanetwork_full_bleed_promo-field_usa_fbp_desktop_image'] = array(
     'bundle' => 'usanetwork_full_bleed_promo',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Minimum 1350w x 530h',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 4,
+      ),
+      'microsite_output' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_usa_fbp_desktop_image',
     'label' => 'Desktop image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
-      'description_field' => 0,
-      'file_directory' => '',
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '1350x530',
+      'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -115,7 +129,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
           'theplatform_mpx_mpxplayer' => 0,
           'upload' => 'upload',
         ),
-        'progress_indicator' => 'throbber',
+
       ),
       'type' => 'media_generic',
       'weight' => 1,
@@ -126,25 +140,39 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
   $field_instances['node-usanetwork_full_bleed_promo-field_usa_fbp_mobile_image'] = array(
     'bundle' => 'usanetwork_full_bleed_promo',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Minimum 450w x 320h',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 5,
+      ),
+      'microsite_output' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_usa_fbp_mobile_image',
     'label' => 'Mobile image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
-      'description_field' => 0,
-      'file_directory' => '',
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '450x320',
+      'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -174,7 +202,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
           'theplatform_mpx_mpxplayer' => 0,
           'upload' => 'upload',
         ),
-        'progress_indicator' => 'throbber',
+
       ),
       'type' => 'media_generic',
       'weight' => 2,
@@ -185,6 +213,8 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Call to action link');
   t('Desktop image');
+  t('Minimum 1350w x 530h');
+  t('Minimum 450w x 320h');
   t('Mobile image');
 
   return $field_instances;

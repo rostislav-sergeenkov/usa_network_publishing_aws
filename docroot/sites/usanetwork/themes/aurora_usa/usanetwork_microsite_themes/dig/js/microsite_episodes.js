@@ -1,12 +1,5 @@
 (function ($) {
   Drupal.behaviors.microsite_episodes = {
-    // @TODO: What's the best Drupal way to handle the following default variables?
-    siteName: 'Dig',
-    basePath: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig',
-    basePageName: 'Dig | USA Network',
-    defaultEpisBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
-    defaultMobileEpisBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
-
     micrositeSetEpisNavWidthHeight: function setEpisNavWidth() {
       var episodesNav = $('#episodes .episode-nav'),
           numEpisodes = episodesNav.find('li').length,
@@ -135,13 +128,13 @@
             nextItemNum = nextItem.index(),
             nextEpisodeId = (nextItemId != null) ? nextItemId.replace('nav-', '') : null,
             nextEpisodeClass = (nextItemId != null) ? nextItemId.replace('#', '') : null,
-            nextEpisodeTitle = $('#' + nextEpisodeId + ' > h3').text(),
+            nextEpisodeTitle = $('#' + nextEpisodeId + ' > h3.episode-title').text(),
             nextEpisodeInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '',
             oppositeSign = (direction == 'next') ? '' : '-',
             activeSection = $('#microsite #sections > .active').attr('id');
-        if (nextEpisodeTitle == '') nextEpisodeTitle = $('#' + nextEpisodeId + ' > h1').text();
+        if (nextEpisodeTitle == '') nextEpisodeTitle = $('#' + nextEpisodeId + ' > h1.episode-title').text();
 
         if (nextEpisodeId && currentEpisodeId) {
           if (nextEpisodeId == currentEpisodeId) {
@@ -244,6 +237,13 @@
     attach: function (context, settings) {
       // check to make sure there's an episodes section
       if ($('#microsite #episodes').length > 0) {
+        var self = this;
+        self.siteName = Drupal.settings.microsites_settings.title;
+        self.basePath = Drupal.settings.microsites_settings.microsite_theme_path;
+        self.basePageName = Drupal.settings.microsites_settings.title + ' | USA Network';
+        self.defaultEpisBg = Drupal.settings.microsites_settings.microsite_theme_path + '/images/dig_bg_home.jpg',
+        self.defaultMobileEpisBg = Drupal.settings.microsites_settings.microsite_theme_path + '/images/dig_mobile_bg.jpg';
+
         Drupal.behaviors.microsite_episodes.micrositeSetEpisNavWidthHeight();
         var episodes = $('#microsite #episode-info'),
             activeEpisode = episodes.find('li.active').attr('id');
@@ -295,7 +295,7 @@
             Drupal.behaviors.microsite_episodes.micrositeSetEpisNavWidthHeight();
             if ($(window).width() < 875) {
               if (!$('#microsite #episode-background').hasClass('mobile')){
-                $('#microsite #episodes #episode-background li').css('background-image', 'url("' + Drupal.behaviors.microsite_episodes.defaultMobileEpisBg + '")');
+                $('#microsite #episodes #episode-background li').css('background-image', 'url("' + self.defaultMobileEpisBg + '")');
                 $('#microsite #episode-background').addClass('mobile');
               }
             }

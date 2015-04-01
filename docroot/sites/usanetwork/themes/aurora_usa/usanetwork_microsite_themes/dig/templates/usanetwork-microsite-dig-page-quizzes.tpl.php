@@ -19,9 +19,9 @@
 
 <div class="full-pane">
   <?php if (empty($h1) && !empty($page['title']) && $status == 'active'): ?>
-  <h1><?php print $page['title']; ?></h1>
+  <h1 class="quiz-title"><?php print $page['title']; ?></h1>
   <?php else: ?>
-  <h3><?php print $page['title']; ?></h3>
+  <h3 class="quiz-title"><?php print $page['title']; ?></h3>
   <?php endif; ?>
 
   <?php if (!empty($h1)): ?>

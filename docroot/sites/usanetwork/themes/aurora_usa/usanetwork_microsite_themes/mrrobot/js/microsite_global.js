@@ -99,8 +99,8 @@
           if (!currentSlide) currentSlide = 1;
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
           s.prop5 = siteName + ' : Gallery : ' + itemTitle;
           s.pageName = s.prop5 + ' : Photo ' + currentSlide;
           pageName = itemTitle + ' | Gallery | ' + pageName;
@@ -117,8 +117,8 @@
         case 'episodes':
           s.prop3 = 'Episode Guide';
           s.prop4 = siteName + ' : Episode Guide';
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
           s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Episode Guide | ' + pageName;

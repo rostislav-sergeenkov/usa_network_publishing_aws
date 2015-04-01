@@ -6,9 +6,9 @@
       if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
         img.attr({src: mobileImgUrl});
       } else {
-        if (window.innerWidth > 1023) {
+        if (window.innerWidth >= window_size_tablet) {
           img.attr({src: desktopImgUrl});
-        } else if (window.innerWidth < 1024){
+        } else if (window.innerWidth < window_size_tablet){
           img.attr({src: mobileImgUrl});
         }
       }

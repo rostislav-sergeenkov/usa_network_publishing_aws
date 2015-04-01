@@ -1,4 +1,5 @@
 #full-bleed-promo {
+  @include clear();
   margin: 0 auto;
   position: relative;
   max-height: 500px;

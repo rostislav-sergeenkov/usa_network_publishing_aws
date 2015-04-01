@@ -142,6 +142,11 @@ function usanetwork_microsite_permission() {
 function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
   if(!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
+    foreach ($javascript['settings']['data'] as $key => $item) {
+      if (array_key_exists('gigyaSharebars', $item)) {
+        $javascript['settings']['data'][$key] = array();
+      }
+    }
     $theme_path = drupal_get_path('theme', 'aurora_usa');
     if(!_usanetwork_microsite_process_setting_data('display_global_nav', 'bool')) {
       unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);

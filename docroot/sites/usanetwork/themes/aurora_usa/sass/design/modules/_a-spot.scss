@@ -389,6 +389,7 @@
 
 .aspot-and-episodes {
   @include clear();
+  overflow: hidden;
   position: relative;
   width: 100%;
   &.episodes-empty{

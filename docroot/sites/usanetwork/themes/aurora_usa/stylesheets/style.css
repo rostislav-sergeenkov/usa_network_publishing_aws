@@ -7359,6 +7359,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .best-of-block {
   background: #dcddde;
   border-bottom: 2px solid;
+  border-top: 1px solid;
   padding: 40px 16px;
   position: relative;
   width: 100%;
@@ -21013,6 +21014,7 @@ yx-axis
 }
 
 .aspot-and-episodes {
+  overflow: hidden;
   position: relative;
   width: 100%;
 }
@@ -23824,6 +23826,11 @@ body.blog .view-display-id-blog_content .views-row {
   max-height: 500px;
   max-width: 1650px;
   min-width: 300px;
+}
+#full-bleed-promo:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 @media (max-width: 768px) {
   #full-bleed-promo:after {

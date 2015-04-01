@@ -173,7 +173,7 @@
           activeGallery.animate({'opacity': 0}, 1000, function(){
 
           if (data.h1.length > 0 && data.title.length > 0) {
-            titleHtml = '<h2 class="seo-h1">' + data.h1 + '</h2><h2>' + data.title + '</h2>' + shareBarHtml;
+            titleHtml = '<h2 class="seo-h1">' + data.h1 + '</h2><h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
             activeGalleryMeta.html(titleHtml);
           } else if (data.title.length > 0) {
             titleHtml = '<h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;

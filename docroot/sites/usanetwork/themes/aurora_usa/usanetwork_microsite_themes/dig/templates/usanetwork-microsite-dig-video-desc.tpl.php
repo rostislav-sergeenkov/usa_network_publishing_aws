@@ -6,9 +6,9 @@
 
 
 <?php if (empty($h1) && !empty($title) && $status == 'active'): ?>
-<h1><?php print $title; ?></h1>
+<h1 class="video-title"><?php print $title; ?></h1>
 <?php else: ?>
-<h3><?php print $title; ?></h3>
+<h3 class="video-title"><?php print $title; ?></h3>
 <?php endif; ?>
 
 <?php if (!empty($h1)): ?>

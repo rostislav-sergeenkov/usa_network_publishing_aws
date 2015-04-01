@@ -10,12 +10,12 @@
           numSlides = (wwidth > transitionWidth) ? 6 : 3,
           slideWidth = (wwidth > transitionWidth) ? 240 : 100,
           slideMargin = 10;
-//usa_debug('*******************/nmicrositeReloadBxSlider\nnumSlides: ' + numSlides + '\nslideWidth: ' + slideWidth);
+
       Drupal.behaviors.micrositeBxSliders.charactersCastBxSlider.reloadSlider({
         slideWidth: slideWidth,
         minSlides: numSlides,
         maxSlides: numSlides,
-       // useCSS: true,
+        // useCSS: true,
         slideMargin: slideMargin,
         nextSelector: '#characters-cast-next',
         prevSelector: '#characters-cast-prev',

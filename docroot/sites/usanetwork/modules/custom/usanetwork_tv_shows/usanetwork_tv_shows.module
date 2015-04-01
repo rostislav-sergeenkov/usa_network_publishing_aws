@@ -792,7 +792,7 @@ function _usanetwork_tv_shows_aspot_block() {
     $theme_variables['episodes_block_title'] = t('Latest full episodes');
     $theme_variables['show'] = usanetwork_aspot_render($show_node);
 
-    $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
+    $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USA_TV_SHOW_LATEST_FULL_NUMBER);
 
     $result_count = count($episodes);
     if ($result_count > 0) {
@@ -801,7 +801,7 @@ function _usanetwork_tv_shows_aspot_block() {
     else {
       $episodes_fids = array();
     }
-    $needed_count = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE - $result_count;
+    $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER - $result_count;
 
     if ($needed_count > 0) {
       $query = db_select('file_managed', 'fm')

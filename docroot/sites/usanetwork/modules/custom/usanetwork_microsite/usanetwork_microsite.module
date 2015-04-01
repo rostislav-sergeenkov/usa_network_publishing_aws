@@ -176,7 +176,7 @@ function usanetwork_microsite_library_alter(&$libraries, $module) {
 function usanetwork_microsite_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['microsite_output'] = array(
     'label' => t('Microcite output'),
-    'custom settings' => TRUE,
+    'custom settings' => FALSE,
   );
 }
 

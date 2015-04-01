@@ -2529,12 +2529,12 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           }
           break;
         case 'quizzes':
-          $omniture_prop3 = 'Quizzes/Trivia';
+          $omniture_prop3 = 'Quiz';
           if(isset($args[4])) {
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'quizzes');
             if(!empty($node)) {
-              $omniture_prop5 = $entity->title . ' : Quizzes/Trivia : ' .  $node->title;
-              $omniture_pagename = $entity->title . ' : Quizzes/Trivia : ' . $node->title;
+              $omniture_prop5 = $entity->title . ' : Quiz : ' .  $node->title;
+              $omniture_pagename = $entity->title . ' : Quiz : ' . $node->title;
             }
           }
           else {
@@ -2544,8 +2544,8 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               if (!empty($section_object->field_ms_quiz)) {
                 $node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_quiz);
                 if (!empty($node)) {
-                  $omniture_prop5 = $entity->title . ' : Quizzes/Trivia : ' .  $node->title;
-                  $omniture_pagename = $entity->title . ' : Quizzes/Trivia : ' . $node->title;
+                  $omniture_prop5 = $entity->title . ' : Quiz : ' .  $node->title;
+                  $omniture_pagename = $entity->title . ' : Quiz : ' . $node->title;
                 }
               }
             }

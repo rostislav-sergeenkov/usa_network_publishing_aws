@@ -250,18 +250,18 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
       drupal_add_js(array('microsites_settings' => $microsites_settings), 'setting');
 
       // Add metatags with metatag module.
-      $instance = "{node}:{usanetwork_microsite}";
-      $options = array(
-        'entity' => $node,
-        'entity_type' => 'node',
-        'view_mode' => 'full',
-      );
-      $all_metatags = metatag_metatags_load('node', $node->nid);
-      if (!empty($all_metatags[$node->vid])) {
-        $metatags = $all_metatags[$node->vid];
-        $output = metatag_metatags_view($instance, $metatags, $options);
-        metatag_page_set_metatags($instance, $output);
-      }
+//      $instance = "{node}:{usanetwork_microsite}";
+//      $options = array(
+//        'entity' => $node,
+//        'entity_type' => 'node',
+//        'view_mode' => 'full',
+//      );
+//      $all_metatags = metatag_metatags_load('node', $node->nid);
+//      if (!empty($all_metatags[$node->vid])) {
+//        $metatags = $all_metatags[$node->vid];
+//        $output = metatag_metatags_view($instance, $metatags, $options);
+//        metatag_page_set_metatags($instance, $output);
+//      }
 
       // Add facebook tracking data.
       if (!empty($node->field_show)) {

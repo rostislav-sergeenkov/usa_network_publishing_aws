@@ -56,6 +56,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/matchmedia.js',
+            path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
             path_to_theme('aurora_usa') . '/javascripts/picturefill.js',
             path_to_theme('aurora_usa') . '/javascripts/show-aspot.js',
           ),

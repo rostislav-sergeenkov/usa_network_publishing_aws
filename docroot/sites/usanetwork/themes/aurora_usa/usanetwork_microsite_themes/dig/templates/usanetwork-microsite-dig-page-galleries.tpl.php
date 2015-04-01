@@ -27,9 +27,9 @@
   <?php if (!empty($gallery)): ?>
   <div class="microsite-gallery-meta clearfix">
     <?php if (empty($h1) && !empty($gallery['title']) && $status == 'active'): ?>
-      <h1><?php print $gallery['title']; ?></h1>
+      <h1 class="gallery-title"><?php print $gallery['title']; ?></h1>
     <?php elseif (!empty($gallery['title'])): ?>
-      <h2><?php print $gallery['title']; ?></h2>
+      <h2 class="gallery-title"><?php print $gallery['title']; ?></h2>
     <?php endif; ?>
 
     <?php if (!empty($h1)): ?>

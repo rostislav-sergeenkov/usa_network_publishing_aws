@@ -253,11 +253,13 @@
         Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
         var characters = $('#microsite #character-info'),
             activeCharacter = characters.find('li.active').attr('id'),
-            siteName = Drupal.settings.microsites_settings.title,
-            basePath = Drupal.settings.microsites_settings.microsite_theme_path,
-            basePageName = Drupal.settings.microsites_settings.title + ' | USA Network',
-            defaultCharBg = Drupal.settings.microsite_characters.default_char_bg,
-            defaultMobileCharBg = Drupal.settings.microsite_characters.default_mobile_char_bg;
+            self = this;
+        self.siteName = Drupal.settings.microsites_settings.title;
+        self.basePath = Drupal.settings.microsites_settings.microsite_theme_path;
+        self.basePageName = Drupal.settings.microsites_settings.title + ' | USA Network';
+        self.defaultCharBg = Drupal.settings.microsite_characters.default_char_bg;
+        self.defaultMobileCharBg = Drupal.settings.microsite_characters.default_mobile_char_bg;
+
         Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
         Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
 

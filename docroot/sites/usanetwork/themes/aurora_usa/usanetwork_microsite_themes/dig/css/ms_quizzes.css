@@ -4,11 +4,15 @@
 #microsite h3 {
   line-height: 1em;
 }
+#microsite .full-pane {
+  max-width: 1300px;
+}
 #microsite #quizzes .full-pane > h1,
 #microsite #quizzes .full-pane > h3 {
   font-size: 1.9em;
   line-height: 1em;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1244px;
 }
 #microsite #quizzes .full-pane > h1.seo-h1,
 #microsite #quizzes .full-pane > h3.seo-h1 {
@@ -17,11 +21,12 @@
   text-transform: none;
 }
 #microsite #quizzes .microsite-section-container {
-  max-width: 1244px; /* 1400px; */
+  max-width: 1300px;
 }
 #microsite #quizzes .usanetwork-quiz {
   width: 100%;
-  max-width: 1244px; /* 1400px; */
+  max-width: 1244px;
+  overflow: hidden;
 }
 #microsite #quizzes .usanetwork-quiz .content-wrap .center {
   width: calc(100% - 340px);
@@ -67,6 +72,7 @@
   float: left;
   width: 100%;
   margin-top: 40px;
+  margin-bottom: 50px;
 }
 #microsite #quizzes .galleries-nav.narrow {
   width: calc(100% - 340px);
@@ -88,11 +94,11 @@
   -mox-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  height: 216px !important;
+/*  height: 216px !important; */
 }
 #microsite #quizzes .quizzes-nav .bx-wrapper .quiz-nav-img {
   width: 100%;
-  height: 140px;
+  height: auto; /* 140px; */
   overflow: hidden;
 }
 #microsite #quizzes .quizzes-nav .bx-wrapper img {
@@ -158,12 +164,16 @@
 #microsite #quizzes .quizzes-nav li a .quiz-title {
   font-size: 1em;
   line-height: 18px;
-  height: 70px;
+  height: 90px;
   letter-spacing: 0.03em;
   padding: 14px 5px;
   color: #FFF;
   background-color: #000;
   text-align: left;
+}
+#microsite #quizzes .quizzes-nav li a .quiz-title .quiz-h1 {
+  font-size: 0.8em;
+  line-height: 16px;
 }
 #microsite #quizzes .quizzes-nav .quiz-pagers {
   position: relative;
@@ -264,6 +274,9 @@
   #microsite #quizzes .usanetwork-quiz-answer.answer-type-text .answer-title {
     font-size: 14px;
     line-height: 16px;
+  }
+  #microsite #quizzes .quizzes-nav li a .quiz-title {
+    height: 120px;
   }
 }
 

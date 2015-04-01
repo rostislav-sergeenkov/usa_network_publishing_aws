@@ -1,9 +1,5 @@
 (function ($) {
   Drupal.behaviors.microsite_quizzes = {
-    // @TODO: What's the best Drupal way to handle the following default variables?
-    siteName: 'Dig',
-    basePath: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig',
-    basePageName: 'Dig | USA Network',
     quizIsLoading: null,
 
     micrositeInit300x250Ad: function(nid) {
@@ -25,10 +21,11 @@
     micrositeSetOmnitureData: function setOmnitureData(itemTitle){
       var anchor = 'quizzes',
           itemTitle = itemTitle || '',
-          siteName = Drupal.behaviors.microsite_characters.siteName,
-          pageName = Drupal.behaviors.microsite_characters.basePageName,
-          sectionTitle = 'Quizzes/Trivia',
+          siteName = Drupal.behaviors.microsite_quizzes.siteName,
+          pageName = Drupal.behaviors.microsite_quizzes.basePageName,
+          sectionTitle = 'Quiz',
           pageName = sectionTitle + ' | ' + pageName;
+
       s.pageName = siteName + ' : ' + sectionTitle;
       s.prop3 = sectionTitle;
       s.prop4 = siteName + ' : ' + sectionTitle;
@@ -290,9 +287,10 @@
     activeQuizNavItem: null,
     quizIsLoading: null,
 
-    getNumSlidesToDisplay: function() {
-      var wwidth = $(window).width(),
-          numSlides = 3;
+    getNumSlidesToDisplay: function(slideWidth, slideMargin) {
+      var quizzesNavWidth = $('#microsite #quizzes #quizzes-nav').width(),
+          totalSlideWidth = slideWidth + slideMargin,
+          numSlides = Math.floor(quizzesNavWidth / totalSlideWidth);
 
       return numSlides;
     },
@@ -350,9 +348,9 @@
       // set defaults
       var wwidth = $(window).width(),
           transitionWidth = 640,
-          numSlides = Drupal.behaviors.microsite_quizzes.getNumSlidesToDisplay(),
           slideWidth = (wwidth > transitionWidth) ? 250 : 140,
-          slideMargin = 10;
+          slideMargin = 10,
+          numSlides = Drupal.behaviors.microsite_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin);
 
       Drupal.behaviors.microsite_quizzes.setActiveQuizHeight();
 
@@ -382,6 +380,9 @@
     // ATTACH
     attach: function (context, settings) {
       var self = this;
+      self.siteName = Drupal.settings.microsites_settings.title;
+      self.basePath = Drupal.settings.microsites_settings.microsite_theme_path;
+      self.basePageName = Drupal.settings.microsites_settings.title + ' | USA Network';
 
       // check to see if there is a quizzes section
       if ($('#microsite #quizzes').length > 0) {
@@ -408,9 +409,9 @@
         // set defaults for quiz navigation
         var wwidth = $(window).width(),
             transitionWidth = 640,
-            numSlides = Drupal.behaviors.microsite_quizzes.getNumSlidesToDisplay(),
             slideWidth = (wwidth > transitionWidth) ? 250 : 140,
             slideMargin = 10,
+            numSlides = Drupal.behaviors.microsite_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin),
             self = this;
 
         self.setActiveQuizHeight();

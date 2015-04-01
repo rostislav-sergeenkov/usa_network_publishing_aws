@@ -22,7 +22,8 @@
             showCounts: "none"
           }
 
-          var url = window.location.href.split('#')[0];
+          var url = $('.galleries-bxslider li.active a').attr('href');
+          url = window.location.protocol + '//' + window.location.hostname + url;
           sharebar.gigyaSharebar.ua = {
             description: $currentCaption,
             imageBhev: "url",

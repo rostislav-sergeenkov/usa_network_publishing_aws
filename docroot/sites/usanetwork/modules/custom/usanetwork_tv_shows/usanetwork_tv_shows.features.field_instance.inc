@@ -144,144 +144,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_latest_carousel_items-field_is_ymal'
-  $field_instances['field_collection_item-field_latest_carousel_items-field_is_ymal'] = array(
-    'bundle' => 'field_latest_carousel_items',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Is this "You may also like" block type',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 1,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_is_ymal',
-    'label' => 'Is YMAL',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-      ),
-      'type' => 'options_onoff',
-      'weight' => 0,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_latest_carousel_items-field_latest_carousel'
-  $field_instances['field_collection_item-field_latest_carousel_items-field_latest_carousel'] = array(
-    'bundle' => 'field_latest_carousel_items',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => NULL,
-        'settings' => array(),
-        'type' => 'usanetwork_dynamic_entity_reference_label',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_latest_carousel',
-    'label' => 'Latest carousel content',
-    'required' => 0,
-    'settings' => array(
-      'handler' => 'default',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'usanetwork_dynamic_entity_reference',
-      'settings' => array(),
-      'type' => 'usanetwork_dynamic_entity_reference_default',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_latest_carousel_items-field_ymal_block_title'
-  $field_instances['field_collection_item-field_latest_carousel_items-field_ymal_block_title'] = array(
-    'bundle' => 'field_latest_carousel_items',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Default value of output is "You may also like"',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_ymal_block_title',
-    'label' => 'YMAL block title',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
   // Exported field_instance: 'field_collection_item-field_show_links-field_child_link'
   $field_instances['field_collection_item-field_show_links-field_child_link'] = array(
     'bundle' => 'field_show_links',
@@ -310,6 +172,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'child_link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -329,6 +192,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 'optional',
@@ -372,6 +236,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Main_link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -391,6 +256,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 'optional',
@@ -428,6 +294,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 1,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -510,6 +382,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -580,6 +458,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -657,6 +541,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -721,6 +611,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 9,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -798,6 +694,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -861,6 +763,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -950,6 +858,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1033,6 +947,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1108,6 +1028,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1172,6 +1098,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1253,6 +1185,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1342,6 +1280,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1413,6 +1357,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1509,6 +1459,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1552,6 +1508,85 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tv_episode-field_usa_ms_episode_thumb'
+  $field_instances['node-tv_episode-field_usa_ms_episode_thumb'] = array(
+    'bundle' => 'tv_episode',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 24,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_ms_episode_thumb',
+    'label' => 'Episode thumbnail',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'episode/microsite/thumbnail',
+      'file_extensions' => 'jpg jpeg png gif',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 64,
+    ),
+  );
+
   // Exported field_instance: 'node-tv_episode-field_usa_og_description'
   $field_instances['node-tv_episode-field_usa_og_description'] = array(
     'bundle' => 'tv_episode',
@@ -1573,6 +1608,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1659,6 +1700,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1760,6 +1807,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1817,6 +1870,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 3,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1885,6 +1944,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1939,6 +2004,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1988,6 +2059,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 4,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2078,6 +2155,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2160,6 +2243,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2201,94 +2290,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_additional_text'
-  $field_instances['node-tv_show-field_additional_text'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 135,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_additional_text',
-    'label' => 'Additional text',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 100,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_banner'
   $field_instances['node-tv_show-field_banner'] = array(
     'bundle' => 'tv_show',
@@ -2318,6 +2319,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 51,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2398,94 +2405,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_caption_text'
-  $field_instances['node-tv_show-field_caption_text'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 136,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_caption_text',
-    'label' => 'Caption text',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 99,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_chat_children'
   $field_instances['node-tv_show-field_chat_children'] = array(
     'bundle' => 'tv_show',
@@ -2533,6 +2452,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 28,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2650,6 +2575,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2757,6 +2688,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 18,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2874,6 +2811,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2981,6 +2924,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 24,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3099,6 +3048,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3206,6 +3161,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 23,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3323,6 +3284,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3430,6 +3397,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 30,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3547,6 +3520,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3654,6 +3633,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 22,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3771,6 +3756,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3878,6 +3869,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 24,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3996,6 +3993,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4092,6 +4095,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4172,6 +4181,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4262,6 +4277,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4342,6 +4363,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4437,6 +4464,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4517,6 +4550,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4612,6 +4651,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4692,6 +4737,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4782,6 +4833,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4860,6 +4917,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4913,1053 +4976,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_explr_carousel_1'
-  $field_instances['node-tv_show-field_explr_carousel_1'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 148,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_carousel_1',
-    'label' => 'Carousel #1',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-          'preview_type' => 'target',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 110,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_carousel_2'
-  $field_instances['node-tv_show-field_explr_carousel_2'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 149,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_carousel_2',
-    'label' => 'Carousel #2',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-          'preview_type' => 'target',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 114,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_carousel_3'
-  $field_instances['node-tv_show-field_explr_carousel_3'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 150,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_carousel_3',
-    'label' => 'Carousel #3',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-          'preview_type' => 'target',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 118,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_posttitle_1'
-  $field_instances['node-tv_show-field_explr_posttitle_1'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 166,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_posttitle_1',
-    'label' => 'Post Title #1',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 109,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_posttitle_2'
-  $field_instances['node-tv_show-field_explr_posttitle_2'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 167,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_posttitle_2',
-    'label' => 'Post Title #2',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 113,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_posttitle_3'
-  $field_instances['node-tv_show-field_explr_posttitle_3'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 168,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_posttitle_3',
-    'label' => 'Post Title #3',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 117,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_pretitle_1'
-  $field_instances['node-tv_show-field_explr_pretitle_1'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 160,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_pretitle_1',
-    'label' => 'Pre Title #1',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 107,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_pretitle_2'
-  $field_instances['node-tv_show-field_explr_pretitle_2'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 161,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_pretitle_2',
-    'label' => 'Pre Title #2',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 111,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_pretitle_3'
-  $field_instances['node-tv_show-field_explr_pretitle_3'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 162,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_pretitle_3',
-    'label' => 'Pre Title #3',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 115,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_title_1'
-  $field_instances['node-tv_show-field_explr_title_1'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 154,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_title_1',
-    'label' => 'Carousel Title #1',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 108,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_title_2'
-  $field_instances['node-tv_show-field_explr_title_2'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 155,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_title_2',
-    'label' => 'Carousel Title #2',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 112,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_explr_title_3'
-  $field_instances['node-tv_show-field_explr_title_3'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 156,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_explr_title_3',
-    'label' => 'Carousel Title #3',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 116,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_fb_children'
   $field_instances['node-tv_show-field_fb_children'] = array(
     'bundle' => 'tv_show',
@@ -5987,6 +5003,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6077,6 +5099,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6157,6 +5185,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6247,6 +5281,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6327,6 +5367,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6417,6 +5463,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6497,6 +5549,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6587,6 +5645,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6667,6 +5731,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6757,6 +5827,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6837,6 +5913,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6927,6 +6009,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7007,6 +6095,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7100,6 +6194,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7188,6 +6288,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7268,6 +6374,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 33,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7362,6 +6474,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7437,6 +6555,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7522,6 +6646,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7593,6 +6723,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7683,6 +6819,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7763,6 +6905,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7853,6 +7001,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7933,6 +7087,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8023,6 +7183,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8103,6 +7269,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8193,6 +7365,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8273,6 +7451,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8363,6 +7547,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8443,6 +7633,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8533,6 +7729,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8586,8 +7788,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_hp_promos_block_title'
-  $field_instances['node-tv_show-field_hp_promos_block_title'] = array(
+  // Exported field_instance: 'node-tv_show-field_hp_ft_featured'
+  $field_instances['node-tv_show-field_hp_ft_featured'] = array(
     'bundle' => 'tv_show',
     'default_value' => NULL,
     'deleted' => 0,
@@ -8601,10 +7803,10 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => NULL,
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 137,
+        'type' => 'usanetwork_dynamic_entity_reference_label',
+        'weight' => 174,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -8613,6 +7815,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8645,32 +7853,110 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_hp_promos_block_title',
-    'label' => 'Title',
+    'field_name' => 'field_hp_ft_featured',
+    'label' => 'Featured Items',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
+      'handler' => 'default',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'usanetwork_dynamic_entity_reference',
+      'settings' => array(),
+      'type' => 'usanetwork_dynamic_entity_reference_default',
+      'weight' => 124,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_hp_full_bleed_promo'
+  $field_instances['node-tv_show-field_hp_full_bleed_promo'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
-      'text_processing' => 0,
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 173,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_hp_full_bleed_promo',
+    'label' => 'Promo',
+    'required' => 0,
+    'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'entityreference',
       'settings' => array(
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
         ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
         'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
       ),
-      'type' => 'text_textfield',
-      'weight' => 98,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 25,
     ),
   );
 
@@ -8701,6 +7987,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8759,82 +8051,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_latest_carousel_items'
-  $field_instances['node-tv_show-field_latest_carousel_items'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_fields',
-        'weight' => 170,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_latest_carousel_items',
-    'label' => 'Latest carousel',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 102,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_logo'
   $field_instances['node-tv_show-field_logo'] = array(
     'bundle' => 'tv_show',
@@ -8868,6 +8084,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 65,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8980,6 +8202,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9060,6 +8288,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9150,6 +8384,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9217,6 +8457,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9304,6 +8550,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9421,6 +8673,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9509,6 +8767,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9586,6 +8850,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9671,6 +8941,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9746,6 +9022,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 28,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9831,6 +9113,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9904,6 +9192,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 68,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9997,6 +9291,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10072,6 +9372,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10157,6 +9463,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10232,6 +9544,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 54,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10337,6 +9655,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10416,6 +9740,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10507,6 +9837,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10621,6 +9957,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10705,6 +10047,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 20,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10799,6 +10147,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10877,6 +10231,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 57,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10962,6 +10322,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 56,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11056,6 +10422,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11137,6 +10509,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 44,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11239,6 +10617,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11270,6 +10654,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'External Links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -11282,6 +10667,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'enable_tokens' => 0,
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -11329,6 +10715,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 47,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11411,6 +10803,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11467,6 +10865,100 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tv_show-field_tvs_best_of_title'
+  $field_instances['node-tv_show-field_tvs_best_of_title'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 175,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_tvs_best_of_title',
+    'label' => 'Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 123,
+    ),
+  );
+
   // Exported field_instance: 'node-tv_show-field_tvs_desktop_cimage'
   $field_instances['node-tv_show-field_tvs_desktop_cimage'] = array(
     'bundle' => 'tv_show',
@@ -11496,6 +10988,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11610,6 +11108,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11719,6 +11223,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11799,6 +11309,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11902,6 +11418,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 28,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12019,6 +11541,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12126,6 +11654,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 18,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12243,6 +11777,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12350,6 +11890,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 27,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12467,6 +12013,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12574,6 +12126,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 26,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12691,6 +12249,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12798,6 +12362,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 25,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12915,6 +12485,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13022,6 +12598,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 21,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -13139,6 +12721,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13199,97 +12787,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_hp_full_bleed_promo'
-  $field_instances['node-tv_show-field_hp_full_bleed_promo'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 173,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_hp_full_bleed_promo',
-    'label' => 'Promo',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-          'preview_type' => 'target',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 25,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_usa_autoscroll'
   $field_instances['node-tv_show-field_usa_autoscroll'] = array(
     'bundle' => 'tv_show',
@@ -13321,6 +12818,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -13403,6 +12906,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13435,6 +12944,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Facebook page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-fb usasocial-fb',
         'configurable_title' => 0,
@@ -13449,6 +12959,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'exclude_cv' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'facebook',
       'url' => 0,
@@ -13496,6 +13007,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13527,6 +13044,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Google+ page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -13540,6 +13058,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -13587,6 +13106,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13618,6 +13143,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Instagram page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -13631,6 +13157,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -13679,6 +13206,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13711,6 +13244,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Pinterest page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-pinterest usasocial-pinterest',
         'configurable_title' => 0,
@@ -13725,6 +13259,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'exclude_cv' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'pinterest',
       'url' => 0,
@@ -13773,6 +13308,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13805,6 +13346,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Tumblr Page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-tumblr usasocial-tumblr',
         'configurable_title' => 0,
@@ -13819,6 +13361,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'exclude_cv' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'tumblr',
       'url' => 0,
@@ -13867,6 +13410,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13899,6 +13448,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Twitter page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-twitter usasocial-twitter',
         'configurable_title' => 0,
@@ -13913,6 +13463,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'exclude_cv' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'twitter',
       'url' => 0,
@@ -13960,6 +13511,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13991,6 +13548,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Youtube page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -14004,6 +13562,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -14046,6 +13605,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 9,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14137,6 +13702,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14220,6 +13791,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 31,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14342,6 +13919,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14417,6 +14000,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 69,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14508,6 +14097,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 71,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14630,6 +14225,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14726,6 +14327,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14798,6 +14405,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14886,6 +14499,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14938,74 +14557,12 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_episode-field_usa_ms_episode_thumb'
-  $field_instances['node-tv_episode-field_usa_ms_episode_thumb'] = array(
-    'bundle' => 'tv_episode',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 24,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_usa_ms_episode_thumb',
-    'label' => 'Episode thumbnail',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'file_directory' => 'episode/microsite/thumbnail',
-      'file_extensions' => 'jpg jpeg png gif',
-      'max_filesize' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'file',
-      'settings' => array(
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'file_generic',
-      'weight' => 64,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('"On Now" Image');
   t('A Spot');
   t('A maximum of 5 promos recommended for this field to be displayed in the show landing page.');
   t('About');
-  t('Additional text');
   t('Air Date');
   t('Air Dates');
   t('An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.');
@@ -15018,13 +14575,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Base URL');
   t('CHILDREN');
   t('CHILDRENOF');
-  t('Caption text');
-  t('Carousel #1');
-  t('Carousel #2');
-  t('Carousel #3');
-  t('Carousel Title #1');
-  t('Carousel Title #2');
-  t('Carousel Title #3');
   t('Carousel featuring promos on the show landing page. A maximum of 6 promos recommended for this region.');
   t('Character');
   t('Character max 40. Enter a short description that will be added to the show\'s navigation. Examples include "Wednesdays 10/9c", "Tonight at 8/7c", "Series Premiere on Thursday".');
@@ -15032,7 +14582,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Comment Prefix');
   t('Cover Media');
   t('Credit');
-  t('Default value of output is "You may also like"');
   t('Description');
   t('Desktop / Tablet URL');
   t('Desktop carousel image');
@@ -15044,6 +14593,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('End Time');
   t('Episode #');
   t('Episode Type');
+  t('Episode thumbnail');
   t('Ex: Chat during the marathon using the hashtag #SVUTruthFiles on March 16th between 1pm and 11pm ET and your comment could be featured on air! See if your comment is revealed between 8pm-11pm during the marathon.');
   t('Ex: Consider my comment for on-air use.');
   t('Ex: PsychUSA');
@@ -15063,6 +14613,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('FEED');
   t('Facebook page');
   t('Featured');
+  t('Featured Items');
   t('Featured Video Promos');
   t('Floodlight Category');
   t('Floodlight Type');
@@ -15074,10 +14625,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('ITEMSPERPAGE');
   t('IdeaMelt action type');
   t('Instagram page');
-  t('Is YMAL');
-  t('Is this "You may also like" block type');
-  t('Latest carousel');
-  t('Latest carousel content');
   t('Legal Copy');
   t('Limited to 20 characters or less. This displays in the show header.');
   t('Lyris List ID');
@@ -15093,13 +14640,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Person');
   t('Pinterest URL');
   t('Pinterest page');
-  t('Post Title #1');
-  t('Post Title #2');
-  t('Post Title #3');
-  t('Pre Title #1');
-  t('Pre Title #2');
-  t('Pre Title #3');
   t('Primary');
+  t('Promo');
   t('Promoted content');
   t('Promoted items');
   t('Recommend a maximum of 3 a-spots per show. This is the large a-spot display at the top of the show homepage.');
@@ -15155,12 +14697,10 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Use Eastern time and a 24-hour clock.');
   t('Used for logos in  Menu Full Episodes Block ');
   t('Used in show carousels.');
-  t('YMAL block title');
   t('Youtube page');
   t('child_link');
   t('show_links');
   t('slideshowSpeed');
-  t('Episode thumbnail');
 
   return $field_instances;
 }

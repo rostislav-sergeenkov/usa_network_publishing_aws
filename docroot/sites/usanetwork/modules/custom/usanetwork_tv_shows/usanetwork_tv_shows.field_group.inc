@@ -46,32 +46,6 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_catchup_carousel|node|tv_show|form';
-  $field_group->group_name = 'group_catchup_carousel';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_cuexcarousel';
-  $field_group->data = array(
-    'label' => 'Catch-Up Carousel',
-    'weight' => '95',
-    'children' => array(),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Catch-Up Carousel',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_catchup_carousel|node|tv_show|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_chat_settings|node|tv_show|form';
   $field_group->group_name = 'group_chat_settings';
   $field_group->entity_type = 'node';
@@ -192,35 +166,6 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_cuexcarousel|node|tv_show|form';
-  $field_group->group_name = 'group_cuexcarousel';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Catch-Up/Explore Carousel',
-    'weight' => '9',
-    'children' => array(
-      0 => 'group_catchup_carousel',
-      1 => 'group_explore_carousel',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'label' => 'Catch-Up/Explore Carousel',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_cuexcarousel|node|tv_show|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_ep_additional|node|tv_episode|form';
   $field_group->group_name = 'group_ep_additional';
   $field_group->entity_type = 'node';
@@ -333,45 +278,6 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_episode_ideamelt|node|tv_episode|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_explore_carousel|node|tv_show|form';
-  $field_group->group_name = 'group_explore_carousel';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_cuexcarousel';
-  $field_group->data = array(
-    'label' => 'Explore Carousel',
-    'weight' => '96',
-    'children' => array(
-      0 => 'field_explr_carousel_1',
-      1 => 'field_explr_carousel_2',
-      2 => 'field_explr_carousel_3',
-      3 => 'field_explr_posttitle_1',
-      4 => 'field_explr_posttitle_2',
-      5 => 'field_explr_posttitle_3',
-      6 => 'field_explr_pretitle_1',
-      7 => 'field_explr_pretitle_2',
-      8 => 'field_explr_pretitle_3',
-      9 => 'field_explr_title_1',
-      10 => 'field_explr_title_2',
-      11 => 'field_explr_title_3',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Explore Carousel',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_explore_carousel|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -991,32 +897,30 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_tv_shows_latest|node|tv_show|form';
-  $field_group->group_name = 'group_tv_shows_latest';
+  $field_group->identifier = 'group_tvs_best_of|node|tv_show|form';
+  $field_group->group_name = 'group_tvs_best_of';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
-    'label' => 'Latest Block',
-    'weight' => '77',
+    'label' => 'Best of',
+    'weight' => '76',
     'children' => array(
-      0 => 'field_additional_text',
-      1 => 'field_caption_text',
-      2 => 'field_hp_promos_block_title',
-      3 => 'field_latest_carousel_items',
+      0 => 'field_hp_ft_featured',
+      1 => 'field_tvs_best_of_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => 'group-tvs-best-of field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_tv_shows_latest|node|tv_show|form'] = $field_group;
+  $export['group_tvs_best_of|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1149,8 +1053,8 @@ function usanetwork_tv_shows_field_group_info() {
       7 => 'group_usa_tv_promo_vids',
       8 => 'group_usa_tv_promo',
       9 => 'group_show_aspots',
-      10 => 'group_tv_shows_latest',
-      11 => 'group_full_bleed_promo',
+      10 => 'group_full_bleed_promo',
+      11 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1163,6 +1067,33 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_usa_custom_tab|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_ms_info|node|tv_episode|form';
+  $field_group->group_name = 'group_usa_ms_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_episode';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Microsite Information',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_usa_ms_episode_thumb',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-usa-ms-info field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_usa_ms_info|node|tv_episode|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1254,33 +1185,6 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_usa_show_follow|node|tv_show|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_usa_ms_info|node|tv_episode|form';
-  $field_group->group_name = 'group_usa_ms_info';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_episode';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Microsite Information',
-    'weight' => '7',
-    'children' => array(
-      0 => 'field_usa_ms_episode_thumb',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-usa-ms-info field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_usa_ms_info|node|tv_episode|form'] = $field_group;
 
   return $export;
 }

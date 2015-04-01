@@ -824,6 +824,7 @@
       }
     }
     .show-description {
+      color: $poll-color;
       float: right;
       height: 250px;
       position: relative;
@@ -849,7 +850,7 @@
         width: 49%;
       }
       .node {
-        background-color: $social-twitter-back;
+        background-color: $poll-back;
         height: 100%;
         overflow: hidden;
         position: relative;
@@ -930,6 +931,7 @@
         }
         .show-link {
           bottom: 10px;
+          color: #ffffff;
           margin-right: -61px;
           right: 50%;
           top: auto;
@@ -1065,8 +1067,11 @@
     }
   }
   .schedule {
+    display: table;
     float: right;
+    height: 100%;
     max-width: 135px;
+    text-align: right;
     @include breakpoint($bp-1024-width) {
       max-width: 110px;
     }
@@ -1075,18 +1080,17 @@
     }
     .time {
       color: #ffffff;
+      display: table-cell;
       font-family: $avalon-demi;
       font-size: 12px;
       line-height: 18px;
-      margin-top: 16px;
       text-transform: uppercase;
+      vertical-align: middle;
       @include breakpoint($bp-min-1920-width) {
         font-size: 18px;
         line-height: 26px;
-        margin-top: 25px;
       }
       @include breakpoint($bp-1024-width) {
-        margin-top: 8px;
         font-size: 10px;
         line-height: 16px;
       }
@@ -1221,6 +1225,44 @@
           line-height: 50px;
         }
       }
+    }
+  }
+}
+
+.section-title {
+  margin: 0;
+  position: relative;
+  text-align: center;
+  .section-title-wrapper {
+    color: $show-section-title;
+    display: inline-block;
+    font-family: $tex-gyreschola-italic;
+    font-size: 12px;
+    margin: 0;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    &:before {
+      border: 1px solid #000000;
+      border-right: 0;
+      content: '';
+      display: block;
+      height: 22px;
+      left: -6px;
+      top: 0;
+      position: absolute;
+      width: 4px;
+    }
+    &:after {
+      border: 1px solid #000000;
+      border-left: 0;
+      content: '';
+      display: block;
+      height: 22px;
+      right: -6px;
+      top: 0;
+      position: absolute;
+      width: 4px;
     }
   }
 }

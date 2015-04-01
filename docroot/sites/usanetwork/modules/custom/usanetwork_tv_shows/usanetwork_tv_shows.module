@@ -981,42 +981,6 @@ function _usanetwork_tv_shows_discription_item($show, $field_list, &$description
   }
 }
 
-/**
- * Get latest content from field_latest_carousel field of tv_show content type
- */
-function _usanetwork_tv_shows_get_latest_content($show) {
-  $show_latests_items = field_get_items('node', $show, 'field_latest_carousel_items');
-
-  $items = FALSE;
-  if ($show_latests_items) {
-    foreach ($show_latests_items as $item) {
-      $item_object = field_collection_item_load($item['value']);
-
-      $show_latest_entity_target_id = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_latest_carousel', 'target_id');
-      $show_latest_entity_target_type = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_latest_carousel', 'target_type');
-      $show_latest_entity_is_ymal = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_is_ymal', 'value');
-      if ($show_latest_entity_is_ymal) {
-        $show_latest_entity_ymal_title = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_ymal_block_title', 'value');
-      }
-
-      if ($show_latest_entity_target_id && $show_latest_entity_target_type) {
-        $item = array(
-          'entity_id' => $show_latest_entity_target_id,
-          'entity_type' => $show_latest_entity_target_type,
-        );
-
-        if ($show_latest_entity_is_ymal && $show_latest_entity_ymal_title) {
-          $item['ymal'] = $show_latest_entity_ymal_title;
-        }
-        else if ($show_latest_entity_is_ymal) {
-          $item['ymal'] = t('You might also like');
-        }
-        $items[] = (object) $item;
-      }
-    }
-  }
-  return $items;
-}
 
 
 /**

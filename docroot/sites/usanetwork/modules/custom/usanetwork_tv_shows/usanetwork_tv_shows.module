@@ -1145,7 +1145,7 @@ function _usanetwork_tv_shows_render_best_of_block() {
           'title' => $promo_data['promo_title'],
           'description' => $promo_data['description'],
           'more_link' => $promo_data['cta'],
-          'class' => $is_first ? 'featured-large' : 'three-line-video',
+          'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
           'is_first' => $is_first,
         );
       }

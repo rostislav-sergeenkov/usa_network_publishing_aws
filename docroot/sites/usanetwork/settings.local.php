@@ -11,9 +11,9 @@ $_ENV['AH_SITE_ENVIRONMENT'] = 'local';
 
 $databases['default'] = array ('default' =>
   array (
-    'database' => 'nbcusa2',  // <--- Typically "publisher7_<sitename>"
-    'username' => 'root',
-    'password' => '123',
+    'database' => 'publisher7_',  // <--- Typically "publisher7_<sitename>"
+    'username' => '',
+    'password' => '',
     'host' => '127.0.0.1',
     'port' => '',
     'driver' => 'mysql',

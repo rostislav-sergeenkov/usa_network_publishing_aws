@@ -618,9 +618,9 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
               ),
             ))
             : '',
-        'title' => !empty($data['now']->show_title)
-            ? $data['now']->show_title
-            : '',
+        'title' => ($data['now']->program_type == 'movie') ? t('USA Movie') :
+            (!empty($data['now']->show_title) ? $data['now']->show_title : ''),
+        'label_link' => l(t('On now'), 'videos/live'),
         'caption' => !empty($data['now']->title)
             ? $data['now']->title
             : '',
@@ -649,9 +649,9 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
               ),
             ))
             : '',
-        'title' => !empty($data['next']->show_title)
-            ? $data['next']->show_title
-            : '',
+        'title' => ($data['next']->program_type == 'movie') ? t('USA Movie') :
+            (!empty($data['next']->show_title) ? $data['next']->show_title : ''),
+        'label_link' => !empty($data['next']->nid) ? l(t('Up next'), 'node/' . $data['next']->nid) : t('Up next'),
         'caption' => !empty($data['next']->title)
             ? $data['next']->title
             : '',

@@ -22,7 +22,7 @@
     <?php if (!empty($on_now)): ?>
       <div class="node node-usanetwork-promo on-now">
         <div class="on-now-panel-title">
-          <h2><?php print t('On now'); ?></h2>
+          <h2><?php print !empty($on_now['label_link']) ? $on_now['label_link'] : ''; ?></h2>
         </div>
         <?php if (!empty($on_now['image'])): ?>
           <a href="<?php print !empty($on_now['node_url']) ? $on_now['node_url'] : '#'; ?>">
@@ -56,7 +56,7 @@
     <?php if (!empty($up_next)): ?>
       <div class="node node-usanetwork-promo up-next">
         <div class="on-now-panel-title">
-          <h2><?php print t('Up next'); ?></h2>
+          <h2><?php print !empty($up_next['label_link']) ? $up_next['label_link'] : ''; ?></h2>
           <?php if (!empty($up_next['time']) && !empty($up_next['time_daypart'])): ?>
             <div class="episode-airtime"><span><?php print $up_next['time']; ?></span> <?php print $up_next['time_daypart']; ?></div>
           <?php endif; ?>

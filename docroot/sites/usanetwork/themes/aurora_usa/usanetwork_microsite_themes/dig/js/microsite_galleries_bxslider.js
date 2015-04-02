@@ -332,14 +332,8 @@
               return false;
             }
 
-          var nid = $(this).parent().attr('data-node-id');
-          Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
-          self.switchGallery(nid, function() {
-            $navItems.bind('click', changeGalleryHandler);
-          });
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-        }
-      };
+            // scroll to top of galleries section
+            $('#microsite #galleries').animate({ scrollTop: 0 }, 1000);
 
             // switch gallery
             var nid = $(this).parent().attr('data-node-id');

@@ -291,7 +291,7 @@
       var quizzesNavWidth = $('#microsite #quizzes #quizzes-nav').width(),
           totalSlideWidth = slideWidth + slideMargin,
           numSlides = Math.floor(quizzesNavWidth / totalSlideWidth);
-
+      if (numSlides < 2) numSlides = 2;
       return numSlides;
     },
 
@@ -347,7 +347,7 @@
       // set defaults
       var wwidth = $(window).width(),
           transitionWidth = 640,
-          slideWidth = (wwidth > transitionWidth) ? 250 : 140,
+          slideWidth = (wwidth > transitionWidth) ? 250 : 125,
           slideMargin = 10,
           numSlides = Drupal.behaviors.microsite_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin);
 
@@ -407,7 +407,7 @@
         // set defaults for quiz navigation
         var wwidth = $(window).width(),
             transitionWidth = 640,
-            slideWidth = (wwidth > transitionWidth) ? 250 : 140,
+            slideWidth = (wwidth > transitionWidth) ? 250 : 125,
             slideMargin = 10,
             numSlides = Drupal.behaviors.microsite_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin),
             self = this;

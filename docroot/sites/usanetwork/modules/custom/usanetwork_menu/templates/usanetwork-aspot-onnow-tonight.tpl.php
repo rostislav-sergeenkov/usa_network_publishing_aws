@@ -7,7 +7,7 @@
           <div class="schedule-item">
             <div class="schedule-item-wrap">
               <?php if (!empty($on_now_block_item['up_next']['time']) && !empty($on_now_block_item['up_next']['day_part'])): ?>
-                <div class="time"><span><?php print t('Up next'); ?></span><br>
+                <div class="time"><span><?php if (!empty($on_now_block_item['up_next']['label_link'])): print $on_now_block_item['up_next']['label_link']; endif;?></span><br>
                   <span class="time-color"><?php print $on_now_block_item['up_next']['time']; ?></span>
                   <?php print $on_now_block_item['up_next']['day_part']; ?>
                 </div>
@@ -41,10 +41,10 @@
           <div class="schedule-item">
             <div class="schedule-item-wrap">
               <div class="time">
-                <span><?php print t('On now'); ?></span>
+                <span><?php if (!empty($on_now_block_item['on_now']['label_link'])): print $on_now_block_item['on_now']['label_link']; endif;?></span>
                 <div class="watch-now">
-                  <span class="live"><?php print t('live'); ?></span>
-                  <span><?php print t('Watch now'); ?></span>
+                  <span class="live"><?php if (!empty($on_now_block_item['on_now']['on_now_live_button'])): print $on_now_block_item['on_now']['on_now_live_button']; endif;?></span>
+                  <span><?php if (!empty($on_now_block_item['on_now']['on_now_caption'])): print $on_now_block_item['on_now']['on_now_caption']; endif;?></span>
                 </div>
               </div>
               <div class="episode-info">

@@ -37,5 +37,27 @@
     parameters.mvpdId = mvpdId;
 
     $cpc = NBCUniCPC.load("pdk-player", NBCUniCPC.Account.USA, contentInitObj, parameters);
+    $cpc.addEventListener(NBCUniCPC.Event.BLACKOUT_STATUS, onBlackoutStatus);
   }
+
+  //Use Blackout event to show the custom slate if the content is blacked out.
+  function onBlackoutStatus(event) {
+    //if event.data.entitled = false, the user cannot watch content
+    if (!event.data.entitled) {
+      showCustomSlate();
+    }
+  }
+
+  function showCustomSlate() {
+    //generate some HTML to replace the contents of the 'videoplayer' element.
+    var customSlateContent = "<div id='blackout-slate' style='height:100%;width:100%;background-color:#FF0000;overflow: hidden;'>";
+    customSlateContent += "<span style='font-family:sans-serif;font-size: 120px;text-transform: uppercase;letter-spacing:-6px;'>";
+    customSlateContent += "This is a custom slate.";
+    customSlateContent += "</span></div>";
+
+    //use jQuery to replace contents with custom slate HTML
+    $("#pdk-player").html(customSlateContent);
+  }
+
+
 })(angular, jQuery);

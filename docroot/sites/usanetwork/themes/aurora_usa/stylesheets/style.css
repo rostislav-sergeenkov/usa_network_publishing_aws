@@ -13429,6 +13429,11 @@ footer h2 {
   text-align: center;
   text-transform: uppercase;
 }
+@media (min-width: 1920px) {
+  .section-title .section-title-wrapper {
+    font-size: 14px;
+  }
+}
 .section-title .section-title-wrapper:before {
   border: 1px solid #000000;
   border-right: 0;

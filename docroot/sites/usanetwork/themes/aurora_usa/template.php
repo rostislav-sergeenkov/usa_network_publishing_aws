@@ -166,13 +166,6 @@ function aurora_usa_preprocess_page(&$vars) {
     $vars['page'] = array('content' => $content);
     $vars['ajax'] = true;
   }
-
-  // if microsite, don't display the top utilities section
-  if ($node && $node->type == 'usanetwork_microsite') {
-    $vars['page']['no_utilities'] = true;
-    $vars['page']['no_footer'] = true;
-    $vars['page']['no_leaderboard'] = true;
-  }
 }
 
 /**
@@ -582,6 +575,10 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             }
             break;
           case 'vid_teaser_show_general':
+            $vars['items'][0]['#prefix'] = '<h4>';
+            $vars['items'][0]['#suffix'] = '</h4>';
+            break;
+          case 'microsite_thumbnail':
             $vars['items'][0]['#prefix'] = '<h4>';
             $vars['items'][0]['#suffix'] = '</h4>';
             break;

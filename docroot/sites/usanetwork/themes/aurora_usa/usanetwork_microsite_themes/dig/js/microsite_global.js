@@ -137,7 +137,8 @@
       s.prop3 = sectionTitle;
       s.prop4 = siteName + ' : ' + sectionTitle;
       s.prop5 = s.prop4;
-      if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries')) {
+//      if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries') && (anchor != 'episodes') && (anchor != 'quizzes')) {
+      if (anchor == 'about') {
         pageName = sectionTitle + ' | ' + pageName;
         s.pageName += ' : ' + sectionTitle;
       }
@@ -164,8 +165,8 @@
           if (!currentSlide) currentSlide = 1;
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
           s.prop5 = siteName + ' : Gallery : ' + itemTitle;
           s.pageName = s.prop5 + ' : Photo ' + currentSlide;
           pageName = itemTitle + ' | Gallery | ' + pageName;
@@ -182,11 +183,20 @@
         case 'episodes':
           s.prop3 = 'Episode Guide';
           s.prop4 = siteName + ' : Episode Guide';
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
           s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Episode Guide | ' + pageName;
+          break;
+        case 'quizzes':
+          s.prop3 = 'Quiz';
+          s.prop4 = siteName + ' : Quiz';
+          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h3.quiz-title').text();
+          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h1.quiz-title').text();
+          s.prop5 = siteName + ' : Quiz : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Quiz | ' + pageName;
           break;
       }
       $('title').text(pageName);
@@ -726,7 +736,7 @@
     },
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
-      
+
       if (!$('html.ie9').length) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }

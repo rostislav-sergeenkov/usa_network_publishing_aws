@@ -26,20 +26,20 @@
 <div class="full-pane">
   <?php if (!empty($gallery)): ?>
   <div class="microsite-gallery-meta clearfix">
-    <?php if (!empty($h1) && $status == 'active'): ?>
-      <h1><?php print $h1; ?></h1>
-      <?php if (!empty($gallery['title'])): ?>
-        <h2><?php print $gallery['title']; ?></h2>
-      <?php endif; ?>
-    <?php elseif (empty($h1) && $status == 'active'): ?>
-      <?php if (!empty($gallery['title'])): ?>
-        <h1><?php print $gallery['title']; ?></h1>
-      <?php endif; ?>
-    <?php else: ?>
-      <?php if (!empty($gallery['title'])): ?>
-        <h2><?php print $gallery['title']; ?></h2>
+    <?php if (empty($h1) && !empty($gallery['title']) && $status == 'active'): ?>
+      <h1 class="gallery-title"><?php print $gallery['title']; ?></h1>
+    <?php elseif (!empty($gallery['title'])): ?>
+      <h2 class="gallery-title"><?php print $gallery['title']; ?></h2>
+    <?php endif; ?>
+
+    <?php if (!empty($h1)): ?>
+      <?php if ($status == 'active'): ?>
+      <h1 class="seo-h1"><?php print $h1; ?></h1>
+      <?php else: ?>
+      <h2 class="seo-h1"><?php print $h1; ?></h2>
       <?php endif; ?>
     <?php endif; ?>
+
     <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden">
       <div id="gigya-share"></div>
     </div>
@@ -68,8 +68,20 @@
         <ul id="ep-galleries-list" class="galleries-bxslider">
         <?php foreach ($episodic_galleries as $ep_gallery): ?>
           <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
-          <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
-          <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>"><a href="/dig/galleries/<?php print $ep_gallery['url']; ?>"><div class="gallery-nav-img"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>"></div><div class="gallery-title"><?php print $ep_gallery['title']; ?></div></a></li>
+          <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>">
+            <a href="<?php print $microsite_url; ?>/galleries/<?php print $ep_gallery['url']; ?>">
+              <div class="gallery-nav-img"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>">
+              </div>
+              <div class="gallery-title">
+                <div><?php print $ep_gallery['title']; ?></div>
+                <?php if (!empty($ep_gallery['h1'])): ?>
+                <div class="gallery-h1">
+                  <?php print $ep_gallery['h1']; ?>
+                </div>
+                <?php endif; ?>
+              </div>
+            </a>
+          </li>
           <?php endif; ?>
         <?php endforeach; ?>
         </ul>
@@ -90,8 +102,21 @@
         <ul id="character-galleries-list" class="galleries-bxslider">
         <?php foreach ($character_galleries as $char_gallery): ?>
           <?php if (!empty($char_gallery['url']) && !empty($char_gallery['gallery_nid']) && !empty($char_gallery['title']) && !empty($char_gallery['cover_img'])): ?>
-          <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
-          <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>"><a href="/dig/galleries/<?php print $char_gallery['url']; ?>"><div class="gallery-nav-img"><img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>"></div><div class="gallery-title"><?php print $char_gallery['title']; ?></div></a></li>
+          <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>">
+            <a href="<?php print $microsite_url; ?>/galleries/<?php print $char_gallery['url']; ?>">
+              <div class="gallery-nav-img">
+                <img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>">
+              </div>
+              <div class="gallery-title">
+                <div><?php print $char_gallery['title']; ?></div>
+                <?php if (!empty($char_gallery['h1'])): ?>
+                <div class="gallery-h1">
+                  <?php print $char_gallery['h1']; ?>
+                </div>
+                <?php endif; ?>
+              </div>
+            </a>
+          </li>
           <?php endif; ?>
         <?php endforeach; ?>
         </ul>

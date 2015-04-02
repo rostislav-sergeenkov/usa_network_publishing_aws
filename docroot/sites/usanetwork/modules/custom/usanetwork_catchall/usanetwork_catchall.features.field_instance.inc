@@ -40,6 +40,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -109,6 +115,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -184,6 +196,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -252,6 +270,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -315,6 +339,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -394,6 +424,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -482,6 +518,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -546,6 +588,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -618,6 +666,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'weight' => 5,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -700,6 +754,12 @@ function usanetwork_catchall_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -771,6 +831,13 @@ function usanetwork_catchall_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
+        'label' => 'hidden',
+        'module' => 'usanetwork_field_formatters',
+        'settings' => array(),
+        'type' => 'raw_formatter',
         'weight' => 0,
       ),
       'page_collection_resources' => array(
@@ -854,6 +921,13 @@ function usanetwork_catchall_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'hidden',
+        'module' => 'usanetwork_field_formatters',
+        'settings' => array(),
+        'type' => 'custom_js',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -930,6 +1004,12 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'weight' => 4,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1027,6 +1107,13 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'hidden',
+        'module' => 'usanetwork_field_formatters',
+        'settings' => array(),
+        'type' => 'custom_css_ajax',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1102,6 +1189,12 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1185,6 +1278,12 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

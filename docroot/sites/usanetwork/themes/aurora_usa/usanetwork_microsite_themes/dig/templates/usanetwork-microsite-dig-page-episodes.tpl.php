@@ -1,26 +1,17 @@
 <?php
 /**
- * Template of Characters page
+ * Template of Episodes page
  *
  * Variables:
- * - $people - array of people:
- * -  - $people[n]['id'] - machine-readable id of person
- * -  - $people[n]['url'] - machine-readable title for part of url.
- * -  - $people[n]['background_url'] - url for the person's background image
- * -  - $people[n]['quotes'] - array of person quotes:
- * -  -  - $people[n]['quotes'][m]['quote'] - string value of quote field
- * -  -  - $people[n]['quotes'][m]['source'] - string value of source field
- * -  - $people[n]['title'] - the title of the person
- * -  - $people[n]['social'] - pre-rendered list of social follow icons
- * -  - $people[n]['description'] - the description of the person
- * -  - $people[n]['role'] - role of the person
- * -  - $people[n]['character_bio_summary'] - Summary of the character bio
- * -  - $people[n]['character_bio'] - character bio
- * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
- * -  - $people[n]['preview_image_url'] - Image preview for a hover action.
- * - $is_last - flag of the latest section (appears only on the latest)
- * - $section_separator - pre-rendered section separator
- * - $section_title - Title of section.
+ * - $episodes - array of people:
+ * -  - $episodes[n]['id'] - machine-readable id of episode
+ * -  - $episodes[n]['title'] - the title of the episode
+ * -  - $episodes[n]['optional_h1'] - the optional SEO H1 text
+ * -  - $episodes[n]['description'] - the description of the person
+ * -  - $episodes[n]['background_url'] - url for the person's background image
+ * -  - $episodes[n]['preview_image_url'] - Image preview for a hover action.
+ * -  - $episodes[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
+ * - $section_title - title of section.
  */
 ?>
 
@@ -41,7 +32,7 @@
   <!-- 728x90 ad -->
   <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_episodes"></div>
 
-  <!-- episodes title and navigation -->
+  <!-- episodes section title and navigation -->
   <div class="right-pane-content">
     <?php if (!empty($section_title)): ?>
       <h2 class="content"><?php print $section_title; ?></h2>
@@ -67,29 +58,32 @@
     </div>
     <?php endif; ?>
 
-    <!-- character info -->
+    <!-- episode info -->
     <?php if (!empty($episodes)): ?>
     <div id="episode-info-container" class="clearfix">
       <ul id="episode-info" class="content">
       <?php foreach ($episodes as $episode_key => $episode): ?>
         <li id ="<?php if (!empty($episode['id'])) print $episode['id']; ?>" class="<?php if (!empty($episode['id'])) print $episode['id']; ?><?php if ($episode['status'] != '') print ' ' . $episode['status']; ?>">
-            <?php if ($episode['status'] == 'active' && !empty($h1) && $status == 'active'): ?>
-              <h1><?php print $h1; ?></h1>
-            <?php else: ?>
-              <?php if (!empty($episode['title'])): ?>
-                <h3><?php print $episode['title']; ?></h3>
-              <?php endif; ?>
-            <?php endif; ?>
+          <?php if (empty($episode['optional_h1']) && !empty($episode['title']) && $episode['status'] == 'active' && $status == 'active'): ?>
+          <h1 class="episode-title"><?php print $episode['title']; ?></h1>
+          <?php else: ?>
+          <h3 class="episode-title"><?php print $episode['title']; ?></h3>
+          <?php endif; ?>
 
-            <?php if (!empty($episode['optional_h1'])): ?>
-              <div class="episode-h1"><?php print $episode['optional_h1']; ?></div>
+          <?php if (!empty($episode['optional_h1'])): ?>
+            <?php if ($episode['status'] == 'active' && $status == 'active'): ?>
+            <h1 class="seo-h1"><?php print $episode['optional_h1']; ?></h1>
+            <?php else: ?>
+            <h3 class="seo-h1"><?php print $episode['optional_h1']; ?></h3>
             <?php endif; ?>
+          <?php endif; ?>
+
             <?php if (!empty($episode['description'])): ?>
-              <div class="episode-description clearfix">
-                <div class="text active clearfix">
-                  <?php print $episode['description']; ?>
-                </div>
+            <div class="episode-description clearfix">
+              <div class="text active clearfix">
+                <?php print $episode['description']; ?>
               </div>
+            </div>
             <?php endif; ?>
         </li>
       <?php endforeach; ?>

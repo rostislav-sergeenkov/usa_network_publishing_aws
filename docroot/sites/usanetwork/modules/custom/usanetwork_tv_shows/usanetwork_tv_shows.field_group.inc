@@ -897,36 +897,6 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_tv_shows_latest|node|tv_show|form';
-  $field_group->group_name = 'group_tv_shows_latest';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_usa_custom_tab';
-  $field_group->data = array(
-    'label' => 'Latest Block',
-    'weight' => '77',
-    'children' => array(
-      0 => 'field_additional_text',
-      1 => 'field_caption_text',
-      2 => 'field_hp_promos_block_title',
-      3 => 'field_latest_carousel_items',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_tv_shows_latest|node|tv_show|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_tvs_best_of|node|tv_show|form';
   $field_group->group_name = 'group_tvs_best_of';
   $field_group->entity_type = 'node';
@@ -1083,9 +1053,8 @@ function usanetwork_tv_shows_field_group_info() {
       7 => 'group_usa_tv_promo_vids',
       8 => 'group_usa_tv_promo',
       9 => 'group_show_aspots',
-      10 => 'group_tv_shows_latest',
-      11 => 'group_full_bleed_promo',
-      12 => 'group_tvs_best_of',
+      10 => 'group_full_bleed_promo',
+      11 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

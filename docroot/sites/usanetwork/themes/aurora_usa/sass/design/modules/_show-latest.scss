@@ -16,8 +16,11 @@
       li {
         &.first {
           > div {
-            height: 32.26%;
-            margin-bottom: 1.61%;
+            height: 25.4vw;
+            margin-bottom: 1.47vw;
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
             &:last-child {
               margin-bottom: 0;
             }
@@ -25,11 +28,17 @@
         }
         &.last {
           > div {
-            height: 32.26%;
-            margin-bottom: 1.61%;
+            height: 25.4vw;
+            margin-bottom: 1.47vw;
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
             &:last-child {
-              height: 66.13%;
+              height: 52.27vw;
               margin-bottom: 0;
+              @include breakpoint($bp-640-width) {
+                height: 74.67vw;
+              }
             }
           }
         }
@@ -39,18 +48,27 @@
       li {
         &.first {
           > div {
-            height: 32.26%;
+            height: 25.4vw;
             margin-bottom: 0;
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
             &:first-child {
-              height: 66.13%;
-              margin-bottom: 1.61%;
+              height: 52.27vw;
+              margin-bottom: 1.47vw;
+              @include breakpoint($bp-640-width) {
+                height: 74.67vw;
+              }
             }
           }
         }
         &.last {
           > div {
-            height: 32.26%;
-            margin-bottom: 1.61%;
+            height: 25.4vw;
+            margin-bottom: 1.47vw;
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
             &:last-child {
               margin-bottom: 0;
             }
@@ -60,11 +78,11 @@
     }
     li {
       float: left;
-      height: 80.5vw;
+      height: auto;
       overflow: hidden;
       position: relative;
-      width: 49.6%;
-      @extend %three-line-video-promo-large;
+      width: 49.2%;
+      @extend %show-latest-promo;
       @extend %meta;
       > div {
         height: 100%;

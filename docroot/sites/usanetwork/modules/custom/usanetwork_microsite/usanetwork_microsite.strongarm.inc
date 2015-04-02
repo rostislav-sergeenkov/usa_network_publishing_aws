@@ -147,19 +147,19 @@ function usanetwork_microsite_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
+          'weight' => '5',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
-        ),
-        'redirect' => array(
           'weight' => '6',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '7',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '8',
         ),
       ),
       'display' => array(),

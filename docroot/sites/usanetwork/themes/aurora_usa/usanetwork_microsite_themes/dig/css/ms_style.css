@@ -737,6 +737,12 @@ you can use the generic selector below, but it's slower:
   margin: 48px 0 20px;
 }
 /* sub-nav */
+.page-node-microsite #left-nav #left-nav-links li.active li a {
+  color: #FFF;
+}
+.page-node-microsite #left-nav #left-nav-links li.active li.active a {
+  color: #e5ce96;
+}
 .page-node-microsite #left-nav #left-nav-links ul ul {
   display: none;
   margin-left: 16px;
@@ -848,12 +854,8 @@ body.page-node-microsite {
   clear: both;
   display: table;
 }
-#microsite .full-pane #video-container .video-title {
-  font-size: 26px;
-  margin: 7px 0;
-  text-transform: uppercase;
-}
-#microsite .full-pane #video-container .video-title h1 {
+#microsite .full-pane #video-container h1,
+#microsite .full-pane #video-container h3 {
   color: #ffffff;
   line-height: 24px;
   font-family: 'Proxima N W01 Reg', Arial, sans-serif;;
@@ -861,6 +863,14 @@ body.page-node-microsite {
   font-weight: normal;
   margin: 7px 0;
   text-transform: uppercase;
+}
+#microsite .full-pane #video-container h1.seo-h1,
+#microsite .full-pane #video-container h3.seo-h1 {
+  color: #e5ce96;
+  line-height: 20px;
+  font-size: 18px;
+  text-transform: none;
+  margin: -7px 0 7px;
 }
 #microsite .full-pane #video-container .video-description {
   font-size: 16px;
@@ -912,6 +922,19 @@ body.page-node-microsite {
 #microsite .block-usanetwork-mpx-video li.grid-item img {
   height: 169px;
   width: 300px;
+}
+#microsite #videos #thumbnail-list .field-name-field-mpx-title,
+#microsite #videos #thumbnail-list .field-name-field-seo-h1 {
+  padding: 0 4px;
+  line-height: 20px;
+}
+#microsite #videos #thumbnail-list .field-name-field-seo-h1 {
+  color: #e5ce96;
+}
+#microsite #videos #thumbnail-list li.active .field-name-field-mpx-title,
+#microsite #videos #thumbnail-list li.active .field-name-field-seo-h1 {
+  padding: 0 4px;
+  line-height: 20px;
 }
 #microsite .block-usanetwork-mpx-video li.ad img {
   height: 100%;
@@ -1815,7 +1838,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #galleries-content {
     background-image: url("../images/dig_bg_gallery.jpg");
   }
-  #microsite #games-content {
+  #microsite #games-content,
+  #microsite #quizzes-content {
     background-image: url("../images/dig_bg_games.jpg");
   }
   #microsite #videos-content {

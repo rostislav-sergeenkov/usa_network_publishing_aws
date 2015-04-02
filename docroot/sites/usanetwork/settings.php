@@ -80,10 +80,17 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     // file paths, however we have to set the private path manually.
     $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'dev/sites/default/files-private';
 
-    // Memchache settings.
+    // Memchache settings
+    $conf['cache_backends'][] = './includes/cache-install.inc';
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';
     $conf['cache_default_class'] = 'MemCacheDrupal';
-    $conf['cache_class_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_page'] = 'DrupalFakeCache';
+    
+    # Add in stampede protection
+    $conf['memcache_stampede_protection'] = TRUE;
+    # Move semaphore out of the database and into memory for performance purposes
+    $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "GMWX-32384";
@@ -109,10 +116,17 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     // file paths, however we have to set the private path manually.
     $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'stg/sites/default/files-private';
 
-    // Memchache settings.
+    // Memchache settings
+    $conf['cache_backends'][] = './includes/cache-install.inc';
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';
     $conf['cache_default_class'] = 'MemCacheDrupal';
-    $conf['cache_class_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_page'] = 'DrupalFakeCache';
+    
+    # Add in stampede protection
+    $conf['memcache_stampede_protection'] = TRUE;
+    # Move semaphore out of the database and into memory for performance purposes
+    $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "GMWX-32384";
@@ -132,10 +146,17 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     // file paths, however we have to set the private path manually.
     $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'acc/sites/default/files-private';
 
-    // Memchache settings.
+    // Memchache settings
+    $conf['cache_backends'][] = './includes/cache-install.inc';
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';
     $conf['cache_default_class'] = 'MemCacheDrupal';
-    $conf['cache_class_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_page'] = 'DrupalFakeCache';
+    
+    # Add in stampede protection
+    $conf['memcache_stampede_protection'] = TRUE;
+    # Move semaphore out of the database and into memory for performance purposes
+    $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "GMWX-32384";
@@ -162,10 +183,17 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/default/files-private';
     $conf['plupload_temporary_uri'] = $conf['file_private_path'] . '/tmp';
 
-    // Memchache settings.
+    // Memchache settings
+    $conf['cache_backends'][] = './includes/cache-install.inc';
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';
     $conf['cache_default_class'] = 'MemCacheDrupal';
-    $conf['cache_class_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_page'] = 'DrupalFakeCache';
+    
+    # Add in stampede protection
+    $conf['memcache_stampede_protection'] = TRUE;
+    # Move semaphore out of the database and into memory for performance purposes
+    $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "CGJK-32328";

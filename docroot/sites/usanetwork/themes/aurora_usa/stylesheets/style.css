@@ -549,7 +549,7 @@ you can use the generic selector below, but it's slower:
   height: 254px;
 }
 
-.usa-social #content, .social-panel.inner-wrapper .panel-col1 {
+.usa-social #content {
   text-align: left;
   vertical-align: top;
   float: none;
@@ -558,20 +558,20 @@ you can use the generic selector below, but it's slower:
 }
 
 @media (min-width: 900px) {
-  .usa-social.one-sidebar #content, .social-panel.panel-two-cols .panel-col1 {
+  .usa-social.one-sidebar #content {
     float: left;
     margin-right: -315px;
     padding-right: 315px;
   }
 }
 
-.usa-social .sidebar, .social-panel.inner-wrapper.panel-two-cols .panel-col2 {
+.usa-social .sidebar {
   clear: both;
   width: 100%;
   margin-top: 30px;
 }
 @media (min-width: 900px) {
-  .usa-social .sidebar, .social-panel.inner-wrapper.panel-two-cols .panel-col2 {
+  .usa-social .sidebar {
     float: left;
     clear: none;
     width: 300px;
@@ -7631,6 +7631,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   content: '';
   display: table;
 }
+@media (min-width: 1920px) {
+  .show-latest-block {
+    margin-bottom: 190px;
+  }
+}
 .show-latest-block ul {
   margin: 40px 0 0;
   padding: 0;
@@ -7717,6 +7722,31 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .show-latest-block ul li:nth-child(2), .show-latest-block ul li .last {
   float: right;
+}
+.show-latest-block .load-more-link {
+  bottom: -50px;
+  position: absolute;
+  text-align: center;
+  width: calc(100% - 32px);
+}
+@media (min-width: 1920px) {
+  .show-latest-block .load-more-link {
+    bottom: -100px;
+  }
+}
+.show-latest-block .load-more-link a {
+  border-bottom: 2px solid #545454;
+  color: #545454;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 16px;
+  padding-bottom: 3px;
+  text-transform: uppercase;
+}
+@media (min-width: 1920px) {
+  .show-latest-block .load-more-link a {
+    font-size: 30px;
+    padding-bottom: 4px;
+  }
 }
 
 .state-menu #menu-wrapper {
@@ -18724,13 +18754,6 @@ input.echo-submit-text {
 }
 
 /* show landing page social */
-.social-panel.inner-wrapper {
-  margin-top: 42px;
-}
-.social-panel.inner-wrapper .panel-col2 {
-  width: 100%;
-}
-
 #usanetwork_social_show_homepage_chatter {
   background-color: #2d2d2d;
 }

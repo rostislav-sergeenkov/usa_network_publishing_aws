@@ -185,6 +185,7 @@ function usanetwork_home_field_default_field_bases() {
         'post' => 'post',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'quiz' => 'quiz',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -218,6 +219,7 @@ function usanetwork_home_field_default_field_bases() {
         'post' => 'post',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'quiz' => 'quiz',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

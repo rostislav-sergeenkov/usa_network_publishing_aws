@@ -313,9 +313,9 @@ If more than 4 are added a carousel will be triggered on page load so content ca
     'label' => 'Social carousel',
     'weight' => '18',
     'children' => array(
-      0 => 'field_social_promo_carousel',
-      1 => 'field_social_promo_title',
-      2 => 'field_social_promo_additional',
+      0 => 'field_social_promo_title',
+      1 => 'field_social_promo_additional',
+      2 => 'field_hp_ft_social',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -796,6 +796,75 @@ function usanetwork_home_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usa_homepage-field_hp_ft_social'
+  $field_instances['node-usa_homepage-field_hp_ft_social'] = array(
+    'bundle' => 'usa_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'usanetwork_dynamic_entity_reference_label',
+        'weight' => 28,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_more' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_shows' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_hp_ft_social',
+    'label' => 'Social promo',
+    'required' => 0,
+    'settings' => array(
+      'handler' => 'default',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'usanetwork_dynamic_entity_reference',
+      'settings' => array(),
+      'type' => 'usanetwork_dynamic_entity_reference_default',
+      'weight' => 21,
+    ),
+  );
+
   // Exported field_instance: 'node-usa_homepage-field_hp_full_bleed_promo'
   $field_instances['node-usa_homepage-field_hp_full_bleed_promo'] = array(
     'bundle' => 'usa_homepage',
@@ -1822,85 +1891,6 @@ function usanetwork_home_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 20,
-    ),
-  );
-
-  // Exported field_instance: 'node-usa_homepage-field_social_promo_carousel'
-  $field_instances['node-usa_homepage-field_social_promo_carousel'] = array(
-    'bundle' => 'usa_homepage',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 26,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'global_nav_block_more' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'global_nav_block_shows' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_social_promo_carousel',
-    'label' => 'Social promo',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-          'preview_type' => 'target',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 21,
     ),
   );
 

@@ -162,21 +162,33 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_tv_shows_related_item' => array(
       'variables' => array(
-        'classes' => NULL,
+        'is_even' => NULL,
+        'custom_classes' => NULL,
         'target_url' => NULL,
         'caption' => NULL,
         'title' => NULL,
         'additional' => NULL,
-        'image_url' => NULL,
+        'image_desktop' => '',
+        'image_desktop_large' => '',
+        'image_mobile' => '',
+        'image_mobile_large' => '',
       ),
       'template' => 'templates/usanetwork-tv-shows-related-item',
     ),
-    'usanetwork_tv_shows_related_items' => array(
+    'usanetwork_tv_shows_related_items_block' => array(
       'variables' => array(
         'related_items' => array(),
+        'ad' => FALSE,
+        'is_even' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-related-items-block',
+    ),
+    'usanetwork_tv_shows_related_items_container' => array(
+      'variables' => array(
+        'related_items_block' => NULL,
         'load_more_link' => NULL,
       ),
-      'template' => 'templates/usanetwork-tv-shows-related-items',
+      'template' => 'templates/usanetwork-tv-shows-related-items-container',
     ),
   );
 }
@@ -243,6 +255,54 @@ function usanetwork_tv_shows_image_default_styles() {
         'data' => array(
           'width' => 212,
           'height' => 172,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['921x488'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 921,
+          'height' => 488,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['921x1003'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 921,
+          'height' => 1003,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['291x234'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 291,
+          'height' => 234,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+  $styles['291x478'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 291,
+          'height' => 478,
         ),
         'weight' => 0,
       ),
@@ -1164,7 +1224,12 @@ function _usanetwork_tv_shows_related_content_block() {
       'usanetwork_tv_show_nid' => $tv_show_node->nid
     ), 'setting');
 
-    return _usanetwork_tv_shows_render_related_content_items($related_content);
+    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE);
+
+    return theme('usanetwork_tv_shows_related_items_container', array(
+      'related_items_block' => $block_of_items,
+      'load_more_link' => TRUE,
+    ));
   }
 
   return '';
@@ -1180,12 +1245,13 @@ function _usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_fro
     'rendered' => '',
   );
 
+  $is_even = (($start_from + 1) % 2 == 0) ? TRUE : FALSE;
   $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, $start_from, $limit);
 
   if (!empty($related_content)) {
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items($related_content);
+    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items_block($related_content, TRUE, $is_even);
 
     return drupal_json_output($response);
   }
@@ -1292,17 +1358,21 @@ function _usanetwork_tv_shows_render_best_of_block() {
   return '';
 }
 
-function _usanetwork_tv_shows_render_related_content_items($data) {
+function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is_even) {
   if (!empty($data)) {
     $theme_variables = array(
       'related_items' => array(),
+      'is_even' => $is_even,
+      'ad' => $ad,
     );
 
     foreach ($data as $data_index => $data_item) {
-      $theme_variables['related_items'][] = _usanetwork_tv_shows_render_related_content_item($data_item);
+      $is_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
+
+      $theme_variables['related_items'][] = _usanetwork_tv_shows_render_related_content_item($data_item, $is_even);
     }
 
-    return theme('usanetwork_tv_shows_related_items', $theme_variables);
+    return theme('usanetwork_tv_shows_related_items_block', $theme_variables);
   }
 
   return '';
@@ -1313,9 +1383,9 @@ function _usanetwork_tv_shows_render_related_content_items($data) {
  * @param $data
  * @return mixed|string
  */
-function _usanetwork_tv_shows_render_related_content_item($data) {
+function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALSE) {
+  $classes = array();
   $target_url = '<front>';
-  $style_name = '634x349';
 
   if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
       'file',
@@ -1325,8 +1395,11 @@ function _usanetwork_tv_shows_render_related_content_item($data) {
     $target_url = url($data->entity_type . '/' . $data->entity_id);
   }
 
+  $classes[] = $is_even ? 'even' : 'odd';
+
   $theme_variables = array(
-    'classes' => NULL,
+    'is_even' => $is_even,
+    'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
     'caption' => !empty($data->promo_topic)
       ? $data->promo_topic
@@ -1337,8 +1410,17 @@ function _usanetwork_tv_shows_render_related_content_item($data) {
     'additional' => !empty($data->promo_description)
       ? $data->promo_description
       : '',
-    'image_url' => !empty($data->raw_image_uri)
-      ? image_style_url($style_name, $data->raw_image_uri)
+    'image_desktop' => !empty($data->raw_image_uri)
+      ? image_style_url('921x488', $data->raw_image_uri)
+      : '',
+    'image_desktop_large' => !empty($data->raw_image_uri)
+      ? image_style_url('921x1003', $data->raw_image_uri)
+      : '',
+    'image_mobile' => !empty($data->raw_image_uri)
+      ? image_style_url('291x234', $data->raw_image_uri)
+      : '',
+    'image_mobile_large' => !empty($data->raw_image_uri)
+      ? image_style_url('291x478', $data->raw_image_uri)
       : '',
   );
 

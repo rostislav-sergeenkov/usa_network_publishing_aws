@@ -36,14 +36,8 @@
         <?php if (!empty($image_desktop)): ?>
           <div data-src="<?php print $image_desktop; ?>" data-type="image-desktop"></div>
         <?php endif; ?>
-        <?php if (!empty($image_desktop_large)): ?>
-          <div data-src="<?php print $image_desktop_large; ?>" data-type="image-desktop-large"></div>
-        <?php endif; ?>
         <?php if (!empty($image_mobile)): ?>
           <div data-src="<?php print $image_mobile; ?>" data-type="image-mobile"></div>
-        <?php endif; ?>
-        <?php if (!empty($image_mobile_large)): ?>
-          <div data-src="<?php print $image_mobile_large; ?>" data-type="image-mobile-large"></div>
         <?php endif; ?>
       </div>
     </a>

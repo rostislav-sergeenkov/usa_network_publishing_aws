@@ -167,9 +167,7 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'title' => NULL,
         'additional' => NULL,
         'image_desktop' => '',
-        'image_desktop_large' => '',
         'image_mobile' => '',
-        'image_mobile_large' => '',
       ),
       'template' => 'templates/usanetwork-tv-shows-related-item',
     ),
@@ -1364,10 +1362,13 @@ function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is
       'ad' => $ad,
     );
 
-    foreach ($data as $data_index => $data_item) {
-      $is_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
+    $big_item_index = $is_even ? 0 : 4;
 
-      $theme_variables['related_items'][] = _usanetwork_tv_shows_render_related_content_item($data_item, $is_even);
+    foreach ($data as $data_index => $data_item) {
+      $is_data_item_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
+      $is_data_item_big = ($data_index == $big_item_index) ? TRUE : FALSE;
+
+      $theme_variables['related_items'][] = _usanetwork_tv_shows_render_related_content_item($data_item, $is_data_item_even, $is_data_item_big);
     }
 
     return theme('usanetwork_tv_shows_related_items_block', $theme_variables);
@@ -1381,8 +1382,9 @@ function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is
  * @param $data
  * @return mixed|string
  */
-function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALSE) {
+function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALSE, $is_big = FALSE) {
   $classes = array();
+  $desktop_image = $mobile_image = '';
   $target_url = '<front>';
 
   if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
@@ -1393,7 +1395,21 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     $target_url = url($data->entity_type . '/' . $data->entity_id);
   }
 
+  if (!empty($data->raw_image_uri)) {
+    $desktop_image = $is_big
+      ? image_style_url('921x1003', $data->raw_image_uri)
+      : image_style_url('921x488', $data->raw_image_uri);
+
+    $mobile_image = $is_big
+      ? image_style_url('291x478', $data->raw_image_uri)
+      : image_style_url('291x234', $data->raw_image_uri);
+  }
+
   $classes[] = $is_even ? 'even' : 'odd';
+
+  if ($is_big) {
+    $classes[] = 'big';
+  }
 
   $theme_variables = array(
     'is_even' => $is_even,
@@ -1408,18 +1424,8 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     'additional' => !empty($data->promo_description)
       ? $data->promo_description
       : '',
-    'image_desktop' => !empty($data->raw_image_uri)
-      ? image_style_url('921x488', $data->raw_image_uri)
-      : '',
-    'image_desktop_large' => !empty($data->raw_image_uri)
-      ? image_style_url('921x1003', $data->raw_image_uri)
-      : '',
-    'image_mobile' => !empty($data->raw_image_uri)
-      ? image_style_url('291x234', $data->raw_image_uri)
-      : '',
-    'image_mobile_large' => !empty($data->raw_image_uri)
-      ? image_style_url('291x478', $data->raw_image_uri)
-      : '',
+    'image_desktop' => $desktop_image,
+    'image_mobile' => $mobile_image,
   );
 
   return theme('usanetwork_tv_shows_related_item', $theme_variables);

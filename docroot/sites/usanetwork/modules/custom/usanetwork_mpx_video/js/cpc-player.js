@@ -33,7 +33,7 @@
     contentInitObj.fullEpisode = true;
 
     var parameters = new NBCUniCPC.PlayerParameters();
-    parameters.autoPlay = false;
+    parameters.autoPlay = true;
     parameters.mvpdId = mvpdId;
 
     $cpc = NBCUniCPC.load("pdk-player", NBCUniCPC.Account.USA, contentInitObj, parameters);

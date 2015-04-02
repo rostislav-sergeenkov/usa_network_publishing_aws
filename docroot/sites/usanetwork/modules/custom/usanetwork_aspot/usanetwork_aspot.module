@@ -497,11 +497,15 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
       'desktop' => image_style_url('2500x1094', $banner_images['desktop']),
     ),
     'show_title_prefix_style' => isset($draggable_data->title_prefix)
-      ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix)
-      : '',
-    'show_title_style' => isset($draggable_data->title_prefix)
-      ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title)
-      : '',
+        ? array(
+          'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix),
+          'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->title_prefix))
+        : false,
+    'show_title_style' => isset($draggable_data->title)
+        ? array(
+          'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->title),
+          'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->title))
+        : false,
     'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
       ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
       : '',
@@ -546,13 +550,22 @@ function usanetwork_aspot_render($show_node) {
 }
 
 function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
-  $output = "";
 
-  $output .=
-    'position : relative;' .
-    'top: ' . $draggable_data_element->top . '; ' .
-    'left: ' . $draggable_data_element->left . '; ';
+  $output = 'position: relative; ';
+  $output .= 'top: ';
+  $output .= isset($draggable_data_element->percentX) ? $draggable_data_element->percentX . '%; ' : 'auto; ';
+  $output .= 'left: ';
+  $output .= isset($draggable_data_element->percentY) ? $draggable_data_element->percentY . '%;' : 'auto;';
+  return $output;
+}
 
+function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_element) {
+
+  $output = 'position: relative; ';
+  $output .= 'top: ';
+  $output .= isset($draggable_data_element->percentMX) ? $draggable_data_element->percentMX . '%; ' : 'auto; ';
+  $output .= 'left: ';
+  $output .= isset($draggable_data_element->percentMY) ? $draggable_data_element->percentMY . '%;' : 'auto;';
   return $output;
 }
 
@@ -570,7 +583,10 @@ function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $dragg
         $cta_buttons_theme_data[$cta_index] = array(
           'url' => $cta_wrapper_element->url->value(),
           'text' => $cta_wrapper_element->title->value(),
-          'style' => _usanetwork_aspot_get_draggable_style_data($draggable_data->$cta_draggable_name),
+          'style' => array(
+                'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->$cta_draggable_name),
+                'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->$cta_draggable_name)
+          )
         );
       }
 

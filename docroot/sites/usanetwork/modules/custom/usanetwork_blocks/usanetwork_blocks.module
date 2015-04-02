@@ -654,23 +654,36 @@ function _usanetwork_blocks_social_carousel_block_content() {
       if (isset($homepage_wrapper->field_social_promo_additional)) {
         $theme_variables['additional'] = $homepage_wrapper->field_social_promo_additional->value();
       }
-      if (!empty($homepage_node->field_social_promo_carousel)) {
-        foreach ($homepage_wrapper->field_social_promo_carousel->value() as $promo) {
-
-          $promo_details = _usanetwork_promo_pull_node_promo_details($promo);
-          $promo_content = _usanetwork_promo_featured_content($promo);
-
+      $field_promo_items = field_get_items('node', $homepage_node, 'field_hp_ft_social');
+      if (!empty($field_promo_items) && is_array($field_promo_items)) {
+        foreach ($field_promo_items as $field_promo_item) {
+          $promo = entity_load($field_promo_item['target_type'], array($field_promo_item['target_id']));
+          if (empty($promo)) {
+            continue;
+          }
+          $promo = reset($promo);
+          switch ($field_promo_item['target_type']) {
+            case 'node':
+              $promo_data = _usanetwork_promo_pull_node_promo_details($promo);
+              break;
+            case 'file':
+              $promo_data = _usanetwork_promo_pull_file_promo_details($promo);
+              break;
+          }
+          if (empty($promo_data)) {
+            continue;
+          }
+          $promo_image_url = usanetwork_core_api_get_content_image($field_promo_item['target_type'], $promo);
           $episode_theme_variables = array(
-            'url' => $promo_content['url'],
-            'title' => $promo_content['title'],
-            'additional' => $promo_content['caption'],
-            'image_url' => image_style_url('300x169_video', $promo_content['image_url']),
-            'color_class' => !empty($promo_content['show_class']) ? $promo_content['show_class'] : NULL,
-            'icon_type' => $promo_content['icon_type'] ? $promo_content['icon_type'] : NULL,
-            'show_title' => !empty($promo_content['show_title']) ? $promo_content['show_title'] : NULL,
+            'url' => url($field_promo_item['target_type'] . '/' . $field_promo_item['target_id']),
+            'title' => $promo_data['promo_title'],
+            'additional' => $promo_data['topic'],
+            'image_url' => image_style_url('300x169_video', $promo_image_url),
+            'color_class' => $promo_data['show_class'],
+            'icon_type' => 'play-icon',
+            'show_title' => $promo_data['show_name']
           );
-
-          $theme_variables['promos'][] = $episode_theme_variables + $promo_details;
+          $theme_variables['promos'][] = $episode_theme_variables + $promo_data;
         }
         $theme_variables['promos'][count($theme_variables['promos']) -1 ]['class'] = 'last';
         $theme_variables['promos'][0]['class'] = 'first';

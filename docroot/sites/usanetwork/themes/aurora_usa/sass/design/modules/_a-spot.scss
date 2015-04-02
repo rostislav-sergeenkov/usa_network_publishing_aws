@@ -390,6 +390,7 @@
 .aspot-and-episodes {
   @include clear();
   overflow: hidden;
+  height: 43.75vw;
   position: relative;
   width: 100%;
   &.episodes-empty{
@@ -401,79 +402,20 @@
       display: none;
     }
   }
-  &.episodes-3{
-    .episodes-list{
-      ul{
-        &.open {
-          li {
-            display: block;
-          }
-        }
-        li{
-          height: 33.33333%;
-          @include breakpoint($bp-768-width) {
-            display: none;
-            height: 105px;
-            &:nth-child(1), &:nth-child(2) {
-              display: block;
-            }
-          }
-          @include breakpoint($bp-640-width) {
-            height: 70px;
-          }
-          .meta{
-            padding-right: 55%;
-          }
-          .asset-img {
-            max-width: 50%;
-            @include breakpoint($bp-640-width) {
-              max-width: 124px;
-            }
-          }
-        }
-      }
-    }
-  }
-  &.episodes-4{
-    .episodes-list{
-      ul{
-        li{
-          height: 25%;
-          .meta{
-            padding-right: 40%;
-          }
-          .asset-img {
-            max-width: 35%;
-          }
-        }
-      }
-    }
-  }
-  &.episodes-5{
-    .episodes-list{
-      ul{
-        li{
-          height: 20%;
-          .meta{
-            padding-right: 40%;
-          }
-          .asset-img {
-            max-width: 30.5%;
-          }
-        }
-      }
-    }
-  }
   .show-aspot {
     float: left;
+    height: 100%;
     position: relative;
-    width: 63%;
+    width: calc((100%*7)/9);
     @include breakpoint($bp-768-width) {
       float: none;
       width: 100%;
     }
     .asset-img {
+      height: 100%;
+      width: 100%;
       img {
+        height: 100%;
         width: 100%;
       }
     }
@@ -492,10 +434,10 @@
     }
   }
   .episodes-list {
+    float: left;
     height: 100%;
-    left: 63%;
-    position: absolute;
-    width: 37%;
+    position: relative;
+    width: calc((100%*2)/9);
     @include breakpoint($bp-768-width) {
       @include clear();
       background: $full-episodes-dark-back;
@@ -525,74 +467,61 @@
         top: 50%;
       }
     }
-    ul {
+    .episodes-list-slider.vertical {
       height: 90%;
       position: relative;
       width: 100%;
-      @include breakpoint($bp-768-width) {
-        float: left;
-        height: auto;
-        min-width: 300px;
-        width: 48%;
+      .bx-wrapper {
+        height: 100% !important;
+      }
+      .bx-viewport {
+        height: 100% !important;
+      }
+      ul {
+        height: 100% !important;
         li {
-          display: none;
-          &:nth-child(1), &:nth-child(2), &:nth-child(3) {
-            display: block;
-          }
-        }
-        &.open {
-          li {
-            display: block;
-          }
-        }
-      }
-      @include breakpoint($bp-640-width) {
-        float: none;
-        height: auto;
-        width: 100%;
-      }
-      li {
-        background: $full-episodes-light-back;
-        height: 20%;
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        &:nth-child(2n) {
-          background: $full-episodes-dark-back;
-        }
-        a {
-          display: block;
-          height: 100%;
+          background: $full-episodes-light-back;
+          overflow: hidden;
+          height: 33%;
+          position: relative;
           width: 100%;
-        }
-        @extend %meta;
-        .meta {
-          left: 20px;
-          margin-top: -19px;
-          position: absolute;
-          text-align: left;
-          top: 50%;
-          width: 100%;
-          @include breakpoint($bp-1280-width) {
-            left: 10px;
+          &:nth-child(2n) {
+            background: $full-episodes-dark-back;
           }
-          .title, .additional{
-            font-size: 14px;
-            line-height: 19px;
-            margin-left: 45px;
-            max-width: 75%;
-            @include breakpoint($bp-1024-width) {
-              font-size: 10px;
-              line-height: 18px;
-              margin-left: 40px;
-              max-width: 77%;
+          a {
+            display: block;
+            height: 100%;
+            width: 100%;
+          }
+          @extend %meta;
+          .meta {
+            left: 20px;
+            margin-top: -19px;
+            position: absolute;
+            text-align: left;
+            top: 50%;
+            width: 100%;
+            @include breakpoint($bp-1280-width) {
+              left: 10px;
             }
-          }
-          .meta-icon {
-            &:before {
-              top: 0px;
+            .title, .additional{
+              font-size: 14px;
+              line-height: 19px;
+              margin-left: 45px;
+              max-width: 75%;
               @include breakpoint($bp-1024-width) {
-                top: 4px;
+                font-size: 10px;
+                line-height: 18px;
+                margin-left: 40px;
+                max-width: 77%;
+              }
+            }
+            .meta-icon {
+              &:before {
+                top: 0px;
+                @include breakpoint($bp-1024-width) {
+                  top: 4px;
+                }
               }
             }
           }

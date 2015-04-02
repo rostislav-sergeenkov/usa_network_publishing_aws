@@ -7,16 +7,32 @@
             auto: false,
             speed: 400,
             useCSS: false,
-            slideWidth: 300,
             minSlides: 3,
-            maxSlides: 5,
-            slideMargin: 10
+            maxSlides: 3,
+            slideMargin: 0
           },
-          vertical_settings = $.extend({}, base_settings, {mode: 'vertical', slideMargin: 0}),
-          horizontal_settings = $.extend({}, base_settings, {mode: 'horizontal', slideMargin: 10});
+          vertical_settings = $.extend({}, base_settings, {mode: 'vertical'}),
+          horizontal_settings = $.extend({}, base_settings, {mode: 'horizontal'});
 
       $('.slider-vertical').each(function() {
         $(this).bxSlider(vertical_settings);
+
+        $(this).mousewheel(function (event, delta, deltaX, deltaY) {
+          if (delta > 0) {
+            $(this).goToPrevSlide();
+            if($(this).getCurrentSlide() != 0){
+              event.stopPropagation();
+              event.preventDefault();
+            }
+          }
+          if (deltaY < 0) {
+            $(this).goToNextSlide();
+            if($(this).getCurrentSlide() + 1 < $(this).getSlideCount()){
+              event.stopPropagation();
+              event.preventDefault();
+            }
+          }
+        });
       });
 
       $('.slider-horizontal').each(function() {
@@ -51,6 +67,7 @@
       $(window).bind('resize', function() {
         Drupal.behaviors.show_aspot.slidersSwitch();
       });
+
 
       $('.more-button a').click(function (e) {
         e.preventDefault();

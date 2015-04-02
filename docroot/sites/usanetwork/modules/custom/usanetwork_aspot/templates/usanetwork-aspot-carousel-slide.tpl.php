@@ -39,8 +39,8 @@
       <div class="slide-content">
         <div class="meta-wrap">
           <div class="meta">
-            <div class="new-episode"<?php if (!empty($show_title_prefix_style)): print ' style="' . $show_title_prefix_style . '"'; endif; ?>><?php print $show_title_prefix; ?></div>
-            <div class="show-title"<?php if (!empty($show_title_style)): print ' style="' . $show_title_style . '"'; endif; ?>><?php print $show_title; ?></div>
+            <div class="new-episode"<?php if (!empty($show_title_prefix_style['desktop'])): print ' style="' . $show_title_prefix_style['desktop'] . '"'; endif; ?>><?php print $show_title_prefix; ?></div>
+            <div class="show-title"<?php if (!empty($show_title_style['desktop'])): print ' style="' . $show_title_style['desktop'] . '"'; endif; ?>><?php print $show_title; ?></div>
             <?php if (!empty($show_timer)): ?>
               <div class="show-timer">
                 <div class="start"<?php if (!empty($show_timer['title_prefix_style'])): print ' style="' . $show_timer['title_prefix_style'] . '"'; endif; ?>>
@@ -54,7 +54,7 @@
             <?php endif; ?>
             <?php if (!empty($cta_buttons)): ?>
               <?php foreach ($cta_buttons as $cta_button): ?>
-                <div class="cta-link"<?php if (!empty($cta_button['style'])): print ' style="' . $cta_button['style'] . '"'; endif; ?>>
+                <div class="cta-link"<?php if (!empty($cta_button['style']['desktop'])): print ' style="' . $cta_button['style']['desktop'] . '"'; endif; ?>>
                   <a href="<?php print $cta_button['url']; ?>" class="show-color hover-avail"><?php print $cta_button['text']; ?></a>
                 </div>
               <?php endforeach; ?>

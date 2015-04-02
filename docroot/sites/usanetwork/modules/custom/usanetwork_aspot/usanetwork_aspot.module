@@ -40,6 +40,9 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_height' => 500,
       'bg_offset_image_url' => image_style_url('2500x1094', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri']),
     ),
+    'mobile' => array(
+      'bg_offset_image_url' => image_style_url('640x640', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri']),
+    ),
     'aspot_elements' => array(
       'title_prefix' => array(
         'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title_prefix', $lang, t('Title prefix')),

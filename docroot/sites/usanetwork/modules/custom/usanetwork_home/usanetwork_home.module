@@ -199,6 +199,52 @@ function usanetwork_home_image_default_styles() {
     'label' => '539x303',
   );
 
+  // Exported image style: 460x250.
+  $styles['460x250'] = array(
+    'name' => '460x250',
+    'effects' => array(
+      0 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 460,
+          'height' => 250,
+        ),
+        'weight' => 1,
+      ),
+    ),
+    'label' => '460x250',
+  );
+
+  // Exported image style: 383x144.
+  $styles['383x144'] = array(
+    'name' => '383x144',
+    'effects' => array(
+      0 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 383,
+          'height' => 144,
+        ),
+        'weight' => 1,
+      ),
+    ),
+    'label' => '383x144',
+  );
+
   return $styles;
 }
 
@@ -1266,17 +1312,16 @@ function _usanetwork_home_shows_queue_get_bottom_info_content($show_node_wrapper
 function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
   $show_node = $show_node_wrapper->value();
   $theme_variables = array();
-  $promoted_content_item = array();
-  $episode_dates = array();
 
   if (!empty($show_node->field_tvs_promoted_content)) {
     $promoted_content_item = $show_node_wrapper->field_tvs_promoted_content->value();
-    $episode_dates = $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
+    $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
+    $content_image = usanetwork_core_api_get_content_image('node', $promoted_content_item);
     
     $theme_variables = array(
       'show_class' => usanetwork_tv_shows_color_show_css_class($show_node->nid),
-      'latet_episode_image_url' => !empty($promoted_content_item->field_tvs_promoted_content)
-            ? _usanetwork_home_get_content_default_image($show_node_wrapper->field_tvs_promoted_content)
+      'latet_episode_image_url' => !empty($content_image)
+            ? image_style_url('460x250', $content_image)
             : '',
       'episode_title' => $promoted_content_item->title,
       'episode_url' => url('node/' . $promoted_content_item->nid),
@@ -1334,6 +1379,9 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
     foreach ($show_node_wrapper->field_tvs_promo_items as $promo_wrapper) {
       $promo = $promo_wrapper->value();
       $icon_type = '';
+      $image_file = !empty($promo->field_promo_regular_image)
+        ? file_load($promo_wrapper->field_promo_regular_image->file->fid->value())
+        : '';
 
       if (!empty($promo->field_call_to_action_type)) {
         $cta_type = $promo_wrapper->field_call_to_action_type->value();
@@ -1352,12 +1400,12 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
         'episode_url' => !empty($promo->field_promo_link)
           ? url($promo_wrapper->field_promo_link->url->value())
           : '',
-        'image_url' => $promo_wrapper->field_promo_regular_image->file->url->value(),
+        'image_url' => !empty($image_file) ? image_style_url('383x144', $image_file->uri) : '',
         'topic' => !empty($promo->field_promo_topic) ? $promo_wrapper->field_promo_topic->value() : '',
         'violator' => !empty($promo->field_promo_violator_name) ? $promo_wrapper->field_promo_violator_name->value() : '',
         'icon_type' => $icon_type,
       );
-
+      
       $output_array[] = theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);
     }
   }

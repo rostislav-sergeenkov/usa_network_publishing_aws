@@ -56,7 +56,8 @@ function usanetwork_aspot_field_group_info() {
       0 => 'field_show',
       1 => 'field_usa_aspot_link',
       2 => 'field_target',
-      3 => 'title',
+      3 => 'field_aspot_linked_content',
+      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -191,15 +192,15 @@ function usanetwork_aspot_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-spot UI',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_aspot_enabled_gi',
       1 => 'field_aspot_gi_title',
       2 => 'field_aspot_gi_title_prefix',
-      3 => 'field_aspot_gi_draggable_data',
-      4 => 'field_aspot_gi_cta',
-      5 => 'group_usa_aspot_ui_desktop',
-      6 => 'group_usa_aspot_ui_mobile',
+      3 => 'field_aspot_preview_bg_offset',
+      4 => 'field_aspot_gi_draggable_data',
+      5 => 'field_aspot_gi_cta',
+      6 => 'group_usa_aspot_ui_desktop',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

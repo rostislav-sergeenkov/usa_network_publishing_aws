@@ -41,9 +41,6 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_image_url' => image_style_url('2500x1094', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri']),
     ),
     'mobile' => array(
-      'bg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_mbg_offset', $lang, 0),
-      'bg_offset_width' => 370,
-      'bg_offset_height' => 500,
       'bg_offset_image_url' => image_style_url('640x640', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri']),
     ),
     'aspot_elements' => array(
@@ -236,7 +233,6 @@ function usanetwork_aspot_theme() {
         'show_title' => NULL,
         'show_title_style' => NULL,
         'show_image_bg_offset' => NULL,
-        'show_image_mbg_offset' => NULL,
         'cta_buttons' => array(
           0 => array(
             'url' => NULL,
@@ -508,9 +504,6 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
         : false,
     'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
       ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
-      : '',
-    'show_image_mbg_offset' => !empty($aspot_node->field_aspot_preview_mbg_offset)
-      ? $aspot_node_wrapper->field_aspot_preview_mbg_offset->value()
       : '',
     'show_draggable_data' => !empty($aspot_node->field_aspot_gi_draggable_data)
       ? $aspot_node_wrapper->field_aspot_gi_draggable_data->value()

@@ -20,7 +20,7 @@ function usanetwork_tv_shows_menu() {
 
   // Ajax callback for loading more items.
   $items['ajax/usanetwork-tv-shows/get-related/%node/%/%'] = array(
-    'title' => t('Related content'),
+    'title' => 'Related content',
     'page callback' => 'usanetwork_tv_shows_get_related_content_ajax',
     'page arguments' => array(3, 4, 5),
     'access arguments' => array('access content'),
@@ -28,7 +28,7 @@ function usanetwork_tv_shows_menu() {
   );
 
   $items['admin/usanetwork/settings/shows'] = array(
-    'title' => t('Show settings'),
+    'title' => 'Show settings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('usanetwork_tv_shows_related_content_cache_form'),
     'access arguments' => array('access administration pages'),

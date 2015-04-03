@@ -20,7 +20,7 @@ function usanetwork_permission() {
 function usanetwork_menu() {
   // admin pages
   $items['admin/usanetwork'] = array(
-    'title' => t('USA Network'),
+    'title' => 'USA Network',
     'description' => t('Administer USA Network specific settings and content.'),
     'page callback' => 'system_admin_menu_block_page',
     'access arguments' => array('access administration pages'),
@@ -30,7 +30,7 @@ function usanetwork_menu() {
     'weight' => -14,
   );
   $items['admin/usanetwork/settings'] = array(
-    'title' => t('General Settings'),
+    'title' => 'General Settings',
     'description' => t('Administer USA Network settings.'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('usanetwork_settings_form'),
@@ -39,13 +39,13 @@ function usanetwork_menu() {
   );
 
   $items['admin/usanetwork/settings/global'] = array(
-    'title' => t('Globals'),
+    'title' => 'Globals',
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => -10
   );
 
   $items['admin/usanetwork/shows'] = array(
-    'title' => t('Administer USA Shows'),
+    'title' => 'Administer USA Shows',
     'description' => t('Administer USA Network show specific items.'),
     'access arguments' => array('administer usanetwork'),
     'page callback' => 'system_admin_menu_block_page',

@@ -240,6 +240,14 @@ function usanetwork_blocks_image_default_styles() {
     'label' => t('Usanetwork footer: promo link image'),
     'effects' => array(
       0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 48,
+          'height' => 48,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'effect callback' => 'image_scale_and_crop_effect',
         'dimensions callback' => 'image_resize_dimensions',
@@ -259,12 +267,20 @@ function usanetwork_blocks_image_default_styles() {
   $styles['390x390'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 390,
           'height' => 390,
         ),
         'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 390,
+          'height' => 390,
+        ),
+        'weight' => 1,
       ),
     ),
   );

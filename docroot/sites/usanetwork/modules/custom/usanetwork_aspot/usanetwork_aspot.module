@@ -263,6 +263,14 @@ function usanetwork_aspot_image_default_styles() {
     'name' => '2500x1094',
     'label' => '2500x1094',
     'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 2500,
+          'height' => 1094,
+        ),
+        'weight' => 0,
+      ),
       1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
@@ -286,7 +294,15 @@ function usanetwork_aspot_image_default_styles() {
     'name' => '1024x448',
     'label' => '1024x448',
     'effects' => array(
-      3 => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1024,
+          'height' => 448,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -309,7 +325,15 @@ function usanetwork_aspot_image_default_styles() {
     'name' => '2048x896',
     'label' => '2048x896',
     'effects' => array(
-      4 => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 2048,
+          'height' => 896,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -332,7 +356,15 @@ function usanetwork_aspot_image_default_styles() {
     'name' => '640x640',
     'label' => '640x640',
     'effects' => array(
-      5 => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 640,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -355,7 +387,15 @@ function usanetwork_aspot_image_default_styles() {
     'name' => '1280x1280',
     'label' => '1280x1280',
     'effects' => array(
-      6 => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 1280,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',

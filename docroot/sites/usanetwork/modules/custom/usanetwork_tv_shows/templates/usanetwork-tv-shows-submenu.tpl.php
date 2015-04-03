@@ -11,19 +11,8 @@
     </div>
     <div class="show-menu-tab">
       <ul class="show-menu menu">
-        <?php
-        $i = 0;
-        foreach ($show_menu_tab_items as $show_menu_tab_item): ?>
-          <li class="<?php if (isset($show_menu_tab_item['child']) && count($show_menu_tab_item['child']) > 0): ?>expanded<?php endif; ?>"><?php print $show_menu_tab_item['main_link']; ?>
-            <?php if (isset($show_menu_tab_item['child']) && $show_menu_tab_item['child']): ?>
-              <ul class="menu<?php if ($i == 0): ?> active<?php endif; ?>">
-                <?php foreach ($show_menu_tab_item['child'] as $show_menu_tab_item_child): ?>
-                  <li><?php print $show_menu_tab_item_child; ?></li>
-                <?php endforeach; ?>
-              </ul>
-            <?php endif; ?>
-          </li>
-          <?php $i++; ?>
+        <?php foreach ($show_menu_tab_items as $show_menu_tab_item): ?>
+          <li><?php print $show_menu_tab_item['main_link']; ?></li>
         <?php endforeach; ?>
       </ul>
     </div>

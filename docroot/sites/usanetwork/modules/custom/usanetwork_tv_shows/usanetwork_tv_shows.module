@@ -27,6 +27,14 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['admin/usanetwork/settings/shows'] = array(
+    'title' => 'Show settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_tv_shows_related_content_cache_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_LOCAL_TASK,
+  );
+
   return $items;
 }
 
@@ -200,12 +208,20 @@ function usanetwork_tv_shows_image_default_styles() {
   $styles['634x349'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 634,
           'height' => 349,
         ),
         'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 634,
+          'height' => 349,
+        ),
+        'weight' => 1,
       ),
     ),
   );
@@ -213,84 +229,140 @@ function usanetwork_tv_shows_image_default_styles() {
   $styles['928x714'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 928,
           'height' => 714,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 928,
+          'height' => 714,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['457x351'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 457,
           'height' => 351,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 457,
+          'height' => 351,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['431x350'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 431,
           'height' => 350,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 431,
+          'height' => 350,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['921x488'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 921,
           'height' => 488,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 921,
+          'height' => 488,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['921x1003'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 921,
           'height' => 1003,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 921,
+          'height' => 1003,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['291x234'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 291,
           'height' => 234,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 291,
+          'height' => 234,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['591x330'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 591,
           'height' => 330,
         ),
         'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 291,
+          'height' => 478,
+        ),
+        'weight' => 1,
       ),
     ),
   );
@@ -427,9 +499,11 @@ function usanetwork_tv_shows_entity_insert($entity) {
 }
 
 /**
- *  Implements hook_form_FORM_ID_alter().
+ *  Implements form for cached related data of show.
  */
-function usanetwork_tv_shows_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+function usanetwork_tv_shows_related_content_cache_form($form, &$form_state) {
+  $form = array();
+
   $form['tvshows_related_data'] = array(
     '#type' => 'fieldset',
     '#title' => t('TV Shows related content settings'),
@@ -479,15 +553,16 @@ function usanetwork_tv_shows_form_usanetwork_settings_form_alter(&$form, &$form_
       );
     }
 
-    // Rebuild cache of related content of TV Show node
-    $form['#submit'][] = 'usanetwork_tv_shows_form_usanetwork_settings_form_submit';
+    $form['#submit'][] = 'usanetwork_tv_shows_related_content_cache_form_submit';
   }
+
+  return system_settings_form($form);
 }
 
 /**
- * Submit callback of 'usanetwork_tv_shows_form_usanetwork_settings_form_alter'.
+ * Submit callback of 'usanetwork_tv_shows_related_content_cache_form'.
  */
-function usanetwork_tv_shows_form_usanetwork_settings_form_submit(&$form, &$form_state) {
+function usanetwork_tv_shows_related_content_cache_form_submit(&$form, &$form_state) {
   foreach ($form_state['values'] as $setting_name => $setting_value) {
     $matches = array();
 
@@ -1014,13 +1089,6 @@ function _usanetwork_tv_shows_submenu() {
   if ($promo_menu_links) {
     foreach ($promo_menu_links as $key => $link) {
       $show_menu_item = entity_load('field_collection_item', array($link['value']));
-      $show_menu_item_child = field_get_items('field_collection_item', reset($show_menu_item), 'field_child_link');
-      if ($show_menu_item_child) {
-        $show_menus[$key]['child'] = array();
-        foreach ($show_menu_item_child as $child_link) {
-          $show_menus[$key]['child'][] = l($child_link['title'], $child_link['url']);
-        }
-      }
       $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
       if ($show_menu_item_main_link) {
         $show_menus[$key]['main_link'] = l(drupal_ucfirst($show_menu_item_main_link[0]['title']), $show_menu_item_main_link[0]['url']);

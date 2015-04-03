@@ -121,12 +121,12 @@ function usanetwork_quiz_field_group_info() {
       3 => 'field_promo_topic',
       4 => 'field_promo_long_description',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-promo-details field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),

@@ -20,11 +20,19 @@ function usanetwork_tv_shows_menu() {
 
   // Ajax callback for loading more items.
   $items['ajax/usanetwork-tv-shows/get-related/%node/%/%'] = array(
-    'title' => 'Related content',
+    'title' => t('Related content'),
     'page callback' => 'usanetwork_tv_shows_get_related_content_ajax',
     'page arguments' => array(3, 4, 5),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/usanetwork/settings/shows'] = array(
+    'title' => t('Show settings'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_tv_shows_related_content_cache_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_LOCAL_TASK,
   );
 
   return $items;
@@ -437,9 +445,11 @@ function usanetwork_tv_shows_entity_insert($entity) {
 }
 
 /**
- *  Implements hook_form_FORM_ID_alter().
+ *  Implements form for cached related data of show.
  */
-function usanetwork_tv_shows_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+function usanetwork_tv_shows_related_content_cache_form($form, &$form_state) {
+  $form = array();
+
   $form['tvshows_related_data'] = array(
     '#type' => 'fieldset',
     '#title' => t('TV Shows related content settings'),
@@ -489,15 +499,16 @@ function usanetwork_tv_shows_form_usanetwork_settings_form_alter(&$form, &$form_
       );
     }
 
-    // Rebuild cache of related content of TV Show node
-    $form['#submit'][] = 'usanetwork_tv_shows_form_usanetwork_settings_form_submit';
+    $form['#submit'][] = 'usanetwork_tv_shows_related_content_cache_form_submit';
   }
+
+  return system_settings_form($form);
 }
 
 /**
- * Submit callback of 'usanetwork_tv_shows_form_usanetwork_settings_form_alter'.
+ * Submit callback of 'usanetwork_tv_shows_related_content_cache_form'.
  */
-function usanetwork_tv_shows_form_usanetwork_settings_form_submit(&$form, &$form_state) {
+function usanetwork_tv_shows_related_content_cache_form_submit(&$form, &$form_state) {
   foreach ($form_state['values'] as $setting_name => $setting_value) {
     $matches = array();
 

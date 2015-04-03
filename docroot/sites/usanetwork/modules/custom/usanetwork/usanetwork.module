@@ -37,6 +37,13 @@ function usanetwork_menu() {
     'access arguments' => array('administer usanetwork'),
     'file' => 'usanetwork.admin.inc',
   );
+
+  $items['admin/usanetwork/settings/global'] = array(
+    'title' => t('Globals'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10
+  );
+
   $items['admin/usanetwork/shows'] = array(
     'title' => t('Administer USA Shows'),
     'description' => t('Administer USA Network show specific items.'),

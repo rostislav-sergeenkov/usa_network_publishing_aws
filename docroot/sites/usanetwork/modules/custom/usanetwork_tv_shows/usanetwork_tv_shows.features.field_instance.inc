@@ -11295,12 +11295,10 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 131,
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'usanetwork_dynamic_entity_reference_label',
+        'weight' => 176,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -11309,12 +11307,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11346,27 +11338,17 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'div',
     'field_name' => 'field_tvs_promoted_content',
     'label' => 'Promoted content',
-    'required' => 0,
+    'required' => FALSE,
     'settings' => array(
+      'handler' => 'default',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-          'preview_type' => 'target',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
+      'module' => 'usanetwork_dynamic_entity_reference',
+      'settings' => array(),
+      'type' => 'usanetwork_dynamic_entity_reference_default',
       'weight' => 15,
     ),
   );

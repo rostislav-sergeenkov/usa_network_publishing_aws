@@ -19,9 +19,9 @@
             <?php if (!empty($episode_title)): ?>
               <div class="title"><?php print $episode_title; ?></div>
             <?php endif; ?>
-            <?php if (!empty($episode_duration) && !empty($episode_duration)): ?>
+            <?php if (!empty($episode_description)): ?>
               <div class="additional">
-                <span><?php print t('Latest full episode'); ?></span><?php print $episode_duration; ?>
+                <?php print $episode_description; ?>
               </div>
             <?php endif; ?>
           </div>

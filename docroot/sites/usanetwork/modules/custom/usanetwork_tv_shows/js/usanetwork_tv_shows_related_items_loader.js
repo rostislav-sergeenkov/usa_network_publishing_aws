@@ -11,15 +11,21 @@
        */
 
       $('.show-latest-block .load-more-link a').click(function(){
+        if ($(this).hasClass('disabled')){
+          return false;
+        }
+        $(this).addClass('disabled');
         var limit = 5;
-        var node_id = Drupal.settings.usanetwork_tv_show_nid;
-        var url = Drupal.settings.basePath + 'ajax/usanetwork-tv-shows/get-related/'+ node_id +'/5/'+ limit;
+        var number_ul = $('.show-latest-block > ul').length;
+        var start_from = limit*number_ul;
+        var url = Drupal.settings.basePath + 'ajax/usanetwork-tv-shows/get-related/'+ Drupal.settings.usanetwork_tv_show_nid +'/'+ start_from +'/'+ limit;
         $.ajax({
           type: 'GET',
           url: url,
           dataType: 'json',
           success: function (data) {
-            console.info(data);
+            $('.show-latest-block .load-more-link').before(data.rendered);
+            $('.show-latest-block .load-more-link a').removeClass('disabled');
           },
           error: function () {
             console.info('error');

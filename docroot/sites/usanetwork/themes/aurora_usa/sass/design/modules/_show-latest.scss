@@ -11,7 +11,7 @@
   }
   ul {
     @include clear();
-    margin: 40px 0 0;
+    margin: 0;
     padding: 0;
     position: relative;
     width: 100%;
@@ -85,6 +85,11 @@
                 width: 100%;
               }
             }
+            &:nth-child(2) {
+              @include breakpoint($bp-640-width) {
+                margin-right: 1.6%;
+              }
+            }
           }
         }
         &.last {
@@ -117,6 +122,24 @@
         position: relative;
         width: 100%;
       }
+    }
+  }
+  .latest-ad {
+    background: $video-promo-back-gray;
+    height: 90px;
+    margin: 16px auto;
+    width: 728px;
+    @include breakpoint($bp-768-width) {
+      height: auto;
+      min-height: 50px;
+      max-height: 90px;
+      max-width: 728px;
+      width: 100%;
+    }
+    @include breakpoint($bp-640-width) {
+      height: 50px;
+      margin: 1.47vw auto;
+      width: 300px;
     }
   }
   .load-more-link {

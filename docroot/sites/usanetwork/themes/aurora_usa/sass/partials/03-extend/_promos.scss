@@ -1037,6 +1037,38 @@
           }
         }
       }
+      .meta-icon {
+        @include breakpoint($bp-640-width) {
+          height: 42px;
+          margin-top: -21px;
+          width: 42px;
+          &:before {
+            font-size: 24px;
+            height: 42px;
+            line-height: 42px;
+            width: 42px;
+          }
+        }
+        @include breakpoint($bp-480-width) {
+          height: 30px;
+          margin-top: -15px;
+          width: 30px;
+          &:before {
+            font-size: 16px;
+            height: 30px;
+            line-height: 30px;
+            width: 30px;
+          }
+        }
+        ~ .meta {
+          @include breakpoint($bp-640-width) {
+            padding-left: calc(8% + 42px);
+          }
+          @include breakpoint($bp-480-width) {
+            padding-left: calc(8% + 30px);
+          }
+        }
+      }
     }
     .meta-wrapper {
       background: $video-promo-back-gray;

@@ -1963,6 +1963,42 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     line-height: 13px;
   }
 }
+@media (max-width: 640px) {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon {
+    height: 42px;
+    margin-top: -21px;
+    width: 42px;
+  }
+  .show-latest-block ul li .show-latest-promo.big .meta-icon:before {
+    font-size: 24px;
+    height: 42px;
+    line-height: 42px;
+    width: 42px;
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon {
+    height: 30px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .show-latest-block ul li .show-latest-promo.big .meta-icon:before {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon ~ .meta {
+    padding-left: calc(8% + 42px);
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon ~ .meta {
+    padding-left: calc(8% + 30px);
+  }
+}
 .show-latest-block ul li .show-latest-promo .meta-wrapper {
   background: #656364;
   bottom: 0;
@@ -7619,7 +7655,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: table;
 }
 .best-of-block ul {
-  margin: 40px 0 0;
+  margin: 0;
   padding: 0;
   position: relative;
   width: 100%;
@@ -7693,7 +7729,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .show-latest-block ul {
-  margin: 40px 0 0;
+  margin: 0;
   padding: 0;
   position: relative;
   width: 100%;
@@ -7775,6 +7811,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     width: 100%;
   }
 }
+@media (max-width: 640px) {
+  .show-latest-block ul.even li.first > div:nth-child(2) {
+    margin-right: 1.6%;
+  }
+}
 .show-latest-block ul.even li.last > div {
   float: left;
   height: 25.4vw;
@@ -7801,6 +7842,28 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+.show-latest-block .latest-ad {
+  background: #656364;
+  height: 90px;
+  margin: 16px auto;
+  width: 728px;
+}
+@media (max-width: 768px) {
+  .show-latest-block .latest-ad {
+    height: auto;
+    min-height: 50px;
+    max-height: 90px;
+    max-width: 728px;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .show-latest-block .latest-ad {
+    height: 50px;
+    margin: 1.47vw auto;
+    width: 300px;
+  }
 }
 .show-latest-block .load-more-link {
   bottom: -50px;
@@ -13524,7 +13587,7 @@ footer h2 {
 }
 
 .section-title {
-  margin: 0;
+  margin: 0 0 40px;
   position: relative;
   text-align: center;
 }

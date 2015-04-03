@@ -24,7 +24,7 @@ function usanetwork_tv_shows_menu() {
     'page callback' => 'usanetwork_tv_shows_get_related_content_ajax',
     'page arguments' => array(3, 4, 5),
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -246,18 +246,6 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
-  $styles['212x172'] = array(
-    'effects' => array(
-      array(
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 212,
-          'height' => 172,
-        ),
-        'weight' => 0,
-      ),
-    ),
-  );
   $styles['921x488'] = array(
     'effects' => array(
       array(
@@ -294,13 +282,13 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
-  $styles['291x478'] = array(
+  $styles['591x330'] = array(
     'effects' => array(
       array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 291,
-          'height' => 478,
+          'width' => 591,
+          'height' => 330,
         ),
         'weight' => 0,
       ),
@@ -1236,7 +1224,8 @@ function _usanetwork_tv_shows_related_content_block() {
 /**
  * AJAX callback for getting related content of show.
  */
-function _usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
+
+function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
 
   $response = array(
     'found' => FALSE,
@@ -1324,8 +1313,8 @@ function _usanetwork_tv_shows_render_best_of_block() {
           'image' => array(
             'mobile' => !empty($promo_image_url)
               ? ($is_first
-                ? image_style_url('431x350', $promo_image_url)
-                : image_style_url('212x172', $promo_image_url)
+                ? image_style_url('591x330', $promo_image_url)
+                : image_style_url('291x234', $promo_image_url)
               )
               : NULL,
             'desktop' => !empty($promo_image_url)
@@ -1404,7 +1393,7 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
       : image_style_url('921x488', $data->raw_image_uri);
 
     $mobile_image = $is_big
-      ? image_style_url('291x478', $data->raw_image_uri)
+      ? image_style_url('591x330', $data->raw_image_uri)
       : image_style_url('291x234', $data->raw_image_uri);
   }
 

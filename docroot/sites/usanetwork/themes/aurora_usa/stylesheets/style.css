@@ -1768,22 +1768,32 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 100%;
 }
 .best-of-block ul li.first .three-line-video-large .meta-wrapper {
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=0 );
   bottom: 0;
   height: 25%;
   position: absolute;
   width: 100%;
   z-index: 1;
 }
+@media (min-width: 641px) {
+  .best-of-block ul li.first .three-line-video-large .meta-wrapper {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=0 );
+  }
+}
 @media (min-width: 769px) {
   .best-of-block ul li.first .three-line-video-large .meta-wrapper {
     height: 9.1vw;
+  }
+}
+@media (max-width: 640px) {
+  .best-of-block ul li.first .three-line-video-large .meta-wrapper {
+    background: #656364;
+    height: 29%;
   }
 }
 .best-of-block ul li.first .three-line-video-large .meta-wrapper-inner {
@@ -1911,6 +1921,47 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 .show-latest-block ul li .show-latest-promo .asset-img img {
   height: 100%;
   width: 100%;
+}
+@media (max-width: 640px) {
+  .show-latest-block ul li .show-latest-promo.big .meta-wrapper {
+    height: 29%;
+  }
+}
+@media (max-width: 640px) {
+  .show-latest-block ul li .show-latest-promo.big .meta .caption {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block ul li .show-latest-promo.big .meta .caption {
+    font-size: 10px;
+    line-height: 13px;
+  }
+}
+@media (max-width: 640px) {
+  .show-latest-block ul li .show-latest-promo.big .meta .title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block ul li .show-latest-promo.big .meta .title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 640px) {
+  .show-latest-block ul li .show-latest-promo.big .meta .additional {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block ul li .show-latest-promo.big .meta .additional {
+    font-size: 10px;
+    line-height: 13px;
+  }
 }
 .show-latest-block ul li .show-latest-promo .meta-wrapper {
   background: #656364;
@@ -7593,7 +7644,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 768px) {
   .best-of-block ul li.first {
-    margin-bottom: 1.6%;
+    margin-bottom: 1.47vw;
+  }
+}
+@media (max-width: 640px) {
+  .best-of-block ul li.first {
+    height: 51.6vw;
   }
 }
 .best-of-block ul li > div {
@@ -7647,9 +7703,14 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   content: '';
   display: table;
 }
-.show-latest-block ul.odd li.first > div {
-  height: 25.4vw;
+.show-latest-block ul.odd li.first {
   margin-bottom: 1.47vw;
+}
+.show-latest-block ul.odd li.first > div {
+  float: left;
+  height: 25.4vw;
+  margin-right: 1.6%;
+  width: 49.2%;
 }
 @media (max-width: 640px) {
   .show-latest-block ul.odd li.first > div {
@@ -7657,29 +7718,46 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .show-latest-block ul.odd li.first > div:last-child {
-  margin-bottom: 0;
+  margin-right: 0;
 }
 .show-latest-block ul.odd li.last > div {
+  float: left;
   height: 25.4vw;
-  margin-bottom: 1.47vw;
+  width: 49.2%;
 }
 @media (max-width: 640px) {
   .show-latest-block ul.odd li.last > div {
     height: 36.6vw;
+    margin-bottom: 1.47vw;
+  }
+  .show-latest-block ul.odd li.last > div:first-child {
+    margin-right: 1.6%;
+  }
+}
+@media (min-width: 641px) {
+  .show-latest-block ul.odd li.last > div:nth-child(2) {
+    left: 0;
+    position: absolute;
+    top: 26.87vw;
   }
 }
 .show-latest-block ul.odd li.last > div:last-child {
+  float: right;
   height: 52.27vw;
-  margin-bottom: 0;
 }
 @media (max-width: 640px) {
   .show-latest-block ul.odd li.last > div:last-child {
-    height: 74.67vw;
+    height: 51.6vw;
+    float: none;
+    margin-bottom: 0;
+    width: 100%;
   }
 }
 .show-latest-block ul.even li.first > div {
+  float: left;
   height: 25.4vw;
-  margin-bottom: 0;
+  margin-bottom: 1.47vw;
+  width: 49.2%;
 }
 @media (max-width: 640px) {
   .show-latest-block ul.even li.first > div {
@@ -7688,16 +7766,20 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .show-latest-block ul.even li.first > div:first-child {
   height: 52.27vw;
-  margin-bottom: 1.47vw;
+  margin-right: 1.6%;
 }
 @media (max-width: 640px) {
   .show-latest-block ul.even li.first > div:first-child {
-    height: 74.67vw;
+    height: 51.6vw;
+    margin-right: 0;
+    width: 100%;
   }
 }
 .show-latest-block ul.even li.last > div {
+  float: left;
   height: 25.4vw;
-  margin-bottom: 1.47vw;
+  margin-right: 1.6%;
+  width: 49.2%;
 }
 @media (max-width: 640px) {
   .show-latest-block ul.even li.last > div {
@@ -7705,23 +7787,20 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .show-latest-block ul.even li.last > div:last-child {
-  margin-bottom: 0;
+  margin-right: 0;
 }
 .show-latest-block ul li {
   float: left;
   height: auto;
   overflow: hidden;
   position: relative;
-  width: 49.2%;
+  width: 100%;
 }
 .show-latest-block ul li > div {
   height: 100%;
   overflow: hidden;
   position: relative;
   width: 100%;
-}
-.show-latest-block ul li:nth-child(2), .show-latest-block ul li .last {
-  float: right;
 }
 .show-latest-block .load-more-link {
   bottom: -50px;

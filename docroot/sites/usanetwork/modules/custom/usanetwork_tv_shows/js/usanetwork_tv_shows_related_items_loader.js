@@ -11,8 +11,9 @@
        */
 
       $('.show-latest-block .load-more-link a').click(function(){
+        var limit = 5;
         var node_id = Drupal.settings.usanetwork_tv_show_nid;
-        var url = Drupal.settings.basePath + 'ajax/usanetwork-tv-shows/get-related/'+ node_id +'/4/5';
+        var url = Drupal.settings.basePath + 'ajax/usanetwork-tv-shows/get-related/'+ node_id +'/5/'+ limit;
         $.ajax({
           type: 'GET',
           url: url,

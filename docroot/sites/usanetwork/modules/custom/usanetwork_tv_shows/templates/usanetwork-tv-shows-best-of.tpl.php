@@ -30,7 +30,7 @@
               <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
             <?php endif; ?>
             <?php if (!empty($promo['image']['desktop'])): ?>
-              <div data-media="(min-width: 481px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
+              <div data-media="(min-width: 641px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
               <!--[if (IE 8) & (!IEMobile)]>
               <div data-src="<?php print $promo['image']['desktop']; ?>"></div>
               <![endif]-->
@@ -64,7 +64,7 @@
                   <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
                 <?php endif; ?>
                 <?php if (!empty($promo['image']['desktop'])): ?>
-                  <div data-media="(min-width: 481px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
+                  <div data-media="(min-width: 641px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
                   <!--[if (IE 8) & (!IEMobile)]>
                   <div data-src="<?php print $promo['image']['desktop']; ?>"></div>
                   <![endif]-->

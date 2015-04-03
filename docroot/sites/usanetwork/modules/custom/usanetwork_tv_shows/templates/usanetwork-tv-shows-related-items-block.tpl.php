@@ -17,7 +17,7 @@
           <li class="first">
         <?php endif; ?>
         <?php print $related_item; ?>
-        <?php if ($i == 2): ?>
+        <?php if ($i == 3): ?>
           </li>
           <li class="last">
         <?php endif; ?>
@@ -30,7 +30,7 @@
           <li class="first">
         <?php endif; ?>
         <?php print $related_item; ?>
-        <?php if ($i == 3): ?>
+        <?php if ($i == 2): ?>
           </li>
           <li class="last">
         <?php endif; ?>

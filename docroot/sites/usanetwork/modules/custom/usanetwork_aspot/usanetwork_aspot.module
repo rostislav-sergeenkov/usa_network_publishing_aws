@@ -542,6 +542,11 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
           'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->title),
           'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->title))
         : false,
+    'social_meter_style' => isset($draggable_data->social_meter)
+        ? array(
+          'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->social_meter),
+          'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->social_meter))
+        : false,
     'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
       ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
       : '',

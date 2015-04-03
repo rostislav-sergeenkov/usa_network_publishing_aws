@@ -1107,13 +1107,6 @@ function _usanetwork_tv_shows_submenu() {
   if ($promo_menu_links) {
     foreach ($promo_menu_links as $key => $link) {
       $show_menu_item = entity_load('field_collection_item', array($link['value']));
-      $show_menu_item_child = field_get_items('field_collection_item', reset($show_menu_item), 'field_child_link');
-      if ($show_menu_item_child) {
-        $show_menus[$key]['child'] = array();
-        foreach ($show_menu_item_child as $child_link) {
-          $show_menus[$key]['child'][] = l($child_link['title'], $child_link['url']);
-        }
-      }
       $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
       if ($show_menu_item_main_link) {
         $show_menus[$key]['main_link'] = l(drupal_ucfirst($show_menu_item_main_link[0]['title']), $show_menu_item_main_link[0]['url']);

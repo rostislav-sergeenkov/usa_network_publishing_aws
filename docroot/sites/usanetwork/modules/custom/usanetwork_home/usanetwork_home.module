@@ -220,6 +220,14 @@ function usanetwork_home_image_default_styles() {
     'name' => '460x250',
     'effects' => array(
       0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 460,
+          'height' => 250,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -243,6 +251,14 @@ function usanetwork_home_image_default_styles() {
     'name' => '383x144',
     'effects' => array(
       0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 383,
+          'height' => 144,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -1228,7 +1244,6 @@ function _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper) {
     $tune_in_date = $show_node_wrapper->field_usa_tv_tune_in_date->value();
   }
 
-  $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
 
   $theme_variables = array(
     'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
@@ -1283,16 +1298,16 @@ function _usanetwork_home_shows_queue_get_top_info_content($show_node_wrapper) {
   $show_node = $show_node_wrapper->value();
   $episode_dates = array();
 
-  if (!empty($show_node->field_tvs_promoted_content)) {
+ /* if (!empty($show_node->field_tvs_promoted_content)) {
     $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
-  }
+  }*/
 
   $theme_variables = array(
     'show_title' => $show_node_wrapper->title->value(),
-    'schedule_day' => !empty($episode_dates['start_date']) ? date('D', $episode_dates['start_date'])
+  /*  'schedule_day' => !empty($episode_dates['start_date']) ? date('D', $episode_dates['start_date'])
           : '',
     'schedule_time' => !empty($episode_dates['start_date']) ? date('h:i A', $episode_dates['start_date'])
-          : '',
+          : '',*/
   );
 
   return theme('usanetwork_home_shows_queue_top_info', $theme_variables);
@@ -1328,22 +1343,36 @@ function _usanetwork_home_shows_queue_get_bottom_info_content($show_node_wrapper
 function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
   $show_node = $show_node_wrapper->value();
   $theme_variables = array();
+  $promo = field_get_items('node', $show_node, 'field_tvs_promoted_content');
+  if (!empty($promo)) {
+    $promo = reset($promo);
+    $promo_entity = entity_load($promo['target_type'], array($promo['target_id']));
+    if (empty($promo_entity)) {
+      return '';
+    }
+    $promo_entity = reset($promo_entity);
 
-  if (!empty($show_node->field_tvs_promoted_content)) {
-    $promoted_content_item = $show_node_wrapper->field_tvs_promoted_content->value();
-    $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
-    $content_image = usanetwork_core_api_get_content_image('node', $promoted_content_item);
-    
+    switch ($promo['target_type']) {
+      case 'node':
+        $promo_data = _usanetwork_promo_pull_node_promo_details($promo_entity);
+        break;
+      case 'file':
+        $promo_data = _usanetwork_promo_pull_file_promo_details($promo_entity);
+        break;
+    }
+    if (empty($promo_data)) {
+      return '';
+    }
+    $content_image = usanetwork_core_api_get_content_image($promo['target_type'], $promo_entity);
+    $promo_link = url($promo['target_type'] . '/' . $promo['target_id']);
     $theme_variables = array(
-      'show_class' => usanetwork_tv_shows_color_show_css_class($show_node->nid),
+      'show_class' => $promo_data['show_class'],
       'latet_episode_image_url' => !empty($content_image)
             ? image_style_url('460x250', $content_image)
             : '',
-      'episode_title' => $promoted_content_item->title,
-      'episode_url' => url('node/' . $promoted_content_item->nid),
-      'episode_duration' => !empty($episode_dates['duration']) ? ($episode_dates['duration'] >= 3600
-                ? gmdate('H:i:s', $episode_dates['duration']) : gmdate('i:s', $episode_dates['duration'])
-          ) : '',
+      'episode_title' => $promo_data['promo_title'],
+      'episode_url' => $promo_link,
+      'episode_description' => $promo_data['description'],
     );
   }
 

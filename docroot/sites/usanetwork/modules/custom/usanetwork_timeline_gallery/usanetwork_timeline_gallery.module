@@ -1,0 +1,8 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_timeline_gallery feature.
+ */
+
+include_once 'usanetwork_timeline_gallery.features.inc';
+

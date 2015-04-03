@@ -1464,12 +1464,22 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 .shows-block .show-info-block .show-bottom-info ul li .show-inner .asset-img {
   bottom: 0;
   height: 45%;
+  overflow: hidden;
   position: absolute;
   width: 100%;
 }
 .shows-block .show-info-block .show-bottom-info ul li .show-inner .asset-img img {
   height: 100%;
   width: 100%;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .asset-img img {
+    left: 50%;
+    margin-left: -134.5px;
+    max-width: 269px;
+    position: absolute;
+    width: 269px;
+  }
 }
 .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta-wrapper {
   background: #3a3a3a;

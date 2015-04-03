@@ -612,11 +612,19 @@
     .asset-img {
       bottom: 0;
       height: 45%;
+      overflow: hidden;
       position: absolute;
       width: 100%;
       img {
         height: 100%;
         width: 100%;
+        @include breakpoint($between-1025-1280) {
+          left: 50%;
+          margin-left: -134.5px;
+          max-width: 269px;
+          position: absolute;
+          width: 269px;
+        }
       }
     }
     .meta-wrapper {

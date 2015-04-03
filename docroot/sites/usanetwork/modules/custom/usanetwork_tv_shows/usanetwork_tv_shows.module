@@ -24,7 +24,7 @@ function usanetwork_tv_shows_menu() {
     'page callback' => 'usanetwork_tv_shows_get_related_content_ajax',
     'page arguments' => array(3, 4, 5),
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -1234,7 +1234,7 @@ function _usanetwork_tv_shows_related_content_block() {
 /**
  * AJAX callback for getting related content of show.
  */
-function _usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
+function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
   $response = array(
     'found' => FALSE,
     'total' => 0,

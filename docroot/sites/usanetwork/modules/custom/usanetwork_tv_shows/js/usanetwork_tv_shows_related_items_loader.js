@@ -9,6 +9,23 @@
        * %start_from - number of items that must be ignored from the beginning
        * %limit - number of items that must be pulled
        */
+
+      $('.show-latest-block .load-more-link a').click(function(){
+        var node_id = Drupal.settings.usanetwork_tv_show_nid;
+        var url = Drupal.settings.basePath + 'ajax/usanetwork-tv-shows/get-related/'+ node_id +'/4/5';
+        $.ajax({
+          type: 'GET',
+          url: url,
+          dataType: 'json',
+          success: function (data) {
+            console.info(data);
+          },
+          error: function () {
+            console.info('error');
+          }
+        });
+
+      });
     }
   }
 })(jQuery);

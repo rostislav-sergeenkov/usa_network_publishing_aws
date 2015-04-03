@@ -55,7 +55,7 @@ function usanetwork_timeline_gallery_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_cover_item',
-      2 => 'field_media_items',
+      2 => 'field_tmeline_episode_section',
       3 => 'title',
     ),
     'format_type' => 'tab',
@@ -111,9 +111,9 @@ function usanetwork_timeline_gallery_field_group_info() {
     'label' => 'SEO',
     'weight' => '3',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_seo_h1',
-      2 => 'field_seo_page_title',
+      0 => 'field_seo_h1',
+      1 => 'field_seo_page_title',
+      2 => 'field_usa_og_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -140,9 +140,8 @@ function usanetwork_timeline_gallery_field_group_info() {
     'label' => 'Show relationships',
     'weight' => '23',
     'children' => array(
-      0 => 'field_episode',
-      1 => 'field_season',
-      2 => 'field_show',
+      0 => 'field_season',
+      1 => 'field_show',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -197,8 +196,8 @@ function usanetwork_timeline_gallery_field_group_info() {
     'label' => 'USA Custom',
     'weight' => '2',
     'children' => array(
-      0 => 'field_person',
-      1 => 'field_gallery_type',
+      0 => 'field_gallery_type',
+      1 => 'field_person',
       2 => 'group_show_rels',
     ),
     'format_type' => 'tab',

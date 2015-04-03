@@ -198,12 +198,20 @@ function usanetwork_tv_shows_image_default_styles() {
   $styles['634x349'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 634,
           'height' => 349,
         ),
         'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 634,
+          'height' => 349,
+        ),
+        'weight' => 1,
       ),
     ),
   );
@@ -211,96 +219,160 @@ function usanetwork_tv_shows_image_default_styles() {
   $styles['928x714'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 928,
           'height' => 714,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 928,
+          'height' => 714,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['457x351'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 457,
           'height' => 351,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 457,
+          'height' => 351,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['431x350'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 431,
           'height' => 350,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 431,
+          'height' => 350,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['212x172'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 212,
           'height' => 172,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 212,
+          'height' => 172,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['921x488'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 921,
           'height' => 488,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 921,
+          'height' => 488,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['921x1003'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 921,
           'height' => 1003,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 921,
+          'height' => 1003,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['291x234'] = array(
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 291,
           'height' => 234,
         ),
         'weight' => 0,
       ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 291,
+          'height' => 234,
+        ),
+        'weight' => 1,
+      ),
     ),
   );
   $styles['291x478'] = array(
     'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 291,
+          'height' => 478,
+        ),
+        'weight' => 0,
+      ),
       array(
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 291,
           'height' => 478,
         ),
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
   );

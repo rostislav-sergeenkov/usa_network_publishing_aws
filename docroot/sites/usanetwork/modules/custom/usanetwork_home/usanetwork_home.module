@@ -158,6 +158,14 @@ function usanetwork_home_image_default_styles() {
     'name' => '757x628',
     'effects' => array(
       0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 757,
+          'height' => 628,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -170,7 +178,7 @@ function usanetwork_home_image_default_styles() {
           'width' => 757,
           'height' => 628,
         ),
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'label' => '757x628',
@@ -181,6 +189,14 @@ function usanetwork_home_image_default_styles() {
     'name' => '539x303',
     'effects' => array(
       0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 539,
+          'height' => 303,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',

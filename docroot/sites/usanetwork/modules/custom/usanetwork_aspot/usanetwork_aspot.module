@@ -38,10 +38,27 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_bg_offset', $lang, 0),
       'bg_offset_width' => 370,
       'bg_offset_height' => 500,
-      'bg_offset_image_url' => image_style_url('2500x1094', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri']),
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('2500x1094', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
+        : '',
     ),
     'mobile' => array(
-      'bg_offset_image_url' => image_style_url('640x640', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri']),
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x640', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
+        : '',
+    ),
+    'tvs_desktop' => array(
+      'bg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_tbg_offset', $lang, 0),
+      'bg_offset_width' => 370,
+      'bg_offset_height' => 500,
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('2490x1418', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        : '',
+    ),
+    'tvs_mobile' => array(
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x640', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        : '',
     ),
     'aspot_elements' => array(
       'title_prefix' => array(
@@ -49,6 +66,17 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       ),
       'title' => array(
         'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title', $lang, $form_state['node']->title),
+      ),
+      'social_meter' => array(
+        'value' => t('Social Meter'),
+      ),
+    ),
+    'tvs_aspot_elements' => array(
+      'title_prefix' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_title_prefix', $lang, t('Title prefix')),
+      ),
+      'title' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_title', $lang, $form_state['node']->title),
       ),
       'social_meter' => array(
         'value' => t('Social Meter'),
@@ -62,12 +90,22 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       if (isset($previewing_settings['aspot_elements'][$element_name]['value'])) {
         $element->value = $previewing_settings['aspot_elements'][$element_name]['value'];
       }
-      $previewing_settings['aspot_elements'][$element_name] = _usanetwork_aspot_fill_draggable_ui_settings_element($element);
-      $previewing_settings['aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_gi, $lang, $element_name);
+
+      if (isset($previewing_settings['tvs_aspot_elements'][$element_name]['value'])) {
+        $element->value = $previewing_settings['tvs_aspot_elements'][$element_name]['value'];
+      }
+
+      $previewing_settings['tvs_aspot_elements'][$element_name] = _usanetwork_aspot_fill_draggable_ui_settings_element($element);
+      $previewing_settings['tvs_aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_tgi, $lang, $element_name);
     }
   }
+
   if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
     _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_state['node'], $lang, $previewing_settings['aspot_elements']);
+  }
+
+  if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
+    _usanetwork_aspot_get_tvs_ui_draggable_cta_buttons_count($form_state['node'], $lang, $previewing_settings['tvs_aspot_elements']);
   }
 
   // Adding states to form
@@ -76,6 +114,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
     '#type' => 'hidden',
     '#value' => '',
   );
+
   $form['#attached']['js'][] = libraries_get_path('draggable_background') . '/draggable_background.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot.giui.js';
   $form['#attached']['js'][] = array(
@@ -84,6 +123,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
     ),
     'type' => 'setting',
   );
+
   $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_aspot') . '/css/usanetwork_aspot.main.css';
   $form['#validate'][] = 'usanetwork_aspot_validate';
   $form['#submit'][] = 'usanetwork_aspot_submit_draggable_ui_items_submit';
@@ -248,6 +288,14 @@ function usanetwork_aspot_theme() {
         'slides' => array(),
       ),
       'template' => 'templates/usanetwork-aspot-carousel',
+    ),
+    'usanetwork_aspot_tvshow_slide' => array(
+      'variables' => array(),
+      'template' => 'templates/usanetwork-aspot-tvshow-slide',
+    ),
+    'usanetwork_aspot_tvshow_carousel' => array(
+      'variables' => array(),
+      'template' => 'templates/usanetwork-aspot-tvshow-carousel',
     ),
   );
 }
@@ -627,6 +675,27 @@ function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $dragg
     }
   }
 
+  if (!empty($aspot_node_wrapper) && !empty($aspot_node->field_aspot_tgi_cta)) {
+    $cta_index = 0;
+
+    foreach ($aspot_node_wrapper->field_aspot_tgi_cta as $cta_wrapper_element) {
+      $cta_draggable_name = 'cta_button_' . $cta_index;
+
+      if (!empty($draggable_data->$cta_draggable_name)) {
+        $cta_buttons_theme_data[$cta_index] = array(
+          'url' => $cta_wrapper_element->url->value(),
+          'text' => $cta_wrapper_element->title->value(),
+          'style' => array(
+            'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->$cta_draggable_name),
+            'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->$cta_draggable_name)
+          )
+        );
+      }
+
+      $cta_index++;
+    }
+  }
+
   return $cta_buttons_theme_data;
 }
 
@@ -772,11 +841,56 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
 }
 
 /**
+ * Fills call to action buttons with multiple items supporting.
+ */
+function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $language, &$aspot_elements) {
+  if (isset($form_node->field_aspot_tgi_cta[$language]) && !empty($form_node->field_aspot_tgi_cta[$language])) {
+    $cta_buttons = $form_node->field_aspot_tgi_cta[$language];
+
+    foreach ($cta_buttons as $cta_button_index => $cta_button) {
+      $new_button_id = 'cta_button_' . $cta_button_index;
+      $new_button_title = 'CTA ' . $cta_button['title'];
+      $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_tgi, $language, 'cta_button');
+
+      if (isset($aspot_elements[$new_button_id])) {
+        $aspot_elements[$new_button_id]['value'] = $new_button_title;
+        $aspot_elements[$new_button_id]['enabled'] = $new_button_enabled;
+      }
+      else {
+        $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
+          'value' => 'CTA ' . $new_button_title,
+          'enabled' => $new_button_enabled,
+          'percentX' => 'auto',
+          'percentY' => 'auto',
+          'invertX' => NULL,
+          'invertY' => NULL,
+          'percentMX' => 'auto',
+          'percentMY' => 'auto',
+          'invertMX' => NULL,
+          'invertMY' => NULL,
+        ));
+      }
+    }
+  }
+}
+
+/**
  * Returns number of CTA buttons that are presented in administrative panel.
  */
 function _usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_node, $language) {
   if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
     return count($form_node->field_aspot_gi_cta[$language]);
+  }
+
+  return 0;
+}
+
+/**
+ * Returns number of CTA buttons that are presented in administrative panel.
+ */
+function _usanetwork_aspot_get_tvs_ui_draggable_cta_buttons_count($form_node, $language) {
+  if (isset($form_node->field_aspot_tgi_cta[$language]) && !empty($form_node->field_aspot_tgi_cta[$language])) {
+    return count($form_node->field_aspot_tgi_cta[$language]);
   }
 
   return 0;
@@ -810,6 +924,24 @@ function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
       'altering_element' => 'field_aspot_gi_cta',
       'state_name' => 'visible',
       'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'cta_button',
+    ),
+    'field_aspot_tgi_title_prefix' => array(
+      'altering_element' => 'field_aspot_tgi_title_prefix',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_tgi',
+      'field_item_name' => 'title_prefix',
+    ),
+    'field_aspot_tgi_title' => array(
+      'altering_element' => 'field_aspot_tgi_title',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_tgi',
+      'field_item_name' => 'title',
+    ),
+    'field_aspot_tgi_cta' => array(
+      'altering_element' => 'field_aspot_tgi_cta',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_tgi',
       'field_item_name' => 'cta_button',
     ),
   );

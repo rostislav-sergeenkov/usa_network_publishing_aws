@@ -897,25 +897,6 @@ input.echo-submit-text {
 
 /* show landing page social */
 
-
-.social-panel {
-  &.inner-wrapper {
-    margin-top:42px;
-    .panel-col1 {
-      @extend %two-to-one-col-social-content-no-sidebar;
-    }
-    .panel-col2 {
-      width: 100%;
-    }
-    &.panel-two-cols .panel-col2 {
-      @extend %two-to-one-col-social-sidebar;
-    }
-  }
-  &.panel-two-cols .panel-col1 {
-    @extend %two-to-one-col-social-content-sidebar;
-  }
-}
-
 #usanetwork_social_show_homepage_chatter {
   background-color: $gray-dark;
 }

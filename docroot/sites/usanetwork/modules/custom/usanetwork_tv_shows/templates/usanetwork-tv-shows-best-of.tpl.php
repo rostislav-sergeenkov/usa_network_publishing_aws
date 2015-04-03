@@ -5,7 +5,7 @@
 ?>
 <div class="best-of-block show-border">
   <h2 class="section-title">
-    <span class="section-title-wrapper show-border secondary">Best of chrisley</span>
+    <span class="section-title-wrapper show-border secondary"><?php print (!empty($title))? $title: t('Best of'); ?></span>
   </h2>
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
@@ -30,7 +30,7 @@
               <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
             <?php endif; ?>
             <?php if (!empty($promo['image']['desktop'])): ?>
-              <div data-media="(min-width: 481px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
+              <div data-media="(min-width: 641px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
               <!--[if (IE 8) & (!IEMobile)]>
               <div data-src="<?php print $promo['image']['desktop']; ?>"></div>
               <![endif]-->
@@ -64,7 +64,7 @@
                   <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
                 <?php endif; ?>
                 <?php if (!empty($promo['image']['desktop'])): ?>
-                  <div data-media="(min-width: 481px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
+                  <div data-media="(min-width: 641px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
                   <!--[if (IE 8) & (!IEMobile)]>
                   <div data-src="<?php print $promo['image']['desktop']; ?>"></div>
                   <![endif]-->
@@ -82,3 +82,4 @@
       <?php endif; ?>
       <?php endif; ?>
 </div>
+

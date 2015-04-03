@@ -1812,6 +1812,12 @@ function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
   return $node;
 }
 
+function usanetwork_microsite_html_head_alter(&$head_elements) {
+  if (isset($head_elements['microsite_og:title']) && isset($head_elements['metatag_og:title'])) {
+    unset($head_elements['metatag_og:title']);
+  }
+}
+
 /**
  * Implements hook_preprocess_html
  * The following is needed for robots that crawl the page,
@@ -1852,6 +1858,15 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           ),
         );
         drupal_add_html_head($tag_card, 'microsite_home:image');
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => _usanetwork_microsite_get_default_h1($node, $section_type),
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_og:title');
       }
       break;
     case 'videos':
@@ -1910,7 +1925,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           'content' => $file_video->filename,
          ),
       );
-      drupal_add_html_head($tag_title, 'microsite_video:title');
+      drupal_add_html_head($tag_title, 'microsite_og:title');
       break;
     case 'characters':
       $head_title = t('Characters | ' . $title . ' | USA Network');
@@ -1980,7 +1995,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
             'content' => $person_name,
           ),
         );
-        drupal_add_html_head($tag_title, 'microsite_character:title');
+        drupal_add_html_head($tag_title, 'microsite_og:title');
       }
       break;
     case 'galleries':
@@ -2018,7 +2033,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
             'content' => $gallery_node->title,
           ),
         );
-        drupal_add_html_head($tag_title, 'microsite_galleries:title');
+        drupal_add_html_head($tag_title, 'microsite_og:title');
       }
       break;
     case 'episodes':
@@ -2061,7 +2076,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
             'content' => $episode_title,
           ),
         );
-        drupal_add_html_head($tag_title, 'microsite_episode:title');
+        drupal_add_html_head($tag_title, 'microsite_og:title');
       }
       break;
     case 'about':
@@ -2086,10 +2101,10 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         '#tag' => 'meta',
         '#attributes' => array(
           'property' => 'og:title',
-          'content' => $section_wrapper->field_ms_section_title->value(),
+          'content' => _usanetwork_microsite_get_default_h1($node, $section_type),
         ),
       );
-      drupal_add_html_head($tag_title, 'microsite_about:title');
+      drupal_add_html_head($tag_title, 'microsite_og:title');
       break;
     case 'games':
       //@todo we can use function for code from below and in other section
@@ -2130,7 +2145,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           'content' => $title,
         ),
       );
-      drupal_add_html_head($tag_title, 'microsite_episode:title');
+      drupal_add_html_head($tag_title, 'microsite_og:title');
       break;
     case 'quizzes':
       //@todo we can use function for code from below and in other section
@@ -2171,7 +2186,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           'content' => $title,
         ),
       );
-      drupal_add_html_head($tag_title, 'microsite_episode:title');
+      drupal_add_html_head($tag_title, 'microsite_og:title');
       break;
     default:
       $head_title = t($title . ' | USA Network');

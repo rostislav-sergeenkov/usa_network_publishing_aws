@@ -43,11 +43,10 @@
                     <?php if (!empty($promo['description'])): ?>
                       <div class="additional"><?php print $promo['description']; ?></div>
                     <?php endif; ?>
-                    <?php if (!empty($promo['cta'])): ?>
-                      <div class="meta-button show-color tertiary <?php print !empty($promo['color_class']) ? $promo['color_class'] : ''; ?>"><?php print $promo['cta']; ?></div>
-                    <?php endif; ?>
-
                   </div>
+                  <?php if (!empty($promo['cta'])): ?>
+                    <div class="meta-button show-color tertiary <?php print !empty($promo['color_class']) ? $promo['color_class'] : ''; ?>"><?php print $promo['cta']; ?></div>
+                  <?php endif; ?>
                 </div>
                 <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'play-icon'; ?> resize-avail-1024"></div>
               </a>

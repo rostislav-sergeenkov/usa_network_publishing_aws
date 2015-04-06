@@ -142,25 +142,4 @@
       width: 300px;
     }
   }
-  .load-more-link {
-    bottom: -50px;
-    position: absolute;
-    text-align: center;
-    width: calc(100% - 32px);
-    @include breakpoint($bp-min-1901-width) {
-      bottom: -100px;
-    }
-    a {
-      border-bottom: 2px solid $poll-color;
-      color: $poll-color;
-      font-family: $tex-gyreschola-italic;
-      font-size: 16px;
-      padding-bottom: 3px;
-      text-transform: uppercase;
-      @include breakpoint($bp-min-1901-width) {
-        font-size: 30px;
-        padding-bottom: 4px;
-      }
-    }
-  }
 }

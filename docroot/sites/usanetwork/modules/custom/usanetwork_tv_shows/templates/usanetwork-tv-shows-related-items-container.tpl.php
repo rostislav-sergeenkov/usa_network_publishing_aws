@@ -12,6 +12,6 @@
     <?php print $related_items_block; ?>
   <?php endif; ?>
   <?php if (!empty($load_more_link)): ?>
-    <div class="load-more-link"><a><?php print t('Load more'); ?></a></div>
+    <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>
   <?php endif; ?>
 </div>

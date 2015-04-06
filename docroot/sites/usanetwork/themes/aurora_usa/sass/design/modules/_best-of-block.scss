@@ -8,7 +8,7 @@
   width: 100%;
   ul {
     @include clear();
-    margin: 40px 0 0;
+    margin: 0;
     padding: 0;
     position: relative;
     width: 100%;
@@ -26,7 +26,10 @@
         @extend %three-line-video-promo-large;
         @extend %meta;
         @include breakpoint($bp-768-width) {
-          margin-bottom: 1.6%;
+          margin-bottom: 1.47vw;
+        }
+        @include breakpoint($bp-640-width) {
+          height: 51.6vw;
         }
       }
       > div {

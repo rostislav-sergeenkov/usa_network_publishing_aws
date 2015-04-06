@@ -9,17 +9,18 @@ include_once 'usanetwork_aspot.features.inc';
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_state, $form_id) {
+function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_state, $form_id)
+{
   $lang = $form['language']['#value'];
   $form['field_mp4_video_url']['#states'] = array(
-    'visible' => array(
-      ":input[name=\"field_animated_a_spot[$lang]\"]" => array('checked' => TRUE),
-    ),
+      'visible' => array(
+          ":input[name=\"field_animated_a_spot[$lang]\"]" => array('checked' => TRUE),
+      ),
   );
   $form['field_webm_video_url']['#states'] = array(
-    'visible' => array(
-      ":input[name=\"field_animated_a_spot[$lang]\"]" => array('checked' => TRUE),
-    ),
+      'visible' => array(
+          ":input[name=\"field_animated_a_spot[$lang]\"]" => array('checked' => TRUE),
+      ),
   );
   $airdate = NULL;
   $show_nid = _usanetwork_aspot_get_show_nid($form_state['node']);
@@ -64,11 +65,19 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'title_prefix' => array(
         'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title_prefix', $lang, t('Title prefix')),
       ),
-      'title' => array(
-        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title', $lang, $form_state['node']->title),
+      'mobile' => array(
+          'bg_offset_image_url' => image_style_url('640x640', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri']),
       ),
-      'social_meter' => array(
-        'value' => t('Social Meter'),
+      'aspot_elements' => array(
+          'title_prefix' => array(
+              'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title_prefix', $lang, t('Title prefix')),
+          ),
+          'title' => array(
+              'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title', $lang, $form_state['node']->title),
+          ),
+          'social_meter' => array(
+              'value' => t('Social Meter'),
+          ),
       ),
     ),
     'tvs_aspot_elements' => array(
@@ -111,17 +120,17 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
   // Adding states to form
   _usanetwork_aspot_form_add_draggable_elements_states($form, $lang);
   $form['aspot_draggable_items_data'] = array(
-    '#type' => 'hidden',
-    '#value' => '',
+      '#type' => 'hidden',
+      '#value' => '',
   );
 
   $form['#attached']['js'][] = libraries_get_path('draggable_background') . '/draggable_background.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot.giui.js';
   $form['#attached']['js'][] = array(
-    'data' => array(
-      'giui_settings' => $previewing_settings
-    ),
-    'type' => 'setting',
+      'data' => array(
+          'giui_settings' => $previewing_settings
+      ),
+      'type' => 'setting',
   );
 
   $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_aspot') . '/css/usanetwork_aspot.main.css';
@@ -132,7 +141,8 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
 /**
  * Implements hook_validate().
  */
-function usanetwork_aspot_validate(&$form, &$form_state) {
+function usanetwork_aspot_validate(&$form, &$form_state)
+{
   $lang = $form['language']['#value'];
   if (isset($form_state['values']['field_animated_a_spot'][$lang][0]['value']) && $form_state['values']['field_animated_a_spot'][$lang][0]['value'] == 1) {
     if (isset($form_state['values']['field_mp4_video_url'][$lang][0]['value']) && $form_state['values']['field_mp4_video_url'][$lang][0]['value'] == '') {
@@ -153,14 +163,15 @@ function usanetwork_aspot_validate(&$form, &$form_state) {
 /**
  * Implements submitting callback for A-Spot page settings.
  */
-function usanetwork_aspot_submit_draggable_ui_items_submit(&$form, &$form_state) {
+function usanetwork_aspot_submit_draggable_ui_items_submit(&$form, &$form_state)
+{
   $form_language = isset($form_state['values']['language'])
-    ? $form_state['values']['language']
-    : LANGUAGE_NONE;
+      ? $form_state['values']['language']
+      : LANGUAGE_NONE;
 
   $draggable_items_data = !empty($form_state['input']['aspot_draggable_items_data'])
-    ? $form_state['input']['aspot_draggable_items_data']
-    : array();
+      ? $form_state['input']['aspot_draggable_items_data']
+      : array();
 
   $form_state['values']['field_aspot_gi_draggable_data'][$form_language][0]['value'] = $draggable_items_data;
 }
@@ -168,7 +179,8 @@ function usanetwork_aspot_submit_draggable_ui_items_submit(&$form, &$form_state)
 /**
  * Implements hook_preprocess_node().
  */
-function usanetwork_aspot_preprocess_node(&$vars) {
+function usanetwork_aspot_preprocess_node(&$vars)
+{
   if ($vars['type'] == 'usa_homepage') {
     $lang = $vars['language'];
     if (isset($vars['field_usa_hp_arefs'])) {
@@ -184,7 +196,7 @@ function usanetwork_aspot_preprocess_node(&$vars) {
   if ($vars['type'] == 'usanetwork_aspot') {
     $vars['image_alt'] = '';
     $node_wrapper = entity_metadata_wrapper('node', $vars['node']);
-    if(!empty($vars['node']->field_usa_aspot_desktop)) {
+    if (!empty($vars['node']->field_usa_aspot_desktop)) {
       $image_file = $node_wrapper->field_usa_aspot_desktop->value();
       $image_alt = $image_file['alt'];
       $vars['image_alt'] = $image_alt;
@@ -198,9 +210,9 @@ function usanetwork_aspot_preprocess_node(&$vars) {
         $mp4_url = $vars['field_mp4_video_url'][$lang][0]['value']; // @todo use $node_wrapper
         $webm_url = $vars['field_webm_video_url'][$lang][0]['value'];
         $aspot_settings = array(
-          'show' => $show,
-          'mp4_url' => $mp4_url,
-          'webm_url' => $webm_url
+            'show' => $show,
+            'mp4_url' => $mp4_url,
+            'webm_url' => $webm_url
         );
         drupal_add_js(array('aspotSettings' => $aspot_settings), 'setting');
       }
@@ -211,13 +223,14 @@ function usanetwork_aspot_preprocess_node(&$vars) {
 /**
  * Implements hook_block_info().
  */
-function usanetwork_aspot_block_info() {
+function usanetwork_aspot_block_info()
+{
   $blocks = array();
 
   // Looks like this block only for testing.
   $blocks['usanetwork_aspot_carousel'] = array(
-    'info' => t('ASpot: carousel'),
-    'cache' => DRUPAL_NO_CACHE, // @TODO: change to cacheable
+      'info' => t('ASpot: carousel'),
+      'cache' => DRUPAL_NO_CACHE, // @TODO: change to cacheable
   );
 
   return $blocks;
@@ -226,7 +239,8 @@ function usanetwork_aspot_block_info() {
 /**
  * Implements hook_block_view().
  */
-function usanetwork_aspot_block_view($delta = '') {
+function usanetwork_aspot_block_view($delta = '')
+{
   $block = array();
 
   switch ($delta) {
@@ -234,16 +248,17 @@ function usanetwork_aspot_block_view($delta = '') {
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
       $block['content'] = array(
-        '#markup' => _usanetwork_aspot_carousel_block(),
-        '#attached' => array(
-          'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/matchmedia.js',
-            path_to_theme('aurora_usa') . '/javascripts/picturefill.js',
-            path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
-            path_to_theme('aurora_usa') . '/javascripts/jquery.easing.1.3.js',
-            path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',
+          '#markup' => _usanetwork_aspot_carousel_block(),
+          '#attached' => array(
+              'js' => array(
+                  path_to_theme('aurora_usa') . '/javascripts/matchmedia.js',
+                  path_to_theme('aurora_usa') . '/javascripts/picturefill.js',
+                  path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
+                  path_to_theme('aurora_usa') . '/javascripts/jquery.easing.1.3.js',
+                  path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',
+                  drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
+              ),
           ),
-        ),
       );
       break;
   }
@@ -254,38 +269,41 @@ function usanetwork_aspot_block_view($delta = '') {
 /**
  * Implements hook_theme().
  */
-function usanetwork_aspot_theme() {
+function usanetwork_aspot_theme()
+{
   return array(
-    'usanetwork_aspot_carousel_slide' => array(
-      'variables' => array(
-        'show_url' => NULL,
-        'show_class' => NULL,
-        'show_poster' => array(
-          'mobile' => NULL,
-          'mobile_retina' => NULL,
-          'tablet' => NULL,
-          'tablet_retina' => NULL,
-          'desktop' => NULL,
-          'desktop_retina' => NULL,
-        ),
-        'show_title_prefix' => NULL,
-        'show_title_prefix_style' => NULL,
-        'show_title' => NULL,
-        'show_title_style' => NULL,
-        'show_image_bg_offset' => NULL,
-        'cta_buttons' => array(
-          0 => array(
-            'url' => NULL,
-            'text' => NULL,
+      'usanetwork_aspot_carousel_slide' => array(
+          'variables' => array(
+              'show_url' => NULL,
+              'show_class' => NULL,
+              'show_poster' => array(
+                  'mobile' => NULL,
+                  'mobile_retina' => NULL,
+                  'tablet' => NULL,
+                  'tablet_retina' => NULL,
+                  'desktop' => NULL,
+                  'desktop_retina' => NULL,
+              ),
+              'show_title_prefix' => NULL,
+              'show_title_prefix_style' => NULL,
+              'show_title' => NULL,
+              'show_title_style' => NULL,
+              'show_image_bg_offset' => NULL,
+              'cta_buttons' => array(
+                  0 => array(
+                      'url' => NULL,
+                      'text' => NULL,
+                  ),
+              ),
+              'social_meter' => array(),
           ),
-        ),
-        'social_meter' => array(),
+          'template' => 'templates/usanetwork-aspot-carousel-slide',
       ),
-      'template' => 'templates/usanetwork-aspot-carousel-slide',
-    ),
-    'usanetwork_aspot_carousel' => array(
-      'variables' => array(
-        'slides' => array(),
+      'usanetwork_aspot_carousel' => array(
+          'variables' => array(
+              'slides' => array(),
+          ),
+          'template' => 'templates/usanetwork-aspot-carousel',
       ),
       'template' => 'templates/usanetwork-aspot-carousel',
     ),
@@ -318,183 +336,184 @@ function usanetwork_aspot_theme() {
 /**
  * Implements hook_image_default_styles().
  */
-function usanetwork_aspot_image_default_styles() {
+function usanetwork_aspot_image_default_styles()
+{
   $styles = array();
 
   // Exported image style: Desktop 2500x1094.
   $styles['2500x1094'] = array(
-    'name' => '2500x1094',
-    'label' => '2500x1094',
-    'effects' => array(
-      0 => array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 2500,
-          'height' => 1094,
-        ),
-        'weight' => 0,
+      'name' => '2500x1094',
+      'label' => '2500x1094',
+      'effects' => array(
+          0 => array(
+              'name' => 'focal_point_scale_and_crop',
+              'data' => array(
+                  'width' => 2500,
+                  'height' => 1094,
+              ),
+              'weight' => 0,
+          ),
+          1 => array(
+              'label' => 'Scale and crop',
+              'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+              'effect callback' => 'image_scale_and_crop_effect',
+              'dimensions callback' => 'image_resize_dimensions',
+              'form callback' => 'image_resize_form',
+              'summary theme' => 'image_resize_summary',
+              'module' => 'image',
+              'name' => 'image_scale_and_crop',
+              'data' => array(
+                  'width' => 2500,
+                  'height' => 1094,
+              ),
+              'weight' => 1,
+          ),
       ),
-      1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 2500,
-          'height' => 1094,
-        ),
-        'weight' => 1,
-      ),
-    ),
   );
 
   // Exported image style: Tablet 1024px x 448px.
   $styles['1024x448'] = array(
-    'name' => '1024x448',
-    'label' => '1024x448',
-    'effects' => array(
-      0 => array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 1024,
-          'height' => 448,
-        ),
-        'weight' => 0,
+      'name' => '1024x448',
+      'label' => '1024x448',
+      'effects' => array(
+          0 => array(
+              'name' => 'focal_point_scale_and_crop',
+              'data' => array(
+                  'width' => 1024,
+                  'height' => 448,
+              ),
+              'weight' => 0,
+          ),
+          1 => array(
+              'label' => 'Scale and crop',
+              'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+              'effect callback' => 'image_scale_and_crop_effect',
+              'dimensions callback' => 'image_resize_dimensions',
+              'form callback' => 'image_resize_form',
+              'summary theme' => 'image_resize_summary',
+              'module' => 'image',
+              'name' => 'image_scale_and_crop',
+              'data' => array(
+                  'width' => 1024,
+                  'height' => 448,
+              ),
+              'weight' => 1,
+          ),
       ),
-      1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 1024,
-          'height' => 448,
-        ),
-        'weight' => 1,
-      ),
-    ),
   );
 
   // Exported image style: Tablet retina 2048x896.
   $styles['2048x896'] = array(
-    'name' => '2048x896',
-    'label' => '2048x896',
-    'effects' => array(
-      0 => array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 2048,
-          'height' => 896,
-        ),
-        'weight' => 0,
+      'name' => '2048x896',
+      'label' => '2048x896',
+      'effects' => array(
+          0 => array(
+              'name' => 'focal_point_scale_and_crop',
+              'data' => array(
+                  'width' => 2048,
+                  'height' => 896,
+              ),
+              'weight' => 0,
+          ),
+          1 => array(
+              'label' => 'Scale and crop',
+              'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+              'effect callback' => 'image_scale_and_crop_effect',
+              'dimensions callback' => 'image_resize_dimensions',
+              'form callback' => 'image_resize_form',
+              'summary theme' => 'image_resize_summary',
+              'module' => 'image',
+              'name' => 'image_scale_and_crop',
+              'data' => array(
+                  'width' => 2048,
+                  'height' => 896,
+              ),
+              'weight' => 1,
+          ),
       ),
-      1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 2048,
-          'height' => 896,
-        ),
-        'weight' => 1,
-      ),
-    ),
   );
 
   // Exported image style: Mobile 640x640.
   $styles['640x640'] = array(
-    'name' => '640x640',
-    'label' => '640x640',
-    'effects' => array(
-      0 => array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 640,
-          'height' => 640,
-        ),
-        'weight' => 0,
+      'name' => '640x640',
+      'label' => '640x640',
+      'effects' => array(
+          0 => array(
+              'name' => 'focal_point_scale_and_crop',
+              'data' => array(
+                  'width' => 640,
+                  'height' => 640,
+              ),
+              'weight' => 0,
+          ),
+          1 => array(
+              'label' => 'Scale and crop',
+              'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+              'effect callback' => 'image_scale_and_crop_effect',
+              'dimensions callback' => 'image_resize_dimensions',
+              'form callback' => 'image_resize_form',
+              'summary theme' => 'image_resize_summary',
+              'module' => 'image',
+              'name' => 'image_scale_and_crop',
+              'data' => array(
+                  'width' => 640,
+                  'height' => 640,
+              ),
+              'weight' => 1,
+          ),
       ),
-      1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 640,
-          'height' => 640,
-        ),
-        'weight' => 1,
-      ),
-    ),
   );
 
   // Exported image style: Mobile retina 1280x1280.
   $styles['1280x1280'] = array(
-    'name' => '1280x1280',
-    'label' => '1280x1280',
-    'effects' => array(
-      0 => array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 1280,
-          'height' => 1280,
-        ),
-        'weight' => 0,
+      'name' => '1280x1280',
+      'label' => '1280x1280',
+      'effects' => array(
+          0 => array(
+              'name' => 'focal_point_scale_and_crop',
+              'data' => array(
+                  'width' => 1280,
+                  'height' => 1280,
+              ),
+              'weight' => 0,
+          ),
+          1 => array(
+              'label' => 'Scale and crop',
+              'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+              'effect callback' => 'image_scale_and_crop_effect',
+              'dimensions callback' => 'image_resize_dimensions',
+              'form callback' => 'image_resize_form',
+              'summary theme' => 'image_resize_summary',
+              'module' => 'image',
+              'name' => 'image_scale_and_crop',
+              'data' => array(
+                  'width' => 1280,
+                  'height' => 1280,
+              ),
+              'weight' => 1,
+          ),
       ),
-      1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 1280,
-          'height' => 1280,
-        ),
-        'weight' => 1,
-      ),
-    ),
   );
 
   return $styles;
 }
 
-function usanetwork_aspot_aspot_settings($aspot_array, $lang) {
+function usanetwork_aspot_aspot_settings($aspot_array, $lang)
+{
   foreach ($aspot_array as $aspot) {
     $node = node_load($aspot['target_id']);
     if ($node->field_animated_a_spot[$lang][0]['value']) {
       if (drupal_is_front_page()) {
         $show = 'home';
-      }
-      else {
+      } else {
         $show = drupal_get_path_alias();
       }
       $mp4_url = $node->field_mp4_video_url[$lang][0]['value'];
       $webm_url = $node->field_webm_video_url[$lang][0]['value'];
       $aspot_settings = array(
-        'show' => $show,
-        'mp4_url' => $mp4_url,
-        'webm_url' => $webm_url
+          'show' => $show,
+          'mp4_url' => $mp4_url,
+          'webm_url' => $webm_url
       );
       drupal_add_js(array('aspotSettings' => $aspot_settings), 'setting');
       break(1);
@@ -502,7 +521,8 @@ function usanetwork_aspot_aspot_settings($aspot_array, $lang) {
   }
 }
 
-function _usanetwork_aspot_carousel_block() {
+function _usanetwork_aspot_carousel_block()
+{
   if (arg(0) && arg(0) == 'admin') {
     return '';
   }
@@ -525,8 +545,8 @@ function _usanetwork_aspot_carousel_block() {
     $slide_autoscroll = reset(field_get_items('node', $homepage_node, 'field_usa_autoscroll'));
     $slide_autoscroll = !empty($slide_autoscroll['value']) ? $slide_autoscroll['value'] : 0;
     $js_settings = array(
-      'slideshowAutoplay' => $slide_autoscroll,
-      'slideshowSpeed' => $slide_speed
+        'slideshowAutoplay' => $slide_autoscroll,
+        'slideshowSpeed' => $slide_speed
     );
     drupal_add_js(array('sliderAspot' => $js_settings), array('type' => 'setting'));
     foreach ($carousel_nodes as $carousel_node) {
@@ -541,7 +561,8 @@ function _usanetwork_aspot_carousel_block() {
   return '';
 }
 
-function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
+function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node)
+{
   $enabled_elements = array();
   $draggable_data = array();
   $banner_images = array();
@@ -568,8 +589,7 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   if (!empty($aspot_node->field_usa_aspot_mobile)) {
     $file = file_load($aspot_node_wrapper->field_usa_aspot_mobile->file->fid->value());
     $banner_images['mobile'] = $file->uri;
-  }
-  else {
+  } else {
     // Preventing situation when mobile image is empty. Filling it with desktop
     $banner_images['mobile'] = $banner_images['desktop'];
   }
@@ -577,8 +597,7 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   if (!empty($aspot_node->field_usa_aspot_tablet_portrait)) {
     $file = file_load($aspot_node_wrapper->field_usa_aspot_tablet_portrait->file->fid->value());
     $banner_images['tablet'] = $file->uri;
-  }
-  else {
+  } else {
     // Preventing situation when tablet image is empty. Filling it with desktop
     $banner_images['tablet'] = $banner_images['desktop'];
   }
@@ -605,6 +624,11 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
           'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->title),
           'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->title))
         : false,
+    'social_meter_style' => isset($draggable_data->social_meter)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->social_meter),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->social_meter))
+      : false,
     'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
       ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
       : '',
@@ -613,11 +637,11 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
       : '',
   );
   if (!empty($aspot_node->field_aspot_gi_title_prefix)) {
-    $value =  $aspot_node_wrapper->field_aspot_gi_title_prefix->value();
+    $value = $aspot_node_wrapper->field_aspot_gi_title_prefix->value();
     $theme_array['show_title_prefix'] = $value['value'];
   }
   if (!empty($aspot_node->field_aspot_gi_title)) {
-    $value =  $aspot_node_wrapper->field_aspot_gi_title->value();
+    $value = $aspot_node_wrapper->field_aspot_gi_title->value();
     $theme_array['show_title'] = $value['value'];
   }
 
@@ -747,7 +771,7 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
 
 function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
 
-  $output = 'position: relative; ';
+  $output = 'position: absolute; ';
   $output .= 'top: ';
   $output .= isset($draggable_data_element->percentX) ? $draggable_data_element->percentX . '%; ' : 'auto; ';
   $output .= 'left: ';
@@ -755,9 +779,10 @@ function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
   return $output;
 }
 
-function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_element) {
+function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_element)
+{
 
-  $output = 'position: relative; ';
+  $output = 'position: absolute; ';
   $output .= 'top: ';
   $output .= isset($draggable_data_element->percentMX) ? $draggable_data_element->percentMX . '%; ' : 'auto; ';
   $output .= 'left: ';
@@ -765,7 +790,8 @@ function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_eleme
   return $output;
 }
 
-function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data) {
+function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data)
+{
   $cta_buttons_theme_data = array();
   $aspot_node = $aspot_node_wrapper->value();
 
@@ -777,12 +803,12 @@ function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $dragg
 
       if (!empty($draggable_data->$cta_draggable_name)) {
         $cta_buttons_theme_data[$cta_index] = array(
-          'url' => $cta_wrapper_element->url->value(),
-          'text' => $cta_wrapper_element->title->value(),
-          'style' => array(
-                'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->$cta_draggable_name),
-                'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->$cta_draggable_name)
-          )
+            'url' => $cta_wrapper_element->url->value(),
+            'text' => $cta_wrapper_element->title->value(),
+            'style' => array(
+                'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->$cta_draggable_name),
+                'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->$cta_draggable_name)
+            )
         );
       }
 
@@ -814,7 +840,8 @@ function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $dragg
   return $cta_buttons_theme_data;
 }
 
-function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
+function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node)
+{
   $found_nodes = array();
 
   if (empty($homepage_node->field_usa_hp_arefs)) {
@@ -838,8 +865,8 @@ function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
       }
 
       $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
-        'aspot_node' => $aspot_node,
-        'show_node' => $show_node,
+          'aspot_node' => $aspot_node,
+          'show_node' => $show_node,
       );
     }
   }
@@ -851,11 +878,12 @@ function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
  * Returns value of form field on node altering.
  */
 function _usanetwork_aspot_get_form_state_field_value(
-  $form_state, $field_name, $language, $default = ''
-) {
+    $form_state, $field_name, $language, $default = ''
+)
+{
   $field_item = !empty($form_state['node']->$field_name)
-    ? $form_state['node']->$field_name
-    : array();
+      ? $form_state['node']->$field_name
+      : array();
 
   if (!empty($field_item)) {
     return reset(reset($field_item[$language]));
@@ -867,18 +895,19 @@ function _usanetwork_aspot_get_form_state_field_value(
 /**
  * Returns default settings for draggable UI element.
  */
-function _usanetwork_aspot_get_draggable_ui_default_settings_element() {
+function _usanetwork_aspot_get_draggable_ui_default_settings_element()
+{
   return array(
-    'value' => NULL,
-    'enabled' => FALSE,
-    'percentX' => NULL,
-    'percentY' => NULL,
-    'invertX' => NULL,
-    'invertY' => NULL,
-    'percentMX' => NULL,
-    'percentMY' => NULL,
-    'invertMX' => NULL,
-    'invertMY' => NULL,
+      'value' => NULL,
+      'enabled' => FALSE,
+      'percentX' => NULL,
+      'percentY' => NULL,
+      'invertX' => NULL,
+      'invertY' => NULL,
+      'percentMX' => NULL,
+      'percentMY' => NULL,
+      'invertMX' => NULL,
+      'invertMY' => NULL,
   );
 }
 
@@ -886,9 +915,10 @@ function _usanetwork_aspot_get_draggable_ui_default_settings_element() {
  * Fills draggable UI element from settings array. The list of default fields
  * are presented in "_usanetwork_aspot_get_draggable_ui_default_settings_element()".
  */
-function _usanetwork_aspot_fill_draggable_ui_settings_element($setting) {
+function _usanetwork_aspot_fill_draggable_ui_settings_element($setting)
+{
   if (is_array($setting)) {
-    $setting = (object) $setting;
+    $setting = (object)$setting;
   }
 
   $element = _usanetwork_aspot_get_draggable_ui_default_settings_element();
@@ -909,7 +939,8 @@ function _usanetwork_aspot_fill_draggable_ui_settings_element($setting) {
 /**
  * Checks if draggable element is enabled in administrative panel.
  */
-function _usanetwork_aspot_is_ui_draggable_element_enabled($element_field, $language, $element_name) {
+function _usanetwork_aspot_is_ui_draggable_element_enabled($element_field, $language, $element_name)
+{
   if (!empty($element_field)) {
     foreach ($element_field[$language] as $element_field_setting) {
       if (!empty($element_field_setting['value']) && $element_field_setting['value'] == $element_name) {
@@ -924,7 +955,8 @@ function _usanetwork_aspot_is_ui_draggable_element_enabled($element_field, $lang
 /**
  * Fills call to action buttons with multiple items supporting.
  */
-function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, &$aspot_elements) {
+function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, &$aspot_elements)
+{
   if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
     $cta_buttons = $form_node->field_aspot_gi_cta[$language];
 
@@ -936,19 +968,18 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
       if (isset($aspot_elements[$new_button_id])) {
         $aspot_elements[$new_button_id]['value'] = $new_button_title;
         $aspot_elements[$new_button_id]['enabled'] = $new_button_enabled;
-      }
-      else {
+      } else {
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
-          'value' => 'CTA ' . $new_button_title,
-          'enabled' => $new_button_enabled,
-          'percentX' => 'auto',
-          'percentY' => 'auto',
-          'invertX' => NULL,
-          'invertY' => NULL,
-          'percentMX' => 'auto',
-          'percentMY' => 'auto',
-          'invertMX' => NULL,
-          'invertMY' => NULL,
+            'value' => 'CTA ' . $new_button_title,
+            'enabled' => $new_button_enabled,
+            'percentX' => 'auto',
+            'percentY' => 'auto',
+            'invertX' => NULL,
+            'invertY' => NULL,
+            'percentMX' => 'auto',
+            'percentMY' => 'auto',
+            'invertMX' => NULL,
+            'invertMY' => NULL,
         ));
       }
     }
@@ -992,7 +1023,8 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
 /**
  * Returns number of CTA buttons that are presented in administrative panel.
  */
-function _usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_node, $language) {
+function _usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_node, $language)
+{
   if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
     return count($form_node->field_aspot_gi_cta[$language]);
   }
@@ -1014,14 +1046,16 @@ function _usanetwork_aspot_get_tvs_ui_draggable_cta_buttons_count($form_node, $l
 /**
  * Generates UI input name for forms with #TREE = TRUE.
  */
-function _usanetwork_aspot_form_get_generated_multiple_field_name($field_name, $field_item_name = NULL, $language = LANGUAGE_NONE) {
+function _usanetwork_aspot_form_get_generated_multiple_field_name($field_name, $field_item_name = NULL, $language = LANGUAGE_NONE)
+{
   return ':input[name="' . $field_name . '[' . $language . '][' . $field_item_name . ']"]';
 }
 
 /**
  * Provides altering rules for draggable items.
  */
-function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
+function _usanetwork_aspot_form_get_draggable_elements_states_rules()
+{
   return array(
     'field_aspot_gi_title_prefix' => array(
       'altering_element' => 'field_aspot_gi_title_prefix',
@@ -1065,7 +1099,8 @@ function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
 /**
  * Adds states for draggable items.
  */
-function _usanetwork_aspot_form_add_draggable_elements_states(&$form, $language = LANGUAGE_NONE) {
+function _usanetwork_aspot_form_add_draggable_elements_states(&$form, $language = LANGUAGE_NONE)
+{
   $altering_elements_rules = _usanetwork_aspot_form_get_draggable_elements_states_rules();
 
   if (!empty($altering_elements_rules)) {
@@ -1076,13 +1111,14 @@ function _usanetwork_aspot_form_add_draggable_elements_states(&$form, $language 
       $ae_field_item_name = $altering_elements_rule['field_item_name'];
       $ae_generated_field_name = _usanetwork_aspot_form_get_generated_multiple_field_name($ae_field_name, $ae_field_item_name, $language);
       $form[$ae_name]['#states'][$ae_state_name][$ae_generated_field_name] = array(
-        'checked' => TRUE,
+          'checked' => TRUE,
       );
     }
   }
 }
 
-function _usanetwork_aspot_get_show_nid($node) {
+function _usanetwork_aspot_get_show_nid($node)
+{
   $field_show = field_get_items('node', $node, 'field_show');
 
   if (!empty($field_show)) {

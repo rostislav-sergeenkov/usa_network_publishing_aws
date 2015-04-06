@@ -13,10 +13,10 @@
  * $image_mobile_large - string (291x478 image URL)
  */
 ?>
-<div class="related-item<?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
+<div class="node node-usanetwork-promo show-latest-promo<?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
   <?php if (!empty($target_url)): ?>
     <a href="<?php print $target_url; ?>">
-      <div class="meta-wrap">
+      <div class="meta-wrapper">
         <div class="meta-wrapper-inner">
           <div class="meta-icon play-icon"></div>
           <div class="meta">
@@ -33,11 +33,15 @@
         </div>
       </div>
       <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
-        <?php if (!empty($image_desktop)): ?>
-          <div data-src="<?php print $image_desktop; ?>" data-type="image-desktop"></div>
-        <?php endif; ?>
         <?php if (!empty($image_mobile)): ?>
-          <div data-src="<?php print $image_mobile; ?>" data-type="image-mobile"></div>
+          <div data-src="<?php print $image_mobile; ?>"></div>
+        <?php endif; ?>
+        <?php if (!empty($image_desktop)): ?>
+          <div data-media="(min-width: 641px)" data-src="<?php print $image_desktop; ?>"></div>
+          <!--[if (IE 8) & (!IEMobile)]>
+          <div data-src="<?php print $image_desktop; ?>"></div>
+          <![endif]-->
+          <noscript><img src="<?php print $image_desktop; ?>" alt="" title="" /></noscript>
         <?php endif; ?>
       </div>
     </a>

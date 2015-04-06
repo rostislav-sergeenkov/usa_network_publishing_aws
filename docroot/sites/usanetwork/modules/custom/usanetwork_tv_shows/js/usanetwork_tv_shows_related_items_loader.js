@@ -1,4 +1,4 @@
-;(function($) {
+(function($) {
   Drupal.behaviors.usanetwork_tv_shows_related_items_loader = {
     getItems: function() {
       var limit = 5;

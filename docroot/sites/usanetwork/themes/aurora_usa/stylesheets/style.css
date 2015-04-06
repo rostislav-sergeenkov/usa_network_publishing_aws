@@ -1052,7 +1052,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
   display: block;
-  height: calc(100% - 65px);
+  height: calc(100% - 52px);
   max-width: none;
   overflow: hidden;
   padding: 0;
@@ -1062,17 +1062,17 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
-    height: calc(100% - 80px);
+    height: calc(100% - 87px);
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
-    height: calc(100% - 80px);
+    height: calc(100% - 90px);
   }
 }
 @media (max-width: 480px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
-    height: calc(100% - 54px);
+    height: calc(100% - 44px);
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic {
@@ -1182,13 +1182,20 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     font-size: 15px;
     line-height: 22px;
     margin-top: 15px;
+    max-height: 158px;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional {
+    max-height: 100px;
   }
 }
 @media (max-width: 480px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional {
     font-size: 11px;
     line-height: 13px;
-    margin-top: 11px;
+    margin-top: 8px;
+    max-height: 50px;
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button {
@@ -1198,7 +1205,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   height: 35px;
   letter-spacing: 1px;
   line-height: 35px;
-  margin-top: 15px;
+  margin-top: 9px;
   overflow: hidden;
   text-align: center;
   text-transform: uppercase;
@@ -1209,7 +1216,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     font-size: 15px;
     height: 48px;
     line-height: 48px;
-    margin-top: 16px;
+    margin-top: 19px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
@@ -1217,15 +1224,15 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     font-size: 15px;
     height: 48px;
     line-height: 48px;
-    margin-top: 16px;
+    margin-top: 21px;
   }
 }
 @media (max-width: 480px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button {
     font-size: 12px;
-    height: 30px;
-    line-height: 30px;
-    margin-top: 12px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 9px;
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button:hover {
@@ -2604,6 +2611,46 @@ ul.menu li {
   .page-title h2 {
     font-size: 20px;
   }
+}
+
+.load-more-link {
+  bottom: -50px;
+  min-height: 25px;
+  position: absolute;
+  text-align: center;
+  width: calc(100% - 32px);
+}
+@media (min-width: 1901px) {
+  .load-more-link {
+    bottom: -100px;
+  }
+}
+.load-more-link a {
+  border-bottom: 2px solid #545454;
+  color: #545454;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 16px;
+  padding-bottom: 3px;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .load-more-link a {
+    font-size: 30px;
+    padding-bottom: 4px;
+  }
+}
+.load-more-link a.disabled {
+  display: none;
+}
+
+.load-more-loader {
+  background: url(../images/ajax-loader.gif);
+  height: 32px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -16px;
+  width: 32px;
 }
 
 img {
@@ -7872,31 +7919,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     height: 50px;
     margin: 1.47vw auto;
     width: 300px;
-  }
-}
-.show-latest-block .load-more-link {
-  bottom: -50px;
-  position: absolute;
-  text-align: center;
-  width: calc(100% - 32px);
-}
-@media (min-width: 1901px) {
-  .show-latest-block .load-more-link {
-    bottom: -100px;
-  }
-}
-.show-latest-block .load-more-link a {
-  border-bottom: 2px solid #545454;
-  color: #545454;
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 16px;
-  padding-bottom: 3px;
-  text-transform: uppercase;
-}
-@media (min-width: 1901px) {
-  .show-latest-block .load-more-link a {
-    font-size: 30px;
-    padding-bottom: 4px;
   }
 }
 

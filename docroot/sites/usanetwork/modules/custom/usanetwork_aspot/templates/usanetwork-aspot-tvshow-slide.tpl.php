@@ -54,7 +54,7 @@
         <?php if (!empty($social_meter)): ?>
           <?php print $social_meter; ?>
         <?php endif; ?>
-        <?php if (!empty($show_draggable_data)): ?>
+        <?php if (!empty($show_draggable_data) && is_string($show_draggable_data)): ?>
           <div class="hidden draggable-data-hidden"><?php print $show_draggable_data; ?></div>
         <?php endif; ?>
       </div>

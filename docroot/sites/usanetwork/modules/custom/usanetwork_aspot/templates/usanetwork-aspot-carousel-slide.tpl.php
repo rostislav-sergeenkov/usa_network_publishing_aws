@@ -68,8 +68,8 @@
             <?php endif; ?>
           </div>
         </div>
-        <?php if (!empty($show_draggable_data)): ?>
-          <div class="hidden draggable-data-hidden"><?php// print_r($show_draggable_data); ?></div>
+        <?php if (!empty($show_draggable_data) && is_string($show_draggable_data)): ?>
+          <div class="hidden draggable-data-hidden"><?php print $show_draggable_data; ?></div>
         <?php endif; ?>
       </div>
     </div>

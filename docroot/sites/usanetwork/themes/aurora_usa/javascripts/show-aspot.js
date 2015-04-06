@@ -2,32 +2,47 @@
   Drupal.behaviors.show_aspot = {
     slidersInit: function() {
       var base_settings = {
-            pager: false,
-            controls: false,
-            auto: false,
-            speed: 400,
-            useCSS: false,
-            minSlides: 3,
-            maxSlides: 3,
-            slideMargin: 0
-          },
-          vertical_settings = $.extend({}, base_settings, {mode: 'vertical'}),
-          horizontal_settings = $.extend({}, base_settings, {mode: 'horizontal'});
+          pager: false,
+          controls: false,
+          auto: false,
+          speed: 400,
+          infiniteLoop: false,
+          useCSS: true,
+          minSlides: 3,
+          maxSlides: 3,
+          slideMargin: 0
+        },
+        vertical_settings = $.extend({}, base_settings, {mode: 'vertical'}),
+        horizontal_settings = $.extend({}, base_settings, {mode: 'horizontal', controls: true});
 
       $('.slider-vertical').each(function() {
-        $(this).bxSlider(vertical_settings);
+        var slider = $(this).bxSlider(vertical_settings);
+
+        $(this).swipe({
+          swipeUp: function() {
+            slider.goToNextSlide();
+          },
+          swipeDown: function() {
+            slider.goToPrevSlide();
+          },
+          threshold: 0,
+          excludedElements: 'button, input, select, textarea, .noSwipe'
+        });
 
         $(this).mousewheel(function (event, delta, deltaX, deltaY) {
           if (delta > 0) {
-            $(this).goToPrevSlide();
-            if($(this).getCurrentSlide() != 0){
+            slider.goToPrevSlide();
+
+            if(slider.getCurrentSlide() != 0){
               event.stopPropagation();
               event.preventDefault();
             }
           }
+
           if (deltaY < 0) {
-            $(this).goToNextSlide();
-            if($(this).getCurrentSlide() + 1 < $(this).getSlideCount()){
+            slider.goToNextSlide();
+
+            if(slider.getCurrentSlide() + 1 < slider.getSlideCount()){
               event.stopPropagation();
               event.preventDefault();
             }
@@ -67,7 +82,6 @@
       $(window).bind('resize', function() {
         Drupal.behaviors.show_aspot.slidersSwitch();
       });
-
 
       $('.more-button a').click(function (e) {
         e.preventDefault();

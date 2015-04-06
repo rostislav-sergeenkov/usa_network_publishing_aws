@@ -1,36 +1,43 @@
 #edit-field-aspot-preview-bg-offset-preview {
-    display: block;
-    width: 200px;
-    height: 480px;
-    border: solid #aaa 1px;
+  border: solid #aaa 1px;
+  display: block;
+  height: 480px;
+  width: 200px;
 }
-
 #edit-field-aspot-preview-mbg-offset-preview {
-    display: block;
-    width: 200px;
-    height: 480px;
-    border: solid #aaa 1px;
+  border: solid #aaa 1px;
+  display: block;
+  height: 480px;
+  width: 200px;
 }
-
+#edit-field-aspot-enabled-gi-preview-mobile {
+  display: block;
+  line-height: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 642px;
+}
 #edit-field-aspot-enabled-gi-preview {
-    display: block;
-    width: 100%;
-   /* height: 600px; */
-    border: solid #aaa 1px;
-    position: relative;
+  display: block;
+  line-height: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 1280px;
 }
-
+#edit-field-aspot-enabled-gi-preview-mobile img,
+#edit-field-aspot-enabled-gi-preview img {
+  border: solid #aaa 1px;
+}
 .aspot-draggable-element {
-    display: block;
-    width: 256px;
-    border: solid 1px #666;
-    margin: 0;
-    border-radius: 6px;
-    background-color: rgba(200, 200, 200, 0.6);
-    padding: 3px;
+  background-color: rgba(200, 200, 200, 0.6);
+  border-radius: 6px;
+  border: solid 1px #666;
+  display: block;
+  line-height: normal;
+  margin: 0;
+  padding: 3px;
 }
-
 #edit-field-aspot-gi-draggable-data {
-    display: none;
-    visibility: hidden;
+  display: none;
+  visibility: hidden;
 }

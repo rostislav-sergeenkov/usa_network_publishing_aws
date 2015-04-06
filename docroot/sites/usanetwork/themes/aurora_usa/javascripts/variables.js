@@ -4,6 +4,7 @@ var window_size_desktop = 1281;
 var window_size_tablet_portrait = 769;
 var window_size_tablet = 1025;
 var window_size_mobile = 481;
+var window_size_mobile_641 = 641;
 var show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
 var desktop_show_open_width = 1450;
 var desktop_show_open_width_large = 2183;

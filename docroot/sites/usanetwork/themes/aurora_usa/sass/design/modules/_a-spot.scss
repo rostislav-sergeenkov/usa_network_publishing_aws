@@ -495,7 +495,6 @@
           }
         }
       }
-<<<<<<< HEAD
     }
     .episodes-list-slider.vertical {
 
@@ -509,12 +508,6 @@
         top: 50px;
         position: absolute;
         a {
-=======
-      .advertisement {
-        display: none;
-        height: 250px;
-        @include breakpoint($bp-768-width) {
->>>>>>> 1aa5472219aa4f5a5087996ee4b4c21e3033aecc
           display: block;
           right: 12px;
           top: 50px;

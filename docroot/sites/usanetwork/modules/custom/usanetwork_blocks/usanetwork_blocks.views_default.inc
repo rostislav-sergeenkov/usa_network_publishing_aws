@@ -112,8 +112,8 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
 
-  /* Display: NOT Syndicated */
-  $handler = $view->new_display('page', 'NOT Syndicated', 'page_1');
+  /* Display: Current Shows */
+  $handler = $view->new_display('page', 'Current Shows', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Show Nav';
   $handler->display->display_options['defaults']['access'] = FALSE;
@@ -126,18 +126,12 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'draggableviews' => 'draggableviews',
-    'views_bulk_operations' => 'views_bulk_operations',
     'title' => 'title',
     'timestamp' => 'timestamp',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'draggableviews' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'views_bulk_operations' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -157,7 +151,7 @@ function usanetwork_blocks_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'NOT Syndicated';
+  $handler->display->display_options['style_options']['caption'] = 'Current Shows';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -204,10 +198,6 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_nav:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'OR',
-  );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -224,20 +214,14 @@ function usanetwork_blocks_views_default_views() {
     'tv_show' => 'tv_show',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Syndicated (field_syndicated) */
-  $handler->display->display_options['filters']['field_syndicated_value_1']['id'] = 'field_syndicated_value_1';
-  $handler->display->display_options['filters']['field_syndicated_value_1']['table'] = 'field_data_field_syndicated';
-  $handler->display->display_options['filters']['field_syndicated_value_1']['field'] = 'field_syndicated_value';
-  $handler->display->display_options['filters']['field_syndicated_value_1']['operator'] = 'empty';
-  $handler->display->display_options['filters']['field_syndicated_value_1']['group'] = 2;
-  /* Filter criterion: Content: Syndicated (field_syndicated) */
-  $handler->display->display_options['filters']['field_syndicated_value']['id'] = 'field_syndicated_value';
-  $handler->display->display_options['filters']['field_syndicated_value']['table'] = 'field_data_field_syndicated';
-  $handler->display->display_options['filters']['field_syndicated_value']['field'] = 'field_syndicated_value';
-  $handler->display->display_options['filters']['field_syndicated_value']['value'] = array(
-    0 => '0',
+  /* Filter criterion: Content: Current Show (field_current_show) */
+  $handler->display->display_options['filters']['field_current_show_value']['id'] = 'field_current_show_value';
+  $handler->display->display_options['filters']['field_current_show_value']['table'] = 'field_data_field_current_show';
+  $handler->display->display_options['filters']['field_current_show_value']['field'] = 'field_current_show_value';
+  $handler->display->display_options['filters']['field_current_show_value']['value'] = array(
+    1 => '1',
   );
-  $handler->display->display_options['filters']['field_syndicated_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_current_show_value']['group'] = 1;
   $handler->display->display_options['path'] = 'admin/usanetwork/shows/shows_nav';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Shows nav sort order';
@@ -355,7 +339,7 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'tv_show' => 'tv_show',
   );
-  /* Filter criterion: Content: Syndicated (field_syndicated) */
+  /* Filter criterion: Content: Syndicated show (field_syndicated) */
   $handler->display->display_options['filters']['field_syndicated_value']['id'] = 'field_syndicated_value';
   $handler->display->display_options['filters']['field_syndicated_value']['table'] = 'field_data_field_syndicated';
   $handler->display->display_options['filters']['field_syndicated_value']['field'] = 'field_syndicated_value';
@@ -363,15 +347,17 @@ function usanetwork_blocks_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['displays'] = array(
-    'page_1' => 'page_1',
     'default' => 0,
     'block' => 0,
+    'page_1' => 0,
+    'originals_show' => 0,
+    'syndicated_shows' => 0,
   );
 
   /* Display: Original Shows */
   $handler = $view->new_display('block', 'Original Shows', 'originals_show');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'USA Originals';
+  $handler->display->display_options['title'] = 'Current Shows';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -395,24 +381,11 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'new';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Flags: Flagged time */
-  $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
-  $handler->display->display_options['fields']['timestamp']['table'] = 'flag_content';
-  $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
-  $handler->display->display_options['fields']['timestamp']['relationship'] = 'flag_content_rel';
-  $handler->display->display_options['fields']['timestamp']['label'] = '';
-  $handler->display->display_options['fields']['timestamp']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['timestamp']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['timestamp']['alter']['text'] = '<span class="flagged">New!</span> ';
-  $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['timestamp']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['timestamp']['date_format'] = 'short';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['text'] = '[timestamp][title]';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['alt'] = '[title] ';
@@ -445,15 +418,16 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'tv_show' => 'tv_show',
   );
-  /* Filter criterion: Content: Syndicated (field_syndicated) */
-  $handler->display->display_options['filters']['field_syndicated_value']['id'] = 'field_syndicated_value';
-  $handler->display->display_options['filters']['field_syndicated_value']['table'] = 'field_data_field_syndicated';
-  $handler->display->display_options['filters']['field_syndicated_value']['field'] = 'field_syndicated_value';
-  $handler->display->display_options['filters']['field_syndicated_value']['operator'] = 'not';
-  $handler->display->display_options['filters']['field_syndicated_value']['value'] = array(
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Current Show (field_current_show) */
+  $handler->display->display_options['filters']['field_current_show_value']['id'] = 'field_current_show_value';
+  $handler->display->display_options['filters']['field_current_show_value']['table'] = 'field_data_field_current_show';
+  $handler->display->display_options['filters']['field_current_show_value']['field'] = 'field_current_show_value';
+  $handler->display->display_options['filters']['field_current_show_value']['value'] = array(
     1 => '1',
   );
-  $handler->display->display_options['block_description'] = 'USA Originals';
+  $handler->display->display_options['filters']['field_current_show_value']['group'] = 1;
+  $handler->display->display_options['block_description'] = 'Current Shows';
 
   /* Display: Syndicated Shows */
   $handler = $view->new_display('block', 'Syndicated Shows', 'syndicated_shows');
@@ -532,10 +506,11 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'tv_show' => 'tv_show',
   );
-  /* Filter criterion: Content: Syndicated (field_syndicated) */
+  /* Filter criterion: Content: Syndicated show (field_syndicated) */
   $handler->display->display_options['filters']['field_syndicated_value']['id'] = 'field_syndicated_value';
   $handler->display->display_options['filters']['field_syndicated_value']['table'] = 'field_data_field_syndicated';
   $handler->display->display_options['filters']['field_syndicated_value']['field'] = 'field_syndicated_value';
+  $handler->display->display_options['filters']['field_syndicated_value']['operator'] = 'not';
   $handler->display->display_options['filters']['field_syndicated_value']['value'] = array(
     1 => '1',
   );

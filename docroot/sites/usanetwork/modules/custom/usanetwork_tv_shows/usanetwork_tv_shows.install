@@ -58,7 +58,7 @@ function usanetwork_tv_shows_syndicated() {
 }
 
 /**
- * Moving settings related to syndicated/not syndicated shows
+ * Moving settings related to syndicated shows
  */
 function usanetwork_tv_shows_update_7016() {
   if (function_exists('usanetwork_tv_shows_syndicated') && $settings = usanetwork_tv_shows_syndicated()) {
@@ -77,7 +77,7 @@ function usanetwork_tv_shows_update_7016() {
 }
 
 /**
- * Caches related data of TV Shows.
+* Caches related data of TV Shows.
  */
 function usanetwork_tv_shows_update_7017() {
   $output = '';
@@ -110,4 +110,23 @@ function usanetwork_tv_shows_update_7017() {
   }
 
   return $output;
+}
+
+/**
+ * Update settings related to current shows
+ */
+function usanetwork_tv_shows_update_7018() {
+  if (function_exists('usanetwork_tv_shows_syndicated') && $settings = usanetwork_tv_shows_syndicated()) {
+    $query = db_select('node', 'n');
+    $query->fields('n', array('nid', 'title'));
+    $query->condition('n.type', 'tv_show');
+    $query->condition('n.status', 1);
+    $query->condition('n.title', array_values($settings), 'NOT IN');
+    $result = $query->execute()->fetchAll();
+    foreach ($result as $row) {
+      $node = node_load($row->nid);
+      $node->field_current_show[$node->language][0]['value'] = 1;
+      node_save($node);
+    }
+  }
 }

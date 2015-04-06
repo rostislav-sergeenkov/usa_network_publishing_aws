@@ -913,7 +913,7 @@ function _usanetwork_tv_shows_aspot_block() {
 
   if (!empty($show_node)) {
     $theme_variables['episodes_block_title'] = t('Latest full episodes');
-    $theme_variables['show'] = usanetwork_aspot_render($show_node);
+    $theme_variables['show'] = usanetwork_aspot_tvshow_render($show_node);
 
     $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show(USA_TV_SHOW_LATEST_FULL_NUMBER);
 
@@ -1298,6 +1298,7 @@ function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from
   $response = array(
     'found' => FALSE,
     'total' => 0,
+    'overlimited' => FALSE,
     'rendered' => '',
   );
 
@@ -1310,6 +1311,9 @@ function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from
     $response['rendered'] = _usanetwork_tv_shows_render_related_content_items_block($related_content, TRUE, $is_even);
 
     return drupal_json_output($response);
+  }
+  elseif (empty($related_content) && $start_from > 0) {
+    $response['overlimited'] = TRUE;
   }
 
   return drupal_json_output($response);

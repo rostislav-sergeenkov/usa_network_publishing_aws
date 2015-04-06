@@ -1344,7 +1344,7 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
   $show_node = $show_node_wrapper->value();
   $theme_variables = array();
   $promo = field_get_items('node', $show_node, 'field_tvs_promoted_content');
-  if (!empty($promo)) {
+  if (!empty($promo) && !empty($promo['target_type']) && !emtpy($promo['target_id'])) {
     $promo = reset($promo);
     $promo_entity = entity_load($promo['target_type'], array($promo['target_id']));
     if (empty($promo_entity)) {

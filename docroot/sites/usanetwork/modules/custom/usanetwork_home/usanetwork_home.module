@@ -1348,7 +1348,7 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
   if (!empty($promo)) {
     $promo = reset($promo);
 
-    if (!empty($promo['target_id'])) {
+    if (!empty($promo['target_id']) && !empty($promo['target_type'])) {
       $promo_entity = entity_load($promo['target_type'], array($promo['target_id']));
       if (empty($promo_entity)) {
         return '';

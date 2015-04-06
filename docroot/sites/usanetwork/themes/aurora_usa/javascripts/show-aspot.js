@@ -41,7 +41,7 @@
     },
 
     slidersSwitch: function() {
-      if ($(window).width() <= 768) {
+      if (window.innerWidth < window_size_tablet_portrait) {
         $('.episodes-list-slider').each(function() {
           if ($(this).attr('data-mode') == 'vertical') {
             $(this).css('display', 'none');

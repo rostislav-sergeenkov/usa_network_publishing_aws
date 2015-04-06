@@ -21459,61 +21459,17 @@ yx-axis
   content: '';
   display: table;
 }
+@media (max-width: 768px) {
+  .aspot-and-episodes {
+    height: auto;
+  }
+}
 .aspot-and-episodes.episodes-empty .show-aspot {
   float: none;
   width: 100%;
 }
 .aspot-and-episodes.episodes-empty .episodes-list {
   display: none;
-}
-.aspot-and-episodes.episodes-3 .episodes-list ul.open li {
-  display: block;
-}
-.aspot-and-episodes.episodes-3 .episodes-list ul li {
-  height: 33.33333%;
-}
-@media (max-width: 768px) {
-  .aspot-and-episodes.episodes-3 .episodes-list ul li {
-    display: none;
-    height: 105px;
-  }
-  .aspot-and-episodes.episodes-3 .episodes-list ul li:nth-child(1), .aspot-and-episodes.episodes-3 .episodes-list ul li:nth-child(2) {
-    display: block;
-  }
-}
-@media (max-width: 640px) {
-  .aspot-and-episodes.episodes-3 .episodes-list ul li {
-    height: 70px;
-  }
-}
-.aspot-and-episodes.episodes-3 .episodes-list ul li .meta {
-  padding-right: 55%;
-}
-.aspot-and-episodes.episodes-3 .episodes-list ul li .asset-img {
-  max-width: 50%;
-}
-@media (max-width: 640px) {
-  .aspot-and-episodes.episodes-3 .episodes-list ul li .asset-img {
-    max-width: 124px;
-  }
-}
-.aspot-and-episodes.episodes-4 .episodes-list ul li {
-  height: 25%;
-}
-.aspot-and-episodes.episodes-4 .episodes-list ul li .meta {
-  padding-right: 40%;
-}
-.aspot-and-episodes.episodes-4 .episodes-list ul li .asset-img {
-  max-width: 35%;
-}
-.aspot-and-episodes.episodes-5 .episodes-list ul li {
-  height: 20%;
-}
-.aspot-and-episodes.episodes-5 .episodes-list ul li .meta {
-  padding-right: 40%;
-}
-.aspot-and-episodes.episodes-5 .episodes-list ul li .asset-img {
-  max-width: 30.5%;
 }
 .aspot-and-episodes .show-aspot {
   float: left;
@@ -21524,6 +21480,14 @@ yx-axis
 @media (max-width: 768px) {
   .aspot-and-episodes .show-aspot {
     float: none;
+    height: 56.25vw;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot {
+    float: none;
+    height: 100vw;
     width: 100%;
   }
 }
@@ -21577,7 +21541,8 @@ yx-axis
 }
 @media (max-width: 768px) {
   .aspot-and-episodes .episodes-list > .title {
-    height: 50px;
+    height: 55%;
+    width: 100%;
   }
 }
 .aspot-and-episodes .episodes-list > .title h2 {
@@ -21684,26 +21649,32 @@ yx-axis
   width: 100%;
   height: 100%;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .advertisement {
+.aspot-and-episodes .episodes-list .advertisement {
   display: none;
   height: 250px;
 }
 @media (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical .advertisement {
+  .aspot-and-episodes .episodes-list .advertisement {
     display: block;
     right: 12px;
     top: 50px;
     position: absolute;
   }
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical .advertisement a {
+  .aspot-and-episodes .episodes-list .advertisement a {
+    display: block;
+    right: 12px;
+    top: 50px;
+    position: absolute;
+  }
+  .aspot-and-episodes .episodes-list .advertisement a a {
     display: block;
     height: 250px;
     margin: 0 auto;
     width: 300px;
   }
 }
-@media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical .advertisement {
+@media (max-width: 768px) and (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .advertisement {
     clear: both;
     position: relative;
     right: auto;
@@ -21711,12 +21682,12 @@ yx-axis
     margin: 20px auto;
   }
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button {
+.aspot-and-episodes .episodes-list .advertisement .more-button {
   display: none;
   position: relative;
 }
 @media (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button {
+  .aspot-and-episodes .episodes-list .advertisement .more-button {
     background: #8f8f8f;
     border-top: 2px solid darkgrey;
     clear: both;
@@ -21727,17 +21698,17 @@ yx-axis
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button {
+  .aspot-and-episodes .episodes-list .advertisement .more-button {
     width: 100%;
   }
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button a {
+.aspot-and-episodes .episodes-list .advertisement .more-button a {
   display: block;
   height: 100%;
   position: absolute;
   width: 100%;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button a:before {
+.aspot-and-episodes .episodes-list .advertisement .more-button a:before {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -21750,7 +21721,7 @@ yx-axis
   text-decoration: none;
   top: 50%;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button a:after {
+.aspot-and-episodes .episodes-list .advertisement .more-button a:after {
   border-left: 9px solid transparent;
   border-right: 9px solid transparent;
   content: '';
@@ -21763,16 +21734,16 @@ yx-axis
   height: 0;
   width: 0;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button a.more:before {
+.aspot-and-episodes .episodes-list .advertisement .more-button a.more:before {
   content: 'More';
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button a.more:after {
+.aspot-and-episodes .episodes-list .advertisement .more-button a.more:after {
   border-top: 15px solid #ffffff;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button a.less:before {
+.aspot-and-episodes .episodes-list .advertisement .more-button a.less:before {
   content: 'Less';
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .more-button a.less:after {
+.aspot-and-episodes .episodes-list .advertisement .more-button a.less:after {
   border-bottom: 15px solid #ffffff;
 }
 .aspot-and-episodes .new-show-page .aspot-and-episodes .usanetwork-aspot .meta-wrap .new-episode {

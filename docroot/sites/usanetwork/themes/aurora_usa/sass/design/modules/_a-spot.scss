@@ -328,76 +328,16 @@
   height: 43.75vw;
   position: relative;
   width: 100%;
-  &.episodes-empty {
-    .show-aspot {
+  @include breakpoint($bp-768-width) {
+    height: auto;
+  }
+  &.episodes-empty{
+    .show-aspot{
       float: none;
       width: 100%;
     }
     .episodes-list {
       display: none;
-    }
-  }
-  &.episodes-3 {
-    .episodes-list {
-      ul {
-        &.open {
-          li {
-            display: block;
-          }
-        }
-        li {
-          height: 33.33333%;
-          @include breakpoint($bp-768-width) {
-            display: none;
-            height: 105px;
-            &:nth-child(1), &:nth-child(2) {
-              display: block;
-            }
-          }
-          @include breakpoint($bp-640-width) {
-            height: 70px;
-          }
-          .meta {
-            padding-right: 55%;
-          }
-          .asset-img {
-            max-width: 50%;
-            @include breakpoint($bp-640-width) {
-              max-width: 124px;
-            }
-          }
-        }
-      }
-    }
-  }
-  &.episodes-4 {
-    .episodes-list {
-      ul {
-        li {
-          height: 25%;
-          .meta {
-            padding-right: 40%;
-          }
-          .asset-img {
-            max-width: 35%;
-          }
-        }
-      }
-    }
-  }
-  &.episodes-5 {
-    .episodes-list {
-      ul {
-        li {
-          height: 20%;
-          .meta {
-            padding-right: 40%;
-          }
-          .asset-img {
-            max-width: 30.5%;
-          }
-        }
-      }
     }
   }
   .show-aspot {
@@ -407,6 +347,12 @@
     width: ((100%*7)/9);
     @include breakpoint($bp-768-width) {
       float: none;
+      height: 56.25vw;
+      width: 100%;
+    }
+    @include breakpoint($bp-640-width) {
+      float: none;
+      height: 100vw;
       width: 100%;
     }
     .asset-img {
@@ -449,7 +395,8 @@
       position: relative;
       width: 100%;
       @include breakpoint($bp-768-width) {
-        height: 50px;
+        height: 55%;
+        width: 100%;
       }
       h2 {
         color: #ffffff;
@@ -548,10 +495,19 @@
           }
         }
       }
-      .advertisement {
-        display: none;
-        height: 250px;
-        @include breakpoint($bp-768-width) {
+    }
+    .episodes-list-slider.vertical {
+
+    }
+    .advertisement {
+      display: none;
+      height: 250px;
+      @include breakpoint($bp-768-width) {
+        display: block;
+        right: 12px;
+        top: 50px;
+        position: absolute;
+        a {
           display: block;
           right: 12px;
           top: 50px;

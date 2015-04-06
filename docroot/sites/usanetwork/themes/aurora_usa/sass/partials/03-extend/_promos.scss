@@ -648,7 +648,7 @@
         line-height: 42px;
         width: 42px;
       }
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         height: 60px;
         margin-left: -30px;
         margin-top: -30px;
@@ -682,7 +682,7 @@
         line-height: 20px;
         margin: 0 5%;
         text-transform: uppercase;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           font-size: 18px;
           line-height: 24px;
         }
@@ -703,7 +703,7 @@
         font-size: 20px;
         line-height: 24px;
         margin: 0 5%;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           font-size: 24px;
           line-height: 30px;
         }
@@ -763,7 +763,7 @@
       .caption {
         font-size: 10px;
         line-height: 16px;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           font-size: 15px;
           line-height: 20px;
         }
@@ -780,7 +780,7 @@
         font-family: $avalon-demi;
         font-size: 14px;
         line-height: 18px;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           font-size: 22px;
           line-height: 26px;
         }
@@ -797,7 +797,7 @@
         font-family: $tex-gyreschola-italic;
         font-size: 10px;
         line-height: 16px;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           font-size: 15px;
           line-height: 20px;
         }

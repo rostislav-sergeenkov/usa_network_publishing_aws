@@ -33,7 +33,7 @@
             -o-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
             box-shadow: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
             width: 18px;
-            @include breakpoint($bp-min-1920-width) {
+            @include breakpoint($bp-min-1901-width) {
               width: 30px;
             }
             @include breakpoint($bp-768-width) {
@@ -57,7 +57,7 @@
                 -o-transition: all 0.3s ease-out 0s;
                 transition: all 0.3s ease-out 0s;
                 width: 18px;
-                @include breakpoint($bp-min-1920-width) {
+                @include breakpoint($bp-min-1901-width) {
                   width: 30px;
                 }
               }
@@ -140,7 +140,7 @@
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           font-size: 20px;
           line-height: 20px;
           padding: 12px 30px 12px 12px;
@@ -160,7 +160,7 @@
           margin-top: -8px;
           right: 10px;
           top: 50%;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             font-size: 14px;
             margin-top: -11px;
           }
@@ -182,7 +182,7 @@
         overflow: hidden;
         position: relative;
         width: 270px;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           height: 973px;
           width: 453px;
         }
@@ -220,7 +220,7 @@
             top: 0px;
             width: 18px;
             z-index: 3;
-            @include breakpoint($bp-min-1920-width) {
+            @include breakpoint($bp-min-1901-width) {
               width: 30px;
             }
             @include breakpoint($bp-768-width) {
@@ -277,7 +277,7 @@
           position: relative;
           vertical-align: middle;
           width: 100%;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             max-width: 453px;
           }
           @include breakpoint($bp-1024-width) {
@@ -299,7 +299,7 @@
               font-size: 18px;
               line-height: 24px;
             }
-            @include breakpoint($bp-min-1920-width) {
+            @include breakpoint($bp-min-1901-width) {
               font-size: 30px;
               line-height: 36px;
             }
@@ -311,7 +311,7 @@
             @include breakpoint($bp-480-width) {
               font-size: 10px;
             }
-            @include breakpoint($bp-min-1920-width) {
+            @include breakpoint($bp-min-1901-width) {
               font-size: 16px;
               line-height: 20px;
             }
@@ -320,7 +320,7 @@
               @include breakpoint($bp-480-width) {
                 font-size: 10px;
               }
-              @include breakpoint($bp-min-1920-width) {
+              @include breakpoint($bp-min-1901-width) {
                 font-size: 16px;
                 line-height: 20px;
               }
@@ -417,10 +417,10 @@
     top: 0px;
     width: auto;
     z-index: 1; //temp value
-    @include breakpoint($bp-min-1920-width) {
-      left: 453px;
+    @include breakpoint($bp-min-1901-width) {
+      left: 434px;
       min-width: 1730px;
-      width: calc(100% - 453px);
+      width: calc(100% - 434px);
     }
     @include breakpoint($between-1025-1280) {
       min-width: 670px;
@@ -443,7 +443,7 @@
       right: 40px;
       position: absolute;
       top: 25px;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         right: 60px;
         top: 65px;
       }
@@ -467,7 +467,7 @@
       padding-top: 90px;
       top: 0px;
       width: 50px;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         left: -90px;
         width: 90px;
       }
@@ -480,6 +480,9 @@
         opacity: 0.6;
         @include breakpoint($bp-1024-width) {
           margin-right: 15px;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          margin: 0px 0px 20px 25px;
         }
         &:hover {
           opacity: 0.3;
@@ -510,7 +513,7 @@
       padding: 20px 40px;
       text-transform: uppercase;
       width: 100%;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         padding: 60px;
       }
       @include breakpoint($bp-1280-width) {
@@ -527,7 +530,7 @@
     .show-top-info {
       @include clear();
       margin-right: 130px;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         margin-bottom: 10px;
       }
       @include breakpoint($bp-768-width) {
@@ -551,7 +554,7 @@
           line-height: 50px;
           margin-right: 27px;
           text-transform: uppercase;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             font-size: 32px;
           }
           @include breakpoint($bp-480-width) {
@@ -585,7 +588,7 @@
       height: 250px;
       overflow: hidden;
       position: relative;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         height: 378px;
         margin-bottom: 75px;
       }
@@ -612,7 +615,7 @@
         position: relative;
         margin-right: 40px;
         width: 460px;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           height: 378px;
           width: 689px;
         }
@@ -671,7 +674,7 @@
                 margin-left: 0px;
                 top: 50%;
                 left: 20px;
-                @include breakpoint($bp-min-1920-width) {
+                @include breakpoint($bp-min-1901-width) {
                   height: 50px;
                   left: 25px;
                   margin-top: -25px;
@@ -709,7 +712,7 @@
                 }
                 & ~ .meta {
                   padding-left: 70px;
-                  @include breakpoint($bp-min-1920-width) {
+                  @include breakpoint($bp-min-1901-width) {
                     padding-left: 95px;
                   }
                   @include breakpoint($bp-768-width) {
@@ -737,7 +740,7 @@
                   line-height: 24px;
                   margin-left: 0;
                   margin-right: 0;
-                  @include breakpoint($bp-min-1920-width) {
+                  @include breakpoint($bp-min-1901-width) {
                     font-size: 24px;
                     line-height: 30px;
                   }
@@ -760,7 +763,7 @@
                   margin-left: 0;
                   margin-right: 0;
                   text-transform: uppercase;
-                  @include breakpoint($bp-min-1920-width) {
+                  @include breakpoint($bp-min-1901-width) {
                     font-size: 14px;
                     line-height: 20px;
                   }
@@ -791,7 +794,7 @@
         height: 250px;
         margin-right: 40px;
         width: 300px;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           display: none;
           height: 315px;
           width: 378px;
@@ -829,7 +832,7 @@
       height: 250px;
       position: relative;
       width: 260px;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         height: 378px;
         width: 387px;
       }
@@ -863,7 +866,7 @@
           overflow: hidden;
           position: relative;
           width: 80%;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             padding: 20px 0 70px;
           }
           @include breakpoint($bp-640-width) {
@@ -877,7 +880,7 @@
           font-family: $tex-gyreschola-italic;
           font-size: 12px;
           line-height: 20px;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             font-size: 15px;
             line-height: 24px;
           }
@@ -896,7 +899,7 @@
           line-height: 30px;
           text-overflow: ellipsis;
           white-space: nowrap;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             font-size: 26px;
             line-height: 34px;
           }
@@ -915,7 +918,7 @@
           line-height: 15px;
           margin-top: 15px;
           text-transform: none;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             font-size: 14px;
             line-height: 20px;
             margin-top: 20px;
@@ -935,7 +938,7 @@
           margin-right: -61px;
           right: 50%;
           top: auto;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             bottom: 15px;
             right: 50%;
             margin-right: -76px;
@@ -979,7 +982,7 @@
           margin: 20px 20px 20px 0px;
           overflow: visible;
           width: 260px;
-          @include breakpoint($bp-min-1920-width) {
+          @include breakpoint($bp-min-1901-width) {
             height: 320px;
             margin: 20px 26px 20px 0px;
             width: 383px;
@@ -1036,7 +1039,7 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-  @include breakpoint($bp-min-1920-width) {
+  @include breakpoint($bp-min-1901-width) {
     height: 100px;
   }
   @include breakpoint($bp-1024-width) {
@@ -1060,7 +1063,7 @@
       line-height: 50px;
       max-width: 194px;
     }
-    @include breakpoint($bp-min-1920-width) {
+    @include breakpoint($bp-min-1901-width) {
       font-size: 36px;
       line-height: 100px;
       max-width: 380px;
@@ -1075,7 +1078,7 @@
     @include breakpoint($bp-1024-width) {
       max-width: 110px;
     }
-    @include breakpoint($bp-min-1920-width) {
+    @include breakpoint($bp-min-1901-width) {
       max-width: 205px;
     }
     .time {
@@ -1086,7 +1089,7 @@
       line-height: 18px;
       text-transform: uppercase;
       vertical-align: middle;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         font-size: 18px;
         line-height: 26px;
       }
@@ -1108,7 +1111,7 @@
     float: right;
     margin-left: 20px;
     margin-top: 21px;
-    @include breakpoint($bp-min-1920-width) {
+    @include breakpoint($bp-min-1901-width) {
       margin-top: 38px;
     }
     @include breakpoint($bp-1024-width) {
@@ -1177,7 +1180,7 @@
   max-width: 55%;
   position: relative;
   width: calc(100% - 560px);
-  @include breakpoint($bp-min-1920-width) {
+  @include breakpoint($bp-min-1901-width) {
     width: calc(100% - 650px);
   }
   @include breakpoint($bp-1024-width) {
@@ -1196,7 +1199,7 @@
       height: 67px;
       padding: 0;
       vertical-align: middle;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         height: 100px;
       }
       @include breakpoint($bp-1024-width) {
@@ -1215,7 +1218,7 @@
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
-        @include breakpoint($bp-min-1920-width) {
+        @include breakpoint($bp-min-1901-width) {
           font-size: 20px;
           line-height: 100px;
           height: 100px;
@@ -1242,7 +1245,7 @@
     position: relative;
     text-align: center;
     text-transform: uppercase;
-    @include breakpoint($bp-min-1920-width) {
+    @include breakpoint($bp-min-1901-width) {
       font-size: 14px;
     }
     &:before {

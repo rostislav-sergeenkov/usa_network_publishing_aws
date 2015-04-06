@@ -130,6 +130,62 @@ function usanetwork_aspot_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_enabled_tgi'
+  $field_instances['node-usanetwork_aspot-field_aspot_enabled_tgi'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'List of enabled draggable elements that should be displayed in A-Spot carousel',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 64,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_enabled_tgi',
+    'label' => 'Enabled A-spot gallery items',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 68,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_aspot-field_aspot_gi_cta'
   $field_instances['node-usanetwork_aspot-field_aspot_gi_cta'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -467,6 +523,357 @@ function usanetwork_aspot_field_default_field_instances() {
       'settings' => array(),
       'type' => 'numberfield',
       'weight' => 57,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_preview_tbg_offset'
+  $field_instances['node-usanetwork_aspot-field_aspot_preview_tbg_offset'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Drag and drop background or set correct value using this control',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 63,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_preview_tbg_offset',
+    'label' => 'Preview background offset',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'numberfield',
+      'weight' => 67,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_tgi_cta'
+  $field_instances['node-usanetwork_aspot-field_aspot_tgi_cta'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Custom call-to-action buttons. Before adding or editing the form you should save draggable form items.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 68,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_tgi_cta',
+    'label' => 'Call to action',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'urlwidget',
+      'weight' => 72,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_tgi_draggable_data'
+  $field_instances['node-usanetwork_aspot-field_aspot_tgi_draggable_data'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 67,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_tgi_draggable_data',
+    'label' => 'Draggable elements data',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 71,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_tgi_title'
+  $field_instances['node-usanetwork_aspot-field_aspot_tgi_title'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Custom title for A-Spot carousel',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 66,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_tgi_title',
+    'label' => 'Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 70,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_tgi_title_prefix'
+  $field_instances['node-usanetwork_aspot-field_aspot_tgi_title_prefix'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The prefix displays before title',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 65,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_tgi_title_prefix',
+    'label' => 'Title prefix',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 69,
     ),
   );
 
@@ -3118,6 +3525,188 @@ Suggested max dimensions 380px x 80px<br/>
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_usa_tv_aspot_desktop'
+  $field_instances['node-usanetwork_aspot-field_usa_tv_aspot_desktop'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'deleted' => 0,
+    'description' => 'Largest retina image minimum 2490w x 1418h, scales for tablet devices',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 60,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_tv_aspot_desktop',
+    'label' => 'Desktop image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '2490x1418',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'mpx' => 0,
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'mpx_player' => 0,
+          'mpx_video' => 0,
+          'mpx_video_1' => 0,
+          'mpx_video_2' => 0,
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
+          'pub_mpx_video' => 0,
+          'theplatform_mpx_mpxmedia' => 0,
+          'theplatform_mpx_mpxplayer' => 0,
+          'upload' => 'upload',
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 64,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_usa_tv_aspot_mobile'
+  $field_instances['node-usanetwork_aspot-field_usa_tv_aspot_mobile'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'deleted' => 0,
+    'description' => 'Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 61,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_tv_aspot_mobile',
+    'label' => 'Mobile image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '600x500',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'mpx' => 0,
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'mpx_player' => 0,
+          'mpx_video' => 0,
+          'mpx_video_1' => 0,
+          'mpx_video_2' => 0,
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
+          'pub_mpx_video' => 0,
+          'theplatform_mpx_mpxmedia' => 0,
+          'theplatform_mpx_mpxplayer' => 0,
+          'upload' => 'upload',
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 65,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_aspot-field_webm_video_url'
   $field_instances['node-usanetwork_aspot-field_webm_video_url'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -3196,6 +3785,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Custom call-to-action buttons. Before adding or editing the form you should save draggable form items.');
   t('Custom title for A-Spot carousel');
   t('Desktop Image');
+  t('Desktop image');
   t('Download URL field value in Advanced Settings in the Files Blade for media item in MPX.');
   t('Drag and drop background or set correct value using this control');
   t('Draggable elements data');
@@ -3210,6 +3800,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('If this is related to a show please select that from the list.');
   t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
   t('Largest retina image minimum 2490w x 1418h, scales for tablet devices');
+  t('Largest retina image minimum 2500w x 1094h, scales for tablet devices');
   t('Link');
   t('List of enabled draggable elements that should be displayed in A-Spot carousel');
   t('MP4 Video URL');
@@ -3218,6 +3809,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Mobile Text line 2');
   t('Mobile Text line 2 Font Size');
   t('Mobile Text line 3 Font Size');
+  t('Mobile image');
   t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.');
   t('Optional image to display in place of the Title Text Line 1. <br/>
 Suggested max dimensions 380px x 80px<br/>

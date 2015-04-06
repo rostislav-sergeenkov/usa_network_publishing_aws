@@ -63,10 +63,11 @@
         var moveIt = function (index) {
           var nextSlideInner = el.get(0).children[index + 1].children[0],
               nextSlideImg = $(nextSlideInner).find('img').get(0),
-              shiftPercent = parseInt($(nextSlideImg).attr('data-shift-percent'));
+              nextSlideOffset = $(nextSlideInner).find('.offset-data').get(0),
+              shiftPercent = parseInt($(nextSlideOffset).attr('data-shift-percent'));
           shiftPercent = ((shiftPercent != 'undefined') || (shiftPercent != '')) ? shiftPercent : 0;
 
-          $(nextSlideImg).css('margin-left', '-' + shiftPercent + '%');
+          $(nextSlideImg).css('margin-left', shiftPercent + '%');
           $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 0.5);
           $(nextSlideInner).css('width', parseInt($(window).width())).animate({
             'margin-left': '-=10%'

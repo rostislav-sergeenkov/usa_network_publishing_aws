@@ -1,14 +1,14 @@
 <div class="aspot-social-meter">
-  <div class="row row-1">
+  <div class="row row-1 show-color">
     <div class="block block-quote block-left">
       <?php if (!empty($upper_line)): ?>
-        <div class="upper-line"><?php print $upper_line; ?></div>
+        <div class="upper-line block-quote-line"><?php print $upper_line; ?></div>
       <?php endif; ?>
       <?php if (!empty($middle_line)): ?>
-        <div class="middle-line"><?php print $middle_line; ?></div>
+        <div class="middle-line block-quote-line"><?php print $middle_line; ?></div>
       <?php endif; ?>
       <?php if (!empty($hashtag)): ?>
-        <div class="hashtag"><?php print $hashtag; ?></div>
+        <div class="hashtag block-quote-line"><?php print $hashtag; ?></div>
       <?php endif; ?>
     </div>
     <div class="block block-after-quote block-right"></div>

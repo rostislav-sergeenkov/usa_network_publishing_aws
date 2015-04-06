@@ -393,6 +393,9 @@
   height: 43.75vw;
   position: relative;
   width: 100%;
+  @include breakpoint($bp-768-width) {
+    height: auto;
+  }
   &.episodes-empty{
     .show-aspot{
       float: none;
@@ -409,6 +412,12 @@
     width: calc((100%*7)/9);
     @include breakpoint($bp-768-width) {
       float: none;
+      height: 56.25vw;
+      width: 100%;
+    }
+    @include breakpoint($bp-640-width) {
+      float: none;
+      height: 100vw;
       width: 100%;
     }
     .asset-img {
@@ -451,7 +460,8 @@
       position: relative;
       width: 100%;
       @include breakpoint($bp-768-width) {
-        height: 50px;
+        height: 55%;
+        width: 100%;
       }
       h2 {
         color: #ffffff;
@@ -538,6 +548,9 @@
           height: 100%;
         }
       }
+    }
+    .episodes-list-slider.vertical {
+
     }
     .advertisement {
       display: none;

@@ -1072,7 +1072,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (max-width: 480px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
-    height: calc(100% - 50px);
+    height: calc(100% - 54px);
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic {
@@ -21510,6 +21510,11 @@ yx-axis
   content: '';
   display: table;
 }
+@media (max-width: 768px) {
+  .aspot-and-episodes {
+    height: auto;
+  }
+}
 .aspot-and-episodes.episodes-empty .show-aspot {
   float: none;
   width: 100%;
@@ -21526,6 +21531,14 @@ yx-axis
 @media (max-width: 768px) {
   .aspot-and-episodes .show-aspot {
     float: none;
+    height: 56.25vw;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot {
+    float: none;
+    height: 100vw;
     width: 100%;
   }
 }
@@ -21579,7 +21592,8 @@ yx-axis
 }
 @media (max-width: 768px) {
   .aspot-and-episodes .episodes-list > .title {
-    height: 50px;
+    height: 55%;
+    width: 100%;
   }
 }
 .aspot-and-episodes .episodes-list > .title h2 {

@@ -53,12 +53,12 @@
               </div>
             <?php endif; ?>
             <?php if (!empty($cta_buttons)): ?>
-              <?php $counter = 0 ?>
+              <?php $counter = 0; ?>
               <?php foreach ($cta_buttons as $cta_button): ?>
                 <div <?php print 'class="cta_button_' . $counter . ' cta-link aspot-draggable-element"' ?><?php if (!empty($cta_button['style']['desktop'])): print 'data-style-desktop="' . $cta_button['style']['desktop'] . '" data-style-mobile="' . $cta_button['style']['mobile'] . '"'; endif; ?>>
                   <a href="<?php print $cta_button['url']; ?>" class="show-color hover-avail"><?php print $cta_button['text']; ?></a>
                 </div>
-                <?php $counter++ ?>
+                <?php $counter++; ?>
               <?php endforeach; ?>
             <?php endif; ?>
             <?php if (!empty($social_meter)): ?>
@@ -69,7 +69,7 @@
           </div>
         </div>
         <?php if (!empty($show_draggable_data)): ?>
-          <div class="hidden draggable-data-hidden"><?php print $show_draggable_data; ?></div>
+          <div class="hidden draggable-data-hidden"><?php// print_r($show_draggable_data); ?></div>
         <?php endif; ?>
       </div>
     </div>

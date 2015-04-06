@@ -6,7 +6,7 @@
   padding: 40px 16px;
   position: relative;
   width: 100%;
-  @include breakpoint($bp-min-1920-width) {
+  @include breakpoint($bp-min-1901-width) {
     margin-bottom: 190px;
   }
   ul {
@@ -147,7 +147,7 @@
     position: absolute;
     text-align: center;
     width: calc(100% - 32px);
-    @include breakpoint($bp-min-1920-width) {
+    @include breakpoint($bp-min-1901-width) {
       bottom: -100px;
     }
     a {
@@ -157,7 +157,7 @@
       font-size: 16px;
       padding-bottom: 3px;
       text-transform: uppercase;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         font-size: 30px;
         padding-bottom: 4px;
       }

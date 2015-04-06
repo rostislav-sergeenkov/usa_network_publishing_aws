@@ -4,11 +4,11 @@
   max-height: 180px;
   margin-right: 120px;
   position: relative;
-  @include breakpoint($between-1281-1919) {
+  @include breakpoint($between-1281-1900) {
     margin-right: 9.375vw;
     height: 9.375vw;
   }
-  @include breakpoint($bp-min-1920-width) {
+  @include breakpoint($bp-min-1901-width) {
     margin-right: 180px;
     height: 180px;
   }
@@ -29,14 +29,14 @@
     top: 0;
     width: 120px;
     z-index: 1;
-    @include breakpoint($between-1281-1919) {
+    @include breakpoint($between-1281-1900) {
       min-width: 120px;
       max-width: 180px;
       height: 100%;
       right: -9.375vw;
       width: 9.375vw;
     }
-    @include breakpoint($bp-min-1920-width) {
+    @include breakpoint($bp-min-1901-width) {
       height: 180px;
       right: -180px;
       width: 180px;
@@ -89,13 +89,13 @@
     -moz-transition-timing-function: ease;
     -o-transition-timing-function: ease;
     transition-timing-function: ease;
-    @include breakpoint($between-1281-1919) {
+    @include breakpoint($between-1281-1900) {
       min-width: 120px;
       max-width: 180px;
       height: 100%;
       width: 9.375vw;
     }
-    @include breakpoint($bp-min-1920-width) {
+    @include breakpoint($bp-min-1901-width) {
       height: 180px;
       width: 180px;
     }
@@ -105,10 +105,10 @@
     &.on-now {
       left: 100%;
       margin-left: -120px;
-      @include breakpoint($between-1281-1919) {
+      @include breakpoint($between-1281-1900) {
         margin-left: -9.375vw;
       }
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         margin-left: -180px;
       }
     }
@@ -209,10 +209,10 @@
     }
     &.on-tonight {
       margin-left: 120px;
-      @include breakpoint($between-1281-1919) {
+      @include breakpoint($between-1281-1900) {
         margin-left: 9.375vw;
       }
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         margin-left: 180px;
       }
       .schedule-item {
@@ -253,10 +253,10 @@
     }
     &.on-now {
       margin-right: 120px;
-      @include breakpoint($between-1281-1919) {
+      @include breakpoint($between-1281-1900) {
         margin-right: 9.375vw;
       }
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         margin-right: 180px;
       }
       .schedule-item-wrapper {
@@ -320,7 +320,7 @@
       margin-left: 20%;
       margin-right: 25px;
       text-transform: uppercase;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         margin-left: 112px;
       }
       @include breakpoint($bp-min-1701-width) {
@@ -403,7 +403,7 @@
       margin-bottom: 10px;
       overflow: hidden;
       text-overflow: ellipsis;
-      @include breakpoint($bp-min-1920-width) {
+      @include breakpoint($bp-min-1901-width) {
         max-width: 135px;
       }
       @include breakpoint($bp-min-1701-width) {

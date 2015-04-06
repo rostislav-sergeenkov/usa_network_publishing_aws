@@ -175,6 +175,7 @@ address {
 }
 .load-more-link {
   bottom: -50px;
+  min-height: 25px;
   position: absolute;
   text-align: center;
   width: calc(100% - 32px);
@@ -192,5 +193,18 @@ address {
       font-size: 30px;
       padding-bottom: 4px;
     }
+    &.disabled {
+      display: none;
+    }
   }
+
+}
+.load-more-loader {
+  background: url(../images/ajax-loader.gif);
+  height: 32px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -16px;
+  width: 32px;
 }

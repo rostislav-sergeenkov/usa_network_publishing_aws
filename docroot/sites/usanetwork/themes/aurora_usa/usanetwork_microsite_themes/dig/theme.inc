@@ -245,3 +245,10 @@ function usanetwork_microsite_dig_get_theme_settings() {
     'default_mobile_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
   );
 }
+
+
+function usanetwork_microsite_dig_get_blocks_names() {
+  return array(
+    'meet_the_cast',
+  );
+}

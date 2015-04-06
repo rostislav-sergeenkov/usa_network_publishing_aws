@@ -131,6 +131,7 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
         '#field_name' => $element['#field_name'],
       );
 
+      $label_text = $element['#title'];
       $element['#title'] = t('Label');
 
       // Select the target entity type.
@@ -156,6 +157,7 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
       );
 
       return array(
+        '#prefix' => !empty($label_text) ? '<label>'. $label_text . '</label>' . PHP_EOL : '',
         '#type' => 'container',
         '#attributes' => array(
           'class' => array('container-inline'),

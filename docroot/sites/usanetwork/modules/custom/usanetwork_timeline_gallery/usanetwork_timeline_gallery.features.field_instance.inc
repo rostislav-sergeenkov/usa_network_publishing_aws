@@ -118,7 +118,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'txt',
+      'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -141,8 +141,6 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
-          'media_default--media_browser_1' => 'media_default--media_browser_1',
-          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
           'pub_mpx_video' => 0,
           'theplatform_mpx_mpxmedia' => 0,

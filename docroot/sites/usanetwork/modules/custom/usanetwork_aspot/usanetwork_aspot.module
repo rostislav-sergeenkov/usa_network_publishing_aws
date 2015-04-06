@@ -269,41 +269,38 @@ function usanetwork_aspot_block_view($delta = '')
 /**
  * Implements hook_theme().
  */
-function usanetwork_aspot_theme()
-{
+function usanetwork_aspot_theme() {
   return array(
-      'usanetwork_aspot_carousel_slide' => array(
-          'variables' => array(
-              'show_url' => NULL,
-              'show_class' => NULL,
-              'show_poster' => array(
-                  'mobile' => NULL,
-                  'mobile_retina' => NULL,
-                  'tablet' => NULL,
-                  'tablet_retina' => NULL,
-                  'desktop' => NULL,
-                  'desktop_retina' => NULL,
-              ),
-              'show_title_prefix' => NULL,
-              'show_title_prefix_style' => NULL,
-              'show_title' => NULL,
-              'show_title_style' => NULL,
-              'show_image_bg_offset' => NULL,
-              'cta_buttons' => array(
-                  0 => array(
-                      'url' => NULL,
-                      'text' => NULL,
-                  ),
-              ),
-              'social_meter' => array(),
+    'usanetwork_aspot_carousel_slide' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_class' => NULL,
+        'show_poster' => array(
+          'mobile' => NULL,
+          'mobile_retina' => NULL,
+          'tablet' => NULL,
+          'tablet_retina' => NULL,
+          'desktop' => NULL,
+          'desktop_retina' => NULL,
+        ),
+        'show_title_prefix' => NULL,
+        'show_title_prefix_style' => NULL,
+        'show_title' => NULL,
+        'show_title_style' => NULL,
+        'show_image_bg_offset' => NULL,
+        'cta_buttons' => array(
+          0 => array(
+            'url' => NULL,
+            'text' => NULL,
           ),
-          'template' => 'templates/usanetwork-aspot-carousel-slide',
+        ),
+        'social_meter' => array(),
       ),
-      'usanetwork_aspot_carousel' => array(
-          'variables' => array(
-              'slides' => array(),
-          ),
-          'template' => 'templates/usanetwork-aspot-carousel',
+      'template' => 'templates/usanetwork-aspot-carousel-slide',
+    ),
+    'usanetwork_aspot_carousel' => array(
+      'variables' => array(
+        'slides' => array(),
       ),
       'template' => 'templates/usanetwork-aspot-carousel',
     ),

@@ -29,7 +29,8 @@ function usanetwork_tv_shows_field_group_info() {
       3 => 'field_tv_external_links',
       4 => 'field_tv_show_marquee',
       5 => 'field_syndicated',
-      6 => 'group_floodlight_tag',
+      6 => 'field_current_show',
+      7 => 'group_floodlight_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

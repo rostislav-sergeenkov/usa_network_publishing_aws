@@ -1,6 +1,7 @@
 // FLEXSLIDER for homepage
 (function ($) {
   Drupal.behaviors.homeSlides = {
+    _timeVar: null,
     attach: function (context, settings) {
 
       USAN.aspotSlider = {};
@@ -158,17 +159,17 @@
       $(window).bind('resize', function () {
         $('.next-button').hide().addClass('disabled');
         aspotSlider.stopAuto();
+        clearTimeout(Drupal.behaviors.homeSlides._timeVar);
 
-        waitForFinalEvent(function () {
+        Drupal.behaviors.homeSlides._timeVar = setTimeout(function() {
           var currentSlide = aspotSlider.getCurrentSlide();
 
           aspotSlider.destroySlider();
           $('.slider .wrp, .slider .full-image').stop().css({'margin-left': '0'});
 
-          aspotSlider = initSlider({
-            startSlide: currentSlide
-          });
-        }, 500, 'aspotSlide:id');
+          Drupal.behaviors.homeSlides.aspotSlider = aspotSlider = initSlider();
+          aspotSlider.startAuto();
+        }, 500);
 
         $('.slider .wrp').attr('style', '');
       });

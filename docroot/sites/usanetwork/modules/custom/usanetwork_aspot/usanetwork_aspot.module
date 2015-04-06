@@ -290,12 +290,27 @@ function usanetwork_aspot_theme() {
       'template' => 'templates/usanetwork-aspot-carousel',
     ),
     'usanetwork_aspot_tvshow_slide' => array(
-      'variables' => array(),
+      'variables' => array(
+        'show_url' => NULL,
+        'show_class' => NULL,
+        'show_poster' => array(
+          'mobile' => NULL,
+          'desktop' => NULL,
+        ),
+        'show_title_prefix' => NULL,
+        'show_title_prefix_style' => NULL,
+        'show_title' => NULL,
+        'show_title_style' => NULL,
+        'show_image_bg_offset' => NULL,
+        'cta_buttons' => array(
+          0 => array(
+            'url' => NULL,
+            'text' => NULL,
+          ),
+        ),
+        'social_meter' => array(),
+      ),
       'template' => 'templates/usanetwork-aspot-tvshow-slide',
-    ),
-    'usanetwork_aspot_tvshow_carousel' => array(
-      'variables' => array(),
-      'template' => 'templates/usanetwork-aspot-tvshow-carousel',
     ),
   );
 }
@@ -593,8 +608,8 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
     'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
       ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
       : '',
-    'show_draggable_data' => !empty($aspot_node->field_aspot_gi_draggable_data)
-      ? $aspot_node_wrapper->field_aspot_gi_draggable_data->value()
+    'show_draggable_data' => !empty($draggable_data)
+      ? $draggable_data
       : '',
   );
   if (!empty($aspot_node->field_aspot_gi_title_prefix)) {
@@ -615,19 +630,119 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   return theme('usanetwork_aspot_carousel_slide', $theme_array);
 }
 
-function usanetwork_aspot_render($show_node) {
+function usanetwork_aspot_tvshow_render($show_node) {
   $aspot_field = field_get_items('node', $show_node, 'field_usa_tv_a_spot');
+
   if (!empty($aspot_field) && is_array($aspot_field)) {
     foreach ($aspot_field as $aspot) {
       if (!empty($aspot['target_id'])) {
         $aspot_node = node_load($aspot['target_id']);
+
+        if ($aspot_node) {
+          return usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node);
+        }
+      }
+    }
+  }
+
+  return '';
+}
+
+function usanetwork_aspot_render($show_node) {
+  $aspot_field = field_get_items('node', $show_node, 'field_usa_tv_a_spot');
+
+  if (!empty($aspot_field) && is_array($aspot_field)) {
+    foreach ($aspot_field as $aspot) {
+      if (!empty($aspot['target_id'])) {
+        $aspot_node = node_load($aspot['target_id']);
+
         if ($aspot_node) {
           return _usanetwork_aspot_render_carousel_node($aspot_node, $show_node);
         }
       }
     }
   }
+
   return '';
+}
+
+/**
+ * Renders A-Spot slide.
+ *
+ * @param $aspot_node
+ */
+function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
+  $enabled_elements = array();
+  $draggable_data = array();
+  $banner_images = array();
+
+  $aspot_node_wrapper = entity_metadata_wrapper('node', $aspot_node);
+
+  if (!empty($aspot_node->field_aspot_enabled_tgi)) {
+    $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_tgi->value();
+  }
+
+  if (!empty($aspot_node->field_aspot_tgi_draggable_data)) {
+    $draggable_data = $aspot_node_wrapper->field_aspot_tgi_draggable_data->value();
+  }
+
+  if (!empty($draggable_data)) {
+    $draggable_data = json_decode($draggable_data);
+  }
+
+  if (!empty($aspot_node->field_usa_tv_aspot_desktop)) {
+    $file = file_load($aspot_node_wrapper->field_usa_tv_aspot_desktop->file->fid->value());
+    $banner_images['desktop'] = $file->uri;
+  }
+
+  if (!empty($aspot_node->field_usa_tv_aspot_mobile)) {
+    $file = file_load($aspot_node_wrapper->field_usa_tv_aspot_mobile->file->fid->value());
+    $banner_images['mobile'] = $file->uri;
+  }
+  else {
+
+    $banner_images['mobile'] = $banner_images['desktop'];
+  }
+
+  $theme_array = array(
+    'show_url' => !empty($aspot_node->field_usa_aspot_link)
+      ? url($aspot_node_wrapper->field_usa_aspot_link->url->value())
+      : '',
+    'show_class' => usanetwork_tv_shows_color_show_css_class($show_node),
+    'show_poster' => array(
+      'mobile' => image_style_url('600x500', $banner_images['mobile']),
+      'desktop' => image_style_url('2490x1418', $banner_images['desktop']),
+    ),
+    'show_title_prefix_style' => isset($draggable_data->title_prefix)
+      ? array(
+        'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix),
+        'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->title_prefix))
+      : false,
+    'show_title_style' => isset($draggable_data->title)
+      ? array(
+        'desktop' =>_usanetwork_aspot_get_draggable_style_data($draggable_data->title),
+        'mobile' =>_usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->title))
+      : false,
+    'show_draggable_data' => !empty($draggable_data)
+      ? $draggable_data
+      : '',
+  );
+  if (!empty($aspot_node->field_aspot_tgi_title_prefix)) {
+    $value =  $aspot_node_wrapper->field_aspot_tgi_title_prefix->value();
+    $theme_array['show_title_prefix'] = $value['value'];
+  }
+  if (!empty($aspot_node->field_aspot_tgi_title)) {
+    $value =  $aspot_node_wrapper->field_aspot_tgi_title->value();
+    $theme_array['show_title'] = $value['value'];
+  }
+
+  $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
+
+  if (in_array('social_meter', $enabled_elements) && module_exists('usanetwork_social_meter')) {
+    $theme_array['social_meter'] = usanetwork_social_meter_get($aspot_node);
+  }
+  
+  return theme('usanetwork_aspot_tvshow_slide', $theme_array);
 }
 
 function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {

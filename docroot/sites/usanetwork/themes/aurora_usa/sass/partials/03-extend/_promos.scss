@@ -272,24 +272,24 @@
       }
       .meta {
         display: block;
-        height: 100%;
+        height: calc(100% - 65px);
         max-width: none;
+        overflow: hidden;
         padding: 0;
-        padding-bottom: 60px;
         position: relative;
         text-align: center;
         width: 100%;
         @include breakpoint($bp-min-1601-width) {
-          padding-bottom: 80px;
+          height: calc(100% - 80px);
         }
         @include breakpoint($between-641-768) {
-          padding-bottom: 80px;
+          height: calc(100% - 80px);
         }
         @include breakpoint($bp-480-width) {
-          padding-bottom: 50px;
+          height: calc(100% - 54px);
         }
       }
-      .time {
+      .topic {
         font-family: $tex-gyreschola-italic;
         font-size: 9px;
         line-height: 11px;
@@ -335,7 +335,7 @@
           margin-top: 13px;
         }
       }
-      .hashtag {
+      .title {
         font-family: $avalon-demi;
         font-size: 15px;
         letter-spacing: 1px;
@@ -382,35 +382,34 @@
         }
       }
       .meta-button {
-        bottom: 20px;
         cursor: pointer;
         font-family: $avalon-demi;
         font-size: 13px;
         height: 35px;
         letter-spacing: 1px;
         line-height: 35px;
+        margin-top: 15px;
         overflow: hidden;
-        position: absolute;
         text-align: center;
         text-transform: uppercase;
         width: 100%;
         @include breakpoint($bp-min-1601-width) {
-          bottom: 24px;
           font-size: 15px;
           height: 48px;
           line-height: 48px;
+          margin-top: 16px;
         }
         @include breakpoint($between-641-768) {
-          bottom: 24px;
           font-size: 15px;
           height: 48px;
           line-height: 48px;
+          margin-top: 16px;
         }
         @include breakpoint($bp-480-width) {
-          bottom: 15px;
           font-size: 12px;
           height: 30px;
           line-height: 30px;
+          margin-top: 12px;
         }
         &:hover {
           opacity: 0.7;

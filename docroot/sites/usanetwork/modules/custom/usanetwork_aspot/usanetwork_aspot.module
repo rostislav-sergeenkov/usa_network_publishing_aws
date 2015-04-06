@@ -706,7 +706,7 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
     $draggable_data = $aspot_node_wrapper->field_aspot_tgi_draggable_data->value();
   }
 
-  if (!empty($draggable_data)) {
+  if (!empty($draggable_data) && !is_string($draggable_data)) {
     $draggable_data = json_decode($draggable_data);
   }
 

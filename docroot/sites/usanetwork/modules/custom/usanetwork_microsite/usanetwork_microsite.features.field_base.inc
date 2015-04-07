@@ -472,6 +472,7 @@ function usanetwork_microsite_field_default_field_bases() {
         'new' => 'New Design',
         'dig' => 'Dig',
         'mrrobot' => 'Mr. Robot',
+        'gracelandcatchup' => 'Graceland Catchup',
       ),
       'allowed_values_function' => '',
     ),

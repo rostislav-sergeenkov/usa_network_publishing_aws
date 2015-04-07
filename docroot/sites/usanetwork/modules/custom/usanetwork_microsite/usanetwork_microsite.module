@@ -15,7 +15,7 @@ define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 define('USANETWORK_MICROSITE_QUIZ_NODE_TYPE', 'quiz');
 define('USANETWORK_MICROSITE_GALLERY_NODE_TYPE', 'media_gallery');
 define("USANETWORK_MICROSITE_ALL_VIDEOS", "All videos");
-define("USANETWORK_MICROSITE_FULL_VIDEO", "Full videos");
+define("USANETWORK_MICROSITE_FULL_VIDEO", "Full episodes");
 define("USANETWORK_MICROSITE_VIDEOS_LIMIT", "12");
 
 include_once 'usanetwork_microsite.features.inc';
@@ -423,7 +423,6 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
   if (!empty($node->field_ms_tune_in)) {
     $theme_variables['tune_in'] = $node_wrapper->field_ms_tune_in->value();
   }
-
   return $theme_variables;
 }
 

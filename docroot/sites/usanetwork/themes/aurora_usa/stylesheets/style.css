@@ -712,33 +712,33 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .best-of-block ul li.first .meta, .best-of-block ul li:nth-child(2) .meta, .best-of-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta, .consumptionator-content-block .show-content ul li .meta, .consumptionator-content-block .see-also-content ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .best-of-block ul li.first .meta, .best-of-block ul li:nth-child(2) .meta, .best-of-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta, .related-content-block ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
   direction: ltr;
   color: #ffffff;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .best-of-block ul li.first .meta .description, .best-of-block ul li:nth-child(2) .meta .description, .best-of-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .description, .consumptionator-content-block .show-content ul li .meta .description, .consumptionator-content-block .see-also-content ul li .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .usa-home-bspot .meta .description, .usa-home-cspot .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .best-of-block ul li.first .meta .show-title, .best-of-block ul li:nth-child(2) .meta .show-title, .best-of-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .show-title, .consumptionator-content-block .show-content ul li .meta .show-title, .consumptionator-content-block .see-also-content ul li .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .usa-home-bspot .meta .show-title, .usa-home-cspot .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .best-of-block ul li.first .meta .topic, .best-of-block ul li:nth-child(2) .meta .topic, .best-of-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .topic, .consumptionator-content-block .show-content ul li .meta .topic, .consumptionator-content-block .see-also-content ul li .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic, .usa-home-bspot .meta .topic, .usa-home-cspot .meta .topic {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .best-of-block ul li.first .meta .description, .best-of-block ul li:nth-child(2) .meta .description, .best-of-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .description, .related-content-block ul li .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .usa-home-bspot .meta .description, .usa-home-cspot .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .best-of-block ul li.first .meta .show-title, .best-of-block ul li:nth-child(2) .meta .show-title, .best-of-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .show-title, .related-content-block ul li .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .usa-home-bspot .meta .show-title, .usa-home-cspot .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .best-of-block ul li.first .meta .topic, .best-of-block ul li:nth-child(2) .meta .topic, .best-of-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .topic, .related-content-block ul li .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic, .usa-home-bspot .meta .topic, .usa-home-cspot .meta .topic {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
   font-size: 16px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .best-of-block ul li.first .meta .additional span, .best-of-block ul li:nth-child(2) .meta .additional span, .best-of-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional span, .consumptionator-content-block .show-content ul li .meta .additional span, .consumptionator-content-block .see-also-content ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .best-of-block ul li.first .meta .additional span, .best-of-block ul li:nth-child(2) .meta .additional span, .best-of-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional span, .related-content-block ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
@@ -996,29 +996,29 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
-.social-block.carousel-block .carousel ul li .social-promo .asset-img {
+.social-block.carousel-block .carousel ul li .social-promo .asset-img, .related-content-block ul li .social-promo .asset-img {
   float: left;
   height: 200px;
   position: relative;
   width: 200px;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .asset-img {
+  .social-block.carousel-block .carousel ul li .social-promo .asset-img, .related-content-block ul li .social-promo .asset-img {
     height: 284px;
     width: 284px;
   }
 }
 @media (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .asset-img {
+  .social-block.carousel-block .carousel ul li .social-promo .asset-img, .related-content-block ul li .social-promo .asset-img {
     height: 100%;
     width: 53.5%;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .asset-img img {
+.social-block.carousel-block .carousel ul li .social-promo .asset-img img, .related-content-block ul li .social-promo .asset-img img {
   height: 100%;
   width: 100%;
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper, .related-content-block ul li .social-promo .meta-wrapper {
   background: #3a3a3a;
   bottom: auto;
   color: #ffffff;
@@ -1030,27 +1030,27 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 175px;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper, .related-content-block ul li .social-promo .meta-wrapper {
     height: 284px;
     padding: 0 30px;
     width: 249px;
   }
 }
 @media (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper, .related-content-block ul li .social-promo .meta-wrapper {
     height: 100%;
     width: 46.5%;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper, .related-content-block ul li .social-promo .meta-wrapper {
     padding: 0 30px;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper:before {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper:before, .related-content-block ul li .social-promo .meta-wrapper:before {
   width: 3px;
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta, .related-content-block ul li .social-promo .meta-wrapper .meta {
   display: block;
   height: calc(100% - 52px);
   max-width: none;
@@ -1061,21 +1061,21 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 100%;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta, .related-content-block ul li .social-promo .meta-wrapper .meta {
     height: calc(100% - 87px);
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta, .related-content-block ul li .social-promo .meta-wrapper .meta {
     height: calc(100% - 90px);
   }
 }
 @media (max-width: 480px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta, .related-content-block ul li .social-promo .meta-wrapper .meta {
     height: calc(100% - 44px);
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic, .related-content-block ul li .social-promo .meta-wrapper .topic {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 9px;
   line-height: 11px;
@@ -1084,27 +1084,27 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic, .related-content-block ul li .social-promo .meta-wrapper .topic {
     font-size: 11px;
     line-height: 13px;
     margin-top: 17px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic, .related-content-block ul li .social-promo .meta-wrapper .topic {
     font-size: 11px;
     line-height: 13px;
     margin-top: 17px;
   }
 }
 @media (max-width: 480px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic, .related-content-block ul li .social-promo .meta-wrapper .topic {
     font-size: 8px;
     line-height: 10px;
     margin-top: 13px;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo .meta-wrapper .show-title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 1px;
@@ -1113,27 +1113,27 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo .meta-wrapper .show-title {
     font-size: 13px;
     line-height: 15px;
     margin-top: 17px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo .meta-wrapper .show-title {
     font-size: 13px;
     line-height: 15px;
     margin-top: 17px;
   }
 }
 @media (max-width: 480px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo .meta-wrapper .show-title {
     font-size: 9px;
     line-height: 11px;
     margin-top: 13px;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 15px;
   letter-spacing: 1px;
@@ -1142,27 +1142,27 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
     font-size: 17px;
     line-height: 20px;
     margin-top: 7px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
     font-size: 17px;
     line-height: 20px;
     margin-top: 7px;
   }
 }
 @media (max-width: 480px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
     font-size: 13px;
     line-height: 15px;
     margin-top: 4px;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 20px;
@@ -1171,14 +1171,14 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   white-space: normal;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 15px;
     line-height: 22px;
     margin-top: 15px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 15px;
     line-height: 22px;
     margin-top: 15px;
@@ -1186,19 +1186,19 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 640px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     max-height: 100px;
   }
 }
 @media (max-width: 480px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 11px;
     line-height: 13px;
     margin-top: 8px;
     max-height: 50px;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
   cursor: pointer;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -1212,7 +1212,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 100%;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
     font-size: 15px;
     height: 48px;
     line-height: 48px;
@@ -1220,7 +1220,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
     font-size: 15px;
     height: 48px;
     line-height: 48px;
@@ -1228,17 +1228,17 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 480px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
     font-size: 12px;
     height: 26px;
     line-height: 26px;
     margin-top: 9px;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button:hover {
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button:hover, .related-content-block ul li .social-promo .meta-wrapper .meta-button:hover {
   opacity: 0.7;
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-icon {
+.social-block.carousel-block .carousel ul li .social-promo .meta-icon, .related-content-block ul li .social-promo .meta-icon {
   height: 40px;
   left: 180px;
   margin-top: -20px;
@@ -1246,7 +1246,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   z-index: 2;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-icon {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-icon, .related-content-block ul li .social-promo .meta-icon {
     height: 60px;
     left: 254px;
     margin-top: -30px;
@@ -1254,7 +1254,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-icon {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-icon, .related-content-block ul li .social-promo .meta-icon {
     height: 60px;
     left: 53.5%;
     margin-left: -30px;
@@ -1263,19 +1263,19 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 640px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-icon {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-icon, .related-content-block ul li .social-promo .meta-icon {
     left: 53.5%;
     margin-left: -20px;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-icon:before {
+.social-block.carousel-block .carousel ul li .social-promo .meta-icon:before, .related-content-block ul li .social-promo .meta-icon:before {
   font-size: 22px;
   height: 40px;
   line-height: 40px;
   width: 40px;
 }
 @media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-icon:before {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-icon:before, .related-content-block ul li .social-promo .meta-icon:before {
     font-size: 32px;
     height: 60px;
     line-height: 60px;
@@ -1283,7 +1283,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-icon:before {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-icon:before, .related-content-block ul li .social-promo .meta-icon:before {
     font-size: 32px;
     height: 60px;
     line-height: 60px;
@@ -2187,62 +2187,62 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
-.show-latest-block ul li .show-latest-promo .asset-img {
+.show-latest-block ul li .show-latest-promo .asset-img, .related-content-block ul li .show-latest-promo .asset-img {
   height: 100%;
   width: 100%;
 }
-.show-latest-block ul li .show-latest-promo .asset-img img {
+.show-latest-block ul li .show-latest-promo .asset-img img, .related-content-block ul li .show-latest-promo .asset-img img {
   height: 100%;
   width: 100%;
 }
 @media (max-width: 640px) {
-  .show-latest-block ul li .show-latest-promo.big .meta-wrapper {
+  .show-latest-block ul li .show-latest-promo.big .meta-wrapper, .related-content-block ul li .show-latest-promo.big .meta-wrapper {
     height: 29%;
   }
 }
 @media (max-width: 640px) {
-  .show-latest-block ul li .show-latest-promo.big .meta .caption {
+  .show-latest-block ul li .show-latest-promo.big .meta .caption, .related-content-block ul li .show-latest-promo.big .meta .caption {
     font-size: 14px;
     line-height: 18px;
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo.big .meta .caption {
+  .show-latest-block ul li .show-latest-promo.big .meta .caption, .related-content-block ul li .show-latest-promo.big .meta .caption {
     font-size: 10px;
     line-height: 13px;
   }
 }
 @media (max-width: 640px) {
-  .show-latest-block ul li .show-latest-promo.big .meta .title {
+  .show-latest-block ul li .show-latest-promo.big .meta .title, .related-content-block ul li .show-latest-promo.big .meta .title {
     font-size: 20px;
     line-height: 26px;
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo.big .meta .title {
+  .show-latest-block ul li .show-latest-promo.big .meta .title, .related-content-block ul li .show-latest-promo.big .meta .title {
     font-size: 14px;
     line-height: 18px;
   }
 }
 @media (max-width: 640px) {
-  .show-latest-block ul li .show-latest-promo.big .meta .additional {
+  .show-latest-block ul li .show-latest-promo.big .meta .additional, .related-content-block ul li .show-latest-promo.big .meta .additional {
     font-size: 14px;
     line-height: 18px;
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo.big .meta .additional {
+  .show-latest-block ul li .show-latest-promo.big .meta .additional, .related-content-block ul li .show-latest-promo.big .meta .additional {
     font-size: 10px;
     line-height: 13px;
   }
 }
 @media (max-width: 640px) {
-  .show-latest-block ul li .show-latest-promo.big .meta-icon {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon, .related-content-block ul li .show-latest-promo.big .meta-icon {
     height: 42px;
     margin-top: -21px;
     width: 42px;
   }
-  .show-latest-block ul li .show-latest-promo.big .meta-icon:before {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon:before, .related-content-block ul li .show-latest-promo.big .meta-icon:before {
     font-size: 24px;
     height: 42px;
     line-height: 42px;
@@ -2250,12 +2250,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo.big .meta-icon {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon, .related-content-block ul li .show-latest-promo.big .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
-  .show-latest-block ul li .show-latest-promo.big .meta-icon:before {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon:before, .related-content-block ul li .show-latest-promo.big .meta-icon:before {
     font-size: 16px;
     height: 30px;
     line-height: 30px;
@@ -2263,16 +2263,16 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 640px) {
-  .show-latest-block ul li .show-latest-promo.big .meta-icon ~ .meta {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo.big .meta-icon ~ .meta {
     padding-left: calc(8% + 42px);
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo.big .meta-icon ~ .meta {
+  .show-latest-block ul li .show-latest-promo.big .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo.big .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
-.show-latest-block ul li .show-latest-promo .meta-wrapper {
+.show-latest-block ul li .show-latest-promo .meta-wrapper, .related-content-block ul li .show-latest-promo .meta-wrapper {
   background: #656364;
   bottom: 0;
   height: 9.1vw;
@@ -2281,7 +2281,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   z-index: 1;
 }
 @media (min-width: 769px) {
-  .show-latest-block ul li .show-latest-promo .meta-wrapper {
+  .show-latest-block ul li .show-latest-promo .meta-wrapper, .related-content-block ul li .show-latest-promo .meta-wrapper {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
@@ -2292,22 +2292,22 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .show-latest-block ul li .show-latest-promo .meta-wrapper {
+  .show-latest-block ul li .show-latest-promo .meta-wrapper, .related-content-block ul li .show-latest-promo .meta-wrapper {
     height: 8.6vw;
   }
 }
 @media (max-width: 640px) {
-  .show-latest-block ul li .show-latest-promo .meta-wrapper {
+  .show-latest-block ul li .show-latest-promo .meta-wrapper, .related-content-block ul li .show-latest-promo .meta-wrapper {
     height: 12.4vw;
   }
 }
-.show-latest-block ul li .show-latest-promo .meta-wrapper-inner {
+.show-latest-block ul li .show-latest-promo .meta-wrapper-inner, .related-content-block ul li .show-latest-promo .meta-wrapper-inner {
   height: 100%;
   display: table;
   position: relative;
   width: 100%;
 }
-.show-latest-block ul li .show-latest-promo .meta {
+.show-latest-block ul li .show-latest-promo .meta, .related-content-block ul li .show-latest-promo .meta {
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
@@ -2315,87 +2315,87 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   vertical-align: middle;
   width: 100%;
 }
-.show-latest-block ul li .show-latest-promo .meta .caption {
+.show-latest-block ul li .show-latest-promo .meta .caption, .related-content-block ul li .show-latest-promo .meta .caption {
   font-size: 14px;
   line-height: 18px;
 }
 @media (min-width: 1601px) {
-  .show-latest-block ul li .show-latest-promo .meta .caption {
-    font-size: 22px;
+  .show-latest-block ul li .show-latest-promo .meta .caption, .related-content-block ul li .show-latest-promo .meta .caption {
+    font-size: 23px;
     line-height: 30px;
   }
 }
 @media (max-width: 768px) {
-  .show-latest-block ul li .show-latest-promo .meta .caption {
+  .show-latest-block ul li .show-latest-promo .meta .caption, .related-content-block ul li .show-latest-promo .meta .caption {
     font-size: 10px;
     line-height: 16px;
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo .meta .caption {
+  .show-latest-block ul li .show-latest-promo .meta .caption, .related-content-block ul li .show-latest-promo .meta .caption {
     font-size: 8px;
     line-height: 10px;
   }
 }
-.show-latest-block ul li .show-latest-promo .meta .title {
+.show-latest-block ul li .show-latest-promo .meta .title, .related-content-block ul li .show-latest-promo .meta .title {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 26px;
 }
 @media (min-width: 1601px) {
-  .show-latest-block ul li .show-latest-promo .meta .title {
+  .show-latest-block ul li .show-latest-promo .meta .title, .related-content-block ul li .show-latest-promo .meta .title {
     font-size: 34px;
     line-height: 40px;
   }
 }
 @media (max-width: 768px) {
-  .show-latest-block ul li .show-latest-promo .meta .title {
+  .show-latest-block ul li .show-latest-promo .meta .title, .related-content-block ul li .show-latest-promo .meta .title {
     font-size: 14px;
     line-height: 18px;
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo .meta .title {
+  .show-latest-block ul li .show-latest-promo .meta .title, .related-content-block ul li .show-latest-promo .meta .title {
     font-size: 10px;
     line-height: 13px;
   }
 }
-.show-latest-block ul li .show-latest-promo .meta .additional {
+.show-latest-block ul li .show-latest-promo .meta .additional, .related-content-block ul li .show-latest-promo .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 14px;
   line-height: 18px;
 }
 @media (min-width: 1601px) {
-  .show-latest-block ul li .show-latest-promo .meta .additional {
-    font-size: 22px;
+  .show-latest-block ul li .show-latest-promo .meta .additional, .related-content-block ul li .show-latest-promo .meta .additional {
+    font-size: 23px;
     line-height: 30px;
   }
 }
 @media (max-width: 768px) {
-  .show-latest-block ul li .show-latest-promo .meta .additional {
+  .show-latest-block ul li .show-latest-promo .meta .additional, .related-content-block ul li .show-latest-promo .meta .additional {
     font-size: 10px;
     line-height: 16px;
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo .meta .additional {
+  .show-latest-block ul li .show-latest-promo .meta .additional, .related-content-block ul li .show-latest-promo .meta .additional {
     font-size: 8px;
     line-height: 10px;
   }
 }
-.show-latest-block ul li .show-latest-promo .meta-icon {
+.show-latest-block ul li .show-latest-promo .meta-icon, .related-content-block ul li .show-latest-promo .meta-icon {
   left: 4%;
   margin-top: -19px;
   position: absolute;
   top: 50%;
 }
 @media (min-width: 769px) {
-  .show-latest-block ul li .show-latest-promo .meta-icon {
+  .show-latest-block ul li .show-latest-promo .meta-icon, .related-content-block ul li .show-latest-promo .meta-icon {
     height: 42px;
     margin-top: -21px;
     width: 42px;
   }
-  .show-latest-block ul li .show-latest-promo .meta-icon:before {
+  .show-latest-block ul li .show-latest-promo .meta-icon:before, .related-content-block ul li .show-latest-promo .meta-icon:before {
     font-size: 24px;
     height: 42px;
     line-height: 42px;
@@ -2403,12 +2403,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (min-width: 1601px) {
-  .show-latest-block ul li .show-latest-promo .meta-icon {
+  .show-latest-block ul li .show-latest-promo .meta-icon, .related-content-block ul li .show-latest-promo .meta-icon {
     height: 80px;
     margin-top: -40px;
     width: 80px;
   }
-  .show-latest-block ul li .show-latest-promo .meta-icon:before {
+  .show-latest-block ul li .show-latest-promo .meta-icon:before, .related-content-block ul li .show-latest-promo .meta-icon:before {
     font-size: 44px;
     height: 80px;
     line-height: 80px;
@@ -2416,34 +2416,44 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo .meta-icon {
+  .show-latest-block ul li .show-latest-promo .meta-icon, .related-content-block ul li .show-latest-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
-  .show-latest-block ul li .show-latest-promo .meta-icon:before {
+  .show-latest-block ul li .show-latest-promo .meta-icon:before, .related-content-block ul li .show-latest-promo .meta-icon:before {
     font-size: 16px;
     height: 30px;
     line-height: 30px;
     width: 30px;
   }
 }
-.show-latest-block ul li .show-latest-promo .meta-icon ~ .meta {
+.show-latest-block ul li .show-latest-promo .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo .meta-icon ~ .meta {
   padding-left: calc(8% + 37px);
 }
 @media (min-width: 769px) {
-  .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta {
+  .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 42px);
   }
 }
 @media (min-width: 1601px) {
-  .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta {
+  .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 80px);
   }
 }
 @media (max-width: 480px) {
-  .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta {
+  .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .show-latest-block ul .related-content-block li .show-latest-promo .meta-wrapper, .related-content-block ul li .show-latest-promo .meta-wrapper {
+    background: none;
+  }
+}
+@media (max-width: 640px) {
+  .show-latest-block ul .related-content-block li .show-latest-promo .meta-wrapper, .related-content-block ul li .show-latest-promo .meta-wrapper {
+    height: 29%;
   }
 }
 
@@ -2898,6 +2908,10 @@ ul.menu li {
 }
 .load-more-link a.disabled {
   display: none;
+}
+.related-content-block .load-more-link a {
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 .load-more-loader {
@@ -11286,827 +11300,84 @@ footer h2 {
   background-color: #e9eaeb;
 }
 
-.consumptionator-content-block {
-  max-width: 2000px;
-  padding: 0px;
+.related-content-block {
+  background: #000000;
+  border-bottom: 2px solid;
+  margin-bottom: 100px;
+  padding: 40px 16px;
   position: relative;
   width: 100%;
 }
-.consumptionator-content-block:after {
+.related-content-block:after {
   clear: both;
   content: '';
   display: table;
 }
-@media (max-width: 480px) {
-  .consumptionator-content-block {
-    margin: 0 auto;
+@media (min-width: 1901px) {
+  .related-content-block {
+    margin-bottom: 190px;
   }
 }
-.consumptionator-content-block .show-content, .consumptionator-content-block .see-also-content {
-  padding: 40px 20px 20px;
-}
-@media (max-width: 1280px) {
-  .consumptionator-content-block .show-content, .consumptionator-content-block .see-also-content {
-    padding: 20px 10px 10px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content, .consumptionator-content-block .see-also-content {
-    padding: 10px 5px 5px;
-  }
-}
-.consumptionator-content-block .show-content ul, .consumptionator-content-block .see-also-content ul {
-  position: relative;
-  width: 100%;
-}
-.consumptionator-content-block .show-content ul li, .consumptionator-content-block .see-also-content ul li {
-  margin-bottom: 10px;
-  overflow: hidden;
-  position: relative;
-}
-@media (min-width: 1281px) {
-  .consumptionator-content-block .show-content ul li, .consumptionator-content-block .see-also-content ul li {
-    float: left;
-    width: 49%;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(odd), .consumptionator-content-block .see-also-content ul li:nth-child(odd) {
-    margin-right: 1%;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li:after, .consumptionator-content-block .see-also-content ul li:after {
-    background: #3a3a3a;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-  .consumptionator-content-block .show-content ul li .asset-img, .consumptionator-content-block .see-also-content ul li .asset-img {
-    padding-bottom: 27%;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta-icon, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta-icon {
-    left: 14px;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta {
-    margin-top: -20px;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta .title, .consumptionator-content-block .show-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .show-content ul li .meta-wrap .meta .additional, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .title, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .additional {
-    margin-left: 58px;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta .title, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .title {
-    font-size: 12px;
-    line-height: 16px;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .show-content ul li .meta-wrap .meta .additional, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .additional {
-    font-size: 10px;
-    line-height: 12px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta-icon, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta-icon {
-    left: 11px;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta {
-    margin-top: -15px;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta .title, .consumptionator-content-block .show-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .show-content ul li .meta-wrap .meta .additional, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .title, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .additional {
-    margin-left: 50px;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta .title, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .title {
-    font-size: 10px;
-    line-height: 12px;
-  }
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .show-content ul li .meta-wrap .meta .additional, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .additional {
-    font-size: 8px;
-    line-height: 10px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item, .consumptionator-content-block .see-also-content ul li.social-item {
-    padding-bottom: 25px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .asset-img, .consumptionator-content-block .see-also-content ul li.social-item .asset-img {
-  padding-bottom: 0%;
-}
-.consumptionator-content-block .show-content ul li.social-item:after, .consumptionator-content-block .see-also-content ul li.social-item:after {
-  display: none;
-}
-.consumptionator-content-block .show-content ul li.social-item .social-meta, .consumptionator-content-block .see-also-content ul li.social-item .social-meta {
-  color: #ffffff;
-  left: 10%;
-  position: absolute;
-  text-align: center;
-  text-transform: uppercase;
-  top: 0px;
-  width: 80%;
-}
-.consumptionator-content-block .show-content ul li.social-item .social-meta .time, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .time {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
-  font-size: 12px;
-  line-height: 50px;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .time, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .time {
-    line-height: 20px;
-    margin-top: 20px;
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .time, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .time {
-    line-height: 25px;
-    margin-top: 20px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .time, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .time {
-    font-size: 10px;
-    line-height: 14px;
-    margin-top: 10px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .time, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .time {
-    font-size: 8px;
-    line-height: 10px;
-    margin-top: 5px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .social-meta .meta-social-title, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-social-title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  line-height: 20px;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-social-title, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-social-title {
-    line-height: 20px;
-    font-size: 14px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-social-title, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-social-title {
-    font-size: 12px;
-    line-height: 14px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-social-title, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-social-title {
-    font-size: 10px;
-    line-height: 12px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .social-meta .meta-additional, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-additional {
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
-  line-height: 20px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-additional, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-additional {
-    line-height: 20px;
-    font-size: 12px;
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-additional, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-additional {
-    line-height: 25px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-additional, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-additional {
-    font-size: 10px;
-    line-height: 14px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-additional, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-additional {
-    font-size: 8px;
-    line-height: 10px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .social-meta .meta-text, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-text {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 25px;
-  text-transform: none;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-text, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-text {
-    font-size: 20px;
-    line-height: 28px;
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-text, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-text {
-    font-size: 20px;
-    margin-top: 10px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-text, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-text {
-    font-size: 12px;
-    margin-top: 7px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-meta .meta-text, .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-text {
-    font-size: 10px;
-    margin-top: 3px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .social-usa:after, .consumptionator-content-block .see-also-content ul li.social-item .social-usa:after {
-  bottom: 60px;
-  margin-left: -23px;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-usa:after, .consumptionator-content-block .see-also-content ul li.social-item .social-usa:after {
-    bottom: 50px;
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-usa:after, .consumptionator-content-block .see-also-content ul li.social-item .social-usa:after {
-    bottom: 50px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-usa:after, .consumptionator-content-block .see-also-content ul li.social-item .social-usa:after {
-    bottom: 45px;
-    margin-left: -15px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li.social-item .social-usa:after, .consumptionator-content-block .see-also-content ul li.social-item .social-usa:after {
-    bottom: 25%;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .form-wrapper, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper {
-  bottom: 0px;
-  left: 0;
-  height: 40px;
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .form-wrapper, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper {
-    height: 25px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .form-wrapper form, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper form {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-.consumptionator-content-block .show-content ul li.social-item .form-wrapper form input, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper form input {
-  border: 0;
-  border-radius: 0;
-  height: 100%;
-  outline: none;
+.related-content-block ul {
+  margin: 0;
   padding: 0;
-  width: 100%;
-}
-.consumptionator-content-block .show-content ul li.social-item .form-wrapper .text-item, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .text-item {
-  height: 100%;
-  margin-right: 112px;
   position: relative;
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .form-wrapper .text-item, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .text-item {
-    margin-right: 70px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li.social-item .form-wrapper .text-item, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .text-item {
-    margin-right: 45px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .form-wrapper .text-item input, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .text-item input {
-  border: 1px solid #8f8f8f;
-  border-radius: 0;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  padding-left: 20px;
-  text-transform: uppercase;
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .form-wrapper .text-item input, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .text-item input {
-    font-size: 10px;
-    padding-left: 10px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .form-wrapper .submit-item, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .submit-item {
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 112px;
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .form-wrapper .submit-item, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .submit-item {
-    width: 70px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li.social-item .form-wrapper .submit-item, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .submit-item {
-    width: 45px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .form-wrapper .submit-item input, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .submit-item input {
-  background: darkgrey;
-  border-radius: 0;
-  color: #ffffff;
-  cursor: pointer;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 40px;
-  text-align: center;
-  text-transform: uppercase;
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content ul li.social-item .form-wrapper .submit-item input, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .submit-item input {
-    font-size: 10px;
-    line-height: 25px;
-  }
-}
-.consumptionator-content-block .show-content ul li.social-item .form-wrapper .submit-item input:hover, .consumptionator-content-block .see-also-content ul li.social-item .form-wrapper .submit-item input:hover {
-  opacity: 0.7;
-}
-.consumptionator-content-block .show-content ul li a, .consumptionator-content-block .see-also-content ul li a {
-  display: block;
-  height: 100%;
   width: 100%;
 }
-.consumptionator-content-block .show-content ul li img, .consumptionator-content-block .see-also-content ul li img {
-  height: auto;
-  width: 100%;
-}
-.consumptionator-content-block .show-content ul li .meta-wrap, .consumptionator-content-block .see-also-content ul li .meta-wrap {
-  bottom: 0px;
-  height: 33%;
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-}
-.consumptionator-content-block .show-content ul li .meta-wrap .meta-icon, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta-icon {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-}
-@media (min-width: 641px) and (max-width: 1280px) {
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta-icon, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta-icon {
-    left: 4%;
-  }
-}
-@media (min-width: 1281px) {
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta-icon, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta-icon {
-    left: 5%;
-  }
-}
-.consumptionator-content-block .show-content ul li .meta-wrap .meta-icon:before, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta-icon:before {
-  left: 50%;
-  margin-top: -18px;
-  top: 50%;
-}
-@media (max-width: 480px) {
-  .consumptionator-content-block .show-content ul li .meta-wrap .meta-icon:before, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta-icon:before {
-    margin-top: -15px;
-  }
-}
-.consumptionator-content-block .show-content ul li .meta, .consumptionator-content-block .see-also-content ul li .meta {
-  margin-top: -32px;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-}
-@media (min-width: 641px) and (max-width: 1024px) {
-  .consumptionator-content-block .show-content ul li .meta, .consumptionator-content-block .see-also-content ul li .meta {
-    margin-top: -22px;
-  }
-}
-.consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .additional {
-  margin-left: 19.25%;
-}
-.consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .additional {
-  font-size: 12px;
-  line-height: 18px;
-}
-@media (min-width: 641px) and (max-width: 1024px) {
-  .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .additional {
-    font-size: 10px;
-    line-height: 12px;
-  }
-}
-.consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title {
-  font-size: 20px;
-  line-height: 28px;
-  text-transform: uppercase;
-}
-@media (min-width: 641px) and (max-width: 1024px) {
-  .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title {
-    font-size: 16px;
-    line-height: 20px;
-  }
-}
-.consumptionator-content-block .show-content h2, .consumptionator-content-block .see-also-content h2 {
-  color: darkgrey;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .show-content h2, .consumptionator-content-block .see-also-content h2 {
-    font-size: 14px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-}
-.consumptionator-content-block .show-content {
+.related-content-block ul li {
   float: left;
-  height: 100%;
+  height: 25.4vw;
+  margin-bottom: 1.47vw;
+  margin-right: 1.6%;
+  overflow: hidden;
   position: relative;
-  width: 66%;
+  width: 49.2%;
 }
-@media (min-width: 1281px) {
-  .consumptionator-content-block .show-content {
-    width: 59.2%;
+@media (min-width: 641px) {
+  .related-content-block ul li:nth-child(2n) {
+    margin-right: 0;
   }
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-content-block .show-content {
-    width: 50%;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-content-block .show-content {
-    width: 59.3%;
+  .related-content-block ul li:nth-child(n+5) {
+    margin-bottom: 0;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-content-block .show-content {
-    width: 50%;
-  }
-}
-@media (min-width: 1281px) {
-  .consumptionator-content-block .show-content ul li:after {
-    background: #000000;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    opacity: 0.6;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-content-block .show-content ul li:nth-child(6n+1), .consumptionator-content-block .show-content ul li:nth-child(6n+2), .consumptionator-content-block .show-content ul li:nth-child(6n+5), .consumptionator-content-block .show-content ul li:nth-child(6n+6) {
-    clear: both;
-    float: none;
+  .related-content-block ul li {
+    height: 51.6vw;
+    margin-bottom: 2px;
+    margin-right: 0;
     width: 100%;
   }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+1):after, .consumptionator-content-block .show-content ul li:nth-child(6n+2):after, .consumptionator-content-block .show-content ul li:nth-child(6n+5):after, .consumptionator-content-block .show-content ul li:nth-child(6n+6):after {
-    background: #000000;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    opacity: 0.6;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3), .consumptionator-content-block .show-content ul li:nth-child(6n+4) {
-    float: left;
-    width: 49%;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .asset-img, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .asset-img {
-    padding-bottom: 27%;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3):after, .consumptionator-content-block .show-content ul li:nth-child(6n+4):after {
-    background: #3a3a3a;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) {
-    margin-right: 2%;
+  .related-content-block ul li:last-child, .related-content-block ul li.last {
+    margin-bottom: 0;
   }
 }
-@media (min-width: 769px) and (max-width: 1280px) and (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .meta, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .meta {
-    margin-top: -20px;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .caption, .consumptionator-content-block .show-content ul li:nth-child(6n+3) .additional, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .caption, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .additional {
-    font-size: 10px;
-    line-height: 12px;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .title, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .title {
-    font-size: 12px;
-    line-height: 16px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) and (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .meta-icon, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .meta-icon {
-    left: 10px;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .title, .consumptionator-content-block .show-content ul li:nth-child(6n+3) .caption, .consumptionator-content-block .show-content ul li:nth-child(6n+3) .additional, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .title, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .caption, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .additional {
-    margin-left: 54px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) and (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .meta, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .meta {
-    margin-top: -15px;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .title, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .title {
-    font-size: 10px;
-    line-height: 12px;
-  }
-  .consumptionator-content-block .show-content ul li:nth-child(6n+3) .caption, .consumptionator-content-block .show-content ul li:nth-child(6n+3) .additional, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .caption, .consumptionator-content-block .show-content ul li:nth-child(6n+4) .additional {
-    font-size: 8px;
-    line-height: 10px;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-content-block .show-content ul li:after {
-    background: #000000;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    opacity: 0.6;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-}
-.consumptionator-content-block .see-also-content {
-  background: #181818;
-  float: left;
+.related-content-block ul li > div {
   height: 100%;
+  overflow: hidden;
   position: relative;
-  width: 34%;
+  width: 100%;
 }
-@media (min-width: 1281px) {
-  .consumptionator-content-block .see-also-content {
-    width: 40.8%;
-  }
+.related-content-block .related-ad {
+  background: #656364;
+  height: 90px;
+  margin: 16px auto;
+  width: 728px;
 }
-@media (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-content-block .see-also-content {
-    width: 50%;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-content-block .see-also-content {
-    width: 40.7%;
+@media (max-width: 768px) {
+  .related-content-block .related-ad {
+    height: auto;
+    min-height: 50px;
+    max-height: 90px;
+    max-width: 728px;
+    width: 100%;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-content-block .see-also-content {
-    width: 50%;
-  }
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .see-also-content ul li .meta {
-    margin-top: -20px;
-  }
-  .consumptionator-content-block .see-also-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .additional {
-    margin-left: 58px;
-  }
-  .consumptionator-content-block .see-also-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .additional {
-    font-size: 10px;
-    line-height: 12px;
-  }
-  .consumptionator-content-block .see-also-content ul li .meta .title {
-    font-size: 12px;
-    line-height: 16px;
-  }
-  .consumptionator-content-block .see-also-content ul li .meta-icon {
-    left: 14px;
-  }
-}
-@media (min-width: 1281px) {
-  .consumptionator-content-block .see-also-content ul li:after {
-    background: #3a3a3a;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-  .consumptionator-content-block .see-also-content ul li .asset-img {
-    padding-bottom: 27%;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-content-block .see-also-content ul li {
-    width: 100%;
-  }
-}
-.consumptionator-content-block .see-also-content ul li:after {
-  margin-left: 10px;
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-content-block .see-also-content ul li:after {
-    background: #3a3a3a;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-  .consumptionator-content-block .see-also-content ul li .asset-img {
-    padding-bottom: 27%;
-  }
-  .consumptionator-content-block .see-also-content ul li .meta-wrap .meta-icon {
-    left: 14px;
-  }
-  .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .title, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .caption, .consumptionator-content-block .see-also-content ul li .meta-wrap .meta .additional {
-    margin-left: 58px;
-  }
-}
-.consumptionator-content-block .see-also-content ul li.social-item {
-  background: #000000;
-}
-@media (min-width: 1281px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .asset-img {
-    padding-bottom: 27%;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-content-block .see-also-content ul li.social-item {
-    padding-bottom: 27%;
-  }
-}
-.consumptionator-content-block .see-also-content ul li.social-item .node:after {
-  bottom: 13px;
-}
-.consumptionator-content-block .see-also-content ul li.social-item .social-meta {
-  top: 20%;
-}
-.consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-social-title {
-  line-height: 28px;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-social-title {
-    line-height: 20px;
-    font-size: 12px;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-social-title {
-    line-height: 14px;
-    font-size: 16px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .social-meta .meta-social-title {
-    line-height: 14px;
-  }
-}
-.consumptionator-content-block .see-also-content ul li.social-item .meta-more {
-  bottom: 15px;
-  color: #ffffff;
-  display: block;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  height: auto;
-  letter-spacing: 1px;
-  position: absolute;
-  right: 10px;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 120px;
-}
-@media (min-width: 1601px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .meta-more {
-    letter-spacing: 0.5px;
-    width: 105px;
-  }
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .meta-more {
-    display: block;
-    text-indent: -9999px;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .meta-more {
-    letter-spacing: 0.5px;
-    width: 110px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .meta-more {
-    display: block;
-    text-indent: -9999px;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-  }
-}
-.consumptionator-content-block .see-also-content ul li.social-item .meta-more:after {
-  color: #ffffff;
-  content: "\e608";
-  display: block;
-  font-family: "ico-font";
-  font-size: 12px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-}
-@media (min-width: 1281px) and (max-width: 1600px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .meta-more:after {
-    display: none;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-content-block .see-also-content ul li.social-item .meta-more:after {
-    display: none;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+1), .consumptionator-content-block .see-also-content ul li:nth-child(6n+4), .consumptionator-content-block .see-also-content ul li:nth-child(6n+5), .consumptionator-content-block .see-also-content ul li:nth-child(6n+6) {
-    clear: both;
-    float: none;
-    width: 100%;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+1):after, .consumptionator-content-block .see-also-content ul li:nth-child(6n+4):after, .consumptionator-content-block .see-also-content ul li:nth-child(6n+5):after, .consumptionator-content-block .see-also-content ul li:nth-child(6n+6):after {
-    background: #000000;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    opacity: 0.6;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2), .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) {
-    float: left;
-    width: 49%;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .asset-img, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .asset-img {
-    padding-bottom: 27%;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2):after, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3):after {
-    background: #3a3a3a;
-    bottom: 0px;
-    content: '';
-    height: 33%;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) {
-    margin-right: 2%;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) and (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .meta, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .meta {
-    margin-top: -20px;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .caption, .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .additional, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .caption, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .additional {
-    font-size: 10px;
-    line-height: 12px;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .title, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .title {
-    font-size: 12px;
-    line-height: 16px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) and (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .title, .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .caption, .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .additional, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .title, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .caption, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .additional {
-    margin-left: 58px;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .meta-icon, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .meta-icon {
-    left: 14px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) and (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .meta, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .meta {
-    margin-top: -15px;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .caption, .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .additional, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .caption, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .additional {
-    font-size: 8px;
-    line-height: 10px;
-  }
-  .consumptionator-content-block .see-also-content ul li:nth-child(6n+2) .title, .consumptionator-content-block .see-also-content ul li:nth-child(6n+3) .title {
-    font-size: 10px;
-    line-height: 12px;
+  .related-content-block .related-ad {
+    height: 50px;
+    margin: 1.47vw auto;
+    width: 300px;
   }
 }
 

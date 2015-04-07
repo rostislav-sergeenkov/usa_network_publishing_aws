@@ -626,6 +626,18 @@ function _usanetwork_tv_show_menu_get_show(&$entity_type = NULL, $position = 1, 
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['field_tvs_best_of_title'])) {
+    $form_language = $form['language']['#value'];
+
+    if (empty($form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'])) {
+      $show_title = $form['title']['#default_value'];
+      $default_best_of_value = t('Best of "!show_title"', array('!show_title' => $show_title));
+
+      $form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'] = $default_best_of_value;
+      $form['field_tvs_best_of_title'][$form_language][0]['value']['#description'] = t('Default: !default_title', array('!default_title' => $default_best_of_value));
+    }
+  }
+
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows.js';
 }
 
@@ -1137,10 +1149,22 @@ function _usanetwork_tv_shows_discription_item($show, $field_list, &$description
  */
 function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0, $limit = 1) {
   $content_items = array();
+  $node_filters = array(
+    'fshow.bundle' => array(
+      'values' => array(
+        'usanetwork_promo',
+        'tv_episode',
+        'media_gallery',
+        'post',
+        'person',
+        'quiz'),
+      'operator' => 'IN',
+    ),
+  );
 
   // Pull nodes
-  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'changed');
-
+  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'changed', $node_filters);
+  
   // Pull files
   $files = _usanetwork_tv_shows_pull_related_files($tv_show_node->nid, $start_from, $limit, 'DESC', 'timestamp');
 
@@ -1278,11 +1302,13 @@ function _usanetwork_tv_shows_related_content_block() {
       'usanetwork_tv_show_nid' => $tv_show_node->nid
     ), 'setting');
 
-    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE);
+    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
 
     return theme('usanetwork_tv_shows_related_items_container', array(
       'related_items_block' => $block_of_items,
       'load_more_link' => TRUE,
+      'show_nid' => $tv_show_node->nid,
+      'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
     ));
   }
 
@@ -1308,7 +1334,7 @@ function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from
   if (!empty($related_content)) {
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items_block($related_content, TRUE, $is_even);
+    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items_block($related_content, TRUE, $is_even, TRUE);
 
     return drupal_json_output($response);
   }
@@ -1418,7 +1444,7 @@ function _usanetwork_tv_shows_render_best_of_block() {
   return '';
 }
 
-function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is_even) {
+function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is_even, $different_sizes_of_images = TRUE) {
   if (!empty($data)) {
     $theme_variables = array(
       'related_items' => array(),
@@ -1430,7 +1456,13 @@ function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is
 
     foreach ($data as $data_index => $data_item) {
       $is_data_item_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
-      $is_data_item_big = ($data_index == $big_item_index) ? TRUE : FALSE;
+
+      if ($different_sizes_of_images) {
+        $is_data_item_big = ($data_index == $big_item_index) ? TRUE : FALSE;
+      }
+      else {
+        $is_data_item_big = FALSE;
+      }
 
       $theme_variables['related_items'][] = _usanetwork_tv_shows_render_related_content_item($data_item, $is_data_item_even, $is_data_item_big);
     }

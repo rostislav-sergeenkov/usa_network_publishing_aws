@@ -215,6 +215,8 @@
       $(window).on("scroll", function() {
         Drupal.behaviors.usanetwork_menu_dropdown.stickyHeader();
 
+        $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
+        $('.tab-item.active').slideUp(350).removeClass('active');
       });
     }
   }

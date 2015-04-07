@@ -1,5 +1,7 @@
 <?php
 
+define ('USA_CONS_TV_SHOW_RELATED_ITEMS_ON_PAGE', 6);
+
 /**
  * Implement hook_ctools_plugin_api().
  */
@@ -280,25 +282,41 @@ function usanetwork_consumptionator_relcontent_block($show_nid = 0, $start_from 
   }
 
   $rendered_items = array();
-  $file = _usanetwork_consumptionator_get_menu_entity();
+  $menu_entity = _usanetwork_consumptionator_get_menu_entity();
 
-  if (empty($show_nid) && !empty($file)) {
-    $show_field = field_get_items('file', $file, 'field_show');
+  if (empty($show_nid) && !empty($menu_entity)) {
+    if (!empty($menu_entity->type) && $menu_entity->type == 'tv_show') {
+      $show_nid = $menu_entity->nid;
+    }
+    else {
+      if (!empty($menu_entity->nid)) {
+        $show_field = field_get_items('node', $menu_entity, 'field_show');
+      }
+      elseif (!empty($menu_entity->fid)) {
+        $show_field = field_get_items('file', $menu_entity, 'field_show');
+      }
 
-    if (!empty($show_field)) {
-      $show_nid = $show_field[0]['target_id'];
+      if (!empty($show_field)) {
+        $show_nid = $show_field[0]['target_id'];
+      }
     }
   }
 
-  if (!empty($show_nid)) {
-    // Load and render first 6 items only
-    $rendered_items = _usanetwork_consumptionator_load_related_content($show_nid, $start_from, $limit, TRUE);
-  }
+  if (!empty($show_nid) && module_exists('usanetwork_tv_shows')) {
+    $tv_show_node = node_load($show_nid);
+    $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_CONS_TV_SHOW_RELATED_ITEMS_ON_PAGE);
 
-  if (!empty($rendered_items)) {
-    return theme('usanetwork_consumptionator_related_container', array(
-      'related_items' => $rendered_items,
-    ));
+    if (!empty($related_content)) {
+
+      $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, FALSE);
+
+      return theme('usanetwork_tv_shows_related_items_container', array(
+        'related_items_block' => $block_of_items,
+        'load_more_link' => TRUE,
+        'show_nid' => $tv_show_node->nid,
+        'items_pre_page_limit' => USA_CONS_TV_SHOW_RELATED_ITEMS_ON_PAGE,
+      ));
+    }
   }
 
   return '';

@@ -33,6 +33,10 @@ function usanetwork_overlay_page_alter(&$page) {
     drupal_add_css(drupal_get_path('module', 'usanetwork_overlay') . '/css/usanetwork_overlay.main.css');
     drupal_add_js(drupal_get_path('module', 'usanetwork_overlay') . '/js/usanetwork_overlay.main.js');
     drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator') . '/js/usanetwork_consumptionator.autoloader.js');
+
+    if (module_exists('usanetwork_tv_shows')) {
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+    }
   }
 }
 
@@ -77,10 +81,16 @@ function usanetwork_overlay_get_ajax($display) {
     }
 
     if (isset($menu_item['page_arguments'][0])) {
-      $show_field = field_get_items('file', $menu_item['page_arguments'][0], 'field_show');
+      if (isset($menu_item['page_arguments'][0]->type) && $menu_item['page_arguments'][0]->type == 'tv_show') {
+        $result_entity['#hidden']['show_nid'] = $menu_item['page_arguments'][0]->nid;
 
-      if (!empty($show_field)) {
-        $result_entity['#hidden']['show_nid'] = $show_field[0]['target_id'];
+      }
+      else {
+        $show_field = field_get_items('file', $menu_item['page_arguments'][0], 'field_show');
+
+        if (!empty($show_field)) {
+          $result_entity['#hidden']['show_nid'] = $show_field[0]['target_id'];
+        }
       }
     }
 
@@ -109,4 +119,11 @@ function usanetwork_overlay_ajax_callback($page_result) {
   ));
 
   return drupal_page_footer();
+}
+
+/**
+ * Returns Show node id of current consumptionator context.
+ */
+function _usanetwork_overlay_get_context_show_nid() {
+
 }

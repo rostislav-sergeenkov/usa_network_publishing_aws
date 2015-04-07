@@ -28,7 +28,6 @@
                     <div class="meta-wrapper-inner">
                       <div class="meta-icon play-icon resize-avail-1024"></div>
                       <div class="meta">
-                        <div class="caption">Playing House: S1 Episode 5</div>
                         <?php if (!empty($episode['violator'])): ?>
                           <div class="caption"><?php print $episode['violator']; ?></div>
                         <?php endif; ?>

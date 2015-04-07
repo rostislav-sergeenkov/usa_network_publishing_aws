@@ -1149,10 +1149,22 @@ function _usanetwork_tv_shows_discription_item($show, $field_list, &$description
  */
 function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0, $limit = 1) {
   $content_items = array();
+  $node_filters = array(
+    'fshow.bundle' => array(
+      'values' => array(
+        'usanetwork_promo',
+        'tv_episode',
+        'media_gallery',
+        'post',
+        'person',
+        'quiz'),
+      'operator' => 'IN',
+    ),
+  );
 
   // Pull nodes
-  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'changed');
-
+  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'changed', $node_filters);
+  
   // Pull files
   $files = _usanetwork_tv_shows_pull_related_files($tv_show_node->nid, $start_from, $limit, 'DESC', 'timestamp');
 

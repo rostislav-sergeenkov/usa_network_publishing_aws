@@ -845,65 +845,48 @@ function _usanetwork_menu_footer_apps_services() {
  * Renders Consumtionator Menu block.
  */
 function _usanetwork_menu_consumptionator_block() {
-  $query = drupal_get_query_parameters();
-  if (!empty($query['url'])) {
-    $normal_path = parse_url(drupal_get_normal_path($query['url']));
-    $menu_item = menu_get_item($normal_path['path']);
+  $file = menu_get_object('file');
+  if (!empty($file)) {
 
-    if (!empty($menu_item['page_arguments'][0])) {
-      $file = $menu_item['page_arguments'][0];
-
-      if ($file) {
-        $episode_image_uri = '';
-
-        $file_wrapper = entity_metadata_wrapper('file', $file);
-
-        $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
-
-        if ($episode_image_uri_wrapper) {
-          $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
-        }
-
-        $theme_variables = array(
-          'show_url' => url('file/' . $file->fid),
-          'show_name' => !empty($file->field_show)
-            ? $file_wrapper->field_show->value()->title
-            : '',
-          'episode' => array(
-            'caption' => !empty($file->field_mpx_full_episode)
-              ? (
-                $file_wrapper->field_mpx_full_episode->value() == 0
-                  ? t('Full episode')
-                  : t('Promo')
-              )
-              : '',
-            'image_url' => !empty($episode_image_uri)
-              ? image_style_url('300x250', $episode_image_uri)
-              : '',
-            'full_title' => !empty($file->field_mpx_title)
-              ? $file_wrapper->field_mpx_title->value()
-              : '',
-            'title' => $file_wrapper->name->value(),
-            'season_number' => !empty($file->field_mpx_season_number)
-              ? $file_wrapper->field_mpx_season_number->value()
-              : '',
-            'episode_number' => !empty($file->field_mpx_episode_number)
-              ? $file_wrapper->field_mpx_episode_number->value()
-              : '',
-            'running_time' => !empty($file->field_mpx_duration)
-              ? gmdate('H:i:s', $file_wrapper->field_mpx_duration->value())
-              : '',
-            'description' => !empty($file->field_mpx_description)
-              ? $file_wrapper->field_mpx_description->value()
-              : '',
-          ),
-        );
-
-        return theme('usanetwork_menu_consumptionator', $theme_variables);
-      }
+    $file_wrapper = entity_metadata_wrapper('file', $file);
+    $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+    if ($episode_image_uri_wrapper) {
+      $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
     }
+    $video_type = usanetwork_mpx_video_get_video_category($file);
+    $theme_variables = array(
+      'main_url' => url('<front>'),
+      'show_url' => !empty($file->field_show)
+          ? url('node/' . $file_wrapper->field_show->value()->nid)
+          : '',
+      'show_name' => !empty($file->field_show)
+        ? $file_wrapper->field_show->value()->title
+        : '',
+      'episode' => array(
+        'video_type' => !empty($video_type) ? $video_type : t('Clip'),
+        'image_url' => !empty($episode_image_uri)
+          ? image_style_url('300x250', $episode_image_uri)
+          : '',
+        'full_title' => !empty($file->field_mpx_title)
+          ? $file_wrapper->field_mpx_title->value()
+          : '',
+        'title' => $file_wrapper->name->value(),
+        'season_number' => !empty($file->field_mpx_season_number)
+          ? $file_wrapper->field_mpx_season_number->value()
+          : '',
+        'episode_number' => !empty($file->field_mpx_episode_number)
+          ? $file_wrapper->field_mpx_episode_number->value()
+          : '',
+        'running_time' => !empty($file->field_mpx_duration)
+          ? gmdate('H:i:s', $file_wrapper->field_mpx_duration->value())
+          : '',
+        'description' => !empty($file->field_mpx_description)
+          ? $file_wrapper->field_mpx_description->value()
+          : '',
+      ),
+    );
+    return theme('usanetwork_menu_consumptionator', $theme_variables);
   }
-
   return '';
 }
 

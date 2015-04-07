@@ -17,6 +17,7 @@ define('USA_MPX_VIDEO_STAGE_ACCOUNT', '2297296056');
 define('USA_MPX_VIDEO_PROD_ACCOUNT', '2304992029');
 define('USA_MPX_VIDEO_USA_ACCOUNT_ID', '2140458126');
 define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 10);
+define("USA_MPX_VIDEO_FULL_VIDEO", "Full video");
 
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 /**
@@ -2413,11 +2414,11 @@ function _usa_mpx_video_clips_render() {
      $show = $show['target_id'];
      $related_videos = _usanetwork_mpx_video_get_related_videos_for_show($show);
      if (!empty($related_videos)) {
-       $filter = _usanetwork_mpx_video_get_video_category($file);
+       $filter = usanetwork_mpx_video_get_video_category($file);
        foreach ($related_videos as $related_video) {
          $related_video_file = file_load($related_video);
          $published = !empty($related_video_file->mpx_video_data['status']) ? $related_video_file->mpx_video_data['status'] : NULL;
-         if ($published && _usanetwork_mpx_video_get_video_category($related_video_file) === $filter) {
+         if ($published && usanetwork_mpx_video_get_video_category($related_video_file) === $filter) {
            $promo_data = _usanetwork_promo_pull_file_promo_details($related_video_file);
            $promo_image_url = usanetwork_core_api_get_content_image('file', $related_video_file);
            $promo_link = url('file' . '/' . $related_video);
@@ -2485,10 +2486,13 @@ function _usanetwork_mpx_video_get_related_videos_for_show($show_id) {
 }
 /*
  * Define category for video.
+ * //@TODO: We need to relocate functions for defining video types from microsite module to mpx_video module.
  */
-function _usanetwork_mpx_video_get_video_category($video_file) {
-  if (_usanetwork_microsite_define_full_episode($video_file)) {
-    return USANETWORK_MICROSITE_FULL_VIDEO;
+function usanetwork_mpx_video_get_video_category($video_file) {
+  $file_wrapper = entity_metadata_wrapper('file', $video_file);
+  $full_episode = $file_wrapper->field_mpx_full_episode->value();
+  if ($full_episode == 1) {
+    return USA_MPX_VIDEO_FULL_VIDEO;
   }
   elseif (!empty($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id'])) {
     $term_id = $video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id'];

@@ -1,17 +1,19 @@
 <?php
 /**
+ *  $main_url
  *  $show_url
  *  $show_name
- *  $episode['caption']
+ *  $episode['video_type']
  *  $episode['image_url']
  *  $episode['title']
+ *  $episode['full_title']
  *  $episode['season_and_number']
  *  $episode['running_time']
  *  $episode['description']
  */
 ?>
 <div class="header-nav-bar">
-  <div class="usa-logo show-color hover-avail"><a href="<?php print url('<front>'); ?>"></a></div>
+  <div class="usa-logo show-color hover-avail"><a href="<?php print $main_url; ?>"></a></div>
   <div class="show-title-wrapper">
     <div class="show-title-block">
       <div class="tab show-color hover-avail show-name">
@@ -40,7 +42,7 @@
       </a>
       <div class="title-overlay meta">
         <div class="meta-left">
-          <div class="caption"><?php print $episode['caption']; ?></div>
+          <div class="caption"><?php print $episode['video_type']; ?></div>
           <div class="title"><?php print $episode['title']; ?></div>
           <?php if (!empty($episode['season_number']) && !empty($episode['episode_number'])): ?>
             <div class="type-and-time">
@@ -48,18 +50,6 @@
               <?php print $episode['running_time']; ?>
             </div>
           <?php endif; ?>
-          <div class="episode-rate">
-            <div class="title-rate"><?php print t('click stars to rate:'); ?></div>
-            <div class="stars-rate">
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
         </div>
         <div class="description">
           <?php print $episode['description']; ?>

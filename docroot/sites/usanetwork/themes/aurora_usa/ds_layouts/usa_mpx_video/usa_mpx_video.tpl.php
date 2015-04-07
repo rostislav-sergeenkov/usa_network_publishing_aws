@@ -106,34 +106,6 @@
         </div>
       <?php endif; ?>
     </div>
-    <div class="coming-up-next">
-<!--      <div class="prev-video">-->
-<!--        <div class="video-title">Up next</div>-->
-<!--        <div class="asset-img">-->
-<!--          <img src="/proto/images/video_coming_up_next.jpg" alt="">-->
-<!---->
-<!--          <div class="img-shadow"></div>-->
-<!--          <div class="starts-in">Starts in</div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="prev-disc">-->
-<!--        <div class="node node-usanetwork-promo show-suits">-->
-<!--          <div class="meta-wrap">-->
-<!--            <div class="meta">-->
-<!--              <div class="caption">Suits</div>-->
-<!--              <div class="title">Laveraged</div>-->
-<!--              <div class="additional"><span>S4 Episode 4</span> 44:31</div>-->
-<!--              <div class="description">-->
-<!--                Mike moves to a hostile takeover of Gillis Industries. On the-->
-<!--                other side, Harvey and Louis pull out all-->
-<!--                the stops to make sure they win this takeover fight, and things-->
-<!--                takea personal turn.-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-    </div>
     <div class="video-chat">
     </div>
 
@@ -146,34 +118,8 @@
         </a>
       </div>
     </div>
-    <div class="social">
-      <div class="asset-img">
-        <img src="/proto/images/consum_social-block_2500.png">
-      </div>
-    </div>
-    <div class="social-more">
-      <a href="javascript:void(0)" alt="">
-        Join the conversation
-      </a>
-    </div>
-    <div class="node-wrapper promo video-link">
-      <div class="node node-usanetwork-promo <?php print $show_css_class; ?>">
-        <a href="<?php print $url; ?>">
-          <div class="asset-img"><?php print $video_image; ?></div>
-          <div class="meta-back"></div>
-          <div class="meta-wrapper">
-            <div class="meta-icon play-icon"></div>
-            <div class="title-overlay meta">
-              <div class="title"><?php print $file->filename; ?></div>
-              <?php if (isset($season_number) && isset($episode_number)): ?>
-                <div class="additional"><span>S<?php print $season_number; ?>
-                    Episode <?php print $episode_number; ?></span> <?php print $time; ?>
-                </div>
-              <?php endif; ?>
-            </div>
-          </div>
-        </a>
-      </div>
+    <div class="clips-block">
+      <?php if (!empty($clips_block)): print $clips_block; endif;?>
     </div>
   </div>
 </div>

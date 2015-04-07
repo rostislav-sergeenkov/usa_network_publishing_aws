@@ -197,7 +197,12 @@ address {
       display: none;
     }
   }
-
+  .related-content-block & {
+    a {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+  }
 }
 .load-more-loader {
   background: url(../images/ajax-loader.gif);

@@ -250,38 +250,28 @@ function usanetwork_mpx_video_show_nav() {
   if (!isset($arg[1]) || empty($arg[1]) || !isset($file->field_show[$lang][0]['target_id']) || empty($file->field_show[$lang][0]['target_id'])) {
     return '';
   }
-  $query = new EntityFieldQuery();
 
-  // Fetch all the video node associated with any show
-  $query->entityCondition('entity_type', 'file')
-    ->entityCondition('bundle', _usanetwork_mpx_video_get_all_file_types())
-    ->propertyCondition('published', 1)
-    ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
+  $query = db_select('file_managed', 'f');
+  $query->join('field_data_field_show', 'fs', 'fs.entity_id = f.fid');
+  $query->groupBy('fs.field_show_target_id');
+  $query->fields('fs', array('field_show_target_id'));
+  $query->condition('published', 1,'=');
+  $query->condition('type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+  $shows = $query->execute()
+    ->fetchAll();
 
-  $result = $query->execute();
-
-  if (isset($result['file'])) {
-    $videos = entity_load('file', array_keys($result['file']));
-
-    $fids = array();
-    foreach ($videos as $video) {
-      // Get all the unique tv shows nodes
-      if (!in_array($video->field_show[$lang][0]['target_id'], $fids)) {
-        $fids[] = $video->field_show[$lang][0]['target_id'];
-        $show = array_values(entity_load('node', array($video->field_show[$lang][0]['target_id'])));
-
-        // Add all the published tv show nodes
-        if (isset($show[0]) && !empty($show[0])) {
-          $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
-          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
-          if ($file->field_show[$lang][0]['target_id'] == $video->field_show[$lang][0]['target_id']) {
-            $items[0]['data'] = $title;
-            $items[0]['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
-            $items[0]['children'][$title] = l($title, $path, array('html' => true));
-          } else  {
-            $items[0]['children'][$title] = l($title, $path, array('html' => true));
-          }
-        }
+  foreach ($shows as $show_id) {
+    $show = array_values(entity_load('node', array($show_id->field_show_target_id)));
+    // Add all the published tv show nodes
+    if (isset($show[0]) && !empty($show[0])) {
+      $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
+      $path = drupal_get_path_alias('node/'.$show_id->field_show_target_id.'/videos');
+      if ($file->field_show[$lang][0]['target_id'] == $show_id->field_show_target_id) {
+        $items[0]['data'] = $title;
+        $items[0]['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
+        $items[0]['children'][$title] = l($title, $path, array('html' => true));
+      } else  {
+        $items[0]['children'][$title] = l($title, $path, array('html' => true));
       }
     }
   }

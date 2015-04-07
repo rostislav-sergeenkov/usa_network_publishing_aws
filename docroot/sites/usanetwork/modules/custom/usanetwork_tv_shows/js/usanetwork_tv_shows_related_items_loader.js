@@ -1,7 +1,8 @@
 (function($) {
   Drupal.behaviors.usanetwork_tv_shows_related_items_loader = {
     getItems: function() {
-      var limit = 5;
+      var limit = $('.show-latest-block').data('show-items-limit') || 5;
+      var show_nid = Drupal.settings.usanetwork_tv_show_nid || $('.show-latest-block').data('show-nid') || 0;
       var number_ul = $('.show-latest-block > ul').length;
       var start_from = limit*number_ul;
       var service_name = '';
@@ -20,7 +21,8 @@
         }
       }
 
-      var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ Drupal.settings.usanetwork_tv_show_nid +'/'+ start_from +'/'+ limit;
+      var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit;
+
       $('.show-latest-block .load-more-link a').after('<div class="load-more-loader"></div>');
       $.ajax({
         type: 'GET',
@@ -57,7 +59,9 @@
 
       $(window).on("scroll", function() {
         var scroll_top = $(window).scrollTop(),
-            load_more_offset = $('.load-more-link').offset().top;
+            load_more_offset = ($('.load-more-link').offset() != null)
+              ? $('.load-more-link').offset().top
+              : 0;
         var additional_offset = (window.innerHeight < window_size_desktop_large)? 130: 230;
         if (load_more_offset - window.innerHeight + additional_offset - scroll_top < 0){
           if ($('.show-latest-block .load-more-link a').hasClass('disabled')){

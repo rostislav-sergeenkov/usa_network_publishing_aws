@@ -2593,6 +2593,8 @@ function usanetwork_mpx_video_related_content_block() {
         return theme('usanetwork_mpx_video_related_items_container', array(
           'related_items_block' => $block_of_items,
           'load_more_link' => TRUE,
+          'show_nid' => $tv_show_node->nid,
+          'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
         ));
       }
     }

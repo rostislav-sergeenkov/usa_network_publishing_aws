@@ -626,6 +626,18 @@ function _usanetwork_tv_show_menu_get_show(&$entity_type = NULL, $position = 1, 
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['field_tvs_best_of_title'])) {
+    $form_language = $form['language']['#value'];
+
+    if (empty($form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'])) {
+      $show_title = $form['title']['#default_value'];
+      $default_best_of_value = t('Best of "!show_title"', array('!show_title' => $show_title));
+
+      $form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'] = $default_best_of_value;
+      $form['field_tvs_best_of_title'][$form_language][0]['value']['#description'] = t('Default: !default_title', array('!default_title' => $default_best_of_value));
+    }
+  }
+
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows.js';
 }
 

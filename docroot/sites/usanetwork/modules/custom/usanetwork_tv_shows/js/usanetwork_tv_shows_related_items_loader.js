@@ -41,7 +41,7 @@
 
       $(window).on("scroll", function() {
         var scroll_top = $(window).scrollTop(),
-            load_more_offset = $('.load-more-link').offset().top;
+            load_more_offset = $('.show-latest-block .load-more-link').offset().top;
         var additional_offset = (window.innerHeight < window_size_desktop_large)? 130: 230;
         if (load_more_offset - window.innerHeight + additional_offset - scroll_top < 0){
           if ($('.show-latest-block .load-more-link a').hasClass('disabled')){

@@ -64,12 +64,17 @@
       var pageLocation = document.location.pathname;
 
       $.each($('#consumptionator a'), function(index, item) {
+        if ($(item).parent().hasClass('load-more-link')) {
+          return; // Do not process consumptionator "Load more" link
+        }
         var externalLink = false;
         var pageLocationTemp = pageLocation;
         var itemAttr = $(item).attr('name');
 
         //if (typeof itemAttr !== typeof undefined && itemAttr !== false) {
-          var linkHref = $(item).attr('href').trim();
+          var linkHref = ($(item).attr('href') != null)
+            ? $(item).attr('href').trim()
+            : '';
 
           // Remove HOST from internal links
           if (!isLinkExternal(linkHref)) {

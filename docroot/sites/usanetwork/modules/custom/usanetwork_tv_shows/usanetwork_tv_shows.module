@@ -1290,11 +1290,13 @@ function _usanetwork_tv_shows_related_content_block() {
       'usanetwork_tv_show_nid' => $tv_show_node->nid
     ), 'setting');
 
-    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE);
+    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
 
     return theme('usanetwork_tv_shows_related_items_container', array(
       'related_items_block' => $block_of_items,
       'load_more_link' => TRUE,
+      'show_nid' => $tv_show_node->nid,
+      'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
     ));
   }
 
@@ -1320,7 +1322,7 @@ function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from
   if (!empty($related_content)) {
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items_block($related_content, TRUE, $is_even);
+    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items_block($related_content, TRUE, $is_even, TRUE);
 
     return drupal_json_output($response);
   }
@@ -1430,7 +1432,7 @@ function _usanetwork_tv_shows_render_best_of_block() {
   return '';
 }
 
-function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is_even) {
+function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is_even, $different_sizes_of_images = TRUE) {
   if (!empty($data)) {
     $theme_variables = array(
       'related_items' => array(),
@@ -1442,7 +1444,13 @@ function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is
 
     foreach ($data as $data_index => $data_item) {
       $is_data_item_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
-      $is_data_item_big = ($data_index == $big_item_index) ? TRUE : FALSE;
+
+      if ($different_sizes_of_images) {
+        $is_data_item_big = ($data_index == $big_item_index) ? TRUE : FALSE;
+      }
+      else {
+        $is_data_item_big = FALSE;
+      }
 
       $theme_variables['related_items'][] = _usanetwork_tv_shows_render_related_content_item($data_item, $is_data_item_even, $is_data_item_big);
     }

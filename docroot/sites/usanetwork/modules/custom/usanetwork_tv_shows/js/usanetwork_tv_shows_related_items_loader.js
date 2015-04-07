@@ -13,6 +13,7 @@
         success: function (data) {
           $('.show-latest-block .load-more-link').before(data.rendered);
           $('.show-latest-block .load-more-link .load-more-loader').remove();
+          window.picturefill();
           $('.show-latest-block .load-more-link a').removeClass('disabled');
         },
         error: function () {

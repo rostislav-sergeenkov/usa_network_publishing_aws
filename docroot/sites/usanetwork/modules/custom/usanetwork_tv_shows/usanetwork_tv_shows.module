@@ -1295,6 +1295,7 @@ function _usanetwork_tv_shows_related_content_block() {
     return theme('usanetwork_tv_shows_related_items_container', array(
       'related_items_block' => $block_of_items,
       'load_more_link' => TRUE,
+      'usanetwork_tv_show_page_context' => 'showpage',
     ));
   }
 

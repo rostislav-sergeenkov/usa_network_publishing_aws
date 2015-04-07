@@ -4,7 +4,23 @@
       var limit = 5;
       var number_ul = $('.show-latest-block > ul').length;
       var start_from = limit*number_ul;
-      var url = Drupal.settings.basePath + 'ajax/usanetwork-tv-shows/get-related/'+ Drupal.settings.usanetwork_tv_show_nid +'/'+ start_from +'/'+ limit;
+      var service_name = '';
+
+      if (typeof Drupal.settings.usanetwork_tv_show_page_context != 'undefined') {
+        switch (Drupal.settings.usanetwork_tv_show_page_context) {
+          case 'consumptionator':
+            service_name = 'usanetwork-mpx-video';
+            break;
+          case 'showpage':
+            service_name = 'usanetwork-tv-shows';
+            break;
+          default:
+            service_name = 'usanetwork-tv-shows';
+            break;
+        }
+      }
+
+      var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ Drupal.settings.usanetwork_tv_show_nid +'/'+ start_from +'/'+ limit;
       $('.show-latest-block .load-more-link a').after('<div class="load-more-loader"></div>');
       $.ajax({
         type: 'GET',

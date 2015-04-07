@@ -712,33 +712,33 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
-.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .best-of-block ul li.first .meta, .best-of-block ul li:nth-child(2) .meta, .best-of-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta, .consumptionator-content-block .show-content ul li .meta, .consumptionator-content-block .see-also-content ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .best-of-block ul li.first .meta, .best-of-block ul li:nth-child(2) .meta, .best-of-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta, .consumptionator-content-block .show-content ul li .meta, .consumptionator-content-block .see-also-content ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
   direction: ltr;
   color: #ffffff;
 }
-.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .best-of-block ul li.first .meta .description, .best-of-block ul li:nth-child(2) .meta .description, .best-of-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .description, .consumptionator-content-block .show-content ul li .meta .description, .consumptionator-content-block .see-also-content ul li .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .description, .usa-home-bspot .meta .description, .usa-home-cspot .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .best-of-block ul li.first .meta .show-title, .best-of-block ul li:nth-child(2) .meta .show-title, .best-of-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .show-title, .consumptionator-content-block .show-content ul li .meta .show-title, .consumptionator-content-block .see-also-content ul li .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .show-title, .usa-home-bspot .meta .show-title, .usa-home-cspot .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .best-of-block ul li.first .meta .topic, .best-of-block ul li:nth-child(2) .meta .topic, .best-of-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .topic, .consumptionator-content-block .show-content ul li .meta .topic, .consumptionator-content-block .see-also-content ul li .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .topic, .usa-home-bspot .meta .topic, .usa-home-cspot .meta .topic {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .best-of-block ul li.first .meta .description, .best-of-block ul li:nth-child(2) .meta .description, .best-of-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .description, .consumptionator-content-block .show-content ul li .meta .description, .consumptionator-content-block .see-also-content ul li .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .usa-home-bspot .meta .description, .usa-home-cspot .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .best-of-block ul li.first .meta .show-title, .best-of-block ul li:nth-child(2) .meta .show-title, .best-of-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .show-title, .consumptionator-content-block .show-content ul li .meta .show-title, .consumptionator-content-block .see-also-content ul li .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .usa-home-bspot .meta .show-title, .usa-home-cspot .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .best-of-block ul li.first .meta .topic, .best-of-block ul li:nth-child(2) .meta .topic, .best-of-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .topic, .consumptionator-content-block .show-content ul li .meta .topic, .consumptionator-content-block .see-also-content ul li .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic, .usa-home-bspot .meta .topic, .usa-home-cspot .meta .topic {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
   font-size: 16px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .best-of-block ul li.first .meta .additional span, .best-of-block ul li:nth-child(2) .meta .additional span, .best-of-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional span, .consumptionator-content-block .show-content ul li .meta .additional span, .consumptionator-content-block .see-also-content ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .best-of-block ul li.first .meta .additional span, .best-of-block ul li:nth-child(2) .meta .additional span, .best-of-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional span, .consumptionator-content-block .show-content ul li .meta .additional span, .consumptionator-content-block .see-also-content ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
@@ -1291,6 +1291,263 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
+.aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+  height: 100%;
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+    max-width: 255px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+    max-width: 100%;
+  }
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img img {
+  width: 100%;
+  height: 100%;
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-wrapper {
+  background: #656364;
+  bottom: 0;
+  height: 45%;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-wrapper {
+    height: 39%;
+  }
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-wrapper-inner {
+  height: 100%;
+  display: table;
+  position: relative;
+  width: 100%;
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta {
+  display: table-cell;
+  max-width: 100px;
+  overflow: hidden;
+  padding-left: 4%;
+  vertical-align: middle;
+  width: 100%;
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 16px;
+  margin-left: 0;
+}
+@media (min-width: 1701px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 1280px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+    font-size: 8px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+    font-size: 8px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+    font-size: 12px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 19px;
+  margin-left: 0;
+}
+@media (min-width: 1701px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+    font-size: 23px;
+    line-height: 30px;
+  }
+}
+@media (max-width: 1280px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+    font-size: 10px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 10px;
+  line-height: 19px;
+  margin-left: 0;
+}
+@media (min-width: 1701px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 1280px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+    font-size: 8px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+    font-size: 8px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+  left: 4%;
+  margin-top: -19px;
+  position: absolute;
+  top: 50%;
+}
+@media (min-width: 1701px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+    height: 47px;
+    margin-top: -24px;
+    width: 47px;
+  }
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon:before {
+    font-size: 24px;
+    height: 47px;
+    line-height: 47px;
+    width: 47px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+    height: 30px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon:before {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+    height: 37px;
+    margin-top: -19px;
+    width: 37px;
+  }
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon:before {
+    font-size: 20px;
+    height: 37px;
+    line-height: 37px;
+    width: 37px;
+  }
+}
+@media (max-width: 480px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+    height: 30px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon:before {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+  }
+}
+.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+  padding-left: calc(8% + 37px);
+}
+@media (min-width: 1601px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+    padding-left: calc(8% + 47px);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+    padding-left: calc(8% + 30px);
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+    padding-left: calc(8% + 37px);
+  }
+}
+@media (max-width: 480px) {
+  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+    padding-left: calc(8% + 30px);
+  }
+}
+
 .full-episodes-block.carousel-block .carousel ul li .video-promo:before {
   bottom: 0;
   height: 81px;
@@ -1798,7 +2055,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
     background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
   }
 }
 @media (min-width: 769px) {
@@ -2031,7 +2288,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
     background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000',GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
@@ -21542,6 +21799,7 @@ yx-axis
   }
 }
 .aspot-and-episodes .episodes-list {
+  background: #222221;
   float: left;
   height: 100%;
   position: relative;
@@ -21549,8 +21807,7 @@ yx-axis
 }
 @media (max-width: 768px) {
   .aspot-and-episodes .episodes-list {
-    background: #7a7a7a;
-    left: 0px;
+    left: 0;
     position: relative;
     width: 100%;
   }
@@ -21561,120 +21818,161 @@ yx-axis
   }
 }
 .aspot-and-episodes .episodes-list > .title {
-  background: #7a7a7a;
+  background: #e1e1e1;
   height: 10%;
   position: relative;
   width: 100%;
 }
 @media (max-width: 768px) {
   .aspot-and-episodes .episodes-list > .title {
-    height: 55%;
+    height: 55px;
     width: 100%;
   }
 }
+.aspot-and-episodes .episodes-list > .title .title-wrapper {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
 .aspot-and-episodes .episodes-list > .title h2 {
-  color: #ffffff;
+  color: #545454;
+  display: table-cell;
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
-  left: 20px;
+  font-size: 16px;
   letter-spacing: 1px;
-  line-height: 12px;
-  margin-top: -6px;
-  margin-bottom: 0;
-  position: absolute;
+  line-height: 16px;
+  height: 100%;
+  margin: 0;
   text-transform: uppercase;
-  top: 50%;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+@media (max-width: 1280px) {
+  .aspot-and-episodes .episodes-list > .title h2 {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list > .title h2 {
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list > .title h2 {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+@media (min-width: 1601px) {
+  .aspot-and-episodes .episodes-list > .title h2 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+.aspot-and-episodes .episodes-list .bx-wrapper {
+  height: 100% !important;
+}
+.aspot-and-episodes .episodes-list .bx-viewport {
+  height: 100% !important;
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical {
   height: 90%;
   position: relative;
   width: 100%;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .bx-wrapper {
-  height: 100% !important;
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical .bx-viewport {
-  height: 100% !important;
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical {
+    display: none;
+  }
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul {
   height: 100% !important;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li {
+.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li li {
   background: #8f8f8f;
   overflow: hidden;
-  height: 33%;
+  height: 36%;
+  margin-bottom: 2px;
   position: relative;
   width: 100%;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li:nth-child(2n) {
+.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li li:nth-child(2n) {
   background: #7a7a7a;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {
+    padding: 0;
+  }
+}
+@media (min-width: 769px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {
+    display: none;
+  }
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
+  float: left;
+  box-sizing: border-box;
+  margin-right: 2px;
+  margin-bottom: 0;
+  height: 100%;
+  position: relative;
+  width: 33.33333%;
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
+    float: none;
+    margin: 0 0 2px 0;
+    height: 56.25vw;
+    overflow: hidden;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li:nth-child(3) {
+    margin-bottom: 0;
+  }
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button {
+  background-color: #e9eaeb;
+  color: #545454;
+  display: none;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 20px;
+  line-height: 130px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+  width: 100%;
+}
+@media (max-width: 480px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button {
+    line-height: 80px;
+  }
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.close .more-text {
+  display: none;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.close .close-text {
   display: block;
-  height: 100%;
-  width: 100%;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .title, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .additional {
-  font-size: 14px;
-  line-height: 19px;
-  margin-left: 45px;
-  max-width: 75%;
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.more .more-text {
+  display: block;
 }
-@media (max-width: 1024px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .title, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .additional {
-    font-size: 10px;
-    line-height: 18px;
-    margin-left: 40px;
-    max-width: 77%;
-  }
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta {
-  left: 20px;
-  margin-top: -19px;
-  position: absolute;
-  text-align: left;
-  top: 50%;
-  width: 100%;
-}
-@media (max-width: 1280px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta {
-    left: 10px;
-  }
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .title, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .additional {
-  font-size: 14px;
-  line-height: 19px;
-  margin-left: 45px;
-  max-width: 75%;
-}
-@media (max-width: 1024px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .title, .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .additional {
-    font-size: 10px;
-    line-height: 18px;
-    margin-left: 40px;
-    max-width: 77%;
-  }
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .meta-icon:before {
-  top: 0px;
-}
-@media (max-width: 1024px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li a .meta .meta-icon:before {
-    top: 4px;
-  }
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul .asset-img {
-  float: right;
-  height: 100%;
-}
-@media (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul .asset-img {
-    max-width: 124px;
-  }
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul .asset-img img {
-  width: 100%;
-  height: 100%;
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.more .close-text {
+  display: none;
 }
 .aspot-and-episodes .episodes-list .advertisement {
   display: none;

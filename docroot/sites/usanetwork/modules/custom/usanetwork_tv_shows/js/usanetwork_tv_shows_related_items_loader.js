@@ -15,7 +15,9 @@
           $('.show-latest-block .load-more-link').before(data.rendered);
           $('.show-latest-block .load-more-link .load-more-loader').remove();
           window.picturefill();
-          $('.show-latest-block .load-more-link a').removeClass('disabled');
+          if (data.overlimited == false) {
+            $('.show-latest-block .load-more-link a').removeClass('disabled');
+          }
         },
         error: function () {
           console.info('error');

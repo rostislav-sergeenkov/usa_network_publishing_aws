@@ -300,6 +300,16 @@ function usanetwork_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements hook_form_alter().
+ */
+function usanetwork_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['#entity_type'])) {
+    drupal_add_css(drupal_get_path('module', 'focal_point') . '/css/focal_point.css');
+    drupal_add_js(drupal_get_path('module', 'focal_point') . '/js/focal_point.js');
+  }
+}
+
+/**
  * Render apps & services menu items
  */
 function usanetwork_app_and_services_footer_links() {

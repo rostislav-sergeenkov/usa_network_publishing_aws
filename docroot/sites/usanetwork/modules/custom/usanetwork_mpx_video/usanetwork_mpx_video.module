@@ -167,9 +167,6 @@ function usanetwork_mpx_video_global_nav() {
   $items[] = array('data' => '<span>select a show</span>', 'class' => array('all-shows'));
   $lang = LANGUAGE_NONE;
   $arg = arg();
-  if (isset($arg[1]) && !empty($arg[1])) {
-    $node = node_load($arg[1]);
-  }
 
   $query = db_select('file_managed', 'f');
   $query->join('field_data_field_show', 'fs', 'fs.entity_id = f.fid');
@@ -197,8 +194,7 @@ function usanetwork_mpx_video_global_nav() {
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
 
-  if (($arg[0] == 'videos' && !isset($arg[1])) || (isset($arg[1]) && $arg[1] == 'full-episodes') ||
-    (isset($node->field_mpx_full_episode[$lang][0]['value']) && !empty($node->field_mpx_full_episode[$lang][0]['value']))) {
+  if (($arg[0] == 'videos' && !isset($arg[1])) || (isset($arg[1]) && $arg[1] == 'full-episodes')) {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes', 'active'));
     $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
   } else {

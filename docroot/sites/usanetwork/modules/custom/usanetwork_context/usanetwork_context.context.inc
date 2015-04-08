@@ -1957,12 +1957,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-4',
         ),
-        'usanetwork_blocks-usa_footer_promos' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_footer_promos',
-          'region' => 'content',
-          'weight' => '-3',
-        ),
       ),
     ),
   );
@@ -1981,6 +1975,11 @@ function usanetwork_context_context_default_contexts() {
   $context->description = '';
   $context->tag = 'sitewide';
   $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~file/*' => '~file/*',
+      ),
+    ),
     'sitewide' => array(
       'values' => array(
         1 => 1,
@@ -2002,6 +2001,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'main_suffix',
           'weight' => '-10',
         ),
+        'usanetwork_blocks-usa_footer_promos' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_promos',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
         'usanetwork_menu-usanetwork_menu_fm_menu' => array(
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_fm_menu',
@@ -2011,12 +2016,61 @@ function usanetwork_context_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('sitewide');
   $export['usanetwork_sitewide'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usanetwork_sitewide_file';
+  $context->description = '';
+  $context->tag = 'sitewide';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'file/*' => 'file/*',
+      ),
+    ),
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_blocks-usa_detect_ieversion' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_detect_ieversion',
+          'region' => 'main_suffix',
+          'weight' => '-10',
+        ),
+        'usanetwork_blocks-usa_footer_promos' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_promos',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+        'usanetwork_menu-usanetwork_menu_fm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_fm_menu',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('sitewide');
+  $export['usanetwork_sitewide_file'] = $context;
 
   return $export;
 }

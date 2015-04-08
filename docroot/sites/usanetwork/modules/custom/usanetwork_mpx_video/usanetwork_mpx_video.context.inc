@@ -127,6 +127,12 @@ function usanetwork_mpx_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',
@@ -159,6 +165,7 @@ function usanetwork_mpx_video_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('videos page');
+
 
   $export['usa_show_mpx_videos'] = $context;
 

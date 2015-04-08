@@ -214,46 +214,48 @@ address {
   width: 32px;
 }
 .node-type-usanetwork-static-page, .node-type-webform {
-  .content {
-    margin: auto;
-    font-size: 16px;
-    color: #232323;
-  }
-  .textcontent {
-    margin: auto;
-    padding: 20px;
-    max-width: 1280px;
-    font-size: 16px;
-    color: #232323;
-  }
-  h2 {
-    font-family: $tex-gyreschola-italic;
-    font-size: 16px;
-  }
-  a, a:visited {
-    color:#808080;
-    text-decoration: underline;
-  }
-  a:hover {
-    color: #a9a9a9;
-  }
-  strong {
-    font-family: $avalon-demi;
+  article {
+    .content {
+      margin: auto;
+      font-size: 16px;
+      color: #232323;
+    }
+    .textcontent {
+      margin: auto;
+      padding: 20px;
+      max-width: 1280px;
+      font-size: 16px;
+      color: #232323;
+    }
+    h2 {
+      font-family: $tex-gyreschola-italic;
+      font-size: 16px;
+    }
+    a, a:visited {
+      color:#808080;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #a9a9a9;
+    }
+    strong {
+      font-family: $avalon-demi;
+    }
+    form {
+      margin: auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+    .form-textarea-wrapper textarea {
+      box-sizing: border-box;
+      display: block;
+      height: 170px;
+      margin: 0;
+      width: 100%;
+    }
   }
   .show-title-block h1 {
     font-family: $avalon-demi;
     max-width: 100%;
-  }
-  form {
-    margin: auto;
-    max-width: 1000px;
-    padding: 20px;
-  }
-  .form-textarea-wrapper textarea {
-    box-sizing: border-box;
-    display: block;
-    height: 170px;
-    margin: 0;
-    width: 100%;
   }
 }

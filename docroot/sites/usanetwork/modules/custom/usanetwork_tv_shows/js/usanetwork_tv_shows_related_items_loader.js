@@ -35,8 +35,10 @@
           if (typeof window.picturefill != 'undefined') {
             window.picturefill();
           }
-
-          $('.show-latest-block .load-more-link a').removeClass('disabled');
+          
+          if (data.overlimited == false) {
+            $('.show-latest-block .load-more-link a').removeClass('disabled');
+          }
         },
         error: function () {
           console.info('error');

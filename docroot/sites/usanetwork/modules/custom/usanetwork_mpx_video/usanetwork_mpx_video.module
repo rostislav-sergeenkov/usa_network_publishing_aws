@@ -1347,6 +1347,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
   if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
     $show = NULL;
+    $clips_block = module_invoke('usanetwork_mpx_video', 'block_view', 'usa_mpx_video_clips');
+    if (!empty($clips_block['content'])) {
+      $vars['clips_block'] = render($clips_block['content']);
+    }
 
     $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
     $vars['lock_video'] = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
@@ -1401,27 +1405,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         '#suffix' => '</div>',
       );
 
-      // Live player variables
-      if ($vars['is_live']) {
-        $vars['content']['field_mpx_description']['#access'] = FALSE;
-        if (module_exists('usanetwork_tv_schedule')) {
-          $on_now = _usanetwork_tv_schedule_get_on_now('live_tv');
-          if ($on_now->tv_show) {
-            $vars['on_now_show'] = $on_now->tv_show->title;
-            $tune_in = field_get_items('node', $on_now->tv_show, 'field_usa_tv_tune_in_date');
-            if ($tune_in && $tune_in = reset($tune_in)) {
-              $vars['on_now_tune_in'] = $tune_in['safe_value'];
-            }
-          }
-          else {
-            $vars['on_now_show'] = $on_now->program;
-          }
-
-          $vars['on_now_title'] = $on_now->info['title'];
-          $vars['on_now_description'] = $on_now->info['description'];
-          $vars['on_now_rating'] = implode(', ', $on_now->ratings);
-        }
-      }
 
       //twitter card
       if (!$full_episode) {

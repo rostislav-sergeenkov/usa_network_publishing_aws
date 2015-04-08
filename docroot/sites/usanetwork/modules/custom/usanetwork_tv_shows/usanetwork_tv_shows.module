@@ -357,8 +357,8 @@ function usanetwork_tv_shows_image_default_styles() {
       array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 291,
-          'height' => 478,
+          'width' => 591,
+          'height' => 330,
         ),
         'weight' => 1,
       ),

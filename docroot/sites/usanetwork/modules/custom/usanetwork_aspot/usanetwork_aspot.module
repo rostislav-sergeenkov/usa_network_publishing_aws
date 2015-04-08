@@ -168,7 +168,7 @@ function usanetwork_aspot_submit_draggable_ui_items_submit(&$form, &$form_state)
 
   $draggable_items_data = !empty($form_state['input']['aspot_draggable_items_data'])
     ? $form_state['input']['aspot_draggable_items_data']
-    : array();
+    : '';
 
   $form_state['values']['field_aspot_gi_draggable_data'][$form_language][0]['value'] = $draggable_items_data;
 }
@@ -563,10 +563,10 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
 
   if (!empty($aspot_node->field_aspot_gi_draggable_data)) {
     $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
-  }
 
-  if (!empty($draggable_data) && !is_string($draggable_data)) {
-    $draggable_data = json_decode($draggable_data);
+    if (!empty($draggable_data) && is_string($draggable_data)) {
+      $draggable_data = json_decode($draggable_data);
+    }
   }
 
   if (!empty($aspot_node->field_usa_aspot_desktop)) {
@@ -626,9 +626,6 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
       : FALSE,
     'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
       ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
-      : '',
-    'show_draggable_data' => !empty($draggable_data)
-      ? $draggable_data
       : '',
   );
 
@@ -704,10 +701,10 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
 
   if (!empty($aspot_node->field_aspot_tgi_draggable_data)) {
     $draggable_data = $aspot_node_wrapper->field_aspot_tgi_draggable_data->value();
-  }
 
-  if (!empty($draggable_data) && !is_string($draggable_data)) {
-    $draggable_data = json_decode($draggable_data);
+    if (!empty($draggable_data) && is_string($draggable_data)) {
+      $draggable_data = json_decode($draggable_data);
+    }
   }
 
   if (!empty($aspot_node->field_usa_tv_aspot_desktop)) {
@@ -745,10 +742,17 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->title)
       )
       : FALSE,
+    'social_meter_style' => isset($draggable_data->social_meter)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->social_meter),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->social_meter)
+      )
+      : FALSE,
     'show_draggable_data' => !empty($draggable_data)
-      ? $draggable_data
+      ? json_encode($draggable_data)
       : '',
   );
+
   if (!empty($aspot_node->field_aspot_tgi_title_prefix)) {
     $value = $aspot_node_wrapper->field_aspot_tgi_title_prefix->value();
     $theme_array['show_title_prefix'] = $value['value'];

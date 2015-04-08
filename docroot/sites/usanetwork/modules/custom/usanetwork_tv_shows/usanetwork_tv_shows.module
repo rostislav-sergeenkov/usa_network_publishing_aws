@@ -1270,6 +1270,21 @@ function _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_no
 }
 
 /**
+ * Returns number of entries that last for current from position of $last_entity_id.
+ */
+function _usanetwork_tv_shows_cache_get_number_of_last_items($tv_show_node, $last_entity_type, $last_entity_id) {
+  $data = _usanetwork_tv_shows_cache_get_related_show_content($tv_show_node);
+
+  foreach ($data as $data_index => $data_item) {
+    if ($data_item->entity_type == $last_entity_type && $data_item->entity_id == $last_entity_id) {
+      return (count($data)) - $data_index + 1;
+    }
+  }
+
+  return 0;
+}
+
+/**
  * Rebuilds cahce for TV Show.
  *
  * @param $tv_show_node
@@ -1299,7 +1314,8 @@ function _usanetwork_tv_shows_related_content_block() {
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
     drupal_add_js(array(
-      'usanetwork_tv_show_nid' => $tv_show_node->nid
+      'usanetwork_tv_show_nid' => $tv_show_node->nid,
+      'usanetwork_tv_show_page_context' => 'showpage',
     ), 'setting');
 
     $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);

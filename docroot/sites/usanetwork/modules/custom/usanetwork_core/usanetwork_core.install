@@ -964,7 +964,6 @@ function usanetwork_core_update_7156() {
 function usanetwork_core_update_7160() {
   $to_be_enabled = array(
     'lazyloader',
-    'usanetwork_overlay',
   );
 
   $to_be_disabled = array(
@@ -991,15 +990,6 @@ function usanetwork_core_update_7160() {
 function usanetwork_core_update_7161() {
   if (!module_exists('usanetwork_consumptionator_carousel')) {
     module_enable(array('usanetwork_consumptionator_carousel'));
-  }
-}
-
-/**
- * Enables module usanetwork_consumptionator.
- */
-function usanetwork_core_update_7162() {
-  if (!module_exists('usanetwork_consumptionator')) {
-    module_enable(array('usanetwork_consumptionator'));
   }
 }
 

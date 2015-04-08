@@ -100,6 +100,8 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   drupal_add_js($theme_path . '/javascripts/tableheader.js');
   drupal_add_js($theme_path . '/javascripts/jquery.mCustomScrollbar.concat.min.js');
+  drupal_add_js($theme_path . '/javascripts/matchmedia.js');
+  drupal_add_js($theme_path . '/javascripts/picturefill.js');
   drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
     'type' => 'external',
     'scope' => 'footer',
@@ -1040,8 +1042,6 @@ function aurora_usa_js_alter(&$js) {
  */
 function aurora_usa_field__field_usa_aspot_desktop($vars) {
   // polyfill
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
   $item = current($vars['items']);
@@ -1070,8 +1070,6 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
  */
 function aurora_usa_field__field_usa_aspot_tablet_portrait($vars) {
   // polyfill
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
   $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
@@ -1087,8 +1085,6 @@ function aurora_usa_field__field_usa_aspot_tablet_portrait($vars) {
  */
 function aurora_usa_field__field_usa_aspot_mobile($vars) {
   // polyfill
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
   $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
@@ -1111,8 +1107,6 @@ function aurora_usa_field__field_promo_wide_image($vars) {
   // b-spot
   if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
     // polyfill
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
 
@@ -1142,8 +1136,6 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   // b-spot these are mobile fallbacks
   if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
   // polyfill
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
     $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
@@ -1157,8 +1149,6 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   // c-spot
   if ($vars['element']['#view_mode'] == 'home_promo') {
     // polyfill
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
     $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';

@@ -32,30 +32,6 @@
   }
 }
 
-.block-usanetwork-video,
-.block-usanetwork-mpx-video {
-  @extend %grid-small-wide-two-three-four;
-  margin: 0 auto;
-  .ajax-content {
-    position: relative;
-    &.ajax-loading {
-      > div {
-        opacity: 0.5;
-      }
-      .ajax-loader {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        opacity: 1;
-        background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
-      }
-    }
-  }
-}
-
 .page-videos-live {
   #content {
     .block {

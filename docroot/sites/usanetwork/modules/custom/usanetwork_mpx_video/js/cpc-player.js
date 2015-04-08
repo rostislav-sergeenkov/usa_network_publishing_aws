@@ -52,10 +52,7 @@
 
   function showCustomSlate() {
     //generate some HTML to replace the contents of the 'videoplayer' element.
-    var customSlateContent = "<div id='blackout-slate' style='display:table; height:100%; width:100%; background-color:#000000; overflow: hidden;'>";
-    customSlateContent += "<span style='display:table-cell; font-size: 20px; text-transform: uppercase; text-align: center; vertical-align: middle'>";
-    customSlateContent += "Video is temporary unavailable";
-    customSlateContent += "</span></div>";
+    var customSlateContent = "<div id='blackout-slate'></div>";
 
     //use jQuery to replace contents with custom slate HTML
     $("#pdk-player").parent('.video-player-wrapper').html(customSlateContent);

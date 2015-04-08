@@ -95,8 +95,7 @@
 
     attach: function (context, settings) {
       var slideItem =  $('.episodes-list-slider.horizontal .slide-item'),
-          moreButton = $('.episodes-list-slider.horizontal a.more-button'),
-          marginBottom = slideItem.eq(0).css('margin-bottom');
+          moreButton = $('.episodes-list-slider.horizontal a.more-button');
 
       Drupal.behaviors.show_aspot.extendSettings();
       Drupal.behaviors.show_aspot.initVSliders();
@@ -142,11 +141,9 @@
           if ($(this).hasClass('more')) {
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
             $(this).removeClass('more').addClass('close');
-            slideItem.eq(2).css('margin-bottom', marginBottom);
           } else {
             $('.episodes-list-slider.horizontal > ul > li:gt(2)').addClass('hidden');
             $(this).removeClass('close').addClass('more');
-            slideItem.eq(2).css('margin-bottom', 0);
           }
         });
       }

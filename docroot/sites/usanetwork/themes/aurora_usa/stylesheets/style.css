@@ -10874,10 +10874,13 @@ footer h2 {
 }
 
 .consumptionator-page .video-block {
+  height: 42.1875vw;
   margin: 0;
   max-width: 2260px;
+  overflow: hidden;
   padding: 0;
   position: relative;
+  width: 100%;
 }
 .consumptionator-page .video-block:after {
   clear: both;
@@ -10890,12 +10893,175 @@ footer h2 {
   }
 }
 .consumptionator-page .video-block .player-wrapper {
-  margin-right: 310px;
+  float: left;
+  height: 100%;
   position: relative;
+  width: 75%;
+  /*old css code*/
+  /*old css end*/
 }
 @media (max-width: 1024px) {
   .consumptionator-page .video-block .player-wrapper {
     margin-right: 0;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help {
+  background-color: #161616;
+  border: 1px solid #4b4b4b;
+  display: none;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-download {
+  padding-top: 20px;
+  position: relative;
+  top: 82px;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download {
+    font-size: 11px;
+    line-height: 16px;
+    top: -6px;
+  }
+}
+@media (min-width: 1275px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download {
+    font-size: 20px;
+    line-height: 30px;
+    top: 102px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link {
+  position: relative;
+  top: 100px;
+  left: -14px;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link {
+    left: -4px;
+    top: -3px;
+  }
+}
+@media (min-width: 1275px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link {
+    top: 120px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a:after {
+  content: "";
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a img {
+  height: 35px;
+  padding-left: 29px;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a img {
+    padding-left: 9px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .arrow {
+  position: absolute;
+  right: 0;
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-msg {
+  position: relative;
+  top: 52px;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-msg {
+    top: 14px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+@media (min-width: 1275px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-msg {
+    font-size: 20px;
+    line-height: 30px;
+    top: 82px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-close {
+  float: right;
+  position: relative;
+  top: 112px;
+  right: 10px;
+  text-transform: uppercase;
+  color: #0AB6E8;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-close {
+    top: 3px;
+  }
+}
+@media (min-width: 1275px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-close {
+    top: 250px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-close > img {
+  padding-right: 5px;
+  padding-bottom: 1px;
+}
+.consumptionator-page .video-block .player-wrapper .tve-help:before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-right: 14px solid #1f1f1f;
+  top: 3px;
+  right: -2px;
+  z-index: 106;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help:before {
+    border-bottom: 14px solid #1f1f1f;
+    border-right: 14px solid transparent;
+    top: 158px;
+    left: 50%;
+    margin-left: -14px;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help:before {
+    border-bottom: 14px solid #1f1f1f;
+    border-right: 14px solid transparent;
+    top: 318px;
+    left: 16%;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-right: 14px solid #4b4b4b;
+  top: 3px;
+  right: 0px;
+  z-index: 105;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help:after {
+    border-bottom: 14px solid #4b4b4b;
+    border-right: 14px solid transparent;
+    top: 156px;
+    left: 50%;
+    margin-left: -14px;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help:after {
+    border-bottom: 14px solid #4b4b4b;
+    border-right: 14px solid transparent;
+    top: 316px;
+    left: 16%;
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper {
@@ -10906,13 +11072,11 @@ footer h2 {
 }
 .consumptionator-page .video-block .consum-sidebar {
   background: none;
-  width: 300px;
-  padding: 10px 0px 0;
-  overflow: hidden;
-  position: absolute;
+  float: left;
   height: 100%;
-  right: 10px;
-  top: 0;
+  overflow: hidden;
+  position: relative;
+  width: 25%;
 }
 @media (max-width: 1024px) {
   .consumptionator-page .video-block .consum-sidebar {
@@ -21106,9 +21270,7 @@ yx-axis
     overflow: hidden;
     width: 100%;
   }
-}
-@media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li:nth-child(3) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li:last-child {
     margin-bottom: 0;
   }
 }

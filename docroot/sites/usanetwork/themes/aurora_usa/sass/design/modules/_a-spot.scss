@@ -490,9 +490,7 @@
             height: 56.25vw;
             overflow: hidden;
             width: 100%;
-          }
-          @include breakpoint($bp-640-width) {
-            &:nth-child(3) {
+            &:last-child {
               margin-bottom: 0;
             }
           }

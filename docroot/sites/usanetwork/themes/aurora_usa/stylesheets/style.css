@@ -10979,9 +10979,9 @@ footer h2 {
 }
 
 .consumptionator-page .video-block {
-  margin: 0 auto 10px;
+  margin: 0;
   max-width: 2260px;
-  padding: 10px 10px 0;
+  padding: 0;
   position: relative;
 }
 .consumptionator-page .video-block:after {

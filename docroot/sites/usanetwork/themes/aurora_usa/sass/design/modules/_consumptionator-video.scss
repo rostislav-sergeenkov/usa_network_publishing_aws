@@ -1,9 +1,9 @@
 .consumptionator-page {
   .video-block {
     @include clear;
-    margin: 0 auto 10px;
+    margin: 0;
     max-width: 2260px;
-    padding: 10px 10px 0;
+    padding: 0;
     position: relative;
     @include breakpoint($bp-1024-width) {
       margin-bottom: 10px;

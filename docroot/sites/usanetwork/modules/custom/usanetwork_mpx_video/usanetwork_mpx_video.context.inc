@@ -145,18 +145,6 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
-        'usanetwork_mpx_video-usa_show_mpx_video_nav' => array(
-          'module' => 'usanetwork_mpx_video',
-          'delta' => 'usa_show_mpx_video_nav',
-          'region' => 'content',
-          'weight' => '-8',
-        ),
-        'usanetwork_mpx_video-usa_mpx_video_views' => array(
-          'module' => 'usanetwork_mpx_video',
-          'delta' => 'usa_mpx_video_views',
-          'region' => 'content',
-          'weight' => '-7',
-        ),
       ),
     ),
   );

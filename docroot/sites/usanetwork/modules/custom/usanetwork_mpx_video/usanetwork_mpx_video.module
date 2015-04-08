@@ -2418,20 +2418,50 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
       'template' => 'templates/usanetwork-mpx-video-clips',
     ),
     'usanetwork_mpx_video_related_item' => array(
-      'variables' => array(),
-      'template' => 'templates/usanetwork-mpx-video-related-item.tpl.php',
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-related-item',
     ),
     'usanetwork_mpx_video_related_ymal_item' => array(
-      'variables' => array(),
-      'template' => 'templates/usanetwork-mpx-video-related-ymal-item.tpl.php',
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'topic' => NULL,
+        'show_name' => NULL,
+        'promo_title' => NULL,
+        'description' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+        'cta' => NULL,
+        'color_class' => NULL,
+        'icon_type' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-related-ymal-item',
     ),
     'usanetwork_mpx_video_related_items_block' => array(
-      'variables' => array(),
-      'template' => 'templates/usanetwork-mpx-video-related-items-block.tpl.php',
+      'variables' => array(
+        'ad' => NULL,
+        'related_items' => array(),
+      ),
+      'template' => 'templates/usanetwork-mpx-video-related-items-block',
     ),
     'usanetwork_mpx_video_related_items_container' => array(
-      'variables' => array(),
-      'template' => 'templates/usanetwork-mpx-video-related-items-container.tpl.php',
+      'variables' => array(
+        'related_items_block' => NULL,
+        'load_more_link' => NULL,
+        'items_pre_page_limit' => NULL,
+        'show_nid' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-related-items-container',
     ),
   );
   return $themes;
@@ -2554,9 +2584,19 @@ function usanetwork_mpx_video_get_related_content_ajax($tv_show_node, $start_fro
   $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, $start_from, $limit);
 
   if (!empty($related_content)) {
+    $last_entry = end($related_content);
+    $items_last = _usanetwork_tv_shows_cache_get_number_of_last_items($tv_show_node, $last_entry->entity_type, $last_entry->entity_id);
+
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
     $response['rendered'] = _usanetwork_mpx_video_render_related_content_items_block($related_content, TRUE);
+
+    if ($items_last == 0 || $items_last <= $limit) {
+      $response['overlimited'] = TRUE;
+    }
+    else {
+      $response['overlimited'] = FALSE;
+    }
 
     return drupal_json_output($response);
   }
@@ -2594,7 +2634,7 @@ function usanetwork_mpx_video_related_content_block() {
           'related_items_block' => $block_of_items,
           'load_more_link' => TRUE,
           'show_nid' => $tv_show_node->nid,
-          'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
+          'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
         ));
       }
     }

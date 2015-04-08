@@ -1068,3 +1068,14 @@ function usanetwork_core_update_7170() {
     module_enable(array('usanetwork_social_meter'));
   }
 }
+
+/**
+ * Disables USA Network overlay with old consumptionator.
+ */
+function usanetwork_core_update_7171() {
+  $modules_dis = array(
+    'usanetwork_consumptionator',
+    'usanetwork_overlay',
+  );
+  module_disable($modules_dis);
+}

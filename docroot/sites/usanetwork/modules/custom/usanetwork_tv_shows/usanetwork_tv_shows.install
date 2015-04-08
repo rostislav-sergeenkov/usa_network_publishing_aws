@@ -77,42 +77,6 @@ function usanetwork_tv_shows_update_7016() {
 }
 
 /**
-* Caches related data of TV Shows.
- */
-function usanetwork_tv_shows_update_7017() {
-  $output = '';
-  $cached = array();
-
-  // It's impossible to add 'current_state' => 'published' filter for entity_load!
-  $tv_shows = entity_load('node', NULL, array(
-    'type' => 'tv_show',
-    'status' => NODE_PUBLISHED,
-  ));
-
-  if (!empty($tv_shows)) {
-    foreach ($tv_shows as $tv_show_node) {
-      if ($tv_show_node->current_state != 'published') {
-        continue;
-      }
-
-      _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
-
-      $cached[] = $tv_show_node->title;
-    }
-  }
-
-  if (count($cached) > 0) {
-    $output = t('Cached data of !number TV Shows: ', array('!number' => count($cached)));
-    $output .= implode(', ', $cached);
-  }
-  else {
-    $output = t('There are no TV Shows has been cached');
-  }
-
-  return $output;
-}
-
-/**
  * Update settings related to current shows
  */
 function usanetwork_tv_shows_update_7018() {

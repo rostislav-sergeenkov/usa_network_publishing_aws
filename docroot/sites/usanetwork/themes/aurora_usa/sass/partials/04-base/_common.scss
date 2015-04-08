@@ -213,7 +213,12 @@ address {
   margin-left: -16px;
   width: 32px;
 }
-.node-type-usanetwork-static-page {
+.node-type-usanetwork-static-page, .node-type-webform {
+  .content {
+    margin: auto;
+    font-size: 16px;
+    color: #232323;
+  }
   .textcontent {
     margin: auto;
     padding: 20px;
@@ -238,5 +243,17 @@ address {
   .show-title-block h1 {
     font-family: $avalon-demi;
     max-width: 100%;
+  }
+  form {
+    margin: auto;
+    max-width: 1000px;
+    padding: 20px;
+  }
+  .form-textarea-wrapper textarea {
+    box-sizing: border-box;
+    display: block;
+    height: 170px;
+    margin: 0;
+    width: 100%;
   }
 }

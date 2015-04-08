@@ -2924,30 +2924,47 @@ ul.menu li {
   width: 32px;
 }
 
-.node-type-usanetwork-static-page .textcontent {
+.node-type-usanetwork-static-page .content, .node-type-webform .content {
+  margin: auto;
+  font-size: 16px;
+  color: #232323;
+}
+.node-type-usanetwork-static-page .textcontent, .node-type-webform .textcontent {
   margin: auto;
   padding: 20px;
   max-width: 1280px;
   font-size: 16px;
   color: #232323;
 }
-.node-type-usanetwork-static-page h2 {
+.node-type-usanetwork-static-page h2, .node-type-webform h2 {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 16px;
 }
-.node-type-usanetwork-static-page a, .node-type-usanetwork-static-page a:visited {
+.node-type-usanetwork-static-page a, .node-type-usanetwork-static-page a:visited, .node-type-webform a, .node-type-webform a:visited {
   color: #808080;
   text-decoration: underline;
 }
-.node-type-usanetwork-static-page a:hover {
+.node-type-usanetwork-static-page a:hover, .node-type-webform a:hover {
   color: #a9a9a9;
 }
-.node-type-usanetwork-static-page strong {
+.node-type-usanetwork-static-page strong, .node-type-webform strong {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
-.node-type-usanetwork-static-page .show-title-block h1 {
+.node-type-usanetwork-static-page .show-title-block h1, .node-type-webform .show-title-block h1 {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   max-width: 100%;
+}
+.node-type-usanetwork-static-page form, .node-type-webform form {
+  margin: auto;
+  max-width: 1000px;
+  padding: 20px;
+}
+.node-type-usanetwork-static-page .form-textarea-wrapper textarea, .node-type-webform .form-textarea-wrapper textarea {
+  box-sizing: border-box;
+  display: block;
+  height: 170px;
+  margin: 0;
+  width: 100%;
 }
 
 img {

@@ -2924,6 +2924,32 @@ ul.menu li {
   width: 32px;
 }
 
+.node-type-usanetwork-static-page .textcontent {
+  margin: auto;
+  padding: 20px;
+  max-width: 1280px;
+  font-size: 16px;
+  color: #232323;
+}
+.node-type-usanetwork-static-page h2 {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 16px;
+}
+.node-type-usanetwork-static-page a, .node-type-usanetwork-static-page a:visited {
+  color: #808080;
+  text-decoration: underline;
+}
+.node-type-usanetwork-static-page a:hover {
+  color: #a9a9a9;
+}
+.node-type-usanetwork-static-page strong {
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+}
+.node-type-usanetwork-static-page .show-title-block h1 {
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  max-width: 100%;
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;

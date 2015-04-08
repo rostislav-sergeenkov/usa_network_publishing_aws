@@ -748,9 +748,6 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->social_meter)
       )
       : FALSE,
-    'show_draggable_data' => !empty($draggable_data)
-      ? json_encode($draggable_data)
-      : '',
   );
 
   if (!empty($aspot_node->field_aspot_tgi_title_prefix)) {

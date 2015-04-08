@@ -5,7 +5,24 @@
       var show_nid = Drupal.settings.usanetwork_tv_show_nid || $('.show-latest-block').data('show-nid') || 0;
       var number_ul = $('.show-latest-block > ul').length;
       var start_from = limit*number_ul;
-      var url = Drupal.settings.basePath + 'ajax/usanetwork-tv-shows/get-related/'+ show_nid +'/'+ start_from +'/'+ limit;
+      var service_name = '';
+
+      if (typeof Drupal.settings.usanetwork_tv_show_page_context != 'undefined') {
+        switch (Drupal.settings.usanetwork_tv_show_page_context) {
+          case 'consumptionator':
+            service_name = 'usanetwork-mpx-video';
+            break;
+          case 'showpage':
+            service_name = 'usanetwork-tv-shows';
+            break;
+          default:
+            service_name = 'usanetwork-tv-shows';
+            break;
+        }
+      }
+
+      var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit;
+
       $('.show-latest-block .load-more-link a').after('<div class="load-more-loader"></div>');
       $.ajax({
         type: 'GET',
@@ -14,7 +31,11 @@
         success: function (data) {
           $('.show-latest-block .load-more-link').before(data.rendered);
           $('.show-latest-block .load-more-link .load-more-loader').remove();
-          window.picturefill();
+
+          if (typeof window.picturefill != 'undefined') {
+            window.picturefill();
+          }
+          
           if (data.overlimited == false) {
             $('.show-latest-block .load-more-link a').removeClass('disabled');
           }

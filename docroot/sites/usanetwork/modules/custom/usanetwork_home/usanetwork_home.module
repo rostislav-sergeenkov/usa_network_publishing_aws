@@ -1439,19 +1439,11 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
       }
 
       $theme_variables = array(
-        'title' => !empty($promo->field_promo_text_line_1)
-          ? $promo_wrapper->field_promo_text_line_1->value()
-          : '',
+        'title' => !empty($promo->field_promo_title) ? $promo_wrapper->field_promo_title->value() : '',
+        'description' => !empty($promo->field_promo_long_description) ? $promo_wrapper->field_promo_long_description->value() : '',
         'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
-        'episode_title' => !empty($promo->field_promo_text_line_2)
-          ? $promo_wrapper->field_promo_text_line_2->value()
-          : '',
-        'episode_url' => !empty($promo->field_promo_link)
-          ? url($promo_wrapper->field_promo_link->url->value())
-          : '',
+        'episode_url' => !empty($promo->field_promo_link) ? url($promo_wrapper->field_promo_link->url->value()) : '',
         'image_url' => !empty($image_file) ? image_style_url('383x144', $image_file->uri) : '',
-        'topic' => !empty($promo->field_promo_topic) ? $promo_wrapper->field_promo_topic->value() : '',
-        'violator' => !empty($promo->field_promo_violator_name) ? $promo_wrapper->field_promo_violator_name->value() : '',
         'icon_type' => $icon_type,
       );
       

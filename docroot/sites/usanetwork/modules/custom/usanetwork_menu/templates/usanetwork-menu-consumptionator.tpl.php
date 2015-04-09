@@ -30,6 +30,10 @@
     <div class="tab info"><a data-state="active" href="#" class="no-refresh active"></a></div>
     <!--<div class="tab share"><a href="#" class="no-refresh"></a></div>-->
   </div>
+  <div class="tve-help-link signIn"></div>
+  <div class="tve-help-link signOut" data-ng-if="global.isAuthN">
+    <?php print $authbar; ?>
+  </div>
 </div>
 <div style="display: block;" class="tab-item info-tab active">
   <div class="show-info">

@@ -1978,6 +1978,7 @@ function usanetwork_context_context_default_contexts() {
     'path' => array(
       'values' => array(
         '~file/*' => '~file/*',
+        '~videos/live' => '~videos/live',
       ),
     ),
     'sitewide' => array(

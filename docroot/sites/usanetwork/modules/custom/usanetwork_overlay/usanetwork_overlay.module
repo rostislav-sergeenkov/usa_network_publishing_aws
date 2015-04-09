@@ -34,7 +34,7 @@ function usanetwork_overlay_page_alter(&$page) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_overlay') . '/js/usanetwork_overlay.main.js');
     drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator') . '/js/usanetwork_consumptionator.autoloader.js');
 
-    if (module_exists('usanetwork_tv_shows')) {
+    if (module_exists('usanetwork_tv_shows') && !path_is_admin(current_path())) {
       drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
     }
   }

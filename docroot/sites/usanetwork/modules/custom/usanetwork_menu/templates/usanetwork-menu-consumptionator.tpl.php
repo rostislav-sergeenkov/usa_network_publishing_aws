@@ -29,7 +29,6 @@
   <div class="nav-bar-tabs">
     <div class="tab info"><a data-state="active" href="#" class="no-refresh active"></a></div>
     <!--<div class="tab share"><a href="#" class="no-refresh"></a></div>-->
-    <div class="tab close back-to-show"><a href="<?php print $show_url; ?>"></a></div>
   </div>
 </div>
 <div style="display: block;" class="tab-item info-tab active">
@@ -56,17 +55,8 @@
         </div>
       </div>
     </div>
-    <div class="show-info-social">
-      <div class="social-title">
-        <?php print t('Share this video'); ?>
-      </div>
-      <div class="social-icons icons-block">
-        <a href="#" class="facebook"></a>
-        <a href="#" class="twitter"></a>
-        <a href="#" class="tumblr"></a>
-        <a href="#" class="pinterest"></a>
-        <a href="#" class="plus-icon"></a>
-      </div>
+    <div class="sharebar">
+      <?php print $sharebar; ?>
     </div>
   </div>
 </div>

@@ -36,7 +36,7 @@
           if (typeof window.picturefill != 'undefined') {
             window.picturefill();
           }
-          
+
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
           }

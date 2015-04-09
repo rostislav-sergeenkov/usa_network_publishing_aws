@@ -622,8 +622,11 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->social_meter)
       )
       : FALSE,
-    'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
-      ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
+    'show_image_bg_offset' => !empty($draggable_data->aspot_offset_percent->shiftPercent)
+      ? $draggable_data->aspot_offset_percent->shiftPercent
+      : 0,
+    'show_draggable_data' => !empty($draggable_data)
+      ? $draggable_data
       : '',
   );
 

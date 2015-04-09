@@ -1794,7 +1794,11 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $file = $context['entity'];
       $share_settings['gigyaSharebar']['ua']['imageBhev'] = 'url';
       $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+      $file_wrapper = entity_metadata_wrapper('file', $file);
       $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($wrapper->getLocalThumbnailPath());
+      $share_settings['gigyaSharebar']['ua']['title'] = $file->filename;
+      $share_settings['gigyaSharebar']['ua']['description'] = !empty($file->field_mpx_description) ?  $file_wrapper->field_mpx_description->value() : '';
+      $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
 
       // change url for live player
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');

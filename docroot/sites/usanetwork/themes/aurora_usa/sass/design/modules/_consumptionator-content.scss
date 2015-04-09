@@ -23,6 +23,7 @@
     margin-bottom: 190px;
   }
   ul {
+    @include clear();
     margin: 0;
     padding: 0;
     position: relative;

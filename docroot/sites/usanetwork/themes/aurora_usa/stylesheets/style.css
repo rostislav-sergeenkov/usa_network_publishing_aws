@@ -11409,6 +11409,11 @@ footer h2 {
   position: relative;
   width: 100%;
 }
+.related-content-block ul:after {
+  clear: both;
+  content: '';
+  display: table;
+}
 .related-content-block ul li {
   float: left;
   height: 25.4vw;

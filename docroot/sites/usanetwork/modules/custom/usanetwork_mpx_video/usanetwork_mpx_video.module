@@ -120,6 +120,35 @@ function usanetwork_mpx_video_block_info() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_mpx_video_image_default_styles() {
+  $styles = array();
+
+  $styles['111x74'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 111,
+          'height' => 74,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 111,
+          'height' => 74,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  return $styles;
+}
+
+/**
  * Implements hook_block_view().
  */
 function usanetwork_mpx_video_block_view($delta) {
@@ -167,6 +196,15 @@ function usanetwork_mpx_video_block_view($delta) {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usa_mpx_video_clips_render(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.mousewheel.min.js',
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.easing.1.3.js',
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js',
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.bxslider.js',
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/bxslider-carousels.js',
+          ),
+        ),
       );
       break;
     case 'usa_mpx_cons_related':
@@ -2471,7 +2509,8 @@ function _usa_mpx_video_clips_render() {
            $promos[] = array(
              'filename' => $related_video_file->filename,
              'url' => $promo_link,
-             'image_url' => image_style_url('390x390', $promo_image_url),
+             'image_url' => image_style_url('111x74', $promo_image_url),
+             'image_url_large' => image_style_url('full_episodes_633x356', $promo_image_url),
              'caption' => $promo_data['show_name'],
              'title' => $promo_data['promo_title'],
              'description' => $promo_data['description'],

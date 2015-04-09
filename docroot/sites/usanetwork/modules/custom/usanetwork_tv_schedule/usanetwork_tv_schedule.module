@@ -1517,7 +1517,7 @@ function _usanetwork_tv_schedule_synchronize($feed_id = null) {
     $update_interval = isset($feed['update_interval']) ? $feed['update_interval']
           : 21600; // 6 hours by default
 
-    if (REQUEST_TIME - $last_updated > $update_interval || TRUE) {
+    if (REQUEST_TIME - $last_updated > $update_interval) {
       $schedule_data = _usanetwork_tv_schedule_get_schedule_data_from_feed($feed['url']);
 
       if ($schedule_data) {

@@ -12,6 +12,7 @@ define('USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH', 4);
  * Implements hook_cron().
  */
 function usanetwork_tv_schedule_cron() {
+  //@TODO: check if it still needed.
   _usanetwork_tv_schedule_synchronize();
 }
 
@@ -1082,7 +1083,7 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0) {
   $schedule_page_url = url('schedule');
 
   if ($start_date == 0) {
-    $start_date = strtotime('-3 days', REQUEST_TIME);
+    $start_date = strtotime('today', REQUEST_TIME);
     $current_day = strtotime('midnight', REQUEST_TIME);
   }
 
@@ -1516,8 +1517,9 @@ function _usanetwork_tv_schedule_synchronize($feed_id = null) {
     $update_interval = isset($feed['update_interval']) ? $feed['update_interval']
           : 21600; // 6 hours by default
 
-    if (REQUEST_TIME - $last_updated > $update_interval) {
+    if (REQUEST_TIME - $last_updated > $update_interval || TRUE) {
       $schedule_data = _usanetwork_tv_schedule_get_schedule_data_from_feed($feed['url']);
+
       if ($schedule_data) {
         if ($first = reset($schedule_data)) {
           // delete old data

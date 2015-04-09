@@ -149,9 +149,9 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
 
   <div id="home-nav">
     <ul>
-      <li id="binge"><a href="/gracelandcatchup/binge"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_binge.png" alt="Binge button" /></div></a><div class="spoiler-alert spoiler-high"></div></li>
-      <li id="slideshow"><a href="/gracelandcatchup/slideshow"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_slideshow.png" alt="Slideshow button" /></div></a><div class="spoiler-alert spoiler-medium"></div></li>
-      <li id="trivia"><a href="/gracelandcatchup/trivia"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_trivia.png" alt="Trivia button" /></div></a><div class="spoiler-alert spoiler-low"></div></li>
+      <li id="binge" class="internal" data-menuanchor="videos"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_binge.png" alt="Binge button" /></div></a><div class="spoiler-alert spoiler-high"></div></li>
+      <li id="slideshow" class="internal" data-menuanchor="slideshow"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_slideshow.png" alt="Slideshow button" /></div></a><div class="spoiler-alert spoiler-medium"></div></li>
+      <li id="trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_trivia.png" alt="Trivia button" /></div></a><div class="spoiler-alert spoiler-low"></div></li>
     </ul>
   </div>
 </div>

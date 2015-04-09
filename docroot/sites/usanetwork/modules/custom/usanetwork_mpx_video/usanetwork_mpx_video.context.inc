@@ -57,7 +57,7 @@ function usanetwork_mpx_video_context_default_contexts() {
   $export['usa_global_mpx_videos'] = $context;
 
   $context = new stdClass();
-  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'usa_mpx_videos_live';
   $context->description = '';
@@ -72,23 +72,29 @@ function usanetwork_mpx_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'views-usa_mpx_video-latest_live_video' => array(
           'module' => 'views',
           'delta' => 'usa_mpx_video-latest_live_video',
           'region' => 'content',
           'weight' => '-10',
         ),
-        'usanetwork_tv_schedule-usa_live_tv_schedule' => array(
-          'module' => 'usanetwork_tv_schedule',
-          'delta' => 'usa_live_tv_schedule',
-          'region' => 'content',
-          'weight' => '-9',
+        'usanetwork_blocks-usa_footer_promos' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_promos',
+          'region' => 'footer',
+          'weight' => '-10',
         ),
-        'views-usa_mpx_video-fullepisodes_live' => array(
-          'module' => 'views',
-          'delta' => 'usa_mpx_video-fullepisodes_live',
-          'region' => 'content',
-          'weight' => '-8',
+        'usanetwork_menu-usanetwork_menu_fm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_fm_menu',
+          'region' => 'footer',
+          'weight' => '-9',
         ),
       ),
     ),

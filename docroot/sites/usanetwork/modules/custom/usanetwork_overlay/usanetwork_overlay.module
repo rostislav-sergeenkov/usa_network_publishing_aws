@@ -22,6 +22,10 @@ function usanetwork_overlay_menu() {
  *  Implements hook_page_alter().
  */
 function usanetwork_overlay_page_alter(&$page) {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
   $get = drupal_get_query_parameters();
 
   // Add consumptionator container and script if it's needed.

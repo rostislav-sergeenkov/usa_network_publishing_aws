@@ -2592,6 +2592,10 @@ function usanetwork_mpx_video_get_related_content_ajax($tv_show_node, $start_fro
  * Renders Block entity of related content items.
  */
 function usanetwork_mpx_video_related_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
   $content = menu_get_object('file');
 
   if (!empty($content)) {

@@ -47,9 +47,6 @@
       </ul>
     </div>
   <?php endif; ?>
-  <div class="time-zone">
-    <a><?php print t('Change Time Zone'); ?></a>
-  </div>
   <?php if (!empty($schedule_table)): ?>
     <div class="schedule-table">
       <ul>

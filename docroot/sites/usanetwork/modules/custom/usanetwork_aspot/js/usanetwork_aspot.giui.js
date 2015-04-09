@@ -348,38 +348,6 @@
         });
       }
     },
-
-    getPosition : function () {
-
-      // write positions in head input
-
-      var inputData = block.find('input[name="aspot_draggable_items_data"]'),
-          inputSecondData = second_block.find('input[name="aspot_draggable_items_data"]'),
-          data, secondData;
-
-      block.find('input[name="aspot_draggable_items_data"]').val(JSON.stringify(elementsMeta));
-
-      if(inputSecondData.val() != ''){
-        secondData = JSON.parse(inputSecondData.val());
-      } else {
-        secondData = '';
-      }
-
-      var jsonData = {};
-
-      jsonData.elementsMeta = elementsMeta;
-      jsonData.secondData = secondData;
-
-      var x = JSON.stringify(elementsMeta) ;
-
-      console.info(x);
-      //
-      //var jsonData = JSON.parse(JSON.stringify(elementsMeta) + secondData);
-      //
-      $('input[name="aspot_draggable_items_data"]').eq(0).val(JSON.stringify(x));
-
-    },
-
     attach: function (context, settings) {
 
       var homePrefixId = '',
@@ -398,16 +366,17 @@
         var headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
             homeUiPositions = homeUi.find('input[name="aspot_draggable_items_data"]').val(),
             showUiPositions = showUi.find('input[name="aspot_draggable_items_data"]').val(),
-            myArray = [homeUiPositions , showUiPositions];
+            homeUiPositionsVal = JSON.parse(homeUiPositions),
+            showUiPositionsVal = JSON.parse(showUiPositions),
+            myArray = [homeUiPositionsVal , showUiPositionsVal];
 
         var jsonData = {
           'data' : myArray
         };
 
+        console.info(jsonData);
 
-
-
-        $('input[name="aspot_draggable_items_data"]').eq(0).val(JSON.stringify(jsonData));
+        headInput.val(JSON.stringify(jsonData));
       });
     }
   };

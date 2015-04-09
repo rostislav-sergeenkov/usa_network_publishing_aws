@@ -83,72 +83,87 @@ function usanetwork_schedule_pull() {
       return;
     }
 
+    $schedule_limit_from = strtotime('midnight +6 hours', REQUEST_TIME);
+    $schedule_limit_to = strtotime('midnight +8 days +5 hours', REQUEST_TIME);
+    db_truncate('usanetwork_schedule')->execute();
+
     foreach ($data->entries as $data_item) {
       $data_item = (array) $data_item;
-      $item_rating = !empty($data_item['pllisting$contentRatings'][0])
-        ? ((array) $data_item['pllisting$contentRatings'][0])
-        : array();
-      $program = (array) $data_item['pllisting$program'];
-      $program_rating = (isset($program['plprogram$ratings'][0])
-        ? (array) $program['plprogram$ratings'][0]
-        : array());
 
-      $record = array(
-        'guid' => $data_item['guid'],
-        'airing_type' => !empty($data_item['pllisting$airingType'])
-          ? $data_item['pllisting$airingType']
-          : '',
-        'rating_scheme' => !empty($item_rating['pllisting$scheme'])
-          ? $item_rating['pllisting$scheme']
-          : '',
-        'rating_type' => !empty($item_rating['pllisting$rating'])
-          ? $item_rating['pllisting$rating']
-          : '',
-        'start_time' => !empty($data_item['pllisting$startTime'])
-          ? ($data_item['pllisting$startTime'] / 1000)
-          : 0,
-        'end_time' => !empty($data_item['pllisting$endTime'])
-          ? ($data_item['pllisting$endTime'] / 1000)
-          : 0,
-        'title' => $program['pl$title'],
-        'show_title' => $program['plprogram$shortTitle'],
-        'program_guid' => !empty($program['pl$guid'])
-          ? $program['pl$guid']
-          : '',
-        'program_description' => !empty($program['pl$description'])
-          ? $program['pl$description']
-          : '',
-        'program_genre' => !empty($program['plprogram$displayGenre'])
-          ? $program['plprogram$displayGenre']
-          : '',
-        'program_type' => !empty($program['plprogram$programType'])
-          ? $program['plprogram$programType']
-          : '',
-        'program_rating_scheme' => !empty($program_rating['plprogram$scheme'])
-          ? $program_rating['plprogram$scheme']
-          : '',
-        'program_rating_type' => !empty($program_rating['plprogram$rating'])
-          ? $program_rating['plprogram$rating']
-          : '',
-        'program_secondary_title' => !empty($program['plprogram$secondaryTitle'])
-          ? $program['plprogram$secondaryTitle']
-          : '',
-        'series_episode_number' => !empty($program['plprogram$seriesEpisodeNumber'])
-          ? $program['plprogram$seriesEpisodeNumber']
-          : 0,
-        'season_episode_number' => !empty($program['plprogram$tvSeasonEpisodeNumber'])
-          ? $program['plprogram$tvSeasonEpisodeNumber']
-          : 0,
-        'season_number' => !empty($program['plprogram$tvSeasonNumber'])
-          ? $program['plprogram$tvSeasonNumber']
-          : 0,
-      );
+      $start_time = !empty($data_item['pllisting$startTime'])
+        ? ($data_item['pllisting$startTime'] / 1000)
+        : NULL;
 
-      if (usanetwork_schedule_is_item_exists($record['guid'])) {
-        drupal_write_record('usanetwork_schedule', $record, 'guid');
+      if ($start_time) {
+        if ($start_time >= $schedule_limit_from && $start_time < $schedule_limit_to) {
+          $item_rating = !empty($data_item['pllisting$contentRatings'][0])
+            ? ((array) $data_item['pllisting$contentRatings'][0])
+            : array();
+          $program = (array) $data_item['pllisting$program'];
+          $program_rating = (isset($program['plprogram$ratings'][0])
+            ? (array) $program['plprogram$ratings'][0]
+            : array());
+
+          $record = array(
+            'guid' => $data_item['guid'],
+            'airing_type' => !empty($data_item['pllisting$airingType'])
+              ? $data_item['pllisting$airingType']
+              : '',
+            'rating_scheme' => !empty($item_rating['pllisting$scheme'])
+              ? $item_rating['pllisting$scheme']
+              : '',
+            'rating_type' => !empty($item_rating['pllisting$rating'])
+              ? $item_rating['pllisting$rating']
+              : '',
+            'start_time' => $start_time,
+            'end_time' => !empty($data_item['pllisting$endTime'])
+              ? ($data_item['pllisting$endTime'] / 1000)
+              : 0,
+            'title' => $program['pl$title'],
+            'show_title' => $program['plprogram$shortTitle'],
+            'program_guid' => !empty($program['pl$guid'])
+              ? $program['pl$guid']
+              : '',
+            'program_description' => !empty($program['pl$description'])
+              ? $program['pl$description']
+              : '',
+            'program_genre' => !empty($program['plprogram$displayGenre'])
+              ? $program['plprogram$displayGenre']
+              : '',
+            'program_type' => !empty($program['plprogram$programType'])
+              ? $program['plprogram$programType']
+              : '',
+            'program_rating_scheme' => !empty($program_rating['plprogram$scheme'])
+              ? $program_rating['plprogram$scheme']
+              : '',
+            'program_rating_type' => !empty($program_rating['plprogram$rating'])
+              ? $program_rating['plprogram$rating']
+              : '',
+            'program_secondary_title' => !empty($program['plprogram$secondaryTitle'])
+              ? $program['plprogram$secondaryTitle']
+              : '',
+            'series_episode_number' => !empty($program['plprogram$seriesEpisodeNumber'])
+              ? $program['plprogram$seriesEpisodeNumber']
+              : 0,
+            'season_episode_number' => !empty($program['plprogram$tvSeasonEpisodeNumber'])
+              ? $program['plprogram$tvSeasonEpisodeNumber']
+              : 0,
+            'season_number' => !empty($program['plprogram$tvSeasonNumber'])
+              ? $program['plprogram$tvSeasonNumber']
+              : 0,
+          );
+
+          if (usanetwork_schedule_is_item_exists($record['guid'])) {
+            drupal_write_record('usanetwork_schedule', $record, 'guid');
+          }
+          else {
+            drupal_write_record('usanetwork_schedule', $record);
+          }
+        }
       }
+
       else {
-        drupal_write_record('usanetwork_schedule', $record);
+        continue;
       }
     }
 

@@ -1394,14 +1394,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
 
-      $menu_items = _usa_auth_prepare_menu_items();
-      $vars['links'] = array(
-        '#theme' => 'item_list',
-        '#items' => $menu_items,
-        '#attributes' => array('class' => array('tve-header-links', 'inline')),
-        '#prefix' => '<div class="links-wrapper">',
-        '#suffix' => '</div>',
-      );
 
 
       //twitter card
@@ -1794,7 +1786,11 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $file = $context['entity'];
       $share_settings['gigyaSharebar']['ua']['imageBhev'] = 'url';
       $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+      $file_wrapper = entity_metadata_wrapper('file', $file);
       $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($wrapper->getLocalThumbnailPath());
+      $share_settings['gigyaSharebar']['ua']['title'] = $file->filename;
+      $share_settings['gigyaSharebar']['ua']['description'] = !empty($file->field_mpx_description) ?  $file_wrapper->field_mpx_description->value() : '';
+      $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
 
       // change url for live player
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
@@ -2592,6 +2588,10 @@ function usanetwork_mpx_video_get_related_content_ajax($tv_show_node, $start_fro
  * Renders Block entity of related content items.
  */
 function usanetwork_mpx_video_related_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
   $content = menu_get_object('file');
 
   if (!empty($content)) {

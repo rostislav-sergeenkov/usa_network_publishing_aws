@@ -848,13 +848,26 @@ function _usanetwork_menu_consumptionator_block() {
   $file = menu_get_object('file');
   if (!empty($file)) {
 
+    if (!empty($file->field_gigya_share_bar)) {
+      $sharebar = field_view_field('file', $file, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this video');
+    }
+    $menu_items = _usa_auth_prepare_menu_items();
+    $auth_links = array(
+      '#theme' => 'item_list',
+      '#items' => $menu_items,
+      '#attributes' => array('class' => array('tve-header-links', 'inline')),
+      '#prefix' => '<div class="links-wrapper">',
+      '#suffix' => '</div>',
+    );
     $file_wrapper = entity_metadata_wrapper('file', $file);
     $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
     if ($episode_image_uri_wrapper) {
       $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
     }
-    $video_type = usanetwork_mpx_video_get_video_category($file);
     $theme_variables = array(
+      'sharebar' => !empty($sharebar) ? drupal_render($sharebar) : '',
+      'authbar' => !empty($auth_links) ? drupal_render($auth_links) : '',
       'main_url' => url('<front>'),
       'show_url' => !empty($file->field_show)
           ? url('node/' . $file_wrapper->field_show->value()->nid)
@@ -863,7 +876,13 @@ function _usanetwork_menu_consumptionator_block() {
         ? $file_wrapper->field_show->value()->title
         : '',
       'episode' => array(
-        'video_type' => !empty($video_type) ? $video_type : t('Clip'),
+        'video_type' => !empty($file->field_mpx_full_episode)
+            ? (
+            $file_wrapper->field_mpx_full_episode->value() == 0
+              ? t('Full Episode')
+              : t('Video')
+            )
+            : '',
         'image_url' => !empty($episode_image_uri)
           ? image_style_url('300x250', $episode_image_uri)
           : '',

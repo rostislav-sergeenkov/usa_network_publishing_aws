@@ -816,7 +816,6 @@ function _usanetwork_blocks_usa_footer_links_get_empty_fieldset_item($i, $footer
         '#title' => t('Target'),
         '#description' => t('Value of "target" attribute of link'),
         '#options' => array(
-          '_blank' => t('New window'),
           '_tab' => t('New tab'),
           '_self' => t('Current window'),
         ),

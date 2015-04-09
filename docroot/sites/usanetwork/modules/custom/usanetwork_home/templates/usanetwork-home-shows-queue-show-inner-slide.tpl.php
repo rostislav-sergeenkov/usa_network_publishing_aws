@@ -9,11 +9,11 @@
     <div class="meta-wrapper">
       <div class="meta-wrapper-inner">
         <div class="meta">
-          <?php if (!empty($topic)): ?>
-            <div class="caption"><?php print $topic; ?></div>
+          <?php if (!empty($description)): ?>
+            <div class="caption"><?php print $description; ?></div>
           <?php endif; ?>
-          <?php if (!empty($violator)): ?>
-            <div class="title"><?php print $violator; ?></div>
+          <?php if (!empty($title)): ?>
+            <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
         </div>
       </div>

@@ -1,6 +1,6 @@
 (function (ng, $) {
 
-  $(document).ready(function(){
+  $(document).ready(function () {
     if (!ng) {
       return;
     }
@@ -10,7 +10,7 @@
     $injector.invoke(['$cookies', 'tveConfig', 'tveModal', 'authService', function ($cookies, tveConfig, tveModal, authService) {
 
       if ($cookies['nbcu_ap_loginpending']) {
-        authService.promise.then(function() {
+        authService.promise.then(function () {
           initLivePlayer($cookies);
         });
       }
@@ -20,6 +20,8 @@
       }
 
     }]);
+
+    correctedStyles();
   });
 
   function initLivePlayer($cookies) {
@@ -42,6 +44,19 @@
 
     $("#videoplayer").css("border", 0);
   }
+
+  function correctedStyles() {
+    var signOut = $('.tve-help-link.signOut');
+    if (window.innerWidth >= 960) {
+      signOut.css('top', 35 + 'px');
+    } else {
+      signOut.css('top', 'auto');
+    }
+  }
+
+  $(window).bind('resize', function () {
+    correctedStyles();
+  });
 
   function onInStreamData(event) {
     if (event.data.type === 'AnvatoInStreamAdProgramBeginEvent') {

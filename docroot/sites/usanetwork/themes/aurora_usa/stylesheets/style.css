@@ -5088,6 +5088,15 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   clear: both;
 }
 
+.page-videos-live #blackout-slate {
+  background: url("../images/live-player/USA_NHL_SLATE.jpg");
+  background-size: cover;
+  display: table;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
 #utilities.search-active {
   height: 85px;
 }

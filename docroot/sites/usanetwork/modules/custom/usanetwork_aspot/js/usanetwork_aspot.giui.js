@@ -50,7 +50,7 @@
       carouselElementPreviewingBlock.prepend(giImage);
       carouselElementPreviewingBlockMobile.prepend(gimImage);
 
-      block.append('<input type="hidden" name="aspot_draggable_items_data" value="">');
+      block.append('<div id="' + draggableId + 'aspot_draggable_items_data"  class="aspot_draggable_items_data" style="display: none"></div>');
 
       // init
       if (prefix === '') {
@@ -154,18 +154,6 @@
             heightPercent_m = 0;
           }
 
-          //offset
-          var value = backgroundPreviewingBlock.css('backgroundPosition').split(' '),
-              imgWidth = backgroundPreviewingBlock.attr('data-img-width'),
-              offset_px_X = value[0].replace('px', ''),
-              offset_percent_X = null;
-
-          if (imgWidth === 0) {
-            offset_percent_X = 0;
-          } else {
-            offset_percent_X = Math.round(parseInt(offset_px_X) / imgWidth * 100);
-          }
-
           elementsMeta[itemElement.data('rel')] = {
             'elementId': itemElement.attr('id'),
             'dataRel': itemElement.data('rel'),
@@ -182,12 +170,32 @@
             'invertMX': invert_mX,
             'invertMY': invert_mY
           };
-          elementsMeta.aspot_offset_percent = {
-            shiftPercent: offset_percent_X
-          };
+
+          if(block.attr('id') == ('edit-group_usa_aspot_ui')){
+
+            //offset
+            var value = backgroundPreviewingBlock.css('backgroundPosition').split(' '),
+                imgWidth = backgroundPreviewingBlock.attr('data-img-width'),
+                offset_px_X = value[0].replace('px', ''),
+                offset_percent_X = null;
+
+            if (imgWidth === 0) {
+              offset_percent_X = 0;
+            } else {
+              offset_percent_X = Math.round(parseInt(offset_px_X) / imgWidth * 100);
+            }
+
+            elementsMeta.aspot_offset_percent = {
+              shiftPercent: offset_percent_X
+            };
+          } else {
+            elementsMeta.aspot_offset_percent = {
+              shiftPercent: null
+            };
+          }
         });
 
-        block.find('input[name="aspot_draggable_items_data"]').val(JSON.stringify(elementsMeta));
+        block.find('#' + draggableId + 'aspot_draggable_items_data').text(JSON.stringify(elementsMeta));
 
       }
 
@@ -267,9 +275,7 @@
        */
       function createMobileDraggableElem(draggableElementMobile, itemElement) {
         var currentId = draggableElementMobile.attr('id');
-        console.info(currentId);
         draggableElementMobile.attr('id', 'mobile-' + currentId).addClass('mobile');
-        console.info(aspot_elements[itemElement]);
         carouselElementPreviewingBlockMobile.append(draggableElementMobile);
         if (aspot_elements[itemElement].leftM) {
           draggableElementMobile.css({
@@ -365,19 +371,73 @@
 
       $('#usanetwork-aspot-node-form').submit(function () {
 
-        var headInput = $('input[name="aspot_draggable_items_data"]').eq(0);
+        var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
+            headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
+            homeUiPositions = homeUi.find('#aspot_draggable_items_data').text(),
+            showUiPositions = showUi.find('#tv_show-aspot_draggable_items_data').text(),
+            aspot_elements = Drupal.settings.giui_settings.aspot_elements,
+            tvs_aspot_elements = Drupal.settings.giui_settings.tvs_aspot_elements,
+            homeUiPositionsVal, showUiPositionsVal;
 
-        var homeUiPositions = homeUi.find('input[name="aspot_draggable_items_data"]').val(),
-            showUiPositions = showUi.find('input[name="aspot_draggable_items_data"]').val(),
-            homeUiPositionsVal = JSON.parse(homeUiPositions),
-            showUiPositionsVal = JSON.parse(showUiPositions),
-            myArray = [homeUiPositionsVal , showUiPositionsVal];
+        if(homeUiPositions !== '') {
+          homeUiPositionsVal = JSON.parse(homeUiPositions);
+        } else {
+          //homeUiPositionsVal = getParams(aspot_elements);
+        }
 
-        var jsonData = {
-          'data' : myArray
+        if(showUiPositions !== '') {
+          showUiPositionsVal = JSON.parse(showUiPositions);
+        } else {
+          //showUiPositionsVal = getParams(tvs_aspot_elements);
+        }
+
+        var myData = {
+          data : {
+            aspot_elements : homeUiPositionsVal,
+            tvs_aspot_elements : showUiPositionsVal
+          }
         };
-        headInput.val(JSON.stringify(jsonData));
+
+
+        if((homeUiPositions === '') && (showUiPositions === '')){
+          headInput.val(headTextarea.text());
+        } else {
+          headInput.val(JSON.stringify(myData));
+        }
       });
+
+      function getParams(obj) {
+
+        var dataPosition = {};
+
+        //$.each(obj, function (index, itemElement) {
+        //  $.each(itemElement, function (i, item) {
+        //    console.info(i);
+        //    console.info(item);
+        //    dataPosition[itemElement.data('rel')] = {
+        //      'elementId': itemElement.attr('id'),
+        //      'dataRel': itemElement.data('rel'),
+        //      'left': itemElement.css('left'),
+        //      'top': itemElement.css('top'),
+        //      'leftM': mobileItemElement.css('left'),
+        //      'topM': mobileItemElement.css('top'),
+        //      'percentX': widthPercent,
+        //      'percentY': heightPercent,
+        //      'percentMX': widthPercent_m,
+        //      'percentMY': heightPercent_m,
+        //      'invertX': invertX,
+        //      'invertY': invertY,
+        //      'invertMX': invert_mX,
+        //      'invertMY': invert_mY
+        //    };
+        //    dataPosition.aspot_offset_percent = {
+        //      shiftPercent: null
+        //    };
+        //  });
+        //});
+
+        return dataPosition;
+      }
     }
   };
 }(jQuery));

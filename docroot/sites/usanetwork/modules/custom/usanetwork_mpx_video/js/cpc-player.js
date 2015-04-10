@@ -40,7 +40,7 @@
     $cpc.addEventListener(NBCUniCPC.Event.INSTREAM_DATA, onInStreamData);
     $cpc.addEventListener(NBCUniCPC.Event.BLACKOUT_STATUS, onBlackoutStatus);
 
-    $("#pdk-player").css("border", 0);
+    $("#videoplayer").css("border", 0);
   }
 
   function onInStreamData(event) {

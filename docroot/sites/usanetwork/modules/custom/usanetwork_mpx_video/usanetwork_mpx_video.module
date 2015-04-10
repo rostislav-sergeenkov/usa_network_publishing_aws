@@ -1432,14 +1432,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
 
-      $menu_items = _usa_auth_prepare_menu_items();
-      $vars['links'] = array(
-        '#theme' => 'item_list',
-        '#items' => $menu_items,
-        '#attributes' => array('class' => array('tve-header-links', 'inline')),
-        '#prefix' => '<div class="links-wrapper">',
-        '#suffix' => '</div>',
-      );
 
 
       //twitter card

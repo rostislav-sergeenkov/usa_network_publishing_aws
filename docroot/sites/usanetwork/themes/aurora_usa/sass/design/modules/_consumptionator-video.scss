@@ -218,6 +218,18 @@
           padding: 0;
           text-align: center;
         }
+        @include breakpoint($bp-640-width) {
+          height: 100px;
+          line-height: 100px;
+          padding: 0;
+          text-align: center;
+        }
+        @include breakpoint($bp-480-width) {
+          height: 60px;
+          line-height: 60px;
+          padding: 0;
+          text-align: center;
+        }
         h2 {
           color: #ffffff;
           font-family: $avalon-demi;
@@ -226,6 +238,12 @@
           text-transform: uppercase;
           @include breakpoint($bp-min-1901-width) {
             font-size: 23px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 30px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 20px;
           }
         }
       }

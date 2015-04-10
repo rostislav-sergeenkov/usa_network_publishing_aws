@@ -230,12 +230,12 @@
 
           if (aspot_elements[itemElement].left) {
             draggableElement.css({
-              'left': aspot_elements[itemElement].left + 'px'
+              'left': aspot_elements[itemElement].left
             });
           }
           if (aspot_elements[itemElement].top) {
             draggableElement.css({
-              'top': aspot_elements[itemElement].top + 'px'
+              'top': aspot_elements[itemElement].top
             });
           }
 
@@ -267,16 +267,18 @@
        */
       function createMobileDraggableElem(draggableElementMobile, itemElement) {
         var currentId = draggableElementMobile.attr('id');
+        console.info(currentId);
         draggableElementMobile.attr('id', 'mobile-' + currentId).addClass('mobile');
+        console.info(aspot_elements[itemElement]);
         carouselElementPreviewingBlockMobile.append(draggableElementMobile);
         if (aspot_elements[itemElement].leftM) {
           draggableElementMobile.css({
-            'left': aspot_elements[itemElement].leftM + 'px'
+            'left': aspot_elements[itemElement].leftM
           });
         }
         if (aspot_elements[itemElement].topM) {
           draggableElementMobile.css({
-            'top': aspot_elements[itemElement].topM + 'px'
+            'top': aspot_elements[itemElement].topM
           });
         }
       }
@@ -363,8 +365,9 @@
 
       $('#usanetwork-aspot-node-form').submit(function () {
 
-        var headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
-            homeUiPositions = homeUi.find('input[name="aspot_draggable_items_data"]').val(),
+        var headInput = $('input[name="aspot_draggable_items_data"]').eq(0);
+
+        var homeUiPositions = homeUi.find('input[name="aspot_draggable_items_data"]').val(),
             showUiPositions = showUi.find('input[name="aspot_draggable_items_data"]').val(),
             homeUiPositionsVal = JSON.parse(homeUiPositions),
             showUiPositionsVal = JSON.parse(showUiPositions),
@@ -373,9 +376,6 @@
         var jsonData = {
           'data' : myArray
         };
-
-        console.info(jsonData);
-
         headInput.val(JSON.stringify(jsonData));
       });
     }

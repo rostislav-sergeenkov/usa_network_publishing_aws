@@ -11,7 +11,7 @@
       auto: false,
       speed: 400,
       infiniteLoop: false,
-      useCSS: true,
+      useCSS: false,
       minSlides: 3,
       maxSlides: 3,
       slideMargin: 0,
@@ -24,7 +24,9 @@
 
     extendSettings: function () {
       Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
-        mode: 'vertical'
+        mode: 'vertical',
+        minSlides: 1,
+        maxSlides: 1
       });
       Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'horizontal',
@@ -42,7 +44,26 @@
 
         $(this).swipe({
           swipeUp: function () {
-            slider.goToNextSlide();
+            var current_top_slide = slider.getCurrentSlide() + 2,
+                container_h = $(this).height(),
+                slide_h = $(this).find('.slide-item').height(),
+                visible_slides = Math.floor(container_h / slide_h),
+                shift_last = slide_h - (container_h - (slide_h * 2));
+
+            console.log('up');
+            console.log('visible_slides: ' + visible_slides);
+            console.log('slide height: ' + slide_h);
+            console.log('current slide: ' + current_top_slide);
+            console.log('count: ' + slider.getSlideCount());
+
+            if (slider.getSlideCount() - current_top_slide === 1) {
+              console.log($(this).find('.slide-item:last').offset());
+              $(this).animate({
+                'top': '-=' + shift_last
+              }, 300);
+            } else {
+              slider.goToNextSlide();
+            }
           },
           swipeDown: function () {
             slider.goToPrevSlide();

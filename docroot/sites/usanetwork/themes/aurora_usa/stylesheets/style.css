@@ -1547,6 +1547,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     padding-left: calc(8% + 30px);
   }
 }
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-wrapper {
+  background: #3e3e3e;
+}
 @media (min-width: 769px) and (max-width: 1280px) {
   .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 11px;
@@ -11120,6 +11123,90 @@ footer h2 {
   position: relative;
   width: 100%;
 }
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover {
+  cursor: pointer;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover .locked-msg,
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover a:after {
+  display: block;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover img {
+  opacity: .2;
+  transition: opacity 0.3s ease-in-out;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper a:after {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  width: 296px;
+  height: 39px;
+  margin-left: -148px;
+  content: " ";
+  background: url("../images/sign_in_key.png") center top no-repeat;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive a:after {
+  display: none;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover {
+  cursor: default;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover a:after {
+  display: none;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover img {
+  opacity: 1;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg {
+  display: none;
+  left: 5%;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  width: 90%;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+  display: block;
+  font-size: 26px;
+  line-height: 45px;
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+    font-size: 20px;
+    line-height: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+    font-size: 15px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+    font-size: 10px;
+    line-height: 18px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+  display: block;
+  font-size: 16px;
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+    font-size: 14px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+    font-size: 8px;
+  }
+}
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper iframe {
   height: 100%;
   width: 100%;
@@ -11229,11 +11316,20 @@ footer h2 {
 }
 .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical {
   display: block;
+  height: calc(100% - 84px);
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical {
+    height: calc(100% - 140px);
+  }
 }
 @media (max-width: 1280px) {
   .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical {
     display: none;
   }
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical ul, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical .bx-viewport, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical .bx-wrapper {
+  height: 100% !important;
 }
 .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li {
   background: #343434;
@@ -16492,11 +16588,12 @@ body.person-page #main {
   background-image: none;
 }
 .featured-asset.file-video-mpx .locked-msg {
-  position: absolute;
-  top: 40px;
   left: 5px;
   margin: 0 auto;
+  position: absolute;
   text-align: center;
+  text-shadow: 1px 1px 5px black;
+  top: 40px;
   z-index: 10;
   text-shadow: 1px 1px 5px black;
 }

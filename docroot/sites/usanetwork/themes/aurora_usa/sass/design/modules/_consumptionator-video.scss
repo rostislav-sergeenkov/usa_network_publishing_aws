@@ -162,6 +162,80 @@
         height: 100%;
         position: relative;
         width: 100%;
+        &:hover {
+          cursor: pointer;
+          .locked-msg,
+          a:after {
+            display: block;
+          }
+          img {
+            opacity: .2;
+            transition: opacity 0.3s ease-in-out;
+          }
+        }
+        a:after {
+          display: none;
+          position: absolute;
+          left: 50%;
+          top: 55%;
+          width: 296px;
+          height: 39px;
+          margin-left: -148px;
+          content: " ";
+          background:url('../images/sign_in_key.png') center top no-repeat;
+        }
+        &.inactive {
+          a:after {
+            display: none;
+          }
+          &:hover {
+            cursor: default;
+            a:after {
+              display: none;
+            }
+            img {
+              opacity: 1;
+            }
+          }
+        }
+        .locked-msg {
+          display: none;
+          left: 5%;
+          position: absolute;
+          text-align: center;
+          top: 40%;
+          width: 90%;
+          .first-line {
+            display: block;
+            font-size: 26px;
+            line-height: 45px;
+            @include breakpoint($bp-1024-width) {
+              font-size: 20px;
+              line-height: 36px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 15px;
+              line-height: 26px;
+            }
+            @include breakpoint($bp-480-width) {
+              font-size: 10px;
+              line-height: 18px;
+            }
+          }
+          .second-line {
+            display: block;
+            font-size: 16px;
+            @include breakpoint($bp-1024-width) {
+              font-size: 14px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 12px;
+            }
+            @include breakpoint($bp-480-width) {
+              font-size: 8px;
+            }
+          }
+        }
         iframe {
           height: 100%;
           width: 100%;
@@ -251,8 +325,15 @@
         position: relative;
         &.vertical {
           display: block;
+          height: calc(100% - 84px);
+          @include breakpoint($bp-min-1901-width) {
+            height: calc(100% - 140px);
+          }
           @include breakpoint($bp-1280-width) {
             display: none;
+          }
+          ul, .bx-viewport, .bx-wrapper {
+            height: 100%!important;
           }
           li {
             background: $consum-carousel-even;

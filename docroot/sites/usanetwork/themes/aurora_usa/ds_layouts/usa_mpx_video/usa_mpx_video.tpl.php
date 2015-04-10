@@ -72,9 +72,13 @@
       </div>
     </div>
     <div class="video-player-wrapper" data-ng-show="global.isAuthN">
-      <?php if($is_live):?>
-        <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
-      <?php else:?>
+
+
+
+      <?php if($is_live): ?>
+        <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+        <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
+      <?php else: ?>
         <?php $video = theme('pub_mpx_video', array(
           'file' => $file,
           'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')
@@ -82,6 +86,7 @@
       <?php endif; ?>
       <?php print $video; ?>
     </div>
+
     <div class="tve-help-link signIn">
       <div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"><img
           src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" alt=""/>Why do I have to sign in?

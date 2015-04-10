@@ -36,7 +36,7 @@
     parameters.autoPlay = true;
     parameters.mvpdId = mvpdId;
 
-    $cpc = NBCUniCPC.load("pdk-player", NBCUniCPC.Account.USA, contentInitObj, parameters);
+    $cpc = NBCUniCPC.load("videoplayer", NBCUniCPC.Account.USA, contentInitObj, parameters);
     $cpc.addEventListener(NBCUniCPC.Event.INSTREAM_DATA, onInStreamData);
     $cpc.addEventListener(NBCUniCPC.Event.BLACKOUT_STATUS, onBlackoutStatus);
 
@@ -85,7 +85,7 @@
     var customSlateContent = "<div id='blackout-slate'></div>";
 
     //use jQuery to replace contents with custom slate HTML
-    $("#pdk-player").parent('.video-player-wrapper').html(customSlateContent);
+    $("#videoplayer").parent('.video-player-wrapper').html(customSlateContent);
   }
 
 

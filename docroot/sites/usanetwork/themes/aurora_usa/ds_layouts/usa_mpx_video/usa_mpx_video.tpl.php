@@ -102,13 +102,18 @@
   <div class="consum-sidebar">
     <div class="node-wrapper advert">
       <div class="advertisement">
-        <a href="javascript:void(0)">
-          <img src="/proto/images/ad_lexus_309x258.png" alt="">
-        </a>
       </div>
     </div>
     <div class="clips-block">
+      <div class="clips-block-title">
+        <h2>Clips</h2>
+      </div>
       <?php if (!empty($clips_block)): print $clips_block; endif;?>
+    </div>
+    <!-- change link to special video page for show-->
+    <div class="more-clips show-color">
+      <a href="/videos"><?php print t('View all video'); ?></a>
     </div>
   </div>
 </div>
+

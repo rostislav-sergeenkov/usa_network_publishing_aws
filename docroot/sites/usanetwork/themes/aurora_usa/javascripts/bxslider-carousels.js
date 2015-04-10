@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.show_aspot = {
+  Drupal.behaviors.bxslider_carousels = {
     // Arrays for vertical and horizontal bxSlider objects
     harray: [],
     varray: [],
@@ -23,22 +23,22 @@
     hsettings: {},
 
     extendSettings: function () {
-      Drupal.behaviors.show_aspot.vsettings = $.extend({}, Drupal.behaviors.show_aspot.bsettings, {
+      Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'vertical'
       });
-      Drupal.behaviors.show_aspot.hsettings = $.extend({}, Drupal.behaviors.show_aspot.bsettings, {
+      Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'horizontal',
         adaptiveHeight: true,
-        slideWidth : '255'
+        slideWidth : ($('body').hasClass('consumptionator-page'))? '425' : '255'
       });
     },
 
     // Init all vertical carousels
     initVSliders: function() {
       $('.slider-vertical').each(function () {
-        var slider = $(this).bxSlider(Drupal.behaviors.show_aspot.vsettings);
+        var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.vsettings);
 
-        Drupal.behaviors.show_aspot.varray.push(slider);
+        Drupal.behaviors.bxslider_carousels.varray.push(slider);
 
         $(this).swipe({
           swipeUp: function () {
@@ -76,9 +76,9 @@
     // Init all horizontal carousels
     initHSliders: function() {
       $('.slider-horizontal').each(function () {
-        var slider = $(this).bxSlider(Drupal.behaviors.show_aspot.hsettings);
+        var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.hsettings);
 
-        Drupal.behaviors.show_aspot.harray.push(slider);
+        Drupal.behaviors.bxslider_carousels.harray.push(slider);
 
         $(this).swipe({
           swipeLeft: function () {
@@ -95,13 +95,12 @@
 
     attach: function (context, settings) {
       var slideItem =  $('.episodes-list-slider.horizontal .slide-item'),
-          moreButton = $('.episodes-list-slider.horizontal a.more-button'),
-          marginBottom = slideItem.eq(0).css('margin-bottom');
+          moreButton = $('.episodes-list-slider.horizontal a.more-button');
 
-      Drupal.behaviors.show_aspot.extendSettings();
-      Drupal.behaviors.show_aspot.initVSliders();
+      Drupal.behaviors.bxslider_carousels.extendSettings();
+      Drupal.behaviors.bxslider_carousels.initVSliders();
       if (window.innerWidth >= window_size_mobile_641 ){
-        Drupal.behaviors.show_aspot.initHSliders();
+        Drupal.behaviors.bxslider_carousels.initHSliders();
       }
 
       if (slideItem.length > 3){
@@ -117,17 +116,17 @@
             if (window.innerWidth >= window_size_mobile_641 ){
               $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
 
-              if (Drupal.behaviors.show_aspot.harray.length == 0) {
-                Drupal.behaviors.show_aspot.initHSliders();
+              if (Drupal.behaviors.bxslider_carousels.harray.length == 0) {
+                Drupal.behaviors.bxslider_carousels.initHSliders();
               }
 
               $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
               moreButton.css('display', 'none');
             } else {
-              $(Drupal.behaviors.show_aspot.harray).each(function() {
+              $(Drupal.behaviors.bxslider_carousels.harray).each(function() {
                 this.destroySlider();
               });
-              Drupal.behaviors.show_aspot.harray = [];
+              Drupal.behaviors.bxslider_carousels.harray = [];
 
               $('.episodes-list-slider.horizontal > ul > li:gt(2)').addClass('hidden');
               moreButton.css('display', 'block');
@@ -142,11 +141,9 @@
           if ($(this).hasClass('more')) {
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
             $(this).removeClass('more').addClass('close');
-            slideItem.eq(2).css('margin-bottom', marginBottom);
           } else {
             $('.episodes-list-slider.horizontal > ul > li:gt(2)').addClass('hidden');
             $(this).removeClass('close').addClass('more');
-            slideItem.eq(2).css('margin-bottom', 0);
           }
         });
       }

@@ -91,7 +91,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/jquery.mousewheel.min.js',
             path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
-            path_to_theme('aurora_usa') . '/javascripts/show-aspot.js',
+            path_to_theme('aurora_usa') . '/javascripts/bxslider-carousels.js',
           ),
         ),
       );

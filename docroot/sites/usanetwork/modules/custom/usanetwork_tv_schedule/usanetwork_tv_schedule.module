@@ -212,13 +212,22 @@ function usanetwork_tv_schedule_theme() {
     ),
     'usanetwork_tv_schedule_acc_table_row' => array(
       'variables' => array(
-
+        'show_nid' => NULL,
+        'show_url' => NULL,
+        'show_class' => NULL,
+        'time' => NULL,
+        'day_part' => NULL,
+        'episode_show' => NULL,
+        'episode_title' => NULL,
+        'rating'
       ),
       'template' => 'templates/usanetwork-tv-schedule-acc-table-row',
     ),
     'usanetwork_tv_schedule_acc_table' => array(
       'variables' => array(
-
+        'accessibility_text' => NULL,
+        'schedule_rows' => NULL,
+        'navigation' => NULL,
       ),
       'template' => 'templates/usanetwork-tv-schedule-acc-table',
     ),

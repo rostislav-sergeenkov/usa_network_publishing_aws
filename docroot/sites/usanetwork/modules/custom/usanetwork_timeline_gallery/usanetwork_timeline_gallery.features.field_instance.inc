@@ -10,9 +10,9 @@
 function usanetwork_timeline_gallery_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'field_collection_item-field_tmeline_episode_section-field_episode'
-  $field_instances['field_collection_item-field_tmeline_episode_section-field_episode'] = array(
-    'bundle' => 'field_tmeline_episode_section',
+  // Exported field_instance: 'field_collection_item-field_timeline_episode_section-field_episode'
+  $field_instances['field_collection_item-field_timeline_episode_section-field_episode'] = array(
+    'bundle' => 'field_timeline_episode_section',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -50,9 +50,9 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_tmeline_episode_section-field_season'
-  $field_instances['field_collection_item-field_tmeline_episode_section-field_season'] = array(
-    'bundle' => 'field_tmeline_episode_section',
+  // Exported field_instance: 'field_collection_item-field_timeline_episode_section-field_season'
+  $field_instances['field_collection_item-field_timeline_episode_section-field_season'] = array(
+    'bundle' => 'field_timeline_episode_section',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -90,9 +90,9 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_tmeline_episode_section-field_timeline_media_item'
-  $field_instances['field_collection_item-field_tmeline_episode_section-field_timeline_media_item'] = array(
-    'bundle' => 'field_tmeline_episode_section',
+  // Exported field_instance: 'field_collection_item-field_timeline_episode_section-field_timeline_media_item'
+  $field_instances['field_collection_item-field_timeline_episode_section-field_timeline_media_item'] = array(
+    'bundle' => 'field_timeline_episode_section',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1561,8 +1561,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-timeline_gallery-field_tmeline_episode_section'
-  $field_instances['node-timeline_gallery-field_tmeline_episode_section'] = array(
+  // Exported field_instance: 'node-timeline_gallery-field_timeline_episode_section'
+  $field_instances['node-timeline_gallery-field_timeline_episode_section'] = array(
     'bundle' => 'timeline_gallery',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1592,7 +1592,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_tmeline_episode_section',
+    'field_name' => 'field_timeline_episode_section',
     'label' => 'Tmeline Episode',
     'required' => 0,
     'settings' => array(

@@ -91,6 +91,9 @@
       pathArray = pathArray.split('/');
       if (pathArray[0].indexOf(window.location.hostname) >= 0
           || pathArray[0].indexOf('usanetwork.com') >= 0) pathArray.shift();
+      while (pathArray[0] == '') {
+        pathArray.shift();
+      }
       return pathArray;
     },
 
@@ -1073,8 +1076,18 @@
               Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
             }
           }
+          else if (anchor == 'galleries') {
+            if (item != '') {
+              var anchorFull = basePath + '/' + anchor + '/' + item;
+              Drupal.behaviors.micrositeGalleriesBxSliders.promoClickSwitchGallery(anchorFull);
+            }
+            else {
+              Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+            }
+          }
           // if any other section type
-          else { //if (anchor == 'galleries') {
+          else {
             var anchorFull = basePath + '/' + anchor;
             Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
             Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);

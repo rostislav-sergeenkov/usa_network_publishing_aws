@@ -1,0 +1,56 @@
+#characters {
+}
+#characters-container {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#character-nav {
+  width: 100%;
+}
+#character-nav li {
+  float: left;
+  width: 30.33%;
+  margin: 1.5% 1.5%;
+  cursor: pointer;
+}
+
+/* character info */
+#character-info {
+  clear: both;
+}
+#character-info li {
+  background-color: #E3E3E3;
+  color: #000;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 50;
+}
+#character-info li.active {
+  display: block;
+  opacity: 1;
+}
+/*
+#character-info li::after {
+  content: '<div id="character-close">X</div>';
+}
+*/
+#character-info .character-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 4em;
+  color: #999;
+  cursor: pointer;
+}
+#character-info li img {
+  width: 200px;
+}

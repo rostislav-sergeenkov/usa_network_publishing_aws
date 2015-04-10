@@ -15,8 +15,6 @@
  * -  - $quizzes_nav[n]['status'] - whether this quiz is being displayed (active) or not
  */
 ?>
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_quizzes"></div>
-
 <div class="full-pane">
   <?php if (empty($h1) && !empty($page['title']) && $status == 'active'): ?>
   <h1 class="quiz-title"><?php print $page['title']; ?></h1>
@@ -73,3 +71,5 @@
   </div>
   <?php endif; ?>
 </div>
+
+<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_quizzes"></div>

@@ -24,42 +24,21 @@
  */
 ?>
 
-<style>
-#characters-container {
-  width: 80%;
-  margin: 0 auto;
-}
-#character-nav {
-  width: 100%;
-}
-#character-nav li {
-  float: left;
-  width: 30.33%;
-  margin: 1.5% 1.5%;
-}
-
-/* character info */
-#character-info {
-  clear: both;
-}
-#character-info li img {
-  width: 200px;
-}
-</style>
-
+<?php if (!empty($section_title)): ?>
+  <!-- characters title -->
+  <h2 class="content"><?php print $section_title; ?></h2>
+<?php endif; ?>
 
 <div id="characters-container">
-  <?php if (!empty($section_title)): ?>
-    <!-- characters title -->
-    <h2 class="content"><?php print $section_title; ?></h2>
-  <?php endif; ?>
-
   <?php if (!empty($people)): ?>
   <!-- character navigation -->
   <div id="character-nav">
     <ul>
       <?php foreach ($people as $person): ?>
-      <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>">
+<!--
+      <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>" data-id="<?php if(!empty($person['id'])) print $person['id']; ?>">
+-->
+      <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="" data-id="<?php if(!empty($person['id'])) print $person['id']; ?>">
         <div class="character-nav-link"></div>
         <div class="tooltip">
           <?php if(!empty($person['preview_image_url'])): ?>
@@ -78,7 +57,10 @@
   <div id="character-info" class="clearfix">
     <ul>
     <?php foreach ($people as $person_key => $person): ?>
+<!--
       <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>">
+-->
+      <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?>">
           <?php if ($person['status'] == 'active' && !empty($h1) && $status == 'active'): ?>
             <h1><?php print $h1; ?></h1>
           <?php else: ?>
@@ -86,6 +68,7 @@
               <h3><?php print $person['title']; ?></h3>
             <?php endif; ?>
           <?php endif; ?>
+          <div class="character-close">X</div>
           <?php if (!empty($person['role'])): ?>
             <div class="character-role"><?php print $person['role']; ?></div>
           <?php endif; ?>

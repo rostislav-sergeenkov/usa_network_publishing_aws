@@ -629,7 +629,7 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
 
     if (empty($form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'])) {
       $show_title = $form['title']['#default_value'];
-      $default_best_of_value = t('Best of "!show_title"', array('!show_title' => $show_title));
+      $default_best_of_value = t('Best of !show_title', array('!show_title' => $show_title));
 
       $form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'] = $default_best_of_value;
       $form['field_tvs_best_of_title'][$form_language][0]['value']['#description'] = t('Default: !default_title', array('!default_title' => $default_best_of_value));
@@ -1451,7 +1451,7 @@ function _usanetwork_tv_shows_render_best_of_block() {
         $best_of_title = $best_of_title['value'];
       }
       else {
-        $best_of_title = t('Best of "!show_name"', array('!show_name' => $show_node->title));
+        $best_of_title = t('Best of !show_name', array('!show_name' => $show_node->title));
       }
       $theme_variables['title'] = $best_of_title;
       $theme_variables['promos'] = $promos;

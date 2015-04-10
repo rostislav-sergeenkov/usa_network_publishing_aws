@@ -49,7 +49,7 @@
           <?php endforeach; ?>
         </ul>
       </div>
-      <div class="episodes-list-slider horizontal" data-mode="horizontal">
+      <div class="episodes-list-slider horizontal show-border" data-mode="horizontal">
         <ul class="slider-horizontal">
           <?php foreach ($episodes as $episode): ?>
             <li class="slide-item">

@@ -468,6 +468,8 @@
     .episodes-list-slider.horizontal {
       padding-top: 2px;
       padding-bottom: 2px;
+      border-bottom: 2px solid;
+
       @include breakpoint($bp-640-width) {
         padding: 0;
       }

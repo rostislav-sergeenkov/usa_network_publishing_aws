@@ -5096,6 +5096,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   height: 100%;
   width: 100%;
 }
+.page-videos-live .featured-asset .tve-help-link.signOut {
+  top: auto;
+}
+@media (min-width: 960px) {
+  .page-videos-live .featured-asset .tve-help-link.signOut {
+    top: 35px;
+  }
+}
 
 #utilities.search-active {
   height: 85px;

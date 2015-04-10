@@ -21,13 +21,15 @@
 
     }]);
 
-    correctedStyles();
   });
 
   function initLivePlayer($cookies) {
 
-    var nbcu_user_settings = JSON.parse($cookies.nbcu_user_settings),
-        mvpdId = nbcu_user_settings.selectedProvider;
+    if($cookies.nbcu_user_settings) {
+      var nbcu_user_settings = JSON.parse($cookies.nbcu_user_settings),
+          mvpdId = nbcu_user_settings.selectedProvider;
+    }
+
 
     var contentInitObj = new NBCUniCPC.ContentInitializationObject();
     contentInitObj.videoId = "LIVE";
@@ -36,7 +38,7 @@
 
     var parameters = new NBCUniCPC.PlayerParameters();
     parameters.autoPlay = true;
-    parameters.mvpdId = mvpdId;
+    parameters.mvpdId = mvpdId || '';
 
     $cpc = NBCUniCPC.load("videoplayer", NBCUniCPC.Account.USA, contentInitObj, parameters);
     $cpc.addEventListener(NBCUniCPC.Event.INSTREAM_DATA, onInStreamData);
@@ -44,19 +46,6 @@
 
     $("#videoplayer").css("border", 0);
   }
-
-  function correctedStyles() {
-    var signOut = $('.tve-help-link.signOut');
-    if (window.innerWidth >= 960) {
-      signOut.css('top', 35 + 'px');
-    } else {
-      signOut.css('top', 'auto');
-    }
-  }
-
-  $(window).bind('resize', function () {
-    correctedStyles();
-  });
 
   function onInStreamData(event) {
     if (event.data.type === 'AnvatoInStreamAdProgramBeginEvent') {

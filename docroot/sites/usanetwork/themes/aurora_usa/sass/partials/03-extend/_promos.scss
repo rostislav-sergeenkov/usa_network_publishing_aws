@@ -667,6 +667,9 @@
       }
     }
     .consumptionator-page & {
+      .meta-wrapper {
+        background: $consum-carousel-odd;
+      }
       .meta {
         .caption {
           @include breakpoint($between-769-1280) {

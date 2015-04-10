@@ -95,9 +95,6 @@
         </div>
       <?php endif; ?>
     </div>
-    <div class="video-chat">
-    </div>
-
   </div>
   <div class="consum-sidebar">
     <div class="node-wrapper advert">

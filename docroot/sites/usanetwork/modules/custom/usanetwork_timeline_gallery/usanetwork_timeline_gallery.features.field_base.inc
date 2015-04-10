@@ -41,13 +41,13 @@ function usanetwork_timeline_gallery_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_tmeline_episode_section'
-  $field_bases['field_tmeline_episode_section'] = array(
+  // Exported field_base: 'field_timeline_episode_section'
+  $field_bases['field_timeline_episode_section'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_tmeline_episode_section',
+    'field_name' => 'field_timeline_episode_section',
     'foreign keys' => array(),
     'indexes' => array(
       'revision_id' => array(

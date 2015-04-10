@@ -55,7 +55,7 @@ function usanetwork_timeline_gallery_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_cover_item',
-      2 => 'field_tmeline_episode_section',
+      2 => 'field_timeline_episode_section',
       3 => 'title',
     ),
     'format_type' => 'tab',

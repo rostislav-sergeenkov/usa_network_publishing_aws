@@ -750,16 +750,19 @@ function _usanetwork_tv_schedule_get_show_node_by_sch_item($item) {
  * Accessibility page menu callback
  */
 function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
+  date_default_timezone_set('America/New_York');
 
   $output = '';
+  $query_params = drupal_get_query_parameters();
+  $filter_day = !empty($query_params['sdate']) ? check_plain($query_params['sdate']) : NULL;
+  $time_stamp = (!empty($filter_day) && empty($filter_show_nid)) ? $filter_day : time();
+  $sday = date('d', $time_stamp);
+  $smonth = date('m', $time_stamp);
+  $syear = date('Y', $time_stamp);
 
-  $sdate = date('Y_m_d');
-  if (isset($_GET['sdate']) && !empty($_GET['sdate'])) {
-    $sdate = check_plain($_GET['sdate']);
-    $et_time = strtotime(str_replace('_', '-', $sdate) . date(' H:i:s'));
-  }
+  $string_date = $syear . '_' . $smonth . '_' . $sday;
 
-  $tv_schedule = usanetwork_tv_schedule_fetch_schedule($sdate);
+  $tv_schedule = usanetwork_tv_schedule_fetch_schedule($string_date);
 
   if (empty($tv_schedule)) {
     drupal_not_found();
@@ -1061,6 +1064,7 @@ function _usanetwork_tv_schedule_get_shows_list($include_default_show = FALSE) {
 
   return $found_shows;
 }
+
 
 // Left for featured using.
 function _usanetwork_tv_schedule_get_acc_week_navigation($start_date = 0) {

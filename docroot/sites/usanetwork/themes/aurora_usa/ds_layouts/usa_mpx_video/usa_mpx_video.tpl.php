@@ -73,8 +73,6 @@
     </div>
     <div class="video-player-wrapper" data-ng-show="global.isAuthN">
 
-
-
       <?php if($is_live): ?>
         <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
         <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>

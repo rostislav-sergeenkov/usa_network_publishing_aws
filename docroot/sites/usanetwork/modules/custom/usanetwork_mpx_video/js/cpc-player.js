@@ -37,10 +37,26 @@
     parameters.mvpdId = mvpdId;
 
     $cpc = NBCUniCPC.load("pdk-player", NBCUniCPC.Account.USA, contentInitObj, parameters);
+    $cpc.addEventListener(NBCUniCPC.Event.INSTREAM_DATA, onInStreamData);
     $cpc.addEventListener(NBCUniCPC.Event.BLACKOUT_STATUS, onBlackoutStatus);
 
     $("#pdk-player").css("border", 0);
   }
+
+  function onInStreamData(event) {
+    if (event.data.type === 'AnvatoInStreamAdProgramBeginEvent') {
+      console.log('InStream Event: AnvatoInStreamAdProgramBeginEvent');
+      var params = event.data.data.cuepoint.parameters;
+      if (params.hasOwnProperty('nrb')) {
+        if (params.nrb === 0 || params.nrb === '0') {
+          console.log('Regional blackout check is on for this program.');
+        } else {
+          console.log('Regional blackout check is NOT on for this program.');
+        }
+      }
+    }
+  }
+
 
   //Use Blackout event to show the custom slate if the content is blacked out.
   function onBlackoutStatus(event) {

@@ -47,6 +47,78 @@ img {
   width: 100%;
   height: auto;
 }
+div {
+  margin: 0;
+  padding: 0;
+}
+
+/* ANIMATIONS */
+/* FADE-IN ANIMATION */
+.fadein {
+  /* CSS needed for animation
+  ---------------------------------------------------- */
+  opacity:0;
+  -webkit-animation:fadein ease 1;
+  -moz-animation:fadein ease 1;
+  -o-animation:fadein ease 1;
+  animation:fadein ease 1;
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  -o-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+}
+.ie9 .fadein {
+  opacity: 1;
+}
+
+/* Animation Times - Time for image to fade in
+---------------------------------------------------- */
+.fadein-1s {
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  -o-animation-duration:1s;
+  animation-duration:1s;
+}
+.fadein-3s {
+  -webkit-animation-duration:3s;
+  -moz-animation-duration:3s;
+  -o-animation-duration:3s;
+  animation-duration:3s;
+}
+.fadein-5s {
+  -webkit-animation-duration:5s;
+  -moz-animation-duration:5s;
+  -o-animation-duration:5s;
+  animation-duration:5s;
+}
+/* Animation Delay - Time for image to be delayed
+---------------------------------------------------- */
+.fadein-delay-1s {
+  -webkit-animation-delay:1s;
+  -moz-animation-delay:1s;
+  -o-animation-delay:1s;
+  animation-delay:1s;
+}
+.fadein-delay-3s {
+  -webkit-animation-delay:3s;
+  -moz-animation-delay:3s;
+  -o-animation-delay:3s;
+  animation-delay:3s;
+}
+.fadein-delay-5s {
+  -webkit-animation-delay:5s;
+  -moz-animation-delay:5s;
+  -o-animation-delay:5s;
+  animation-delay:5s;
+}
+/* Key Frames
+---------------------------------------------------- */
+@-webkit-keyframes fadein { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadein { from { opacity:0; } to { opacity:1; } }
+@-o-keyframes fadein { from { opacity:0; } to { opacity:1; } }
+@keyframes fadein { from { opacity:0; } to { opacity:1; } }
+
+
 
 /* MAIN STRUCTURE */
 .page-node-microsite .usa-wrap {
@@ -72,13 +144,14 @@ img {
 /* SITE NAV */
 #site-nav {
   width: 100%;
-  height: 5em;
-  position: relative;
-  top: 0;
-  left: 0;
+  height: 0px;
   background-color: #000;
   color: #FFF;
   z-index: 100;
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 0;
 }
 #site-nav a,
 #site-nav a:link,
@@ -171,7 +244,14 @@ img {
 #home.section {
   background-color: #000;
 }
-.section,
+#microsite #sections {
+  margin: 0;
+  padding: 0;
+  background-color: #E3E3E3;
+}
+.section {
+  background-color: #E3E3E3;
+}
 #section:nth-child(odd) {
   background-color: #E3E3E3;
 }
@@ -190,6 +270,37 @@ img {
 </style>
 
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
+<!--
+  <div id="site-nav">
+    <div id="site-nav-left"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/gracelandcu_usa_logo.png" alt="USA Network logo"></a></div>
+    <div id="site-nav-center">
+      <div id="site-nav-top"><a id="gracelandcu-logo" class="internal" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/gracelandcu_nav_logo.png" alt="Graceland Catchup HQ logo"></a><a id="gracelandcu-sponsor" href=""><img src="<?php print $themePath; ?>/images/gracelandcu_nav_sponsor.png" alt="Sponsored by Toyota"></a></div>
+      <div id="site-nav-bottom">
+        <div id="site-nav-links">
+          <ul id="site-nav-links-list">
+            <?php if (!empty($sections)): ?>
+              <?php foreach ($sections as $sectionNav): ?>
+                <?php if ($sectionNav['type'] != 'home'): ?>
+                <li id="nav-<?php print $sectionNav['type']; ?>" class="internal<?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
+                  <?php print $sectionNav['link']; ?>
+                </li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="site-nav-right">
+      <div id="site-nav-social">
+        <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
+        <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+      </div>
+      <div id="site-nav-show-site-link"><a href="http://www.usanetwork.com/graceland" target="_blank">Visit Show Site</a></div>
+    </div>
+  </div>
+-->
+
   <div id="sections">
     <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>

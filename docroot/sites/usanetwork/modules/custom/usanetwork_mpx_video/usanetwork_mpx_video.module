@@ -2726,6 +2726,7 @@ function _usanetwork_mpx_video_render_related_content_item_default($data) {
       : '',
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
   );
 
   return theme('usanetwork_mpx_video_related_item', $theme_variables);

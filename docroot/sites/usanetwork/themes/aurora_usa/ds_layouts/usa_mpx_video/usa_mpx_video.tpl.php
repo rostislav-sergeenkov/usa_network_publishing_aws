@@ -101,16 +101,26 @@
       <div class="advertisement">
       </div>
     </div>
-    <div class="clips-block">
-      <div class="clips-block-title">
-        <h2>Clips</h2>
+    <?php if ($is_live): ?>
+      <div class="download-app">
+        <div class="download-app-wrapper">
+          <div class="image-block"></div>
+          <div class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
+          <div class="download-button show-color"><?php print t('Download the app'); ?></div>
+        </div>
       </div>
-      <?php if (!empty($clips_block)): print $clips_block; endif;?>
-    </div>
-    <!-- change link to special video page for show-->
-    <div class="more-clips show-color">
-      <a href="/videos"><?php print t('View all video'); ?></a>
-    </div>
+    <?php else: ?>
+      <div class="clips-block">
+        <div class="clips-block-title">
+          <h2>Clips</h2>
+        </div>
+        <?php if (!empty($clips_block)): print $clips_block; endif;?>
+      </div>
+      <!-- change link to special video page for show-->
+      <div class="more-clips show-color">
+        <a href="/videos"><?php print t('View all video'); ?></a>
+      </div>
+    <?php endif; ?>
   </div>
 </div>
 

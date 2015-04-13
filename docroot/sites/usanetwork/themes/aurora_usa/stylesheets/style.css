@@ -10958,6 +10958,10 @@ footer h2 {
     width: 100%;
   }
 }
+.consumptionator-page .video-block .player-wrapper > .node, .page-videos-live .video-block .player-wrapper > .node {
+  height: 100%;
+  width: 100%;
+}
 .consumptionator-page .video-block .player-wrapper .tve-help, .page-videos-live .video-block .player-wrapper .tve-help {
   background-color: #161616;
   border: 1px solid #4b4b4b;
@@ -11213,7 +11217,7 @@ footer h2 {
   width: 100%;
 }
 .consumptionator-page .video-block .consum-sidebar, .page-videos-live .video-block .consum-sidebar {
-  background: none;
+  background: #121212;
   float: left;
   height: 100%;
   overflow: hidden;
@@ -11499,6 +11503,162 @@ footer h2 {
     right: 10px;
     margin-top: -7px;
   }
+}
+.consumptionator-page .video-block .consum-sidebar .download-app, .page-videos-live .video-block .consum-sidebar .download-app {
+  display: table;
+  height: calc(100% - 250px);
+  padding: 10px 10px;
+  position: relative;
+  width: 100%;
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app, .page-videos-live .video-block .consum-sidebar .download-app {
+    height: 270px;
+    width: calc(100% - 310px);
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app, .page-videos-live .video-block .consum-sidebar .download-app {
+    width: 100%;
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .download-app .download-app-wrapper, .page-videos-live .video-block .consum-sidebar .download-app .download-app-wrapper {
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
+}
+.consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
+  background: url("../images/live-player-image.png") no-repeat;
+  background-size: contain;
+  height: 170px;
+  margin: 0 auto;
+  width: 188px;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
+    height: 255px;
+    width: 282px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
+    float: left;
+    margin-left: calc(50% - 205px);
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
+    height: 136px;
+    margin-left: calc(50% - 150px);
+    width: 150px;
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin: 0 auto;
+  max-width: 188px;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
+    font-size: 20px;
+    margin: 10px auto;
+    max-width: 236px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
+    margin-left: calc(50% + 10px);
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
+    font-size: 14px;
+    max-width: 150px;
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .download-app .download-button, .page-videos-live .video-block .consum-sidebar .download-app .download-button {
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px auto 0;
+  padding: 10px 20px 10px 10px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 220px;
+}
+.consumptionator-page .video-block .consum-sidebar .download-app .download-button:after, .page-videos-live .video-block .consum-sidebar .download-app .download-button:after {
+  color: #ffffff;
+  content: "\e608";
+  display: block;
+  font-family: "ico-font";
+  font-size: 12px;
+  line-height: 12px;
+  position: absolute;
+  top: 50%;
+  margin-top: -7px;
+  right: 5px;
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .download-button:after, .page-videos-live .video-block .consum-sidebar .download-app .download-button:after {
+    font-size: 10px;
+    line-height: 10px;
+    margin-top: -4px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .download-button:after, .page-videos-live .video-block .consum-sidebar .download-app .download-button:after {
+    font-size: 7px;
+    line-height: 7px;
+    margin-top: -4px;
+    right: 4px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .download-button, .page-videos-live .video-block .consum-sidebar .download-app .download-button {
+    font-size: 14px;
+    margin-left: calc(50% + 10px);
+    margin-top: 10px;
+    width: 190px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .download-button, .page-videos-live .video-block .consum-sidebar .download-app .download-button {
+    font-size: 10px;
+    padding: 5px 10px 5px 5px;
+    width: 130px;
+  }
+}
+
+.page-videos-live .expandable-container {
+  margin: 0;
+}
+.page-videos-live .video-block .consum-sidebar .advert {
+  height: auto;
+  padding: 0;
+}
+@media (max-width: 1280px) {
+  .page-videos-live .video-block .consum-sidebar .advert {
+    display: block;
+    float: right;
+    margin: 10px 10px 10px 0;
+    width: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .page-videos-live .video-block .consum-sidebar .advert {
+    display: none;
+  }
+}
+.page-videos-live .video-block #player {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.page-videos-live .video-block #player img {
+  height: 100%;
+  width: 100%;
 }
 
 .consumptionator-page {

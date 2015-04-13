@@ -103,6 +103,27 @@ function usanetwork_core_api_get_content_image($entity_type, $entity, $image_typ
   return NULL;
 }
 
+function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
+  $entity = entity_load($entity_type, array($entity_id));
+
+  if (is_array($entity)) {
+    $entity = $entity[$entity_id];
+  }
+
+  if (isset($entity->field_call_to_action_type)) {
+    $cta_type_field = field_get_items($entity_type, $entity, 'field_call_to_action_type');
+    $tid = !empty($cta_type_field[0]['tid']) ? $cta_type_field[0]['tid'] : NULL;
+
+    if (!empty($tid)) {
+      $icon = taxonomy_term_load($tid);
+
+      return $icon->name . '-icon';
+    }
+  }
+
+  return 'play-icon';
+}
+
 /**
  * Returns an associated array of image field names of nodes.
  */

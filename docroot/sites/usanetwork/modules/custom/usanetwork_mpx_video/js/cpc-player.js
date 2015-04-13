@@ -1,6 +1,6 @@
 (function (ng, $) {
 
-  $(document).ready(function(){
+  $(document).ready(function () {
     if (!ng) {
       return;
     }
@@ -10,7 +10,7 @@
     $injector.invoke(['$cookies', 'tveConfig', 'tveModal', 'authService', function ($cookies, tveConfig, tveModal, authService) {
 
       if ($cookies['nbcu_ap_loginpending']) {
-        authService.promise.then(function() {
+        authService.promise.then(function () {
           initLivePlayer($cookies);
         });
       }
@@ -20,12 +20,16 @@
       }
 
     }]);
+
   });
 
   function initLivePlayer($cookies) {
 
-    var nbcu_user_settings = JSON.parse($cookies.nbcu_user_settings),
-        mvpdId = nbcu_user_settings.selectedProvider;
+    if($cookies.nbcu_user_settings) {
+      var nbcu_user_settings = JSON.parse($cookies.nbcu_user_settings),
+          mvpdId = nbcu_user_settings.selectedProvider;
+    }
+
 
     var contentInitObj = new NBCUniCPC.ContentInitializationObject();
     contentInitObj.videoId = "LIVE";
@@ -34,13 +38,43 @@
 
     var parameters = new NBCUniCPC.PlayerParameters();
     parameters.autoPlay = true;
-    parameters.mvpdId = mvpdId;
+    parameters.mvpdId = mvpdId || '';
 
-    $cpc = NBCUniCPC.load("pdk-player", NBCUniCPC.Account.USA, contentInitObj, parameters);
+    $cpc = NBCUniCPC.load("videoplayer", NBCUniCPC.Account.USA, contentInitObj, parameters);
+    $cpc.addEventListener(NBCUniCPC.Event.INSTREAM_DATA, onInStreamData);
     $cpc.addEventListener(NBCUniCPC.Event.BLACKOUT_STATUS, onBlackoutStatus);
 
-    $("#pdk-player").css("border", 0);
+    $("#videoplayer").css("border", 0);
   }
+
+  function onInStreamData(event) {
+    if (event.data.type === 'AnvatoInStreamAdProgramBeginEvent') {
+      console.log('InStream Event: AnvatoInStreamAdProgramBeginEvent');
+      var params = event.data.data.cuepoint.parameters;
+      if (params.hasOwnProperty('nrb')) {
+        if (params.nrb === 0 || params.nrb === '0') {
+          console.log('Regional blackout check is on for this program.');
+        } else {
+          console.log('Regional blackout check is NOT on for this program.');
+        }
+      }
+    }
+  }
+
+  function onInStreamData(event) {
+    if (event.data.type === 'AnvatoInStreamAdProgramBeginEvent') {
+      console.log('InStream Event: AnvatoInStreamAdProgramBeginEvent');
+      var params = event.data.data.cuepoint.parameters;
+      if (params.hasOwnProperty('nrb')) {
+        if (params.nrb === 0 || params.nrb === '0') {
+          console.log('Regional blackout check is on for this program.');
+        } else {
+          console.log('Regional blackout check is NOT on for this program.');
+        }
+      }
+    }
+  }
+
 
   //Use Blackout event to show the custom slate if the content is blacked out.
   function onBlackoutStatus(event) {
@@ -55,7 +89,7 @@
     var customSlateContent = "<div id='blackout-slate'></div>";
 
     //use jQuery to replace contents with custom slate HTML
-    $("#pdk-player").parent('.video-player-wrapper').html(customSlateContent);
+    $("#videoplayer").parent('.video-player-wrapper').html(customSlateContent);
   }
 
 

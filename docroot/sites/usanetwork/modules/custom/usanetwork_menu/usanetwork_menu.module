@@ -297,7 +297,7 @@ function usanetwork_menu_theme() {
       ),
       'template' => 'templates/usanetwork-aspot-onnow-tonight',
     ),
-    'usanetwork_menu_consumptionator' => array(
+    'usanetwork_menu_consumptionator_video' => array(
       'variables' => array(
         'show_url' => NULL,
         'show_name' => NULL,
@@ -311,7 +311,15 @@ function usanetwork_menu_theme() {
           'description' => NULL,
         ),
       ),
-      'template' => 'templates/usanetwork-menu-consumptionator',
+      'template' => 'templates/usanetwork-menu-consumptionator_video',
+    ),
+    'usanetwork_menu_consumptionator_catchall' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'catchall_name' => NULL,
+      ),
+      'template' => 'templates/usanetwork-menu-consumptionator_catchall',
     ),
   );
 }
@@ -845,7 +853,43 @@ function _usanetwork_menu_footer_apps_services() {
  * Renders Consumtionator Menu block.
  */
 function _usanetwork_menu_consumptionator_block() {
-  $file = menu_get_object('file');
+  if ($entity = menu_get_object('file')) {
+    if (isset($entity->type) && (in_array($entity->type, _usanetwork_mpx_video_get_all_file_types()))) {
+      return _usanetwork_menu_consumptionator_block_video($entity);
+    }
+  }
+  elseif ($entity = menu_get_object('node')) {
+    if (isset($entity->type) && $entity->type == 'catchall_page') {
+      return _usanetwork_menu_consumptionator_block_catchall($entity);
+    }
+  }
+  return '';
+}
+
+/**
+ * Renders Consumtionator Menu block for video.
+ */
+function _usanetwork_menu_consumptionator_block_catchall($node) {
+
+  if (!empty($node)) {
+
+    $entity_wrapper = entity_metadata_wrapper('node', $node);
+    $theme_variables = array(
+      'main_url' => url('<front>'),
+      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'catchall_name' => !empty($node->title) ? $node->title : '',
+    );
+    return theme('usanetwork_menu_consumptionator_catchall', $theme_variables);
+  }
+  return '';
+}
+
+/**
+ * Renders Consumtionator Menu block for video.
+ */
+function _usanetwork_menu_consumptionator_block_video($file) {
+
   if (!empty($file)) {
 
     if (!empty($file->field_gigya_share_bar)) {
@@ -904,11 +948,10 @@ function _usanetwork_menu_consumptionator_block() {
           : '',
       ),
     );
-    return theme('usanetwork_menu_consumptionator', $theme_variables);
+    return theme('usanetwork_menu_consumptionator_video', $theme_variables);
   }
   return '';
 }
-
 /**
  * Renders OnNow, Tonight at the bottom of the A-Spot carousel.
  */

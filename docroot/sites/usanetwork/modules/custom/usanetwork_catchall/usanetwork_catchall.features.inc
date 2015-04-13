@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function usanetwork_catchall_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -33,5 +36,6 @@ function usanetwork_catchall_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

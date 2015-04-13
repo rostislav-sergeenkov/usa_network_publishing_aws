@@ -61,21 +61,6 @@
     }
   }
 
-  function onInStreamData(event) {
-    if (event.data.type === 'AnvatoInStreamAdProgramBeginEvent') {
-      console.log('InStream Event: AnvatoInStreamAdProgramBeginEvent');
-      var params = event.data.data.cuepoint.parameters;
-      if (params.hasOwnProperty('nrb')) {
-        if (params.nrb === 0 || params.nrb === '0') {
-          console.log('Regional blackout check is on for this program.');
-        } else {
-          console.log('Regional blackout check is NOT on for this program.');
-        }
-      }
-    }
-  }
-
-
   //Use Blackout event to show the custom slate if the content is blacked out.
   function onBlackoutStatus(event) {
     //if event.data.entitled = false, the user cannot watch content

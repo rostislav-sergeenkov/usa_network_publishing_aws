@@ -874,11 +874,18 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
+    if (!empty($node->field_displayed_info_image)) {
+      $image = $entity_wrapper->field_displayed_info_image->value();
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'catchall_name' => !empty($node->title) ? $node->title : '',
+      'details' => array(
+        'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
+        'description' => !empty($node->field_displayed_info_description) ? $entity_wrapper->field_displayed_info_description->value() : '',
+      ),
     );
     return theme('usanetwork_menu_consumptionator_catchall', $theme_variables);
   }

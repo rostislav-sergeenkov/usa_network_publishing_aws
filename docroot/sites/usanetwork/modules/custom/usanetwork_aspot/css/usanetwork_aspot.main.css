@@ -1,31 +1,24 @@
-#edit-field-aspot-preview-bg-offset-preview {
+.draggable-background.desktop {
   border: solid #aaa 1px;
   display: block;
   height: 480px;
   width: 200px;
 }
-#edit-field-aspot-preview-mbg-offset-preview {
-  border: solid #aaa 1px;
-  display: block;
-  height: 480px;
-  width: 200px;
-}
-#edit-field-aspot-enabled-gi-preview-mobile {
+.draggable-area.mobile{
   display: block;
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
-  width: 642px;
+  width: 640px;
 }
-#edit-field-aspot-enabled-gi-preview {
+.draggable-area.desktop {
   display: block;
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
   width: 1280px;
 }
-#edit-field-aspot-enabled-gi-preview-mobile img,
-#edit-field-aspot-enabled-gi-preview img {
+.draggable-area {
   border: solid #aaa 1px;
 }
 .aspot-draggable-element {

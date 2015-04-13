@@ -20,6 +20,10 @@
         height: 56.25vw;
         width: 100%;
       }
+      > .node {
+        height: 100%;
+        width: 100%;
+      }
       /*old css code*/
       .tve-help {
         background-color: $black-dark;
@@ -243,7 +247,7 @@
       }
     }
     .consum-sidebar {
-      background: none;
+      background: $consum-back;
       float: left;
       height: 100%;
       overflow: hidden;
@@ -488,6 +492,140 @@
             }
           }
         }
+      }
+      .download-app {
+        display: table;
+        height: calc(100% - 250px);
+        padding: 10px 10px;
+        position: relative;
+        width: 100%;
+        @include breakpoint($bp-1280-width) {
+          height: 270px;
+          width: calc(100% - 310px);
+        }
+        @include breakpoint($bp-768-width) {
+          width: 100%;
+        }
+        .download-app-wrapper {
+          display: table-cell;
+          position: relative;
+          vertical-align: middle;
+        }
+        .image-block {
+          background: url('../images/live-player-image.png') no-repeat;
+          background-size: contain;
+          height: 170px;
+          margin: 0 auto;
+          width: 188px;
+          @include breakpoint($bp-min-1901-width) {
+            height: 255px;
+            width: 282px;
+          }
+          @include breakpoint($bp-1280-width) {
+            float: left;
+            margin-left: calc(50% - 205px);
+          }
+          @include breakpoint($bp-480-width) {
+            height: 136px;
+            margin-left: calc(50% - 150px);
+            width: 150px;
+          }
+        }
+        .text-block {
+          font-family: $avalon-medium;
+          font-size: 16px;
+          margin: 0 auto;
+          max-width: 188px;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 20px;
+            margin: 10px auto;
+            max-width: 236px;
+          }
+          @include breakpoint($bp-1280-width) {
+            margin-left: calc(50% + 10px);
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 14px;
+            max-width: 150px;
+          }
+        }
+        .download-button {
+          color: #ffffff;
+          cursor: pointer;
+          font-size: 16px;
+          margin: 5px auto 0;
+          padding: 10px 20px 10px 10px;
+          position: relative;
+          text-align: center;
+          text-transform: uppercase;
+          width: 220px;
+          &:after {
+            color: #ffffff;
+            content: "\e608";
+            display: block;
+            font-family: $ico-font;
+            font-size: 12px;
+            line-height: 12px;
+            position: absolute;
+            top: 50%;
+            margin-top: -7px;
+            right: 5px;
+            @include breakpoint($bp-1280-width) {
+              font-size: 10px;
+              line-height: 10px;
+              margin-top: -4px;
+            }
+            @include breakpoint($bp-480-width) {
+              font-size: 7px;
+              line-height: 7px;
+              margin-top: -4px;
+              right: 4px;
+            }
+          }
+          @include breakpoint($bp-1280-width) {
+            font-size: 14px;
+            margin-left: calc(50% + 10px);
+            margin-top: 10px;
+            width: 190px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 10px;
+            padding: 5px 10px 5px 5px;
+            width: 130px;
+          }
+        }
+      }
+
+    }
+  }
+}
+.page-videos-live {
+  .expandable-container {
+    margin: 0;
+  }
+  .video-block {
+    .consum-sidebar {
+      .advert {
+        height: auto;
+        padding: 0;
+        @include breakpoint($bp-1280-width) {
+          display: block;
+          float: right;
+          margin: 10px 10px 10px 0;
+          width: 300px;
+        }
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
+      }
+    }
+    #player {
+      height: 100%;
+      position: relative;
+      width: 100%;
+      img {
+        height: 100%;
+        width: 100%;
       }
     }
   }

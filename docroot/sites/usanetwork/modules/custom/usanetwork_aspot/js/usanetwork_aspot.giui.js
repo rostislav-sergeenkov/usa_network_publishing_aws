@@ -381,20 +381,20 @@
             tvs_aspot_elements = Drupal.settings.giui_settings.tvs_aspot_elements,
             homeUiPositionsVal, showUiPositionsVal;
 
-        if(homeUiPositions !== '') {
+        if(homeUiPositions != '') {
           homeUiPositionsVal = JSON.parse(homeUiPositions);
         } else {
           homeUiPositionsVal = getParams(aspot_elements);
         }
 
-        if(showUiPositions !== '') {
+        if(showUiPositions != '') {
           showUiPositionsVal = JSON.parse(showUiPositions);
         } else {
           showUiPositionsVal = getParams(tvs_aspot_elements);
         }
 
 
-        if((homeUiPositions === '') && (showUiPositions === '')){
+        if((homeUiPositions == '') && (showUiPositions == '')){
           headInput.val(headTextarea.text());
         } else {
 

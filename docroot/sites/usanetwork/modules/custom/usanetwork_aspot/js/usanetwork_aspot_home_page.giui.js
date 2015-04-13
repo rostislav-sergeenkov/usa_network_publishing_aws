@@ -2,15 +2,23 @@
   Drupal.behaviors.usanetwork_aspot_home_page_giui = {
     attach: function (context, settings) {
 
-      var aspotSlide = $('#block-usanetwork-aspot-usanetwork-aspot-carousel .slider .slide');
+      var aspotHomeSlide = $('#block-usanetwork-aspot-usanetwork-aspot-carousel .slider .slide'),
+          aspotShowSlide = $('#main-slider .slide .slide-content');
 
       // init add style for Aspot druggeble elements
-      changeDraggableElementsPosition();
+      if($('body').hasClass('front')) {
+        changeDraggableElementsPosition(aspotHomeSlide);
+      } else {
+        changeDraggableElementsPosition(aspotShowSlide);
+      }
 
-      function changeDraggableElementsPosition() {
-        $.each(aspotSlide, function (indexItem, itemElement) {
-          if(!$(this).hasClass('bx-clone')){
-            var currentEl = $(this).find('.meta .aspot-draggable-element');
+
+
+      function changeDraggableElementsPosition(elem) {
+        $.each(elem, function (indexItem, itemElement) {
+          var container = $(this);
+          if(container.find('.aspot-draggable-element')){
+            var currentEl = container.find('.meta .aspot-draggable-element');
             $.each(currentEl, function(indexEl, elem){
               var styleDesktop = $(this).attr('data-style-desktop'),
                   styleMobile = $(this).attr('data-style-mobile');
@@ -43,7 +51,12 @@
 
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
-          changeDraggableElementsPosition();
+          // init add style for Aspot druggeble elements
+          if($('body').hasClass('front')) {
+            changeDraggableElementsPosition(aspotHomeSlide);
+          } else {
+            changeDraggableElementsPosition(aspotShowSlide);
+          }
         }, 50, "home A-spot draggable elements");
       });
     }

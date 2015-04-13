@@ -12,6 +12,10 @@ include_once 'usanetwork_ads.pages.inc';
  */
 function usanetwork_ads_init() {
   if (module_exists('usanetwork_menu')) {
+    if (path_is_admin(current_path())) {
+      return NULL;
+    }
+
     $props = array();
     $timezone_diff = 0;
 

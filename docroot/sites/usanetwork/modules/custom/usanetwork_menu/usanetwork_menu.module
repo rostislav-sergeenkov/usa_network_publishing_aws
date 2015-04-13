@@ -982,6 +982,11 @@ function _usanetwork_menu_aspot_onnow_tonight_block() {
 }
 
 function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
+
+  if (path_is_admin(current_path())) {
+    return drupal_json_output(NULL);
+  }
+
   $on_now = usanetwork_schedule_pull_on_now_item($time_correlation);
   $up_next = usanetwork_schedule_pull_up_next_item($time_correlation);
   $tonight = _usanetwork_tv_schedule_get_primetime_items(3);

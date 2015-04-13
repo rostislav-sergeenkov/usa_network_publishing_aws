@@ -186,10 +186,12 @@
             }
 
             elementsMeta.aspot_offset_percent = {
+              dataRel: 'aspot_offset_percent',
               shiftPercent: offset_percent_X
             };
           } else {
             elementsMeta.aspot_offset_percent = {
+              dataRel: 'aspot_offset_percent',
               shiftPercent: null
             };
           }
@@ -382,26 +384,27 @@
         if(homeUiPositions !== '') {
           homeUiPositionsVal = JSON.parse(homeUiPositions);
         } else {
-          //homeUiPositionsVal = getParams(aspot_elements);
+          homeUiPositionsVal = getParams(aspot_elements);
         }
 
         if(showUiPositions !== '') {
           showUiPositionsVal = JSON.parse(showUiPositions);
         } else {
-          //showUiPositionsVal = getParams(tvs_aspot_elements);
+          showUiPositionsVal = getParams(tvs_aspot_elements);
         }
-
-        var myData = {
-          data : {
-            aspot_elements : homeUiPositionsVal,
-            tvs_aspot_elements : showUiPositionsVal
-          }
-        };
 
 
         if((homeUiPositions === '') && (showUiPositions === '')){
           headInput.val(headTextarea.text());
         } else {
+
+          var myData = {
+            data : {
+              aspot_elements : homeUiPositionsVal,
+              tvs_aspot_elements : showUiPositionsVal
+            }
+          };
+          console.info(myData);
           headInput.val(JSON.stringify(myData));
         }
       });
@@ -410,31 +413,34 @@
 
         var dataPosition = {};
 
-        //$.each(obj, function (index, itemElement) {
-        //  $.each(itemElement, function (i, item) {
-        //    console.info(i);
-        //    console.info(item);
-        //    dataPosition[itemElement.data('rel')] = {
-        //      'elementId': itemElement.attr('id'),
-        //      'dataRel': itemElement.data('rel'),
-        //      'left': itemElement.css('left'),
-        //      'top': itemElement.css('top'),
-        //      'leftM': mobileItemElement.css('left'),
-        //      'topM': mobileItemElement.css('top'),
-        //      'percentX': widthPercent,
-        //      'percentY': heightPercent,
-        //      'percentMX': widthPercent_m,
-        //      'percentMY': heightPercent_m,
-        //      'invertX': invertX,
-        //      'invertY': invertY,
-        //      'invertMX': invert_mX,
-        //      'invertMY': invert_mY
-        //    };
-        //    dataPosition.aspot_offset_percent = {
-        //      shiftPercent: null
-        //    };
-        //  });
-        //});
+        $.each(obj, function (index, itemElem) {
+
+          var name = itemElem.dataRel;
+
+          if(name === 'aspot_offset_percent'){
+            dataPosition[name] = {
+              "shiftPercent": itemElem.shiftPercent
+            }
+          } else {
+            dataPosition[name] = {
+              "elementId": itemElem.elementId,
+              "dataRel": itemElem.dataRel,
+              "left": itemElem.left,
+              "top": itemElem.top,
+              "leftM": itemElem.leftM,
+              "topM": itemElem.topM,
+              "percentX": itemElem.percentX,
+              "percentY": itemElem.percentY,
+              "percentMX": itemElem.percentMX,
+              "percentMY": itemElem.percentMY,
+              "invertX": itemElem.invertX,
+              "invertY": itemElem.invertY,
+              "invertMX": itemElem.invertMX,
+              "invertMY": itemElem.invertMY
+            }
+          }
+
+        });
 
         return dataPosition;
       }

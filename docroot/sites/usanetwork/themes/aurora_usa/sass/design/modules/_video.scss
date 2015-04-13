@@ -758,11 +758,12 @@
       }
     }
     .locked-msg {
-      position: absolute;
-      top: 40px;
       left: 5px;
       margin: 0 auto;
+      position: absolute;
       text-align: center;
+      text-shadow: 1px 1px 5px black;
+      top: 40px;
       z-index: 10;
       .first-line {
         display:block;

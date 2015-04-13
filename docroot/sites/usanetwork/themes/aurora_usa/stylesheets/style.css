@@ -712,33 +712,33 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .best-of-block ul li.first .meta, .best-of-block ul li:nth-child(2) .meta, .best-of-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta, .related-content-block ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .best-of-block ul li.first .meta, .best-of-block ul li:nth-child(2) .meta, .best-of-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
   direction: ltr;
   color: #ffffff;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .best-of-block ul li.first .meta .description, .best-of-block ul li:nth-child(2) .meta .description, .best-of-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .description, .related-content-block ul li .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .usa-home-bspot .meta .description, .usa-home-cspot .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .best-of-block ul li.first .meta .show-title, .best-of-block ul li:nth-child(2) .meta .show-title, .best-of-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .show-title, .related-content-block ul li .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .usa-home-bspot .meta .show-title, .usa-home-cspot .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .best-of-block ul li.first .meta .topic, .best-of-block ul li:nth-child(2) .meta .topic, .best-of-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .topic, .related-content-block ul li .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic, .usa-home-bspot .meta .topic, .usa-home-cspot .meta .topic {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .best-of-block ul li.first .meta .description, .best-of-block ul li:nth-child(2) .meta .description, .best-of-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .description, .related-content-block ul li .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .usa-home-bspot .meta .description, .usa-home-cspot .meta .description, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .best-of-block ul li.first .meta .show-title, .best-of-block ul li:nth-child(2) .meta .show-title, .best-of-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, .related-content-block ul li .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .usa-home-bspot .meta .show-title, .usa-home-cspot .meta .show-title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .best-of-block ul li.first .meta .topic, .best-of-block ul li:nth-child(2) .meta .topic, .best-of-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .topic, .related-content-block ul li .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic, .usa-home-bspot .meta .topic, .usa-home-cspot .meta .topic {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
   font-size: 16px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .best-of-block ul li.first .meta .additional span, .best-of-block ul li:nth-child(2) .meta .additional span, .best-of-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional span, .related-content-block ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .best-of-block ul li.first .meta .additional span, .best-of-block ul li:nth-child(2) .meta .additional span, .best-of-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, .related-content-block ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
@@ -1291,29 +1291,29 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
-.aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
   height: 100%;
 }
 @media (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
     max-width: 255px;
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
     max-width: 100%;
   }
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img img {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img img {
   width: 100%;
   height: 100%;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo a, .aspot-and-episodes .episodes-list .aspot-carousel-promo a {
   display: block;
   height: 100%;
   width: 100%;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-wrapper {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper {
   background: #656364;
   bottom: 0;
   height: 45%;
@@ -1322,17 +1322,17 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   z-index: 1;
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-wrapper {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper {
     height: 39%;
   }
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-wrapper-inner {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper-inner, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper-inner {
   height: 100%;
   display: table;
   position: relative;
   width: 100%;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta {
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
@@ -1340,145 +1340,145 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   vertical-align: middle;
   width: 100%;
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 10px;
   line-height: 16px;
   margin-left: 0;
 }
-@media (min-width: 1701px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 15px;
     line-height: 20px;
   }
 }
 @media (max-width: 1280px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 8px;
     line-height: 18px;
   }
 }
 @media (max-width: 1024px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 10px;
     line-height: 14px;
   }
 }
 @media (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 8px;
     line-height: 16px;
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 12px;
     line-height: 22px;
   }
 }
 @media (max-width: 480px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .caption {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 10px;
     line-height: 16px;
   }
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 19px;
   margin-left: 0;
 }
-@media (min-width: 1701px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 23px;
     line-height: 30px;
   }
 }
 @media (max-width: 1280px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 10px;
     line-height: 18px;
   }
 }
 @media (max-width: 1024px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 10px;
     line-height: 14px;
   }
 }
 @media (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 12px;
     line-height: 18px;
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 20px;
     line-height: 26px;
   }
 }
 @media (max-width: 480px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .title {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 12px;
     line-height: 18px;
   }
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 10px;
   line-height: 19px;
   margin-left: 0;
 }
-@media (min-width: 1701px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 15px;
     line-height: 22px;
   }
 }
 @media (max-width: 1280px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 8px;
     line-height: 16px;
   }
 }
 @media (max-width: 1024px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 10px;
     line-height: 14px;
   }
 }
 @media (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 8px;
     line-height: 16px;
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 16px;
     line-height: 22px;
   }
 }
 @media (max-width: 480px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta .additional {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 10px;
     line-height: 16px;
   }
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
   left: 4%;
   margin-top: -19px;
   position: absolute;
   top: 50%;
 }
-@media (min-width: 1701px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 47px;
     margin-top: -24px;
     width: 47px;
   }
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon:before {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before {
     font-size: 24px;
     height: 47px;
     line-height: 47px;
@@ -1486,12 +1486,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon:before {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before {
     font-size: 16px;
     height: 30px;
     line-height: 30px;
@@ -1499,12 +1499,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 37px;
     margin-top: -19px;
     width: 37px;
   }
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon:before {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before {
     font-size: 20px;
     height: 37px;
     line-height: 37px;
@@ -1512,38 +1512,90 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 480px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon:before {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before {
     font-size: 16px;
     height: 30px;
     line-height: 30px;
     width: 30px;
   }
 }
-.aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
   padding-left: calc(8% + 37px);
 }
-@media (min-width: 1601px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 47px);
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 37px);
   }
 }
 @media (max-width: 480px) {
-  .aspot-and-episodes .episodes-list .aspot-carousel-promo a .meta-icon ~ .meta {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
+    padding-left: calc(8% + 30px);
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-wrapper {
+  background: #3e3e3e;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .caption {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .additional {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
+    height: 37px;
+    margin-top: -19px;
+    width: 37px;
+  }
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon:before {
+    font-size: 20px;
+    height: 37px;
+    line-height: 37px;
+    width: 37px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
+    height: 30px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon:before {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
@@ -10874,208 +10926,560 @@ footer h2 {
 }
 
 .consumptionator-page .video-block {
+  height: 42.01875vw;
   margin: 0;
   max-width: 2260px;
+  overflow: hidden;
   padding: 0;
   position: relative;
+  width: 100%;
 }
 .consumptionator-page .video-block:after {
   clear: both;
   content: '';
   display: table;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .consumptionator-page .video-block {
-    margin-bottom: 10px;
+    height: auto;
   }
 }
 .consumptionator-page .video-block .player-wrapper {
-  margin-right: 310px;
+  float: left;
+  height: 100%;
   position: relative;
+  width: 74.7%;
+  /*old css code*/
+  /*old css end*/
 }
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .consumptionator-page .video-block .player-wrapper {
-    margin-right: 0;
+    height: 56.25vw;
+    width: 100%;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help {
+  background-color: #161616;
+  border: 1px solid #4b4b4b;
+  display: none;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-download {
+  padding-top: 20px;
+  position: relative;
+  top: 82px;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download {
+    font-size: 11px;
+    line-height: 16px;
+    top: -6px;
+  }
+}
+@media (min-width: 1275px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download {
+    font-size: 20px;
+    line-height: 30px;
+    top: 102px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link {
+  position: relative;
+  top: 100px;
+  left: -14px;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link {
+    left: -4px;
+    top: -3px;
+  }
+}
+@media (min-width: 1275px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link {
+    top: 120px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a:after {
+  content: "";
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a img {
+  height: 35px;
+  padding-left: 29px;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a img {
+    padding-left: 9px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .arrow {
+  position: absolute;
+  right: 0;
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-msg {
+  position: relative;
+  top: 52px;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-msg {
+    top: 14px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+@media (min-width: 1275px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-msg {
+    font-size: 20px;
+    line-height: 30px;
+    top: 82px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-close {
+  float: right;
+  position: relative;
+  top: 112px;
+  right: 10px;
+  text-transform: uppercase;
+  color: #0AB6E8;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-close {
+    top: 3px;
+  }
+}
+@media (min-width: 1275px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help .tve-close {
+    top: 250px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help .tve-close > img {
+  padding-right: 5px;
+  padding-bottom: 1px;
+}
+.consumptionator-page .video-block .player-wrapper .tve-help:before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-right: 14px solid #1f1f1f;
+  top: 3px;
+  right: -2px;
+  z-index: 106;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help:before {
+    border-bottom: 14px solid #1f1f1f;
+    border-right: 14px solid transparent;
+    top: 158px;
+    left: 50%;
+    margin-left: -14px;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help:before {
+    border-bottom: 14px solid #1f1f1f;
+    border-right: 14px solid transparent;
+    top: 318px;
+    left: 16%;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .tve-help:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-right: 14px solid #4b4b4b;
+  top: 3px;
+  right: 0px;
+  z-index: 105;
+}
+@media (max-width: 644px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help:after {
+    border-bottom: 14px solid #4b4b4b;
+    border-right: 14px solid transparent;
+    top: 156px;
+    left: 50%;
+    margin-left: -14px;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .consumptionator-page .video-block .player-wrapper .tve-help:after {
+    border-bottom: 14px solid #4b4b4b;
+    border-right: 14px solid transparent;
+    top: 316px;
+    left: 16%;
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper {
   line-height: 1;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover {
+  cursor: pointer;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover .locked-msg,
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover a:after {
+  display: block;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover img {
+  opacity: .2;
+  transition: opacity 0.3s ease-in-out;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper a:after {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  width: 296px;
+  height: 39px;
+  margin-left: -148px;
+  content: " ";
+  background: url("../images/sign_in_key.png") center top no-repeat;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive a:after {
+  display: none;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover {
+  cursor: default;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover a:after {
+  display: none;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover img {
+  opacity: 1;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg {
+  display: none;
+  left: 5%;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  width: 90%;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+  display: block;
+  font-size: 26px;
+  line-height: 45px;
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+    font-size: 20px;
+    line-height: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+    font-size: 15px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+    font-size: 10px;
+    line-height: 18px;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+  display: block;
+  font-size: 16px;
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+    font-size: 14px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+    font-size: 8px;
+  }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper iframe {
+  height: 100%;
   width: 100%;
 }
 .consumptionator-page .video-block .consum-sidebar {
   background: none;
-  width: 300px;
-  padding: 10px 0px 0;
-  overflow: hidden;
-  position: absolute;
+  float: left;
   height: 100%;
-  right: 10px;
-  top: 0;
+  overflow: hidden;
+  position: relative;
+  width: 25.3%;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .consumptionator-page .video-block .consum-sidebar {
-    position: static;
+    height: auto;
     width: 100%;
   }
 }
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .advert {
-    float: left;
-  }
+.consumptionator-page .video-block .consum-sidebar .advert {
+  height: 23.4vw;
+  padding: calc((23.4vw - 250px)/2) 0;
+  width: 100%;
 }
-@media (max-width: 640px) {
+@media (max-width: 1280px) {
   .consumptionator-page .video-block .consum-sidebar .advert {
     display: none;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .advert .advertisement a {
-  display: block;
+.consumptionator-page .video-block .consum-sidebar .advert .advertisement {
+  background: #656364;
+  height: 250px;
+  margin: 0 auto;
   width: 300px;
 }
-.consumptionator-page .video-block .consum-sidebar .advert .advertisement a img {
-  max-height: 250px;
+.consumptionator-page .video-block .consum-sidebar .clips-block {
+  height: calc(100% - 23.4vw);
+  position: relative;
   width: 100%;
 }
-.consumptionator-page .video-block .consum-sidebar .social {
-  display: block;
-  border: 2px solid #262626;
-  margin-top: 10px;
-  height: 100%;
-  position: relative;
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block {
+    height: auto;
+  }
 }
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .social {
-    margin-left: 310px;
-    margin-top: 0;
+.consumptionator-page .video-block .consum-sidebar .clips-block-title {
+  background: #2c2c2c;
+  height: 45px;
+  line-height: 45px;
+  padding-left: 20px;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block-title {
+    height: 70px;
+    line-height: 70px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block-title {
+    height: 60px;
+    line-height: 60px;
+    padding: 0;
+    text-align: center;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .social {
-    margin-left: 0;
+  .consumptionator-page .video-block .consum-sidebar .clips-block-title {
+    height: 100px;
+    line-height: 100px;
+    padding: 0;
+    text-align: center;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .social .social-usa:after {
-  display: block;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .social .social-usa:after {
-    display: none;
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block-title {
+    height: 60px;
+    line-height: 60px;
+    padding: 0;
+    text-align: center;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .social .node {
-  position: relative;
-  min-height: 210px;
-}
-.consumptionator-page .video-block .consum-sidebar .social .node a {
-  display: block;
-  overflow: hidden;
-  text-decoration: none;
-  width: 100%;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .social .node a {
-    margin: 30px auto;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap {
+.consumptionator-page .video-block .consum-sidebar .clips-block-title h2 {
   color: #ffffff;
-  height: 100%;
-  text-align: center;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  margin: 0;
   text-transform: uppercase;
 }
-.consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap .meta {
-  margin: 0 auto;
-  width: 80%;
-}
-.consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap .meta .time {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
-  font-size: 12px;
-  line-height: 50px;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap .meta .time {
-    display: none;
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block-title h2 {
+    font-size: 23px;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap .meta .meta-social-title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  line-height: 20px;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap .meta .meta-social-title {
-    display: none;
+@media (max-width: 640px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block-title h2 {
+    font-size: 30px;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap .meta .meta-additional {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
-  font-size: 12px;
-  line-height: 50px;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap .meta .meta-additional {
-    display: none;
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block-title h2 {
+    font-size: 20px;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .social .node a .meta-wrap .meta .meta-text {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 15px;
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider {
+  position: relative;
 }
-.consumptionator-page .video-block .consum-sidebar .social .asset-img {
-  margin: 0 auto;
-  width: 274px;
-}
-.consumptionator-page .video-block .consum-sidebar .social .asset-img img {
-  width: 100%;
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical {
   display: block;
+  height: calc(100% - 84px);
 }
-@media (max-width: 1400px) {
-  .consumptionator-page .video-block .consum-sidebar .social .asset-img img {
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical {
+    height: calc(100% - 140px);
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical {
     display: none;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .social-more {
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical ul, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical .bx-viewport, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical .bx-wrapper {
+  height: 100% !important;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li {
+  background: #343434;
+  height: 75px;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li {
+    height: 115px;
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li:nth-child(odd) {
+  background: #3e3e3e;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li:nth-child(even) {
+  background: #343434;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li > div {
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li a {
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img {
+  height: 50px;
+  left: 4%;
+  margin-top: -25px;
+  position: absolute;
+  top: 50%;
+  width: 75px;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img {
+    height: 74px;
+    margin-top: -37px;
+    width: 111px;
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img img {
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img ~ .meta-wrapper .meta {
+  padding-left: calc(8% + 75px);
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img ~ .meta-wrapper .meta {
+    padding-left: calc(8% + 111px);
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper {
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta-wrapper-inner {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta {
+  color: #afafaf;
+  padding-left: 4%;
+  display: table-cell;
+  max-width: 100px;
+  vertical-align: middle;
+  width: 100%;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .caption {
+  font-size: 10px;
+  line-height: 13px;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title {
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 7px;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title {
+    font-size: 23px;
+    line-height: 28px;
+    margin-bottom: 11px;
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .additional {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 10px;
+  line-height: 13px;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .additional {
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal {
+  display: none;
+  height: calc((100vw - 4px)/48*9);
+  width: 100%;
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal {
+    display: block;
+  }
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li {
+  float: left;
+  margin-right: 2px;
+  position: relative;
+  height: 100%;
+}
+.consumptionator-page .video-block .consum-sidebar .more-clips {
   display: block;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
 }
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .social-more {
-    right: 10px;
-    margin-left: 320px;
-    width: auto;
+@media (max-width: 1280px) {
+  .consumptionator-page .video-block .consum-sidebar .more-clips {
+    display: none;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .social-more {
+  .consumptionator-page .video-block .consum-sidebar .more-clips {
     right: 0;
     margin: 0 10px;
     width: auto;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .social-more a {
-  background-color: #a9a9a9;
+.consumptionator-page .video-block .consum-sidebar .more-clips a {
   color: #ffffff;
   display: block;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 40px;
-  text-align: center;
+  padding-left: 25px;
   text-decoration: none;
   text-transform: uppercase;
 }
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .social-more a {
-    font-size: 18px;
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .more-clips a {
+    font-size: 23px;
+    line-height: 70px;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .social-more a:after {
+.consumptionator-page .video-block .consum-sidebar .more-clips a:after {
   color: #ffffff;
   content: "\e608";
   display: block;
@@ -11085,126 +11489,15 @@ footer h2 {
   position: absolute;
   top: 50%;
   margin-top: -4px;
-  right: 50%;
-  margin-right: -85px;
+  right: 5px;
 }
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .social-more a:after {
-    margin-right: -125px;
+@media (min-width: 1901px) {
+  .consumptionator-page .video-block .consum-sidebar .more-clips a:after {
+    font-size: 15px;
+    line-height: 15px;
+    right: 10px;
+    margin-top: -7px;
   }
-}
-.consumptionator-page .video-block .consum-sidebar .video-link {
-  background: #3a3a3a;
-  bottom: 0;
-  display: none;
-  position: absolute;
-  width: 100%;
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link {
-    margin-left: 310px;
-    position: static;
-    width: auto;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link {
-    margin-left: 0;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link .node {
-    min-height: 250px;
-    max-height: 250px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link .node {
-    height: auto;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a {
-  color: #ffffff;
-  display: block;
-  height: 100%;
-  padding-top: 25px;
-  width: 100%;
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link .node a {
-    padding-top: 0;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a .asset-img img {
-  width: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-back {
-  background: #3a3a3a;
-  bottom: 0px;
-  left: 0;
-  height: 82px;
-  position: absolute;
-  width: 100%;
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-back {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-back {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-back {
-    background: #3a3a3a;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper {
-  height: 82px;
-  position: relative;
-  width: 100%;
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta-icon {
-  position: absolute;
-  margin-top: -18.5px;
-  margin-left: -18.5px;
-  top: 50%;
-  left: 40px;
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta {
-  font-family: Helvetica, Arial, sans-serif;
-  margin-top: -19px;
-  margin-left: 70px;
-  padding-left: 0px;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title {
-  font-size: 12px;
-  line-height: 18px;
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional {
-  font-size: 12px;
-  line-height: 18px;
-}
-.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional span {
-  font-size: 12px;
-  line-height: 18px;
 }
 
 .consumptionator-page {
@@ -11244,6 +11537,11 @@ footer h2 {
   padding: 0;
   position: relative;
   width: 100%;
+}
+.related-content-block ul:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 .related-content-block ul li {
   float: left;
@@ -16290,11 +16588,12 @@ body.person-page #main {
   background-image: none;
 }
 .featured-asset.file-video-mpx .locked-msg {
-  position: absolute;
-  top: 40px;
   left: 5px;
   margin: 0 auto;
+  position: absolute;
   text-align: center;
+  text-shadow: 1px 1px 5px black;
+  top: 40px;
   z-index: 10;
   text-shadow: 1px 1px 5px black;
 }
@@ -21106,9 +21405,7 @@ yx-axis
     overflow: hidden;
     width: 100%;
   }
-}
-@media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li:nth-child(3) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li:last-child {
     margin-bottom: 0;
   }
 }

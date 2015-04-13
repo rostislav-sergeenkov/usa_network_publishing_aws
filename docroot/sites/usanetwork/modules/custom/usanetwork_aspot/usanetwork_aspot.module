@@ -7,6 +7,22 @@
 include_once 'usanetwork_aspot.features.inc';
 
 /**
+ *  Implements hook_menu().
+ */
+function usanetwork_aspot_menu() {
+  $items = array();
+
+  $items['usanetwork-services/aspot-draggable-ui/set-variable'] = array(
+    'title' => 'Service for setting up data of A-Spot draggable UI',
+    'page callback' => 'ajax_aspot_draggable_ui_data_set',
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_state, $form_id) {
@@ -1106,4 +1122,54 @@ function _usanetwork_aspot_get_show_nid($node) {
   }
 
   return NULL;
+}
+
+/**
+ * Accepts next data in query:
+ * array(
+ *   nid => node if of A-Spot
+ *   page_type => type of A-Spot ('homepage', 'showpage')
+ *   variable_name => name of variable ('title', 'title_prefix', etc.)
+ *   value => JSON
+ * );
+ */
+function ajax_aspot_draggable_ui_data_set() {
+  $query = drupal_get_query_parameters();
+
+  if (empty($query['nid']) || empty($query['aspot_type']) || empty($query['variable_name'])) {
+    return drupal_json_output(FALSE);
+  }
+
+  $node = node_load($query['nid']);
+
+  if (empty($node) || (!empty($node) && $node->type != 'usanetwork_aspot')) {
+    return drupal_json_output(FALSE);
+  }
+
+  $field_name = '';
+
+  switch ($query['aspot_type']) {
+    case 'homepage': $field_name = 'field_aspot_gi_draggable_data'; break;
+    case 'showpage': $field_name = 'field_aspot_tgi_draggable_data'; break;
+  }
+
+  $field_data = field_get_items('node', $node, $field_name);
+
+  if (!empty($field_data) && !empty($field_data[0]['value'])) {
+    $field_data = json_decode($field_data[0]['value']);
+  }
+
+  foreach (json_decode($query['value']) as $new_key => $new_value) {
+    $field_data->{$query['variable_name']}->$new_key = $new_value;
+  }
+
+  $update_query = db_update('field_data_' . $field_name);
+  $update_query->fields(array(
+    $field_name . '_value' => json_encode($field_data),
+  ));
+  $update_query->condition('entity_type', 'node');
+  $update_query->condition('entity_id', $query['nid']);
+  $update_query->execute();
+
+  drupal_json_output(TRUE);
 }

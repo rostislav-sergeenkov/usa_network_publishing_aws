@@ -1,154 +1,455 @@
 .consumptionator-page {
   .video-block {
     @include clear;
+    height: 42.01875vw;
     margin: 0;
     max-width: 2260px;
+    overflow: hidden;
     padding: 0;
     position: relative;
-    @include breakpoint($bp-1024-width) {
-      margin-bottom: 10px;
+    width: 100%;
+    @include breakpoint($bp-1280-width) {
+      height: auto;
     }
     .player-wrapper {
-      margin-right: 310px;
+      float: left;
+      height: 100%;
       position: relative;
-      @include breakpoint($bp-1024-width) {
-        margin-right: 0;
+      width: 74.7%;
+      @include breakpoint($bp-1280-width) {
+        height: 56.25vw;
+        width: 100%;
       }
+      /*old css code*/
+      .tve-help {
+        background-color: $black-dark;
+        border: 1px solid $gray-ultra-med;
+        display: none;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        z-index: 1;
+        .tve-download {
+          padding-top: 20px;
+          position: relative;
+          top: 82px;
+          @include breakpoint($bp-video-player-section) {
+            font-size: 11px;
+            line-height: 16px;
+            top: -6px
+          }
+          @include breakpoint($bp-video-very-large-width) {
+            font-size: 20px;
+            line-height: 30px;
+            top: 102px;
+          }
+        }
+        .tve-download-link {
+          position: relative;
+          top: 100px;
+          left: -14px;
+          @include breakpoint($bp-video-player-section) {
+            left: -4px;
+            top: -3px;
+          }
+          @include breakpoint($bp-video-very-large-width) {
+            top: 120px;
+          }
+          a:after {
+            content : "";
+          }
+          a img {
+            height: 35px;
+            padding-left: 29px;
+            @include breakpoint($bp-video-player-section) {
+              padding-left: 9px;
+            }
+          }
+        }
+        .arrow {
+          position : absolute;
+          right: 0;
+        }
+        .tve-msg {
+          position: relative;
+          top: 52px;
+          @include breakpoint($bp-video-player-section) {
+            top: 14px;
+            font-size: 11px;
+            line-height: 16px;
+          }
+          @include breakpoint($bp-video-very-large-width) {
+            font-size: 20px;
+            line-height: 30px;
+            top: 82px;
+          }
+        }
+
+        .tve-close {
+          float: right;
+          position: relative;
+          top: 112px;
+          right: 10px;
+          text-transform: uppercase;
+          color: #0AB6E8;
+          @include breakpoint($bp-video-player-section) {
+            top: 3px;
+          }
+          @include breakpoint($bp-video-very-large-width) {
+            top: 250px;
+          }
+          > img {
+            padding-right: 5px;
+            padding-bottom: 1px;
+          }
+        }
+        &:before {
+          position: absolute;
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border: 14px solid transparent;
+          border-right: 14px solid #1f1f1f;
+          top: 3px;
+          right: -2px;
+          z-index: 106;
+          @include breakpoint($bp-video-player-section) {
+            border-bottom: 14px solid #1f1f1f;
+            border-right: 14px solid transparent;
+            top: 158px;
+            left: 50%;
+            margin-left: -14px;
+          }
+          @include breakpoint($bp-video-mid-range4-width) {
+            border-bottom: 14px solid #1f1f1f;
+            border-right: 14px solid transparent;
+            top: 318px;
+            left: 16%;
+          }
+        }
+        &:after {
+          position: absolute;
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border: 14px solid transparent;
+          border-right: 14px solid #4b4b4b;
+          top: 3px;
+          right: 0px;
+          z-index: 105;
+          @include breakpoint($bp-video-player-section) {
+            border-bottom: 14px solid #4b4b4b;
+            border-right: 14px solid transparent;
+            top: 156px;
+            left: 50%;
+            margin-left: -14px;
+          }
+          @include breakpoint($bp-video-mid-range4-width) {
+            border-bottom: 14px solid #4b4b4b;
+            border-right: 14px solid transparent;
+            top: 316px;
+            left: 16%;
+
+          }
+        }
+      }
+      /*old css end*/
       .video-player-wrapper {
         line-height: 1;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        &:hover {
+          cursor: pointer;
+          .locked-msg,
+          a:after {
+            display: block;
+          }
+          img {
+            opacity: .2;
+            transition: opacity 0.3s ease-in-out;
+          }
+        }
+        a:after {
+          display: none;
+          position: absolute;
+          left: 50%;
+          top: 55%;
+          width: 296px;
+          height: 39px;
+          margin-left: -148px;
+          content: " ";
+          background:url('../images/sign_in_key.png') center top no-repeat;
+        }
+        &.inactive {
+          a:after {
+            display: none;
+          }
+          &:hover {
+            cursor: default;
+            a:after {
+              display: none;
+            }
+            img {
+              opacity: 1;
+            }
+          }
+        }
+        .locked-msg {
+          display: none;
+          left: 5%;
+          position: absolute;
+          text-align: center;
+          top: 40%;
+          width: 90%;
+          .first-line {
+            display: block;
+            font-size: 26px;
+            line-height: 45px;
+            @include breakpoint($bp-1024-width) {
+              font-size: 20px;
+              line-height: 36px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 15px;
+              line-height: 26px;
+            }
+            @include breakpoint($bp-480-width) {
+              font-size: 10px;
+              line-height: 18px;
+            }
+          }
+          .second-line {
+            display: block;
+            font-size: 16px;
+            @include breakpoint($bp-1024-width) {
+              font-size: 14px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 12px;
+            }
+            @include breakpoint($bp-480-width) {
+              font-size: 8px;
+            }
+          }
+        }
         iframe {
+          height: 100%;
           width: 100%;
         }
       }
     }
     .consum-sidebar {
       background: none;
-      width: 300px;
-      padding: 10px 0px 0;
-      overflow: hidden;
-      position: absolute;
+      float: left;
       height: 100%;
-      right: 10px;
-      top: 0;
-      @include breakpoint($bp-1024-width) {
-        position: static;
+      overflow: hidden;
+      position: relative;
+      width: 25.3%;
+      @include breakpoint($bp-1280-width) {
+        height: auto;
         width: 100%;
       }
       .advert {
-        @include breakpoint($bp-1024-width) {
-          float: left;
-        }
-        @include breakpoint($bp-640-width) {
+        height: 23.4vw;
+        padding: calc((23.4vw - 250px)/2) 0;
+        width: 100%;
+        @include breakpoint($bp-1280-width) {
           display: none;
         }
         .advertisement {
-          & a {
-            display: block;
-            width: 300px;
-            img {
-              max-height: 250px;
-              width: 100%;
-            }
+          background: $video-promo-back-gray;
+          height: 250px;
+          margin: 0 auto;
+          width: 300px;
+        }
+      }
+      .clips-block {
+        height: calc(100% - 23.4vw);
+        position: relative;
+        width: 100%;
+        @include breakpoint($bp-1280-width) {
+          height: auto;
+        }
+      }
+      .clips-block-title {
+        background: $schedule-tonight;
+        height: 45px;
+        line-height: 45px;
+        padding-left: 20px;
+        position: relative;
+        width: 100%;
+        @include breakpoint($bp-min-1901-width) {
+          height: 70px;
+          line-height: 70px;
+        }
+        @include breakpoint($bp-1280-width) {
+          height: 60px;
+          line-height: 60px;
+          padding: 0;
+          text-align: center;
+        }
+        @include breakpoint($bp-640-width) {
+          height: 100px;
+          line-height: 100px;
+          padding: 0;
+          text-align: center;
+        }
+        @include breakpoint($bp-480-width) {
+          height: 60px;
+          line-height: 60px;
+          padding: 0;
+          text-align: center;
+        }
+        h2 {
+          color: #ffffff;
+          font-family: $avalon-demi;
+          font-size: 15px;
+          margin: 0;
+          text-transform: uppercase;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 23px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 30px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 20px;
           }
         }
       }
-      .social {
-        display: block;
-        border: 2px solid #262626;
-        margin-top: 10px;
-        height: 100%;
+      .episodes-list-slider {
         position: relative;
-        @include breakpoint($bp-1024-width) {
-          margin-left: 310px;
-          margin-top: 0;
-        }
-        @include breakpoint($bp-640-width) {
-          margin-left: 0;
-        }
-        .social-usa:after {
+        &.vertical {
           display: block;
-          @include breakpoint($between-1025-1280) {
+          height: calc(100% - 84px);
+          @include breakpoint($bp-min-1901-width) {
+            height: calc(100% - 140px);
+          }
+          @include breakpoint($bp-1280-width) {
             display: none;
           }
-        }
-        .node {
-          position: relative;
-          min-height: 210px;
-          a {
-            display: block;
-            overflow: hidden;
-            text-decoration: none;
+          ul, .bx-viewport, .bx-wrapper {
+            height: 100%!important;
+          }
+          li {
+            background: $consum-carousel-even;
+            height: 75px;
+            position: relative;
             width: 100%;
-            @include breakpoint($between-1025-1280) {
-              margin: 30px auto;
+            @include breakpoint($bp-min-1901-width) {
+              height: 115px;
             }
-            .meta-wrap {
-              color: #ffffff;
+            &:nth-child(odd) {
+              background: $consum-carousel-odd;
+            }
+            &:nth-child(even) {
+              background: $consum-carousel-even;
+            }
+            > div {
               height: 100%;
-              text-align: center;
-              text-transform: uppercase;
+              width: 100%;
+            }
+            a {
+              height: 100%;
+              width: 100%;
+            }
+            .asset-img {
+              height: 50px;
+              left: 4%;
+              margin-top: -25px;
+              position: absolute;
+              top: 50%;
+              width: 75px;
+              @include breakpoint($bp-min-1901-width) {
+                height: 74px;
+                margin-top: -37px;
+                width: 111px;
+              }
+              img {
+                height: 100%;
+                width: 100%;
+              }
+              & ~ .meta-wrapper {
+                .meta {
+                  padding-left: calc(8% + 75px);
+                  @include breakpoint($bp-min-1901-width) {
+                    padding-left: calc(8% + 111px);
+                  }
+                }
+              }
+            }
+            @extend %meta;
+            .meta-wrapper {
+              height: 100%;
+              width: 100%;
+              .meta-wrapper-inner {
+                display: table;
+                height: 100%;
+                width: 100%;
+              }
               .meta {
-                margin: 0 auto;
-                width: 80%;
-                .time {
-                  font-family: $cent-725BT-italic;
-                  font-style: italic;
-                  font-size: 12px;
-                  line-height: 50px;
-                  @include breakpoint($between-1025-1280) {
-                    display: none;
-                  }
+                color: $consum-carousel-text;
+                padding-left: 4%;
+                display: table-cell;
+                max-width: 100px;
+                vertical-align: middle;
+                width: 100%;
+                .caption {
+                  font-size: 10px;
+                  line-height: 13px;
                 }
-                .meta-social-title {
-                  font-family: $avalon-demi;
-                  font-size: 20px;
-                  line-height: 20px;
-                  @include breakpoint($between-1025-1280) {
-                    display: none;
-                  }
-                }
-                .meta-additional {
-                  font-family: $cent-725BT-italic;
-                  font-style: italic;
-                  font-size: 12px;
-                  line-height: 50px;
-                  @include breakpoint($between-1025-1280) {
-                    display: none;
-                  }
-                }
-                .meta-text {
-                  font-family: $avalon-medium;
+                .title {
                   font-size: 15px;
-                  @include breakpoint($bp-1280-width) {
-
+                  line-height: 18px;
+                  margin-bottom: 7px;
+                  @include breakpoint($bp-min-1901-width) {
+                    font-size: 23px;
+                    line-height: 28px;
+                    margin-bottom: 11px;
+                  }
+                }
+                .additional {
+                  font-family: $tex-gyreschola-italic;
+                  font-size: 10px;
+                  line-height: 13px;
+                  text-transform: uppercase;
+                  @include breakpoint($bp-min-1901-width) {
+                    font-size: 15px;
+                    line-height: 18px;
                   }
                 }
               }
             }
           }
         }
-        .asset-img {
-          margin: 0 auto;
-          width: 274px;
-          & img {
-            width: 100%;
+        &.horizontal {
+          display: none;
+          height: calc((100vw - 4px)/48*9);
+          width: 100%;
+          @include breakpoint($bp-1280-width) {
             display: block;
-            @include breakpoint($bp-1400-width) {
-              display: none;
-            }
+          }
+          li {
+            float: left;
+            margin-right: 2px;
+            position: relative;
+            height: 100%;
+            @extend %aspot-carousel-promo;
           }
         }
       }
-      .social-more {
+      .more-clips {
         display: block;
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        @include breakpoint($bp-1024-width) {
-          right: 10px;
-          margin-left: 320px;
-          width: auto;
+        @include breakpoint($bp-1280-width) {
+          display: none;
         }
         @include breakpoint($bp-640-width) {
           right: 0;
@@ -156,17 +457,17 @@
           width: auto;
         }
         & a {
-          background-color: #a9a9a9;
           color: #ffffff;
           display: block;
           font-family: $avalon-demi;
-          font-size: 12px;
+          font-size: 15px;
           line-height: 40px;
-          text-align: center;
+          padding-left: 25px;
           text-decoration: none;
           text-transform: uppercase;
-          @include breakpoint($bp-640-width) {
-            font-size: 18px;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 23px;
+            line-height: 70px;
           }
           &:after {
             color: #ffffff;
@@ -178,109 +479,12 @@
             position: absolute;
             top: 50%;
             margin-top: -4px;
-            right: 50%;
-            margin-right: -85px;
-            @include breakpoint($bp-640-width) {
-              margin-right: -125px;
-            }
-          }
-        }
-      }
-      .video-link {
-        background: $social-twitter-back;
-        bottom: 0;
-        display: none;
-        position: absolute;
-        width: 100%;
-        @include breakpoint($bp-1024-width) {
-          margin-left: 310px;
-          position: static;
-          width: auto;
-        }
-        @include breakpoint($bp-640-width) {
-          margin-left: 0;
-        }
-        .node {
-          height: 100%;
-          overflow: hidden;
-          position: relative;
-          @include breakpoint($bp-1024-width) {
-            min-height: 250px;
-            max-height: 250px;
-          }
-          @include breakpoint($bp-640-width) {
-            height: auto;
-          }
-          & a {
-            color: #ffffff;
-            display: block;
-            height: 100%;
-            padding-top: 25px;
-            width: 100%;
-            @include breakpoint($bp-1024-width) {
-              padding-top: 0;
-            }
-            .asset-img {
-              & img {
-                width: 100%;
-              }
-            }
-            .meta-back {
-              background: $social-twitter-back;
-              bottom: 0px;
-              left: 0;
-              height: 82px;
-              position: absolute;
-              width: 100%;
-              @include breakpoint($between-769-1024) {
-                background-color: rgba(0, 0, 0, 0.6);
-              }
-              @include breakpoint($bp-640-width) {
-                background-color: rgba(0, 0, 0, 0.6);
-              }
-              @include breakpoint($bp-480-width) {
-                background: $social-twitter-back;
-              }
-
-            }
-            .meta-wrapper {
-              height: 82px;
-              position: relative;
-              width: 100%;
-              @include breakpoint($bp-1024-width) {
-                bottom: 0;
-                left: 0;
-                position: absolute;
-              }
-              .meta-icon {
-                position: absolute;
-                margin-top: -18.5px;
-                margin-left: -18.5px;
-                top: 50%;
-                left: 40px;
-              }
-              @extend %meta;
-              .meta {
-                font-family: Helvetica, Arial, sans-serif;
-                margin-top: -19px;
-                margin-left: 70px;
-                padding-left: 0px;
-                position: absolute;
-                top: 50%;
-                width: 100%;
-                .title {
-                  font-size: 12px;
-                  line-height: 18px;
-                }
-                .additional {
-                  font-size: 12px;
-                  line-height: 18px;
-                  span {
-                    font-size: 12px;
-                    line-height: 18px;
-                  }
-                }
-              }
+            right: 5px;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 15px;
+              line-height: 15px;
+              right: 10px;
+              margin-top: -7px;
             }
           }
         }

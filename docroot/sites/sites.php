@@ -1,7 +1,7 @@
 <?php
 
 $multisites = array(
-  'usanetwork' => 'usanetwork.com'
+  'usanetwork' => 'usanetwork.com',
 );
 
 foreach ($multisites as $sitename => $domain) {
@@ -10,6 +10,9 @@ foreach ($multisites as $sitename => $domain) {
   $sites[$sitename . 'acc.prod.acquia-sites.com'] = $sitename;
   $sites[$sitename . '.prod.acquia-sites.com'] = $sitename;
   $sites['nbcuusadev.prod.acquia-sites.com'] = $sitename;
+  $sites['nbcuusatest.prod.acquia-sites.com'] = $sitename;
+  $sites['nbcuusaacc.prod.acquia-sites.com'] = $sitename;
+  $sites['nbcuusa.prod.acquia-sites.com'] = $sitename;
   $sites['local.' . $sitename] = $sitename;
   $sites[$sitename . '.local'] = $sitename;
   $sites['origin.' . $domain] = $sitename;

@@ -25,16 +25,21 @@ function usanetwork_timeline_gallery_form_timeline_gallery_node_form_alter(&$for
     $field_items = usanetwork_timeline_gallery_get_multiple_elements_from_field($form['field_timeline_episode_section'][LANGUAGE_NONE]);
     //$triggering_element = usanetwork_timeline_gallery_get_triggering_field_name($form_state);
     //if ($triggering_element != 'field_timeline_episode_section_add_more') {
-      foreach ($field_items as &$field_item) {
-        $field_item['field_season'][LANGUAGE_NONE]['#ajax'] = array(
-          'event' => 'change',
-          'callback' => 'usanetwork_timeline_gallery_episode_option_ajax',
-          'progress' => array(
-            'type' => 'throbber',
-            'message' => '',
-          ),
-        );
-      }
+    foreach ($field_items as &$field_item) {
+      $field_item['field_season'][LANGUAGE_NONE]['#ajax'] = array(
+        'event' => 'change',
+        'callback' => 'usanetwork_timeline_gallery_episode_option_ajax',
+        'progress' => array(
+          'type' => 'throbber',
+          'message' => '',
+        ),
+      );
+      $field_item['field_season']['#attributes']['class'][] = 'field-season-delta_' .$field_item['#delta'];
+    }
+    foreach ($field_items as &$field_item) {
+      $field_item['field_episode']['#attributes']['class'][] = 'field-episode-delta_' .$field_item['#delta'];
+    }
+
     //}
     // If form_state['values'] is check this is an ajax request.
     // Other wise we do our regular logic.
@@ -139,19 +144,19 @@ function usanetwork_timeline_gallery_season_option_ajax($form, $form_state, $onl
   // We want to replace both the season and the episodes so we return an list
   // of ajax commands.
   $commands = array();
-//  if ($only_last) {
-//    end($field_items);
-//    $field_items = array(key($field_items) => current($field_items));
-//  }
+
+  if ($only_last) {
+    end($field_items);
+    $field_items = array(key($field_items) => current($field_items));
+    $field_items = array();
+  }
   foreach ($field_items as $key => $field_item) {
-    $field_id = 'edit-field-timeline-episode-section-und-' . $key . '-field-season';
-    $field_item['field_season']['#id'] = $field_id;
-    $field_id = 'edit-field-timeline-episode-section-und-' . $key . '-field-episode';
-    $field_item['field_episode']['#id'] = $field_id;
     $field_season = drupal_render($field_item['field_season']);
     $field_episode = drupal_render($field_item['field_episode']);
-    $commands[] = ajax_command_replace('#' . $field_item['field_season']['#id'], $field_season);
-    $commands[] = ajax_command_replace('#' . $field_item['field_episode']['#id'], $field_episode);
+    $field_class = 'field-season-delta_' . $field_item['#delta'];
+    $commands[] = ajax_command_replace('.' . $field_class, $field_season);
+    $field_class = 'field-episode-delta_' . $field_item['#delta'];
+    $commands[] = ajax_command_replace('.' . $field_class, $field_episode);
   }
   return array('#type' => 'ajax', '#commands' => $commands);
 }
@@ -162,8 +167,8 @@ function usanetwork_timeline_gallery_season_add_more_ajax($form, $form_state) {
   $field_items = usanetwork_timeline_gallery_get_multiple_elements_from_field($form['field_timeline_episode_section'][LANGUAGE_NONE]);
   $form_values = &$form_state['values'];
   usanetwork_timeline_gallery_set_season_options($form_values, $field_items);
-  $option_ajax_commands = usanetwork_timeline_gallery_season_option_ajax($form, $form_state, TRUE);
   $add_more_ajax_commands = ajax_prepare_response(field_add_more_js($form, $form_state));
+  $option_ajax_commands = usanetwork_timeline_gallery_season_option_ajax($form, $form_state, TRUE);
   $option_ajax_commands['#commands'] = array_merge($option_ajax_commands['#commands'], $add_more_ajax_commands);
   return $option_ajax_commands;
 }
@@ -223,11 +228,12 @@ function usanetwork_timeline_gallery_episode_option_ajax($form, $form_state) {
   $trigger = $form_state['triggering_element'];
   $field_item = &$field_items[$trigger['#delta']];
   $commands = array();
-
-  $field_id = 'edit-field-timeline-episode-section-und-' . $trigger['#delta'] . '-field-episode';
-  $field_item['field_episode']['#id'] = $field_id;
+  // I get delta from #parrens param because delta is incorrect for triggering element.
+  $delta = $trigger['#parents'][2];
+  $field_class = 'field-episode-delta_' . $delta;
+  $field_selector = '.' . $field_class;
   $field_episode = drupal_render($field_item['field_episode']);
-  $commands[] = ajax_command_replace('#' . $field_item['field_episode']['#id'], $field_episode);
+  $commands[] = ajax_command_replace($field_selector, $field_episode);
 
   return array('#type' => 'ajax', '#commands' => $commands);
 }

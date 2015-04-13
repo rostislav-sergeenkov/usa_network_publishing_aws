@@ -9,6 +9,7 @@ foreach ($multisites as $sitename => $domain) {
   $sites[$sitename . 'stg.prod.acquia-sites.com'] = $sitename;
   $sites[$sitename . 'acc.prod.acquia-sites.com'] = $sitename;
   $sites[$sitename . '.prod.acquia-sites.com'] = $sitename;
+  $sites['nbcuusadev.prod.acquia-sites.com'] = $sitename;
   $sites['local.' . $sitename] = $sitename;
   $sites[$sitename . '.local'] = $sitename;
   $sites['origin.' . $domain] = $sitename;

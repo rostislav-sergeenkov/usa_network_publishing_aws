@@ -47,9 +47,12 @@ if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
     // fallback behavior, e.g., a 404 page
   }
 }
-elseif (file_exists('/var/www/site-php')) {
+elseif (file_exists('/var/www/site-php/usanetwork')) {
   require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
-}
+} 
+elseif (file_exists('/var/www/site-php/nbcuusa')) {
+  require('/var/www/site-php/nbcuusa/nbcuusa-settings.inc');
+} 
 
 // Next, determine the environment we're in.  Environment types (qa, acceptance,
 // stage and prod) are defined in project-config.yml.

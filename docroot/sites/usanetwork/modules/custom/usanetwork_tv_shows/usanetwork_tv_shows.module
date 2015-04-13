@@ -1213,10 +1213,13 @@ function _usanetwork_tv_shows_cache_set_related_show_content($tv_show_node) {
   if (!empty($cached_data)) {
     foreach ($cached_data as $cached_id => &$cached_data_item) {
       $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $cached_data_item->entity_id);
+      $media_icon = usanetwork_core_api_get_media_icon($cached_data_item->entity_type, $cached_data_item->entity_id);
 
       if (!empty($content_image)) {
         $cached_data_item->raw_image_uri = $content_image;
       }
+
+      $cached_data_item->media_icon = $media_icon;
     }
   }
 
@@ -1539,6 +1542,7 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
       : '',
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
   );
 
   return theme('usanetwork_tv_shows_related_item', $theme_variables);

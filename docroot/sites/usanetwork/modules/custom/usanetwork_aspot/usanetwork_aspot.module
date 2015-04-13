@@ -781,6 +781,8 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
     $theme_array['social_meter'] = usanetwork_social_meter_get($aspot_node);
   }
 
+  drupal_add_js(drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js');
+
   return theme('usanetwork_aspot_tvshow_slide', $theme_array);
 }
 

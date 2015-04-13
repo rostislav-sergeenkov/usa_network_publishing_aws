@@ -21373,6 +21373,7 @@ yx-axis
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {
   padding-top: 2px;
   padding-bottom: 2px;
+  border-bottom: 2px solid;
 }
 @media (max-width: 640px) {
   .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {

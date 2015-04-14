@@ -34,7 +34,7 @@ $more_title = variable_get('usanetwork_global_nav_more_title');
   <?php print l('Live TV', 'videos/live', array('attributes' => array('class' => array('mega-nav-link', 'live')))); ?>
 </div>
 <div class="mega-menu-items">
-  <?php print l('Schedule', 'schedule', array('attributes' => array('class' => array('mega-nav-link', 'schedule')))); ?>
+  <?php print l('Schedule', 'http://www.usanetwork.com/nhl-2015-stanley-cup-playoffs', array('attributes' => array('class' => array('mega-nav-link', 'schedule')))); ?>
 </div>
 <div class="mega-menu-items">
   <?php print l('Games', 'http://www.characterarcade.com', array('attributes' => array('class' => array('mega-nav-link', 'games')))); ?>

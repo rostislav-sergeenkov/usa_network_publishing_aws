@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -21568,6 +21568,54 @@ yx-axis
   padding-top: 2px;
   padding-bottom: 2px;
   border-bottom: 2px solid;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal:hover .bx-controls {
+  display: block;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls {
+  display: none;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a {
+  display: block;
+  position: absolute;
+  top: 54px;
+  height: 100%;
+  z-index: 9;
+  -webkit-transition: width 0.5s ease-out 0.3s;
+  -moz-transition: width 0.5s ease-out 0.3s;
+  -o-transition: width 0.5s ease-out 0.3s;
+  transition: width 0.5s ease-out 0.3s;
+  background: rgba(255, 255, 255, 0.6);
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-prev {
+  left: 0;
+  width: 60px;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-prev:after {
+  content: "\e607";
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-next {
+  right: 0;
+  width: 60px;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-next:after {
+  content: "\e608";
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a:after {
+  color: #545454;
+  display: block;
+  font-family: "ico-font";
+  font-size: 32px;
+  left: 50%;
+  margin-left: -16px;
+  margin-top: -16px;
+  opacity: 1;
+  position: absolute;
+  -webkit-transition: opacity 0.5s ease-out 0.3s;
+  -moz-transition: opacity 0.5s ease-out 0.3s;
+  -o-transition: opacity 0.5s ease-out 0.3s;
+  transition: opacity 0.5s ease-out 0.3s;
+  top: 42%;
 }
 @media (max-width: 640px) {
   .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {

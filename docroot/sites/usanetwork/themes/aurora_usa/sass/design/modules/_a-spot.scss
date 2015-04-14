@@ -469,7 +469,54 @@
       padding-top: 2px;
       padding-bottom: 2px;
       border-bottom: 2px solid;
-
+      &:hover .bx-controls {
+        display: block;
+      }
+      .bx-controls {
+        display: none;
+        a {
+          display: block;
+          position: absolute;
+          top: 54px;
+          height: 100%;
+          z-index: 9;
+          -webkit-transition: width 0.5s ease-out 0.3s;
+          -moz-transition: width 0.5s ease-out 0.3s;
+          -o-transition: width 0.5s ease-out 0.3s;
+          transition: width 0.5s ease-out 0.3s;
+          background: rgba(255,255,255,0.6);
+          &.bx-prev {
+            left: 0;
+            width: 60px;
+            &:after {
+              content: "\e607";
+            }
+          }
+          &.bx-next {
+            right: 0;
+            width: 60px;
+            &:after {
+              content: "\e608";
+            }
+          }
+          &:after {
+            color: #545454;
+            display: block;
+            font-family: "ico-font";
+            font-size: 32px;
+            left: 50%;
+            margin-left: -16px;
+            margin-top: -16px;
+            opacity: 1;
+            position: absolute;
+            -webkit-transition: opacity 0.5s ease-out 0.3s;
+            -moz-transition: opacity 0.5s ease-out 0.3s;
+            -o-transition: opacity 0.5s ease-out 0.3s;
+            transition: opacity 0.5s ease-out 0.3s;
+            top: 42%;
+          }
+        }
+      }
       @include breakpoint($bp-640-width) {
         padding: 0;
       }

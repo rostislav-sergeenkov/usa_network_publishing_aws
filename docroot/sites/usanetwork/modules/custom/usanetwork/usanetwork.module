@@ -2,6 +2,8 @@
 
 define('USANETWORK_SEEIT_DEFAULT_URL', 'https://seeitstage.sv.comcast.com/external/embedded/seeit-remind.js');
 
+define('USANETWORK_PROMO_ICON_CSS_PATH', 'public://css/promo_icon.css');
+define('USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME', 'cta_type');
 /**
  * Implementation of hook_permission().
  */
@@ -166,6 +168,10 @@ function _usanetwork_menu_get_object(&$entity_type = NULL, $position = 1, $path 
  * Implentation of template_preprocess_page().
  */
 function usanetwork_preprocess_page(&$variables) {
+  if (!file_exists(USANETWORK_PROMO_ICON_CSS_PATH)) {
+    _create_promo_icon_css();
+  }
+  drupal_add_css(USANETWORK_PROMO_ICON_CSS_PATH);
 //usanetwork global JS code
   $usanetwork_global_js = variable_get('usanetwork_global_js_code', '') . "\n";
   drupal_add_js(trim($usanetwork_global_js, "\n"), array('type' => 'inline', 'scope' => 'header'));
@@ -399,4 +405,50 @@ function usanetwork_bottom_footer() {
     ),
       )
   );
+}
+/**
+ * Implements hook_taxonomy_term_update($term).
+ */
+function usanetwork_taxonomy_term_update($term) {
+  if ($term->vocabulary_machine_name == USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME) {
+    _create_promo_icon_css();
+  }
+}
+/**
+ * Implements hook_taxonomy_term_delete($term).
+ */
+function usanetwork_taxonomy_term_delete($term) {
+  if ($term->vocabulary_machine_name == USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME) {
+    _create_promo_icon_css();
+  }
+}
+/**
+ * Implements hook_taxonomy_term_insert($term).
+ */
+function usanetwork_taxonomy_term_insert($term) {
+  if ($term->vocabulary_machine_name == USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME) {
+    _create_promo_icon_css();
+  }
+}
+
+/**
+ * Create css file for promo icons.
+ */
+function _create_promo_icon_css() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load(USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME);
+  if (!empty($vocabulary)) {
+    $terms = taxonomy_term_load_multiple(array(), array('vid' => $vocabulary->vid));
+    if (!empty($terms)) {
+      $css_text  = '';
+      foreach ($terms as $term) {
+        $image = field_get_items('taxonomy_term', $term, 'field_usa_term_image');
+        if (!empty($image)) {
+          $image = reset($image);
+          $image = image_style_url('thumbnail', $image['uri']);
+          $css_text .= '.' . str_replace(' ', '_', $term->name) . '-icon { background-image: url(' . $image . '); }' . PHP_EOL;
+        }
+      }
+      file_unmanaged_save_data($css_text, USANETWORK_PROMO_ICON_CSS_PATH, FILE_EXISTS_REPLACE);
+    }
+  }
 }

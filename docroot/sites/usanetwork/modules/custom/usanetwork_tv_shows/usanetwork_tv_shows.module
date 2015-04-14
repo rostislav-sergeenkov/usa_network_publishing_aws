@@ -1439,7 +1439,8 @@ function _usanetwork_tv_shows_render_best_of_block() {
               )
               : NULL,
           ),
-          'icon_type' => 'play-icon',
+          'icon_type' => $promo_data['icon_type'],
+          'icon_text' => $promo_data['icon_text'],
           'caption' => $promo_data['show_name'],
           'title' => $promo_data['promo_title'],
           'description' => $promo_data['description'],

@@ -361,13 +361,6 @@ function _usanetwork_home_featured_carousel() {
           }
         }
 
-        if (!empty($promo_entity->field_call_to_action_type)) {
-          $icon_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_call_to_action_type');
-          $icon_type_value = reset($icon_field);
-          $icon = taxonomy_term_load($icon_type_value['tid']);
-
-          $icon_type = $icon->name . '-icon';
-        }
 
         if (!empty($promo_entity->field_promo_call_to_action_text)) {
           $promo_call_to_action_text_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_call_to_action_text');
@@ -391,7 +384,8 @@ function _usanetwork_home_featured_carousel() {
               : theme('image_style', array('style_name' => '539x303', 'path' => $promo_image_url))
             )
             : NULL,
-          'icon_type' => $icon_type,
+          'icon_type' => $promo_data['icon_type'],
+          'icon_text' => $promo_data['icon_text'],
           'caption' => $promo_data['show_name'],
           'title' => $promo_data['promo_title'],
           'description' => $promo_data['description'],
@@ -1376,6 +1370,8 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
         'episode_title' => $promo_data['promo_title'],
         'episode_url' => $promo_link,
         'episode_description' => $promo_data['description'],
+        'icon_type' => $promo_data['icon_type'],
+        'icon_text' => $promo_data['icon_text'],
       );
     }
   }

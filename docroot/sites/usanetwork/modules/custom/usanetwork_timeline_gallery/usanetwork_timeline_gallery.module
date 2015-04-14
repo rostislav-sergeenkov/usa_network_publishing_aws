@@ -23,8 +23,6 @@ function usanetwork_timeline_gallery_form_timeline_gallery_node_form_alter(&$for
       ),
     );
     $field_items = usanetwork_timeline_gallery_get_multiple_elements_from_field($form['field_timeline_episode_section'][LANGUAGE_NONE]);
-    //$triggering_element = usanetwork_timeline_gallery_get_triggering_field_name($form_state);
-    //if ($triggering_element != 'field_timeline_episode_section_add_more') {
     foreach ($field_items as &$field_item) {
       $field_item['field_season'][LANGUAGE_NONE]['#ajax'] = array(
         'event' => 'change',
@@ -40,18 +38,15 @@ function usanetwork_timeline_gallery_form_timeline_gallery_node_form_alter(&$for
       $field_item['field_episode']['#attributes']['class'][] = 'field-episode-delta_' .$field_item['#delta'];
     }
 
-    //}
     // If form_state['values'] is check this is an ajax request.
     // Other wise we do our regular logic.
     if (!empty($form_state['values'])) {
       // Here we do the actual Ajax Logic.
       // Check if a value for show has already been provided.
       // Lets do work based on what was triggerd.
-      $form_values = &$form_state['values'];
-
       $triggering_element = usanetwork_timeline_gallery_get_triggering_field_name($form_state);
       if ($triggering_element == 'field_show') {
-        usanetwork_timeline_gallery_set_season_options($form_values, $field_items);
+        usanetwork_timeline_gallery_set_season_options($form_state, $field_items);
       }
       elseif ($triggering_element == 'field_season') {
         usanetwork_timeline_gallery_set_episode_options($form_state, $field_items);
@@ -104,8 +99,10 @@ function usanetwork_timeline_gallery_form_timeline_gallery_node_form_alter(&$for
  * @param $field_items
  * @return array
  */
-function usanetwork_timeline_gallery_set_season_options($form_values, &$field_items) {
+function usanetwork_timeline_gallery_set_season_options($form_state, &$field_items) {
   $selected_show = NULL;
+  $triggering_element = usanetwork_timeline_gallery_get_triggering_field_name($form_state);
+  $form_values = $form_state['values'];
   if (!empty($form_values['field_show'][LANGUAGE_NONE][0]['target_id'])) {
     $selected_show = $form_values['field_show'][LANGUAGE_NONE][0]['target_id'];
   }
@@ -117,10 +114,17 @@ function usanetwork_timeline_gallery_set_season_options($form_values, &$field_it
     foreach ($field_items as &$field_item) {
       $field_item['field_season'][LANGUAGE_NONE]['#options'] = $seasons;
       $field_item['field_season']['#disabled'] = FALSE;
-
-      $field_item['field_episode'][LANGUAGE_NONE]['#options'] = array('_none' => t('- None -'));
-      $field_item['field_episode'][LANGUAGE_NONE]['#default_value'] = '_node';
-      $field_item['field_episode']['#disabled'] = TRUE;
+      $selected_season = $field_item['field_season'][LANGUAGE_NONE]['#default_value'];
+      if ($triggering_element != 'field_timeline_episode_section_add_more' || empty($selected_season)) {
+        $field_item['field_episode'][LANGUAGE_NONE]['#options'] = array('_none' => t('- None -'));
+        $field_item['field_episode'][LANGUAGE_NONE]['#default_value'] = '_none';
+        $field_item['field_episode']['#disabled'] = TRUE;
+      }
+      else {
+        $episodes = usanetwork_timeline_gallery_return_episodes($selected_season[0]);
+        $field_item['field_episode'][LANGUAGE_NONE]['#options'] = $episodes;
+        $field_item['field_episode']['#disabled'] = FALSE;
+      }
     }
   }
   else {
@@ -130,7 +134,7 @@ function usanetwork_timeline_gallery_set_season_options($form_values, &$field_it
       $field_item['field_season']['#disabled'] = TRUE;
 
       $field_item['field_episode'][LANGUAGE_NONE]['#options'] = array('_none' => t('- None -'));
-      $field_item['field_episode'][LANGUAGE_NONE]['#default_value'] = '_node';
+      $field_item['field_episode'][LANGUAGE_NONE]['#default_value'] = '_none';
       $field_item['field_episode']['#disabled'] = TRUE;
     }
   }
@@ -139,17 +143,11 @@ function usanetwork_timeline_gallery_set_season_options($form_values, &$field_it
 /**
  * Ajax function to correct season list.
  */
-function usanetwork_timeline_gallery_season_option_ajax($form, $form_state, $only_last = FALSE) {
+function usanetwork_timeline_gallery_season_option_ajax($form, $form_state) {
   $field_items = usanetwork_timeline_gallery_get_multiple_elements_from_field($form['field_timeline_episode_section'][LANGUAGE_NONE]);
   // We want to replace both the season and the episodes so we return an list
   // of ajax commands.
   $commands = array();
-
-  if ($only_last) {
-    end($field_items);
-    $field_items = array(key($field_items) => current($field_items));
-    $field_items = array();
-  }
   foreach ($field_items as $key => $field_item) {
     $field_season = drupal_render($field_item['field_season']);
     $field_episode = drupal_render($field_item['field_episode']);
@@ -165,12 +163,9 @@ function usanetwork_timeline_gallery_season_option_ajax($form, $form_state, $onl
  */
 function usanetwork_timeline_gallery_season_add_more_ajax($form, $form_state) {
   $field_items = usanetwork_timeline_gallery_get_multiple_elements_from_field($form['field_timeline_episode_section'][LANGUAGE_NONE]);
-  $form_values = &$form_state['values'];
-  usanetwork_timeline_gallery_set_season_options($form_values, $field_items);
+  usanetwork_timeline_gallery_set_season_options($form_state, $field_items);
   $add_more_ajax_commands = ajax_prepare_response(field_add_more_js($form, $form_state));
-  $option_ajax_commands = usanetwork_timeline_gallery_season_option_ajax($form, $form_state, TRUE);
-  $option_ajax_commands['#commands'] = array_merge($option_ajax_commands['#commands'], $add_more_ajax_commands);
-  return $option_ajax_commands;
+  return array('#type' => 'ajax', '#commands' => $add_more_ajax_commands);
 }
 /**
  * Helper function to return valid Seasons.
@@ -226,10 +221,10 @@ function usanetwork_timeline_gallery_get_triggering_field_name($form_state) {
 function usanetwork_timeline_gallery_episode_option_ajax($form, $form_state) {
   $field_items = usanetwork_timeline_gallery_get_multiple_elements_from_field($form['field_timeline_episode_section'][LANGUAGE_NONE]);
   $trigger = $form_state['triggering_element'];
-  $field_item = &$field_items[$trigger['#delta']];
-  $commands = array();
   // I get delta from #parrens param because delta is incorrect for triggering element.
   $delta = $trigger['#parents'][2];
+  $field_item = &$field_items[$delta];
+  $commands = array();
   $field_class = 'field-episode-delta_' . $delta;
   $field_selector = '.' . $field_class;
   $field_episode = drupal_render($field_item['field_episode']);
@@ -241,9 +236,10 @@ function usanetwork_timeline_gallery_episode_option_ajax($form, $form_state) {
 function usanetwork_timeline_gallery_set_episode_options($form_state, &$field_items) {
   $form_values = $form_state['values'];
   $trigger = $form_state['triggering_element'];
-  $field_item = &$field_items[$trigger['#delta']];
+  $delta = $trigger['#parents'][2];
+  $field_item = &$field_items[$delta];
   $selected_season = NULL;
-  $field_values = $form_values['field_timeline_episode_section'][LANGUAGE_NONE][$trigger['#delta']];
+  $field_values = $form_values['field_timeline_episode_section'][LANGUAGE_NONE][$delta];
   if (!empty($field_values['field_season'][LANGUAGE_NONE][0]['target_id'])) {
     $selected_season = $field_values['field_season'][LANGUAGE_NONE][0]['target_id'];
   }
@@ -257,7 +253,7 @@ function usanetwork_timeline_gallery_set_episode_options($form_state, &$field_it
   }
   else {
     $field_item['field_episode'][LANGUAGE_NONE]['#options'] = array('_none' => t('- None -'));
-    $field_item['field_episode'][LANGUAGE_NONE]['#default_value'] = '_node';
+    $field_item['field_episode'][LANGUAGE_NONE]['#default_value'] = '_none';
     $field_item['field_episode']['#disabled'] = TRUE;
   }
 }

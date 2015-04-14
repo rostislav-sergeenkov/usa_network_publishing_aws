@@ -1367,6 +1367,7 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
         return '';
       }
       $content_image = usanetwork_core_api_get_content_image($promo['target_type'], $promo_entity);
+      $media_icon = usanetwork_core_api_get_media_icon($promo['target_type'], $promo['target_id']);
       $promo_link = url($promo['target_type'] . '/' . $promo['target_id']);
       $theme_variables = array(
         'show_class' => $promo_data['show_class'],
@@ -1376,6 +1377,7 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
         'episode_title' => $promo_data['promo_title'],
         'episode_url' => $promo_link,
         'episode_description' => $promo_data['description'],
+        'media_icon' => $media_icon,
       );
     }
   }

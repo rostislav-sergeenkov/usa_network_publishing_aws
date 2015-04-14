@@ -110,6 +110,10 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
     $entity = $entity[$entity_id];
   }
 
+  switch ($entity->type) {
+    case 'media_gallery': return 'gallery-icon';
+  }
+
   if (isset($entity->field_call_to_action_type)) {
     $cta_type_field = field_get_items($entity_type, $entity, 'field_call_to_action_type');
     $tid = !empty($cta_type_field[0]['tid']) ? $cta_type_field[0]['tid'] : NULL;

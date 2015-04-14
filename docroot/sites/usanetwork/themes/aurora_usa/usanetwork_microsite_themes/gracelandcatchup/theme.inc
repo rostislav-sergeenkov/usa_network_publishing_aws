@@ -194,36 +194,40 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
  */
 function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
+  $site_theme_path = $theme_path . '/usanetwork_microsite_themes/gracelandcatchup';
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
   return array(
     'css' => array(
 //      $module_path . '/css/jquery.bxslider.css',
-//      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/ms_style.css',
 //      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/ms_characters_styles.css',
-//      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/ms_galleries_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/trivia.css',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/ms_quizzes.css',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/counter.css',
+      $site_theme_path . '/css/ms_styles.css',
+      $site_theme_path . '/css/ms_videos.css',
+      $site_theme_path . '/css/ms_characters.css',
+      $site_theme_path . '/css/trivia.css',
+      $site_theme_path . '/css/ms_quizzes.css',
+      $site_theme_path . '/css/counter.css',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
     'js' => array(
 /*
-      $module_path . '/js/jquery.bxslider.min.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/microsite_global.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/microsite_flexslider.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/microsite_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/microsite_gallery_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/microsite_characters.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/microsite_characters_bxslider.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/microsite_galleries_bxslider.js',
+      $site_theme_path . '/js/microsite_flexslider.js',
+      $site_theme_path . '/js/microsite_carousel.js',
+      $site_theme_path . '/js/microsite_gallery_carousel.js',
+      $site_theme_path . '/js/microsite_characters.js',
+      $site_theme_path . '/js/microsite_characters_bxslider.js',
 */
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/microsite_quizzes.js',
+      $module_path . '/js/jquery.bxslider.min.js',
+      $site_theme_path . '/js/ms_graceland_cu.js',
+      $site_theme_path . '/js/ms_global.js',
+      $site_theme_path . '/js/ms_videos.js',
+      $site_theme_path . '/js/ms_characters.js',
+      $site_theme_path . '/js/ms_quizzes.js',
       $module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/date.js',
-      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/js/counter.rf.js',
+      $site_theme_path . '/js/date.js',
+      $site_theme_path . '/js/counter.rf.js',
     ),
   );
 }

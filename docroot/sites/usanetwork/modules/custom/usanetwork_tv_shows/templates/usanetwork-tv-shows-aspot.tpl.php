@@ -49,6 +49,56 @@
           <?php endforeach; ?>
         </ul>
       </div>
+        <style>
+            .episodes-list-slider.horizontal .bx-controls {
+                display: none;
+            }
+            .episodes-list-slider.horizontal:hover .bx-controls {
+                display: block;
+            }
+            .episodes-list-slider.horizontal .bx-controls a {
+                display: block;
+                position: absolute;
+                top: 54px;
+                height: 100%;
+                z-index: 9;
+                -webkit-transition: width 0.5s ease-out 0.3s;
+                -moz-transition: width 0.5s ease-out 0.3s;
+                -o-transition: width 0.5s ease-out 0.3s;
+                transition: width 0.5s ease-out 0.3s;
+                background: rgba(255,255,255,0.6);
+            }
+            .episodes-list-slider.horizontal .bx-controls a.bx-prev {
+                left: 0;
+                width: 60px;
+            }
+            .episodes-list-slider.horizontal .bx-controls a.bx-next {
+                right: 0;
+                width: 60px;
+            }
+            .episodes-list-slider.horizontal .bx-controls a:after {
+                color: #545454;
+                display: block;
+                font-family: "ico-font";
+                font-size: 32px;
+                left: 50%;
+                margin-left: -16px;
+                margin-top: -16px;
+                opacity: 1;
+                position: absolute;
+                -webkit-transition: opacity 0.5s ease-out 0.3s;
+                -moz-transition: opacity 0.5s ease-out 0.3s;
+                -o-transition: opacity 0.5s ease-out 0.3s;
+                transition: opacity 0.5s ease-out 0.3s;
+                top: 42%;
+            }
+            .episodes-list-slider.horizontal .bx-controls a.bx-prev:after {
+                content: "\e607";
+            }
+            .episodes-list-slider.horizontal .bx-controls a.bx-next:after {
+                content: "\e608";
+            }
+        </style>
       <div class="episodes-list-slider horizontal show-border" data-mode="horizontal">
         <ul class="slider-horizontal">
           <?php foreach ($episodes as $episode): ?>

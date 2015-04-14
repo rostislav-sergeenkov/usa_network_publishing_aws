@@ -661,39 +661,63 @@ function usanetwork_mpx_video_views_ajax() {
 /*
  * Helper function for get list of latest episodes for each show
  */
-function _usanetwork_mpx_video_get_latest_episodes_for_show($range = NULL) {
-  $subquery = db_select('file_managed', 'fm')
-    ->fields('sub_fdfs', array('field_show_target_id'))
-    ->condition('fm.type',  _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
-    ->condition('fm.published', '1');
-  $subquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = fm.fid');
-  $subquery->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
-  $subquery->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
-  $subquery->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
-  $subquery->condition('mv.status', '1');
-  $subquery->addExpression('MAX(mv.airdate)', 'max_data');
-  $subquery->groupBy('sub_fdfs.field_show_target_id');
-  $subquery->orderBy('mv.airdate', 'DESC');
-  if ($range) {
-    $subquery->range(0, $range);
+function _usanetwork_mpx_video_get_latest_episodes_for_show($range = NULL, $target_tvshow_nid = NULL) {
+  $result = array();
+
+  if (empty($target_tvshow_nid)) {
+    $subquery = db_select('file_managed', 'fm')
+      ->fields('sub_fdfs', array('field_show_target_id'))
+      ->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+      ->condition('fm.published', '1');
+    $subquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = fm.fid');
+    $subquery->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
+    $subquery->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+    $subquery->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
+    $subquery->condition('mv.status', '1');
+    $subquery->addExpression('MAX(mv.airdate)', 'max_data');
+    $subquery->groupBy('sub_fdfs.field_show_target_id');
+    $subquery->orderBy('mv.airdate', 'DESC');
+    if ($range) {
+      $subquery->range(0, $range);
+    }
+
+    $query = db_select('file_managed', 'fs')
+      ->fields('fs', array('fid'))
+      ->fields('fdfs', array('field_show_target_id'))
+      ->condition('type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+      ->condition('published', '1');
+    $query->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
+    $query->join('field_data_field_mpx_full_episode', 'fdfmfe', 'fdfmfe.entity_id = fs.fid');
+    $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+    $query->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
+    $query->condition('mv.status', '1');
+    $query->join($subquery, 'subsub', 'subsub.max_data = mv.airdate and fdfs.field_show_target_id = subsub.field_show_target_id');
+    $query->addExpression('MAX(fs.fid)', 'max_fid');
+    $query->groupBy('fdfs.field_show_target_id');
+    $query->orderBy('mv.airdate', 'DESC');
+
+    $result = $query->execute()->fetchAllKeyed();
   }
+  else {
+    $query = db_select('file_managed', 'fs');
+    $query->fields('fs', array('fid'));
+    $query->fields('fdfs', array('field_show_target_id'));
+    $query->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
+    $query->join('field_data_field_mpx_full_episode', 'fdfmfe', 'fdfmfe.entity_id = fs.fid');
+    $query->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
+    $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+    $query->condition('fdfs.field_show_target_id', $target_tvshow_nid);
+    $query->condition('fs.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+    $query->condition('fs.published', '1');
+    //$query->condition('mv.status', '1');
+    $query->orderBy('mv.airdate', 'DESC');
 
-  $query = db_select('file_managed', 'fs')
-    ->fields('fs', array('fid'))
-    ->fields('fdfs', array('field_show_target_id'))
-    ->condition('type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
-    ->condition('published', '1');
-  $query->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
-  $query->join('field_data_field_mpx_full_episode', 'fdfmfe', 'fdfmfe.entity_id = fs.fid');
-  $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
-  $query->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
-  $query->condition('mv.status', '1');
-  $query->join($subquery, 'subsub', 'subsub.max_data = mv.airdate and fdfs.field_show_target_id = subsub.field_show_target_id');
-  $query->addExpression('MAX(fs.fid)', 'max_fid');
-  $query->groupBy('fdfs.field_show_target_id');
-  $query->orderBy('mv.airdate', 'DESC');
+    if ($range) {
+      $query->range(0, $range);
+    }
 
-  $result = $query->execute()->fetchAllKeyed();
+    $result = $query->execute()->fetchAllKeyed();
+  }
 
   return $result;
 }

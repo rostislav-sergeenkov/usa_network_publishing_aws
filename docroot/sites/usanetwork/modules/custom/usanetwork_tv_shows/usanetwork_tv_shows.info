@@ -176,7 +176,6 @@ features[field_instance][] = field_collection_item-field_episode_credit-field_ep
 features[field_instance][] = field_collection_item-field_show_links-field_child_link
 features[field_instance][] = field_collection_item-field_show_links-field_main_link
 features[field_instance][] = node-tv_episode-body
-features[field_instance][] = node-tv_episode-field_call_to_action_button
 features[field_instance][] = node-tv_episode-field_call_to_action_type
 features[field_instance][] = node-tv_episode-field_content_tags
 features[field_instance][] = node-tv_episode-field_enable_nitro

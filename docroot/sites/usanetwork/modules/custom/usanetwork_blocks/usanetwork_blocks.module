@@ -717,7 +717,7 @@ function _usanetwork_blocks_social_carousel_block_content() {
             'image_url' => image_style_url('390x390', $promo_image_url),
             'color_class' => $promo_data['show_class'],
             'icon_type' => $promo_data['icon_type'],
-            'icon_text' => $promo_data['icon_text'],
+            'icon_text' => $promo_data['cta'],
             'show_title' => $promo_data['show_name']
           );
           $theme_variables['promos'][] = $episode_theme_variables + $promo_data;

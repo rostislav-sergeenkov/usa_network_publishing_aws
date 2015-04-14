@@ -71,7 +71,6 @@ features[field_group][] = group_social|node|person|form
 features[field_group][] = group_usa_custom|node|person|form
 features[field_group][] = group_usa_og_fields|node|person|form
 features[field_instance][] = node-person-body
-features[field_instance][] = node-person-field_call_to_action_button
 features[field_instance][] = node-person-field_call_to_action_type
 features[field_instance][] = node-person-field_different_legal_name
 features[field_instance][] = node-person-field_enable_nitro

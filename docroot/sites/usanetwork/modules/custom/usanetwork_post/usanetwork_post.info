@@ -44,7 +44,6 @@ features[field_group][] = group_blog_displaying_author|taxonomy_term|blog|form
 features[field_instance][] = node-post-body
 features[field_instance][] = node-post-field_blog
 features[field_instance][] = node-post-field_blog_display_author
-features[field_instance][] = node-post-field_call_to_action_button
 features[field_instance][] = node-post-field_call_to_action_type
 features[field_instance][] = node-post-field_categories
 features[field_instance][] = node-post-field_collection

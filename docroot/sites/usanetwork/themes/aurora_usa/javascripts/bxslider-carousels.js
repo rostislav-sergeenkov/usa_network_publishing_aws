@@ -31,6 +31,9 @@
       Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'horizontal',
         adaptiveHeight: true,
+        controls: true,
+        nextText: '',
+        prevText: '',
         slideWidth : ($('body').hasClass('consumptionator-page'))? '425' : '255'
       });
     },

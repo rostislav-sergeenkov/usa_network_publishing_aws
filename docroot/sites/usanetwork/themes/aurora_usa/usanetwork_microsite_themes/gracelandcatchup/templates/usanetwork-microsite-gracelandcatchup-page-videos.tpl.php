@@ -12,6 +12,11 @@
 }
 </style>
 
+<?php if (!empty($section_title)): ?>
+  <!-- section title -->
+  <h2 class="content"><?php print $section_title; ?></h2>
+<?php endif; ?>
+
 <div class="full-pane">
   <div id="video-container" data-video-url="<?php print $in_player['url']; ?>">
     <div class="video-container-ajaxed" data-tve-player>

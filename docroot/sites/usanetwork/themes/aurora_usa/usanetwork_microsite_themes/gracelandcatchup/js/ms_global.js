@@ -57,6 +57,20 @@
       });
     },
 
+    // SCROLLING
+    isScrolledIntoView: function(elem) {
+      var $elem = $(elem);
+      var $window = $(window);
+
+      var docViewTop = $window.scrollTop();
+      var docViewBottom = docViewTop + $window.height();
+
+      var elemTop = $elem.offset().top;
+      var elemBottom = elemTop + $elem.height();
+
+      return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    },
+
     // OMNITURE
     //change page title current section item
     changeTitle: function(item, section, basePageName) {
@@ -148,6 +162,11 @@
     },
 
     // ADS
+    usa_refreshMicrositeAdsBySection: function (adContainer) {
+      usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
+      $(adContainer + ' iframe').attr('src', $(adContainer + ' iframe').attr('src'));
+    },
+
     // 300x250 -- not for video companion ads!!
     create300x250Ad: function (section) {
       //usa_debug('create300x250Ad(' + section + ')');

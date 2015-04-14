@@ -8,8 +8,8 @@ $conf['pub_utilities_drush_bin'] = '/path/to/drush';
 $_ENV['AH_SITE_ENVIRONMENT'] = 'local';
 $databases['default'] = array ('default' =>
   array (
-    'database' => 'dev',  // <--- Typically "publisher7_<sitename>"
-    'username' => 'root',
+    'database' => 'publisher7_',  // <--- Typically "publisher7_<sitename>"
+    'username' => '',
     'password' => '',
     'host' => '127.0.0.1',
     'port' => '',

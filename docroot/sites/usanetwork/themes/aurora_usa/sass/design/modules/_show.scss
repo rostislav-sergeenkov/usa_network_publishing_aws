@@ -573,8 +573,19 @@
           font-family: $avalon-demi;
           font-size: 12px;
           line-height: 18px;
-          margin-top: 12px;
+          margin-top: 8px;
           text-transform: uppercase;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 6px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 10px;
+            line-height: 14px;
+            margin-top: 12px;
+            margin-left: 8px;
+          }
           span {
             display: block;
             font-family: $tex-gyreschola-italic

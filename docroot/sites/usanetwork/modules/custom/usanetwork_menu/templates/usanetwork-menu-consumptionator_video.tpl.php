@@ -30,6 +30,7 @@
       </div>
     </div>
   </div>
+
   <div class="nav-bar-tabs">
     <div class="tab info"><a data-state="active" href="#" class="no-refresh active"></a></div>
     <!--<div class="tab share"><a href="#" class="no-refresh"></a></div>-->

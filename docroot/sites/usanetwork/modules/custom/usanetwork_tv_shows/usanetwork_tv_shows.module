@@ -467,8 +467,12 @@ function usanetwork_tv_shows_usanetwork_overlay_prerender() {
  */
 function usanetwork_tv_shows_entity_update($entity, $type) {
   if (!empty($entity->field_show)) {
-    $show_nid = !empty($entity->field_show[$entity->language][0]['target_id'])
-      ? $entity->field_show[$entity->language][0]['target_id']
+    $language = !empty($entity->language)
+      ? $entity->language
+      : LANGUAGE_NONE;
+
+    $show_nid = !empty($entity->field_show[$language][0]['target_id'])
+      ? $entity->field_show[$language][0]['target_id']
       : NULL;
 
     if (!empty($show_nid)) {
@@ -484,8 +488,12 @@ function usanetwork_tv_shows_entity_update($entity, $type) {
  */
 function usanetwork_tv_shows_entity_insert($entity) {
   if (!empty($entity->field_show)) {
-    $show_nid = !empty($entity->field_show[$entity->language][0]['target_id'])
-      ? $entity->field_show[$entity->language][0]['target_id']
+    $language = !empty($entity->language)
+      ? $entity->language
+      : LANGUAGE_NONE;
+
+    $show_nid = !empty($entity->field_show[$language][0]['target_id'])
+      ? $entity->field_show[$language][0]['target_id']
       : NULL;
 
     if (!empty($show_nid)) {

@@ -1165,10 +1165,10 @@ function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0,
   );
 
   // Pull nodes
-  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'changed', $node_filters);
+  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'created', $node_filters);
   
   // Pull files
-  $files = _usanetwork_tv_shows_pull_related_files($tv_show_node->nid, $start_from, $limit, 'DESC', 'timestamp');
+  $files = _usanetwork_tv_shows_pull_related_files($tv_show_node->nid, $start_from, $limit, 'DESC', 'created');
 
   // Merge nodes and files
   if (!empty($nodes) && !empty($files)) {
@@ -1183,9 +1183,8 @@ function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0,
 
   // Sort items according sorter alias
   usort($content_items, function ($a, $b) {
-    $a_sorter = $a->entity_type == 'node' ? 'changed' : 'timestamp';
-
-    $b_sorter = $b->entity_type == 'node' ? 'changed' : 'timestamp';
+    $a_sorter = 'created';
+    $b_sorter = 'created';
 
     if ($a->$a_sorter == $b->$b_sorter) {
       return 0;

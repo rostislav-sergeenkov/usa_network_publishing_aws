@@ -25,7 +25,7 @@
 ?>
 
 <?php if (!empty($section_title)): ?>
-  <!-- characters title -->
+  <!-- section title -->
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 

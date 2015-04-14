@@ -15,6 +15,11 @@
  * -  - $quizzes_nav[n]['status'] - whether this quiz is being displayed (active) or not
  */
 ?>
+<?php if (!empty($section_title)): ?>
+  <!-- section title -->
+  <h2 class="content"><?php print $section_title; ?></h2>
+<?php endif; ?>
+
 <div class="full-pane">
   <?php if (empty($h1) && !empty($page['title']) && $status == 'active'): ?>
   <h1 class="quiz-title"><?php print $page['title']; ?></h1>

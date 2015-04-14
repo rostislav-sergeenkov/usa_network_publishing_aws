@@ -1023,8 +1023,7 @@
 
           anchor = anchorPathParts[1];
           anchorSection = Drupal.behaviors.microsite_scroll.micrositeToTitleCase(anchor);
-          item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
-
+          anchorItem = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
           // if video
           if (anchor == 'videos') {
             var currentThumb = $('#thumbnail-list .item-list ul li.thumbnail[data-video-url="' + anchorPathParts[2] + '"]');
@@ -1046,7 +1045,7 @@
                 anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
             Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-            Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item, itemTitle);
+            Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem, itemTitle);
             Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
 
             if (withInit) {
@@ -1058,39 +1057,39 @@
           }
           // if characters
           else if (anchor == 'characters') {
-            if (item != '') {
-              Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10, 1);
+            if (anchorItem != '') {
+              Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + anchorItem, 10, 1);
             }
             else {
               Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
             }
           }
           // if episodes
           else if (anchor == 'episodes') {
-            if (item != '') {
-              Drupal.behaviors.microsite_episodes.micrositeSwitchEpisodes(item, 10, 1);
+            if (anchorItem != '') {
+              Drupal.behaviors.microsite_episodes.micrositeSwitchEpisodes(anchorItem, 10, 1);
             }
             else {
               Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
             }
           }
           else if (anchor == 'galleries') {
-            if (item != '') {
-              var anchorFull = basePath + '/' + anchor + '/' + item;
+            if (anchorItem != '') {
+              var anchorFull = basePath + '/' + anchor + '/' + anchorItem;
               Drupal.behaviors.micrositeGalleriesBxSliders.promoClickSwitchGallery(anchorFull);
             }
             else {
               Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
             }
           }
           // if any other section type
           else {
             var anchorFull = basePath + '/' + anchor;
             Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-            Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+            Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
           }
         }
         tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);

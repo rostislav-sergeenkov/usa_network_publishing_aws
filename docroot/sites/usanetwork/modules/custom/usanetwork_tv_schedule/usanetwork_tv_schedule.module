@@ -703,7 +703,11 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
     if (empty($nid)) {
       if (strtoupper($show) == 'USA MOVIE') {
         $show = l(check_plain($program[0]) . $episode_suffix, 'movies', array('html' => true));
-      } else {
+      } 
+      elseif (strtoupper($show) == 'NHL PLAYOFFS') { 
+        $show = l(check_plain($program[0]) . $episode_suffix, 'http://www.usanetwork.com/nhl-2015-stanley-cup-playoffs', array('html' => true));
+      }
+      else {
         $show = check_plain($program[0]) . $episode_suffix;
       }
     } else {

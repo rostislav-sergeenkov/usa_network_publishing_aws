@@ -211,6 +211,16 @@
             overflow: hidden;
             position: relative;
             width: 100%;
+            > .meta-wrapper {
+              .additional {
+                white-space: normal;
+              }
+              .title {
+                @include breakpoint($bp-480-width) {
+                  white-space: normal;
+                }
+              }
+            }
           }
           &.close-button {
             display: none;
@@ -253,6 +263,9 @@
           @include breakpoint($bp-768-width) {
             height: 25%;
           }
+          @include breakpoint($bp-480-width) {
+            height: 35%;
+          }
         }
         .meta-wrapper-inner {
           display: table;
@@ -291,10 +304,14 @@
             padding-left: 10px;
           }
           .title {
-            font-size: 20px;
-            line-height: 28px;
+            font-size: 18px;
+            line-height: 24px;
             margin-left: 10%;
             margin-right: 40px;
+            @include breakpoint($bp-1024-width) {
+              font-size: 20px;
+              line-height: 28px;
+            }
             @include breakpoint($bp-480-width) {
               font-size: 18px;
               line-height: 24px;

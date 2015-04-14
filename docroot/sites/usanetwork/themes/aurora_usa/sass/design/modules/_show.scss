@@ -211,6 +211,16 @@
             overflow: hidden;
             position: relative;
             width: 100%;
+            > .meta-wrapper {
+              .additional {
+                white-space: normal;
+              }
+              .title {
+                @include breakpoint($bp-480-width) {
+                  white-space: normal;
+                }
+              }
+            }
           }
           &.close-button {
             display: none;
@@ -253,6 +263,9 @@
           @include breakpoint($bp-768-width) {
             height: 25%;
           }
+          @include breakpoint($bp-480-width) {
+            height: 35%;
+          }
         }
         .meta-wrapper-inner {
           display: table;
@@ -291,10 +304,14 @@
             padding-left: 10px;
           }
           .title {
-            font-size: 20px;
-            line-height: 28px;
+            font-size: 18px;
+            line-height: 24px;
             margin-left: 10%;
             margin-right: 40px;
+            @include breakpoint($bp-1024-width) {
+              font-size: 20px;
+              line-height: 28px;
+            }
             @include breakpoint($bp-480-width) {
               font-size: 18px;
               line-height: 24px;
@@ -573,8 +590,19 @@
           font-family: $avalon-demi;
           font-size: 12px;
           line-height: 18px;
-          margin-top: 12px;
+          margin-top: 8px;
           text-transform: uppercase;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 6px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 10px;
+            line-height: 14px;
+            margin-top: 12px;
+            margin-left: 8px;
+          }
           span {
             display: block;
             font-family: $tex-gyreschola-italic

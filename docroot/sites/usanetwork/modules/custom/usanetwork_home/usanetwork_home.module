@@ -392,9 +392,9 @@ function _usanetwork_home_featured_carousel() {
             )
             : NULL,
           'icon_type' => $icon_type,
-          'caption' => check_plain($promo_data['show_name']),
-          'title' => check_plain($promo_data['promo_title']),
-          'description' => check_plain($promo_data['description']),
+          'caption' => $promo_data['show_name'],
+          'title' => $promo_data['promo_title'],
+          'description' => $promo_data['description'],
           'more_link' => $more_link,
           'class' => $is_first ? 'featured-large' : 'featured-small',
           'is_first' => $is_first,

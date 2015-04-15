@@ -15,7 +15,7 @@
           <div class="node node-usanetwork-promo">
             <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
               <?php if (!empty($promo['image_url'])): ?>
-                <div class="asset-img"><img src="<?php print $promo['image_url'];?>" alt=""></div>
+                <div class="asset-img<?php print ($promo['active'] == true) ? ' active show-border' : '';?>"><img src="<?php print $promo['image_url'];?>" alt=""></div>
               <?php endif; ?>
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">
@@ -42,7 +42,7 @@
     <ul class="slider-horizontal">
       <?php foreach($promos as $promo):?>
         <li class="slide-item">
-          <div class="node node-usanetwork-promo aspot-carousel-promo">
+          <div class="node node-usanetwork-promo aspot-carousel-promo<?php print ($promo['active'] == true) ? ' active show-border' : '';?>">
             <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
               <div class="meta-wrapper">
                 <div class="meta-back"></div>

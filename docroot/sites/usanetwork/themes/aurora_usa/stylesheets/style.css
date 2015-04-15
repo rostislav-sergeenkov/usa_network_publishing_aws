@@ -11926,6 +11926,9 @@ footer h2 {
   top: 50%;
   width: 75px;
 }
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img.active, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img.active {
+  border-left: 7px solid;
+}
 @media (min-width: 1901px) {
   .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img {
     height: 74px;
@@ -12005,6 +12008,17 @@ footer h2 {
   margin-right: 2px;
   position: relative;
   height: 100%;
+}
+.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal .node.active:before, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .node.active:before {
+  border-left: 7px solid;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 7px;
+  z-index: 2;
 }
 .consumptionator-page .video-block .consum-sidebar .more-clips, .page-videos-live .video-block .consum-sidebar .more-clips {
   display: block;

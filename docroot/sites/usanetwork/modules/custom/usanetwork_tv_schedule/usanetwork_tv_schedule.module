@@ -903,6 +903,7 @@ function usanetwork_tv_schedule_schedule_page() {
         $theme_row_variables['episode_description'] = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : '';
         $theme_row_variables['time'] = date('g:i', $start_time);
         $theme_row_variables['day_part'] = date('A', $start_time);
+        $theme_row_variables['link_class'] = (!empty($query_params['guid']) && $query_params['guid'] === $tv_schedule_item->guid) ? 'active' : NULL;
         $schedule_rows[$start_time] = theme('usanetwork_tv_schedule_table_element', $theme_row_variables);
         continue;
       }
@@ -948,7 +949,7 @@ function usanetwork_tv_schedule_schedule_page() {
         'show_nid' => $show_nid,
         'show_url' => url('node/' . $show_nid),
         'link_name' => $link_name,
-        'link_class' => NULL, // Should not be active anyway
+        'link_class' => (!empty($query_params['guid']) && $query_params['guid'] === $tv_schedule_item->guid) ? 'active' : NULL,
         'show_class' => !empty($show_node) ? usanetwork_tv_shows_color_show_css_class($show_node)
               : '',
         'time' => date('g:i', $start_time),
@@ -1095,8 +1096,9 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0, $page_url 
   for ($day_number = 0; $day_number < 7; $day_number++) {
     $date_url = $schedule_page_url;
     $new_day = strtotime('+' . $day_number . ' days', $day_date);
-
-    $date_query = $query_params;
+    if (!empty($query_params['sdate'])) {
+      $date_query['sdate'] = $query_params['sdate'];
+    }
 
     if ($new_day) {
       $date_query['sdate'] = $new_day;

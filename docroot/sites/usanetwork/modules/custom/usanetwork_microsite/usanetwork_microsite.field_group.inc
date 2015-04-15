@@ -52,10 +52,10 @@ function usanetwork_microsite_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_ms_small_logo',
-      1 => 'field_ms_theme',
-      2 => 'field_ms_tune_in',
-      3 => 'field_pathauto_alias',
-      4 => 'field_show',
+      1 => 'field_ms_tune_in',
+      2 => 'field_pathauto_alias',
+      3 => 'field_show',
+      4 => 'field_ms_theme',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -227,9 +227,7 @@ function usanetwork_microsite_field_group_info() {
   $field_group->data = array(
     'label' => 'Settings',
     'weight' => '4',
-    'children' => array(
-      0 => 'field_ms_display_global_nav',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',

@@ -710,13 +710,14 @@ function _usanetwork_blocks_social_carousel_block_content() {
             continue;
           }
           $promo_image_url = usanetwork_core_api_get_content_image($field_promo_item['target_type'], $promo);
+          $promo_icon = usanetwork_core_api_get_media_icon($field_promo_item['target_type'], $field_promo_item['target_id']);
           $episode_theme_variables = array(
             'url' => url($field_promo_item['target_type'] . '/' . $field_promo_item['target_id']),
             'title' => $promo_data['promo_title'],
             'additional' => $promo_data['topic'],
             'image_url' => image_style_url('390x390', $promo_image_url),
             'color_class' => $promo_data['show_class'],
-            'icon_type' => 'play-icon',
+            'icon_type' => $promo_icon,
             'show_title' => $promo_data['show_name']
           );
           $theme_variables['promos'][] = $episode_theme_variables + $promo_data;

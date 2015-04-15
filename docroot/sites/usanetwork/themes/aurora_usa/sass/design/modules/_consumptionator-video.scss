@@ -368,6 +368,9 @@
               position: absolute;
               top: 50%;
               width: 75px;
+              &.active {
+                border-left: 7px solid;
+              }
               @include breakpoint($bp-min-1901-width) {
                 height: 74px;
                 margin-top: -37px;
@@ -443,6 +446,21 @@
             position: relative;
             height: 100%;
             @extend %aspot-carousel-promo;
+          }
+          .node {
+            &.active {
+              &:before {
+                border-left: 7px solid;
+                content: '';
+                display: block;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 7px;
+                z-index: 2;
+              }
+            }
           }
         }
       }

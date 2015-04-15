@@ -1115,7 +1115,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'show_title' => $on_now->database_show_title,
       'episode_title' => $on_now->title,
       'syndicated_url' => _usanetwork_menu_get_reminder_url($on_now->nid),
-      'episode_full_url' => '#',
+      'episode_full_url' => url('schedule', array('query' => array('guid' => $on_now->guid))),
       'episode_class' => !empty($on_now->nid)
         ? usanetwork_tv_shows_color_show_css_class($on_now->nid) . ' show-color-border'
         : NULL,
@@ -1136,7 +1136,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'time' => date('h:i', $up_next->start_time),
       'day_part' => date('A', $up_next->start_time),
       'syndicated_url' => _usanetwork_menu_get_reminder_url($up_next->nid),
-      'episode_full_url' => '#',
+      'episode_full_url' => url('schedule', array('query' => array('guid' => $up_next->guid))),
       'episode_class' => !empty($up_next->nid)
         ? usanetwork_tv_shows_color_show_css_class($up_next->nid) . ' show-color-border'
         : NULL,
@@ -1151,7 +1151,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
         'time' => date('h:i', $tonight_item->start_time),
         'day_part' => date('A', $tonight_item->start_time),
         'syndicated_url' => _usanetwork_menu_get_reminder_url($tonight_item->nid),
-        'episode_full_url' => '#',
+        'episode_full_url' => url('schedule', array('query' => array('guid' => $tonight_item->guid))),
         'episode_class' => !empty($tonight_item->nid)
           ? usanetwork_tv_shows_color_show_css_class($tonight_item->nid) . ' show-color-border'
           : NULL,

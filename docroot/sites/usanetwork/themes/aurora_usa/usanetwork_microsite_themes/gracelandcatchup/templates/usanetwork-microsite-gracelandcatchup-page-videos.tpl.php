@@ -17,7 +17,7 @@
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 
-<div id="video-section-description">
+<div id="video-section-description" class="section-description">
 Watch Season 2 Full Episodes, Season 1 and 2 Cast Interviews and Clips!<br>
 WARNING &mdash; CONTAINS SPOILERS!
 </div>
@@ -93,7 +93,6 @@ WARNING &mdash; CONTAINS SPOILERS!
             </div>
           </div>
         </div>
-        <div id="ad_300x60_1"></div>
         <div class="video-player-desc">
           <?php if (!empty($video_desc)): ?>
             <?php print $video_desc; ?>
@@ -108,18 +107,6 @@ WARNING &mdash; CONTAINS SPOILERS!
     <div id="block-usanetwork-mpx-video-usa-mpx-video-views" class="block block-usanetwork-mpx-video">
       <div class="content">
         <div class="ajax-content">
-  <?php /* ?>
-          <?php if (!empty($filter_enabled)): ?>
-            <div class="filter-wrapper">
-              <div id="video-filter">
-                <div class="filter-label">
-                  <span><?php print $filter_list_active; ?></span>
-                </div>
-                <?php print $filter_list; ?>
-              </div>
-            </div>
-          <?php endif; ?>
-  <?php */ ?>
           <div id="thumbnail-list"
                class="view view-usa-mpx-video view-id-usa_mpx_video view-display-id-category_mpx_videos expandable-container view-dom-id-be381e47058d0c21dac9092cb8220a69 jquery-once-2-processed">
             <div class="view-content">
@@ -139,12 +126,6 @@ WARNING &mdash; CONTAINS SPOILERS!
                         <?php print $video['rendered']; ?>
                       </li>
                     <?php endif; ?>
-<?php /* ?>
-                    <?php if ($v_key == 1 || $video_count == 1): ?>
-                      <li class="thumbnail views-row grid-item ad">
-                        <div id="ad_300x250_1"></div>
-                      </li><?php endif; ?>
-<?php */ ?>
                   <?php endforeach; ?>
                 </ul>
               </div>
@@ -165,6 +146,7 @@ WARNING &mdash; CONTAINS SPOILERS!
       </div>
     </div>
     <?php endif; ?>
+    <div id="ad_300x60_1"></div>
     <div id="ad_300x250_1"></div>
   </div>
 </div>

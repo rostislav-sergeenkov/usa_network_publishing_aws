@@ -1,8 +1,3 @@
-#video-section-description {
-  width: 100%;
-  text-align: center;
-  color: #000;
-}
 #videos .left-pane {
   float: left;
   width: calc(100% - 320px);
@@ -20,6 +15,13 @@
   margin: 0 auto;
   max-width: 1000px;
 }
+#microsite .featured-asset .tve-help-link {
+  margin-top: 4px;
+}
+#microsite .featured-asset .tve-help-link img {
+  width: auto;
+  height: 16px;
+}
 #microsite .video-title {
   font-size: 2em;
 }
@@ -30,7 +32,12 @@
   font-size: 1.2em;
   color: #e5ce96;
 }
-#microsite .block-usanetwork-mpx-video .view .file h4:after, #block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
+.block-usanetwork-mpx-video .view .file h4, #block-views-usa-mpx-video-fullepisodes-live .view .file h4 {
+  font-size: 0.875px;
+  white-space: normal;
+}
+#microsite .block-usanetwork-mpx-video .view .file h4:after,
+#block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
   background-image: none;
 }
 #microsite .video-container.in-player {
@@ -47,32 +54,35 @@
 }
 #microsite .full-pane #video-container h1,
 #microsite .full-pane #video-container h3 {
-  color: #ffffff;
-  line-height: 24px;
-  font-family: 'Proxima N W01 Reg', Arial, sans-serif;;
-  font-size: 26px;
-  font-weight: normal;
   margin: 7px 0;
+  font-size: 1.5em;
+  color: #000;
+  line-height: 1.4em;
   text-transform: uppercase;
 }
 #microsite .full-pane #video-container h1.seo-h1,
 #microsite .full-pane #video-container h3.seo-h1 {
-  color: #e5ce96;
-  line-height: 20px;
-  font-size: 18px;
+  color: #000;
+  font-size: 1.125em;
+  line-height: 1.1em;
   text-transform: none;
   margin: -7px 0 7px;
 }
 #microsite .full-pane #video-container .video-description {
-  font-size: 16px;
+  font-size: 0.875em;
+  color: #000;
 }
 #microsite .full-pane #video-container .video-info {
-  font-size: 14px;
-  color: #e5ce96;
+  font-size: 0.875em;
+  color: #6C6F72;
 }
+
+/* VIDEO THUMBNAILS */
 #microsite .block-usanetwork-mpx-video {
   margin: 0;
-  width: 100%; /* 945px; */
+  width: 100%;
+  font-size: 0.875em;
+  color: #FFF;
 }
 #microsite .block-usanetwork-mpx-video:after {
   clear: both;
@@ -85,9 +95,11 @@
   height: 80px;
   margin: 0px 10px 10px 0px;
   width: 145px;
-/*  border: 1px solid transparent; */
   overflow: hidden;
-  background-color: #999;
+  background-color: #AEAFB1;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item .title {
+  text-transform: uppercase;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item:nth-child(even) {
   margin-right: 0;
@@ -95,10 +107,38 @@
 #microsite .block-usanetwork-mpx-video li.grid-item:nth-child(odd) {
   clear: left;
 }
+#microsite .block-usanetwork-mpx-video li.grid-item:hover,
 #microsite .block-usanetwork-mpx-video li.grid-item.active {
-/*  border: 1px solid #FFF; */
-  background-color: darkred;
+  background-color: #56000A;
 }
+#microsite .block-usanetwork-mpx-video li.grid-item .file {
+  border: 0;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
+  height: 81px;
+  background-color: transparent;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item.active .caption-fields-wrapper {
+  height: 77px;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item img {
+  display: none;
+}
+#microsite #videos #thumbnail-list .field-name-field-mpx-title,
+#microsite #videos #thumbnail-list .field-name-field-seo-h1 {
+  padding: 0 4px;
+  line-height: 20px;
+}
+#microsite #videos #thumbnail-list li.active .field-name-field-mpx-title,
+#microsite #videos #thumbnail-list li.active .field-name-field-seo-h1 {
+  padding: 0 4px;
+  line-height: 20px;
+}
+#microsite .expandable-container .expandable-toggle-wrap {
+  display: none;
+}
+/* END VIDEO THUMBNAILS */
+
 #microsite .block-usanetwork-mpx-video li.grid-item.ad {
   background-color: #1F1F1F;
   position: relative;
@@ -110,47 +150,8 @@
   width: 728px;
   margin: 0 auto;
 }
-#microsite .block-usanetwork-mpx-video li.grid-item .file {
-  border: 0;
-}
-#microsite .block-usanetwork-mpx-video li.grid-item .caption-overlay {
-/*  background-color: #999; */
-}
-#microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
-  height: 81px;
-  background-color: transparent;
-}
-#microsite .block-usanetwork-mpx-video li.grid-item.active .caption-fields-wrapper {
-  height: 77px;
-}
-#microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper .caption {
-  color: #e5ce96;
-}
-#microsite .block-usanetwork-mpx-video li.grid-item img {
-  display: none;
-/*
-  height: 169px;
-  width: 300px;
-*/
-}
-#microsite #videos #thumbnail-list .field-name-field-mpx-title,
-#microsite #videos #thumbnail-list .field-name-field-seo-h1 {
-  padding: 0 4px;
-  line-height: 20px;
-}
-#microsite #videos #thumbnail-list .field-name-field-seo-h1 {
-  color: #e5ce96;
-}
-#microsite #videos #thumbnail-list li.active .field-name-field-mpx-title,
-#microsite #videos #thumbnail-list li.active .field-name-field-seo-h1 {
-  padding: 0 4px;
-  line-height: 20px;
-}
 #microsite .block-usanetwork-mpx-video li.ad img {
   height: 100%;
-}
-#microsite .expandable-container .expandable-toggle-wrap {
-  display: none;
 }
 #microsite #video-container .video-player {
   position: relative;
@@ -281,6 +282,38 @@
   margin-bottom: 90px;
 }
 /* video-filter */
+#video-filter {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+#video-filter .filter-label {
+  display: none;
+}
+/*
+#video-filter .item-list {
+  width: 75%;
+  margin: 0 auto;
+}
+*/
+#video-filter ul {
+  display: inline-block;
+}
+#video-filter li.filter-item {
+  float: left;
+  margin: 0 10px;
+  padding: 4px 30px 0;
+  background-color: #AEAFB1;
+  font-size: 1.125em;
+  line-height: 1.6em;
+  color: #FFF;
+  text-transform: uppercase;
+}
+#video-filter li.filter-item:hover,
+#video-filter li.filter-item.active {
+  background-color: #56000A;
+}
+/*
 #videos .filter-wrapper {
   margin-bottom: 20px;
   max-width: 615px;
@@ -414,6 +447,7 @@
 #videos #video-filter .filter-item.active {
   color: #e5ce96;
 }
+*/
 /* button more / close */
 #thumbnail-list .thumbnail.hidden {
   display: none;
@@ -580,12 +614,14 @@
     width: 100%;
     height: 346px;
   }
+/*
   #microsite #ad_300x60_1 {
     bottom: 0;
     margin-top: 0;
     margin-left: 0;
     position: absolute;
   }
+*/
   #microsite #videos .full-desc .video-player-desc {
     margin-bottom: 70px;
   }

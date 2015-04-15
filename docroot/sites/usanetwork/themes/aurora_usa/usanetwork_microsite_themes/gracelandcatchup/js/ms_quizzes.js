@@ -277,7 +277,7 @@
     getNumSlidesToDisplay: function(slideWidth, slideMargin) {
       var quizzesNavWidth = $('#microsite #quizzes #quizzes-nav').width(),
           totalSlideWidth = slideWidth + slideMargin,
-          numSlides = Math.floor(quizzesNavWidth / totalSlideWidth);
+          numSlides = Math.ceil(quizzesNavWidth / totalSlideWidth);
       if (numSlides < 2) numSlides = 2;
       return numSlides;
     },
@@ -287,7 +287,7 @@
       var $quizNavContainer = $('#microsite #quizzes ' + quizId),
           numQuizzes = $quizNavContainer.find('li').length,
           widthOneQuizNavItem = $quizNavContainer.find('li').width(),
-          finalWidthQuizNav = Math.ceil(numQuizzesShown * (widthOneQuizNavItem + 10));
+          finalWidthQuizNav = Math.ceil(numQuizzesShown * (widthOneQuizNavItem + Drupal.behaviors.ms_quizzes.slideMargin));
       $quizNavContainer.find('.bxslider-container').width(finalWidthQuizNav);
 
       // show or hide the pager
@@ -334,8 +334,8 @@
       // set defaults
       var wwidth = $(window).width(),
           transitionWidth = 640,
-          slideWidth = (wwidth > transitionWidth) ? 250 : 125,
-          slideMargin = 10,
+          slideWidth = (wwidth > transitionWidth) ? 200 : 100,
+          slideMargin = 30,
           numSlides = Drupal.behaviors.ms_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin);
 
       Drupal.behaviors.ms_quizzes.setActiveQuizHeight();
@@ -394,8 +394,8 @@
         // set defaults for quiz navigation
         var wwidth = $(window).width(),
             transitionWidth = 640,
-            slideWidth = (wwidth > transitionWidth) ? 250 : 125,
-            slideMargin = 10,
+            slideWidth = (wwidth > transitionWidth) ? 200 : 100,
+            slideMargin = 30,
             numSlides = Drupal.behaviors.ms_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin),
             self = this;
 

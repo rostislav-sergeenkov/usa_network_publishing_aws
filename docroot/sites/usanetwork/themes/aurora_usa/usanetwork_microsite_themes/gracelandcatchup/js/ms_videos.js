@@ -7,7 +7,7 @@
     setVideoHeight: function() {
       var vWidth = $('#microsite #videos #video-container').width(),
           vHeight = Math.floor(vWidth * 0.5626);
-usa_debug('========== setVideoHeight()\nvWidth: ' + vWidth + ' => vHeight: ' + vHeight);
+//usa_debug('========== setVideoHeight()\nvWidth: ' + vWidth + ' => vHeight: ' + vHeight);
       $('#microsite .file-video-mpx.view-mode-inline_content iframe, #microsite .featured-asset .video-player-wrapper iframe').css({'height': vHeight + 'px'});
     },
 
@@ -89,7 +89,7 @@ usa_debug('========== setVideoHeight()\nvWidth: ' + vWidth + ' => vHeight: ' + v
         dataFid = data.data.fid;
       }
 
-      if ($('#video-filter').length){
+      if ($('#video-filter').length) {
         filter = $('#video-filter .filter-item.active').text();
         url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
       }
@@ -301,7 +301,29 @@ usa_debug('========== setVideoHeight()\nvWidth: ' + vWidth + ' => vHeight: ' + v
       });
 
       $('#video-filter .filter-item').click(function () {
+        // Buttons
+        var filterItem = $('#video-filter .filter-item'),
+            filterMenu = $('#video-filter .filter-menu');
 
+        if ($(this).hasClass('active')) {
+          return false;
+        }
+        else {
+          filterItem.removeClass('active');
+          $(this).addClass('active');
+
+          var categoryName = $('#video-filter .filter-item.active').text(),
+              offset = 0,
+              url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
+
+          $('#thumbnail-list .expandable-toggle li').text('more');
+          $('#thumbnail-list .expandable-toggle li').removeClass('less').addClass('more');
+          $('#thumbnail-list').removeClass('expanded');
+
+          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
+        }
+/*
+        // Drop-down selector
         var filterLabel = $('#video-filter .filter-label'),
             filterItem = $('#video-filter .filter-item'),
             filterMenu = $('#video-filter .filter-menu');
@@ -310,7 +332,8 @@ usa_debug('========== setVideoHeight()\nvWidth: ' + vWidth + ' => vHeight: ' + v
           filterLabel.removeClass('open');
           filterMenu.hide();
           return false;
-        } else {
+        }
+        else {
           filterItem.removeClass('active');
           $(this).addClass('active');
           filterLabel.find('span').text($(this).text());
@@ -327,6 +350,7 @@ usa_debug('========== setVideoHeight()\nvWidth: ' + vWidth + ' => vHeight: ' + v
 
           Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
         }
+*/
       });
 
       // video items toggler

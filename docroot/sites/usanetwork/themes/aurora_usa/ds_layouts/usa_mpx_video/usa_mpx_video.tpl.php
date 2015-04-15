@@ -111,9 +111,6 @@
       </div>
     <?php else: ?>
       <div class="clips-block">
-        <div class="clips-block-title">
-          <h2>Clips</h2>
-        </div>
         <?php if (!empty($clips_block)): print $clips_block; endif;?>
       </div>
       <!-- change link to special video page for show-->

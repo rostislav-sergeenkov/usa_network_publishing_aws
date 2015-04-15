@@ -2544,6 +2544,7 @@ function _usa_mpx_video_clips_render() {
        if (!empty($promos)) {
          $theme_variables = array(
            'promos' => $promos,
+           'video_type' => !empty($filter) ? $filter : t('Clips'),
          );
          return theme('usanetwork_mpx_video_clips', $theme_variables);
        }

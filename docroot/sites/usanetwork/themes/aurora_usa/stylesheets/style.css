@@ -14669,10 +14669,6 @@ body.person-page #main {
   position: absolute;
   width: 60px;
   top: 0;
-  -webkit-transition: width 0.5s ease-out 0.3s;
-  -moz-transition: width 0.5s ease-out 0.3s;
-  -o-transition: width 0.5s ease-out 0.3s;
-  transition: width 0.5s ease-out 0.3s;
   height: 100%;
   z-index: 9;
   background: rgba(255, 255, 255, 0.6);
@@ -14697,10 +14693,6 @@ body.person-page #main {
   margin-top: -16px;
   opacity: 1;
   position: absolute;
-  -webkit-transition: opacity 0.5s ease-out 0.3s;
-  -moz-transition: opacity 0.5s ease-out 0.3s;
-  -o-transition: opacity 0.5s ease-out 0.3s;
-  transition: opacity 0.5s ease-out 0.3s;
   top: 50%;
 }
 .carousel .jcarousel-controls:hover {
@@ -22144,10 +22136,6 @@ yx-axis
   top: 54px;
   height: 100%;
   z-index: 9;
-  -webkit-transition: width 0.5s ease-out 0.3s;
-  -moz-transition: width 0.5s ease-out 0.3s;
-  -o-transition: width 0.5s ease-out 0.3s;
-  transition: width 0.5s ease-out 0.3s;
   background: rgba(255, 255, 255, 0.6);
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-prev {
@@ -22174,10 +22162,6 @@ yx-axis
   margin-top: -16px;
   opacity: 1;
   position: absolute;
-  -webkit-transition: opacity 0.5s ease-out 0.3s;
-  -moz-transition: opacity 0.5s ease-out 0.3s;
-  -o-transition: opacity 0.5s ease-out 0.3s;
-  transition: opacity 0.5s ease-out 0.3s;
   top: 42%;
 }
 @media (max-width: 640px) {

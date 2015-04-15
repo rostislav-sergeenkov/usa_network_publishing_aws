@@ -437,5 +437,5 @@ $show-carousel-item-width : 270px;
 $show-carousel-item-width-less-1024 : 342px;
 
 //sprites/
-$sprites: sprite-map("sprites/*.png");
-$sprites-retina: sprite-map("sprites-retina/*.png");
+$sprites: sprite-map("sprites/*.png", $spacing: 5px, $layout: vertical);
+$sprites-retina: sprite-map("sprites-retina/*.png", $spacing: 5px, $layout: vertical);

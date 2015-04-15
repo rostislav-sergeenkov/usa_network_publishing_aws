@@ -63,11 +63,6 @@ function usanetwork_schedule_cron() {
 
     variable_set('usanetwork_schedule_last_update', REQUEST_TIME);
   }
-
-  $limit = USANETWORK_SCHEDULE_DAYS_INTERVAL * 24 * 60 * 60;
-  $query = db_delete('usanetwork_schedule', array());
-  $query->condition('start_time', time() - $limit, '<');
-  $query->execute();
 }
 
 /**
@@ -83,7 +78,7 @@ function usanetwork_schedule_pull() {
       return;
     }
 
-    $schedule_limit_from = strtotime('midnight +6 hours', REQUEST_TIME);
+    $schedule_limit_from = strtotime('midnight -1 day +6 hours', REQUEST_TIME);
     $schedule_limit_to = strtotime('midnight +8 days +5 hours', REQUEST_TIME);
     db_truncate('usanetwork_schedule')->execute();
 

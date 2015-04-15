@@ -24827,7 +24827,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 #full-bleed-promo {
-  margin: 0 auto;
+  margin: 20px auto 0;
   position: relative;
   max-height: 500px;
   max-width: 1650px;
@@ -24876,7 +24876,7 @@ body.blog .view-display-id-blog_content .views-row {
   top: 50%;
   width: 300px;
 }
-@media (max-width: 1600px) {
+@media (max-width: 1900px) {
   #full-bleed-promo .block-advert {
     right: 15px;
   }

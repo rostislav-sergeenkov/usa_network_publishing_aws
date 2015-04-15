@@ -37,7 +37,7 @@
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
           Drupal.behaviors.fullBleedPromo.change_src(mobileImgUrl, desktopImgUrl, img);
-        }, 50, "home full bleed promo");
+        }, 0, "home full bleed promo");
       });
     }
   };

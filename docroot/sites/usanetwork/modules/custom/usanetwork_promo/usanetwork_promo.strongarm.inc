@@ -85,6 +85,9 @@ function usanetwork_promo_strongarm() {
         'xmlsitemap' => array(
           'weight' => '30',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'usanetwork_promo_preview' => array(

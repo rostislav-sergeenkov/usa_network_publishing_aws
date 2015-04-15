@@ -1133,7 +1133,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
     $up_next_block = array(
       'show_title' => $up_next->database_show_title,
       'episode_title' => $up_next->title,
-      'time' => date('h:i', $up_next->start_time),
+      'time' => date('g:i', $up_next->start_time),
       'day_part' => date('A', $up_next->start_time),
       'syndicated_url' => _usanetwork_menu_get_reminder_url($up_next->nid),
       'episode_full_url' => '#',
@@ -1148,7 +1148,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
     foreach ($tonight as $tonight_item) {
       $tonight_block[] = array(
         'show_title' => $tonight_item->database_show_title,
-        'time' => date('h:i', $tonight_item->start_time),
+        'time' => date('g:i', $tonight_item->start_time),
         'day_part' => date('A', $tonight_item->start_time),
         'syndicated_url' => _usanetwork_menu_get_reminder_url($tonight_item->nid),
         'episode_full_url' => '#',

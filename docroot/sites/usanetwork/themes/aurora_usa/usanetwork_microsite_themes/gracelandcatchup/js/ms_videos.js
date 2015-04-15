@@ -3,6 +3,13 @@
  */
 (function ($) {
   Drupal.behaviors.ms_videos = {
+    // setVideoHeight
+    setVideoHeight: function() {
+      var vWidth = $('#microsite #videos #video-container').width(),
+          vHeight = Math.floor(vWidth * 0.5626);
+usa_debug('========== setVideoHeight()\nvWidth: ' + vWidth + ' => vHeight: ' + vHeight);
+      $('#microsite .file-video-mpx.view-mode-inline_content iframe, #microsite .featured-asset .video-player-wrapper iframe').css({'height': vHeight + 'px'});
+    },
 
     // player init bind
     micrositePlayerBind: function () {
@@ -44,6 +51,7 @@
           playerDesc.html(description);
 
           Drupal.behaviors.ms_videos.micrositePlayerBind();
+          Drupal.behaviors.ms_videos.setVideoHeight();
         },
         error: function () {
           console.info('error');
@@ -105,7 +113,6 @@
 
         $('#videos .full-pane').addClass('full-desc');
         ad_300x60_1.show();
-
       }
       else {
         $('#videos .full-pane').removeClass('full-desc');
@@ -264,6 +271,8 @@
     },
 
     attach: function (context, settings) {
+      var self = this;
+
 //      var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
       //change video on click to preview elements
       $('#thumbnail-list .item-list ul li.thumbnail').click(function (e) {
@@ -406,11 +415,15 @@
         $('.featured-asset').removeClass('tve-overlay');
       });
 
-      $(document).ready(function () {
-        // Turn off the popstate/hashchange tve-core.js event listeners
-        $(window).off('popstate');
-        $(window).off('hashchange');
+      var resizeTimer;
+      $(window).bind('resize', function () {
+        if (typeof resizeTimer != 'undefined') clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          usa_debug('another resize event');
+          self.setVideoHeight();
+        }, 1000);
       });
+      window.addEventListener('orientationchange', self.setVideoHeight);
     }
   }
 })(jQuery);

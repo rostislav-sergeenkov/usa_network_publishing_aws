@@ -8,27 +8,20 @@
     },
 
     showSiteNav: function() {
-      if ($('#site_nav').hasClass('active')) {
-        // do nothing
-      }
-      else {
-//usa_debug('========= showSiteNav(' + homeSectionHeight + ')');
-        if (window.pageYOffset >= Drupal.behaviors.ms_graceland_cu.homeSectionHeight) {
-          $('#site-nav').addClass('active').css({'position': 'fixed'}).animate({'opacity': 1, 'height': '80px'}, 1000).removeClass('hidden');
-        }
-        else {
-          $('#site-nav').addClass('active').css({'position': 'relative'}).animate({'opacity': 1, 'height': '80px'}, 1000).removeClass('hidden');
-        }
+      var $siteNav = $('#site-nav');
+      if ($siteNav.css('opacity') == 0) {
+//usa_debug('========= showSiteNav()');
+        $siteNav.css({'opacity': 1}).animate({'max-height': '80px'}, 700);
       }
     },
 
     hideSiteNav: function() {
-      if ($('#site-nav').hasClass('hidden')) {
-        // do nothing
-      }
-      else {
+      var $siteNav = $('#site-nav');
+      if ($siteNav.css('opacity') == 1) {
 //usa_debug('========= hideSiteNav()');
-        $('#site-nav').addClass('hidden').css({'position': 'relative'}).animate({'opacity': 0, 'height': '0'}, 1000).removeClass('active');
+        $siteNav.animate({'max-height': '0'}, 700, function(){
+          $(this).css({'opacity': 0});
+        });
       }
     },
 
@@ -60,19 +53,42 @@
 
 
       $(document).ready(function(){
+        var homeSectionHeight,
+            siteNavTimer,
+            siteNavPositionTimer,
+            scrollTimer;
         setTimeout(function(){
-          self.homeSectionHeight = self.getHeightHomeSection(),
+          homeSectionHeight = self.getHeightHomeSection();
           self.setSiteNav();
         }, 500);
 
         $(window).on('scroll', function() {
-          self.setSiteNav();
+          if (typeof siteNavPositionTimer == 'undefined') {
+            siteNavPositionTimer = setTimeout(function(){
+              var position = (window.pageYOffset >= homeSectionHeight) ? 'fixed' : 'relative';
+              $('#site-nav').css({'position': position});
+              siteNavPositionTimer = clearTimeout(siteNavPositionTimer);
+            }, 20);
+          }
 
-          $('#microsite .section').each(function(){
-            var sectionId = $(this).attr('id');
-            if (sectionId != 'site-nav' && Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard'))
-              Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-          });
+          if (typeof siteNavTimer == 'undefined') {
+            siteNavTimer = setTimeout(function(){
+              self.setSiteNav();
+              siteNavTimer = clearTimeout(siteNavTimer);
+            }, 200);
+          }
+
+          if (typeof scrollTimer == 'undefined') {
+            scrollTimer = setTimeout(function() {
+
+             $('#microsite .section').each(function(){
+                var sectionId = $(this).attr('id');
+                if (sectionId != 'site-nav' && Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard'))
+                  Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+                  scrollTimer = clearTimeout(scrollTimer);
+              });
+            }, 500);
+          }
         });
       });
 

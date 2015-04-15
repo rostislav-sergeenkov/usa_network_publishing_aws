@@ -4,7 +4,7 @@
 #microsite h3 {
   line-height: 1em;
 }
-#microsite .full-pane {
+#microsite #quizzes .full-pane {
   max-width: 1300px;
 }
 #microsite #quizzes .full-pane > h1,
@@ -234,7 +234,15 @@
   left: -9999px;
 }
 
-/* Begin media queries */
+/* 300x250 ad */
+.usanetwork-quiz .content-wrap .sidebar .ad-container {
+  display: block;
+  width: 300px;
+  height: 250px;
+}
+
+
+/* BEGIN MEDIA QUERIES */
 @media (max-width: 1200px) {
   #microsite #quizzes .full-pane {
     max-width: 100%;
@@ -288,7 +296,9 @@
     margin-left: auto;
     margin-right: auto;
   }
-  #microsite #quizzes .usanetwork-quiz .content-wrap .sidebar .ad-container {
+  #microsite .content-wrap .sidebar .ad-container {
     margin: 30px 0 0 -20px;
+    width: auto;
+    height: auto;
   }
 }

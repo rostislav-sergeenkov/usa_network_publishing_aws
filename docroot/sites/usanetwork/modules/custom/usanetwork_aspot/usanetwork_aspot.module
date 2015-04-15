@@ -620,7 +620,7 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
       'mobile_retina' => image_style_url('1280x1280', $banner_images['mobile']),
       'tablet' => image_style_url('1024x448', $banner_images['tablet']),
       'tablet_retina' => image_style_url('2048x896', $banner_images['tablet']),
-      'desktop' => image_style_url('2490x1418', $banner_images['desktop']),
+      'desktop' => image_style_url('2500x1094', $banner_images['desktop']),
     ),
     'show_title_prefix_style' => isset($draggable_data->data->aspot_elements->title_prefix)
       ? array(

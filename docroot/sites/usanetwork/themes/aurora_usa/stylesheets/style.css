@@ -1921,6 +1921,31 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   padding: 0;
   text-align: center;
 }
+@media (min-width: 641px) and (max-width: 768px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta {
+    max-width: 248px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta {
+    max-width: 209px;
+  }
+}
+@media (min-width: 1901px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta {
+    max-width: 383px;
+  }
+}
+@media (max-width: 640px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta {
+    max-width: 190px;
+  }
+}
+@media (max-width: 480px) {
+  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta {
+    max-width: 111px;
+  }
+}
 .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 14px;
@@ -8024,6 +8049,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   content: '';
   display: table;
 }
+@media (max-width: 480px) {
+  .best-of-block {
+    padding: 40px 10px;
+  }
+}
 .best-of-block ul {
   margin: 0;
   padding: 0;
@@ -8096,6 +8126,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 @media (min-width: 1901px) {
   .show-latest-block {
     margin-bottom: 190px;
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block {
+    padding: 40px 10px;
   }
 }
 .show-latest-block ul {
@@ -8232,6 +8267,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .show-latest-block .latest-ad {
     height: 50px;
     margin: 1.47vw auto;
+    max-width: 100%;
     width: 300px;
   }
 }
@@ -11763,6 +11799,11 @@ footer h2 {
     margin-bottom: 190px;
   }
 }
+@media (max-width: 480px) {
+  .related-content-block {
+    padding: 40px 10px;
+  }
+}
 .related-content-block ul {
   margin: 0;
   padding: 0;
@@ -11827,6 +11868,7 @@ footer h2 {
   .related-content-block .related-ad {
     height: 50px;
     margin: 1.47vw auto;
+    max-width: 100%;
     width: 300px;
   }
 }

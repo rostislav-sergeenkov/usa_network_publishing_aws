@@ -845,6 +845,51 @@ function usanetwork_quiz_field_default_field_instances() {
     ),
   );
 
+
+  // Exported field_instance: 'node-quiz-field_call_to_action_type'
+  $field_instances['node-quiz-field_call_to_action_type'] = array(
+    'bundle' => 'quiz',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 27,
+      ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_call_to_action_type',
+    'label' => 'Call to Action Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 34,
+    ),
+  );
+
   // Exported field_instance: 'node-quiz-field_gigya_share_bar'
   $field_instances['node-quiz-field_gigya_share_bar'] = array(
     'bundle' => 'quiz',
@@ -2258,6 +2303,7 @@ function usanetwork_quiz_field_default_field_instances() {
   t('Answers');
   t('Calculation method');
   t('Call to Action Text');
+  t('Call to Action Type');
   t('Custom CSS');
   t('Custom JS');
   t('Description');

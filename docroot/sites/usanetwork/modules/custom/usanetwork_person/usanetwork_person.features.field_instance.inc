@@ -93,6 +93,81 @@ function usanetwork_person_field_default_field_instances() {
     ),
   );
 
+
+  // Exported field_instance: 'node-person-field_call_to_action_type'
+  $field_instances['node-person-field_call_to_action_type'] = array(
+    'bundle' => 'person',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cast_carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 43,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_call_to_action_type',
+    'label' => 'Call to Action Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 17,
+    ),
+  );
+
   // Exported field_instance: 'node-person-field_different_legal_name'
   $field_instances['node-person-field_different_legal_name'] = array(
     'bundle' => 'person',
@@ -1206,6 +1281,7 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'External Links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1218,6 +1294,7 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'enable_tokens' => 0,
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -1506,6 +1583,18 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1569,6 +1658,18 @@ function usanetwork_person_field_default_field_instances() {
         'weight' => 0,
       ),
       'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1800,6 +1901,18 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1938,6 +2051,18 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2009,6 +2134,18 @@ function usanetwork_person_field_default_field_instances() {
         'weight' => 0,
       ),
       'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2390,6 +2527,7 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Facebook page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'person-fb usasocial-fb',
         'configurable_title' => 0,
@@ -2404,6 +2542,7 @@ function usanetwork_person_field_default_field_instances() {
       'exclude_cv' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'facebook',
       'url' => 0,
@@ -2484,6 +2623,7 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Pinterest page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'person-pinterest usasocial-pinterest',
         'configurable_title' => 0,
@@ -2498,6 +2638,7 @@ function usanetwork_person_field_default_field_instances() {
       'exclude_cv' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'pinterest',
       'url' => 0,
@@ -2578,6 +2719,7 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Tumblr Page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'person-tumblr usasocial-tumblr',
         'configurable_title' => 0,
@@ -2592,6 +2734,7 @@ function usanetwork_person_field_default_field_instances() {
       'exclude_cv' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'tumblr',
       'url' => 0,
@@ -2672,6 +2815,7 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Twitter page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'person-twitter usasocial-twitter',
         'configurable_title' => 0,
@@ -2686,6 +2830,7 @@ function usanetwork_person_field_default_field_instances() {
       'exclude_cv' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'twitter',
       'url' => 0,
@@ -2905,6 +3050,7 @@ function usanetwork_person_field_default_field_instances() {
   t('Biography');
   t('Birth Date');
   t('Birth Location');
+  t('Call to Action Type');
   t('Character bio');
   t('Cover Photo');
   t('Different Legal Name?');

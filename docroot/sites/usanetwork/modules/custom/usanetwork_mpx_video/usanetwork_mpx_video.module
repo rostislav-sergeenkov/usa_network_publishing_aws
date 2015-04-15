@@ -2523,6 +2523,7 @@ function _usa_mpx_video_clips_render() {
          $related_video_file = file_load($related_video);
          $published = !empty($related_video_file->mpx_video_data['status']) ? $related_video_file->mpx_video_data['status'] : NULL;
          if ($published && usanetwork_mpx_video_get_video_category($related_video_file) === $filter) {
+           $related_video_file_wrapper = entity_metadata_wrapper('file', $related_video_file);
            $promo_data = _usanetwork_promo_pull_file_promo_details($related_video_file);
            $promo_image_url = usanetwork_core_api_get_content_image('file', $related_video_file);
            $promo_link = url('file' . '/' . $related_video);
@@ -2531,15 +2532,19 @@ function _usa_mpx_video_clips_render() {
              'url' => $promo_link,
              'image_url' => image_style_url('111x74', $promo_image_url),
              'image_url_large' => image_style_url('full_episodes_633x356', $promo_image_url),
-             'caption' => $promo_data['show_name'],
-             'title' => $promo_data['promo_title'],
-             'description' => $promo_data['description'],
+             'caption' => !empty($promo_data['show_name']) ? $promo_data['show_name'] :
+                 !empty($related_video_file->field_show) ? $related_video_file_wrapper->field_show->title->value() : '',
+             'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] : $related_video_file->filename,
+             'description' => !empty($promo_data['description']) ? $promo_data['description'] :
+                 !empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : '',
+             'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
            );
          }
        }
        if (!empty($promos)) {
          $theme_variables = array(
            'promos' => $promos,
+           'video_type' => !empty($filter) ? $filter : t('Clips'),
          );
          return theme('usanetwork_mpx_video_clips', $theme_variables);
        }

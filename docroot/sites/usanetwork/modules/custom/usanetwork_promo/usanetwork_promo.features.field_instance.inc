@@ -3377,6 +3377,7 @@ function usanetwork_promo_field_default_field_instances() {
     ),
   );
 
+
   // Exported field_instance: 'node-usanetwork_promo-field_call_to_action_type'
   $field_instances['node-usanetwork_promo-field_call_to_action_type'] = array(
     'bundle' => 'usanetwork_promo',
@@ -3461,7 +3462,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 44,
     ),
   );
 

@@ -10,6 +10,7 @@
 function usanetwork_promo_field_default_field_bases() {
   $field_bases = array();
 
+
   // Exported field_base: 'field_meta_text_bar'
   $field_bases['field_meta_text_bar'] = array(
     'active' => 1,

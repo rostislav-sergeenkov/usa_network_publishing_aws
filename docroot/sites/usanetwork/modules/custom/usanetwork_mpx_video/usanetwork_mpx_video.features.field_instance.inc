@@ -10,6 +10,93 @@
 function usanetwork_mpx_video_field_default_field_instances() {
   $field_instances = array();
 
+
+  // Exported field_instance: 'file-mpx_video_1-field_call_to_action_type'
+  $field_instances['file-mpx_video_1-field_call_to_action_type'] = array(
+    'bundle' => 'mpx_video_1',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 100,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_thumbnail' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_call_to_action_type',
+    'label' => 'Call to Action Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 48,
+    ),
+  );
+
   // Exported field_instance: 'file-mpx_video_1-field_gigya_share_bar'
   $field_instances['file-mpx_video_1-field_gigya_share_bar'] = array(
     'bundle' => 'mpx_video_1',
@@ -1549,6 +1636,93 @@ function usanetwork_mpx_video_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 34,
+    ),
+  );
+
+
+  // Exported field_instance: 'file-mpx_video_2-field_call_to_action_type'
+  $field_instances['file-mpx_video_2-field_call_to_action_type'] = array(
+    'bundle' => 'mpx_video_2',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 88,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_thumbnail' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_call_to_action_type',
+    'label' => 'Call to Action Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 44,
     ),
   );
 
@@ -3121,6 +3295,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Call to Action Type');
   t('Duration');
   t('Entitlement');
   t('Episode Number');

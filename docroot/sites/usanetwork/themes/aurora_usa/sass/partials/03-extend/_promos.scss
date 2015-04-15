@@ -983,6 +983,21 @@
     .meta {
       padding: 0;
       text-align: center;
+      @include breakpoint($between-641-768) {
+        max-width: 248px;
+      }
+      @include breakpoint($between-769-1280) {
+        max-width: 209px;
+      }
+      @include breakpoint($bp-min-1901-width) {
+        max-width: 383px;
+      }
+      @include breakpoint($bp-640-width) {
+        max-width: 190px;
+      }
+      @include breakpoint($bp-480-width) {
+        max-width: 111px;
+      }
       .caption {
         font-family: $tex-gyreschola-italic;
         font-size: 14px;

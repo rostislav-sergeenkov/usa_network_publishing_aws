@@ -60,6 +60,7 @@ function usanetwork_promo_field_group_info() {
       2 => 'field_promo_title',
       3 => 'field_promo_long_description',
       4 => 'field_promo_topic',
+      5 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -91,6 +92,7 @@ function usanetwork_promo_field_group_info() {
       2 => 'field_promo_call_to_action_text',
       3 => 'field_promo_long_description',
       4 => 'field_promo_violator_name',
+      5 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -122,6 +124,7 @@ function usanetwork_promo_field_group_info() {
       2 => 'field_promo_long_description',
       3 => 'field_promo_call_to_action_text',
       4 => 'field_promo_violator_name',
+      5 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -153,6 +156,7 @@ function usanetwork_promo_field_group_info() {
       2 => 'field_promo_violator_name',
       3 => 'field_promo_call_to_action_text',
       4 => 'field_promo_long_description',
+      5 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -184,6 +188,7 @@ function usanetwork_promo_field_group_info() {
       2 => 'field_promo_title',
       3 => 'field_promo_long_description',
       4 => 'field_promo_call_to_action_text',
+      5 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -215,6 +220,7 @@ function usanetwork_promo_field_group_info() {
       2 => 'field_promo_long_description',
       3 => 'field_promo_violator_name',
       4 => 'field_promo_call_to_action_text',
+      5 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -241,11 +247,12 @@ function usanetwork_promo_field_group_info() {
     'label' => 'Promo Details',
     'weight' => '33',
     'children' => array(
-      0 => 'field_promo_call_to_action_text',
-      1 => 'field_promo_title',
-      2 => 'field_promo_long_description',
-      3 => 'field_promo_violator_name',
+      0 => 'field_call_to_action_type',
+      1 => 'field_promo_call_to_action_text',
+      2 => 'field_promo_violator_name',
+      3 => 'field_promo_title',
       4 => 'field_promo_topic',
+      5 => 'field_promo_long_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -272,12 +279,11 @@ function usanetwork_promo_field_group_info() {
     'label' => 'Promo Text Rows',
     'weight' => '5',
     'children' => array(
-      0 => 'field_call_to_action_type',
-      1 => 'field_promo_text_line_1',
-      2 => 'field_promo_text_line_2',
-      3 => 'field_meta_text_bar',
-      4 => 'field_promo_text_line_1_wide',
-      5 => 'field_promo_text_line_2_wide',
+      0 => 'field_promo_text_line_1',
+      1 => 'field_promo_text_line_2',
+      2 => 'field_meta_text_bar',
+      3 => 'field_promo_text_line_1_wide',
+      4 => 'field_promo_text_line_2_wide',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

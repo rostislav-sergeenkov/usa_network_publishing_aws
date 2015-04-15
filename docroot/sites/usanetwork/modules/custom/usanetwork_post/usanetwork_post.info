@@ -1,7 +1,7 @@
 name = USA Network Post
 core = 7.x
 package = USA Network
-version = 7.x-1.4
+version = 7.x-1.5
 project = usanetwork_post
 dependencies[] = field_group
 dependencies[] = file
@@ -44,6 +44,7 @@ features[field_group][] = group_blog_displaying_author|taxonomy_term|blog|form
 features[field_instance][] = node-post-body
 features[field_instance][] = node-post-field_blog
 features[field_instance][] = node-post-field_blog_display_author
+features[field_instance][] = node-post-field_call_to_action_type
 features[field_instance][] = node-post-field_categories
 features[field_instance][] = node-post-field_collection
 features[field_instance][] = node-post-field_content_tags

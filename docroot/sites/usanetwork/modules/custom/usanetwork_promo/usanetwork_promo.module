@@ -296,8 +296,13 @@ function _usanetwork_promo_pull_entity_promo_details($entity_object, $entity_wra
     'cta' => !empty($entity_object->field_promo_call_to_action_text)
       ? check_plain($entity_wrapper->field_promo_call_to_action_text->value())
       : '',
+    'icon_type' => 'play-icon',
     'show_class' => '',
   );
+  if (!empty($entity_object->field_call_to_action_type)) {
+    $taxonomy_term = $entity_wrapper->field_call_to_action_type->value();
+    $promo_variables['icon_type'] = str_replace(' ', '_', $taxonomy_term->name) . '-icon';
+  }
   if (!empty($entity_object->field_show)) {
     $show_node = $entity_wrapper->field_show->value();
     $promo_variables['show_class'] = usanetwork_tv_shows_color_show_css_class($show_node);

@@ -710,11 +710,21 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
   // Attach promo call to action
   $query->leftJoin('field_data_field_promo_call_to_action_text', 'fnp_cta', 'fnp_cta.entity_id=n.nid');
   $query->addField('fnp_cta', 'field_promo_call_to_action_text_value', 'promo_cta');
+  // Attach promo link
+  $query->leftJoin('field_data_field_promo_link', 'fnp_link', 'fnp_link.entity_id=n.nid');
+  $query->addField('fnp_link', 'field_promo_link_url', 'promo_link');
+  // Exclude deprecated
+  $query->leftJoin('field_data_field_promo_exclude_from_related', 'fp_exclude', 'fp_exclude.entity_id=n.nid');
 
   $query->condition('fshow.field_show_target_id', $show_id);
   $query->condition('fshow.deleted', 0);
   $query->condition('n.status', 1);
   $query->condition('fshow.entity_type', 'node');
+  $query->condition(
+    db_or()->condition('fp_exclude.field_promo_exclude_from_related_value', NULL)
+      ->condition('fp_exclude.field_promo_exclude_from_related_value', 0)
+  );
+
 
   $query->orderBy($sort_by, $direction);
 
@@ -775,6 +785,7 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
   $query->leftJoin('mpx_video', 'mpx_video_data', 'f.fid=mpx_video_data.fid');
   $query->addField('mpx_video_data', 'title', 'title');
   $query->join('node', 'sn', 'fshow.field_show_target_id=sn.nid');
+  $query->leftJoin('field_data_field_promo_exclude_from_related', 'fp_exclude', 'fp_exclude.entity_id=f.fid');
 
   if ($season_num) {
     $query->leftJoin('field_data_field_mpx_season_number', 'season_num', 'f.fid=season_num.entity_id');
@@ -796,6 +807,11 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
   $db_or->condition('mpx_video_data.status', 1);
   $db_or->isNull('mpx_video_data.status');
   $query->condition($db_or);
+
+  $query->condition(
+    db_or()->condition('fp_exclude.field_promo_exclude_from_related_value', NULL)
+      ->condition('fp_exclude.field_promo_exclude_from_related_value', 0)
+  );
 
   $query->orderBy($sort_by, $direction);
 
@@ -1521,6 +1537,10 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     ))
   ) {
     $target_url = url($data->entity_type . '/' . $data->entity_id);
+
+    if (!empty($data->promo_link)) {
+      $target_url = url($data->promo_link);
+    }
   }
 
   if (!empty($data->raw_image_uri)) {

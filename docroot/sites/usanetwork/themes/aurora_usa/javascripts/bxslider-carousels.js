@@ -43,33 +43,32 @@
       $('.slider-vertical').each(function () {
         var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.vsettings);
 
+        slider.end = false;
         Drupal.behaviors.bxslider_carousels.varray.push(slider);
 
         $(this).swipe({
           swipeUp: function () {
-            var current_top_slide = slider.getCurrentSlide() + 2,
+            var current_top_slide = slider.getCurrentSlide() + 1,
                 container_h = $(this).height(),
                 slide_h = $(this).find('.slide-item').height(),
                 visible_slides = Math.floor(container_h / slide_h),
-                shift_last = slide_h - (container_h - (slide_h * 2));
+                shift_last = slide_h - (container_h - (slide_h * visible_slides));
 
-            console.log('up');
-            console.log('visible_slides: ' + visible_slides);
-            console.log('slide height: ' + slide_h);
-            console.log('current slide: ' + current_top_slide);
-            console.log('count: ' + slider.getSlideCount());
+            if (!slider.end) {
+              if ((slider.getSlideCount() - current_top_slide <= 2)) {
+                slider.end = true;
 
-            if (slider.getSlideCount() - current_top_slide === 1) {
-              console.log($(this).find('.slide-item:last').offset());
-              $(this).animate({
-                'top': '-=' + shift_last
-              }, 300);
-            } else {
-              slider.goToNextSlide();
+                $(this).animate({
+                  'top': '-=' + shift_last
+                }, 300);
+              } else {
+                slider.goToNextSlide();
+              }
             }
           },
           swipeDown: function () {
             slider.goToPrevSlide();
+            slider.end = false;
           },
           threshold: 0,
           excludedElements: 'button, input, select, textarea, .noSwipe'

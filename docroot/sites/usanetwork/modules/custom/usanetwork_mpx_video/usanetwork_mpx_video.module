@@ -2537,12 +2537,14 @@ function _usa_mpx_video_clips_render() {
              'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] : $related_video_file->filename,
              'description' => !empty($promo_data['description']) ? $promo_data['description'] :
                  !empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : '',
+             'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
            );
          }
        }
        if (!empty($promos)) {
          $theme_variables = array(
            'promos' => $promos,
+           'video_type' => !empty($filter) ? $filter : t('Clips'),
          );
          return theme('usanetwork_mpx_video_clips', $theme_variables);
        }

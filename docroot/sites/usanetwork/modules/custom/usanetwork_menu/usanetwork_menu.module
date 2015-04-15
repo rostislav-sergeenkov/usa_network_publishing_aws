@@ -42,6 +42,14 @@ function usanetwork_menu_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/render-live-video-header/%'] = array(
+    'title' => 'Live video header',
+    'page callback' => '_usanetwork_menu_render_live_video_header_ajax',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   // Show autocompliter.
   $items['usanetwork_menu/full_shows/autocomplete'] = array(
     'title' => 'Select content',
@@ -320,6 +328,22 @@ function usanetwork_menu_theme() {
         'catchall_name' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-consumptionator_catchall',
+    ),
+    'usanetwork_menu_consumptionator_live_video' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'episode' => array(
+          'caption' => NULL,
+          'image_url' => NULL,
+          'title' => NULL,
+          'season_number' => NULL,
+          'episode_number' => NULL,
+          'running_time' => NULL,
+          'description' => NULL,
+        ),
+      ),
+      'template' => 'templates/usanetwork-menu-consumptionator-live-video',
     ),
   );
 }
@@ -863,7 +887,9 @@ function _usanetwork_menu_consumptionator_block() {
       return _usanetwork_menu_consumptionator_block_catchall($entity);
     }
   }
-  return '';
+  else { // Process like "Live video" block
+    return _usanetwork_menu_consumptionator_block_live_video();
+  }
 }
 
 /**
@@ -959,6 +985,84 @@ function _usanetwork_menu_consumptionator_block_video($file) {
   }
   return '';
 }
+
+function _usanetwork_menu_render_live_video_header_ajax($offset) {
+  $on_now_item = usanetwork_schedule_pull_on_now_item($offset);
+
+  if (!empty($on_now_item)) {
+    $image_url = NULL;
+
+    if (is_array($on_now_item)) {
+      $on_now_item = reset($on_now_item);
+    }
+
+    if (!empty($on_now_item->nid)) {
+      $image_url = usanetwork_core_api_get_content_image('node', $on_now_item->nid);
+    }
+
+    $menu_items = _usa_auth_prepare_menu_items();
+    $auth_links = array(
+      '#theme' => 'item_list',
+      '#items' => $menu_items,
+      '#attributes' => array('class' => array('tve-header-links', 'inline')),
+      '#prefix' => '<div class="links-wrapper">',
+      '#suffix' => '</div>',
+    );
+
+    $theme_variables = array(
+      'authbar' => !empty($auth_links) ? drupal_render($auth_links) : '',
+      'main_url' => url('<front>'),
+      'show_url' => !empty($on_now_item->nid)
+        ? url('node/' . $on_now_item->nid)
+        : url('<front>'),
+      'show_name' => !empty($on_now_item->database_show_title)
+        ? $on_now_item->database_show_title
+        : (!empty($on_now_item->show_title)
+          ? $on_now_item->show_title
+          : t('USA Movie')),
+      'episode' => array(
+        'image_url' => !empty($image_url)
+          ? image_style_url('300x250', $image_url)
+          : '',
+        'title' => !empty($on_now_item->title)
+          ? t('Live: !title', array('!title' => $on_now_item->title))
+          : '',
+        'video_type' => $on_now_item->program_type,
+        'season_number' => !empty($on_now_item->season_number)
+          ? $on_now_item->season_number
+          : '',
+        'episode_number' => !empty($on_now_item->season_episode_number)
+          ? $on_now_item->season_episode_number
+          : '',
+        'running_time' => (!empty($on_now_item->start_time) && !empty($on_now_item->end_time))
+          ? gmdate('H:i:s', $on_now_item->end_time - $on_now_item->start_time)
+          : '',
+        'description' => !empty($on_now_item->program_description)
+          ? $on_now_item->program_description
+          : '',
+      ),
+    );
+
+    return drupal_json_output(array(
+      'html' => theme('usanetwork_menu_consumptionator_live_video', $theme_variables),
+    ));
+  }
+
+  return '';
+}
+
+function _usanetwork_menu_consumptionator_block_live_video() {
+  if (!module_exists('usanetwork_tv_schedule')) {
+    return '';
+  }
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/jstz-1.0.4.min.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.live_video_header.js');
+
+  return '<div id="#live-video-loader" class="ajax-loader loading"></div>';
+}
+
 /**
  * Renders OnNow, Tonight at the bottom of the A-Spot carousel.
  */

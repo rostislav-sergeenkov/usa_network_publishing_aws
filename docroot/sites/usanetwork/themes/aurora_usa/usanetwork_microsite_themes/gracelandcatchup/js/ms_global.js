@@ -394,10 +394,10 @@
       $(document).ready(function () {
         self.create728x90Ad();
 
-        if ($('#videos').hasClass('active')) {
+//        if ($('#videos').hasClass('active')) {
           $('#video-container').addClass('active');
           Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
-        }
+//        }
 
         // Turn off the popstate/hashchange tve-core.js event listeners
         $(window).off('popstate');

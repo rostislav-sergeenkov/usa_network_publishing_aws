@@ -18,6 +18,7 @@
  * -  - $people[n]['character_bio'] - character bio
  * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
  * -  - $people[n]['preview_image_url'] - Image preview for a hover action.
+ * -  - $people[n]['cover_image_url'] - Cover image.
  * - $is_last - flag of the latest section (appears only on the latest)
  * - $section_separator - pre-rendered section separator
  * - $section_title - Title of section.
@@ -41,10 +42,19 @@
       <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="" data-id="<?php if(!empty($person['id'])) print $person['id']; ?>">
         <div class="character-nav-link"></div>
         <div class="tooltip">
-          <?php if(!empty($person['preview_image_url'])): ?>
+          <?php /* if(!empty($person['preview_image_url'])): ?>
           <img src="<?php if(!empty($person['preview_image_url'])) print $person['preview_image_url']; ?>">
+          <?php endif; */ ?>
+          <?php if(!empty($person['cover_image_url'])): ?>
+          <img src="<?php if(!empty($person['cover_image_url'])) print $person['cover_image_url']; ?>">
           <?php endif; ?>
-          <div><?php if(!empty($person['title'])) print $person['title']; ?></div>
+          <div class="caption">
+            <div>
+              <span class="person-name"><?php /* if(!empty($person['title'])) print $person['title']; */ ?><?php if(!empty($person['role'])) print $person['role']; ?></span>
+              <span class="agency"></span>
+            </div>
+            <div class="role"></div>
+          </div>
         </div>
       </li>
       <?php endforeach; ?>
@@ -57,9 +67,6 @@
   <div id="character-info" class="clearfix">
     <ul>
     <?php foreach ($people as $person_key => $person): ?>
-<!--
-      <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>">
--->
       <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?>">
           <?php if ($person['status'] == 'active' && !empty($h1) && $status == 'active'): ?>
             <h1><?php print $h1; ?></h1>
@@ -87,16 +94,20 @@
               </div>
             </div>
           <?php endif; ?>
-          <?php if (!empty($person['preview_image_url'])): ?>
+          <?php /* if (!empty($person['preview_image_url'])): ?>
           <img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['preview_image_url']; ?>" align="left">
-          <?php endif; ?>
+          <?php endif; */ ?>
           <div class="character-bios-container clearfix">
           <?php if (!empty($person['description'])): ?>
             <div class="text actor active clearfix">
+              <?php if (!empty($person['cover_image_url'])): ?>
+              <div class="character-image"><img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['cover_image_url']; ?>" align="left"></div>
+              <?php endif; ?>
               <?php print $person['description']; ?>
             </div>
           <?php endif; ?>
           </div>
+          <div class="character-close character-return-link">Return to Cast</div>
       </li>
     <?php endforeach; ?>
     </ul>

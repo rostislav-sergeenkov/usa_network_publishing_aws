@@ -710,6 +710,9 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
   // Attach promo call to action
   $query->leftJoin('field_data_field_promo_call_to_action_text', 'fnp_cta', 'fnp_cta.entity_id=n.nid');
   $query->addField('fnp_cta', 'field_promo_call_to_action_text_value', 'promo_cta');
+  // Attach promo link
+  $query->leftJoin('field_data_field_promo_link', 'fnp_link', 'fnp_link.entity_id=n.nid');
+  $query->addField('fnp_link', 'field_promo_link_url', 'promo_link');
   // Exclude deprecated
   $query->leftJoin('field_data_field_promo_exclude_from_related', 'fp_exclude', 'fp_exclude.entity_id=n.nid');
 
@@ -1534,6 +1537,10 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     ))
   ) {
     $target_url = url($data->entity_type . '/' . $data->entity_id);
+
+    if (!empty($data->promo_link)) {
+      $target_url = url($data->promo_link);
+    }
   }
 
   if (!empty($data->raw_image_uri)) {

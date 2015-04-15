@@ -59,16 +59,20 @@
 
     // SCROLLING
     isScrolledIntoView: function(elem) {
-      var $elem = $(elem);
-      var $window = $(window);
+      var $elem = $(elem),
+          $window = $(window),
+          docViewTop = $window.scrollTop(),
+          docViewBottom = docViewTop + $window.height();
 
-      var docViewTop = $window.scrollTop();
-      var docViewBottom = docViewTop + $window.height();
+      if ($elem != null && $elem.offset() != null) {
+        var elemTop = $elem.offset().top,
+            elemBottom = elemTop + $elem.height();
 
-      var elemTop = $elem.offset().top;
-      var elemBottom = elemTop + $elem.height();
-
-      return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+      }
+      else {
+        return false;
+      }
     },
 
     // OMNITURE
@@ -169,34 +173,48 @@
 
     // 300x250 -- not for video companion ads!!
     create300x250Ad: function (section) {
-      //usa_debug('create300x250Ad(' + section + ')');
-      if (section != 'videos' && section != 'home') {
-        // check to see if there's already an ad
-        if ($('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
-          adBlock = '.dart-name-300x250_ifr_reload_' + section;
-          Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
-        }
-        else if ($('.dart-name-220x60_ifr_reload_' + section + ' iframe').length) {
-          adBlock = '.dart-name-220x60_ifr_reload_' + section;
-          Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
-        }
-        else {
-          iframeQueue = [];
-          Drupal.DART.tag('{"machinename":"300x250_ifr_reload_' + section + '","name":"300x250 script","pos":"7","sz":"300x250","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"300x250","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
-          // write iframe ad units to page
-          if (iframeQueue.length) {
-            for (var i = 0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
-              // 300x250 second
-              if (iframeQueue[i].tag.indexOf('300x250') != '-1') {
-                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
-              }
-              // 220x60 last
-              if (iframeQueue[i].tag.indexOf('220x60') != '-1') {
-                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+      var $ad = $('.dart-name-300x250_ifr_reload_' + section);
+      var $ad220x60 = $('.dart-name-220x60_ifr_reload_' + section);
+
+      if ($ad.hasClass('loading')) {
+        // do nothing
+      }
+      else {
+        $ad.addClass('loading');
+        $ad220x60.addClass('loading');
+
+        //usa_debug('create300x250Ad(' + section + ')');
+        if (section != 'videos' && section != 'home') {
+          // check to see if there's already an ad
+          if ($('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
+            adBlock = '.dart-name-300x250_ifr_reload_' + section;
+            Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
+          }
+          else if ($('.dart-name-220x60_ifr_reload_' + section + ' iframe').length) {
+            adBlock = '.dart-name-220x60_ifr_reload_' + section;
+            Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
+          }
+          else {
+            iframeQueue = [];
+            Drupal.DART.tag('{"machinename":"300x250_ifr_reload_' + section + '","name":"300x250 script","pos":"7","sz":"300x250","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"300x250","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
+            // write iframe ad units to page
+            if (iframeQueue.length) {
+              for (var i = 0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
+                // 300x250 second
+                if (iframeQueue[i].tag.indexOf('300x250') != '-1') {
+                  $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+                }
+                // 220x60 last
+                if (iframeQueue[i].tag.indexOf('220x60') != '-1') {
+                  $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+                }
               }
             }
           }
         }
+
+        $ad.removeClass('loading');
+        $ad220x60.removeClass('loading');
       }
     },
 
@@ -208,44 +226,53 @@
       if (!section) {
         section = $('#sections .section.active').attr('id') || 'home';
       }
+      var $ad = $('.dart-name-728x90_ifr_reload_' + section);
 
-      //usa_debug('create728x90Ad(' + section + ')');
-
-      // check to see if there is an ad already there
-      if ($('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
-        adBlock = '.dart-name-728x90_ifr_reload_' + section;
-        Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
+      if ($ad.hasClass('loading')) {
+        // do nothing
       }
-      // if no 728x90 ad in this section yet, create it
       else {
-        // we have to clear the iframeQueue first and then re-build it using
-        // the Drupal.DART.tag, then we write the iframes by looping through
-        // the iframeQueue
+        //usa_debug('create728x90Ad(' + section + ')');
+        $ad.addClass('loading');
 
-        // start 728x90
-        iframeQueue = new Array();
+        // check to see if there is an ad already there
+        if ($('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
+          adBlock = '.dart-name-728x90_ifr_reload_' + section;
+          Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
+        }
+        // if no 728x90 ad in this section yet, create it
+        else {
+          // we have to clear the iframeQueue first and then re-build it using
+          // the Drupal.DART.tag, then we write the iframes by looping through
+          // the iframeQueue
 
-        Drupal.DART.tag('{"machinename":"728x90_ifr_reload_' + section + '","name":"728x90 script","pos":"7","sz":"728x90","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"728x90","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
+          // start 728x90
+          iframeQueue = new Array();
 
-        // write iframe ad units to page
-        if (iframeQueue.length) {
-          for (var i = 0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
-            // 728x90
-            if (iframeQueue[i].tag.indexOf('728x90') != '-1') {
-              $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+          Drupal.DART.tag('{"machinename":"728x90_ifr_reload_' + section + '","name":"728x90 script","pos":"7","sz":"728x90","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"728x90","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
+
+          // write iframe ad units to page
+          if (iframeQueue.length) {
+            for (var i = 0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
+              // 728x90
+              if (iframeQueue[i].tag.indexOf('728x90') != '-1') {
+                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+              }
             }
           }
         }
-      }
-      // add styles for iframe
-      $('#' + section + ' .ad-leaderboard iframe').load(function () {
-        $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
-      });
+        // add styles for iframe
+        $('#' + section + ' .ad-leaderboard iframe').load(function () {
+          $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+        });
 
-      // if home section, make sure the flexslider carousel has been
-      // initialized before loading the 300x250 ad
-      if (section != 'videos') {
-        Drupal.behaviors.ms_global.create300x250Ad(section);
+        // if home section, make sure the flexslider carousel has been
+        // initialized before loading the 300x250 ad
+        if (section != 'videos') {
+          Drupal.behaviors.ms_global.create300x250Ad(section);
+        }
+
+        $ad.removeClass('loading');
       }
     },
 
@@ -371,6 +398,10 @@
           $('#video-container').addClass('active');
           Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
         }
+
+        // Turn off the popstate/hashchange tve-core.js event listeners
+        $(window).off('popstate');
+        $(window).off('hashchange');
       });
 
     }

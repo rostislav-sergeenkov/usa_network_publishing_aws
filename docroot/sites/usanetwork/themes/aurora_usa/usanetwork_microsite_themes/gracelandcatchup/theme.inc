@@ -224,10 +224,10 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
       $site_theme_path . '/js/ms_videos.js',
       $site_theme_path . '/js/ms_characters.js',
       $site_theme_path . '/js/ms_quizzes.js',
-      $module_path . '/js/usanetwork_video_endcard.js',
-      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
       $site_theme_path . '/js/date.js',
       $site_theme_path . '/js/counter.rf.js',
+      $module_path . '/js/usanetwork_video_endcard.js',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );
 }

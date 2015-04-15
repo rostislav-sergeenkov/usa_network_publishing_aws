@@ -27,7 +27,7 @@
   display: none;
   width: 100%;
   height: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -38,6 +38,10 @@
   display: block;
   opacity: 1;
 }
+#character-info .character-bios-container {
+  height: calc(100% - 180px);
+  overflow-y: auto;
+}
 /*
 #character-info li::after {
   content: '<div id="character-close">X</div>';
@@ -45,7 +49,7 @@
 */
 #character-info .character-close {
   position: absolute;
-  top: 0;
+  top: 17px;
   right: 0;
   font-size: 4em;
   color: #999;

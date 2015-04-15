@@ -27,7 +27,7 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
 ?>
 
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
-<!--
+<?php /* ?>
   <div id="site-nav">
     <div id="site-nav-left"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/gracelandcu_usa_logo.png" alt="USA Network logo"></a></div>
     <div id="site-nav-center">
@@ -56,7 +56,7 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
       <div id="site-nav-show-site-link"><a href="http://www.usanetwork.com/graceland" target="_blank">Visit Show Site</a></div>
     </div>
   </div>
--->
+<?php */ ?>
 
   <div id="sections">
     <?php if (!empty($sections)): ?>

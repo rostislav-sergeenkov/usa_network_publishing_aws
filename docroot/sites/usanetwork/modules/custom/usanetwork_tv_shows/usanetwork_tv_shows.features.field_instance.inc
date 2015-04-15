@@ -356,6 +356,75 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+
+  // Exported field_instance: 'node-tv_episode-field_call_to_action_type'
+  $field_instances['node-tv_episode-field_call_to_action_type'] = array(
+    'bundle' => 'tv_episode',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 33,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_call_to_action_type',
+    'label' => 'Call to Action Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 73,
+    ),
+  );
+
   // Exported field_instance: 'node-tv_episode-field_content_tags'
   $field_instances['node-tv_episode-field_content_tags'] = array(
     'bundle' => 'tv_episode',
@@ -14634,6 +14703,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Base URL');
   t('CHILDREN');
   t('CHILDRENOF');
+  t('Call to Action Type');
   t('Carousel featuring promos on the show landing page. A maximum of 6 promos recommended for this region.');
   t('Character');
   t('Character max 40. Enter a short description that will be added to the show\'s navigation. Examples include "Wednesdays 10/9c", "Tonight at 8/7c", "Series Premiere on Thursday".');

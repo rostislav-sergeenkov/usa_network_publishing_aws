@@ -29,7 +29,6 @@
         url: url,
         dataType: 'json',
         success: function (data) {
-          console.info(data);
           $('.ajax-load-block .load-more-link').before(data.rendered);
           $('.ajax-load-block .load-more-link .load-more-loader').remove();
 

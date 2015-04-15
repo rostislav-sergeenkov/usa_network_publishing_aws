@@ -35,7 +35,7 @@
   <div class="show-info-block">
     <div class="show-link">
       <?php if (!empty($show_url)): ?>
-        <a class="show-color<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?> hover-avail" href="<?php print $show_url; ?>"><?php print t('Show Page'); ?></a>
+        <a class="show-color<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?> hover-avail" href="<?php print $show_url; ?>"><?php print t('Show Site'); ?></a>
       <?php endif; ?>
     </div>
     <?php if (!empty($social_icons_data)): ?>

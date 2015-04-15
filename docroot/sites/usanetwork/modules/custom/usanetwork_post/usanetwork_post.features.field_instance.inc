@@ -214,6 +214,69 @@ function usanetwork_post_field_default_field_instances() {
     ),
   );
 
+
+  // Exported field_instance: 'node-post-field_call_to_action_type'
+  $field_instances['node-post-field_call_to_action_type'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 33,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_call_to_action_type',
+    'label' => 'Call to Action Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-post-field_categories'
   $field_instances['node-post-field_categories'] = array(
     'bundle' => 'post',
@@ -1520,6 +1583,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Blog');
   t('Body');
   t('CSS File');
+  t('Call to Action Type');
   t('Categories');
   t('Collection');
   t('Contributor');

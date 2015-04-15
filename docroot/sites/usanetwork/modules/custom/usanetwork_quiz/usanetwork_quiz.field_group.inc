@@ -115,11 +115,12 @@ function usanetwork_quiz_field_group_info() {
     'label' => 'Promo Details',
     'weight' => '12',
     'children' => array(
-      0 => 'field_promo_title',
-      1 => 'field_promo_violator_name',
-      2 => 'field_promo_call_to_action_text',
+      0 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_long_description',
+      2 => 'field_promo_title',
       3 => 'field_promo_topic',
-      4 => 'field_promo_long_description',
+      4 => 'field_promo_violator_name',
+      5 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

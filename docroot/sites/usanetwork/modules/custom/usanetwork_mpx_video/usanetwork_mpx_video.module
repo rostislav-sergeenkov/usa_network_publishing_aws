@@ -18,9 +18,10 @@ define('USA_MPX_VIDEO_PROD_ACCOUNT', '2304992029');
 define('USA_MPX_VIDEO_USA_ACCOUNT_ID', '2140458126');
 define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 10);
 define("USA_MPX_VIDEO_FULL_VIDEO", "Full video");
-
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_VIDEO_RELATED_CONTENT_ITEMS', 6);
+define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
+
 /**
  * Implementation of hook_menu().
  */
@@ -1162,6 +1163,14 @@ function _tve_mpx_get_pl_key($key, $media_data) {
   return reset($pl_key);
 }
 
+/*
+ * Finds and returns $media_data array key with a nbcu$ namespace prefix.
+ */
+function _usanetwork_mpx_get_nbcu_key($key, $media_data) {
+  $nbcu_key = preg_grep('/^nbcu\$' . $key . '$/', array_keys($media_data));
+  return reset($nbcu_key);
+}
+
 function _usanetwork_mpx_video_parse_data($path, $data) {
   $result = array();
 
@@ -1215,6 +1224,8 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
       $field_pattern = $field['widget']['settings']['pub_mpx']['media_data_fieldpath'];
       
       $key = _tve_mpx_get_pl_key($field_pattern, $media_data);
+      $nbcu_key = _usanetwork_mpx_get_nbcu_key($field_pattern, $media_data);
+      
       $value = $media_data[$key];    
       
       if ($field['field_name'] == 'field_mpx_full_episode') {
@@ -1222,6 +1233,13 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
       } else if ($field['field_name'] == 'field_mpx_duration') {
         $duration_value = _usanetwork_mpx_video_parse_data($field_pattern, $media_data);
         $media_item['field_data'][$field['field_name']] = round($duration_value[0]);
+      } else if ($field['field_name'] == 'field_mpx_season_number') {
+        if ($account->import_account == rawurlencode(USA_MPX_ACCOUNT_NAME)) {
+          $nbcu_value = $media_data[$nbcu_key];
+          $media_item['field_data'][$field['field_name']] = $nbcu_value;
+        } else {
+          $media_item['field_data'][$field['field_name']] = $value;
+        }
       } else {
         $media_item['field_data'][$field['field_name']] = $value;
       }
@@ -1674,10 +1692,9 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
  */
 function usanetwork_mpx_video_media_theplatform_mpx_feed_request_alter(&$url, &$options) {
 
-  $nbc_import_account = 'NBCU USA Network';
   $nbc_import_account_id = db_select('mpx_accounts', 'ma')
       ->fields('ma', array('account_id'))
-      ->condition('import_account', rawurlencode($nbc_import_account), 'LIKE')
+    ->condition('import_account', rawurlencode(USA_MPX_ACCOUNT_NAME), 'LIKE')
       ->execute()
       ->fetchField();
   $nbc_filtering_category = 'Series';
@@ -2292,7 +2309,8 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($analized
       }
     }
 
-    if ((($mpx_import_account == rawurlencode('NBCU USA Network')) && ($full_episode == TRUE)) || (($mpx_import_account != rawurlencode('NBCU USA Network')) && ($full_episode == FALSE))) {
+    if ((($mpx_import_account == rawurlencode(USA_MPX_ACCOUNT_NAME)) && ($full_episode == TRUE))
+      || (($mpx_import_account != rawurlencode(USA_MPX_ACCOUNT_NAME)) && ($full_episode == FALSE))) {
       $remove_element = TRUE;
       return;
     }

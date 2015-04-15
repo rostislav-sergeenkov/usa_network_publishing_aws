@@ -3,6 +3,9 @@
  * Template for usanetwork_mpx_video_clips block.
  */
 ?>
+<div class="clips-block-title">
+  <h2><?php print !empty($video_type) ? $video_type : '';?></h2>
+</div>
 <?php if (!empty($promos) && is_array($promos)): ?>
 
   <div class="episodes-list-slider vertical" data-mode="vertical">

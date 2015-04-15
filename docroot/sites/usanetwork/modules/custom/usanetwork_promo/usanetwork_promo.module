@@ -282,19 +282,19 @@ function _usanetwork_promo_pull_entity_promo_details($entity_object, $entity_wra
 
   $promo_variables = array(
     'topic' => !empty($entity_object->field_promo_topic)
-      ? $entity_wrapper->field_promo_topic->value()
+      ? check_plain($entity_wrapper->field_promo_topic->value())
       : '',
     'show_name' => !empty($entity_object->field_promo_violator_name)
-      ? $entity_wrapper->field_promo_violator_name->value()
+      ? check_plain($entity_wrapper->field_promo_violator_name->value())
       : '',
     'promo_title' => !empty($entity_object->field_promo_title)
-      ? $entity_wrapper->field_promo_title->value()
+      ? check_plain($entity_wrapper->field_promo_title->value())
       : '',
     'description' => !empty($entity_object->field_promo_long_description)
-      ? $entity_wrapper->field_promo_long_description->value()
+      ? check_plain($entity_wrapper->field_promo_long_description->value())
       : '',
     'cta' => !empty($entity_object->field_promo_call_to_action_text)
-      ? $entity_wrapper->field_promo_call_to_action_text->value()
+      ? check_plain($entity_wrapper->field_promo_call_to_action_text->value())
       : '',
     'icon_type' => 'play-icon',
     'show_class' => '',

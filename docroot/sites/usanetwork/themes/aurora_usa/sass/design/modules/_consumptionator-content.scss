@@ -22,6 +22,9 @@
   @include breakpoint($bp-min-1901-width) {
     margin-bottom: 190px;
   }
+  @include breakpoint($bp-480-width) {
+    padding: 40px 10px;
+  }
   ul {
     @include clear();
     margin: 0;
@@ -79,6 +82,7 @@
     @include breakpoint($bp-640-width) {
       height: 50px;
       margin: 1.47vw auto;
+      max-width: 100%;
       width: 300px;
     }
   }

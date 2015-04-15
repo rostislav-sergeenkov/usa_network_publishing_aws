@@ -2053,7 +2053,6 @@ function usanetwork_gallery_content_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.');
   t('Body');
-  t('Call to Action Button');
   t('Call to Action Type');
   t('Categories');
   t('Collection');

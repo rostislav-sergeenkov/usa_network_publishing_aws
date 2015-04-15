@@ -6,6 +6,9 @@
   padding: 40px 16px;
   position: relative;
   width: 100%;
+  @include breakpoint($bp-480-width) {
+    padding: 40px 10px;
+  }
   ul {
     @include clear();
     margin: 0;

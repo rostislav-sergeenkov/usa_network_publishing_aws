@@ -1324,11 +1324,12 @@ header {
     }
   }
 }
-.consumptionator-page, .search-show {
+//.consumptionator-page,
+.search-show {
   header {
     .tab-item {
       &.active {
-        border-top: 0px;
+        border-top: 0;
       }
       &.share-tab {
         .show-info {
@@ -1746,4 +1747,3 @@ header {
     }
   }
 }
-

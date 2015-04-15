@@ -201,7 +201,14 @@ function usanetwork_menu_block_view($delta = '') {
 
     case 'usanetwork_menu_consumptionator':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_menu_consumptionator_block();
+      $block['content'] = array(
+        '#markup' => _usanetwork_menu_consumptionator_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/menu-dropdown.js',
+          ),
+        ),
+      );
   }
 
   return $block;
@@ -935,7 +942,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
             )
             : '',
         'image_url' => !empty($episode_image_uri)
-          ? image_style_url('300x250', $episode_image_uri)
+          ? image_style_url('300x169_video', $episode_image_uri)
           : '',
         'full_title' => !empty($file->field_mpx_title)
           ? $file_wrapper->field_mpx_title->value()

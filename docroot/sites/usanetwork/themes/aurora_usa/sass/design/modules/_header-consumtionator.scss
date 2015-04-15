@@ -1,0 +1,378 @@
+.consumptionator-page {
+  header {
+    .header-nav-bar {
+      background: $schedule-tonight;
+      height: 90px !important;
+      position: relative;
+      @include breakpoint($bp-min-1901-width) {
+        height: 135px !important;
+        .usa-logo {
+          width: 190px;
+        }
+      }
+      @include breakpoint($bp-1024-width) {
+        height: 72px !important;
+      }
+      @include breakpoint($bp-768-width) {
+        height: 50px !important;
+      }
+      @include breakpoint($bp-480-width) {
+        .usa-logo {
+          position: relative;
+          width: 50px;
+          a {
+            background: none;
+            &:after {
+              content: '';
+              display: block;
+              @include sprite-background(usa-logo-white);
+              left: 50%;
+              margin-left: -22px;
+              margin-top: -10px;
+              position: absolute;
+              top: 50%;
+            }
+          }
+        }
+      }
+      .nav-bar-tabs {
+        background: $schedule-tonight;
+        display: block;
+        height: 100%;
+        width: 100%;
+        max-width: calc(100% - 330px);
+        @include breakpoint($bp-min-1901-width) {
+          max-width: calc(100% - 410px);
+        }
+        @include breakpoint($bp-1024-width) {
+          max-width: calc(100% - 305px);
+        }
+        @include breakpoint($bp-768-width) {
+          margin-left: 100px;
+          max-width: calc(100% - 100px);
+          width: 100%;
+        }
+        @include breakpoint($bp-480-width) {
+          margin-left: 50px;
+          max-width: calc(100% - 50px);
+        }
+        .menu-item {
+          box-sizing: border-box;
+          cursor: pointer;
+          display: block;
+          float: left;
+          height: 100%;
+          text-transform: uppercase;
+          text-align: center;
+          vertical-align: middle;
+          h1 {
+            margin: 0;
+          }
+          a {
+            background: none;
+            border-left: 0;
+            border-right: 0;
+            color: #ffffff;
+            display: block;
+            font-family: $avalon-demi;
+            font-size: 20px;
+            height: auto;
+            margin: 0 auto;
+            line-height: 90px;
+            overflow: hidden;
+            padding: 0 30px;
+            text-decoration: none;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 40px;
+              line-height: 135px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: 16px;
+              line-height: 72px;
+            }
+            @include breakpoint($bp-768-width) {
+              line-height: 50px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 14px;
+            }
+          }
+          &.show-name{
+            border-left: 1px solid $consup-border;
+            max-width: 30%;
+            @include breakpoint($bp-768-width) {
+              max-width: calc(100% - 50px);
+              width: 100%;
+            }
+            a {
+              @include breakpoint($bp-768-width) {
+                max-width: calc(100% - 50px);
+              }
+            }
+          }
+          &.info {
+            border-left: 1px solid $consup-border;
+            border-right: 1px solid $consup-border;
+            max-width: 70%;
+            @include breakpoint($bp-768-width) {
+              border-right: 0;
+              width: 50px;
+            }
+            a {
+              position: relative;
+              padding-left: 90px;
+              text-align: left;
+              @include breakpoint($bp-min-1901-width) {
+                padding-left: 130px;
+              }
+              @include breakpoint($bp-1280-width) {
+                padding-left: 70px;
+              }
+              @include breakpoint($bp-768-width) {
+                overflow: hidden;
+                padding: 0;
+                text-indent: 110%;
+                white-space: nowrap;
+                width: 50px;
+              }
+              &:before {
+                @include sprite-background(info-icon-small);
+                content: '';
+                display: block;
+                left: 45px;
+                margin-left: -13px;
+                margin-top: -13px;
+                position: absolute;
+                top: 50%;
+                @include breakpoint($bp-min-1901-width) {
+                  @include sprite-background(info-icon);
+                  left: 65px;
+                  margin-left: -20px;
+                  margin-top: -20px;
+                }
+                @include breakpoint($bp-1280-width) {
+                  left: 35px;
+                }
+                @include breakpoint($bp-768-width) {
+                  left: 50%;
+                }
+              }
+              &.no-refresh{
+                &:hover {
+                  background: $consup-border;
+                }
+                &.active{
+                  background: $bottom-footer-back;
+                  &:before {
+                    background-color: inherit;
+                  }
+                }
+              }
+            }
+          }
+
+        }
+      }
+      .tve-help-link {
+        float: right;
+        display: table;
+        height: 100%;
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
+        ul, li {
+          margin: 0;
+        }
+        a {
+          color: #ffffff;
+          outline: none;
+          font-size: 16px;
+          @include breakpoint($bp-768-width) {
+            font-size: 14px;
+            line-height: 16px;
+          }
+        }
+        a:focus {
+          outline: none;
+        }
+        &.signOut {
+          .links-wrapper {
+            display: table-cell;
+            height: 100%;
+            vertical-align: middle;
+            width: 185px;
+          }
+          .providerLogo {
+            img {
+              height: 16px;
+            }
+          }
+        }
+        &.signIn {
+          .tve-help-sign {
+            display: table-cell;
+            height: 100%;
+            vertical-align: middle;
+            width: 135px;
+          }
+          .inlineLoader {
+            background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
+            display: inline-block;
+            height: 30px;
+            margin: 0 5px;
+            vertical-align: middle;
+            width: 30px;
+          }
+        }
+      }
+    }
+    .tab-content{
+      .tab-item {
+        padding: 40px;
+        &.active {
+          background: $bottom-footer-back;
+          border-top: 1px solid $consup-border;
+        }
+        .show-info {
+          position: relative;
+          .node {
+            @include clear;
+            .asset-img {
+              display: block;
+              float: left;
+              width: 205px;
+              @include breakpoint($bp-480-width) {
+                float: none;
+                margin-bottom: 20px;
+              }
+              img {
+                width: 100%;
+              }
+            }
+            .meta {
+              color: #ffffff;
+              margin-left: 250px;
+              padding-top: 20px;
+              @include breakpoint($bp-1024-width) {
+                padding-top: 0;
+              }
+              @include breakpoint($bp-768-width) {
+                margin-left: 225px;
+              }
+              @include breakpoint($bp-480-width) {
+                margin-left: 0;
+              }
+              .meta-left {
+                float: left;
+                padding-right: 10px;
+                width: 200px;
+                text-transform: uppercase;
+                @include breakpoint($bp-1280-width) {
+                  float: none;
+                  padding-right: 210px;
+                  width: 100%;
+                }
+                @include breakpoint($bp-1024-width) {
+                  padding-right: 190px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  padding-right: 0;
+                }
+              }
+              .caption {
+                font-family: $avalon-book;
+                font-size: 10px;
+                letter-spacing: 0.75px;
+                line-height: 16px;
+              }
+              .title {
+                font-family: $avalon-demi;
+                font-size: 16px;
+                letter-spacing: 1px;
+                line-height: 22px;
+              }
+              .additional {
+                font-family: $avalon-medium;
+                letter-spacing: 1px;
+                font-size: 10px;
+                line-height: 16px;
+                span {
+                  font-family: $tex-gyreschola-italic;
+                  letter-spacing: 1px;
+                }
+              }
+              .description {
+                font-size: 14px;
+                font-family: $avalon-medium;
+                line-height: 20px;
+                margin-left: 210px;
+                margin-right: 310px;
+                @include breakpoint($bp-1280-width) {
+                  margin: 30px 0 0;
+                }
+              }
+            }
+          }
+          .social-bar {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 190px;
+            @include breakpoint($bp-1024-width) {
+              width: 170px;
+            }
+            @include breakpoint($bp-768-width) {
+              position: static;
+            }
+            @include breakpoint($bp-480-width) {
+              display: none;
+            }
+            h3 {
+              color: $poll-back;
+              font-size: 20px;
+              font-family: $avalon-medium;
+              line-height: 28px;
+              margin: 0 0 20px 0;
+              text-transform: uppercase;
+              @include breakpoint($bp-1024-width) {
+                font-size: 18px;
+                line-height: 24px;
+              }
+            }
+            .field-name-field-gigya-share-bar {
+              margin-bottom: 0;
+            }
+
+
+//            .icons-block {
+//              @include clear;
+//              height: 100%;
+//              width: 100%;
+//              a {
+//                margin: 25px 19px 0 0;
+//                &:last-child {
+//                  margin-right: 0;
+//                }
+//                &:before {
+//                  color: #ffffff;
+//                  font-size: 32px;
+//                }
+//              }
+//              @include breakpoint($bp-1024-width) {
+//                a {
+//                  margin: 0 10px 0 0;
+//                  &:before {
+//                    font-size: 25px;
+//                  }
+//                }
+//              }
+//            }
+          }
+        }
+      }
+    }
+  }
+}
+

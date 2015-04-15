@@ -8024,6 +8024,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   content: '';
   display: table;
 }
+@media (max-width: 480px) {
+  .best-of-block {
+    padding: 40px 10px;
+  }
+}
 .best-of-block ul {
   margin: 0;
   padding: 0;
@@ -8096,6 +8101,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 @media (min-width: 1901px) {
   .show-latest-block {
     margin-bottom: 190px;
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block {
+    padding: 40px 10px;
   }
 }
 .show-latest-block ul {
@@ -8232,6 +8242,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .show-latest-block .latest-ad {
     height: 50px;
     margin: 1.47vw auto;
+    max-width: 100%;
     width: 300px;
   }
 }
@@ -11763,6 +11774,11 @@ footer h2 {
     margin-bottom: 190px;
   }
 }
+@media (max-width: 480px) {
+  .related-content-block {
+    padding: 40px 10px;
+  }
+}
 .related-content-block ul {
   margin: 0;
   padding: 0;
@@ -11827,6 +11843,7 @@ footer h2 {
   .related-content-block .related-ad {
     height: 50px;
     margin: 1.47vw auto;
+    max-width: 100%;
     width: 300px;
   }
 }

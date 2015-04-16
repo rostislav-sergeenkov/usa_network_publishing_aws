@@ -26,7 +26,7 @@
                 <a href="<?php print !empty($episode['url']) ? $episode['url'] : '#'; ?>">
                   <div class="meta-wrapper">
                     <div class="meta-wrapper-inner">
-                      <div class="meta-icon play-icon resize-avail-1024"></div>
+                      <div class="meta-icon video-icon"></div>
                       <div class="meta">
                         <?php if (!empty($episode['violator'])): ?>
                           <div class="caption"><?php print $episode['violator']; ?></div>
@@ -57,7 +57,7 @@
                 <a href="<?php print !empty($episode['url']) ? $episode['url'] : '#'; ?>">
                   <div class="meta-wrapper">
                     <div class="meta-wrapper-inner">
-                      <div class="meta-icon play-icon resize-avail-1024"></div>
+                      <div class="meta-icon video-icon"></div>
                       <div class="meta">
                         <?php if (!empty($episode['violator'])): ?>
                           <div class="caption"><?php print $episode['violator']; ?></div>

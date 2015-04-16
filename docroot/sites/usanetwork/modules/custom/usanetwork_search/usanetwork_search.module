@@ -533,7 +533,7 @@ function usanetwork_search_result_item_data($result_item) {
     'title' => '',
     'additional_text' => '',
     'additional_duration' => '',
-    'icon_class' => 'play-icon',
+    'icon_class' => 'video-icon',
   );
 
   if ($result_item['entity_type'] == 'node') {

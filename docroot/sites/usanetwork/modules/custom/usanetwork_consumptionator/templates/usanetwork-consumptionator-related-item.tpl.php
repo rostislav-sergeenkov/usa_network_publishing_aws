@@ -29,7 +29,7 @@
           </div>
         <?php endif; ?>
       </div>
-      <div class="meta-icon play-icon resize-avail-480"></div>
+      <div class="meta-icon video-icon"></div>
     </div>
   </a>
 </div>

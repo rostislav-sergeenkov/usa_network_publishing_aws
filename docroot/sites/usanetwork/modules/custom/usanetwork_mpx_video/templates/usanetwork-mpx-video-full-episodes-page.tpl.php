@@ -50,7 +50,7 @@
             <?php endif; ?>
           </div>
           <div class="meta-wrapper">
-            <div class="meta-icon play-icon"></div>
+            <div class="meta-icon video-icon"></div>
             <div class="meta">
               <div class="caption"><?php print $featured_aspot['aspot_caption']; ?></div>
               <div class="title"><?php print $featured_aspot['aspot_title']; ?></div>
@@ -69,7 +69,7 @@
               <div class="asset-img"><?php print $featured_element['video_image']; ?></div>
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">
-                  <div class="meta-icon play-icon resize-avail-1024"></div>
+                  <div class="meta-icon video-icon"></div>
                   <div class="meta">
                     <div class="caption"><?php print $featured_element['video_caption']; ?></div>
                     <div class="title"><?php print $featured_element['video_title']; ?></div>

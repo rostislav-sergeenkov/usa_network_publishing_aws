@@ -6,7 +6,7 @@
       </div>
     <?php endif; ?>
     <div class="meta-wrapper">
-      <div class="meta-icon play-icon"></div>
+      <div class="meta-icon video-icon"></div>
       <div class="title-overlay meta">
         <?php if ($title && $title != "&nbsp;"): ?>
           <div class="title"><?php print $title; ?></div>

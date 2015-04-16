@@ -192,6 +192,16 @@ function usanetwork_microsite_preprocess_node(&$variables) {
   }
 }
 
+function usanetwork_microsite_gallery_preprocess_field(&$vars) {
+  if($vars['element']['#field_name'] == 'field_timeline_episode_section') {
+    $node = menu_get_object();
+    if (!empty($node) && $node->type == 'usanetwork_microsite') {
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $vars['theme_hook_suggestions'] = array('field_timeline_episode_section__usanetwork_microsite');
+      $vars['theme_hook_suggestions'] = array('field_timeline_episode_section__usanetwork_microsite__' . $node_wrapper->field_ms_theme->value());
+    }
+  }
+}
 /**
  * Microsite node rendering callback.
  */

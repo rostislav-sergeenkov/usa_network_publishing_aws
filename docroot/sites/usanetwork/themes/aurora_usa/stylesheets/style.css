@@ -12215,6 +12215,18 @@ footer h2 {
     background: radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
   }
 }
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .consum-sidebar .download-app .download-app-wrapper, .page-videos-live .video-block .consum-sidebar .download-app .download-app-wrapper {
+    background: #474747;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
+    background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+  }
+}
 .consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
   background: url("../images/live-player-image.png") no-repeat;
   background-size: contain;

@@ -26,6 +26,15 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 1,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -58,6 +67,15 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'full' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -103,6 +121,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'type' => 'file_default',
         'weight' => 0,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 0,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -116,7 +141,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Timeline media item',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -141,6 +166,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
           'pub_mpx_video' => 0,
           'theplatform_mpx_mpxmedia' => 0,
@@ -295,7 +322,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 11,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -399,7 +426,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 10,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -508,7 +535,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -598,7 +625,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -685,7 +712,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -773,7 +800,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -863,7 +890,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -953,7 +980,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1026,9 +1053,12 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'weight' => 23,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -1091,7 +1121,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1191,7 +1221,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'inline_content' => array(
         'label' => 'above',

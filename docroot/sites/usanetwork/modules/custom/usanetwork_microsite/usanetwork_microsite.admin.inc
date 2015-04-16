@@ -127,7 +127,14 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
       // Videos.
       $form[$k]['field_ms_videos']['#states'] = array(
         'disabled' => array(
-          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_video_adding_type][' . $lang . ']"]' => array('value' => '1'),
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_video_adding_type][' . $lang . ']"]' => array('value' => 'videos'),
+        ),
+      );
+
+      //Timeline gallery
+      $form[$k]['field_ms_timeline_gallery']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'timeline_gallery'),
         ),
       );
     }

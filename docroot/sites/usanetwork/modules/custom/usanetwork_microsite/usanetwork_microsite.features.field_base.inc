@@ -458,26 +458,26 @@ function usanetwork_microsite_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ms_theme',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
     'indexes' => array(
-      'value' => array(
-        0 => 'value',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'list',
+    'module' => 'text',
     'settings' => array(
-      'allowed_values' => array(
-        'old' => 'Old Design',
-        'new' => 'New Design',
-        'dig' => 'Dig',
-        'mrrobot' => 'Mr. Robot',
-        'gracelandcatchup' => 'Graceland Catchup',
-      ),
-      'allowed_values_function' => '',
+      'max_length' => 255,
     ),
     'translatable' => 0,
-    'type' => 'list_text',
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_ms_tune_in'

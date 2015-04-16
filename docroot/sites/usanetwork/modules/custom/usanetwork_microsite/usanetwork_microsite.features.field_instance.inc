@@ -1377,35 +1377,25 @@ function usanetwork_microsite_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 9,
+      'weight' => 15,
     ),
   );
 
   // Exported field_instance: 'node-usanetwork_microsite-field_ms_theme'
   $field_instances['node-usanetwork_microsite-field_ms_theme'] = array(
     'bundle' => 'usanetwork_microsite',
-    'default_value' => array(
-      0 => array(
-        'value' => 'old',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 3,
+        'type' => 'text_default',
+        'weight' => 13,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1430,14 +1420,28 @@ function usanetwork_microsite_field_default_field_instances() {
     'label' => 'Theme',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 7,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
     ),
   );
 
@@ -1507,7 +1511,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 16,
     ),
   );
 
@@ -1577,7 +1581,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 17,
     ),
   );
 
@@ -1635,7 +1639,7 @@ function usanetwork_microsite_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 14,
     ),
   );
 

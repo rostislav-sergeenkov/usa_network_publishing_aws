@@ -186,6 +186,13 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
         'section_title' => NULL,
       ),
     ),
+    'usanetwork_microsite_gracelandcatchup_page_timeline_gallery' => array(
+      'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline_gallery',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'content' => NULL,
+      ),
+    ),
   );
 }
 

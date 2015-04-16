@@ -110,6 +110,13 @@
         </div>
       </div>
     <?php else: ?>
+      <div class="download-app">
+        <div class="download-app-wrapper">
+          <div class="image-block"></div>
+          <div class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
+          <div class="download-button show-color"><?php print t('Download the app'); ?></div>
+        </div>
+      </div>
       <div class="clips-block">
         <?php if (!empty($clips_block)): print $clips_block; endif;?>
       </div>

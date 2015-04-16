@@ -1,3 +1,7 @@
+.meta-icon {
+  background-size: contain;
+}
+/*
 .play-icon, .video-icon {
   &:before {
     @extend %meta-icon;
@@ -91,7 +95,7 @@
     @extend %meta-icon;
     content: '\e60d';
   }
-}
+}*/
 .social-usa {
   &:after {
     bottom: 8%;

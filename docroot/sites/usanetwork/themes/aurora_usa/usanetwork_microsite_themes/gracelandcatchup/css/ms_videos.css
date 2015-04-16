@@ -1,3 +1,6 @@
+.tve-help-sign img {
+  width: 16px;
+}
 #videos .left-pane {
   float: left;
   width: calc(100% - 320px);

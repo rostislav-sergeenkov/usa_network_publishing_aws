@@ -3,6 +3,7 @@
  * Quizzes page template
  *
  * Variables:
+ * - $section_title - the title of the section
  * - $page - array of single quiz data:
  * -  - $page['quiz_html'] - pre-rendered HTML of quiz
  * -  - $page['nid'] - the node id for the displayed quiz
@@ -15,6 +16,7 @@
  * -  - $quizzes_nav[n]['status'] - whether this quiz is being displayed (active) or not
  */
 ?>
+
 <?php if (!empty($section_title)): ?>
   <!-- section title -->
   <h2 class="content"><?php print $section_title; ?></h2>
@@ -26,20 +28,6 @@ WARNING &mdash; CONTAINS SPOILERS!
 </div>
 
 <div class="full-pane clearfix">
-  <?php if (empty($h1) && !empty($page['title']) && $status == 'active'): ?>
-  <h1 class="quiz-title"><?php print $page['title']; ?></h1>
-  <?php else: ?>
-  <h3 class="quiz-title"><?php print $page['title']; ?></h3>
-  <?php endif; ?>
-
-  <?php if (!empty($h1)): ?>
-    <?php if ($status == 'active'): ?>
-    <h1 class="seo-h1"><?php print $h1; ?></h1>
-    <?php else: ?>
-    <h3 class="seo-h1"><?php print $h1; ?></h3>
-    <?php endif; ?>
-  <?php endif; ?>
-
   <?php if (!empty($page['quiz_html']) && !empty($page['nid'])): ?>
   <div id="viewport">
     <ul>
@@ -47,6 +35,25 @@ WARNING &mdash; CONTAINS SPOILERS!
         <?php print $page['quiz_html']; ?>
       </li>
     </ul>
+
+    <?php if (!empty($page['title']) || !empty($h1)): ?>
+    <div class="active-quiz-title">
+      <?php if (empty($h1) && !empty($page['title']) && $status == 'active'): ?>
+      <h1 class="quiz-title"><?php print $page['title']; ?></h1>
+      <?php else: ?>
+      <h3 class="quiz-title"><?php print $page['title']; ?></h3>
+      <?php endif; ?>
+
+      <?php // if (!empty($h1)): ?>
+        <?php if ($status == 'active'): ?>
+        <h1 class="seo-h1"><?php print $h1; ?></h1>
+        <?php else: ?>
+        <h3 class="seo-h1"><?php print $h1; ?></h3>
+        <?php endif; ?>
+      <?php endif; ?>
+    </div>
+    <?php // endif; ?>
+
     <div id="quiz-loader"><img src="/sites/usanetwork/themes/aurora_usa/images/ajax-loader.gif" alt="loading animation"></div>
   </div>
   <?php endif; ?>

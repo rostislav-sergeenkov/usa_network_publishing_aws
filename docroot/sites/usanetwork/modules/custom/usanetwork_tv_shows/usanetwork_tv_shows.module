@@ -1003,7 +1003,7 @@ function _usanetwork_tv_shows_aspot_block() {
         $wrapper = file_stream_wrapper_get_instance_by_uri($full_latest_episode->uri);
         $video_image = theme('image_style', array(
           'path' => $wrapper->getLocalThumbnailPath(),
-          'style_name' => '300x169_video',
+          'style_name' => 'full_episodes_633x356',
         ));
 
         $episode_theme_variables = array(

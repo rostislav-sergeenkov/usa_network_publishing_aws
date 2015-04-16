@@ -11327,6 +11327,11 @@ footer h2 {
     height: 573px;
   }
 }
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel.carousel_2_rows {
+    height: auto;
+  }
+}
 .full-episodes-block.carousel-block .carousel ul li {
   margin-right: 15px;
 }
@@ -11418,7 +11423,7 @@ footer h2 {
   }
   .full-episodes-block.carousel-block .carousel.carousel_1_rows ul li {
     float: left;
-    height: auto;
+    height: 38.5vw;
     margin-right: 2%;
     min-height: 115px;
     width: 49%;
@@ -11427,7 +11432,7 @@ footer h2 {
     margin-right: 0;
   }
   .full-episodes-block.carousel-block .carousel.carousel_2_rows li {
-    height: auto;
+    height: 38.5vw;
     margin-right: 0;
     width: 100%;
   }

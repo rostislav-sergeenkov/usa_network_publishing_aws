@@ -110,11 +110,14 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
         }
       }
 
+      // 0: Primary ID of the entity.
+      $instance_info = entity_extract_ids($element['#entity_type'], $element['#entity']);
       // Prepare the autocomplete path parameters.
       $autocomplete_path_parameters = array(
         'field_name' => $element['#field_name'],
         'entity_type' => $element['#entity_type'],
         'bundle_name' => $element['#bundle'],
+        'instance_id' => !empty($instance_info[0]) ? $instance_info[0] : NULL,
         'target_type' => $item ? $item['target_type'] : NULL,
         'string' => NULL,
       );

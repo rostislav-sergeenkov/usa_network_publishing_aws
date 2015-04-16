@@ -1298,10 +1298,7 @@ function _usanetwork_home_shows_queue_get_top_info_content($show_node_wrapper) {
 
   $theme_variables = array(
     'show_title' => $show_node_wrapper->title->value(),
-  /*  'schedule_day' => !empty($episode_dates['start_date']) ? date('D', $episode_dates['start_date'])
-          : '',
-    'schedule_time' => !empty($episode_dates['start_date']) ? date('h:i A', $episode_dates['start_date'])
-          : '',*/
+    'tune_in_date' => !empty($show_node->field_usa_tv_tune_in_date) ? $show_node_wrapper->field_usa_tv_tune_in_date->value() : '',
   );
 
   return theme('usanetwork_home_shows_queue_top_info', $theme_variables);

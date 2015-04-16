@@ -12,9 +12,9 @@ require_once __DIR__ . '/usanetwork_dynamic_entity_reference.field.inc';
  */
 function usanetwork_dynamic_entity_reference_menu() {
   $items = array();
-  $items['usanetwork_dynamic_entity_reference/autocomplete/%/%/%/%/%'] = array(
+  $items['usanetwork_dynamic_entity_reference/autocomplete/%/%/%/%/%/%'] = array(
     'page callback' => 'usanetwork_dynamic_entity_reference_autocomplete',
-    'page arguments' => array(2, 3, 4, 5, 6),
+    'page arguments' => array(2, 3, 4, 5, 6, 7),
     'access callback' => TRUE,
     'file' => 'usanetwork_dynamic_entity_reference.pages.inc',
   );

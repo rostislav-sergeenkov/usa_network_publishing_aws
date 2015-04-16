@@ -333,11 +333,21 @@ section h2 {
 /* ADS */
 #microsite .ad-leaderboard {
   display: block;
+  position: relative;
+  top: 0;
+  left: 0;
   width: 728px;
   height: 90px;
-  margin: 0 auto;
+  margin: 0 auto 30px;
 }
-
+#ad_300x250_1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 250px;
+  width: 300px;
+  margin-bottom: 30px;
+}
 
 /* FOOTER */
 #microsite #_bapw-icon {

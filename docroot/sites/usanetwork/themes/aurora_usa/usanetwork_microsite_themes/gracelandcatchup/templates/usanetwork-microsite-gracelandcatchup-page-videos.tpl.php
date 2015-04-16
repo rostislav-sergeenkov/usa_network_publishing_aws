@@ -3,14 +3,21 @@
  * Videos page template
  *
  * Variables:
+ * - $in_player - array of information about the active video
+ * - - $in_player['url']
+ * - - $in_player['links']
+ * - $video_desc - the active video description
+ * - $filter_enabled - whether or not to use video filtering
+ * - $filter_list_active - The filter that is currently active
+ * - $filter_list - The rendered list of filters
+ * - $videos - array of video thumbnails
+ * - - $videos[n]['url']
+ * - - $videos[n]['rendered']
+ * - - $videos[n]['url']
+ * - $section_title - the title of the section
  * - $background_url - the URL of page background
  */
 ?>
-<style>
-.tve-help-sign img {
-  width: 16px;
-}
-</style>
 
 <?php if (!empty($section_title)): ?>
   <!-- section title -->

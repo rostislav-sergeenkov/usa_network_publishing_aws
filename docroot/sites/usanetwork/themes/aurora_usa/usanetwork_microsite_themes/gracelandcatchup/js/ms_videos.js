@@ -128,7 +128,7 @@
         if ($('#videos').find(ad_300x250_1)) {
           ad_300x250_1.closest('li.ad').show();
         }
-        if (dataFullEpisode == 'false') {
+        if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
           Drupal.behaviors.ms_global.create728x90Ad();
         }
       }

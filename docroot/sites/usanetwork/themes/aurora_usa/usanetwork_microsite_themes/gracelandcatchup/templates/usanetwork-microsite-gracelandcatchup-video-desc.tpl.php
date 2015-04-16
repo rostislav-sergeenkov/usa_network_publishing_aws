@@ -1,9 +1,17 @@
 <?php
 /**
  * Videos player template
+ *
+ * Variables:
+ * - $h1 - the H1 override
+ * - $title - the title of the active video
+ * - $status - the status of the video
+ * - $description - the description for the active video
+ * - $season_number - the season number for the active video
+ * - $episode_number - the episoder number for the active video
+ * - $duration - the duration of the active video
  */
 ?>
-
 
 <?php if (empty($h1) && !empty($title) && $status == 'active'): ?>
 <h1 class="video-title"><?php print $title; ?></h1>
@@ -12,31 +20,12 @@
 <?php endif; ?>
 
 <?php if (!empty($h1)): ?>
-<?php if ($status == 'active'): ?>
-<h1 class="seo-h1"><?php print $h1; ?></h1>
-<?php else: ?>
-<h3 class="seo-h1"><?php print $h1; ?></h3>
+  <?php if ($status == 'active'): ?>
+  <h1 class="seo-h1"><?php print $h1; ?></h1>
+  <?php else: ?>
+  <h3 class="seo-h1"><?php print $h1; ?></h3>
+  <?php endif; ?>
 <?php endif; ?>
-<?php endif; ?>
-
-
-
-<?php /* if (!empty($h1) && $status == 'active'): ?>
-  <h1><?php print $h1; ?></h1>
-  <?php if (!empty($title)): ?>
-    <div class="video-title"><?php print $title; ?></div>
-  <?php endif; ?>
-<?php elseif (empty($h1) && $status == 'active'): ?>
-  <?php if (!empty($title)): ?>
-    <div class="h1-place"></div>
-    <h1><?php print $title; ?></h1>
-  <?php endif; ?>
-<?php else: ?>
-  <?php if (!empty($title)): ?>
-    <div class="h1-place"><?php print $h1 ?></div>
-    <div class="video-title"><?php print $title; ?></div>
-  <?php endif; ?>
-<?php endif; */ ?>
 
 <?php if (!empty($description)): ?>
   <div class="video-description"><?php print $description; ?></div>

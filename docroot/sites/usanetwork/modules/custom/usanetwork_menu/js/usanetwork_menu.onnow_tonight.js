@@ -44,6 +44,7 @@
           },
           onCreate: function () {
             $(".schedule-buttons a, .schedule-on-tonight a.calendar-reminder").click(scheduleBtnClick);
+            window.seeit_remind_plugin.init();
           }
         });
       }

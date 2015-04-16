@@ -8,7 +8,7 @@
 /**
  * Dynamic entity reference auto-complete callback.
  */
-function usanetwork_dynamic_entity_reference_autocomplete($field_name, $entity_type, $bundle_name, $target_type = NULL, $string = NULL) {
+function usanetwork_dynamic_entity_reference_autocomplete($field_name, $entity_type, $bundle_name, $entity_id, $target_type = NULL, $string = NULL) {
   // field_undr/node/page_a/node/a
 
   $field_info = field_info_field($field_name);
@@ -21,7 +21,13 @@ function usanetwork_dynamic_entity_reference_autocomplete($field_name, $entity_t
   // Get the typed string, if exists from the URL.
   $match = drupal_strtolower($string);
 
-  $options = usanetwork_dynamic_entity_reference_get_referenceable_entities($target_type, $field_allowed_bundles, $match, $match_operator, 10);
+  $instance_info = array(
+    'entity_id' => $entity_id,
+    'entity_type' => $entity_type,
+    'field_name' => $field_name,
+    'bundle_name' => $bundle_name,
+  );
+  $options = usanetwork_dynamic_entity_reference_get_referenceable_entities($instance_info, $target_type, $field_allowed_bundles, $match, $match_operator, 10);
 
   $matches = array();
   // Loop through the entities and convert them into autocomplete output.
@@ -97,12 +103,14 @@ function usanetwork_dynamic_entity_reference_build_entity_query($target_type, $t
  * @return array
  *   Array of entity labels keyed by bundle and ID.
  */
-function usanetwork_dynamic_entity_reference_get_referenceable_entities($target_type, $target_bundles, $match, $match_operator, $limit) {
+function usanetwork_dynamic_entity_reference_get_referenceable_entities($instance_info, $target_type, $target_bundles, $match, $match_operator, $limit) {
   $target_bundles = _usanetwork_dynamic_entity_reference_filter_bundles($target_type, $target_bundles);
 
   $query = usanetwork_dynamic_entity_reference_build_entity_query($target_type, $target_bundles, $match, $match_operator);
   $query->range(0, $limit);
 
+  $query->addTag($instance_info['field_name'] . '_dynamic_entity_reference');
+  $query->addmetaData('instance_info', $instance_info);
   $result = $query->execute();
 
   if (empty($result) || empty($result[$target_type])) {

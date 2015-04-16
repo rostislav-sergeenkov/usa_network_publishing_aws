@@ -48,7 +48,7 @@
                     <div class="meta-button show-color tertiary <?php print !empty($promo['color_class']) ? $promo['color_class'] : ''; ?>"><?php print $promo['cta']; ?></div>
                   <?php endif; ?>
                 </div>
-                <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'play-icon'; ?> resize-avail-1024"></div>
+                <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'video-icon'; ?>"></div>
               </a>
             </div>
           </li>

@@ -702,7 +702,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
             ? $data['next']->program_description
             : '',
         'time' => !empty($data['next']->start_time)
-            ? date('h:i', $data['next']->start_time)
+            ? date('g:i', $data['next']->start_time)
             : '',
         'time_daypart' => !empty($data['next']->start_time)
             ? date('A', $data['next']->start_time)
@@ -1119,7 +1119,8 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
     }
 
     $on_now_block = array(
-      'show_title' => $on_now->database_show_title,
+      'show_title' => ($on_now->program_type == 'movie') ? t('USA Movie') :
+          (!empty($on_now->show_title) ? $on_now->show_title : ''),
       'episode_title' => $on_now->title,
       'syndicated_url' => _usanetwork_menu_get_reminder_url($on_now->nid),
       'episode_full_url' => url('schedule', array('query' => array('guid' => $on_now->guid))),
@@ -1138,7 +1139,8 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
     }
 
     $up_next_block = array(
-      'show_title' => $up_next->database_show_title,
+      'show_title' => ($up_next->program_type == 'movie') ? t('USA Movie') :
+          (!empty($up_next->show_title) ? $up_next->show_title : ''),
       'episode_title' => $up_next->title,
       'time' => date('g:i', $up_next->start_time),
       'day_part' => date('A', $up_next->start_time),
@@ -1154,7 +1156,8 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
   if (!empty($tonight)) {
     foreach ($tonight as $tonight_item) {
       $tonight_block[] = array(
-        'show_title' => $tonight_item->database_show_title,
+        'show_title' => ($tonight_item->program_type == 'movie') ? t('USA Movie') :
+            (!empty($tonight_item->show_title) ? $tonight_item->show_title : ''),
         'time' => date('g:i', $tonight_item->start_time),
         'day_part' => date('A', $tonight_item->start_time),
         'syndicated_url' => _usanetwork_menu_get_reminder_url($tonight_item->nid),

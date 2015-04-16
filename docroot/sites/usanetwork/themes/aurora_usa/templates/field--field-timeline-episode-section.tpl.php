@@ -46,7 +46,8 @@
  *       'image_src' => image src,
  *       'description' => description,
  *     ),
- *
+ *     'season_name' => season title,
+ *     'episode_name' => episode_title,
  *   )
  *
  * @see template_preprocess_field()

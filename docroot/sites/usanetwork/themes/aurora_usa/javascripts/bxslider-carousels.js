@@ -3,7 +3,6 @@
     // Arrays for vertical and horizontal bxSlider objects
     harray: [],
     varray: [],
-
     // Base settings for bxSlider carousels
     bsettings: {
       pager: false,
@@ -21,7 +20,6 @@
     // Settings for vertical and horizontal bxSlider carousels
     vsettings: {},
     hsettings: {},
-
     extendSettings: function () {
       Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'vertical',
@@ -117,8 +115,12 @@
     },
 
     attach: function (context, settings) {
+
       var slideItem =  $('.episodes-list-slider.horizontal .slide-item'),
           moreButton = $('.episodes-list-slider.horizontal a.more-button');
+
+      //number of visible items for different pages for width screen less than 640px
+      var number_of_items = ($('body').hasClass('consumptionator-page'))? 5 : 3;
 
       Drupal.behaviors.bxslider_carousels.extendSettings();
       Drupal.behaviors.bxslider_carousels.initVSliders();
@@ -126,9 +128,9 @@
         Drupal.behaviors.bxslider_carousels.initHSliders();
       }
 
-      if (slideItem.length > 3){
+      if (slideItem.length > number_of_items){
         if (window.innerWidth < window_size_mobile_641 ){
-          $('.episodes-list-slider.horizontal > ul > li:gt(2)').addClass('hidden');
+          $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
 
           // Show more-button
           moreButton.css('display', 'block');
@@ -151,7 +153,7 @@
               });
               Drupal.behaviors.bxslider_carousels.harray = [];
 
-              $('.episodes-list-slider.horizontal > ul > li:gt(2)').addClass('hidden');
+              $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
               moreButton.css('display', 'block');
             }
           }, 500);
@@ -165,7 +167,7 @@
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
             $(this).removeClass('more').addClass('close');
           } else {
-            $('.episodes-list-slider.horizontal > ul > li:gt(2)').addClass('hidden');
+            $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
             $(this).removeClass('close').addClass('more');
           }
         });

@@ -15221,6 +15221,12 @@ body.person-page #main {
   opacity: 1;
   visibility: visible;
 }
+.carousel-left.start:hover .jcarousel-control-next.inactive {
+  width: 0px;
+}
+.carousel-left.start:hover .jcarousel-control-next.inactive:after {
+  opacity: 0;
+}
 .carousel-left:not(.start) .jcarousel-control-prev.inactive {
   width: 60px;
 }

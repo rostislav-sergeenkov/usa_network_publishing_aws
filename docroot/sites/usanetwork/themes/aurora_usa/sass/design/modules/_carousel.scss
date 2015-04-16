@@ -1,7 +1,7 @@
 .carousel {
   position: relative;
   &.start {
-    .jcarousel-controls{
+    .jcarousel-controls {
       width: 0px;
       &:after {
         opacity: 0;
@@ -373,6 +373,12 @@
         &:after {
           opacity: 1;
           visibility: visible;
+        }
+        &.inactive {
+          width: 0px;
+          &:after {
+            opacity: 0;
+          }
         }
       }
     }

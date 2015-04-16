@@ -14,80 +14,6 @@
  */
 ?>
 
-<style>
-#gracelandcatchup-home {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/gracelandcu_home_bg.jpg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #000;
-  width: 100%;
-  height: auto;
-  padding-top: 56.21%;
-  color: yellow;
-  text-align: center;
-}
-#home-logo {
-  width: 46%;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin: 20% 0 1% -73%;
-}
-#home-tunein {
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  margin: 27% 0 0;
-  width: 100%;
-  text-transform: uppercase;
-}
-#home-countdown {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 30%;
-  margin: 28% 0 1% -65%;
-}
-#home-nav {
-  width: 42%;
-  height: auto%;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin: 38% 0 1% -71%;
-}
-#home-nav li {
-  float: left;
-  display: block;
-  width: 30.333%;
-  margin: 0 1.5%;
-  height: auto;
-}
-#home-nav li .spoiler {
-  float: left;
-  clear: left;
-}
-.spoiler-alert {
-  width: 100%;
-  height: auto;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding-top: 30%;
-}
-.spoiler-high {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/gracelandcu_spoiler_high.png');
-}
-.spoiler-medium {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/gracelandcu_spoiler_medium.png');
-}
-.spoiler-low {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/gracelandcu_spoiler_low.png');
-}
-</style>
-
 <?php
 // @TODO: DV -- SET THE FOLLOWING PATH IN THE MODULE FILE AND MAKE IT AVAILABLE
 // TO ALL TEMPLATE FILES
@@ -155,5 +81,7 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
     </ul>
   </div>
 </div>
+
+<div id="home-usa-logo"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/gracelandcu_usa_logo.png" alt="USA Network logo"></a></div>
 
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>

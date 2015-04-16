@@ -4,8 +4,8 @@
 #microsite h3 {
   line-height: 1em;
 }
-#microsite .full-pane {
-  max-width: 1300px;
+#microsite #quizzes .full-pane {
+  max-width: 1244px;
 }
 #microsite #quizzes .full-pane > h1,
 #microsite #quizzes .full-pane > h3 {
@@ -71,8 +71,9 @@
   left: 0;
   float: left;
   width: 100%;
+  max-width: 1244px;
   margin-top: 40px;
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
 #microsite #quizzes .galleries-nav.narrow {
   width: calc(100% - 340px);
@@ -83,23 +84,27 @@
 }
 #microsite #quizzes .quizzes-nav h3 {
   margin: 0 0 8px;
-  text-shadow: 1px 1px 3px #000;
+  font-size: 1.125em;
+  color: #000;
+  text-transform: uppercase;
 }
 #microsite #quizzes .bx-wrapper {
-  margin: 0 0 60px;
+  margin: 0;
 }
 #microsite #quizzes .quizzes-nav .bx-wrapper {
-  background-color: #000;
-  border-color: #000;
+  background-color: transparent;
+  border-color: transparent;
   -mox-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-/*  height: 216px !important; */
   width: 100%;
+}
+#microsite #quizzes .bx-wrapper ul {
+  margin: 0;
 }
 #microsite #quizzes .quizzes-nav .bx-wrapper .quiz-nav-img {
   width: 100%;
-  height: auto; /* 140px; */
+  height: auto;
   overflow: hidden;
 }
 #microsite #quizzes .quizzes-nav .bx-wrapper img {
@@ -122,7 +127,7 @@
   background: #000;
 }
 #microsite #quizzes .quizzes-nav .bx-pager.bx-default-pager a {
-  background: #666;
+  background: #FFF;
   text-indent: -9999px;
   display: block;
   width: 10px;
@@ -137,7 +142,7 @@
 #microsite #quizzes .quizzes-nav .bx-wrapper .bx-pager.bx-default-pager a.active,
 #microsite #quizzes .quizzes-nav .bx-pager.bx-default-pager a:hover,
 #microsite #quizzes .quizzes-nav .bx-pager.bx-default-pager a.active {
-  background-color: #FFF;
+  background-color: #000;
 }
 #microsite #quizzes .quizzes-nav .bx-pager .bx-pager-item,
 #microsite #quizzes .quizzes-nav .bx-controls-auto .bx-controls-auto-item {
@@ -148,29 +153,32 @@
   opacity: 0;
 }
 #microsite #quizzes .quizzes-nav li {
-  background-color: #1F1F1F;
-  width: 250px;
+  background-color: transparent;
+  width: 200px;
 }
 #microsite #quizzes .quizzes-nav li a {
   width: 100%;
   height: 100%;
   display: block;
-}
-#microsite #quizzes .quizzes-nav li a {
-  border: 1px solid #000;
+  border: 1px solid transparent;
 }
 #microsite #quizzes .quizzes-nav li.active a {
-  border: 1px solid #FFF;
+  border: 1px solid transparent;
+}
+#microsite #quizzes .quizzes-nav li .quiz-nav-img {
+  border: 2px solid transparent;
+}
+#microsite #quizzes .quizzes-nav li.active .quiz-nav-img {
+  border: 2px solid #FFF;
 }
 #microsite #quizzes .quizzes-nav li a .quiz-title {
   font-size: 1em;
-  line-height: 18px;
+  line-height: 1em;
   height: 90px;
-  letter-spacing: 0.03em;
-  padding: 14px 5px;
-  color: #FFF;
-  background-color: #000;
+  padding: 10px 5px;
+  color: #000;
   text-align: left;
+  background-color: transparent;
 }
 #microsite #quizzes .quizzes-nav li a .quiz-title .quiz-h1 {
   font-size: 0.8em;
@@ -200,7 +208,7 @@
   margin-left: 4px;
 }
 #microsite #quizzes .quizzes-nav .btns a {
-  color: #FFF;
+  color: #000;
   width: 35px;
   font-size: 1em;
   line-height: 1em;
@@ -234,13 +242,15 @@
   left: -9999px;
 }
 
-/* Begin media queries */
-@media (max-width: 1200px) {
-  #microsite #quizzes .full-pane {
-    max-width: 100%;
-  }
+/* 300x250 ad */
+.usanetwork-quiz .content-wrap .sidebar .ad-container {
+  display: block;
+  width: 300px;
+  height: 250px;
 }
 
+
+/* BEGIN MEDIA QUERIES */
 @media (max-width: 960px) {
   #microsite #quizzes .usanetwork-quiz .content-wrap .center {
     width: 100%;
@@ -288,7 +298,9 @@
     margin-left: auto;
     margin-right: auto;
   }
-  #microsite #quizzes .usanetwork-quiz .content-wrap .sidebar .ad-container {
+  #microsite .content-wrap .sidebar .ad-container {
     margin: 30px 0 0 -20px;
+    width: auto;
+    height: auto;
   }
 }

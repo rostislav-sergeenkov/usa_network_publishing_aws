@@ -42,6 +42,13 @@
   <div class="video-description"><?php print $description; ?></div>
 <?php endif; ?>
 
+<div class="video-gigya-share">
+  Share this video:
+  <ul>
+    <li>Facebook</li>
+  </ul>
+</div>
+
 <?php /* if (!empty($season_number) || !empty($episode_number)): ?>
   <div class="video-info">
     <?php if (!empty($season_number)): ?>

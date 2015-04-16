@@ -75,6 +75,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
             ),
             'status' => NULL,
             'background_url' => NULL,
+            'cover_image_url' => NULL,
             'preview_image_url' => NULL,
             'social' => array(
               'facebook' => NULL,
@@ -190,7 +191,9 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
     'css' => array(
 //      $module_path . '/css/jquery.bxslider.css',
 //      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/ms_characters_styles.css',
+      $site_theme_path . '/css/fonts.css',
       $site_theme_path . '/css/ms_styles.css',
+      $site_theme_path . '/css/ms_home.css',
       $site_theme_path . '/css/ms_videos.css',
       $site_theme_path . '/css/ms_characters.css',
       $site_theme_path . '/css/trivia.css',
@@ -212,10 +215,10 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
       $site_theme_path . '/js/ms_videos.js',
       $site_theme_path . '/js/ms_characters.js',
       $site_theme_path . '/js/ms_quizzes.js',
-      $module_path . '/js/usanetwork_video_endcard.js',
-      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
       $site_theme_path . '/js/date.js',
       $site_theme_path . '/js/counter.rf.js',
+      $module_path . '/js/usanetwork_video_endcard.js',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );
 }

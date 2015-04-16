@@ -20,7 +20,12 @@
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 
-<div class="full-pane">
+<div id="quiz-section-description" class="section-description">
+Test your knowledge of Graceland. Lorem ipsum dolor sit amet, consectutur adipiscing ellt.<br>
+WARNING &mdash; CONTAINS SPOILERS!
+</div>
+
+<div class="full-pane clearfix">
   <?php if (empty($h1) && !empty($page['title']) && $status == 'active'): ?>
   <h1 class="quiz-title"><?php print $page['title']; ?></h1>
   <?php else: ?>

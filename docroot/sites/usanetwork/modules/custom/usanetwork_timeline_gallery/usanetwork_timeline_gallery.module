@@ -39,6 +39,14 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
   }
 }
 
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_timeline_gallery_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'timeline_gallery') {
+    $node->content['#attached']['js'][] = drupal_get_path('module', 'usanetwork_timeline_gallery') . '/js/timeline_gallery.js';
+  }
+}
 
 /**
  * Implements hook_form_FORM_ID_alter().

@@ -961,6 +961,20 @@ function usanetwork_microsite_get_quiz($node) {
   );
 }
 
+function _usanetwork_microsite_render_page_timeline_gallery($section_wrapper) {
+  $section_object = $section_wrapper->value();
+  $theme_variables = array();
+  if (!empty($section_object->field_ms_timeline_gallery)) {
+    $node = $section_wrapper->field_ms_timeline_gallery->value();
+    // @todo output only published timeline gallery.
+    $node_view = node_view($node, 'inline_content');
+    $rendered_timeline_gallery = drupal_render($node_view);
+    $theme_variables = array(
+      'content' => $rendered_timeline_gallery,
+    );
+  }
+  return $theme_variables;
+}
 /**
  * Provides suggested video url path value
  */

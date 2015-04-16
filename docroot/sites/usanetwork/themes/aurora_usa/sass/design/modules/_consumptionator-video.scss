@@ -8,7 +8,12 @@
     padding: 0;
     position: relative;
     width: 100%;
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($between-1025-1280) {
+      height: calc((100vw - 320px)*0.5625);
+      margin-bottom: calc((100vw - 4px)/48*9 + 60px);
+      overflow: visible;
+    }
+    @include breakpoint($bp-1024-width) {
       height: auto;
     }
     .player-wrapper {
@@ -16,7 +21,11 @@
       height: 100%;
       position: relative;
       width: 74.7%;
-      @include breakpoint($bp-1280-width) {
+      @include breakpoint($between-1025-1280) {
+        width: calc(100% - 320px);
+        z-index: 2;
+      }
+      @include breakpoint($bp-1024-width) {
         height: 56.25vw;
         width: 100%;
       }
@@ -246,6 +255,15 @@
         }
       }
     }
+    #player {
+      height: 100%;
+      position: relative;
+      width: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
     .consum-sidebar {
       background: $consum-back;
       float: left;
@@ -253,7 +271,14 @@
       overflow: hidden;
       position: relative;
       width: 25.3%;
-      @include breakpoint($bp-1280-width) {
+      @include breakpoint($between-1025-1280) {
+        height: 100%;
+        overflow: visible;
+        padding-left: calc(100% - 320px);
+        position: absolute;
+        width: 100%;
+      }
+      @include breakpoint($bp-1024-width) {
         height: auto;
         width: 100%;
       }
@@ -261,7 +286,19 @@
         height: 23.4vw;
         padding: calc((23.4vw - 250px)/2) 0;
         width: 100%;
-        @include breakpoint($bp-1280-width) {
+        @include breakpoint($between-1025-1280) {
+          height: 250px;
+          padding: 0;
+          margin-left: 10px;
+          width: 300px;
+        }
+        @include breakpoint($bp-1024-width) {
+          display: block;
+          float: right;
+          margin: 10px 10px 10px 0;
+          width: 300px;
+        }
+        @include breakpoint($bp-768-width) {
           display: none;
         }
         .advertisement {
@@ -275,8 +312,12 @@
         height: calc(100% - 23.4vw);
         position: relative;
         width: 100%;
-        @include breakpoint($bp-1280-width) {
+        @include breakpoint($between-1025-1280) {
           height: auto;
+          right: 0;
+          position: absolute;
+          top: 100%;
+          width: 100%;
         }
       }
       .clips-block-title {
@@ -290,23 +331,22 @@
           height: 70px;
           line-height: 70px;
         }
-        @include breakpoint($bp-1280-width) {
+        @include breakpoint($between-1025-1280) {
+          text-align: left;
+        }
+        @include breakpoint($bp-1024-width) {
           height: 60px;
           line-height: 60px;
-          padding: 0;
-          text-align: center;
+          padding-left: 20px;
+          text-align: left;
         }
         @include breakpoint($bp-640-width) {
           height: 100px;
           line-height: 100px;
-          padding: 0;
-          text-align: center;
         }
         @include breakpoint($bp-480-width) {
           height: 60px;
           line-height: 60px;
-          padding: 0;
-          text-align: center;
         }
         h2 {
           color: #ffffff;
@@ -471,18 +511,22 @@
         left: 0;
         width: 100%;
         @include breakpoint($bp-1280-width) {
-          display: none;
-        }
-        @include breakpoint($bp-640-width) {
-          right: 0;
-          margin: 0 10px;
+          background: none;
+          bottom: auto;
+          left: auto;
+          right: 10px;
+          top: 100%;
           width: auto;
+        }
+        @include breakpoint($bp-1024-width) {
+          top: 270px;
         }
         & a {
           color: #ffffff;
           display: block;
           font-family: $avalon-demi;
           font-size: 15px;
+          letter-spacing: 1px;
           line-height: 40px;
           padding-left: 25px;
           text-decoration: none;
@@ -490,6 +534,23 @@
           @include breakpoint($bp-min-1901-width) {
             font-size: 23px;
             line-height: 70px;
+          }
+          @include breakpoint($bp-1280-width) {
+            line-height: 45px;
+            padding-left: 0px;
+            padding-right: 30px;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          @include breakpoint($bp-1024-width) {
+            line-height: 60px;
+          }
+          @include breakpoint($bp-640-width) {
+            line-height: 100px;
+          }
+          @include breakpoint($bp-480-width) {
+            line-height: 60px;
           }
           &:after {
             color: #ffffff;
@@ -516,7 +577,10 @@
         height: calc(100% - 250px);
         position: relative;
         width: 100%;
-        @include breakpoint($bp-1280-width) {
+        @include breakpoint($bp-min-1281-width) {
+          display: none;
+        }
+        @include breakpoint($bp-1024-width) {
           height: 270px;
           width: calc(100% - 310px);
         }
@@ -535,8 +599,17 @@
           background: -o-radial-gradient(circle closest-side at 50% 35%, #474747 0%,#121212 140%);
           background: -ms-radial-gradient(circle closest-side at 50% 35%, #474747 0%,#121212 140%);
           background: radial-gradient(circle closest-side at 50% 35%, #474747 0%,#121212 140%);
-
-          @include breakpoint($bp-1280-width) {
+          @include breakpoint($between-1025-1280) {
+            background: #474747;
+            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+            background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+            background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%,#474747), color-stop(175%,#121212));
+            background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+            background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+            background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+            background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+          }
+          @include breakpoint($bp-1024-width) {
             background: #474747;
             background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
             background: -moz-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
@@ -545,6 +618,16 @@
             background: -o-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
             background: -ms-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
             background: radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
+          }
+          @include breakpoint($bp-480-width) {
+            background: #474747;
+            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+            background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+            background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%,#474747), color-stop(175%,#121212));
+            background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+            background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+            background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+            background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
           }
         }
         .image-block {
@@ -557,7 +640,13 @@
             height: 255px;
             width: 282px;
           }
-          @include breakpoint($bp-1280-width) {
+          @include breakpoint($between-1025-1280) {
+            float: left;
+            height: 136px;
+            margin-left: calc(50% - 150px);
+            width: 150px;
+          }
+          @include breakpoint($bp-1024-width) {
             float: left;
             margin-left: calc(50% - 205px);
           }
@@ -577,7 +666,12 @@
             margin: 10px auto;
             max-width: 236px;
           }
-          @include breakpoint($bp-1280-width) {
+          @include breakpoint($between-1025-1280) {
+            font-size: 14px;
+            margin-left: calc(50% + 10px);
+            width: 150px;
+          }
+          @include breakpoint($bp-1024-width) {
             margin-left: calc(50% + 10px);
           }
           @include breakpoint($bp-480-width) {
@@ -606,7 +700,13 @@
             top: 50%;
             margin-top: -7px;
             right: 5px;
-            @include breakpoint($bp-1280-width) {
+            @include breakpoint($between-1025-1280) {
+              font-size: 7px;
+              line-height: 7px;
+              margin-top: -4px;
+              right: 4px;
+            }
+            @include breakpoint($bp-1024-width) {
               font-size: 10px;
               line-height: 10px;
               margin-top: -4px;
@@ -618,7 +718,13 @@
               right: 4px;
             }
           }
-          @include breakpoint($bp-1280-width) {
+          @include breakpoint($between-1025-1280) {
+            font-size: 10px;
+            margin-left: calc(50% + 10px);
+            padding: 5px 10px 5px 5px;
+            width: 130px;
+          }
+          @include breakpoint($bp-1024-width) {
             font-size: 14px;
             margin-left: calc(50% + 10px);
             margin-top: 10px;
@@ -640,28 +746,14 @@
     margin: 0;
   }
   .video-block {
+    margin-bottom: 0;
     .consum-sidebar {
+      .download-app {
+        display: table;
+      }
       .advert {
         height: auto;
         padding: 0;
-        @include breakpoint($bp-1280-width) {
-          display: block;
-          float: right;
-          margin: 10px 10px 10px 0;
-          width: 300px;
-        }
-        @include breakpoint($bp-768-width) {
-          display: none;
-        }
-      }
-    }
-    #player {
-      height: 100%;
-      position: relative;
-      width: 100%;
-      img {
-        height: 100%;
-        width: 100%;
       }
     }
   }

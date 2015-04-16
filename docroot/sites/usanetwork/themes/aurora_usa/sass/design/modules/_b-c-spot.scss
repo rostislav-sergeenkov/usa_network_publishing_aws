@@ -89,20 +89,7 @@
       @include breakpoint($bp-480-width) {
         left: 6%;
       }
-      &:before {
-        left: 50%;
-        margin-left: -18px;
-        margin-top: -18px;
-        top: 50%;
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 30px;
-          height: 50px;
-          line-height: 50px;
-          margin-left: -25px;
-          margin-top: -25px;
-          width: 50px;
-        }
-      }
+
       ~ .meta {
         .title, .caption, .additional {
           margin-left: 19.25%;

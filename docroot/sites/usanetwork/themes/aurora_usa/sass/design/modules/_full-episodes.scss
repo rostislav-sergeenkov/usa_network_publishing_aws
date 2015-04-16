@@ -143,13 +143,7 @@
             left: 5%;
             position: absolute;
             width: 90%;
-            .meta-icon {
-              &:before {
-                left: 0;
-                margin-top: -18.5px;
-                top: 50%;
-              }
-            }
+
             @extend %meta;
             .meta {
               padding-left: 70px;
@@ -273,16 +267,6 @@
                   display: table;
                   height: 100%;
                   width: 100%;
-                }
-                .meta-icon {
-                  &:before {
-                    left: 10px;
-                    margin-top: -18.5px;
-                    top: 50%;
-                    @include breakpoint($bp-1024-width) {
-                      margin-top: -15px;
-                    }
-                  }
                 }
                 @extend %meta;
                 .meta {

@@ -2604,20 +2604,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
-.play-icon:before, .video-icon:before, .play-icon-half:before, .article-icon:before, .game-icon:before, .photo-icon:before, .gallery-icon:before, .poll-icon:before {
-  background: #ffffff;
-  border-radius: 50%;
-  color: #000000;
-  display: block;
-  font-family: "ico-font";
-  font-size: 21px;
-  line-height: 37px;
-  height: 37px;
-  position: absolute;
-  text-align: center;
-  width: 37px;
-}
-
 article,
 aside,
 details,
@@ -3219,73 +3205,105 @@ input[type="radio"], input[type="checkbox"] {
   margin-right: 0.25em;
 }
 
-.play-icon:before, .video-icon:before {
-  content: '\e60f';
+.meta-icon {
+  background-size: contain;
 }
-@media (max-width: 1024px) {
-  .play-icon.resize-avail-1024:before, .play-icon.resize-avail-480:before, .video-icon.resize-avail-1024:before, .video-icon.resize-avail-480:before {
-    font-size: 16px;
-    line-height: 30px;
-    height: 30px;
-    width: 30px;
+
+/*
+.play-icon, .video-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e60f';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
   }
 }
 
-.play-icon-half:before {
-  background: none !important;
-  color: #ffffff !important;
-  font-size: 37px !important;
-  content: '\e60e';
-}
-@media (max-width: 1024px) {
-  .play-icon-half.resize-avail-1024:before, .play-icon-half.resize-avail-480:before {
-    font-size: 16px;
-    line-height: 30px;
-    height: 30px;
-    width: 30px;
+.play-icon-half {
+  &:before {
+    @extend %meta-icon;
+    background: none !important;
+    color: #ffffff !important;
+    font-size: 37px !important;
+    content: '\e60e';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
   }
 }
 
-.article-icon:before {
-  content: '\e612';
-}
-@media (max-width: 1024px) {
-  .article-icon.resize-avail-1024:before, .article-icon.resize-avail-480:before {
-    font-size: 16px;
-    line-height: 30px;
-    height: 30px;
-    width: 30px;
+.article-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e612';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
   }
 }
 
-.game-icon:before {
-  content: '\e611';
-}
-@media (max-width: 1024px) {
-  .game-icon.resize-avail-1024:before, .game-icon.resize-avail-480:before {
-    font-size: 16px;
-    line-height: 30px;
-    height: 30px;
-    width: 30px;
+.game-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e611';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
   }
 }
 
-.photo-icon:before, .gallery-icon:before {
-  content: '\e610';
-}
-@media (max-width: 1024px) {
-  .photo-icon.resize-avail-1024:before, .photo-icon.resize-avail-480:before, .gallery-icon.resize-avail-1024:before, .gallery-icon.resize-avail-480:before {
-    font-size: 16px;
-    line-height: 30px;
-    height: 30px;
-    width: 30px;
+.photo-icon, .gallery-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e610';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
   }
 }
 
-.poll-icon:before {
-  content: '\e60d';
-}
-
+.poll-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e60d';
+  }
+}*/
 .social-usa:after {
   bottom: 8%;
   content: '';

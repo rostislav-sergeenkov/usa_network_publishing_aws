@@ -167,6 +167,25 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
         ),
       ),
     ),
+    'usanetwork_microsite_gracelandcatchup_page_episodes' => array(
+      'template' => 'usanetwork-microsite-gracelandcatchup-page-episodes',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'episodes' => array(
+          0 => array(
+            'id' => NULL,
+            'content_url' => NULL,
+            'title' => NULL,
+            'optional_h1' => NULL,
+            'description' => NULL,
+            'background_url' => NULL,
+            'preview_image_url' => NULL,
+            'status' => NULL,
+          ),
+        ),
+        'section_title' => NULL,
+      ),
+    ),
     'usanetwork_microsite_gracelandcatchup_page_timeline_gallery' => array(
       'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline_gallery',
       'path' => $subtheme_path,

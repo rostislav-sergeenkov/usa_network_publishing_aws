@@ -505,6 +505,20 @@ function usanetwork_tv_shows_entity_insert($entity) {
 }
 
 /**
+ *  Implements hook_entity_query_alter($query)
+ */
+function usanetwork_tv_shows_entity_query_alter($query) {
+  if (isset($query->tags['field_tvs_best_of_items_dynamic_entity_reference'])) {
+    if (!empty($query->metaData['instance_info'])) {
+      $instance_info = $query->metaData['instance_info'];
+      if ($instance_info['bundle_name'] == 'tv_show') {
+        $query->fieldCondition('field_show', 'target_id', $instance_info['entity_id'], '=');
+      }
+    }
+  }
+}
+
+/**
  *  Implements form for cached related data of show.
  */
 function usanetwork_tv_shows_related_content_cache_form($form, &$form_state) {

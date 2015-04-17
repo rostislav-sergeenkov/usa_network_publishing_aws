@@ -1169,7 +1169,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
         : NULL,
       'label_link' => l(t('On now'), 'videos/live'),
       'on_now_caption' => l(t('Watch now'), 'videos/live'),
-      'on_now_live_button' => l(t('live'), 'videos/live'),
+      'on_now_live_button' => l(t('live'), 'videos/live', array('attributes' => array('class' => 'live'))),
     );
   }
 

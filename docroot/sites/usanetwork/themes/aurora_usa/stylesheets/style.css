@@ -21950,9 +21950,9 @@ yx-axis
   width: 100%;
 }
 .aspot-and-episodes .show-aspot .meta-wrap {
-  bottom: 5%;
-  left: 2%;
-  top: auto;
+  left: 0;
+  top: 0;
+  position: absolute;
 }
 .aspot-and-episodes .show-aspot .meta-wrap .show-title {
   font-size: 40px;

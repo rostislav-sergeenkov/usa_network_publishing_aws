@@ -765,6 +765,7 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
   $items = array();
   $block_items = '';
   $i = 0;
+
   foreach ($carousel_episodes as $episode) {
     $episode_wrapper = entity_metadata_wrapper('file', $episode);
 
@@ -793,7 +794,7 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
   }
 
   if (!empty($items)) {
-    $episodes_number = count($items);
+    $episodes_number = $i;
     $carousel = array(
       'carousel_class' => 'carousel_' . $row_number . '_rows',
       'title' => !empty($block_title) ? $block_title : t('Latest Full Episodes'),

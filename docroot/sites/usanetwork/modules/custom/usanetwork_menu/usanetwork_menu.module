@@ -336,6 +336,15 @@ function usanetwork_menu_theme() {
       ),
       'template' => 'templates/usanetwork-menu-consumptionator_catchall',
     ),
+    'usanetwork_menu_consumptionator_gallery' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'gallery_name' => NULL,
+        'details' => array(),
+      ),
+      'template' => 'templates/usanetwork-menu-consumptionator_gallery',
+    ),
     'usanetwork_menu_consumptionator_live_video' => array(
       'variables' => array(
         'show_url' => NULL,
@@ -890,8 +899,13 @@ function _usanetwork_menu_consumptionator_block() {
     }
   }
   elseif ($entity = menu_get_object('node')) {
-    if (isset($entity->type) && $entity->type == 'catchall_page') {
-      return _usanetwork_menu_consumptionator_block_catchall($entity);
+    if (isset($entity->type)) {
+      if ($entity->type == 'catchall_page') {
+        return _usanetwork_menu_consumptionator_block_catchall($entity);
+      }
+      elseif ($entity->type == 'media_gallery') {
+        return _usanetwork_menu_consumptionator_block_gallery($entity);
+      }
     }
   }
   else { // Process like "Live video" block
@@ -900,7 +914,7 @@ function _usanetwork_menu_consumptionator_block() {
 }
 
 /**
- * Renders Consumtionator Menu block for video.
+ * Renders Consumtionator Menu block for catchall.
  */
 function _usanetwork_menu_consumptionator_block_catchall($node) {
 
@@ -925,6 +939,32 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
   return '';
 }
 
+/**
+ * Renders Consumtionator Menu block for gallery.
+ */
+function _usanetwork_menu_consumptionator_block_gallery($node) {
+
+  if (!empty($node)) {
+
+    $entity_wrapper = entity_metadata_wrapper('node', $node);
+    if (!empty($node->field_cover_item)) {
+      $image = $entity_wrapper->field_cover_item->value();
+    }
+    $theme_variables = array(
+      'main_url' => url('<front>'),
+      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'gallery_name' => !empty($node->title) ? $node->title : '',
+      'details' => array(
+        'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
+        'description' => !empty($node->body) ? $entity_wrapper->body->value->value() : '',
+        'gallery_type' => !empty($node->field_gallery_type) ? $entity_wrapper->field_gallery_type->value() : '',
+      ),
+    );
+    return theme('usanetwork_menu_consumptionator_gallery', $theme_variables);
+  }
+  return '';
+}
 /**
  * Renders Consumtionator Menu block for video.
  */

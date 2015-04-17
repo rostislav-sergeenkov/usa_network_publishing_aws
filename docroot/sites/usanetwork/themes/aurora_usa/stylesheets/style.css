@@ -12871,8 +12871,10 @@ footer h2 {
 }
 .shows-block .show-info-block .social-icons a {
   display: block;
+  height: auto;
   margin: 0px 0px 20px 10px;
   opacity: 0.6;
+  width: auto;
 }
 @media (max-width: 1024px) {
   .shows-block .show-info-block .social-icons a {

@@ -2764,13 +2764,13 @@ function _usanetwork_mpx_video_render_related_content_item_default($data) {
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
     'caption' => !empty($data->promo_topic)
-      ? $data->promo_topic
+      ? htmlspecialchars($data->promo_topic)
       : $data->show_title,
     'title' => !empty($data->promo_title)
-      ? $data->promo_title
+      ? htmlspecialchars($data->promo_title)
       : $data->title,
     'additional' => !empty($data->promo_description)
-      ? $data->promo_description
+      ? htmlspecialchars($data->promo_description)
       : '',
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,

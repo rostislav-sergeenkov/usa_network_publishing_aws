@@ -1541,6 +1541,7 @@ function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is
  * @return mixed|string
  */
 function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALSE, $is_big = FALSE) {
+
   $classes = array();
   $desktop_image = $mobile_image = '';
   $target_url = '<front>';
@@ -1578,13 +1579,13 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
     'caption' => !empty($data->promo_topic)
-      ? $data->promo_topic
+      ? htmlspecialchars($data->promo_topic)
       : $data->show_title,
     'title' => !empty($data->promo_title)
-      ? $data->promo_title
+      ? htmlspecialchars($data->promo_title)
       : $data->title,
     'additional' => !empty($data->promo_description)
-      ? $data->promo_description
+      ? htmlspecialchars($data->promo_description)
       : '',
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,

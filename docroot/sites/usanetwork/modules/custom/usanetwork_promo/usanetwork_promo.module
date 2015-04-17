@@ -282,23 +282,24 @@ function _usanetwork_promo_pull_entity_promo_details($entity_object, $entity_wra
 
   $promo_variables = array(
     'topic' => !empty($entity_object->field_promo_topic)
-      ? check_plain($entity_wrapper->field_promo_topic->value())
+      ? htmlspecialchars($entity_wrapper->field_promo_topic->value())
       : '',
     'show_name' => !empty($entity_object->field_promo_violator_name)
-      ? check_plain($entity_wrapper->field_promo_violator_name->value())
+      ? htmlspecialchars($entity_wrapper->field_promo_violator_name->value())
       : '',
     'promo_title' => !empty($entity_object->field_promo_title)
-      ? check_plain($entity_wrapper->field_promo_title->value())
+      ? htmlspecialchars($entity_wrapper->field_promo_title->value())
       : '',
     'description' => !empty($entity_object->field_promo_long_description)
-      ? check_plain($entity_wrapper->field_promo_long_description->value())
+      ? htmlspecialchars($entity_wrapper->field_promo_long_description->value())
       : '',
     'cta' => !empty($entity_object->field_promo_call_to_action_text)
-      ? check_plain($entity_wrapper->field_promo_call_to_action_text->value())
+      ? htmlspecialchars($entity_wrapper->field_promo_call_to_action_text->value())
       : '',
     'icon_type' => 'video-icon',
     'show_class' => '',
   );
+
   if (!empty($entity_object->field_call_to_action_type)) {
     $taxonomy_term = $entity_wrapper->field_call_to_action_type->value();
     $promo_variables['icon_type'] = str_replace(' ', '_', $taxonomy_term->name) . '-icon';

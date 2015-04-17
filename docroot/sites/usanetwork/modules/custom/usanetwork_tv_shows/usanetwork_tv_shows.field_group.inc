@@ -477,6 +477,34 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_latest_episodes_alt|node|tv_show|form';
+  $field_group->group_name = 'group_latest_episodes_alt';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_custom_tab';
+  $field_group->data = array(
+    'label' => 'Latest Full Episode Alternate Content Area',
+    'weight' => '87',
+    'children' => array(
+      0 => 'field_tvs_lea_block_title',
+      1 => 'field_alternative_content',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-latest-episodes-alt field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_latest_episodes_alt|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_newsletter|node|tv_show|form';
   $field_group->group_name = 'group_newsletter';
   $field_group->entity_type = 'node';
@@ -938,8 +966,8 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_tvs_desktop_cimage',
       1 => 'field_tvs_mobile_cimage',
-      2 => 'field_tvs_promoted_content',
-      3 => 'field_tvs_promo_items',
+      2 => 'field_tvs_promo_items',
+      3 => 'field_tvs_promoted_content',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1053,9 +1081,10 @@ function usanetwork_tv_shows_field_group_info() {
       6 => 'field_tvs_about',
       7 => 'group_usa_tv_promo_vids',
       8 => 'group_usa_tv_promo',
-      9 => 'group_show_aspots',
+      9 => 'group_latest_episodes_alt',
       10 => 'group_full_bleed_promo',
-      11 => 'group_tvs_best_of',
+      11 => 'group_show_aspots',
+      12 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

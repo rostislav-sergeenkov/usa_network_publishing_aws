@@ -64,11 +64,6 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
       );
 
       // section_type = 'about'
-      $form[$k]['field_ms_section_text']['#states'] = array(
-        'visible' => array(
-          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'about'),
-        ),
-      );
       $form[$k]['field_quotation']['#states'] = array(
         'visible' => array(
           ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'about'),

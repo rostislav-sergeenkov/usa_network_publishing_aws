@@ -21,7 +21,7 @@ function usanetwork_microsite_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-SPOTS',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_usa_tv_a_spot',
       1 => 'group_ms_slide_settings',
@@ -80,7 +80,7 @@ function usanetwork_microsite_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_usa_tv_promo',
       1 => 'field_usa_tv_promo_large',
@@ -196,7 +196,7 @@ function usanetwork_microsite_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'SEO',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_seo_h1',
       1 => 'field_seo_page_title',

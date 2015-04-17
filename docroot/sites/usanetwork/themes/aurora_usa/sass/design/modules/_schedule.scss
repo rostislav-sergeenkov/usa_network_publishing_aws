@@ -18,6 +18,7 @@
         margin-right: 20px;
         position: relative;
         vertical-align: middle;
+        min-width: 235px;
         &:last-child {
           margin-right: 0;
         }
@@ -36,13 +37,13 @@
         .filter-label {
           border: 1px solid $footer-back;
           cursor: pointer;
-          font-size: 20px;
+          font-size: 21px;
           font-family: $avalon-demi;
           line-height: 40px;
           overflow: hidden;
           position: relative;
           padding: 0 50px 0 20px;
-          text-transform: uppercase;
+          color: $gray-dark-darker;
           &:after {
             content: "\e609";
             color: $poll-color;
@@ -67,7 +68,6 @@
           width: 100%;
           z-index: 2;
           li {
-            height: 40px;
             overflow: hidden;
             position: relative;
             width: 100%;
@@ -77,13 +77,12 @@
               font-size: 20px;
               font-family: $avalon-demi;
               height: 100%;
-              line-height: 40px;
-              padding-left: 20px;
+              line-height: 22px;
+              padding: 9px 20px;
               text-decoration: none;
-              text-transform: uppercase;
               width: 100%;
               &:hover, &.active {
-                color: $poll-color;
+                color: $gray-dark-darker;
               }
             }
           }

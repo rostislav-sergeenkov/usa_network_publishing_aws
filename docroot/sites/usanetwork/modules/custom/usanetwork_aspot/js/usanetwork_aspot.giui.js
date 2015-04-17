@@ -160,6 +160,8 @@
             heightPercent_m = 0;
           }
 
+          console.info(itemElement.attr('id') + ': ' + itemElement.data('rel') + '- ' + itemElement.css('display'));
+
           elementsMeta[itemElement.data('rel')] = {
             'elementId': itemElement.attr('id'),
             'dataRel': itemElement.data('rel'),

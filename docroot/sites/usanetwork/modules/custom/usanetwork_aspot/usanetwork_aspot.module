@@ -789,6 +789,8 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
 function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
 
   $output = 'position: absolute; ';
+  $output .= 'display: ';
+  $output .= isset($draggable_data_element->display) ? $draggable_data_element->display. '; ' : 'none; ';
   $output .= 'top: ';
   $output .= isset($draggable_data_element->percentX) ? $draggable_data_element->percentX . '%; ' : 'auto; ';
   $output .= 'left: ';
@@ -799,6 +801,8 @@ function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
 function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_element) {
 
   $output = 'position: absolute; ';
+  $output .= 'display: ';
+  $output .= isset($draggable_data_element->display) ? $draggable_data_element->display. '; ' : 'none; ';
   $output .= 'top: ';
   $output .= isset($draggable_data_element->percentMX) ? $draggable_data_element->percentMX . '%; ' : 'auto; ';
   $output .= 'left: ';

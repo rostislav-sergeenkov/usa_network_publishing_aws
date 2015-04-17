@@ -1060,6 +1060,12 @@
   @include breakpoint($bp-768-width) {
     text-align: center;
   }
+  @include breakpoint($bp-480-width) {
+    display: table;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
   h1 {
     color: #ffffff;
     float: left;
@@ -1079,6 +1085,14 @@
       font-size: 36px;
       line-height: 100px;
       max-width: 380px;
+    }
+    @include breakpoint($bp-480-width) {
+      display: table-cell;
+      float: none;
+      font-size: 16px;
+      line-height: 1;
+      text-align: center;
+      vertical-align: middle;
     }
   }
   .schedule {

@@ -13666,6 +13666,14 @@ footer h2 {
     text-align: center;
   }
 }
+@media (max-width: 480px) {
+  .show-title-block {
+    display: table;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+}
 .show-title-block h1 {
   color: #ffffff;
   float: left;
@@ -13689,6 +13697,16 @@ footer h2 {
     font-size: 36px;
     line-height: 100px;
     max-width: 380px;
+  }
+}
+@media (max-width: 480px) {
+  .show-title-block h1 {
+    display: table-cell;
+    float: none;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
   }
 }
 .show-title-block .schedule {

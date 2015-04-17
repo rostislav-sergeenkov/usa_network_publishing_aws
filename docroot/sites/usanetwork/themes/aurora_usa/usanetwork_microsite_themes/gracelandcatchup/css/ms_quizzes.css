@@ -7,15 +7,32 @@
 #microsite #quizzes .full-pane {
   max-width: 1244px;
 }
+#microsite #quizzes #viewport {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#microsite #quizzes .active-quiz-title {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
 #microsite #quizzes .full-pane > h1,
-#microsite #quizzes .full-pane > h3 {
-  font-size: 1.9em;
+#microsite #quizzes .full-pane > h3,
+#microsite #quizzes .active-quiz-title > h1,
+#microsite #quizzes .active-quiz-title h3 {
+  font-size: 2.4em;
   line-height: 1em;
   margin: 0 auto;
   max-width: 1244px;
+  z-index: 10;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px #000;
 }
 #microsite #quizzes .full-pane > h1.seo-h1,
-#microsite #quizzes .full-pane > h3.seo-h1 {
+#microsite #quizzes .full-pane > h3.seo-h1,
+#microsite #quizzes .active-quiz-title > h1.seo-h1,
+#microsite #quizzes .active-quiz-title > h3.seo-h1 {
   font-size: 1em;
   line-height: 1.5em;
   text-transform: none;
@@ -249,6 +266,10 @@
   height: 250px;
 }
 
+/* loading animation */
+#quiz-loader img {
+  width: auto;
+}
 
 /* BEGIN MEDIA QUERIES */
 @media (max-width: 960px) {
@@ -288,6 +309,23 @@
   }
   #microsite #quizzes .quizzes-nav li a .quiz-title {
     height: 120px;
+  }
+#microsite #quizzes .active-quiz-title {
+  top: 10px;
+  left: 10px;
+}
+  #microsite #quizzes .full-pane > h1,
+  #microsite #quizzes .full-pane > h3,
+  #microsite #quizzes .active-quiz-title > h1,
+  #microsite #quizzes .active-quiz-title h3 {
+    font-size: 1.7em;
+  }
+  #microsite #quizzes .full-pane > h1.seo-h1,
+  #microsite #quizzes .full-pane > h3.seo-h1,
+  #microsite #quizzes .active-quiz-title > h1.seo-h1,
+  #microsite #quizzes .active-quiz-title > h3.seo-h1 {
+    font-size: 0.8em;
+    line-height: 1em;
   }
 }
 

@@ -195,20 +195,20 @@
 
           if (typeof callback == 'function') callback();
 
+          // change quiz title
+          $('#microsite #quizzes .full-pane > h1, #microsite #quizzes .full-pane > h3, #microsite #quizzes .active-quiz-title > h1, #microsite #quizzes .active-quiz-title > h3').animate({'opacity': 0}, 1000, function(){
+            if ($(this).hasClass('seo-h1')) {
+              $(this).html(data.h1).animate({'opacity': 1}, 1000);
+            }
+            else {
+              $(this).html(data.title).animate({'opacity': 1}, 1000);
+            }
+          });
+
           // change quiz
           $('#microsite #quizzes').animate({'scrollTop': 0}, 1000, function(){
             // quiz is hidden here
             activeQuizContainer.find('li').attr({'id': 'quiz-' + data.nid, 'data-node-id': data.nid}).animate({'opacity': 0}, 1000, function(){
-
-              // change quiz title
-              $('#microsite #quizzes .full-pane > h1, #microsite #quizzes .full-pane > h3').animate({'opacity': 0}, 1000, function(){
-                if ($(this).hasClass('seo-h1')) {
-                  $(this).html(data.h1).animate({'opacity': 1}, 1000);
-                }
-                else {
-                  $(this).html(data.title).animate({'opacity': 1}, 1000);
-                }
-              });
 
               // @TODO: DV: The following line of code was added because the
               // Dig microsite has more than one #gigya-share element in the html,

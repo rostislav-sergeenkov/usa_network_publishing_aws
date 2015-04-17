@@ -35,6 +35,7 @@
 //        });
 
         Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+        Drupal.behaviors.ms_global.create728x90Ad('characters');
       });
 
       // initialize clicks on microsite character close button
@@ -47,6 +48,7 @@
             $('#character-nav li, #character-info li').removeClass('active');
 //          });
           Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+          // Drupal.behaviors.ms_global.create728x90Ad('characters');
         });
       });
     }

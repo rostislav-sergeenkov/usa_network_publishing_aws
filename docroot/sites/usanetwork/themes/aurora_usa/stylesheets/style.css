@@ -13662,6 +13662,7 @@ footer h2 {
 @media (max-width: 768px) {
   .show-title-block {
     text-align: center;
+    position: relative;
   }
 }
 .show-title-block h1 {
@@ -13675,6 +13676,13 @@ footer h2 {
   max-width: 260px;
   text-transform: uppercase;
 }
+@media (min-width: 1901px) {
+  .show-title-block h1 {
+    font-size: 36px;
+    line-height: 100px;
+    max-width: 380px;
+  }
+}
 @media (max-width: 1024px) {
   .show-title-block h1 {
     font-size: 18px;
@@ -13682,11 +13690,21 @@ footer h2 {
     max-width: 194px;
   }
 }
-@media (min-width: 1901px) {
+@media (max-width: 480px) {
   .show-title-block h1 {
-    font-size: 36px;
-    line-height: 100px;
-    max-width: 380px;
+    font-size: 16px;
+    line-height: 50px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+@media (max-width: 320px) {
+  .show-title-block h1 {
+    line-height: 1.5em;
   }
 }
 .show-title-block .schedule {

@@ -301,10 +301,10 @@ section h2 {
 #microsite #sections {
   margin: 0;
   padding: 0;
-  background-color: #E3E3E3;
+  background-color: #AEAFB1;
 }
 .section {
-  background-color: #E3E3E3;
+  background-color: #AEAFB1;
   position: relative;
   top: 0;
   left: 0;
@@ -323,11 +323,11 @@ section h2 {
 #characters section {
   padding-bottom: 30px;
 }
-#section:nth-child(even) {
-  background-color: #E3E3E3;
+#section:nth-child(odd) {
+  background-color: #AEAFB1;
 }
-.section:nth-child(odd) {
-  background-color: #AAA;
+.section:nth-child(even) {
+  background-color: #DEDEDE;
 }
 
 /* ADS */

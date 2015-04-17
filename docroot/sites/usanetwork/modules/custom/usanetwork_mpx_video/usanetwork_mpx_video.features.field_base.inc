@@ -133,14 +133,49 @@ function usanetwork_mpx_video_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mpx_full_episode',
-    'foreign keys' => array(
+    'indexes' => array(
       'format' => array(
-        'columns' => array(
-          'format' => 'format',
+        0 => 'format',
+      ),
         ),
-        'table' => 'filter_format',
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_mpx_image'
+  $field_bases['field_mpx_image'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mpx_image',
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
       ),
     ),
+    'locked' => 0,
+    'module' => 'image',
+    'settings' => array(
+      'default_image' => 0,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'image',
+  );
+
+  // Exported field_base: 'field_mpx_image_value'
+  $field_bases['field_mpx_image_value'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mpx_image_value',
     'indexes' => array(
       'format' => array(
         0 => 'format',

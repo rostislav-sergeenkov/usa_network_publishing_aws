@@ -18,6 +18,8 @@
 
       var bg_offset_value, bg_offset_image_url, bg_offset_image_url_mobile, aspot_elements;
 
+      $('#edit-field-aspot-' + prefix + 'gi-draggable-data').hide();
+
       if (prefix === '') {
         aspot_elements = Drupal.settings.giui_settings.aspot_elements;
         bg_offset_value = Drupal.settings.giui_settings.desktop.bg_offset_value;
@@ -92,6 +94,8 @@
 
         $('#aspot-draggable-' + draggableId + inputElementName).show();
         $('#mobile-aspot-draggable-' + draggableId + inputElementName).show();
+
+        usanetwork_aspot_giui_fill_draggable_items_input();
       }
 
       /**
@@ -108,6 +112,8 @@
 
         $('#aspot-draggable-' + draggableId  + inputElementName).hide();
         $('#mobile-aspot-draggable-' + draggableId  + inputElementName).hide();
+
+        usanetwork_aspot_giui_fill_draggable_items_input();
       }
 
       /**
@@ -145,8 +151,8 @@
           var currentElement_mCY = Math.round(parseInt(mobileItemElement.css('top')) + mobileItemElement.height() / 2);
           var invert_mX = currentElement_mCX > map_mCX ? true : false;
           var invert_mY = currentElement_mCY > map_mCY ? true : false;
-          var widthPercent_m = Math.round(parseInt(mobileItemElement.css('left')) / carouselElementPreviewingContainer.width() * 100);
-          var heightPercent_m = Math.round(parseInt(mobileItemElement.css('top')) / carouselElementPreviewingContainer.height() * 100);
+          var widthPercent_m = Math.round(parseInt(mobileItemElement.css('left')) / carouselElementPreviewingBlockMobile.width() * 100);
+          var heightPercent_m = Math.round(parseInt(mobileItemElement.css('top')) / carouselElementPreviewingBlockMobile.height() * 100);
           if (widthPercent_m < 0) {
             widthPercent_m = 0;
           }
@@ -157,6 +163,7 @@
           elementsMeta[itemElement.data('rel')] = {
             'elementId': itemElement.attr('id'),
             'dataRel': itemElement.data('rel'),
+            'display' : itemElement.css('display'),
             'left': itemElement.css('left'),
             'top': itemElement.css('top'),
             'leftM': mobileItemElement.css('left'),
@@ -197,7 +204,7 @@
           }
         });
 
-        block.find('#' + draggableId + 'aspot_draggable_items_data').text(JSON.stringify(elementsMeta));
+        block.find('#' + draggableId + 'aspot_draggable_items_data').empty().text(JSON.stringify(elementsMeta));
 
       }
 
@@ -425,6 +432,7 @@
             dataPosition[name] = {
               "elementId": itemElem.elementId,
               "dataRel": itemElem.dataRel,
+              'display' : itemElement.display,
               "left": itemElem.left,
               "top": itemElem.top,
               "leftM": itemElem.leftM,

@@ -13702,23 +13702,6 @@ footer h2 {
 }
 @media (max-width: 480px) {
   .show-title-block h1 {
-    font-size: 16px;
-    line-height: 50px;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-}
-@media (max-width: 320px) {
-  .show-title-block h1 {
-    line-height: 1.5em;
-  }
-}
-@media (max-width: 480px) {
-  .show-title-block h1 {
     display: table-cell;
     float: none;
     font-size: 16px;

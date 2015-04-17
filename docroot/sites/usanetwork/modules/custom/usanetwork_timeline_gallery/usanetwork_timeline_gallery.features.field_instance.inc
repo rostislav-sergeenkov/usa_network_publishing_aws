@@ -940,7 +940,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -1090,7 +1090,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 

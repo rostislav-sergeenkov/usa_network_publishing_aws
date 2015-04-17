@@ -1124,7 +1124,6 @@ header {
           }
         }
         .on-now-panel-title {
-          color: $footer-links;
           font-family: $avalon-demi;
           left: 0;
           position: absolute;
@@ -1139,6 +1138,9 @@ header {
             }
             @include breakpoint($bp-1280-width) {
               font-size: 20px;
+            }
+            a {
+              color: $footer-links;
             }
           }
           .episode-airtime {

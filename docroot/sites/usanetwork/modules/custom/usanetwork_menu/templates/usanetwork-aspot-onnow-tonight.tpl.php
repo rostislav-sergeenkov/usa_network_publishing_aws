@@ -1,6 +1,6 @@
 <div class="schedule-on-tonight">
   <div class="schedule-carousel">
-    <div style="width: 1482px;" class="schedule-block on-now">
+    <div class="schedule-block on-now">
       <div class="schedule-item-wrapper">
 
         <?php if (!empty($on_now_block_item['up_next'])): ?>
@@ -24,13 +24,13 @@
                   </div>
                 <?php endif; ?>
                 <div class="icons-block">
-                  <?php if (!empty($on_now_block_item['up_next']['syndicated_url'])): ?>
-                    <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)"
-                       data-url="<?php print $on_now_block_item['up_next']['syndicated_url']; ?>"></a>
-                  <?php endif; ?>
                   <?php if (!empty($on_now_block_item['up_next']['episode_full_url'])): ?>
                     <a class="episode-description icon"
                        href="<?php print $on_now_block_item['up_next']['episode_full_url']; ?>"></a>
+                  <?php endif; ?>
+                  <?php if (!empty($on_now_block_item['up_next']['syndicated_url'])): ?>
+                    <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)"
+                       data-url="<?php print $on_now_block_item['up_next']['syndicated_url']; ?>"></a>
                   <?php endif; ?>
                 </div>
               </div>
@@ -41,10 +41,10 @@
           <div class="schedule-item">
             <div class="schedule-item-wrap">
               <div class="time">
-                <span><?php if (!empty($on_now_block_item['on_now']['label_link'])): print $on_now_block_item['on_now']['label_link']; endif;?></span>
+                <?php if (!empty($on_now_block_item['on_now']['label_link'])): print $on_now_block_item['on_now']['label_link']; endif;?>
                 <div class="watch-now">
-                  <span class="live"><?php if (!empty($on_now_block_item['on_now']['on_now_live_button'])): print $on_now_block_item['on_now']['on_now_live_button']; endif;?></span>
-                  <span><?php if (!empty($on_now_block_item['on_now']['on_now_caption'])): print $on_now_block_item['on_now']['on_now_caption']; endif;?></span>
+                  <?php if (!empty($on_now_block_item['on_now']['on_now_live_button'])): print $on_now_block_item['on_now']['on_now_live_button']; endif;?>
+                  <?php if (!empty($on_now_block_item['on_now']['on_now_caption'])): print $on_now_block_item['on_now']['on_now_caption']; endif;?>
                 </div>
               </div>
               <div class="episode-info">
@@ -58,13 +58,13 @@
                   </div>
                 <?php endif; ?>
                 <div class="icons-block">
-                  <?php if (!empty($on_now_block_item['on_now']['syndicated_url'])): ?>
-                    <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)"
-                       data-url="<?php print $on_now_block_item['on_now']['syndicated_url']; ?>"></a>
-                  <?php endif; ?>
                   <?php if (!empty($on_now_block_item['on_now']['episode_full_url'])): ?>
                     <a class="episode-description icon"
                        href="<?php print $on_now_block_item['on_now']['episode_full_url']; ?>"></a>
+                  <?php endif; ?>
+                  <?php if (!empty($on_now_block_item['on_now']['syndicated_url'])): ?>
+                    <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)"
+                       data-url="<?php print $on_now_block_item['on_now']['syndicated_url']; ?>"></a>
                   <?php endif; ?>
                 </div>
               </div>
@@ -89,13 +89,13 @@
                   </div>
                 </div>
                 <div class="icons-block">
-                  <?php if (!empty($tonight_block_item['syndicated_url'])): ?>
-                    <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)"
-                       data-url="<?php print $tonight_block_item['syndicated_url']; ?>"></a>
-                  <?php endif; ?>
                   <?php if (!empty($tonight_block_item['episode_full_url'])): ?>
                     <a class="episode-description icon"
                        href="<?php print $tonight_block_item['episode_full_url']; ?>"></a>
+                  <?php endif; ?>
+                  <?php if (!empty($tonight_block_item['syndicated_url'])): ?>
+                    <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)"
+                       data-url="<?php print $tonight_block_item['syndicated_url']; ?>"></a>
                   <?php endif; ?>
                 </div>
               </div>
@@ -111,8 +111,9 @@
     </a>
   </div>
   <div class="schedule-buttons on-tonight">
-    <a class="on-now" data-class="on-now" href="#" style="display: block;"><span><?php print t('On now'); ?></span></a>
-    <a class="on-tonight disabled active" data-class="on-tonight" href="#"
-       style="display: block;"><span><?php print t('Tonight'); ?></span></a>
+    <a class="on-now" data-class="on-now" href="#" ><span><?php print t('On now'); ?></span></a>
+    <a class="on-tonight disabled active" data-class="on-tonight" href="#">
+      <span><?php print t('Tonight'); ?></span>
+    </a>
   </div>
 </div>

@@ -653,8 +653,11 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
     $value = $aspot_node_wrapper->field_aspot_gi_title->value();
     $theme_array['show_title'] = $value['value'];
   }
+  $theme_array['cta_buttons'] = array();
+  if (!empty($draggable_data->data->aspot_elements) && !empty($aspot_node->field_aspot_gi_cta)) {
+    $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper->field_aspot_gi_cta->value(), $draggable_data->data->aspot_elements);
+  }
 
-  $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
 
   if (in_array('social_meter', $enabled_elements) && module_exists('usanetwork_social_meter')) {
     $theme_array['social_meter'] = usanetwork_social_meter_get($aspot_node);
@@ -775,7 +778,10 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
 
   }
 
-  $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
+  $theme_array['cta_buttons'] = array();
+  if (!empty($draggable_data->data->aspot_elements) && !empty($aspot_node->field_aspot_gi_cta)) {
+    $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper->field_aspot_gi_cta->value(), $draggable_data->data->aspot_elements);
+  }
   $theme_array['show_title'] = $value['value'];
   if (in_array('social_meter', $enabled_elements) && module_exists('usanetwork_social_meter')) {
     $theme_array['social_meter'] = usanetwork_social_meter_get($aspot_node);
@@ -810,52 +816,25 @@ function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_eleme
   return $output;
 }
 
-function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data) {
+function _usanetwork_aspot_get_draggable_cta_buttons($aspot_gi_cta_elements, $draggable_data_cta) {
   $cta_buttons_theme_data = array();
-  $aspot_node = $aspot_node_wrapper->value();
-
-  if (!empty($aspot_node_wrapper) && !empty($aspot_node->field_aspot_gi_cta)) {
+  if (!empty($aspot_gi_cta_elements) && !empty($draggable_data_cta)) {
     $cta_index = 0;
-
-    foreach ($aspot_node_wrapper->field_aspot_gi_cta as $cta_wrapper_element) {
+    foreach ($aspot_gi_cta_elements as $cta_element) {
       $cta_draggable_name = 'cta_button_' . $cta_index;
-
-      if (!empty($draggable_data->data->aspot_elements->$cta_draggable_name)) {
+      if (!empty($draggable_data_cta->$cta_draggable_name)) {
         $cta_buttons_theme_data[$cta_index] = array(
-          'url' => $cta_wrapper_element->url->value(),
-          'text' => $cta_wrapper_element->title->value(),
+          'url' => $cta_element['url'],
+          'text' => $cta_element['title'],
           'style' => array(
-            'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->$cta_draggable_name),
-            'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->$cta_draggable_name)
+            'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data_cta->$cta_draggable_name),
+            'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_cta->$cta_draggable_name)
           )
         );
       }
-
       $cta_index++;
     }
   }
-
-  if (!empty($aspot_node_wrapper) && !empty($aspot_node->field_aspot_tgi_cta)) {
-    $cta_index = 0;
-
-    foreach ($aspot_node_wrapper->field_aspot_tgi_cta as $cta_wrapper_element) {
-      $cta_draggable_name = 'cta_button_' . $cta_index;
-
-      if (!empty($draggable_data->data->tvs_aspot_elements->$cta_draggable_name)) {
-        $cta_buttons_theme_data[$cta_index] = array(
-          'url' => $cta_wrapper_element->url->value(),
-          'text' => $cta_wrapper_element->title->value(),
-          'style' => array(
-            'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->$cta_draggable_name),
-            'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->$cta_draggable_name)
-          )
-        );
-      }
-
-      $cta_index++;
-    }
-  }
-
   return $cta_buttons_theme_data;
 }
 

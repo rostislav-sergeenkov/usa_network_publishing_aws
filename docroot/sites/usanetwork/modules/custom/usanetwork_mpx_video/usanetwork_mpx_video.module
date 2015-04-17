@@ -21,6 +21,7 @@ define("USA_MPX_VIDEO_FULL_VIDEO", "Full video");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_VIDEO_RELATED_CONTENT_ITEMS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
+define('USA_MPX_IMAGE_SIZE', '1080');
 
 /**
  * Implementation of hook_menu().
@@ -1083,6 +1084,17 @@ function usanetwork_mpx_video_file_presave($file) {
     $id++;
   }
 
+  $field_mpx_image_value = field_get_items('file', $file, 'field_mpx_image_value');
+  if ($field_mpx_image_value) {
+    $field_mpx_image_value = reset($field_mpx_image_value);
+    $path = parse_url($field_mpx_image_value['value'], PHP_URL_PATH);
+    $path_fragments = explode('/', $path);
+    $filename = end($path_fragments);
+    $image = file_get_contents($field_mpx_image_value['value']);
+    $save_image = file_save_data($image, 'public://' . $filename, FILE_EXISTS_REPLACE);
+    $file->field_mpx_image = array(LANGUAGE_NONE => array('0' => (array)$save_image));
+  }
+
   $set_alias = FALSE;
 
   $full_episodes = field_get_items('file', $file, 'field_mpx_full_episode');
@@ -1241,7 +1253,24 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
         } else {
           $media_item['field_data'][$field['field_name']] = $value;
         }
-      } else {
+      } elseif ($field['field_name'] == 'field_mpx_image_value') {
+        $value_images = $media_data[$field_pattern];
+        foreach ($value_images as $value_image) {
+          if ($value_image['plfile$height'] == USA_MPX_IMAGE_SIZE) {
+            $image_url = $value_image['plfile$streamingUrl'];
+          }
+        }
+        if (!isset($image_url)) {
+          $default_value = $value_images[0]['plfile$height'];
+          foreach ($value_images as $value_image) {
+            if ($value_image['plfile$height'] >= $default_value) {
+              $image_url = $value_image['plfile$streamingUrl'];
+            }
+          }
+        }
+        $media_item['field_data'][$field['field_name']] = $image_url;
+      }
+      else {
         $media_item['field_data'][$field['field_name']] = $value;
       }
     }
@@ -2764,13 +2793,13 @@ function _usanetwork_mpx_video_render_related_content_item_default($data) {
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
     'caption' => !empty($data->promo_topic)
-      ? $data->promo_topic
+      ? htmlspecialchars($data->promo_topic)
       : $data->show_title,
     'title' => !empty($data->promo_title)
-      ? $data->promo_title
+      ? htmlspecialchars($data->promo_title)
       : $data->title,
     'additional' => !empty($data->promo_description)
-      ? $data->promo_description
+      ? htmlspecialchars($data->promo_description)
       : '',
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,

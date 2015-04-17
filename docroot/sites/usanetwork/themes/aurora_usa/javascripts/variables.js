@@ -54,4 +54,8 @@ $(window).bind('resize', function () {
 
 });
 
+$(document).ready(function(){
+  window.viewportUnitsBuggyfill.init();
+});
+
 

@@ -29,7 +29,11 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
         );
         $scene_namber++;
       }
-      $tg_items[$season_node_wrapper->field_season_id->value()][$episode_node_wrapper->field_episode_number->value()] = array(
+      $season_num = $season_node_wrapper->field_season_id->value();
+      $episode_num = $episode_node_wrapper->field_episode_number->value();
+      $tg_items[$season_num][$episode_num] = array(
+        'season_num' => $season_num,
+        'episode_num' => $episode_num,
         'scenes' => $scenes,
         'season_name' => $season_node_wrapper->title->value(),
         'episode_name' => $episode_node_wrapper->title->value(),

@@ -649,6 +649,13 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
   if (!empty($form['field_tvs_best_of_title'])) {
     $form_language = $form['language']['#value'];
 
+    foreach ($form['field_usa_tv_a_spot'][$form_language] as $key => $item) {
+      if (is_numeric($key) && is_array($item) && $key > 0) {
+        unset($form['field_usa_tv_a_spot'][$form_language][$key]);
+      }
+    }
+    unset($form['field_usa_tv_a_spot'][$form_language]['add_more']);
+    unset($form['field_usa_tv_a_spot'][$form_language]['#description']);
     if (empty($form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'])) {
       $show_title = $form['title']['#default_value'];
       $default_best_of_value = t('Best of !show_title', array('!show_title' => $show_title));

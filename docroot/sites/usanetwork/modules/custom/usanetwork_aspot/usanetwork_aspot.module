@@ -895,6 +895,7 @@ function _usanetwork_aspot_get_draggable_ui_default_settings_element() {
   return array(
     'value' => NULL,
     'enabled' => FALSE,
+    'display' => 'none',
     'percentX' => NULL,
     'percentY' => NULL,
     'invertX' => NULL,
@@ -965,6 +966,7 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
           'value' => 'CTA ' . $new_button_title,
           'enabled' => $new_button_enabled,
+          'display' => 'none',
           'percentX' => 'auto',
           'percentY' => 'auto',
           'invertX' => NULL,
@@ -999,6 +1001,7 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
           'value' => 'CTA ' . $new_button_title,
           'enabled' => $new_button_enabled,
+          'display' => 'none',
           'percentX' => 'auto',
           'percentY' => 'auto',
           'invertX' => NULL,

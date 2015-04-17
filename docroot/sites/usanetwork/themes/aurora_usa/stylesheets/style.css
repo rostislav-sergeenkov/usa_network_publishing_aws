@@ -21572,6 +21572,9 @@ yx-axis
     font-size: 107px;
   }
 }
+.usanetwork-aspot .aspot-draggable-element {
+  display: none;
+}
 .usanetwork-aspot .meta-wrap {
   height: 100%;
   left: 0;

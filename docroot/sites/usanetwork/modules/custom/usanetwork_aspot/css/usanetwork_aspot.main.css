@@ -21,6 +21,9 @@
 .draggable-area {
   border: solid #aaa 1px;
 }
+.draggable-area img{
+  margin: 0;
+}
 .aspot-draggable-element {
   background-color: rgba(200, 200, 200, 0.6);
   border-radius: 6px;

@@ -798,20 +798,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   position: relative;
   width: 52px;
 }
-.featured-block .carousel ul li .featured-large .meta .meta-icon:before {
-  font-size: 30px;
-  height: 52px;
-  line-height: 52px;
-  width: 52px;
-}
-@media (max-width: 480px) {
-  .featured-block .carousel ul li .featured-large .meta .meta-icon:before {
-    font-size: 24px;
-    height: 44px;
-    line-height: 44px;
-    width: 44px;
-  }
-}
 @media (max-width: 768px) {
   .featured-block .carousel ul li .featured-large .meta .meta-icon {
     position: absolute;
@@ -960,12 +946,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     height: 30px;
     left: 12px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .featured-block .carousel ul li .featured-small .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -1338,28 +1318,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-left: -20px;
   }
 }
-.social-block.carousel-block .carousel ul li .social-promo .meta-icon:before, .related-content-block ul li .social-promo .meta-icon:before {
-  font-size: 22px;
-  height: 40px;
-  line-height: 40px;
-  width: 40px;
-}
-@media (min-width: 1601px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-icon:before, .related-content-block ul li .social-promo .meta-icon:before {
-    font-size: 32px;
-    height: 60px;
-    line-height: 60px;
-    width: 60px;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .social-block.carousel-block .carousel ul li .social-promo .meta-icon:before, .related-content-block ul li .social-promo .meta-icon:before {
-    font-size: 32px;
-    height: 60px;
-    line-height: 60px;
-    width: 60px;
-  }
-}
 
 .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
   height: 100%;
@@ -1548,23 +1506,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -24px;
     width: 47px;
   }
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before {
-    font-size: 24px;
-    height: 47px;
-    line-height: 47px;
-    width: 47px;
-  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -1574,23 +1520,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -19px;
     width: 37px;
   }
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before {
-    font-size: 20px;
-    height: 37px;
-    line-height: 37px;
-    width: 37px;
-  }
 }
 @media (max-width: 480px) {
   .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -1644,23 +1578,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -19px;
     width: 37px;
   }
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon:before, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon:before {
-    font-size: 20px;
-    height: 37px;
-    line-height: 37px;
-    width: 37px;
-  }
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon:before, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon:before, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon:before, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -1800,24 +1722,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -24px;
     width: 47px;
   }
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon:before {
-    font-size: 24px;
-    height: 47px;
-    line-height: 47px;
-    width: 47px;
-  }
 }
 @media (max-width: 480px) {
   .full-episodes-block.carousel-block .carousel ul li .meta-icon {
     height: 30px;
     left: 14px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -1883,23 +1793,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 42px;
   z-index: 3;
 }
-.shows-block .show-info-block .show-bottom-info ul li .show-inner .meta-icon:before {
-  font-size: 24px;
-  height: 42px;
-  line-height: 42px;
-  width: 42px;
-}
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta-icon {
     height: 60px;
     margin-left: -30px;
     margin-top: -30px;
-    width: 60px;
-  }
-  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta-icon:before {
-    font-size: 34px;
-    height: 60px;
-    line-height: 60px;
     width: 60px;
   }
 }
@@ -1908,12 +1806,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     height: 30px;
     margin-left: -15px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -2127,12 +2019,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -24px;
     width: 47px;
   }
-  .best-of-block ul li:nth-child(2) .three-line-video .meta-icon:before, .best-of-block ul li .last .three-line-video .meta-icon:before {
-    font-size: 24px;
-    height: 47px;
-    line-height: 47px;
-    width: 47px;
-  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .best-of-block ul li:nth-child(2) .three-line-video .meta-icon, .best-of-block ul li .last .three-line-video .meta-icon {
@@ -2140,23 +2026,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -15px;
     width: 30px;
   }
-  .best-of-block ul li:nth-child(2) .three-line-video .meta-icon:before, .best-of-block ul li .last .three-line-video .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
-    width: 30px;
-  }
 }
 @media (max-width: 480px) {
   .best-of-block ul li:nth-child(2) .three-line-video .meta-icon, .best-of-block ul li .last .three-line-video .meta-icon {
     height: 30px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .best-of-block ul li:nth-child(2) .three-line-video .meta-icon:before, .best-of-block ul li .last .three-line-video .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -2288,22 +2162,10 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   top: 50%;
   width: 42px;
 }
-.best-of-block ul li.first .three-line-video-large .meta-icon:before {
-  font-size: 24px;
-  height: 42px;
-  line-height: 42px;
-  width: 42px;
-}
 @media (min-width: 1601px) {
   .best-of-block ul li.first .three-line-video-large .meta-icon {
     height: 80px;
     margin-top: -40px;
-    width: 80px;
-  }
-  .best-of-block ul li.first .three-line-video-large .meta-icon:before {
-    font-size: 44px;
-    height: 80px;
-    line-height: 80px;
     width: 80px;
   }
 }
@@ -2311,12 +2173,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   .best-of-block ul li.first .three-line-video-large .meta-icon {
     height: 30px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .best-of-block ul li.first .three-line-video-large .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -2389,23 +2245,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -21px;
     width: 42px;
   }
-  .show-latest-block ul li .show-latest-promo.big .meta-icon:before, .related-content-block ul li .show-latest-promo.big .meta-icon:before {
-    font-size: 24px;
-    height: 42px;
-    line-height: 42px;
-    width: 42px;
-  }
 }
 @media (max-width: 480px) {
   .show-latest-block ul li .show-latest-promo.big .meta-icon, .related-content-block ul li .show-latest-promo.big .meta-icon {
     height: 30px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .show-latest-block ul li .show-latest-promo.big .meta-icon:before, .related-content-block ul li .show-latest-promo.big .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -2542,12 +2386,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -21px;
     width: 42px;
   }
-  .show-latest-block ul li .show-latest-promo .meta-icon:before, .related-content-block ul li .show-latest-promo .meta-icon:before {
-    font-size: 24px;
-    height: 42px;
-    line-height: 42px;
-    width: 42px;
-  }
 }
 @media (min-width: 1601px) {
   .show-latest-block ul li .show-latest-promo .meta-icon, .related-content-block ul li .show-latest-promo .meta-icon {
@@ -2555,23 +2393,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-top: -40px;
     width: 80px;
   }
-  .show-latest-block ul li .show-latest-promo .meta-icon:before, .related-content-block ul li .show-latest-promo .meta-icon:before {
-    font-size: 44px;
-    height: 80px;
-    line-height: 80px;
-    width: 80px;
-  }
 }
 @media (max-width: 480px) {
   .show-latest-block ul li .show-latest-promo .meta-icon, .related-content-block ul li .show-latest-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
-    width: 30px;
-  }
-  .show-latest-block ul li .show-latest-promo .meta-icon:before, .related-content-block ul li .show-latest-promo .meta-icon:before {
-    font-size: 16px;
-    height: 30px;
-    line-height: 30px;
     width: 30px;
   }
 }
@@ -5336,11 +5162,6 @@ header .search-input-block .search-result.active ul li.search-promo a .meta-wrap
     margin-top: -17px;
   }
 }
-header .search-input-block .search-result.active ul li.search-promo a .meta-wrapper .meta-icon:before {
-  left: 15px;
-  margin-top: -18.5px;
-  top: 50%;
-}
 header .search-input-block .search-result.active ul li.search-promo a .meta-wrapper .meta .title {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -5824,27 +5645,6 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .m
 @media (min-width: 1601px) {
   header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
     height: 44px;
-    width: 44px;
-  }
-}
-header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon:before {
-  background: none;
-  border: 2px solid #ffffff;
-  color: #ffffff;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon:before {
-    font-size: 14px;
-    height: 26px;
-    line-height: 26px;
-    width: 26px;
-  }
-}
-@media (min-width: 1601px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon:before {
-    font-size: 24px;
-    height: 44px;
-    line-height: 44px;
     width: 44px;
   }
 }
@@ -7643,11 +7443,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   position: absolute;
   width: 90%;
 }
-.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta-icon:before {
-  left: 0;
-  margin-top: -18.5px;
-  top: 50%;
-}
 .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta {
   padding-left: 70px;
   position: relative;
@@ -7796,16 +7591,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: table;
   height: 100%;
   width: 100%;
-}
-.page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta-icon:before {
-  left: 10px;
-  margin-top: -18.5px;
-  top: 50%;
-}
-@media (max-width: 1024px) {
-  .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta-icon:before {
-    margin-top: -15px;
-  }
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta {
   display: table-cell;
@@ -13441,12 +13226,6 @@ footer h2 {
     margin-top: -25px;
     width: 50px;
   }
-  .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon:before {
-    font-size: 26px;
-    line-height: 50px;
-    height: 50px;
-    width: 50px;
-  }
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon {
@@ -13455,24 +13234,12 @@ footer h2 {
     margin-top: -15px;
     width: 30px;
   }
-  .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon:before {
-    font-size: 16px;
-    line-height: 30px;
-    height: 30px;
-    width: 30px;
-  }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon {
     height: 24px;
     left: 10px;
     margin-top: -12px;
-    width: 24px;
-  }
-  .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon:before {
-    font-size: 13px;
-    line-height: 24px;
-    height: 24px;
     width: 24px;
   }
 }
@@ -15030,11 +14797,6 @@ body.person-page #main {
   line-height: normal;
   margin: 0 auto;
   text-align: center;
-}
-.carousel ul li .meta-wrap.poll .meta-icon:before {
-  left: 50%;
-  margin-left: -19px;
-  top: -48px;
 }
 .carousel ul li .meta-wrap .meta-wrapper-inner {
   height: 100%;
@@ -22675,22 +22437,6 @@ yx-axis
 @media (max-width: 480px) {
   .usa-home-bspot .meta-wrapper .meta-icon, .usa-home-cspot .meta-wrapper .meta-icon {
     left: 6%;
-  }
-}
-.usa-home-bspot .meta-wrapper .meta-icon:before, .usa-home-cspot .meta-wrapper .meta-icon:before {
-  left: 50%;
-  margin-left: -18px;
-  margin-top: -18px;
-  top: 50%;
-}
-@media (min-width: 1601px) {
-  .usa-home-bspot .meta-wrapper .meta-icon:before, .usa-home-cspot .meta-wrapper .meta-icon:before {
-    font-size: 30px;
-    height: 50px;
-    line-height: 50px;
-    margin-left: -25px;
-    margin-top: -25px;
-    width: 50px;
   }
 }
 .usa-home-bspot .meta-wrapper .meta-icon ~ .meta .title, .usa-home-bspot .meta-wrapper .meta-icon ~ .meta .caption, .usa-home-bspot .meta-wrapper .meta-icon ~ .meta .additional, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .title, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .caption, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .additional {

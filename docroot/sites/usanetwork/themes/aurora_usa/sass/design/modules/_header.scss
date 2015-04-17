@@ -594,13 +594,6 @@ header {
                   @include breakpoint($bp-1024-width) {
                     margin-top: -17px;
                   }
-                  .meta-icon {
-                    &:before {
-                      left: 15px;
-                      margin-top: -18.5px;
-                      top: 50%;
-                    }
-                  }
                   .meta {
                     .title {
                       font-family: $avalon-demi;
@@ -1025,24 +1018,6 @@ header {
                   @include breakpoint($bp-min-1601-width) {
                     height: 44px;
                     width: 44px;
-                  }
-                  &:before {
-                    background: none;
-                    border: 2px solid #ffffff;
-                    color: #ffffff;
-                    @include breakpoint($bp-1024-width) {
-                      font-size: 14px;
-                      height: 26px;
-                      line-height: 26px;
-                      width: 26px;
-                    }
-                    @include breakpoint($bp-min-1601-width) {
-                      font-size: 24px;
-                      height: 44px;
-                      line-height: 44px;
-                      width: 44px;
-                    }
-
                   }
                 }
                 .logo {

@@ -413,6 +413,7 @@ function usanetwork_microsite_field_default_field_bases() {
         'videos' => 'Videos',
         'episodes' => 'Episodes',
         'quizzes' => 'Quizzes',
+        'timeline_gallery' => 'Timeline gallery',
       ),
       'allowed_values_function' => '',
     ),
@@ -478,6 +479,49 @@ function usanetwork_microsite_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_ms_timeline_gallery'
+  $field_bases['field_ms_timeline_gallery'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ms_timeline_gallery',
+    'foreign keys' => array(
+      'node' => array(
+        'columns' => array(
+          'target_id' => 'nid',
+        ),
+        'table' => 'node',
+      ),
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'timeline_gallery' => 'timeline_gallery',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_ms_tune_in'

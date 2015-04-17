@@ -138,7 +138,7 @@ function usanetwork_timeline_gallery_strongarm() {
         'custom_settings' => FALSE,
       ),
       'inline_content' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'page_collection_resources' => array(
         'custom_settings' => FALSE,

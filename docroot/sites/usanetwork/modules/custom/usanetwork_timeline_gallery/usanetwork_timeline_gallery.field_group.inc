@@ -23,10 +23,8 @@ function usanetwork_timeline_gallery_field_group_info() {
     'label' => 'Additional Information',
     'weight' => '1',
     'children' => array(
-      0 => 'field_categories',
-      1 => 'field_collection',
-      2 => 'field_content_tags',
-      3 => 'field_summary',
+      0 => 'field_content_tags',
+      1 => 'field_summary',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -55,8 +53,9 @@ function usanetwork_timeline_gallery_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_cover_item',
-      2 => 'field_timeline_episode_section',
-      3 => 'title',
+      2 => 'field_show',
+      3 => 'field_timeline_episode_section',
+      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

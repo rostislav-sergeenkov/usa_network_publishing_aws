@@ -93,7 +93,7 @@ $numberOfScenesPerEpisode = array();
 
 <section id="player_slideshow_area">
 
-  <!------------Insert Slide Show------------>
+  <!-- Insert Slide Show -->
   <div class="timelineLoader">
     <img src="<?php print $imageBaseUrl; ?>/timeline_gallery/loadingAnimation.gif" />
   </div>

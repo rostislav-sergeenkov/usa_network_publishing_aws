@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file field.tpl.php
  * Default template implementation to display the value of a field.
@@ -56,12 +55,12 @@
  * @ingroup themeable
  */
 ?>
-<?php // print '<pre>tg_items: ' . print_r($tg_items, true) . '</pre><br><br>'; ?>
+<?php //print '<pre>tg_items: ' . print_r($tg_items, true) . '</pre><br><br>'; ?>
 
 <?php /* $dataId = 1; ?>
 <?php foreach($tg_items as $season): ?>
-  <?php foreach($season as $ep_key => $episode): ?>
-    <?php print 'ep_key: ' . $ep_key . ' | dataId: ' . $dataId . ' | ' . $episode['season_name'] . ' | Episode ' . $episode['episode_name']; ?>
+  <?php foreach($season as $episodeNum => $episode): ?>
+    <?php print 'episodeNum: ' . $episodeNum . ' | dataId: ' . $dataId . ' | ' . $episode['season_name'] . ' | Episode ' . $episode['episode_name']; ?>
     <?php print '<br>'; ?>
     <?php foreach($episode['scenes'] as $scene): ?>
       <?php print 'scene_number: ' . $scene['scene_number']; ?>
@@ -82,250 +81,70 @@
 
 
 
-<?php /**/ ?>
-<style>
-.clear {
-  clear: both;
-}
-.timelineLoader {
-  display: none;
-}
-.timelineFlat.timelineFlatPortfolio.tl3 {
-  width: 100%; overflow: hidden; margin-left: auto; margin-right: auto; text-align: center; height: auto; display: block;
-}
-.timeline_line {
-  text-align: left; position:relative; margin-left:auto; margin-right:auto;
-}
-#t_line_left,
-#t_line_right {
-  position: absolute;
-}
-.t_line_holder {
-  position:relative; overflow: hidden; width:100%;
-}
-.t_line_wrapper {
-  white-space: nowrap; margin-left: 0%;
-}
-.t_line_m {
-  position:absolute; top:0;
-}
-.t_line_m.right {
-  position:absolute; top:0;
-}
-.t_line_month {
-  position:absolute; width:100%; top:0; text-align:center;
-}
-.t_line_node {
-  left: 16.6666666666667%; position: absolute; text-align: center; width: 12px; margin-left: -6px;
-}
-.t_line_node.active {
-  left: 25%; position: absolute; text-align: center; width: 12px; margin-left: -6px;
-}
-.t_node_desc {
-  white-space: nowrap; position: absolute; z-index: 1; display: none;
-}
-.t_node_desc span {
-  display: none;
-}
-.t_line_view {
-  position:relative; display:inline-block;
-}
-.timeline_items_holder {
-  width: 300px; margin-left: auto; margin-right: auto;
-}
-.timeline_items {
-  text-align: left; width: 52440px; margin-left: -10608.5px;
-}
-.item {
-  padding-left: 0px; padding-right: 0px; margin-left: 7.5px; margin-right: 7.5px; float: left; position: relative; -webkit-user-select: none;
-}
-.item > img {
-   -webkit-user-select: none;
-}
-.item > h2 {
-  -webkit-user-select: none;
-}
-.item > h2 span {
-  color: rgb(113, 220, 226); -webkit-user-select: none;
-}
-.itemtext {
-  -webkit-user-select: none;
-}
-.itemtext > br {
-  -webkit-user-select: none;
-}
-.like-share-view {
-  -webkit-user-select: none;
-}
-.scene-filter-holder {
-  -webkit-user-select: none;
-}
-.scene-filters.share {
-  -webkit-user-select: none;
-}
-.filter {
-  -webkit-user-select: none;
-}
-.filter > span {
-  -webkit-user-select: none;
-}
-.filter-items {
-  -webkit-user-select: none;
-}
-.filter-item.twitter {
-  -webkit-user-select: none;
-}
-.filter-item.twitter a {
-  -webkit-user-select: none;
-}
-.filter-item.twitter img {
-  -webkit-user-select: none;
-}
-.filter-item.facebook {
-  -webkit-user-select: none;
-}
-.filter-item.facebook a {
-  -webkit-user-select: none;
-}
-.filter-item.facebook img {
-  -webkit-user-select: none;
-}
-.filter-item.facebook span {
-  display: none;
-  -webkit-user-select: none;
-}
-</style>
+<?php
+//$totalNumEps = 0;
+$baseUrl = 'http://' . $_SERVER['HTTP_HOST'];
+$imageBaseUrl = '/sites/usanetwork/themes/aurora_usa/images';
+$shareTitle = 'Experience+the+Graceland+Catchup+HQ';
+$shareDescription = 'Get+caught+up+on+Season+1+before+the+Graceland+premiere+on+June+11+10%2F9c';
+$timelineCategories = array();
+$numberOfScenesPerEpisode = array();
+?>
 
 <section id="player_slideshow_area">
+
   <!------------Insert Slide Show------------>
   <div class="timelineLoader">
-    <img src="assets/_img/timeline/loadingAnimation.gif">
+    <img src="<?php print $imageBaseUrl; ?>/timeline_gallery/loadingAnimation.gif" />
   </div>
 
   <!-- BEGIN TIMELINE -->
   <div class="timelineFlat timelineFlatPortfolio tl3">
-    <div class="timeline_line">
-      <div id="t_line_left"></div>
-      <div id="t_line_right"></div>
-      <div class="t_line_holder">
-        <div class="t_line_wrapper">
 
 
+<?php foreach($tg_items as $seasonNum => $season): ?>
+  <?php foreach($season as $episodeNum => $episode): ?>
+    <?php print '<!-- Season ' . $seasonNum . ' | Episode ' . $episodeNum . ': ' . $episode['episode_name'] . ' -->' . "\n"; ?>
+    <?php $timelineCategories[] = 's' . $seasonNum . ' ep' . $episodeNum; ?>
+    <?php foreach($episode['scenes'] as $scene): ?>
+      <div class="timeline-item" data-id="<?php print ($scene['scene_number'] < 10) ? '0' . $scene['scene_number'] : $scene['scene_number']; ?>/<?php print ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>/<?php print ($seasonNum < 10) ? '0' . $seasonNum : $seasonNum; ?>" data-description="SCENE <?php print $scene['scene_number']; ?>" data-fid="<?php print $scene['fid']; ?>" data-imagesrc="<?php print $scene['image_src']; ?>">
+        <img src="<?php print $scene['image_src']; ?>" alt="" class="slideshowimage"/>
 
-
-        <?php $dataId = 0; ?>
-        <?php $numEps = 0; ?>
-  <?php foreach($tg_items as $season_key => $season): ?>
-  <!-- <?php print 'SEASON ' . $season_key; ?> -->
-    <?php $numEps = $numEps + count($season); ?>
-        <?php foreach($season as $ep_key => $episode): ?>
-          <?php if ($ep_key % 2 == 0): // even number ?>
-
-            <?php print "\n" . '<!-- ' . $episode['season_name'] . ' | Episode ' . $episode['episode_name'] . ' -->' . "\n"; ?>
-            <div class="t_line_m right">
-              <h4 class="t_line_month">episode 2</h4>
-              <?php foreach($episode['scenes'] as $scene): ?>
-              <a href="#0<?php print $scene['scene_number']; ?>/0<?php print $ep_key; ?>" class="t_line_node"><span class="t_node_desc"><span>SCENE <?php print $scene['scene_number']; ?></span></span></a>
-              <?php endforeach; // scene ?>
-            </div><!-- KRAJ DRUGOG -->
-
-            <div class="clear"></div>
-            <?php $dataId++; ?>
-          </div>
-
-          <?php else: // odd number ?>
-
-          <div class="t_line_view" data-id="<?php print $dataId; ?>">
-            <?php print "\n" . '<!-- ' . $episode['season_name'] . ' | Episode ' . $episode['episode_name'] . ' -->' . "\n"; ?>
-            <div class="t_line_m">
-              <h4 class="t_line_month">episode <?php print $episode['episode_name']; ?></h4>
-              <?php foreach($episode['scenes'] as $scene): ?>
-              <a href="#0<?php print $scene['scene_number']; ?>/01" class="t_line_node"><span class="t_node_desc"><span>SCENE <?php print $scene['scene_number']; ?></span></span></a>
-              <?php endforeach; // scene ?>
-            </div><!-- KRAJ PRVOG -->
-
-          <?php endif; ?>
-
-        <?php endforeach; // episode ?>
-  <?php endforeach; // season ?>
-<?php // print 'numEps: ' . $numEps . '<br>'; ?>
-    <?php if ($numEps % 2 != 0): // odd number ?>
-      <div class="clear"></div>
-      <?php $dataId++; ?>
-    </div>
-    <?php endif; ?>
-          <div class="clear"></div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <div class="timeline_items_wrapper">
-      <div class="timeline_items_holder">
-        <div class="timeline_items">
-
-
-
-    <?php foreach($tg_items as $season_key => $season): ?>
-      <?php foreach($season as $ep_key => $episode): ?>
-        <?php print "\n" . '<!-- ' . $episode['season_name'] . ' | Episode ' . $episode['episode_name'] . ' -->' . "\n"; ?>
-          <?php foreach($episode['scenes'] as $scene): ?>
-            <?php /* print 'scene_number: ' . $scene['scene_number']; ?>
-            <?php print 'fid: ' . $scene['fid']; ?>
-            <?php print 'image_src: ' . $scene['image_src']; ?>
-            <?php print 'description: ' . $scene['description']; */ ?>
-          <div class="item" data-id="0<?php print $scene['scene_number']; ?>/0<?php print $ep_key; ?>" data-description="SCENE <?php print $scene['scene_number']; ?>" data-count="0">
-            <img src="<?php print $scene['image_src']; ?>" alt="" class="slideshowimage">
-
-            <div class="itemtext">
-              <h2>101: <?php print $episode['episode_name']; ?> <span>|</span> SCENE <?php print $scene['scene_number']; ?></h2>
-              <br>
-              <?php print $scene['description']; ?>
-
-              <br>
-              <br>
-
-              <div class="like-share-view">
-                <div class="scene-filter-holder">
-                  <div class="scene-filters share">
-                    <div class="filter">
-                      <span> </span>
-                      <ul class="filter-items">
-                        <li class="filter-item twitter"><a onclick="var twShareWindow = window.open('https://twitter.com/share?url=http://gracelandcatchuphq.usanetwork.com&amp;text=Get+caught+up+on+Season+1+before+the+Graceland+premiere+on+June+11+10%2F9c', 'twShareWindow', 'width=600,height=450,menubar=0,resizable=0,scrollbars=0', '_self'); twitterShare()"><img src="assets/_img/timeline/twitter.png" class="socialshare"></a></li>
-                        <li class="filter-item facebook"><a class="facebook" onclick="var fbShareWindow = window.open('http://www.facebook.com/dialog/feed?app_id=241079750077&amp;link=http://gracelandcatchuphq.usanetwork.com&amp;picture=http://gracelandcatchuphq.usanetwork.com/assets/_img/timeline/gl_slides_e1_s1.jpg&amp;name=Experience+the+Graceland+Catchup+HQ&amp;description=Get+caught+up+on+Season+1+before+the+Graceland+premiere+on+June+11+10%2F9c&amp;redirect_uri=http://gracelandcatchuphq.usanetwork.com', 'fbShareWindow', 'width=800,height=500,menubar=0,resizable=0,scrollbars=0', '_self'); facebookShare()"><img src="assets/_img/timeline/facebook.png" class="socialshare"><span>Share on Facebook</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
+        <div class="itemtext">
+          <h2><?php print $seasonNum . ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>: <?php print $episode['episode_name']; ?> <font style="color: #71dce2">|</font> SCENE <?php print $scene['scene_number']; ?></h2>
+          <br>
+          <?php print $scene['description']; ?>
+          <br><br>
+          <div class="like-share-view">
+            <div class="scene-filter-holder">
+              <div class="scene-filters share">
+                <div class="filter">
+                  <span> </span>
+                  <ul class="filter-items">
+                    <li class="filter-item twitter"><a onclick="var twShareWindow = window.open('https://twitter.com/share?url=<?php print $baseUrl; ?>&amp;text=<?php print $shareDescription; ?>', 'twShareWindow', 'width=600,height=450,menubar=0,resizable=0,scrollbars=0', '_self'); twitterShare()"><img src="/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/twitter.png" class="socialshare"></a></li>
+                    <li class="filter-item facebook"><a class="facebook" onclick="var fbShareWindow = window.open('http://www.facebook.com/dialog/feed?app_id=241079750077&amp;link=<?php print $baseUrl; ?>&amp;picture=<?php print $baseUrl . $scene['image_src']; ?>&amp;name=<?php print $shareTitle; ?>&amp;description=<?php print $shareDescription; ?>&amp;redirect_uri=<?php print $baseUrl; ?>', 'fbShareWindow', 'width=800,height=500,menubar=0,resizable=0,scrollbars=0', '_self'); facebookShare()"><img src="/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/facebook.png" class="socialshare"><span>Share on Facebook</span></a></li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
-        <?php endforeach; // scene ?>
-      <?php endforeach; // episode ?>
-    <?php endforeach; // season ?>
-
-
-
-
-
-          <div class="clear"></div>
         </div>
       </div>
+    <?php endforeach; // scene ?>
+    <?php $numberOfScenesPerEpisode[] = count($episode['scenes']); ?>
+  <?php endforeach; // episode ?>
+<?php endforeach; // season ?>
 
-      <div class="t_controles">
-        <div class="t_left"></div>
-        <div class="t_right"></div>
-      </div>
-    </div>
+
+
   </div>
-  <!-- /END TIMELINE -->
-<?php // ?>
+  <!-- END TIMELINE -->
 
+  <script>
+  var categoryArray = <?php print json_encode($timelineCategories); ?>,
+      segmentArray = <?php print json_encode($numberOfScenesPerEpisode); ?>;
 
-
-
-  <script type="text/javascript">
+/*
   function facebookShare() {
     usa_debug('USA: facebookShare()');
     s.linkTrackVars='events,eVar74';
@@ -366,24 +185,23 @@
   }
 
   jQuery(window).load(function() {
-    // light
     jQuery('.tl3').timeline({
       openTriggerClass : '.read_more',
-      startItem : '01/01',
+      startItem : '01/01/01', // '01/01',
       closeText : ''
     });
     jQuery('.tl3').on('ajaxLoaded.timeline', function(e){
-    usa_debug('TIMELINE: loaded');
-      console.log(e.element.find('.timeline_open_content span'));
+      usa_debug('TIMELINE: loaded');
+      usa_debug(e.element.find('.timeline_open_content span'));
 
-      var height = e.element.height()-60-e.element.find('h2').height();
+      var height = e.element.height() - 60 - e.element.find('h2').height();
       e.element.find('.timeline_open_content span').css('max-height', height).mCustomScrollbar({
         autoHideScrollbar:true,
         theme:"light-thin"
       });
     });
     jQuery('.tl3').on('scrollStart.Timeline', function(e){
-      //usa_debug('TIMELINE: start');
+      usa_debug('TIMELINE: start');
     });
     jQuery('.tl3').on('scrollStop.Timeline', function(e){
       usa_debug('TIMELINE: end');
@@ -402,5 +220,6 @@
       otherShare();
     });
   });
+*/
   </script>
 </section>

@@ -44,10 +44,10 @@ Project demo: http://shindiristudio.com/timeline
       var t_methods = {
         init : function( options ) {
 
-           // Default settings
-            var settings = $.extend( {
+          // Default settings
+          var timeline_settings = $.extend( {
             'itemClass'              : '.timeline-item',       // class used for timeline items
-            'itemOpenClass'          : '.item_open',  // class used for item details
+            'itemOpenClass'          : '.timeline-item-open',  // class used for item details
             'openTriggerClass'       : '',       // class of read more element (default uses whole item to trigger open event)
             'closeText'              : '',       // text of close button in open item
             'itemMargin'             : 15,            // spacing between items
@@ -59,41 +59,39 @@ Project demo: http://shindiristudio.com/timeline
             'yearsOn'                : true,           // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
             'swipeOn'                : true,           // turn on swipe moving function
             'hideTimeline'           : false,          //hides the timeline line
-            'hideControles'          : false,          //hides the prev/next controles
+            'hideControls'          : false,          //hides the prev/next controls
             'closeItemOnTransition'	 : false,           //if ture, closes the item after transition
             'ajaxFailMessage'		 : 'Ajax request has failed.'
-            }, options); // Setings
+          }, options); // Setings
 
 
           // main queries
           var $this = this,
             $body = $('body'),
-            $items = $this.find(settings.itemClass),
-            $itemsOpen = $this.find(settings.itemOpenClass),
+            $items = $this.find(timeline_settings.itemClass),
+            $itemsOpen = $this.find(timeline_settings.itemOpenClass),
             itemWidth = $items.first().width(),
             itemOpenWidth = $itemsOpen.first().width(),
-            closeItemOnTransition=settings.closeItemOnTransition;
+            closeItemOnTransition=timeline_settings.closeItemOnTransition;
 
           // Trigger init event
           $this.trigger('init.Timeline');
-
 
           // If no index found
           var startIndex = $items.length-1;
 
           // Find index of start element
-          if(settings.startItem == 'first')
+          if(timeline_settings.startItem == 'first')
           {
             startIndex = 0;
           }
-          else if (settings.startItem == 'last')
+          else if (timeline_settings.startItem == 'last')
           {
             startIndex = $items.length-1;
           }
           else {
             $items.each(function(index){
-              if(settings.startItem == $(this).attr('data-id'))
-              {
+              if (timeline_settings.startItem == $(this).attr('data-id')) {
                 startIndex = index;
                 return true;
               }
@@ -101,45 +99,49 @@ Project demo: http://shindiristudio.com/timeline
           }
           $items.each(function(index){
             $(this).attr('data-count', index);
-            $(this).next(settings.itemOpenClass).attr('data-count', index);
-            if(!$(this).hasClass(settings.openTriggerClass)) {
-              $(this).find(settings.openTriggerClass).attr('data-count', index);
+            $(this).next(timeline_settings.itemOpenClass).attr('data-count', index);
+            if(!$(this).hasClass(timeline_settings.openTriggerClass)) {
+              $(this).find(timeline_settings.openTriggerClass).attr('data-count', index);
             }
           });
 
           // Create wrapper elements, and needed properties
-          $this.append('<div style="clear:both"></div>');
-          $this.css({width: '100%', 'overflow' : 'hidden', marginLeft : 'auto', marginRight : 'auto','text-align': 'center', height:0});
-            $this.wrapInner('<div class="timeline_items" />');
-          $this.find('.timeline_items').css('text-align','left');
+          $this.append('<div class="clear"></div>');
+//usa_debug('============== $this: ');
+//usa_debug($this); // $this = $('.timelineFlat.timelineFlatPortfolio.tl3')
+//          $this.css({width: '100%', 'overflow' : 'hidden', marginLeft : 'auto', marginRight : 'auto','text-align': 'center', height:0});
+          $this.wrapInner('<div class="timeline-items" />');
+//          $this.find('.timeline-items').css('text-align','left');
 
           if('ontouchstart' in window) {
             $this.addClass('timelineTouch');
           }
 
           // ZoomOut placement fix
-          $this.wrapInner('<div class="timeline_items_holder" />');
-          if(!settings.hideControles) {
-            $this.append('<div class="t_controles"><div class="t_left"></div><div class="t_right"></div></div>');
+          $this.wrapInner('<div class="timeline-items-holder" />');
+          if(!timeline_settings.hideControls) {
+            $this.append('<div class="timeline-controls"><div class="timeline-left"></div><div class="timeline-right"></div></div>');
           }
-          $this.wrapInner('<div class="timeline_items_wrapper" />');
-          $this.find('.timeline_items_holder').css({width: '300px', marginLeft : 'auto', marginRight : 'auto'});
+          $this.wrapInner('<div class="timeline-items-wrapper" />');
+//          $this.find('.timeline-items-holder').css({width: '300px', marginLeft : 'auto', marginRight : 'auto'});
+//          $this.find('.timeline-items-holder').css({'width': '100%', 'height': '33%', 'margin': '0 auto', 'overflow': 'hidden'});
 
 
-          $items.css({paddingLeft:0 , paddingRight:0, marginLeft: settings.itemMargin/2, marginRight: settings.itemMargin/2, float: 'left', position:'relative'});
+//          $items.css({paddingLeft:0 , paddingRight:0, marginLeft: timeline_settings.itemMargin/2, marginRight: timeline_settings.itemMargin/2, float: 'left', position:'relative'});
+          $items.css({marginLeft: timeline_settings.itemMargin/2, marginRight: timeline_settings.itemMargin/2});
 
           $itemsOpen.each(function(){
             $(this).prepend('');
-            $(this).wrapInner('<div class="'+settings.itemOpenClass.substr(1)+'_cwrapper"  />').find('div:first').css({position: 'relative'});
-            $(this).css({width: 0, padding:0 , margin: 0, float: 'left', display : 'none', position : 'relative', overflow : 'hidden'});
+            $(this).wrapInner('<div class="'+timeline_settings.itemOpenClass.substr(1)+'-cwrapper"  />').find('div:first').css({position: 'relative'});
+//            $(this).css({width: 0, padding:0 , margin: 0, float: 'left', display : 'none', position : 'relative', overflow : 'hidden'});
           });
 
 
           // Get new queries
-          var	$iholder =  $this.find('.timeline_items:first'),
-            $line = $this.find('.t_line_wrapper:first'),
-            margin = 300/2 - (itemWidth + settings.itemMargin)*(1/2 + startIndex) ,
-            width = (itemWidth + settings.itemMargin)*$items.length + (itemOpenWidth + settings.itemMargin) + 660 ,
+          var	$iholder =  $this.find('.timeline-items:first'),
+            $line = $this.find('.timeline-wrapper:first'),
+            margin = 300/2 - (itemWidth + timeline_settings.itemMargin)*(1/2 + startIndex) ,
+            width = (itemWidth + timeline_settings.itemMargin)*$items.length + (itemOpenWidth + timeline_settings.itemMargin) + 660 ,
             data = $this.data('timeline');
 
           // Set margin so start element would place in midle of the screen
@@ -156,7 +158,7 @@ Project demo: http://shindiristudio.com/timeline
               itemOpenWidth : itemOpenWidth,
               lineMargin    : 0,
               lineViewCount : 0,
-              options       : settings,
+              options       : timeline_settings,
               items         : $items,
               iholder       : $iholder,
               open          : false,
@@ -167,7 +169,7 @@ Project demo: http://shindiristudio.com/timeline
             });
           }
 
-          if(!settings.hideTimeline) {
+          if(!timeline_settings.hideTimeline) {
             $this.timeline('createElements');
             if($this.hasClass('timelineClean')) {
             }
@@ -186,24 +188,25 @@ Project demo: http://shindiristudio.com/timeline
           });
 
           $(document).ready(function(){
-            $this.find(settings.itemClass).css({ '-webkit-touch-callout': 'none', '-webkit-user-select': 'none', '-khtml-user-select': 'none', '-moz-user-select': 'none', '-ms-user-select': 'none', 'user-select': 'none'}).find('img').on('dragstart', function(event) {
-              if (!($(this).hasClass('timeline_rollover_bottom')))
+//            $this.find(timeline_settings.itemClass).css({ '-webkit-touch-callout': 'none', '-webkit-user-select': 'none', '-khtml-user-select': 'none', '-moz-user-select': 'none', '-ms-user-select': 'none', 'user-select': 'none'}).find('img').on('dragstart', function(event) {
+            $this.find(timeline_settings.itemClass).find('img').on('dragstart', function(event) {
+              if (!($(this).hasClass('timeline-rollover-bottom')))
                 event.preventDefault();
             });
 
-            $('.image_rollover_bottom').on('dragstart', function(event) {
+            $('.timeline-image-rollover-bottom').on('dragstart', function(event) {
               $(this).addClass("disableClick");
               event.preventDefault();
             });
 
-            $('.image_rollover_bottom').on('mousedown', function(event) {
+            $('.timeline-image-rollover-bottom').on('mousedown', function(event) {
               if (!$(this).is("hover")) {
               $(this).removeClass("disableClick");
             }
 
             });
 
-            $('.image_rollover_bottom').on('click', function(event) {
+            $('.timeline-image-rollover-bottom').on('click', function(event) {
               if ($(this).hasClass('disableClick')) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -229,11 +232,11 @@ Project demo: http://shindiristudio.com/timeline
 
 
             if ($('body').width() < 767 && data.open && !data.marginResponse) {
-              data.margin -= (itemWidth+settings.itemMargin)/2;
+              data.margin -= (itemWidth+timeline_settings.itemMargin)/2;
               data.marginResponse = true;
             }
             else if ($('body').width() >= 767 && data.marginResponse && data.open) {
-              data.margin += (itemWidth+settings.itemMargin)/2;
+              data.margin += (itemWidth+timeline_settings.itemMargin)/2;
               data.marginResponse = false;
             }
 
@@ -242,17 +245,17 @@ Project demo: http://shindiristudio.com/timeline
           });
 
           // Bind left on click
-          $this.find('.t_left').click(function(){
+          $this.find('.timeline-left').click(function(){
             $this.timeline('left');
           });
 
           // Bind right on click
-          $this.find('.t_right').click(function(){
+          $this.find('.timeline-right').click(function(){
             $this.timeline('right');
           });
 
           // SWIPE bind
-          if (settings.swipeOn) {
+          if (timeline_settings.swipeOn) {
             $items.find('*').each(function(){
               $(this).css({'-webkit-touch-callout': 'none',
                     '-webkit-user-select': 'none',
@@ -266,7 +269,7 @@ Project demo: http://shindiristudio.com/timeline
               $this.timeline('touchStart', e);
             });
 
-            $this.find(settings.itemClass).mousedown(function(e) {
+            $this.find(timeline_settings.itemClass).mousedown(function(e) {
               $this.timeline('mouseDown', e.pageX);
             });
 
@@ -284,12 +287,12 @@ Project demo: http://shindiristudio.com/timeline
           }
 
           // Bind open on click
-          $this.find(settings.openTriggerClass).click(function(){
+          $this.find(timeline_settings.openTriggerClass).click(function(){
             $this.timeline('goTo',$(this).attr('data-id'), $(this).attr('data-count'), true);
           });
 
           // Bind close on click
-          $this.find('.t_close').click(function(){
+          $this.find('.timeline-close').click(function(){
             $this.timeline('close',$(this).attr('data-id'),$(this).attr('data-count'));
           });
 
@@ -298,7 +301,7 @@ Project demo: http://shindiristudio.com/timeline
           $this.prev('.timelineLoader').hide();
 
           // Reposition nodes due to their width
-          $this.find('.t_line_node').each(function(){
+          $this.find('.timeline-node').each(function(){
             if ($(this).width() < 10) $(this).width(12);
             $(this).css({marginLeft: -$(this).width()/2});
           });
@@ -444,40 +447,40 @@ Project demo: http://shindiristudio.com/timeline
                   var action = $(this).attr('data-access');
 
                   $.get(action, function(data){
-                    $('body').append('<div class="ajax_preloading_holder" style="display:none"></div>');
-                    $('.ajax_preloading_holder').html(data);
-                    if ($('.ajax_preloading_holder img').length > 0 ) {
-                      $('.ajax_preloading_holder img').load(function() {
-                        $newThis.find('.item_open_content').html(data);
-                        $('.ajax_preloading_holder').remove();
+                    $('body').append('<div class="ajax-preloading-holder" style="display:none"></div>');
+                    $('.ajax-preloading-holder').html(data);
+                    if ($('.ajax-preloading-holder img').length > 0 ) {
+                      $('.ajax-preloading-holder img').load(function() {
+                        $newThis.find('.timeline-item-open-content').html(data);
+                        $('.ajax-preloading-holder').remove();
                         $(this).attr('data-access', '');
 
                         /* trigger */
                         var event = jQuery.Event( 'ajaxLoaded.timeline' );
-                        event.element = $newThis.find('.item_open_content');
+                        event.element = $newThis.find('.timeline-item-open-content');
                         $( "body" ).trigger( event );
                         $this.trigger(event);
                       });
                     }
                     else {
-                      $newThis.find('.item_open_content').html(data);
-                      $('.ajax_preloading_holder').remove();
+                      $newThis.find('.timeline-item-open-content').html(data);
+                      $('.ajax-preloading-holder').remove();
                       $(this).attr('data-access', '');
 
                       /* trigger */
                       var event = jQuery.Event( 'ajaxLoaded.timeline' );
-                      event.element = $newThis.find('.item_open_content');
+                      event.element = $newThis.find('.timeline-item-open-content');
                       $( "body" ).trigger( event );
                       $this.trigger(event);
                     }
                   },'text').fail(function() {
-                    data = '<div class="timeline_open_content"><h2 class="no-marg-top">'+data.options.ajaxFailMessage+'</h2></div>';
-                    $newThis.find('.item_open_content').html(data);
-                    $('.ajax_preloading_holder').remove();
+                    data = '<div class="timeline-open-content"><h2 class="no-marg-top">'+data.options.ajaxFailMessage+'</h2></div>';
+                    $newThis.find('.timeline-item-open-content').html(data);
+                    $('.ajax-preloading-holder').remove();
 
                     /* trigger */
                     var event = jQuery.Event( 'ajaxLoaded.timeline' );
-                    event.element = $newThis.find('.item_open_content');
+                    event.element = $newThis.find('.timeline-item-open-content');
                     $( "body" ).trigger( event );
                     $this.trigger(event);
                   });
@@ -575,7 +578,7 @@ Project demo: http://shindiristudio.com/timeline
               speed = data.options.scrollSpeed,
               easing = data.options.easing,
               $items = data.items,
-              timelineWidth = $this.find('.timeline_line').width(),
+              timelineWidth = $this.find('.timeline-line').width(),
               count = -1,
               found = false;
 
@@ -593,23 +596,23 @@ Project demo: http://shindiristudio.com/timeline
           // Move if fount
           if (found) {
             // Move lineView to current element
-            var $nodes = $this.find('.t_line_node');
+            var $nodes = $this.find('.timeline-node');
             $nodes.removeClass('active');
             var $goToNode = $nodes.parent().parent().find('[href="#'+id+'"]').addClass('active');
             data.lineMargin = -parseInt($goToNode.parent().parent().attr('data-id'),10)*100;
 
             // check if responsive width
-            if($this.find('.t_line_view:first').width() > $this.find('.timeline_line').width()) {
+            if($this.find('.timeline-view:first').width() > $this.find('.timeline-line').width()) {
               data.lineMargin *=2;
               if ($goToNode.parent().hasClass('right')) data.lineMargin -= 100;
             }
 
             if(data.noAnimation){
               data.noAnimation = false;
-              $this.find('.t_line_wrapper').stop(true).css({marginLeft : data.lineMargin+'%'});
+              $this.find('.timeline-wrapper').stop(true).css({marginLeft : data.lineMargin+'%'});
             }
             else {
-              $this.find('.t_line_wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing );
+              $this.find('.timeline-wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing );
             }
 
 
@@ -649,8 +652,8 @@ Project demo: http://shindiristudio.com/timeline
             }
             else {
               var currentId = data.items[data.currentIndex].dataset.id;
-              //usa_debug(jQuery(".timeline_items").find(".item[data-id='" + currentId + "'] .itemtext").html());
-              var slideTitlePartsForOmniture = String(jQuery(".timeline_items").find(".timeline-item[data-id='" + currentId + "'] .itemtext").text()).split('\n');
+              //usa_debug(jQuery(".timeline-items").find(".item[data-id='" + currentId + "'] .timeline-item-text").html());
+              var slideTitlePartsForOmniture = String(jQuery(".timeline-items").find(".timeline-item[data-id='" + currentId + "'] .timeline-item-text").text()).split('\n');
               var slideTitleForOmniture = slideTitlePartsForOmniture[0];
               //usa_debug('slideTitleForOmniture: ' + slideTitleForOmniture);
     //					usa_refreshBannerAds('slideshow', slideTitleForOmniture);
@@ -673,7 +676,7 @@ Project demo: http://shindiristudio.com/timeline
               easing = data.options.easing;
           if (data.lineMargin != 0 && data.options.categories) {
             data.lineMargin += 100;
-            $this.find('.t_line_wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing);
+            $this.find('.timeline-wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing);
           }
         },
 
@@ -683,14 +686,14 @@ Project demo: http://shindiristudio.com/timeline
               data = $this.data('timeline'),
               speed = data.options.scrollSpeed,
               easing = data.options.easing;
-          if ($this.find('.t_line_view:first').width() > $this.find('.timeline_line').width())
+          if ($this.find('.timeline-view:first').width() > $this.find('.timeline-line').width())
             var viewCount = data.lineViewCount*2;
           else
             var viewCount = data.lineViewCount;
 
           if (data.lineMargin != -(viewCount-1)*100 && data.options.categories) {
             data.lineMargin -= 100;
-            $this.find('.t_line_wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing);
+            $this.find('.timeline-wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing);
           }
         },
 
@@ -701,9 +704,10 @@ Project demo: http://shindiristudio.com/timeline
               $items = data.items;
 
           var html = '\n' +
-    '    <div class="timeline_line" style="text-align: left; position:relative; margin-left:auto; margin-right:auto;"></div>\n';
+//    '    <div class="timeline-line" style="text-align: left; position:relative; margin-left:auto; margin-right:auto;"></div>\n';
+    '    <div class="timeline-line"></div>\n';
           $this.prepend(html);
-          var	timelineWidth = $this.find('.timeline_line').width(),
+          var	timelineWidth = $this.find('.timeline-line').width(),
               nodes = new Array(),
               months = [''].concat(data.options.categories);
           monthsDays = [0].concat(data.options.nuberOfSegments),
@@ -751,24 +755,30 @@ Project demo: http://shindiristudio.com/timeline
             var nName = ((typeof nodeName != 'undefined') ? nodeName : d);
 
             // Store node element
-            nodes[dataId] = '<a href="#'+dataId+'" class="t_line_node'+isActive+'" style="left: '+leftPos+'%; position:absolute; text-align:center;">';
+            nodes[dataId] = '<a href="#'+dataId+'" class="timeline-node'+isActive+'" style="left: '+leftPos+'%">';
 
-            if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="t_node_desc" style="white-space:nowrap; position:absolute; z-index: 1;"><span>'+dataDesc+'</span></span>';
+//            if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="timeline-node-desc" style="white-space:nowrap; position:absolute; z-index: 1;"><span>'+dataDesc+'</span></span>';
+            if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="timeline-node-desc"><span>'+dataDesc+'</span></span>';
 
             nodes[dataId]+='</a>\n';
           });
 
           // Make wrapper elements
           html = '\n' +
-    '		<div id="t_line_left" style="position: absolute;"></div><div id="t_line_right" style="position: absolute;"></div>\n' +
-    '		<div class="t_line_holder" style="position:relative; overflow: hidden; width:100%;">\n' +
-    '			<div class="t_line_wrapper" style="white-space:nowrap;">\n';
+//    '		<div id="timeline-left" style="position: absolute;"></div><div id="timeline-right" style="position: absolute;"></div>\n' +
+//    '		<div class="timeline-holder" style="position:relative; overflow: hidden; width:100%;">\n' +
+//    '			<div class="timeline-wrapper" style="white-space:nowrap;">\n';
+    '		<div id="timeline-left"></div><div id="timeline-right"></div>\n' +
+    '		<div class="timeline-holder">\n' +
+    '			<div class="timeline-wrapper">\n';
 
           // Prepare for loop, every view has 2 months, we show both if first has nodes in it
           if (!data.options.categories) {
             html +=
-            '<div class="t_line_view" data-id="'+cnt+'" style="position:relative; display:inline-block; width:100%;">\n'+
-            '					<div class="t_line_m" style="width:100%; border:0; position:absolute; top:0;">\n';
+//            '<div class="timeline-view" data-id="'+cnt+'" style="position:relative; display:inline-block; width:100%;">\n'+
+//            '					<div class="timeline-m" style="width:100%; border:0; position:absolute; top:0;">\n';
+            '<div class="timeline-view" data-id="'+cnt+'">\n'+
+            '					<div class="timeline-m">\n';
             for (var x in nodes) {
               html += nodes[x];
             }
@@ -783,10 +793,13 @@ Project demo: http://shindiristudio.com/timeline
                 if (firstMonth) {
                   firstMonth = !firstMonth;
                   html +=
-                '<div class="t_line_view" data-id="'+cnt+'" style="position:relative; display:inline-block;">\n'+
-        '					<div class="t_line_m" style="position:absolute; top:0;">\n'+
-    //		'						<h4 class="t_line_month" style="position:abolute; width:100% top:0; text-align:center;">'+months[mnth]+(data.options.yearsOn ? '<span class="t_line_month_year"> '+(yr < 0 ? (-yr)+' B.C.' : yr)+'</span>' : '' )+'</h4>\n';
-        '						<h4 class="t_line_month" style="position:absolute; width:100%; top:0; text-align:center;">'+months[mnth]+(data.options.yearsOn ? '<span class="t_line_month_year"></span>' : '' )+'</h4>\n';
+//                '<div class="timeline-view" data-id="'+cnt+'" style="position:relative; display:inline-block;">\n'+
+//        '					<div class="timeline-m" style="position:absolute; top:0;">\n'+
+                '<div class="timeline-view" data-id="'+cnt+'">\n'+
+        '					<div class="timeline-m">\n'+
+    //		'						<h4 class="timeline-month" style="position:abolute; width:100% top:0; text-align:center;">'+months[mnth]+(data.options.yearsOn ? '<span class="timeline-month-year"> '+(yr < 0 ? (-yr)+' B.C.' : yr)+'</span>' : '' )+'</h4>\n';
+//        '						<h4 class="timeline-month" style="position:absolute; width:100%; top:0; text-align:center;">'+months[mnth]+(data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
+        '						<h4 class="timeline-month">'+months[mnth]+(data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
 
                   // Fill with nodes
                   for (dy in yearsArr[yr][mnth]) {
@@ -798,10 +811,11 @@ Project demo: http://shindiristudio.com/timeline
                 else {
                   firstMonth = !firstMonth;
                   html +=
-        '					<div class="t_line_m right" style="position:absolute; top:0;">\n'+
-    //		'						<h4 class="t_line_month" style="position:abolute; width:100% top:0; text-align:center;">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="t_line_month_year"> '+yr+'</span>' : '' )+'</h4>\n';
-        '						<h4 class="t_line_month" style="position:abolute; width:100% top:0; text-align:center;">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="t_line_month_year"> </span>' : '' )+'</h4>\n';
-    //		'						<h4 class="t_line_month" style="text-align:center;">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="t_line_month_year"> '+yr+'</span>' : '' )+'</h4>\n';
+//        '					<div class="timeline-m right" style="position:absolute; top:0;">\n'+
+        '					<div class="timeline-m right">\n'+
+    //		'						<h4 class="timeline-month" style="position:abolute; width:100% top:0; text-align:center;">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="timeline-month-year"> '+yr+'</span>' : '' )+'</h4>\n';
+        '						<h4 class="timeline-month">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
+    //		'						<h4 class="timeline-month" style="text-align:center;">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="timeline-month-year"> '+yr+'</span>' : '' )+'</h4>\n';
 
                   // Fill with nodes
                   for (dy in yearsArr[yr][mnth]) {
@@ -809,7 +823,7 @@ Project demo: http://shindiristudio.com/timeline
                   }
                   html +=
         '					</div><!-- KRAJ DRUGOG -->\n'+
-        '					<div style="clear:both"></div>\n'+
+        '					<div class="clear"></div>\n'+
         '				</div>';
                   cnt++;
                 }
@@ -818,59 +832,59 @@ Project demo: http://shindiristudio.com/timeline
 
             if (!firstMonth) {
               html +=
-      '					<div class="t_line_m right" style="position:absolute; top:0;">\n'+
-      '						<h4 class="t_line_month" style="position:abolute; width:100% top:0; text-align:center;"></h4>\n'+
+      '					<div class="timeline-m right">\n'+
+      '						<h4 class="timeline-month"></h4>\n'+
       '					</div>\n'+
-      '					<div style="clear:both"></div>\n'+
+      '					<div class="clear"></div>\n'+
       '				</div>';
               cnt++;
             }
           }
 
           html +=	'\n' +
-    '				<div style="clear:both"></div>\n'+
+    '				<div class="clear"></div>\n'+
     '			</div>\n'+
     '		</div>\n';
 
           // Set number of View elements
           data.lineViewCount = cnt;
           // Add generated html and set width & margin for dinamic timeline
-          $this.find('.timeline_line:first').html(html);
-          $this.find('.t_line_node').each(function(){
+          $this.find('.timeline-line:first').html(html);
+          $this.find('.timeline-node').each(function(){
             var $thisNode = $(this);
             $(this).find('span').hide();
             $(this).hover(function() {
               $items.each(function() {
                 if ($(this).attr('data-id') == $thisNode.attr('href').substr(1)) {
-                  $(this).addClass('item_node_hover');
+                  $(this).addClass('timeline-item-node-hover');
                 }
               });
               $(this).find('span').css('display','block');
             }, function() {
               $(this).find('span').css('display','none');
-              $('.item_node_hover').removeClass('item_node_hover');
+              $('.timeline-item-node-hover').removeClass('timeline-item-node-hover');
             });
 
             //Position lineView to selected item
             if ($(this).hasClass('active')) {
-              data.lineMargin = -parseInt($(this).parent().parent('.t_line_view').attr('data-id'),10)*100;
-              $this.find('.t_line_wrapper').css('margin-left', data.lineMargin+'%');
+              data.lineMargin = -parseInt($(this).parent().parent('.timeline-view').attr('data-id'),10)*100;
+              $this.find('.timeline-wrapper').css('margin-left', data.lineMargin+'%');
             }
 
             // Bind goTo function to click event
             $(this).click(function(e){
               e.preventDefault();
-              $this.find('.t_line_node').removeClass('active');
+              $this.find('.timeline-node').removeClass('active');
               $(this).addClass('active');
               $this.timeline('goTo', $(this).attr('href').substr(1));
             });
           });
 
-          $this.find('#t_line_left').click(function(){
+          $this.find('#timeline-left').click(function(){
             $this.timeline('lineLeft');
           });
 
-          $this.find('#t_line_right').click(function(){
+          $this.find('#timeline-right').click(function(){
             $this.timeline('lineRight');
           });
         }
@@ -892,78 +906,52 @@ Project demo: http://shindiristudio.com/timeline
 
 
       // MOVED FROM TEMPLATE PAGE
-      function facebookShare() {
-        usa_debug('USA: facebookShare()');
-        s.linkTrackVars='events,eVar74';
-        s.linkTrackEvents='event41';
-        s.events='event41';
-        s.eVar74='Facebook'
-        s.tl(this,'o','Social Share'); s.manageVars('clearVars',s.linkTrackVars,1);
-      }
-
-      function twitterShare() {
-        usa_debug('USA: twitterShare()');
-        s.linkTrackVars='events,eVar74';
-        s.linkTrackEvents='event41';
-        s.events='event41';
-        s.eVar74='Twitter'
-        s.tl(this,'o','Social Share'); s.manageVars('clearVars',s.linkTrackVars,1);
-
-      }
-
-      function tumblrShare() {
-        usa_debug('USA: tumblrShare()');
-        s.linkTrackVars='events,eVar74';
-        s.linkTrackEvents='event41';
-        s.events='event41';
-        s.eVar74='Tumblr'
-        s.tl(this,'o','Social Share'); s.manageVars('clearVars',s.linkTrackVars,1);
-
-      }
-
-      function otherShare() {
-        usa_debug('USA: otherShare()');
-        s.linkTrackVars='events,eVar74';
-        s.linkTrackEvents='event41';
-        s.events='event41';
-        s.eVar74='Othershare'
-        s.tl(this,'o','Social Share'); s.manageVars('clearVars',s.linkTrackVars,1);
-
-      }
-
-      jQuery('.tl3').timeline({
-        openTriggerClass : '.read_more',
+      $('.tl3').timeline({
+        openTriggerClass : '.read-more',
         startItem : '01/01/01', // '01/01',
         closeText : ''
       });
-      jQuery('.tl3').on('ajaxLoaded.timeline', function(e){
+      $('.tl3').on('ajaxLoaded.timeline', function(e){
         usa_debug('TIMELINE: loaded');
-        usa_debug(e.element.find('.timeline_open_content span'));
+        usa_debug(e.element.find('.timeline-open-content span'));
 
         var height = e.element.height() - 60 - e.element.find('h2').height();
-        e.element.find('.timeline_open_content span').css('max-height', height).mCustomScrollbar({
+        e.element.find('.timeline-open-content span').css('max-height', height).mCustomScrollbar({
           autoHideScrollbar:true,
           theme:"light-thin"
         });
       });
-      jQuery('.tl3').on('scrollStart.Timeline', function(e){
+      $('.tl3').on('scrollStart.Timeline', function(e){
         usa_debug('TIMELINE: start');
       });
-      jQuery('.tl3').on('scrollStop.Timeline', function(e){
+      $('.tl3').on('scrollStop.Timeline', function(e){
         usa_debug('TIMELINE: end');
       });
 
+
+      // socialShareOmniture
+      function socialShareOmniture(shareType) {
+        usa_debug('USA: ' + shareType + 'Share()');
+        s.linkTrackVars = 'events,eVar74';
+        s.linkTrackEvents = 'event41';
+        s.events = 'event41';
+        s.eVar74 = shareType;
+        s.tl(this,'o','Social Share');
+        s.manageVars('clearVars', s.linkTrackVars,1);
+      }
+
+      // set social sharing clicks
       jQuery('#social-hqpage-reaction0-icon div').on('click', function() {
-        facebookShare();
+        socialShareOmniture('Facebook');
       });
       jQuery('#social-hqpage-reaction1-icon div').on('click', function() {
-        tumblrShare();
+        socialShareOmniture('Tumblr');
       });
       jQuery('#social-hqpage-reaction2-icon div').on('click', function() {
-        twitterShare();
+        socialShareOmniture('Twitter');
       });
       jQuery('#social-hqpage-reaction3-icon div').on('click', function() {
-        otherShare();
+        socialShareOmniture('Othershare');
       });
 
 

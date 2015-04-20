@@ -10,7 +10,6 @@
 function usanetwork_promo_field_default_field_bases() {
   $field_bases = array();
 
-
   // Exported field_base: 'field_meta_text_bar'
   $field_bases['field_meta_text_bar'] = array(
     'active' => 1,
@@ -123,6 +122,35 @@ function usanetwork_promo_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_promo_created_ovts'
+  $field_bases['field_promo_created_ovts'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_promo_created_ovts',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 'hour',
+        'minute' => 'minute',
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => 'UTC',
+      'todate' => '',
+      'tz_handling' => 'utc',
+    ),
+    'translatable' => 0,
+    'type' => 'datestamp',
   );
 
   // Exported field_base: 'field_promo_exclude_from_related'

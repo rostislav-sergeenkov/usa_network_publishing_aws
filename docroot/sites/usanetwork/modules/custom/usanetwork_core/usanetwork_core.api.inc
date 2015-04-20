@@ -207,7 +207,7 @@ function _usanetwork_core_api_get_node_image_field_names() {
     ),
     //TV Show
     'tv_show' => array(
-      'main' => 'field_tv_cover_media',
+      'main' => 'field_logo',
       'cover' => 'field_tv_cover_media',
       'logo' => 'field_logo',
       'banner' => 'field_banner',

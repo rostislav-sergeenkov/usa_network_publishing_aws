@@ -7,6 +7,9 @@
  font-style: normal;
 }
 */
+.node-timeline-gallery .content {
+  background-color: #DEDEDE;
+}
 .timelineFlat.timelineFlatPortfolio.tl3 {
   width: 100%;
   overflow: hidden;
@@ -53,7 +56,7 @@ ul, li {
 
 .timelineFlat.timelineFlatBlog .timeline-item .timeline-post-date {
 	background: #dd5555;
-	color: #ffffff;
+	color: #FFF;
 	border-radius: 50%;
 	width: 35px;
 	height: 35px;
@@ -123,7 +126,7 @@ ul, li {
 /* 2 months are stored in one view */
 .timelineFlat .timeline-view {
 	height: 20px;
-	width: 900px;
+  /* width: 900px; */
 
 	/* from js line 778 */
 	position: relative;
@@ -131,27 +134,25 @@ ul, li {
 	width: 100%;
 }
 
-
-
 /* holder for 1 month (constist of nodes and month caption) - we use borders to separate months thats why it has width 2px less then 50% */
 .timelineFlat .timeline-m {
 	margin-top: 35px;
 	height: 10px;
 	border-left: 1px solid transparent;
 	border-right: 1px solid #101010;
-	width: 448px;
+	width: 50%; /* 448px; */
 
 	/* from js line 779 */
-	width: 100%;
-	border: 0;
+/*	width: 100%;
+	border: 0; */
 	position: absolute;
 	top: 0;
 }
 
 /* month on the right side - has left set at 459 so border would overlap border from first element (to evade duplicated borders) */
 .timelineFlat .timeline-m.right {
-	left: 449px;
-	width: 449px;
+	left: 50%; /* 449px; */
+	width: 50%; /* 449px; */
 	border-left: 1px solid #101010;
 	border-right: 1px solid transparent;
 
@@ -174,7 +175,6 @@ ul, li {
 	text-align: center;
 }
 
-
 /* node on the timeline */
 .timelineFlat a.timeline-node {
 	text-decoration: none;
@@ -185,9 +185,10 @@ ul, li {
 /*	position: relative; */
 	color: #101010;
 	outline: none;
-  position:absolute;
-  text-align:center;
+  position: absolute;
+  text-align: center;
 }
+
 .timelineFlat a.timeline-node:after {
 	content: "";
 	border-radius: 22px;
@@ -219,7 +220,7 @@ ul, li {
 	opacity: 0;
 	filter: alpha(opacity=0);
 	left: 50%;
-	color: #fff;
+	color: #FFF;
 	display: inline-block !important;
 	position: absolute; /* relative; */
 	transition: top 200ms, opacity 500ms;
@@ -319,7 +320,10 @@ ul, li {
 }
 /* items container */
 .timelineFlat .timeline-items {
-  background-color: transparent;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #999;
   padding: 16px;
   text-align: left;
 }
@@ -329,11 +333,11 @@ ul, li {
 	width: 1201px;
 	height: 505px;
 	color: #777777;
-	background-color: #111d29;
+	background-color: #000; /* #111d29; */
 	font-size: 14px;
 	line-height: 14px;
 	position: relative;
-	padding: 0 0;
+	padding: 0;
 	float: left;
 
 	/* below from js line 191 */
@@ -371,7 +375,6 @@ ul, li {
 .timelineFlat .timeline-item img {
 	margin-top: 0;
 }
-
 .slideshowimage {
 	float: left;
 	margin-right: 20px;
@@ -381,11 +384,10 @@ ul, li {
 	margin: 0;
 	font-size: 12px;
 	line-height: 12px;
-	color: #fff;
+	color: #FFF;
 	position: relative;
-
 }
-.timelineFlat .timeline-item span{
+.timelineFlat .timeline-item span {
 	display: block;
 	margin: 0px 20px 10px;
 	height: 75px;
@@ -395,7 +397,7 @@ ul, li {
 	font-size: 12px;
 	line-height: 12px;
 	float: left;
-	color: #ffffff;
+	color: #FFF;
 	cursor: pointer;
 	margin: 0 20px 20px;
 	border-radius: 3px;
@@ -407,24 +409,27 @@ ul, li {
 .timelineFlat .timeline-item .read-more:hover {
 	background: #f75f5f;
 }
+
+
 /* ----------------------------------------- */
 
 .timelineFlat .timeline-item .timeline-item-text {
-	background: #111D25;
-	color: #71dce2;
+	color: #FFF;
 	z-index: 2;
 	padding: 20px;
 	line-height: 1.3em;
 	font-size: 18px;
-
 }
 
 .timelineFlat .timeline-item .timeline-item-text h2 {
+	position: absolute;
+	top: 8px;
+	right: 8px;
 	font-size: 18px;
 	padding-top: 0;
 	font-size: 12px;
 	line-height: 12px;
-	color: #fff;
+	color: #FFF;
 	text-align: right;
 	width: 430px;
 	padding-bottom: 50px;
@@ -453,7 +458,7 @@ ul, li {
 	padding-top: 0;
 	font-size: 12px;
 	line-height: 12px;
-	color: #fff;
+	color: #FFF;
 	left: 214px;
 	position: relative;
 }
@@ -554,20 +559,24 @@ ul, li {
 .timelineFlat .timeline-left,
 .timelineFlat .timeline-left:hover:active {
 	left: 0;
-	background: rgba(17,29,41, 0.5) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center;
+/*	background: rgba(17,29,41, 0.5) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center; */
+	background: rgba(0, 0, 0, 1) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center;
 }
 .timelineFlat .timeline-left:hover {
-	background: rgba(17,29,41, 0.7) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center;
+/*	background: rgba(17,29,41, 0.7) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center; */
+	background: rgba(0, 0, 0, 1) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center;
 }
 
 .timelineFlat .timeline-right,
 .timelineFlat .timeline-right:hover:active{
 	right: 0;
-	background: rgba(17,29,41, 0.5) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center;
+/*	background: rgba(17,29,41, 0.5) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center; */
+	background: rgba(0, 0, 0, 1) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center;
 }
 
 .timelineFlat .timeline-right:hover {
-	background: rgba(17,29,41, 0.7) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center;
+/*	background: rgba(17,29,41, 0.7) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center; */
+	background: rgba(0, 0, 0, 1) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center;
 }
 
 /* SHARE */
@@ -597,7 +606,7 @@ ul, li {
 }
 
 .scene-filters .filter span, .scene-filters .filter .filter-items, .scene-filters .filter .filter-item {
-	display: inline-block;
+	display: none; /* inline-block; */
 	vertical-align: middle;
 }
 

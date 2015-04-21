@@ -747,10 +747,12 @@ Project demo: http://shindiristudio.com/timeline
             yearsArr[y][m][d] = dataId;
             var isActive = (index == data.currentIndex ? ' active' : '');
             if (data.options.categories) {
-              var leftPos = (100/monthsDays[m])*d;
+              var leftPos = (100/(monthsDays[m] + 1))*d;
+usa_debug('============ data.options.categories => leftPos: ' + leftPos + '\nmonthsDays[m]: ' + monthsDays[m] + '\nd: ' + d);
             }
             else {
               var leftPos = (100/(maxY-minY))*(d-minY);
+usa_debug('============ data.options.categories else => leftPos: ' + leftPos + '\nmaxY: ' + maxY + '\nminY: ' + minY + '\nd: ' + d);
             }
             var nName = ((typeof nodeName != 'undefined') ? nodeName : d);
 

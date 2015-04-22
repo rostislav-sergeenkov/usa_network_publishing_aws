@@ -281,7 +281,7 @@
           @include breakpoint($bp-min-1281-width) {
             height: 9.375vw;
           }
-          @include breakpoint($bp-1024-width) {
+          @include breakpoint($between-769-990) {
             margin-top: 0;
             &:first-child {
               margin-left: 0;

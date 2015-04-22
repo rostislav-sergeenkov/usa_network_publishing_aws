@@ -23631,7 +23631,7 @@ yx-axis
     height: 9.375vw;
   }
 }
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 990px) {
   .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item {
     margin-top: 0;
   }

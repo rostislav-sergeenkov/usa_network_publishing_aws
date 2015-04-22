@@ -23610,12 +23610,8 @@ yx-axis
 }
 .schedule-on-tonight .schedule-block.on-tonight .schedule-item .schedule-item-wrap {
   display: table-cell;
+  padding-left: 20%;
   vertical-align: middle;
-}
-@media (min-width: 769px) and (max-width: 990px) {
-  .schedule-on-tonight .schedule-block.on-tonight .episode-show {
-    max-width: 100px;
-  }
 }
 .schedule-on-tonight .schedule-block.on-now {
   margin-right: 120px;
@@ -23668,9 +23664,11 @@ yx-axis
   }
   .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
     float: none;
+    max-width: none;
   }
   .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
     float: none;
+    max-width: none;
   }
 }
 @media (min-width: 1701px) {
@@ -23680,15 +23678,26 @@ yx-axis
 }
 .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
   margin-left: 0;
+  max-width: 60%;
+}
+@media (min-width: 769px) and (max-width: 990px) {
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
+    max-width: 100%;
+  }
+}
+.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+  width: 40%;
+}
+@media (min-width: 769px) and (max-width: 990px) {
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+    padding-right: 15px;
+    width: 100%;
+  }
 }
 .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .schedule-item-wrap {
   display: table-cell;
+  padding-right: 20%;
   vertical-align: middle;
-}
-@media (max-width: 1280px) {
-  .schedule-on-tonight .schedule-block.on-now .episode-show {
-    max-width: 226px;
-  }
 }
 .schedule-on-tonight .schedule-block .time {
   color: #606060;
@@ -23697,26 +23706,20 @@ yx-axis
   font-size: 11px;
   line-height: 11px;
   letter-spacing: 0.5px;
-  margin-left: 20%;
-  margin-right: 25px;
+  padding-right: 25px;
   text-transform: uppercase;
-}
-@media (min-width: 1901px) {
-  .schedule-on-tonight .schedule-block .time {
-    margin-left: 112px;
-  }
+  max-width: 50%;
 }
 @media (min-width: 1701px) {
   .schedule-on-tonight .schedule-block .time {
     font-size: 19px;
     line-height: 19px;
-    margin-left: 26.66666%;
-    margin-right: 33px;
+    padding-right: 33px;
   }
 }
 @media (max-width: 1280px) {
   .schedule-on-tonight .schedule-block .time {
-    margin-right: 15px;
+    padding-right: 15px;
   }
 }
 .schedule-on-tonight .schedule-block .time span, .schedule-on-tonight .schedule-block .time a {
@@ -23780,6 +23783,7 @@ yx-axis
   letter-spacing: 0.5px;
   margin-top: 9px;
   text-transform: uppercase;
+  width: 50%;
 }
 @media (min-width: 1281px) {
   .schedule-on-tonight .schedule-block .episode-info {
@@ -23799,27 +23803,19 @@ yx-axis
 .schedule-on-tonight .schedule-block .episode-show {
   height: 30px;
   line-height: 1.3;
-  max-width: 105px;
   margin-bottom: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 1901px) {
+@media (min-width: 1281px) {
   .schedule-on-tonight .schedule-block .episode-show {
-    max-width: 135px;
+    line-height: 1.2;
   }
 }
 @media (min-width: 1701px) {
   .schedule-on-tonight .schedule-block .episode-show {
     height: 40px;
     line-height: 1.1;
-    max-width: 130px;
-  }
-}
-@media (min-width: 1281px) {
-  .schedule-on-tonight .schedule-block .episode-show {
-    line-height: 1.2;
-    max-width: 100px;
   }
 }
 .schedule-on-tonight .schedule-block .episode-show .episode-show-wrapper {

@@ -29,6 +29,7 @@
       Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'horizontal',
         controls: true,
+        hideControlOnEnd: true,
         nextText: '',
         prevText: '',
         adaptiveHeight: true,

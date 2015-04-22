@@ -21728,9 +21728,11 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap .cta-link {
   position: relative;
+  max-width: 365px;
 }
 .usanetwork-aspot .meta-wrap .cta-link a {
   color: #ffffff;
+  display: block;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 24px;

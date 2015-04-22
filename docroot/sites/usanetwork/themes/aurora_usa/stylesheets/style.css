@@ -11293,7 +11293,6 @@ footer h2 {
 }
 
 .consumptionator-page .video-block, .page-videos-live .video-block {
-  height: 42.01875vw;
   margin: 0;
   max-width: 2260px;
   overflow: hidden;
@@ -11305,6 +11304,11 @@ footer h2 {
   clear: both;
   content: '';
   display: table;
+}
+@media (min-width: 1281px) {
+  .consumptionator-page .video-block, .page-videos-live .video-block {
+    height: 42.01875vw;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .video-block, .page-videos-live .video-block {
@@ -11629,9 +11633,13 @@ footer h2 {
   }
 }
 .consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
-  height: 23.4vw;
-  padding: calc((23.4vw - 250px)/2) 0;
   width: 100%;
+}
+@media (min-width: 1281px) {
+  .consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
+    height: 23.4vw;
+    padding: calc((23.4vw - 250px)/2) 0;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
@@ -11661,9 +11669,13 @@ footer h2 {
   width: 300px;
 }
 .consumptionator-page .video-block .consum-sidebar .clips-block, .page-videos-live .video-block .consum-sidebar .clips-block {
-  height: calc(100% - 23.4vw);
   position: relative;
   width: 100%;
+}
+@media (min-width: 1281px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block, .page-videos-live .video-block .consum-sidebar .clips-block {
+    height: calc(100% - 23.4vw);
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .video-block .consum-sidebar .clips-block, .page-videos-live .video-block .consum-sidebar .clips-block {
@@ -11672,6 +11684,11 @@ footer h2 {
     position: absolute;
     top: 100%;
     width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .video-block .consum-sidebar .clips-block, .page-videos-live .video-block .consum-sidebar .clips-block {
+    height: calc(100% - 23.4vw);
   }
 }
 .consumptionator-page .video-block .consum-sidebar .clips-block-title, .page-videos-live .video-block .consum-sidebar .clips-block-title {

@@ -119,9 +119,14 @@
           onSlideAfter: showFocusSlide,
           onSliderLoad: function (el, slide, old, active) {
             var first_slide = $('#main-slider-wrapper .slide').not($('.slide.bx-clone')).get(0);
+
             changeLogoColor($(first_slide).find('.slide-content'));
             showFocusSlide(el, slide, old, active);
-            $('.bx-preload').css("visibility", "visible").css("height", "auto");
+
+            $('.bx-preload').css({
+              'visibility': 'visible',
+              'height': 'auto'
+            });
           }
         }, options);
 
@@ -143,6 +148,13 @@
       };
 
       var aspotSlider = null;
+
+      $('.block-usanetwork-aspot .slider').ready(function() {
+        $('.bx-preload').css({
+          'visibility': 'visible',
+          'height': 'auto'
+        });
+      });
 
       $(window).load(function () {
 

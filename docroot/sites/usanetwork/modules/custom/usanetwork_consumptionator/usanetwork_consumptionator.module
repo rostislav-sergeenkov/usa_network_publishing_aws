@@ -422,11 +422,7 @@ function _usanetwork_consumptionator_load_ymal_content($show_nids = array(), $st
         $additional_text['right'] = gmdate('H:i:s', $related_item->duration);
       }
 
-      $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($related_item->image_uri);
-
-      if ($episode_image_uri_wrapper) {
-        $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
-      }
+      $episode_image_uri = _usanetwork_mpx_video_get_image_path(file_load($related_item->fid));
 
       $theme_variables = array(
         'classes' => !empty($related_item->show_nid)

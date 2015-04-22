@@ -774,9 +774,11 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
     $show_color = usanetwork_tv_shows_color_show_css_class($show);
     $episode_season = $episode_wrapper->field_mpx_season_number->value();
     $episode_number = $episode_wrapper->field_mpx_episode_number->value();
-    $wrapper = file_stream_wrapper_get_instance_by_uri($episode->uri);
+
+    $episode_image = _usanetwork_mpx_video_get_image_path($episode);
+
     $video_image = theme('image_style', array(
-      'path' => $wrapper->getLocalThumbnailPath(),
+      'path' => $episode_image,
       'style_name' => '300x250',
     ));
     $episode_element = array(
@@ -827,8 +829,8 @@ function usanetwork_mpx_video_global_videos_page() {
     foreach($usanework_full_episodes_aspot as $aspot_element) {
       $file = file_load($aspot_element);
       if ($file) {
-        $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
-        
+        $image = _usanetwork_mpx_video_get_image_path($file);
+
         if ($show_field = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id')) {
           $show = node_load($show_field);
           $video_caption = $show->title;
@@ -842,12 +844,12 @@ function usanetwork_mpx_video_global_videos_page() {
 
         if ($i == 0) {
           $video_image = array(
-            'mobile' => image_style_url('640x640', $wrapper->getLocalThumbnailPath()),
-            'mobile_retina' => image_style_url('1280x1280', $wrapper->getLocalThumbnailPath()),
-            'tablet' => image_style_url('1024x576', $wrapper->getLocalThumbnailPath()),
-            'tablet_retina' => image_style_url('2048x1152', $wrapper->getLocalThumbnailPath()),
-            'desktop' => image_style_url('2500x1407', $wrapper->getLocalThumbnailPath()),
-            'desktop_retina' => image_style_url('5000x2814', $wrapper->getLocalThumbnailPath()),
+            'mobile' => image_style_url('640x640', $image),
+            'mobile_retina' => image_style_url('1280x1280', $image),
+            'tablet' => image_style_url('1024x576', $image),
+            'tablet_retina' => image_style_url('2048x1152', $image),
+            'desktop' => image_style_url('2500x1407', $image),
+            'desktop_retina' => image_style_url('5000x2814', $image),
           );
           $featured_aspot = array(
             'aspot_image' => $video_image,
@@ -859,7 +861,7 @@ function usanetwork_mpx_video_global_videos_page() {
           );
         } else {
           $video_image = $video_image = theme('image_style', array(
-            'path' => $wrapper->getLocalThumbnailPath(),
+            'path' => $image,
             'style_name' => '300x169_video',
           ));
           $featured_carousel[] = array(
@@ -909,9 +911,10 @@ function _usanetwork_mpx_video_shows_full_episodes() {
         $carousel_items = '';
         foreach ($videos as $id => $video) {
           $file = file_load($video->fid);
-          $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+          $image_path = _usanetwork_mpx_video_get_image_path($file);
+
           $video_image = theme('image_style', array(
-            'path' => $wrapper->getLocalThumbnailPath(),
+            'path' => $image_path,
             'style_name' => '300x169_video',
           ));
           $theme_item_variables = array(
@@ -1648,10 +1651,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $vars['episode_number'] = $episode_number['value'];
       }
 
-      $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+      $image_path = _usanetwork_mpx_video_get_image_path($file);
 
       $image = theme_image(array(
-        'path' => $wrapper->getLocalThumbnailPath(),
+        'path' => $image_path,
         'attributes' => array(),
       ));
       $vars['video_image'] = $image;
@@ -1894,9 +1897,9 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
     if (in_array($bundle, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
       $file = $context['entity'];
       $share_settings['gigyaSharebar']['ua']['imageBhev'] = 'url';
-      $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
       $file_wrapper = entity_metadata_wrapper('file', $file);
-      $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($wrapper->getLocalThumbnailPath());
+      $image_path = _usanetwork_mpx_video_get_image_path($file);
+      $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($image_path);
       $share_settings['gigyaSharebar']['ua']['title'] = $file->filename;
       $share_settings['gigyaSharebar']['ua']['description'] = !empty($file->field_mpx_description) ?  $file_wrapper->field_mpx_description->value() : '';
       $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
@@ -2853,4 +2856,21 @@ function _usanetwork_mpx_video_render_related_content_item_default($data) {
   );
 
   return theme('usanetwork_mpx_video_related_item', $theme_variables);
+}
+
+/*
+ * Helper function for get images for video file
+ */
+function _usanetwork_mpx_video_get_image_path($file){
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  if (!empty($file->field_mpx_image)) {
+    $image_file = $file_wrapper->field_mpx_image->value();
+    $image_path = $image_file['uri'];
+  } else {
+    $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+    if ($wrapper) {
+      $image_path = $wrapper->getLocalThumbnailPath();
+    }
+  }
+  return $image_path;
 }

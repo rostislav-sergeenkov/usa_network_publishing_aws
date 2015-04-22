@@ -794,6 +794,7 @@ usa_debug('======= if (!data.options.categories)');
           // find timeline date range and make node elements
 usa_debug('=========== $items: ');
 usa_debug($items);
+          var mCnt = 1;
           $items.each(function(index) {
             var dataId = $(this).attr('data-id'),
                 nodeName = $(this).attr('data-name'),
@@ -802,14 +803,15 @@ usa_debug($items);
                 d = parseInt(dataArray[0], 10),
                 m = ($.inArray(dataArray[1], months) != -1) ? $.inArray(dataArray[1], months) : parseInt(dataArray[1], 10),
                 y = parseInt(dataArray[2], 10);
-usa_debug('======== d: ' + d + ', m: ' + m + ', y: ' + y);
+usa_debug('======== mCnt: ' + mCnt + ', d: ' + d + ', m: ' + m + ', y: ' + y);
             if (typeof yearsArr[y] == 'undefined') yearsArr[y] = {};
             if (typeof yearsArr[y][m] == 'undefined') yearsArr[y][m] = {};
             yearsArr[y][m][d] = dataId;
             var isActive = (index == data.currentIndex ? ' active' : '');
             // leftPos = position of dots for each episode
             if (data.options.categories) {
-              var leftPos = (100/(monthsDays[m] + 1))*d;
+//              var leftPos = (100/(monthsDays[m] + 1)) * d;
+              var leftPos = (100/(monthsDays[m] + 1)) * d;
 usa_debug('============ data.options.categories => leftPos: ' + leftPos + '\nmonthsDays[m]: ' + monthsDays[m] + '\nd: ' + d);
             }
             else {
@@ -825,6 +827,7 @@ usa_debug('============ data.options.categories else => leftPos: ' + leftPos + '
             if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="timeline-node-desc"><span>'+dataDesc+'</span></span>';
 
             nodes[dataId]+='</a>\n';
+            mCnt++;
           });
 usa_debug('========== yearsArr: ');
 usa_debug(yearsArr);
@@ -861,16 +864,13 @@ usa_debug('=========== else');
             for (var yr in yearsArr) {
               for (var mnth in yearsArr[yr]) {
                 if (firstMonth) {
-usa_debug('============ if (firstMonth) : months[mnth]: ' + months[mnth]);
+usa_debug('============ if (firstMonth) : cnt: ' + cnt + ', months[(cnt + 1)]: ' + months[(cnt + 1)] + ', mnth: ' + mnth);
                   firstMonth = !firstMonth;
                   html +=
-//                '<div class="timeline-view" data-id="'+cnt+'" style="position:relative; display:inline-block;">\n'+
-//        '					<div class="timeline-m" style="position:absolute; top:0;">\n'+
                 '<div class="timeline-view" data-id="'+cnt+'">\n'+
         '					<div class="timeline-m">\n'+
-    //		'						<h4 class="timeline-month" style="position:abolute; width:100% top:0; text-align:center;">'+months[mnth]+(data.options.yearsOn ? '<span class="timeline-month-year"> '+(yr < 0 ? (-yr)+' B.C.' : yr)+'</span>' : '' )+'</h4>\n';
-//        '						<h4 class="timeline-month" style="position:absolute; width:100%; top:0; text-align:center;">'+months[mnth]+(data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
-        '						<h4 class="timeline-month">'+months[mnth]+(data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
+//        '						<h4 class="timeline-month">'+months[mnth]+(data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
+        '						<h4 class="timeline-month">'+(data.options.yearsOn ? 's' + yr + ' ' : '') + 'e' + mnth + (data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
 
                   // Fill with nodes
                   for (dy in yearsArr[yr][mnth]) {
@@ -881,14 +881,12 @@ usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
         '					</div> <!-- KRAJ PRVOG -->\n';
                 }
                 else {
-usa_debug('============ else !firstMonth : months[mnth]: ' + months[mnth]);
+usa_debug('============ else !firstMonth : cnt: ' + cnt + ', months[(cnt + 1)]: ' + months[(cnt + 1)] + ', mnth: ' + mnth);
                   firstMonth = !firstMonth;
                   html +=
-//        '					<div class="timeline-m right" style="position:absolute; top:0;">\n'+
         '					<div class="timeline-m right">\n'+
-    //		'						<h4 class="timeline-month" style="position:abolute; width:100% top:0; text-align:center;">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="timeline-month-year"> '+yr+'</span>' : '' )+'</h4>\n';
-        '						<h4 class="timeline-month">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
-    //		'						<h4 class="timeline-month" style="text-align:center;">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="timeline-month-year"> '+yr+'</span>' : '' )+'</h4>\n';
+//        '						<h4 class="timeline-month">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
+        '						<h4 class="timeline-month">' + (data.options.yearsOn ? 's' + yr + ' ' : '') + (typeof months[mnth] !== 'undefined' ? 'e' + mnth : '') + (data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
 
                   // Fill with nodes
                   for (dy in yearsArr[yr][mnth]) {

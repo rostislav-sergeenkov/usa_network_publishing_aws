@@ -385,6 +385,7 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
   $query->fields('locked_video', array('field_mpx_entitlement_value'));
   $query->condition('v.status', 1);
   $query->orderBy('v.airdate', 'DESC');
+  $query->orderBy('field_episode_number.field_mpx_episode_number_value', 'DESC');
 
   if ($limit > 0) {
     $query->range(0, $limit);

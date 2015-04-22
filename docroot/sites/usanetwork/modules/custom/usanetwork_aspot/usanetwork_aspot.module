@@ -746,7 +746,7 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
       : '',
     'show_class' => usanetwork_tv_shows_color_show_css_class($show_node),
     'show_poster' => array(
-      'mobile' => image_style_url('600x500', $banner_images['mobile']),
+      'mobile' => image_style_url('640x640', $banner_images['mobile']),
       'desktop' => image_style_url('2490x1418', $banner_images['desktop']),
     ),
     'show_title_prefix_style' => isset($draggable_data->data->tvs_aspot_elements->title_prefix)

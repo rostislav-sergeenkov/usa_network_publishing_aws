@@ -61,16 +61,6 @@
   }
 }
 .usanetwork-aspot {
-  //todo aspot static fix font size for show chrisley & show-graceland
-  &.show-chrisley, &.show-graceland {
-    .meta-wrap {
-      .show-title {
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 107px;
-        }
-      }
-    }
-  }
 
   .aspot-draggable-element {
     display: none;
@@ -356,7 +346,7 @@
     }
     @include breakpoint($bp-640-width) {
       float: none;
-      height: 100vw;
+      height: auto;
       width: 100%;
     }
     .asset-img {

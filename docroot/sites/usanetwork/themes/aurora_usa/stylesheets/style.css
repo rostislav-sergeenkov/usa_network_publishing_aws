@@ -21588,11 +21588,6 @@ yx-axis
   overflow: hidden;
 }
 
-@media (min-width: 1601px) {
-  .usanetwork-aspot.show-chrisley .meta-wrap .show-title, .usanetwork-aspot.show-graceland .meta-wrap .show-title {
-    font-size: 107px;
-  }
-}
 .usanetwork-aspot .aspot-draggable-element {
   display: none;
 }
@@ -21963,7 +21958,7 @@ yx-axis
 @media (max-width: 640px) {
   .aspot-and-episodes .show-aspot {
     float: none;
-    height: 100vw;
+    height: auto;
     width: 100%;
   }
 }

@@ -122,9 +122,8 @@
       </div>
       <!-- change link to special video page for show-->
       <div class="more-clips show-color">
-        <a href="/videos"><?php print t('View all video'); ?></a>
+        <a href="/videos"><?php print t('View all videos'); ?></a>
       </div>
     <?php endif; ?>
   </div>
 </div>
-

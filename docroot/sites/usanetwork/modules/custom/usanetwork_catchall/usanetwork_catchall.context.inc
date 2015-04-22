@@ -32,7 +32,7 @@ function usanetwork_catchall_context_default_contexts() {
         'usanetwork_menu-usanetwork_menu_consumptionator' => array(
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_consumptionator',
-          'region' => 'content',
+          'region' => 'header',
           'weight' => '-10',
         ),
         'system-main' => array(

@@ -12122,6 +12122,12 @@ footer h2 {
   padding: 0;
 }
 
+.node-type-catchall-page #block-system-main {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
 .consumptionator-page {
   background-color: #121212;
 }
@@ -22539,6 +22545,10 @@ yx-axis
   position: relative;
   padding: 0 50px 0 20px;
   color: #383838;
+  width: 235px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .page-schedule .page-title .shows-filters .item-filter .filter-label:after {
   content: "\e609";
@@ -23567,7 +23577,7 @@ yx-axis
     height: 9.375vw;
   }
 }
-@media (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 990px) {
   .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item {
     margin-top: 0;
   }
@@ -23706,7 +23716,7 @@ yx-axis
 }
 .schedule-on-tonight .schedule-block .episode-show {
   height: 30px;
-  line-height: 1.2;
+  line-height: 1.3;
   max-width: 105px;
   margin-bottom: 10px;
   overflow: hidden;
@@ -23726,6 +23736,7 @@ yx-axis
 }
 @media (min-width: 1281px) {
   .schedule-on-tonight .schedule-block .episode-show {
+    line-height: 1.2;
     max-width: 100px;
   }
 }

@@ -30,7 +30,6 @@
             > .node {
               opacity: 1 !important;
             }
-
           }
         }
       }
@@ -280,7 +279,6 @@
         }
       }
     }
-
     .row-2 {
       margin-top: 30px;
       @include breakpoint($bp-min-1281-width) {
@@ -497,6 +495,9 @@
           &.bx-prev {
             left: 0;
             width: 60px;
+            &.disabled {
+              display: none;
+            }
             &:after {
               content: "\e607";
             }
@@ -504,6 +505,9 @@
           &.bx-next {
             right: 0;
             width: 60px;
+            &.disabled {
+              display: none;
+            }
             &:after {
               content: "\e608";
             }

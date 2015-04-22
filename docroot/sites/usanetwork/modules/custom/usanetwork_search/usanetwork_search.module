@@ -688,8 +688,7 @@ function usanetwork_search_result_item_data($result_item) {
 
         $data['title'] = $file->filename;
 
-        $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
-        $image_uri = $wrapper->getLocalThumbnailPath();
+        $image_uri = $episode_image_uri = _usanetwork_mpx_video_get_image_path($file);
         if ($image_uri) {
           $data['image'] = theme_image_style(array(
             'style_name' => '300x169_video',

@@ -22130,12 +22130,18 @@ yx-axis
   left: 0;
   width: 60px;
 }
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-prev.disabled {
+  display: none;
+}
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-prev:after {
   content: "\e607";
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-next {
   right: 0;
   width: 60px;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-next.disabled {
+  display: none;
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-next:after {
   content: "\e608";

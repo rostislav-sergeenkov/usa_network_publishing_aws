@@ -1126,9 +1126,9 @@ function _usanetwork_tv_shows_aspot_block() {
             $description = $episode_wrapper->field_mpx_description->value();
           }
         }
-        $wrapper = file_stream_wrapper_get_instance_by_uri($full_latest_episode->uri);
+        $image_uri = _usanetwork_mpx_video_get_image_path($full_latest_episode);
         $video_image = theme('image_style', array(
-          'path' => $wrapper->getLocalThumbnailPath(),
+          'path' => $image_uri,
           'style_name' => 'full_episodes_633x356',
         ));
 

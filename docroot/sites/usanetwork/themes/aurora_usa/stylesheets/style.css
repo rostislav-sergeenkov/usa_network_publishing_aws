@@ -22577,6 +22577,7 @@ yx-axis
   margin-right: 20px;
   position: relative;
   vertical-align: middle;
+  min-width: 235px;
 }
 .page-schedule .page-title .shows-filters .item-filter:last-child {
   margin-right: 0;
@@ -22594,13 +22595,13 @@ yx-axis
 .page-schedule .page-title .shows-filters .item-filter .filter-label {
   border: 1px solid darkgrey;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 21px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   line-height: 40px;
   overflow: hidden;
   position: relative;
   padding: 0 50px 0 20px;
-  text-transform: uppercase;
+  color: #383838;
 }
 .page-schedule .page-title .shows-filters .item-filter .filter-label:after {
   content: "\e609";
@@ -22626,7 +22627,6 @@ yx-axis
   z-index: 2;
 }
 .page-schedule .page-title .shows-filters .item-filter .filter-menu li {
-  height: 40px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -22637,14 +22637,13 @@ yx-axis
   font-size: 20px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   height: 100%;
-  line-height: 40px;
-  padding-left: 20px;
+  line-height: 22px;
+  padding: 9px 20px;
   text-decoration: none;
-  text-transform: uppercase;
   width: 100%;
 }
 .page-schedule .page-title .shows-filters .item-filter .filter-menu li a:hover, .page-schedule .page-title .shows-filters .item-filter .filter-menu li a.active {
-  color: #545454;
+  color: #383838;
 }
 .page-schedule .schedule-wrapper {
   margin: 0 auto 40px;

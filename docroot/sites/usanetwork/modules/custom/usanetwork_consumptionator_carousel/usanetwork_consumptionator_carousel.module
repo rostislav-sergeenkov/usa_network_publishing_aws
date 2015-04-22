@@ -106,13 +106,7 @@ function usanetwork_consumptionator_carousel_block() {
     if (!empty($show_episodes)) {
       foreach ($show_episodes as $key => $episode_data) {
         $episode_file = file_load($episode_data->fid);
-        $episode_image_uri = '';
-
-        $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($episode_file->uri);
-
-        if ($episode_image_uri_wrapper) {
-          $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
-        }
+        $episode_image_uri = _usanetwork_mpx_video_get_image_path($episode_file);
 
         if ($episode_data->field_mpx_entitlement_value === 'auth') {
           $locked_video = TRUE;

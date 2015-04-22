@@ -1,13 +1,15 @@
 .consumptionator-page, .page-videos-live {
   .video-block {
     @include clear;
-    height: 42.01875vw;
     margin: 0;
     max-width: 2260px;
     overflow: hidden;
     padding: 0;
     position: relative;
     width: 100%;
+    @include breakpoint($bp-min-1281-width) {
+      height: 42.01875vw;
+    }
     @include breakpoint($between-1025-1280) {
       height: calc((100vw - 320px)*0.5625);
       margin-bottom: calc((100vw - 4px)/48*9 + 60px);
@@ -283,9 +285,11 @@
         width: 100%;
       }
       .advert {
-        height: 23.4vw;
-        padding: calc((23.4vw - 250px)/2) 0;
         width: 100%;
+        @include breakpoint($bp-min-1281-width) {
+          height: 23.4vw;
+          padding: calc((23.4vw - 250px)/2) 0;
+        }
         @include breakpoint($between-1025-1280) {
           height: 250px;
           padding: 0;
@@ -294,6 +298,7 @@
         }
         @include breakpoint($bp-1024-width) {
           display: block;
+          height: auto;
           float: right;
           margin: 10px 10px 10px 0;
           width: 300px;
@@ -309,15 +314,20 @@
         }
       }
       .clips-block {
-        height: calc(100% - 23.4vw);
         position: relative;
         width: 100%;
+        @include breakpoint($bp-min-1281-width) {
+          height: calc(100% - 23.4vw);
+        }
         @include breakpoint($between-1025-1280) {
           height: auto;
           right: 0;
           position: absolute;
           top: 100%;
           width: 100%;
+        }
+        @include breakpoint($bp-1024-width) {
+          height: calc(100% - 23.4vw);
         }
       }
       .clips-block-title {

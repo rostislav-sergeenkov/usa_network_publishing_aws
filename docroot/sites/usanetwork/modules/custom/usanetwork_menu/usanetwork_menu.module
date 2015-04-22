@@ -777,9 +777,11 @@ function _usanetwork_menu_full_episodes_block() {
     $episode_number = !empty($episode->field_mpx_episode_number)
       ? $episode_wrapper->field_mpx_episode_number->value()
       : NULL;
-    $wrapper = file_stream_wrapper_get_instance_by_uri($episode->uri);
+
+    $episode_image = _usanetwork_mpx_video_get_image_path($episode);
+
     $video_image = theme('image_style', array(
-      'path' => $wrapper->getLocalThumbnailPath(),
+      'path' => $episode_image,
       'style_name' => 'full_episodes_633x356',
     ));
 
@@ -985,10 +987,9 @@ function _usanetwork_menu_consumptionator_block_video($file) {
       '#suffix' => '</div>',
     );
     $file_wrapper = entity_metadata_wrapper('file', $file);
-    $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
-    if ($episode_image_uri_wrapper) {
-      $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
-    }
+
+    $episode_image_uri = _usanetwork_mpx_video_get_image_path($file);
+
     $theme_variables = array(
       'sharebar' => !empty($sharebar) ? drupal_render($sharebar) : '',
       'authbar' => !empty($auth_links) ? drupal_render($auth_links) : '',

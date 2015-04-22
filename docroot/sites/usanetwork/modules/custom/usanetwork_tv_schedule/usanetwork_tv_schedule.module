@@ -910,11 +910,7 @@ function usanetwork_tv_schedule_schedule_page() {
       $tv_episode = _usanetwork_tv_schedule_get_episode($episode_title, $show_nid);
 
       if (!empty($tv_episode)) {
-        $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($tv_episode->uri);
-
-        if ($episode_image_uri_wrapper) {
-          $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
-        }
+        $episode_image_uri = $episode_image_uri = _usanetwork_mpx_video_get_image_path($tv_episode);
       }
 
       $show_logo_url = '';

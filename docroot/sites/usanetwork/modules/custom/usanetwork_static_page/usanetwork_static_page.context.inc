@@ -29,11 +29,11 @@ function usanetwork_static_page_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+        'usanetwork_menu-usanetwork_menu_page_header' => array(
           'module' => 'usanetwork_menu',
-          'delta' => 'usanetwork_menu_consumptionator',
+          'delta' => 'usanetwork_menu_page_header',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '30',
         ),
         'system-main' => array(
           'module' => 'system',

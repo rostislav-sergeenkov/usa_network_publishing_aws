@@ -13,7 +13,9 @@
       <div class="meta-wrapper-inner">
         <div class="meta">
           <div class="title"><?php print (!empty($title))? $title: ''; ?></div>
-          <div class="additional"><?php print t('S!season Episode !episode', array('!season' => $season, '!episode' => $episode)); ?></div>
+          <?php if (!empty($season) && !empty($episode)): ?>
+            <div class="additional"><?php print t('S!season Episode !episode', array('!season' => $season, '!episode' => $episode)); ?></div>
+          <?php endif; ?>
         </div>
       </div>
     </div>

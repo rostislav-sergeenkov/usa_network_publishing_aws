@@ -228,6 +228,7 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_media_gallery_consumptionator_episode_slides' => array(
       'variables' => array(
+        'gallery_type' => NULL,
         'slides' => array(),
       ),
       'path' => $path . '/templates',
@@ -317,13 +318,13 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
   $node = menu_get_object();
 
   if (isset($node->type) && $node->type == 'media_gallery') {
-    if (!empty($node->field_show) && !empty($node->field_season)) {
+    if (!empty($node->field_show) && !empty($node->field_gallery_type)) {
       $node_wrapper = entity_metadata_wrapper('node', $node);
 
       $show_nid = $node_wrapper->field_show->nid->value();
-      $season_nid = $node_wrapper->field_season->nid->value();
+      $gallery_type = $node_wrapper->field_gallery_type->value();
 
-      $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $season_nid);
+      $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type);
 
       if (!empty($galleries_list)) {
         $rendered_items = array();
@@ -347,7 +348,10 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         }
 
         if (!empty($rendered_items)) {
-          return theme('usanetwork_media_gallery_consumptionator_episode_slides', array('slides' => $rendered_items));
+          return theme('usanetwork_media_gallery_consumptionator_episode_slides', array(
+            'gallery_type' => $gallery_type,
+            'slides' => $rendered_items
+          ));
         }
       }
     }
@@ -362,17 +366,17 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
  * @param $show_nid
  * @param $season_nid
  */
-function _usanetwork_media_gallery_get_galleries($show_nid, $season_nid) {
+function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type) {
   $query = db_select('node', 'n');
   $query->fields('n', array('nid', 'title', 'created'));
   $query->join('field_data_field_show', 'sh', 'n.nid=sh.entity_id');
-  $query->join('field_data_field_season', 'se', 'n.nid=se.entity_id');
+  $query->leftJoin('field_data_field_season', 'se', 'n.nid=se.entity_id');
   $query->join('field_data_field_gallery_type', 'gt', 'n.nid=gt.entity_id');
-  $query->join('field_data_field_season_id', 'se_id', 'se.field_season_target_id=se_id.entity_id');
+  $query->leftJoin('field_data_field_season_id', 'se_id', 'se.field_season_target_id=se_id.entity_id');
   $query->fields('se_id', array('field_season_id_value'));
-  $query->join('field_data_field_episode', 'ep', 'n.nid=ep.entity_id');
-  $query->join('node', 'ep_node', 'ep.field_episode_target_id=ep_node.nid');
-  $query->join('field_data_field_episode_number', 'ep_number', 'ep_node.nid=ep_number.entity_id');
+  $query->leftJoin('field_data_field_episode', 'ep', 'n.nid=ep.entity_id');
+  $query->leftJoin('node', 'ep_node', 'ep.field_episode_target_id=ep_node.nid');
+  $query->leftJoin('field_data_field_episode_number', 'ep_number', 'ep_node.nid=ep_number.entity_id');
   $query->fields('ep_number', array('field_episode_number_value'));
   $query->leftJoin('field_data_field_cover_item', 'cover', 'n.nid=cover.entity_id');
   $query->fields('cover', array('field_cover_item_fid'));
@@ -380,10 +384,9 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $season_nid) {
   $query->fields('cover_file', array('uri'));
 
   $query->condition('sh.field_show_target_id', $show_nid);
-  $query->condition('se.field_season_target_id', $season_nid);
   $query->condition('n.status', 1);
   $query->condition('n.type', 'media_gallery');
-  $query->condition('gt.field_gallery_type_value', 'Episodic Gallery');
+  $query->condition('gt.field_gallery_type_value', $gallery_type);
 
   return $query->execute()->fetchAll();
 }

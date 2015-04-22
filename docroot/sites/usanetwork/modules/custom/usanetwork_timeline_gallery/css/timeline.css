@@ -1,3 +1,4 @@
+/* @TODO: IMPORTANT!!! CHANGE THE FOLLOWING URLS TO www INSTEAD OF surf */
 @font-face {
   font-family: 'FontAwesome';
   src: url("http://surf.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/fontawesome-webfont.eot?iefix") format("eot"),
@@ -15,7 +16,13 @@
   text-align: center;
   height: 0;
 }
-#timeline-player-slideshow-area {
+#timeline-player-slideshow-area,
+#timeline-player-slideshow-area h1,
+#timeline-player-slideshow-area h2,
+#timeline-player-slideshow-area h3,
+#timeline-player-slideshow-area h4,
+#timeline-player-slideshow-area p,
+#timeline-player-slideshow-area span {
  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 ul, li {
@@ -92,7 +99,7 @@ ul, li {
 .timelineFlat .timeline-line {
 	margin-top: 10px;
 	margin-bottom: 10px;
-	width: 70%; /* 900px; */
+	width: 60%; /* 900px; */
 	top: 565px;
 
 	/* below from js line 707 */
@@ -120,18 +127,37 @@ ul, li {
 /* 2 months are stored in one view */
 .timelineFlat .timeline-view {
 	height: 20px;
-  width: 900px;
+/*  width: 900px; */
 
 	/* from js line 778 */
 	position: relative;
 	display: inline-block;
 /*	width: 100%; */
 }
+.timelineFlat .timeline-view .vert-end-line {
+  border-left: 1px solid #000;
+  /* margin-top: 85px; */
+  /* top: 40px; */
+  /* position: absolute; */
+  display: block;
+  left: 0;
+  /* margin-bottom: -40px; */
+  position: absolute;
+  bottom: -30px;
+  z-index: 10;
+  height: 20px;
+}
+.timelineFlat .timeline-view .vert-end-line.right {
+  left: initial;
+  right: 0;
+  border-right: 1px solid #000;
+  border-left: 1px solid transparent;
+}
 
 /* holder for 1 month (constist of nodes and month caption) - we use borders to separate months thats why it has width 2px less then 50% */
 .timelineFlat .timeline-m {
-	margin-top: 35px;
-	height: 10px;
+	margin-top: 25px; /* 35px; */
+	height: 30px; /* 10px; */
 	border-left: 1px solid transparent;
 	border-right: 1px solid #101010;
 	width: 50%; /* 448px; */
@@ -146,8 +172,8 @@ ul, li {
 /* month on the right side - has left set at 459 so border would overlap border from first element (to evade duplicated borders) */
 .timelineFlat .timeline-m.right {
 	left: 50%; /* 449px; */
-	width: 50%; /* 449px; */
-	border-left: 1px solid #101010;
+/* 	width: 50%; 449px; */
+	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
 
 	/* from js line 814 */
@@ -158,9 +184,9 @@ ul, li {
 /* month caption */
 .timelineFlat h4.timeline-month {
 	font-size: 16px;
-	margin: -40px 0 0;
-	color: #38404b;
-	letter-spacing: 1px;
+	margin: -32px 0 0;
+	color: #000; /* #38404b;
+	letter-spacing: 1px; */
 
 	/* from js line 801 */
 	position: absolute;
@@ -175,7 +201,7 @@ ul, li {
 	padding: 38px 0 4px;
 	height: 10px;
 	font-size: 12px;
-	top: -25px;
+	top: -16px; /* -25px; */
 /*	position: relative; */
 	color: #101010;
 	outline: none;
@@ -210,7 +236,7 @@ ul, li {
 /*	white-space: normal !important; */
 	top: -50px;
 	opacity: 0;
-	filter: alpha(opacity=0);
+/*	filter: alpha(opacity=0); */
 	left: 50%;
 	color: #FFF;
 	display: inline-block !important;
@@ -218,11 +244,12 @@ ul, li {
 	transition: top 200ms, opacity 500ms;
 	-webkit-transition: top 200ms, opacity 500ms;
 	-moz-transition: top 200ms, opacity 500ms;
+	text-transform: uppercase;
 }
 .timelineFlat a.timeline-node:hover .timeline-node-desc {
 	top: 0;
 	opacity: 1;
-	filter: alpha(opacity=100);
+/*	filter: alpha(opacity=100); */
 }
 
 /* dot hover tooltip */
@@ -230,11 +257,11 @@ ul, li {
 	white-space: nowrap;
 	margin-left: -50%;
 	margin-right: 50%;
-	margin-top: -16px;
+	margin-top: -18px;
 	display: block !important;
-	padding: 8px;
+	padding: 4px 8px;
 	border-radius: 3px;
-	background: #111d29;
+	background-color: #56000A;
 	position: relative;
 }
 .timelineFlat .timeline-node-desc span:after {
@@ -245,10 +272,77 @@ ul, li {
 	position: absolute;
 	bottom: -10px;
 	border: 5px solid transparent;
-	border-top: 5px solid #111d29;
+	border-top: 5px solid #56000A;
 	left: 50%;
 	margin-left: -5px;
 }
+
+
+/* FFWD / REW buttons for line */
+.timelineFlat #timeline-line-full-left,
+.timelineFlat #timeline-line-full-right {
+	display: flex;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	cursor: pointer;
+	top: 39px;
+	width: 136px;
+	height: 24px;
+	font-size: 24px;
+	color: #56000A;
+	position: absolute;
+	white-space: nowrap;
+}
+.timelineFlat #timeline-line-full-left {
+	left: -193px;
+}
+.timelineFlat #timeline-line-full-right {
+	right: -203px;
+}
+.timelineFlat #timeline-line-full-left .title {
+  margin-right: 6px;
+}
+.timelineFlat #timeline-line-full-right .title {
+  margin-left: 6px;
+}
+.timelineFlat #timeline-line-full-left .arrow,
+.timelineFlat #timeline-line-full-right .arrow {
+  width: 26px;
+  height: auto;
+}
+/* line REW arrow */
+.timelineFlat #timeline-line-full-left .arrow {
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowREW.svg') no-repeat 0 0 transparent;
+  padding-left: 20px;
+}
+/* line FFWD arrow */
+.timelineFlat #timeline-line-full-right .arrow {
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowFFW.svg') no-repeat 0 0 transparent;
+  padding-right: 20px;
+}
+
+/* next / previous buttons for line */
+.timelineFlat #timeline-line-left,
+.timelineFlat #timeline-line-right {
+	display: flex;
+	cursor: pointer;
+	top: 38px;
+	width: 26px;
+	height: 22px;
+	position: absolute;
+}
+.timelineFlat #timeline-line-left {
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev.svg') no-repeat 0 0 transparent;
+	left: -30px;
+}
+.timelineFlat #timeline-line-right {
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext.svg') no-repeat 0 0 transparent;
+	right: -40px;
+}
+/*
 .timelineFlat #timeline-line-left,
 .timelineFlat #timeline-line-right {
   font-family: 'FontAwesome';
@@ -268,10 +362,8 @@ ul, li {
 }
 .timelineFlat #timeline-line-left:hover,
 .timelineFlat #timeline-line-right:hover {
-	color: #6edde4;
+	color: #56000A;
 }
-
-/* line arrow left */
 .timelineFlat #timeline-line-left {
 	left: -30px;
 }
@@ -281,7 +373,6 @@ ul, li {
 	right: 0;
 	top: 0;
 }
-/* line arrow right */
 .timelineFlat #timeline-line-right {
 	right: -30px;
 }
@@ -291,6 +382,7 @@ ul, li {
 	left: 0;
 	top: 0;
 }
+*/
 
 /* timeline */
 .timelineFlat {
@@ -331,6 +423,7 @@ ul, li {
 	position: relative;
 	padding: 0;
 	float: left;
+	opacity: 0.3;
 
 	/* below from js line 191 */
 	-webkit-touch-callout: none;
@@ -340,11 +433,19 @@ ul, li {
 	-ms-user-select: none;
 	user-select: none;
 }
+.timelineFlat .timeline-item.active {
+  opacity: 1;
+}
+.timelineFlat .timeline-item img {
+  width: initial;
+}
+
+/* timeline item hover -- indicator bar at top of item */
 .timelineFlat .timeline-item.timeline-item-node-hover:before {
 	content: "";
 	position: absolute;
 	height: 4px;
-	background: #74d9e5;
+	background: #56000A;
 	width: 100%;
 	z-index: 2;
 	top: 0;
@@ -360,7 +461,7 @@ ul, li {
 	left: 50%;
 	margin: 4px 0 0 -6px;
 	border: 6px solid transparent;
-	border-top: 6px solid #74d9e5;
+	border-top: 6px solid #56000A;
 }
 
 /* ----- content - non-plugin elements ----- */
@@ -415,14 +516,24 @@ ul, li {
 	position: absolute;
 	top: 8px;
 	right: 8px;
-	font-size: 18px;
 	padding-top: 0;
-	font-size: 12px;
-	line-height: 12px;
-	color: #FFF;
+	font-size: 14px;
+	line-height: 1.2;
+	color: #FFE476;
 	text-align: right;
 	width: 430px;
 	padding-bottom: 50px;
+	text-transform: uppercase;
+}
+.timelineFlat .timeline-item .timeline-item-text h2 .divider {
+  display: inline;
+  margin: 0 5px;
+  height: auto;
+}
+.timelineFlat .timeline-item .timeline-item-text p {
+  font-size: 18px;
+  color: #FFF;
+  margin: 50px 0;
 }
 
 /* item details (margins set from javascript) */
@@ -450,6 +561,11 @@ ul, li {
 	color: #FFF;
 	left: 214px;
 	position: relative;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+.timelineFlat .timeline-item-open h2 .divider {
+  display: inline;
 }
 
 /* item details content wrapper (used for animation - shuld have same width as .timeline-item-open) */
@@ -522,7 +638,7 @@ ul, li {
 .timelineFlat:hover .timeline-left,
 .timelineFlat:hover .timeline-right {
 	opacity: 1;
-	filter: alpha(opacity=100);
+/*	filter: alpha(opacity=100); */
 }
 .timelineFlat .timeline-left,
 .timelineFlat .timeline-right {
@@ -533,6 +649,10 @@ ul, li {
 	margin: 0;
 	cursor: pointer;
 	top: 0;
+	background-color: rgba(30, 30, 30, 1);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 40px 30px;
 	z-index: 10;
 	opacity: 0;
 	filter: alpha(opacity=0);
@@ -543,22 +663,18 @@ ul, li {
 .timelineFlat .timeline-left,
 .timelineFlat .timeline-left:hover:active {
 	left: 0;
-/*	background: rgba(17,29,41, 0.5) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center; */
-	background: rgba(0, 0, 0, 1) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center;
+	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev.svg');
 }
 .timelineFlat .timeline-left:hover {
-/*	background: rgba(17,29,41, 0.7) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center; */
-	background: rgba(0, 0, 0, 1) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_L.png') no-repeat center center;
+	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev.svg');
 }
 .timelineFlat .timeline-right,
-.timelineFlat .timeline-right:hover:active{
+.timelineFlat .timeline-right:hover:active {
 	right: 0;
-/*	background: rgba(17,29,41, 0.5) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center; */
-	background: rgba(0, 0, 0, 1) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center;
+	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext.svg');
 }
 .timelineFlat .timeline-right:hover {
-/*	background: rgba(17,29,41, 0.7) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center; */
-	background: rgba(0, 0, 0, 1) url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrow_big_slideshow_R.png') no-repeat center center;
+	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext.svg');
 }
 
 /* SHARING */

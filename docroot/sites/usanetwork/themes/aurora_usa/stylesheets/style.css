@@ -11652,6 +11652,7 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
     display: block;
+    height: auto;
     float: right;
     margin: 10px 10px 10px 0;
     width: 300px;

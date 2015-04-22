@@ -507,6 +507,9 @@
           &.bx-prev {
             left: 0;
             width: 60px;
+            &.disabled {
+              display: none;
+            }
             &:after {
               content: "\e607";
             }
@@ -514,6 +517,9 @@
           &.bx-next {
             right: 0;
             width: 60px;
+            &.disabled {
+              display: none;
+            }
             &:after {
               content: "\e608";
             }

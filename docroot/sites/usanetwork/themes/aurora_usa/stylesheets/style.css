@@ -12186,6 +12186,13 @@ footer h2 {
   padding: 0;
 }
 
+.node-type-catchall-page #block-system-main {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0 16px;
+}
+
 .consumptionator-page {
   background-color: #121212;
 }

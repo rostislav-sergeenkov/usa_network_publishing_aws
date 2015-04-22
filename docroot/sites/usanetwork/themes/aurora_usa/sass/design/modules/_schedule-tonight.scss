@@ -240,7 +240,6 @@
           }
         }
         &:first-child {
-          //margin-left: 10%;
           @include breakpoint($bp-1280-width) {
             margin-left: 0;
           }
@@ -325,17 +324,12 @@
       font-size: 11px;
       line-height: 11px;
       letter-spacing: 0.5px;
-//      margin-left: 20%;
       padding-right: 25px;
       text-transform: uppercase;
       max-width: 50%;
-      @include breakpoint($bp-min-1901-width) {
-//        margin-left: 112px;
-      }
       @include breakpoint($bp-min-1701-width) {
         font-size: 19px;
         line-height: 19px;
-//        margin-left: 26.66666%;
         padding-right: 33px;
       }
       @include breakpoint($bp-1280-width) {

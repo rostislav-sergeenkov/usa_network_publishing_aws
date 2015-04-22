@@ -129,34 +129,6 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_show_rels|node|timeline_gallery|form';
-  $field_group->group_name = 'group_show_rels';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'timeline_gallery';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_usa_custom';
-  $field_group->data = array(
-    'label' => 'Show relationships',
-    'weight' => '23',
-    'children' => array(
-      0 => 'field_season',
-      1 => 'field_show',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_show_rels|node|timeline_gallery|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_timeline_gallery_nitro|node|timeline_gallery|form';
   $field_group->group_name = 'group_timeline_gallery_nitro';
   $field_group->entity_type = 'node';
@@ -181,35 +153,6 @@ function usanetwork_timeline_gallery_field_group_info() {
     ),
   );
   $export['group_timeline_gallery_nitro|node|timeline_gallery|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_usa_custom|node|timeline_gallery|form';
-  $field_group->group_name = 'group_usa_custom';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'timeline_gallery';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'USA Custom',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_gallery_type',
-      1 => 'field_person',
-      2 => 'group_show_rels',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_usa_custom|node|timeline_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

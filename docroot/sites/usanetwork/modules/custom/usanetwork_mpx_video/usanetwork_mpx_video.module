@@ -2716,13 +2716,25 @@ function usanetwork_mpx_video_related_content_block() {
     if (!empty($show_field)) {
       $tv_show_node = $show_field[0]['entity'];
 
-      $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_MPX_VIDEO_RELATED_CONTENT_ITEMS);
+      $you_may_also_like_item = usanetwork_mpx_video_get_ymal_item($tv_show_node);
+
+      $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content(
+        $tv_show_node, 0,
+        !empty($you_may_also_like_item)
+          ? USA_MPX_VIDEO_RELATED_CONTENT_ITEMS - 1
+          : USA_MPX_VIDEO_RELATED_CONTENT_ITEMS
+      );
+
+      if (!empty($you_may_also_like_item)) {
+        $related_content[] = $you_may_also_like_item;
+      }
 
       if (!empty($related_content)) {
         drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
         drupal_add_js(array(
           'usanetwork_tv_show_nid' => $tv_show_node->nid,
           'usanetwork_tv_show_page_context' => 'consumptionator',
+          'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
         ), 'setting');
 
         $block_of_items = _usanetwork_mpx_video_render_related_content_items_block($related_content, FALSE);
@@ -2738,6 +2750,40 @@ function usanetwork_mpx_video_related_content_block() {
   }
 
   return '';
+}
+
+/**
+ * Returns "You may also like" rendered item.
+ */
+function usanetwork_mpx_video_get_ymal_item($show_node) {
+  if (!empty($show_node->field_usa_tv_related_shows)) {
+    $related_show_field = field_get_items('node', $show_node, 'field_usa_tv_related_shows');
+
+    if (!empty($related_show_field[0]['target_id'])) {
+      $related_show_node = node_load($related_show_field[0]['target_id']);
+      $about_field_data = '';
+
+      if (!empty($related_show_field->field_tvs_about)) {
+        $about_field = field_get_items('node', $related_show_field, 'field_tvs_about');
+
+        if (!empty($about_field)) {
+          $about_field_data = check_plain(reset(reset($about_field)));
+        }
+      }
+
+      return (object)array(
+        'entity_type' => 'node',
+        'bundle' => $related_show_node->type,
+        'entity_id' => $related_show_node->nid,
+        'created' => $related_show_node->created,
+        'timestamp' => $related_show_node->changed,
+        'title' => $related_show_node->title,
+        'show_title' => $about_field_data,
+        'raw_image_uri' => usanetwork_core_api_get_content_image('node', $related_show_node),
+        'media_icon' => usanetwork_core_api_get_media_icon('node', $related_show_node->nid),
+      );
+    }
+  }
 }
 
 /**

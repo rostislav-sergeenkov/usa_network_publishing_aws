@@ -780,13 +780,13 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
 
   $theme_array['cta_buttons'] = array();
   if (!empty($draggable_data->data->aspot_elements) && !empty($aspot_node->field_aspot_gi_cta)) {
-    $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper->field_aspot_gi_cta->value(), $draggable_data->data->aspot_elements);
+    $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper->field_aspot_tgi_cta->value(), $draggable_data->data->tvs_aspot_elements);
   }
   $theme_array['show_title'] = $value['value'];
   if (in_array('social_meter', $enabled_elements) && module_exists('usanetwork_social_meter')) {
     $theme_array['social_meter'] = usanetwork_social_meter_get($aspot_node);
   }
-
+  
   drupal_add_js(drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js');
 
   return theme('usanetwork_aspot_tvshow_slide', $theme_array);
@@ -895,6 +895,7 @@ function _usanetwork_aspot_get_draggable_ui_default_settings_element() {
   return array(
     'value' => NULL,
     'enabled' => FALSE,
+    'display' => 'none',
     'percentX' => NULL,
     'percentY' => NULL,
     'invertX' => NULL,
@@ -965,6 +966,7 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
           'value' => 'CTA ' . $new_button_title,
           'enabled' => $new_button_enabled,
+          'display' => 'none',
           'percentX' => 'auto',
           'percentY' => 'auto',
           'invertX' => NULL,
@@ -999,6 +1001,7 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
           'value' => 'CTA ' . $new_button_title,
           'enabled' => $new_button_enabled,
+          'display' => 'none',
           'percentX' => 'auto',
           'percentY' => 'auto',
           'invertX' => NULL,

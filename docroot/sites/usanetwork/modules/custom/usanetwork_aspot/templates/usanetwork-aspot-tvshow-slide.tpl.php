@@ -29,7 +29,7 @@
         <div class="meta-wrap">
           <div class="meta">
             <div class="title_prefix aspot-draggable-element"<?php if (!empty($show_title_prefix_style['desktop'])): print ' data-style-desktop="' . $show_title_prefix_style['desktop'] . '" data-style-mobile="' . $show_title_prefix_style['mobile'] . '"'; endif; ?>><?php print $show_title_prefix; ?></div>
-            <div class="title aspot-draggable-element"<?php if (!empty($show_title_style['desktop'])): print ' style="' . $show_title_style['desktop'] . '"'; endif; ?>><?php print $show_title; ?></div>
+            <div class="title aspot-draggable-element"<?php if (!empty($show_title_style['desktop'])): print ' data-style-desktop="' . $show_title_style['desktop'] . '" data-style-mobile="' . $show_title_style['mobile'] . '"'; endif; ?>><?php print $show_title; ?></div>
             <?php if (!empty($show_timer)): ?>
               <div class="show-timer">
                 <div class="start"<?php if (!empty($show_timer['title_prefix_style'])): print ' style="' . $show_timer['title_prefix_style'] . '"'; endif; ?>>

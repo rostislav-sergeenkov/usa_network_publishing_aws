@@ -67,6 +67,7 @@
         else {
           usanetwork_aspot_giui_disable_element($(this).val());
         }
+        usanetwork_aspot_giui_fill_draggable_items_input();
       });
 
       var draggableOptions = {
@@ -95,7 +96,6 @@
         $('#aspot-draggable-' + draggableId + inputElementName).show();
         $('#mobile-aspot-draggable-' + draggableId + inputElementName).show();
 
-        usanetwork_aspot_giui_fill_draggable_items_input();
       }
 
       /**
@@ -113,7 +113,6 @@
         $('#aspot-draggable-' + draggableId  + inputElementName).hide();
         $('#mobile-aspot-draggable-' + draggableId  + inputElementName).hide();
 
-        usanetwork_aspot_giui_fill_draggable_items_input();
       }
 
       /**
@@ -388,22 +387,21 @@
             tvs_aspot_elements = Drupal.settings.giui_settings.tvs_aspot_elements,
             homeUiPositionsVal, showUiPositionsVal;
 
-        if(homeUiPositions != '') {
-          homeUiPositionsVal = JSON.parse(homeUiPositions);
-        } else {
-          homeUiPositionsVal = getParams(aspot_elements);
-        }
-
-        if(showUiPositions != '') {
-          showUiPositionsVal = JSON.parse(showUiPositions);
-        } else {
-          showUiPositionsVal = getParams(tvs_aspot_elements);
-        }
-
-
         if((homeUiPositions == '') && (showUiPositions == '')){
           headInput.val(headTextarea.text());
         } else {
+
+          if(homeUiPositions != '') {
+            homeUiPositionsVal = JSON.parse(homeUiPositions);
+          } else {
+            homeUiPositionsVal = getParams(aspot_elements);
+          }
+
+          if(showUiPositions != '') {
+            showUiPositionsVal = JSON.parse(showUiPositions);
+          } else {
+            showUiPositionsVal = getParams(tvs_aspot_elements);
+          }
 
           var myData = {
             data : {
@@ -432,7 +430,7 @@
             dataPosition[name] = {
               "elementId": itemElem.elementId,
               "dataRel": itemElem.dataRel,
-              'display' : itemElement.display,
+              "display" : itemElem.display,
               "left": itemElem.left,
               "top": itemElem.top,
               "leftM": itemElem.leftM,

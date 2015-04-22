@@ -22,6 +22,11 @@
   .caroufredsel_wrapper{
     height: 100% !important;
   }
+  .icons-block {
+    a {
+      clear: none;
+    }
+  }
   .view-schedule {
     height: 120px;
     position: absolute;
@@ -265,10 +270,8 @@
         .schedule-item {
           @include clear;
           float: right;
-          //display: inline-block;
           display: table;
           box-sizing: border-box;
-          //margin-top: 25px;
           height: 120px;
           padding-right: 10px;
           max-width: 420px;
@@ -332,7 +335,7 @@
       @include breakpoint($bp-1280-width) {
         margin-right: 15px;
       }
-      span {
+      span, a {
         color: #ffffff;
         font-family: $avalon-demi;
         font-size: 36px;
@@ -358,7 +361,7 @@
         }
       }
       .watch-now{
-        span{
+        a {
           color: $schedule-pm-color;
           font-size: 11px;
           line-height: 11px;

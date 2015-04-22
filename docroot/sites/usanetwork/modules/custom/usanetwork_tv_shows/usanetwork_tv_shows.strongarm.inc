@@ -268,6 +268,9 @@ function usanetwork_tv_shows_strongarm() {
         'xmlsitemap' => array(
           'weight' => '11',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),
@@ -447,6 +450,9 @@ function usanetwork_tv_shows_strongarm() {
         ),
         'xmlsitemap' => array(
           'weight' => '11',
+        ),
+        'locations' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),

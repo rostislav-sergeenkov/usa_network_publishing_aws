@@ -1,23 +1,37 @@
 (function ($) {
   Drupal.behaviors.usanetwork_menu_dropdown = {
     stickyHeader: function() {
-      var $header = $('.region-header'),
+      var $header_full = $('.region-header'),
           $ad = $('.ad-leaderboard'),
+          $header_submenu = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu'),
+          $navbar = $('.header-nav-bar'),
           ad_h = $ad.height(),
-          header_h = $header.height(),
-          scroll_top = $(window).scrollTop();
+          navbar_h = $navbar.height(),
+          header_full_h = $header_full.height(),
+          scroll_top = $(window).scrollTop(),
+          styles = {
+            'position': 'fixed',
+            'z-index': '9999',
+            'width': '100%',
+            'top': '0'
+          }
 
-      if ((scroll_top > ad_h + 20) && ($(window).width() > 768)) {
-        $header.css({
-          'position': 'fixed',
-          'z-index': '9999',
-          'width': '100%',
-          'top': '0'
-        });
-        $ad.css('margin-bottom', header_h);
-      } else if (scroll_top < ad_h + 20) {
-        $header.attr('style', '');
-        $ad.css('margin-bottom', 0);
+      if ($('body').hasClass('usa-tv-show')) {
+        if ((scroll_top > (ad_h + navbar_h + 20)) && ($(window).width() > 768)) {
+          $header_submenu.css(styles);
+          $ad.css('margin-bottom', navbar_h);
+        } else if (scroll_top < (ad_h + navbar_h + 20)) {
+          $header_submenu.attr('style', '');
+          $ad.css('margin-bottom', 0);
+        }
+      } else {
+        if ((scroll_top > ad_h + 20) && ($(window).width() > 768)) {
+          $header_full.css(styles);
+          $ad.css('margin-bottom', header_full_h);
+        } else if (scroll_top < ad_h + 20) {
+          $header_full.attr('style', '');
+          $ad.css('margin-bottom', 0);
+        }
       }
     },
 

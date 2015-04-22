@@ -72,26 +72,6 @@
           threshold: 0,
           excludedElements: 'button, input, select, textarea, .noSwipe'
         });
-
-        $(this).mousewheel(function (event, delta, deltaX, deltaY) {
-          if (delta > 0) {
-            slider.goToPrevSlide();
-
-            if (slider.getCurrentSlide() != 0) {
-              event.stopPropagation();
-              event.preventDefault();
-            }
-          }
-
-          if (deltaY < 0) {
-            slider.goToNextSlide();
-
-            if (slider.getCurrentSlide() + 1 < slider.getSlideCount()) {
-              event.stopPropagation();
-              event.preventDefault();
-            }
-          }
-        });
       });
     },
 

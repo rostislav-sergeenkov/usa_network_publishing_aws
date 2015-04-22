@@ -5,7 +5,6 @@
  * $info => array(
  *   'description' => NULL, // Description of image
  * );
-),
  */
 ?>
 <div class="slide">

@@ -22609,6 +22609,10 @@ yx-axis
   position: relative;
   padding: 0 50px 0 20px;
   color: #383838;
+  width: 235px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .page-schedule .page-title .shows-filters .item-filter .filter-label:after {
   content: "\e609";

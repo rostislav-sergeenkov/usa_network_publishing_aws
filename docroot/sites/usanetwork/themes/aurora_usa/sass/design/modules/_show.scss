@@ -1061,6 +1061,12 @@
     text-align: center;
     position: relative;
   }
+  @include breakpoint($bp-480-width) {
+    display: table;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
   h1 {
     color: #ffffff;
     float: left;
@@ -1082,17 +1088,12 @@
       max-width: 194px;
     }
     @include breakpoint($bp-480-width) {
+      display: table-cell;
+      float: none;
       font-size: 16px;
-      line-height: 50px;
-      margin: auto;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-    }
-    @include breakpoint ($bp-320-width) {
-      line-height: 1.5em;
+      line-height: 1;
+      text-align: center;
+      vertical-align: middle;
     }
   }
   .schedule {

@@ -7,6 +7,46 @@
 include_once 'usanetwork_media_gallery.features.inc';
 
 /**
+ *  Implements hook_block_info().
+ */
+function usanetwork_media_gallery_block_info() {
+  $blocks = array();
+
+  $blocks['usa_gallery_central_gallery'] = array(
+    'info' => 'Consumptionator: Media gallery',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usa_gallery_episode_gallery'] = array(
+    'info' => 'Consumptionator: Episode gallery',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_media_gallery_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usa_gallery_central_gallery':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_media_gallery_consumptionator_gallery_block();
+      break;
+
+    case 'usa_gallery_episode_gallery':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_media_gallery_consumptionator_episodes_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
  * Implements hook_node_view().
  */
 function usanetwork_media_gallery_node_view($node, $view_mode, $langcode) {
@@ -157,5 +197,193 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
       'path' => $path . '/templates',
       'template' => 'usanetwork-media-gallery-slide',
     ),
+    'usanetwork_media_gallery_consumptionator_slide' => array(
+      'variables' => array(
+        'gigya_id' => NULL,
+        'image' => NULL,
+        'info' => array(
+          'description' => NULL,
+        ),
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-media-gallery-consumptionator-slide',
+    ),
+    'usanetwork_media_gallery_consumptionator_slides' => array(
+      'variables' => array(
+        'slides' => array(),
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-media-gallery-consumptionator-slides',
+    ),
+    'usanetwork_media_gallery_consumptionator_episode_slide' => array(
+      'variables' => array(
+        'gallery_url' => NULL,
+        'image_url' => NULL,
+        'title' => NULL,
+        'season' => NULL,
+        'episode' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-media-gallery-consumptionator-episode-slide',
+    ),
+    'usanetwork_media_gallery_consumptionator_episode_slides' => array(
+      'variables' => array(
+        'slides' => array(),
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-media-gallery-consumptionator-episode-slides',
+    ),
   );
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_media_gallery_image_default_styles() {
+  $styles = array();
+
+  $styles['300x200'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 300,
+          'height' => 400,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
+ * Renders main gallery on MediaGallery page.
+ */
+function _usanetwork_media_gallery_consumptionator_gallery_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $node = menu_get_object();
+
+  if (isset($node->type) && $node->type == 'media_gallery') {
+    $slides = array();
+
+    $gallery_field = field_get_items('node', $node, 'field_media_items');
+
+    if (!empty($gallery_field)) {
+      foreach ($gallery_field as $gallery_file) {
+        if (is_array($gallery_file)) {
+          $gallery_file = (object)$gallery_file;
+        }
+
+        $slide_variables = array(
+          'gigya_id' => NULL,
+          'image' => theme_image(array(
+            'path' => $gallery_file->uri,
+            'attributes' => array(),
+          )),
+          'info' => array(
+            'description' => '',
+          ),
+        );
+
+        $caption_field = field_get_items('file', $gallery_file, 'field_caption');
+
+        if (!empty($caption_field)) {
+          $slide_variables['info']['description'] = $caption_field[0]['value'];
+        }
+
+        $slides[] = theme('usanetwork_media_gallery_consumptionator_slide', $slide_variables);
+      }
+    }
+
+    return theme('usanetwork_media_gallery_consumptionator_slides', array('slides' => $slides));
+  }
+
+  return '';
+}
+
+/**
+ * Renders episodes gallery on MediaGallery page.
+ */
+function _usanetwork_media_gallery_consumptionator_episodes_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $node = menu_get_object();
+
+  if (isset($node->type) && $node->type == 'media_gallery') {
+    if (!empty($node->field_show) && !empty($node->field_season)) {
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+
+      $show_nid = $node_wrapper->field_show->nid->value();
+      $season_nid = $node_wrapper->field_season->nid->value();
+
+      $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $season_nid);
+
+      if (!empty($galleries_list)) {
+        $rendered_items = array();
+
+        foreach ($galleries_list as $gallery_item) {
+          if ($gallery_item->nid == $node->nid) {
+            continue;
+          }
+
+          $gallery_item_variables = array(
+            'gallery_url' => url('node/' . $gallery_item->nid),
+            'image_url' => !empty($gallery_item->uri)
+              ? image_style_url('300x200', $gallery_item->uri)
+              : '',
+            'title' => $gallery_item->title,
+            'season' => $gallery_item->field_season_id_value,
+            'episode' => $gallery_item->field_episode_number_value,
+          );
+
+          $rendered_items[] = theme('usanetwork_media_gallery_consumptionator_episode_slide', $gallery_item_variables);
+        }
+
+        if (!empty($rendered_items)) {
+          return theme('usanetwork_media_gallery_consumptionator_episode_slides', array('slides' => $rendered_items));
+        }
+      }
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Returns data list of media galleries of current show using TV Season node id.
+ *
+ * @param $show_nid
+ * @param $season_nid
+ */
+function _usanetwork_media_gallery_get_galleries($show_nid, $season_nid) {
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'title', 'created'));
+  $query->join('field_data_field_show', 'sh', 'n.nid=sh.entity_id');
+  $query->join('field_data_field_season', 'se', 'n.nid=se.entity_id');
+  $query->join('field_data_field_gallery_type', 'gt', 'n.nid=gt.entity_id');
+  $query->join('field_data_field_season_id', 'se_id', 'se.field_season_target_id=se_id.entity_id');
+  $query->fields('se_id', array('field_season_id_value'));
+  $query->join('field_data_field_episode', 'ep', 'n.nid=ep.entity_id');
+  $query->join('node', 'ep_node', 'ep.field_episode_target_id=ep_node.nid');
+  $query->join('field_data_field_episode_number', 'ep_number', 'ep_node.nid=ep_number.entity_id');
+  $query->fields('ep_number', array('field_episode_number_value'));
+  $query->leftJoin('field_data_field_cover_item', 'cover', 'n.nid=cover.entity_id');
+  $query->fields('cover', array('field_cover_item_fid'));
+  $query->leftJoin('file_managed', 'cover_file', 'cover_file.fid=cover.field_cover_item_fid');
+  $query->fields('cover_file', array('uri'));
+
+  $query->condition('sh.field_show_target_id', $show_nid);
+  $query->condition('se.field_season_target_id', $season_nid);
+  $query->condition('n.status', 1);
+  $query->condition('n.type', 'media_gallery');
+  $query->condition('gt.field_gallery_type_value', 'Episodic Gallery');
+
+  return $query->execute()->fetchAll();
 }

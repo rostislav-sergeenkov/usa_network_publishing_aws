@@ -9991,66 +9991,12 @@ footer h2 {
   background: #2c2c2c;
   position: relative;
 }
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart a.link-next-gallery, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart a.link-next-gallery {
-  display: block;
-  margin: 15px 22% 120px 10px;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper {
-  height: 100%;
-  right: 0;
-  position: absolute;
-  top: 0;
-  width: 20%;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner {
-  display: table;
-  height: 100%;
-  padding-bottom: 115px;
-  padding-right: 70px;
-  position: relative;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info {
-  display: table-cell;
-  vertical-align: middle;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .next, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .next {
-  color: #ffffff;
-  font-size: 24px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  margin-bottom: 35px;
-  text-transform: uppercase;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .title a, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .title a {
-  color: #ffffff;
-  font-size: 24px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 1.3;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .additional, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .additional {
-  color: #ffffff;
-  font-size: 14px;
-  font-family: "texgyrescholaitalic", Times, serif;
-  line-height: 1;
-  text-transform: uppercase;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .slide-info, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .slide-info {
-  display: block;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .slide-info .description, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .slide-info .description {
-  padding-right: 120px;
-}
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info {
   display: none;
   background: rgba(0, 0, 0, 0.5);
   bottom: 0;
   left: 0;
-  height: 105px;
+  height: 20%;
   width: 100%;
   position: absolute;
 }
@@ -10213,27 +10159,22 @@ footer h2 {
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img {
   display: none;
 }
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction {
-  bottom: 25px;
-  right: 15px;
-  position: absolute;
-  z-index: 51;
-}
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction:after {
-  clear: both;
-  content: '';
-  display: table;
-}
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
   color: #ffffff;
   display: block;
-  float: left;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
   height: 30px;
+  margin-top: -15px;
+  position: absolute;
+  top: 90%;
   width: 30px;
+  z-index: 1000;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
+    margin-top: -22px;
+    height: 44px;
+    width: 44px;
+  }
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover {
   background: none;
@@ -10253,14 +10194,19 @@ footer h2 {
   right: 0;
   top: 0;
 }
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:last-child, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:last-child {
-  margin-left: 10px;
+@media (min-width: 1901px) {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after {
+    font-size: 44px;
+  }
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev {
-  margin-bottom: 11px;
+  right: 100px;
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after {
   content: "\e607";
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next {
+  right: 50px;
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after {
   content: "\e608";

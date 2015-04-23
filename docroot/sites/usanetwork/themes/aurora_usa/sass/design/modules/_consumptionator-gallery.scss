@@ -63,70 +63,12 @@
               background: $usa-logo-back;
               position: relative;
               .node {
-                &.end-cart {
-                  a.link-next-gallery {
-                    display: block;
-                    margin: 15px 22% 120px 10px;
-                  }
-                  .end-cart-info-wrapper {
-                    height: 100%;
-                    right: 0;
-                    position: absolute;
-                    top: 0;
-                    width: 20%;
-                    .end-cart-info-wrapper-inner {
-                      display: table;
-                      height: 100%;
-                      padding-bottom: 115px;
-                      padding-right: 70px;
-                      position: relative;
-                      .end-cart-info {
-                        display: table-cell;
-                        vertical-align: middle;
-                        .next {
-                          color: #ffffff;
-                          font-size: 24px;
-                          font-family: $avalon-demi;
-                          margin-bottom: 35px;
-                          text-transform: uppercase;
-                        }
-                        .title {
-                          a {
-                            color: #ffffff;
-                            font-size: 24px;
-                            font-family: $avalon-medium;
-                            line-height: 1.3;
-                            margin-bottom: 10px;
-                            text-transform: uppercase;
-                            text-decoration: none;
-                          }
-                        }
-                        .additional {
-                          color: #ffffff;
-                          font-size: 14px;
-                          font-family: $tex-gyreschola-italic;
-                          line-height: 1;
-                          text-transform: uppercase;
-                          overflow: hidden;
-                          text-overflow: ellipsis;
-                          white-space: nowrap;
-                        }
-                      }
-                    }
-                  }
-                  .slide-info {
-                    display: block;
-                    .description {
-                      padding-right: 120px;
-                    }
-                  }
-                }
                 .slide-info {
                   display: none;
                   background: rgba(0, 0, 0, 0.5);
                   bottom: 0;
                   left: 0;
-                  height: 105px;
+                  height: 20%;
                   width: 100%;
                   position: absolute;
                   @include breakpoint($bp-768-width) {
@@ -287,24 +229,20 @@
             }
           }
           .bx-controls-direction {
-            @include clear;
-            bottom: 25px;
-            right: 15px;
-            position: absolute;
-            z-index: 51;
-            @include breakpoint($bp-640-width) {
-              //display: none;
-            }
             a {
               color: #ffffff;
               display: block;
-              float: left;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              text-transform: uppercase;
               height: 30px;
+              margin-top: -15px;
+              position: absolute;
+              top: 90%;
               width: 30px;
+              z-index: 1000;
+              @include breakpoint($bp-min-1901-width) {
+                margin-top: -22px;
+                height: 44px;
+                width: 44px;
+              }
               &:hover {
                 background: none;
               }
@@ -322,17 +260,18 @@
                 position: absolute;
                 right: 0;
                 top: 0;
-              }
-              &:last-child {
-                margin-left: 10px;
+                @include breakpoint($bp-min-1901-width) {
+                  font-size: 44px;
+                }
               }
               &.bx-prev {
-                margin-bottom: 11px;
+                right: 100px;
                 &:after {
                   content: "\e607";
                 }
               }
               &.bx-next {
+                right: 50px;
                 &:after {
                   content: "\e608";
                 }

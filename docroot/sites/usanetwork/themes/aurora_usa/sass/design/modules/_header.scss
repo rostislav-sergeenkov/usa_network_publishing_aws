@@ -110,6 +110,7 @@ header {
       width: 400px;
     }
     @include breakpoint($bp-768-width) {
+      clear: both;
       display: none;
       float: none;
       width: 100%;

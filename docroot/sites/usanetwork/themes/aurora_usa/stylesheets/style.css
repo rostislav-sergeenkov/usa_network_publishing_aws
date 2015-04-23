@@ -10219,24 +10219,27 @@ footer h2 {
   position: absolute;
   z-index: 51;
 }
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction:after {
+  clear: both;
+  content: '';
+  display: table;
+}
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
-  background: rgba(0, 0, 0, 0.3);
-  color: #d0d0d2;
+  color: #ffffff;
   display: block;
-  border: 1px solid #d0d0d2;
-  border-radius: 10px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 20px;
-  padding-right: 30px;
-  padding-left: 15px;
+  float: left;
   position: relative;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  height: 30px;
+  width: 30px;
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover {
-  background: rgba(0, 0, 0, 0.6);
+  background: none;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:focus, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:focus {
+  outline: none;
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.disabled, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.disabled {
   visibility: hidden;
@@ -10244,21 +10247,23 @@ footer h2 {
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after {
   display: block;
   font-family: "ico-font";
-  font-size: 12px;
+  font-size: 30px;
   line-height: normal;
-  margin-top: -6px;
   position: absolute;
-  right: 10px;
-  top: 50%;
+  right: 0;
+  top: 0;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:last-child, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:last-child {
+  margin-left: 10px;
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev {
   margin-bottom: 11px;
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after {
-  content: "\e60a";
+  content: "\e607";
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after {
-  content: "\e609";
+  content: "\e608";
 }
 
 @media (min-width: 525px) {

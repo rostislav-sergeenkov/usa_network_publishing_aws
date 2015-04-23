@@ -118,8 +118,8 @@
       infiniteLoop: false,
       hideControlOnEnd: true,
       mode: 'fade',
-      nextText: 'next',
-      prevText: 'back',
+      nextText: '',
+      prevText: '',
       speed: 600,
       adaptiveHeight: true,
       onSliderLoad: pagerItems

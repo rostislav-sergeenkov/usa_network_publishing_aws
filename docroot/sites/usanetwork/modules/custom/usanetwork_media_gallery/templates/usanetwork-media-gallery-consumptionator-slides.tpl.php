@@ -3,14 +3,14 @@
  * $slides - array of pre-rendered slides
  */
 ?>
-<div id="usanetwork-consumptionator-media-gallery">
+<div class="gallery-wrapper">
   <?php if (!empty($slides)): ?>
-    <ul class="slides">
+    <div class="bxslider bxslider-gallery">
     <?php foreach ($slides as $slide): ?>
-      <li class="slide">
+      <div class="slide">
         <?php print $slide; ?>
-      </li>
+      </div>
     <?php endforeach; ?>
-    </ul>
+    </div>
   <?php endif; ?>
 </div>

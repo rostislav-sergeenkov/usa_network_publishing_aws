@@ -1,5 +1,15 @@
 (function ($) {
 Drupal.behaviors.usanetwork_tv_schedule = {
+  setFocusOnActive: function() {
+    var $active = $('.schedule-table li.active');
+
+    if ($active.length > 0) {
+      $('html, body').animate({
+        scrollTop: $active.position().top + $active.height()
+      });
+    }
+  },
+
   attach: function(context){
 
     Date.prototype.stdTimezoneOffset = function() {
@@ -105,6 +115,9 @@ Drupal.behaviors.usanetwork_tv_schedule = {
     }
     $('#block-usanetwork-tv-schedule-usa-on-now-block .content').html(on_now_show);
 
+    $(window).load(function() {
+      Drupal.behaviors.usanetwork_tv_schedule.setFocusOnActive();
+    });
   }
 }
 })(jQuery);

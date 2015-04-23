@@ -12204,7 +12204,7 @@ footer h2 {
   padding: 0;
 }
 
-.node-type-catchall-page #block-system-main {
+.node-type-catchall-page .block-system {
   width: 100%;
   position: relative;
   overflow: hidden;

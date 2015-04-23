@@ -7,7 +7,7 @@
  * $episode - episode number
  */
 ?>
-<div class="media-gallery-slide">
+<div class="node node-usanetwork-promo aspot-carousel-promo">
   <a href="<?php print (!empty($gallery_url))? $gallery_url: '#'; ?>">
     <div class="meta-wrapper">
       <div class="meta-back"></div>
@@ -22,9 +22,8 @@
       </div>
     </div>
     <?php if (!empty($image_url)): ?>
-      <div class="asset-img">
-        <div class="asset-img"><img src="<?php print $image_url; ?>" alt="" title="<?php print $title; ?>" /></div>
-      </div>
+      <div class="asset-img"><img src="<?php print $image_url; ?>" alt="" title="<?php print $title; ?>" /></div>
     <?php endif; ?>
   </a>
 </div>
+

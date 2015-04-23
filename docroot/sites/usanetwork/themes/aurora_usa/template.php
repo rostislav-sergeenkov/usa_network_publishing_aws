@@ -135,14 +135,19 @@ function aurora_usa_preprocess_page(&$vars) {
     $vars['page']['catchall_seo_title'] = $node->title;
   }
   if ($node && $node->type == "media_gallery") {
-    drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
+    drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
+    drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
     drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
-    drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-    drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel.min.js');
-    drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.jcarousel.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
   }
   // add ios touch icon
   $ios_icon = array(

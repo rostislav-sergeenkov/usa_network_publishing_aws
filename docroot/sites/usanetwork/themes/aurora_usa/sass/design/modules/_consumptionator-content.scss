@@ -243,12 +243,22 @@
       @include breakpoint($bp-1280-width) {
         display: block;
       }
+      @include breakpoint($bp-640-width) {
+        height: 56.25vw;
+      }
+      ul, .bx-viewport, .bx-wrapper {
+        height: 100%!important;
+      }
       li {
         float: left;
         margin-right: 2px;
         position: relative;
         height: 100%;
+        width: 33%;
         @extend %aspot-carousel-promo;
+        @include breakpoint($bp-640-width) {
+          width: 100%;
+        }
       }
       .node {
         &.active {

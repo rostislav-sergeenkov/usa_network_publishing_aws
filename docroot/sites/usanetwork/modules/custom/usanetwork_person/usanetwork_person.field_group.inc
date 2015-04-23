@@ -240,7 +240,8 @@ function usanetwork_person_field_group_info() {
       3 => 'field_usa_character_thumb',
       4 => 'field_hide_cast_carousel',
       5 => 'field_hide_social_follow',
-      6 => 'group_social',
+      6 => 'field_actor_bio',
+      7 => 'group_social',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

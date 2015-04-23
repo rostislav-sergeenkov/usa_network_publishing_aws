@@ -153,8 +153,10 @@
     }
     .cta-link {
       position: relative;
+      max-width: 365px;
       a {
         color: #ffffff;
+        display: block;
         font-family: $avalon-demi;
         font-size: 14px;
         line-height: 24px;

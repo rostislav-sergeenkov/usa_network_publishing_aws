@@ -63,19 +63,27 @@ function aurora_usa_preprocess_html(&$vars) {
     $vars['classes_array'][] = drupal_html_class('usa-social');
   }
   drupal_add_library('system', 'drupal.ajax');
-  
-  if ($node = menu_get_object()) {
-    if ($node->type == 'tv_show') {
-      $show_title = _usanetwork_get_field_item('node', $node, 'field_pathauto_alias', 'value');
-      $vars['classes_array'][] = drupal_html_class('show-' . $show_title);
+  if ($entity = menu_get_object()) {
+    if ($entity->type == 'tv_show') {
+      $show_title = _usanetwork_get_field_item('node', $entity, 'field_pathauto_alias', 'value');
+      $show_class = drupal_html_class('show-' . $show_title);
+      $vars['classes_array'][] = $show_class;
+    }
+    else {
+      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
+      if (!empty($show_id)) {
+        $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
+      }
     }
   }
-  if ($file = menu_get_object('file')) {
-    if ($file->filemime == 'video/mpx') {
+  elseif ($entity = menu_get_object('file')) {
+    if ($entity->filemime == 'video/mpx') {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
-      $show_title = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
-      $vars['classes_array'][] =  usanetwork_tv_shows_color_show_css_class($show_title);
       $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
+    }
+    $show_id = _usanetwork_get_field_item('file', $entity, 'field_show', 'target_id');
+    if (!empty($show_id)) {
+      $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
     }
   }
 }

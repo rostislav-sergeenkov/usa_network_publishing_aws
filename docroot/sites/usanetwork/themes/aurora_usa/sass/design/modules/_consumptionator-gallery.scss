@@ -1,18 +1,39 @@
-.consumptionator-page {
+.consumptionator-page, .node-type-media-gallery {
   .gallery-block {
     @include clear;
-    margin: 0 auto 40px;
+    margin: 0;
     max-width: 2260px;
-    padding: 10px 10px 0;
+    overflow: hidden;
+    padding: 0;
     position: relative;
-    @include breakpoint($bp-1280-width) {
-      margin-bottom: 10px;
+    width: 100%;
+    @include breakpoint($bp-min-1281-width) {
+      height: 42.01875vw;
+    }
+    @include breakpoint($between-1025-1280) {
+      height: calc((100vw - 320px)*0.5625);
+      margin-bottom: calc((100vw - 4px)/48*9 + 60px);
+      overflow: visible;
+    }
+    @include breakpoint($bp-1024-width) {
+      height: auto;
     }
     .gallery-wrapper {
-      margin-right: 310px;
+      float: left;
+      height: 100%;
       position: relative;
-      @include breakpoint($bp-1280-width) {
-        margin-right: 0;
+      width: 74.7%;
+      @include breakpoint($between-1025-1280) {
+        width: calc(100% - 320px);
+        z-index: 2;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: 56.25vw;
+        width: 100%;
+      }
+      > .node {
+        height: 100%;
+        width: 100%;
       }
       .bx-wrapper {
         position: relative;

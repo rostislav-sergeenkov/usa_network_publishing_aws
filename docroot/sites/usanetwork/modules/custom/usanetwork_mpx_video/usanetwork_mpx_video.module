@@ -2677,7 +2677,7 @@ function usanetwork_mpx_video_get_related_content_ajax($tv_show_node, $start_fro
     'rendered' => '',
   );
 
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, $start_from, $limit);
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_video_content($tv_show_node, $start_from, $limit);
 
   if (!empty($related_content)) {
     $last_entry = end($related_content);
@@ -2721,7 +2721,7 @@ function usanetwork_mpx_video_related_content_block() {
 
       $you_may_also_like_item = usanetwork_mpx_video_get_ymal_item($tv_show_node);
 
-      $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content(
+      $related_content = _usanetwork_tv_shows_cache_get_limited_related_video_content(
         $tv_show_node, 0,
         !empty($you_may_also_like_item)
           ? USA_MPX_VIDEO_RELATED_CONTENT_ITEMS - 1

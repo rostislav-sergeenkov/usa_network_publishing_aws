@@ -522,7 +522,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-.panel-twocol-nested-right-twocol .panel-five, .media-gallery .panel-col-bottom {
+.panel-twocol-nested-right-twocol .panel-five {
   margin-left: -15px;
   margin-right: -15px;
   padding-left: 15px;
@@ -578,15 +578,6 @@ you can use the generic selector below, but it's slower:
     margin-left: 15px;
     margin-top: 0;
   }
-}
-
-.media-gallery .panel-col-bottom {
-  background: #1f1f1f;
-  border-color: #2d2d2d;
-  border-style: solid;
-  border-width: 1px 0 0;
-  overflow: hidden;
-  padding-top: 30px;
 }
 
 h1, h2, h3, .smaller-header h2, h4, h5, h6 {
@@ -664,7 +655,7 @@ body, .usa-secondary-menu .shows > li.first > span, #block-views-usa-mpx-video-l
   font-size: 16px;
 }
 
-#jPanelMenu-menu .menu-title, .slide-panel-link, .usa-secondary-menu, #utilities h1#page-title, #utilities h2#page-title, .media-gallery .gallery-tabs h2 {
+#jPanelMenu-menu .menu-title, .slide-panel-link, .usa-secondary-menu, #utilities h1#page-title, #utilities h2#page-title {
   font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 18px;
 }
@@ -712,33 +703,33 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .best-of-block ul li.first .meta, .best-of-block ul li:nth-child(2) .meta, .best-of-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .best-of-block ul li.first .meta, .best-of-block ul li:nth-child(2) .meta, .best-of-block ul li .last .meta, .show-latest-block ul li .meta, .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
   direction: ltr;
   color: #ffffff;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .best-of-block ul li.first .meta .description, .best-of-block ul li:nth-child(2) .meta .description, .best-of-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .description, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .description, .related-content-block ul li .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .usa-home-bspot .meta .description, .usa-home-cspot .meta .description, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .best-of-block ul li.first .meta .show-title, .best-of-block ul li:nth-child(2) .meta .show-title, .best-of-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, .related-content-block ul li .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .usa-home-bspot .meta .show-title, .usa-home-cspot .meta .show-title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .best-of-block ul li.first .meta .topic, .best-of-block ul li:nth-child(2) .meta .topic, .best-of-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .topic, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .topic, .related-content-block ul li .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic, .usa-home-bspot .meta .topic, .usa-home-cspot .meta .topic {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .best-of-block ul li.first .meta .description, .best-of-block ul li:nth-child(2) .meta .description, .best-of-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consum-sidebar .episodes-list-slider.vertical li .meta .description, .related-content-block ul li .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .usa-home-bspot .meta .description, .usa-home-cspot .meta .description, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .best-of-block ul li.first .meta .show-title, .best-of-block ul li:nth-child(2) .meta .show-title, .best-of-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, .related-content-block ul li .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .usa-home-bspot .meta .show-title, .usa-home-cspot .meta .show-title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .best-of-block ul li.first .meta .topic, .best-of-block ul li:nth-child(2) .meta .topic, .best-of-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consum-sidebar .episodes-list-slider.vertical li .meta .topic, .related-content-block ul li .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic, .usa-home-bspot .meta .topic, .usa-home-cspot .meta .topic {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .best-of-block ul li.first .meta .caption, .best-of-block ul li:nth-child(2) .meta .caption, .best-of-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .best-of-block ul li.first .meta .title, .best-of-block ul li:nth-child(2) .meta .title, .best-of-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
   font-size: 16px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .best-of-block ul li.first .meta .additional, .best-of-block ul li:nth-child(2) .meta .additional, .best-of-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .best-of-block ul li.first .meta .additional span, .best-of-block ul li:nth-child(2) .meta .additional span, .best-of-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, .related-content-block ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .best-of-block ul li.first .meta .additional span, .best-of-block ul li:nth-child(2) .meta .additional span, .best-of-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, .related-content-block ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
@@ -1319,29 +1310,29 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
   height: 100%;
 }
 @media (max-width: 768px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
     max-width: 255px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
     max-width: 100%;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img img {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img img {
   width: 100%;
   height: 100%;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo a, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo a, .aspot-and-episodes .episodes-list .aspot-carousel-promo a {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo a, .aspot-and-episodes .episodes-list .aspot-carousel-promo a {
   display: block;
   height: 100%;
   width: 100%;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper {
   background: #656364;
   bottom: 0;
   height: 45%;
@@ -1350,17 +1341,17 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   z-index: 1;
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper {
     height: 39%;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper-inner, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper-inner, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper-inner {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper-inner, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper-inner {
   height: 100%;
   display: table;
   position: relative;
   width: 100%;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta {
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
@@ -1368,226 +1359,226 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   vertical-align: middle;
   width: 100%;
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 10px;
   line-height: 16px;
   margin-left: 0;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 15px;
     line-height: 20px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 8px;
     line-height: 18px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 10px;
     line-height: 14px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 8px;
     line-height: 16px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 12px;
     line-height: 22px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 10px;
     line-height: 16px;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 19px;
   margin-left: 0;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 23px;
     line-height: 30px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 10px;
     line-height: 18px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 10px;
     line-height: 14px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 12px;
     line-height: 18px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 20px;
     line-height: 26px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 12px;
     line-height: 18px;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 10px;
   line-height: 19px;
   margin-left: 0;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 15px;
     line-height: 22px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 8px;
     line-height: 16px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 10px;
     line-height: 14px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 8px;
     line-height: 16px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 16px;
     line-height: 22px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 10px;
     line-height: 16px;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
   left: 4%;
   margin-top: -19px;
   position: absolute;
   top: 50%;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 47px;
     margin-top: -24px;
     width: 47px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 37px;
     margin-top: -19px;
     width: 37px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
   padding-left: calc(8% + 37px);
 }
 @media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 47px);
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 37px);
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-wrapper, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-wrapper {
+.consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-wrapper, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-wrapper {
   background: #3e3e3e;
 }
 @media (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .caption, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .caption {
+  .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .caption, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .caption {
     font-size: 11px;
     line-height: 14px;
   }
 }
 @media (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .title, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .title {
+  .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .title, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .title {
     font-size: 16px;
     line-height: 20px;
   }
 }
 @media (min-width: 769px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .additional, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .additional {
+  .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .additional, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .additional {
     font-size: 11px;
     line-height: 14px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
+  .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
     height: 37px;
     margin-top: -19px;
     width: 37px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
+  .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon ~ .meta, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
+  .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon ~ .meta, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
@@ -8186,7 +8177,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   color: white;
 }
 
-.media-gallery .menu-label, #block-usanetwork-social-usa-show-social-tab-nav .menu-label {
+#block-usanetwork-social-usa-show-social-tab-nav .menu-label {
   color: white;
   padding: 8px 5px 7px 11px;
 }
@@ -9933,560 +9924,341 @@ footer h2 {
   word-wrap: break-word;
 }
 
-.image-style-gallery_full_photo {
-  max-width: 1024px;
-  max-height: 767px;
-}
-
-.node-media-gallery.view-mode-inline_content {
-  max-width: 800px;
-}
-.node-media-gallery.view-mode-inline_content .content {
-  text-align: center;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a {
-  color: white;
-  display: block;
-  opacity: 0.8;
-  top: 50%;
-  margin-top: -39px;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a:visited {
-  color: white;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a:focus {
-  color: white;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a:hover {
-  color: white;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a:active {
-  color: white;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a.flex-prev {
-  left: 0;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a.flex-next {
-  right: 0;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .field-name-field-caption {
-  padding: 10px;
-  text-align: left;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .field-name-field-caption p {
-  margin: 5px 0;
-}
-.node-media-gallery.view-mode-inline_content .flexslider .counter {
-  padding: 10px;
-  font-size: 15px;
-}
-
-.media-gallery .center-wrapper {
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+.consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block {
+  margin: 0;
+  max-width: 2260px;
+  overflow: hidden;
+  padding: 0;
   position: relative;
-  width: 1140px;
-  margin: 0 auto;
-  /*    .pane-node-field-season {
-        float: left;
-        font-size: 14px;
-        @include breakpoint($bp-home-narrowest) {
-          font-size: 8px;
-        }
-        @include breakpoint($bp-home-2-fence) {
-          font-size: 12px;
-          clear: left;
-        }
-        @include breakpoint($bp-home-3-fence) {
-          font-size: 13px;
-        }
-      }
-      .pane-node-field-episode {
-        font-size: 14px;
-        @include breakpoint($bp-home-narrowest) {
-          font-size: 8px;
-          float: none;
-        }
-        @include breakpoint($bp-home-2-fence) {
-          font-size: 12px;
-          float: left;
-        }
-        @include breakpoint($bp-home-3-fence) {
-          font-size: 13px;
-        }
-      }*/
+  width: 100%;
 }
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper {
-    width: 260px;
+.consumptionator-page .gallery-block:after, .node-type-media-gallery .gallery-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1281px) {
+  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block {
+    height: 42.01875vw;
   }
 }
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper {
-    width: 641px;
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block {
+    height: calc((100vw - 320px)*0.5625);
+    margin-bottom: calc((100vw - 4px)/48*9 + 60px);
+    overflow: visible;
   }
 }
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .center-wrapper {
-    width: 950px;
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block {
+    height: auto;
   }
 }
-.media-gallery .center-wrapper .field-name-field-caption {
-  display: none;
-}
-.media-gallery .center-wrapper .panel-col-first {
-  width: 810px;
-  height: 100%;
+.consumptionator-page .gallery-block .gallery-wrapper, .node-type-media-gallery .gallery-block .gallery-wrapper {
   float: left;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .panel-col-first {
-    width: 260px;
-    float: none;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .panel-col-first {
-    width: 641px;
-    float: none;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .center-wrapper .panel-col-first {
-    width: 641px;
-  }
-}
-.media-gallery .center-wrapper .pane-node-field-media-items {
-  background-color: #101010;
-  border: #000000 solid 1px;
-}
-.media-gallery .center-wrapper .flexslider {
-  margin-bottom: 0;
-}
-.media-gallery .center-wrapper .field-name-field-media-items > li, .media-gallery .center-wrapper .field-name-field-media-items > li .content {
-  text-align: center;
-  font-size: 0;
-  height: 606px;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .field-name-field-media-items > li, .media-gallery .center-wrapper .field-name-field-media-items > li .content {
-    height: 192px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .field-name-field-media-items > li, .media-gallery .center-wrapper .field-name-field-media-items > li .content {
-    height: 479px;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .center-wrapper .field-name-field-media-items > li, .media-gallery .center-wrapper .field-name-field-media-items > li .content {
-    height: 479px;
-  }
-}
-.media-gallery .center-wrapper .field-name-field-media-items > li .content:before {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
   height: 100%;
+  position: relative;
+  width: 74.7%;
 }
-.media-gallery .center-wrapper .field-name-field-media-items img {
-  vertical-align: middle;
-}
-.media-gallery .center-wrapper .navigation-counter {
-  margin: 10px 0 34px;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .navigation-counter {
-    margin: 8px 0 0;
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-page .gallery-block .gallery-wrapper, .node-type-media-gallery .gallery-block .gallery-wrapper {
+    width: calc(100% - 320px);
+    z-index: 2;
   }
 }
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .navigation-counter {
-    margin: 13px 0 37px;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .center-wrapper .navigation-counter {
-    margin: 9px 0 28px;
-  }
-}
-.media-gallery .center-wrapper .navigation-counter .counter {
-  font-size: 16px;
-  color: #878785;
-  text-align: center;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .navigation-counter .counter {
-    font-size: 10px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .navigation-counter .counter {
-    font-size: 15px;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .center-wrapper .navigation-counter .counter {
-    font-size: 16px;
-  }
-}
-.media-gallery .center-wrapper .panel-col-last {
-  width: 300px;
-  float: right;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .panel-col-last {
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-block .gallery-wrapper, .node-type-media-gallery .gallery-block .gallery-wrapper {
+    height: 56.25vw;
     width: 100%;
   }
 }
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .panel-col-last {
-    float: none;
-    width: 100%;
-  }
+.consumptionator-page .gallery-block .gallery-wrapper > .node, .node-type-media-gallery .gallery-block .gallery-wrapper > .node {
+  height: 100%;
+  width: 100%;
 }
-.media-gallery .center-wrapper .panel-col-last .inside {
-  min-height: 356px;
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper {
+  position: relative;
 }
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .panel-col-last .inside {
-    min-height: 100%;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .panel-col-last .inside {
-    width: 336px;
-    float: left;
-    min-height: 250px;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .center-wrapper .panel-col-last .inside {
-    min-height: 229px;
-  }
-}
-.media-gallery .center-wrapper .pane-node-title {
-  margin: 3px 0 0;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .pane-node-title {
-    width: 260px;
-    margin-top: 0;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .pane-node-title {
-    clear: both;
-    float: left;
-    margin-top: 0;
-    width: 341px;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .center-wrapper .pane-node-title {
-    margin-top: 0;
-    font-size: 20px;
-  }
-}
-.media-gallery .center-wrapper .pane-node-title h2 {
-  font-size: 18px;
-  color: #ffffff;
-  margin: 0;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .pane-node-title h2 {
-    font-size: 14px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .pane-node-title h2 {
-    font-size: 16px;
-  }
-}
-.media-gallery .center-wrapper .pane-entity-field h1 {
-  font-size: 15px;
-  color: #878785;
-  margin: 0;
-  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .pane-entity-field h1 {
-    font-size: 12px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .pane-entity-field h1 {
-    font-size: 14px;
-  }
-}
-.media-gallery .center-wrapper .pane-entity-field .media-gallery-seo {
-  font-size: 12px;
-}
-.media-gallery .center-wrapper .media-gallery-title {
-  margin: 3px 0 0;
-}
-.media-gallery .center-wrapper .media-gallery-title h1 {
-  font-size: 15px;
-  color: #878785;
-  margin: 0;
-  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .media-gallery-title h1 {
-    font-size: 12px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .media-gallery-title h1 {
-    font-size: 14px;
-  }
-}
-.media-gallery .center-wrapper .media-gallery-title h1 span {
-  font-size: 18px;
-  color: #ffffff;
-  margin: 0;
-  display: inline-block;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .media-gallery-title h1 span {
-    font-size: 14px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .media-gallery-title h1 span {
-    font-size: 16px;
-  }
-}
-.media-gallery .center-wrapper .media-gallery-title h2 {
-  font-size: 18px;
-  color: #ffffff;
-  margin: 0;
-}
-@media (max-width: 709px) {
-  .media-gallery .center-wrapper .media-gallery-title h2 {
-    font-size: 14px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .media-gallery-title h2 {
-    font-size: 16px;
-  }
-}
-.media-gallery .image-caption {
-  font-family: "Proxima N W01 Reg",Arial,sans-serif;
-  padding-right: 15px;
-  margin: 40px 0;
-}
-@media (max-width: 709px) {
-  .media-gallery .image-caption {
-    margin: 10px 0 20px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .image-caption {
-    margin: 20px 0 20px;
-    padding-right: 0;
-    float: left;
-    width: 300px;
-    clear: left;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .image-caption {
-    margin: 30px 0 35px;
-    padding-right: 10px;
-  }
-}
-.media-gallery .image-caption .gallery-image-caption {
-  font-size: 14px;
-}
-@media (max-width: 709px) {
-  .media-gallery .image-caption .gallery-image-caption {
-    font-size: 11px;
-    clear: left;
-    line-height: 1.3em;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .image-caption .gallery-image-caption {
-    font-size: 13px;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .image-caption .gallery-image-caption {
-    font-size: 14px;
-  }
-}
-.media-gallery .image-caption .gallery-image-caption p {
-  margin-bottom: 0;
-  margin-top: 0;
-}
-@media (max-width: 709px) {
-  .media-gallery .pane-node-field-gigya-share-bar {
-    margin-bottom: 22px;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .pane-node-field-gigya-share-bar {
-    float: left;
-    width: 300px;
-    clear: left;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .media-gallery .pane-node-field-gigya-share-bar {
-    margin-top: 0;
-  }
-}
-@media (max-width: 709px) {
-  .media-gallery .pane-dart-dart-tag-300x250-ifr-reload {
-    display: none;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .pane-dart-dart-tag-300x250-ifr-reload {
-    position: static;
-    margin-top: 13px;
-  }
-}
-.media-gallery .flex-direction-nav a {
-  top: 50%;
-  margin-top: -30px;
-}
-.media-gallery .flex-direction-nav a.flex-next {
-  right: 0;
-  border: none;
-}
-.media-gallery .flex-direction-nav a.flex-prev {
-  left: 0;
-  border: none;
-}
-.media-gallery .panel-col-bottom {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.media-gallery .panel-col-bottom > ul, .media-gallery .panel-col-bottom > section {
-  max-width: 1140px;
-}
-
-.media-gallery .filter-dropdown .tab {
-  display: none;
-}
-.media-gallery .filter-dropdown.open .tab {
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper:hover .bx-viewport .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper:hover .bx-viewport .bxslider-gallery .slide .node .slide-info {
   display: block;
 }
-.media-gallery .filter-dropdown h2 {
-  margin: 0;
-}
-.media-gallery .filter-menu {
-  margin-top: 0;
-}
-.media-gallery .gallery-tabs {
-  background-color: #3d3d3d;
-}
-.media-gallery .gallery-tabs.usa-secondary-menu {
-  height: auto;
-}
-@media (min-width: 772px) {
-  .media-gallery .gallery-tabs.usa-secondary-menu {
-    height: 60px;
-  }
-}
-.media-gallery .gallery-tabs a.selected {
-  color: white;
-}
-@media (min-width: 772px) {
-  .media-gallery .gallery-tabs a {
-    z-index: 60;
-    float: left;
-    width: auto;
-    padding: 20px 30px 18px;
-    border-left: 1px solid #2d2d2d;
-    border-right: 1px solid #2d2d2d;
-    border-top: 0;
-  }
-  .media-gallery .gallery-tabs a.active, .media-gallery .gallery-tabs a.selected, .media-gallery .gallery-tabs a:hover {
-    background-color: #3d3d3d;
-    border-left: 1px solid #414141;
-    border-right: 1px solid #414141;
-    color: white;
-  }
-  .media-gallery .gallery-tabs a.active:after, .media-gallery .gallery-tabs a.selected:after, .media-gallery .gallery-tabs a:hover:after {
-    content: "";
+@media (min-width: 769px) {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper:hover .bx-controls .bx-custom-pager, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper:hover .bx-controls .bx-custom-pager {
     display: block;
-    width: 0;
-    height: 0;
-    border: solid 12px;
-    border-color: #3d3d3d transparent transparent transparent;
-    position: absolute;
-    left: 50%;
-    top: 58px;
-    margin-left: -12px;
   }
 }
-.media-gallery .gallery-tabs .menu-item a {
-  z-index: 0;
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide {
+  background: #2c2c2c;
+  position: relative;
 }
-.media-gallery .gallery-tabs h2 {
-  letter-spacing: normal;
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart a.link-next-gallery, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart a.link-next-gallery {
+  display: block;
+  margin: 15px 22% 120px 10px;
 }
-@media (min-width: 772px) {
-  .media-gallery .gallery-tabs h2 {
-    font-size: 20px;
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper {
+  height: 100%;
+  right: 0;
+  position: absolute;
+  top: 0;
+  width: 20%;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner {
+  display: table;
+  height: 100%;
+  padding-bottom: 115px;
+  padding-right: 70px;
+  position: relative;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info {
+  display: table-cell;
+  vertical-align: middle;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .next, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .next {
+  color: #ffffff;
+  font-size: 24px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .title a, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .title a {
+  color: #ffffff;
+  font-size: 24px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .additional, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .end-cart-info-wrapper .end-cart-info-wrapper-inner .end-cart-info .additional {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .slide-info, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .slide-info {
+  display: block;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .slide-info .description, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node.end-cart .slide-info .description {
+  padding-right: 120px;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info {
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  height: 105px;
+  width: 100%;
+  position: absolute;
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info {
+    display: block;
   }
 }
-@media (min-width: 772px) {
-  .media-gallery .gallery-tabs {
-    background-color: #2d2d2d;
-    margin-bottom: 30px;
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .secondary-meta, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .secondary-meta {
+  color: #cdcac8;
+  font-size: 16px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 28px;
+  left: 0;
+  padding: 0 130px 0 30px;
+  position: absolute;
+  text-align: center;
+  top: -30px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .secondary-meta span, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .secondary-meta span {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0 70px;
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .secondary-meta span, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .secondary-meta span {
+    padding: 0 35px;
   }
-  .media-gallery .gallery-tabs:before {
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .description, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .description {
+  color: #d0d0d2;
+  font-size: 15px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  line-height: 21px;
+  left: 0;
+  height: 42px;
+  overflow: hidden;
+  margin-top: -30px;
+  padding-left: 30px;
+  padding-right: 350px;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 50%;
+  width: 100%;
+}
+@media (max-width: 640px) {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .description, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .description {
+    padding-right: 190px;
+  }
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar {
+  right: 120px;
+  margin-top: -25px;
+  position: absolute;
+  top: 50%;
+  width: 160px;
+}
+@media (max-width: 640px) {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar {
     display: none;
   }
-  .media-gallery .gallery-tabs .menu-label {
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .social-title, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .social-title {
+  color: #d0d0d2;
+  font-size: 14px;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  line-height: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block {
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block a, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block a {
+  margin: 0 15px 0 0;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block a:last-child, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block a:last-child {
+  margin-right: 0;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block a:before, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .social-bar .icons-block a:before {
+  color: #d0d0d2;
+  font-size: 20px;
+  line-height: 20px;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter {
+  bottom: 15px;
+  color: #817e7d;
+  font-size: 13px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  left: 30px;
+  position: absolute;
+  text-transform: uppercase;
+  max-width: 50%;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span {
+  font-size: 14px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager {
+  display: none;
+  right: 0;
+  overflow: hidden;
+  padding: 15px 0;
+  position: absolute;
+  top: 50%;
+  z-index: 51;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager:hover, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager:hover {
+  width: 130px;
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager {
     display: none;
   }
-  .media-gallery .gallery-tabs ul {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    /* for IE 6/7 */
-    *zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).style.cssText="clear:both;font:0/0 serif");
-    /* non-JS fallback */
-    *zoom: 1;
-  }
-  .media-gallery .gallery-tabs ul:before, .media-gallery .gallery-tabs ul:after {
-    content: ".";
-    display: block;
-    height: 0;
-    overflow: hidden;
-  }
-  .media-gallery .gallery-tabs ul:after {
-    clear: both;
-  }
-  .media-gallery .gallery-tabs ul li {
-    list-style-image: none;
-    list-style-type: none;
-    margin-left: 0;
-    white-space: nowrap;
-    display: inline;
-    float: left;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .media-gallery .gallery-tabs ul li:first-child, .media-gallery .gallery-tabs ul li.first {
-    padding-left: 0;
-  }
-  .media-gallery .gallery-tabs ul li:last-child {
-    padding-right: 0;
-  }
-  .media-gallery .gallery-tabs ul li.last {
-    padding-right: 0;
-  }
-  .media-gallery .gallery-tabs h2 {
-    cursor: pointer;
-    line-height: 1;
-    margin: 0 15px 0 0;
-  }
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item {
+  margin: 0 15px 15px auto;
+  position: relative;
+  height: 15px;
+  width: 15px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item:last-child, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item:last-child {
+  margin-bottom: 0;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a {
+  background: #000000;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  position: relative;
+  height: 15px;
+  width: 15px;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a.active, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a.active {
+  background: #ffffff;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a:hover img, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a:hover img {
+  display: block;
+  left: -100px;
+  margin-top: -24px;
+  position: absolute;
+  top: 50%;
+  width: 85px;
+  max-width: 85px;
+  z-index: 125;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img {
+  display: none;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction {
+  bottom: 25px;
+  right: 15px;
+  position: absolute;
+  z-index: 51;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
+  background: rgba(0, 0, 0, 0.3);
+  color: #d0d0d2;
+  display: block;
+  border: 1px solid #d0d0d2;
+  border-radius: 10px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  padding-right: 30px;
+  padding-left: 15px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.disabled, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.disabled {
+  visibility: hidden;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after {
+  display: block;
+  font-family: "ico-font";
+  font-size: 12px;
+  line-height: normal;
+  margin-top: -6px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev {
+  margin-bottom: 11px;
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after {
+  content: "\e60a";
+}
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after {
+  content: "\e609";
 }
 
 @media (min-width: 525px) {
@@ -11649,586 +11421,6 @@ footer h2 {
   height: 100%;
   width: 100%;
 }
-.consumptionator-page .video-block .consum-sidebar, .page-videos-live .video-block .consum-sidebar {
-  background: #121212;
-  float: left;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  width: 25.3%;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar, .page-videos-live .video-block .consum-sidebar {
-    height: 100%;
-    overflow: visible;
-    padding-left: calc(100% - 320px);
-    position: absolute;
-    width: 100%;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar, .page-videos-live .video-block .consum-sidebar {
-    height: auto;
-    width: 100%;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
-  width: 100%;
-}
-@media (min-width: 1281px) {
-  .consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
-    height: 23.4vw;
-    padding: calc((23.4vw - 250px)/2) 0;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
-    height: 250px;
-    padding: 0;
-    margin-left: 10px;
-    width: 300px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
-    display: block;
-    height: auto;
-    float: right;
-    margin: 10px 10px 10px 0;
-    width: 300px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-page .video-block .consum-sidebar .advert, .page-videos-live .video-block .consum-sidebar .advert {
-    display: none;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .advert .advertisement, .page-videos-live .video-block .consum-sidebar .advert .advertisement {
-  background: #656364;
-  height: 250px;
-  margin: 0 auto;
-  width: 300px;
-}
-.consumptionator-page .video-block .consum-sidebar .clips-block, .page-videos-live .video-block .consum-sidebar .clips-block {
-  position: relative;
-  width: 100%;
-}
-@media (min-width: 1281px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block, .page-videos-live .video-block .consum-sidebar .clips-block {
-    height: calc(100% - 23.4vw);
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block, .page-videos-live .video-block .consum-sidebar .clips-block {
-    height: auto;
-    right: 0;
-    position: absolute;
-    top: 100%;
-    width: 100%;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block, .page-videos-live .video-block .consum-sidebar .clips-block {
-    height: calc(100% - 23.4vw);
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .clips-block-title, .page-videos-live .video-block .consum-sidebar .clips-block-title {
-  background: #2c2c2c;
-  height: 45px;
-  line-height: 45px;
-  padding-left: 20px;
-  position: relative;
-  width: 100%;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block-title, .page-videos-live .video-block .consum-sidebar .clips-block-title {
-    height: 70px;
-    line-height: 70px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block-title, .page-videos-live .video-block .consum-sidebar .clips-block-title {
-    text-align: left;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block-title, .page-videos-live .video-block .consum-sidebar .clips-block-title {
-    height: 60px;
-    line-height: 60px;
-    padding-left: 20px;
-    text-align: left;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block-title, .page-videos-live .video-block .consum-sidebar .clips-block-title {
-    height: 100px;
-    line-height: 100px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block-title, .page-videos-live .video-block .consum-sidebar .clips-block-title {
-    height: 60px;
-    line-height: 60px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .clips-block-title h2, .page-videos-live .video-block .consum-sidebar .clips-block-title h2 {
-  color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  margin: 0;
-  text-transform: uppercase;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block-title h2, .page-videos-live .video-block .consum-sidebar .clips-block-title h2 {
-    font-size: 23px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block-title h2, .page-videos-live .video-block .consum-sidebar .clips-block-title h2 {
-    font-size: 30px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .clips-block-title h2, .page-videos-live .video-block .consum-sidebar .clips-block-title h2 {
-    font-size: 20px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider, .page-videos-live .video-block .consum-sidebar .episodes-list-slider {
-  position: relative;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical {
-  display: block;
-  height: calc(100% - 84px);
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical {
-    height: calc(100% - 140px);
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical {
-    display: none;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical ul, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical .bx-viewport, .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical .bx-wrapper, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical ul, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical .bx-viewport, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical .bx-wrapper {
-  height: 100% !important;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li {
-  background: #343434;
-  height: 75px;
-  position: relative;
-  width: 100%;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li {
-    height: 115px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li:nth-child(odd), .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li:nth-child(odd) {
-  background: #3e3e3e;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li:nth-child(even), .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li:nth-child(even) {
-  background: #343434;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li > div, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li > div {
-  height: 100%;
-  width: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li a, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li a {
-  height: 100%;
-  width: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img {
-  height: 50px;
-  left: 4%;
-  margin-top: -25px;
-  position: absolute;
-  top: 50%;
-  width: 75px;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img.active, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img.active {
-  border-left: 7px solid;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img {
-    height: 74px;
-    margin-top: -37px;
-    width: 111px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img img, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img img {
-  height: 100%;
-  width: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img ~ .meta-wrapper .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img ~ .meta-wrapper .meta {
-  padding-left: calc(8% + 75px);
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img ~ .meta-wrapper .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .asset-img ~ .meta-wrapper .meta {
-    padding-left: calc(8% + 111px);
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper {
-  height: 100%;
-  width: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta-wrapper-inner, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta-wrapper-inner {
-  display: table;
-  height: 100%;
-  width: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta {
-  color: #afafaf;
-  padding-left: 4%;
-  display: table-cell;
-  max-width: 100px;
-  vertical-align: middle;
-  width: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .caption, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .caption {
-  font-size: 10px;
-  line-height: 13px;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title {
-  font-size: 15px;
-  line-height: 18px;
-  margin-bottom: 7px;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title {
-    font-size: 23px;
-    line-height: 28px;
-    margin-bottom: 11px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .additional {
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 10px;
-  line-height: 13px;
-  text-transform: uppercase;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .additional, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .additional {
-    font-size: 15px;
-    line-height: 18px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal {
-  display: none;
-  height: calc((100vw - 4px)/48*9);
-  width: 100%;
-}
-@media (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal {
-    display: block;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal li, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal li {
-  float: left;
-  margin-right: 2px;
-  position: relative;
-  height: 100%;
-}
-.consumptionator-page .video-block .consum-sidebar .episodes-list-slider.horizontal .node.active:before, .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .node.active:before {
-  border-left: 7px solid;
-  content: '';
-  display: block;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 7px;
-  z-index: 2;
-}
-.consumptionator-page .video-block .consum-sidebar .more-clips, .page-videos-live .video-block .consum-sidebar .more-clips {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-@media (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .more-clips, .page-videos-live .video-block .consum-sidebar .more-clips {
-    background: none;
-    bottom: auto;
-    left: auto;
-    right: 10px;
-    top: 100%;
-    width: auto;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .more-clips, .page-videos-live .video-block .consum-sidebar .more-clips {
-    top: 270px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .more-clips a, .page-videos-live .video-block .consum-sidebar .more-clips a {
-  color: #ffffff;
-  display: block;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  letter-spacing: 1px;
-  line-height: 40px;
-  padding-left: 25px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .more-clips a, .page-videos-live .video-block .consum-sidebar .more-clips a {
-    font-size: 23px;
-    line-height: 70px;
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .more-clips a, .page-videos-live .video-block .consum-sidebar .more-clips a {
-    line-height: 45px;
-    padding-left: 0px;
-    padding-right: 30px;
-  }
-  .consumptionator-page .video-block .consum-sidebar .more-clips a:hover, .page-videos-live .video-block .consum-sidebar .more-clips a:hover {
-    text-decoration: underline;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .more-clips a, .page-videos-live .video-block .consum-sidebar .more-clips a {
-    line-height: 60px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .consum-sidebar .more-clips a, .page-videos-live .video-block .consum-sidebar .more-clips a {
-    line-height: 100px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .more-clips a, .page-videos-live .video-block .consum-sidebar .more-clips a {
-    line-height: 60px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .more-clips a:after, .page-videos-live .video-block .consum-sidebar .more-clips a:after {
-  color: #ffffff;
-  content: "\e608";
-  display: block;
-  font-family: "ico-font";
-  font-size: 10px;
-  line-height: 10px;
-  position: absolute;
-  top: 50%;
-  margin-top: -4px;
-  right: 5px;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .more-clips a:after, .page-videos-live .video-block .consum-sidebar .more-clips a:after {
-    font-size: 15px;
-    line-height: 15px;
-    right: 10px;
-    margin-top: -7px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .download-app, .page-videos-live .video-block .consum-sidebar .download-app {
-  display: table;
-  height: calc(100% - 250px);
-  position: relative;
-  width: 100%;
-}
-@media (min-width: 1281px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app, .page-videos-live .video-block .consum-sidebar .download-app {
-    display: none;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app, .page-videos-live .video-block .consum-sidebar .download-app {
-    height: 270px;
-    width: calc(100% - 310px);
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app, .page-videos-live .video-block .consum-sidebar .download-app {
-    width: 100%;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .download-app .download-app-wrapper, .page-videos-live .video-block .consum-sidebar .download-app .download-app-wrapper {
-  display: table-cell;
-  position: relative;
-  vertical-align: middle;
-  background: #474747;
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-  background: -moz-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(140%, #121212));
-  background: -webkit-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
-  background: -o-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
-  background: -ms-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
-  background: radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-app-wrapper, .page-videos-live .video-block .consum-sidebar .download-app .download-app-wrapper {
-    background: #474747;
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-    background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
-    background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-    background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-    background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-    background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-app-wrapper, .page-videos-live .video-block .consum-sidebar .download-app .download-app-wrapper {
-    background: #474747;
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-    background: -moz-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
-    background: -webkit-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
-    background: -o-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
-    background: -ms-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
-    background: radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-app-wrapper, .page-videos-live .video-block .consum-sidebar .download-app .download-app-wrapper {
-    background: #474747;
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-    background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
-    background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-    background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-    background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-    background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
-  background: url("../images/live-player-image.png") no-repeat;
-  background-size: contain;
-  height: 170px;
-  margin: 0 auto;
-  width: 188px;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
-    height: 255px;
-    width: 282px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
-    float: left;
-    height: 136px;
-    margin-left: calc(50% - 150px);
-    width: 150px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
-    float: left;
-    margin-left: calc(50% - 205px);
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .image-block, .page-videos-live .video-block .consum-sidebar .download-app .image-block {
-    height: 136px;
-    margin-left: calc(50% - 150px);
-    width: 150px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  margin: 0 auto;
-  max-width: 188px;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
-    font-size: 20px;
-    margin: 10px auto;
-    max-width: 236px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
-    font-size: 14px;
-    margin-left: calc(50% + 10px);
-    width: 150px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
-    margin-left: calc(50% + 10px);
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .text-block, .page-videos-live .video-block .consum-sidebar .download-app .text-block {
-    font-size: 14px;
-    max-width: 150px;
-  }
-}
-.consumptionator-page .video-block .consum-sidebar .download-app .download-button, .page-videos-live .video-block .consum-sidebar .download-app .download-button {
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 5px auto 0;
-  padding: 10px 20px 10px 10px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  width: 220px;
-}
-.consumptionator-page .video-block .consum-sidebar .download-app .download-button:after, .page-videos-live .video-block .consum-sidebar .download-app .download-button:after {
-  color: #ffffff;
-  content: "\e608";
-  display: block;
-  font-family: "ico-font";
-  font-size: 12px;
-  line-height: 12px;
-  position: absolute;
-  top: 50%;
-  margin-top: -7px;
-  right: 5px;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-button:after, .page-videos-live .video-block .consum-sidebar .download-app .download-button:after {
-    font-size: 7px;
-    line-height: 7px;
-    margin-top: -4px;
-    right: 4px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-button:after, .page-videos-live .video-block .consum-sidebar .download-app .download-button:after {
-    font-size: 10px;
-    line-height: 10px;
-    margin-top: -4px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-button:after, .page-videos-live .video-block .consum-sidebar .download-app .download-button:after {
-    font-size: 7px;
-    line-height: 7px;
-    margin-top: -4px;
-    right: 4px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-button, .page-videos-live .video-block .consum-sidebar .download-app .download-button {
-    font-size: 10px;
-    margin-left: calc(50% + 10px);
-    padding: 5px 10px 5px 5px;
-    width: 130px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-button, .page-videos-live .video-block .consum-sidebar .download-app .download-button {
-    font-size: 14px;
-    margin-left: calc(50% + 10px);
-    margin-top: 10px;
-    width: 190px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .consum-sidebar .download-app .download-button, .page-videos-live .video-block .consum-sidebar .download-app .download-button {
-    font-size: 10px;
-    padding: 5px 10px 5px 5px;
-    width: 130px;
-  }
-}
 
 .page-videos-live .expandable-container {
   margin: 0;
@@ -12262,6 +11454,587 @@ footer h2 {
 .consumptionator-page.consumptionator-blog .blog-block,
 .consumptionator-page.consumptionator-blog .guide-block {
   background-color: #e9eaeb;
+}
+
+.consum-sidebar {
+  background: #121212;
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 25.3%;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar {
+    height: 100%;
+    overflow: visible;
+    padding-left: calc(100% - 320px);
+    position: absolute;
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar {
+    height: auto;
+    width: 100%;
+  }
+}
+.consum-sidebar .advert {
+  width: 100%;
+}
+@media (min-width: 1281px) {
+  .consum-sidebar .advert {
+    height: 23.4vw;
+    padding: calc((23.4vw - 250px)/2) 0;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .advert {
+    height: 250px;
+    padding: 0;
+    margin-left: 10px;
+    width: 300px;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .advert {
+    display: block;
+    height: auto;
+    float: right;
+    margin: 10px 10px 10px 0;
+    width: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .consum-sidebar .advert {
+    display: none;
+  }
+}
+.consum-sidebar .advert .advertisement {
+  background: #656364;
+  height: 250px;
+  margin: 0 auto;
+  width: 300px;
+}
+.consum-sidebar .items-block {
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1281px) {
+  .consum-sidebar .items-block {
+    height: calc(100% - 23.4vw);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .items-block {
+    height: auto;
+    right: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .items-block {
+    height: calc(100% - 23.4vw);
+  }
+}
+.consum-sidebar .items-block-title {
+  background: #2c2c2c;
+  height: 45px;
+  line-height: 45px;
+  padding-left: 20px;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .items-block-title {
+    height: 70px;
+    line-height: 70px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .items-block-title {
+    text-align: left;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .items-block-title {
+    height: 60px;
+    line-height: 60px;
+    padding-left: 20px;
+    text-align: left;
+  }
+}
+@media (max-width: 640px) {
+  .consum-sidebar .items-block-title {
+    height: 100px;
+    line-height: 100px;
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .items-block-title {
+    height: 60px;
+    line-height: 60px;
+  }
+}
+.consum-sidebar .items-block-title h2 {
+  color: #ffffff;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  margin: 0;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .items-block-title h2 {
+    font-size: 23px;
+  }
+}
+@media (max-width: 640px) {
+  .consum-sidebar .items-block-title h2 {
+    font-size: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .items-block-title h2 {
+    font-size: 20px;
+  }
+}
+.consum-sidebar .episodes-list-slider {
+  position: relative;
+}
+.consum-sidebar .episodes-list-slider.vertical {
+  display: block;
+  height: calc(100% - 84px);
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.vertical {
+    height: calc(100% - 140px);
+  }
+}
+@media (max-width: 1280px) {
+  .consum-sidebar .episodes-list-slider.vertical {
+    display: none;
+  }
+}
+.consum-sidebar .episodes-list-slider.vertical ul, .consum-sidebar .episodes-list-slider.vertical .bx-viewport, .consum-sidebar .episodes-list-slider.vertical .bx-wrapper {
+  height: 100% !important;
+}
+.consum-sidebar .episodes-list-slider.vertical li {
+  background: #343434;
+  height: 75px;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.vertical li {
+    height: 115px;
+  }
+}
+.consum-sidebar .episodes-list-slider.vertical li:nth-child(odd) {
+  background: #3e3e3e;
+}
+.consum-sidebar .episodes-list-slider.vertical li:nth-child(even) {
+  background: #343434;
+}
+.consum-sidebar .episodes-list-slider.vertical li > div {
+  height: 100%;
+  width: 100%;
+}
+.consum-sidebar .episodes-list-slider.vertical li a {
+  height: 100%;
+  width: 100%;
+}
+.consum-sidebar .episodes-list-slider.vertical li .asset-img {
+  height: 50px;
+  left: 4%;
+  margin-top: -25px;
+  position: absolute;
+  top: 50%;
+  width: 75px;
+}
+.consum-sidebar .episodes-list-slider.vertical li .asset-img.active {
+  border-left: 7px solid;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.vertical li .asset-img {
+    height: 74px;
+    margin-top: -37px;
+    width: 111px;
+  }
+}
+.consum-sidebar .episodes-list-slider.vertical li .asset-img img {
+  height: 100%;
+  width: 100%;
+}
+.consum-sidebar .episodes-list-slider.vertical li .asset-img ~ .meta-wrapper .meta {
+  padding-left: calc(8% + 75px);
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.vertical li .asset-img ~ .meta-wrapper .meta {
+    padding-left: calc(8% + 111px);
+  }
+}
+.consum-sidebar .episodes-list-slider.vertical li .meta-wrapper {
+  height: 100%;
+  width: 100%;
+}
+.consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta-wrapper-inner {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta {
+  color: #afafaf;
+  padding-left: 4%;
+  display: table-cell;
+  max-width: 100px;
+  vertical-align: middle;
+  width: 100%;
+}
+.consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .caption {
+  font-size: 10px;
+  line-height: 13px;
+}
+.consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title {
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 7px;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title {
+    font-size: 23px;
+    line-height: 28px;
+    margin-bottom: 11px;
+  }
+}
+.consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .additional {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 10px;
+  line-height: 13px;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .additional {
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
+.consum-sidebar .episodes-list-slider.horizontal {
+  display: none;
+  height: calc((100vw - 4px)/48*9);
+  width: 100%;
+}
+@media (max-width: 1280px) {
+  .consum-sidebar .episodes-list-slider.horizontal {
+    display: block;
+  }
+}
+.consum-sidebar .episodes-list-slider.horizontal li {
+  float: left;
+  margin-right: 2px;
+  position: relative;
+  height: 100%;
+}
+.consum-sidebar .episodes-list-slider.horizontal .node.active:before {
+  border-left: 7px solid;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 7px;
+  z-index: 2;
+}
+.consum-sidebar .more-items {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+@media (max-width: 1280px) {
+  .consum-sidebar .more-items {
+    background: none !important;
+    bottom: auto;
+    left: auto;
+    right: 10px;
+    top: 100%;
+    width: auto;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .more-items {
+    top: 270px;
+  }
+}
+.consum-sidebar .more-items a {
+  color: #ffffff;
+  display: block;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  line-height: 40px;
+  padding-left: 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .more-items a {
+    font-size: 23px;
+    line-height: 70px;
+  }
+}
+@media (max-width: 1280px) {
+  .consum-sidebar .more-items a {
+    line-height: 45px;
+    padding-left: 0px;
+    padding-right: 30px;
+  }
+  .consum-sidebar .more-items a:hover {
+    text-decoration: underline;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .more-items a {
+    line-height: 60px;
+  }
+}
+@media (max-width: 640px) {
+  .consum-sidebar .more-items a {
+    line-height: 100px;
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .more-items a {
+    line-height: 60px;
+  }
+}
+.consum-sidebar .more-items a:after {
+  color: #ffffff;
+  content: "\e608";
+  display: block;
+  font-family: "ico-font";
+  font-size: 10px;
+  line-height: 10px;
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 5px;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .more-items a:after {
+    font-size: 15px;
+    line-height: 15px;
+    right: 10px;
+    margin-top: -7px;
+  }
+}
+.consum-sidebar .download-app {
+  display: table;
+  height: calc(100% - 250px);
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1281px) {
+  .consum-sidebar .download-app {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app {
+    height: 270px;
+    width: calc(100% - 310px);
+  }
+}
+@media (max-width: 768px) {
+  .consum-sidebar .download-app {
+    width: 100%;
+  }
+}
+.consum-sidebar .download-app .download-app-wrapper {
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
+  background: #474747;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(140%, #121212));
+  background: -webkit-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+  background: -o-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+  background: -ms-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+  background: radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .download-app .download-app-wrapper {
+    background: #474747;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
+    background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .download-app-wrapper {
+    background: #474747;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
+    background: -webkit-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+    background: -o-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+    background: -ms-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+    background: radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .download-app .download-app-wrapper {
+    background: #474747;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
+    background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+    background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+  }
+}
+.consum-sidebar .download-app .image-block {
+  background: url("../images/live-player-image.png") no-repeat;
+  background-size: contain;
+  height: 170px;
+  margin: 0 auto;
+  width: 188px;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .download-app .image-block {
+    height: 255px;
+    width: 282px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .download-app .image-block {
+    float: left;
+    height: 136px;
+    margin-left: calc(50% - 150px);
+    width: 150px;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .image-block {
+    float: left;
+    margin-left: calc(50% - 205px);
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .download-app .image-block {
+    height: 136px;
+    margin-left: calc(50% - 150px);
+    width: 150px;
+  }
+}
+.consum-sidebar .download-app .text-block {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin: 0 auto;
+  max-width: 188px;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .download-app .text-block {
+    font-size: 20px;
+    margin: 10px auto;
+    max-width: 236px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .download-app .text-block {
+    font-size: 14px;
+    margin-left: calc(50% + 10px);
+    width: 150px;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .text-block {
+    margin-left: calc(50% + 10px);
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .download-app .text-block {
+    font-size: 14px;
+    max-width: 150px;
+  }
+}
+.consum-sidebar .download-app .download-button {
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px auto 0;
+  padding: 10px 20px 10px 10px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 220px;
+}
+.consum-sidebar .download-app .download-button:after {
+  color: #ffffff;
+  content: "\e608";
+  display: block;
+  font-family: "ico-font";
+  font-size: 12px;
+  line-height: 12px;
+  position: absolute;
+  top: 50%;
+  margin-top: -7px;
+  right: 5px;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .download-app .download-button:after {
+    font-size: 7px;
+    line-height: 7px;
+    margin-top: -4px;
+    right: 4px;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .download-button:after {
+    font-size: 10px;
+    line-height: 10px;
+    margin-top: -4px;
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .download-app .download-button:after {
+    font-size: 7px;
+    line-height: 7px;
+    margin-top: -4px;
+    right: 4px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .download-app .download-button {
+    font-size: 10px;
+    margin-left: calc(50% + 10px);
+    padding: 5px 10px 5px 5px;
+    width: 130px;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .download-button {
+    font-size: 14px;
+    margin-left: calc(50% + 10px);
+    margin-top: 10px;
+    width: 190px;
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .download-app .download-button {
+    font-size: 10px;
+    padding: 5px 10px 5px 5px;
+    width: 130px;
+  }
 }
 
 .related-content-block {

@@ -4,30 +4,49 @@
  * $gallery_type - string value of gallery type
  */
 ?>
-<div id="usanetwork-consumptionator-episodes-gallery">
-  <?php if (!empty($gallery_type)): ?>
-    <div class="gallery-type"><?php print $gallery_type; ?></div>
-  <?php endif; ?>
-  <div class="galleries-list-slider vertical" data-mode="vertical">
-    <?php if (!empty($slides_vertical)): ?>
-      <ul class="slides slider-vertical">
-        <?php foreach ($slides_vertical as $slide_vertical): ?>
-          <li class="slide">
-            <?php print $slide_vertical; ?>
-          </li>
-        <?php endforeach; ?>
-      </ul>
+<div class="consum-sidebar">
+  <div class="node-wrapper advert">
+    <div class="advertisement">
+    </div>
+  </div>
+  <div class="download-app">
+    <div class="download-app-wrapper">
+      <div class="image-block"></div>
+      <div class="text-block">Get USA NOW to watch full episodes from any device.</div>
+      <div class="download-button show-color">Download the app</div>
+    </div>
+  </div>
+  <div class="items-block clips-block">
+    <?php if (!empty($gallery_type)): ?>
+      <div class="items-block-title galleries-block-title">
+        <h2><?php print $gallery_type; ?></h2>
+      </div>
+    <?php endif; ?>
+
+    <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>
+
+      <div class="episodes-list-slider vertical" data-mode="vertical">
+        <ul class="slider-vertical">
+          <?php foreach ($slides_vertical as $slide_vertical): ?>
+            <li class="slide-item">
+              <?php print $slide_vertical; ?>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+      <div class="episodes-list-slider horizontal" data-mode="horizontal">
+        <ul class="slider-horizontal">
+          <?php foreach ($slides_horizontal as $slide_horizontal): ?>
+            <li class="slide-item">
+              <?php print $slide_horizontal; ?>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
     <?php endif; ?>
   </div>
-  <div class="galleries-list-slider horizontal" data-mode="horizontal">
-    <?php if (!empty($slides_horizontal)): ?>
-      <ul class="slides slider-horizontal">
-        <?php foreach ($slides_horizontal as $slide_horizontal): ?>
-          <li class="slide">
-            <?php print $slide_horizontal; ?>
-          </li>
-        <?php endforeach; ?>
-      </ul>
-    <?php endif; ?>
+  <!-- change link to special photo page for show-->
+  <div class="more-items more-clips show-color">
+    <a href="/photos"><?php print t('View all photos'); ?></a>
   </div>
 </div>

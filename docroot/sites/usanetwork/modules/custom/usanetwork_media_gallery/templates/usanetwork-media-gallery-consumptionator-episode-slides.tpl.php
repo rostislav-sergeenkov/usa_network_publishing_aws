@@ -8,13 +8,26 @@
   <?php if (!empty($gallery_type)): ?>
     <div class="gallery-type"><?php print $gallery_type; ?></div>
   <?php endif; ?>
-  <?php if (!empty($slides)): ?>
-    <ul class="slides">
-      <?php foreach ($slides as $slide): ?>
-        <li class="slide">
-          <?php print $slide; ?>
-        </li>
-      <?php endforeach; ?>
-    </ul>
-  <?php endif; ?>
+  <div class="galleries-list-slider vertical" data-mode="vertical">
+    <?php if (!empty($slides_vertical)): ?>
+      <ul class="slides slider-vertical">
+        <?php foreach ($slides_vertical as $slide_vertical): ?>
+          <li class="slide">
+            <?php print $slide_vertical; ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+  </div>
+  <div class="galleries-list-slider horizontal" data-mode="horizontal">
+    <?php if (!empty($slides_horizontal)): ?>
+      <ul class="slides slider-horizontal">
+        <?php foreach ($slides_horizontal as $slide_horizontal): ?>
+          <li class="slide">
+            <?php print $slide_horizontal; ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+  </div>
 </div>

@@ -105,9 +105,32 @@
 
       Drupal.behaviors.bxslider_carousels.extendSettings();
       Drupal.behaviors.bxslider_carousels.initVSliders();
-      if (window.innerWidth >= window_size_mobile_641 ){
+      if (window.innerWidth >= window_size_mobile_641 && slideItem.length > 2 ){
         Drupal.behaviors.bxslider_carousels.initHSliders();
       }
+
+      $(window).bind('resize', function () {
+        setTimeout(function() {
+          if (window.innerWidth >= window_size_mobile_641 && slideItem.length > 2){
+            $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
+
+            if (Drupal.behaviors.bxslider_carousels.harray.length == 0) {
+              Drupal.behaviors.bxslider_carousels.initHSliders();
+            }
+
+            $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
+            moreButton.css('display', 'none');
+          } else {
+            $(Drupal.behaviors.bxslider_carousels.harray).each(function() {
+              this.destroySlider();
+            });
+            Drupal.behaviors.bxslider_carousels.harray = [];
+
+            $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
+            moreButton.css('display', 'block');
+          }
+        }, 500);
+      });
 
       if (slideItem.length > number_of_items){
         if (window.innerWidth < window_size_mobile_641 ){
@@ -116,29 +139,6 @@
           // Show more-button
           moreButton.css('display', 'block');
         }
-
-        $(window).bind('resize', function () {
-          setTimeout(function() {
-            if (window.innerWidth >= window_size_mobile_641 ){
-              $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
-
-              if (Drupal.behaviors.bxslider_carousels.harray.length == 0) {
-                Drupal.behaviors.bxslider_carousels.initHSliders();
-              }
-
-              $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
-              moreButton.css('display', 'none');
-            } else {
-              $(Drupal.behaviors.bxslider_carousels.harray).each(function() {
-                this.destroySlider();
-              });
-              Drupal.behaviors.bxslider_carousels.harray = [];
-
-              $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
-              moreButton.css('display', 'block');
-            }
-          }, 500);
-        });
 
         // Show carousel more-button click
         moreButton.click(function(e) {

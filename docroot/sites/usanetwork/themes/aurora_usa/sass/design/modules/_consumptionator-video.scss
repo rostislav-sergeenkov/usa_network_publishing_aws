@@ -12,7 +12,7 @@
     }
     @include breakpoint($between-1025-1280) {
       height: calc((100vw - 320px)*0.5625);
-      margin-bottom: calc((100vw - 4px)/48*9 + 60px);
+      margin-bottom: calc((100vw - 4px)/48*9 + 45px);
       overflow: visible;
     }
     @include breakpoint($bp-1024-width) {

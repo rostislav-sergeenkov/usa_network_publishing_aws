@@ -4522,6 +4522,7 @@ header .nav-bar-tabs {
 }
 @media (max-width: 768px) {
   header .nav-bar-tabs {
+    clear: both;
     display: none;
     float: none;
     width: 100%;
@@ -6596,6 +6597,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs {
+    clear: none;
     margin-left: 100px;
     max-width: calc(100% - 100px);
     width: 100%;
@@ -6672,6 +6674,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
     max-width: calc(100% - 50px);
+    padding: 0;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info {
@@ -6705,6 +6708,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     overflow: hidden;
     padding: 0;
     text-indent: 110%;
+    text-overflow: clip;
     white-space: nowrap;
     width: 50px;
   }
@@ -6856,6 +6860,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   margin: 0 5px;
   vertical-align: middle;
   width: 30px;
+}
+@media (max-width: 768px) {
+  .consumptionator-page header .tab-content, .node-type-catchall-page header .tab-content {
+    display: block;
+  }
 }
 .consumptionator-page header .tab-content .tab-item, .node-type-catchall-page header .tab-content .tab-item {
   padding: 40px;

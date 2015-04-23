@@ -25,6 +25,7 @@ function usanetwork_timeline_gallery_field_group_info() {
     'children' => array(
       0 => 'field_content_tags',
       1 => 'field_summary',
+      2 => 'field_usa_css',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -138,10 +139,7 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->data = array(
     'label' => 'USA Nitro',
     'weight' => '5',
-    'children' => array(
-      0 => 'field_enable_nitro',
-      1 => 'field_nitro_action_name',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',

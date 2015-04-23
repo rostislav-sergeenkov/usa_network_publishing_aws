@@ -2583,11 +2583,10 @@ function _usa_mpx_video_clips_render() {
              'url' => $promo_link,
              'image_url' => image_style_url('111x74', $promo_image_url),
              'image_url_large' => image_style_url('full_episodes_633x356', $promo_image_url),
-             'caption' => !empty($promo_data['show_name']) ? $promo_data['show_name'] :
-                 !empty($related_video_file->field_show) ? $related_video_file_wrapper->field_show->title->value() : '',
+             'caption' => !empty($promo_data['topic']) ? $promo_data['topic'] : '',
              'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] : $related_video_file->filename,
              'description' => !empty($promo_data['description']) ? $promo_data['description'] :
-                 !empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : '',
+                 (!empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : ''),
              'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
            );
          }

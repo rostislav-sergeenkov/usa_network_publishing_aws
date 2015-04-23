@@ -6582,16 +6582,16 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: block;
   height: 100%;
   width: 100%;
-  max-width: calc(100% - 330px);
+  max-width: calc(100% - 355px);
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 410px);
+    max-width: calc(100% - 500px);
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 305px);
+    max-width: calc(100% - 320px);
   }
 }
 @media (max-width: 768px) {
@@ -6787,6 +6787,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .consumptionator-page header .header-nav-bar .tve-help-link ul, .consumptionator-page header .header-nav-bar .tve-help-link li, .node-type-catchall-page header .header-nav-bar .tve-help-link ul, .node-type-catchall-page header .header-nav-bar .tve-help-link li {
+  font-size: 12px;
+  line-height: normal;
   margin: 0;
 }
 .consumptionator-page header .header-nav-bar .tve-help-link a, .node-type-catchall-page header .header-nav-bar .tve-help-link a {
@@ -6797,7 +6799,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .tve-help-link a, .node-type-catchall-page header .header-nav-bar .tve-help-link a {
     font-size: 14px;
-    line-height: 16px;
   }
 }
 .consumptionator-page header .header-nav-bar .tve-help-link a:focus, .node-type-catchall-page header .header-nav-bar .tve-help-link a:focus {
@@ -6807,10 +6808,40 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: table-cell;
   height: 100%;
   vertical-align: middle;
-  width: 185px;
+  width: 300px;
+}
+@media (max-width: 1900px) {
+  .consumptionator-page header .header-nav-bar .tve-help-link.signOut .links-wrapper, .node-type-catchall-page header .header-nav-bar .tve-help-link.signOut .links-wrapper {
+    width: 220px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page header .header-nav-bar .tve-help-link.signOut .links-wrapper, .node-type-catchall-page header .header-nav-bar .tve-help-link.signOut .links-wrapper {
+    width: 185px;
+  }
+}
+.consumptionator-page header .header-nav-bar .tve-help-link.signOut a, .node-type-catchall-page header .header-nav-bar .tve-help-link.signOut a {
+  font-size: 16px;
+  line-height: 1.3;
+}
+@media (max-width: 1900px) {
+  .consumptionator-page header .header-nav-bar .tve-help-link.signOut a, .node-type-catchall-page header .header-nav-bar .tve-help-link.signOut a {
+    font-size: 12px;
+    line-height: 1.2;
+  }
 }
 .consumptionator-page header .header-nav-bar .tve-help-link.signOut .providerLogo img, .node-type-catchall-page header .header-nav-bar .tve-help-link.signOut .providerLogo img {
   height: 16px;
+}
+@media (max-width: 1900px) {
+  .consumptionator-page header .header-nav-bar .tve-help-link.signOut .providerLogo img, .node-type-catchall-page header .header-nav-bar .tve-help-link.signOut .providerLogo img {
+    height: 14px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-page header .header-nav-bar .tve-help-link.signOut .providerLogo img, .node-type-catchall-page header .header-nav-bar .tve-help-link.signOut .providerLogo img {
+    height: 12px;
+  }
 }
 .consumptionator-page header .header-nav-bar .tve-help-link.signIn .tve-help-sign, .node-type-catchall-page header .header-nav-bar .tve-help-link.signIn .tve-help-sign {
   display: table-cell;

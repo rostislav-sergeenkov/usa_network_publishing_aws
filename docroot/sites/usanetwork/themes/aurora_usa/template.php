@@ -111,6 +111,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/viewport-units-buggyfill.js');
   drupal_add_js($theme_path . '/javascripts/matchmedia.js');
   drupal_add_js($theme_path . '/javascripts/picturefill.js');
+  drupal_add_js($theme_path . '/javascripts/jquery.scrollTo-1.4.3.1.js');
   drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
     'type' => 'external',
     'scope' => 'footer',

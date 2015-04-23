@@ -127,7 +127,10 @@ function usanetwork_menu_block_info() {
     'info' => t('Usanetwork Consumptionator: Upper menu'),
     'cache' => DRUPAL_NO_CACHE,
   );
-
+  $blocks['usanetwork_menu_page_header'] = array(
+    'info' => t('Usanetwork static page: Upper menu'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -217,8 +220,14 @@ function usanetwork_menu_block_view($delta = '') {
           ),
         ),
       );
+      break;
+    case 'usanetwork_menu_page_header':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_menu_static_page_header_block(),
+      );
+      break;
   }
-
   return $block;
 }
 
@@ -360,6 +369,12 @@ function usanetwork_menu_theme() {
         ),
       ),
       'template' => 'templates/usanetwork-menu-consumptionator-live-video',
+    ),
+    'usanetwork_menu_static_page_header' => array(
+      'variables' => array(
+        'title' => NULL,
+      ),
+      'template' => 'templates/usanetwork-menu-static-page-header',
     ),
   );
 }
@@ -1030,6 +1045,18 @@ function _usanetwork_menu_consumptionator_block_video($file) {
       ),
     );
     return theme('usanetwork_menu_consumptionator_video', $theme_variables);
+  }
+  return '';
+}
+/**
+ * Renders Consumtionator Menu block for static pages
+ */
+function _usanetwork_menu_static_page_header_block() {
+  $node = menu_get_object('node');
+  if (!empty($node->type) && $node->type == 'usanetwork_static_page') {
+    return theme('usanetwork_menu_static_page_header', array(
+      'title' => $node->title,
+    ));
   }
   return '';
 }

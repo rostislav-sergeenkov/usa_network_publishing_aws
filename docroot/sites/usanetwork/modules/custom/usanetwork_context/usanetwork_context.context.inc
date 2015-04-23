@@ -1975,6 +1975,11 @@ function usanetwork_context_context_default_contexts() {
   $context->description = '';
   $context->tag = 'sitewide';
   $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~usanetwork_sitewide_exclude' => '~usanetwork_sitewide_exclude',
+      ),
+    ),
     'path' => array(
       'values' => array(
         '~file/*' => '~file/*',
@@ -2028,10 +2033,44 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'usanetwork_sitewide_file';
-  $context->description = '';
+  $context->name = 'usanetwork_sitewide_exclude';
+  $context->description = 'Exclude some node types from usanetwork_sitewide context.';
   $context->tag = 'sitewide';
   $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'catchall_page' => 'catchall_page',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array();
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Exclude some node types from usanetwork_sitewide context.');
+  t('sitewide');
+  $export['usanetwork_sitewide_exclude'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usanetwork_sitewide_file';
+  $context->description = 'Footer, promo-links';
+  $context->tag = 'sitewide';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'catchall_page' => 'catchall_page',
+        'media_gallery' => 'media_gallery',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
     'path' => array(
       'values' => array(
         'file/*' => 'file/*',
@@ -2067,10 +2106,11 @@ function usanetwork_context_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 1;
+  $context->condition_mode = 0;
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Footer, promo-links');
   t('sitewide');
   $export['usanetwork_sitewide_file'] = $context;
 

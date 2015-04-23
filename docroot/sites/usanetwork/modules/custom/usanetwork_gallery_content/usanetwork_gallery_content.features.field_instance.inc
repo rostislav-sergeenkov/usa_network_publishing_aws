@@ -37,9 +37,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'entityreference_view_widget' => array(
@@ -50,9 +49,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'inline_content' => array(
@@ -110,7 +108,6 @@ function usanetwork_gallery_content_field_default_field_instances() {
     ),
   );
 
-
   // Exported field_instance: 'node-media_gallery-field_call_to_action_type'
   $field_instances['node-media_gallery-field_call_to_action_type'] = array(
     'bundle' => 'media_gallery',
@@ -138,9 +135,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 32,
       ),
       'full' => array(
@@ -622,9 +618,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 14,
       ),
       'full' => array(
@@ -710,11 +705,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 12,
       ),
       'full' => array(
@@ -803,9 +795,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 20,
       ),
       'full' => array(
@@ -889,9 +880,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 19,
       ),
       'full' => array(
@@ -974,9 +964,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'entityreference_view_widget' => array(
@@ -987,11 +976,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'gallery_flexslider',
-        ),
-        'type' => 'file_rendered',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'inline_content' => array(
@@ -1098,9 +1084,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 15,
       ),
       'full' => array(
@@ -1195,11 +1180,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 13,
       ),
       'full' => array(
@@ -1292,11 +1274,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 11,
       ),
       'full' => array(
@@ -1385,9 +1364,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 18,
       ),
       'full' => array(
@@ -1572,9 +1550,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 22,
       ),
       'full' => array(
@@ -1672,11 +1649,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 10,
       ),
       'full' => array(
@@ -1764,9 +1738,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'full' => array(
@@ -1856,9 +1829,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 17,
       ),
       'full' => array(
@@ -1953,12 +1925,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 16,
       ),
       'full' => array(

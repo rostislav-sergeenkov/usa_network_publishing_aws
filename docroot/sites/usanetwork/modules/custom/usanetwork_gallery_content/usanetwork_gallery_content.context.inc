@@ -35,11 +35,11 @@ function usanetwork_gallery_content_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'system-main' => array(
-          'module' => 'system',
-          'delta' => 'main',
+        'usanetwork_media_gallery-usa_gallery_consumptionator_main' => array(
+          'module' => 'usanetwork_media_gallery',
+          'delta' => 'usa_gallery_consumptionator_main',
           'region' => 'content',
-          'weight' => '-9',
+          'weight' => '-10',
         ),
       ),
     ),

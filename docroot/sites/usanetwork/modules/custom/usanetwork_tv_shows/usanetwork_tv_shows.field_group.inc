@@ -359,7 +359,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
     'label' => 'Full Bleed Promo',
-    'weight' => '82',
+    'weight' => '83',
     'children' => array(
       0 => 'field_hp_full_bleed_promo',
     ),
@@ -1079,12 +1079,13 @@ function usanetwork_tv_shows_field_group_info() {
       4 => 'field_facebook_tracking_enabled',
       5 => 'field_usa_tv_related_shows',
       6 => 'field_tvs_about',
-      7 => 'group_usa_tv_promo_vids',
-      8 => 'group_usa_tv_promo',
-      9 => 'group_latest_episodes_alt',
-      10 => 'group_full_bleed_promo',
-      11 => 'group_show_aspots',
-      12 => 'group_tvs_best_of',
+      7 => 'field_tvs_show_latest_feed',
+      8 => 'group_usa_tv_promo_vids',
+      9 => 'group_usa_tv_promo',
+      10 => 'group_latest_episodes_alt',
+      11 => 'group_full_bleed_promo',
+      12 => 'group_show_aspots',
+      13 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

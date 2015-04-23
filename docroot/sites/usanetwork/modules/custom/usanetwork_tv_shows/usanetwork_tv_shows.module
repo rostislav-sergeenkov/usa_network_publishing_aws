@@ -520,6 +520,32 @@ function usanetwork_tv_shows_entity_query_alter($query) {
 }
 
 /**
+ *  Implements hook_features_revert().
+ */
+function field_instance_features_revert($module_name) {
+  if ($module_name == 'usanetwork_tv_shows' && !variable_get('usanetwork_tv_shows_features_update_1_13', NULL)) {
+    $nodes_updated = 0;
+    $show_nodes = node_load_multiple(array(), array('type' => 'tv_show'));
+
+    if (!empty($show_nodes)) {
+
+      foreach($show_nodes as $show_node) {
+        $node_wrapper = entity_metadata_wrapper('node', $show_node);
+
+        $node_wrapper->field_tvs_show_latest_feed->set(TRUE);
+        $node_wrapper->save();
+
+        $nodes_updated++;
+      }
+    }
+
+    if ($nodes_updated > 0) {
+      variable_set('usanetwork_tv_shows_features_update_1_13', TRUE);
+    }
+  }
+}
+
+/**
  *  Implements form for cached related data of show.
  */
 function usanetwork_tv_shows_related_content_cache_form($form, &$form_state) {
@@ -1586,6 +1612,17 @@ function _usanetwork_tv_shows_related_content_block() {
 
   if (empty($tv_show_node) || (!empty($tv_show_node) && isset($tv_show_node->type) && $tv_show_node->type != 'tv_show')) {
     return '';
+  }
+
+  if (empty($tv_show_node->field_tvs_show_latest_feed)) {
+    return '';
+  }
+  else {
+    $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_feed');
+
+    if ($latest_content_flag_field[0]['value'] == 0) {
+      return '';
+    }
   }
 
   $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);

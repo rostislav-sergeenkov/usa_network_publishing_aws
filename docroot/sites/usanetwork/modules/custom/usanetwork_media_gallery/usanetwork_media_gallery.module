@@ -13,12 +13,17 @@ function usanetwork_media_gallery_block_info() {
   $blocks = array();
 
   $blocks['usa_gallery_central_gallery'] = array(
-    'info' => 'Consumptionator: Media gallery',
+    'info' => 'Consumptionator: Media gallery slides',
     'cache' => DRUPAL_NO_CACHE,
   );
 
   $blocks['usa_gallery_episode_gallery'] = array(
     'info' => 'Consumptionator: Episode gallery',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usa_gallery_consumptionator_main'] = array(
+    'info' => 'Consumptionator: Media gallery block',
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -34,169 +39,29 @@ function usanetwork_media_gallery_block_view($delta = '') {
   switch ($delta) {
     case 'usa_gallery_central_gallery':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_media_gallery_consumptionator_gallery_block();
+      $block['content'] = _usanetwork_media_gallery_consumptionator_gallery_slides_block();
       break;
 
     case 'usa_gallery_episode_gallery':
       $block['subject'] = '';
       $block['content'] = _usanetwork_media_gallery_consumptionator_episodes_block();
       break;
+
+    case 'usa_gallery_consumptionator_main':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_media_gallery_consumptionator_gallery_block();
+      break;
   }
 
   return $block;
 }
 
-/**
- * Implements hook_node_view().
- */
-function usanetwork_media_gallery_node_view($node, $view_mode, $langcode) {
-
-  if ($node->type == 'media_gallery' && $view_mode == 'full') {
-    if ($field_media_items = field_get_items('node', $node, 'field_media_items')) {
-      $slides = array();
-      $gigya = array(
-        'gigyaSharebar' => array(
-          'containerID' => '',
-          'layout' => 'horizontal',
-          'shareButtons' => 'facebook-like, twitter-tweet, tumblr, pinterest, share',
-          'shortURLs' => 'never',
-          'showCounts' => 'none',
-          'ua' => array(
-            'Objectdescription' => '',
-            'imageBhev' => '',
-            'linkBack' => url('node/' . $node->nid, array('absolute' => TRUE)),
-            'title' => $node->title,
-          ),
-        )
-      );
-      foreach ($field_media_items as $key => $media_item) {
-
-        $index = $key + 1;
-        $file = file_load($media_item['fid']);
-        if ($field_caption_items = field_get_items('file', $file, 'field_caption')) {
-          $caption = reset($field_caption_items);
-        }
-
-        $image = theme_image(array(
-          'path' => $file->uri,
-          'attributes' => array(),
-        ));
-
-        $gigya_container_id = 'gigya-share-gallery-' . $index;
-        $gigya['gigyaSharebar']['containerID'] = $gigya_container_id;
-        $gigya['gigyaSharebar']['ua']['Objectdescription'] = isset($caption['value'])
-              ? $caption['value'] : '';
-        $gigya['gigyaSharebar']['ua']['imageBhev'] = 'url';
-        $gigya['gigyaSharebar']['ua']['imageUrl'] = file_create_url($file->uri);
-
-        $settings[] = $gigya;
-        $slides[] = theme('usanetwork_media_gallery_slide', array(
-          'gigya_id' => $gigya_container_id,
-          'image' => $image,
-          'info' => array(
-            'description' => isset($caption['value']) ? $caption['value'] : NULL,
-        )));
-      }
-
-      drupal_add_js(array('gigyaSharebars' => $settings), 'setting');
-      $node->slides = $slides;
-    }
-
-    if ($field_show_items = field_get_items('node', $node, 'field_show')) {
-      $field_show = reset($field_show_items);
-      $show_class = usanetwork_tv_shows_color_show_css_class($field_show['target_id']);
-
-      $next = FALSE;
-
-      //Episodes Galleries
-      $episodes_gallery = views_get_view_result('usa_gallery', 'episodes_galleries', $field_show['target_id']);
-      $episodes_gallery_items = array();
-      foreach ($episodes_gallery as $episodes_gallery_item) {
-        if ($next !== TRUE && !is_numeric($next) && $node->nid == $episodes_gallery_item->nid) {
-          $next = TRUE;
-        }
-        else if ($next === TRUE) {
-          $next = $episodes_gallery_item->nid;
-        }
-
-        $episodes_gallery_items[] = l($episodes_gallery_item->node_title, 'node/' . $episodes_gallery_item->nid, array('attributes' => array('class' => array('show-color-border', $show_class))));
-      }
-      $node->episodes_gallery_items = $episodes_gallery_items;
-
-      //Character Galleries
-      $character_galleries = views_get_view_result('usa_gallery', 'character_galleries', $field_show['target_id']);
-      $character_galleries_items = array();
-      foreach ($character_galleries as $character_galleries_item) {
-
-        if ($next !== TRUE && !is_numeric($next) && $node->nid == $character_galleries_item->nid) {
-          $next = TRUE;
-        }
-        else if ($next === TRUE) {
-          $next = $character_galleries_item->nid;
-        }
-
-        $character_galleries_items[] = l($character_galleries_item->node_title, 'node/' . $character_galleries_item->nid, array('attributes' => array('class' => array('show-color-border', $show_class))));
-      }
-      $node->character_galleries_items = $character_galleries_items;
-
-      //Other Show Galleries
-      $other_show_galleries = views_get_view_result('usa_gallery', 'other_show_galleries', $field_show['target_id']);
-      $other_show_galleries_items = array();
-      foreach ($other_show_galleries as $other_show_galleries_item) {
-        if ($next !== TRUE && !is_numeric($next) && $node->nid == $other_show_galleries_item->nid) {
-          $next = TRUE;
-        }
-        else if ($next === TRUE) {
-          $next = $other_show_galleries_item->nid;
-        }
-
-        $other_show_galleries_items[] = l($other_show_galleries_item->node_title, 'node/' . $other_show_galleries_item->nid, array('attributes' => array('class' => array('show-color-border', $show_class))));
-      }
-
-      $node->other_show_galleries_items = $other_show_galleries_items;
-
-      if (is_numeric($next)) {
-        $next_node = node_load($next);
-        if ($field_media_items = field_get_items('node', $next_node, 'field_media_items')) {
-          $media_item = reset($field_media_items);
-          $file = file_load($media_item['fid']);
-          if ($field_caption_items = field_get_items('file', $file, 'field_caption')) {
-            $caption = reset($field_caption_items);
-          }
-
-          $image = theme_image(array(
-            'path' => $file->uri,
-            'attributes' => array(),
-          ));
-
-          $node->slides[] = theme('usanetwork_media_gallery_slide', array(
-            'gigya_id' => FALSE,
-            'image' => $image,
-            'info' => array(
-              'description' => isset($caption['value']) ? $caption['value'] : NULL,
-          )));
-        }
-      }
-    }
-  }
-}
 
 /**
  * Implements hook_theme().
  */
 function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
   return array(
-    'usanetwork_media_gallery_slide' => array(
-      'variables' => array(
-        'gigya_id' => NULL,
-        'image' => NULL,
-        'info' => array(
-          'description' => NULL,
-        ),
-      ),
-      'path' => $path . '/templates',
-      'template' => 'usanetwork-media-gallery-slide',
-    ),
     'usanetwork_media_gallery_consumptionator_slide' => array(
       'variables' => array(
         'gigya_id' => NULL,
@@ -234,6 +99,14 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
       'path' => $path . '/templates',
       'template' => 'usanetwork-media-gallery-consumptionator-episode-slides',
     ),
+    'usanetwork_media_gallery_consumptionator' => array(
+      'variables' => array(
+        'slider' => NULL,
+        'episodic_gallery' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-media-gallery-consumptionator',
+    ),
   );
 }
 
@@ -260,9 +133,23 @@ function usanetwork_media_gallery_image_default_styles() {
 }
 
 /**
- * Renders main gallery on MediaGallery page.
+ * Renders main gallery block for consumptionator page.
  */
 function _usanetwork_media_gallery_consumptionator_gallery_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  return theme('usanetwork_media_gallery_consumptionator', array(
+    'slider' => _usanetwork_media_gallery_consumptionator_gallery_slides_block(),
+    'episodic_gallery' => _usanetwork_media_gallery_consumptionator_episodes_block(),
+  ));
+}
+
+/**
+ * Renders main gallery on MediaGallery page.
+ */
+function _usanetwork_media_gallery_consumptionator_gallery_slides_block() {
   if (path_is_admin(current_path())) {
     return '';
   }

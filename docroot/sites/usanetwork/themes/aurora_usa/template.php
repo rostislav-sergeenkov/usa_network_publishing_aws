@@ -140,6 +140,7 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
     drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
+    drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
     drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {

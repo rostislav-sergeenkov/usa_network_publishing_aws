@@ -1956,6 +1956,31 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'usanetwork_dynamic_entity_reference',
   );
 
+  // Exported field_base: 'field_tvs_show_latest_feed'
+  $field_bases['field_tvs_show_latest_feed'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tvs_show_latest_feed',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_usa_autoscroll'
   $field_bases['field_usa_autoscroll'] = array(
     'active' => 1,

@@ -1587,6 +1587,17 @@ function _usanetwork_tv_shows_related_content_block() {
     return '';
   }
 
+  if (empty($tv_show_node->field_tvs_show_latest_feed)) {
+    return '';
+  }
+  else {
+    $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_feed');
+
+    if ($latest_content_flag_field[0]['value'] == 0) {
+      return '';
+    }
+  }
+
   $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
 
   if (!empty($related_content)) {

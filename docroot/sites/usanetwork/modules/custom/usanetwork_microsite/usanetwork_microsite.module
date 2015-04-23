@@ -191,13 +191,39 @@ function usanetwork_microsite_preprocess_node(&$variables) {
   }
 }
 
+function usanetwork_microsite_process_file_entity(&$variables) {
+  if($variables['view_mode'] == 'microsite_thumbnail') {
+    if ($variables['type'] == 'mpx_video_1' || $variables['type'] == 'mpx_video_2') {
+      $node = menu_get_object();
+      // If ajax query for getting videos thumbnails,
+      // node will be get from 4 arg.
+      if (!$node) {
+        $node = menu_get_object('node', 4);
+      }
+      $variables['theme_hook_suggestions'][] = 'file__mpx_video_usanetwork_microsite';
+      if ($node) {
+        $node_wrapper = entity_metadata_wrapper('node', $node);
+        $variables['theme_hook_suggestions'][] = 'file__mpx_video_usanetwork_microsite__' . $node_wrapper->field_ms_theme->value();
+      }
+      // If video is with auth, calass tve-video-auth will be added.
+      if (
+        !empty($variables['field_mpx_entitlement']) &&
+        $variables['field_mpx_entitlement'][LANGUAGE_NONE][0]['safe_value'] == 'auth' &&
+        strpos($variables['classes'], 'tve-video-auth') === FALSE
+      ) {
+        $variables['classes'] .= ' tve-video-auth';
+      }
+    }
+  }
+}
+
 function usanetwork_microsite_gallery_preprocess_field(&$vars) {
   if($vars['element']['#field_name'] == 'field_timeline_episode_section') {
     $node = menu_get_object();
     if (!empty($node) && $node->type == 'usanetwork_microsite') {
       $node_wrapper = entity_metadata_wrapper('node', $node);
-      $vars['theme_hook_suggestions'] = array('field_timeline_episode_section__usanetwork_microsite');
-      $vars['theme_hook_suggestions'] = array('field_timeline_episode_section__usanetwork_microsite__' . $node_wrapper->field_ms_theme->value());
+      $vars['theme_hook_suggestions'][] = 'field_timeline_episode_section__usanetwork_microsite';
+      $vars['theme_hook_suggestions'][] = 'field_timeline_episode_section__usanetwork_microsite__' . $node_wrapper->field_ms_theme->value();
     }
   }
 }

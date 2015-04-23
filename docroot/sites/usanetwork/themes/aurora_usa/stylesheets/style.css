@@ -9945,7 +9945,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block {
     height: calc((100vw - 320px)*0.5625);
-    margin-bottom: calc((100vw - 4px)/48*9 + 60px);
+    margin-bottom: calc((100vw - 4px)/48*9 + 45px);
     overflow: visible;
   }
 }
@@ -11125,7 +11125,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .video-block, .page-videos-live .video-block {
     height: calc((100vw - 320px)*0.5625);
-    margin-bottom: calc((100vw - 4px)/48*9 + 60px);
+    margin-bottom: calc((100vw - 4px)/48*9 + 45px);
     overflow: visible;
   }
 }
@@ -11730,11 +11730,25 @@ footer h2 {
     display: block;
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .episodes-list-slider.horizontal {
+    height: 56.25vw;
+  }
+}
+.consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
+  height: 100% !important;
+}
 .consum-sidebar .episodes-list-slider.horizontal li {
   float: left;
   margin-right: 2px;
   position: relative;
   height: 100%;
+  width: 33%;
+}
+@media (max-width: 640px) {
+  .consum-sidebar .episodes-list-slider.horizontal li {
+    width: 100%;
+  }
 }
 .consum-sidebar .episodes-list-slider.horizontal .node.active:before {
   border-left: 7px solid;

@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * Adds default value of checkbox for showing Catchall feed.
+ */
+function usanetwork_catchall_update_7146(&$sandbox) {
+  if (!isset($sandbox['total'])) {
+    features_revert_module('usanetwork_catchall');
+
+    $total_result = db_select('node', 'n');
+    $total_result->fields('n', array('nid'));
+    $total_result->condition('n.type', 'catchall_page');
+    $result = $total_result->execute();
+
+    $sandbox['progress'] = 0;
+    $sandbox['max'] = $result->rowCount();
+    $sandbox['current_node'] = -1;
+  }
+
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid'));
+  $query->condition('n.type', 'catchall_page');
+  $query->range($sandbox['progress'], 50);
+  $result = $query->execute();
+
+  while ($row = $result->fetchAssoc()) {
+    $node = node_load($row['nid']);
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $node_wrapper->field_tvs_show_latest_feed->set(TRUE);
+    $node_wrapper->save();
+
+    $sandbox['current_node'] = $row['nid'];
+    $sandbox['progress']++;
+  }
+
+  $sandbox['#finished'] = ($sandbox['progress'] / $sandbox['max']);
+
+  if ($sandbox['#finished']) {
+    return t('Catchall pages has been resaved');
+  }
+}

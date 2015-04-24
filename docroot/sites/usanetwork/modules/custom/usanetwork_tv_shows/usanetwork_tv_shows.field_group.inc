@@ -238,7 +238,8 @@ function usanetwork_tv_shows_field_group_info() {
       2 => 'field_season',
       3 => 'field_show',
       4 => 'field_tv_cover_media',
-      5 => 'title',
+      5 => 'field_short_synopsis',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

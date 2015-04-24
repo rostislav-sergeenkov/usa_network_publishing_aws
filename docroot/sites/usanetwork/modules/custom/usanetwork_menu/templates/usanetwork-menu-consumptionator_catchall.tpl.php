@@ -14,23 +14,23 @@
 ?>
 <div class="header-nav-bar">
   <div class="usa-logo show-color hover-avail"><a href="<?php print $main_url; ?>"></a></div>
-  <div class="show-title-wrapper">
-    <div class="show-title-block">
-      <div class="tab show-color hover-avail show-name">
-        <a href="<?php print $show_url; ?>">
-          <span><?php print $show_name; ?></span>
+  <div class="nav-bar-tabs">
+    <div class="menu-item show-color hover-avail show-name">
+      <a href="<?php print $show_url; ?>">
+        <span><?php print $show_name; ?></span>
+      </a>
+    </div>
+    <div class="menu-item tab video-title info">
+      <h1>
+        <a class="no-refresh nolink" data-state>
+          <?php print $catchall_name; ?>
         </a>
-      </div>
-      <div class="tab video-title">
-        <h1><?php print $catchall_name; ?></h1>
-      </div>
+      </h1>
     </div>
   </div>
-  <div class="nav-bar-tabs">
-    <div class="tab info"><a data-state="active" href="#" class="no-refresh active"></a></div>
-    <!--<div class="tab share"><a href="#" class="no-refresh"></a></div>-->
-  </div>
 </div>
-<div style="display: block;" class="tab-item info-tab active">
-   Lorem ipsum.
+<div class="tab-content">
+  <div class="tab-item info-tab">
+    test text
+  </div>
 </div>

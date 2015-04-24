@@ -6,7 +6,7 @@
  */
 ?>
 <?php if (!empty($ad)): ?>
-  <div class="latest-ad"></div>
+  <div class="latest-ad"><?php //print $ad; ?></div>
 <?php endif; ?>
 <ul class="<?php print $is_even ? 'even' : 'odd'; ?>">
   <?php if (!empty($related_items)): ?>

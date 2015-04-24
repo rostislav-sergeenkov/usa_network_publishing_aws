@@ -1037,11 +1037,11 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'dart-dart-tag-728x90_970x66_scr' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-728x90_970x66_scr',
+        'mps-topbanner' => array(
+          'module' => 'mps',
+          'delta' => 'topbanner',
           'region' => 'leaderboard',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),

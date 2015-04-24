@@ -256,9 +256,9 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
  * instance of microsite.
  */
 function usanetwork_microsite_gracelandcatchup_get_theme_settings() {
-  $theme_path = drupal_get_path('theme', 'aurora_usa');
   return array(
     'display_global_nav' => FALSE,
-    'videos_limit' => 0, // 0 means there's no limit -- it'll pull them all
+    'short_name_for_full_episodes' => TRUE,
+    'videos_all_videos_filter' => FALSE,
   );
 }

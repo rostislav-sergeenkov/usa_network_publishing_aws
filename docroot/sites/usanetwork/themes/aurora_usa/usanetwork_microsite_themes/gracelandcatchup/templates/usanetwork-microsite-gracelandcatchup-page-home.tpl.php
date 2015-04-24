@@ -21,8 +21,8 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
 ?>
 
 <div id="gracelandcatchup-home">
-  <div id="home-logo"><img src="<?php print $themePath; ?>/images/gracelandcu_home_logo.png" alt="Graceland Catchup HQ" /></div>
-  <div id="home-sponsored"></div>
+  <div id="home-logo"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.svg" alt="Graceland Catchup HQ" /></div>
+  <div id="home-sponsored"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-camry.svg" alt="Presented by the Bold 2015 Camry" /></div>
   <div id="home-tunein"><?php if (!empty($tune_in)) print $tune_in; ?></div>
 
   <!-- start #countdown timer -->
@@ -69,19 +69,21 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
     </div><!-- #countHolder -->
   </div><!-- end countdown timer -->
 
-
-
-
+  <?php if (!empty($page['description'])): ?>
+  <div id="home-description"><?php print $page['description']; ?></div>
+  <?php else: ?>
+  <div id="home-description">Choose your way to get caught up before the premiere:</div>
+  <?php endif; ?>
 
   <div id="home-nav">
     <ul>
-      <li id="binge" class="internal" data-menuanchor="videos"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_binge.png" alt="Binge button" /></div></a><div class="spoiler-alert spoiler-high"></div></li>
-      <li id="slideshow" class="internal" data-menuanchor="slideshow"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_slideshow.png" alt="Slideshow button" /></div></a><div class="spoiler-alert spoiler-medium"></div></li>
-      <li id="trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/gracelandcu_home_trivia.png" alt="Trivia button" /></div></a><div class="spoiler-alert spoiler-low"></div></li>
+      <li id="binge" class="internal" data-menuanchor="videos"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-binge.svg" alt="Binge button" /></div></a><div class="spoiler-alert spoiler-high"></div></li>
+      <li id="slideshow" class="internal" data-menuanchor="slideshow"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-slideshow.svg" alt="Slideshow button" /></div></a><div class="spoiler-alert spoiler-medium"></div></li>
+      <li id="trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-trivia.svg" alt="Trivia button" /></div></a><div class="spoiler-alert spoiler-low"></div></li>
     </ul>
   </div>
 </div>
 
-<div id="home-usa-logo"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/gracelandcu_usa_logo.png" alt="USA Network logo"></a></div>
+<div id="home-usa-logo"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
 
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>

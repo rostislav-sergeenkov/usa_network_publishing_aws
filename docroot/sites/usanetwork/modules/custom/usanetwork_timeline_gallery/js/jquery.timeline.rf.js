@@ -52,17 +52,18 @@ Project demo: http://shindiristudio.com/timeline
             'closeText'             : '',                    // text of close button in open item
             'itemMargin'            : 16,                    // spacing between items
             'percentItemWidth'      : 0.8,                   // percent width of each item
-            'percentLineWidth'      : 0.7,                   // percent width of the viewable line
+            'percentLineWidth'      : 0.6,                   // percent width of the viewable line
             'scrollSpeed'           : 400,                   // animation speed
             'startItem'             : 'last',                // timeline start item id, 'last' or 'first' can be used insted
             'easing'                : 'easeOutSine',         // jquery.easing function for animations,
-            'categories'            : categoryArray,         // categories shown above timeline (months are default)
-            'numberOfSegments'      : segmentArray,          // number of elements per category (number of days)
+            'categories'            : categories,            // categories shown above timeline (months are default)
+            'numberOfSegments'      : segments,              // number of elements per category (number of days)
             'yearsOn'               : true,                  // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
             'swipeOn'               : true,                  // turn on swipe moving function
             'hideTimeline'          : false,                 // hides the timeline line
             'hideControls'          : false,                 // hides the prev/next controls
             'closeItemOnTransition' : false,                 // if true, closes the item after transition
+            'noAnimation'           : false,                 // whether to scroll using animation; if true, slideshow "jumps" to the selected scene instead of sliding
             'ajaxFailMessage'		    : 'Ajax request has failed.'
           }, options); // end timeline_settings
 
@@ -110,9 +111,7 @@ Project demo: http://shindiristudio.com/timeline
           $this.append('<div class="clear"></div>');
 //usa_debug('============== $this: ');
 //usa_debug($this); // $this = $('.timelineFlat.timelineFlatPortfolio.tl3')
-//          $this.css({width: '100%', 'overflow' : 'hidden', marginLeft : 'auto', marginRight : 'auto','text-align': 'center', height:0});
           $this.wrapInner('<div class="timeline-items" />');
-//          $this.find('.timeline-items').css('text-align','left');
 
           if('ontouchstart' in window) {
             $this.addClass('timelineTouch');
@@ -124,16 +123,11 @@ Project demo: http://shindiristudio.com/timeline
             $this.append('<div class="timeline-controls"><div class="timeline-left"></div><div class="timeline-right"></div></div>');
           }
           $this.wrapInner('<div class="timeline-items-wrapper" />');
-//          $this.find('.timeline-items-holder').css({width: '300px', marginLeft : 'auto', marginRight : 'auto'});
-//          $this.find('.timeline-items-holder').css({'width': '100%', 'height': '33%', 'margin': '0 auto', 'overflow': 'hidden'});
-
-//          $items.css({paddingLeft:0 , paddingRight:0, marginLeft: timeline_settings.itemMargin/2, marginRight: timeline_settings.itemMargin/2, float: 'left', position:'relative'});
           $items.css({marginLeft: timeline_settings.itemMargin/2, marginRight: timeline_settings.itemMargin/2});
 
           $itemsOpen.each(function(){
             $(this).prepend('');
             $(this).wrapInner('<div class="'+timeline_settings.itemOpenClass.substr(1)+'-cwrapper"  />').find('div:first').css({position: 'relative'});
-//            $(this).css({width: 0, padding:0 , margin: 0, float: 'left', display : 'none', position : 'relative', overflow : 'hidden'});
           });
 
           // Get new queries
@@ -145,7 +139,7 @@ Project demo: http://shindiristudio.com/timeline
               margin = timelineWidth - ((itemWidth + timeline_settings.itemMargin)/2),
               width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + 32, // 16px padding on left and right of .timeline-items
               data = $this.data('timeline');
-usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', startIndex: ' + startIndex + ', $items.length: ' + $items.length + ', itemOpenWidth: ' + itemOpenWidth + ' => margin: ' + margin + ', width: ' + width);
+//usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', startIndex: ' + startIndex + ', $items.length: ' + $items.length + ', itemOpenWidth: ' + itemOpenWidth + ' => margin: ' + margin + ', width: ' + width);
 
           // Set margin so start element would place in middle of the screen
           $iholder.css({width: width, marginLeft: margin});
@@ -157,7 +151,6 @@ usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWi
               currentIndex      : startIndex,
               itemCount         : $items.length,
               margin            : margin,
-//              percentItemWidth  : percentItemWidth,
               itemWidth         : itemWidth,
               itemOpenWidth     : itemOpenWidth,
               lineMargin        : 0,
@@ -192,7 +185,7 @@ usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWi
 
           $(document).ready(function(){
 //            $this.find(timeline_settings.itemClass).css({ '-webkit-touch-callout': 'none', '-webkit-user-select': 'none', '-khtml-user-select': 'none', '-moz-user-select': 'none', '-ms-user-select': 'none', 'user-select': 'none'}).find('img').on('dragstart', function(event) {
-            $this.timeline('setInitWidthMargin');
+            $this.timeline('setWidthHeightMargin');
 
             $this.find(timeline_settings.itemClass).find('img').on('dragstart', function(event) {
               if (!($(this).hasClass('timeline-rollover-bottom')))
@@ -221,12 +214,15 @@ usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWi
           });
 
           // WINDOW RESIZING
-/*
           $(window).resize(function() {
             //var id = $this.find('.active:first').attr('href').substr(1);
-            var data = $this.data('timeline'),
-                id = $items.eq(data.currentIndex).attr('data-id');
+//            var data = $this.data('timeline'),
+//                id = $items.eq(data.currentIndex).attr('data-id');
+            var data = $this.data('timeline');
+                id = $this.find('.timeline-node.active:first').attr('href').substr(1);
 
+            $this.timeline('setWidthHeightMargin');
+/*
             itemWidth = $items.first().width(),
             itemOpenWidth = $itemsOpen.first().find('div:first').width();
 
@@ -245,11 +241,12 @@ usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWi
               data.margin += (itemWidth+timeline_settings.itemMargin)/2;
               data.marginResponse = false;
             }
-
+*/
+usa_debug('=========== data: ');
+usa_debug(data);
             data.noAnimation = true;
             $this.timeline('goTo', id);
           });
-*/
 
           // Bind left on click
           $this.find('.timeline-left').click(function(){
@@ -324,33 +321,40 @@ usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWi
           $this.removeData('timeline');
         }, // end destroy
 
-        setInitWidthMargin : function() {
+        setWidthHeightMargin : function() {
           var $this = this,
-//              data = $this.data('timeline'),
 //              itemWidth = data.itemWidth + data.options.itemMargin,
               data = $this.data('timeline'),
               timeline_settings = data.options,
-//          var	$this = $('.timelineFlat'),
               timelineWidth = $this.find('.timeline-items-holder:first').width(),
               $items = $this.find(timeline_settings.itemClass),
               itemWidth = Math.ceil(timelineWidth * timeline_settings.percentItemWidth), // $items.first().width(),
               $iholder =  $this.find('.timeline-items:first'),
               lineWidth = Math.ceil(timelineWidth * timeline_settings.percentLineWidth),
-              $line = $this.find('.timeline-wrapper:first'),
+//              $line = $this.find('.timeline-wrapper:first'),
+              $lines = $this.find('.timeline-view'),
 //              margin = 300/2 - (itemWidth + timeline_settings.itemMargin)*(1/2 + startIndex) ,
 //              width = (itemWidth + timeline_settings.itemMargin)*$items.length + (itemOpenWidth + timeline_settings.itemMargin) + 660 ,
               margin = (timelineWidth - (itemWidth + timeline_settings.itemMargin))/2,
-              width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + 32; // 16px padding on left and right of .timeline-items
+              width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + 32, // 16px padding on left and right of .timeline-items
+              imgWidth = $iholder.find('.timeline-item:first .timeline-item-image').width(),
+              imgHeight = Math.floor(imgWidth * 0.648);
+
 usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width);
 
           data.itemWidth = itemWidth;
           data.margin = margin;
           $items.css({width: itemWidth});
+
+          // set height of timeline-items
+          $('.timeline-item-image').css({'height': imgHeight + 'px'});
+          $items.find('.timeline-item-text').css({'height': (imgHeight * 0.8) + 'px'});
+
           // Set margin so start element would place in middle of the screen
           $iholder.css({width: width, marginLeft: margin});
 
-          $line.css({width: lineWidth}).parents('.timeline-line').css({width: lineWidth});
-        }, // end setInitWidthMargin
+          $lines.css({width: lineWidth}).parents('.timeline-line').css({width: lineWidth});
+        }, // end setWidthHeightMargin
 
         touchStart : function(evt) {
           var $this = this,
@@ -617,8 +621,8 @@ usa_debug('========== goTo(' + id + ', ' + data_count + ', ' + openElement + ')'
               timelineWidth = $this.find('.timeline-line').width(), // the line nav -- not the entire timeline container
               count = -1,
               found = false;
-usa_debug('======= data: ');
-usa_debug(data);
+//usa_debug('======= data: ');
+//usa_debug(data);
 
           // Find item index
           $items.each(function(index){
@@ -639,14 +643,14 @@ usa_debug('======= if (found)');
             $nodes.removeClass('active');
             var $goToNode = $nodes.parent().parent().find('[href="#'+id+'"]').addClass('active');
             data.lineMargin = -parseInt($goToNode.parent().parent().attr('data-id'), 10)*100;
-usa_debug('======== data.lineMargin: ' + data.lineMargin);
+//usa_debug('======== data.lineMargin: ' + data.lineMargin);
 
             // check if responsive width
             if ($this.find('.timeline-view:first').width() > $this.find('.timeline-line').width()) {
               data.lineMargin *=2;
               if ($goToNode.parent().hasClass('right')) data.lineMargin -= 100;
             }
-usa_debug('======== data.lineMargin: ' + data.lineMargin);
+//usa_debug('======== data.lineMargin: ' + data.lineMargin);
 
             if (data.noAnimation){
               data.noAnimation = false;
@@ -670,17 +674,18 @@ usa_debug('======== data.lineMargin: ' + data.lineMargin);
             // Scroll
 //            data.margin += (data.itemWidth + data.options.itemMargin)*(data.currentIndex - count);
             var itemWidth = $this.find('.timeline-item:first').width();
-usa_debug('======== data.margin: ' + data.margin);
+//usa_debug('======== data.margin: ' + data.margin);
             data.margin += (itemWidth + data.options.itemMargin)*(data.currentIndex - count);
-usa_debug('========= data.itemWidth: ' + data.itemWidth + ', itemWidth: ' + itemWidth + ', data.options.itemMargin: ' + data.options.itemMargin + ', data.currentIndex: ' + data.currentIndex + ', count: ' + count + ' => data.margin: ' + data.margin);
+//usa_debug('========= data.itemWidth: ' + data.itemWidth + ', itemWidth: ' + itemWidth + ', data.options.itemMargin: ' + data.options.itemMargin + ', data.currentIndex: ' + data.currentIndex + ', count: ' + count + ' => data.margin: ' + data.margin);
             data.currentIndex = count;
 
             var multiply = (parseInt(data.iholder.css('margin-left')) - data.margin)/data.itemWidth;
 
             // RF CODE CHANGE
-usa_debug('========== RF DEBUG: multiply = ' + String(multiply));
-usa_debug(data);
+//usa_debug('========== RF DEBUG: multiply = ' + String(multiply));
+//usa_debug(data);
 // NOTE: data.iholder = $('.timeline-items')
+            var currentId = data.items[data.currentIndex].dataset.id;
             var ignoreMultiply = false;
 
             if (multiply < 0 && multiply > -0.3) {
@@ -698,7 +703,6 @@ usa_debug(data);
               });
             }
             else {
-              var currentId = data.items[data.currentIndex].dataset.id;
               //usa_debug(jQuery(".timeline-items").find(".item[data-id='" + currentId + "'] .timeline-item-text").html());
               var slideTitlePartsForOmniture = String($(".timeline-items").find(".timeline-item[data-id='" + currentId + "'] .timeline-item-text").text()).split('\n');
               var slideTitleForOmniture = slideTitlePartsForOmniture[0];
@@ -711,6 +715,13 @@ usa_debug(data);
                 $this.trigger('scrollStop.Timeline');
               });
             }
+
+            var $timelineItems = $('.timeline-items'),
+                activeTimelineItem = $timelineItems.find('.timeline-item[data-id="' + currentId + '"]');
+            $timelineItems.find('.timeline-item').removeClass('active');
+            activeTimelineItem.addClass('active');
+usa_debug('========== currentId: ' + currentId + ', activeTimelineItem: ');
+usa_debug(activeTimelineItem);
           }
           return $this;
         }, // end goTo
@@ -721,7 +732,7 @@ usa_debug(data);
               data = $this.data('timeline'),
               speed = data.options.scrollSpeed,
               easing = data.options.easing;
-usa_debug('=========== lineLeft: speed: ' + speed + ', easing: ' + easing);
+//usa_debug('=========== lineLeft: speed: ' + speed + ', easing: ' + easing);
           if (data.lineMargin != 0 && data.options.categories) {
             data.lineMargin += 100;
             $this.find('.timeline-wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing);
@@ -740,8 +751,8 @@ usa_debug('=========== lineLeft: speed: ' + speed + ', easing: ' + easing);
           else {
             var viewCount = data.lineViewCount;
           }
-usa_debug('=========== lineRight: viewCount: ' + viewCount + ', data.lineMargin: ' + data.lineMargin + ', data.options.categories: ');
-usa_debug(data.options.categories);
+//usa_debug('=========== lineRight: viewCount: ' + viewCount + ', data.lineMargin: ' + data.lineMargin + ', data.options.categories: ');
+//usa_debug(data.options.categories);
 
           if (data.lineMargin != -(viewCount-1)*100 && data.options.categories) {
             data.lineMargin -= 100;
@@ -749,9 +760,9 @@ usa_debug(data.options.categories);
           }
         }, // end lineRight
 
-        // Create timeline elements and css dependent properties
+        // Create timeline nav elements and css dependent properties
         createElements : function() {
-usa_debug('========== createElements()');
+//usa_debug('========== createElements()');
           var $this = this,
               data = $this.data('timeline'),
               $items = data.items;
@@ -759,7 +770,8 @@ usa_debug('========== createElements()');
           var html = '\n' +
 //    '    <div class="timeline-line" style="text-align: left; position:relative; margin-left:auto; margin-right:auto;"></div>\n';
     '    <div class="timeline-line"></div>\n';
-          $this.prepend(html);
+//          $this.prepend(html);
+          $this.append(html);
           var	timelineWidth = $this.find('.timeline-line').width(),
               nodes = new Array(),
               months = [''].concat(data.options.categories),
@@ -768,15 +780,17 @@ usa_debug('========== createElements()');
               minY = 99999,
               maxM = 0,
               maxY = 0;
+/*
 usa_debug('======= months: ');
 usa_debug(months);
 usa_debug('======= monthsDays: ' );
 usa_debug(monthsDays);
+*/
           if (!data.options.yearsOn) maxY = 99999;
 
           var yearsArr = {};
           if (!data.options.categories) {
-usa_debug('======= if (!data.options.categories)');
+//usa_debug('======= if (!data.options.categories)');
             $items.each(function(){
               var dataId = $(this).attr('data-id'),
                   dataArray = dataId.split('/'),
@@ -792,9 +806,8 @@ usa_debug('======= if (!data.options.categories)');
 
           // LOOP THROUGH EACH ITEM AND CREATE ELEMENTS
           // find timeline date range and make node elements
-usa_debug('=========== $items: ');
-usa_debug($items);
-          var mCnt = 1;
+//usa_debug('=========== $items: ');
+//usa_debug($items);
           $items.each(function(index) {
             var dataId = $(this).attr('data-id'),
                 nodeName = $(this).attr('data-name'),
@@ -803,52 +816,59 @@ usa_debug($items);
                 d = parseInt(dataArray[0], 10),
                 m = ($.inArray(dataArray[1], months) != -1) ? $.inArray(dataArray[1], months) : parseInt(dataArray[1], 10),
                 y = parseInt(dataArray[2], 10);
-usa_debug('======== mCnt: ' + mCnt + ', d: ' + d + ', m: ' + m + ', y: ' + y);
+//usa_debug('======== d: ' + d + ', m: ' + m + ', y: ' + y);
             if (typeof yearsArr[y] == 'undefined') yearsArr[y] = {};
             if (typeof yearsArr[y][m] == 'undefined') yearsArr[y][m] = {};
             yearsArr[y][m][d] = dataId;
             var isActive = (index == data.currentIndex ? ' active' : '');
             // leftPos = position of dots for each episode
             if (data.options.categories) {
-//              var leftPos = (100/(monthsDays[m] + 1)) * d;
-              var leftPos = (100/(monthsDays[m] + 1)) * d;
-usa_debug('============ data.options.categories => leftPos: ' + leftPos + '\nmonthsDays[m]: ' + monthsDays[m] + '\nd: ' + d);
+//usa_debug('=========== y: ' + y + ', m: ' + m + ', monthsDays: ');
+//usa_debug(monthsDays);
+              var leftPos = (data.options.yearsOn) ? (100/(monthsDays[1][y][m] + 1)) * d : (100/(monthsDays[m] + 1)) * d;
+//usa_debug('============ data.options.categories => leftPos: ' + leftPos + '\nmonthsDays[m]: ' + monthsDays[m] + '\nd: ' + d);
             }
             else {
               var leftPos = (100/(maxY-minY))*(d-minY);
-usa_debug('============ data.options.categories else => leftPos: ' + leftPos + '\nmaxY: ' + maxY + '\nminY: ' + minY + '\nd: ' + d);
+//usa_debug('============ data.options.categories else => leftPos: ' + leftPos + '\nmaxY: ' + maxY + '\nminY: ' + minY + '\nd: ' + d);
             }
             var nName = ((typeof nodeName != 'undefined') ? nodeName : d);
 
             // Store node element
             nodes[dataId] = '<a href="#'+dataId+'" class="timeline-node'+isActive+'" style="left: '+leftPos+'%">';
 
-//            if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="timeline-node-desc" style="white-space:nowrap; position:absolute; z-index: 1;"><span>'+dataDesc+'</span></span>';
             if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="timeline-node-desc"><span>'+dataDesc+'</span></span>';
 
             nodes[dataId]+='</a>\n';
-            mCnt++;
           });
+/*
 usa_debug('========== yearsArr: ');
 usa_debug(yearsArr);
 usa_debug('========== nodes: ');
 usa_debug(nodes);
+*/
 
           // Make wrapper elements
+//usa_debug('============= yearsOn: ' + data.options.yearsOn + ', Object.keys(yearsArr).length: ' + Object.keys(yearsArr).length + ', yearsArr: ');
+//usa_debug(yearsArr);
+          if (data.options.yearsOn && Object.keys(yearsArr).length > 1) {
           html = '\n' +
-//    '		<div id="timeline-left" style="position: absolute;"></div><div id="timeline-right" style="position: absolute;"></div>\n' +
-//    '		<div class="timeline-holder" style="position:relative; overflow: hidden; width:100%;">\n' +
-//    '			<div class="timeline-wrapper" style="white-space:nowrap;">\n';
+    '		<div id="timeline-line-full-left"><span class="title">Season 1</span><span class="arrow"></span>' +
+    '</div><div id="timeline-line-left"></div><div id="timeline-line-right"></div><div id="timeline-line-full-right"><span class="arrow"></span><span class="title">Season ' + Object.keys(yearsArr)[(Object.keys(yearsArr).length - 1)] + '</span></div>\n' +
+    '		<div class="timeline-holder">\n' +
+    '			<div class="timeline-wrapper">\n';
+          }
+          else {
+          html = '\n' +
     '		<div id="timeline-line-left"></div><div id="timeline-line-right"></div>\n' +
     '		<div class="timeline-holder">\n' +
     '			<div class="timeline-wrapper">\n';
+          }
 
           // Prepare for loop, every view has 2 months, we show both if first has nodes in it
           if (!data.options.categories) {
-usa_debug('========= if (!data.options.categories)');
+//usa_debug('========= if (!data.options.categories)');
             html +=
-//            '<div class="timeline-view" data-id="'+cnt+'" style="position:relative; display:inline-block; width:100%;">\n'+
-//            '					<div class="timeline-m" style="width:100%; border:0; position:absolute; top:0;">\n';
             '<div class="timeline-view" data-id="'+cnt+'">\n'+
             '					<div class="timeline-m">\n';
             for (var x in nodes) {
@@ -860,43 +880,42 @@ usa_debug('========= if (!data.options.categories)');
           else {
             var firstMonth = true,
                 cnt = 0;
-usa_debug('=========== else');
+//usa_debug('=========== else');
             for (var yr in yearsArr) {
               for (var mnth in yearsArr[yr]) {
                 if (firstMonth) {
-usa_debug('============ if (firstMonth) : cnt: ' + cnt + ', months[(cnt + 1)]: ' + months[(cnt + 1)] + ', mnth: ' + mnth);
+//usa_debug('============ if (firstMonth) : cnt: ' + cnt + ', months[(cnt + 1)]: ' + months[(cnt + 1)] + ', mnth: ' + mnth);
                   firstMonth = !firstMonth;
                   html +=
-                '<div class="timeline-view" data-id="'+cnt+'">\n'+
+                '<div class="timeline-view" data-id="'+cnt+'"><span class="vert-end-line"></span>\n'+
         '					<div class="timeline-m">\n'+
-//        '						<h4 class="timeline-month">'+months[mnth]+(data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
-        '						<h4 class="timeline-month">'+(data.options.yearsOn ? 's' + yr + ' ' : '') + 'e' + mnth + (data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
+        '						<h4 class="timeline-month">'+(data.options.yearsOn ? 's' + yr + ' ' : '') + 'ep' + mnth + (data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
 
                   // Fill with nodes
                   for (dy in yearsArr[yr][mnth]) {
-usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
+//usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
                     html+= nodes[yearsArr[yr][mnth][dy]];
                   }
                   html +=
         '					</div> <!-- KRAJ PRVOG -->\n';
                 }
                 else {
-usa_debug('============ else !firstMonth : cnt: ' + cnt + ', months[(cnt + 1)]: ' + months[(cnt + 1)] + ', mnth: ' + mnth);
+//usa_debug('============ else !firstMonth : cnt: ' + cnt + ', months[(cnt + 1)]: ' + months[(cnt + 1)] + ', mnth: ' + mnth);
                   firstMonth = !firstMonth;
                   html +=
         '					<div class="timeline-m right">\n'+
-//        '						<h4 class="timeline-month">'+(typeof months[mnth] !== 'undefined' ? months[mnth] : '')+(data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
-        '						<h4 class="timeline-month">' + (data.options.yearsOn ? 's' + yr + ' ' : '') + (typeof months[mnth] !== 'undefined' ? 'e' + mnth : '') + (data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
+//        '						<h4 class="timeline-month">' + (data.options.yearsOn ? 's' + yr + ' ' : '') + (typeof months[mnth] !== 'undefined' ? 'e' + mnth : '') + (data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
+        '						<h4 class="timeline-month">' + (data.options.yearsOn ? 's' + yr + ' ' : '') + 'ep' + mnth + (data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
 
                   // Fill with nodes
                   for (dy in yearsArr[yr][mnth]) {
-usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
+//usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
                     html+= nodes[yearsArr[yr][mnth][dy]];
                   }
                   html +=
         '					</div><!-- KRAJ DRUGOG -->\n'+
         '					<div class="clear"></div>\n'+
-        '				</div>';
+        '				<span class="vert-end-line right"></span></div>';
                   cnt++;
                 }
               } // for mnth
@@ -908,7 +927,7 @@ usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
       '						<h4 class="timeline-month"></h4>\n'+
       '					</div>\n'+
       '					<div class="clear"></div>\n'+
-      '				</div>';
+      '				<span class="vert-end-line right"></span></div>';
               cnt++;
             }
           } // if - else
@@ -922,8 +941,8 @@ usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
           data.lineViewCount = cnt;
           // Add generated html and set width & margin for dynamic timeline
           $this.find('.timeline-line:first').html(html);
-usa_debug('=========== .timeline-line:first: ');
-usa_debug($this.find('.timeline-line:first'));
+//usa_debug('=========== .timeline-line:first: ');
+//usa_debug($this.find('.timeline-line:first'));
           $this.find('.timeline-node').each(function(){
             var $thisNode = $(this);
             $(this).find('span').hide();
@@ -962,6 +981,20 @@ usa_debug($this.find('.timeline-line:first'));
           $this.find('#timeline-line-right').on('click', function(){
 //usa_debug('============ #timeline-line-right click');
             $this.timeline('lineRight');
+          });
+
+          // Bind goTo function to REW click event
+          $(this).find('#timeline-line-full-left').on('click', function(e){
+            $this.find('.timeline-node').removeClass('active');
+            $this.timeline('goTo', $('.timeline-item:first').attr('data-id'));
+            $(this).find('.timeline-node:first').addClass('active');
+          });
+
+          // Bind goTo function to FFWD click event
+          $(this).find('#timeline-line-full-right').on('click', function(e){
+            $this.find('.timeline-node').removeClass('active');
+            $this.timeline('goTo', '01/01/02');
+            $(this).find('.timeline-node:last').addClass('active');
           });
         } // end createElements
       }; // end t_methods

@@ -6,6 +6,9 @@
  * This file is not used and is here as a starting point for customization only.
  * @see theme_field()
  *
+ * This implementation is for the display of the TIMELINE GALLERY CONTENT TYPE.
+ *
+ *
  * Available variables:
  * - $items: An array of field values. Use render() to output them.
  * - $label: The item label.
@@ -77,29 +80,29 @@ $numberOfScenesPerEpisode = array();
   <!-- BEGIN TIMELINE -->
   <div class="timelineFlat timelineFlatPortfolio tl3">
 
-
 <?php foreach($tg_items as $seasonNum => $season): ?>
   <?php foreach($season as $episodeNum => $episode): ?>
     <?php print '<!-- Season ' . $seasonNum . ' | Episode ' . $episodeNum . ': ' . $episode['episode_name'] . ' -->' . "\n"; ?>
-    <?php $timelineCategories[] = 's' . $seasonNum . ' ep' . $episodeNum; ?>
+    <?php $timelineCategories[$seasonNum][$episodeNum] = 's' . $seasonNum . ' ep' . $episodeNum; ?>
     <?php foreach($episode['scenes'] as $scene): ?>
-      <div class="timeline-item" data-id="<?php print ($scene['scene_number'] < 10) ? '0' . $scene['scene_number'] : $scene['scene_number']; ?>/<?php print ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>/<?php print ($seasonNum < 10) ? '0' . $seasonNum : $seasonNum; ?>" data-description="SCENE <?php print $scene['scene_number']; ?>" data-fid="<?php print $scene['fid']; ?>" data-imagesrc="<?php print $scene['image_src']; ?>">
-        <img src="<?php print $scene['image_src']; ?>" alt="" class="slideshowimage"/>
-
-        <div class="timeline-item-text">
-          <h2><?php print $seasonNum . ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>: <?php print $episode['episode_name']; ?> <font style="color: #71dce2">|</font> SCENE <?php print $scene['scene_number']; ?></h2>
-          <br>
-          <?php print $scene['description']; ?>
-          <br><br>
-          <div class="like-share-view">
-            <div class="scene-filter-holder">
-              <div class="scene-filters share">
-                <div class="filter">
-                  <span> </span>
-                  <ul class="filter-items">
-                    <li class="filter-item twitter"><a onclick="var twShareWindow = window.open('https://twitter.com/share?url=<?php print $baseUrl; ?>&amp;text=<?php print $shareDescription; ?>', 'twShareWindow', 'width=600,height=450,menubar=0,resizable=0,scrollbars=0', '_self'); twitterShare()"><img src="/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/twitter.png" class="socialshare"></a></li>
-                    <li class="filter-item facebook"><a class="facebook" onclick="var fbShareWindow = window.open('http://www.facebook.com/dialog/feed?app_id=241079750077&amp;link=<?php print $baseUrl; ?>&amp;picture=<?php print $baseUrl . $scene['image_src']; ?>&amp;name=<?php print $shareTitle; ?>&amp;description=<?php print $shareDescription; ?>&amp;redirect_uri=<?php print $baseUrl; ?>', 'fbShareWindow', 'width=800,height=500,menubar=0,resizable=0,scrollbars=0', '_self'); facebookShare()"><img src="/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/facebook.png" class="socialshare"><span>Share on Facebook</span></a></li>
-                  </ul>
+      <div class="timeline-item<?php if ($seasonNum == 1 && $episodeNum == 1) print ' active'; ?>" data-id="<?php print ($scene['scene_number'] < 10) ? '0' . $scene['scene_number'] : $scene['scene_number']; ?>/<?php print ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>/<?php print ($seasonNum < 10) ? '0' . $seasonNum : $seasonNum; ?>" data-description="Scene <?php print $scene['scene_number']; ?>" data-fid="<?php print $scene['fid']; ?>" data-imagesrc="<?php print $scene['image_src']; ?>">
+        <div class="timeline-item-image">
+          <img src="<?php print $scene['image_src']; ?>" alt="" class="slideshowimage"/>
+        </div>
+        <div class="timeline-item-details">
+          <h2><?php print 'S' . $seasonNum . ' Episode ' . $episodeNum; ?> <span class="divider">|</span> <?php print $episode['episode_name']; ?> <span class="divider">|</span> Scene <?php print $scene['scene_number']; ?></h2>
+          <div class="timeline-item-text">
+            <?php print $scene['description']; ?>
+            <div class="like-share-view">
+              <div class="scene-filter-holder">
+                <div class="scene-filters share">
+                  <div class="filter">
+                    <span> </span>
+                    <ul class="filter-items">
+                      <li class="filter-item twitter"><a onclick="var twShareWindow = window.open('https://twitter.com/share?url=<?php print $baseUrl; ?>&amp;text=<?php print $shareDescription; ?>', 'twShareWindow', 'width=600,height=450,menubar=0,resizable=0,scrollbars=0', '_self'); twitterShare()"><img src="/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/twitter.png" class="socialshare"></a></li>
+                      <li class="filter-item facebook"><a class="facebook" onclick="var fbShareWindow = window.open('http://www.facebook.com/dialog/feed?app_id=241079750077&amp;link=<?php print $baseUrl; ?>&amp;picture=<?php print $baseUrl . $scene['image_src']; ?>&amp;name=<?php print $shareTitle; ?>&amp;description=<?php print $shareDescription; ?>&amp;redirect_uri=<?php print $baseUrl; ?>', 'fbShareWindow', 'width=800,height=500,menubar=0,resizable=0,scrollbars=0', '_self'); facebookShare()"><img src="/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/facebook.png" class="socialshare"><span>Share on Facebook</span></a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,17 +110,15 @@ $numberOfScenesPerEpisode = array();
         </div>
       </div>
     <?php endforeach; // scene ?>
-    <?php $numberOfScenesPerEpisode[] = count($episode['scenes']); ?>
+    <?php $numberOfScenesPerEpisode[$seasonNum][$episodeNum] = count($episode['scenes']); ?>
   <?php endforeach; // episode ?>
 <?php endforeach; // season ?>
-
-
 
   </div>
   <!-- END TIMELINE -->
 
   <script>
-  var categoryArray = <?php print json_encode($timelineCategories); ?>,
-      segmentArray = <?php print json_encode($numberOfScenesPerEpisode); ?>;
+  var categories = <?php print json_encode($timelineCategories); ?>,
+      segments = <?php print json_encode($numberOfScenesPerEpisode); ?>;
   </script>
 </section>

@@ -8,17 +8,21 @@
     },
 
     showSiteNav: function() {
-      var $siteNav = $('#site-nav');
+      var $siteNav = $('#site-nav'),
+          $homeUsaLogo = $('#home-usa-logo');
       if ($siteNav.css('opacity') == 0) {
 //usa_debug('========= showSiteNav()');
         $siteNav.css({'opacity': 1}).animate({'max-height': '80px'}, 700);
+        $homeUsaLogo.animate({'opacity': 0}, 700);
       }
     },
 
     hideSiteNav: function() {
-      var $siteNav = $('#site-nav');
+      var $siteNav = $('#site-nav'),
+          $homeUsaLogo = $('#home-usa-logo');
       if ($siteNav.css('opacity') == 1) {
 //usa_debug('========= hideSiteNav()');
+        $homeUsaLogo.animate({'opacity': 1}, 700);
         $siteNav.animate({'max-height': '0'}, 700, function(){
           $(this).css({'opacity': 0});
         });

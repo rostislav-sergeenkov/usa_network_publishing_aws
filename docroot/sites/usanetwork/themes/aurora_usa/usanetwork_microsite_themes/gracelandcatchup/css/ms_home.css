@@ -1,6 +1,6 @@
 /* HOME SECTION */
 #gracelandcatchup-home {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/gracelandcu_home_bg.jpg');
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/graceland_catchup2015-bg-home.jpg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,13 +16,21 @@
   position: absolute;
   top: 0;
   left: 100%;
-  margin: 20% 0 1% -73%;
+  margin: 16% 0 1% -73%;
 }
-#home-tunein {
+#home-sponsored {
+  width: 27%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin: 21.2% 0 1% -63.5%;
+}
+#home-tunein,
+#home-description {
   position: absolute;
   top: 0;
   left: 0;
-  margin: 27% 0 0;
+  margin: 25.4% 0 0;
   width: 100%;
   font-size: 1.38em;
   text-align: center;
@@ -36,19 +44,22 @@
   width: 30%;
   margin: 28% 0 1% -65%;
 }
+#home-description {
+  margin: 38% 0 1%;
+}
 #home-nav {
-  width: 42%;
+  width: 50%;
   height: auto%;
   position: absolute;
   top: 0;
   left: 100%;
-  margin: 38% 0 1% -71%;
+  margin: 40.4% 0 1% -75%;
 }
 #home-nav li {
   float: left;
   display: block;
-  width: 30.333%;
-  margin: 0 1.5%;
+  width: 23%;
+  margin: 0 5.1667%;
   height: auto;
 }
 #home-nav li .spoiler {
@@ -62,15 +73,16 @@
   background-position: center;
   background-repeat: no-repeat;
   padding-top: 30%;
+  margin-top: 7%;
 }
 .spoiler-high {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/gracelandcu_spoiler_high.png');
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/graceland-s2catchup-spoiler-high.svg');
 }
 .spoiler-medium {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/gracelandcu_spoiler_medium.png');
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/graceland-s2catchup-spoiler-medium.svg');
 }
 .spoiler-low {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/gracelandcu_spoiler_low.png');
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/graceland-s2catchup-spoiler-low.svg');
 }
 #home-usa-logo {
   position: absolute;

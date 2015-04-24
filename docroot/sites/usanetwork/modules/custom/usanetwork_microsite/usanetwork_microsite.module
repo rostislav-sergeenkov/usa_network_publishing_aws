@@ -410,6 +410,8 @@ function _usanetwork_microsite_render_page($microsite_theme_name, $section_wrapp
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_page_' . $section_name;
     $theme_variables = $page_callback_name($section_wrapper, $node);
     $theme_variables['section_title'] = $section_wrapper->field_ms_section_title->value();
+    $section_description = $section_wrapper->field_ms_section_text->value();
+    $theme_variables['description'] = $section_description['value'];
     $theme_variables = array_merge($theme_variables, array('blocks' => $blocks_variables));
     return theme($theme_registry_name, $theme_variables);
   }
@@ -490,9 +492,6 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
   $theme_variables = array(
     'title' => !empty($section_object->field_ms_section_title)
       ? $section_wrapper->field_ms_section_title->value()
-      : '',
-    'description' => !empty($section_object->field_ms_section_text)
-      ? $section_wrapper->field_ms_section_text->value->value()
       : '',
     'about_quotations' => array(),
   );

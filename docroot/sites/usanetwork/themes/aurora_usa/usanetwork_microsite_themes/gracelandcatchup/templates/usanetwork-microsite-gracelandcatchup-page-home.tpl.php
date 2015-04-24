@@ -69,10 +69,8 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
     </div><!-- #countHolder -->
   </div><!-- end countdown timer -->
 
-  <?php if (!empty($page['description'])): ?>
-  <div id="home-description"><?php print $page['description']; ?></div>
-  <?php else: ?>
-  <div id="home-description">Choose your way to get caught up before the premiere:</div>
+  <?php if (!empty($description)): ?>
+  <div id="home-description" class="section-description"><?php print $description; ?></div>
   <?php endif; ?>
 
   <div id="home-nav">

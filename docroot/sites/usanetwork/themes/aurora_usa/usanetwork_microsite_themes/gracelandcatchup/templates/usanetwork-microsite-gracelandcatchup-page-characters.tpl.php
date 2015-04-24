@@ -30,6 +30,11 @@
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 
+<?php if (!empty($description)): ?>
+  <!-- section description -->
+  <div class="section-description"><?php print $description; ?></div>
+<?php endif; ?>
+
 <div id="characters-container">
   <?php if (!empty($people)): ?>
   <!-- character navigation -->

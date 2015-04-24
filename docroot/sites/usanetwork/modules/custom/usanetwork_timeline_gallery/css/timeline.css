@@ -316,13 +316,19 @@ ul, li {
 }
 /* line REW arrow */
 .timelineFlat #timeline-line-full-left .arrow {
-  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowREW.svg') no-repeat 0 0 transparent;
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowREW-maroon.svg') no-repeat 0 0 transparent;
   padding-left: 20px;
+}
+.timelineFlat #timeline-line-full-left:hover .arrow {
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowREW-black.svg') no-repeat 0 0 transparent;
 }
 /* line FFWD arrow */
 .timelineFlat #timeline-line-full-right .arrow {
-  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowFFW.svg') no-repeat 0 0 transparent;
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowFFW-maroon.svg') no-repeat 0 0 transparent;
   padding-right: 20px;
+}
+.timelineFlat #timeline-line-full-right:hover .arrow {
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowFFW-black.svg') no-repeat 0 0 transparent;
 }
 
 /* next / previous buttons for line */
@@ -336,11 +342,11 @@ ul, li {
 	position: absolute;
 }
 .timelineFlat #timeline-line-left {
-  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev.svg') no-repeat 0 0 transparent;
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev-black.svg') no-repeat 0 0 transparent;
 	left: -30px;
 }
 .timelineFlat #timeline-line-right {
-  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext.svg') no-repeat 0 0 transparent;
+  background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-black.svg') no-repeat 0 0 transparent;
 	right: -40px;
 }
 /*
@@ -415,7 +421,8 @@ ul, li {
 
 /* single item (margines set from javascript) */
 .timelineFlat .timeline-item {
-	width: 1200px;
+	width: 80%;
+	max-width: 1204px;
 	height: 505px;
 	color: #FFF; /* #777777; */
 	background-color: #000; /* #111d29; */
@@ -679,18 +686,18 @@ ul, li {
 .timelineFlat .timeline-left,
 .timelineFlat .timeline-left:hover:active {
 	left: 0;
-	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev.svg');
+	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev-white.svg');
 }
 .timelineFlat .timeline-left:hover {
-	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev.svg');
+	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev-grey.svg');
 }
 .timelineFlat .timeline-right,
 .timelineFlat .timeline-right:hover:active {
 	right: 0;
-	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext.svg');
+	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-white.svg');
 }
 .timelineFlat .timeline-right:hover {
-	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext.svg');
+	background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-grey.svg');
 }
 
 /* SHARING */
@@ -729,7 +736,7 @@ ul, li {
 
 
 .field-name-body {
-  background-color: #000;
+  background-color: rgb(31, 31, 31);
 }
 /* -----------------------------------------------------------------------*/
 /* ------------------------------ RESPONSIVE -----------------------------*/

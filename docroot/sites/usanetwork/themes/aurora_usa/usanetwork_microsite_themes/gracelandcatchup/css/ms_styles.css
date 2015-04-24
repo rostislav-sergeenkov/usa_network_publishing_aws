@@ -290,6 +290,9 @@ body{
   color: #000;
   font-size: 1.125em;
 }
+.section-description p {
+  margin: 0;
+}
 section h2 {
   font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   color: #56000A; /* dark red */

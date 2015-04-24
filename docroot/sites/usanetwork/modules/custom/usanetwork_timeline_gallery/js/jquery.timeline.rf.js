@@ -328,7 +328,7 @@ usa_debug(data);
               timeline_settings = data.options,
               timelineWidth = $this.find('.timeline-items-holder:first').width(),
               $items = $this.find(timeline_settings.itemClass),
-              itemWidth = Math.ceil(timelineWidth * timeline_settings.percentItemWidth), // $items.first().width(),
+              itemWidth = $items.first().width(), // Math.ceil(timelineWidth * timeline_settings.percentItemWidth), // $items.first().width(),
               $iholder =  $this.find('.timeline-items:first'),
               lineWidth = Math.ceil(timelineWidth * timeline_settings.percentLineWidth),
 //              $line = $this.find('.timeline-wrapper:first'),
@@ -996,8 +996,13 @@ usa_debug(nodes);
             $this.timeline('goTo', '01/01/02');
             $(this).find('.timeline-node:last').addClass('active');
           });
+
+          $('.svg').inlineSVG();
         } // end createElements
       }; // end t_methods
+
+
+
 
       // Initiate methods
       $.fn.timeline = function( method ) {
@@ -1014,12 +1019,13 @@ usa_debug(nodes);
 
 
 
-      // MOVED FROM TEMPLATE PAGE
+      // Initialize the timeline
       $('.tl3').timeline({
         openTriggerClass : '.read-more',
         startItem : '01/01/01', // '01/01',
         closeText : ''
       });
+/* Not sure whether the following is used
       $('.tl3').on('ajaxLoaded.timeline', function(e){
         usa_debug('TIMELINE: loaded');
         usa_debug(e.element.find('.timeline-open-content span'));
@@ -1030,11 +1036,14 @@ usa_debug(nodes);
           theme:"light-thin"
         });
       });
+*/
+
       $('.tl3').on('scrollStart.Timeline', function(e){
-        usa_debug('TIMELINE: start');
+        usa_debug('TIMELINE: start'); // start scroll
       });
+
       $('.tl3').on('scrollStop.Timeline', function(e){
-        usa_debug('TIMELINE: end');
+        usa_debug('TIMELINE: end'); // end scroll
       });
 
 

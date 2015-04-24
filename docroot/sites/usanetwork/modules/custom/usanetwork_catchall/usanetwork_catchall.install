@@ -4,7 +4,7 @@
  * Adds default value of checkbox for showing Catchall feed.
  */
 function usanetwork_catchall_update_7140() {
-  //features_revert_module('usanetwork_catchall');
+  features_revert_module('usanetwork_catchall');
 
   $catchall_nodes = node_load_multiple(array(), array('type' => 'catchall_page'));
 

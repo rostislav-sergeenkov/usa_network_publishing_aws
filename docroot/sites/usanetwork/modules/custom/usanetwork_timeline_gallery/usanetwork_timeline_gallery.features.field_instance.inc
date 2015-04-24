@@ -224,13 +224,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -322,13 +322,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -370,7 +370,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 14,
+      'weight' => 17,
     ),
   );
 
@@ -426,13 +426,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -535,13 +535,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -625,13 +625,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -712,13 +712,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -800,13 +800,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -890,13 +890,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -980,13 +980,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1032,7 +1032,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 18,
     ),
   );
 
@@ -1059,7 +1059,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1068,7 +1068,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 23,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1091,6 +1091,72 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
       'settings' => array(),
       'type' => 'field_collection_embed',
       'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-timeline_gallery-field_usa_css'
+  $field_instances['node-timeline_gallery-field_usa_css'] = array(
+    'bundle' => 'timeline_gallery',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 24,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'usanetwork_field_formatters',
+        'settings' => array(),
+        'type' => 'custom_css',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'module' => 'usanetwork_field_formatters',
+        'settings' => array(),
+        'type' => 'custom_css',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_css',
+    'label' => 'Custom CSS',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 16,
     ),
   );
 
@@ -1130,13 +1196,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1230,13 +1296,13 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1319,6 +1385,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   t('An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.');
   t('Body');
   t('Cover Item');
+  t('Custom CSS');
   t('Episode');
   t('H1');
   t('IdeaMelt action type');

@@ -55,6 +55,7 @@ features[field_instance][] = node-timeline_gallery-field_seo_page_title
 features[field_instance][] = node-timeline_gallery-field_show
 features[field_instance][] = node-timeline_gallery-field_summary
 features[field_instance][] = node-timeline_gallery-field_timeline_episode_section
+features[field_instance][] = node-timeline_gallery-field_usa_css
 features[field_instance][] = node-timeline_gallery-field_usa_og_description
 features[field_instance][] = node-timeline_gallery-field_usa_og_image
 features[metatag][] = node:timeline_gallery

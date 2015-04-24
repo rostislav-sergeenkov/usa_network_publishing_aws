@@ -7002,6 +7002,53 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   margin-bottom: 0;
 }
 
+.node-type-catchall-page header .header-nav-bar .nav-bar-tabs {
+  max-width: none;
+  width: calc(100% - 125px);
+}
+@media (min-width: 1901px) {
+  .node-type-catchall-page header .header-nav-bar .nav-bar-tabs {
+    max-width: none;
+    max-width: calc(100% - 190px);
+  }
+}
+@media (max-width: 1024px) {
+  .node-type-catchall-page header .header-nav-bar .nav-bar-tabs {
+    max-width: none;
+    width: calc(100% - 100px);
+  }
+}
+@media (max-width: 768px) {
+  .node-type-catchall-page header .header-nav-bar .nav-bar-tabs {
+    max-width: none;
+    width: calc(100% - 100px);
+  }
+}
+@media (max-width: 480px) {
+  .node-type-catchall-page header .header-nav-bar .nav-bar-tabs {
+    max-width: none;
+    width: calc(100% - 50px);
+  }
+}
+.node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name {
+  width: 30%;
+}
+@media (max-width: 768px) {
+  .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name {
+    max-width: calc(100% - 50px);
+    width: calc(100% - 50px);
+  }
+}
+.node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info {
+  border-right: none;
+  width: 70%;
+}
+@media (max-width: 768px) {
+  .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info {
+    width: 50px;
+  }
+}
+
 #jPanelMenu-menu {
   background-color: #3d3d3d;
 }

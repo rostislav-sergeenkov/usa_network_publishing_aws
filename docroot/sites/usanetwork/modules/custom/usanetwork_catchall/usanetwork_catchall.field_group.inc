@@ -27,7 +27,8 @@ function usanetwork_catchall_field_group_info() {
       1 => 'field_usa_catchall_fixedwidth',
       2 => 'field_automatic_refresh',
       3 => 'field_refresh_time',
-      4 => 'title',
+      4 => 'field_tvs_show_latest_feed',
+      5 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -109,7 +110,7 @@ function usanetwork_catchall_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA IdeaMelt',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_ideamelt_action_type',
       1 => 'field_ideamelt_object_type',

@@ -100,7 +100,7 @@
               font-size: 14px;
             }
           }
-          &.show-name{
+          &.show-name {
             border-left: 1px solid $consup-border;
             max-width: 30%;
             @include breakpoint($bp-768-width) {
@@ -402,4 +402,45 @@
     }
   }
 }
-
+.node-type-catchall-page {
+  header {
+    .header-nav-bar {
+      .nav-bar-tabs {
+        max-width: none;
+        width: calc(100% - 125px);
+        @include breakpoint($bp-min-1901-width) {
+          max-width: none;
+          max-width: calc(100% - 190px);
+        }
+        @include breakpoint($bp-1024-width) {
+          max-width: none;
+          width: calc(100% - 100px);
+        }
+        @include breakpoint($bp-768-width) {
+          max-width: none;
+          width: calc(100% - 100px);
+        }
+        @include breakpoint($bp-480-width) {
+          max-width: none;
+          width: calc(100% - 50px);
+        }
+        .menu-item {
+          &.show-name {
+            width: 30%;
+            @include breakpoint($bp-768-width) {
+              max-width: calc(100% - 50px);
+              width: calc(100% - 50px);
+            }
+          }
+          &.info {
+            border-right: none;
+            width: 70%;
+            @include breakpoint($bp-768-width) {
+              width: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -36,6 +36,38 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_LOCAL_TASK,
   );
 
+  $items['node/%node/cast'] = array(
+    'title' => '',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_tv_shows_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['node/%node/videos'] = array(
+    'title' => '',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_tv_shows_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['node/%node/photos'] = array(
+    'title' => '',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_tv_shows_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['node/%node/explore'] = array(
+    'title' => '',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_tv_shows_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
   return $items;
 }
 
@@ -1840,4 +1872,8 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
   );
 
   return theme('usanetwork_tv_shows_related_item', $theme_variables);
+}
+
+function usanetwork_tv_shows_blank_page() {
+  return '';
 }

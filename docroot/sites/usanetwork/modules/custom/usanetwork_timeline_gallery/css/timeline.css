@@ -1,4 +1,4 @@
-/* @TODO: IMPORTANT!!! CHANGE THE FOLLOWING URLS TO www INSTEAD OF surf */
+/* @TODO: IMPORTANT!!! CHANGE THE FOLLOWING URLS TO www INSTEAD OF surf
 @font-face {
   font-family: 'FontAwesome';
   src: url("http://surf.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/fontawesome-webfont.eot?iefix") format("eot"),
@@ -6,6 +6,7 @@
   url("http://surf.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/fontawesome-webfont.ttf") format("truetype"),
   url("http://surf.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/fontawesome-webfont.svg#fontawesome-webfont") format("svg");
 }
+*/
 .node-timeline-gallery .content {
   background-color: #DEDEDE;
 }
@@ -100,7 +101,7 @@ ul, li {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	width: 60%; /* 900px; */
-	top: 565px;
+	top: 0; /* 565px; */
 
 	/* below from js line 707 */
 	text-align: left;
@@ -311,7 +312,7 @@ ul, li {
 .timelineFlat #timeline-line-full-left .arrow,
 .timelineFlat #timeline-line-full-right .arrow {
   width: 26px;
-  height: auto;
+  height: 20px;
 }
 /* line REW arrow */
 .timelineFlat #timeline-line-full-left .arrow {
@@ -330,8 +331,8 @@ ul, li {
 	display: flex;
 	cursor: pointer;
 	top: 38px;
-	width: 26px;
-	height: 22px;
+	width: 12px;
+	height: 20px;
 	position: absolute;
 }
 .timelineFlat #timeline-line-left {
@@ -392,7 +393,7 @@ ul, li {
 	position: relative;
 	width: 100%;
 	margin: 10px 0;
-	top: -85px;
+	top: 0; /* -85px; */
 	overflow: hidden;
 }
 .timeline-items-holder {
@@ -436,9 +437,11 @@ ul, li {
 .timelineFlat .timeline-item.active {
   opacity: 1;
 }
+/*
 .timelineFlat .timeline-item img {
   width: initial;
 }
+*/
 
 /* timeline item hover -- indicator bar at top of item */
 .timelineFlat .timeline-item.timeline-item-node-hover:before {
@@ -466,7 +469,7 @@ ul, li {
 
 /* ----- content - non-plugin elements ----- */
 .timelineFlat .timeline-item img {
-	margin-top: 0;
+	margin: 0;
 }
 .slideshowimage {
 	float: left;
@@ -505,14 +508,21 @@ ul, li {
 
 /* ----------------------------------------- */
 
-.timelineFlat .timeline-item .timeline-item-text {
+.timelineFlat .timeline-item .timeline-item-image {
+  width: 67%;
+  height: auto;
+  float: left;
+}
+.timelineFlat .timeline-item .timeline-item-details {
 	color: #FFF;
 	z-index: 2;
 	padding: 20px;
 	line-height: 1.3em;
 	font-size: 18px;
+	float: left;
+	width: 33%;
 }
-.timelineFlat .timeline-item .timeline-item-text h2 {
+.timelineFlat .timeline-item .timeline-item-details h2 {
 	position: absolute;
 	top: 8px;
 	right: 8px;
@@ -525,15 +535,21 @@ ul, li {
 	padding-bottom: 50px;
 	text-transform: uppercase;
 }
-.timelineFlat .timeline-item .timeline-item-text h2 .divider {
+.timelineFlat .timeline-item .timeline-item-details h2 .divider {
   display: inline;
   margin: 0 5px;
   height: auto;
 }
-.timelineFlat .timeline-item .timeline-item-text p {
+.timelineFlat .timeline-item .timeline-item-text {
   font-size: 18px;
   color: #FFF;
-  margin: 50px 0;
+  margin: 36px 0;
+  overflow-y: auto;
+  height: 380px;
+  padding-right: 8px;
+}
+.timelineFlat .timeline-item .timeline-item-text p {
+  margin-top: 0;
 }
 
 /* item details (margins set from javascript) */
@@ -711,6 +727,10 @@ ul, li {
 	margin-right: 0px;
 }
 
+
+.field-name-body {
+  background-color: #000;
+}
 /* -----------------------------------------------------------------------*/
 /* ------------------------------ RESPONSIVE -----------------------------*/
 /* -----------------------------------------------------------------------*/
@@ -940,222 +960,3 @@ ul, li {
 }
 */
 /* END MEDIA QUERIES */
-
-
-/*
-.clear {
- clear: both;
-}
-.timelineLoader {
- display: none;
-}
-.timelineFlat.timelineFlatPortfolio.tl3 {
- width: 100%; overflow: hidden; margin-left: auto; margin-right: auto; text-align: center; height: auto; display: block;
-}
-.timeline-line {
- text-align: left; position: relative; margin-left: auto; margin-right: auto;
-}
-#timeline-left,
-#timeline-right {
- position: absolute;
-}
-.timeline-holder {
- position: relative; overflow: hidden; width: 100%;
-}
-.timeline-wrapper {
- white-space: nowrap; margin-left: 0%;
-}
-.timeline-m {
- position: absolute; top: 0;
-}
-.timeline-m.right {
- position: absolute; top: 0;
-}
-.timeline-month {
- position: absolute; width: 100%; top: 0; text-align: center;
-}
-.timeline-node {
- left: 16.67%; position: absolute; text-align: center; width: 12px; margin-left: -6px;
-}
-.timeline-node.spacing-2-1 {
- left: 33.33%;
-}
-.timeline-node.spacing-2-2 {
- left: 66.67%;
-}
-.timeline-node.spacing-3-1 {
- left: 25%;
-}
-.timeline-node.spacing-3-2 {
- left: 50%;
-}
-.timeline-node.spacing-3-3 {
- left: 75%;
-}
-.timeline-node.spacing-4-1 {
- left: 20%;
-}
-.timeline-node.spacing-4-2 {
- left: 40%;
-}
-.timeline-node.spacing-4-3 {
- left: 60%;
-}
-.timeline-node.spacing-4-4 {
- left: 80%;
-}
-.timeline-node.spacing-5-1 {
- left: 16.67%;
-}
-.timeline-node.spacing-5-2 {
- left: 33.33%;
-}
-.timeline-node.spacing-5-3 {
- left: 50%;
-}
-.timeline-node.spacing-5-4 {
- left: 66.67%;
-}
-.timeline-node.spacing-5-5 {
- left: 83.33%;
-}
-.timeline-node.spacing-6-1 {
- left: 14.28%;
-}
-.timeline-node.spacing-6-2 {
- left: 28.57%;
-}
-.timeline-node.spacing-6-3 {
- left: 42.86%;
-}
-.timeline-node.spacing-6-4 {
- left: 57.14%;
-}
-.timeline-node.spacing-6-5 {
- left: 71.43%;
-}
-.timeline-node.spacing-6-6 {
- left: 85.71%;
-}
-.timeline-node.spacing-7-1 {
- left: 12.5%;
-}
-.timeline-node.spacing-7-2 {
- left: 25%;
-}
-.timeline-node.spacing-7-3 {
- left: 37.5%;
-}
-.timeline-node.spacing-7-4 {
- left: 50%;
-}
-.timeline-node.spacing-7-5 {
- left: 62.5%;
-}
-.timeline-node.spacing-7-6 {
- left: 75%;
-}
-.timeline-node.spacing-7-7 {
- left: 87.5%;
-}
-.timeline-node.spacing-8-1 {
- left: 11.11%;
-}
-.timeline-node.spacing-8-2 {
- left: 22.22%;
-}
-.timeline-node.spacing-8-3 {
- left: 33.33%;
-}
-.timeline-node.spacing-8-4 {
- left: 44.44%;
-}
-.timeline-node.spacing-8-5 {
- left: 55.55%;
-}
-.timeline-node.spacing-8-6 {
- left: 66.67%;
-}
-.timeline-node.spacing-8-7 {
- left: 77.78%;
-}
-.timeline-node.spacing-8-8 {
- left: 88.89%;
-}
-.timeline-node.active {
- left: 25%; position: absolute; text-align: center; width: 12px; margin-left: -6px;
-}
-.timeline-node-desc {
- white-space: nowrap; position: absolute; z-index: 1; display: none;
-}
-.timeline-node-desc span {
- display: none;
-}
-.timeline-view {
- position: relative; display: inline-block;
-}
-.timeline-items-holder {
- width: 300px; margin-left: auto; margin-right: auto;
-}
-.timeline-items {
- text-align: left; width: 52440px; margin-left: -10608.5px;
-}
-.timeline-item {
- padding-left: 0px; padding-right: 0px; margin-left: 7.5px; margin-right: 7.5px; float: left; position: relative; -webkit-user-select: none;
-}
-.timeline-item > img {
-  -webkit-user-select: none;
-}
-.timeline-item > h2 {
- -webkit-user-select: none;
-}
-.timeline-item > h2 span {
- color: rgb(113, 220, 226); -webkit-user-select: none;
-}
-.timeline-item-text {
- -webkit-user-select: none;
-}
-.timeline-item-text > br {
- -webkit-user-select: none;
-}
-.like-share-view {
- -webkit-user-select: none;
-}
-.scene-filter-holder {
- -webkit-user-select: none;
-}
-.scene-filters.share {
- -webkit-user-select: none;
-}
-.filter {
- -webkit-user-select: none;
-}
-.filter > span {
- -webkit-user-select: none;
-}
-.filter-items {
- -webkit-user-select: none;
-}
-.filter-item.twitter {
- -webkit-user-select: none;
-}
-.filter-item.twitter a {
- -webkit-user-select: none;
-}
-.filter-item.twitter img {
- -webkit-user-select: none;
-}
-.filter-item.facebook {
- -webkit-user-select: none;
-}
-.filter-item.facebook a {
- -webkit-user-select: none;
-}
-.filter-item.facebook img {
- -webkit-user-select: none;
-}
-.filter-item.facebook span {
- display: none;
- -webkit-user-select: none;
-}
-*/

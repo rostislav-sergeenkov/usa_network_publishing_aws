@@ -30,6 +30,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-home',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'aspots' => array(),
         'featured' => array(),
         'characters' => array(
@@ -59,6 +60,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-characters',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'people' => array(
           0 => array(
             'id' => NULL,
@@ -92,6 +94,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-galleries',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'background_url' => NULL,
         'gallery' => array(),
         'episodic_galleries' => array(
@@ -126,6 +129,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-quizzes',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'page' => array(
           'quiz_html' => NULL,
           'nid' => NULL,
@@ -144,6 +148,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-videos',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'videos' => array(
           0 => array(
             'url' => NULL,
@@ -171,6 +176,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-episodes',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'episodes' => array(
           0 => array(
             'id' => NULL,
@@ -190,6 +196,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline_gallery',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'content' => NULL,
       ),
     ),
@@ -252,5 +259,6 @@ function usanetwork_microsite_gracelandcatchup_get_theme_settings() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   return array(
     'display_global_nav' => FALSE,
+    'videos_limit' => 0, // 0 means there's no limit -- it'll pull them all
   );
 }

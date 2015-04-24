@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Adds default value of checkbox for showing Catchall feed.
+ */
+function usanetwork_catchall_update_7140() {
+  features_revert_module('usanetwork_catchall');
+
+  $catchall_nodes = node_load_multiple(array(), array('type' => 'catchall_page'));
+
+  if (!empty($catchall_nodes)) {
+    foreach ($catchall_nodes as $catchall_node) {
+      $node_wrapper = entity_metadata_wrapper('node', $catchall_node);
+
+      $node_wrapper->field_tvs_show_latest_feed->set(TRUE);
+      $node_wrapper->save();
+    }
+  }
+}

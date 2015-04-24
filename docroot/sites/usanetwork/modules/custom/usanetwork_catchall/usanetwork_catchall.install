@@ -6,7 +6,7 @@
 function usanetwork_catchall_update_7146(&$sandbox) {
   if (!isset($sandbox['total'])) {
     features_revert_module('usanetwork_catchall');
-    
+
     $total_result = db_select('node', 'n');
     $total_result->fields('n', array('nid'));
     $total_result->condition('n.type', 'catchall_page');
@@ -20,7 +20,7 @@ function usanetwork_catchall_update_7146(&$sandbox) {
   $query = db_select('node', 'n');
   $query->fields('n', array('nid'));
   $query->condition('n.type', 'catchall_page');
-  $query->range($sandbox['progress'], 5);
+  $query->range($sandbox['progress'], 50);
   $result = $query->execute();
 
   while ($row = $result->fetchAssoc()) {

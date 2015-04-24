@@ -99,7 +99,7 @@
   margin: 0px 10px 10px 0px;
   width: 145px;
   overflow: hidden;
-  background-color: #AEAFB1;
+  background-color: #999; /* #AEAFB1; */
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .title {
   text-transform: uppercase;
@@ -306,7 +306,7 @@
   float: left;
   margin: 0 10px;
   padding: 4px 30px 0;
-  background-color: #AEAFB1;
+  background-color: #999;
   font-size: 1.125em;
   line-height: 1.6em;
   color: #FFF;

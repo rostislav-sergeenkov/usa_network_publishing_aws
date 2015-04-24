@@ -24,10 +24,11 @@
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 
+<?php if (!empty($description)): ?>
 <div id="video-section-description" class="section-description">
-Watch Season 2 Full Episodes, Season 1 and 2 Cast Interviews and Clips!<br>
-WARNING &mdash; CONTAINS SPOILERS!
+<?php print $description; ?>
 </div>
+<?php endif; ?>
 
 <?php if (!empty($filter_enabled)): ?>
   <div class="filter-wrapper">

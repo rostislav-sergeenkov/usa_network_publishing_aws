@@ -139,6 +139,12 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
+        'mps-topbanner' => array(
+          'module' => 'mps',
+          'delta' => 'topbanner',
+          'region' => 'leaderboard',
+          'weight' => '-10',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',

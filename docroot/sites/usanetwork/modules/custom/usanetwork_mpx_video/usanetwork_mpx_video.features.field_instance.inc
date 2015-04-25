@@ -10,7 +10,6 @@
 function usanetwork_mpx_video_field_default_field_instances() {
   $field_instances = array();
 
-
   // Exported field_instance: 'file-mpx_video_1-field_call_to_action_type'
   $field_instances['file-mpx_video_1-field_call_to_action_type'] = array(
     'bundle' => 'mpx_video_1',
@@ -1859,7 +1858,6 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'weight' => 34,
     ),
   );
-
 
   // Exported field_instance: 'file-mpx_video_2-field_call_to_action_type'
   $field_instances['file-mpx_video_2-field_call_to_action_type'] = array(

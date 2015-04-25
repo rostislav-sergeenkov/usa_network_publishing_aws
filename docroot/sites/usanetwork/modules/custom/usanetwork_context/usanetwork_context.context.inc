@@ -955,7 +955,6 @@ function usanetwork_context_context_default_contexts() {
         'catchall_page' => 'catchall_page',
         'catchall_seo_page' => 'catchall_seo_page',
         'media_gallery' => 'media_gallery',
-        'post' => 'post',
         'quiz' => 'quiz',
       ),
       'options' => array(
@@ -971,14 +970,6 @@ function usanetwork_context_context_default_contexts() {
         'social' => 'social',
         'social/*' => 'social/*',
         '*/social/*' => '*/social/*',
-      ),
-    ),
-    'taxonomy_term' => array(
-      'values' => array(
-        'blog' => 'blog',
-      ),
-      'options' => array(
-        'term_form' => '0',
       ),
     ),
   );
@@ -1012,6 +1003,7 @@ function usanetwork_context_context_default_contexts() {
     'node' => array(
       'values' => array(
         'person' => 'person',
+        'post' => 'post',
         'tv_episode' => 'tv_episode',
         'tv_season' => 'tv_season',
         'tv_show' => 'tv_show',
@@ -1031,6 +1023,14 @@ function usanetwork_context_context_default_contexts() {
         '<front>' => '<front>',
         'search' => 'search',
         'search/*' => 'search/*',
+      ),
+    ),
+    'taxonomy_term' => array(
+      'values' => array(
+        'blog' => 'blog',
+      ),
+      'options' => array(
+        'term_form' => '1',
       ),
     ),
   );

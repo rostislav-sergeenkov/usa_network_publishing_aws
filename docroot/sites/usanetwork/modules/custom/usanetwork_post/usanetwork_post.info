@@ -7,6 +7,7 @@ dependencies[] = field_group
 dependencies[] = file
 dependencies[] = list
 dependencies[] = media_multiselect
+dependencies[] = mps
 dependencies[] = page_manager
 dependencies[] = pub_contributor_profile
 dependencies[] = text

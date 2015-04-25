@@ -2075,6 +2075,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     height: 9.1vw;
   }
 }
+@media (min-width: 1901px) {
+  .best-of-block ul li.first .three-line-video-large .meta-wrapper {
+    height: 173px;
+  }
+}
 @media (max-width: 640px) {
   .best-of-block ul li.first .three-line-video-large .meta-wrapper {
     background: #656364;
@@ -2271,6 +2276,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+  }
+}
+@media (min-width: 1901px) {
+  .show-latest-block ul li .show-latest-promo .meta-wrapper, .related-content-block ul li .show-latest-promo .meta-wrapper {
+    height: 173px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
@@ -2718,6 +2728,8 @@ html {
 body {
   color: white;
   background-color: #e9eaeb;
+  max-width: 2500px;
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -8389,7 +8401,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .best-of-block ul {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1868px;
   padding: 0;
   position: relative;
   width: 100%;
@@ -8405,6 +8418,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   overflow: hidden;
   position: relative;
   width: 49.6%;
+}
+@media (min-width: 1901px) {
+  .best-of-block ul li {
+    height: 714px;
+  }
 }
 @media (max-width: 768px) {
   .best-of-block ul li {
@@ -8468,7 +8486,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .show-latest-block ul {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1868px;
   padding: 0;
   position: relative;
   width: 100%;
@@ -8481,11 +8500,21 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .show-latest-block ul.odd li.first {
   margin-bottom: 1.47vw;
 }
+@media (min-width: 1901px) {
+  .show-latest-block ul.odd li.first {
+    margin-bottom: 29px;
+  }
+}
 .show-latest-block ul.odd li.first > div {
   float: left;
   height: 25.4vw;
   margin-right: 1.6%;
   width: 49.2%;
+}
+@media (min-width: 1901px) {
+  .show-latest-block ul.odd li.first > div {
+    height: 483px;
+  }
 }
 @media (max-width: 640px) {
   .show-latest-block ul.odd li.first > div {
@@ -8499,6 +8528,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   float: left;
   height: 25.4vw;
   width: 49.2%;
+}
+@media (min-width: 1901px) {
+  .show-latest-block ul.odd li.last > div {
+    height: 483px;
+  }
 }
 @media (max-width: 640px) {
   .show-latest-block ul.odd li.last > div {
@@ -8516,9 +8550,19 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     top: 26.87vw;
   }
 }
+@media (min-width: 1901px) {
+  .show-latest-block ul.odd li.last > div:nth-child(2) {
+    top: 512px;
+  }
+}
 .show-latest-block ul.odd li.last > div:last-child {
   float: right;
   height: 52.27vw;
+}
+@media (min-width: 1901px) {
+  .show-latest-block ul.odd li.last > div:last-child {
+    height: 995px;
+  }
 }
 @media (max-width: 640px) {
   .show-latest-block ul.odd li.last > div:last-child {
@@ -8534,6 +8578,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   margin-bottom: 1.47vw;
   width: 49.2%;
 }
+@media (min-width: 1901px) {
+  .show-latest-block ul.even li.first > div {
+    height: 483px;
+    margin-bottom: 29px;
+  }
+}
 @media (max-width: 640px) {
   .show-latest-block ul.even li.first > div {
     height: 36.6vw;
@@ -8542,6 +8592,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .show-latest-block ul.even li.first > div:first-child {
   height: 52.27vw;
   margin-right: 1.6%;
+}
+@media (min-width: 1901px) {
+  .show-latest-block ul.even li.first > div:first-child {
+    height: 995px;
+  }
 }
 @media (max-width: 640px) {
   .show-latest-block ul.even li.first > div:first-child {
@@ -8560,6 +8615,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   height: 25.4vw;
   margin-right: 1.6%;
   width: 49.2%;
+}
+@media (min-width: 1901px) {
+  .show-latest-block ul.even li.last > div {
+    height: 483px;
+  }
 }
 @media (max-width: 640px) {
   .show-latest-block ul.even li.last > div {
@@ -9973,7 +10033,6 @@ footer h2 {
 
 .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block {
   margin: 0;
-  max-width: 2260px;
   overflow: hidden;
   padding: 0;
   position: relative;
@@ -9987,6 +10046,7 @@ footer h2 {
 @media (min-width: 1281px) {
   .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block {
     height: 42.01875vw;
+    max-height: 1050px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -11104,7 +11164,6 @@ footer h2 {
 
 .consumptionator-page .video-block, .page-videos-live .video-block {
   margin: 0;
-  max-width: 2260px;
   overflow: hidden;
   padding: 0;
   position: relative;
@@ -11118,6 +11177,7 @@ footer h2 {
 @media (min-width: 1281px) {
   .consumptionator-page .video-block, .page-videos-live .video-block {
     height: 42.01875vw;
+    max-height: 1050px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -12073,7 +12133,8 @@ footer h2 {
   }
 }
 .related-content-block ul {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1868px;
   padding: 0;
   position: relative;
   width: 100%;
@@ -12098,6 +12159,12 @@ footer h2 {
   }
   .related-content-block ul li:nth-child(n+5) {
     margin-bottom: 0;
+  }
+}
+@media (min-width: 1901px) {
+  .related-content-block ul li {
+    height: 483px;
+    margin-bottom: 29px;
   }
 }
 @media (max-width: 640px) {
@@ -23474,6 +23541,11 @@ yx-axis
     height: 9.375vw;
   }
 }
+@media (min-width: 1901px) {
+  .schedule-on-tonight .schedule-block {
+    height: 180px;
+  }
+}
 .schedule-on-tonight .schedule-block.on-tonight {
   margin-left: 120px;
 }
@@ -23498,6 +23570,11 @@ yx-axis
 @media (min-width: 1281px) {
   .schedule-on-tonight .schedule-block.on-tonight .schedule-item {
     height: 9.375vw;
+  }
+}
+@media (min-width: 1901px) {
+  .schedule-on-tonight .schedule-block.on-tonight .schedule-item {
+    height: 180px;
   }
 }
 @media (max-width: 1280px) {
@@ -24749,13 +24826,8 @@ body.blog .view-display-id-blog_content .views-row {
 #full-bleed-promo .block-content > a {
   display: block;
   line-height: 0;
-  margin-right: 315px;
+  margin-right: 330px;
   max-width: 1350px;
-}
-@media (max-width: 1600px) {
-  #full-bleed-promo .block-content > a {
-    margin-right: 330px;
-  }
 }
 @media (max-width: 1024px) {
   #full-bleed-promo .block-content > a {

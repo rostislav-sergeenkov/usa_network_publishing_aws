@@ -11,11 +11,8 @@
   .block-content > a {
     display: block;
     line-height: 0;
-    margin-right: 315px;
+    margin-right: 330px;
     max-width: 1350px;
-    @include breakpoint($bp-1600-width) {
-      margin-right: 330px;
-    }
     @include breakpoint($bp-1024-width) {
       margin-right: 320px;
     }

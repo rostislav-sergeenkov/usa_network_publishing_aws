@@ -952,7 +952,6 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'catchall_page' => 'catchall_page',
         'catchall_seo_page' => 'catchall_seo_page',
         'media_gallery' => 'media_gallery',
         'quiz' => 'quiz',
@@ -1002,6 +1001,7 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'catchall_page' => 'catchall_page',
         'person' => 'person',
         'post' => 'post',
         'tv_episode' => 'tv_episode',
@@ -1023,6 +1023,11 @@ function usanetwork_context_context_default_contexts() {
         '<front>' => '<front>',
         'search' => 'search',
         'search/*' => 'search/*',
+        'videos' => 'videos',
+        '*/photos' => '*/photos',
+        '*/episodes' => '*/episodes',
+        '*/cast' => '*/cast',
+        '*/videos' => '*/videos',
       ),
     ),
     'taxonomy_term' => array(

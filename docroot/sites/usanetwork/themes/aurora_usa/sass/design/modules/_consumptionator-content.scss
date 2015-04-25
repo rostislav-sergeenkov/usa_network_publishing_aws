@@ -528,7 +528,8 @@
   }
   ul {
     @include clear();
-    margin: 0;
+    margin: 0 auto;
+    max-width: 1868px;
     padding: 0;
     position: relative;
     width: 100%;
@@ -547,6 +548,10 @@
         &:nth-child(n+5){
           margin-bottom: 0;
         }
+      }
+      @include breakpoint($bp-min-1901-width) {
+        height: 483px;
+        margin-bottom: 29px;
       }
       @include breakpoint($bp-640-width) {
         height: 51.6vw;

@@ -952,7 +952,6 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'catchall_page' => 'catchall_page',
         'catchall_seo_page' => 'catchall_seo_page',
         'media_gallery' => 'media_gallery',
         'quiz' => 'quiz',
@@ -1002,6 +1001,7 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'catchall_page' => 'catchall_page',
         'person' => 'person',
         'post' => 'post',
         'tv_episode' => 'tv_episode',

@@ -1023,6 +1023,10 @@ function usanetwork_context_context_default_contexts() {
         '<front>' => '<front>',
         'search' => 'search',
         'search/*' => 'search/*',
+        '*/photos' => '*/photos',
+        '*/episodes' => '*/episodes',
+        '*/cast' => '*/cast',
+        '*/videos' => '*/videos',
       ),
     ),
     'taxonomy_term' => array(

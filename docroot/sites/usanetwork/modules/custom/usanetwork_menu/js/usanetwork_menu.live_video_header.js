@@ -14,8 +14,8 @@
           success: function(message) {
             var headerBlock = $("#block-usanetwork-menu-usanetwork-menu-consumptionator .content");
 
-            if (typeof message.html != 'undefined') {
-              headerBlock.html(message.html);
+            if (typeof message.on_now_vars != 'undefined') {
+              var on_now_vars = JSON.parse(message.on_now_vars);
             }
           }
         });

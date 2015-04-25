@@ -1039,12 +1039,14 @@ function _usanetwork_menu_consumptionator_block_video($file) {
  */
 function _usanetwork_menu_static_page_header_block() {
   $node = menu_get_object('node');
-  if (!empty($node->type) && $node->type == 'usanetwork_static_page') {
+  if (!empty($node)) {
     return theme('usanetwork_menu_static_page_header', array(
       'title' => $node->title,
     ));
   }
-  return '';
+  return theme('usanetwork_menu_static_page_header', array(
+    'title' => drupal_get_title(),
+  ));
 }
 
 function _usanetwork_menu_render_live_video_header_ajax($offset) {

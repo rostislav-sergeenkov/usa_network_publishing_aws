@@ -1018,7 +1018,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
       'episode' => array(
         'video_type' => !empty($file->field_mpx_full_episode)
             ? (
-            $file_wrapper->field_mpx_full_episode->value() == 0
+            $file_wrapper->field_mpx_full_episode->value()
               ? t('Full Episode')
               : t('Video')
             )

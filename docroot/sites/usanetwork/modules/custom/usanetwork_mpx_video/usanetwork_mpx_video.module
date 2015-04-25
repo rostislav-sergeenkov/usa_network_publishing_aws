@@ -1505,8 +1505,14 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-
-
+      if ($vars['is_live']) {
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $vars['live_advert'] = render($advert_block['content']);
+        } else {
+          $vars['live_advert'] = NULL;
+        }
+      }
 
       //twitter card
       if (!$full_episode) {

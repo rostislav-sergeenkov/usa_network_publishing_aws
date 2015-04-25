@@ -360,7 +360,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
     'label' => 'Full Bleed Promo',
-    'weight' => '83',
+    'weight' => '84',
     'children' => array(
       0 => 'field_hp_full_bleed_promo',
     ),
@@ -486,10 +486,10 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
     'label' => 'Latest Full Episode Alternate Content Area',
-    'weight' => '87',
+    'weight' => '86',
     'children' => array(
-      0 => 'field_tvs_lea_block_title',
-      1 => 'field_alternative_content',
+      0 => 'field_alternative_content',
+      1 => 'field_tvs_lea_block_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1081,12 +1081,13 @@ function usanetwork_tv_shows_field_group_info() {
       5 => 'field_usa_tv_related_shows',
       6 => 'field_tvs_about',
       7 => 'field_tvs_show_latest_feed',
-      8 => 'group_usa_tv_promo_vids',
-      9 => 'group_usa_tv_promo',
-      10 => 'group_latest_episodes_alt',
+      8 => 'field_about_ymal',
+      9 => 'group_usa_tv_promo_vids',
+      10 => 'group_usa_tv_promo',
       11 => 'group_full_bleed_promo',
-      12 => 'group_show_aspots',
-      13 => 'group_tvs_best_of',
+      12 => 'group_latest_episodes_alt',
+      13 => 'group_show_aspots',
+      14 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -1,24 +1,27 @@
 .page-schedule {
   color: $poll-color;
   background-color: $poll-back;
-  .page-title {
-    @include clear;
-    padding: 30px;
-    h2 {
-      float: left;
-    }
     .shows-filters {
-      float: right;
-      margin-top: (25px / 2);
-      @include breakpoint($bp-768-width) {
-        display: none;
+      text-align: right;
+      margin: 0 20px 20px 0;
+      @include clear;
+      @include breakpoint($bp-768-width){
+        margin-right: 0;
       }
       .item-filter {
         display: inline-block;
-        margin-right: 20px;
+        margin-right: 33px;
         position: relative;
         vertical-align: middle;
         min-width: 235px;
+        @include breakpoint($bp-1280-width) {
+          min-width: 155px;
+          margin-right: 25px;
+        }
+        @include breakpoint($bp-480-width) {
+          min-width: 122px;
+          margin-right: 10px;
+        }
         &:last-child {
           margin-right: 0;
         }
@@ -35,11 +38,12 @@
           }
         }
         .filter-label {
-          border: 1px solid $footer-back;
+          border: 1px solid $gray-light-gamma;
+          border-bottom-width: 2px;
           cursor: pointer;
           font-size: 21px;
           font-family: $avalon-demi;
-          line-height: 40px;
+          line-height: 42px;
           overflow: hidden;
           position: relative;
           padding: 0 50px 0 20px;
@@ -48,6 +52,17 @@
           text-overflow: ellipsis;
           -o-text-overflow: ellipsis;
           white-space: nowrap;
+          @include breakpoint($bp-1280-width) {
+            width: 155px;
+            font-size: 17px;
+            line-height: 27px;
+            border-bottom-width: 1px;
+          }
+          @include breakpoint($bp-480-width) {
+            width: 122px;
+            font-size: 12px;
+            line-height: 22px;
+          }
           &:after {
             content: "\e609";
             color: $poll-color;
@@ -59,6 +74,10 @@
             right: 25px;
             top: 0;
             z-index: 3;
+            @include breakpoint($bp-1280-width) {
+              font-size: 12px;
+              right: 17px;
+            }
           }
         }
         .filter-menu {
@@ -71,6 +90,12 @@
           position: absolute;
           width: 100%;
           z-index: 2;
+          @include breakpoint($bp-1280-width){
+            margin-top: 29px;
+          }
+          @include breakpoint($bp-1280-width){
+            margin-top: 24px;
+          }
           li {
             overflow: hidden;
             position: relative;
@@ -88,20 +113,46 @@
               &:hover, &.active {
                 color: $gray-dark-darker;
               }
+              @include breakpoint($bp-1280-width){
+                font-size: 17px;
+                line-height: 12px;
+              }
+              @include breakpoint($bp-480-width){
+                font-size: 12px;
+                line-height: 12px;
+              }
             }
           }
         }
       }
+      .show-filter-reset {
+        min-width: 35px;
+        a{
+        font-size: 14px;
+        color: $gray-semi-ultra-med;
+        text-decoration: underline;
+        font-style: italic;
+          @include breakpoint ($bp-768-width){
+            font-size: 12px;
+          }
+        }
+        @include breakpoint ($bp-480-width){
+          min-width: 27px;
+          a{
+            font-size: 10px;
+          }
+        }
+      }
     }
-  }
+
   .schedule-wrapper {
-    margin: 0 auto 40px;
+    margin: 0 auto;
     max-width: 2500px;
     min-width: 300px;
     .schedule-navigation {
       display: table;
-      background-color: $footer-back;
-      margin-bottom: 40px;
+      background-color: $gray-darker-light;
+      margin-bottom: 20px;
       position: relative;
       width: 100%;
       .nav-prev {
@@ -129,7 +180,7 @@
           top: 50%;
         }
         &:hover {
-          background-color: $bottom-footer-back;
+          background-color: $gray-med-darker;
         }
       }
       .nav-next {
@@ -157,33 +208,40 @@
           top: 50%;
         }
         &:hover {
-          background-color: $bottom-footer-back;
+          background-color: $gray-med-darker;
         }
       }
       ul {
         display: table-cell;
         vertical-align: middle;
+        border-top: 1px solid #ffffff;
         @include clear;
         li {
           border-right: 1px solid $poll-back;
-          height: 90px;
+          height: 123px;
           float: left;
           width: (100% / 7);
-          @include breakpoint($bp-768-width) {
-            display: none;
-            &:first-child, &:nth-child(2) {
-              display: block;
-              width: 50%;
-            }
+          @include breakpoint($bp-1280-width) {
+            height: 82px;
           }
-          @include breakpoint($bp-640-width) {
-            height: 45px;
+          @include breakpoint($bp-1024-width) {
+            height: 66px;
+          }
+          @include breakpoint($bp-768-width) {
+//            display: none;
+//            &:first-child, &:nth-child(2) {
+//              display: block;
+//              width: 50%;
+//            }
+          }
+          @include breakpoint($bp-320-width) {
+            height: 44px;
           }
           &:first-child {
             border-left: 1px solid $poll-back;
           }
           &:hover, &.active {
-            background-color: $bottom-footer-back;
+            background-color: $gray-med-darker;
             a {
               color: #ffffff;
             }
@@ -195,31 +253,40 @@
             padding-top: 13px;
             text-decoration: none;
             text-align: center;
-            @include breakpoint($bp-640-width) {
-              padding-top: 0;
-            }
             span {
               display: block;
-              @include breakpoint($bp-640-width) {
-                display: inline;
-              }
               &.week-day {
-                font-size: 40px;
+                font-size: 56px;
                 font-family: $avalon-demi;
-                line-height: 40px;
-                @include breakpoint($bp-640-width) {
-                  font-size: 20px;
-                  line-height: 45px;
-                  margin-right: 10px;
+                line-height: 62px;
+                @include breakpoint($bp-1280-width) {
+                  font-size: 40px;
+                  line-height: 37px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: 28px;
+                  line-height: 24px;
+                }
+                @include breakpoint($bp-480-width) {
+                  font-size: 22px;
+                  line-height: 30px;
                 }
               }
               &.date {
-                font-size: 20px;
+                font-size: 30px;
                 font-family: $avalon-medium;
-                line-height: 28px;
-                @include breakpoint($bp-640-width) {
+                line-height: 32px;
+                @include breakpoint($bp-1280-width) {
                   font-size: 20px;
-                  line-height: 45px;
+                  line-height: 22px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: 16px;
+                  line-height: 24px;
+                }
+                @include breakpoint($bp-480-width) {
+                  font-size: 10px;
+                  line-height: 5px;
                 }
               }
             }
@@ -242,7 +309,7 @@
     .schedule-table {
       margin-top: 20px;
       position: relative;
-      padding: 10px 0;
+      padding: 0;
       .carousel-vert {
         overflow: hidden;
         position: static;

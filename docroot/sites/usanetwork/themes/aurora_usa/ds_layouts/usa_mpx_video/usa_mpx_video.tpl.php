@@ -97,11 +97,14 @@
     </div>
   </div>
   <div class="consum-sidebar">
-    <div class="node-wrapper advert">
-      <div class="advertisement">
-      </div>
-    </div>
     <?php if ($is_live): ?>
+      <div class="node-wrapper advert">
+        <?php if ($live_advert): ?>
+          <div class="advertisement">
+            <?php print $live_advert; ?>
+          </div>
+        <?php endif; ?>
+      </div>
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>
@@ -110,6 +113,10 @@
         </div>
       </div>
     <?php else: ?>
+      <div class="node-wrapper advert">
+        <div class="advertisement">
+        </div>
+      </div>
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>

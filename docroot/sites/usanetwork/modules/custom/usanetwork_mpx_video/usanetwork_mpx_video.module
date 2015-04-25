@@ -1505,8 +1505,14 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-
-
+      if ($vars['is_live']) {
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $vars['live_advert'] = render($advert_block['content']);
+        } else {
+          $vars['live_advert'] = NULL;
+        }
+      }
 
       //twitter card
       if (!$full_episode) {
@@ -2795,9 +2801,15 @@ function usanetwork_mpx_video_get_ymal_item($show_node) {
  */
 function _usanetwork_mpx_video_render_related_content_items_block($data, $ad) {
   if (!empty($data)) {
+
+    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
+    if (!empty($advert_block['content'])) {
+      $advert = render($advert_block['content']);
+    }
+
     $theme_variables = array(
       'related_items' => array(),
-      'ad' => $ad,
+      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
     );
 
     foreach ($data as $data_index => $data_item) {

@@ -78,6 +78,12 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
+        'mps-topbanner' => array(
+          'module' => 'mps',
+          'delta' => 'topbanner',
+          'region' => 'leaderboard',
+          'weight' => '-10',
+        ),
         'views-usa_mpx_video-latest_live_video' => array(
           'module' => 'views',
           'delta' => 'usa_mpx_video-latest_live_video',
@@ -139,6 +145,12 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
+        'mps-topbanner' => array(
+          'module' => 'mps',
+          'delta' => 'topbanner',
+          'region' => 'leaderboard',
+          'weight' => '-10',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',
@@ -159,8 +171,6 @@ function usanetwork_mpx_video_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('videos page');
-
-
   $export['usa_show_mpx_videos'] = $context;
 
   return $export;

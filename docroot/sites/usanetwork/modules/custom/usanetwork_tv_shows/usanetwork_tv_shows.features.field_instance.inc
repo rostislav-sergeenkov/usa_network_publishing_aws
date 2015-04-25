@@ -11084,7 +11084,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_tvs_about',
-    'label' => 'About',
+    'label' => 'About Show Card',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -15041,8 +15041,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('"On Now" Image');
   t('A Spot');
   t('A maximum of 5 promos recommended for this field to be displayed in the show landing page.');
-  t('About');
   t('About YMAL');
+  t('About Show Card');
   t('Air Date');
   t('Air Dates');
   t('Alternative content');

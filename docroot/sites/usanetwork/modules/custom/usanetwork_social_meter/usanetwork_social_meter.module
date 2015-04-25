@@ -45,8 +45,18 @@ function usanetwork_social_meter_get($aspot_node) {
       return '';
     }
 
+    $aspot_link = 'node/' . $aspot_node->nid;
+
+    if (!empty($aspot_node->field_usa_aspot_link)) {
+      $aspot_url_field = field_get_items('node', $aspot_node, 'field_usa_aspot_link');
+
+      if (!empty($aspot_url_field[0]['url'])) {
+        $aspot_link = $aspot_url_field[0]['url'];
+      }
+    }
+
     $theme_variables = array(
-      'link' => url(USANETWORK_SOCIAL_METER_SERVICE_URL . '/' . $social_meter_data['sfs_id']),
+      'link' => url($aspot_link),
       'link_text' => t("See what everyone's saying"),
       'upper_line' => NULL,
       'middle_line' => t('Talking about'),

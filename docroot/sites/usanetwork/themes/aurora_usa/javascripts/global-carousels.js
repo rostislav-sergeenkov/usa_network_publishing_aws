@@ -364,9 +364,9 @@
       current_item.attr('data-left', current_left);
       current_item.attr('data-width', item_width);
       carousel.addClass('stop');
-      current_item.find('.show-open').bind('click', function() {
+      /*current_item.find('.show-open').bind('click', function() {
         Drupal.behaviors.global_carousels.showClose(current_item);
-      });
+      });*/
 
     },
     showClose: function (item) {
@@ -385,7 +385,7 @@
       item.removeAttr('data-left');
       item.removeAttr('data-width');
       carousel.removeClass('stop');
-      item.find('.show-open').unbind('click');
+      //item.find('.show-open').unbind('click');
     },
 
     checkFirstSlideOverflow: function($carousel) {

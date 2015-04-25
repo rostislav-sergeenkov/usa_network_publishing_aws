@@ -1310,7 +1310,7 @@ header {
         border-top: 0;
       }
       &.share-tab {
-        .show-info {
+        .tab-item-content {
           position: relative;
           .node {
             @include clear;

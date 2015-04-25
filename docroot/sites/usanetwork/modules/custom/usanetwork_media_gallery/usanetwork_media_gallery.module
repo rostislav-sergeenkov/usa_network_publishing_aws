@@ -122,27 +122,6 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
   );
 }
 
-/**
- * Implements hook_image_default_styles().
- */
-function usanetwork_media_gallery_image_default_styles() {
-  $styles = array();
-
-  $styles['300x200'] = array(
-    'effects' => array(
-      array(
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 300,
-          'height' => 400,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
-  return $styles;
-}
 
 /**
  * Renders main gallery block for consumptionator page.
@@ -173,7 +152,11 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block() {
 
     $gallery_field = field_get_items('node', $node, 'field_media_items');
 
-    if (!empty($gallery_field)) {
+    $image_cover_field = field_get_items('node', $node, 'field_cover_item');
+    if (!empty($image_cover_field)) {
+      array_unshift($gallery_field, reset($image_cover_field));
+    }
+    if (!empty($gallery_field) && is_array($gallery_field)) {
       foreach ($gallery_field as $gallery_file) {
         if (is_array($gallery_file)) {
           $gallery_file = (object)$gallery_file;

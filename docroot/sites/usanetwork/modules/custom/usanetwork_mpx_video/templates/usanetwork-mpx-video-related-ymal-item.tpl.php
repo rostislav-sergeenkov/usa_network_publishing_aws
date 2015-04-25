@@ -18,6 +18,9 @@
       </div>
       <div class="meta-wrapper show-color-border <?php print !empty($color_class) ? $color_class : ''; ?>">
         <div class="meta">
+          <?php if (!empty($ymal_about)): ?>
+            <div class="caption"><?php print $ymal_about; ?></div>
+          <?php endif; ?>
           <?php if (!empty($topic)): ?>
             <div class="topic"><?php print $topic; ?></div>
           <?php endif; ?>

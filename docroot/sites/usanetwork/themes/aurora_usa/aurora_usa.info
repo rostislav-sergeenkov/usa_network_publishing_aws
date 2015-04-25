@@ -4,7 +4,7 @@ core = 7.x
 base theme = aurora
 
 ; Javascripts
-scripts[] = javascripts/variables.js
+scripts[] = javascripts/variables-and-functions.js
 scripts[] = javascripts/global-carousels.js
 
 ; Stylesheets

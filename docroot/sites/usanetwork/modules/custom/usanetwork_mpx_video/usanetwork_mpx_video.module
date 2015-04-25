@@ -1505,8 +1505,14 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-
-
+      if ($vars['is_live']) {
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $vars['live_advert'] = render($advert_block['content']);
+        } else {
+          $vars['live_advert'] = NULL;
+        }
+      }
 
       //twitter card
       if (!$full_episode) {
@@ -2765,8 +2771,8 @@ function usanetwork_mpx_video_get_ymal_item($show_node) {
       $related_show_node = node_load($related_show_field[0]['target_id']);
       $about_field_data = '';
 
-      if (!empty($related_show_field->field_tvs_about)) {
-        $about_field = field_get_items('node', $related_show_field, 'field_tvs_about');
+      if (!empty($related_show_node->field_about_ymal)) {
+        $about_field = field_get_items('node', $related_show_node, 'field_about_ymal');
 
         if (!empty($about_field)) {
           $about_field_data = check_plain(reset(reset($about_field)));
@@ -2783,6 +2789,8 @@ function usanetwork_mpx_video_get_ymal_item($show_node) {
         'show_title' => $about_field_data,
         'raw_image_uri' => usanetwork_core_api_get_content_image('node', $related_show_node),
         'media_icon' => usanetwork_core_api_get_media_icon('node', $related_show_node->nid),
+        'ymal_about' => $about_field_data,
+        'ymal' => TRUE,
       );
     }
   }
@@ -2793,13 +2801,24 @@ function usanetwork_mpx_video_get_ymal_item($show_node) {
  */
 function _usanetwork_mpx_video_render_related_content_items_block($data, $ad) {
   if (!empty($data)) {
+
+    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
+    if (!empty($advert_block['content'])) {
+      $advert = render($advert_block['content']);
+    }
+
     $theme_variables = array(
       'related_items' => array(),
-      'ad' => $ad,
+      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
     );
 
     foreach ($data as $data_index => $data_item) {
-      $theme_variables['related_items'][] = _usanetwork_mpx_video_render_related_content_item_default($data_item);
+      if (!empty($data_item->ymal)) {
+        $theme_variables['related_items'][] = _usanetwork_mpx_video_render_related_content_item_ymal($data_item);
+      }
+      else {
+        $theme_variables['related_items'][] = _usanetwork_mpx_video_render_related_content_item_default($data_item);
+      }
     }
 
     return theme('usanetwork_mpx_video_related_items_block', $theme_variables);
@@ -2812,8 +2831,39 @@ function _usanetwork_mpx_video_render_related_content_items_block($data, $ad) {
  * Renders YouMayAlsoLike item (featured function).
  */
 function _usanetwork_mpx_video_render_related_content_item_ymal($data) {
-  // Featured function
-  return _usanetwork_mpx_video_render_related_content_item_default($data);
+  $classes = array();
+  $desktop_image = $mobile_image = '';
+  $target_url = '<front>';
+
+  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array('file', 'node'))) {
+    $target_url = url($data->entity_type . '/' . $data->entity_id);
+  }
+
+  if (!empty($data->raw_image_uri)) {
+    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
+    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
+  }
+
+  $theme_variables = array(
+    'custom_classes' => implode(" ", $classes),
+    'target_url' => $target_url,
+    'topic' => !empty($data->promo_topic)
+        ? check_plain($data->promo_topic)
+        : '',
+    'show_name' => NULL,
+    'promo_title' => !empty($data->promo_title)
+        ? check_plain($data->promo_title)
+        : $data->title,
+    'description' => !empty($data->promo_description)
+        ? check_plain($data->promo_description)
+        : '',
+    'image_desktop' => $desktop_image,
+    'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
+    'cta' => NULL,
+    'ymal_about' => $data->ymal_about,
+  );
+  return theme('usanetwork_mpx_video_related_ymal_item', $theme_variables);
 }
 
 /**

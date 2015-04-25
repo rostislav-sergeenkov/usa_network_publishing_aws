@@ -66,11 +66,7 @@
   }
 
   .meta-wrap {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
+    position: static;
     .title_prefix, .start {
       color: #ffffff;
       font-family: $tex-gyreschola-italic;
@@ -349,6 +345,9 @@
       height: auto;
       width: 100%;
     }
+    .slide {
+      position: relative;
+    }
     .asset-img {
       height: 100%;
       width: 100%;
@@ -358,9 +357,6 @@
       }
     }
     .meta-wrap {
-      left: 0;
-      top: 0;
-      position: absolute;
       .show-title {
         font-size: 40px;
         margin-bottom: 20px;

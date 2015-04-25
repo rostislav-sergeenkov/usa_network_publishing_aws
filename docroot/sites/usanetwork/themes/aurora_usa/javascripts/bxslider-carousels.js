@@ -104,7 +104,9 @@
       var number_of_items = ($('body').hasClass('consumptionator-page'))? 5 : 3;
 
       Drupal.behaviors.bxslider_carousels.extendSettings();
-      Drupal.behaviors.bxslider_carousels.initVSliders();
+      if (slideItem.length > 2) {
+        Drupal.behaviors.bxslider_carousels.initVSliders();
+      }
       if (window.innerWidth >= window_size_mobile_641 && slideItem.length > 2 ){
         Drupal.behaviors.bxslider_carousels.initHSliders();
       }

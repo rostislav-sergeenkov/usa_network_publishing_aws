@@ -253,9 +253,9 @@ function usanetwork_aspot_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'html5_tools',
+      'module' => 'link',
       'settings' => array(),
-      'type' => 'urlwidget',
+      'type' => 'link_field',
       'weight' => 63,
     ),
   );
@@ -595,9 +595,9 @@ function usanetwork_aspot_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'html5_tools',
+      'module' => 'link',
       'settings' => array(),
-      'type' => 'urlwidget',
+      'type' => 'link_field',
       'weight' => 72,
     ),
   );
@@ -3735,7 +3735,6 @@ Suggested max dimensions 380px x 80px<br/>
   t('If this is related to a show please select that from the list.');
   t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
   t('Largest retina image minimum 2490w x 1418h, scales for tablet devices');
-  t('Largest retina image minimum 2500w x 1094h, scales for tablet devices');
   t('Link');
   t('List of enabled draggable elements that should be displayed in A-Spot carousel');
   t('MP4 Video URL');

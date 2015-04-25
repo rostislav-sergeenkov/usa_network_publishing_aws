@@ -146,7 +146,7 @@
         background: $consum-carousel-even;
         height: 75px;
         position: relative;
-        width: 100%;
+        width: 100%!important;
         @include breakpoint($bp-min-1901-width) {
           height: 115px;
         }

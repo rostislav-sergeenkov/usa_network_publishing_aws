@@ -18,15 +18,6 @@
       </ul>
     </div>
   <?php endif; ?>
-  <?php if (!empty($schedule_table)): ?>
-    <div class="schedule-table">
-      <ul>
-        <?php foreach ($schedule_table as $schedule_table_item): ?>
-          <?php print $schedule_table_item; ?>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-  <?php endif; ?>
   <div class="shows-filters">
     <div class="item-filter show-filter">
       <div class="filter-label"><?php print $filter['show_name']['selected']['title']; ?></div>
@@ -58,4 +49,13 @@
       </a>
     </div>
   </div>
+  <?php if (!empty($schedule_table)): ?>
+    <div class="schedule-table">
+      <ul>
+        <?php foreach ($schedule_table as $schedule_table_item): ?>
+          <?php print $schedule_table_item; ?>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  <?php endif; ?>
 </div>

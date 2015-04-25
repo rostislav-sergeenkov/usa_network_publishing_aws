@@ -22405,8 +22405,13 @@ yx-axis
   background-color: #e9eaeb;
 }
 .page-schedule .shows-filters {
-  float: right;
+  text-align: right;
   margin: 0 20px 20px 0;
+}
+.page-schedule .shows-filters:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 @media (max-width: 768px) {
   .page-schedule .shows-filters {
@@ -22754,7 +22759,7 @@ yx-axis
 .page-schedule .schedule-wrapper .schedule-table {
   margin-top: 20px;
   position: relative;
-  padding: 10px 0;
+  padding: 0;
 }
 .page-schedule .schedule-wrapper .schedule-table .carousel-vert {
   overflow: hidden;

@@ -2,8 +2,9 @@
   color: $poll-color;
   background-color: $poll-back;
     .shows-filters {
-      float: right;
+      text-align: right;
       margin: 0 20px 20px 0;
+      @include clear;
       @include breakpoint($bp-768-width){
         margin-right: 0;
       }
@@ -308,7 +309,7 @@
     .schedule-table {
       margin-top: 20px;
       position: relative;
-      padding: 10px 0;
+      padding: 0;
       .carousel-vert {
         overflow: hidden;
         position: static;

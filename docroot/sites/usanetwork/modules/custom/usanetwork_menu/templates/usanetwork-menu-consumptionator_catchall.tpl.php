@@ -31,7 +31,20 @@
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">
-    test text
+    <div class="tab-item-content">
+      <div class="node node-usanetwork-promo">
+        <?php if (!empty($details['image'])): ?>
+          <div class="asset-img">
+            <img src="<?php print $details['image']; ?>" alt="">
+          </div>
+        <?php endif; ?>
+        <div class="title-overlay meta">
+          <div class="description">
+            <?php print $details['description']; ?>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

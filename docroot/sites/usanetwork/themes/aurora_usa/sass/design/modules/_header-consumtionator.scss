@@ -1,4 +1,4 @@
-.consumptionator-page, .node-type-catchall-page {
+.consumptionator-page, .node-type-catchall-page, .page-videos-live, .node-type-media-gallery {
   header {
     .header-nav-bar {
       background: $schedule-tonight;
@@ -262,7 +262,7 @@
           background: $bottom-footer-back;
           border-top: 1px solid $consup-border;
         }
-        .show-info {
+        .tab-item-content {
           position: relative;
           .node {
             @include clear;

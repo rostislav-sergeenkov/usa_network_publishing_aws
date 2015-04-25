@@ -21441,11 +21441,7 @@ yx-axis
   display: none;
 }
 .usanetwork-aspot .meta-wrap {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
+  position: static;
 }
 .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
   color: #ffffff;
@@ -21813,6 +21809,9 @@ yx-axis
     width: 100%;
   }
 }
+.aspot-and-episodes .show-aspot .slide {
+  position: relative;
+}
 .aspot-and-episodes .show-aspot .asset-img {
   height: 100%;
   width: 100%;
@@ -21820,11 +21819,6 @@ yx-axis
 .aspot-and-episodes .show-aspot .asset-img img {
   height: 100%;
   width: 100%;
-}
-.aspot-and-episodes .show-aspot .meta-wrap {
-  left: 0;
-  top: 0;
-  position: absolute;
 }
 .aspot-and-episodes .show-aspot .meta-wrap .show-title {
   font-size: 40px;

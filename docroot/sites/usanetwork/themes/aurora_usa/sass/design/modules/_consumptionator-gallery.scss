@@ -318,8 +318,7 @@
                 height: 15px;
                 width: 15px;
                 &:not(.active) {
-//                  background: $consup-gallery-pager;
-                  background: #fff;
+                  background: $consup-gallery-pager;
                 }
                 &:hover {
                   img {

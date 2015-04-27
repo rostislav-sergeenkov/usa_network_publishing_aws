@@ -773,8 +773,14 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
     $show_color = usanetwork_tv_shows_color_show_css_class($show);
     $episode_season = $episode_wrapper->field_mpx_season_number->value();
     $episode_number = $episode_wrapper->field_mpx_episode_number->value();
+    if (!empty($episode->field_promo_image_override)) {
+      $field_image_override = reset(field_get_items('file', $episode, 'field_promo_image_override'));
+      $episode_image = $field_image_override['uri'];
+    }
+    else {
+      $episode_image = _usanetwork_mpx_video_get_image_path($episode);
+    }
 
-    $episode_image = _usanetwork_mpx_video_get_image_path($episode);
 
     $video_image = theme('image_style', array(
       'path' => $episode_image,
@@ -859,7 +865,7 @@ function usanetwork_mpx_video_global_videos_page() {
             'aspot_link' => url('file/' . $file->fid),
           );
         } else {
-          $video_image = $video_image = theme('image_style', array(
+          $video_image = theme('image_style', array(
             'path' => $image,
             'style_name' => '300x169_video',
           ));
@@ -2581,7 +2587,13 @@ function _usa_mpx_video_clips_render() {
          if ($published && usanetwork_mpx_video_get_video_category($related_video_file) === $filter) {
            $related_video_file_wrapper = entity_metadata_wrapper('file', $related_video_file);
            $promo_data = _usanetwork_promo_pull_file_promo_details($related_video_file);
-           $promo_image_url = usanetwork_core_api_get_content_image('file', $related_video_file);
+           if (!empty($related_video_file->field_promo_image_override)) {
+             $field_image_override = reset(field_get_items('file', $related_video_file, 'field_promo_image_override'));
+             $promo_image_url = $field_image_override['uri'];
+           }
+           else {
+             $promo_image_url = usanetwork_core_api_get_content_image('file', $related_video_file);
+           }
            $promo_link = url('file' . '/' . $related_video);
            $promos[] = array(
              'filename' => $related_video_file->filename,

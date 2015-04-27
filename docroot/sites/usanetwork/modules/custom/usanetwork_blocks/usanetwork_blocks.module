@@ -709,7 +709,13 @@ function _usanetwork_blocks_social_carousel_block_content() {
           if (empty($promo_data)) {
             continue;
           }
-          $promo_image_url = usanetwork_core_api_get_content_image($field_promo_item['target_type'], $promo);
+          if (!empty($promo->field_promo_image_override)) {
+            $field_image_override = reset(field_get_items($field_promo_item['target_type'], $promo, 'field_promo_image_override'));
+            $promo_image_url = $field_image_override['uri'];
+          }
+          else {
+            $promo_image_url = usanetwork_core_api_get_content_image($field_promo_item['target_type'], $promo);
+          }
           $episode_theme_variables = array(
             'url' => url($field_promo_item['target_type'] . '/' . $field_promo_item['target_id']),
             'title' => $promo_data['promo_title'],

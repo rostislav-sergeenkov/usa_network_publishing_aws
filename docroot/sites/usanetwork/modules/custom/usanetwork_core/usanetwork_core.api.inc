@@ -125,7 +125,7 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
     }
   }
 
-  return 'play-icon';
+  return 'video-icon';
 }
 
 /**

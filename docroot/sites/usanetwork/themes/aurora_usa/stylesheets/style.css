@@ -8446,7 +8446,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   position: relative;
   width: 100%;
 }
-.five-promo-item-block ul li > div.advertisement-block .advert {
+.five-promo-item-block ul li > div.advert-block .advertisement {
+  background: #656364;
   left: 50%;
   height: 250px;
   margin-left: -150px;
@@ -8471,6 +8472,39 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li:nth-child(2) > div:nth-child(4), .five-promo-item-block ul li .last > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(4) {
   margin-right: 0;
+}
+.five-promo-item-block.show-video-landing-main-block {
+  border-top: 0;
+}
+.five-promo-item-block.show-video-landing-main-block ul li {
+  height: 39.82vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block.show-video-landing-main-block ul li {
+    height: 756px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.first {
+    height: 32.55vw;
+    width: 57%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last {
+    clear: both;
+    overflow: visible;
+    width: 100%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last .advert-block {
+    bottom: 100%;
+    height: 32.55vw;
+    position: absolute;
+    right: 0;
+    width: 41.67%;
+  }
 }
 
 .show-latest-block {

@@ -93,7 +93,7 @@ function _usanetwork_lyris_signup_block() {
         }
       }
     }
-    if ($show) {
+    if (isset($show)) {
       $property['show_title'] = $show->title;
       $show_wrapper = entity_metadata_wrapper('node', $show);
       if ($show->field_show_news_letter) {

@@ -22518,6 +22518,7 @@ yx-axis
   font-size: 21px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   line-height: 42px;
+  text-align: left;
   overflow: hidden;
   position: relative;
   padding: 0 50px 0 20px;
@@ -22593,6 +22594,7 @@ yx-axis
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   height: 100%;
   line-height: 22px;
+  text-align: left;
   padding: 9px 20px;
   text-decoration: none;
   width: 100%;

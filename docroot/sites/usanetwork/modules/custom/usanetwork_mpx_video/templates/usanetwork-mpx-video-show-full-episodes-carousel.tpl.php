@@ -1,8 +1,6 @@
 <div class="carousel-block carousel-block-left">
 
   <div class="carousel-description-item start">
-    <a href="javascript:void(0)" class="description-button"></a>
-
     <div class="description-wrapper">
       <div class="description-block">
         <div class="caption">access all full episodes</div>

@@ -27,6 +27,26 @@
               headerBlock.find('.info-tab .description').text(on_now_vars.episode.description);
             }
 
+            sharebar = new Object();
+            sharebar.gigyaSharebar = {
+              containerID: "gigya-share-live-video",
+              iconsOnly: true,
+              layout: "horizontal",
+              shareButtons: "facebook, twitter, tumblr, pinterest, share",
+              shortURLs: "never",
+              showCounts: "none"
+            }
+
+            var url = window.location.href.split('#')[0];
+            sharebar.gigyaSharebar.ua = {
+              description: 'Stream USA Network TV live on your desktop',
+              imageBhev: "url",
+              imageUrl: Drupal.settings.basePath + '/sites/usanetwork/themes/aurora_usa/images/usa_liveTV.jpg',
+              linkBack: url,
+              title: 'USA Network Live TV Streaming'
+            }
+            Drupal.gigya.showSharebar(sharebar);
+
           },
           error: function () {
             console.info('error');

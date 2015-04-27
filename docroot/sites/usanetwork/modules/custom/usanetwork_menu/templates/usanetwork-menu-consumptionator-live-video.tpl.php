@@ -52,9 +52,9 @@
         </div>
       </div>
       <div class="social-bar">
-        <?php if(!empty($sharebar)): ?>
-          <?php print $sharebar; ?>
-        <?php endif?>
+        <h3 class="field-label"><?php print t('Share this video');?></h3>
+        <div class="field-type-gigya-sharebar field-name-field-gigya-share-bar field-label-above" id="gigya-share-live-video"></div>
+        <div>
       </div>
     </div>
   </div>

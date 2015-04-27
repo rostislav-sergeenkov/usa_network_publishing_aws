@@ -807,45 +807,49 @@ function _usanetwork_blocks_usa_footer_promos_block_content() {
  * Returns content for usanetwork_catchall_related_content_content block.
  */
 function _usanetwork_catchall_related_content() {
-    $node = menu_get_object('node');
-    if (!empty($node) && $node->type == 'catchall_page') {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
 
-      if (empty($node->field_tvs_show_latest_feed)) {
+  $node = menu_get_object('node');
+  if (!empty($node) && $node->type == 'catchall_page') {
+
+    if (empty($node->field_tvs_show_latest_feed)) {
+      return '';
+    }
+    else {
+      $latest_content_flag_field = field_get_items('node', $node, 'field_tvs_show_latest_feed');
+
+      if ($latest_content_flag_field[0]['value'] == 0) {
         return '';
       }
-      else {
-        $latest_content_flag_field = field_get_items('node', $node, 'field_tvs_show_latest_feed');
+    }
 
-        if ($latest_content_flag_field[0]['value'] == 0) {
-          return '';
-        }
-      }
-
-      $show = field_get_items('node', $node, 'field_show');
+    $show = field_get_items('node', $node, 'field_show');
+    if (!empty($show)) {
+      $show = is_array($show) ? reset($show) : $show;
+      $show = node_load($show['target_id']);
       if (!empty($show)) {
-        $show = is_array($show) ? reset($show) : $show;
-        $show = node_load($show['target_id']);
-        if (!empty($show)) {
-          $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($show, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
+        $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($show, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
+        if (!empty($related_content)) {
           if (!empty($related_content)) {
-            if (!empty($related_content)) {
-              drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-              drupal_add_js(array(
-                'usanetwork_tv_show_nid' => $show->nid,
-                'usanetwork_tv_show_page_context' => 'showpage',
-              ), 'setting');
-              $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
-              return theme('usanetwork_tv_shows_related_items_container', array(
-                'related_items_block' => $block_of_items,
-                'load_more_link' => TRUE,
-                'show_nid' => $show->nid,
-                'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
-              ));
-            }
+            drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+            drupal_add_js(array(
+              'usanetwork_tv_show_nid' => $show->nid,
+              'usanetwork_tv_show_page_context' => 'showpage',
+            ), 'setting');
+            $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
+            return theme('usanetwork_tv_shows_related_items_container', array(
+              'related_items_block' => $block_of_items,
+              'load_more_link' => TRUE,
+              'show_nid' => $show->nid,
+              'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
+            ));
           }
         }
       }
     }
+  }
   return '';
 }
 

@@ -807,9 +807,10 @@
         margin-right: 40px;
         width: 300px;
         @include breakpoint($bp-min-1901-width) {
-          display: none;
-          height: 315px;
-          width: 378px;
+          height: 100%;
+          position: relative;
+          margin-right: 0;
+          width: 418px;
         }
         @include breakpoint($between-1025-1280) {
           margin-right: 0px;
@@ -825,6 +826,15 @@
           display: none;
         }
         .advertisement {
+          @include breakpoint($bp-min-1901-width) {
+            left: 50%;
+            height: 250px;
+            margin-left: -150px;
+            margin-top: -125.5px;
+            position: absolute;
+            top: 50%;
+            width: 300px;
+          }
           & a {
             display: block;
             height: 100%;

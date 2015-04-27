@@ -10,7 +10,6 @@
 /**
  * Implementation of hook_menu().
  */
-
 function usanetwork_lyris_menu() {
   $items['admin/usanetwork/lyris-settings'] = array(
     'title' => t('Lyris configuration'),
@@ -26,7 +25,6 @@ function usanetwork_lyris_menu() {
 /**
  * Implementation of hook_block_info().
  */
-
 function usanetwork_lyris_block_info() {
   $blocks['newsletter_subscription'] = array(
     'info' => t('Newsletter Signup'),
@@ -40,19 +38,13 @@ function usanetwork_lyris_block_info() {
 /**
  * Implementation of hook_block_view().
  */
-
 function usanetwork_lyris_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
     case 'newsletter_subscription':
-      $node = node_load(arg(1));
-      // Block will be vissible depends up on the admin configuration in the tvshow content type
-      $lyris_config = variable_get('usanetwork_lyris_active', '');
-      if(($node->field_show_news_letter[und][0]['value']) && ($lyris_config)) {
-          $block['subject'] = t('Sign Up for Newsletter');
-          $block['content'] = drupal_get_form('usanetwork_lyris_newsletter_subscription', $node);
-      }
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_lyris_signup_block();
       break;
   }
   return $block;
@@ -61,7 +53,6 @@ function usanetwork_lyris_block_view($delta = '') {
 /**
  * Implementation of hook_theme().
  */
-
 function usanetwork_lyris_theme() {
   $themes = array(
     'newsletter_subscription' => array(
@@ -71,20 +62,58 @@ function usanetwork_lyris_theme() {
   return $themes;
 }
 
+/*
+ * Functionality for Sign Up Block
+ */
+function _usanetwork_lyris_signup_block() {
+  if (path_is_admin(current_path())) {
+    return NULL;
+  }
+  $node = menu_get_object();
+  $lyris_config = variable_get('usanetwork_lyris_active', '');
+  if ($lyris_config) {
+    $property = array();
+    $property['show_value'] = 'Global USANetwork';
+    $property['show_title'] = 'USA Network\'s';
+    if ((is_object($node)) && (isset($node->type)) && ($node->type == 'tv_show')) {
+      $property['show_title'] = $node->title;
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      if ($node->field_show_news_letter) {
+        if ($node_wrapper->field_show_news_letter->value()){
+          if ($node->field_shows_property) {
+            $property['show_value'] = $node_wrapper->field_shows_property->value();
+          }
+        }
+      }
+      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
+    } else {
+      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
+    }
+  }
+
+  if ($content) {
+    return $content;
+  } else {
+    return NULL;
+  }
+}
+
 /**
  * Implementation of newsletter subscription form.
  */
-
-function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
+function usanetwork_lyris_newsletter_subscription($form, $form_state, $property) {
   $form['newsletter'] = array(
     '#type' => 'markup',
     '#prefix' => '<div id="newsletter_lyris_ajax_wrapper">',
     '#suffix' => '</div>',
   );
+  $form['newsletter']['title'] = array(
+    '#markup' => t('Sign Up for @show_title Newsletters', array('@show_title' => $property['show_title'])),
+  );
   $form['newsletter']['email'] = array(
     '#type' => 'textfield',
     '#attributes' => array(
-      'placeholder' => 'enter email address',
+      'placeholder' => 'enter email',
     ),
     '#size' => 23,
     '#required' => TRUE,
@@ -95,7 +124,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
   );
   $form['newsletter']['show_property'] = array(
     '#type' => 'hidden',
-    '#value' => isset($node->field_shows_property['und'][0]['value']) ? $node->field_shows_property['und'][0]['value'] : '',
+    '#value' => isset($property['show_value']) ? $property['show_value'] : '',
   );
   $form['newsletter']['submit'] = array(
     '#type' => 'submit',
@@ -132,7 +161,7 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
   $result = usanetwork_lyris_assign_user_to_list($user, $show_property, 'newsletter');
   preg_match("/<TYPE>(.*?)<\/TYPE>/", $result, $matches);
   if($matches[1] == 'success') {
-    $form['newsletter']['#markup'] = t('Your email id %title was added successfully to the list.', array('%title' => $form_state['values']['email']));
+    $form['newsletter']['#markup'] = t('Your email %title was successfully added to the list!', array('%title' => $form_state['values']['email']));
     return $form['newsletter'];
   }
   else {

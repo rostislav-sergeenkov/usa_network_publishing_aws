@@ -55,14 +55,15 @@ function usanetwork_promo_field_group_info() {
     'label' => 'Promo Details',
     'weight' => '37',
     'children' => array(
-      0 => 'field_promo_violator_name',
-      1 => 'field_promo_call_to_action_text',
+      0 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_violator_name',
       2 => 'field_promo_title',
-      3 => 'field_promo_long_description',
-      4 => 'field_promo_topic',
-      5 => 'field_call_to_action_type',
-      6 => 'field_promo_exclude_from_related',
-      7 => 'field_promo_image_override',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+      5 => 'field_promo_exclude_from_related',
+      6 => 'field_promo_created_ovts',
+      7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -89,14 +90,14 @@ function usanetwork_promo_field_group_info() {
     'label' => 'Promo Details',
     'weight' => '39',
     'children' => array(
-      0 => 'field_promo_title',
-      1 => 'field_promo_topic',
-      2 => 'field_promo_call_to_action_text',
-      3 => 'field_promo_long_description',
-      4 => 'field_promo_violator_name',
-      5 => 'field_call_to_action_type',
-      6 => 'field_promo_exclude_from_related',
-      7 => 'field_promo_image_override',
+      0 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_violator_name',
+      2 => 'field_promo_title',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+      5 => 'field_promo_exclude_from_related',
+      6 => 'field_promo_created_ovts',
+      7 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -113,6 +114,41 @@ function usanetwork_promo_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo_details|node|catchall_page|form';
+  $field_group->group_name = 'group_promo_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'catchall_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo Details',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_promo_topic',
+      1 => 'field_promo_violator_name',
+      2 => 'field_promo_title',
+      3 => 'field_promo_long_description',
+      4 => 'field_promo_call_to_action_text',
+      5 => 'field_call_to_action_type',
+      6 => 'field_promo_exclude_from_related',
+      7 => 'field_promo_created_ovts',
+      8 => 'field_promo_image_override',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo-details field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo_details|node|catchall_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_promo_details|node|media_gallery|form';
   $field_group->group_name = 'group_promo_details';
   $field_group->entity_type = 'node';
@@ -123,14 +159,15 @@ function usanetwork_promo_field_group_info() {
     'label' => 'Promo Details',
     'weight' => '11',
     'children' => array(
-      0 => 'field_promo_topic',
-      1 => 'field_promo_title',
-      2 => 'field_promo_long_description',
-      3 => 'field_promo_call_to_action_text',
-      4 => 'field_promo_violator_name',
-      5 => 'field_call_to_action_type',
-      6 => 'field_promo_exclude_from_related',
-      7 => 'field_promo_image_override',
+      0 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_violator_name',
+      2 => 'field_promo_title',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+      5 => 'field_promo_exclude_from_related',
+      6 => 'field_promo_created_ovts',
+      7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -163,8 +200,8 @@ function usanetwork_promo_field_group_info() {
       3 => 'field_promo_topic',
       4 => 'field_promo_long_description',
       5 => 'field_call_to_action_type',
-      6 => 'field_promo_exclude_from_related',
-      7 => 'field_promo_image_override',
+      6 => 'field_promo_created_ovts',
+      7 => 'field_promo_exclude_from_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -194,11 +231,12 @@ function usanetwork_promo_field_group_info() {
       0 => 'field_promo_call_to_action_text',
       1 => 'field_promo_violator_name',
       2 => 'field_promo_title',
-      3 => 'field_promo_long_description',
-      4 => 'field_promo_call_to_action_text',
-      5 => 'field_call_to_action_type',
-      6 => 'field_promo_exclude_from_related',
-      7 => 'field_promo_image_override',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+      5 => 'field_promo_exclude_from_related',
+      6 => 'field_promo_created_ovts',
+      7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -225,14 +263,15 @@ function usanetwork_promo_field_group_info() {
     'label' => 'Promo Details',
     'weight' => '11',
     'children' => array(
-      0 => 'field_promo_title',
-      1 => 'field_promo_topic',
-      2 => 'field_promo_long_description',
-      3 => 'field_promo_violator_name',
-      4 => 'field_promo_call_to_action_text',
-      5 => 'field_call_to_action_type',
-      6 => 'field_promo_exclude_from_related',
-      7 => 'field_promo_image_override',
+      0 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_violator_name',
+      2 => 'field_promo_title',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+      5 => 'field_promo_exclude_from_related',
+      6 => 'field_promo_created_ovts',
+      7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -266,7 +305,8 @@ function usanetwork_promo_field_group_info() {
       4 => 'field_promo_long_description',
       5 => 'field_call_to_action_type',
       6 => 'field_promo_exclude_from_related',
-      7 => 'field_promo_image_override',
+      7 => 'field_promo_created_ovts',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

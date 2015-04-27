@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="best-of-block show-border">
+<div class="best-of-block five-promo-item-block show-border">
   <h2 class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print (!empty($title))? $title: t('Best of'); ?></span>
   </h2>
@@ -82,4 +82,5 @@
       <?php endif; ?>
       <?php endif; ?>
 </div>
+
 

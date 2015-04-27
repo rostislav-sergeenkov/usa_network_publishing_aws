@@ -1,4 +1,4 @@
-.best-of-block {
+.five-promo-item-block {
   @include clear();
   background: $footer-links;
   border-bottom: 2px solid;
@@ -44,6 +44,19 @@
         overflow: hidden;
         position: relative;
         width: 100%;
+        &.advertisement-block {
+          .advert {
+            left: 50%;
+            height: 250px;
+            margin-left: -150px;
+            margin-top: -125px;
+            max-height: 100%;
+            max-width: 100%;
+            position: absolute;
+            top: 50%;
+            width: 300px;
+          }
+        }
       }
       &:nth-child(2), .last {
         float: right;

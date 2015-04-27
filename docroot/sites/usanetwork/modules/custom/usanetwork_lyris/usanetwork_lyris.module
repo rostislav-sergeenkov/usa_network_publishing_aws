@@ -73,22 +73,38 @@ function _usanetwork_lyris_signup_block() {
   $lyris_config = variable_get('usanetwork_lyris_active', '');
   if ($lyris_config) {
     $property = array();
-    $property['show_value'] = 'Global USANetwork';
+    $property['show_value'] = '';
     $property['show_title'] = 'USA Network\'s';
-    if ((is_object($node)) && (isset($node->type)) && ($node->type == 'tv_show')) {
-      $property['show_title'] = $node->title;
-      $node_wrapper = entity_metadata_wrapper('node', $node);
-      if ($node->field_show_news_letter) {
-        if ($node_wrapper->field_show_news_letter->value()){
-          if ($node->field_shows_property) {
-            $property['show_value'] = $node_wrapper->field_shows_property->value();
+    if ((is_object($node)) && (isset($node->type))) {
+      if ($node->type != 'tv_show') {
+        if ($node->field_show) {
+          $node_wrapper = entity_metadata_wrapper('node', $node);
+          $show = $node_wrapper->field_show->value();
+        }
+      } else {
+        $show = $node;
+      }
+    } else {
+      $file = menu_get_object('file');
+      if ((is_object($file)) && _pub_mpx_get_mpx_account_video_file_types(TRUE)) {
+        if ($file->field_show) {
+          $file_wrapper = entity_metadata_wrapper('file', $file);
+          $show = $file_wrapper->field_show->value();
+        }
+      }
+    }
+    if ($show) {
+      $property['show_title'] = $show->title;
+      $show_wrapper = entity_metadata_wrapper('node', $show);
+      if ($show->field_show_news_letter) {
+        if ($show_wrapper->field_show_news_letter->value()) {
+          if ($show->field_shows_property) {
+            $property['show_value'] = $show_wrapper->field_shows_property->value();
           }
         }
       }
-      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
-    } else {
-      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
     }
+    $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
   }
 
   if ($content) {

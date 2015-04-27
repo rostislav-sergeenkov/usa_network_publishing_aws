@@ -739,13 +739,12 @@ function _usanetwork_blocks_usa_footer_promos_block_content() {
     return '';
   }
 
-  $theme_variables = array();
   $footer_promo_links = variable_get('usa_footer_promos_links', array());
 
-  // Sort according weight
+  // Sort according weight.
   if (!empty($footer_promo_links)) {
-    $column_index = 0;
 
+    $column_index = 0;
     usort($footer_promo_links, function($a, $b) {
       if (!isset($a['weight'])) {
         $a['weight'] = 0;
@@ -763,7 +762,7 @@ function _usanetwork_blocks_usa_footer_promos_block_content() {
 
       return 0;
     });
-
+    $theme_variables = array();
     foreach ($footer_promo_links as $footer_promo_link) {
       $image_file = NULL;
 
@@ -790,11 +789,10 @@ function _usanetwork_blocks_usa_footer_promos_block_content() {
         'column' => $column_index++,
       );
     }
+    $theme_variables['columns'] = count($footer_promo_links);
+    return theme('usa_footer_promos', $theme_variables);
   }
-
-  $theme_variables['columns'] = count($footer_promo_links);
-
-  return theme('usa_footer_promos', $theme_variables);
+  return '';
 }
 
 /*

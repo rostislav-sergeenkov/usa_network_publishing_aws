@@ -39,5 +39,5 @@ function usanetwork_catchall_update_7146(&$sandbox) {
 
   $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
 
-  return t('!number catchall pages has been resaved', array('!number' => $sandbox['max']));
+  return t('!number catchall pages has been resaved', array('!number' => $sandbox['progress']));
 }

@@ -1,115 +1,120 @@
 (function ($) {
 
-  Drupal.behaviors.consumptionator_gallery = {
-    attach: function (context, settings) {
-
-    }
-  };
-
   var USAN = USAN || {};
+
+  //make pager position
+  function pagerPosition(pager) {
+    var pagerItem = pager.find('.bx-pager-item'),
+        itemLength = pagerItem.length;
+
+    if (window.innerWidth >= window_size_tablet) {
+      var itemHeight = pagerItem.height();
+
+      if (itemLength >= 10) {
+        pager.height(itemHeight * 2 * 10 + itemHeight);
+      } else if (itemLength < 10) {
+        pager.height(itemHeight * 2 * itemLength + itemHeight);
+      }
+
+      pager.css('margin-top', - (pager.innerHeight() / 2) + 'px');
+    }
+    if (window.innerWidth < window_size_tablet) {
+
+      pager.wrap('<div id="bx-custom-pager-wrapper"></div>');
+
+      var pagerWrap = $('#bx-custom-pager-wrapper'),
+          itemWidth = pagerItem.width();
+
+      if (itemLength >= 10) {
+        pagerWrap.width(itemWidth * 2 * 10)
+      } else if (itemLength < 10) {
+        pagerWrap.width(itemWidth * 2 * itemLength);
+      }
+      pager.width(itemWidth * 2 * itemLength).show();
+      pagerWrap.height(pagerItem.height());
+      pagerWrap.css('margin-right', - ((pagerWrap.innerWidth() / 2)) + 'px');
+    }
+  }
+
+  //move pager items position
+  function movePagerItems(pager, elem) {
+
+    var pagerItem = pager.find('.bx-pager-item'),
+        pagerItemLink = pager.find('.bx-pager-link'),
+        pagerItemLinkActiveIndex,
+        itemLength = pagerItem.length;
+
+    if(elem) {
+      pagerItemLinkActiveIndex = elem.find('.bx-pager-link').attr('data-slide-index');
+    } else {
+      pagerItemLinkActiveIndex = pager.find('.bx-pager-link.active').attr('data-slide-index')
+    }
+
+    if (window.innerWidth >= window_size_tablet) {
+      if (itemLength >= 10) {
+        if (pagerItemLinkActiveIndex > 3) {
+          var marginTop = pagerItemLinkActiveIndex * (pagerItemLink.innerHeight() * 2) - (pagerItemLink.innerHeight() * 2) * 4;
+          pagerItem.eq(0).css('margin-top', - marginTop + 'px');
+        } else if (pagerItemLinkActiveIndex <= 3) {
+          pagerItem.eq(0).css('margin-top', 0 + 'px');
+        }
+      }
+    }
+    if (window.innerWidth < window_size_tablet) {
+      var itemWidth = pagerItem.width();
+      if (itemLength >= 10) {
+        if (pagerItemLinkActiveIndex > 3) {
+          var left = pagerItemLinkActiveIndex * (itemWidth * 2) - (itemWidth * 2) * 4;
+          pager.css('left', - left + 'px');
+        } else if (pagerItemLinkActiveIndex <= 3) {
+          pager.css('left', 0 + 'px');
+        }
+      }
+    }
+  }
 
   USAN.gallery = (function () {
 
-    function pagerItems(){
+    function pagerItems() {
+      var container = $('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main'),
+          pager = container.find('.bx-custom-pager'),
+          pagerItem = container.find('.bx-pager-item'),
+          pagerItemLink = pager.find('.bx-pager-link'),
+          controlsButtons = container.find('.bx-controls-direction a');
 
-      var customPager = $('.bx-wrapper .bx-custom-pager'),
-          item = customPager.find('.bx-pager-item'),
-          itemLength = item.length,
-          controls = $('.bx-controls-direction a');
+      // add class show-color
+      pagerItemLink.addClass('show-color');
 
-      if (window.innerWidth >= 1025){
-        if (itemLength >= 10){
-          customPager.height((30 * 8) + 15);
-          height = customPager.height() / 2;
-          customPager.css('margin-top', - height + 'px');
-        }else if (itemLength < 10){
-          customPager.height((30 * itemLength) + 15);
-          height = customPager.height() / 2;
-          customPager.css('margin-top', - height + 'px');
-        }
-      }
-      if (window.innerWidth < 1025){
-        if (itemLength >= 5){
-          customPager.height((30 * 4) + 15);
-          height = customPager.height() / 2;
-          customPager.css('margin-top', - height + 'px');
-        }else if (itemLength < 5){
-          customPager.height((30 * itemLength) + 15);
-          height = customPager.height() / 2;
-          customPager.css('margin-top', - height + 'px');
-        }
-      }
+      //make pager position
+      pagerPosition(pager);
 
-      item.click(function(e){
+      pagerItem.on('click', function (e) {
         e.preventDefault();
-
-        var itemActive = $(this),
-            itemActiveIndex = itemActive.index(),
-            marginTop = itemActiveIndex * 30;
-
-        if (window.innerWidth >= 1025){
-          if (itemLength >= 9){
-            if (itemActiveIndex > 3){
-              marginTop = marginTop - 120;
-              item.eq(0).css('margin-top', - marginTop + 'px');
-            }else if (itemActiveIndex <= 3){
-              item.eq(0).css('margin-top', 0 + 'px');
-            }
-          }
-        }
-        if (window.innerWidth < 1025){
-          if (itemLength >= 5){
-            if (itemActiveIndex > 2){
-              marginTop = marginTop - 60;
-              item.eq(0).css('margin-top', - marginTop + 'px');
-            }else if (itemActiveIndex <= 2){
-              item.eq(0).css('margin-top', 0 + 'px');
-            }
-          }
-        }
+        //move pager items position
+        movePagerItems(pager, $(this));
       });
 
-      controls.click(function() {
-
-        var pagerlinkActive = customPager.find('.bx-pager-item a.active'),
-            pagerLinkParent = pagerlinkActive.parent(),
-            pagerIndex = pagerLinkParent.index(),
-            marginTop = pagerIndex * 30;
-
-        if (window.innerWidth >= 1025){
-          if (itemLength >= 9){
-            if (pagerIndex > 3){
-              marginTop = marginTop - 120;
-              item.eq(0).css('margin-top', - marginTop + 'px');
-            }
-          }
-        }
-        if (window.innerWidth < 1025){
-          if (itemLength >= 5){
-            if (pagerIndex > 2){
-              marginTop = marginTop - 60;
-              item.eq(0).css('margin-top', - marginTop + 'px');
-            }
-          }
-        }
-
+      controlsButtons.on('click', function () {
+        //move pager items position
+        movePagerItems(pager);
       });
     }
+
     var options = {
       auto: false,
-      buildPager: function(slideIndex){
+      buildPager: function (slideIndex) {
 
-        var slide = $('.bxslider-gallery .slide'),
+        var slide = $('#bxslider-gallery .slide'),
             slideLength = slide.length,
             src = $(slide).eq(slideIndex).find('.asset-img img').attr('src'),
             counter = $(slide).eq(slideIndex).find('.slider-counter'),
-            titleGallery = $('.gallery-filter-wrapper .filter-menu a.active').text();
+            titleGallery = $('.consum-sidebar .gallery-filter-wrapper .filter-menu a.active').text();
 
-        if(counter.text() === ''){
+        if (counter.text() === '') {
           counter.append(titleGallery + ' <span class="slide-index">' + (slideIndex + 1) + '</span>' + '<span> of </span>' + '<span class="slide-count"> ' + slideLength + '</span>');
         }
 
-        switch(slideIndex){
+        switch (slideIndex) {
           default:
             return '<img src="' + src + '">';
         }
@@ -137,63 +142,72 @@
     }
   })();
 
-  $(document).ready(function() {
+  var waitForFinalEvent = (function () {
+    var timers = {};
+    return function (callback, ms, uniqueId) {
+      if (!uniqueId) {
+        uniqueId = "Don't call this twice without a uniqueId";
+      }
+      if (timers[uniqueId]) {
+        clearTimeout (timers[uniqueId]);
+      }
+      timers[uniqueId] = setTimeout(callback, ms);
+    };
+  })();
+
+
+  $(document).ready(function () {
     // bxslider-gallery slider initialization
     if ($('body').hasClass('node-type-media-gallery')) {
-      var gallery = USAN.gallery.init('.bxslider-gallery');
+
+      var gallery = USAN.gallery.init('#bxslider-gallery');
+      var container = $('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main');
+
+      if(window.innerWidth < window_size_tablet) {
+        $('#bxslider-gallery').addClass('mobile');
+      }
 
       gallery.mousewheel(function (event, delta, deltaX, deltaY) {
+        var pager = container.find('.bx-custom-pager');
+
         if (delta > 0) {
           gallery.goToPrevSlide();
-          pagerPosition();
-          if(gallery.getCurrentSlide() != 0){
+          movePagerItems(pager);
+          if (gallery.getCurrentSlide() != 0) {
             event.stopPropagation();
             event.preventDefault();
           }
         }
         if (deltaY < 0) {
           gallery.goToNextSlide();
-          pagerPosition();
-          if(gallery.getCurrentSlide() + 1 < gallery.getSlideCount()){
+          movePagerItems(pager);
+          if (gallery.getCurrentSlide() + 1 < gallery.getSlideCount()) {
             event.stopPropagation();
             event.preventDefault();
           }
         }
       });
 
-    }
-
-    //todo function for custom pager positions
-    function pagerPosition(){
-
-      var customPager = $('.bx-wrapper .bx-custom-pager'),
-          item = customPager.find('.bx-pager-item'),
-          itemLength = item.length,
-          itemActive = $('.bx-pager-item a.active'),
-          itemParent = itemActive.parent(),
-          itemParentIndex = itemParent.index(),
-          marginTop = itemParentIndex * 30;
-
-      if (window.innerWidth >= 1025){
-        if (itemLength >= 9){
-          if (itemParentIndex > 3){
-            marginTop = marginTop - 120;
-            item.eq(0).css('margin-top', - marginTop + 'px');
-          }else if (itemParentIndex <= 3){
-            item.eq(0).css('margin-top', 0 + 'px');
+      $(window).bind('resize', function () {
+        waitForFinalEvent(function(){
+          var pagerItemLinkActiveIndex = container.find('.bx-pager-link.active').attr('data-slide-index')
+          if(window.innerWidth < window_size_tablet) {
+            if(!$('#bxslider-gallery').hasClass('mobile')){
+              $('#bxslider-gallery').addClass('mobile');
+              gallery.reloadSlider();
+              gallery.goToSlide(pagerItemLinkActiveIndex);
+            }
           }
-        }
-      }
-      if (window.innerWidth < 1025){
-        if (itemLength >= 5){
-          if (itemParentIndex > 2){
-            marginTop = marginTop - 60;
-            item.eq(0).css('margin-top', - marginTop + 'px');
-          }else if (itemParentIndex <= 2){
-            item.eq(0).css('margin-top', 0 + 'px');
+          if(window.innerWidth > window_size_tablet) {
+            if($('#bxslider-gallery').hasClass('mobile')){
+              $('#bxslider-gallery').removeClass('mobile');
+              gallery.reloadSlider();
+              gallery.goToSlide(pagerItemLinkActiveIndex);
+            }
           }
-        }
-      }
+        }, 0, "consumptionator gallery");
+      });
     }
   });
+
 }(jQuery));

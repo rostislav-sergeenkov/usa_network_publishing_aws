@@ -317,7 +317,6 @@
           }
           .schedule-item-wrap {
             display: table-cell;
-            padding-right: 20%;
             vertical-align: middle;
           }
         }
@@ -348,7 +347,7 @@
         line-height: 48px;
         letter-spacing: 3px;
         @include breakpoint($bp-min-1701-width) {
-          font-size: 54px;
+          font-size: 48px;
           line-height: 54px;
         }
         @include breakpoint($bp-1280-width) {

@@ -96,11 +96,17 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'usanetwork_lyris-newsletter_subscription' => array(
+          'module' => 'usanetwork_lyris',
+          'delta' => 'newsletter_subscription',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
         'usanetwork_menu-usanetwork_menu_fm_menu' => array(
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_fm_menu',
           'region' => 'footer',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),

@@ -213,6 +213,218 @@
             }
           }
         }
+        &.inactive {
+          background: #3D3D3D;
+          padding: 20px;
+          @include breakpoint($bp-video-player-section) {
+            background: transparent;
+            height: auto;
+            margin: 0 auto;
+            max-width: 457px;
+            padding: 0px;
+            width: 100%;
+          }
+          & > .asset-img {
+            float: left;
+            margin-bottom: 46px;
+            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+              margin-bottom: 10px;
+            }
+            & > img {
+              max-height: 169px;
+              max-width: 300px;
+              @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                max-height: 124px;
+                max-width: 220px;
+              }
+              @include breakpoint($bp-video-player-section) {
+                display: none;
+              }
+            }
+          }
+          .expired-text {
+            float: left;
+            font-size: 24px;
+            margin-left: 50px;
+            margin-top: 65px;
+            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+              margin-left: 20px;
+              margin-top: 53px;
+            }
+            @include breakpoint($bp-video-player-section) {
+              color: #9AE0EB;
+              float: none;
+              font-size: 18px;
+              margin: 0;
+              margin-top: 10px;
+              text-align: left;
+            }
+          }
+          .suggest-text {
+            clear: both;
+            font-size: 20px;
+            margin-bottom: 24px;
+            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+              margin-bottom: 10px;
+            }
+            @include breakpoint($bp-video-player-section) {
+              font-size: 16px;
+              margin-bottom: 10px;
+              margin-top: 10px;
+              text-align: left;
+            }
+          }
+          .suggest-videos-block {
+            text-align: center;
+            width: 100%;
+
+            .file {
+              &.tve-video-auth {
+                & > a {
+                  &:after {
+                    font-family: 'usanetwork';
+                    speak: none;
+                    -webkit-font-feature-settings: "liga","dlig";
+                    -moz-font-feature-settings: "liga=1, dlig=1";
+                    -moz-font-feature-settings: "liga","dlig";
+                    -ms-font-feature-settings: "liga","dlig";
+                    -o-font-feature-settings: "liga","dlig";
+                    font-feature-settings: "liga","dlig";
+                    text-rendering: optimizeLegibility;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1;
+                    -webkit-font-smoothing: antialiased;
+                    background: none;
+                    display: block;
+                    margin: 0;
+                    position: absolute;
+                    left: auto;
+                    right: 3px;
+                    top: 2px;
+                    content: "\e002";
+                    font-size: 25px;
+                    color: white;
+                    width: auto;
+                    height: auto;
+                  }
+                }
+                .asset-img {
+                  &:after {
+                    content: "";
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    border-top: solid 50px rgba(0,0,0,0.5);
+                    border-left: solid 50px transparent;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                  }
+                }
+              }
+              border: 2px solid #2d2d2d;
+              display: inline-block;
+              height: 220px;
+              margin-right: 20px;
+              overflow: hidden;
+              position: relative;
+              vertical-align: top;
+              width: 252px;
+              @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                height: 140px;
+                margin-right: 12px;
+                width: 165px;
+              }
+              @include breakpoint($bp-video-player-section) {
+                height: auto;
+                margin-right: 0px;
+                width: 48.5%;
+                &:last-child {
+                  display: none;
+                }
+                &:first-child {
+                  margin-right: 1.5%;
+                }
+              }
+              &:last-child {
+                margin-right: 0;
+              }
+              & > a {
+                display: block;
+                height: 100%;
+                position: relative;
+                width: 100%;
+              }
+              img {
+                height: 140px;
+                width: 100%;
+                @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                  height: 95px;
+                }
+                @include breakpoint($bp-video-player-section) {
+                  height: auto;
+                }
+              }
+              .caption-overlay {
+                bottom: 0px;
+                left: 0px;
+                height: 76px;
+                position: absolute;
+                width: 100%;
+                @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                  height: 45px;
+                }
+                @include breakpoint($bp-video-player-section) {
+                  height: auto;
+                  position: relative;
+                  width: 100%;
+                }
+              }
+              .caption-fields-wrapper {
+                background: #1f1f1f;
+                height: 100%;
+                margin: 0;
+                padding: 10px 6px 8px;
+                width: 100%;
+                @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                  padding: 5px;
+                }
+                @include breakpoint($bp-video-player-section) {
+                  height: 58px;
+                  margin: 0;
+                  padding: 8px;
+                  position: static;
+                  width: 100%;
+                }
+                .title {
+                  font-weight: bold;
+                  line-height: 1.15;
+                  text-align: left;
+                  @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                    font-size: 14px;
+                  }
+                  @include breakpoint($bp-video-player-section) {
+                    font-size: 13px;
+                  }
+                }
+                .caption {
+                  color: #a7a6a6;
+                  font-size: 13px;
+                  text-align: left;
+                  @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                    font-size: 12px;
+                  }
+                  @include breakpoint($bp-video-player-section) {
+                    font-size: 11px;
+                  }
+                }
+              }
+            }
+          }
+        }
         .locked-msg {
           display: none;
           left: 5%;

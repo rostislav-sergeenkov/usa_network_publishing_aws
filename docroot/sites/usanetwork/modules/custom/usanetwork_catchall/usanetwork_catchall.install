@@ -4,7 +4,7 @@
  * Adds default value of checkbox for showing Catchall feed.
  */
 function usanetwork_catchall_update_7146(&$sandbox) {
-  if (!isset($sandbox['total'])) {
+  if (!isset($sandbox['progress'])) {
     features_revert_module('usanetwork_catchall');
 
     $total_result = db_select('node', 'n');
@@ -33,9 +33,11 @@ function usanetwork_catchall_update_7146(&$sandbox) {
     $sandbox['progress']++;
   }
 
-  $sandbox['#finished'] = ($sandbox['progress'] / $sandbox['max']);
-
-  if ($sandbox['#finished']) {
-    return t('Catchall pages has been resaved');
+  if ($sandbox['progress'] > $sandbox['max']) {
+    $sandbox['progress'] = $sandbox['max'];
   }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+
+  return t('!number catchall pages has been resaved', array('!number' => $sandbox['max']));
 }

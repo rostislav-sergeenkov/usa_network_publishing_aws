@@ -31,6 +31,62 @@ function usanetwork_social_meter_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ *  Implements hook_form_alter().
+ */
+function usanetwork_social_meter_form_alter(&$form, &$form_state, $form_id) {
+  $form_ids_to_alter = array(
+    'usanetwork_promo_node_form',
+    'media_gallery_node_form',
+    'post_node_form',
+    'tv_episode_node_form',
+    'person_node_form',
+    'quiz_node_form',
+    'catchall_page_node_form',
+    'file_entity_edit',
+  );
+
+  if (in_array($form_id, $form_ids_to_alter)) {
+    if (isset($form['field_social_hashtag']) && isset($form['field_social_sfs_id'])) {
+      $form['field_social_hashtag']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_social_enable[und]"]' => array(
+            'checked' => TRUE,
+          ),
+        ),
+      );
+      $form['field_social_sfs_id']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_social_enable[und]"]' => array(
+            'checked' => TRUE,
+          ),
+        ),
+      );
+    }
+
+    $form['#validate'][] = '_usanetwork_social_meter_validate_social_fields';
+  }
+}
+
+/**
+ * Validates Social Hashtag and SpredFastId according "Enabled" checkbox value.
+ */
+function _usanetwork_social_meter_validate_social_fields(&$form, &$form_state) {
+  $lang = $form_state['values']['language'];
+
+  if (
+    !empty($form_state['values']['field_social_enable'][$lang][0]['value']) &&
+    $form_state['values']['field_social_enable'][$lang][0]['value'] == 1
+  ) {
+    if (empty($form_state['values']['field_social_hashtag'][$lang][0]['value'])) {
+      form_set_error('field_social_hashtag', t('Hashtag could not be empty'));
+    }
+    if (empty($form_state['values']['field_social_sfs_id'][$lang][0]['value'])) {
+      form_set_error('field_social_sfs_id', t('SpredFast ID could not be empty'));
+    }
+  }
+}
+
+/**
  * @param $aspot_node - A-Spot node object or nid.
  */
 function usanetwork_social_meter_get($aspot_node) {

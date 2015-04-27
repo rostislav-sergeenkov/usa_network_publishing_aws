@@ -33,6 +33,8 @@ body {
   @extend %regular;
   color: $text-color;
   background-color: $poll-back;
+  max-width: 2500px;
+  margin: 0 auto;
   width: 100%;
 }
 

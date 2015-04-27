@@ -3,8 +3,21 @@
  *
  */
 ?>
-<div class="page-title">
-  <h2>Schedule</h2>
+<div class="schedule-wrapper">
+  <?php if (!empty($navigation)): ?>
+    <div class="schedule-navigation">
+      <ul>
+        <?php foreach ($navigation as $navigation_item): ?>
+          <li<?php if($navigation_item['active']): print ' class="active"'; endif;?>>
+            <a href="<?php print !empty($navigation_item['sdate_value']) ? $navigation_item['sdate_url'] : url('schedule'); ?>">
+              <span class="week-day"><?php print $navigation_item['week_day']; ?></span>
+              <span class="date"><?php print $navigation_item['date']; ?></span>
+            </a>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  <?php endif; ?>
   <div class="shows-filters">
     <div class="item-filter show-filter">
       <div class="filter-label"><?php print $filter['show_name']['selected']['title']; ?></div>
@@ -30,23 +43,12 @@
         </ul>
       <?php endif; ?>
     </div>
-  </div>
-</div>
-<div class="schedule-wrapper">
-  <?php if (!empty($navigation)): ?>
-    <div class="schedule-navigation">
-      <ul>
-        <?php foreach ($navigation as $navigation_item): ?>
-          <li<?php if($navigation_item['active']): print ' class="active"'; endif;?>>
-            <a href="<?php print !empty($navigation_item['sdate_value']) ? $navigation_item['sdate_url'] : url('schedule'); ?>">
-              <span class="week-day"><?php print $navigation_item['week_day']; ?></span>
-              <span class="date"><?php print $navigation_item['date']; ?></span>
-            </a>
-          </li>
-        <?php endforeach; ?>
-      </ul>
+    <div class="item-filter show-filter-reset">
+      <a href="<?php print url('schedule'); ?>">
+        reset
+      </a>
     </div>
-  <?php endif; ?>
+  </div>
   <?php if (!empty($schedule_table)): ?>
     <div class="schedule-table">
       <ul>

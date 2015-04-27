@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_static_page.context.inc
+ * usanetwork_menu.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function usanetwork_static_page_context_default_contexts() {
+function usanetwork_menu_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
@@ -25,6 +25,11 @@ function usanetwork_static_page_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'schedule' => 'schedule',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -33,7 +38,7 @@ function usanetwork_static_page_context_default_contexts() {
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_page_header',
           'region' => 'header',
-          'weight' => '30',
+          'weight' => '10',
         ),
         'system-main' => array(
           'module' => 'system',

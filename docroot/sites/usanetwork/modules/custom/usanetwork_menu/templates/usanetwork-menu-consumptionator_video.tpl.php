@@ -37,7 +37,7 @@
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">
-    <div class="show-info">
+    <div class="tab-item-content">
       <div class="node node-usanetwork-promo">
         <div class="asset-img">
           <img src="<?php print $episode['image_url']; ?>" alt="">

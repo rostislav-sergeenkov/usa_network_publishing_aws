@@ -14,7 +14,8 @@
   }
   ul {
     @include clear();
-    margin: 0;
+    margin: 0 auto;
+    max-width: 1868px;
     padding: 0;
     position: relative;
     width: 100%;
@@ -22,11 +23,17 @@
       li {
         &.first {
           margin-bottom: 1.47vw;
+          @include breakpoint($bp-min-1901-width) {
+            margin-bottom: 29px;
+          }
           > div {
             float: left;
             height: 25.4vw;
             margin-right: 1.6%;
             width: 49.2%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
             @include breakpoint($bp-640-width) {
               height: 36.6vw;
             }
@@ -40,6 +47,9 @@
             float: left;
             height: 25.4vw;
             width: 49.2%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
             @include breakpoint($bp-640-width) {
               height: 36.6vw;
               margin-bottom: 1.47vw;
@@ -53,10 +63,16 @@
                 position: absolute;
                 top: 26.87vw;
               }
+              @include breakpoint($bp-min-1901-width) {
+                top: 512px;
+              }
             }
             &:last-child {
               float: right;
               height: 52.27vw;
+              @include breakpoint($bp-min-1901-width) {
+                height: 995px;
+              }
               @include breakpoint($bp-640-width) {
                 height: 51.6vw;
                 float: none;
@@ -76,12 +92,19 @@
             height: 25.4vw;
             margin-bottom: 1.47vw;
             width: 49.2%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+              margin-bottom: 29px;
+            }
             @include breakpoint($bp-640-width) {
               height: 36.6vw;
             }
             &:first-child {
               height: 52.27vw;
               margin-right: 1.6%;
+              @include breakpoint($bp-min-1901-width) {
+                height: 995px;
+              }
               @include breakpoint($bp-640-width) {
                 height: 51.6vw;
                 margin-right: 0;
@@ -101,6 +124,9 @@
             height: 25.4vw;
             margin-right: 1.6%;
             width: 49.2%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
             @include breakpoint($bp-640-width) {
               height: 36.6vw;
             }

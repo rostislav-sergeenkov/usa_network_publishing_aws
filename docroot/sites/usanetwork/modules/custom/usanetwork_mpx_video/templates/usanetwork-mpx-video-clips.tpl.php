@@ -20,9 +20,6 @@
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">
                   <div class="meta">
-                    <?php if (!empty($promo['caption'])): ?>
-                      <div class="caption"><?php print $promo['caption']; ?></div>
-                    <?php endif; ?>
                     <?php if (!empty($promo['title'])): ?>
                       <div class="title"><?php print $promo['title']; ?></div>
                     <?php endif; ?>
@@ -49,9 +46,6 @@
                 <div class="meta-wrapper-inner">
                   <div class="meta-icon video-icon"></div>
                   <div class="meta">
-                    <?php if (!empty($promo['caption'])): ?>
-                      <div class="caption"><?php print $promo['caption']; ?></div>
-                    <?php endif; ?>
                     <?php if (!empty($promo['title'])): ?>
                       <div class="title"><?php print $promo['title']; ?></div>
                     <?php endif; ?>

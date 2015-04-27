@@ -952,10 +952,8 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'catchall_page' => 'catchall_page',
         'catchall_seo_page' => 'catchall_seo_page',
         'media_gallery' => 'media_gallery',
-        'post' => 'post',
         'quiz' => 'quiz',
       ),
       'options' => array(
@@ -971,14 +969,6 @@ function usanetwork_context_context_default_contexts() {
         'social' => 'social',
         'social/*' => 'social/*',
         '*/social/*' => '*/social/*',
-      ),
-    ),
-    'taxonomy_term' => array(
-      'values' => array(
-        'blog' => 'blog',
-      ),
-      'options' => array(
-        'term_form' => '0',
       ),
     ),
   );
@@ -1011,7 +1001,9 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'catchall_page' => 'catchall_page',
         'person' => 'person',
+        'post' => 'post',
         'tv_episode' => 'tv_episode',
         'tv_season' => 'tv_season',
         'tv_show' => 'tv_show',
@@ -1031,6 +1023,19 @@ function usanetwork_context_context_default_contexts() {
         '<front>' => '<front>',
         'search' => 'search',
         'search/*' => 'search/*',
+        'videos' => 'videos',
+        '*/photos' => '*/photos',
+        '*/episodes' => '*/episodes',
+        '*/cast' => '*/cast',
+        '*/videos' => '*/videos',
+      ),
+    ),
+    'taxonomy_term' => array(
+      'values' => array(
+        'blog' => 'blog',
+      ),
+      'options' => array(
+        'term_form' => '1',
       ),
     ),
   );
@@ -2014,11 +2019,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'usanetwork_lyris-newsletter_subscription' => array(
+          'module' => 'usanetwork_lyris',
+          'delta' => 'newsletter_subscription',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
         'usanetwork_menu-usanetwork_menu_fm_menu' => array(
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_fm_menu',
           'region' => 'footer',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -2097,11 +2108,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'usanetwork_lyris-newsletter_subscription' => array(
+          'module' => 'usanetwork_lyris',
+          'delta' => 'newsletter_subscription',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
         'usanetwork_menu-usanetwork_menu_fm_menu' => array(
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_fm_menu',
           'region' => 'footer',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),

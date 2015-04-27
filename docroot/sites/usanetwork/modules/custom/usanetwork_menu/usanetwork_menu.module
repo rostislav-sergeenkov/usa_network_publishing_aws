@@ -4,20 +4,6 @@ define('USANETWORK_MENU_FULL_EPISODES_NUMBER', 6);
 
 include_once 'usanetwork_menu.features.inc';
 
-/**
- * Implements hook_ctools_plugin_api().
- */
-function usanetwork_menu_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "strongarm" && $api == "strongarm") {
-    return array("version" => "1");
-  }
-  if ($module == 'panels_mini' && $api == 'panels_default') {
-    return array('version' => 1);
-  }
-  if ($module == 'page_manager' && $api == 'pages_default') {
-    return array('version' => 1);
-  }
-}
 
 /**
  * Implements hook_menu().
@@ -356,17 +342,8 @@ function usanetwork_menu_theme() {
     ),
     'usanetwork_menu_consumptionator_live_video' => array(
       'variables' => array(
-        'show_url' => NULL,
-        'show_name' => NULL,
-        'episode' => array(
-          'caption' => NULL,
-          'image_url' => NULL,
-          'title' => NULL,
-          'season_number' => NULL,
-          'episode_number' => NULL,
-          'running_time' => NULL,
-          'description' => NULL,
-        ),
+        'main_url' => NULL,
+        'authbar' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-consumptionator-live-video',
     ),
@@ -1018,7 +995,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
       'episode' => array(
         'video_type' => !empty($file->field_mpx_full_episode)
             ? (
-            $file_wrapper->field_mpx_full_episode->value() == 0
+            $file_wrapper->field_mpx_full_episode->value()
               ? t('Full Episode')
               : t('Video')
             )
@@ -1053,17 +1030,18 @@ function _usanetwork_menu_consumptionator_block_video($file) {
  */
 function _usanetwork_menu_static_page_header_block() {
   $node = menu_get_object('node');
-  if (!empty($node->type) && $node->type == 'usanetwork_static_page') {
+  if (!empty($node)) {
     return theme('usanetwork_menu_static_page_header', array(
       'title' => $node->title,
     ));
   }
-  return '';
+  return theme('usanetwork_menu_static_page_header', array(
+    'title' => drupal_get_title(),
+  ));
 }
 
 function _usanetwork_menu_render_live_video_header_ajax($offset) {
   $on_now_item = usanetwork_schedule_pull_on_now_item($offset);
-
   if (!empty($on_now_item)) {
     $image_url = NULL;
 
@@ -1075,18 +1053,7 @@ function _usanetwork_menu_render_live_video_header_ajax($offset) {
       $image_url = usanetwork_core_api_get_content_image('node', $on_now_item->nid);
     }
 
-    $menu_items = _usa_auth_prepare_menu_items();
-    $auth_links = array(
-      '#theme' => 'item_list',
-      '#items' => $menu_items,
-      '#attributes' => array('class' => array('tve-header-links', 'inline')),
-      '#prefix' => '<div class="links-wrapper">',
-      '#suffix' => '</div>',
-    );
-
-    $theme_variables = array(
-      'authbar' => !empty($auth_links) ? drupal_render($auth_links) : '',
-      'main_url' => url('<front>'),
+    $on_now_variables = array(
       'show_url' => !empty($on_now_item->nid)
         ? url('node/' . $on_now_item->nid)
         : url('<front>'),
@@ -1117,10 +1084,9 @@ function _usanetwork_menu_render_live_video_header_ajax($offset) {
           : '',
       ),
     );
-
+    $on_now_variables = json_encode($on_now_variables);
     return drupal_json_output(array(
-      'html' => theme('usanetwork_menu_consumptionator_live_video', $theme_variables),
-    ));
+      'on_now_vars' => $on_now_variables));
   }
 
   return '';
@@ -1135,7 +1101,20 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.live_video_header.js');
 
-  return '<div id="#live-video-loader" class="ajax-loader loading"></div>';
+  $menu_items = _usa_auth_prepare_menu_items();
+  $auth_links = array(
+    '#theme' => 'item_list',
+    '#items' => $menu_items,
+    '#attributes' => array('class' => array('tve-header-links', 'inline')),
+    '#prefix' => '<div class="links-wrapper">',
+    '#suffix' => '</div>',
+  );
+
+  $theme_variables = array(
+    'authbar' => !empty($auth_links) ? drupal_render($auth_links) : '',
+    'main_url' => url('<front>'),
+  );
+  return theme('usanetwork_menu_consumptionator_live_video', $theme_variables);
 }
 
 /**

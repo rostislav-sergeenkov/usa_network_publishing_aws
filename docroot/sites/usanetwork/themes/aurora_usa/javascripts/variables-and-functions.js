@@ -48,6 +48,14 @@ function getInternetExplorerVersion()
   return rv;
 }
 
+function scrollToAnchorName(targetName) {
+  var $active = $('a[name="'+targetName+'"]');
+  var navbarHeight = $('.region-header').height();
+  $('html, body').animate({
+    scrollTop: $active.position().top - navbarHeight -20
+  }, 1000);
+}
+
 $(window).bind('resize', function () {
 
   show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
@@ -55,7 +63,16 @@ $(window).bind('resize', function () {
 });
 
 $(document).ready(function(){
+
   window.viewportUnitsBuggyfill.init();
+
+  $('.node-type-usanetwork-static-page .node-usanetwork-static-page a[href^="#"]').click(function(e){
+    e.preventDefault();
+    var target = $(this).attr('href').substring(1);
+    var targetName = target.substring(0);
+    scrollToAnchorName(targetName);
+  });
+
 });
 
 

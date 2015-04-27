@@ -212,6 +212,9 @@
     @include breakpoint($bp-min-1281-width) {
       height: 9.375vw;
     }
+    @include breakpoint($bp-min-1901-width) {
+      height: 180px;
+    }
     &.on-tonight {
       margin-left: 120px;
       @include breakpoint($between-1281-1900) {
@@ -229,6 +232,9 @@
         width: 30%;
         @include breakpoint($bp-min-1281-width) {
           height: 9.375vw;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          height: 180px;
         }
         @include breakpoint($bp-1280-width) {
           width: 33%;

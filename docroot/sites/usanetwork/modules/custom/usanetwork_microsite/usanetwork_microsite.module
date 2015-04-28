@@ -1073,11 +1073,18 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
       if ($published) {
+        $file_wrapper = entity_metadata_wrapper('file', $current_video_file);
         if ($current_video_type = _usanetwork_microsite_get_video_category($current_video_file)) {
           if (!$active_filter) {
             $active_filter = $current_video_type;
           }
-          $video_types[$current_video_type] = $current_video_type;
+          $season_number = $file_wrapper->field_mpx_season_number->value();
+          if (_usanetwork_microsite_process_setting_data('videos_season_filters', 'bool') && $season_number) {
+            $video_types[$current_video_type][$file_wrapper->field_mpx_season_number->value()] = $current_video_type;
+          }
+          else {
+            $video_types[$current_video_type] = $current_video_type;
+          }
         }
         if ($active_filter != USANETWORK_MICROSITE_ALL_VIDEOS && $active_filter !== $current_video_type) {
           continue;
@@ -1127,8 +1134,23 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     // Create filter menu.
     if (!empty($video_types) && is_array($video_types)) {
       $id = 0;
-      foreach ($video_types as $type) {
+      foreach ($video_types as $type => $type_el) {
+        $children = array();
+        if(!empty($type_el) && is_array($type_el)) {
+          ksort($type_el);
+          foreach($type_el as $child_type => $parrent_type_name) {
+            $season_name = 'Season ' . $child_type;
+            $children[] = array(
+              'data' => $season_name,
+              'class' => array('filter-child-item'),
+              'data_season_num' => $child_type,
+            );
+          }
+        }
         $items[$id] = array('data' => $type, 'class' => array('filter-item'));
+        if (!empty($children)) {
+          $items[$id]['children'] = $children;
+        }
         if ($type == $active_filter) {
           $items[$id]['class'][] = 'active';
         }
@@ -2368,7 +2390,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NUL
  * Menu ajax callback for microsite videos.
  *
  */
-function  _usanetwork_microsite_get_videos($node, $category, $offset) {
+function  _usanetwork_microsite_get_videos($node, $category, $offset, $season = NULL) {
   $data = array();
   // No more videos as default.
   $data['info']['more'] = FALSE;
@@ -2382,6 +2404,12 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
       $published = !empty($file->mpx_video_data['status']) ? $file->mpx_video_data['status'] : NULL;
       if ($published) {
         if ($category && $category != USANETWORK_MICROSITE_ALL_VIDEOS  && $category != _usanetwork_microsite_get_video_category($file)) {
+          continue;
+        }
+        // If season filter exist, videos will be displayed only by filter.
+        $file_wrapper = entity_metadata_wrapper('file', $file);
+        $season_number = $file_wrapper->field_mpx_season_number->value();
+        if ($season && $season_number && $season_number != $season) {
           continue;
         }
         if (($offset <= $position && $count < $videos_limit) || $videos_limit == 0) {
@@ -3264,6 +3292,7 @@ function usanetwork_microsite_default_get_theme_settings() {
     'default_mobile_char_bg' => '',
     'videos_limit' => 0, // 0 means there's no limit -- it'll pull them all
     'videos_all_videos_filter' => TRUE,
+    'videos_season_filters' => FALSE,
     'short_name_for_full_episodes' => FALSE,
   );
 }

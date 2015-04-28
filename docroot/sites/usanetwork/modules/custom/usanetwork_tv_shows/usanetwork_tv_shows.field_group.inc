@@ -488,8 +488,8 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Latest Full Episode Alternate Content Area',
     'weight' => '86',
     'children' => array(
-      0 => 'field_alternative_content',
-      1 => 'field_tvs_lea_block_title',
+      0 => 'field_tvs_lea_block_title',
+      1 => 'field_alternative_content',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -723,7 +723,6 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '75',
     'children' => array(
       0 => 'field_usa_tv_a_spot',
-      1 => 'group_slide_settings',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -731,7 +730,7 @@ function usanetwork_tv_shows_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'No more than 3 A-spots are recommended for this region',
+        'description' => '',
       ),
       'formatter' => 'collapsible',
     ),

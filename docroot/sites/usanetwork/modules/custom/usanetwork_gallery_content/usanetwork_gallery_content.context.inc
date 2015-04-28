@@ -41,6 +41,12 @@ function usanetwork_gallery_content_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'usanetwork_media_gallery-usa_gallery_cons_related' => array(
+          'module' => 'usanetwork_media_gallery',
+          'delta' => 'usa_gallery_cons_related',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

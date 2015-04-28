@@ -112,3 +112,21 @@ function usanetwork_tv_shows_update_7019() {
     }
   }
 }
+
+ /**
+  * Change the max length of a text field
+  */
+function usanetwork_tv_shows_update_7020() {
+   $field_name = 'field_usa_tv_tune_in_date';
+   $new_length = 50;
+   // Update field config with new max length
+   $result = db_query("SELECT CAST(`data` AS CHAR(10000) CHARACTER SET utf8) FROM `field_config` WHERE field_name = '{$field_name}'");
+   $config = $result->fetchField();
+   $config_array = unserialize($config);
+   $config_array['settings']['max_length'] = $new_length;
+   $config = serialize($config_array);
+   db_update('field_config')
+     ->fields(array('data' => $config))
+     ->condition('field_name', $field_name)
+     ->execute();
+}

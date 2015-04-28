@@ -3,12 +3,13 @@
  */
 (function ($) {
 
+/*
   var urlPath = window.location.pathname;
   var activeSection = 'home';
   var minWidthForNav = 875;
   var heightForHomeLogoAnim = 700;
   var scrollTopForLogoAnim = 200;
-
+*/
   Drupal.behaviors.microsite_scroll = {
 
     quoteAnimationTimer: null,

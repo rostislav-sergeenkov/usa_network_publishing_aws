@@ -7,8 +7,7 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function usanetwork_imagestyles_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function usanetwork_imagestyles_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -40,6 +39,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '1230x500',
   );
 
   // Exported image style: 1245x709.
@@ -62,6 +62,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '1245x709',
   );
 
   // Exported image style: 1400_wide.
@@ -85,6 +86,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '1400_wide',
   );
 
   // Exported image style: 146x122.
@@ -107,6 +109,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '146x122',
   );
 
   // Exported image style: 221x124_video.
@@ -129,6 +132,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '221x124_video',
   );
 
   // Exported image style: 2490x1418.
@@ -151,6 +155,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '2490x1418',
   );
 
   // Exported image style: 300x169_video.
@@ -173,6 +178,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '300x169_video',
   );
 
   // Exported image style: 300x250.
@@ -195,6 +201,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '300x250',
   );
 
   // Exported image style: 300x250_on_now.
@@ -217,6 +224,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '300x250_on_now',
   );
 
   // Exported image style: 450x183_globalnav.
@@ -239,6 +247,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '450x183_globalnav',
   );
 
   // Exported image style: 600x500.
@@ -261,6 +270,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '600x500',
   );
 
   // Exported image style: 615x250.
@@ -283,6 +293,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '615x250',
   );
 
   // Exported image style: 615x350.
@@ -305,6 +316,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '615x350',
   );
 
   // Exported image style: block_cover_title_lg.
@@ -342,6 +354,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'block_cover_title_lg',
   );
 
   // Exported image style: gallery_block_cover.
@@ -379,6 +392,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'gallery_block_cover',
   );
 
   // Exported image style: gallery_full_photo.
@@ -416,6 +430,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => -8,
       ),
     ),
+    'label' => 'gallery_full_photo',
   );
 
   // Exported image style: meet_the_cast_carousel.
@@ -476,6 +491,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'person_cover',
   );
 
   // Exported image style: search_result.
@@ -498,6 +514,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'search_result',
   );
 
   // Exported image style: thumb_tiny.
@@ -535,9 +552,33 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'thumb_tiny',
   );
 
-// Exported image style: usa_image_focus.
+  // Exported image style: timeline_gallery_image.
+  $styles['timeline_gallery_image'] = array(
+    'name' => 'timeline_gallery_image',
+    'label' => 'Timeline gallery image',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 780,
+          'height' => 506,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: usa_image_focus.
   $styles['usa_image_focus'] = array(
     'name' => 'usa_image_focus',
     'effects' => array(
@@ -558,6 +599,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'usa_image_focus',
   );
 
   // Exported image style: video_full.
@@ -581,6 +623,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'video_full',
   );
 
   return $styles;

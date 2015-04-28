@@ -198,6 +198,16 @@ function usanetwork_microsite_dig_get_theme_includes() {
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
   return array(
+    'css' => array(
+      $module_path . '/css/jquery.bxslider.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_quizzes.css',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
+    ),
     'js' => array(
         //'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
         //'http://pdk.theplatform.com/current/pdk/tpPdkController.js',
@@ -219,16 +229,6 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
-    'css' => array(
-      $module_path . '/css/jquery.bxslider.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_quizzes.css',
-      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
-    ),
   );
 }
 
@@ -243,5 +243,13 @@ function usanetwork_microsite_dig_get_theme_settings() {
     'display_global_nav' => TRUE,
     'default_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
     'default_mobile_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
+    'videos_limit' => 12,
+  );
+}
+
+
+function usanetwork_microsite_dig_get_blocks_names() {
+  return array(
+    'meet_the_cast',
   );
 }

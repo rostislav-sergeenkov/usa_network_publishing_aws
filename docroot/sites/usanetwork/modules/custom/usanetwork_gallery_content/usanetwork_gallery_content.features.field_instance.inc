@@ -189,7 +189,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 34,
+      'weight' => 17,
     ),
   );
 

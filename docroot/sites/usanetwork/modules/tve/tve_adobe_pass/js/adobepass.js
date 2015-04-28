@@ -217,7 +217,10 @@
 
     if (isAuthenticated) {
       _setCookie({'authn': isAuthenticated, 'selectedProvider': selected.MVPD });
-      changeSrc(selected.MVPD);
+      if(!$('body').hasClass('page-videos-live')){
+        changeSrc(selected.MVPD);
+      }
+
     }
     else {
       _deleteCookie();

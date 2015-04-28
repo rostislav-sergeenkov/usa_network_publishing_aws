@@ -1,7 +1,7 @@
 name = USA Network Quizzes
 core = 7.x
 package = USA Network
-version = 7.x-1.1
+version = 7.x-1.2
 project = usanetwork_quiz
 dependencies[] = colorfield
 dependencies[] = ctools
@@ -80,6 +80,7 @@ features[field_instance][] = node-quiz-body
 features[field_instance][] = node-quiz-field_call_to_action_type
 features[field_instance][] = node-quiz-field_gigya_share_bar
 features[field_instance][] = node-quiz-field_promo_call_to_action_text
+features[field_instance][] = node-quiz-field_promo_image_override
 features[field_instance][] = node-quiz-field_promo_long_description
 features[field_instance][] = node-quiz-field_promo_title
 features[field_instance][] = node-quiz-field_promo_topic

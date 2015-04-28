@@ -74,6 +74,7 @@ features[field_instance][] = node-media_gallery-field_ideamelt_action_type
 features[field_instance][] = node-media_gallery-field_media_items
 features[field_instance][] = node-media_gallery-field_nitro_action_name
 features[field_instance][] = node-media_gallery-field_person
+features[field_instance][] = node-media_gallery-field_promo_image_override
 features[field_instance][] = node-media_gallery-field_season
 features[field_instance][] = node-media_gallery-field_send_ideamelt_notification
 features[field_instance][] = node-media_gallery-field_seo_h1

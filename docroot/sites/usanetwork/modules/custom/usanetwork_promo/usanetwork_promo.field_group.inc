@@ -63,6 +63,7 @@ function usanetwork_promo_field_group_info() {
       5 => 'field_promo_exclude_from_related',
       6 => 'field_promo_created_ovts',
       7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -131,6 +132,7 @@ function usanetwork_promo_field_group_info() {
       5 => 'field_call_to_action_type',
       6 => 'field_promo_exclude_from_related',
       7 => 'field_promo_created_ovts',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -165,6 +167,7 @@ function usanetwork_promo_field_group_info() {
       5 => 'field_promo_exclude_from_related',
       6 => 'field_promo_created_ovts',
       7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -196,9 +199,9 @@ function usanetwork_promo_field_group_info() {
       2 => 'field_promo_title',
       3 => 'field_promo_topic',
       4 => 'field_promo_long_description',
-      5 => 'field_promo_exclude_from_related',
+      5 => 'field_call_to_action_type',
       6 => 'field_promo_created_ovts',
-      7 => 'field_call_to_action_type',
+      7 => 'field_promo_exclude_from_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -233,6 +236,7 @@ function usanetwork_promo_field_group_info() {
       5 => 'field_promo_exclude_from_related',
       6 => 'field_promo_created_ovts',
       7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -267,6 +271,7 @@ function usanetwork_promo_field_group_info() {
       5 => 'field_promo_exclude_from_related',
       6 => 'field_promo_created_ovts',
       7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -293,14 +298,15 @@ function usanetwork_promo_field_group_info() {
     'label' => 'Promo Details',
     'weight' => '33',
     'children' => array(
-      0 => 'field_call_to_action_type',
-      1 => 'field_promo_call_to_action_text',
-      2 => 'field_promo_violator_name',
-      3 => 'field_promo_title',
-      4 => 'field_promo_topic',
-      5 => 'field_promo_long_description',
+      0 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_violator_name',
+      2 => 'field_promo_title',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+      5 => 'field_call_to_action_type',
       6 => 'field_promo_exclude_from_related',
       7 => 'field_promo_created_ovts',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

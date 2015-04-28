@@ -1,7 +1,7 @@
 name = USA Network Post
 core = 7.x
 package = USA Network
-version = 7.x-1.5
+version = 7.x-1.6
 project = usanetwork_post
 dependencies[] = field_group
 dependencies[] = file
@@ -54,6 +54,7 @@ features[field_instance][] = node-post-field_media_gallery
 features[field_instance][] = node-post-field_override_display_author
 features[field_instance][] = node-post-field_post_cover
 features[field_instance][] = node-post-field_post_cover_toggle
+features[field_instance][] = node-post-field_promo_image_override
 features[field_instance][] = node-post-field_show
 features[field_instance][] = node-post-field_sub_title
 features[field_instance][] = node-post-field_summary

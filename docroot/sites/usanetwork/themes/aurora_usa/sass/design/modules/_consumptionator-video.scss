@@ -216,28 +216,39 @@
         &.inactive {
           background: #3D3D3D;
           padding: 20px;
-          @include breakpoint($bp-video-player-section) {
+          @include breakpoint($bp-768-width) {
             background: transparent;
             height: auto;
             margin: 0 auto;
             max-width: 457px;
-            padding: 0px;
+            padding: 0;
             width: 100%;
           }
           & > .asset-img {
             float: left;
-            margin-bottom: 46px;
-            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+            margin-bottom: 30px;
+            width: 32vw;
+            height: 18vw;
+            @include breakpoint($bp-1280-width) {
+              margin-bottom: 20px;
+            }
+            @include breakpoint($bp-1024-width) {
+              margin-bottom: 40px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-bottom: 20px;
+              margin-top: 20px;
+            }
+            @include breakpoint($bp-640-width) {
               margin-bottom: 10px;
+              width: inherit;
+              height: inherit;
+              display: none;
             }
             & > img {
-              max-height: 169px;
-              max-width: 300px;
-              @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
-                max-height: 124px;
-                max-width: 220px;
-              }
-              @include breakpoint($bp-video-player-section) {
+              height: 100%;
+              width: 100%;
+              @include breakpoint($bp-640-width) {
                 display: none;
               }
             }
@@ -247,11 +258,22 @@
             font-size: 24px;
             margin-left: 50px;
             margin-top: 65px;
-            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+            @include breakpoint($bp-1280-width) {
               margin-left: 20px;
               margin-top: 53px;
+              font-size: 20px;
             }
-            @include breakpoint($bp-video-player-section) {
+            @include breakpoint($bp-1024-width) {
+              margin-left: 40px;
+              margin-top: 53px;
+              font-size: 20px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-left: 10px;
+              margin-top: 65px;
+              font-size: 14px;
+            }
+            @include breakpoint($bp-640-width) {
               color: #9AE0EB;
               float: none;
               font-size: 18px;
@@ -264,10 +286,13 @@
             clear: both;
             font-size: 20px;
             margin-bottom: 24px;
-            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+            @include breakpoint($bp-1280-width) {
               margin-bottom: 10px;
             }
-            @include breakpoint($bp-video-player-section) {
+            @include breakpoint($bp-1024-width) {
+              margin-bottom: 24px;
+            }
+            @include breakpoint($bp-640-width) {
               font-size: 16px;
               margin-bottom: 10px;
               margin-top: 10px;
@@ -281,7 +306,7 @@
             .file {
               &.tve-video-auth {
                 & > a {
-                  &:after {
+                  &:after{
                     font-family: 'usanetwork';
                     speak: none;
                     -webkit-font-feature-settings: "liga","dlig";
@@ -327,21 +352,29 @@
               }
               border: 2px solid #2d2d2d;
               display: inline-block;
-              height: 220px;
+              height: 16.4vw;
               margin-right: 20px;
               overflow: hidden;
               position: relative;
               vertical-align: top;
-              width: 252px;
-              @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
-                height: 140px;
+              width: calc(100%*0.3);
+              @include breakpoint($bp-1280-width) {
+                height: 14vw;
                 margin-right: 12px;
-                width: 165px;
+                width: calc(100%*0.3 - 30px);
               }
-              @include breakpoint($bp-video-player-section) {
-                height: auto;
-                margin-right: 0px;
-                width: 48.5%;
+              @include breakpoint($bp-1024-width) {
+                height: 20vw;
+                width: calc(100%*0.3  - 40px);
+              }
+              @include breakpoint($bp-768-width) {
+                height: 18.4vw;
+                width: calc(100%*0.3);
+              }
+              @include breakpoint($bp-640-width) {
+                height: 33vw;
+                margin-right: 0;
+                width: 34vw;
                 &:last-child {
                   display: none;
                 }
@@ -359,18 +392,20 @@
                 width: 100%;
               }
               img {
-                height: 140px;
+                height: auto;
                 width: 100%;
-                @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
-                  height: 95px;
-                }
-                @include breakpoint($bp-video-player-section) {
-                  height: auto;
+              }
+              .meta-wrapper {
+                padding-top: 10px;
+                .title {
+                  @include breakpoint($bp-1280-width){
+                    font-size: 14px;
+                  }
                 }
               }
               .caption-overlay {
-                bottom: 0px;
-                left: 0px;
+                bottom: 0;
+                left: 0;
                 height: 76px;
                 position: absolute;
                 width: 100%;
@@ -383,30 +418,27 @@
                   width: 100%;
                 }
               }
-              .caption-fields-wrapper {
+              .meta-wrapper {
                 background: #1f1f1f;
                 height: 100%;
                 margin: 0;
                 padding: 10px 6px 8px;
                 width: 100%;
-                @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                @include breakpoint($bp-1024-width) {
                   padding: 5px;
-                }
-                @include breakpoint($bp-video-player-section) {
-                  height: 58px;
-                  margin: 0;
-                  padding: 8px;
-                  position: static;
-                  width: 100%;
                 }
                 .title {
                   font-weight: bold;
                   line-height: 1.15;
                   text-align: left;
-                  @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                  color: white;
+                  @include breakpoint($bp-1280-width) {
                     font-size: 14px;
                   }
-                  @include breakpoint($bp-video-player-section) {
+                  @include breakpoint($bp-1024-width) {
+                    font-size: 14px;
+                  }
+                  @include breakpoint($bp-640-width) {
                     font-size: 13px;
                   }
                 }

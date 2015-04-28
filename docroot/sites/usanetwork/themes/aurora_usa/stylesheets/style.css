@@ -11798,7 +11798,7 @@ footer h2 {
   overflow: hidden;
   position: relative;
   vertical-align: top;
-  width: calc(100%*0.3);
+  width: 30%;
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file.tve-video-auth > a:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file.tve-video-auth > a:after {
   font-family: 'usanetwork';
@@ -11844,19 +11844,19 @@ footer h2 {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
     height: 14vw;
     margin-right: 12px;
-    width: calc(100%*0.3 - 30px);
+    width: calc(30% - 30px);
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
     height: 20vw;
-    width: calc(100%*0.3  - 40px);
+    width: calc(30%  - 40px);
   }
 }
 @media (max-width: 768px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
     height: 18.4vw;
-    width: calc(100%*0.3);
+    width: 30%;
   }
 }
 @media (max-width: 640px) {

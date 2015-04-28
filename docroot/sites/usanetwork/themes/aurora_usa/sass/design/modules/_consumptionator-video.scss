@@ -357,19 +357,19 @@
               overflow: hidden;
               position: relative;
               vertical-align: top;
-              width: calc(100%*0.3);
+              width: 30%;
               @include breakpoint($bp-1280-width) {
                 height: 14vw;
                 margin-right: 12px;
-                width: calc(100%*0.3 - 30px);
+                width: calc(30% - 30px);
               }
               @include breakpoint($bp-1024-width) {
                 height: 20vw;
-                width: calc(100%*0.3  - 40px);
+                width: calc(30%  - 40px);
               }
               @include breakpoint($bp-768-width) {
                 height: 18.4vw;
-                width: calc(100%*0.3);
+                width: 30%;
               }
               @include breakpoint($bp-640-width) {
                 height: 33vw;
@@ -398,7 +398,7 @@
               .meta-wrapper {
                 padding-top: 10px;
                 .title {
-                  @include breakpoint($bp-1280-width){
+                  @include breakpoint($bp-1280-width) {
                     font-size: 14px;
                   }
                 }

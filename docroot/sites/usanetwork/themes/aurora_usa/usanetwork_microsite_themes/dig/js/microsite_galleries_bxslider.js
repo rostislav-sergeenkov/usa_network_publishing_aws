@@ -152,6 +152,8 @@
     },
 
     switchGallery: function(nid, callback) {
+      callback = callback || null;
+
       Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = true;
       Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
 
@@ -162,8 +164,6 @@
         dataType: 'json'
       })
       .done(function(data, textStatus, jqXHR){
-//usa_debug('=================== switchGallery\ndata: ');
-//usa_debug(data);
         var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
             activeGallery = $('#galleries .microsite-gallery'),
             activeGalleryHeight = activeGallery.height(),
@@ -187,7 +187,7 @@
           setTimeout(function(){
             Drupal.behaviors.micrositeGalleriesBxSliders.showGallery(activeGallery);
             Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = false;
-            callback();
+            if (callback !== null) callback();
           }, 1000);
         });
       })
@@ -253,6 +253,59 @@
       $('#galleries .galleries-bxslider li[data-node-id="' + Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem + '"]').addClass('active');
     },
 
+    promoClickSwitchGallery: function(anchorFull) {
+      var anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull),
+          $navItems = $('#microsite #galleries .galleries-bxslider li a'),
+          matchingGalleryNavLink = $('#microsite #galleries .galleries-bxslider li').find('a[href="' +  anchorFull + '"]'),
+          nid = matchingGalleryNavLink.parent().attr('data-node-id'),
+          anchor = anchorPathParts[1],
+          item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
+
+      Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
+      Drupal.behaviors.micrositeGalleriesBxSliders.switchGallery(nid);
+
+      // scroll to galleries section
+      Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+
+      history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+    },
+
+    changeGalleryHandler: function(e) {
+      var anchorFull = this.href,
+          anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull),
+          $navItems = $('#microsite #galleries .galleries-bxslider li a');
+
+      // Unbind click while selected gallery loading
+      $navItems.unbind('click').bind('click', function(e) {
+        e.preventDefault();
+      });
+
+      // if this is an internal microsite url
+      // prevent the default action
+      // and show the correct microsite item without a page reload
+      if (anchorPathParts[0] == 'dig') {
+        e.preventDefault();
+
+        // if this is IE9, reload the correct page
+        if ($('html.ie9').length > 0) {
+          window.location.href = anchorFull;
+          return false;
+        }
+
+        // scroll to top of galleries section
+        $('#microsite #galleries').animate({ scrollTop: 0 }, 1000);
+
+        // switch gallery
+        var nid = $(this).parent().attr('data-node-id');
+        Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
+        Drupal.behaviors.micrositeGalleriesBxSliders.switchGallery(nid, function() {
+          $navItems.bind('click', Drupal.behaviors.micrositeGalleriesBxSliders.changeGalleryHandler);
+        });
+
+        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+      }
+    },
+
     attach: function (context, settings) {
 
       // check to make sure there's a galleries section
@@ -310,42 +363,7 @@
 
         self.setActiveGalleryNav();
 
-        var changeGalleryHandler = function(e){
-          var anchorFull = this.href,
-              anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull),
-              $navItems = $('#microsite #galleries .galleries-bxslider li a');
-
-          // Unbind click while selected gallery loading
-          $navItems.unbind('click').bind('click', function(e) {
-            e.preventDefault();
-          });
-
-          // if this is an internal microsite url
-          // prevent the default action
-          // and show the correct microsite item without a page reload
-          if (anchorPathParts[0] == 'dig') {
-            e.preventDefault();
-
-            // if this is IE9, reload the correct page
-            if ($('html.ie9').length > 0) {
-              window.location.href = anchorFull;
-              return false;
-            }
-
-            // scroll to top of galleries section
-            $('#microsite #galleries').animate({ scrollTop: 0 }, 1000);
-
-            // switch gallery
-            var nid = $(this).parent().attr('data-node-id');
-            Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
-            self.switchGallery(nid, function() {
-              $navItems.bind('click', changeGalleryHandler);
-            });
-            history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-          }
-        };
-
-        $('#microsite #galleries .galleries-bxslider li a').bind('click', changeGalleryHandler);
+        $('#microsite #galleries .galleries-bxslider li a').bind('click', self.changeGalleryHandler);
 
         $(window).bind('resize', function () {
           self.micrositeReloadSliders();

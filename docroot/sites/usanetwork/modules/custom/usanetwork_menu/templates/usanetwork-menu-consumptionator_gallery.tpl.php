@@ -37,9 +37,16 @@
           </div>
         <?php endif; ?>
         <div class="title-overlay meta">
-          <div class="description">
-            <?php print $details['description']; ?>
-          </div>
+          <?php if (!empty($gallery_name)): ?>
+            <div class="title">
+              <?php print $gallery_name; ?>
+            </div>
+          <?php endif; ?>
+          <?php if (!empty($details['description'])): ?>
+            <div class="description">
+              <?php print $details['description']; ?>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>

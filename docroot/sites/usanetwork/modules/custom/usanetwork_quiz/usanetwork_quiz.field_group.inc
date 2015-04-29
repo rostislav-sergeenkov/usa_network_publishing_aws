@@ -122,6 +122,7 @@ function usanetwork_quiz_field_group_info() {
       4 => 'field_promo_violator_name',
       5 => 'field_call_to_action_type',
       6 => 'field_promo_exclude_from_related',
+      7 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

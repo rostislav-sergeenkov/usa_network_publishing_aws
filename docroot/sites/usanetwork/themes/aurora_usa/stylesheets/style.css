@@ -12445,11 +12445,16 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consum-sidebar .episodes-list-slider.horizontal {
-    height: 56.25vw;
+    height: auto;
   }
 }
 .consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
-  height: 100% !important;
+  height: auto !important;
+}
+@media (min-width: 641px) {
+  .consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
+    height: 100% !important;
+  }
 }
 .consum-sidebar .episodes-list-slider.horizontal li {
   float: left;
@@ -12460,6 +12465,8 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consum-sidebar .episodes-list-slider.horizontal li {
+    float: none;
+    height: 56.25vw;
     width: 100%;
   }
 }
@@ -12481,9 +12488,13 @@ footer h2 {
   left: 0;
   width: 100%;
 }
-@media (max-width: 1280px) {
+@media (min-width: 641px) and (max-width: 1280px) {
   .consum-sidebar .more-items {
     background: none !important;
+  }
+}
+@media (max-width: 1280px) {
+  .consum-sidebar .more-items {
     bottom: auto;
     left: auto;
     right: 10px;
@@ -12494,6 +12505,14 @@ footer h2 {
 @media (max-width: 1024px) {
   .consum-sidebar .more-items {
     top: 270px;
+  }
+}
+@media (max-width: 640px) {
+  .consum-sidebar .more-items {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
   }
 }
 .consum-sidebar .more-items a {
@@ -12530,7 +12549,12 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consum-sidebar .more-items a {
+    font-size: 23px;
     line-height: 100px;
+    padding-left: 30px;
+  }
+  .consum-sidebar .more-items a:hover {
+    text-decoration: none;
   }
 }
 @media (max-width: 480px) {
@@ -12551,6 +12575,14 @@ footer h2 {
   right: 5px;
 }
 @media (min-width: 1901px) {
+  .consum-sidebar .more-items a:after {
+    font-size: 15px;
+    line-height: 15px;
+    right: 10px;
+    margin-top: -7px;
+  }
+}
+@media (max-width: 640px) {
   .consum-sidebar .more-items a:after {
     font-size: 15px;
     line-height: 15px;

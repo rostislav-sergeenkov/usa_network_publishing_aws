@@ -2431,6 +2431,16 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
+.meta-icon {
+  border-radius: 50%;
+  display: block;
+  line-height: 37px;
+  height: 37px;
+  position: absolute;
+  text-align: center;
+  width: 37px;
+}
+
 article,
 aside,
 details,
@@ -8490,11 +8500,107 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     width: 57%;
   }
 }
+@media (max-width: 768px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.first {
+    height: 55.65vw;
+  }
+}
 @media (min-width: 769px) and (max-width: 1280px) {
   .five-promo-item-block.show-video-landing-main-block ul li.last {
     clear: both;
+    height: auto;
     overflow: visible;
     width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last {
+    height: auto;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) {
+    float: left;
+    height: 26.2vw;
+    margin-bottom: 0;
+    margin-right: 0.8%;
+    margin-top: 0.8vw;
+    width: 32.8%;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) {
+    height: 55.65vw;
+    margin-right: 0;
+    width: 100%;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .meta-wrapper {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+    height: 25%;
+  }
+}
+@media (max-width: 640px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .meta-wrapper {
+    height: 29%;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .caption {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .additional {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .meta-icon {
+    left: 4%;
+    height: 42px;
+    margin-top: -21px;
+    width: 42px;
+  }
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .meta-icon ~ .meta {
+    padding-left: calc(8% + 42px);
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .caption {
+    font-size: 10px;
+    line-height: 13px;
+  }
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .additional {
+    font-size: 10px;
+    line-height: 13px;
+  }
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .meta-icon {
+    left: 4%;
+    height: 30px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:not(.advert-block) .meta-icon ~ .meta {
+    padding-left: calc(8% + 30px);
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last > div:nth-child(3) {
+    margin-right: 0;
   }
 }
 @media (min-width: 769px) and (max-width: 1280px) {
@@ -8504,6 +8610,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     position: absolute;
     right: 0;
     width: 41.67%;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block.show-video-landing-main-block ul li.last .advert-block {
+    display: none;
   }
 }
 

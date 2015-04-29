@@ -56,6 +56,8 @@ function scrollToAnchorName(targetName) {
   }, 1000);
 }
 
+window.viewportUnitsBuggyfill.init();
+
 $(window).bind('resize', function () {
 
   show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
@@ -63,8 +65,6 @@ $(window).bind('resize', function () {
 });
 
 $(document).ready(function(){
-
-  window.viewportUnitsBuggyfill.init();
 
   $('.node-type-usanetwork-static-page .node-usanetwork-static-page a[href^="#"]').click(function(e){
     e.preventDefault();

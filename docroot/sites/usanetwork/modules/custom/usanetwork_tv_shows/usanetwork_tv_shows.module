@@ -1295,11 +1295,11 @@ function _usanetwork_tv_shows_submenu() {
       $show_menu_item = entity_load('field_collection_item', array($link['value']));
       $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
       if ($show_menu_item_main_link) {
-        $show_menus[$key]['main_link'] = l(drupal_ucfirst($show_menu_item_main_link[0]['title']), $show_menu_item_main_link[0]['url']);
+        $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $show_menu_item_main_link[0]['url']);
       }
     }
   }
-
+//kpr($show_menus);die;
   return theme('usanetwork_tv_shows_submenu', array(
     'show_title' => $show_title,
     'weekday' => isset($show_weekday) ? $show_weekday : NULL,

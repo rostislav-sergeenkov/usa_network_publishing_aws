@@ -3,10 +3,10 @@
   background-color: $poll-back;
     .shows-filters {
       text-align: right;
-      margin: 0 20px 20px 0;
+      margin: 20px 20px 20px 0;
       @include clear;
       @include breakpoint($bp-768-width){
-        margin-right: 0;
+        margin-right: 5px;
       }
       .item-filter {
         display: inline-block;
@@ -151,96 +151,48 @@
     margin: 0 auto;
     max-width: 2500px;
     min-width: 300px;
+    position: relative;
     .schedule-navigation {
-      display: table;
       background-color: $gray-darker-light;
-      margin-bottom: 20px;
       position: relative;
-      width: 100%;
-      .nav-prev {
-        display: table-cell;
-        cursor: pointer;
-        height: 90px;
-        width: 90px;
-        position: relative;
-        vertical-align: middle;
-        @include breakpoint($bp-640-width) {
-          height: 45px;
-          width: 45px;
-        }
-        &:after {
-          content: '\e607';
-          color: #ffffff;
-          display: block;
-          font-family: $ico-font;
-          font-size: 20px;
-          line-height: 20px;
-          left: 50%;
-          margin-left: -10px;
-          margin-top: -10px;
-          position: absolute;
-          top: 50%;
-        }
-        &:hover {
-          background-color: $gray-med-darker;
-        }
-      }
-      .nav-next {
-        display: table-cell;
-        cursor: pointer;
-        height: 90px;
-        width: 90px;
-        position: relative;
-        vertical-align: middle;
-        @include breakpoint($bp-640-width) {
-          height: 45px;
-          width: 45px;
-        }
-        &:after {
-          content: '\e608';
-          color: #ffffff;
-          display: block;
-          font-family: $ico-font;
-          font-size: 20px;
-          line-height: 20px;
-          left: 50%;
-          margin-left: -10px;
-          margin-top: -10px;
-          position: absolute;
-          top: 50%;
-        }
-        &:hover {
-          background-color: $gray-med-darker;
-        }
-      }
+      overflow: hidden;
+      display: block;
+      width: auto;
+      margin: 0 50px;
       ul {
-        display: table-cell;
         vertical-align: middle;
         border-top: 1px solid #ffffff;
         @include clear;
+        width: 20000em;
+        position: relative;
+        display: block;
+        list-style: none;
+        margin: 0;
+        padding: 0;
         li {
           border-right: 1px solid $poll-back;
           height: 123px;
+          display: block;
           float: left;
-          width: (100% / 7);
           @include breakpoint($bp-1280-width) {
             height: 82px;
           }
           @include breakpoint($bp-1024-width) {
             height: 66px;
           }
-          @include breakpoint($bp-768-width) {
-//            display: none;
-//            &:first-child, &:nth-child(2) {
-//              display: block;
-//              width: 50%;
-//            }
-          }
           @include breakpoint($bp-320-width) {
             height: 44px;
           }
           &:first-child {
             border-left: 1px solid $poll-back;
+          }
+          @include breakpoint($bp-768-width) {
+            &:first-child {
+              border-left: 0 solid #ffffff;
+            }
+            &:last-child {
+              border-right: 0 solid #ffffff;
+            }
           }
           &:hover, &.active {
             background-color: $gray-med-darker;
@@ -295,6 +247,39 @@
           }
         }
       }
+    }
+    .schedule-navigation-controls {
+      position: absolute;
+      background-color: $gray-med-darker;
+      top: 0;
+      cursor: pointer;
+      height: 67px;
+      width: 50px;
+      vertical-align: middle;
+      border-top: 1px solid white;
+      &:after {
+        color: #ffffff;
+        display: block;
+        font-family: $ico-font;
+        font-size: 20px;
+        line-height: 20px;
+        left: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        position: absolute;
+        top: 50%;
+      }
+      &.jcarousel-control-prev {
+        left: 0;
+        border-right: 1px solid #ffffff;
+        &:after {content: '\e607';}
+      }
+      &.jcarousel-control-next {
+        right: 0;
+        border-left: 1px solid #ffffff;
+        &:after {content: '\e608';}
+      }
+
     }
     .time-zone {
       padding: 0 30px;

@@ -23450,7 +23450,7 @@ yx-axis
 }
 .page-schedule .shows-filters {
   text-align: right;
-  margin: 0 20px 20px 0;
+  margin: 20px 20px 20px 0;
 }
 .page-schedule .shows-filters:after {
   clear: both;
@@ -23459,7 +23459,7 @@ yx-axis
 }
 @media (max-width: 768px) {
   .page-schedule .shows-filters {
-    margin-right: 0;
+    margin-right: 5px;
   }
 }
 .page-schedule .shows-filters .item-filter {
@@ -23623,78 +23623,25 @@ yx-axis
   margin: 0 auto;
   max-width: 2500px;
   min-width: 300px;
+  position: relative;
 }
 .page-schedule .schedule-wrapper .schedule-navigation {
-  display: table;
   background-color: #636363;
-  margin-bottom: 20px;
   position: relative;
-  width: 100%;
-}
-.page-schedule .schedule-wrapper .schedule-navigation .nav-prev {
-  display: table-cell;
-  cursor: pointer;
-  height: 90px;
-  width: 90px;
-  position: relative;
-  vertical-align: middle;
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-navigation .nav-prev {
-    height: 45px;
-    width: 45px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-navigation .nav-prev:after {
-  content: '\e607';
-  color: #ffffff;
+  overflow: hidden;
   display: block;
-  font-family: "ico-font";
-  font-size: 20px;
-  line-height: 20px;
-  left: 50%;
-  margin-left: -10px;
-  margin-top: -10px;
-  position: absolute;
-  top: 50%;
-}
-.page-schedule .schedule-wrapper .schedule-navigation .nav-prev:hover {
-  background-color: #313131;
-}
-.page-schedule .schedule-wrapper .schedule-navigation .nav-next {
-  display: table-cell;
-  cursor: pointer;
-  height: 90px;
-  width: 90px;
-  position: relative;
-  vertical-align: middle;
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-navigation .nav-next {
-    height: 45px;
-    width: 45px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-navigation .nav-next:after {
-  content: '\e608';
-  color: #ffffff;
-  display: block;
-  font-family: "ico-font";
-  font-size: 20px;
-  line-height: 20px;
-  left: 50%;
-  margin-left: -10px;
-  margin-top: -10px;
-  position: absolute;
-  top: 50%;
-}
-.page-schedule .schedule-wrapper .schedule-navigation .nav-next:hover {
-  background-color: #313131;
+  width: auto;
+  margin: 0 50px;
 }
 .page-schedule .schedule-wrapper .schedule-navigation ul {
-  display: table-cell;
   vertical-align: middle;
   border-top: 1px solid #ffffff;
+  width: 20000em;
+  position: relative;
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .page-schedule .schedule-wrapper .schedule-navigation ul:after {
   clear: both;
@@ -23704,8 +23651,8 @@ yx-axis
 .page-schedule .schedule-wrapper .schedule-navigation ul li {
   border-right: 1px solid #e9eaeb;
   height: 123px;
+  display: block;
   float: left;
-  width: 14.28571%;
 }
 @media (max-width: 1280px) {
   .page-schedule .schedule-wrapper .schedule-navigation ul li {
@@ -23724,6 +23671,14 @@ yx-axis
 }
 .page-schedule .schedule-wrapper .schedule-navigation ul li:first-child {
   border-left: 1px solid #e9eaeb;
+}
+@media (max-width: 768px) {
+  .page-schedule .schedule-wrapper .schedule-navigation ul li:first-child {
+    border-left: 0 solid #ffffff;
+  }
+  .page-schedule .schedule-wrapper .schedule-navigation ul li:last-child {
+    border-right: 0 solid #ffffff;
+  }
 }
 .page-schedule .schedule-wrapper .schedule-navigation ul li:hover, .page-schedule .schedule-wrapper .schedule-navigation ul li.active {
   background-color: #313131;
@@ -23787,6 +23742,42 @@ yx-axis
     font-size: 10px;
     line-height: 5px;
   }
+}
+.page-schedule .schedule-wrapper .schedule-navigation-controls {
+  position: absolute;
+  background-color: #313131;
+  top: 0;
+  cursor: pointer;
+  height: 67px;
+  width: 50px;
+  vertical-align: middle;
+  border-top: 1px solid white;
+}
+.page-schedule .schedule-wrapper .schedule-navigation-controls:after {
+  color: #ffffff;
+  display: block;
+  font-family: "ico-font";
+  font-size: 20px;
+  line-height: 20px;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: absolute;
+  top: 50%;
+}
+.page-schedule .schedule-wrapper .schedule-navigation-controls.jcarousel-control-prev {
+  left: 0;
+  border-right: 1px solid #ffffff;
+}
+.page-schedule .schedule-wrapper .schedule-navigation-controls.jcarousel-control-prev:after {
+  content: '\e607';
+}
+.page-schedule .schedule-wrapper .schedule-navigation-controls.jcarousel-control-next {
+  right: 0;
+  border-left: 1px solid #ffffff;
+}
+.page-schedule .schedule-wrapper .schedule-navigation-controls.jcarousel-control-next:after {
+  content: '\e608';
 }
 .page-schedule .schedule-wrapper .time-zone {
   padding: 0 30px;

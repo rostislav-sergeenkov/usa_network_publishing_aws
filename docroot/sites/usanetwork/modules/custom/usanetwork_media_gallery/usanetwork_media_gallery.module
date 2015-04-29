@@ -240,14 +240,20 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block() {
           $gallery_file = (object)$gallery_file;
         }
 
+        if (!empty($node->field_gigya_share_bar)) {
+          $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+          $sharebar['#title'] = t('Share this image');
+        }
         $slide_variables = array(
-          'gigya_id' => NULL,
+          'gigya_id' => !empty($sharebar) ? render($sharebar) : NULL,
           'image' => theme_image(array(
             'path' => $gallery_file->uri,
             'attributes' => array(),
           )),
           'info' => array(
             'description' => '',
+            'gallery_name' => $node->title,
+            'photo_name' => $gallery_file->filename,
           ),
         );
 

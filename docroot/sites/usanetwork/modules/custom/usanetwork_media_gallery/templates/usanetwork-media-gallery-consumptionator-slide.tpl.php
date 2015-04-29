@@ -15,16 +15,12 @@
     <div class="description">
       <?php if (isset($info['description'])): ?><?php print $info['description']; ?><?php endif; ?>
     </div>
-    <div class="slider-counter"></div>
+    <div class="slider-counter"><?php if (isset($info['gallery_name'])): ?><?php print $info['gallery_name']; ?><?php endif; ?></div>
     <?php if ($gigya_id): ?>
       <div class="social-bar">
-        <div class="social-title">
-          Share this image
-        </div>
         <div class="social-icons icons-block" id="<?php print $gigya_id; ?>">
         </div>
       </div>
     <?php endif; ?>
   </div>
 </div>
-

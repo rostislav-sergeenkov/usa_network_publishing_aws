@@ -10171,6 +10171,7 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .asset-img, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .asset-img {
     height: calc(100% - 130px);
+    overflow: hidden;
   }
 }
 @media (max-width: 768px) {

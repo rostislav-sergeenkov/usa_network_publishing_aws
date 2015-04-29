@@ -79,6 +79,7 @@
                   position: relative;
                   @include breakpoint($bp-1024-width) {
                     height: calc(100% - 130px);
+                    overflow: hidden;
                   }
                   @include breakpoint($bp-768-width) {
                     height: calc(100% - 145px);

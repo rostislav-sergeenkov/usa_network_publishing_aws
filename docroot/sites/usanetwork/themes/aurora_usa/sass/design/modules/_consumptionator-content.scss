@@ -244,10 +244,13 @@
         display: block;
       }
       @include breakpoint($bp-640-width) {
-        height: 56.25vw;
+        height: auto;
       }
       ul, .bx-viewport, .bx-wrapper {
-        height: 100%!important;
+        height: auto!important;
+        @include breakpoint($bp-min-641-width) {
+          height: 100%!important;
+        }
       }
       li {
         float: left;
@@ -257,6 +260,8 @@
         width: 33%;
         @extend %aspot-carousel-promo;
         @include breakpoint($bp-640-width) {
+          float: none;
+          height: 56.25vw;
           width: 100%;
         }
       }
@@ -283,8 +288,10 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($between-641-1280) {
       background: none!important;
+    }
+    @include breakpoint($bp-1280-width) {
       bottom: auto;
       left: auto;
       right: 10px;
@@ -293,6 +300,12 @@
     }
     @include breakpoint($bp-1024-width) {
       top: 270px;
+    }
+    @include breakpoint($bp-640-width) {
+      position: relative;
+      right: auto;
+      top: auto;
+      width: 100%;
     }
     & a {
       color: #ffffff;
@@ -320,7 +333,12 @@
         line-height: 60px;
       }
       @include breakpoint($bp-640-width) {
+        font-size: 23px;
         line-height: 100px;
+        padding-left: 30px;
+        &:hover {
+          text-decoration: none;
+        }
       }
       @include breakpoint($bp-480-width) {
         line-height: 60px;
@@ -337,6 +355,12 @@
         margin-top: -4px;
         right: 5px;
         @include breakpoint($bp-min-1901-width) {
+          font-size: 15px;
+          line-height: 15px;
+          right: 10px;
+          margin-top: -7px;
+        }
+        @include breakpoint($bp-640-width) {
           font-size: 15px;
           line-height: 15px;
           right: 10px;

@@ -31,7 +31,7 @@
 
     setSiteNav: function() {
 //usa_debug('=============== setSiteNavPosition\nyScrollPos: ' + yScrollPos + '\nscrollPosTest: ' + yPos);
-      if (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav')) {
+      if (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav') || Drupal.behaviors.ms_global.isScrolledIntoView('#home-usa-logo')) {
         Drupal.behaviors.ms_graceland_cu.hideSiteNav();
       }
       else {

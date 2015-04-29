@@ -207,23 +207,31 @@ body{
   top: 0;
   left: 100%;
   margin: 0;
-  width: 570px;
-  margin-left: calc(-50% - 285px);
+  width: calc(100% - 221px); /* 570px */;
+  margin-left: calc(-50% - ((100% - 221px)/2));
+}
+#site-nav-top {
+  width: 55%;
+  margin: 0 auto;
 }
 #site-nav-top a {
   float: left;
   margin-top: 2%;
 }
 #site-nav-top a#gracelandcu-logo {
-  width: 72.20%;
+  width: 64%; /* 72.20%; */
 }
 #site-nav-top a#gracelandcu-sponsor {
-  width: 27.02%;
+  width: 35.22%; /* 27.02%; */
   margin-left: 0.78%;
 }
-#site-nav ul {
-  width: 70%;
+#site-nav-links {
+  display: table;
   margin: 0 auto;
+  clear: both;
+}
+#site-nav ul {
+  width: 100%;
 }
 #site-nav li {
   float: left;
@@ -360,8 +368,10 @@ section h2 {
 
 /* BEGIN MEDIA QUERIES */
 @media (max-width: 1438px) {
+/*
   #site-nav-center {
     width: 40%;
     margin-left: -70%;
   }
+*/
 }

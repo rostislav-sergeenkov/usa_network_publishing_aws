@@ -100,6 +100,7 @@
   width: 145px;
   overflow: hidden;
   background-color: #999; /* #AEAFB1; */
+  display: table;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .title {
   text-transform: uppercase;
@@ -116,6 +117,10 @@
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
+  padding: 0 8px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
   height: 81px;

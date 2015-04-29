@@ -112,3 +112,21 @@ function usanetwork_tv_shows_update_7019() {
     }
   }
 }
+
+/**
+ * Removes outdatted instances for TV Show (field_usa_autoscroll and field_usa_slide_speed).
+ */
+function usanetwork_tv_shows_update_7020() {
+  $field_instances_to_remove = array(
+    'field_usa_autoscroll',
+    'field_usa_slide_speed',
+  );
+
+  foreach ($field_instances_to_remove as $instance_to_remove) {
+    $field_instance = field_read_instance('node', $instance_to_remove, 'tv_show');
+
+    if (!empty($field_instance)) {
+      field_delete_instance($field_instance);
+    }
+  }
+}

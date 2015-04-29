@@ -17,6 +17,8 @@
         <?php endforeach; ?>
       </ul>
     </div>
+    <a href="javascript:void(0)" class="schedule-navigation-controls jcarousel-control-prev"></a>
+    <a href="javascript:void(0)" class="schedule-navigation-controls jcarousel-control-next"></a>
   <?php endif; ?>
   <div class="shows-filters">
     <div class="item-filter show-filter">

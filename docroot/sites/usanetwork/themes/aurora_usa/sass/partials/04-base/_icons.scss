@@ -1,5 +1,6 @@
 .meta-icon {
   background-size: contain;
+  @extend %meta-icon;
 }
 /*
 .play-icon, .video-icon {

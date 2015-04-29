@@ -9557,6 +9557,123 @@ footer {
   position: relative;
   width: 100%;
 }
+footer .block-usanetwork-lyris {
+  background: #dbdcdd;
+  padding: 30px 0;
+  border-top: 1px solid #a3a3a3;
+}
+@media (max-width: 1024px) {
+  footer .block-usanetwork-lyris {
+    padding: 20px 0;
+  }
+}
+footer .block-usanetwork-lyris form > div {
+  margin: 0 auto;
+  max-width: 1100px;
+  width: 100%;
+  color: #3d3d3d;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-transform: uppercase;
+  text-align: center;
+}
+footer .block-usanetwork-lyris form > div .placeholder {
+  font-style: normal;
+}
+footer .block-usanetwork-lyris form > div label {
+  display: inline-block;
+  padding-right: 35px;
+}
+@media (max-width: 1280px) {
+  footer .block-usanetwork-lyris form > div label {
+    padding-right: 18px;
+  }
+}
+@media (max-width: 768px) {
+  footer .block-usanetwork-lyris form > div label {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+}
+footer .block-usanetwork-lyris form > div .form-item-email {
+  display: inline-block;
+  padding-right: 35px;
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  footer .block-usanetwork-lyris form > div .form-item-email {
+    padding-right: 18px;
+  }
+}
+footer .block-usanetwork-lyris form > div .form-item-email input {
+  color: #3d3d3d;
+  background: none;
+  border: 2px solid #3d3d3d;
+  outline: none;
+  padding: 0 20px;
+  margin: 0;
+  height: inherit;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 26px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+footer .block-usanetwork-lyris form > div .form-item-email input::-webkit-input-placeholder {
+  color: #3d3d3d;
+  text-transform: uppercase;
+}
+footer .block-usanetwork-lyris form > div .form-item-email input::-moz-placeholder {
+  color: #3d3d3d;
+  text-transform: uppercase;
+}
+footer .block-usanetwork-lyris form > div .form-item-email input:-moz-placeholder {
+  color: #3d3d3d;
+  text-transform: uppercase;
+}
+footer .block-usanetwork-lyris form > div .form-item-email input:-ms-input-placeholder {
+  color: #3d3d3d;
+  text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  footer .block-usanetwork-lyris form > div .form-item-email input {
+    border-width: 1px;
+  }
+}
+@media (max-width: 480px) {
+  footer .block-usanetwork-lyris form > div .form-item-email input {
+    display: block;
+    padding: 0 5px;
+  }
+}
+footer .block-usanetwork-lyris form > div .form-submit-wrapper {
+  display: inline-block;
+  position: relative;
+}
+footer .block-usanetwork-lyris form > div .form-submit-wrapper input {
+  background: #d63c17;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 30px;
+  letter-spacing: 1px;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  padding: 0 40px 0 20px;
+  position: relative;
+}
+footer .block-usanetwork-lyris form > div .form-submit-wrapper:after {
+  color: #ffffff;
+  content: "\e608";
+  display: block;
+  font-family: "ico-font";
+  font-size: 16px;
+  position: absolute;
+  left: 76px;
+  top: 0;
+}
 footer .footer-menu-wrapper {
   max-width: 1000px;
   margin: 0 auto;

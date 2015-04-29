@@ -1299,7 +1299,7 @@ function _usanetwork_tv_shows_submenu() {
       }
     }
   }
-//kpr($show_menus);die;
+  
   return theme('usanetwork_tv_shows_submenu', array(
     'show_title' => $show_title,
     'weekday' => isset($show_weekday) ? $show_weekday : NULL,

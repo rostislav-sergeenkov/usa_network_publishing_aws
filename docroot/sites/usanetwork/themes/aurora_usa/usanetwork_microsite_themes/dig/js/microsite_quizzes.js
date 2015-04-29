@@ -365,6 +365,9 @@
 
     // ATTACH
     attach: function (context, settings) {
+      if ($('#quizzes').find('.full-pane').length == 0) {
+        return;
+      }
       var self = this;
       self.siteName = Drupal.settings.microsites_settings.title;
       self.basePath = Drupal.settings.microsites_settings.microsite_theme_path;

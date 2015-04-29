@@ -1499,7 +1499,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
     // Walk through connected sections
     $i = 1;
     $current_section_type = _usanetwork_microsite_get_current_section_type();
-    foreach ($node_wrapper->field_ms_section as $section_wrapper) {
+    foreach ($node_wrapper->field_ms_section as $delta => $section_wrapper) {
       $sections_no_ajax = _usanetwork_microsite_process_setting_data('sections_no_ajax', 'array');
       $section_type = $section_wrapper->field_ms_section_type->value();
 
@@ -1511,7 +1511,8 @@ function _usanetwork_microsite_get_theme_variables($node) {
       }
 
       $content = ' ';
-      if ($current_section_type == $section_type || in_array($section_type, $sections_no_ajax)) {
+      $use_section_ajax = _usanetwork_microsite_process_setting_data('sections_use_ajax', 'bool');
+      if (!$use_section_ajax || $current_section_type == $section_type || in_array($section_type, $sections_no_ajax)) {
         $content = _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper, $node, $blocks_variables);
       }
 
@@ -1519,6 +1520,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
         'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i, 'class' => 'scroll-link'))),
+        'delta' => (string) $delta,
 //        'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
         'content' => $content,
       );

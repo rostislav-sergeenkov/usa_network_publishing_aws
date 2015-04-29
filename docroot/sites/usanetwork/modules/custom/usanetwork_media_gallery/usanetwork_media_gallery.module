@@ -200,35 +200,6 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
   );
 }
 
-/**
- * Implements hook_image_default_styles().
- */
-function usanetwork_media_gallery_image_default_styles() {
-  $styles = array();
-
-  $styles['1512x851'] = array(
-    'effects' => array(
-      array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 1512,
-          'height' => 851,
-        ),
-        'weight' => 0,
-      ),
-      array(
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 1512,
-          'height' => 851,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
-  return $styles;
-}
 
 /**
  * Renders main gallery block for consumptionator page.
@@ -272,9 +243,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block() {
         $slide_variables = array(
           'gigya_id' => NULL,
           'image' => theme_image(array(
-            'path' => !empty($gallery_file->uri)
-              ? image_style_url('1512x851', $gallery_file->uri)
-              : '',
+            'path' => $gallery_file->uri,
             'attributes' => array(),
           )),
           'info' => array(

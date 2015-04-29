@@ -2131,5 +2131,38 @@ function usanetwork_context_context_default_contexts() {
   t('sitewide');
   $export['usanetwork_sitewide_file'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'videos_landing';
+  $context->description = 'Show Videos Landing Page';
+  $context->tag = 'show';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/videos' => 'node/*/videos',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_video_lmb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_video_lmb',
+          'region' => 'content',
+          'weight' => '0',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Videos Landing Page');
+  t('show');
+  $export['videos_landing'] = $context;
+
   return $export;
 }

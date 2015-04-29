@@ -5594,6 +5594,7 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .asset-img
 header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta {
   display: block;
   margin-top: -19px;
+  max-width: none;
   position: absolute;
   top: 50%;
 }
@@ -5636,6 +5637,7 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper {
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta {
   display: table-cell;
+  max-width: 100px;
   overflow: hidden;
   text-align: center;
   text-overflow: ellipsis;

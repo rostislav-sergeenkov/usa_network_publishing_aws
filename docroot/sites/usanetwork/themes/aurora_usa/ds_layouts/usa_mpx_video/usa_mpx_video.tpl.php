@@ -40,7 +40,7 @@
                 class="first-line"><?php print t('Please sign in with your TV provider to unlock live tv viewing.'); ?></span>
             <?php else: ?>
               <span
-                class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
+                class="first-line"><?php print t('sign in with your TV provider to watch full episodes.'); ?></span>
             <?php endif; ?>
           </div>
           <div id="player">
@@ -56,6 +56,9 @@
                   src="<?php print '/' . path_to_theme() . '/images/usa_liveTV.jpg'; ?>"
                   alt=""/>
               <?php endif; ?>
+              <div class="sign-in-wrapper">
+                <span class="sign-in-button"><?php print t('sign in and watch'); ?></span>
+              </div>
             </a>
           </div>
         </div>

@@ -33,6 +33,7 @@ function usanetwork_social_meter_field_default_field_bases() {
         'post' => 'post',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'catchall_page' => 'catchall_page',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

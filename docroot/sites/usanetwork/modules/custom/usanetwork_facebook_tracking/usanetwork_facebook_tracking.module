@@ -34,7 +34,7 @@ function usanetwork_facebook_tracking_page_build(&$page) {
         ),
       ), 'setting');
       $page['footer']['usanetwork_facebook_tracking'] = array(
-        '#markup' => '<noscript><img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=' . USANETWORK_FACEBOOK_TRACKING_ID . '&amp;ev=NoScript" /></noscript>',
+        '#markup' => usanetwork_facebook_tracking_html(),
       );
     }
   }
@@ -51,4 +51,11 @@ function _usanetwork_facebook_tracking_enabled($entity, $entity_type) {
     }
   }
   return false;
+}
+
+/**
+ * Returns HTML script tag for tracking facebook.
+ */
+function usanetwork_facebook_tracking_html() {
+  return  '<noscript><img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=' . USANETWORK_FACEBOOK_TRACKING_ID . '&amp;ev=NoScript" /></noscript>';
 }

@@ -86,6 +86,7 @@ function aurora_usa_preprocess_html(&$vars) {
     if ($entity->filemime == 'video/mpx') {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
       $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js');
     }
     $show_id = _usanetwork_get_field_item('file', $entity, 'field_show', 'target_id');
     if (!empty($show_id)) {

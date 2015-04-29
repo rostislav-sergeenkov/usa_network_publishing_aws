@@ -82,9 +82,6 @@
           pagerItemLink = pager.find('.bx-pager-link'),
           controlsButtons = container.find('.bx-controls-direction a');
 
-      // add class show-color
-      pagerItemLink.addClass('show-color');
-
       //make pager position
       pagerPosition(pager);
 
@@ -116,7 +113,7 @@
 
         switch (slideIndex) {
           default:
-            return '<img src="' + src + '">';
+            return '<div class="show-color"></div><img src="' + src + '">';
         }
       },
       controls: true,
@@ -125,8 +122,9 @@
       mode: 'fade',
       nextText: '',
       prevText: '',
-      speed: 600,
       adaptiveHeight: true,
+      adaptiveHeightSpeed: 200,
+      speed: 600,
       onSliderLoad: pagerItems
     };
 

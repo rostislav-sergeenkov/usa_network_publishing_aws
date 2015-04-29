@@ -91,12 +91,101 @@
             height: 32.55vw;
             width: 57%;
           }
+          @include breakpoint($bp-768-width) {
+            height: 55.65vw;
+          }
         }
         &.last {
           @include breakpoint($between-769-1280) {
             clear: both;
+            height: auto;
             overflow: visible;
             width: 100%;
+          }
+          @include breakpoint($bp-768-width) {
+            height: auto;
+          }
+          >div:not(.advert-block) {
+            @include breakpoint($between-769-1280) {
+              float: left;
+              height: 26.2vw;
+              margin-bottom: 0;
+              margin-right: 0.8%;
+              margin-top: 0.8vw;
+              width: 32.8%;
+            }
+            @include breakpoint($bp-768-width) {
+              height: 55.65vw;
+              margin-right: 0;
+              width: 100%;
+            }
+            .meta-wrapper {
+              @include breakpoint($between-641-768) {
+                background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
+                background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+                height: 25%;
+              }
+              @include breakpoint($bp-640-width) {
+                height: 29%;
+              }
+            }
+            @include breakpoint($bp-768-width) {
+              .caption {
+                font-size: 14px;
+                line-height: 18px;
+              }
+              .title {
+                font-size: 20px;
+                line-height: 26px;
+              }
+              .additional {
+                font-size: 14px;
+                line-height: 18px;
+              }
+              .meta-icon {
+                left: 4%;
+                height: 42px;
+                margin-top: -21px;
+                width: 42px;
+                ~ .meta {
+                  padding-left: calc(8% + 42px);
+                }
+              }
+            }
+            @include breakpoint($bp-480-width) {
+              .caption {
+                font-size: 10px;
+                line-height: 13px;
+              }
+              .title {
+                font-size: 14px;
+                line-height: 18px;
+              }
+              .additional {
+                font-size: 10px;
+                line-height: 13px;
+              }
+              .meta-icon {
+                left: 4%;
+                height: 30px;
+                margin-top: -15px;
+                width: 30px;
+                ~ .meta {
+                  padding-left: calc(8% + 30px);
+                }
+              }
+            }
+
+          }
+          >div:nth-child(3) {
+            @include breakpoint($between-769-1280) {
+              margin-right: 0;
+            }
           }
           .advert-block {
             @include breakpoint($between-769-1280) {
@@ -105,6 +194,9 @@
               position: absolute;
               right: 0;
               width: 41.67%;
+            }
+            @include breakpoint($bp-768-width) {
+              display: none;
             }
           }
         }

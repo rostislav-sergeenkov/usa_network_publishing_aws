@@ -980,6 +980,7 @@ function usanetwork_mpx_video_full_video_autocomplete($title = '') {
  * Renders live video page
  */
 function usanetwork_mpx_video_live() {
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js');
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
   return '';
 }

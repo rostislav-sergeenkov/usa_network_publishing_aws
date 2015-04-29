@@ -827,6 +827,8 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
  */
 function usanetwork_tv_schedule_schedule_page() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.filter.js');
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.jcarousel.min.js', 'file');
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js', 'file');
 
   // - show_nid - the node id for Show filter
   // - show_time - the timerange name for Time filter

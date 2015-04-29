@@ -28,17 +28,21 @@
         z-index: 2;
       }
       @include breakpoint($bp-1024-width) {
-        height: 56.25vw;
+        height: calc(56.25vw + 130px);
         width: 100%;
       }
-      @include breakpoint($bp-1024-width) {
-        height: 100%;
+      @include breakpoint($bp-768-width) {
+        height: calc(56.25vw + 145px);
+      }
+      @include breakpoint($bp-640-width) {
+        height: calc(56.25vw + 280px)
       }
       > .node {
         height: 100%;
         width: 100%;
       }
       .bx-wrapper {
+        height: 100%;
         position: relative;
         &:hover {
           .bx-viewport {
@@ -61,20 +65,35 @@
           }
         }
         .bx-viewport {
+          height: 100% !important;
           .bxslider-gallery {
+            height: 100%;
             .slide {
               background: $usa-logo-back;
               position: relative;
+              height: 100% !important;
               .node {
+                height: 100%;
                 .asset-img  {
+                  height: 100%;
+                  position: relative;
                   @include breakpoint($bp-1024-width) {
-                    margin-bottom: 130px;
+                    height: calc(100% - 130px);
+                    overflow: hidden;
                   }
                   @include breakpoint($bp-768-width) {
-                    margin-bottom: 145px;
+                    height: calc(100% - 145px);
                   }
                   @include breakpoint($bp-640-width) {
-                    margin-bottom: 280px;
+                    height: calc(100% - 280px);
+                  }
+                  img {
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    margin: auto;
+                    position: absolute;
                   }
                 }
                 .slide-info {
@@ -260,6 +279,12 @@
             overflow: hidden;
             position: absolute;
             z-index: 51;
+            @include breakpoint($bp-768-width) {
+              bottom: 120px;
+            }
+            @include breakpoint($bp-640-width) {
+              bottom: 245px;
+            }
           }
           .bx-custom-pager {
             display: none;
@@ -286,12 +311,6 @@
                 width: auto;
               }
             }
-            @include breakpoint($bp-768-width) {
-              bottom: 120px;
-            }
-            @include breakpoint($bp-640-width) {
-              bottom: 245px;
-            }
             .bx-pager-item {
               margin: 0 15px 15px auto;
               position: relative;
@@ -311,14 +330,18 @@
                 margin-bottom: 0;
               }
               .bx-pager-link {
-                border-radius: 50%;
                 display: block;
                 margin-left: auto;
                 position: relative;
                 height: 15px;
                 width: 15px;
                 &:not(.active) {
-                  background: $consup-gallery-pager;
+                  div {
+                    background: $consup-gallery-pager;
+                    border-radius: 50%;
+                    height: 100%;
+                    width: 100%;
+                  }
                 }
                 &:hover {
                   img {
@@ -343,6 +366,11 @@
                       display: none;
                     }
                   }
+                }
+                div {
+                  border-radius: 50%;
+                  height: 100%;
+                  width: 100%;
                 }
                 img {
                   display: none;

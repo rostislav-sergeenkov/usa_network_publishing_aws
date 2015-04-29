@@ -180,7 +180,7 @@
         &:hover {
           cursor: pointer;
           .locked-msg,
-          a:after {
+          .sign-in-wrapper {
             display: block;
           }
           img {
@@ -188,19 +188,68 @@
             transition: opacity 0.3s ease-in-out;
           }
         }
-        a:after {
+        .sign-in-wrapper {
           display: none;
+          left: 0;
+          padding: 20px 0;
           position: absolute;
-          left: 50%;
+          text-align: center;
           top: 55%;
-          width: 296px;
-          height: 39px;
-          margin-left: -148px;
-          content: " ";
-          background:url('../images/sign_in_key.png') center top no-repeat;
+          width: 100%;
+          @include breakpoint($bp-1280-width) {
+            padding: 15px 0;
+            .sign-in-button {
+              padding: 15px 50px 15px 15px;
+            }
+          }
+          @include breakpoint($bp-1024-width) {
+            padding: 10px 0;
+            .sign-in-button {
+              font-size: 12px;
+              padding: 10px 40px 10px 10px;
+              &:after {
+                font-size: 12px;
+                line-height: 12px;
+                margin-right: -6px;
+                margin-top: -6px;
+                right: 20px;
+              }
+            }
+          }
         }
+        .sign-in-button {
+          background: #ffffff;
+          color: #000000;
+          padding: 20px 50px 20px 20px;
+          position: relative;
+          text-transform: uppercase;
+          &:after{
+            color: #000000;
+            content: "\e608";
+            display: block;
+            font-family: "ico-font";
+            font-size: 15px;
+            line-height: 15px;
+            position: absolute;
+            top: 50%;
+            margin-right: -7px;
+            margin-top: -8px;
+            right: 25px;
+          }
+        }
+//        a:after {
+//          display: none;
+//          position: absolute;
+//          left: 50%;
+//          top: 55%;
+//          width: 296px;
+//          height: 39px;
+//          margin-left: -148px;
+//          content: " ";
+//          background:url('../images/sign_in_key.png') center top no-repeat;
+//        }
         &.inactive {
-          a:after {
+          .sign-in-button {
             display: none;
           }
           &:hover {
@@ -468,6 +517,7 @@
             display: block;
             font-size: 26px;
             line-height: 45px;
+            text-transform: uppercase;
             @include breakpoint($bp-1024-width) {
               font-size: 20px;
               line-height: 36px;

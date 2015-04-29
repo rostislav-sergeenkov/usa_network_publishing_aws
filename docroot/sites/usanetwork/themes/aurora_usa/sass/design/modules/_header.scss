@@ -961,6 +961,7 @@ header {
                 .meta {
                   display: block;
                   margin-top: -19px;
+                  max-width: none;
                   position: absolute;
                   top: 50%;
                   @include breakpoint($bp-1024-width) {
@@ -1000,6 +1001,7 @@ header {
               width: 100%;
               .meta {
                 display: table-cell;
+                max-width: 100px;
                 overflow: hidden;
                 text-align: center;
                 text-overflow: ellipsis;

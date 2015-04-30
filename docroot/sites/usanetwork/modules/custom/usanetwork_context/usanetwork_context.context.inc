@@ -2153,6 +2153,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '0',
         ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_video_vl' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_video_vl',
+          'region' => 'content',
+          'weight' => '1',
+        ),
       ),
     ),
   );
@@ -2162,6 +2168,7 @@ function usanetwork_context_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Show Videos Landing Page');
   t('show');
+
   $export['videos_landing'] = $context;
 
   return $export;

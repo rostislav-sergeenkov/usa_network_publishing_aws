@@ -1360,7 +1360,6 @@ function _usanetwork_tv_shows_submenu() {
     $show_title = $show->title;
   }
   $show_title = decode_entities($show_title);
-  $show_color = usanetwork_tv_shows_color_show_css_class($show);
   $usa_tv_tune_in_date = field_get_items('node', $show, 'field_usa_tv_tune_in_date');
   if (is_array($usa_tv_tune_in_date) && !empty($usa_tv_tune_in_date[0]['value'])) {
     $show_tunein = explode(' ', $usa_tv_tune_in_date[0]['value']);
@@ -1389,12 +1388,17 @@ function _usanetwork_tv_shows_submenu() {
       $show_menu_item = entity_load('field_collection_item', array($link['value']));
       $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
       if ($show_menu_item_main_link) {
-        $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $show_menu_item_main_link[0]['url'], array(
+        $classes = array(
+          'secondary',
+          'show-color',
+        );
+        $menu_item_url = $show_menu_item_main_link[0]['url'];
+        if (!empty($menu_item_url) && strncasecmp($menu_item_url, request_path(), strlen($menu_item_url)) == 0) {
+          $classes[] = 'active';
+        }
+        $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $menu_item_url, array(
           'attributes' => array(
-            'class' => array(
-              'secondary',
-              $show_color,
-            ),
+            'class' => $classes,
           ),
         ));
       }

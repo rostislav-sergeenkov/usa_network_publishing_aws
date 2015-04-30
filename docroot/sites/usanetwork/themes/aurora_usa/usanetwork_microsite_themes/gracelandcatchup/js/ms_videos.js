@@ -312,7 +312,7 @@
           filterItem.removeClass('active');
           $(this).addClass('active');
 
-          var categoryName = $('#video-filter .filter-item.active').text(),
+          var categoryName = $('#video-filter .filter-item.active').attr('data-filter-name'),
               offset = 0,
               url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
 

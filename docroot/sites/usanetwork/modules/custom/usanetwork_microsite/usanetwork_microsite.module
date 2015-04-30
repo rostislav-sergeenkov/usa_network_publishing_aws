@@ -213,7 +213,7 @@ function usanetwork_microsite_process_file_entity(&$variables) {
       ) {
         $variables['classes'] .= ' tve-video-auth';
       }
-      if(_usanetwork_microsite_process_setting_data('short_name_for_full_episodes', 'bool')) {
+      if(_usanetwork_microsite_process_setting_data('short_name_for_full_episodes', 'bool', $node)) {
         $is_full_episode = _usanetwork_microsite_define_full_episode($variables['file']);
         if ($is_full_episode) {
           $name = _usanetwork_microsite_get_short_name_for_video($variables['file']);
@@ -1143,11 +1143,15 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
             $children[] = array(
               'data' => $season_name,
               'class' => array('filter-child-item'),
-              'data_season_num' => $child_type,
+              'data-season-num' => $child_type,
             );
           }
         }
-        $items[$id] = array('data' => $type, 'class' => array('filter-item'));
+        $items[$id] = array(
+          'data' => $type,
+          'class' => array('filter-item'),
+          'data-filter-name' => $type,
+        );
         if (!empty($children)) {
           $items[$id]['children'] = $children;
         }
@@ -3269,8 +3273,8 @@ function usanetwork_microsite_deliver_js($js) {
  *    - numeric
  * @return mixed
  */
-function _usanetwork_microsite_process_setting_data($setting_key, $value_type = 'string') {
-  $settings = usanetwork_microsite_get_theme_settings();
+function _usanetwork_microsite_process_setting_data($setting_key, $value_type = 'string', $microsite_node = NULL) {
+  $settings = usanetwork_microsite_get_theme_settings($microsite_node);
   $setting = $settings[$setting_key];
   switch ($value_type) {
     case 'bool':
@@ -3320,11 +3324,14 @@ function usanetwork_microsite_default_get_theme_settings() {
  *
  * @return array()
  */
-function usanetwork_microsite_get_theme_settings($reset = FALSE) {
+function usanetwork_microsite_get_theme_settings($microsite_node = NULL, $reset = FALSE) {
   $settings = &drupal_static(__FUNCTION__);
   if (!isset($settings_theme) || $reset) {
     $settings_theme = array();
-    $node = menu_get_object();
+    $node = $microsite_node;
+    if (!$microsite_node) {
+      $node = menu_get_object();
+    }
     $settinga_default = usanetwork_microsite_default_get_theme_settings();
     if (empty($node)) {
       return $settinga_default;
@@ -3333,6 +3340,12 @@ function usanetwork_microsite_get_theme_settings($reset = FALSE) {
     $theme_function = 'usanetwork_microsite_' . $node_wrapper->field_ms_theme->value() . '_get_theme_settings';
     if (is_callable($theme_function)) {
       $settings_theme = $theme_function();
+    }
+    else {
+      _usanetwork_microsite_include_themes_info($node_wrapper->field_ms_theme->value());
+      if (is_callable($theme_function)) {
+        $settings_theme = $theme_function();
+      }
     }
     $settings = $settings_theme + $settinga_default;
   }

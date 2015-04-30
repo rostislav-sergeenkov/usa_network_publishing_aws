@@ -303,11 +303,13 @@ ul, li {
 .timelineFlat #timeline-line-full-right {
 	right: -203px;
 }
-.timelineFlat #timeline-line-full-left .title {
-  margin-right: 6px;
-}
+.timelineFlat #timeline-line-full-left .title,
 .timelineFlat #timeline-line-full-right .title {
-  margin-left: 6px;
+  margin-right: 6px;
+  font-size: 24px;
+  width: 120px;
+  text-transform: uppercase;
+	color: #56000A;
 }
 .timelineFlat #timeline-line-full-left .arrow,
 .timelineFlat #timeline-line-full-right .arrow {

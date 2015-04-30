@@ -100,6 +100,7 @@
   width: 145px;
   overflow: hidden;
   background-color: #999; /* #AEAFB1; */
+  display: table;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .title {
   text-transform: uppercase;
@@ -116,6 +117,10 @@
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
+  padding: 0 8px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
   height: 81px;
@@ -285,6 +290,9 @@
   margin-bottom: 90px;
 }
 /* video-filter */
+#videos .filter-wrapper {
+  margin: 20px 0 0;
+}
 #video-filter {
   width: 100%;
   text-align: center;
@@ -311,146 +319,42 @@
   line-height: 1.6em;
   color: #FFF;
   text-transform: uppercase;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 #video-filter li.filter-item:hover,
 #video-filter li.filter-item.active {
   background-color: #56000A;
 }
-/*
-#videos .filter-wrapper {
-  margin-bottom: 20px;
-  max-width: 615px;
-}
-#videos #video-filter {
-  background-color: #000000;
-  position: relative;
-  width: 300px;
-}
-#videos #video-filter .filter-menu {
-  background-color: #121212;
-  border-bottom: 2px solid #13242a;
-  border-left: 2px solid #13242a;
-  border-right: 2px solid #13242a;
+#video-filter li.filter-item .item-list {
   display: none;
-  padding: 25px 0;
   position: absolute;
-  width: 100%;
-  z-index: 5;
-}
-#videos #video-filter .filter-label {
-  background-color: #13242a;
-  cursor: pointer;
+  top: 32px;
+  left: 0;
+  margin: 0;
+  z-index: 10;
   width: 100%;
 }
-#videos #video-filter .filter-label span {
-  color: #ffffff;
-  font-family: 'Proxima N W01 Reg', Arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 52px;
-  padding-left: 15px;
-  position: relative;
-  text-transform: uppercase;
-}
-#videos #video-filter .filter-label span:before {
-  position: absolute;
-  content: "";
+#video-filter li.filter-item .item-list ul {
   display: block;
-  width: 0;
-  height: 0;
-  border: 14px solid transparent;
-  border-top: 14px solid #13242a;
-  top: 6px;
-  right: -30px;
-  z-index: 6;
 }
-#videos #video-filter .filter-label span:after {
-  position: absolute;
-  content: "";
+#video-filter li.filter-item:hover .item-list {
   display: block;
-  width: 0;
-  height: 0;
-  border: 14px solid transparent;
-  border-top: 14px solid #a7a7a7;
-  top: 10px;
-  right: -30px;
-  z-index: 5;
 }
-#videos #video-filter .filter-label.open span:before {
-  position: absolute;
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-top: 10px solid #13242a;
-  margin-top: -8px;
-  top: 50%;
-  right: -30px;
-  z-index: 6;
-}
-#videos #video-filter .filter-label.open span:after {
-  position: absolute;
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-top: 10px solid #a7a7a7;
-  margin-top: -4px;
-  top: 50%;
-  right: -30px;
-  z-index: 5;
-}
-#videos #video-filter .filter-label span:before {
-  position: absolute;
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-left: 10px solid #13242a;
-  margin-top: -10px;
-  top: 50%;
-  right: -40px;
-  z-index: 6;
-}
-#videos #video-filter .filter-label span:after {
-  position: absolute;
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-left: 10px solid #a7a7a7;
-  margin-top: -10px;
-  top: 50%;
-  right: -44px;
-  z-index: 5;
-}
-#videos #video-filter .filter-menu {
-  background-color: #000000;
-  display: none;
-  padding: 20px 0;
-  position: absolute;
+#video-filter li.filter-child-item {
   width: 100%;
-  z-index: 5;
+  display: inline-block;
+  text-align: center;
+  background-color: #68000B;
+  margin: 0;
+  padding: 8px 0;
+  color: #FFF;
 }
-#videos #video-filter .filter-item {
-  color: #ffffff;
-  cursor: pointer;
-  margin-left: 15px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
+#video-filter li.filter-child-item:hover {
+  color: #FFE476;
 }
-#videos #video-filter .filter-item:last-child {
-  margin-bottom: 0;
-}
-#videos #video-filter .filter-item:hover,
-#videos #video-filter .filter-item.active {
-  color: #e5ce96;
-}
-*/
+
 /* button more / close */
 #thumbnail-list .thumbnail.hidden {
   display: none;
@@ -466,6 +370,11 @@
 }
 #microsite #videos .expandable-toggle-wrap ul li {
   margin: 0;
+}
+
+/* full pane */
+#microsite #videos .full-pane {
+  margin-top: 40px;
 }
 
 /* BEGIN MEDIA BREAKPOINTS */

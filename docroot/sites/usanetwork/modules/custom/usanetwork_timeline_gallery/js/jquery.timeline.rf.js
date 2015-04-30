@@ -996,8 +996,6 @@ usa_debug(nodes);
             $this.timeline('goTo', '01/01/02');
             $(this).find('.timeline-node:last').addClass('active');
           });
-
-          $('.svg').inlineSVG();
         } // end createElements
       }; // end t_methods
 

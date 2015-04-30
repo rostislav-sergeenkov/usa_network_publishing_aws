@@ -1111,7 +1111,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         $show_in_player = $v_key;
         $state = 'active';
       }
-      elseif(empty($video_for_player) && $first_output_id == $v_key) {
+      elseif (empty($video_for_player) && $first_output_id == $v_key) {
         $state = 'active';
         $show_in_player = $first_output_id;
       }
@@ -1151,9 +1151,13 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           ksort($type_el);
           foreach($type_el as $child_type => $parrent_type_name) {
             $season_name = 'Season ' . $child_type;
+            $classes = array('filter-child-item');
+            if ($child_type == $active_season) {
+              $classes[] = 'active';
+            }
             $children[] = array(
               'data' => $season_name,
-              'class' => array('filter-child-item'),
+              'class' => $classes,
               'data-season-num' => $child_type,
             );
           }

@@ -56,12 +56,12 @@ function usanetwork_menu_block_info() {
 
   $blocks['usanetwork_menu_sm_main'] = array(
     'info' => t('Homepage Menu: Main menu'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   $blocks['usanetwork_menu_sm_all_shows'] = array(
     'info' => t('Homepage Menu: Shows: All Shows'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   $blocks['usanetwork_menu_sm_primetime'] = array(
@@ -421,7 +421,7 @@ function _usanetwork_menu_main_menu_block() {
       ),
     );
   }
-  
+
   foreach ($menu_links as $item) {
     if (!$item['hidden']) {
       $items[] = array(
@@ -432,7 +432,6 @@ function _usanetwork_menu_main_menu_block() {
       );
     }
   }
-
   return theme('usanetwork_item_list', array(
     'title' => NULL,
     'items' => $items,
@@ -440,8 +439,9 @@ function _usanetwork_menu_main_menu_block() {
     'attributes' => array(
       'class' => array(
         'menu',
-      )
+      ),
     ),
+    'links_set' => 'category',
   ));
 }
 

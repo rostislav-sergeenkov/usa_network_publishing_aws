@@ -282,7 +282,7 @@ function theme_usanetwork_item_list($variables) {
 
           if (!empty($current_shows)) {
 
-            $links[] = '<span class="no-link">' . t('Shows') . '</span>';
+            $links[] = '<span class="no-link">' . t('Current shows') . '</span>';
 
             foreach ($current_shows as $current_show_link) {
               $links[] = l($current_show_link->node_title, 'node/' . $current_show_link->nid);

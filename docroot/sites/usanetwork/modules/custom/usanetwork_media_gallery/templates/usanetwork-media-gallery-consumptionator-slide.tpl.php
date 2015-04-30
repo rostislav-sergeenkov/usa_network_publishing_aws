@@ -18,13 +18,9 @@
     <div class="slider-counter"></div>
     <?php if ($gigya_id): ?>
       <div class="social-bar">
-        <div class="social-title">
-          Share this image
-        </div>
         <div class="social-icons icons-block" id="<?php print $gigya_id; ?>">
         </div>
       </div>
     <?php endif; ?>
   </div>
 </div>
-

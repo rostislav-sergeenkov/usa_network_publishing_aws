@@ -13,11 +13,11 @@
   </div>
   <div class="slide-info">
     <div class="description">
-      <?php if (isset($info['description'])): ?><?php print $info['description'] ?><?php endif; ?>
+      <?php if (!empty($info['description'])): ?><?php print $info['description'] ?><?php endif; ?>
     </div>
     <div class="slider-counter">
       <span class="gallery-name">
-        <?php if (isset($info['gallery_name'])): ?><?php print $info['gallery_name']; ?><?php endif; ?>
+        <?php if (!empty($info['gallery_name'])): ?><?php print $info['gallery_name']; ?><?php endif; ?>
       </span>
       <span class="slide-index"></span>
     </div>

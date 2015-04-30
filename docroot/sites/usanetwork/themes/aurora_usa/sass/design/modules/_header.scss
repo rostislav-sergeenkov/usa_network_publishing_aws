@@ -153,6 +153,40 @@ header {
               }
             }
           }
+          &.header-show-menu {
+            a {
+              border-bottom: 0 !important;
+            }
+            ul.menu {
+              > li {
+                > a {
+                  &:before {
+                    bottom: 0px;
+                    content: '';
+                    height: 1px;
+                    left: 0px;
+                    display: block;
+                    width: 100%;
+                    position: absolute;
+                  }
+                }
+                li {
+                  a {
+                    &:before {
+                      left: 60px;
+                    }
+                  }
+                }
+                &:last-child {
+                  a {
+                    &:before {
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
         > li {
           height: 50px;
@@ -161,7 +195,7 @@ header {
           a {
             background: $bottom-footer-back;
             border-bottom: 2px solid $header-tab-back-hover;
-            color: $footer-links;
+            color: #ffffff;
             cursor: pointer;
             display: block;
             font-family: $avalon-demi;
@@ -206,7 +240,7 @@ header {
             position: relative;
             width: 100%;
             li {
-              height: 30px;
+              height: 40px;
               position: relative;
               width: 100%;
               &.expanded {
@@ -219,46 +253,12 @@ header {
               a {
                 background: $header-tab-back-hover;
                 border-bottom: 1px solid $footer-links;
-                line-height: 30px;
+                line-height: 40px;
                 padding-left: 40px;
               }
               ul.menu {
                 a {
                   padding-left: 50px;
-                }
-              }
-            }
-          }
-          &.show-menu-header {
-            a {
-              border-bottom: 0 !important;
-            }
-            ul.menu {
-              > li {
-                > a {
-                  &:before {
-                    bottom: 0px;
-                    content: '';
-                    height: 1px;
-                    left: 0px;
-                    display: block;
-                    width: 100%;
-                    position: absolute;
-                  }
-                }
-                li {
-                  a {
-                    &:before {
-                      left: 60px;
-                    }
-                  }
-                }
-                &:last-child {
-                  a {
-                    &:before {
-                      display: none;
-                    }
-                  }
                 }
               }
             }

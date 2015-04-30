@@ -4585,6 +4585,24 @@ header .nav-bar-tabs {
     height: 10px;
     width: 10px;
   }
+  header .nav-bar-tabs ul li.header-show-menu a {
+    border-bottom: 0 !important;
+  }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li > a:before {
+    bottom: 0px;
+    content: '';
+    height: 1px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    position: absolute;
+  }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li li a:before {
+    left: 60px;
+  }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li:last-child a:before {
+    display: none;
+  }
   header .nav-bar-tabs ul > li {
     height: 50px;
     position: relative;
@@ -4593,7 +4611,7 @@ header .nav-bar-tabs {
   header .nav-bar-tabs ul > li a {
     background: #757575;
     border-bottom: 2px solid darkgrey;
-    color: #dcddde;
+    color: #ffffff;
     cursor: pointer;
     display: block;
     font-family: "avalonbold", Helvetica, Arial, sans-serif;
@@ -4645,7 +4663,7 @@ header .nav-bar-tabs {
     width: 100%;
   }
   header .nav-bar-tabs ul > li ul.menu li {
-    height: 30px;
+    height: 40px;
     position: relative;
     width: 100%;
   }
@@ -4655,29 +4673,11 @@ header .nav-bar-tabs {
   header .nav-bar-tabs ul > li ul.menu li a {
     background: darkgrey;
     border-bottom: 1px solid #dcddde;
-    line-height: 30px;
+    line-height: 40px;
     padding-left: 40px;
   }
   header .nav-bar-tabs ul > li ul.menu li ul.menu a {
     padding-left: 50px;
-  }
-  header .nav-bar-tabs ul > li.show-menu-header a {
-    border-bottom: 0 !important;
-  }
-  header .nav-bar-tabs ul > li.show-menu-header ul.menu > li > a:before {
-    bottom: 0px;
-    content: '';
-    height: 1px;
-    left: 0px;
-    display: block;
-    width: 100%;
-    position: absolute;
-  }
-  header .nav-bar-tabs ul > li.show-menu-header ul.menu > li li a:before {
-    left: 60px;
-  }
-  header .nav-bar-tabs ul > li.show-menu-header ul.menu > li:last-child a:before {
-    display: none;
   }
 }
 @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 768px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 768px) and (min--moz-device-pixel-ratio: 2), (max-width: 768px) and (min-device-pixel-ratio: 2), (max-width: 768px) and (min-resolution: 144dppx) {
@@ -15486,6 +15486,7 @@ body.person-page #main {
   opacity: 0 !important;
 }
 .carousel.destroy > ul {
+  left: 0 !important;
   width: auto;
 }
 .carousel ul {

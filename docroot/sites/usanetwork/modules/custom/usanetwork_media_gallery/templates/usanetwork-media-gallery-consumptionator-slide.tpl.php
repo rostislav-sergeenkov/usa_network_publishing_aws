@@ -17,7 +17,7 @@
     </div>
     <div class="slider-counter">
       <span class="gallery-name">
-        <?php if (isset($info['gallery_name'])): ?><?php print $info['gallery_name']; ?><?php endif; ?>
+        <?php if (!empty($info['gallery_name'])): ?><?php print $info['gallery_name']; ?><?php endif; ?>
       </span>
       <span class="slide-index"></span>
     </div>

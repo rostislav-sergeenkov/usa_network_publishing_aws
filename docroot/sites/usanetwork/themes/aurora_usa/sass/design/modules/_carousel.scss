@@ -76,6 +76,7 @@
   }
   &.destroy {
     > ul {
+      left: 0!important;
       width: auto;
     }
   }

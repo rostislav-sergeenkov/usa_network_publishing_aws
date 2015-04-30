@@ -213,7 +213,7 @@ function usanetwork_microsite_process_file_entity(&$variables) {
       ) {
         $variables['classes'] .= ' tve-video-auth';
       }
-      if(_usanetwork_microsite_process_setting_data('short_name_for_full_episodes', 'bool')) {
+      if(_usanetwork_microsite_process_setting_data('short_name_for_full_episodes', 'bool', $node)) {
         $is_full_episode = _usanetwork_microsite_define_full_episode($variables['file']);
         if ($is_full_episode) {
           $name = _usanetwork_microsite_get_short_name_for_video($variables['file']);
@@ -1042,6 +1042,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $first_output_id = NULL;
 
     $active_filter = NULL;
+    $active_season = NULL;
     if (_usanetwork_microsite_process_setting_data('videos_all_videos_filter', 'bool')) {
       $video_types[USANETWORK_MICROSITE_ALL_VIDEOS] = USANETWORK_MICROSITE_ALL_VIDEOS;
       $active_filter = USANETWORK_MICROSITE_ALL_VIDEOS;
@@ -1061,6 +1062,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     if (!empty($video_for_player) && $filter_enabled) {
       if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
         $active_filter = _usanetwork_microsite_get_video_category($video_file);
+        $file_wrapper = entity_metadata_wrapper('file', $video_file);
+        $active_season = $file_wrapper->field_mpx_season_number->value();
       }
     }
     // Counting added video files.
@@ -1068,6 +1071,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     // How many videos remain.
     $theme_variables['more_videos'] = 0;
     $videos_limit = _usanetwork_microsite_process_setting_data('videos_limit', 'numeric');
+    $is_season_filters = _usanetwork_microsite_process_setting_data('videos_season_filters', 'bool');
     foreach ($video_files as $v_key => $current_video_file) {
       // Filter by first video category.
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
@@ -1078,15 +1082,22 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           if (!$active_filter) {
             $active_filter = $current_video_type;
           }
+          if (!$active_season) {
+            $active_season = $file_wrapper->field_mpx_season_number->value();
+          }
           $season_number = $file_wrapper->field_mpx_season_number->value();
-          if (_usanetwork_microsite_process_setting_data('videos_season_filters', 'bool') && $season_number) {
+          if ($is_season_filters && $season_number) {
             $video_types[$current_video_type][$file_wrapper->field_mpx_season_number->value()] = $current_video_type;
           }
           else {
             $video_types[$current_video_type] = $current_video_type;
           }
         }
-        if ($active_filter != USANETWORK_MICROSITE_ALL_VIDEOS && $active_filter !== $current_video_type) {
+        if (
+          $active_filter != USANETWORK_MICROSITE_ALL_VIDEOS &&
+          $active_filter !== $current_video_type ||
+          ($is_season_filters && $active_season && $season_number != $active_season)
+        ) {
           continue;
         }
       }
@@ -1100,7 +1111,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         $show_in_player = $v_key;
         $state = 'active';
       }
-      elseif(empty($video_for_player) && $first_output_id == $v_key) {
+      elseif (empty($video_for_player) && $first_output_id == $v_key) {
         $state = 'active';
         $show_in_player = $first_output_id;
       }
@@ -1140,14 +1151,22 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           ksort($type_el);
           foreach($type_el as $child_type => $parrent_type_name) {
             $season_name = 'Season ' . $child_type;
+            $classes = array('filter-child-item');
+            if ($child_type == $active_season) {
+              $classes[] = 'active';
+            }
             $children[] = array(
               'data' => $season_name,
-              'class' => array('filter-child-item'),
-              'data_season_num' => $child_type,
+              'class' => $classes,
+              'data-season-num' => $child_type,
             );
           }
         }
-        $items[$id] = array('data' => $type, 'class' => array('filter-item'));
+        $items[$id] = array(
+          'data' => $type,
+          'class' => array('filter-item'),
+          'data-filter-name' => $type,
+        );
         if (!empty($children)) {
           $items[$id]['children'] = $children;
         }
@@ -3269,8 +3288,8 @@ function usanetwork_microsite_deliver_js($js) {
  *    - numeric
  * @return mixed
  */
-function _usanetwork_microsite_process_setting_data($setting_key, $value_type = 'string') {
-  $settings = usanetwork_microsite_get_theme_settings();
+function _usanetwork_microsite_process_setting_data($setting_key, $value_type = 'string', $microsite_node = NULL) {
+  $settings = usanetwork_microsite_get_theme_settings($microsite_node);
   $setting = $settings[$setting_key];
   switch ($value_type) {
     case 'bool':
@@ -3320,11 +3339,14 @@ function usanetwork_microsite_default_get_theme_settings() {
  *
  * @return array()
  */
-function usanetwork_microsite_get_theme_settings($reset = FALSE) {
+function usanetwork_microsite_get_theme_settings($microsite_node = NULL, $reset = FALSE) {
   $settings = &drupal_static(__FUNCTION__);
   if (!isset($settings_theme) || $reset) {
     $settings_theme = array();
-    $node = menu_get_object();
+    $node = $microsite_node;
+    if (!$microsite_node) {
+      $node = menu_get_object();
+    }
     $settinga_default = usanetwork_microsite_default_get_theme_settings();
     if (empty($node)) {
       return $settinga_default;
@@ -3333,6 +3355,12 @@ function usanetwork_microsite_get_theme_settings($reset = FALSE) {
     $theme_function = 'usanetwork_microsite_' . $node_wrapper->field_ms_theme->value() . '_get_theme_settings';
     if (is_callable($theme_function)) {
       $settings_theme = $theme_function();
+    }
+    else {
+      _usanetwork_microsite_include_themes_info($node_wrapper->field_ms_theme->value());
+      if (is_callable($theme_function)) {
+        $settings_theme = $theme_function();
+      }
     }
     $settings = $settings_theme + $settinga_default;
   }

@@ -1042,6 +1042,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $first_output_id = NULL;
 
     $active_filter = NULL;
+    $active_season = NULL;
     if (_usanetwork_microsite_process_setting_data('videos_all_videos_filter', 'bool')) {
       $video_types[USANETWORK_MICROSITE_ALL_VIDEOS] = USANETWORK_MICROSITE_ALL_VIDEOS;
       $active_filter = USANETWORK_MICROSITE_ALL_VIDEOS;
@@ -1061,6 +1062,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     if (!empty($video_for_player) && $filter_enabled) {
       if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
         $active_filter = _usanetwork_microsite_get_video_category($video_file);
+        $file_wrapper = entity_metadata_wrapper('file', $video_file);
+        $active_season = $file_wrapper->field_mpx_season_number->value();
       }
     }
     // Counting added video files.
@@ -1068,6 +1071,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     // How many videos remain.
     $theme_variables['more_videos'] = 0;
     $videos_limit = _usanetwork_microsite_process_setting_data('videos_limit', 'numeric');
+    $is_season_filters = _usanetwork_microsite_process_setting_data('videos_season_filters', 'bool');
     foreach ($video_files as $v_key => $current_video_file) {
       // Filter by first video category.
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
@@ -1078,15 +1082,22 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           if (!$active_filter) {
             $active_filter = $current_video_type;
           }
+          if (!$active_season) {
+            $active_season = $file_wrapper->field_mpx_season_number->value();
+          }
           $season_number = $file_wrapper->field_mpx_season_number->value();
-          if (_usanetwork_microsite_process_setting_data('videos_season_filters', 'bool') && $season_number) {
+          if ($is_season_filters && $season_number) {
             $video_types[$current_video_type][$file_wrapper->field_mpx_season_number->value()] = $current_video_type;
           }
           else {
             $video_types[$current_video_type] = $current_video_type;
           }
         }
-        if ($active_filter != USANETWORK_MICROSITE_ALL_VIDEOS && $active_filter !== $current_video_type) {
+        if (
+          $active_filter != USANETWORK_MICROSITE_ALL_VIDEOS &&
+          $active_filter !== $current_video_type ||
+          ($is_season_filters && $active_season && $season_number != $active_season)
+        ) {
           continue;
         }
       }

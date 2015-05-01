@@ -153,6 +153,10 @@ Project demo: http://shindiristudio.com/timeline
               timelineWidth = $('.timelineFlat.tl3').width(),
               itemWidth = Math.ceil(timelineWidth * timeline_settings.percentItemWidth);
               if (itemWidth > 1204) itemWidth = 1204;
+              else if (itemWidth <= 728) {
+                imgHeight = Math.floor(itemWidth * 0.648);
+                $items.find('.timeline-item-image').height(imgHeight);
+              }
 //              imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image img').width(),
 //              imgHeight = Math.floor(imgWidth * 0.648);
 //              itemHeight = imgHeight, // $timelineItems.find('.timeline-item:first img').height(),
@@ -385,12 +389,19 @@ usa_debug(data);
 
 usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width);
 
+          // reset data values
           data.itemWidth = itemWidth;
           data.margin = margin;
-          $items.css({width: itemWidth, height: imgHeight});
 
-          // set height of timeline-items
+          // set css of timeline items
+          if (itemWidth <= 728) {
+            $items.css({width: itemWidth, height: (imgHeight * 2) + 'px'});
+          }
+          else {
+            $items.css({width: itemWidth, height: imgHeight});
+          }
 //          $('.timeline-item-image').css({'height': imgHeight + 'px'});
+          $items.find('.timeline-item-image').height(imgHeight);
           $items.find('.timeline-item-text').css({'height': (imgHeight * 0.65) + 'px'});
 
           // Set margin so start element would place in middle of the screen

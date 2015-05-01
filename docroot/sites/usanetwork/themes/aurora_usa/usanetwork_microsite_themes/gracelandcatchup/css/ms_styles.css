@@ -6,18 +6,17 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 18px;
   color: #000;
   background-color: #CCC;
 }
 body {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-size: 16px;
-  line-height: 18px;
+}
+html,
+body {
+  font-size: 16px !important;
+  line-height: 18px !important;
 }
 #microsite ul {
   margin: 0;
@@ -349,7 +348,7 @@ section h2 {
   left: 0;
   width: 728px;
   height: 90px;
-  margin: 0 auto 30px;
+  margin: 40px auto 0;
 }
 #ad_300x250_1 {
   position: relative;
@@ -367,11 +366,18 @@ section h2 {
 }
 
 /* BEGIN MEDIA QUERIES */
-@media (max-width: 1438px) {
-/*
-  #site-nav-center {
-    width: 40%;
-    margin-left: -70%;
+@media (max-width: 920px) {
+  html,
+  body {
+    font-size: 14px !important;
+    line-height: 16px !important;
   }
-*/
+}
+
+@media (max-width: 670px) {
+  html,
+  body {
+    font-size: 12px !important;
+    line-height: 14px !important;
+  }
 }

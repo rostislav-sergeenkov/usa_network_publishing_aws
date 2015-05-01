@@ -8,19 +8,32 @@
 	width: 100%;
 }
 #counter li {
-	float: left;
-	list-style-type: none;
-	margin: 0 1.5%;
-	width: 30.3333%;
+  float: left;
+  list-style-type: none;
+  margin: 0 6%;
+  width: 21.333%;
 }
 .circle {
-	width: 67%;
-	height: auto;
-	display:block;
-	background-color: rgba(0,0,0,0.6);
-	border: 2px solid orange;
-	border-radius: 50%;
-	margin: 0 auto;
+  width: 100%;
+  height: auto;
+  display: block;
+  background-color: rgba(0,0,0,0.6);
+  border: 2px solid orange;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding-top: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.counter-container {
+  position: absolute;
+  top: 7%;
+  left: 0;
+  width: 100%;
+}
+.counter-container > div {
+  text-align: center;
 }
 .numbers {
 	text-align: center;

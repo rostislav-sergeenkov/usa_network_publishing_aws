@@ -118,3 +118,11 @@
   font-weight: normal;
   text-transform: uppercase;
 }
+
+/* **************** BEGIN MEDIA QUERIES ******************* */
+@media (max-width: 670px) {
+  #character-nav li {
+    width: 48%;
+    margin: 1% 1%;
+  }
+}

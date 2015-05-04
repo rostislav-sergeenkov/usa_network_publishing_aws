@@ -215,15 +215,15 @@ function usanetwork_home_image_default_styles() {
     'label' => '539x303',
   );
 
-  // Exported image style: 460x250.
-  $styles['460x250'] = array(
-    'name' => '460x250',
+  // Exported image style: 689x378.
+  $styles['689x378'] = array(
+    'name' => '689x378',
     'effects' => array(
       0 => array(
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 460,
-          'height' => 250,
+          'width' => 689,
+          'height' => 378,
         ),
         'weight' => 0,
       ),
@@ -237,13 +237,13 @@ function usanetwork_home_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 460,
-          'height' => 250,
+          'width' => 689,
+          'height' => 378,
         ),
         'weight' => 1,
       ),
     ),
-    'label' => '460x250',
+    'label' => '689x378',
   );
 
   // Exported image style: 383x144.
@@ -637,7 +637,8 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
     'usanetwork_home_shows_queue_promo' => array(
       'variables' => array(
         'show_class' => NULL,
-        'latet_episode_image_url' => NULL,
+        'latest_episode_image_url' => NULL,
+        'latest_episode_image_url_mobile' => NULL,
         'episode_title' => NULL,
         'episode_day' => NULL,
         'episode_time' => NULL,
@@ -1372,8 +1373,11 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
       $promo_link = url($promo['target_type'] . '/' . $promo['target_id']);
       $theme_variables = array(
         'show_class' => $promo_data['show_class'],
-        'latet_episode_image_url' => !empty($content_image)
-          ? image_style_url('460x250', $content_image)
+        'latest_episode_image_url' => !empty($content_image)
+          ? image_style_url('689x378', $content_image)
+          : '',
+        'latest_episode_image_url_mobile' => !empty($content_image)
+          ? image_style_url('300x250', $content_image)
           : '',
         'episode_title' => $promo_data['promo_title'],
         'episode_url' => $promo_link,

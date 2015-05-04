@@ -39,6 +39,26 @@
 
     // Init all vertical carousels
     initVSliders: function() {
+      var calculateItems = function(slider) {
+        var current_top_slide = slider.getCurrentSlide() + 1,
+            container_h = $(this).height(),
+            slide_h = $(this).find('.slide-item').height(),
+            visible_slides = Math.floor(container_h / slide_h),
+            shift_last = slide_h - (container_h - (slide_h * visible_slides));
+
+        if (!slider.end) {
+          if ((slider.getSlideCount() - current_top_slide <= 2)) {
+            slider.end = true;
+
+            $(this).animate({
+              'top': '-=' + shift_last
+            }, 300);
+          } else {
+            slider.goToNextSlide();
+          }
+        }
+      };
+
       $('.slider-vertical').each(function () {
         var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.vsettings);
 
@@ -46,31 +66,24 @@
         Drupal.behaviors.bxslider_carousels.varray.push(slider);
 
         $(this).swipe({
-          swipeUp: function () {
-            var current_top_slide = slider.getCurrentSlide() + 1,
-                container_h = $(this).height(),
-                slide_h = $(this).find('.slide-item').height(),
-                visible_slides = Math.floor(container_h / slide_h),
-                shift_last = slide_h - (container_h - (slide_h * visible_slides));
-
-            if (!slider.end) {
-              if ((slider.getSlideCount() - current_top_slide <= 2)) {
-                slider.end = true;
-
-                $(this).animate({
-                  'top': '-=' + shift_last
-                }, 300);
-              } else {
-                slider.goToNextSlide();
-              }
-            }
+          swipeUp: function() {
+            calculateItems(slider);
           },
-          swipeDown: function () {
+          swipeDown: function() {
             slider.goToPrevSlide();
             slider.end = false;
           },
           threshold: 0,
           excludedElements: 'button, input, select, textarea, .noSwipe'
+        });
+
+        $(this).mousewheel(function(e) {
+          if (e.deltaY < 0) {
+            calculateItems(slider);
+          } else {
+            slider.goToPrevSlide();
+            slider.end = false;
+          }
         });
       });
     },

@@ -147,6 +147,11 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#suffix' => '</div>',
     '#type' => 'submit',
     '#value' => t('submit'),
+    '#attributes' => array(
+        'class' => array(
+            'show-color',
+        ),
+    ),
     '#ajax' => array(
       'callback' => 'newsletter_lyris_ajax_callback',
       'wrapper' => 'newsletter_lyris_ajax_wrapper',

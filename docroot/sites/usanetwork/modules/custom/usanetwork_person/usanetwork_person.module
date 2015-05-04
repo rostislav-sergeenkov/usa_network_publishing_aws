@@ -6,6 +6,82 @@
 
 include_once 'usanetwork_person.features.inc';
 
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_person_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_person_character_carousel' => array(
+      'variables' => array(
+        'block_title' => NULL,
+        'block_social_title' => NULL,
+        'character_filters' => array(),
+        'characters_block' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel',
+    ),
+    'usanetwork_person_character_carousel_items_block' => array(
+      'variables' => array(
+
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-items-block',
+    ),
+    'usanetwork_person_character_carousel_twitter_item' => array(
+      'variables' => array(
+
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-twitter-item',
+    ),
+    'usanetwork_person_character_carousel_instagram_item' => array(
+      'variables' => array(
+
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-instagram-item',
+    ),
+    'usanetwork_person_character_carousel_facebook_item' => array(
+      'variables' => array(
+
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-facebook-item',
+    ),
+    'usanetwork_person_character_carousel_default_item' => array(
+      'variables' => array(
+
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-default-item',
+    ),
+  );
+}
+
+/**
+ *  Implements hook_block_info().
+ */
+function usanetwork_person_block_info() {
+  $blocks = array();
+
+  $blocks['usa_cons_chars_carousel'] = array(
+    'info' => 'Usanetwork consumptionator: Character carousel',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_person_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usa_cons_chars_carousel':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_person_characters_carousel_block();
+      break;
+  }
+
+  return $block;
+}
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -17,3 +93,75 @@ function usanetwork_person_preprocess_page(&$vars) {
     $vars['title'] = '';
   }
 }
+
+/**
+ * Renders characters block carousel.
+ */
+function _usanetwork_person_characters_carousel_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $person_node = menu_get_object();
+
+  if (empty($person_node) || (!empty($person_node) && isset($person_node->type) && $person_node->type != 'person')) {
+    return '';
+  }
+
+  $query_parameters = _usanetwork_person_characters_carousel_get_validated_query_params();
+  $category_filter = _usanetwork_person_characters_carousel_get_category_filters($query_parameters);
+  $theme_variables = array();
+
+  return theme('usanetwork_person_character_carousel', $theme_variables);
+}
+
+/**
+ * Validates and returns query params for characters carousel block.
+ */
+function _usanetwork_person_characters_carousel_get_validated_query_params() {
+
+}
+
+/**
+ * Returns categury filters for characters carousel block.
+ */
+function _usanetwork_person_characters_carousel_get_category_filters($query) {
+
+}
+
+/**
+ * Renders block of N items for characters carousel block.
+ */
+function _usanetwork_person_characters_carousel_items_block() {
+
+}
+
+/**
+ * Returns default item of characters carousel block item.
+ */
+function _usanetwork_person_characters_carousel_default_item_block() {
+
+}
+
+/**
+ * Returns twitter item of characters carousel block item.
+ */
+function _usanetwork_person_characters_carousel_twitter_item_block() {
+
+}
+
+/**
+ * Returns facebook item of characters carousel block item.
+ */
+function _usanetwork_person_characters_carousel_facebook_item_block() {
+
+}
+
+/**
+ * Returns instagram item of characters carousel block item.
+ */
+function _usanetwork_person_characters_carousel_instagram_item_block() {
+
+}
+
+

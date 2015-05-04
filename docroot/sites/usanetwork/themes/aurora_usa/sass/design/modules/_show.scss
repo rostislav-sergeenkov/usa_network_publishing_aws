@@ -1264,6 +1264,9 @@
           height: 50px;
           line-height: 50px;
         }
+        &:not(.active) {
+          background: none;
+        }
       }
     }
   }

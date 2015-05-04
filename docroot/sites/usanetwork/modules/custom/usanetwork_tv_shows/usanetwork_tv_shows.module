@@ -13,6 +13,7 @@ define('USA_TV_SHOW_RELATED_ITEMS_ON_PAGE', 5);
 define('USA_TV_SHOW_RELATED_CACHE_SIZE', 250);
 define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_VIDEOS_QUEUE', 12);
 define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_GALLERY_QUEUE', 12);
+define('USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK', 9);
 
 /**
  *  Implements hook_menu().
@@ -102,10 +103,17 @@ function usanetwork_tv_shows_block_info() {
     'info' => t('Tv Shows: Best of'),
     'cache' => DRUPAL_NO_CACHE,
   );
+
+  $blocks['usanetwork_tv_shows_video_vl'] = array(
+    'info' => 'Tv Shows: Video landing videos list',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   $blocks['usanetwork_tv_shows_video_lmb'] = array(
     'info' => t('Tv Shows: Video landing main block'),
     'cache' => DRUPAL_NO_CACHE,
   );
+
   return $blocks;
 }
 
@@ -157,6 +165,12 @@ function usanetwork_tv_shows_block_view($delta = '') {
         '#markup' => _usanetwork_tv_shows_render_best_of_block(),
       );
       break;
+
+    case 'usanetwork_tv_shows_video_vl':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_landing_page_videos_block();
+      break;
+
     case 'usanetwork_tv_shows_video_lmb':
       $block['subject'] = '';
       $block['content'] = array(
@@ -242,6 +256,49 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'load_more_link' => NULL,
       ),
       'template' => 'templates/usanetwork-tv-shows-related-items-container',
+    ),
+    'usanetwork_tv_shows_landing_videos' => array(
+      'variables' => array(
+        'video_filters' => array(),
+        'video_sorters' => array(),
+        'videos_block' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-landing-videos',
+    ),
+    'usanetwork_tv_shows_landing_videos_items_block' => array(
+      'variables' => array(
+        'ad' => NULL,
+        'is_even' => NULL,
+        'items' => array(),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-landing-videos-items-block',
+    ),
+    'usanetwork_tv_shows_landing_videos_item_small' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'media_icon' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-landing-videos-item-small',
+    ),
+    'usanetwork_tv_shows_landing_videos_item_big' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'media_icon' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-landing-videos-item-big',
     ),
   );
 }
@@ -1331,7 +1388,19 @@ function _usanetwork_tv_shows_submenu() {
       $show_menu_item = entity_load('field_collection_item', array($link['value']));
       $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
       if ($show_menu_item_main_link) {
-        $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $show_menu_item_main_link[0]['url']);
+        $classes = array(
+          'secondary',
+          'show-color',
+        );
+        $menu_item_url = $show_menu_item_main_link[0]['url'];
+        if (!empty($menu_item_url) && strncasecmp($menu_item_url, request_path(), strlen($menu_item_url)) == 0) {
+          $classes[] = 'active';
+        }
+        $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $menu_item_url, array(
+          'attributes' => array(
+            'class' => $classes,
+          ),
+        ));
       }
     }
   }
@@ -2161,6 +2230,317 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
   return theme('usanetwork_tv_shows_related_item', $theme_variables);
 }
 
+/**
+ * Blank page callback.
+ */
 function usanetwork_tv_shows_blank_page() {
   return '';
+}
+
+/**
+ * Gets and validates params from $_GET for videos block.
+ * @return array
+ */
+function _usanetwork_tv_shows_landing_page_get_validated_query_params() {
+  $query_parameters = drupal_get_query_parameters();
+
+  if (empty($query_parameters['category'])) { // Set default category 0 (all videos)
+    $query_parameters['category'] = 0;
+  }
+  else {
+    $query_parameters['category'] = intval($query_parameters['category']); // Set integer value of category (term id)
+  }
+
+  if (empty($query_parameters['sort_by'])) { // Set default sorter - file created timestamp
+    $query_parameters['sort_by'] = 'timestamp';
+  }
+  elseif (!in_array($query_parameters['sort_by'], array( // If sorter exist - check is it valid. In other case use default.
+    'timestamp',
+  ))) {
+    $query_parameters['sort_by'] = 'timestamp';
+  };
+
+  if (!empty($query_parameters['sort_order'])) {
+    $query_parameters['sort_order'] = strtoupper($query_parameters['sort_order']);
+  }
+
+  if (empty($query_parameters['sort_order'])) { // Set default sorting order - DESC
+    $query_parameters['sort_order'] = 'DESC';
+  }
+  elseif (!in_array($query_parameters['sort_order'], array( // If sorting order exists - check is it valid. In other case use default.
+    'ASC',
+    'DESC',
+  ))) {
+    $query_parameters['sort_order'] = 'DESC';
+  }
+
+  return $query_parameters;
+}
+
+/**
+ * Renders content for videos block.
+ */
+function _usanetwork_tv_shows_landing_page_videos_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $tv_show_node = menu_get_object();
+
+  if (empty($tv_show_node) || (!empty($tv_show_node) && isset($tv_show_node->type) && $tv_show_node->type != 'tv_show')) {
+    return '';
+  }
+
+  $query_parameters = _usanetwork_tv_shows_landing_page_get_validated_query_params();
+
+  $video_types = _usanetwork_tv_shows_landing_page_vbget_video_types($tv_show_node, $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order']);
+  $video_sorters = _usanetwork_tv_shows_landing_page_vbget_video_sorters();
+  $videos_block = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node, $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order']);
+
+  $result = theme('usanetwork_tv_shows_landing_videos', array(
+    'video_filters' => $video_types,
+    'video_sorters' => $video_sorters,
+    'videos_block' => $videos_block,
+  ));
+
+  return $result;
+}
+
+/**
+ * Returns list of full videos of TV Show.
+ *
+ * @param $show_node
+ * @param int $selected_category
+ * @param string $sort_field
+ * @param string $sort_direction
+ * @return array
+ */
+function _usanetwork_tv_shows_landing_page_vbget_full_all_videos($show_node, $selected_category = 0, $sort_field = 'timestamp', $sort_direction = 'DESC') {
+  $data = array(
+    'tid' => 0,
+    'name' => t('All videos'),
+    'items' => array(),
+    'items_count' => 0,
+    'url' => url('node/' . $show_node->nid) . '/videos?' . http_build_query(array(
+        'category' => 0,
+        'sort_by' => $sort_field,
+        'sort_order' => $sort_direction,
+      )),
+    'active' => $selected_category == 0
+      ? TRUE
+      : FALSE,
+  );
+
+  $items_query = db_select('file_managed', 'f');
+  $items_query->fields('f', array('fid'));
+  $items_query->condition('f.status', '1');
+  $items_query->join('field_data_field_show', 's', 'f.fid=s.entity_id');
+  $items_query->condition('s.entity_type', 'file');
+  $items_query->condition('s.field_show_target_id', $show_node->nid);
+  $items_query->join('mpx_video', 'mv', 'f.fid=mv.fid');
+  $items_query->condition('mv.status', '1');
+  $items_query->orderBy($sort_field, $sort_direction);
+
+  $items_query_result = $items_query->execute()->fetchCol(0);
+
+  if (!empty($items_query_result)) {
+    $data['items'] = $items_query_result;
+    $data['items_count'] = count($items_query_result);
+  }
+
+  return $data;
+}
+
+/**
+ * Returns full list of video types for filters of videos page.
+ *
+ * @param $show_node
+ * @param int $selected_category
+ * @param string $sort_field
+ * @param string $sort_direction
+ * @return array|null
+ */
+function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $selected_category = 0, $sort_field = 'timestamp', $sort_direction = 'DESC') {
+  $query = db_select('file_managed', 'f');
+  $query->fields('f', array('fid'));
+  $query->condition('f.status', '1');
+  $query->join('field_data_field_show', 's', 'f.fid=s.entity_id');
+  $query->condition('s.entity_type', 'file');
+  $query->condition('s.field_show_target_id', $show_node->nid);
+  $query->join('field_data_field_usa_video_terms', 't', 'f.fid=t.entity_id');
+  $query->condition('t.entity_type', 'file');
+  $query->addField('t', 'field_usa_video_terms_target_id');
+  $query->join('taxonomy_term_data', 'tt', 't.field_usa_video_terms_target_id=tt.tid');
+  $query->addField('tt', 'name');
+  $query->join('mpx_video', 'mv', 'f.fid=mv.fid');
+  $query->condition('mv.status', '1');
+  $query->orderBy($sort_field, $sort_direction);
+
+  $query_result = $query->execute()->fetchAll();
+
+  if (!empty($query_result)) {
+    $result = array();
+
+    // Temporary removed
+    /*$all_videos = _usanetwork_tv_shows_landing_page_vbget_full_all_videos($show_node, $selected_category, $sort_field, $sort_direction);
+
+    if (!empty($all_videos)) {
+      $result[] = $all_videos;
+    }*/
+
+    foreach ($query_result as $key => &$result_item) {
+      if (!isset($result[$result_item->field_usa_video_terms_target_id])) {
+        $result[$result_item->field_usa_video_terms_target_id] = array(
+          'tid' => $result_item->field_usa_video_terms_target_id,
+          'name' => $result_item->name,
+          'items' => array(),
+          'items_count' => 0,
+          'url' => url('node/' . $show_node->nid) . '/videos?' . http_build_query(array(
+              'category' => $result_item->field_usa_video_terms_target_id,
+              'sort_by' => $sort_field,
+              'sort_order' => $sort_direction,
+            )),
+          'active' => $result_item->field_usa_video_terms_target_id == $selected_category
+            ? TRUE
+            : FALSE,
+        );
+      }
+
+      $result[$result_item->field_usa_video_terms_target_id]['items'][] = $result_item->fid;
+      $result[$result_item->field_usa_video_terms_target_id]['items_count']++;
+    }
+
+    return $result;
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns default sorters for videos page.
+ *
+ * @return array
+ */
+function _usanetwork_tv_shows_landing_page_vbget_video_sorters() {
+  return array(
+    array(
+      'order' => 'DESC',
+      'data_type' => 'timestamp',
+      'title' => t('Newest'),
+    ),
+    array(
+      'order' => 'ASC',
+      'data_type' => 'timestamp',
+      'title' => t('Oldest'),
+    ),
+  );
+}
+
+/**
+ *
+ * Returns block of N items for videos page.
+ *
+ * @param $show_node
+ * @param int $selected_category
+ * @param string $sort_field
+ * @param string $sort_direction
+ * @return mixed|string
+ */
+function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node, $selected_category = 0, $sort_field = 'timestamp', $sort_direction = 'DESC') {
+  $theme_variables = array(
+    'ad' => FALSE,
+    'is_even' => FALSE,
+    'items' => array(),
+  );
+
+  $query = db_select('file_managed', 'f');
+  $query->fields('f', array('fid'));
+  $query->condition('f.status', '1');
+  $query->join('field_data_field_show', 's', 'f.fid=s.entity_id');
+  $query->condition('s.entity_type', 'file');
+  $query->condition('s.field_show_target_id', $show_node->nid);
+  $query->join('mpx_video', 'mv', 'f.fid=mv.fid');
+  $query->condition('mv.status', '1');
+
+  if ($selected_category != 0) {
+    $query->join('field_data_field_usa_video_terms', 't', 'f.fid=t.entity_id');
+    $query->condition('t.entity_type', 'file');
+    $query->condition('t.field_usa_video_terms_target_id', $selected_category);
+  }
+
+  $query->orderBy($sort_field, $sort_direction);
+  $query->range(0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
+
+  $result = $query->execute()->fetchAll();
+
+  if (!empty($result)) {
+    $current_item_index = 0;
+
+    foreach ($result as $result_item) {
+      $file = file_load($result_item->fid);
+
+      $theme_variables['items'][] = _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $current_item_index, FALSE);
+      $current_item_index++;
+    }
+  }
+
+  return theme('usanetwork_tv_shows_landing_videos_items_block', $theme_variables);
+}
+
+/**
+ * Returns one item of block of videos page.
+ * 
+ * @param $file
+ * @param $current_item_index
+ * @param bool $is_item_even
+ * @return mixed|string
+ */
+function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $current_item_index, $is_item_even = FALSE) {
+  $big_element_index = $is_item_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK - 1);
+
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+
+  $image_url = _usanetwork_mpx_video_get_image_path($file);
+  $mobile_image = '';
+  $desktop_image = '';
+
+  if (!empty($image_url)) {
+    if ($current_item_index == $big_element_index) { // Big image
+      $mobile_image = image_style_url('634x349', $image_url);
+      $desktop_image = image_style_url('634x349', $image_url);
+    }
+    else { // Small image
+      $mobile_image = image_style_url('291x234', $image_url);
+      $desktop_image = image_style_url('291x234', $image_url);
+    }
+  }
+
+  $promo_fields = _usanetwork_promo_pull_entity_promo_details($file, $file_wrapper);
+
+  $theme_variables = array(
+    'classes' => NULL,
+    'custom_classes' => NULL,
+    'target_url' => url('file/' . $file->fid),
+    'media_icon' => 'play-icon',
+    'caption' => ($current_item_index == $big_element_index)
+      ? (!empty($promo_fields['topic'])
+        ? $promo_fields['topic']
+        : ''
+      )
+      : '',
+    'title' => !empty($promo_fields['promo_title'])
+      ? $promo_fields['promo_title']
+      : $file->filename,
+    'additional' => !empty($promo_fields['description'])
+      ? $promo_fields['description']
+      : '',
+    'image_mobile' => $mobile_image,
+    'image_desktop' => $desktop_image,
+  );
+
+  $theme_name = ($current_item_index == $big_element_index)
+    ? 'usanetwork_tv_shows_landing_videos_item_big'
+    : 'usanetwork_tv_shows_landing_videos_item_small';
+
+  return theme($theme_name, $theme_variables);
 }

@@ -105,10 +105,10 @@
             slideLength = slide.length,
             src = $(slide).eq(slideIndex).find('.asset-img img').attr('src'),
             counter = $(slide).eq(slideIndex).find('.slider-counter'),
-            titleGallery = $('.consum-sidebar .gallery-filter-wrapper .filter-menu a.active').text();
+            slideIndexBlock = $(slide).eq(slideIndex).find('.slider-counter .slide-index');
 
-        if (counter.text() === '') {
-          counter.append(titleGallery + ' <span class="slide-index">' + (slideIndex + 1) + '</span>' + '<span> of </span>' + '<span class="slide-count"> ' + slideLength + '</span>');
+        if(slideIndexBlock.text() == '') {
+          slideIndexBlock.text((slideIndex + 1) + ' of ' + slideLength);
         }
 
         switch (slideIndex) {

@@ -4464,16 +4464,18 @@ header .header-nav-bar .no-refresh {
   outline: none;
   position: relative;
 }
-header .header-nav-bar .no-refresh.active:before {
-  background: #454545;
-  bottom: -1px;
-  content: '';
-  display: block;
-  height: 1px;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
+@media (min-width: 769px) {
+  header .header-nav-bar .no-refresh.active:before {
+    background: #454545;
+    bottom: -1px;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
 }
 header .usa-logo {
   background: #2c2c2c;
@@ -4562,6 +4564,17 @@ header .nav-bar-tabs {
     display: block;
     margin: 0;
   }
+  header .nav-bar-tabs ul li.expanded > a:before {
+    border: 1px solid white !important;
+    border-radius: 50%;
+    display: block;
+    content: '';
+    height: 30px;
+    position: absolute;
+    right: 9px;
+    top: 9px;
+    width: 30px;
+  }
   header .nav-bar-tabs ul li.expanded > a:after {
     display: block;
     content: '';
@@ -4585,15 +4598,39 @@ header .nav-bar-tabs {
     height: 10px;
     width: 10px;
   }
+  header .nav-bar-tabs ul li.header-show-menu a {
+    border-bottom: 0 !important;
+  }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li {
+    height: 40px;
+  }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li > a {
+    line-height: 40px;
+  }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li > a:before {
+    bottom: 0px;
+    content: '';
+    height: 1px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    position: absolute;
+  }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li li a:before {
+    left: 60px;
+  }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li:last-child a:before {
+    display: none;
+  }
   header .nav-bar-tabs ul > li {
     height: 50px;
     position: relative;
     width: 100%;
   }
   header .nav-bar-tabs ul > li a {
-    background: #757575;
+    background: #454545;
     border-bottom: 2px solid darkgrey;
-    color: #dcddde;
+    color: #ffffff;
     cursor: pointer;
     display: block;
     font-family: "avalonbold", Helvetica, Arial, sans-serif;
@@ -4661,23 +4698,23 @@ header .nav-bar-tabs {
   header .nav-bar-tabs ul > li ul.menu li ul.menu a {
     padding-left: 50px;
   }
-  header .nav-bar-tabs ul > li.show-menu-header a {
-    border-bottom: 0 !important;
+  header .nav-bar-tabs ul > li ul.menu.categorized-menu a {
+    background: darkgrey;
+    border-color: #b9b9b9;
+    color: #757575;
+    padding-left: 50px;
   }
-  header .nav-bar-tabs ul > li.show-menu-header ul.menu > li > a:before {
-    bottom: 0px;
-    content: '';
-    height: 1px;
-    left: 0px;
+  header .nav-bar-tabs ul > li ul.menu.categorized-menu span.no-link {
+    background: darkgrey;
+    border-bottom: 1px solid #b9b9b9;
+    color: #757575;
     display: block;
+    font-family: "texgyrescholaitalic", Times, serif;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 30px;
+    text-transform: uppercase;
     width: 100%;
-    position: absolute;
-  }
-  header .nav-bar-tabs ul > li.show-menu-header ul.menu > li li a:before {
-    left: 60px;
-  }
-  header .nav-bar-tabs ul > li.show-menu-header ul.menu > li:last-child a:before {
-    display: none;
   }
 }
 @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 768px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 768px) and (min--moz-device-pixel-ratio: 2), (max-width: 768px) and (min-device-pixel-ratio: 2), (max-width: 768px) and (min-resolution: 144dppx) {
@@ -6804,8 +6841,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   padding: 40px;
 }
 .consumptionator-page header .tab-content .tab-item.active, .node-type-catchall-page header .tab-content .tab-item.active, .page-videos-live header .tab-content .tab-item.active, .node-type-media-gallery header .tab-content .tab-item.active {
+  border: none;
   background: #757575;
-  border-top: 1px solid #363636;
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content, .node-type-catchall-page header .tab-content .tab-item .tab-item-content, .page-videos-live header .tab-content .tab-item .tab-item-content, .node-type-media-gallery header .tab-content .tab-item .tab-item-content {
   position: relative;
@@ -6947,6 +6984,31 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 
 .consumptionator-video-page header .tab-content, .page-videos-live header .tab-content {
   z-index: 2;
+}
+.consumptionator-video-page header .region-header.sticky .block-usanetwork-menu .header-nav-bar, .page-videos-live header .region-header.sticky .block-usanetwork-menu .header-nav-bar {
+  margin-bottom: 0;
+}
+.consumptionator-video-page header .region-header.sticky .block-usanetwork-menu .tve-help-link.signOut .tve-header-links .first, .page-videos-live header .region-header.sticky .block-usanetwork-menu .tve-help-link.signOut .tve-header-links .first {
+  display: none;
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-video-page header .region-header.sticky .block-usanetwork-menu.open, .page-videos-live header .region-header.sticky .block-usanetwork-menu.open {
+    background: none;
+  }
+  .consumptionator-video-page header .region-header.sticky .block-usanetwork-menu.open .tab-content .tab-item, .page-videos-live header .region-header.sticky .block-usanetwork-menu.open .tab-content .tab-item {
+    padding-top: 40px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-video-page header .region-header .block-usanetwork-menu.open, .page-videos-live header .region-header .block-usanetwork-menu.open {
+    background: #757575;
+  }
+  .consumptionator-video-page header .region-header .block-usanetwork-menu.open .tve-help-link.signOut .tve-header-links .first, .page-videos-live header .region-header .block-usanetwork-menu.open .tve-help-link.signOut .tve-header-links .first {
+    display: none;
+  }
+  .consumptionator-video-page header .region-header .block-usanetwork-menu.open .tab-content .tab-item, .page-videos-live header .region-header .block-usanetwork-menu.open .tab-content .tab-item {
+    padding-top: 5px;
+  }
 }
 @media (max-width: 1024px) {
   .consumptionator-video-page header .header-nav-bar.tve-sign, .page-videos-live header .header-nav-bar.tve-sign {
@@ -7129,6 +7191,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .consumptionator-video-page .consum-sidebar .advert .advertisement, .page-videos-live .consum-sidebar .advert .advertisement {
   height: 60px;
+  overflow: hidden;
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-video-page .consum-sidebar .advert .advertisement, .page-videos-live .consum-sidebar .advert .advertisement {
@@ -7148,6 +7211,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .page-videos-live .video-block .consum-sidebar .advert .advertisement {
   height: 60px;
+  overflow: hidden;
 }
 @media (min-width: 1025px) {
   .page-videos-live .video-block .consum-sidebar .advert .advertisement {
@@ -10679,7 +10743,7 @@ footer h2 {
   padding-right: 350px;
   text-transform: uppercase;
 }
-.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span {
+.consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index {
   font-size: 27px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
@@ -10687,7 +10751,7 @@ footer h2 {
   .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter {
     font-size: 13px;
   }
-  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index {
     font-size: 14px;
   }
 }
@@ -10697,7 +10761,7 @@ footer h2 {
     font-size: 12px;
     left: 70px;
   }
-  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index {
     font-size: 13px;
   }
 }
@@ -10713,7 +10777,7 @@ footer h2 {
     font-size: 11px;
     padding-right: 240px;
   }
-  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter span {
+  .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index {
     font-size: 12px;
   }
 }
@@ -14996,6 +15060,9 @@ footer h2 {
     line-height: 50px;
   }
 }
+.show-menu-tab .show-menu > li > a:not(.active) {
+  background: none;
+}
 
 .section-title {
   margin: 0 0 40px;
@@ -15603,6 +15670,7 @@ body.person-page #main {
   opacity: 0 !important;
 }
 .carousel.destroy > ul {
+  left: 0 !important;
   width: auto;
 }
 .carousel ul {

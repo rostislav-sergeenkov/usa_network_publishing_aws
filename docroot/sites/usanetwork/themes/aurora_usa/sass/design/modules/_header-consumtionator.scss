@@ -186,8 +186,8 @@
       .tab-item {
         padding: 40px;
         &.active {
+          border: none;
           background: $bottom-footer-back;
-          border-top: 1px solid $consup-border;
         }
         .tab-item-content {
           position: relative;
@@ -333,6 +333,52 @@
     .tab-content {
       z-index: 2;
     }
+    .region-header {
+      &.sticky {
+        .block-usanetwork-menu {
+          .header-nav-bar {
+            margin-bottom: 0;
+          }
+          .tve-help-link.signOut {
+            .tve-header-links {
+              .first {
+                display: none;
+              }
+            }
+          }
+          &.open {
+            @include breakpoint($between-769-1024) {
+              background: none;
+              .tab-content {
+                .tab-item {
+                  padding-top: 40px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .block-usanetwork-menu {
+        &.open {
+          @include breakpoint($between-769-1024) {
+            background: $bottom-footer-back;
+            .tve-help-link.signOut {
+              .tve-header-links {
+                .first {
+                  display: none;
+                }
+              }
+            }
+            .tab-content {
+              .tab-item {
+                padding-top: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
     .header-nav-bar {
         &.tve-sign {
         @include breakpoint($bp-1024-width) {
@@ -494,6 +540,7 @@
     }
     .advertisement {
       height: 60px;
+      overflow: hidden;
       @include breakpoint($between-1025-1280) {
         position: absolute;
         margin-left: -150px;
@@ -514,6 +561,7 @@
         }
         .advertisement {
           height: 60px;
+          overflow: hidden;
           @include breakpoint($bp-min-1025-width) {
             position: absolute;
             margin-left: -150px;

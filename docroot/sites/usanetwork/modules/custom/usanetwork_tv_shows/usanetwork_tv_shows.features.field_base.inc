@@ -100,6 +100,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
         'catchall_page' => 'catchall_page',
+        'person' => 'person,'
       ),
       'entity_type_ids' => array(
         'file' => 'file',

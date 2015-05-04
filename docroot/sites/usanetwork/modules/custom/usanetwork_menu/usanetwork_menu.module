@@ -900,6 +900,9 @@ function _usanetwork_menu_consumptionator_block() {
       elseif ($entity->type == 'media_gallery') {
         return _usanetwork_menu_consumptionator_block_gallery($entity);
       }
+      elseif ($entity->type == 'person') {
+        return _usanetwork_menu_consumptionator_block_person($entity);
+      }
     }
   }
   else { // Process like "Live video" block
@@ -931,6 +934,13 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
     return theme('usanetwork_menu_consumptionator_catchall', $theme_variables);
   }
   return '';
+}
+
+/**
+ * Renders Consumtionator Menu block for characters.
+ */
+function _usanetwork_menu_consumptionator_block_person($node) {
+
 }
 
 /**

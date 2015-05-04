@@ -2051,6 +2051,7 @@ function usanetwork_context_context_default_contexts() {
     'node' => array(
       'values' => array(
         'catchall_page' => 'catchall_page',
+        'person' => 'person',
       ),
       'options' => array(
         'node_form' => '1',

@@ -3122,9 +3122,8 @@ function usanetwork_promo_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 42,
       ),
       'follow_social' => array(

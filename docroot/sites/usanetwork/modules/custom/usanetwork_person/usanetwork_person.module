@@ -11,16 +11,16 @@ include_once 'usanetwork_person.features.inc';
  */
 function usanetwork_person_theme($existing, $type, $theme, $path) {
   return array(
-    'usanetwork_person_character_carousel' => array(
+    'usanetwork_person_character_list' => array(
       'variables' => array(
         'block_title' => NULL,
         'block_social_title' => NULL,
         'character_filters' => array(),
         'characters_block' => NULL,
       ),
-      'template' => 'templates/usanetwork-person-character-carousel',
+      'template' => 'templates/usanetwork-person-character-list',
     ),
-    'usanetwork_person_character_carousel_items_block' => array(
+    /*'usanetwork_person_character_carousel_items_block' => array(
       'variables' => array(
         'ad' => NULL,
         'is_even' => NULL,
@@ -77,8 +77,71 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
         'image_desktop' => NULL,
       ),
       'template' => 'templates/usanetwork-person-character-carousel-facebook-item',
+    ),*/
+    'usanetwork_person_character_main_block' => array(
+      'variables' => array(
+        'character_full_name' => NULL,
+        'character_description' => NULL,
+        'social_icons' => array(),
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+        'description_character' => NULL,
+        'description_actor' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-character-main-block',
     ),
   );
+}
+
+/**
+ *  Implements hook_image_default_styles().
+ */
+function usanetwork_person_image_default_styles() {
+  $styles = array();
+
+  $styles['457x351'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 457,
+          'height' => 351,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 457,
+          'height' => 351,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['928x714'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 928,
+          'height' => 714,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 928,
+          'height' => 714,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
 }
 
 /**
@@ -87,8 +150,13 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
 function usanetwork_person_block_info() {
   $blocks = array();
 
-  $blocks['usa_cons_chars_carousel'] = array(
-    'info' => 'Usanetwork consumptionator: Character carousel',
+  $blocks['usa_cons_chars_list'] = array(
+    'info' => 'Usanetwork consumptionator: Character list',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usa_cons_chars_main_block'] = array(
+    'info' => 'Usanetwork consumptionator: Character main block',
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -102,9 +170,14 @@ function usanetwork_person_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
-    case 'usa_cons_chars_carousel':
+    case 'usa_cons_chars_list':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_person_characters_carousel_block();
+      $block['content'] = _usanetwork_person_characters_list_block();
+      break;
+
+    case 'usa_cons_chars_main_block':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_person_characters_main_block();
       break;
   }
 
@@ -125,7 +198,7 @@ function usanetwork_person_preprocess_page(&$vars) {
 /**
  * Renders characters block carousel.
  */
-function _usanetwork_person_characters_carousel_block() {
+function _usanetwork_person_characters_list_block() {
   if (path_is_admin(current_path())) {
     return '';
   }
@@ -136,60 +209,138 @@ function _usanetwork_person_characters_carousel_block() {
     return '';
   }
 
-  $query_parameters = _usanetwork_person_characters_carousel_get_validated_query_params();
-  $category_filter = _usanetwork_person_characters_carousel_get_category_filters($query_parameters);
   $theme_variables = array();
 
-  return theme('usanetwork_person_character_carousel', $theme_variables);
+  return theme('usanetwork_person_character_list', $theme_variables);
 }
 
 /**
  * Validates and returns query params for characters carousel block.
  */
-function _usanetwork_person_characters_carousel_get_validated_query_params() {
+function _usanetwork_person_characters_list_get_validated_query_params() {
 
 }
 
 /**
  * Returns categury filters for characters carousel block.
  */
-function _usanetwork_person_characters_carousel_get_category_filters($query) {
+function _usanetwork_person_characters_list_get_category_filters($query) {
 
 }
 
 /**
  * Renders block of N items for characters carousel block.
  */
-function _usanetwork_person_characters_carousel_items_block() {
+function _usanetwork_person_characters_list_items_block() {
 
 }
 
 /**
  * Returns default item of characters carousel block item.
  */
-function _usanetwork_person_characters_carousel_default_item_block() {
+function _usanetwork_person_characters_list_default_item_block() {
 
 }
 
 /**
  * Returns twitter item of characters carousel block item.
  */
-function _usanetwork_person_characters_carousel_twitter_item_block() {
+function _usanetwork_person_characters_list_twitter_item_block() {
 
 }
 
 /**
  * Returns facebook item of characters carousel block item.
  */
-function _usanetwork_person_characters_carousel_facebook_item_block() {
+function _usanetwork_person_characters_list_facebook_item_block() {
 
 }
 
 /**
  * Returns instagram item of characters carousel block item.
  */
-function _usanetwork_person_characters_carousel_instagram_item_block() {
+function _usanetwork_person_characters_list_instagram_item_block() {
 
 }
 
+function _usanetwork_person_characters_main_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
 
+  $person_node = menu_get_object();
+
+  if (empty($person_node) || (!empty($person_node) && isset($person_node->type) && $person_node->type != 'person')) {
+    return '';
+  }
+
+  $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
+
+  $full_name = '';
+
+  if (!empty($person_node->field_person_first_name)) {
+    $full_name .= $person_node_wrapper->field_person_first_name->value();
+  }
+
+  if (!empty($person_node->field_person_middle_name)) {
+    $full_name .= ' ' . $person_node_wrapper->field_person_middle_name->value();
+  }
+
+  if (!empty($person_node->field_person_last_name)) {
+    $full_name .= ' ' . $person_node_wrapper->field_person_last_name->value();
+  }
+
+  $image_url = usanetwork_core_api_get_content_image('node', $person_node);
+
+  $social_icons = array();
+
+  if (!empty($person_node->field_usa_link_facebook)) {
+    $social_icons[] = array(
+      'class' => 'facebook',
+      'href' => $person_node_wrapper->field_usa_link_facebook->url->value(),
+    );
+  }
+
+  if (!empty($person_node->field_usa_link_twitter)) {
+    $social_icons[] = array(
+      'class' => 'twitter',
+      'href' => $person_node_wrapper->field_usa_link_twitter->url->value(),
+    );
+  }
+
+  if (!empty($person_node->field_usa_link_pinterest)) {
+    $social_icons[] = array(
+      'class' => 'pinterest',
+      'href' => $person_node_wrapper->field_usa_link_pinterest->url->value(),
+    );
+  }
+
+  if (!empty($person_node->field_usa_link_tumblr)) {
+    $social_icons[] = array(
+      'class' => 'tumblr',
+      'href' => $person_node_wrapper->field_usa_link_tumblr->url->value(),
+    );
+  }
+
+  $theme_variables = array(
+    'character_full_name' => $full_name,
+    'character_description' => !empty($person_node->field_role)
+      ? $person_node_wrapper->field_role->name->value()
+      : '',
+    'social_icons' => $social_icons,
+    'image_mobile' => !empty($image_url)
+      ? image_style_url('457x351', $image_url)
+      : '',
+    'image_desktop' => !empty($image_url)
+      ? image_style_url('928x714', $image_url)
+      : '',
+    'description_character' => !empty($person_node->body)
+      ? $person_node_wrapper->body->value->value()
+      : '',
+    'description_actor' => !empty($person_node->field_actor_bio)
+      ? $person_node_wrapper->field_actor_bio->value->value()
+      : '',
+  );
+
+  return theme('usanetwork_person_character_main_block', $theme_variables);
+}

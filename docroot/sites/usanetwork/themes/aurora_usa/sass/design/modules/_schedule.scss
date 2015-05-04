@@ -5,10 +5,10 @@
       text-align: right;
       margin: 20px 20px 20px 0;
       @include clear;
-      @include breakpoint($bp-768-width){
+      @include breakpoint($bp-768-width) {
         margin-right: 5px;
       }
-      @include breakpoint($bp-320-width){
+      @include breakpoint($bp-320-width) {
         margin: 20px 10px 13px 0;
       }
       .item-filter {
@@ -27,7 +27,7 @@
         }
         &:last-child {
           margin-right: 0;
-          @include breakpoint($bp-320-width){
+          @include breakpoint($bp-320-width) {
             display: block;
             text-align: center;
           }

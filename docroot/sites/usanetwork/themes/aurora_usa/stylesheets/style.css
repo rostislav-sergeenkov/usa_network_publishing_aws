@@ -25425,6 +25425,9 @@ body.blog .panel-display .file-video-mpx.view-mode-inline_content iframe {
     height: 168px;
   }
 }
+body.blog .usanetwork-show-menu-panel {
+  width: 100%;
+}
 body.blog .view-display-id-blog_content .views-row {
   border-bottom: 3px solid #414141;
   margin-bottom: 30px;

@@ -124,7 +124,7 @@
 
       $(window).bind('resize', function () {
         setTimeout(function() {
-          if (window.innerWidth >= window_size_mobile_641 && window_size_desktop && slideItem.length > 2){
+          if (window.innerWidth >= window_size_mobile_641 && window.innerWidth < window_size_desktop && slideItem.length > 2){
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
 
             if (Drupal.behaviors.bxslider_carousels.harray.length == 0) {

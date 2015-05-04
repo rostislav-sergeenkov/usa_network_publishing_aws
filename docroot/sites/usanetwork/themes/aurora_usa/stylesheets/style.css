@@ -9871,6 +9871,11 @@ footer .block-usanetwork-lyris form > div .form-item-email {
     padding-right: 18px;
   }
 }
+@media (max-width: 320px) {
+  footer .block-usanetwork-lyris form > div .form-item-email {
+    margin-bottom: 10px;
+  }
+}
 footer .block-usanetwork-lyris form > div .form-item-email input {
   color: #3d3d3d;
   background: none;
@@ -14167,6 +14172,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .shows-block .show-info-block .show-central-info .promo {
     float: none;
+    max-width: 820px;
     padding-right: 360px;
     width: 100%;
   }
@@ -14203,6 +14209,15 @@ footer h2 {
 .shows-block .show-info-block .show-central-info .promo .node a img {
   height: 100%;
   width: 100%;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .shows-block .show-info-block .show-central-info .promo .node a img {
+    left: 50%;
+    margin-left: -230px;
+    max-width: none;
+    position: absolute;
+    width: auto;
+  }
 }
 .shows-block .show-info-block .show-central-info .promo .node a .meta-back {
   background: #000000;
@@ -23585,6 +23600,11 @@ yx-axis
     margin-right: 5px;
   }
 }
+@media (max-width: 320px) {
+  .page-schedule .shows-filters {
+    margin: 20px 10px 13px 0;
+  }
+}
 .page-schedule .shows-filters .item-filter {
   display: inline-block;
   margin-right: 33px;
@@ -23606,6 +23626,12 @@ yx-axis
 }
 .page-schedule .shows-filters .item-filter:last-child {
   margin-right: 0;
+}
+@media (max-width: 320px) {
+  .page-schedule .shows-filters .item-filter:last-child {
+    display: block;
+    text-align: center;
+  }
 }
 .page-schedule .shows-filters .item-filter.open .filter-label {
   border-color: transparent;
@@ -23787,11 +23813,6 @@ yx-axis
     height: 66px;
   }
 }
-@media (max-width: 320px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li {
-    height: 44px;
-  }
-}
 .page-schedule .schedule-wrapper .schedule-navigation ul li:first-child {
   border-left: 1px solid #e9eaeb;
 }
@@ -23839,7 +23860,7 @@ yx-axis
 }
 @media (max-width: 480px) {
   .page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 30px;
   }
 }
@@ -25506,6 +25527,9 @@ body.blog .panel-display .file-video-mpx.view-mode-inline_content iframe {
     width: 300px;
     height: 168px;
   }
+}
+body.blog .usanetwork-show-menu-panel {
+  width: 100%;
 }
 body.blog .view-display-id-blog_content .views-row {
   border-bottom: 3px solid #414141;

@@ -885,6 +885,10 @@ function usanetwork_tv_schedule_schedule_page() {
         }
       }
       $show_nid = NULL;
+      $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
+      if (isset($show_title_aliases[$show_name])) {
+        $show_name = $show_title_aliases[$show_name];
+      }
       $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
       if (empty($show_nid)) {
         $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'catchall_page');
@@ -1874,10 +1878,14 @@ function _usanetwork_tv_schedule_find_show_by_title($show_name) {
   $shows = $query->execute()->fetchAll();
   $finded_show_id = NULL;
   if (!empty($shows) && is_array($shows)) {
-    $subj_show_name_elements = explode(' ', strtolower($show_name));
+    $show_name = preg_replace("/[^a-z0-9\s]/", '', strtolower($show_name));
+    $show_name = trim(preg_replace("/\s+/", ' ', $show_name));
+    $subj_show_name_elements = explode(' ', $show_name);
     $max_matches = 0;
     foreach($shows as $show) {
-      $show_name_elements = explode(' ', strtolower($show->title));
+      $show->title = preg_replace ("/[^a-z0-9\s]/", '', strtolower($show->title));
+      $show->title = trim(preg_replace("/\s+/", ' ', $show->title));
+      $show_name_elements = explode(' ', $show->title);
       $matches = count(array_intersect($subj_show_name_elements, $show_name_elements));
       if ($matches > $max_matches) {
         $max_matches = $matches;

@@ -14924,7 +14924,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_usa_tv_related_shows',
-    'label' => 'Related shows',
+    'label' => 'Related show',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -15129,7 +15129,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Promo Image Override');
   t('Promoted content');
   t('Promoted items');
-  t('Related shows');
+  t('Related show');
   t('Role');
   t('SAFEHTML');
   t('SHOW');

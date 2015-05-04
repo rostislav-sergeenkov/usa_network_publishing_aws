@@ -1914,6 +1914,7 @@ function usanetwork_context_context_default_contexts() {
     'path' => array(
       'values' => array(
         '<front>' => '<front>',
+        'home/*' => 'home/*',
       ),
     ),
   );

@@ -21,6 +21,15 @@
     vsettings: {},
     hsettings: {},
     extendSettings: function () {
+
+      var slideWidth;
+
+      if($('body').hasClass('consumptionator-page')) {
+        slideWidth = window.innerWidth / 3 - 6;
+      } else {
+        slideWidth = 255;
+      }
+
       Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'vertical',
         minSlides: 1,
@@ -29,11 +38,13 @@
       Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'horizontal',
         controls: true,
+        minSlides: 3,
+        maxSlides: 3,
         hideControlOnEnd: true,
         nextText: '',
         prevText: '',
         adaptiveHeight: true,
-        slideWidth : ($('body').hasClass('consumptionator-page'))? '425' : '255'
+        slideWidth : slideWidth
       });
     },
 
@@ -120,13 +131,13 @@
       if (slideItem.length > 2) {
         Drupal.behaviors.bxslider_carousels.initVSliders();
       }
-      if (window.innerWidth >= window_size_mobile_641 && slideItem.length > 2 ){
+      if (window.innerWidth >= window_size_mobile_641 && window.innerWidth < window_size_desktop && slideItem.length > 2 ){
         Drupal.behaviors.bxslider_carousels.initHSliders();
       }
 
       $(window).bind('resize', function () {
         setTimeout(function() {
-          if (window.innerWidth >= window_size_mobile_641 && slideItem.length > 2){
+          if (window.innerWidth >= window_size_mobile_641 && window.innerWidth < window_size_desktop && slideItem.length > 2){
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
 
             if (Drupal.behaviors.bxslider_carousels.harray.length == 0) {
@@ -144,7 +155,7 @@
             $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
             moreButton.css('display', 'block');
           }
-        }, 500);
+        }, 0);
       });
 
       if (slideItem.length > number_of_items){

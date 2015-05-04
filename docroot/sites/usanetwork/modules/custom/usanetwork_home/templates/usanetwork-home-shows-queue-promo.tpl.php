@@ -5,7 +5,7 @@
 ?>
 <div class="node-wrapper promo">
   <div class="node node-usanetwork-promo show-color-border<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?>">
-    <a href="javascript:void(0)">
+    <a href="<?php if (!empty($episode_url)): print $episode_url; endif; ?>">
       <div class="asset-img">
         <?php if (!empty($latet_episode_image_url)): ?>
           <img alt="" src="<?php print $latet_episode_image_url; ?>">

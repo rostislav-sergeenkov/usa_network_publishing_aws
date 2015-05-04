@@ -605,6 +605,8 @@ function usanetwork_tv_shows_entity_update($entity, $type) {
       $tv_show_node = node_load($show_nid);
 
       _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
     }
   }
 }
@@ -626,6 +628,8 @@ function usanetwork_tv_shows_entity_insert($entity) {
       $tv_show_node = node_load($show_nid);
 
       _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
     }
   }
 }

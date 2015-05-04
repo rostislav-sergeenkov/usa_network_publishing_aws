@@ -9871,6 +9871,11 @@ footer .block-usanetwork-lyris form > div .form-item-email {
     padding-right: 18px;
   }
 }
+@media (max-width: 320px) {
+  footer .block-usanetwork-lyris form > div .form-item-email {
+    margin-bottom: 10px;
+  }
+}
 footer .block-usanetwork-lyris form > div .form-item-email input {
   color: #3d3d3d;
   background: none;
@@ -23530,6 +23535,11 @@ yx-axis
     margin-right: 5px;
   }
 }
+@media (max-width: 320px) {
+  .page-schedule .shows-filters {
+    margin: 20px 10px 13px 0;
+  }
+}
 .page-schedule .shows-filters .item-filter {
   display: inline-block;
   margin-right: 33px;
@@ -23551,6 +23561,12 @@ yx-axis
 }
 .page-schedule .shows-filters .item-filter:last-child {
   margin-right: 0;
+}
+@media (max-width: 320px) {
+  .page-schedule .shows-filters .item-filter:last-child {
+    display: block;
+    text-align: center;
+  }
 }
 .page-schedule .shows-filters .item-filter.open .filter-label {
   border-color: transparent;
@@ -23732,11 +23748,6 @@ yx-axis
     height: 66px;
   }
 }
-@media (max-width: 320px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li {
-    height: 44px;
-  }
-}
 .page-schedule .schedule-wrapper .schedule-navigation ul li:first-child {
   border-left: 1px solid #e9eaeb;
 }
@@ -23784,7 +23795,7 @@ yx-axis
 }
 @media (max-width: 480px) {
   .page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 30px;
   }
 }

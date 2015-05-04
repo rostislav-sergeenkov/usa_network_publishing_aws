@@ -654,8 +654,11 @@ function usanetwork_tv_shows_query_alter($query) {
     $instance_info = $query->getMetaData('instance_info');
     if (!empty($instance_info)) {
       if ($instance_info['target_type'] == 'file') {
-        $query->innerJoin('mpx_video', 'p', 'p.fid = file_managed.fid');
-        $query->condition('p.status', 1);
+        $query->innerJoin('mpx_video', 'mpx_video', 'mpx_video.fid = file_managed.fid');
+        $db_or = db_or();
+        $db_or->condition('mpx_video.status', 0, '<>');
+        $db_or->condition('mpx_video.airdate', REQUEST_TIME, '>=');
+        $query->condition($db_or);
       }
     }
   }

@@ -231,13 +231,13 @@
                     position: absolute;
                     padding-right: 350px;
                     text-transform: uppercase;
-                    span {
+                    .slide-index {
                       font-size: 27px;
                       font-family: $avalon-demi;
                     }
                     @include breakpoint($bp-1900-width) {
                       font-size: 13px;
-                      span {
+                      .slide-index {
                         font-size: 14px;
                       }
                     }
@@ -245,7 +245,7 @@
                       bottom: 0;
                       font-size: 12px;
                       left: 70px;
-                      span {
+                      .slide-index {
                         font-size: 13px;
                       }
                     }
@@ -257,7 +257,7 @@
                       bottom: 5px;
                       font-size: 11px;
                       padding-right: 240px;
-                      span {
+                      .slide-index {
                         font-size: 12px;
                       }
                     }

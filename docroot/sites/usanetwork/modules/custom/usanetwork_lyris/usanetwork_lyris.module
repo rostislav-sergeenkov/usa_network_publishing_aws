@@ -124,7 +124,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#suffix' => '</div>',
   );
   $form['newsletter']['title'] = array(
-    '#markup' => t('Sign Up for @show_title Newsletters', array('@show_title' => $property['show_title'])),
+    '#markup' => '<label>' . t('Sign Up for @show_title Newsletters', array('@show_title' => $property['show_title'])) . '</label>',
   );
   $form['newsletter']['email'] = array(
     '#type' => 'textfield',
@@ -143,6 +143,8 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#value' => isset($property['show_value']) ? $property['show_value'] : '',
   );
   $form['newsletter']['submit'] = array(
+    '#prefix' => '<div class="form-submit-wrapper">',
+    '#suffix' => '</div>',
     '#type' => 'submit',
     '#value' => t('submit'),
     '#ajax' => array(

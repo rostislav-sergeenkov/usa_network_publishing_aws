@@ -795,7 +795,12 @@ function usanetwork_home_get_homepage($types = array(), $day = NULL) {
   }
 
   if ($day === NULL) {
-    $day = _usanetwork_home_get_day();
+    if (arg(1) && user_access('access administration menu')) {
+      $day = check_plain(strtolower(arg(1)));
+    }
+    else {
+      $day = _usanetwork_home_get_day();
+    }
   }
 
   $query = db_select('node', 'n');
@@ -1464,7 +1469,7 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
         'image_url' => !empty($content_image) ? image_style_url('383x144', $content_image) : '',
         'icon_type' => $icon_type,
       );
-      
+
       $output_array[] = theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);
     }
   }

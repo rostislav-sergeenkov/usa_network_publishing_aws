@@ -26,6 +26,8 @@ function usanetwork_dynamic_entity_reference_autocomplete($field_name, $entity_t
     'entity_type' => $entity_type,
     'field_name' => $field_name,
     'bundle_name' => $bundle_name,
+    'target_type' => $target_type,
+    'target_bundles' => $field_allowed_bundles,
   );
   $options = usanetwork_dynamic_entity_reference_get_referenceable_entities($instance_info, $target_type, $field_allowed_bundles, $match, $match_operator, 10);
 
@@ -109,7 +111,7 @@ function usanetwork_dynamic_entity_reference_get_referenceable_entities($instanc
   $query = usanetwork_dynamic_entity_reference_build_entity_query($target_type, $target_bundles, $match, $match_operator);
   $query->range(0, $limit);
 
-  $query->addTag($instance_info['field_name'] . '_dynamic_entity_reference');
+  $query->addTag('usanetwork_dynamic_entity_reference');
   $query->addmetaData('instance_info', $instance_info);
   $result = $query->execute();
 

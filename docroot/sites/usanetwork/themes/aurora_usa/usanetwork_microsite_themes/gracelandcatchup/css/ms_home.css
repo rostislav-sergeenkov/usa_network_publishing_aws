@@ -11,16 +11,16 @@
   color: #FFE476; /* yellow */
   text-align: center;
 }
-#home-content-container {
+#home #home-content-container {
   position: absolute;
   top: 23%;
   left: 0;
   width: 100%;
 }
-#home-content-container > div {
+#home #home-content-container > div {
   margin: 0 auto 1.5%;
 }
-#home-logo {
+#home #home-logo {
   width: 42%;
 }
 #home #home-sponsored {
@@ -39,6 +39,7 @@
 }
 #home #home-countdown {
   width: 30%;
+  min-width: 236px;
   max-width: 460px;
   margin-bottom: 2%;
 }
@@ -47,14 +48,14 @@
   height: auto;
   margin-bottom: 4%;
 }
-#home-nav li {
+#home #home-nav li {
   float: left;
   display: block;
   width: 23%;
   margin: 0 5.1667%;
   height: auto;
 }
-#home-nav li .spoiler {
+#home #home-nav li .spoiler {
   float: left;
   clear: left;
 }
@@ -76,7 +77,7 @@
 .spoiler-low {
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/graceland-s2catchup-spoiler-low.svg');
 }
-#home-usa-logo {
+#home #home-usa-logo {
   position: absolute;
   bottom: 16px;
   left: 10px;
@@ -92,19 +93,31 @@
     background-position: center top;
     padding-top: 100%;
   }
-  #home-content-container {
+  #home #home-content-container {
     top: 30%;
   }
-  #home-logo {
+  #home #home-logo {
     width: 80%;
   }
-  #home-sponsored {
-    width: 47%;
+  #home #home-sponsored {
+    width: 50%;
+    min-width: 200px;
   }
-  #home-countdown {
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 1em;
+  }
+  #home #home-countdown {
     width: 48%;
   }
-  #home-nav {
+  #home #home-nav {
     width: 80%;
+  }
+}
+
+@media (max-width: 560px) {
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 0.8em;
   }
 }

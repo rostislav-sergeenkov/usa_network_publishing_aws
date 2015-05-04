@@ -261,6 +261,7 @@
   width: 100%; /* 615px; */
   height: 56.26%; /* 346px; */
   margin-right: 0; /* 15px; */
+  margin-bottom: 4px;
 }
 #microsite .file-video-mpx.view-mode-inline_content iframe,
 #microsite .featured-asset .video-player-wrapper iframe {

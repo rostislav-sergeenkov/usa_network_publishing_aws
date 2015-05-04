@@ -6,6 +6,7 @@
 }
 #microsite #quizzes .full-pane {
   max-width: 1244px;
+  margin-top: 12px;
 }
 #microsite #quizzes #viewport {
   position: relative;

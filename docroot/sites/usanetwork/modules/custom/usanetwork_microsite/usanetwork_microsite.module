@@ -1142,6 +1142,12 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         }
       }
     }
+    $active_filter_class = usanetwork_microsite_get_id_by_string($active_filter);
+    $theme_variables['active_filter_class'] = '';
+    if (!empty($active_filter_class)) {
+      $theme_variables['active_filter_class'] = $active_filter_class;
+    }
+
     // Create filter menu.
     if (!empty($video_types) && is_array($video_types)) {
       $id = 0;
@@ -1166,6 +1172,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           'data' => $type,
           'class' => array('filter-item'),
           'data-filter-name' => $type,
+          'data_filter_class' => usanetwork_microsite_get_id_by_string($type),
         );
         if (!empty($children)) {
           $items[$id]['children'] = $children;
@@ -3410,4 +3417,9 @@ function _usanetwork_microsite_get_short_name_for_video($file) {
   }
   return $season . $episode;
 
+}
+
+function usanetwork_microsite_get_id_by_string($string) {
+  module_load_include('inc', 'pathauto', 'pathauto');
+  return pathauto_cleanstring($string);
 }

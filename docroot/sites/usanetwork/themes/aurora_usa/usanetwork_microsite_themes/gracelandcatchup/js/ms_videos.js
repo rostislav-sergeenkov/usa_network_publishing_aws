@@ -303,8 +303,10 @@
       $('#video-filter li.filter-item').click(function () {
         // Buttons
         var filterItem = $('#video-filter li.filter-item'),
-            filterMenu = $('#video-filter .filter-menu');
+            filterMenu = $('#video-filter .filter-menu'),
+            filterClass = $(this).attr('data_filter_class');
 
+        $('#thumbnail-list .view-content .item-list ul').attr('class', filterClass);
 
         if ($(this).hasClass('active')) {
           return false;

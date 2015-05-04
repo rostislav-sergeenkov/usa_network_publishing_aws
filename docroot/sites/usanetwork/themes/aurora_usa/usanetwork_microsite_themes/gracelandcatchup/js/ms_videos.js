@@ -300,10 +300,11 @@
         }
       });
 
-      $('#video-filter .filter-item').click(function () {
+      $('#video-filter li.filter-item').click(function () {
         // Buttons
-        var filterItem = $('#video-filter .filter-item'),
+        var filterItem = $('#video-filter li.filter-item'),
             filterMenu = $('#video-filter .filter-menu');
+
 
         if ($(this).hasClass('active')) {
           return false;
@@ -311,10 +312,19 @@
         else {
           filterItem.removeClass('active');
           $(this).addClass('active');
+          $('#video-filter .filter-child-item').removeClass('active');
 
-          var categoryName = $('#video-filter .filter-item.active').attr('data-filter-name'),
+          var categoryName = $(this).attr('data-filter-name'),
               offset = 0,
-              url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
+              childItems = $(this).find('.filter-child-item'),
+              url;
+          if (childItems.length == 0) {
+            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
+          }
+          else {
+            var season_num = childItems.last().attr('data-season-num');
+            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;;
+          }
 
           $('#thumbnail-list .expandable-toggle li').text('more');
           $('#thumbnail-list .expandable-toggle li').removeClass('less').addClass('more');
@@ -351,6 +361,32 @@
           Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
         }
 */
+      });
+
+      $('#video-filter .filter-child-item').click(function () {
+        // Buttons
+        var filterItem = $('#video-filter .filter-child-item'),
+          filterMenu = $('#video-filter .filter-menu');
+
+        if ($(this).hasClass('active')) {
+          return false;
+        }
+        else {
+          filterItem.removeClass('active');
+          filterMenu.find('.filter-item').removeClass('active');
+          $(this).addClass('active');
+          $(this).parents('li.filter-item').addClass('active');
+          var categoryName = $('#video-filter .filter-item.active').attr('data-filter-name'),
+            offset = 0,
+            season_num = $(this).attr('data-season-num');
+          url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;
+
+          $('#thumbnail-list .expandable-toggle li').text('more');
+          $('#thumbnail-list .expandable-toggle li').removeClass('less').addClass('more');
+          $('#thumbnail-list').removeClass('expanded');
+
+          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
+        }
       });
 
       // video items toggler

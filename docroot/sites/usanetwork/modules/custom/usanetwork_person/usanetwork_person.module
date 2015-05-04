@@ -22,33 +22,61 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_person_character_carousel_items_block' => array(
       'variables' => array(
-
+        'ad' => NULL,
+        'is_even' => NULL,
+        'items' => array(),
       ),
       'template' => 'templates/usanetwork-person-character-carousel-items-block',
     ),
+    'usanetwork_person_character_carousel_default_item' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'media_icon' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-default-item',
+    ),
     'usanetwork_person_character_carousel_twitter_item' => array(
       'variables' => array(
-
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'last_updated' => NULL,
+        'post_image' => NULL,
+        'sender' => NULL,
+        'action' => NULL,
+        'retweeted_by' => NULL,
+        'content' => NULL,
       ),
       'template' => 'templates/usanetwork-person-character-carousel-twitter-item',
     ),
     'usanetwork_person_character_carousel_instagram_item' => array(
       'variables' => array(
-
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
       ),
       'template' => 'templates/usanetwork-person-character-carousel-instagram-item',
     ),
     'usanetwork_person_character_carousel_facebook_item' => array(
       'variables' => array(
-
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'media_icon' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
       ),
       'template' => 'templates/usanetwork-person-character-carousel-facebook-item',
-    ),
-    'usanetwork_person_character_carousel_default_item' => array(
-      'variables' => array(
-
-      ),
-      'template' => 'templates/usanetwork-person-character-carousel-default-item',
     ),
   );
 }

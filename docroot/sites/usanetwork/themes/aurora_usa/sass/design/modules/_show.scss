@@ -651,6 +651,7 @@
         }
         @include breakpoint($between-1025-1280) {
           float: none;
+          max-width: 820px;
           padding-right: 360px;
           width: 100%;
         }
@@ -680,6 +681,13 @@
             img {
               height: 100%;
               width: 100%;
+              @include breakpoint($between-769-1280) {
+                left: 50%;
+                margin-left: -230px;
+                max-width: none;
+                position: absolute;
+                width: auto;
+              }
             }
             .meta-back {
               background: #000000;

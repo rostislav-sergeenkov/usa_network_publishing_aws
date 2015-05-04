@@ -165,6 +165,24 @@
       }
     },
 
+/*
+    sendSponsorOmnitureCall: function(omniturePageNameAddition) {
+      var oldPageName = s.pageName;
+      s.prop5 = siteName + ' : Home';
+      s.pageName = s.prop5;
+      if (section == 'moments') {
+        s.prop60 = "Sponsored";
+      } else {
+        s.prop60 = "Not Sponsored";
+      }
+      if (omniturePageNameAddition != '') s.pageName = s.prop5 + ' : ' + omniturePageNameAddition;
+      if (typeof s_gi != 'undefined')	{
+        void (s.t());
+        s.pageName = oldPageName;
+      }
+    },
+*/
+
     // ADS
     usa_refreshMicrositeAdsBySection: function (adContainer) {
       usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
@@ -388,15 +406,49 @@
       $(document).ready(function () {
         self.create728x90Ad();
 
-        if ($('#videos').hasClass('active')) {
+//        if ($('#videos').hasClass('active')) {
           $('#video-container').addClass('active');
           Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
-        }
+//        }
 
         // Turn off the popstate/hashchange tve-core.js event listeners
         $(window).off('popstate');
         $(window).off('hashchange');
       });
+
+      // set hover state for hamburger menu on mobile devices
+      var wwidth = $(window).width(),
+          $siteNav = $('#site-nav'),
+          hamburgerTimer;
+
+      if (wwidth < 844) {
+        $siteNav.addClass('mobile');
+        $siteNav.find('#site-nav-links-mobile, #site-nav-links-mobile ul, #site-nav-links-mobile li').hover(function(){
+          $siteNav.find('#site-nav-links-list-mobile').addClass('hover');
+          clearTimeout(hamburgerTimer);
+        }, function(){
+          hamburgerTimer = setTimeout(function(){
+            $siteNav.find('#site-nav-links-list-mobile').removeClass('hover');
+          }, 1000);
+        });
+      }
+      else {
+        $siteNav.removeClass('mobile');
+      }
+
+      // set resize and orientation change
+      $(window).bind('resize', function () {
+        var wwidth = $(window).width(),
+            $siteNav = $('#site-nav');
+
+        if (wwidth < 844) {
+          $siteNav.addClass('mobile');
+        }
+        else {
+          $siteNav.removeClass('mobile');
+        }
+      });
+//      window.addEventListener('orientationchange', self.reloadSliders);
 
     }
   }

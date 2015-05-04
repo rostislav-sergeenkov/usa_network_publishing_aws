@@ -74,6 +74,9 @@
   text-transform: uppercase;
   margin: 0;
 }
+#character-info .character-social {
+  min-height: 12px;
+}
 #character-info li .character-image {
   width: 203px;
   height: 170px;

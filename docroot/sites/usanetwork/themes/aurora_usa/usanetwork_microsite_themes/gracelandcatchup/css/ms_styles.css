@@ -179,6 +179,12 @@ body{
   opacity: 1;
   font-size: 1.06em;
 }
+#site-nav #site-nav-content {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 #site-nav a,
 #site-nav a:link,
 #site-nav a:visited {
@@ -201,7 +207,7 @@ body{
   bottom: 0;
   left: 0;
 }
-#site-nav-center {
+#site-nav #site-nav-center {
   position: absolute;
   top: 0;
   left: 100%;
@@ -209,20 +215,23 @@ body{
   width: calc(100% - 221px); /* 570px */;
   margin-left: calc(-50% - ((100% - 221px)/2));
 }
-#site-nav-top {
+#site-nav #site-nav-top {
   width: 55%;
   margin: 0 auto;
 }
-#site-nav-top a {
+#site-nav #site-nav-top a {
   float: left;
   margin-top: 2%;
 }
-#site-nav-top a#gracelandcu-logo {
+#site-nav #site-nav-top a#gracelandcu-logo {
   width: 64%; /* 72.20%; */
 }
-#site-nav-top a#gracelandcu-sponsor {
+#site-nav #site-nav-top a#gracelandcu-sponsor {
   width: 35.22%; /* 27.02%; */
   margin-left: 0.78%;
+}
+#site-nav #site-nav-bottom {
+  display: block;
 }
 #site-nav-links {
   display: table;
@@ -235,6 +244,13 @@ body{
 #site-nav li {
   float: left;
   padding: 10px;
+}
+#site-nav li a {
+  width: 100%;
+  display: block;
+}
+#site-nav #site-nav-right {
+  display: block;
 }
 #site-nav-right {
   width: 145px;
@@ -279,20 +295,142 @@ body{
 .page-node-microsite #site-nav #site-nav-social a:visited,
 #site-nav-right #site-nav-show-site-link a,
 #site-nav-right #site-nav-show-site-link a:link,
-#site-nav-right #site-nav-show-site-link a:visited {
+#site-nav-right #site-nav-show-site-link a:visited,
+#site-nav-mobile a,
+#site-nav-mobile a:link,
+#site-nav-mobile a:visited {
   color: #818181;
   margin-left: 4px;
+}
+#site-nav-mobile li.internal a,
+#site-nav-mobile li.internal a:link,
+#site-nav-mobile li.internal a:visited {
+  color: #FFF;
 }
 .page-node-microsite #site-nav #site-nav-social a:hover,
 .page-node-microsite #site-nav #site-nav-social a:active,
 #site-nav-right #site-nav-show-site-link a:hover,
-#site-nav-right #site-nav-show-site-link a:active {
+#site-nav-right #site-nav-show-site-link a:active,
+#site-nav-mobile li a:hover,
+#site-nav-mobile li a:active {
   color: #FFF;
+}
+#site-nav-mobile li.internal a:hover,
+#site-nav-mobile li.internal a:active {
+  color: #FFE476;
+}
+#site-nav #site-nav-mobile {
+  display: none;
+}
+
+/* SITE NAV MOBILE */
+#site-nav.mobile {
+  overflow: visible;
+}
+#site-nav.mobile #site-nav-left {
+  float: left;
+}
+#site-nav.mobile #site-nav-center {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0 0 0 22px;
+  width: calc(100% - 504px);
+  max-width: 317px;
+  min-width: 244px;
+  margin: 0 auto;
+}
+#site-nav.mobile #site-nav-bottom {
+  display: none;
+}
+#site-nav.mobile #site-nav-top {
+  width: 100%;
+}
+#site-nav.mobile #site-nav-top a#gracelandcu-logo {
+  width: 100%;
+}
+#site-nav.mobile #site-nav-top a#gracelandcu-sponsor {
+  width: 64%;
+  margin: 2% 0 0 16%;
+}
+#site-nav.mobile #site-nav-right {
+  display: none;
+}
+#site-nav-mobile {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+#site-nav.mobile #site-nav-mobile {
+  display: block;
+}
+#site-nav .mobi-menu-icon {
+  display: block;
+  border-top: 5px solid #818181;
+  border-bottom: 5px solid #818181;
+  margin: 0;
+}
+#site-nav .mobi-menu-icon:before {
+  border-top: 5px solid #818181; /* #0ab6e8; */
+}
+#site-nav .mobi-menu-icon:after {
+  border-top: 5px solid #818181; /* #0ab6e8; */
+  padding-bottom: 8px;
+}
+#site-nav .mobi-menu-icon:hover,
+#site-nav .mobi-menu-icon:hover:before,
+#site-nav .mobi-menu-icon:hover:after {
+  border-color: white;
+}
+#site-nav-links-mobile {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#site-nav-links-mobile #site-nav-links-list-mobile {
+  display: none;
+  position: absolute;
+  top: 28px;
+  right: -16px;
+  width: 150px;
+  height: auto;
+  z-index: 10;
+}
+#site-nav-links-mobile #site-nav-links-list-mobile.hover {
+  display: block;
+}
+#site-nav-links-mobile:hover #site-nav-links-list-mobile {
+  display: block;
+}
+#site-nav-links-mobile #site-nav-links-list-mobile:hover {
+  display: block;
+}
+#site-nav-links-mobile li {
+  float: none;
+  clear: both;
+  width: 150px;
+  position: relative;
+  top: 0;
+  right: 0;
+  background-color: #333;
+  color: #FFF;
+  height: 34px;
+  z-index: 10;
+}
+#site-nav-mobile #site-nav-social {
+  height: 42px;
+}
+#site-nav-mobile #site-nav-social a {
+  width: 26px;
+  height: 26px;
+  float: left;
 }
 
 /* SECTIONS CONTAINERS */
 .section-description {
-  width: 100%;
+  width: 92%;
   text-align: center;
   color: #000;
   font-size: 1.125em;
@@ -307,6 +445,7 @@ section h2 {
   text-align: center;
   text-transform: uppercase;
   margin: 25px 0;
+  clear: both;
 }
 #microsite #sections {
   margin: 0;
@@ -366,6 +505,16 @@ section h2 {
 }
 
 /* BEGIN MEDIA QUERIES */
+@media (min-width: 1740px) {
+  #site-nav #site-nav-center {
+    margin-left: calc(-50% - 700px);
+    max-width: 1400px;
+  }
+  #site-nav #site-nav-top a {
+    margin-top: 1%;
+  }
+}
+
 @media (max-width: 920px) {
   html,
   body {
@@ -379,5 +528,9 @@ section h2 {
   body {
     font-size: 12px !important;
     line-height: 14px !important;
+  }
+  #site-nav-left {
+    width: 38px;
+    height: 58.5px;
   }
 }

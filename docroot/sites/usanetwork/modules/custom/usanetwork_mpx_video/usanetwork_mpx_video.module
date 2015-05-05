@@ -986,11 +986,28 @@ function usanetwork_mpx_video_full_video_autocomplete($title = '') {
 }
 
 /**
+ * Implements hook_library_alter().
+ *
+ * Remove pdk player from page
+ */
+function usanetwork_mpx_video_library_alter(&$libraries, $module) {
+  $current_menu_item = menu_get_item();
+  $current_menu_item_path = $current_menu_item['path'];
+  if ($current_menu_item_path == 'videos/live') {
+    if ($module == 'tve_auth') {
+      unset($libraries['tve_auth']['js']['http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js']);
+    }
+  }
+}
+
+/**
  * Renders live video page
  */
 function usanetwork_mpx_video_live() {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js');
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
+  drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
   return '';
 }
 

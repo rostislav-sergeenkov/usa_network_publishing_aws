@@ -2499,7 +2499,7 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
   $query_parameters = _usanetwork_tv_shows_landing_page_get_validated_query_params();
 
   $video_types = _usanetwork_tv_shows_landing_page_vbget_video_types($tv_show_node, $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order']);
-  $video_sorters = _usanetwork_tv_shows_landing_page_vbget_video_sorters();
+  $video_sorters = _usanetwork_tv_shows_landing_page_vbget_video_sorters($tv_show_node->nid, $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order']);
   $videos_block = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node, $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order']);
 
   $result = theme('usanetwork_tv_shows_landing_videos', array(
@@ -2593,8 +2593,18 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
       $result[] = $all_videos;
     }*/
 
+    $item_index = 0;
+
     foreach ($query_result as $key => &$result_item) {
       if (!isset($result[$result_item->field_usa_video_terms_target_id])) {
+        $active = $result_item->field_usa_video_terms_target_id == $selected_category
+          ? TRUE
+          : FALSE;
+
+        if ($item_index == 0 && $selected_category == 0) {
+          $active = TRUE;
+        }
+
         $result[$result_item->field_usa_video_terms_target_id] = array(
           'tid' => $result_item->field_usa_video_terms_target_id,
           'name' => $result_item->name,
@@ -2605,10 +2615,10 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
               'sort_by' => $sort_field,
               'sort_order' => $sort_direction,
             )),
-          'active' => $result_item->field_usa_video_terms_target_id == $selected_category
-            ? TRUE
-            : FALSE,
+          'active' => $active,
         );
+
+        $item_index++;
       }
 
       $result[$result_item->field_usa_video_terms_target_id]['items'][] = $result_item->fid;
@@ -2626,19 +2636,37 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
  *
  * @return array
  */
-function _usanetwork_tv_shows_landing_page_vbget_video_sorters() {
-  return array(
-    array(
+function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $category_tid, $sort_by = 'timestamp', $sort_order = 'DESC') {
+  $data = array(
+    'timestamp_DESC' => array(
       'order' => 'DESC',
       'data_type' => 'timestamp',
       'title' => t('Newest'),
+      'active' => FALSE,
+      'url' => url('node/' . $show_node_nid) . '/videos?' . http_build_query(array(
+          'category' => $category_tid,
+          'sort_by' => 'timestamp',
+          'sort_order' => 'DESC',
+        )),
     ),
-    array(
+    'timestamp_ASC' => array(
       'order' => 'ASC',
       'data_type' => 'timestamp',
       'title' => t('Oldest'),
+      'active' => FALSE,
+      'url' => url('node/' . $show_node_nid) . '/videos?' . http_build_query(array(
+          'category' => $category_tid,
+          'sort_by' => 'timestamp',
+          'sort_order' => 'ASC',
+        )),
     ),
   );
+
+  if (isset($data[$sort_by . '_' . $sort_order])) {
+    $data[$sort_by . '_' . $sort_order]['active'] = TRUE;
+  }
+
+  return $data;
 }
 
 /**

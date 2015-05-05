@@ -325,6 +325,8 @@
           }
           else {
             var season_num = childItems.last().attr('data-season-num');
+
+            childItems.last().addClass('active');
             url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;;
           }
 

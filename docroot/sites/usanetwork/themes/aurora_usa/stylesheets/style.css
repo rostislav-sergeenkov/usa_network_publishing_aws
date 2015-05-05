@@ -10230,6 +10230,23 @@ footer h2 {
   }
 }
 
+.page-videos-live #blackout-slate {
+  background: url("../images/live-player/USA_NHL_SLATE.jpg");
+  background-size: cover;
+  display: table;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+.page-videos-live .featured-asset .tve-help-link.signOut {
+  top: auto;
+}
+@media (min-width: 960px) {
+  .page-videos-live .featured-asset .tve-help-link.signOut {
+    top: 35px;
+  }
+}
+
 .page-search .pager {
   margin: 0;
   padding: 0;

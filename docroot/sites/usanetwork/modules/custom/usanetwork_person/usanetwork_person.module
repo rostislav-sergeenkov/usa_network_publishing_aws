@@ -6,6 +6,232 @@
 
 include_once 'usanetwork_person.features.inc';
 
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_person_menu() {
+  $items = array();
+
+  $items['ajax/usanetwork-characters/get-related/%node/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_person_get_related_content_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_person_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_person_character_social' => array(
+      'variables' => array(
+        'block_title' => NULL,
+        'block_social_title' => NULL,
+        'character_filters' => array(),
+        'characters_block' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-character-social',
+    ),
+    'usanetwork_person_character_main_block' => array(
+      'variables' => array(
+        'character_full_name' => NULL,
+        'character_description' => NULL,
+        'social_icons' => array(),
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+        'description_character' => NULL,
+        'description_actor' => NULL,
+        'rendered_carousel' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-character-main-block',
+    ),
+    'usanetwork_person_character_carousel' => array(
+      'variables' => array(
+        'items' => array(),
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel',
+    ),
+    'usanetwork_person_character_carousel_item' => array(
+      'variables' => array(
+        'target_url' => NULL,
+        'title' => NULL,
+        'additinal' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-item',
+    ),
+    'usanetwork_person_related_items_container' => array(
+      'variables' => array(
+        'related_items_block' => NULL,
+        'load_more_link' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-related-items-container',
+    ),
+    'usanetwork_person_related_items_block' => array(
+      'variables' => array(
+        'items' => array()
+      ),
+      'template' => 'templates/usanetwork-person-related-items-block',
+    ),
+    'usanetwork_person_related_item' => array(
+      'variables' => array(
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_desktop' => '',
+        'image_mobile' => '',
+      ),
+      'template' => 'templates/usanetwork-person-related-item',
+    ),
+    'usanetwork_person_related_ymal_item' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'topic' => NULL,
+        'show_name' => NULL,
+        'promo_title' => NULL,
+        'description' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+        'cta' => NULL,
+        'color_class' => NULL,
+        'icon_type' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-related-ymal-item',
+    ),
+  );
+}
+
+/**
+ *  Implements hook_image_default_styles().
+ */
+function usanetwork_person_image_default_styles() {
+  $styles = array();
+
+  $styles['300x250'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 300,
+          'height' => 250,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 300,
+          'height' => 250,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['457x351'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 457,
+          'height' => 351,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 457,
+          'height' => 351,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['928x714'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 928,
+          'height' => 714,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 928,
+          'height' => 714,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
+ *  Implements hook_block_info().
+ */
+function usanetwork_person_block_info() {
+  $blocks = array();
+
+  $blocks['usa_cons_chars_social'] = array(
+    'info' => 'Usanetwork consumptionator: Character social',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usa_cons_chars_main_block'] = array(
+    'info' => 'Usanetwork consumptionator: Character main block',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usa_cons_chars_related_content'] = array(
+    'info' => 'Usanetwork consumptionator: Related content',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_person_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usa_cons_chars_social':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_person_characters_social_block();
+      break;
+
+    case 'usa_cons_chars_main_block':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_person_characters_main_block();
+      break;
+
+    case 'usa_cons_chars_related_content':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_person_characters_related_content_block();
+      break;
+  }
+
+  return $block;
+}
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -16,4 +242,401 @@ function usanetwork_person_preprocess_page(&$vars) {
   if ($node && $node->type == 'person') {
     $vars['title'] = '';
   }
+}
+
+/**
+ * Renders characters block carousel.
+ *
+ * @TODO: DUMMY CONTENT! SHOULD BE REPLACED WITH IFRAME!
+ */
+function _usanetwork_person_characters_social_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $person_node = menu_get_object();
+
+  if (empty($person_node) || (!empty($person_node) && isset($person_node->type) && $person_node->type != 'person')) {
+    return '';
+  }
+
+  $theme_variables = array();
+
+  return theme('usanetwork_person_character_social', $theme_variables);
+}
+
+/**
+ * Renders main block for consumptionator character page.
+ */
+function _usanetwork_person_characters_main_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $person_node = menu_get_object();
+
+  if (empty($person_node) || (!empty($person_node) && isset($person_node->type) && $person_node->type != 'person')) {
+    return '';
+  }
+
+  $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
+  $image_url = usanetwork_core_api_get_content_image('node', $person_node);
+
+  $social_icons = array();
+
+  if (!empty($person_node->field_usa_link_facebook)) {
+    $social_icons[] = array(
+      'class' => 'facebook',
+      'href' => $person_node_wrapper->field_usa_link_facebook->url->value(),
+    );
+  }
+
+  if (!empty($person_node->field_usa_link_twitter)) {
+    $social_icons[] = array(
+      'class' => 'twitter',
+      'href' => $person_node_wrapper->field_usa_link_twitter->url->value(),
+    );
+  }
+
+  if (!empty($person_node->field_usa_link_pinterest)) {
+    $social_icons[] = array(
+      'class' => 'pinterest',
+      'href' => $person_node_wrapper->field_usa_link_pinterest->url->value(),
+    );
+  }
+
+  if (!empty($person_node->field_usa_link_tumblr)) {
+    $social_icons[] = array(
+      'class' => 'tumblr',
+      'href' => $person_node_wrapper->field_usa_link_tumblr->url->value(),
+    );
+  }
+
+  $theme_variables = array(
+    'character_full_name' => $person_node->title,
+    'character_description' => !empty($person_node->field_role)
+      ? $person_node_wrapper->field_role->name->value()
+      : '',
+    'social_icons' => $social_icons,
+    'image_mobile' => !empty($image_url)
+      ? image_style_url('457x351', $image_url)
+      : '',
+    'image_desktop' => !empty($image_url)
+      ? image_style_url('928x714', $image_url)
+      : '',
+    'description_character' => !empty($person_node->body)
+      ? $person_node_wrapper->body->value->value()
+      : '',
+    'description_actor' => !empty($person_node->field_actor_bio)
+      ? $person_node_wrapper->field_actor_bio->value->value()
+      : '',
+    'rendered_carousel' => !empty($person_node->field_show)
+      ? _usanetwork_person_characters_get_rendered_carousel($person_node_wrapper->field_show->nid->value(), $person_node->nid)
+      : '',
+  );
+
+  return theme('usanetwork_person_character_main_block', $theme_variables);
+}
+
+/**
+ * Renders list of characters of current TV Show on consumptionator character page.
+ */
+function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, $current_person_nid = NULL) {
+  $query = db_select('field_data_field_show', 'show_field');
+  $query->fields('show_field', array('entity_id'));
+  $query->condition('show_field.bundle', 'person');
+  $query->condition('show_field.field_show_target_id', $tv_show_node_nid);
+  $query->join('node', 'person_node', 'person_node.nid=show_field.entity_id');
+  $query->orderBy('person_node.title', 'ASC');
+
+  $result = $query->execute()->fetchAll();
+  $rendered_items = array();
+
+  if (!empty($result)) {
+    foreach ($result as $result_item) {
+      $person_node = node_load($result_item->entity_id);
+      $role = NULL;
+      $image_url = usanetwork_core_api_get_content_image('node', $person_node);
+
+      if (!empty($person_node->field_role)) {
+        $role_field = field_get_items('node', $person_node, 'field_role');
+        $role_term = taxonomy_term_load_multiple(array($role_field[0]['tid']));
+
+        if (!empty($role_term)) {
+          $role = $role_term[$role_field[0]['tid']]->name;
+        }
+      }
+
+      $theme_item_variables = array(
+        'target_url' => url('node/' . $person_node->nid),
+        'image_mobile' => image_style_url('300x250', $image_url),
+        'image_desktop' => image_style_url('300x250', $image_url),
+        'show_class' => usanetwork_tv_shows_color_show_css_class($tv_show_node_nid),
+        'title' => $person_node->title,
+        'additional' => $role,
+        'active' => ($person_node->nid == $current_person_nid)
+          ? TRUE
+          : FALSE,
+      );
+
+      $rendered_items[] = theme('usanetwork_person_character_carousel_item', $theme_item_variables);
+    }
+
+    $theme_variables = array(
+      'items' => $rendered_items,
+    );
+
+    return theme('usanetwork_person_character_carousel', $theme_variables);
+  }
+
+  return '';
+}
+
+/**
+ * Renders related content block for consumptionator character page.
+ */
+function _usanetwork_person_characters_related_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $person_node = menu_get_object();
+
+  if (empty($person_node) || (!empty($person_node) && isset($person_node->type) && $person_node->type != 'person')) {
+    return '';
+  }
+
+  if (empty($person_node->field_show)) {
+    return '';
+  }
+
+  $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
+  $tv_show_node = $person_node_wrapper->field_show->value();
+
+  if (empty($tv_show_node->field_tvs_show_latest_feed)) {
+    return '';
+  }
+  else {
+    $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_feed');
+
+    if ($latest_content_flag_field[0]['value'] == 0) {
+      return '';
+    }
+  }
+
+  $you_may_also_like_item = _usanetwork_person_get_ymal_item($tv_show_node);
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content(
+    $tv_show_node,
+    0, !empty($you_may_also_like_item)
+      ? USA_TV_SHOW_RELATED_ITEMS_ON_PAGE
+      : USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1);
+
+  if (!empty($you_may_also_like_item)) {
+    $related_content[] = $you_may_also_like_item;
+  }
+
+  if (!empty($related_content)) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+    drupal_add_js(array(
+      'usanetwork_tv_show_nid' => $tv_show_node->nid,
+      'usanetwork_tv_show_page_context' => 'characters-consumptionator',
+    ), 'setting');
+
+    $block_of_items = _usanetwork_person_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
+
+    return theme('usanetwork_person_related_items_container', array(
+      'related_items_block' => $block_of_items,
+      'load_more_link' => TRUE,
+      'show_nid' => $tv_show_node->nid,
+      'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1,
+    ));
+  }
+
+  return '';
+}
+
+/**
+ * Returns YouMayAlsoLike item for consumptionator character page.
+ */
+function _usanetwork_person_get_ymal_item($show_node) {
+  if (!empty($show_node->field_usa_tv_related_shows)) {
+    $related_show_field = field_get_items('node', $show_node, 'field_usa_tv_related_shows');
+
+    if (!empty($related_show_field[0]['target_id'])) {
+      $related_show_node = node_load($related_show_field[0]['target_id']);
+      $about_field_data = '';
+
+      if (!empty($related_show_node->field_about_ymal)) {
+        $about_field = field_get_items('node', $related_show_node, 'field_about_ymal');
+
+        if (!empty($about_field)) {
+          $about_field_data = check_plain(reset(reset($about_field)));
+        }
+      }
+
+      return (object)array(
+        'entity_type' => 'node',
+        'bundle' => $related_show_node->type,
+        'entity_id' => $related_show_node->nid,
+        'created' => $related_show_node->created,
+        'timestamp' => $related_show_node->changed,
+        'title' => $related_show_node->title,
+        'show_title' => $about_field_data,
+        'raw_image_uri' => usanetwork_core_api_get_content_image('node', $related_show_node),
+        'media_icon' => usanetwork_core_api_get_media_icon('node', $related_show_node->nid),
+        'ymal_about' => $about_field_data,
+        'ymal' => TRUE,
+      );
+    }
+  }
+}
+
+/**
+ * AJAX callback for getting related content items.
+ */
+function usanetwork_person_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => FALSE,
+    'rendered' => '',
+  );
+
+  $is_even = (($start_from / (USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1)) % 2 == 0) ? FALSE : TRUE;
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content($tv_show_node, $start_from, $limit);
+
+  if (!empty($related_content)) {
+    $response['found'] = TRUE;
+    $response['total'] = count($related_content);
+    $response['rendered'] = _usanetwork_person_render_related_content_items_block($related_content, TRUE, $is_even);
+
+    return drupal_json_output($response);
+  }
+  elseif (empty($related_content) && $start_from > 0) {
+    $response['overlimited'] = TRUE;
+  }
+
+  return drupal_json_output($response);
+}
+
+/**
+ * Renders block of 6 content items for consumptionator character page.
+ */
+function _usanetwork_person_render_related_content_items_block($data, $ad, $is_even) {
+  if (!empty($data)) {
+
+    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
+    if (!empty($advert_block['content'])) {
+      $advert = render($advert_block['content']);
+    }
+
+    $theme_variables = array(
+      'related_items' => array(),
+      'is_even' => $is_even,
+      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
+    );
+
+    foreach ($data as $data_index => $data_item) {
+      $is_data_item_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
+
+      if (!empty($data_item->ymal)) {
+        $theme_variables['related_items'][] = _usanetwork_person_render_related_content_item_ymal($data_item);
+      }
+      else {
+        $theme_variables['related_items'][] = _usanetwork_person_render_related_content_item($data_item, $is_data_item_even);
+      }
+    }
+
+    return theme('usanetwork_person_related_items_block', $theme_variables);
+  }
+
+  return '';
+}
+
+/**
+ * Renders default content item of related content block.
+ */
+function _usanetwork_person_render_related_content_item($data, $is_data_item_even) {
+  $classes = array();
+  $desktop_image = $mobile_image = '';
+  $target_url = '<front>';
+
+  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
+      'file',
+      'node'
+    ))
+  ) {
+    $target_url = url($data->entity_type . '/' . $data->entity_id);
+
+    if (!empty($data->promo_link)) {
+      $target_url = url($data->promo_link);
+    }
+  }
+
+  if (!empty($data->raw_image_uri)) {
+    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
+    $mobile_image = image_style_url('291x234', $data->raw_image_uri);
+  }
+
+  if ($data->entity_type != 'node') {
+    if (empty($data->promo_title) || empty($data->promo_description) || empty($data->promo_topic)) {
+      $file = file_load($data->entity_id);
+      $own_promo_lines = _usanetwork_promo_file_get_promo_lines($file);
+    }
+  }
+
+  $theme_variables = array(
+    'custom_classes' => implode(" ", $classes),
+    'target_url' => $target_url,
+    'caption' => !empty($data->promo_topic) ? check_plain($data->promo_topic)
+      : (!empty($own_promo_lines['topic']) ? check_plain($own_promo_lines['topic']) : ''),
+    'title' => !empty($data->promo_title) ? check_plain($data->promo_title)
+      : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : ''),
+    'additional' => !empty($data->promo_description) ? check_plain($data->promo_description)
+      : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : ''),
+    'image_desktop' => $desktop_image,
+    'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
+  );
+
+  return theme('usanetwork_person_related_item', $theme_variables);
+}
+
+/**
+ * Renders YouMayAlsoLike item (featured function).
+ */
+function _usanetwork_person_render_related_content_item_ymal($data) {
+  $classes = array();
+  $desktop_image = $mobile_image = '';
+  $target_url = '<front>';
+
+  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array('file', 'node'))) {
+    $target_url = url($data->entity_type . '/' . $data->entity_id);
+  }
+
+  if (!empty($data->raw_image_uri)) {
+    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
+    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
+  }
+
+  $theme_variables = array(
+    'custom_classes' => implode(" ", $classes),
+    'target_url' => $target_url,
+    'topic' => !empty($data->promo_topic)
+      ? check_plain($data->promo_topic)
+      : '',
+    'show_name' => NULL,
+    'promo_title' => !empty($data->promo_title)
+      ? check_plain($data->promo_title)
+      : $data->title,
+    'description' => !empty($data->promo_description)
+      ? check_plain($data->promo_description)
+      : '',
+    'image_desktop' => $desktop_image,
+    'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
+    'cta' => NULL,
+    'ymal_about' => $data->ymal_about,
+  );
+  return theme('usanetwork_person_related_ymal_item', $theme_variables);
 }

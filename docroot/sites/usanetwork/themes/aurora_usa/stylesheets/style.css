@@ -1682,6 +1682,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     font-size: 14px;
     line-height: 17px;
   }
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title .field-item, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 @media (max-width: 768px) {
   .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
@@ -10012,7 +10017,6 @@ footer .block-usanetwork-lyris form > div .form-submit-wrapper {
   position: relative;
 }
 footer .block-usanetwork-lyris form > div .form-submit-wrapper input {
-  background: #d63c17;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 30px;
   letter-spacing: 1px;
@@ -10224,6 +10228,15 @@ footer h2 {
   footer h2 {
     padding-left: 30px;
   }
+}
+
+.page-videos-live #blackout-slate {
+  background: url("../images/live-player/USA_NHL_SLATE.jpg");
+  background-size: cover;
+  display: table;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 .page-search .pager {
@@ -11980,6 +11993,11 @@ footer h2 {
     width: 100%;
   }
 }
+@media (max-width: 480px) {
+  .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
+    height: 50vw;
+  }
+}
 .consumptionator-page .video-block .player-wrapper > .node, .page-videos-live .video-block .player-wrapper > .node {
   height: 100%;
   width: 100%;
@@ -12235,7 +12253,7 @@ footer h2 {
     background: transparent;
     height: auto;
     margin: 0 auto;
-    max-width: 457px;
+    max-width: 660px;
     padding: 0;
     width: 100%;
   }
@@ -12313,7 +12331,7 @@ footer h2 {
     font-size: 18px;
     margin: 0;
     margin-top: 10px;
-    text-align: left;
+    text-align: center;
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text {
@@ -12336,7 +12354,7 @@ footer h2 {
     font-size: 16px;
     margin-bottom: 10px;
     margin-top: 10px;
-    text-align: left;
+    text-align: center;
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block {
@@ -12367,13 +12385,13 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
-    height: 18.4vw;
+    height: 23vw;
     width: 30%;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
-    height: 33vw;
+    height: 29.8vw;
     margin-right: 0;
     width: 34vw;
   }
@@ -13376,6 +13394,49 @@ footer h2 {
 }
 .slide-overlay .advert, .slide-overlay .ad-728x90 {
   position: relative;
+}
+
+#block-usanetwork-mpx-video-usa-mpx-video-socal {
+  padding: 20px 16px 0;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal {
+    padding-top: 30px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal {
+    padding-top: 30px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal {
+    padding-top: 20px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal {
+    padding: 20px 10px 0;
+  }
+}
+#block-usanetwork-mpx-video-usa-mpx-video-socal .content {
+  border-bottom: 2px solid;
+  max-height: 615px;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal .content {
+    max-height: 885px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal .content {
+    max-height: 445px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal .content {
+    max-height: 1695px;
+  }
 }
 
 .shows-block {
@@ -23932,7 +23993,7 @@ yx-axis
   overflow: hidden;
   display: block;
   width: auto;
-  margin: 0 50px;
+  margin: 0;
 }
 .page-schedule .schedule-wrapper .schedule-navigation ul {
   vertical-align: middle;
@@ -24137,7 +24198,6 @@ yx-axis
   display: block;
 }
 .page-schedule .schedule-wrapper .schedule-table ul {
-  height: 100%;
   width: 100%;
 }
 .page-schedule .schedule-wrapper .schedule-table ul li.date-separate {
@@ -24935,15 +24995,36 @@ yx-axis
 }
 .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
   margin-left: 0;
-  max-width: 60%;
+  width: 190px;
+}
+@media (min-width: 1701px) {
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
+    max-width: 245px;
+    width: 245px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
+    width: 155px;
+  }
 }
 @media (min-width: 769px) and (max-width: 990px) {
   .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
-    max-width: 100%;
+    width: 100%;
   }
 }
 .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
-  width: 40%;
+  width: calc(100% - 205px);
+}
+@media (min-width: 1701px) {
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+    width: calc(100% - 278px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+    width: calc(100% - 170px);
+  }
 }
 @media (min-width: 769px) and (max-width: 990px) {
   .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {

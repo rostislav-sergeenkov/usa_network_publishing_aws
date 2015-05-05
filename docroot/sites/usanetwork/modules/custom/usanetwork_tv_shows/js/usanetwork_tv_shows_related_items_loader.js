@@ -19,6 +19,9 @@
           case 'gallery-consumptionator':
             service_name = 'usanetwork-media-gallery';
             break;
+          case 'characters-consumptionator':
+            service_name = 'usanetwork-characters';
+            break;
           default:
             service_name = 'usanetwork-tv-shows';
             break;

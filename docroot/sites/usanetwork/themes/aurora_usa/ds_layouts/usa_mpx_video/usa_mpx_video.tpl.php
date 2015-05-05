@@ -64,7 +64,8 @@
         </div>
         <div class="video-player-wrapper" data-ng-show="global.isAuthN">
           <?php if ($is_live): ?>
-            <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
+            <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
             <?php
             $video = theme('pub_mpx_video', array(
@@ -82,7 +83,8 @@
       else: ?>
         <div class="video-player-wrapper">
           <?php if ($is_live): ?>
-            <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
+            <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
             <?php
             $video = theme('pub_mpx_video', array(

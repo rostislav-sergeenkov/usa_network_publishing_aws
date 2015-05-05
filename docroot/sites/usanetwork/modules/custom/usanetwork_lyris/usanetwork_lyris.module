@@ -74,7 +74,7 @@ function _usanetwork_lyris_signup_block() {
   if ($lyris_config) {
     $property = array();
     $property['show_value'] = '';
-    $property['show_title'] = 'USA Network\'s';
+    $property['show_title'] = 'USA Network';
     if ((is_object($node)) && (isset($node->type))) {
       if ($node->type != 'tv_show') {
         if ($node->field_show) {
@@ -94,10 +94,10 @@ function _usanetwork_lyris_signup_block() {
       }
     }
     if (isset($show)) {
-      $property['show_title'] = $show->title;
       $show_wrapper = entity_metadata_wrapper('node', $show);
       if ($show->field_show_news_letter) {
         if ($show_wrapper->field_show_news_letter->value()) {
+          $property['show_title'] = $show->title;
           if ($show->field_shows_property) {
             $property['show_value'] = $show_wrapper->field_shows_property->value();
           }
@@ -124,7 +124,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#suffix' => '</div>',
   );
   $form['newsletter']['title'] = array(
-    '#markup' => '<label>' . t('Sign Up for @show_title Newsletters', array('@show_title' => $property['show_title'])) . '</label>',
+    '#markup' => '<label>' . t('Sign Up for @show_title Newsletter', array('@show_title' => $property['show_title'])) . '</label>',
   );
   $form['newsletter']['email'] = array(
     '#type' => 'textfield',
@@ -147,6 +147,11 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#suffix' => '</div>',
     '#type' => 'submit',
     '#value' => t('submit'),
+    '#attributes' => array(
+        'class' => array(
+            'show-color',
+        ),
+    ),
     '#ajax' => array(
       'callback' => 'newsletter_lyris_ajax_callback',
       'wrapper' => 'newsletter_lyris_ajax_wrapper',

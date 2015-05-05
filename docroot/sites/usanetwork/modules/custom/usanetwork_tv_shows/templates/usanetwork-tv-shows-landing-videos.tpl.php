@@ -25,8 +25,8 @@
       <?php if (!empty($video_sorters)): ?>
         <ul>
           <?php foreach ($video_sorters as $video_sorter): ?>
-            <li class="sorter-item<?php if (!empty($video_sorter['order'])): print ' order-' . $video_sorter['order']; endif; ?>">
-              <a href="#" data-type="<?php print $video_sorter['data_type']; ?>">
+            <li class="sorter-item<?php if (!empty($video_sorter['order'])): print ' order-' . $video_sorter['order']; endif; ?><?php if ($video_sorter['active'] == TRUE): print ' active'; endif; ?>">
+              <a href="<?php print $video_sorter['url']; ?>" data-type="<?php print $video_sorter['data_type']; ?>">
                 <span class="title"><?php print $video_sorter['title']; ?></span>
               </a>
             </li>

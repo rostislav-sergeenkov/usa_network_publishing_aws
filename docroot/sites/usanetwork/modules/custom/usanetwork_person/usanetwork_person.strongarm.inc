@@ -152,6 +152,12 @@ function usanetwork_person_strongarm() {
       'promo_teaser_large' => array(
         'custom_settings' => FALSE,
       ),
+      'microsite_output' => array(
+        'custom_settings' => FALSE,
+      ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

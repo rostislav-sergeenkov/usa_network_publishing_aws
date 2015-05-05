@@ -26,9 +26,11 @@
         }
       } else {
         if ((scroll_top > ad_h + 20) && ($(window).width() > 768)) {
+          $header_full.addClass('sticky');
           $header_full.css(styles);
           $ad.css('margin-bottom', header_full_h);
         } else if (scroll_top < ad_h + 20) {
+          $header_full.removeClass('sticky');
           $header_full.attr('style', '');
           $ad.css('margin-bottom', 0);
         }
@@ -136,6 +138,7 @@
         };
 
         if(!$('body').hasClass('consumptionator-page')){
+
           if (window.innerWidth >= window_size_tablet_portrait) {
             if (tab.attr('data-state') == 'active') {
               tab.removeClass('active').attr('data-state', '');
@@ -154,6 +157,15 @@
             }
           }
         } else {
+
+          var headerMenu = $('#block-usanetwork-menu-usanetwork-menu-consumptionator');
+
+          if(!headerMenu.hasClass('open')) {
+            headerMenu.addClass('open');
+          } else {
+            headerMenu.removeClass('open');
+          }
+
           if (tab.attr('data-state') == 'active') {
             tab.removeClass('active').attr('data-state', '');
             tab_containers.eq(index).slideUp(animation_speed).removeClass('active');

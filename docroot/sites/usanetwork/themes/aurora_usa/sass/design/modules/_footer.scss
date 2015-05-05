@@ -44,6 +44,9 @@ footer {
           @include breakpoint($bp-1024-width) {
             padding-right: 18px;
           }
+          @include breakpoint ($bp-320-width) {
+            margin-bottom: 10px;
+          }
           input {
             color: $footer-back-home;
             background: none;
@@ -75,7 +78,6 @@ footer {
            display: inline-block;
            position: relative;
            input {
-             background: $red;
              font-family: $avalon-medium;
              line-height: 30px;
              letter-spacing: 1px;

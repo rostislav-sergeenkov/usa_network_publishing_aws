@@ -4,9 +4,10 @@
  *  $main_url
  *  $show_url
  *  $show_name
- *  $character_name
+ *  $person_name
  *  $details['image']
  *  $details['description']
+ *  $details['sharebar']
  */
 ?>
 <div class="header-nav-bar">
@@ -20,7 +21,7 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <?php print $character_name; ?>
+          <?php print $person_name; ?>
         </a>
       </h1>
     </div>
@@ -36,14 +37,19 @@
           </div>
         <?php endif; ?>
         <div class="title-overlay meta">
-          <?php if (!empty($character_name)): ?>
+          <?php if (!empty($person_name)): ?>
             <div class="title">
-              <?php print $character_name; ?>
+              <?php print $person_name; ?>
             </div>
           <?php endif; ?>
           <?php if (!empty($details['description'])): ?>
             <div class="description">
               <?php print $details['description']; ?>
+            </div>
+          <?php endif; ?>
+          <?php if (!empty($details['sharebar'])): ?>
+            <div class="sharebar">
+              <?php print $details['sharebar']; ?>
             </div>
           <?php endif; ?>
         </div>

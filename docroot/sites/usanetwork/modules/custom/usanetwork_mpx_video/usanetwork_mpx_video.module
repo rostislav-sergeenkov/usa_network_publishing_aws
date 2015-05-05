@@ -118,6 +118,10 @@ function usanetwork_mpx_video_block_info() {
     'info' => t('Videofile: Related content'),
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['usa_mpx_video_socal'] = array(
+    'info' => t('Videofile: Social content block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -214,8 +218,13 @@ function usanetwork_mpx_video_block_view($delta) {
         '#markup' => usanetwork_mpx_video_related_content_block(),
       );
       break;
+    case 'usa_mpx_video_socal':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => usanetwork_mpx_video_social_content_block(),
+      );
+      break;
   }
-
   return $block;
 }
 
@@ -2771,6 +2780,34 @@ function usanetwork_mpx_video_related_content_block() {
   }
 
   return '';
+}
+
+/**
+ * Social Block for file
+ */
+function usanetwork_mpx_video_social_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $output = '';
+
+  $file = menu_get_object('file');
+
+  if (!empty($file)) {
+    $is_social = _usanetwork_get_field_item('file', $file, 'field_social_enable', 'value');
+
+    if ($is_social) {
+      $SpredFast_ID = _usanetwork_get_field_item('file', $file, 'field_social_sfs_id', 'value');
+
+      if (!empty($SpredFast_ID)) {
+        $id = 'mr-space_' . $SpredFast_ID;
+        $output = '<div class="mr-space" id="' . $id . '" data-space-id="usa-network/' . $SpredFast_ID . '" style="min-height: 500px;"></div>';
+        drupal_add_js('!function(a,b,c,d,e,f,g,h,i,j,k){h=a[d]=a[d]||{},h.ui=h.ui||[],i=a[e]=a[e]||{},i[f]||(j=b.getElementsByTagName(c)[0],k=b.createElement(c),k.src="//platform.massrelevance.com/js/massrel.js",j.parentNode.insertBefore(k,j),i[f]=function(){h.ui.push([].slice.call(arguments))}),i[f]("load",{el:b.getElementById(g)})}(window,document,"script","massrel","spredfast","exp","' . $id . '");', array('type' => 'inline', 'scope' => 'footer'));
+      }
+    }
+  }
+  return $output;
 }
 
 /**

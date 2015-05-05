@@ -21,6 +21,15 @@
     vsettings: {},
     hsettings: {},
     extendSettings: function () {
+
+      var slideWidth;
+
+      if($('body').hasClass('consumptionator-page')) {
+        slideWidth = window.innerWidth / 3 - 6;
+      } else {
+        slideWidth = 255;
+      }
+
       Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'vertical',
         minSlides: 1,
@@ -29,16 +38,38 @@
       Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'horizontal',
         controls: true,
+        minSlides: 3,
+        maxSlides: 3,
         hideControlOnEnd: true,
         nextText: '',
         prevText: '',
         adaptiveHeight: true,
-        slideWidth : ($('body').hasClass('consumptionator-page'))? '425' : '255'
+        slideWidth : slideWidth
       });
     },
 
     // Init all vertical carousels
     initVSliders: function() {
+      var calculateItems = function(slider) {
+        var current_top_slide = slider.getCurrentSlide() + 1,
+            container_h = $(this).height(),
+            slide_h = $(this).find('.slide-item').height(),
+            visible_slides = Math.floor(container_h / slide_h),
+            shift_last = slide_h - (container_h - (slide_h * visible_slides));
+
+        if (!slider.end) {
+          if ((slider.getSlideCount() - current_top_slide <= 2)) {
+            slider.end = true;
+
+            $(this).animate({
+              'top': '-=' + shift_last
+            }, 300);
+          } else {
+            slider.goToNextSlide();
+          }
+        }
+      };
+
       $('.slider-vertical').each(function () {
         var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.vsettings);
 
@@ -46,31 +77,24 @@
         Drupal.behaviors.bxslider_carousels.varray.push(slider);
 
         $(this).swipe({
-          swipeUp: function () {
-            var current_top_slide = slider.getCurrentSlide() + 1,
-                container_h = $(this).height(),
-                slide_h = $(this).find('.slide-item').height(),
-                visible_slides = Math.floor(container_h / slide_h),
-                shift_last = slide_h - (container_h - (slide_h * visible_slides));
-
-            if (!slider.end) {
-              if ((slider.getSlideCount() - current_top_slide <= 2)) {
-                slider.end = true;
-
-                $(this).animate({
-                  'top': '-=' + shift_last
-                }, 300);
-              } else {
-                slider.goToNextSlide();
-              }
-            }
+          swipeUp: function() {
+            calculateItems(slider);
           },
-          swipeDown: function () {
+          swipeDown: function() {
             slider.goToPrevSlide();
             slider.end = false;
           },
           threshold: 0,
           excludedElements: 'button, input, select, textarea, .noSwipe'
+        });
+
+        $(this).mousewheel(function(e) {
+          if (e.deltaY < 0) {
+            calculateItems(slider);
+          } else {
+            slider.goToPrevSlide();
+            slider.end = false;
+          }
         });
       });
     },
@@ -107,13 +131,13 @@
       if (slideItem.length > 2) {
         Drupal.behaviors.bxslider_carousels.initVSliders();
       }
-      if (window.innerWidth >= window_size_mobile_641 && slideItem.length > 2 ){
+      if (window.innerWidth >= window_size_mobile_641 && window.innerWidth < window_size_desktop && slideItem.length > 2 ){
         Drupal.behaviors.bxslider_carousels.initHSliders();
       }
 
       $(window).bind('resize', function () {
         setTimeout(function() {
-          if (window.innerWidth >= window_size_mobile_641 && slideItem.length > 2){
+          if (window.innerWidth >= window_size_mobile_641 && window.innerWidth < window_size_desktop && slideItem.length > 2){
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
 
             if (Drupal.behaviors.bxslider_carousels.harray.length == 0) {
@@ -131,7 +155,7 @@
             $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
             moreButton.css('display', 'block');
           }
-        }, 500);
+        }, 0);
       });
 
       if (slideItem.length > number_of_items){

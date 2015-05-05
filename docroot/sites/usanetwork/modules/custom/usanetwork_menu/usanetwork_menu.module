@@ -344,7 +344,7 @@ function usanetwork_menu_theme() {
       'variables' => array(
         'show_url' => NULL,
         'show_name' => NULL,
-        'character_name' => NULL,
+        'person_name' => NULL,
         'details' => array(),
       ),
       'template' => 'templates/usanetwork-menu-consumptionator_person',
@@ -946,30 +946,6 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
 }
 
 /**
- * Renders Consumtionator Menu block for characters.
- */
-function _usanetwork_menu_consumptionator_block_person($node) {
-  if (!empty($node)) {
-    $entity_wrapper = entity_metadata_wrapper('node', $node);
-    $image = usanetwork_core_api_get_content_image('node', $node);
-
-    $theme_variables = array(
-      'main_url' => url('<front>'),
-      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
-      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
-      'character_name' => !empty($node->title) ? $node->title : '',
-      'details' => array(
-        'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
-        'description' => !empty($node->body) ? $entity_wrapper->body->value->value() : '',
-      ),
-    );
-    return theme('usanetwork_menu_consumptionator_person', $theme_variables);
-  }
-
-  return '';
-}
-
-/**
  * Renders Consumtionator Menu block for gallery.
  */
 function _usanetwork_menu_consumptionator_block_gallery($node) {
@@ -995,6 +971,38 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
   }
   return '';
 }
+/**
+ * Renders Consumtionator Menu block for person.
+ */
+function _usanetwork_menu_consumptionator_block_person($node) {
+
+  if (!empty($node)) {
+
+    $entity_wrapper = entity_metadata_wrapper('node', $node);
+    if (!empty($node->field_usa_character_thumb)) {
+      $image = $entity_wrapper->field_usa_character_thumb->value();
+    }
+    if (!empty($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this bio');
+    }
+    $theme_variables = array(
+      'main_url' => url('<front>'),
+      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'person_name' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() :
+          (!empty($node->title) ? $node->title : ''),
+      'details' => array(
+        'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
+        'description' => !empty($node->body) ? $entity_wrapper->body->value->value() : '',
+        'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+      ),
+    );
+    return theme('usanetwork_menu_consumptionator_person', $theme_variables);
+  }
+  return '';
+}
+
 /**
  * Renders Consumtionator Menu block for video.
  */

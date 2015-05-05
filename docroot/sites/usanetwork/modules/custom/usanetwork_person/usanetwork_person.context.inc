@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Implements hook_context_default_contexts().
  */
@@ -61,6 +60,7 @@ function usanetwork_person_context_default_contexts() {
 
 
   $export['node_person'] = $context;
+  $export['person'] = $context;
 
   return $export;
 }

@@ -31,6 +31,9 @@
         height: 56.25vw;
         width: 100%;
       }
+      @include breakpoint($bp-480-width) {
+        height: 50vw;
+      }
       > .node {
         height: 100%;
         width: 100%;
@@ -269,7 +272,7 @@
             background: transparent;
             height: auto;
             margin: 0 auto;
-            max-width: 457px;
+            max-width: 660px;
             padding: 0;
             width: 100%;
           }
@@ -279,7 +282,7 @@
             width: 32vw;
             height: 18vw;
             @include breakpoint($bp-1280-width) {
-              margin-bottom: 20px;
+              margin-bottom: 15px;
             }
             @include breakpoint($bp-1024-width) {
               margin-bottom: 40px;
@@ -328,7 +331,7 @@
               font-size: 18px;
               margin: 0;
               margin-top: 10px;
-              text-align: left;
+              text-align: center;
             }
           }
           .suggest-text {
@@ -345,7 +348,7 @@
               font-size: 16px;
               margin-bottom: 10px;
               margin-top: 10px;
-              text-align: left;
+              text-align: center;
             }
           }
           .suggest-videos-block {
@@ -353,53 +356,6 @@
             width: 100%;
 
             .file {
-              &.tve-video-auth {
-                & > a {
-                  &:after{
-                    font-family: 'usanetwork';
-                    speak: none;
-                    -webkit-font-feature-settings: "liga","dlig";
-                    -moz-font-feature-settings: "liga=1, dlig=1";
-                    -moz-font-feature-settings: "liga","dlig";
-                    -ms-font-feature-settings: "liga","dlig";
-                    -o-font-feature-settings: "liga","dlig";
-                    font-feature-settings: "liga","dlig";
-                    text-rendering: optimizeLegibility;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-variant: normal;
-                    text-transform: none;
-                    line-height: 1;
-                    -webkit-font-smoothing: antialiased;
-                    background: none;
-                    display: block;
-                    margin: 0;
-                    position: absolute;
-                    left: auto;
-                    right: 3px;
-                    top: 2px;
-                    content: "\e002";
-                    font-size: 25px;
-                    color: white;
-                    width: auto;
-                    height: auto;
-                  }
-                }
-                .asset-img {
-                  &:after {
-                    content: "";
-                    display: block;
-                    width: 0;
-                    height: 0;
-                    border-top: solid 50px rgba(0,0,0,0.5);
-                    border-left: solid 50px transparent;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                  }
-                }
-              }
-              border: 2px solid #2d2d2d;
               display: inline-block;
               height: 16.4vw;
               margin-right: 20px;
@@ -417,11 +373,11 @@
                 width: calc(30%  - 40px);
               }
               @include breakpoint($bp-768-width) {
-                height: 18.4vw;
+                height: 23vw;
                 width: 30%;
               }
               @include breakpoint($bp-640-width) {
-                height: 33vw;
+                height: 29.8vw;
                 margin-right: 0;
                 width: 34vw;
                 &:last-child {
@@ -440,70 +396,52 @@
                 position: relative;
                 width: 100%;
               }
-              img {
-                height: auto;
-                width: 100%;
+            }
+            .meta {
+              display: table-cell;
+              max-width: 100px;
+              overflow: hidden;
+              padding-left: 4%;
+              position: relative;
+              text-align: left;
+              vertical-align: middle;
+              width: 100%;
+            }
+            .meta-icon {
+              left: 4%;
+              margin-top: -19px;
+              position: absolute;
+              top: 50%;
+              @include breakpoint($bp-min-1601-width) {
+                height: 47px;
+                margin-top: -24px;
+                width: 47px;
               }
-              .meta-wrapper {
-                padding-top: 10px;
-                .title {
-                  @include breakpoint($bp-1280-width) {
-                    font-size: 14px;
-                  }
-                }
+              @include breakpoint($between-641-1280) {
+                height: 30px;
+                margin-top: -15px;
+                width: 30px;
               }
-              .caption-overlay {
-                bottom: 0;
-                left: 0;
-                height: 76px;
-                position: absolute;
-                width: 100%;
-                @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
-                  height: 45px;
-                }
-                @include breakpoint($bp-video-player-section) {
-                  height: auto;
-                  position: relative;
-                  width: 100%;
-                }
+              @include breakpoint($bp-480-width) {
+                height: 30px;
+                margin-top: -15px;
+                width: 30px;
               }
-              .meta-wrapper {
-                background: #1f1f1f;
-                height: 100%;
-                margin: 0;
-                padding: 10px 6px 8px;
-                width: 100%;
-                @include breakpoint($bp-1024-width) {
-                  padding: 5px;
+              ~ .meta {
+                padding-left: calc(8% + 37px);
+                @include breakpoint($bp-min-1601-width) {
+                  padding-left: calc(8% + 47px);
                 }
-                .title {
-                  font-weight: bold;
-                  line-height: 1.15;
-                  text-align: left;
-                  color: white;
-                  @include breakpoint($bp-1280-width) {
-                    font-size: 14px;
-                  }
-                  @include breakpoint($bp-1024-width) {
-                    font-size: 14px;
-                  }
-                  @include breakpoint($bp-640-width) {
-                    font-size: 13px;
-                  }
+                @include breakpoint($between-641-1280) {
+                  padding-left: calc(8% + 30px);
                 }
-                .caption {
-                  color: #a7a6a6;
-                  font-size: 13px;
-                  text-align: left;
-                  @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
-                    font-size: 12px;
-                  }
-                  @include breakpoint($bp-video-player-section) {
-                    font-size: 11px;
-                  }
+                @include breakpoint($bp-480-width) {
+                  padding-left: calc(8% + 30px);
                 }
               }
             }
+            @extend %video-promo;
+            @extend %meta;
           }
         }
         .locked-msg {

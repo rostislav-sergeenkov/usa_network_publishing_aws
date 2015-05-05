@@ -261,6 +261,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block() {
 
         if (!empty($caption_field)) {
           $slide_variables['info']['description'] = $caption_field[0]['value'];
+          $slide_variables['info']['description'] = strip_tags($caption_field[0]['value']);
         }
 
         $slides[] = theme('usanetwork_media_gallery_consumptionator_slide', $slide_variables);

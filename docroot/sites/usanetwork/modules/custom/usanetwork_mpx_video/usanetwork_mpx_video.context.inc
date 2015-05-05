@@ -163,11 +163,17 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'usanetwork_mpx_video-usa_mpx_video_socal' => array(
+          'module' => 'usanetwork_mpx_video',
+          'delta' => 'usa_mpx_video_socal',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
         'usanetwork_mpx_video-usa_mpx_cons_related' => array(
           'module' => 'usanetwork_mpx_video',
           'delta' => 'usa_mpx_cons_related',
           'region' => 'content',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),

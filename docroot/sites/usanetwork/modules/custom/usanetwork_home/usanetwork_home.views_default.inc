@@ -125,7 +125,7 @@ function usanetwork_home_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = 'Preview day';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'view this day';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'home/home_admin/[title]';
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'home/[title]';
   /* Field: Content: Published */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';

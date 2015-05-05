@@ -31,6 +31,9 @@
         height: 56.25vw;
         width: 100%;
       }
+      @include breakpoint($bp-480-width) {
+        height: 50vw;
+      }
       > .node {
         height: 100%;
         width: 100%;
@@ -269,7 +272,7 @@
             background: transparent;
             height: auto;
             margin: 0 auto;
-            max-width: 457px;
+            max-width: 660px;
             padding: 0;
             width: 100%;
           }
@@ -328,7 +331,7 @@
               font-size: 18px;
               margin: 0;
               margin-top: 10px;
-              text-align: left;
+              text-align: center;
             }
           }
           .suggest-text {
@@ -345,7 +348,7 @@
               font-size: 16px;
               margin-bottom: 10px;
               margin-top: 10px;
-              text-align: left;
+              text-align: center;
             }
           }
           .suggest-videos-block {
@@ -370,11 +373,11 @@
                 width: calc(30%  - 40px);
               }
               @include breakpoint($bp-768-width) {
-                height: 18.4vw;
+                height: 23vw;
                 width: 30%;
               }
               @include breakpoint($bp-640-width) {
-                height: 33vw;
+                height: 29.8vw;
                 margin-right: 0;
                 width: 34vw;
                 &:last-child {

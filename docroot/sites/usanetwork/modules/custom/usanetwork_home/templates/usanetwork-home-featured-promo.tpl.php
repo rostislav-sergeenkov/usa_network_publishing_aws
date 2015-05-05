@@ -29,7 +29,4 @@
       <?php print $image; ?>
     </div>
   </a>
-  <?php if ($more_link): ?>
-    <?php print $more_link; ?>
-  <?php endif; ?>
 </div>

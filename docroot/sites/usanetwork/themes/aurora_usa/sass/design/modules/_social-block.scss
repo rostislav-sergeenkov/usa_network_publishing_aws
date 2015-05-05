@@ -1,0 +1,28 @@
+#block-usanetwork-mpx-video-usa-mpx-video-socal {
+  margin: 20px 20px 0;
+  @include breakpoint($bp-min-1901-width) {
+    margin: 30px 30px 0;
+  }
+  @include breakpoint($bp-768-width) {
+    margin: 30px 20px 0;
+  }
+  @include breakpoint($bp-640-width) {
+    margin: 20px 40px 0;
+  }
+  @include breakpoint($bp-480-width) {
+    margin: 20px 0;
+  }
+  .content {
+    border-bottom: 2px solid;
+    max-height: 615px;
+    @include breakpoint($bp-min-1901-width) {
+      max-height: 885px;
+    }
+    @include breakpoint($bp-1024-width) {
+      max-height: 445px;
+    }
+    @include breakpoint($bp-640-width) {
+      max-height: 1695px;
+    }
+  }
+}

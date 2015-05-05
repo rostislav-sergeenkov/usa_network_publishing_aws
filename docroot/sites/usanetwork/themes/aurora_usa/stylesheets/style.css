@@ -13377,6 +13377,49 @@ footer h2 {
   position: relative;
 }
 
+#block-usanetwork-mpx-video-usa-mpx-video-socal {
+  margin: 20px 20px 0;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal {
+    margin: 30px 30px 0;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal {
+    margin: 30px 20px 0;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal {
+    margin: 20px 40px 0;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal {
+    margin: 20px 0;
+  }
+}
+#block-usanetwork-mpx-video-usa-mpx-video-socal .content {
+  border-bottom: 2px solid;
+  max-height: 615px;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal .content {
+    max-height: 885px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal .content {
+    max-height: 445px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-mpx-video-usa-mpx-video-socal .content {
+    max-height: 1695px;
+  }
+}
+
 .shows-block {
   background: #dcddde;
   padding: 40px 60px;

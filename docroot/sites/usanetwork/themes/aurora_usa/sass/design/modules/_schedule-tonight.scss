@@ -303,13 +303,26 @@
           }
           .time {
             margin-left: 0;
-            max-width: 60%;
+            width: 190px;
+            @include breakpoint($bp-min-1701-width) {
+              max-width: 245px;
+              width: 245px;
+            }
+            @include breakpoint($between-1025-1280) {
+              width: 155px;
+            }
             @include breakpoint($between-769-990) {
-              max-width: 100%;
+              width: 100%;
             }
           }
           .episode-info {
-            width: 40%;
+            width: calc(100% - 205px);
+            @include breakpoint($bp-min-1701-width) {
+              width: calc(100% - 278px);
+            }
+            @include breakpoint($between-1025-1280) {
+              width: calc(100% - 170px);
+            }
             @include breakpoint($between-769-990) {
               padding-right: 15px;
               width: 100%;

@@ -1,5 +1,118 @@
 .videos-landing-page-container {
+  background: $poll-back;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
   .upper-menu {
 
+  }
+  .video-items-blocks {
+    @include clear();
+    padding: 40px 16px;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-480-width) {
+      padding: 40px 10px;
+    }
+    .videos-landing-page-block {
+      position: relative;
+    }
+    ul {
+      li {
+        float: left;
+        height: 18vw;
+        margin-bottom: 0.8vw;
+        position: relative;
+        width: 49.6%;
+        @extend %show-latest-promo;
+        @extend %meta;
+        @include breakpoint($between-769-1024) {
+          margin-right: 0.8%;
+          width: 32.8%;
+        }
+        @include breakpoint($bp-768-width) {
+          height: 37.96vw;
+          margin-bottom: 1.6vw;
+          width: 100%;
+        }
+        > div {
+          float: left;
+          height: 100%;
+          position: relative;
+          width: 49.2%;
+          &:last-child {
+            float: right;
+          }
+        }
+      }
+      &.odd {
+        li {
+          @include breakpoint($between-769-1024) {
+            height: 51vw;
+            > div {
+              height: 25.1vw;
+              margin-bottom: 0.8vw;
+              width: 100%;
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+          }
+          &:nth-child(2) {
+            float: right;
+            @include breakpoint($between-769-1024) {
+              float: left;
+            }
+          }
+          &:nth-child(3) {
+            clear: left;
+            @include breakpoint($between-769-1024) {
+              clear: none;
+              margin-right: 0;
+            }
+          }
+          &:nth-child(4) {
+            clear: left;
+            @include breakpoint($bp-min-769-width) {
+              margin-bottom: 0;
+            }
+          }
+          &:nth-child(5) {
+            @include breakpoint($bp-min-1025-width) {
+              height: 36.8vw;
+              margin-bottom: 0;
+              position: absolute;
+              right: 0;
+              top: 18.8vw;
+            }
+            @include breakpoint($between-769-1024) {
+              float: right;
+              height: 51vw;
+              margin-bottom: 0;
+              margin-right: 0;
+              position: relative;
+              right: auto;
+              top: auto;
+              width: 66.4%;
+              > div {
+                height: 100%;
+                width: 100%;
+              }
+            }
+            @include breakpoint($bp-768-width) {
+              height: 55.65vw;
+              margin-bottom: 0;
+            }
+            > div {
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
+      }
+      &.even {
+
+      }
+    }
   }
 }

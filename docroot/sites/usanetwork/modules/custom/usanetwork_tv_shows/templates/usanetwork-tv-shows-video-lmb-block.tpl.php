@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="best-of-block five-promo-item-block show-border">
+<div class="show-video-landing-main-block five-promo-item-block show-border">
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>
@@ -27,7 +27,7 @@
               <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
             <?php endif; ?>
             <?php if (!empty($promo['image']['desktop'])): ?>
-              <div data-media="(min-width: 641px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
+              <div data-media="(min-width: 1281px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
               <!--[if (IE 8) & (!IEMobile)]>
               <div data-src="<?php print $promo['image']['desktop']; ?>"></div>
               <![endif]-->
@@ -61,7 +61,7 @@
                   <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
                 <?php endif; ?>
                 <?php if (!empty($promo['image']['desktop'])): ?>
-                  <div data-media="(min-width: 641px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
+                  <div data-media="(min-width: 769px)" data-src="<?php print $promo['image']['desktop']; ?>"></div>
                   <!--[if (IE 8) & (!IEMobile)]>
                   <div data-src="<?php print $promo['image']['desktop']; ?>"></div>
                   <![endif]-->

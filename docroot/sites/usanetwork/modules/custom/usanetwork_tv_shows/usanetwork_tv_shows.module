@@ -2560,7 +2560,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
     'classes' => NULL,
     'custom_classes' => NULL,
     'target_url' => url('file/' . $file->fid),
-    'media_icon' => 'play-icon',
+    'media_icon' => 'video-icon',
     'caption' => ($current_item_index == $big_element_index)
       ? (!empty($promo_fields['topic'])
         ? $promo_fields['topic']

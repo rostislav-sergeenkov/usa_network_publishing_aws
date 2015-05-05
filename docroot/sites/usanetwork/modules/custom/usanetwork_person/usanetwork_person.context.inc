@@ -1,10 +1,5 @@
 <?php
 /**
- * @file
- * usanetwork_person.context.inc
- */
-
-/**
  * Implements hook_context_default_contexts().
  */
 function usanetwork_person_context_default_contexts() {
@@ -13,7 +8,7 @@ function usanetwork_person_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'person';
+  $context->name = 'node_person';
   $context->description = '';
   $context->tag = 'node';
   $context->conditions = array(
@@ -22,7 +17,7 @@ function usanetwork_person_context_default_contexts() {
         'person' => 'person',
       ),
       'options' => array(
-        'node_form' => '0',
+        'node_form' => '1',
       ),
     ),
   );
@@ -33,7 +28,25 @@ function usanetwork_person_context_default_contexts() {
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_consumptionator',
           'region' => 'header',
-          'weight' => '10',
+          'weight' => '-10',
+        ),
+        'usanetwork_person-usa_cons_chars_main_block' => array(
+          'module' => 'usanetwork_person',
+          'delta' => 'usa_cons_chars_main_block',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_person-usa_cons_chars_social' => array(
+          'module' => 'usanetwork_person',
+          'delta' => 'usa_cons_chars_social',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'usanetwork_person-usa_cons_chars_related_content' => array(
+          'module' => 'usanetwork_person',
+          'delta' => 'usa_cons_chars_related_content',
+          'region' => 'content',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -43,7 +56,8 @@ function usanetwork_person_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('node');
-  $export['person'] = $context;
+
+  $export['node_person'] = $context;
 
   return $export;
 }

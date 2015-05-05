@@ -10,65 +10,83 @@
       }
     },
     scheduleNavigationInit: function () {
-      $('.schedule-navigation')
-          .on('jcarousel:create jcarousel:reload', function () {
-            var carousel = $(this),
-                width = carousel.innerWidth();
+      var $navigation = $('.schedule-navigation'),
+          $controls = $('.schedule-wrapper .schedule-navigation-controls');
 
-            console.log('ul width: ' + width);
-            $('.schedule-wrapper .schedule-navigation-controls').show();
-            $('.schedule-navigation').css('margin', '0 50px');
+      $navigation
+        .on('jcarousel:create jcarousel:reload', function () {
+          var $carousel = $(this),
+              width = null,
+              margin = $navigation.css('margin-left'),
+              hideControls = function() {
+                $controls.hide();
+                $navigation.css('margin', '0');
+              },
+              showControls = function() {
+                $controls.show();
+                $navigation.css('margin', '0 50px');
+              };
 
-            if (width <= 320) {
-              width = width / 3;
-            } else if ((width > 320) && (width <= 768)) {
-              width = width / 5;
-            } else {
-              if (window.innerWidth >= window_size_tablet_portrait) {
-                $('.schedule-wrapper .schedule-navigation-controls').hide();
-                $('.schedule-navigation').css('margin', '0');
-              }
+          if (margin == '0px') {
+            width = $carousel.innerWidth();
+          } else {
+            width = $carousel.innerWidth() + 100;
+          }
 
-              width = width / 7;
+          if (width <= 320) {
+            width = width - 100;
+            width = width / 3;
+
+            showControls();
+          } else if ((width > 320) && (width <= 768)) {
+            width = width - 100;
+            width = width / 5;
+
+            showControls();
+          } else {
+            if (window.innerWidth >= window_size_tablet_portrait) {
+              hideControls();
             }
-            console.log('item width: ' + width);
 
-            carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-          })
-          .jcarousel({
-            animation: {
-              duration: 500,
-              easing: 'linear'
-            },
-            rtl: false
-          });
+            width = width / 7;
+          }
+
+          $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
+        })
+        .jcarousel({
+          animation: {
+            duration: 500,
+            easing: 'linear'
+          },
+          rtl: false
+        });
 
       $('.jcarousel-control-prev')
-          .on('jcarouselcontrol:active', function () {
-            $(this).removeClass('inactive');
-          })
-          .on('jcarouselcontrol:inactive', function () {
-            $(this).addClass('inactive');
-          })
-          .jcarouselControl({
-            target: '-=1'
-          });
+        .on('jcarouselcontrol:active', function () {
+          $(this).removeClass('inactive');
+        })
+        .on('jcarouselcontrol:inactive', function () {
+          $(this).addClass('inactive');
+        })
+        .jcarouselControl({
+          target: '-=1'
+        });
 
       $('.jcarousel-control-next')
-          .on('jcarouselcontrol:active', function () {
-            $(this).removeClass('inactive');
-          })
-          .on('jcarouselcontrol:inactive', function () {
-            $(this).addClass('inactive');
-          })
-          .jcarouselControl({
-            target: '+=1'
-          });
+        .on('jcarouselcontrol:active', function () {
+          $(this).removeClass('inactive');
+        })
+        .on('jcarouselcontrol:inactive', function () {
+          $(this).addClass('inactive');
+        })
+        .jcarouselControl({
+          target: '+=1'
+        });
     },
 
     attach: function (context) {
-
       Drupal.behaviors.usanetwork_tv_schedule.scheduleNavigationInit();
+
       Date.prototype.stdTimezoneOffset = function () {
         var jan = new Date(this.getFullYear(), 0, 1);
         var jul = new Date(this.getFullYear(), 6, 1);

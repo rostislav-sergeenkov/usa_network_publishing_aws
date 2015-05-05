@@ -1682,11 +1682,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     font-size: 14px;
     line-height: 17px;
   }
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title .field-item, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
 }
 @media (max-width: 768px) {
   .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
@@ -11984,11 +11979,6 @@ footer h2 {
     width: 100%;
   }
 }
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
-    height: 50vw;
-  }
-}
 .consumptionator-page .video-block .player-wrapper > .node, .page-videos-live .video-block .player-wrapper > .node {
   height: 100%;
   width: 100%;
@@ -12244,7 +12234,7 @@ footer h2 {
     background: transparent;
     height: auto;
     margin: 0 auto;
-    max-width: 660px;
+    max-width: 457px;
     padding: 0;
     width: 100%;
   }
@@ -12322,7 +12312,7 @@ footer h2 {
     font-size: 18px;
     margin: 0;
     margin-top: 10px;
-    text-align: center;
+    text-align: left;
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text {
@@ -12345,7 +12335,7 @@ footer h2 {
     font-size: 16px;
     margin-bottom: 10px;
     margin-top: 10px;
-    text-align: center;
+    text-align: left;
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block {
@@ -12376,13 +12366,13 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
-    height: 23vw;
+    height: 18.4vw;
     width: 30%;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
-    height: 29.8vw;
+    height: 33vw;
     margin-right: 0;
     width: 34vw;
   }
@@ -23814,7 +23804,7 @@ yx-axis
   overflow: hidden;
   display: block;
   width: auto;
-  margin: 0 50px;
+  margin: 0;
 }
 .page-schedule .schedule-wrapper .schedule-navigation ul {
   vertical-align: middle;

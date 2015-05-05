@@ -739,7 +739,7 @@
       });
     },
     micrositeGetSection: function (anchor, delta) {
-      var url = 'ajax/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta;
+      var url = Drupal.settings.basePath + 'ajax/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta;
       $.ajax({
         type: 'GET',
         url: url,
@@ -747,6 +747,7 @@
       }).done(function(data) {
         console.log(data);
         $('#' + anchor).find('.microsite-section-container').prepend(data.content);
+        Drupal.attachBehaviors('#' + anchor);
       });
     },
 

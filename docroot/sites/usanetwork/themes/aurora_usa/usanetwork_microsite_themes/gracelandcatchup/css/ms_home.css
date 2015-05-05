@@ -11,58 +11,51 @@
   color: #FFE476; /* yellow */
   text-align: center;
 }
-#home-logo {
-  width: 46%;
+#home #home-content-container {
   position: absolute;
-  top: 0;
-  left: 100%;
-  margin: 16% 0 1% -73%;
-}
-#home-sponsored {
-  width: 27%;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin: 21.2% 0 1% -63.5%;
-}
-#home-tunein,
-#home-description {
-  position: absolute;
-  top: 0;
+  top: 23%;
   left: 0;
-  margin: 25.4% 0 0;
+  width: 100%;
+}
+#home #home-content-container > div {
+  margin: 0 auto 1.5%;
+}
+#home #home-logo {
+  width: 42%;
+}
+#home #home-sponsored {
+  width: 24%;
+  margin-bottom: 3.1%;
+}
+#home #home-tunein,
+#home #home-description {
   width: 100%;
   font-size: 1.38em;
   text-align: center;
   text-shadow: 1px 1px 3px #000;
   text-transform: uppercase;
+  color: #FFE476;
+  margin-bottom: 1%;
 }
-#home-countdown {
-  position: absolute;
-  top: 0;
-  left: 100%;
+#home #home-countdown {
   width: 30%;
-  margin: 28% 0 1% -65%;
+  min-width: 236px;
+  max-width: 460px;
+  margin-bottom: 2%;
 }
-#home-description {
-  margin: 38% 0 1%;
+#home #home-nav {
+  width: 54%;
+  height: auto;
+  margin-bottom: 4%;
 }
-#home-nav {
-  width: 50%;
-  height: auto%;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin: 40.4% 0 1% -75%;
-}
-#home-nav li {
+#home #home-nav li {
   float: left;
   display: block;
   width: 23%;
   margin: 0 5.1667%;
   height: auto;
 }
-#home-nav li .spoiler {
+#home #home-nav li .spoiler {
   float: left;
   clear: left;
 }
@@ -84,11 +77,47 @@
 .spoiler-low {
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/graceland-s2catchup-spoiler-low.svg');
 }
-#home-usa-logo {
+#home #home-usa-logo {
   position: absolute;
   bottom: 16px;
   left: 10px;
   width: 76px;
   height: 34px;
   cursor: pointer;
+}
+
+/* ************** BEGIN MEDIA QUERIES ************* */
+@media (max-width: 900px) {
+  #gracelandcatchup-home {
+    background-size: 200%;
+    background-position: center top;
+    padding-top: 100%;
+  }
+  #home #home-content-container {
+    top: 30%;
+  }
+  #home #home-logo {
+    width: 80%;
+  }
+  #home #home-sponsored {
+    width: 50%;
+    min-width: 200px;
+  }
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 1em;
+  }
+  #home #home-countdown {
+    width: 48%;
+  }
+  #home #home-nav {
+    width: 80%;
+  }
+}
+
+@media (max-width: 560px) {
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 0.8em;
+  }
 }

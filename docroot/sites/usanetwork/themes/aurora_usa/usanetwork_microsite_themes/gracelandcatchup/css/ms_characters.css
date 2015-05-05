@@ -74,6 +74,9 @@
   text-transform: uppercase;
   margin: 0;
 }
+#character-info .character-social {
+  min-height: 12px;
+}
 #character-info li .character-image {
   width: 203px;
   height: 170px;
@@ -84,6 +87,7 @@
 #character-info .character-bios-container {
   height: calc(100% - 180px);
   overflow-y: auto;
+  padding-right: 12px;
 }
 #character-info .character-bios-container h1,
 #character-info .character-bios-container h3 {
@@ -116,4 +120,12 @@
   font-size: 1em;
   font-weight: normal;
   text-transform: uppercase;
+}
+
+/* **************** BEGIN MEDIA QUERIES ******************* */
+@media (max-width: 670px) {
+  #character-nav li {
+    width: 48%;
+    margin: 1% 1%;
+  }
 }

@@ -24,10 +24,11 @@
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 
+<?php if (!empty($description)): ?>
 <div id="video-section-description" class="section-description">
-Watch Season 2 Full Episodes, Season 1 and 2 Cast Interviews and Clips!<br>
-WARNING &mdash; CONTAINS SPOILERS!
+<?php print $description; ?>
 </div>
+<?php endif; ?>
 
 <?php if (!empty($filter_enabled)): ?>
   <div class="filter-wrapper">
@@ -118,7 +119,7 @@ WARNING &mdash; CONTAINS SPOILERS!
                class="view view-usa-mpx-video view-id-usa_mpx_video view-display-id-category_mpx_videos expandable-container view-dom-id-be381e47058d0c21dac9092cb8220a69 jquery-once-2-processed">
             <div class="view-content">
               <div class="item-list">
-                <ul>
+                <ul class="<?php print $active_filter_class; ?>">
                   <?php
                   $video_count = count($videos);
                   foreach ($videos as $v_key => $video): ?>

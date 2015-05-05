@@ -27,37 +27,6 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
 ?>
 
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
-<?php /* ?>
-  <div id="site-nav">
-    <div id="site-nav-left"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/gracelandcu_usa_logo.png" alt="USA Network logo"></a></div>
-    <div id="site-nav-center">
-      <div id="site-nav-top"><a id="gracelandcu-logo" class="internal" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/gracelandcu_nav_logo.png" alt="Graceland Catchup HQ logo"></a><a id="gracelandcu-sponsor" href=""><img src="<?php print $themePath; ?>/images/gracelandcu_nav_sponsor.png" alt="Sponsored by Toyota"></a></div>
-      <div id="site-nav-bottom">
-        <div id="site-nav-links">
-          <ul id="site-nav-links-list">
-            <?php if (!empty($sections)): ?>
-              <?php foreach ($sections as $sectionNav): ?>
-                <?php if ($sectionNav['type'] != 'home'): ?>
-                <li id="nav-<?php print $sectionNav['type']; ?>" class="internal<?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
-                  <?php print $sectionNav['link']; ?>
-                </li>
-                <?php endif; ?>
-              <?php endforeach; ?>
-            <?php endif; ?>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div id="site-nav-right">
-      <div id="site-nav-social">
-        <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
-        <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
-      </div>
-      <div id="site-nav-show-site-link"><a href="http://www.usanetwork.com/graceland" target="_blank">Visit Show Site</a></div>
-    </div>
-  </div>
-<?php */ ?>
-
   <div id="sections">
     <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
@@ -110,6 +79,28 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
             </div>
             <div id="site-nav-show-site-link"><a href="http://www.usanetwork.com/graceland" target="_blank">Visit Show Site</a></div>
           </div>
+
+          <div id="site-nav-mobile">
+            <div id="site-nav-links-mobile" class="mobi-menu-icon">
+              <ul id="site-nav-links-list-mobile">
+                <?php if (!empty($sections)): ?>
+                  <?php foreach ($sections as $sectionNav): ?>
+                    <?php if ($sectionNav['type'] != 'home'): ?>
+                    <li id="nav-<?php print $sectionNav['type']; ?>" class="internal mobile<?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
+                      <?php print $sectionNav['link']; ?>
+                    </li>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+                <li id="site-nav-show-site-link"><a href="http://www.usanetwork.com/graceland" target="_blank">Visit Show Site</a></li>
+                <li id="site-nav-social">
+                  <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
+                  <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </section>
       </div>
       <?php endif; ?>

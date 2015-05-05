@@ -155,6 +155,7 @@ features[queues_type][] = video_mpx_queue
 features[variable][] = field_bundle_settings_file__mpx_video_1
 features[variable][] = field_bundle_settings_file__mpx_video_2
 features[variable][] = media_theplatform_mpx__cron_videos_per_run
+features[variable][] = media_theplatform_mpx__watchdog_severity
 features[variable][] = pathauto_file_image_pattern
 features[variable][] = pathauto_file_mpx_video_1_pattern
 features[variable][] = pathauto_file_mpx_video_2_pattern

@@ -13388,26 +13388,26 @@ footer h2 {
 }
 
 #block-usanetwork-mpx-video-usa-mpx-video-socal {
-  margin: 20px 20px 0;
+  padding: 20px 16px 0;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-mpx-video-usa-mpx-video-socal {
-    margin: 30px 30px 0;
+    padding-top: 30px;
   }
 }
 @media (max-width: 768px) {
   #block-usanetwork-mpx-video-usa-mpx-video-socal {
-    margin: 30px 20px 0;
+    padding-top: 30px;
   }
 }
 @media (max-width: 640px) {
   #block-usanetwork-mpx-video-usa-mpx-video-socal {
-    margin: 20px 40px 0;
+    padding-top: 20px;
   }
 }
 @media (max-width: 480px) {
   #block-usanetwork-mpx-video-usa-mpx-video-socal {
-    margin: 20px 0;
+    padding: 20px 10px 0;
   }
 }
 #block-usanetwork-mpx-video-usa-mpx-video-socal .content {

@@ -25,9 +25,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'follow_social' => array(
@@ -108,9 +107,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 44,
       ),
       'follow_social' => array(
@@ -190,9 +188,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 43,
       ),
       'follow_social' => array(
@@ -268,9 +265,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 10,
       ),
       'follow_social' => array(
@@ -348,9 +344,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 26,
       ),
       'follow_social' => array(
@@ -517,9 +512,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 31,
       ),
       'follow_social' => array(
@@ -597,9 +591,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 30,
       ),
       'follow_social' => array(
@@ -673,9 +666,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 12,
       ),
       'follow_social' => array(
@@ -750,9 +742,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 14,
       ),
       'follow_social' => array(
@@ -827,9 +818,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 13,
       ),
       'follow_social' => array(
@@ -904,9 +894,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 11,
       ),
       'follow_social' => array(
@@ -981,9 +970,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 15,
       ),
       'follow_social' => array(
@@ -1058,9 +1046,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 27,
       ),
       'follow_social' => array(
@@ -1142,15 +1129,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'follow_social' => array(
@@ -1233,9 +1213,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'location_cck',
         'settings' => array(),
-        'type' => 'location_default',
+        'type' => 'hidden',
         'weight' => 8,
       ),
       'follow_social' => array(
@@ -1306,9 +1285,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'hidden',
         'weight' => 6,
       ),
       'follow_social' => array(
@@ -1403,9 +1381,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 17,
       ),
       'follow_social' => array(
@@ -1500,9 +1477,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'follow_social' => array(
@@ -1577,9 +1553,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'follow_social' => array(
@@ -1654,9 +1629,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'follow_social' => array(
@@ -1730,9 +1704,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'hidden',
         'weight' => 35,
       ),
       'follow_social' => array(
@@ -1810,9 +1783,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 34,
       ),
       'follow_social' => array(
@@ -1892,9 +1864,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'follow_social' => array(
@@ -1969,9 +1940,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'follow_social' => array(
@@ -2154,11 +2124,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_fields',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 36,
       ),
       'follow_social' => array(
@@ -2231,9 +2198,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 22,
       ),
       'follow_social' => array(
@@ -2394,9 +2360,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 33,
       ),
       'follow_social' => array(
@@ -2482,11 +2447,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 21,
       ),
       'follow_social' => array(
@@ -2564,9 +2526,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 23,
       ),
       'follow_social' => array(
@@ -2654,9 +2615,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'hidden',
         'weight' => 18,
       ),
       'follow_social' => array(
@@ -2755,9 +2715,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 19,
       ),
       'follow_social' => array(
@@ -2851,9 +2810,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 24,
       ),
       'follow_social' => array(
@@ -2947,9 +2905,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 25,
       ),
       'follow_social' => array(
@@ -3043,9 +3000,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 20,
       ),
       'follow_social' => array(
@@ -3139,9 +3095,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 29,
       ),
       'follow_social' => array(
@@ -3224,12 +3179,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 28,
       ),
       'follow_social' => array(
@@ -3358,13 +3309,13 @@ function usanetwork_person_field_default_field_instances() {
   t('Person: Prefix');
   t('Person: Suffix');
   t('Pinterest page');
-  t('Promo Image Override');
   t('Quotation');
   t('Role');
   t('Show');
   t('Specify the title to be displayed in place of the promotional URL (required). If any, enter a promotional URL (e.g. Twitter, Facebook).');
   t('Tumblr Page');
   t('Twitter page');
+  t('Promo Image Override');
 
   return $field_instances;
 }

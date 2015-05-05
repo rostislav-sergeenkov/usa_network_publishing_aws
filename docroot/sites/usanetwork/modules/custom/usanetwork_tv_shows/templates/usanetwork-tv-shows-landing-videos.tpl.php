@@ -4,6 +4,9 @@
  */
 ?>
 <div class="videos-landing-page-container">
+  <h2 class="section-title">
+    <span class="section-title-wrapper show-border secondary"><?php print t('All videos'); ?></span>
+  </h2>
   <div class="upper-menu">
     <div class="filter-items">
       <?php if (!empty($video_filters)): ?>

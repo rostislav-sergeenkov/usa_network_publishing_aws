@@ -15,8 +15,18 @@
         current_iframe.attr('src', current_src);
       });
 
+      //init custom scrollbar for social block
+      var container = $('#block-usanetwork-mpx-video-usa-mpx-video-socal .content');
+
+      $(container).mCustomScrollbar({
+        axis: "y",
+        theme: "light",
+        scrollEasing: "easeOut"
+      });
+
     }
   };
+
 
 
 }(jQuery));

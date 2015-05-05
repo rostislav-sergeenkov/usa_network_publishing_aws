@@ -57,10 +57,7 @@ function usanetwork_person_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('node');
 
-
-
   $export['node_person'] = $context;
-  $export['person'] = $context;
 
   return $export;
 }

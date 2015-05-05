@@ -28,14 +28,14 @@ function usanetwork_person_menu() {
  */
 function usanetwork_person_theme($existing, $type, $theme, $path) {
   return array(
-    'usanetwork_person_character_list' => array(
+    'usanetwork_person_character_social' => array(
       'variables' => array(
         'block_title' => NULL,
         'block_social_title' => NULL,
         'character_filters' => array(),
         'characters_block' => NULL,
       ),
-      'template' => 'templates/usanetwork-person-character-list',
+      'template' => 'templates/usanetwork-person-character-social',
     ),
     'usanetwork_person_character_main_block' => array(
       'variables' => array(
@@ -189,8 +189,8 @@ function usanetwork_person_image_default_styles() {
 function usanetwork_person_block_info() {
   $blocks = array();
 
-  $blocks['usa_cons_chars_list'] = array(
-    'info' => 'Usanetwork consumptionator: Character list',
+  $blocks['usa_cons_chars_social'] = array(
+    'info' => 'Usanetwork consumptionator: Character social',
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -214,9 +214,9 @@ function usanetwork_person_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
-    case 'usa_cons_chars_list':
+    case 'usa_cons_chars_social':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_person_characters_list_block();
+      $block['content'] = _usanetwork_person_characters_social_block();
       break;
 
     case 'usa_cons_chars_main_block':
@@ -249,7 +249,7 @@ function usanetwork_person_preprocess_page(&$vars) {
  *
  * @TODO: DUMMY CONTENT! SHOULD BE REPLACED WITH IFRAME!
  */
-function _usanetwork_person_characters_list_block() {
+function _usanetwork_person_characters_social_block() {
   if (path_is_admin(current_path())) {
     return '';
   }
@@ -262,7 +262,7 @@ function _usanetwork_person_characters_list_block() {
 
   $theme_variables = array();
 
-  return theme('usanetwork_person_character_list', $theme_variables);
+  return theme('usanetwork_person_character_social', $theme_variables);
 }
 
 /**

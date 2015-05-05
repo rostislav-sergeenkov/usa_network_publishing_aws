@@ -37,9 +37,9 @@ function usanetwork_person_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'usanetwork_person-usa_cons_chars_list' => array(
+        'usanetwork_person-usa_cons_chars_social' => array(
           'module' => 'usanetwork_person',
-          'delta' => 'usa_cons_chars_list',
+          'delta' => 'usa_cons_chars_social',
           'region' => 'content',
           'weight' => '-9',
         ),

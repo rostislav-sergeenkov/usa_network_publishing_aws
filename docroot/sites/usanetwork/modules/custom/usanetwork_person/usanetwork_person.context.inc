@@ -43,6 +43,12 @@ function usanetwork_person_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
+        'usanetwork_person-usa_cons_chars_related_content' => array(
+          'module' => 'usanetwork_person',
+          'delta' => 'usa_cons_chars_related_content',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
       ),
     ),
   );
@@ -51,6 +57,7 @@ function usanetwork_person_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('node');
+
 
 
   $export['node_person'] = $context;

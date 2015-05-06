@@ -12328,7 +12328,7 @@ footer h2 {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .expired-text {
     color: #9AE0EB;
     float: none;
-    font-size: 4vw;
+    font-size: 18px;
     margin: 0;
     margin-top: 10px;
     text-align: center;
@@ -12351,7 +12351,7 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text {
-    font-size: 4vw;
+    font-size: 16px;
     margin-bottom: 10px;
     margin-top: 10px;
     text-align: center;

@@ -716,8 +716,15 @@ function _usanetwork_blocks_social_carousel_block_content() {
           else {
             $promo_image_url = usanetwork_core_api_get_content_image($field_promo_item['target_type'], $promo);
           }
+          if (!empty($promo->field_promo_link)) {
+            $promo_link_field = field_get_items($field_promo_item['target_type'], $promo, 'field_promo_link');
+            $promo_link = url(reset(reset($promo_link_field)));
+          }
+          else {
+            $promo_link = url($field_promo_item['target_type'] . '/' . $field_promo_item['target_id']);
+          }
           $episode_theme_variables = array(
-            'url' => url($field_promo_item['target_type'] . '/' . $field_promo_item['target_id']),
+            'url' => $promo_link,
             'title' => $promo_data['promo_title'],
             'additional' => $promo_data['topic'],
             'image_url' => image_style_url('390x390', $promo_image_url),

@@ -45,8 +45,18 @@
       slide.find('#showcardad').removeAttr('id').empty();
     },
 
-    attach: function (context, settings) {
+    // show page
+    showLatestBlock: function (data) {
+      var blockAd = $('.show-latest-block').find('.midbanner').last(),
+          blockAdClass = blockAd.attr('class'),
+          blockAdId = blockAdClass + '-' + counter,
+          selector = '#' + blockAdId;
 
+      blockAd.attr('id', blockAdId);
+      Drupal.behaviors.mpsAdvert.loadAd(selector, blockAdClass);
+      counter = counter + 1;
+    },
+    attach: function (context, settings) {
 
     }
   };

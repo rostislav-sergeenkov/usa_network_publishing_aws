@@ -2192,7 +2192,13 @@ function _usanetwork_tv_shows_render_best_of_block() {
         else {
           $promo_image_url = usanetwork_core_api_get_content_image($promo_reference['target_type'], $promo_entity);
         }
-        $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        if (!empty($promo_entity->field_promo_link)) {
+          $promo_link_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_link');
+          $promo_link = url(reset(reset($promo_link_field)));
+        }
+        else {
+          $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        }
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
         $promos[] = array(
@@ -2297,7 +2303,13 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
         else {
           $promo_image_url = usanetwork_core_api_get_content_image($promo_reference['target_type'], $promo_entity);
         }
-        $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        if (!empty($promo_entity->field_promo_link)) {
+          $promo_link_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_link');
+          $promo_link = url(reset(reset($promo_link_field)));
+        }
+        else {
+          $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        }
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
         $promos[] = array(

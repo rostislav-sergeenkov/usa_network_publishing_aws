@@ -31,7 +31,7 @@
   <div class="video-description"><?php print $description; ?></div>
 <?php endif; ?>
 
-<div class="video-gigya-share">
+<div id="video-gigya-share" class="video-gigya-share">
   Share this video:
   <ul>
     <li>Facebook</li>

@@ -749,7 +749,11 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->data = array(
     'label' => 'Show Cast Landing Page',
     'weight' => '16',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_cast_head_image',
+      1 => 'field_cast_second_image',
+      2 => 'field_cast_description',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',

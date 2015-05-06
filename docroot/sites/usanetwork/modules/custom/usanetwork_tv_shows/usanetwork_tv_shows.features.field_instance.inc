@@ -15568,6 +15568,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('child_link');
   t('show_links');
   t('Second Image');
+  t('Head Image');
+  t('Show Latest Content Feed');
 
   return $field_instances;
 }

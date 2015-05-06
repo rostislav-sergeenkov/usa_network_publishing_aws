@@ -413,11 +413,11 @@ function _usanetwork_person_characters_related_content_block() {
   $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
   $tv_show_node = $person_node_wrapper->field_show->value();
 
-  if (empty($tv_show_node->field_tvs_show_latest_feed)) {
+  if (empty($tv_show_node->field_tvs_show_latest_lnd_feed)) {
     return '';
   }
   else {
-    $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_feed');
+    $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_lnd_feed');
 
     if ($latest_content_flag_field[0]['value'] == 0) {
       return '';

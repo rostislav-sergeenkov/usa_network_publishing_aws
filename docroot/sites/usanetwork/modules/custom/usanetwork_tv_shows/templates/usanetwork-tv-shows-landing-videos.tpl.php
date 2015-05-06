@@ -3,7 +3,13 @@
  *
  */
 ?>
-<div class="videos-landing-page-container">
+<div class="videos-landing-page-container ajax-load-block"
+  <?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?>
+  <?php if (!empty($items_per_page_limit)): print ' data-show-items-limit="' . $items_per_page_limit . '"'; endif; ?>
+  <?php print ' data-filter-tid="' . $filter_tid . '"'; ?>
+  <?php if (!empty($sorting_column)): print ' data-sorting-column="' . $sorting_column . '"'; endif; ?>
+  <?php if (!empty($sorting_order)): print ' data-sorting-order="' . $sorting_order . '"'; endif; ?>
+  >
   <h2 class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print t('All videos'); ?></span>
   </h2>
@@ -41,4 +47,5 @@
       <?php print $videos_block; ?>
     <?php endif; ?>
   </div>
+  <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>
 </div>

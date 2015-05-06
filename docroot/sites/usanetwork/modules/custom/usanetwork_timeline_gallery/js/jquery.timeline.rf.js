@@ -38,6 +38,18 @@ Project demo: http://shindiristudio.com/timeline
 
 (function ($) {
   Drupal.behaviors.timeline_gallery = {
+
+    // socialShareOmniture
+    socialShareOmniture: function(shareType) {
+      usa_debug('USA: ' + shareType + 'Share()');
+      s.linkTrackVars = 'events,eVar74';
+      s.linkTrackEvents = 'event41';
+      s.events = 'event41';
+      s.eVar74 = shareType;
+      s.tl(this,'o','Social Share');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
     attach: function (context, settings) {
 
       var t_methods = {
@@ -1055,6 +1067,8 @@ usa_debug(nodes);
       }; // end t_methods
 
 
+      var self = this;
+
 
 
       // Initiate methods
@@ -1085,17 +1099,6 @@ usa_debug(nodes);
       });
 */
 
-
-      // socialShareOmniture
-      function socialShareOmniture(shareType) {
-        usa_debug('USA: ' + shareType + 'Share()');
-        s.linkTrackVars = 'events,eVar74';
-        s.linkTrackEvents = 'event41';
-        s.events = 'event41';
-        s.eVar74 = shareType;
-        s.tl(this,'o','Social Share');
-        s.manageVars('clearVars', s.linkTrackVars,1);
-      }
 
       $(document).ready(function(){
 //            $this.find(timeline_settings.itemClass).css({ '-webkit-touch-callout': 'none', '-webkit-user-select': 'none', '-khtml-user-select': 'none', '-moz-user-select': 'none', '-ms-user-select': 'none', 'user-select': 'none'}).find('img').on('dragstart', function(event) {
@@ -1142,18 +1145,13 @@ usa_debug(nodes);
           $(this).removeClass('disableClick')
         });
 
+
         // set social sharing clicks
-        jQuery('#social-hqpage-reaction0-icon div').on('click', function() {
-          socialShareOmniture('Facebook');
+        jQuery('#timeline_gallery .share-items .facebook').on('click', function() {
+          self.socialShareOmniture('Facebook');
         });
-        jQuery('#social-hqpage-reaction1-icon div').on('click', function() {
-          socialShareOmniture('Tumblr');
-        });
-        jQuery('#social-hqpage-reaction2-icon div').on('click', function() {
-          socialShareOmniture('Twitter');
-        });
-        jQuery('#social-hqpage-reaction3-icon div').on('click', function() {
-          socialShareOmniture('Othershare');
+        jQuery('#timeline_gallery .share-items .twitter').on('click', function() {
+          self.socialShareOmniture('Twitter');
         });
       });
 

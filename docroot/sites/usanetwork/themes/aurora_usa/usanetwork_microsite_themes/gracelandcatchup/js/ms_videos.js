@@ -3,6 +3,102 @@
  */
 (function ($) {
   Drupal.behaviors.ms_videos = {
+
+    // Gigya share bar
+    updateGigyaSharebarOmniture: function(initialPageLoad) {
+      initialPageLoad = initialPageLoad || 0;
+      if (typeof Drupal.gigya != 'undefined') {
+        var sharebar = new Object(),
+            $videoInfoContainer = $('#videos #video-container .video-player-desc'),
+            caption = $videoInfoContainer.find('.video-description').text(),
+            title = $videoInfoContainer.find('.video-title').text(),
+            $image = ($('#videos #video-container .video-auth-player-wrapper #player img').css('display') != 'none') ? $('#videos #video-container .video-auth-player-wrapper #player img') : null,
+            imageSrc = ($image != null) ? $image.attr('src') : '';
+
+        sharebar.gigyaSharebar = {
+          containerID: "video-gigya-share",
+          iconsOnly: true,
+          layout: "horizontal",
+          shareButtons: "facebook, twitter, tumblr, pinterest, share",
+          shortURLs: "never",
+          showCounts: "none"
+        }
+
+        sharebar.gigyaSharebar.ua = {
+          description: caption,
+          imageBhev: "url",
+          imageUrl: imageSrc,
+          linkBack: url,
+          title: title
+        }
+        Drupal.gigya.showSharebar(sharebar);
+
+        // omniture
+        if (!initialPageLoad) {
+          var siteName = Drupal.settings.microsites_settings.title,
+              basePath = Drupal.settings.microsites_settings.base_path,
+              basePageName = siteName + ' | USA Network';
+
+          s.prop3 = 'Videos';
+          s.prop4 = siteName + ' : Videos';
+          s.prop5 = siteName + ' : Videos : ' + title;
+          s.pageName = s.prop5;
+          document.title = title + ' | Video | ' + basePageName;
+          if (typeof s_gi != 'undefined') {
+            void (s.t());
+          }
+        }
+/*
+        var slider = $slider.data('flexslider');
+        currentSlide = slider.currentSlide + 1;
+        var $sharebar = $slider.parents('.microsite-section-container').find('.field-name-field-gigya-share-bar > div');
+        if ($sharebar.length > 0) {
+          var $title = $slider.parents('.microsite-section-container').find('.microsite-gallery-meta h2.gallery-title').text();
+          if ($title == '') $title = $slider.parents('.microsite-section-container').find('.microsite-gallery-meta h1.gallery-title').text();
+          var $currentImage = $slider.find('.flex-active-slide .file-image img');
+          var $currentCaption = $slider.find('.flex-active-slide .field-name-field-caption p').text();
+
+          sharebar = new Object();
+          sharebar.gigyaSharebar = {
+            containerID: "gigya-share",
+            iconsOnly: true,
+            layout: "horizontal",
+            shareButtons: "facebook, twitter, tumblr, pinterest, share",
+            shortURLs: "never",
+            showCounts: "none"
+          }
+
+          var url = $('.galleries-bxslider li.active a').attr('href');
+          url = window.location.protocol + '//' + window.location.hostname + url;
+          sharebar.gigyaSharebar.ua = {
+            description: $currentCaption,
+            imageBhev: "url",
+            imageUrl: $currentImage.attr('src'),
+            linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
+            title: $title
+          }
+          Drupal.gigya.showSharebar(sharebar);
+
+          // omniture
+          if (!initialPageLoad) {
+            var siteName = Drupal.settings.microsites_settings.title,
+                basePath = Drupal.settings.microsites_settings.base_path,
+                basePageName = siteName + ' | USA Network';
+
+            s.prop3 = 'Gallery';
+            s.prop4 = siteName + ' : Gallery';
+            s.prop5 = siteName + ' : Gallery : ' + $title;
+            s.pageName = s.prop5 + ' : Photo ' + currentSlide;
+            document.title = $title + ' | Gallery | ' + basePageName;
+            if (typeof s_gi != 'undefined') {
+              void (s.t());
+            }
+          }
+        }
+*/
+      }
+    },
+
     // setVideoHeight
     setVideoHeight: function() {
       var vWidth = $('#microsite #videos #video-container').width(),
@@ -22,7 +118,8 @@
     },
 
     //ajax request
-    micrositeGetVideo: function (url) {
+    micrositeGetVideo: function (url, initialPageLoad) {
+      initialPageLoad = initialPageLoad || 0;
       var videoContainer = $('#video-container'),
           playerWrap = videoContainer.find('.video-player .file-video-mpx'),
           playerDesc = videoContainer.find('.video-player-desc'),
@@ -32,30 +129,33 @@
       $.ajax({
         type: 'GET',
         url: url,
-        dataType: 'json',
-        success: function (data) {
-          var image = data.default_image,
-              description = data.description_template,
-              player = data.player;
+        dataType: 'json'
+      })
+      .done(function(data) {
+        var image = data.default_image,
+            description = data.description_template,
+            player = data.player;
 
-          if (playerAuth.hasClass('active-player')) {
-            playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
-            playerAuth.find('#player .loginButton').html(image);
-            playerAuth.find(playerWrap).html(player);
-          }
-          if (playerNoAuth.hasClass('active-player')) {
-            playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
-            playerNoAuth.find(playerWrap).html(player);
-          }
-
-          playerDesc.html(description);
-
-          Drupal.behaviors.ms_videos.micrositePlayerBind();
-          Drupal.behaviors.ms_videos.setVideoHeight();
-        },
-        error: function () {
-          console.info('error');
+        if (playerAuth.hasClass('active-player')) {
+          playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
+          playerAuth.find('#player .loginButton').html(image);
+          playerAuth.find(playerWrap).html(player);
         }
+        if (playerNoAuth.hasClass('active-player')) {
+          playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
+          playerNoAuth.find(playerWrap).html(player);
+        }
+
+        playerDesc.html(description);
+
+        Drupal.behaviors.ms_videos.micrositePlayerBind();
+        Drupal.behaviors.ms_videos.setVideoHeight();
+
+        // initialize Gigya sharebar
+        Drupal.behaviors.ms_videos.updateGigyaSharebarOmniture(initialPageLoad);
+      })
+      .fail(function(jqXHR, textStatus) {
+        usa_debug('ajax call failed -- textStatus: ' + textStatus);
       });
     },
 
@@ -68,7 +168,8 @@
     },
 
     // set video player on click thumbnail
-    micrositeSetVideoPlayer: function (autoplay, selector, data) {
+    micrositeSetVideoPlayer: function (autoplay, selector, data, initialPageLoad) {
+      initialPageLoad = initialPageLoad || 0;
       var autoplay = autoplay || true,
           selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
           activeVideoThumb = $(selector),
@@ -114,7 +215,7 @@
         $('#videos .full-pane').addClass('full-desc');
         ad_300x60_1.show();
       }
-      else {
+      else { // not full episode
         $('#videos .full-pane').removeClass('full-desc');
         ad_300x60_1.hide();
 
@@ -144,7 +245,7 @@
         videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
       }
 
-      Drupal.behaviors.ms_videos.micrositeGetVideo(url);
+      Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad);
     },
 
     // SetPausePlayer
@@ -180,7 +281,7 @@
           basePageName = siteName + ' | USA Network',
           dataVideoUrl = elem.attr('data-video-url'),
           itemTitle = elem.find('.title').text(),
-          anchor = 'videos', // $('#site-nav-links-list li.internal.active').attr('data-menuanchor'),
+          anchor = 'videos',
           anchorSection = $('#site-nav-links li#nav-videos').find('.scroll-link').text(),
           anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
@@ -208,17 +309,25 @@
     },
 
     //Get Thumbnail List
-    getThumbnailList: function (url, offset, $toggler, categoryName) {
+    getThumbnailList: function (url, offset, $toggler, categoryName, filterClass) {
+      filterClass = filterClass || null;
       $.ajax({
         type: 'GET',
         url: url,
-        dataType: 'json',
-        success: function (data) {
-          $pdk.controller.shareCardCategory = categoryName;
+        dataType: 'json'
+      })
+      .done(function(data) {
+        $pdk.controller.shareCardCategory = categoryName;
 
-          var videoList = data.videos,
-              infoMore = data.info.more,
-              adBlock = $('#thumbnail-list .thumbnail.ad');
+        var videoList = data.videos,
+            infoMore = data.info.more,
+            adBlock = $('#thumbnail-list .thumbnail.ad'),
+            $itemList = $('#thumbnail-list .view-content .item-list ul');
+
+//usa_debug('========= getThumbnailList -- filterClass: ' + filterClass + '\n$itemList: ');
+//usa_debug($itemList);
+        $itemList.animate({'opacity': 0}, 500, function(){
+          if (filterClass != null) $('#thumbnail-list .view-content .item-list ul').attr('class', filterClass);
 
           if (offset === 0) {
             $('#thumbnail-list .view-content .item-list ul').html(videoList);
@@ -226,62 +335,66 @@
             $('#thumbnail-list .thumbnail').last().after(videoList);
           }
 
-          var thumbnail = $('#thumbnail-list .thumbnail');
+          $(this).animate({'opacity': 1}, 500, function(){
+            var thumbnail = $('#thumbnail-list .thumbnail');
 
-          if (!thumbnail.hasClass('ad')) {
-            if (thumbnail.eq(1)) {
-              thumbnail.eq(1).after(adBlock);
-            } else {
-              thumbnail.last().after(adBlock);
-            }
-            adBlock.addClass('added').hide();
-          }
-
-          if (infoMore.toString() === 'false') {
-            if (thumbnail.length < 11) {
-              $('#thumbnail-list .expandable-toggle-wrap').removeClass('active');
-              $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler');
-            } else {
-              $('#thumbnail-list .expandable-toggle-wrap li').addClass('less').text('close');
-              $('#thumbnail-list .expandable-toggle-wrap').removeClass('active').addClass('spoiler');
-              $('#thumbnail-list').addClass('expanded');
+            if (!thumbnail.hasClass('ad')) {
+              if (thumbnail.eq(1)) {
+                thumbnail.eq(1).after(adBlock);
+              } else {
+                thumbnail.last().after(adBlock);
+              }
+              adBlock.addClass('added').hide();
             }
 
-          } else {
-            $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler').addClass('active');
-            $('#thumbnail-list').removeClass('expanded');
-          }
+            if (infoMore.toString() === 'false') {
+              if (thumbnail.length < 11) {
+                $('#thumbnail-list .expandable-toggle-wrap').removeClass('active');
+                $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler');
+              }
+              else {
+                $('#thumbnail-list .expandable-toggle-wrap li').addClass('less').text('close');
+                $('#thumbnail-list .expandable-toggle-wrap').removeClass('active').addClass('spoiler');
+                $('#thumbnail-list').addClass('expanded');
+              }
+            }
+            else {
+              $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler').addClass('active');
+              $('#thumbnail-list').removeClass('expanded');
+            }
 
-          if ($toggler) {
-            $toggler.removeClass('processed');
-          }
+            if ($toggler) {
+              $toggler.removeClass('processed');
+            }
 
-          thumbnail.unbind('click');
-          thumbnail.bind('click', function (e) {
-            e.preventDefault();
-            var elem = $(this);
-            tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
-            Drupal.behaviors.ms_videos.clickThumbnail(elem);
+            thumbnail.unbind('click');
+            thumbnail.bind('click', function (e) {
+              e.preventDefault();
+              var elem = $(this);
+              tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
+              Drupal.behaviors.ms_videos.clickThumbnail(elem);
+            });
           });
-        },
-        error: function () {
-          console.info('error');
-        }
-      });
+        });
+      })
+      .fail(function(jqXHR, textStatus) {
+        usa_debug('ajax call failed -- textStatus: ' + textStatus);
+      })
     },
 
     attach: function (context, settings) {
       var self = this;
 
-//      var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
-      //change video on click to preview elements
+      // change video on click to preview elements
       $('#thumbnail-list .item-list ul li.thumbnail').click(function (e) {
         e.preventDefault();
         var elem = $(this);
-        Drupal.behaviors.ms_videos.clickThumbnail(elem);
+        //Drupal.behaviors.ms_videos.clickThumbnail(elem);
+        self.clickThumbnail(elem);
+        self.updateGigyaSharebarOmniture(0);
       });
 
-      //filters toggles
+      // filters toggles
       $('#video-filter .filter-label').bind('click', function () {
         if ($('#video-filter .filter-label').hasClass('open')) {
           $('#video-filter .filter-label').removeClass('open');
@@ -291,22 +404,22 @@
           $('#video-filter .filter-menu').show();
         }
       });
+
+/* @TODO: DV - DO WE NEED THE FOLLOWING? */
       $('body').live('click', function (e) {
-        if($(e.target).parents().filter('#video-filter').length != 1){
+        if ($(e.target).parents().filter('#video-filter').length != 1){
           if ($('#video-filter .filter-label').hasClass('open')) {
             $('#video-filter .filter-label').removeClass('open');
             $('#video-filter .filter-menu').hide();
           }
         }
       });
+/**/
 
       $('#video-filter li.filter-item').click(function () {
-        // Buttons
         var filterItem = $('#video-filter li.filter-item'),
             filterMenu = $('#video-filter .filter-menu'),
             filterClass = $(this).attr('data_filter_class');
-
-        $('#thumbnail-list .view-content .item-list ul').attr('class', filterClass);
 
         if ($(this).hasClass('active')) {
           return false;
@@ -325,6 +438,8 @@
           }
           else {
             var season_num = childItems.last().attr('data-season-num');
+
+            childItems.last().addClass('active');
             url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;;
           }
 
@@ -332,7 +447,8 @@
           $('#thumbnail-list .expandable-toggle li').removeClass('less').addClass('more');
           $('#thumbnail-list').removeClass('expanded');
 
-          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
+          //Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
+          self.getThumbnailList(url, offset, null, categoryName, filterClass);
         }
 /*
         // Drop-down selector

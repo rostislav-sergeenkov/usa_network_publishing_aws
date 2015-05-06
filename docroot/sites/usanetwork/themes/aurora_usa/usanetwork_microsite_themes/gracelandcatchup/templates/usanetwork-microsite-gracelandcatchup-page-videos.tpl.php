@@ -41,19 +41,15 @@
   </div>
 <?php endif; ?>
 
-<div class="full-pane">
+<div class="full-pane clearfix">
   <div class="left-pane">
     <div id="video-container" data-video-url="<?php print $in_player['url']; ?>">
       <div class="video-container-ajaxed" data-tve-player>
         <div class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
           <div class="tve-help">
-            <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after
-              they
-              air!
+            <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after they air!
             </div>
-            <div class="tve-download">To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD
-              THE
-              USA NOW APP
+            <div class="tve-download">To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD THE USA NOW APP
             </div>
             <div class="tve-download-link">
               <a href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
@@ -110,7 +106,7 @@
     </div>
   </div>
 
-  <div class="right-pane">
+  <div class="right-pane clearfix">
     <?php if (!empty($videos)): ?>
     <div id="block-usanetwork-mpx-video-usa-mpx-video-views" class="block block-usanetwork-mpx-video">
       <div class="content">

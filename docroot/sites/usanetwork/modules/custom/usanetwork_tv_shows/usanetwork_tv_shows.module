@@ -1009,6 +1009,22 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
   $query->leftJoin('field_data_field_promo_created_ovts', 'fnp_created', 'fnp_created.entity_id=f.fid');
   $query->addField('fnp_created', 'field_promo_created_ovts_value', 'created_ovts');
 
+  // Attach promo topic
+  $query->leftJoin('field_data_field_promo_topic', 'fnp_topic', 'fnp_topic.entity_id=f.fid');
+  $query->addField('fnp_topic', 'field_promo_topic_value', 'promo_topic');
+  // Attach promo violator
+  $query->leftJoin('field_data_field_promo_violator_name', 'fnp_violator', 'fnp_violator.entity_id=f.fid');
+  $query->addField('fnp_violator', 'field_promo_violator_name_value', 'promo_violator');
+  // Attach promo title
+  $query->leftJoin('field_data_field_promo_title', 'fnp_title', 'fnp_title.entity_id=f.fid');
+  $query->addField('fnp_title', 'field_promo_title_value', 'promo_title');
+  // Attach promo description
+  $query->leftJoin('field_data_field_promo_long_description', 'fnp_description', 'fnp_description.entity_id=f.fid');
+  $query->addField('fnp_description', 'field_promo_long_description_value', 'promo_description');
+  // Attach promo call to action
+  $query->leftJoin('field_data_field_promo_call_to_action_text', 'fnp_cta', 'fnp_cta.entity_id=f.fid');
+  $query->addField('fnp_cta', 'field_promo_call_to_action_text_value', 'promo_cta');
+
   if ($season_num) {
     $query->leftJoin('field_data_field_mpx_season_number', 'season_num', 'f.fid=season_num.entity_id');
     $query->addField('season_num', 'field_mpx_season_number_value', 'season_number');

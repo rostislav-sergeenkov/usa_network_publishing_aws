@@ -10,10 +10,14 @@
   <?php if (!empty($sorting_column)): print ' data-sorting-column="' . $sorting_column . '"'; endif; ?>
   <?php if (!empty($sorting_order)): print ' data-sorting-order="' . $sorting_order . '"'; endif; ?>
   >
+  <h2 class="section-title">
+    <span class="section-title-wrapper show-border secondary"><?php print t('All videos'); ?></span>
+  </h2>
   <div class="upper-menu">
-    <div class="filter-items">
+    <div class="item-filter">
       <?php if (!empty($video_filters)): ?>
-        <ul>
+        <div class="filter-label">All videos ()</div>
+        <ul class="filter-menu">
           <?php foreach ($video_filters as $video_filter): ?>
             <li class="filter-item<?php if ($video_filter['active'] == TRUE): print ' active'; endif; ?>">
               <a href="<?php print $video_filter['url']; ?>" data-type="<?php print $video_filter['tid']; ?>">

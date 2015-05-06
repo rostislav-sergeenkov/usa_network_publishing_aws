@@ -2439,7 +2439,7 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
   if ($data->entity_type == 'node') {
     if (empty($data->promo_title) || empty($data->promo_description)) {
       $node = node_load($data->nid);
-      //$own_promo_lines = _usanetwork_promo_node_get_promo_lines($node);
+      $own_promo_lines = _usanetwork_promo_node_get_promo_lines($node);
     }
   }
   else {
@@ -2803,7 +2803,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
     'classes' => NULL,
     'custom_classes' => NULL,
     'target_url' => url('file/' . $file->fid),
-    'media_icon' => 'play-icon',
+    'media_icon' => 'video-icon',
     'caption' => ($current_item_index == $big_element_index)
       ? (!empty($promo_fields['topic'])
         ? $promo_fields['topic']

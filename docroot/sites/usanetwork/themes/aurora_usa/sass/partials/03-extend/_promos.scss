@@ -793,14 +793,14 @@
           }
         }
         .title {
+          .field-item{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
           @include breakpoint($bp-1280-width) {
             font-size: 14px;
             line-height: 17px;
-            .field-item{
-              white-space: nowrap;
-              text-overflow: ellipsis;
-              overflow: hidden;
-            }
           }
           @include breakpoint($bp-768-width) {
             font-size: 14px;

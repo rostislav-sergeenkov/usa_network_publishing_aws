@@ -1677,15 +1677,15 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     line-height: 14px;
   }
 }
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title .field-item, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 @media (max-width: 1280px) {
   .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
     font-size: 14px;
     line-height: 17px;
-  }
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title .field-item, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
   }
 }
 @media (max-width: 768px) {

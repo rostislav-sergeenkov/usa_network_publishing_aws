@@ -386,6 +386,17 @@ function _usanetwork_media_gallery_related_content_block() {
     if (!empty($show_field)) {
       $tv_show_node = node_load($show_field[0]['target_id']);
 
+      if (empty($tv_show_node->field_tvs_show_latest_lnd_feed)) {
+        return '';
+      }
+      else {
+        $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_lnd_feed');
+
+        if ($latest_content_flag_field[0]['value'] == 0) {
+          return '';
+        }
+      }
+
       $you_may_also_like_item = usanetwork_media_gallery_get_ymal_item($tv_show_node);
 
       $related_content = _usanetwork_tv_shows_cache_get_limited_related_gallery_content(

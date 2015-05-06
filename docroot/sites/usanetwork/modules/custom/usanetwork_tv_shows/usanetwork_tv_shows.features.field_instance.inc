@@ -1017,7 +1017,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -12304,7 +12304,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_tvs_show_latest_feed',
-    'label' => 'Show Latest Content Feed',
+    'label' => 'Show content feed on TV Show page',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -12319,7 +12319,90 @@ function usanetwork_tv_shows_field_default_field_instances() {
         ),
       ),
       'type' => 'options_onoff',
-      'weight' => 87,
+      'weight' => 89,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_tvs_show_latest_lnd_feed'
+  $field_instances['node-tv_show-field_tvs_show_latest_lnd_feed'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 183,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_tvs_show_latest_lnd_feed',
+    'label' => 'Show content feed on Consumptionator page',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 90,
     ),
   );
 
@@ -14965,7 +15048,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 85,
+      'weight' => 86,
     ),
   );
 
@@ -15400,7 +15483,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Floodlight Type');
   t('Google+ page');
   t('H1');
-  t('Head Image');
   t('Hide from cast carousel');
   t('Hide from social follow block');
   t('IDENTITYMANAGERURL');
@@ -15439,7 +15521,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('SUBMITTARGETURL Template');
   t('Season');
   t('Season #');
-  t('Second Image');
   t('Secondary');
   t('Send IdeaMelt Notification');
   t('Short Synopsis');
@@ -15452,7 +15533,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Show ID');
   t('Show Image (Logo)');
   t('Show Instagram Page');
-  t('Show Latest Content Feed');
   t('Show Logo ');
   t('Show Marquee');
   t('Show Newsletter');
@@ -15462,6 +15542,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Show Sync');
   t('Show Twitter Page');
   t('Show alias used to generate automatic paths');
+  t('Show content feed on Consumptionator page');
+  t('Show content feed on TV Show page');
   t('Shows Property');
   t('Social Logo');
   t('Specify the title to be displayed in place of the promotional URL (required). If any, enter a promotional URL  (e.g. Twitter, Facebook).');
@@ -15485,6 +15567,9 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Youtube page');
   t('child_link');
   t('show_links');
+  t('Second Image');
+  t('Head Image');
+  t('Show Latest Content Feed');
 
   return $field_instances;
 }

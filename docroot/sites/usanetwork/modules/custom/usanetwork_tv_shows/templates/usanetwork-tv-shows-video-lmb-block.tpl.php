@@ -44,7 +44,7 @@
           <li class="last">
           <?php $second_item = false; ?>
         <?php endif; ?>
-          <div class="node node-usanetwork-promo <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
+          <div class="node node-usanetwork-promo usanetwork-tv-shows-video-lmb <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">

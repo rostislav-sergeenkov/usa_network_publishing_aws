@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="node node-usanetwork-promo big show-latest-promo<?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
+<div class="node node-usanetwork-promo big three-line-video-large<?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
   <?php if (!empty($target_url)): ?>
     <a href="<?php print $target_url; ?>">
       <div class="meta-wrapper">
@@ -27,7 +27,7 @@
           <div data-src="<?php print $image_mobile; ?>"></div>
         <?php endif; ?>
         <?php if (!empty($image_desktop)): ?>
-          <div data-media="(min-width: 641px)" data-src="<?php print $image_desktop; ?>"></div>
+          <div data-media="(min-width: 769px)" data-src="<?php print $image_desktop; ?>"></div>
           <!--[if (IE 8) & (!IEMobile)]>
           <div data-src="<?php print $image_desktop; ?>"></div>
           <![endif]-->

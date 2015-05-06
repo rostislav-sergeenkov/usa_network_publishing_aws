@@ -3,5 +3,6 @@ core = 7.x
 description = Simple Exif with IPTC Support
 php = 5.3
 dependencies[] = file_entity
-files[] = php-exif-master/lib/PHPExif/Reader.php
-files[] = php-exif-master/lib/PHPExif/Exif.php
+dependencies[] = xautoload (>= 7.x-5.0)
+dependencies[] = libraries
+files[] = simple_exif.adapter.inc

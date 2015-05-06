@@ -1,69 +1,842 @@
 .carousel {
   position: relative;
-  @include breakpoint($bp-carousel-smallest) {
-    margin-left: auto !important;
-    margin-right: auto !important;
+  &.start {
+    .jcarousel-controls {
+      width: 0px;
+      &:after {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
   }
-  .item-list {
-    height: 188px;
-    overflow: hidden;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-  li.carousel-item {
-    padding: 0;
-    margin: 0 15px 0 0;
-  }
-  .carousel-item-wrapper {
-    position: relative;
-  }
-
-}
-
-.carousel-item {
-  float: left;
-  display: block;
-  overflow: hidden;
-}
-
-%carousel-item-center {
-  @extend .carousel-item;
-  text-align: center;
-}
-
-.carousel-btns {
-  .touch & {
-    display: none;
-  }
-  .btns {
-    @extend %usanetwork-font;
-    color: $gray-darker-light;
-    font-size: 2.35em;
-    cursor: pointer;
+  .jcarousel-controls {
+    display: block;
     position: absolute;
-    left: 5px;
-    top: 39%;
-    z-index: 96;
-    .ie9 &, .ie8 & {
-      @extend .icons-gray-arrow-left;
-      width: 25px;
-      height: 33px;
-      text-indent: -9999px;
+    width: 60px;
+    top: 0;
+    height: 100%;
+    z-index: 9;
+    background: rgba(255, 255, 255, .6);
+    @include breakpoint($bp-1024-width) {
+      width: 40px;
+    }
+    @include breakpoint($bp-480-width){
+      display: none;
+    }
+    &:after {
+      color: $poll-color;
+      display: block;
+      font-family: $ico-font;
+      font-size: 32px;
+      left: 50%;
+      margin-left: -16px;
+      margin-top: -16px;
+      opacity: 1;
+      position: absolute;
+      top: 50%;
     }
     &:hover {
-      color: $gray-light;
+      background: rgba(255, 255, 255, .8);
     }
-    &.next {
-      left: auto;
-      right: 0;
-      .ie9 &, .ie8 & {
-        @extend .icons-gray-arrow-right;
+    &.jcarousel-control-prev {
+      left: -60px;
+      @include breakpoint($bp-1024-width) {
+        left: -40px;
+      }
+      &:after {
+        content: "\e607";
+
+      }
+    }
+    &.jcarousel-control-next {
+      right: -60px;
+      @include breakpoint($bp-1024-width) {
+        right: -40px;
+      }
+      &:after {
+        content: "\e608";
+      }
+    }
+    &.inactive {
+      width: 0px;
+      &:after {
+        opacity: 0;
+      }
+    }
+  }
+  .stop {
+    ~ .jcarousel-controls {
+      width: 0px!important;
+      &:after {
+        opacity: 0!important;
+      }
+    }
+  }
+  .caroufredsel_wrapper {
+  }
+  &.destroy {
+    > ul {
+      left: 0!important;
+      width: auto;
+    }
+  }
+  ul {
+    @include clear;
+    width: 20000em;
+    position: relative;
+    li {
+      float: left;
+      height: 250px;
+      margin: 0px 10px 0px 0px;
+      position: relative;
+      width: 300px;
+      @include breakpoint($bp-min-1601-width) {
+        margin-right: 15px;
+      }
+      &.odd {
+        .meta-wrap {
+          background: $social-twitter-back;
+        }
+      }
+      &.other-show {
+        h3 {
+          color: $poll-color;
+          font-family: $tex-gyreschola-italic;
+          font-size: 12px;
+          position: absolute;
+          text-transform: uppercase;
+          top: -20px;
+          z-index: 1;
+        }
+      }
+      a {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+      img {
+        height: auto;
+        width: 100%;
+      }
+      .node {
+        height: 100%;
+        width: 100%;
+      }
+      .video-auth {
+        .meta-wrap {
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            @include sprite-background(key-icon);
+            right: 7px;
+            top: 7px;
+          }
+          @include breakpoint($bp-480-width) {
+            &:after {
+              @include sprite-background(key-icon-small);
+              right: 5px;
+              top: 5px;
+            }
+          }
+        }
+      }
+      .meta-wrap {
+        background: $promo-dark-back;
+        bottom: 0;
+        height: 82px;
+        position: absolute;
+        width: 100%;
+        &.poll {
+          bottom: auto;
+          height: 115px;
+          top: 0px;
+          @extend %meta;
+          .meta {
+            left: 50%;
+            margin-left: -68px;
+            top: 70%;
+            width: 135px;
+          }
+          .title {
+            font-size: 20px;
+            line-height: normal;
+            margin: 0 auto;
+            text-align: center;
+          }
+        }
+        .meta-wrapper-inner {
+          height: 100%;
+          display: table;
+          width: 100%;
+        }
+      }
+      .meta-icon {
+        display: block;
+        height: 37px;
+        left: 10px;
+        margin-top: -19px;
+        position: absolute;
+        top: 50%;
+        width: 37px;
+        ~ .meta {
+          padding-left: 55px;
+        }
+      }
+      @extend %meta;
+      .meta {
+        display: table-cell;
+        max-width: 100px;
+        overflow: hidden;
+        padding-left: 10px;
+        position: relative;
+        vertical-align: middle;
+        width: 100%;
+        .title, .additional, .caption {
+          line-height: 18px;
+        }
+
+      }
+      &.poll {
+        a {
+          height: 115px;
+        }
+      }
+      .poll-items {
+        @include clear;
+        background-color: $header-show-caption;
+        height: 135px;
+        position: relative;
+        .poll-item {
+          border-right: 1px solid $header-tab-back-hover;
+          float: left;
+          height: 100%;
+          width: 33.33333%;
+          &:last-child {
+            border-right: none;
+          }
+          a {
+            text-decoration: none;
+          }
+          .node {
+            .asset-img {
+              img {
+                width: 100%;
+              }
+            }
+            .meta-wrapper {
+              @extend %meta;
+              .meta {
+                position: static;
+                padding: 20px 0 0;
+                margin: 0;
+                .title {
+                  font-size: 20px;
+                  line-height: 28px;
+                  margin-left: 0;
+                  text-align: center;
+                }
+                .caption {
+                  line-height: 18px;
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .carousel-btns {
+    display: none;
+    .btns {
+      cursor: pointer;
+      text-indent: -9999px;
+      &.disabled {
+        visibility: hidden;
+      }
+    }
+    .next {
+      display: block;
+      left: 2%;
+      margin-top: -16px;
+      position: absolute;
+      top: 50%;
+      &:before {
+        color: $poll-color;
+        content: "\e607";
+        display: block;
+        font-family: $ico-font;
+        font-size: 32px;
+        position: absolute;
+      }
+    }
+    .prev {
+      display: block;
+      right: 2%;
+      margin-top: -16px;
+      position: absolute;
+      top: 50%;
+      &:before {
+        color: $poll-color;
+        content: "\e608";
+        display: block;
+        font-family: $ico-font;
+        font-size: 32px;
+        position: absolute;
       }
     }
   }
 }
+
+.catch-up-explore-carousel {
+  & > div {
+    float: left;
+  }
+  .new-show-page & {
+    & > div {
+      float: none;
+    }
+  }
+}
+
+.latest-block, .carousel-block {
+  @include clear();
+  background: $footer-links;
+  padding: 40px 60px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-1024-width) {
+    padding: 40px;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 40px 0px 40px 20px;
+  }
+}
+
+.catch-up-explore-carousel {
+  .carousel-block {
+    @include breakpoint($bp-480-width) {
+      padding: 0;
+      padding-left: 20px;
+    }
+  }
+}
+
+.carousel-left {
+  -webkit-transition-property: margin;
+  -moz-transition-property: margin;
+  -o-transition-property: margin;
+  transition-property: margin;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  width: 100%;
+  &.start {
+    @include breakpoint($bp-1024-width) {
+      margin-left: 200px;
+    }
+    @include breakpoint($bp-480-width) {
+      margin-left: 0px;
+    }
+    @include breakpoint($bp-min-1025-width) {
+      margin-left: 180px;
+    }
+    @include breakpoint($bp-min-1601-width) {
+      margin-left: 340px;
+    }
+    &:hover {
+      .jcarousel-control-next {
+        width: 60px;
+        @include breakpoint($bp-1024-width) {
+          right: 160px;
+          width: 40px;
+        }
+        @include breakpoint($bp-min-1025-width) {
+          right: 120px;
+        }
+        @include breakpoint($bp-min-1601-width) {
+          right: 280px;
+        }
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+        &.inactive {
+          width: 0px;
+          &:after {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  &:not(.start) {
+    .jcarousel-control-prev.inactive {
+      width: 60px;
+      @include breakpoint($bp-1024-width) {
+        right: 160px;
+        width: 40px;
+      }
+      @include breakpoint($bp-min-1025-width) {
+        right: 120px;
+      }
+      @include breakpoint($bp-min-1601-width) {
+        right: 280px;
+      }
+      &:after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.carousel-right {
+  -webkit-transition-property: margin;
+  -moz-transition-property: margin;
+  -o-transition-property: margin;
+  transition-property: margin;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  width: 100%;
+  ul {
+    li {
+      float: right;
+      .meta {
+        text-align: left;
+      }
+      .meta-icon {
+        left: 0px;
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+  .jcarousel-controls {
+    &.jcarousel-control-next {
+      left: -60px;
+      right: auto;
+      @include breakpoint($bp-1024-width) {
+        left: -40px;
+      }
+      &:after {
+        content: "\e607";
+
+      }
+    }
+    &.jcarousel-control-prev {
+      left: auto;
+      right: -60px;
+      @include breakpoint($bp-1024-width) {
+        right: -40px;
+      }
+      &:after {
+        content: "\e608";
+      }
+    }
+  }
+
+  &.start {
+    @include breakpoint($bp-1024-width) {
+      margin-left: -200px;
+    }
+    @include breakpoint($bp-480-width) {
+      margin-left: 0px;
+    }
+    @include breakpoint($bp-min-1025-width) {
+      margin-left: -180px;
+    }
+    @include breakpoint($bp-min-1601-width) {
+      margin-left: -340px;
+    }
+    &:hover {
+      .jcarousel-control-next {
+        width: 60px;
+        @include breakpoint($bp-1024-width) {
+          left: 160px;
+          width: 40px;
+        }
+        @include breakpoint($bp-min-1025-width) {
+          left: 120px;
+        }
+        @include breakpoint($bp-min-1601-width) {
+          left: 280px;
+        }
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  &:not(.start) {
+    .jcarousel-control-prev.inactive {
+      width: 60px;
+      @include breakpoint($bp-1024-width) {
+        width: 40px;
+      }
+      &:after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.carousel-block-right {
+  background: $poll-back;
+  .carousel-description-item {
+    .description-button {
+      display: block;
+      left: auto;
+      right: 0px;
+      text-decoration: none;
+      &:before {
+        content: "\e608";
+      }
+    }
+  }
+}
+
+.carousel-description-item {
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  left: -150px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  @include breakpoint($bp-min-1601-width) {
+    left: -250px;
+  }
+  &.start {
+    left: 75px;
+  }
+  .description-button {
+    color: transparent;
+    cursor: default;
+    display: block;
+    left: -40px;
+    margin-top: -12px;
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    &:before {
+      color: $poll-color;
+      content: "\e607";
+      display: block;
+      font-family: $ico-font;
+      font-size: 32px;
+      position: absolute;
+    }
+  }
+  .carousel-block-right & {
+    -webkit-transition-property: right;
+    -moz-transition-property: right;
+    -o-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease;
+    -moz-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
+    transition-timing-function: ease;
+    left: auto;
+    right: -150px;
+    @include breakpoint($bp-min-1601-width) {
+      right: -250px;
+    }
+    &.start {
+      right: 75px;
+    }
+  }
+  .description-wrapper {
+    display: table;
+    height: 100%;
+    float: right;
+    width: 150px;
+    @include breakpoint($bp-min-1601-width) {
+      width: 250px;
+    }
+  }
+  .description-block {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .caption, .additional-text {
+    clear: both;
+    color: $poll-color;
+    font-family: $tex-gyreschola-italic;
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    @include breakpoint($bp-min-1601-width) {
+      font-size: 23px;
+    }
+  }
+  .title {
+    color: $poll-color;
+    font-family: $avalon-demi;
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: 24px;
+    margin: 18px 0;
+    text-transform: uppercase;
+    @include breakpoint($bp-min-1601-width) {
+      font-size: 37px;
+      line-height: 37px;
+    }
+  }
+}
+.latest-block {
+  @include breakpoint($bp-480-width) {
+    .carousel-description-item {
+      left: 0;
+      margin-bottom: 20px;
+      position: relative;
+      width: 100%;
+      .description-button {
+        display: none;
+      }
+      .description-wrapper {
+        display: block;
+        float: none;
+      }
+      .title {
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+.catch-up-explore-carousel {
+  .carousel {
+    @include clear;
+    ul {
+      li {
+        &:not(.advertisement) {
+          &:nth-child(2n) {
+            .meta-wrap {
+              background: $social-twitter-back;
+            }
+          }
+        }
+      }
+    }
+  }
+  @include breakpoint($bp-480-width) {
+    > div {
+      float: none;
+    }
+    .carousel-block {
+      .carousel {
+        display: none;
+      }
+      &.active {
+        box-shadow: inset 0px -6px 5px -2px rgba(1, 1, 1, 0.3);
+        .carousel {
+          display: block;
+        }
+      }
+    }
+    .carousel {
+      margin-left: 0;
+      margin-bottom: 40px;
+      margin-top: 40px;
+    }
+    .carousel-description-item {
+      height: 86px;
+      left: 0;
+      margin-left: -20px;
+      position: relative;
+      top: 0;
+      .description-button {
+        display: none;
+      }
+      .description-wrapper {
+        display: block;
+        float: none;
+        width: 100%;
+      }
+      .description-block {
+        display: block;
+      }
+      .caption, .additional-text {
+        display: none;
+      }
+      .title {
+        cursor: pointer;
+        color: #ffffff;
+        font-size: 22px;
+        line-height: 86px;
+        position: relative;
+        margin: 0;
+        padding-left: 30px;
+        &.secondary {
+          &:before {
+            bottom: -1px;
+            content: '';
+            display: block;
+            height: 2px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.consumptionator-full-episodes {
+  @include breakpoint($bp-480-width) {
+    padding: 10px 0;
+  }
+  background: $consum-carousel-back;
+  .carousel-description-item {
+    @include breakpoint($bp-480-width) {
+      &.start {
+        left: 30px;
+      }
+      .title {
+        font-size: 16px;
+        line-height: 20px;
+        margin: 10px 0;
+      }
+      .caption, .additional-text {
+        font-size: 10px;
+      }
+    }
+    .caption, .title, .additional-text {
+      color: #ffffff;
+    }
+    .description-button {
+      background: none;
+      color: transparent;
+      left: -25px;
+      margin-top: -8px;
+      text-decoration: none;
+      &:before {
+        color: #ffffff;
+        content: "\e607";
+        display: block;
+        font-family: $ico-font;
+        font-size: 15px;
+      }
+    }
+  }
+  .carousel-left {
+    @include breakpoint($bp-480-width) {
+      &.start {
+        margin-left: 160px;
+      }
+    }
+  }
+  .carousel {
+    ul {
+      li {
+        @include breakpoint($bp-480-width) {
+          height: 167px;
+          width: 200px;
+          .meta-wrap {
+            height: 60px;
+          }
+          .meta {
+            left: 10px;
+            margin-top: -15px;
+            .title, .additional{
+              font-size: 10px;
+              line-height: 14px;
+              margin-left: 40px;
+            }
+            .additional {
+              span{
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.carousel-block {
+  > .more-button {
+    display: none;
+    &:after {
+      color: #ffffff;
+      content: "\e609";
+      display: block;
+      font-family: "ico-font";
+      font-size: 24px;
+      left: 50%;
+      line-height: 24px;
+      margin-left: -12px;
+      margin-top: 5px;
+      position: absolute;
+      top: 50%;
+    }
+    &.more {
+      .close-text {
+        display: none;
+      }
+    }
+    &.close {
+      &:after {
+        content: "\e60a";
+      }
+      .more-text {
+        display: none;
+      }
+    }
+    @include breakpoint($bp-768-width) {
+      background: $social-twitter-back;
+      color: #ffffff;
+      display: block;
+      font-family: $avalon-demi;
+      font-size: 20px;
+      height: 100px;
+      line-height: 80px;
+      letter-spacing: 1px;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      width: 100%;
+    }
+    @include breakpoint($bp-480-width) {
+      font-size: 15px;
+      height: 60px;
+      line-height: 48px;
+    }
+  }
+}
+
 
 
 

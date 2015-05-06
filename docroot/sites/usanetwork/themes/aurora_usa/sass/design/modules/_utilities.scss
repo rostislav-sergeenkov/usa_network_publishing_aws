@@ -1,11 +1,11 @@
 #utilities {
+  display: none;
   height: 45px;
   opacity: 1;
   z-index: 50000;
   /* padding-left: 12px;
   border-bottom: 1px solid $gray-ultra-med; */
 //  overflow: hidden;
-  position: fixed;
   width: 100%;
   @extend .clearfix;
   #utilities-wrap {

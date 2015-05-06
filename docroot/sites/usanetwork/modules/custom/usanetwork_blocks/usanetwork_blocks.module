@@ -4,14 +4,12 @@
  * @file
  * Code for the usanetwork_blocks feature.
  */
-
 include_once 'usanetwork_blocks.features.inc';
 
 /**
  * @file
  * USA blocks - custom blocks that are not generated with views or stored elsewhere
  */
-
 
 /**
  * Implements hook_block_info().
@@ -71,6 +69,19 @@ function usanetwork_blocks_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['usa_footer_promos'] = array(
+    'info' => t('Usanetwork Footer: Promo links'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  $blocks['usanetwork_social_carousel'] = array(
+    'info' => t('Social carousel'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['usanetwork_catchall_related'] = array(
+    'info' => t('Usanetwork catchall page: related content.'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -109,7 +120,7 @@ function usanetwork_blocks_block_view($delta) {
     case 'usa_meganav_syndicate':
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_usa_meganav_syndicate();
-      break;  
+      break;
     case 'usa_social_footer':
       $block['subject'] = t('Follow Us:');
       $block['content'] = usanetwork_blocks_usa_social_footer();
@@ -119,7 +130,7 @@ function usanetwork_blocks_block_view($delta) {
       $block['content'] = usanetwork_blocks_tv_show_menu();
       break;
     case 'usa_footer_message':
-      drupal_add_css(drupal_get_path("module", "usanetwork_blocks")."/theme/css/usanetwork_block.css");
+      drupal_add_css(drupal_get_path("module", "usanetwork_blocks") . "/theme/css/usanetwork_block.css");
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_usa_footer_message();
       break;
@@ -128,8 +139,8 @@ function usanetwork_blocks_block_view($delta) {
       $block['content'] = usanetwork_blocks_usa_footer_links();
       break;
     case 'usa_detect_ieversion':
-      drupal_add_css(drupal_get_path("module", "usanetwork_blocks")."/theme/css/usanetwork_block.css");
-      drupal_add_js(drupal_get_path("module", "usanetwork_blocks")."/theme/js/usanetwork_block.js");
+      drupal_add_css(drupal_get_path("module", "usanetwork_blocks") . "/theme/css/usanetwork_block.css");
+      drupal_add_js(drupal_get_path("module", "usanetwork_blocks") . "/theme/js/usanetwork_block.js");
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_usa_detect_ieversion();
       break;
@@ -144,6 +155,26 @@ function usanetwork_blocks_block_view($delta) {
         ),
       );
       break;
+
+    case 'usa_footer_promos':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_blocks_usa_footer_promos_block_content();
+      break;
+    case 'usanetwork_social_carousel':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_blocks_social_carousel_block_content(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/social-carousel.js'
+          ),
+        ),
+      );
+      break;
+    case 'usanetwork_catchall_related':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_catchall_related_content();
+      break;
   }
   return $block;
 }
@@ -154,31 +185,208 @@ function usanetwork_blocks_block_view($delta) {
 function usanetwork_blocks_theme($existing, $type, $theme, $path) {
   // @TODO: add variables, make these real theme functions
   return array(
-   'usa_meganav' => array(
+    'usa_meganav' => array(
       'variables' => array(
-        ),
+      ),
       'path' => $path . '/theme',
       'template' => 'usa-meganav',
     ),
-   'usa_meganav_syndicate' => array(
+    'usa_meganav_syndicate' => array(
       'variables' => array(
-        ),
+      ),
       'path' => $path . '/theme',
       'template' => 'usa-meganav-syndicate',
     ),
-   'usa_social_footer' => array(
+    'usa_social_footer' => array(
       'variables' => array(
-        ),
+      ),
       'path' => $path . '/theme',
       'template' => 'usa-social-footer',
     ),
-   'usa_detect_ieversion' => array(
+    'usa_detect_ieversion' => array(
       'variables' => array(
-        ),
+      ),
       'path' => $path . '/theme',
       'template' => 'usa-detect-ieversion',
     ),
+    'usa_footer_promos' => array(
+      'variables' => array(
+        'links' => array(
+          0 => array(
+            'image_url' => NULL,  // URL of image
+            'url' => NULL,        // URL of link
+            'title' => NULL,      // Title of link
+            'class' => NULL,      // Additional classes of link
+            'column' => NULL,     // Number of column of link wrapper
+            'target' => NULL,     // Value of "target" attribute of link
+          ),
+        ),
+        'columns' => NULL,
+      ),
+      'path' => $path . '/theme',
+      'template' => 'usa-footer-promos',
+    ),
+    'usanetwork_social_carousel' => array(
+      'variables' => array(
+        'text1' => NULL,
+        'text2' => NULL,
+        'promos' => NULL,
+      ),
+      'path' => $path . '/theme',
+      'template' => 'usa-social-carousel',
+    ),
   );
+}
+
+/**
+ *  Implements hook_image_default_styles().
+ */
+function usanetwork_blocks_image_default_styles() {
+  $styles = array();
+
+  $styles['usa_footer_promos_link_image'] = array(
+    'label' => t('Usanetwork footer: promo link image'),
+    'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 48,
+          'height' => 48,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
+        'label' => 'Scale and crop',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 48,
+          'height' => 48,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  $styles['390x390'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 390,
+          'height' => 390,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 390,
+          'height' => 390,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  return $styles;
+}
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_blocks_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $footer_promo_links = variable_get('usa_footer_promos_links', array());
+
+  // Determinate default number of fields
+  if (empty($form_state['links_number'])) {
+    $form_state['links_number'] = 1;
+  }
+
+  $form['footer']['promo_links'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Promo links'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#prefix' => '<div id="usanetwork-footer-promo-links-wrapper">',
+    '#suffix' => '</div>',
+  );
+
+  // Increment the number with links that already saved
+  if (!empty($footer_promo_links)) {
+    $form_state['links_number'] += count($footer_promo_links);
+  }
+
+  // Add new form elements with saved links
+  for ($i = 0; $i < $form_state['links_number']; $i++) {
+    $array_element = _usanetwork_blocks_usa_footer_links_get_empty_fieldset_item($i, $footer_promo_links);
+
+    array_push($form['footer']['promo_links'], $array_element);
+  }
+
+  // Add "Add more" button
+  $form['footer']['promo_links']['add_more'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add more'),
+    '#submit' => array('ajax_usanetwork_blocks_usa_footer_links_add_more'),
+    '#ajax' => array(
+      'callback' => 'ajax_usanetwork_blocks_usa_footer_links_callback',
+      'wrapper' => 'usanetwork-footer-promo-links-wrapper',
+    ),
+  );
+
+  // Add "Remove last" button
+  if ($form_state['links_number'] > 1) {
+    $form['footer']['promo_links']['remove_item'] = array(
+      '#type' => 'submit',
+      '#value' => t('Remove last'),
+      '#submit' => array('ajax_usanetwork_blocks_usa_footer_links_remove'),
+      '#ajax' => array(
+        'callback' => 'ajax_usanetwork_blocks_usa_footer_links_callback',
+        'wrapper' => 'usanetwork-footer-promo-links-wrapper',
+      ),
+    );
+  }
+
+  $form['#submit'][] = 'usanetwork_blocks_form_usanetwork_settings_form_submit';
+}
+
+/**
+ * Implements hook_form_submit() for usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function usanetwork_blocks_form_usanetwork_settings_form_submit(&$form, &$form_state) {
+  global $user;
+
+  if (!empty($form_state['values'])) {
+    $footer_promo_links = array();
+
+    foreach ($form_state['values'] as $value_name => $value) {
+      $matches = array();
+
+      if (preg_match("/^usa_promo_links_link_(\d+)_(.+)$/", $value_name, $matches)) {
+        if ($matches[2] == 'image' && !empty($value)) {
+          $file = file_load($value);
+          $file->status = FILE_STATUS_PERMANENT;
+          file_save($file);
+          file_usage_add($file, 'user', 'user', $user->uid);
+        }
+
+        $footer_promo_links[$matches[1]][$matches[2]] = $value;
+      }
+    }
+  }
+
+  // Remove empty items
+  foreach ($footer_promo_links as $index => $footer_promo_link) {
+    if (empty($footer_promo_link['title']) || $footer_promo_link['image'] == 0) {
+      unset($footer_promo_links[$index]);
+    }
+  }
+
+  variable_set('usa_footer_promos_links', $footer_promo_links);
 }
 
 /**
@@ -212,7 +420,6 @@ function usanetwork_blocks_fpo_ad_skyscraper() {
 
   return $render;
 }
-
 
 /**
  * Block callback for the FPO rectangle ad block
@@ -276,7 +483,6 @@ function usanetwork_blocks_usa_meganav() {
   return $render;
 }
 
-
 /**
  * Block callback for the usa_meganav syndicate block
  */
@@ -304,7 +510,6 @@ function usanetwork_blocks_usa_social_footer() {
 
   return $render;
 }
-
 
 /**
  * Block for displaying TV show menu
@@ -384,7 +589,7 @@ function usanetwork_blocks_usa_footer_message() {
   $render = array();
   $render['usa_footer']['body'] = array(
     '#type' => 'markup',
-    '#prefix' => '<div id ="footer-message">'. str_replace("YYYY", date("Y"), variable_get("usanetwork_footer_message", '')),
+    '#prefix' => '<div id ="footer-message">' . str_replace("YYYY", date("Y"), variable_get("usanetwork_footer_message", '')),
     '#suffix' => '</div>',
   );
   return $render;
@@ -398,12 +603,11 @@ function usanetwork_blocks_usa_footer_links() {
 
   $render['ad_chocies'] = array(
     '#type' => 'markup',
-    '#prefix' => '<li id ="footer-links">'. variable_get("usanetwork_footer_ad_choices_text", ''),
+    '#prefix' => '<li id ="footer-links">' . variable_get("usanetwork_footer_ad_choices_text", ''),
     '#suffix' => '</li>',
   );
   return $render;
 }
-
 
 /**
  * Block callback for the usa_detect_ieversion
@@ -422,10 +626,10 @@ function usanetwork_blocks_usa_detect_ieversion() {
 }
 
 function usanetwork_blocks_usa_follow_block() {
-  
+
   $fb_account = 'https://www.facebook.com/USANetwork';
   $tw_account = 'usa_network';
-  
+
   $menu = menu_get_item();
   $entity_type = $menu['map'][0];
   $entity = menu_get_object($entity_type);
@@ -436,8 +640,8 @@ function usanetwork_blocks_usa_follow_block() {
       $fb_account = ($fb_link) ? $fb_link[0]['url'] : $fb_account;
       $tw_link = field_get_items($entity_type, $entity, 'field_usa_link_twitter');
       $tw_account = ($tw_link) ? $tw_link[0]['url'] : $tw_account;
-    } else if (in_array($entity->type, array('catchall_page', 'media_gallery', 'person', 'tv_episode', 'usa_video', 'usa_tve_video', ))
-            || (in_array($entity->type, _usanetwork_mpx_video_get_all_file_types()))) {
+    }
+    else if (in_array($entity->type, array('catchall_page', 'media_gallery', 'person', 'tv_episode', 'usa_video', 'usa_tve_video',)) || (in_array($entity->type, _usanetwork_mpx_video_get_all_file_types()))) {
       $show = field_get_items($entity_type, $entity, 'field_show');
       if ($show) {
         $show_node = node_load($show[0]['target_id']);
@@ -448,21 +652,307 @@ function usanetwork_blocks_usa_follow_block() {
       }
     }
   }
-  
-  drupal_add_js('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");',
-          'inline');
-  
+
+  drupal_add_js('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");', 'inline');
+
   $facebook_like = '<div class="social-dropdown">';
   $facebook_like .= '<iframe src="//www.facebook.com/plugins/likebox.php?href=' . $fb_account . '&width&height=62&colorscheme=light&show_faces=false&locale=en_US&header=true&stream=false&show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:62px;" allowTransparency="true"></iframe>';
   $facebook_like .= '</div>';
-  
+
   $output = '<div class="top-bar-social">';
-  $output .= l($facebook_like, $fb_account,
-    array('attributes' => array('class' => array('usa-facebook-share'), 'target' => '_blank'), 'html' => TRUE));
-  
-  $output .= '<a class="usa-twitter-share" url="https://twitter.com/intent/user?screen_name=@' . basename($tw_account).'"></a>';
-  
+  $output .= l($facebook_like, $fb_account, array('attributes' => array('class' => array('usa-facebook-share'), 'target' => '_blank'), 'html' => TRUE));
+
+  $output .= '<a class="usa-twitter-share" url="https://twitter.com/intent/user?screen_name=@' . basename($tw_account) . '"></a>';
+
   $output .= '</div>';
- 
+
   return $output;
+}
+
+/**
+ * Returns content for social_carousel_block.
+ */
+
+function _usanetwork_blocks_social_carousel_block_content() {
+  $theme_variables = array();
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+  if (!empty($homepage['node'])) {
+    $homepage_nids = array_keys($homepage['node']);
+    if (empty($homepage_nids[0])) {
+      return '';
+    }
+    $homepage_node = node_load($homepage_nids[0]);
+    if ($homepage_node) {
+      $homepage_wrapper = entity_metadata_wrapper('node', $homepage_node);
+      if (isset($homepage_wrapper->field_social_promo_title)) {
+        $theme_variables['title'] = $homepage_wrapper->field_social_promo_title->value();
+      }
+      if (isset($homepage_wrapper->field_social_promo_additional)) {
+        $theme_variables['additional'] = $homepage_wrapper->field_social_promo_additional->value();
+      }
+      $field_promo_items = field_get_items('node', $homepage_node, 'field_hp_ft_social');
+      if (!empty($field_promo_items) && is_array($field_promo_items)) {
+        foreach ($field_promo_items as $field_promo_item) {
+          $promo = entity_load($field_promo_item['target_type'], array($field_promo_item['target_id']));
+          if (empty($promo)) {
+            continue;
+          }
+          $promo = reset($promo);
+          switch ($field_promo_item['target_type']) {
+            case 'node':
+              $promo_data = _usanetwork_promo_pull_node_promo_details($promo);
+              break;
+            case 'file':
+              $promo_data = _usanetwork_promo_pull_file_promo_details($promo);
+              break;
+          }
+          if (empty($promo_data)) {
+            continue;
+          }
+          if (!empty($promo->field_promo_image_override)) {
+            $field_image_override = reset(field_get_items($field_promo_item['target_type'], $promo, 'field_promo_image_override'));
+            $promo_image_url = $field_image_override['uri'];
+          }
+          else {
+            $promo_image_url = usanetwork_core_api_get_content_image($field_promo_item['target_type'], $promo);
+          }
+          $episode_theme_variables = array(
+            'url' => url($field_promo_item['target_type'] . '/' . $field_promo_item['target_id']),
+            'title' => $promo_data['promo_title'],
+            'additional' => $promo_data['topic'],
+            'image_url' => image_style_url('390x390', $promo_image_url),
+            'color_class' => $promo_data['show_class'],
+            'icon_type' => $promo_data['icon_type'],
+            'icon_text' => $promo_data['cta'],
+            'show_title' => $promo_data['show_name']
+          );
+          $theme_variables['promos'][] = $episode_theme_variables + $promo_data;
+        }
+        $theme_variables['promos'][count($theme_variables['promos']) -1 ]['class'] = 'last';
+        $theme_variables['promos'][0]['class'] = 'first';
+        return theme('usanetwork_social_carousel', $theme_variables);
+      }
+    }
+  }
+  return '';
+}
+
+/**
+ * Returns content for usa_footer_promos block.
+ */
+function _usanetwork_blocks_usa_footer_promos_block_content() {
+  if (arg(0) == 'admin') {
+    return '';
+  }
+
+  $footer_promo_links = variable_get('usa_footer_promos_links', array());
+
+  // Sort according weight.
+  if (!empty($footer_promo_links)) {
+
+    $column_index = 0;
+    usort($footer_promo_links, function($a, $b) {
+      if (!isset($a['weight'])) {
+        $a['weight'] = 0;
+      }
+      if (!isset($b['weight'])) {
+        $b['weight'] = 0;
+      }
+
+      if ($a['weight'] > $b['weight']) {
+        return 1;
+      }
+      elseif ($a['weight'] < $b['weight']) {
+        return -1;
+      }
+
+      return 0;
+    });
+    $theme_variables = array();
+    foreach ($footer_promo_links as $footer_promo_link) {
+      $image_file = NULL;
+
+      if (!empty($footer_promo_link['image'])) {
+        $image_file = file_load($footer_promo_link['image']);
+      }
+
+      $theme_variables['links'][] = array(
+        'image_url' => !empty($image_file)
+          ? image_style_url('usa_footer_promos_link_image', $image_file->uri)
+          : NULL,
+        'target_url' => !empty($footer_promo_link['url'])
+          ? $footer_promo_link['url']
+          : NULL,
+        'title' => !empty($footer_promo_link['title'])
+          ? $footer_promo_link['title']
+          : NULL,
+        'class' => !empty($footer_promo_link['class'])
+          ? $footer_promo_link['class']
+          : NULL,
+        'target' => !empty($footer_promo_link['target'])
+          ? $footer_promo_link['target']
+          : '_tab',
+        'column' => $column_index++,
+      );
+    }
+    $theme_variables['columns'] = count($footer_promo_links);
+    return theme('usa_footer_promos', $theme_variables);
+  }
+  return '';
+}
+
+/*
+ * Returns content for usanetwork_catchall_related_content_content block.
+ */
+function _usanetwork_catchall_related_content() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $node = menu_get_object('node');
+  if (!empty($node) && $node->type == 'catchall_page') {
+
+    if (empty($node->field_tvs_show_latest_feed)) {
+      return '';
+    }
+    else {
+      $latest_content_flag_field = field_get_items('node', $node, 'field_tvs_show_latest_feed');
+
+      if ($latest_content_flag_field[0]['value'] == 0) {
+        return '';
+      }
+    }
+
+    $show = field_get_items('node', $node, 'field_show');
+    if (!empty($show)) {
+      $show = is_array($show) ? reset($show) : $show;
+      $show = node_load($show['target_id']);
+      if (!empty($show)) {
+        $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($show, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
+        if (!empty($related_content)) {
+          if (!empty($related_content)) {
+            drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+            drupal_add_js(array(
+              'usanetwork_tv_show_nid' => $show->nid,
+              'usanetwork_tv_show_page_context' => 'showpage',
+            ), 'setting');
+            $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
+            return theme('usanetwork_tv_shows_related_items_container', array(
+              'related_items_block' => $block_of_items,
+              'load_more_link' => TRUE,
+              'show_nid' => $show->nid,
+              'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
+            ));
+          }
+        }
+      }
+    }
+  }
+  return '';
+}
+
+/**
+ * Returns an empty form element for adding a new footer promo link in usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function _usanetwork_blocks_usa_footer_links_get_empty_fieldset_item($i, $footer_promo_links) {
+  $data = array(
+    'link_' . $i => array(
+      '#type' => 'fieldset',
+      'usa_promo_links_link_' . $i . '_title' => array(
+        '#type' => 'textfield',
+        '#title' => t('Title'),
+        '#required' => FALSE,
+        '#default_value' => !empty($footer_promo_links[$i]['title'])
+          ? $footer_promo_links[$i]['title']
+          : '',
+      ),
+      'usa_promo_links_link_' . $i . '_url' => array(
+        '#type' => 'textfield',
+        '#title' => t('URL'),
+        '#required' => FALSE,
+        '#default_value' => !empty($footer_promo_links[$i]['url'])
+          ? $footer_promo_links[$i]['url']
+          : '',
+      ),
+      'usa_promo_links_link_' . $i . '_target' => array(
+        '#type' => 'select',
+        '#title' => t('Target'),
+        '#description' => t('Value of "target" attribute of link'),
+        '#options' => array(
+          '_tab' => t('New tab'),
+          '_self' => t('Current window'),
+        ),
+        '#required' => FALSE,
+        '#default_value' =>!empty($footer_promo_links[$i]['target'])
+          ? $footer_promo_links[$i]['target']
+          : '_tab',
+      ),
+      'usa_promo_links_link_' . $i . '_image' => array(
+        '#type' => 'managed_file',
+        '#title' => t('Image'),
+        '#progress_message' => t('Please wait...'),
+        '#progress_indicator' => 'bar',
+        '#required' => FALSE,
+        '#upload_validators' => array(
+          'file_validate_extensions' => array(
+            'jpeg jpg png gif'
+          ),
+        ),
+        '#upload_location' => 'public://footer_promo_links/',
+        '#default_value' => !empty($footer_promo_links[$i]['image'])
+          ? $footer_promo_links[$i]['image']
+          : NULL,
+      ),
+      'usa_promo_links_link_' . $i . '_class' => array(
+        '#type' => 'textfield',
+        '#title' => t('Classes'),
+        '#description' => t('Enumerate classes that should be added to link'),
+        '#required' => FALSE,
+        '#default_value' => !empty($footer_promo_links[$i]['class'])
+          ? $footer_promo_links[$i]['class']
+          : '',
+      ),
+      'usa_promo_links_link_' . $i . '_weight' => array(
+        '#type' => 'select',
+        '#title' => t('Weight'),
+        '#description' => t('Link with lesser number displays first'),
+        '#options' => array(),
+        '#required' => FALSE,
+        '#default_value' => !empty($footer_promo_links[$i]['weight'])
+          ? $footer_promo_links[$i]['weight']
+          : 0,
+      ),
+    ),
+  );
+
+  for ($weight = -10; $weight <= 10; $weight++) {
+    $data['link_' . $i]['usa_promo_links_link_' . $i . '_weight']['#options'][$weight] = $weight;
+  }
+
+  return $data;
+}
+
+/**
+ * Increments the number of footer promo links in usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function ajax_usanetwork_blocks_usa_footer_links_add_more($form, &$form_state) {
+  $form_state['links_number']++;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Decrements the number of footer promo links in usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function ajax_usanetwork_blocks_usa_footer_links_remove($form, &$form_state) {
+  if ($form_state['links_number'] > 1) {
+    $form_state['links_number']--;
+  }
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Footer promo links ajax-callback of usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function ajax_usanetwork_blocks_usa_footer_links_callback($form, $form_state) {
+  return $form['footer']['promo_links'];
 }

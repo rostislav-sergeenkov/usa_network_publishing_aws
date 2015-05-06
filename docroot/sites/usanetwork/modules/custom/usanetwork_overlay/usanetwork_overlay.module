@@ -1,0 +1,129 @@
+<?php
+
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_overlay_menu() {
+  $items = array();
+
+  $items['usanetwork-ajax-page/%'] = array(
+    'title' => t('AJAX page'),
+    'type' => MENU_CALLBACK,
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_overlay_get_ajax',
+    'delivery callback' => 'usanetwork_overlay_ajax_callback',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ *  Implements hook_page_alter().
+ */
+function usanetwork_overlay_page_alter(&$page) {
+  $get = drupal_get_query_parameters();
+
+  // Add consumptionator container and script if it's needed.
+  if (!isset($get['excludeConsumptionator']) || (isset($get['excludeConsumptionator']) && $get['excludeConsumptionator'] == FALSE)) {
+    $page['page_bottom']['consumptionator'] = array(
+      '#markup' => '<div id="consumptionator"></div>',
+    );
+
+    drupal_add_css(drupal_get_path('module', 'usanetwork_overlay') . '/css/usanetwork_overlay.main.css');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_overlay') . '/js/usanetwork_overlay.main.js');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator') . '/js/usanetwork_consumptionator.autoloader.js');
+
+    if (module_exists('usanetwork_tv_shows') && !path_is_admin(current_path())) {
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+    }
+  }
+}
+
+/**
+ * Page callback. Detects and builds content that could be displayed in consumptionator container.
+ */
+function usanetwork_overlay_get_ajax($display) {
+  $path = '<front>';
+  $path_arguments = drupal_get_query_parameters();
+
+  if (!empty($path_arguments['url'])) {
+    $path = $path_arguments['url'];
+  }
+
+  // Cut extra-slash from the end
+  if ($path[strlen($path) - 1] == '/') {
+    $path = substr($path, 0, -1);
+  }
+
+  // Detect path without $_GET values. The menu_get_item does not work correct
+  // if URL looks in the next way: address-to-page?arg1=val1
+  $normal_path = parse_url(drupal_get_normal_path($path));
+  $menu_item = menu_get_item($normal_path['path']);
+
+  $result = array();
+
+  if (!empty($menu_item['page_callback'])) {
+    if (!empty($menu_item["include_file"])) {
+      require_once(DRUPAL_ROOT . "/" . $menu_item["include_file"]);
+    }
+
+    $result = call_user_func_array($menu_item['page_callback'], $menu_item['page_arguments']);
+  }
+
+  if (!empty($result)) {
+    $result_entity = $result;
+
+    if (!is_array($result_entity)) {
+      $result_entity = array(
+        '#markup' => $result_entity,
+      );
+    }
+
+    if (isset($menu_item['page_arguments'][0])) {
+      if (isset($menu_item['page_arguments'][0]->type) && $menu_item['page_arguments'][0]->type == 'tv_show') {
+        $result_entity['#hidden']['show_nid'] = $menu_item['page_arguments'][0]->nid;
+
+      }
+      else {
+        $show_field = field_get_items('file', $menu_item['page_arguments'][0], 'field_show');
+
+        if (!empty($show_field)) {
+          $result_entity['#hidden']['show_nid'] = $show_field[0]['target_id'];
+        }
+      }
+    }
+
+    return $result_entity;
+  }
+
+  return array();
+}
+
+/**
+ * AJAX delivery callback.
+ */
+function usanetwork_overlay_ajax_callback($page_result) {
+  $content = '';
+
+  if (module_exists('usanetwork_consumptionator')) {
+    $content = usanetwork_consumptionator_render_block();
+  }
+  else {
+    $content = drupal_render($page_result);
+  }
+
+  print drupal_json_output(array(
+    'html' => $content,
+    'data' => $page_result['#hidden'],
+  ));
+
+  return drupal_page_footer();
+}
+
+/**
+ * Returns Show node id of current consumptionator context.
+ */
+function _usanetwork_overlay_get_context_show_nid() {
+
+}

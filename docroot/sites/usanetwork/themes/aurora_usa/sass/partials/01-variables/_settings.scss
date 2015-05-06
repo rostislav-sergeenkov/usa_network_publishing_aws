@@ -398,3 +398,44 @@ $default-transition-duration: 0.2s;
 
 // TRUNCATING TEXT WITH ELLIPSES
 // $use-mozilla-ellipsis-binding: false;
+
+
+//NEW SETTINGS!!!!!!!!!!!!
+//breakpoints
+$bp-1900-width: max-width 1900px;
+$bp-1600-width: max-width 1600px;
+$bp-1400-width: max-width 1400px;
+$bp-1280-width: max-width 1280px;
+$bp-1024-width: max-width 1024px;
+$bp-768-width: max-width 768px;
+$bp-640-width: max-width 640px;
+$bp-480-width: max-width 480px;
+$bp-320-width: max-width 320px;
+$bp-240-width: max-width 240px;
+
+$bp-min-481-width: 481px;
+$bp-min-641-width: 641px;
+$bp-min-769-width: 769px;
+$bp-min-1025-width: 1025px;
+$bp-min-1281-width: 1281px;
+$bp-min-1601-width: 1601px;
+$bp-min-1701-width: 1701px;
+$bp-min-1901-width: 1901px;
+
+$between-641-768: 641px 768px;
+$between-641-1024: 641px 1024px;
+$between-641-1280: 641px 1280px;
+$between-769-990: 769px 990px;
+$between-769-1024: 769px 1024px;
+$between-769-1280: 769px 1280px;
+$between-1025-1280: 1025px 1280px;
+$between-1281-1600: 1281px 1600px;
+$between-1281-1900: 1281px 1900px;
+
+//
+$show-carousel-item-width : 270px;
+$show-carousel-item-width-less-1024 : 342px;
+
+//sprites/
+$sprites: sprite-map("sprites/*.png", $spacing: 5px, $layout: vertical);
+$sprites-retina: sprite-map("sprites-retina/*.png", $spacing: 5px, $layout: vertical);

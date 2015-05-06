@@ -25,35 +25,10 @@
 }
 
 .node-type-usa-tve-video,
-.node-type-usa-video,
-.page-videos {
+.node-type-usa-video {
   #block-system-main {
     border-bottom: 1px solid $gray-dark;
     padding-bottom: 16px;
-  }
-}
-
-.block-usanetwork-video,
-.block-usanetwork-mpx-video {
-  @extend %grid-small-wide-two-three-four;
-  margin: 0 auto;
-  .ajax-content {
-    position: relative;
-    &.ajax-loading {
-      > div {
-        opacity: 0.5;
-      }
-      .ajax-loader {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        opacity: 1;
-        background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
-      }
-    }
   }
 }
 
@@ -783,11 +758,12 @@
       }
     }
     .locked-msg {
-      position: absolute;
-      top: 40px;
       left: 5px;
       margin: 0 auto;
+      position: absolute;
       text-align: center;
+      text-shadow: 1px 1px 5px black;
+      top: 40px;
       z-index: 10;
       .first-line {
         display:block;

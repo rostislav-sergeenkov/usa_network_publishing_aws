@@ -41,11 +41,7 @@ function usanetwork_files_form_file_entity_edit_alter(&$form, &$form_state, $for
   $form['#group_children']['replace_upload'] = 'group_image_left';
   $form['replace_upload']['#access'] = !variable_get('usanetwork_files_button_settinsg_remove_replace', 0);
   $form['replace_upload']['#description'] = '<strong>' . t("WARNING: Replacing the image may cause its metadata to be replaced.") . '</strong>' . "<br/>" . $form['replace_upload']['#description'];
-
-  // Move the imagefield_focus form element.
-  if ($form['type']['#value'] == 'image') {
-    $form['imagefield_focus']['focus_box']['#weight'] = -1;
-  }
+  
   $form['filename']['#title'] = 'Display Title';
 }
 
@@ -68,26 +64,12 @@ function usanetwork_files_form_file_entity_add_upload_alter(&$form, &$form_state
       usanetwork_files_file_entity_set_up($form, $form_state);
     }
 
-    /* IMAGE FOCUS SETTINGS */
-    $settings = variable_get('imagefield_focus_media_settings', array());
-    $settings = _imagefield_focus_build_js_settings('media', $settings);
-    $file = $form['#entity'];
-    $file->key = 'media';
-    $item = (array) $file;
-
     /* META TAGS */
     $form['additional_settings'] = array(
       '#type' => 'vertical_tabs',
       '#weight' => 50,
     );
     $form['metatags']['#group'] = 'additional_settings';
-    $form['imagefield_focus'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Image Focus Settings'),
-      '#group' => 'additional_settings',
-      '#weight' => -10,
-    ) + imagefield_focus_crop_focus_form_fields($file->uri, $item);
-    _imagefield_focus_attach_files($settings, $form);
 
     /* USER INFORMATION */
     $form['user'] = array(

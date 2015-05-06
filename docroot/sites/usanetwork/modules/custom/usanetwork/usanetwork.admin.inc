@@ -3,7 +3,7 @@
 /**
  * USA Network settings form
  */
-function usanetwork_settings_form() {
+function usanetwork_settings_form($form, $form_state) {
   $form = array();
   /* video related settings */
   $form['video'] = array(
@@ -69,35 +69,14 @@ function usanetwork_settings_form() {
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
   );
-  $form['more_menu']['usanetwork_more_menu_links'] = array(
-    '#type' => 'textarea',
-    '#title' => t('More Menu Raw HTML'),
-    '#description' => t('The HTML to include in the "more" link on the primary navigation (Eg. ul, li tags)'),
-    '#default_value' => variable_get('usanetwork_more_menu_links', ''),
-  );
-
-    /* more menu settings */
-  $form['global_nav_menu'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Global Nav Menu Settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-  );
-
-  $form['global_nav_menu']['usanetwork_global_nav_show_title'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Global Nav Show Title'),
-    '#description' => t('The Global Nav Show Title - displayed on the show drawer)'),
-    '#default_value' => variable_get('usanetwork_global_nav_show_title', 'Shows'),
-  );
-
-   $form['global_nav_menu']['usanetwork_global_nav_more_title'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Global Nav More Title'),
-    '#description' => t('The Global Nav More Title - displayed on the more drawer)'),
-    '#default_value' => variable_get('usanetwork_global_nav_more_title', 'More on USA'),
-  );
   
+  $form['more_menu']['usanetwork_social_links'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Social network bar'),
+    '#description' => t('The HTML to include list of links to social network pages (Eg. ul, li tags)'),
+    '#default_value' => variable_get('usanetwork_social_links', ''),
+  );
+
   /* Global JS settings */
   $form['global_js'] = array(
     '#type' => 'fieldset',
@@ -111,6 +90,21 @@ function usanetwork_settings_form() {
     '#title' => t('Global JS Code'),
     '#description' => t('The Global Js Code that added to all pages of the site'),
     '#default_value' => variable_get('usanetwork_global_js_code', ''),
+  );
+
+  $form['see_it'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('See.it settings'),
+    '#description' => t('The global settings for See.it service'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['see_it']['usanetwork_seeit_script_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Reminder JS URL'),
+    '#description' => t('The URL to reminders URL'),
+    '#default_value' => variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL),
   );
    
   return system_settings_form($form);

@@ -1,0 +1,124 @@
+<?php
+/**
+ * @file
+ * Code for the Full Bleed Promo feature.
+ */
+
+include_once 'usanetwork_full_bleed_promo.features.inc';
+
+/**
+ *  Implements hook_block_info().
+ */
+function usanetwork_full_bleed_promo_block_info() {
+  $blocks = array();
+
+  $blocks['usanetwork_fbp_block'] = array(
+    'info' => t('Homepage: Full bleed promo'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_full_bleed_promo_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_fbp_block':
+      $block['subject'] = '';
+      $block['content'] = array(
+          '#markup' => _usanetwork_full_bleed_promo_render_block(),
+          '#attached' => array(
+              'js' => array(
+                  path_to_theme('aurora_usa') . '/javascripts/full-bleed-promo.js',
+              ),
+          ),
+      );
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_full_bleed_promo_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_fbp_block' => array(
+      'variables' => array(
+        'url' => NULL,
+        'desktop_url' => NULL,
+        'mobile_url' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-full-bleed-promo',
+    ),
+  );
+}
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_full_bleed_promo_form_usanetwork_full_bleed_promo_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['#validate'][] = '_usanetwork_full_bleed_promo_validate_url';
+}
+
+/**
+ * Renders usanetwork_full_bleed_promo block according current homepage.
+ */
+function _usanetwork_full_bleed_promo_render_block() {
+  if (!module_exists('usanetwork_home') || arg(0) == 'admin') {
+    return '';
+  }
+
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  if (!empty($homepage['node'])) {
+    $homepage_node = node_load(reset($homepage['node'])->nid);
+    $homepage_wrapper = entity_metadata_wrapper('node', $homepage_node);
+
+    if (!empty($homepage_node->field_hp_full_bleed_promo)) {
+      $promo_node = $homepage_wrapper->field_hp_full_bleed_promo->value();
+
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+
+      $theme_variables = array(
+        'advert_block' => isset($advert) ? $advert : NULL,
+        'url' => !empty($promo_node->field_usa_fbp_cta_link)
+          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_cta_link->url->value()
+          : NULL,
+        'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
+          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
+          : NULL,
+        'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
+          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
+          : NULL,
+      );
+
+      return theme('usanetwork_fbp_block', $theme_variables);
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Validates URL on Full bleed promo submitting,
+ */
+function _usanetwork_full_bleed_promo_validate_url(&$form, &$form_state) {
+  if (!empty($form_state['values']['field_usa_fbp_cta_link'])) {
+    $language = $form_state['values']['language'];
+    $url = $form_state['values']['field_usa_fbp_cta_link'][$language][0]['url'];
+
+    if (empty($url) || (!empty($url) && !drupal_valid_path($url))) {
+      form_set_error('field_usa_fbp_cta_link', t('Link is not valid. Please enter the internal link without domain name or full external link.'));
+    }
+  }
+}

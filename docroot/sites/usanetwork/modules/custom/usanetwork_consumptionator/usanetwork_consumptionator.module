@@ -1,0 +1,557 @@
+<?php
+
+define ('USA_CONS_TV_SHOW_RELATED_ITEMS_ON_PAGE', 6);
+
+/**
+ * Implement hook_ctools_plugin_api().
+ */
+function usanetwork_consumptionator_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
+  if ($module == 'panels_mini' && $api == 'panels_default') {
+    return array('version' => 1);
+  }
+  if ($module == 'page_manager' && $api == 'pages_default') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_consumptionator_menu() {
+  $items = array();
+
+  // The argument is show NID.
+  $items['ajax/consumptionator/get-related-items/%'] = array(
+    'title' => 'Related items',
+    'page callback' => 'usanetwork_consumptionator_get_related_items_ajax',
+    'page arguments' => array(3),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  // The argument is show NIDs that should be ignored. Divide it by comma
+  // character without spaces. For example, it you want to ignore 1 and 7
+  // shows the path should looks like that:
+  // - ajax/consumptionator/get-ymal-items/1,7
+  $items['ajax/consumptionator/get-ymal-items/%'] = array(
+    'title' => 'You may also like items',
+    'page callback' => 'usanetwork_consumptionator_get_ymal_items_ajax',
+    'page arguments' => array(3),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['ajax/consumptionator/get-full-items/%'] = array(
+    'title' => 'Related and YMAL items',
+    'page callback' => 'usanetwork_consumptionator_full_items_ajax',
+    'page arguments' => array(3),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_consumptionator_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_consumptionator_related_container' => array(
+      'variables' => array(
+        'related_items' => array(
+          0 => array(
+            'li_class' => 'first',
+            'content' => array(), // Pre-rendered array of displayable content
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-consumptionator-related-container',
+    ),
+    'usanetwork_consumptionator_related_item' => array(
+      'variables' => array(
+        'content_url' => NULL,
+        'image_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => array(
+          'left' => NULL,
+          'right' => NULL,
+        ),
+      ),
+      'template' => 'templates/usanetwork-consumptionator-related-item',
+    ),
+    'usanetwork_consumptionator_ymal_container' => array(
+      'variables' => array(
+        'items' => array(
+          0 => array(
+            'li_class' => NULL,
+            'content' => NULL, // Pre-rendered array of displayable content
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-consumptionator-ymal-container',
+    ),
+    'usanetwork_consumptionator_ymal_item' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'content_url' => NULL,
+        'image_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => array(
+          'left' => NULL,
+          'right' => NULL,
+        ),
+      ),
+      'template' => 'templates/usanetwork-consumptionator-ymal-item',
+    ),
+  );
+}
+
+/**
+ *  Implements hook_block_info().
+ */
+function usanetwork_consumptionator_block_info() {
+  $blocks = array();
+
+  $blocks['usanetwork_consumptionator'] = array(
+    'info' => t('Consumptionator: The full page'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['uasnetwork_cons_related'] = array(
+    'info' => t('Consumptionator: Related content'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_cons_ymal'] = array(
+    'info' => t('Consumptionator: You may also like'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_consumptionator_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_consumptionator':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_consumptionator_render_block();
+      break;
+
+    case 'uasnetwork_cons_related':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_consumptionator_relcontent_block();
+      break;
+
+    case 'usanetwork_cons_ymal':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_consumptionator_ymal_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Renders consumptionator panel.
+ */
+function usanetwork_consumptionator_render_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $output = '';
+
+  $panel = panels_mini_load('usanetwork_consumptionator');
+
+  if ($panel) {
+    $output = panels_render_display($panel->display);
+  }
+
+  return $output;
+}
+
+/**
+ * Returns consumptionator menu entity.
+ */
+function _usanetwork_consumptionator_get_menu_entity() {
+  $query = drupal_get_query_parameters();
+
+  if (!empty($query['url'])) {
+    $normal_path = parse_url(drupal_get_normal_path($query['url']));
+    $menu_item = menu_get_item($normal_path['path']);
+
+    if (!empty($menu_item['page_arguments'][0])) {
+      $entity = $menu_item['page_arguments'][0];
+
+      if (isset($entity->type) && ($entity->type == 'mpx_video_1' || $entity->type == 'mpx_video_2')) {
+        $entity->entity_type = 'file';
+      }
+
+      return $entity;
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns related show items using ajax.
+ * @param $show_nid
+ */
+function usanetwork_consumptionator_get_related_items_ajax($show_nid) {
+  $query = drupal_get_query_parameters();
+
+  $start_from = isset($query['start_from'])
+    ? $query['start_from']
+    : 0;
+
+  $limit = isset($query['limit'])
+    ? $query['limit']
+    : 6;
+
+  $output = array(
+    'html' => usanetwork_consumptionator_relcontent_block($show_nid, $start_from, $limit),
+  );
+
+  return drupal_json_output($output);
+}
+
+function usanetwork_consumptionator_get_ymal_items_ajax($show_nids) {
+  $output = array(
+    'html' => '',
+  );
+
+  // Filter characters instead numbers and commas,
+  // explode result to array by commas.
+  $show_nids = preg_replace('/[^\d,]*/', '', $show_nids);
+  $show_nids_array = explode(',', $show_nids);
+
+  if (!empty($show_nids_array)) {
+    $query = drupal_get_query_parameters();
+
+    $start_from = isset($query['start_from'])
+      ? $query['start_from']
+      : 0;
+
+    $limit = isset($query['limit'])
+      ? $query['limit']
+      : 6;
+
+    $output['html'] = usanetwork_consumptionator_ymal_block($show_nids, $start_from, $limit);
+  }
+
+  return drupal_json_output($output);
+}
+
+function usanetwork_consumptionator_full_items_ajax($show_nid) {
+  $query = drupal_get_query_parameters();
+
+  $start_from = isset($query['start_from'])
+    ? $query['start_from']
+    : 0;
+
+  $limit = isset($query['limit'])
+    ? $query['limit']
+    : 6;
+
+  $output = array(
+    'related' => usanetwork_consumptionator_relcontent_block($show_nid, $start_from, $limit),
+    'ymal' => usanetwork_consumptionator_ymal_block($show_nid, $start_from, $limit),
+  );
+
+  return drupal_json_output($output);
+}
+
+/**
+ * Renders consumptionator page block with related items.
+ */
+function usanetwork_consumptionator_relcontent_block($show_nid = 0, $start_from = 0, $limit = 6) {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $rendered_items = array();
+  $menu_entity = _usanetwork_consumptionator_get_menu_entity();
+
+  if (empty($show_nid) && !empty($menu_entity)) {
+    if (!empty($menu_entity->type) && $menu_entity->type == 'tv_show') {
+      $show_nid = $menu_entity->nid;
+    }
+    else {
+      if (!empty($menu_entity->nid)) {
+        $show_field = field_get_items('node', $menu_entity, 'field_show');
+      }
+      elseif (!empty($menu_entity->fid)) {
+        $show_field = field_get_items('file', $menu_entity, 'field_show');
+      }
+
+      if (!empty($show_field)) {
+        $show_nid = $show_field[0]['target_id'];
+      }
+    }
+  }
+
+  if (!empty($show_nid) && module_exists('usanetwork_tv_shows')) {
+    $tv_show_node = node_load($show_nid);
+    $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_CONS_TV_SHOW_RELATED_ITEMS_ON_PAGE);
+
+    if (!empty($related_content)) {
+
+      $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, FALSE);
+
+      return theme('usanetwork_tv_shows_related_items_container', array(
+        'related_items_block' => $block_of_items,
+        'load_more_link' => TRUE,
+        'show_nid' => $tv_show_node->nid,
+        'items_pre_page_limit' => USA_CONS_TV_SHOW_RELATED_ITEMS_ON_PAGE,
+      ));
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Renders consumptionator page block with "You may also like" items.
+ */
+function usanetwork_consumptionator_ymal_block($show_nids = array(), $start_from = 0, $limit = 6) {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $rendered_items = array();
+  $file = _usanetwork_consumptionator_get_menu_entity();
+
+  if (!empty($file)) {
+    $show_field = field_get_items('file', $file, 'field_show');
+
+    if (!empty($show_field)) {
+      $show_nids = array(
+        $show_field[0]['target_id']
+      );
+    }
+  }
+
+  // Load and render first 6 items only
+  $rendered_items = _usanetwork_consumptionator_load_ymal_content($show_nids, $start_from, $limit, TRUE);
+
+  if (!empty($rendered_items)) {
+    return theme('usanetwork_consumptionator_ymal_container', array(
+      'items' => $rendered_items,
+    ));
+  }
+
+  return '';
+}
+
+/**
+ * Returns items for YMAL.
+ * @param $show_nid - integer or array of show node ids that should be IGNORED!
+ */
+function _usanetwork_consumptionator_load_ymal_content($show_nids = array(), $start_from = 0, $limit = 10, $render = TRUE) {
+  $result_items = array();
+
+  if (!is_array($show_nids)) {
+    $show_nids = array($show_nids);
+  }
+
+  // Pulls data from files because only videos are available for YMAL.
+  $related_items = _usanetwork_tv_shows_pull_videos($show_nids, $start_from, $limit);
+
+  if (!empty($related_items)) {
+    $item_index = 0;
+    $item_class = '';
+    $video_caption = '';
+    $episode_image_uri = '';
+    $items_count = count($related_items);
+
+    foreach ($related_items as $related_item) {
+      if ($item_index == 0) {
+        $item_class = 'first';
+      }
+      elseif ($item_index == $items_count - 1) {
+        $item_class = 'last';
+      }
+      else {
+        $item_index = '';
+      }
+
+      $show_title = !empty($related_item->show_title)
+        ? $related_item->show_title
+        : '';
+
+      $is_full = !empty($related_item->is_full)
+        ? (
+          $related_item->is_full == 1
+            ? t('Full episode')
+            : t('Promo')
+        )
+        : t('Promo');
+
+      if (!empty($show_title)) {
+        $video_caption = $show_title . ': ' . $is_full;
+      }
+      else {
+        $video_caption = $is_full;
+      }
+
+      $additional_text = array(
+        'left' => '',
+        'right' => '',
+      );
+
+      if (!empty($related_item->season_number) && !empty($related_item->episode_number)) {
+        $additional_text['left'] = t('S@season episode @episode', array(
+          '@season' => $related_item->season_number,
+          '@episode' => $related_item->episode_number,
+        ));
+      }
+
+      if (!empty($related_item->duration)) {
+        $additional_text['right'] = gmdate('H:i:s', $related_item->duration);
+      }
+
+      $episode_image_uri = _usanetwork_mpx_video_get_image_path(file_load($related_item->fid));
+
+      $theme_variables = array(
+        'classes' => !empty($related_item->show_nid)
+          ? usanetwork_tv_shows_color_show_css_class($related_item->show_nid)
+          : '',
+        'content_url' => !empty($related_item->fid)
+          ? url('file/' . $related_item->fid)
+          : '',
+        'image_url' => !empty($episode_image_uri)
+          ? image_style_url('634x349', $episode_image_uri)
+          : '',
+        'caption' => $video_caption,
+        'title' => !empty($related_item->video_title)
+          ? $related_item->video_title
+          : '',
+        'additional' => $additional_text,
+      );
+
+      $result_items[] = array(
+        'li_class' => $item_class,
+        'content' => $render
+          ? theme('usanetwork_consumptionator_ymal_item', $theme_variables)
+          : $theme_variables,
+      );
+    }
+  }
+
+  return $result_items;
+}
+
+/**
+ * @param int $show_nid - node id of the show
+ * @param int $start_from - the number of items from the beginning that should be ignored
+ * @param int $limit - the limit of items that should be loaded
+ * @param bool $render - rendering flag (if TRUE - returns themed HTML, if FALSE - returns associative array of data)
+ *
+ * @return mixed
+ *
+ * Returns related content items.
+ */
+function _usanetwork_consumptionator_load_related_content($show_nid, $start_from = 0, $limit = 10, $render = TRUE) {
+  $result_items = array();
+  $content_type_aliases = _usanetwork_tv_shows_get_content_type_aliases();
+
+  // Pulls nodes because a lot of content could be available for this block.
+  $related_items = _usanetwork_tv_shows_pull_related_nodes($show_nid, $start_from, $limit, 'DESC', 'changed', array(
+    'fshow.bundle' => array(
+      'values' => array_keys($content_type_aliases),
+    ),
+  ));
+
+  if (!empty($related_items)) {
+    $item_index = 0;
+    $item_class = '';
+    $items_count = count($related_items);
+
+    foreach ($related_items as $related_item) {
+      $caption_prefix = '';
+
+      if ($item_index == 0) {
+        $item_class = 'first';
+      }
+      elseif ($item_index == $items_count - 1) {
+        $item_class = 'last';
+      }
+      else {
+        $item_index = '';
+      }
+
+      if (isset($related_item->bundle) && isset($content_type_aliases[$related_item->bundle])) {
+        $caption_prefix = $content_type_aliases[$related_item->bundle];
+      }
+
+      $additional_text = array(
+        'left' => '',
+        'right' => '',
+      );
+
+      if (!empty($related_item->promo_season) && !empty($related_item->promo_episode)) {
+        $additional_text['left'] = t('S@season episode @episode', array(
+          '@season' => $related_item->promo_season,
+          '@episode' => $related_item->promo_episode,
+        ));
+      }
+
+      if ($related_item->bundle == 'media_gallery') {
+        $media_items_count = _usanetwork_tv_shows_get_media_items_count($related_item->entity_id);
+
+        $additional_text['right'] = t('@number photos', array('@number' => $media_items_count));
+      }
+
+      // Featured: use more bundles for adding timestamp
+      if (in_array($related_item->bundle, array(
+        'usanetwork_promo',
+      ))) {
+        $additional_text['right'] = gmdate('H:i:s', $related_item->promo_duration);
+      }
+
+      $image_uri = _usanetwork_tv_shows_get_content_image_url($related_item->entity_id);
+
+      $theme_variables = array(
+        'content_url' => !empty($related_item->assoc_fid)
+          ? url('file/' . $related_item->assoc_fid)
+          : url('node/' . $related_item->nid),
+        'image_url' => !empty($image_uri)
+          ? image_style_url('634x349', $image_uri)
+          : '',
+        'caption' => !empty($caption_prefix)
+          ? $caption_prefix . ': ' . $related_item->show_title
+          : $related_item->show_title,
+        'title' => !empty($related_item->promo_title)
+          ? $related_item->promo_title
+          : $related_item->title,
+        'additional' => array(
+          'left' => $additional_text['left'],
+          'right' => $additional_text['right'],
+        ),
+      );
+
+      $result_items[] = array(
+        'li_class' => $item_class,
+        'content' => $render
+          ? theme('usanetwork_consumptionator_related_item', $theme_variables)
+          : $theme_variables,
+      );
+
+      $item_index++;
+    }
+  }
+
+  return $result_items;
+}

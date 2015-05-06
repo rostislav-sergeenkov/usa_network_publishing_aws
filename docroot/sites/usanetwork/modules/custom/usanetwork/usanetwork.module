@@ -1,5 +1,9 @@
 <?php
 
+define('USANETWORK_SEEIT_DEFAULT_URL', 'https://seeitstage.sv.comcast.com/external/embedded/seeit-remind.js');
+
+define('USANETWORK_PROMO_ICON_CSS_PATH', 'public://css/promo_icon.css');
+define('USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME', 'cta_type');
 /**
  * Implementation of hook_permission().
  */
@@ -18,25 +22,32 @@ function usanetwork_permission() {
 function usanetwork_menu() {
   // admin pages
   $items['admin/usanetwork'] = array(
-    'title' => t('USA Network'),
+    'title' => 'USA Network',
     'description' => t('Administer USA Network specific settings and content.'),
     'page callback' => 'system_admin_menu_block_page',
     'access arguments' => array('access administration pages'),
     'position' => 'left',
-    'file' =>  'system.admin.inc',
+    'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
     'weight' => -14,
   );
   $items['admin/usanetwork/settings'] = array(
-    'title' => t('General Settings'),
+    'title' => 'General Settings',
     'description' => t('Administer USA Network settings.'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('usanetwork_settings_form'),
     'access arguments' => array('administer usanetwork'),
-    'file' =>  'usanetwork.admin.inc',
+    'file' => 'usanetwork.admin.inc',
   );
+
+  $items['admin/usanetwork/settings/global'] = array(
+    'title' => 'Globals',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10
+  );
+
   $items['admin/usanetwork/shows'] = array(
-    'title' => t('Administer USA Shows'),
+    'title' => 'Administer USA Shows',
     'description' => t('Administer USA Network show specific items.'),
     'access arguments' => array('administer usanetwork'),
     'page callback' => 'system_admin_menu_block_page',
@@ -62,16 +73,16 @@ function usanetwork_menu() {
  *
  * Allow the revisions page views to show the primary tabs.
  * @TODO remove or change this when new workflow tools are in place
-// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
-function usanetwork_menu_alter(&$items) {
+  // REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
+  function usanetwork_menu_alter(&$items) {
   $items['node/%node/revisions/%/view']['type'] = MENU_LOCAL_TASK;
-}
+  }
  */
 
 /**
  * helper function to return an array of show nids
  */
- function _usanetwork_show_nids() {
+function _usanetwork_show_nids() {
   $show_nids = array();
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
@@ -91,13 +102,13 @@ function usanetwork_menu_alter(&$items) {
  * Implementation hook_tokens_alter().
  */
 function usanetwork_tokens_alter(&$replacements, $context) {
-  if (isset($context['data']['entity'])){
-    if (isset($replacements['[node:field_show]'])){
+  if (isset($context['data']['entity'])) {
+    if (isset($replacements['[node:field_show]'])) {
       $show_nid = $context['data']['entity']->field_show[LANGUAGE_NONE][0]['target_id'];
       if (!empty($show_nid)) {
         $show = node_load($show_nid);
         if (isset($show->field_pathauto_alias[LANGUAGE_NONE][0]['value']) && !empty($show->field_pathauto_alias[LANGUAGE_NONE][0]['value'])) {
-          $replacements['[node:field_show]']  = check_plain($show->field_pathauto_alias[LANGUAGE_NONE][0]['value']);
+          $replacements['[node:field_show]'] = check_plain($show->field_pathauto_alias[LANGUAGE_NONE][0]['value']);
         }
       }
     }
@@ -108,8 +119,8 @@ function usanetwork_tokens_alter(&$replacements, $context) {
  * Returns entity by path.
  */
 function _usanetwork_menu_get_object(&$entity_type = NULL, $position = 1, $path = NULL) {
-  if (!isset($path)) {
-    $path = $_GET['q'];
+  if (!isset($path) && !drupal_match_path(current_path(), 'admin/*')) {
+    $path = current_path();
   }
   $entity = null;
   while (!$entity && $position < count(explode('/', $path))) {
@@ -142,22 +153,341 @@ function _usanetwork_menu_get_object(&$entity_type = NULL, $position = 1, $path 
  * Implements hook_form_FORM_ID_alter
  *
  */
- // @TODO - TEST - REMOVED AFTER P7 UPDATE
- /*
-function usanetwork_form_file_entity_edit_alter(&$form, &$form_state, $form_id) {
+// @TODO - TEST - REMOVED AFTER P7 UPDATE
+/*
+  function usanetwork_form_file_entity_edit_alter(&$form, &$form_state, $form_id) {
   $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork') . '/css/usa-entity-edit-alter.css';
   // RESTORES "Replace file" field on the edit file form.
   // for some wacky reason pub_files removed access to the thing we want
   // @TODO we can remove this hook when this is restored in p7 core
   $form['replace_upload']['#access'] = TRUE;
-}
-*/
+  }
+ */
 
 /**
  * Implentation of template_preprocess_page().
  */
 function usanetwork_preprocess_page(&$variables) {
+  if (!file_exists(USANETWORK_PROMO_ICON_CSS_PATH)) {
+    _create_promo_icon_css();
+  }
+  drupal_add_css(USANETWORK_PROMO_ICON_CSS_PATH);
 //usanetwork global JS code
   $usanetwork_global_js = variable_get('usanetwork_global_js_code', '') . "\n";
   drupal_add_js(trim($usanetwork_global_js, "\n"), array('type' => 'inline', 'scope' => 'header'));
+}
+
+/**
+ * Returns HTML for a list or nested list of items.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - warpper_attributes: class for div wrapper.
+ *   - title_tag: tag of list title.
+ *   - title_attributes: classes of list title.
+ *   - items: An array of items to be displayed in the list. If an item is a
+ *     string, then it is used as is. If an item is an array, then the "data"
+ *     element of the array is used as the contents of the list item. If an item
+ *     is an array with a "children" element, those children are displayed in a
+ *     nested list. All other elements are treated as attributes of the list
+ *     item element.
+ *   - title: The title of the list.
+ *   - type: The type of list to return (e.g. "ul", "ol").
+ *   - attributes: The attributes applied to the list element.
+ * 
+ * @see theme_item_list()
+ */
+function theme_usanetwork_item_list($variables) {
+  $items = $variables['items'];
+  $warpper_attributes = $variables['warpper_attributes'];
+  $title_tag = $variables['title_tag'];
+  $title_attributes = $variables['title_attributes'];
+  $suffix = $variables['suffix'];
+
+  $title = $variables['title'];
+  $type = $variables['type'];
+  $attributes = $variables['attributes'];
+  $links_set = !empty($variables['links_set']) ? $variables['links_set'] : 'default';
+
+  // Only output the list container and title, if there are any list items.
+  // Check to see whether the block title exists before adding a header.
+  // Empty headers are not semantic and present accessibility challenges.
+  $output = '<div ' . drupal_attributes($warpper_attributes) . '>';
+  if (isset($title) && $title !== '') {
+    $output .= '<' . $title_tag . ' ' . drupal_attributes($title_attributes) . '>' . $title . '</' . $title_tag . '>';
+  }
+
+  if (!empty($items)) {
+    $output .= "<$type" . drupal_attributes($attributes) . '>';
+    $num_items = count($items);
+    $i = 0;
+    foreach ($items as $item) {
+      $attributes = array();
+      $children = array();
+      $data = '';
+      $i++;
+      if (is_array($item)) {
+        foreach ($item as $key => $value) {
+          if ($key == 'data') {
+            $data = $value;
+          }
+          elseif ($key == 'children') {
+            $children = $value;
+          }
+          else {
+            $attributes[$key] = $value;
+          }
+        }
+      }
+      else {
+        $data = $item;
+      }
+      if (count($children) > 0) {
+        // Render nested list.
+        $data .= theme_item_list(array('items' => $children, 'title' => NULL, 'type' => $type, 'attributes' => $attributes));
+      }
+      if ($i == 1) {
+        $attributes['class'][] = 'first';
+      }
+      if ($i == $num_items) {
+        $attributes['class'][] = 'last';
+      }
+
+      if (strtolower(strip_tags($data)) == 'shows') {
+        if ($links_set == 'default') {
+          $query_result = views_get_view_result('usa_nav', 'block');
+
+          if (!empty($query_result)) {
+            $attributes['class'][] = 'expanded';
+            $links = array();
+
+            foreach ($query_result as $row) {
+              $links[] = l($row->node_title, 'node/' . $row->nid, array('html' => TRUE));
+            }
+
+            $data .= theme_item_list(array(
+              'items' => $links,
+              'title' => NULL,
+              'type' => 'ul',
+              'attributes' => array('class' => 'menu')
+            ));
+          }
+        }
+        else {
+          $links = array();
+
+          $current_shows = views_get_view_result('usa_nav', 'originals_show');
+          $also_on_usa_menu = menu_load('menu-also-on-usa');
+          $also_on_usa_links = menu_load_links('menu-also-on-usa');
+
+          if (!empty($current_shows)) {
+
+            $links[] = '<span class="no-link">' . t('Current Shows') . '</span>';
+
+            foreach ($current_shows as $current_show_link) {
+              $links[] = l($current_show_link->node_title, 'node/' . $current_show_link->nid);
+            }
+          }
+
+          if (!empty($also_on_usa_links)) {
+            $links[] = '<span class="no-link">' . $also_on_usa_menu['title'] . '</span>';
+
+            foreach ($also_on_usa_links as $also_on_usa_link) {
+              if ($also_on_usa_link['hidden'] == 0) {
+                $links[] = l($also_on_usa_link['link_title'], url($also_on_usa_link['link_path']));
+              }
+            }
+          }
+
+          if (!empty($links)) {
+            $attributes['class'][] = 'expanded';
+            $data .= theme_item_list(array(
+              'items' => $links,
+              'title' => NULL,
+              'type' => 'ul',
+              'attributes' => array('class' => 'menu categorized-menu')
+            ));
+          }
+        }
+      }
+
+      $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
+    }
+    $output .= "</$type>";
+  }
+  if (isset($suffix) && $suffix !== '') {
+    $output .= implode(PHP_EOL, $suffix);
+  }
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_item_list' => array(
+      'variables' => array(
+        'warpper_attributes' => array(), 
+        'title_tag' => 'h2', 
+        'title_attributes' => array(
+          'class' => 'menu-title'
+          ), 
+        'title' => NULL, 
+        'items' => array(), 
+        'type' => 'ul', 
+        'attributes' => array(), 
+        'suffix' => array()
+        ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function usanetwork_form_alter(&$form, &$form_state, $form_id) {
+  if (!empty($form['#entity_type'])) {
+    drupal_add_css(drupal_get_path('module', 'focal_point') . '/css/focal_point.css');
+    drupal_add_js(drupal_get_path('module', 'focal_point') . '/js/focal_point.js');
+  }
+}
+
+/**
+ * Render apps & services menu items
+ */
+function usanetwork_app_and_services_footer_links() {
+
+  $menu = menu_load('menu-apps-services');
+  if (!$menu) {
+    return;
+  }
+  $menu_links = menu_load_links($menu['menu_name']);
+  foreach ($menu_links as $item) {
+    $items[] = array(
+      'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE)),
+      'class' => array(
+        'menu-item'
+      ),
+    );
+  }
+  return theme('usanetwork_item_list', array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'app-and-services-menu',
+      ),
+    ),
+    'title_tag' => 'h2',
+    'title_attributes' => array(
+      'class' => array(
+        'menu-title',
+        'app-and-services-menu',
+      ),
+    ),
+    'title' => t('apps & services'),
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'menu'
+      )
+    ),
+      )
+  );
+}
+
+/**
+ * Render button footer block
+ */
+function usanetwork_bottom_footer() {
+
+  $menu = menu_load('usa-footer-bottom');
+  if (!$menu) {
+    return;
+  }
+  $menu_links = menu_load_links($menu['menu_name']);
+  foreach ($menu_links as $item) {
+    if ($item['hidden'] == 1) {
+      continue;
+    }
+    $items[] = array(
+      'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE)),
+      'class' => array(
+        'menu-item'
+      ),
+    );
+  }
+
+  if ($adchoice = variable_get('usanetwork_footer_ad_choices_text', FALSE)) {
+    $items[] = array(
+      'data' => $adchoice,
+      'class' => array(
+        'menu-item'
+      ),
+    );
+  }
+
+  return theme('usanetwork_item_list', array(
+    'title' => NULL,
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'menu',
+        'legal-menu',
+      )
+    ),
+    'suffix' => array(
+      variable_get('usanetwork_social_links', ''),
+      '<div class="copyright">' . preg_replace('/(Y{4})/', date('Y'), variable_get('usanetwork_footer_message', '')) . '</div>',
+    ),
+      )
+  );
+}
+/**
+ * Implements hook_taxonomy_term_update($term).
+ */
+function usanetwork_taxonomy_term_update($term) {
+  if ($term->vocabulary_machine_name == USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME) {
+    _create_promo_icon_css();
+  }
+}
+/**
+ * Implements hook_taxonomy_term_delete($term).
+ */
+function usanetwork_taxonomy_term_delete($term) {
+  if ($term->vocabulary_machine_name == USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME) {
+    _create_promo_icon_css();
+  }
+}
+/**
+ * Implements hook_taxonomy_term_insert($term).
+ */
+function usanetwork_taxonomy_term_insert($term) {
+  if ($term->vocabulary_machine_name == USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME) {
+    _create_promo_icon_css();
+  }
+}
+
+/**
+ * Create css file for promo icons.
+ */
+function _create_promo_icon_css() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load(USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME);
+  if (!empty($vocabulary)) {
+    $terms = taxonomy_term_load_multiple(array(), array('vid' => $vocabulary->vid));
+    if (!empty($terms)) {
+      $css_text  = '';
+      foreach ($terms as $term) {
+        $image = field_get_items('taxonomy_term', $term, 'field_usa_term_image');
+        if (!empty($image)) {
+          $image = reset($image);
+          $image = image_style_url('thumbnail', $image['uri']);
+          $css_text .= '.' . str_replace(' ', '_', $term->name) . '-icon { background-image: url(' . $image . '); }' . PHP_EOL;
+        }
+      }
+      file_unmanaged_save_data($css_text, USANETWORK_PROMO_ICON_CSS_PATH, FILE_EXISTS_REPLACE);
+    }
+  }
 }

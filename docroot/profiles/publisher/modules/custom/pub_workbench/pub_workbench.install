@@ -36,3 +36,11 @@ function pub_workbench_install() {
 function pub_workbench_update_7100() {
   module_enable(array('file_entity_revisions'));
 }
+
+/**
+ * Disable unused workbench views.
+ */
+function pub_workbench_update_7101() {
+  // Force menu rebuild so views disable takes effect immediately.
+  variable_set('menu_rebuild_needed', TRUE);
+}

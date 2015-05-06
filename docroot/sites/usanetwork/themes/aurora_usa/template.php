@@ -53,16 +53,46 @@ function aurora_usa_preprocess_html(&$vars) {
     '#tag' => 'meta',
     '#attributes' => array(
       'name' => 'viewport',
-      'content' => 'width=device-width, initial-scale=1, minimal-ui',
+      'content' => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
     ),
   );
   drupal_add_html_head($viewport, 'viewport');
 
   // adding usa-social body class to global and show pages
-  if(arg(2) == 'social' || arg(0) == 'social') {
+  if (arg(2) == 'social' || arg(0) == 'social') {
     $vars['classes_array'][] = drupal_html_class('usa-social');
   }
+  if (arg(0) == 'videos' || arg(1) == 'live') {
+    $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+  }
   drupal_add_library('system', 'drupal.ajax');
+  if ($entity = menu_get_object()) {
+    if ($entity->type == 'media_gallery' || $entity->type == 'catchall_page') {
+      $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+    }
+    if ($entity->type == 'tv_show') {
+      $show_title = _usanetwork_get_field_item('node', $entity, 'field_pathauto_alias', 'value');
+      $show_class = drupal_html_class('show-' . $show_title);
+      $vars['classes_array'][] = $show_class;
+    }
+    else {
+      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
+      if (!empty($show_id)) {
+        $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
+      }
+    }
+  }
+  elseif ($entity = menu_get_object('file')) {
+    if ($entity->filemime == 'video/mpx') {
+      $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+      $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js');
+    }
+    $show_id = _usanetwork_get_field_item('file', $entity, 'field_show', 'target_id');
+    if (!empty($show_id)) {
+      $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
+    }
+  }
 }
 
 /**
@@ -80,11 +110,20 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
-  drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   drupal_add_js($theme_path . '/javascripts/tableheader.js');
+  drupal_add_js($theme_path . '/javascripts/jquery.mCustomScrollbar.concat.min.js');
+  drupal_add_js($theme_path . '/javascripts/viewport-units-buggyfill.js');
+  drupal_add_js($theme_path . '/javascripts/matchmedia.js');
+  drupal_add_js($theme_path . '/javascripts/picturefill.js');
+  drupal_add_js($theme_path . '/javascripts/jquery.scrollTo-1.4.3.1.js');
+  drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
+    'type' => 'external',
+    'scope' => 'footer',
+  ));
+
   $icomoon_ie_fix = array(
     '#tag' => 'script',
     '#attributes' => array(
@@ -98,25 +137,24 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/follow-social.js');
   }
   $node = menu_get_object();
+  $vars['page']['catchall_seo_title'] = '';
   if ($node && $node->type == "catchall_seo_page" && !$node->field_show) {
     $vars['page']['catchall_seo_title'] = $node->title;
   }
   if ($node && $node->type == "media_gallery") {
-    drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
+    drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
+    drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
     drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
-    $language = $node->language;
-    $slideshow = (!empty($node->field_usa_autoscroll) && $node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
-    $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;
-    $js_settings = array(
-      'slideshow' => $slideshow,
-      'slideshowSpeed' => $slideshowSpeed
-    );
-    drupal_add_js(array('showAspot' => $js_settings), array('type' => 'setting'));
-    drupal_add_js($theme_path . '/javascripts/show-toggle.js');
-    drupal_add_js($theme_path . '/javascripts/show-flexslider.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.jcarousel.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
   }
   // add ios touch icon
   $ios_icon = array(
@@ -154,6 +192,7 @@ function aurora_usa_preprocess_page(&$vars) {
     $util_regions[] = 'utilities-search';
   }
   //Assign SEO H1 field value to page variable
+  $vars['page']['seoh1'] = '';
   if (drupal_is_front_page()) {
     if (module_exists('usanetwork_home'))
     $vars['page']['seoh1'] = _usanetwork_home_get_field_value('field_seo_h1');
@@ -349,7 +388,6 @@ function aurora_usa_form_search_block_form_alter(&$form){
     $form['#action'] = '/' . implode('/', $parts);
   }
 
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/search.js');
 }
 
 /**
@@ -366,11 +404,16 @@ function aurora_usa_preprocess_region(&$vars) {
     $current_menu_object = _usanetwork_menu_get_object($entity_type);
     if ($entity_type == 'node') {
       if ($current_menu_object && ($current_menu_object->type == 'post')) {
-        $category_field = reset(field_get_items('node', $current_menu_object, USANETWORK_FIELD_BLOG));
-        if ($category_field) {
-          $category = taxonomy_term_load($category_field['tid']);
-          module_load_include('inc', 'pathauto', 'pathauto');
-          $vars['classes_array'][] = 'blog-term-' . pathauto_cleanstring($category->name);
+        $blog_field = field_get_items('node', $current_menu_object, USANETWORK_FIELD_BLOG);
+
+        if ($blog_field) {
+          $category_field = reset($blog_field);
+
+          if ($category_field) {
+            $category = taxonomy_term_load($category_field['tid']);
+            module_load_include('inc', 'pathauto', 'pathauto');
+            $vars['classes_array'][] = 'blog-term-' . pathauto_cleanstring($category->name);
+          }
         }
       }
     } elseif ($entity_type == 'taxonomy_term') {
@@ -564,7 +607,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_mpx_title':
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
-          case 'vid_teaser_front':
           case 'vid_teaser_episode':
             unset($vars['items'][0]);
             break;
@@ -611,7 +653,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         }
       break;
     // AIRDATE IN VIDEOS
-    case 'field_video_air_date':
     case 'field_mpx_airdate':
       // change display
       if (isset($vars['element']['#view_mode'])) {
@@ -621,7 +662,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $air_custom = date('n/d/Y', $airtime);
             $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
             break;
-          case 'vid_teaser_front':
           case 'vid_teaser_episode':
             if (strpos($vars['element']['#object']->type, 'mpx_video') === 0) {
               $title = $vars['element']['#object']->field_mpx_title['und'][0]['safe_value'];
@@ -637,10 +677,9 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         }
       break;
     // episode num IN VIDEOS
-    case 'field_episode_number':
     case 'field_mpx_episode_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || (strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
+      if ((strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
@@ -649,23 +688,30 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               $episode = $vars['element']['#items'][0]['safe_value'];
               $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
               break;
+            case 'vid_teaser_front':
+              $episode = $vars['element']['#items'][0]['safe_value'];
+              $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
+              break;
             }
           }
         }
       break;
     // season num IN VIDEOS
-    case 'field_season_id':
     case 'field_mpx_season_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || (strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
+      if ((strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
             case 'vid_teaser_show_episode':
             case 'vid_teaser_show_general':
               $season = $vars['element']['#items'][0]['safe_value'];
-                $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
-                break;
+              $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
+              break;
+            case 'vid_teaser_front':
+              $season = $vars['element']['#items'][0]['safe_value'];
+              $vars['items'][0]['#markup'] = $season ? t('S') . $season : '';
+              break;
             }
           }
         }
@@ -684,11 +730,10 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         }
       break;
     // DURATION WITHIN VIDEO TEASERS
-    case 'field_video_duration':
     case 'field_mpx_duration':
       // change display
       $duration = $vars['element']['#items'][0]['value'];
-      $duration_custom = gmdate("H:i:s", $duration);
+      $duration_custom = gmdate("i:s", $duration);
       $vars['items'][0]['#markup'] = $duration_custom;
       break;
     // PROMO line 1 text on
@@ -1023,8 +1068,6 @@ function aurora_usa_js_alter(&$js) {
  */
 function aurora_usa_field__field_usa_aspot_desktop($vars) {
   // polyfill
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
   $item = current($vars['items']);
@@ -1053,8 +1096,6 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
  */
 function aurora_usa_field__field_usa_aspot_tablet_portrait($vars) {
   // polyfill
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
   $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
@@ -1070,8 +1111,6 @@ function aurora_usa_field__field_usa_aspot_tablet_portrait($vars) {
  */
 function aurora_usa_field__field_usa_aspot_mobile($vars) {
   // polyfill
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
   $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
@@ -1094,8 +1133,6 @@ function aurora_usa_field__field_promo_wide_image($vars) {
   // b-spot
   if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
     // polyfill
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
 
@@ -1125,8 +1162,6 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   // b-spot these are mobile fallbacks
   if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
   // polyfill
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
     $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
@@ -1140,8 +1175,6 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   // c-spot
   if ($vars['element']['#view_mode'] == 'home_promo') {
     // polyfill
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
-    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
     $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
@@ -1205,8 +1238,7 @@ function aurora_usa_field__field_tv_cover_media($variables) {
 }
 
 function aurora_usa_field__field_target($vars) {
-  $target = $vars['items'][0]['value'];
-  return $target;
+  return !empty($vars['items'][0]['value']) ? $vars['items'][0]['value'] : NULL;
 }
 function aurora_usa_field__field_video_thumbnail($variables) {
   if ($variables['element']['#view_mode'] == 'full') {

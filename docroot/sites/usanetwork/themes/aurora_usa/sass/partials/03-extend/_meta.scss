@@ -1,0 +1,33 @@
+%meta{
+  .meta {
+    direction: ltr;
+    color: #ffffff;
+    .caption, .title, .additional, .description, .show-title, .topic {
+      overflow: hidden;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .caption{
+      font-size: 13px;
+      font-family: $avalon-book;
+      letter-spacing: 0.75px;
+    }
+    .title{
+      font-size: 16px;
+      font-family: $avalon-demi;
+      letter-spacing: 1px;
+    }
+    .additional{
+      font-size: 11px;
+      font-family: $avalon-medium;
+      letter-spacing: 1px;
+      span{
+        font-size: 11px;
+        font-family: $tex-gyreschola-italic;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

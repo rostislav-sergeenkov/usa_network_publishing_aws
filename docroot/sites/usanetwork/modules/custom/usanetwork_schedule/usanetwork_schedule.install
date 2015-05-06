@@ -1,0 +1,131 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function usanetwork_schedule_schema() {
+  return array(
+    'usanetwork_schedule' => array(
+      'description' => 'Stores schedule items of online schedule',
+      'fields' => array(
+        'guid' => array(
+          'description' => 'The main ID for relating Show, Episode and Program',
+          'type' => 'varchar',
+          'length' => '255',
+          'not null' => TRUE,
+        ),
+        'airing_type' => array(
+          'description' => 'The type of airing',
+          'type' => 'varchar',
+          'length' => '32',
+        ),
+        'rating_scheme' => array(
+          'description' => 'The listing scheme',
+          'type' => 'varchar',
+          'length' => '32',
+        ),
+        'rating_type' => array(
+          'description' => 'The listing rating',
+          'type' => 'varchar',
+          'length' => '32',
+        ),
+        'start_time' => array(
+          'description' => 'UNIX timestamp when it starts',
+          'type' => 'int',
+          'unsigned' => TRUE,
+        ),
+        'end_time' => array(
+          'description' => 'UNIX timestamp when it ends',
+          'type' => 'int',
+          'unsigned' => TRUE,
+        ),
+        'title' => array(
+          'description' => 'The title of the video element',
+          'type' => 'varchar',
+          'length' => '255',
+        ),
+        'show_title' => array(
+          'description' => 'The title of the parent item (show)',
+          'type' => 'varchar',
+          'length' => '255',
+        ),
+        'program_guid' => array(
+          'description' => 'The program ID',
+          'type' => 'varchar',
+          'length' => '255',
+        ),
+        'program_description' => array(
+          'description' => 'The program description',
+          'type' => 'text',
+        ),
+        'program_genre' => array(
+          'description' => 'The genre of the video',
+          'type' => 'varchar',
+          'length' => '32',
+        ),
+        'program_type' => array(
+          'description' => 'The type of the program',
+          'type' => 'varchar',
+          'length' => '32',
+        ),
+        'program_rating_scheme' => array(
+          'description' => 'Program scheme',
+          'type' => 'varchar',
+          'length' => '32',
+        ),
+        'program_rating_type' => array(
+          'description' => 'Program rating',
+          'type' => 'varchar',
+          'length' => '32',
+        ),
+        'program_secondary_title' => array(
+          'description' => 'The secondary title (featured)',
+          'type' => 'varchar',
+          'length' => '255',
+        ),
+        'series_episode_number' => array(
+          'description' => 'Full episode number',
+          'type' => 'int',
+          'unsigned' => TRUE,
+        ),
+        'season_episode_number' => array(
+          'description' => 'Episode number in scope of the current season',
+          'type' => 'int',
+          'unsigned' => TRUE,
+        ),
+        'season_number' => array(
+          'description' => 'The season number',
+          'type' => 'int',
+          'unsigned' => TRUE,
+        ),
+      ),
+      'unique keys' => array(
+        'guid' => array('guid'),
+      ),
+      'primary key' => array('guid'),
+    ),
+  );
+}
+
+/**
+ * Update schedule and remove duplicates.
+ */
+function usanetwork_schedule_update_7110() {
+  require_once drupal_get_path('module', 'usanetwork_schedule') . '/usanetwork_schedule.module';
+
+  variable_set('usanetwork_schedule_last_update', 0);
+  usanetwork_schedule_cron();
+}
+
+/**
+ * Updates schedule show aliases
+ */
+function usanetwork_schedule_update_7125() {
+  if (module_exists('features')) {
+    require_once drupal_get_path('module', 'usanetwork_schedule') . '/usanetwork_schedule.module';
+
+    variable_set('usanetwork_schedule_show_aliases', _usanetwork_schedule_get_default_tvshow_aliases());
+
+    strongarm_flush_caches();
+  }
+}

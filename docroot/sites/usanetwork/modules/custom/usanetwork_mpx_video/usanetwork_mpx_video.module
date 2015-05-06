@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Code for the usanetwork_mpx_video feature.
  */
-
 include_once 'usanetwork_mpx_video.features.inc';
 
 define('USANETWORK_MPX_TWITTER_CARD_HEIGHT', 338);
@@ -16,13 +16,12 @@ define('USA_MPX_VIDEO_USA_VIDEO_TERMS_VID', '66');
 define('USA_MPX_VIDEO_STAGE_ACCOUNT', '2297296056');
 define('USA_MPX_VIDEO_PROD_ACCOUNT', '2304992029');
 define('USA_MPX_VIDEO_USA_ACCOUNT_ID', '2140458126');
-define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 5);
-
 define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 10);
-define("USA_MPX_VIDEO_FULL_VIDEO", "Full video");
+define("USA_MPX_VIDEO_FULL_VIDEO", "Full Episodes");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_VIDEO_RELATED_CONTENT_ITEMS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
+define('USA_MPX_IMAGE_SIZE', '1080');
 
 /**
  * Implementation of hook_menu().
@@ -47,7 +46,15 @@ function usanetwork_mpx_video_menu() {
     'access arguments' => array('access content'),
   );
 
-  // admin area
+  // Full video autocompliter.
+  $items['usanetwork_mpx_video/full_video/autocomplete'] = array(
+    'title' => 'Select content',
+    'page callback' => 'usanetwork_mpx_video_full_video_autocomplete',
+    'access arguments' => array('administer nodes'),
+    'delivery callback' => 'drupal_deliver_html_page',
+    'type' => MENU_CALLBACK,
+  );
+ // admin area
   $items['admin/usanetwork/video'] = array(
     'title' => 'Video settings',
     'page callback' => 'drupal_get_form',
@@ -55,6 +62,30 @@ function usanetwork_mpx_video_menu() {
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_mpx_video.admin.inc',
   );
+  
+  // admin area
+  $items['admin/usanetwork/full-episode-page'] = array(
+    'title' => 'Full Episode Page settings',
+    'page callback' => 'usanetwork_mpx_video_full_episode_page_form',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_mpx_video.admin.inc',
+  );
+  $items['admin/usanetwork/full-episode-page/%/delete'] = array(
+    'title' => 'Full Episode Page settings',
+    'page callback' => 'usanetwork_mpx_video_full_episode_videos_form_delete',
+    'page arguments' => array(3),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_mpx_video.admin.inc',
+  );
+
+  $items['ajax/usanetwork-mpx-video/get-related/%node/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_mpx_video_get_related_content_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -75,8 +106,52 @@ function usanetwork_mpx_video_block_info() {
     'info' => t('USA: video MPX views'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
-
+  $blocks['usa_mpx_video_home_full_latest'] = array(
+    'info' => t('Homepage: Full Latest Episodes Carousel'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['usa_mpx_video_clips'] = array(
+    'info' => t('Videofile langing page: video clips.'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['usa_mpx_cons_related'] = array(
+    'info' => t('Videofile: Related content'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['usa_mpx_video_socal'] = array(
+    'info' => t('Videofile: Social content block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_mpx_video_image_default_styles() {
+  $styles = array();
+
+  $styles['111x74'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 111,
+          'height' => 74,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 111,
+          'height' => 74,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  return $styles;
 }
 
 /**
@@ -103,7 +178,7 @@ function usanetwork_mpx_video_block_view($delta) {
         '#markup' => usanetwork_mpx_video_show_nav(),
         '#attached' => array(
           'js' => array(
-              drupal_get_path('module', 'usanetwork_mpx_video') . '/js/usanetwork_mpx_video_ajax.js',
+            drupal_get_path('module', 'usanetwork_mpx_video') . '/js/usanetwork_mpx_video_ajax.js',
           ),
         ),
       );
@@ -112,8 +187,44 @@ function usanetwork_mpx_video_block_view($delta) {
       $block['subject'] = '';
       $block['content'] = usanetwork_mpx_video_views();
       break;
+     case 'usa_mpx_video_home_full_latest':
+      $block['subject'] = '';
+       $block['content'] = array(
+         '#markup' => usanetwork_mpx_video_full_latest_episodes_carousel(),
+         '#attached' => array(
+           'js' => array(
+             drupal_get_path('theme', 'aurora_usa') . '/javascripts/full-episodes-carousel.js',
+           ),
+         ),
+       );
+      break;
+    case 'usa_mpx_video_clips':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usa_mpx_video_clips_render(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.easing.1.3.js',
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js',
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.bxslider.js',
+            drupal_get_path('theme', 'aurora_usa') . '/javascripts/bxslider-carousels.js',
+          ),
+        ),
+      );
+      break;
+    case 'usa_mpx_cons_related':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => usanetwork_mpx_video_related_content_block(),
+      );
+      break;
+    case 'usa_mpx_video_socal':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => usanetwork_mpx_video_social_content_block(),
+      );
+      break;
   }
-
   return $block;
 }
 
@@ -160,7 +271,7 @@ function _usanetwork_mpx_video_node_cleanup($nids) {
   $nodes = node_load_multiple($nids);
   watchdog('usanetwork_mpx_video', 'Deleted @count old video nodes.', array(
     '@count' => count($nids) - count($nodes),
-  ), WATCHDOG_INFO);
+      ), WATCHDOG_INFO);
   return empty($nodes);
 }
 
@@ -203,7 +314,8 @@ function usanetwork_mpx_video_global_nav() {
   if (($arg[0] == 'videos' && !isset($arg[1])) || (isset($arg[1]) && $arg[1] == 'full-episodes')) {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes', 'active'));
     $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
-  } else {
+  }
+  else {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
     $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot', 'active'));
   }
@@ -212,11 +324,11 @@ function usanetwork_mpx_video_global_nav() {
   return $output;
 }
 
-function _usanetwork_mpx_video_get_current_terms($terms){
+function _usanetwork_mpx_video_get_current_terms($terms) {
   $real_terms = array();
   foreach ($terms as $term_check) {
     $query = db_select('file_managed', 'fm')
-      ->fields('fm', array('fid'))
+        ->fields('fm', array('fid'))
         ->condition('type', _usanetwork_mpx_video_get_all_file_types(), 'IN')
         ->condition('published', '1');
     $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
@@ -244,7 +356,8 @@ function usanetwork_mpx_video_show_nav() {
 
   if (isset($file->fid)) {
     $cpath = drupal_get_path_alias('file/' . $file->fid);
-  } else {
+  }
+  else {
     $cpath = current_path();
   }
 
@@ -286,13 +399,13 @@ function usanetwork_mpx_video_show_nav() {
 
   $classes = array('full-episodes');
   if (empty($tid) && ((isset($arg[2]) && $arg[2] == 'full-episodes') ||
-    (isset($file->field_mpx_full_episode[$lang][0]['value']) && !empty($file->field_mpx_full_episode[$lang][0]['value'])))) {
+      (isset($file->field_mpx_full_episode[$lang][0]['value']) && !empty($file->field_mpx_full_episode[$lang][0]['value'])))) {
     $classes[] = 'active';
   }
 
   // show the full episodes links iff there are full episodes for that tv show
   if (_usanetwork_mpx_video_full_episodes_exist($file->field_show[$lang][0]['target_id'])) {
-    $items[] = array('data' => l('<span>full episodes</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/full-episodes'), array('html' => true)), 'class' => $classes);
+    $items[] = array('data' => l('<span>full episodes</span>', drupal_get_path_alias('node/' . $file->field_show[$lang][0]['target_id'] . '/video-categories/full-episodes'), array('html' => true)), 'class' => $classes);
   }
 
   $active_tids = array();
@@ -309,7 +422,7 @@ function usanetwork_mpx_video_show_nav() {
       $parents = array_values(taxonomy_get_parents_all($file->field_usa_video_terms[$lang][0]['target_id']));
       foreach ($parents as $i => $pterm) {
         if (isset($pterm->name) && $pterm->name == 'Series') {
-          $term = $parents[$i-1];
+          $term = $parents[$i - 1];
           break;
         }
       }
@@ -317,7 +430,7 @@ function usanetwork_mpx_video_show_nav() {
 
     if (isset($term->tid)) {
       $terms = taxonomy_get_children($term->tid, $term->vid);
-      $i=1;
+      $i = 1;
       $real_terms = _usanetwork_mpx_video_get_current_terms($terms);
       foreach ($real_terms as $term1) {
         $class = array(str_replace(' ', '-', strtolower($term1->name)));
@@ -382,7 +495,7 @@ function usanetwork_mpx_video_views($ajax = false, $arg = null) {
     '#type' => 'html_tag',
     '#tag' => 'meta',
     '#attributes' => array(
-      'name' =>  'tp:EnableExternalController',
+      'name' => 'tp:EnableExternalController',
       'content' => 'true',
     )
   );
@@ -392,16 +505,19 @@ function usanetwork_mpx_video_views($ajax = false, $arg = null) {
   if (!empty($tid)) {
     $view->set_display('category_mpx_videos');
     $output = _usanetwork_mpx_video_embed_view($view, $tid);
-  } else if ($arg[0] == 'videos') {
+  }
+  else if ($arg[0] == 'videos') {
     if (!isset($arg[1]) || (isset($arg[1]) && $arg[1] == 'full-episodes')) {
       $view->set_display('global_full_mpx_episode');
       $output = _usanetwork_mpx_video_embed_view($view);
-    } else if ($arg[1] == 'whats-hot') {
+    }
+    else if ($arg[1] == 'whats-hot') {
       $view = views_get_view('whats_hot_file');
       $view->set_display('whats_hot_file');
       $output = _usanetwork_mpx_video_embed_view($view);
     }
-  } else if ($arg[0] == 'file' && isset($arg[1]) && is_numeric($arg[1])) {
+  }
+  else if ($arg[0] == 'file' && isset($arg[1]) && is_numeric($arg[1])) {
     $file = file_load($arg[1]);
 
     // video node with a show association
@@ -411,7 +527,8 @@ function usanetwork_mpx_video_views($ajax = false, $arg = null) {
       if ($full_episode || (isset($arg[2]) && $arg[2] == 'full-episodes')) {
         $view->set_display('show_full_mpx_episode');
         $output = _usanetwork_mpx_video_embed_view($view, $show_nid);
-      } else {
+      }
+      else {
         $deepest_term = null;
         $deepest_term_depth = 0;
         foreach ($file->field_usa_video_terms[$lang] as $tids) {
@@ -429,29 +546,30 @@ function usanetwork_mpx_video_views($ajax = false, $arg = null) {
 
         // the last term is the correct term id of the category
         $count = count($file->field_usa_video_terms[$lang]);
-        if (empty($output) && isset($file->field_usa_video_terms[$lang][$count-1]['target_id'])) {
+        if (empty($output) && isset($file->field_usa_video_terms[$lang][$count - 1]['target_id'])) {
           $view->set_display('category_mpx_videos');
-          $output = _usanetwork_mpx_video_embed_view($view, $file->field_usa_video_terms[$lang][$count-1]['target_id']);
+          $output = _usanetwork_mpx_video_embed_view($view, $file->field_usa_video_terms[$lang][$count - 1]['target_id']);
         }
       }
-    } else {
+    }
+    else {
       $query = new EntityFieldQuery();
 
       // Fetch the what's hot queue id
       $query->entityCondition('entity_type', 'queues')
-        ->entityCondition('bundle', array('video_mpx_queue'))
-        ->propertyCondition('title', "What's Hot File")
-        ->range(0, 1);
+          ->entityCondition('bundle', array('video_mpx_queue'))
+          ->propertyCondition('title', "What's Hot File")
+          ->range(0, 1);
 
       if (isset($result['queues'])) {
         $qid = array_keys($result['queues']);
 
         $queue = db_select('field_data_field_qt_file', 'q')
-          ->fields('q', array('entity_id'))
-          ->condition('entity_id', $qid[0], '=')
-          ->condition('field_qt_file_target_id', $file->fid, '=')
-          ->execute()
-          ->fetchField();
+            ->fields('q', array('entity_id'))
+            ->condition('entity_id', $qid[0], '=')
+            ->condition('field_qt_file_target_id', $file->fid, '=')
+            ->execute()
+            ->fetchField();
 
         if (!empty($queue)) {
           $view = views_get_view('whats_hot_file');
@@ -464,9 +582,9 @@ function usanetwork_mpx_video_views($ajax = false, $arg = null) {
     if (isset($file->field_usa_video_terms[$lang])) {
       // the last term is the correct term id of the category
       $count = count($file->field_usa_video_terms[$lang]);
-      if (empty($output) && isset($file->field_usa_video_terms[$lang][$count-1]['target_id'])) {
+      if (empty($output) && isset($file->field_usa_video_terms[$lang][$count - 1]['target_id'])) {
         $view->set_display('category_mpx_videos');
-        $output = _usanetwork_mpx_video_embed_view($view, $file->field_usa_video_terms[$lang][$count-1]['target_id']);
+        $output = _usanetwork_mpx_video_embed_view($view, $file->field_usa_video_terms[$lang][$count - 1]['target_id']);
       }
     }
   }
@@ -522,14 +640,324 @@ function usanetwork_mpx_video_views_ajax() {
     }
     $commands[] = ajax_command_replace('#block-usanetwork-mpx-video-usa-mpx-video-views .ajax-content', $content);
   }
-  return  array('#type' => 'ajax', '#commands' => $commands);
+  return array('#type' => 'ajax', '#commands' => $commands);
+}
+
+/*
+ * Helper function for get list of latest episodes for each show
+ */
+function _usanetwork_mpx_video_get_latest_episodes_for_show($range = NULL, $target_tvshow_nid = NULL) {
+  $result = array();
+
+  if (empty($target_tvshow_nid)) {
+    $subquery = db_select('file_managed', 'fm')
+      ->fields('sub_fdfs', array('field_show_target_id'))
+      ->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+      ->condition('fm.published', '1');
+    $subquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = fm.fid');
+    $subquery->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
+    $subquery->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+    $subquery->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
+    $subquery->condition('mv.status', '1');
+    $subquery->addExpression('MAX(mv.airdate)', 'max_data');
+    $subquery->groupBy('sub_fdfs.field_show_target_id');
+    $subquery->orderBy('mv.airdate', 'DESC');
+    if ($range) {
+      $subquery->range(0, $range);
+    }
+
+    $query = db_select('file_managed', 'fs')
+      ->fields('fs', array('fid'))
+      ->fields('fdfs', array('field_show_target_id'))
+      ->condition('type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+      ->condition('published', '1');
+    $query->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
+    $query->join('field_data_field_mpx_full_episode', 'fdfmfe', 'fdfmfe.entity_id = fs.fid');
+    $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+    $query->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
+    $query->condition('mv.status', '1');
+    $query->join($subquery, 'subsub', 'subsub.max_data = mv.airdate and fdfs.field_show_target_id = subsub.field_show_target_id');
+    $query->addExpression('MAX(fs.fid)', 'max_fid');
+    $query->groupBy('fdfs.field_show_target_id');
+    $query->orderBy('mv.airdate', 'DESC');
+
+    $result = $query->execute()->fetchAllKeyed();
+  }
+  else {
+    $query = db_select('file_managed', 'fs');
+    $query->fields('fs', array('fid'));
+    $query->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
+    $query->fields('fdfs', array('field_show_target_id'));
+    $query->join('field_data_field_mpx_full_episode', 'fdfmfe', 'fdfmfe.entity_id = fs.fid');
+    $query->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
+    $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+    $query->condition('fdfs.field_show_target_id', $target_tvshow_nid);
+    $query->condition('fs.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+    $query->condition('fs.published', '1');
+    $query->condition('mv.status', '1');
+    $query->condition('mv.expiration_date', REQUEST_TIME, '>');
+    $query->orderBy('mv.airdate', 'DESC');
+
+    if ($range) {
+      $query->range(0, $range);
+    }
+    
+    $result = $query->execute()->fetchAllKeyed();
+  }
+
+  return $result;
+}
+
+/**
+ * Latest Full Episodes Block on HomePage
+ */
+function usanetwork_mpx_video_full_latest_episodes_carousel() {
+  $output = '';
+
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  if ($homepage) {
+    $homepage_node = usanetwork_home_get_homepage_node($homepage);
+    $row_number_field = _usanetwork_get_field_item('node', $homepage_node, 'field_carousel_rows_number', 'value');
+    $row_number = !empty($row_number_field) ? $row_number_field : 1;
+    $block_title = _usanetwork_get_field_item('node', $homepage_node, 'field_hp_episodes_block_title', 'value');
+  }
+
+  $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show();
+  $episodes_fids = array_keys($episodes);
+  $result_count = count($episodes);
+  $needed_count = USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL - $result_count;
+
+  if ($needed_count > 0) {
+    $query = db_select('file_managed', 'fm')
+      ->fields('fm',array('fid', 'filename'))
+      ->condition('fm.type',  _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+      ->condition('fm.fid', $episodes_fids, 'NOT IN')
+      ->condition('fm.published', '1');
+    $query->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
+    $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+    $query->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
+    $query->condition('mv.status', '1');
+    $query->orderBy('mv.airdate', 'DESC');
+    $query->range(0, $needed_count);
+    $query_result = $query->execute()->fetchAllKeyed();
+
+    $episodes_fids = array_merge($episodes_fids, array_keys($query_result));
+  }
+
+  $carousel_episodes = file_load_multiple($episodes_fids);
+
+  $items = array();
+  $block_items = '';
+  $i = 0;
+
+  foreach ($carousel_episodes as $episode) {
+    $episode_wrapper = entity_metadata_wrapper('file', $episode);
+
+    $show = $episode_wrapper->field_show->value();
+    $show_color = usanetwork_tv_shows_color_show_css_class($show);
+    $episode_season = $episode_wrapper->field_mpx_season_number->value();
+    $episode_number = $episode_wrapper->field_mpx_episode_number->value();
+    if (!empty($episode->field_promo_image_override)) {
+      $field_image_override = reset(field_get_items('file', $episode, 'field_promo_image_override'));
+      $episode_image = $field_image_override['uri'];
+    }
+    else {
+      $episode_image = _usanetwork_mpx_video_get_image_path($episode);
+    }
+
+
+    $video_image = theme('image_style', array(
+      'path' => $episode_image,
+      'style_name' => '300x250',
+    ));
+    $episode_element = array(
+      'show_class' => $show_color,
+      'url' => url('file/' . $episode->fid),
+      'caption' => t('@show: S@season Episode @episode_number', array('@show' => $show->title, '@season' => $episode_season, '@episode_number' => $episode_number)),
+      'title' => $episode->filename,
+      'image' => $video_image,
+    );
+    $block_items .= theme('usanetwork_mpx_video_home_full_episodes_carousel_item', $episode_element);
+    if ($i % $row_number == $row_number - 1) {
+      $items[] = $block_items;
+      $block_items = '';
+    }
+    $i++;
+  }
+
+  if (!empty($items)) {
+    $episodes_number = $i;
+    $carousel = array(
+      'carousel_class' => 'carousel_' . $row_number . '_rows',
+      'title' => !empty($block_title) ? $block_title : t('Latest Full Episodes'),
+      'additional_text' => t('@episodes_number All New', array('@episodes_number' => $episodes_number)),
+      'link' => l('View All', 'videos'),
+      'carousel_items' => $items,
+    );
+    $output .= theme('usanetwork_mpx_video_home_full_episodes_carousel', $carousel);
+  }
+
+  return $output;
 }
 
 /**
  * Renders the global video page
  */
 function usanetwork_mpx_video_global_videos_page() {
-  return views_embed_view('usa_mpx_video', 'global_latest_full_episode_video_mpx');
+  //get featured elements
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/full-episodes.js');
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel.min.js');
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
+  $usanework_full_episodes_aspot = array_slice(variable_get('usanework_full_episodes_aspot', array()), 0, USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS);
+
+  $featured_aspot= $featured_carousel= array();
+  if (!empty($usanework_full_episodes_aspot)) {
+    ksort($usanework_full_episodes_aspot);
+    $i = 0;
+    foreach($usanework_full_episodes_aspot as $aspot_element) {
+      $file = file_load($aspot_element);
+      if ($file) {
+        $image = _usanetwork_mpx_video_get_image_path($file);
+
+        if ($show_field = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id')) {
+          $show = node_load($show_field);
+          $video_caption = $show->title;
+        }
+
+        $video_title = $file->filename;
+        $video_season = _usanetwork_get_field_item('file', $file, 'field_mpx_field_season', 'value');
+        $video_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_field_episode', 'value');
+        $video_additional = ($video_season) ? t('S@season episodes @episode', array('@season' => $video_season, '@episode' => $video_episode)) : FALSE;
+        $video_duration = _usanetwork_get_field_item('file', $file, 'field_mpx_field_duration', 'value');
+
+        if ($i == 0) {
+          $video_image = array(
+            'mobile' => image_style_url('640x640', $image),
+            'mobile_retina' => image_style_url('1280x1280', $image),
+            'tablet' => image_style_url('1024x576', $image),
+            'tablet_retina' => image_style_url('2048x1152', $image),
+            'desktop' => image_style_url('2500x1407', $image),
+            'desktop_retina' => image_style_url('5000x2814', $image),
+          );
+          $featured_aspot = array(
+            'aspot_image' => $video_image,
+            'aspot_caption' => isset($video_caption) ? $video_caption : '',
+            'aspot_title' => $video_title,
+            'aspot_additional' => $video_additional,
+            'aspot_duration' => $video_duration,
+            'aspot_link' => url('file/' . $file->fid),
+          );
+        } else {
+          $video_image = theme('image_style', array(
+            'path' => $image,
+            'style_name' => '300x169_video',
+          ));
+          $featured_carousel[] = array(
+            'video_image' => $video_image,
+            'video_caption' => isset($video_caption) ? $video_caption : '',
+            'video_title' => $video_title,
+            'video_additional' => $video_additional,
+            'video_duration' => $video_duration,
+            'video_link' => url('file/' . $file->fid),
+          );
+        }
+      }
+      $i++;
+    }
+  }
+
+  $shows_carousels = _usanetwork_mpx_video_shows_full_episodes();
+
+  $theme_variables = array(
+    'featured_aspot' => $featured_aspot,
+    'features_full_episodes' => $featured_carousel,
+    'shows_carousels' => $shows_carousels,
+  );
+  return theme('usanetwork_mpx_video_full_episodes_page', $theme_variables);
+}
+
+/*
+ * Full Episodes Page Carousels
+ */
+function _usanetwork_mpx_video_shows_full_episodes() {
+
+  $output = '';
+
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'title'));
+  $query->condition('n.type', 'tv_show');
+  $query->orderBy('title');
+
+  $result = $query->execute()->fetchAll();
+
+  if (!empty($result)) {
+    foreach ($result as $result_item) {
+      $videos = usanetwork_schedule_pull_latest_episodes($result_item->nid);
+      $count = t('@number available', array('@number' => count($videos)));
+      
+      if (!empty($videos)) {
+        $carousel_items = '';
+        foreach ($videos as $id => $video) {
+          $file = file_load($video->fid);
+          $image_path = _usanetwork_mpx_video_get_image_path($file);
+
+          $video_image = theme('image_style', array(
+            'path' => $image_path,
+            'style_name' => '300x169_video',
+          ));
+          $theme_item_variables = array(
+            'is_first' => ($id === 0) ? TRUE : FALSE,
+            'video_url' => url('file/' . $video->fid),
+            'video_title' => $video->title,
+            'video_additional' => t('S@season episode @episode', array('@season' => $video->field_mpx_season_number_value, '@episode' => $video->field_mpx_episode_number_value)),
+            'video_image' => $video_image,
+          );
+          $carousel_items .= theme('usanetwork_mpx_video_show_full_episode_item', $theme_item_variables);
+        }
+
+        $theme_variables = array(
+          'show_title' => $result_item->title,
+          'videos_count' => $count,
+          'carousel_items' => $carousel_items,
+          'carousel_id' => 'carousel-' . drupal_clean_css_identifier(strtolower($result_item->title)),
+          'carousel_border' => usanetwork_tv_shows_color_show_css_class($result_item->nid),
+        );
+
+        $output .= theme('usanetwork_mpx_video_shows_full_episodes', $theme_variables);
+      }
+    }
+  }
+
+  return $output;
+}
+
+/**
+ * Full video autocompliter callback.
+ */
+function usanetwork_mpx_video_full_video_autocomplete($title = '') {
+  $query = db_select('file_managed', 'f');
+  $query->fields('f',array('fid','filename'));
+  $query->condition('f.filename', '%' . $title . '%' ,'LIKE');
+  $query->condition('f.type', 'mpx_video_2' ,'=');
+  $query->range(0, 10);
+  $result = $query->execute()->fetchAll();
+  $output = array();
+  if (!empty($result) && is_array($result)) {
+    foreach($result as $row) {
+      $row->filename = check_plain($row->filename);
+      $key = $row->filename . ' [file:' . $row->fid . ']';
+      $show = _usanetwork_entity_insert_get_show_name('file', $row->fid);
+      if (!empty($show)) {
+        $output[$key] = $show->title . ': ' . $row->filename;
+      }
+      else {
+        $output[$key] = 'File: ' . $row->filename;
+      }
+    }
+  }
+  drupal_json_output($output);
 }
 
 /**
@@ -540,7 +968,6 @@ function usanetwork_mpx_video_global_videos_page() {
 function usanetwork_mpx_video_library_alter(&$libraries, $module) {
   $current_menu_item = menu_get_item();
   $current_menu_item_path = $current_menu_item['path'];
-  
   if ($current_menu_item_path == 'videos/live') {
     if ($module == 'tve_auth') {
       unset($libraries['tve_auth']['js']['http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js']);
@@ -552,6 +979,7 @@ function usanetwork_mpx_video_library_alter(&$libraries, $module) {
  * Renders live video page
  */
 function usanetwork_mpx_video_live() {
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js');
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
   drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
@@ -589,12 +1017,12 @@ function _usanetwork_mpx_video_full_episodes_exist($show_nid) {
 function _usanetwork_mpx_video_node_load_by_title($title, $node_type) {
   $query = new EntityFieldQuery();
   $entities = $query->entityCondition('entity_type', 'node')
-    ->propertyCondition('type', $node_type)
-    ->propertyCondition('title', $title)
-    ->propertyCondition('status', 1)
-    ->range(0,1)
-    ->execute();
-  if(!empty($entities)) {
+      ->propertyCondition('type', $node_type)
+      ->propertyCondition('title', $title)
+      ->propertyCondition('status', 1)
+      ->range(0, 1)
+      ->execute();
+  if (!empty($entities)) {
     return node_load(array_shift(array_keys($entities['node'])));
   }
 }
@@ -619,19 +1047,19 @@ function _usanetwork_mpx_video_is_usa_video($categories_mpx) {
  */
 function usanetwork_mpx_video_file_presave($file) {
 
-  //saving show
+  //saving show  
   if (strpos($file->type, 'mpx_video') !== 0) {
     return;
   }
   $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file);
   $saved_category = array();
-    foreach ($categories_mpx as $categories_mpx_value) {
+  foreach ($categories_mpx as $categories_mpx_value) {
     $categories = explode('/', $categories_mpx_value);
     $array_category = array();
     $array_category[] = '0';
     foreach ($categories as $key => $category_name) {
       $db_select = db_select('taxonomy_term_data', 'ttd')
-        ->fields('ttd', array('tid'));
+          ->fields('ttd', array('tid'));
       $db_select->condition('ttd.name', $category_name, 'LIKE');
       $db_select->join('taxonomy_term_hierarchy', 'tth', '%alias.tid = ttd.tid');
       $db_select->condition('tth.parent', $array_category[$key]);
@@ -639,7 +1067,8 @@ function usanetwork_mpx_video_file_presave($file) {
 
       if ($categoty_tid) {
         $array_category[] = $saved_category[] = $categoty_tid;
-      } else {
+      }
+      else {
         $new_term = new stdClass();
         $new_term->name = $category_name;
         $new_term->parent = $array_category[$key];
@@ -666,18 +1095,29 @@ function usanetwork_mpx_video_file_presave($file) {
     $id++;
   }
 
+  $field_mpx_image_value = field_get_items('file', $file, 'field_mpx_image_value');
+  if ($field_mpx_image_value) {
+    $field_mpx_image_value = reset($field_mpx_image_value);
+    $path = parse_url($field_mpx_image_value['value'], PHP_URL_PATH);
+    $path_fragments = explode('/', $path);
+    $filename = end($path_fragments);
+    $image = file_get_contents($field_mpx_image_value['value']);
+    $save_image = file_save_data($image, 'public://' . $filename, FILE_EXISTS_REPLACE);
+    $file->field_mpx_image = array(LANGUAGE_NONE => array('0' => (array)$save_image));
+  }
+
   $set_alias = FALSE;
 
   $full_episodes = field_get_items('file', $file, 'field_mpx_full_episode');
 
   if ($full_episodes !== FALSE) {
     if ((_usanetwork_mpx_video_is_mpx_file_type($file->type) && ($full_episodes[0]['value'] == 0)) ||
-      ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] == 1))) {
+        ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] == 1))) {
       $set_alias = TRUE;
       $mpx_id = _pub_mpx_get_default_mpx_values('field_mpx_id', $file, 0, 'value');
       $mpx_video = media_theplatform_mpx_get_mpx_video_by_field('id', $mpx_id);
       if ($mpx_video['expiration_date'] && $mpx_video['expiration_date'] < REQUEST_TIME) {
-        if ( $mpx_video->status == 0 ) {
+        if ($mpx_video->status == 0) {
           $file->published = 1;
         }
       }
@@ -691,11 +1131,13 @@ function usanetwork_mpx_video_file_presave($file) {
 
       if ($set_alias) {
         if (isset($show)) {
-          $new_path = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
-        } else {
+          $new_path = pathauto_cleanstring(str_replace(' ', '', $show)) . '/videos/' . pathauto_cleanstring($title);
+        }
+        else {
           $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
         }
-      } else {
+      }
+      else {
         $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
       }
 
@@ -703,7 +1145,7 @@ function usanetwork_mpx_video_file_presave($file) {
 
       $i = 0;
       $exist_path = path_load(array('alias' => $new_path));
-      while($exist_path && $exist_path['source'] != $path['source']) {
+      while ($exist_path && $exist_path['source'] != $path['source']) {
         $new_path_promt = $new_path . '-' . $i;
         $i++;
         $exist_path = path_load(array('alias' => $new_path_promt));
@@ -807,9 +1249,9 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
 
       $key = _tve_mpx_get_pl_key($field_pattern, $media_data);
       $nbcu_key = _usanetwork_mpx_get_nbcu_key($field_pattern, $media_data);
-
-      $value = $media_data[$key];
-
+      
+      $value = $media_data[$key];    
+      
       if ($field['field_name'] == 'field_mpx_full_episode') {
         $media_item['field_data'][$field['field_name']] = (int) ($value == 'true');
       } else if ($field['field_name'] == 'field_mpx_duration') {
@@ -822,7 +1264,24 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
         } else {
           $media_item['field_data'][$field['field_name']] = $value;
         }
-      } else {
+      } elseif ($field['field_name'] == 'field_mpx_image_value') {
+        $value_images = $media_data[$field_pattern];
+        foreach ($value_images as $value_image) {
+          if ($value_image['plfile$height'] == USA_MPX_IMAGE_SIZE) {
+            $image_url = $value_image['plfile$streamingUrl'];
+          }
+        }
+        if (!isset($image_url)) {
+          $default_value = $value_images[0]['plfile$height'];
+          foreach ($value_images as $value_image) {
+            if ($value_image['plfile$height'] >= $default_value) {
+              $image_url = $value_image['plfile$streamingUrl'];
+            }
+          }
+        }
+        $media_item['field_data'][$field['field_name']] = $image_url;
+      }
+      else {
         $media_item['field_data'][$field['field_name']] = $value;
       }
     }
@@ -906,10 +1365,10 @@ function _usa_auth_prepare_menu_items() {
   $menu_items = array();
 
   $image = theme('image', array(
-      'attributes' => array(
-        'data-ng-src' => "{{global.currentProvider.mvpd_color}}",
-      ),
-    )
+    'attributes' => array(
+      'data-ng-src' => "{{global.currentProvider.mvpd_color}}",
+    ),
+      )
   );
 
   $menu_items[] = l($image, '', array(
@@ -935,7 +1394,7 @@ function _usa_auth_prepare_menu_items() {
  */
 function usanetwork_mpx_video_page_alter(&$page) {
   if (module_exists('views_load_more')) {
-    drupal_add_js(drupal_get_path('module', 'views_load_more').'/views_load_more.js');
+    drupal_add_js(drupal_get_path('module', 'views_load_more') . '/views_load_more.js');
   }
 }
 
@@ -950,7 +1409,7 @@ function _usanetwork_mpx_video_theplatform_guid_by_bitrate($guid, $feed_url) {
   $file_info = $api->addField('media:content')->setID($guid)->execute();
 
   //  Handle error conditions, we may have nothing come back.
-  if(!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
+  if (!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
     return False;
 
   $file_info_content = $file_info[0]->{'media$content'};
@@ -959,21 +1418,21 @@ function _usanetwork_mpx_video_theplatform_guid_by_bitrate($guid, $feed_url) {
   $sixh_bit_rate = 600000;
   $highest_bit_rate = 0;
   $selected_video = $file_info_content[0];
-  foreach($file_info_content as $file) {
-    if ( isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
-      isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate &&
-      isset($file->{'plfile$height'}) && $file->{'plfile$height'} == USANETWORK_MPX_TWITTER_CARD_HEIGHT &&
-      isset($file->{'plfile$width'}) && $file->{'plfile$width'} == USANETWORK_MPX_TWITTER_CARD_WIDTH ) {
-        $highest_bit_rate = $file->{'plfile$bitrate'};
-        $selected_video = $file;
+  foreach ($file_info_content as $file) {
+    if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
+        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate &&
+        isset($file->{'plfile$height'}) && $file->{'plfile$height'} == USANETWORK_MPX_TWITTER_CARD_HEIGHT &&
+        isset($file->{'plfile$width'}) && $file->{'plfile$width'} == USANETWORK_MPX_TWITTER_CARD_WIDTH) {
+      $highest_bit_rate = $file->{'plfile$bitrate'};
+      $selected_video = $file;
     }
   }
   if ($highest_bit_rate == 0) {
-    foreach($file_info_content as $file) {
+    foreach ($file_info_content as $file) {
       if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
-        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && $file->{'plfile$bitrate'} <= $sixh_bit_rate) {
-          $highest_bit_rate = $file->{'plfile$bitrate'};
-          $selected_video = $file;
+          isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && $file->{'plfile$bitrate'} <= $sixh_bit_rate) {
+        $highest_bit_rate = $file->{'plfile$bitrate'};
+        $selected_video = $file;
       }
     }
   }
@@ -982,7 +1441,6 @@ function _usanetwork_mpx_video_theplatform_guid_by_bitrate($guid, $feed_url) {
   $file_id = array_pop(explode('/', $file_url)); //  last part of the URL's path.
 
   return array($file_id, $file_url);
-
 }
 
 /**
@@ -990,11 +1448,12 @@ function _usanetwork_mpx_video_theplatform_guid_by_bitrate($guid, $feed_url) {
  */
 function usanetwork_mpx_video_preprocess_pub_mpx_video(&$vars) {
   // inline content
-  if ($vars['file']->embedded == TRUE) {
+  if (isset($vars['file']->embedded) && $vars['file']->embedded == TRUE) {
     $vars['pub_mpx_player_parameters'] = isset($vars['pub_mpx_player_parameters']) ? $vars['pub_mpx_player_parameters'] : array();
     if (isset($vars['file']->embedded_autoplay) && ($vars['file']->embedded_autoplay == TRUE)) {
       $vars['pub_mpx_player_parameters']['autoPlay'] = 'true';
-    } else {
+    }
+    else {
       $vars['pub_mpx_player_parameters']['autoPlay'] = 'false';
     }
   }
@@ -1005,78 +1464,67 @@ function usanetwork_mpx_video_preprocess_pub_mpx_video(&$vars) {
  */
 function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
-  if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
-    if(isset($file->mpx_video_data['status']) && !$file->mpx_video_data['status']){
-      $video = theme('pub_mpx_inactive_video', array(
-        'file' => $file
-      ));
-      $vars['video_inactive'] = $video;
-    }
-  }
   if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
-    //drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/video_page.js', array('scope' => 'footer'));
-    // inline content
-    if ($vars['elements']['#embedded'] == TRUE) {
-      if (isset($vars['content']['file'])) {
-        $vars['content']['file']['#file']->embedded = TRUE;
-      }
-    }
-    if ($vars['elements']['#embedded_autoplay'] == TRUE) {
-      if (isset($vars['content']['file'])) {
-        $vars['content']['file']['#file']->embedded_autoplay = TRUE;
-      }
-    }
-
-    $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
-    $full_episode = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
-    if ($full_episode) {
-      $vars['content']['video_mpx_companion_rectangle']['#access'] = FALSE;
-    }
-    else {
-      $vars['content']['video_companion_rectangle_small']['#access'] = FALSE;
+    $show = NULL;
+    $clips_block = module_invoke('usanetwork_mpx_video', 'block_view', 'usa_mpx_video_clips');
+    if (!empty($clips_block['content'])) {
+      $vars['clips_block'] = render($clips_block['content']);
     }
 
     $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
     $vars['lock_video'] = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
 
-    $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
-    $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-
-    $menu_items = _usa_auth_prepare_menu_items();
-    $vars['links'] = array(
-      '#theme' => 'item_list',
-      '#items' => $menu_items,
-      '#attributes' => array('class' => array('tve-header-links', 'inline')),
-      '#prefix' => '<div class="links-wrapper">',
-      '#suffix' => '</div>',
-    );
-
-    // Live player variables
-    if ($vars['is_live']) {
-      $vars['content']['field_mpx_description']['#access'] = FALSE;
-      if (module_exists('usanetwork_tv_schedule')) {
-        $on_now = _usanetwork_tv_schedule_get_on_now('live_tv');
-        if ($on_now->tv_show) {
-          $vars['on_now_show'] = $on_now->tv_show->title;
-          $tune_in = field_get_items('node', $on_now->tv_show, 'field_usa_tv_tune_in_date');
-          if ($tune_in && $tune_in = reset($tune_in)) {
-            $vars['on_now_tune_in'] = $tune_in['safe_value'];
-          }
-        }
-        else {
-          $vars['on_now_show'] = $on_now->program;
-        }
-
-        $vars['on_now_title'] = $on_now->info['title'];
-        $vars['on_now_description'] = $on_now->info['description'];
-        $vars['on_now_rating'] = implode(', ', $on_now->ratings);
+    $field_show = field_get_items('file', $file, 'field_show');
+    if ($field_show && $field_show = reset($field_show)) {
+      if (isset($field_show['entity'])) {
+        $show = $field_show['entity'];
       }
     }
+    if ($show) {
+      $vars['show_title'] = $show->title;
+      $vars['show_css_class'] = usanetwork_tv_shows_color_show_css_class($show);
+    }
+    else {
+      $vars['show_css_class'] = 'show-default';
+    }
+    if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
 
-    //twitter card
-    if (in_array($file->type, _usanetwork_mpx_video_get_all_file_types()) && ($vars['view_mode'] == 'full')) {
-      if ($file->field_mpx_full_episode[LANGUAGE_NONE][0]['value'] == '0'){
+      drupal_add_js(path_to_theme('aurora_usa').'/javascripts/consumptionator-video.js');
+      // inline content
+      if (isset($vars['elements']['#embedded']) && $vars['elements']['#embedded'] == TRUE) {
+        if (isset($vars['content']['file'])) {
+          $vars['content']['file']['#file']->embedded = TRUE;
+        }
+      }
+      if (isset($vars['elements']['#embedded_autoplay']) && $vars['elements']['#embedded_autoplay'] == TRUE) {
+        if (isset($vars['content']['file'])) {
+          $vars['content']['file']['#file']->embedded_autoplay = TRUE;
+        }
+      }
 
+      $file_field = field_get_items('file', $file, 'field_mpx_full_episode');
+      $full_episode = reset($file_field);
+      $full_episode = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
+      if ($full_episode) {
+        $vars['content']['video_mpx_companion_rectangle']['#access'] = FALSE;
+      }
+      else {
+        $vars['content']['video_companion_rectangle_small']['#access'] = FALSE;
+      }
+
+      $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
+      $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
+      if ($vars['is_live']) {
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $vars['live_advert'] = render($advert_block['content']);
+        } else {
+          $vars['live_advert'] = NULL;
+        }
+      }
+
+      //twitter card
+      if (!$full_episode) {
         //twitter card
         $tag_card = array(
           '#type' => 'html_tag',
@@ -1102,22 +1550,25 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         drupal_add_html_head($tag_site, 'usanetwork_twitter:site');
 
         //twitter creator
-        $show = $file->field_show[LANGUAGE_NONE][0]['entity'];
-        $creator = basename($show->field_usa_link_twitter[LANGUAGE_NONE][0]['url']);
-        $tag_creator = array(
-          '#type' => 'html_tag',
-          '#tag' => 'meta',
-          '#attributes' => array(
-            'name' => 'twitter:creator',
-            'content' => '@' . $creator,
-          ),
-          '#weight' => 3,
-        );
-        drupal_add_html_head($tag_creator, 'usanetwork_twitter:creator');
-
+        if ($show) {
+          $creator = field_get_items('node', $show, 'field_usa_link_twitter');
+          if ($creator && $creator = reset($creator)) {
+            $creator_url = $creator['url'];
+          }
+          $tag_creator = array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+              'name' => 'twitter:creator',
+              'content' => '@' . $creator_url,
+            ),
+            '#weight' => 3,
+          );
+          drupal_add_html_head($tag_creator, 'usanetwork_twitter:creator');
+        }
 
         //twitter thumbnail
-        $render_image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'300x169_video')), '');
+        $render_image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => '300x169_video')), '');
         $thumbnail = file_create_url($render_image['#path']);
         $tag_thumbnail = array(
           '#type' => 'html_tag',
@@ -1131,7 +1582,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
 
         //twitter player
-        $platform_file = _usanetwork_mpx_video_theplatform_guid_by_bitrate($file->field_mpx_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'));
+        $platform_file = _usanetwork_mpx_video_theplatform_guid_by_bitrate($file->mpx_video_data['guid'], variable_get('usanetwork_theplatform_mpx_feed_url'));
         $platform_file_id = $platform_file[0];
         $player_url = variable_get('usanetwork_theplatform_twitter_card_player_url', 'https://player.theplatform.com/p/OyMl-B/FuzMKey7SGew');
         $player = $player_url . '/select/' . $platform_file_id;
@@ -1203,6 +1654,38 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         );
         drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
       }
+
+      if ($season_number_field = field_get_items('file', $file, 'field_mpx_season_number')) {
+        $season_number = reset($season_number_field);
+        $vars['season_number'] = $season_number['value'];
+      }
+
+      if ($episode_number_field = field_get_items('file', $file, 'field_mpx_full_episode')) {
+        $episode_number = reset($episode_number_field);
+        $vars['episode_number'] = $episode_number['value'];
+      }
+
+      $image_path = _usanetwork_mpx_video_get_image_path($file);
+
+      $image = theme_image(array(
+        'path' => $image_path,
+        'attributes' => array(),
+      ));
+      $vars['video_image'] = $image;
+
+      $vars['url'] = url('file/' . $file->fid);
+
+      if ($duration_field_value = field_get_items('file', $file, 'field_mpx_duration')) {
+        $duration_field = reset($duration_field_value);
+        $vars['time'] = gmdate("H:i:s", $duration_field['value']);
+      }
+
+      if (isset($file->mpx_video_data['status']) && !$file->mpx_video_data['status']) {
+        $video = theme('pub_mpx_inactive_video', array(
+          'file' => $file
+        ));
+        $vars['video_inactive'] = $video;
+      }
     }
   }
   // Fill H1 tag.
@@ -1221,9 +1704,9 @@ function _usanetwork_mpx_video_is_mpx_file_type($type) {
   $is_mpx = FALSE;
   foreach (_media_theplatform_mpx_get_account_data() as $account) {
     if (basename($account->account_id) == USA_MPX_VIDEO_USA_ACCOUNT_ID) {
-     if ($type == 'mpx_video_' . $account->id) {
-       $is_mpx = TRUE;
-     }
+      if ($type == 'mpx_video_' . $account->id) {
+        $is_mpx = TRUE;
+      }
     }
   }
 
@@ -1240,11 +1723,11 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
   foreach ($media_files as $file) {
     $full_episode = $media_item['field_data']['field_mpx_full_episode'];
     if (((basename($account->account_id) == USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 1)) ||
-            ((basename($account->account_id) != USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 0))){
-        db_update('mpx_video')
-        ->fields(array('status' => 0))
-        ->condition('fid', $file->fid)
-        ->execute();
+        ((basename($account->account_id) != USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 0))) {
+      db_update('mpx_video')
+          ->fields(array('status' => 0))
+          ->condition('fid', $file->fid)
+          ->execute();
       $file->published = 0;
       file_save($file);
     }
@@ -1266,7 +1749,7 @@ function usanetwork_mpx_video_media_theplatform_mpx_feed_request_alter(&$url, &$
   if ($nbc_import_account_id && strpos($url, '//read.data.media.theplatform.com/media/data/Media') !== FALSE
       && strpos($url, 'byOwnerId=' . $nbc_import_account_id) !== FALSE) {
 
-    $url .= '&byCategories='. rawurlencode($nbc_filtering_category);
+    $url .= '&byCategories=' . rawurlencode($nbc_filtering_category);
   }
 }
 
@@ -1276,7 +1759,8 @@ function usanetwork_mpx_video_media_theplatform_mpx_feed_request_alter(&$url, &$
 function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
 
   $file = $variables['file'];
-  $variables['thumbnail_image'] = drupal_render(media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'300x169_video')), ''));
+  $file_view = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => '300x169_video')), '');
+  $variables['thumbnail_image'] = drupal_render($file_view);
 
   //most recent full episode
   $show_id = $file->field_show['und'][0]['target_id'];
@@ -1294,7 +1778,9 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
     $result = $query->execute();
     $full_episode = $result->fetchAssoc();
     if ($full_episode) {
-      $variables['full_episode_view'] = drupal_render(file_view(file_load($full_episode['fid']), 'vid_teaser_show_episode'));
+      $episode_file = file_load($full_episode['fid']);
+      $episode_file_view = file_view($episode_file, 'vid_teaser_show_episode');
+      $variables['full_episode_view'] = drupal_render($episode_file_view);
     }
 
     //most recent clips
@@ -1311,8 +1797,10 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
     $result = $query->execute();
     $clip = $result->fetchAll();
     if ($clip) {
-      foreach ($clip as $value){
-        $variables['clip_view'][] = drupal_render(file_view(file_load($value->fid), 'vid_teaser_show_episode'));
+      foreach ($clip as $value) {
+        $clip_file = file_load($value->fid);
+        $clip_file_view = file_view($clip_file, 'vid_teaser_show_episode');
+        $variables['clip_view'][] = drupal_render($clip_file_view);
       }
     }
   }
@@ -1323,17 +1811,18 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
  */
 function theme_usanetwork_mpx_inactive_video($variables) {
   $video = "";
-  $video .= "<div class='asset-img'>".$variables['thumbnail_image']."</div>";
-  $video .= "<div class='expired-text'>".t('This video content has expired.')."</div>";
-  $video .= "<div class='suggest-text'>".t('May we suggest the following?')."</div>";
+  $video .= "<div class='asset-img'>" . $variables['thumbnail_image'] . "</div>";
+  $video .= "<div class='expired-text'>" . t('This video content has expired.') . "</div>";
+  $video .= "<div class='suggest-text'>" . t('May we suggest the following?') . "</div>";
   $video .= "<div class='suggest-videos-block'>";
   $video .= $variables['full_episode_view'];
-  foreach ($variables['clip_view'] as $value){
+  foreach ($variables['clip_view'] as $value) {
     $video .= $value;
   }
   $video .= "</div>";
   return $video;
 }
+
 /**
  * Theme callback for pub_mpx_video
  */
@@ -1344,12 +1833,16 @@ function theme_usanetwork_mpx_video($variables) {
   $mpx_account_pid = $mpx_account->account_pid;
   $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($mpx_account->default_player);
 
-  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
-    (!empty($file->mpx_player_data['pid']) ? $file->mpx_player_data['pid'] : $mpx_account_default_player['pid']);
+  $player_id = !empty($variables['player_id'])
+      ? $variables['player_id']
+      :
+      (!empty($file->mpx_player_data['pid'])
+          ? $file->mpx_player_data['pid']
+          : $mpx_account_default_player['pid']);
 
   $released_file_pid = NULL;
-  if (!empty($file->field_mpx_main_released_file_pid[ LANGUAGE_NONE ][0]['value'])) {
-    $released_file_pid = $file->field_mpx_main_released_file_pid[ LANGUAGE_NONE ][0]['value'];
+  if (!empty($file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'])) {
+    $released_file_pid = $file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'];
   }
   elseif (!empty($file->field_mpx_main_released_file_pid[0]['value'])) {
     $released_file_pid = $file->field_mpx_main_released_file_pid[0]['value'];
@@ -1361,14 +1854,17 @@ function theme_usanetwork_mpx_video($variables) {
 
   // Example iframe provided within the MPX console.
   //   <iframe src="http://player.theplatform.com/p/vCBdGC/C4Urwvl8rU61/embed/select/XaFHqcNj3NFM" width="480" height="270" frameborder="0" allowfullscreen>Your browser does not support iframes.</iframe>
-
   // Add id attribute to player iframe and a option to pass in extra query
   // params to the iframe url.
 
   $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/' . $released_file_pid;
   $player_parameters = array(
-    'query' => (isset($variables['pub_mpx_player_parameters']) ? $variables['pub_mpx_player_parameters'] : array()),
-    'fragment' => 'playerurl=' . rawurlencode(isset($variables['pub_mpx_player_url']) ? $variables['pub_mpx_player_url'] : url(current_path(), array('absolute' => true))),
+    'query' => (isset($variables['pub_mpx_player_parameters'])
+        ? $variables['pub_mpx_player_parameters']
+        : array()),
+    'fragment' => 'playerurl=' . rawurlencode(isset($variables['pub_mpx_player_url'])
+            ? $variables['pub_mpx_player_url']
+            : url(current_path(), array('absolute' => true))),
     'external' => TRUE,
   );
   $iframe_tag = array();
@@ -1396,8 +1892,8 @@ function theme_usanetwork_mpx_video($variables) {
  */
 function _usanetwork_mpx_video_get_term_depth($tid, $limit = 10) {
   $depth = 0;
-  while ($parent = db_select('taxonomy_term_hierarchy', 't') ->condition('tid', $tid, '=') ->fields('t') ->execute() ->fetchAssoc()) {
-    $depth ++;
+  while ($parent = db_select('taxonomy_term_hierarchy', 't')->condition('tid', $tid, '=')->fields('t')->execute()->fetchAssoc()) {
+    $depth++;
     $tid = $parent['parent'];
     if ($depth > $limit) {
       break;
@@ -1415,8 +1911,12 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
     if (in_array($bundle, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
       $file = $context['entity'];
       $share_settings['gigyaSharebar']['ua']['imageBhev'] = 'url';
-      $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
-      $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($wrapper->getLocalThumbnailPath());
+      $file_wrapper = entity_metadata_wrapper('file', $file);
+      $image_path = _usanetwork_mpx_video_get_image_path($file);
+      $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($image_path);
+      $share_settings['gigyaSharebar']['ua']['title'] = $file->filename;
+      $share_settings['gigyaSharebar']['ua']['description'] = !empty($file->field_mpx_description) ?  $file_wrapper->field_mpx_description->value() : '';
+      $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
 
       // change url for live player
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
@@ -1437,70 +1937,47 @@ function usanetwork_mpx_video_views_query_alter(&$view, &$query) {
   if ($view->name == 'usa_mpx_video' && $view->current_display == 'front_full_epsds') {
 
     $subsubquery = db_select('file_managed', 'fm')
-        ->fields('sub_fdfs',array('field_show_target_id'))
-        ->condition('fm.type', array('audio', 'document', 'image', 'mpx_player', 'video'), 'NOT IN')
-        ->condition('fm.published', '1');
-      $subsubquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = fm.fid');
-      $subsubquery->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
-      $subsubquery->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
-      $subsubquery->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
-      $subsubquery->condition('mv.status', '1');
-      $subsubquery->addExpression('MAX(mv.airdate)', 'max_data');
-      $subsubquery->groupBy('sub_fdfs.field_show_target_id');
-      $subsubquery->orderBy('mv.airdate', 'DESC');
+      ->fields('sub_fdfs', array('field_show_target_id'))
+      ->condition('fm.type', array(
+          'audio',
+          'document',
+          'image',
+          'mpx_player',
+          'video'
+        ), 'NOT IN')
+      ->condition('fm.published', '1');
+    $subsubquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = fm.fid');
+    $subsubquery->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
+    $subsubquery->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+    $subsubquery->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
+    $subsubquery->condition('mv.status', '1');
+    $subsubquery->addExpression('MAX(mv.airdate)', 'max_data');
+    $subsubquery->groupBy('sub_fdfs.field_show_target_id');
+    $subsubquery->orderBy('mv.airdate', 'DESC');
 //      $subsubquery->range(0, 10);
 
-      $subquery = db_select('file_managed', 'fs')
-        ->fields('fs',array('fid'))
-        ->fields('fdfs',array('field_show_target_id'))
-        ->condition('type', array('audio', 'document', 'image', 'mpx_player', 'video'), 'NOT IN')
-        ->condition('published', '1');
-      $subquery->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
-      $subquery->join('field_data_field_mpx_full_episode', 'fdfmfe', 'fdfmfe.entity_id = fs.fid');
-      $subquery->condition('fdfmfe.field_mpx_full_episode_value', '1');
-      $subquery->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
-      $subquery->join($subsubquery, 'subsub', 'subsub.max_data = mv.airdate and fdfs.field_show_target_id = subsub.field_show_target_id');
-      $subquery->addExpression('MAX(fs.fid)', 'max_fid');
-      $subquery->groupBy('fdfs.field_show_target_id');
+    $subquery = db_select('file_managed', 'fs')
+      ->fields('fs', array('fid'))
+      ->fields('fdfs', array('field_show_target_id'))
+      ->condition('type', array(
+          'audio',
+          'document',
+          'image',
+          'mpx_player',
+          'video'
+        ), 'NOT IN')
+      ->condition('published', '1');
+    $subquery->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
+    $subquery->join('field_data_field_mpx_full_episode', 'fdfmfe', 'fdfmfe.entity_id = fs.fid');
+    $subquery->condition('fdfmfe.field_mpx_full_episode_value', '1');
+    $subquery->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
+    $subquery->join($subsubquery, 'subsub', 'subsub.max_data = mv.airdate and fdfs.field_show_target_id = subsub.field_show_target_id');
+    $subquery->addExpression('MAX(fs.fid)', 'max_fid');
+    $subquery->groupBy('fdfs.field_show_target_id');
 
-      $join = new views_join();
-      $join->construct($subquery, 'file_managed', 'fid', 'max_fid', array(), 'INNER');
-      $query->add_relationship('field_data_field_dependens_show', $join, 'file_managed');
-  }
-}
-
-/**
- * Implements hook_views_post_execute()
- */
-function usanetwork_mpx_video_views_post_execute(&$view) {
-  if ($view->name == 'usa_mpx_video' && $view->current_display == 'front_full_epsds') {
-
-    $result_count = count($view->result);
-    $needed_count = USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL - $result_count;
-
-    if ($needed_count > 0) {
-
-      $result = array();
-      foreach ($view->result as $key => $value) {
-        $result[] = $value->fid;
-      }
-
-      $query = db_select('file_managed', 'fm')
-        ->fields('fm',array('fid'))
-        ->condition('fm.type', array('audio', 'document', 'image', 'mpx_player', 'video'), 'NOT IN')
-        ->condition('fm.fid', $result, 'NOT IN')
-        ->condition('fm.published', '1');
-      $query->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
-      $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
-      $query->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
-      $query->addField('fm', 'timestamp', 'file_managed_created');
-      $query->addField('mv', 'available_date', 'mpx_video_airdate');
-      $query->orderBy('mv.airdate', 'DESC');
-      $query->range(0, $needed_count);
-      $query_result = $query->execute()->fetchAll();
-
-      $view->result = array_merge($view->result, $query_result);
-    }
+    $join = new views_join();
+    $join->construct($subquery, 'file_managed', 'fid', 'max_fid', array(), 'INNER');
+    $query->add_relationship('field_data_field_dependens_show', $join, 'file_managed');
   }
 }
 
@@ -1517,15 +1994,15 @@ function usanetwork_mpx_video_usa_dart_alter(&$settings, $context) {
       $query->innerJoin('field_data_field_mpx_full_episode', 'fe', 'v.fid = fe.entity_id');
       $query->innerJoin('file_managed', 'f', 'v.fid = f.fid');
       $query->condition('f.status', 1, '=')
-        ->condition('f.published', 1, '=')
-        ->condition('fe.entity_type', 'file', '=')
-        ->condition('fe.field_mpx_full_episode_value', '1', '=');
+          ->condition('f.published', 1, '=')
+          ->condition('fe.entity_type', 'file', '=')
+          ->condition('fe.field_mpx_full_episode_value', '1', '=');
       $query->orderBy('v.airdate', 'DESC')
-        ->orderBy('v.created', 'DESC')
-        ->range(0, 1);
+          ->orderBy('v.created', 'DESC')
+          ->range(0, 1);
 
       $latest_episode = $query->execute()
-        ->fetchField();
+          ->fetchField();
       if ($latest_episode && $latest_episode = entity_load_single('file', $latest_episode)) {
         $settings['USA']['DART']['values'] = _usanetwork_ads_get_entity_dart_settings($latest_episode, 'file');
       }
@@ -1541,15 +2018,21 @@ function usanetwork_mpx_video_usa_omniture_alter(&$omniture_variables, $context)
   if ($context['entity']) {
     $entity = $context['entity'];
     $entity_type = $context['entity_type'];
-    list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+    list($entity_id,, $bundle) = entity_extract_ids($entity_type, $entity);
     if ($entity_type == 'file' && in_array($bundle, _usanetwork_mpx_video_get_all_file_types())) {
       $video_variables = _usanetwork_mpx_video_file_omniture($entity, $entity_type);
     }
-  } else if ($context['menu_item']['path'] == 'videos') {
-    $result = reset(views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx'));
-    $file_object = file_load($result->fid);
-    $video_variables = _usanetwork_mpx_video_file_omniture($file_object, 'file');
-  } else if ($context['menu_item']['path'] == 'videos/live') {
+  }
+  else if ($context['menu_item']['path'] == 'videos') {
+    $latest_episode_view = views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx');
+
+    if (!empty($latest_episode_view)) {
+      $result = reset($latest_episode_view);
+      $file_object = file_load($result->fid);
+      $video_variables = _usanetwork_mpx_video_file_omniture($file_object, 'file');
+    }
+  }
+  else if ($context['menu_item']['path'] == 'videos/live') {
     $video_variables['s.prop2'] = "Other";
     $video_variables['s.prop3'] = "Video";
     $video_variables['s.prop4'] = "Video";
@@ -1572,18 +2055,20 @@ function _usanetwork_mpx_video_file_omniture($entity, $entity_type){
     's.prop4' => 'Video',
   );
 
-  if (!empty($entity->field_mpx_full_episode)) {
-    $full_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_full_episode'));
-    if ($full_episode['value'] == '1'){
-      if (!empty($entity->field_mpx_entitlement)) {
-        $entitlement_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_entitlement'));
-        if ($entitlement_episode['value'] == 'auth') {
+  if (!empty($entity->field_mpx_full_episode)) {            
+    $full_episode = _usanetwork_get_field_item($entity_type, $entity, 'field_mpx_full_episode', 'value');
+    if ($full_episode == '1') {
+      if (!empty($entity->field_mpx_entitlement)) {        
+        $entitlement_episode = _usanetwork_get_field_item($entity_type, $entity, 'field_mpx_entitlement', 'value');
+        if ($entitlement_episode == 'auth') {
           $video_variables['s.prop5'] = "Video : Full Episodes : Authenticated";
-        } else {
+        }
+        else {
           $video_variables['s.prop5'] = "Video : Full Episodes : Free";
         }
       }
-    } else {
+    }
+    else {
       $video_variables['s.prop5'] = "Video : Short Form";
     }
   }
@@ -1622,7 +2107,7 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
     $context['results']['failed'] = 0;
 
     // Save file count for the termination message.
-    $context['sandbox']['max'] = db_query('SELECT COUNT(DISTINCT fid) FROM {file_managed} WHERE type IN (\''. implode('\',\'', $types) .'\')')->fetchField();
+    $context['sandbox']['max'] = db_query('SELECT COUNT(DISTINCT fid) FROM {file_managed} WHERE type IN (\'' . implode('\',\'', $types) . '\')')->fetchField();
     $context['sandbox']['mpx_accounts'] = _media_theplatform_mpx_get_account_data();
   }
 
@@ -1630,13 +2115,13 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
 
   // Retrieve the next group of fids.
   $result = db_select('file_managed', 'f')
-    ->fields('f', array('fid'))
-    ->orderBy('f.fid', 'ASC')
-    ->condition('fid', $context['sandbox']['current_file'], '>')
-    ->condition('type', $types, 'IN')
-    ->extend('PagerDefault')
-    ->limit($limit)
-    ->execute();
+      ->fields('f', array('fid'))
+      ->orderBy('f.fid', 'ASC')
+      ->condition('fid', $context['sandbox']['current_file'], '>')
+      ->condition('type', $types, 'IN')
+      ->extend('PagerDefault')
+      ->limit($limit)
+      ->execute();
 
   module_load_include('php', 'media_theplatform_mpx', 'media_theplatform_mpx.video');
   $items = array();
@@ -1659,7 +2144,9 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
 
   // process videos
   foreach ($items as $account_id => $files) {
-    $account = isset($context['sandbox']['mpx_accounts'][$account_id]) ? $context['sandbox']['mpx_accounts'][$account_id] : false;
+    $account = isset($context['sandbox']['mpx_accounts'][$account_id])
+        ? $context['sandbox']['mpx_accounts'][$account_id]
+        : false;
     if ($account) {
       $url = _media_theplatform_mpx_get_video_feed_url(implode(',', array_keys($items[$account_id])), $account);
       $token = media_theplatform_mpx_check_token($account->id);
@@ -1690,17 +2177,16 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
             );
             // update video
             //process_media_theplatform_mpx_video_cron_queue_item($item);
-
             // update associated player
             $video_item = $files[$id]['video_item'];
             $file = $files[$id]['file'];
             pub_mpx_media_theplatform_mpx_media_import_item_alter($video_item, $video, $account);
             db_update('mpx_video')
-              ->fields(array(
-                'player_id' => $video_item['player_id'],
-              ))
-              ->condition('fid', $file->fid, '=')
-              ->execute();
+                ->fields(array(
+                  'player_id' => $video_item['player_id'],
+                ))
+                ->condition('fid', $file->fid, '=')
+                ->execute();
             $context['results']['updated']++;
           }
         }
@@ -1738,7 +2224,7 @@ function usanetwork_mpx_video_sync_batch_finished($success, $results, $operation
     drupal_set_message(t('@updated videos where synchronized, @failed failed.', array(
       '@updated' => $results['updated'],
       '@failed' => $results['failed'],
-    )), $message_type);
+        )), $message_type);
   }
   else {
     $error_operation = reset($operations);
@@ -1776,8 +2262,8 @@ function usanetwork_mpx_video_file_formatter_video_view($file, $display, $langco
   $account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
 
   // use the player chosen in the formatter settings.
-  if (!empty($display['settings']['pub_mpx_video_player_id'][ $account->id ])) {
-    $video_player_pid = $display['settings']['pub_mpx_video_player_id'][ $account->id ];
+  if (!empty($display['settings']['pub_mpx_video_player_id'][$account->id])) {
+    $video_player_pid = $display['settings']['pub_mpx_video_player_id'][$account->id];
   }
   // ...if not, then the player assigned directly to the video if it exists.
   if (!$video_player_pid && !empty($file->mpx_video_data['player_id'])) {
@@ -1813,6 +2299,7 @@ function usanetwork_mpx_video_file_formatter_video_view($file, $display, $langco
 /*
  * Helper function for determine is this video page
  */
+
 function _usanetwork_mpx_video_is_video_page() {
   $is_video_page = FALSE;
   $current_menu_item = menu_get_item();
@@ -1820,7 +2307,8 @@ function _usanetwork_mpx_video_is_video_page() {
 
   if (($current_menu_item_path == 'videos') || ($current_menu_item_path == 'videos/live') || ($current_menu_item_path == 'node/%/microsite')) {
     $is_video_page = TRUE;
-  } else {
+  }
+  else {
     $file = menu_get_object('file');
     if ($file) {
       $is_video_page = TRUE;
@@ -1833,6 +2321,7 @@ function _usanetwork_mpx_video_is_video_page() {
 /*
  * Altering nbcu_seo_xmlsitemap_remove_element
  */
+
 function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($analized_element, &$remove_element) {
   $type = $analized_element['type'];
   $link = $analized_element['link'];
@@ -1955,8 +2444,8 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
       }
       else {
         return ($a->lastmod > $b->lastmod)
-          ? -1
-          : 1;
+            ? -1
+            : 1;
       }
     }
 
@@ -1965,4 +2454,513 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
 
   // Splicing first $limit elements
   $alter_result = array_splice($alter_result, 0, $limit);
+}
+
+/*
+ * Implements hook_theme
+ */
+function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
+  $themes = array(
+    'usanework_full_episodes_draggable' => array(
+      'render element' => 'element',
+      'file' => 'usanetwork_mpx_video.admin.inc',
+    ),
+    'usanetwork_mpx_video_full_episodes_page' => array(
+      'variables' => array(
+        'aspot_image' => NULL,
+        'aspot_caption' => NULL,
+        'aspot_title' => NULL,
+        'aspot_additional' => NULL,
+        'aspot_duration' => NULL,
+        'features_full_episodes' => array(),
+        'shows_caroysels' => NULL,        
+      ),
+      'template' => 'templates/usanetwork-mpx-video-full-episodes-page',
+    ),
+    'usanetwork_mpx_video_shows_full_episodes' => array(
+      'variables' => array(
+        'show_title' => NULL,
+        'videos_count' => NULL,
+        'carousel_items' => array(),
+      ),
+      'template' => 'templates/usanetwork-mpx-video-show-full-episodes-carousel',
+    ),
+    'usanetwork_mpx_video_show_full_episode_item' => array(
+      'variables' => array(
+        'video_url' => NULL,
+        'video_title' => NULL,
+        'video_additional' => NULL,
+        'video_image' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-show-full-episode-item',
+    ),
+    'usanetwork_mpx_video_home_full_episodes_carousel_item' => array(
+      'variables' => array(
+        'class' => NULL,
+        'url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'image' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-home-full-episode-item',
+    ),
+    'usanetwork_mpx_video_home_full_episodes_carousel' => array(
+      'variables' => array(
+        'carousel_class' => NULL,
+        'title' => NULL,
+        'additional_text' => NULL,
+        'link' => NULL,
+        'episode_elements' =>NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-home-full-episodes-carousel',
+    ),
+    'usanetwork_mpx_video_clips' => array(
+      'variables' => array(
+        'promos' => array(),
+      ),
+      'template' => 'templates/usanetwork-mpx-video-clips',
+    ),
+    'usanetwork_mpx_video_related_item' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-related-item',
+    ),
+    'usanetwork_mpx_video_related_ymal_item' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'topic' => NULL,
+        'show_name' => NULL,
+        'promo_title' => NULL,
+        'description' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+        'cta' => NULL,
+        'color_class' => NULL,
+        'icon_type' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-related-ymal-item',
+    ),
+    'usanetwork_mpx_video_related_items_block' => array(
+      'variables' => array(
+        'ad' => NULL,
+        'related_items' => array(),
+      ),
+      'template' => 'templates/usanetwork-mpx-video-related-items-block',
+    ),
+    'usanetwork_mpx_video_related_items_container' => array(
+      'variables' => array(
+        'related_items_block' => NULL,
+        'load_more_link' => NULL,
+        'items_pre_page_limit' => NULL,
+        'show_nid' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-related-items-container',
+    ),
+  );
+  return $themes;
+}
+
+/**
+ * Clips Block on video landing page.
+ */
+function _usa_mpx_video_clips_render() {
+  $file = menu_get_object('file');
+  if (!empty($file)) {
+   $show = field_get_items('file', $file, 'field_show');
+   if (!empty($show)) {
+     $show = reset($show);
+     $show = $show['target_id'];
+     $related_videos = _usanetwork_mpx_video_get_related_videos_for_show($show);
+     if (!empty($related_videos)) {
+       $filter = usanetwork_mpx_video_get_video_category($file);
+       foreach ($related_videos as $related_video) {
+         $related_video_file = file_load($related_video);
+         $published = !empty($related_video_file->mpx_video_data['status']) ? $related_video_file->mpx_video_data['status'] : NULL;
+         if ($published && usanetwork_mpx_video_get_video_category($related_video_file) === $filter) {
+           $related_video_file_wrapper = entity_metadata_wrapper('file', $related_video_file);
+           $promo_data = _usanetwork_promo_pull_file_promo_details($related_video_file);
+           if (!empty($related_video_file->field_promo_image_override)) {
+             $field_image_override = reset(field_get_items('file', $related_video_file, 'field_promo_image_override'));
+             $promo_image_url = $field_image_override['uri'];
+           }
+           else {
+             $promo_image_url = usanetwork_core_api_get_content_image('file', $related_video_file);
+           }
+           $promo_link = url('file' . '/' . $related_video);
+           $promos[] = array(
+             'filename' => $related_video_file->filename,
+             'url' => $promo_link,
+             'image_url' => image_style_url('111x74', $promo_image_url),
+             'image_url_large' => image_style_url('full_episodes_633x356', $promo_image_url),
+             'caption' => !empty($promo_data['topic']) ? $promo_data['topic'] : '',
+             'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] : $related_video_file->filename,
+             'description' => !empty($promo_data['description']) ? $promo_data['description'] :
+                 (!empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : ''),
+             'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
+           );
+         }
+       }
+       if (!empty($promos)) {
+         $theme_variables = array(
+           'promos' => $promos,
+           'video_type' => !empty($filter) ? $filter : t('Clips'),
+         );
+         return theme('usanetwork_mpx_video_clips', $theme_variables);
+       }
+     }
+   }
+  }
+  return '';
+}
+
+
+/**
+ * Returns list of related video files id.
+ */
+function _usanetwork_mpx_video_get_related_videos_for_show($show_id) {
+  if (!empty($show_id)) {
+    $cache_name = 'microsite_videos_' . $show_id;
+    if ($cache = cache_get($cache_name)) {
+      return $cache->data;
+    }
+    $full_video = db_and()
+      ->condition('fm.type', 'mpx_video_2', '=')
+      ->condition('mfe.field_mpx_full_episode_value', '1', '=');
+    $small_video = db_and()
+      ->condition('fm.type', 'mpx_video_1', '=')
+      ->condition('mfe.field_mpx_full_episode_value', '0', '=');
+    $db_or = db_or()
+      ->condition($small_video)
+      ->condition($full_video);
+    $query = db_select('mpx_video', 'mpx');
+    $query->fields('mpx', array('fid'));
+    $query->innerJoin('file_managed', 'fm', 'mpx.fid = fm.fid');
+    $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = fm.fid');
+    $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
+    $query->condition($db_or);
+    $query->condition('fs.field_show_target_id', $show_id, '=');
+    $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
+    $query->orderBy('mpx.airdate', 'DESC');
+    $query_results = $query->execute()->fetchAll();
+    if (!empty($query_results)) {
+      $files_array = array();
+      foreach($query_results as $query_result) {
+        $files_array[] = $query_result->fid;
+      }
+      cache_set($cache_name, $files_array, 'cache', REQUEST_TIME + 60 * 60);
+      return $files_array;
+    }
+  }
+  return FALSE;
+}
+/*
+ * Define category for video.
+ * //@TODO: We need to relocate functions for defining video types from microsite module to mpx_video module.
+ */
+function usanetwork_mpx_video_get_video_category($video_file) {
+  $file_wrapper = entity_metadata_wrapper('file', $video_file);
+  $full_episode = $file_wrapper->field_mpx_full_episode->value();
+  if ($full_episode == 1) {
+    return USA_MPX_VIDEO_FULL_VIDEO;
+  }
+  elseif (!empty($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id'])) {
+    $term_id = $video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id'];
+    $term_child = taxonomy_get_children($term_id);
+    if (empty($term_child)) {
+      $term = taxonomy_term_load($term_id);
+      return $term->name;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * AJAX callback for getting content items.
+ */
+function usanetwork_mpx_video_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => FALSE,
+    'rendered' => '',
+  );
+
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_video_content($tv_show_node, $start_from, $limit);
+
+  if (!empty($related_content)) {
+    $last_entry = end($related_content);
+    $items_last = _usanetwork_tv_shows_cache_get_number_of_last_items($tv_show_node, $last_entry->entity_type, $last_entry->entity_id);
+
+    $response['found'] = TRUE;
+    $response['total'] = count($related_content);
+    $response['rendered'] = _usanetwork_mpx_video_render_related_content_items_block($related_content, TRUE);
+
+    if ($items_last == 0 || $items_last <= $limit) {
+      $response['overlimited'] = TRUE;
+    }
+    else {
+      $response['overlimited'] = FALSE;
+    }
+
+    return drupal_json_output($response);
+  }
+  elseif (empty($related_content) && $start_from > 0) {
+    $response['overlimited'] = TRUE;
+  }
+
+  return drupal_json_output($response);
+}
+
+/**
+ * Renders Block entity of related content items.
+ */
+function usanetwork_mpx_video_related_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $content = menu_get_object('file');
+
+  if (!empty($content)) {
+    $show_field = field_get_items('file', $content, 'field_show');
+
+    if (!empty($show_field)) {
+      $tv_show_node = $show_field[0]['entity'];
+
+      $you_may_also_like_item = usanetwork_mpx_video_get_ymal_item($tv_show_node);
+
+      $related_content = _usanetwork_tv_shows_cache_get_limited_related_video_content(
+        $tv_show_node, 0,
+        !empty($you_may_also_like_item)
+          ? USA_MPX_VIDEO_RELATED_CONTENT_ITEMS - 1
+          : USA_MPX_VIDEO_RELATED_CONTENT_ITEMS
+      );
+
+      if (!empty($you_may_also_like_item)) {
+        $related_content[] = $you_may_also_like_item;
+      }
+
+      if (!empty($related_content)) {
+        drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+        drupal_add_js(array(
+          'usanetwork_tv_show_nid' => $tv_show_node->nid,
+          'usanetwork_tv_show_page_context' => 'consumptionator',
+          'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
+        ), 'setting');
+
+        $block_of_items = _usanetwork_mpx_video_render_related_content_items_block($related_content, FALSE);
+
+        return theme('usanetwork_mpx_video_related_items_container', array(
+          'related_items_block' => $block_of_items,
+          'load_more_link' => TRUE,
+          'show_nid' => $tv_show_node->nid,
+          'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
+        ));
+      }
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Social Block for file
+ */
+function usanetwork_mpx_video_social_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $output = '';
+
+  $file = menu_get_object('file');
+
+  if (!empty($file)) {
+    $is_social = _usanetwork_get_field_item('file', $file, 'field_social_enable', 'value');
+
+    if ($is_social) {
+      $SpredFast_ID = _usanetwork_get_field_item('file', $file, 'field_social_sfs_id', 'value');
+
+      if (!empty($SpredFast_ID)) {
+        $id = 'mr-space_' . $SpredFast_ID;
+        $output = '<div class="mr-space" id="' . $id . '" data-space-id="usa-network/' . $SpredFast_ID . '" style="min-height: 500px;"></div>';
+        drupal_add_js('!function(a,b,c,d,e,f,g,h,i,j,k){h=a[d]=a[d]||{},h.ui=h.ui||[],i=a[e]=a[e]||{},i[f]||(j=b.getElementsByTagName(c)[0],k=b.createElement(c),k.src="//platform.massrelevance.com/js/massrel.js",j.parentNode.insertBefore(k,j),i[f]=function(){h.ui.push([].slice.call(arguments))}),i[f]("load",{el:b.getElementById(g)})}(window,document,"script","massrel","spredfast","exp","' . $id . '");', array('type' => 'inline', 'scope' => 'footer'));
+      }
+    }
+  }
+  return $output;
+}
+
+/**
+ * Returns "You may also like" rendered item.
+ */
+function usanetwork_mpx_video_get_ymal_item($show_node) {
+  if (!empty($show_node->field_usa_tv_related_shows)) {
+    $related_show_field = field_get_items('node', $show_node, 'field_usa_tv_related_shows');
+
+    if (!empty($related_show_field[0]['target_id'])) {
+      $related_show_node = node_load($related_show_field[0]['target_id']);
+      $about_field_data = '';
+
+      if (!empty($related_show_node->field_about_ymal)) {
+        $about_field = field_get_items('node', $related_show_node, 'field_about_ymal');
+
+        if (!empty($about_field)) {
+          $about_field_data = check_plain(reset(reset($about_field)));
+        }
+      }
+
+      return (object)array(
+        'entity_type' => 'node',
+        'bundle' => $related_show_node->type,
+        'entity_id' => $related_show_node->nid,
+        'created' => $related_show_node->created,
+        'timestamp' => $related_show_node->changed,
+        'title' => $related_show_node->title,
+        'show_title' => $about_field_data,
+        'raw_image_uri' => usanetwork_core_api_get_content_image('node', $related_show_node),
+        'media_icon' => usanetwork_core_api_get_media_icon('node', $related_show_node->nid),
+        'ymal_about' => $about_field_data,
+        'ymal' => TRUE,
+      );
+    }
+  }
+}
+
+/**
+ * Renders block of items (default number of items in the block is 6)
+ */
+function _usanetwork_mpx_video_render_related_content_items_block($data, $ad) {
+  if (!empty($data)) {
+
+    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
+    if (!empty($advert_block['content'])) {
+      $advert = render($advert_block['content']);
+    }
+
+    $theme_variables = array(
+      'related_items' => array(),
+      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
+    );
+
+    foreach ($data as $data_index => $data_item) {
+      if (!empty($data_item->ymal)) {
+        $theme_variables['related_items'][] = _usanetwork_mpx_video_render_related_content_item_ymal($data_item);
+      }
+      else {
+        $theme_variables['related_items'][] = _usanetwork_mpx_video_render_related_content_item_default($data_item);
+      }
+    }
+
+    return theme('usanetwork_mpx_video_related_items_block', $theme_variables);
+  }
+
+  return '';
+}
+
+/**
+ * Renders YouMayAlsoLike item (featured function).
+ */
+function _usanetwork_mpx_video_render_related_content_item_ymal($data) {
+  $classes = array();
+  $desktop_image = $mobile_image = '';
+  $target_url = '<front>';
+
+  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array('file', 'node'))) {
+    $target_url = url($data->entity_type . '/' . $data->entity_id);
+  }
+
+  if (!empty($data->raw_image_uri)) {
+    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
+    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
+  }
+
+  $theme_variables = array(
+    'custom_classes' => implode(" ", $classes),
+    'target_url' => $target_url,
+    'topic' => !empty($data->promo_topic)
+        ? check_plain($data->promo_topic)
+        : '',
+    'show_name' => NULL,
+    'promo_title' => !empty($data->promo_title)
+        ? check_plain($data->promo_title)
+        : $data->title,
+    'description' => !empty($data->promo_description)
+        ? check_plain($data->promo_description)
+        : '',
+    'image_desktop' => $desktop_image,
+    'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
+    'cta' => NULL,
+    'ymal_about' => $data->ymal_about,
+  );
+  return theme('usanetwork_mpx_video_related_ymal_item', $theme_variables);
+}
+
+/**
+ * Renders default item.
+ */
+function _usanetwork_mpx_video_render_related_content_item_default($data) {
+  $classes = array();
+  $desktop_image = $mobile_image = '';
+  $target_url = '<front>';
+
+  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
+      'file',
+      'node'
+    ))
+  ) {
+    $target_url = url($data->entity_type . '/' . $data->entity_id);
+  }
+
+  if (!empty($data->raw_image_uri)) {
+    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
+    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
+  }
+
+  $theme_variables = array(
+    'custom_classes' => implode(" ", $classes),
+    'target_url' => $target_url,
+    'caption' => !empty($data->promo_topic)
+      ? htmlspecialchars($data->promo_topic)
+      : $data->show_title,
+    'title' => !empty($data->promo_title)
+      ? htmlspecialchars($data->promo_title)
+      : $data->title,
+    'additional' => !empty($data->promo_description)
+      ? htmlspecialchars($data->promo_description)
+      : '',
+    'image_desktop' => $desktop_image,
+    'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
+  );
+
+  return theme('usanetwork_mpx_video_related_item', $theme_variables);
+}
+
+/*
+ * Helper function for get images for video file
+ */
+function _usanetwork_mpx_video_get_image_path($file){
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  if (!empty($file->field_mpx_image)) {
+    $image_file = $file_wrapper->field_mpx_image->value();
+    $image_path = $image_file['uri'];
+  } else {
+    $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+    if ($wrapper) {
+      $image_path = $wrapper->getLocalThumbnailPath();
+    }
+  }
+  return $image_path;
 }

@@ -1,4 +1,16 @@
 .ie8 {
+  header {
+    .originals-shows-menu {
+      ul {
+        li {
+          float: left;
+          margin-left: 0;
+          padding-left: 1.5em;
+          width: 50%;
+        }
+      }
+    }
+  }
   img {
 /*    width: inherit; */
     max-width: 100%;
@@ -310,10 +322,6 @@
       @include breakpoint($bp-home-2-fence) {
         width: 615px;
         @include layout(2, .048) {
-          .a-spot {
-            height: 350px;
-            width: 615px;
-          }
           .ad {
             position: absolute;
             width: column-span(1, 2);
@@ -351,10 +359,6 @@
       @include breakpoint($bp-home-3-fence) {
         width: 930px;
         @include layout(3, .048) {
-          .a-spot {
-            width: 930px;
-            height: 378px;
-          }
           .ad {
             position: absolute;
             width: column-span(1, 3);
@@ -399,10 +403,6 @@
         width: 1245px;
         padding-top: 0;
         @include layout(4, .048) {
-          .a-spot {
-            height: 506px;
-            width: 1245px;
-          }
           .ad {
             position: absolute;
             width: column-span(1, 4);
@@ -460,5 +460,69 @@
   }
   .featured-asset .video-player-wrapper img {
     width:100%;
+  }
+
+  //new code
+  .meta-back {
+    filter:alpha(opacity=60);
+  }
+
+  .meta-icon {
+    &:before {
+      background: url("../images/sprites/circle.png") no-repeat transparent;
+    }
+  }
+  .carousel {
+    .jcarousel-controls {
+      background:transparent;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#60ffffff,endColorstr=#60ffffff);
+      &:hover{
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80ffffff,endColorstr=#80ffffff);
+      }
+    }
+  }
+  .aspot-and-episodes {
+    .episodes-list {
+      ul {
+        li {
+          .asset-img {
+            img {
+              height: auto!important;
+            }
+          }
+          .meta-wrapper {
+            background:transparent;
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
+            zoom: 1;
+            .meta {
+              margin-top: -19px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+  footer {
+    .shows-menu, .app-and-services-menu {
+      ul.menu {
+        @include clear;
+        li{
+          float: left;
+          width: 33.33333%;
+          @include breakpoint($bp-768-width) {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+  .show-menu-tab {
+    .show-menu li.active ul.menu {
+      @include clear;
+      li {
+        float: left;
+        width: 33.33333%;
+      }
+    }
   }
 }

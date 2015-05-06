@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Code for the usanetwork_search feature.
  */
-
 include_once 'usanetwork_search.features.inc';
 
 /**
@@ -14,12 +14,12 @@ function usanetwork_search_setup_acquia_search() {
   $ret = FALSE;
   $updates = array();
 
-  // Core Search settings.
+// Core Search settings.
   $table = 'apachesolr_search_page';
   $page_id = 'core_search';
   $env_id = variable_get('apachesolr_default_environment', 'solr');
 
-  // Bundles that will be indexed.
+// Bundles that will be indexed.
   $bundles = array(
     'catchall_page',
     'media_gallery',
@@ -27,16 +27,15 @@ function usanetwork_search_setup_acquia_search() {
     'tv_episode',
     'tv_show',
     'usanetwork_static_page',
-    'usa_tve_video',
-    'usa_video',
+    'post',
   );
 
-  //allow the above bundles to have per-node exclusion options
+//allow the above bundles to have per-node exclusion options
   foreach ($bundles as $bundle) {
     variable_set('apachesolr_exclude_node_enable_' . $bundle, 1);
   }
 
-  // We define search boost per content type
+// We define search boost per content type
   $apachesolr_search_type_boosts = array(
     'usanetwork_aspot' => '0',
     'catchall_page' => '0',
@@ -55,7 +54,7 @@ function usanetwork_search_setup_acquia_search() {
   );
   apachesolr_environment_variable_set($env_id, 'apachesolr_search_type_boosts', $apachesolr_search_type_boosts);
 
-  // Set the apachesolr index bundles.
+// Set the apachesolr index bundles.
   module_load_include('inc', 'apachesolr', 'apachesolr.index');
   apachesolr_index_set_bundles($env_id, 'node', $bundles);
   $updates[] = 'apachesolr_index_set_bundles:' . join(';', $bundles);
@@ -75,9 +74,9 @@ function usanetwork_search_setup_acquia_search() {
  * Implements hook_node_update().
  */
 function usanetwork_search_node_update($node) {
-  // if the node was unpublished
+// if the node was unpublished
   if (isset($node->original) && $node->original->status == NODE_PUBLISHED && $node->status == NODE_NOT_PUBLISHED) {
-    // remove from index
+// remove from index
     $env_id = apachesolr_default_environment();
     module_load_include('inc', 'apachesolr', 'apachesolr.index');
     apachesolr_index_delete_entity_from_index($env_id, 'node', $node->nid);
@@ -121,51 +120,38 @@ function usanetwork_search_node_view($node, $view_mode, $langcode) {
         $node->content['field_usa_og_image'] = field_view_field('node', $node, 'field_usa_og_image', $view_mode, $langcode);
       }
     }
+  }
+}
 
-    if (isset($node->content['title'])) {
-      // change the title
-      $title_prefix = '';
-      $title_suffix = '';
-      $show = _usanetwork_token_get_node_tv_show($node);
-      if ($show) {
-        $title_prefix .= $show->title . ' ';
-        switch ($node->type) {
-          case 'catchall_page':
-            $title_prefix .= t('Feature') . ' ';
-            break;
-          case 'tv_show':
-            $title_prefix = '';
-            break;
-          case 'media_gallery':
-            $title_prefix .= t('Photos') . ' ';
-            break;
-          case 'person':
-            $title_prefix .= t('Characters & Crew') . ' ';
-            break;
-          case 'usa_video':
-          case 'usa_tve_video':
-            $title_prefix .= t('Videos') . ' ';
-            break;
-        }
-      }
-
-      if (!empty($title_prefix)) {
-        $title_prefix .= '- ';
-      }
-      $title = $title_prefix . check_plain($node->title) . $title_suffix;
-      $node->content['title'][0]['#markup'] = str_replace(check_plain($node->title), $title, $node->content['title'][0]['#markup']);
+/**
+ * Implements hook_apachesolr_exclude().
+ */
+function usanetwork_search_apachesolr_exclude($entity_id, $entity_type, $row, $env_id) {
+  // Never index media entities to core_1
+  if ($entity_type == 'file') {
+    $file = file_load($entity_id);
+    if (!isset($file->published) ||
+        $file->published == 0 ||
+        !isset($file->status) ||
+        $file->status == 0 ||
+        !isset($file->mpx_video_data['status']) ||
+        $file->mpx_video_data['status'] == 0) {
+      return TRUE;
     }
   }
+  return FALSE;
 }
 
 /**
  * Implements hook_apachesolr_process_results().
  */
 function usanetwork_search_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
-  // if for some reason unpublished content appears in search results remove it
+// if for some reason unpublished content appears in search results remove it
   foreach ($results as $id => $result) {
-    $entity_type = isset($result['fields']['entity_type']) ? $result['fields']['entity_type'] : false;
-    $entity_id = isset($result['fields']['entity_id']) ? $result['fields']['entity_id'] : false;
+    $entity_type = isset($result['fields']['entity_type']) ? $result['fields']['entity_type']
+          : false;
+    $entity_id = isset($result['fields']['entity_id']) ? $result['fields']['entity_id']
+          : false;
 
     if ($entity_type && $entity_id) {
       $entity = entity_load_single($entity_type, $entity_id);
@@ -184,6 +170,7 @@ function usanetwork_search_apachesolr_process_results(array &$results, DrupalSol
             if (isset($entity->published) && $entity->published == 0) {
               $published = false;
             }
+            $results[$id]['entity'] = (object) $results[$id]['fields'];
             break;
         }
       }
@@ -193,4 +180,545 @@ function usanetwork_search_apachesolr_process_results(array &$results, DrupalSol
       }
     }
   }
+}
+
+/**
+ * Build the documents before sending them to Solr.
+ *
+ * Supports all types of
+ * hook_apachesolr_index_document_build_' . $entity_type($documents[$id], $entity, $env_id);
+ *
+ * The function is the follow-up for apachesolr_update_index but then for
+ * specific entity types
+ *
+ * @param ApacheSolrDocument $document
+ * @param object $entity
+ * @param string $env_id
+ *   The machine name of the environment.
+ */
+function usanetwork_search_apachesolr_index_document_build_node(ApacheSolrDocument $document, $entity, $env_id) {
+  $show_id = FALSE;
+  switch ($entity->type) {
+    case 'tv_show':
+      $show_id = $entity->nid;
+      break;
+    case 'catchall_page':
+      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
+      break;
+    case 'media_gallery':
+      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
+      break;
+    case 'person':
+      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
+      break;
+    case 'tv_episode':
+      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
+      break;
+    case 'usanetwork_static_page':
+      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
+      break;
+    case 'post':
+      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
+      break;
+    default:
+      break;
+  }
+
+  $document->setField('ss_content_type', $entity->type);
+
+  if ($show_id) {
+    $document->setField('is_show_id', $show_id);
+  }
+  else {
+    $document->setField('is_show_id', 0);
+  }
+}
+
+/**
+ * Build the documents before sending them to Solr.
+ *
+ * Supports all types of
+ * hook_apachesolr_index_document_build_' . $entity_type($documents[$id], $entity, $env_id);
+ *
+ * The function is the follow-up for apachesolr_update_index but then for
+ * specific entity types
+ *
+ * @param ApacheSolrDocument $document
+ * @param object $entity
+ * @param string $env_id
+ *   The machine name of the environment.
+ */
+function usanetwork_search_apachesolr_index_document_build_file(ApacheSolrDocument $document, $entity, $env_id) {
+
+  $show_id = _usanetwork_get_field_item('file', $entity, 'field_show', 'target_id');
+  $document->setField('ss_content_type', $entity->type);
+
+  if ($show_id) {
+    $document->setField('is_show_id', $show_id);
+  }
+  else {
+    $document->setField('is_show_id', 0);
+  }
+}
+
+/**
+ * Implements hook_apachesolr_query_prepare().
+ */
+function usanetwork_search_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
+  $query->addParam('fl', 'is_show_id');
+  $query->addParam('fl', 'ss_content_type');
+  $query_get_params = drupal_get_query_parameters();
+
+  if (isset($query_get_params['sort']) && $query_get_params['sort'] == 'alphabet') {
+    $query->setSolrsort('title', 'asc');
+  }
+}
+
+/**
+ * Template preprocess for apachesolr search results.
+ */
+function usanetwork_search_preprocess_search_result(&$variables) {
+  if ($variables['module'] == 'apachesolr_search') {
+    $result = $variables['result'];
+    $variables['entity_data'] = usanetwork_search_result_item_data($result);
+  }
+}
+
+/**
+ * Implements hook_preprocess_search_results().
+ */
+function usanetwork_search_preprocess_search_results(&$variables) {
+  if ($variables['module'] == 'apachesolr_search') {
+    $variables['content_type_select'] = usanetwork_search_content_type_select();
+    $variables['tv_show_select'] = usanetwork_search_tv_show_select();
+    $variables['sort_select'] = usanetwork_search_sorting_select();
+    $variables['result_count'] = count($variables['results']);
+    foreach ($variables['results'] as $result) {
+      $result_items[] = theme('search_result', array('result' => $result, 'module' => $variables['module']));
+    }
+    $variables['search_results'] = theme_usanetwork_item_list(array(
+      'warpper_attributes' => array(
+        'class' => array(
+          'search-results'
+        ),
+      ),
+      'title_tag' => 'h2',
+      'title_attributes' => array(
+        'class' => 'menu-title'
+      ),
+      'title' => NULL,
+      'items' => $result_items,
+      'type' => 'ul',
+      'attributes' => array(),
+      'suffix' => array()
+    ));
+  }
+}
+
+/**
+ * Sort select box for search page
+ */
+function usanetwork_search_sorting_select() {
+  $filter_values = usanetwork_search_filter_params_parse();
+  $filter_values['sort'] = 'relevance';
+  $sort_options[] = array(
+    'data' => usa_l(t('Relevance'), current_path(), array('query' => usanetwork_search_filter_params_compile($filter_values))),
+    'class' => array('menu-item'),
+  );
+
+  if ($filter_values['sort'] == 'alphabet') {
+    $class_active = 'active';
+  }
+  else {
+    $class_active = '';
+    $filter_values['sort'] = 'alphabet';
+  }
+
+  $sort_options[] = array(
+    'data' => usa_l(t('Alphabet'), current_path(), array('query' => usanetwork_search_filter_params_compile($filter_values))),
+    'class' => array('menu-item'),
+  );
+
+  return theme_usanetwork_item_list(array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'item-filter-menu',
+        'order-filter',
+      ),
+    ),
+    'title_tag' => 'div',
+    'title_attributes' => array(
+      'class' => 'filter-label'
+    ),
+    'title' => t('Relevance'),
+    'items' => $sort_options,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'filter-menu',
+      )
+    ),
+    'suffix' => array()
+      )
+  );
+}
+
+/**
+ * Content type select box for search page
+ */
+function usanetwork_search_content_type_select() {
+
+  $filter_values = usanetwork_search_filter_params_parse();
+
+  $query = db_select('apachesolr_index_bundles', 'aib');
+  $query->fields('aib', array('entity_type', 'bundle'));
+  $bundles = $query->execute()->fetchAll();
+
+  $entity_info = array();
+  $bundle_options = array();
+  foreach ($bundles as $bundle) {
+    if (!isset($entity_info[$bundle->entity_type])) {
+      $entity_info[$bundle->entity_type] = entity_get_info($bundle->entity_type);
+    }
+
+    if ($filter_values['ss_content_type'] == $bundle->bundle) {
+      $class_active = 'active';
+    }
+    else {
+      $class_active = '';
+      $filter_values['ss_content_type'] = $bundle->bundle;
+    }
+
+
+    $bundle_name = $entity_info[$bundle->entity_type]['bundles'][$bundle->bundle]['label'];
+    $bundle_options[] = array(
+      'data' => usa_l(t($bundle_name), current_path(), array('query' => usanetwork_search_filter_params_compile($filter_values), 'attribute' => array('class' => array($class_active)))),
+      'class' => array('menu-item'),
+    );
+  }
+
+  return theme_usanetwork_item_list(array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'item-filter-menu',
+        'result-type-filter',
+      ),
+    ),
+    'title_tag' => 'div',
+    'title_attributes' => array(
+      'class' => 'filter-label'
+    ),
+    'title' => t('Everything'),
+    'items' => $bundle_options,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'filter-menu',
+      )
+    ),
+    'suffix' => array()
+      )
+  );
+}
+
+/**
+ * TV shows select box for search page
+ */
+function usanetwork_search_tv_show_select() {
+
+  $filter_values = usanetwork_search_filter_params_parse();
+  $query = db_select('node', 'n');
+  $query->fields('n', array('title', 'nid'));
+  $query->condition('n.type', 'tv_show');
+  $query->condition('n.status', 1);
+  $tv_shows = $query->execute()->fetchAll();
+
+  $tv_show_options = array();
+  foreach ($tv_shows as $show) {
+
+    if ($filter_values['is_show_id'] == $show->nid) {
+      $class_active = 'active';
+    }
+    else {
+      $class_active = '';
+      $filter_values['is_show_id'] = $show->nid;
+    }
+
+    $show_title = $show->title;
+    $tv_show_options[] = array(
+      'data' => usa_l($show_title, current_path(), array('query' => usanetwork_search_filter_params_compile($filter_values), 'attribute' => array('class' => array($class_active)))),
+      'class' => array('menu-item'),
+    );
+  }
+
+  return theme_usanetwork_item_list(array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'item-filter-menu',
+        'show-filter',
+      ),
+    ),
+    'title_tag' => 'div',
+    'title_attributes' => array(
+      'class' => 'filter-label'
+    ),
+    'title' => t('All shows'),
+    'items' => $tv_show_options,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'filter-menu',
+      )
+    ),
+    'suffix' => array()
+      )
+  );
+}
+
+/**
+ * Parse filter params
+ */
+function usanetwork_search_filter_params_parse() {
+  $query_get_params = drupal_get_query_parameters();
+
+  $search_filters_params = isset($query_get_params['fq']) ? $query_get_params['fq']
+        : array();
+  $filter_values = array();
+  foreach ($search_filters_params as $filter_param) {
+    $filters_data = explode(':', $filter_param);
+    $filter_values[$filters_data[0]] = $filters_data[1];
+  }
+
+  if (isset($query_get_params['sort']) && $query_get_params['sort'] == 'alphabet') {
+    $filter_values['sort'] = 'alphabet';
+  }
+  return $filter_values;
+}
+
+/**
+ * Generate filter params
+ */
+function usanetwork_search_filter_params_compile($filter_params) {
+
+  $filter_query = array();
+  foreach ($filter_params as $filter_key => $filter_param) {
+    if ($filter_key == 'sort') {
+      $filter_query['sort'] = $filter_param;
+      continue;
+    }
+    $filter_query['fq'][] = $filter_key . ':' . $filter_param;
+  }
+  return $filter_query;
+}
+
+/**
+ * Implements hook_apachesolr_search_page_alter().
+ */
+function usanetwork_search_apachesolr_search_page_alter(&$build, $search_page) {
+
+  $build['search_results'] = array(
+    '#theme' => 'search_results',
+    '#results' => isset($build['search_results']['#results']) ? $build['search_results']['#results']
+          : array(),
+    '#module' => 'apachesolr_search',
+    '#search_page' => $search_page,
+  );
+}
+
+function usanetwork_search_result_item_data($result_item) {
+
+  $data = array(
+    'url' => 'javascript:void(0)',
+    'image' => theme_image(array('path' => '/proto/images/suit_show_big_block.png', 'attributes' => array())),
+    'title' => '',
+    'additional_text' => '',
+    'additional_duration' => '',
+    'icon_class' => 'video-icon',
+  );
+
+  if ($result_item['entity_type'] == 'node') {
+    switch ($result_item['bundle']) {
+      case 'tv_show':
+        $node = node_load($result_item['node']->entity_id);
+        $image_uri = _usanetwork_get_field_item('node', $node, 'field_logo', 'uri');
+        if ($image_uri) {
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+        $data['url'] = url('node/' . $node->nid);
+        $data['title'] = $node->title;
+        break;
+
+      case 'tv_episode':
+        $node = node_load($result_item['node']->entity_id);
+        $image_uri = _usanetwork_get_field_item('node', $node, 'field_usa_og_image', 'uri');
+
+        if ($image_uri) {
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+        $episode_number = _usanetwork_get_field_item('node', $node, 'field_episode_number', 'value');
+        $episode_season_nid = _usanetwork_get_field_item('node', $node, 'field_season', 'target_id');
+
+        if ($episode_season_nid && $episode_number) {
+          $season = node_load($episode_season_nid);
+          $season_number = _usanetwork_get_field_item('node', $season, 'field_season_id', 'value');
+          if ($season_number) {
+            $data['additional_text'] = 'S' . $season_number . ' Episode ' . $episode_number;
+          }
+        }
+        $data['url'] = url('node/' . $node->nid);
+        $data['title'] = $node->title;
+        break;
+
+      case 'person':
+        $node = node_load($result_item['node']->entity_id);
+        $image_uri = _usanetwork_get_field_item('node', $node, 'field_usa_og_image', 'uri');
+
+        if ($image_uri) {
+
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+
+        $data['url'] = url('node/' . $node->nid);
+        $data['title'] = $node->title;
+        break;
+
+      case 'media_gallery':
+        $node = node_load($result_item['node']->entity_id);
+        $image_uri = _usanetwork_get_field_item('node', $node, 'field_cover_item', 'uri');
+
+        if ($image_uri) {
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+
+        $data['url'] = url('node/' . $node->nid);
+        $data['title'] = $node->title;
+
+        break;
+
+      case 'catchall_page':
+        $node = node_load($result_item['node']->entity_id);
+        $image_uri = _usanetwork_get_field_item('node', $node, 'field_usa_og_image', 'uri');
+
+        if ($image_uri) {
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+
+        $data['url'] = url('node/' . $node->nid);
+        $data['title'] = $node->title;
+
+        break;
+
+      case 'usanetwork_static_page':
+        $node = node_load($result_item['node']->entity_id);
+        $image_uri = _usanetwork_get_field_item('node', $node, 'field_usa_og_image', 'uri');
+        if ($image_uri) {
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+        $data['url'] = url('node/' . $node->nid);
+        $data['title'] = $node->title;
+
+        break;
+
+      case 'usanetwork_static_page':
+        $node = node_load($result_item['node']->entity_id);
+        $image_uri = _usanetwork_get_field_item('node', $node, 'field_usa_og_image', 'uri');
+        if ($image_uri) {
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+        $data['url'] = url('node/' . $node->nid);
+        $data['title'] = $node->title;
+
+        break;
+
+      case 'post':
+        $node = node_load($result_item['node']->entity_id);
+        $image_uri = _usanetwork_get_field_item('node', $node, 'field_post_cover', 'uri');
+        if ($image_uri) {
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+        $data['url'] = url('node/' . $node->nid);
+        $data['title'] = $node->title;
+
+        break;
+
+      default:
+        break;
+    }
+  }
+  else if ($result_item['entity_type'] == 'file') {
+
+    switch ($result_item['bundle']) {
+      case 'mpx_video_2':
+
+
+      case 'mpx_video_1':
+        $file = file_load($result_item['entity']->entity_id);
+
+        $data['title'] = $file->filename;
+
+        $image_uri = $episode_image_uri = _usanetwork_mpx_video_get_image_path($file);
+        if ($image_uri) {
+          $data['image'] = theme_image_style(array(
+            'style_name' => '300x169_video',
+            'path' => $image_uri,
+            'attributes' => array(),
+          ));
+        }
+
+        $data['url'] = url('file/' . $file->fid);
+
+        if ($duration_field = _usanetwork_get_field_item('file', $file, 'field_mpx_duration', 'value')) {
+          $data['additional_duration'] = gmdate("H:i:s", $duration_field);
+        }
+
+        if ($season_number = _usanetwork_get_field_item('file', $file, 'field_mpx_season_number', 'value') &&
+            $episode_number = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value')) {
+          $data['additional_text'] = t('S@season_num episode @episode_num', array(
+            '@season_num' => $season_number,
+            '@episode_num' => $episode_number
+              )
+          );
+        }
+        $data['url'] = url('file/' . $file->fid);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+
+  return isset($data) ? $data : FALSE;
 }

@@ -1,0 +1,520 @@
+.consumptionator-page, .page-videos-live {
+  .video-block {
+    @include clear;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1281-width) {
+      height: 42.01875vw;
+      max-height: 1050px;
+    }
+    @include breakpoint($between-1025-1280) {
+      height: calc((100vw - 320px)*0.5625);
+      margin-bottom: calc((100vw - 4px)/48*9 + 45px);
+      overflow: visible;
+    }
+    @include breakpoint($bp-1024-width) {
+      height: auto;
+    }
+    .player-wrapper {
+      float: left;
+      height: 100%;
+      position: relative;
+      width: 74.7%;
+      @include breakpoint($between-1025-1280) {
+        width: calc(100% - 320px);
+        z-index: 2;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: 56.25vw;
+        width: 100%;
+      }
+      @include breakpoint($bp-480-width) {
+        height: 50vw;
+      }
+      > .node {
+        height: 100%;
+        width: 100%;
+      }
+      /*old css code*/
+      .tve-help {
+        background-color: $black-dark;
+        border: 1px solid $gray-ultra-med;
+        display: none;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        z-index: 1;
+        .tve-download {
+          padding-top: 20px;
+          position: relative;
+          top: 82px;
+          @include breakpoint($bp-video-player-section) {
+            font-size: 11px;
+            line-height: 16px;
+            top: -6px
+          }
+          @include breakpoint($bp-video-very-large-width) {
+            font-size: 20px;
+            line-height: 30px;
+            top: 102px;
+          }
+        }
+        .tve-download-link {
+          position: relative;
+          top: 100px;
+          left: -14px;
+          @include breakpoint($bp-video-player-section) {
+            left: -4px;
+            top: -3px;
+          }
+          @include breakpoint($bp-video-very-large-width) {
+            top: 120px;
+          }
+          a:after {
+            content : "";
+          }
+          a img {
+            height: 35px;
+            padding-left: 29px;
+            @include breakpoint($bp-video-player-section) {
+              padding-left: 9px;
+            }
+          }
+        }
+        .arrow {
+          position : absolute;
+          right: 0;
+        }
+        .tve-msg {
+          position: relative;
+          top: 52px;
+          @include breakpoint($bp-video-player-section) {
+            top: 14px;
+            font-size: 11px;
+            line-height: 16px;
+          }
+          @include breakpoint($bp-video-very-large-width) {
+            font-size: 20px;
+            line-height: 30px;
+            top: 82px;
+          }
+        }
+
+        .tve-close {
+          float: right;
+          position: relative;
+          top: 112px;
+          right: 10px;
+          text-transform: uppercase;
+          color: #0AB6E8;
+          @include breakpoint($bp-video-player-section) {
+            top: 3px;
+          }
+          @include breakpoint($bp-video-very-large-width) {
+            top: 250px;
+          }
+          > img {
+            padding-right: 5px;
+            padding-bottom: 1px;
+          }
+        }
+        &:before {
+          position: absolute;
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border: 14px solid transparent;
+          border-right: 14px solid #1f1f1f;
+          top: 3px;
+          right: -2px;
+          z-index: 106;
+          @include breakpoint($bp-video-player-section) {
+            border-bottom: 14px solid #1f1f1f;
+            border-right: 14px solid transparent;
+            top: 158px;
+            left: 50%;
+            margin-left: -14px;
+          }
+          @include breakpoint($bp-video-mid-range4-width) {
+            border-bottom: 14px solid #1f1f1f;
+            border-right: 14px solid transparent;
+            top: 318px;
+            left: 16%;
+          }
+        }
+        &:after {
+          position: absolute;
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border: 14px solid transparent;
+          border-right: 14px solid #4b4b4b;
+          top: 3px;
+          right: 0px;
+          z-index: 105;
+          @include breakpoint($bp-video-player-section) {
+            border-bottom: 14px solid #4b4b4b;
+            border-right: 14px solid transparent;
+            top: 156px;
+            left: 50%;
+            margin-left: -14px;
+          }
+          @include breakpoint($bp-video-mid-range4-width) {
+            border-bottom: 14px solid #4b4b4b;
+            border-right: 14px solid transparent;
+            top: 316px;
+            left: 16%;
+
+          }
+        }
+      }
+      /*old css end*/
+      .video-player-wrapper {
+        line-height: 1;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        &:hover {
+          cursor: pointer;
+          .locked-msg,
+          .sign-in-wrapper {
+            display: block;
+          }
+          img {
+            opacity: .2;
+            transition: opacity 0.3s ease-in-out;
+          }
+        }
+        .sign-in-wrapper {
+          display: none;
+          left: 0;
+          padding: 20px 0;
+          position: absolute;
+          text-align: center;
+          top: 55%;
+          width: 100%;
+          @include breakpoint($bp-1280-width) {
+            padding: 15px 0;
+            .sign-in-button {
+              padding: 15px 50px 15px 15px;
+            }
+          }
+          @include breakpoint($bp-1024-width) {
+            padding: 10px 0;
+            .sign-in-button {
+              font-size: 12px;
+              padding: 10px 40px 10px 10px;
+              &:after {
+                font-size: 12px;
+                line-height: 12px;
+                margin-right: -6px;
+                margin-top: -6px;
+                right: 20px;
+              }
+            }
+          }
+        }
+        .sign-in-button {
+          background: #ffffff;
+          color: #000000;
+          padding: 20px 50px 20px 20px;
+          position: relative;
+          text-transform: uppercase;
+          &:after{
+            color: #000000;
+            content: "\e608";
+            display: block;
+            font-family: "ico-font";
+            font-size: 15px;
+            line-height: 15px;
+            position: absolute;
+            top: 50%;
+            margin-right: -7px;
+            margin-top: -8px;
+            right: 25px;
+          }
+        }
+//        a:after {
+//          display: none;
+//          position: absolute;
+//          left: 50%;
+//          top: 55%;
+//          width: 296px;
+//          height: 39px;
+//          margin-left: -148px;
+//          content: " ";
+//          background:url('../images/sign_in_key.png') center top no-repeat;
+//        }
+        &.inactive {
+          .sign-in-button {
+            display: none;
+          }
+          &:hover {
+            cursor: default;
+            a:after {
+              display: none;
+            }
+            img {
+              opacity: 1;
+            }
+          }
+        }
+        &.inactive {
+          background: #3D3D3D;
+          padding: 20px;
+          @include breakpoint($bp-768-width) {
+            background: transparent;
+            height: auto;
+            margin: 0 auto;
+            max-width: 660px;
+            padding: 0;
+            width: 100%;
+          }
+          & > .asset-img {
+            float: left;
+            margin-bottom: 30px;
+            width: 32vw;
+            height: 18vw;
+            @include breakpoint($bp-1280-width) {
+              margin-bottom: 15px;
+            }
+            @include breakpoint($bp-1024-width) {
+              margin-bottom: 40px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-bottom: 20px;
+              margin-top: 20px;
+            }
+            @include breakpoint($bp-640-width) {
+              margin-bottom: 10px;
+              width: inherit;
+              height: inherit;
+              display: none;
+            }
+            & > img {
+              height: 100%;
+              width: 100%;
+              @include breakpoint($bp-640-width) {
+                display: none;
+              }
+            }
+          }
+          .expired-text {
+            float: left;
+            font-size: 24px;
+            margin-left: 50px;
+            margin-top: 65px;
+            @include breakpoint($bp-1280-width) {
+              margin-left: 20px;
+              margin-top: 53px;
+              font-size: 20px;
+            }
+            @include breakpoint($bp-1024-width) {
+              margin-left: 40px;
+              margin-top: 53px;
+              font-size: 20px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-left: 10px;
+              margin-top: 65px;
+              font-size: 14px;
+            }
+            @include breakpoint($bp-640-width) {
+              color: #9AE0EB;
+              float: none;
+              font-size: 18px;
+              margin: 0;
+              margin-top: 10px;
+              text-align: center;
+            }
+          }
+          .suggest-text {
+            clear: both;
+            font-size: 20px;
+            margin-bottom: 24px;
+            @include breakpoint($bp-1280-width) {
+              margin-bottom: 10px;
+            }
+            @include breakpoint($bp-1024-width) {
+              margin-bottom: 24px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 16px;
+              margin-bottom: 10px;
+              margin-top: 10px;
+              text-align: center;
+            }
+          }
+          .suggest-videos-block {
+            text-align: center;
+            width: 100%;
+
+            .file {
+              display: inline-block;
+              height: 16.4vw;
+              margin-right: 20px;
+              overflow: hidden;
+              position: relative;
+              vertical-align: top;
+              width: 30%;
+              @include breakpoint($bp-1280-width) {
+                height: 14vw;
+                margin-right: 12px;
+                width: calc(30% - 30px);
+              }
+              @include breakpoint($bp-1024-width) {
+                height: 20vw;
+                width: calc(30%  - 40px);
+              }
+              @include breakpoint($bp-768-width) {
+                height: 23vw;
+                width: 30%;
+              }
+              @include breakpoint($bp-640-width) {
+                height: 29.8vw;
+                margin-right: 0;
+                width: 34vw;
+                &:last-child {
+                  display: none;
+                }
+                &:first-child {
+                  margin-right: 1.5%;
+                }
+              }
+              &:last-child {
+                margin-right: 0;
+              }
+              & > a {
+                display: block;
+                height: 100%;
+                position: relative;
+                width: 100%;
+              }
+            }
+            .meta {
+              display: table-cell;
+              max-width: 100px;
+              overflow: hidden;
+              padding-left: 4%;
+              position: relative;
+              text-align: left;
+              vertical-align: middle;
+              width: 100%;
+            }
+            .meta-icon {
+              left: 4%;
+              margin-top: -19px;
+              position: absolute;
+              top: 50%;
+              @include breakpoint($bp-min-1601-width) {
+                height: 47px;
+                margin-top: -24px;
+                width: 47px;
+              }
+              @include breakpoint($between-641-1280) {
+                height: 30px;
+                margin-top: -15px;
+                width: 30px;
+              }
+              @include breakpoint($bp-480-width) {
+                height: 30px;
+                margin-top: -15px;
+                width: 30px;
+              }
+              ~ .meta {
+                padding-left: calc(8% + 37px);
+                @include breakpoint($bp-min-1601-width) {
+                  padding-left: calc(8% + 47px);
+                }
+                @include breakpoint($between-641-1280) {
+                  padding-left: calc(8% + 30px);
+                }
+                @include breakpoint($bp-480-width) {
+                  padding-left: calc(8% + 30px);
+                }
+              }
+            }
+            @extend %video-promo;
+            @extend %meta;
+          }
+        }
+        .locked-msg {
+          display: none;
+          left: 5%;
+          position: absolute;
+          text-align: center;
+          top: 40%;
+          width: 90%;
+          .first-line {
+            display: block;
+            font-size: 26px;
+            line-height: 45px;
+            text-transform: uppercase;
+            @include breakpoint($bp-1024-width) {
+              font-size: 20px;
+              line-height: 36px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 15px;
+              line-height: 26px;
+            }
+            @include breakpoint($bp-480-width) {
+              font-size: 10px;
+              line-height: 18px;
+            }
+          }
+          .second-line {
+            display: block;
+            font-size: 16px;
+            @include breakpoint($bp-1024-width) {
+              font-size: 14px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 12px;
+            }
+            @include breakpoint($bp-480-width) {
+              font-size: 8px;
+            }
+          }
+        }
+        iframe {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    #player {
+      height: 100%;
+      position: relative;
+      width: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+.page-videos-live {
+  .expandable-container {
+    margin: 0;
+  }
+  .video-block {
+    margin-bottom: 0;
+    .consum-sidebar {
+      .download-app {
+        display: table;
+      }
+      .advert {
+        height: auto;
+        padding: 0;
+      }
+    }
+  }
+}
+

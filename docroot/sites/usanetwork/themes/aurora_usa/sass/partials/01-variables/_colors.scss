@@ -11,6 +11,7 @@ $black-true         : #000000;
 $black              : #1f1f1f;
 $black-into-gray    : #232323;
 $gray-dark          : #2d2d2d;
+$gray-dark-darker   : #383838;
 $gray-med           : #3d3d3d;
 $gray-med-darker    : #313131;
 $gray-med-dark      : #414141;
@@ -57,5 +58,78 @@ $link-border-normal: $blue;
 $link-border-hover: $white;
 $link-border-active: $white;
 $link-border-visited: $blue;
+
+//NEW COLORS!!!!
+//color variables
+$usa-logo-back : #2c2c2c;
+$footer-back : #a9a9a9;
+$footer-back-home : #3d3d3d;
+$footer-new-show : #9097a3;
+$footer-promo-links : #dbdcdd;
+$bottom-footer-back : #757575;
+$bottom-footer-back-home : #262626;
+$footer-links : #dcddde;
+$footer-link-separator : #9d9d9d;
+$header-tab-text : #666666;
+$header-tab-back : #e1e1e1;
+$header-tab-back-new : #454545;
+$header-tab-back-hover : #a9a9a9;
+$header-menu-item-separator : #b9b9b9;
+$header-show-caption : #3a3a3a;
+$header-full-episodes-back : #1c1c1c;
+$schedule-tonight : #2c2c2c;
+$schedule-on-now : #474747;
+$schedule-pm-color : #606060;
+$poll-back : #e9eaeb;
+$poll-color : #545454;
+$social-meter : #303030;
+$social-twitter-back : #3a3a3a;
+$schedule-view-back : #222221;
+$show-info-block : #bbb7b7;
+$show-section-title : #5d5d5d;
+$full-episodes-light-back : #8f8f8f;
+$full-episodes-dark-back : #7a7a7a;
+$promo-dark-back : #636363;
+$free-full-episodes : #d0d0d2;
+$show-card-back : #beb8b8;
+$video-promo-back : #323232;
+$video-promo-back-gray : #656364;
+$consup-gallery-description : #f3f3ec;
+$consup-gallery-pager : #919b99;
+$consup-border : #363636;
+$consum-carousel-back : #262626;
+$consum-also-back : #181818;
+$consum-back : #121212;
+$consum-carousel-odd : #3e3e3e;
+$consum-carousel-even : #343434;
+$consum-carousel-text : #afafaf;
+
+.show-color-border, .asset-img.show {
+  position: relative;
+  &:before {
+    background: $usa-logo-back;
+    display: block;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 7px;
+    z-index: 2;
+  }
+}
+
+.show-color {
+  background: $usa-logo-back;
+  &.secondary {
+    background: adjust-color($usa-logo-back, $saturation: 30, $lightness: -10);
+  }
+  &.hover-avail {
+    &:hover {
+      background: lighten($usa-logo-back, 15%);
+    }
+  }
+}
+
 
 

@@ -173,6 +173,9 @@ function usanetwork_gallery_content_strongarm() {
         'xmlsitemap' => array(
           'weight' => '11',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

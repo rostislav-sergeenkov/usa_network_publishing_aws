@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * Disable usanetwork_home_edit module
+ */
+function usanetwork_home_update_7000() {
+  module_disable(array('usanetwork_home_edit'));
+}
+
+/**
+ * Create shows queue.
+ */
+function usanetwork_home_update_7212() {
+  $shows_queue = entity_load('queues', FALSE, array(
+    'type' => 'tv_shows_queue',
+    'title' => 'Homepage Shows'
+  ));
+
+  if (empty($shows_queue)) {
+    $create_callback_name = '_usanetwork_home_create_homepage_shows_queue';
+
+    if (!is_callable($create_callback_name)) {
+      require_once drupal_get_path('module', 'usanetwork_home') . '/usanetwork_home.module';
+    }
+
+    if (is_callable($create_callback_name)) {
+      $create_callback_name();
+    }
+  }
+}
+
+/**
+ * Remove old "Featured Promos" field from Themed-Carousel
+ */
+function usanetwork_home_update_7213() {
+  $field_instance = field_read_instance('node', 'field_hp_promos', 'usa_homepage');
+
+  if ($field_instance) {
+    field_delete_instance($field_instance);
+  }
+
+  $field = field_read_field('field_hp_promos');
+
+  if ($field) {
+    field_delete_field($field);
+  }
+}

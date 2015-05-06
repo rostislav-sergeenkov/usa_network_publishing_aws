@@ -68,8 +68,11 @@
         });
       });
 
-      //Click on "Up Next"
-      $('#jPanelMenu-menu .up-next .tab-wrapper, #jPanelMenu-menu .on-now .tab-wrapper').once('omniture-tracking', function() {
+      //Click on "On Now" and "Up Next"
+      $('#jPanelMenu-menu .up-next .tab-wrapper' +
+      ', #jPanelMenu-menu .on-next .tab-wrapper' +
+      ', .on-now-panel .on-now' +
+      ', .on-now-panel .up-next').once('omniture-tracking', function() {
         $(this).on('click', function(){
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             var $self = $(this);
@@ -91,6 +94,18 @@
                 showName = Drupal.settings.usanetwork_ads.onnow_upnext.up_next['s.prop10'];
               }
               catch (e) {}
+            }
+
+            // Ajusting data for Redesign
+            if ($self.hasClass('node-usanetwork-promo')) {
+              if ($self.hasClass('on-now')) {
+                prop = 'On Now';
+                descr = 'On Now Click';
+              }
+              else if ($self.hasClass('up-next')) {
+                prop = 'On Now - Up Next';
+                descr = 'Up Next Click';
+              }
             }
             s.linkTrackVars='events,eVar64,prop64,prop10';
             s.linkTrackEvents='event64';

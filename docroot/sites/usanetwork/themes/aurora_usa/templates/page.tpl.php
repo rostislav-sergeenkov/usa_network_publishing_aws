@@ -74,21 +74,17 @@
  */
 ?>
 <?php if (!isset($ajax) || empty($ajax)): ?>
-  <header role="banner" id="page-header">
+  <header>
     <span id="site-name">
       <?php print $site_name; ?>
     </span>
-    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-      <div class="primary-nav">
-        <?php print render($page['personalization_trigger']); ?>
-        <?php if ($site_name): ?>
-          <div id="logo">
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
-          </div>
-        <?php endif; ?>
-        <?php print render($page['header']); ?>
-      </div>
-    </div>
+    <!-- leaderboard ad -->
+    <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
+    <!-- /leaderboard -->
+    <?php print render($page['personalization_trigger']); ?>
+    <!-- header -->
+    <?php print render($page['header']); ?>
+    <!-- /header -->
   </header>
 
   <!-- TOP TITLE AND TOOLS BAR -->
@@ -114,10 +110,6 @@
 <!-- /TOP TITLE AND TOOLS BAR -->
 
 <div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>
-  <!-- leaderboard ad -->
-    <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
-  <!-- /leaderboard -->
-
   <!-- MAIN CONTENT -->
   <div id="main" role="main" class="clearfix">
     <?php if ($page['seoh1']): ?><h1 class="seoh1" id="seoh1"><?php print $page['seoh1']; ?></h1><?php endif; ?>
@@ -154,12 +146,6 @@
     <?php endif; ?>
   </div><!-- #main -->
   <!-- /MAIN CONTENT -->
-
-  <!-- ON NOW -->
-  <aside id="on-now-panel" class="clearfix">
-    <?php print render($page['on_now']); ?>
-  </aside>
-  <!-- /ON NOW -->
 
   <!-- PERSONALIZATION -->
   <aside id="personalization-panel" class="clearfix">

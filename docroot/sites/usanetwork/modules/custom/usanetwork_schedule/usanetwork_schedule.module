@@ -1,0 +1,477 @@
+<?php
+
+define('USANETWORK_SCHEDULE_DAYS_INTERVAL', 4);
+define('USANETWORK_SCHEDULE_SERVICE_DEFAULT_URL', 'http://feed.entertainment.tv.theplatform.com/f/HNK2IC/prod_usa_listing?form=json&range=1-*&sort=startTime');
+
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_schedule_menu() {
+  $items = array();
+
+  $items['admin/config/services/usanetwork-schedule'] = array(
+    'title' => 'Usanetwork Schedule',
+    'description' => 'Settings for Usanetwork Schedule service.',
+    'access arguments' => array('administer site configuration'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_schedule_settings_form'),
+    'file' => 'usanetwork_schedule.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_ctools_plugin_api().
+ *
+ * Example of a CTools plugin hook that needs to be implemented to make
+ * hook_strongarm() discoverable by CTools and Strongarm. The hook specifies
+ * that the hook_strongarm() returns Strongarm API version 1 style plugins.
+ */
+function usanetwork_schedule_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => 1);
+  }
+}
+
+/**
+ * Implements hook_strongarm().
+ */
+function usanetwork_schedule_strongarm() {
+  $export = array();
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE;
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_schedule_show_aliases';
+  $strongarm->value = _usanetwork_schedule_get_default_tvshow_aliases();
+  $export[$strongarm->name] = $strongarm;
+
+  return $export;
+}
+
+/**
+ *  Implements hook_cron().
+ */
+function usanetwork_schedule_cron() {
+  $interval = variable_get('usanetwork_schedule_update_interval', 24) * 60 * 60;
+  $last_run = variable_get('usanetwork_schedule_last_update', 0);
+
+  if (REQUEST_TIME - $last_run >= $interval || $last_run == 0) {
+    usanetwork_schedule_pull();
+
+    variable_set('usanetwork_schedule_last_update', REQUEST_TIME);
+  }
+}
+
+/**
+ * Pulls data from service and puts it to datatable.
+ */
+function usanetwork_schedule_pull() {
+  $feed_url = variable_get('usanetwork_schedule_data_url', '');
+
+  if ($feed_url) {
+    $data = @json_decode(file_get_contents($feed_url));
+
+    if (empty($data) || (!empty($data) && empty($data->entries))) {
+      return;
+    }
+
+    $schedule_limit_from = strtotime('midnight -1 day +6 hours', REQUEST_TIME);
+    $schedule_limit_to = strtotime('midnight +8 days +5 hours', REQUEST_TIME);
+    db_truncate('usanetwork_schedule')->execute();
+
+    foreach ($data->entries as $data_item) {
+      $data_item = (array) $data_item;
+
+      $start_time = !empty($data_item['pllisting$startTime'])
+        ? ($data_item['pllisting$startTime'] / 1000)
+        : NULL;
+
+      if ($start_time) {
+        if ($start_time >= $schedule_limit_from && $start_time < $schedule_limit_to) {
+          $item_rating = !empty($data_item['pllisting$contentRatings'][0])
+            ? ((array) $data_item['pllisting$contentRatings'][0])
+            : array();
+          $program = (array) $data_item['pllisting$program'];
+          $program_rating = (isset($program['plprogram$ratings'][0])
+            ? (array) $program['plprogram$ratings'][0]
+            : array());
+
+          $record = array(
+            'guid' => $data_item['guid'],
+            'airing_type' => !empty($data_item['pllisting$airingType'])
+              ? $data_item['pllisting$airingType']
+              : '',
+            'rating_scheme' => !empty($item_rating['pllisting$scheme'])
+              ? $item_rating['pllisting$scheme']
+              : '',
+            'rating_type' => !empty($item_rating['pllisting$rating'])
+              ? $item_rating['pllisting$rating']
+              : '',
+            'start_time' => $start_time,
+            'end_time' => !empty($data_item['pllisting$endTime'])
+              ? ($data_item['pllisting$endTime'] / 1000)
+              : 0,
+            'title' => $program['pl$title'],
+            'show_title' => $program['plprogram$shortTitle'],
+            'program_guid' => !empty($program['pl$guid'])
+              ? $program['pl$guid']
+              : '',
+            'program_description' => !empty($program['pl$description'])
+              ? $program['pl$description']
+              : '',
+            'program_genre' => !empty($program['plprogram$displayGenre'])
+              ? $program['plprogram$displayGenre']
+              : '',
+            'program_type' => !empty($program['plprogram$programType'])
+              ? $program['plprogram$programType']
+              : '',
+            'program_rating_scheme' => !empty($program_rating['plprogram$scheme'])
+              ? $program_rating['plprogram$scheme']
+              : '',
+            'program_rating_type' => !empty($program_rating['plprogram$rating'])
+              ? $program_rating['plprogram$rating']
+              : '',
+            'program_secondary_title' => !empty($program['plprogram$secondaryTitle'])
+              ? $program['plprogram$secondaryTitle']
+              : '',
+            'series_episode_number' => !empty($program['plprogram$seriesEpisodeNumber'])
+              ? $program['plprogram$seriesEpisodeNumber']
+              : 0,
+            'season_episode_number' => !empty($program['plprogram$tvSeasonEpisodeNumber'])
+              ? $program['plprogram$tvSeasonEpisodeNumber']
+              : 0,
+            'season_number' => !empty($program['plprogram$tvSeasonNumber'])
+              ? $program['plprogram$tvSeasonNumber']
+              : 0,
+          );
+
+          if (usanetwork_schedule_is_item_exists($record['guid'])) {
+            drupal_write_record('usanetwork_schedule', $record, 'guid');
+          }
+          else {
+            drupal_write_record('usanetwork_schedule', $record);
+          }
+        }
+      }
+
+      else {
+        continue;
+      }
+    }
+
+    usanetwork_schedule_remove_duplicates();
+  }
+}
+
+/**
+ * Removes several items using list of guids.
+ */
+function usanetwork_schedule_remove_items(array $guids = array()) {
+  if (!empty($guids)) {
+    $query = db_delete('usanetwork_schedule');
+    $query->condition('guid', $guids, 'IN');
+    $result = $query->execute();
+
+    return $result->rowCount();
+  }
+}
+
+/**
+ * Removes item by guid.
+ */
+function usanetwork_schedule_remove_item($guid) {
+  usanetwork_schedule_remove_items(array($guid));
+}
+
+function usanetwork_schedule_is_item_exists($guid) {
+  $query = db_select('usanetwork_schedule', 's');
+  $query->fields('s');
+  $query->condition('s.guid', $guid);
+
+  $result = $query->execute();
+
+  return $result->rowCount();
+}
+
+/**
+ * Pulls schedule items that are running in TIME.
+ */
+function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
+  $query = db_select('usanetwork_schedule', 's');
+  $query->fields('s', array());
+  $query->condition('s.start_time', $time, '<=');
+  $query->condition('s.end_time', $time, '>');
+  $query->orderBy('s.start_time', $order);
+  $query->range(0, $limit);
+
+  $result = $query->execute()->fetchAll();
+  _usanetwork_schedule_fill_schedule_show_nids($result);
+
+  return $result;
+}
+
+/**
+ * Pulls items from schedule according FROM and TO timestamps.
+ */
+function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1, $time_corellation = 0) {
+  $dateTime = new DateTime('now');
+  $primeTimeStart = $dateTime->setTime($time_from, 0)->getTimestamp();
+  $query = db_select('usanetwork_schedule', 's');
+  $query->fields('s', array());
+  $query->condition('s.start_time', $primeTimeStart, '>=');
+  $query->range(0, $limit);
+  $query->orderBy('s.start_time', 'ASC');
+
+  $result = $query->execute()->fetchAll();
+  _usanetwork_schedule_fill_schedule_show_nids($result);
+
+  return $result;
+}
+
+/**
+ * Returns an object that contains TV Show node id and short title.
+ */
+function _usanetwork_schedule_get_show_node_info_by_title($title) {
+  $show_query = db_select('node', 'n');
+  $show_query->leftJoin('field_data_field_display_title', 'fdt', 'fdt.entity_id=n.nid');
+  $show_query->fields('n', array('nid'));
+  $show_query->fields('fdt', array('field_display_title_value'));
+  $show_query->condition('n.title', $title);
+  $show_query->condition('n.type', 'tv_show');
+  $show_query->range(0, 1);
+
+  return $show_query->execute()->fetchAll();
+}
+
+/**
+ * Some show titles are differs between Node table and data that returns from the service.
+ * This function is used for correct wrapping with real show name in the additional field
+ * and assigning the correct node id.
+ *
+ * @param $data - result for wrapping that returns from usanetwork_schedule_pull_by_timerange().
+ */
+function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
+  if (empty($data)) {
+    return;
+  }
+
+  $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
+
+  foreach ($data as &$schedule_item) {
+    $show_result = _usanetwork_schedule_get_show_node_info_by_title($schedule_item->show_title);
+
+    if (!empty($show_result)) {
+      $show_result = reset($show_result);
+
+      $schedule_item->database_show_title = $show_result->field_display_title_value;
+      $schedule_item->nid = $show_result->nid;
+
+      continue;
+    }
+
+    $alias_title = trim($schedule_item->show_title);
+
+    if (empty($schedule_item->nid) && !empty($show_title_aliases[$alias_title])) {
+      $alias = trim($show_title_aliases[$alias_title]);
+      $show_node_info = _usanetwork_schedule_get_show_node_info_by_title($alias);
+
+      if (!empty($show_node_info)) {
+        $show_node_info = reset($show_node_info);
+
+        $schedule_item->nid = $show_node_info->nid;
+        $schedule_item->database_show_title = $show_node_info->field_display_title_value;
+      }
+      else {
+        $schedule_item->database_show_title = $schedule_item->title;
+      }
+    }
+    elseif (empty($schedule_item->nid) && empty($show_title_aliases[$alias_title])) {
+      $schedule_item->database_show_title = t('USA Movie') . ' ' . $schedule_item->title;
+      $schedule_item->nid = NULL;
+    }
+  }
+}
+
+/**
+ * Returns aliases for connecting show names from database with names that returns from the service.
+ */
+function _usanetwork_schedule_get_show_alias_names() {
+  $data = array();
+  $aliases = variable_get('usanetwork_schedule_show_aliases', array());
+
+  if (!empty($aliases)) {
+    $aliases_array = explode("\n", $aliases);
+
+    if (!empty($aliases_array)) {
+      foreach ($aliases_array as $alias) {
+        $matches = array();
+
+        if (preg_match("/^(.+)\s*\|\s*(.+)$/", $alias, $matches)) {
+          $data[$matches[1]] = $matches[2];
+        }
+      }
+    }
+  }
+
+  return $data;
+}
+
+/**
+ * Returns node nid by title.
+ */
+function _usanetwork_schedule_find_node($title) {
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid'));
+  $query->condition('n.title', $title);
+  $query->range(0, 1);
+
+  return $query->execute()->fetchField();
+}
+
+/**
+ * Pulls current item from schedule.
+ */
+function usanetwork_schedule_pull_on_now_item($time_correlation = 0) {
+  $time = REQUEST_TIME + $time_correlation;
+
+  return usanetwork_schedule_pull_by_time($time, 1, 'DESC');
+}
+
+/**
+ * Pulls next item from schedule.
+ */
+function usanetwork_schedule_pull_up_next_item($time_correlation = 0) {
+  $time = REQUEST_TIME + $time_correlation;
+  $query = db_select('usanetwork_schedule', 's');
+  $query->fields('s', array());
+  $query->condition('s.start_time', $time, '>');
+
+  $query->orderBy('s.start_time', 'ASC');
+  $query->range(0, 1);
+
+  $result = $query->execute()->fetchAll();
+
+  if (empty($result)) {
+    return array();
+  }
+
+  _usanetwork_schedule_fill_schedule_show_nids($result);
+
+  return $result;
+}
+
+/**
+ * Pulls latest episodes from show $show_nid with limit $limit items using mpx_file data.
+ */
+function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
+  $query = db_select('file_managed', 'f')->fields('f', array('fid'));
+  $query->condition('f.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+  $query->leftJoin('field_data_field_show','show_field','show_field.entity_id = f.fid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->leftJoin('field_data_field_mpx_full_episode','full_episode_field','full_episode_field.entity_id = f.fid');
+  $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  $query->leftJoin('field_data_field_mpx_duration', 'duration_field', 'duration_field.entity_id = f.fid');
+  $query->fields('duration_field', array('field_mpx_duration_value'));
+  $query->leftJoin('field_data_field_mpx_season_number', 'season_field', 'season_field.entity_id = f.fid');
+  $query->fields('season_field', array('field_mpx_season_number_value'));
+  $query->leftJoin('field_data_field_mpx_episode_number', 'field_episode_number', 'field_episode_number.entity_id = f.fid');
+  $query->fields('field_episode_number', array('field_mpx_episode_number_value'));
+  $query->leftJoin('mpx_video','v','v.fid = f.fid');
+  $query->fields('v', array('title'));
+  $query->leftJoin('field_data_field_mpx_entitlement','locked_video','locked_video.entity_id = f.fid');
+  $query->fields('locked_video', array('field_mpx_entitlement_value'));
+  $query->condition('v.status', 1);
+  $query->orderBy('v.airdate', 'DESC');
+  $query->orderBy('field_episode_number.field_mpx_episode_number_value', 'DESC');
+
+  if ($limit > 0) {
+    $query->range(0, $limit);
+  }
+
+  return $query->execute()->fetchAll();
+}
+
+/**
+ * Pulls nearest episode from show $show_nid.
+ */
+function usanetwork_schedule_get_nearest_episode_airtime($show_nid) {
+  $query = db_select('file_managed', 'f');
+  $query->fields('f', array('fid'));
+  $query->leftJoin('field_data_field_show', 's', 's.entity_id=f.fid');
+  $query->leftJoin('mpx_video', 'v', 'v.fid=f.fid');
+  $query->fields('v', array('airdate'));
+  $query->condition('s.field_show_target_id', $show_nid);
+  $query->condition('s.entity_type', 'file');
+  $query->condition('v.airdate', REQUEST_TIME, '>');
+  $query->orderBy('v.airdate', 'ASC');
+  $query->range(0, 1);
+  $result = $query->execute()->fetch();
+
+  if ($result) {
+    return $result->airdate;
+  }
+
+  return NULL;
+}
+
+/**
+ * Finds and removes duplicates using 'start_time' as key. The GUID can differs without a reason.
+ */
+function usanetwork_schedule_remove_duplicates() {
+  $found_records = array();
+  $found_dups = array();
+
+  $query = db_select('usanetwork_schedule', 's');
+  $query->fields('s', array('guid', 'start_time'));
+
+  $result = $query->execute()->fetchAll();
+
+  if (!empty($result)) {
+    // Walkin through all found records for detecting duplicates
+    foreach ($result as $result_record) {
+      if (!isset($found_records[$result_record->start_time])) {
+        $found_records[$result_record->start_time] = $result_record;
+      }
+      else {
+        // Only newest duplicates should be ignored. The list of programs is not
+        // ordered when it returns from service.
+        if ($result_record->guid > $found_records[$result_record->start_time]->guid) {
+          $outdatted_record = $found_records[$result_record->start_time];
+
+          $found_dups[$outdatted_record->guid] = $outdatted_record;
+          $found_records[$result_record->start_time] = $result_record;
+        }
+        else {
+          $found_dups[$result_record->guid] = $result_record;
+        }
+      }
+    }
+  }
+
+  if (!empty($found_dups)) {
+    // Removing duplicates.
+    $query = db_delete('usanetwork_schedule');
+    $query->condition('guid', array_keys($found_dups), 'IN');
+    $result = $query->execute();
+
+    $found_records_count = count($found_dups);
+    drupal_set_message(t('@number records @article marked as duplicate'), array(
+      '@number' => $found_records_count,
+      '@article' => $found_records_count > 1 ? t('are') : t('is')
+    ));
+  }
+}
+
+/**
+ * Returns default aliases for TV shows for connecting it with schedule service.
+ */
+function _usanetwork_schedule_get_default_tvshow_aliases() {
+  return "WWE Monday Night Raw|WWE Raw
+Law & Order: Special Victims|Law & Order: SVU
+CSI: Crime Scene Investigation|CSI
+DIG (SERIES PREMIERE)|Dig
+LAW & ORDER: CRIMINAL INTENT (S)|Law & Order: Criminal Intent";
+}

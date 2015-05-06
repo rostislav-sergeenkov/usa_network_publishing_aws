@@ -1,0 +1,39 @@
+.draggable-background.desktop {
+  border: solid #aaa 1px;
+  display: block;
+  height: 480px;
+  width: 200px;
+}
+.draggable-area.mobile{
+  display: block;
+  line-height: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 640px;
+}
+.draggable-area.desktop {
+  display: block;
+  line-height: 0;
+  margin-bottom: 30px;
+  position: relative;
+  width: 1280px;
+}
+.draggable-area {
+  border: solid #aaa 1px;
+}
+.draggable-area img{
+  margin: 0;
+}
+.aspot-draggable-element {
+  background-color: rgba(200, 200, 200, 0.6);
+  border-radius: 6px;
+  border: solid 1px #666;
+  display: block;
+  line-height: normal;
+  margin: 0;
+  padding: 3px;
+}
+#edit-field-aspot-gi-draggable-data {
+  display: none;
+  visibility: hidden;
+}

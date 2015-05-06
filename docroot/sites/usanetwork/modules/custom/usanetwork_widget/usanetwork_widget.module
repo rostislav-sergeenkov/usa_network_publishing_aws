@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * USA Network widgets
@@ -109,6 +110,19 @@ function usanetwork_widget_flush_caches() {
 }
 
 /**
+ * Implements hook_js_alter().
+ */
+function usanetwork_widget_js_alter(&$javascript) {
+  // Remove tve_mvpd settings from js on navbar pages.
+  if (FALSE !== array_search('navbar', arg())) {
+    foreach ($javascript['settings']['data'] as $key => $setting_data) {
+      if (array_key_exists('tve_mvpd', $setting_data)) {
+        unset($javascript['settings']['data'][$key]);
+      }
+    }
+  }
+}
+/**
  * Helper to generate an env value based on base root to be used for JS
  */
 function _usanetwork_widget_get_environment() {
@@ -116,10 +130,68 @@ function _usanetwork_widget_get_environment() {
 
   // override
   switch ($site_env) {
-    case 'acceptance': $site_env = 'qa'; break;
+    case 'acceptance': $site_env = 'qa';
+      break;
   }
 
   return $site_env;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_widget_theme($existing, $type, $theme, $path) {
+  $module_path = drupal_get_path('module', 'usanetwork_widget');
+  return array(
+    'usanetwork_widget_navbar' => array(
+      'variables' => array(
+        'styles' => NULL,
+        'library_js_path' => NULL,
+        'widget_js_path' => NULL,
+        'widget_js_path' => NULL,
+        'environment' => NULL,
+        'show_id' => NULL,
+      ),
+      'path' => $module_path . '/theme',
+      'template' => 'syndicate-navbar-menu'
+    ),
+    'usanetwork_widget_navbar_plain' => array(
+      'variables' => array(
+        'widget_js_path' => NULL,
+        'show_id' => NULL,
+      ),
+      'path' => $module_path . '/theme',
+      'template' => 'syndicate-navbar-menu-plain'
+    ),
+    'usanetwork_widget_navbar_doc' => array(
+      'variables' => array(
+        'styles' => NULL,
+        'scripts' => NULL,
+        'code' => NULL,
+      ),
+      'path' => $module_path . '/theme',
+      'template' => 'syndicate-navbar-menu-doc'
+    ),
+    'usanetwork_widget_show_navbar_doc' => array(
+      'variables' => array(
+        'styles' => NULL,
+        'scripts' => NULL,
+        'code' => NULL,
+        'show_id' => NULL,
+      ),
+      'path' => $module_path . '/theme',
+      'template' => 'syndicate-show-navbar-menu-doc'
+    ),
+    'usanetwork_widget_wrapper' => array(
+      'variables' => array(
+        'styles' => NULL,
+        'main_menu' => NULL,
+        'show_menu' => NULL,
+      ),
+      'path' => $module_path . '/theme',
+      'template' => 'syndicate-navbar-menu-wrapper'
+    ),
+  );
 }
 
 /**
@@ -128,32 +200,55 @@ function _usanetwork_widget_get_environment() {
 function usanetwork_widget_navbar() {
   global $base_root;
 
-  $site_base_url = $base_root . '/';
-  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?';
-  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?';
+  // Invoking menu block
+  $block = module_invoke('usanetwork_menu', 'block_view', 'usanetwork_menu_sm_menu');
 
-  // get collected styles
-  $styles = _usanetwork_widget_styles();
+  if ($block) {
+    $site_base_url = $base_root . '/';
 
-  echo '<!DOCTYPE html>';
-  echo '<head>';
-  echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
-  echo $styles;
-  echo '<script>var $env = "'._usanetwork_widget_get_environment().'";</script>';
-  echo '<script src="'.$library_js_path.'"></script>';
-  echo '<script src="'.$widget_js_path.'"></script>';
-  echo '</head>';
-  echo '<!--[if IE 9]>';
-  echo '<div class="ie ie9">';
-  echo '<![endif]-->';
-  echo '<h3>page body goes here..</h3>';
-  echo '<div id="usanetwork-main-menu"></div>';
-  echo '<!--[if IE 9]>';
-  echo '</div>';
-  echo '<![endif]-->';
-  echo '</html>';
-  exit;
+    $paths = array(
+      'module_usanetwork_menu' => drupal_get_path('module', 'usanetwork_menu'),
+      'theme_aurora_usa' => drupal_get_path('theme', 'aurora_usa'),
+    );
+
+    // Get default jQuery scripts (it returns just a rendered string)
+    $scripts = drupal_get_js();
+    $styles = '';
+
+    // Add custom JS with USA Network Menu features
+    $custom_script_urls = array(
+      $paths['theme_aurora_usa'] . '/javascripts/menu-dropdown.js',
+      libraries_get_path('jstz') . '/jstz-1.0.4.min.js',
+      $paths['module_usanetwork_menu'] . '/js/usanetwork_menu.common.js',
+      $paths['module_usanetwork_menu'] . '/js/usanetwork_menu.now_and_next.js',
+      $paths['module_usanetwork_menu'] . '/js/usanetwork_menu.onnow_tonight.js',
+      $paths['module_usanetwork_menu'] . '/js/usanetwork_menu.watch_live.js',
+    );
+
+    // Conatinate it into 1 string
+    foreach ($custom_script_urls as $custom_script_url) {
+      $scripts .= "\n" . '<script src="' . $site_base_url . $custom_script_url . '"></script>';
+    }
+
+    // Add custom CSS with USA Network Menu features
+    $custom_style_urls = array(
+      file_create_url(drupal_get_path('theme', 'aurora_usa') . '/stylesheets/style.css'),
+      file_create_url('public://tv_show_color/tv_show_color_schema.css'),
+    );
+
+    // Conatinate it into 1 string
+    foreach ($custom_style_urls as $custom_style_url) {
+      $styles .= '<style>@import url("' . $custom_style_url . '");</style>';
+    }
+
+    print theme('usanetwork_widget_navbar', array(
+      'menu' => render($block['content']),
+      'styles' => explode("\n", $styles),
+      'scripts' => explode("\n", $scripts),
+    ));
+  }
+
+  drupal_page_footer();
 }
 
 /**
@@ -161,33 +256,12 @@ function usanetwork_widget_navbar() {
  */
 function usanetwork_widget_navbar_ajax_styled() {
   global $base_root;
-
-  $nav_styles = '<style>@import url("' . $base_root . '/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?");</style>';
-
   // get collected styles
   $styles = _usanetwork_widget_styles();
-
-  echo $styles;
-  $markup_wrapper = '
-  <header role="banner" id="page-header">
-    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-      <div class="primary-nav">
-        <div id="logo">
-          <a href="//www.usanetwork.com" title="Home" rel="home">USA</a>
-        </div>
-        <div class="region region-header">
-          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
-            %s
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>';
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
   $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $main_menu);
-  echo sprintf($markup_wrapper, $main_menu);
-  exit;
+  print theme('usanetwork_widget_wrapper', array('styles' => $styles, 'main_menu' => $main_menu));
 }
 
 /**
@@ -197,35 +271,17 @@ function usanetwork_widget_navbar_plain() {
   global $base_root;
   $site_base_url = $base_root . '/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js?';
-  echo '<script src="'.$widget_js_path.'"></script>';
-  echo '<div id="usanetwork-main-menu"></div>';
-  exit;
+  print theme('usanetwork_widget_navbar_plain', array('widget_js_path' => $widget_js_path));
 }
 
 /**
  * Helper to generate and output the main menu bar in plain html
  */
 function usanetwork_widget_navbar_ajax_plain() {
-  $markup_wrapper = '
-  <header role="banner" id="page-header">
-    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-      <div class="primary-nav">
-        <div id="logo">
-          <a href="//www.usanetwork.com" title="Home" rel="home">USA</a>
-        </div>
-        <div class="region region-header">
-          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
-            %s
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>';
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
   $main_menu = $main_menu['content']['meganav']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $main_menu);
-  echo sprintf($markup_wrapper, $main_menu);
-  exit;
+  print theme('usanetwork_widget_wrapper', array('main_menu' => $main_menu));
 }
 
 /**
@@ -236,38 +292,23 @@ function usanetwork_widget_navbar_docs() {
   // get collected styles
   $styles = _usanetwork_widget_styles();
 
-  $docs_markup = '
-  <h1>Syndicating the USA Network navigation bar.</h1>
-  <h2>Main Navigation</h2>
-  <p><a href="/navbar">demo</a></p>
-  <p>Add the following style tag to your site. </p>
-  <code><pre>
-'. htmlentities($styles) .'
-  </pre></code>
-  <p>Add the following script tag to your site. </p>
-  <code><pre>
-'. htmlentities('<!--[if IE 9]>') .'
-'. htmlentities('<div class="ie ie9">') .'
-'. htmlentities('<![endif]-->') .'
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
-'. htmlentities('<!--[if IE 9]>') .'
-'. htmlentities('</div>') .'
-'. htmlentities('<![endif]-->') .'
-'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
-  </pre></code>
-  <h2>Main Navigation - No Styles</h2>
-  <p><a href="/navbar/plain">demo</a></p>
-  <p>Add the following script tag to your site. </p>
-  <code><pre>
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
-'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
-  </pre></code>
-  ';
-  return $docs_markup;
+  $scripts = htmlentities('<!--[if IE 9]>'
+      . '<div class="ie ie9">'
+      . '<![endif]-->'
+      . '<div id="usanetwork-main-menu"></div>'
+      . '<!--[if IE 9]>'
+      . '</div>'
+      . '<![endif]-->'
+      . '<script>var $env = "' . _usanetwork_widget_get_environment() . '";</script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>');
+
+  $code = htmlentities('<div id="usanetwork-main-menu"></div>'
+      . '<script>var $env = "' . _usanetwork_widget_get_environment() . '";</script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>');
+
+  return theme('usanetwork_widget_navbar_doc', array('styles' => htmlentities($styles), 'scripts' => $scripts, 'code' => $code));
 }
 
 /**
@@ -276,32 +317,12 @@ function usanetwork_widget_navbar_docs() {
 function usanetwork_widget_show_navbar($node) {
   global $base_root;
   $site_base_url = $base_root . '/';
-  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js?';
   $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?';
 
   // get collected styles
   $styles = _usanetwork_widget_styles($node);
-
-  echo '<!DOCTYPE html>';
-  echo '<head>';
-  echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
-  echo $styles;
-  echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
-  echo '<script>var $env = "'._usanetwork_widget_get_environment().'";</script>';
-  echo '<script src="'.$widget_js_path.'"></script>';
-  echo '<script src="'.$library_js_path.'"></script>';
-  echo '</head>';
-  echo '<!--[if IE 9]>';
-  echo '<div class="ie ie9">';
-  echo '<![endif]-->';
-  echo '<h3>page body goes here..</h3>';
-  echo '<div id="usanetwork-main-menu"></div>';
-  echo '<!--[if IE 9]>';
-  echo '</div>';
-  echo '<![endif]-->';
-  echo '</html>';
-  exit;
+  print theme('usanetwork_widget_navbar', array('styles' => $styles, 'library_js_path' => $library_js_path, 'widget_js_path' => $widget_js_path, 'environment' => _usanetwork_widget_get_environment(), 'show_id' => $node->nid));
 }
 
 /**
@@ -309,38 +330,16 @@ function usanetwork_widget_show_navbar($node) {
  */
 function usanetwork_widget_show_navbar_ajax_styled($node) {
   global $base_root;
-  $nav_styles = '<style>@import url("' . $base_root . '/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?");</style>';
-
   // get collected styles
   $styles = _usanetwork_widget_styles($node);
 
-  echo $styles;
-  $markup_wrapper = '
-  <header role="banner" id="page-header">
-    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-      <div class="primary-nav">
-        <div id="logo">
-          <a href="//www.usanetwork.com" title="Home" rel="home">USA</a>
-        </div>
-        <div class="region region-header">
-          <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
-            %s
-          </div></div>
-          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
-            %s
-          </div></div>
-        </div>
-      </div>
-    </div>
-  </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
-  $show_menu = $show_menu['content'];
+  $show_menu = '<div class="content">' . $show_menu['content'] . '</div>';
   $show_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $show_menu);
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
-  $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
+  $main_menu = '<div class="content">' . $main_menu['content']['meganav_syndicate']['#markup'] . '</div>';
   $main_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $main_menu);
-  echo sprintf($markup_wrapper, $show_menu, $main_menu);
-  exit;
+  print theme('usanetwork_widget_wrapper', array('styles' => $styles, 'main_menu' => $main_menu, 'show_menu' => $show_menu));
 }
 
 /**
@@ -348,10 +347,10 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
  */
 function usanetwork_widget_show_navbar_plain($node) {
   global $base_root;
-  $site_base_url = $base_root .'/';
+  $site_base_url = $base_root . '/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js?';
-  echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
-  echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<script type="text/javascript"> var $show_id = ' . $node->nid . '; </script>';
+  echo '<script src="' . $widget_js_path . '"></script>';
   echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
@@ -360,32 +359,13 @@ function usanetwork_widget_show_navbar_plain($node) {
  * Helper to generate and output the main menu bar in plain html
  */
 function usanetwork_widget_show_navbar_ajax_plain($node) {
-  $markup_wrapper = '
-  <header role="banner" id="page-header">
-    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-      <div class="primary-nav">
-        <div id="logo">
-          <a href="//www.usanetwork.com" title="Home" rel="home">USA</a>
-        </div>
-        <div class="region region-header">
-          <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
-            %s
-          </div></div>
-          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
-            %s
-          </div></div>
-        </div>
-      </div>
-    </div>
-  </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
-  $show_menu = $show_menu['content'];
+  $show_menu = '<div class="content">' . $show_menu['content'] . '</div>';
   $show_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $show_menu);
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = '<div class="content">' . $main_menu['content']['meganav']['#markup'] . '</div>';
   $main_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $main_menu);
-  echo sprintf($markup_wrapper, $show_menu, $main_menu);
-  exit;
+  print theme('usanetwork_widget_wrapper', array('main_menu' => $main_menu, 'show_menu' => $show_menu));
 }
 
 /**
@@ -395,11 +375,7 @@ function usanetwork_widget_show_navbar_only($node) {
   global $base_root;
   $site_base_url = $base_root . '/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js?';
-  echo '<script>var $env = "'._usanetwork_widget_get_environment().'";</script>';
-  echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
-  echo '<script src="'.$widget_js_path.'"></script>';
-  echo '<div id="usanetwork-main-menu"></div>';
-  exit;
+  print theme('usanetwork_widget_navbar_plain', array('widget_js_path' => $widget_js_path, 'show_id' => $node->nid));
 }
 
 /**
@@ -422,51 +398,30 @@ function usanetwork_widget_show_navbar_docs($node) {
   // get collected styles
   $styles = _usanetwork_widget_styles($node);
 
-  $docs_markup = '
-  <h1>Syndicating the USA Network show navigation bar.</h1>
-  <h2>Show and Main Navigation</h2>
-  <p><a href="/node/'. $node->nid .'/navbar">demo</a></p>
-  <p>Add the following style tag to your site.</p>
-  <code><pre>
-'. htmlentities($styles) .'
-    </pre></code>
-  <p>Add the following script tags to your site.</p>
-  <code><pre>
-'. htmlentities('<!--[if IE 9]>') .'
-'. htmlentities('<div class="ie ie9">') .'
-'. htmlentities('<![endif]-->') .'
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
-'. htmlentities('<!--[if IE 9]>') .'
-'. htmlentities('</div>') .'
-'. htmlentities('<![endif]-->') .'
-'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
-'. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_styled.js"></script>') .'
-  </pre></code>
+  $scripts = htmlentities('<!--[if IE 9]>'
+      . '<div class="ie ie9">'
+      . '<![endif]-->'
+      . '<div id="usanetwork-main-menu"></div>'
+      . '<!--[if IE 9]>'
+      . '</div>'
+      . '<![endif]-->'
+      . '<script>var $env = "' . _usanetwork_widget_get_environment() . '";</script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>'
+      . '<script type="text/javascript">var $show_id = ' . $node->nid . '; </script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>');
 
-  <h2>Show and Main Navigation - No Styles</h2>
-  <p><a href="/node/'. $node->nid .'/navbar/plain">demo</a></p>
-  <p>Add the following script tags to your site.</p>
-  <code><pre>
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
-'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
-'. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>') .'
-  </pre></code>
+  $code = htmlentities('<div id="usanetwork-main-menu"></div>'
+      . '<script>var $env = "' . _usanetwork_widget_get_environment() . '";</script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>'
+      . '<script type="text/javascript">var $show_id = ' . $node->nid . '; </script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>');
 
-  <h2>Show Navigation Only - No Styles</h2>
-  <p><a href="/node/'. $node->nid .'/navbar/only">demo</a></p>
-  <p>Add the following script tags to your site.</p>
-  <code><pre>
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
-'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
-'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
-  </pre></code>
-  ';
-  return $docs_markup;
+  $show_only_code = htmlentities('<div id="usanetwork-main-menu"></div>'
+      . '<script>var $env = "' . _usanetwork_widget_get_environment() . '";</script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>'
+      . '<script src="' . $base_root . '/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>');
+
+  return theme('usanetwork_widget_show_navbar_doc', array('styles' => htmlentities($styles), 'scripts' => $scripts, 'code' => $code, 'show_only_code' => $show_only_code, 'show_id' => $node->nid));
 }
 
 /**
@@ -488,8 +443,8 @@ function usanetwork_widget_navbar_links() {
   $shows = _usanetwork_widget_get_nodes('tv_show');
   foreach ($shows as $show) {
     $links = array();
-    $show_path = drupal_get_path_alias('node/'.$show->nid);
-    $output .= '<h3>'.$show->title.'</h3>';
+    $show_path = drupal_get_path_alias('node/' . $show->nid);
+    $output .= '<h3>' . $show->title . '</h3>';
     $links[] = l('Styled Navbar', $show_path . '/navbar', array('attributes' => array('target' => '_blank')));
     $links[] = l('Plain Navbar', $show_path . '/navbar/plain', array('attributes' => array('target' => '_blank')));
     $links[] = l('Plain Navbar Only', $show_path . '/navbar/only', array('attributes' => array('target' => '_blank')));
@@ -517,7 +472,7 @@ function _usanetwork_widget_get_nodes($node_type) {
 
   if (isset($nodes_result['node'])) {
     foreach ($nodes_result['node'] as $result) {
-      $nodes[ $result->nid ] = node_load($result->nid, $result->vid);
+      $nodes[$result->nid] = node_load($result->nid, $result->vid);
     }
   }
 
@@ -530,6 +485,7 @@ function _usanetwork_widget_get_nodes($node_type) {
 function _usanetwork_widget_styles($show = null, $recreate = false) {
   $css_filename = ($show == null) ? 'navbar' : 'navbar_' . $show->nid;
   $css_filename = 'public://css/css_' . hash('sha256', $css_filename) . '.css';
+  $copy_css = '';
   if (!file_exists($css_filename) || $recreate) {
     $css = &drupal_static('drupal_add_css', array());
     $copy_css = $css;

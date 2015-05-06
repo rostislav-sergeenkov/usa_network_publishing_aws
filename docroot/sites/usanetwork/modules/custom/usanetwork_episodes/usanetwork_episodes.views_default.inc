@@ -70,6 +70,12 @@ function usanetwork_episodes_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_show']['field_api_classes'] = TRUE;
+  /* Sort criterion: Content: Season # (field_season_id) */
+  $handler->display->display_options['sorts']['field_season_id_value']['id'] = 'field_season_id_value';
+  $handler->display->display_options['sorts']['field_season_id_value']['table'] = 'field_data_field_season_id';
+  $handler->display->display_options['sorts']['field_season_id_value']['field'] = 'field_season_id_value';
+  $handler->display->display_options['sorts']['field_season_id_value']['relationship'] = 'field_season_target_id';
+  $handler->display->display_options['sorts']['field_season_id_value']['order'] = 'DESC';
   /* Sort criterion: Content: Air Date (field_original_air_date) */
   $handler->display->display_options['sorts']['field_original_air_date_value']['id'] = 'field_original_air_date_value';
   $handler->display->display_options['sorts']['field_original_air_date_value']['table'] = 'field_data_field_original_air_date';
@@ -331,6 +337,69 @@ function usanetwork_episodes_views_default_views() {
       'fixed' => '',
       'label' => 'Field: Show (field_show)',
     ),
+  );
+
+  /* Display: Show episodes */
+  $handler = $view->new_display('block', 'Show episodes', 'show_episodes');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_season_target_id']['id'] = 'field_season_target_id';
+  $handler->display->display_options['relationships']['field_season_target_id']['table'] = 'field_data_field_season';
+  $handler->display->display_options['relationships']['field_season_target_id']['field'] = 'field_season_target_id';
+  $handler->display->display_options['relationships']['field_season_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_show_node';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Field: Show */
+  $handler->display->display_options['fields']['field_show']['id'] = 'field_show';
+  $handler->display->display_options['fields']['field_show']['table'] = 'field_data_field_show';
+  $handler->display->display_options['fields']['field_show']['field'] = 'field_show';
+  $handler->display->display_options['fields']['field_show']['label'] = '';
+  $handler->display->display_options['fields']['field_show']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_show']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_show']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_show']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_show']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_show']['field_api_classes'] = TRUE;
+  /* Field: Content: Season # */
+  $handler->display->display_options['fields']['field_season_id']['id'] = 'field_season_id';
+  $handler->display->display_options['fields']['field_season_id']['table'] = 'field_data_field_season_id';
+  $handler->display->display_options['fields']['field_season_id']['field'] = 'field_season_id';
+  $handler->display->display_options['fields']['field_season_id']['relationship'] = 'field_season_target_id';
+  $handler->display->display_options['fields']['field_season_id']['label'] = '';
+  $handler->display->display_options['fields']['field_season_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_season_id']['element_default_classes'] = FALSE;
+  /* Field: Content: Episode # */
+  $handler->display->display_options['fields']['field_episode_number']['id'] = 'field_episode_number';
+  $handler->display->display_options['fields']['field_episode_number']['table'] = 'field_data_field_episode_number';
+  $handler->display->display_options['fields']['field_episode_number']['field'] = 'field_episode_number';
+  $handler->display->display_options['fields']['field_episode_number']['label'] = '';
+  $handler->display->display_options['fields']['field_episode_number']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_episode_number']['element_default_classes'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Field: Show (field_show) */
+  $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['relationship'] = 'field_season_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_show_target_id']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_show_target_id']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['field_show_target_id']['validate_options']['types'] = array(
+    'tv_show' => 'tv_show',
   );
   $export['usa_episodes'] = $view;
 

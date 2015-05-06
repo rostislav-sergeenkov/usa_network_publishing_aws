@@ -7,6 +7,22 @@
 include_once 'usanetwork_aspot.features.inc';
 
 /**
+ *  Implements hook_menu().
+ */
+function usanetwork_aspot_menu() {
+  $items = array();
+
+  $items['usanetwork-services/aspot-draggable-ui/set-variable'] = array(
+    'title' => 'Service for setting up data of A-Spot draggable UI',
+    'page callback' => 'ajax_aspot_draggable_ui_data_set',
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_state, $form_id) {
@@ -21,7 +37,122 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       ":input[name=\"field_animated_a_spot[$lang]\"]" => array('checked' => TRUE),
     ),
   );
-  $form['#validate'][]= 'usanetwork_aspot_validate';
+  $airdate = NULL;
+  $show_nid = _usanetwork_aspot_get_show_nid($form_state['node']);
+
+  if ($show_nid) {
+    $airdate = usanetwork_schedule_get_nearest_episode_airtime($show_nid);
+  }
+
+  $draggable_items_data = _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_draggable_data', $lang, NULL);
+  if (!empty($draggable_items_data)) {
+    $draggable_items_data = json_decode($draggable_items_data);
+  }
+
+  $previewing_settings = array(
+    'desktop' => array(
+      'bg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_bg_offset', $lang, 0),
+      'bg_offset_width' => 370,
+      'bg_offset_height' => 500,
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('2500x1094', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
+        : '',
+    ),
+    'mobile' => array(
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x640', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
+        : '',
+    ),
+    'tvs_desktop' => array(
+      'bg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_tbg_offset', $lang, 0),
+      'bg_offset_width' => 370,
+      'bg_offset_height' => 500,
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('2490x1418', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        : '',
+    ),
+    'tvs_mobile' => array(
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x640', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        : '',
+    ),
+    'aspot_elements' => array(
+      'title_prefix' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title_prefix', $lang, t('Title prefix')),
+      ),
+      'title' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title', $lang, $form_state['node']->title),
+      ),
+      'social_meter' => array(
+        'value' => t('Social Meter'),
+      ),
+    ),
+    'tvs_aspot_elements' => array(
+      'title_prefix' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_title_prefix', $lang, t('Title prefix')),
+      ),
+      'title' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_title', $lang, $form_state['node']->title),
+      ),
+      'social_meter' => array(
+        'value' => t('Social Meter'),
+      ),
+    ),
+    'airdate' => $airdate,
+  );
+
+  if (!empty($draggable_items_data->data)) {
+    if (!empty($draggable_items_data->data->aspot_elements)) {
+      foreach ($draggable_items_data->data->aspot_elements as $element_name => $element) {
+        if ($element_name == 'undefined' || $element_name == 'data') {
+          continue;
+        }
+
+        $element->value = $previewing_settings['aspot_elements'][$element_name]['value'];
+        $previewing_settings['aspot_elements'][$element_name] = _usanetwork_aspot_fill_draggable_ui_settings_element($element);
+        $previewing_settings['aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_gi, $lang, $element_name);
+      }
+    }
+    if (!empty($draggable_items_data->data->tvs_aspot_elements)) {
+      foreach ($draggable_items_data->data->tvs_aspot_elements as $element_name => $element) {
+        if ($element_name == 'undefined' || $element_name == 'data') {
+          continue;
+        }
+
+        $element->value = $previewing_settings['tvs_aspot_elements'][$element_name]['value'];
+        $previewing_settings['tvs_aspot_elements'][$element_name] = _usanetwork_aspot_fill_draggable_ui_settings_element($element);
+        $previewing_settings['tvs_aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_tgi, $lang, $element_name);
+      }
+    }
+  }
+
+  if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
+    _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_state['node'], $lang, $previewing_settings['aspot_elements']);
+  }
+
+  if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
+    _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_state['node'], $lang, $previewing_settings['tvs_aspot_elements']);
+  }
+
+  // Adding states to form
+  _usanetwork_aspot_form_add_draggable_elements_states($form, $lang);
+  $form['aspot_draggable_items_data'] = array(
+    '#type' => 'hidden',
+    '#value' => '',
+  );
+
+  $form['#attached']['js'][] = libraries_get_path('draggable_background') . '/draggable_background.js';
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot.giui.js';
+  $form['#attached']['js'][] = array(
+    'data' => array(
+      'giui_settings' => $previewing_settings
+    ),
+    'type' => 'setting',
+  );
+
+  $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_aspot') . '/css/usanetwork_aspot.main.css';
+  $form['#validate'][] = 'usanetwork_aspot_validate';
+  $form['#submit'][] = 'usanetwork_aspot_submit_draggable_ui_items_submit';
 }
 
 /**
@@ -36,40 +167,75 @@ function usanetwork_aspot_validate(&$form, &$form_state) {
     if (isset($form_state['values']['field_webm_video_url'][$lang][0]['value']) && $form_state['values']['field_webm_video_url'][$lang][0]['value'] == '') {
       form_error($form['field_webm_video_url'], t('Webm Video URL is required field when "This is an Animated A-Spot" checked.'));
     }
-    if (isset($form_state['values']['field_mp4_video_url'][$lang][0]['value']) && !filter_var($form_state['values']['field_mp4_video_url'][$lang][0]['value'], FILTER_VALIDATE_URL)){
+    if (isset($form_state['values']['field_mp4_video_url'][$lang][0]['value']) && !filter_var($form_state['values']['field_mp4_video_url'][$lang][0]['value'], FILTER_VALIDATE_URL)) {
       form_error($form['field_mp4_video_url'], t('This is not a correct URL in MP4 Video URL field'));
     }
-    if (isset($form_state['values']['field_webm_video_url'][$lang][0]['value']) && !filter_var($form_state['values']['field_webm_video_url'][$lang][0]['value'], FILTER_VALIDATE_URL)){
+    if (isset($form_state['values']['field_webm_video_url'][$lang][0]['value']) && !filter_var($form_state['values']['field_webm_video_url'][$lang][0]['value'], FILTER_VALIDATE_URL)) {
       form_error($form['field_webm_video_url'], t('This is not a correct URL in Webm Video URL field'));
     }
   }
+
+  $fields_to_be_analyzed = array(
+    'field_aspot_gi_cta',
+    'field_aspot_tgi_cta',
+  );
+
+  foreach ($fields_to_be_analyzed as $field_name) {
+    if (!empty($form_state['values'][$field_name][$lang])) {
+      foreach ($form_state['values'][$field_name][$lang] as $field_index => $field_values) {
+        if (!empty($field_values['url'])) {
+          $path = drupal_get_normal_path($field_values['url']);
+
+          if (!drupal_valid_path($path)) {
+            form_set_error($field_name, t('Please check URL.'));
+          }
+        }
+      }
+    }
+  }
 }
+
+/**
+ * Implements submitting callback for A-Spot page settings.
+ */
+function usanetwork_aspot_submit_draggable_ui_items_submit(&$form, &$form_state) {
+  $form_language = isset($form_state['values']['language'])
+    ? $form_state['values']['language']
+    : LANGUAGE_NONE;
+
+  $draggable_items_data = !empty($form_state['input']['aspot_draggable_items_data'])
+    ? $form_state['input']['aspot_draggable_items_data']
+    : '';
+
+  $form_state['values']['field_aspot_gi_draggable_data'][$form_language][0]['value'] = $draggable_items_data;
+}
+
 /**
  * Implements hook_preprocess_node().
  */
 function usanetwork_aspot_preprocess_node(&$vars) {
-  if ($vars['type'] == 'usa_homepage'){
+  if ($vars['type'] == 'usa_homepage') {
     $lang = $vars['language'];
-    if (isset($vars['field_usa_hp_arefs'])){
+    if (isset($vars['field_usa_hp_arefs'])) {
       usanetwork_aspot_aspot_settings($vars['field_usa_hp_arefs'], $lang);
     }
   }
-  if ($vars['type'] == 'tv_show'){
+  if ($vars['type'] == 'tv_show') {
     $lang = $vars['language'];
-    if (isset($vars['field_usa_tv_a_spot'][$lang])){
-      usanetwork_aspot_aspot_settings($vars['field_usa_tv_a_spot'][$lang], $lang); // @todo use $node_wrapper
+    if (isset($vars['field_usa_tv_a_spot'][$lang])) {
+      usanetwork_aspot_aspot_settings($vars['field_usa_tv_a_spot'][$lang], $lang);
     }
   }
   if ($vars['type'] == 'usanetwork_aspot') {
     $vars['image_alt'] = '';
     $node_wrapper = entity_metadata_wrapper('node', $vars['node']);
-    if(!empty($vars['node']->field_usa_aspot_desktop)) {
+    if (!empty($vars['node']->field_usa_aspot_desktop)) {
       $image_file = $node_wrapper->field_usa_aspot_desktop->value();
       $image_alt = $image_file['alt'];
       $vars['image_alt'] = $image_alt;
     }
     $current_path = current_path();
-    if ($current_path == 'node/'.$vars['nid']) {
+    if ($current_path == 'node/' . $vars['nid']) {
       $lang = $vars['language'];
       if ($vars['field_animated_a_spot'][$lang][0]['value']) {
         $vars['aspot_page'] = TRUE;
@@ -87,13 +253,284 @@ function usanetwork_aspot_preprocess_node(&$vars) {
   }
 }
 
-function usanetwork_aspot_aspot_settings($aspot_array, $lang){
-  foreach($aspot_array as $aspot){
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_aspot_block_info() {
+  $blocks = array();
+
+  // Looks like this block only for testing.
+  $blocks['usanetwork_aspot_carousel'] = array(
+    'info' => t('ASpot: carousel'),
+    'cache' => DRUPAL_NO_CACHE, // @TODO: change to cacheable
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_aspot_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    // Looks like this block only for testing.
+    case 'usanetwork_aspot_carousel':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_aspot_carousel_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
+            path_to_theme('aurora_usa') . '/javascripts/jquery.easing.1.3.js',
+            path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',
+            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
+          ),
+        ),
+      );
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_aspot_theme() {
+  return array(
+    'usanetwork_aspot_carousel_slide' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_class' => NULL,
+        'show_poster' => array(
+          'mobile' => NULL,
+          'mobile_retina' => NULL,
+          'tablet' => NULL,
+          'tablet_retina' => NULL,
+          'desktop' => NULL,
+          'desktop_retina' => NULL,
+        ),
+        'show_title_prefix' => NULL,
+        'show_title_prefix_style' => NULL,
+        'show_title' => NULL,
+        'show_title_style' => NULL,
+        'show_image_bg_offset' => NULL,
+        'cta_buttons' => array(
+          0 => array(
+            'url' => NULL,
+            'text' => NULL,
+          ),
+        ),
+        'social_meter' => array(),
+      ),
+      'template' => 'templates/usanetwork-aspot-carousel-slide',
+    ),
+    'usanetwork_aspot_carousel' => array(
+      'variables' => array(
+        'slides' => array(),
+      ),
+      'template' => 'templates/usanetwork-aspot-carousel',
+    ),
+    'usanetwork_aspot_tvshow_slide' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_class' => NULL,
+        'show_poster' => array(
+          'mobile' => NULL,
+          'desktop' => NULL,
+        ),
+        'show_title_prefix' => NULL,
+        'show_title_prefix_style' => NULL,
+        'show_title' => NULL,
+        'show_title_style' => NULL,
+        'show_image_bg_offset' => NULL,
+        'cta_buttons' => array(
+          0 => array(
+            'url' => NULL,
+            'text' => NULL,
+          ),
+        ),
+        'social_meter' => array(),
+      ),
+      'template' => 'templates/usanetwork-aspot-tvshow-slide',
+    ),
+  );
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_aspot_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: Desktop 2500x1094.
+  $styles['2500x1094'] = array(
+    'name' => '2500x1094',
+    'label' => '2500x1094',
+    'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 2500,
+          'height' => 1094,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 2500,
+          'height' => 1094,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Tablet 1024px x 448px.
+  $styles['1024x448'] = array(
+    'name' => '1024x448',
+    'label' => '1024x448',
+    'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1024,
+          'height' => 448,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1024,
+          'height' => 448,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Tablet retina 2048x896.
+  $styles['2048x896'] = array(
+    'name' => '2048x896',
+    'label' => '2048x896',
+    'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 2048,
+          'height' => 896,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 2048,
+          'height' => 896,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Mobile 640x640.
+  $styles['640x640'] = array(
+    'name' => '640x640',
+    'label' => '640x640',
+    'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 640,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 640,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Mobile retina 1280x1280.
+  $styles['1280x1280'] = array(
+    'name' => '1280x1280',
+    'label' => '1280x1280',
+    'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 1280,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 1280,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+function usanetwork_aspot_aspot_settings($aspot_array, $lang) {
+  foreach ($aspot_array as $aspot) {
     $node = node_load($aspot['target_id']);
     if ($node->field_animated_a_spot[$lang][0]['value']) {
-      if(drupal_is_front_page()){
+      if (drupal_is_front_page()) {
         $show = 'home';
-      } else {
+      }
+      else {
         $show = drupal_get_path_alias();
       }
       $mp4_url = $node->field_mp4_video_url[$lang][0]['value'];
@@ -107,4 +544,646 @@ function usanetwork_aspot_aspot_settings($aspot_array, $lang){
       break(1);
     }
   }
+}
+
+function _usanetwork_aspot_carousel_block() {
+  if (arg(0) && arg(0) == 'admin') {
+    return '';
+  }
+
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+  if (empty($homepage['node'])) {
+    return '';
+  }
+  $homepage_nids = array_keys($homepage['node']);
+  if (empty($homepage_nids[0])) {
+    return '';
+  }
+  $homepage_node = node_load($homepage_nids[0]);
+  $carousel_nodes = _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node);
+  $output_array = array();
+
+  if (!empty($carousel_nodes)) {
+    $slide_speed = reset(field_get_items('node', $homepage_node, 'field_usa_slide_speed'));
+    $slide_speed = !empty($slide_speed['value']) ? $slide_speed['value'] : 6000;
+    $slide_autoscroll = reset(field_get_items('node', $homepage_node, 'field_usa_autoscroll'));
+    $slide_autoscroll = !empty($slide_autoscroll['value']) ? $slide_autoscroll['value'] : 0;
+    $js_settings = array(
+      'slideshowAutoplay' => $slide_autoscroll,
+      'slideshowSpeed' => $slide_speed
+    );
+    drupal_add_js(array('sliderAspot' => $js_settings), array('type' => 'setting'));
+    foreach ($carousel_nodes as $carousel_node) {
+      $output_array[] = _usanetwork_aspot_render_carousel_node($carousel_node['aspot_node'], $carousel_node['show_node']);
+    }
+  }
+
+  if (!empty($output_array)) {
+    return theme('usanetwork_aspot_carousel', array('slides' => $output_array));
+  }
+
+  return '';
+}
+
+function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
+  $enabled_elements = array();
+  $draggable_data = array();
+  $banner_images = array();
+
+  $aspot_node_wrapper = entity_metadata_wrapper('node', $aspot_node);
+
+  if (!empty($aspot_node->field_aspot_enabled_gi)) {
+    $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_gi->value();
+  }
+
+  if (!empty($aspot_node->field_aspot_gi_draggable_data)) {
+    $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
+
+    if (!empty($draggable_data) && is_string($draggable_data)) {
+      $draggable_data = json_decode($draggable_data);
+    }
+  }
+
+  if (!empty($aspot_node->field_usa_aspot_desktop)) {
+    $file = file_load($aspot_node_wrapper->field_usa_aspot_desktop->file->fid->value());
+    $banner_images['desktop'] = $file->uri;
+  }
+
+  if (!empty($aspot_node->field_usa_aspot_mobile)) {
+    $file = file_load($aspot_node_wrapper->field_usa_aspot_mobile->file->fid->value());
+    $banner_images['mobile'] = $file->uri;
+  }
+  else {
+    // Preventing situation when mobile image is empty. Filling it with desktop
+    $banner_images['mobile'] = $banner_images['desktop'];
+  }
+
+  if (!empty($aspot_node->field_usa_aspot_tablet_portrait)) {
+    $file = file_load($aspot_node_wrapper->field_usa_aspot_tablet_portrait->file->fid->value());
+    $banner_images['tablet'] = $file->uri;
+  }
+  else {
+    // Preventing situation when tablet image is empty. Filling it with desktop
+    $banner_images['tablet'] = $banner_images['desktop'];
+  }
+
+  $theme_array = array(
+    'show_url' => !empty($aspot_node->field_usa_aspot_link)
+      ? url($aspot_node_wrapper->field_usa_aspot_link->url->value())
+      : '',
+    'show_class' => !empty($show_node)
+      ? usanetwork_tv_shows_color_show_css_class($show_node)
+      : '',
+    'show_poster' => array(
+      'mobile' => image_style_url('640x640', $banner_images['mobile']),
+      'mobile_retina' => image_style_url('1280x1280', $banner_images['mobile']),
+      'tablet' => image_style_url('1024x448', $banner_images['tablet']),
+      'tablet_retina' => image_style_url('2048x896', $banner_images['tablet']),
+      'desktop' => image_style_url('2500x1094', $banner_images['desktop']),
+    ),
+    'show_title_prefix_style' => isset($draggable_data->data->aspot_elements->title_prefix)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->title_prefix),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title_prefix)
+      )
+      : FALSE,
+    'show_title_style' => isset($draggable_data->data->aspot_elements->title)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->title),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title)
+      )
+      : FALSE,
+    'social_meter_style' => isset($draggable_data->data->aspot_elements->social_meter)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->social_meter),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->social_meter)
+      )
+      : FALSE,
+    'show_image_bg_offset' => !empty($draggable_data->data->aspot_elements->aspot_offset_percent->shiftPercent)
+      ? $draggable_data->data->aspot_elements->aspot_offset_percent->shiftPercent
+      : 0,
+  );
+
+  if (!empty($aspot_node->field_aspot_gi_title_prefix)) {
+    $value = $aspot_node_wrapper->field_aspot_gi_title_prefix->value();
+    $theme_array['show_title_prefix'] = $value['value'];
+  }
+  if (!empty($aspot_node->field_aspot_gi_title)) {
+    $value = $aspot_node_wrapper->field_aspot_gi_title->value();
+    $theme_array['show_title'] = $value['value'];
+  }
+  $theme_array['cta_buttons'] = array();
+  if (!empty($draggable_data->data->aspot_elements) && !empty($aspot_node->field_aspot_gi_cta)) {
+    $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper->field_aspot_gi_cta->value(), $draggable_data->data->aspot_elements);
+  }
+
+
+  if (in_array('social_meter', $enabled_elements) && module_exists('usanetwork_social_meter')) {
+    $theme_array['social_meter'] = usanetwork_social_meter_get($aspot_node);
+  }
+
+  return theme('usanetwork_aspot_carousel_slide', $theme_array);
+}
+
+function usanetwork_aspot_tvshow_render($show_node) {
+  $aspot_field = field_get_items('node', $show_node, 'field_usa_tv_a_spot');
+
+  if (!empty($aspot_field) && is_array($aspot_field)) {
+    foreach ($aspot_field as $aspot) {
+      if (!empty($aspot['target_id'])) {
+        $aspot_node = node_load($aspot['target_id']);
+
+        if ($aspot_node) {
+          return usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node);
+        }
+      }
+    }
+  }
+
+  return '';
+}
+
+function usanetwork_aspot_render($show_node) {
+  $aspot_field = field_get_items('node', $show_node, 'field_usa_tv_a_spot');
+
+  if (!empty($aspot_field) && is_array($aspot_field)) {
+    foreach ($aspot_field as $aspot) {
+      if (!empty($aspot['target_id'])) {
+        $aspot_node = node_load($aspot['target_id']);
+
+        if ($aspot_node) {
+          return _usanetwork_aspot_render_carousel_node($aspot_node, $show_node);
+        }
+      }
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Renders A-Spot slide.
+ *
+ * @param $aspot_node
+ */
+function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
+  $enabled_elements = array();
+  $draggable_data = array();
+  $banner_images = array();
+
+  $aspot_node_wrapper = entity_metadata_wrapper('node', $aspot_node);
+
+  if (!empty($aspot_node->field_aspot_enabled_tgi)) {
+    $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_tgi->value();
+  }
+
+  if (!empty($aspot_node->field_aspot_gi_draggable_data)) {
+    $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
+
+    if (!empty($draggable_data) && is_string($draggable_data)) {
+      $draggable_data = json_decode($draggable_data);
+    }
+  }
+
+  if (!empty($aspot_node->field_usa_tv_aspot_desktop)) {
+    $file = file_load($aspot_node_wrapper->field_usa_tv_aspot_desktop->file->fid->value());
+    $banner_images['desktop'] = $file->uri;
+  }
+
+  if (!empty($aspot_node->field_usa_tv_aspot_mobile)) {
+    $file = file_load($aspot_node_wrapper->field_usa_tv_aspot_mobile->file->fid->value());
+    $banner_images['mobile'] = $file->uri;
+  }
+  else {
+
+    $banner_images['mobile'] = $banner_images['desktop'];
+  }
+
+  $theme_array = array(
+    'show_url' => !empty($aspot_node->field_usa_aspot_link)
+      ? url($aspot_node_wrapper->field_usa_aspot_link->url->value())
+      : '',
+    'show_class' => usanetwork_tv_shows_color_show_css_class($show_node),
+    'show_poster' => array(
+      'mobile' => image_style_url('640x640', $banner_images['mobile']),
+      'desktop' => image_style_url('2490x1418', $banner_images['desktop']),
+    ),
+    'show_title_prefix_style' => isset($draggable_data->data->tvs_aspot_elements->title_prefix)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title_prefix),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title_prefix)
+      )
+      : FALSE,
+    'show_title_style' => isset($draggable_data->data->tvs_aspot_elements->title)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title)
+      )
+      : FALSE,
+    'social_meter_style' => isset($draggable_data->data->tvs_aspot_elements->social_meter)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->social_meter),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->social_meter)
+      )
+      : FALSE,
+  );
+
+  if (!empty($aspot_node->field_aspot_tgi_title_prefix)) {
+    $value = $aspot_node_wrapper->field_aspot_tgi_title_prefix->value();
+    $theme_array['show_title_prefix'] = $value['value'];
+  }
+  if (!empty($aspot_node->field_aspot_tgi_title)) {
+    $value = $aspot_node_wrapper->field_aspot_tgi_title->value();
+
+  }
+
+  $theme_array['cta_buttons'] = array();
+  if (!empty($draggable_data->data->aspot_elements) && !empty($aspot_node->field_aspot_gi_cta)) {
+    $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper->field_aspot_tgi_cta->value(), $draggable_data->data->tvs_aspot_elements);
+  }
+  $theme_array['show_title'] = $value['value'];
+  if (in_array('social_meter', $enabled_elements) && module_exists('usanetwork_social_meter')) {
+    $theme_array['social_meter'] = usanetwork_social_meter_get($aspot_node);
+  }
+  
+  drupal_add_js(drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js');
+
+  return theme('usanetwork_aspot_tvshow_slide', $theme_array);
+}
+
+function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
+
+  $output = 'position: absolute; ';
+  $output .= 'display: ';
+  $output .= isset($draggable_data_element->display) ? $draggable_data_element->display. '; ' : 'none; ';
+  $output .= 'left: ';
+  $output .= isset($draggable_data_element->percentX) ? $draggable_data_element->percentX . '%; ' : 'auto; ';
+  $output .= 'top: ';
+  $output .= isset($draggable_data_element->percentY) ? $draggable_data_element->percentY . '%;' : 'auto;';
+  return $output;
+}
+
+function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_element) {
+
+  $output = 'position: absolute; ';
+  $output .= 'display: ';
+  $output .= isset($draggable_data_element->display) ? $draggable_data_element->display. '; ' : 'none; ';
+  $output .= 'left: ';
+  $output .= isset($draggable_data_element->percentMX) ? $draggable_data_element->percentMX . '%; ' : 'auto; ';
+  $output .= 'top: ';
+  $output .= isset($draggable_data_element->percentMY) ? $draggable_data_element->percentMY . '%;' : 'auto;';
+  return $output;
+}
+
+function _usanetwork_aspot_get_draggable_cta_buttons($aspot_gi_cta_elements, $draggable_data_cta) {
+  $cta_buttons_theme_data = array();
+  if (!empty($aspot_gi_cta_elements) && !empty($draggable_data_cta)) {
+    $cta_index = 0;
+    foreach ($aspot_gi_cta_elements as $cta_element) {
+      $cta_draggable_name = 'cta_button_' . $cta_index;
+      if (!empty($draggable_data_cta->$cta_draggable_name)) {
+        $cta_buttons_theme_data[$cta_index] = array(
+          'url' => $cta_element['url'],
+          'text' => $cta_element['title'],
+          'style' => array(
+            'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data_cta->$cta_draggable_name),
+            'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_cta->$cta_draggable_name)
+          )
+        );
+      }
+      $cta_index++;
+    }
+  }
+  return $cta_buttons_theme_data;
+}
+
+function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
+  $found_nodes = array();
+
+  if (empty($homepage_node->field_usa_hp_arefs)) {
+    return array();
+  }
+  $arefs = field_get_items('node', $homepage_node, 'field_usa_hp_arefs');
+
+  if (!empty($arefs)) {
+    foreach ($arefs as $aref) {
+      $show_node = NULL;
+
+      if (empty($aref['entity'])) {
+        $aref['entity'] = node_load($aref['target_id']);
+      }
+
+      $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
+      $aspot_node = $aref['entity'];
+
+      if (!empty($show_node_field[0]['target_id'])) {
+        $show_node = node_load($show_node_field[0]['target_id']);
+      }
+
+      $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
+        'aspot_node' => $aspot_node,
+        'show_node' => $show_node,
+      );
+    }
+  }
+
+  return $found_nodes;
+}
+
+/**
+ * Returns value of form field on node altering.
+ */
+function _usanetwork_aspot_get_form_state_field_value(
+  $form_state, $field_name, $language, $default = ''
+) {
+  $field_item = !empty($form_state['node']->$field_name)
+    ? $form_state['node']->$field_name
+    : array();
+
+  if (!empty($field_item)) {
+    return reset(reset($field_item[$language]));
+  }
+
+  return $default;
+}
+
+/**
+ * Returns default settings for draggable UI element.
+ */
+function _usanetwork_aspot_get_draggable_ui_default_settings_element() {
+  return array(
+    'value' => NULL,
+    'enabled' => FALSE,
+    'display' => 'none',
+    'percentX' => NULL,
+    'percentY' => NULL,
+    'invertX' => NULL,
+    'invertY' => NULL,
+    'percentMX' => NULL,
+    'percentMY' => NULL,
+    'invertMX' => NULL,
+    'invertMY' => NULL,
+  );
+}
+
+/**
+ * Fills draggable UI element from settings array. The list of default fields
+ * are presented in "_usanetwork_aspot_get_draggable_ui_default_settings_element()".
+ */
+function _usanetwork_aspot_fill_draggable_ui_settings_element($setting) {
+  if (is_array($setting)) {
+    $setting = (object) $setting;
+  }
+
+  $element = _usanetwork_aspot_get_draggable_ui_default_settings_element();
+
+  if (!empty($setting->value)) {
+    $element['value'] = $setting->value;
+  }
+
+  foreach ($setting as $setting_attribute => $value) {
+    if (!empty($setting_attribute)) {
+      $element[$setting_attribute] = $value;
+    }
+  }
+
+  return $element;
+}
+
+/**
+ * Checks if draggable element is enabled in administrative panel.
+ */
+function _usanetwork_aspot_is_ui_draggable_element_enabled($element_field, $language, $element_name) {
+  if (!empty($element_field)) {
+    foreach ($element_field[$language] as $element_field_setting) {
+      if (!empty($element_field_setting['value']) && $element_field_setting['value'] == $element_name) {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Fills call to action buttons with multiple items supporting.
+ */
+function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, &$aspot_elements) {
+  if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
+    $cta_buttons = $form_node->field_aspot_gi_cta[$language];
+
+    foreach ($cta_buttons as $cta_button_index => $cta_button) {
+      $new_button_id = 'cta_button_' . $cta_button_index;
+      $new_button_title = 'CTA ' . $cta_button['title'];
+      $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_gi, $language, 'cta_button');
+
+      if (isset($aspot_elements[$new_button_id])) {
+        $aspot_elements[$new_button_id]['value'] = $new_button_title;
+        $aspot_elements[$new_button_id]['enabled'] = $new_button_enabled;
+      }
+      else {
+        $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
+          'value' => 'CTA ' . $new_button_title,
+          'enabled' => $new_button_enabled,
+          'display' => 'none',
+          'percentX' => 'auto',
+          'percentY' => 'auto',
+          'invertX' => NULL,
+          'invertY' => NULL,
+          'percentMX' => 'auto',
+          'percentMY' => 'auto',
+          'invertMX' => NULL,
+          'invertMY' => NULL,
+        ));
+      }
+    }
+  }
+}
+
+/**
+ * Fills call to action buttons with multiple items supporting.
+ */
+function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $language, &$aspot_elements) {
+  if (isset($form_node->field_aspot_tgi_cta[$language]) && !empty($form_node->field_aspot_tgi_cta[$language])) {
+    $cta_buttons = $form_node->field_aspot_tgi_cta[$language];
+
+    foreach ($cta_buttons as $cta_button_index => $cta_button) {
+      $new_button_id = 'cta_button_' . $cta_button_index;
+      $new_button_title = 'CTA ' . $cta_button['title'];
+      $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_tgi, $language, 'cta_button');
+
+      if (isset($aspot_elements[$new_button_id])) {
+        $aspot_elements[$new_button_id]['value'] = $new_button_title;
+        $aspot_elements[$new_button_id]['enabled'] = $new_button_enabled;
+      }
+      else {
+        $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
+          'value' => 'CTA ' . $new_button_title,
+          'enabled' => $new_button_enabled,
+          'display' => 'none',
+          'percentX' => 'auto',
+          'percentY' => 'auto',
+          'invertX' => NULL,
+          'invertY' => NULL,
+          'percentMX' => 'auto',
+          'percentMY' => 'auto',
+          'invertMX' => NULL,
+          'invertMY' => NULL,
+        ));
+      }
+    }
+  }
+}
+
+/**
+ * Returns number of CTA buttons that are presented in administrative panel.
+ */
+function _usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_node, $language) {
+  if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
+    return count($form_node->field_aspot_gi_cta[$language]);
+  }
+
+  return 0;
+}
+
+/**
+ * Returns number of CTA buttons that are presented in administrative panel.
+ */
+function _usanetwork_aspot_get_tvs_ui_draggable_cta_buttons_count($form_node, $language) {
+  if (isset($form_node->field_aspot_tgi_cta[$language]) && !empty($form_node->field_aspot_tgi_cta[$language])) {
+    return count($form_node->field_aspot_tgi_cta[$language]);
+  }
+
+  return 0;
+}
+
+/**
+ * Generates UI input name for forms with #TREE = TRUE.
+ */
+function _usanetwork_aspot_form_get_generated_multiple_field_name($field_name, $field_item_name = NULL, $language = LANGUAGE_NONE) {
+  return ':input[name="' . $field_name . '[' . $language . '][' . $field_item_name . ']"]';
+}
+
+/**
+ * Provides altering rules for draggable items.
+ */
+function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
+  return array(
+    'field_aspot_gi_title_prefix' => array(
+      'altering_element' => 'field_aspot_gi_title_prefix',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'title_prefix',
+    ),
+    'field_aspot_gi_title' => array(
+      'altering_element' => 'field_aspot_gi_title',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'title',
+    ),
+    'field_aspot_gi_cta' => array(
+      'altering_element' => 'field_aspot_gi_cta',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'cta_button',
+    ),
+    'field_aspot_tgi_title_prefix' => array(
+      'altering_element' => 'field_aspot_tgi_title_prefix',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_tgi',
+      'field_item_name' => 'title_prefix',
+    ),
+    'field_aspot_tgi_title' => array(
+      'altering_element' => 'field_aspot_tgi_title',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_tgi',
+      'field_item_name' => 'title',
+    ),
+    'field_aspot_tgi_cta' => array(
+      'altering_element' => 'field_aspot_tgi_cta',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_tgi',
+      'field_item_name' => 'cta_button',
+    ),
+  );
+}
+
+/**
+ * Adds states for draggable items.
+ */
+function _usanetwork_aspot_form_add_draggable_elements_states(&$form, $language = LANGUAGE_NONE) {
+  $altering_elements_rules = _usanetwork_aspot_form_get_draggable_elements_states_rules();
+
+  if (!empty($altering_elements_rules)) {
+    foreach ($altering_elements_rules as $altering_elements_rule) {
+      $ae_name = $altering_elements_rule['altering_element'];
+      $ae_state_name = $altering_elements_rule['state_name'];
+      $ae_field_name = $altering_elements_rule['field_name'];
+      $ae_field_item_name = $altering_elements_rule['field_item_name'];
+      $ae_generated_field_name = _usanetwork_aspot_form_get_generated_multiple_field_name($ae_field_name, $ae_field_item_name, $language);
+      $form[$ae_name]['#states'][$ae_state_name][$ae_generated_field_name] = array(
+        'checked' => TRUE,
+      );
+    }
+  }
+}
+
+function _usanetwork_aspot_get_show_nid($node) {
+  $field_show = field_get_items('node', $node, 'field_show');
+
+  if (!empty($field_show)) {
+    return reset(reset($field_show));
+  }
+
+  return NULL;
+}
+
+/**
+ * Accepts next data in query:
+ * array(
+ *   nid => node if of A-Spot
+ *   page_type => type of A-Spot ('homepage', 'showpage')
+ *   variable_name => name of variable ('title', 'title_prefix', etc.)
+ *   value => JSON
+ * );
+ */
+function ajax_aspot_draggable_ui_data_set() {
+  $query = drupal_get_query_parameters();
+
+  if (empty($query['nid']) || empty($query['aspot_type']) || empty($query['variable_name'])) {
+    return drupal_json_output(FALSE);
+  }
+
+  $node = node_load($query['nid']);
+
+  if (empty($node) || (!empty($node) && $node->type != 'usanetwork_aspot')) {
+    return drupal_json_output(FALSE);
+  }
+
+  $field_name = '';
+
+  switch ($query['aspot_type']) {
+    case 'homepage': $field_name = 'field_aspot_gi_draggable_data'; break;
+    case 'showpage': $field_name = 'field_aspot_tgi_draggable_data'; break;
+  }
+
+  $field_data = field_get_items('node', $node, $field_name);
+
+  if (!empty($field_data) && !empty($field_data[0]['value'])) {
+    $field_data = json_decode($field_data[0]['value']);
+  }
+
+  foreach (json_decode($query['value']) as $new_key => $new_value) {
+    $field_data->{$query['variable_name']}->$new_key = $new_value;
+  }
+
+  $update_query = db_update('field_data_' . $field_name);
+  $update_query->fields(array(
+    $field_name . '_value' => json_encode($field_data),
+  ));
+  $update_query->condition('entity_type', 'node');
+  $update_query->condition('entity_id', $query['nid']);
+  $update_query->execute();
+
+  drupal_json_output(TRUE);
 }

@@ -18,11 +18,13 @@ files[] = GigyaUser.inc
 files[] = includes/gigya.field.inc
 files[] = includes/gigya.rules.inc
 files[] = includes/GigyaAccount.inc
+files[] = includes/gigya_comments.inc
+files[] = includes/placeholders.inc
 
 
-; Information added by  packaging script on 2013-11-18
-version = "7.x-4.4"
+; Information added by Drupal.org packaging script on 2014-10-14
+version = "7.x-4.6"
 core = "7.x"
 project = "gigya"
-datestamp = "1384767810"
+datestamp = "1413281943"
 

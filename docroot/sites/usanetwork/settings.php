@@ -8,12 +8,17 @@
  *
  * See docroot/.p7settings/README.settings.php.md for more information.
  */
+/**
+ * Start with a reasonable minimum php memory limit.
+ */
+ini_set('memory_limit', '512M');
 
 // Set $site to the string shortname of the current multisite.
 $conf['pub_site_shortname'] = 'usanetwork';
 
 // Include the environment-agnostic file from Publisher7 core.
-require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+//require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+require_once dirname(__FILE__) . "/../../profiles/publisher/settings.publisher.php";
 
 // Include the local settings file if we're on a local machine. This
 // is still included conditionally because Jenkins clones lack a settings.local.
@@ -42,9 +47,12 @@ if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
     // fallback behavior, e.g., a 404 page
   }
 }
-elseif (file_exists('/var/www/site-php')) {
+elseif (file_exists('/var/www/site-php/usanetwork')) {
   require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
-}
+} 
+elseif (file_exists('/var/www/site-php/nbcuusa')) {
+  require('/var/www/site-php/nbcuusa/nbcuusa-settings.inc');
+} 
 
 // Next, determine the environment we're in.  Environment types (qa, acceptance,
 // stage and prod) are defined in project-config.yml.

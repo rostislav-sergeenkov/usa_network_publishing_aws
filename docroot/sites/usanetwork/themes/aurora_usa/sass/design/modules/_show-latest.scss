@@ -1,0 +1,175 @@
+.show-latest-block {
+  @include clear();
+  background: $footer-links;
+  border-bottom: 2px solid;
+  margin-bottom: 100px;
+  padding: 40px 16px;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-1901-width) {
+    margin-bottom: 190px;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 40px 10px;
+  }
+  ul {
+    @include clear();
+    margin: 0 auto;
+    max-width: 1868px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    &.odd {
+      li {
+        &.first {
+          margin-bottom: 1.47vw;
+          @include breakpoint($bp-min-1901-width) {
+            margin-bottom: 29px;
+          }
+          > div {
+            float: left;
+            height: 25.4vw;
+            margin-right: 1.6%;
+            width: 49.2%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+        &.last {
+          > div {
+            float: left;
+            height: 25.4vw;
+            width: 49.2%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+              margin-bottom: 1.47vw;
+              &:first-child {
+                margin-right: 1.6%;
+              }
+            }
+            &:nth-child(2) {
+              @include breakpoint($bp-min-641-width) {
+                left: 0;
+                position: absolute;
+                top: 26.87vw;
+              }
+              @include breakpoint($bp-min-1901-width) {
+                top: 512px;
+              }
+            }
+            &:last-child {
+              float: right;
+              height: 52.27vw;
+              @include breakpoint($bp-min-1901-width) {
+                height: 995px;
+              }
+              @include breakpoint($bp-640-width) {
+                height: 51.6vw;
+                float: none;
+                margin-bottom: 0;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.even {
+      li {
+        &.first {
+          > div {
+            float: left;
+            height: 25.4vw;
+            margin-bottom: 1.47vw;
+            width: 49.2%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+              margin-bottom: 29px;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
+            &:first-child {
+              height: 52.27vw;
+              margin-right: 1.6%;
+              @include breakpoint($bp-min-1901-width) {
+                height: 995px;
+              }
+              @include breakpoint($bp-640-width) {
+                height: 51.6vw;
+                margin-right: 0;
+                width: 100%;
+              }
+            }
+            &:nth-child(2) {
+              @include breakpoint($bp-640-width) {
+                margin-right: 1.6%;
+              }
+            }
+          }
+        }
+        &.last {
+          > div {
+            float: left;
+            height: 25.4vw;
+            margin-right: 1.6%;
+            width: 49.2%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+    li {
+      float: left;
+      height: auto;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      @extend %show-latest-promo;
+      @extend %meta;
+      > div {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+    }
+  }
+  .latest-ad {
+    background: $video-promo-back-gray;
+    height: 90px;
+    margin: 16px auto;
+    width: 728px;
+    @include breakpoint($bp-768-width) {
+      height: auto;
+      min-height: 50px;
+      max-height: 90px;
+      max-width: 728px;
+      width: 100%;
+    }
+    @include breakpoint($bp-640-width) {
+      height: 50px;
+      margin: 1.47vw auto;
+      max-width: 100%;
+      width: 300px;
+    }
+  }
+}

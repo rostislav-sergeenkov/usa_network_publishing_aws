@@ -1,95 +1,236 @@
-@import 'footer/extend';
-
-#footer {
-  li, ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  #jPanelMenu-menu & {
-    .region-footer {
-      border-top: none;
-      background-color: transparent;
-    }
-    .slide-panel-link {
-      background: none;
-      border-width: 0;
-      // font-size: $base-font-size;
-      // line-height: $base-line-height;
-      text-transform: none;
-    }
-  }
-}
-
-.region-footer {
-  border-top: 1px solid $gray-med-dark;
-  padding: 3px 15px 65px;
-  overflow: hidden;
+footer {
+  background: $footer-back-home;
+  min-width: 300px;
   position: relative;
-  z-index: 50;
-  background-color: $black-true;
-  @extend %footer-links;
-  @include breakpoint($bp-menu-switch) {
-    @include semi-12;
-    padding-bottom: 85px;
-    padding-left: 25px;
-    padding-right: 25px;
-    &.usa-showmenu-loaded {
-      padding-bottom: 135px;
+  width: 100%;
+  .block-usanetwork-lyris {
+    background: $footer-promo-links;
+    padding: 30px 0;
+    border-top: 1px solid $gray-extra-light;
+    @include breakpoint($bp-1024-width) {
+      padding: 20px 0;
+    }
+    form {
+       > div {
+        margin: 0 auto;
+        max-width: 1100px;
+        width: 100%;
+        color: $footer-back-home;
+        font-family: $avalon-demi;
+        font-size: 14px;
+        letter-spacing: 1px;
+        line-height: 30px;
+        text-transform: uppercase;
+        text-align: center;
+        .placeholder {
+          font-style: normal;
+        }
+        label {
+          display: inline-block;
+          padding-right: 35px;
+          @include breakpoint($bp-1280-width) {
+            padding-right: 18px;
+          }
+          @include breakpoint($bp-768-width) {
+            display: block;
+            padding: 0;
+            margin: 0;
+          }
+        }
+        .form-item-email {
+          display: inline-block;
+          padding-right: 35px;
+          margin: 0;
+          @include breakpoint($bp-1024-width) {
+            padding-right: 18px;
+          }
+          @include breakpoint ($bp-320-width) {
+            margin-bottom: 10px;
+          }
+          input {
+            color: $footer-back-home;
+            background: none;
+            border: 2px solid #3d3d3d;
+            outline: none;
+            padding: 0 20px;
+            margin: 0;
+            height: inherit;
+            font-family: $avalon-medium;
+            line-height: 26px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            overflow: hidden;
+            &::-webkit-input-placeholder {color:$footer-back-home; text-transform: uppercase;}
+            &::-moz-placeholder          {color:$footer-back-home; text-transform: uppercase;}
+            &:-moz-placeholder           {color:$footer-back-home; text-transform: uppercase;}
+            &:-ms-input-placeholder      {color:$footer-back-home; text-transform: uppercase;}
+
+            @include breakpoint($bp-768-width) {
+              border-width: 1px;
+            }
+            @include breakpoint($bp-480-width) {
+              display: block;
+              padding: 0 5px;
+            }
+          }
+        }
+         .form-submit-wrapper {
+           display: inline-block;
+           position: relative;
+           input {
+             font-family: $avalon-medium;
+             line-height: 30px;
+             letter-spacing: 1px;
+             color: $text-color;
+             border: 0;
+             text-transform: uppercase;
+             padding: 0 40px 0 20px;
+             position: relative;
+           }
+           &:after {
+             color: #ffffff;
+             content: "\e608";
+             display: block;
+             font-family: "ico-font";
+             font-size: 16px;
+             position: absolute;
+             left: 76px;
+             top: 0;
+           }
+        }
+      }
     }
   }
-  li a {
-    margin-right: 15px;
-    padding: 5px 0;
-    display: block;
-    @include breakpoint($bp-menu-switch) {
-      display: inline-block;
-      line-height: 2.1em;
-      padding-top: 10px;
-      padding-bottom: 5px;
+  .footer-menu-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .legal-and-social {
+    background: $bottom-footer-back-home;
+    padding: 20px 45px;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-768-width) {
+      padding: 20px 30px;
+    }
+    @include breakpoint($bp-480-width) {
+      padding: 10px;
+    }
+    ul {
+      max-width: 85%;
+    }
+    li {
+      float: left;
+      @include linksSeparator(12px, 6px, 6px, $footer-link-separator);
+      &:first-child {
+        padding-left: 0px;
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+      a {
+        color: $footer-links;
+        font-family: $avalon-medium;
+        font-size: 12px;
+        text-decoration: none;
+        text-transform: uppercase;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .copyright {
+      clear: both;
+      color: $footer-links;
+      float: none;
+      font-size: 12px;
+      max-width: 85%;
+      padding-top: 4px;
+      text-transform: uppercase;
+    }
+    .footer-social-bar {
+      position: absolute;
+      right: 45px;
+      @include breakpoint($bp-768-width) {
+        right: 30px;
+      }
+      @include breakpoint($bp-480-width) {
+        right: 10px;
+      }
+      a {
+        float: left;
+        display: block;
+        margin-left: 6px;
+        &.instagram {
+          @include sprite-background(insta-icon);
+        }
+        &.twitter {
+          @include sprite-background(twitter-icon);
+        }
+        &.facebook {
+          @include sprite-background(fb-icon);
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  .shows-menu, .app-and-services-menu {
+    ul {
+      list-style: none;
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      -ms-column-count: 3;
+      -o-column-count: 3;
+      column-count: 3;
+      -webkit-column-gap: 2em;
+      -moz-column-gap: 2em;
+      -ms-column-gap: 2em;
+      -o-column-gap: 2em;
+      column-gap: 2em;
+      margin: 20px 0px 40px 155px;
+      @include breakpoint($bp-1024-width) {
+        margin: 20px 0px 40px 75px;
+      }
+      @include breakpoint($bp-768-width) {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        -ms-column-count: 2;
+        -o-column-count: 2;
+        column-count: 2;
+        margin: 20px 0px 40px 55px;
+      }
+      margin-bottom: 10px;
+      a {
+        color: $footer-links;
+        font-family: $avalon-medium;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        span {
+          color: $footer-new-show;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
   h2 {
-    display: none;
-  }
-  li {
-    display: block;
-    line-height: 2em;
-    @include breakpoint($bp-menu-switch) {
-      display: inline-block;
-    }
-  }
-  .block {
-    float: left;
-  }
-  #footer-links a {
-    padding: 2px 0 10px;
-    @include breakpoint($bp-menu-switch) {
-      padding-top: 10px;
-      padding-bottom: 5px;
+    color: $footer-links;
+    font-family: $avalon-demi;
+    font-size: 20px;
+    margin-top: 0;
+    padding-left: 50px;
+    padding-top: 40px;
+    text-transform: uppercase;
+    @include breakpoint($bp-768-width) {
+      padding-left: 30px;
     }
   }
 }
 
-
-#block-menu-usa-footer-bottom {
-  a {
-    margin-right: 15px;
-    padding: 10px 0;
-  }
-}
-
-/* overriding module styles - remove from there? */
-#footer-message,
-#footer-message-offside {
-  @extend %regular-12;
-  color: $gray-dark-light;
-  line-height: 18px;
-  @include breakpoint($bp-menu-switch) {
-    font-size: 10px;
-  }
-}
-
-#block-usanetwork-blocks-usa-footer-message {
-  clear: both;
-}

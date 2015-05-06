@@ -32,7 +32,10 @@
 body {
   @extend %regular;
   color: $text-color;
-  background: $background-color;
+  background-color: $poll-back;
+  max-width: 2500px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 // Selected Text -------------------------------------------------------------- */
@@ -60,6 +63,11 @@ a {
     @include link-transitions($link-transitions);
   }
   text-decoration: none;
+}
+
+.link-color-reset {
+  @include link-colors(transparent, transparent, transparent, transparent, transparent);
+  outline: none!important;
 }
 
 em {
@@ -101,14 +109,18 @@ dl {
   margin-left: 0;
 }
 
-ol {
-  list-style: decimal;
+ol, ul, li {
+  list-style-image: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
-  list-style: disc;
-  li & {
-    list-style-type: circle;
+  &.menu {
+    li {
+      margin: 0;
+    }
   }
 }
 
@@ -131,4 +143,121 @@ figcaption {
 
 address {
   @extend %italic;
+}
+
+.fixed {
+  left: 0;
+  position: fixed!important;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.page-title{
+  padding: 20px;
+  position: relative;
+  h2 {
+    color: $poll-color;
+    font-family: $avalon-medium;
+    font-size: 70px;
+    line-height: 70px;
+    margin: 0;
+    text-transform: uppercase;
+    @include breakpoint($bp-1024-width) {
+      font-size: 60px;
+    }
+    @include breakpoint($bp-768-width) {
+      font-size: 34px;
+      line-height: 70px;
+    }
+    @include breakpoint($bp-480-width) {
+      font-size: 20px;
+    }
+  }
+}
+.load-more-link {
+  bottom: -50px;
+  min-height: 25px;
+  position: absolute;
+  text-align: center;
+  width: calc(100% - 32px);
+  @include breakpoint($bp-min-1901-width) {
+    bottom: -100px;
+  }
+  a {
+    border-bottom: 2px solid $poll-color;
+    color: $poll-color;
+    font-family: $tex-gyreschola-italic;
+    font-size: 16px;
+    padding-bottom: 3px;
+    text-transform: uppercase;
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 30px;
+      padding-bottom: 4px;
+    }
+    &.disabled {
+      display: none;
+    }
+  }
+  .related-content-block & {
+    a {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+  }
+}
+.load-more-loader {
+  background: url(../images/ajax-loader.gif);
+  height: 32px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -16px;
+  width: 32px;
+}
+.node-type-usanetwork-static-page, .node-type-webform {
+  article {
+    .content {
+      margin: auto;
+      font-size: 16px;
+      color: #232323;
+    }
+    .textcontent {
+      margin: auto;
+      padding: 20px;
+      max-width: 1280px;
+      font-size: 16px;
+      color: #232323;
+    }
+    h2 {
+      font-family: $tex-gyreschola-italic;
+      font-size: 16px;
+    }
+    a, a:visited {
+      color:#808080;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #a9a9a9;
+    }
+    strong {
+      font-family: $avalon-demi;
+    }
+    form {
+      margin: auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+    .form-textarea-wrapper textarea {
+      box-sizing: border-box;
+      display: block;
+      height: 170px;
+      margin: 0;
+      width: 100%;
+    }
+  }
+  .show-title-block h1 {
+    font-family: $avalon-demi;
+    max-width: 100%;
+  }
 }

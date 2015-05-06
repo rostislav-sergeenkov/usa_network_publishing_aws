@@ -48,6 +48,41 @@
 #edit-gigya-login-mode .form-disabled label {
   color: #cccccc;
 }
-.hidden {
+.gigya-hidden {
   display: none;
 }
+
+#edit-gigya-raas-mappings .raas-mappings-add {
+  border: 1px solid #cccccc;
+  float: left;
+}
+#edit-gigya-raas-mappings .raas-add-button,
+#edit-gigya-raas-mappings .form-item-gigya-raas-mappings-target,
+#edit-gigya-raas-mappings .form-item-gigya-raas-mappings-source {
+  padding: 0 20px;
+  float: left;
+}
+
+#edit-gigya-raas-mappings-raas-map-add {
+  margin-top: 19px;
+  margin-bottom: 0;
+}
+#edit-gigya-raas-mappings-label-tbl {
+  float: left;
+  clear: both;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+ #raas-mapping-tbl-wrap {
+   float: left;
+   width: 100%;
+ }
+
+ .data-center-other {
+   display: inline-block;
+   margin-left: 5px;
+ }
+
+ .data-center-other .suffix {
+   margin-left: 3px;
+ }

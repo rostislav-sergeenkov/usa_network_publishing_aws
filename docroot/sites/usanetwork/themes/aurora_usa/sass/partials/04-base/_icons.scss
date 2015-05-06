@@ -1,0 +1,214 @@
+.meta-icon {
+  background-size: contain;
+  @extend %meta-icon;
+}
+/*
+.play-icon, .video-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e60f';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.play-icon-half {
+  &:before {
+    @extend %meta-icon;
+    background: none !important;
+    color: #ffffff !important;
+    font-size: 37px !important;
+    content: '\e60e';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.article-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e612';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.game-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e611';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.photo-icon, .gallery-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e610';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.poll-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e60d';
+  }
+}*/
+.social-usa {
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -18px;
+    position: absolute;
+    @include sprite-background(usa-icon);
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:after {
+        @include sprite-background(usa-icon-small);
+      }
+    }
+  }
+}
+
+.social-insta {
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -8px;
+    position: absolute;
+    @include sprite-background(social-insta-icon);
+  }
+}
+
+.social-twitter {
+
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -8px;
+    position: absolute;
+    @include sprite-background(social-twitter-icon);
+  }
+}
+
+.eye-icon {
+  &:before {
+    display: block;
+    content: '\e613';
+    font-family: $ico-font;
+  }
+}
+
+.icons-block {
+  display: block;
+  a {
+    color: #ffffff;
+    display: block;
+    float: left;
+    font-weight: normal;
+    height: auto;
+    margin: 0;
+    margin-right: 27px;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+    &:last-child, .last {
+      margin-right: 0px;
+    }
+    &:before {
+      display: block;
+      font-family: $ico-font;
+      font-size: 16px;
+      width: auto;
+    }
+    &.episode-description {
+      &:before {
+        content: '\e601';
+      }
+    }
+    &.calendar-reminder {
+
+      span {
+        display: none;
+      }
+      &:before {
+        content: '\e600';
+      }
+    }
+    &.facebook {
+      &:before {
+        content: "\e602";
+      }
+    }
+    &.twitter {
+      &:before {
+        content: "\e603";
+      }
+    }
+    &.tumblr {
+      &:before {
+        content: "\e604";
+      }
+    }
+    &.pinterest {
+      &:before {
+        content: "\e605";
+      }
+    }
+    &.plus-icon {
+      &:before {
+        content: "\e606";
+      }
+    }
+  }
+}

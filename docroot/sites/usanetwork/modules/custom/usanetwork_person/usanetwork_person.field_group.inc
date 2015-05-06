@@ -178,6 +178,7 @@ function usanetwork_person_field_group_info() {
       0 => 'field_usa_og_description',
       1 => 'field_seo_h1',
       2 => 'field_seo_page_title',
+      3 => 'field_gigya_share_bar',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -240,7 +241,8 @@ function usanetwork_person_field_group_info() {
       3 => 'field_usa_character_thumb',
       4 => 'field_hide_cast_carousel',
       5 => 'field_hide_social_follow',
-      6 => 'group_social',
+      6 => 'field_actor_bio',
+      7 => 'group_social',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

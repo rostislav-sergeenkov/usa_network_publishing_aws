@@ -3112,7 +3112,7 @@ function _usanetwork_microsite_get_facebook_tracking_html() {
     return NULL;
   }
 
-  return _usanetwork_facebook_tracking_post_render('', array());
+  return usanetwork_facebook_tracking_html();
 }
 
 function usanetwork_microsite_get_metategs($entity, $entity_type) {

@@ -31,6 +31,14 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/videos-landing/get-related/%node/%/%/%/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_tv_shows_get_videos_landing_related_content_ajax',
+    'page arguments' => array(3, 4, 5, 6, 7, 8),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   $items['admin/usanetwork/settings/shows'] = array(
     'title' => 'Show settings',
     'page callback' => 'drupal_get_form',
@@ -1009,6 +1017,22 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
   $query->leftJoin('field_data_field_promo_created_ovts', 'fnp_created', 'fnp_created.entity_id=f.fid');
   $query->addField('fnp_created', 'field_promo_created_ovts_value', 'created_ovts');
 
+  // Attach promo topic
+  $query->leftJoin('field_data_field_promo_topic', 'fnp_topic', 'fnp_topic.entity_id=f.fid');
+  $query->addField('fnp_topic', 'field_promo_topic_value', 'promo_topic');
+  // Attach promo violator
+  $query->leftJoin('field_data_field_promo_violator_name', 'fnp_violator', 'fnp_violator.entity_id=f.fid');
+  $query->addField('fnp_violator', 'field_promo_violator_name_value', 'promo_violator');
+  // Attach promo title
+  $query->leftJoin('field_data_field_promo_title', 'fnp_title', 'fnp_title.entity_id=f.fid');
+  $query->addField('fnp_title', 'field_promo_title_value', 'promo_title');
+  // Attach promo description
+  $query->leftJoin('field_data_field_promo_long_description', 'fnp_description', 'fnp_description.entity_id=f.fid');
+  $query->addField('fnp_description', 'field_promo_long_description_value', 'promo_description');
+  // Attach promo call to action
+  $query->leftJoin('field_data_field_promo_call_to_action_text', 'fnp_cta', 'fnp_cta.entity_id=f.fid');
+  $query->addField('fnp_cta', 'field_promo_call_to_action_text_value', 'promo_cta');
+
   if ($season_num) {
     $query->leftJoin('field_data_field_mpx_season_number', 'season_num', 'f.fid=season_num.entity_id');
     $query->addField('season_num', 'field_mpx_season_number_value', 'season_number');
@@ -1733,7 +1757,20 @@ function _usanetwork_tv_shows_cache_set_related_gallery_content($tv_show_node) {
 
   if (!empty($cached_data)) {
     foreach ($cached_data as $cached_id => &$cached_data_item) {
-      $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $cached_data_item->entity_id);
+      $entity = entity_load($cached_data_item->entity_type, array($cached_data_item->entity_id));
+      if (isset($entity[$cached_data_item->entity_id])) {
+        $entity = $entity[$cached_data_item->entity_id];
+      }
+      else {
+        continue;
+      }
+      if (!empty($entity->field_promo_image_override)) {
+        $field_image_override = reset(field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override'));
+        $content_image = $field_image_override['uri'];
+      }
+      else {
+        $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $entity);
+      }
       $media_icon = usanetwork_core_api_get_media_icon($cached_data_item->entity_type, $cached_data_item->entity_id);
 
       if (!empty($content_image)) {
@@ -1757,7 +1794,20 @@ function _usanetwork_tv_shows_cache_set_related_person_content($tv_show_node) {
 
   if (!empty($cached_data)) {
     foreach ($cached_data as $cached_id => &$cached_data_item) {
-      $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $cached_data_item->entity_id);
+      $entity = entity_load($cached_data_item->entity_type, array($cached_data_item->entity_id));
+      if (isset($entity[$cached_data_item->entity_id])) {
+        $entity = $entity[$cached_data_item->entity_id];
+      }
+      else {
+        continue;
+      }
+      if (!empty($entity->field_promo_image_override)) {
+        $field_image_override = reset(field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override'));
+        $content_image = $field_image_override['uri'];
+      }
+      else {
+        $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $entity);
+      }
       $media_icon = usanetwork_core_api_get_media_icon($cached_data_item->entity_type, $cached_data_item->entity_id);
 
       if (!empty($content_image)) {
@@ -2101,9 +2151,7 @@ function _usanetwork_tv_shows_related_content_block() {
 /**
  * AJAX callback for getting related content of show.
  */
-
 function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
-
   $response = array(
     'found' => FALSE,
     'total' => 0,
@@ -2123,6 +2171,32 @@ function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from
   }
   elseif (empty($related_content) && $start_from > 0) {
     $response['overlimited'] = TRUE;
+  }
+
+  return drupal_json_output($response);
+}
+
+/**
+ * AJAX callback for getting related content of show for Videos Landing page.
+ */
+function usanetwork_tv_shows_get_videos_landing_related_content_ajax($tv_show_node,
+                    $start_from = 0, $limit = 1, $filter_tid = 0,
+                    $sort_column = 'timestamp', $sort_order = 'DESC'
+) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => FALSE,
+    'rendered' => '',
+  );
+
+  $videos_block = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node, $filter_tid, $sort_column, $sort_order, $start_from, $limit, FALSE);
+
+  if (!empty($videos_block['items'])) {
+    $response['found'] = TRUE;
+    $response['total'] = count($videos_block['items']);
+    $response['overlimited'] = count($videos_block['items']) < $limit ? TRUE : FALSE;
+    $response['rendered'] = theme('usanetwork_tv_shows_landing_videos_items_block', $videos_block);
   }
 
   return drupal_json_output($response);
@@ -2192,7 +2266,13 @@ function _usanetwork_tv_shows_render_best_of_block() {
         else {
           $promo_image_url = usanetwork_core_api_get_content_image($promo_reference['target_type'], $promo_entity);
         }
-        $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        if (!empty($promo_entity->field_promo_link)) {
+          $promo_link_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_link');
+          $promo_link = url(reset(reset($promo_link_field)));
+        }
+        else {
+          $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        }
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
         $promos[] = array(
@@ -2297,7 +2377,13 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
         else {
           $promo_image_url = usanetwork_core_api_get_content_image($promo_reference['target_type'], $promo_entity);
         }
-        $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        if (!empty($promo_entity->field_promo_link)) {
+          $promo_link_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_link');
+          $promo_link = url(reset(reset($promo_link_field)));
+        }
+        else {
+          $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        }
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
         $promos[] = array(
@@ -2506,7 +2592,18 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
     'video_filters' => $video_types,
     'video_sorters' => $video_sorters,
     'videos_block' => $videos_block,
+    'show_nid' => $tv_show_node->nid,
+    'items_per_page_limit' => USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK,
+    'filter_tid' => $query_parameters['category'],
+    'sorting_column' => $query_parameters['sort_by'],
+    'sorting_order' => $query_parameters['sort_order'],
   ));
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+  drupal_add_js(array(
+    'usanetwork_tv_show_nid' => $tv_show_node->nid,
+    'usanetwork_tv_show_page_context' => 'videos-landing',
+  ), 'setting');
 
   return $result;
 }
@@ -2679,7 +2776,11 @@ function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $
  * @param string $sort_direction
  * @return mixed|string
  */
-function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node, $selected_category = 0, $sort_field = 'timestamp', $sort_direction = 'DESC') {
+function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
+                  $selected_category = 0, $sort_field = 'timestamp',
+                  $sort_direction = 'DESC', $start_from = 0,
+                  $limit = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK, $render = TRUE
+) {
   $theme_variables = array(
     'ad' => FALSE,
     'is_even' => FALSE,
@@ -2702,7 +2803,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node, $selec
   }
 
   $query->orderBy($sort_field, $sort_direction);
-  $query->range(0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
+  $query->range($start_from, $limit);
 
   $result = $query->execute()->fetchAll();
 
@@ -2717,7 +2818,9 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node, $selec
     }
   }
 
-  return theme('usanetwork_tv_shows_landing_videos_items_block', $theme_variables);
+  return $render
+    ? theme('usanetwork_tv_shows_landing_videos_items_block', $theme_variables)
+    : $theme_variables;
 }
 
 /**
@@ -2739,12 +2842,11 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
 
   if (!empty($image_url)) {
     if ($current_item_index == $big_element_index) { // Big image
-      $mobile_image = image_style_url('634x349', $image_url);
-      $desktop_image = image_style_url('634x349', $image_url);
+      $mobile_image = image_style_url('719x414', $image_url);
+      $desktop_image = image_style_url('928x714', $image_url);
     }
     else { // Small image
-      $mobile_image = image_style_url('291x234', $image_url);
-      $desktop_image = image_style_url('291x234', $image_url);
+      $desktop_image = image_style_url('457x351', $image_url);
     }
   }
 

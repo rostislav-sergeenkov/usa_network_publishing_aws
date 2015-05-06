@@ -11,7 +11,6 @@ $black-true         : #000000;
 $black              : #1f1f1f;
 $black-into-gray    : #232323;
 $gray-dark          : #2d2d2d;
-$gray-dark-darker   : #383838;
 $gray-med           : #3d3d3d;
 $gray-med-darker    : #313131;
 $gray-med-dark      : #414141;
@@ -22,7 +21,6 @@ $gray-semi-ultra-med: #505050;
 $gray-darker-light  : #636363;
 $gray-dark-light    : #717274;
 $gray-light         : #878785;
-$gray-light-gamma   : #959595;
 $gray-extra-light   : #A3A3A3;
 $gray-sky           : #CCCCCC;
 $tan                : #b0b0b0;
@@ -103,6 +101,8 @@ $consum-back : #121212;
 $consum-carousel-odd : #3e3e3e;
 $consum-carousel-even : #343434;
 $consum-carousel-text : #afafaf;
+$gray-light-gamma   : #959595;
+$gray-dark-darker   : #383838;
 
 .show-color-border, .asset-img.show {
   position: relative;

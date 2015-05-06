@@ -328,7 +328,7 @@
             @include breakpoint($bp-640-width) {
               color: #9AE0EB;
               float: none;
-              font-size: 18px;
+              font-size: 4vw;
               margin: 0;
               margin-top: 10px;
               text-align: center;
@@ -345,7 +345,7 @@
               margin-bottom: 24px;
             }
             @include breakpoint($bp-640-width) {
-              font-size: 16px;
+              font-size: 4vw;
               margin-bottom: 10px;
               margin-top: 10px;
               text-align: center;

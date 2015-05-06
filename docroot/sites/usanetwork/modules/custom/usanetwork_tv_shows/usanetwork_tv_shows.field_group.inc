@@ -486,7 +486,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
     'label' => 'Latest Full Episode Alternate Content Area',
-    'weight' => '86',
+    'weight' => '88',
     'children' => array(
       0 => 'field_tvs_lea_block_title',
       1 => 'field_alternative_content',
@@ -749,11 +749,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->data = array(
     'label' => 'Show Cast Landing Page',
     'weight' => '16',
-    'children' => array(
-      0 => 'field_cast_head_image',
-      1 => 'field_cast_second_image',
-      2 => 'field_cast_description',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -1137,12 +1133,13 @@ function usanetwork_tv_shows_field_group_info() {
       6 => 'field_tvs_about',
       7 => 'field_tvs_show_latest_feed',
       8 => 'field_about_ymal',
-      9 => 'group_usa_tv_promo_vids',
-      10 => 'group_usa_tv_promo',
-      11 => 'group_full_bleed_promo',
-      12 => 'group_latest_episodes_alt',
-      13 => 'group_show_aspots',
-      14 => 'group_tvs_best_of',
+      9 => 'field_tvs_show_latest_lnd_feed',
+      10 => 'group_usa_tv_promo_vids',
+      11 => 'group_usa_tv_promo',
+      12 => 'group_full_bleed_promo',
+      13 => 'group_latest_episodes_alt',
+      14 => 'group_show_aspots',
+      15 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -115,6 +115,13 @@
   }
 }
 
+@media (max-width: 670px) {
+  #home #home-usa-logo {
+    width: 38px;
+    height: auto;
+  }
+}
+
 @media (max-width: 560px) {
   #home #home-tunein,
   #home #home-description {

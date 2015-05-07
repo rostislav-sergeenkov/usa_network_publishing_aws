@@ -1155,6 +1155,9 @@ function _usanetwork_menu_render_live_video_header_ajax($offset) {
         'description' => !empty($on_now_item->program_description)
           ? $on_now_item->program_description
           : '',
+        'episode_class' => !empty($on_now_item->nid)
+            ? usanetwork_tv_shows_color_show_css_class($on_now_item->nid)
+            : NULL,
       ),
     );
     $on_now_variables = json_encode($on_now_variables);

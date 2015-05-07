@@ -27,7 +27,7 @@ function usanetwork_episodes_menu() {
 }
 
 function usanetwork_episodes_blank_page() {
-  return usanetwork_episodes_get_episodes_list_block();
+  return '';
 }
 
 /**
@@ -56,6 +56,36 @@ function usanetwork_episodes_block_view($delta = '') {
   }
 
   return $block;
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_episodes_image_default_styles() {
+  $styles = array();
+
+  $styles['634x349'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 634,
+          'height' => 349,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 634,
+          'height' => 349,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
 }
 
 /**
@@ -290,8 +320,8 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = FA
           'default_content_url' => isset($episode_data[$default_category]->fid)
             ? $episode_data[$default_category]->fid
             : NULL,
-          'desktop_image_url' => $image_url,
-          'mobile_image_url' => $image_url,
+          'desktop_image_url' => image_style_url('634x349', $image_url),
+          'mobile_image_url' => image_style_url('634x349', $image_url),
           'season_number' => $current_season_data_item->season_number,
           'episode_number' => $episode_data[$default_category]->episode_number,
           'title' => $episode_data[$default_category]->title,

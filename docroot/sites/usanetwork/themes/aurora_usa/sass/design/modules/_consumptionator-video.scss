@@ -513,8 +513,33 @@
       .advert {
         height: auto;
         padding: 0;
+        @include breakpoint($bp-min-1025-width) {
+          height: 250px !important;
+          position: relative;
+        }
       }
     }
   }
 }
+
+//.consum-sidebar .advert {
+//  @include breakpoint($bp-min-1281-width) {
+//    height: 23.4vw;
+//    padding: calc((23.4vw - 60px) / 2) 0;
+//  }
+//  @include breakpoint($between-1025-1280) {
+//    position: relative;
+//  }
+//  .advertisement {
+//    height: 60px;
+//    overflow: hidden;
+//    @include breakpoint($between-1025-1280) {
+//      position: absolute;
+//      margin-left: -150px;
+//      margin-top: -30px;
+//      left: 50%;
+//      top: 50%;
+//    }
+//  }
+//}
 

@@ -3441,6 +3441,28 @@ input[type="radio"], input[type="checkbox"] {
   content: "\e606";
 }
 
+#topbanner, .topbanner {
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+  width: 970px;
+}
+
+.midbanner {
+  height: auto;
+  margin: 16px auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 970px;
+}
+@media (max-width: 640px) {
+  .midbanner {
+    margin: 1.47vw auto;
+    max-width: 100%;
+    width: 300px;
+  }
+}
+
 .clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
   content: "";
   display: table;
@@ -4568,28 +4590,6 @@ header ul, header li, header ol {
 }
 header h2 {
   margin: 0;
-}
-header .ad-728x90 {
-  margin: 0 auto;
-  padding: 10px 0;
-  width: 728px;
-}
-header .ad-728x90 a {
-  display: block;
-  height: 90px;
-}
-@media (max-width: 768px) {
-  header .ad-728x90 {
-    height: auto;
-    width: 300px;
-  }
-  header .ad-728x90 a {
-    height: auto;
-  }
-  header .ad-728x90 img {
-    height: auto;
-    width: 300px;
-  }
 }
 header .header-nav-bar {
   background-color: #e1e1e1;
@@ -7168,6 +7168,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     margin-bottom: 0;
   }
 }
+.consumptionator-video-page header .header-nav-bar.tve-sign .tve-help-link.signOut ul.tve-header-links li.first, .page-videos-live header .header-nav-bar.tve-sign .tve-help-link.signOut ul.tve-header-links li.first {
+  display: block;
+}
 .consumptionator-video-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs {
   max-width: calc(100% - 215px);
 }
@@ -7263,7 +7266,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .consumptionator-video-page header .header-nav-bar .tve-help-link.signOut ul.tve-header-links li.first, .page-videos-live header .header-nav-bar .tve-help-link.signOut ul.tve-header-links li.first {
-  bottom: -45px;
+  display: none;
+  bottom: -25px;
   left: 74.7%;
   position: absolute;
   text-align: right;
@@ -7272,7 +7276,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 1280px) {
   .consumptionator-video-page header .header-nav-bar .tve-help-link.signOut ul.tve-header-links li.first, .page-videos-live header .header-nav-bar .tve-help-link.signOut ul.tve-header-links li.first {
-    bottom: -30px;
     left: auto;
     right: 0;
     width: 320px;
@@ -7280,7 +7283,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 1024px) {
   .consumptionator-video-page header .header-nav-bar .tve-help-link.signOut ul.tve-header-links li.first, .page-videos-live header .header-nav-bar .tve-help-link.signOut ul.tve-header-links li.first {
-    bottom: -25px;
     left: 0;
     width: 100%;
   }
@@ -7326,48 +7328,24 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   vertical-align: middle;
   width: 30px;
 }
-@media (min-width: 1281px) {
-  .consumptionator-video-page .consum-sidebar .advert, .page-videos-live .consum-sidebar .advert {
-    height: 23.4vw;
-    padding: calc((23.4vw - 60px) / 2) 0;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-video-page .consum-sidebar .advert, .page-videos-live .consum-sidebar .advert {
-    position: relative;
-  }
-}
-.consumptionator-video-page .consum-sidebar .advert .advertisement, .page-videos-live .consum-sidebar .advert .advertisement {
-  height: 60px;
-  overflow: hidden;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-video-page .consum-sidebar .advert .advertisement, .page-videos-live .consum-sidebar .advert .advertisement {
-    position: absolute;
-    margin-left: -150px;
-    margin-top: -30px;
-    left: 50%;
-    top: 50%;
-  }
-}
 
-@media (min-width: 1025px) {
-  .page-videos-live .video-block .consum-sidebar .advert {
-    height: 250px !important;
-    position: relative;
+.page-videos-live header .header-nav-bar.tve-sign {
+  margin-bottom: 35px;
+}
+@media (max-width: 768px) {
+  .page-videos-live header .header-nav-bar.tve-sign {
+    margin-bottom: 0;
   }
 }
-.page-videos-live .video-block .consum-sidebar .advert .advertisement {
-  height: 60px;
-  overflow: hidden;
-}
-@media (min-width: 1025px) {
-  .page-videos-live .video-block .consum-sidebar .advert .advertisement {
-    position: absolute;
-    margin-left: -150px;
-    margin-top: -30px;
-    left: 50%;
-    top: 50%;
+@media (min-width: 769px) {
+  .page-videos-live .block-usanetwork-menu.open {
+    background: #757575;
+  }
+  .page-videos-live .block-usanetwork-menu.open .tve-help-link.signOut .tve-header-links .first {
+    display: none;
+  }
+  .page-videos-live .block-usanetwork-menu.open .tab-content .tab-item {
+    padding-top: 5px;
   }
 }
 
@@ -9097,20 +9075,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   overflow: hidden;
   position: relative;
   width: 100%;
-}
-.show-latest-block .midbanner {
-  height: auto;
-  margin: 16px auto;
-  overflow: hidden;
-  text-align: center;
-  max-width: 970px;
-}
-@media (max-width: 640px) {
-  .show-latest-block .midbanner {
-    margin: 1.47vw auto;
-    max-width: 100%;
-    width: 300px;
-  }
 }
 
 .state-menu #menu-wrapper {
@@ -12588,6 +12552,12 @@ footer h2 {
   height: auto;
   padding: 0;
 }
+@media (min-width: 1025px) {
+  .page-videos-live .video-block .consum-sidebar .advert {
+    height: 250px !important;
+    position: relative;
+  }
+}
 
 .node-type-catchall-page .block-system {
   width: 100%;
@@ -12664,7 +12634,6 @@ footer h2 {
   }
 }
 .consum-sidebar .advert .advertisement {
-  background: #656364;
   height: 250px;
   margin: 0 auto;
   width: 300px;
@@ -26689,29 +26658,6 @@ body.blog .view-display-id-blog_content .views-row {
 
 .usa-adrails[data-menu-position="closed"] .usa-wrap {
   margin: 0 auto;
-}
-
-.ad-leaderboard {
-  text-align: center;
-  padding: 10px 0 0;
-  line-height: 1em;
-}
-body:not(.front) .ad-leaderboard {
-  margin-bottom: 10px;
-}
-@media (min-width: 768px) {
-  .ad-leaderboard {
-    padding-bottom: 10px;
-    height: auto;
-  }
-  body:not(.front) .ad-leaderboard {
-    margin-bottom: 0;
-  }
-}
-.usa-adrails .ad-leaderboard {
-  padding-top: 0;
-  position: relative;
-  z-index: 0;
 }
 
 #head-sponsored {

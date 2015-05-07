@@ -46,7 +46,7 @@
           $('.ajax-load-block .load-more-link').before(data.rendered);
           $('.ajax-load-block .load-more-link .load-more-loader').remove();
 
-          Drupal.behaviors.mpsAdvert.showLatestBlock();
+          Drupal.behaviors.mpsAdvert.ajaxLoadBlock();
 
           if (typeof window.picturefill != 'undefined') {
             window.picturefill();

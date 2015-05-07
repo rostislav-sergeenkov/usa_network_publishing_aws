@@ -2419,9 +2419,15 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
 function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is_even, $different_sizes_of_images = TRUE) {
   if (!empty($data)) {
 
+    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
+    if (!empty($advert_block['content'])) {
+      $advert = TRUE;
+    }
+
     $theme_variables = array(
       'related_items' => array(),
       'is_even' => $is_even,
+      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
     );
 
     $big_item_index = $is_even ? 0 : 4;

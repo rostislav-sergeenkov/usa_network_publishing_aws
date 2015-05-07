@@ -12748,6 +12748,14 @@ footer h2 {
     font-size: 23px;
   }
 }
+@media (max-width: 1280px) {
+  .consum-sidebar .items-block-title h2 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: calc(100% - 200px);
+    white-space: nowrap;
+  }
+}
 @media (max-width: 640px) {
   .consum-sidebar .items-block-title h2 {
     font-size: 30px;

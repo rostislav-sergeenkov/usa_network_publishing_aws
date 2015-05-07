@@ -44,9 +44,9 @@ function usanetwork_social_meter_form_alter(&$form, &$form_state, $form_id) {
     'catchall_page_node_form',
     'file_entity_edit',
   );
-
   if (in_array($form_id, $form_ids_to_alter)) {
     if (isset($form['field_social_hashtag']) && isset($form['field_social_sfs_id'])) {
+      $form['field_social_hashtag']['#element_validate'] = array('usanetwork_social_meter_validate_hashtag');
       $form['field_social_hashtag']['#states'] = array(
         'visible' => array(
           ':input[name="field_social_enable[und]"]' => array(
@@ -54,6 +54,7 @@ function usanetwork_social_meter_form_alter(&$form, &$form_state, $form_id) {
           ),
         ),
       );
+      $form['field_social_sfs_id']['#element_validate'] = array('usanetwork_social_meter_validate_sfs_id');
       $form['field_social_sfs_id']['#states'] = array(
         'visible' => array(
           ':input[name="field_social_enable[und]"]' => array(
@@ -62,16 +63,11 @@ function usanetwork_social_meter_form_alter(&$form, &$form_state, $form_id) {
         ),
       );
     }
-
-    $form['#validate'][] = '_usanetwork_social_meter_validate_social_fields';
   }
 }
 
-/**
- * Validates Social Hashtag and SpredFastId according "Enabled" checkbox value.
- */
-function _usanetwork_social_meter_validate_social_fields(&$form, &$form_state) {
-  $lang = $form_state['values']['language'];
+function usanetwork_social_meter_validate_hashtag(&$form, &$form_state) {
+  $lang = !empty($form_state['values']['language']) ? $form_state['values']['language'] : LANGUAGE_NONE;
 
   if (
     !empty($form_state['values']['field_social_enable'][$lang][0]['value']) &&
@@ -80,6 +76,16 @@ function _usanetwork_social_meter_validate_social_fields(&$form, &$form_state) {
     if (empty($form_state['values']['field_social_hashtag'][$lang][0]['value'])) {
       form_set_error('field_social_hashtag', t('Hashtag could not be empty'));
     }
+  }
+}
+
+function usanetwork_social_meter_validate_sfs_id(&$form, &$form_state) {
+  $lang = !empty($form_state['values']['language']) ? $form_state['values']['language'] : LANGUAGE_NONE;
+
+  if (
+    !empty($form_state['values']['field_social_enable'][$lang][0]['value']) &&
+    $form_state['values']['field_social_enable'][$lang][0]['value'] == 1
+  ) {
     if (empty($form_state['values']['field_social_sfs_id'][$lang][0]['value'])) {
       form_set_error('field_social_sfs_id', t('SpredFast ID could not be empty'));
     }

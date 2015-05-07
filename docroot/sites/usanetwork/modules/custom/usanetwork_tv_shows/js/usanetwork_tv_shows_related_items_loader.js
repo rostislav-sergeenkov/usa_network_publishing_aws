@@ -7,6 +7,7 @@
       var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || 0;
       var start_from = limit*number_ul + negativeOffset;
       var service_name = '';
+      var additional_arguments = '';
 
       if (typeof Drupal.settings.usanetwork_tv_show_page_context != 'undefined') {
         switch (Drupal.settings.usanetwork_tv_show_page_context) {
@@ -22,13 +23,19 @@
           case 'characters-consumptionator':
             service_name = 'usanetwork-characters';
             break;
+          case 'videos-landing':
+            service_name = 'videos-landing';
+            additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
+              + $('.ajax-load-block').data('sorting-column') + '/'
+              + $('.ajax-load-block').data('sorting-order');
+            break;
           default:
             service_name = 'usanetwork-tv-shows';
             break;
         }
       }
 
-      var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit;
+      var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit + additional_arguments;
 
       $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
       $.ajax({

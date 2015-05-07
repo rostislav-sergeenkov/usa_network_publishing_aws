@@ -123,6 +123,7 @@ function usanetwork_quiz_field_group_info() {
       5 => 'field_call_to_action_type',
       6 => 'field_promo_exclude_from_related',
       7 => 'field_promo_image_override',
+      8 => 'field_promo_created_ovts',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

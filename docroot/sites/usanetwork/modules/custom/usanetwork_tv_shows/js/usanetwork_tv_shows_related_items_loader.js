@@ -43,6 +43,7 @@
         url: url,
         dataType: 'json',
         success: function (data) {
+
           $('.ajax-load-block .load-more-link').before(data.rendered);
           $('.ajax-load-block .load-more-link .load-more-loader').remove();
 

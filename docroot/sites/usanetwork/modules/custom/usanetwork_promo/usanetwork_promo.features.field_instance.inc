@@ -1782,7 +1782,7 @@ function usanetwork_promo_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 0,
+        'display_label' => 1,
         'pub_mpx' => array(
           'media_data_fieldpath' => '',
         ),

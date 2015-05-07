@@ -16,7 +16,9 @@
 
       // Select block item click
       $('.item-filter .filter-menu a').click(function(e) {
-        e.preventDefault();
+        if (!$(this).hasClass('no-ajax')){
+          e.preventDefault();
+        }
         if (!$(this).hasClass('active')) {
           $('.item-filter .filter-menu a.active').removeClass('active');
           $(this).addClass('active');
@@ -41,7 +43,24 @@
           $('.item-filter.open').removeClass('open');
         }
       });
+      
+      $(window).bind('resize', function () {
 
+        if( window.innerWidth >= window_size_tablet_portrait && !$('.transform-filter').hasClass('mCS_destroyed')) {
+          $('.transform-filter').each(function(){
+            $(this).mCustomScrollbar('destroy');
+          });
+        }
+        if( window.innerWidth < window_size_tablet_portrait && $('.transform-filter').hasClass('mCS_destroyed')) {
+          $('.transform-filter.mCS_destroyed').each(function(){
+            $(this).mCustomScrollbar({
+              axis: "y",
+              theme: "dark-3",
+              scrollEasing: "easeOut"
+            });
+          });
+        }
+      });
     }
   };
 

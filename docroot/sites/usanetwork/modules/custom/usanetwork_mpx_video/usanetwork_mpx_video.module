@@ -1145,6 +1145,11 @@ function usanetwork_mpx_video_file_presave($file) {
     }
   }
 
+  //save custom image field
+  if ((!isset($file->field_promo_image_override)) &&(isset($file->original->field_promo_image_override))) {
+    $file->field_promo_image_override = $file->original->field_promo_image_override;
+  }
+
   $set_alias = FALSE;
 
   $full_episodes = field_get_items('file', $file, 'field_mpx_full_episode');

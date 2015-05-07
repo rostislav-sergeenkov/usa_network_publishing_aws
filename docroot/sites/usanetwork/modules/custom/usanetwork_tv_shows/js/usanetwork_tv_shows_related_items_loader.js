@@ -7,7 +7,7 @@
       var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || 0;
       var start_from = limit*number_ul + negativeOffset;
       var service_name = '';
-      var additional_arguments = 0;
+      var additional_arguments = '';
 
       if (typeof Drupal.settings.usanetwork_tv_show_page_context != 'undefined') {
         switch (Drupal.settings.usanetwork_tv_show_page_context) {
@@ -36,13 +36,14 @@
       }
 
       var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit + additional_arguments;
-
+      console.info(url);
       $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
       $.ajax({
         type: 'GET',
         url: url,
         dataType: 'json',
         success: function (data) {
+          console.info(data);
           $('.ajax-load-block .load-more-link').before(data.rendered);
           $('.ajax-load-block .load-more-link .load-more-loader').remove();
 

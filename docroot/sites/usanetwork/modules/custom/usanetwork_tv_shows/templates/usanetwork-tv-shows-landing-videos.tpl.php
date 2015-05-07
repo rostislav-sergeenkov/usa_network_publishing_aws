@@ -46,8 +46,8 @@
     <?php if (!empty($videos_block)): ?>
       <?php print $videos_block; ?>
     <?php endif; ?>
-
+    <?php if (!empty($load_more_link)): ?>
       <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>
-
+    <?php endif; ?>
   </div>
 </div>

@@ -7,8 +7,16 @@
     float: left;
     position: relative;
     width: 74.7%;
+    @include breakpoint($bp-1280-width) {
+      width: 100%;
+    }
   }
   .consum-sidebar {
-
+    @include breakpoint($bp-1280-width) {
+      height: auto;
+      padding: 0;
+      position: relative;
+      width: 100%;
+    }
   }
 }

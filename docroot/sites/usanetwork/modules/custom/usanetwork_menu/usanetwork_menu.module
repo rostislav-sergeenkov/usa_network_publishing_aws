@@ -956,15 +956,44 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     if (!empty($node->field_cover_item)) {
       $image = $entity_wrapper->field_cover_item->value();
     }
+    if (!empty($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this gallery');
+    }
+    if (!empty($node->field_episode)) {
+      $episode = $entity_wrapper->field_episode->value();
+      if ($air_date_items = field_get_items('node', $episode, 'field_original_air_date')) {
+        $air_date_items = reset($air_date_items);
+        $duration =  gmdate('H:i:s', $air_date_items['value2'] - $air_date_items['value']);
+      }
+      if ($episode_num_items = field_get_items('node', $episode, 'field_episode_number')) {
+        $episode_num_items = reset($episode_num_items);
+        $season_num = $episode_num_items['value'];
+      }
+      if ($episode->field_season) {
+        $season = $entity_wrapper->field_season->value();
+        if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
+          $season_num_items = reset($season_num_items);
+          $episode_num = $season_num_items['value'];
+        }
+      }
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'gallery_name' => !empty($node->title) ? $node->title : '',
       'details' => array(
+        'sharebar' => !empty($sharebar) ? render($sharebar) : '',
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => !empty($node->body) ? $entity_wrapper->body->value->value() : '',
         'gallery_type' => !empty($node->field_gallery_type) ? $entity_wrapper->field_gallery_type->value() : '',
+        'episode_info' => !empty($episode) ? array(
+            'episode_title' => $episode->title,
+            'season_number' => !empty($season_num) ? $season_num : '',
+            'episode_number' => !empty($episode_num) ? $episode_num : '',
+            'duration' => !empty($duration) ? $duration : '',
+          ) : NULL,
       ),
     );
     return theme('usanetwork_menu_consumptionator_gallery', $theme_variables);
@@ -1126,6 +1155,9 @@ function _usanetwork_menu_render_live_video_header_ajax($offset) {
         'description' => !empty($on_now_item->program_description)
           ? $on_now_item->program_description
           : '',
+        'episode_class' => !empty($on_now_item->nid)
+            ? usanetwork_tv_shows_color_show_css_class($on_now_item->nid)
+            : NULL,
       ),
     );
     $on_now_variables = json_encode($on_now_variables);

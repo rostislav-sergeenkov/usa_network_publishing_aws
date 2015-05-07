@@ -25,6 +25,7 @@
               var additional = '<span>S' + on_now_vars.episode.season_number + ' episode ' + on_now_vars.episode.episode_number + '</span> ' + on_now_vars.episode.running_time;
               headerBlock.find('.info-tab .additional').html(additional);
               headerBlock.find('.info-tab .description').text(on_now_vars.episode.description);
+              $('body').addClass(on_now_vars.episode.episode_class);
             }
 
             sharebar = new Object();

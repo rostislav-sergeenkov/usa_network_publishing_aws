@@ -1096,7 +1096,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         if (
           $active_filter != USANETWORK_MICROSITE_ALL_VIDEOS &&
           $active_filter !== $current_video_type ||
-          ($is_season_filters && $active_season && $season_number != $active_season)
+          ($is_season_filters && $active_season && $season_number && $season_number != $active_season)
         ) {
           continue;
         }

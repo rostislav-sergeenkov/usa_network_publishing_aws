@@ -26,6 +26,8 @@ function usanetwork_timeline_gallery_field_group_info() {
       0 => 'field_content_tags',
       1 => 'field_summary',
       2 => 'field_usa_css',
+      3 => 'field_share_title',
+      4 => 'field_share_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

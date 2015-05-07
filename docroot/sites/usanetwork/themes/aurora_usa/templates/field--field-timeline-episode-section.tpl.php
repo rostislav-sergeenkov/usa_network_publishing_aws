@@ -65,8 +65,6 @@
 $baseUrl = 'http://' . $_SERVER['HTTP_HOST'];
 $requestUrl = $_SERVER['REQUEST_URI'];
 $imageBaseUrl = '/sites/usanetwork/themes/aurora_usa/images';
-$shareTitle = 'Experience+the+Graceland+Catchup+HQ';
-$shareDescription = 'Get+caught+up+on+Season+1+before+the+Graceland+premiere+on+June+11+10%2F9c';
 $timelineCategories = array();
 $numberOfScenesPerEpisode = array();
 ?>

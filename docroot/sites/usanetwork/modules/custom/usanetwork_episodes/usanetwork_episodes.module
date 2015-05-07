@@ -6,6 +6,104 @@
  */
 include_once 'usanetwork_episodes.features.inc';
 
+define('USANETWORK_EPISODE_TYPE_FULL', 'full');
+define('USANETWORK_EPISODE_TYPE_PREVIEW', 'preview');
+
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_episodes_menu() {
+  $items = array();
+
+  $items['node/%node/episodes-list'] = array(
+    'title' => 'Episodes',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_episodes_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+function usanetwork_episodes_blank_page() {
+  return usanetwork_episodes_get_episodes_list_block();
+}
+
+/**
+ *  Implements hook_block_info().
+ */
+function usanetwork_episodes_block_info() {
+  return array(
+    'usa_landing_tvep_list_block' => array(
+      'info' => t('Usanetwork episodes: List'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_episodes_block_view($delta = '') {
+  $block = array();
+
+  switch($delta) {
+    case 'usa_landing_tvep_list_block':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_episodes_get_episodes_list_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_episodes_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_episode_consum_sidebar_list_item' => array(
+      'variables' => array(
+        'url' => NULL,
+        'image' => NULL,
+        'title' => NULL,
+        'season_num' => NULL,
+        'episode_num' => NULL,
+      ),
+      'template' => 'templates/usanetwork-episode-consum-sidebar-list-item',
+    ),
+    'usanetwork_episodes_landing_episodes_list_item' => array(
+      'variables' => array(
+        'full_episode_url' => NULL,
+        'preview_episode_url' => NULL,
+        'default_content_url' => NULL,
+        'desktop_image_url' => NULL,
+        'mobile_image_url' => NULL,
+        'season_number' => NULL,
+        'episode_number' => NULL,
+        'title' => NULL,
+        'description' => NULL,
+        'airing_date' => NULL,
+        'expiration_date' => NULL,
+        'guide_url' => NULL,
+        'gallery_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork-episodes-landing-episodes-list-item',
+    ),
+    'usanetwork_episodes_landing_episodes_season' => array(
+      'variables' => array(
+        'items' => array(),
+        'ad' => NULL,
+        'ad_id' => NULL,
+        'title' => NULL,
+        'filters' => array(),
+      ),
+      'template' => 'templates/usanetwork-episodes-landing-episodes-season',
+    ),
+  );
+}
+
 /**
  * Implements hook_node_view().
  */
@@ -109,19 +207,167 @@ function usanetwork_episodes_node_view($node, $view_mode, $langcode) {
   }
 }
 
-/**
- *  Implements hook_theme().
- */
-function usanetwork_episodes_theme($existing, $type, $theme, $path) {
-  return array(
-    'usanetwork_episode_consum_sidebar_list_item' => array(
-      'variables' => array(
-        'url' => NULL,
-        'image' => NULL,
-        'title' => NULL,
-        'season_num' => NULL,
-        'episode_num' => NULL,
-      ),
-      'template' => 'templates/usanetwork-episode-consum-sidebar-list-item',
-  ));
+function usanetwork_episodes_get_episodes_list_block($display_filters_block = FALSE) {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $tv_show_node = menu_get_object();
+
+  if (empty($tv_show_node) || (!empty($tv_show_node) && isset($tv_show_node->type) && $tv_show_node->type != 'tv_show')) {
+    return '';
+  }
+
+  $season_ids = _usanetwork_episodes_get_season_ids($tv_show_node->nid);
+  $query = drupal_get_query_parameters();
+  $filter_by_season = isset($query['season']) ? intval($query['season']) : 0;
+  $current_season_data_item = NULL;
+  $last_season_data = NULL;
+
+  $theme_variables = array(
+    'items' => array(),
+    'ad' => FALSE,
+    'ad_id' => NULL,
+    'title' => NULL,
+    'filters' => array(),
+    'active_filter_title' => NULL,
+  );
+
+  if (!empty($season_ids)) {
+    if ($filter_by_season == 0) {
+      $current_season_data_item = $season_ids[0];
+      $theme_variables['active_filter_title'] = $current_season_data_item->season_title;
+    }
+    else {
+      foreach ($season_ids as $season_id) {
+        if ($season_id->season_number == $filter_by_season) {
+          $current_season_data_item = $season_id;
+          $theme_variables['active_filter_title'] = $current_season_data_item->season_title;
+          $theme_variables['filters'] = array();
+          break;
+        }
+      }
+
+      if (empty($current_season_data_item)) {
+        $current_season_data_item = $season_ids[0];
+        $theme_variables['active_filter_title'] = $current_season_data_item->season_title;
+      }
+    }
+
+    $episodes_data = _usanetwork_episodes_get_season_episodes_data($current_season_data_item->season_number, $tv_show_node->nid);
+
+    if ($display_filters_block) {
+      $theme_variables['filters'][0] = array(
+        'title' => t('All seasons'),
+        'value' => 0,
+      );
+
+      foreach ($season_ids as $season_id) {
+        $theme_variables['filters'][$season_id->season_number] = array(
+          'title' => $season_id->season_title,
+          'value' => $season_id->season_number,
+        );
+      }
+    }
+
+    $theme_variables['title'] = $current_season_data_item->season_title;
+
+    if (!empty($episodes_data)) {
+      foreach ($episodes_data as $episode_data) {
+        $default_category = isset($episode_data[USANETWORK_EPISODE_TYPE_FULL])
+          ? USANETWORK_EPISODE_TYPE_FULL
+          : USANETWORK_EPISODE_TYPE_PREVIEW;
+
+        $image_url = usanetwork_core_api_get_content_image('file', $episode_data[$default_category]->fid);
+
+        $theme_item_variables = array(
+          'full_episode_url' => isset($episode_data['full']->fid)
+            ? url('file/' . $episode_data[USANETWORK_EPISODE_TYPE_FULL]->fid)
+            : NULL,
+          'preview_episode_url' => isset($episode_data['preview']->fid)
+            ? $episode_data[USANETWORK_EPISODE_TYPE_PREVIEW]->fid
+            : NULL,
+          'default_content_url' => isset($episode_data[$default_category]->fid)
+            ? $episode_data[$default_category]->fid
+            : NULL,
+          'desktop_image_url' => $image_url,
+          'mobile_image_url' => $image_url,
+          'season_number' => $current_season_data_item->season_number,
+          'episode_number' => $episode_data[$default_category]->episode_number,
+          'title' => $episode_data[$default_category]->title,
+          'description' => $episode_data[$default_category]->description,
+          'airing_date' => !empty($episode_data[$default_category]->airdate)
+            ? gmdate('m/d/Y', $episode_data[$default_category]->airdate)
+            : NULL,
+          'expiration_date' => !empty($episode_data[$default_category]->expiration_date)
+            ? gmdate('m/d/Y', $episode_data[$default_category]->expiration_date)
+            : NULL,
+          'guide_url' => url('node/' . $tv_show_node->nid),
+          'gallery_url' => url('node/' . $tv_show_node->nid),
+        );
+
+        $theme_variables['items'][] = theme('usanetwork_episodes_landing_episodes_list_item', $theme_item_variables);
+      }
+    }
+  }
+
+  return theme('usanetwork_episodes_landing_episodes_season', $theme_variables);
+}
+
+function _usanetwork_episodes_get_season_ids($tv_show_nid) {
+  $query = db_select('field_data_field_show', 'field_show');
+  $query->addField('field_show', 'entity_id', 'season_nid');
+  $query->join('node', 'season_node', 'season_node.nid=field_show.entity_id');
+  $query->addField('season_node', 'title', 'season_title');
+  $query->join('field_data_field_season_id', 'field_season_id', 'field_season_id.entity_id=season_node.nid');
+  $query->addField('field_season_id', 'field_season_id_value', 'season_number');
+  $query->condition('field_show.bundle', 'tv_season');
+  $query->condition('field_season_id.bundle', 'tv_season');
+  $query->condition('field_show_target_id', $tv_show_nid);
+  $query->orderBy('season_number', 'DESC');
+
+  return $query->execute()->fetchAll();
+}
+
+function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid) {
+  $sorted_result = array();
+
+  $query = db_select('mpx_video', 'mpxv');
+  $query->fields('mpxv', array('fid', 'title', 'description', 'airdate', 'available_date', 'expiration_date', 'status'));
+  $query->join('field_data_field_mpx_season_number', 'season_number', 'season_number.entity_id=mpxv.fid');
+  $query->join('field_data_field_mpx_episode_number', 'episode_number', 'episode_number.entity_id=mpxv.fid');
+  $query->addField('episode_number', 'field_mpx_episode_number_value', 'episode_number');
+  $query->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id=mpxv.fid');
+  $query->addField('full_episode', 'field_mpx_full_episode_value', 'full_episode');
+  $query->join('field_data_field_show', 'field_show', 'field_show.entity_id=mpxv.fid');
+  $query->condition('season_number.field_mpx_season_number_value', $season_number);
+  $query->condition('mpxv.status', 1);
+  $query->condition('field_show.field_show_target_id', $show_nid);
+
+  $result = $query->execute()->fetchAll();
+
+  if ($result) {
+    // Sort by episode number using integer value instead string
+    usort($result, function($a, $b) {
+      if (intval($a->episode_number) == intval($b->episode_number)) {
+        return 0;
+      }
+      elseif (intval($a->episode_number) > intval($b->episode_number)) {
+        return -1;
+      }
+      else {
+        return 1;
+      }
+    });
+
+    foreach ($result as $result_item) {
+      $category_name = $result_item->full_episode == 1
+        ? USANETWORK_EPISODE_TYPE_FULL
+        : USANETWORK_EPISODE_TYPE_PREVIEW;
+
+      $sorted_result[$result_item->episode_number][$category_name] = $result_item;
+    }
+  }
+
+  return $sorted_result;
 }

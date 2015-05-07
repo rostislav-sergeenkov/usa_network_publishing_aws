@@ -15,11 +15,11 @@
       .filter-label {
         border: 1px solid $gray-light-gamma;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 20px;
         letter-spacing: 1px;
         text-transform: uppercase;
         font-family: $avalon-demi;
-        line-height: 38px;
+        line-height: 58px;
         text-align: left;
         overflow: hidden;
         position: relative;
@@ -29,6 +29,13 @@
         -o-text-overflow: ellipsis;
         white-space: nowrap;
         width: 205px;
+        @include breakpoint($bp-1280-width) {
+          font-size: 16px;
+          line-height: 38px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 14px;
+        }
         &:after {
           content: "\e609";
           color: $poll-color;
@@ -54,7 +61,7 @@
           position: relative;
           vertical-align: middle;
           min-width: 205px;
-          width: 60%;
+          width: 205px;
           margin-right: 25px;
           margin-top: 15px;
           &:last-child {
@@ -70,7 +77,7 @@
             background: $footer-back;
             top: 1px;
             display: none;
-            margin-top: 40px;
+            margin-top: 39px;
             max-height: 200px;
             overflow-y: auto;
             position: absolute;
@@ -94,6 +101,7 @@
               margin-right: 8px;
             }
             @include breakpoint($bp-768-width) {
+              margin-top: 0;
               overflow: hidden;
               position: relative;
               width: 100%;
@@ -182,12 +190,15 @@
           background: $footer-back;
           top: 1px;
           display: none;
-          margin-top: 40px;
+          margin-top: 59px;
           max-height: 200px;
           overflow-y: auto;
           position: absolute;
           width: 100%;
           z-index: 2;
+          @include breakpoint($bp-1280-width) {
+            margin-top: 39px;
+          }
           li {
             overflow: hidden;
             position: relative;
@@ -198,21 +209,26 @@
               font-size: 20px;
               font-family: $avalon-demi;
               height: 100%;
-              line-height: 22px;
+              letter-spacing: 1px;
+              line-height: 32px;
               text-align: left;
               padding: 9px 20px;
               text-decoration: none;
+              text-transform: uppercase;
               width: 100%;
               &:hover, &.active {
                 color: $gray-dark-darker;
               }
-              @include breakpoint($bp-1280-width){
-                font-size: 17px;
-                line-height: 12px;
+              @include breakpoint($bp-1280-width) {
+                font-size: 16px;
+                line-height: 22px;
               }
-              @include breakpoint($bp-480-width){
-                font-size: 12px;
-                line-height: 12px;
+              @include breakpoint($bp-1024-width) {
+                font-size: 14px;
+              }
+              @include  breakpoint($bp-768-width) {
+                font-size: 14px;
+                line-height: 14px;
               }
             }
           }
@@ -246,6 +262,7 @@
       position: relative;
     }
     ul {
+      @include clear();
       padding: 0;
       position: relative;
       width: 100%;

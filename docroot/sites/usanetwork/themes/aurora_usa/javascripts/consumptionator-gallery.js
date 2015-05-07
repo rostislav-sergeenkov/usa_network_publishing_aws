@@ -125,7 +125,10 @@
       adaptiveHeight: true,
       adaptiveHeightSpeed: 200,
       speed: 600,
-      onSliderLoad: pagerItems
+      onSliderLoad: pagerItems,
+      onSlideAfter: function () {
+        Drupal.behaviors.mpsAdvert.mpsRefreshAd(Drupal.behaviors.mpsAdvert.mpsNameAD.topbox);
+      }
     };
 
     var init = function (selector) {

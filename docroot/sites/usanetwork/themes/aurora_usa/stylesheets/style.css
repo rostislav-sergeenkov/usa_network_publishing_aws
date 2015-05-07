@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -26552,6 +26552,7 @@ body.blog .view-display-id-blog_content .views-row {
 #full-bleed-promo {
   margin: 20px auto 0;
   position: relative;
+  min-height: 250px;
   max-height: 500px;
   max-width: 1650px;
   min-width: 300px;

@@ -1,0 +1,18 @@
+#topbanner, .topbanner {
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+  width: 970px;
+}
+.midbanner {
+  height: auto;
+  margin: 16px auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 970px;
+  @include breakpoint($bp-640-width) {
+    margin: 1.47vw auto;
+    max-width: 100%;
+    width: 300px;
+  }
+}

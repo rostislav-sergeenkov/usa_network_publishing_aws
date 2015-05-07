@@ -2,7 +2,7 @@
   @include clear();
   margin: 20px auto 0;
   position: relative;
-  max-height: 500px;
+  max-height: 560px;
   max-width: 1650px;
   min-width: 300px;
   @include breakpoint($bp-768-width) {

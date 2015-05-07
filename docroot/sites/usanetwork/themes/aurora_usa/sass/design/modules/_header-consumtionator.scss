@@ -313,30 +313,6 @@
             .field-name-field-gigya-share-bar {
               margin-bottom: 0;
             }
-
-            //            .icons-block {
-            //              @include clear;
-            //              height: 100%;
-            //              width: 100%;
-            //              a {
-            //                margin: 25px 19px 0 0;
-            //                &:last-child {
-            //                  margin-right: 0;
-            //                }
-            //                &:before {
-            //                  color: #ffffff;
-            //                  font-size: 32px;
-            //                }
-            //              }
-            //              @include breakpoint($bp-1024-width) {
-            //                a {
-            //                  margin: 0 10px 0 0;
-            //                  &:before {
-            //                    font-size: 25px;
-            //                  }
-            //                }
-            //              }
-            //            }
           }
         }
       }
@@ -395,12 +371,21 @@
     }
 
     .header-nav-bar {
-        &.tve-sign {
+      &.tve-sign {
         @include breakpoint($bp-1024-width) {
           margin-bottom: 35px;
         }
         @include breakpoint($bp-768-width) {
           margin-bottom: 0;
+        }
+        .tve-help-link {
+          &.signOut {
+            ul.tve-header-links {
+              li.first {
+                display: block;
+              }
+            }
+          }
         }
       }
       .nav-bar-tabs {
@@ -483,20 +468,19 @@
           }
           ul.tve-header-links {
             li.first {
-              bottom: -45px;
+              display: none;
+              bottom: -25px;
               left: 74.7%;
               position: absolute;
               text-align: right;
               width: 25.3%;
               z-index: 1;
               @include breakpoint($bp-1280-width) {
-                bottom: -30px;
                 left: auto;
                 right: 0;
                 width: 320px;
               }
               @include breakpoint($bp-1024-width) {
-                bottom: -25px;
                 left: 0;
                 width: 100%;
               }
@@ -545,46 +529,41 @@
       }
     }
   }
-  .consum-sidebar .advert {
-    @include breakpoint($bp-min-1281-width) {
-      height: 23.4vw;
-      padding: calc((23.4vw - 60px) / 2) 0;
-    }
-    @include breakpoint($between-1025-1280) {
-      position: relative;
-    }
-    .advertisement {
-      height: 60px;
-      overflow: hidden;
-      @include breakpoint($between-1025-1280) {
-        position: absolute;
-        margin-left: -150px;
-        margin-top: -30px;
-        left: 50%;
-        top: 50%;
+}
+.page-videos-live {
+  header {
+    .header-nav-bar {
+      &.tve-sign {
+        margin-bottom: 35px;
+        @include breakpoint($bp-768-width) {
+          margin-bottom: 0;
+        }
       }
     }
   }
-}
-.page-videos-live {
-  .video-block {
-    .consum-sidebar {
-      .advert {
-        @include breakpoint($bp-min-1025-width) {
-          height: 250px !important;
-          position: relative;
-        }
-        .advertisement {
-          height: 60px;
-          overflow: hidden;
-          @include breakpoint($bp-min-1025-width) {
-            position: absolute;
-            margin-left: -150px;
-            margin-top: -30px;
-            left: 50%;
-            top: 50%;
+  .block-usanetwork-menu {
+    &.open {
+      @include breakpoint($bp-min-769-width) {
+        background: $bottom-footer-back;
+        .tve-help-link.signOut {
+          .tve-header-links {
+            .first {
+              display: none;
+            }
           }
         }
+        .tab-content {
+          .tab-item {
+            padding-top: 5px;
+          }
+        }
+      }
+    }
+  }
+  .tve-help-link {
+    ul.tve-header-links {
+      li.first {
+
       }
     }
   }

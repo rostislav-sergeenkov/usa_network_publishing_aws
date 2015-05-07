@@ -413,7 +413,7 @@ function usanetwork_microsite_field_default_field_bases() {
         'videos' => 'Videos',
         'episodes' => 'Episodes',
         'quizzes' => 'Quizzes',
-        'timeline_gallery' => 'Timeline gallery',
+        'timeline' => 'Timeline gallery',
       ),
       'allowed_values_function' => '',
     ),

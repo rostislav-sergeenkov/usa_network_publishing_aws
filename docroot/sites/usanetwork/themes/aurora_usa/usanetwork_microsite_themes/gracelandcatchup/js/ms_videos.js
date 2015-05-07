@@ -374,6 +374,7 @@
               tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
               Drupal.behaviors.ms_videos.clickThumbnail(elem);
             });
+            Drupal.behaviors.ms_videos.setActiveThumbnail();
           });
         });
       })
@@ -381,7 +382,11 @@
         usa_debug('ajax call failed -- textStatus: ' + textStatus);
       })
     },
+    setActiveThumbnail: function() {
+      var currentVideoUrl = $('#video-container').attr('data-video-url');
+        $('#thumbnail-list').find("li[data-video-url='" + currentVideoUrl + "']").addClass('active');
 
+    },
     attach: function (context, settings) {
       var self = this;
 
@@ -502,7 +507,7 @@
           $('#thumbnail-list .expandable-toggle li').text('more').removeClass('less').addClass('more');
           $('#thumbnail-list').removeClass('expanded');
 
-          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
+          self.getThumbnailList(url, offset, null, categoryName);
         }
       });
 

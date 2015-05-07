@@ -2202,7 +2202,14 @@ function _usanetwork_tv_shows_render_fbp_block() {
     $show_wrapper = entity_metadata_wrapper('node', $show_node);
     if (!empty($show_node->field_hp_full_bleed_promo)) {
       $promo_node = $show_wrapper->field_hp_full_bleed_promo->value();
+
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+
       $theme_variables = array(
+        'advert_block' => isset($advert) ? $advert : NULL,
         'url' => !empty($promo_node->field_usa_fbp_cta_link)
           ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_cta_link->url->value()
           : NULL,

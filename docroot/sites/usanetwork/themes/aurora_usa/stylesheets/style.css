@@ -6190,14 +6190,14 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     margin-left: 0;
   }
 }
-.search-show header .tab-item.share-tab .tab-item-content .node .meta .meta-left {
+.search-show header .tab-item.share-tab .tab-item-content .node .meta .meta-info {
   float: left;
   padding-right: 10px;
   width: 200px;
   text-transform: uppercase;
 }
 @media (max-width: 1280px) {
-  .search-show header .tab-item.share-tab .tab-item-content .node .meta .meta-left {
+  .search-show header .tab-item.share-tab .tab-item-content .node .meta .meta-info {
     float: none;
     padding-right: 0;
     width: 100%;
@@ -7029,27 +7029,62 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     margin-left: 0;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-left {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+  font-size: 14px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 20px;
+  max-width: 50%;
+}
+@media (max-width: 1280px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+    max-width: 70%;
+    margin: 30px 0 0;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+    max-width: 90%;
+    margin-top: 75px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+    margin-top: 20px;
+  }
+}
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description p, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description p, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description p, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description p, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description p {
+  margin: 0;
+}
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
   float: left;
   padding-right: 10px;
   width: 200px;
   text-transform: uppercase;
 }
 @media (max-width: 1280px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-left {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
     float: none;
     padding-right: 210px;
     width: 100%;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-left {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
     padding-right: 190px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-left {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
     padding-right: 0;
+  }
+}
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description {
+  margin-left: 210px;
+  margin-right: 310px;
+}
+@media (max-width: 1280px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description {
+    margin: 30px 0 0;
   }
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .caption, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .caption {
@@ -7074,22 +7109,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
-  font-size: 14px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 20px;
-  max-width: 50%;
-}
-@media (max-width: 1280px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
-    margin: 30px 0 0;
-  }
-}
 .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
   right: 0;
   position: absolute;
   top: 0;
   width: 190px;
+  margin-right: 16px;
 }
 @media (max-width: 1024px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {

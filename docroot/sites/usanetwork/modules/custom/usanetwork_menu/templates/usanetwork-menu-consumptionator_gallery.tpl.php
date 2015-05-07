@@ -28,27 +28,48 @@
   </div>
 </div>
 <div class="tab-content">
-  <div class="tab-item info-tab">
-    <div class="tab-item-content">
-      <div class="node node-usanetwork-promo">
-        <?php if (!empty($details['image'])): ?>
-          <div class="asset-img">
-            <img src="<?php print $details['image']; ?>" alt="">
-          </div>
-        <?php endif; ?>
-        <div class="title-overlay meta">
-          <?php if (!empty($gallery_name)): ?>
-            <div class="title">
-              <?php print $gallery_name; ?>
+    <div class="tab-item info-tab">
+        <div class="tab-item-content">
+            <div class="node node-usanetwork-promo">
+                <?php if (!empty($details['image'])): ?>
+                    <div class="asset-img">
+                        <img src="<?php print $details['image']; ?>" alt="">
+                    </div>
+                <?php endif; ?>
+                <div class="title-overlay meta">
+                    <?php if (!empty($details['episode_info'])): ?>
+                        <div class="meta-info">
+                            <?php if (!empty($details['episode_info']['episode_title'])): ?>
+                                <div class="title"><?php print $details['episode_info']['episode_title']; ?></div>
+                            <?php endif; ?>
+                            <?php if (!empty($details['episode_info']['season_number']) && !empty($details['episode_info']['episode_number'])): ?>
+                                <div class="additional">
+                                    <span>S<?php print $details['episode_info']['season_number'] ?> <?php print t('episode') . ' ' . $details['episode_info']['episode_number']; ?></span>
+                                    <?php if (!empty($details['episode_info']['duration'])): ?>
+                                        <?php print $details['episode_info']['duration']; ?>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php else: ?>
+                        <?php if (!empty($gallery_name)): ?>
+                            <div class="title">
+                                <?php print $gallery_name; ?>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php if (!empty($details['description'])): ?>
+                        <div class="description">
+                            <?php print $details['description']; ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($sharebar)): ?>
+                        <div class="sharebar">
+                            <?php print $sharebar; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
-          <?php endif; ?>
-          <?php if (!empty($details['description'])): ?>
-            <div class="description">
-              <?php print $details['description']; ?>
-            </div>
-          <?php endif; ?>
         </div>
-      </div>
     </div>
-  </div>
 </div>

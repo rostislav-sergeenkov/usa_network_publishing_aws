@@ -2584,19 +2584,40 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
 
   $query_parameters = _usanetwork_tv_shows_landing_page_get_validated_query_params();
 
-  $video_types = _usanetwork_tv_shows_landing_page_vbget_video_types($tv_show_node, $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order']);
-  $video_sorters = _usanetwork_tv_shows_landing_page_vbget_video_sorters($tv_show_node->nid, $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order']);
-  $videos_block = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node, $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order']);
+  $video_types = _usanetwork_tv_shows_landing_page_vbget_video_types($tv_show_node, $query_parameters['category'],
+    $query_parameters['sort_by'], $query_parameters['sort_order']
+  );
+  $video_sorters = _usanetwork_tv_shows_landing_page_vbget_video_sorters($tv_show_node->nid, $query_parameters['category'],
+    $query_parameters['sort_by'], $query_parameters['sort_order']
+  );
+  $videos_block = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node, $query_parameters['category'],
+    $query_parameters['sort_by'], $query_parameters['sort_order']
+  );
+
+  $videos_block_next_item = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node,
+    $query_parameters['category'], $query_parameters['sort_by'], $query_parameters['sort_order'],
+    USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK, 1, FALSE
+  );
+
+  $video_filter_title = ($query_parameters['category'] != 0)
+    ? $video_types[$query_parameters['category']]['name'] . ' (' . $video_types[$query_parameters['category']]['items_count'] . ')'
+    : t('All videos');
+  $video_sorter_title = (isset($video_sorters[$query_parameters['sort_by'] . '_' . $query_parameters['sort_order']]))
+    ? $video_sorters[$query_parameters['sort_by'] . '_' . $query_parameters['sort_order']]['title']
+    : t('Newest');
 
   $result = theme('usanetwork_tv_shows_landing_videos', array(
     'video_filters' => $video_types,
+    'video_filter_title' => $video_filter_title,
     'video_sorters' => $video_sorters,
+    'video_sorter_title' => $video_sorter_title,
     'videos_block' => $videos_block,
     'show_nid' => $tv_show_node->nid,
     'items_per_page_limit' => USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK,
     'filter_tid' => $query_parameters['category'],
     'sorting_column' => $query_parameters['sort_by'],
     'sorting_order' => $query_parameters['sort_order'],
+    'load_more_link' => !empty($videos_block_next_item['items']) ? TRUE : FALSE,
   ));
 
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
@@ -2682,14 +2703,6 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
 
   if (!empty($query_result)) {
     $result = array();
-
-    // Temporary removed
-    /*$all_videos = _usanetwork_tv_shows_landing_page_vbget_full_all_videos($show_node, $selected_category, $sort_field, $sort_direction);
-
-    if (!empty($all_videos)) {
-      $result[] = $all_videos;
-    }*/
-
     $item_index = 0;
 
     foreach ($query_result as $key => &$result_item) {
@@ -2781,9 +2794,12 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
                   $sort_direction = 'DESC', $start_from = 0,
                   $limit = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK, $render = TRUE
 ) {
+  $ad_id = intval($start_from / $limit);
+
   $theme_variables = array(
-    'ad' => FALSE,
-    'is_even' => FALSE,
+    'ad' => $start_from == 0 ? FALSE : TRUE,
+    'ad_id' => $ad_id,
+    'is_even' => (($ad_id + 1) % 2 == 0) ? TRUE : FALSE,
     'items' => array(),
   );
 

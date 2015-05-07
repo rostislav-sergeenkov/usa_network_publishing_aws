@@ -10,7 +10,7 @@
   <div class="upper-menu">
     <div class="all-items-filter item-filter">
       <?php if (!empty($video_filters)): ?>
-        <div class="filter-label">test</div>
+        <div class="filter-label"><?php print !empty($video_filter_title) ? $video_filter_title : t('All videos'); ?></div>
         <ul class="filter-menu transform-filter">
           <?php foreach ($video_filters as $video_filter): ?>
             <li class="filter-item<?php if ($video_filter['active'] == TRUE): print ' active'; endif; ?>">
@@ -24,7 +24,7 @@
     </div>
     <div class="sorter-items item-filter">
       <?php if (!empty($video_sorters)): ?>
-        <div class="filter-label">test</div>
+        <div class="filter-label"><?php print !empty($video_sorter_title) ? $video_sorter_title : t('Newest'); ?></div>
         <ul class="filter-menu">
           <?php foreach ($video_sorters as $video_sorter): ?>
             <li class="filter-item sorter-item<?php if (!empty($video_sorter['order'])): print ' order-' . $video_sorter['order']; endif; ?><?php if ($video_sorter['active'] == TRUE): print ' active'; endif; ?>">

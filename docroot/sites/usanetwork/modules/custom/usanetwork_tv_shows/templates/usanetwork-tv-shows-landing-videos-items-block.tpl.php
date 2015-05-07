@@ -5,7 +5,7 @@
 ?>
 <div class="videos-landing-page-block">
   <?php if (!empty($ad)): ?>
-    <div class="latest-ad"><?php print $ad; ?></div>
+    <div class="midbanner" id="advert-videos-landing-<?php print $ad_id; ?>"><?php print $ad; ?></div>
   <?php endif; ?>
   <?php if (!empty($items)): ?>
     <ul class="<?php print $is_even ? 'even' : 'odd'; ?>">

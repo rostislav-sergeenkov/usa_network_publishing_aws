@@ -1406,13 +1406,9 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
  * Theme function for getting 'usanetwork_home_shows_queue_advert'.
  */
 function _usanetwork_home_shows_queue_get_advert_content($show_node_wrapper) {
-  $advert_block = module_invoke('mps', 'block_view', 'showcardad');
-  if (!empty($advert_block['content'])) {
-    $advert = render($advert_block['content']);
-  }
 
   $theme_variables = array(
-    'advert_block' => isset($advert) ? $advert : NULL,
+
   );
 
   return theme('usanetwork_home_shows_queue_advert', $theme_variables);

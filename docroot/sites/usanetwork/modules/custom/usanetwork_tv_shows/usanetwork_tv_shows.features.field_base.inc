@@ -96,7 +96,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
-        'person' => 'person,',
+        'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
@@ -2474,7 +2474,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
-      'max_length' => 255,
+      'max_length' => 50,
     ),
     'translatable' => 0,
     'type' => 'text',

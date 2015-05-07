@@ -12575,6 +12575,22 @@ footer h2 {
   padding: 0;
 }
 
+.consumptionator-characters-main-block {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.consumptionator-characters-main-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.consumptionator-characters-main-block .character-info-block {
+  float: left;
+  position: relative;
+  width: 74.7%;
+}
+
 .node-type-catchall-page .block-system {
   width: 100%;
   position: relative;

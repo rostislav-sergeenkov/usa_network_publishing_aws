@@ -520,6 +520,90 @@ function usanetwork_aspot_image_default_styles() {
     ),
   );
 
+  $styles['2880x1620'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 2880,
+          'height' => 1620,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 2880,
+          'height' => 1620,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['640x560'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 560,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 560,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['2880x1260'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 2880,
+          'height' => 1260,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 2880,
+          'height' => 1260,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['1280x1120'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 1120,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 1120,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   return $styles;
 }
 
@@ -635,11 +719,11 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
       ? usanetwork_tv_shows_color_show_css_class($show_node)
       : '',
     'show_poster' => array(
-      'mobile' => image_style_url('640x640', $banner_images['mobile']),
-      'mobile_retina' => image_style_url('1280x1280', $banner_images['mobile']),
+      'mobile' => image_style_url('640x560', $banner_images['mobile']),
+      'mobile_retina' => image_style_url('1280x1120', $banner_images['mobile']),
       'tablet' => image_style_url('1024x448', $banner_images['tablet']),
       'tablet_retina' => image_style_url('2048x896', $banner_images['tablet']),
-      'desktop' => image_style_url('2500x1094', $banner_images['desktop']),
+      'desktop' => image_style_url('2880x1260', $banner_images['desktop']),
     ),
     'show_title_prefix_style' => isset($draggable_data->data->aspot_elements->title_prefix)
       ? array(
@@ -765,8 +849,8 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
       : '',
     'show_class' => usanetwork_tv_shows_color_show_css_class($show_node),
     'show_poster' => array(
-      'mobile' => image_style_url('640x640', $banner_images['mobile']),
-      'desktop' => image_style_url('2490x1418', $banner_images['desktop']),
+      'mobile' => image_style_url('640x560', $banner_images['mobile']),
+      'desktop' => image_style_url('2880x1620', $banner_images['desktop']),
     ),
     'show_title_prefix_style' => isset($draggable_data->data->tvs_aspot_elements->title_prefix)
       ? array(

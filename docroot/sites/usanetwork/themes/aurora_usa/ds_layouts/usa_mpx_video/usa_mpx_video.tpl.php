@@ -118,7 +118,7 @@
         </div>
       </div>
     <?php else: ?>
-      <div class="node-wrapper advert">
+      <div class="node-wrapper advert <?php ($full_episode) ? print 'full-video' : print ''; ?>">
         <div class="advertisement">
           <?php if ($full_episode) : ?>
             <div id="ad_300x60_1"></div>

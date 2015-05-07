@@ -9098,6 +9098,20 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   position: relative;
   width: 100%;
 }
+.show-latest-block .midbanner {
+  height: auto;
+  margin: 16px auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 970px;
+}
+@media (max-width: 640px) {
+  .show-latest-block .midbanner {
+    margin: 1.47vw auto;
+    max-width: 100%;
+    width: 300px;
+  }
+}
 
 .state-menu #menu-wrapper {
   display: block;
@@ -26590,7 +26604,6 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 #full-bleed-promo .block-advert {
-  background: #002525;
   height: 250px;
   right: 0;
   margin-top: -125px;

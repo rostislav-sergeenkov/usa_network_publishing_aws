@@ -1,4 +1,4 @@
-<div class="video-block">
+<div class="video-block" data-tve-player>
   <div class="player-wrapper">
     <div class="node usanetwork-aspot player">
       <?php if (!empty($video_inactive)): ?>

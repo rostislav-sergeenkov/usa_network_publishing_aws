@@ -33,11 +33,15 @@ body {
   @extend %regular;
   color: $text-color;
   background-color: $poll-back;
-  max-width: 2500px;
   margin: 0 auto;
   width: 100%;
 }
 
+.usa-wrap {
+  max-width: 2500px;
+  margin: 0 auto;
+  position: relative;
+}
 // Selected Text -------------------------------------------------------------- */
 // -moz- must be declared separately
 

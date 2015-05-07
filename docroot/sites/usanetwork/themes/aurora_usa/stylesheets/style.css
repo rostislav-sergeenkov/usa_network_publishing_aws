@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -2857,9 +2857,14 @@ html {
 body {
   color: white;
   background-color: #e9eaeb;
-  max-width: 2500px;
   margin: 0 auto;
   width: 100%;
+}
+
+.usa-wrap {
+  max-width: 2500px;
+  margin: 0 auto;
+  position: relative;
 }
 
 ::-moz-selection {

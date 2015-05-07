@@ -20,26 +20,26 @@
   }
 }
 
-.ad-leaderboard {
-  text-align: center;
-  padding: 10px 0 0;
-  line-height: 1em;
-  body:not(.front) & {
-    margin-bottom: 10px;
-  }
-  @include breakpoint($bp-ad-leaderboard-med-width) {
-    padding-bottom: 10px;
-    height: auto;
-    body:not(.front) & {
-      margin-bottom: 0;
-    }  
-  }
-  .usa-adrails & {
-    padding-top: 0;
-    position: relative;
-    z-index: 0;
-  }
-}
+//.ad-leaderboard {
+//  text-align: center;
+//  padding: 10px 0 0;
+//  line-height: 1em;
+//  body:not(.front) & {
+//    margin-bottom: 10px;
+//  }
+//  @include breakpoint($bp-ad-leaderboard-med-width) {
+//    padding-bottom: 10px;
+//    height: auto;
+//    body:not(.front) & {
+//      margin-bottom: 0;
+//    }
+//  }
+//  .usa-adrails & {
+//    padding-top: 0;
+//    position: relative;
+//    z-index: 0;
+//  }
+//}
 
 
 #head-sponsored {

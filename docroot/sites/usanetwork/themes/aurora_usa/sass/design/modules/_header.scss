@@ -12,24 +12,7 @@ header {
     margin: 0;
   }
   .ad-728x90 {
-    margin: 0 auto;
-    padding: 10px 0;
-    width: 728px;
-    a {
-      display: block;
-      height: 90px;
-    }
-    @include breakpoint($bp-768-width) {
-      height: auto;
-      width: 300px;
-      a {
-        height: auto;
-      }
-      img {
-        height: auto;
-        width: 300px;
-      }
-    }
+
   }
   .header-nav-bar {
     background-color: $header-tab-back;

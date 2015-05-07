@@ -2757,7 +2757,7 @@ Suggested max dimensions 380px x 80px<br/>
   $field_instances['node-usanetwork_aspot-field_usa_aspot_desktop'] = array(
     'bundle' => 'usanetwork_aspot',
     'deleted' => 0,
-    'description' => 'Largest retina image minimum 2490w x 1418h, scales for tablet devices',
+    'description' => 'Largest retina image minimum 2490w x 1260h, scales for tablet devices',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2814,7 +2814,7 @@ Suggested max dimensions 380px x 80px<br/>
       'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '2490x1418',
+      'min_resolution' => '2490x1260',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),

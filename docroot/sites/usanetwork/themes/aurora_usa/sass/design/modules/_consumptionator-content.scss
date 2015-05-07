@@ -60,7 +60,6 @@
       display: none;
     }
     .advertisement {
-      background: $video-promo-back-gray;
       height: 250px;
       margin: 0 auto;
       width: 300px;
@@ -119,6 +118,12 @@
       text-transform: uppercase;
       @include breakpoint($bp-min-1901-width) {
         font-size: 23px;
+      }
+      @include breakpoint($bp-1280-width) {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: calc(100% - 200px);
+        white-space: nowrap;
       }
       @include breakpoint($bp-640-width) {
         font-size: 30px;

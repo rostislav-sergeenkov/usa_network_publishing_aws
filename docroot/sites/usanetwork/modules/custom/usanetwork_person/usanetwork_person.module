@@ -56,7 +56,7 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-person-character-carousel',
     ),
-    'usanetwork_person_character_carousel_item' => array(
+    'usanetwork_person_character_carousel_item_h' => array(
       'variables' => array(
         'target_url' => NULL,
         'title' => NULL,
@@ -64,7 +64,17 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
         'image_mobile' => NULL,
         'image_desktop' => NULL,
       ),
-      'template' => 'templates/usanetwork-person-character-carousel-item',
+      'template' => 'templates/usanetwork-person-character-carousel-item-h',
+    ),
+    'usanetwork_person_character_carousel_item_v' => array(
+      'variables' => array(
+        'target_url' => NULL,
+        'title' => NULL,
+        'additinal' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-item-v',
     ),
     'usanetwork_person_related_items_container' => array(
       'variables' => array(
@@ -350,7 +360,10 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
   $query->orderBy('person_node.title', 'ASC');
 
   $result = $query->execute()->fetchAll();
-  $rendered_items = array();
+  $rendered_items = array(
+    'horizontal' => array(),
+    'vertical' => array(),
+  );
 
   if (!empty($result)) {
     foreach ($result as $result_item) {
@@ -379,11 +392,13 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
           : FALSE,
       );
 
-      $rendered_items[] = theme('usanetwork_person_character_carousel_item', $theme_item_variables);
+      $rendered_items['horizontal'][] = theme('usanetwork_person_character_carousel_item_h', $theme_item_variables);
+      $rendered_items['vertical'][] = theme('usanetwork_person_character_carousel_item_v', $theme_item_variables);
     }
 
     $theme_variables = array(
-      'items' => $rendered_items,
+      'items_h' => $rendered_items['horizontal'],
+      'items_v' => $rendered_items['vertical'],
     );
 
     return theme('usanetwork_person_character_carousel', $theme_variables);

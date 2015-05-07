@@ -70,6 +70,9 @@ function aurora_usa_preprocess_html(&$vars) {
     if ($entity->type == 'media_gallery' || $entity->type == 'catchall_page') {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
     }
+    if ($entity->type == 'person') {
+      $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+    }
     if ($entity->type == 'tv_show') {
       $show_title = _usanetwork_get_field_item('node', $entity, 'field_pathauto_alias', 'value');
       $show_class = drupal_html_class('show-' . $show_title);

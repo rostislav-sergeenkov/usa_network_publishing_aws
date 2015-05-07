@@ -12564,6 +12564,22 @@ footer h2 {
   }
 }
 
+.consumptionator-characters-main-block {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.consumptionator-characters-main-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.consumptionator-characters-main-block .character-info-block {
+  float: left;
+  position: relative;
+  width: 74.7%;
+}
+
 .node-type-catchall-page .block-system {
   width: 100%;
   position: relative;
@@ -26552,7 +26568,7 @@ body.blog .view-display-id-blog_content .views-row {
 #full-bleed-promo {
   margin: 20px auto 0;
   position: relative;
-  max-height: 500px;
+  max-height: 560px;
   max-width: 1650px;
   min-width: 300px;
 }

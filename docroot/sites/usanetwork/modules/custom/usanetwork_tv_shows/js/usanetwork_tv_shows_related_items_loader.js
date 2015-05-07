@@ -7,7 +7,7 @@
       var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || 0;
       var start_from = limit*number_ul + negativeOffset;
       var service_name = '';
-      var additional_arguments = 0;
+      var additional_arguments = '';
 
       if (typeof Drupal.settings.usanetwork_tv_show_page_context != 'undefined') {
         switch (Drupal.settings.usanetwork_tv_show_page_context) {
@@ -43,8 +43,11 @@
         url: url,
         dataType: 'json',
         success: function (data) {
+
           $('.ajax-load-block .load-more-link').before(data.rendered);
           $('.ajax-load-block .load-more-link .load-more-loader').remove();
+
+          Drupal.behaviors.mpsAdvert.showLatestBlock();
 
           if (typeof window.picturefill != 'undefined') {
             window.picturefill();

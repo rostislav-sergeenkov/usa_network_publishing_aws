@@ -62,7 +62,7 @@
     ajaxLoadBlock: function () {
       var blockAd = $('.ajax-load-block .midbanner').last(),
           blockAdClass = blockAd.attr('class'),
-          blockAdId = blockAdClass + '-' + counter,
+          blockAdId = blockAd.attr('id'),
           selector = '#' + blockAdId,
           nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.midbanner;
 

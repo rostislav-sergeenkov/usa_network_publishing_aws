@@ -12670,6 +12670,12 @@ footer h2 {
     position: relative;
   }
 }
+@media (max-width: 1024px) {
+  .consum-sidebar .advert.full-video {
+    height: 250px;
+    padding: calc((250px - 60px) / 2) 0;
+  }
+}
 .consum-sidebar .advert.full-video .advertisement {
   height: 60px;
   overflow: hidden;

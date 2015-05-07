@@ -72,6 +72,10 @@
       @include breakpoint($between-1025-1280) {
         position: relative;
       }
+      @include breakpoint($bp-1024-width) {
+        height: 250px;
+        padding: calc((250px - 60px) / 2) 0;
+      }
       .advertisement {
         height: 60px;
         overflow: hidden;

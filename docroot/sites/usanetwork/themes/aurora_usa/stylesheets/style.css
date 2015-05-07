@@ -12659,6 +12659,30 @@ footer h2 {
   margin: 0 auto;
   width: 300px;
 }
+@media (min-width: 1281px) {
+  .consum-sidebar .advert.full-video {
+    height: 23.4vw;
+    padding: calc((23.4vw - 60px) / 2) 0;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .advert.full-video {
+    position: relative;
+  }
+}
+.consum-sidebar .advert.full-video .advertisement {
+  height: 60px;
+  overflow: hidden;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .advert.full-video .advertisement {
+    position: absolute;
+    margin-left: -150px;
+    margin-top: -30px;
+    left: 50%;
+    top: 50%;
+  }
+}
 .consum-sidebar .items-block {
   position: relative;
   width: 100%;

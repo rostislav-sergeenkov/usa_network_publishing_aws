@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -12598,6 +12598,19 @@ footer h2 {
   position: relative;
   width: 74.7%;
 }
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block {
+    width: 100%;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar {
+    height: auto;
+    padding: 0;
+    position: relative;
+    width: 100%;
+  }
+}
 
 .node-type-catchall-page .block-system {
   width: 100%;
@@ -15624,9 +15637,6 @@ footer h2 {
   .videos-landing-page-container .video-items-blocks {
     margin-bottom: 190px;
   }
-}
-.videos-landing-page-container .video-items-blocks .videos-landing-page-block {
-  position: relative;
 }
 .videos-landing-page-container .video-items-blocks ul {
   padding: 0;

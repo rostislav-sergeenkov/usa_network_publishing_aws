@@ -258,9 +258,6 @@
     @include breakpoint($bp-min-1901-width) {
       margin-bottom: 190px;
     }
-    .videos-landing-page-block {
-      position: relative;
-    }
     ul {
       @include clear();
       padding: 0;

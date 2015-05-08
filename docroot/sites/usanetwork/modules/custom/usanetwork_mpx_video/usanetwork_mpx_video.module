@@ -122,6 +122,10 @@ function usanetwork_mpx_video_block_info() {
     'info' => t('Videofile: Social content block'),
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['usa_mpx_video_full_video_advert'] = array(
+    'info' => t('Video MPX: Long Video Top Advert'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -224,6 +228,9 @@ function usanetwork_mpx_video_block_view($delta) {
         '#markup' => usanetwork_mpx_video_social_content_block(),
       );
       break;
+    case 'usa_mpx_video_full_video_advert':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_mpx_video_full_video_advert();
   }
   return $block;
 }
@@ -1553,13 +1560,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $file_field = field_get_items('file', $file, 'field_mpx_full_episode');
       $full_episode = reset($file_field);
-      $full_episode = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
-      if ($full_episode) {
-        $vars['content']['video_mpx_companion_rectangle']['#access'] = FALSE;
-      }
-      else {
-        $vars['content']['video_companion_rectangle_small']['#access'] = FALSE;
-      }
+      $vars['full_episode'] = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
 
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
@@ -2616,6 +2617,13 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-mpx-video-related-items-container',
     ),
+    'usanetwork_mpx_video_full_video_advert' =>array(
+      'variables' => array(
+        'ad' => NULL,
+        'full_episode' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-full-video-advert',
+    )
   );
   return $themes;
 }
@@ -2860,6 +2868,33 @@ function usanetwork_mpx_video_social_content_block() {
     }
   }
   return $output;
+}
+
+/*
+ * Advert Block for MPX Videos
+ */
+function _usanetwork_mpx_video_full_video_advert() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $file = menu_get_object('file');
+
+  if (!empty($file)) {
+    $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+  }
+
+  $advert_block = module_invoke('mps', 'block_view', 'topbanner');
+  if (!empty($advert_block['content'])) {
+    $advert = render($advert_block['content']);
+  }
+
+  $theme_vars = array(
+    'ad' => isset($advert) ? $advert : NULL,
+    'full_episode' => isset($full_episode) ? ($full_episode == '1' ? TRUE : FALSE) : FALSE,
+  );
+
+  return theme('usanetwork_mpx_video_full_video_advert', $theme_vars);
 }
 
 /**

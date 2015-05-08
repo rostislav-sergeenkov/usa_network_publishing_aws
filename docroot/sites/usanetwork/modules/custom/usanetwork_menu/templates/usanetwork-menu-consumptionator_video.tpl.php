@@ -43,7 +43,7 @@
           <img src="<?php print $episode['image_url']; ?>" alt="">
         </div>
         <div class="title-overlay meta">
-          <div class="meta-left">
+          <div class="meta-info">
             <div class="caption"><?php print $episode['video_type']; ?></div>
             <div class="title"><?php print $episode['title']; ?></div>
             <?php if (!empty($episode['season_number']) && !empty($episode['episode_number'])): ?>

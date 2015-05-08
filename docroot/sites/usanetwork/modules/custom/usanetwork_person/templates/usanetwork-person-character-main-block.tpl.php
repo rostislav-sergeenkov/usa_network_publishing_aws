@@ -4,9 +4,9 @@
  */
 ?>
 <div class="consumptionator-characters-main-block">
-  <div class="left-block">
-    <div class="block-header">
-      <div class="block-left">
+  <div class="character-info-block">
+    <div class="block-character-info-header">
+      <div class="block-character-info-header-left">
         <?php if (!empty($character_full_name)): ?>
           <div class="full-name"><?php print $character_full_name; ?></div>
         <?php endif; ?>
@@ -14,7 +14,7 @@
           <div class="description"><?php print $character_description; ?></div>
         <?php endif; ?>
       </div>
-      <div class="block-right">
+      <div class="block-character-info-header-right">
         <div class="share"><?php print t('Share'); ?></div>
         <?php if (!empty($social_icons)): ?>
           <div class="social-icons">
@@ -25,7 +25,7 @@
         <?php endif; ?>
       </div>
     </div>
-    <div class="block-content">
+    <div class="block-character-info-content">
       <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
         <?php if (!empty($image_mobile)): ?>
           <div data-src="<?php print $image_mobile; ?>"></div>
@@ -60,9 +60,17 @@
       </div>
     </div>
   </div>
+  <div class="consum-sidebar">
+    <div class="node-wrapper advert">
+      <div class="advertisement"></div>
+    </div>
   <?php if (!empty($rendered_carousel)): ?>
-    <div class="right-block">
+    <div class="items-block persons-block">
       <?php print $rendered_carousel; ?>
     </div>
   <?php endif; ?>
+    <div class="more-items more-characters show-color">
+      <a href="#"><?php print t('Go to cast & info');?></a>
+    </div>
+  </div>
 </div>

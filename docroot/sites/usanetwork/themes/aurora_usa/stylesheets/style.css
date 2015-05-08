@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -2388,12 +2388,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 769px) {
   .show-latest-block ul li .show-latest-promo .meta-wrapper, .related-content-block ul li .show-latest-promo .meta-wrapper {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
   }
 }
@@ -3446,7 +3446,7 @@ input[type="radio"], input[type="checkbox"] {
   content: "\e606";
 }
 
-#topbanner, .topbanner {
+#topbanner {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
@@ -3466,6 +3466,13 @@ input[type="radio"], input[type="checkbox"] {
     max-width: 100%;
     width: 300px;
   }
+}
+
+.companionContainer {
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+  width: 970px;
 }
 
 .clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
@@ -6195,14 +6202,14 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     margin-left: 0;
   }
 }
-.search-show header .tab-item.share-tab .tab-item-content .node .meta .meta-left {
+.search-show header .tab-item.share-tab .tab-item-content .node .meta .meta-info {
   float: left;
   padding-right: 10px;
   width: 200px;
   text-transform: uppercase;
 }
 @media (max-width: 1280px) {
-  .search-show header .tab-item.share-tab .tab-item-content .node .meta .meta-left {
+  .search-show header .tab-item.share-tab .tab-item-content .node .meta .meta-info {
     float: none;
     padding-right: 0;
     width: 100%;
@@ -6726,38 +6733,38 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 
-.consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar {
+.consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
   background: #2c2c2c;
   height: 90px !important;
   position: relative;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar {
+  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
     height: 135px !important;
   }
-  .consumptionator-page header .header-nav-bar .usa-logo, .node-type-catchall-page header .header-nav-bar .usa-logo, .page-videos-live header .header-nav-bar .usa-logo, .node-type-media-gallery header .header-nav-bar .usa-logo {
+  .consumptionator-page header .header-nav-bar .usa-logo, .node-type-catchall-page header .header-nav-bar .usa-logo, .page-videos-live header .header-nav-bar .usa-logo, .node-type-media-gallery header .header-nav-bar .usa-logo, .node-type-person header .header-nav-bar .usa-logo {
     width: 190px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar {
+  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
     height: 72px !important;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar {
+  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
     height: 50px !important;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page header .header-nav-bar .usa-logo, .node-type-catchall-page header .header-nav-bar .usa-logo, .page-videos-live header .header-nav-bar .usa-logo, .node-type-media-gallery header .header-nav-bar .usa-logo {
+  .consumptionator-page header .header-nav-bar .usa-logo, .node-type-catchall-page header .header-nav-bar .usa-logo, .page-videos-live header .header-nav-bar .usa-logo, .node-type-media-gallery header .header-nav-bar .usa-logo, .node-type-person header .header-nav-bar .usa-logo {
     position: relative;
     width: 50px;
   }
-  .consumptionator-page header .header-nav-bar .usa-logo a, .node-type-catchall-page header .header-nav-bar .usa-logo a, .page-videos-live header .header-nav-bar .usa-logo a, .node-type-media-gallery header .header-nav-bar .usa-logo a {
+  .consumptionator-page header .header-nav-bar .usa-logo a, .node-type-catchall-page header .header-nav-bar .usa-logo a, .page-videos-live header .header-nav-bar .usa-logo a, .node-type-media-gallery header .header-nav-bar .usa-logo a, .node-type-person header .header-nav-bar .usa-logo a {
     background: none;
   }
-  .consumptionator-page header .header-nav-bar .usa-logo a:after, .node-type-catchall-page header .header-nav-bar .usa-logo a:after, .page-videos-live header .header-nav-bar .usa-logo a:after, .node-type-media-gallery header .header-nav-bar .usa-logo a:after {
+  .consumptionator-page header .header-nav-bar .usa-logo a:after, .node-type-catchall-page header .header-nav-bar .usa-logo a:after, .page-videos-live header .header-nav-bar .usa-logo a:after, .node-type-media-gallery header .header-nav-bar .usa-logo a:after, .node-type-person header .header-nav-bar .usa-logo a:after {
     content: '';
     display: block;
     background-image: url('../images/sprites-s969621235a.png');
@@ -6775,7 +6782,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
-  .consumptionator-page header .header-nav-bar .usa-logo a:after, .node-type-catchall-page header .header-nav-bar .usa-logo a:after, .page-videos-live header .header-nav-bar .usa-logo a:after, .node-type-media-gallery header .header-nav-bar .usa-logo a:after {
+  .consumptionator-page header .header-nav-bar .usa-logo a:after, .node-type-catchall-page header .header-nav-bar .usa-logo a:after, .page-videos-live header .header-nav-bar .usa-logo a:after, .node-type-media-gallery header .header-nav-bar .usa-logo a:after, .node-type-person header .header-nav-bar .usa-logo a:after {
     background-image: url('../images/sprites-retina-s19f56d21c6.png');
     background-size: 65px 1736px;
     background-position: 0 -607px;
@@ -6783,7 +6790,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     width: 45px;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
   background: #2c2c2c;
   display: block;
   height: 100%;
@@ -6791,17 +6798,17 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   max-width: calc(100% - 125px);
 }
 @media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
     max-width: calc(100% - 190px);
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
     max-width: calc(100% - 100px);
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
     clear: none;
     margin-left: 100px;
     max-width: calc(100% - 100px);
@@ -6809,12 +6816,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
     margin-left: 50px;
     max-width: calc(100% - 50px);
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item {
   box-sizing: border-box;
   cursor: pointer;
   display: block;
@@ -6824,10 +6831,10 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   text-align: center;
   vertical-align: middle;
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item h1 {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item h1, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item h1 {
   margin: 0;
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
   background: none;
   border-left: 0;
   border-right: 0;
@@ -6845,71 +6852,71 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   white-space: nowrap;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
     font-size: 40px;
     line-height: 135px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
     font-size: 16px;
     line-height: 72px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
     line-height: 50px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
     font-size: 14px;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name {
   border-left: 1px solid #363636;
   max-width: 30%;
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name {
     max-width: calc(100% - 50px);
     width: 100%;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
     max-width: calc(100% - 50px);
     padding: 0;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info {
   border-left: 1px solid #363636;
   border-right: 1px solid #363636;
   max-width: 70%;
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info {
     border-right: none;
     width: 50px;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
   position: relative;
   padding-left: 90px;
   text-align: left;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
     padding-left: 130px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
     padding-left: 70px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
     overflow: hidden;
     padding: 0;
     text-indent: 110%;
@@ -6918,7 +6925,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     width: 50px;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
   background-image: url('../images/sprites-s969621235a.png');
   background-position: 0 -203px;
   background-repeat: no-repeat;
@@ -6935,7 +6942,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   top: 50%;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     background-image: url('../images/sprites-retina-s19f56d21c6.png');
     background-size: 65px 1736px;
     background-position: 0 -395px;
@@ -6944,7 +6951,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 @media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     background-image: url('../images/sprites-s969621235a.png');
     background-position: 0 -20px;
     background-repeat: no-repeat;
@@ -6958,7 +6965,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 @media (min-width: 1901px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1901px) and (-o-min-device-pixel-ratio: 3 / 2), (min-width: 1901px) and (min--moz-device-pixel-ratio: 2), (min-width: 1901px) and (min-device-pixel-ratio: 2), (min-width: 1901px) and (min-resolution: 144dppx) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     background-image: url('../images/sprites-retina-s19f56d21c6.png');
     background-size: 65px 1736px;
     background-position: 0 0;
@@ -6967,157 +6974,176 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     left: 35px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     left: 50%;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover {
   background: #363636;
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active {
   background: #757575;
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before {
   background-color: inherit;
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .tab-content, .node-type-catchall-page header .tab-content, .page-videos-live header .tab-content, .node-type-media-gallery header .tab-content {
+  .consumptionator-page header .tab-content, .node-type-catchall-page header .tab-content, .page-videos-live header .tab-content, .node-type-media-gallery header .tab-content, .node-type-person header .tab-content {
     display: block;
   }
 }
-.consumptionator-page header .tab-content .tab-item, .node-type-catchall-page header .tab-content .tab-item, .page-videos-live header .tab-content .tab-item, .node-type-media-gallery header .tab-content .tab-item {
+.consumptionator-page header .tab-content .tab-item, .node-type-catchall-page header .tab-content .tab-item, .page-videos-live header .tab-content .tab-item, .node-type-media-gallery header .tab-content .tab-item, .node-type-person header .tab-content .tab-item {
   padding: 40px;
 }
-.consumptionator-page header .tab-content .tab-item.active, .node-type-catchall-page header .tab-content .tab-item.active, .page-videos-live header .tab-content .tab-item.active, .node-type-media-gallery header .tab-content .tab-item.active {
+.consumptionator-page header .tab-content .tab-item.active, .node-type-catchall-page header .tab-content .tab-item.active, .page-videos-live header .tab-content .tab-item.active, .node-type-media-gallery header .tab-content .tab-item.active, .node-type-person header .tab-content .tab-item.active {
   border: none;
   background: #757575;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content, .node-type-catchall-page header .tab-content .tab-item .tab-item-content, .page-videos-live header .tab-content .tab-item .tab-item-content, .node-type-media-gallery header .tab-content .tab-item .tab-item-content {
+.consumptionator-page header .tab-content .tab-item .tab-item-content, .node-type-catchall-page header .tab-content .tab-item .tab-item-content, .page-videos-live header .tab-content .tab-item .tab-item-content, .node-type-media-gallery header .tab-content .tab-item .tab-item-content, .node-type-person header .tab-content .tab-item .tab-item-content {
   position: relative;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node:after, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node:after, .page-videos-live header .tab-content .tab-item .tab-item-content .node:after, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node:after {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node:after, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node:after, .page-videos-live header .tab-content .tab-item .tab-item-content .node:after, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node:after, .node-type-person header .tab-content .tab-item .tab-item-content .node:after {
   clear: both;
   content: '';
   display: table;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .asset-img, .page-videos-live header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .asset-img {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .asset-img, .page-videos-live header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-person header .tab-content .tab-item .tab-item-content .node .asset-img {
   display: block;
   float: left;
   width: 205px;
 }
 @media (max-width: 480px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .asset-img, .page-videos-live header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .asset-img {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .asset-img, .page-videos-live header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .asset-img, .node-type-person header .tab-content .tab-item .tab-item-content .node .asset-img {
     float: none;
     margin-bottom: 20px;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .asset-img img, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .asset-img img, .page-videos-live header .tab-content .tab-item .tab-item-content .node .asset-img img, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .asset-img img {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .asset-img img, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .asset-img img, .page-videos-live header .tab-content .tab-item .tab-item-content .node .asset-img img, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .asset-img img, .node-type-person header .tab-content .tab-item .tab-item-content .node .asset-img img {
   width: 100%;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
   color: #ffffff;
   margin-left: 250px;
-  padding-top: 20px;
-}
-@media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta {
-    padding-top: 0;
-  }
+  padding-top: 0;
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
     margin-left: 225px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
     margin-left: 0;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-left {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+  font-size: 14px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 20px;
+  max-width: 50%;
+}
+@media (max-width: 1280px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+    max-width: 70%;
+    margin: 30px 0 0;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+    max-width: 90%;
+    margin-top: 75px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+    margin-top: 20px;
+  }
+}
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description p, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description p, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description p, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description p, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description p {
+  margin: 0;
+}
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
   float: left;
   padding-right: 10px;
   width: 200px;
   text-transform: uppercase;
 }
 @media (max-width: 1280px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-left {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
     float: none;
     padding-right: 210px;
     width: 100%;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-left {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
     padding-right: 190px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-left, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-left {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
     padding-right: 0;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .caption, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .caption {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description {
+  margin-left: 210px;
+  margin-right: 310px;
+}
+@media (max-width: 1280px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info ~ .description {
+    margin: 30px 0 0;
+  }
+}
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .caption, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .caption {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 10px;
   letter-spacing: 0.75px;
   line-height: 16px;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .title, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .title {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .title, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .title {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 16px;
   letter-spacing: 1px;
   line-height: 22px;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .additional, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .additional, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .additional, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .additional {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .additional, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .additional, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .additional, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .additional, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .additional {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
   font-size: 10px;
   line-height: 16px;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .additional span, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .additional span, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .additional span, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .additional span {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .additional span, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .additional span, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .additional span, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .additional span, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .additional span {
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description {
-  font-size: 14px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 20px;
-  margin-left: 210px;
-  margin-right: 310px;
-}
-@media (max-width: 1280px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description {
-    margin: 30px 0 0;
-  }
-}
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
   right: 0;
   position: absolute;
   top: 0;
   width: 190px;
+  margin-right: 16px;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
     width: 170px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
     position: static;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
     display: none;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3 {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3 {
   color: #e9eaeb;
   font-size: 20px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -7126,12 +7152,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   text-transform: uppercase;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3 {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3 {
     font-size: 18px;
     line-height: 24px;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar {
   margin-bottom: 0;
 }
 
@@ -12564,6 +12590,45 @@ footer h2 {
   }
 }
 
+.consumptionator-characters-main-block {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.consumptionator-characters-main-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.consumptionator-characters-main-block .character-info-block {
+  float: left;
+  position: relative;
+  width: 74.7%;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block {
+    width: 100%;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar {
+    height: auto;
+    padding: 0;
+    position: relative;
+    width: 100%;
+  }
+}
+@media (min-width: 1281px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block {
+    height: 420px;
+  }
+}
+@media (min-width: 1901px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block {
+    height: 645px;
+  }
+}
+
 .node-type-catchall-page .block-system {
   width: 100%;
   position: relative;
@@ -12642,6 +12707,36 @@ footer h2 {
   height: 250px;
   margin: 0 auto;
   width: 300px;
+}
+@media (min-width: 1281px) {
+  .consum-sidebar .advert.full-video {
+    height: 23.4vw;
+    padding: calc((23.4vw - 60px) / 2) 0;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .advert.full-video {
+    position: relative;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .advert.full-video {
+    height: 250px;
+    padding: calc((250px - 60px) / 2) 0;
+  }
+}
+.consum-sidebar .advert.full-video .advertisement {
+  height: 60px;
+  overflow: hidden;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .advert.full-video .advertisement {
+    position: absolute;
+    margin-left: -150px;
+    margin-top: -30px;
+    left: 50%;
+    top: 50%;
+  }
 }
 .consum-sidebar .items-block {
   position: relative;
@@ -15589,9 +15684,6 @@ footer h2 {
   .videos-landing-page-container .video-items-blocks {
     margin-bottom: 190px;
   }
-}
-.videos-landing-page-container .video-items-blocks .videos-landing-page-block {
-  position: relative;
 }
 .videos-landing-page-container .video-items-blocks ul {
   padding: 0;
@@ -26552,6 +26644,7 @@ body.blog .view-display-id-blog_content .views-row {
 #full-bleed-promo {
   margin: 20px auto 0;
   position: relative;
+  min-height: 250px;
   max-height: 500px;
   max-width: 1650px;
   min-width: 300px;

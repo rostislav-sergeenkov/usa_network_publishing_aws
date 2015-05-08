@@ -70,6 +70,9 @@ function aurora_usa_preprocess_html(&$vars) {
     if ($entity->type == 'media_gallery' || $entity->type == 'catchall_page') {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
     }
+    if ($entity->type == 'person') {
+      $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+    }
     if ($entity->type == 'tv_show') {
       $show_title = _usanetwork_get_field_item('node', $entity, 'field_pathauto_alias', 'value');
       $show_class = drupal_html_class('show-' . $show_title);
@@ -156,6 +159,12 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
     drupal_add_js($theme_path . '/javascripts/jquery.jcarousel.min.js');
     drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
+  }
+  if ($node && $node->type == "person" && !arg(2)) {
+    drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
+    drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
   }
   // add ios touch icon
   $ios_icon = array(

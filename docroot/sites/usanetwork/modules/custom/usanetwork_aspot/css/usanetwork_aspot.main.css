@@ -1,5 +1,10 @@
 @import "fonts.css";
 
+#edit-group_usa_aspot_ui,
+#edit-field-aspot-enabled-tgi{
+  background: #ccc;
+}
+
 .draggable-background.desktop {
   border: solid #aaa 1px;
   display: block;
@@ -39,22 +44,30 @@
   line-height: normal;
   /*margin: 0;*/
   /*padding: 3px;*/
+  top: 0;
+}
+.aspot-draggable-element p {
+  margin: 0;
 }
 
-div[data-rel="title"] {
+.draggable-area.mobile div[data-rel="title"],
+.draggable-area.desktop div[data-rel="title"] {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   line-height: initial;
   text-transform: uppercase;
 }
-div[data-rel="title_prefix"] {
+.draggable-area.mobile div[data-rel="title_prefix"],
+.draggable-area.desktop div[data-rel="title_prefix"] {
   font-family: "texgyrescholaitalic", Times, serif;
   line-height: initial;
   text-transform: uppercase;
 }
-div[data-rel="social_meter"] {
+.draggable-area.mobile div[data-rel="social_meter"],
+.draggable-area.desktop div[data-rel="social_meter"] {
   background: #2c2c2c;
 }
-.aspot-draggable-cta-button {
+.draggable-area.mobile .aspot-draggable-cta-button,
+.draggable-area.desktop .aspot-draggable-cta-button {
   background: #2c2c2c;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   text-decoration: none;
@@ -62,24 +75,24 @@ div[data-rel="social_meter"] {
 }
 
 /* mobile */
-#mobile-aspot-draggable-title {
+.draggable-area.mobile div[data-rel="title"] {
   font-size: 30px;
 }
-#mobile-aspot-draggable-title_prefix {
+.draggable-area.mobile div[data-rel="title_prefix"] {
   font-size: 12px;
 }
 .draggable-area.mobile .aspot-draggable-cta-button {
   padding: 15px 25px 15px 12px;
 }
-#mobile-aspot-draggable-social_meter{
+.draggable-area.mobile div[data-rel="social_meter"]{
   height: 138px;
   width: 205px;
 }
 /* desctop */
-#aspot-draggable-title {
+.draggable-area.desktop div[data-rel="title"] {
   font-size: 70px;
 }
-#aspot-draggable-title_prefix {
+.draggable-area.desktop div[data-rel="title_prefix"] {
   font-size: 12px;
 }
 .draggable-area.desktop .aspot-draggable-cta-button {
@@ -87,7 +100,7 @@ div[data-rel="social_meter"] {
   line-height: 24px;
   padding: 25px 40px 25px 28px;
 }
-#aspot-draggable-social_meter{
+.draggable-area.desktop div[data-rel="social_meter"]{
   height: 153px;
   width: 205px;
 }

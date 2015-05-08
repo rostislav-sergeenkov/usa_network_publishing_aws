@@ -18,5 +18,13 @@
       position: relative;
       width: 100%;
     }
+    .items-block {
+      @include breakpoint($bp-min-1281-width) {
+        height: 420px;
+      }
+      @include breakpoint($bp-min-1901-width) {
+        height: 645px;
+      }
+    }
   }
 }

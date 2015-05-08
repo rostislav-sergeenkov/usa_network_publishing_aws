@@ -6118,6 +6118,10 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block {
 header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a {
   color: #ffffff !important;
 }
+header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a.seeit-reminder {
+  clear: none;
+  margin: 0;
+}
 header .tab-item.schedule-tab .primetime-panel .schedule-item .time {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;

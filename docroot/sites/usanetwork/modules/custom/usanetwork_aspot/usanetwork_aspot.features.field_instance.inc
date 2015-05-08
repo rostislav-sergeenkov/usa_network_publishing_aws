@@ -2757,7 +2757,7 @@ Suggested max dimensions 380px x 80px<br/>
   $field_instances['node-usanetwork_aspot-field_usa_aspot_desktop'] = array(
     'bundle' => 'usanetwork_aspot',
     'deleted' => 0,
-    'description' => 'Largest retina image minimum 2490w x 1260h, scales for tablet devices',
+    'description' => 'Largest retina image minimum 2880w x 1260h, scales for tablet devices',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2814,7 +2814,7 @@ Suggested max dimensions 380px x 80px<br/>
       'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '2490x1260',
+      'min_resolution' => '2880x1260',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2932,7 +2932,7 @@ Suggested max dimensions 380px x 80px<br/>
   $field_instances['node-usanetwork_aspot-field_usa_aspot_mobile'] = array(
     'bundle' => 'usanetwork_aspot',
     'deleted' => 0,
-    'description' => 'Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.',
+    'description' => 'Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 640w x 560h.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2989,7 +2989,7 @@ Suggested max dimensions 380px x 80px<br/>
       'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '600x500',
+      'min_resolution' => '640x560',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3025,7 +3025,7 @@ Suggested max dimensions 380px x 80px<br/>
   $field_instances['node-usanetwork_aspot-field_usa_aspot_tablet_portrait'] = array(
     'bundle' => 'usanetwork_aspot',
     'deleted' => 0,
-    'description' => 'Tablet Portrait image. Minimum 1230w x 700h.',
+    'description' => 'Tablet Portrait image. Minimum 1024 x 448.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3081,7 +3081,7 @@ Suggested max dimensions 380px x 80px<br/>
       'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '1230x700',
+      'min_resolution' => '1024x448',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3464,7 +3464,7 @@ Suggested max dimensions 380px x 80px<br/>
   $field_instances['node-usanetwork_aspot-field_usa_tv_aspot_desktop'] = array(
     'bundle' => 'usanetwork_aspot',
     'deleted' => 0,
-    'description' => 'Largest retina image minimum 2490w x 1418h, scales for tablet devices',
+    'description' => 'Largest retina image minimum 2880 x 1620, scales for tablet devices',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3513,7 +3513,7 @@ Suggested max dimensions 380px x 80px<br/>
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '2490x1418',
+      'min_resolution' => '2880x1620',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3555,7 +3555,7 @@ Suggested max dimensions 380px x 80px<br/>
   $field_instances['node-usanetwork_aspot-field_usa_tv_aspot_mobile'] = array(
     'bundle' => 'usanetwork_aspot',
     'deleted' => 0,
-    'description' => 'Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.',
+    'description' => 'Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 640w x 560h.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3604,7 +3604,7 @@ Suggested max dimensions 380px x 80px<br/>
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '600x500',
+      'min_resolution' => '640x560',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),

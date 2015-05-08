@@ -1252,7 +1252,10 @@ function _usanetwork_tv_shows_aspot_block() {
     $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
 
     $alternative_episodes = _usanetwork_tv_shows_aspot_get_alternative_content($show_node);
-    $needed_count -= count($alternative_episodes);
+    if (!empty($alternative_episodes)) {
+      $needed_count = 0;
+    }
+   // $needed_count -= count($alternative_episodes);
 
     if (!empty($alternative_title_field)) {
       $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);

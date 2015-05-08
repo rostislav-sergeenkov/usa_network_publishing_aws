@@ -125,6 +125,14 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-person-cast-crew-block',
     ),
+    'usanetwork_person_cast_recap_block' => array(
+      'variables' => array(
+        'title' => NULL,
+        'video' => NULL,
+        'button_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork_person-cast-recap-block',
+    ),
   );
 }
 
@@ -221,6 +229,10 @@ function usanetwork_person_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_person_cast_recap'] = array(
+    'info' => t('Usanetwork person: Cast landing recap block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   $blocks['usanetwork_person_cast_crew'] = array(
     'info' => t('Usanetwork person: Cast landing cast & crew'),
     'cache' => DRUPAL_NO_CACHE,
@@ -248,6 +260,13 @@ function usanetwork_person_block_view($delta = '') {
     case 'usa_cons_chars_related_content':
       $block['subject'] = '';
       $block['content'] = _usanetwork_person_characters_related_content_block();
+      break;
+
+    case 'usanetwork_person_cast_recap':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_person_render_cast_recap_block(),
+      );
       break;
 
     case 'usanetwork_person_cast_crew':
@@ -422,6 +441,31 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
     return theme('usanetwork_person_character_carousel', $theme_variables);
   }
 
+  return '';
+}
+/**
+ * Renders recap block for cast landing page.
+ */
+function _usanetwork_person_render_cast_recap_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  if (!empty($show_node)) {
+    if (!empty($show_node->field_cast_recap_video)) {
+      $recap_video_file = reset(field_get_items('node', $show_node, 'field_cast_recap_video'));
+      $recap_video_file = $recap_video_file['entity'];
+      $theme_variables = array(
+        'title' => t('Series Recap'),
+        'video' => theme('pub_mpx_video', array(
+          'file' => $recap_video_file,
+          'pub_mpx_player_parameters' => array(
+            'autoPlay' => 'false',
+            'form' => 'html'
+          )
+        )),
+        'button_url' => url('node/' . $show_node->nid . '/videos'),
+      );
+      return theme('usanetwork_person_cast_recap_block', $theme_variables);
+    }
+  }
   return '';
 }
 

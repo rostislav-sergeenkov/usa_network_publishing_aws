@@ -338,6 +338,7 @@
     },
     showOpen: function (target) {
       var current_item = target.closest('li');
+      var current_item_node = current_item.find('.node-usanetwork-promo');
       var carousel = target.closest('ul');
       var current_left = parseInt(carousel.css('left'));
       var width = desktop_show_open_width;
@@ -357,6 +358,7 @@
       carousel.animate({left: left}, 500);
       current_item.animate({width: width}, 500, 'easeInCubic');
       current_item.addClass('active');
+      current_item_node.addClass('open');
       current_item.find('.show-open').css('max-width', item_width);
       setTimeout(function () {
         current_item.find('.social-icons').show();
@@ -364,6 +366,7 @@
       current_item.attr('data-left', current_left);
       current_item.attr('data-width', item_width);
       carousel.addClass('stop');
+      Drupal.behaviors.mpsAdvert.homeShowsQueueInsertAd(current_item_node);
       /*current_item.find('.show-open').bind('click', function() {
         Drupal.behaviors.global_carousels.showClose(current_item);
       });*/
@@ -371,6 +374,7 @@
     },
     showClose: function (item) {
       var carousel = item.closest('ul');
+      var current_item_node = item.find('.node-usanetwork-promo');
       var left = parseInt(item.attr('data-left'));
       var item_width = parseInt(item.attr('data-width'));
       carousel.animate({left: left}, 500);
@@ -380,11 +384,13 @@
       });
       setTimeout(function () {
         item.removeClass('active');
+        current_item_node.removeClass('open');
       }, 300);
       item.find('.social-icons').hide();
       item.removeAttr('data-left');
       item.removeAttr('data-width');
       carousel.removeClass('stop');
+      Drupal.behaviors.mpsAdvert.homeShowsQueueRemoveAd(current_item_node);
       //item.find('.show-open').unbind('click');
     },
 

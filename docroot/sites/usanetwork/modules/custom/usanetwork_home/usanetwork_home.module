@@ -373,11 +373,12 @@ function _usanetwork_home_featured_carousel() {
           $more_link = $promo_call_to_action_text['value'];
         }
 
-        $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
-
         if (!empty($promo_entity->field_promo_link)) {
           $promo_link_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_link');
           $promo_link = url(reset(reset($promo_link_field)));
+        }
+        else {
+          $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
         }
 
         $featured_vars = array(
@@ -1374,7 +1375,13 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
       else {
         $content_image = usanetwork_core_api_get_content_image($promo['target_type'], $promo_entity);
       }
-      $promo_link = url($promo['target_type'] . '/' . $promo['target_id']);
+      if (!empty($promo_entity->field_promo_link)) {
+        $promo_link_field = field_get_items($promo['target_type'], $promo_entity, 'field_promo_link');
+        $promo_link = url(reset(reset($promo_link_field)));
+      }
+      else {
+        $promo_link = url($promo['target_type'] . '/' . $promo['target_id']);
+      }
       $theme_variables = array(
         'show_class' => $promo_data['show_class'],
         'latest_episode_image_url' => !empty($content_image)
@@ -1399,13 +1406,9 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
  * Theme function for getting 'usanetwork_home_shows_queue_advert'.
  */
 function _usanetwork_home_shows_queue_get_advert_content($show_node_wrapper) {
-  $advert_block = module_invoke('mps', 'block_view', 'showcardad');
-  if (!empty($advert_block['content'])) {
-    $advert = render($advert_block['content']);
-  }
 
   $theme_variables = array(
-    'advert_block' => isset($advert) ? $advert : NULL,
+
   );
 
   return theme('usanetwork_home_shows_queue_advert', $theme_variables);

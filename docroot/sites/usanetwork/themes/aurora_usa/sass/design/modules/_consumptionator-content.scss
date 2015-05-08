@@ -60,10 +60,33 @@
       display: none;
     }
     .advertisement {
-      background: $video-promo-back-gray;
       height: 250px;
       margin: 0 auto;
       width: 300px;
+    }
+    &.full-video {
+      @include breakpoint($bp-min-1281-width) {
+        height: 23.4vw;
+        padding: calc((23.4vw - 60px) / 2) 0;
+      }
+      @include breakpoint($between-1025-1280) {
+        position: relative;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: 250px;
+        padding: calc((250px - 60px) / 2) 0;
+      }
+      .advertisement {
+        height: 60px;
+        overflow: hidden;
+        @include breakpoint($between-1025-1280) {
+          position: absolute;
+          margin-left: -150px;
+          margin-top: -30px;
+          left: 50%;
+          top: 50%;
+        }
+      }
     }
   }
   .items-block {
@@ -119,6 +142,12 @@
       text-transform: uppercase;
       @include breakpoint($bp-min-1901-width) {
         font-size: 23px;
+      }
+      @include breakpoint($bp-1280-width) {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: calc(100% - 200px);
+        white-space: nowrap;
       }
       @include breakpoint($bp-640-width) {
         font-size: 30px;

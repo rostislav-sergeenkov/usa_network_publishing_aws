@@ -575,12 +575,18 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
         $status = 'active';
         $is_active_slide = TRUE;
       }
+      $description = !empty($current_person_node->body)
+        ? $current_person_node->body[$current_person_node->language][0]['value']
+        : NULL;
+      if (_usanetwork_microsite_process_setting_data('character_bios_remove_video_tags', 'bool')) {
+        $pattern = '/\[usa_embed:video:file:\d+:inline_content:ap_true\]/i';
+        $description = preg_replace($pattern, '', $description);
+      }
+
       $theme_variables['people'][] = array(
         'id' => $character_url,
         'title' => $person_names['person_title'],
-        'description' => !empty($current_person_node->body)
-          ? $current_person_node->body[$current_person_node->language][0]['value']
-          : NULL,
+        'description' => $description,
         'role' => $person_names['role_name'],
         'character_bio_summary' => $character_bio['summary'],
         'character_bio' => $character_bio['value'],
@@ -995,7 +1001,7 @@ function usanetwork_microsite_get_quiz($node) {
   );
 }
 
-function _usanetwork_microsite_render_page_timeline_gallery($section_wrapper) {
+function _usanetwork_microsite_render_page_timeline($section_wrapper) {
   $section_object = $section_wrapper->value();
   $theme_variables = array();
   if (!empty($section_object->field_ms_timeline_gallery)) {
@@ -1096,7 +1102,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         if (
           $active_filter != USANETWORK_MICROSITE_ALL_VIDEOS &&
           $active_filter !== $current_video_type ||
-          ($is_season_filters && $active_season && $season_number != $active_season)
+          ($is_season_filters && $active_season && $season_number && $season_number != $active_season)
         ) {
           continue;
         }
@@ -3335,6 +3341,7 @@ function usanetwork_microsite_default_get_theme_settings() {
     'videos_all_videos_filter' => TRUE,
     'videos_season_filters' => FALSE,
     'short_name_for_full_episodes' => FALSE,
+    'character_bios_remove_video_tags' => TRUE,
   );
 }
 

@@ -71,5 +71,26 @@ function usanetwork_episodes_image_default_styles() {
     'label' => 'episode_wide',
   );
 
+  $styles['634x349'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 634,
+          'height' => 349,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 634,
+          'height' => 349,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   return $styles;
 }

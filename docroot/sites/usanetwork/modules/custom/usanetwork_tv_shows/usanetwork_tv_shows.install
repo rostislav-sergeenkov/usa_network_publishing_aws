@@ -148,3 +148,21 @@ function usanetwork_tv_shows_update_7022() {
      ->condition('field_name', $field_name)
      ->execute();
 }
+
+/**
+ * Adds default value of checkbox for showing TV Show feed.
+ */
+function usanetwork_tv_shows_update_7023() {
+  features_revert_module('usanetwork_tv_shows');
+
+  $show_nodes = node_load_multiple(array(), array('type' => 'tv_show'));
+
+  if (!empty($show_nodes)) {
+    foreach ($show_nodes as $show_node) {
+      $node_wrapper = entity_metadata_wrapper('node', $show_node);
+
+      $node_wrapper->field_tvs_show_latest_lnd_feed->set(TRUE);
+      $node_wrapper->save();
+    }
+  }
+}

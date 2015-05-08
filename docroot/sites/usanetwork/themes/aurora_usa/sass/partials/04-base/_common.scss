@@ -33,11 +33,15 @@ body {
   @extend %regular;
   color: $text-color;
   background-color: $poll-back;
-  max-width: 2500px;
   margin: 0 auto;
   width: 100%;
 }
 
+.usa-wrap {
+  max-width: 2500px;
+  margin: 0 auto;
+  position: relative;
+}
 // Selected Text -------------------------------------------------------------- */
 // -moz- must be declared separately
 
@@ -259,5 +263,28 @@ address {
   .show-title-block h1 {
     font-family: $avalon-demi;
     max-width: 100%;
+  }
+}
+.lazyloader-icon {
+  height: auto;
+  width: auto;
+}
+.latest-ad {
+  background: $video-promo-back-gray;
+  height: 90px;
+  margin: 16px auto;
+  width: 728px;
+  @include breakpoint($bp-768-width) {
+    height: auto;
+    min-height: 50px;
+    max-height: 90px;
+    max-width: 728px;
+    width: 100%;
+  }
+  @include breakpoint($bp-640-width) {
+    height: 50px;
+    margin: 1.47vw auto;
+    max-width: 100%;
+    width: 300px;
   }
 }

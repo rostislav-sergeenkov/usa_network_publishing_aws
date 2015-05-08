@@ -38,6 +38,5 @@
       <?php endforeach; ?>
       </li>
     <?php endif; ?>
-
   <?php endif; ?>
 </ul>

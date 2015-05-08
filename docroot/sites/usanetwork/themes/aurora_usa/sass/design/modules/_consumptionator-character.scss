@@ -8,11 +8,13 @@
     position: relative;
     width: 74.7%;
     @include breakpoint($bp-1280-width) {
+      float: none;
       width: 100%;
     }
   }
   .consum-sidebar {
     @include breakpoint($bp-1280-width) {
+      float: none;
       height: auto;
       padding: 0;
       position: relative;
@@ -24,6 +26,19 @@
       }
       @include breakpoint($bp-min-1901-width) {
         height: 645px;
+      }
+      @include breakpoint($bp-1280-width) {
+        height: auto;
+        padding: 0;
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+      }
+    }
+    .more-items {
+      @include breakpoint($bp-1280-width) {
+        top: 0;
       }
     }
     .advert {

@@ -1159,7 +1159,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       $id = 0;
       foreach ($video_types as $type => $type_el) {
         $children = array();
-        if(!empty($type_el) && is_array($type_el)) {
+        if(!empty($type_el) && is_array($type_el) && count($type_el) > 1) {
           ksort($type_el);
           foreach($type_el as $child_type => $parrent_type_name) {
             $season_name = 'Season ' . $child_type;

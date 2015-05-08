@@ -1,4 +1,4 @@
-#topbanner, .topbanner {
+#topbanner {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
@@ -15,4 +15,10 @@
     max-width: 100%;
     width: 300px;
   }
+}
+.companionContainer {
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+  width: 970px;
 }

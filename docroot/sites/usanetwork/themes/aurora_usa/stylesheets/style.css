@@ -12611,6 +12611,16 @@ footer h2 {
     width: 100%;
   }
 }
+@media (min-width: 1281px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block {
+    height: 420px;
+  }
+}
+@media (min-width: 1901px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block {
+    height: 645px;
+  }
+}
 
 .node-type-catchall-page .block-system {
   width: 100%;

@@ -160,6 +160,12 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/jquery.jcarousel.min.js');
     drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
   }
+  if ($node && $node->type == "person" && !arg(2)) {
+    drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
+    drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
+    drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
+  }
   // add ios touch icon
   $ios_icon = array(
     '#tag' => 'link',

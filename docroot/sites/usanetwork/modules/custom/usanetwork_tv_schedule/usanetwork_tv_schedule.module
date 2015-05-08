@@ -1392,7 +1392,7 @@ function usanetwork_on_now_panel_node_content($node, $text, $is_on_now) {
   // chat with fans block
   //$output .= usanetwork_social_server_side_chatter_box($node, 2);
   // Social Show block
-  $output .= usanetwork_social_show_on_now_box($node, 3);
+//  $output .= usanetwork_social_show_on_now_box($node, 3);
 
 
   return $output;

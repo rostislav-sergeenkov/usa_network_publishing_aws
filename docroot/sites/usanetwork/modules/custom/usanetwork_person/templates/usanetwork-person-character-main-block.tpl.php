@@ -65,7 +65,9 @@
       <div class="advertisement"></div>
     </div>
   <?php if (!empty($rendered_carousel)): ?>
-    <?php print $rendered_carousel; ?>
+    <div class="items-block persons-block">
+      <?php print $rendered_carousel; ?>
+    </div>
   <?php endif; ?>
     <div class="more-items more-characters show-color">
       <a href="#"><?php print t('Go to cast & info');?></a>

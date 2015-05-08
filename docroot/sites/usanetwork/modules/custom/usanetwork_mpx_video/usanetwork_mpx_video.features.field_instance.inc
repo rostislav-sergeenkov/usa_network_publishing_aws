@@ -157,7 +157,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 36,
       ),
       'preview' => array(
         'label' => 'above',
@@ -262,7 +262,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 37,
       ),
       'preview' => array(
         'label' => 'above',
@@ -383,7 +383,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 35,
       ),
       'preview' => array(
         'label' => 'above',
@@ -481,7 +481,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 27,
       ),
       'preview' => array(
         'label' => 'above',
@@ -589,7 +589,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 33,
       ),
       'preview' => array(
         'label' => 'above',
@@ -697,7 +697,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 31,
       ),
       'preview' => array(
         'label' => 'above',
@@ -805,7 +805,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 28,
       ),
       'preview' => array(
         'label' => 'above',
@@ -912,7 +912,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 29,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1241,7 +1241,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 32,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1351,7 +1351,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 1,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1574,7 +1574,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 38,
+        'weight' => 2,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1681,7 +1681,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 38,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1808,7 +1808,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 30,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1912,7 +1912,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 34,
       ),
       'preview' => array(
         'label' => 'above',
@@ -2126,7 +2126,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 37,
       ),
       'preview' => array(
         'label' => 'above',
@@ -2231,7 +2231,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 31,
       ),
       'preview' => array(
         'label' => 'above',
@@ -2345,7 +2345,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 34,
       ),
       'preview' => array(
         'label' => 'above',
@@ -2443,7 +2443,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 36,
       ),
       'preview' => array(
         'label' => 'above',
@@ -2552,7 +2552,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 30,
       ),
       'preview' => array(
         'label' => 'above',
@@ -2660,7 +2660,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 27,
       ),
       'preview' => array(
         'label' => 'above',
@@ -2769,7 +2769,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 35,
       ),
       'preview' => array(
         'label' => 'above',
@@ -2876,7 +2876,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 29,
       ),
       'preview' => array(
         'label' => 'above',
@@ -3205,7 +3205,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 28,
       ),
       'preview' => array(
         'label' => 'above',
@@ -3316,7 +3316,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 1,
       ),
       'preview' => array(
         'label' => 'above',
@@ -3539,7 +3539,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 38,
+        'weight' => 2,
       ),
       'preview' => array(
         'label' => 'above',
@@ -3646,7 +3646,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 38,
       ),
       'preview' => array(
         'label' => 'above',
@@ -3758,7 +3758,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 32,
       ),
       'preview' => array(
         'label' => 'above',
@@ -3862,7 +3862,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 33,
       ),
       'preview' => array(
         'label' => 'above',

@@ -406,7 +406,7 @@ function _usanetwork_promo_node_get_promo_lines($node) {
   $lang = LANGUAGE_NONE;
   switch($node->type) {
     case 'person':
-      $result['title'] = !empty($node->field_usa_actor_name) ? $node_wrapper->field_usa_actor_name->value() : NULL;
+      $result['title'] = !empty($node->field_usa_actor_name) ? $node_wrapper->field_usa_actor_name->value() : $node->title;
       $result['description'] = t('Bio');
       break;
     case 'media_gallery':

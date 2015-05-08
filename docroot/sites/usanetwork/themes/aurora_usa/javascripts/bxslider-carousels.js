@@ -33,7 +33,9 @@
       Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'vertical',
         minSlides: 1,
-        maxSlides: 1
+        maxSlides: 1,
+        useCSS: true,
+        easing: 'ease-in'
       });
       Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'horizontal',
@@ -89,6 +91,9 @@
         });
 
         $(this).mousewheel(function(e) {
+          console.log(e);
+          e.preventDefault();
+
           if (e.deltaY < 0) {
             calculateItems(slider);
           } else {

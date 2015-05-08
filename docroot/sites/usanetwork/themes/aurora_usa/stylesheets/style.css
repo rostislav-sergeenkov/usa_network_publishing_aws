@@ -12614,13 +12614,14 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block {
+    float: none;
     padding: 25px 35px;
+    width: 100%;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block {
     padding: 20px 30px;
-    width: 100%;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header {
@@ -12777,6 +12778,7 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .consum-sidebar {
+    float: none;
     height: auto;
     padding: 0;
     position: relative;
@@ -12791,6 +12793,27 @@ footer h2 {
 @media (min-width: 1901px) {
   .consumptionator-characters-main-block .consum-sidebar .items-block {
     height: 645px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block {
+    height: auto;
+    padding: 0;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .more-items {
+    top: 0;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .advert {
+    bottom: calc(100% + 50px);
+    position: absolute;
   }
 }
 

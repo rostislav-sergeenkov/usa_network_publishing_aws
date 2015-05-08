@@ -11,11 +11,13 @@
     color: #000000;
     padding: 45px 55px;
     @include breakpoint($bp-1280-width) {
+      float: none;
       padding: 25px 35px;
+      width: 100%;
     }
     @include breakpoint($bp-1024-width) {
       padding: 20px 30px;
-      width: 100%;
+
     }
     .block-character-info-header {
       @include clear();
@@ -134,6 +136,7 @@
   }
   .consum-sidebar {
     @include breakpoint($bp-1280-width) {
+      float: none;
       height: auto;
       padding: 0;
       position: relative;
@@ -145,6 +148,25 @@
       }
       @include breakpoint($bp-min-1901-width) {
         height: 645px;
+      }
+      @include breakpoint($bp-1280-width) {
+        height: auto;
+        padding: 0;
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+      }
+    }
+    .more-items {
+      @include breakpoint($bp-1280-width) {
+        top: 0;
+      }
+    }
+    .advert {
+      @include breakpoint($bp-1280-width) {
+        bottom: calc(100% + 50px);
+        position: absolute;
       }
     }
   }

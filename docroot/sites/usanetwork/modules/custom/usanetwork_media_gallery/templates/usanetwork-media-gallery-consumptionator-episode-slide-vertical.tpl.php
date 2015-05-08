@@ -7,7 +7,7 @@
  * $episode - episode number
  */
 ?>
-<div class="node node-usanetwork-promo">
+<div class="node node-usanetwork-promo aspot-carousel-promo">
   <a href="<?php print (!empty($gallery_url))? $gallery_url: '#'; ?>">
     <?php if (!empty($image_url)): ?>
       <div class="asset-img"><img src="<?php print $image_url;?>" alt="" title="<?php print $title; ?>"></div>

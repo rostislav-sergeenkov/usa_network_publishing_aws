@@ -1057,9 +1057,14 @@ function _usanetwork_menu_consumptionator_block_video($file) {
 
     $episode_image_uri = _usanetwork_mpx_video_get_image_path($file);
 
+    if (!empty($file->field_mpx_entitlement)) {
+      $field_mpx_entitlement = $file_wrapper->field_mpx_entitlement->value();
+      $lock = ($field_mpx_entitlement && $field_mpx_entitlement == 'auth') ? TRUE : FALSE;
+    }
+
     $theme_variables = array(
       'sharebar' => !empty($sharebar) ? drupal_render($sharebar) : '',
-      'authbar' => !empty($auth_links) ? drupal_render($auth_links) : '',
+      'authbar' => !empty($lock) ? (!empty($auth_links) ? drupal_render($auth_links) : '') : '',
       'main_url' => url('<front>'),
       'show_url' => !empty($file->field_show)
           ? url('node/' . $file_wrapper->field_show->value()->nid)

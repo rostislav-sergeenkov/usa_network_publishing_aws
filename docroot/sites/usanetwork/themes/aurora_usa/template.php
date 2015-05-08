@@ -630,6 +630,10 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $vars['items'][0]['#prefix'] = '<h4>';
             $vars['items'][0]['#suffix'] = '</h4>';
             break;
+          case 'microsite_thumbnail':
+            $vars['items'][0]['#prefix'] = '<h4>';
+            $vars['items'][0]['#suffix'] = '</h4>';
+            break;
           case 'cast_carousel':
             $db_select = db_select('node', 'n')
               ->fields('n', array('nid'));

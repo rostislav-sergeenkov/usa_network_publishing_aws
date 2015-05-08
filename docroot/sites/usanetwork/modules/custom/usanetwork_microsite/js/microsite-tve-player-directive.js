@@ -95,7 +95,12 @@
 								}else{
 									videoContainer.addClass('start play');
 								}
-								Drupal.behaviors.microsite_scroll.micrositeAdAdded();
+								if (typeof Drupal.behaviors.microsite_scroll == 'object' && typeof Drupal.behaviors.microsite_scroll.micrositeAdAdded == 'function') {
+								  Drupal.behaviors.microsite_scroll.micrositeAdAdded();
+								}
+								else if (typeof Drupal.behaviors.ms_videos == 'object' && typeof Drupal.behaviors.ms_videos.adAdded == 'function') {
+								  Drupal.behaviors.ms_videos.adAdded();
+                }
 							}
 
 							function _showPicker() {

@@ -65,14 +65,14 @@
       </div>
       <?php endif; ?>
 
-      <?php if (!empty($characters)): ?>
+      <?php if (!empty($blocks['meet_the_cast'])): ?>
       <div class="characters-cast">
         <h2>Meet the Cast &amp; Crew</h2>
         <div id="characters-cast-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
         <ul id="characters-cast-list" class="characters-cast-bxslider">
-        <?php foreach ($characters as $character): ?>
+        <?php foreach ($blocks['meet_the_cast'] as $character): ?>
           <?php if (!empty($character['url']) && !empty($character['title']) && !empty($character['image_url'])): ?>
-          <li><a href="<?php print $base_path; ?>/characters/<?php print $character['url']; ?>"><img src="<?php print $character['image_url']; ?>" alt="<?php print $character['title']; ?>"><div class="person-title"><?php print $character['title']; ?></div></a></li>
+          <li><a href="<?php print $microsite_url; ?>/characters/<?php print $character['url']; ?>"><img src="<?php print $character['image_url']; ?>" alt="<?php print $character['title']; ?>"><div class="person-title"><?php print $character['title']; ?></div></a></li>
           <?php endif; ?>
         <?php endforeach; ?>
         </ul>

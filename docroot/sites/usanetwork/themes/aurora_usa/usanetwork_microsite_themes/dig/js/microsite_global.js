@@ -3,12 +3,13 @@
  */
 (function ($) {
 
+/*
   var urlPath = window.location.pathname;
   var activeSection = 'home';
   var minWidthForNav = 875;
   var heightForHomeLogoAnim = 700;
   var scrollTopForLogoAnim = 200;
-
+*/
   Drupal.behaviors.microsite_scroll = {
 
     quoteAnimationTimer: null,
@@ -91,6 +92,9 @@
       pathArray = pathArray.split('/');
       if (pathArray[0].indexOf(window.location.hostname) >= 0
           || pathArray[0].indexOf('usanetwork.com') >= 0) pathArray.shift();
+      while (pathArray[0] == '') {
+        pathArray.shift();
+      }
       return pathArray;
     },
 
@@ -137,7 +141,8 @@
       s.prop3 = sectionTitle;
       s.prop4 = siteName + ' : ' + sectionTitle;
       s.prop5 = s.prop4;
-      if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries')) {
+//      if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries') && (anchor != 'episodes') && (anchor != 'quizzes')) {
+      if (anchor == 'about') {
         pageName = sectionTitle + ' | ' + pageName;
         s.pageName += ' : ' + sectionTitle;
       }
@@ -164,8 +169,8 @@
           if (!currentSlide) currentSlide = 1;
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
           s.prop5 = siteName + ' : Gallery : ' + itemTitle;
           s.pageName = s.prop5 + ' : Photo ' + currentSlide;
           pageName = itemTitle + ' | Gallery | ' + pageName;
@@ -182,20 +187,20 @@
         case 'episodes':
           s.prop3 = 'Episode Guide';
           s.prop4 = siteName + ' : Episode Guide';
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
           s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Episode Guide | ' + pageName;
           break;
         case 'quizzes':
-          s.prop3 = 'Quizzes/Trivia';
-          s.prop4 = siteName + ' : Quizzes/Trivia';
-          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h1').text();
-          s.prop5 = siteName + ' : Quizzes/Trivia : ' + itemTitle;
+          s.prop3 = 'Quiz';
+          s.prop4 = siteName + ' : Quiz';
+          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h3.quiz-title').text();
+          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h1.quiz-title').text();
+          s.prop5 = siteName + ' : Quiz : ' + itemTitle;
           s.pageName = s.prop5;
-          pageName = itemTitle + ' | Quizzes/Trivia | ' + pageName;
+          pageName = itemTitle + ' | Quiz | ' + pageName;
           break;
       }
       $('title').text(pageName);
@@ -617,7 +622,7 @@
 
       // if home section, make sure the flexslider carousel has been
       // initialized before loading the 300x250 ad
-      if (section != 'videos' && section != 'quizzes') {
+      if (section != 'videos') {
         Drupal.behaviors.microsite_scroll.create300x250Ad(section);
       }
     },
@@ -1019,8 +1024,7 @@
 
           anchor = anchorPathParts[1];
           anchorSection = Drupal.behaviors.microsite_scroll.micrositeToTitleCase(anchor);
-          item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
-
+          anchorItem = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
           // if video
           if (anchor == 'videos') {
             var currentThumb = $('#thumbnail-list .item-list ul li.thumbnail[data-video-url="' + anchorPathParts[2] + '"]');
@@ -1042,7 +1046,7 @@
                 anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
             Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-            Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item, itemTitle);
+            Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem, itemTitle);
             Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
 
             if (withInit) {
@@ -1054,29 +1058,39 @@
           }
           // if characters
           else if (anchor == 'characters') {
-            if (item != '') {
-              Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10, 1);
+            if (anchorItem != '') {
+              Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + anchorItem, 10, 1);
             }
             else {
               Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
             }
           }
           // if episodes
           else if (anchor == 'episodes') {
-            if (item != '') {
-              Drupal.behaviors.microsite_episodes.micrositeSwitchEpisodes(item, 10, 1);
+            if (anchorItem != '') {
+              Drupal.behaviors.microsite_episodes.micrositeSwitchEpisodes(anchorItem, 10, 1);
             }
             else {
               Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
+            }
+          }
+          else if (anchor == 'galleries') {
+            if (anchorItem != '') {
+              var anchorFull = basePath + '/' + anchor + '/' + anchorItem;
+              Drupal.behaviors.micrositeGalleriesBxSliders.promoClickSwitchGallery(anchorFull);
+            }
+            else {
+              Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
             }
           }
           // if any other section type
-          else { //if (anchor == 'galleries') {
+          else {
             var anchorFull = basePath + '/' + anchor;
             Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-            Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
+            Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
           }
         }
         tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);

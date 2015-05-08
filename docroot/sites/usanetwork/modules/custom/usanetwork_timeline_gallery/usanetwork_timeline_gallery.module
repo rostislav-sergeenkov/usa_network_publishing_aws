@@ -40,6 +40,10 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
       );
     }
     $vars['tg_items'] = $tg_items;
+    $node = $vars['element']['#object'];
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $vars['shareTitle'] = $node_wrapper->field_share_title->value();
+    $vars['shareDescription'] = $node_wrapper->field_share_description->value();
   }
 }
 

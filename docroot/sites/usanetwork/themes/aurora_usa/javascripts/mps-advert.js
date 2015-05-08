@@ -62,7 +62,7 @@
     ajaxLoadBlock: function () {
       var blockAd = $('.ajax-load-block .midbanner').last(),
           blockAdClass = blockAd.attr('class'),
-          blockAdId = blockAdClass + '-' + counter,
+          blockAdId = blockAd.attr('id'),
           selector = '#' + blockAdId,
           nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.midbanner;
 
@@ -76,8 +76,7 @@
 
     // consum-sidebar
     consumSidebar: function () {
-      var consumSidebarAd = $('.consum-sidebar .advertisement').attr('class'),
-          selector = '.' + consumSidebarAd,
+      var selector = '.' + $('.consum-sidebar .advertisement').attr('class'),
           nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.topbox;
 
       Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
@@ -85,7 +84,7 @@
 
     attach: function (context, settings) {
       // init ad
-      Drupal.behaviors.mpsAdvert.consumSidebar();
+      //Drupal.behaviors.mpsAdvert.consumSidebar();
     }
   };
 }(jQuery));

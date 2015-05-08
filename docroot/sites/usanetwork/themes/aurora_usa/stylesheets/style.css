@@ -12691,6 +12691,36 @@ footer h2 {
   margin: 0 auto;
   width: 300px;
 }
+@media (min-width: 1281px) {
+  .consum-sidebar .advert.full-video {
+    height: 23.4vw;
+    padding: calc((23.4vw - 60px) / 2) 0;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .advert.full-video {
+    position: relative;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .advert.full-video {
+    height: 250px;
+    padding: calc((250px - 60px) / 2) 0;
+  }
+}
+.consum-sidebar .advert.full-video .advertisement {
+  height: 60px;
+  overflow: hidden;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consum-sidebar .advert.full-video .advertisement {
+    position: absolute;
+    margin-left: -150px;
+    margin-top: -30px;
+    left: 50%;
+    top: 50%;
+  }
+}
 .consum-sidebar .items-block {
   position: relative;
   width: 100%;
@@ -26597,7 +26627,8 @@ body.blog .view-display-id-blog_content .views-row {
 #full-bleed-promo {
   margin: 20px auto 0;
   position: relative;
-  max-height: 560px;
+  min-height: 250px;
+  max-height: 500px;
   max-width: 1650px;
   min-width: 300px;
 }

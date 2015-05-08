@@ -23,7 +23,7 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <?php print $episode['title']; ?>
+          <?php print $episode['video_type'];?>: <?php print $episode['title']; ?>
         </a>
       </h1>
     </div>

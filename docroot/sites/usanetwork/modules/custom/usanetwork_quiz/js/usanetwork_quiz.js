@@ -323,6 +323,9 @@
               },
               onShowResult: function(e, $result) {
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);
+                if (typeof usa_refreshBannerAd != 'undefined') {
+                  usa_refreshBannerAd();
+                }
               }
             }]);
           }

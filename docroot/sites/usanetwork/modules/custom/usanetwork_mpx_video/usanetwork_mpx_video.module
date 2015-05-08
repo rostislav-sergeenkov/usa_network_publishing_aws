@@ -2646,6 +2646,7 @@ function _usa_mpx_video_clips_render() {
          $theme_variables = array(
            'promos' => $promos,
            'video_type' => !empty($filter) ? $filter : t('Clips'),
+           'more_items_url' => l(t('View all videos'), 'node/' . $show . '/videos'),
          );
          return theme('usanetwork_mpx_video_clips', $theme_variables);
        }

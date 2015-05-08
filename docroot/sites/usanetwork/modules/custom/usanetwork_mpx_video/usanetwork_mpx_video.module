@@ -1553,13 +1553,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $file_field = field_get_items('file', $file, 'field_mpx_full_episode');
       $full_episode = reset($file_field);
-      $full_episode = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
-      if ($full_episode) {
-        $vars['content']['video_mpx_companion_rectangle']['#access'] = FALSE;
-      }
-      else {
-        $vars['content']['video_companion_rectangle_small']['#access'] = FALSE;
-      }
+      $vars['full_episode'] = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
 
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;

@@ -527,7 +527,7 @@ function _usanetwork_media_gallery_render_related_content_item_default($data) {
     'target_url' => $target_url,
     'caption' => !empty($data->promo_topic)
       ? htmlspecialchars($data->promo_topic)
-      : $data->show_title,
+      : '',
     'title' => !empty($data->promo_title)
       ? htmlspecialchars($data->promo_title)
       : $data->title,

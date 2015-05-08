@@ -977,8 +977,14 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
       if (!empty($result_item->created_ovts)) {
         $result_item->created = $result_item->created_ovts;
       }
-
       unset($result_item->created_ovts);
+      if (empty($result_item->promo_title) || empty($result_item->promo_description)) {
+        $own_promo_lines = _usanetwork_promo_node_get_promo_lines(node_load($result_item->nid));
+        $result_item->promo_title = !empty($result_item->promo_title) ? check_plain($result_item->promo_title)
+          : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : '');
+        $result_item->promo_description = !empty($result_item->promo_description) ? check_plain($result_item->promo_description)
+          : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : '');
+      }
     }
   }
 
@@ -1089,8 +1095,16 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
       if (!empty($result_item->created_ovts)) {
         $result_item->created = $result_item->created_ovts;
       }
-
       unset($result_item->created_ovts);
+      if (empty($result_item->promo_title) || empty($result_item->promo_description) || empty($result_item->promo_topic)) {
+        $own_promo_lines = _usanetwork_promo_file_get_promo_lines(file_load($result_item->entity_id));
+        $result_item->promo_title = !empty($result_item->promo_title) ? check_plain($result_item->promo_title)
+          : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : '');
+        $result_item->promo_description = !empty($result_item->promo_description) ? check_plain($result_item->promo_description)
+          : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : '');
+        $result_item->promo_topic = !empty($result_item->promo_topic) ? check_plain($result_item->promo_topic)
+          : (!empty($own_promo_lines['topic']) ? check_plain($own_promo_lines['topic']) : '');
+      }
     }
   }
 
@@ -1238,7 +1252,10 @@ function _usanetwork_tv_shows_aspot_block() {
     $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
 
     $alternative_episodes = _usanetwork_tv_shows_aspot_get_alternative_content($show_node);
-    $needed_count -= count($alternative_episodes);
+    if (!empty($alternative_episodes)) {
+      $needed_count = 0;
+    }
+   // $needed_count -= count($alternative_episodes);
 
     if (!empty($alternative_title_field)) {
       $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);
@@ -2487,29 +2504,14 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     $classes[] = 'big';
   }
 
-  if ($data->entity_type == 'node') {
-    if (empty($data->promo_title) || empty($data->promo_description)) {
-      $node = node_load($data->nid);
-      $own_promo_lines = _usanetwork_promo_node_get_promo_lines($node);
-    }
-  }
-  else {
-    if (empty($data->promo_title) || empty($data->promo_description) || empty($data->promo_topic)) {
-      $file = file_load($data->entity_id);
-      $own_promo_lines = _usanetwork_promo_file_get_promo_lines($file);
-    }
-  }
 
   $theme_variables = array(
     'is_even' => $is_even,
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
-    'caption' => !empty($data->promo_topic) ? check_plain($data->promo_topic)
-        : (!empty($own_promo_lines['topic']) ? check_plain($own_promo_lines['topic']) : ''),
-    'title' => !empty($data->promo_title) ? check_plain($data->promo_title)
-        : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : ''),
-    'additional' => !empty($data->promo_description) ? check_plain($data->promo_description)
-        : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : ''),
+    'caption' => !empty($data->promo_topic) ? check_plain($data->promo_topic) : '',
+    'title' => !empty($data->promo_title) ? check_plain($data->promo_title) : '',
+    'additional' => !empty($data->promo_description) ? check_plain($data->promo_description) : '',
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,
     'media_icon' => $data->media_icon,

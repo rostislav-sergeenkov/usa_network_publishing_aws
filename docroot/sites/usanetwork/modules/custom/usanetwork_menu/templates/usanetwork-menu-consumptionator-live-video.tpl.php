@@ -43,7 +43,7 @@
           <img src="" alt="">
         </div>
         <div class="title-overlay meta">
-          <div class="meta-left">
+          <div class="meta-info">
             <div class="caption"></div>
             <div class="title"></div>
             <div class="additional"></div>

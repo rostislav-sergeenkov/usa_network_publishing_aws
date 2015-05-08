@@ -308,7 +308,7 @@ function usanetwork_consumptionator_relcontent_block($show_nid = 0, $start_from 
 
     if (!empty($related_content)) {
 
-      $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, FALSE);
+      $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, $start_from, $limit, FALSE);
 
       return theme('usanetwork_tv_shows_related_items_container', array(
         'related_items_block' => $block_of_items,

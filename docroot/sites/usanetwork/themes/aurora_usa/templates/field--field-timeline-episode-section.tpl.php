@@ -62,9 +62,6 @@
 <?php //print '<pre>tg_items: ' . print_r($tg_items, true) . '</pre><br><br>'; ?>
 
 <?php
-$baseUrl = 'http://' . $_SERVER['HTTP_HOST'];
-$requestUrl = $_SERVER['REQUEST_URI'];
-$imageBaseUrl = '/sites/usanetwork/themes/aurora_usa/images';
 $timelineCategories = array();
 $numberOfScenesPerEpisode = array();
 ?>

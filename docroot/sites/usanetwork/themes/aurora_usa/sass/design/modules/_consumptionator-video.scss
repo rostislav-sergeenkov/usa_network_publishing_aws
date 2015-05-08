@@ -513,8 +513,11 @@
       .advert {
         height: auto;
         padding: 0;
+        @include breakpoint($bp-min-1025-width) {
+          height: 250px !important;
+          position: relative;
+        }
       }
     }
   }
 }
-

@@ -149,13 +149,6 @@
 
       var aspotSlider = null;
 
-      $('.block-usanetwork-aspot .slider').ready(function() {
-        $('.bx-preload').css({
-          'visibility': 'visible',
-          'height': 'auto'
-        });
-      });
-
       $(window).load(function () {
 
         aspotSlider = initSlider();

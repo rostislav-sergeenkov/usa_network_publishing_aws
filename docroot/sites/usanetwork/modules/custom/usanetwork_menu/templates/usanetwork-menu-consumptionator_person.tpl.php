@@ -47,13 +47,13 @@
               <?php print $details['description']; ?>
             </div>
           <?php endif; ?>
-          <?php if (!empty($details['sharebar'])): ?>
-            <div class="sharebar">
-              <?php print $details['sharebar']; ?>
-            </div>
-          <?php endif; ?>
         </div>
       </div>
+      <?php if (!empty($details['sharebar'])): ?>
+        <div class="sharebar">
+          <?php print $details['sharebar']; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>

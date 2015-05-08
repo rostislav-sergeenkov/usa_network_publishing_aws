@@ -70,6 +70,9 @@ function aurora_usa_preprocess_html(&$vars) {
     if ($entity->type == 'media_gallery' || $entity->type == 'catchall_page') {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
     }
+    if ($entity->type == 'person') {
+      $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+    }
     if ($entity->type == 'tv_show') {
       $show_title = _usanetwork_get_field_item('node', $entity, 'field_pathauto_alias', 'value');
       $show_class = drupal_html_class('show-' . $show_title);
@@ -118,7 +121,9 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/viewport-units-buggyfill.js');
   drupal_add_js($theme_path . '/javascripts/matchmedia.js');
   drupal_add_js($theme_path . '/javascripts/picturefill.js');
+  drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   drupal_add_js($theme_path . '/javascripts/jquery.scrollTo-1.4.3.1.js');
+  drupal_add_js($theme_path . '/javascripts/mps-advert.js');
   drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
     'type' => 'external',
     'scope' => 'footer',
@@ -148,7 +153,6 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
-    drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
     drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');

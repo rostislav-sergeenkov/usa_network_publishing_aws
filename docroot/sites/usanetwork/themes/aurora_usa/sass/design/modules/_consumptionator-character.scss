@@ -1,0 +1,22 @@
+.consumptionator-characters-main-block {
+  @include clear();
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  .character-info-block {
+    float: left;
+    position: relative;
+    width: 74.7%;
+    @include breakpoint($bp-1280-width) {
+      width: 100%;
+    }
+  }
+  .consum-sidebar {
+    @include breakpoint($bp-1280-width) {
+      height: auto;
+      padding: 0;
+      position: relative;
+      width: 100%;
+    }
+  }
+}

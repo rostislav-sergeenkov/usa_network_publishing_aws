@@ -793,14 +793,14 @@
           }
         }
         .title {
+          .field-item{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
           @include breakpoint($bp-1280-width) {
             font-size: 14px;
             line-height: 17px;
-            .field-item{
-              white-space: nowrap;
-              text-overflow: ellipsis;
-              overflow: hidden;
-            }
           }
           @include breakpoint($bp-768-width) {
             font-size: 14px;
@@ -1042,6 +1042,34 @@
 }
 %three-line-video-promo {
   .three-line-video {
+    &.usanetwork-tv-shows-video-lmb, &.usanetwork-tv-shows-landing-videos-item-small {
+      .meta {
+        .caption, .additional {
+          @include breakpoint($between-769-1024) {
+            font-size: 9px;
+            line-height: 14px;
+          }
+        }
+        .title {
+          @include breakpoint($between-769-1024) {
+            font-size: 13px;
+            line-height: 16px;
+          }
+        }
+      }
+      .meta-icon {
+        @include breakpoint($between-769-1024) {
+          height: 37px;
+          margin-top: -19px;
+          width: 37px;
+        }
+        ~ .meta {
+          @include breakpoint($between-769-1024) {
+            padding-left: calc(8% + 37px);
+          }
+        }
+      }
+    }
     .asset-img {
       height: 100%;
       width: 100%;

@@ -56,7 +56,7 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-person-character-carousel',
     ),
-    'usanetwork_person_character_carousel_item' => array(
+    'usanetwork_person_character_carousel_item_h' => array(
       'variables' => array(
         'target_url' => NULL,
         'title' => NULL,
@@ -64,7 +64,17 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
         'image_mobile' => NULL,
         'image_desktop' => NULL,
       ),
-      'template' => 'templates/usanetwork-person-character-carousel-item',
+      'template' => 'templates/usanetwork-person-character-carousel-item-h',
+    ),
+    'usanetwork_person_character_carousel_item_v' => array(
+      'variables' => array(
+        'target_url' => NULL,
+        'title' => NULL,
+        'additinal' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-character-carousel-item-v',
     ),
     'usanetwork_person_related_items_container' => array(
       'variables' => array(
@@ -350,7 +360,10 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
   $query->orderBy('person_node.title', 'ASC');
 
   $result = $query->execute()->fetchAll();
-  $rendered_items = array();
+  $rendered_items = array(
+    'horizontal' => array(),
+    'vertical' => array(),
+  );
 
   if (!empty($result)) {
     foreach ($result as $result_item) {
@@ -379,11 +392,13 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
           : FALSE,
       );
 
-      $rendered_items[] = theme('usanetwork_person_character_carousel_item', $theme_item_variables);
+      $rendered_items['horizontal'][] = theme('usanetwork_person_character_carousel_item_h', $theme_item_variables);
+      $rendered_items['vertical'][] = theme('usanetwork_person_character_carousel_item_v', $theme_item_variables);
     }
 
     $theme_variables = array(
-      'items' => $rendered_items,
+      'items_h' => $rendered_items['horizontal'],
+      'items_v' => $rendered_items['vertical'],
     );
 
     return theme('usanetwork_person_character_carousel', $theme_variables);
@@ -413,11 +428,11 @@ function _usanetwork_person_characters_related_content_block() {
   $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
   $tv_show_node = $person_node_wrapper->field_show->value();
 
-  if (empty($tv_show_node->field_tvs_show_latest_feed)) {
+  if (empty($tv_show_node->field_tvs_show_latest_lnd_feed)) {
     return '';
   }
   else {
-    $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_feed');
+    $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_lnd_feed');
 
     if ($latest_content_flag_field[0]['value'] == 0) {
       return '';
@@ -578,22 +593,13 @@ function _usanetwork_person_render_related_content_item($data, $is_data_item_eve
     $mobile_image = image_style_url('291x234', $data->raw_image_uri);
   }
 
-  if ($data->entity_type != 'node') {
-    if (empty($data->promo_title) || empty($data->promo_description) || empty($data->promo_topic)) {
-      $file = file_load($data->entity_id);
-      $own_promo_lines = _usanetwork_promo_file_get_promo_lines($file);
-    }
-  }
 
   $theme_variables = array(
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
-    'caption' => !empty($data->promo_topic) ? check_plain($data->promo_topic)
-      : (!empty($own_promo_lines['topic']) ? check_plain($own_promo_lines['topic']) : ''),
-    'title' => !empty($data->promo_title) ? check_plain($data->promo_title)
-      : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : ''),
-    'additional' => !empty($data->promo_description) ? check_plain($data->promo_description)
-      : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : ''),
+    'caption' => !empty($data->promo_topic) ? check_plain($data->promo_topic) : '',
+    'title' => !empty($data->promo_title) ? check_plain($data->promo_title) : $data->title,
+    'additional' => !empty($data->promo_description) ? check_plain($data->promo_description) : '',
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,
     'media_icon' => $data->media_icon,

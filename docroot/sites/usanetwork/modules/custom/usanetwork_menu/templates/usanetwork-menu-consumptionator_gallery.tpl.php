@@ -38,7 +38,7 @@
         <?php endif; ?>
         <div class="title-overlay meta">
           <?php if (!empty($details['episode_info'])): ?>
-            <div class="meta-left">
+            <div class="meta-info">
               <?php if (!empty($details['episode_info']['episode_title'])): ?>
                 <div class="title"><?php print $details['episode_info']['episode_title']; ?></div>
               <?php endif; ?>

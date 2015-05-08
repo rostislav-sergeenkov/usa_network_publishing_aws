@@ -134,13 +134,7 @@
           <div class="download-button show-color"><?php print t('Download the app'); ?></div>
         </div>
       </div>
-      <div class="items-block clips-block">
         <?php if (!empty($clips_block)): print $clips_block; endif;?>
-      </div>
-      <!-- change link to special video page for show-->
-      <div class="more-items more-clips show-color">
-        <a href="/videos"><?php print t('View all videos'); ?></a>
-      </div>
     <?php endif; ?>
   </div>
 </div>

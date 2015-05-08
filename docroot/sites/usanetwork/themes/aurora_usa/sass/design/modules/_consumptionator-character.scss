@@ -26,5 +26,11 @@
         height: 645px;
       }
     }
+    .advert {
+      @include breakpoint($bp-1280-width) {
+        bottom: calc(100% + 50px);
+        position: absolute;
+      }
+    }
   }
 }

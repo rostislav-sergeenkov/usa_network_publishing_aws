@@ -12621,6 +12621,12 @@ footer h2 {
     height: 645px;
   }
 }
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .advert {
+    bottom: calc(100% + 50px);
+    position: absolute;
+  }
+}
 
 .node-type-catchall-page .block-system {
   width: 100%;

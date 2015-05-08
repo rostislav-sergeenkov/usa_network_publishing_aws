@@ -65,9 +65,9 @@
       <?php foreach ($episodes as $episode_key => $episode): ?>
         <li id ="<?php if (!empty($episode['id'])) print $episode['id']; ?>" class="<?php if (!empty($episode['id'])) print $episode['id']; ?><?php if ($episode['status'] != '') print ' ' . $episode['status']; ?>">
           <?php if (empty($episode['optional_h1']) && !empty($episode['title']) && $episode['status'] == 'active' && $status == 'active'): ?>
-          <h1><?php print $episode['title']; ?></h1>
+          <h1 class="episode-title"><?php print $episode['title']; ?></h1>
           <?php else: ?>
-          <h3><?php print $episode['title']; ?></h3>
+          <h3 class="episode-title"><?php print $episode['title']; ?></h3>
           <?php endif; ?>
 
           <?php if (!empty($episode['optional_h1'])): ?>

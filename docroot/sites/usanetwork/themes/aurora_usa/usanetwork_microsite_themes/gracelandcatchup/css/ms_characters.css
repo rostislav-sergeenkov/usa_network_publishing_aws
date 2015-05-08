@@ -1,0 +1,131 @@
+#characters {
+}
+#characters-container {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#character-nav {
+  width: 100%;
+}
+#character-nav li {
+  float: left;
+  width: 30.33%;
+  margin: 1.5% 1.5%;
+  cursor: pointer;
+}
+#character-nav .tooltip {
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 1.125em;
+  color: #FFF;
+}
+#character-nav .tooltip .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 15px 10px;
+  background-color: #000;
+  opacity: 0.8;
+  font-size: 1em;
+  font-weight: 100;
+  line-height: 1.25em;
+}
+#character-nav .tooltip .person-name {
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+#character-nav .tooltip .agency {
+  padding-left: 4px;
+}
+#character-nav .tooltip .role {
+  font-size: 0.875em;
+}
+
+/* character info */
+#character-info {
+  clear: both;
+}
+#character-info li {
+  background-color: #DEDEDE;
+  color: #000;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 50;
+}
+#character-info li.active {
+  display: block;
+}
+#character-info li h1,
+#character-info li h3 {
+  font-size: 1.5em;
+  color: #641B24;
+  text-transform: uppercase;
+  margin: 0;
+}
+#character-info .character-social {
+  min-height: 12px;
+}
+#character-info li .character-image {
+  width: 203px;
+  height: 170px;
+  overflow: hidden;
+  margin: 0 20px 20px 0;
+  float: left;
+}
+#character-info .character-bios-container {
+  height: calc(100% - 180px);
+  overflow-y: auto;
+  padding-right: 12px;
+}
+#character-info .character-bios-container h1,
+#character-info .character-bios-container h3 {
+  font-size: 1.3em;
+  color: #000;
+}
+#character-info .character-bios-container p {
+  font-size: 1em;
+}
+/*
+#character-info li::after {
+  content: '<div id="character-close">X</div>';
+}
+*/
+#character-info .character-close {
+  position: absolute;
+  top: 17px;
+  right: 0;
+  font-size: 4em;
+  font-weight: 100;
+  color: #6C6F72;
+  cursor: pointer;
+  font-family: "avalonextra_light", sans-serif;
+}
+#character-info .character-return-link {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 20px 0;
+  font-size: 1em;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* **************** BEGIN MEDIA QUERIES ******************* */
+@media (max-width: 670px) {
+  #character-nav li {
+    width: 48%;
+    margin: 1% 1%;
+  }
+}

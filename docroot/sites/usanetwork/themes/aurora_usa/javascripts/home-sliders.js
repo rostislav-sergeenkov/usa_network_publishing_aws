@@ -150,34 +150,36 @@
       var aspotSlider = null;
 
       $(window).load(function () {
+        if ($('.block-usanetwork-aspot .slide').length > 1) {
+          aspotSlider = initSlider();
 
-        aspotSlider = initSlider();
-
-        $('.next-button')
+          $('.next-button')
             .hide()
             .addClass('disabled')
             .click(function () {
               aspotSlider.goToNextSlide();
             });
-
+        }
       });
 
       $(window).bind('resize', function () {
-        $('.next-button').hide().addClass('disabled');
-        aspotSlider.stopAuto();
-        clearTimeout(Drupal.behaviors.homeSlides._timeVar);
+        if ($('.block-usanetwork-aspot .slide').length > 1) {
+          $('.next-button').hide().addClass('disabled');
+          aspotSlider.stopAuto();
+          clearTimeout(Drupal.behaviors.homeSlides._timeVar);
 
-        Drupal.behaviors.homeSlides._timeVar = setTimeout(function() {
-          var currentSlide = aspotSlider.getCurrentSlide();
+          Drupal.behaviors.homeSlides._timeVar = setTimeout(function () {
+            var currentSlide = aspotSlider.getCurrentSlide();
 
-          aspotSlider.destroySlider();
-          $('.slider .wrp, .slider .full-image').stop().css({'margin-left': '0'});
+            aspotSlider.destroySlider();
+            $('.slider .wrp, .slider .full-image').stop().css({'margin-left': '0'});
 
-          Drupal.behaviors.homeSlides.aspotSlider = aspotSlider = initSlider();
-          aspotSlider.startAuto();
-        }, 500);
+            Drupal.behaviors.homeSlides.aspotSlider = aspotSlider = initSlider();
+            aspotSlider.startAuto();
+          }, 500);
 
-        $('.slider .wrp').attr('style', '');
+          $('.slider .wrp').attr('style', '');
+        }
       });
 
       //old code

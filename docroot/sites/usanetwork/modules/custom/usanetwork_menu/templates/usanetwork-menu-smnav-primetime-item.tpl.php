@@ -30,11 +30,11 @@
     <?php endif; ?>
   </div>
   <div class="icons-block">
-    <?php if (!empty($syndicated_url)): ?>
-      <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $syndicated_url; ?>"></a>
-    <?php endif; ?>
     <?php if (!empty($episode_full_url)): ?>
       <a class="episode-description icon" href="<?php print $episode_full_url; ?>"></a>
+    <?php endif; ?>
+    <?php if (!empty($syndicated_url)): ?>
+      <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $syndicated_url; ?>"></a>
     <?php endif; ?>
   </div>
 </div>

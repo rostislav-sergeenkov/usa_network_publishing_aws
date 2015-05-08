@@ -7,6 +7,10 @@
      */
     Drupal.gigya = Drupal.gigya || {};
     Drupal.gigya.showSharebar = function (settings) {
+      if ((settings.gigyaSharebar.hasOwnProperty('facebookDialogType') && settings.gigyaSharebar.facebookDialogType == '') || !settings.gigyaSharebar.hasOwnProperty('facebookDialogType')) {
+        settings.gigyaSharebar.facebookDialogType = 'feed';
+      }
+
       //build a media object
       var mediaObj = {type: 'image', href: settings.gigyaSharebar.ua.linkBack};
       if ((settings.gigyaSharebar.ua.imageBhev === 'url') && (settings.gigyaSharebar.ua.imageUrl !== '')) {
@@ -56,7 +60,6 @@
           if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
             $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
               Drupal.gigya.showSharebar(sharebar);
-
             });
           }
         }

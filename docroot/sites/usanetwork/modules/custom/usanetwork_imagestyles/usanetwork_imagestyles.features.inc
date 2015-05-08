@@ -447,6 +447,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => -9,
       ),
     ),
+    'label' => 'block_cover_title_lg',
   );
 
   // Exported image style: fh476x268.
@@ -508,6 +509,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => -9,
       ),
     ),
+    'label' => 'gallery_block_cover',
   );
 
   // Exported image style: gallery_full_photo.
@@ -546,6 +548,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => -9,
       ),
     ),
+    'label' => 'gallery_full_photo',
   );
 
   // Exported image style: meet_the_cast_carousel.
@@ -607,6 +610,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => -9,
       ),
     ),
+    'label' => 'person_cover',
   );
 
   // Exported image style: search_result.
@@ -689,6 +693,30 @@ function usanetwork_imagestyles_image_default_styles() {
           'height' => 42,
         ),
         'weight' => -9,
+      ),
+    ),
+    'label' => 'thumb_tiny',
+  );
+
+  // Exported image style: timeline_gallery_image.
+  $styles['timeline_gallery_image'] = array(
+    'name' => 'timeline_gallery_image',
+    'label' => 'Timeline gallery image',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 780,
+          'height' => 506,
+        ),
+        'weight' => 1,
       ),
     ),
   );

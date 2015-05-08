@@ -118,6 +118,21 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-person-related-ymal-item',
     ),
+    'usanetwork_person_cast_crew_block' => array(
+      'variables' => array(
+        'title' => NULL,
+        'persons' => array(),
+      ),
+      'template' => 'templates/usanetwork-person-cast-crew-block',
+    ),
+    'usanetwork_person_cast_recap_block' => array(
+      'variables' => array(
+        'title' => NULL,
+        'video' => NULL,
+        'button_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork_person-cast-recap-block',
+    ),
   );
 }
 
@@ -214,6 +229,14 @@ function usanetwork_person_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_person_cast_recap'] = array(
+    'info' => t('Usanetwork person: Cast landing recap block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['usanetwork_person_cast_crew'] = array(
+    'info' => t('Usanetwork person: Cast landing cast & crew'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -237,6 +260,20 @@ function usanetwork_person_block_view($delta = '') {
     case 'usa_cons_chars_related_content':
       $block['subject'] = '';
       $block['content'] = _usanetwork_person_characters_related_content_block();
+      break;
+
+    case 'usanetwork_person_cast_recap':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_person_render_cast_recap_block(),
+      );
+      break;
+
+    case 'usanetwork_person_cast_crew':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_person_render_cast_crew_block(),
+      );
       break;
   }
 
@@ -404,6 +441,31 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
     return theme('usanetwork_person_character_carousel', $theme_variables);
   }
 
+  return '';
+}
+/**
+ * Renders recap block for cast landing page.
+ */
+function _usanetwork_person_render_cast_recap_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  if (!empty($show_node)) {
+    if (!empty($show_node->field_cast_recap_video)) {
+      $recap_video_file = reset(field_get_items('node', $show_node, 'field_cast_recap_video'));
+      $recap_video_file = $recap_video_file['entity'];
+      $theme_variables = array(
+        'title' => t('Series Recap'),
+        'video' => theme('pub_mpx_video', array(
+          'file' => $recap_video_file,
+          'pub_mpx_player_parameters' => array(
+            'autoPlay' => 'false',
+            'form' => 'html'
+          )
+        )),
+        'button_url' => url('node/' . $show_node->nid . '/videos'),
+      );
+      return theme('usanetwork_person_cast_recap_block', $theme_variables);
+    }
+  }
   return '';
 }
 
@@ -645,4 +707,36 @@ function _usanetwork_person_render_related_content_item_ymal($data) {
     'ymal_about' => $data->ymal_about,
   );
   return theme('usanetwork_person_related_ymal_item', $theme_variables);
+}
+
+/**
+ * Renders cast & crew block for cast landing page.
+ */
+function _usanetwork_person_render_cast_crew_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  if (!empty($show_node)) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'person')
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->fieldCondition('field_show', 'target_id', $show_node->nid, '=');
+    $result = $query->execute();
+    if (!empty($result['node'])) {
+      $person_nodes = node_load_multiple(array_keys($result['node']));
+      $theme_variables['title'] = t('Cast & Crew');
+      foreach ($person_nodes as $person_node) {
+        $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
+        if (!empty($person_node->field_usa_character_thumb)) {
+          $image = $person_node_wrapper->field_usa_character_thumb->value();
+        }
+        $theme_variables['persons'][] = array(
+          'name' => !empty($person_node->title) ? $person_node->title : '',
+          'role' => !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '',
+          'image' => !empty($image) ? file_create_url($image['uri']) : '',
+        );
+      }
+      return theme('usanetwork_person_cast_crew_block', $theme_variables);
+    }
+  }
+  return '';
 }

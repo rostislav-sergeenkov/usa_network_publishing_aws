@@ -44,7 +44,7 @@
     <?php if ($status == 'active'): ?>
     <h1 class="seo-h1"><?php print $h1; ?></h1>
     <?php else: ?>
-    <h3 class="seo-h1"><?php print $h1; ?></h3>
+    <h2 class="seo-h1"><?php print $h1; ?></h2>
     <?php endif; ?>
     <?php endif; ?>
 
@@ -52,7 +52,7 @@
     <?php if (!empty($title) && $status == 'active'): ?>
     <h1><?php print $title; ?></h1>
     <?php else: ?>
-    <h3><?php print $title; ?></h3>
+    <h2><?php print $title; ?></h2>
     <?php endif; ?>
     <?php endif; ?>
 

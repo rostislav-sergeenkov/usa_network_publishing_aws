@@ -31,14 +31,11 @@
 
           var sponsor = $(element).find('.sponsored');
 
-          console.info($(element));
-          console.info(sponsor);
-
           if(sponsor.length) {
             var fileId =sponsor.data('mpspath'),
                 style = Drupal.behaviors.mpsSponsorship.styleName.dark_stacked;
 
-            mps.usa.insertLogo(mps._select(sponsor),'light', fileId);
+            mps.usa.insertLogo(mps._select(sponsor), style, fileId);
           }
 
         });

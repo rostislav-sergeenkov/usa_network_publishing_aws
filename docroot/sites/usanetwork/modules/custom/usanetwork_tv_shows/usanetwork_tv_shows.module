@@ -2382,7 +2382,14 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
           'is_first' => $is_first,
         );
       }
-      $theme_variables['promos'] = $promos;
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+      $theme_variables = array(
+        'promos' => $promos,
+        'ad' => isset($advert) ? $advert : FALSE,
+      );
       return theme('usanetwork_tv_shows_video_lmb_block', $theme_variables);
     }
   }

@@ -127,7 +127,7 @@
       speed: 600,
       onSliderLoad: pagerItems,
       onSlideAfter: function () {
-        Drupal.behaviors.mpsAdvert.mpsRefreshAd(Drupal.behaviors.mpsAdvert.mpsNameAD.topbox);
+        Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
       }
     };
 

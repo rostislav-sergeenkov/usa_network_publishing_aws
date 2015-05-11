@@ -60,6 +60,7 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'field_cast_head_image',
       1 => 'field_cast_second_image',
       2 => 'field_cast_description',
+      3 => 'field_cast_head_mob_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

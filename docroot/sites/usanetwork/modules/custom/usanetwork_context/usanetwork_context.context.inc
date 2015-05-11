@@ -1004,6 +1004,7 @@ function usanetwork_context_context_default_contexts() {
         'catchall_page' => 'catchall_page',
         'person' => 'person',
         'post' => 'post',
+        'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'tv_season' => 'tv_season',
         'tv_show' => 'tv_show',
@@ -2170,7 +2171,6 @@ function usanetwork_context_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Show Videos Landing Page');
   t('show');
-
   $export['videos_landing'] = $context;
 
   return $export;

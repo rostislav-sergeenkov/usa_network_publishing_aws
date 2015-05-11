@@ -76,9 +76,13 @@
       <?php endforeach; ?>
       <?php if ($second_item == false): ?>
       <div class="node advert-block">
+        <?php if (!empty($ad)) : ?>
         <div class="advertisement">
+          <?php print $ad; ?>
+        </div>
+        <?php endif; ?>
       </div>
-        </li>
+    </li>
       <?php endif; ?>
       <?php endif; ?>
 </div>

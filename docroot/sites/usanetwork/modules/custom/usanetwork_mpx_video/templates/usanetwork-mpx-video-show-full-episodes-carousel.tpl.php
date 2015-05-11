@@ -4,10 +4,12 @@
     <div class="description-wrapper">
       <div class="description-block">
         <div class="caption">access all full episodes</div>
-        <div class="title show-color show-color-border <?php print $carousel_border; ?>"><?php print $show_title; ?></div>
-        <?php if (!empty($sponsored)) : ?>
-          <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
-        <?php endif; ?>
+        <div class="title show-color show-color-border <?php print $carousel_border; ?>">
+          <?php print $show_title; ?>
+          <?php if (!empty($sponsored)) : ?>
+            <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
+          <?php endif; ?>
+        </div>
         <div class="additional-text"><?php print $videos_count; ?></div>
       </div>
     </div>

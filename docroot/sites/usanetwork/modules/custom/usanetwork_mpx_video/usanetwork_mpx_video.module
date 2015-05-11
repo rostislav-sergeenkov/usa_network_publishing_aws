@@ -906,6 +906,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
       
       if (!empty($videos)) {
         $carousel_items = '';
+        $sponsored = FALSE;
         foreach ($videos as $id => $video) {
           $file = file_load($video->fid);
           $image_path = _usanetwork_mpx_video_get_image_path($file);
@@ -922,6 +923,12 @@ function _usanetwork_mpx_video_shows_full_episodes() {
             'video_image' => $video_image,
           );
           $carousel_items .= theme('usanetwork_mpx_video_show_full_episode_item', $theme_item_variables);
+
+          $field_sponsored = _usanetwork_get_field_item('file', $file, 'field_sponsored' ,'value');
+          if ($field_sponsored == '1') {
+            $sponsored = TRUE;
+            $file_id = '/file/' . $video->fid;
+           }
         }
 
         $theme_variables = array(
@@ -930,6 +937,8 @@ function _usanetwork_mpx_video_shows_full_episodes() {
           'carousel_items' => $carousel_items,
           'carousel_id' => 'carousel-' . drupal_clean_css_identifier(strtolower($result_item->title)),
           'carousel_border' => usanetwork_tv_shows_color_show_css_class($result_item->nid),
+          'sponsored' => $sponsored,
+          'file_path' => $file_id,
         );
 
         $output .= theme('usanetwork_mpx_video_shows_full_episodes', $theme_variables);

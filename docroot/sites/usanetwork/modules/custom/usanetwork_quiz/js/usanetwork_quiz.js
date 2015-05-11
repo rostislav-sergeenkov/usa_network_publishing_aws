@@ -102,6 +102,7 @@
           if (!isNaN(value) && $question.length > 0) {
             quizHandler.selectAnswer($questions.index($question), value);
           }
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
         });
         $(quiz).trigger('onInit');
       },
@@ -309,9 +310,11 @@
               },
               onStart: function() {
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);
+                Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               },
               onRestart: function() {
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);
+                Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               },
               onShowQuestion: function(e, $question) {
                 if (typeof usa_refreshBannerAd != 'undefined') {
@@ -338,6 +341,11 @@
           self = this;
 
       self.initQuizzes(quizes);
+
+      $(window).load(function () {
+        // init mps advert topbox
+        Drupal.behaviors.mpsAdvert.mpsLoadAd('#topbox', Drupal.behaviors.mpsAdvert.mpsNameAD.topbox);
+      });
 
 
     }

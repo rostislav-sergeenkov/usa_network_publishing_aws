@@ -15,7 +15,7 @@
         <?php endif; ?>
       </div>
       <div class="block-character-info-header-right">
-        <div class="share"><?php print t('Share'); ?></div>
+        <div class="share"><?php print $sharebar ?></div>
         <?php if (!empty($social_icons)): ?>
           <div class="social-icons">
             <?php foreach ($social_icons as $social_icon): ?>

@@ -2,7 +2,7 @@
 /*add class "first" for first li and class "last" for last li */
 ?>
 <?php if (!empty($ad)): ?>
-  <div class="midbanner"></div>
+  <div class="midbanner" id="advert-related-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
 <ul>
   <?php if (!empty($related_items)): ?>

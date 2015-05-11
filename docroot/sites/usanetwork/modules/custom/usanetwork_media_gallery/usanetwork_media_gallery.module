@@ -326,10 +326,16 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         }
 
         if (!empty($rendered_items)) {
+          $advert_block = module_invoke('mps', 'block_view', 'topbox');
+          if (!empty($advert_block['content'])) {
+            $advert = render($advert_block['content']);
+          }
+
           return theme('usanetwork_media_gallery_consumptionator_episode_slides', array(
             'gallery_type' => $gallery_type,
             'slides_vertical' => $rendered_items['slides_vertical'],
             'slides_horizontal' => $rendered_items['slides_horizontal'],
+            'ad' => isset($advert) ? $advert : NULL,
           ));
         }
       }
@@ -418,7 +424,7 @@ function _usanetwork_media_gallery_related_content_block() {
           'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
         ), 'setting');
 
-        $block_of_items = _usanetwork_media_gallery_render_related_content_items_block($related_content, FALSE);
+        $block_of_items = _usanetwork_media_gallery_render_related_content_items_block($related_content);
 
         return theme('usanetwork_media_gallery_related_items_container', array(
           'related_items_block' => $block_of_items,
@@ -434,17 +440,15 @@ function _usanetwork_media_gallery_related_content_block() {
 /**
  * Renders block of items (default number of items in the block is 6)
  */
-function _usanetwork_media_gallery_render_related_content_items_block($data, $ad) {
+function _usanetwork_media_gallery_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
   if (!empty($data)) {
 
-    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
-    if (!empty($advert_block['content'])) {
-      $advert = render($advert_block['content']);
-    }
+    $ad_id = intval($start_from / $limit);
 
     $theme_variables = array(
       'related_items' => array(),
-      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
+      'ad' => $start_from == 0 ? FALSE : TRUE,
+      'ad_id' => $ad_id,
     );
 
     foreach ($data as $data_index => $data_item) {
@@ -594,7 +598,7 @@ function usanetwork_media_gallery_get_related_content_ajax($tv_show_node, $start
 
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_media_gallery_render_related_content_items_block($related_content, TRUE);
+    $response['rendered'] = _usanetwork_media_gallery_render_related_content_items_block($related_content, $start_from, $limit);
 
     if ($items_last == 0 || $items_last <= $limit) {
       $response['overlimited'] = TRUE;

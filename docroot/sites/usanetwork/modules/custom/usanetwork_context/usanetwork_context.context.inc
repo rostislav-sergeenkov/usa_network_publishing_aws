@@ -944,7 +944,7 @@ function usanetwork_context_context_default_contexts() {
   $export['show_social_tweets'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'usa_leader_reloadable';
   $context->description = 'reloadable iframe leaderboard';

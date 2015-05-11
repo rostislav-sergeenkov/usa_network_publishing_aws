@@ -2124,7 +2124,7 @@ function _usanetwork_tv_shows_related_content_block() {
       'usanetwork_tv_show_page_context' => 'showpage',
     ), 'setting');
 
-    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
+    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
 
     return theme('usanetwork_tv_shows_related_items_container', array(
       'related_items_block' => $block_of_items,
@@ -2154,7 +2154,7 @@ function usanetwork_tv_shows_get_related_content_ajax($tv_show_node, $start_from
   if (!empty($related_content)) {
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items_block($related_content, TRUE, $is_even, TRUE);
+    $response['rendered'] = _usanetwork_tv_shows_render_related_content_items_block($related_content, TRUE, $is_even, $start_from, $limit, TRUE);
 
     return drupal_json_output($response);
   }
@@ -2390,18 +2390,17 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
 }
 
 
-function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is_even, $different_sizes_of_images = TRUE) {
+function _usanetwork_tv_shows_render_related_content_items_block($data, $ad, $is_even, $start_from = 0, $limit = 1, $different_sizes_of_images = TRUE) {
   if (!empty($data)) {
 
-    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
-    if (!empty($advert_block['content'])) {
-      $advert = TRUE;
-    }
+    $ad_id = intval($start_from / $limit);
 
     $theme_variables = array(
       'related_items' => array(),
       'is_even' => $is_even,
       'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
+      'ad' => $start_from == 0 ? FALSE : TRUE,
+      'ad_id' => $ad_id,
     );
 
     $big_item_index = $is_even ? 0 : 4;

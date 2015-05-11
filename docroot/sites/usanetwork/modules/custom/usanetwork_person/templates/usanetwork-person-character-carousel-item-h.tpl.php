@@ -3,8 +3,8 @@
  *
  */
 ?>
-<li class="slide-item<?php if (!empty($active)): print ' active'; endif; ?>">
-  <div class="node node-usanetwork-promo aspot-carousel-promo">
+<li class="slide-item">
+  <div class="node node-usanetwork-promo aspot-carousel-promo <?php if (!empty($active)): print ' active show-border'; endif; ?>">
     <?php if (!empty($target_url)): ?>
       <a href="<?php print $target_url; ?>">
         <div class="meta-wrapper">

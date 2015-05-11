@@ -25,7 +25,7 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <?php print $catchall_name; ?>
+          <?php print $h1; ?>
         </a>
       </h1>
     </div>
@@ -41,6 +41,9 @@
           </div>
         <?php endif; ?>
         <div class="title-overlay meta">
+          <div class="title">
+            <?php print $catchall_name; ?>
+          </div>
           <div class="description">
             <?php print $details['description']; ?>
           </div>

@@ -16,19 +16,26 @@
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
-      padding: 18px 29px 18px 30px;
+      padding: 24px;
     }
     @include breakpoint($bp-768-width) {
       padding: 38px 24px 38px 24px;
     }
     @include breakpoint ($bp-640-width) {
-      padding: 20px 42px 20px 49px;
+      padding: 56.25vw 0 0;
     }
     .block-character-info-header {
       @include clear();
       margin-bottom: 30px;
       @include breakpoint($bp-1280-width) {
         margin-bottom: 15px;
+      }
+      @include breakpoint($bp-640-width) {
+        margin-bottom: 0;
+        padding: 10px 46px;
+      }
+      @include breakpoint($bp-480-width) {
+        padding: 10px 25px;
       }
       .block-character-info-header-left {
         float: left;
@@ -46,7 +53,7 @@
             font-size: 37.8px;
           }
           @include breakpoint($bp-640-width) {
-            font-size: 36px;
+            font-size: 24px;
           }
         }
         .description {
@@ -61,7 +68,7 @@
             font-size: 10.4px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: 13px;
+            font-size: 10px;
           }
         }
       }
@@ -77,9 +84,6 @@
           @include breakpoint($bp-768-width) {
             font-size: 15px;
           }
-          @include breakpoint($bp-640-width) {
-            font-size: 18.75px;
-          }
         }
       }
     }
@@ -89,12 +93,16 @@
         width: 46.8%;
         float: left;
         @include breakpoint($bp-1024-width) {
-          width: 35.8%;
+          width: 42.62%;
         }
         @include breakpoint($bp-768-width) {
           width: 38%;
         }
         @include breakpoint($bp-640-width) {
+          height: 56.25vw;
+          left: 0;
+          top: 0;
+          position: absolute;
           width: 100%;
         }
         img {
@@ -105,13 +113,17 @@
         width: 48%;
         float: right;
         @include breakpoint($bp-1024-width) {
-          width: 64%;
+          width: 56%;
         }
         @include breakpoint($bp-768-width) {
           width: 57%;
         }
         @include breakpoint($bp-640-width) {
-          width: 100%;
+          padding: 10px 46px;
+          width: 100%
+        }
+        @include breakpoint($bp-480-width) {
+          padding: 10px 25px;
         }
         ul {
           word-spacing: -6px;
@@ -133,10 +145,6 @@
             @include breakpoint($bp-1280-width) {
               font-size: 13px;
               line-height: 34px;
-            }
-            @include breakpoint($bp-640-width) {
-              font-size: 17.5px;
-              line-height: 46px;
             }
             &.active {
               color: #ffffff!important;
@@ -161,7 +169,7 @@
           }
           @include breakpoint($bp-640-width) {
             width: 100%;
-            font-size: 24px;
+            font-size: 18px;
             color: $poll-color;
           }
         }
@@ -197,16 +205,54 @@
         top: auto;
         width: 100%;
       }
+      .episodes-list-slider {
+        &.horizontal {
+          @include breakpoint($bp-640-width) {
+            display: none;
+          }
+        }
+        &.vertical {
+          @include breakpoint($bp-640-width) {
+            display: block;
+            height: 600px;
+          }
+        }
+      }
     }
     .more-items {
       @include breakpoint($bp-1280-width) {
         top: 0;
       }
+      a {
+        @include breakpoint($bp-640-width) {
+          font-size: 15px;
+          height: 45px;
+          line-height: 45px;
+        }
+      }
     }
     .advert {
       @include breakpoint($bp-1280-width) {
         bottom: calc(100% + 50px);
+        left: 24px;
         position: absolute;
+      }
+      @include breakpoint($bp-768-width) {
+        display: none;
+      }
+    }
+    .items-block-title {
+      @include breakpoint($bp-640-width) {
+       height: 45px;
+       line-height: 45px;
+        padding-left: 0;
+      }
+      h2 {
+        @include breakpoint($bp-640-width) {
+          font-size: 23px;
+          line-height: 45px;
+          text-align: center;
+        }
       }
     }
   }

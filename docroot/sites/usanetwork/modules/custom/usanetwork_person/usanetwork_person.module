@@ -186,6 +186,27 @@ function usanetwork_person_image_default_styles() {
     ),
   );
 
+  $styles['629x720'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 629,
+          'height' => 720,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 629,
+          'height' => 720,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   $styles['928x714'] = array(
     'effects' => array(
       array(
@@ -368,10 +389,10 @@ function _usanetwork_person_characters_main_block() {
       : '',
     'social_icons' => $social_icons,
     'image_mobile' => !empty($image_url)
-      ? image_style_url('457x351', $image_url)
+      ? image_style_url('full_episodes_633x356', $image_url)
       : '',
     'image_desktop' => !empty($image_url)
-      ? image_style_url('928x714', $image_url)
+      ? image_style_url('629x720', $image_url)
       : '',
     'description_character' => !empty($person_node->body)
       ? $person_node_wrapper->body->value->value()

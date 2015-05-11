@@ -16,7 +16,7 @@
   <?php if (!empty($persons)) : ?>
     <ul>
       <?php foreach ($persons as $person) :?>
-        <li>
+        <li class="block-item">
           <div class="node node-usanetwork-promo cast-promo">
             <a href="<?php print (!empty($person['url']))? $person['url']: '#'; ?>">
               <div class="meta-wrapper">

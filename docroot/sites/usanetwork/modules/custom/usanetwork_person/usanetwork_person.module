@@ -752,7 +752,7 @@ function _usanetwork_person_render_related_content_item($data, $is_data_item_eve
 
   if (!empty($data->raw_image_uri)) {
     $desktop_image = image_style_url('921x488', $data->raw_image_uri);
-    $mobile_image = image_style_url('291x234', $data->raw_image_uri);
+    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
   }
 
 

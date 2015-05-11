@@ -1265,6 +1265,9 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
 
   $is_full = _usanetwork_microsite_define_full_episode($file);
 
+  $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
+  $renderable_image = file_create_url($image['#path']);
+
   return array(
     'title' => !empty($file->field_mpx_title)
       ? $file_wrapper->field_mpx_title->value()
@@ -1277,6 +1280,9 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
       : NULL,
     'episode_number' => !empty($file->field_mpx_episode_number)
       ? $file_wrapper->field_mpx_episode_number->value()
+      : NULL,
+    'image' => !empty($renderable_image)
+      ? $renderable_image
       : NULL,
     'duration' => (!$is_full)
       ? ( !empty($file->field_mpx_duration)

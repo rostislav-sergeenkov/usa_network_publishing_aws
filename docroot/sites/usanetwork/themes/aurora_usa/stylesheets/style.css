@@ -12610,18 +12610,28 @@ footer h2 {
   width: 74.7%;
   background: #ffffff;
   color: #000000;
-  padding: 45px 55px;
+  padding: 45px 38px 45px 58px;
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block {
     float: none;
-    padding: 25px 35px;
+    padding: 25px 31px 38px 36px;
     width: 100%;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block {
-    padding: 20px 30px;
+    padding: 18px 29px 18px 30px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block {
+    padding: 38px 24px 38px 24px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block {
+    padding: 20px 42px 20px 49px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header {
@@ -12655,8 +12665,18 @@ footer h2 {
     font-size: 28.8px;
   }
 }
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 37.8px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 36px;
+  }
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "texgyrescholaitalic", Times, serif;
   font-size: 19.5px;
   color: #3e3e3e;
   text-transform: uppercase;
@@ -12668,7 +12688,12 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 10px;
+    font-size: 10.4px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
+    font-size: 13px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
@@ -12682,6 +12707,16 @@ footer h2 {
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
     font-size: 18px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
+    font-size: 15px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
+    font-size: 18.75px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content:after {
@@ -12700,7 +12735,7 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
-    width: 46%;
+    width: 38%;
   }
 }
 @media (max-width: 640px) {
@@ -12744,11 +12779,21 @@ footer h2 {
   border: 2px solid;
   word-spacing: normal;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul li {
     font-size: 13px;
     line-height: 34px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul li {
+    font-size: 17.5px;
+    line-height: 46px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul li.active {
@@ -12760,7 +12805,7 @@ footer h2 {
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 26px;
-  line-height: 1.5em;
+  line-height: 1.6em;
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items {
@@ -12772,9 +12817,16 @@ footer h2 {
     font-size: 15px;
   }
 }
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items {
+    font-size: 16px;
+  }
+}
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items {
     width: 100%;
+    font-size: 24px;
+    color: #545454;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-item {

@@ -12776,8 +12776,7 @@ footer h2 {
   line-height: 46px;
   text-align: center;
   text-transform: uppercase;
-  color: #d63c17;
-  border: 2px solid #d63c17;
+  border: 2px solid;
   word-spacing: normal;
   cursor: pointer;
   white-space: nowrap;
@@ -12798,8 +12797,10 @@ footer h2 {
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul li.active {
-  color: #ffffff;
-  background: #d63c17;
+  color: white !important;
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul li:not(.active) {
+  background: none !important;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -12827,6 +12828,12 @@ footer h2 {
     font-size: 24px;
     color: #545454;
   }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-item {
+  display: none;
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-item.active {
+  display: block;
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .consum-sidebar {

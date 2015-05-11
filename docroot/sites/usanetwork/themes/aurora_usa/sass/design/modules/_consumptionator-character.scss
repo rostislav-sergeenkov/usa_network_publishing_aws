@@ -123,8 +123,7 @@
             line-height: 46px;
             text-align: center;
             text-transform: uppercase;
-            color: $red;
-            border: 2px solid $red;
+            border: 2px solid;
             word-spacing: normal;
             cursor: pointer;
             white-space: nowrap;
@@ -140,8 +139,10 @@
               line-height: 46px;
             }
             &.active {
-              color: #ffffff;
-              background: $red;
+              color: #ffffff!important;
+            }
+            &:not(.active){
+              background: none!important;
             }
           }
         }
@@ -162,6 +163,12 @@
             width: 100%;
             font-size: 24px;
             color: $poll-color;
+          }
+        }
+        .description-item {
+          display: none;
+          &.active {
+            display: block;
           }
         }
       }

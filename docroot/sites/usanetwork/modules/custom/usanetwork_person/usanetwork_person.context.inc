@@ -59,5 +59,51 @@ function usanetwork_person_context_default_contexts() {
 
   $export['node_person'] = $context;
 
+  $export = array();
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'cast_landing';
+  $context->description = '';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/cast' => 'node/*/cast',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_person-usanetwork_person_cast_lmb_block' => array(
+          'module' => 'usanetwork_person',
+          'delta' => 'usanetwork_person_cast_lmb_block',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_person-usanetwork_person_cast_crew' => array(
+          'module' => 'usanetwork_person',
+          'delta' => 'usanetwork_person_cast_crew',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'usanetwork_person-usanetwork_person_cast_recap' => array(
+          'module' => 'usanetwork_person',
+          'delta' => 'usanetwork_person_cast_recap',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('shows');
+  $export['cast_landing'] = $context;
+
   return $export;
 }

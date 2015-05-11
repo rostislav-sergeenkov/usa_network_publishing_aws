@@ -41,17 +41,17 @@
       <div class="description">
         <div class="tabs">
           <ul>
-            <li class="active" data-src="character-bio"><?php print t('Character bio'); ?></li>
-            <li data-src="actor-bio"><?php print t('Actor bio'); ?></li>
+            <li class="show-color show-border show-font active" data-tab="character-bio"><?php print t('Character bio'); ?></li>
+            <li class="show-color show-border show-font" data-tab="actor-bio"><?php print t('Actor bio'); ?></li>
           </ul>
         </div>
         <div class="description-items">
-          <div class="description-item active" data-src="character-bio">
+          <div class="description-item active" data-tab="character-bio">
             <?php if (!empty($description_character)): ?>
               <?php print $description_character; ?>
             <?php endif; ?>
           </div>
-          <div class="description-item" data-src="actor-bio">
+          <div class="description-item" data-tab="actor-bio">
             <?php if (!empty($description_actor)): ?>
               <?php print $description_actor; ?>
             <?php endif; ?>

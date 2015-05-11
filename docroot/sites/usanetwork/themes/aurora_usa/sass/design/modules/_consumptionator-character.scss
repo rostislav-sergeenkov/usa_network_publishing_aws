@@ -103,8 +103,7 @@
             line-height: 46px;
             text-align: center;
             text-transform: uppercase;
-            color: $red;
-            border: 2px solid $red;
+            border: 2px solid;
             word-spacing: normal;
             cursor: pointer;
             @include breakpoint($bp-1280-width) {
@@ -112,8 +111,10 @@
               line-height: 34px;
             }
             &.active {
-              color: #ffffff;
-              background: $red;
+              color: #ffffff!important;
+            }
+            &:not(.active){
+              background: none!important;
             }
           }
         }
@@ -129,6 +130,12 @@
           }
           @include breakpoint($bp-640-width) {
             width: 100%;
+          }
+        }
+        .description-item {
+          display: none;
+          &.active {
+            display: block;
           }
         }
       }

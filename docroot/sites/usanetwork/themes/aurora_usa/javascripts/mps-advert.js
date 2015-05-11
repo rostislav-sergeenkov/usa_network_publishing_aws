@@ -86,8 +86,8 @@
       // init ad
       //Drupal.behaviors.mpsAdvert.consumSidebar();
 
-      if($('body').hasClass('node-type-quiz')) {
-        Drupal.behaviors.mpsAdvert.mpsLoadAd('#topbanner', Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner);
+      if('body'.hasClass('node-type-quiz')) {
+        Drupal.behaviors.mpsAdvert.mpsLoadAd('#topbanner', Drupal.behaviors.mpsAdvert.mpsNameAD.topbox);
       }
     }
   };

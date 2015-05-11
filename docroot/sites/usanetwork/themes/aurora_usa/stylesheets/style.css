@@ -16189,6 +16189,17 @@ footer h2 {
   }
 }
 
+.cast-and-crew-block {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.cast-and-crew-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
 /*
  * jQuery FlexSlider v2.0
  * http://www.woothemes.com/flexslider/

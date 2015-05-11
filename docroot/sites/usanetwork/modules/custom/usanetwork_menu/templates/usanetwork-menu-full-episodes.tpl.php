@@ -15,6 +15,9 @@
                 <?php if (!empty($item['logo'])): ?>
                   <div class="logo"><?php print $item['logo']; ?></div>
                 <?php endif; ?>
+                <?php if (!empty($item['sponsored'])) : ?>
+                  <div class="sponsored" data-mpspath="<?php print $item['file_path']; ?>"></div>
+                <?php endif; ?>
                 <?php if (!empty($item['additional'])): ?>
                   <div class="additional"><?php print $item['additional']; ?></div>
                 <?php endif; ?>

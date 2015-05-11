@@ -109,6 +109,27 @@
           margin-bottom: 30px;
         }
       }
+      .advert {
+        display: none;
+        @include breakpoint($between-769-1280) {
+          display: block;
+        }
+        @include breakpoint($bp-1280-width) {
+          float: left;
+          clear: left;
+          height: 250px;
+          margin-top: 45px;
+          width: 46.8%;
+        }
+        @include breakpoint($bp-1024-width) {
+          width: 42.62%;
+        }
+        .advertisement {
+          height: 250px;
+          margin: 0 auto;
+          width: 300px;
+        }
+      }
       .description {
         width: 48%;
         float: right;
@@ -233,11 +254,6 @@
     }
     .advert {
       @include breakpoint($bp-1280-width) {
-        bottom: calc(100% + 50px);
-        left: 24px;
-        position: absolute;
-      }
-      @include breakpoint($bp-768-width) {
         display: none;
       }
     }

@@ -58,6 +58,9 @@
           </div>
         </div>
       </div>
+      <div class="node-wrapper advert">
+        <div class="advertisement"></div>
+      </div>
     </div>
   </div>
   <div class="consum-sidebar">

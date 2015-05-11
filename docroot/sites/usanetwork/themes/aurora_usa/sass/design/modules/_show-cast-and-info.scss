@@ -88,6 +88,7 @@
           }
           .additional {
             font-family: $tex-gyreschola-italic;
+            text-transform: uppercase;
             font-size: 18px;
             line-height: 1em;
             @include breakpoint ($bp-1280-width) {

@@ -16316,6 +16316,7 @@ footer h2 {
 }
 .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
+  text-transform: uppercase;
   font-size: 18px;
   line-height: 1em;
 }

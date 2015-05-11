@@ -1464,7 +1464,7 @@ function _usanetwork_tv_shows_submenu() {
           'show-color',
         );
         $menu_item_url = $show_menu_item_main_link[0]['url'];
-        if (!empty($menu_item_url) && strncasecmp($menu_item_url, request_path(), strlen($menu_item_url)) == 0) {
+        if (!empty($menu_item_url) && strncasecmp($menu_item_url, request_path(), strlen(request_path())) == 0) {
           $classes[] = 'active';
         }
         $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $menu_item_url, array(
@@ -1477,7 +1477,7 @@ function _usanetwork_tv_shows_submenu() {
   }
   
   return theme('usanetwork_tv_shows_submenu', array(
-    'show_title' => $show_title,
+    'show_title' => l($show_title, 'node/' . $show->nid),
     'weekday' => isset($show_weekday) ? $show_weekday : NULL,
     'time' => isset($show_time) ? $show_time : NULL,
     'social_icons' => $social_links,
@@ -2382,7 +2382,14 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
           'is_first' => $is_first,
         );
       }
-      $theme_variables['promos'] = $promos;
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+      $theme_variables = array(
+        'promos' => $promos,
+        'ad' => isset($advert) ? $advert : FALSE,
+      );
       return theme('usanetwork_tv_shows_video_lmb_block', $theme_variables);
     }
   }

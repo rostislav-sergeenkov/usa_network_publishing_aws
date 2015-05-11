@@ -759,6 +759,7 @@ function _usanetwork_menu_full_episodes_block() {
 
   $items = array();
   foreach ($carousel_episodes as $episode) {
+    $sponsored = FALSE;
     $episode_wrapper = entity_metadata_wrapper('file', $episode);
     $show = !empty($episode->field_show)
       ? $episode_wrapper->field_show->value()
@@ -786,6 +787,12 @@ function _usanetwork_menu_full_episodes_block() {
       'style_name' => 'full_episodes_633x356',
     ));
 
+    $sponsored_element = _usanetwork_menu_get_sponsored_file_by_show($show->nid);
+    if ($sponsored_element) {
+      $sponsored = TRUE;
+      $file_path = $sponsored_element;
+    }
+
     $items_variables = array(
       'url' => url('file/' . $episode->fid),
       'logo' => isset($logo) ? $logo_image : NULL,
@@ -794,6 +801,8 @@ function _usanetwork_menu_full_episodes_block() {
         '@episode_number' => $episode_number
        )),
        'image' => $video_image,
+      'sponsored' => $sponsored,
+      'file_path' => isset($file_path) ? '/file/' . $file_path : NULL,
     );
 
     $items[] = $items_variables;
@@ -804,6 +813,23 @@ function _usanetwork_menu_full_episodes_block() {
   );
 
   return theme('usanetwork_menu_full_episodes', $theme_variables);
+}
+
+/*
+ * Helper function for get sponsored file by show nid
+ */
+function _usanetwork_menu_get_sponsored_file_by_show($show_nid) {
+  $query = db_select('file_managed', 'f')->fields('f', array('fid'));
+  $query->condition('f.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+  $query->leftJoin('field_data_field_show','show_field','show_field.entity_id = f.fid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->leftJoin('mpx_video','v','v.fid = f.fid');
+  $query->condition('v.status', 1);
+  $query->leftJoin('field_data_field_sponsored','fdfs','fdfs.entity_id = f.fid');
+  $query->condition('fdfs.field_sponsored_value', 1);
+  $query->orderBy('v.airdate', 'DESC');
+
+  return $query->execute()->fetchField();
 }
 
 /**

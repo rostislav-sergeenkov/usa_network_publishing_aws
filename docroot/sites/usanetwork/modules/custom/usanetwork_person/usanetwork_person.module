@@ -215,6 +215,27 @@ function usanetwork_person_image_default_styles() {
     ),
   );
 
+  $styles['420x420'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 420,
+          'height' => 420,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 420,
+          'height' => 420,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   $styles['928x714'] = array(
     'effects' => array(
       array(
@@ -508,11 +529,17 @@ function _usanetwork_person_render_cast_lmb_block() {
     if (!empty($show_node->field_cast_head_image)) {
       $head_image = $show_node_wrapper->field_cast_head_image->value();
     }
+    if (!empty($show_node->field_cast_head_mob_image)) {
+      $head_image_mobile = $show_node_wrapper->field_cast_head_mob_image->value();
+    }
     if (!empty($show_node->field_cast_second_image)) {
       $second_image = $show_node_wrapper->field_cast_second_image->value();
     }
     $theme_variables = array(
-      'head_image' => !empty($head_image) ? file_create_url($head_image['uri']) : '',
+      'head_image' => array(
+        'desktop' => !empty($head_image) ? file_create_url($head_image['uri']) : '',
+        'mobile' => !empty($head_image_mobile) ? file_create_url($head_image_mobile['uri']) : '',
+      ),
       'second_image' => !empty($second_image) ? file_create_url($second_image['uri']) : '',
       'description' => !empty($show_node->field_cast_description) ? $show_node_wrapper->field_cast_description->value->value() : '',
     );
@@ -531,6 +558,8 @@ function _usanetwork_person_render_cast_recap_block() {
     if (!empty($show_node->field_cast_recap_video)) {
       $recap_video_file = reset(field_get_items('node', $show_node, 'field_cast_recap_video'));
       $recap_video_file = file_load($recap_video_file['target_id']);
+      $file_wrapper = entity_metadata_wrapper('file', $recap_video_file);
+      $promo_data = _usanetwork_promo_pull_file_promo_details($recap_video_file);
       $theme_variables = array(
         'title' => t('Series Recap'),
         'video' => theme('pub_mpx_video', array(
@@ -540,6 +569,10 @@ function _usanetwork_person_render_cast_recap_block() {
             'form' => 'html'
           )
         )),
+        'video_title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
+            (!empty($recap_video_file->field_mpx_title) ? $file_wrapper->field_mpx_title->value() : ''),
+        'video_description' => !empty($promo_data['description']) ? $promo_data['description'] :
+            (!empty($recap_video_file->field_mpx_description) ? $file_wrapper->field_mpx_description->value() : ''),
         'button_url' => url('node/' . $show_node->nid . '/videos'),
       );
       return theme('usanetwork_person_cast_recap_block', $theme_variables);
@@ -811,7 +844,8 @@ function _usanetwork_person_render_cast_crew_block() {
         $theme_variables['persons'][] = array(
           'name' => !empty($person_node->title) ? $person_node->title : '',
           'role' => !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '',
-          'image' => !empty($image) ? file_create_url($image['uri']) : '',
+          'image' => !empty($image) ? image_style_url('420x420', $image['uri']) : '',
+          'url' => url('node/' . $person_node->nid),
         );
       }
       return theme('usanetwork_person_cast_crew_block', $theme_variables);

@@ -1,11 +1,5 @@
 (function ($) {
   Drupal.behaviors.microsite_characters = {
-    // @TODO: What's the best Drupal way to handle the following default variables?
-    siteName: 'Dig',
-    basePath: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig',
-    basePageName: 'Dig | USA Network',
-    defaultCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
-    defaultMobileCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
 
     micrositeSetCharNavWidthHeight: function setCharNavWidth() {
       var charactersNav = $('#characters .character-nav'),
@@ -105,7 +99,7 @@
     },
 
     micrositeSetPath : function setPath(nextItemId) {
-      var anchorFull = Drupal.settings.microsites_settings.base_path + '/characters/' + nextItemId;
+      var anchorFull = Drupal.behaviors.microsite_characters.basePath + '/characters/' + nextItemId;
       // if this is IE9, reload the correct page
       if ($('html.ie9').length > 0) {
         window.location.href = anchorFull;
@@ -254,10 +248,18 @@
     },
 
     attach: function (context, settings) {
+      // check to make sure there's a characters section
       if ($('#characters').length > 0) {
         Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
         var characters = $('#microsite #character-info'),
-            activeCharacter = characters.find('li.active').attr('id');
+            activeCharacter = characters.find('li.active').attr('id'),
+            self = this;
+        self.siteName = Drupal.settings.microsites_settings.title;
+        self.basePath = Drupal.settings.microsites_settings.microsite_theme_path;
+        self.basePageName = Drupal.settings.microsites_settings.title + ' | USA Network';
+        self.defaultCharBg = Drupal.settings.microsite_characters.default_char_bg;
+        self.defaultMobileCharBg = Drupal.settings.microsite_characters.default_mobile_char_bg;
+
         Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
         Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
 

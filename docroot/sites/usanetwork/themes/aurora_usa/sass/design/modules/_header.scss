@@ -1281,6 +1281,10 @@ header {
             }
             a {
               color: #ffffff !important;
+              &.seeit-reminder {
+                clear: none;
+                margin: 0;
+              }
             }
           }
           .time {

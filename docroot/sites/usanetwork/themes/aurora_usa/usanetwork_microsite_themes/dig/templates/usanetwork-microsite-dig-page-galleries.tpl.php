@@ -27,9 +27,9 @@
   <?php if (!empty($gallery)): ?>
   <div class="microsite-gallery-meta clearfix">
     <?php if (empty($h1) && !empty($gallery['title']) && $status == 'active'): ?>
-      <h1><?php print $gallery['title']; ?></h1>
+      <h1 class="gallery-title"><?php print $gallery['title']; ?></h1>
     <?php elseif (!empty($gallery['title'])): ?>
-      <h2><?php print $gallery['title']; ?></h2>
+      <h2 class="gallery-title"><?php print $gallery['title']; ?></h2>
     <?php endif; ?>
 
     <?php if (!empty($h1)): ?>
@@ -68,9 +68,8 @@
         <ul id="ep-galleries-list" class="galleries-bxslider">
         <?php foreach ($episodic_galleries as $ep_gallery): ?>
           <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
-          <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
           <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>">
-            <a href="/dig/galleries/<?php print $ep_gallery['url']; ?>">
+            <a href="<?php print $microsite_url; ?>/galleries/<?php print $ep_gallery['url']; ?>">
               <div class="gallery-nav-img"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>">
               </div>
               <div class="gallery-title">
@@ -103,9 +102,8 @@
         <ul id="character-galleries-list" class="galleries-bxslider">
         <?php foreach ($character_galleries as $char_gallery): ?>
           <?php if (!empty($char_gallery['url']) && !empty($char_gallery['gallery_nid']) && !empty($char_gallery['title']) && !empty($char_gallery['cover_img'])): ?>
-          <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
           <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>">
-            <a href="/dig/galleries/<?php print $char_gallery['url']; ?>">
+            <a href="<?php print $microsite_url; ?>/galleries/<?php print $char_gallery['url']; ?>">
               <div class="gallery-nav-img">
                 <img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>">
               </div>

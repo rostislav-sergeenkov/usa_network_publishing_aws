@@ -258,6 +258,36 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|mpx_video_1|microsite_thumbnail';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'mpx_video_1';
+  $ds_layout->view_mode = 'microsite_thumbnail';
+  $ds_layout->layout = 'video_mpx_teaser';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'file',
+      ),
+      'title' => array(
+        0 => 'field_mpx_title',
+      ),
+      'caption' => array(
+        0 => 'field_seo_h1',
+      ),
+    ),
+    'fields' => array(
+      'file' => 'media',
+      'field_mpx_title' => 'title',
+      'field_seo_h1' => 'caption',
+    ),
+    'classes' => array(),
+  );
+  $export['file|mpx_video_1|microsite_thumbnail'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'file|mpx_video_1|vid_teaser_episode';
   $ds_layout->entity_type = 'file';
   $ds_layout->bundle = 'mpx_video_1';
@@ -469,6 +499,36 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'classes' => array(),
   );
   $export['file|mpx_video_2|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|mpx_video_2|microsite_thumbnail';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'mpx_video_2';
+  $ds_layout->view_mode = 'microsite_thumbnail';
+  $ds_layout->layout = 'video_mpx_teaser';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'file',
+      ),
+      'title' => array(
+        0 => 'field_mpx_title',
+      ),
+      'caption' => array(
+        0 => 'field_seo_h1',
+      ),
+    ),
+    'fields' => array(
+      'file' => 'media',
+      'field_mpx_title' => 'title',
+      'field_seo_h1' => 'caption',
+    ),
+    'classes' => array(),
+  );
+  $export['file|mpx_video_2|microsite_thumbnail'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

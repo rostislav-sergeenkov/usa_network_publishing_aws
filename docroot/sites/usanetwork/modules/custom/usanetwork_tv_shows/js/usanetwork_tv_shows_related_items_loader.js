@@ -56,6 +56,9 @@
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
           }
+          if (number_ul > 2) {
+            $('.ajax-load-block .load-more-link a').addClass('disabled-infinity');
+          }
         },
         error: function () {
           console.info('error');
@@ -87,7 +90,7 @@
               : 0;
         var additional_offset = (window.innerHeight < window_size_desktop_large)? 130: 230;
         if (load_more_offset - window.innerHeight + additional_offset - scroll_top < 0){
-          if ($('.ajax-load-block .load-more-link a').hasClass('disabled')){
+          if ($('.ajax-load-block .load-more-link a').hasClass('disabled') || $('.ajax-load-block .load-more-link a').hasClass('disabled-infinity')){
             return false;
           }
           $('.ajax-load-block .load-more-link a').addClass('disabled');

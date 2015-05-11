@@ -19,9 +19,9 @@
 
 <div class="full-pane">
   <?php if (empty($h1) && !empty($page['title']) && $status == 'active'): ?>
-  <h1><?php print $page['title']; ?></h1>
+  <h1 class="quiz-title"><?php print $page['title']; ?></h1>
   <?php else: ?>
-  <h3><?php print $page['title']; ?></h3>
+  <h3 class="quiz-title"><?php print $page['title']; ?></h3>
   <?php endif; ?>
 
   <?php if (!empty($h1)): ?>
@@ -57,7 +57,7 @@
       <?php foreach ($quizzes_nav as $quiz_nav): ?>
         <?php if (!empty($quiz_nav['url']) && !empty($quiz_nav['nid']) && !empty($quiz_nav['title'])): ?>
         <li id="nav-quiz-<?php print $quiz_nav['nid']; ?>" data-node-id="<?php print $quiz_nav['nid']; ?>" class="<?php if (!empty($quiz_nav['status'])) print $quiz_nav['status']; ?>">
-          <a href="<?php print url('node/' . arg(1) . '/microsite'); ?>/quizzes/<?php print $quiz_nav['url']; ?>">
+          <a href="<?php print $microsite_url; ?>/quizzes/<?php print $quiz_nav['url']; ?>">
             <div class="quiz-nav-img"><img src="<?php if (!empty($quiz_nav['cover_img'])) print $quiz_nav['cover_img']; ?>" alt="<?php print $quiz_nav['title']; ?>"></div>
             <div class="quiz-title">
               <div><?php print $quiz_nav['title']; ?></div>

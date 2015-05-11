@@ -1,0 +1,86 @@
+/* ------------Counter--------------*/
+#countHolder {
+	position: relative;
+	left: 0;
+	top: 0;
+}
+#counter {
+	width: 100%;
+}
+#counter li {
+  float: left;
+  list-style-type: none;
+  margin: 0 6%;
+  width: 21.333%;
+}
+.circle {
+  width: 100%;
+  min-width: 56px;
+  height: auto;
+  min-height: 56px;
+  display: block;
+  background-color: rgba(0,0,0,0.6);
+  border: 2px solid orange;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding-top: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.counter-container {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+}
+.counter-container > div {
+  text-align: center;
+}
+.numbers {
+	text-align: center;
+	font-family: "avalonregular", "proxima_nova_regular", Arial, Helvetica, sans-serif;
+	font-size: 150%;
+	font-style: normal;
+	color: #ffffff;
+	font-weight: lighter;
+  margin-bottom: 1%;
+}
+.line {
+	border-top: 1px solid #CCC;
+	width: 50%;
+	height: 1px;
+	margin: 1% auto;
+}
+.title {
+  text-align: center;
+  font-family: "avalonregular", "proxima_nova_regular", Arial, Helvetica, sans-serif;
+	text-transform: lowercase;
+  font-size: 85%;
+	font-weight: lighter;
+  color: #ffffff;
+	width: 100%;
+	display:block;
+}
+#caption {
+	font-family: "proxima_nova_regular", Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	color: orange;
+	width: 102px;
+	text-align:center;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+/* *********** MEDIA QUERIES START *********** */
+@media (max-width: 1455px) {
+}
+
+@media (max-width: 1255px) {
+  .numbers {
+    font-size: 125%;
+  }
+  .title {
+    font-size: 65%;
+  }
+}

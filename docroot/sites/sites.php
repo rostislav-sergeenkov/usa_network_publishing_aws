@@ -8,6 +8,7 @@ foreach ($multisites as $sitename => $domain) {
   $sites[$sitename . 'dev.prod.acquia-sites.com'] = $sitename;
   $sites[$sitename . 'stg.prod.acquia-sites.com'] = $sitename;
   $sites[$sitename . 'acc.prod.acquia-sites.com'] = $sitename;
+  $sites[$sitename . 'edit.prod.acquia-sites.com'] = $sitename;
   $sites[$sitename . '.prod.acquia-sites.com'] = $sitename;
   $sites['nbcuusadev.prod.acquia-sites.com'] = $sitename;
   $sites['nbcuusatest.prod.acquia-sites.com'] = $sitename;
@@ -19,6 +20,7 @@ foreach ($multisites as $sitename => $domain) {
   $sites['dev.' . $domain] = $sitename;
   $sites['stage.' . $domain] = $sitename;
   $sites['qa.' . $domain] = $sitename;
+  $sites['edit.' . $domain] = $sitename;
   $sites[$sitename] = $sitename;
 
   // $domain may have been empty; if so, do not add it.

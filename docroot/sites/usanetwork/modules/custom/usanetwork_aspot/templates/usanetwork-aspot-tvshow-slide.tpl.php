@@ -19,7 +19,7 @@
               <![endif]-->
             <?php endif; ?>
             <?php if (!empty($show_poster['desktop'])): ?>
-              <noscript><img src="<?php print $show_poster['desktop']; ?>" width="2490" height="1418" alt="" title="" /></noscript>
+              <noscript><img src="<?php print $show_poster['desktop']; ?>" width="2880" height="1620" alt="" title="" /></noscript>
             <?php endif; ?>
 
           </div>

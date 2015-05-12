@@ -32,7 +32,6 @@
               <?php endif; ?>
             </a>
           </div>
-
         </li>
       <?php endforeach; ?>
     </ul>

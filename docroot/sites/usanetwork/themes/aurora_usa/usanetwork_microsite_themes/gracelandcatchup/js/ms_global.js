@@ -57,7 +57,30 @@
       });
     },
 
-    // SCROLLING
+    // NAVIGATION
+    // getScrollDirection
+//    scrollDirectionTimer: null,
+    lastYScrollPosition: 0,
+    getScrollDirection: function() {
+//      Drupal.behaviors.ms_global.scrollDirectionTimer = clearTimeout(Drupal.behaviors.ms_global.scrollDirectionTimer);
+//      Drupal.behaviors.ms_global.scrollDirectionTimer = setTimeout(function() {
+        scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
+        Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
+        return scrollDirection;
+//      }, 250);
+    },
+
+    // topOfSectionScrolledIntoView
+    topOfSectionScrolledIntoView: function() {
+
+    },
+
+    // bottomOfSectionScrolledIntoView
+    bottomOfSectionScrolledIntoView: function() {
+
+    },
+
+    // IsScrolledIntoView
     isScrolledIntoView: function(elem) {
       var $elem = $(elem),
           $window = $(window),
@@ -375,6 +398,24 @@
           }
         }
       }
+
+
+      var inview = new Waypoint.Inview({
+        element: $('#videos'), //[0],
+        enter: function(direction) {
+          usa_debug('Enter triggered with direction ' + direction)
+        },
+        entered: function(direction) {
+          usa_debug('Entered triggered with direction ' + direction)
+        },
+        exit: function(direction) {
+          usa_debug('Exit triggered with direction ' + direction)
+        },
+        exited: function(direction) {
+          usa_debug('Exited triggered with direction ' + direction)
+        }
+      })
+
 
       // initialize clicks in microsite menu
       $('#microsite li.internal a').on('click', function(e){

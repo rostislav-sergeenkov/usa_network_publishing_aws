@@ -68,15 +68,17 @@
         var homeSectionHeight,
             siteNavTimer,
             siteNavPositionTimer,
-            scrollTimer
-            allAdsLoaded = false;
+            scrollTimer,
+            allAdsLoaded = false,
+            scrollDirection;
 
         setTimeout(function(){
           homeSectionHeight = self.getHeightHomeSection();
           self.setSiteNav();
         }, 500);
 
-        // scrolling
+
+        // SCROLLING
         $(window).on('scroll', function() {
           if (typeof siteNavPositionTimer == 'undefined') {
             siteNavPositionTimer = setTimeout(function(){
@@ -93,10 +95,38 @@
             }, 200);
           }
 
+var videosObj = document.getElementById('videos'),
+    box = videosObj.getBoundingClientRect();
+usa_debug('======== videos box -- top left: ' + box.top + ' ' + box.left + ', bottom right: ' + box.bottom + ' ' + box.right + '\nbox: ');
+usa_debug(box);
+
           // initial load of each ad as it comes into view
           scrollTimer = clearTimeout(scrollTimer);
           scrollTimer = setTimeout(function() {
-            console.log("============ Haven't scrolled in 250ms!");
+            scrollDirection = Drupal.behaviors.ms_global.getScrollDirection();
+/*
+            $('.section').each(function(index, value){
+              var //$elem = $(this),
+                  sectionId = $(this).attr('id'),
+                  box = $(this).getBoundingClientRect();
+
+usa_debug('========== section box coordinates -- top left: ' + box.top + ' ' + box.left + '\nbottom right: ' + box.bottom + ' ' + box.right);
+*//*
+                  elem = $(this)
+                  box = elem.getBoundingClientRect(),
+                  body = document.body,
+                  docElem = document.documentElement,
+                  scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop,
+                  scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft,
+                  clientTop = docElem.clientTop || body.clientTop || 0,
+                  clientLeft = docElem.clientLeft || body.clientLeft || 0,
+                  top  = box.top +  scrollTop - clientTop,
+                  left = box.left + scrollLeft - clientLeft;
+              return { top: Math.round(top), left: Math.round(left) }
+            });
+*/
+
+            console.log('============ Haven\'t scrolled in 250ms!\nscrollDirection: ' + scrollDirection);
             if (!allAdsLoaded) {
               allAdsLoaded = true;
               $('#microsite .section').each(function(){
@@ -125,39 +155,6 @@
               });
             }
           }, 250);
-
-/*
-          if (!allAdsLoaded && typeof scrollTimer == 'undefined') {
-            scrollTimer = setTimeout(function() {
-              allAdsLoaded = true;
-              $('#microsite .section').each(function(){
-                var sectionId = $(this).attr('id');
-                if (sectionId != 'site-nav') {
-                  if ($('#' + sectionId + ' .ad-leaderboard').html() == '') {
-                    allAdsLoaded = false;
-usa_debug('============= 728x90 ad not loaded yet for #' + sectionId + ', allAdsLoaded: ' + allAdsLoaded);
-                    if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
-usa_debug('============ scroll triggered create728x90Ad(' + sectionId + ')');
-                      Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-                    }
-                  }
-
-                  if (sectionId == 'quizzes') {
-                    if ($('.dart-name-300x250_ifr_reload_quizzes').html() == '') {
-                      allAdsLoaded = false;
-usa_debug('============= 300x250 ad not loaded yet for #' + sectionId + ', allAdsLoaded: ' + allAdsLoaded);
-                      if (Drupal.behaviors.ms_global.isScrolledIntoView('.dart-name-300x250_ifr_reload_quizzes')) {
-usa_debug('============ scroll triggered create300x250Ad(' + sectionId + ')');
-                        Drupal.behaviors.ms_global.create300x250Ad(sectionId);
-                      }
-                    }
-                  }
-                }
-              });
-              scrollTimer = clearTimeout(scrollTimer);
-            }, 500);
-          }
-*/
         });
       });
 

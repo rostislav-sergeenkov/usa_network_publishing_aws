@@ -1088,6 +1088,15 @@ function _usanetwork_menu_consumptionator_block_video($file) {
       $lock = ($field_mpx_entitlement && $field_mpx_entitlement == 'auth') ? TRUE : FALSE;
     }
 
+    //Sponsored MPS
+    if (isset($file->field_sponsored)) {
+      $field_sponsored = $file_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $sponsored = TRUE;
+        $file_id = '/file/' . $file->fid;
+      }
+    }
+
     $theme_variables = array(
       'sharebar' => !empty($sharebar) ? drupal_render($sharebar) : '',
       'authbar' => !empty($lock) ? (!empty($auth_links) ? drupal_render($auth_links) : '') : '',
@@ -1127,6 +1136,8 @@ function _usanetwork_menu_consumptionator_block_video($file) {
           ? $file_wrapper->field_mpx_description->value()
           : '',
       ),
+      'sponsored' => isset($sponsored) ? $sponsored : FALSE,
+      'file_path' => isset($file_id) ? $file_id : FALSE,
     );
     return theme('usanetwork_menu_consumptionator_video', $theme_variables);
   }

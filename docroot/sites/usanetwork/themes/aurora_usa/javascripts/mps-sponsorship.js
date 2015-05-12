@@ -46,7 +46,6 @@
         smalldark: 'smalldark'
       };
 
-
       // main menu
       Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), style.light);
 

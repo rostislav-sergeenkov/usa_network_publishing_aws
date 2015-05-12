@@ -62,7 +62,7 @@ function aurora_usa_preprocess_html(&$vars) {
   if (arg(2) == 'social' || arg(0) == 'social') {
     $vars['classes_array'][] = drupal_html_class('usa-social');
   }
-  if (arg(0) == 'videos' || arg(1) == 'live') {
+  if (arg(0) == 'videos' && arg(1) == 'live') {
     $vars['classes_array'][] = drupal_html_class('consumptionator-page');
   }
   drupal_add_library('system', 'drupal.ajax');
@@ -124,6 +124,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   drupal_add_js($theme_path . '/javascripts/jquery.scrollTo-1.4.3.1.js');
   drupal_add_js($theme_path . '/javascripts/mps-advert.js');
+  drupal_add_js($theme_path . '/javascripts/mps-sponsorship.js');
   drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
     'type' => 'external',
     'scope' => 'footer',
@@ -1129,38 +1130,6 @@ function aurora_usa_field__field_usa_aspot_mobile($vars) {
   return $output;
 }
 
-/**
- * Override of theme_field();
- * see theme_field() for available variables
- * promo bspot wide image
- */
-function aurora_usa_field__field_promo_wide_image($vars) {
-  // custom for certain view modes only
-  // c-spot wide image not displayed
-  if ($vars['element']['#view_mode'] == 'home_promo') {
-    $output = '';
-  }
-  // b-spot
-  if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
-    // polyfill
-    $output = '';
-    $filepath = $vars['items'][0]['#item']['uri'];
-
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 710px) and (max-width: 1019px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 710px) and (max-width: 1019px) and (min-device-pixel-ratio: 2.0)"></div>';
-
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1335px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1335px) and (min-device-pixel-ratio: 2.0)"></div>';
-    $output .= '<!--[if (IE 8) & (!IEMobile)]>';
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '"></div>';
-    $output .= '<![endif]-->';
-
-    $output .= '<noscript>';
-    $output .= theme('image_style', array('style_name' => '615x250', 'path' => $filepath, 'alt' => '', 'title' => ''));
-    $output .= '</noscript>';
-    return $output;
-  }
-}
 
 /**
  * Override of theme_field();

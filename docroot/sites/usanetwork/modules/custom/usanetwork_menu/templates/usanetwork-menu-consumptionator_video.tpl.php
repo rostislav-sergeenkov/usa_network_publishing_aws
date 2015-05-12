@@ -23,10 +23,13 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <?php print $episode['title']; ?>
+          <?php print $episode['video_type'];?>: <?php print $episode['title']; ?>
         </a>
       </h1>
     </div>
+    <?php if (!empty($sponsored)) : ?>
+      <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
+    <?php endif; ?>
   </div>
   <div class="tve-help-link signOut" data-ng-if="global.isAuthN">
     <?php print $authbar; ?>

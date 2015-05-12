@@ -47,6 +47,63 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_cast_main|node|tv_show|form';
+  $field_group->group_name = 'group_cast_main';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_show_cast_landing';
+  $field_group->data = array(
+    'label' => 'Main Block',
+    'weight' => '133',
+    'children' => array(
+      0 => 'field_cast_head_image',
+      1 => 'field_cast_second_image',
+      2 => 'field_cast_description',
+      3 => 'field_cast_head_mob_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cast-main field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_cast_main|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_cast_recap|node|tv_show|form';
+  $field_group->group_name = 'group_cast_recap';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_show_cast_landing';
+  $field_group->data = array(
+    'label' => 'Series Recap',
+    'weight' => '134',
+    'children' => array(
+      0 => 'field_cast_recap_video',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cast-recap field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_cast_recap|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_chat_settings|node|tv_show|form';
   $field_group->group_name = 'group_chat_settings';
   $field_group->entity_type = 'node';
@@ -750,9 +807,8 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Show Cast Landing Page',
     'weight' => '16',
     'children' => array(
-      0 => 'field_cast_head_image',
-      1 => 'field_cast_second_image',
-      2 => 'field_cast_description',
+      0 => 'group_cast_main',
+      1 => 'group_cast_recap',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

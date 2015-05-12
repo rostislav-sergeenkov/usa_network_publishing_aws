@@ -73,6 +73,16 @@ $(document).ready(function(){
     scrollToAnchorName(targetName);
   });
 
+  $('.character-info-block .tabs li').click(function(){
+    if(!$(this).hasClass('active')){
+      $('.character-info-block .tabs li').removeClass('active');
+      $('.character-info-block .description-item').removeClass('active');
+      $(this).addClass('active');
+      var activeTab = $(this).attr('data-tab');
+      $('.description-item[data-tab="'+activeTab+'"]').addClass('active');
+    }
+  });
+
 });
 
 

@@ -6,8 +6,11 @@
 ?>
 <div class="consum-sidebar">
   <div class="node-wrapper advert">
+    <?php if (!empty($ad)) : ?>
     <div class="advertisement">
+      <?php print $ad; ?>
     </div>
+    <?php endif; ?>
   </div>
   <div class="download-app">
     <div class="download-app-wrapper">

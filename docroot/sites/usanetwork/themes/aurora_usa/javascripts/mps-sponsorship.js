@@ -10,7 +10,7 @@
       mps.usa.execShowCard('.showcard-open', '.showcard-open .ad-container', '/node/41');
     },
 
-    // init Sponsored Block
+    // init Sponsored Block for many elements
     initSponsoredBlock: function (block, styleBlock) {
       block.each(function (index, element) {
         var sponsoredBlock = $(element).find('.sponsored');
@@ -52,7 +52,7 @@
 
       // node-type-tv-show
       if (body.hasClass('node-type-tv-show')) {
-        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .show-aspot'), style.light);
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .show-aspot .slide'), style.light);
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .episodes-list'), style.dark);
       }
 

@@ -713,8 +713,8 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 780,
-          'height' => 506,
+          'width' => 800,
+          'height' => 450,
         ),
         'weight' => 1,
       ),

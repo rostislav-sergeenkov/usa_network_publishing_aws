@@ -240,7 +240,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
 function usanetwork_microsite_dig_get_theme_settings() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   return array(
-    'display_global_nav' => TRUE,
+    'display_global_nav' => FALSE,
     'default_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
     'default_mobile_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
     'videos_limit' => 12,

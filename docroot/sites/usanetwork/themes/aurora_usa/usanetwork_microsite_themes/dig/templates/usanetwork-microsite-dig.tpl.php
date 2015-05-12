@@ -114,6 +114,7 @@
       </div>
     </div>
   </div>
+  <div id="usa-logo-container"><a href="http://www.usanetwork.com" target="_blank"><span>USA logo</span></a></div>
   <?php if (!empty($facebook_tracking_html)): ?>
     <?php print $facebook_tracking_html; ?>
   <?php endif; ?>

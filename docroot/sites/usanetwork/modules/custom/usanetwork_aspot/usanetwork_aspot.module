@@ -846,10 +846,12 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
   $field_aspot_linked_content = _usanetwork_get_field_item('node', $aspot_node, 'field_aspot_linked_content' ,'target_id');
   if ($field_aspot_linked_content) {
     $file_liked = file_load($field_aspot_linked_content);
-    $field_sponsored = _usanetwork_get_field_item('file', $file_liked, 'field_sponsored', 'value');
-    if ($field_sponsored == '1') {
-      $sponsored = TRUE;
-      $file_id = '/file/' . $file_liked->fid;
+    if ($file_liked) {
+      $field_sponsored = _usanetwork_get_field_item('file', $file_liked, 'field_sponsored', 'value');
+      if ($field_sponsored == '1') {
+        $sponsored = TRUE;
+        $file_id = '/file/' . $file_liked->fid;
+      }
     }
   }
 

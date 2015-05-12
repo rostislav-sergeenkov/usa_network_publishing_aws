@@ -83,8 +83,19 @@
     },
 
     attach: function (context, settings) {
-      // init ad
-      //Drupal.behaviors.mpsAdvert.consumSidebar();
+
+      // init for node-type-catchall-page
+      if($('body').hasClass('node-type-catchall-page')) {
+        if(settings.CatchallRefreshSettings) {
+          var interval = settings.CatchallRefreshSettings.time * 1000;
+
+          setInterval(function() {
+            Drupal.behaviors.mpsAdvert.mpsRefreshAd(Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner);
+          }, interval);
+
+        }
+      }
+
     }
   };
 }(jQuery));

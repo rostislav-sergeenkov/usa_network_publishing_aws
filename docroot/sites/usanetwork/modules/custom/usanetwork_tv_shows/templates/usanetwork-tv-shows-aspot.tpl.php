@@ -16,6 +16,9 @@
           <div class="title-wrapper">
             <h2><?php print $episodes_block_title; ?></h2>
           </div>
+          <?php if (!empty($sponsored)) : ?>
+            <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
+          <?php endif; ?>
         </div>
       <?php endif; ?>
       <div class="episodes-list-slider vertical" data-mode="vertical">

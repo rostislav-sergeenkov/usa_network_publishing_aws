@@ -2550,6 +2550,87 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
+.cast-and-crew-block .block-item .meta-wrapper {
+  background: #656364;
+  bottom: 0;
+  height: 25.8%;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .cast-and-crew-block .block-item .meta-wrapper {
+    height: 28%;
+  }
+}
+.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner {
+  height: 100%;
+  display: table;
+  position: relative;
+  width: 100%;
+}
+.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta {
+  display: table-cell;
+  max-width: 100px;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  color: #ffffff;
+}
+.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 27px;
+  line-height: 1.3em;
+  text-transform: uppercase;
+}
+@media (max-width: 1280px) {
+  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 14.4px;
+  }
+}
+@media (max-width: 768px) {
+  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 12px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 17.9px;
+  }
+}
+.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+  font-family: "texgyrescholaitalic", Times, serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 1em;
+}
+@media (max-width: 1280px) {
+  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 9.6px;
+  }
+}
+@media (max-width: 768px) {
+  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 8px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 11.98px;
+  }
+}
+
 .meta-icon {
   border-radius: 50%;
   display: block;
@@ -3450,7 +3531,7 @@ input[type="radio"], input[type="checkbox"] {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
-  width: 970px;
+  max-width: 970px;
 }
 
 .midbanner {
@@ -3472,7 +3553,7 @@ input[type="radio"], input[type="checkbox"] {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
-  width: 970px;
+  max-width: 970px;
 }
 
 .clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
@@ -15243,6 +15324,15 @@ footer h2 {
   max-width: 260px;
   text-transform: uppercase;
 }
+.show-title-block h1 a {
+  color: #ffffff;
+}
+.show-title-block h1 a:hover {
+  color: #ffffff;
+}
+.show-title-block h1 a:focus {
+  outline: none;
+}
 @media (min-width: 1901px) {
   .show-title-block h1 {
     font-size: 36px;
@@ -16206,7 +16296,8 @@ footer h2 {
   width: 100%;
 }
 #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
-  min-height: 870px;
+  margin: 0 auto;
+  max-width: 1868px;
   padding: 40px 24px 40px 90px;
   position: relative;
   width: 100%;
@@ -16216,10 +16307,36 @@ footer h2 {
   content: '';
   display: table;
 }
+@media (min-width: 1281px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    min-height: 870px;
+  }
+}
 @media (min-width: 1901px) {
   #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     min-height: 890px;
     padding: 60px 32px 60px 150px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    min-height: 750px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    min-height: 650px;
+    padding: 30px 17px 30px 80px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    padding: 30px 36px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    padding: 20px 24px;
   }
 }
 #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
@@ -16235,6 +16352,22 @@ footer h2 {
     line-height: 32px;
   }
 }
+@media (max-width: 1024px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+    font-size: 14px;
+    width: calc(100% - 340px);
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+    font-size: 12px;
+  }
+}
 #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description p {
   margin: 0.5em 0;
 }
@@ -16243,6 +16376,11 @@ footer h2 {
   float: right;
   height: 250px;
   width: 300px;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
+    display: none;
+  }
 }
 #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
   bottom: 0;
@@ -16253,12 +16391,18 @@ footer h2 {
   right: 24px;
   width: 30%;
 }
+@media (max-width: 768px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
+    display: none;
+  }
+}
 
 .cast-and-crew-block {
   overflow: hidden;
   position: relative;
   width: 100%;
-  padding-left: 60px;
+  padding: 77px 59px 34px 66px;
+  box-sizing: border-box;
 }
 .cast-and-crew-block:after {
   clear: both;
@@ -16267,142 +16411,282 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .cast-and-crew-block {
-    padding-left: 42px;
+    padding: 49px 42px;
   }
 }
 @media (max-width: 1024px) {
   .cast-and-crew-block {
-    padding-left: 32px;
+    padding: 32px 39px;
   }
 }
 @media (max-width: 768px) {
   .cast-and-crew-block {
-    padding-left: 24px;
+    padding: 24px 28px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block {
+    padding: 47px 11px;
   }
 }
 .cast-and-crew-block .block-item {
   float: left;
   height: 20.3vw;
-  margin-bottom: 2.2vw;
+  margin-bottom: 2.3vw;
   position: relative;
-  width: 22.2%;
-  margin-right: 42px;
-}
-@media (max-width: 1600px) {
-  .cast-and-crew-block .block-item {
-    width: 21.5%;
-  }
-}
-@media (max-width: 1280px) {
-  .cast-and-crew-block .block-item {
-    width: 21.4%;
-    margin-right: 28px;
-  }
-}
-@media (max-width: 1024px) {
-  .cast-and-crew-block .block-item {
-    margin-right: 22px;
-  }
-}
-@media (max-width: 768px) {
-  .cast-and-crew-block .block-item {
-    width: 21.3%;
-    margin-top: 16px;
-  }
+  width: 23.2%;
+  margin-right: 2.3%;
 }
 @media (max-width: 640px) {
   .cast-and-crew-block .block-item {
-    width: 45%;
-    height: 41.3vw;
+    width: 48.7%;
+    height: 45.3vw;
+  }
+  .cast-and-crew-block .block-item:nth-child(2n) {
+    margin-right: 0;
   }
 }
 @media (max-width: 480px) {
   .cast-and-crew-block .block-item {
-    width: 95%;
-    height: 73.8vw;
+    width: 100%;
+    height: 85vw;
+    margin-right: 0;
   }
 }
-.cast-and-crew-block .block-item:nth-child(n+3) {
-  margin-left: 0;
+.cast-and-crew-block .block-item:nth-child(4n) {
+  margin-right: 0;
 }
-.cast-and-crew-block .block-item .meta-wrapper {
-  background: #656364;
-  bottom: 0;
-  height: 25.8%;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-}
-@media (max-width: 768px) {
-  .cast-and-crew-block .block-item .meta-wrapper {
-    height: 28%;
-  }
-}
-.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner {
-  height: 100%;
-  display: table;
+
+.series-recap-block {
+  background: #e9eaeb;
+  border-bottom: 2px solid;
+  overflow: hidden;
+  padding: 50px 22px;
   position: relative;
   width: 100%;
 }
-.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta {
-  display: table-cell;
-  max-width: 100px;
-  overflow: hidden;
-  text-align: center;
-  vertical-align: middle;
+.series-recap-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1901px) {
+  .series-recap-block {
+    padding: 70px 32px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block {
+    padding: 40px 22px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block {
+    padding: 40px 12px;
+  }
+}
+.series-recap-block .series-recap-video {
+  height: 54.13vw;
+  position: relative;
   width: 100%;
-  color: #ffffff;
 }
-.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 27px;
-  line-height: 1.3em;
-  text-transform: uppercase;
-}
-@media (max-width: 1280px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
-    font-size: 18px;
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video {
+    height: 1014.75px;
+    max-width: 1804px;
+    margin: 0 auto;
   }
 }
 @media (max-width: 1024px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
-    font-size: 14.4px;
+  .series-recap-block .series-recap-video {
+    height: 53vw;
   }
 }
 @media (max-width: 768px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
-    font-size: 12px;
+  .series-recap-block .series-recap-video {
+    height: 52vw;
+  }
+}
+.series-recap-block .series-recap-video iframe {
+  height: 100%;
+  width: 100%;
+}
+.series-recap-block .series-recap-video-info {
+  margin-top: 30px;
+  position: relative;
+  width: 100%;
+}
+.series-recap-block .series-recap-video-info:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info {
+    max-width: 1804px;
+    margin: 40px auto 0;
   }
 }
 @media (max-width: 640px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
-    font-size: 17.9px;
+  .series-recap-block .series-recap-video-info {
+    margin-top: 20px;
+    padding: 0 25px;
   }
 }
-.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+@media (max-width: 480px) {
+  .series-recap-block .series-recap-video-info {
+    padding: 0 15px;
+  }
+}
+.series-recap-block .series-recap-video-info .series-recap-video-meta {
+  float: left;
+  width: calc(100% - 220px);
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .series-recap-video-meta {
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .series-recap-video-meta {
+    width: calc(100% - 180px);
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .series-recap-video-meta {
+    float: none;
+    width: 100%;
+  }
+}
+.series-recap-block .series-recap-video-info .video-description {
+  color: #545454;
   font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 20px;
+  line-height: 24px;
   text-transform: uppercase;
-  font-size: 18px;
-  line-height: 1em;
 }
-@media (max-width: 1280px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
-    font-size: 12px;
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .video-description {
+    font-size: 30px;
+    line-height: 36px;
   }
 }
 @media (max-width: 1024px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
-    font-size: 9.6px;
+  .series-recap-block .series-recap-video-info .video-description {
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
-    font-size: 8px;
+  .series-recap-block .series-recap-video-info .video-description {
+    font-size: 13px;
+    line-height: 16px;
   }
 }
 @media (max-width: 640px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
-    font-size: 11.98px;
+  .series-recap-block .series-recap-video-info .video-description {
+    font-size: 10px;
+    line-height: 13px;
+  }
+}
+.series-recap-block .series-recap-video-info .video-title {
+  color: #545454;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  line-height: 38px;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .video-title {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .video-title {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+@media (max-width: 768px) {
+  .series-recap-block .series-recap-video-info .video-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+.series-recap-block .series-recap-video-info .video-button {
+  float: right;
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-button {
+    float: none;
+    margin-top: 15px;
+    width: 180px;
+  }
+}
+.series-recap-block .series-recap-video-info .video-button a {
+  color: #ffffff;
+  display: block;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 55px;
+  padding: 0 35px 0 20px;
+  position: relative;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .video-button a {
+    font-size: 22px;
+    line-height: 80px;
+    padding: 0 50px 0 30px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .video-button a {
+    font-size: 13px;
+    line-height: 50px;
+    padding: 0 30px 0 15px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-button a {
+    line-height: 35px;
+  }
+}
+.series-recap-block .series-recap-video-info .video-button a:after {
+  color: #ffffff;
+  content: "\e608";
+  display: block;
+  font-family: "ico-font";
+  font-size: 12px;
+  margin-top: -27px;
+  right: 15px;
+  position: absolute;
+  top: 50%;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .video-button a:after {
+    font-size: 16px;
+    margin-top: -40px;
+    right: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .video-button a:after {
+    font-size: 10px;
+    margin-top: -25px;
+    right: 13px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-button a:after {
+    margin-top: -17px;
   }
 }
 
@@ -24015,6 +24299,11 @@ yx-axis
   .usanetwork-aspot .meta-wrap .cta-link a:after {
     font-size: 9px;
   }
+}
+.usanetwork-aspot .meta-wrap .sponsored {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 .usanetwork-aspot .social_meter {
   min-height: 78px;

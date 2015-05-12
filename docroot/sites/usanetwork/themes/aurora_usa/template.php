@@ -1130,38 +1130,6 @@ function aurora_usa_field__field_usa_aspot_mobile($vars) {
   return $output;
 }
 
-/**
- * Override of theme_field();
- * see theme_field() for available variables
- * promo bspot wide image
- */
-function aurora_usa_field__field_promo_wide_image($vars) {
-  // custom for certain view modes only
-  // c-spot wide image not displayed
-  if ($vars['element']['#view_mode'] == 'home_promo') {
-    $output = '';
-  }
-  // b-spot
-  if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
-    // polyfill
-    $output = '';
-    $filepath = $vars['items'][0]['#item']['uri'];
-
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 710px) and (max-width: 1019px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 710px) and (max-width: 1019px) and (min-device-pixel-ratio: 2.0)"></div>';
-
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1335px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1335px) and (min-device-pixel-ratio: 2.0)"></div>';
-    $output .= '<!--[if (IE 8) & (!IEMobile)]>';
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '"></div>';
-    $output .= '<![endif]-->';
-
-    $output .= '<noscript>';
-    $output .= theme('image_style', array('style_name' => '615x250', 'path' => $filepath, 'alt' => '', 'title' => ''));
-    $output .= '</noscript>';
-    return $output;
-  }
-}
 
 /**
  * Override of theme_field();

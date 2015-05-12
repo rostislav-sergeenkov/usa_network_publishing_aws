@@ -1299,6 +1299,12 @@ function _usanetwork_tv_shows_aspot_block() {
         }
         else {
           $own_promo_lines = _usanetwork_promo_file_get_promo_lines($alternative_episode_content);
+          //Sponsored MPS
+          $field_sponsored = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_sponsored', 'value');
+          if ($field_sponsored == '1') {
+            $sponsored = TRUE;
+            $file_id = '/file/' . $alternative_episode_content->fid;
+          }
         }
         if (!empty($alternative_episode_content->field_promo_link)) {
           $link_url = $entity_wrapper->field_promo_link->url->value();
@@ -1335,6 +1341,15 @@ function _usanetwork_tv_shows_aspot_block() {
         else {
           $image_uri = _usanetwork_mpx_video_get_image_path($full_latest_episode);
         }
+        //Sponsored MPS
+        if (isset($full_latest_episode->field_sponsored)) {
+          $field_sponsored = $episode_wrapper->field_sponsored->value();
+          if ($field_sponsored == '1') {
+            $sponsored = TRUE;
+            $file_id = '/file/' . $full_latest_episode->fid;
+          }
+        }
+
         $episode_theme_variables = array(
           'url' => url('file/' . $full_latest_episode->fid),
           'violator' => !empty($promo_data['show_name']) ? $promo_data['show_name'] : NULL,
@@ -1347,6 +1362,8 @@ function _usanetwork_tv_shows_aspot_block() {
         $theme_variables['episodes'][] = $episode_theme_variables;
       }
     }
+    $theme_variables['sponsored'] = isset($sponsored) ? $sponsored : FALSE;
+    $theme_variables['file_path'] = isset($file_id) ? $file_id : FALSE;
   }
 
   if (!empty($theme_variables)) {

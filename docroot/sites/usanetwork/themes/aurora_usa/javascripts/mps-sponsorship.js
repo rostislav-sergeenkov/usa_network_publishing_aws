@@ -1,94 +1,65 @@
 (function ($) {
 
-  Drupal.behaviors.mpsSponsorship = {
-
-    // style name for sponsorship
-    styleName: {
-      bleed: 'bleed',
-      dark: 'dark',
-      dark_stacked: 'dark-stacked',
-      dark_themed: 'dark-themed',
-      light: 'light',
-      smalldark: 'smalldark'
-    },
+  Drupal.behaviors.mpsSponsorShip = {
 
     insertLogo: function (selector, style, fileId) {
       mps.usa.insertLogo(mps._select(selector), style, fileId);
     },
 
-    execShowCard: function (selector, style, fileId) {
+    execShowCard: function (selector, fileId) {
       mps.usa.execShowCard('.showcard-open', '.showcard-open .ad-container', '/node/41');
+    },
+
+    // init Sponsored Block
+    initSponsoredBlock: function (block, styleBlock) {
+      block.each(function (index, element) {
+        var sponsoredBlock = $(element).find('.sponsored');
+        if (sponsoredBlock.length) {
+          var fileId = sponsoredBlock.data('mpspath');
+          Drupal.behaviors.mpsSponsorShip.insertLogo(mps._select(sponsoredBlock), styleBlock, fileId);
+        }
+      });
+    },
+
+    // exec Show Card Sponsored Block
+    execSponsoredBlock: function (block) {
+      block.each(function (index, element) {
+        var sponsoredBlock = $(element).find('.sponsored');
+        if (sponsoredBlock.length) {
+          var fileId = sponsoredBlock.data('mpspath');
+          Drupal.behaviors.mpsSponsorShip.execShowCard(sponsoredBlock,  fileId);
+        }
+      });
     },
 
     attach: function (context, settings) {
 
       var body = $('body');
 
+      // styles Sponsored Block
+      var style = {
+        bleed: 'bleed',
+        dark: 'dark',
+        dark_stacked: 'dark-stacked',
+        dark_themed: 'dark-themed',
+        light: 'light',
+        smalldark: 'smalldark'
+      };
+
+
       // main menu
-      var nodePromo = $('header .full-episodes-list .node-usanetwork-promo');
-      nodePromo.each(function (index, element) {
-
-        var sponsoredBlock = $(element).find('.sponsored');
-
-        if(sponsoredBlock.length) {
-          var fileId =sponsoredBlock.data('mpspath'),
-              style = Drupal.behaviors.mpsSponsorship.styleName.light;
-
-          Drupal.behaviors.mpsSponsorship.insertLogo(mps._select(sponsoredBlock), style, fileId);
-        }
-      });
+      Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), style.light);
 
       // node-type-tv-show
-      if(body.hasClass('node-type-tv-show')) {
-
-        var aspotBlock = $('#main-slider .show-aspot'),
-            episodesListBlock = $('#main-slider .episodes-list');
-
-        aspotBlock.each(function (index, element) {
-
-          var sponsoredBlock = $(element).find('.sponsored');
-
-          if(sponsoredBlock.length) {
-
-            var fileId =sponsoredBlock.data('mpspath'),
-                style = Drupal.behaviors.mpsSponsorship.styleName.light;
-
-            Drupal.behaviors.mpsSponsorship.insertLogo(mps._select(sponsoredBlock), style, fileId);
-          }
-        });
-
-        episodesListBlock.each(function (index, element) {
-
-          var sponsoredBlock = $(element).find('.sponsored');
-
-          if(sponsoredBlock.length) {
-
-            var fileId =sponsoredBlock.data('mpspath'),
-                style = Drupal.behaviors.mpsSponsorship.styleName.dark;
-
-            Drupal.behaviors.mpsSponsorship.insertLogo(mps._select(sponsoredBlock), style, fileId);
-          }
-        });
-      };
+      if (body.hasClass('node-type-tv-show')) {
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .show-aspot'), style.light);
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .episodes-list'), style.dark);
+      }
 
       // page-videos
-      if(body.hasClass('page-videos')) {
-
-        var carouselBlock = $('.carousel-wrapper .carousel-block');
-
-        carouselBlock.each(function (index, element) {
-
-          var sponsoredBlock = $(element).find('.sponsored');
-
-          if(sponsoredBlock.length) {
-            var fileId =sponsoredBlock.data('mpspath'),
-                style = Drupal.behaviors.mpsSponsorship.styleName.dark_stacked;
-
-            Drupal.behaviors.mpsSponsorship.insertLogo(mps._select(sponsoredBlock), style, fileId);
-          }
-        });
-      };
+      if (body.hasClass('page-videos')) {
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.dark_stacked);
+      }
     }
   };
 }(jQuery));
-

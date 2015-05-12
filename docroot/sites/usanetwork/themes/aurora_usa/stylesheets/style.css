@@ -24016,6 +24016,11 @@ yx-axis
     font-size: 9px;
   }
 }
+.usanetwork-aspot .meta-wrap .sponsored {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 .usanetwork-aspot .social_meter {
   min-height: 78px;
   width: 205px;

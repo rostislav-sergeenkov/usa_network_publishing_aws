@@ -175,7 +175,6 @@ function _usanetwork_core_api_get_node_image_field_names() {
     'usanetwork_promo' => array(
       'main' => 'field_promo_regular_image',
       'regular' => 'field_promo_regular_image',
-      'wide' => 'field_promo_wide_image',
     ),
     // Quiz
     'quiz' => array(

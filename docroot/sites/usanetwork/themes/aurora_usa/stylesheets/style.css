@@ -15324,6 +15324,15 @@ footer h2 {
   max-width: 260px;
   text-transform: uppercase;
 }
+.show-title-block h1 a {
+  color: #ffffff;
+}
+.show-title-block h1 a:hover {
+  color: #ffffff;
+}
+.show-title-block h1 a:focus {
+  outline: none;
+}
 @media (min-width: 1901px) {
   .show-title-block h1 {
     font-size: 36px;

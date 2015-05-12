@@ -843,6 +843,16 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
     $banner_images['mobile'] = $banner_images['desktop'];
   }
 
+  $field_aspot_linked_content = _usanetwork_get_field_item('node', $aspot_node, 'field_aspot_linked_content' ,'target_id');
+  if ($field_aspot_linked_content) {
+    $file_liked = file_load($field_aspot_linked_content);
+    $field_sponsored = _usanetwork_get_field_item('file', $file_liked, 'field_sponsored', 'value');
+    if ($field_sponsored == '1') {
+      $sponsored = TRUE;
+      $file_id = '/file/' . $file_liked->fid;
+    }
+  }
+
   $theme_array = array(
     'show_url' => !empty($aspot_node->field_usa_aspot_link)
       ? url($aspot_node_wrapper->field_usa_aspot_link->url->value())
@@ -870,6 +880,8 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->social_meter)
       )
       : FALSE,
+    'sponsored' => isset($sponsored) ? $sponsored : FALSE,
+    'file_path' => isset($file_id) ? $file_id : FALSE,
   );
 
   if (!empty($aspot_node->field_aspot_tgi_title_prefix)) {

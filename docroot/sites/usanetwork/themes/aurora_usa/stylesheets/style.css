@@ -3531,7 +3531,7 @@ input[type="radio"], input[type="checkbox"] {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
-  width: 970px;
+  max-width: 970px;
 }
 
 .midbanner {
@@ -3553,7 +3553,7 @@ input[type="radio"], input[type="checkbox"] {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
-  width: 970px;
+  max-width: 970px;
 }
 
 .clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
@@ -24005,6 +24005,11 @@ yx-axis
     font-size: 9px;
   }
 }
+.usanetwork-aspot .meta-wrap .sponsored {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 .usanetwork-aspot .social_meter {
   min-height: 78px;
   width: 205px;
@@ -27163,7 +27168,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 #full-bleed-promo {
-  margin: 20px auto 0;
+  margin: 0 auto;
   position: relative;
   min-height: 250px;
   max-height: 500px;

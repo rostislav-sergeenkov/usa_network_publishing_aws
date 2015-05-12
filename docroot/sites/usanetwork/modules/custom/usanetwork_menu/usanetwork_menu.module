@@ -1089,7 +1089,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
     }
 
     //Sponsored MPS
-    if (isset($file->field_sponsored)) {
+    if (!empty($file->field_sponsored)) {
       $field_sponsored = $file_wrapper->field_sponsored->value();
       if ($field_sponsored == '1') {
         $sponsored = TRUE;

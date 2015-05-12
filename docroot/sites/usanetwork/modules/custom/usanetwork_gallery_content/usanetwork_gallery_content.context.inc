@@ -35,6 +35,12 @@ function usanetwork_gallery_content_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
+        'mps-topbanner' => array(
+          'module' => 'mps',
+          'delta' => 'topbanner',
+          'region' => 'leaderboard',
+          'weight' => '-10',
+        ),
         'usanetwork_media_gallery-usa_gallery_consumptionator_main' => array(
           'module' => 'usanetwork_media_gallery',
           'delta' => 'usa_gallery_consumptionator_main',

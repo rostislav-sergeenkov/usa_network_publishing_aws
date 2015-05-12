@@ -15,7 +15,7 @@
         <?php endif; ?>
       </div>
       <div class="block-character-info-header-right">
-        <div class="share"><?php print t('Share'); ?></div>
+        <div class="share"><?php print $sharebar ?></div>
         <?php if (!empty($social_icons)): ?>
           <div class="social-icons">
             <?php foreach ($social_icons as $social_icon): ?>
@@ -41,22 +41,25 @@
       <div class="description">
         <div class="tabs">
           <ul>
-            <li class="active" data-src="character-bio"><?php print t('Character bio'); ?></li>
-            <li data-src="actor-bio"><?php print t('Actor bio'); ?></li>
+            <li class="show-color show-border show-font active" data-tab="character-bio"><?php print t('Character bio'); ?></li>
+            <li class="show-color show-border show-font" data-tab="actor-bio"><?php print t('Actor bio'); ?></li>
           </ul>
         </div>
         <div class="description-items">
-          <div class="description-item active" data-src="character-bio">
+          <div class="description-item active" data-tab="character-bio">
             <?php if (!empty($description_character)): ?>
               <?php print $description_character; ?>
             <?php endif; ?>
           </div>
-          <div class="description-item" data-src="actor-bio">
+          <div class="description-item" data-tab="actor-bio">
             <?php if (!empty($description_actor)): ?>
               <?php print $description_actor; ?>
             <?php endif; ?>
           </div>
         </div>
+      </div>
+      <div class="node-wrapper advert">
+        <div class="advertisement"></div>
       </div>
     </div>
   </div>

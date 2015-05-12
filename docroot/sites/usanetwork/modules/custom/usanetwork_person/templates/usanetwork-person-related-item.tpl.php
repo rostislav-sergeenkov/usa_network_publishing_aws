@@ -37,7 +37,7 @@
           <div data-src="<?php print $image_mobile; ?>"></div>
         <?php endif; ?>
         <?php if (!empty($image_desktop)): ?>
-          <div data-media="(min-width: 641px)" data-src="<?php print $image_desktop; ?>"></div>
+          <div data-media="(min-width: 1281px)" data-src="<?php print $image_desktop; ?>"></div>
           <!--[if (IE 8) & (!IEMobile)]>
           <div data-src="<?php print $image_desktop; ?>"></div>
           <![endif]-->

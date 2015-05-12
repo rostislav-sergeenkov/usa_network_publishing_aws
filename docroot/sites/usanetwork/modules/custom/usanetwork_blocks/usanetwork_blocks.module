@@ -843,7 +843,7 @@ function _usanetwork_catchall_related_content() {
               'usanetwork_tv_show_nid' => $show->nid,
               'usanetwork_tv_show_page_context' => 'showpage',
             ), 'setting');
-            $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
+            $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
             return theme('usanetwork_tv_shows_related_items_container', array(
               'related_items_block' => $block_of_items,
               'load_more_link' => TRUE,

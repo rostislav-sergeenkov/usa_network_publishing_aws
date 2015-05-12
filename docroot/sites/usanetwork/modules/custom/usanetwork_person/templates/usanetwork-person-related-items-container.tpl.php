@@ -4,9 +4,9 @@
  * $load_more_link - boolean (flag that requires the "Load more" link)
  */
 ?>
-<div class="ajax-load-block show-latest-block show-border"<?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?><?php if (!empty($items_pre_page_limit)): print ' data-show-items-limit="' . $items_pre_page_limit . '"'; endif; ?>>
+<div class="ajax-load-block related-content-block show-border"<?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?><?php if (!empty($items_pre_page_limit)): print ' data-show-items-limit="' . $items_pre_page_limit . '"'; endif; ?>>
   <h2 class="section-title">
-    <span class="section-title-wrapper show-border secondary"><?php print t('The latest')?></span>
+    <span class="section-title-wrapper show-border secondary"><?php print t('Related content')?></span>
   </h2>
   <?php if (!empty($related_items_block)): ?>
     <?php print $related_items_block; ?>

@@ -6,7 +6,7 @@
  */
 ?>
 <?php if (!empty($ad)): ?>
-  <div class="midbanner"></div>
+  <div class="midbanner" id="advert-related-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
 <ul class="<?php print $is_even ? 'even' : 'odd'; ?>">
   <?php if (!empty($related_items)): ?>

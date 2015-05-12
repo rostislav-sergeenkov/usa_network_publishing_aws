@@ -436,7 +436,7 @@ function usanetwork_person_field_default_field_instances() {
           'gigya_sharebar_showcounts' => 'none',
           'gigya_sharebar_title' => '[node:title]',
         ),
-        'type' => 'gigya_sharebar_formatter_default',
+        'type' => 'hidden',
         'weight' => 46,
       ),
       'follow_social' => array(

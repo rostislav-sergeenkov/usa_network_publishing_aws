@@ -6,11 +6,9 @@
   <?php endif; ?>
   <div class="content-wrap">
     <div class="center">
-      <?php if (!empty($result)): ?>
-        <?php foreach ($results as $result): ?>
-          <?php print $result; ?>
-        <?php endforeach; ?>
-      <?php endif; ?>
+      <?php foreach ($results as $result): ?>
+        <?php print $result; ?>
+      <?php endforeach; ?>
     </div>
     <div class="sidebar">
       <?php if (!empty($sidebar)): ?>

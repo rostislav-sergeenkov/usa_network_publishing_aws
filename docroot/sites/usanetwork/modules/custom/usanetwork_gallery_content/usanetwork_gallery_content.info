@@ -102,6 +102,7 @@ features[variable][] = node_submitted_media_gallery
 features[variable][] = representative_image_field_node_media_gallery
 features_exclude[dependencies][usanetwork_gigya] = usanetwork_gigya
 features_exclude[dependencies][usanetwork_seo] = usanetwork_seo
+features_exclude[dependencies][mps] = mps
 features_exclude[features_overrides][flexslider_optionset.default.options|reverse] = flexslider_optionset.default.options|reverse
 features_exclude[features_overrides][flexslider_optionset.default.options|smoothHeight] = flexslider_optionset.default.options|smoothHeight
 features_exclude[features_overrides][flexslider_optionset.default.options|startAt] = flexslider_optionset.default.options|startAt

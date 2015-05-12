@@ -74,17 +74,9 @@
       counter = counter + 1;
     },
 
-    // consum-sidebar
-    consumSidebar: function () {
-      var selector = '.' + $('.consum-sidebar .advertisement').attr('class'),
-          nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.topbox;
-
-      Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-    },
-
     attach: function (context, settings) {
 
-      // init for node-type-catchall-page
+      // init mps for node-type-catchall-page
       if($('body').hasClass('node-type-catchall-page')) {
         if(settings.CatchallRefreshSettings) {
           var interval = settings.CatchallRefreshSettings.time * 1000;
@@ -92,10 +84,8 @@
           setInterval(function() {
             Drupal.behaviors.mpsAdvert.mpsRefreshAd(Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner);
           }, interval);
-
         }
       }
-
     }
   };
 }(jQuery));

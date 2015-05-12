@@ -46,7 +46,6 @@
         smalldark: 'smalldark'
       };
 
-
       // main menu
       Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), style.light);
 
@@ -59,6 +58,11 @@
       // page-videos
       if (body.hasClass('page-videos')) {
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.dark_stacked);
+      }
+
+      // page-file
+      if (body.hasClass('page-file')) {
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .nav-bar-tabs'), style.light);
       }
     }
   };

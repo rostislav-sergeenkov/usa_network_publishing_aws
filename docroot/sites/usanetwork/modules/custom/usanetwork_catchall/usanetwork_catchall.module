@@ -29,5 +29,12 @@ function usanetwork_catchall_preprocess_page(&$vars) {
   $node = menu_get_object();
   if ($node && $node->type == 'catchall_page') {
     $vars['title'] = '';
+
+    //Settings for MPS reloadable Ad
+    $field_automatic_refresh = _usanetwork_get_field_item('node', $node, 'field_automatic_refresh' ,'value');
+    if ($field_automatic_refresh && $field_automatic_refresh == '1') {
+      $field_refresh_time = _usanetwork_get_field_item('node', $node, 'field_refresh_time' ,'value');
+      drupal_add_js(array('CatchallRefreshSettings' => array('time' => ($field_refresh_time) ? $field_refresh_time : '')), 'setting');
+    }
   }
 }

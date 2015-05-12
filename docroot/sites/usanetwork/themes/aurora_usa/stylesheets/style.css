@@ -3450,7 +3450,7 @@ input[type="radio"], input[type="checkbox"] {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
-  width: 970px;
+  max-width: 970px;
 }
 
 .midbanner {
@@ -3472,7 +3472,7 @@ input[type="radio"], input[type="checkbox"] {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
-  width: 970px;
+  max-width: 970px;
 }
 
 .clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {

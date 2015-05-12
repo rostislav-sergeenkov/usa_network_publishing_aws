@@ -55,6 +55,9 @@
                 <?php print $social_meter; ?>
               </div>
             <?php endif; ?>
+          <?php if (!empty($sponsored)) : ?>
+              <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
+            <?php endif; ?>
           </div>
         </div>
       </div>

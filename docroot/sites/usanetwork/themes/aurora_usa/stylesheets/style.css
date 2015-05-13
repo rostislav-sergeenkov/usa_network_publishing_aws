@@ -7211,7 +7211,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+.consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+.node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+.page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+.node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+.node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
   right: 0;
   position: absolute;
   top: 0;
@@ -7219,21 +7224,41 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   margin-right: 16px;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
     width: 170px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
     position: static;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
     display: none;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3 {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3,
+.consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3,
+.node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3,
+.page-videos-live header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3,
+.node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3,
+.node-type-person header .tab-content .tab-item .tab-item-content .sharebar h3 {
   color: #e9eaeb;
   font-size: 20px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -7242,12 +7267,22 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   text-transform: uppercase;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3 {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar h3 {
     font-size: 16px;
     line-height: 1.3em;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.page-videos-live header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.node-type-person header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar {
   margin-bottom: 0;
 }
 

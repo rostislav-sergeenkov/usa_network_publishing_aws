@@ -307,7 +307,7 @@
 
         if (!$('.tab-item').hasClass('mCustomScrollbar') && window.innerWidth >= window_size_tablet_portrait && !$('body').hasClass('consumptionator-page')) {
           $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
-          $('.tab-item.active').slideUp(350).removeClass('active');
+          $('.tab-item.active').slideUp(100).removeClass('active');
         }
       });
     }

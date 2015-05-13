@@ -1012,6 +1012,7 @@ function _usanetwork_microsite_render_page_timeline($section_wrapper) {
     $theme_variables = array(
       'content' => $rendered_timeline_gallery,
     );
+    $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($node, $section_wrapper));
   }
   return $theme_variables;
 }
@@ -2159,6 +2160,38 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         drupal_add_html_head($tag_title, 'microsite_og:title');
       }
       break;
+    case 'timeline':
+      $head_title = t('Timeline | ' . $title . ' | USA Network');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, $section_type);
+      if (!empty($section_wrapper)) {
+        $section_object = $section_wrapper->value();
+        if (!empty($section_object->field_ms_timeline_gallery)) {
+          $timeline_node = $section_wrapper->field_ms_timeline_gallery->value();
+          $head_title = _usanetwork_microsite_set_title_and_description($timeline_node, $head_title);
+        }
+      }
+      if (!empty($timeline_node)) {
+        $cover_item = reset(field_get_items('node', $timeline_node, 'field_cover_item'));
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => file_create_url($cover_item['uri']),
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_galleries:image');
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $timeline_node->title,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_og:title');
+      }
+      break;
     case 'episodes':
       $head_title = t('Episode Guide | ' . $title . ' | USA Network');
       if(isset($args[4])) {
@@ -2623,6 +2656,18 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
                 $umbel = $node->title;
               }
+            }
+          }
+          break;
+        case 'timeline':
+          $omniture_prop3 = 'Timeline';
+          $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'timeline');
+          if (!empty($section_wrapper)) {
+            $section_object = $section_wrapper->value();
+            if (!empty($section_object->field_ms_timeline_gallery)) {
+              $node = $section_wrapper->field_ms_timeline_gallery->value();
+              $omniture_prop5 = t($entity->title . ' : Timeline : ' . $node->title);
+              $umbel = $node->title;
             }
           }
           break;

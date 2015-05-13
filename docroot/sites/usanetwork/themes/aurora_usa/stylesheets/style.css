@@ -10142,9 +10142,9 @@ footer .block-usanetwork-lyris form > div .form-item-email input {
   outline: none;
   padding: 0 20px;
   margin: 0;
-  height: inherit;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 26px;
+  line-height: 30px;
+  height: 30px;
   letter-spacing: 1px;
   text-transform: uppercase;
   overflow: hidden;

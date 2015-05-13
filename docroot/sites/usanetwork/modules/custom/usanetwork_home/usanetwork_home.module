@@ -381,6 +381,14 @@ function _usanetwork_home_featured_carousel() {
           $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
         }
 
+        if (!empty($promo_entity->field_sponsored)) {
+          $field_sponsored = _usanetwork_get_field_item($promo_reference['target_type'], $promo_entity, 'field_sponsored', 'value');
+          if ($field_sponsored == '1') {
+            $sponsored = TRUE;
+            $content_id = '/' . $promo_reference['target_type'] . '/' . $promo_reference['target_id'];
+          }
+        }
+
         $featured_vars = array(
           'show_code' => $show_class,
           'url' => $promo_link,
@@ -397,6 +405,8 @@ function _usanetwork_home_featured_carousel() {
           'description' => $promo_data['description'],
           'class' => $is_first ? 'featured-large' : 'featured-small',
           'is_first' => $is_first,
+          'sponsored' => isset($sponsored) ? $sponsored : FALSE,
+          'content_id' => isset($content_id) ? $content_id : FALSE,
         );
 
         $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
@@ -1249,6 +1259,13 @@ function _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper) {
     $tune_in_date = $show_node_wrapper->field_usa_tv_tune_in_date->value();
   }
 
+  //Sponsored MPS
+  if (isset($show_node->field_sponsored)) {
+    $field_sponsored = $show_node_wrapper->field_sponsored->value();
+    if ($field_sponsored == '1') {
+      $content_id = '/node/' . $show_node->nid;
+    }
+  }
 
   $theme_variables = array(
     'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
@@ -1260,6 +1277,7 @@ function _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper) {
     'top_info' => _usanetwork_home_shows_queue_get_top_info_content($show_node_wrapper),
     'central_info' => _usanetwork_home_shows_queue_get_central_info_content($show_node_wrapper),
     'bottom_info' => _usanetwork_home_shows_queue_get_bottom_info_content($show_node_wrapper),
+    'content_id' => isset($content_id) ? $content_id : FALSE,
   );
 
   $social_network_links = _usanetwork_home_get_show_social_icons($show_node_wrapper);

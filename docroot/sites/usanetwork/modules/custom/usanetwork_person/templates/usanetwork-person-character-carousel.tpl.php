@@ -17,7 +17,7 @@
 </div>
 <?php endif; ?>
 <?php if (!empty($items_h)): ?>
-<div class="episodes-list-slider horizontal" data-mode="horizontal">
+<div class="episodes-list-slider horizontal no-hidden-items" data-mode="horizontal">
   <ul class="slider-horizontal">
     <?php foreach ($items_h as $item_h): ?>
       <?php print $item_h; ?>

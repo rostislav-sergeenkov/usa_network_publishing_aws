@@ -49,6 +49,14 @@
 
           Drupal.behaviors.mpsAdvert.ajaxLoadBlock();
 
+          // node-type-tv-show
+          if ($('body').hasClass('node-type-tv-show')) {
+            var lastList = $('.ajax-load-block ul').last(),
+                listElem = lastList.find('.node-usanetwork-promo');
+
+            Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(listElem, 'dark');
+          }
+
           if (typeof window.picturefill != 'undefined') {
             window.picturefill();
           }

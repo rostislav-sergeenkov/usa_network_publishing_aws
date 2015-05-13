@@ -1,7 +1,6 @@
 (function ($) {
 
   var counter = 0;
-
   Drupal.behaviors.mpsAdvert = {
 
     mpsNameAD: {
@@ -46,9 +45,10 @@
 
       showcardad.attr('id', showcardadClass);
 
-      if (counter > 0) {
-        Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+      if(counter > 0){
+
       }
+      Drupal.behaviors.mpsAdvert.mpsMakeRequest();
       Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
       counter = counter + 1;
     },
@@ -60,17 +60,19 @@
     // ajax load blocks RELATED CONTENT
     ajaxLoadBlock: function () {
       var blockAd = $('.ajax-load-block .midbanner').last(),
-          blockAdClass = blockAd.attr('class'),
           blockAdId = blockAd.attr('id'),
           selector = '#' + blockAdId,
           nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.midbanner;
 
-      blockAd.attr('id', blockAdId);
-      if (counter > 0) {
-        Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+      if(blockAd.find('.mps-slot').length > 0) {
+        return false;
+      } else {
+        if (counter > 0) {
+          Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+        }
+        Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+        counter = counter + 1;
       }
-      Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-      counter = counter + 1;
     },
 
     attach: function (context, settings) {

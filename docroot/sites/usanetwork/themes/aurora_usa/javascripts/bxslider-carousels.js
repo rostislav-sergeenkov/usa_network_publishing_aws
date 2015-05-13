@@ -157,15 +157,15 @@
             });
             Drupal.behaviors.bxslider_carousels.harray = [];
 
-            $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
+            $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
             moreButton.css('display', 'block');
           }
         }, 0);
       });
 
       if (slideItem.length > number_of_items){
-        if (window.innerWidth < window_size_mobile_641 ){
-          $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
+        if (window.innerWidth < window_size_mobile_641){
+          $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
 
           // Show more-button
           moreButton.css('display', 'block');

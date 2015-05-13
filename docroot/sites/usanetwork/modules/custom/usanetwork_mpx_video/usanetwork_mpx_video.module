@@ -370,7 +370,7 @@ function usanetwork_mpx_video_show_nav() {
 
   // return empty block if the url is invalid or global video url
   if (!isset($arg[1]) || empty($arg[1]) || !isset($file->field_show[$lang][0]['target_id']) || empty($file->field_show[$lang][0]['target_id'])) {
-    return '';
+    //return '';
   }
 
   $query = db_select('file_managed', 'f');

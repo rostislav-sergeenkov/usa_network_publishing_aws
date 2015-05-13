@@ -65,12 +65,16 @@
           selector = '#' + blockAdId,
           nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.midbanner;
 
-      blockAd.attr('id', blockAdId);
-      if (counter > 0) {
-        Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+      if(blockAd.find('.mps-slot').length > 0) {
+        return false;
+      } else {
+        blockAd.attr('id', blockAdId);
+        if (counter > 0) {
+          Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+        }
+        Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+        counter = counter + 1;
       }
-      Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-      counter = counter + 1;
     },
 
     // consum-sidebar

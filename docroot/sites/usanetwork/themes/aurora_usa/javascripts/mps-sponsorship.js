@@ -41,11 +41,8 @@
       var style = {
         bleed: 'bleed',
         dark: 'dark',
-        dark_stacked: 'dark-stacked',
-        dark_themed: 'dark-themed',
         light: 'light',
-        light_stacked: 'light-stacked',
-        smalldark: 'smalldark'
+        light_stacked: 'light-stacked'
       };
 
       // main menu
@@ -60,6 +57,8 @@
       if (body.hasClass('node-type-tv-show')) {
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .show-aspot .slide'), style.dark);
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .episodes-list'), style.light);
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .node-usanetwork-promo'), style.dark);
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .node-usanetwork-promo'), style.dark);
       }
 
       // page-videos

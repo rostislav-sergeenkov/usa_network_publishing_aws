@@ -60,7 +60,6 @@
     // ajax load blocks RELATED CONTENT
     ajaxLoadBlock: function () {
       var blockAd = $('.ajax-load-block .midbanner').last(),
-          blockAdClass = blockAd.attr('class'),
           blockAdId = blockAd.attr('id'),
           selector = '#' + blockAdId,
           nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.midbanner;
@@ -68,7 +67,6 @@
       if(blockAd.find('.mps-slot').length > 0) {
         return false;
       } else {
-        blockAd.attr('id', blockAdId);
         if (counter > 0) {
           Drupal.behaviors.mpsAdvert.mpsMakeRequest();
         }

@@ -280,6 +280,22 @@ function usanetwork_home_image_default_styles() {
   return $styles;
 }
 
+function _usanetwork_home_featured_carousel_get_items_count() {
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  if ($homepage) {
+    $homepage_node = usanetwork_home_get_homepage_node($homepage);
+
+    $field_promo_items = field_get_items('node', $homepage_node, 'field_hp_ft_featured');
+
+    if (!empty($field_promo_items)) {
+      return count($field_promo_items);
+    }
+  }
+
+  return 0;
+}
+
 function _usanetwork_home_featured_carousel() {
   $content = array();
 

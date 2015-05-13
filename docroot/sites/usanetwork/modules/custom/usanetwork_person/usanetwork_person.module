@@ -657,7 +657,7 @@ function _usanetwork_person_characters_related_content_block() {
       'usanetwork_tv_show_page_context' => 'characters-consumptionator',
     ), 'setting');
 
-    $block_of_items = _usanetwork_person_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
+    $block_of_items = _usanetwork_person_render_related_content_items_block($related_content, 0, 1);
 
     return theme('usanetwork_person_related_items_container', array(
       'related_items_block' => $block_of_items,
@@ -716,14 +716,13 @@ function usanetwork_person_get_related_content_ajax($tv_show_node, $start_from =
     'overlimited' => FALSE,
     'rendered' => '',
   );
-
-  $is_even = (($start_from / (USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1)) % 2 == 0) ? FALSE : TRUE;
+  
   $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content($tv_show_node, $start_from, $limit);
 
   if (!empty($related_content)) {
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_person_render_related_content_items_block($related_content, TRUE, $is_even);
+    $response['rendered'] = _usanetwork_person_render_related_content_items_block($related_content, $start_from, $limit);
 
     return drupal_json_output($response);
   }
@@ -737,18 +736,15 @@ function usanetwork_person_get_related_content_ajax($tv_show_node, $start_from =
 /**
  * Renders block of 6 content items for consumptionator character page.
  */
-function _usanetwork_person_render_related_content_items_block($data, $ad, $is_even) {
+function _usanetwork_person_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
   if (!empty($data)) {
 
-    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
-    if (!empty($advert_block['content'])) {
-      $advert = render($advert_block['content']);
-    }
+    $ad_id = intval($start_from / $limit);
 
     $theme_variables = array(
       'related_items' => array(),
-      'is_even' => $is_even,
-      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
+      'ad' => $start_from == 0 ? FALSE : TRUE,
+      'ad_id' => $ad_id,
     );
 
     foreach ($data as $data_index => $data_item) {

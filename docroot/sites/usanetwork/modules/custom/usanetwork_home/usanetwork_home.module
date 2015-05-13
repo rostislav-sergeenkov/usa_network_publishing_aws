@@ -1478,7 +1478,7 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
       if (!empty($promo->field_call_to_action_type)) {
         $cta_type = $promo_wrapper->field_call_to_action_type->value();
 
-        $icon_type = $cta_type->name . '-icon';
+        $icon_type = str_replace(' ', '_', $cta_type->name) . '-icon';
       }
 
       $theme_variables = array(

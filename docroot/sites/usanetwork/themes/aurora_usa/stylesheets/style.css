@@ -81,56 +81,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 
 @font-face {
-  font-family: "Proxima N W01 Thin Reg";
-  src: url("../fonts/37994fca-b67e-41db-94b3-44077c62810a.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Thin Reg";
-  src: url("../fonts/da176885-bee9-49f7-88f0-d7ad9229ddd7.woff") format("woff"), url("../fonts/1861a7b7-09a5-4efd-b681-5214784ded39.ttf") format("truetype"), url("../fonts/610147b3-ad15-4b4b-a0fb-25244238ab3d.svg#610147b3-ad15-4b4b-a0fb-25244238ab3d") format("svg");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Reg";
-  src: url("../fonts/7e90123f-e4a7-4689-b41f-6bcfe331c00a.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Reg";
-  src: url("../fonts/e56ecb6d-da41-4bd9-982d-2d295bec9ab0.woff") format("woff"), url("../fonts/2aff4f81-3e97-4a83-9e6c-45e33c024796.ttf") format("truetype"), url("../fonts/ab9cd062-380f-4b53-b1a7-c0bec7402235.svg#ab9cd062-380f-4b53-b1a7-c0bec7402235") format("svg");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Smbd";
-  src: url("../fonts/87e4b4fc-cdf1-450a-8bed-dd818cba908d.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Smbd";
-  src: url("../fonts/70ae52ec-d89b-4c6a-9402-854ebe423c54.woff") format("woff"), url("../fonts/6a35571c-ea14-4dac-9ae1-0e7af0abeec8.ttf") format("truetype"), url("../fonts/ac2bdafc-d4a8-49d0-8a10-4e2f16bf7e3c.svg#ac2bdafc-d4a8-49d0-8a10-4e2f16bf7e3c") format("svg");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Bold";
-  src: url("../fonts/fbc6b03a-b3a1-427c-a884-053deca3a53c.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Bold";
-  src: url("../fonts/d999c07b-a049-4eb5-b8a6-4f36ae25e67e.woff") format("woff"), url("../fonts/4d4a75f5-d32a-4a09-8665-133afd39cc37.ttf") format("truetype"), url("../fonts/8152bc4e-d700-4c78-b6be-326893e6f53f.svg#8152bc4e-d700-4c78-b6be-326893e6f53f") format("svg");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Xbold";
-  src: url("../fonts/9fbce143-f5db-4c0b-9159-b1e666079f67.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Xbold";
-  src: url("../fonts/19dd5cf2-ac2d-48d5-901a-c432fd291ee2.woff") format("woff"), url("../fonts/22cfbfa4-f607-4751-92eb-6fa194353e57.ttf") format("truetype"), url("../fonts/3d6b6348-e05f-4123-b19a-3bfd02c7f361.svg#3d6b6348-e05f-4123-b19a-3bfd02c7f361") format("svg");
-}
-
-@font-face {
   font-family: "avalonextra_light";
   src: url("../fonts/Avalon-XLight-webfont.eot?iefix") format("eot");
 }
@@ -621,86 +571,86 @@ body, .usa-secondary-menu .shows > li.first > span, #block-views-usa-mpx-video-l
 .featured-asset .meta-head .episode-title,
 .featured-asset .meta-head .details,
 .featured-asset .meta-head .description, .lyris .form-item-email input {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
 }
 
 #utilities .show-time, body.blog .panel-display .panel-col-last .panel-pane h2.pane-title, body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
 }
 
 .block-usanetwork-video .view .node h4, .echo-item-footer, #showList {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 12px;
 }
 
 [id='person-content'] h4, .social-follow-block .item-content .title, .social-follow-block .item-content .title h2,
 .social-follow-block .item-content .title h4,
 .social-follow-block .item-content .title .field-name-field-usa-actor-name, .lyris .form-submit, .echo-item-data {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 14px;
 }
 
 #on-now-show-name, #on-now-episode {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 14px;
 }
 
 .caption-overlay .caption-fields-wrapper .caption {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 15px;
 }
 
 #usanetwork_social_show_comment .echo-item-data, .snipe-msg h3 {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 16px;
 }
 
 #jPanelMenu-menu .menu-title, .slide-panel-link, .usa-secondary-menu, #utilities h1#page-title, #utilities h2#page-title {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 18px;
 }
 
 .social-follow-block h2, #lyris h2, #usanetwork_social_chatter_title, .social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer,
 .social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer, #usanetwork_social_join .usanetwork_social_join_msg {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 24px;
 }
 
 #showList h3 {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 30px;
 }
 
 #block-views-usa-mpx-video-latest-live-video .view-mode-full .description h3.title {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 
 #on-now-panel .tab-wrapper, #utilities .breadcrumb .show-section, body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row .views-field-title, .node.node-post, body.blog .panel-display .panel-col-top h1 {
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 
 .echo-item-content .echo-item-tweetUserName a {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
 }
 
 #on-now-panel .show-info-wrapper .show-title, .node.node-post .field-name-post-date {
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
 
 .show-on-sync span {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
 
 #utilities .breadcrumb > a, .echo-item-authorName, .snipe-msg h2 {
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now-block, .node.node-post .field-name-title h2 {
-  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
 
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li:nth-child(2) .meta, .five-promo-item-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta, .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .videos-landing-page-container .video-items-blocks ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
@@ -2550,7 +2500,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
-.cast-and-crew-block .block-item .meta-wrapper {
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper {
   background: #656364;
   bottom: 0;
   height: 25.8%;
@@ -2559,17 +2509,17 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   z-index: 1;
 }
 @media (max-width: 768px) {
-  .cast-and-crew-block .block-item .meta-wrapper {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper {
     height: 28%;
   }
 }
-.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner {
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner {
   height: 100%;
   display: table;
   position: relative;
   width: 100%;
 }
-.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta {
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta {
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
@@ -2578,56 +2528,72 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 100%;
   color: #ffffff;
 }
-.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 27px;
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title, .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 18px;
   line-height: 1.3em;
   text-transform: uppercase;
 }
-@media (max-width: 1280px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
-    font-size: 18px;
+@media (min-width: 1901px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 27px;
   }
 }
 @media (max-width: 1024px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
     font-size: 14.4px;
   }
 }
 @media (max-width: 768px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
     font-size: 12px;
   }
 }
 @media (max-width: 640px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .title {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
     font-size: 17.9px;
   }
 }
-.cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+@media (max-width: 480px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 14px;
+  }
+}
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 12px;
   line-height: 1em;
 }
-@media (max-width: 1280px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
-    font-size: 12px;
+@media (min-width: 1901px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 18px;
   }
 }
 @media (max-width: 1024px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
     font-size: 9.6px;
   }
 }
 @media (max-width: 768px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
     font-size: 8px;
   }
 }
 @media (max-width: 640px) {
-  .cast-and-crew-block .block-item .meta-wrapper .meta-wrapper-inner .meta .additional {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
     font-size: 11.98px;
+  }
+}
+@media (max-width: 480px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 8px;
   }
 }
 
@@ -7552,7 +7518,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .caption-overlay .caption-fields-wrapper h3 {
   margin: 0 0 3px;
   line-height: 22.5px;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 .caption-overlay .caption-fields-wrapper .caption > div {
   display: inline;
@@ -7738,7 +7704,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 
 .view-usa-episodes.view-display-id-panel_pane_3, .view-id-usa_episodes.view-display-id-panel_pane_1 {
-  font-family: Proxima N W01 Reg;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: 1;
   font-size: 20px;
@@ -9307,7 +9273,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   padding-bottom: 10px;
   margin: 0;
   color: #3d3d3d;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 960px) {
   .block-usanetwork-tv-schedule .echo-item-data {
@@ -12983,14 +12949,76 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal {
-    display: none;
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li {
+    background: #343434;
+    height: 75px;
+    position: relative;
+    width: 100% !important;
   }
-}
-@media (max-width: 640px) {
-  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.vertical {
-    display: block;
-    height: 600px;
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li:nth-child(odd) {
+    background: #3e3e3e;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li:nth-child(even) {
+    background: #343434;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li > div {
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li a {
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .asset-img {
+    height: 50px;
+    left: 4%;
+    margin-top: -25px;
+    position: absolute;
+    top: 50%;
+    width: 75px;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .asset-img.active {
+    border-left: 7px solid;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .asset-img img {
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .asset-img ~ .meta-wrapper .meta {
+    padding-left: calc(8% + 75px);
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper {
+    background: none;
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta-wrapper-inner {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta {
+    color: #afafaf;
+    padding-left: 4%;
+    display: table-cell;
+    max-width: 100px;
+    vertical-align: middle;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta .caption {
+    font-size: 10px;
+    line-height: 13px;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta .title {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 7px;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta .additional {
+    font-family: "texgyrescholaitalic", Times, serif;
+    font-size: 10px;
+    line-height: 13px;
+    text-transform: uppercase;
   }
 }
 @media (max-width: 1280px) {
@@ -15357,6 +15385,10 @@ footer h2 {
     vertical-align: middle;
   }
 }
+.show-title-block a:visited, .show-title-block a:active {
+  color: #ffffff;
+  outline: none !important;
+}
 .show-title-block .schedule {
   display: table;
   float: right;
@@ -16398,11 +16430,12 @@ footer h2 {
 }
 
 .cast-and-crew-block {
+  background: #dcddde;
+  border-bottom: 2px solid;
   overflow: hidden;
   position: relative;
   width: 100%;
-  padding: 77px 59px 34px 66px;
-  box-sizing: border-box;
+  padding: 70px;
 }
 .cast-and-crew-block:after {
   clear: both;
@@ -16411,31 +16444,42 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .cast-and-crew-block {
-    padding: 49px 42px;
+    padding: 50px 42px;
   }
 }
 @media (max-width: 1024px) {
   .cast-and-crew-block {
-    padding: 32px 39px;
+    padding: 40px 32px;
   }
 }
 @media (max-width: 768px) {
   .cast-and-crew-block {
-    padding: 24px 28px;
+    padding: 30px 26px;
   }
 }
 @media (max-width: 640px) {
   .cast-and-crew-block {
-    padding: 47px 11px;
+    padding: 40px 12px;
   }
+}
+.cast-and-crew-block ul {
+  margin: 0 auto;
+  max-width: 1760px;
 }
 .cast-and-crew-block .block-item {
   float: left;
-  height: 20.3vw;
-  margin-bottom: 2.3vw;
+  height: 21.3vw;
+  margin-top: 2.3vw;
+  overflow: hidden;
   position: relative;
   width: 23.2%;
   margin-right: 2.3%;
+}
+@media (min-width: 1901px) {
+  .cast-and-crew-block .block-item {
+    height: 409px;
+    margin-top: 40px;
+  }
 }
 @media (max-width: 640px) {
   .cast-and-crew-block .block-item {
@@ -16448,13 +16492,19 @@ footer h2 {
 }
 @media (max-width: 480px) {
   .cast-and-crew-block .block-item {
-    width: 100%;
-    height: 85vw;
-    margin-right: 0;
+    height: 44.8vw;
   }
 }
 .cast-and-crew-block .block-item:nth-child(4n) {
   margin-right: 0;
+}
+@media (min-width: 641px) {
+  .cast-and-crew-block .block-item:nth-child(3), .cast-and-crew-block .block-item:nth-child(4) {
+    margin-top: 0;
+  }
+}
+.cast-and-crew-block .block-item:nth-child(1), .cast-and-crew-block .block-item:nth-child(2) {
+  margin-top: 0;
 }
 
 .series-recap-block {
@@ -18933,12 +18983,12 @@ body.person-page #main {
 .page-videos-live #content .block h2 {
   text-transform: uppercase;
   font-size: 20px;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 644px) {
   .page-videos-live #content .block h2 {
     font-size: 16px;
-    font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+    font-family: "avalonbold", Helvetica, Arial, sans-serif;
   }
 }
 .page-videos-live #content .block .schedule-link {
@@ -18948,16 +18998,16 @@ body.person-page #main {
   text-transform: none;
   color: #FFFFFF;
   font-size: 16px;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 644px) {
   .page-videos-live #content .block .schedule-link a {
     font-size: 12px;
-    font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+    font-family: "avalonbold", Helvetica, Arial, sans-serif;
   }
 }
 .page-videos-live .file.view-mode-full .meta-head h1.show-name {
-  font-family: "Proxima N W01 Smbd";
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 30px;
 }
 
@@ -18987,13 +19037,13 @@ body.person-page #main {
 }
 @media (min-width: 959px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h1.show-name {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 30px;
   }
 }
 @media (min-width: 1275px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h1.show-name {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 30px;
   }
 }
@@ -19005,13 +19055,13 @@ body.person-page #main {
 }
 @media (min-width: 959px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h2.tune-in {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 30px;
   }
 }
 @media (min-width: 1275px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h2.tune-in {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 30px;
   }
 }
@@ -19050,12 +19100,12 @@ body.person-page #main {
 }
 @media (min-width: 959px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .description .rating {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   }
 }
 @media (min-width: 1275px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .description .rating {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   }
 }
 
@@ -19237,7 +19287,7 @@ body.person-page #main {
 .block-usanetwork-mpx-video .view .file h4,
 #block-views-usa-mpx-video-fullepisodes-live .view .file h4 {
   margin: 0;
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 13px;
 }
 .block-usanetwork-mpx-video .view .file h4:after,
@@ -20826,7 +20876,7 @@ body.person-page #main {
   right: -2%;
 }
 .tveModal.loginModal .richContent h1 {
-  font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 30px;
   letter-spacing: 1px;
   margin: 0;
@@ -20834,7 +20884,7 @@ body.person-page #main {
   padding: 0;
 }
 .tveModal.loginModal .richContent h2 {
-  font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 22px;
   color: #4f4f4f;
   letter-spacing: 0.5px;
@@ -20858,7 +20908,7 @@ body.person-page #main {
   margin: 0 auto;
   padding: 2%;
   text-align: center;
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 25px;
 }
@@ -20901,13 +20951,13 @@ body.person-page #main {
 }
 .tveModal.loginModal .modalContent .articles .features-wrapper .feature-group h2 {
   margin: 0 0 3.6% 0;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 27px;
 }
 .tveModal.loginModal .modalContent .articles .features-wrapper .feature-group .feature-copy {
   margin: 0 0 10px 0;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 20px;
 }
@@ -20915,7 +20965,7 @@ body.person-page #main {
   margin-top: 0px !important;
 }
 .tveModal.loginModal .modalContent .buttonBar button {
-  font-family: Proxima N W01 Bold,Helvetica,Arial,sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px !important;
   font-weight: normal !important;
 }
@@ -20924,7 +20974,7 @@ body.person-page #main {
   padding: 5px 20px;
   border: 0;
   color: white;
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
@@ -20946,12 +20996,12 @@ body.person-page #main {
 }
 .tveModal.loginModal .modalHeader h1 {
   margin: 0;
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   line-height: 32px;
   letter-spacing: normal;
 }
 .tveModal.loginModal .modalHeader .moreDetails {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 12px;
   line-height: 26px;
 }
@@ -27238,7 +27288,7 @@ body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul l
   border-right: 2px solid #749eb6;
   color: #163969;
   text-transform: uppercase;
-  font-family: "avalonmedium_condensed", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium_condensed", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 25px;
 }
@@ -27297,7 +27347,7 @@ body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul l
 }
 body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li.active, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li.active-trail,
 body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li a.active {
-  font-family: "avalonbold_condensed", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold_condensed", Helvetica, Arial, sans-serif;
   line-height: 24px;
 }
 body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li .item-list {
@@ -27305,7 +27355,7 @@ body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul l
 }
 body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label {
   display: none;
-  font-family: "avalonmedium_condensed", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium_condensed", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 17px;
   position: relative;
@@ -27408,7 +27458,7 @@ body.blog .view-display-id-blog_content .views-row {
   background-color: #313131;
   color: #fff;
   padding: 15px;
-  font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 18px;
   letter-spacing: 3px;
 }

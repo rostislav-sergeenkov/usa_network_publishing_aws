@@ -152,9 +152,6 @@ function usanetwork_promo_ds_layout_settings_info() {
       'text_1_wide' => array(
         0 => 'field_promo_text_line_1_wide',
       ),
-      'media_wide' => array(
-        0 => 'field_promo_wide_image',
-      ),
       'media_normal' => array(
         0 => 'field_promo_regular_image',
       ),
@@ -178,7 +175,6 @@ function usanetwork_promo_ds_layout_settings_info() {
     'fields' => array(
       'field_promo_text_line_2_wide' => 'text_2_wide',
       'field_promo_text_line_1_wide' => 'text_1_wide',
-      'field_promo_wide_image' => 'media_wide',
       'field_promo_regular_image' => 'media_normal',
       'field_promo_text_line_1' => 'text_1',
       'field_promo_text_line_2' => 'text_2',

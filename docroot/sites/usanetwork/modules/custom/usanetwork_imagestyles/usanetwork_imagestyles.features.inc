@@ -635,7 +635,7 @@ function usanetwork_imagestyles_image_default_styles() {
     ),
     'label' => 'search_result',
   );
-  
+
     // Exported image style: search_result.
   $styles['100x56'] = array(
     'name' => '100x56',
@@ -713,8 +713,8 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 780,
-          'height' => 506,
+          'width' => 1920,
+          'height' => 1080,
         ),
         'weight' => 1,
       ),

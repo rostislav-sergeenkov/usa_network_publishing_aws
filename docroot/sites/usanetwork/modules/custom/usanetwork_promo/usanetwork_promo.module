@@ -251,10 +251,6 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
         $featutred_content['image_url'] = $field_promo_regular_image['uri'];
       }
 
-      if ($field_promo_wide_image_field = field_get_items('node', $node, 'field_promo_wide_image')) {
-        $field_promo_wide_image = reset($field_promo_wide_image_field);
-        $featutred_content['image_url_wide'] = $field_promo_wide_image['uri'];
-      }
 
       $featutred_content['cta_text'] = isset($featutred_content['more_link_text'])
           ? $featutred_content['more_link_text']

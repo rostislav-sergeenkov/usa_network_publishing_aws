@@ -193,7 +193,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       ),
     ),
     'usanetwork_microsite_gracelandcatchup_page_timeline' => array(
-      'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline_gallery',
+      'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline',
       'path' => $subtheme_path,
       'variables' => array(
         'description' => NULL,
@@ -237,6 +237,8 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
       $site_theme_path . '/js/microsite_characters_bxslider.js',
 */
       $module_path . '/js/jquery.bxslider.min.js',
+      $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
+      $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view
       $site_theme_path . '/js/ms_graceland_cu.js',
       $site_theme_path . '/js/ms_global.js',
       $site_theme_path . '/js/ms_videos.js',
@@ -261,5 +263,6 @@ function usanetwork_microsite_gracelandcatchup_get_theme_settings() {
     'short_name_for_full_episodes' => TRUE,
     'videos_all_videos_filter' => FALSE,
     'videos_season_filters' => TRUE,
+    'character_bios_remove_video_tags' => TRUE,
   );
 }

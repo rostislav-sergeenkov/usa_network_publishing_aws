@@ -37,6 +37,7 @@
 }
 
 /* begin authenticated video key icon display */
+/* DON'T DELETE!! CAN BE USED IN LATER MICROSITES
 #videos .block-usanetwork-mpx-video li[data-full-episode="true"] {
   position: relative;
   top: 0;
@@ -62,6 +63,7 @@
   right: 0;
   top: 0;
 }
+*/
 /* end authenticated video key icon display */
 
 .block-usanetwork-mpx-video .view .file h4, #block-views-usa-mpx-video-fullepisodes-live .view .file h4 {

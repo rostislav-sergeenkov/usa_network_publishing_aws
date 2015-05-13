@@ -1320,7 +1320,7 @@ function _usanetwork_tv_shows_aspot_block() {
               (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
           'description' => !empty($promo_data['description']) ? $promo_data['description'] :
               (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
-          'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => '300x250')) : '',
+          'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => 'full_episodes_633x356')) : '',
         );
 
         $theme_variables['episodes'][] = $episode_theme_variables;

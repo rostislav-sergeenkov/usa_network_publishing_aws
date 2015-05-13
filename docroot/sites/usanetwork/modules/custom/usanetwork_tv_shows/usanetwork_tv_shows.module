@@ -1710,6 +1710,11 @@ function _usanetwork_tv_shows_cache_set_related_show_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -2482,6 +2487,11 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     }
   }
 
+  if (!empty($data->sponsored)) {
+    $sponsored = TRUE;
+    $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
+  }
+
   if (!empty($data->raw_image_uri)) {
     $desktop_image = $is_big
       ? image_style_url('921x1003', $data->raw_image_uri)
@@ -2509,6 +2519,8 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,
     'media_icon' => $data->media_icon,
+    'sponsored' => isset($sponsored) ? $sponsored : FALSE,
+    'content_id' => isset($content_id) ? $content_id : FALSE,
   );
 
   return theme('usanetwork_tv_shows_related_item', $theme_variables);

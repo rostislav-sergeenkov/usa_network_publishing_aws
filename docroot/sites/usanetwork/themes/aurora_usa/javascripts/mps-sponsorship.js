@@ -26,17 +26,16 @@
     execSponsoredBlock: function (block) {
 
       // block - parent element ".slides li .node-usanetwork-promo"
-      var selector = block.find('.show-info-block-wrapper'),
-          selectorAd = block.find('.advert .showcardad'),
+      var showCarouselItem = '.show-carousel .slides li.active',
           fileId = block.data('mpspath');
 
-      Drupal.behaviors.mpsSponsorShip.execShowCard(selector, selectorAd,  fileId);
+      Drupal.behaviors.mpsSponsorShip.execShowCard(showCarouselItem  + ' .show-info-block-wrapper', showCarouselItem + ' .advert .showcardad',  fileId);
     },
 
     // remove exec Show Card Sponsored Block
     removeExecSponsoredBlock: function (block) {
-      block.find('.show-info-block-wrapper').css('background', 'none');
-      block.find('.advert .showcardad').empty();
+      //block.find('.show-info-block-wrapper').removeAttr('style');
+      //block.find('.advert .showcardad').empty();
     },
 
     attach: function (context, settings) {

@@ -1,7 +1,6 @@
 (function ($) {
 
   var counter = 0;
-
   Drupal.behaviors.mpsAdvert = {
 
     mpsNameAD: {
@@ -46,9 +45,10 @@
 
       showcardad.attr('id', showcardadClass);
 
-      if (counter > 0) {
-        Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+      if(counter > 0){
+
       }
+      Drupal.behaviors.mpsAdvert.mpsMakeRequest();
       Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
       counter = counter + 1;
     },

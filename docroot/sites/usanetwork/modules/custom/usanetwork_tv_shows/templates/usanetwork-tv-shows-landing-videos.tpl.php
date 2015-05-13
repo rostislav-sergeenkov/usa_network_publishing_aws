@@ -36,6 +36,9 @@
         </ul>
       <?php endif; ?>
     </div>
+    <div class="sorters-description">
+      <?php print $tabs_description; ?>
+    </div>
   </div>
   <div class="video-items-blocks show-border ajax-load-block"
   <?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?>

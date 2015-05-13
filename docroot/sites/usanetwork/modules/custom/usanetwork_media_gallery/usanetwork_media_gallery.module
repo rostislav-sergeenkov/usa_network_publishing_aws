@@ -367,7 +367,7 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type) {
   $query->condition('sh.field_show_target_id', $show_nid);
   $query->condition('n.status', 1);
   $query->condition('n.type', 'media_gallery');
-  $query->condition('gt.field_gallery_type_value', '0');
+  $query->condition('gt.field_gallery_type_value', $gallery_type);
 
   return $query->execute()->fetchAll();
 }

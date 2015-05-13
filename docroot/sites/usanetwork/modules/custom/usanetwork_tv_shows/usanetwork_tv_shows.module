@@ -2804,7 +2804,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
 
       $result[0] = $first_item;
     }
-    
+
     return $result;
   }
 
@@ -2899,11 +2899,11 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
     foreach ($result as $result_item) {
       $file = file_load($result_item->fid);
 
-      $theme_variables['items'][] = _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $current_item_index, FALSE);
+      $theme_variables['items'][] = _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $current_item_index, $theme_variables['is_even']);
       $current_item_index++;
     }
   }
-
+  
   return $render
     ? theme('usanetwork_tv_shows_landing_videos_items_block', $theme_variables)
     : $theme_variables;

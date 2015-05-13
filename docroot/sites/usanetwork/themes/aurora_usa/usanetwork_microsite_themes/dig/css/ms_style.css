@@ -771,7 +771,7 @@ you can use the generic selector below, but it's slower:
   left: 0;
   width: 190px;
   height: 53px;
-  background-color: #000;
+  background-color: transparent;
   z-index: 100;
 }
 #microsite #usa-logo-container a {

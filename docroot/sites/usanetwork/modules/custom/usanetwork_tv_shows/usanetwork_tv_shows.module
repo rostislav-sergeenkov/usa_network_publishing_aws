@@ -1320,7 +1320,7 @@ function _usanetwork_tv_shows_aspot_block() {
               (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
           'description' => !empty($promo_data['description']) ? $promo_data['description'] :
               (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
-          'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => '300x250')) : '',
+          'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => 'full_episodes_633x356')) : '',
         );
 
         $theme_variables['episodes'][] = $episode_theme_variables;
@@ -1472,6 +1472,7 @@ function _usanetwork_tv_shows_submenu() {
   $show_menus = array();
   $promo_menu_links = field_get_items('node', $show, 'field_show_links');
   if ($promo_menu_links) {
+    $requested_page = arg(2);
     foreach ($promo_menu_links as $key => $link) {
       $show_menu_item = entity_load('field_collection_item', array($link['value']));
       $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
@@ -1481,7 +1482,8 @@ function _usanetwork_tv_shows_submenu() {
           'show-color',
         );
         $menu_item_url = $show_menu_item_main_link[0]['url'];
-        if (!empty($menu_item_url) && strncasecmp($menu_item_url, request_path(), strlen(request_path())) == 0) {
+        $menu_link_page = arg(1, $menu_item_url);
+        if (!empty($requested_page) && !empty($menu_link_page) && strcasecmp($requested_page, $menu_link_page) === 0) {
           $classes[] = 'active';
         }
         $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $menu_item_url, array(
@@ -2621,6 +2623,7 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
     : t('Newest');
 
   $result = theme('usanetwork_tv_shows_landing_videos', array(
+    'block_title' => $video_filter_title_short,
     'video_filters' => $video_types,
     'video_filter_title' => $video_filter_title,
     'video_sorters' => $video_sorters,
@@ -2780,7 +2783,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
     }
 
     // Fill "Full episodes" tab
-    if (count($result) > 1) {
+    if (count($result) > 2) {
       $first_item = array(
         'tid' => 0,
         'name' => t('All videos'),
@@ -2811,8 +2814,8 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
 
       $result[0] = $first_item;
     }
-    elseif (count($result) == 1) {
-      $current_id = reset(array_keys($result));
+    elseif (count($result) == 2) {
+      $current_id = array_keys($result)[1];
 
       $first_item = $result[$current_id];
       unset($result[$current_id]);
@@ -2825,7 +2828,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
           'sort_order' => $sort_direction,
         ));
 
-      $result[0] = $first_item;
+      $result = array($first_item);
     }
 
     return $result;

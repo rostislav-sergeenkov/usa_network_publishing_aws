@@ -155,8 +155,9 @@
         }
       }
       .description {
-        width: 48%;
         float: right;
+        position: relative;
+        width: 48%;
         @include breakpoint($bp-1024-width) {
           width: 56%;
         }
@@ -169,6 +170,9 @@
         }
         @include breakpoint($bp-480-width) {
           padding: 10px 25px;
+        }
+        iframe {
+          width: 100%;
         }
         ul {
           word-spacing: -6px;

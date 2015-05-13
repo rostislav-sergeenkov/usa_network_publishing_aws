@@ -14,9 +14,9 @@
             'z-index': '9999',
             'width': '100%',
             'top': '0'
-          }
+          };
 
-      if ($('body').hasClass('usa-tv-show')) {
+      if ($('body').hasClass('node-type-tv-show')) {
         if ((scroll_top > (ad_h + navbar_h + 20)) && ($(window).width() > 768)) {
           $header_submenu.css(styles);
           $ad.css('margin-bottom', navbar_h);
@@ -307,7 +307,7 @@
 
         if (!$('.tab-item').hasClass('mCustomScrollbar') && window.innerWidth >= window_size_tablet_portrait && !$('body').hasClass('consumptionator-page')) {
           $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
-          $('.tab-item.active').slideUp(350).removeClass('active');
+          $('.tab-item.active').slideUp(100).removeClass('active');
         }
       });
     }

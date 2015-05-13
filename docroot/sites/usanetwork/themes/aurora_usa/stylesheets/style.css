@@ -12938,8 +12938,9 @@ footer h2 {
   width: 300px;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
-  width: 48%;
   float: right;
+  position: relative;
+  width: 48%;
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
@@ -12961,6 +12962,9 @@ footer h2 {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
     padding: 10px 25px;
   }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .description iframe {
+  width: 100%;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul {
   word-spacing: -6px;

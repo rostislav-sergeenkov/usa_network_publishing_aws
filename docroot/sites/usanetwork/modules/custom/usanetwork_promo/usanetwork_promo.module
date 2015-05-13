@@ -154,7 +154,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
     if ($icon_type_field = field_get_items('node', $promo, 'field_call_to_action_type')) {
       $icon_type_value = reset($icon_type_field);
       $icon = taxonomy_term_load($icon_type_value['tid']);
-      $icon_type = $icon->name . '-icon';
+      $icon_type = str_replace(' ', '_', $icon->name) . '-icon';
     }
 
     if ($promo_call_to_action_text_field = field_get_items('node', $promo, 'field_promo_call_to_action_text')) {

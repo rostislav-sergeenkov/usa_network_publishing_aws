@@ -121,7 +121,7 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
     if (!empty($tid)) {
       $icon = taxonomy_term_load($tid);
 
-      return $icon->name . '-icon';
+      return str_replace(' ', '_', $icon->name) . '-icon';
     }
   }
 

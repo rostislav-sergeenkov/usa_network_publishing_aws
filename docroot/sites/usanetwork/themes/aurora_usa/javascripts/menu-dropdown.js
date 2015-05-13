@@ -14,9 +14,9 @@
             'z-index': '9999',
             'width': '100%',
             'top': '0'
-          }
+          };
 
-      if ($('body').hasClass('usa-tv-show')) {
+      if ($('body').hasClass('node-type-tv-show')) {
         if ((scroll_top > (ad_h + navbar_h + 20)) && ($(window).width() > 768)) {
           $header_submenu.css(styles);
           $ad.css('margin-bottom', navbar_h);

@@ -962,10 +962,10 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
       unset($result_item->created_ovts);
       if (empty($result_item->promo_title) || empty($result_item->promo_description)) {
         $own_promo_lines = _usanetwork_promo_node_get_promo_lines(node_load($result_item->nid));
-        $result_item->promo_title = !empty($result_item->promo_title) ? check_plain($result_item->promo_title)
-          : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : '');
-        $result_item->promo_description = !empty($result_item->promo_description) ? check_plain($result_item->promo_description)
-          : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : '');
+        $result_item->promo_title = !empty($result_item->promo_title) ? $result_item->promo_title
+          : (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
+        $result_item->promo_description = !empty($result_item->promo_description) ? $result_item->promo_description
+          : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
       }
     }
   }
@@ -1080,12 +1080,12 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
       unset($result_item->created_ovts);
       if (empty($result_item->promo_title) || empty($result_item->promo_description) || empty($result_item->promo_topic)) {
         $own_promo_lines = _usanetwork_promo_file_get_promo_lines(file_load($result_item->entity_id));
-        $result_item->promo_title = !empty($result_item->promo_title) ? check_plain($result_item->promo_title)
-          : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : '');
-        $result_item->promo_description = !empty($result_item->promo_description) ? check_plain($result_item->promo_description)
-          : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : '');
-        $result_item->promo_topic = !empty($result_item->promo_topic) ? check_plain($result_item->promo_topic)
-          : (!empty($own_promo_lines['topic']) ? check_plain($own_promo_lines['topic']) : '');
+        $result_item->promo_title = !empty($result_item->promo_title) ? $result_item->promo_title
+          : (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
+        $result_item->promo_description = !empty($result_item->promo_description) ? $result_item->promo_description
+          : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
+        $result_item->promo_topic = !empty($result_item->promo_topic) ? $result_item->promo_topic
+          : (!empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '');
       }
     }
   }

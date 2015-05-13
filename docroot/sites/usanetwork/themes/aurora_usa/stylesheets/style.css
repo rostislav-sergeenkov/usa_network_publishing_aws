@@ -10098,8 +10098,13 @@ footer .block-usanetwork-lyris form > div {
   font-size: 14px;
   letter-spacing: 1px;
   line-height: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   text-transform: uppercase;
   text-align: center;
+  vertical-align: top;
 }
 footer .block-usanetwork-lyris form > div .placeholder {
   font-style: normal;
@@ -10122,6 +10127,7 @@ footer .block-usanetwork-lyris form > div label {
 }
 footer .block-usanetwork-lyris form > div .form-item-email {
   display: inline-block;
+  vertical-align: top;
   padding-right: 35px;
   margin: 0;
 }
@@ -10178,11 +10184,13 @@ footer .block-usanetwork-lyris form > div .form-item-email input:-ms-input-place
 }
 footer .block-usanetwork-lyris form > div .form-submit-wrapper {
   display: inline-block;
+  vertical-align: top;
   position: relative;
 }
 footer .block-usanetwork-lyris form > div .form-submit-wrapper input {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 30px;
+  height: 30px;
   letter-spacing: 1px;
   color: white;
   border: 0;

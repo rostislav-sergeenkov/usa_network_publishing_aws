@@ -20,8 +20,13 @@ footer {
         font-size: 14px;
         letter-spacing: 1px;
         line-height: 30px;
+        height: 30px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
         text-transform: uppercase;
         text-align: center;
+        vertical-align: top;
         .placeholder {
           font-style: normal;
         }
@@ -39,6 +44,7 @@ footer {
         }
         .form-item-email {
           display: inline-block;
+          vertical-align: top;
           padding-right: 35px;
           margin: 0;
           @include breakpoint($bp-1024-width) {
@@ -76,10 +82,12 @@ footer {
         }
          .form-submit-wrapper {
            display: inline-block;
+           vertical-align: top;
            position: relative;
            input {
              font-family: $avalon-medium;
              line-height: 30px;
+             height: 30px;
              letter-spacing: 1px;
              color: $text-color;
              border: 0;

@@ -6,8 +6,9 @@
       mps.usa.insertLogo(mps._select(selector), style, fileId);
     },
 
-    execShowCard: function (selector, fileId) {
-      mps.usa.execShowCard('.showcard-open', '.showcard-open .ad-container', '/node/41');
+    execShowCard: function (selector, selectorAd, fileId) {
+      //mps.usa.execShowCard('.showcard-open', '.showcard-open .ad-container', '/node/41');
+      mps.usa.execShowCard(selector, selectorAd, fileId);
     },
 
     // init Sponsored Block for many elements
@@ -23,13 +24,18 @@
 
     // exec Show Card Sponsored Block
     execSponsoredBlock: function (block) {
-      block.each(function (index, element) {
-        var sponsoredBlock = $(element).find('.sponsored');
-        if (sponsoredBlock.length) {
-          var fileId = sponsoredBlock.data('mpspath');
-          Drupal.behaviors.mpsSponsorShip.execShowCard(sponsoredBlock,  fileId);
-        }
-      });
+
+      // block - parent element ".slides li .node-usanetwork-promo"
+      var showCarouselItem = '.show-carousel .slides li.active',
+          fileId = block.data('mpspath');
+
+      Drupal.behaviors.mpsSponsorShip.execShowCard(showCarouselItem  + ' .show-info-block-wrapper', showCarouselItem + ' .advert .showcardad',  fileId);
+    },
+
+    // remove exec Show Card Sponsored Block
+    removeExecSponsoredBlock: function (block) {
+      //block.find('.show-info-block-wrapper').removeAttr('style');
+      //block.find('.advert .showcardad').empty();
     },
 
     attach: function (context, settings) {
@@ -40,11 +46,8 @@
       var style = {
         bleed: 'bleed',
         dark: 'dark',
-        dark_stacked: 'dark-stacked',
-        dark_themed: 'dark-themed',
         light: 'light',
-        light_stacked: 'light-stacked',
-        smalldark: 'smalldark'
+        light_stacked: 'light-stacked'
       };
 
       // main menu
@@ -59,6 +62,8 @@
       if (body.hasClass('node-type-tv-show')) {
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .show-aspot .slide'), style.dark);
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .episodes-list'), style.light);
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .node-usanetwork-promo'), style.dark);
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .node-usanetwork-promo'), style.dark);
       }
 
       // page-videos

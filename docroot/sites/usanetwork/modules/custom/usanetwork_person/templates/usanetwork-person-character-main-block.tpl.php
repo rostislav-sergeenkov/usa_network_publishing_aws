@@ -52,13 +52,17 @@
         </div>
       </div>
       <div class="node-wrapper advert">
-        <div class="advertisement"></div>
+        <div class="advertisement">
+          <div class="topbox"></div>
+        </div>
       </div>
     </div>
   </div>
   <div class="consum-sidebar">
     <div class="node-wrapper advert">
-      <div class="advertisement"></div>
+      <div class="advertisement">
+        <div class="topbox"></div>
+      </div>
     </div>
   <?php if (!empty($rendered_carousel)): ?>
     <div class="items-block persons-block">

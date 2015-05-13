@@ -962,10 +962,10 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
       unset($result_item->created_ovts);
       if (empty($result_item->promo_title) || empty($result_item->promo_description)) {
         $own_promo_lines = _usanetwork_promo_node_get_promo_lines(node_load($result_item->nid));
-        $result_item->promo_title = !empty($result_item->promo_title) ? check_plain($result_item->promo_title)
-          : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : '');
-        $result_item->promo_description = !empty($result_item->promo_description) ? check_plain($result_item->promo_description)
-          : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : '');
+        $result_item->promo_title = !empty($result_item->promo_title) ? $result_item->promo_title
+          : (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
+        $result_item->promo_description = !empty($result_item->promo_description) ? $result_item->promo_description
+          : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
       }
     }
   }
@@ -1080,12 +1080,12 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
       unset($result_item->created_ovts);
       if (empty($result_item->promo_title) || empty($result_item->promo_description) || empty($result_item->promo_topic)) {
         $own_promo_lines = _usanetwork_promo_file_get_promo_lines(file_load($result_item->entity_id));
-        $result_item->promo_title = !empty($result_item->promo_title) ? check_plain($result_item->promo_title)
-          : (!empty($own_promo_lines['title']) ? check_plain($own_promo_lines['title']) : '');
-        $result_item->promo_description = !empty($result_item->promo_description) ? check_plain($result_item->promo_description)
-          : (!empty($own_promo_lines['description']) ? check_plain($own_promo_lines['description']) : '');
-        $result_item->promo_topic = !empty($result_item->promo_topic) ? check_plain($result_item->promo_topic)
-          : (!empty($own_promo_lines['topic']) ? check_plain($own_promo_lines['topic']) : '');
+        $result_item->promo_title = !empty($result_item->promo_title) ? $result_item->promo_title
+          : (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
+        $result_item->promo_description = !empty($result_item->promo_description) ? $result_item->promo_description
+          : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
+        $result_item->promo_topic = !empty($result_item->promo_topic) ? $result_item->promo_topic
+          : (!empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '');
       }
     }
   }
@@ -1320,7 +1320,7 @@ function _usanetwork_tv_shows_aspot_block() {
               (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
           'description' => !empty($promo_data['description']) ? $promo_data['description'] :
               (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
-          'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => '300x250')) : '',
+          'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => 'full_episodes_633x356')) : '',
         );
 
         $theme_variables['episodes'][] = $episode_theme_variables;
@@ -1472,6 +1472,7 @@ function _usanetwork_tv_shows_submenu() {
   $show_menus = array();
   $promo_menu_links = field_get_items('node', $show, 'field_show_links');
   if ($promo_menu_links) {
+    $requested_page = arg(2);
     foreach ($promo_menu_links as $key => $link) {
       $show_menu_item = entity_load('field_collection_item', array($link['value']));
       $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
@@ -1481,7 +1482,8 @@ function _usanetwork_tv_shows_submenu() {
           'show-color',
         );
         $menu_item_url = $show_menu_item_main_link[0]['url'];
-        if (!empty($menu_item_url) && strncasecmp($menu_item_url, request_path(), strlen(request_path())) == 0) {
+        $menu_link_page = arg(1, $menu_item_url);
+        if (!empty($requested_page) && !empty($menu_link_page) && strcasecmp($requested_page, $menu_link_page) === 0) {
           $classes[] = 'active';
         }
         $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $menu_item_url, array(

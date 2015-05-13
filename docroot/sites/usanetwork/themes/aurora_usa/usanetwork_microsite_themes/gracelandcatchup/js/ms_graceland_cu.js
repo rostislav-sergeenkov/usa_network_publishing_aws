@@ -95,10 +95,12 @@
             }, 200);
           }
 
+/*
 var videosObj = document.getElementById('videos'),
     box = videosObj.getBoundingClientRect();
 usa_debug('======== videos box -- top left: ' + box.top + ' ' + box.left + ', bottom right: ' + box.bottom + ' ' + box.right + '\nbox: ');
 usa_debug(box);
+*/
 
           // initial load of each ad as it comes into view
           scrollTimer = clearTimeout(scrollTimer);

@@ -1,6 +1,7 @@
 /**
  * Global js functions for microsite navigation
  */
+var initialPageLoad = 1;
 (function ($) {
   Drupal.behaviors.ms_global = {
 
@@ -58,6 +59,63 @@
     },
 
     // NAVIGATION
+    // waypointResponse
+    waypointResponse: function(scrollDirection, sectionId) {
+      var lastSection = $('.section:last').attr('id'),
+          firstSection = $('.section:first').attr('id'),
+          anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
+
+      if ((scrollDirection == 'up' && sectionId != lastSection) || (scrollDirection == 'down' && sectionId != firstSection)) {
+        Drupal.behaviors.ms_global.setOmnitureData(sectionId);
+        Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
+      }
+    },
+
+    // initializeWaypoints -- for triggering section scroll events
+    initializeWaypoints: function() {
+      // When scrolling down, send Omniture page call when top of next section hits bottom of sticky nav
+      // When scrolling up, send Omniture page call when bottom of previous section hits bottom of window
+      var waypoints = {};
+      waypoints['down'] = {};
+      waypoints['up'] = {};
+
+      $('.section').each(function(){
+        var sectionId = $(this).attr('id');
+
+        if (sectionId != 'site-nav') {
+usa_debug('========= initializing waypoints for section ' + sectionId);
+          var anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
+
+          // when scrolling down
+          waypoints['down'][sectionId] = new Waypoint({
+            element: document.getElementById(sectionId),
+            handler: function(direction) {
+              if (direction == 'down') {
+                usa_debug(sectionId + ' is ' + $('#site-nav').height() + 'px from top scrolling ' + direction);
+                Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
+              }
+            },
+            offset: function(){
+              return $('#site-nav').height();
+            }
+          })
+
+          // when scrolling up
+          waypoints['up'][sectionId] = new Waypoint({
+            element: document.getElementById(sectionId),
+            handler: function(direction) {
+              if (direction == 'up') {
+                usa_debug(sectionId + ' is at bottom when scrolling ' + direction);
+                Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
+              }
+            },
+            offset: 'bottom-in-view'
+          })
+        }
+      }); // each section
+    },
+
+
     // getScrollDirection
 //    scrollDirectionTimer: null,
     lastYScrollPosition: 0,
@@ -120,17 +178,12 @@
       s.prop3 = sectionTitle;
       s.prop4 = siteName + ' : ' + sectionTitle;
       s.prop5 = s.prop4;
-      if (anchor == 'about') {
-        pageName = sectionTitle + ' | ' + pageName;
-        s.pageName += ' : ' + sectionTitle;
-      }
-      if ((anchor == 'home') || (anchor == 'about')) {
-        pageName = 'Dig Deeper | ' + pageName;
-      }
       if (itemTitle != '') {
         pageName = itemTitle + ' | ' + pageName;
         s.pageName += ' : ' + itemTitle;
       }
+
+      // set section-specific overrides
       switch (anchor) {
         case 'videos':
           s.prop3 = 'Video';
@@ -139,6 +192,37 @@
           s.prop5 = siteName + ' : Video : ' + itemTitle;
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Video | ' + pageName;
+          break;
+        case 'timeline':
+          s.prop3 = 'Gallery';
+          s.prop4 = siteName + ' : Gallery'; // This is intentional per Loretta!
+          if (itemTitle == '') itemTitle = $('#microsite #timeline .timeline-items .timeline-item.active .timeline-item-details > h2').text();
+          s.prop5 = siteName + ' : Timeline SlideShow : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Gallery | ' + pageName;
+          break;
+        case 'quizzes':
+          s.prop3 = 'Quiz';
+          s.prop4 = siteName + ' : Quiz';
+          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h1').text();
+          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h3.quiz-title').text();
+          s.prop5 = siteName + ' : Quiz : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Quiz | ' + pageName;
+          break;
+        case 'characters':
+          s.prop3 = 'Bio';
+          s.prop4 = 'Profile Page'; // This is intentional per Loretta!
+          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
+          s.prop5 = (itemTitle != '') ? siteName + ' : Bio : ' + itemTitle : siteName + ' : Bio';
+          s.pageName = s.prop5;
+          pageName = (itemTitle != '') ? itemTitle + ' | Bio | ' + pageName : 'Bio | ' + pageName;
+          break;
+/* DON'T DELETE THE FOLLOWING, BECAUSE IT CAN BE USED IN FUTURE MICROSITES
+        case 'about':
+          pageName = sectionTitle + ' | ' + pageName;
+          s.pageName += ' : ' + sectionTitle;
           break;
         case 'galleries':
           var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
@@ -153,15 +237,6 @@
           s.pageName = s.prop5 + ' : Photo ' + currentSlide;
           pageName = itemTitle + ' | Gallery | ' + pageName;
           break;
-        case 'characters':
-          s.prop3 = 'Bio';
-          s.prop4 = 'Profile Page'; // This is intentional per Loretta!
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
-          s.prop5 = siteName + ' : Bio : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Bio | ' + pageName;
-          break;
         case 'episodes':
           s.prop3 = 'Episode Guide';
           s.prop4 = siteName + ' : Episode Guide';
@@ -171,15 +246,7 @@
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Episode Guide | ' + pageName;
           break;
-        case 'quizzes':
-          s.prop3 = 'Quiz';
-          s.prop4 = siteName + ' : Quiz';
-          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h3.quiz-title').text();
-          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane > h1.quiz-title').text();
-          s.prop5 = siteName + ' : Quiz : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Quiz | ' + pageName;
-          break;
+*/
       }
       $('title').text(pageName);
 
@@ -399,23 +466,30 @@
         }
       }
 
-
+      self.initializeWaypoints();
+/*
       var inview = new Waypoint.Inview({
-        element: $('#videos'), //[0],
+        element: $('#timeline'), //[0],
         enter: function(direction) {
-          usa_debug('Enter triggered with direction ' + direction)
+          usa_debug('Enter triggered with direction ' + direction);
+          if (direction == 'up') {
+
+          }
+          else {
+
+          }
         },
         entered: function(direction) {
-          usa_debug('Entered triggered with direction ' + direction)
+//          usa_debug('Entered triggered with direction ' + direction)
         },
         exit: function(direction) {
           usa_debug('Exit triggered with direction ' + direction)
         },
         exited: function(direction) {
-          usa_debug('Exited triggered with direction ' + direction)
+//          usa_debug('Exited triggered with direction ' + direction)
         }
       })
-
+*/
 
       // initialize clicks in microsite menu
       $('#microsite li.internal a').on('click', function(e){
@@ -455,6 +529,24 @@
         // Turn off the popstate/hashchange tve-core.js event listeners
         $(window).off('popstate');
         $(window).off('hashchange');
+
+        // Turn on browser history functionality -- for example, browser back button activity
+        // popped variable is used to detect initial (useless) popstate.
+        // If history.state exists, assume browser isn't going to fire initial popstate.
+        var popped = ('state' in window.history && window.history.state !== null),
+            initialURL = location.href;
+
+        $(window).on('popstate');
+        $(window).bind('popstate', function(event) {
+          // Ignore inital popstate that some browsers fire on page load
+          var initialPop = !popped && location.href == initialURL
+          popped = true;
+
+          if (initialPop) return;
+
+          usa_debug('============= onpopstate activated! new state: ');
+          usa_debug(history.state);
+        });
       });
 
       // set hover state for hamburger menu on mobile devices

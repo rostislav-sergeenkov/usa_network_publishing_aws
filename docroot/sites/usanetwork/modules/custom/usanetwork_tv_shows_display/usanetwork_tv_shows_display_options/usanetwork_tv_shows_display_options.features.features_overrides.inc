@@ -49,16 +49,6 @@ function usanetwork_tv_shows_display_options_features_override_default_overrides
     'type' => 'text_default',
     'weight' => 3,
   );
-  $overrides["field_instance.node-usanetwork_promo-field_promo_wide_image.display|promo_teaser_large"] = array(
-    'label' => 'hidden',
-    'module' => 'image',
-    'settings' => array(
-      'image_link' => '',
-      'image_style' => '615x250',
-    ),
-    'type' => 'image',
-    'weight' => 0,
-  );
   $overrides["field_instance.node-usanetwork_promo-field_show.display|promo_teaser_large"] = array(
     'label' => 'above',
     'settings' => array(),

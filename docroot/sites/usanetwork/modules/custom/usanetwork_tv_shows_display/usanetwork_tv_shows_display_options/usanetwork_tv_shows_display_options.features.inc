@@ -67,18 +67,6 @@ function usanetwork_tv_shows_display_options_field_default_field_instances_alter
       'weight' => 3,
     ); /* WAS: '' */
   }
-  if (isset($data['node-usanetwork_promo-field_promo_wide_image'])) {
-    $data['node-usanetwork_promo-field_promo_wide_image']['display']['promo_teaser_large'] = array(
-      'label' => 'hidden',
-      'module' => 'image',
-      'settings' => array(
-        'image_link' => '',
-        'image_style' => '615x250',
-      ),
-      'type' => 'image',
-      'weight' => 0,
-    ); /* WAS: '' */
-  }
   if (isset($data['node-usanetwork_promo-field_show'])) {
     $data['node-usanetwork_promo-field_show']['display']['promo_teaser_large'] = array(
       'label' => 'above',

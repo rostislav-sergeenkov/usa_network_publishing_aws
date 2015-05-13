@@ -2623,6 +2623,7 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
     : t('Newest');
 
   $result = theme('usanetwork_tv_shows_landing_videos', array(
+    'block_title' => $video_filter_title_short,
     'video_filters' => $video_types,
     'video_filter_title' => $video_filter_title,
     'video_sorters' => $video_sorters,
@@ -2782,7 +2783,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
     }
 
     // Fill "Full episodes" tab
-    if (count($result) > 1) {
+    if (count($result) > 2) {
       $first_item = array(
         'tid' => 0,
         'name' => t('All videos'),
@@ -2813,8 +2814,8 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
 
       $result[0] = $first_item;
     }
-    elseif (count($result) == 1) {
-      $current_id = reset(array_keys($result));
+    elseif (count($result) == 2) {
+      $current_id = array_keys($result)[1];
 
       $first_item = $result[$current_id];
       unset($result[$current_id]);
@@ -2827,7 +2828,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
           'sort_order' => $sort_direction,
         ));
 
-      $result[0] = $first_item;
+      $result = array($first_item);
     }
 
     return $result;

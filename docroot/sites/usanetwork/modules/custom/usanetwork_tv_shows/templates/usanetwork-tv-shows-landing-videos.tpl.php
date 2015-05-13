@@ -5,7 +5,7 @@
 ?>
 <div class="videos-landing-page-container">
   <h2 class="section-title">
-    <span class="section-title-wrapper show-border secondary"><?php print t('All videos'); ?></span>
+    <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All videos'); ?></span>
   </h2>
   <div class="upper-menu">
     <div class="all-items-filter item-filter">

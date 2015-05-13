@@ -246,7 +246,8 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
       $site_theme_path . '/js/ms_quizzes.js',
       $site_theme_path . '/js/date.js',
       $site_theme_path . '/js/counter.rf.js',
-      $module_path . '/js/usanetwork_video_endcard.js',
+      $site_theme_path . '/js/ms_video_endcard.js',
+      //$module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );

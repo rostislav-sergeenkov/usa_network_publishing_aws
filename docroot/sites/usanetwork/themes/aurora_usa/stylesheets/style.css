@@ -16197,6 +16197,11 @@ footer h2 {
 .videos-landing-page-container .upper-menu .item-filter.sorter-items.open .filter-menu {
   display: block;
 }
+.videos-landing-page-container .upper-menu .sorters-description {
+  width: 100%;
+  float: left;
+  margin-top: 1.5em;
+}
 .videos-landing-page-container .video-items-blocks {
   border-bottom: 2px solid;
   margin-bottom: 100px;

@@ -763,6 +763,9 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
 
   $output = '';
   $query_params = drupal_get_query_parameters();
+  $orginal_tz = date_default_timezone_get();
+  date_default_timezone_set('America/New_York');
+  $et_time = floatval(date('U'));
   $filter_day = !empty($query_params['sdate']) ? check_plain($query_params['sdate']) : NULL;
   $time_stamp = (!empty($filter_day) && empty($filter_show_nid)) ? $filter_day : time();
   $sday = date('d', $time_stamp);
@@ -771,9 +774,10 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
 
   $string_date = $syear . '_' . $smonth . '_' . $sday;
 
-  $tv_schedule = usanetwork_tv_schedule_fetch_schedule($string_date);
+  $tv_schedule = usanetwork_tv_schedule_fetch_old_schedule($string_date);
 
   if (empty($tv_schedule)) {
+    date_default_timezone_set($orginal_tz);
     drupal_not_found();
     return;
   }
@@ -781,25 +785,65 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
   $rows = array();
 
   foreach ($tv_schedule as $item) {
-    $show_node = _usanetwork_tv_schedule_get_show_node_by_sch_item($item);
+    $show_node = new stdClass();
+
+    $classes = array();
+    $start_time = (array) $item->StartTime;
+    $end_time = (array) $item->EndTime;
+    $program = (array) $item->ProgramName;
+    $episode = (array) $item->TitleName;
+    $rating = (array) $item->Rating;
+    $cur_date = (array) $item->ScheduleDate;
+    $cal_date = (array) $item->CalendarScheduleDate;
+    $day_part = (array) $item->Daypart;
+    $audio_desc = (array) $item->AudioDesc;
+
+    if ($audio_desc[0] == 'N') {
+      continue;
+    }
+
+    $show_time = strtotime($cal_date[0] .' '. $end_time[0]);
+    $classes[] = ($et_time >= $show_time) ? 'off-air' : 'on-air';
+    $classes[] = strtolower($day_part[0]);
+
+    $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
+    $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
+    $episode_suffix = trim(check_plain($episode[0])) != '' ? '<span class="episode-suffix"> - ' . check_plain($episode[0]) . '</span>' : '';
+    $episode_show = '';
+    $episode_title = $episode[0];
+
+    if (empty($nid)) {
+      if (strtoupper($show) == 'USA MOVIE') {
+        $episode_show = l(check_plain($program[0]) . $episode_suffix, 'movies', array('html' => true));
+      }
+      elseif (strtoupper($show) == 'NHL PLAYOFFS') {
+        $episode_show = l(check_plain($program[0]) . $episode_suffix, 'http://www.usanetwork.com/nhl-2015-stanley-cup-playoffs', array('html' => true));
+      }
+      else {
+        $episode_show = check_plain($program[0]) . $episode_suffix;
+      }
+    } else {
+      $path = drupal_get_path_alias('node/'.$nid);
+      $episode_show = l(check_plain($program[0]) . $episode_suffix, $path, array('html' => true));
+    }
+
+    $episode_file = entity_load('file', FALSE, array(
+      'filename' => $episode_title,
+      'filemime' => 'video/mpx',
+    ));
+
+    if (!empty($episode_file)) {
+      $episode_file = reset($episode_file);
+      $episode_title = l($episode_title, 'file/' . $episode_file->fid);
+    }
 
     $row_variables = array(
-      'show_nid' => !empty($show_node)
-        ? $show_node->nid
-        : NULL,
-      'show_url' => !empty($show_node)
-        ? url('node/' . $show_node->nid)
-        : NULL,
-      'show_class' => !empty($show_node)
-        ? usanetwork_tv_shows_color_show_css_class($show_node)
-        : '',
-      'time' => date('g:i', $item->start_time),
-      'day_part' => date('A', $item->start_time),
-      'episode_show' => $item->show_title,
-      'episode_title' => $item->title,
-      'rating' => !empty($item->program_rating_type)
-        ? strtoupper($item->program_rating_type)
-        : strtoupper($item->rating_type)
+      'show_nid' => $nid,
+      'show_class' => usanetwork_tv_shows_color_show_css_class($nid),
+      'time' => preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]),
+      'episode_show' => $episode_show,
+      'episode_title' => $episode_title,
+      'rating' => $rating[0],
     );
 
     $rows[] = theme('usanetwork_tv_schedule_acc_table_row', $row_variables);
@@ -818,6 +862,8 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
 
     return theme('usanetwork_tv_schedule_acc_table', $theme_variables);
   }
+
+  date_default_timezone_set($orginal_tz);
 
   return $output;
 }
@@ -1194,6 +1240,41 @@ function usanetwork_tv_schedule_fetch_schedule($sdate = '', $days = 1) {
     $result = $cache->data;
   }
   return $result;
+}
+
+/**
+ * Fetch TV schedule from compass xml feed
+ */
+function usanetwork_tv_schedule_fetch_old_schedule($sdate='') {
+  $xml_feed = variable_get('usanetwork_tv_schedule_xml_feed', '');
+  if (empty($xml_feed) || empty($sdate)) {
+    return NULL;
+  }
+// replace the tokens in the Compass XML URL
+  $xml_feed = str_replace('YYYY_MM_DD', $sdate, $xml_feed);
+  $result = drupal_http_request($xml_feed);
+  if (!isset($result->headers['content-type']) || $result->headers['content-type'] != 'application/xml') {
+    return NULL;
+  }
+  $proxy = variable_get('pub_utilities_proxy', '');
+  if (!empty($proxy)) {
+    $default_context = stream_context_get_default(
+      array('http' =>
+        array(
+          'proxy' => $proxy,
+          'request_fulluri' => true,
+        ),
+      )
+    );
+    libxml_set_streams_context($default_context);
+  }
+  $tvs = simplexml_load_file($xml_feed);
+//$tvs = simplexml_load_file(drupal_get_path('module', 'usanetwork_tv_schedule') . '/test.xml','SimpleXMLElement',LIBXML_NOCDATA);
+  if (!isset($tvs->Schedules->Schedule->ScheduleItem) || empty($tvs->Schedules->Schedule->ScheduleItem)) {
+    return NULL;
+  } else {
+    return $tvs->Schedules->Schedule->ScheduleItem;
+  }
 }
 
 /*

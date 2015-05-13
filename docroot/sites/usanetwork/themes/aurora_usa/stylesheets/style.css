@@ -5560,24 +5560,24 @@ header .tab-item.active {
   border-top: 1px solid darkgrey;
   display: block;
 }
-header .tab-item.shows-tab > div {
+header .tab-item.shows-tab .panel-pane {
   float: left;
   position: relative;
 }
-header .tab-item.shows-tab > div h2 {
+header .tab-item.shows-tab .panel-pane h2 {
   color: #dcddde;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;
   text-transform: uppercase;
 }
-header .tab-item.shows-tab > div ul {
+header .tab-item.shows-tab .panel-pane ul {
   list-style: none;
   margin-top: 20px;
 }
-header .tab-item.shows-tab > div li {
+header .tab-item.shows-tab .panel-pane li {
   margin-bottom: 20px;
 }
-header .tab-item.shows-tab > div li a {
+header .tab-item.shows-tab .panel-pane li a {
   color: #dcddde;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
@@ -5586,14 +5586,14 @@ header .tab-item.shows-tab > div li a {
   text-transform: uppercase;
 }
 @media (min-width: 1281px) {
-  header .tab-item.shows-tab > div li a {
+  header .tab-item.shows-tab .panel-pane li a {
     font-size: 14px;
   }
 }
-header .tab-item.shows-tab > div li a span {
+header .tab-item.shows-tab .panel-pane li a span {
   color: #000000;
 }
-header .tab-item.shows-tab > div li a:hover {
+header .tab-item.shows-tab .panel-pane li a:hover {
   text-decoration: underline;
 }
 header .tab-item.shows-tab .originals-shows-menu {
@@ -15983,6 +15983,16 @@ footer h2 {
     text-align: center;
   }
 }
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.all-items-filter {
+    width: 47%;
+    min-width: inherit;
+    margin-right: 2%;
+  }
+  .videos-landing-page-container .upper-menu .item-filter.all-items-filter .filter-label {
+    width: 100%;
+  }
+}
 @media (max-width: 768px) {
   .videos-landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu {
     background: darkgrey;
@@ -16104,13 +16114,23 @@ footer h2 {
     margin-top: 15px;
   }
 }
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.sorter-items {
+    width: 47%;
+  }
+}
 @media (max-width: 320px) {
   .videos-landing-page-container .upper-menu .item-filter.sorter-items {
-    margin: 20px 10px 13px 0;
+    margin: 15px auto;
   }
 }
 .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-label {
   width: 160px;
+}
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-label {
+    width: 100%;
+  }
 }
 .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-menu {
   background: darkgrey;

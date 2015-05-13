@@ -709,7 +709,7 @@ header {
       display: block;
     }
     &.shows-tab {
-      > div {
+      .panel-pane {
         float: left;
         position: relative;
         h2 {

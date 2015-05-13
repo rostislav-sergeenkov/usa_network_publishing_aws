@@ -546,7 +546,6 @@ function usanetwork_home_preprocess_block(&$variables) {
   }
   if (isset($block->bid) && $block->bid == 'usanetwork_home-usanetwork_home_featured_promos') {
     $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-
     if ($homepage) {
       $homepage_node = usanetwork_home_get_homepage_node($homepage);
       $bg_field = field_get_items('node', $homepage_node, 'field_hp_promo_background');

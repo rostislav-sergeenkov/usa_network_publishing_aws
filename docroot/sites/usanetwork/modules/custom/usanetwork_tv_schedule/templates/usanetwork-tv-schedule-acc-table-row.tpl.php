@@ -6,11 +6,10 @@
 <li<?php if (!empty($link_class)): print ' class="' . $link_class . '"'; endif; ?>>
   <div class="schedule-item show-color-border<?php if (!empty($show_class)): print ' '. $show_class; endif; ?>">
     <div class="visible-block">
-      <?php if (!empty($time) && !empty($day_part)): ?>
+      <?php if (!empty($time)): ?>
         <div class="time-wrapper">
           <div class="time">
-            <span><?php print $time; ?></span>
-            <?php print $day_part; ?>
+            <?php print $time; ?>
           </div>
         </div>
       <?php endif; ?>

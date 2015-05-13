@@ -306,8 +306,8 @@
               margin: 0 0 20px 0;
               text-transform: uppercase;
               @include breakpoint($bp-1024-width) {
-                font-size: 18px;
-                line-height: 24px;
+                font-size: 16px;
+                line-height: 1.3em;
               }
             }
             .field-name-field-gigya-share-bar {

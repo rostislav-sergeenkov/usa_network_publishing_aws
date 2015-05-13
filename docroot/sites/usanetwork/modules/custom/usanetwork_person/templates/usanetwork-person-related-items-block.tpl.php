@@ -5,7 +5,7 @@
 ?>
 
   <?php if (!empty($ad)): ?>
-    <div class="latest-ad"><?php print $ad; ?></div>
+    <div class="midbanner" id="advert-related-<?php print $ad_id; ?>"></div>
   <?php endif; ?>
   <?php if (!empty($related_items)): ?>
     <ul>

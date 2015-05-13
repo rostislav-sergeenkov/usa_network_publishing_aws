@@ -14,7 +14,6 @@
     initSponsoredBlock: function (block, styleBlock) {
       block.each(function (index, element) {
         var sponsoredBlock = $(element).find('.sponsored');
-        console.info('ee');
         if (sponsoredBlock.length) {
           var fileId = sponsoredBlock.data('mpspath');
           Drupal.behaviors.mpsSponsorShip.insertLogo(mps._select(sponsoredBlock), styleBlock, fileId);

@@ -212,3 +212,79 @@
     }
   }
 }
+
+.field-type-gigya-sharebar {
+  .gig-button-container {
+    &.gig-button-container-facebook {
+      td {
+        > div {
+          &:before {
+            content: "\e602";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    td {
+      > div {
+        background-image: none !important;
+        display: block;
+        font-family: "ico-font";
+        font-size: 32px;
+        @include breakpoint ($bp-768-width) {
+          font-size: 26px;
+        }
+      }
+    }
+    &.gig-button-container-facebook {
+      td {
+        > div {
+          &:before {
+            content: "\e602";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    &.gig-button-container-twitter {
+      td {
+        > div {
+          &:before {
+            content: "\e603";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    &.gig-button-container-tumblr {
+      td {
+        > div {
+          &:before {
+            content: "\e604";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    &.gig-button-container-pinterest {
+      td {
+        > div {
+          &:before {
+            content: "\e605";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    &.gig-button-container-share {
+      td {
+        > div {
+          &:before {
+            content: "\e606";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+  }
+}

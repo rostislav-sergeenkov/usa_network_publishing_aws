@@ -1123,6 +1123,12 @@
       vertical-align: middle;
     }
   }
+  a {
+    &:visited, &:active {
+      color: #ffffff;
+      outline: none!important;
+    }
+  }
   .schedule {
     display: table;
     float: right;

@@ -1268,7 +1268,7 @@ input.echo-submit-text {
       > div:hover {
         width: 32px !important;
         height: 32px !important;
-        background-image: url('../images/social_chatter_icons.png') !important;
+        background-image: url('../images/social_chatter_icons.png');
         background-repeat: none;
         @include breakpoint($bp-home-narrowest) {
           width: 24px !important;

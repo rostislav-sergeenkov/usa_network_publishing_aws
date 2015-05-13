@@ -39,6 +39,9 @@
       }
       .block-character-info-header-left {
         float: left;
+        @include breakpoint ($bp-320-width) {
+          float: none;
+        }
         .full-name {
           font-family: $avalon-medium;
           font-size: 54px;
@@ -74,6 +77,9 @@
       }
       .block-character-info-header-right {
         float: right;
+        @include breakpoint ($bp-320-width) {
+          float: none;
+        }
         .share {
           font-family: $avalon-book;
           font-size: 26px;
@@ -84,7 +90,25 @@
           @include breakpoint($bp-768-width) {
             font-size: 15px;
           }
+          h3 {
+            font-family: $avalon-book;
+            font-size: 26px;
+            text-align: right;
+            line-height: 1em;
+            margin: 0 14px 15px 0;
+            @include breakpoint ($bp-768-width) {
+              font-size: 18px;
+            }
+            @include breakpoint ($bp-1024-width) {
+              font-size: 15px;
+            }
+            @include breakpoint ($bp-320-width) {
+              text-align: left;
+              line-height: 2em;
+            }
+          }
         }
+
       }
     }
     .block-character-info-content {
@@ -229,13 +253,79 @@
       .episodes-list-slider {
         &.horizontal {
           @include breakpoint($bp-640-width) {
-            display: none;
-          }
-        }
-        &.vertical {
-          @include breakpoint($bp-640-width) {
-            display: block;
-            height: 600px;
+            li {
+              background: $consum-carousel-even;
+              height: 75px;
+              position: relative;
+              width: 100%!important;
+              &:nth-child(odd) {
+                background: $consum-carousel-odd;
+              }
+              &:nth-child(even) {
+                background: $consum-carousel-even;
+              }
+              > div {
+                height: 100%;
+                width: 100%;
+              }
+              a {
+                height: 100%;
+                width: 100%;
+              }
+              .asset-img {
+                height: 50px;
+                left: 4%;
+                margin-top: -25px;
+                position: absolute;
+                top: 50%;
+                width: 75px;
+                &.active {
+                  border-left: 7px solid;
+                }
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+                & ~ .meta-wrapper {
+                  .meta {
+                    padding-left: calc(8% + 75px);
+                  }
+                }
+              }
+              .meta-wrapper {
+                background: none;
+                height: 100%;
+                width: 100%;
+                .meta-wrapper-inner {
+                  display: table;
+                  height: 100%;
+                  width: 100%;
+                }
+                .meta {
+                  color: $consum-carousel-text;
+                  padding-left: 4%;
+                  display: table-cell;
+                  max-width: 100px;
+                  vertical-align: middle;
+                  width: 100%;
+                  .caption {
+                    font-size: 10px;
+                    line-height: 13px;
+                  }
+                  .title {
+                    font-size: 15px;
+                    line-height: 18px;
+                    margin-bottom: 7px;
+                  }
+                  .additional {
+                    font-family: $tex-gyreschola-italic;
+                    font-size: 10px;
+                    line-height: 13px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+            }
           }
         }
       }

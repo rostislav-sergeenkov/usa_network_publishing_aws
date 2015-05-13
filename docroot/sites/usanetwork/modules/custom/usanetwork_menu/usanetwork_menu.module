@@ -1357,19 +1357,17 @@ function _usanetwork_menu_get_reminder_url($show_nid = NULL) {
   if (empty($show_nid)) {
     return NULL;
   }
-
   $node = node_load($show_nid);
-  $syndicated_field = field_get_items('node', $node, 'field_syndicated');
-
-  if (!empty($syndicated_field)) {
-    if ($syndicated_field[0]['value'] == 1) {
-      $url_alias_field = field_get_items('node', $node, 'field_pathauto_alias');
-
-      if (!empty($url_alias_field)) {
-        $alias = $url_alias_field[0]['value'];
-
-        return url('https://see.it/' . $alias);
-      }
+  $see_it_url = field_get_items('node', $node, 'field_see_it_url');
+  if (!empty($see_it_url)) {
+    $see_it_url = reset($see_it_url);
+    return url(check_plain($see_it_url['value']));
+  }
+  else {
+    $url_alias_field = field_get_items('node', $node, 'field_pathauto_alias');
+    if (!empty($url_alias_field)) {
+      $alias = $url_alias_field[0]['value'];
+      return url('https://see.it/' . $alias);
     }
   }
 

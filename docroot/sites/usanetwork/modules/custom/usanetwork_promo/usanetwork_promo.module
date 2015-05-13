@@ -323,10 +323,10 @@ function _usanetwork_promo_pull_node_promo_details($entity_object) {
     $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $promo_wrapper);
     if (empty($promo_fields['promo_title']) || empty($promo_fields['description'])) {
       $own_fields = _usanetwork_promo_node_get_promo_lines($entity_object);
-      $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? check_plain($promo_fields['promo_title']) :
-        (!empty($own_fields['title']) ? check_plain($own_fields['title']) : '');
-      $promo_fields['description'] = !empty($promo_fields['description']) ? check_plain($promo_fields['description']) :
-        (!empty($own_fields['description']) ? check_plain($own_fields['description']) : '');
+      $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
+        (!empty($own_fields['title']) ? $own_fields['title'] : '');
+      $promo_fields['description'] = !empty($promo_fields['description']) ? $promo_fields['description'] :
+        (!empty($own_fields['description']) ? $own_fields['description'] : '');
     }
     return $promo_fields;
   }
@@ -350,12 +350,12 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
       $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper);
       if (empty($promo_fields['promo_title']) || empty($promo_fields['description']) || empty($promo_fields['topic']) ) {
         $own_fields = _usanetwork_promo_file_get_promo_lines($entity_object);
-        $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? check_plain($promo_fields['promo_title']) :
-          (!empty($own_fields['title']) ? check_plain($own_fields['title']) : '');
-        $promo_fields['description'] = !empty($promo_fields['description']) ? check_plain($promo_fields['description']) :
-          (!empty($own_fields['description']) ? check_plain($own_fields['description']) : '');
-        $promo_fields['topic'] = !empty($promo_fields['topic']) ? check_plain($promo_fields['topic']) :
-          (!empty($own_fields['topic']) ? check_plain($own_fields['topic']) : '');
+        $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
+          (!empty($own_fields['title']) ? $own_fields['title'] : '');
+        $promo_fields['description'] = !empty($promo_fields['description']) ? $promo_fields['description'] :
+          (!empty($own_fields['description']) ? $own_fields['description'] : '');
+        $promo_fields['topic'] = !empty($promo_fields['topic']) ? $promo_fields['topic'] :
+          (!empty($own_fields['topic']) ? $own_fields['topic'] : '');
       }
       return $promo_fields;
     }

@@ -20,31 +20,34 @@
     </div>
   </div>
   <div class="items-block gallaries-thumbs-block">
-    <div class="items-block-title galleries-block-title">
-      <?php if (!empty($gallery_type)): ?>
+    <?php if (!empty($gallery_type)): ?>
+      <div class="items-block-title galleries-block-title">
         <h2><?php print $gallery_type; ?></h2>
-      <?php endif; ?>
-    </div>
+      </div>
+    <?php endif; ?>
     <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>
-
-      <div class="episodes-list-slider vertical" data-mode="vertical">
-        <ul class="slider-vertical">
-          <?php foreach ($slides_vertical as $slide_vertical): ?>
-            <li class="slide-item">
-              <?php print $slide_vertical; ?>
-            </li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
-      <div class="episodes-list-slider horizontal" data-mode="horizontal">
-        <ul class="slider-horizontal">
-          <?php foreach ($slides_horizontal as $slide_horizontal): ?>
-            <li class="slide-item">
-              <?php print $slide_horizontal; ?>
-            </li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
+      <?php if (!empty($slides_vertical)): ?>
+        <div class="episodes-list-slider vertical" data-mode="vertical">
+          <ul class="slider-vertical">
+            <?php foreach ($slides_vertical as $slide_vertical): ?>
+              <li class="slide-item">
+                <?php print $slide_vertical; ?>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
+      <?php if (!empty($slides_horizontal)): ?>
+        <div class="episodes-list-slider horizontal" data-mode="horizontal">
+          <ul class="slider-horizontal">
+            <?php foreach ($slides_horizontal as $slide_horizontal): ?>
+              <li class="slide-item">
+                <?php print $slide_horizontal; ?>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
   </div>
   <!-- change link to special photo page for show-->

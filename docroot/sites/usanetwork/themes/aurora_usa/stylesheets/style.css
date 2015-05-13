@@ -6938,6 +6938,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a span {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
     font-size: 40px;
@@ -9015,7 +9018,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 
 .show-latest-block {
-  background: #dcddde;
+  background: #e9eaeb;
   border-bottom: 2px solid;
   margin-bottom: 100px;
   padding: 40px 16px;
@@ -15980,6 +15983,16 @@ footer h2 {
     text-align: center;
   }
 }
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.all-items-filter {
+    width: 47%;
+    min-width: inherit;
+    margin-right: 2%;
+  }
+  .videos-landing-page-container .upper-menu .item-filter.all-items-filter .filter-label {
+    width: 100%;
+  }
+}
 @media (max-width: 768px) {
   .videos-landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu {
     background: darkgrey;
@@ -16101,13 +16114,23 @@ footer h2 {
     margin-top: 15px;
   }
 }
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.sorter-items {
+    width: 47%;
+  }
+}
 @media (max-width: 320px) {
   .videos-landing-page-container .upper-menu .item-filter.sorter-items {
-    margin: 20px 10px 13px 0;
+    margin: 15px auto;
   }
 }
 .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-label {
   width: 160px;
+}
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-label {
+    width: 100%;
+  }
 }
 .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-menu {
   background: darkgrey;

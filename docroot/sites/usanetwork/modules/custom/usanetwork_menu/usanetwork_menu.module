@@ -1036,7 +1036,10 @@ function _usanetwork_menu_consumptionator_block_person($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_usa_character_thumb)) {
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_usa_character_thumb)) {
       $image = $entity_wrapper->field_usa_character_thumb->value();
     }
     if (!empty($node->field_gigya_share_bar)) {
@@ -1048,10 +1051,11 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'person_name' => !empty($node->title) ? $node->title : '',
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : 'Character bio: <span>'.$node->title.'</span>',
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
-        'description' => !empty($node->body) ? $entity_wrapper->body->value->value() : '',
+        'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
+            (!empty($node->body) ? $entity_wrapper->body->value->value() : ''),
         'sharebar' => !empty($sharebar) ? render($sharebar) : '',
       ),
     );

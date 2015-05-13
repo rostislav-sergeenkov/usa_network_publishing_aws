@@ -5560,24 +5560,24 @@ header .tab-item.active {
   border-top: 1px solid darkgrey;
   display: block;
 }
-header .tab-item.shows-tab > div {
+header .tab-item.shows-tab .panel-pane {
   float: left;
   position: relative;
 }
-header .tab-item.shows-tab > div h2 {
+header .tab-item.shows-tab .panel-pane h2 {
   color: #dcddde;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;
   text-transform: uppercase;
 }
-header .tab-item.shows-tab > div ul {
+header .tab-item.shows-tab .panel-pane ul {
   list-style: none;
   margin-top: 20px;
 }
-header .tab-item.shows-tab > div li {
+header .tab-item.shows-tab .panel-pane li {
   margin-bottom: 20px;
 }
-header .tab-item.shows-tab > div li a {
+header .tab-item.shows-tab .panel-pane li a {
   color: #dcddde;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
@@ -5586,14 +5586,14 @@ header .tab-item.shows-tab > div li a {
   text-transform: uppercase;
 }
 @media (min-width: 1281px) {
-  header .tab-item.shows-tab > div li a {
+  header .tab-item.shows-tab .panel-pane li a {
     font-size: 14px;
   }
 }
-header .tab-item.shows-tab > div li a span {
+header .tab-item.shows-tab .panel-pane li a span {
   color: #000000;
 }
-header .tab-item.shows-tab > div li a:hover {
+header .tab-item.shows-tab .panel-pane li a:hover {
   text-decoration: underline;
 }
 header .tab-item.shows-tab .originals-shows-menu {

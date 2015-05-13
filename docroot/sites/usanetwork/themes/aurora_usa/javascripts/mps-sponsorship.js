@@ -25,12 +25,18 @@
     // exec Show Card Sponsored Block
     execSponsoredBlock: function (block) {
 
-      // block - parent element ".slides li"
+      // block - parent element ".slides li .node-usanetwork-promo"
       var selector = block.find('.show-info-block-wrapper'),
-          selectorAd = block.find('.advert'),
+          selectorAd = block.find('.advert .showcardad'),
           fileId = block.data('mpspath');
 
       Drupal.behaviors.mpsSponsorShip.execShowCard(selector, selectorAd,  fileId);
+    },
+
+    // remove exec Show Card Sponsored Block
+    removeExecSponsoredBlock: function (block) {
+      block.find('.show-info-block-wrapper').css('background', 'none');
+      block.find('.advert .showcardad').empty();
     },
 
     attach: function (context, settings) {

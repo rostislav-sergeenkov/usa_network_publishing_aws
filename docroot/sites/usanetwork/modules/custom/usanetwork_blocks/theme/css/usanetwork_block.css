@@ -55,7 +55,7 @@ css for Ie browser version detection
   color: white;
   display: inline-block;
   font: 200 1.25em/26px Proxima N W01 Bold, Helvetica, Arial, sans-serif;
-  font-family: Proxima N W01 Bold, Helvetica, Arial, sans-serif;
+  font-family: 'avalonbold', Helvetica, Arial, sans-serif;
   font-size: 24px;
   text-transform: uppercase;
 }
@@ -79,21 +79,21 @@ css for Ie browser version detection
 }
 #lackOfFeaturesModal h2 {
   color: #4F4F4F;
-  font-family: Proxima N W01 Smbd, Helvetica, Arial, sans-serif;
+  font-family: 'avalonmedium', Helvetica, Arial, sans-serif;
   font-size: 22px;
   margin-bottom: 3.6144%;
   text-transform: none;
 }
 #lackOfFeaturesModal p {
   color: #4F4F4F;
-  font-family: Proxima N W01 Smbd, Helvetica, Arial, sans-serif;
+  font-family: 'avalonmedium', Helvetica, Arial, sans-serif;
   font-size: 18px;
   margin-bottom: .5em;
   text-transform: none;
 }
 #lackOfFeaturesModalIE {
   color: #4F4F4F;
-  font-family: Proxima N W01 Smbd, Helvetica, Arial, sans-serif;
+  font-family: 'avalonmedium', Helvetica, Arial, sans-serif;
   font-size: 12px;
   margin-bottom: -15px;
   text-transform: none;
@@ -107,13 +107,13 @@ css for Ie browser version detection
   float: left;
   margin: 0 0 0 0;
   padding: 0;
-  font-family: Proxima N W01 Reg, Arial, sans-serif;
+  font-family: 'avalonregular', Arial, sans-serif;
   border: none;
   cursor: pointer;
 }
 #lackOfFeaturesModal-bullet-list3 {
   padding-left: 0px;
-  font-family: Proxima N W01 Reg,Arial,sans-serif;
+  font-family: 'avalonregular',Arial,sans-serif;
   border: none;
   cursor: pointer;
 }

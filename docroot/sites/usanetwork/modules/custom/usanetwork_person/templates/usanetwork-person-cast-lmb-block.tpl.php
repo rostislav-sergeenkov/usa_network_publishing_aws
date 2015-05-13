@@ -30,7 +30,11 @@
     </div>
   <?php endif; ?>
   <div class="node-wrapper advert">
-    <div class="advertisement"></div>
+    <div class="advertisement">
+      <?php if (!empty($advert_block)): ?>
+        <?php print $advert_block; ?>
+      <?php endif; ?>
+    </div>
   </div>
   <?php if (!empty($second_image)): ?>
     <div class="back-image">

@@ -2286,6 +2286,15 @@ function _usanetwork_tv_shows_render_best_of_block() {
         else {
           $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
         }
+
+        if (!empty($promo_entity->field_sponsored)) {
+          $field_sponsored = _usanetwork_get_field_item($promo_reference['target_type'], $promo_entity, 'field_sponsored', 'value');
+          if ($field_sponsored == '1') {
+            $sponsored = TRUE;
+            $content_id = '/' . $promo_reference['target_type'] . '/' . $promo_reference['target_id'];
+          }
+        }
+
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
         $promos[] = array(
@@ -2312,6 +2321,8 @@ function _usanetwork_tv_shows_render_best_of_block() {
           'more_link' => $promo_data['cta'],
           'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
           'is_first' => $is_first,
+          'sponsored' => isset($sponsored) ? $sponsored : FALSE,
+          'content_id' => isset($content_id) ? $content_id : FALSE,
         );
       }
       $best_of_title = field_get_items('node', $show_node, 'field_tvs_best_of_title');

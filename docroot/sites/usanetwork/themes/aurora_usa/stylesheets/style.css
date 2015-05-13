@@ -3527,6 +3527,42 @@ input[type="radio"], input[type="checkbox"] {
   content: "\e606";
 }
 
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+  content: "\e602";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container td > div {
+  background-image: none !important;
+  display: block;
+  font-family: "ico-font";
+  font-size: 32px;
+}
+@media (max-width: 768px) {
+  .field-type-gigya-sharebar .gig-button-container td > div {
+    font-size: 26px;
+  }
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+  content: "\e602";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+  content: "\e603";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+  content: "\e604";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+  content: "\e605";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+  content: "\e606";
+  color: #afafaf;
+}
+
 #topbanner {
   margin: 10px auto;
   overflow: hidden;
@@ -7238,8 +7274,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 1024px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 1.3em;
   }
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar {
@@ -12742,6 +12778,11 @@ footer h2 {
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left {
   float: left;
 }
+@media (max-width: 320px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left {
+    float: none;
+  }
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 54px;
@@ -12791,6 +12832,11 @@ footer h2 {
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
   float: right;
 }
+@media (max-width: 320px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
+    float: none;
+  }
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 26px;
@@ -12804,6 +12850,29 @@ footer h2 {
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
     font-size: 15px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  text-align: right;
+  line-height: 1em;
+  margin: 0 14px 15px 0;
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 320px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
+    text-align: left;
+    line-height: 2em;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content:after {
@@ -22330,7 +22399,7 @@ input.echo-submit-text {
 .field-type-gigya-sharebar .gig-button-container td > div:hover {
   width: 32px !important;
   height: 32px !important;
-  background-image: url("../images/social_chatter_icons.png") !important;
+  background-image: url("../images/social_chatter_icons.png");
   background-repeat: none;
 }
 @media (max-width: 709px) {

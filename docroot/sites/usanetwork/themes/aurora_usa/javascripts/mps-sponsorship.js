@@ -6,8 +6,9 @@
       mps.usa.insertLogo(mps._select(selector), style, fileId);
     },
 
-    execShowCard: function (selector, fileId) {
-      mps.usa.execShowCard('.showcard-open', '.showcard-open .ad-container', '/node/41');
+    execShowCard: function (selector, selectorAd, fileId) {
+      //mps.usa.execShowCard('.showcard-open', '.showcard-open .ad-container', '/node/41');
+      mps.usa.execShowCard(selector, selectorAd, fileId);
     },
 
     // init Sponsored Block for many elements
@@ -23,13 +24,13 @@
 
     // exec Show Card Sponsored Block
     execSponsoredBlock: function (block) {
-      block.each(function (index, element) {
-        var sponsoredBlock = $(element).find('.sponsored');
-        if (sponsoredBlock.length) {
-          var fileId = sponsoredBlock.data('mpspath');
-          Drupal.behaviors.mpsSponsorShip.execShowCard(sponsoredBlock,  fileId);
-        }
-      });
+
+      // block - parent element ".slides li"
+      var selector = block.find('.show-info-block-wrapper'),
+          selectorAd = block.find('.advert'),
+          fileId = block.data('mpspath');
+
+      Drupal.behaviors.mpsSponsorShip.execShowCard(selector, selectorAd,  fileId);
     },
 
     attach: function (context, settings) {

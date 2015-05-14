@@ -9,6 +9,7 @@ footer {
     border-top: 1px solid $gray-extra-light;
     @include breakpoint($bp-1024-width) {
       padding: 20px 0;
+      min-height: 100px;
     }
     form {
        > div {

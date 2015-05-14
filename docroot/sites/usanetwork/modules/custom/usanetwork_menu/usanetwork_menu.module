@@ -464,11 +464,11 @@ function _usanetwork_menu_all_shows_block($header = TRUE) {
     $new = '';
     if (!$header) {
       if ($row->flag_content_node_timestamp) {
-        $new = '<span>' . t('New!') . '</span> ';
+        $new = '<span> ' . t('New!') . '</span>';
       }
     }
     $links[] = array(
-      'data' => l($new . $row->node_title, 'node/' . $row->nid, array('html' => TRUE)),
+      'data' => l($row->node_title . $new, 'node/' . $row->nid, array('html' => TRUE)),
       'class' => array(
         'menu-item'
       ),

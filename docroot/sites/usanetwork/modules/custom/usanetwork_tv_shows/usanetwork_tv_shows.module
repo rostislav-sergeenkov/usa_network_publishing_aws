@@ -2961,8 +2961,8 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
       $desktop_image = image_style_url('457x351', $image_url);
     }
   }
-
-  $promo_fields = _usanetwork_promo_pull_entity_promo_details($file, $file_wrapper);
+  $query_params = drupal_get_query_parameters();
+  $own_promo_lines = !empty($query_params['category']) ? _usanetwork_promo_file_get_promo_lines($file, TRUE) : _usanetwork_promo_file_get_promo_lines($file);
 
   $theme_variables = array(
     'classes' => NULL,
@@ -2970,16 +2970,16 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
     'target_url' => url('file/' . $file->fid),
     'media_icon' => 'video-icon',
     'caption' => ($current_item_index == $big_element_index)
-      ? (!empty($promo_fields['topic'])
-        ? $promo_fields['topic']
+      ? (!empty($own_promo_lines['topic'])
+        ? $own_promo_lines['topic']
         : ''
       )
       : '',
-    'title' => !empty($promo_fields['promo_title'])
-      ? $promo_fields['promo_title']
+    'title' => !empty($own_promo_lines['title'])
+      ? $own_promo_lines['title']
       : $file->filename,
-    'additional' => !empty($promo_fields['description'])
-      ? $promo_fields['description']
+    'additional' => !empty($own_promo_lines['description'])
+      ? $own_promo_lines['description']
       : '',
     'image_mobile' => $mobile_image,
     'image_desktop' => $desktop_image,

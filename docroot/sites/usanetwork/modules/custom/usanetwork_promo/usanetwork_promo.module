@@ -369,7 +369,7 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
  * @param $entity_object - file object
  * @return array|null
  */
-function _usanetwork_promo_file_get_promo_lines($file) {
+function _usanetwork_promo_file_get_promo_lines($file, $no_video_type = NULL) {
   $result = array();
   $file_wrapper = entity_metadata_wrapper('file', $file);
   $full_episode = $file_wrapper->field_mpx_full_episode->value();
@@ -381,8 +381,11 @@ function _usanetwork_promo_file_get_promo_lines($file) {
     $result['description'] = t('S@season E@episode_number', array('@season' => $episode_season, '@episode_number' => $episode_number));
   }
   else {
-    $category = usanetwork_mpx_video_get_video_category($file);
-    $result['description'] = !empty($category) ? $category : t('Clip');
+    $result['description'] = '';
+    if (empty($no_video_type)) {
+      $category = usanetwork_mpx_video_get_video_category($file);
+      $result['description'] .= !empty($category) ? $category : t('Clip');
+    }
     if (!empty($episode_season) && !empty($episode_number)) {
       $result['description'] .= ' ' . t('S@season E@episode', array('@season' => $episode_season, '@episode_number' => $episode_number));
     }

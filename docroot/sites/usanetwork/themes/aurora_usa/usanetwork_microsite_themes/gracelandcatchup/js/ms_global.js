@@ -60,96 +60,72 @@ var initialPageLoad = 1;
 
     // NAVIGATION
     // waypointResponse
-    waypointTimer: null,
     waypointResponse: function(scrollDirection, sectionId) {
       // make sure user stays on section long enough to see it before
       // sending Omniture calls and resetting the url
       // also prevent Omniture calls when using site nav to auto-scroll
       // to different sections
-      clearTimeout(Drupal.behaviors.ms_global.waypointTimer);
-      Drupal.behaviors.ms_global.waypointTimer = setTimeout(function(){
-        var activeSection = $('.section.active').attr('id');
-        if (activeSection == sectionId) {
-          var activeItemId = null,
-              lastSection = $('.section:last').attr('id'),
-              firstSection = $('.section:first').attr('id'),
-              anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
+      var activeItemId = null,
+//          lastSection = $('.section:last').attr('id'),
+//          firstSection = $('.section:first').attr('id'),
+          anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
 
-          if ((scrollDirection == 'up' && sectionId != lastSection) || (scrollDirection == 'down' && sectionId != firstSection)) {
-            switch(sectionId) {
-              case 'characters':
-                var $characterInfo = $('#characters #character-info'),
-                    activeItem = $characterInfo.find('li.active'),
-                    activeItemId = (activeItem.length > 0) ? activeItem.attr('id') : null;
-                if (activeItemId != null) anchorFull = anchorFull + '/' + activeItemId;
-                break;
-            }
+      switch(sectionId) {
+        case 'characters':
+          var $characterInfo = $('#characters #character-info'),
+              activeItem = $characterInfo.find('li.active'),
+              activeItemId = (activeItem.length > 0) ? activeItem.attr('id') : null;
+          if (activeItemId != null) anchorFull = anchorFull + '/' + activeItemId;
+          break;
+      }
 
-            Drupal.behaviors.ms_global.setOmnitureData(sectionId);
-            Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
-          }
-        }
-      }, 1000);
+      Drupal.behaviors.ms_global.setOmnitureData(sectionId);
+      Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
+usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
     },
 
     // initializeWaypoints -- for triggering section scroll events
+    waypoints: {'down': {}, 'up': {}},
     initializeWaypoints: function() {
       // When scrolling down, send Omniture page call when top of next section hits bottom of sticky nav
       // When scrolling up, send Omniture page call when bottom of previous section hits bottom of window
-      var waypoints = {};
-      waypoints['down'] = {};
-      waypoints['up'] = {};
 
-/*
-      // when scrolling up to top of home section
-      waypoints['up']['home-top'] = new Waypoint({
-        element: document.getElementById('home'),
-        handler: function(direction) {
-          if (direction == 'up') {
-            usa_debug('home is at top of page when scrolling ' + direction);
-            Drupal.behaviors.ms_global.waypointResponse('up', 'home');
+      var sectionTimer;
+      function handler(event, sectionId, direction){
+        usa_debug('handler(' + event + ', ' + sectionId + ', ' + direction + ')');
+
+        // if more than one function call arrives before the timeout is done,
+        // clear the timer and start over. This is to prevent, rapid scrolling
+        // or navigation clicks from triggering Omniture calls
+        clearTimeout(sectionTimer);
+        sectionTimer = setTimeout(function(){
+          var anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId,
+              urlSection = Drupal.behaviors.ms_global.parseUrl()['section'];
+          if (urlSection != sectionId) {
+            usa_debug('========== handler event triggered on ' + sectionId);
+            $('.section.active').removeClass('active');
+            $('#' + sectionId).addClass('active');
+            Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
           }
-        },
-        offset: 'top-in-view'
-      })
-*/
+        }, 1000);
+      }
 
       // loop through each section
       $('.section').each(function(){
-        var sectionId = $(this).attr('id');
+        var sectionId = $(this).attr('id'),
+            firstSection = $('.section:first').attr('id'),
+            lastSection = $('.section:last').attr('id'),
+            downEnabled = (sectionId == firstSection || sectionId == 'site-nav') ? false : true,
+            upEnabled = (sectionId == lastSection || sectionId == 'site-nav') ? false : true;
 
-        if (sectionId != 'site-nav') {
 usa_debug('========= initializing waypoints for section ' + sectionId);
-          var anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
-
-          // when scrolling down
-          waypoints['down'][sectionId] = new Waypoint({
+        if (sectionId != 'site-nav') {
+          Drupal.behaviors.ms_global.waypoints['down'][sectionId] = new Waypoint.Inview({
             element: document.getElementById(sectionId),
-            handler: function(direction) {
-              if (direction == 'down') {
-                usa_debug(sectionId + ' is ' + $('#site-nav').height() + 'px from top scrolling ' + direction);
-                $('.section.active').removeClass('active');
-                $('#' + sectionId).addClass('active');
-                Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
-              }
-            },
-            offset: function(){
-              return $('#site-nav').height();
-            }
-          })
-
-          // when scrolling up
-          waypoints['up'][sectionId] = new Waypoint({
-            element: document.getElementById(sectionId),
-            handler: function(direction) {
-              if (direction == 'up') {
-                usa_debug(sectionId + ' is at bottom when scrolling ' + direction);
-                $('.section.active').removeClass('active');
-                $('#' + sectionId).addClass('active');
-                Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
-              }
-            },
-            offset: 'bottom-in-view'
+//            enter: function(direction) { handler('enter', sectionId, direction); },
+            entered: function(direction) { if (sectionId == firstSection || sectionId == lastSection) handler('entered', sectionId, direction); },
+            exit: function(direction) { handler('exit', sectionId, direction); },
+//            exited: function(direction) { handler('exited', sectionId, direction); }
           })
         }
       }); // end each section loop
@@ -495,12 +471,11 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
     },
 
     attach: function (context, settings) {
-/*
       var startPathname = window.location.pathname;
       if (!$('html.ie9').length) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }
-*/
+
       // set defaults
       var siteName = Drupal.settings.microsites_settings.title,
           basePath = Drupal.settings.microsites_settings.base_path,
@@ -520,60 +495,70 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
         }
       }
 
-      self.initializeWaypoints();
-/*
-      var inview = new Waypoint.Inview({
-        element: $('#timeline'), //[0],
-        enter: function(direction) {
-          usa_debug('Enter triggered with direction ' + direction);
-          if (direction == 'up') {
+      // set hover state for hamburger menu on mobile devices
+      var wwidth = $(window).width(),
+          $siteNav = $('#site-nav'),
+          hamburgerTimer;
 
+      if (wwidth < 844) {
+        $siteNav.addClass('mobile');
+/*
+        $siteNav.find('#site-nav-links-mobile, #site-nav-links-mobile ul, #site-nav-links-mobile li').hover(function(){
+          $siteNav.find('#site-nav-links-list-mobile').addClass('active');
+          clearTimeout(hamburgerTimer);
+        }, function(){
+          hamburgerTimer = setTimeout(function(){
+            $siteNav.find('#site-nav-links-list-mobile').removeClass('active');
+          }, 1000);
+        });
+*/
+      }
+      else {
+        $siteNav.removeClass('mobile');
+      }
+
+      $('#video-container').addClass('active');
+      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
+
+      // TIME OUT
+      setTimeout(function(){
+        // initialize the waypoints
+        self.initializeWaypoints();
+
+        // initialize clicks in microsite menu
+        $('#microsite li.internal a').on('click', function(e){
+          e.preventDefault();
+
+usa_debug('======== clicked on ' + $(this).parent().attr('id'));
+          if ($('#site-nav-links li').hasClass('disabled')) { // || $(this).parent().hasClass('active')) {
+            return false;
           }
           else {
-
+            $('#site-nav-links li').addClass('disabled');
           }
-        },
-        entered: function(direction) {
-//          usa_debug('Entered triggered with direction ' + direction)
-        },
-        exit: function(direction) {
-          usa_debug('Exit triggered with direction ' + direction)
-        },
-        exited: function(direction) {
-//          usa_debug('Exited triggered with direction ' + direction)
+
+          var anchor = $(this).parent().attr('data-menuanchor');
+          Drupal.behaviors.ms_global.sectionScroll(anchor);
+        });
+
+        // initialize graceland cu logo click
+        $('#gracelandcu-logo').on('click', function(){
+          var anchor = 'home',
+              anchorFull = basePath + '/' + anchor;
+
+  //        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+          Drupal.behaviors.ms_global.sectionScroll(anchor);
+        });
+
+      // DOCUMENT READY
+//      $(document).ready(function () {
+
+/*
+        if ($('#videos').hasClass('active')) {
+          $('#video-container').addClass('active');
+          Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
         }
-      })
 */
-
-      // initialize clicks in microsite menu
-      $('#microsite li.internal a').on('click', function(e){
-        e.preventDefault();
-
-        if ($('#site-nav-links li').hasClass('disabled') || $(this).parent().hasClass('active')) {
-          return false;
-        }
-        else {
-          $('#site-nav-links li').addClass('disabled');
-        }
-
-        var anchor = $(this).parent().attr('data-menuanchor'),
-            anchorFull = basePath + '/' + anchor;
-
-        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
-        Drupal.behaviors.ms_global.sectionScroll(anchor);
-      });
-
-      // initialize graceland cu logo click
-      $('#gracelandcu-logo').on('click', function(){
-        var anchor = 'home',
-            anchorFull = basePath + '/' + anchor;
-
-        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
-        Drupal.behaviors.ms_global.sectionScroll(anchor);
-      });
-
-      $(document).ready(function () {
-        self.create728x90Ad();
 
         // check url and scroll to specific content
         var urlParts = self.parseUrl(),
@@ -581,13 +566,11 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
         if (activeSection != urlParts['section']) {
           setTimeout(function(){
             self.sectionScroll(urlParts['section'], urlParts['item']);
-          }, 500);
+          }, 1000);
         }
 
-//        if ($('#videos').hasClass('active')) {
-          $('#video-container').addClass('active');
-          Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
-//        }
+        self.create728x90Ad();
+      }, 500);
 
         // Turn off the popstate/hashchange tve-core.js event listeners
         $(window).off('popstate');
@@ -611,42 +594,28 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           var urlParts = self.parseUrl(history.state['path']),
               anchor = urlParts['section'],
               item = urlParts['item'];
-
           self.sectionScroll(anchor, item);
         });
-      });
+//      });
 
-      // set hover state for hamburger menu on mobile devices
-      var wwidth = $(window).width(),
-          $siteNav = $('#site-nav'),
-          hamburgerTimer;
-
-      if (wwidth < 844) {
-        $siteNav.addClass('mobile');
-        $siteNav.find('#site-nav-links-mobile, #site-nav-links-mobile ul, #site-nav-links-mobile li').hover(function(){
-          $siteNav.find('#site-nav-links-list-mobile').addClass('hover');
-          clearTimeout(hamburgerTimer);
-        }, function(){
-          hamburgerTimer = setTimeout(function(){
-            $siteNav.find('#site-nav-links-list-mobile').removeClass('hover');
-          }, 1000);
-        });
-      }
-      else {
-        $siteNav.removeClass('mobile');
-      }
-
+      // RESIZE
       // set resize and orientation change
+      var resizeTimer;
       $(window).bind('resize', function () {
-        var wwidth = $(window).width(),
-            $siteNav = $('#site-nav');
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function(){
+          var wwidth = $(window).width(),
+              $siteNav = $('#site-nav');
 
-        if (wwidth < 844) {
-          $siteNav.addClass('mobile');
-        }
-        else {
-          $siteNav.removeClass('mobile');
-        }
+          if (wwidth < 844) {
+            $siteNav.addClass('mobile');
+          }
+          else {
+            $siteNav.removeClass('mobile');
+          }
+
+          if (typeof Waypoint != 'undefined') Waypoint.refreshAll();
+        }, 250);
       });
 //      window.addEventListener('orientationchange', self.reloadSliders);
 

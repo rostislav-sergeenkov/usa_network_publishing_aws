@@ -2815,7 +2815,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
       $result[0] = $first_item;
     }
     elseif (count($result) == 2) {
-      $current_id = array_keys($result)[1];
+      $current_id = end(array_keys($result));
 
       $first_item = $result[$current_id];
       unset($result[$current_id]);

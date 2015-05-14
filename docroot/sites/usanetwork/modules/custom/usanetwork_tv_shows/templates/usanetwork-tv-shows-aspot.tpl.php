@@ -10,7 +10,7 @@
     <?php endif; ?>
   </div>
   <?php if (!empty($episodes)): ?>
-    <div class="episodes-list">
+    <div class="episodes-list <?php print !empty($sponsored)? 'sponsored-enable' : ''; ?>">
       <?php if (!empty($episodes_block_title)): ?>
         <div class="title show-color">
           <div class="title-wrapper">

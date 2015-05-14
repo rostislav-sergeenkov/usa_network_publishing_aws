@@ -189,11 +189,6 @@
         }
       }
     }
-    .sponsored {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
   }
   .social_meter {
     min-height: 78px;
@@ -404,7 +399,7 @@
     }
     > .title {
       background: $header-tab-back;
-      min-height: 10%;
+      height: 10%;
       position: relative;
       text-align: center;
       width: 100%;

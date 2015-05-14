@@ -148,9 +148,6 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
       'path' => $path . '/templates',
       'template' => 'usanetwork-media-gallery-consumptionator',
     ),
-
-
-
     'usanetwork_media_gallery_related_item' => array(
       'variables' => array(
         'classes' => NULL,
@@ -291,48 +288,53 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       $show_nid = $node_wrapper->field_show->nid->value();
       $gallery_type = $node_wrapper->field_gallery_type->value();
 
-      $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type);
+      $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, '0');
+      $rendered_items = array();
 
-      if (!empty($galleries_list)) {
-        $rendered_items = array();
-
-        foreach ($galleries_list as $gallery_item) {
-          if ($gallery_item->nid == $node->nid) {
-            continue;
-          }
-
-          $gallery_item_vertical = array(
-            'gallery_url' => url('node/' . $gallery_item->nid),
-            'image_url' => !empty($gallery_item->uri)
-              ? image_style_url('111x74', $gallery_item->uri)
-              : '',
-            'title' => $gallery_item->title,
-            'season' => $gallery_item->field_season_id_value,
-            'episode' => $gallery_item->field_episode_number_value,
-          );
-
-          $gallery_item_horizontal = array(
-            'gallery_url' => url('node/' . $gallery_item->nid),
-            'image_url' => !empty($gallery_item->uri)
-              ? image_style_url('full_episodes_633x356', $gallery_item->uri)
-              : '',
-            'title' => $gallery_item->title,
-            'season' => $gallery_item->field_season_id_value,
-            'episode' => $gallery_item->field_episode_number_value,
-          );
-
-          $rendered_items['slides_vertical'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_vertical', $gallery_item_vertical);
-          $rendered_items['slides_horizontal'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_horizontal', $gallery_item_horizontal);
+      foreach ($galleries_list as $gallery_item) {
+        if ($gallery_item->nid == $node->nid) {
+          continue;
         }
 
-        if (!empty($rendered_items)) {
-          return theme('usanetwork_media_gallery_consumptionator_episode_slides', array(
-            'gallery_type' => $gallery_type,
-            'slides_vertical' => $rendered_items['slides_vertical'],
-            'slides_horizontal' => $rendered_items['slides_horizontal'],
-          ));
-        }
+        $gallery_item_vertical = array(
+          'gallery_url' => url('node/' . $gallery_item->nid),
+          'image_url' => !empty($gallery_item->uri)
+            ? image_style_url('111x74', $gallery_item->uri)
+            : '',
+          'title' => $gallery_item->title,
+          'season' => $gallery_item->field_season_id_value,
+          'episode' => $gallery_item->field_episode_number_value,
+        );
+
+        $gallery_item_horizontal = array(
+          'gallery_url' => url('node/' . $gallery_item->nid),
+          'image_url' => !empty($gallery_item->uri)
+            ? image_style_url('full_episodes_633x356', $gallery_item->uri)
+            : '',
+          'title' => $gallery_item->title,
+          'season' => $gallery_item->field_season_id_value,
+          'episode' => $gallery_item->field_episode_number_value,
+        );
+
+        $rendered_items['slides_vertical'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_vertical', $gallery_item_vertical);
+        $rendered_items['slides_horizontal'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_horizontal', $gallery_item_horizontal);
       }
+
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+
+      return theme('usanetwork_media_gallery_consumptionator_episode_slides', array(
+        'gallery_type' => !empty($gallery_item->field_season_id_value)
+          ? t('S!number episode galleries', array(
+            '!number' => $gallery_item->field_season_id_value,
+          ))
+          : '',
+        'slides_vertical' => $rendered_items['slides_vertical'],
+        'slides_horizontal' => $rendered_items['slides_horizontal'],
+        'ad' => isset($advert) ? $advert : NULL,
+      ));
     }
   }
 
@@ -418,7 +420,7 @@ function _usanetwork_media_gallery_related_content_block() {
           'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
         ), 'setting');
 
-        $block_of_items = _usanetwork_media_gallery_render_related_content_items_block($related_content, FALSE);
+        $block_of_items = _usanetwork_media_gallery_render_related_content_items_block($related_content);
 
         return theme('usanetwork_media_gallery_related_items_container', array(
           'related_items_block' => $block_of_items,
@@ -434,17 +436,15 @@ function _usanetwork_media_gallery_related_content_block() {
 /**
  * Renders block of items (default number of items in the block is 6)
  */
-function _usanetwork_media_gallery_render_related_content_items_block($data, $ad) {
+function _usanetwork_media_gallery_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
   if (!empty($data)) {
 
-    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
-    if (!empty($advert_block['content'])) {
-      $advert = render($advert_block['content']);
-    }
+    $ad_id = intval($start_from / $limit);
 
     $theme_variables = array(
       'related_items' => array(),
-      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
+      'ad' => $start_from == 0 ? FALSE : TRUE,
+      'ad_id' => $ad_id,
     );
 
     foreach ($data as $data_index => $data_item) {
@@ -594,7 +594,7 @@ function usanetwork_media_gallery_get_related_content_ajax($tv_show_node, $start
 
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_media_gallery_render_related_content_items_block($related_content, TRUE);
+    $response['rendered'] = _usanetwork_media_gallery_render_related_content_items_block($related_content, $start_from, $limit);
 
     if ($items_last == 0 || $items_last <= $limit) {
       $response['overlimited'] = TRUE;

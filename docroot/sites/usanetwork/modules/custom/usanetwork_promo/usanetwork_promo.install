@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Delete field field_promo_wide_image.
+ */
+function usanetwork_promo_update_7000() {
+  field_delete_field('field_promo_wide_image');
+}

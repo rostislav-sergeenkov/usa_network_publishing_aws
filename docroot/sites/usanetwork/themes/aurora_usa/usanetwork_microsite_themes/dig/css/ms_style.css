@@ -310,7 +310,6 @@ you can use the generic selector below, but it's slower:
 }
 #microsite {
   width: 100%;
-  height: calc(100% - 65px); /* 65px is height of bottom nav */
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -763,6 +762,33 @@ you can use the generic selector below, but it's slower:
   color: #e5ce96;
   list-style: none;
 }
+
+
+/* DESKTOP USA LOGO */
+#microsite #usa-logo-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 190px;
+  height: 53px;
+  background-color: transparent;
+  z-index: 100;
+}
+#microsite #usa-logo-container a {
+  display: block;
+  background-image: url("../images/usa_logo.svg");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 90px;
+  height: 45px;
+  margin-top: 4px;
+  margin-left: 20px;
+}
+#microsite #usa-logo-container span {
+  display: none;
+}
+
 /* ADDED OUTSIDE OF SASS */
 .jPanelMenu,
 body.page-node-microsite {

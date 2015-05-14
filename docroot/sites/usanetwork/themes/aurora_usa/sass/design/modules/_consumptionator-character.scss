@@ -16,13 +16,13 @@
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
-      padding: 18px 29px 18px 30px;
+      padding: 24px;
     }
     @include breakpoint($bp-768-width) {
       padding: 38px 24px 38px 24px;
     }
     @include breakpoint ($bp-640-width) {
-      padding: 20px 42px 20px 49px;
+      padding: 56.25vw 0 0;
     }
     .block-character-info-header {
       @include clear();
@@ -30,8 +30,18 @@
       @include breakpoint($bp-1280-width) {
         margin-bottom: 15px;
       }
+      @include breakpoint($bp-640-width) {
+        margin-bottom: 0;
+        padding: 10px 46px;
+      }
+      @include breakpoint($bp-480-width) {
+        padding: 10px 25px;
+      }
       .block-character-info-header-left {
         float: left;
+        @include breakpoint ($bp-320-width) {
+          float: none;
+        }
         .full-name {
           font-family: $avalon-medium;
           font-size: 54px;
@@ -46,7 +56,7 @@
             font-size: 37.8px;
           }
           @include breakpoint($bp-640-width) {
-            font-size: 36px;
+            font-size: 24px;
           }
         }
         .description {
@@ -61,12 +71,15 @@
             font-size: 10.4px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: 13px;
+            font-size: 10px;
           }
         }
       }
       .block-character-info-header-right {
         float: right;
+        @include breakpoint ($bp-320-width) {
+          float: none;
+        }
         .share {
           font-family: $avalon-book;
           font-size: 26px;
@@ -77,10 +90,25 @@
           @include breakpoint($bp-768-width) {
             font-size: 15px;
           }
-          @include breakpoint($bp-640-width) {
-            font-size: 18.75px;
+          h3 {
+            font-family: $avalon-book;
+            font-size: 26px;
+            text-align: right;
+            line-height: 1em;
+            margin: 0 14px 15px 0;
+            @include breakpoint ($bp-768-width) {
+              font-size: 18px;
+            }
+            @include breakpoint ($bp-1024-width) {
+              font-size: 15px;
+            }
+            @include breakpoint ($bp-320-width) {
+              text-align: left;
+              line-height: 2em;
+            }
           }
         }
+
       }
     }
     .block-character-info-content {
@@ -89,28 +117,61 @@
         width: 46.8%;
         float: left;
         @include breakpoint($bp-1024-width) {
-          width: 35.8%;
+          width: 42.62%;
         }
         @include breakpoint($bp-768-width) {
           width: 38%;
         }
         @include breakpoint($bp-640-width) {
+          height: 56.25vw;
+          left: 0;
+          top: 0;
+          position: absolute;
           width: 100%;
         }
         img {
           margin-bottom: 30px;
         }
       }
-      .description {
-        width: 48%;
-        float: right;
+      .advert {
+        display: none;
+        @include breakpoint($between-769-1280) {
+          display: block;
+        }
+        @include breakpoint($bp-1280-width) {
+          float: left;
+          clear: left;
+          height: 250px;
+          margin-top: 45px;
+          width: 46.8%;
+        }
         @include breakpoint($bp-1024-width) {
-          width: 64%;
+          width: 42.62%;
+        }
+        .advertisement {
+          height: 250px;
+          margin: 0 auto;
+          width: 300px;
+        }
+      }
+      .description {
+        float: right;
+        position: relative;
+        width: 48%;
+        @include breakpoint($bp-1024-width) {
+          width: 56%;
         }
         @include breakpoint($bp-768-width) {
           width: 57%;
         }
         @include breakpoint($bp-640-width) {
+          padding: 10px 46px;
+          width: 100%
+        }
+        @include breakpoint($bp-480-width) {
+          padding: 10px 25px;
+        }
+        iframe {
           width: 100%;
         }
         ul {
@@ -133,10 +194,6 @@
             @include breakpoint($bp-1280-width) {
               font-size: 13px;
               line-height: 34px;
-            }
-            @include breakpoint($bp-640-width) {
-              font-size: 17.5px;
-              line-height: 46px;
             }
             &.active {
               color: #ffffff!important;
@@ -161,7 +218,7 @@
           }
           @include breakpoint($bp-640-width) {
             width: 100%;
-            font-size: 24px;
+            font-size: 18px;
             color: $poll-color;
           }
         }
@@ -197,16 +254,115 @@
         top: auto;
         width: 100%;
       }
+      .episodes-list-slider {
+        &.horizontal {
+          @include breakpoint($bp-640-width) {
+            li {
+              background: $consum-carousel-even;
+              height: 75px;
+              position: relative;
+              width: 100%!important;
+              &:nth-child(odd) {
+                background: $consum-carousel-odd;
+              }
+              &:nth-child(even) {
+                background: $consum-carousel-even;
+              }
+              > div {
+                height: 100%;
+                width: 100%;
+              }
+              a {
+                height: 100%;
+                width: 100%;
+              }
+              .asset-img {
+                height: 50px;
+                left: 4%;
+                margin-top: -25px;
+                position: absolute;
+                top: 50%;
+                width: 75px;
+                &.active {
+                  border-left: 7px solid;
+                }
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+                & ~ .meta-wrapper {
+                  .meta {
+                    padding-left: calc(8% + 75px);
+                  }
+                }
+              }
+              .meta-wrapper {
+                background: none;
+                height: 100%;
+                width: 100%;
+                .meta-wrapper-inner {
+                  display: table;
+                  height: 100%;
+                  width: 100%;
+                }
+                .meta {
+                  color: $consum-carousel-text;
+                  padding-left: 4%;
+                  display: table-cell;
+                  max-width: 100px;
+                  vertical-align: middle;
+                  width: 100%;
+                  .caption {
+                    font-size: 10px;
+                    line-height: 13px;
+                  }
+                  .title {
+                    font-size: 15px;
+                    line-height: 18px;
+                    margin-bottom: 7px;
+                  }
+                  .additional {
+                    font-family: $tex-gyreschola-italic;
+                    font-size: 10px;
+                    line-height: 13px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
     .more-items {
       @include breakpoint($bp-1280-width) {
         top: 0;
       }
+      a {
+        @include breakpoint($bp-640-width) {
+          font-size: 15px;
+          height: 45px;
+          line-height: 45px;
+        }
+      }
     }
     .advert {
       @include breakpoint($bp-1280-width) {
-        bottom: calc(100% + 50px);
-        position: absolute;
+        display: none;
+      }
+    }
+    .items-block-title {
+      @include breakpoint($bp-640-width) {
+       height: 45px;
+       line-height: 45px;
+        padding-left: 0;
+      }
+      h2 {
+        @include breakpoint($bp-640-width) {
+          font-size: 23px;
+          line-height: 45px;
+          text-align: center;
+        }
       }
     }
   }

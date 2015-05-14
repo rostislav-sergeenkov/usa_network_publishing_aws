@@ -39,6 +39,7 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_person_character_main_block' => array(
       'variables' => array(
+        'sharebar' => NULL,
         'character_full_name' => NULL,
         'character_description' => NULL,
         'social_icons' => array(),
@@ -120,6 +121,14 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-person-related-ymal-item',
     ),
+    'usanetwork_person_cast_lmb_block' => array(
+      'variables' => array(
+        'head_image' => NULL,
+        'second_image' => NULL,
+        'description' => NULL,
+      ),
+      'template' => 'templates/usanetwork-person-cast-lmb-block',
+    ),
     'usanetwork_person_cast_crew_block' => array(
       'variables' => array(
         'title' => NULL,
@@ -186,6 +195,69 @@ function usanetwork_person_image_default_styles() {
     ),
   );
 
+  $styles['629x720'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 629,
+          'height' => 720,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 629,
+          'height' => 720,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['475x537'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 475,
+          'height' => 537,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 475,
+          'height' => 537,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['420x420'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 420,
+          'height' => 420,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 420,
+          'height' => 420,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   $styles['928x714'] = array(
     'effects' => array(
       array(
@@ -231,10 +303,16 @@ function usanetwork_person_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_person_cast_lmb_block'] = array(
+    'info' => t('Usanetwork person: Cast landing main block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   $blocks['usanetwork_person_cast_recap'] = array(
     'info' => t('Usanetwork person: Cast landing recap block'),
     'cache' => DRUPAL_NO_CACHE,
   );
+
   $blocks['usanetwork_person_cast_crew'] = array(
     'info' => t('Usanetwork person: Cast landing cast & crew'),
     'cache' => DRUPAL_NO_CACHE,
@@ -262,6 +340,13 @@ function usanetwork_person_block_view($delta = '') {
     case 'usa_cons_chars_related_content':
       $block['subject'] = '';
       $block['content'] = _usanetwork_person_characters_related_content_block();
+      break;
+
+    case 'usanetwork_person_cast_lmb_block':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_person_render_cast_lmb_block(),
+      );
       break;
 
     case 'usanetwork_person_cast_recap':
@@ -327,7 +412,10 @@ function _usanetwork_person_characters_main_block() {
   if (empty($person_node) || (!empty($person_node) && isset($person_node->type) && $person_node->type != 'person')) {
     return '';
   }
-
+  if (!empty($person_node->field_gigya_share_bar)) {
+    $sharebar = field_view_field('node', $person_node, 'field_gigya_share_bar');
+    $sharebar['#title'] = t('Share');
+  }
   $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
   $image_url = usanetwork_core_api_get_content_image('node', $person_node);
 
@@ -362,16 +450,17 @@ function _usanetwork_person_characters_main_block() {
   }
 
   $theme_variables = array(
+    'sharebar' => !empty($sharebar) ? render($sharebar) : '',
     'character_full_name' => $person_node->title,
     'character_description' => !empty($person_node->field_role)
       ? $person_node_wrapper->field_role->name->value()
       : '',
     'social_icons' => $social_icons,
     'image_mobile' => !empty($image_url)
-      ? image_style_url('457x351', $image_url)
+      ? image_style_url('full_episodes_633x356', $image_url)
       : '',
     'image_desktop' => !empty($image_url)
-      ? image_style_url('928x714', $image_url)
+      ? image_style_url('629x720', $image_url)
       : '',
     'description_character' => !empty($person_node->body)
       ? $person_node_wrapper->body->value->value()
@@ -455,6 +544,42 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
 
   return '';
 }
+
+/**
+ * Renders main block for cast landing page.
+ */
+function _usanetwork_person_render_cast_lmb_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  if (!empty($show_node)) {
+    $show_node_wrapper = entity_metadata_wrapper('node', $show_node);
+    if (!empty($show_node->field_cast_head_image)) {
+      $head_image = $show_node_wrapper->field_cast_head_image->value();
+    }
+    if (!empty($show_node->field_cast_head_mob_image)) {
+      $head_image_mobile = $show_node_wrapper->field_cast_head_mob_image->value();
+    }
+    if (!empty($show_node->field_cast_second_image)) {
+      $second_image = $show_node_wrapper->field_cast_second_image->value();
+    }
+    $advert_block = module_invoke('mps', 'block_view', 'topbox');
+    if (!empty($advert_block['content'])) {
+      $advert = render($advert_block['content']);
+    }
+    $theme_variables = array(
+      'advert_block' => isset($advert) ? $advert : NULL,
+      'head_image' => array(
+        'desktop' => !empty($head_image) ? image_style_url('2880x1260', $head_image['uri']) : '',
+        'mobile' => !empty($head_image_mobile) ? image_style_url('640x560', $head_image_mobile['uri']) : '',
+      ),
+      'second_image' => !empty($second_image) ? image_style_url('475x537', $second_image['uri']) : '',
+      'description' => !empty($show_node->field_cast_description) ? $show_node_wrapper->field_cast_description->value->value() : '',
+    );
+    return theme('usanetwork_person_cast_lmb_block', $theme_variables);
+  }
+  return '';
+}
+
+
 /**
  * Renders recap block for cast landing page.
  */
@@ -463,7 +588,9 @@ function _usanetwork_person_render_cast_recap_block() {
   if (!empty($show_node)) {
     if (!empty($show_node->field_cast_recap_video)) {
       $recap_video_file = reset(field_get_items('node', $show_node, 'field_cast_recap_video'));
-      $recap_video_file = $recap_video_file['entity'];
+      $recap_video_file = file_load($recap_video_file['target_id']);
+      $file_wrapper = entity_metadata_wrapper('file', $recap_video_file);
+      $promo_data = _usanetwork_promo_pull_file_promo_details($recap_video_file);
       $theme_variables = array(
         'title' => t('Series Recap'),
         'video' => theme('pub_mpx_video', array(
@@ -473,6 +600,10 @@ function _usanetwork_person_render_cast_recap_block() {
             'form' => 'html'
           )
         )),
+        'video_title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
+            (!empty($recap_video_file->field_mpx_title) ? $file_wrapper->field_mpx_title->value() : ''),
+        'video_description' => !empty($promo_data['description']) ? $promo_data['description'] :
+            (!empty($recap_video_file->field_mpx_description) ? $file_wrapper->field_mpx_description->value() : ''),
         'button_url' => url('node/' . $show_node->nid . '/videos'),
       );
       return theme('usanetwork_person_cast_recap_block', $theme_variables);
@@ -531,7 +662,7 @@ function _usanetwork_person_characters_related_content_block() {
       'usanetwork_tv_show_page_context' => 'characters-consumptionator',
     ), 'setting');
 
-    $block_of_items = _usanetwork_person_render_related_content_items_block($related_content, FALSE, FALSE, TRUE);
+    $block_of_items = _usanetwork_person_render_related_content_items_block($related_content, 0, 1);
 
     return theme('usanetwork_person_related_items_container', array(
       'related_items_block' => $block_of_items,
@@ -591,13 +722,12 @@ function usanetwork_person_get_related_content_ajax($tv_show_node, $start_from =
     'rendered' => '',
   );
 
-  $is_even = (($start_from / (USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1)) % 2 == 0) ? FALSE : TRUE;
   $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content($tv_show_node, $start_from, $limit);
 
   if (!empty($related_content)) {
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_person_render_related_content_items_block($related_content, TRUE, $is_even);
+    $response['rendered'] = _usanetwork_person_render_related_content_items_block($related_content, $start_from, $limit);
 
     return drupal_json_output($response);
   }
@@ -611,18 +741,15 @@ function usanetwork_person_get_related_content_ajax($tv_show_node, $start_from =
 /**
  * Renders block of 6 content items for consumptionator character page.
  */
-function _usanetwork_person_render_related_content_items_block($data, $ad, $is_even) {
+function _usanetwork_person_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
   if (!empty($data)) {
 
-    $advert_block = module_invoke('mps', 'block_view', 'midbanner');
-    if (!empty($advert_block['content'])) {
-      $advert = render($advert_block['content']);
-    }
+    $ad_id = intval($start_from / $limit);
 
     $theme_variables = array(
       'related_items' => array(),
-      'is_even' => $is_even,
-      'ad' => $ad ? (isset($advert) ? $advert : NULL) : NULL,
+      'ad' => $start_from == 0 ? FALSE : TRUE,
+      'ad_id' => $ad_id,
     );
 
     foreach ($data as $data_index => $data_item) {
@@ -664,7 +791,7 @@ function _usanetwork_person_render_related_content_item($data, $is_data_item_eve
 
   if (!empty($data->raw_image_uri)) {
     $desktop_image = image_style_url('921x488', $data->raw_image_uri);
-    $mobile_image = image_style_url('291x234', $data->raw_image_uri);
+    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
   }
 
 
@@ -744,7 +871,8 @@ function _usanetwork_person_render_cast_crew_block() {
         $theme_variables['persons'][] = array(
           'name' => !empty($person_node->title) ? $person_node->title : '',
           'role' => !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '',
-          'image' => !empty($image) ? file_create_url($image['uri']) : '',
+          'image' => !empty($image) ? image_style_url('420x420', $image['uri']) : '',
+          'url' => url('node/' . $person_node->nid),
         );
       }
       return theme('usanetwork_person_cast_crew_block', $theme_variables);

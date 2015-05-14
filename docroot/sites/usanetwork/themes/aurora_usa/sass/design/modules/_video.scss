@@ -70,7 +70,7 @@
   .file.view-mode-full {
     .meta-head {
       h1.show-name {
-        font-family: "Proxima N W01 Smbd";
+        font-family: $avalon-medium;
         font-size: 30px;
       }
     }
@@ -1614,7 +1614,7 @@
   &.loginModal {
     .richContent {
       h1 {
-        font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+        font-family: $avalon-medium;
         font-size: 30px;
         letter-spacing: 1px;
         margin: 0;
@@ -1622,7 +1622,7 @@
         padding: 0;
       }
       h2 {
-        font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+        font-family: $avalon-medium;
         font-size: 22px;
         color: #4f4f4f;
         letter-spacing: 0.5px;
@@ -1697,7 +1697,7 @@
       .buttonBar {
         margin-top:0px !important;
         button {
-          font-family: Proxima N W01 Bold,Helvetica,Arial,sans-serif;
+          font-family: $avalon-medium;
           font-size: 18px !important;
           font-weight: normal !important;
         }

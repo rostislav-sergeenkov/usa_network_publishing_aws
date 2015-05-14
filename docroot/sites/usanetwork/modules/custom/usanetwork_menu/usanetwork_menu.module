@@ -759,6 +759,7 @@ function _usanetwork_menu_full_episodes_block() {
 
   $items = array();
   foreach ($carousel_episodes as $episode) {
+    $sponsored = FALSE;
     $episode_wrapper = entity_metadata_wrapper('file', $episode);
     $show = !empty($episode->field_show)
       ? $episode_wrapper->field_show->value()
@@ -786,6 +787,12 @@ function _usanetwork_menu_full_episodes_block() {
       'style_name' => 'full_episodes_633x356',
     ));
 
+    $sponsored_element = _usanetwork_menu_get_sponsored_file_by_show($show->nid);
+    if ($sponsored_element) {
+      $sponsored = TRUE;
+      $file_path = $sponsored_element;
+    }
+
     $items_variables = array(
       'url' => url('file/' . $episode->fid),
       'logo' => isset($logo) ? $logo_image : NULL,
@@ -794,6 +801,8 @@ function _usanetwork_menu_full_episodes_block() {
         '@episode_number' => $episode_number
        )),
        'image' => $video_image,
+      'sponsored' => $sponsored,
+      'file_path' => isset($file_path) ? '/file/' . $file_path : NULL,
     );
 
     $items[] = $items_variables;
@@ -804,6 +813,23 @@ function _usanetwork_menu_full_episodes_block() {
   );
 
   return theme('usanetwork_menu_full_episodes', $theme_variables);
+}
+
+/*
+ * Helper function for get sponsored file by show nid
+ */
+function _usanetwork_menu_get_sponsored_file_by_show($show_nid) {
+  $query = db_select('file_managed', 'f')->fields('f', array('fid'));
+  $query->condition('f.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+  $query->leftJoin('field_data_field_show','show_field','show_field.entity_id = f.fid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->leftJoin('mpx_video','v','v.fid = f.fid');
+  $query->condition('v.status', 1);
+  $query->leftJoin('field_data_field_sponsored','fdfs','fdfs.entity_id = f.fid');
+  $query->condition('fdfs.field_sponsored_value', 1);
+  $query->orderBy('v.airdate', 'DESC');
+
+  return $query->execute()->fetchField();
 }
 
 /**
@@ -935,7 +961,7 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'catchall_name' => !empty($node->title) ? $node->title : '',
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => !empty($node->field_displayed_info_description) ? $entity_wrapper->field_displayed_info_description->value() : '',
@@ -984,7 +1010,7 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'gallery_name' => !empty($node->title) ? $node->title : '',
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
       'details' => array(
         'sharebar' => !empty($sharebar) ? render($sharebar) : '',
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
@@ -1010,7 +1036,10 @@ function _usanetwork_menu_consumptionator_block_person($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_usa_character_thumb)) {
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_usa_character_thumb)) {
       $image = $entity_wrapper->field_usa_character_thumb->value();
     }
     if (!empty($node->field_gigya_share_bar)) {
@@ -1022,10 +1051,11 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'person_name' => !empty($node->title) ? $node->title : '',
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : 'Character bio: <span>'.$node->title.'</span>',
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
-        'description' => !empty($node->body) ? $entity_wrapper->body->value->value() : '',
+        'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
+            (!empty($node->body) ? $entity_wrapper->body->value->value() : ''),
         'sharebar' => !empty($sharebar) ? render($sharebar) : '',
       ),
     );
@@ -1060,6 +1090,15 @@ function _usanetwork_menu_consumptionator_block_video($file) {
     if (!empty($file->field_mpx_entitlement)) {
       $field_mpx_entitlement = $file_wrapper->field_mpx_entitlement->value();
       $lock = ($field_mpx_entitlement && $field_mpx_entitlement == 'auth') ? TRUE : FALSE;
+    }
+
+    //Sponsored MPS
+    if (!empty($file->field_sponsored)) {
+      $field_sponsored = $file_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $sponsored = TRUE;
+        $file_id = '/file/' . $file->fid;
+      }
     }
 
     $theme_variables = array(
@@ -1101,6 +1140,8 @@ function _usanetwork_menu_consumptionator_block_video($file) {
           ? $file_wrapper->field_mpx_description->value()
           : '',
       ),
+      'sponsored' => isset($sponsored) ? $sponsored : FALSE,
+      'file_path' => isset($file_id) ? $file_id : FALSE,
     );
     return theme('usanetwork_menu_consumptionator_video', $theme_variables);
   }
@@ -1320,19 +1361,17 @@ function _usanetwork_menu_get_reminder_url($show_nid = NULL) {
   if (empty($show_nid)) {
     return NULL;
   }
-
   $node = node_load($show_nid);
-  $syndicated_field = field_get_items('node', $node, 'field_syndicated');
-
-  if (!empty($syndicated_field)) {
-    if ($syndicated_field[0]['value'] == 1) {
-      $url_alias_field = field_get_items('node', $node, 'field_pathauto_alias');
-
-      if (!empty($url_alias_field)) {
-        $alias = $url_alias_field[0]['value'];
-
-        return url('https://see.it/' . $alias);
-      }
+  $see_it_url = field_get_items('node', $node, 'field_see_it_url');
+  if (!empty($see_it_url)) {
+    $see_it_url = reset($see_it_url);
+    return url(check_plain($see_it_url['value']));
+  }
+  else {
+    $url_alias_field = field_get_items('node', $node, 'field_pathauto_alias');
+    if (!empty($url_alias_field)) {
+      $alias = $url_alias_field[0]['value'];
+      return url('https://see.it/' . $alias);
     }
   }
 

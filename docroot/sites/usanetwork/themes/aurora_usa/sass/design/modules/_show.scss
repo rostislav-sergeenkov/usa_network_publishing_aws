@@ -1095,6 +1095,15 @@
     margin: 0 30px 0 20px;
     max-width: 260px;
     text-transform: uppercase;
+    a {
+      color: #ffffff;
+      &:hover {
+        color: #ffffff;
+      }
+      &:focus {
+      outline: none;
+      }
+    }
     @include breakpoint($bp-min-1901-width) {
       font-size: 36px;
       line-height: 100px;
@@ -1112,6 +1121,12 @@
       line-height: 1;
       text-align: center;
       vertical-align: middle;
+    }
+  }
+  a {
+    &:visited, &:active {
+      color: #ffffff;
+      outline: none!important;
     }
   }
   .schedule {

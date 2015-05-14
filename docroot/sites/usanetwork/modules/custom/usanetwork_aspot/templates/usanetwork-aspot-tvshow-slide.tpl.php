@@ -19,7 +19,7 @@
               <![endif]-->
             <?php endif; ?>
             <?php if (!empty($show_poster['desktop'])): ?>
-              <noscript><img src="<?php print $show_poster['desktop']; ?>" width="2490" height="1418" alt="" title="" /></noscript>
+              <noscript><img src="<?php print $show_poster['desktop']; ?>" width="2880" height="1620" alt="" title="" /></noscript>
             <?php endif; ?>
 
           </div>
@@ -54,6 +54,9 @@
               <div class="social_meter aspot-draggable-element" <?php if (!empty($social_meter_style['desktop'])): print 'data-style-desktop="' . $social_meter_style['desktop'] . '" data-style-mobile="' . $social_meter_style['mobile'] . '"'; endif; ?>>
                 <?php print $social_meter; ?>
               </div>
+            <?php endif; ?>
+          <?php if (!empty($sponsored)) : ?>
+              <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
             <?php endif; ?>
           </div>
         </div>

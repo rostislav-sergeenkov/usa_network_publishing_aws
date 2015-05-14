@@ -21,7 +21,7 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <?php print $person_name; ?>
+          <?php print $h1; ?>
         </a>
       </h1>
     </div>

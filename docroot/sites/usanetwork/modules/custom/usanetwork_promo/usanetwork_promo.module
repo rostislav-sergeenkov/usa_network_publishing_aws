@@ -154,7 +154,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
     if ($icon_type_field = field_get_items('node', $promo, 'field_call_to_action_type')) {
       $icon_type_value = reset($icon_type_field);
       $icon = taxonomy_term_load($icon_type_value['tid']);
-      $icon_type = $icon->name . '-icon';
+      $icon_type = str_replace(' ', '_', $icon->name) . '-icon';
     }
 
     if ($promo_call_to_action_text_field = field_get_items('node', $promo, 'field_promo_call_to_action_text')) {
@@ -251,10 +251,6 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
         $featutred_content['image_url'] = $field_promo_regular_image['uri'];
       }
 
-      if ($field_promo_wide_image_field = field_get_items('node', $node, 'field_promo_wide_image')) {
-        $field_promo_wide_image = reset($field_promo_wide_image_field);
-        $featutred_content['image_url_wide'] = $field_promo_wide_image['uri'];
-      }
 
       $featutred_content['cta_text'] = isset($featutred_content['more_link_text'])
           ? $featutred_content['more_link_text']
@@ -327,10 +323,10 @@ function _usanetwork_promo_pull_node_promo_details($entity_object) {
     $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $promo_wrapper);
     if (empty($promo_fields['promo_title']) || empty($promo_fields['description'])) {
       $own_fields = _usanetwork_promo_node_get_promo_lines($entity_object);
-      $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? check_plain($promo_fields['promo_title']) :
-        (!empty($own_fields['title']) ? check_plain($own_fields['title']) : '');
-      $promo_fields['description'] = !empty($promo_fields['description']) ? check_plain($promo_fields['description']) :
-        (!empty($own_fields['description']) ? check_plain($own_fields['description']) : '');
+      $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
+        (!empty($own_fields['title']) ? $own_fields['title'] : '');
+      $promo_fields['description'] = !empty($promo_fields['description']) ? $promo_fields['description'] :
+        (!empty($own_fields['description']) ? $own_fields['description'] : '');
     }
     return $promo_fields;
   }
@@ -354,12 +350,12 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
       $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper);
       if (empty($promo_fields['promo_title']) || empty($promo_fields['description']) || empty($promo_fields['topic']) ) {
         $own_fields = _usanetwork_promo_file_get_promo_lines($entity_object);
-        $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? check_plain($promo_fields['promo_title']) :
-          (!empty($own_fields['title']) ? check_plain($own_fields['title']) : '');
-        $promo_fields['description'] = !empty($promo_fields['description']) ? check_plain($promo_fields['description']) :
-          (!empty($own_fields['description']) ? check_plain($own_fields['description']) : '');
-        $promo_fields['topic'] = !empty($promo_fields['topic']) ? check_plain($promo_fields['topic']) :
-          (!empty($own_fields['topic']) ? check_plain($own_fields['topic']) : '');
+        $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
+          (!empty($own_fields['title']) ? $own_fields['title'] : '');
+        $promo_fields['description'] = !empty($promo_fields['description']) ? $promo_fields['description'] :
+          (!empty($own_fields['description']) ? $own_fields['description'] : '');
+        $promo_fields['topic'] = !empty($promo_fields['topic']) ? $promo_fields['topic'] :
+          (!empty($own_fields['topic']) ? $own_fields['topic'] : '');
       }
       return $promo_fields;
     }

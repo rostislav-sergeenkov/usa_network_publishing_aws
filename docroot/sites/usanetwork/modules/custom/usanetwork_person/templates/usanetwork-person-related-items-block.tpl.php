@@ -5,20 +5,14 @@
 ?>
 
   <?php if (!empty($ad)): ?>
-    <div class="latest-ad"><?php print $ad; ?></div>
+    <div class="midbanner" id="advert-related-<?php print $ad_id; ?>"></div>
   <?php endif; ?>
   <?php if (!empty($related_items)): ?>
-    <ul class="<?php print $is_even ? 'even' : 'odd'; ?>">
-      <?php $index = 1; ?>
+    <ul>
       <?php foreach ($related_items as $related_item): ?>
-        <?php if ($index % 2 != 0): ?>
-          <li class="block-item">
-        <?php endif; ?>
-        <?php print $related_item; ?>
-        <?php if ($index % 2 == 0): ?>
-          </li>
-        <?php endif; ?>
-        <?php $index++; ?>
+        <li>
+          <?php print $related_item; ?>
+        </li>
       <?php endforeach; ?>
     </ul>
   <?php endif; ?>

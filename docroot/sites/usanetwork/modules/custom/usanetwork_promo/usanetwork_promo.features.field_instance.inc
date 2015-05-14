@@ -5724,7 +5724,7 @@ function usanetwork_promo_field_default_field_instances() {
   $field_instances['node-usanetwork_promo-field_promo_regular_image'] = array(
     'bundle' => 'usanetwork_promo',
     'deleted' => 0,
-    'description' => 'Minimum 600w x 500h - scales automatically for mobile.',
+    'description' => 'Promo regular image',
     'display' => array(
       'carousel_promo' => array(
         'label' => 'hidden',
@@ -5824,7 +5824,7 @@ function usanetwork_promo_field_default_field_instances() {
       'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '600x500',
+      'min_resolution' => '',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -6524,129 +6524,6 @@ function usanetwork_promo_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-usanetwork_promo-field_promo_wide_image'
-  $field_instances['node-usanetwork_promo-field_promo_wide_image'] = array(
-    'bundle' => 'usanetwork_promo',
-    'deleted' => 0,
-    'description' => 'Minimum 1230w x 500h',
-    'display' => array(
-      'carousel_promo' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 2,
-      ),
-      'home_promo' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'home_promo_bspot' => array(
-        'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'promo_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
-      ),
-      'promo_teaser_large' => array(
-        'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '615x250',
-        ),
-        'type' => 'image',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'file_rendered',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_promo_wide_image',
-    'label' => 'Wide Image',
-    'required' => 1,
-    'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
-      'file_directory' => 'promo_wide',
-      'file_extensions' => 'png gif jpg jpeg',
-      'focus' => 0,
-      'focus_lock_ratio' => 0,
-      'focus_min_size' => '',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '1230x500',
-      'title_field' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'media',
-      'settings' => array(
-        'allowed_schemes' => array(
-          'private' => 0,
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          0 => 0,
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 'media_default--media_browser_1',
-          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-          'media_internet' => 0,
-          'upload' => 'upload',
-        ),
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'media_generic',
-      'weight' => 7,
-    ),
-  );
 
   // Exported field_instance: 'node-usanetwork_promo-field_show'
   $field_instances['node-usanetwork_promo-field_show'] = array(

@@ -81,56 +81,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 
 @font-face {
-  font-family: "Proxima N W01 Thin Reg";
-  src: url("../fonts/37994fca-b67e-41db-94b3-44077c62810a.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Thin Reg";
-  src: url("../fonts/da176885-bee9-49f7-88f0-d7ad9229ddd7.woff") format("woff"), url("../fonts/1861a7b7-09a5-4efd-b681-5214784ded39.ttf") format("truetype"), url("../fonts/610147b3-ad15-4b4b-a0fb-25244238ab3d.svg#610147b3-ad15-4b4b-a0fb-25244238ab3d") format("svg");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Reg";
-  src: url("../fonts/7e90123f-e4a7-4689-b41f-6bcfe331c00a.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Reg";
-  src: url("../fonts/e56ecb6d-da41-4bd9-982d-2d295bec9ab0.woff") format("woff"), url("../fonts/2aff4f81-3e97-4a83-9e6c-45e33c024796.ttf") format("truetype"), url("../fonts/ab9cd062-380f-4b53-b1a7-c0bec7402235.svg#ab9cd062-380f-4b53-b1a7-c0bec7402235") format("svg");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Smbd";
-  src: url("../fonts/87e4b4fc-cdf1-450a-8bed-dd818cba908d.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Smbd";
-  src: url("../fonts/70ae52ec-d89b-4c6a-9402-854ebe423c54.woff") format("woff"), url("../fonts/6a35571c-ea14-4dac-9ae1-0e7af0abeec8.ttf") format("truetype"), url("../fonts/ac2bdafc-d4a8-49d0-8a10-4e2f16bf7e3c.svg#ac2bdafc-d4a8-49d0-8a10-4e2f16bf7e3c") format("svg");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Bold";
-  src: url("../fonts/fbc6b03a-b3a1-427c-a884-053deca3a53c.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Bold";
-  src: url("../fonts/d999c07b-a049-4eb5-b8a6-4f36ae25e67e.woff") format("woff"), url("../fonts/4d4a75f5-d32a-4a09-8665-133afd39cc37.ttf") format("truetype"), url("../fonts/8152bc4e-d700-4c78-b6be-326893e6f53f.svg#8152bc4e-d700-4c78-b6be-326893e6f53f") format("svg");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Xbold";
-  src: url("../fonts/9fbce143-f5db-4c0b-9159-b1e666079f67.eot?iefix") format("eot");
-}
-
-@font-face {
-  font-family: "Proxima N W01 Xbold";
-  src: url("../fonts/19dd5cf2-ac2d-48d5-901a-c432fd291ee2.woff") format("woff"), url("../fonts/22cfbfa4-f607-4751-92eb-6fa194353e57.ttf") format("truetype"), url("../fonts/3d6b6348-e05f-4123-b19a-3bfd02c7f361.svg#3d6b6348-e05f-4123-b19a-3bfd02c7f361") format("svg");
-}
-
-@font-face {
   font-family: "avalonextra_light";
   src: url("../fonts/Avalon-XLight-webfont.eot?iefix") format("eot");
 }
@@ -621,86 +571,86 @@ body, .usa-secondary-menu .shows > li.first > span, #block-views-usa-mpx-video-l
 .featured-asset .meta-head .episode-title,
 .featured-asset .meta-head .details,
 .featured-asset .meta-head .description, .lyris .form-item-email input {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
 }
 
 #utilities .show-time, body.blog .panel-display .panel-col-last .panel-pane h2.pane-title, body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
 }
 
 .block-usanetwork-video .view .node h4, .echo-item-footer, #showList {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 12px;
 }
 
 [id='person-content'] h4, .social-follow-block .item-content .title, .social-follow-block .item-content .title h2,
 .social-follow-block .item-content .title h4,
 .social-follow-block .item-content .title .field-name-field-usa-actor-name, .lyris .form-submit, .echo-item-data {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 14px;
 }
 
 #on-now-show-name, #on-now-episode {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 14px;
 }
 
 .caption-overlay .caption-fields-wrapper .caption {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 15px;
 }
 
 #usanetwork_social_show_comment .echo-item-data, .snipe-msg h3 {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 16px;
 }
 
 #jPanelMenu-menu .menu-title, .slide-panel-link, .usa-secondary-menu, #utilities h1#page-title, #utilities h2#page-title {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 18px;
 }
 
 .social-follow-block h2, #lyris h2, #usanetwork_social_chatter_title, .social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer,
 .social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer, #usanetwork_social_join .usanetwork_social_join_msg {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 24px;
 }
 
 #showList h3 {
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 30px;
 }
 
 #block-views-usa-mpx-video-latest-live-video .view-mode-full .description h3.title {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 
 #on-now-panel .tab-wrapper, #utilities .breadcrumb .show-section, body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row .views-field-title, .node.node-post, body.blog .panel-display .panel-col-top h1 {
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 
 .echo-item-content .echo-item-tweetUserName a {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
 }
 
 #on-now-panel .show-info-wrapper .show-title, .node.node-post .field-name-post-date {
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
 
 .show-on-sync span {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
 
 #utilities .breadcrumb > a, .echo-item-authorName, .snipe-msg h2 {
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now-block, .node.node-post .field-name-title h2 {
-  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
 
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li:nth-child(2) .meta, .five-promo-item-block ul li .last .meta, .show-latest-block ul li .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta, .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .videos-landing-page-container .video-items-blocks ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
@@ -2550,6 +2500,103 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper {
+  background: #656364;
+  bottom: 0;
+  height: 25.8%;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper {
+    height: 28%;
+  }
+}
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner {
+  height: 100%;
+  display: table;
+  position: relative;
+  width: 100%;
+}
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta {
+  display: table-cell;
+  max-width: 100px;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  color: #ffffff;
+}
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title, .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.3em;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 27px;
+  }
+}
+@media (max-width: 1024px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 14.4px;
+  }
+}
+@media (max-width: 768px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 12px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 17.9px;
+  }
+}
+@media (max-width: 480px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
+    font-size: 14px;
+  }
+}
+.cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+  font-family: "texgyrescholaitalic", Times, serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1em;
+}
+@media (min-width: 1901px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 9.6px;
+  }
+}
+@media (max-width: 768px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 8px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 11.98px;
+  }
+}
+@media (max-width: 480px) {
+  .cast-and-crew-block .block-item .cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
+    font-size: 8px;
+  }
+}
+
 .meta-icon {
   border-radius: 50%;
   display: block;
@@ -3065,7 +3112,7 @@ ul.menu li {
 
 .lazyloader-icon {
   height: auto;
-  width: auto;
+  width: auto !important;
 }
 
 .latest-ad {
@@ -3446,11 +3493,47 @@ input[type="radio"], input[type="checkbox"] {
   content: "\e606";
 }
 
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+  content: "\e602";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container td > div {
+  background-image: none !important;
+  display: block;
+  font-family: "ico-font";
+  font-size: 32px;
+}
+@media (max-width: 768px) {
+  .field-type-gigya-sharebar .gig-button-container td > div {
+    font-size: 26px;
+  }
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+  content: "\e602";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+  content: "\e603";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+  content: "\e604";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+  content: "\e605";
+  color: #afafaf;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+  content: "\e606";
+  color: #afafaf;
+}
+
 #topbanner {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
-  width: 970px;
+  max-width: 970px;
 }
 
 .midbanner {
@@ -3472,7 +3555,7 @@ input[type="radio"], input[type="checkbox"] {
   margin: 10px auto;
   overflow: hidden;
   text-align: center;
-  width: 970px;
+  max-width: 970px;
 }
 
 .clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
@@ -5477,24 +5560,24 @@ header .tab-item.active {
   border-top: 1px solid darkgrey;
   display: block;
 }
-header .tab-item.shows-tab > div {
+header .tab-item.shows-tab .panel-pane {
   float: left;
   position: relative;
 }
-header .tab-item.shows-tab > div h2 {
+header .tab-item.shows-tab .panel-pane h2 {
   color: #dcddde;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;
   text-transform: uppercase;
 }
-header .tab-item.shows-tab > div ul {
+header .tab-item.shows-tab .panel-pane ul {
   list-style: none;
   margin-top: 20px;
 }
-header .tab-item.shows-tab > div li {
+header .tab-item.shows-tab .panel-pane li {
   margin-bottom: 20px;
 }
-header .tab-item.shows-tab > div li a {
+header .tab-item.shows-tab .panel-pane li a {
   color: #dcddde;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
@@ -5503,14 +5586,14 @@ header .tab-item.shows-tab > div li a {
   text-transform: uppercase;
 }
 @media (min-width: 1281px) {
-  header .tab-item.shows-tab > div li a {
+  header .tab-item.shows-tab .panel-pane li a {
     font-size: 14px;
   }
 }
-header .tab-item.shows-tab > div li a span {
+header .tab-item.shows-tab .panel-pane li a span {
   color: #000000;
 }
-header .tab-item.shows-tab > div li a:hover {
+header .tab-item.shows-tab .panel-pane li a:hover {
   text-decoration: underline;
 }
 header .tab-item.shows-tab .originals-shows-menu {
@@ -6855,6 +6938,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a span {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
     font-size: 40px;
@@ -7157,8 +7243,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 1024px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 1.3em;
   }
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar {
@@ -7471,7 +7557,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .caption-overlay .caption-fields-wrapper h3 {
   margin: 0 0 3px;
   line-height: 22.5px;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 .caption-overlay .caption-fields-wrapper .caption > div {
   display: inline;
@@ -7657,7 +7743,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 
 .view-usa-episodes.view-display-id-panel_pane_3, .view-id-usa_episodes.view-display-id-panel_pane_1 {
-  font-family: Proxima N W01 Reg;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: 1;
   font-size: 20px;
@@ -8932,7 +9018,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 
 .show-latest-block {
-  background: #dcddde;
+  background: #e9eaeb;
   border-bottom: 2px solid;
   margin-bottom: 100px;
   padding: 40px 16px;
@@ -9226,7 +9312,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   padding-bottom: 10px;
   margin: 0;
   color: #3d3d3d;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 960px) {
   .block-usanetwork-tv-schedule .echo-item-data {
@@ -12621,7 +12707,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block {
-    padding: 18px 29px 18px 30px;
+    padding: 24px;
   }
 }
 @media (max-width: 768px) {
@@ -12631,7 +12717,7 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block {
-    padding: 20px 42px 20px 49px;
+    padding: 56.25vw 0 0;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header {
@@ -12647,8 +12733,24 @@ footer h2 {
     margin-bottom: 15px;
   }
 }
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
+    margin-bottom: 0;
+    padding: 10px 46px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
+    padding: 10px 25px;
+  }
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left {
   float: left;
+}
+@media (max-width: 320px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left {
+    float: none;
+  }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -12672,7 +12774,7 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 36px;
+    font-size: 24px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
@@ -12693,11 +12795,16 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 13px;
+    font-size: 10px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
   float: right;
+}
+@media (max-width: 320px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
+    float: none;
+  }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -12714,9 +12821,27 @@ footer h2 {
     font-size: 15px;
   }
 }
-@media (max-width: 640px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
-    font-size: 18.75px;
+.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  text-align: right;
+  line-height: 1em;
+  margin: 0 14px 15px 0;
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 320px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
+    text-align: left;
+    line-height: 2em;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content:after {
@@ -12730,7 +12855,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
-    width: 35.8%;
+    width: 42.62%;
   }
 }
 @media (max-width: 768px) {
@@ -12740,19 +12865,51 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
+    height: 56.25vw;
+    left: 0;
+    top: 0;
+    position: absolute;
     width: 100%;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img img {
   margin-bottom: 30px;
 }
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
+  display: none;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
+    display: block;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
+    float: left;
+    clear: left;
+    height: 250px;
+    margin-top: 45px;
+    width: 46.8%;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
+    width: 42.62%;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .advert .advertisement {
+  height: 250px;
+  margin: 0 auto;
+  width: 300px;
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
-  width: 48%;
   float: right;
+  position: relative;
+  width: 48%;
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
-    width: 64%;
+    width: 56%;
   }
 }
 @media (max-width: 768px) {
@@ -12762,8 +12919,17 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
+    padding: 10px 46px;
     width: 100%;
   }
+}
+@media (max-width: 480px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
+    padding: 10px 25px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .description iframe {
+  width: 100%;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul {
   word-spacing: -6px;
@@ -12788,12 +12954,6 @@ footer h2 {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul li {
     font-size: 13px;
     line-height: 34px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul li {
-    font-size: 17.5px;
-    line-height: 46px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description ul li.active {
@@ -12825,7 +12985,7 @@ footer h2 {
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items {
     width: 100%;
-    font-size: 24px;
+    font-size: 18px;
     color: #545454;
   }
 }
@@ -12864,15 +13024,108 @@ footer h2 {
     width: 100%;
   }
 }
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li {
+    background: #343434;
+    height: 75px;
+    position: relative;
+    width: 100% !important;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li:nth-child(odd) {
+    background: #3e3e3e;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li:nth-child(even) {
+    background: #343434;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li > div {
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li a {
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .asset-img {
+    height: 50px;
+    left: 4%;
+    margin-top: -25px;
+    position: absolute;
+    top: 50%;
+    width: 75px;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .asset-img.active {
+    border-left: 7px solid;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .asset-img img {
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .asset-img ~ .meta-wrapper .meta {
+    padding-left: calc(8% + 75px);
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper {
+    background: none;
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta-wrapper-inner {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta {
+    color: #afafaf;
+    padding-left: 4%;
+    display: table-cell;
+    max-width: 100px;
+    vertical-align: middle;
+    width: 100%;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta .caption {
+    font-size: 10px;
+    line-height: 13px;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta .title {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 7px;
+  }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta .additional {
+    font-family: "texgyrescholaitalic", Times, serif;
+    font-size: 10px;
+    line-height: 13px;
+    text-transform: uppercase;
+  }
+}
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .consum-sidebar .more-items {
     top: 0;
   }
 }
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .consum-sidebar .more-items a {
+    font-size: 15px;
+    height: 45px;
+    line-height: 45px;
+  }
+}
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .consum-sidebar .advert {
-    bottom: calc(100% + 50px);
-    position: absolute;
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block-title {
+    height: 45px;
+    line-height: 45px;
+    padding-left: 0;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block-title h2 {
+    font-size: 23px;
+    line-height: 45px;
+    text-align: center;
   }
 }
 
@@ -15175,6 +15428,15 @@ footer h2 {
   max-width: 260px;
   text-transform: uppercase;
 }
+.show-title-block h1 a {
+  color: #ffffff;
+}
+.show-title-block h1 a:hover {
+  color: #ffffff;
+}
+.show-title-block h1 a:focus {
+  outline: none;
+}
 @media (min-width: 1901px) {
   .show-title-block h1 {
     font-size: 36px;
@@ -15198,6 +15460,10 @@ footer h2 {
     text-align: center;
     vertical-align: middle;
   }
+}
+.show-title-block a:visited, .show-title-block a:active {
+  color: #ffffff;
+  outline: none !important;
 }
 .show-title-block .schedule {
   display: table;
@@ -15721,6 +15987,16 @@ footer h2 {
     text-align: center;
   }
 }
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.all-items-filter {
+    width: 47%;
+    min-width: inherit;
+    margin-right: 2%;
+  }
+  .videos-landing-page-container .upper-menu .item-filter.all-items-filter .filter-label {
+    width: 100%;
+  }
+}
 @media (max-width: 768px) {
   .videos-landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu {
     background: darkgrey;
@@ -15842,13 +16118,23 @@ footer h2 {
     margin-top: 15px;
   }
 }
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.sorter-items {
+    width: 47%;
+  }
+}
 @media (max-width: 320px) {
   .videos-landing-page-container .upper-menu .item-filter.sorter-items {
-    margin: 20px 10px 13px 0;
+    margin: 15px auto;
   }
 }
 .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-label {
   width: 160px;
+}
+@media (max-width: 480px) {
+  .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-label {
+    width: 100%;
+  }
 }
 .videos-landing-page-container .upper-menu .item-filter.sorter-items .filter-menu {
   background: darkgrey;
@@ -16118,6 +16404,435 @@ footer h2 {
 @media (min-width: 769px) and (max-width: 1024px) {
   .videos-landing-page-container .video-items-blocks ul.even li:nth-child(5) {
     margin-right: 0;
+  }
+}
+
+#block-usanetwork-person-usanetwork-person-cast-lmb-block {
+  background: #ffffff;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+#block-usanetwork-person-usanetwork-person-cast-lmb-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-header-image {
+  position: relative;
+  width: 100%;
+}
+#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  margin: 0 auto;
+  max-width: 1868px;
+  padding: 40px 24px 40px 90px;
+  position: relative;
+  width: 100%;
+}
+#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1281px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    min-height: 870px;
+  }
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    min-height: 890px;
+    padding: 60px 32px 60px 150px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    min-height: 750px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    min-height: 650px;
+    padding: 30px 17px 30px 80px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    padding: 30px 36px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    padding: 20px 24px;
+  }
+}
+#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+  color: #000000;
+  float: left;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  width: 60%;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+    font-size: 14px;
+    width: calc(100% - 340px);
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+    font-size: 12px;
+  }
+}
+#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description p {
+  margin: 0.5em 0;
+}
+#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
+  display: block;
+  float: right;
+  height: 250px;
+  width: 300px;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
+    display: none;
+  }
+}
+#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
+  bottom: 0;
+  line-height: 1;
+  max-height: 537px;
+  max-width: 475px;
+  position: absolute;
+  right: 24px;
+  width: 30%;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
+    display: none;
+  }
+}
+
+.cast-and-crew-block {
+  background: #dcddde;
+  border-bottom: 2px solid;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 70px;
+}
+.cast-and-crew-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 1280px) {
+  .cast-and-crew-block {
+    padding: 50px 42px;
+  }
+}
+@media (max-width: 1024px) {
+  .cast-and-crew-block {
+    padding: 40px 32px;
+  }
+}
+@media (max-width: 768px) {
+  .cast-and-crew-block {
+    padding: 30px 26px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block {
+    padding: 40px 12px;
+  }
+}
+.cast-and-crew-block ul {
+  margin: 0 auto;
+  max-width: 1760px;
+}
+.cast-and-crew-block .block-item {
+  float: left;
+  height: 21.3vw;
+  margin-top: 2.3vw;
+  overflow: hidden;
+  position: relative;
+  width: 23.2%;
+  margin-right: 2.3%;
+}
+@media (min-width: 1901px) {
+  .cast-and-crew-block .block-item {
+    height: 409px;
+    margin-top: 40px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block .block-item {
+    width: 48.7%;
+    height: 45.3vw;
+  }
+  .cast-and-crew-block .block-item:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+@media (max-width: 480px) {
+  .cast-and-crew-block .block-item {
+    height: 44.8vw;
+  }
+}
+.cast-and-crew-block .block-item:nth-child(4n) {
+  margin-right: 0;
+}
+@media (min-width: 641px) {
+  .cast-and-crew-block .block-item:nth-child(3), .cast-and-crew-block .block-item:nth-child(4) {
+    margin-top: 0;
+  }
+}
+.cast-and-crew-block .block-item:nth-child(1), .cast-and-crew-block .block-item:nth-child(2) {
+  margin-top: 0;
+}
+
+.series-recap-block {
+  background: #e9eaeb;
+  border-bottom: 2px solid;
+  overflow: hidden;
+  padding: 50px 22px;
+  position: relative;
+  width: 100%;
+}
+.series-recap-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1901px) {
+  .series-recap-block {
+    padding: 70px 32px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block {
+    padding: 40px 22px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block {
+    padding: 40px 12px;
+  }
+}
+.series-recap-block .series-recap-video {
+  height: 54.13vw;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video {
+    height: 1014.75px;
+    max-width: 1804px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video {
+    height: 53vw;
+  }
+}
+@media (max-width: 768px) {
+  .series-recap-block .series-recap-video {
+    height: 52vw;
+  }
+}
+.series-recap-block .series-recap-video iframe {
+  height: 100%;
+  width: 100%;
+}
+.series-recap-block .series-recap-video-info {
+  margin-top: 30px;
+  position: relative;
+  width: 100%;
+}
+.series-recap-block .series-recap-video-info:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info {
+    max-width: 1804px;
+    margin: 40px auto 0;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info {
+    margin-top: 20px;
+    padding: 0 25px;
+  }
+}
+@media (max-width: 480px) {
+  .series-recap-block .series-recap-video-info {
+    padding: 0 15px;
+  }
+}
+.series-recap-block .series-recap-video-info .series-recap-video-meta {
+  float: left;
+  width: calc(100% - 220px);
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .series-recap-video-meta {
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .series-recap-video-meta {
+    width: calc(100% - 180px);
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .series-recap-video-meta {
+    float: none;
+    width: 100%;
+  }
+}
+.series-recap-block .series-recap-video-info .video-description {
+  color: #545454;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .video-description {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .video-description {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .series-recap-block .series-recap-video-info .video-description {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-description {
+    font-size: 10px;
+    line-height: 13px;
+  }
+}
+.series-recap-block .series-recap-video-info .video-title {
+  color: #545454;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  line-height: 38px;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .video-title {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .video-title {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+@media (max-width: 768px) {
+  .series-recap-block .series-recap-video-info .video-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+.series-recap-block .series-recap-video-info .video-button {
+  float: right;
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-button {
+    float: none;
+    margin-top: 15px;
+    width: 180px;
+  }
+}
+.series-recap-block .series-recap-video-info .video-button a {
+  color: #ffffff;
+  display: block;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 55px;
+  padding: 0 35px 0 20px;
+  position: relative;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .video-button a {
+    font-size: 22px;
+    line-height: 80px;
+    padding: 0 50px 0 30px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .video-button a {
+    font-size: 13px;
+    line-height: 50px;
+    padding: 0 30px 0 15px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-button a {
+    line-height: 35px;
+  }
+}
+.series-recap-block .series-recap-video-info .video-button a:after {
+  color: #ffffff;
+  content: "\e608";
+  display: block;
+  font-family: "ico-font";
+  font-size: 12px;
+  margin-top: -27px;
+  right: 15px;
+  position: absolute;
+  top: 50%;
+}
+@media (min-width: 1901px) {
+  .series-recap-block .series-recap-video-info .video-button a:after {
+    font-size: 16px;
+    margin-top: -40px;
+    right: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .series-recap-block .series-recap-video-info .video-button a:after {
+    font-size: 10px;
+    margin-top: -25px;
+    right: 13px;
+  }
+}
+@media (max-width: 640px) {
+  .series-recap-block .series-recap-video-info .video-button a:after {
+    margin-top: -17px;
   }
 }
 
@@ -18364,12 +19079,12 @@ body.person-page #main {
 .page-videos-live #content .block h2 {
   text-transform: uppercase;
   font-size: 20px;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 644px) {
   .page-videos-live #content .block h2 {
     font-size: 16px;
-    font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+    font-family: "avalonbold", Helvetica, Arial, sans-serif;
   }
 }
 .page-videos-live #content .block .schedule-link {
@@ -18379,16 +19094,16 @@ body.person-page #main {
   text-transform: none;
   color: #FFFFFF;
   font-size: 16px;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 644px) {
   .page-videos-live #content .block .schedule-link a {
     font-size: 12px;
-    font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+    font-family: "avalonbold", Helvetica, Arial, sans-serif;
   }
 }
 .page-videos-live .file.view-mode-full .meta-head h1.show-name {
-  font-family: "Proxima N W01 Smbd";
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 30px;
 }
 
@@ -18418,13 +19133,13 @@ body.person-page #main {
 }
 @media (min-width: 959px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h1.show-name {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 30px;
   }
 }
 @media (min-width: 1275px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h1.show-name {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 30px;
   }
 }
@@ -18436,13 +19151,13 @@ body.person-page #main {
 }
 @media (min-width: 959px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h2.tune-in {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 30px;
   }
 }
 @media (min-width: 1275px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h2.tune-in {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 30px;
   }
 }
@@ -18481,12 +19196,12 @@ body.person-page #main {
 }
 @media (min-width: 959px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .description .rating {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   }
 }
 @media (min-width: 1275px) {
   #block-views-usa-mpx-video-latest-live-video .view-mode-full .description .rating {
-    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   }
 }
 
@@ -18668,7 +19383,7 @@ body.person-page #main {
 .block-usanetwork-mpx-video .view .file h4,
 #block-views-usa-mpx-video-fullepisodes-live .view .file h4 {
   margin: 0;
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 13px;
 }
 .block-usanetwork-mpx-video .view .file h4:after,
@@ -20257,7 +20972,7 @@ body.person-page #main {
   right: -2%;
 }
 .tveModal.loginModal .richContent h1 {
-  font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 30px;
   letter-spacing: 1px;
   margin: 0;
@@ -20265,7 +20980,7 @@ body.person-page #main {
   padding: 0;
 }
 .tveModal.loginModal .richContent h2 {
-  font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 22px;
   color: #4f4f4f;
   letter-spacing: 0.5px;
@@ -20289,7 +21004,7 @@ body.person-page #main {
   margin: 0 auto;
   padding: 2%;
   text-align: center;
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 25px;
 }
@@ -20332,13 +21047,13 @@ body.person-page #main {
 }
 .tveModal.loginModal .modalContent .articles .features-wrapper .feature-group h2 {
   margin: 0 0 3.6% 0;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 27px;
 }
 .tveModal.loginModal .modalContent .articles .features-wrapper .feature-group .feature-copy {
   margin: 0 0 10px 0;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 20px;
 }
@@ -20346,7 +21061,7 @@ body.person-page #main {
   margin-top: 0px !important;
 }
 .tveModal.loginModal .modalContent .buttonBar button {
-  font-family: Proxima N W01 Bold,Helvetica,Arial,sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px !important;
   font-weight: normal !important;
 }
@@ -20355,7 +21070,7 @@ body.person-page #main {
   padding: 5px 20px;
   border: 0;
   color: white;
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
@@ -20377,12 +21092,12 @@ body.person-page #main {
 }
 .tveModal.loginModal .modalHeader h1 {
   margin: 0;
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   line-height: 32px;
   letter-spacing: normal;
 }
 .tveModal.loginModal .modalHeader .moreDetails {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", Arial, sans-serif;
   font-size: 12px;
   line-height: 26px;
 }
@@ -21761,7 +22476,7 @@ input.echo-submit-text {
 .field-type-gigya-sharebar .gig-button-container td > div:hover {
   width: 32px !important;
   height: 32px !important;
-  background-image: url("../images/social_chatter_icons.png") !important;
+  background-image: url("../images/social_chatter_icons.png");
   background-repeat: none;
 }
 @media (max-width: 709px) {
@@ -23731,6 +24446,11 @@ yx-axis
     font-size: 9px;
   }
 }
+.usanetwork-aspot .meta-wrap .sponsored {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 .usanetwork-aspot .social_meter {
   min-height: 78px;
   width: 205px;
@@ -24001,8 +24721,9 @@ yx-axis
 }
 .aspot-and-episodes .episodes-list > .title {
   background: #e1e1e1;
-  height: 10%;
+  min-height: 10%;
   position: relative;
+  text-align: center;
   width: 100%;
 }
 @media (max-width: 768px) {
@@ -26663,7 +27384,7 @@ body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul l
   border-right: 2px solid #749eb6;
   color: #163969;
   text-transform: uppercase;
-  font-family: "avalonmedium_condensed", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium_condensed", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 25px;
 }
@@ -26722,7 +27443,7 @@ body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul l
 }
 body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li.active, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li.active-trail,
 body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li a.active {
-  font-family: "avalonbold_condensed", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold_condensed", Helvetica, Arial, sans-serif;
   line-height: 24px;
 }
 body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li .item-list {
@@ -26730,7 +27451,7 @@ body.blog .panel-display .panel-col-top .inside .blog-header .category-menu ul l
 }
 body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label {
   display: none;
-  font-family: "avalonmedium_condensed", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium_condensed", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 17px;
   position: relative;
@@ -26833,7 +27554,7 @@ body.blog .view-display-id-blog_content .views-row {
   background-color: #313131;
   color: #fff;
   padding: 15px;
-  font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 18px;
   letter-spacing: 3px;
 }
@@ -26889,7 +27610,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 #full-bleed-promo {
-  margin: 20px auto 0;
+  margin: 0 auto;
   position: relative;
   min-height: 250px;
   max-height: 500px;

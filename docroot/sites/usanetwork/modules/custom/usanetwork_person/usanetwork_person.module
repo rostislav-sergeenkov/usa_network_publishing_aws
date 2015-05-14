@@ -868,9 +868,10 @@ function _usanetwork_person_render_cast_crew_block() {
         if (!empty($person_node->field_usa_character_thumb)) {
           $image = $person_node_wrapper->field_usa_character_thumb->value();
         }
+        $person_role = !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '';
         $theme_variables['persons'][] = array(
           'name' => !empty($person_node->title) ? $person_node->title : '',
-          'role' => !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '',
+          'role' => strtolower($person_role) != 'blank' ? $person_role : '',
           'image' => !empty($image) ? image_style_url('420x420', $image['uri']) : '',
           'url' => url('node/' . $person_node->nid),
         );

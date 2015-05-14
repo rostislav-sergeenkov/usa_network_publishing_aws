@@ -3558,6 +3558,114 @@ input[type="radio"], input[type="checkbox"] {
   max-width: 970px;
 }
 
+.page-file header .header-nav-bar .nav-bar-tabs .sponsored {
+  display: table;
+  float: left;
+  height: 100%;
+  text-align: center;
+}
+.page-file header .header-nav-bar .nav-bar-tabs .sponsored .mps-slot {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.featured-block .slides .sponsored {
+  bottom: 40%;
+  right: 0;
+  position: absolute;
+}
+.featured-block .slides li.first .sponsored {
+  bottom: 31%;
+}
+
+.aspot-and-episodes .show-aspot .sponsored {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.aspot-and-episodes .episodes-list.sponsored-enable .title {
+  height: calc(10% + 50px);
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list.sponsored-enable .title {
+    height: 105px;
+  }
+}
+.aspot-and-episodes .episodes-list.sponsored-enable .title .title-wrapper {
+  height: 50%;
+}
+.aspot-and-episodes .episodes-list.sponsored-enable .episodes-list-slider.vertical {
+  height: calc(90% - 50px);
+}
+
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
+  bottom: 34.7%;
+  right: 0;
+  position: absolute;
+}
+@media (max-width: 768px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
+    bottom: 8.6vw;
+  }
+}
+@media (max-width: 640px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
+    bottom: 12.4vw;
+  }
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
+  bottom: 9.1vw;
+}
+@media (max-width: 768px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
+    bottom: 25%;
+  }
+}
+@media (max-width: 640px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
+    bottom: 29%;
+  }
+}
+@media (min-width: 1901px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
+    bottom: 173px;
+  }
+}
+
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
+  bottom: 9.1vw;
+  right: 0;
+  position: absolute;
+}
+@media (max-width: 768px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
+    bottom: 8.6vw;
+  }
+}
+@media (max-width: 640px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
+    bottom: 12.4vw;
+  }
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+  bottom: 9.1vw;
+}
+@media (max-width: 768px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+    bottom: 8.6vw;
+  }
+}
+@media (max-width: 640px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+    bottom: 29%;
+  }
+}
+@media (min-width: 1901px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+    bottom: 173px;
+  }
+}
+
 .clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
   content: "";
   display: table;
@@ -24446,11 +24554,6 @@ yx-axis
     font-size: 9px;
   }
 }
-.usanetwork-aspot .meta-wrap .sponsored {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
 .usanetwork-aspot .social_meter {
   min-height: 78px;
   width: 205px;
@@ -24721,7 +24824,7 @@ yx-axis
 }
 .aspot-and-episodes .episodes-list > .title {
   background: #e1e1e1;
-  min-height: 10%;
+  height: 10%;
   position: relative;
   text-align: center;
   width: 100%;

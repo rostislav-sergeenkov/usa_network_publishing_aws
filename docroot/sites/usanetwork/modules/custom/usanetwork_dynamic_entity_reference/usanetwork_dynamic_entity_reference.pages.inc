@@ -47,26 +47,84 @@ function usanetwork_dynamic_entity_reference_autocomplete($field_name, $entity_t
   drupal_json_output($matches);
 }
 
-function _usanetwork_dynamic_entity_reference_get_node_query($target_bundles, $match = NULL, $match_operator = 'CONTAINS') {
-  $entity_info = entity_get_info('node');
+/**
+ * Builds default query for nodes.
+ *
+ * @param $target_bundles
+ * @param null $match
+ * @param string $match_operator
+ * @return \Drupal\Core\Database\Query\Select|SelectQuery
+ */
+function _usanetwork_dynamic_entity_reference_get_node_query($target_bundles, $match = NULL, $match_operator = 'LIKE') {
+  if ($match_operator == 'LIKE' && !empty($match)) {
+    $match = '%' . $match . '%';
+  }
 
   $query = db_select('node', 'n');
-  $query->condition('n.type', $target_bundles, 'IN');
+  $query->fields('n', array('nid', 'vid', 'type', 'title'));
+  $query->condition('n.type', $target_bundles, is_array($target_bundles) ? 'IN' : '=');
 
-  if (isset($match) && isset($entity_info['entity keys']['label']) && $label_key = $entity_info['entity keys']['label']) {
-
+  if (isset($match)) {
+    $query->condition('n.title', $match, $match_operator);
+    $query->orderBy('n.title', 'ASC');
   }
 
   return $query;
 }
 
-function _usanetwork_dynamic_entity_reference_get_file_query($target_bundles, $match = NULL, $match_operator = 'CONTAINS') {
-  $entity_info = entity_get_info('file');
+/**
+ * Builds default query for files.
+ *
+ * @param $target_bundles
+ * @param null $match
+ * @param string $match_operator
+ * @return \Drupal\Core\Database\Query\Select|SelectQuery
+ */
+function _usanetwork_dynamic_entity_reference_get_file_query($target_bundles, $match = NULL, $match_operator = 'LIKE') {
+  if ($match_operator == 'LIKE' && !empty($match)) {
+    $match = '%' . $match . '%';
+  }
 
   $query = db_select('file_managed', 'f');
-  $query->condition('f.type', $target_bundles, 'IN');
+  $query->fields('f', array('fid', 'vid', 'type', 'filename'));
+  $query->condition('f.type', $target_bundles, is_array($target_bundles) ? 'IN' : '=');
+
+  if (isset($match)) {
+    $query->condition('f.filename', $match, $match_operator);
+    $query->orderBy('f.filename', 'ASC');
+  }
+
+  if (_usanetwork_dynamic_entity_reference_is_videos_bundle($target_bundles)) {
+    $query->join('mpx_video', 'mv', 'mv.fid=f.fid');
+    $query->addField('mv', 'expiration_date');
+    $query->condition('mv.expiration_date', REQUEST_TIME, '>');
+  }
 
   return $query;
+}
+
+/**
+ * Checks if $target_bundles are videos
+ * @param $target_bundles
+ * @return bool
+ */
+function _usanetwork_dynamic_entity_reference_is_videos_bundle($target_bundles) {
+  if (is_array($target_bundles)) {
+    foreach ($target_bundles as $target_bundle) {
+      if ($target_bundle != 'mpx_video_1' && $target_bundle != 'mpx_video_2') {
+        return FALSE;
+      }
+    }
+
+    return TRUE;
+  }
+  else {
+    if ($target_bundles == 'mpx_video_1' || $target_bundles == 'mpx_video_2') {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
 }
 
 /**
@@ -87,6 +145,11 @@ function _usanetwork_dynamic_entity_reference_get_file_query($target_bundles, $m
 function usanetwork_dynamic_entity_reference_build_entity_query($target_type, $target_bundles, $match = NULL, $match_operator = 'CONTAINS') {
   $query = new stdClass();
 
+  // Compatibility with EntityFieldQuery operators
+  if ($match_operator == 'CONTAINS') {
+    $match_operator = 'LIKE';
+  }
+
   switch ($target_type) {
     case 'node':
       $query = _usanetwork_dynamic_entity_reference_get_node_query($target_bundles, $match, $match_operator);
@@ -102,29 +165,6 @@ function usanetwork_dynamic_entity_reference_build_entity_query($target_type, $t
   if ($query == NULL) {
     return NULL;
   }
-
-
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', $target_type);
-
-  if (!empty($target_bundles)) {
-    if (is_array($target_bundles)) {
-      $query->entityCondition('bundle', $target_bundles, 'IN');
-    }
-    else {
-      $query->entityCondition('bundle', $target_bundles);
-    }
-  }
-
-  $entity_info = entity_get_info($target_type);
-
-  if (isset($match) && isset($entity_info['entity keys']['label']) && $label_key = $entity_info['entity keys']['label']) {
-    $query->propertyCondition($label_key, $match, $match_operator);
-    $query->propertyOrderBy($label_key, 'ASC');
-  }
-
-  // Add entity-access tag.
-  $query->addTag($target_type . '_access');
 
   return $query;
 }
@@ -150,24 +190,31 @@ function usanetwork_dynamic_entity_reference_get_referenceable_entities($instanc
 
   $query = usanetwork_dynamic_entity_reference_build_entity_query($target_type, $target_bundles, $match, $match_operator);
   $query->range(0, $limit);
+  $result = $query->execute()->fetchAll();
 
-  $query->addTag('usanetwork_dynamic_entity_reference');
-  $query->addmetaData('instance_info', $instance_info);
-  $result = $query->execute();
-
-  if (empty($result) || empty($result[$target_type])) {
+  if (empty($result)) {
     return array();
   }
 
   $options = array();
 
-  $entities = entity_load($target_type, array_keys($result[$target_type]));
-  foreach ($entities as $entity_id => $entity) {
-    /** @var \EntityDrupalWrapper $wrapper */
+  foreach ($result as $result_num => $result_item) {
+    $entity_id_key = '';
+    $entity_load_callback = '';
+
+    switch ($target_type) {
+      case 'file': $entity_id_key = 'fid'; $entity_load_callback = 'file_load'; break;
+      case 'node': $entity_id_key = 'nid'; $entity_load_callback = 'node_load'; break;
+      default: continue;
+    }
+
+    $entity = $entity_load_callback($result_item->{$entity_id_key});
     $wrapper = entity_metadata_wrapper($target_type, $entity);
     $bundle = $wrapper->getBundle();
-    $options[$bundle][$entity_id] = check_plain($wrapper->label() . ' (' . $wrapper->type() . ' of ' . $bundle . ')');
+
+    $options[$result_item->type][$result_item->{$entity_id_key}] = check_plain($wrapper->label() . ' (' . $wrapper->type() . ' of ' . $bundle . ')');
   }
+  
   return $options;
 }
 

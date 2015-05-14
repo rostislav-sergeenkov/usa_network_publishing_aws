@@ -15,12 +15,20 @@ define('USANETWORK_EPISODE_TYPE_PREVIEW', 'preview');
 function usanetwork_episodes_menu() {
   $items = array();
 
-  $items['node/%node/episodes-list'] = array(
+  $items['node/%node/show-episodes'] = array(
     'title' => 'Episodes',
     'page arguments' => array(1),
     'page callback' => 'usanetwork_episodes_blank_page',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['ajax/usanetwork-tv-show-episodes/get-related/%node/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_episodes_get_season_episodes_ajax',
+    'page arguments' => array(3, 4),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -106,6 +114,11 @@ function usanetwork_episodes_theme($existing, $type, $theme, $path) {
         'ad_id' => NULL,
         'title' => NULL,
         'filters' => array(),
+        'active_filter_title' => NULL,
+        'season_number' => NULL,
+        'load_more_link' => NULL,
+        'show_nid' => NULL,
+        'is_global_block' => NULL,
       ),
       'template' => 'templates/usanetwork-episodes-landing-episodes-season',
     ),
@@ -265,12 +278,14 @@ function _usanetwork_episodes_main_block() {
   return '';
 }
 
-function usanetwork_episodes_get_episodes_list_block($display_filters_block = FALSE) {
+function usanetwork_episodes_get_episodes_list_block($display_filters_block = TRUE, $single_season_number = NULL, $tv_show_node = NULL, $show_ad = FALSE) {
   if (path_is_admin(current_path())) {
     return '';
   }
 
-  $tv_show_node = menu_get_object();
+  if ($tv_show_node === NULL) {
+    $tv_show_node = menu_get_object();
+  }
 
   if (empty($tv_show_node) || (!empty($tv_show_node) && isset($tv_show_node->type) && $tv_show_node->type != 'tv_show')) {
     return '';
@@ -278,9 +293,14 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = FA
 
   $season_ids = _usanetwork_episodes_get_season_ids($tv_show_node->nid);
   $query = drupal_get_query_parameters();
-  $filter_by_season = isset($query['season']) ? intval($query['season']) : 0;
+  $filter_by_season = $single_season_number === NULL
+    ? (isset($query['season']) ? intval($query['season']) : 0)
+    : $single_season_number;
+
   $current_season_data_item = NULL;
+  $current_season_data_item_index = NULL;
   $last_season_data = NULL;
+  $next_season_available = FALSE;
 
   $theme_variables = array(
     'items' => array(),
@@ -289,17 +309,23 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = FA
     'title' => NULL,
     'filters' => array(),
     'active_filter_title' => NULL,
+    'season_number' => NULL,
+    'load_more_link' => $next_season_available,
+    'show_nid' => $tv_show_node->nid,
+    'is_global_block' => FALSE,
   );
 
   if (!empty($season_ids)) {
     if ($filter_by_season == 0) {
       $current_season_data_item = $season_ids[0];
+      $current_season_data_item_index = 0;
       $theme_variables['active_filter_title'] = $current_season_data_item->season_title;
     }
     else {
-      foreach ($season_ids as $season_id) {
+      foreach ($season_ids as $season_id_number => $season_id) {
         if ($season_id->season_number == $filter_by_season) {
           $current_season_data_item = $season_id;
+          $current_season_data_item_index = $season_id_number;
           $theme_variables['active_filter_title'] = $current_season_data_item->season_title;
           $theme_variables['filters'] = array();
           break;
@@ -307,12 +333,26 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = FA
       }
 
       if (empty($current_season_data_item)) {
-        $current_season_data_item = $season_ids[0];
-        $theme_variables['active_filter_title'] = $current_season_data_item->season_title;
+        return '';
       }
     }
 
     $episodes_data = _usanetwork_episodes_get_season_episodes_data($current_season_data_item->season_number, $tv_show_node->nid);
+
+    if ($show_ad === FALSE) {
+      $theme_variables['ad'] = FALSE;
+    }
+    else {
+      $theme_variables['ad'] = TRUE;
+      $theme_variables['ad_id'] = $current_season_data_item->season_number;
+    }
+
+    if ($current_season_data_item_index + 1 < count($season_ids)) {
+      $theme_variables['load_more_link'] = TRUE;
+    }
+    else {
+      $theme_variables['load_more_link'] = FALSE;
+    }
 
     if ($display_filters_block) {
       $theme_variables['filters'][0] = array(
@@ -320,12 +360,17 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = FA
         'value' => 0,
       );
 
-      foreach ($season_ids as $season_id) {
+      foreach ($season_ids as $item_index => $season_id) {
         $theme_variables['filters'][$season_id->season_number] = array(
           'title' => $season_id->season_title,
           'value' => $season_id->season_number,
         );
       }
+
+      $theme_variables['is_global_block'] = TRUE;
+    }
+    else {
+      $theme_variables['is_global_block'] = FALSE;
     }
 
     $theme_variables['title'] = $current_season_data_item->season_title;
@@ -367,11 +412,47 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = FA
         $theme_variables['items'][] = theme('usanetwork_episodes_landing_episodes_list_item', $theme_item_variables);
       }
     }
+
+    $theme_variables['season_number'] = $current_season_data_item->season_number;
   }
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_episodes') . '/js/usanetwork_episodes.autoloader.js');
 
   return theme('usanetwork_episodes_landing_episodes_season', $theme_variables);
 }
 
+/**
+ * Ajax callback for season episodes block.
+ *
+ * @param $tv_show_node
+ * @param $season_number
+ */
+function usanetwork_episodes_get_season_episodes_ajax($tv_show_node, $season_number) {
+  $season_number = intval($season_number);
+
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => FALSE,
+    'rendered' => '',
+  );
+
+  if ($season_number >= 0) {
+    $block = usanetwork_episodes_get_episodes_list_block(FALSE, $season_number, $tv_show_node, TRUE);
+
+    $response['found'] = TRUE;
+    $response['rendered'] = $block;
+    $response['total'] = !empty($block) ? 1 : 0;
+  }
+
+  return drupal_json_output($response);
+}
+
+/**
+ * Returns a list of season ids of current Show.
+ * @param $tv_show_nid
+ * @return mixed
+ */
 function _usanetwork_episodes_get_season_ids($tv_show_nid) {
   $query = db_select('field_data_field_show', 'field_show');
   $query->addField('field_show', 'entity_id', 'season_nid');
@@ -387,6 +468,13 @@ function _usanetwork_episodes_get_season_ids($tv_show_nid) {
   return $query->execute()->fetchAll();
 }
 
+/**
+ * Returns data of season episodes of current Show.
+ *
+ * @param $season_number
+ * @param $show_nid
+ * @return array
+ */
 function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid) {
   $sorted_result = array();
 

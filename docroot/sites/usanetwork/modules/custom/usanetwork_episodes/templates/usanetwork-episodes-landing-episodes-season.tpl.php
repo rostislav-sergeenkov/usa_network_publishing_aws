@@ -4,9 +4,12 @@
  */
 ?>
 <?php if (!empty($ad)): ?>
-  <div class="midbanner" id="<?php print $ad_id; ?>"></div>
+  <div class="midbanner" id="show-episodes-landing-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
-<div class="episode-landing-list-items-season">
+<?php if (!empty($is_global_block)): ?>
+  <div class="episode-landing-list-items-seasons" data-show-nid="<?php print $show_nid; ?>">
+<?php endif; ?>
+<div class="episode-landing-list-items-season" data-season-number="<?php print $season_number; ?>">
   <div class="upper-bar">
     <div class="title">
       <h2><?php print $title; ?></h2>
@@ -22,8 +25,16 @@
     <?php endif; ?>
   </div>
   <?php if (!empty($items)): ?>
-    <?php foreach ($items as $item): ?>
-      <?php print $item; ?>
-    <?php endforeach; ?>
+    <div class="list-items">
+      <?php foreach ($items as $item): ?>
+        <?php print $item; ?>
+      <?php endforeach; ?>
+    </div>
+    <?php if (!empty($load_more_link)): ?>
+      <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>
+    <?php endif; ?>
   <?php endif; ?>
 </div>
+<?php if (!empty($is_global_block)): ?>
+  </div>
+<?php endif; ?>

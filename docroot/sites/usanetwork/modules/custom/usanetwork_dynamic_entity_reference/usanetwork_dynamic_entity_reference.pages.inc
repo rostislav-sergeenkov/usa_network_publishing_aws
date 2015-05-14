@@ -47,6 +47,28 @@ function usanetwork_dynamic_entity_reference_autocomplete($field_name, $entity_t
   drupal_json_output($matches);
 }
 
+function _usanetwork_dynamic_entity_reference_get_node_query($target_bundles, $match = NULL, $match_operator = 'CONTAINS') {
+  $entity_info = entity_get_info('node');
+
+  $query = db_select('node', 'n');
+  $query->condition('n.type', $target_bundles, 'IN');
+
+  if (isset($match) && isset($entity_info['entity keys']['label']) && $label_key = $entity_info['entity keys']['label']) {
+
+  }
+
+  return $query;
+}
+
+function _usanetwork_dynamic_entity_reference_get_file_query($target_bundles, $match = NULL, $match_operator = 'CONTAINS') {
+  $entity_info = entity_get_info('file');
+
+  $query = db_select('file_managed', 'f');
+  $query->condition('f.type', $target_bundles, 'IN');
+
+  return $query;
+}
+
 /**
  * Builds an EntityQuery to get referenceable entities.
  *
@@ -63,6 +85,24 @@ function usanetwork_dynamic_entity_reference_autocomplete($field_name, $entity_t
  *   it.
  */
 function usanetwork_dynamic_entity_reference_build_entity_query($target_type, $target_bundles, $match = NULL, $match_operator = 'CONTAINS') {
+  $query = new stdClass();
+
+  switch ($target_type) {
+    case 'node':
+      $query = _usanetwork_dynamic_entity_reference_get_node_query($target_bundles, $match, $match_operator);
+      break;
+    case 'file':
+      $query = _usanetwork_dynamic_entity_reference_get_file_query($target_bundles, $match, $match_operator);
+      break;
+    default:
+      $query = NULL;
+      break;
+  }
+
+  if ($query == NULL) {
+    return NULL;
+  }
+
 
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', $target_type);

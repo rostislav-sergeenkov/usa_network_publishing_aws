@@ -164,9 +164,9 @@ Project demo: http://shindiristudio.com/timeline
               $timelineItems =  $this.find('.timeline-items'),
               timelineWidth = $('.timelineFlat.tl3').width(),
               itemWidth = Math.ceil(timelineWidth * timeline_settings.percentItemWidth);
-              if (itemWidth > 1204) itemWidth = 1204;
+              if (itemWidth > 2866) itemWidth = 2866;
               else if (itemWidth <= 728) {
-                imgHeight = Math.floor(itemWidth * 0.648);
+                imgHeight = Math.floor(itemWidth * 0.5625);
                 $items.find('.timeline-item-image').height(imgHeight);
               }
 //              imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image img').width(),
@@ -387,40 +387,48 @@ usa_debug(data);
 //              itemWidth = $items.first().width(), // Math.ceil(timelineWidth * timeline_settings.percentItemWidth), // $items.first().width(),
               itemWidth = Math.ceil(timelineWidth * timeline_settings.percentItemWidth),
               lineWidth = Math.ceil(timelineWidth * timeline_settings.percentLineWidth);
-          if (itemWidth > 1204) itemWidth = 1204;
+          if (itemWidth > 2866) itemWidth = 2866;
 //              $line = $this.find('.timeline-wrapper:first'),
 //              margin = 300/2 - (itemWidth + timeline_settings.itemMargin)*(1/2 + startIndex) ,
 //              width = (itemWidth + timeline_settings.itemMargin)*$items.length + (itemOpenWidth + timeline_settings.itemMargin) + 660 ,
           var timelineItemsPaddingLeft = parseInt($timelineItems.css('padding-left')),
               timelineItemsPaddingRight = parseInt($timelineItems.css('padding-right')),
+              timelineItemsPaddingTop = parseInt($timelineItems.css('padding-top')),
+              timelineItemsPaddingBottom = parseInt($timelineItems.css('padding-bottom')),
+              timelineItemsPaddingTopBottom = timelineItemsPaddingTop + timelineItemsPaddingBottom,
               timelineItemsPadding = timelineItemsPaddingLeft + timelineItemsPaddingRight,
               margin = (timelineWidth - (itemWidth + timeline_settings.itemMargin))/2,
               width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + timelineItemsPadding, // 32, // 16px padding on left and right of .timeline-items
               imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image').width(),
-              imgHeight = Math.floor(imgWidth * 0.648);
+              imgHeight = Math.floor(imgWidth * 0.5625);
 
-usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width);
+usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width + ', imgWidth: ' + imgWidth + ', imgHeight: ' + imgHeight);
 
           // reset data values
           data.itemWidth = itemWidth;
           data.margin = margin;
 
           // set css of timeline items
+          $items.find('.timeline-item-image').css({'height': imgHeight + 'px'});
+
           if (itemWidth <= 728) {
-            $items.css({width: itemWidth, height: (imgHeight * 2) + 'px'});
+            $items.find('.timeline-item-text').css({'height': Math.floor(imgHeight * 0.5) + 'px'});
+            $items.css({'width': itemWidth + 'px', 'height': (imgHeight * 2) + 'px'});
+
+            // Set margin so start element would place in middle of the screen
+            $timelineItems.css({'width': width + 'px', 'margin-left': margin + 'px', 'height': ((imgHeight * 2) + timelineItemsPaddingTopBottom) + 'px'});
           }
           else {
-            $items.css({width: itemWidth, height: imgHeight});
-          }
-//          $('.timeline-item-image').css({'height': imgHeight + 'px'});
-          $items.find('.timeline-item-image').height(imgHeight);
-          $items.find('.timeline-item-text').css({'height': (imgHeight * 0.65) + 'px'});
+            $items.find('.timeline-item-text').css({'height': Math.floor(imgHeight * 0.65) + 'px'});
+            $items.css({'width': itemWidth + 'px', 'height': imgHeight + 'px'});
 
-          // Set margin so start element would place in middle of the screen
-          $timelineItems.css({width: width, marginLeft: margin});
+            // Set margin so start element would place in middle of the screen
+            $timelineItems.css({'width': width + 'px', 'margin-left': margin + 'px', 'height': (imgHeight + timelineItemsPaddingTopBottom) + 'px'});
+          }
+
 //          $timelineItems.css({marginLeft: margin});
 
-          $lines.css({width: lineWidth}).parents('.timeline-line').css({width: lineWidth});
+          $lines.css({'width': lineWidth + 'px'}).parents('.timeline-line').css({'width': lineWidth + 'px'});
         }, // end setWidthHeightMargin
 
         touchStart : function(evt) {

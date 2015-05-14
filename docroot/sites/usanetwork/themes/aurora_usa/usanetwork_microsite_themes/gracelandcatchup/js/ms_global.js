@@ -44,10 +44,10 @@ var initialPageLoad = 1;
       }
 
       if (anchor != 'home') {
-        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        history.pushState({"path": anchorFull}, anchorFull, anchorFull);
       }
       else {
-        history.pushState({"state": basePath}, basePath, basePath);
+        history.pushState({"path": basePath}, basePath, basePath);
       }
     },
 
@@ -60,15 +60,36 @@ var initialPageLoad = 1;
 
     // NAVIGATION
     // waypointResponse
+    waypointTimer: null,
     waypointResponse: function(scrollDirection, sectionId) {
-      var lastSection = $('.section:last').attr('id'),
-          firstSection = $('.section:first').attr('id'),
-          anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
+      // make sure user stays on section long enough to see it before
+      // sending Omniture calls and resetting the url
+      // also prevent Omniture calls when using site nav to auto-scroll
+      // to different sections
+      clearTimeout(Drupal.behaviors.ms_global.waypointTimer);
+      Drupal.behaviors.ms_global.waypointTimer = setTimeout(function(){
+        var activeSection = $('.section.active').attr('id');
+        if (activeSection == sectionId) {
+          var activeItemId = null,
+              lastSection = $('.section:last').attr('id'),
+              firstSection = $('.section:first').attr('id'),
+              anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
 
-      if ((scrollDirection == 'up' && sectionId != lastSection) || (scrollDirection == 'down' && sectionId != firstSection)) {
-        Drupal.behaviors.ms_global.setOmnitureData(sectionId);
-        Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
-      }
+          if ((scrollDirection == 'up' && sectionId != lastSection) || (scrollDirection == 'down' && sectionId != firstSection)) {
+            switch(sectionId) {
+              case 'characters':
+                var $characterInfo = $('#characters #character-info'),
+                    activeItem = $characterInfo.find('li.active'),
+                    activeItemId = (activeItem.length > 0) ? activeItem.attr('id') : null;
+                if (activeItemId != null) anchorFull = anchorFull + '/' + activeItemId;
+                break;
+            }
+
+            Drupal.behaviors.ms_global.setOmnitureData(sectionId);
+            Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
+          }
+        }
+      }, 1000);
     },
 
     // initializeWaypoints -- for triggering section scroll events
@@ -79,6 +100,21 @@ var initialPageLoad = 1;
       waypoints['down'] = {};
       waypoints['up'] = {};
 
+/*
+      // when scrolling up to top of home section
+      waypoints['up']['home-top'] = new Waypoint({
+        element: document.getElementById('home'),
+        handler: function(direction) {
+          if (direction == 'up') {
+            usa_debug('home is at top of page when scrolling ' + direction);
+            Drupal.behaviors.ms_global.waypointResponse('up', 'home');
+          }
+        },
+        offset: 'top-in-view'
+      })
+*/
+
+      // loop through each section
       $('.section').each(function(){
         var sectionId = $(this).attr('id');
 
@@ -92,6 +128,8 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
             handler: function(direction) {
               if (direction == 'down') {
                 usa_debug(sectionId + ' is ' + $('#site-nav').height() + 'px from top scrolling ' + direction);
+                $('.section.active').removeClass('active');
+                $('#' + sectionId).addClass('active');
                 Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
               }
             },
@@ -106,13 +144,15 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
             handler: function(direction) {
               if (direction == 'up') {
                 usa_debug(sectionId + ' is at bottom when scrolling ' + direction);
+                $('.section.active').removeClass('active');
+                $('#' + sectionId).addClass('active');
                 Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
               }
             },
             offset: 'bottom-in-view'
           })
         }
-      }); // each section
+      }); // end each section loop
     },
 
 
@@ -392,7 +432,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       itemTitle = itemTitle || '';
       var basePath = Drupal.settings.microsites_settings.base_path,
           anchorItem = $('#nav-' + anchor),
-          anchorNum = anchorItem.find('a').attr('data-menuitem'),
+//          anchorNum = anchorItem.find('a').attr('data-menuitem'),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
           nextSection = '#' + anchor,
           nextSectionId = $(nextSection).attr('id');
@@ -401,6 +441,19 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       if ($('html.ie9').length > 0) {
         window.location.href = anchorFull.replace('/home', '');
         return false;
+      }
+
+      // open or load item content, if needed
+      if (item != '') {
+        switch(anchor) {
+          case 'characters':
+            Drupal.behaviors.ms_characters.showCharacterInfo(item);
+            break;
+          case 'quizzes':
+            var quizNodeId = $('#microsite #quizzes #quizzes-nav-list a[href="' + basePath + '/quizzes/' + item + '"]').parent().attr('data-node-id');
+            Drupal.behaviors.ms_quizzes.switchQuizzes(quizNodeId);
+            break;
+        }
       }
 
       // now scroll to the next section
@@ -442,11 +495,12 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
     },
 
     attach: function (context, settings) {
+/*
       var startPathname = window.location.pathname;
       if (!$('html.ie9').length) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }
-
+*/
       // set defaults
       var siteName = Drupal.settings.microsites_settings.title,
           basePath = Drupal.settings.microsites_settings.base_path,
@@ -521,6 +575,15 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       $(document).ready(function () {
         self.create728x90Ad();
 
+        // check url and scroll to specific content
+        var urlParts = self.parseUrl(),
+            activeSection = $('.section.active');
+        if (activeSection != urlParts['section']) {
+          setTimeout(function(){
+            self.sectionScroll(urlParts['section'], urlParts['item']);
+          }, 500);
+        }
+
 //        if ($('#videos').hasClass('active')) {
           $('#video-container').addClass('active');
           Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
@@ -530,12 +593,11 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
         $(window).off('popstate');
         $(window).off('hashchange');
 
-        // Turn on browser history functionality -- for example, browser back button activity
-        // popped variable is used to detect initial (useless) popstate.
+        // Turn on browser history functionality -- for example, browser back button.
+        // Popped variable is used to detect initial (useless) popstate.
         // If history.state exists, assume browser isn't going to fire initial popstate.
         var popped = ('state' in window.history && window.history.state !== null),
             initialURL = location.href;
-
         $(window).on('popstate');
         $(window).bind('popstate', function(event) {
           // Ignore inital popstate that some browsers fire on page load
@@ -546,6 +608,11 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
 
           usa_debug('============= onpopstate activated! new state: ');
           usa_debug(history.state);
+          var urlParts = self.parseUrl(history.state['path']),
+              anchor = urlParts['section'],
+              item = urlParts['item'];
+
+          self.sectionScroll(anchor, item);
         });
       });
 

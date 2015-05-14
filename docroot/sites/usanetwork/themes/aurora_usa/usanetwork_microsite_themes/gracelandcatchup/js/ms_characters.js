@@ -14,42 +14,43 @@
       });
     },
 
+    showCharacterInfo: function(person) {
+        var anchor = 'characters',
+            anchorFull = Drupal.settings.microsites_settings.base_path + '/' + anchor + '/' + person;
+
+        $('#character-nav li#nav-' + person + ', #character-info li#' + person).addClass('active');
+          $('#character-info #' + person).animate({ 'opacity': 1 }, 500);
+
+usa_debug('========= showCharacterInfo: anchorFull: ' + anchorFull);
+        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+        Drupal.behaviors.ms_global.create728x90Ad('characters');
+    },
+
+    closeCharacterInfo: function() {
+      var anchor = 'characters',
+          anchorFull = Drupal.settings.microsites_settings.base_path + '/' + anchor;
+
+      $('#character-info li.active').animate({ 'opacity': 0 }, 500, function(){
+          $('#character-nav li, #character-info li').removeClass('active');
+        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+        // Drupal.behaviors.ms_global.create728x90Ad('characters');
+      });
+    },
+
     attach: function (context, settings) {
       // set defaults
-      var siteName = Drupal.settings.microsites_settings.title,
-          basePath = Drupal.settings.microsites_settings.base_path,
-          basePageName = siteName + ' | USA Network',
-          self = this;
+      var self = this;
 
       self.setPersonAgencyAndRole();
 
       // initialize clicks on microsite characters
       $('#microsite #character-nav li').on('click', function(e){
-        var nextItem = $(this).attr('data-id'),
-            anchor = 'characters',
-            anchorFull = basePath + '/' + anchor + '/' + nextItem;
-
-        $('#character-nav li#nav-' + nextItem + ', #character-info li#' + nextItem).addClass('active');
-//        $('#character-nav').animate({'opacity': 0}, 500, function(){
-          $('#character-info #' + nextItem).animate({ 'opacity': 1 }, 500);
-//        });
-
-        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
-        Drupal.behaviors.ms_global.create728x90Ad('characters');
+        self.showCharacterInfo($(this).attr('data-id'));
       });
 
       // initialize clicks on microsite character close button
       $('#microsite #character-info li .character-close').on('click', function(e){
-        var anchor = 'characters',
-            anchorFull = basePath + '/' + anchor;
-
-        $('#character-info li.active').animate({ 'opacity': 0 }, 500, function(){
-//          $('#character-nav').animate({'opacity': 1}, 500, function(){
-            $('#character-nav li, #character-info li').removeClass('active');
-//          });
-          Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
-          // Drupal.behaviors.ms_global.create728x90Ad('characters');
-        });
+        self.closeCharacterInfo();
       });
     }
   }

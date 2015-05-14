@@ -499,9 +499,51 @@ section h2 {
 }
 
 /* FOOTER */
+#microsite footer {
+  border-top: 1px solid #414141;
+/*  padding: 3px 15px 65px;
+  padding: 11px 5px 8px 25px; */
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 0 25px 85px;
+  z-index: 50;
+  color: #717274;
+}
+#microsite footer li.leaf {
+  float: left;
+  padding-right: 20px;
+  list-style-type: none;
+  list-style-image: none;
+}
+#microsite footer li a {
+  color: #717274;
+  display: inline-block;
+  line-height: 2.1em;
+  padding: 10px 0 5px;
+  display: block;
+}
+#microsite footer li a:visited,
+#microsite footer li a:focus {
+  color: #717274;
+}
+#microsite footer li a:hover,
+#microsite footer li a:active {
+  color: #a3a3a3;
+}
 #microsite #_bapw-icon {
   width: 14px;
   height: 18px;
+}
+#microsite footer #footer-message {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 12px;
+  font-size: 10px;
+  color: #717274;
+  line-height: 18px;
+  clear: left;
 }
 
 /* BEGIN MEDIA QUERIES */

@@ -15940,6 +15940,47 @@ footer h2 {
   position: absolute;
   width: 4px;
 }
+.cast-and-crew-block .section-title .section-title-wrapper {
+  font-size: 24px;
+}
+@media (max-width: 1280px) {
+  .cast-and-crew-block .section-title .section-title-wrapper {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1024px) {
+  .cast-and-crew-block .section-title .section-title-wrapper {
+    font-size: 13px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block .section-title .section-title-wrapper {
+    font-size: 25px;
+  }
+}
+.cast-and-crew-block .section-title {
+  margin-bottom: 75px;
+}
+@media (max-width: 1280px) {
+  .cast-and-crew-block .section-title {
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 1024px) {
+  .cast-and-crew-block .section-title {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .cast-and-crew-block .section-title {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .cast-and-crew-block .section-title {
+    margin-bottom: 50px;
+  }
+}
 
 .videos-landing-page-container {
   background: #e9eaeb;
@@ -16604,7 +16645,7 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .cast-and-crew-block {
-    padding: 40px 12px;
+    padding: 50px 12px;
   }
 }
 .cast-and-crew-block ul {

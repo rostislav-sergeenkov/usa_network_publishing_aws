@@ -81,7 +81,7 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
           </div>
 
           <div id="site-nav-mobile">
-            <div id="site-nav-links-mobile" class="mobi-menu-icon">
+            <div id="site-nav-links-mobile" class="mobi-menu-icon border-icon">
               <ul id="site-nav-links-list-mobile">
                 <?php if (!empty($sections)): ?>
                   <?php foreach ($sections as $sectionNav): ?>

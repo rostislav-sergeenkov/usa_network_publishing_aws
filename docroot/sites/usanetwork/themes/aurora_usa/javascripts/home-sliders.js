@@ -122,11 +122,6 @@
 
             changeLogoColor($(first_slide).find('.slide-content'));
             showFocusSlide(el, slide, old, active);
-
-            $('.bx-preload').css({
-              'visibility': 'visible',
-              'height': 'auto'
-            });
           }
         }, options);
 

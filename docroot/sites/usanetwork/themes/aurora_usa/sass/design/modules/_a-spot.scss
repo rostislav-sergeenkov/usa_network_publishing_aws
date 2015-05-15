@@ -1,5 +1,13 @@
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
+  overflow-y: hidden;
+  max-height: 43.75vw;
   position: relative;
+  @include breakpoint($bp-min-2500-width) {
+    max-height: 1094px;
+  }
+  @include breakpoint($bp-640-width) {
+    max-height: 90.625vw;
+  }
   .next-button {
     -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
     -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
@@ -70,14 +78,14 @@
     .title_prefix, .start {
       color: #ffffff;
       font-family: $tex-gyreschola-italic;
-      font-size: 12px;
-      line-height: initial;
+      font-size: 1.1vw;
+      line-height: 1;
       text-transform: uppercase;
-      @include breakpoint($bp-min-1601-width) {
-        font-size: 20px;
+      @include breakpoint($bp-min-2500-width) {
+        font-size: 27.5px;
       }
-      @include breakpoint($bp-480-width) {
-        font-size: 10px;
+      @include breakpoint($bp-640-width) {
+        font-size: 1.875vw;
       }
       p {
         margin: 0;
@@ -86,20 +94,15 @@
     .title {
       color: #ffffff;
       font-family: $avalon-demi;
-      font-size: 70px;
-      line-height: initial;
+      font-size: 6vw;
+      line-height: 1;
       margin: 0;
       text-transform: uppercase;
-      @include breakpoint($bp-min-1601-width) {
-        font-size: 120px;
-      }
-      @include breakpoint($bp-1024-width) {
-        font-size: 40px;
-        margin-bottom: 20px;
+      @include breakpoint($bp-min-2500-width) {
+        font-size: 150px;
       }
       @include breakpoint($bp-640-width) {
-        font-size: 30px;
-        margin-bottom: 10px;
+        font-size: 10.4vw;
       }
       p {
         margin: 0;
@@ -149,42 +152,49 @@
     }
     .cta-link {
       position: relative;
-      max-width: 365px;
+      max-width: 20vw;
+      @include breakpoint($bp-min-2500-width) {
+        max-width: 500px;
+      }
+      @include breakpoint($bp-640-width) {
+        max-width: 35vw;
+      }
       a {
         color: #ffffff;
         display: block;
         font-family: $avalon-demi;
-        font-size: 14px;
-        line-height: 24px;
-        padding: 25px 40px 25px 28px;
+        font-size: 1.27vw;
+        line-height: 1.8;
+        padding: 1.7vw 3.125vw 1.7vw 2.54vw;
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 20px;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 31.74px;
+          padding: 42.5px 78px 42.5px 63.5px;
         }
-        @include breakpoint($bp-768-width) {
-          padding: 15px 25px 15px 12px;
-        }
-        @include breakpoint($bp-480-width) {
-          font-size: 10px;
-          padding: 13px 25px 11px 12px;
+        @include breakpoint($bp-640-width) {
+          font-size: 2.1875vw;
         }
         &:after {
           color: #ffffff;
           content: "\e608";
           display: block;
           font-family: $ico-font;
-          font-size: 11px;
+          font-size: 1vw;
+          line-height: 1;
           position: absolute;
-          margin-top: -12px;
-          right: 20px;
+          margin-top: -0.5vw;
+          right: 1.4vw;
           top: 50%;
-          @include breakpoint($bp-768-width) {
-            right: 10px;
+          @include breakpoint($bp-min-2500-width) {
+            font-size: 25px;
+            margin-top: -12.5px;
+            right: 35px;
           }
-          @include breakpoint($bp-480-width) {
-            font-size: 9px;
+          @include breakpoint($bp-640-width) {
+            font-size: 1.6vw;
+            margin-top: -0.8vw;
           }
         }
       }

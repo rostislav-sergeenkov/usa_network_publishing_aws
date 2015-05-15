@@ -24394,7 +24394,19 @@ yx-axis
 
 /* ---------------------------------------- */
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
+  overflow-y: hidden;
+  max-height: 43.75vw;
   position: relative;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel {
+    max-height: 1094px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel {
+    max-height: 90.625vw;
+  }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
   -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);

@@ -1,5 +1,13 @@
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
+  overflow-y: hidden;
+  max-height: 43.75vw;
   position: relative;
+  @include breakpoint($bp-min-2500-width) {
+    max-height: 1094px;
+  }
+  @include breakpoint($bp-640-width) {
+    max-height: 90.625vw;
+  }
   .next-button {
     -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
     -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);

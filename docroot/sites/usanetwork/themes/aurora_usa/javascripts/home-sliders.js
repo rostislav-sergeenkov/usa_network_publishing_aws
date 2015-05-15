@@ -154,6 +154,8 @@
             .click(function () {
               aspotSlider.goToNextSlide();
             });
+        } else {
+          $('.next-button').hide();
         }
       });
 

@@ -32,6 +32,9 @@
   width: 1280px;
 }
 
+.draggable-area.desktop#edit-field-aspot-enabled-tgi-preview {
+  width: 983px;
+}
 /* Draggable elements */
 
 /* default */

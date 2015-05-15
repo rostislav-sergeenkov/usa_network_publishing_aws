@@ -8,15 +8,15 @@
     <?php foreach ($items as $item) :?>
       <div class="node node-usanetwork-promo header-full-episodes-promo">
         <a href="<?php print $item['url']; ?>">
+          <?php if (!empty($item['sponsored'])) : ?>
+            <div class="sponsored" data-mpspath="<?php print $item['file_path']; ?>"></div>
+          <?php endif; ?>
           <div class="meta-wrapper">
             <div class="meta-wrapper-inner">
               <div class="meta">
                 <div class="meta-icon video-icon"></div>
                 <?php if (!empty($item['logo'])): ?>
                   <div class="logo"><?php print $item['logo']; ?></div>
-                <?php endif; ?>
-                <?php if (!empty($item['sponsored'])) : ?>
-                  <div class="sponsored" data-mpspath="<?php print $item['file_path']; ?>"></div>
                 <?php endif; ?>
                 <?php if (!empty($item['additional'])): ?>
                   <div class="additional"><?php print $item['additional']; ?></div>

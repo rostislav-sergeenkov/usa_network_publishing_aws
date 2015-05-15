@@ -261,6 +261,11 @@
         }
       }
     }
+    .sorters-description {
+      width: 100%;
+      float: left;
+      margin-top: 1.5em;
+    }
   }
   .video-items-blocks {
     @include clear();

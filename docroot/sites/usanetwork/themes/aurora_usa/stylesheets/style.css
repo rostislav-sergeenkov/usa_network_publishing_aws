@@ -3558,6 +3558,120 @@ input[type="radio"], input[type="checkbox"] {
   max-width: 970px;
 }
 
+header .tab-content .full-episode-tab-wrapper .sponsored {
+  right: 0;
+  position: absolute;
+  top: 0;
+}
+
+.page-file header .header-nav-bar .nav-bar-tabs .sponsored {
+  display: table;
+  float: left;
+  height: 100%;
+  text-align: center;
+}
+.page-file header .header-nav-bar .nav-bar-tabs .sponsored .mps-slot {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.featured-block .slides .sponsored {
+  bottom: 40%;
+  right: 0;
+  position: absolute;
+}
+.featured-block .slides li.first .sponsored {
+  bottom: 31%;
+}
+
+.aspot-and-episodes .show-aspot .sponsored {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.aspot-and-episodes .episodes-list.sponsored-enable .title {
+  height: calc(10% + 50px);
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list.sponsored-enable .title {
+    height: 105px;
+  }
+}
+.aspot-and-episodes .episodes-list.sponsored-enable .title .title-wrapper {
+  height: 50%;
+}
+.aspot-and-episodes .episodes-list.sponsored-enable .episodes-list-slider.vertical {
+  height: calc(90% - 50px);
+}
+
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
+  bottom: 34.7%;
+  right: 0;
+  position: absolute;
+}
+@media (max-width: 768px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
+    bottom: 8.6vw;
+  }
+}
+@media (max-width: 640px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
+    bottom: 12.4vw;
+  }
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
+  bottom: 9.1vw;
+}
+@media (max-width: 768px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
+    bottom: 25%;
+  }
+}
+@media (max-width: 640px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
+    bottom: 29%;
+  }
+}
+@media (min-width: 1901px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
+    bottom: 173px;
+  }
+}
+
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
+  bottom: 9.1vw;
+  right: 0;
+  position: absolute;
+}
+@media (max-width: 768px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
+    bottom: 8.6vw;
+  }
+}
+@media (max-width: 640px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
+    bottom: 12.4vw;
+  }
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+  bottom: 9.1vw;
+}
+@media (max-width: 768px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+    bottom: 8.6vw;
+  }
+}
+@media (max-width: 640px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+    bottom: 29%;
+  }
+}
+@media (min-width: 1901px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+    bottom: 173px;
+  }
+}
+
 .clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
   content: "";
   display: table;
@@ -7211,7 +7325,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+.consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+.node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+.page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+.node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+.node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
   right: 0;
   position: absolute;
   top: 0;
@@ -7219,21 +7338,41 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   margin-right: 16px;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
     width: 170px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
     position: static;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
     display: none;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3 {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3,
+.consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3,
+.node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3,
+.page-videos-live header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3,
+.node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3,
+.node-type-person header .tab-content .tab-item .tab-item-content .sharebar h3 {
   color: #e9eaeb;
   font-size: 20px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -7242,12 +7381,22 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   text-transform: uppercase;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3 {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar h3, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar h3, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar h3,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar h3 {
     font-size: 16px;
     line-height: 1.3em;
   }
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.page-videos-live header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-name-field-gigya-share-bar,
+.node-type-person header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar {
   margin-bottom: 0;
 }
 
@@ -10052,6 +10201,7 @@ footer .block-usanetwork-lyris {
 @media (max-width: 1024px) {
   footer .block-usanetwork-lyris {
     padding: 20px 0;
+    min-height: 100px;
   }
 }
 footer .block-usanetwork-lyris form > div {
@@ -10063,8 +10213,13 @@ footer .block-usanetwork-lyris form > div {
   font-size: 14px;
   letter-spacing: 1px;
   line-height: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   text-transform: uppercase;
   text-align: center;
+  vertical-align: top;
 }
 footer .block-usanetwork-lyris form > div .placeholder {
   font-style: normal;
@@ -10087,6 +10242,7 @@ footer .block-usanetwork-lyris form > div label {
 }
 footer .block-usanetwork-lyris form > div .form-item-email {
   display: inline-block;
+  vertical-align: top;
   padding-right: 35px;
   margin: 0;
 }
@@ -10107,9 +10263,9 @@ footer .block-usanetwork-lyris form > div .form-item-email input {
   outline: none;
   padding: 0 20px;
   margin: 0;
-  height: inherit;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 26px;
+  line-height: 30px;
+  height: 30px;
   letter-spacing: 1px;
   text-transform: uppercase;
   overflow: hidden;
@@ -10143,11 +10299,13 @@ footer .block-usanetwork-lyris form > div .form-item-email input:-ms-input-place
 }
 footer .block-usanetwork-lyris form > div .form-submit-wrapper {
   display: inline-block;
+  vertical-align: top;
   position: relative;
 }
 footer .block-usanetwork-lyris form > div .form-submit-wrapper input {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 30px;
+  height: 30px;
   letter-spacing: 1px;
   color: white;
   border: 0;
@@ -12647,8 +12805,8 @@ footer h2 {
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper iframe, .page-videos-live .video-block .player-wrapper .video-player-wrapper iframe {
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
 }
 .consumptionator-page .video-block #player, .page-videos-live .video-block #player {
   height: 100%;
@@ -16200,6 +16358,11 @@ footer h2 {
 }
 .videos-landing-page-container .upper-menu .item-filter.sorter-items.open .filter-menu {
   display: block;
+}
+.videos-landing-page-container .upper-menu .sorters-description {
+  width: 100%;
+  float: left;
+  margin-top: 1.5em;
 }
 .videos-landing-page-container .video-items-blocks {
   border-bottom: 2px solid;
@@ -24448,11 +24611,6 @@ yx-axis
     margin-top: -0.8vw;
   }
 }
-.usanetwork-aspot .meta-wrap .sponsored {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
 .usanetwork-aspot .social_meter {
   min-height: 78px;
   width: 205px;
@@ -24723,7 +24881,7 @@ yx-axis
 }
 .aspot-and-episodes .episodes-list > .title {
   background: #e1e1e1;
-  min-height: 10%;
+  height: 10%;
   position: relative;
   text-align: center;
   width: 100%;
@@ -25269,7 +25427,8 @@ yx-axis
 }
 @media (max-width: 320px) {
   .page-schedule .shows-filters {
-    margin: 20px 10px 13px 0;
+    text-align: left;
+    margin: 20px 10px 13px 10px;
   }
 }
 .page-schedule .shows-filters .item-filter {
@@ -25296,7 +25455,7 @@ yx-axis
 }
 @media (max-width: 320px) {
   .page-schedule .shows-filters .item-filter:last-child {
-    display: block;
+    display: inline-block;
     text-align: center;
   }
 }

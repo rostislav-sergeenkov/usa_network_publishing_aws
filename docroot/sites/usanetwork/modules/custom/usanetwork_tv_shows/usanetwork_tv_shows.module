@@ -2863,23 +2863,23 @@ function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $
   $data = array(
     'timestamp_DESC' => array(
       'order' => 'DESC',
-      'data_type' => 'created',
+      'data_type' => 'mv.airdate',
       'title' => t('Newest'),
       'active' => FALSE,
       'url' => url('node/' . $show_node_nid) . '/videos?' . http_build_query(array(
           'category' => $category_tid,
-          'sort_by' => 'created',
+          'sort_by' => 'mv.airdate',
           'sort_order' => 'DESC',
         )),
     ),
     'timestamp_ASC' => array(
       'order' => 'ASC',
-      'data_type' => 'created',
+      'data_type' => 'mv.airdate',
       'title' => t('Oldest'),
       'active' => FALSE,
       'url' => url('node/' . $show_node_nid) . '/videos?' . http_build_query(array(
           'category' => $category_tid,
-          'sort_by' => 'created',
+          'sort_by' => 'mv.airdate',
           'sort_order' => 'ASC',
         )),
     ),

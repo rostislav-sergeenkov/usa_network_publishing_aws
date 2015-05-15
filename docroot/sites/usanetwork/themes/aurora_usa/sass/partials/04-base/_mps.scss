@@ -25,4 +25,149 @@
 }
 
 // sponsorship
+header {
+  .tab-content {
+    .full-episode-tab-wrapper {
+      .sponsored {
+        right: 0;
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+}
 
+.page-file {
+  header {
+    .header-nav-bar {
+      .nav-bar-tabs {
+        .sponsored {
+          display: table;
+          float: left;
+          height: 100%;
+          text-align: center;
+          .mps-slot {
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.featured-block {
+  .slides {
+    .sponsored {
+      bottom: 40%;
+      right: 0;
+      position: absolute;
+    }
+    li {
+      &.first {
+        .sponsored {
+          bottom: 31%;
+        }
+      }
+    }
+  }
+}
+
+.aspot-and-episodes {
+  .show-aspot {
+    .sponsored {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  .episodes-list {
+    &.sponsored-enable {
+      .title {
+        height: calc(10% + 50px);
+        @include breakpoint($bp-768-width) {
+         height: 105px;
+        }
+        .title-wrapper {
+          height: 50%;
+        }
+      }
+      .episodes-list-slider {
+        &.vertical {
+          height: calc(90% - 50px);
+        }
+      }
+    }
+  }
+}
+
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of {
+  .five-promo-item-block{
+    .sponsored {
+      bottom: 34.7%;
+      right: 0;
+      position: absolute;
+      @include breakpoint($bp-768-width) {
+        bottom: 8.6vw;
+      }
+      @include breakpoint($bp-640-width) {
+        bottom: 12.4vw;
+      }
+    }
+    li{
+      &.first{
+        .sponsored {
+          bottom: 9.1vw;
+          @include breakpoint($bp-768-width) {
+            bottom: 25%;
+          }
+          @include breakpoint($bp-640-width) {
+            bottom: 29%;
+          }
+          @include breakpoint($bp-min-1901-width) {
+            bottom: 173px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related {
+  .show-latest-block {
+    ul {
+      li{
+        .node-usanetwork-promo {
+          .sponsored {
+            bottom: 9.1vw;
+            right: 0;
+            position: absolute;
+            @include breakpoint($bp-768-width) {
+              bottom: 8.6vw;
+            }
+            @include breakpoint($bp-640-width) {
+              bottom: 12.4vw;
+            }
+          }
+          &.big {
+            .node-usanetwork-promo{
+              .sponsored {
+                bottom: 9.1vw;
+                @include breakpoint($bp-768-width) {
+                  bottom: 8.6vw;
+                }
+                @include breakpoint($bp-640-width) {
+                  bottom: 29%;
+                }
+                @include breakpoint($bp-min-1901-width) {
+                  bottom: 173px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

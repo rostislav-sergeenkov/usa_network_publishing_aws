@@ -10,14 +10,14 @@
     <?php endif; ?>
   </div>
   <?php if (!empty($episodes)): ?>
-    <div class="episodes-list">
+    <div class="episodes-list <?php print !empty($sponsored)? 'sponsored-enable' : ''; ?>">
       <?php if (!empty($episodes_block_title)): ?>
         <div class="title show-color">
           <div class="title-wrapper">
             <h2><?php print $episodes_block_title; ?></h2>
           </div>
           <?php if (!empty($sponsored)) : ?>
-            <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
+            <div class="sponsored" data-mpspath="<?php print $file_path; ?>" data-scalemps="1"></div>
           <?php endif; ?>
         </div>
       <?php endif; ?>

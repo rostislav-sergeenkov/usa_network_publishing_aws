@@ -17,7 +17,7 @@
   <?php if (!empty($target_url)): ?>
     <a href="<?php print $target_url; ?>">
       <?php if (!empty($sponsored)) : ?>
-        <div class="sponsored" data-mpspath="<?php print $content_id; ?>"></div>
+        <div class="sponsored" data-mpspath="<?php print $content_id; ?>" data-scalemps="1"></div>
       <?php endif; ?>
       <div class="meta-wrapper">
         <div class="meta-wrapper-inner">

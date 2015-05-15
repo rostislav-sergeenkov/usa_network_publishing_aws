@@ -288,11 +288,6 @@ function usanetwork_person_image_default_styles() {
 function usanetwork_person_block_info() {
   $blocks = array();
 
-  $blocks['usa_cons_chars_social'] = array(
-    'info' => 'Usanetwork consumptionator: Character social',
-    'cache' => DRUPAL_NO_CACHE,
-  );
-
   $blocks['usa_cons_chars_main_block'] = array(
     'info' => 'Usanetwork consumptionator: Character main block',
     'cache' => DRUPAL_NO_CACHE,
@@ -327,11 +322,6 @@ function usanetwork_person_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
-    case 'usa_cons_chars_social':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_person_characters_social_block();
-      break;
-
     case 'usa_cons_chars_main_block':
       $block['subject'] = '';
       $block['content'] = _usanetwork_person_characters_main_block();
@@ -376,27 +366,6 @@ function usanetwork_person_preprocess_page(&$vars) {
   if ($node && $node->type == 'person') {
     $vars['title'] = '';
   }
-}
-
-/**
- * Renders characters block carousel.
- *
- * @TODO: DUMMY CONTENT! SHOULD BE REPLACED WITH IFRAME!
- */
-function _usanetwork_person_characters_social_block() {
-  if (path_is_admin(current_path())) {
-    return '';
-  }
-
-  $person_node = menu_get_object();
-
-  if (empty($person_node) || (!empty($person_node) && isset($person_node->type) && $person_node->type != 'person')) {
-    return '';
-  }
-
-  $theme_variables = array();
-
-  return theme('usanetwork_person_character_social', $theme_variables);
 }
 
 /**
@@ -868,9 +837,10 @@ function _usanetwork_person_render_cast_crew_block() {
         if (!empty($person_node->field_usa_character_thumb)) {
           $image = $person_node_wrapper->field_usa_character_thumb->value();
         }
+        $person_role = !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '';
         $theme_variables['persons'][] = array(
           'name' => !empty($person_node->title) ? $person_node->title : '',
-          'role' => !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '',
+          'role' => strtolower($person_role) != 'blank' ? $person_role : '',
           'image' => !empty($image) ? image_style_url('420x420', $image['uri']) : '',
           'url' => url('node/' . $person_node->nid),
         );

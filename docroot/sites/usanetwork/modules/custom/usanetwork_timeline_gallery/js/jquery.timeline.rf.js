@@ -402,6 +402,10 @@ usa_debug(data);
               imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image').width(),
               imgHeight = Math.floor(imgWidth * 0.5625);
 
+          if (data.currentIndex) {
+            margin -= (itemWidth + timeline_settings.itemMargin)*data.currentIndex;
+          }
+
 usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width + ', imgWidth: ' + imgWidth + ', imgHeight: ' + imgHeight);
 
           // reset data values
@@ -1210,8 +1214,8 @@ usa_debug(data);
         data.noAnimation = true;
         $this.timeline('goTo', id);
 */
-        var dataId = data.items.eq(data.currentIndex-1).attr('data-id');
-        var dataCount = data.items.eq(data.currentIndex-1).attr('data-count');
+        var dataId = data.items.eq(data.currentIndex).attr('data-id');
+        var dataCount = data.items.eq(data.currentIndex).attr('data-count');
 //        $this.timeline('goTo', dataId, dataCount);
         $this.timeline('goTo', dataId);
 }, 500);

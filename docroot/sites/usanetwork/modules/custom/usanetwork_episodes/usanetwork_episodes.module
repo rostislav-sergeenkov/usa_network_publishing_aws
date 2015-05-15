@@ -270,7 +270,7 @@ function _usanetwork_episodes_main_block() {
       'episode_number' => !empty($episode_num) ? $episode_num : '',
       'episode_video_link' => url('<front>'),
       'image_mobile' => !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '',
-      'image_desktop' => !empty($image['uri']) ? image_style_url('629x720', $image['uri']) : '',
+      'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'air_date_text' => !empty($episode_node->field_original_air_date) ? gmdate('F j, Y', $episode_node_wrapper->field_original_air_date->value->value()) : '',
     );
     return theme('usanetwork_episodes_main_block', $theme_variables);

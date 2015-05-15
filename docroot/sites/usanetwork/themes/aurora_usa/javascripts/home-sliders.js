@@ -28,6 +28,8 @@
         }
       }
 
+      $('.next-button').hide();
+
       var hideContent = function (selector) {
         $(selector).css({
           'opacity': 0
@@ -154,8 +156,6 @@
             .click(function () {
               aspotSlider.goToNextSlide();
             });
-        } else {
-          $('.next-button').hide();
         }
       });
 

@@ -28,7 +28,7 @@
       </h1>
     </div>
     <?php if (!empty($sponsored)) : ?>
-      <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
+      <div class="sponsored" data-mpspath="<?php print $file_path; ?>" data-scalemps="1"></div>
     <?php endif; ?>
   </div>
   <div class="tve-help-link signOut" data-ng-if="global.isAuthN">

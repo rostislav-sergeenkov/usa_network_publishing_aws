@@ -16,7 +16,7 @@
       <div class="node node-usanetwork-promo <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
         <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
           <?php if (!empty($promo['sponsored'])) : ?>
-            <div class="sponsored" data-mpspath="<?php print $promo['content_id']; ?>"></div>
+            <div class="sponsored" data-mpspath="<?php print $promo['content_id']; ?>" data-scalemps="1"></div>
           <?php endif; ?>
           <div class="meta-wrapper">
             <div class="meta-wrapper-inner">
@@ -53,7 +53,7 @@
           <div class="node node-usanetwork-promo <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <?php if (!empty($promo['sponsored'])) : ?>
-                <div class="sponsored" data-mpspath="<?php print $promo['content_id']; ?>"></div>
+                <div class="sponsored" data-mpspath="<?php print $promo['content_id']; ?>" data-scalemps="1"></div>
               <?php endif; ?>
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">

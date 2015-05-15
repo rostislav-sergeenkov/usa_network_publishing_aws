@@ -37,7 +37,7 @@ function usanetwork_episodes_context_default_contexts() {
   t('Show Episodes Landing Page');
   t('shows');
 
-  $export['node_person'] = $context;
+  $export['episodes_landing'] = $context;
 
   return $export;
 }

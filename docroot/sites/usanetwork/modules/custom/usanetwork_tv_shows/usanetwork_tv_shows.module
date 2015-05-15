@@ -2974,7 +2974,13 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
 
   $file_wrapper = entity_metadata_wrapper('file', $file);
 
-  $image_url = _usanetwork_mpx_video_get_image_path($file);
+  if (!empty($file->field_promo_image_override)) {
+    $field_image_override = reset(field_get_items('file', $file, 'field_promo_image_override'));
+    $image_url = $field_image_override['uri'];
+  }
+  else {
+    $image_url = _usanetwork_mpx_video_get_image_path($file);
+  }
   $mobile_image = '';
   $desktop_image = '';
 

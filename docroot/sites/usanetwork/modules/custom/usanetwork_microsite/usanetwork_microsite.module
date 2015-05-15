@@ -1293,7 +1293,7 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
   );
 }
 
-function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay = 'fasle', $filter) {
+function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay = 'false', $filter) {
   global $base_url;
   $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
 

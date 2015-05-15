@@ -137,9 +137,21 @@ usa_debug('========== section box coordinates -- top left: ' + box.top + ' ' + b
                   if ($('#' + sectionId + ' .ad-leaderboard').html() == '') {
                     allAdsLoaded = false;
 //usa_debug('============= 728x90 ad not loaded yet for #' + sectionId + ', allAdsLoaded: ' + allAdsLoaded);
-                    if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
+                    if (sectionId == 'videos') {
+/*
+                      var $activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
+                          dataFullEpisode = $activeVideoThumb.attr('data-full-episode');
+
+                      if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
+                        Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+                      }
+*/
+                    }
+                    else {
+                      if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
 //usa_debug('============ scroll triggered create728x90Ad(' + sectionId + ')');
-                      Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+                        Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+                      }
                     }
                   }
 

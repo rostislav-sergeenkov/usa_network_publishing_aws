@@ -71,6 +71,9 @@ var initialPageLoad = 1;
           anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
 
       switch(sectionId) {
+        case 'videos':
+
+          break;
         case 'characters':
           var $characterInfo = $('#characters #character-info'),
               activeItem = $characterInfo.find('li.active'),
@@ -497,8 +500,8 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
 
       // set hover state for hamburger menu on mobile devices
       var wwidth = $(window).width(),
-          $siteNav = $('#site-nav'),
-          hamburgerTimer;
+          $siteNav = $('#site-nav');
+//          hamburgerTimer;
 
       if (wwidth < 844) {
         $siteNav.addClass('mobile');
@@ -518,7 +521,8 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       }
 
       $('#video-container').addClass('active');
-      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
+//      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
+      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
 
       // TIME OUT
       setTimeout(function(){

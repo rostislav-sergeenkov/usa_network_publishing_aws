@@ -559,13 +559,12 @@ ul, li {
 	position: absolute;
 	top: 8px;
 	right: 8px;
-	padding-top: 0;
+	padding: 0;
 	font-size: 0.875em; /* 14px; */
 	line-height: 1.2;
 	color: #FFE476;
 	text-align: right;
 	width: 430px;
-	padding-bottom: 50px;
 	text-transform: uppercase;
 }
 .timelineFlat .timeline-item .timeline-item-details h2 .divider {
@@ -576,7 +575,7 @@ ul, li {
 .timelineFlat .timeline-item .timeline-item-text {
   font-size: 1.125em; /* 18px; */
   color: #FFF;
-  margin: 36px 0 15px;
+  margin: 36px 0 30px;
   overflow-y: auto;
   height: 380px;
   padding-right: 16px;
@@ -763,7 +762,10 @@ ul, li {
 }
 */
 .timeline-item .share {
-  float: right;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  height: 32px;
 }
 .timeline-item .share li {
   float: right;
@@ -825,6 +827,9 @@ ul, li {
   .timelineFlat .timeline-item .timeline-item-image,
   .timelineFlat .timeline-item .timeline-item-details {
     width: 100%;
+  }
+  .timelineFlat .timeline-item .timeline-item-text {
+    margin-top: 12px;
   }
 }
 

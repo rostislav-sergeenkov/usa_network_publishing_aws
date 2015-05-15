@@ -81,9 +81,9 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
 
     <div id="home-nav">
       <ul>
-        <li id="binge" class="internal" data-menuanchor="videos"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-binge.svg" alt="Binge button" /></div></a><div class="spoiler-alert spoiler-high"></div></li>
+        <li id="binge" class="internal" data-menuanchor="videos"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-binge.svg" alt="Binge button" /></div></a><div class="spoiler-alert spoiler-low"></div></li>
         <li id="slideshow" class="internal" data-menuanchor="timeline"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-slideshow.svg" alt="Slideshow button" /></div></a><div class="spoiler-alert spoiler-medium"></div></li>
-        <li id="trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-trivia.svg" alt="Trivia button" /></div></a><div class="spoiler-alert spoiler-low"></div></li>
+        <li id="trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-trivia.svg" alt="Trivia button" /></div></a><div class="spoiler-alert spoiler-high"></div></li>
       </ul>
     </div>
   </div>

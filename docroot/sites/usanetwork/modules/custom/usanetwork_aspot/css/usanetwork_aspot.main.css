@@ -90,8 +90,11 @@
   padding: 11px 20px 11px 16.5px;
 }
 .draggable-area.mobile div[data-rel="social_meter"]{
-  height: 138px;
-  width: 205px;
+  font-size: 22px;
+  height: auto;
+  line-height: 26px;
+  padding: 42px 18.24px 70.781px 76.27px;
+  width: 212px;
 }
 /* desktop */
 .draggable-area.desktop div[data-rel="title"] {
@@ -109,8 +112,11 @@
   padding: 21.76px 40px 21.76px 32.5px;
 }
 .draggable-area.desktop div[data-rel="social_meter"]{
-  height: 153px;
-  width: 205px;
+  font-size: 24px;
+  height: auto;
+  line-height: 28.8px;
+  padding: 46px 20px 75.797px 102.48px;
+  width: 231px;
 }
 #edit-field-aspot-gi-draggable-data {
   display: none;

@@ -1,5 +1,5 @@
 <div class="aspot-social-meter">
-  <div class="row row-1 show-color">
+  <div class="row row-1 show-color show-border">
     <div class="block block-quote block-left">
       <?php if (!empty($upper_line)): ?>
         <div class="upper-line block-quote-line"><?php print $upper_line; ?></div>

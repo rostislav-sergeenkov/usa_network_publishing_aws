@@ -55,12 +55,12 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_width' => 370,
       'bg_offset_height' => 500,
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
-        ? image_style_url('2500x1094', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('2880x1260', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
         : '',
     ),
     'mobile' => array(
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
-        ? image_style_url('640x640', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x560', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
         : '',
     ),
     'tvs_desktop' => array(
@@ -68,12 +68,12 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_width' => 370,
       'bg_offset_height' => 500,
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
-        ? image_style_url('2490x1418', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('2880x1620', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
         : '',
     ),
     'tvs_mobile' => array(
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
-        ? image_style_url('640x640', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x560', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
         : '',
     ),
     'aspot_elements' => array(

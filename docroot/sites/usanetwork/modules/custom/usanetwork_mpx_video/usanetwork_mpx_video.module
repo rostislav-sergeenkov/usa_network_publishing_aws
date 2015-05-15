@@ -118,8 +118,8 @@ function usanetwork_mpx_video_block_info() {
     'info' => t('Videofile: Related content'),
     'cache' => DRUPAL_NO_CACHE,
   );
-  $blocks['usa_mpx_video_socal'] = array(
-    'info' => t('Videofile: Social content block'),
+  $blocks['usanetwork_social_content'] = array(
+    'info' => t('USA: Social content block'),
     'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['usa_mpx_video_full_video_advert'] = array(
@@ -222,10 +222,10 @@ function usanetwork_mpx_video_block_view($delta) {
         '#markup' => usanetwork_mpx_video_related_content_block(),
       );
       break;
-    case 'usa_mpx_video_socal':
+    case 'usanetwork_social_content':
       $block['subject'] = '';
       $block['content'] = array(
-        '#markup' => usanetwork_mpx_video_social_content_block(),
+        '#markup' => usanetwork_social_content_block(),
       );
       break;
     case 'usa_mpx_video_full_video_advert':
@@ -2826,7 +2826,7 @@ function usanetwork_mpx_video_related_content_block() {
 /**
  * Social Block for file
  */
-function usanetwork_mpx_video_social_content_block() {
+function usanetwork_social_content_block() {
   if (path_is_admin(current_path())) {
     return '';
   }
@@ -2834,12 +2834,22 @@ function usanetwork_mpx_video_social_content_block() {
   $output = '';
 
   $file = menu_get_object('file');
-
   if (!empty($file)) {
-    $is_social = _usanetwork_get_field_item('file', $file, 'field_social_enable', 'value');
+    $entity = $file;
+    $entity_type = 'file';
+  } else {
+    $node = menu_get_object('node');
+    if (!empty($node)) {
+      $entity = $node;
+      $entity_type = 'node';
+    }
+  }
+
+  if (!empty($entity)) {
+    $is_social = _usanetwork_get_field_item($entity_type, $entity, 'field_social_enable', 'value');
 
     if ($is_social) {
-      $SpredFast_ID = _usanetwork_get_field_item('file', $file, 'field_social_sfs_id', 'value');
+      $SpredFast_ID = _usanetwork_get_field_item($entity_type, $entity, 'field_social_sfs_id', 'value');
 
       if (!empty($SpredFast_ID)) {
         $id = 'mr-space_' . $SpredFast_ID;

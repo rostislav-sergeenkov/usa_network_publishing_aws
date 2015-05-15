@@ -51,6 +51,14 @@ function usanetwork_episodes_block_info() {
       'info' => t('Usanetwork episodes: Main Block'),
       'cache' => DRUPAL_NO_CACHE,
     ),
+    'usanetwork_episodes_ep_carousel' => array(
+      'info' => t('Usanetwork episodes: Episodes Carousel'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+    'usanetwork_episodes_gallery_rec' => array(
+      'info' => t('Usanetwork episodes: Gallery Recap'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
   );
 }
 
@@ -69,9 +77,13 @@ function usanetwork_episodes_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = _usanetwork_episodes_main_block();
       break;
-    case 'usanetwork_episodes_episodes_carousel':
+    case 'usanetwork_episodes_ep_carousel':
       $block['subject'] = '';
       $block['content'] = _usanetwork_episodes_episodes_carousel();
+      break;
+    case 'usanetwork_episodes_gallery_rec':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_episodes_gallery_recap();
       break;
   }
 
@@ -147,6 +159,13 @@ function usanetwork_episodes_theme($existing, $type, $theme, $path) {
         'all_episodes_link' => NULL,
       ),
       'template' => 'templates/usanetwork-episodes-episodes-carousel',
+    ),
+    'usanetwork_episodes_gallery_rec' => array(
+      'variables' => array(
+        'gallery_html' => NULL,
+        'block_title' =>NULL,
+      ),
+      'template' => 'templates/usanetwork-episodes-gallery-rec',
     ),
   );
 }
@@ -252,6 +271,31 @@ function usanetwork_episodes_node_view($node, $view_mode, $langcode) {
       }
     }
   }
+}
+
+
+/*
+ * Renders usanetwork_episodes_gallery_recap block.
+*/
+function _usanetwork_episodes_gallery_recap() {
+  $episode_node = menu_get_object();
+  if (!empty($episode_node->type) && $episode_node->type == 'tv_episode') {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'media_gallery')
+      ->fieldCondition('field_episode', 'target_id', $episode_node->nid, '=');
+    $result = $query->execute();
+    if (isset($result['node'])) {
+      $gallery_id = reset($result['node']);
+      $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id->nid));
+      $theme_variables = array(
+        'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
+        'block_title' => t('Gallery Recap'),
+      );
+      return theme('usanetwork_episodes_gallery_rec', $theme_variables);
+    }
+  }
+  return '';
 }
 
 /*

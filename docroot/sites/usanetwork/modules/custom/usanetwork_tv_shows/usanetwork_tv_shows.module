@@ -866,111 +866,145 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
  *   ),
  * );
  */
-function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $limit = 0, $direction = 'DESC', $sort_by = 'changed', $filters = array()) {
-  $query = db_select('field_data_field_show', 'fshow');
-  $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
-  // Attach content node
-  $query->join('node', 'n', 'fshow.entity_id=n.nid');
-  $query->fields('n', array('nid', 'title', 'created', 'changed'));
-  // Attach promo title
-  //$query->leftJoin('field_data_field_promo_text_line_1', 'fp_title', 'n.nid=fp_title.entity_id');
-  //$query->addField('fp_title', 'field_promo_text_line_1_value', 'promo_title');
-  // Attach show node
-  $query->join('node', 'sn', 'fshow.field_show_target_id=sn.nid');
-  $query->addField('sn', 'title', 'show_title');
-  // Attach associated videos for promos
-  $query->leftJoin('field_data_field_promo_assoc_video', 'assoc', 'assoc.entity_id=n.nid');
-  $query->addField('assoc', 'field_promo_assoc_video_target_id', 'assoc_fid');
-  // Attach promo season number
-  $query->leftJoin('field_data_field_mpx_season_number', 'fvp_season', 'fvp_season.entity_id=assoc.field_promo_assoc_video_target_id');
-  $query->addField('fvp_season', 'field_mpx_season_number_value', 'promo_season');
-  // Attach promo episode number
-  $query->leftJoin('field_data_field_mpx_episode_number', 'fvp_episode', 'fvp_episode.entity_id=assoc.field_promo_assoc_video_target_id');
-  $query->addField('fvp_episode', 'field_mpx_episode_number_value', 'promo_episode');
-  // Attach promo duration value
-  $query->leftJoin('field_data_field_mpx_duration', 'fvp_duration', 'fvp_duration.entity_id=assoc.field_promo_assoc_video_target_id');
-  $query->addField('fvp_duration', 'field_mpx_duration_value', 'promo_duration');
-  // Attach promo topic
-  $query->leftJoin('field_data_field_promo_topic', 'fnp_topic', 'fnp_topic.entity_id=n.nid');
-  $query->addField('fnp_topic', 'field_promo_topic_value', 'promo_topic');
-  // Attach promo violator
-  $query->leftJoin('field_data_field_promo_violator_name', 'fnp_violator', 'fnp_violator.entity_id=n.nid');
-  $query->addField('fnp_violator', 'field_promo_violator_name_value', 'promo_violator');
-  // Attach promo title
-  $query->leftJoin('field_data_field_promo_title', 'fnp_title', 'fnp_title.entity_id=n.nid');
-  $query->addField('fnp_title', 'field_promo_title_value', 'promo_title');
-  // Attach promo description
-  $query->leftJoin('field_data_field_promo_long_description', 'fnp_description', 'fnp_description.entity_id=n.nid');
-  $query->addField('fnp_description', 'field_promo_long_description_value', 'promo_description');
-  // Attach promo call to action
-  $query->leftJoin('field_data_field_promo_call_to_action_text', 'fnp_cta', 'fnp_cta.entity_id=n.nid');
-  $query->addField('fnp_cta', 'field_promo_call_to_action_text_value', 'promo_cta');
-  // Attach promo link
-  $query->leftJoin('field_data_field_promo_link', 'fnp_link', 'fnp_link.entity_id=n.nid');
-  $query->addField('fnp_link', 'field_promo_link_url', 'promo_link');
-  // Exclude deprecated
-  $query->leftJoin('field_data_field_promo_exclude_from_related', 'fp_exclude', 'fp_exclude.entity_id=n.nid');
-  // Include ovverriging timestamp
-  $query->leftJoin('field_data_field_promo_created_ovts', 'fnp_created', 'fnp_created.entity_id=n.nid');
-  $query->addField('fnp_created', 'field_promo_created_ovts_value', 'created_ovts');
+function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0,
+                     $limit = 0, $direction = 'DESC', $sort_by = 'changed',
+                     $filters = array(), $priority_bundle = NULL, $priority_bundle_limit = 0
+) {
+  $priority_result = array();
+  $normal_result = array();
 
-  $query->condition('fshow.field_show_target_id', $show_id);
-  $query->condition('fshow.deleted', 0);
-  $query->condition('n.status', 1);
-  $query->condition('fshow.entity_type', 'node');
-  $query->condition(
-    db_or()->condition('fp_exclude.field_promo_exclude_from_related_value', NULL)
-      ->condition('fp_exclude.field_promo_exclude_from_related_value', 0)
-  );
+  if (!empty($priority_bundle)) {
+    $priority_result = _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from, $priority_bundle_limit, $direction, $sort_by, array(
+      'fshow.bundle' => array(
+        'values' => $priority_bundle,
+        'operator' => '=',
+      ),
+    ));
 
+    if (in_array($priority_bundle, $filters['fshow.bundle']['values'])) {
+      $flipped_bundles = array_flip($filters['fshow.bundle']['values']);
+      $to_remove_id = $flipped_bundles[$priority_bundle];
+      unset($filters['fshow.bundle']['values'][$to_remove_id]);
 
-  $query->orderBy($sort_by, $direction);
-
-  if ($limit > 0) {
-    $query->range($start_from, $limit);
+      $normal_result = _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from, $limit, $direction, $sort_by, $filters);
+    }
   }
+  else {
 
-  if (!empty($filters)) {
-    foreach ($filters as $filter_field_name => $filter_value) {
-      $values = !empty($filter_value['values']) ? $filter_value['values'] : NULL;
+    $query = db_select('node', 'n');
+    $query->fields('n', array('nid', 'title', 'type', 'created', 'changed'));
+    $query->condition('n.status', 1);
+    // Add aliases for saving compatibility
+    $query->addField('n', 'nid', 'entity_id');
+    $query->addField('n', 'type', 'bundle');
+    // Join Show field
+    $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=n.nid');
+    $query->addField('show_field', 'entity_type', 'entity_type');
+    $query->condition('show_field.field_show_target_id', $show_id);
+    $query->condition('show_field.field_show_target_id', $show_id);
+    $query->condition('show_field.deleted', 0);
+    $query->condition('show_field.entity_type', 'node');
+    // Join Show node
+    $query->join('node', 'show_node', 'show_field.field_show_target_id=show_node.nid');
+    $query->addField('show_node', 'title', 'show_title');
+    // Join associated videos
+    $query->leftJoin('field_data_field_promo_assoc_video', 'assoc_videos_field', 'assoc_videos_field.entity_id=n.nid');
+    $query->addField('assoc_videos_field', 'field_promo_assoc_video_target_id', 'assoc_fid');
+    // Join season number
+    $query->leftJoin('field_data_field_mpx_season_number', 'season_number_field', 'season_number_field.entity_id=assoc_videos_field.field_promo_assoc_video_target_id');
+    $query->addField('season_number_field', 'field_mpx_season_number_value', 'promo_season');
+    // Join episode number
+    $query->leftJoin('field_data_field_mpx_episode_number', 'episode_number_field', 'episode_number_field.entity_id=assoc_videos_field.field_promo_assoc_video_target_id');
+    $query->addField('episode_number_field', 'field_mpx_episode_number_value', 'promo_episode');
+    // Join duration field
+    $query->leftJoin('field_data_field_mpx_duration', 'duration_field', 'duration_field.entity_id=assoc_videos_field.field_promo_assoc_video_target_id');
+    $query->addField('duration_field', 'field_mpx_duration_value', 'promo_duration');
+    // Join promo topic
+    $query->leftJoin('field_data_field_promo_topic', 'promo_topic_field', 'promo_topic_field.entity_id=n.nid');
+    $query->addField('promo_topic_field', 'field_promo_topic_value', 'promo_topic');
+    // Join promo violator
+    $query->leftJoin('field_data_field_promo_violator_name', 'promo_violator_name_field', 'promo_violator_name_field.entity_id=n.nid');
+    $query->addField('promo_violator_name_field', 'field_promo_violator_name_value', 'promo_violator');
+    // Join promo title
+    $query->leftJoin('field_data_field_promo_title', 'promo_title_field', 'promo_title_field.entity_id=n.nid');
+    $query->addField('promo_title_field', 'field_promo_title_value', 'promo_title');
+    // Join promo description
+    $query->leftJoin('field_data_field_promo_long_description', 'promo_description_field', 'promo_description_field.entity_id=n.nid');
+    $query->addField('promo_description_field', 'field_promo_long_description_value', 'promo_description');
+    // Join promo CTA text
+    $query->leftJoin('field_data_field_promo_call_to_action_text', 'promo_cta_field', 'promo_cta_field.entity_id=n.nid');
+    $query->addField('promo_cta_field', 'field_promo_call_to_action_text_value', 'promo_cta');
+    // Join promo link
+    $query->leftJoin('field_data_field_promo_link', 'promo_link_field', 'promo_link_field.entity_id=n.nid');
+    $query->addField('promo_link_field', 'field_promo_link_url', 'promo_link');
+    // Join excluding from related content
+    $query->leftJoin('field_data_field_promo_exclude_from_related', 'promo_exclude_field', 'promo_exclude_field.entity_id=n.nid');
+    $query->condition(
+      db_or()
+        ->condition('promo_exclude_field.field_promo_exclude_from_related_value', NULL)
+        ->condition('promo_exclude_field.field_promo_exclude_from_related_value', 0)
+    );
+    // Join promo "created date" overriding
+    $query->leftJoin('field_data_field_promo_created_ovts', 'promo_created_ovts_field', 'promo_created_ovts_field.entity_id=n.nid');
+    $query->addField('promo_created_ovts_field', 'field_promo_created_ovts_value', 'created_ovts');
 
-      if (!empty($values)) {
-        $operator = !empty($filter_value['operator'])
-          ? $filter_value['operator']
-          : (is_array($values)
-            ? 'IN'
-            : '='
-          );
+    $query->orderBy($sort_by, $direction);
 
-        if (is_array($values) && count($values) == 1) {
-          $values = reset($values);
-          $operator = '=';
+    if ($limit > 0) {
+      $query->range($start_from, $limit);
+    }
+
+    if (!empty($filters)) {
+      foreach ($filters as $filter_field_name => $filter_value) {
+        if ($filter_field_name == 'fshow.bundle') {
+          $filter_field_name = 'n.type';
         }
 
-        $query->condition($filter_field_name, $values, $operator);
+        $values = !empty($filter_value['values']) ? $filter_value['values'] : NULL;
+
+        if (!empty($values)) {
+          $operator = !empty($filter_value['operator'])
+            ? $filter_value['operator']
+            : (is_array($values)
+              ? 'IN'
+              : '='
+            );
+
+          if (is_array($values) && count($values) == 1) {
+            $values = reset($values);
+            $operator = '=';
+          }
+
+          $query->condition($filter_field_name, $values, $operator);
+        }
       }
     }
-  }
 
-  $result = $query->execute()->fetchAll();
+    $result = $query->execute()->fetchAll();
 
-  if (!empty($result)) {
-    foreach ($result as &$result_item) {
-      if (!empty($result_item->created_ovts)) {
-        $result_item->created = $result_item->created_ovts;
-      }
-      unset($result_item->created_ovts);
-      if (empty($result_item->promo_title) || empty($result_item->promo_description)) {
-        $own_promo_lines = _usanetwork_promo_node_get_promo_lines(node_load($result_item->nid));
-        $result_item->promo_title = !empty($result_item->promo_title) ? $result_item->promo_title
-          : (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
-        $result_item->promo_description = !empty($result_item->promo_description) ? $result_item->promo_description
-          : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
+    if (!empty($result)) {
+      foreach ($result as &$result_item) {
+        if (!empty($result_item->created_ovts)) {
+          $result_item->created = $result_item->created_ovts;
+        }
+        unset($result_item->created_ovts);
+        if (empty($result_item->promo_title) || empty($result_item->promo_description)) {
+          $own_promo_lines = _usanetwork_promo_node_get_promo_lines(node_load($result_item->nid));
+          $result_item->promo_title = !empty($result_item->promo_title) ? $result_item->promo_title
+            : (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
+          $result_item->promo_description = !empty($result_item->promo_description) ? $result_item->promo_description
+            : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
+        }
       }
     }
+
+    return $result;
   }
 
-  return $result;
+  return array(
+    'priority' => $priority_result,
+    'normal' => $normal_result,
+  );
 }
 
 /**
@@ -1534,7 +1568,7 @@ function _usanetwork_tv_shows_discription_item($show, $field_list, &$description
  * @param int $start_from
  * @param int $limit
  */
-function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0, $limit = 1) {
+function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0, $limit = 1, $priority_bundle = NULL, $priority_bundle_limit = NULL) {
   $content_items = array();
   $node_filters = array(
     'fshow.bundle' => array(
@@ -1551,7 +1585,26 @@ function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0,
   );
 
   // Pull nodes
-  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'created', $node_filters);
+  $nodes = _usanetwork_tv_shows_pull_related_nodes($tv_show_node->nid, $start_from, $limit, 'DESC', 'created', $node_filters, $priority_bundle, $priority_bundle_limit);
+  $priority_nodes = array();
+
+  // Check if it has prioritized nodes and sort
+  if (isset($nodes['priority'])) {
+    $priority_nodes = $nodes['priority'];
+    $nodes = $nodes['normal'];
+
+    usort($priority_nodes, function ($a, $b) {
+      if ($a->created == $b->created) {
+        return 0;
+      }
+      else {
+        if ($a->created > $b->created) {
+          return -1;
+        }
+        return 1;
+      }
+    });
+  }
 
   // Pull files
   $files = _usanetwork_tv_shows_pull_related_files($tv_show_node->nid, $start_from, $limit, 'DESC', 'created');
@@ -1569,19 +1622,21 @@ function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0,
 
   // Sort items according sorter alias
   usort($content_items, function ($a, $b) {
-    $a_sorter = 'created';
-    $b_sorter = 'created';
-
-    if ($a->$a_sorter == $b->$b_sorter) {
+    if ($a->created == $b->created) {
       return 0;
     }
     else {
-      if ($a->$a_sorter > $b->$b_sorter) {
+      if ($a->created > $b->created) {
         return -1;
       }
       return 1;
     }
   });
+
+  // If priority by node type - merge with nodes first
+  if (!empty($priority_bundle) && in_array($priority_bundle, $node_filters['fshow.bundle']['values'])) {
+    $content_items = array_merge($priority_nodes, $content_items);
+  }
 
   // Crop extra elements
   if ($limit > 0) {
@@ -1628,27 +1683,8 @@ function usanetwork_tv_shows_get_related_video_content($tv_show_node, $start_fro
  * @param int $limit
  */
 function usanetwork_tv_shows_get_related_gallery_content($tv_show_node, $start_from = 0, $limit = 1) {
-  $sorted_content = array();
-  $left_to_sort = USA_TV_SHOW_RELATED_CONSUMPTIONATOR_GALLERY_QUEUE;
+  return usanetwork_tv_shows_get_related_content($tv_show_node, $start_from, $limit, 'media_gallery', USA_TV_SHOW_RELATED_CONSUMPTIONATOR_GALLERY_QUEUE);
 
-  $content = usanetwork_tv_shows_get_related_content($tv_show_node, $start_from, $limit);
-
-  if (!empty($content) && $left_to_sort > 0) {
-    foreach ($content as $content_index => $content_item) {
-      if ($left_to_sort <= 0) {
-        break;
-      }
-
-      if ($content_item->bundle == 'media_gallery') {
-        $sorted_content[] = $content_item;
-
-        unset($content[$content_index]);
-        $left_to_sort--;
-      }
-    }
-  }
-
-  return array_merge($sorted_content, $content);
 }
 
 /**
@@ -1658,27 +1694,7 @@ function usanetwork_tv_shows_get_related_gallery_content($tv_show_node, $start_f
  * @param int $limit
  */
 function usanetwork_tv_shows_get_related_person_content($tv_show_node, $start_from = 0, $limit = 1) {
-  $sorted_content = array();
-  $left_to_sort = USA_TV_SHOW_RELATED_CONSUMPTIONATOR_PERSON_QUEUE;
-
-  $content = usanetwork_tv_shows_get_related_content($tv_show_node, $start_from, $limit);
-
-  if (!empty($content) && $left_to_sort > 0) {
-    foreach ($content as $content_index => $content_item) {
-      if ($left_to_sort <= 0) {
-        break;
-      }
-
-      if ($content_item->bundle == 'person') {
-        $sorted_content[] = $content_item;
-
-        unset($content[$content_index]);
-        $left_to_sort--;
-      }
-    }
-  }
-
-  return array_merge($sorted_content, $content);
+  return usanetwork_tv_shows_get_related_content($tv_show_node, $start_from, $limit, 'person', USA_TV_SHOW_RELATED_CONSUMPTIONATOR_PERSON_QUEUE);
 }
 
 /**

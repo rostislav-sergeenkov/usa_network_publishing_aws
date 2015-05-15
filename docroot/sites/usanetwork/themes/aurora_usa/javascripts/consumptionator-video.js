@@ -16,7 +16,7 @@
       });
 
       //init custom scrollbar for social block
-      var container = $('#block-usanetwork-mpx-video-usa-mpx-video-socal .content');
+      var container = $('#block-usanetwork-mpx-video-usanetwork-social-content .content');
 
       $(container).mCustomScrollbar({
         axis: "y",

@@ -17,7 +17,7 @@
             <h2><?php print $episodes_block_title; ?></h2>
           </div>
           <?php if (!empty($sponsored)) : ?>
-            <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
+            <div class="sponsored" data-mpspath="<?php print $file_path; ?>" data-scalemps="1"></div>
           <?php endif; ?>
         </div>
       <?php endif; ?>

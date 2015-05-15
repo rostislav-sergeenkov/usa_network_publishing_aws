@@ -4806,6 +4806,11 @@ header .header-nav-bar {
   position: relative;
   width: 100%;
 }
+@media (min-width: 1901px) {
+  header .header-nav-bar {
+    height: 135px;
+  }
+}
 @media (max-width: 1024px) {
   header .header-nav-bar {
     height: 50px;
@@ -4840,6 +4845,11 @@ header .usa-logo {
   height: 100%;
   width: 125px;
 }
+@media (min-width: 1901px) {
+  header .usa-logo {
+    width: 190px;
+  }
+}
 @media (max-width: 1024px) {
   header .usa-logo {
     width: 100px;
@@ -4857,8 +4867,9 @@ header .usa-logo:hover {
   }
 }
 header .usa-logo a {
-  background: url("../images/usa-logo.png") no-repeat;
-  background-position: 45% 50%;
+  background: url("../images/logo-bg.png") no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
   display: block;
   height: 100%;
   width: 100%;
@@ -4881,6 +4892,11 @@ header .nav-bar-tabs {
   float: left;
   height: 100%;
   width: 605px;
+}
+@media (min-width: 1901px) {
+  header .nav-bar-tabs {
+    width: 750px;
+  }
 }
 @media (max-width: 1280px) {
   header .nav-bar-tabs {
@@ -5145,6 +5161,13 @@ header .nav-bar-tabs {
   }
   header .nav-bar-tabs a:hover {
     background: darkgrey;
+  }
+}
+@media (min-width: 769px) and (min-width: 1901px) {
+  header .nav-bar-tabs a {
+    font-size: 40px;
+    line-height: 135px;
+    padding: 0 30px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {

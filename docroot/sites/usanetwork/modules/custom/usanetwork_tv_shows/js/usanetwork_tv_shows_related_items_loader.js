@@ -64,9 +64,9 @@
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
           }
-          if (number_ul > 2) {
+          //if (number_ul > 2) {
             //$('.ajax-load-block .load-more-link a').addClass('disabled-infinity');
-          }
+          //}
         },
         error: function () {
           console.info('error');

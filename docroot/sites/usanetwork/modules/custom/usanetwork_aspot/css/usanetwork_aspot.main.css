@@ -76,29 +76,37 @@
 
 /* mobile */
 .draggable-area.mobile div[data-rel="title"] {
-  font-size: 30px;
+  font-size: 67px;
+  line-height: 1;
 }
 .draggable-area.mobile div[data-rel="title_prefix"] {
   font-size: 12px;
+  line-height: 1;
 }
 .draggable-area.mobile .aspot-draggable-cta-button {
-  padding: 15px 25px 15px 12px;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 224px;
+  padding: 11px 20px 11px 16.5px;
 }
 .draggable-area.mobile div[data-rel="social_meter"]{
   height: 138px;
   width: 205px;
 }
-/* desctop */
+/* desktop */
 .draggable-area.desktop div[data-rel="title"] {
-  font-size: 70px;
+  font-size: 77px;
+  line-height: 1;
 }
 .draggable-area.desktop div[data-rel="title_prefix"] {
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 1;
 }
 .draggable-area.desktop .aspot-draggable-cta-button {
-  font-size: 14px;
-  line-height: 24px;
-  padding: 25px 40px 25px 28px;
+  font-size: 16.5px;
+  line-height: 1.8;
+  max-width: 256px;
+  padding: 21.76px 40px 21.76px 32.5px;
 }
 .draggable-area.desktop div[data-rel="social_meter"]{
   height: 153px;

@@ -24394,7 +24394,19 @@ yx-axis
 
 /* ---------------------------------------- */
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
+  overflow-y: hidden;
+  max-height: 43.75vw;
   position: relative;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel {
+    max-height: 1094px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel {
+    max-height: 90.625vw;
+  }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
   -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
@@ -24456,18 +24468,18 @@ yx-axis
 .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
   color: #ffffff;
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
-  line-height: initial;
+  font-size: 1.1vw;
+  line-height: 1;
   text-transform: uppercase;
 }
-@media (min-width: 1601px) {
+@media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
-    font-size: 20px;
+    font-size: 27.5px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
-    font-size: 10px;
+    font-size: 1.875vw;
   }
 }
 .usanetwork-aspot .meta-wrap .title_prefix p, .usanetwork-aspot .meta-wrap .start p {
@@ -24476,26 +24488,19 @@ yx-axis
 .usanetwork-aspot .meta-wrap .title {
   color: #ffffff;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 70px;
-  line-height: initial;
+  font-size: 6vw;
+  line-height: 1;
   margin: 0;
   text-transform: uppercase;
 }
-@media (min-width: 1601px) {
+@media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title {
-    font-size: 120px;
-  }
-}
-@media (max-width: 1024px) {
-  .usanetwork-aspot .meta-wrap .title {
-    font-size: 40px;
-    margin-bottom: 20px;
+    font-size: 150px;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title {
-    font-size: 30px;
-    margin-bottom: 10px;
+    font-size: 10.4vw;
   }
 }
 .usanetwork-aspot .meta-wrap .title p {
@@ -24559,33 +24564,38 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap .cta-link {
   position: relative;
-  max-width: 365px;
+  max-width: 20vw;
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .cta-link {
+    max-width: 500px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .cta-link {
+    max-width: 35vw;
+  }
 }
 .usanetwork-aspot .meta-wrap .cta-link a {
   color: #ffffff;
   display: block;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  padding: 25px 40px 25px 28px;
+  font-size: 1.27vw;
+  line-height: 1.8;
+  padding: 1.7vw 3.125vw 1.7vw 2.54vw;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
 }
-@media (min-width: 1601px) {
+@media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .cta-link a {
-    font-size: 20px;
+    font-size: 31.74px;
+    padding: 42.5px 78px 42.5px 63.5px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .cta-link a {
-    padding: 15px 25px 15px 12px;
-  }
-}
-@media (max-width: 480px) {
-  .usanetwork-aspot .meta-wrap .cta-link a {
-    font-size: 10px;
-    padding: 13px 25px 11px 12px;
+    font-size: 2.1875vw;
   }
 }
 .usanetwork-aspot .meta-wrap .cta-link a:after {
@@ -24593,20 +24603,24 @@ yx-axis
   content: "\e608";
   display: block;
   font-family: "ico-font";
-  font-size: 11px;
+  font-size: 1vw;
+  line-height: 1;
   position: absolute;
-  margin-top: -12px;
-  right: 20px;
+  margin-top: -0.5vw;
+  right: 1.4vw;
   top: 50%;
 }
-@media (max-width: 768px) {
+@media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .cta-link a:after {
-    right: 10px;
+    font-size: 25px;
+    margin-top: -12.5px;
+    right: 35px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .cta-link a:after {
-    font-size: 9px;
+    font-size: 1.6vw;
+    margin-top: -0.8vw;
   }
 }
 .usanetwork-aspot .social_meter {

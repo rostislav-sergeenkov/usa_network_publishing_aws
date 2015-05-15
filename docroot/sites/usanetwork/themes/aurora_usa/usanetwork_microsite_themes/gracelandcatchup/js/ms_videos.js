@@ -12,8 +12,7 @@
             $videoInfoContainer = $('#videos #video-container .video-player-desc'),
             caption = $videoInfoContainer.find('.video-description').text(),
             title = $videoInfoContainer.find('.video-title').text(),
-            $image = ($('#videos #video-container .video-auth-player-wrapper #player img').css('display') != 'none') ? $('#videos #video-container .video-auth-player-wrapper #player img') : null,
-            imageSrc = ($image != null) ? $image.attr('src') : '';
+            imageSrc = $('#videos #video-gigya-share').attr('data-video-thumbnail');
 
         sharebar.gigyaSharebar = {
           containerID: "video-gigya-share",
@@ -375,6 +374,10 @@
               Drupal.behaviors.ms_videos.clickThumbnail(elem);
             });
             Drupal.behaviors.ms_videos.setActiveThumbnail();
+            if (typeof Waypoint != 'undefined') {
+              usa_debug('======== refreshing all waypoints');
+              Waypoint.refreshAll();
+            }
           });
         });
       })

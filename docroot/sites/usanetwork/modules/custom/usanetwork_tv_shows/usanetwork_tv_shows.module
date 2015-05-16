@@ -1335,7 +1335,7 @@ function _usanetwork_tv_shows_aspot_block() {
         else {
           $content_image = usanetwork_core_api_get_content_image($entity_type, $alternative_episode_content);
         }
-        $promo_data = _usanetwork_promo_pull_entity_promo_details($alternative_episode_content, $entity_wrapper);
+        $promo_data = _usanetwork_promo_pull_entity_promo_details($alternative_episode_content, $entity_wrapper, $entity_type);
         if ($entity_type == 'node') {
           $own_promo_lines = _usanetwork_promo_node_get_promo_lines($alternative_episode_content);
         }
@@ -1363,6 +1363,7 @@ function _usanetwork_tv_shows_aspot_block() {
           'description' => !empty($promo_data['description']) ? $promo_data['description'] :
               (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
           'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => 'full_episodes_633x356')) : '',
+          'icon' => !(empty($promo_data['icon_type'])) ? $promo_data['icon_type'] : NULL,
         );
 
         $theme_variables['episodes'][] = $episode_theme_variables;
@@ -1374,7 +1375,7 @@ function _usanetwork_tv_shows_aspot_block() {
     if (!empty($full_latest_episodes)) {
       foreach ($full_latest_episodes as $full_latest_episode) {
         $episode_wrapper = entity_metadata_wrapper('file', $full_latest_episode);
-        $promo_data = _usanetwork_promo_pull_entity_promo_details($full_latest_episode, $episode_wrapper);
+        $promo_data = _usanetwork_promo_pull_entity_promo_details($full_latest_episode, $episode_wrapper, 'file');
         $own_promo_lines = _usanetwork_promo_file_get_promo_lines($full_latest_episode);
         if (!empty($full_latest_episode->field_promo_image_override)) {
           $field_image_override = reset(field_get_items('file', $full_latest_episode, 'field_promo_image_override'));
@@ -1400,6 +1401,7 @@ function _usanetwork_tv_shows_aspot_block() {
           'description' => !empty($promo_data['description']) ? $promo_data['description']
               : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
           'image_url' => !empty($image_uri) ? theme('image_style', array('path' => $image_uri, 'style_name' => 'full_episodes_633x356')) : '',
+          'icon' => !(empty($promo_data['icon_type'])) ? $promo_data['icon_type'] : NULL,
         );
         $theme_variables['episodes'][] = $episode_theme_variables;
       }

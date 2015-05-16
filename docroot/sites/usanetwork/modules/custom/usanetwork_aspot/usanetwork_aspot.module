@@ -971,17 +971,19 @@ function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
         $aref['entity'] = node_load($aref['target_id']);
       }
 
-      $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
-      $aspot_node = $aref['entity'];
+      if ($aref['entity']) {
+        $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
+        $aspot_node = $aref['entity'];
 
-      if (!empty($show_node_field[0]['target_id'])) {
-        $show_node = node_load($show_node_field[0]['target_id']);
+        if (!empty($show_node_field[0]['target_id'])) {
+          $show_node = node_load($show_node_field[0]['target_id']);
+        }
+
+        $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
+          'aspot_node' => $aspot_node,
+          'show_node' => $show_node,
+        );
       }
-
-      $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
-        'aspot_node' => $aspot_node,
-        'show_node' => $show_node,
-      );
     }
   }
 

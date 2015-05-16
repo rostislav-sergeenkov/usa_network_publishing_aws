@@ -16149,6 +16149,7 @@ footer h2 {
   display: inline-block;
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
+  letter-spacing: 2px;
   margin: 0;
   position: relative;
   text-align: center;
@@ -16165,7 +16166,7 @@ footer h2 {
   content: '';
   display: block;
   height: 22px;
-  left: -6px;
+  left: -8px;
   top: 0;
   position: absolute;
   width: 4px;
@@ -16176,7 +16177,7 @@ footer h2 {
   content: '';
   display: block;
   height: 22px;
-  right: -6px;
+  right: -8px;
   top: 0;
   position: absolute;
   width: 4px;

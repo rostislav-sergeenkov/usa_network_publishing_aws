@@ -507,6 +507,46 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
+  $styles['456x372'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 456,
+          'height' => 372,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 456,
+          'height' => 372,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['927x756'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 927,
+          'height' => 756,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 927,
+          'height' => 756,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
   return $styles;
 }
 
@@ -2478,8 +2518,8 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
                 ? image_style_url('719x414', $promo_image_url) : NULL,
             'desktop' => !empty($promo_image_url)
                 ? ($is_first
-                  ? image_style_url('928x714', $promo_image_url)
-                  : image_style_url('457x351', $promo_image_url)
+                  ? image_style_url('927x756', $promo_image_url)
+                  : image_style_url('456x372', $promo_image_url)
                 )
                 : NULL,
           ),
@@ -3047,10 +3087,10 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
   if (!empty($image_url)) {
     if ($current_item_index == $big_element_index) { // Big image
       $mobile_image = image_style_url('719x414', $image_url);
-      $desktop_image = image_style_url('928x714', $image_url);
+      $desktop_image = image_style_url('927x756', $image_url);
     }
     else { // Small image
-      $desktop_image = image_style_url('457x351', $image_url);
+      $desktop_image = image_style_url('456x372', $image_url);
     }
   }
   $query_params = drupal_get_query_parameters();

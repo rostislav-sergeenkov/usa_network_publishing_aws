@@ -25179,7 +25179,7 @@ yx-axis
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul {
   height: 100% !important;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li li {
+.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li {
   background: #8f8f8f;
   overflow: hidden;
   height: 36%;
@@ -25187,7 +25187,7 @@ yx-axis
   position: relative;
   width: 100%;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li li:nth-child(2n) {
+.aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li:nth-child(2n) {
   background: #7a7a7a;
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {

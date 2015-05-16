@@ -27962,22 +27962,31 @@ body.blog .view-display-id-blog_content .views-row {
     display: table;
   }
 }
-#full-bleed-promo .block-content > a {
+#full-bleed-promo .block-content {
   display: block;
   line-height: 0;
   margin-right: 330px;
   max-width: 1350px;
 }
 @media (max-width: 1024px) {
-  #full-bleed-promo .block-content > a {
+  #full-bleed-promo .block-content {
     margin-right: 320px;
   }
 }
 @media (max-width: 640px) {
-  #full-bleed-promo .block-content > a {
+  #full-bleed-promo .block-content {
     margin-right: 0;
     text-align: center;
   }
+}
+#full-bleed-promo .block-content > a {
+  display: block;
+}
+#full-bleed-promo .block-content .sponsored {
+  width: 100%;
+}
+#full-bleed-promo .block-content .sponsored iframe {
+  width: 100%;
 }
 #full-bleed-promo .block-advert {
   height: 250px;

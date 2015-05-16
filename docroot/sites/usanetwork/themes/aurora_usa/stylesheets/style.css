@@ -690,13 +690,20 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 100%;
 }
 @media (max-width: 768px) {
+  .featured-block .carousel ul li .featured-large {
+    height: 78.9vw;
+  }
   .featured-block .carousel ul li .featured-large:before {
     bottom: 0;
     height: 31%;
     top: auto;
   }
 }
-.featured-block .carousel ul li .featured-large img {
+.featured-block .carousel ul li .featured-large .asset-img {
+  height: 100%;
+  width: 100%;
+}
+.featured-block .carousel ul li .featured-large .asset-img img {
   height: 100%;
   width: 100%;
 }
@@ -840,6 +847,14 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   height: 40%;
   top: auto;
 }
+.featured-block .carousel ul li .featured-small .asset-img {
+  height: 100%;
+  width: 100%;
+}
+.featured-block .carousel ul li .featured-small .asset-img img {
+  height: 100%;
+  width: 100%;
+}
 .featured-block .carousel ul li .featured-small .meta-wrapper {
   background: none;
   bottom: 0;
@@ -851,13 +866,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 .featured-block .carousel ul li .featured-small .meta-wrapper .meta-wrapper-inner {
   height: 100%;
   display: table;
-  padding-bottom: 30px;
   width: 100%;
-}
-@media (max-width: 768px) {
-  .featured-block .carousel ul li .featured-small .meta-wrapper .meta-wrapper-inner {
-    padding-bottom: 0px;
-  }
 }
 .featured-block .carousel ul li .featured-small .meta-back {
   background: #000000;
@@ -871,31 +880,26 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 .featured-block .carousel ul li .featured-small .meta-icon {
   display: block;
   height: 37px;
-  left: 20px;
-  margin-top: -34px;
+  left: 4%;
+  margin-top: -19px;
+  padding-left: 4%;
   position: absolute;
   top: 50%;
   width: 37px;
 }
-@media (max-width: 768px) {
-  .featured-block .carousel ul li .featured-small .meta-icon {
-    margin-top: -19px;
-  }
-}
 @media (max-width: 480px) {
   .featured-block .carousel ul li .featured-small .meta-icon {
     height: 30px;
-    left: 12px;
     margin-top: -15px;
     width: 30px;
   }
 }
 .featured-block .carousel ul li .featured-small .meta-icon ~ .meta {
-  padding-left: 69px;
+  padding-left: calc(8% + 37px);
 }
 @media (max-width: 480px) {
   .featured-block .carousel ul li .featured-small .meta-icon ~ .meta {
-    padding-left: 48px;
+    padding-left: calc(8% + 30px);
   }
 }
 .featured-block .carousel ul li .featured-small .meta {
@@ -11698,7 +11702,7 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li img {
-    height: auto;
+    height: 100%;
     width: 100%;
   }
 }
@@ -11715,7 +11719,7 @@ footer h2 {
 @media (max-width: 768px) {
   .featured-block .carousel ul li > div:not(.featured-large) {
     float: left;
-    height: auto;
+    height: 26.1vw;
     width: 49%;
   }
 }

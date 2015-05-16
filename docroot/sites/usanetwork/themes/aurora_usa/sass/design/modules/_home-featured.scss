@@ -83,7 +83,7 @@
             width: 539px;
           }
           @include breakpoint($bp-768-width) {
-            height: auto;
+            height: 100%;
             width: 100%;
           }
         }
@@ -96,7 +96,7 @@
           }
           @include breakpoint($bp-768-width) {
             float: left;
-            height: auto;
+            height: 26.1vw;
             width: 49%;
           }
           &:first-child {

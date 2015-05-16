@@ -125,6 +125,39 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_full_bleed_promo-field_usa_fbp_linked_content'
+  $field_instances['node-usanetwork_full_bleed_promo-field_usa_fbp_linked_content'] = array(
+    'bundle' => 'usanetwork_full_bleed_promo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'usanetwork_dynamic_entity_reference_label',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_fbp_linked_content',
+    'label' => 'Linked Content',
+    'required' => 0,
+    'settings' => array(
+      'handler' => 'default',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'usanetwork_dynamic_entity_reference',
+      'settings' => array(),
+      'type' => 'usanetwork_dynamic_entity_reference_default',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_full_bleed_promo-field_usa_fbp_mobile_image'
   $field_instances['node-usanetwork_full_bleed_promo-field_usa_fbp_mobile_image'] = array(
     'bundle' => 'usanetwork_full_bleed_promo',
@@ -191,6 +224,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Call to action link');
   t('Desktop image');
+  t('Linked Content');
   t('Minimum 1350w x 530h');
   t('Minimum 450w x 320h');
   t('Mobile image');

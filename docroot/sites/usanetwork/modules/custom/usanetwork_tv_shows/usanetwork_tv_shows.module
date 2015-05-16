@@ -2313,10 +2313,11 @@ function _usanetwork_tv_shows_render_fbp_block() {
         'about_image' => isset($image)
           ? theme('image_style', array(
             'path' => $image,
-            'style_name' => '591x330',
+            'style_name' => '475x537',
           ))
           : NULL,
         'about_text' => !empty($show_node->field_about_show) ? $show_wrapper->field_about_show->value() : NULL,
+        'url' => url('node/' . $show_node->nid . '/cast'),
       );
       return theme('usanetwork_tv_shows_about_block', $theme_variables);
     }

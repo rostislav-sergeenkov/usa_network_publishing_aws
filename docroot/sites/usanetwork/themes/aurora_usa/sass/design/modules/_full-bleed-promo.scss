@@ -9,7 +9,7 @@
   @include breakpoint($bp-768-width) {
     @include clear;
   }
-  .block-content > a {
+  .block-content {
     display: block;
     line-height: 0;
     margin-right: 330px;
@@ -20,6 +20,15 @@
     @include breakpoint($bp-640-width) {
       margin-right: 0;
       text-align: center;
+    }
+    & > a {
+      display: block;
+    }
+    .sponsored {
+      width: 100%;
+      iframe {
+        width: 100%;
+      }
     }
   }
   .block-advert {

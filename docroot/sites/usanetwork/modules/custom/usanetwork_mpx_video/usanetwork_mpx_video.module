@@ -773,7 +773,6 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
       $episode_image = _usanetwork_mpx_video_get_image_path($episode);
     }
 
-
     $video_image = theme('image_style', array(
       'path' => $episode_image,
       'style_name' => '300x250',
@@ -784,6 +783,7 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
       'caption' => t('@show: S@season Episode @episode_number', array('@show' => $show->title, '@season' => $episode_season, '@episode_number' => $episode_number)),
       'title' => $episode->filename,
       'image' => $video_image,
+      'icon' => usanetwork_core_api_get_media_icon('file', $episode->fid),
     );
     $block_items .= theme('usanetwork_mpx_video_home_full_episodes_carousel_item', $episode_element);
     if ($i % $row_number == $row_number - 1) {

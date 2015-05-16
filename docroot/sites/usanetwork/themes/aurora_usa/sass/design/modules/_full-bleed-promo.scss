@@ -45,3 +45,154 @@
     }
   }
 }
+.about-show-block {
+  @include clear();
+  background: $poll-back;
+  overflow: hidden;
+  padding: 30px 22px 0;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-1901-width) {
+    padding: 40px 32px 0;
+  }
+  @include breakpoint($bp-min-641-width) {
+    min-height: 290px;
+  }
+  .about-show-block-inner {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      max-width: 1868px;
+      margin: 0 auto;
+    }
+    @include breakpoint($bp-640-width) {
+      padding-bottom: 35vw;
+    }
+  }
+  .about-show-image-block {
+    float: left;
+    line-height: 1;
+    width: 25%;
+    @include breakpoint($between-641-1024) {
+      display: none!important;
+    }
+    @include breakpoint($bp-640-width) {
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      position: absolute!important;
+      right: 0;
+      width: 30%;
+    }
+  }
+  .about-show-text-block {
+    color: $poll-color;
+    float: left;
+    font-family: $avalon-medium;
+    height: 100%;
+    line-height: 1.2;
+    padding: 30px;
+    width: calc(75% - 300px);
+    @include breakpoint($bp-min-1901-width) {
+      padding: 40px;
+    }
+    @include breakpoint($between-641-1024) {
+      width: calc(100% - 300px);
+    }
+    @include breakpoint($bp-640-width) {
+      padding: 0;
+      width: 100%;
+    }
+    .about-show-text-block-title {
+      font-family: $tex-gyreschola-italic;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 35px;
+      text-align: center;
+      text-transform: uppercase;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 24px;
+        margin-bottom: 45px;
+      }
+      @include breakpoint($bp-640-width) {
+        margin-bottom: 25px;
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+    }
+    .about-show-text-block-description {
+      font-size: 16px;
+      margin-bottom: 60px;
+      text-align: center;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 24px;
+        margin-bottom: 80px;
+      }
+      @include breakpoint($bp-640-width) {
+        margin-bottom: 50px;
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 12px;
+        margin-bottom: 30px;
+      }
+    }
+    .about-show-text-block-more {
+      a {
+        color: #ffffff;
+        display: block;
+        font-size: 12px;
+        line-height: 1;
+        margin: 0 auto;
+        padding: 13px 25px 13px 20px;
+        position: relative;
+        text-transform: uppercase;
+        width: 120px;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 18px;
+          padding: 19.5px 37.5px 19.5px 30px;
+          width: 180px;
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 10px;
+          padding: 10px 20px 10px 15px;
+          width: 90px;
+        }
+        &:after {
+          color: #ffffff;
+          content: "\e608";
+          display: block;
+          font-family: "ico-font";
+          font-size: 10px;
+          line-height: 1;
+          position: absolute;
+          margin-top: -5px;
+          right: 16px;
+          top: 50%;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 15px;
+            margin-top: -7.5px;
+            right: 24px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 8px;
+            margin-top: -4px;
+            right: 12px;
+          }
+        }
+      }
+    }
+  }
+  .about-show-advert-block {
+    margin-top: -125px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    @include breakpoint($bp-640-width) {
+      display: none;
+    }
+  }
+}

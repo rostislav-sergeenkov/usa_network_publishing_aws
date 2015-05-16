@@ -9277,22 +9277,33 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: table;
 }
 .show-latest-block ul.odd li.first {
-  margin-bottom: 1.47vw;
+  margin-bottom: 0.735vw;
 }
 @media (min-width: 1901px) {
   .show-latest-block ul.odd li.first {
-    margin-bottom: 29px;
+    margin-bottom: 14.5px;
+  }
+}
+@media (max-width: 768px) {
+  .show-latest-block ul.odd li.first {
+    margin-bottom: 1.47vw;
   }
 }
 .show-latest-block ul.odd li.first > div {
   float: left;
   height: 25.4vw;
-  margin-right: 1.6%;
-  width: 49.2%;
+  margin-right: 0.8%;
+  width: 49.6%;
 }
 @media (min-width: 1901px) {
   .show-latest-block ul.odd li.first > div {
     height: 483px;
+  }
+}
+@media (max-width: 768px) {
+  .show-latest-block ul.odd li.first > div {
+    margin-right: 1.6%;
+    width: 49.2%;
   }
 }
 @media (max-width: 640px) {
@@ -9306,11 +9317,16 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .show-latest-block ul.odd li.last > div {
   float: left;
   height: 25.4vw;
-  width: 49.2%;
+  width: 49.6%;
 }
 @media (min-width: 1901px) {
   .show-latest-block ul.odd li.last > div {
     height: 483px;
+  }
+}
+@media (max-width: 768px) {
+  .show-latest-block ul.odd li.last > div {
+    width: 49.2%;
   }
 }
 @media (max-width: 640px) {
@@ -9326,25 +9342,35 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .show-latest-block ul.odd li.last > div:nth-child(2) {
     left: 0;
     position: absolute;
+    top: 26.135vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .show-latest-block ul.odd li.last > div:nth-child(2) {
     top: 26.87vw;
   }
 }
 @media (min-width: 1901px) {
   .show-latest-block ul.odd li.last > div:nth-child(2) {
-    top: 512px;
+    top: 497px;
   }
 }
-.show-latest-block ul.odd li.last > div:last-child {
+.show-latest-block ul.odd li.last > div:nth-child(3) {
   float: right;
-  height: 52.27vw;
+  height: 51.535vw;
 }
 @media (min-width: 1901px) {
-  .show-latest-block ul.odd li.last > div:last-child {
-    height: 995px;
+  .show-latest-block ul.odd li.last > div:nth-child(3) {
+    height: 980px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .show-latest-block ul.odd li.last > div:nth-child(3) {
+    height: 52.27vw;
   }
 }
 @media (max-width: 640px) {
-  .show-latest-block ul.odd li.last > div:last-child {
+  .show-latest-block ul.odd li.last > div:nth-child(3) {
     height: 51.6vw;
     float: none;
     margin-bottom: 0;
@@ -9354,13 +9380,19 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .show-latest-block ul.even li.first > div {
   float: left;
   height: 25.4vw;
-  margin-bottom: 1.47vw;
-  width: 49.2%;
+  margin-bottom: 0.735vw;
+  width: 49.6%;
 }
 @media (min-width: 1901px) {
   .show-latest-block ul.even li.first > div {
     height: 483px;
-    margin-bottom: 29px;
+    margin-bottom: 14.5px;
+  }
+}
+@media (max-width: 768px) {
+  .show-latest-block ul.even li.first > div {
+    margin-bottom: 1.47vw;
+    width: 49.2%;
   }
 }
 @media (max-width: 640px) {
@@ -9369,12 +9401,18 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .show-latest-block ul.even li.first > div:first-child {
-  height: 52.27vw;
-  margin-right: 1.6%;
+  height: 51.535vw;
+  margin-right: 0.8%;
 }
 @media (min-width: 1901px) {
   .show-latest-block ul.even li.first > div:first-child {
-    height: 995px;
+    height: 980px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .show-latest-block ul.even li.first > div:first-child {
+    height: 52.27vw;
+    margin-right: 1.6%;
   }
 }
 @media (max-width: 640px) {
@@ -9392,12 +9430,18 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .show-latest-block ul.even li.last > div {
   float: left;
   height: 25.4vw;
-  margin-right: 1.6%;
-  width: 49.2%;
+  margin-right: 0.8%;
+  width: 49.6%;
 }
 @media (min-width: 1901px) {
   .show-latest-block ul.even li.last > div {
     height: 483px;
+  }
+}
+@media (max-width: 768px) {
+  .show-latest-block ul.even li.last > div {
+    margin-right: 1.6%;
+    width: 49.2%;
   }
 }
 @media (max-width: 640px) {

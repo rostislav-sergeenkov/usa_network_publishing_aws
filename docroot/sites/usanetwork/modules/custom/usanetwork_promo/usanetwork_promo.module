@@ -274,7 +274,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
  * @param $entity_wrapper - entity_metadata_wrapper of entity
  * @return array
  */
-function _usanetwork_promo_pull_entity_promo_details($entity_object, $entity_wrapper) {
+function _usanetwork_promo_pull_entity_promo_details($entity_object, $entity_wrapper, $entity_type = 'node') {
 
   $promo_variables = array(
     'topic' => !empty($entity_object->field_promo_topic)
@@ -292,7 +292,9 @@ function _usanetwork_promo_pull_entity_promo_details($entity_object, $entity_wra
     'cta' => !empty($entity_object->field_promo_call_to_action_text)
       ? htmlspecialchars($entity_wrapper->field_promo_call_to_action_text->value())
       : '',
-    'icon_type' => 'video-icon',
+    'icon_type' => ($entity_type == 'node')
+      ? usanetwork_core_api_get_media_icon($entity_type, $entity_object->nid)
+      : usanetwork_core_api_get_media_icon($entity_type, $entity_object->fid),
     'show_class' => '',
   );
 
@@ -320,7 +322,7 @@ function _usanetwork_promo_pull_node_promo_details($entity_object) {
 
   if (!empty($entity_object)) {
     $promo_wrapper = entity_metadata_wrapper('node', $entity_object);
-    $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $promo_wrapper);
+    $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $promo_wrapper, 'node');
     if (empty($promo_fields['promo_title']) || empty($promo_fields['description'])) {
       $own_fields = _usanetwork_promo_node_get_promo_lines($entity_object);
       $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
@@ -347,7 +349,7 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
   if ($entity_object->mpx_video_data['status'] == FILE_PUBLISHED) {
     if (!empty($entity_object)) {
       $file_wrapper = entity_metadata_wrapper('file', $entity_object);
-      $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper);
+      $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper, 'file');
       if (empty($promo_fields['promo_title']) || empty($promo_fields['description']) || empty($promo_fields['topic']) ) {
         $own_fields = _usanetwork_promo_file_get_promo_lines($entity_object);
         $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :

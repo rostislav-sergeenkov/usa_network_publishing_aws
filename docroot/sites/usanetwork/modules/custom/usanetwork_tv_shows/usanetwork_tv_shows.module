@@ -309,6 +309,14 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-landing-videos-item-big',
     ),
+    'usanetwork_tv_shows_about_block' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-about-block',
+    ),
   );
 }
 
@@ -2260,6 +2268,24 @@ function _usanetwork_tv_shows_render_fbp_block() {
           : NULL,
       );
       return theme('usanetwork_fbp_block', $theme_variables);
+    } else {
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+      if (!empty($show_node->field_about_image)) {
+        $image = $show_wrapper->field_about_image->file->url->value();
+      }
+      $theme_variables = array(
+        'advert_block' => isset($advert) ? $advert : NULL,
+        'about_image' => isset($image)
+          ? image_style_url('591x330', $image)
+          : NULL,
+        'about_text' => !empty($show_node->field_about_show)
+          ? $show_wrapper->field_about_show->value()
+          : NULL,
+      );
+      return theme('usanetwork_tv_shows_about_block', $theme_variables);
     }
   }
   return '';

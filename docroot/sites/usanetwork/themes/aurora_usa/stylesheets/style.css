@@ -10224,7 +10224,6 @@ footer .block-usanetwork-lyris {
 @media (max-width: 1024px) {
   footer .block-usanetwork-lyris {
     padding: 20px 0;
-    min-height: 100px;
   }
 }
 footer .block-usanetwork-lyris form > div {
@@ -10236,7 +10235,7 @@ footer .block-usanetwork-lyris form > div {
   font-size: 14px;
   letter-spacing: 1px;
   line-height: 30px;
-  height: 30px;
+  min-height: 30px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -10248,6 +10247,7 @@ footer .block-usanetwork-lyris form > div .placeholder {
   font-style: normal;
 }
 footer .block-usanetwork-lyris form > div label {
+  font-weight: 400;
   display: inline-block;
   padding-right: 35px;
 }

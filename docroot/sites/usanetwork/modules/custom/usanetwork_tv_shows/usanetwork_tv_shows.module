@@ -2274,16 +2274,17 @@ function _usanetwork_tv_shows_render_fbp_block() {
         $advert = render($advert_block['content']);
       }
       if (!empty($show_node->field_about_image)) {
-        $image = $show_wrapper->field_about_image->file->url->value();
+        $image = _usanetwork_get_field_item('node', $show_node, 'field_about_image', 'uri');
       }
       $theme_variables = array(
         'advert_block' => isset($advert) ? $advert : NULL,
         'about_image' => isset($image)
-          ? image_style_url('591x330', $image)
+          ? theme('image_style', array(
+            'path' => $image,
+            'style_name' => '591x330',
+          ))
           : NULL,
-        'about_text' => !empty($show_node->field_about_show)
-          ? $show_wrapper->field_about_show->value()
-          : NULL,
+        'about_text' => !empty($show_node->field_about_show) ? $show_wrapper->field_about_show->value() : NULL,
       );
       return theme('usanetwork_tv_shows_about_block', $theme_variables);
     }

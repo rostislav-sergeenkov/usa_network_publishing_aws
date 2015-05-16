@@ -17,7 +17,6 @@ function usanetwork_full_bleed_promo_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_usa_fbp_cta_link',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -60,6 +59,40 @@ function usanetwork_full_bleed_promo_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'image',
+  );
+
+  // Exported field_base: 'field_usa_fbp_linked_content'
+  $field_bases['field_usa_fbp_linked_content'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_usa_fbp_linked_content',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'media_gallery' => 'media_gallery',
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+        'person' => 'person',
+        'quiz' => 'quiz',
+        'tv_show' => 'tv_show',
+        'usa_homepage' => 'usa_homepage',
+        'usanetwork_promo' => 'usanetwork_promo',
+      ),
+      'entity_type_ids' => array(
+        'file' => 'file',
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
   );
 
   // Exported field_base: 'field_usa_fbp_mobile_image'

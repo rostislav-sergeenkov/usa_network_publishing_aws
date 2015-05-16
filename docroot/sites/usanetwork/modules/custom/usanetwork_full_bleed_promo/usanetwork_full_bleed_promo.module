@@ -53,6 +53,7 @@ function usanetwork_full_bleed_promo_theme($existing, $type, $theme, $path) {
         'url' => NULL,
         'desktop_url' => NULL,
         'mobile_url' => NULL,
+        'content_id' => NULL,
       ),
       'path' => $path . '/templates',
       'template' => 'usanetwork-full-bleed-promo',
@@ -89,18 +90,49 @@ function _usanetwork_full_bleed_promo_render_block() {
         $advert = render($advert_block['content']);
       }
 
-      $theme_variables = array(
-        'advert_block' => isset($advert) ? $advert : NULL,
-        'url' => !empty($promo_node->field_usa_fbp_cta_link)
-          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_cta_link->url->value()
-          : NULL,
-        'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
-          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
-          : NULL,
-        'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
-          ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
-          : NULL,
-      );
+      if (!empty($promo_node->field_usa_fbp_linked_content)) {
+        $field_linked_content = field_get_items('node', $promo_node, 'field_usa_fbp_linked_content');
+        if (!empty($field_linked_content)) {
+          $field_linked_content = reset($field_linked_content);
+          $linked_content = entity_load($field_linked_content['target_type'], array($field_linked_content['target_id']));
+        }
+      }
+      if (isset($linked_content)) {
+        $linked_content = reset($linked_content);
+        $field_sponsored = _usanetwork_get_field_item($field_linked_content['target_type'], $linked_content, 'field_sponsored', 'value');
+        if ($field_sponsored == 1) {
+          $sponsored = TRUE;
+          $content_id = '/' . $field_linked_content['target_type'] . '/' . $field_linked_content['target_id'];
+        }
+      }
+
+      if (isset($sponsored)) {
+        $theme_variables = array(
+          'advert_block' => isset($advert) ? $advert : NULL,
+          'content_id' => $content_id,
+          'url' => NULL,
+          'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
+            ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
+            : NULL,
+          'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
+            ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
+            : NULL,
+        );
+      } else {
+        $theme_variables = array(
+          'advert_block' => isset($advert) ? $advert : NULL,
+          'url' => !empty($promo_node->field_usa_fbp_cta_link)
+            ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_cta_link->url->value()
+            : NULL,
+          'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
+            ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
+            : NULL,
+          'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
+            ? $homepage_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
+            : NULL,
+          'content_id' => FALSE,
+        );
+      }
 
       return theme('usanetwork_fbp_block', $theme_variables);
     }

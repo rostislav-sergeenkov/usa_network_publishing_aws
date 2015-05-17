@@ -13,7 +13,7 @@
     </div>
     <div class="block-content">
       <?php if (!empty($content_id)) : ?>
-        <div class="sponsored" data-mpspath="<?php print $content_id; ?>"></div>
+        <div class="sponsored" data-mpspath="<?php print $content_id; ?>" data-scalemps="1"></div>
       <?php else : ?>
         <?php if (!empty($url)): ?>
           <a href="<?php print $url; ?>">

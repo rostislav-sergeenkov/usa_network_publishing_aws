@@ -110,10 +110,6 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
     $entity = $entity[$entity_id];
   }
 
-  switch ($entity->type) {
-    case 'media_gallery': return 'gallery-icon';
-  }
-
   if (isset($entity->field_call_to_action_type)) {
     $cta_type_field = field_get_items($entity_type, $entity, 'field_call_to_action_type');
     $tid = !empty($cta_type_field[0]['tid']) ? $cta_type_field[0]['tid'] : NULL;
@@ -123,6 +119,15 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
 
       return str_replace(' ', '_', $icon->name) . '-icon';
     }
+  }
+
+  switch ($entity->type) {
+    case 'media_gallery': return 'gallery-icon-default';
+    case 'mpx_video_1': return 'video-clip-icon-default';
+    case 'mpx_video_2': return 'full-video-icon-default';
+    case 'quiz': return 'quiz-icon-default';
+    case 'person': return 'cast-crew-icon-default';
+    case 'tv_episode': return 'episode-info-icon-default';
   }
 
   return 'video-icon';

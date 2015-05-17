@@ -43,10 +43,91 @@
       s.tl(this,'o','Promo Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
+
+    //----------- redesign ---------------
+
+    // main menu elem click
+    mainMenuTabs: function (elem) {
+      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+        var $self = elem,
+            menu_name = $self.text();
+
+        if ($self.hasClass('active')) {
+          // do not track when closing
+          return;
+        }
+
+        s.linkTrackVars='events,eVar63';
+        s.linkTrackEvents = s.events = 'event63';
+        s.eVar63 = menu_name;
+
+        if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
+          s.bcf = function() {
+            setTimeout(function() {
+              window.location = $self.attr('href');
+            }, 500);
+          };
+        }
+        s.tl(this,'o','Global Menu Click');
+        s.manageVars("clearVars", s.linkTrackVars, 1);
+      }
+    },
+
+    subMenuItems: function (elem) {
+      var $self = elem,
+          sub_menu_name = $self.text();
+
+      s.linkTrackVars='events,eVar64';
+      s.linkTrackEvents = s.events = 'event64';
+      s.eVar64 = sub_menu_name;
+
+      if ($self.attr('href') != '#') {
+        s.bcf = function() {
+          setTimeout(function() {
+            window.location = $self.attr('href');
+          }, 500);
+        };
+      }
+      s.tl(this,'o','Global SubMenu Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
     attach: function (context, settings) {
       if (typeof s != 'object') {
         return;
       }
+
+      //redesign
+
+      // Click main menu links
+      $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
+      '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
+      '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function() {
+        $(this).on('click', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            Drupal.behaviors.omniture_tracking.mainMenuTabs($(this));
+          }
+        });
+      });
+
+      //Click on submenu item
+      $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
+      '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
+      '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
+      '#block-usanetwork-menu-usanetwork-menu-sm-menu a,').once('omniture-tracking', function() {
+        $(this).on('click', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            Drupal.behaviors.omniture_tracking.subMenuItems($(this));
+          }
+        });
+      });
+
+
+
+
+
       //Click on "On Now" button
       $('#on-now.trigger').once('omniture-tracking', function() {
         $(this).on('click', function(){
@@ -114,74 +195,6 @@
             s.prop10=showName;
             s.tl(this,'o',descr);
             s.manageVars("clearVars", s.linkTrackVars, 1);
-          }
-        });
-      });
-
-      // Click on menu item
-      $('#block-usanetwork-blocks-usa-meganav .mega-menu-items a, #logo a').once('omniture-tracking', function() {
-        $(this).on('click', function(e){
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var $self = $(this);
-
-            // check if link is related to drawer
-            if ($self.attr('data-drawer-id')) {
-              var drawerId = $self.attr('data-drawer-id');
-              var $drawer = $('[data-drawer="' + drawerId + '"]');
-              if ($drawer.length > 0) {
-                $drawer.toggleClass('omniture-drawer-opened');
-                if (!$drawer.hasClass('omniture-drawer-opened')) {
-                  // do not track when closing
-                  return;
-                }
-              }
-            }
-
-            s.linkTrackVars='events,eVar63,prop63';
-            s.linkTrackEvents='event63';
-            s.events='event63';
-            var menu_name = $self.text();
-            s.eVar63=s.prop63=menu_name;
-            if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
-              e.preventDefault();
-              s.bcf = function() {
-                setTimeout(function() {
-                  window.location = $self.attr('href');
-                }, 500);
-              };
-            }
-            s.tl(this,'o','Global Menu Click');
-            s.manageVars("clearVars", s.linkTrackVars, 1);
-          }
-        });
-      });
-
-      //Click on submenu item
-      $('.mega-sub-nav .item-list li a, #tv-show-menu .item-list li a').once('omniture-tracking', function() {
-        $(this).on('click', function(e){
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            s.linkTrackVars='events,eVar64,prop64';
-            s.linkTrackEvents='event64';
-            s.events='event64';
-            var sub_menu_name = $self.text();
-
-            var $parent = $self.parent('li');
-            $parent.parents('li').each(function() {
-              sub_menu_name = $(this).children('a').text() + ' : ' + sub_menu_name;
-            });
-
-            s.eVar64=s.prop64=sub_menu_name;
-            if (!$self.hasClass('use-ajax') && !$self.hasClass('link-empty') && $self.attr('href') != '#') {
-              s.bcf = function() {
-                setTimeout(function() {
-                  window.location = $self.attr('href');
-                }, 500);
-              };
-            }
-            s.tl(this,'o','Global SubMenu Click');
-            s.manageVars('clearVars', s.linkTrackVars, 1);
           }
         });
       });

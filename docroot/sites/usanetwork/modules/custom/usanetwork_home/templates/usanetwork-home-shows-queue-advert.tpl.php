@@ -5,6 +5,6 @@
 ?>
 <div class="node-wrapper advert">
   <div class="advertisement">
-    <div class="showcardad"></div>
+    <div class="showcardad" data-scalemps="1"></div>
   </div>
 </div>

@@ -17,8 +17,7 @@ function usanetwork_showpages_menu() {
     'title' => t('Photos'),
     'page callback' => 'usanetwork_showpages_photos',
     'page arguments' => array(1),
-    'access callback' => 'usanetwork_showpages_menu_access',
-    'access arguments' => array(1),
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   // tv show episodes landing page
@@ -247,8 +246,6 @@ function usanetwork_showpages_showbanner() {
  * associated with a show
  */
 function usanetwork_showpages_photos($node) {
-  $render = array();
-
   // if there is no show NID get out of there
   if (!isset($node->nid)) {
     return;
@@ -259,7 +256,6 @@ function usanetwork_showpages_photos($node) {
   $query->entityCondition('bundle', array('media_gallery'));
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show);
-//  $query->fieldCondition('field_episode', 'target_id', 'NULL', '!=');
   $query->propertyOrderBy('created', 'DESC');
   $query->range(0, 1);
   // execute the query
@@ -267,8 +263,8 @@ function usanetwork_showpages_photos($node) {
   // load the related gallery
   // then go to that page
   if (!empty($result['node'])) {
-    $nid = array_keys($result['node']);
-    $nid = $nid[0];
+    $gallery = reset($result['node']);
+    $nid = $gallery->nid;
     drupal_goto('node/' . $nid);
   }
   // or go back to the show node

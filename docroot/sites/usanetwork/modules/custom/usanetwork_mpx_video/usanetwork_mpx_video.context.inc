@@ -163,9 +163,9 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'usanetwork_mpx_video-usa_mpx_video_socal' => array(
+        'usanetwork_mpx_video-usanetwork_social_content' => array(
           'module' => 'usanetwork_mpx_video',
-          'delta' => 'usa_mpx_video_socal',
+          'delta' => 'usanetwork_social_content',
           'region' => 'content',
           'weight' => '-9',
         ),

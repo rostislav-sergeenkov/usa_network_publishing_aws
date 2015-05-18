@@ -19,7 +19,9 @@
       </div>
     </div>
   </div>
+  <?php $promos_length = 0; ?>
   <?php if (!empty($promos)): ?>
+    <?php $promos_length = count($promos); ?>
     <div class="carousel social-carousel carousel-left start" data-carousel-id="4">
       <ul class="slides">
         <?php foreach ($promos as $promo): ?>
@@ -58,8 +60,10 @@
       <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>
     </div>
   <?php endif; ?>
-  <a href="javascript:void(0)" class="more-button more">
-    <span class="more-text"><?php print t('More social'); ?></span>
-    <span class="close-text"><?php print t('Close'); ?></span>
-  </a>
+  <?php if ($promos_length > 2): ?>
+    <a href="javascript:void(0)" class="more-button more">
+      <span class="more-text"><?php print t('More social'); ?></span>
+      <span class="close-text"><?php print t('Close'); ?></span>
+    </a>
+  <?php endif; ?>
 </div>

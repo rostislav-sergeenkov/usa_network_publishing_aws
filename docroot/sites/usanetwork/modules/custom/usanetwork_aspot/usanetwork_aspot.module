@@ -55,12 +55,12 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_width' => 370,
       'bg_offset_height' => 500,
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
-        ? image_style_url('2500x1094', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('2880x1260', $form_state['node']->field_usa_aspot_desktop[$lang][0]['uri'])
         : '',
     ),
     'mobile' => array(
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
-        ? image_style_url('640x640', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x560', $form_state['node']->field_usa_aspot_mobile[$lang][0]['uri'])
         : '',
     ),
     'tvs_desktop' => array(
@@ -68,12 +68,12 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_width' => 370,
       'bg_offset_height' => 500,
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
-        ? image_style_url('2490x1418', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('2880x1620', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
         : '',
     ),
     'tvs_mobile' => array(
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
-        ? image_style_url('640x640', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x560', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
         : '',
     ),
     'aspot_elements' => array(
@@ -971,17 +971,19 @@ function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
         $aref['entity'] = node_load($aref['target_id']);
       }
 
-      $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
-      $aspot_node = $aref['entity'];
+      if ($aref['entity']) {
+        $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
+        $aspot_node = $aref['entity'];
 
-      if (!empty($show_node_field[0]['target_id'])) {
-        $show_node = node_load($show_node_field[0]['target_id']);
+        if (!empty($show_node_field[0]['target_id'])) {
+          $show_node = node_load($show_node_field[0]['target_id']);
+        }
+
+        $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
+          'aspot_node' => $aspot_node,
+          'show_node' => $show_node,
+        );
       }
-
-      $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
-        'aspot_node' => $aspot_node,
-        'show_node' => $show_node,
-      );
     }
   }
 

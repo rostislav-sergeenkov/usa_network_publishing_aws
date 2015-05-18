@@ -17,8 +17,9 @@
 ?>
 <div class="episode-landing-list-item">
   <div class="left-item-block">
-    <div class="hidden" data-type="mobile" data-href="<?php print $mobile_image_url; ?>"></div>
-    <div class="hidden" data-type="desktop" data-href="<?php print $desktop_image_url; ?>"></div>
+    <div class="asset-img">
+      <img src="<?php print $desktop_image_url; ?>" alt=""/>
+    </div>
   </div>
   <div class="right-item-block">
     <div class="series"><?php print t('S') . $season_number . ' ' . t('EP') . $episode_number; ?></div>
@@ -37,7 +38,7 @@
     <div class="buttons-bar">
       <div class="buttons">
         <?php if (!empty($full_episode_url)): ?>
-          <div class="full_episode_button"><a href="<?php print $full_episode_url; ?>"><?php print t('Watch a full episode'); ?></a></div>
+          <div class="full_episode_button show-color"><a href="<?php print $full_episode_url; ?>"><?php print t('Watch a full episode'); ?></a></div>
         <?php endif; ?>
       </div>
       <div class="links">

@@ -1123,6 +1123,12 @@
       vertical-align: middle;
     }
   }
+  a {
+    &:visited, &:active {
+      color: #ffffff;
+      outline: none!important;
+    }
+  }
   .schedule {
     display: table;
     float: right;
@@ -1298,6 +1304,7 @@
     display: inline-block;
     font-family: $tex-gyreschola-italic;
     font-size: 12px;
+    letter-spacing: 2px;
     margin: 0;
     position: relative;
     text-align: center;
@@ -1311,7 +1318,7 @@
       content: '';
       display: block;
       height: 22px;
-      left: -6px;
+      left: -8px;
       top: 0;
       position: absolute;
       width: 4px;
@@ -1322,10 +1329,37 @@
       content: '';
       display: block;
       height: 22px;
-      right: -6px;
+      right: -8px;
       top: 0;
       position: absolute;
       width: 4px;
+    }
+    .cast-and-crew-block & {
+      font-size: 24px;
+      @include breakpoint($bp-1280-width) {
+        font-size: 16px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: 13px;
+      }
+      @include breakpoint($bp-640-width) {
+        font-size: 25px;
+      }
+    }
+  }
+  .cast-and-crew-block & {
+    margin-bottom: 75px;
+    @include breakpoint($bp-1280-width) {
+      margin-bottom: 50px;
+    }
+    @include breakpoint($bp-1024-width) {
+      margin-bottom: 40px;
+    }
+    @include breakpoint($bp-768-width) {
+      margin-bottom: 30px;
+    }
+    @include breakpoint($bp-640-width) {
+      margin-bottom: 50px;
     }
   }
 }

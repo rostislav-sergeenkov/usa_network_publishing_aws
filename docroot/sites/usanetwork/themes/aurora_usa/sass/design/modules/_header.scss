@@ -19,6 +19,9 @@ header {
     height: 90px;
     position: relative;
     width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      height: 135px;
+    }
     @include breakpoint($bp-1024-width) {
       height: 50px;
     }
@@ -51,6 +54,9 @@ header {
     float: left;
     height: 100%;
     width: 125px;
+    @include breakpoint($bp-min-1901-width) {
+      width: 190px;
+    }
     @include breakpoint($bp-1024-width) {
       width: 100px;
     }
@@ -64,8 +70,11 @@ header {
       }
     }
     a {
-      background: url('../images/usa-logo.png') no-repeat;
-      background-position: 45% 50%;
+//      background: url('../images/usa-logo.png') no-repeat;
+      background: url('../images/logo-bg.png') no-repeat;
+//      background-position: 45% 50%;
+      background-position: 50% 50%;
+      background-size: contain;
       display: block;
       height: 100%;
       width: 100%;
@@ -88,6 +97,9 @@ header {
     float: left;
     height: 100%;
     width: 605px;
+    @include breakpoint($bp-min-1901-width) {
+      width: 750px;
+    }
     @include breakpoint($bp-1280-width) {
       width: 485px;
     }
@@ -318,6 +330,11 @@ header {
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 40px;
+          line-height: 135px;
+          padding: 0 30px;
+        }
         @include breakpoint($bp-1024-width) {
           line-height: 50px;
         }
@@ -709,7 +726,7 @@ header {
       display: block;
     }
     &.shows-tab {
-      > div {
+      .panel-pane {
         float: left;
         position: relative;
         h2 {

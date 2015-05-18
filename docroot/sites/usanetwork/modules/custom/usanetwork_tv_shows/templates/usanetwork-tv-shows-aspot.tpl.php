@@ -10,14 +10,14 @@
     <?php endif; ?>
   </div>
   <?php if (!empty($episodes)): ?>
-    <div class="episodes-list">
+    <div class="episodes-list <?php print !empty($sponsored)? 'sponsored-enable' : ''; ?>">
       <?php if (!empty($episodes_block_title)): ?>
         <div class="title show-color">
           <div class="title-wrapper">
             <h2><?php print $episodes_block_title; ?></h2>
           </div>
           <?php if (!empty($sponsored)) : ?>
-            <div class="sponsored" data-mpspath="<?php print $file_path; ?>"></div>
+            <div class="sponsored" data-mpspath="<?php print $file_path; ?>" data-scalemps="1"></div>
           <?php endif; ?>
         </div>
       <?php endif; ?>
@@ -29,7 +29,7 @@
                 <a href="<?php print !empty($episode['url']) ? $episode['url'] : '#'; ?>">
                   <div class="meta-wrapper">
                     <div class="meta-wrapper-inner">
-                      <div class="meta-icon video-icon"></div>
+                      <div class="meta-icon <?php (!empty($episode['icon'])) ? print $episode['icon'] : 'video-icon'; ?>"></div>
                       <div class="meta">
                         <?php if (!empty($episode['violator'])): ?>
                           <div class="caption"><?php print $episode['violator']; ?></div>
@@ -60,7 +60,7 @@
                 <a href="<?php print !empty($episode['url']) ? $episode['url'] : '#'; ?>">
                   <div class="meta-wrapper">
                     <div class="meta-wrapper-inner">
-                      <div class="meta-icon video-icon"></div>
+                      <div class="meta-icon <?php (!empty($episode['icon'])) ? print $episode['icon'] : 'video-icon'; ?>"></div>
                       <div class="meta">
                         <?php if (!empty($episode['violator'])): ?>
                           <div class="caption"><?php print $episode['violator']; ?></div>

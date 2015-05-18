@@ -28,6 +28,8 @@
         }
       }
 
+      $('.next-button').hide();
+
       var hideContent = function (selector) {
         $(selector).css({
           'opacity': 0
@@ -122,11 +124,6 @@
 
             changeLogoColor($(first_slide).find('.slide-content'));
             showFocusSlide(el, slide, old, active);
-
-            $('.bx-preload').css({
-              'visibility': 'visible',
-              'height': 'auto'
-            });
           }
         }, options);
 

@@ -85,6 +85,9 @@
             text-decoration: none;
             text-overflow: ellipsis;
             white-space: nowrap;
+            span {
+              font-family: $avalon-medium;
+            }
             @include breakpoint($bp-min-1901-width) {
               font-size: 40px;
               line-height: 135px;
@@ -283,7 +286,8 @@
               }
             }
           }
-          .social-bar {
+          .social-bar,
+          .sharebar {
             right: 0;
             position: absolute;
             top: 0;
@@ -306,8 +310,8 @@
               margin: 0 0 20px 0;
               text-transform: uppercase;
               @include breakpoint($bp-1024-width) {
-                font-size: 18px;
-                line-height: 24px;
+                font-size: 16px;
+                line-height: 1.3em;
               }
             }
             .field-name-field-gigya-share-bar {

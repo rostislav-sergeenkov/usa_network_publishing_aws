@@ -340,6 +340,15 @@ function usanetwork_menu_theme() {
       ),
       'template' => 'templates/usanetwork-menu-consumptionator_gallery',
     ),
+    'usanetwork_menu_consumptionator_episode_guide' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'episode_name' => NULL,
+        'details' => array(),
+      ),
+      'template' => 'templates/usanetwork-menu-consumptionator_episode_guide',
+    ),
     'usanetwork_menu_consumptionator_person' => array(
       'variables' => array(
         'show_url' => NULL,
@@ -464,11 +473,11 @@ function _usanetwork_menu_all_shows_block($header = TRUE) {
     $new = '';
     if (!$header) {
       if ($row->flag_content_node_timestamp) {
-        $new = '<span>' . t('New!') . '</span> ';
+        $new = '<span> ' . t('New!') . '</span>';
       }
     }
     $links[] = array(
-      'data' => l($new . $row->node_title, 'node/' . $row->nid, array('html' => TRUE)),
+      'data' => l($row->node_title . $new, 'node/' . $row->nid, array('html' => TRUE)),
       'class' => array(
         'menu-item'
       ),
@@ -938,6 +947,9 @@ function _usanetwork_menu_consumptionator_block() {
       elseif ($entity->type == 'person') {
         return _usanetwork_menu_consumptionator_block_person($entity);
       }
+      elseif ($entity->type == 'tv_episode') {
+        return _usanetwork_menu_consumptionator_episode_guide($entity);
+      }
     }
   }
   else { // Process like "Live video" block
@@ -1028,6 +1040,56 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
   }
   return '';
 }
+
+/**
+ * Renders Consumtionator Menu block for episode guide.
+ */
+function _usanetwork_menu_consumptionator_episode_guide($node) {
+
+  if (!empty($node)) {
+
+    $entity_wrapper = entity_metadata_wrapper('node', $node);
+    if (!empty($node->field_tv_cover_media)) {
+      $image = $entity_wrapper->field_tv_cover_media->value();
+    }
+    if (!empty($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this Episode Guide');
+    }
+    if ($air_date_items = field_get_items('node', $node, 'field_original_air_date')) {
+      $air_date_items = reset($air_date_items);
+      $duration =  gmdate('H:i:s', $air_date_items['value2'] - $air_date_items['value']);
+    }
+    if (!empty($node->field_season)) {
+      $season = $entity_wrapper->field_season->value();
+      if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
+        $season_num_items = reset($season_num_items);
+        $episode_num = $season_num_items['value'];
+      }
+    }
+    $theme_variables = array(
+      'main_url' => url('<front>'),
+      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'episode_name' => !empty($node->title) ? $node->title : '',
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
+      'details' => array(
+        'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+        'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
+        'description' => !empty($node->body) ? $entity_wrapper->body->value->value() : '',
+        'episode_type' => !empty($node->field_tv_episode_type) ? $entity_wrapper->field_tv_episode_type->name->value() : '',
+        'episode_info' => array(
+            'season_number' => !empty($node->field_episode_number) ? $entity_wrapper->field_episode_number->value() : '',
+            'episode_number' => !empty($episode_num) ? $episode_num : '',
+            'duration' => !empty($duration) ? $duration : '',
+          ),
+      ),
+    );
+    return theme('usanetwork_menu_consumptionator_episode_guide', $theme_variables);
+  }
+  return '';
+}
+
 /**
  * Renders Consumtionator Menu block for person.
  */
@@ -1036,7 +1098,10 @@ function _usanetwork_menu_consumptionator_block_person($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_usa_character_thumb)) {
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_usa_character_thumb)) {
       $image = $entity_wrapper->field_usa_character_thumb->value();
     }
     if (!empty($node->field_gigya_share_bar)) {
@@ -1048,10 +1113,11 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'person_name' => !empty($node->title) ? $node->title : '',
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : 'Character bio: <span>'.$node->title.'</span>',
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
-        'description' => !empty($node->body) ? $entity_wrapper->body->value->value() : '',
+        'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
+            (!empty($node->body) ? $entity_wrapper->body->value->value() : ''),
         'sharebar' => !empty($sharebar) ? render($sharebar) : '',
       ),
     );
@@ -1357,19 +1423,17 @@ function _usanetwork_menu_get_reminder_url($show_nid = NULL) {
   if (empty($show_nid)) {
     return NULL;
   }
-
   $node = node_load($show_nid);
-  $syndicated_field = field_get_items('node', $node, 'field_syndicated');
-
-  if (!empty($syndicated_field)) {
-    if ($syndicated_field[0]['value'] == 1) {
-      $url_alias_field = field_get_items('node', $node, 'field_pathauto_alias');
-
-      if (!empty($url_alias_field)) {
-        $alias = $url_alias_field[0]['value'];
-
-        return url('https://see.it/' . $alias);
-      }
+  $see_it_url = field_get_items('node', $node, 'field_see_it_url');
+  if (!empty($see_it_url)) {
+    $see_it_url = reset($see_it_url);
+    return url(check_plain($see_it_url['value']));
+  }
+  else {
+    $url_alias_field = field_get_items('node', $node, 'field_pathauto_alias');
+    if (!empty($url_alias_field)) {
+      $alias = $url_alias_field[0]['value'];
+      return url('https://see.it/' . $alias);
     }
   }
 

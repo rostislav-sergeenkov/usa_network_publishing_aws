@@ -17,6 +17,9 @@ function usanetwork_episodes_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
 }
 
 /**
@@ -86,6 +89,27 @@ function usanetwork_episodes_image_default_styles() {
         'data' => array(
           'width' => 634,
           'height' => 349,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['769x434'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 769,
+          'height' => 434,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 769,
+          'height' => 434,
         ),
         'weight' => 1,
       ),

@@ -725,15 +725,16 @@ function _usanetwork_blocks_social_carousel_block_content() {
           }
           $episode_theme_variables = array(
             'url' => $promo_link,
-            'title' => $promo_data['promo_title'],
-            'additional' => $promo_data['topic'],
+            'promo_title' => $promo_data['promo_title'],
+            'topic' => $promo_data['topic'],
             'image_url' => image_style_url('390x390', $promo_image_url),
             'color_class' => $promo_data['show_class'],
             'icon_type' => $promo_data['icon_type'],
             'icon_text' => $promo_data['cta'],
-            'show_title' => ($promo_data['show_name'] != $promo_data['topic']) ? $promo_data['show_name'] : '',
+            'show_name' => ($promo_data['show_name'] != $promo_data['topic']) ? $promo_data['show_name'] : '',
+            'description' => $promo_data['description'],
           );
-          $theme_variables['promos'][] = $episode_theme_variables + $promo_data;
+          $theme_variables['promos'][] = $episode_theme_variables;
         }
         $theme_variables['promos'][count($theme_variables['promos']) -1 ]['class'] = 'last';
         $theme_variables['promos'][0]['class'] = 'first';

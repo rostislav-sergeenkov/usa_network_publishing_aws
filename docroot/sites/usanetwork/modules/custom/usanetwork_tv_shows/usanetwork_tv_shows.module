@@ -63,13 +63,13 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
-  $items['node/%node/photos'] = array(
-    'title' => '',
-    'page arguments' => array(1),
-    'page callback' => 'usanetwork_tv_shows_blank_page',
-    'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
-  );
+//  $items['node/%node/photos'] = array(
+//    'title' => '',
+//    'page arguments' => array(1),
+//    'page callback' => 'usanetwork_tv_shows_blank_page',
+//    'access arguments' => array('access content'),
+//    'type' => MENU_NORMAL_ITEM,
+//  );
 
   $items['node/%node/explore'] = array(
     'title' => '',
@@ -309,6 +309,14 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-landing-videos-item-big',
     ),
+    'usanetwork_tv_shows_about_block' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-about-block',
+    ),
   );
 }
 
@@ -494,6 +502,46 @@ function usanetwork_tv_shows_image_default_styles() {
         'data' => array(
           'width' => 719,
           'height' => 414,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['456x372'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 456,
+          'height' => 372,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 456,
+          'height' => 372,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['927x756'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 927,
+          'height' => 756,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 927,
+          'height' => 756,
         ),
         'weight' => 1,
       ),
@@ -1319,45 +1367,48 @@ function _usanetwork_tv_shows_aspot_block() {
 
         unset($alternative_episode_content->entity_type, $alternative_episode_content->entity_id);
 
-        $entity_wrapper = entity_metadata_wrapper($entity_type, $alternative_episode_content);
-        if (!empty($alternative_episode_content->field_promo_image_override)) {
-          $field_image_override = reset(field_get_items($entity_type, $alternative_episode_content, 'field_promo_image_override'));
-          $content_image = $field_image_override['uri'];
-        }
-        else {
-          $content_image = usanetwork_core_api_get_content_image($entity_type, $alternative_episode_content);
-        }
-        $promo_data = _usanetwork_promo_pull_entity_promo_details($alternative_episode_content, $entity_wrapper);
-        if ($entity_type == 'node') {
-          $own_promo_lines = _usanetwork_promo_node_get_promo_lines($alternative_episode_content);
-        }
-        else {
-          $own_promo_lines = _usanetwork_promo_file_get_promo_lines($alternative_episode_content);
-          //Sponsored MPS
-          $field_sponsored = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_sponsored', 'value');
-          if ($field_sponsored == '1') {
-            $sponsored = TRUE;
-            $file_id = '/file/' . $alternative_episode_content->fid;
+        if (!empty($alternative_episode_content->type)) {
+          $entity_wrapper = entity_metadata_wrapper($entity_type, $alternative_episode_content);
+          if (!empty($alternative_episode_content->field_promo_image_override)) {
+            $field_image_override = reset(field_get_items($entity_type, $alternative_episode_content, 'field_promo_image_override'));
+            $content_image = $field_image_override['uri'];
           }
-        }
-        if (!empty($alternative_episode_content->field_promo_link)) {
-          $link_url = $entity_wrapper->field_promo_link->url->value();
-          $promo_link = url($link_url);
-        }
-        else {
-          $promo_link = url($entity_type . '/' . $entity_id);
-        }
-        $episode_theme_variables = array(
-          'url' => $promo_link,
-          'violator' => $promo_data['show_name'],
-          'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
+          else {
+            $content_image = usanetwork_core_api_get_content_image($entity_type, $alternative_episode_content);
+          }
+          $promo_data = _usanetwork_promo_pull_entity_promo_details($alternative_episode_content, $entity_wrapper, $entity_type);
+          if ($entity_type == 'node') {
+            $own_promo_lines = _usanetwork_promo_node_get_promo_lines($alternative_episode_content);
+          }
+          else {
+            $own_promo_lines = _usanetwork_promo_file_get_promo_lines($alternative_episode_content);
+            //Sponsored MPS
+            $field_sponsored = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_sponsored', 'value');
+            if ($field_sponsored == '1') {
+              $sponsored = TRUE;
+              $file_id = '/file/' . $alternative_episode_content->fid;
+            }
+          }
+          if (!empty($alternative_episode_content->field_promo_link)) {
+            $link_url = $entity_wrapper->field_promo_link->url->value();
+            $promo_link = url($link_url);
+          }
+          else {
+            $promo_link = url($entity_type . '/' . $entity_id);
+          }
+          $episode_theme_variables = array(
+            'url' => $promo_link,
+            'violator' => $promo_data['show_name'],
+            'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
               (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
-          'description' => !empty($promo_data['description']) ? $promo_data['description'] :
+            'description' => !empty($promo_data['description']) ? $promo_data['description'] :
               (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
-          'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => 'full_episodes_633x356')) : '',
-        );
+            'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => 'full_episodes_633x356')) : '',
+            'icon' => !(empty($promo_data['icon_type'])) ? $promo_data['icon_type'] : NULL,
+          );
 
-        $theme_variables['episodes'][] = $episode_theme_variables;
+          $theme_variables['episodes'][] = $episode_theme_variables;
+        }
       }
     }
 
@@ -1366,7 +1417,7 @@ function _usanetwork_tv_shows_aspot_block() {
     if (!empty($full_latest_episodes)) {
       foreach ($full_latest_episodes as $full_latest_episode) {
         $episode_wrapper = entity_metadata_wrapper('file', $full_latest_episode);
-        $promo_data = _usanetwork_promo_pull_entity_promo_details($full_latest_episode, $episode_wrapper);
+        $promo_data = _usanetwork_promo_pull_entity_promo_details($full_latest_episode, $episode_wrapper, 'file');
         $own_promo_lines = _usanetwork_promo_file_get_promo_lines($full_latest_episode);
         if (!empty($full_latest_episode->field_promo_image_override)) {
           $field_image_override = reset(field_get_items('file', $full_latest_episode, 'field_promo_image_override'));
@@ -1392,6 +1443,7 @@ function _usanetwork_tv_shows_aspot_block() {
           'description' => !empty($promo_data['description']) ? $promo_data['description']
               : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
           'image_url' => !empty($image_uri) ? theme('image_style', array('path' => $image_uri, 'style_name' => 'full_episodes_633x356')) : '',
+          'icon' => !(empty($promo_data['icon_type'])) ? $promo_data['icon_type'] : NULL,
         );
         $theme_variables['episodes'][] = $episode_theme_variables;
       }
@@ -2247,19 +2299,69 @@ function _usanetwork_tv_shows_render_fbp_block() {
         $advert = render($advert_block['content']);
       }
 
+      if (!empty($promo_node->field_usa_fbp_linked_content)) {
+        $field_linked_content = field_get_items('node', $promo_node, 'field_usa_fbp_linked_content');
+        if (!empty($field_linked_content)) {
+          $field_linked_content = reset($field_linked_content);
+          $linked_content = entity_load($field_linked_content['target_type'], array($field_linked_content['target_id']));
+        }
+      }
+      if (isset($linked_content)) {
+        $linked_content = reset($linked_content);
+        $field_sponsored = _usanetwork_get_field_item($field_linked_content['target_type'], $linked_content, 'field_sponsored', 'value');
+        if ($field_sponsored == 1) {
+          $sponsored = TRUE;
+          $content_id = '/' . $field_linked_content['target_type'] . '/' . $field_linked_content['target_id'];
+        }
+      }
+
+      if (isset($sponsored)) {
+        $theme_variables = array(
+          'advert_block' => isset($advert) ? $advert : NULL,
+          'content_id' => $content_id,
+          'url' => NULL,
+          'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
+            ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
+            : NULL,
+          'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
+            ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
+            : NULL,
+        );
+      } else {
+        $theme_variables = array(
+          'advert_block' => isset($advert) ? $advert : NULL,
+          'url' => !empty($promo_node->field_usa_fbp_cta_link)
+            ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_cta_link->url->value()
+            : NULL,
+          'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
+            ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
+            : NULL,
+          'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
+            ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
+            : NULL,
+        );
+      }
+      return theme('usanetwork_fbp_block', $theme_variables);
+    } else {
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+      if (!empty($show_node->field_about_image)) {
+        $image = _usanetwork_get_field_item('node', $show_node, 'field_about_image', 'uri');
+      }
       $theme_variables = array(
         'advert_block' => isset($advert) ? $advert : NULL,
-        'url' => !empty($promo_node->field_usa_fbp_cta_link)
-          ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_cta_link->url->value()
+        'about_image' => isset($image)
+          ? theme('image_style', array(
+            'path' => $image,
+            'style_name' => '475x537',
+          ))
           : NULL,
-        'desktop_url' => !empty($promo_node->field_usa_fbp_desktop_image)
-          ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_desktop_image->file->url->value()
-          : NULL,
-        'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
-          ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
-          : NULL,
+        'about_text' => !empty($show_node->field_about_show) ? $show_wrapper->field_about_show->value() : NULL,
+        'url' => url('node/' . $show_node->nid . '/cast'),
       );
-      return theme('usanetwork_fbp_block', $theme_variables);
+      return theme('usanetwork_tv_shows_about_block', $theme_variables);
     }
   }
   return '';
@@ -2418,8 +2520,8 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
                 ? image_style_url('719x414', $promo_image_url) : NULL,
             'desktop' => !empty($promo_image_url)
                 ? ($is_first
-                  ? image_style_url('928x714', $promo_image_url)
-                  : image_style_url('457x351', $promo_image_url)
+                  ? image_style_url('927x756', $promo_image_url)
+                  : image_style_url('456x372', $promo_image_url)
                 )
                 : NULL,
           ),
@@ -2974,17 +3076,23 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
 
   $file_wrapper = entity_metadata_wrapper('file', $file);
 
-  $image_url = _usanetwork_mpx_video_get_image_path($file);
+  if (!empty($file->field_promo_image_override)) {
+    $field_image_override = reset(field_get_items('file', $file, 'field_promo_image_override'));
+    $image_url = $field_image_override['uri'];
+  }
+  else {
+    $image_url = _usanetwork_mpx_video_get_image_path($file);
+  }
   $mobile_image = '';
   $desktop_image = '';
 
   if (!empty($image_url)) {
     if ($current_item_index == $big_element_index) { // Big image
       $mobile_image = image_style_url('719x414', $image_url);
-      $desktop_image = image_style_url('928x714', $image_url);
+      $desktop_image = image_style_url('927x756', $image_url);
     }
     else { // Small image
-      $desktop_image = image_style_url('457x351', $image_url);
+      $desktop_image = image_style_url('456x372', $image_url);
     }
   }
   $query_params = drupal_get_query_parameters();

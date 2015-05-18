@@ -25349,42 +25349,49 @@ yx-axis
   padding-top: 2px;
   padding-bottom: 2px;
   border-bottom: 2px solid;
+  overflow: hidden;
+  position: relative;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal:hover .bx-controls {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal:hover .horizontal-controls {
   display: block;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls {
+@media (max-width: 640px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal:hover .horizontal-controls {
+    display: none;
+  }
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls {
   display: none;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a {
   display: block;
   position: absolute;
-  top: 54px;
+  top: 0px;
   height: 100%;
   z-index: 9;
   background: rgba(255, 255, 255, 0.6);
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-prev {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev {
   left: 0;
   width: 60px;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-prev.disabled {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev.inactive {
   display: none;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-prev:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev:after {
   content: "\e607";
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-next {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next {
   right: 0;
   width: 60px;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-next.disabled {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next.inactive {
   display: none;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a.bx-next:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next:after {
   content: "\e608";
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .bx-controls a:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a:after {
   color: #545454;
   display: block;
   font-family: "ico-font";
@@ -25406,6 +25413,10 @@ yx-axis
     display: none;
   }
 }
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul {
+  width: 20000em;
+  position: relative;
+}
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul:after {
   clear: both;
   content: '';
@@ -25418,7 +25429,6 @@ yx-axis
   margin-bottom: 0;
   height: 100%;
   position: relative;
-  width: 33.33333%;
 }
 @media (max-width: 640px) {
   .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {

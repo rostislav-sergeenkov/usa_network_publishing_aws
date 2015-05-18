@@ -528,37 +528,32 @@
       padding-top: 2px;
       padding-bottom: 2px;
       border-bottom: 2px solid;
-      overflow: hidden;
-      position: relative;
-      &:hover .horizontal-controls {
+      &:hover .bx-controls {
         display: block;
-        @include breakpoint($bp-640-width) {
-          display: none;
-        }
       }
-      .horizontal-controls {
+      .bx-controls {
         display: none;
         a {
           display: block;
           position: absolute;
-          top: 0px;
+          top: 54px;
           height: 100%;
           z-index: 9;
           background: rgba(255,255,255,0.6);
-          &.jcarousel-control-prev {
+          &.bx-prev {
             left: 0;
             width: 60px;
-            &.inactive {
+            &.disabled {
               display: none;
             }
             &:after {
               content: "\e607";
             }
           }
-          &.jcarousel-control-next {
+          &.bx-next {
             right: 0;
             width: 60px;
-            &.inactive {
+            &.disabled {
               display: none;
             }
             &:after {
@@ -586,8 +581,6 @@
         display: none;
       }
       ul {
-        width: 20000em;
-        position: relative;
         @include clear;
         li {
           float: left;
@@ -596,6 +589,7 @@
           margin-bottom: 0;
           height: 100%;
           position: relative;
+          width: (100% / 3);
           @include breakpoint($bp-640-width) {
             float: none;
             margin: 0 0 2px 0;

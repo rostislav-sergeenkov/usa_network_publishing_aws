@@ -111,7 +111,6 @@ function usanetwork_episodes_theme($existing, $type, $theme, $path) {
         'preview_episode_url' => NULL,
         'default_content_url' => NULL,
         'desktop_image_url' => NULL,
-        'mobile_image_url' => NULL,
         'season_number' => NULL,
         'episode_number' => NULL,
         'title' => NULL,
@@ -506,8 +505,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'default_content_url' => isset($episode_data[$default_category]->fid)
             ? $episode_data[$default_category]->fid
             : NULL,
-          'desktop_image_url' => image_style_url('634x349', $image_url),
-          'mobile_image_url' => image_style_url('634x349', $image_url),
+          'desktop_image_url' => image_style_url('full_episodes_633x356', $image_url),
           'season_number' => $current_season_data_item->season_number,
           'episode_number' => $episode_data[$default_category]->episode_number,
           'title' => $episode_data[$default_category]->title,

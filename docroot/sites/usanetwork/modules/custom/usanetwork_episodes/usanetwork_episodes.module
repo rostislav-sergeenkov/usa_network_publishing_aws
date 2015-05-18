@@ -470,12 +470,18 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
       $theme_variables['filters'][0] = array(
         'title' => t('All seasons'),
         'value' => 0,
+        'url' => url('node/' . $tv_show_node->nid . '/show-episodes'),
       );
 
       foreach ($season_ids as $item_index => $season_id) {
+        $filter_url_arguments = http_build_query(array('season' => $season_id->season_number));
+
         $theme_variables['filters'][$season_id->season_number] = array(
           'title' => $season_id->season_title,
           'value' => $season_id->season_number,
+          'url' => !empty($filter_url_arguments)
+            ? url('node/' . $tv_show_node->nid . '/show-episodes') . '?' . $filter_url_arguments
+            : url('node/' . $tv_show_node->nid . '/show-episodes'),
         );
       }
 

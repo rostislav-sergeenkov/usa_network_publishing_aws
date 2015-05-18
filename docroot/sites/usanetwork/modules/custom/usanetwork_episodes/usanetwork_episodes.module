@@ -658,7 +658,6 @@ function _usanetwork_episodes_get_season_episodes_description($result_item) {
       if (preg_match("#<p[^>]*>(.*)</p>#isU", $result_item->full_description, $matches)) {
         return '<p>' . $matches[1] . '</p>';
       }
-      return substr($result_item->full_description, 0, strpos($result_item->full_description, "</p>") + 4);
     }
   }
 

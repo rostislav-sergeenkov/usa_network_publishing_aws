@@ -1,7 +1,7 @@
 <div class="show-title-block-wrapper show-border secondary">
   <div class="show-title-block show-color">
     <h1 class="title"><?php print $show_title; ?></h1>
-    <div class="social-icons">
+    <div class="social-icons social-follow">
       <?php foreach ($social_icons as $social_link): ?>
         <?php print $social_link; ?>
       <?php endforeach; ?>

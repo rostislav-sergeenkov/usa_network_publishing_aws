@@ -7,7 +7,7 @@
   <div class="full-episodes-list">
     <?php foreach ($items as $item) :?>
       <div class="node node-usanetwork-promo header-full-episodes-promo">
-        <a href="<?php print $item['url']; ?>">
+        <a href="<?php print $item['url']; ?>" class="full-episodes-link">
           <?php if (!empty($item['sponsored'])) : ?>
             <div class="sponsored" data-mpspath="<?php print $item['file_path']; ?>"></div>
           <?php endif; ?>

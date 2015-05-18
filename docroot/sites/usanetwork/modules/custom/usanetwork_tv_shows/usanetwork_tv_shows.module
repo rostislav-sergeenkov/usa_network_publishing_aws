@@ -1547,6 +1547,7 @@ function _usanetwork_tv_shows_submenu() {
       $social_links[] = l('', $social_bar_link_field[0]['url'], array(
         'attributes' => array(
           'class' => $social_network,
+          'data-name' => $social_network,
           'target' => '_blank'
         )
       ));

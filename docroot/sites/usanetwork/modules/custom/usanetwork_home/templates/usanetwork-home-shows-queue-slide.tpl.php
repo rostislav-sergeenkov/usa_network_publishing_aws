@@ -39,27 +39,27 @@
       <?php endif; ?>
     </div>
     <?php if (!empty($social_icons_data)): ?>
-      <div class="social-icons">
+      <div class="social-icons social-follow">
         <?php if (!empty($social_icons['facebook'])): ?>
-          <a class="facebook" href="<?php print $social_icons['facebook']['url']; ?>"></a>
+          <a class="facebook" data-name="facebook" href="<?php print $social_icons['facebook']['url']; ?>"></a>
         <?php endif; ?>
         <?php if (!empty($social_icons['twitter'])): ?>
-          <a class="twitter" href="<?php print $social_icons['twitter']['url']; ?>"></a>
+          <a class="twitter" data-name="twitter" href="<?php print $social_icons['twitter']['url']; ?>"></a>
         <?php endif; ?>
         <?php if (!empty($social_icons['instagram'])): ?>
-          <a class="instagram" href="<?php print $social_icons['instagram']['url']; ?>"></a>
+          <a class="instagram" data-name="instagram" href="<?php print $social_icons['instagram']['url']; ?>"></a>
         <?php endif; ?>
         <?php if (!empty($social_icons['pinterest'])): ?>
-          <a class="pinterest" href="<?php print $social_icons['pinterest']['url']; ?>"></a>
+          <a class="pinterest" data-name="pinterest" href="<?php print $social_icons['pinterest']['url']; ?>"></a>
         <?php endif; ?>
         <?php if (!empty($social_icons['youtube'])): ?>
-          <a class="youtube" href="<?php print $social_icons['youtube']['url']; ?>"></a>
+          <a class="youtube" data-name="youtube" href="<?php print $social_icons['youtube']['url']; ?>"></a>
         <?php endif; ?>
         <?php if (!empty($social_icons['googleplus'])): ?>
-          <a class="googleplus" href="<?php print $social_icons['googleplus']['url']; ?>"></a>
+          <a class="googleplus" data-name="googleplus" href="<?php print $social_icons['googleplus']['url']; ?>"></a>
         <?php endif; ?>
         <?php if (!empty($social_icons['tumblr'])): ?>
-          <a class="tumblr" href="<?php print $social_icons['tumblr']['url']; ?>"></a>
+          <a class="tumblr" data-name="tumblr" href="<?php print $social_icons['tumblr']['url']; ?>"></a>
         <?php endif; ?>
       </div>
     <?php endif; ?>

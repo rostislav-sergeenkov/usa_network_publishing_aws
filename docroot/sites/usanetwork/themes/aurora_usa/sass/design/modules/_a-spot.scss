@@ -512,16 +512,14 @@
       ul {
         height: 100% !important;
         li {
-          li {
-            background: $full-episodes-light-back;
-            overflow: hidden;
-            height: 36%;
-            margin-bottom: 2px;
-            position: relative;
-            width: 100%;
-            &:nth-child(2n) {
-              background: $full-episodes-dark-back;
-            }
+          background: $full-episodes-light-back;
+          overflow: hidden;
+          height: 36%;
+          margin-bottom: 2px;
+          position: relative;
+          width: 100%;
+          &:nth-child(2n) {
+            background: $full-episodes-dark-back;
           }
         }
       }

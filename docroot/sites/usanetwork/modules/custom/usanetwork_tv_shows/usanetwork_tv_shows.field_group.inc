@@ -13,6 +13,35 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_about_area|node|tv_show|form';
+  $field_group->group_name = 'group_about_area';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_custom_tab';
+  $field_group->data = array(
+    'label' => 'About Area',
+    'weight' => '85',
+    'children' => array(
+      0 => 'field_about_image',
+      1 => 'field_about_show',
+      2 => 'group_full_bleed_promo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-about-area field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_about_area|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_additional_information|node|tv_show|form';
   $field_group->group_name = 'group_additional_information';
   $field_group->entity_type = 'node';
@@ -414,10 +443,10 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_usa_custom_tab';
+  $field_group->parent_name = 'group_about_area';
   $field_group->data = array(
     'label' => 'Full Bleed Promo',
-    'weight' => '84',
+    'weight' => '140',
     'children' => array(
       0 => 'field_hp_full_bleed_promo',
     ),
@@ -1197,7 +1226,7 @@ function usanetwork_tv_shows_field_group_info() {
       10 => 'field_see_it_url',
       11 => 'group_usa_tv_promo_vids',
       12 => 'group_usa_tv_promo',
-      13 => 'group_full_bleed_promo',
+      13 => 'group_about_area',
       14 => 'group_latest_episodes_alt',
       15 => 'group_show_aspots',
       16 => 'group_tvs_best_of',

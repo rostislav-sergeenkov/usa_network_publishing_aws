@@ -215,12 +215,13 @@ function _usanetwork_media_gallery_consumptionator_gallery_block() {
 /**
  * Renders main gallery on MediaGallery page.
  */
-function _usanetwork_media_gallery_consumptionator_gallery_slides_block() {
+function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = NULL) {
   if (path_is_admin(current_path())) {
     return '';
   }
-
-  $node = menu_get_object();
+  if (empty($node)) {
+    $node = menu_get_object();
+  }
 
   if (isset($node->type) && $node->type == 'media_gallery') {
     $slides = array();

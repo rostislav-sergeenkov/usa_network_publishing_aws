@@ -84,7 +84,7 @@ header {
   }
   .episodes-list {
     &.sponsored-enable {
-      .title {
+      > .title {
         height: calc(10% + 50px);
         @include breakpoint($bp-768-width) {
          height: 105px;

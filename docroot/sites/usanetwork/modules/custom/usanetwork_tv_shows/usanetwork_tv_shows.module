@@ -63,13 +63,13 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
-  $items['node/%node/photos'] = array(
-    'title' => '',
-    'page arguments' => array(1),
-    'page callback' => 'usanetwork_tv_shows_blank_page',
-    'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
-  );
+//  $items['node/%node/photos'] = array(
+//    'title' => '',
+//    'page arguments' => array(1),
+//    'page callback' => 'usanetwork_tv_shows_blank_page',
+//    'access arguments' => array('access content'),
+//    'type' => MENU_NORMAL_ITEM,
+//  );
 
   $items['node/%node/explore'] = array(
     'title' => '',

@@ -15390,6 +15390,9 @@ footer h2 {
     display: none;
   }
 }
+.shows-block .show-info-block .show-central-info .advert .advertisement {
+  overflow: hidden;
+}
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-central-info .advert .advertisement {
     left: 50%;
@@ -15407,6 +15410,10 @@ footer h2 {
   width: 100%;
 }
 .shows-block .show-info-block .show-central-info .advert .advertisement a img {
+  height: 100%;
+  width: 100%;
+}
+.shows-block .show-info-block .show-central-info .advert .advertisement .showcardad {
   height: 100%;
   width: 100%;
 }

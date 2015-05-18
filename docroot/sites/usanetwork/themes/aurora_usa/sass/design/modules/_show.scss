@@ -834,6 +834,7 @@
           display: none;
         }
         .advertisement {
+          overflow: hidden;
           @include breakpoint($bp-min-1901-width) {
             left: 50%;
             height: 250px;
@@ -852,6 +853,10 @@
               width: 100%;
             }
 
+          }
+          .showcardad {
+            height: 100%;
+            width: 100%;
           }
         }
       }

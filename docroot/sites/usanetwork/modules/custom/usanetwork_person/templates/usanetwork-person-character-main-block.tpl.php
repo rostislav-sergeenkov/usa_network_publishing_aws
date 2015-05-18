@@ -16,13 +16,6 @@
       </div>
       <div class="block-character-info-header-right">
         <div class="share"><?php print $sharebar ?></div>
-        <?php if (!empty($social_icons)): ?>
-          <div class="social-icons">
-            <?php foreach ($social_icons as $social_icon): ?>
-              <a class="social-icon <?php print $social_icon['class']; ?>" href="<?php print $social_icon['href']; ?>"></a>
-            <?php endforeach; ?>
-          </div>
-        <?php endif; ?>
       </div>
     </div>
     <div class="block-character-info-content">
@@ -59,13 +52,17 @@
         </div>
       </div>
       <div class="node-wrapper advert">
-        <div class="advertisement"></div>
+        <div class="advertisement">
+          <div class="topbox"></div>
+        </div>
       </div>
     </div>
   </div>
   <div class="consum-sidebar">
     <div class="node-wrapper advert">
-      <div class="advertisement"></div>
+      <div class="advertisement">
+        <div class="topbox"></div>
+      </div>
     </div>
   <?php if (!empty($rendered_carousel)): ?>
     <div class="items-block persons-block">

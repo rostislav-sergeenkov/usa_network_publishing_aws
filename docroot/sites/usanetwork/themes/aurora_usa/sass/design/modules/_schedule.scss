@@ -9,7 +9,8 @@
         margin-right: 5px;
       }
       @include breakpoint($bp-320-width) {
-        margin: 20px 10px 13px 0;
+        text-align: left;
+        margin: 20px 10px 13px 10px;
       }
       .item-filter {
         display: inline-block;
@@ -28,7 +29,7 @@
         &:last-child {
           margin-right: 0;
           @include breakpoint($bp-320-width) {
-            display: block;
+            display: inline-block;
             text-align: center;
           }
         }

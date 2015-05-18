@@ -9,6 +9,9 @@
 ?>
 <div class="node node-usanetwork-promo show-color-border <?php print $show_code; ?><?php print !empty($class) ? (' '.$class) : ''; ?>">
   <a href="<?php print $url; ?>">
+    <?php if (!empty($sponsored)) : ?>
+      <div class="sponsored" data-mpspath="<?php print $content_id; ?>" data-scalemps="1"></div>
+    <?php endif; ?>
     <div class="meta-wrapper">
       <div class="meta-back"></div>
       <div class="meta-wrapper-inner">

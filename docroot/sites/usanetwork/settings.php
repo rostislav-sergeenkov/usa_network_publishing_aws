@@ -39,7 +39,7 @@ $conf['acquia_hosting_disable_sa_2014_005_fix'] = TRUE;
 //require_once dirname(__FILE__) . "/settings.site.php";
 
 if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
-  $prod_include = '/var/www/site-php/usanetwork/D7-usanetwork-settings.inc';
+  $prod_include = '/var/www/site-php/nbcuusa/D7-nbcuusa-settings.inc';
   if (file_exists($prod_include)) {
     include($prod_include);
   }

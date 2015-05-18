@@ -167,6 +167,9 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
     drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
   }
+  if(!empty($node) && $node->type == 'tv_episode') {
+    drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
+  }
   // add ios touch icon
   $ios_icon = array(
     '#tag' => 'link',
@@ -467,6 +470,11 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
       case 'usanetwork_video-usa_show_video_nav':
       case 'usanetwork_social-usa_show_social_tab_nav':
         $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
+        break;
+      case 'usanetwork_home-usanetwork_home_featured_promos':
+        if (module_exists('usanetwork_home')) {
+          $vars['items_count'] = _usanetwork_home_featured_carousel_get_items_count();
+        }
         break;
     }
   }

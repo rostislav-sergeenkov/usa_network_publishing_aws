@@ -1,5 +1,13 @@
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
+  overflow-y: hidden;
+  max-height: 43.75vw;
   position: relative;
+  @include breakpoint($bp-min-2500-width) {
+    max-height: 1094px;
+  }
+  @include breakpoint($bp-640-width) {
+    max-height: 90.625vw;
+  }
   .next-button {
     -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
     -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
@@ -70,14 +78,14 @@
     .title_prefix, .start {
       color: #ffffff;
       font-family: $tex-gyreschola-italic;
-      font-size: 12px;
-      line-height: initial;
+      font-size: 1.1vw;
+      line-height: 1;
       text-transform: uppercase;
-      @include breakpoint($bp-min-1601-width) {
-        font-size: 20px;
+      @include breakpoint($bp-min-2500-width) {
+        font-size: 27.5px;
       }
-      @include breakpoint($bp-480-width) {
-        font-size: 10px;
+      @include breakpoint($bp-640-width) {
+        font-size: 1.875vw;
       }
       p {
         margin: 0;
@@ -86,20 +94,15 @@
     .title {
       color: #ffffff;
       font-family: $avalon-demi;
-      font-size: 70px;
-      line-height: initial;
+      font-size: 6vw;
+      line-height: 1;
       margin: 0;
       text-transform: uppercase;
-      @include breakpoint($bp-min-1601-width) {
-        font-size: 120px;
-      }
-      @include breakpoint($bp-1024-width) {
-        font-size: 40px;
-        margin-bottom: 20px;
+      @include breakpoint($bp-min-2500-width) {
+        font-size: 150px;
       }
       @include breakpoint($bp-640-width) {
-        font-size: 30px;
-        margin-bottom: 10px;
+        font-size: 10.4vw;
       }
       p {
         margin: 0;
@@ -149,109 +152,137 @@
     }
     .cta-link {
       position: relative;
-      max-width: 365px;
+      max-width: 20vw;
+      @include breakpoint($bp-min-2500-width) {
+        max-width: 500px;
+      }
+      @include breakpoint($bp-640-width) {
+        max-width: 35vw;
+      }
       a {
         color: #ffffff;
         display: block;
         font-family: $avalon-demi;
-        font-size: 14px;
-        line-height: 24px;
-        padding: 25px 40px 25px 28px;
+        font-size: 1.27vw;
+        line-height: 1.8;
+        padding: 1.7vw 3.125vw 1.7vw 2.54vw;
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 20px;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 31.74px;
+          padding: 42.5px 78px 42.5px 63.5px;
         }
-        @include breakpoint($bp-768-width) {
-          padding: 15px 25px 15px 12px;
-        }
-        @include breakpoint($bp-480-width) {
-          font-size: 10px;
-          padding: 13px 25px 11px 12px;
+        @include breakpoint($bp-640-width) {
+          font-size: 2.1875vw;
         }
         &:after {
           color: #ffffff;
           content: "\e608";
           display: block;
           font-family: $ico-font;
-          font-size: 11px;
+          font-size: 1vw;
+          line-height: 1;
           position: absolute;
-          margin-top: -12px;
-          right: 20px;
+          margin-top: -0.5vw;
+          right: 1.4vw;
           top: 50%;
-          @include breakpoint($bp-768-width) {
-            right: 10px;
+          @include breakpoint($bp-min-2500-width) {
+            font-size: 25px;
+            margin-top: -12.5px;
+            right: 35px;
           }
-          @include breakpoint($bp-480-width) {
-            font-size: 9px;
+          @include breakpoint($bp-640-width) {
+            font-size: 1.6vw;
+            margin-top: -0.8vw;
           }
         }
       }
-    }
-    .sponsored {
-      position: absolute;
-      bottom: 0;
-      right: 0;
     }
   }
   .social_meter {
-    min-height: 78px;
-    width: 205px;
-    @include breakpoint($bp-min-1281-width) {
-      width: 320px;
+    width: 18vw;
+    @include breakpoint($bp-min-2500-width) {
+      width: 450px;
+    }
+    @include breakpoint($bp-640-width) {
+      width: 33vw;
     }
     .row-1 {
-      padding: 20px 20px 20px 78px;
+      padding: 1.5625vw 1.5625vw 1.5625vw 6.5vw;
       @include breakpoint($bp-min-1281-width) {
-        padding: 20px 100px 20px 20px;
+        padding: 1.5625vw 8vw 1.5625vw 1.5625vw;
+      }
+      @include breakpoint($bp-min-2500-width) {
+        padding: 39.0625px 200px 39.0625px 39.0625px;
+      }
+      @include breakpoint($bp-640-width) {
+        padding: 2.865vw 2.865vw 2.865vw 11.9175vw;
       }
       position: relative;
+      &:before {
+        border: solid 0.9375vw;
+        border-color: inherit;
+        border-right-color: transparent!important;
+        border-bottom-color: transparent!important;
+        content: "";
+        display: block;
+        height: 0;
+        left: 1.953vw;
+        position: absolute;
+        top: 100%;
+        width: 0;
+        @include breakpoint($bp-min-2500-width) {
+          border: solid 23px;
+          left: 48.825px;
+        }
+        @include breakpoint($bp-640-width) {
+          border: solid 1.715625vw;
+          left: 3.57vw;
+        }
+      }
       .block-quote-line {
-        margin-bottom: 15px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        line-height: 1.2;
+        margin-bottom: 1vw;
+        @include breakpoint($bp-min-2500-width) {
+          margin-bottom: 25px;
+        }
+        @include breakpoint($bp-640-width) {
+          margin-bottom: 1.833vw;
+        }
         &:last-child {
           margin-bottom: 0;
-        }
-        @include breakpoint($bp-min-1281-width) {
-          margin-bottom: 20px;
-          margin-right: 20px;
-        }
-        @include breakpoint($bp-1280-width) {
-          margin-bottom: 10px;
         }
       }
       .upper-line {
         font-family: $avalon-medium;
-        font-size: 26px;
-        @include breakpoint($bp-min-1281-width) {
-          font-size: 24px;
+        font-size: 1.875vw;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 46.875px;
         }
-        @include breakpoint($bp-768-width) {
-          font-size: 22px;
+        @include breakpoint($bp-640-width) {
+          font-size: 3.4375vw;
         }
       }
       .middle-line {
         font-family: $tex-gyreschola-italic;
-        font-size: 12px;
+        font-size: 0.9375vw;
         text-transform: uppercase;
-        @include breakpoint($bp-min-1281-width) {
-          font-size: 14px;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 23.4375px;
         }
-        @include breakpoint($bp-768-width) {
-          font-size: 10px;
+        @include breakpoint($bp-640-width) {
+          font-size: 1.71875vw;
         }
       }
       .hashtag {
         font-family: $avalon-medium;
-        font-size: 24px;
-        @include breakpoint($bp-min-1281-width) {
-          font-size: 22px;
+        font-size: 1.875vw;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 46.875px;
         }
-        @include breakpoint($bp-768-width) {
-          font-size: 20px;
+        @include breakpoint($bp-640-width) {
+          font-size: 3.4375vw;
         }
       }
       .block-after-quote {
@@ -259,59 +290,74 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 78px;
+        width: 6.094vw;
         @include breakpoint($bp-min-1281-width) {
           background-color: $social-meter;
           left: auto;
           right: 0;
-          width: 100px;
+          width: 7.8125vw;
+        }
+        @include breakpoint($bp-min-2500-width) {
+          width: 195.3125px;
+        }
+        @include breakpoint($bp-640-width) {
+          width: 11.17vw;
         }
         &:after {
-          @include sprite-background(social-meter);
+          background: url(../images/social-meter.png) no-repeat;
+          background-size: 60%;
+          background-position: 50% 50%;
           content: "";
           display: block;
-          margin-top: -25px;
-          left: 12px;
-          position: absolute;
-          top: 50%;
-          @include breakpoint($bp-min-1281-width) {
-            left: auto;
-            right: 23px;
-            z-index: 2;
-          }
+          position: relative;
+          height: 100%;
+          width: 100%;
         }
       }
     }
     .row-2 {
-      margin-top: 30px;
-      @include breakpoint($bp-min-1281-width) {
-        margin-top: 50px;
+      margin-top: 2.34vw;
+      @include breakpoint($bp-min-2500-width) {
+        margin-top: 58.5px;
       }
-      @include breakpoint($bp-768-width) {
-        margin-top: 15px;
+      @include breakpoint($bp-640-width) {
+        margin-top: 4.2825vw;
       }
       .social-meter-link {
         color: #ffffff;
         font-family: $avalon-demi;
-        font-size: 14px;
-        line-height: 24px;
-        padding-right: 15px;
+        font-size: 1.1vw;
+        line-height: 1.8;
+        padding-right: 1.2vw;
         position: relative;
         text-transform: uppercase;
-        @include breakpoint($bp-min-1281-width) {
-          font-size: 23px;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 27.5px;
+          padding-right: 30px;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 2.015vw;
+          padding-right: 2.2vw;
         }
         &:after {
           color: #ffffff;
           content: "\e608";
           display: block;
           font-family: "ico-font";
-          font-size: 11px;
-          line-height: 24px;
+          font-size: 1vw;
+          line-height: 1;
           position: absolute;
-          margin-top: -12px;
+          margin-top: -0.5vw;
           right: 0;
           top: 50%;
+          @include breakpoint($bp-min-2500-width) {
+            font-size: 25px;
+            margin-top: -12.5px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 1.6vw;
+            margin-top: -0.8vw;
+          }
         }
       }
     }
@@ -406,6 +452,7 @@
       background: $header-tab-back;
       height: 10%;
       position: relative;
+      text-align: center;
       width: 100%;
       @include breakpoint($bp-768-width) {
         height: 55px;
@@ -465,16 +512,14 @@
       ul {
         height: 100% !important;
         li {
-          li {
-            background: $full-episodes-light-back;
-            overflow: hidden;
-            height: 36%;
-            margin-bottom: 2px;
-            position: relative;
-            width: 100%;
-            &:nth-child(2n) {
-              background: $full-episodes-dark-back;
-            }
+          background: $full-episodes-light-back;
+          overflow: hidden;
+          height: 36%;
+          margin-bottom: 2px;
+          position: relative;
+          width: 100%;
+          &:nth-child(2n) {
+            background: $full-episodes-dark-back;
           }
         }
       }

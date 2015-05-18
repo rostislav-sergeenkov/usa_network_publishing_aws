@@ -13,6 +13,35 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_about_area|node|tv_show|form';
+  $field_group->group_name = 'group_about_area';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_custom_tab';
+  $field_group->data = array(
+    'label' => 'About Area',
+    'weight' => '85',
+    'children' => array(
+      0 => 'field_about_image',
+      1 => 'field_about_show',
+      2 => 'group_full_bleed_promo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-about-area field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_about_area|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_additional_information|node|tv_show|form';
   $field_group->group_name = 'group_additional_information';
   $field_group->entity_type = 'node';
@@ -414,10 +443,10 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_usa_custom_tab';
+  $field_group->parent_name = 'group_about_area';
   $field_group->data = array(
     'label' => 'Full Bleed Promo',
-    'weight' => '84',
+    'weight' => '140',
     'children' => array(
       0 => 'field_hp_full_bleed_promo',
     ),
@@ -1182,24 +1211,25 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_display_title',
       1 => 'field_usa_tv_on_now',
-      2 => 'field_usa_tv_tune_in_date',
-      3 => 'field_pathauto_alias',
-      4 => 'field_facebook_tracking_enabled',
-      5 => 'field_usa_tv_related_shows',
-      6 => 'field_tvs_about',
-      7 => 'field_tvs_show_latest_feed',
-      8 => 'field_about_ymal',
+      2 => 'field_pathauto_alias',
+      3 => 'field_facebook_tracking_enabled',
+      4 => 'field_usa_tv_related_shows',
+      5 => 'field_tvs_about',
+      6 => 'field_tvs_show_latest_feed',
+      7 => 'field_about_ymal',
+      8 => 'field_usa_tv_tune_in_date',
       9 => 'field_tvs_show_latest_lnd_feed',
-      10 => 'group_usa_tv_promo_vids',
-      11 => 'group_usa_tv_promo',
-      12 => 'group_full_bleed_promo',
-      13 => 'group_latest_episodes_alt',
-      14 => 'group_show_aspots',
-      15 => 'group_tvs_best_of',
+      10 => 'field_see_it_url',
+      11 => 'group_usa_tv_promo_vids',
+      12 => 'group_usa_tv_promo',
+      13 => 'group_about_area',
+      14 => 'group_latest_episodes_alt',
+      15 => 'group_show_aspots',
+      16 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

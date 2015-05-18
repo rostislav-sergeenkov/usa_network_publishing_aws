@@ -49,6 +49,14 @@
 
           Drupal.behaviors.mpsAdvert.ajaxLoadBlock();
 
+          // node-type-tv-show
+          if ($('body').hasClass('node-type-tv-show')) {
+            var lastList = $('.ajax-load-block ul').last(),
+                listElem = lastList.find('.node-usanetwork-promo');
+
+            Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(listElem, 'dark');
+          }
+
           if (typeof window.picturefill != 'undefined') {
             window.picturefill();
           }
@@ -56,9 +64,9 @@
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
           }
-          if (number_ul > 2) {
-            $('.ajax-load-block .load-more-link a').addClass('disabled-infinity');
-          }
+          //if (number_ul > 2) {
+            //$('.ajax-load-block .load-more-link a').addClass('disabled-infinity');
+          //}
         },
         error: function () {
           console.info('error');

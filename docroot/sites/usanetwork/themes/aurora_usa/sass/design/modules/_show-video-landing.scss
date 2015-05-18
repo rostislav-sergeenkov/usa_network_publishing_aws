@@ -72,6 +72,14 @@
             }
           }
         }
+        @include breakpoint ($bp-480-width) {
+          width: 47%;
+          min-width: inherit;
+          margin-right: 2%;
+          .filter-label {
+            width: 100%;
+          }
+        }
         .filter-menu {
           @include breakpoint($bp-768-width) {
             background: $footer-back;
@@ -180,11 +188,17 @@
           margin-right: 5px;
           margin-top: 15px;
         }
+        @include breakpoint ($bp-480-width) {
+          width: 47%;
+        }
         @include breakpoint($bp-320-width) {
-          margin: 20px 10px 13px 0;
+          margin: 15px auto;
         }
         .filter-label {
           width: 160px;
+          @include breakpoint ($bp-480-width) {
+            width: 100%;
+          }
         }
         .filter-menu {
           background: $footer-back;
@@ -246,6 +260,11 @@
           }
         }
       }
+    }
+    .sorters-description {
+      width: 100%;
+      float: left;
+      margin-top: 1.5em;
     }
   }
   .video-items-blocks {

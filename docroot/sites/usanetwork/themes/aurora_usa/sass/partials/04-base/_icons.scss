@@ -212,3 +212,121 @@
     }
   }
 }
+
+.field-type-gigya-sharebar {
+  .gig-button-container {
+    &.gig-button-container-facebook {
+      td {
+        > div {
+          &:before {
+            content: "\e602";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    td {
+      > div {
+        background-image: none !important;
+        display: block;
+        font-family: "ico-font";
+        font-size: 32px;
+        @include breakpoint ($bp-768-width) {
+          font-size: 26px;
+        }
+      }
+    }
+    &.gig-button-container-facebook {
+      td {
+        > div {
+          &:before {
+            content: "\e602";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    &.gig-button-container-twitter {
+      td {
+        > div {
+          &:before {
+            content: "\e603";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    &.gig-button-container-tumblr {
+      td {
+        > div {
+          &:before {
+            content: "\e604";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    &.gig-button-container-pinterest {
+      td {
+        > div {
+          &:before {
+            content: "\e605";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+    &.gig-button-container-share {
+      td {
+        > div {
+          &:before {
+            content: "\e606";
+            color: $consum-carousel-text;
+          }
+        }
+      }
+    }
+  }
+}
+.user-content-icon-default {
+  background-image: url(../images/default-promo-icons/user-content-icon.png);
+}
+.trending-secondary-icon-default {
+  background-image: url(../images/default-promo-icons/trending-secondary-icon.png);
+}
+.trending-primary-icon-default {
+  background-image: url(../images/default-promo-icons/trending-primary-icon.png);
+}
+.sounds-icon-default {
+  background-image: url(../images/default-promo-icons/sounds-icon.png);
+}
+.schedule-icon-default {
+  background-image: url(../images/default-promo-icons/schedule-icon.png);
+}
+.video-clip-icon-default {
+  background-image: url(../images/default-promo-icons/video-clip-icon.png);
+}
+.full-video-icon-default {
+  background-image: url(../images/default-promo-icons/full-video-icon.png);
+}
+.quiz-icon-default {
+  background-image: url(../images/default-promo-icons/quiz-icon.png);
+}
+.game-icon-default {
+  background-image: url(../images/default-promo-icons/game-icon.png);
+}
+.featured-icon-default {
+   background-image: url(../images/default-promo-icons/featured-icon.png);
+}
+.episode-info-icon-default {
+  background-image: url(../images/default-promo-icons/episode-info-icon.png);
+}
+.cast-crew-icon-default {
+  background-image: url(../images/default-promo-icons/cast-crew-icon.png);
+}
+.about-show-icon-default {
+  background-image: url(../images/default-promo-icons/about-show-icon.png);
+}
+.gallery-icon-default {
+  background-image: url(../images/default-promo-icons/gallery-icon.png);
+}

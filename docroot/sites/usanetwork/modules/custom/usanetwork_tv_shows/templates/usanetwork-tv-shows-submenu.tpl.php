@@ -7,7 +7,14 @@
       <?php endforeach; ?>
     </div>
     <div class="schedule">
-      <div class="time"><span><?php print $weekday; ?></span><?php print $time; ?></div>
+      <?php if (!empty($time)): ?>
+      <div class="time">
+        <?php if (!empty($weekday)): ?>
+          <span><?php print $weekday; ?></span>
+        <?php endif; ?>
+        <?php print $time; ?>
+      </div>
+      <?php endif; ?>
     </div>
     <div class="show-menu-tab">
       <ul class="show-menu menu">

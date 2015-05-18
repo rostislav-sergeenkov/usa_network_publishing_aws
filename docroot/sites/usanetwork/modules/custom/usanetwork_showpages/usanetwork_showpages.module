@@ -753,7 +753,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
       $show = reset($show_field);
     }
     if (isset($show)) {
-      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $file->filename, '@showname' => $show['entity']->title));
+      $show_entity_title = !empty($show['entity']->title) ? $show['entity']->title : '';
+      $filename = !empty($file->filename) ? $file->filename : '';
+      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $filename, '@showname' => $show_entity_title));
     } else {
       $head_title = t("@video | Videos | USA Network", array('@video' => $file->filename));
     }

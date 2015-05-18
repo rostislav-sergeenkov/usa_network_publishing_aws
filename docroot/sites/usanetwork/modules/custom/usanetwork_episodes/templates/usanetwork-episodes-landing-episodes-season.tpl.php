@@ -31,11 +31,11 @@
         <?php print $item; ?>
       <?php endforeach; ?>
     </div>
-    <?php if (!empty($load_more_link)): ?>
-      <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>
-    <?php endif; ?>
   <?php endif; ?>
 </div>
 <?php if (!empty($is_global_block)): ?>
+  <?php if (!empty($load_more_link)): ?>
+    <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>
+  <?php endif; ?>
   </div>
 <?php endif; ?>

@@ -766,8 +766,12 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
     $episode_season = $episode_wrapper->field_mpx_season_number->value();
     $episode_number = $episode_wrapper->field_mpx_episode_number->value();
     if (!empty($episode->field_promo_image_override)) {
-      $field_image_override = reset(field_get_items('file', $episode, 'field_promo_image_override'));
-      $episode_image = $field_image_override['uri'];
+      $episode_field_items = field_get_items('file', $episode, 'field_promo_image_override');
+
+      if (!empty($episode_field_items)) {
+        $field_image_override = reset($episode_field_items);
+        $episode_image = $field_image_override['uri'];
+      }
     }
     else {
       $episode_image = _usanetwork_mpx_video_get_image_path($episode);

@@ -418,12 +418,20 @@ function _usanetwork_person_characters_main_block() {
     );
   }
 
+  $person_role = '';
+  if (!empty($person_node->field_role)) {
+    $person_role = $person_node_wrapper->field_role->name->value();
+
+    if (strtolower($person_role) == 'blank') {
+      $person_role = '';
+    }
+  }
+
+
   $theme_variables = array(
     'sharebar' => !empty($sharebar) ? render($sharebar) : '',
     'character_full_name' => $person_node->title,
-    'character_description' => !empty($person_node->field_role)
-      ? $person_node_wrapper->field_role->name->value()
-      : '',
+    'character_description' => $person_role,
     'social_icons' => $social_icons,
     'image_mobile' => !empty($image_url)
       ? image_style_url('full_episodes_633x356', $image_url)

@@ -665,7 +665,7 @@ function usanetwork_tv_shows_entity_update($entity, $type) {
       _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_node);
       _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
 
-      if ($entity->type == 'mpx_video_1' || $entity->type == 'mpx_video_2') {
+      if (in_array($entity->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
         _usanetwork_tv_shows_cache_rebuild_videos_landing_page_content($tv_show_node);
       }
     }
@@ -692,7 +692,7 @@ function usanetwork_tv_shows_entity_insert($entity) {
       _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_node);
       _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
 
-      if ($entity->type == 'mpx_video_1' || $entity->type == 'mpx_video_2') {
+      if (in_array($entity->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
         _usanetwork_tv_shows_cache_rebuild_videos_landing_page_content($tv_show_node);
       }
     }

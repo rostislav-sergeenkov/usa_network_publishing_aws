@@ -1542,11 +1542,15 @@ function _usanetwork_tv_shows_submenu() {
     $show_title = $show->title;
   }
   $show_title = decode_entities($show_title);
-  $usa_tv_tune_in_date = field_get_items('node', $show, 'field_usa_tv_tune_in_date');
-  if (is_array($usa_tv_tune_in_date) && !empty($usa_tv_tune_in_date[0]['value'])) {
-    $show_tunein = explode(' ', $usa_tv_tune_in_date[0]['value']);
-    $show_weekday = array_shift($show_tunein);
-    $show_time = implode(' ', $show_tunein);
+  $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $show, 'field_usa_tv_tune_in_date', 'value');
+  if ($usa_tv_tune_in_date) {
+    if (strpos($usa_tv_tune_in_date, '<br>') === FALSE) {
+      $show_time = $usa_tv_tune_in_date;
+    } else {
+      $show_tunein = explode('<br>', $usa_tv_tune_in_date);
+      $show_weekday = array_shift($show_tunein);
+      $show_time = implode(' ', $show_tunein);
+    }
   }
 
   $social_links = array();

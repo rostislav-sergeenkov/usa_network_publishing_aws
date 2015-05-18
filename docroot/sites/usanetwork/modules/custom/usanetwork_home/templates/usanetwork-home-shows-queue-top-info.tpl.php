@@ -8,9 +8,12 @@
     <?php if (!empty($show_title)): ?>
       <div class="title"><?php print $show_title; ?></div>
     <?php endif; ?>
-    <?php if (!empty($tune_in_date)): ?>
+    <?php if (!empty($time)): ?>
       <div class="time">
-        <span><?php print $tune_in_date; ?></span>
+        <?php if (!empty($weekday)): ?>
+          <span><?php print $weekday; ?></span>
+        <?php endif; ?>
+        <?php print $time; ?>
       </div>
     <?php endif; ?>
   </div>

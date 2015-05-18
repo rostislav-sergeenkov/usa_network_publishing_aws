@@ -78,7 +78,7 @@
           sub_menu_name;
 
       if($self.hasClass('full-episodes-link')) {
-        sub_menu_name = 'name';
+        sub_menu_name = $self.data('name');
       } else {
         sub_menu_name = $self.text();
       }

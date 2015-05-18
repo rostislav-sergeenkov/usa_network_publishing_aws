@@ -15,10 +15,11 @@
       <h2><?php print $title; ?></h2>
     </div>
     <?php if (!empty($filters)): ?>
-      <div class="filters">
-        <ul>
+      <div class="all-seasons-filter item-filter">
+        <div class="filter-label"><?php print t('All seasons'); ?></div>
+        <ul class="filter-menu">
           <?php foreach($filters as $filter): ?>
-            <li data-id="<?php print $filter['value']; ?>"><?php print $filter['title']; ?></li>
+            <li class="filter-item"><?php print $filter['title']; ?></li>
           <?php endforeach; ?>
         </ul>
       </div>

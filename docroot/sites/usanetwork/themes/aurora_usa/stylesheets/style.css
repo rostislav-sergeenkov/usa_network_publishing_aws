@@ -16748,6 +16748,136 @@ footer h2 {
   content: '';
   display: table;
 }
+.episode-landing-list-items-seasons .upper-bar {
+  height: 90px;
+  position: relative;
+  width: 100%;
+}
+.episode-landing-list-items-seasons .upper-bar h2 {
+  color: #545454;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 90px;
+  margin: 0 0 0 35px;
+  text-transform: uppercase;
+}
+.episode-landing-list-items-seasons .item-filter {
+  position: absolute;
+  right: 20px;
+  top: 23px;
+  vertical-align: middle;
+  width: 235px;
+}
+.episode-landing-list-items-seasons .item-filter.open .filter-label {
+  border-color: transparent;
+  background: darkgrey;
+}
+.episode-landing-list-items-seasons .item-filter.open .filter-label:after {
+  content: "\e60a";
+}
+.episode-landing-list-items-seasons .item-filter.open .filter-menu {
+  display: block;
+}
+.episode-landing-list-items-seasons .item-filter .filter-label {
+  border: 1px solid #959595;
+  cursor: pointer;
+  font-size: 21px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  line-height: 42px;
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+  padding: 0 50px 0 20px;
+  color: #383838;
+  width: 235px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .item-filter .filter-label {
+    font-size: 17px;
+    line-height: 27px;
+    border-bottom-width: 1px;
+  }
+}
+@media (max-width: 480px) {
+  .episode-landing-list-items-seasons .item-filter .filter-label {
+    font-size: 12px;
+    line-height: 22px;
+  }
+}
+.episode-landing-list-items-seasons .item-filter .filter-label:after {
+  content: "\e609";
+  color: #545454;
+  font-family: "ico-font";
+  font-size: 16px;
+  display: block;
+  position: absolute;
+  margin-right: -8px;
+  right: 25px;
+  top: 0;
+  z-index: 3;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .item-filter .filter-label:after {
+    font-size: 12px;
+    right: 17px;
+  }
+}
+.episode-landing-list-items-seasons .item-filter .filter-menu {
+  background: darkgrey;
+  top: 1px;
+  display: none;
+  margin-top: 40px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .item-filter .filter-menu {
+    margin-top: 29px;
+  }
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .item-filter .filter-menu {
+    margin-top: 24px;
+  }
+}
+.episode-landing-list-items-seasons .item-filter .filter-menu li {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.episode-landing-list-items-seasons .item-filter .filter-menu li a {
+  color: #ffffff;
+  display: block;
+  font-size: 20px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  height: 100%;
+  line-height: 22px;
+  text-align: left;
+  padding: 9px 20px;
+  text-decoration: none;
+  width: 100%;
+}
+.episode-landing-list-items-seasons .item-filter .filter-menu li a:hover, .episode-landing-list-items-seasons .item-filter .filter-menu li a.active {
+  color: #383838;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .item-filter .filter-menu li a {
+    font-size: 17px;
+    line-height: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .episode-landing-list-items-seasons .item-filter .filter-menu li a {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
 
 #block-usanetwork-person-usanetwork-person-cast-lmb-block {
   background: #ffffff;

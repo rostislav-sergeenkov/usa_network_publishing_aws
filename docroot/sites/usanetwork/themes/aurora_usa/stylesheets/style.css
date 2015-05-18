@@ -16739,6 +16739,16 @@ footer h2 {
   }
 }
 
+.episode-landing-list-items-seasons {
+  position: relative;
+  width: 100%;
+}
+.episode-landing-list-items-seasons:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
 #block-usanetwork-person-usanetwork-person-cast-lmb-block {
   background: #ffffff;
   height: auto;

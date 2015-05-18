@@ -19,7 +19,7 @@
         <div class="filter-label"><?php print t('All seasons'); ?></div>
         <ul class="filter-menu">
           <?php foreach($filters as $filter): ?>
-            <li class="filter-item"><a href="<?php print $filter['link_url']; ?>"><?php print $filter['title']; ?></a></li>
+            <li class="filter-item"><a href="<?php print $filter['url']; ?>"><?php print $filter['title']; ?></a></li>
           <?php endforeach; ?>
         </ul>
       </div>

@@ -811,7 +811,9 @@ function _usanetwork_menu_full_episodes_block() {
        )),
        'image' => $video_image,
       'sponsored' => $sponsored,
+      'icon_type' => usanetwork_core_api_get_media_icon('file', $episode->fid),
       'file_path' => isset($file_path) ? '/file/' . $file_path : NULL,
+      'file_name' => $episode->filename,
     );
 
     $items[] = $items_variables;

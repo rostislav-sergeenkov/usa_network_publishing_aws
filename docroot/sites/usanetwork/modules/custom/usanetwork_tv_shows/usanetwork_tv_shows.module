@@ -1367,46 +1367,48 @@ function _usanetwork_tv_shows_aspot_block() {
 
         unset($alternative_episode_content->entity_type, $alternative_episode_content->entity_id);
 
-        $entity_wrapper = entity_metadata_wrapper($entity_type, $alternative_episode_content);
-        if (!empty($alternative_episode_content->field_promo_image_override)) {
-          $field_image_override = reset(field_get_items($entity_type, $alternative_episode_content, 'field_promo_image_override'));
-          $content_image = $field_image_override['uri'];
-        }
-        else {
-          $content_image = usanetwork_core_api_get_content_image($entity_type, $alternative_episode_content);
-        }
-        $promo_data = _usanetwork_promo_pull_entity_promo_details($alternative_episode_content, $entity_wrapper, $entity_type);
-        if ($entity_type == 'node') {
-          $own_promo_lines = _usanetwork_promo_node_get_promo_lines($alternative_episode_content);
-        }
-        else {
-          $own_promo_lines = _usanetwork_promo_file_get_promo_lines($alternative_episode_content);
-          //Sponsored MPS
-          $field_sponsored = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_sponsored', 'value');
-          if ($field_sponsored == '1') {
-            $sponsored = TRUE;
-            $file_id = '/file/' . $alternative_episode_content->fid;
+        if (!empty($alternative_episode_content->type)) {
+          $entity_wrapper = entity_metadata_wrapper($entity_type, $alternative_episode_content);
+          if (!empty($alternative_episode_content->field_promo_image_override)) {
+            $field_image_override = reset(field_get_items($entity_type, $alternative_episode_content, 'field_promo_image_override'));
+            $content_image = $field_image_override['uri'];
           }
-        }
-        if (!empty($alternative_episode_content->field_promo_link)) {
-          $link_url = $entity_wrapper->field_promo_link->url->value();
-          $promo_link = url($link_url);
-        }
-        else {
-          $promo_link = url($entity_type . '/' . $entity_id);
-        }
-        $episode_theme_variables = array(
-          'url' => $promo_link,
-          'violator' => $promo_data['show_name'],
-          'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
+          else {
+            $content_image = usanetwork_core_api_get_content_image($entity_type, $alternative_episode_content);
+          }
+          $promo_data = _usanetwork_promo_pull_entity_promo_details($alternative_episode_content, $entity_wrapper, $entity_type);
+          if ($entity_type == 'node') {
+            $own_promo_lines = _usanetwork_promo_node_get_promo_lines($alternative_episode_content);
+          }
+          else {
+            $own_promo_lines = _usanetwork_promo_file_get_promo_lines($alternative_episode_content);
+            //Sponsored MPS
+            $field_sponsored = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_sponsored', 'value');
+            if ($field_sponsored == '1') {
+              $sponsored = TRUE;
+              $file_id = '/file/' . $alternative_episode_content->fid;
+            }
+          }
+          if (!empty($alternative_episode_content->field_promo_link)) {
+            $link_url = $entity_wrapper->field_promo_link->url->value();
+            $promo_link = url($link_url);
+          }
+          else {
+            $promo_link = url($entity_type . '/' . $entity_id);
+          }
+          $episode_theme_variables = array(
+            'url' => $promo_link,
+            'violator' => $promo_data['show_name'],
+            'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
               (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
-          'description' => !empty($promo_data['description']) ? $promo_data['description'] :
+            'description' => !empty($promo_data['description']) ? $promo_data['description'] :
               (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
-          'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => 'full_episodes_633x356')) : '',
-          'icon' => !(empty($promo_data['icon_type'])) ? $promo_data['icon_type'] : NULL,
-        );
+            'image_url' => !empty($content_image) ?  theme('image_style', array('path' => $content_image, 'style_name' => 'full_episodes_633x356')) : '',
+            'icon' => !(empty($promo_data['icon_type'])) ? $promo_data['icon_type'] : NULL,
+          );
 
-        $theme_variables['episodes'][] = $episode_theme_variables;
+          $theme_variables['episodes'][] = $episode_theme_variables;
+        }
       }
     }
 

@@ -15,7 +15,8 @@
           if (Drupal.settings.lastSeasonNumber > 1) {
             Drupal.settings.newSeasonNumber = Drupal.settings.lastSeasonNumber - 1;
           }
-        }console.log(window.location);
+        }
+        console.log(window.location);
         var serviceUrl = '/ajax/usanetwork-tv-show-episodes/get-related/' + showNid + '/' + Drupal.settings.newSeasonNumber;
 
         $.ajax({

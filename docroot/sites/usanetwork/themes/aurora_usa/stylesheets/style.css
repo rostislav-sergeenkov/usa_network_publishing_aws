@@ -3649,15 +3649,15 @@ header .tab-content .full-episode-tab-wrapper .sponsored {
   bottom: 0;
   right: 0;
 }
-.aspot-and-episodes .episodes-list.sponsored-enable .title {
+.aspot-and-episodes .episodes-list.sponsored-enable > .title {
   height: calc(10% + 50px);
 }
 @media (max-width: 768px) {
-  .aspot-and-episodes .episodes-list.sponsored-enable .title {
+  .aspot-and-episodes .episodes-list.sponsored-enable > .title {
     height: 105px;
   }
 }
-.aspot-and-episodes .episodes-list.sponsored-enable .title .title-wrapper {
+.aspot-and-episodes .episodes-list.sponsored-enable > .title .title-wrapper {
   height: 50%;
 }
 .aspot-and-episodes .episodes-list.sponsored-enable .episodes-list-slider.vertical {

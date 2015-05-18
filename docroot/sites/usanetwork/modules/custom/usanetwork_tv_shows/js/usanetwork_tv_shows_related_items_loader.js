@@ -1,6 +1,8 @@
 (function($) {
+  var counter = 0;
+
   Drupal.behaviors.usanetwork_tv_shows_related_items_loader = {
-    getItems: function() {
+    getItems: function(eventClick) {
       var limit = $('.ajax-load-block').data('show-items-limit') || 5;
       var show_nid = Drupal.settings.usanetwork_tv_show_nid || $('.ajax-load-block').data('show-nid') || 0;
       var number_ul = $('.ajax-load-block > ul').length;
@@ -8,6 +10,7 @@
       var start_from = limit*number_ul + negativeOffset;
       var service_name = '';
       var additional_arguments = '';
+      var click = eventClick || '';
 
       if (typeof Drupal.settings.usanetwork_tv_show_page_context != 'undefined') {
         switch (Drupal.settings.usanetwork_tv_show_page_context) {
@@ -49,6 +52,14 @@
 
           Drupal.behaviors.mpsAdvert.ajaxLoadBlock();
 
+          counter = counter + 1;
+
+          if(click === "click") {
+            Drupal.behaviors.omniture_tracking.infiniteScroll(counter, click);
+          } else {
+            Drupal.behaviors.omniture_tracking.infiniteScroll(counter);
+          }
+
           // node-type-tv-show
           if ($('body').hasClass('node-type-tv-show')) {
             var lastList = $('.ajax-load-block ul').last(),
@@ -65,7 +76,7 @@
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
           }
           //if (number_ul > 2) {
-            //$('.ajax-load-block .load-more-link a').addClass('disabled-infinity');
+          //  $('.ajax-load-block .load-more-link a').addClass('disabled-infinity');
           //}
         },
         error: function () {
@@ -87,8 +98,9 @@
         if ($(this).hasClass('disabled')){
           return false;
         }
+        var click = 'click';
         $(this).addClass('disabled');
-        Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems();
+        Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems(click);
       });
 
       $(window).on("scroll", function() {

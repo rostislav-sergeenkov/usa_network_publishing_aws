@@ -247,7 +247,7 @@
     right: 37px;
     top: 36px;
     vertical-align: middle;
-    @include breakpoint($bp-1024-width) {
+    @include breakpoint($bp-1280-width) {
       top: 23px;
     }
     @include breakpoint($bp-768-width) {

@@ -522,8 +522,13 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
 
       $('#video-container').addClass('active');
 //      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
-      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
-
+      var urlParts = self.parseUrl(history.state['path']);
+      if (urlParts['section'] == 'videos' && urlParts['item']) {
+        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
+      }
+      else {
+        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
+      }
       // TIME OUT
       setTimeout(function(){
         // initialize the waypoints
@@ -543,6 +548,7 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
 
           var anchor = $(this).parent().attr('data-menuanchor');
           Drupal.behaviors.ms_global.sectionScroll(anchor);
+          Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });
 
         // initialize graceland cu logo click
@@ -596,6 +602,7 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
           usa_debug('============= onpopstate activated! new state: ');
           usa_debug(history.state);
           var urlParts = self.parseUrl(history.state['path']),
+
               anchor = urlParts['section'],
               item = urlParts['item'];
           self.sectionScroll(anchor, item);

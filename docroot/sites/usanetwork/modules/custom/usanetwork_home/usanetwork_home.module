@@ -1496,27 +1496,28 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
   if (!empty($show_node->field_tvs_promo_items)) {
     foreach ($show_node_wrapper->field_tvs_promo_items as $promo_wrapper) {
       $promo = $promo_wrapper->value();
-      $icon_type = '';
+      $promo_data = _usanetwork_promo_pull_node_promo_details($promo);
+      if (empty($promo_data)) {
+        continue;
+      }
       if (!empty($promo->field_promo_image_override)) {
         $content_image = $promo_wrapper->field_promo_image_override->value();
       }
       elseif (!empty($promo->field_promo_regular_image)) {
         $content_image = $promo_wrapper->field_promo_regular_image->value();
       }
-      $content_image = !empty($content_image) ? $content_image['uri'] : NULL;
       if (!empty($promo->field_call_to_action_type)) {
         $cta_type = $promo_wrapper->field_call_to_action_type->value();
-
         $icon_type = str_replace(' ', '_', $cta_type->name) . '-icon';
       }
 
       $theme_variables = array(
-        'title' => !empty($promo->field_promo_title) ? $promo_wrapper->field_promo_title->value() : '',
-        'description' => !empty($promo->field_promo_long_description) ? $promo_wrapper->field_promo_long_description->value() : '',
+        'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] : '',
+        'description' => !empty($promo_data['description']) ? $promo_data['description'] : '',
         'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
         'episode_url' => !empty($promo->field_promo_link) ? url($promo_wrapper->field_promo_link->url->value()) : '',
-        'image_url' => !empty($content_image) ? image_style_url('383x144', $content_image) : '',
-        'icon_type' => $icon_type,
+        'image_url' => !empty($content_image) ? image_style_url('383x144', $content_image['uri']) : '',
+        'icon_type' => !empty($icon_type) ? $icon_type : '',
       );
 
       $output_array[] = theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);

@@ -461,6 +461,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
   $query->fields('show_field', array('entity_id'));
   $query->condition('show_field.bundle', 'person');
   $query->condition('show_field.field_show_target_id', $tv_show_node_nid);
+  $query->condition('person_node.status', NODE_PUBLISHED);
   $query->join('node', 'person_node', 'person_node.nid=show_field.entity_id');
   $query->orderBy('person_node.title', 'ASC');
 

@@ -26,6 +26,9 @@
           case 'characters-consumptionator':
             service_name = 'usanetwork-characters';
             break;
+          case 'episode-consumptionator':
+            service_name = 'usanetwork-tv-episode';
+            break;
           case 'videos-landing':
             service_name = 'videos-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
@@ -100,7 +103,11 @@
         }
         var click = 'click';
         $(this).addClass('disabled');
-        Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems(click);
+        if ($(this).hasClass('more-episodes')){
+          Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems();
+        } else {
+          Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems(click);
+        }
       });
 
       $(window).on("scroll", function() {
@@ -114,7 +121,11 @@
             return false;
           }
           $('.ajax-load-block .load-more-link a').addClass('disabled');
-          Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems();
+          if ($('.ajax-load-block .load-more-link a').hasClass('more-episodes')){
+            Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems();
+          } else {
+            Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems();
+          }
         }
       });
     }

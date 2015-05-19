@@ -48,6 +48,7 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
         'description_character' => NULL,
         'description_actor' => NULL,
         'rendered_carousel' => NULL,
+        'show_tabs' => NULL,
       ),
       'template' => 'templates/usanetwork-person-character-main-block',
     ),
@@ -425,8 +426,18 @@ function _usanetwork_person_characters_main_block() {
     if (strtolower($person_role) == 'blank') {
       $person_role = '';
     }
+
+    if (strtolower($person_role) == 'character') {
+      $show_tabs = TRUE;
+    }
   }
 
+  if (!empty($person_node->field_actor_bio)) {
+    $description_actor = $person_node_wrapper->field_actor_bio->value->value();
+    if (empty($description_actor)) {
+      $show_tabs = FALSE;
+    }
+  }
 
   $theme_variables = array(
     'sharebar' => !empty($sharebar) ? render($sharebar) : '',
@@ -442,12 +453,12 @@ function _usanetwork_person_characters_main_block() {
     'description_character' => !empty($person_node->body)
       ? $person_node_wrapper->body->value->value()
       : '',
-    'description_actor' => !empty($person_node->field_actor_bio)
-      ? $person_node_wrapper->field_actor_bio->value->value()
-      : '',
+    'description_actor' => isset($description_actor) ? $description_actor : NULL,
     'rendered_carousel' => !empty($person_node->field_show)
       ? _usanetwork_person_characters_get_rendered_carousel($person_node_wrapper->field_show->nid->value(), $person_node->nid)
       : '',
+    'show_tabs' => isset($show_tabs) ? $show_tabs : NULL,
+    'cast_landing_link' => !empty($person_node->field_show) ? l(t('Go to cast & info'), 'node/' . $person_node_wrapper->field_show->nid->value() . '/cast') : '',
   );
 
   return theme('usanetwork_person_character_main_block', $theme_variables);
@@ -461,6 +472,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
   $query->fields('show_field', array('entity_id'));
   $query->condition('show_field.bundle', 'person');
   $query->condition('show_field.field_show_target_id', $tv_show_node_nid);
+  $query->condition('person_node.status', NODE_PUBLISHED);
   $query->join('node', 'person_node', 'person_node.nid=show_field.entity_id');
   $query->orderBy('person_node.title', 'ASC');
 

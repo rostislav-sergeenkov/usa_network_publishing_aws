@@ -967,18 +967,18 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_displayed_info_image)) {
-      $image = $entity_wrapper->field_displayed_info_image->value();
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
     }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
-      'catchall_name' => !empty($node->title) ? $node->title : '',
+      'catchall_name' => $node->title,
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
-        'description' => !empty($node->field_displayed_info_description) ? $entity_wrapper->field_displayed_info_description->value() : '',
+        'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() : '',
       ),
     );
     return theme('usanetwork_menu_consumptionator_catchall', $theme_variables);
@@ -1363,9 +1363,9 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'episode_class' => !empty($on_now->nid)
         ? usanetwork_tv_shows_color_show_css_class($on_now->nid) . ' show-color-border'
         : NULL,
-      'label_link' => l(t('On now'), 'videos/live'),
-      'on_now_caption' => l(t('Watch now'), 'videos/live'),
-      'on_now_live_button' => l(t('live'), 'videos/live', array('attributes' => array('class' => 'live'))),
+      'label_link' => t('On now'),
+      'on_now_caption' => t('Watch now'),
+      'on_now_live_button' => t('live'),
     );
   }
 
@@ -1385,7 +1385,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'episode_class' => !empty($up_next->nid)
         ? usanetwork_tv_shows_color_show_css_class($up_next->nid) . ' show-color-border'
         : NULL,
-      'label_link' => !empty($up_next->nid) ? l(t('Up next'), 'node/' . $up_next->nid) : t('Up next'),
+      'label_link' => !empty($up_next->nid) ? l(t('Up next'), 'node/' . $up_next->nid, array('attributes' => array('class' => 'up-next-link'))) : t('Up next'),
     );
   }
 

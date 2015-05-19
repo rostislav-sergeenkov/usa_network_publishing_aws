@@ -4,7 +4,6 @@
  * $preview_episode_url - URL to preview episode video,
  * $default_content_url - URL to default video ('full episode' by default but if there is no full episode - it puts 'preview episode')
  * $desktop_image_url' => desktop image URL
- * $mobile_image_url' => mobile image url
  * $season_number' => number of season
  * $episode_number' => number of episode
  * $title' => episode title

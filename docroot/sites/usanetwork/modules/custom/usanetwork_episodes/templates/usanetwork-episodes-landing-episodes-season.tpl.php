@@ -7,7 +7,7 @@
   <div class="midbanner" id="show-episodes-landing-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
 <?php if (!empty($is_global_block)): ?>
-  <div class="episode-landing-list-items-seasons" data-show-nid="<?php print $show_nid; ?>">
+  <div class="episode-landing-list-items-seasons ajax-load-block" data-show-nid="<?php print $show_nid; ?>">
 <?php endif; ?>
 <div class="episode-landing-list-items-season" data-season-number="<?php print $season_number; ?>">
   <div class="upper-bar">
@@ -19,7 +19,7 @@
         <div class="filter-label"><?php print t('All seasons'); ?></div>
         <ul class="filter-menu">
           <?php foreach($filters as $filter): ?>
-            <li class="filter-item"><?php print $filter['title']; ?></li>
+            <li class="filter-item"><a href="<?php print $filter['url']; ?>" class="no-ajax <?php if ($filter['active'] == TRUE): print 'active'; endif; ?>"><?php print $filter['title']; ?></a></li>
           <?php endforeach; ?>
         </ul>
       </div>
@@ -31,11 +31,11 @@
         <?php print $item; ?>
       <?php endforeach; ?>
     </div>
-    <?php if (!empty($load_more_link)): ?>
-      <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>
-    <?php endif; ?>
   <?php endif; ?>
 </div>
 <?php if (!empty($is_global_block)): ?>
+  <?php if (!empty($load_more_link)): ?>
+    <div class="load-more-link"><a href="javascript:void(0)" class="more-episodes"><?php print t('Load more'); ?></a></div>
+  <?php endif; ?>
   </div>
 <?php endif; ?>

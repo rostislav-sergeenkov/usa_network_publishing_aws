@@ -17230,6 +17230,12 @@ footer h2 {
     line-height: 54px;
   }
 }
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 18px;
+    margin-left: 18px;
+  }
+}
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
   position: absolute;
   right: 37px;
@@ -17306,9 +17312,10 @@ footer h2 {
 }
 @media (max-width: 480px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
-    font-size: 15px;
+    padding-left: 18px;
+    font-size: 14px;
     line-height: 45px;
-    width: 167px;
+    width: 153px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
@@ -17414,6 +17421,7 @@ footer h2 {
 @media (max-width: 480px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
     font-size: 14px;
+    padding-left: 18px;
     line-height: 16px;
   }
 }

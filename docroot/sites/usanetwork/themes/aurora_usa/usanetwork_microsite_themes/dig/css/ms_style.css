@@ -283,7 +283,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-on_now, .icon-arrow1, .icon-arrow3, .icon-close, .icon-fb, .icon-open, .icon-options, .icon-search, .icon-twitter, .icon-usa, .icon-x1, .icon-arrow1-left, .icon-arrow2-left, .icon-arrow3-left, .icon-arrow2, .icon-usa-2, .icon-usa-3, .icon-tumblr, .icon-pin, .icon-arrow-separator, .icon-dropdown, .icon-tve-key, .icon-tve-key-full {
+.icon-on_now, .icon-arrow1, .icon-arrow3, .icon-close, .icon-fb, .icon-open, .icon-options, .icon-search, .icon-twitter, .icon-usa, .icon-x1, .icon-arrow1-left, .icon-arrow2-left, .icon-arrow3-left, .icon-arrow2, .icon-usa-2, .icon-usa-3, .icon-tumblr, .icon-pin, .icon-arrow-separator, .icon-dropdown, .icon-tve-key, .icon-tve-key-full, .flex-direction-nav a {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -309,6 +309,7 @@ you can use the generic selector below, but it's slower:
   width: 100%;
 }
 #microsite {
+  height: auto;
   width: 100%;
   overflow: hidden;
   position: absolute;
@@ -780,14 +781,183 @@ you can use the generic selector below, but it's slower:
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
-  width: 90px;
-  height: 45px;
-  margin-top: 4px;
+  width: 66px;
+  height: 33px;
+  margin-top: 12px;
   margin-left: 20px;
 }
 #microsite #usa-logo-container span {
   display: none;
 }
+
+/* MOBILE NAV BAR */
+#microsite #mobile-nav-bar {
+  display: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 53px;
+  background-color: #000;
+  border-top: 1px solid #414141;
+  box-shadow: 0 -31px 63px rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+#microsite #mobile-nav-bar #mobile-nav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 52px;
+  width: 75px;
+}
+#microsite #mobile-nav-icon-container {
+  position: absolute;
+  top: 14px;
+  right: 8px;
+}
+/* start hamburger icon */
+#mobile-nav .mobi-menu-icon {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  text-indent: -999px;
+}
+#mobile-nav .border-icon {
+  height: 25px;
+  border-top: 5px solid #818181;
+  border-bottom: 5px solid #818181;
+}
+#mobile-nav .border-icon:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 25px;
+  border-top: 5px solid #818181;
+}
+#mobile-nav:hover .border-icon {
+  border-top-color: #FFF;
+  border-bottom-color: #FFF;
+}
+#mobile-nav:hover .border-icon:before {
+  border-top-color: #FFF;
+}
+/* end hamburger icon */
+
+ul#mobile-nav-links-list {
+  display: none;
+  position: absolute;
+  bottom: 52px;
+  right: -8px;
+  width: 160px;
+  height: auto;
+  z-index: 10;
+}
+ul#mobile-nav-links-list li {
+  float: none;
+  text-align: left;
+  background-color: #2d2d2d;
+  border-left: 1px solid #3D3D3D;
+  border-bottom: 1px solid #3D3D3D;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  color: #909090;
+  text-indent: 0;
+  line-height: 1em;
+  padding: 12px;
+  text-transform: lowercase;
+}
+ul#mobile-nav-links-list li:first-child() {
+  border-top: 1px solid #3D3D3D;
+}
+ul#mobile-nav-links-list li a {
+  display: block;
+  width: 100%;
+  color: #D0D0D0;
+  cursor: pointer;
+}
+/* external links */
+ul#mobile-nav-links-list li.external a {
+  color: #909090;
+}
+ul#mobile-nav-links-list li.external:first {
+  border-top: 2px solid #3D3D3D;
+}
+ul#mobile-nav-links-list li:hover,
+ul#mobile-nav-links-list li a:hover {
+  color: #FFF;
+}
+/* sub-nav */
+ul#mobile-nav-links-list ul {
+  position: absolute;
+  right: 160px;
+  bottom: 0;
+  display: none;
+  width: 150px;
+}
+/*
+ul#mobile-nav-links-list ul li > a::after {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: transparent transparent transparent white;
+  border-image: none;
+  border-style: solid;
+  border-width: 5px;
+  content: "";
+  display: block;
+  height: 0;
+  margin-top: -3px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 0;
+}
+*/
+
+/* mobile nav, social icons */
+ul#mobile-nav-links-list li #mobile-nav-social {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 26px;
+}
+ul#mobile-nav-links-list li #mobile-nav-social a {
+  float: left;
+  display: block;
+  margin-right: 6px;
+  width: 26px;
+  height: 26px;
+  outline: none;
+  background-repeat: no-repeat;
+}
+ul#mobile-nav-links-list li #mobile-nav-social a.instagram {
+  background-image: url("../images/icons/icon_instagram.png");
+}
+ul#mobile-nav-links-list li #mobile-nav-social a.twitter {
+  background-image: url("../images/icons/icon_twitter.png");
+}
+ul#mobile-nav-links-list li #mobile-nav-social a.facebook {
+  background-image: url("../images/icons/icon_fb.png");
+}
+ul#mobile-nav-links-list li #mobile-nav-social a.youtube {
+  background-image: url("../images/icons/icon_youtube.png");
+}
+ul#mobile-nav-links-list li #mobile-nav-social a:hover {
+  opacity: 0.7;
+}
+/* menu hover states */
+ul#mobile-nav-links-list li:hover ul,
+#mobile-nav:hover ul#mobile-nav-links-list,
+#mobile-nav ul#mobile-nav-links-list:hover,
+#mobile-nav ul#mobile-nav-links-list li:hover {
+  display: block;
+}
+
 
 /* ADDED OUTSIDE OF SASS */
 .jPanelMenu,
@@ -957,6 +1127,12 @@ body.page-node-microsite {
 #microsite #videos #thumbnail-list .field-name-field-seo-h1 {
   color: #e5ce96;
 }
+#microsite #videos #thumbnail-list li .meta-icon {
+  display: none;
+}
+#microsite #videos #thumbnail-list li a {
+  color: #FFF;
+}
 #microsite #videos #thumbnail-list li.active .field-name-field-mpx-title,
 #microsite #videos #thumbnail-list li.active .field-name-field-seo-h1 {
   padding: 0 4px;
@@ -977,6 +1153,7 @@ body.page-node-microsite {
 body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   display: none;
 }
+
 /* FEATURE PROMO OVERRIDES */
 #microsite .microsite-section-container .promo-ads-panel li {
   list-style: none;
@@ -1013,12 +1190,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   height: 250px;
   width: 300px;
 }
-.usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img,
-.usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img {
+#microsite .usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img,
+#microsite .usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img {
   width: auto;
   height: auto;
+  border: 2px solid #2d2d2d;
 }
-.usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img-large, .usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img-large {
+#microsite .usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img-large,
+#microsite .usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img-large {
   display: none;
 }
 #microsite #aspot-video-container {
@@ -1034,35 +1213,132 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #microsite .slimScrollBar {
   background: #ffffff !important;
 }
-.usa-microsite-featured .caption-overlay .caption-fields-wrapper {
-  margin: 0 0px 2px;
+
+/* FEATURED PROMOS */
+#microsite .usa-microsite-featured .microsite-carousel {
+  position: relative;
+  top: 0;
+  left: 0;
 }
-.usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
+#microsite .usa-microsite-featured .caption-overlay {
+  display: block;
+  height: 77px;
+  position: relative;
+  margin-top: -77px;
+  max-width: 100%;
+}
+#microsite .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
+  bottom: 0;
+  color: white;
+  display: block;
+  height: 77px;
+  left: 0;
+  margin: 0 0 2px 2px;
+  overflow: hidden;
+  padding: 17px 15px 8px;
+  position: absolute;
+  white-space: nowrap;
+  width: calc(100% - 4px);
+  background-color: #000;
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, #000000 100%) repeat scroll 0 0;
+}
+#microsite .usa-microsite-featured .caption-overlay .caption-fields-wrapper > div {
+  text-transform: none;
+}
+#microsite .usa-microsite-featured .flex-direction-nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 250px;
+}
+#microsite .usa-microsite-featured .flex-direction-nav li {
+  position: absolute;
+  top: 98px;
+  width: 30px;
+  height: 30px;
+}
+#microsite .usa-microsite-featured .flex-direction-nav li:first-child {
+  left: -8px;
+}
+#microsite .usa-microsite-featured .flex-direction-nav li:last-child {
+  right: -20px;
+}
+.flex-direction-nav a.flex-next {
+  background-position: 100% 0;
+  text-indent: 3px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 0;
+}
+#microsite .usa-microsite-featured .flex-direction-nav a.flex-next,
+#microsite .usa-microsite-featured .flex-direction-nav a.flex-prev {
+  position: absolute;
+  top: 0;
+  background-color: transparent;
   border: 0;
   display: block;
   outline: none;
   opacity: 1;
 }
-.usa-microsite-featured .flex-direction-nav a.flex-prev {
+/*
+#microsite .usa-microsite-featured .flex-direction-nav a.flex-prev {
   left: -35px;
 }
-.usa-microsite-featured .flex-direction-nav a.flex-next {
+#microsite .usa-microsite-featured .flex-direction-nav a.flex-next {
   right: -35px;
 }
-.region-footer {
-  clear: both;
+*/
+
+
+/* FOOTER */
+#microsite footer {
+  border-top: 1px solid #414141;
+/*  padding: 3px 15px 65px;
+  padding: 11px 5px 8px 25px; */
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 0 25px 85px;
+  z-index: 50;
+  color: #717274;
 }
-#footer-microsite li, #footer-microsite ul {
-  padding: 0;
-  margin: 0;
+#microsite footer li.leaf {
+  float: left;
+  padding-right: 20px;
+  list-style-type: none;
+  list-style-image: none;
 }
-#microsite .mCSB_inside > .mCSB_container {
-  margin-right: 0px;
-  min-height: 100%;
+#microsite footer li a {
+  color: #717274;
+  display: inline-block;
+  line-height: 2.1em;
+  padding: 10px 0 5px;
+  display: block;
 }
-#microsite .mCSB_scrollTools .mCSB_draggerContainer {
-  z-index: 51;
+#microsite footer li a:visited,
+#microsite footer li a:focus {
+  color: #717274;
 }
+#microsite footer li a:hover,
+#microsite footer li a:active {
+  color: #a3a3a3;
+}
+#microsite #_bapw-icon {
+  width: 14px;
+  height: 18px;
+}
+#microsite footer #footer-message {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 12px;
+  font-size: 10px;
+  color: #717274;
+  line-height: 18px;
+  margin-top: 0;
+  clear: left;
+}
+
 /* custom play button */
 #microsite #video-container .video-player {
   position: relative;
@@ -1528,6 +1804,22 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     max-width: 615px;
   }
 }
+@media (max-width: 990px) {
+  #microsite footer {
+    padding-bottom: 48px;
+  }
+  #microsite footer li.leaf {
+    float: none;
+  }
+  #microsite footer li a {
+    line-height: 1em;
+    padding: 12px 0 0;
+  }
+  #microsite footer #footer-message {
+    margin-top: 20px;
+    line-height: 14px;
+  }
+}
 @media (max-width: 1020px) {
   #microsite #about section .microsite-section-container .right-pane {
     width: 100%;
@@ -1553,7 +1845,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (max-width: 874px) {
   #microsite {
-    height: calc(100% - 50px); /* 50px is height of bottom nav */
+    height: auto; /* 50px is height of bottom nav */
   }
   /* hide left nav when hamburger appears */
   #microsite #left-nav {
@@ -1577,8 +1869,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     float: left;
     width: 45%;
   }
+  #microsite #usa-logo-container {
+    display: none;
+  }
+  #microsite #mobile-nav-bar,
+  #microsite #usa-logo-container.mobile {
+    display: block;
+  }
 }
 @media (min-width: 769px) and (max-width: 874px) {
+/*
   .page-node-microsite .mobi-menu-icon {
     display: inline;
   }
@@ -1593,6 +1893,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     text-align: center;
     height: 50px;
   }
+*/
   .page-node-microsite #logo {
     border: none;
     float: none;
@@ -1680,7 +1981,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .usa-microsite-featured .microsite-carousel {
     visibility: hidden;
     max-height: 250px;
-    overflow: hidden;
   }
   #microsite .usa-microsite-featured .microsite-carousel-processed .microsite-carousel {
     visibility: visible;

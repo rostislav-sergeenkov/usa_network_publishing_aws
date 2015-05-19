@@ -293,10 +293,10 @@
         Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
 
         // set active menu item
-        $('#left-nav-links-list li').removeClass('active');
-        $('#tv-show-menu .internal').removeClass('active');
-        $('#nav-' + anchor).addClass('active');
-        $('#tv-show-menu .internal[data-menuanchor=' + anchor + ']').addClass('active');
+        $('#left-nav-links-list li, #mobile-nav-links-list li').removeClass('active');
+//        $('#tv-show-menu .internal').removeClass('active');
+        $('#nav-' + anchor + ', #mobile-nav-' + anchor).addClass('active');
+//        $('#tv-show-menu .internal[data-menuanchor=' + anchor + ']').addClass('active');
 
         // return character section background to fixed
         if ($('#microsite #characters #character-background li').length > 0) {
@@ -317,6 +317,7 @@
       });
     },
 
+/*
     //create mobile menu for microsite
     micrositeCreateMobileMenu: function () {
       var leftNav = $('#left-nav-links-list'),
@@ -366,6 +367,7 @@
         i = i + 1;
       })
     },
+*/
 
     // parseUrl
     micrositeParseUrl: function parseUrl() {
@@ -991,11 +993,10 @@
 
       // set scroll and section height
       function setSectionHeight() {
+        var $mobileNavBar = $('#mobile-nav-bar');
         $('.section').each(function () {
-
-          var msHeight = $(window).height() - $('#mega-nav').height();
+          var msHeight = ($mobileNavBar.css('display') == 'block') ? $(window).height() - $mobileNavBar.height() : $(window).height();
           $(this).height(msHeight);
-
         });
       }
 
@@ -1124,7 +1125,7 @@
       // test for video player load ad
       $(document).ready(function () {
         Drupal.behaviors.microsite_scroll.create728x90Ad();
-        Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
+//        Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();
 
         if ($('#videos').hasClass('active')) {
@@ -1152,18 +1153,18 @@
         $(window).off('popstate');
         $(window).off('hashchange');
 
-        $('#tv-show-menu .internal a.scroll-link').click(function (e) {
+        $('#mobile-nav .internal a.scroll-link').click(function (e) {
           e.preventDefault();
-          if ($('#left-nav').hasClass('stop') || $(this).parent().hasClass('active')) {
+          if ($('#mobile-nav').hasClass('stop') || $(this).parent().hasClass('active')) {
             return false
           } else {
-            $('#left-nav').addClass('stop');
+            $('#mobile-nav').addClass('stop');
           }
 
           var anchor = $(this).parent().attr('data-menuanchor'),
               anchorFull = basePath + '/' + anchor;
 
-          $('#main-menu-toggle').click();
+//          $('#main-menu-toggle').click();
           Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
           Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor);
         });

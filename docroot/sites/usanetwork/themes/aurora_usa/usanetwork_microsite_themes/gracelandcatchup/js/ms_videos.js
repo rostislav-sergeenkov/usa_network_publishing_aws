@@ -169,7 +169,7 @@
     // set video player on click thumbnail
     micrositeSetVideoPlayer: function (autoplay, selector, data, initialPageLoad) {
       initialPageLoad = initialPageLoad || 0;
-      var autoplay = autoplay || true,
+      var autoplay = autoplay || false,
           selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
           activeVideoThumb = $(selector),
           videoContainer = $('#video-container'),
@@ -256,7 +256,15 @@
         $pdk.controller.pause(true);
       }
     },
-
+    // SetPlayPlayer
+    micrositeSetPlayPlayer: function () {
+      var videoContainer = $('#video-container');
+      if (videoContainer.hasClass('active')) {
+        videoContainer.removeClass('play pause').addClass('play');
+        $pdk.controller.clickPlayButton(true);
+        $pdk.controller.pause(false);
+      }
+    },
     //click Thumbnail
     clickThumbnail: function (elem) {
       var refreshAdsOmniture = 0,

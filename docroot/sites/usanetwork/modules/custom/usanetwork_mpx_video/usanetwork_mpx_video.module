@@ -2619,7 +2619,7 @@ function _usa_mpx_video_clips_render() {
          $published = !empty($related_video_file->mpx_video_data['status']) ? $related_video_file->mpx_video_data['status'] : NULL;
          if ($published && usanetwork_mpx_video_get_video_category($related_video_file) === $filter) {
            $related_video_file_wrapper = entity_metadata_wrapper('file', $related_video_file);
-           $promo_data = _usanetwork_promo_pull_file_promo_details($related_video_file);
+           $promo_data = _usanetwork_promo_file_get_promo_lines($related_video_file);
            if (!empty($related_video_file->field_promo_image_override)) {
              $field_image_override = reset(field_get_items('file', $related_video_file, 'field_promo_image_override'));
              $promo_image_url = $field_image_override['uri'];
@@ -2634,7 +2634,7 @@ function _usa_mpx_video_clips_render() {
              'image_url' => image_style_url('111x74', $promo_image_url),
              'image_url_large' => image_style_url('full_episodes_633x356', $promo_image_url),
              'caption' => !empty($promo_data['topic']) ? $promo_data['topic'] : '',
-             'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] : $related_video_file->filename,
+             'title' => !empty($promo_data['title']) ? $promo_data['title'] : $related_video_file->filename,
              'description' => !empty($promo_data['description']) ? $promo_data['description'] :
                  (!empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : ''),
              'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,

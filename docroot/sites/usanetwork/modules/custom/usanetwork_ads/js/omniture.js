@@ -291,8 +291,6 @@
         });
       });
 
-
-
       $(window).load(function () {
         //Click on ON NOW / TONIGHT items
         $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function() {

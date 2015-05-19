@@ -818,12 +818,11 @@ function _usanetwork_catchall_related_content() {
 
   $node = menu_get_object('node');
   if (!empty($node) && $node->type == 'catchall_page') {
-
-    if (empty($node->field_tvs_show_latest_lnd_feed)) {
+    if (empty($node->field_tvs_show_latest_feed)) {
       return '';
     }
     else {
-      $latest_content_flag_field = field_get_items('node', $node, 'field_tvs_show_latest_lnd_feed');
+      $latest_content_flag_field = field_get_items('node', $node, 'field_tvs_show_latest_feed');
 
       if ($latest_content_flag_field[0]['value'] == 0) {
         return '';

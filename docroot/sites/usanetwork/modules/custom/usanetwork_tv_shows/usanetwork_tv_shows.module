@@ -14,6 +14,7 @@ define('USA_TV_SHOW_RELATED_CACHE_SIZE', 250);
 define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_VIDEOS_QUEUE', 12);
 define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_GALLERY_QUEUE', 12);
 define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_PERSON_QUEUE', 12);
+define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_EPISODE_QUEUE', 12);
 define('USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK', 9);
 define('USA_TV_SHOW_ALL_VIDEOS_EPISODE', 0);
 define('USA_TV_SHOW_FULL_EPISODE', -1);
@@ -660,6 +661,7 @@ function usanetwork_tv_shows_entity_update($entity, $type) {
       _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
       _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_node);
       _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_episode_content($tv_show_node);
 
       if (in_array($entity->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
         _usanetwork_tv_shows_cache_rebuild_videos_landing_page_content($tv_show_node);
@@ -687,6 +689,7 @@ function usanetwork_tv_shows_entity_insert($entity) {
       _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
       _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_node);
       _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_episode_content($tv_show_node);
 
       if (in_array($entity->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
         _usanetwork_tv_shows_cache_rebuild_videos_landing_page_content($tv_show_node);
@@ -1771,7 +1774,6 @@ function usanetwork_tv_shows_get_related_video_content($tv_show_node, $start_fro
  */
 function usanetwork_tv_shows_get_related_gallery_content($tv_show_node, $start_from = 0, $limit = 1) {
   return usanetwork_tv_shows_get_related_content($tv_show_node, $start_from, $limit, 'media_gallery', USA_TV_SHOW_RELATED_CONSUMPTIONATOR_GALLERY_QUEUE);
-
 }
 
 /**
@@ -1782,6 +1784,15 @@ function usanetwork_tv_shows_get_related_gallery_content($tv_show_node, $start_f
  */
 function usanetwork_tv_shows_get_related_person_content($tv_show_node, $start_from = 0, $limit = 1) {
   return usanetwork_tv_shows_get_related_content($tv_show_node, $start_from, $limit, 'person', USA_TV_SHOW_RELATED_CONSUMPTIONATOR_PERSON_QUEUE);
+}
+
+/**
+ * Caches a list of node and files of related show for episode page.
+ *
+ * @param $tv_show_node
+ */
+function usanetwork_tv_shows_get_related_episode_content($tv_show_node, $start_from = 0, $limit = 1) {
+  return usanetwork_tv_shows_get_related_content($tv_show_node, $start_from, $limit, 'tv_episode', USA_TV_SHOW_RELATED_CONSUMPTIONATOR_EPISODE_QUEUE);
 }
 
 /**
@@ -1950,6 +1961,43 @@ function _usanetwork_tv_shows_cache_set_related_person_content($tv_show_node) {
 }
 
 /**
+ * Caches a list of node and files of related show for episode page.
+ *
+ * @param $tv_show_node
+ */
+function _usanetwork_tv_shows_cache_set_related_episode_content($tv_show_node) {
+  $cached_data = usanetwork_tv_shows_get_related_episode_content($tv_show_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE);
+
+  if (!empty($cached_data)) {
+    foreach ($cached_data as $cached_id => &$cached_data_item) {
+      $entity = entity_load($cached_data_item->entity_type, array($cached_data_item->entity_id));
+      if (isset($entity[$cached_data_item->entity_id])) {
+        $entity = $entity[$cached_data_item->entity_id];
+      }
+      else {
+        continue;
+      }
+      if (!empty($entity->field_promo_image_override)) {
+        $field_image_override = reset(field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override'));
+        $content_image = $field_image_override['uri'];
+      }
+      else {
+        $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $entity);
+      }
+      $media_icon = usanetwork_core_api_get_media_icon($cached_data_item->entity_type, $cached_data_item->entity_id);
+
+      if (!empty($content_image)) {
+        $cached_data_item->raw_image_uri = $content_image;
+      }
+
+      $cached_data_item->media_icon = $media_icon;
+    }
+  }
+
+  cache_set('usa_tv_shows_related_episode_' . $tv_show_node->nid, $cached_data);
+}
+
+/**
  * Pulls from cache a list of node and files of related show. If the cache is empty - it makes the data.
  *
  * @param $tv_show_node
@@ -2008,6 +2056,28 @@ function _usanetwork_tv_shows_cache_get_related_gallery_content($tv_show_node, $
     _usanetwork_tv_shows_cache_set_related_gallery_content($tv_show_node);
 
     $data = cache_get('usa_tv_shows_related_gallery_' . $tv_show_node->nid);
+  }
+
+  return $full_object
+    ? $data
+    : $data->data;
+}
+
+/**
+ * Pulls from cache a list of node and files of related show for episode page. If the cache is empty - it makes the data.
+ *
+ * @param $tv_show_node
+ * @param $full_object - if true returns full object of Drupal cache
+ * @param $accurate - if true cache will be create if it does not exist
+ * @return bool|int|null|object|stdClass
+ */
+function _usanetwork_tv_shows_cache_get_related_episode_content($tv_show_node, $full_object = FALSE, $accurate = FALSE) {
+  $data = cache_get('usa_tv_shows_related_episode_' . $tv_show_node->nid);
+
+  if (!$accurate && empty($data)) {
+    _usanetwork_tv_shows_cache_set_related_episode_content($tv_show_node);
+
+    $data = cache_get('usa_tv_shows_related_episode_' . $tv_show_node->nid);
   }
 
   return $full_object
@@ -2104,6 +2174,28 @@ function _usanetwork_tv_shows_cache_get_limited_related_gallery_content($tv_show
 }
 
 /**
+ * Returns limited number of cached records for episode page.
+ *
+ * @param $tv_show_node
+ * @param int $start_from
+ * @param $limit = 0, if = 0 it returns all data.
+ */
+function _usanetwork_tv_shows_cache_get_limited_related_episode_content($tv_show_node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+  $data = _usanetwork_tv_shows_cache_get_related_episode_content($tv_show_node);
+
+  if (!empty($data)) {
+    if ($limit == 0) {
+      return array_splice($data, $start_from, count($data));
+    }
+    else {
+      return array_splice($data, $start_from, $limit);
+    }
+  }
+
+  return NULL;
+}
+
+/**
  * Returns limited number of cached records for character page.
  *
  * @param $tv_show_node
@@ -2171,6 +2263,21 @@ function _usanetwork_tv_shows_cache_get_number_of_gallery_last_items($tv_show_no
 }
 
 /**
+ * Returns number of entries that last for current from position of $last_entity_id for episode page.
+ */
+function _usanetwork_tv_shows_cache_get_number_of_episode_last_items($tv_show_node, $last_entity_type, $last_entity_id) {
+  $data = _usanetwork_tv_shows_cache_get_related_episode_content($tv_show_node);
+
+  foreach ($data as $data_index => $data_item) {
+    if ($data_item->entity_type == $last_entity_type && $data_item->entity_id == $last_entity_id) {
+      return (count($data)) - $data_index + 1;
+    }
+  }
+
+  return 0;
+}
+
+/**
  * Returns number of entries that last for current from position of $last_entity_id for gallery page.
  */
 function _usanetwork_tv_shows_cache_get_number_of_person_last_items($tv_show_node, $last_entity_type, $last_entity_id) {
@@ -2216,6 +2323,17 @@ function _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_nod
   cache_clear_all('usa_tv_shows_related_gallery_' . $tv_show_node->nid, 'cache');
 
   _usanetwork_tv_shows_cache_get_related_gallery_content($tv_show_node);
+}
+
+/**
+ * Rebuilds cahce for TV Show for episode page.
+ *
+ * @param $tv_show_node
+ */
+function _usanetwork_tv_shows_cache_rebuild_related_episode_content($tv_show_node) {
+  cache_clear_all('usa_tv_shows_related_episode_' . $tv_show_node->nid, 'cache');
+
+  _usanetwork_tv_shows_cache_get_related_episode_content($tv_show_node);
 }
 
 /**

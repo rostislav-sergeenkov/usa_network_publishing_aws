@@ -7,7 +7,7 @@
   <div class="midbanner" id="show-episodes-landing-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
 <?php if (!empty($is_global_block)): ?>
-  <div class="episode-landing-list-items-seasons" data-show-nid="<?php print $show_nid; ?>">
+  <div class="episode-landing-list-items-seasons ajax-load-block" data-show-nid="<?php print $show_nid; ?>">
 <?php endif; ?>
 <div class="episode-landing-list-items-season" data-season-number="<?php print $season_number; ?>">
   <div class="upper-bar">
@@ -35,7 +35,7 @@
 </div>
 <?php if (!empty($is_global_block)): ?>
   <?php if (!empty($load_more_link)): ?>
-    <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>
+    <div class="load-more-link"><a href="javascript:void(0)" class="more-episodes"><?php print t('Load more'); ?></a></div>
   <?php endif; ?>
   </div>
 <?php endif; ?>

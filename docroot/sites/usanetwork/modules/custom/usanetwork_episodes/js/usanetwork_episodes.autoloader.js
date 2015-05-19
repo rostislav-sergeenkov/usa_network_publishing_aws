@@ -19,6 +19,7 @@
         console.log(window.location);
         var serviceUrl = '/ajax/usanetwork-tv-show-episodes/get-related/' + showNid + '/' + Drupal.settings.newSeasonNumber;
 
+        $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
         $.ajax({
           type: 'GET',
           url: serviceUrl,

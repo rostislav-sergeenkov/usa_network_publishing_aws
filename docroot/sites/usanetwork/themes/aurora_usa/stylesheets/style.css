@@ -17204,6 +17204,11 @@ footer h2 {
     height: 90px;
   }
 }
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
+    height: 55px;
+  }
+}
 #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
   color: #545454;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -17216,7 +17221,13 @@ footer h2 {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
     font-size: 24px;
     line-height: 86px;
-    margin-bottom: 35px;
+    margin-left: 35px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 20px;
+    line-height: 54px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
@@ -17224,6 +17235,23 @@ footer h2 {
   right: 37px;
   top: 36px;
   vertical-align: middle;
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    top: 23px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    right: 4px;
+    top: 9px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    right: 2px;
+    top: 20px;
+  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label {
   border-color: transparent;
@@ -17260,10 +17288,27 @@ footer h2 {
     width: 159px;
   }
 }
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
+    padding-left: 15px;
+    font-size: 12px;
+    line-height: 32px;
+    width: 137px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
+    padding-left: 28px;
+    font-size: 24px;
+    line-height: 66px;
+    width: 261px;
+  }
+}
 @media (max-width: 480px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
-    font-size: 12px;
-    line-height: 22px;
+    font-size: 15px;
+    line-height: 45px;
+    width: 167px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
@@ -17284,6 +17329,17 @@ footer h2 {
     right: 19px;
   }
 }
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
+    font-size: 29px;
+    right: 23px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
+    font-size: 16px;
+  }
+}
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
   background: darkgrey;
   top: 1px;
@@ -17296,6 +17352,21 @@ footer h2 {
   z-index: 2;
 }
 @media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
+    margin-top: 38px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
+    margin-top: 65px;
+  }
+}
+@media (max-width: 480px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
     margin-top: 38px;
   }
@@ -17327,10 +17398,23 @@ footer h2 {
     line-height: 18px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
     font-size: 12px;
-    line-height: 12px;
+    padding-left: 15px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
+    font-size: 24px;
+    padding-left: 31px;
+    line-height: 31px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
+    font-size: 14px;
+    line-height: 16px;
   }
 }
 

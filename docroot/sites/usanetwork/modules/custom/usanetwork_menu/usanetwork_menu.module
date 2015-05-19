@@ -422,6 +422,11 @@ function usanetwork_menu_image_default_styles() {
  * Render header main menu block
  */
 function _usanetwork_menu_main_menu_block() {
+  drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
+    'type' => 'external',
+    'scope' => 'footer',
+  ));
+
   $menu = menu_load('main-menu');
   if (!$menu) {
     return;

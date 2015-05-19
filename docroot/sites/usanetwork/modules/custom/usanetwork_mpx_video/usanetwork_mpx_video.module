@@ -29,7 +29,7 @@ define('USA_MPX_IMAGE_SIZE', '1080');
 function usanetwork_mpx_video_menu() {
   // global videos page
   $items['videos'] = array(
-    'title' => t('Videos'),
+    'title' => t('Full episodes'),
     'page callback' => 'usanetwork_mpx_video_global_videos_page',
     'access arguments' => array('access content'),
   );

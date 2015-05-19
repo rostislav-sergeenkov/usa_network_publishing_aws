@@ -67,10 +67,13 @@ function aurora_usa_preprocess_html(&$vars) {
   }
   drupal_add_library('system', 'drupal.ajax');
   if ($entity = menu_get_object()) {
-    if ($entity->type == 'media_gallery' || $entity->type == 'catchall_page') {
-      $vars['classes_array'][] = drupal_html_class('consumptionator-page');
-    }
-    if ($entity->type == 'person') {
+    $consumptionator_node_types = array(
+      'media_gallery',
+      'catchall_page',
+      'person',
+      'tv_episode'
+    );
+    if (in_array($entity->type, $consumptionator_node_types)) {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
     }
     if ($entity->type == 'tv_show') {

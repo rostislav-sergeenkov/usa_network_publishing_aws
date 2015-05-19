@@ -458,6 +458,7 @@ function _usanetwork_person_characters_main_block() {
       ? _usanetwork_person_characters_get_rendered_carousel($person_node_wrapper->field_show->nid->value(), $person_node->nid)
       : '',
     'show_tabs' => isset($show_tabs) ? $show_tabs : NULL,
+    'cast_landing_link' => !empty($person_node->field_show) ? l(t('Go to cast & info'), 'node/' . $person_node_wrapper->field_show->nid->value() . '/cast') : '',
   );
 
   return theme('usanetwork_person_character_main_block', $theme_variables);

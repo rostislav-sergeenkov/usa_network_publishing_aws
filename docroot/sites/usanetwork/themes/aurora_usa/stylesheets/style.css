@@ -14462,6 +14462,13 @@ footer h2 {
   left: auto;
   right: 0;
 }
+.shows-block .show-carousel > ul > li > .node:after {
+  -webkit-transition: all 0s ease-out 0.3s;
+  -moz-transition: all 0s ease-out 0.3s;
+  -o-transition: all 0s ease-out 0.3s;
+  transition: all 0s ease-out 0.3s;
+  z-index: 1;
+}
 .shows-block .show-carousel > ul > li img.desktop {
   -webkit-transition: all 0.5s ease-out 0.3s;
   -moz-transition: all 0.5s ease-out 0.3s;
@@ -14493,6 +14500,34 @@ footer h2 {
     width: 18px;
   }
 }
+.shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node {
+  /*.show-open {
+    @include breakpoint($bp-min-769-width) {
+      &:hover {
+        &:after {
+          border: 3px solid #ffffff;
+          border-radius: 50%;
+          display: block;
+          color: #ffffff;
+          content: 'open';
+          cursor: pointer;
+          font-family: $avalon-book;
+          font-size: 30px;
+          line-height: 120px;
+          height: 120px;
+          left: 50%;
+          margin-left: -69px;
+          margin-top: -60px;
+          position: absolute;
+          text-align: center;
+          text-transform: uppercase;
+          top: 50%;
+          width: 120px;
+        }
+      }
+    }
+  }*/
+}
 @media (min-width: 769px) {
   .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:before {
     -webkit-transition: all 0.3s ease-out 0s;
@@ -14500,6 +14535,21 @@ footer h2 {
     -o-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
     width: 18px;
+  }
+  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:after {
+    display: block;
+    color: #ffffff;
+    content: "\e608";
+    font-family: "ico-font";
+    font-size: 16px;
+    line-height: 1;
+    margin-top: -8px;
+    right: 0;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 18px;
+    z-index: 2;
   }
   .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover .desktop {
     opacity: 0.8;
@@ -14521,26 +14571,9 @@ footer h2 {
     width: 30px;
   }
 }
-@media (min-width: 769px) {
-  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node .show-open:hover:after {
-    border: 3px solid #ffffff;
-    border-radius: 50%;
-    display: block;
-    color: #ffffff;
-    content: 'open';
-    cursor: pointer;
-    font-family: "avalonregular", Helvetica, Arial, sans-serif;
-    font-size: 30px;
-    line-height: 120px;
-    height: 120px;
-    left: 50%;
-    margin-left: -69px;
-    margin-top: -60px;
-    position: absolute;
-    text-align: center;
-    text-transform: uppercase;
-    top: 50%;
-    width: 120px;
+@media (min-width: 769px) and (min-width: 1901px) {
+  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:after {
+    width: 30px;
   }
 }
 @media (max-width: 1024px) {
@@ -14697,9 +14730,9 @@ footer h2 {
   content: "\e607";
   display: block;
   font-family: "ico-font";
-  font-size: 14px;
+  font-size: 16px;
   margin-right: -7px;
-  margin-top: -7px;
+  margin-top: -8px;
   position: absolute;
   right: 50%;
   top: 50%;

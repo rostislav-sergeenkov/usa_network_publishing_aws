@@ -118,17 +118,37 @@
 
 /* gigya */
 #microsite #galleries .field-type-gigya-sharebar {
-  margin-bottom: 0;
-  position: absolute;
-  bottom: 0;
-  right: -16px;
+  width: 150px;
+  float: right;
+  height: 29px;
+  margin: 5px 0 0;
 }
 #microsite #galleries #gigya-share {
   width: 196px;
   float: left;
-  margin-left: 20px;
+  margin-left: 0;
   clear: none;
 }
+#microsite div.gig-button-container {
+  padding: 0;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 3px 0;
+}
+#microsite .field-type-gigya-sharebar .gig-button-container td > div {
+  background-image: none !important;
+  display: block;
+  font-family: "ico-font";
+  font-size: 24px;
+}
+#microsite .field-type-gigya-sharebar .gig-button-container td > div,
+#microsite .field-type-gigya-sharebar .gig-button-container td > div:hover {
+  width: 24px !important;
+  height: 24px !important;
+  background-image: url("../images/social_chatter_icons.png");
+  background-repeat: none;
+}
+
 
 /* right pane content */
 #microsite #galleries .galleries-nav {
@@ -344,6 +364,10 @@
   #microsite #galleries-content .microsite-section-container {
     width: 90%;
     margin: 0 auto;
+  }
+  #microsite #galleries .field-type-gigya-sharebar {
+    clear: left;
+    float: left;
   }
 }
 

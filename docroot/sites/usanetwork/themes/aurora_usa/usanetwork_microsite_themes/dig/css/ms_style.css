@@ -849,7 +849,7 @@ ul#mobile-nav-links-list {
   position: absolute;
   bottom: 52px;
   right: -8px;
-  width: 160px;
+  width: 180px;
   height: auto;
   z-index: 10;
 }
@@ -890,32 +890,31 @@ ul#mobile-nav-links-list li a:hover {
 }
 /* sub-nav */
 ul#mobile-nav-links-list ul {
-  position: absolute;
-  right: 160px;
-  bottom: 0;
   display: none;
-  width: 150px;
+  position: relative;
+  top: 12px;
+  left: 0;
+  padding-left: 12px;
 }
-/*
-ul#mobile-nav-links-list ul li > a::after {
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  border-color: transparent transparent transparent white;
-  border-image: none;
-  border-style: solid;
-  border-width: 5px;
-  content: "";
-  display: block;
-  height: 0;
-  margin-top: -3px;
-  position: absolute;
-  right: 16px;
-  top: 50%;
+ul#mobile-nav-links-list ul li {
+  background-color: #242424;
+  border-left: 0 solid transparent;
+  border-bottom: 1px solid #3D3D3D;
+  padding-left: 14px;
+}
+ul#mobile-nav-links-list ul li:first-child {
+  border-top: 1px solid #3D3D3D;
+}
+ul#mobile-nav-links-list li.sub-nav span {
   width: 0;
+	height: 0;
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+	border-left: 7px solid #909090;
+	position: absolute;
+	top: 12px;
+	right: 20px;
 }
-*/
 
 /* mobile nav, social icons */
 ul#mobile-nav-links-list li #mobile-nav-social {
@@ -951,11 +950,17 @@ ul#mobile-nav-links-list li #mobile-nav-social a:hover {
   opacity: 0.7;
 }
 /* menu hover states */
-ul#mobile-nav-links-list li:hover ul,
+/* ul#mobile-nav-links-list li.active ul, */
 #mobile-nav:hover ul#mobile-nav-links-list,
 #mobile-nav ul#mobile-nav-links-list:hover,
 #mobile-nav ul#mobile-nav-links-list li:hover {
   display: block;
+}
+ul#mobile-nav-links-list li.sub-nav.active span {
+	top: 20px;
+	border-top: 7px solid #909090;
+	border-right: 7px solid transparent;
+	border-left: 7px solid transparent;
 }
 
 
@@ -1017,6 +1022,8 @@ body.page-node-microsite {
 #microsite section .microsite-section-container div.scroll {
   margin: 0 0 0 calc(-50% - 2em + 124px);
 }
+
+/* A-SPOT */
 #microsite .a-spot-panel #show-main-slider {
   overflow: hidden;
   margin-bottom: 0px;
@@ -1026,13 +1033,78 @@ body.page-node-microsite {
 #microsite .a-spot-panel img {
   width: 100%;
 }
+/* A-SPOT "DOTS" */
 #microsite .a-spot-panel.tiles .flex-control-paging {
   bottom: 30px;
   left: 50%;
   margin-left: -24px;
   position: absolute;
   top: auto;
+  display: inline-block; /* inline-flex; */
 }
+#microsite .flex-control-nav {
+  width: 100%;
+  position: absolute;
+  bottom: -40px;
+  text-align: center;
+  display: none;
+  list-style: outside none none;
+}
+#microsite .tiles .flex-control-paging {
+  bottom: 0;
+  display: inline-block;
+  font-size: 0;
+  height: 0;
+  margin: 0;
+  overflow: visible;
+  position: relative;
+  top: -26px;
+  vertical-align: top;
+  width: auto;
+}
+#microsite .flex-control-nav li {
+  margin: 0 5px;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+#microsite .tiles .flex-control-paging li a {
+  background: #636363 none repeat scroll 0 0;
+  box-shadow: none;
+  height: 14px;
+  width: 14px;
+}
+#microsite .flex-control-paging li a {
+  background-color: #5b5b5b;
+  border: 1px solid #5b5b5b;
+  border-radius: 20px;
+  cursor: pointer;
+  display: block;
+  height: 14px;
+  text-indent: -9999px;
+  width: 14px;
+}
+#microsite .flex-control-paging li a:hover {
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+}
+#microsite .flex-control-paging li a.flex-active {
+  background: rgba(0, 0, 0, 0.9) none repeat scroll 0 0;
+  cursor: default;
+}
+#microsite .flex-control-paging li a.flex-active {
+  background: white none repeat scroll 0 0;
+  border: 1px solid #ebebeb;
+  cursor: default;
+}
+#microsite .tiles .flex-control-paging li a.flex-active,
+#microsite .tiles .flex-control-paging li a:hover {
+  background: white none repeat scroll 0 0;
+  border: 1px solid #ebebeb;
+}
+/* END A-SPOT "DOTS" */
+
 #microsite .video-container.in-player {
   display: block;
 }
@@ -1200,6 +1272,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #microsite .usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img-large {
   display: none;
 }
+
+
+/* A-SPOT VIDEO CONTAINER */
 #microsite #aspot-video-container {
   position: absolute;
   margin: 0px;
@@ -1261,7 +1336,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   left: -8px;
 }
 #microsite .usa-microsite-featured .flex-direction-nav li:last-child {
-  right: -20px;
+  right: -22px;
 }
 .flex-direction-nav a.flex-next {
   background-position: 100% 0;
@@ -1276,7 +1351,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   top: 0;
   background-color: transparent;
   border: 0;
-  display: block;
+  display: block !important;
   outline: none;
   opacity: 1;
 }
@@ -1876,6 +1951,20 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #usa-logo-container.mobile {
     display: block;
   }
+  #microsite .usa-microsite-featured ul.slides {
+    width: 615px;
+    height: auto;
+  }
+  #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item:nth-of-type(odd) {
+    clear: left;
+  }
+  #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item:nth-of-type(even) {
+    margin-right: 0;
+  }
+  #microsite .usa-microsite-featured .flex-direction-nav a.flex-next,
+  #microsite .usa-microsite-featured .flex-direction-nav a.flex-prev {
+    display: none !important;
+  }
 }
 @media (min-width: 769px) and (max-width: 874px) {
 /*
@@ -2008,6 +2097,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-left: 20px;
   }
 }
+@media (max-height: 640px) {
+  ul#mobile-nav-links-list {
+    width: 183px;
+    max-height: 356px;
+    overflow-y: auto;
+    right: 0;
+  }
+}
 @media (max-width: 640px) {
   #microsite section .microsite-section-container {
     margin: 0 auto;
@@ -2023,11 +2120,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 300px;
     max-height: 250px;
   }
+  #microsite .block-usanetwork-mpx-video {
+    width: 310px;
+  }
   #microsite .usa-microsite-featured {
     width: 300px;
   }
-  #microsite .block-usanetwork-mpx-video {
-    width: 310px;
+  #microsite .usa-microsite-featured ul.slides {
+    width: 300px;
+    height: auto;
   }
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
     margin: 0 2% 10px 0px;
@@ -2040,17 +2141,19 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item img {
     max-height: 119px;
   }
-  .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
+  #microsite .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
     height: 40px;
     width: 147px;
     padding: 5px 6px 5px;
     margin: 0;
   }
-  .usa-microsite-featured .caption-overlay .caption-fields-wrapper h3 {
+  #microsite .usa-microsite-featured .caption-overlay .caption-fields-wrapper h3 {
     line-height: 10.5px;
     font-size: 12px;
   }
-  .usa-microsite-featured .caption-overlay .caption-fields-wrapper .caption, .promo-metadata h3, .upcoming-movie .meta h3 {
+  #microsite .usa-microsite-featured .caption-overlay .caption-fields-wrapper .caption,
+  #microsite .promo-metadata h3,
+  #microsite .upcoming-movie .meta h3 {
     font-size: 10px;
     line-height: 12px;
   }

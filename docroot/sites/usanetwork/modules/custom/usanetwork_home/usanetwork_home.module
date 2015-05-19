@@ -377,8 +377,8 @@ function _usanetwork_home_featured_carousel() {
         if (!empty($promo_entity->field_show)) {
           $show_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_show');
 
-          if (!empty($show_field)) {
-            $show_class = usanetwork_tv_shows_color_show_css_class(reset(reset($show_field)));
+          if (!empty($show_field[0]['target_id'])) {
+            $show_class = usanetwork_tv_shows_color_show_css_class($show_field[0]['target_id']);
           }
         }
 
@@ -391,7 +391,10 @@ function _usanetwork_home_featured_carousel() {
 
         if (!empty($promo_entity->field_promo_link)) {
           $promo_link_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_link');
-          $promo_link = url(reset(reset($promo_link_field)));
+
+          if (!empty($promo_link_field[0]['url'])) {
+            $promo_link = url($promo_link_field[0]['url']);
+          }
         }
         else {
           $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
@@ -749,9 +752,6 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
  * DEPRICATED FOR NOW.
  */
 function usanetwork_home_landing($day = NULL) {
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel.min.js');
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
   $render = array();
   return $render;
   /**
@@ -1506,10 +1506,6 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
       elseif (!empty($promo->field_promo_regular_image)) {
         $content_image = $promo_wrapper->field_promo_regular_image->value();
       }
-      if (!empty($promo->field_call_to_action_type)) {
-        $cta_type = $promo_wrapper->field_call_to_action_type->value();
-        $icon_type = str_replace(' ', '_', $cta_type->name) . '-icon';
-      }
 
       $theme_variables = array(
         'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] : '',
@@ -1517,7 +1513,7 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
         'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
         'episode_url' => !empty($promo->field_promo_link) ? url($promo_wrapper->field_promo_link->url->value()) : '',
         'image_url' => !empty($content_image) ? image_style_url('383x144', $content_image['uri']) : '',
-        'icon_type' => !empty($icon_type) ? $icon_type : '',
+        'icon_type' => !empty($promo_data['icon_type']) ? $promo_data['icon_type'] : '',
       );
 
       $output_array[] = theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);

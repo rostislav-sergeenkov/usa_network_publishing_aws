@@ -100,7 +100,11 @@
         }
         var click = 'click';
         $(this).addClass('disabled');
-        Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems(click);
+        if ($(this).hasClass('more-episodes')){
+          Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems();
+        } else {
+          Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems(click);
+        }
       });
 
       $(window).on("scroll", function() {
@@ -114,7 +118,11 @@
             return false;
           }
           $('.ajax-load-block .load-more-link a').addClass('disabled');
-          Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems();
+          if ($('.ajax-load-block .load-more-link a').hasClass('more-episodes')){
+            Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems();
+          } else {
+            Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems();
+          }
         }
       });
     }

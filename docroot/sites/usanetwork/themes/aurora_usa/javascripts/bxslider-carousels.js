@@ -106,22 +106,46 @@
 
     // Init all horizontal carousels
     initHSliders: function() {
-      $('.slider-horizontal').each(function () {
-        var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.hsettings);
+      $('.episodes-list-slider.horizontal')
+        .on('jcarousel:create jcarousel:reload', function () {
+          var $carousel = $(this),
+            width = $carousel.innerWidth();
 
-        Drupal.behaviors.bxslider_carousels.harray.push(slider);
+          if (width > window_size_mobile_641) {
+            width = width / 3;
+          }
 
-        $(this).swipe({
-          swipeLeft: function () {
-            slider.goToNextSlide();
+          $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
+        })
+        .jcarousel({
+          animation: {
+            duration: 500,
+            easing: 'linear'
           },
-          swipeRight: function () {
-            slider.goToPrevSlide();
-          },
-          threshold: 0,
-          excludedElements: 'button, input, select, textarea, .noSwipe'
+          rtl: false
         });
-      });
+
+      $('.episodes-list-slider.horizontal .horizontal-controls .jcarousel-control-prev')
+        .on('jcarouselcontrol:active', function () {
+          $(this).removeClass('inactive');
+        })
+        .on('jcarouselcontrol:inactive', function () {
+          $(this).addClass('inactive');
+        })
+        .jcarouselControl({
+          target: '-=1'
+        });
+
+      $('.episodes-list-slider.horizontal .horizontal-controls .jcarousel-control-next')
+        .on('jcarouselcontrol:active', function () {
+          $(this).removeClass('inactive');
+        })
+        .on('jcarouselcontrol:inactive', function () {
+          $(this).addClass('inactive');
+        })
+        .jcarouselControl({
+          target: '+=1'
+        });
     },
 
     attach: function (context, settings) {
@@ -132,23 +156,17 @@
       //number of visible items for different pages for width screen less than 640px
       var number_of_items = ($('body').hasClass('consumptionator-page'))? 5 : 3;
 
+      Drupal.behaviors.bxslider_carousels.initHSliders();
+
       Drupal.behaviors.bxslider_carousels.extendSettings();
       if (slideItem.length > 2) {
         Drupal.behaviors.bxslider_carousels.initVSliders();
-      }
-      if (window.innerWidth >= window_size_mobile_641 && window.innerWidth < window_size_desktop && slideItem.length > 2 ){
-        Drupal.behaviors.bxslider_carousels.initHSliders();
       }
 
       $(window).bind('resize', function () {
         setTimeout(function() {
           if (window.innerWidth >= window_size_mobile_641 && window.innerWidth < window_size_desktop && slideItem.length > 2){
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
-
-            if (Drupal.behaviors.bxslider_carousels.harray.length == 0) {
-              Drupal.behaviors.bxslider_carousels.initHSliders();
-            }
-
             $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
             moreButton.css('display', 'none');
           } else {

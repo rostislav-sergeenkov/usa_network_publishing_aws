@@ -256,6 +256,55 @@
       }
       .episodes-list-slider {
         &.horizontal {
+          overflow: hidden;
+          position: relative;
+          ul {
+            width: 20000em;
+            position: relative;
+          }
+          .horizontal-controls {
+            display: none;
+            a {
+              display: block;
+              position: absolute;
+              top: 0px;
+              height: 100%;
+              z-index: 9;
+              background: rgba(255,255,255,0.6);
+              &.jcarousel-control-prev {
+                left: 0;
+                width: 60px;
+                &.inactive {
+                  display: none;
+                }
+                &:after {
+                  content: "\e607";
+                }
+              }
+              &.jcarousel-control-next {
+                right: 0;
+                width: 60px;
+                &.inactive {
+                  display: none;
+                }
+                &:after {
+                  content: "\e608";
+                }
+              }
+              &:after {
+                color: #545454;
+                display: block;
+                font-family: "ico-font";
+                font-size: 32px;
+                left: 50%;
+                margin-left: -16px;
+                margin-top: -16px;
+                opacity: 1;
+                position: absolute;
+                top: 42%;
+              }
+            }
+          }
           @include breakpoint($bp-640-width) {
             li {
               background: $consum-carousel-even;

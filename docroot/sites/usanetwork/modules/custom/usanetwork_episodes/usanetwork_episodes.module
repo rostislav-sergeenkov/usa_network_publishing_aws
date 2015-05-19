@@ -470,12 +470,25 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
       $theme_variables['filters'][0] = array(
         'title' => t('All seasons'),
         'value' => 0,
+        'url' => url('node/' . $tv_show_node->nid . '/show-episodes'),
+        'active' => $filter_by_season == 0
+          ? TRUE
+          : FALSE,
       );
 
       foreach ($season_ids as $item_index => $season_id) {
+        $filter_url_arguments = http_build_query(array('season' => $season_id->season_number));
+        $active = $filter_by_season == $season_id->season_number
+          ? TRUE
+          : FALSE;
+
         $theme_variables['filters'][$season_id->season_number] = array(
           'title' => $season_id->season_title,
           'value' => $season_id->season_number,
+          'url' => !empty($filter_url_arguments)
+            ? url('node/' . $tv_show_node->nid . '/show-episodes') . '?' . $filter_url_arguments
+            : url('node/' . $tv_show_node->nid . '/show-episodes'),
+          'active' => $active,
         );
       }
 
@@ -527,6 +540,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     $theme_variables['season_number'] = $current_season_data_item->season_number;
   }
 
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_episodes') . '/js/usanetwork_episodes.autoloader.js');
 
   return theme('usanetwork_episodes_landing_episodes_season', $theme_variables);
@@ -653,7 +667,11 @@ function _usanetwork_episodes_get_season_episodes_description($result_item) {
       return $result_item->full_description;
     }
     else {
-      return substr($result_item->full_description, 0, strpos($result_item->full_description, "</p>") + 4);
+      $matches = array();
+
+      if (preg_match("#<p[^>]*>(.*)</p>#isU", $result_item->full_description, $matches)) {
+        return '<p>' . $matches[1] . '</p>';
+      }
     }
   }
 

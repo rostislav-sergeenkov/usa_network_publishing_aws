@@ -1,5 +1,132 @@
-.episode-landing-list-items-seasons {
+#block-usanetwork-episodes-usa-landing-tvep-list-block {
   @include clear();
   position: relative;
   width: 100%;
+  .episode-landing-list-items-seasons {
+    @include clear();
+    margin-bottom: 100px;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      margin-bottom: 190px;
+    }
+  }
+  .upper-bar {
+    height: 90px;
+    position: relative;
+    width: 100%;
+    h2 {
+      color: $poll-color;
+      font-family: $avalon-medium;
+      font-size: 24px;
+      line-height: 90px;
+      margin: 0 0 0 35px;
+      text-transform: uppercase;
+    }
+  }
+  .item-filter {
+    position: absolute;
+    right: 20px;
+    top: 23px;
+    vertical-align: middle;
+    width: 235px;
+    &.open {
+      .filter-label {
+        border-color: transparent;
+        background: $footer-back;
+        &:after {
+          content: "\e60a";
+        }
+      }
+      .filter-menu {
+        display: block;
+      }
+    }
+    .filter-label {
+      border: 1px solid $gray-light-gamma;
+      cursor: pointer;
+      font-size: 21px;
+      font-family: $avalon-demi;
+      line-height: 42px;
+      text-align: left;
+      overflow: hidden;
+      position: relative;
+      padding: 0 50px 0 20px;
+      color: $gray-dark-darker;
+      width: 235px;
+      text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      white-space: nowrap;
+      @include breakpoint($bp-1280-width) {
+        font-size: 17px;
+        line-height: 27px;
+        border-bottom-width: 1px;
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 12px;
+        line-height: 22px;
+      }
+      &:after {
+        content: "\e609";
+        color: $poll-color;
+        font-family: $ico-font;
+        font-size: 16px;
+        display: block;
+        position: absolute;
+        margin-right: -8px;
+        right: 25px;
+        top: 0;
+        z-index: 3;
+        @include breakpoint($bp-1280-width) {
+          font-size: 12px;
+          right: 17px;
+        }
+      }
+    }
+    .filter-menu {
+      background: $footer-back;
+      top: 1px;
+      display: none;
+      margin-top: 40px;
+      max-height: 200px;
+      overflow-y: auto;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+      @include breakpoint($bp-1280-width){
+        margin-top: 29px;
+      }
+      @include breakpoint($bp-1280-width){
+        margin-top: 24px;
+      }
+      li {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        a {
+          color: #ffffff;
+          display: block;
+          font-size: 20px;
+          font-family: $avalon-demi;
+          height: 100%;
+          line-height: 22px;
+          text-align: left;
+          padding: 9px 20px;
+          text-decoration: none;
+          width: 100%;
+          &:hover, &.active {
+            color: $gray-dark-darker;
+          }
+          @include breakpoint($bp-1280-width){
+            font-size: 17px;
+            line-height: 12px;
+          }
+          @include breakpoint($bp-480-width){
+            font-size: 12px;
+            line-height: 12px;
+          }
+        }
+      }
+    }
+  }
 }

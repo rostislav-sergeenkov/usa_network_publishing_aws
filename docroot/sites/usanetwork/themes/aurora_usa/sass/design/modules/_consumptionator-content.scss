@@ -266,9 +266,60 @@
       }
     }
     &.horizontal {
+      overflow: hidden;
+      position: relative;
       display: none;
       height: calc((100vw - 4px)/48*9);
       width: 100%;
+      &:hover .horizontal-controls {
+        display: block;
+        @include breakpoint($bp-640-width) {
+          display: none;
+        }
+      }
+      .horizontal-controls {
+        display: none;
+        a {
+          display: block;
+          position: absolute;
+          top: 0px;
+          height: 100%;
+          z-index: 9;
+          background: rgba(255,255,255,0.6);
+          &.jcarousel-control-prev {
+            left: 0;
+            width: 60px;
+            &.inactive {
+              display: none;
+            }
+            &:after {
+              content: "\e607";
+            }
+          }
+          &.jcarousel-control-next {
+            right: 0;
+            width: 60px;
+            &.inactive {
+              display: none;
+            }
+            &:after {
+              content: "\e608";
+            }
+          }
+          &:after {
+            color: #545454;
+            display: block;
+            font-family: "ico-font";
+            font-size: 32px;
+            left: 50%;
+            margin-left: -16px;
+            margin-top: -16px;
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+          }
+        }
+      }
       @include breakpoint($bp-1280-width) {
         display: block;
       }
@@ -279,6 +330,8 @@
         position: relative;
       }
       ul, .bx-viewport, .bx-wrapper {
+        width: 20000em;
+        position: relative;
         height: auto!important;
         @include breakpoint($bp-min-641-width) {
           height: 100%!important;

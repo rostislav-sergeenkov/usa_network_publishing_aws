@@ -11,38 +11,6 @@
       }
       false;
     },
-    formatPromo: function($node) {
-      // get promo data
-      var promoName = $node.attr('omniture-title');
-      var promoId = $node.attr('omniture-id');
-
-      return {
-        'promoName': promoName,
-        'promoId': promoId
-      };
-    },
-    trackPromo: function($node, location, link) {
-      var data = Drupal.behaviors.omniture_tracking.formatPromo($node);
-      s.linkTrackVars = 'events,prop52,prop53,prop54,eVar33,eVar34,eVar35';
-      s.linkTrackEvents = s.events = 'event51';
-      s.prop52 = s.eVar33 = data.promoName;
-      s.prop53 = s.eVar34 = location;
-      s.prop54 = s.eVar35 = data.promoId;
-
-      if (link.target != '_blank') {
-        s.bcf = function() {
-          setTimeout(function() {
-            window.location = link.href;
-          }, 500);
-        };
-      }
-      else {
-        window.open(link.href, '_blank');
-      }
-
-      s.tl(this,'o','Promo Click');
-      s.manageVars('clearVars', s.linkTrackVars, 1);
-    },
 
     //----------- redesign ---------------
 
@@ -99,7 +67,7 @@
 
           s.linkTrackVars='events,eVar21';
           s.linkTrackEvents = s.events = 'event4';
-          s.eVar21 = counter;
+          s.eVar21 = "Page " + counter;
 
           s.tl(this,'o','Infinite Scroll Click Load');
           s.manageVars("clearVars", s.linkTrackVars, 1);
@@ -108,7 +76,7 @@
 
           s.linkTrackVars='events,eVar21';
           s.linkTrackEvents = s.events = 'event5';
-          s.eVar21 = counter;
+          s.eVar21 = "Page " + counter;
 
           s.tl(this,'o','Infinite Scroll Auto Load');
           s.manageVars("clearVars", s.linkTrackVars, 1);
@@ -147,8 +115,6 @@
       s.linkTrackVars='events,eVar65';
       s.linkTrackEvents = s.events = 'event65';
       s.eVar65 = 'Schedule Bar : ' + item_name;
-
-      //name = social_name.charAt(0).toUpperCase() + social_name.substr(1);
 
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
         s.bcf = function() {
@@ -325,6 +291,8 @@
         });
       });
 
+
+
       $(window).load(function () {
         //Click on ON NOW / TONIGHT items
         $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function() {
@@ -339,245 +307,6 @@
 
       //-------- end --------
 
-      /**
-       * Track promos
-      */
-
-      /* Homepage */
-      // A/B/C Spots
-      $('.usa-home-aspot .node a, .usa-home-bspot .node a, .usa-home-cspot .node a').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var $node = $self.parents('.node');
-            var promoLocation = '';
-            if ($self.parents('.usa-home-aspot').length > 0) {
-              promoLocation = '1';
-            }
-            else if ($self.parents('.usa-home-bspot').length > 0) {
-              promoLocation = '2';
-            }
-            else if ($self.parents('.usa-home-cspot').length > 0) {
-              promoLocation = '3';
-            }
-
-            // get carousel position
-            var $carouselItems = $self.parents('ul').children().not('.clone');
-            if ($carouselItems.length > 1) {
-              var index = $carouselItems.index($self.parents('li')) + 1;
-              promoLocation = 'C' + index + '-' + promoLocation;
-            }
-
-            // track it
-            Drupal.behaviors.omniture_tracking.trackPromo($node, promoLocation, {
-              href: $self.attr('href'),
-              target: $self.attr('target')
-            });
-          }
-        });
-      });
-      // Featured and Full Episodes
-      $('.field-name-field-hp-promos .node a, #block-views-usa-mpx-video-front-full-epsds .file a, #block-usanetwork-home-usanetwork-home-promo-carousel .node a').once('omniture-tracking', function() {
-        var $self = $(this);
-        var $items = $self.closest('.carousel').find('.carousel-item > div');
-        var $node = $self.closest('.carousel-item').children('div');
-        var promoLocation = $items.index($node) + 1;
-        $node.attr('omniture-index', promoLocation);
-
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var promoLocation = $node.attr('omniture-index');
-            if ($self.closest('.field-name-field-hp-promos').length > 0) {
-              promoLocation = 'F' + promoLocation;
-            }
-            else {
-              promoLocation = 'FEP' + promoLocation;
-            }
-
-            // track it
-            Drupal.behaviors.omniture_tracking.trackPromo($node, promoLocation, {
-              href: $self.attr('href'),
-              target: $self.attr('target')
-            });
-          }
-        });
-      });
-
-      /* Show pages */
-      // A Spot
-      $('.show-aspot .node a').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var $node = $self.parents('.node');
-            var promoLocation = '1';
-
-            // get carousel position
-            var $carouselItems = $self.parents('ul').children().not('.clone');
-            if ($carouselItems.length > 1) {
-              var index = $carouselItems.index($self.parents('li')) + 1;
-              promoLocation = 'C' + index + '-' + promoLocation;
-            }
-
-            // track it
-            Drupal.behaviors.omniture_tracking.trackPromo($node, promoLocation, {
-              href: $self.attr('href'),
-              target: $self.attr('target')
-            });
-          }
-        });
-      });
-      // Featured
-      $('.field-name-field-usa-tv-promo .node a').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var $node = $self.parents('.node');
-            var $items = $self.parents('.field-name-field-usa-tv-promo').find('.node');
-            var promoLocation = $items.index($self.parents('.node')) + 2;
-
-            // track it
-            Drupal.behaviors.omniture_tracking.trackPromo($node, promoLocation, {
-              href: $self.attr('href'),
-              target: $self.attr('target')
-            });
-          }
-        });
-      });
-
-      // Showpage more button
-      $('.node-type-tv-show .expandable-toggle-wrap').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          var $self = $(this);
-          if ($self.find('.more:visible').length == 0) {
-            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              s.linkTrackVars = 'events,eVar65,prop65';
-              s.linkTrackEvents = s.events = 'event65';
-              s.eVar65 = s.prop65 = 'Show Page : More';
-              s.tl(this,'o','Show Page : More');
-              s.manageVars('clearVars',s.linkTrackVars,1);
-            }
-          }
-        });
-      });
-
-      // Showpage social links
-      $('.region-content #usanetwork_social_chatter_title > a').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var id = $self.attr('id');
-            var feedTitle = 'Social Feed';
-            switch (id) {
-              case 'navFb': feedTitle = 'Facebook Feed'; break;
-              default:
-                if (id.indexOf('nav') === 0) {
-                  feedTitle = id.substr(3) + ' Feed';
-                }
-                break;
-            }
-            s.linkTrackVars = 'events,eVar65,prop65';
-            s.linkTrackEvents = s.events = 'event65';
-            s.eVar65 = s.prop65 = 'Show Page : ' + feedTitle;
-            s.tl(this,'o','Show Page : Social Feed Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
-          }
-        });
-      });
-
-      // Show selection drop-down
-      $('#block-usanetwork-video-usa-show-video-nav ul.shows a, #block-usanetwork-video-usa-global-video-nav ul.shows a').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var showName = $self.text();
-            var href = $self.attr('href');
-
-            s.bcf = function() {
-              setTimeout(function() {
-                window.location = href;
-              }, 500);
-            };
-
-            s.linkTrackVars = 'events,eVar64,prop64';
-            s.linkTrackEvents = s.events = 'event64';
-            s.eVar64 = s.prop64 = 'Video Page : Show Selector : ' + showName;
-            s.tl(this,'o','Video Page : Show Selector Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
-          }
-        });
-      });
-
-      // Show video categories
-      $('#block-usanetwork-video-usa-show-video-nav ul.categories a, #block-usanetwork-video-usa-global-video-nav ul.categories a').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var category = $self.text();
-
-            s.linkTrackVars = 'events,eVar65,prop65';
-            s.linkTrackEvents = s.events = 'event65';
-            s.eVar65 = s.prop65 = 'Video Page : ' + category;
-            s.tl(this,'o','Video Page : View Selection Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
-          }
-        });
-      });
-
-      // Show-level breadcrumbs
-      $('.show-banner .show-name > a').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var showName = $self.text();
-            var href = $self.attr('href');
-
-            s.bcf = function() {
-              setTimeout(function() {
-                window.location = href;
-              }, 500);
-            };
-
-            s.linkTrackVars = 'events,eVar64,prop64';
-            s.linkTrackEvents = s.events = 'event64';
-            s.eVar64 = s.prop64 = 'Breadcrumb : ' + showName;
-            s.tl(this,'o','Video Page : Show Selector Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
-          }
-        });
-      });
-
-      //tracking link to Live TV in header
-      $('#block-usanetwork-tv-schedule-usa-on-now-block .content > a, #on-now-image a').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var href = $self.attr('href');
-
-            s.bcf = function() {
-              setTimeout(function() {
-                window.location = href;
-              }, 500);
-            };
-
-            s.linkTrackVars = 'events,eVar65,prop65';
-            s.linkTrackEvents = 'event65';
-            s.events = 'event65';
-            s.eVar65 = s.prop65 = 'Home Page : Watch Live';
-            s.tl(this,'o','Page Item Click');
-            s.manageVars('clearVars', s.linkTrackVars, 1);
-          }
-        });
-      });
 
       function ucfirst(string){
         return string.charAt(0).toUpperCase() + string.slice(1);

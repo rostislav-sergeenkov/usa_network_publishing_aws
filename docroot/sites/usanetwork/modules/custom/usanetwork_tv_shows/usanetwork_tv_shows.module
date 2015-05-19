@@ -1780,8 +1780,12 @@ function _usanetwork_tv_shows_cache_set_related_show_content($tv_show_node) {
         continue;
       }
       if (!empty($entity->field_promo_image_override)) {
-        $field_image_override = reset(field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override'));
-        $content_image = $field_image_override['uri'];
+        $field_image_override_items = field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override');
+
+        if (!empty($field_image_override_items)) {
+          $field_image_override = reset($field_image_override_items);
+          $content_image = $field_image_override['uri'];
+        }
       }
       else {
         $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $entity);
@@ -1822,8 +1826,12 @@ function _usanetwork_tv_shows_cache_set_related_video_content($tv_show_node) {
         continue;
       }
       if (!empty($entity->field_promo_image_override)) {
-        $field_image_override = reset(field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override'));
-        $content_image = $field_image_override['uri'];
+        $field_image_override_items = field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override');
+
+        if (!empty($field_image_override_items)) {
+          $field_image_override = reset($field_image_override_items);
+          $content_image = $field_image_override['uri'];
+        }
       }
       else {
         $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $entity);
@@ -1859,8 +1867,12 @@ function _usanetwork_tv_shows_cache_set_related_gallery_content($tv_show_node) {
         continue;
       }
       if (!empty($entity->field_promo_image_override)) {
-        $field_image_override = reset(field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override'));
-        $content_image = $field_image_override['uri'];
+        $field_image_override_items = field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override');
+
+        if (!empty($field_image_override_items)) {
+          $field_image_override = reset($field_image_override_items);
+          $content_image = $field_image_override['uri'];
+        }
       }
       else {
         $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $entity);

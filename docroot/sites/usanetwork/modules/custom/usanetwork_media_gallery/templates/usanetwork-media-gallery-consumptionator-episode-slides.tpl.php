@@ -46,6 +46,10 @@
               </li>
             <?php endforeach; ?>
           </ul>
+          <div class="horizontal-controls">
+            <a href="javascript:void(0)" class="jcarousel-control-prev"></a>
+            <a href="javascript:void(0)" class="jcarousel-control-next"></a>
+          </div>
         </div>
       <?php endif; ?>
     <?php endif; ?>

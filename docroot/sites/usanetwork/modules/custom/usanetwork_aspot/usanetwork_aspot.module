@@ -282,8 +282,6 @@ function usanetwork_aspot_block_view($delta = '') {
         '#markup' => _usanetwork_aspot_carousel_block(),
         '#attached' => array(
           'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
-            path_to_theme('aurora_usa') . '/javascripts/jquery.easing.1.3.js',
             path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',
             drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
           ),
@@ -648,9 +646,18 @@ function _usanetwork_aspot_carousel_block() {
   $output_array = array();
 
   if (!empty($carousel_nodes)) {
-    $slide_speed = reset(field_get_items('node', $homepage_node, 'field_usa_slide_speed'));
+    $slide_speed_field_items = field_get_items('node', $homepage_node, 'field_usa_slide_speed');
+
+    if (!empty($slide_speed_field_items)) {
+      $slide_speed = reset($slide_speed_field_items);
+    }
+
     $slide_speed = !empty($slide_speed['value']) ? $slide_speed['value'] : 6000;
-    $slide_autoscroll = reset(field_get_items('node', $homepage_node, 'field_usa_autoscroll'));
+    $autoscroll_field_items = field_get_items('node', $homepage_node, 'field_usa_autoscroll');
+
+    if (!empty($autoscroll_field_items)) {
+      $slide_autoscroll = reset($autoscroll_field_items);
+    }
     $slide_autoscroll = !empty($slide_autoscroll['value']) ? $slide_autoscroll['value'] : 0;
     $js_settings = array(
       'slideshowAutoplay' => $slide_autoscroll,
@@ -979,7 +986,7 @@ function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
           $show_node = node_load($show_node_field[0]['target_id']);
         }
 
-        $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
+        $found_nodes['S' . (!empty($show_node->nid) ? $show_node->nid : 0) . '_A' . $aspot_node->nid] = array(
           'aspot_node' => $aspot_node,
           'show_node' => $show_node,
         );

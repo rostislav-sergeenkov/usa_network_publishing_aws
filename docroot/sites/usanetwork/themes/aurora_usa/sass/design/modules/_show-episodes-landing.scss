@@ -1,8 +1,8 @@
-.episode-landing-list-items-seasons {
+#block-usanetwork-episodes-usa-landing-tvep-list-block {
   @include clear();
+  color: $poll-color;
   position: relative;
   width: 100%;
-  color: $poll-color;
   .episode-landing-list-item {
     @include clear();
     padding: 48px 32px 48px 32px;
@@ -34,20 +34,20 @@
       width: 62.17%;
       font-family: $avalon-demi;
       line-height: 2em;
-      @include breakpoint ($bp-1280-width) {
+      @include breakpoint($bp-1280-width) {
         line-height: 1.5em;
         width: 61.8%;
       }
-      @include breakpoint ($bp-768-width) {
+      @include breakpoint($bp-768-width) {
         width: 50%;
       }
       .series {
         font-size: 22.5px;
         line-height: 1em;
-        @include breakpoint ($bp-1280-width) {
+        @include breakpoint($bp-1280-width) {
           font-size: 15px;
         }
-        @include breakpoint ($bp-1024-width) {
+        @include breakpoint($bp-1024-width) {
           font-size: 12px;
         }
       }
@@ -55,11 +55,11 @@
         font-size: 36px;
         text-transform: uppercase;
         margin-bottom: 4px;
-        @include breakpoint ($bp-1280-width) {
+        @include breakpoint($bp-1280-width) {
           font-size: 24px;
           margin: 0;
         }
-        @include breakpoint ($bp-1024-width) {
+        @include breakpoint($bp-1024-width) {
           font-size: 20px;
         }
       }
@@ -68,7 +68,7 @@
         font-family: $tex-gyreschola-italic;
         text-transform: uppercase;
         font-size: 18px;
-        @include breakpoint ($bp-1280-width) {
+        @include breakpoint($bp-1280-width) {
           font-size: 12px;
         }
       }
@@ -77,13 +77,13 @@
         font-family: $avalon-book;
         font-size: 26px;
         line-height: 1.5em;
-        @include breakpoint ($bp-1280-width) {
+        @include breakpoint($bp-1280-width) {
           font-size: 17px;
         }
-        @include breakpoint ($bp-1024-width) {
+        @include breakpoint($bp-1024-width) {
           font-size: 14px;
         }
-        @include breakpoint ($bp-768-width) {
+        @include breakpoint($bp-768-width) {
           font-size: 13px;
         }
       }
@@ -106,22 +106,22 @@
             -moz-box-sizing: border-box;
             box-sizing: border-box;
             text-align: left;
-            @include breakpoint ($bp-1280-width) {
+            @include breakpoint($bp-1280-width) {
               padding: 10px 0 10px 13%;
             }
-            @include breakpoint ($bp-1024-width) {
+            @include breakpoint($bp-1024-width) {
               padding: 5px 10px;
               width: 44%;
               &:after {
                 content: "\e608";
                 color: #ffffff;
                 font-family: "ico-font";
-                font-size: 13px;
+                font-size: 12px;
                 display: block;
                 position: absolute;
                 right: -20px;
                 top: 50%;
-                margin-top: calc(-13px/2);
+                margin-top: -6px;
                 line-height: 1;
                 z-index: 3;
               }
@@ -132,13 +132,13 @@
               text-transform: uppercase;
               font-size: 20px;
               position: relative;
-              @include  breakpoint($bp-1600-width) {
+              @include breakpoint($bp-1600-width) {
                 font-size: 16px;
               }
-              @include  breakpoint($bp-1280-width) {
+              @include breakpoint($bp-1280-width) {
                 font-size: 13px;
               }
-              @include  breakpoint($bp-1024-width) {
+              @include breakpoint($bp-1024-width) {
                 font-size: 12px;
               }
               &:before {
@@ -147,10 +147,10 @@
                 left: -29%;
                 margin-top: -4px;
                 @include sprite-background(play-icon);
-                @include breakpoint ($bp-1280-width) {
+                @include breakpoint($bp-1280-width) {
                   @include sprite-background(play-icon-small);
                 }
-                @include breakpoint ($bp-1024-width) {
+                @include breakpoint($bp-1024-width) {
                   display: none;
                 }
               }
@@ -174,13 +174,13 @@
             &:first-child {
               margin-bottom: 28px;
             }
-            @include breakpoint ($bp-1280-width) {
+            @include breakpoint($bp-1280-width) {
               font-size: 15px;
               &:first-child {
                 margin-bottom: 18px;
               }
             }
-            @include breakpoint ($bp-1024-width) {
+            @include breakpoint($bp-1024-width) {
               font-size: 11px;
               &:first-child {
                 margin-bottom: 15px;
@@ -196,7 +196,7 @@
               right: 16px;
               top: 0;
               z-index: 3;
-              @include breakpoint ($bp-1024-width) {
+              @include breakpoint($bp-1024-width) {
                 font-size: 10px;
               }
             }
@@ -205,4 +205,134 @@
       }
     }
   }
+  .episode-landing-list-items-seasons {
+    @include clear();
+    margin-bottom: 100px;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      margin-bottom: 190px;
+    }
+  }
+  .upper-bar {
+    height: 90px;
+    position: relative;
+    width: 100%;
+    h2 {
+      color: $poll-color;
+      font-family: $avalon-medium;
+      font-size: 24px;
+      line-height: 90px;
+      margin: 0 0 0 35px;
+      text-transform: uppercase;
+    }
+  }
+  .item-filter {
+    position: absolute;
+    right: 20px;
+    top: 23px;
+    vertical-align: middle;
+    width: 235px;
+    &.open {
+      .filter-label {
+        border-color: transparent;
+        background: $footer-back;
+        &:after {
+          content: "\e60a";
+        }
+      }
+      .filter-menu {
+        display: block;
+      }
+    }
+    .filter-label {
+      border: 1px solid $gray-light-gamma;
+      cursor: pointer;
+      font-size: 21px;
+      font-family: $avalon-demi;
+      line-height: 42px;
+      text-align: left;
+      overflow: hidden;
+      position: relative;
+      padding: 0 50px 0 20px;
+      color: $gray-dark-darker;
+      width: 235px;
+      text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      white-space: nowrap;
+      @include breakpoint($bp-1280-width) {
+        font-size: 17px;
+        line-height: 27px;
+        border-bottom-width: 1px;
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 12px;
+        line-height: 22px;
+      }
+      &:after {
+        content: "\e609";
+        color: $poll-color;
+        font-family: $ico-font;
+        font-size: 16px;
+        display: block;
+        position: absolute;
+        margin-right: -8px;
+        right: 25px;
+        top: 0;
+        z-index: 3;
+        @include breakpoint($bp-1280-width) {
+          font-size: 12px;
+          right: 17px;
+        }
+      }
+    }
+    .filter-menu {
+      background: $footer-back;
+      top: 1px;
+      display: none;
+      margin-top: 40px;
+      max-height: 200px;
+      overflow-y: auto;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+      @include breakpoint($bp-1280-width){
+        margin-top: 29px;
+      }
+      @include breakpoint($bp-1280-width){
+        margin-top: 24px;
+      }
+      li {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        a {
+          color: #ffffff;
+          display: block;
+          font-size: 20px;
+          font-family: $avalon-demi;
+          height: 100%;
+          line-height: 22px;
+          text-align: left;
+          padding: 9px 20px;
+          text-decoration: none;
+          width: 100%;
+          &:hover, &.active {
+            color: $gray-dark-darker;
+          }
+          @include breakpoint($bp-1280-width){
+            font-size: 17px;
+            line-height: 12px;
+          }
+          @include breakpoint($bp-480-width){
+            font-size: 12px;
+            line-height: 12px;
+          }
+        }
+      }
+    }
+  }
 }
+
+
+

@@ -126,7 +126,10 @@
       adaptiveHeightSpeed: 200,
       speed: 600,
       onSliderLoad: pagerItems,
-      onSlideAfter: function () {
+      onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+        Drupal.behaviors.omniture_tracking.photoGalleries();
+      },
+      onSlideAfter: function ($slideElement, oldIndex, newIndex) {
         Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
       }
     };

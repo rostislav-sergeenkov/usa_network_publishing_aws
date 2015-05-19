@@ -332,8 +332,8 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
             '!number' => $gallery_item->field_season_id_value,
           ))
           : '',
-        'slides_vertical' => $rendered_items['slides_vertical'],
-        'slides_horizontal' => $rendered_items['slides_horizontal'],
+        'slides_vertical' => !empty($rendered_items['slides_vertical']) ? $rendered_items['slides_vertical'] : '',
+        'slides_horizontal' => !empty($rendered_items['slides_horizontal']) ? $rendered_items['slides_horizontal'] : '',
         'ad' => isset($advert) ? $advert : NULL,
       ));
     }

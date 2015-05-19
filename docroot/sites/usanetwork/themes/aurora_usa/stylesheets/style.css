@@ -25302,6 +25302,11 @@ yx-axis
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
   width: 100%;
 }
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
+  float: left;
+  position: relative;
+  width: 100%;
+}
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .wrp {
   background: #000000;
   overflow: hidden;

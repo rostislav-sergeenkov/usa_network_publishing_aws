@@ -700,6 +700,26 @@ function usanetwork_tv_shows_entity_insert($entity) {
 }
 
 /**
+ *  Implements hook_views_pre_build($query)
+ */
+function usanetwork_tv_shows_views_pre_build(&$view) {
+
+  if ($view->name == 'related_show_video_autocomplete') {
+    $view->args = array(arg(6));
+  }
+}
+
+/**
+ *  Implements hook_views_query_alter($query)
+ */
+function usanetwork_tv_shows_views_query_alter(&$view, &$query) {
+
+  if ($view->name == 'related_show_video_autocomplete') {
+    $query->tags[] = 'related_show_video_autocomplete';
+  }
+}
+
+/**
  *  Implements hook_entity_query_alter($query)
  */
 function usanetwork_tv_shows_entity_query_alter($query) {
@@ -730,6 +750,12 @@ function usanetwork_tv_shows_query_alter($query) {
         $query->condition($db_or);
       }
     }
+  }
+  elseif ($query->hasTag('related_show_video_autocomplete')) {
+    $db_or = db_or();
+    $db_or->condition('mpx_video.status', 0, '<>');
+    $db_or->condition('mpx_video.airdate', REQUEST_TIME, '>=');
+    $query->condition($db_or);
   }
 }
 

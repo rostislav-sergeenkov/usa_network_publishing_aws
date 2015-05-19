@@ -12,6 +12,13 @@
             left: auto;
             right: 0;
           }
+          &:after {
+            -webkit-transition: all 0s ease-out 0.3s;
+            -moz-transition: all 0s ease-out 0.3s;
+            -o-transition: all 0s ease-out 0.3s;
+            transition: all 0s ease-out 0.3s;
+            z-index: 1;
+          }
         }
         img {
           &.desktop {
@@ -61,6 +68,24 @@
                   width: 30px;
                 }
               }
+              &:after {
+                display: block;
+                color: #ffffff;
+                content: "\e608";
+                font-family: $ico-font;
+                font-size: 16px;
+                line-height: 1;
+                margin-top: -8px;
+                right: 0;
+                position: absolute;
+                text-align: center;
+                top: 50%;
+                width: 18px;
+                z-index: 2;
+                @include breakpoint($bp-min-1901-width) {
+                  width: 30px;
+                }
+              }
               .desktop {
                 opacity:0.8;
                 -moz-opacity:0.8;
@@ -77,7 +102,7 @@
               }
             }
           }
-          .show-open {
+          /*.show-open {
             @include breakpoint($bp-min-769-width) {
               &:hover {
                 &:after {
@@ -102,7 +127,7 @@
                 }
               }
             }
-          }
+          }*/
         }
       }
     }
@@ -244,9 +269,9 @@
               content: "\e607";
               display: block;
               font-family: $ico-font;
-              font-size: 14px;
+              font-size: 16px;
               margin-right: -7px;
-              margin-top: -7px;
+              margin-top: -8px;
               position: absolute;
               right: 50%;
               top: 50%;

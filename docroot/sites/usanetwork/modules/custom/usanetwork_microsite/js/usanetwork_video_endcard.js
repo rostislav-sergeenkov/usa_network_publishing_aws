@@ -15,12 +15,12 @@
     },
     'OnCountdownEnd': function(data) {
       // @TODO: Consolidate or update the microsite js so that the following if-else statement is not needed.
-      if (typeof Drupal.behaviors.microsite_scroll == 'object' && Drupal.behaviors.microsite_scroll.hasOwnProperty('micrositeSetVideoPlayer') && Drupal.behaviors.microsite_scroll.hasOwnProperty('micrositeChangeUrl') {
+      if (typeof Drupal.behaviors.microsite_scroll == 'object' && Drupal.behaviors.microsite_scroll.hasOwnProperty('micrositeSetVideoPlayer') && Drupal.behaviors.microsite_scroll.hasOwnProperty('micrositeChangeUrl')) {
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true, null, data);
         Drupal.behaviors.microsite_scroll.micrositeChangeUrl(Drupal.usanetwork_video_endcard.GetAnchors(data)[0],
           Drupal.usanetwork_video_endcard.GetAnchors(data)[1]);
       }
-      else if (typeof Drupal.behaviors.ms_videos == 'object' && Drupal.behaviors.ms_videos.hasOwnProperty('micrositeSetVideoPlayer') && typeof Drupal.behaviors.ms_global == 'object' && Drupal.behaviors.ms_global.hasOwnProperty('changeUrl') {
+      else if (typeof Drupal.behaviors.ms_videos == 'object' && Drupal.behaviors.ms_videos.hasOwnProperty('micrositeSetVideoPlayer') && typeof Drupal.behaviors.ms_global == 'object' && Drupal.behaviors.ms_global.hasOwnProperty('changeUrl')) {
         Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, data);
         Drupal.behaviors.ms_global.changeUrl(Drupal.usanetwork_video_endcard.GetAnchors(data)[0],
           Drupal.usanetwork_video_endcard.GetAnchors(data)[1]);
@@ -29,12 +29,12 @@
     },
     'OnYmalitemnewClick': function(data) {
       // @TODO: Consolidate or update the microsite js so that the following if-else statement is not needed.
-      if (typeof Drupal.behaviors.microsite_scroll == 'object' && Drupal.behaviors.microsite_scroll.hasOwnProperty('micrositeSetVideoPlayer') && Drupal.behaviors.microsite_scroll.hasOwnProperty('micrositeChangeUrl') {
+      if (typeof Drupal.behaviors.microsite_scroll == 'object' && Drupal.behaviors.microsite_scroll.hasOwnProperty('micrositeSetVideoPlayer') && Drupal.behaviors.microsite_scroll.hasOwnProperty('micrositeChangeUrl')) {
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true, null, data);
         Drupal.behaviors.microsite_scroll.micrositeChangeUrl(Drupal.usanetwork_video_endcard.GetAnchors(data)[0],
           Drupal.usanetwork_video_endcard.GetAnchors(data)[1]);
       }
-      else if (typeof Drupal.behaviors.ms_videos == 'object' && Drupal.behaviors.ms_videos.hasOwnProperty('micrositeSetVideoPlayer') && typeof Drupal.behaviors.ms_global == 'object' && Drupal.behaviors.ms_global.hasOwnProperty('changeUrl') {
+      else if (typeof Drupal.behaviors.ms_videos == 'object' && Drupal.behaviors.ms_videos.hasOwnProperty('micrositeSetVideoPlayer') && typeof Drupal.behaviors.ms_global == 'object' && Drupal.behaviors.ms_global.hasOwnProperty('changeUrl')) {
         Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, data);
         Drupal.behaviors.ms_global.changeUrl(Drupal.usanetwork_video_endcard.GetAnchors(data)[0],
           Drupal.usanetwork_video_endcard.GetAnchors(data)[1]);

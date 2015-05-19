@@ -749,9 +749,6 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
  * DEPRICATED FOR NOW.
  */
 function usanetwork_home_landing($day = NULL) {
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel.min.js');
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
   $render = array();
   return $render;
   /**

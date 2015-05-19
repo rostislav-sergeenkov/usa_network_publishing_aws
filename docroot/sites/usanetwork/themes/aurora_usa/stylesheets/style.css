@@ -16742,11 +16742,303 @@ footer h2 {
 .episode-landing-list-items-seasons {
   position: relative;
   width: 100%;
+  color: #545454;
 }
 .episode-landing-list-items-seasons:after {
   clear: both;
   content: '';
   display: table;
+}
+.episode-landing-list-items-seasons .episode-landing-list-item {
+  padding: 48px 32px 48px 32px;
+  min-width: 400px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+.episode-landing-list-items-seasons .episode-landing-list-item:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item {
+    padding: 30px 0 30px 32px;
+  }
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item {
+    padding: 24px 0 24px 20px;
+  }
+}
+@media (max-width: 768px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item {
+    padding: 17px 0 17px 13px;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .left-item-block {
+  float: left;
+  width: 35.36%;
+  margin-right: 1%;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .left-item-block {
+    width: 36.8%;
+  }
+}
+@media (max-width: 768px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .left-item-block {
+    width: 48%;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block {
+  float: right;
+  width: 62.17%;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  line-height: 2em;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block {
+    line-height: 1.5em;
+    width: 61.8%;
+  }
+}
+@media (max-width: 768px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block {
+    width: 50%;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .series {
+  font-size: 22.5px;
+  line-height: 1em;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .series {
+    font-size: 15px;
+  }
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .series {
+    font-size: 12px;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .title {
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .title {
+    font-size: 24px;
+    margin: 0;
+  }
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .title {
+    font-size: 20px;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .airing-date,
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .expiration-date {
+  font-family: "texgyrescholaitalic", Times, serif;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .airing-date,
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .expiration-date {
+    font-size: 12px;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .description {
+  width: 76.86%;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  line-height: 1.5em;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .description {
+    font-size: 17px;
+  }
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .description {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .description {
+    font-size: 13px;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons {
+  width: 60.4%;
+  float: left;
+}
+@media (max-width: 1600px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons {
+    width: 63%;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div {
+  margin-right: 1%;
+  position: relative;
+  display: inline-block;
+  background: #bbb7b7;
+  width: 48%;
+  padding: 15px 0 15px 13%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div {
+    padding: 10px 0 10px 13%;
+  }
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div {
+    padding: 5px 10px;
+    width: 44%;
+  }
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div:after {
+    content: "\e608";
+    color: #ffffff;
+    font-family: "ico-font";
+    font-size: 13px;
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    margin-top: calc(-13px/2);
+    line-height: 1;
+    z-index: 3;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a {
+  color: #ffffff;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 20px;
+  position: relative;
+}
+@media (max-width: 1600px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a {
+    font-size: 12px;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+  content: '';
+  position: absolute;
+  left: -29%;
+  margin-top: -4px;
+  background-image: url('../images/sprites-s969621235a.png');
+  background-position: 0 -1398px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  height: 37px;
+  width: 37px;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+    background-image: url('../images/sprites-retina-s19f56d21c6.png');
+    background-size: 65px 1736px;
+    background-position: 0 -1036px;
+    height: 37px;
+    width: 37px;
+  }
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+    background-image: url('../images/sprites-s969621235a.png');
+    background-position: 0 -1538px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    height: 30px;
+    width: 30px;
+  }
+}
+@media (max-width: 1280px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1280px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1280px) and (min--moz-device-pixel-ratio: 2), (max-width: 1280px) and (min-device-pixel-ratio: 2), (max-width: 1280px) and (min-resolution: 144dppx) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+    background-image: url('../images/sprites-retina-s19f56d21c6.png');
+    background-size: 65px 1736px;
+    background-position: 0 -1169px;
+    height: 30px;
+    width: 30px;
+  }
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+    display: none;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links {
+  float: right;
+  width: 36%;
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links > a {
+  display: block;
+  color: #545454;
+  font-family: "texgyrescholaitalic", Times, serif;
+  text-transform: uppercase;
+  text-align: right;
+  font-size: 18px;
+  position: relative;
+  padding-right: 38px;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links > a:first-child {
+  margin-bottom: 28px;
+}
+@media (max-width: 1280px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links > a {
+    font-size: 15px;
+  }
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links > a:first-child {
+    margin-bottom: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links > a {
+    font-size: 11px;
+  }
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links > a:first-child {
+    margin-bottom: 15px;
+  }
+}
+.episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links > a:after {
+  content: "\e608";
+  color: #545454;
+  font-family: "ico-font";
+  font-size: 13px;
+  display: block;
+  position: absolute;
+  right: 16px;
+  top: 0;
+  z-index: 3;
+}
+@media (max-width: 1024px) {
+  .episode-landing-list-items-seasons .episode-landing-list-item .right-item-block .buttons-bar .links > a:after {
+    font-size: 10px;
+  }
 }
 
 #block-usanetwork-person-usanetwork-person-cast-lmb-block {

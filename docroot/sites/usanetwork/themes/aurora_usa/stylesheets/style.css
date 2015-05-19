@@ -16739,21 +16739,36 @@ footer h2 {
   }
 }
 
-.episode-landing-list-items-seasons {
+#block-usanetwork-episodes-usa-landing-tvep-list-block {
   position: relative;
   width: 100%;
 }
-.episode-landing-list-items-seasons:after {
+#block-usanetwork-episodes-usa-landing-tvep-list-block:after {
   clear: both;
   content: '';
   display: table;
 }
-.episode-landing-list-items-seasons .upper-bar {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons {
+  margin-bottom: 100px;
+  position: relative;
+  width: 100%;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons {
+    margin-bottom: 190px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
   height: 90px;
   position: relative;
   width: 100%;
 }
-.episode-landing-list-items-seasons .upper-bar h2 {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
   color: #545454;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 24px;
@@ -16761,24 +16776,24 @@ footer h2 {
   margin: 0 0 0 35px;
   text-transform: uppercase;
 }
-.episode-landing-list-items-seasons .item-filter {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
   position: absolute;
   right: 20px;
   top: 23px;
   vertical-align: middle;
   width: 235px;
 }
-.episode-landing-list-items-seasons .item-filter.open .filter-label {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label {
   border-color: transparent;
   background: darkgrey;
 }
-.episode-landing-list-items-seasons .item-filter.open .filter-label:after {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label:after {
   content: "\e60a";
 }
-.episode-landing-list-items-seasons .item-filter.open .filter-menu {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-menu {
   display: block;
 }
-.episode-landing-list-items-seasons .item-filter .filter-label {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
   border: 1px solid #959595;
   cursor: pointer;
   font-size: 21px;
@@ -16795,19 +16810,19 @@ footer h2 {
   white-space: nowrap;
 }
 @media (max-width: 1280px) {
-  .episode-landing-list-items-seasons .item-filter .filter-label {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
     font-size: 17px;
     line-height: 27px;
     border-bottom-width: 1px;
   }
 }
 @media (max-width: 480px) {
-  .episode-landing-list-items-seasons .item-filter .filter-label {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
     font-size: 12px;
     line-height: 22px;
   }
 }
-.episode-landing-list-items-seasons .item-filter .filter-label:after {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
   content: "\e609";
   color: #545454;
   font-family: "ico-font";
@@ -16820,12 +16835,12 @@ footer h2 {
   z-index: 3;
 }
 @media (max-width: 1280px) {
-  .episode-landing-list-items-seasons .item-filter .filter-label:after {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
     font-size: 12px;
     right: 17px;
   }
 }
-.episode-landing-list-items-seasons .item-filter .filter-menu {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
   background: darkgrey;
   top: 1px;
   display: none;
@@ -16837,21 +16852,21 @@ footer h2 {
   z-index: 2;
 }
 @media (max-width: 1280px) {
-  .episode-landing-list-items-seasons .item-filter .filter-menu {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
     margin-top: 29px;
   }
 }
 @media (max-width: 1280px) {
-  .episode-landing-list-items-seasons .item-filter .filter-menu {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
     margin-top: 24px;
   }
 }
-.episode-landing-list-items-seasons .item-filter .filter-menu li {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li {
   overflow: hidden;
   position: relative;
   width: 100%;
 }
-.episode-landing-list-items-seasons .item-filter .filter-menu li a {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
   color: #ffffff;
   display: block;
   font-size: 20px;
@@ -16863,17 +16878,17 @@ footer h2 {
   text-decoration: none;
   width: 100%;
 }
-.episode-landing-list-items-seasons .item-filter .filter-menu li a:hover, .episode-landing-list-items-seasons .item-filter .filter-menu li a.active {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a:hover, #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a.active {
   color: #383838;
 }
 @media (max-width: 1280px) {
-  .episode-landing-list-items-seasons .item-filter .filter-menu li a {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
     font-size: 17px;
     line-height: 12px;
   }
 }
 @media (max-width: 480px) {
-  .episode-landing-list-items-seasons .item-filter .filter-menu li a {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
     font-size: 12px;
     line-height: 12px;
   }

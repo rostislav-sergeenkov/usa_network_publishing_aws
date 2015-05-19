@@ -142,12 +142,6 @@ function usanetwork_tv_shows_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_tv_shows_aspot_block(),
-        '#attached' => array(
-          'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
-            path_to_theme('aurora_usa') . '/javascripts/bxslider-carousels.js',
-          ),
-        ),
       );
       break;
 

@@ -1,7 +1,16 @@
-.episode-landing-list-items-seasons {
+#block-usanetwork-episodes-usa-landing-tvep-list-block {
   @include clear();
   position: relative;
   width: 100%;
+  .episode-landing-list-items-seasons {
+    @include clear();
+    margin-bottom: 100px;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      margin-bottom: 190px;
+    }
+  }
   .upper-bar {
     height: 90px;
     position: relative;

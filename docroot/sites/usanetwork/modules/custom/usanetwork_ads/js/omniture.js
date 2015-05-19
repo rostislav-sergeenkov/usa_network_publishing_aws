@@ -49,6 +49,7 @@
     // main menu elem click
     mainMenuTabs: function (elem) {
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
         var $self = elem,
             menu_name = $self.text();
 
@@ -73,19 +74,13 @@
       }
     },
 
-    subMenuItems: function (elem) {
-      var $self = elem,
-          sub_menu_name;
+    subMenuItems: function (elem, name) {
 
-      if($self.hasClass('full-episodes-link')) {
-        sub_menu_name = $self.data('name');
-      } else {
-        sub_menu_name = $self.text();
-      }
+      var $self = elem;
 
       s.linkTrackVars='events,eVar64';
       s.linkTrackEvents = s.events = 'event64';
-      s.eVar64 = sub_menu_name;
+      s.eVar64 = name;
 
       if ($self.attr('href') != '#') {
         s.bcf = function() {
@@ -101,6 +96,7 @@
     infiniteScroll: function (counter, event) {
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
         if(event === "click") {
+
           s.linkTrackVars='events,eVar21';
           s.linkTrackEvents = s.events = 'event4';
           s.eVar21 = counter;
@@ -109,6 +105,7 @@
           s.manageVars("clearVars", s.linkTrackVars, 1);
 
         } else {
+
           s.linkTrackVars='events,eVar21';
           s.linkTrackEvents = s.events = 'event5';
           s.eVar21 = counter;
@@ -120,15 +117,53 @@
     },
 
     photoGalleries: function () {
-      console.info('gallery');
-      // omniture
-      if (typeof s_gi != 'undefined')
-      {
+      if (typeof s_gi != 'undefined') {
         void (s.t());
       }
     },
 
+    scheduleBar: function (elem) {
+
+      var $self = elem,
+          item_name = '',
+          name;
+
+      if($self.hasClass('icon')) {
+
+        name = $self.data('name');
+        item_name = name.charAt(0).toUpperCase() + name.substr(1);
+
+      } else if ($self.hasClass('on-now-link') || $self.hasClass('up-next-link') && item_name === ''){
+
+        name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text();
+        item_name = 'Show : ' + name;
+
+      } else {
+
+        item_name = $self.text();
+
+      }
+
+      s.linkTrackVars='events,eVar65';
+      s.linkTrackEvents = s.events = 'event65';
+      s.eVar65 = 'Schedule Bar : ' + item_name;
+
+      //name = social_name.charAt(0).toUpperCase() + social_name.substr(1);
+
+      if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
+        s.bcf = function() {
+          setTimeout(function() {
+            window.location = $self.attr('href');
+          }, 500);
+        };
+      }
+
+      s.tl(this,'o','Schedule Bar Click');
+      s.manageVars("clearVars", s.linkTrackVars, 1);
+    },
+
     socialFollow: function (elem) {
+
       var $self = elem,
           social_name = $self.data('name'),
           name = social_name.charAt(0).toUpperCase() + social_name.substr(1);
@@ -192,13 +227,49 @@
 
       //Click on submenu item
       $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
+      '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
       '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
       '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
-      '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a,').once('omniture-tracking', function() {
+      '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function() {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
-            Drupal.behaviors.omniture_tracking.subMenuItems($(this));
+
+            var $self = $(this),
+                sub_menu_name;
+
+            if($self.hasClass('full-episodes-link')) {
+              sub_menu_name = $self.data('name');
+            } else {
+              sub_menu_name = $self.text();
+            }
+
+            Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
+          }
+        });
+      });
+
+      // Click on submenu schedule items
+      $('.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .node-usanetwork-promo a,' +
+      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .on-now-panel-title a,' +
+      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .icons-block a.live-icon,' +
+      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-primetime a.more').once('omniture-tracking', function() {
+        $(this).on('click', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+
+            var $self = $(this),
+                sub_menu_name = '';
+
+            if($self.closest('.on-now-panel-title').length) {
+              sub_menu_name = $self.text();
+            } else if($self.closest('.node-usanetwork-promo').length && !$self.hasClass('live-icon') && sub_menu_name === '') {
+              sub_menu_name = $self.closest('.node-usanetwork-promo').find('.title-overlay .title').text();
+            } else {
+              sub_menu_name = $self.text();
+            }
+
+            Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
           }
         });
       });
@@ -210,16 +281,6 @@
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
             Drupal.behaviors.omniture_tracking.socialFollow($(this));
-          }
-        });
-      });
-
-      //Click on footer item
-      $('#footer .footer-menu-wrapper a').once('omniture-tracking', function() {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            Drupal.behaviors.omniture_tracking.footerMenuItem($(this));
           }
         });
       });
@@ -244,9 +305,9 @@
               network = 'Pinterest';
             }
 
-            s.linkTrackVars = 'events,eVar74';
-            s.linkTrackEvents = 'event41';
-            s.events = 'event41';
+            s.linkTrackVars = 'events,eVar73,eVar74';
+            s.linkTrackEvents = s.events = 'event41';
+            s.eVar73 = 'example Patrick J. Adams Interview'; //todo add title name
             s.eVar74 = network;
             s.tl(this,'o','Social Share');
             s.manageVars('clearVars',s.linkTrackVars,1);
@@ -254,79 +315,30 @@
         });
       });
 
+      //Click on footer item
+      $('#footer .footer-menu-wrapper a').once('omniture-tracking', function() {
+        $(this).on('click', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            Drupal.behaviors.omniture_tracking.footerMenuItem($(this));
+          }
+        });
+      });
+
+      $(window).load(function () {
+        //Click on ON NOW / TONIGHT items
+        $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function() {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+              Drupal.behaviors.omniture_tracking.scheduleBar($(this));
+            }
+          });
+        });
+      });
+
       //-------- end --------
-
-      //Click on "On Now" button
-      $('#on-now.trigger').once('omniture-tracking', function() {
-        $(this).on('click', function(){
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var showName = '';
-            try {
-              showName = Drupal.settings.usanetwork_ads.onnow_upnext.on_now['s.prop10'];
-            }
-            catch (e) {}
-
-            s.linkTrackVars='events,eVar63,prop63,prop10';
-            s.linkTrackEvents='event63';
-            s.events='event63';
-            s.eVar63=s.prop63='On Now';
-            s.prop10=showName;
-            s.tl(this,'o','On Now Click');
-            s.manageVars("clearVars", s.linkTrackVars, 1);
-          }
-        });
-      });
-
-      //Click on "On Now" and "Up Next"
-      $('#jPanelMenu-menu .up-next .tab-wrapper' +
-      ', #jPanelMenu-menu .on-next .tab-wrapper' +
-      ', .on-now-panel .on-now' +
-      ', .on-now-panel .up-next').once('omniture-tracking', function() {
-        $(this).on('click', function(){
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var $self = $(this);
-            var prop = '';
-            var descr = '';
-            var showName = '';
-            if ($self.parents('.on-now').length > 0) {
-              prop = 'On Now';
-              descr = 'On Now Click';
-              try {
-                showName = Drupal.settings.usanetwork_ads.onnow_upnext.on_now['s.prop10'];
-              }
-              catch (e) {}
-            }
-            else {
-              prop = 'On Now - Up Next';
-              descr = 'Up Next Click';
-              try {
-                showName = Drupal.settings.usanetwork_ads.onnow_upnext.up_next['s.prop10'];
-              }
-              catch (e) {}
-            }
-
-            // Ajusting data for Redesign
-            if ($self.hasClass('node-usanetwork-promo')) {
-              if ($self.hasClass('on-now')) {
-                prop = 'On Now';
-                descr = 'On Now Click';
-              }
-              else if ($self.hasClass('up-next')) {
-                prop = 'On Now - Up Next';
-                descr = 'Up Next Click';
-              }
-            }
-            s.linkTrackVars='events,eVar64,prop64,prop10';
-            s.linkTrackEvents='event64';
-            s.events='event64';
-            s.eVar64=s.prop64=prop;
-            s.prop10=showName;
-            s.tl(this,'o',descr);
-            s.manageVars("clearVars", s.linkTrackVars, 1);
-          }
-        });
-      });
-
+      
       /**
        * Track promos
       */
@@ -478,31 +490,6 @@
         });
       });
 
-      // OnNow/UpNext social links
-      $('#block-usanetwork-tv-schedule-usa-on-now-panel').once('omniture-tracking', function() {
-        $(this).on('click', '#usanetwork_social_chatter_title > a', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var id = $self.attr('id').replace('OnNow', '');
-            var feedTitle = 'Social Feed';
-            switch (id) {
-              case 'navFb': feedTitle = 'Facebook Feed'; break;
-              default:
-                if (id.indexOf('nav') === 0) {
-                  feedTitle = id.substr(3) + ' Feed';
-                }
-                break;
-            }
-            s.linkTrackVars = 'events,eVar65,prop65';
-            s.linkTrackEvents = s.events = 'event65';
-            s.eVar65 = s.prop65 = 'On Now : ' + feedTitle;
-            s.tl(this,'o','On Now : Social Feed Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
-          }
-        });
-      });
-
       // Show selection drop-down
       $('#block-usanetwork-video-usa-show-video-nav ul.shows a, #block-usanetwork-video-usa-global-video-nav ul.shows a').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
@@ -586,30 +573,6 @@
             s.linkTrackEvents = 'event65';
             s.events = 'event65';
             s.eVar65 = s.prop65 = 'Home Page : Watch Live';
-            s.tl(this,'o','Page Item Click');
-            s.manageVars('clearVars', s.linkTrackVars, 1);
-          }
-        });
-      });
-
-      //tracking link to Live TV on "On Now" tab
-      $('#on-now-panel-tab').once('omniture-tracking', function() {
-        $(this).on('click', '.show-on-now-wrapper > figure > a, #show-on-now-watch a', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            var $self = $(this);
-            var href = $self.attr('href');
-
-            s.bcf = function() {
-              setTimeout(function() {
-                window.location = href;
-              }, 500);
-            };
-
-            s.linkTrackVars = 'events,eVar65,prop65';
-            s.linkTrackEvents = 'event65';
-            s.events = 'event65';
-            s.eVar65 = s.prop65 = 'On Now : Watch Live';
             s.tl(this,'o','Page Item Click');
             s.manageVars('clearVars', s.linkTrackVars, 1);
           }

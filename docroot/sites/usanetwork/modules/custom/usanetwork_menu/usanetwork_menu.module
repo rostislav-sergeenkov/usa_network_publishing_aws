@@ -1363,9 +1363,9 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'episode_class' => !empty($on_now->nid)
         ? usanetwork_tv_shows_color_show_css_class($on_now->nid) . ' show-color-border'
         : NULL,
-      'label_link' => l(t('On now'), 'videos/live'),
-      'on_now_caption' => l(t('Watch now'), 'videos/live'),
-      'on_now_live_button' => l(t('live'), 'videos/live', array('attributes' => array('class' => 'live'))),
+      'label_link' => t('On now'),
+      'on_now_caption' => t('Watch now'),
+      'on_now_live_button' => t('live'),
     );
   }
 
@@ -1385,7 +1385,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'episode_class' => !empty($up_next->nid)
         ? usanetwork_tv_shows_color_show_css_class($up_next->nid) . ' show-color-border'
         : NULL,
-      'label_link' => !empty($up_next->nid) ? l(t('Up next'), 'node/' . $up_next->nid) : t('Up next'),
+      'label_link' => !empty($up_next->nid) ? l(t('Up next'), 'node/' . $up_next->nid, array('attributes' => array('class' => 'up-next-link'))) : t('Up next'),
     );
   }
 

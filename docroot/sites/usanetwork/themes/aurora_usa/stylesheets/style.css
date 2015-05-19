@@ -26938,25 +26938,32 @@ yx-axis
     line-height: 19px;
   }
 }
-.schedule-on-tonight .schedule-block .time .watch-now a {
+.schedule-on-tonight .schedule-block .time span:focus, .schedule-on-tonight .schedule-block .time a:focus {
+  outline: none;
+}
+.schedule-on-tonight .schedule-block .time .on-now-link .watch-now {
+  line-height: 0;
+}
+.schedule-on-tonight .schedule-block .time .on-now-link .watch-now span {
   color: #606060;
   font-size: 11px;
   line-height: 11px;
   letter-spacing: 0.5px;
 }
 @media (min-width: 1701px) {
-  .schedule-on-tonight .schedule-block .time .watch-now a {
+  .schedule-on-tonight .schedule-block .time .on-now-link .watch-now span {
     font-size: 19px;
     line-height: 19px;
   }
 }
-.schedule-on-tonight .schedule-block .time .watch-now a.live {
+.schedule-on-tonight .schedule-block .time .on-now-link .watch-now span.live {
   border: 1px solid #606060;
   border-radius: 3px;
+  display: inline-block;
   padding: 0 3px;
 }
 @media (min-width: 1701px) {
-  .schedule-on-tonight .schedule-block .time .watch-now a.live {
+  .schedule-on-tonight .schedule-block .time .on-now-link .watch-now span.live {
     border: 2px solid #606060;
   }
 }

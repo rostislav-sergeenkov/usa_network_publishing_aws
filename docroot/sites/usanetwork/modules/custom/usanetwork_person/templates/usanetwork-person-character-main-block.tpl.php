@@ -72,7 +72,9 @@
     </div>
   <?php endif; ?>
     <div class="more-items more-characters show-color">
-      <a href="#"><?php print t('Go to cast & info');?></a>
+      <?php if (!empty($cast_landing_link)): ?>
+        <?php print $cast_landing_link; ?>
+      <?php endif; ?>
     </div>
   </div>
 </div>

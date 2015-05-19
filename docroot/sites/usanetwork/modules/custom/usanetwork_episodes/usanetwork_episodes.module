@@ -303,7 +303,7 @@ function _usanetwork_episodes_episodes_carousel() {
         $theme_variables = array(
           'season_number' => !empty($season_number) ? $season_number : '',
           'episodes' => !empty($episodes_variables) ? $episodes_variables : array(),
-          'all_episodes_link' => !empty($show_id) ? url('node/' . $show_id .'/show-episodes') : '',
+          'all_episodes_link' => !empty($show_id) ? url('node/' . $show_id .'/episodes') : '',
         );
         return theme('usanetwork_episodes_episodes_carousel', $theme_variables);
       }

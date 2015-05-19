@@ -149,7 +149,7 @@
         <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
         <!-- <li class="external"><a href="/dig/videos/the-making-of-dig">Making of DIG</a></li> -->
         <li class="external"><a href="https://twitter.com/search?q=%23digdeeper" target="_blank">#DIGDEEPER</a></li>
-        <li class="external">Tour Israel
+        <li class="external sub-nav">Tour Israel<span></span>
           <ul>
             <li><a href="http://www.goisrael.com" target="_blank">Go Israel</a></li>
             <li><a href="http://www.itraveljerusalem.com" target="_blank">Official Tourism</a></li>

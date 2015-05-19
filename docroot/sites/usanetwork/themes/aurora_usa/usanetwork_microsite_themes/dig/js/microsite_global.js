@@ -99,7 +99,7 @@
     },
 
     // change url address
-    micrositeChangeUrl: function changeUrl(anchor, anchorFull) {
+    micrositeChangeUrl: function(anchor, anchorFull) {
       var basePath = Drupal.settings.microsites_settings.base_path;
 
       // if this is IE9, reload the correct page
@@ -529,10 +529,14 @@
       }
     },
     //scroll to top
-    micrositeScrollToTop: function scrollToTop() {
-      $('.section.active').animate({
-        scrollTop: 0
-      }, 2000);
+    micrositeScrollToTop: function() {
+usa_debug('=========== micrositeScrollToTop -- ' + $('.section.active').attr('id'));
+      var $activeSection = $('.section.active');
+      if ($activeSection.offset.top > 20) {
+        $('.section.active').animate({
+          scrollTop: 0
+        }, 2000);
+      }
     },
 
     //Usa_refreshMicrositeAdsBySection.
@@ -630,7 +634,8 @@
     },
     //click Thumbnail
     micrositeClickThumbnail: function (elem) {
-
+usa_debug('=========== micrositeClickThumbnail(), elem: ');
+usa_debug(elem);
       var previewItem = $('#thumbnail-list .item-list ul li.thumbnail'),
           refreshAdsOmniture = 0,
           videoContainer = $('#video-container');
@@ -639,6 +644,7 @@
         previewItem.removeClass('active');
         elem.addClass('active');
         refreshAdsOmniture = 1;
+usa_debug(' ====== if videoContainer...');
       } else {
         if (!elem.hasClass('active')) {
           elem.addClass('active');
@@ -666,7 +672,7 @@
       Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
       Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true, elem);
-      Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
+//      Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
       if (refreshAdsOmniture) {
         Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
       }
@@ -697,7 +703,7 @@
             $('#thumbnail-list .thumbnail').last().after(videoList);
           }
 
-          var thumbnail = $('#thumbnail-list .thumbnail');
+          var thumbnail = $('#microsite #thumbnail-list .item-list ul li.thumbnail'); /* $('#thumbnail-list .thumbnail'); */
 
           if (!thumbnail.hasClass('ad')) {
             if (thumbnail.eq(1)) {
@@ -747,10 +753,12 @@
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }
 
-      var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
+      var previewItem = $('#microsite #thumbnail-list .item-list ul li.thumbnail');
       //change video on click to preview elements
       previewItem.click(function (e) {
         e.preventDefault();
+        e.stopPropagation();
+usa_debug('========== previewItem clicked');
         var elem = $(this);
         Drupal.behaviors.microsite_scroll.micrositeClickThumbnail(elem);
       });
@@ -935,6 +943,12 @@
         Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor);
       });
 
+      // initialize hamburger menu sub-nav clicks
+      $('ul#mobile-nav-links-list li.sub-nav').click(function(){
+        $(this).toggleClass('active');
+        $(this).find('ul').toggle(600);
+      });
+
       //if ($('#sections .section').eq(0).hasClass('active')) {
       //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
       //}
@@ -948,6 +962,10 @@
       }, function () {
         $(this).removeClass('hover');
       });
+
+      // Turn off the popstate/hashchange tve-core.js event listeners
+      $(window).off('popstate');
+      $(window).off('hashchange');
 
       window.onpopstate = function () {
         window.onpopstate = function (event) {
@@ -997,6 +1015,7 @@
         $('.section').each(function () {
           var msHeight = ($mobileNavBar.css('display') == 'block') ? $(window).height() - $mobileNavBar.height() : $(window).height();
           $(this).height(msHeight);
+//          $('#characters .microsite-section-container').height(msHeight - 5);
         });
       }
 

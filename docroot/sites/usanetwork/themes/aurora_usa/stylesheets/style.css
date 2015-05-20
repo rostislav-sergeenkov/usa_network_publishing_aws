@@ -16879,6 +16879,7 @@ footer h2 {
 }
 
 #block-usanetwork-episodes-usa-landing-tvep-list-block {
+  color: #545454;
   position: relative;
   width: 100%;
 }
@@ -16886,6 +16887,297 @@ footer h2 {
   clear: both;
   content: '';
   display: table;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
+  padding: 48px 32px 48px 32px;
+  min-width: 400px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
+    padding: 30px 0 30px 32px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
+    padding: 24px 0 24px 20px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
+    padding: 17px 0 17px 13px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .left-item-block {
+  float: left;
+  width: 35.36%;
+  margin-right: 1%;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .left-item-block {
+    width: 36.8%;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .left-item-block {
+    width: 48%;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block {
+  float: right;
+  width: 62.17%;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  line-height: 2em;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block {
+    line-height: 1.5em;
+    width: 61.8%;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block {
+    width: 50%;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .series {
+  font-size: 22.5px;
+  line-height: 1em;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .series {
+    font-size: 15px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .series {
+    font-size: 12px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .title {
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .title {
+    font-size: 24px;
+    margin: 0;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .title {
+    font-size: 20px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .airing-date,
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .expiration-date {
+  font-family: "texgyrescholaitalic", Times, serif;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .airing-date,
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .expiration-date {
+    font-size: 12px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .description {
+  width: 76.86%;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  line-height: 1.5em;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .description {
+    font-size: 17px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .description {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .description {
+    font-size: 13px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons {
+  width: 60.4%;
+  float: left;
+}
+@media (max-width: 1600px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons {
+    width: 63%;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div {
+  margin-right: 1%;
+  position: relative;
+  display: inline-block;
+  background: #bbb7b7;
+  width: 48%;
+  padding: 15px 0 15px 13%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div {
+    padding: 10px 0 10px 13%;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div {
+    padding: 5px 10px;
+    width: 44%;
+  }
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div:after {
+    content: "\e608";
+    color: #ffffff;
+    font-family: "ico-font";
+    font-size: 12px;
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    margin-top: -6px;
+    line-height: 1;
+    z-index: 3;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a {
+  color: #ffffff;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 20px;
+  position: relative;
+}
+@media (max-width: 1600px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a {
+    font-size: 12px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+  content: '';
+  position: absolute;
+  left: -29%;
+  margin-top: -4px;
+  background-image: url('../images/sprites-s969621235a.png');
+  background-position: 0 -1398px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  height: 37px;
+  width: 37px;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+    background-image: url('../images/sprites-retina-s19f56d21c6.png');
+    background-size: 65px 1736px;
+    background-position: 0 -1036px;
+    height: 37px;
+    width: 37px;
+  }
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+    background-image: url('../images/sprites-s969621235a.png');
+    background-position: 0 -1538px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    height: 30px;
+    width: 30px;
+  }
+}
+@media (max-width: 1280px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1280px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1280px) and (min--moz-device-pixel-ratio: 2), (max-width: 1280px) and (min-device-pixel-ratio: 2), (max-width: 1280px) and (min-resolution: 144dppx) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+    background-image: url('../images/sprites-retina-s19f56d21c6.png');
+    background-size: 65px 1736px;
+    background-position: 0 -1169px;
+    height: 30px;
+    width: 30px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .buttons > div a:before {
+    display: none;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links {
+  float: right;
+  width: 36%;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links > a {
+  display: block;
+  color: #545454;
+  font-family: "texgyrescholaitalic", Times, serif;
+  text-transform: uppercase;
+  text-align: right;
+  font-size: 18px;
+  position: relative;
+  padding-right: 38px;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links > a:first-child {
+  margin-bottom: 28px;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links > a {
+    font-size: 15px;
+  }
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links > a:first-child {
+    margin-bottom: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links > a {
+    font-size: 11px;
+  }
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links > a:first-child {
+    margin-bottom: 15px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links > a:after {
+  content: "\e608";
+  color: #545454;
+  font-family: "ico-font";
+  font-size: 13px;
+  display: block;
+  position: absolute;
+  right: 16px;
+  top: 0;
+  z-index: 3;
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .buttons-bar .links > a:after {
+    font-size: 10px;
+  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons {
   margin-bottom: 100px;
@@ -16903,24 +17195,69 @@ footer h2 {
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
-  height: 90px;
+  height: 135px;
   position: relative;
   width: 100%;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
+    height: 90px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
+    height: 55px;
+  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
   color: #545454;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  line-height: 90px;
-  margin: 0 0 0 35px;
+  font-size: 36px;
+  line-height: 132px;
+  margin: 0 0 0 20px;
   text-transform: uppercase;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 24px;
+    line-height: 86px;
+    margin-left: 35px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 20px;
+    line-height: 54px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 18px;
+    margin-left: 18px;
+  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
   position: absolute;
-  right: 20px;
-  top: 23px;
+  right: 37px;
+  top: 36px;
   vertical-align: middle;
-  width: 235px;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    top: 23px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    right: 4px;
+    top: 9px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    right: 2px;
+    top: 20px;
+  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label {
   border-color: transparent;
@@ -16935,55 +17272,86 @@ footer h2 {
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
   border: 1px solid #959595;
   cursor: pointer;
-  font-size: 21px;
+  font-size: 24px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  line-height: 42px;
+  text-transform: uppercase;
+  line-height: 58px;
   text-align: left;
   overflow: hidden;
   position: relative;
   padding: 0 50px 0 20px;
   color: #383838;
-  width: 235px;
+  width: 237px;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   white-space: nowrap;
 }
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
-    font-size: 17px;
-    line-height: 27px;
+    font-size: 14px;
+    line-height: 38px;
     border-bottom-width: 1px;
+    width: 159px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
+    padding-left: 15px;
+    font-size: 12px;
+    line-height: 32px;
+    width: 137px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
+    padding-left: 28px;
+    font-size: 24px;
+    line-height: 66px;
+    width: 261px;
   }
 }
 @media (max-width: 480px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
-    font-size: 12px;
-    line-height: 22px;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 45px;
+    width: 153px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
   content: "\e609";
   color: #545454;
   font-family: "ico-font";
-  font-size: 16px;
+  font-size: 24px;
   display: block;
   position: absolute;
-  margin-right: -8px;
-  right: 25px;
+  margin-right: -12px;
+  right: 36px;
   top: 0;
   z-index: 3;
 }
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
     font-size: 12px;
-    right: 17px;
+    right: 19px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
+    font-size: 29px;
+    right: 23px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
+    font-size: 16px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
   background: darkgrey;
   top: 1px;
   display: none;
-  margin-top: 40px;
+  margin-top: 58px;
   max-height: 200px;
   overflow-y: auto;
   position: absolute;
@@ -16992,12 +17360,22 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
-    margin-top: 29px;
+    margin-top: 38px;
   }
 }
-@media (max-width: 1280px) {
+@media (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
-    margin-top: 24px;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
+    margin-top: 65px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
+    margin-top: 38px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li {
@@ -17008,10 +17386,11 @@ footer h2 {
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
   color: #ffffff;
   display: block;
-  font-size: 20px;
+  font-size: 24px;
+  text-transform: uppercase;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   height: 100%;
-  line-height: 22px;
+  line-height: 34px;
   text-align: left;
   padding: 9px 20px;
   text-decoration: none;
@@ -17022,14 +17401,28 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
-    font-size: 17px;
-    line-height: 12px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
+    font-size: 12px;
+    padding-left: 15px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
+    font-size: 24px;
+    padding-left: 31px;
+    line-height: 31px;
   }
 }
 @media (max-width: 480px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
-    font-size: 12px;
-    line-height: 12px;
+    font-size: 14px;
+    padding-left: 18px;
+    line-height: 16px;
   }
 }
 
@@ -24915,6 +25308,11 @@ yx-axis
   top: 50%;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+  width: 100%;
+}
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
+  float: left;
+  position: relative;
   width: 100%;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .wrp {

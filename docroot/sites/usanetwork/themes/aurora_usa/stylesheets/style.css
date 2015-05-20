@@ -3378,7 +3378,7 @@ input[type="radio"], input[type="checkbox"] {
   left: 50%;
   margin-left: -18px;
   position: absolute;
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -836px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -3388,17 +3388,17 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .social-usa:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -847px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -914px;
     height: 21px;
     width: 47px;
   }
 }
 @media (max-width: 480px) {
   .social-usa.resize-avail-480:after {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1356px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1428px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -3408,9 +3408,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .social-usa.resize-avail-480:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1397px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1464px;
     height: 13px;
     width: 30px;
   }
@@ -3423,8 +3423,8 @@ input[type="radio"], input[type="checkbox"] {
   left: 50%;
   margin-left: -8px;
   position: absolute;
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1507px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1579px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -3433,9 +3433,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .social-insta:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1412px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1479px;
     height: 26px;
     width: 26px;
   }
@@ -3448,8 +3448,8 @@ input[type="radio"], input[type="checkbox"] {
   left: 50%;
   margin-left: -8px;
   position: absolute;
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1463px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1535px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -3458,9 +3458,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .social-twitter:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1350px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1417px;
     height: 22px;
     width: 26px;
   }
@@ -5038,8 +5038,8 @@ header .nav-bar-tabs {
     position: absolute;
     right: 20px;
     top: 20px;
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1832px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1904px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5047,8 +5047,8 @@ header .nav-bar-tabs {
     width: 10px;
   }
   header .nav-bar-tabs ul li.expanded > a.active:after {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1847px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1919px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5110,8 +5110,8 @@ header .nav-bar-tabs {
     margin-top: -15px;
     position: absolute;
     top: 50%;
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1244px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1280px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5176,27 +5176,27 @@ header .nav-bar-tabs {
 }
 @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 768px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 768px) and (min--moz-device-pixel-ratio: 2), (max-width: 768px) and (min-device-pixel-ratio: 2), (max-width: 768px) and (min-resolution: 144dppx) {
   header .nav-bar-tabs ul li.expanded > a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1654px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1721px;
     height: 10px;
     width: 10px;
   }
 }
 @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 768px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 768px) and (min--moz-device-pixel-ratio: 2), (max-width: 768px) and (min-device-pixel-ratio: 2), (max-width: 768px) and (min-resolution: 144dppx) {
   header .nav-bar-tabs ul li.expanded > a.active:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1694px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1761px;
     height: 10px;
     width: 10px;
   }
 }
 @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 768px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 768px) and (min--moz-device-pixel-ratio: 2), (max-width: 768px) and (min-device-pixel-ratio: 2), (max-width: 768px) and (min-resolution: 144dppx) {
   header .nav-bar-tabs ul > li a.log-on:before {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1104px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1171px;
     height: 30px;
     width: 27px;
   }
@@ -5327,8 +5327,8 @@ header .user-profile a:after {
   margin-top: -15px;
   position: absolute;
   top: 50%;
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1244px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1280px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -5337,17 +5337,17 @@ header .user-profile a:after {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   header .user-profile a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1104px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1171px;
     height: 30px;
     width: 27px;
   }
 }
 @media (max-width: 1024px) {
   header .user-profile a:after {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1573px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1645px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5359,9 +5359,9 @@ header .user-profile a:after {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   header .user-profile a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1374px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1441px;
     height: 20px;
     width: 18px;
   }
@@ -5394,7 +5394,7 @@ header .search a:after {
   margin-top: -15px;
   position: absolute;
   top: 50%;
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -685px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -5404,8 +5404,8 @@ header .search a:after {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   header .search a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -629px;
     height: 30px;
     width: 29px;
@@ -5413,7 +5413,7 @@ header .search a:after {
 }
 @media (max-width: 1024px) {
   header .search a:after {
-    background-image: url('../images/sprites-s969621235a.png');
+    background-image: url('../images/sprites-sd6102a3a38.png');
     background-position: 0 -1065px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -5426,9 +5426,9 @@ header .search a:after {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   header .search a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -993px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1060px;
     height: 20px;
     width: 19.5px;
   }
@@ -5468,8 +5468,8 @@ header .main-menu-open a {
   width: 100%;
 }
 header .main-menu-open a.active:after {
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1806px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1878px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -5479,9 +5479,9 @@ header .main-menu-open a.active:after {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   header .main-menu-open a.active:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1610px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1677px;
     height: 21px;
     width: 21px;
   }
@@ -5500,8 +5500,8 @@ header .main-menu-open a:after {
   margin-left: -13px;
   position: absolute;
   top: 50%;
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1862px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1934px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -5510,17 +5510,17 @@ header .main-menu-open a:after {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   header .main-menu-open a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1707px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1774px;
     height: 15px;
     width: 25px;
   }
 }
 @media (max-width: 1024px) {
   header .main-menu-open a:after {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1882px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1954px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5532,9 +5532,9 @@ header .main-menu-open a:after {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   header .main-menu-open a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1724px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1791px;
     height: 12px;
     width: 20px;
   }
@@ -6559,7 +6559,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:after {
   content: '';
   display: block;
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -454px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -6569,15 +6569,15 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -481px;
     height: 18px;
     width: 18px;
   }
 }
 .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:nth-child(4):after {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -416px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -6587,15 +6587,15 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:nth-child(4):after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -335px;
     height: 18px;
     width: 18px;
   }
 }
 .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:nth-child(5):after {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -416px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -6605,8 +6605,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:nth-child(5):after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -335px;
     height: 18px;
     width: 18px;
@@ -6712,7 +6712,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .search-show header .header-nav-bar .usa-logo a:after {
     content: '';
     display: block;
-    background-image: url('../images/sprites-s969621235a.png');
+    background-image: url('../images/sprites-sd6102a3a38.png');
     background-position: 0 -660px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -6728,8 +6728,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .search-show header .header-nav-bar .usa-logo a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -607px;
     height: 20px;
     width: 45px;
@@ -6875,7 +6875,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   background: #363636;
 }
 .search-show header .header-nav-bar .show-title-wrapper .show-title-block .tab.share h1 a:after {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -335px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -6891,8 +6891,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .search-show header .header-nav-bar .show-title-wrapper .show-title-block .tab.share h1 a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -274px;
     height: 26px;
     width: 26px;
@@ -6994,8 +6994,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .search-show header .nav-bar-tabs .back-to-show a:after {
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1806px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1878px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -7011,17 +7011,17 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .search-show header .nav-bar-tabs .back-to-show a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1610px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1677px;
     height: 21px;
     width: 21px;
   }
 }
 @media (max-width: 480px) {
   .search-show header .nav-bar-tabs .back-to-show a:after {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1786px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1858px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -7033,9 +7033,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .search-show header .nav-bar-tabs .back-to-show a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1593px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1660px;
     height: 15px;
     width: 15px;
   }
@@ -7075,7 +7075,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .consumptionator-page header .header-nav-bar .usa-logo a:after, .node-type-catchall-page header .header-nav-bar .usa-logo a:after, .page-videos-live header .header-nav-bar .usa-logo a:after, .node-type-media-gallery header .header-nav-bar .usa-logo a:after, .node-type-person header .header-nav-bar .usa-logo a:after {
     content: '';
     display: block;
-    background-image: url('../images/sprites-s969621235a.png');
+    background-image: url('../images/sprites-sd6102a3a38.png');
     background-position: 0 -660px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -7091,8 +7091,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .consumptionator-page header .header-nav-bar .usa-logo a:after, .node-type-catchall-page header .header-nav-bar .usa-logo a:after, .page-videos-live header .header-nav-bar .usa-logo a:after, .node-type-media-gallery header .header-nav-bar .usa-logo a:after, .node-type-person header .header-nav-bar .usa-logo a:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -607px;
     height: 20px;
     width: 45px;
@@ -7237,7 +7237,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -203px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -7254,8 +7254,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -395px;
     height: 26px;
     width: 26px;
@@ -7263,7 +7263,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-    background-image: url('../images/sprites-s969621235a.png');
+    background-image: url('../images/sprites-sd6102a3a38.png');
     background-position: 0 -20px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -7277,8 +7277,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (min-width: 1901px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1901px) and (-o-min-device-pixel-ratio: 3 / 2), (min-width: 1901px) and (min--moz-device-pixel-ratio: 2), (min-width: 1901px) and (min-device-pixel-ratio: 2), (min-width: 1901px) and (min-resolution: 144dppx) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 0;
     height: 40px;
     width: 40px;
@@ -8034,7 +8034,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   width: 90px;
 }
 .page-videos .page-title .sign-in-link:before {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -439px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -8051,8 +8051,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .page-videos .page-title .sign-in-link:before {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -446px;
     height: 9.5px;
     width: 20px;
@@ -8064,8 +8064,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   white-space: nowrap;
 }
 .page-videos .page-title .sign-in-link.active:before {
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1806px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1878px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -8078,9 +8078,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .page-videos .page-title .sign-in-link.active:before {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1610px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1677px;
     height: 21px;
     width: 21px;
   }
@@ -10554,8 +10554,8 @@ footer .legal-and-social .footer-social-bar a {
   margin-left: 6px;
 }
 footer .legal-and-social .footer-social-bar a.instagram {
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1636px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1708px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -10564,16 +10564,16 @@ footer .legal-and-social .footer-social-bar a.instagram {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   footer .legal-and-social .footer-social-bar a.instagram {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1488px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1555px;
     height: 18px;
     width: 18px;
   }
 }
 footer .legal-and-social .footer-social-bar a.twitter {
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1598px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1670px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -10582,16 +10582,16 @@ footer .legal-and-social .footer-social-bar a.twitter {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   footer .legal-and-social .footer-social-bar a.twitter {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1468px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1535px;
     height: 18px;
     width: 19px;
   }
 }
 footer .legal-and-social .footer-social-bar a.facebook {
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1763px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1835px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -10600,9 +10600,9 @@ footer .legal-and-social .footer-social-bar a.facebook {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   footer .legal-and-social .footer-social-bar a.facebook {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1634px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1701px;
     height: 18px;
     width: 10px;
   }
@@ -15058,8 +15058,8 @@ footer h2 {
   opacity: 0.3;
 }
 .shows-block .show-info-block .social-icons a.facebook {
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1702px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1774px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -15068,15 +15068,15 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .shows-block .show-info-block .social-icons a.facebook {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1564px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1631px;
     height: 26px;
     width: 13px;
   }
 }
 .shows-block .show-info-block .social-icons a.twitter {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -1011px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -15086,15 +15086,15 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .shows-block .show-info-block .social-icons a.twitter {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1075px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1142px;
     height: 26px;
     width: 26px;
   }
 }
 .shows-block .show-info-block .social-icons a.instagram {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -1090px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -15104,15 +15104,15 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .shows-block .show-info-block .social-icons a.instagram {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1241px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1308px;
     height: 26px;
     width: 26px;
   }
 }
 .shows-block .show-info-block .social-icons a.pinterest {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -629px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -15122,15 +15122,15 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .shows-block .show-info-block .social-icons a.pinterest {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -578px;
     height: 26px;
     width: 26px;
   }
 }
 .shows-block .show-info-block .social-icons a.youtube {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -751px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -15140,15 +15140,15 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .shows-block .show-info-block .social-icons a.youtube {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -719px;
     height: 26px;
     width: 21px;
   }
 }
 .shows-block .show-info-block .social-icons a.googleplus {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -720px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -15158,8 +15158,8 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .shows-block .show-info-block .social-icons a.googleplus {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -662px;
     height: 26px;
     width: 25px;
@@ -15996,8 +15996,8 @@ footer h2 {
   opacity: 0.3;
 }
 .show-title-block .social-icons a.facebook {
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1702px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1774px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -16006,17 +16006,17 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .show-title-block .social-icons a.facebook {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1564px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1631px;
     height: 26px;
     width: 13px;
   }
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.facebook {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1679px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1751px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -16026,15 +16026,15 @@ footer h2 {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .show-title-block .social-icons a.facebook {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1544px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1611px;
     height: 18px;
     width: 9px;
   }
 }
 .show-title-block .social-icons a.twitter {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -1011px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -16044,17 +16044,17 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .show-title-block .social-icons a.twitter {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1075px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1142px;
     height: 26px;
     width: 26px;
   }
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.twitter {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1440px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1512px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -16064,15 +16064,15 @@ footer h2 {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .show-title-block .social-icons a.twitter {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1269px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1336px;
     height: 18px;
     width: 18px;
   }
 }
 .show-title-block .social-icons a.instagram {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -1090px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -16082,17 +16082,17 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .show-title-block .social-icons a.instagram {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1241px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1308px;
     height: 26px;
     width: 26px;
   }
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.instagram {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1375px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1447px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -16102,15 +16102,15 @@ footer h2 {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .show-title-block .social-icons a.instagram {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1329px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1396px;
     height: 18px;
     width: 18px;
   }
 }
 .show-title-block .social-icons a.pinterest {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -629px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -16120,8 +16120,8 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .show-title-block .social-icons a.pinterest {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -578px;
     height: 26px;
     width: 26px;
@@ -16129,7 +16129,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.pinterest {
-    background-image: url('../images/sprites-s969621235a.png');
+    background-image: url('../images/sprites-sd6102a3a38.png');
     background-position: 0 -862px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -16140,15 +16140,15 @@ footer h2 {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .show-title-block .social-icons a.pinterest {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -747px;
     height: 18px;
     width: 18px;
   }
 }
 .show-title-block .social-icons a.youtube {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -751px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -16158,8 +16158,8 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .show-title-block .social-icons a.youtube {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -719px;
     height: 26px;
     width: 21px;
@@ -16167,7 +16167,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.youtube {
-    background-image: url('../images/sprites-s969621235a.png');
+    background-image: url('../images/sprites-sd6102a3a38.png');
     background-position: 0 -782px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -16178,15 +16178,15 @@ footer h2 {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .show-title-block .social-icons a.youtube {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -871px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -938px;
     height: 18px;
     width: 14.5px;
   }
 }
 .show-title-block .social-icons a.googleplus {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -720px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -16196,8 +16196,8 @@ footer h2 {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .show-title-block .social-icons a.googleplus {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -662px;
     height: 26px;
     width: 25px;
@@ -16205,7 +16205,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.googleplus {
-    background-image: url('../images/sprites-s969621235a.png');
+    background-image: url('../images/sprites-sd6102a3a38.png');
     background-position: 0 -1042px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -16216,9 +16216,9 @@ footer h2 {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .show-title-block .social-icons a.googleplus {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1015px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1082px;
     height: 18px;
     width: 17.5px;
   }
@@ -16925,6 +16925,21 @@ footer h2 {
   content: '';
   display: table;
 }
+@media (min-width: 1025px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
+    min-height: 25.4vw;
+  }
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
+    min-height: 466px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
+    min-height: 25.8vw;
+  }
+}
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
     padding: 30px 0 30px 32px;
@@ -16940,103 +16955,233 @@ footer h2 {
     padding: 17px 0 17px 13px;
   }
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .left-item-block {
-  float: left;
-  width: 35.36%;
-  margin-right: 1%;
-}
-@media (max-width: 1280px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .left-item-block {
-    width: 36.8%;
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
+    padding: 35px 10px 35px 10px;
   }
 }
-@media (max-width: 768px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .left-item-block {
-    width: 50%;
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .open-description {
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1146px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    height: 31px;
+    width: 31px;
+    margin-top: 0;
+    top: 6px;
   }
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block {
+@media (max-width: 640px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 640px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 640px) and (min--moz-device-pixel-ratio: 2), (max-width: 640px) and (min-device-pixel-ratio: 2), (max-width: 640px) and (min-resolution: 144dppx) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .open-description {
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -815px;
+    height: 31px;
+    width: 31px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .open-description {
+    top: 5px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .image-block, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .airing-date, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .expiration-date, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .description {
+    display: block;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .title {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .buttons-bar {
+    display: block;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-list-item-inner {
+  max-width: 1820px;
+  position: relative;
+  margin: 0 auto;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block {
   float: right;
-  width: 62.17%;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   line-height: 2em;
+  position: relative;
+  width: 62.17%;
 }
 @media (max-width: 1280px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block {
     line-height: 1.5em;
     width: 61.8%;
   }
 }
-@media (max-width: 768px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block {
-    width: 49%;
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block {
+    min-height: 26.6vw;
+    width: 49.5%;
   }
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .series {
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block {
+    float: none;
+    width: 100%;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .open-description {
+  display: none;
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .open-description {
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1315px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    height: 31px;
+    width: 31px;
+    cursor: pointer;
+    display: block;
+    margin-top: -15.5px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+  }
+}
+@media (max-width: 640px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 640px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 640px) and (min--moz-device-pixel-ratio: 2), (max-width: 640px) and (min-device-pixel-ratio: 2), (max-width: 640px) and (min-resolution: 144dppx) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .open-description {
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -881px;
+    height: 31px;
+    width: 31px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series {
   font-size: 22.5px;
   line-height: 1em;
 }
 @media (max-width: 1280px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .series {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series {
     font-size: 15px;
   }
 }
 @media (max-width: 1024px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .series {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series {
     font-size: 12px;
   }
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .title {
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series {
+    font-size: 14px;
+    margin-bottom: 5px;
+    width: calc(100% - 40px);
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series {
+    font-size: 12px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title {
   font-size: 36px;
   text-transform: uppercase;
   margin-bottom: 4px;
 }
 @media (max-width: 1280px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .title {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title {
     font-size: 24px;
     margin: 0;
   }
 }
 @media (max-width: 1024px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .title {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title {
     font-size: 20px;
   }
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .airing-date,
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .expiration-date {
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title {
+    font-size: 24px;
+    width: calc(100% - 40px);
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title {
+    font-size: 20px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block {
+  position: absolute;
+  top: 0;
+  right: 102%;
+  width: 58%;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block {
+    width: 59.8%;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block {
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block {
+    margin-bottom: 20px;
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .airing-date,
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .expiration-date {
   font-family: "texgyrescholaitalic", Times, serif;
   text-transform: uppercase;
   font-size: 18px;
 }
 @media (max-width: 1280px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .airing-date,
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .expiration-date {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .airing-date,
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .expiration-date {
     font-size: 12px;
   }
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .description {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .description {
   width: 76.86%;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 26px;
   line-height: 1.5;
 }
 @media (max-width: 1280px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .description {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .description {
     font-size: 17px;
   }
 }
 @media (max-width: 1024px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .description {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .description {
     font-size: 14px;
   }
 }
 @media (max-width: 768px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .right-item-block .description {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .description {
     font-size: 13px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .description p:last-child {
+  margin-bottom: 0px;
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .airing-date, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .expiration-date, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .description {
+    display: none;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar {
   float: right;
+  padding-top: 1.5em;
   width: 62.17%;
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar:after {
@@ -17053,8 +17198,12 @@ footer h2 {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar {
     clear: both;
     float: none;
-    padding-top: 20px;
     width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar {
+    display: none;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons {
@@ -17069,6 +17218,11 @@ footer h2 {
 @media (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons {
     width: 50%;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons {
+    width: 100%;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div {
@@ -17109,6 +17263,7 @@ footer h2 {
   font-size: 20px;
   padding: 15px 0 15px calc(14% + 26px);
   position: relative;
+  width: 100%;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
@@ -17130,6 +17285,16 @@ footer h2 {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
     font-size: 12px;
     padding: 5px 35px 5px 10px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
+    font-size: 10px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
+    padding: 8px 35px 8px 10px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a .font-icon {
@@ -17171,6 +17336,18 @@ footer h2 {
   float: right;
   width: 36%;
 }
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links {
+    margin-top: 12px;
+    width: 50%;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links {
+    margin-top: 20px;
+    width: 50%;
+  }
+}
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a {
   display: block;
   color: #545454;
@@ -17183,23 +17360,39 @@ footer h2 {
   letter-spacing: 1px;
   line-height: 1;
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child {
-  margin-bottom: 28px;
-}
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a {
     font-size: 15px;
-  }
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child {
-    margin-bottom: 18px;
   }
 }
 @media (max-width: 1024px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a {
     font-size: 11px;
   }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a {
+    float: left;
+    padding-right: 21px;
+    width: 50%;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child {
+  margin-bottom: 28px;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child {
+    margin-bottom: 18px;
+  }
+}
+@media (max-width: 1024px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child {
     margin-bottom: 15px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child {
+    margin-bottom: 0px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:after {
@@ -17218,6 +17411,11 @@ footer h2 {
     font-size: 10px;
   }
 }
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:after {
+    right: 8px;
+  }
+}
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons {
   margin-bottom: 100px;
   position: relative;
@@ -17234,24 +17432,63 @@ footer h2 {
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
-  height: 90px;
+  height: 135px;
   position: relative;
   width: 100%;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
+    height: 90px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
+    height: 55px;
+  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
   color: #545454;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  line-height: 90px;
-  margin: 0 0 0 35px;
+  font-size: 36px;
+  line-height: 132px;
+  margin: 0 0 0 20px;
   text-transform: uppercase;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 24px;
+    line-height: 86px;
+    margin-left: 35px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 20px;
+    line-height: 54px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 18px;
+    margin-left: 18px;
+  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
   position: absolute;
-  right: 20px;
-  top: 23px;
+  right: 37px;
+  top: 36px;
   vertical-align: middle;
-  width: 235px;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    top: 23px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    right: 4px;
+    top: 9px;
+  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label {
   border-color: transparent;
@@ -17266,55 +17503,59 @@ footer h2 {
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
   border: 1px solid #959595;
   cursor: pointer;
-  font-size: 21px;
+  font-size: 24px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  line-height: 42px;
+  text-transform: uppercase;
+  line-height: 58px;
   text-align: left;
   overflow: hidden;
   position: relative;
   padding: 0 50px 0 20px;
   color: #383838;
-  width: 235px;
+  width: 237px;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   white-space: nowrap;
 }
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
-    font-size: 17px;
-    line-height: 27px;
+    font-size: 14px;
+    line-height: 38px;
     border-bottom-width: 1px;
+    width: 159px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
+    padding-left: 15px;
     font-size: 12px;
-    line-height: 22px;
+    line-height: 32px;
+    width: 137px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
   content: "\e609";
   color: #545454;
   font-family: "ico-font";
-  font-size: 16px;
+  font-size: 24px;
   display: block;
   position: absolute;
-  margin-right: -8px;
-  right: 25px;
+  margin-right: -12px;
+  right: 36px;
   top: 0;
   z-index: 3;
 }
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label:after {
     font-size: 12px;
-    right: 17px;
+    right: 19px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
   background: darkgrey;
   top: 1px;
   display: none;
-  margin-top: 40px;
+  margin-top: 58px;
   max-height: 200px;
   overflow-y: auto;
   position: absolute;
@@ -17323,12 +17564,12 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
-    margin-top: 29px;
+    margin-top: 38px;
   }
 }
-@media (max-width: 1280px) {
+@media (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
-    margin-top: 24px;
+    margin-top: 30px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li {
@@ -17339,10 +17580,11 @@ footer h2 {
 #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
   color: #ffffff;
   display: block;
-  font-size: 20px;
+  font-size: 24px;
+  text-transform: uppercase;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   height: 100%;
-  line-height: 22px;
+  line-height: 34px;
   text-align: left;
   padding: 9px 20px;
   text-decoration: none;
@@ -17353,14 +17595,14 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
-    font-size: 17px;
-    line-height: 12px;
+    font-size: 14px;
+    line-height: 18px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a {
     font-size: 12px;
-    line-height: 12px;
+    padding-left: 15px;
   }
 }
 
@@ -18409,8 +18651,8 @@ body.person-page #main {
   content: '';
   display: block;
   position: absolute;
-  background-image: url('../images/sprites-s969621235a.png');
-  background-position: 0 -1490px;
+  background-image: url('../images/sprites-sd6102a3a38.png');
+  background-position: 0 -1562px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -18421,17 +18663,17 @@ body.person-page #main {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .carousel ul li .video-auth .meta-wrap:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1453px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1520px;
     height: 12px;
     width: 22px;
   }
 }
 @media (max-width: 480px) {
   .carousel ul li .video-auth .meta-wrap:after {
-    background-image: url('../images/sprites-s969621235a.png');
-    background-position: 0 -1621px;
+    background-image: url('../images/sprites-sd6102a3a38.png');
+    background-position: 0 -1693px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -18443,9 +18685,9 @@ body.person-page #main {
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .carousel ul li .video-auth .meta-wrap:after {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
-    background-position: 0 -1441px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
+    background-position: 0 -1508px;
     height: 10px;
     width: 18px;
   }
@@ -25248,6 +25490,11 @@ yx-axis
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
   width: 100%;
 }
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
+  float: left;
+  position: relative;
+  width: 100%;
+}
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .wrp {
   background: #000000;
   overflow: hidden;
@@ -26895,7 +27142,7 @@ yx-axis
   }
 }
 .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -587px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -26911,8 +27158,8 @@ yx-axis
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -202px;
     height: 37px;
     width: 37px;
@@ -27060,7 +27307,7 @@ yx-axis
   color: #ffffff;
 }
 .page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description {
-  background-image: url('../images/sprites-s969621235a.png');
+  background-image: url('../images/sprites-sd6102a3a38.png');
   background-position: 0 -885px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -27070,8 +27317,8 @@ yx-axis
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description {
-    background-image: url('../images/sprites-retina-s19f56d21c6.png');
-    background-size: 65px 1736px;
+    background-image: url('../images/sprites-retina-sfb5c37318d.png');
+    background-size: 65px 1803px;
     background-position: 0 -539px;
     height: 37px;
     width: 37px;
@@ -27563,25 +27810,32 @@ yx-axis
     line-height: 19px;
   }
 }
-.schedule-on-tonight .schedule-block .time .watch-now a {
+.schedule-on-tonight .schedule-block .time span:focus, .schedule-on-tonight .schedule-block .time a:focus {
+  outline: none;
+}
+.schedule-on-tonight .schedule-block .time .on-now-link .watch-now {
+  line-height: 0;
+}
+.schedule-on-tonight .schedule-block .time .on-now-link .watch-now span {
   color: #606060;
   font-size: 11px;
   line-height: 11px;
   letter-spacing: 0.5px;
 }
 @media (min-width: 1701px) {
-  .schedule-on-tonight .schedule-block .time .watch-now a {
+  .schedule-on-tonight .schedule-block .time .on-now-link .watch-now span {
     font-size: 19px;
     line-height: 19px;
   }
 }
-.schedule-on-tonight .schedule-block .time .watch-now a.live {
+.schedule-on-tonight .schedule-block .time .on-now-link .watch-now span.live {
   border: 1px solid #606060;
   border-radius: 3px;
+  display: inline-block;
   padding: 0 3px;
 }
 @media (min-width: 1701px) {
-  .schedule-on-tonight .schedule-block .time .watch-now a.live {
+  .schedule-on-tonight .schedule-block .time .on-now-link .watch-now span.live {
     border: 2px solid #606060;
   }
 }

@@ -240,6 +240,10 @@
         font-size: 20px;
         line-height: 54px;
       }
+      @include breakpoint($bp-480-width) {
+        font-size: 18px;
+        margin-left: 18px;
+      }
     }
   }
   .item-filter {
@@ -247,7 +251,7 @@
     right: 37px;
     top: 36px;
     vertical-align: middle;
-    @include breakpoint($bp-1024-width) {
+    @include breakpoint($bp-1280-width) {
       top: 23px;
     }
     @include breakpoint($bp-768-width) {
@@ -305,9 +309,10 @@
         width: 261px;
       }
       @include breakpoint($bp-480-width) {
-        font-size: 15px;
+        padding-left: 18px;
+        font-size: 14px;
         line-height: 45px;
-        width: 167px;
+        width: 153px;
       }
       &:after {
         content: "\e609";
@@ -389,6 +394,7 @@
           }
           @include breakpoint($bp-480-width) {
             font-size: 14px;
+            padding-left: 18px;
             line-height: 16px;
           }
         }

@@ -837,10 +837,19 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
       $episode_title = l($episode_title, 'file/' . $episode_file->fid);
     }
 
+    $full_time = preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]);
+    $time = ''; $day_part = ''; $matches = array();
+
+    if (preg_match("/(\d{1,2}\:\d{2})\s+(am|pm)/i", $full_time, $matches)) {
+      $time = $matches[1];
+      $day_part = $matches[2];
+    }
+
     $row_variables = array(
       'show_nid' => $nid,
       'show_class' => usanetwork_tv_shows_color_show_css_class($nid),
-      'time' => preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]),
+      'time' => !empty($time) ? $time : $full_time,
+      'day_part' => !empty($day_part) ? $day_part : '',
       'episode_show' => $episode_show,
       'episode_title' => $episode_title,
       'rating' => $rating[0],

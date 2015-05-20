@@ -10,7 +10,6 @@
           Drupal.settings.newSeasonNumber = Drupal.settings.lastSeasonNumber - 1;
         }
 
-        console.log(window.location);
         var serviceUrl = '/ajax/usanetwork-tv-show-episodes/get-related/' + showNid + '/' + Drupal.settings.newSeasonNumber;
 
         $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
@@ -19,7 +18,6 @@
           url: serviceUrl,
           dataType: 'json',
           success: function (data) {
-            console.info(data);
             $('.ajax-load-block .load-more-link').before(data.rendered);
             $('.ajax-load-block .load-more-link .load-more-loader').remove();
 
@@ -29,6 +27,8 @@
 
             if (Drupal.settings.newSeasonNumber != 1) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
+            } else {
+              $('#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons').css({'margin-bottom' : '0px'});
             }
           },
           error: function () {

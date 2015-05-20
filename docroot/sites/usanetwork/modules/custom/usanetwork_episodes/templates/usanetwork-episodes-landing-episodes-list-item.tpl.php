@@ -15,29 +15,32 @@
  */
 ?>
 <div class="episode-landing-list-item">
-  <div class="left-item-block">
-    <div class="asset-img">
-      <img src="<?php print $desktop_image_url; ?>" alt=""/>
+  <div class="episode-landing-list-item-inner">
+    <div class="episode-landing-info-block">
+      <div class="open-description"></div>
+      <div class="series"><?php print t('S') . $season_number . ' ' . t('EP') . $episode_number; ?></div>
+      <div class="title"><?php print $title; ?></div>
+      <div class="image-block">
+        <div class="asset-img">
+          <img src="<?php print $desktop_image_url; ?>" alt=""/>
+        </div>
+      </div>
+      <?php if (!empty($airing_date)): ?>
+        <div class="airing-date">
+          <?php print t('Aired on') . ' ' . $airing_date; ?>
+        </div>
+      <?php endif; ?>
+      <?php if (!empty($expiration_date)): ?>
+        <div class="expiration-date">
+          <?php print t('Available untill') . ' ' . $expiration_date; ?>
+        </div>
+      <?php endif; ?>
+      <div class="description"><?php print $description; ?></div>
     </div>
-  </div>
-  <div class="right-item-block">
-    <div class="series"><?php print t('S') . $season_number . ' ' . t('EP') . $episode_number; ?></div>
-    <div class="title"><?php print $title; ?></div>
-    <?php if (!empty($airing_date)): ?>
-      <div class="airing-date">
-        <?php print t('Aired on') . ' ' . $airing_date; ?>
-      </div>
-    <?php endif; ?>
-    <?php if (!empty($expiration_date)): ?>
-      <div class="expiration-date">
-        <?php print t('Available untill') . ' ' . $expiration_date; ?>
-      </div>
-    <?php endif; ?>
-    <div class="description"><?php print $description; ?></div>
     <div class="buttons-bar">
       <div class="buttons">
         <?php if (!empty($full_episode_url)): ?>
-          <div class="full_episode_button show-color"><a href="<?php print $full_episode_url; ?>"><?php print t('Watch a full episode'); ?></a></div>
+          <div class="full-episode-button show-color hover-avail"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch a full episode'); ?></a></div>
         <?php endif; ?>
         <?php if (!empty($preview_episode_url)): ?>
           <div class="preview_episode_button show-color"><a href="<?php print $preview_episode_url; ?>"><?php print t('Watch a preview'); ?></a></div>

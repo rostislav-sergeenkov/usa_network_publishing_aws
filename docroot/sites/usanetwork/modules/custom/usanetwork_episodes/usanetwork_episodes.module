@@ -518,7 +518,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'default_content_url' => isset($episode_data[$default_category]->fid)
             ? $episode_data[$default_category]->fid
             : NULL,
-          'desktop_image_url' => image_style_url('full_episodes_633x356', $image_url),
+          'desktop_image_url' => image_style_url('677x381', $image_url),
           'season_number' => $current_season_data_item->season_number,
           'episode_number' => $episode_data[$default_category]->episode_number,
           'title' => $episode_data[$default_category]->title,

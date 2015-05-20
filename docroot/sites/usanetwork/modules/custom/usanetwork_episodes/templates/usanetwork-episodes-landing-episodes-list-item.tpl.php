@@ -34,20 +34,20 @@
       </div>
     <?php endif; ?>
     <div class="description"><?php print $description; ?></div>
-    <div class="buttons-bar">
-      <div class="buttons">
-        <?php if (!empty($full_episode_url)): ?>
-          <div class="full_episode_button show-color"><a href="<?php print $full_episode_url; ?>"><?php print t('Watch a full episode'); ?></a></div>
-        <?php endif; ?>
-      </div>
-      <div class="links">
-        <?php if (!empty($guide_url)): ?>
-          <a class="guide-url" href="<?php print $guide_url; ?>"><?php print t('Read the guide'); ?></a>
-        <?php endif; ?>
-        <?php if (!empty($gallery_url)): ?>
-          <a class="gallery-url" href="<?php print $gallery_url; ?>"><?php print t('View the gallery'); ?></a>
-        <?php endif; ?>
-      </div>
+  </div>
+  <div class="buttons-bar">
+    <div class="buttons">
+      <?php if (!empty($full_episode_url)): ?>
+        <div class="full-episode-button show-color hover-avail"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch a full episode'); ?></a></div>
+      <?php endif; ?>
+    </div>
+    <div class="links">
+      <?php if (!empty($guide_url)): ?>
+        <a class="guide-url" href="<?php print $guide_url; ?>"><?php print t('Read the guide'); ?></a>
+      <?php endif; ?>
+      <?php if (!empty($gallery_url)): ?>
+        <a class="gallery-url" href="<?php print $gallery_url; ?>"><?php print t('View the gallery'); ?></a>
+      <?php endif; ?>
     </div>
   </div>
 </div>

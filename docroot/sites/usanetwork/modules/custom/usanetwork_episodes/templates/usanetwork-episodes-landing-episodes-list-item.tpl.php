@@ -39,6 +39,9 @@
         <?php if (!empty($full_episode_url)): ?>
           <div class="full_episode_button show-color"><a href="<?php print $full_episode_url; ?>"><?php print t('Watch a full episode'); ?></a></div>
         <?php endif; ?>
+        <?php if (!empty($preview_episode_url)): ?>
+          <div class="preview_episode_button show-color"><a href="<?php print $preview_episode_url; ?>"><?php print t('Watch a preview'); ?></a></div>
+        <?php endif; ?>
       </div>
       <div class="links">
         <?php if (!empty($guide_url)): ?>

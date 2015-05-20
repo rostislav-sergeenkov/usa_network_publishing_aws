@@ -5,7 +5,7 @@
 ?>
 
 <?php if (!empty($desktop_url) || !empty($mobile_url)): ?>
-  <div id="full-bleed-promo" class="homepage-block">
+  <div id="full-bleed-promo" class="show-border">
     <div class="block-advert">
       <?php if (!empty($advert_block)): ?>
         <?php print $advert_block; ?>

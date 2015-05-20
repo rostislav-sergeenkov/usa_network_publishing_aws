@@ -201,7 +201,7 @@
           top: 50%;
           width: 75px;
           &.active {
-            border-left: 7px solid;
+            border-left: 3px solid;
           }
           @include breakpoint($bp-min-1901-width) {
             height: 74px;

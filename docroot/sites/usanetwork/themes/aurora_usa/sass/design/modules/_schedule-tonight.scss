@@ -192,9 +192,9 @@
   .episode-show {
     padding-left: 18px;
     &:before {
-      width: 7px;
+      width: 3px;
       @include breakpoint($bp-min-1701-width) {
-        width: 9px;
+        width: 7px;
       }
     }
   }

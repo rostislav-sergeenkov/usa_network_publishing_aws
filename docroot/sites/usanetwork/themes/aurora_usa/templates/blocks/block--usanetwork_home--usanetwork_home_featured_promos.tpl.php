@@ -3,7 +3,7 @@
     <?php print $content; ?>
     <?php if (!empty($items_count) && $items_count > 3): ?>
       <a href="javascript:void(0)" class="more-button more">
-        <span class="more-text"><?php print t('More action packed moments'); ?></span>
+        <span class="more-text"><?php print t('More'); ?></span>
         <span class="close-text"><?php print t('Close'); ?></span>
       </a>
     <?php endif; ?>

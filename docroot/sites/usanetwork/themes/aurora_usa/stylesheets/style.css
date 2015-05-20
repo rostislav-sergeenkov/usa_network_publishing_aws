@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   left: 0;
   position: absolute;
   top: 0;
-  width: 7px;
+  width: 3px;
   z-index: 2;
 }
 
@@ -1791,7 +1791,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 100%;
 }
 .shows-block .show-info-block .show-bottom-info ul li .show-inner:before {
-  height: 7px;
+  height: 3px;
   margin-top: -3px;
   top: 55%;
   width: 100%;
@@ -13722,7 +13722,7 @@ footer h2 {
   width: 75px;
 }
 .consum-sidebar .episodes-list-slider.vertical li .asset-img.active {
-  border-left: 7px solid;
+  border-left: 3px solid;
 }
 @media (min-width: 1901px) {
   .consum-sidebar .episodes-list-slider.vertical li .asset-img {
@@ -27390,11 +27390,11 @@ yx-axis
   padding-left: 18px;
 }
 .schedule-on-tonight .episode-show:before {
-  width: 7px;
+  width: 3px;
 }
 @media (min-width: 1701px) {
   .schedule-on-tonight .episode-show:before {
-    width: 9px;
+    width: 7px;
   }
 }
 .schedule-on-tonight .icons-block {

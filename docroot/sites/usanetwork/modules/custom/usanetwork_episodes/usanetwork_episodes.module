@@ -461,32 +461,42 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
 
     if (!empty($episodes_data)) {
       foreach ($episodes_data as $episode_data) {
-        $default_category = isset($episode_data[USANETWORK_EPISODE_TYPE_FULL])
-          ? USANETWORK_EPISODE_TYPE_FULL
-          : USANETWORK_EPISODE_TYPE_PREVIEW;
+        $image_url = '';
+        $content_url = '';
 
-        $image_url = usanetwork_core_api_get_content_image('file', $episode_data[$default_category]->fid);
+        if (!empty($episode_data->full_episode)) {
+          $image_url = usanetwork_core_api_get_content_image('file', $episode_data->fid);
+          $content_url = url('file/' . $episode_data->fid);
+        }
+        elseif (empty($episode_data->preview_fid)) {
+          $image_url = usanetwork_core_api_get_content_image('file', $episode_data->preview_fid);
+          $content_url = url('file/' . $episode_data->preview_fid);
+        }
+
+        // Excepted situation
+        if (empty($image_url)) {
+          $image_url = usanetwork_core_api_get_content_image('file', $episode_data->fid);
+          $content_url = url('node/' . $episode_data->episode_nid);
+        }
 
         $theme_item_variables = array(
-          'full_episode_url' => isset($episode_data['full']->fid)
-            ? url('file/' . $episode_data[USANETWORK_EPISODE_TYPE_FULL]->fid)
+          'full_episode_url' => isset($episode_data->fid)
+            ? url('file/' . $episode_data->fid)
             : NULL,
-          'preview_episode_url' => isset($episode_data['preview']->fid)
-            ? $episode_data[USANETWORK_EPISODE_TYPE_PREVIEW]->fid
+          'preview_episode_url' => isset($episode_data->preview_fid)
+            ? url('file/' . $episode_data->preview_fid)
             : NULL,
-          'default_content_url' => isset($episode_data[$default_category]->fid)
-            ? $episode_data[$default_category]->fid
-            : NULL,
+          'default_content_url' => $content_url,
           'desktop_image_url' => image_style_url('full_episodes_633x356', $image_url),
           'season_number' => $current_season_data_item->season_number,
-          'episode_number' => $episode_data[$default_category]->episode_number,
-          'title' => $episode_data[$default_category]->title,
-          'description' => $episode_data[$default_category]->description,
-          'airing_date' => !empty($episode_data[$default_category]->airdate)
-            ? gmdate('m/d/Y', $episode_data[$default_category]->airdate)
+          'episode_number' => $episode_data->episode_number,
+          'title' => $episode_data->title,
+          'description' => $episode_data->description,
+          'airing_date' => !empty($episode_data->airdate)
+            ? gmdate('m/d/Y', $episode_data->airdate)
             : NULL,
-          'expiration_date' => !empty($episode_data[$default_category]->expiration_date)
-            ? gmdate('m/d/Y', $episode_data[$default_category]->expiration_date)
+          'expiration_date' => !empty($episode_data->expiration_date)
+            ? gmdate('m/d/Y', $episode_data->expiration_date)
             : NULL,
           'guide_url' => url('node/' . $tv_show_node->nid),
           'gallery_url' => url('node/' . $tv_show_node->nid),
@@ -560,8 +570,6 @@ function _usanetwork_episodes_get_season_ids($tv_show_nid) {
  * @return array
  */
 function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid) {
-  $sorted_result = array();
-
   $query = db_select('mpx_video', 'mpxv');
   // Add default fields
   $query->fields('mpxv', array('fid', 'title', 'airdate', 'available_date', 'expiration_date', 'status'));
@@ -577,6 +585,10 @@ function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid
   $query->join('field_data_field_show', 'field_show', 'field_show.entity_id=mpxv.fid');
   // Join Episode node
   $query->leftJoin('node', 'episode_node', 'episode_node.title=mpxv.title');
+  $query->addField('episode_node', 'nid', 'episode_nid');
+  // Join Preview Episode fid
+  $query->leftJoin('field_data_field_tve_preview_episode', 'preview_episode_field', 'preview_episode_field.entity_id=episode_node.nid');
+  $query->addField('preview_episode_field', 'field_tve_preview_episode_target_id', 'preview_fid');
   // Join short Episode description
   $query->leftJoin('field_data_field_short_synopsis', 'short_description_field', 'short_description_field.entity_id=episode_node.nid');
   $query->addField('short_description_field', 'field_short_synopsis_value', 'short_description');
@@ -604,17 +616,12 @@ function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid
       }
     });
 
-    foreach ($result as $result_item) {
-      $category_name = $result_item->full_episode == 1
-        ? USANETWORK_EPISODE_TYPE_FULL
-        : USANETWORK_EPISODE_TYPE_PREVIEW;
-
-      $sorted_result[$result_item->episode_number][$category_name] = $result_item;
-      $sorted_result[$result_item->episode_number][$category_name]->description = _usanetwork_episodes_get_season_episodes_description($result_item);
+    foreach ($result as &$result_item) {
+      $result_item->description = _usanetwork_episodes_get_season_episodes_description($result_item);
     }
   }
 
-  return $sorted_result;
+  return $result;
 }
 
 /**

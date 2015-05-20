@@ -3,7 +3,7 @@
   margin: 0 auto;
   position: relative;
   min-height: 250px;
-  max-height: 500px;
+//  max-height: 500px;
   max-width: 1650px;
   min-width: 300px;
   @include breakpoint($bp-768-width) {
@@ -54,6 +54,15 @@
     }
   }
 }
+.usa-tv-show {
+  #full-bleed-promo,
+  .about-show-block {
+    &.show-border {
+      border-bottom: 1px solid;
+    }
+  }
+}
+
 .about-show-block {
   @include clear();
   background: $poll-back;

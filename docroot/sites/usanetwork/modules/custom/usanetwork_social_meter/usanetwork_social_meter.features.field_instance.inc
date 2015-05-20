@@ -1179,9 +1179,8 @@ function usanetwork_social_meter_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 39,
       ),
       'follow_social' => array(
@@ -1264,9 +1263,8 @@ function usanetwork_social_meter_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 40,
       ),
       'follow_social' => array(
@@ -1358,9 +1356,8 @@ function usanetwork_social_meter_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 41,
       ),
       'follow_social' => array(

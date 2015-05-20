@@ -416,7 +416,11 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
       $gallery_type = !empty($node->field_gallery_type) ? $node_wrapper->field_gallery_type->value() : NULL;
       $result['description'] = empty($gallery_type) ? t('Gallery ') : $gallery_type . ' ';
-      $result['description'] .= (!empty($node->field_media_items) ? count($node->field_media_items[$lang]) : 0) . ' ' . t('Photos');
+      $result['description'] .= (!empty($node->field_media_items)
+          ? ((!empty($node->field_cover_item))
+            ? count($node->field_media_items[$lang]) + 1
+            : count($node->field_media_items[$lang]))
+          : 0) . ' ' . t('Photos');
       break;
     case 'quiz':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;

@@ -83,6 +83,15 @@ $(document).ready(function(){
     }
   });
 
+  $('#block-usanetwork-episodes-usa-landing-tvep-list-block .open-description').click(function(){
+    var current_item = $(this).closest('.episode-landing-list-item');
+    if(current_item.hasClass('active')){
+      current_item.removeClass('active');
+    } else {
+      current_item.addClass('active');
+    }
+  });
+
 });
 
 

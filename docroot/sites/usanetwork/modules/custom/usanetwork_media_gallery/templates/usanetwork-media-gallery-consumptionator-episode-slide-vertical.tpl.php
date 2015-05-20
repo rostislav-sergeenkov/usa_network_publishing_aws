@@ -16,12 +16,11 @@
       <div class="meta-wrapper-inner">
         <div class="meta">
           <div class="title"><?php print (!empty($title))? $title: ''; ?></div>
-          <?php if (!empty($season) && !empty($episode)): ?>
-            <div class="additional"><?php print t('S!season Episode !episode', array('!season' => $season, '!episode' => $episode)); ?></div>
+          <?php if (!empty($description)): ?>
+            <div class="additional"><?php print $description; ?></div>
           <?php endif; ?>
         </div>
       </div>
     </div>
   </a>
 </div>
-

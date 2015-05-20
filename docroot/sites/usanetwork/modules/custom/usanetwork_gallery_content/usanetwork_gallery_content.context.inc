@@ -47,11 +47,17 @@ function usanetwork_gallery_content_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'usanetwork_mpx_video-usanetwork_social_content' => array(
+          'module' => 'usanetwork_mpx_video',
+          'delta' => 'usanetwork_social_content',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
         'usanetwork_media_gallery-usa_gallery_cons_related' => array(
           'module' => 'usanetwork_media_gallery',
           'delta' => 'usa_gallery_cons_related',
           'region' => 'content',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),

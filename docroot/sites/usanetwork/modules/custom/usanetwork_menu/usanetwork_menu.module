@@ -398,6 +398,14 @@ function usanetwork_menu_image_default_styles() {
     'label' => '633x356',
     'effects' => array(
       array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 633,
+          'height' => 356,
+        ),
+        'weight' => 0,
+      ),
+      array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -1243,11 +1251,8 @@ function _usanetwork_menu_render_live_video_header_ajax($offset) {
       'show_url' => !empty($on_now_item->nid)
         ? url('node/' . $on_now_item->nid)
         : url('<front>'),
-      'show_name' => !empty($on_now_item->database_show_title)
-        ? $on_now_item->database_show_title
-        : (!empty($on_now_item->show_title)
-          ? $on_now_item->show_title
-          : t('USA Movie')),
+      'show_name' => ($on_now_item->program_type == 'movie') ? t('USA Movie') :
+          (!empty($on_now_item->show_title) ? $on_now_item->show_title : ''),
       'episode' => array(
         'image_url' => !empty($image_url)
           ? image_style_url('300x250', $image_url)

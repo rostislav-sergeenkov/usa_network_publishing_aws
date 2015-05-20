@@ -9,7 +9,7 @@
       <?php if (!empty($time)): ?>
         <div class="time-wrapper">
           <div class="time">
-            <?php print $time; ?>
+            <span><?php print $time; ?></span><?php print $day_part; ?>
           </div>
         </div>
       <?php endif; ?>
@@ -19,9 +19,11 @@
           <div class="episode-title"><?php if(!empty($episode_title)): print $episode_title; endif;?></div>
         </div>
       <?php endif; ?>
-      <?php if (!empty($rating)): ?>
-        <div class="rating"><?php print $rating; ?></div>
-      <?php endif; ?>
+        <div class="icons-block rating-wrapper">
+          <?php if (!empty($rating)): ?>
+            <div class="rating"><?php print $rating; ?></div>
+          <?php endif; ?>
+        </div>
     </div>
   </div>
 </li>

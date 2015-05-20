@@ -9,7 +9,7 @@
       <?php if (!empty($time)): ?>
         <div class="time-wrapper">
           <div class="time">
-            <?php print $time; ?>
+            <span><?php print $time; ?></span><?php print $day_part; ?>
           </div>
         </div>
       <?php endif; ?>

@@ -455,9 +455,6 @@
                 padding-left: 10px;
                 padding-right: 20px;
                 width: 60%;
-//                @include breakpoint($bp-1024-width) {
-//                  width: auto;
-//                }
                 .episode-show {
                   font-size: 20px;
                   font-family: $avalon-demi;
@@ -681,20 +678,20 @@
   }
   .ad-728x90 {
     margin: 0 auto;
-    padding: 10px 0;
-    max-width: 728px;
-    a {
-      display: block;
-      max-height: 90px;
-    }
-    @include breakpoint($bp-768-width) {
-      height: 100%;
-      a {
-        height: auto;
-      }
-      img {
-        width: 100%;
-      }
-    }
+padding: 10px 0;
+max-width: 728px;
+a {
+  display: block;
+  max-height: 90px;
+}
+@include breakpoint($bp-768-width) {
+  height: 100%;
+  a {
+    height: auto;
   }
+  img {
+    width: 100%;
+  }
+}
+}
 }

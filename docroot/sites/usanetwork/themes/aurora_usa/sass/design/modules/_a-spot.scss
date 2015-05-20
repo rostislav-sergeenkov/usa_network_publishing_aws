@@ -400,7 +400,17 @@
       width: 100%;
     }
     .slide {
+      height: 100%;
       position: relative;
+      .wrp {
+        height: 100%;
+        .usanetwork-aspot {
+          height: 100%;
+          a {
+
+          }
+        }
+      }
     }
     .asset-img {
       height: 100%;

@@ -3622,7 +3622,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .midbanner {
   height: auto;
-  margin: 16px auto;
+  margin: 20px auto;
   overflow: hidden;
   text-align: center;
   max-width: 970px;
@@ -9050,7 +9050,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .five-promo-item-block {
   background: #dcddde;
   border-bottom: 2px solid;
-  border-top: 1px solid;
   padding: 40px 16px;
   position: relative;
   width: 100%;
@@ -12963,6 +12962,9 @@ footer h2 {
   height: 100%;
   position: relative;
   width: 100%;
+}
+.consumptionator-page .video-block #player .borealis, .page-videos-live .video-block #player .borealis {
+  height: 100%;
 }
 .consumptionator-page .video-block #player img, .page-videos-live .video-block #player img {
   height: 100%;
@@ -25919,7 +25921,14 @@ yx-axis
   }
 }
 .aspot-and-episodes .show-aspot .slide {
+  height: 100%;
   position: relative;
+}
+.aspot-and-episodes .show-aspot .slide .wrp {
+  height: 100%;
+}
+.aspot-and-episodes .show-aspot .slide .wrp .usanetwork-aspot {
+  height: 100%;
 }
 .aspot-and-episodes .show-aspot .asset-img {
   height: 100%;
@@ -28888,7 +28897,6 @@ body.blog .view-display-id-blog_content .views-row {
   margin: 0 auto;
   position: relative;
   min-height: 250px;
-  max-height: 500px;
   max-width: 1650px;
   min-width: 300px;
 }
@@ -28959,6 +28967,11 @@ body.blog .view-display-id-blog_content .views-row {
   #full-bleed-promo .block-advert {
     display: none;
   }
+}
+
+.usa-tv-show #full-bleed-promo.show-border,
+.usa-tv-show .about-show-block.show-border {
+  border-bottom: 1px solid;
 }
 
 .about-show-block {

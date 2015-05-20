@@ -9026,7 +9026,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .five-promo-item-block {
   background: #dcddde;
   border-bottom: 2px solid;
-  border-top: 1px solid;
   padding: 40px 16px;
   position: relative;
   width: 100%;
@@ -28718,7 +28717,6 @@ body.blog .view-display-id-blog_content .views-row {
   margin: 0 auto;
   position: relative;
   min-height: 250px;
-  max-height: 500px;
   max-width: 1650px;
   min-width: 300px;
 }
@@ -28789,6 +28787,11 @@ body.blog .view-display-id-blog_content .views-row {
   #full-bleed-promo .block-advert {
     display: none;
   }
+}
+
+.usa-tv-show #full-bleed-promo.show-border,
+.usa-tv-show .about-show-block.show-border {
+  border-bottom: 1px solid;
 }
 
 .about-show-block {

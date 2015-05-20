@@ -1,4 +1,5 @@
-.page-schedule {
+.page-schedule,
+.page-accessibility {
   color: $poll-color;
   background-color: $poll-back;
     .shows-filters {
@@ -454,9 +455,9 @@
                 padding-left: 10px;
                 padding-right: 20px;
                 width: 60%;
-                @include breakpoint($bp-1024-width) {
-                  width: auto;
-                }
+//                @include breakpoint($bp-1024-width) {
+//                  width: auto;
+//                }
                 .episode-show {
                   font-size: 20px;
                   font-family: $avalon-demi;
@@ -473,6 +474,9 @@
                     font-size: 14px;
                     line-height: 20px;
                   }
+                  a {
+                    color: $poll-color;
+                  }
                 }
                 .episode-title {
                   font-size: 20px;
@@ -482,6 +486,9 @@
                   width: 50%;
                   @include breakpoint($bp-1024-width) {
                     display: none;
+                  }
+                  a {
+                    color: $poll-color;
                   }
                 }
               }
@@ -521,6 +528,19 @@
                   float: left;
                   @include breakpoint($bp-1024-width) {
                     display: none;
+                  }
+                }
+              }
+              .rating-wrapper {
+                padding-right: 30px;
+                @include breakpoint($bp-640-width) {
+                  display: none;
+                }
+                .rating {
+                  @include breakpoint($bp-1024-width) {
+                    display: block;
+                    float: none;
+                    text-align: right;
                   }
                 }
               }
@@ -678,4 +698,3 @@
     }
   }
 }
-

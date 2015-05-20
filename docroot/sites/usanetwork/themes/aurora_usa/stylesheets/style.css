@@ -12940,6 +12940,9 @@ footer h2 {
   position: relative;
   width: 100%;
 }
+.consumptionator-page .video-block #player .borealis, .page-videos-live .video-block #player .borealis {
+  height: 100%;
+}
 .consumptionator-page .video-block #player img, .page-videos-live .video-block #player img {
   height: 100%;
   width: 100%;
@@ -25739,7 +25742,14 @@ yx-axis
   }
 }
 .aspot-and-episodes .show-aspot .slide {
+  height: 100%;
   position: relative;
+}
+.aspot-and-episodes .show-aspot .slide .wrp {
+  height: 100%;
+}
+.aspot-and-episodes .show-aspot .slide .wrp .usanetwork-aspot {
+  height: 100%;
 }
 .aspot-and-episodes .show-aspot .asset-img {
   height: 100%;

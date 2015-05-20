@@ -25,6 +25,10 @@
   width: auto;
   height: 16px;
 }
+#microsite .video-player-desc {
+  width: calc(100% - 164px);
+  float: left;
+}
 #microsite .video-title {
   font-size: 2em;
 }
@@ -34,6 +38,17 @@
 #microsite .video-info {
   font-size: 1.2em;
   color: #e5ce96;
+}
+#microsite #video-gigya-share-container {
+  width: 144px;
+  float: right;
+  margin: 0;
+}
+#microsite #video-gigya-share-title {
+  color: #777;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0 0 8px 4px;
 }
 
 /* begin authenticated video key icon display */
@@ -91,7 +106,7 @@
   margin: 7px 0;
   font-size: 1.5em;
   color: #000;
-  line-height: 1.4em;
+  line-height: 1;
   text-transform: uppercase;
 }
 #microsite .full-pane #video-container h1.seo-h1,
@@ -109,6 +124,15 @@
 #microsite .full-pane #video-container .video-info {
   font-size: 0.875em;
   color: #6C6F72;
+}
+
+/* GIGYA SHARE */
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-facebook td > div:before,
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-twitter td > div:before,
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-tumblr td > div:before,
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-pinterest td > div:before,
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-share td > div:before {
+  color: #777;
 }
 
 /* VIDEO THUMBNAILS */
@@ -720,4 +744,15 @@
     width: 300px;
   }
 */
+}
+
+@media (max-width: 570px) {
+  #microsite .video-player-desc {
+    width: 100%;
+  }
+  #microsite #video-gigya-share-container {
+    float: left;
+    margin-top: 12px;
+    margin-left: -4px;
+  }
 }

@@ -1,0 +1,58 @@
+/* gigya */
+#microsite .field-type-gigya-sharebar {
+  width: 150px;
+  float: right;
+  height: 29px;
+  margin: 5px 0 0;
+}
+#microsite #video-gigya-share,
+#microsite #gigya-share {
+  width: 196px;
+  float: left;
+  margin-left: 0;
+  clear: none;
+}
+#microsite div.gig-button-container {
+  padding: 0;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 3px 0;
+}
+#microsite .gig-bar-container .gig-button-container td > div,
+#microsite .gig-bar-container .gig-button-container td > div:hover,
+#microsite .field-type-gigya-sharebar .gig-button-container td > div,
+#microsite .field-type-gigya-sharebar .gig-button-container td > div:hover {
+  background-image: none !important;
+  display: block;
+  font-family: "ico-font";
+  font-size: 24px;
+  width: 24px !important;
+  height: 24px !important;
+  background-image: url("../images/social_chatter_icons.png");
+  background-repeat: none;
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-facebook td > div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+  content: "\e602";
+  color: #afafaf;
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-twitter td > div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+  content: "\e603";
+  color: #afafaf;
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-tumblr td > div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+  content: "\e604";
+  color: #afafaf;
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-pinterest td > div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+  content: "\e605";
+  color: #afafaf;
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-share td > div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+  content: "\e606";
+  color: #afafaf;
+}

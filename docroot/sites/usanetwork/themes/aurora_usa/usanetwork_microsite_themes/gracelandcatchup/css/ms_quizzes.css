@@ -56,6 +56,9 @@
   width: 300px;
   float: left;
 }
+#microsite #quizzes .sharebar > h3 {
+  float: left;
+}
 #microsite #quizzes .usanetwork-quiz-questions.questions .page-note {
   top: 4px;
   right: 4px;

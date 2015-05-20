@@ -6,6 +6,8 @@ var initialPageLoad = 1;
   Drupal.behaviors.ms_global = {
 
     // GENERAL
+    globalInitialPageLoad: true,
+
     // getUrlPath
     getUrlPath: function(url) {
       url = url || window.location.href;
@@ -82,9 +84,11 @@ var initialPageLoad = 1;
           break;
       }
 
-      Drupal.behaviors.ms_global.setOmnitureData(sectionId);
-      Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
+      if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
+        Drupal.behaviors.ms_global.setOmnitureData(sectionId);
+        Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
 usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
+      }
     },
 
     // initializeWaypoints -- for triggering section scroll events
@@ -92,7 +96,6 @@ usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection)
     initializeWaypoints: function() {
       // When scrolling down, send Omniture page call when top of next section hits bottom of sticky nav
       // When scrolling up, send Omniture page call when bottom of previous section hits bottom of window
-
       var sectionTimer;
       function handler(event, sectionId, direction){
         usa_debug('handler(' + event + ', ' + sectionId + ', ' + direction + ')');
@@ -126,7 +129,10 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           Drupal.behaviors.ms_global.waypoints['down'][sectionId] = new Waypoint.Inview({
             element: document.getElementById(sectionId),
 //            enter: function(direction) { handler('enter', sectionId, direction); },
-            entered: function(direction) { if (sectionId == firstSection || sectionId == lastSection) handler('entered', sectionId, direction); },
+            entered: function(direction) {
+//              if (sectionId == firstSection || sectionId == lastSection)
+                handler('entered', sectionId, direction);
+            },
             exit: function(direction) { handler('exit', sectionId, direction); },
 //            exited: function(direction) { handler('exited', sectionId, direction); }
           })
@@ -147,6 +153,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
 //      }, 250);
     },
 
+/*
     // topOfSectionScrolledIntoView
     topOfSectionScrolledIntoView: function() {
 
@@ -156,8 +163,10 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
     bottomOfSectionScrolledIntoView: function() {
 
     },
+*/
 
     // IsScrolledIntoView
+    // determines whether the entire element is in the viewable part of the window
     isScrolledIntoView: function(elem) {
       var $elem = $(elem),
           $window = $(window),
@@ -273,24 +282,6 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
         void(s.t()); // omniture page call
       }
     },
-
-/*
-    sendSponsorOmnitureCall: function(omniturePageNameAddition) {
-      var oldPageName = s.pageName;
-      s.prop5 = siteName + ' : Home';
-      s.pageName = s.prop5;
-      if (section == 'moments') {
-        s.prop60 = "Sponsored";
-      } else {
-        s.prop60 = "Not Sponsored";
-      }
-      if (omniturePageNameAddition != '') s.pageName = s.prop5 + ' : ' + omniturePageNameAddition;
-      if (typeof s_gi != 'undefined')	{
-        void (s.t());
-        s.pageName = oldPageName;
-      }
-    },
-*/
 
     // ADS
     usa_refreshMicrositeAdsBySection: function (adContainer) {
@@ -463,14 +454,11 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           }
         }
 
-        // show ads and send Omniture
-//        Drupal.behaviors.ms_global.create728x90Ad(anchor);
-//        Drupal.behaviors.ms_global.setOmnitureData(anchor, itemTitle);
-
         // set active menu item
         $('#site-nav-links li').removeClass('active disabled');
         $('#nav-' + anchor).addClass('active');
       });
+      Drupal.behaviors.ms_global.globalInitialPageLoad = false;
     },
 
     attach: function (context, settings) {
@@ -488,7 +476,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       // usa_debug
       var hostname = window.location.hostname,
           usa_debugFlag = (hostname == 'www.usanetwork.com') ? false : true;
-
+/*
       function usa_debug(msg, obj) {
         if (usa_debugFlag && typeof console != 'undefined') {
           console.log(msg);
@@ -497,31 +485,19 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           }
         }
       }
-
+*/
       // set hover state for hamburger menu on mobile devices
       var wwidth = $(window).width(),
           $siteNav = $('#site-nav');
-//          hamburgerTimer;
 
       if (wwidth < 844) {
         $siteNav.addClass('mobile');
-/*
-        $siteNav.find('#site-nav-links-mobile, #site-nav-links-mobile ul, #site-nav-links-mobile li').hover(function(){
-          $siteNav.find('#site-nav-links-list-mobile').addClass('active');
-          clearTimeout(hamburgerTimer);
-        }, function(){
-          hamburgerTimer = setTimeout(function(){
-            $siteNav.find('#site-nav-links-list-mobile').removeClass('active');
-          }, 1000);
-        });
-*/
       }
       else {
         $siteNav.removeClass('mobile');
       }
 
       $('#video-container').addClass('active');
-//      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
       var urlParts = self.parseUrl(history.state['path']);
       if (urlParts['section'] == 'videos' && urlParts['item']) {
         Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
@@ -529,6 +505,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       else {
         Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
       }
+
       // TIME OUT
       setTimeout(function(){
         // initialize the waypoints
@@ -560,9 +537,6 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
           Drupal.behaviors.ms_global.sectionScroll(anchor);
         });
 
-      // DOCUMENT READY
-//      $(document).ready(function () {
-
 /*
         if ($('#videos').hasClass('active')) {
           $('#video-container').addClass('active');
@@ -578,36 +552,39 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
             self.sectionScroll(urlParts['section'], urlParts['item']);
           }, 1000);
         }
+        else {
+          self.globalInitialPageLoad = false;
+        }
 
         self.create728x90Ad();
       }, 500);
+      // END TIME OUT
 
-        // Turn off the popstate/hashchange tve-core.js event listeners
-        $(window).off('popstate');
-        $(window).off('hashchange');
+      // Turn off the popstate/hashchange tve-core.js event listeners
+      $(window).off('popstate');
+      $(window).off('hashchange');
 
-        // Turn on browser history functionality -- for example, browser back button.
-        // Popped variable is used to detect initial (useless) popstate.
-        // If history.state exists, assume browser isn't going to fire initial popstate.
-        var popped = ('state' in window.history && window.history.state !== null),
-            initialURL = location.href;
-        $(window).on('popstate');
-        $(window).bind('popstate', function(event) {
-          // Ignore inital popstate that some browsers fire on page load
-          var initialPop = !popped && location.href == initialURL
-          popped = true;
+      // Turn on browser history functionality -- for example, browser back button.
+      // Popped variable is used to detect initial (useless) popstate.
+      // If history.state exists, assume browser isn't going to fire initial popstate.
+      var popped = ('state' in window.history && window.history.state !== null),
+          initialURL = location.href;
+      $(window).on('popstate');
+      $(window).bind('popstate', function(event) {
+        // Ignore inital popstate that some browsers fire on page load
+        var initialPop = !popped && location.href == initialURL
+        popped = true;
 
-          if (initialPop) return;
+        if (initialPop) return;
 
-          usa_debug('============= onpopstate activated! new state: ');
-          usa_debug(history.state);
-          var urlParts = self.parseUrl(history.state['path']),
+        usa_debug('============= onpopstate activated! new state: ');
+        usa_debug(history.state);
+        var urlParts = self.parseUrl(history.state['path']),
 
-              anchor = urlParts['section'],
-              item = urlParts['item'];
-          self.sectionScroll(anchor, item);
-        });
-//      });
+            anchor = urlParts['section'],
+            item = urlParts['item'];
+        self.sectionScroll(anchor, item);
+      });
 
       // RESIZE
       // set resize and orientation change

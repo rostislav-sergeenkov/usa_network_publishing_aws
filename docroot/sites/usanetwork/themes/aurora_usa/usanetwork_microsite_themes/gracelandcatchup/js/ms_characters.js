@@ -16,13 +16,17 @@
 
     showCharacterInfo: function(person) {
         var anchor = 'characters',
-            anchorFull = Drupal.settings.microsites_settings.base_path + '/' + anchor + '/' + person;
-
+            anchorFull = Drupal.settings.microsites_settings.base_path + '/' + anchor + '/' + person,
+            personName = $('#character-info #' + person + ' > h3').text();
+        if (personName == '') personName = $('#character-info #' + person + ' > h1').text();
         $('#character-nav li#nav-' + person + ', #character-info li#' + person).addClass('active');
           $('#character-info #' + person).animate({ 'opacity': 1 }, 500);
 
 usa_debug('========= showCharacterInfo: anchorFull: ' + anchorFull);
-        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+        if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
+          Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+          Drupal.behaviors.ms_global.setOmnitureData('characters', personName);
+        }
         Drupal.behaviors.ms_global.create728x90Ad('characters');
     },
 

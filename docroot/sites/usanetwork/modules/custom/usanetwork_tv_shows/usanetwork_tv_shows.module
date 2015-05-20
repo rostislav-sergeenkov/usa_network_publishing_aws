@@ -3294,12 +3294,13 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
   }
   $query_params = drupal_get_query_parameters();
   $own_promo_lines = !empty($query_params['category']) ? _usanetwork_promo_file_get_promo_lines($file, TRUE) : _usanetwork_promo_file_get_promo_lines($file);
+  $icon_type = usanetwork_core_api_get_media_icon('file', $file->fid);
 
   $theme_variables = array(
     'classes' => NULL,
     'custom_classes' => NULL,
     'target_url' => url('file/' . $file->fid),
-    'media_icon' => 'video-icon',
+    'media_icon' => !empty($icon_type) ? $icon_type : 'video-icon',
     'caption' => ($current_item_index == $big_element_index)
       ? (!empty($own_promo_lines['topic'])
         ? $own_promo_lines['topic']

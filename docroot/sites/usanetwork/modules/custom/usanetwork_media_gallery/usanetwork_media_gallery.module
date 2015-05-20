@@ -323,17 +323,26 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         $rendered_items['slides_horizontal'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_horizontal', $gallery_item_horizontal);
       }
 
+
+      $gallery_field_season_id_value = _usanetwork_get_field_item('node', $node, 'field_season', 'target_id');
+      if (!empty($gallery_field_season_id_value)) {
+        $tv_season_node = node_load($gallery_field_season_id_value);
+        $season_id = _usanetwork_get_field_item('node', $tv_season_node, 'field_season_id', 'value');
+      }
+
       $advert_block = module_invoke('mps', 'block_view', 'topbox');
       if (!empty($advert_block['content'])) {
         $advert = render($advert_block['content']);
       }
 
       return theme('usanetwork_media_gallery_consumptionator_episode_slides', array(
-        'gallery_type' => !empty($gallery_item->field_season_id_value)
+        'gallery_type' => !empty($season_id)
           ? t('S!number episode galleries', array(
-            '!number' => $gallery_item->field_season_id_value,
+            '!number' => $season_id,
           ))
-          : '',
+          : ((!empty($gallery_type))
+            ? $gallery_type
+            : '') ,
         'slides_vertical' => !empty($rendered_items['slides_vertical']) ? $rendered_items['slides_vertical'] : '',
         'slides_horizontal' => !empty($rendered_items['slides_horizontal']) ? $rendered_items['slides_horizontal'] : '',
         'ad' => isset($advert) ? $advert : NULL,

@@ -2462,7 +2462,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NUL
     }
   }
 
-  if ($current_position_index > 0) {
+  if ($current_position_index >= 0) {
     $episodes_to_go = array_slice($items, $current_position_index);
     $old_episodes = array_slice($items, 0, $current_position_index);
 

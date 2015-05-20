@@ -315,10 +315,10 @@
   }
 }
 .featured-block.carousel-block {
-  background: url(http://origin-beta.usanetwork.com/sites/usanetwork/files/Home_theme_bg_summer.jpg) !important;
-  background-repeat: no-repeat !important;
-  background-size: contain !important;
-  @include breakpoint($bp-1280-width) {
+  @include breakpoint ($bp-min-1281-width) {
+    background-size: contain !important;
+  }
+  @include breakpoint($between-769-1280) {
     background-size: cover !important;
   }
   @include breakpoint($bp-768-width) {

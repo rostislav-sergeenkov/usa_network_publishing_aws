@@ -18861,12 +18861,12 @@ body.person-page #main {
   }
 }
 
-.featured-block.carousel-block {
-  background: url(http://origin-beta.usanetwork.com/sites/usanetwork/files/Home_theme_bg_summer.jpg) !important;
-  background-repeat: no-repeat !important;
-  background-size: contain !important;
+@media (min-width: 1281px) {
+  .featured-block.carousel-block {
+    background-size: contain !important;
+  }
 }
-@media (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .featured-block.carousel-block {
     background-size: cover !important;
   }

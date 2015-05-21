@@ -2045,6 +2045,8 @@ function usanetwork_mpx_video_usa_omniture_alter(&$omniture_variables, $context)
     list($entity_id,, $bundle) = entity_extract_ids($entity_type, $entity);
     if ($entity_type == 'file' && in_array($bundle, _usanetwork_mpx_video_get_all_file_types())) {
       $video_variables = _usanetwork_mpx_video_file_omniture($entity, $entity_type);
+    } else if ($entity_type == 'node') {
+      $video_variables['umbel'] = $entity->title;
     }
   }
   else if ($context['menu_item']['path'] == 'videos') {
@@ -2095,6 +2097,7 @@ function _usanetwork_mpx_video_file_omniture($entity, $entity_type){
     else {
       $video_variables['s.prop5'] = "Video : Short Form";
     }
+    $video_variables['umbel'] = $entity->filename;
   }
 
   return $video_variables;

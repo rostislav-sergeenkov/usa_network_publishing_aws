@@ -53,7 +53,7 @@
         }
       }
     }
-    > ul:not(.stop) {
+    > ul {
       > li:not(.active) {
         > .node {
           &:hover {
@@ -81,6 +81,7 @@
                 text-align: center;
                 top: 50%;
                 width: 18px;
+                cursor: pointer;
                 z-index: 2;
                 @include breakpoint($bp-min-1901-width) {
                   width: 30px;
@@ -158,7 +159,7 @@
     .show-link {
       a {
         display: block;
-        font-family: $avalon-demi;
+        font-family: $avalon-medium;
         color: #fff;
         line-height: 16px;
         padding: 10px 25px 10px 10px;
@@ -184,6 +185,7 @@
           position: absolute;
           margin-top: -8px;
           right: 10px;
+          cursor: pointer;
           top: 50%;
           @include breakpoint($bp-min-1901-width) {
             font-size: 14px;
@@ -592,7 +594,7 @@
         .title {
           color: #ffffff;
           float: left;
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           font-size: 24px;
           letter-spacing: 3px;
           line-height: 50px;
@@ -614,7 +616,7 @@
         .time {
           float: left;
           color: #ffffff;
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           font-size: 12px;
           line-height: 18px;
           margin-top: 8px;
@@ -949,7 +951,7 @@
           }
         }
         .subheading {
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           font-size: 24px;
           line-height: 30px;
           text-overflow: ellipsis;
@@ -1113,7 +1115,7 @@
   h1 {
     color: #ffffff;
     float: left;
-    font-family: $avalon-demi;
+    font-family: $avalon-medium;
     font-size: 24px;
     letter-spacing: 1px;
     line-height: 67px;
@@ -1122,6 +1124,7 @@
     text-transform: uppercase;
     a {
       color: #ffffff;
+      font-family: $avalon-demi;
       &:hover {
         color: #ffffff;
       }
@@ -1169,7 +1172,7 @@
     .time {
       color: #ffffff;
       display: table-cell;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 12px;
       line-height: 18px;
       text-transform: uppercase;

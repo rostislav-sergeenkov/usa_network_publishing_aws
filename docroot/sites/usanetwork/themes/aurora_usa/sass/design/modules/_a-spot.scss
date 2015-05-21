@@ -1,5 +1,5 @@
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
-  overflow-y: hidden;
+  overflow: hidden;
   max-height: 43.75vw;
   position: relative;
   @include breakpoint($bp-min-2500-width) {
@@ -60,6 +60,10 @@
       width: 100%;
     }
   }
+  .slider {
+    overflow: hidden;
+    width: 1000%;
+  }
   .slide {
     float: left;
     position: relative;
@@ -96,7 +100,7 @@
     }
     .title {
       color: #ffffff;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 6vw;
       line-height: 1;
       margin: 0;
@@ -165,7 +169,7 @@
       a {
         color: #ffffff;
         display: block;
-        font-family: $avalon-demi;
+        font-family: $avalon-medium;
         font-size: 1.27vw;
         line-height: 1.8;
         padding: 1.7vw 3.125vw 1.7vw 2.54vw;
@@ -328,7 +332,7 @@
       }
       .social-meter-link {
         color: #ffffff;
-        font-family: $avalon-demi;
+        font-family: $avalon-medium;
         font-size: 1.1vw;
         line-height: 1.8;
         padding-right: 1.2vw;
@@ -602,6 +606,9 @@
         width: 20000em;
         position: relative;
         @include clear;
+        @include breakpoint($bp-640-width) {
+          width: 100%;
+        }
         li {
           float: left;
           box-sizing: border-box;

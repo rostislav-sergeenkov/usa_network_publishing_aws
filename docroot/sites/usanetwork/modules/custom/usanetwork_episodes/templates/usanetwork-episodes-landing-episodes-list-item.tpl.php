@@ -32,7 +32,7 @@
       <?php endif; ?>
       <?php if (!empty($expiration_date)): ?>
         <div class="expiration-date">
-          <?php print t('Available untill') . ' ' . $expiration_date; ?>
+          <?php print t('Available until') . ' ' . $expiration_date; ?>
         </div>
       <?php endif; ?>
       <div class="description"><?php print $description; ?></div>

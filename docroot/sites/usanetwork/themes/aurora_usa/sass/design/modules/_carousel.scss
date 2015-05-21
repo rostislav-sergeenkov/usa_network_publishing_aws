@@ -314,7 +314,18 @@
     padding: 40px 0px 40px 20px;
   }
 }
-
+.featured-block.carousel-block {
+  @include breakpoint ($bp-min-1281-width) {
+    background-size: contain !important;
+  }
+  @include breakpoint($between-769-1280) {
+    background-size: cover !important;
+  }
+  @include breakpoint($bp-768-width) {
+    background-image: none !important;
+    background-color: $poll-back !important;
+  }
+}
 .catch-up-explore-carousel {
   .carousel-block {
     @include breakpoint($bp-480-width) {
@@ -323,7 +334,6 @@
     }
   }
 }
-
 .carousel-left {
   -webkit-transition-property: margin;
   -moz-transition-property: margin;
@@ -819,7 +829,7 @@
       background: $social-twitter-back;
       color: #ffffff;
       display: block;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 20px;
       height: 100px;
       line-height: 80px;

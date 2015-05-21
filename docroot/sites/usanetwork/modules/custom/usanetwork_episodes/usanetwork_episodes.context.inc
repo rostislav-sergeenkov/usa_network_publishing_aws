@@ -1,5 +1,10 @@
 <?php
 /**
+ * @file
+ * usanetwork_episodes.context.inc
+ */
+
+/**
  * Implements hook_context_default_contexts().
  */
 function usanetwork_episodes_context_default_contexts() {
@@ -62,13 +67,19 @@ function usanetwork_episodes_context_default_contexts() {
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_consumptionator',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-82',
         ),
-        'usanetwork_episodes-usanetwork_episodes_gallery_rec' => array(
+        'usanetwork_episodes-usanetwork_episodes_main_block' => array(
           'module' => 'usanetwork_episodes',
-          'delta' => 'usanetwork_episodes_gallery_rec',
+          'delta' => 'usanetwork_episodes_main_block',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-81',
+        ),
+        'usanetwork_episodes-usanetwork_episode_rel_content' => array(
+          'module' => 'usanetwork_episodes',
+          'delta' => 'usanetwork_episode_rel_content',
+          'region' => 'content',
+          'weight' => '-80',
         ),
       ),
     ),

@@ -14,7 +14,6 @@
         <?php if (isset($additional)): ?>
           <div class="additional"><span><?php print $additional; ?></span></div>
         <?php endif; ?>
-
       </div>
     </div>
   </a>

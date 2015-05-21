@@ -136,7 +136,7 @@
     }
     h2 {
       color: #ffffff;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 15px;
       margin: 0;
       text-transform: uppercase;
@@ -336,6 +336,9 @@
         @include breakpoint($bp-min-641-width) {
           height: 100%!important;
         }
+        @include breakpoint($bp-640-width) {
+          width: 100%;
+        }
       }
       li {
         float: left;
@@ -445,7 +448,7 @@
     & a {
       color: #ffffff;
       display: block;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 15px;
       letter-spacing: 1px;
       line-height: 40px;

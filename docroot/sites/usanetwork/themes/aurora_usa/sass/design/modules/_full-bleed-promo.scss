@@ -23,13 +23,27 @@
       margin-right: 0;
       text-align: center;
     }
+    &.sponsored-enable {
+      margin-right: 0;
+      max-width: none;
+      @include breakpoint($bp-1024-width) {
+        margin-right: 0;
+      }
+      @include breakpoint($bp-640-width) {
+        margin-right: 0;
+        text-align: left;
+      }
+    }
     & > a {
       display: block;
     }
     .sponsored {
-      width: 100%;
-      iframe {
-        width: 100%;
+      margin-right: 330px;
+      @include breakpoint($bp-1024-width) {
+        margin-right: 320px;
+      }
+      @include breakpoint($bp-640-width) {
+        margin-right: 0;
       }
     }
   }

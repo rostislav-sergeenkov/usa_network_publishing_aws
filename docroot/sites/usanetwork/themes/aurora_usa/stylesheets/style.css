@@ -29100,14 +29100,36 @@ body.blog .view-display-id-blog_content .views-row {
     text-align: center;
   }
 }
+#full-bleed-promo .block-content.sponsored-enable {
+  margin-right: 0;
+  max-width: none;
+}
+@media (max-width: 1024px) {
+  #full-bleed-promo .block-content.sponsored-enable {
+    margin-right: 0;
+  }
+}
+@media (max-width: 640px) {
+  #full-bleed-promo .block-content.sponsored-enable {
+    margin-right: 0;
+    text-align: left;
+  }
+}
 #full-bleed-promo .block-content > a {
   display: block;
 }
 #full-bleed-promo .block-content .sponsored {
-  width: 100%;
+  margin-right: 330px;
 }
-#full-bleed-promo .block-content .sponsored iframe {
-  width: 100%;
+@media (max-width: 1024px) {
+  #full-bleed-promo .block-content .sponsored {
+    margin-right: 320px;
+  }
+}
+@media (max-width: 640px) {
+  #full-bleed-promo .block-content .sponsored {
+    margin-right: 0;
+  }
 }
 #full-bleed-promo .block-advert {
   height: 250px;

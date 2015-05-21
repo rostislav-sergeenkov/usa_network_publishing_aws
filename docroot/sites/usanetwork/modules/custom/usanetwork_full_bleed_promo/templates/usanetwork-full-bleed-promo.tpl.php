@@ -12,7 +12,7 @@
           <?php print $advert_block; ?>
         <?php endif; ?>
       </div>
-      <div class="block-content">
+      <div class="block-content <?php print !empty($content_id)? 'sponsored-enable' : ''; ?>">
         <?php if (!empty($content_id)) : ?>
           <div class="sponsored" data-mpspath="<?php print $content_id; ?>" data-scalemps="1"></div>
         <?php else : ?>

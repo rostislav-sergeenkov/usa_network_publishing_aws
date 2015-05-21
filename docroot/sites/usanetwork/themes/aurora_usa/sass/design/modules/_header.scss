@@ -208,7 +208,7 @@ header {
             color: #ffffff;
             cursor: pointer;
             display: block;
-            font-family: $avalon-demi;
+            font-family: $avalon-medium;
             font-size: 14px;
             height: 100%;
             line-height: 50px;
@@ -233,7 +233,7 @@ header {
                 border-radius: 50%;
                 color: #ffffff;
                 display: block;
-                font-family: $avalon-demi;
+                font-family: $avalon-medium;
                 font-size: 11px;
                 height: 11px;
                 left: 40px;
@@ -322,7 +322,7 @@ header {
         color: $header-tab-text;
         cursor: pointer;
         display: block;
-        font-family: $avalon-demi;
+        font-family: $avalon-medium;
         font-size: 15px;
         height: 100%;
         line-height: 90px;
@@ -381,7 +381,7 @@ header {
       border-radius: 50%;
       color: #ffffff;
       display: block;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 12px;
       height: 18px;
       left: 50%;
@@ -541,7 +541,7 @@ header {
       background: $bottom-footer-back;
       border: none;
       color: $footer-links;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 37px;
       left: 0;
       outline: none;
@@ -632,7 +632,7 @@ header {
                   }
                   .meta {
                     .title {
-                      font-family: $avalon-demi;
+                      font-family: $avalon-medium;
                       font-size: 15px;
                       letter-spacing: 1px;
                       line-height: 22px;
@@ -731,7 +731,7 @@ header {
         position: relative;
         h2 {
           color: $footer-links;
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           font-size: 20px;
           text-transform: uppercase;
         }
@@ -953,7 +953,7 @@ header {
             .live-icon {
               border: 1px solid #ffffff;
               border-radius: 4px;
-              font-family: $avalon-demi;
+              font-family: $avalon-medium;
               font-size: 18px;
               font-style: normal;
               letter-spacing: 1.5px;
@@ -1137,7 +1137,7 @@ header {
             margin-left: 0px;
             .title {
               color: #ffffff;
-              font-family: $avalon-demi;
+              font-family: $avalon-medium;
               font-size: 20px;
               letter-spacing: 1px;
               text-transform: uppercase;
@@ -1162,7 +1162,7 @@ header {
           }
         }
         .on-now-panel-title {
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           left: 0;
           position: absolute;
           top: -30px;
@@ -1201,7 +1201,7 @@ header {
             &.live-icon {
               border: 1px solid #ffffff;
               border-radius: 4px;
-              font-family: $avalon-demi;
+              font-family: $avalon-medium;
               font-size: 18px;
               letter-spacing: 1.5px;
               line-height: 22px;
@@ -1319,7 +1319,7 @@ header {
           }
           .episode-info {
             color: #ffffff;
-            font-family: $avalon-demi;
+            font-family: $avalon-medium;
             font-size: 12px;
             line-height: 1.3;
             margin-top: 20px;
@@ -1400,7 +1400,7 @@ header {
                 line-height: 16px;
               }
               .title {
-                font-family: $avalon-demi;
+                font-family: $avalon-medium;
                 font-size: 16px;
                 letter-spacing: 1px;
                 line-height: 22px;
@@ -1584,7 +1584,7 @@ header {
             display: table-cell;
             height: 100%;
             color: #ffffff;
-            font-family: $avalon-demi;
+            font-family: $avalon-medium;
             font-size: 20px;
             line-height: 90px;
             text-transform: uppercase;
@@ -1598,6 +1598,7 @@ header {
             a, h1 {
               color: #ffffff;
               display: block;
+              font-family: $avalon-medium;
               height: 100%;
               max-width: 320px;
               padding: 0px 30px;

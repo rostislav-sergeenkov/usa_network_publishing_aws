@@ -2462,7 +2462,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid, $filter = NUL
     }
   }
 
-  if ($current_position_index > 0) {
+  if ($current_position_index >= 0) {
     $episodes_to_go = array_slice($items, $current_position_index);
     $old_episodes = array_slice($items, 0, $current_position_index);
 
@@ -2667,6 +2667,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if (!empty($section_object->field_ms_timeline_gallery)) {
               $node = $section_wrapper->field_ms_timeline_gallery->value();
               $omniture_prop5 = t($entity->title . ' : Timeline : ' . $node->title);
+              $omniture_pagename = t($entity->title . ' : Timeline SlideShow : S1 Episode 1 | Pilot | Scene 1');
               $umbel = $node->title;
             }
           }

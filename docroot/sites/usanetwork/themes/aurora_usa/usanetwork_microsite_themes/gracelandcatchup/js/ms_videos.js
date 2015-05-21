@@ -190,7 +190,7 @@
       }
 
       if ($('#video-filter').length) {
-        filter = $('#video-filter .filter-item.active').text();
+        filter = $('#video-filter .filter-item.active').attr('data-filter-name');
         url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
       }
       else {

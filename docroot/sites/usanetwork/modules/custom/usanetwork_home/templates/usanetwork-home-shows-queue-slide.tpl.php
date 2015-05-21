@@ -4,7 +4,7 @@
  */
 ?>
 <div class="node node-usanetwork-promo show-color-border<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?>" <?php if (!empty($content_id)): print 'data-mpspath=' . $content_id; endif ?>>
-  <a class="close-button" href="#"></a>
+  <a class="close-button" href="javascript:void(0)"></a>
   <a class="show-open" href="javascript:void(0)">
     <div class="meta-wrapper">
       <div class="meta-back"></div>

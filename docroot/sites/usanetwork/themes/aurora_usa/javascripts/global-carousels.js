@@ -125,10 +125,7 @@
                     }
                   },
                   tap: function (event, target) {
-                    if ((event instanceof MouseEvent) && event.button != 0) {
-                      return false;
-                    }
-                    if (!$carousel.hasClass('stop')) {
+                    var tapHandler = function() {
                       if ($(target).attr('href')) {
                         if (!$(target).hasClass('show-open')) {
                           window.location = $(target).attr('href');
@@ -145,24 +142,52 @@
                         }
                       } else {
                         var link = $(target).closest('a');
-                        if (link.length == 0) {
-                          return false;
-                        }
-                        if (!link.hasClass('show-open')) {
-                          window.location = link.attr('href');
-                        }
-                        else {
+
+                        if ($(target).find('a.show-open').length > 0) {
                           if ($container.hasClass('start')) {
                             Drupal.behaviors.global_carousels.swipeHideDescription($container);
+
                             setTimeout(function () {
-                              Drupal.behaviors.global_carousels.showOpen($(target));
+                              Drupal.behaviors.global_carousels.showOpen($(target).find('a.show-open'));
                             }, 600);
                           }
                           else {
+                            Drupal.behaviors.global_carousels.showOpen($(target).find('a.show-open'));
+                          }
+                        }
+
+                        if (link.length == 0) {
+                          return false;
+                        }
+
+                        if (!link.hasClass('show-open')) {
+                          window.location = link.attr('href');
+                        } else {
+                          if ($container.hasClass('start')) {
+                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
+
+                            setTimeout(function () {
+                              Drupal.behaviors.global_carousels.showOpen($(target));
+                            }, 600);
+                          } else {
                             Drupal.behaviors.global_carousels.showOpen($(target));
                           }
                         }
                       }
+                    };
+
+                    if ((event instanceof MouseEvent) && event.button != 0) {
+                      return false;
+                    }
+
+                    if (($carousel.find('li.active').length > 0) && ($carousel.hasClass('stop'))) {
+                      $carousel.unbind('show:close');
+                      $carousel.on('show:close', function() {
+                        tapHandler();
+                      });
+                      Drupal.behaviors.global_carousels.showClose($carousel.find('li.active'));
+                    } else {
+                      tapHandler();
                     }
                   }
                 });
@@ -343,6 +368,7 @@
       var current_left = parseInt(carousel.css('left'));
       var width = desktop_show_open_width;
       var item_width = current_item.width();
+
       if (window.innerWidth >= window_size_desktop_large) {
         var width = desktop_show_open_width_large;
       }
@@ -389,6 +415,7 @@
       item.animate({width: item_width}, 500, 'easeOutQuint', function(){
         item.removeAttr('style');
         item.find('.show-open').removeAttr('style');
+        carousel.trigger('show:close');
       });
       setTimeout(function () {
         item.removeClass('active');

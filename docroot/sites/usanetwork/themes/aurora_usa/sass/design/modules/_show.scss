@@ -81,6 +81,7 @@
                 text-align: center;
                 top: 50%;
                 width: 18px;
+                cursor: pointer;
                 z-index: 2;
                 @include breakpoint($bp-min-1901-width) {
                   width: 30px;
@@ -184,6 +185,7 @@
           position: absolute;
           margin-top: -8px;
           right: 10px;
+          cursor: pointer;
           top: 50%;
           @include breakpoint($bp-min-1901-width) {
             font-size: 14px;

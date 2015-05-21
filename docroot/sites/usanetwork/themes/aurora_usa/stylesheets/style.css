@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -68,6 +68,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   top: 0;
   width: 3px;
   z-index: 2;
+  cursor: pointer;
 }
 
 .show-color {
@@ -14575,6 +14576,7 @@ footer h2 {
     text-align: center;
     top: 50%;
     width: 18px;
+    cursor: pointer;
     z-index: 2;
   }
   .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover .desktop {
@@ -14661,6 +14663,7 @@ footer h2 {
   position: absolute;
   margin-top: -8px;
   right: 10px;
+  cursor: pointer;
   top: 50%;
 }
 @media (min-width: 1901px) {

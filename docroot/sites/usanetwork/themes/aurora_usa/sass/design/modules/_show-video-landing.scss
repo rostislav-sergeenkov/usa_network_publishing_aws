@@ -5,11 +5,14 @@
   position: relative;
   width: 100%;
   .upper-menu {
-    padding: 0 30px 20px 30px;
+    padding: 0 30px;
     background: $header-tab-back;
     @include clear();
     @include breakpoint($bp-1280-width) {
-      padding: 0 20px 20px 20px;
+      padding: 0 20px;
+    }
+    @include breakpoint($bp-640-width) {
+      padding-bottom: 20px;
     }
     .item-filter {
       .filter-label {
@@ -264,7 +267,23 @@
     .sorters-description {
       width: 100%;
       float: left;
-      margin-top: 1.5em;
+      line-height: 4em;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: $header-tab-text;
+      @include breakpoint($bp-1280-width) {
+        font-size: 12px;
+      }
+      @include breakpoint($bp-640-width) {
+        display: none;
+      }
+      strong {
+        text-transform: uppercase;
+        &:last-child {
+          text-transform: uppercase;
+          font-style: italic;
+        }
+      }
     }
   }
   .video-items-blocks {

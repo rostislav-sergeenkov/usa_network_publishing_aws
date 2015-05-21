@@ -25432,7 +25432,7 @@ yx-axis
 
 /* ---------------------------------------- */
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
-  overflow-y: hidden;
+  overflow: hidden;
   max-height: 43.75vw;
   position: relative;
 }
@@ -25491,6 +25491,10 @@ yx-axis
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
   width: 100%;
+}
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slider {
+  overflow: hidden;
+  width: 1000%;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
   float: left;

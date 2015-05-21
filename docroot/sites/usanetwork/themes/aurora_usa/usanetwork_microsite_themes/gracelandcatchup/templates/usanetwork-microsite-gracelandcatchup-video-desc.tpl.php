@@ -31,13 +31,6 @@
   <div class="video-description"><?php print $description; ?></div>
 <?php endif; ?>
 
-<div id="video-gigya-share" class="video-gigya-share" data-video-thumbnail="<?php print $image; ?>">
-  Share this video:
-  <ul>
-    <li>Facebook</li>
-  </ul>
-</div>
-
 <?php /* if (!empty($season_number) || !empty($episode_number)): ?>
   <div class="video-info">
     <?php if (!empty($season_number)): ?>

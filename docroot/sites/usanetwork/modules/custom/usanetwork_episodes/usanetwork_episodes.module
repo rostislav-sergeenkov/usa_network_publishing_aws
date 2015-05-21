@@ -344,6 +344,10 @@ function _usanetwork_episodes_main_block() {
       'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'air_date_text' => !empty($episode_node->field_original_air_date) ? gmdate('F j, Y', $episode_node_wrapper->field_original_air_date->value->value()) : '',
     );
+    $block = module_invoke('usanetwork_episodes', 'block_view', 'usanetwork_episodes_ep_carousel');
+    $theme_variables['ep_carousel'] = render($block['content']);
+    $block = module_invoke('usanetwork_episodes', 'block_view', 'usanetwork_episodes_gallery_rec');
+    $theme_variables['gallery_rec'] = render($block['content']);
     return theme('usanetwork_episodes_main_block', $theme_variables);
   }
   return '';

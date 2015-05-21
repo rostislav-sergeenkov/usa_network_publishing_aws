@@ -9,7 +9,7 @@
       var slideshowAutoplay,
           slideshowSpeed = 6000,
           sliderAuto = true,
-          slideMove = slideshowSpeed * 0.15;
+          slideMove = slideshowSpeed * 0.1;
 
       if (Drupal.settings.sliderAspot) {
         slideshowAutoplay = Drupal.settings.sliderAspot.slideshowAutoplay;
@@ -18,7 +18,7 @@
         if (slideshowSpeed <= 0) {
           slideshowSpeed = 6000;
         } else {
-          slideMove = slideshowSpeed * 0.15;
+          slideMove = slideshowSpeed * 0.1;
         }
 
         if (slideshowAutoplay === 1) {
@@ -61,7 +61,7 @@
 
         USAN.aspotSlider.animateTimeout = setTimeout(function () {
           animateContent(nextSlideContent);
-        }, slideMove);
+        }, slideMove * 0.5);
 
         var moveIt = function (index) {
           var nextSlideInner = el.get(0).children[index + 1].children[0],

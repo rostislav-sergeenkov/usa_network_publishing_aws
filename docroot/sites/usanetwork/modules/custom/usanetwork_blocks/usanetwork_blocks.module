@@ -845,6 +845,7 @@ function _usanetwork_catchall_related_content() {
             ), 'setting');
             $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
             return theme('usanetwork_tv_shows_related_items_container', array(
+              'title_override' => t('Related Content'),
               'related_items_block' => $block_of_items,
               'load_more_link' => TRUE,
               'show_nid' => $show->nid,

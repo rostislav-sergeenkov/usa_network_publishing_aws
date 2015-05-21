@@ -336,6 +336,9 @@
         @include breakpoint($bp-min-641-width) {
           height: 100%!important;
         }
+        @include breakpoint($bp-640-width) {
+          width: 100%;
+        }
       }
       li {
         float: left;

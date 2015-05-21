@@ -530,13 +530,9 @@
     },
     //scroll to top
     micrositeScrollToTop: function() {
-usa_debug('=========== micrositeScrollToTop -- ' + $('.section.active').attr('id'));
-      var $activeSection = $('.section.active');
-      if ($activeSection.offset.top > 20) {
-        $('.section.active').animate({
-          scrollTop: 0
-        }, 2000);
-      }
+      $('.section.active').animate({
+        scrollTop: 0
+      }, 2000);
     },
 
     //Usa_refreshMicrositeAdsBySection.
@@ -672,7 +668,7 @@ usa_debug(' ====== if videoContainer...');
       Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
       Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true, elem);
-//      Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
+      Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
       if (refreshAdsOmniture) {
         Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
       }
@@ -757,8 +753,6 @@ usa_debug(' ====== if videoContainer...');
       //change video on click to preview elements
       previewItem.click(function (e) {
         e.preventDefault();
-        e.stopPropagation();
-usa_debug('========== previewItem clicked');
         var elem = $(this);
         Drupal.behaviors.microsite_scroll.micrositeClickThumbnail(elem);
       });
@@ -1025,7 +1019,7 @@ usa_debug('========== previewItem clicked');
       // A-SPOT AND PROMO CLICKS - DON'T REMOVE THIS!!!!
       // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
-      $('#show-aspot-microsite .aspot-link, #microsite .node-usanetwork-promo a').click(function (e) {
+      $('#show-aspot-microsite .aspot-link, #microsite #home .node-usanetwork-promo a').click(function (e) {
         var anchorFull = this.href,
             anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull);
 

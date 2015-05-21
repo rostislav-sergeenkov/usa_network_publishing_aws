@@ -176,6 +176,26 @@ function usanetwork_episodes_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-episodes-episodes-carousel',
     ),
+    'usanetwork_episodes_episodes_carousel_item_h' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'episode_number' => NULL,
+        'season_number' => NULL,
+        'active' => NULL,
+      ),
+      'template' => 'templates/usanetwork-episodes-episodes-carousel-item-h',
+    ),
+    'usanetwork_episodes_episodes_carousel_item_v' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'episode_number' => NULL,
+        'season_number' => NULL,
+        'active' => NULL,
+      ),
+      'template' => 'templates/usanetwork-episodes-episodes-carousel-item-v',
+    ),
     'usanetwork_episodes_gallery_rec' => array(
       'variables' => array(
         'gallery_html' => NULL,
@@ -276,7 +296,11 @@ function _usanetwork_episodes_episodes_carousel() {
       $result = $query->execute();
       if (isset($result['node'])) {
         $episodes = entity_load('node', array_keys($result['node']));
-        $episodes_variables = array();
+        $rendered_items = array();
+        if ($season_num_items = field_get_items('node', $season_node, 'field_season_id')) {
+          $season_num_items = reset($season_num_items);
+          $season_number = $season_num_items['value'];
+        }
         foreach ($episodes as $episode) {
           if (!empty($episode->field_tv_cover_media)) {
             $image = reset(field_get_items('node', $episode, 'field_tv_cover_media'));
@@ -285,16 +309,17 @@ function _usanetwork_episodes_episodes_carousel() {
             $field_episode_items = reset(field_get_items('node', $episode, 'field_episode_number'));
             $episode_number = $field_episode_items['value'];
           }
-          $episodes_variables[] = array(
+          $episode_variables = array(
             'title' => !empty($episode->title) ? $episode->title : '',
             'episode_number' => !empty($episode_number) ? $episode_number : '',
-            'image' => !empty($image['uri']) ? image_style_url('634x349', $image['uri']) : '',
             'url' => url('node/' . $episode->nid),
+            'active' => ($episode->nid == $season_node->nid) ? TRUE : FALSE,
+            'season_number' => !empty($season_number) ? $season_number : '',
           );
-        }
-        if ($season_num_items = field_get_items('node', $season_node, 'field_season_id')) {
-          $season_num_items = reset($season_num_items);
-          $season_number = $season_num_items['value'];
+          $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
+          $rendered_items['horizontal'][] = theme('usanetwork_episodes_episodes_carousel_item_h', $episode_variables);
+          $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+          $rendered_items['vertical'][] = theme('usanetwork_episodes_episodes_carousel_item_v', $episode_variables);
         }
         if (!empty($season_node->field_show)) {
           $field_show_items = reset(field_get_items('node', $season_node, 'field_show'));
@@ -302,7 +327,7 @@ function _usanetwork_episodes_episodes_carousel() {
         }
         $theme_variables = array(
           'season_number' => !empty($season_number) ? $season_number : '',
-          'episodes' => !empty($episodes_variables) ? $episodes_variables : array(),
+          'episodes' => !empty($rendered_items) ? $rendered_items : array(),
           'all_episodes_link' => !empty($show_id) ? url('node/' . $show_id .'/episodes') : '',
         );
         return theme('usanetwork_episodes_episodes_carousel', $theme_variables);

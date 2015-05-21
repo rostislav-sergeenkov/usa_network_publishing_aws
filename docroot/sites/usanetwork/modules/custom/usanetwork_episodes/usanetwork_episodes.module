@@ -461,23 +461,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
 
     if (!empty($episodes_data)) {
       foreach ($episodes_data as $episode_data) {
-        $image_url = '';
-        $content_url = '';
-
-        if (!empty($episode_data->full_episode)) {
-          $image_url = usanetwork_core_api_get_content_image('file', $episode_data->fid);
-          $content_url = url('file/' . $episode_data->fid);
-        }
-        elseif (empty($episode_data->preview_fid)) {
-          $image_url = usanetwork_core_api_get_content_image('file', $episode_data->preview_fid);
-          $content_url = url('file/' . $episode_data->preview_fid);
-        }
-
-        // Excepted situation
-        if (empty($image_url)) {
-          $image_url = usanetwork_core_api_get_content_image('file', $episode_data->fid);
-          $content_url = url('node/' . $episode_data->episode_nid);
-        }
+        $image_url = usanetwork_core_api_get_content_image('node', $episode_data->nid);
 
         $theme_item_variables = array(
           'full_episode_url' => isset($episode_data->fid)
@@ -497,7 +481,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'expiration_date' => !empty($episode_data->expiration_date)
             ? gmdate('m/d/Y', $episode_data->expiration_date)
             : NULL,
-          'guide_url' => url('node/' . $tv_show_node->nid),
+          'guide_url' => url('node/' . $episode_data->nid),
           'gallery_url' => url('node/' . $tv_show_node->nid),
         );
 
@@ -563,7 +547,7 @@ function _usanetwork_episodes_get_season_ids($tv_show_nid) {
   return $query->execute()->fetchAll();
 }
 
-function _usanetwork_episodes_get_season_episodes_data_full_videos($season_number, $show_nid) {
+/*function _usanetwork_episodes_get_season_episodes_data_full_videos($season_number, $show_nid) {
   $query = db_select('mpx_video', 'mpxv');
   // Add default fields
   $query->fields('mpxv', array('fid', 'title', 'airdate', 'available_date', 'expiration_date', 'status'));
@@ -683,6 +667,32 @@ function _usanetwork_episodes_merge_season_episodes_data($full_episodes, $previe
   }
 
   return $previews;
+}*/
+
+function _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_number, $episode_number) {
+  $query = db_select('mpx_video', 'mpxv');
+  $query->fields('mpxv', array('fid', 'title', 'airdate', 'available_date', 'expiration_date', 'status'));
+  $query->condition('mpxv.status', '1');
+  // Join Season number
+  $query->join('field_data_field_mpx_season_number', 'mpx_season_number', 'mpx_season_number.entity_id=mpxv.fid');
+  $query->condition('mpx_season_number.field_mpx_season_number_value', $season_number);
+  // Join Episode number
+  $query->join('field_data_field_mpx_episode_number', 'mpx_episode_number', 'mpx_episode_number.entity_id=mpxv.fid');
+  $query->condition('mpx_episode_number.field_mpx_episode_number_value', $episode_number);
+  // Join TV Show
+  $query->join('field_data_field_show', 'mpx_show_field', 'mpx_show_field.entity_id=mpxv.fid');
+  $query->condition('mpx_show_field.field_show_target_id', $show_nid);
+  // Join MPX Full episode
+  $query->join('field_data_field_mpx_full_episode', 'full_episode_field', 'full_episode_field.entity_id=mpxv.fid');
+  $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+
+  $result = $query->execute()->fetchAll();
+
+  if (!empty($result[0])) {
+    return $result[0];
+  }
+
+  return NULL;
 }
 
 /**
@@ -693,9 +703,36 @@ function _usanetwork_episodes_merge_season_episodes_data($full_episodes, $previe
  * @return array
  */
 function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid) {
-  $full_episodes = _usanetwork_episodes_get_season_episodes_data_full_videos($season_number, $show_nid);
-  $preview_episodes = _usanetwork_episodes_get_season_episodes_data_previews($season_number, $show_nid);
-  $result = _usanetwork_episodes_merge_season_episodes_data($full_episodes, $preview_episodes);
+  $query = db_select('node', 'episode_node');
+  $query->fields('episode_node', array('nid', 'title'));
+  $query->condition('episode_node.type', 'tv_episode');
+  $query->condition('episode_node.status', NODE_PUBLISHED);
+  // Join Episode number
+  $query->join('field_data_field_episode_number', 'episode_number', 'episode_number.entity_id=episode_node.nid');
+  $query->addField('episode_number', 'field_episode_number_value', 'episode_number');
+  // Join Season
+  $query->join('field_data_field_season', 'season_field', 'season_field.entity_id=episode_node.nid');
+  $query->addField('season_field', 'field_season_target_id', 'season_target_nid');
+  // Join Season ID
+  $query->join('field_data_field_season_id', 'season_id_field', 'season_id_field.entity_id=season_field.field_season_target_id');
+  $query->addField('season_id_field', 'field_season_id_value', 'season_number');
+  $query->condition('season_id_field.field_season_id_value', $season_number);
+  // Join Show
+  $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=episode_node.nid');
+  $query->addField('show_field', 'field_show_target_id', 'show_nid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->condition('show_field.bundle', 'tv_episode');
+  // Join short Episode description
+  $query->leftJoin('field_data_field_short_synopsis', 'short_description_field', 'short_description_field.entity_id=episode_node.nid');
+  $query->addField('short_description_field', 'field_short_synopsis_value', 'short_description');
+  // Join full Episode description
+  $query->leftJoin('field_data_body', 'full_description_field', 'full_description_field.entity_id=episode_node.nid');
+  $query->addField('full_description_field', 'body_value', 'full_description');
+  // Join Preview field
+  $query->leftJoin('field_data_field_tve_preview_episode', 'preview_field', 'preview_field.entity_id=episode_node.nid');
+  $query->addField('preview_field', 'field_tve_preview_episode_target_id', 'preview_fid');
+
+  $result = $query->execute()->fetchAll();
 
   if ($result) {
     // Sort by episode number using integer value instead string
@@ -712,6 +749,14 @@ function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid
     });
 
     foreach ($result as &$result_item) {
+      $episode_data = _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_number, $result_item->episode_number);
+
+      if (!empty($episode_data)) {
+        foreach ($episode_data as $key => $value) {
+          $result_item->{$key} = $value;
+        }
+      }
+
       $result_item->description = _usanetwork_episodes_get_season_episodes_description($result_item);
     }
   }

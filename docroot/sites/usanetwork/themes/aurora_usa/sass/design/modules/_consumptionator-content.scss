@@ -154,6 +154,7 @@
       }
       @include breakpoint($bp-480-width) {
         font-size: 20px;
+        width: 90%;
       }
     }
   }

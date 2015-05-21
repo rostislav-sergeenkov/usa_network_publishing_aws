@@ -13690,6 +13690,7 @@ footer h2 {
 @media (max-width: 480px) {
   .consum-sidebar .items-block-title h2 {
     font-size: 20px;
+    width: 90%;
   }
 }
 .consum-sidebar .episodes-list-slider {

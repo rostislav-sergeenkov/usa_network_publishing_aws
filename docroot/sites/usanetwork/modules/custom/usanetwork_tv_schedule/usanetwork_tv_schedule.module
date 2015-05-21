@@ -878,6 +878,80 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
   return $output;
 }
 
+function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
+  if ($schedule_item->program_type == 'movie') {
+    // Find nodes with the same title (applicable for Catchall pages and others in future)
+    $entities = entity_load('node', FALSE, array('title' => $schedule_item->title));
+
+    if (!empty($entities)) {
+      $entity_image_fid = '';
+
+      foreach ($entities as $node_entity) {
+        switch ($node_entity->type) {
+          case 'catchall_page':
+            $og_image_field = field_get_items('node', $node_entity, 'field_usa_og_image');
+
+            if (!empty($og_image_field)) {
+              $entity_image_fid = reset($og_image_field[0]);
+              break;
+            }
+
+            $catchall_media_field = field_get_items('node', $node_entity, 'field_usa_catchall_media');
+
+            if (!empty($catchall_media_field)) {
+              $entity_image_fid = reset($catchall_media_field[0]);
+              break;
+            }
+
+            break;
+        }
+      }
+
+      if (!empty($entity_image_fid)) {
+        $file = file_load($entity_image_fid);
+
+        return $file->uri;
+      }
+    }
+  }
+  else {
+    $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
+    $show_name = $schedule_item->show_title;
+
+    if (isset($show_title_aliases[$schedule_item->show_title])) {
+      $show_name = $show_title_aliases[$show_name];
+    }
+    else {
+      $additional_aliases = array(
+        'Law & Order: Special Victims' => 'Law & Order: SVU',
+        'CSI: Crime Scene Investigation' => 'CSI',
+      );
+
+      if (isset($additional_aliases[$schedule_item->show_title])) {
+        $show_name = $additional_aliases[$show_name];
+      }
+    }
+
+    if (!empty($show_name)) {
+      $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+
+      if (!empty($show_nid)) {
+        $show_node = node_load($show_nid);
+
+        if (!empty($show_node->field_usa_tv_on_now)) {
+          $image_field = field_get_items('node', $show_node, 'field_usa_tv_on_now');
+
+          if (!empty($image_field)) {
+            return $image_field[0]['uri'];
+          }
+        }
+      }
+    }
+  }
+
+  return '';
+}
+
 /**
  * TV schedule page menu callback
  */
@@ -916,10 +990,15 @@ function usanetwork_tv_schedule_schedule_page() {
   $shows_filter = array();
   if (!empty($tv_schedule)) {
     foreach ($tv_schedule as $tv_schedule_item) {
+      $item_image = _usanetwork_tv_schedule_get_schedule_item_image($tv_schedule_item);
+
+      if (!empty($item_image)) {
+        $item_image = image_style_url('634x349', $item_image);
+      }
+
       $show_name = ($tv_schedule_item->program_type == 'movie') ?  t('USA MOVIE') : $tv_schedule_item->show_title;
       $episode_title = $tv_schedule_item->title;
       $rating = $tv_schedule_item->rating_type;
-      $episode_image_uri = '';
       $theme_row_variables = array();
       $filter_show_node = NULL;
       _usanetwork_tv_schedule_correct_show_title($show_name);
@@ -973,27 +1052,8 @@ function usanetwork_tv_schedule_schedule_page() {
       }
       $tv_episode = _usanetwork_tv_schedule_get_episode($episode_title, $show_nid);
 
-      if (!empty($tv_episode)) {
-        $episode_image_uri = $episode_image_uri = _usanetwork_mpx_video_get_image_path($tv_episode);
-      }
-
-      $show_logo_url = '';
       $show_description = '';
-
-      $on_now_field = field_get_items('node', $show_node, 'field_usa_tv_on_now');
       $show_body_field = field_get_items('node', $show_node, 'body');
-
-      if (!empty($on_now_field)) {
-        $show_logo_url = image_style_url('634x349', $on_now_field[0]['uri']);
-      }
-
-      if (empty($show_logo_url)) {
-        $logo_field = field_get_items('node', $show_node, 'field_logo');
-
-        if (!empty($logo_field)) {
-          $show_logo_url = image_style_url('634x349', $logo_field[0]->uri);
-        }
-      }
 
       if (!empty($show_body_field)) {
         $show_description = $show_body_field[0]['value'];
@@ -1021,8 +1081,8 @@ function usanetwork_tv_schedule_schedule_page() {
               : '',
         'rating' => $rating,
         'episode_url' => !empty($tv_episode) ? url('file/' . $tv_episode->fid) : '',
-        'episode_image_url' => $episode_image_uri,
-        'show_image_url' => $show_logo_url,
+        'episode_image_url' => $item_image,
+        'show_image_url' => $item_image,
         'episode_description' => $description,
         'show_description' => $show_description,
       );
@@ -1040,6 +1100,7 @@ function usanetwork_tv_schedule_schedule_page() {
       $schedule_rows[$start_time] .= theme('usanetwork_tv_schedule_table_element', $theme_row_variables);
     }
   }
+
   asort($shows_filter);
   $shows_filter = array(t('Show all')) + $shows_filter;
   if (!empty($filter_show_nid)) {

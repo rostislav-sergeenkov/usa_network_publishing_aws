@@ -3322,3 +3322,25 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
 
   return theme($theme_name, $theme_variables);
 }
+
+/*
+ * Function return true if show has full episodes
+ */
+function usanetwork_tv_shows_show_has_full_episodes($show_id) {
+  if (is_numeric($show_id)) {
+    $query = db_select('file_managed', 'f');
+    $query->fields('f', array('fid'));
+    $query->join('field_data_field_mpx_full_episode', 'full_episode', 'f.fid=full_episode.entity_id');
+    $query->join('field_data_field_show', 's', 'f.fid=s.entity_id');
+    $query->join('mpx_video', 'mv', 'f.fid=mv.fid');
+    $query->condition('f.type', 'mpx_video_2');
+    $query->condition('f.published', '1');
+    $query->condition('f.status', '1');
+    $query->condition('mv.status', '1');
+    $query->condition('s.field_show_target_id', $show_id);
+    $query->condition('full_episode.field_mpx_full_episode_value', 1);
+    $query->range(0, 1);
+    $result = $query->execute()->fetchAssoc();
+  }
+  return !empty($result) ? TRUE : FALSE;
+}

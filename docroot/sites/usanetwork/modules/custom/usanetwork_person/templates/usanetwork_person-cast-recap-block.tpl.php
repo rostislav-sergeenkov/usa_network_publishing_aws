@@ -24,10 +24,8 @@
     </div>
     <?php if (!empty($button_url)): ?>
       <div class="video-button show-color hover-avail">
-        <a href="<?php print $button_url; ?>"><?php print t('Watch full episodes'); ?></a>
+        <?php print $button_url; ?>
       </div>
     <?php endif; ?>
   </div>
 </div>
-
-

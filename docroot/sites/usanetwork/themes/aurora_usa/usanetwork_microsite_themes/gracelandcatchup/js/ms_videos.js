@@ -298,14 +298,16 @@
         return false;
       }
 
-      Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+      if (!Drupal.behaviors.ms_global.globalInitialPageLoad && refreshAdsOmniture) {
+        Drupal.behaviors.ms_global.setOmnitureData(anchor, itemTitle);
+      }
+      if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
+        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+      }
       Drupal.behaviors.ms_global.changeTitle(itemTitle, anchorSection, basePageName);
       Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
       Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, elem);
       Drupal.behaviors.ms_global.scrollToTop();
-      if (refreshAdsOmniture) {
-        Drupal.behaviors.ms_global.setOmnitureData(anchor, itemTitle);
-      }
     },
 
     //AD 300x250 with class ADDED

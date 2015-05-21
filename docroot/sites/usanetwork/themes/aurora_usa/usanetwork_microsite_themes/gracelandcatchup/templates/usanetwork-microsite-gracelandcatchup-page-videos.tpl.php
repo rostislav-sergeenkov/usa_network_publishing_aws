@@ -102,6 +102,10 @@
             <?php print $video_desc; ?>
           <?php endif; ?>
         </div>
+        <div id="video-gigya-share-container">
+          <div id="video-gigya-share-title">Share this video</div>
+          <div id="video-gigya-share" class="video-gigya-share" data-video-thumbnail="<?php print $image; ?>"></div>
+        </div>
       </div>
     </div>
   </div>

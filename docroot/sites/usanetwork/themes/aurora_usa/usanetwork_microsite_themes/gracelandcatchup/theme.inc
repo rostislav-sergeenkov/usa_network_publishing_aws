@@ -219,6 +219,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
 //      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/ms_characters_styles.css',
       $site_theme_path . '/css/fonts.css',
       $site_theme_path . '/css/ms_styles.css',
+      $site_theme_path . '/css/ms_gigya_share.css',
       $site_theme_path . '/css/ms_home.css',
       $site_theme_path . '/css/ms_videos.css',
       $site_theme_path . '/css/ms_timeline.css',

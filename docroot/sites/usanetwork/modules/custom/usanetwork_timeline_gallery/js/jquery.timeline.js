@@ -141,25 +141,7 @@ Project demo: http://shindiristudio.com/timeline
             $(this).wrapInner('<div class="'+timeline_settings.itemOpenClass.substr(1)+'-cwrapper"  />').find('div:first').css({position: 'relative'});
           });
 
-// Get new queries
           // Set timeline widths
-/*
-          var	$timelineItemsHolder = $this.find('.timeline-items-holder'),
-              timelineWidth = $timelineItemsHolder.width(),
-              $timelineItems =  $this.find('.timeline-items'),
-              $line = $this.find('.timeline-wrapper'),
-              spaceBetweenItemsAndNextPrevButtons = 30,
-              itemWidth = timelineWidth - ($this.find('.timeline-left').width() * 2) - timeline_settings.itemMargin - spaceBetweenItemsAndNextPrevButtons,
-//              margin = 300/2 - (itemWidth + timeline_settings.itemMargin)*(1/2 + startIndex) ,
-//              width = (itemWidth + timeline_settings.itemMargin)*$items.length + (itemOpenWidth + timeline_settings.itemMargin) + 660 ,
-              margin = timelineWidth - ((itemWidth + timeline_settings.itemMargin)/2),
-              width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + 32, // 16px padding on left and right of .timeline-items
-              data = $this.data('timeline');
-
-          // Set margin so start element would place in middle of the screen
-          $timelineItems.css({width: width, marginLeft: margin});
-//          $timelineItems.css({marginLeft: margin});
-*/
           var	$timelineItemsHolder = $this.find('.timeline-items-holder'),
               $timelineItems =  $this.find('.timeline-items'),
               timelineWidth = $('.timelineFlat.tl3').width(),
@@ -169,26 +151,11 @@ Project demo: http://shindiristudio.com/timeline
                 imgHeight = Math.floor(itemWidth * 0.5625);
                 $items.find('.timeline-item-image').height(imgHeight);
               }
-//              imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image img').width(),
-//              imgHeight = Math.floor(imgWidth * 0.648);
-//              itemHeight = imgHeight, // $timelineItems.find('.timeline-item:first img').height(),
-//              timelineWidth = $timelineItemsHolder.width(),
-//              $line = $this.find('.timeline-wrapper'),
-//              spaceBetweenItemsAndNextPrevButtons = 30,
-//              itemWidth = timelineWidth - ($this.find('.timeline-left').width() * 2) - timeline_settings.itemMargin - spaceBetweenItemsAndNextPrevButtons,
-/*
-              timelineItemsPaddingLeft = parseInt($timelineItems.css('padding-left')),
-              timelineItemsPaddingRight = parseInt($timelineItems.css('padding-right')),
-              timelineItemsPadding = timelineItemsPaddingLeft + timelineItemsPaddingRight,
-              margin = timelineWidth - ((itemWidth + timeline_settings.itemMargin)/2),
-              width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + timelineItemsPadding; // 16px padding on left and right of .timeline-items
-*/
               margin = Math.ceil((timelineWidth - itemWidth)/2);
 
-//              $items.css({height: itemHeight});
 //usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', startIndex: ' + startIndex + ', $items.length: ' + $items.length + ', itemOpenWidth: ' + itemOpenWidth + ' => margin: ' + margin + ', width: ' + width + ', timelineItemsPaddingLeft: ' + timelineItemsPaddingLeft + ', timelineItemsPaddingRight: ' + timelineItemsPaddingRight + ', timelineItemsPadding: ' + timelineItemsPadding + ', $timelineItems: ');
-usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', startIndex: ' + startIndex + ', $items.length: ' + $items.length + ', itemOpenWidth: ' + itemOpenWidth + ' => margin: ' + margin + ', $timelineItems: ');
-usa_debug($timelineItems);
+//usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', startIndex: ' + startIndex + ', $items.length: ' + $items.length + ', itemOpenWidth: ' + itemOpenWidth + ' => margin: ' + margin + ', $timelineItems: ');
+//usa_debug($timelineItems);
 
           var data = $this.data('timeline');
 
@@ -229,78 +196,6 @@ usa_debug($timelineItems);
               return false;
             }
           });
-
-/*
-          $(document).ready(function(){
-//            $this.find(timeline_settings.itemClass).css({ '-webkit-touch-callout': 'none', '-webkit-user-select': 'none', '-khtml-user-select': 'none', '-moz-user-select': 'none', '-ms-user-select': 'none', 'user-select': 'none'}).find('img').on('dragstart', function(event) {
-            $this.timeline('setWidthHeightMargin');
-
-            $this.find(timeline_settings.itemClass).find('img').on('dragstart', function(event) {
-              if (!($(this).hasClass('timeline-rollover-bottom')))
-                event.preventDefault();
-            });
-
-            $('.timeline-image-rollover-bottom').on('dragstart', function(event) {
-              $(this).addClass("disableClick");
-              event.preventDefault();
-            });
-
-            $('.timeline-image-rollover-bottom').on('mousedown', function(event) {
-              if (!$(this).is("hover")) {
-              $(this).removeClass("disableClick");
-            }
-
-            });
-
-            $('.timeline-image-rollover-bottom').on('click', function(event) {
-              if ($(this).hasClass('disableClick')) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              $(this).removeClass('disableClick')
-            });
-          });
-
-          // WINDOW RESIZING
-          $(window).resize(function() {
-            //var id = $this.find('.active:first').attr('href').substr(1);
-//            var data = $this.data('timeline'),
-//                id = $items.eq(data.currentIndex).attr('data-id');
-            var data = $this.data('timeline');
-                id = $this.find('.timeline-node.active:first').attr('href').substr(1);
-
-            $this.timeline('setWidthHeightMargin');
-/*
-            itemWidth = $items.first().width(),
-            itemOpenWidth = $itemsOpen.first().find('div:first').width();
-
-            data.margin += data.itemCount*(data.itemWidth-itemWidth);
-            data.itemWidth = itemWidth;
-
-            if (data.open) data.margin += (data.itemOpenWidth-itemOpenWidth)/2;
-            data.itemOpenWidth = itemOpenWidth;
-
-
-            if ($('body').width() < 767 && data.open && !data.marginResponse) {
-              data.margin -= (itemWidth+timeline_settings.itemMargin)/2;
-              data.marginResponse = true;
-            }
-            else if ($('body').width() >= 767 && data.marginResponse && data.open) {
-              data.margin += (itemWidth+timeline_settings.itemMargin)/2;
-              data.marginResponse = false;
-            }
-*//*
-usa_debug('=========== data: ');
-usa_debug(data);
-*//*
-            data.noAnimation = true;
-            $this.timeline('goTo', id);
-*//*
-            var dataId = data.items.eq(data.currentIndex-1).attr('data-id');
-            var dataCount = data.items.eq(data.currentIndex-1).attr('data-count');
-            $this.timeline('goTo', dataId, dataCount);
-          });
-*/
 
           // Bind left on click
           $this.find('.timeline-left').click(function(){
@@ -377,20 +272,15 @@ usa_debug(data);
 
         setWidthHeightMargin : function() {
           var $this = this,
-//              itemWidth = data.itemWidth + data.options.itemMargin,
               data = $this.data('timeline'),
               timeline_settings = data.options,
               $timelineItems =  $this.find('.timeline-items'),
               $items = $this.find(timeline_settings.itemClass),
               $lines = $this.find('.timeline-view'),
               timelineWidth = $this.width(), // $this.find('.timeline-items-holder').width(),
-//              itemWidth = $items.first().width(), // Math.ceil(timelineWidth * timeline_settings.percentItemWidth), // $items.first().width(),
               itemWidth = Math.ceil(timelineWidth * timeline_settings.percentItemWidth),
               lineWidth = Math.ceil(timelineWidth * timeline_settings.percentLineWidth);
           if (itemWidth > 2866) itemWidth = 2866;
-//              $line = $this.find('.timeline-wrapper:first'),
-//              margin = 300/2 - (itemWidth + timeline_settings.itemMargin)*(1/2 + startIndex) ,
-//              width = (itemWidth + timeline_settings.itemMargin)*$items.length + (itemOpenWidth + timeline_settings.itemMargin) + 660 ,
           var timelineItemsPaddingLeft = parseInt($timelineItems.css('padding-left')),
               timelineItemsPaddingRight = parseInt($timelineItems.css('padding-right')),
               timelineItemsPaddingTop = parseInt($timelineItems.css('padding-top')),
@@ -398,7 +288,7 @@ usa_debug(data);
               timelineItemsPaddingTopBottom = timelineItemsPaddingTop + timelineItemsPaddingBottom,
               timelineItemsPadding = timelineItemsPaddingLeft + timelineItemsPaddingRight,
               margin = (timelineWidth - (itemWidth + timeline_settings.itemMargin))/2 - timelineItemsPaddingLeft,
-              width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + timelineItemsPadding, // 32, // 16px padding on left and right of .timeline-items
+              width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + timelineItemsPadding,
               imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image').width(),
               imgHeight = Math.floor(imgWidth * 0.5625);
 
@@ -406,7 +296,7 @@ usa_debug(data);
             margin -= (itemWidth + timeline_settings.itemMargin) * data.currentIndex;
           }
 
-usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width + ', imgWidth: ' + imgWidth + ', imgHeight: ' + imgHeight);
+//usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width + ', imgWidth: ' + imgWidth + ', imgHeight: ' + imgHeight);
 
           // reset data values
           data.itemWidth = itemWidth;
@@ -422,7 +312,6 @@ usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWi
             $timelineItems.css({'width': width + 'px', 'margin-left': margin + 'px', 'height': ((imgHeight * 2) + timelineItemsPaddingTopBottom) + 'px'});
           }
           else {
-//            $items.find('.timeline-item-text').css({'height': Math.floor(imgHeight * 0.65) + 'px'});
             $items.css({'width': itemWidth + 'px', 'height': imgHeight + 'px'});
 
             // Set margin so start element would place in middle of the screen
@@ -434,7 +323,7 @@ usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWi
               timelineItemShareHeight = $('#timeline .timeline-item .share:first').height(),
               timelineItemTitleHeight = $('#timeline .timeline-item h2:first').height(),
               timelineItemTextHeight = Math.floor(imgHeight - timelineItemShareHeight - timelineItemTitleHeight - timelineItemTextTopBottomMargin);
-usa_debug('======= timelineItemText height calculation -- timelineItemTextTopBottomMargin: ' + timelineItemTextTopBottomMargin + ', timelineItemShareHeight: ' + timelineItemShareHeight + ', timelineItemTitleHeight: ' + timelineItemTitleHeight + ', timelineItemTextHeight: ' + timelineItemTextHeight);
+//usa_debug('======= timelineItemText height calculation -- timelineItemTextTopBottomMargin: ' + timelineItemTextTopBottomMargin + ', timelineItemShareHeight: ' + timelineItemShareHeight + ', timelineItemTitleHeight: ' + timelineItemTitleHeight + ', timelineItemTextHeight: ' + timelineItemTextHeight);
           $timelineItemText.css({'height': timelineItemTextHeight + 'px'});
 
           $lines.css({'width': lineWidth + 'px'}).parents('.timeline-line').css({'width': lineWidth + 'px'});
@@ -696,7 +585,7 @@ usa_debug('======= timelineItemText height calculation -- timelineItemTextTopBot
 
         // GO TO ITEM
         goTo : function (id, data_count, openElement) {
-usa_debug('========== goTo(' + id + ', ' + data_count + ', ' + openElement + ')');
+//usa_debug('========== goTo(' + id + ', ' + data_count + ', ' + openElement + ')');
           var $this = this,
               data = $this.data('timeline'),
               speed = data.options.scrollSpeed,
@@ -721,7 +610,7 @@ usa_debug('========== goTo(' + id + ', ' + data_count + ', ' + openElement + ')'
 
           // Move if found
           if (found) {
-usa_debug('======= if (found)');
+//usa_debug('======= if (found)');
             // Move lineView (dots) to current element
             var $nodes = $this.find('.timeline-node');
             $nodes.removeClass('active');
@@ -756,7 +645,6 @@ usa_debug('======= if (found)');
             $this.trigger('scrollStart.Timeline');
 
             // Scroll
-//            data.margin += (data.itemWidth + data.options.itemMargin)*(data.currentIndex - count);
             var itemWidth = $this.find('.timeline-item:first').width();
 //usa_debug('======== data.margin: ' + data.margin);
             data.margin += (itemWidth + data.options.itemMargin)*(data.currentIndex - count);
@@ -787,12 +675,12 @@ usa_debug('======= if (found)');
               });
             }
             else {
-              //usa_debug(jQuery(".timeline-items").find(".item[data-id='" + currentId + "'] .timeline-item-text").html());
-              var slideTitlePartsForOmniture = String($(".timeline-items").find(".timeline-item[data-id='" + currentId + "'] .timeline-item-text").text()).split('\n');
-              var slideTitleForOmniture = slideTitlePartsForOmniture[0];
-              //usa_debug('slideTitleForOmniture: ' + slideTitleForOmniture);
-    //					usa_refreshBannerAds('slideshow', slideTitleForOmniture);
-              usa_refreshBannerAd();
+    					if (typeof Drupal.behaviors.ms_global == 'object' && typeof Drupal.behaviors.ms_global.create728x90Ad == 'function') {
+    					  Drupal.behaviors.ms_global.create728x90Ad('timeline');
+    					}
+    					else {
+                usa_refreshBannerAd();
+              }
 
               data.iholder.stop(true).animate({marginLeft : data.margin}, speed+(speed/5)*(Math.abs(multiply)-1), easing, function(){
                 // Trigger ScrollStop event
@@ -804,8 +692,8 @@ usa_debug('======= if (found)');
                 activeTimelineItem = $timelineItems.find('.timeline-item[data-id="' + currentId + '"]');
             $timelineItems.find('.timeline-item').removeClass('active');
             activeTimelineItem.addClass('active');
-usa_debug('========== currentId: ' + currentId + ', activeTimelineItem: ');
-usa_debug(activeTimelineItem);
+//usa_debug('========== currentId: ' + currentId + ', activeTimelineItem: ');
+//usa_debug(activeTimelineItem);
           }
           return $this;
         }, // end goTo
@@ -852,9 +740,7 @@ usa_debug(activeTimelineItem);
               $items = data.items;
 
           var html = '\n' +
-//    '    <div class="timeline-line" style="text-align: left; position:relative; margin-left:auto; margin-right:auto;"></div>\n';
     '    <div class="timeline-line"></div>\n';
-//          $this.prepend(html);
           $this.append(html);
           var	timelineWidth = $this.find('.timeline-line').width(),
               nodes = new Array(),
@@ -988,7 +874,6 @@ usa_debug(nodes);
                   firstMonth = !firstMonth;
                   html +=
         '					<div class="timeline-m right">\n'+
-//        '						<h4 class="timeline-month">' + (data.options.yearsOn ? 's' + yr + ' ' : '') + (typeof months[mnth] !== 'undefined' ? 'e' + mnth : '') + (data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
         '						<h4 class="timeline-month">' + (data.options.yearsOn ? 's' + yr + ' ' : '') + 'ep' + mnth + (data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
 
                   // Fill with nodes
@@ -1101,25 +986,7 @@ usa_debug(nodes);
         }
       };
 
-
-
-/* Not sure whether the following is used
-      $('.tl3').on('ajaxLoaded.timeline', function(e){
-        usa_debug('TIMELINE: loaded');
-        usa_debug(e.element.find('.timeline-open-content span'));
-
-        var height = e.element.height() - 60 - e.element.find('h2').height();
-        e.element.find('.timeline-open-content span').css('max-height', height).mCustomScrollbar({
-          autoHideScrollbar:true,
-          theme:"light-thin"
-        });
-      });
-*/
-
-
       $(document).ready(function(){
-//            $this.find(timeline_settings.itemClass).css({ '-webkit-touch-callout': 'none', '-webkit-user-select': 'none', '-khtml-user-select': 'none', '-moz-user-select': 'none', '-ms-user-select': 'none', 'user-select': 'none'}).find('img').on('dragstart', function(event) {
-
         // Initialize the timeline
         $this = $('.tl3').timeline({
           openTriggerClass : '.read-more',
@@ -1175,59 +1042,19 @@ usa_debug(nodes);
       // WINDOW RESIZING
       var windowResizeTimer;
       $(window).resize(function() {
-windowResizeTimer = clearTimeout(windowResizeTimer);
-windowResizeTimer = setTimeout(function(){
-        //var id = $this.find('.active:first').attr('href').substr(1);
-//            var data = $this.data('timeline'),
-//                id = $items.eq(data.currentIndex).attr('data-id');
-/*
-        var id = $('.timeline-node.active').attr('href').substr(1);
-        var $this = $('.tl3').timeline({
-          openTriggerClass : '.read-more',
-          startItem : id, // '01/01/01', // '01/01',
-          closeText : ''
-        });
-*/
-//        var $this = self;
-        $this.timeline('setWidthHeightMargin');
-        var data = $this.data('timeline');
-            id = $this.find('.timeline-node.active:first').attr('href').substr(1);
+        windowResizeTimer = clearTimeout(windowResizeTimer);
+        windowResizeTimer = setTimeout(function(){
+          $this.timeline('setWidthHeightMargin');
+          var data = $this.data('timeline');
+              id = $this.find('.timeline-node.active:first').attr('href').substr(1);
 
-/*
-        itemWidth = $items.first().width(),
-        itemOpenWidth = $itemsOpen.first().find('div:first').width();
-
-        data.margin += data.itemCount*(data.itemWidth-itemWidth);
-        data.itemWidth = itemWidth;
-
-        if (data.open) data.margin += (data.itemOpenWidth-itemOpenWidth)/2;
-        data.itemOpenWidth = itemOpenWidth;
-
-
-        if ($('body').width() < 767 && data.open && !data.marginResponse) {
-          data.margin -= (itemWidth+timeline_settings.itemMargin)/2;
-          data.marginResponse = true;
-        }
-        else if ($('body').width() >= 767 && data.marginResponse && data.open) {
-          data.margin += (itemWidth+timeline_settings.itemMargin)/2;
-          data.marginResponse = false;
-        }
-*/
-usa_debug('=========== data: ');
-usa_debug(data);
-/*
-        data.noAnimation = true;
-        $this.timeline('goTo', id);
-*/
-        var dataId = data.items.eq(data.currentIndex).attr('data-id');
-        var dataCount = data.items.eq(data.currentIndex).attr('data-count');
-//        $this.timeline('goTo', dataId, dataCount);
-        $this.timeline('goTo', dataId);
-}, 500);
+//usa_debug('=========== data: ');
+//usa_debug(data);
+          var dataId = data.items.eq(data.currentIndex).attr('data-id');
+          var dataCount = data.items.eq(data.currentIndex).attr('data-count');
+          $this.timeline('goTo', dataId);
+        }, 500);
       });
-
-
-
     }
   }
 })(jQuery);

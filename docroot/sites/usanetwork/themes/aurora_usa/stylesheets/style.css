@@ -14527,7 +14527,7 @@ footer h2 {
     width: 18px;
   }
 }
-.shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node {
+.shows-block .show-carousel > ul > li:not(.active) > .node {
   /*.show-open {
     @include breakpoint($bp-min-769-width) {
       &:hover {
@@ -14556,14 +14556,14 @@ footer h2 {
   }*/
 }
 @media (min-width: 769px) {
-  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:before {
+  .shows-block .show-carousel > ul > li:not(.active) > .node:hover:before {
     -webkit-transition: all 0.3s ease-out 0s;
     -moz-transition: all 0.3s ease-out 0s;
     -o-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
     width: 18px;
   }
-  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:after {
+  .shows-block .show-carousel > ul > li:not(.active) > .node:hover:after {
     display: block;
     color: #ffffff;
     content: "\e608";
@@ -14579,7 +14579,7 @@ footer h2 {
     cursor: pointer;
     z-index: 2;
   }
-  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover .desktop {
+  .shows-block .show-carousel > ul > li:not(.active) > .node:hover .desktop {
     opacity: 0.8;
     -moz-opacity: 0.8;
     filter: alpha(opacity=80);
@@ -14595,12 +14595,12 @@ footer h2 {
   }
 }
 @media (min-width: 769px) and (min-width: 1901px) {
-  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:before {
+  .shows-block .show-carousel > ul > li:not(.active) > .node:hover:before {
     width: 30px;
   }
 }
 @media (min-width: 769px) and (min-width: 1901px) {
-  .shows-block .show-carousel > ul:not(.stop) > li:not(.active) > .node:hover:after {
+  .shows-block .show-carousel > ul > li:not(.active) > .node:hover:after {
     width: 30px;
   }
 }

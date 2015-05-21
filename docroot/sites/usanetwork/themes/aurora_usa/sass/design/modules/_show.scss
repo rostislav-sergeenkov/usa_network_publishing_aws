@@ -53,7 +53,7 @@
         }
       }
     }
-    > ul:not(.stop) {
+    > ul {
       > li:not(.active) {
         > .node {
           &:hover {

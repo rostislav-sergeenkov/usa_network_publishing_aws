@@ -1,6 +1,7 @@
-#block-usanetwork-person-usanetwork-person-cast-lmb-block {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block {
   @include clear();
-  background: #ffffff;
+  background: $poll-back;
+  border-bottom: 2px solid;
   height: auto;
   overflow: hidden;
   position: relative;

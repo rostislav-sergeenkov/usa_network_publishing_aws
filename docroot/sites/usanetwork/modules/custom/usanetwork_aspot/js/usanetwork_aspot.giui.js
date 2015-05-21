@@ -71,7 +71,7 @@
       });
 
       var draggableOptions = {
-        grid: [8, 8],
+        grid: [1, 1],
         appendTo: '#edit-field-aspot-enabled-gi',
         containment: "parent",
         stop: function () {
@@ -135,8 +135,8 @@
           var currentElementCY = Math.round(parseInt(itemElement.css('top')) + itemElement.height() / 2);
           var invertX = currentElementCX > mapCX ? true : false;
           var invertY = currentElementCY > mapCY ? true : false;
-          var widthPercent = Math.round(parseInt(itemElement.css('left')) / carouselElementPreviewingBlock.width() * 100);
-          var heightPercent = Math.round(parseInt(itemElement.css('top')) / carouselElementPreviewingBlock.height() * 100);
+          var widthPercent = (parseInt(itemElement.css('left')) / carouselElementPreviewingBlock.width() * 100).toFixed(1);
+          var heightPercent = (parseInt(itemElement.css('top')) / carouselElementPreviewingBlock.height() * 100).toFixed(1);
           if (widthPercent < 0) {
             widthPercent = 0;
           }
@@ -150,8 +150,8 @@
           var currentElement_mCY = Math.round(parseInt(mobileItemElement.css('top')) + mobileItemElement.height() / 2);
           var invert_mX = currentElement_mCX > map_mCX ? true : false;
           var invert_mY = currentElement_mCY > map_mCY ? true : false;
-          var widthPercent_m = Math.round(parseInt(mobileItemElement.css('left')) / carouselElementPreviewingBlockMobile.width() * 100);
-          var heightPercent_m = Math.round(parseInt(mobileItemElement.css('top')) / carouselElementPreviewingBlockMobile.height() * 100);
+          var widthPercent_m = Math.round(parseInt(mobileItemElement.css('left')) / carouselElementPreviewingBlockMobile.width() * 100).toFixed(1);
+          var heightPercent_m = Math.round(parseInt(mobileItemElement.css('top')) / carouselElementPreviewingBlockMobile.height() * 100).toFixed(1);
           if (widthPercent_m < 0) {
             widthPercent_m = 0;
           }

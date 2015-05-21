@@ -9,6 +9,8 @@
 * $image_mobile - URL for img.
 * $image_desktop - URL for img.
 * $air_date_text - string
+* $ep_carousel - rendered episode carousel block
+* $gallery_rec - rendered gallery recap block
 */
 ?>
 <?php print $sharebar; ?> <br>
@@ -20,3 +22,5 @@
 <?php print $image_mobile; ?> <br>
 <?php print $image_desktop; ?> <br>
 <?php print $air_date_text; ?> <br>
+<?php print $ep_carousel; ?> <br>
+<?php print $gallery_rec; ?> <br>

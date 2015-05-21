@@ -677,10 +677,16 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
     $theme_variables = array();
 
     if (!empty($data['now'])) {
+      $image_url = _usanetwork_tv_schedule_get_schedule_item_image($data['now']);
+
+      if (empty($image_url)) {
+        $image_url = _usanetwork_menu_show_menu_get_image_preview_url($data['now']->nid);
+      }
+
       $theme_variables['on_now'] = array(
-        'image' => !empty($data['now']->nid)
+        'image' => !empty($image_url)
             ? theme('image', array(
-              'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['now']->nid),
+              'path' => $image_url,
               'attributes' => array(
                 'class' => array(
                   'running-now-show-preview-image'
@@ -708,10 +714,16 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
       );
     }
     if (!empty($data['next'])) {
+      $image_url = _usanetwork_tv_schedule_get_schedule_item_image($data['next']);
+
+      if (empty($image_url)) {
+        $image_url = _usanetwork_menu_show_menu_get_image_preview_url($data['next']->nid);
+      }
+
       $theme_variables['up_next'] = array(
         'image' => !empty($data['next']->nid)
             ? theme('image', array(
-              'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['next']->nid),
+              'path' => $image_url,
               'attributes' => array(
                 'class' => array(
                   'running-next-show-preview-image'

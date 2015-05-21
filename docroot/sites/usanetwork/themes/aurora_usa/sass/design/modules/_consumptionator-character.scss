@@ -261,6 +261,9 @@
           ul {
             width: 20000em;
             position: relative;
+            @include breakpoint($bp-640-width) {
+              width: 100%;
+            }
           }
           .horizontal-controls {
             display: none;

@@ -159,7 +159,7 @@
     .show-link {
       a {
         display: block;
-        font-family: $avalon-demi;
+        font-family: $avalon-medium;
         color: #fff;
         line-height: 16px;
         padding: 10px 25px 10px 10px;
@@ -594,7 +594,7 @@
         .title {
           color: #ffffff;
           float: left;
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           font-size: 24px;
           letter-spacing: 3px;
           line-height: 50px;
@@ -616,7 +616,7 @@
         .time {
           float: left;
           color: #ffffff;
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           font-size: 12px;
           line-height: 18px;
           margin-top: 8px;
@@ -951,7 +951,7 @@
           }
         }
         .subheading {
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           font-size: 24px;
           line-height: 30px;
           text-overflow: ellipsis;
@@ -1115,7 +1115,7 @@
   h1 {
     color: #ffffff;
     float: left;
-    font-family: $avalon-demi;
+    font-family: $avalon-medium;
     font-size: 24px;
     letter-spacing: 1px;
     line-height: 67px;
@@ -1124,6 +1124,7 @@
     text-transform: uppercase;
     a {
       color: #ffffff;
+      font-family: $avalon-demi;
       &:hover {
         color: #ffffff;
       }
@@ -1171,7 +1172,7 @@
     .time {
       color: #ffffff;
       display: table-cell;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 12px;
       line-height: 18px;
       text-transform: uppercase;

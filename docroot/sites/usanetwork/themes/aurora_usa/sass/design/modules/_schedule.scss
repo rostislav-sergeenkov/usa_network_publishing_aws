@@ -51,7 +51,7 @@
           border-bottom-width: 2px;
           cursor: pointer;
           font-size: 21px;
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           line-height: 42px;
           text-align: left;
           overflow: hidden;
@@ -114,7 +114,7 @@
               color: #ffffff;
               display: block;
               font-size: 20px;
-              font-family: $avalon-demi;
+              font-family: $avalon-medium;
               height: 100%;
               line-height: 22px;
               text-align: left;
@@ -217,7 +217,7 @@
               display: block;
               &.week-day {
                 font-size: 56px;
-                font-family: $avalon-demi;
+                font-family: $avalon-medium;
                 line-height: 62px;
                 @include breakpoint($bp-1280-width) {
                   font-size: 40px;
@@ -295,7 +295,7 @@
       a {
         font-size: 18px;
         color: $schedule-pm-color;
-        font-family: $avalon-demi;
+        font-family: $avalon-medium;
         text-decoration: none;
       }
     }
@@ -368,7 +368,7 @@
             padding-left: 15px;
           }
           .day-shcedule {
-            font-family: $avalon-demi;
+            font-family: $avalon-medium;
           }
           .date-shcedule {
             font-family: $avalon-book;
@@ -428,7 +428,7 @@
                   span {
                     color: $poll-color;
                     font-size: 36px;
-                    font-family: $avalon-demi;
+                    font-family: $avalon-medium;
                     letter-spacing: 3px;
                     line-height: 42px;
                     display: block;
@@ -457,7 +457,7 @@
                 width: 60%;
                 .episode-show {
                   font-size: 20px;
-                  font-family: $avalon-demi;
+                  font-family: $avalon-medium;
                   float: left;
                   width: 50%;
                   @include breakpoint($bp-1024-width) {

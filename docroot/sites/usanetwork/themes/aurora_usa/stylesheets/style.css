@@ -29060,20 +29060,20 @@ body.blog .view-display-id-blog_content .views-row {
   z-index: 100;
 }
 
-#full-bleed-promo {
+#full-bleed-promo .full-bleed-wrapper {
   margin: 0 auto;
   position: relative;
   min-height: 250px;
   max-width: 1650px;
   min-width: 300px;
 }
-#full-bleed-promo:after {
+#full-bleed-promo .full-bleed-wrapper:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (max-width: 768px) {
-  #full-bleed-promo:after {
+  #full-bleed-promo .full-bleed-wrapper:after {
     clear: both;
     content: '';
     display: table;

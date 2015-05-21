@@ -171,5 +171,3 @@ AddType model/vnd.collada+xml dae
       image/svg+xml
   </IfModule>
 </IfModule>
-
-php_value max_input_vars 3000

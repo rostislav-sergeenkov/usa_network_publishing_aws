@@ -700,7 +700,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'node_url' => !empty($data['now']->nid)
             ? (url('node/' . $data['now']->nid))
             : '',
-        'syndicated_url' => _usanetwork_menu_get_reminder_url($data['now']->nid),
+        'syndicated_url' => ($data['now']->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($data['now']->nid) : '',
         'episode_full_url' => url('schedule', array('query' => array('guid' => $data['now']->guid))),
         'show_class' => !empty($data['now']->nid)
             ? usanetwork_tv_shows_color_show_css_class($data['now']->nid)
@@ -737,7 +737,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'node_url' => !empty($data['next']->nid)
             ? (url('node/' . $data['next']->nid))
             : '',
-        'syndicated_url' => _usanetwork_menu_get_reminder_url($data['next']->nid),
+        'syndicated_url' => ($data['next']->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($data['next']->nid) : '',
         'episode_full_url' => url('schedule', array('query' => array('guid' => $data['next']->guid))),
         'show_class' => !empty($data['next']->nid)
             ? usanetwork_tv_shows_color_show_css_class($data['next']->nid)

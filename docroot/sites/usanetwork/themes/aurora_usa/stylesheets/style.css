@@ -11637,7 +11637,7 @@ footer h2 {
 .featured-block {
   background: #e9eaeb;
   overflow: hidden;
-  padding: 40px 0px;
+  padding: 40px 0;
   position: relative;
   width: 100%;
 }
@@ -17608,67 +17608,68 @@ footer h2 {
   }
 }
 
-#block-usanetwork-person-usanetwork-person-cast-lmb-block {
-  background: #ffffff;
+.block-usanetwork-person-usanetwork-person-cast-lmb-block {
+  background: #e9eaeb;
+  border-bottom: 2px solid;
   height: auto;
   overflow: hidden;
   position: relative;
   width: 100%;
 }
-#block-usanetwork-person-usanetwork-person-cast-lmb-block:after {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block:after {
   clear: both;
   content: '';
   display: table;
 }
-#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-header-image {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-header-image {
   position: relative;
   width: 100%;
 }
-#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
   margin: 0 auto;
   max-width: 1868px;
   padding: 40px 24px 40px 90px;
   position: relative;
   width: 100%;
 }
-#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description:after {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (min-width: 1281px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     min-height: 870px;
   }
 }
 @media (min-width: 1901px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     min-height: 890px;
     padding: 60px 32px 60px 150px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     min-height: 750px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     min-height: 650px;
     padding: 30px 17px 30px 80px;
   }
 }
 @media (max-width: 768px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     padding: 30px 36px;
   }
 }
 @media (max-width: 480px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     padding: 20px 24px;
   }
 }
-#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
   color: #000000;
   float: left;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -17676,42 +17677,42 @@ footer h2 {
   width: 60%;
 }
 @media (min-width: 1901px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
     font-size: 26px;
     line-height: 32px;
   }
 }
 @media (max-width: 1024px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
     font-size: 14px;
     width: calc(100% - 340px);
   }
 }
 @media (max-width: 768px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
     width: 100%;
   }
 }
 @media (max-width: 640px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
     font-size: 12px;
   }
 }
-#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description p {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description p {
   margin: 0.5em 0;
 }
-#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
   display: block;
   float: right;
   height: 250px;
   width: 300px;
 }
 @media (max-width: 768px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
     display: none;
   }
 }
-#block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
   bottom: 0;
   line-height: 1;
   max-height: 537px;
@@ -17721,7 +17722,7 @@ footer h2 {
   width: 30%;
 }
 @media (max-width: 768px) {
-  #block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
     display: none;
   }
 }
@@ -18858,6 +18859,23 @@ body.person-page #main {
 @media (max-width: 480px) {
   .latest-block, .carousel-block {
     padding: 40px 0px 40px 20px;
+  }
+}
+
+@media (min-width: 1281px) {
+  .featured-block.carousel-block {
+    background-size: contain !important;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .featured-block.carousel-block {
+    background-size: cover !important;
+  }
+}
+@media (max-width: 768px) {
+  .featured-block.carousel-block {
+    background-image: none !important;
+    background-color: #e9eaeb !important;
   }
 }
 

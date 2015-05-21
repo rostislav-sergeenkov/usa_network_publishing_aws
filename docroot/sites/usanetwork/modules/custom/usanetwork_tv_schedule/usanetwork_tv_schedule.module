@@ -760,6 +760,7 @@ function _usanetwork_tv_schedule_get_show_node_by_sch_item($item) {
  */
 function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
   date_default_timezone_set('America/New_York');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.js');
 
   $output = '';
   $query_params = drupal_get_query_parameters();

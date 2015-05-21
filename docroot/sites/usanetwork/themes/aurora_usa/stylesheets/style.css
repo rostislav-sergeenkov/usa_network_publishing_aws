@@ -11637,7 +11637,7 @@ footer h2 {
 .featured-block {
   background: #e9eaeb;
   overflow: hidden;
-  padding: 40px 0px;
+  padding: 40px 0;
   position: relative;
   width: 100%;
 }
@@ -18858,6 +18858,23 @@ body.person-page #main {
 @media (max-width: 480px) {
   .latest-block, .carousel-block {
     padding: 40px 0px 40px 20px;
+  }
+}
+
+@media (min-width: 1281px) {
+  .featured-block.carousel-block {
+    background-size: contain !important;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .featured-block.carousel-block {
+    background-size: cover !important;
+  }
+}
+@media (max-width: 768px) {
+  .featured-block.carousel-block {
+    background-image: none !important;
+    background-color: #e9eaeb !important;
   }
 }
 

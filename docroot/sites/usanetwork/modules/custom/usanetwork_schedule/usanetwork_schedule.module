@@ -257,47 +257,25 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
   if (empty($data)) {
     return;
   }
-
   $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
 
   foreach ($data as &$schedule_item) {
-    $show_result = _usanetwork_schedule_get_show_node_info_by_title($schedule_item->show_title);
 
-    if (!empty($show_result)) {
-      $show_result = reset($show_result);
-
-      $schedule_item->database_show_title = $show_result->field_display_title_value;
-      $schedule_item->nid = $show_result->nid;
-
-      continue;
-    }
-    $show_nid = _usanetwork_tv_schedule_find_show_by_title($schedule_item->show_title);
-    if (!empty($show_nid)) {
-      $show_node = node_load($show_nid);
-      $schedule_item->nid = $show_nid;
-      $schedule_item->database_show_title = $show_node->title;
-      continue;
-    }
-
-    $alias_title = trim($schedule_item->show_title);
-
-    if (empty($schedule_item->nid) && !empty($show_title_aliases[$alias_title])) {
-      $alias = trim($show_title_aliases[$alias_title]);
-      $show_node_info = _usanetwork_schedule_get_show_node_info_by_title($alias);
-
-      if (!empty($show_node_info)) {
-        $show_node_info = reset($show_node_info);
-
-        $schedule_item->nid = $show_node_info->nid;
-        $schedule_item->database_show_title = $show_node_info->field_display_title_value;
+    if ($schedule_item->program_type != 'movie') {
+      $needle = $schedule_item->show_title;
+      $alias_title = trim($schedule_item->show_title);
+      $needle = !empty($show_title_aliases[$alias_title]) ? $show_title_aliases[$alias_title] : $needle;
+      $show_result = _usanetwork_schedule_get_show_node_info_by_title($needle);
+      if (!empty($show_result)) {
+        $show_result = reset($show_result);
+        $schedule_item->nid = $show_result->nid;
+        continue;
       }
-      else {
-        $schedule_item->database_show_title = $schedule_item->title;
+      $show_nid = _usanetwork_tv_schedule_find_show_by_title($schedule_item->show_title);
+      if (!empty($show_nid)) {
+        $schedule_item->nid = $show_nid;
+        continue;
       }
-    }
-    elseif (empty($schedule_item->nid) && empty($show_title_aliases[$alias_title])) {
-      $schedule_item->database_show_title = t('USA Movie') . ' ' . $schedule_item->title;
-      $schedule_item->nid = NULL;
     }
   }
 }

@@ -1,5 +1,5 @@
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
-  overflow-y: hidden;
+  overflow: hidden;
   max-height: 43.75vw;
   position: relative;
   @include breakpoint($bp-min-2500-width) {
@@ -59,6 +59,10 @@
     img {
       width: 100%;
     }
+  }
+  .slider {
+    overflow: hidden;
+    width: 1000%;
   }
   .slide {
     float: left;

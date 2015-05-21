@@ -671,7 +671,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .videos-landing-page-container .video-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
   font-size: 16px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .videos-landing-page-container .video-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
@@ -772,7 +772,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 .featured-block .carousel ul li .featured-large .meta .caption {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 8px;
@@ -1117,7 +1117,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 15px;
   letter-spacing: 1px;
   line-height: 18px;
@@ -1190,7 +1190,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
   cursor: pointer;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 13px;
   height: 35px;
   letter-spacing: 1px;
@@ -1356,7 +1356,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 19px;
   margin-left: 0;
@@ -2026,7 +2026,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .title, .five-promo-item-block ul li .last .three-line-video .meta .title, .videos-landing-page-container .video-items-blocks ul li .three-line-video .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
 }
@@ -2190,7 +2190,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta .title, .videos-landing-page-container .video-items-blocks ul li .three-line-video-large .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 26px;
 }
@@ -2403,7 +2403,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 .show-latest-block ul li .show-latest-promo .meta .title, .related-content-block ul li .show-latest-promo .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 26px;
 }
@@ -5090,7 +5090,7 @@ header .nav-bar-tabs {
     color: #ffffff;
     cursor: pointer;
     display: block;
-    font-family: "avalonbold", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 14px;
     height: 100%;
     line-height: 50px;
@@ -5123,7 +5123,7 @@ header .nav-bar-tabs {
     border-radius: 50%;
     color: #ffffff;
     display: block;
-    font-family: "avalonbold", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 11px;
     height: 11px;
     left: 40px;
@@ -5227,7 +5227,7 @@ header .nav-bar-tabs {
     color: #666666;
     cursor: pointer;
     display: block;
-    font-family: "avalonbold", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 15px;
     height: 100%;
     line-height: 90px;
@@ -5292,7 +5292,7 @@ header .user-profile span, header .search span {
   border-radius: 50%;
   color: #ffffff;
   display: block;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   height: 18px;
   left: 50%;
@@ -5573,7 +5573,7 @@ header .search-input-block input {
   background: #757575;
   border: none;
   color: #dcddde;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 37px;
   left: 0;
   outline: none;
@@ -5678,7 +5678,7 @@ header .search-input-block .search-result.active ul li.search-promo a .meta-wrap
   }
 }
 header .search-input-block .search-result.active ul li.search-promo a .meta-wrapper .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 15px;
   letter-spacing: 1px;
   line-height: 22px;
@@ -5787,7 +5787,7 @@ header .tab-item.shows-tab .panel-pane {
 }
 header .tab-item.shows-tab .panel-pane h2 {
   color: #dcddde;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 20px;
   text-transform: uppercase;
 }
@@ -6052,7 +6052,7 @@ header .tab-item.full-episode-tab .latest-full-episodes .links-block a .icon {
 header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-icon {
   border: 1px solid #ffffff;
   border-radius: 4px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-style: normal;
   letter-spacing: 1.5px;
@@ -6242,7 +6242,7 @@ header .tab-item.schedule-tab .on-now-panel .node .meta {
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta .title {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 20px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -6267,7 +6267,7 @@ header .tab-item.schedule-tab .on-now-panel .node .meta .description {
   line-height: 1.3;
 }
 header .tab-item.schedule-tab .on-now-panel .on-now-panel-title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   left: 0;
   position: absolute;
   top: -30px;
@@ -6314,7 +6314,7 @@ header .tab-item.schedule-tab .on-now-panel .icons-block a {
 header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon {
   border: 1px solid #ffffff;
   border-radius: 4px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px;
   letter-spacing: 1.5px;
   line-height: 22px;
@@ -6441,7 +6441,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .time span {
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.3;
   margin-top: 20px;
@@ -6530,7 +6530,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   line-height: 16px;
 }
 .search-show header .tab-item.share-tab .tab-item-content .node .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 16px;
   letter-spacing: 1px;
   line-height: 22px;
@@ -6786,7 +6786,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: table-cell;
   height: 100%;
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 90px;
   text-transform: uppercase;
@@ -6805,6 +6805,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .search-show header .header-nav-bar .show-title-wrapper .show-title-block .tab a, .search-show header .header-nav-bar .show-title-wrapper .show-title-block .tab h1 {
   color: #ffffff;
   display: block;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
   max-width: 320px;
   padding: 0px 30px;
@@ -7148,7 +7149,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   border-right: 0;
   color: #ffffff;
   display: block;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 20px;
   height: auto;
   margin: 0 auto;
@@ -7417,7 +7418,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   line-height: 16px;
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .title, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .title {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 16px;
   letter-spacing: 1px;
   line-height: 22px;
@@ -8534,7 +8535,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .page-videos .carousel-wrapper .carousel-block .get-app {
   display: none;
   color: #545454;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
   padding-right: 40px;
   position: absolute;
@@ -8554,7 +8555,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .page-videos .carousel-wrapper .carousel-block-left .more-episodes {
   color: #545454;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 14px;
   margin-top: -7px;
@@ -10358,7 +10359,7 @@ footer .block-usanetwork-lyris form > div {
   max-width: 1100px;
   width: 100%;
   color: #3d3d3d;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
   line-height: 30px;
@@ -10374,6 +10375,7 @@ footer .block-usanetwork-lyris form > div .placeholder {
   font-style: normal;
 }
 footer .block-usanetwork-lyris form > div label {
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-weight: 400;
   display: inline-block;
   padding-right: 35px;
@@ -11157,7 +11159,7 @@ footer h2 {
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .description, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .description {
   color: #f3f3ec;
   font-size: 30px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 36px;
   left: 45px;
   height: 72px;
@@ -11290,7 +11292,7 @@ footer h2 {
 }
 .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter .slide-index {
   font-size: 27px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 1900px) {
   .consumptionator-page .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-block .gallery-wrapper .bx-wrapper .bx-viewport .bxslider-gallery .slide .node .slide-info .slider-counter {
@@ -11770,7 +11772,7 @@ footer h2 {
 .featured-block .carousel ul li .more {
   bottom: 5%;
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   height: auto;
   right: 5%;
@@ -13664,7 +13666,7 @@ footer h2 {
 }
 .consum-sidebar .items-block-title h2 {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 15px;
   margin: 0;
   text-transform: uppercase;
@@ -14007,7 +14009,7 @@ footer h2 {
 .consum-sidebar .more-items a {
   color: #ffffff;
   display: block;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 15px;
   letter-spacing: 1px;
   line-height: 40px;
@@ -14630,7 +14632,7 @@ footer h2 {
 }
 .shows-block .carousel .show-link a {
   display: block;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   color: #fff;
   line-height: 16px;
   padding: 10px 25px 10px 10px;
@@ -15227,7 +15229,7 @@ footer h2 {
 .shows-block .show-info-block .show-top-info .schedule .title {
   color: #ffffff;
   float: left;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 24px;
   letter-spacing: 3px;
   line-height: 50px;
@@ -15253,7 +15255,7 @@ footer h2 {
 .shows-block .show-info-block .show-top-info .schedule .time {
   float: left;
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 18px;
   margin-top: 8px;
@@ -15665,7 +15667,7 @@ footer h2 {
   }
 }
 .shows-block .show-info-block .show-description .node .subheading {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 24px;
   line-height: 30px;
   text-overflow: ellipsis;
@@ -15870,7 +15872,7 @@ footer h2 {
 .show-title-block h1 {
   color: #ffffff;
   float: left;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 24px;
   letter-spacing: 1px;
   line-height: 67px;
@@ -15880,6 +15882,7 @@ footer h2 {
 }
 .show-title-block h1 a {
   color: #ffffff;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
 .show-title-block h1 a:hover {
   color: #ffffff;
@@ -15935,7 +15938,7 @@ footer h2 {
 .show-title-block .schedule .time {
   color: #ffffff;
   display: table-cell;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
@@ -16416,7 +16419,7 @@ footer h2 {
   font-size: 20px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 58px;
   text-align: left;
   overflow: hidden;
@@ -16536,7 +16539,7 @@ footer h2 {
   color: #666666;
   display: block;
   font-size: 20px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   line-height: 22px;
   text-align: left;
@@ -16564,7 +16567,7 @@ footer h2 {
     color: #ffffff;
     display: block;
     font-size: 14px;
-    font-family: "avalonbold", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     height: 100%;
     line-height: 14px;
     letter-spacing: 1px;
@@ -16653,7 +16656,7 @@ footer h2 {
   color: #ffffff;
   display: block;
   font-size: 20px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
   letter-spacing: 1px;
   line-height: 32px;
@@ -17011,7 +17014,7 @@ footer h2 {
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block {
   float: right;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 2em;
   position: relative;
   width: 62.17%;
@@ -17506,7 +17509,7 @@ footer h2 {
   border: 1px solid #959595;
   cursor: pointer;
   font-size: 24px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   line-height: 58px;
   text-align: left;
@@ -17584,7 +17587,7 @@ footer h2 {
   display: block;
   font-size: 24px;
   text-transform: uppercase;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
   line-height: 34px;
   text-align: left;
@@ -19387,7 +19390,7 @@ body.person-page #main {
     background: #3a3a3a;
     color: #ffffff;
     display: block;
-    font-family: "avalonbold", Helvetica, Arial, sans-serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 20px;
     height: 100px;
     line-height: 80px;
@@ -25552,7 +25555,7 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap .title {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 6vw;
   line-height: 1;
   margin: 0;
@@ -25644,7 +25647,7 @@ yx-axis
 .usanetwork-aspot .meta-wrap .cta-link a {
   color: #ffffff;
   display: block;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.27vw;
   line-height: 1.8;
   padding: 1.7vw 3.125vw 1.7vw 2.54vw;
@@ -25855,7 +25858,7 @@ yx-axis
 }
 .usanetwork-aspot .social_meter .row-2 .social-meter-link {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.1vw;
   line-height: 1.8;
   padding-right: 1.2vw;
@@ -26626,7 +26629,7 @@ yx-axis
   border-bottom-width: 2px;
   cursor: pointer;
   font-size: 21px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 42px;
   text-align: left;
   overflow: hidden;
@@ -26710,7 +26713,7 @@ yx-axis
   color: #ffffff;
   display: block;
   font-size: 20px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
   line-height: 22px;
   text-align: left;
@@ -26856,7 +26859,7 @@ yx-axis
 .page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day,
 .page-accessibility .schedule-wrapper .schedule-navigation ul li a span.week-day {
   font-size: 56px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 62px;
 }
 @media (max-width: 1280px) {
@@ -26963,7 +26966,7 @@ yx-axis
 .page-accessibility .schedule-wrapper .time-zone a {
   font-size: 18px;
   color: #606060;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   text-decoration: none;
 }
 .page-schedule .schedule-wrapper .schedule-table,
@@ -27047,7 +27050,7 @@ yx-axis
 }
 .page-schedule .schedule-wrapper .schedule-table ul li.date-separate .day-shcedule,
 .page-accessibility .schedule-wrapper .schedule-table ul li.date-separate .day-shcedule {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 .page-schedule .schedule-wrapper .schedule-table ul li.date-separate .date-shcedule,
 .page-accessibility .schedule-wrapper .schedule-table ul li.date-separate .date-shcedule {
@@ -27140,7 +27143,7 @@ yx-axis
 .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
   color: #545454;
   font-size: 36px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 3px;
   line-height: 42px;
   display: block;
@@ -27179,7 +27182,7 @@ yx-axis
 .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show,
 .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
   font-size: 20px;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   float: left;
   width: 50%;
 }
@@ -27979,7 +27982,7 @@ yx-axis
 }
 .schedule-on-tonight .schedule-block .time span, .schedule-on-tonight .schedule-block .time a {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 36px;
   line-height: 48px;
   letter-spacing: 3px;
@@ -27997,7 +28000,7 @@ yx-axis
   }
 }
 .schedule-on-tonight .schedule-block .time span.time-color, .schedule-on-tonight .schedule-block .time a.time-color {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 12px;
   text-transform: uppercase;

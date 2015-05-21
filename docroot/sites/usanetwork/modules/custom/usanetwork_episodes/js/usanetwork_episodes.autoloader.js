@@ -1,7 +1,11 @@
 (function($) {
+
+  var counter = 0;
+
   Drupal.behaviors.usanetwork_episodes_autoloader = {
-    loadPageItems: function() {
-      var showNid = $('.episode-landing-list-items-seasons').data('show-nid');
+    loadPageItems: function(eventClick) {
+      var showNid = $('.episode-landing-list-items-seasons').data('show-nid'),
+          click = eventClick || '';
 
       if (showNid > 0) {
         Drupal.settings.lastSeasonNumber = $('.episode-landing-list-items-seasons .episode-landing-list-items-season').last().data('season-number');
@@ -20,6 +24,16 @@
           success: function (data) {
             $('.ajax-load-block .load-more-link').before(data.rendered);
             $('.ajax-load-block .load-more-link .load-more-loader').remove();
+
+            Drupal.behaviors.mpsAdvert.ajaxLoadBlock();
+
+            counter = counter + 1;
+
+            if(click === "click") {
+              Drupal.behaviors.omniture_tracking.infiniteScroll(counter, click);
+            } else {
+              Drupal.behaviors.omniture_tracking.infiniteScroll(counter);
+            }
 
             if (typeof window.picturefill != 'undefined') {
               window.picturefill();

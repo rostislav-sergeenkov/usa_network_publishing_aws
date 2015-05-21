@@ -580,6 +580,7 @@ function _usanetwork_person_render_cast_recap_block() {
       $recap_video_file = file_load($recap_video_file['target_id']);
       $file_wrapper = entity_metadata_wrapper('file', $recap_video_file);
       $promo_data = _usanetwork_promo_pull_file_promo_details($recap_video_file);
+      $button_text = usanetwork_tv_shows_show_has_full_episodes($show_node->nid) ? t('Watch Full Episodes') : t('Watch More Video');
       $theme_variables = array(
         'title' => t('Series Recap'),
         'video' => theme('pub_mpx_video', array(
@@ -593,7 +594,7 @@ function _usanetwork_person_render_cast_recap_block() {
             (!empty($recap_video_file->field_mpx_title) ? $file_wrapper->field_mpx_title->value() : ''),
         'video_description' => !empty($promo_data['description']) ? $promo_data['description'] :
             (!empty($recap_video_file->field_mpx_description) ? $file_wrapper->field_mpx_description->value() : ''),
-        'button_url' => url('node/' . $show_node->nid . '/videos'),
+        'button_url' => l($button_text, 'node/' . $show_node->nid . '/videos'),
       );
       return theme('usanetwork_person_cast_recap_block', $theme_variables);
     }

@@ -25460,7 +25460,7 @@ yx-axis
 
 /* ---------------------------------------- */
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
-  overflow-y: hidden;
+  overflow: hidden;
   max-height: 43.75vw;
   position: relative;
 }
@@ -25519,6 +25519,10 @@ yx-axis
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
   width: 100%;
+}
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slider {
+  overflow: hidden;
+  width: 1000%;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
   float: left;
@@ -29093,20 +29097,20 @@ body.blog .view-display-id-blog_content .views-row {
   z-index: 100;
 }
 
-#full-bleed-promo {
+#full-bleed-promo .full-bleed-wrapper {
   margin: 0 auto;
   position: relative;
   min-height: 250px;
   max-width: 1650px;
   min-width: 300px;
 }
-#full-bleed-promo:after {
+#full-bleed-promo .full-bleed-wrapper:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (max-width: 768px) {
-  #full-bleed-promo:after {
+  #full-bleed-promo .full-bleed-wrapper:after {
     clear: both;
     content: '';
     display: table;
@@ -29129,14 +29133,36 @@ body.blog .view-display-id-blog_content .views-row {
     text-align: center;
   }
 }
+#full-bleed-promo .block-content.sponsored-enable {
+  margin-right: 0;
+  max-width: none;
+}
+@media (max-width: 1024px) {
+  #full-bleed-promo .block-content.sponsored-enable {
+    margin-right: 0;
+  }
+}
+@media (max-width: 640px) {
+  #full-bleed-promo .block-content.sponsored-enable {
+    margin-right: 0;
+    text-align: left;
+  }
+}
 #full-bleed-promo .block-content > a {
   display: block;
 }
 #full-bleed-promo .block-content .sponsored {
-  width: 100%;
+  margin-right: 330px;
 }
-#full-bleed-promo .block-content .sponsored iframe {
-  width: 100%;
+@media (max-width: 1024px) {
+  #full-bleed-promo .block-content .sponsored {
+    margin-right: 320px;
+  }
+}
+@media (max-width: 640px) {
+  #full-bleed-promo .block-content .sponsored {
+    margin-right: 0;
+  }
 }
 #full-bleed-promo .block-advert {
   height: 250px;
@@ -29260,9 +29286,9 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .about-show-block .about-show-text-block .about-show-text-block-title {
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 16px;
+  font-size: 1.56098vw;
   letter-spacing: 1px;
-  margin-bottom: 35px;
+  margin-bottom: 3.41463vw;
   text-align: center;
   text-transform: uppercase;
 }
@@ -29272,6 +29298,11 @@ body.blog .view-display-id-blog_content .views-row {
     margin-bottom: 45px;
   }
 }
+@media (max-width: 1024px) {
+  .about-show-block .about-show-text-block .about-show-text-block-title {
+    font-size: 16px;
+  }
+}
 @media (max-width: 640px) {
   .about-show-block .about-show-text-block .about-show-text-block-title {
     margin-bottom: 25px;
@@ -29279,19 +29310,23 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 480px) {
   .about-show-block .about-show-text-block .about-show-text-block-title {
-    font-size: 16px;
     margin-bottom: 15px;
   }
 }
 .about-show-block .about-show-text-block .about-show-text-block-description {
-  font-size: 16px;
-  margin-bottom: 60px;
+  font-size: 1.26829vw;
+  margin-bottom: 5.85366vw;
   text-align: center;
 }
 @media (min-width: 1901px) {
   .about-show-block .about-show-text-block .about-show-text-block-description {
     font-size: 24px;
     margin-bottom: 80px;
+  }
+}
+@media (max-width: 1024px) {
+  .about-show-block .about-show-text-block .about-show-text-block-description {
+    font-size: 13px;
   }
 }
 @media (max-width: 640px) {
@@ -29301,20 +29336,19 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 480px) {
   .about-show-block .about-show-text-block .about-show-text-block-description {
-    font-size: 12px;
     margin-bottom: 30px;
   }
 }
 .about-show-block .about-show-text-block .about-show-text-block-more a {
   color: #ffffff;
   display: block;
-  font-size: 12px;
+  font-size: 1.17073vw;
   line-height: 1;
   margin: 0 auto;
-  padding: 13px 25px 13px 20px;
+  padding: 1.26829vw 2.43902vw 1.26829vw 1.95122vw;
   position: relative;
   text-transform: uppercase;
-  width: 120px;
+  width: 11.70732vw;
 }
 @media (min-width: 1901px) {
   .about-show-block .about-show-text-block .about-show-text-block-more a {

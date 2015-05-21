@@ -72,10 +72,12 @@ var initialPageLoad = 1;
 //          firstSection = $('.section:first').attr('id'),
           anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
 
-      switch(sectionId) {
-        case 'videos':
+      // pause video, if needed
+      if (sectionId != 'videos') {
+        Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
+      }
 
-          break;
+      switch(sectionId) {
         case 'characters':
           var $characterInfo = $('#characters #character-info'),
               activeItem = $characterInfo.find('li.active'),
@@ -83,7 +85,6 @@ var initialPageLoad = 1;
           if (activeItemId != null) anchorFull = anchorFull + '/' + activeItemId;
           break;
       }
-
       if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
         Drupal.behaviors.ms_global.setOmnitureData(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
@@ -222,12 +223,14 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           pageName = itemTitle + ' | Video | ' + pageName;
           break;
         case 'timeline':
+          // @TODO: DV -- DYNAMICALLY GET THE timelineTitle IN THE LINE BELOW
+          var timelineTitle = 'Graceland Catchup Timeline'; // $('#microsite #timeline').text();
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #timeline .timeline-items .timeline-item.active .timeline-item-details > h2').text();
-          s.prop5 = siteName + ' : Timeline SlideShow : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Gallery | ' + pageName;
+          s.prop5 = siteName + ' : Timeline SlideShow : ' + timelineTitle;
+          s.pageName = s.prop5 + ' : ' + itemTitle;
+          pageName = itemTitle + ' | Timeline Slideshow | ' + pageName;
           break;
         case 'quizzes':
           s.prop3 = 'Quiz';

@@ -2835,6 +2835,21 @@ function usanetwork_tv_shows_blank_page() {
   return '';
 }
 
+/*
+ * 'mps_parameters' drupal alter for set own categories parameters for custom Tv Shows pages
+ */
+function usanetwork_tv_shows_mps_parameters_alter(&$parameters){
+  if ($parameters['type'] == 'tv_show') {
+    $paths = explode('/', $parameters['path']);
+    if (isset($paths[3])) {
+      $args = arg();
+      $show_alias = drupal_get_path_alias($args[0] . '/' . $args[1]);
+      $parameters['cat'] = $show_alias . '|' . $paths[3];
+    }
+  }
+}
+
+
 /**
  * Gets and validates params from $_GET for videos block.
  * @return array

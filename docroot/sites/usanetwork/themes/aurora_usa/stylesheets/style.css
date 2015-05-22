@@ -3522,38 +3522,38 @@ input[type="radio"], input[type="checkbox"] {
   content: "\e606";
 }
 
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
   content: "\e602";
   color: #afafaf;
 }
-.field-type-gigya-sharebar .gig-button-container td > div {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div {
   background-image: none !important;
   display: block;
   font-family: "ico-font";
   font-size: 32px;
 }
 @media (max-width: 1024px) {
-  .field-type-gigya-sharebar .gig-button-container td > div {
+  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div {
     font-size: 26px;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
   content: "\e602";
   color: #afafaf;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
   content: "\e603";
   color: #afafaf;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
   content: "\e604";
   color: #afafaf;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
   content: "\e605";
   color: #afafaf;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
   content: "\e606";
   color: #afafaf;
 }

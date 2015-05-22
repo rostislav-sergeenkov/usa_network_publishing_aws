@@ -2915,6 +2915,10 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
     ? $video_sorters[$query_parameters['sort_by'] . '_' . $query_parameters['sort_order']]['title']
     : t('Newest');
 
+  $tag_videos_type = '<strong class="videos-type">' . $video_filter_title_short . '</strong>';
+  $tag_seasons_type = '<strong class="seasons-type">' . t('all seasons') . '</strong>';
+  $tag_show_name = '<strong class="show-name">' . $tv_show_node->title . '</strong>';
+
   $result = theme('usanetwork_tv_shows_landing_videos', array(
     'block_title' => $video_filter_title_short,
     'video_filters' => $video_types,
@@ -2928,12 +2932,10 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
     'sorting_column' => $query_parameters['sort_by'],
     'sorting_order' => $query_parameters['sort_order'],
     'load_more_link' => !empty($videos_block_next_item['items']) ? TRUE : FALSE,
-    'tabs_description' => t('Showing !tag_open!videos_type!tag_close from !tag_open!seasons_type!tag_close for !tag_open!show_name!tag_close', array(
-      '!videos_type' => $video_filter_title_short,
-      '!seasons_type' => t('all seasons'),
-      '!show_name' => $tv_show_node->title,
-      '!tag_open' => '<strong>',
-      '!tag_close' => '</strong>',
+    'tabs_description' => t('Showing !videos_type from !seasons_type for !show_name', array(
+      '!videos_type' => $tag_videos_type,
+      '!seasons_type' => $tag_seasons_type,
+      '!show_name' => $tag_show_name,
     )),
   ));
 

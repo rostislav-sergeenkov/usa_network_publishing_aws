@@ -4,9 +4,9 @@
  */
 ?>
 <div class="videos-landing-page-container">
-  <h1 class="section-title">
+  <h2 class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All videos'); ?></span>
-  </h1>
+  </h2>
   <div class="upper-menu">
     <div class="all-items-filter item-filter">
       <?php if (!empty($video_filters)): ?>
@@ -36,9 +36,11 @@
         </ul>
       <?php endif; ?>
     </div>
-    <div class="sorters-description">
-      <?php print $tabs_description; ?>
-    </div>
+    <?php if (!empty($tabs_description)): ?>
+      <div class="sorters-description">
+        <h1><?php print $tabs_description; ?></h1>
+      </div>
+    <?php endif; ?>
   </div>
   <div class="video-items-blocks show-border ajax-load-block"
   <?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?>

@@ -1331,47 +1331,64 @@
     color: $show-section-title;
     display: inline-block;
     font-family: $tex-gyreschola-italic;
-    font-size: 12px;
+    font-size: get-vw(13px, 1025);
     letter-spacing: 2px;
     margin: 0;
     position: relative;
     text-align: center;
     text-transform: uppercase;
     @include breakpoint($bp-min-1901-width) {
-      font-size: 14px;
+      font-size: 24px;
+    }
+    @include breakpoint($bp-1024-width) {
+      font-size: 13px;
     }
     &:before {
       border: 1px solid #000000;
       border-right: 0;
       content: '';
       display: block;
-      height: 22px;
-      left: -8px;
-      top: 0;
+      height: get-vw(24px, 1025);
+      left: get-vw(-8px, 1025);
+      margin-top: get-vw(-12px, 1025);
+      top: 50%;
       position: absolute;
-      width: 4px;
+      width: get-vw(4px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        height: 45px;
+        left: -14.8px;
+        margin-top: -22.5px;
+        width: 7.4px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: 24px;
+        left: -8px;
+        margin-top: -12px;
+        width: 4px;
+      }
     }
     &:after {
       border: 1px solid #000000;
       border-left: 0;
       content: '';
       display: block;
-      height: 22px;
-      right: -8px;
-      top: 0;
+      height: get-vw(24px, 1025);
+      margin-top: get-vw(-12px, 1025);
+      right: get-vw(-8px, 1025);
+      top: 50%;
       position: absolute;
-      width: 4px;
-    }
-    .cast-and-crew-block & {
-      font-size: 24px;
-      @include breakpoint($bp-1280-width) {
-        font-size: 16px;
+      width: get-vw(4px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        height: 45px;
+        margin-top: -22.5px;
+        right: -14.8px;
+        width: 7.4px;
       }
       @include breakpoint($bp-1024-width) {
-        font-size: 13px;
-      }
-      @include breakpoint($bp-640-width) {
-        font-size: 25px;
+        height: 24px;
+        margin-top: -12px;
+        right: -8px;
+        width: 4px;
       }
     }
   }

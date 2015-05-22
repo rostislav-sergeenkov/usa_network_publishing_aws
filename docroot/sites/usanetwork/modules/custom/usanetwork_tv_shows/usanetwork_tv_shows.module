@@ -60,6 +60,8 @@ function usanetwork_tv_shows_menu() {
 
   $items['node/%node/videos'] = array(
     'title' => '',
+    'title callback' => 'usanetwork_tv_shows_landing_page_title_callback',
+    'title arguments' => array(1),
     'page arguments' => array(1),
     'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
@@ -2825,6 +2827,20 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
  */
 function usanetwork_tv_shows_blank_page() {
   return '';
+}
+
+/**
+ * Title callback function for TV Show landing page.
+ */
+function usanetwork_tv_shows_landing_page_title_callback($show_node) {
+  if (!empty($show_node)) {
+    $title = 'Videos | ' . $show_node->title . ' | USA Network';
+  }
+  else {
+    $title = 'Videos | USA Network';
+  }
+
+  return $title;
 }
 
 /**

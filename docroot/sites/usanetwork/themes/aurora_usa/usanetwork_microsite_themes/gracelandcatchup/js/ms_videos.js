@@ -47,54 +47,6 @@
             void (s.t());
           }
         }
-/*
-        var slider = $slider.data('flexslider');
-        currentSlide = slider.currentSlide + 1;
-        var $sharebar = $slider.parents('.microsite-section-container').find('.field-name-field-gigya-share-bar > div');
-        if ($sharebar.length > 0) {
-          var $title = $slider.parents('.microsite-section-container').find('.microsite-gallery-meta h2.gallery-title').text();
-          if ($title == '') $title = $slider.parents('.microsite-section-container').find('.microsite-gallery-meta h1.gallery-title').text();
-          var $currentImage = $slider.find('.flex-active-slide .file-image img');
-          var $currentCaption = $slider.find('.flex-active-slide .field-name-field-caption p').text();
-
-          sharebar = new Object();
-          sharebar.gigyaSharebar = {
-            containerID: "gigya-share",
-            iconsOnly: true,
-            layout: "horizontal",
-            shareButtons: "facebook, twitter, tumblr, pinterest, share",
-            shortURLs: "never",
-            showCounts: "none"
-          }
-
-          var url = $('.galleries-bxslider li.active a').attr('href');
-          url = window.location.protocol + '//' + window.location.hostname + url;
-          sharebar.gigyaSharebar.ua = {
-            description: $currentCaption,
-            imageBhev: "url",
-            imageUrl: $currentImage.attr('src'),
-            linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
-            title: $title
-          }
-          Drupal.gigya.showSharebar(sharebar);
-
-          // omniture
-          if (!initialPageLoad) {
-            var siteName = Drupal.settings.microsites_settings.title,
-                basePath = Drupal.settings.microsites_settings.base_path,
-                basePageName = siteName + ' | USA Network';
-
-            s.prop3 = 'Gallery';
-            s.prop4 = siteName + ' : Gallery';
-            s.prop5 = siteName + ' : Gallery : ' + $title;
-            s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-            document.title = $title + ' | Gallery | ' + basePageName;
-            if (typeof s_gi != 'undefined') {
-              void (s.t());
-            }
-          }
-        }
-*/
       }
     },
 
@@ -412,7 +364,7 @@
         self.updateGigyaSharebarOmniture(0);
       });
 
-      // filters toggles
+      // filters click toggles
       $('#video-filter .filter-label').bind('click', function () {
         if ($('#video-filter .filter-label').hasClass('open')) {
           $('#video-filter .filter-label').removeClass('open');
@@ -423,7 +375,7 @@
         }
       });
 
-/* @TODO: DV - DO WE NEED THE FOLLOWING? */
+// @TODO: DV - DO WE NEED THE FOLLOWING?
       $('body').live('click', function (e) {
         if ($(e.target).parents().filter('#video-filter').length != 1){
           if ($('#video-filter .filter-label').hasClass('open')) {
@@ -432,7 +384,6 @@
           }
         }
       });
-/**/
 
       $('#video-filter li.filter-item').click(function () {
         var filterItem = $('#video-filter li.filter-item'),
@@ -465,38 +416,8 @@
           $('#thumbnail-list .expandable-toggle li').removeClass('less').addClass('more');
           $('#thumbnail-list').removeClass('expanded');
 
-          //Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
           self.getThumbnailList(url, offset, null, categoryName, filterClass);
         }
-/*
-        // Drop-down selector
-        var filterLabel = $('#video-filter .filter-label'),
-            filterItem = $('#video-filter .filter-item'),
-            filterMenu = $('#video-filter .filter-menu');
-
-        if ($(this).hasClass('active')) {
-          filterLabel.removeClass('open');
-          filterMenu.hide();
-          return false;
-        }
-        else {
-          filterItem.removeClass('active');
-          $(this).addClass('active');
-          filterLabel.find('span').text($(this).text());
-          filterLabel.removeClass('open');
-          filterMenu.hide();
-
-          var categoryName = $('#video-filter .filter-item.active').text(),
-              offset = 0,
-              url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
-
-          $('#thumbnail-list .expandable-toggle li').text('more');
-          $('#thumbnail-list .expandable-toggle li').removeClass('less').addClass('more');
-          $('#thumbnail-list').removeClass('expanded');
-
-          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName);
-        }
-*/
       });
 
       $('#video-filter .filter-child-item').click(function () {
@@ -576,9 +497,8 @@
         });
       });
 
-      // tve help messaging
+      // tve help messaging click
       $tve_toggler = $('.tve-help-link');
-      // $('.tve-help-link').click(function() {
       $tve_toggler.click(function () {
         if ($('.tve-help-link').hasClass('selected')) {
           $('.tve-help-link').removeClass('selected');

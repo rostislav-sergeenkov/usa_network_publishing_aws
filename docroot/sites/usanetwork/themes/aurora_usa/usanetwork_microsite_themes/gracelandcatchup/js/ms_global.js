@@ -68,8 +68,6 @@ var initialPageLoad = 1;
       // also prevent Omniture calls when using site nav to auto-scroll
       // to different sections
       var activeItemId = null,
-//          lastSection = $('.section:last').attr('id'),
-//          firstSection = $('.section:first').attr('id'),
           anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
 
       // pause video, if needed
@@ -143,28 +141,12 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
 
 
     // getScrollDirection
-//    scrollDirectionTimer: null,
     lastYScrollPosition: 0,
     getScrollDirection: function() {
-//      Drupal.behaviors.ms_global.scrollDirectionTimer = clearTimeout(Drupal.behaviors.ms_global.scrollDirectionTimer);
-//      Drupal.behaviors.ms_global.scrollDirectionTimer = setTimeout(function() {
-        scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
-        Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
-        return scrollDirection;
-//      }, 250);
+      scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
+      Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
+      return scrollDirection;
     },
-
-/*
-    // topOfSectionScrolledIntoView
-    topOfSectionScrolledIntoView: function() {
-
-    },
-
-    // bottomOfSectionScrolledIntoView
-    bottomOfSectionScrolledIntoView: function() {
-
-    },
-*/
 
     // IsScrolledIntoView
     // determines whether the entire element is in the viewable part of the window
@@ -405,7 +387,6 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       itemTitle = itemTitle || '';
       var basePath = Drupal.settings.microsites_settings.base_path,
           anchorItem = $('#nav-' + anchor),
-//          anchorNum = anchorItem.find('a').attr('data-menuitem'),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
           nextSection = '#' + anchor,
           nextSectionId = $(nextSection).attr('id');
@@ -432,7 +413,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       // now scroll to the next section
       var siteNavHeight = (anchor != 'home' && anchor != 'videos') ? $('#site-nav').height() : 0,
           nextSectionElem = document.getElementById(anchor),
-          nextSectionTop = nextSectionElem.offsetTop - siteNavHeight;
+          nextSectionTop = nextSectionElem.offsetTop; // nextSectionElem.offsetTop - siteNavHeight;
       $('body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
@@ -476,19 +457,6 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           basePageName = siteName + ' | USA Network',
           self = this;
 
-      // usa_debug
-      var hostname = window.location.hostname,
-          usa_debugFlag = (hostname == 'www.usanetwork.com') ? false : true;
-/*
-      function usa_debug(msg, obj) {
-        if (usa_debugFlag && typeof console != 'undefined') {
-          console.log(msg);
-          if (typeof obj != 'undefined') {
-            console.log(obj);
-          }
-        }
-      }
-*/
       // set hover state for hamburger menu on mobile devices
       var wwidth = $(window).width(),
           $siteNav = $('#site-nav');
@@ -510,16 +478,14 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       }
 
       // TIME OUT
+      // we need to allow time for the page to load -- especially videos
       setTimeout(function(){
-        // initialize the waypoints
-        self.initializeWaypoints();
-
         // initialize clicks in microsite menu
         $('#microsite li.internal a').on('click', function(e){
           e.preventDefault();
 
 usa_debug('======== clicked on ' + $(this).parent().attr('id'));
-          if ($('#site-nav-links li').hasClass('disabled')) { // || $(this).parent().hasClass('active')) {
+          if ($('#site-nav-links li').hasClass('disabled')) {
             return false;
           }
           else {
@@ -528,7 +494,7 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
 
           var anchor = $(this).parent().attr('data-menuanchor');
           Drupal.behaviors.ms_global.sectionScroll(anchor);
-          Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
+          if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });
 
         // initialize graceland cu logo click
@@ -536,16 +502,11 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
           var anchor = 'home',
               anchorFull = basePath + '/' + anchor;
 
-  //        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
           Drupal.behaviors.ms_global.sectionScroll(anchor);
         });
 
-/*
-        if ($('#videos').hasClass('active')) {
-          $('#video-container').addClass('active');
-          Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
-        }
-*/
+        // initialize the waypoints
+        self.initializeWaypoints();
 
         // check url and scroll to specific content
         var urlParts = self.parseUrl(),

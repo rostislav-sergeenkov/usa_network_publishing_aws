@@ -197,7 +197,7 @@ body{
 }
 #site-nav-left {
   width: 76px;
-  height: 5em;
+  height: 70px;
   position: relative;
   bottom: 8px;
   left: 8px;
@@ -211,7 +211,7 @@ body{
 }
 #site-nav #site-nav-center {
   position: absolute;
-  top: 0;
+  bottom: 8px;
   left: 100%;
   margin: 0;
   width: calc(100% - 221px);
@@ -245,7 +245,7 @@ body{
 }
 #site-nav li {
   float: left;
-  padding: 10px;
+  padding: 10px 10px 0;
 }
 #site-nav li a {
   width: 100%;
@@ -256,7 +256,7 @@ body{
 }
 #site-nav-right {
   width: 145px;
-  height: 5em;
+  height: 70px;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -370,7 +370,6 @@ body{
 }
 /* start hamburger icon */
 #site-nav .mobi-menu-icon {
-/*  position: relative; */
   display: inline-block;
   width: 25px;
   text-indent: -999px;
@@ -396,33 +395,7 @@ body{
   border-top-color: #FFF;
 }
 /* end hamburger icon */
-/*
-#site-nav .mobi-menu-icon {
-  display: block;
-  border-top: 5px solid #818181;
-  border-bottom: 5px solid #818181;
-  margin: 0;
-}
-#site-nav .mobi-menu-icon:before {
-  content: "\0020";
-  position: absolute;
-  left: 0;
-  top: 5px;
-  display: block;
-  width: 25px;
-  height: 0px;
-  border-top: 5px solid #818181;
-}
-#site-nav .mobi-menu-icon:after {
-  border-top: 5px solid #818181;
-  padding-bottom: 8px;
-}
-#site-nav .mobi-menu-icon:hover,
-#site-nav .mobi-menu-icon:hover:before,
-#site-nav .mobi-menu-icon:hover:after {
-  border-color: white;
-}
-*/
+
 #site-nav-links-mobile {
   position: absolute;
   top: 0;
@@ -431,7 +404,7 @@ body{
 #site-nav-links-mobile ul#site-nav-links-list-mobile {
   display: none;
   position: absolute;
-  top: 0; /* 28px; */
+  top: 0;
   margin-top: 28px;
   right: -16px;
   width: 150px;
@@ -442,22 +415,6 @@ body{
 #site-nav-mobile ul#site-nav-links-list-mobile.active {
   display: block;
 }
-
-/*
-#site-nav-links-mobile:hover ul#site-nav-links-list-mobile,
-#site-nav-links-mobile ul#site-nav-links-list-mobile.active {
-  display: block;
-}
-#site-nav-links-mobile #site-nav-links-list-mobile.hover {
-  display: block;
-}
-#site-nav-links-mobile:hover #site-nav-links-list-mobile {
-  display: block;
-}
-#site-nav-links-mobile #site-nav-links-list-mobile:hover {
-  display: block;
-}
-*/
 #site-nav-links-mobile li {
   float: none;
   clear: both;
@@ -492,28 +449,28 @@ body{
 }
 section h2 {
   font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
-  color: #56000A; /* dark red */
+  color: #56000A;
   font-size: 2.75em;
   text-align: center;
   text-transform: uppercase;
-  margin: 25px 0;
+  margin: 90px 0 25px; /* 25px 0; */
   clear: both;
 }
 #microsite #sections {
   margin: 1px 0 0;
   padding: 0;
-  background-color: #000; /* #AEAFB1; */
+  background-color: #000;
 }
 .section {
   background-color: #AEAFB1;
   position: relative;
   top: 0;
   left: 0;
-  padding: 15px 0 30px;
+  padding: 15px 0 60px; /* 15px 0 30px; */
 }
 #home.section {
   background-color: #000;
-  padding: 0 0 30px;
+  padding: 0 0 60px;
 }
 #site-nav.section {
   padding: 0;
@@ -555,8 +512,6 @@ section h2 {
 /* FOOTER */
 #microsite footer {
   border-top: 1px solid #414141;
-/*  padding: 3px 15px 65px;
-  padding: 11px 5px 8px 25px; */
   overflow: hidden;
   position: relative;
   background-color: #000;
@@ -629,15 +584,6 @@ section h2 {
   }
 }
 
-/*
-@media (max-width: 944px) {
-  #microsite .ad-leaderboard {
-    width: 300px;
-    height: 50px;
-    overflow: hidden;
-  }
-}
-*/
 @media (max-width: 920px) {
   html,
   body {

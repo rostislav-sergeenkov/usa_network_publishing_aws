@@ -704,7 +704,15 @@ function usanetwork_tv_shows_entity_insert($entity) {
 function usanetwork_tv_shows_views_pre_build(&$view) {
 
   if ($view->name == 'related_show_video_autocomplete') {
-    $view->args = array(arg(6));
+    if ($view->current_display == 'entityreference_1') {
+      $entity_id = arg(6);
+      $entity_type = arg(5);
+      if (!empty($entity_id) && !empty($entity_type)) {
+        if ($entity_type == 'tv_show') {
+          $view->args = array($entity_id);
+        }
+      }
+    }
   }
 }
 
@@ -2827,6 +2835,21 @@ function usanetwork_tv_shows_blank_page() {
   return '';
 }
 
+/*
+ * 'mps_parameters' drupal alter for set own categories parameters for custom Tv Shows pages
+ */
+function usanetwork_tv_shows_mps_parameters_alter(&$parameters){
+  if ($parameters['type'] == 'tv_show') {
+    $paths = explode('/', $parameters['path']);
+    if (isset($paths[3])) {
+      $args = arg();
+      $show_alias = drupal_get_path_alias($args[0] . '/' . $args[1]);
+      $parameters['cat'] = $show_alias . '|' . $paths[3];
+    }
+  }
+}
+
+
 /**
  * Gets and validates params from $_GET for videos block.
  * @return array
@@ -2915,6 +2938,10 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
     ? $video_sorters[$query_parameters['sort_by'] . '_' . $query_parameters['sort_order']]['title']
     : t('Newest');
 
+  $tag_videos_type = '<strong class="videos-type">' . $video_filter_title_short . '</strong>';
+  $tag_seasons_type = '<strong class="seasons-type">' . t('all seasons') . '</strong>';
+  $tag_show_name = '<strong class="show-name">' . $tv_show_node->title . '</strong>';
+
   $result = theme('usanetwork_tv_shows_landing_videos', array(
     'block_title' => $video_filter_title_short,
     'video_filters' => $video_types,
@@ -2928,12 +2955,10 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
     'sorting_column' => $query_parameters['sort_by'],
     'sorting_order' => $query_parameters['sort_order'],
     'load_more_link' => !empty($videos_block_next_item['items']) ? TRUE : FALSE,
-    'tabs_description' => t('Showing !tag_open!videos_type!tag_close from !tag_open!seasons_type!tag_close for !tag_open!show_name!tag_close', array(
-      '!videos_type' => $video_filter_title_short,
-      '!seasons_type' => t('all seasons'),
-      '!show_name' => $tv_show_node->title,
-      '!tag_open' => '<strong>',
-      '!tag_close' => '</strong>',
+    'tabs_description' => t('Showing !videos_type from !seasons_type for !show_name', array(
+      '!videos_type' => $tag_videos_type,
+      '!seasons_type' => $tag_seasons_type,
+      '!show_name' => $tag_show_name,
     )),
   ));
 
@@ -3278,7 +3303,13 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
 function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $current_item_index, $is_item_even = FALSE) {
   $big_element_index = $is_item_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK - 1);
 
-  $image_url = _usanetwork_mpx_video_get_image_path($file);
+  if (!empty($file->field_promo_image_override)) {
+    $field_image_override = reset(field_get_items('file', $file, 'field_promo_image_override'));
+    $image_url = $field_image_override['uri'];
+  }
+  else {
+    $image_url = _usanetwork_mpx_video_get_image_path($file);
+  }
   $mobile_image = '';
   $desktop_image = '';
 

@@ -21,11 +21,11 @@
       </a>
     </div>
     <div class="menu-item tab video-title info">
-      <h1>
+      <h2>
         <a class="no-refresh nolink" data-state>
           <?php print $episode['video_type'];?>: <?php print $episode['title']; ?>
         </a>
-      </h1>
+      </h2>
     </div>
     <?php if (!empty($sponsored)) : ?>
       <div class="sponsored" data-mpspath="<?php print $file_path; ?>" data-scalemps="1"></div>
@@ -48,7 +48,9 @@
         <div class="title-overlay meta">
           <div class="meta-info">
             <div class="caption"><?php print $episode['video_type']; ?></div>
-            <div class="title"><?php print $episode['title']; ?></div>
+            <div class="title">
+              <h1><?php print !empty($h1) ? $h1 : $episode['title']; ?></h1>
+            </div>
             <?php if (!empty($episode['season_number']) && !empty($episode['episode_number'])): ?>
               <div class="additional">
                 <span>S<?php print $episode['season_number'] ?> <?php print t('episode') . ' ' . $episode['episode_number']; ?></span>

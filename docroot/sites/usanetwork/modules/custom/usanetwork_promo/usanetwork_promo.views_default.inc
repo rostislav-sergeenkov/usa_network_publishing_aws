@@ -252,8 +252,29 @@ function usanetwork_promo_views_default_views() {
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
 
-  /* Display: Associated video */
-  $handler = $view->new_display('entityreference', 'Associated video', 'entityreference_1');
+  /* Display: Related To Show */
+  $handler = $view->new_display('entityreference', 'Related To Show', 'entityreference_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'entityreference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'filename' => 'filename',
+    'account' => 'account',
+    'field_display_title' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'field_display_title' => 'field_display_title',
+    'filename' => 'filename',
+    'account' => 'account',
+  );
+  $handler->display->display_options['row_options']['separator'] = ': ';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  /* Display: No Related To Show */
+  $handler = $view->new_display('entityreference', 'No Related To Show', 'entityreference_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;

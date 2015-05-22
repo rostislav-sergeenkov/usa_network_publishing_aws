@@ -19,11 +19,11 @@
       </a>
     </div>
     <div class="menu-item tab video-title info">
-      <h1>
+      <h2>
         <a class="no-refresh nolink" data-state>
           <?php if (!empty($details['episode_type'])): ?><?php print $details['episode_type'] . ': '; ?><?php endif; ?><?php print $episode_name; ?>
         </a>
-      </h1>
+      </h2>
     </div>
   </div>
 </div>
@@ -40,7 +40,9 @@
           <?php if (!empty($details['episode_info'])): ?>
             <div class="meta-info">
               <?php if (!empty($episode_name)): ?>
-                <div class="title"><?php print $episode_name; ?></div>
+                <div class="title">
+                  <h1><?php print !empty($h1) ? $h1 : $episode_name; ?></h1>
+                </div>
               <?php endif; ?>
               <?php if (!empty($details['episode_info']['season_number']) && !empty($details['episode_info']['episode_number'])): ?>
                 <div class="additional">

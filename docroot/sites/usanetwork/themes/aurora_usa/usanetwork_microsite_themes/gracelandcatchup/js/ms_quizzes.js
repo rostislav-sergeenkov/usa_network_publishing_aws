@@ -7,6 +7,11 @@
       $('#microsite #usanetwork-quiz-' + nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center>');
     },
 */
+    init300x250Ad: function(nid) {
+      var _target = '.ad-container'; // '.dart-name-300x250_ifr_reload';
+      mps.insertAd(mps._select(_target),'topbox');
+    },
+
     initGigyaSharebar: function() {
       if (typeof gigya !== 'undefined') {
         if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
@@ -230,7 +235,9 @@
                 Drupal.behaviors.ms_global.create728x90Ad();
 
                 // show 300x250 ad on splash page
-//                Drupal.behaviors.ms_quizzes.init300x250Ad(data.nid);
+                setTimeout(function(){
+                  Drupal.behaviors.ms_quizzes.init300x250Ad(data.nid);
+                }, 500);
 
                 // set url
                 Drupal.behaviors.ms_global.changeUrl('quizzes', link);

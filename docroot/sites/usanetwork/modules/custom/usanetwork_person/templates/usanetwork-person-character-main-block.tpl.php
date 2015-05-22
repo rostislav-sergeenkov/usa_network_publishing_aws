@@ -32,12 +32,14 @@
         <?php endif; ?>
       </div>
       <div class="description">
-        <div class="tabs">
-          <ul>
-            <li class="show-color show-border show-font active" data-tab="character-bio"><?php print t('Character bio'); ?></li>
-            <li class="show-color show-border show-font" data-tab="actor-bio"><?php print t('Actor bio'); ?></li>
-          </ul>
-        </div>
+        <?php if (!empty($show_tabs)) : ?>
+          <div class="tabs">
+            <ul>
+              <li class="show-color show-border show-font active" data-tab="character-bio"><?php print t('Character bio'); ?></li>
+              <li class="show-color show-border show-font" data-tab="actor-bio"><?php print t('Actor bio'); ?></li>
+            </ul>
+          </div>
+        <?php endif; ?>
         <div class="description-items">
           <div class="description-item active" data-tab="character-bio">
             <?php if (!empty($description_character)): ?>
@@ -70,7 +72,9 @@
     </div>
   <?php endif; ?>
     <div class="more-items more-characters show-color">
-      <a href="#"><?php print t('Go to cast & info');?></a>
+      <?php if (!empty($cast_landing_link)): ?>
+        <?php print $cast_landing_link; ?>
+      <?php endif; ?>
     </div>
   </div>
 </div>

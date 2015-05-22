@@ -97,6 +97,31 @@
     content: '\e60d';
   }
 }*/
+.font-icon {
+  background: #ffffff;
+  border-radius: 50%;
+  height: 37px;
+  margin-top: -19px;
+  position: absolute;
+  top: 50%;
+  width: 37px;
+  &:before {
+    font-family: $ico-font;
+    font-size: 20px;
+    line-height: 37px;
+    height: 37px;
+    margin-top: -10px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 37px;
+  }
+  &.video-font-icon {
+    &:before {
+      content: '\e60f';
+    }
+  }
+}
 .social-usa {
   &:after {
     bottom: 8%;

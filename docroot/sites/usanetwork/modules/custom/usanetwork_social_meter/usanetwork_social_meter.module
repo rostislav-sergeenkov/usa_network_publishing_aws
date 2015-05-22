@@ -73,7 +73,7 @@ function usanetwork_social_meter_validate_hashtag(&$form, &$form_state) {
     !empty($form_state['values']['field_social_enable'][$lang][0]['value']) &&
     $form_state['values']['field_social_enable'][$lang][0]['value'] == 1
   ) {
-    if (empty($form_state['values']['field_social_hashtag'][$lang][0]['value'])) {
+    if (empty($form_state['values']['field_social_hashtag'][$lang][0]['value']) && (empty($form_state['bundle']) || $form_state['bundle'] != 'person')) {
       form_set_error('field_social_hashtag', t('Hashtag could not be empty'));
     }
   }

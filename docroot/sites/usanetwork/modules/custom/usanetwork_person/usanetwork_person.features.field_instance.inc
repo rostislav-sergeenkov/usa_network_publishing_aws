@@ -419,23 +419,7 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'gigya',
-        'settings' => array(
-          'gigya_sharebar_advanced' => array(
-            'iconsOnly' => 'true',
-          ),
-          'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
-          'gigya_sharebar_container_id' => 'gigya-share',
-          'gigya_sharebar_desc' => '[node:summary]',
-          'gigya_sharebar_image_behavior' => 'default',
-          'gigya_sharebar_image_url' => '',
-          'gigya_sharebar_layout' => 'horizontal',
-          'gigya_sharebar_link_back' => '[node:url:absolute]',
-          'gigya_sharebar_override_default' => FALSE,
-          'gigya_sharebar_short_url' => 0,
-          'gigya_sharebar_showcounts' => 'none',
-          'gigya_sharebar_title' => '[node:title]',
-        ),
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 46,
       ),
@@ -2015,12 +1999,8 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 45,
       ),
       'follow_social' => array(

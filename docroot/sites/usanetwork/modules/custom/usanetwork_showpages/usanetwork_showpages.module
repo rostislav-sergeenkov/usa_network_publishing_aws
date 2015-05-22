@@ -635,6 +635,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         case 'quizzes':
           $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           break;
+        // cast_summy
+        case 'cast':
+          break;
         // Show Landing Page
         case '':
           if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {

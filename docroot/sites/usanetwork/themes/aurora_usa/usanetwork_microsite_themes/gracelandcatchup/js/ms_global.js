@@ -68,14 +68,14 @@ var initialPageLoad = 1;
       // also prevent Omniture calls when using site nav to auto-scroll
       // to different sections
       var activeItemId = null,
-//          lastSection = $('.section:last').attr('id'),
-//          firstSection = $('.section:first').attr('id'),
           anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
 
-      switch(sectionId) {
-        case 'videos':
+      // pause video, if needed
+      if (sectionId != 'videos') {
+        Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
+      }
 
-          break;
+      switch(sectionId) {
         case 'characters':
           var $characterInfo = $('#characters #character-info'),
               activeItem = $characterInfo.find('li.active'),
@@ -83,7 +83,6 @@ var initialPageLoad = 1;
           if (activeItemId != null) anchorFull = anchorFull + '/' + activeItemId;
           break;
       }
-
       if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
         Drupal.behaviors.ms_global.setOmnitureData(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
@@ -142,28 +141,12 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
 
 
     // getScrollDirection
-//    scrollDirectionTimer: null,
     lastYScrollPosition: 0,
     getScrollDirection: function() {
-//      Drupal.behaviors.ms_global.scrollDirectionTimer = clearTimeout(Drupal.behaviors.ms_global.scrollDirectionTimer);
-//      Drupal.behaviors.ms_global.scrollDirectionTimer = setTimeout(function() {
-        scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
-        Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
-        return scrollDirection;
-//      }, 250);
+      scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
+      Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
+      return scrollDirection;
     },
-
-/*
-    // topOfSectionScrolledIntoView
-    topOfSectionScrolledIntoView: function() {
-
-    },
-
-    // bottomOfSectionScrolledIntoView
-    bottomOfSectionScrolledIntoView: function() {
-
-    },
-*/
 
     // IsScrolledIntoView
     // determines whether the entire element is in the viewable part of the window
@@ -222,12 +205,14 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           pageName = itemTitle + ' | Video | ' + pageName;
           break;
         case 'timeline':
+          // @TODO: DV -- DYNAMICALLY GET THE timelineTitle IN THE LINE BELOW
+          var timelineTitle = 'Graceland Catchup Timeline'; // $('#microsite #timeline').text();
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #timeline .timeline-items .timeline-item.active .timeline-item-details > h2').text();
-          s.prop5 = siteName + ' : Timeline SlideShow : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Gallery | ' + pageName;
+          s.prop5 = siteName + ' : Timeline SlideShow : ' + timelineTitle;
+          s.pageName = s.prop5 + ' : ' + itemTitle;
+          pageName = itemTitle + ' | Timeline Slideshow | ' + pageName;
           break;
         case 'quizzes':
           s.prop3 = 'Quiz';
@@ -380,9 +365,18 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           }
         }
         // add styles for iframe
-        $('#' + section + ' .ad-leaderboard iframe').load(function () {
-          $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
-        });
+        if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
+          $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
+          $('#' + section + ' .ad-leaderboard iframe').load(function () {
+            $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 50px;}object * {max-width: 100%; max-height: 50px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+          });
+        }
+        else {
+          $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
+          $('#' + section + ' .ad-leaderboard iframe').load(function () {
+            $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+          });
+        }
 
         $ad.removeClass('loading');
       }
@@ -402,7 +396,6 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       itemTitle = itemTitle || '';
       var basePath = Drupal.settings.microsites_settings.base_path,
           anchorItem = $('#nav-' + anchor),
-//          anchorNum = anchorItem.find('a').attr('data-menuitem'),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
           nextSection = '#' + anchor,
           nextSectionId = $(nextSection).attr('id');
@@ -429,7 +422,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       // now scroll to the next section
       var siteNavHeight = (anchor != 'home' && anchor != 'videos') ? $('#site-nav').height() : 0,
           nextSectionElem = document.getElementById(anchor),
-          nextSectionTop = nextSectionElem.offsetTop - siteNavHeight;
+          nextSectionTop = nextSectionElem.offsetTop; // nextSectionElem.offsetTop - siteNavHeight;
       $('body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
@@ -473,19 +466,6 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           basePageName = siteName + ' | USA Network',
           self = this;
 
-      // usa_debug
-      var hostname = window.location.hostname,
-          usa_debugFlag = (hostname == 'www.usanetwork.com') ? false : true;
-/*
-      function usa_debug(msg, obj) {
-        if (usa_debugFlag && typeof console != 'undefined') {
-          console.log(msg);
-          if (typeof obj != 'undefined') {
-            console.log(obj);
-          }
-        }
-      }
-*/
       // set hover state for hamburger menu on mobile devices
       var wwidth = $(window).width(),
           $siteNav = $('#site-nav');
@@ -507,16 +487,14 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       }
 
       // TIME OUT
+      // we need to allow time for the page to load -- especially videos
       setTimeout(function(){
-        // initialize the waypoints
-        self.initializeWaypoints();
-
         // initialize clicks in microsite menu
         $('#microsite li.internal a').on('click', function(e){
           e.preventDefault();
 
 usa_debug('======== clicked on ' + $(this).parent().attr('id'));
-          if ($('#site-nav-links li').hasClass('disabled')) { // || $(this).parent().hasClass('active')) {
+          if ($('#site-nav-links li').hasClass('disabled')) {
             return false;
           }
           else {
@@ -525,7 +503,7 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
 
           var anchor = $(this).parent().attr('data-menuanchor');
           Drupal.behaviors.ms_global.sectionScroll(anchor);
-          Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
+          if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });
 
         // initialize graceland cu logo click
@@ -533,16 +511,11 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
           var anchor = 'home',
               anchorFull = basePath + '/' + anchor;
 
-  //        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
           Drupal.behaviors.ms_global.sectionScroll(anchor);
         });
 
-/*
-        if ($('#videos').hasClass('active')) {
-          $('#video-container').addClass('active');
-          Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false);
-        }
-*/
+        // initialize the waypoints
+        self.initializeWaypoints();
 
         // check url and scroll to specific content
         var urlParts = self.parseUrl(),
@@ -600,6 +573,13 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
           }
           else {
             $siteNav.removeClass('mobile');
+          }
+
+          if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
+            $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
+          }
+          else {
+            $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
           }
 
           if (typeof Waypoint != 'undefined') Waypoint.refreshAll();

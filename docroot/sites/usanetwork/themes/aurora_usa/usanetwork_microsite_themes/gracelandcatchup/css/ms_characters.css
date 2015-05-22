@@ -123,6 +123,12 @@
 }
 
 /* **************** BEGIN MEDIA QUERIES ******************* */
+@media (max-width: 1090px) {
+  #character-nav .tooltip .role {
+    font-size: 0.8em;
+  }
+}
+
 @media (max-width: 670px) {
   #character-nav li {
     width: 48%;

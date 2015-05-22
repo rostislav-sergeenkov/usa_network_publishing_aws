@@ -1,11 +1,11 @@
 (function ($) {
   Drupal.behaviors.microsite_quizzes = {
     quizIsLoading: null,
-
+/*
     micrositeInit300x250Ad: function(nid) {
       $('#microsite #usanetwork-quiz-' + nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center>');
     },
-
+*/
     micrositeInitGigyaSharebar: function() {
       if (typeof gigya !== 'undefined') {
         if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
@@ -243,7 +243,7 @@
                 Drupal.behaviors.microsite_scroll.create728x90Ad();
 
                 // show 300x250 ad on splash page
-                Drupal.behaviors.microsite_quizzes.micrositeInit300x250Ad(data.nid);
+//                Drupal.behaviors.microsite_quizzes.micrositeInit300x250Ad(data.nid);
 
                 // set url
                 Drupal.behaviors.microsite_scroll.micrositeChangeUrl('quizzes', link);

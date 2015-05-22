@@ -13,12 +13,12 @@
           $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 0) {
 //usa_debug('========= showSiteNav()');
-        $siteNav.css({'opacity': 1}).animate({'max-height': '80px'}, 700, function(){
+        $siteNav.css({'opacity': 1}).animate({'max-height': '70px'}, 700, function(){
           if ($(this).hasClass('mobile')) {
             $(this).css({'overflow': 'visible'}); // to allow hamburger hover state to work
           }
         });
-        $videoTitle.animate({marginTop: 105}, 700);
+//        $videoTitle.animate({marginTop: 105}, 700);
         $homeUsaLogo.animate({'opacity': 0}, 700);
       }
     },
@@ -30,7 +30,7 @@
       if ($siteNav.css('opacity') == 1) {
 //usa_debug('========= hideSiteNav()');
         $homeUsaLogo.animate({'opacity': 1}, 700);
-        $videoTitle.animate({marginTop: 25}, 700);
+//        $videoTitle.animate({marginTop: 25}, 700);
         $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
           $(this).css({'opacity': 0});
         });
@@ -64,7 +64,7 @@
           self = this;
 
 
-      $(document).ready(function(){
+//      $(document).ready(function(){
         var homeSectionHeight,
             siteNavTimer,
             siteNavPositionTimer,
@@ -95,38 +95,10 @@
             }, 200);
           }
 
-/*
-var videosObj = document.getElementById('videos'),
-    box = videosObj.getBoundingClientRect();
-usa_debug('======== videos box -- top left: ' + box.top + ' ' + box.left + ', bottom right: ' + box.bottom + ' ' + box.right + '\nbox: ');
-usa_debug(box);
-*/
-
           // initial load of each ad as it comes into view
           scrollTimer = clearTimeout(scrollTimer);
           scrollTimer = setTimeout(function() {
             scrollDirection = Drupal.behaviors.ms_global.getScrollDirection();
-/*
-            $('.section').each(function(index, value){
-              var //$elem = $(this),
-                  sectionId = $(this).attr('id'),
-                  box = $(this).getBoundingClientRect();
-
-usa_debug('========== section box coordinates -- top left: ' + box.top + ' ' + box.left + '\nbottom right: ' + box.bottom + ' ' + box.right);
-*//*
-                  elem = $(this)
-                  box = elem.getBoundingClientRect(),
-                  body = document.body,
-                  docElem = document.documentElement,
-                  scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop,
-                  scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft,
-                  clientTop = docElem.clientTop || body.clientTop || 0,
-                  clientLeft = docElem.clientLeft || body.clientLeft || 0,
-                  top  = box.top +  scrollTop - clientTop,
-                  left = box.left + scrollLeft - clientLeft;
-              return { top: Math.round(top), left: Math.round(left) }
-            });
-*/
 
             console.log('============ Haven\'t scrolled in 250ms!\nscrollDirection: ' + scrollDirection);
             if (!allAdsLoaded) {
@@ -138,14 +110,12 @@ usa_debug('========== section box coordinates -- top left: ' + box.top + ' ' + b
                     allAdsLoaded = false;
 //usa_debug('============= 728x90 ad not loaded yet for #' + sectionId + ', allAdsLoaded: ' + allAdsLoaded);
                     if (sectionId == 'videos') {
-/*
                       var $activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
                           dataFullEpisode = $activeVideoThumb.attr('data-full-episode');
 
                       if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
                         Drupal.behaviors.ms_global.create728x90Ad(sectionId);
                       }
-*/
                     }
                     else {
                       if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
@@ -155,6 +125,7 @@ usa_debug('========== section box coordinates -- top left: ' + box.top + ' ' + b
                     }
                   }
 
+/*
                   if (sectionId == 'quizzes') {
                     if ($('.dart-name-300x250_ifr_reload_quizzes').html() == '') {
                       allAdsLoaded = false;
@@ -165,12 +136,13 @@ usa_debug('========== section box coordinates -- top left: ' + box.top + ' ' + b
                       }
                     }
                   }
+*/
                 }
               });
             }
           }, 250);
         });
-      });
+//      });
 
     }
   }

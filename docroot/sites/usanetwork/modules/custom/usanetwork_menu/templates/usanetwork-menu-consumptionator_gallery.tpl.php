@@ -19,11 +19,11 @@
       </a>
     </div>
     <div class="menu-item tab video-title info">
-      <h1>
+      <h2>
         <a class="no-refresh nolink" data-state>
           <?php if (!empty($details['gallery_type'])): ?><?php print $details['gallery_type'] . ': '; ?><?php endif; ?><?php print $gallery_name; ?>
         </a>
-      </h1>
+      </h2>
     </div>
   </div>
 </div>
@@ -40,7 +40,9 @@
           <?php if (!empty($details['episode_info'])): ?>
             <div class="meta-info">
               <?php if (!empty($details['episode_info']['episode_title'])): ?>
-                <div class="title"><?php print $details['episode_info']['episode_title']; ?></div>
+                <div class="title">
+                  <h1><?php print !empty($h1) ? $h1 : $details['episode_info']['episode_title']; ?></h1>
+                </div>
               <?php endif; ?>
               <?php if (!empty($details['episode_info']['season_number']) && !empty($details['episode_info']['episode_number'])): ?>
                 <div class="additional">
@@ -54,7 +56,7 @@
           <?php else: ?>
             <?php if (!empty($gallery_name)): ?>
               <div class="title">
-                <?php print $gallery_name; ?>
+                <h1><?php print !empty($h1) ? $h1 : $gallery_name; ?></h1>
               </div>
             <?php endif; ?>
           <?php endif; ?>

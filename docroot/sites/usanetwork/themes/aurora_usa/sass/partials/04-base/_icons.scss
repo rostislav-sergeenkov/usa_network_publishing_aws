@@ -256,7 +256,7 @@
         display: block;
         font-family: "ico-font";
         font-size: 32px;
-        @include breakpoint ($bp-768-width) {
+        @include breakpoint ($bp-1024-width) {
           font-size: 26px;
         }
       }

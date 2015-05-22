@@ -22,7 +22,7 @@
             <?php print $episode_title; ?>
           </div>
           <div class="additional">
-            <?php print t('S').$season_number.t(' episode ').$episode_number.'<span class="aired">'.t('Aired on ').'</span>'.$air_date_text; ?>
+            <?php print '<span class="episode">'.t('S').$season_number.t(' episode ').$episode_number.'</span><span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?>
           </div>
         </div>
         <div class="share">

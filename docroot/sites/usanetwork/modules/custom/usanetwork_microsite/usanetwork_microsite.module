@@ -1010,6 +1010,7 @@ function _usanetwork_microsite_render_page_timeline($section_wrapper) {
     $node_view = node_view($node, 'inline_content');
     $rendered_timeline_gallery = drupal_render($node_view);
     $theme_variables = array(
+      'gallery_title' => $node->title,
       'content' => $rendered_timeline_gallery,
     );
     $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($node, $section_wrapper));

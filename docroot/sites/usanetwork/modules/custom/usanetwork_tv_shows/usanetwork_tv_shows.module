@@ -2837,7 +2837,7 @@ function usanetwork_tv_shows_blank_page() {
  * 'mps_parameters' drupal alter for set own categories parameters for custom Tv Shows pages
  */
 function usanetwork_tv_shows_mps_parameters_alter(&$parameters){
-  if ($parameters['type'] == 'tv_show') {
+  if (isset($parameters['type']) && $parameters['type'] == 'tv_show') {
     $paths = explode('/', $parameters['path']);
     if (isset($paths[3])) {
       $args = arg();

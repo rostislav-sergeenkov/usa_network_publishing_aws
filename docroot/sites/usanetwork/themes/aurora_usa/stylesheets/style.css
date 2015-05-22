@@ -14055,7 +14055,7 @@ footer h2 {
   margin-right: 2px;
   position: relative;
   height: 100%;
-  width: 33%;
+  width: 33vw;
 }
 @media (max-width: 640px) {
   .consum-sidebar .episodes-list-slider.horizontal li {
@@ -25703,7 +25703,7 @@ yx-axis
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
   float: left;
   position: relative;
-  width: 100%;
+  width: 100vw;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .wrp {
   background: #000000;

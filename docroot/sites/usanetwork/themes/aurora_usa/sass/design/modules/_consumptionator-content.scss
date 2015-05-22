@@ -345,7 +345,7 @@
         margin-right: 2px;
         position: relative;
         height: 100%;
-        width: 33%;
+        width: 33vw;
         @extend %aspot-carousel-promo;
         @include breakpoint($bp-640-width) {
           float: none;

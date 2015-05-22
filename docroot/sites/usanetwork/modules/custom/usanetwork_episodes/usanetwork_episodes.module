@@ -394,7 +394,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     if ($filter_by_season == 0) {
       $current_season_data_item = $season_ids[0];
       $current_season_data_item_index = 0;
-      $theme_variables['active_filter_title'] = $current_season_data_item->season_title;
+      $theme_variables['active_filter_title'] = t('All seasons');
     }
     else {
       foreach ($season_ids as $season_id_number => $season_id) {

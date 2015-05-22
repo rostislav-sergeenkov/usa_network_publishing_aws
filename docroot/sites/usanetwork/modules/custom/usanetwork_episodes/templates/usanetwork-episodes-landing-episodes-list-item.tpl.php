@@ -43,7 +43,7 @@
           <div class="full-episode-button show-color hover-avail"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch a full episode'); ?></a></div>
         <?php endif; ?>
         <?php if (!empty($preview_episode_url)): ?>
-          <div class="preview_episode_button show-color"><a href="<?php print $preview_episode_url; ?>"><?php print t('Watch a preview'); ?></a></div>
+          <div class="preview_episode_button"><a href="<?php print $preview_episode_url; ?>"><div class="font-icon video-font-icon"></div><?php print t('Watch a preview'); ?></a></div>
         <?php endif; ?>
       </div>
       <div class="links">

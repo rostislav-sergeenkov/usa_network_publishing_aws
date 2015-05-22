@@ -8,8 +8,3 @@
   <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : ''; ?></span>
 </h2>
 <?php print $gallery_html; ?>
-
-
-
-
-

@@ -9,7 +9,6 @@
   .episode-landing-list-item {
     @include clear();
     padding: 48px 32px 48px 32px;
-    min-width: 400px;
     border-top: 2px solid #ffffff;
     @include breakpoint ($bp-min-1025-width) {
       min-height: 25.4vw;
@@ -215,10 +214,10 @@
           width: 100%;
         }
         > div {
-          margin-right: 1%;
+          margin-right: 0.5%;
           position: relative;
           display: inline-block;
-          width: 49.5%;
+          width: 49%;
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -243,6 +242,11 @@
           }
           &:not(.full-episode-button) {
             background: $show-info-block;
+            .font-icon {
+              &:before {
+                color: $show-info-block;
+              }
+            }
           }
           a {
             color: #ffffff;

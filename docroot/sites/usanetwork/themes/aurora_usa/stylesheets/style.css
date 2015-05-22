@@ -4913,7 +4913,7 @@ header .header-nav-bar .no-refresh {
 }
 @media (min-width: 769px) {
   header .header-nav-bar .no-refresh.active:before {
-    background: #454545;
+    background: #363435;
     bottom: -1px;
     content: '';
     display: block;
@@ -5086,7 +5086,7 @@ header .nav-bar-tabs {
     width: 100%;
   }
   header .nav-bar-tabs ul > li a {
-    background: #454545;
+    background: #363435;
     border-bottom: 2px solid darkgrey;
     color: #ffffff;
     cursor: pointer;
@@ -5238,11 +5238,11 @@ header .nav-bar-tabs {
     text-transform: uppercase;
   }
   header .nav-bar-tabs a.active {
-    background: #454545;
+    background: #363435;
     color: #ffffff;
   }
   header .nav-bar-tabs a.active:hover {
-    background: #454545;
+    background: #363435;
   }
   header .nav-bar-tabs a:hover {
     background: darkgrey;
@@ -5754,12 +5754,12 @@ header .tab-content:after {
   }
 }
 header .tab-item {
-  background: #454545;
+  background: #363435;
   border-top: 1px solid transparent;
   display: none;
   letter-spacing: 0.5px;
   height: auto;
-  padding: 60px;
+  padding: 4.87805vw 2.92683vw;
   position: relative;
   width: 100%;
 }
@@ -5767,6 +5767,16 @@ header .tab-item:after {
   clear: both;
   content: '';
   display: table;
+}
+@media (min-width: 1901px) {
+  header .tab-item {
+    padding: 96px 53px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item {
+    padding: 50px 30px;
+  }
 }
 @media (max-width: 768px) {
   header .tab-item {
@@ -5787,29 +5797,59 @@ header .tab-item.shows-tab .panel-pane {
   position: relative;
 }
 header .tab-item.shows-tab .panel-pane h2 {
-  color: #dcddde;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  color: #adadad;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 1.46341vw;
+  letter-spacing: 2px;
+  margin-bottom: 3.41463vw;
   text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  header .tab-item.shows-tab .panel-pane h2 {
+    font-size: 28px;
+    margin-bottom: 65px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.shows-tab .panel-pane h2 {
+    font-size: 15px;
+    margin-bottom: 35px;
+  }
 }
 header .tab-item.shows-tab .panel-pane ul {
   list-style: none;
-  margin-top: 20px;
 }
 header .tab-item.shows-tab .panel-pane li {
-  margin-bottom: 20px;
+  list-style: none;
+  margin-bottom: 1.95122vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.shows-tab .panel-pane li {
+    font-size: 37px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.shows-tab .panel-pane li {
+    margin-bottom: 20px;
+  }
 }
 header .tab-item.shows-tab .panel-pane li a {
-  color: #dcddde;
+  color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 1.26829vw;
   letter-spacing: 0.5px;
+  line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
 }
-@media (min-width: 1281px) {
+@media (min-width: 1901px) {
   header .tab-item.shows-tab .panel-pane li a {
-    font-size: 14px;
+    font-size: 25px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.shows-tab .panel-pane li a {
+    font-size: 13px;
   }
 }
 header .tab-item.shows-tab .panel-pane li a span {
@@ -5841,22 +5881,6 @@ header .tab-item.shows-tab .originals-shows-menu:only-child ul {
   -o-column-gap: 3em;
   column-gap: 3em;
 }
-header .tab-item.shows-tab .originals-shows-menu h2 {
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 24px;
-  letter-spacing: 2px;
-}
-@media (min-width: 1601px) {
-  header .tab-item.shows-tab .originals-shows-menu h2 {
-    font-size: 32px;
-    margin-bottom: 50px;
-  }
-}
-@media (max-width: 1280px) {
-  header .tab-item.shows-tab .originals-shows-menu h2 {
-    font-size: 20px;
-  }
-}
 header .tab-item.shows-tab .originals-shows-menu ul {
   -webkit-column-count: 2;
   -moz-column-count: 2;
@@ -5868,19 +5892,6 @@ header .tab-item.shows-tab .originals-shows-menu ul {
   -ms-column-gap: 2em;
   -o-column-gap: 2em;
   column-gap: 2em;
-}
-@media (min-width: 1601px) {
-  header .tab-item.shows-tab .originals-shows-menu ul li {
-    margin-bottom: 20px;
-  }
-}
-header .tab-item.shows-tab .originals-shows-menu ul li a {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-}
-@media (min-width: 1601px) {
-  header .tab-item.shows-tab .originals-shows-menu ul li a {
-    font-size: 22px;
-  }
 }
 header .tab-item.shows-tab .pane-menu-also-on-usa {
   width: 30%;
@@ -5909,38 +5920,6 @@ header .tab-item.shows-tab .pane-menu-also-on-usa:only-child ul {
   -ms-column-gap: 3em;
   -o-column-gap: 3em;
   column-gap: 3em;
-}
-header .tab-item.shows-tab .pane-menu-also-on-usa h2 {
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 24px;
-  letter-spacing: 2px;
-}
-@media (min-width: 1601px) {
-  header .tab-item.shows-tab .pane-menu-also-on-usa h2 {
-    font-size: 32px;
-    margin-bottom: 50px;
-  }
-}
-@media (max-width: 1280px) {
-  header .tab-item.shows-tab .pane-menu-also-on-usa h2 {
-    font-size: 20px;
-  }
-}
-header .tab-item.shows-tab .pane-menu-also-on-usa ul li {
-  list-style: none;
-}
-@media (min-width: 1601px) {
-  header .tab-item.shows-tab .pane-menu-also-on-usa ul li {
-    margin-bottom: 20px;
-  }
-}
-header .tab-item.shows-tab .pane-menu-also-on-usa ul li a {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-}
-@media (min-width: 1601px) {
-  header .tab-item.shows-tab .pane-menu-also-on-usa ul li a {
-    font-size: 22px;
-  }
 }
 header .tab-item.full-episode-tab {
   padding: 60px 45px;
@@ -17105,7 +17084,6 @@ footer h2 {
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {
   padding: 48px 32px 48px 32px;
-  min-width: 400px;
   border-top: 2px solid #ffffff;
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:after {
@@ -17414,10 +17392,10 @@ footer h2 {
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div {
-  margin-right: 1%;
+  margin-right: 0.5%;
   position: relative;
   display: inline-block;
-  width: 49.5%;
+  width: 49%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -17443,6 +17421,9 @@ footer h2 {
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div:not(.full-episode-button) {
   background: #bbb7b7;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div:not(.full-episode-button) .font-icon:before {
+  color: #bbb7b7;
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
   color: #ffffff;

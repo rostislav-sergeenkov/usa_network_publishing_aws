@@ -76,7 +76,7 @@
   USAN.gallery = (function () {
 
     function pagerItems() {
-      var container = $('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main'),
+      var container = $('.gallery-wrapper'),
           pager = container.find('.bx-custom-pager'),
           pagerItem = container.find('.bx-pager-item'),
           pagerItemLink = pager.find('.bx-pager-link'),
@@ -159,13 +159,13 @@
     };
   })();
 
-
   $(document).ready(function () {
     // bxslider-gallery slider initialization
-    if ($('body').hasClass('node-type-media-gallery')) {
+    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode')) {
 
       var gallery = USAN.gallery.init('#bxslider-gallery');
-      var container = $('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main');
+
+      var container = $('.gallery-wrapper');
 
       if(window.innerWidth < window_size_tablet) {
         $('#bxslider-gallery').addClass('mobile');

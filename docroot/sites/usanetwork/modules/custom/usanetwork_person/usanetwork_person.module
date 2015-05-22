@@ -370,6 +370,26 @@ function usanetwork_person_preprocess_page(&$vars) {
 }
 
 /**
+ * Alter gigya share settings.
+ */
+function usanetwork_person_gigya_sharebar_alter(&$share_settings, $context) {
+
+  if ($context['entity_type'] == 'node') {
+    if ($context['instance']['bundle'] == 'person') {
+      $person = $context['entity'];
+      $entity_wrapper = entity_metadata_wrapper('node', $person);
+      if (!empty($person->field_usa_character_thumb)) {
+        $thumb_field = reset(field_get_items('node', $person, 'field_usa_character_thumb'));
+        $share_settings['gigyaSharebar']['ua']['description'] = !empty($person->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
+          (!empty($person->body) ? $entity_wrapper->body->value->value() : '');
+        $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($thumb_field['uri']);
+        $share_settings['gigyaSharebar']['ua']['imageBhev'] = 'url';
+      }
+    }
+  }
+}
+
+/**
  * Renders main block for consumptionator character page.
  */
 function _usanetwork_person_characters_main_block() {
@@ -486,8 +506,13 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
     foreach ($result as $result_item) {
       $person_node = node_load($result_item->entity_id);
       $role = NULL;
-      $image_url = usanetwork_core_api_get_content_image('node', $person_node);
-
+      if (!empty($person_node->field_promo_image_override)) {
+        $field_image_override = reset(field_get_items('node', $person_node, 'field_promo_image_override'));
+        $image_url = $field_image_override['uri'];
+      }
+      else {
+        $image_url = usanetwork_core_api_get_content_image('node', $person_node);
+      }
       if (!empty($person_node->field_role)) {
         $role_field = field_get_items('node', $person_node, 'field_role');
         $role_term = taxonomy_term_load_multiple(array($role_field[0]['tid']));

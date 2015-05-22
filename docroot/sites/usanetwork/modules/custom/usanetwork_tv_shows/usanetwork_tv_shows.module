@@ -60,6 +60,8 @@ function usanetwork_tv_shows_menu() {
 
   $items['node/%node/videos'] = array(
     'title' => '',
+    'title callback' => 'usanetwork_tv_shows_landing_page_title_callback',
+    'title arguments' => array(1),
     'page arguments' => array(1),
     'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
@@ -2849,6 +2851,20 @@ function usanetwork_tv_shows_mps_parameters_alter(&$parameters){
   }
 }
 
+
+/**
+ * Title callback function for TV Show landing page.
+ */
+function usanetwork_tv_shows_landing_page_title_callback($show_node) {
+  if (!empty($show_node)) {
+    $title = 'Videos | ' . $show_node->title . ' | USA Network';
+  }
+  else {
+    $title = 'Videos | USA Network';
+  }
+
+  return $title;
+}
 
 /**
  * Gets and validates params from $_GET for videos block.

@@ -125,6 +125,7 @@
                     }
                   },
                   tap: function (event, target) {
+                    var click_on_opened = $(target).closest('li.active').length > 0;
                     var tapHandler = function() {
                       if ($(target).attr('href')) {
                         if (!$(target).hasClass('show-open')) {
@@ -183,7 +184,9 @@
                     if (($carousel.find('li.active').length > 0) && ($carousel.hasClass('stop'))) {
                       $carousel.unbind('show:close');
                       $carousel.on('show:close', function() {
-                        tapHandler();
+                        if (!click_on_opened) {
+                          tapHandler();
+                        }
                       });
                       Drupal.behaviors.global_carousels.showClose($carousel.find('li.active'));
                     } else {

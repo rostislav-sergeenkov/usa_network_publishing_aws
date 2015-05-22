@@ -70,9 +70,7 @@ header {
       }
     }
     a {
-//      background: url('../images/usa-logo.png') no-repeat;
       background: url('../images/logo-bg.png') no-repeat;
-//      background-position: 45% 50%;
       background-position: 50% 50%;
       background-size: contain;
       display: block;
@@ -712,9 +710,15 @@ header {
     display: none;
     letter-spacing: 0.5px;
     height: auto;
-    padding: 60px;
+    padding: get-vw(50px, 1025) get-vw(30px, 1025);
     position: relative;
     width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      padding: 96px 53px;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding: 50px 30px;
+    }
     @include breakpoint($bp-768-width) {
       padding: 20px;
     }
@@ -730,26 +734,46 @@ header {
         float: left;
         position: relative;
         h2 {
-          color: $footer-links;
-          font-family: $avalon-medium;
-          font-size: 20px;
+          color: $header-tab-title;
+          font-family: $tex-gyreschola-italic;
+          font-size: get-vw(15px, 1025);
+          letter-spacing: 2px;
+          margin-bottom: get-vw(35px, 1025);
           text-transform: uppercase;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 28px;
+            margin-bottom: 65px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: 15px;
+            margin-bottom: 35px;
+          }
         }
         ul {
           list-style: none;
-          margin-top: 20px;
         }
         li {
-          margin-bottom: 20px;
+          list-style: none;
+          margin-bottom: get-vw(20px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 37px;
+          }
+          @include breakpoint($bp-1024-width) {
+            margin-bottom: 20px;
+          }
           a {
-            color: $footer-links;
+            color: #ffffff;
             font-family: $avalon-medium;
-            font-size: 12px;
+            font-size: get-vw(13px, 1025);
             letter-spacing: 0.5px;
+            line-height: 1;
             text-decoration: none;
             text-transform: uppercase;
-            @include breakpoint($bp-min-1281-width) {
-              font-size: 14px;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 25px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: 13px;
             }
             span {
               color: #000000;
@@ -780,18 +804,6 @@ header {
             column-gap: 3em;
           }
         }
-        h2 {
-          font-family: $tex-gyreschola-italic;
-          font-size: 24px;
-          letter-spacing: 2px;
-          @include breakpoint($bp-min-1601-width) {
-            font-size: 32px;
-            margin-bottom: 50px;
-          }
-          @include breakpoint($bp-1280-width) {
-            font-size: 20px;
-          }
-        }
         ul {
           -webkit-column-count: 2;
           -moz-column-count: 2;
@@ -803,17 +815,6 @@ header {
           -ms-column-gap: 2em;
           -o-column-gap: 2em;
           column-gap: 2em;
-          li {
-            @include breakpoint($bp-min-1601-width) {
-              margin-bottom: 20px;
-            }
-            a {
-              font-family: $avalon-medium;
-              @include breakpoint($bp-min-1601-width) {
-                font-size: 22px;
-              }
-            }
-          }
         }
       }
       .pane-menu-also-on-usa {
@@ -837,32 +838,6 @@ header {
             -ms-column-gap: 3em;
             -o-column-gap: 3em;
             column-gap: 3em;
-          }
-        }
-        h2 {
-          font-family: $tex-gyreschola-italic;
-          font-size: 24px;
-          letter-spacing: 2px;
-          @include breakpoint($bp-min-1601-width) {
-            font-size: 32px;
-            margin-bottom: 50px;
-          }
-          @include breakpoint($bp-1280-width) {
-            font-size: 20px;
-          }
-        }
-        ul {
-          li {
-            list-style: none;
-            @include breakpoint($bp-min-1601-width) {
-              margin-bottom: 20px;
-            }
-            a {
-              font-family: $avalon-medium;
-              @include breakpoint($bp-min-1601-width) {
-                font-size: 22px;
-              }
-            }
           }
         }
       }

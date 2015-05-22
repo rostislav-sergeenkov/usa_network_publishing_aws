@@ -365,9 +365,18 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           }
         }
         // add styles for iframe
-        $('#' + section + ' .ad-leaderboard iframe').load(function () {
-          $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
-        });
+        if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
+          $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
+          $('#' + section + ' .ad-leaderboard iframe').load(function () {
+            $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 50px;}object * {max-width: 100%; max-height: 50px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+          });
+        }
+        else {
+          $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
+          $('#' + section + ' .ad-leaderboard iframe').load(function () {
+            $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+          });
+        }
 
         $ad.removeClass('loading');
       }
@@ -564,6 +573,13 @@ usa_debug('======== clicked on ' + $(this).parent().attr('id'));
           }
           else {
             $siteNav.removeClass('mobile');
+          }
+
+          if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
+            $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
+          }
+          else {
+            $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
           }
 
           if (typeof Waypoint != 'undefined') Waypoint.refreshAll();

@@ -125,6 +125,7 @@
                     }
                   }
 
+/*
                   if (sectionId == 'quizzes') {
                     if ($('.dart-name-300x250_ifr_reload_quizzes').html() == '') {
                       allAdsLoaded = false;
@@ -135,6 +136,7 @@
                       }
                     }
                   }
+*/
                 }
               });
             }

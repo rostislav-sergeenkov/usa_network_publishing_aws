@@ -2,10 +2,11 @@
   Drupal.behaviors.ms_quizzes = {
     quizIsLoading: null,
 
+/*
     init300x250Ad: function(nid) {
       $('#microsite #usanetwork-quiz-' + nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center>');
     },
-
+*/
     initGigyaSharebar: function() {
       if (typeof gigya !== 'undefined') {
         if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
@@ -45,21 +46,7 @@
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'quiz-gigya-share', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'gigya-share--2', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'gigya-share--3', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
-/*
-      $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-        var containerId = sharebar.gigyaSharebar.containerID;
-        if (containerId == 'gigya-share') {
-          containerId = 'quiz-gigya-share';
-          newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": containerId, "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
-        }
-        else if (containerId == 'gigya-share--2' || containerId == 'gigya-share--3') {
-          newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": containerId, "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
-        }
-        else { // in case there is other gigya share bar information in this object
-          newSharebarObj.push(sharebar);
-        }
-      });
-*/
+
       Drupal.settings.gigyaSharebars = [];
       Drupal.settings.gigyaSharebars = newSharebarObj;
     },
@@ -243,7 +230,7 @@
                 Drupal.behaviors.ms_global.create728x90Ad();
 
                 // show 300x250 ad on splash page
-                Drupal.behaviors.ms_quizzes.init300x250Ad(data.nid);
+//                Drupal.behaviors.ms_quizzes.init300x250Ad(data.nid);
 
                 // set url
                 Drupal.behaviors.ms_global.changeUrl('quizzes', link);

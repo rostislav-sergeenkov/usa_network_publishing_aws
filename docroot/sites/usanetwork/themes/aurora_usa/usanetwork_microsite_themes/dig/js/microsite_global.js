@@ -550,7 +550,7 @@
     create300x250Ad: function (section) {
 
       usa_debug('create300x250Ad(' + section + ')');
-      if (section != 'videos' && section != 'home') {
+      if (section != 'videos' && section != 'home' && section != 'quizzes') {
         // check to see if there's already an ad
         if ($('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
           adBlock = '.dart-name-300x250_ifr_reload_' + section;
@@ -624,7 +624,7 @@
 
       // if home section, make sure the flexslider carousel has been
       // initialized before loading the 300x250 ad
-      if (section != 'videos') {
+      if (section != 'videos' && section != 'quizzes') {
         Drupal.behaviors.microsite_scroll.create300x250Ad(section);
       }
     },

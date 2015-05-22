@@ -1,7 +1,7 @@
 (function ($) {
   Drupal.behaviors.full_episodes_carousel = {
     attach: function (context) {
-      var hide_elements = ($('.full-episodes-carousel').hasClass('carousel_1_rows'))? 1: 0;
+      var hide_elements = ($('.full-episodes-carousel').hasClass('carousel_1_rows'))? 3: 1;
       if (window.innerWidth < window_size_tablet_portrait){
         $('.full-episodes-carousel').addClass('destroy');
         $('.full-episodes-carousel > ul > li:gt('+ hide_elements +')').addClass('hidden');

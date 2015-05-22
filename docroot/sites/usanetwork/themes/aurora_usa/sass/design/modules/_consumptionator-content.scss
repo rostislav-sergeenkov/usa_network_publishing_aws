@@ -136,7 +136,7 @@
     }
     h2 {
       color: #ffffff;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 15px;
       margin: 0;
       text-transform: uppercase;
@@ -201,7 +201,7 @@
           top: 50%;
           width: 75px;
           &.active {
-            border-left: 7px solid;
+            border-left: 3px solid;
           }
           @include breakpoint($bp-min-1901-width) {
             height: 74px;
@@ -266,9 +266,60 @@
       }
     }
     &.horizontal {
+      overflow: hidden;
+      position: relative;
       display: none;
       height: calc((100vw - 4px)/48*9);
       width: 100%;
+      &:hover .horizontal-controls {
+        display: block;
+        @include breakpoint($bp-640-width) {
+          display: none;
+        }
+      }
+      .horizontal-controls {
+        display: none;
+        a {
+          display: block;
+          position: absolute;
+          top: 0px;
+          height: 100%;
+          z-index: 9;
+          background: rgba(255,255,255,0.6);
+          &.jcarousel-control-prev {
+            left: 0;
+            width: 60px;
+            &.inactive {
+              display: none;
+            }
+            &:after {
+              content: "\e607";
+            }
+          }
+          &.jcarousel-control-next {
+            right: 0;
+            width: 60px;
+            &.inactive {
+              display: none;
+            }
+            &:after {
+              content: "\e608";
+            }
+          }
+          &:after {
+            color: #545454;
+            display: block;
+            font-family: "ico-font";
+            font-size: 32px;
+            left: 50%;
+            margin-left: -16px;
+            margin-top: -16px;
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+          }
+        }
+      }
       @include breakpoint($bp-1280-width) {
         display: block;
       }
@@ -279,9 +330,14 @@
         position: relative;
       }
       ul, .bx-viewport, .bx-wrapper {
+        width: 20000em;
+        position: relative;
         height: auto!important;
         @include breakpoint($bp-min-641-width) {
           height: 100%!important;
+        }
+        @include breakpoint($bp-640-width) {
+          width: 100%;
         }
       }
       li {
@@ -289,7 +345,7 @@
         margin-right: 2px;
         position: relative;
         height: 100%;
-        width: 33%;
+        width: 33vw;
         @extend %aspot-carousel-promo;
         @include breakpoint($bp-640-width) {
           float: none;
@@ -298,16 +354,19 @@
         }
       }
       .node {
+        height: 100%;
+        position: relative;
+        width: 100%;
         &.active {
           &:before {
-            border-left: 7px solid;
+            border-left: 3px solid;
             content: '';
             display: block;
             height: 100%;
             left: 0;
             position: absolute;
             top: 0;
-            width: 7px;
+            width: 0px;
             z-index: 2;
           }
         }
@@ -392,7 +451,7 @@
     & a {
       color: #ffffff;
       display: block;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 15px;
       letter-spacing: 1px;
       line-height: 40px;

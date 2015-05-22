@@ -21,14 +21,14 @@ function usanetwork_showpages_menu() {
     'type' => MENU_CALLBACK,
   );
   // tv show episodes landing page
-  $items['node/%node/episodes'] = array(
+  /*$items['node/%node/episodes'] = array(
     'title' => t('Episodes'),
     'page callback' => 'usanetwork_showpages_episodes',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_showpages_menu_access',
     'access arguments' => array(1),
     'type' => MENU_CALLBACK,
-  );
+  );*/
   // tv show cast landing page
   $items['node/%node/cast'] = array(
     'title' => t('Cast'),
@@ -635,6 +635,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         case 'quizzes':
           $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           break;
+        // cast_summy
+        case 'cast':
+          break;
         // Show Landing Page
         case '':
           if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
@@ -753,7 +756,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
       $show = reset($show_field);
     }
     if (isset($show)) {
-      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $file->filename, '@showname' => $show['entity']->title));
+      $show_entity_title = !empty($show['entity']->title) ? $show['entity']->title : '';
+      $filename = !empty($file->filename) ? $file->filename : '';
+      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $filename, '@showname' => $show_entity_title));
     } else {
       $head_title = t("@video | Videos | USA Network", array('@video' => $file->filename));
     }

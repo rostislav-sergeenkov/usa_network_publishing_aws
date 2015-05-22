@@ -3,7 +3,7 @@
  * Theme usanetwork_tv_shows_about_block
  */
 ?>
-<div class="about-show-block">
+<div class="about-show-block show-border">
   <div class="about-show-block-inner">
     <?php if (!empty($about_image)): ?>
       <div class="about-show-image-block">

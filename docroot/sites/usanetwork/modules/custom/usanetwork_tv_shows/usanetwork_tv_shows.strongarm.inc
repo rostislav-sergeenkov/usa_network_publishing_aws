@@ -14,7 +14,7 @@ function usanetwork_tv_shows_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_tv_episode';
-  $strongarm->value = 0;
+  $strongarm->value = '0';
   $export['comment_anonymous_tv_episode'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -35,7 +35,7 @@ function usanetwork_tv_shows_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_tv_episode';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_default_mode_tv_episode'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -140,7 +140,7 @@ function usanetwork_tv_shows_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_tv_episode';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_tv_episode'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -248,6 +248,12 @@ function usanetwork_tv_shows_strongarm() {
         'custom_settings' => FALSE,
       ),
       'promo_teaser_large' => array(
+        'custom_settings' => FALSE,
+      ),
+      'microsite_output' => array(
+        'custom_settings' => FALSE,
+      ),
+      'microsite_thumbnail' => array(
         'custom_settings' => FALSE,
       ),
     ),

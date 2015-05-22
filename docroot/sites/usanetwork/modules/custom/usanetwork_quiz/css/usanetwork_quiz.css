@@ -5,6 +5,9 @@
   background-color: #fff;
   color: #000;
 }
+.usanetwork-quiz h3.field-label {
+    display: none;
+}
 .usanetwork-quiz .content-wrap {
   padding: 40px;
 }

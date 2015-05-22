@@ -125,7 +125,7 @@
                   .description {
                     color: $consup-gallery-description;
                     font-size: 30px;
-                    font-family: $avalon-demi;
+                    font-family: $avalon-medium;
                     line-height: 36px;
                     left: 45px;
                     height: 72px;
@@ -233,7 +233,7 @@
                     text-transform: uppercase;
                     .slide-index {
                       font-size: 27px;
-                      font-family: $avalon-demi;
+                      font-family: $avalon-medium;
                     }
                     @include breakpoint($bp-1900-width) {
                       font-size: 13px;

@@ -819,12 +819,11 @@ function _usanetwork_catchall_related_content() {
 
   $node = menu_get_object('node');
   if (!empty($node) && $node->type == 'catchall_page') {
-
-    if (empty($node->field_tvs_show_latest_lnd_feed)) {
+    if (empty($node->field_tvs_show_latest_feed)) {
       return '';
     }
     else {
-      $latest_content_flag_field = field_get_items('node', $node, 'field_tvs_show_latest_lnd_feed');
+      $latest_content_flag_field = field_get_items('node', $node, 'field_tvs_show_latest_feed');
 
       if ($latest_content_flag_field[0]['value'] == 0) {
         return '';
@@ -846,6 +845,7 @@ function _usanetwork_catchall_related_content() {
             ), 'setting');
             $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
             return theme('usanetwork_tv_shows_related_items_container', array(
+              'title_override' => t('Related Content'),
               'related_items_block' => $block_of_items,
               'load_more_link' => TRUE,
               'show_nid' => $show->nid,

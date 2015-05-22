@@ -101,9 +101,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
-    $conf["acquia_identifier"] = "GMWX-32384";
-    $conf["acquia_key"] = "1166f38ec6b5d664b8fb6b085fde8232";
-    $conf["apachesolr_path"] = "/solr/GMWX-32384";
+    $conf["acquia_identifier"] = "AUWZ-71210";
+    $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
+    $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "1";
 
     // Turn on display PHP errors
@@ -137,9 +137,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
-    $conf["acquia_identifier"] = "GMWX-32384";
-    $conf["acquia_key"] = "1166f38ec6b5d664b8fb6b085fde8232";
-    $conf["apachesolr_path"] = "/solr/GMWX-32384";
+    $conf["acquia_identifier"] = "AUWZ-71210";
+    $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
+    $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
     break;
 
@@ -167,9 +167,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
-    $conf["acquia_identifier"] = "GMWX-32384";
-    $conf["acquia_key"] = "1166f38ec6b5d664b8fb6b085fde8232";
-    $conf["apachesolr_path"] = "/solr/GMWX-32384";
+    $conf["acquia_identifier"] = "AUWZ-71210";
+    $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
+    $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
 
     // Turn on display PHP errors
@@ -204,9 +204,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
-    $conf["acquia_identifier"] = "CGJK-32328";
-    $conf["acquia_key"] = "dc2bfa15286aedc061f759dfd20e2f9a";
-    $conf["apachesolr_path"] = "/solr/CGJK-32328";
+    $conf["acquia_identifier"] = "AUWZ-71210";
+    $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
+    $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
 
     // www redirect

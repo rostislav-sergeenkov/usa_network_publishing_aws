@@ -370,6 +370,23 @@ function usanetwork_person_preprocess_page(&$vars) {
 }
 
 /**
+ * Alter gigya share settings.
+ */
+function usanetwork_person_gigya_sharebar_alter(&$share_settings, $context) {
+  if ($context['entity_type'] == 'node') {
+    if ($context['instance']['bundle'] == 'person') {
+      $person = $context['entity'];
+      if (!empty($person->field_usa_character_thumb)) {
+        $thumb_field = reset(field_get_items('node', $person, 'field_usa_character_thumb'));
+        $image = $thumb_field['uri'];
+        $share_settings['gigyaSharebar']['ua']['imageBhev'] = 'url';
+        $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($image);
+      }
+    }
+  }
+}
+
+/**
  * Renders main block for consumptionator character page.
  */
 function _usanetwork_person_characters_main_block() {

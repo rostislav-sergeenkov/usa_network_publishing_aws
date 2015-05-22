@@ -486,8 +486,13 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
     foreach ($result as $result_item) {
       $person_node = node_load($result_item->entity_id);
       $role = NULL;
-      $image_url = usanetwork_core_api_get_content_image('node', $person_node);
-
+      if (!empty($person_node->field_promo_image_override)) {
+        $field_image_override = reset(field_get_items('node', $person_node, 'field_promo_image_override'));
+        $image_url = $field_image_override['uri'];
+      }
+      else {
+        $image_url = usanetwork_core_api_get_content_image('node', $person_node);
+      }
       if (!empty($person_node->field_role)) {
         $role_field = field_get_items('node', $person_node, 'field_role');
         $role_term = taxonomy_term_load_multiple(array($role_field[0]['tid']));

@@ -52,6 +52,8 @@ function usanetwork_tv_shows_menu() {
 
   $items['node/%node/cast'] = array(
     'title' => '',
+    'title callback' => 'usanetwork_tv_shows_landing_page_title_callback',
+    'title arguments' => array(1, 'cast'),
     'page arguments' => array(1),
     'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
@@ -61,23 +63,17 @@ function usanetwork_tv_shows_menu() {
   $items['node/%node/videos'] = array(
     'title' => '',
     'title callback' => 'usanetwork_tv_shows_landing_page_title_callback',
-    'title arguments' => array(1),
+    'title arguments' => array(1, 'tv_show'),
     'page arguments' => array(1),
     'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
   );
 
-//  $items['node/%node/photos'] = array(
-//    'title' => '',
-//    'page arguments' => array(1),
-//    'page callback' => 'usanetwork_tv_shows_blank_page',
-//    'access arguments' => array('access content'),
-//    'type' => MENU_NORMAL_ITEM,
-//  );
-
   $items['node/%node/explore'] = array(
     'title' => '',
+    'title callback' => 'usanetwork_tv_shows_landing_page_title_callback',
+    'title arguments' => array(1, 'explore'),
     'page arguments' => array(1),
     'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
@@ -2855,12 +2851,18 @@ function usanetwork_tv_shows_mps_parameters_alter(&$parameters){
 /**
  * Title callback function for TV Show landing page.
  */
-function usanetwork_tv_shows_landing_page_title_callback($show_node) {
-  if (!empty($show_node)) {
-    $title = 'Videos | ' . $show_node->title . ' | USA Network';
+function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type) {
+  $default_titles = array(
+    'tv_show' => 'Videos | ' . $show_node->title . ' | USA Network',
+    'cast' => 'Characters&Crew | ' . $show_node->title . ' | USA Network',
+    'explore' => 'Explore | ' . $show_node->title . ' | USA Network',
+  );
+
+  if (!empty($show_node) && isset($default_titles[$page_type])) {
+    $title = $default_titles[$page_type];
   }
   else {
-    $title = 'Videos | USA Network';
+    $title = 'USA Network';
   }
 
   return $title;

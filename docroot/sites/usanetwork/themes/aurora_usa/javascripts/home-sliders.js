@@ -146,6 +146,10 @@
 
       var aspotSlider = null;
 
+      if ($('.block-usanetwork-aspot .slide').length <= 1) {
+        $('.block-usanetwork-aspot .slider').css('width', 100  + '%');
+      }
+
       $(window).load(function () {
         if ($('.block-usanetwork-aspot .slide').length > 1) {
           aspotSlider = initSlider();
@@ -277,6 +281,7 @@
           $mainslider.css('opacity', 0);
           aspotVideoShow();
           aspotVideoPauseFlexslider($mainslider);
+
         });
       } // A-SPOT VIDEOS
 

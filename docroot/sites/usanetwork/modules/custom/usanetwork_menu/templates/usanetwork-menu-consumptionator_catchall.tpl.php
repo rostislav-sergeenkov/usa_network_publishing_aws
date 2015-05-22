@@ -23,11 +23,11 @@
       </div>
     <?php endif; ?>
     <div class="menu-item tab video-title info">
-      <h1>
+      <h2>
         <a class="no-refresh nolink" data-state>
-          <?php print $h1; ?>
+          <?php print $catchall_name; ?>
         </a>
-      </h1>
+      </h2>
     </div>
   </div>
 </div>
@@ -42,7 +42,7 @@
         <?php endif; ?>
         <div class="title-overlay meta">
           <div class="title">
-            <?php print $catchall_name; ?>
+            <h1><?php print !empty($h1) ? $h1 : $catchall_name;?></h1>
           </div>
           <div class="description">
             <?php print $details['description']; ?>
@@ -52,4 +52,3 @@
     </div>
   </div>
 </div>
-

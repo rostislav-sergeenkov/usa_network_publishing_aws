@@ -914,6 +914,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
             'video_title' => $video->title,
             'video_additional' => t('S@season episode @episode', array('@season' => $video->field_mpx_season_number_value, '@episode' => $video->field_mpx_episode_number_value)),
             'video_image' => $video_image,
+            'icon_type' => usanetwork_core_api_get_media_icon('file', $video->fid),
           );
           $carousel_items .= theme('usanetwork_mpx_video_show_full_episode_item', $theme_item_variables);
 

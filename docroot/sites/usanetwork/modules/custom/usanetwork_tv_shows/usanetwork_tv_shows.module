@@ -3175,7 +3175,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $
 }
 
 function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
-  //$cached_data = cache_get('usanetwork_tvslp_videos_' . $show_node->nid);
+  $cached_data = cache_get('usanetwork_tvslp_videos_' . $show_node->nid);
 
   if (empty($cached_data)) {
     $query = db_select('file_managed', 'f');
@@ -3190,6 +3190,7 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
     $query->leftJoin('field_data_field_usa_video_terms', 't', 'f.fid=t.entity_id');
     $query->addField('t', 'field_usa_video_terms_target_id', 'category_term');
     $query->leftJoin('field_data_field_promo_exclude_from_related', 'promo_exclude_field', 'promo_exclude_field.entity_id=f.fid');
+    $query->condition('promo_exclude_field.field_promo_exclude_from_related_value', 1, '<>');
     $query->addField('promo_exclude_field', 'field_promo_exclude_from_related_value', 'exclude');
     $query->leftJoin('field_data_field_promo_created_ovts', 'promo_date_field', 'promo_date_field.entity_id=f.fid');
     $query->addField('promo_date_field', 'field_promo_created_ovts_value', 'overriding_date');
@@ -3247,7 +3248,7 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
       $result = $sorted_result;
     }
 
-    cache_set('usanetwork_tvslp_videos_' . $show_node->nid, $result);
+    cache_set('usanetwork_tvslp_videos_' . $show_node->nid, $result, 'cache', time() + 900);
     $cached_data = cache_get('usanetwork_tvslp_videos_' . $show_node->nid);
   }
 

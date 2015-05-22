@@ -15,7 +15,7 @@
 ?>
 <div class="consumptionator-episode-main-block">
   <div class="episode-info-main-block">
-    <div class="episode-info-block">
+    <div class="episode-info-block show-border">
       <div class="episode-info-header">
         <div class="episode-title-block">
           <div class="episode-title">
@@ -27,12 +27,12 @@
         </div>
         <div class="share">
           <?php print $sharebar; ?>
+          <?php if (!empty($episode_video_link)): ?>
+            <div class="episode-button show-color">
+              <a href="<?php print $episode_video_link; ?>"></a>
+            </div>
+          <?php endif; ?>
         </div>
-        <?php if (!empty($episode_video_link)): ?>
-          <div class="episode-button">
-            <a href="<?php print $episode_video_link; ?>"></a>
-          </div>
-        <?php endif; ?>
       </div>
       <div class="episode-info-image">
         <?php if (!empty($image_desktop)): ?>

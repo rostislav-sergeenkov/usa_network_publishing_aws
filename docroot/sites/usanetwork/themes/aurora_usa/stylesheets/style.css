@@ -13476,21 +13476,21 @@ footer h2 {
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block {
-  padding: 45px 93px 45px 74px;
+  padding: 0 93px 45px 70px;
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block {
-    padding: 25px 58px 38px 55px;
+    padding: 11px 58px 38px 45px;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block {
-    padding: 53px 103px;
+    padding: 53px 95px;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block {
-    padding: 5px 36px;
+    padding: 5px 9.5vw;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block:after {
@@ -13500,7 +13500,7 @@ footer h2 {
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header {
   position: relative;
-  margin-bottom: 47px;
+  margin-bottom: 10px;
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header:after {
   clear: both;
@@ -13509,12 +13509,28 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header {
-    margin-bottom: 21px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header {
+    margin-bottom: 17px;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block {
   float: left;
-  width: 75%%;
+  width: 70%;
+}
+@media (max-width: 768px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block {
+    width: 60%;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block {
+    float: none;
+    width: 100%;
+  }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .episode-title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -13524,7 +13540,7 @@ footer h2 {
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .episode-title {
     font-size: 36px;
-    line-height: 1;
+    line-height: 1.1em;
   }
 }
 @media (max-width: 768px) {
@@ -13534,7 +13550,7 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .episode-title {
-    font-size: 24px;
+    font-size: 36px;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional {
@@ -13572,34 +13588,44 @@ footer h2 {
   float: right;
   width: 23%;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 26px;
   color: #afafaf;
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share {
-    font-size: 18px;
+    width: 16%;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share {
+    width: 22%;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share {
-    font-size: 15px;
+    width: 36%;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share h3 {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 26px;
+  font-size: 22px;
   text-align: right;
   line-height: 1em;
-  margin: 0 14px 15px 0;
+  margin: 0 0 14px 0;
 }
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share h3 {
-    font-size: 18px;
+    font-size: 15px;
+    margin: -8px 0 14px 0;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share h3 {
     font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share h3 {
+    font-size: 18px;
   }
 }
 @media (max-width: 320px) {
@@ -13608,20 +13634,83 @@ footer h2 {
     line-height: 2em;
   }
 }
-.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-button {
-  position: absolute;
-  width: 224px;
-  height: 50px;
-  background: gray;
-  bottom: -39px;
-  right: 0;
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar {
+  margin-bottom: 0;
+  float: right;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button {
+  width: 230px;
+  float: right;
+  margin-top: 20px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
 }
 @media (max-width: 1280px) {
-  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-button {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button {
     width: 149px;
-    height: 33px;
-    bottom: -11px;
-    right: 0;
+    margin-top: -2px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button {
+    width: 158px;
+  }
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button:after {
+  content: "\e608";
+  color: #ffffff;
+  font-family: "ico-font";
+  font-size: 11px;
+  display: block;
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  margin-top: -5px;
+  line-height: 1;
+  z-index: 3;
+}
+@media (max-width: 1024px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button:after {
+    right: 8px;
+  }
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
+  color: #ffffff;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 15px 0 15px calc(14% + 30px);
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
+    padding: 15px 0 15px calc(14% + 40px);
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
+    font-size: 13px;
+    padding: 10px 5%;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
+    font-size: 12px;
+    padding: 5px 35px 5px 10px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
+    font-size: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
+    padding: 8px 35px 8px 10px;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-image {
@@ -13639,8 +13728,15 @@ footer h2 {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-image {
     float: none;
     width: 100%;
-    margin: 0 0 50px 0;
+    margin: 0 0 6vw 0;
     padding: 0;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-image {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description {
@@ -13676,8 +13772,14 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .node-wrapper.advert {
     display: block;
+    width: 39%;
     float: right;
     margin: 0 0 20px 34px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .node-wrapper.advert {
+    width: 46%;
   }
 }
 @media (max-width: 1280px) {
@@ -24069,6 +24171,13 @@ input.echo-submit-text {
   height: 32px !important;
   background-image: url("../images/social_chatter_icons.png");
   background-repeat: none;
+}
+@media (max-width: 1024px) {
+  .field-type-gigya-sharebar .gig-button-container td > div,
+  .field-type-gigya-sharebar .gig-button-container td > div:hover {
+    width: 26px !important;
+    height: 26px !important;
+  }
 }
 @media (max-width: 709px) {
   .field-type-gigya-sharebar .gig-button-container td > div,

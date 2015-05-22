@@ -346,7 +346,7 @@
         margin-right: 2px;
         position: relative;
         height: 100%;
-        width: 33%;
+        width: 33vw;
         @extend %aspot-carousel-promo;
         @include breakpoint($bp-640-width) {
           float: none;
@@ -355,16 +355,19 @@
         }
       }
       .node {
+        height: 100%;
+        position: relative;
+        width: 100%;
         &.active {
           &:before {
-            border-left: 7px solid;
+            border-left: 3px solid;
             content: '';
             display: block;
             height: 100%;
             left: 0;
             position: absolute;
             top: 0;
-            width: 7px;
+            width: 0px;
             z-index: 2;
           }
         }

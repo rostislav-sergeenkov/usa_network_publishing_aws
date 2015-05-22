@@ -4,5 +4,12 @@
 * $block_title - string
 */
 ?>
-<?php print $block_title; ?><br>
+<h2 class="section-title">
+  <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : ''; ?></span>
+</h2>
 <?php print $gallery_html; ?>
+
+
+
+
+

@@ -14,16 +14,41 @@
 */
 ?>
 <div class="consumptionator-episode-main-block">
-  <div class="episode-info-block">
-    <?php print $sharebar; ?> <br>
-    <?php print $episode_title; ?> <br>
-    <?php print $body; ?> <br>
-    <?php print $season_number; ?> <br>
-    <?php print $episode_number; ?> <br>
-    <?php print $episode_video_link; ?> <br>
-    <?php print $image_mobile; ?> <br>
-    <?php print $image_desktop; ?> <br>
-    <?php print $air_date_text; ?> <br>
+  <div class="episode-info-main-block">
+    <div class="episode-info-block">
+      <div class="episode-info-header">
+        <div class="episode-title-block">
+          <div class="episode-title">
+            <?php print $episode_title; ?>
+          </div>
+          <div class="additional">
+            <?php print t('S').$season_number.t(' episode ').$episode_number.'<span class="aired">'.t('Aired on ').'</span>'.$air_date_text; ?>
+          </div>
+        </div>
+        <div class="share">
+          <?php print $sharebar; ?>
+        </div>
+        <?php if (!empty($episode_video_link)): ?>
+          <div class="episode-button">
+            <a href="<?php print $episode_video_link; ?>"></a>
+          </div>
+        <?php endif; ?>
+      </div>
+      <div class="episode-info-image">
+        <?php if (!empty($image_desktop)): ?>
+          <div class="asset-img"><img src="<?php print $image_desktop; ?>" alt="" title="<?php print $episode_title; ?>" /></div>
+        <?php endif; ?>
+      </div>
+      <div class="node-wrapper advert">
+        <div class="advertisement">
+        </div>
+      </div>
+      <div class="episode-info-description">
+        <?php if (!empty($body)): ?>
+          <?php print $body; ?>
+        <?php endif; ?>
+      </div>
+    </div>
     <?php if (!empty($gallery_rec)): ?>
       <div class="gallery-recap-block">
         <?php print $gallery_rec; ?>

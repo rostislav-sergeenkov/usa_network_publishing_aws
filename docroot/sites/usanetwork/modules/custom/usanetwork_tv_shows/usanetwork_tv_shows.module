@@ -704,7 +704,15 @@ function usanetwork_tv_shows_entity_insert($entity) {
 function usanetwork_tv_shows_views_pre_build(&$view) {
 
   if ($view->name == 'related_show_video_autocomplete') {
-    $view->args = array(arg(6));
+    if ($view->current_display == 'entityreference_1') {
+      $entity_id = arg(6);
+      $entity_type = arg(5);
+      if (!empty($entity_id) && !empty($entity_type)) {
+        if ($entity_type == 'tv_show') {
+          $view->args = array($entity_id);
+        }
+      }
+    }
   }
 }
 

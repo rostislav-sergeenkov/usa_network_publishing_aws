@@ -3,6 +3,8 @@
 }
 .consumptionator-episode-main-block {
   @include clear();
+  max-width: 1920px;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -16,25 +18,22 @@
       float: none;
       width: 100%;
     }
-    @include breakpoint($bp-1024-width) {
-      padding: 24px;
-    }
-    @include breakpoint($bp-768-width) {
-      padding: 38px 24px 38px 24px;
-    }
     @include breakpoint($bp-640-width) {
       padding: 56.25vw 0 0;
     }
     .episode-info-block {
-      padding: 0 93px 45px 70px;
+      padding: 45px 93px 45px 70px;
       @include breakpoint($bp-1280-width) {
-        padding: 11px 58px 38px 45px;
+        padding: 38px 58px 38px 45px;
       }
       @include breakpoint($bp-1024-width) {
-        padding: 53px 95px;
+        padding: 53px 11.8%;
       }
       @include breakpoint($bp-768-width) {
-        padding: 5px 9.5vw;
+        padding: 50px 6.7%;
+      }
+      @include breakpoint($bp-640-width) {
+        padding: 30px 6%;
       }
       @include clear();
       .episode-info-header {
@@ -200,7 +199,7 @@
       }
       .episode-info-image {
         float: right;
-        width: 66.5%;
+        width: 61.1%;
         padding: 12px 0 20px 0;
         margin-left: 30px;
         @include breakpoint($bp-1280-width) {
@@ -252,6 +251,9 @@
           }
           @include breakpoint($bp-768-width) {
             width: 46%;
+          }
+          @include breakpoint($bp-640-width) {
+            display: none;
           }
         }
       }
@@ -403,18 +405,19 @@
   }
   .gallery-recap-block {
     background: $consup-gallery-bg;
-    border-bottom: 2px solid;
     padding: 40px 35px 104px;
     @include breakpoint($bp-min-1901-width) {
       padding: 40px 55px 104px;
     }
     @include breakpoint($bp-1280-width) {
+      border-bottom: 2px solid;
       padding: 40px 75px 90px;
     }
     @include breakpoint($bp-1024-width) {
       padding: 40px 24px 90px;
     }
     @include breakpoint($bp-640-width) {
+      border-bottom: 12px solid;
       padding: 40px 0 75px;
     }
   }

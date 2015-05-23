@@ -685,8 +685,9 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
 
       $theme_variables['on_now'] = array(
         'image' => !empty($image_url)
-            ? theme('image', array(
+            ? theme('image_style', array(
               'path' => $image_url,
+              'style_name' => '300x169',
               'attributes' => array(
                 'class' => array(
                   'running-now-show-preview-image'
@@ -722,8 +723,9 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
 
       $theme_variables['up_next'] = array(
         'image' => !empty($data['next']->nid)
-            ? theme('image', array(
+            ? theme('image_style', array(
               'path' => $image_url,
+              'style_name' => '300x169',
               'attributes' => array(
                 'class' => array(
                   'running-next-show-preview-image'
@@ -825,7 +827,7 @@ function _usanetwork_menu_full_episodes_block() {
     $items_variables = array(
       'url' => url('file/' . $episode->fid),
       'logo' => isset($logo) ? $logo_image : NULL,
-      'additional' => t('Season @season Episode @episode_number', array(
+      'additional' => t('Seas@season Episode @episode_number', array(
         '@season' => $episode_season,
         '@episode_number' => $episode_number
        )),

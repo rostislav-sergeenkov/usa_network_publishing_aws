@@ -141,9 +141,6 @@
             float: right;
             margin-top: 20px;
             position: relative;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
             text-align: left;
             @include breakpoint($bp-1280-width) {
               width: 149px;
@@ -170,14 +167,14 @@
             }
             a {
               color: #ffffff;
-              display: inline-block;
+              display: block;
               text-transform: uppercase;
               font-size: 15px;
-              padding: 15px 0 15px calc(14% + 30px);
+              padding: 15px 0 15px 30px;
               position: relative;
               width: 100%;
               @include breakpoint($bp-min-1901-width) {
-                padding: 15px 0 15px calc(14% + 40px);
+                padding: 15px 0 15px 40px;
               }
               @include breakpoint($bp-1280-width) {
                 font-size: 13px;
@@ -193,7 +190,7 @@
               @include breakpoint($bp-640-width) {
                 padding: 8px 35px 8px 10px;
               }
-          }
+            }
           }
         }
       }

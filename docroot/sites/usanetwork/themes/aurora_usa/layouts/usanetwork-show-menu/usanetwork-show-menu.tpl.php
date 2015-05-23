@@ -24,7 +24,12 @@
       </div>
     </div>
     <div class="tab-item schedule-tab">
-      <?php print $content['reg_tab_schedule']; ?>
+      <div class="schedule-tab-wrapper">
+        <div class="see-all-link">
+          <a href="/schedule">view full schedule</a>
+        </div>
+        <?php print $content['reg_tab_schedule']; ?>
+      </div>
     </div>
     <div class="tab-item user-profile-tab">
       <?php print $content['reg_tab_user_profile']; ?>

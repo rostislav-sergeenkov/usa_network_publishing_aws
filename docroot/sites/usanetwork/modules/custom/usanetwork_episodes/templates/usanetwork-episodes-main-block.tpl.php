@@ -29,7 +29,7 @@
           <?php print $sharebar; ?>
           <?php if (!empty($episode_video_link)): ?>
             <div class="episode-button show-color">
-              <a href="<?php print $episode_video_link; ?>"></a>
+              <a href="<?php print $episode_video_link; ?>"><?php print t('Watch the episode'); ?></a>
             </div>
           <?php endif; ?>
         </div>

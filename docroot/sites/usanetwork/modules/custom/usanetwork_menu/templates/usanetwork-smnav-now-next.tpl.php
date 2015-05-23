@@ -32,6 +32,15 @@
           </a>
         <?php endif; ?>
         <div class="title-overlay meta">
+          <div class="icons-block">
+            <?php print l(t('Watch live'), 'videos/live', array('attributes' => array('class' => array('live-icon', 'icon')), 'absolute' => true ));?>
+            <?php if (!empty($on_now['episode_full_url'])): ?>
+              <a class="episode-description icon" href="<?php print $on_now['episode_full_url']; ?>"></a>
+            <?php endif; ?>
+            <?php if (!empty($on_now['syndicated_url'])): ?>
+              <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $on_now['syndicated_url']; ?>"></a>
+            <?php endif; ?>
+          </div>
           <?php if (!empty($on_now['title'])): ?>
             <div class="title"><?php print $on_now['title']; ?></div>
           <?php endif; ?>
@@ -42,24 +51,19 @@
             <div class="description"><?php print $on_now['description']; ?></div>
           <?php endif; ?>
         </div>
-        <div class="icons-block">
-          <?php print l(t('Live'), 'videos/live', array('attributes' => array('class' => array('live-icon', 'icon')), 'absolute' => true ));?>
-          <?php if (!empty($on_now['episode_full_url'])): ?>
-            <a class="episode-description icon" href="<?php print $on_now['episode_full_url']; ?>"></a>
-          <?php endif; ?>
-          <?php if (!empty($on_now['syndicated_url'])): ?>
-            <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $on_now['syndicated_url']; ?>"></a>
-          <?php endif; ?>
-        </div>
       </div>
     <?php endif; ?>
     <?php if (!empty($up_next)): ?>
       <div class="node node-usanetwork-promo up-next">
         <div class="on-now-panel-title">
-          <h2><?php print !empty($up_next['label_link']) ? $up_next['label_link'] : ''; ?></h2>
-          <?php if (!empty($up_next['time']) && !empty($up_next['time_daypart'])): ?>
-            <div class="episode-airtime"><span><?php print $up_next['time']; ?></span> <?php print $up_next['time_daypart']; ?></div>
-          <?php endif; ?>
+          <h2>
+            <?php print !empty($up_next['label_link']) ? $up_next['label_link'] : ''; ?>
+            <?php if (!empty($up_next['time']) && !empty($up_next['time_daypart'])): ?>
+              <?php print t(' @ '); ?>
+              <span><?php print $up_next['time']; ?></span> <?php print $up_next['time_daypart']; ?>
+            <?php endif; ?>
+          </h2>
+
         </div>
         <?php if (!empty($up_next['image'])): ?>
           <a href="<?php print !empty($up_next['node_url']) ? $up_next['node_url'] : '#'; ?>">
@@ -69,6 +73,14 @@
           </a>
         <?php endif; ?>
         <div class="title-overlay meta">
+          <div class="icons-block">
+            <?php if (!empty($up_next['episode_full_url'])): ?>
+              <a class="episode-description icon" href="<?php print $up_next['episode_full_url']; ?>"></a>
+            <?php endif; ?>
+            <?php if (!empty($up_next['syndicated_url'])): ?>
+              <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $up_next['syndicated_url']; ?>"></a>
+            <?php endif; ?>
+          </div>
           <?php if (!empty($up_next['title'])): ?>
             <div class="title"><?php print $up_next['title']; ?></div>
           <?php endif; ?>
@@ -77,14 +89,6 @@
           <?php endif; ?>
           <?php if (!empty($up_next['description'])): ?>
             <div class="description"><?php print $up_next['description']; ?></div>
-          <?php endif; ?>
-        </div>
-        <div class="icons-block">
-          <?php if (!empty($up_next['episode_full_url'])): ?>
-            <a class="episode-description icon" href="<?php print $up_next['episode_full_url']; ?>"></a>
-          <?php endif; ?>
-          <?php if (!empty($up_next['syndicated_url'])): ?>
-            <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $up_next['syndicated_url']; ?>"></a>
           <?php endif; ?>
         </div>
       </div>

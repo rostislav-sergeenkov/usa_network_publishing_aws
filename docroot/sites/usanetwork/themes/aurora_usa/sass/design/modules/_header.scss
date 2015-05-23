@@ -850,6 +850,19 @@ header {
       }
     }
     &.full-episode-tab {
+      padding: get-vw(24px, 1025) get-vw(30px, 1025) get-vw(50px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        padding: 48px 53px 96px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 24px 30px 50px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 20px;
+      }
+      @include breakpoint($bp-480-width) {
+        padding: 10px;
+      }
       .full-episode-tab-wrapper {
         @include clear;
         margin: 0 auto;
@@ -865,14 +878,17 @@ header {
         font-size: get-vw(15px, 1025);
         letter-spacing: 2px;
         margin-bottom: get-vw(13px, 1025);
+        padding-top: get-vw(26px, 1025);
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
           font-size: 28px;
           margin-bottom: 24px;
+          padding-top: 48px;
         }
         @include breakpoint($bp-1024-width) {
           font-size: 15px;
           margin-bottom: 13px;
+          padding-top: 26px;
         }
       }
       .latest-full-episodes {
@@ -883,16 +899,11 @@ header {
         .see-all-link {
           right: 0;
           position: absolute;
-          top: get-vw(-21px, 1025);
-          @include breakpoint($bp-min-1901-width) {
-            top: -39px;
-          }
-          @include breakpoint($bp-1024-width) {
-            top: -21px;
-          }
+          top: 0;
           a {
             background: $header-tab-button-back;
             color: #ffffff;
+            display: block;
             font-size: get-vw(10px, 1025);
             font-family: $avalon-medium;
             line-height: 1;

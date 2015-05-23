@@ -5933,7 +5933,28 @@ header .tab-item.shows-tab .pane-menu-also-on-usa:only-child ul {
   column-gap: 3em;
 }
 header .tab-item.full-episode-tab {
+  padding: 2.34146vw 2.92683vw 4.87805vw;
   color: #ffffff;
+}
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab {
+    padding: 48px 53px 96px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab {
+    padding: 24px 30px 50px;
+  }
+}
+@media (max-width: 768px) {
+  header .tab-item.full-episode-tab {
+    padding: 20px;
+  }
+}
+@media (max-width: 480px) {
+  header .tab-item.full-episode-tab {
+    padding: 10px;
+  }
 }
 header .tab-item.full-episode-tab .full-episode-tab-wrapper {
   margin: 0 auto;
@@ -5957,18 +5978,21 @@ header .tab-item.full-episode-tab h2 {
   font-size: 1.46341vw;
   letter-spacing: 2px;
   margin-bottom: 1.26829vw;
+  padding-top: 2.53659vw;
   text-transform: uppercase;
 }
 @media (min-width: 1901px) {
   header .tab-item.full-episode-tab h2 {
     font-size: 28px;
     margin-bottom: 24px;
+    padding-top: 48px;
   }
 }
 @media (max-width: 1024px) {
   header .tab-item.full-episode-tab h2 {
     font-size: 15px;
     margin-bottom: 13px;
+    padding-top: 26px;
   }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list {
@@ -5982,21 +6006,12 @@ header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list:afte
 header .tab-item.full-episode-tab .latest-full-episodes .see-all-link {
   right: 0;
   position: absolute;
-  top: -2.04878vw;
-}
-@media (min-width: 1901px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link {
-    top: -39px;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link {
-    top: -21px;
-  }
+  top: 0;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a {
   background: #8b8b8c;
   color: #ffffff;
+  display: block;
   font-size: 0.97561vw;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 1;

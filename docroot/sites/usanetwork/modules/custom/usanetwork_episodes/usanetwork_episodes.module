@@ -318,6 +318,7 @@ function _usanetwork_episodes_episodes_carousel() {
             'url' => url('node/' . $episode->nid),
             'active' => ($episode->nid == $season_node->nid) ? TRUE : FALSE,
             'season_number' => !empty($season_number) ? $season_number : '',
+            'icon_type' => usanetwork_core_api_get_media_icon('node', $episode->nid),
           );
           $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
           $rendered_items['horizontal'][] = theme('usanetwork_episodes_episodes_carousel_item_h', $episode_variables);

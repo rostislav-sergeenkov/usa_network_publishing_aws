@@ -21,6 +21,39 @@
     @include breakpoint($bp-640-width) {
       padding: 56.25vw 0 0;
     }
+    .episode-change-link {
+      bottom: 10px;
+      color: $change-episode-color;
+      display: block;
+      font-family: $avalon-book;
+      font-size: 14px;
+      position: absolute;
+      text-transform: uppercase;
+      &:after {
+        color: $change-episode-color;
+        font-family: "ico-font";
+        font-size: 12px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -6px;
+        line-height: 1;
+      }
+      &.previous {
+        left: 20px;
+        &:after {
+          content: "\e607";
+          left: -15px;
+        }
+      }
+      &.next {
+        right: 20px;
+        &:after {
+          content: "\e608";
+          right: -15px;
+        }
+      }
+    }
     .episode-info-block {
       padding: 45px 93px 45px 70px;
       @include breakpoint($bp-1280-width) {

@@ -217,6 +217,9 @@
     // bxslider-gallery slider initialization
     if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode')) {
 
+      if ($('#bxslider-gallery').length == 0) {
+        return false;
+      }
       var gallery = USAN.gallery.init('#bxslider-gallery');
 
       var container = $('.gallery-wrapper');

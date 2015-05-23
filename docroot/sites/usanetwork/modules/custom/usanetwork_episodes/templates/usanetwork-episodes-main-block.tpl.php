@@ -54,6 +54,12 @@
         <?php print $gallery_rec; ?>
       </div>
     <?php endif; ?>
+    <?php if (!empty($navigation_links['previous'])): ?>
+      <a href="<?php print $navigation_links['previous']; ?>" class="episode-change-link previous"><?php print t('previous'); ?></a>
+    <?php endif; ?>
+    <?php if (!empty($navigation_links['next'])): ?>
+      <a href="<?php print $navigation_links['next']; ?>" class="episode-change-link next"><?php print t('next'); ?></a>
+    <?php endif; ?>
   </div>
   <div class="consum-sidebar">
     <?php if (!empty($ep_carousel)): ?>

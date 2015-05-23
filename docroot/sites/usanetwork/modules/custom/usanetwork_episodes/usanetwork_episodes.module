@@ -283,7 +283,8 @@ function _usanetwork_episodes_episodes_carousel() {
 
   $episode_node = menu_get_object();
   if (!empty($episode_node->type) && $episode_node->type == 'tv_episode' && !empty($episode_node->field_season)) {
-    $field_season_items = reset(field_get_items('node', $episode_node, 'field_season'));
+    $field_season_items = field_get_items('node', $episode_node, 'field_season');
+    $field_season_items = reset($field_season_items);
     $season_node = node_load($field_season_items['target_id']);
     if (!empty($season_node)) {
       $query = new EntityFieldQuery();
@@ -303,10 +304,12 @@ function _usanetwork_episodes_episodes_carousel() {
         }
         foreach ($episodes as $episode) {
           if (!empty($episode->field_tv_cover_media)) {
-            $image = reset(field_get_items('node', $episode, 'field_tv_cover_media'));
+            $image = field_get_items('node', $episode, 'field_tv_cover_media');
+            $image = reset($image);
           }
           if (!empty($episode->field_episode_number)) {
-            $field_episode_items = reset(field_get_items('node', $episode, 'field_episode_number'));
+            $field_episode_items = field_get_items('node', $episode, 'field_episode_number');
+            $field_episode_items = reset($field_episode_items);
             $episode_number = $field_episode_items['value'];
           }
           $episode_variables = array(
@@ -322,7 +325,8 @@ function _usanetwork_episodes_episodes_carousel() {
           $rendered_items['vertical'][] = theme('usanetwork_episodes_episodes_carousel_item_v', $episode_variables);
         }
         if (!empty($season_node->field_show)) {
-          $field_show_items = reset(field_get_items('node', $season_node, 'field_show'));
+          $field_show_items = field_get_items('node', $season_node, 'field_show');
+          $field_show_items = reset($field_show_items);
           $show_id = $field_show_items['target_id'];
         }
         $theme_variables = array(

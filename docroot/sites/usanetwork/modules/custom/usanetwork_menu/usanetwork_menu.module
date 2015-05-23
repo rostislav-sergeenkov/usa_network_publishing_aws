@@ -1308,7 +1308,14 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/jstz-1.0.4.min.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.live_video_header.js');
-
+  drupal_add_js(
+    array(
+      'usanetwork_menu' => array(
+        'usa_live_tv_img' => file_create_url('sites/usanetwork/themes/aurora_usa/images/usa_liveTV.jpg'),
+      )
+    ),
+    'setting'
+  );
   $menu_items = _usa_auth_prepare_menu_items();
   $auth_links = array(
     '#theme' => 'item_list',

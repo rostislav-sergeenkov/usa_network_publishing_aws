@@ -452,7 +452,9 @@ function _usanetwork_person_characters_main_block() {
     }
   }
 
-  if (!empty($person_node->field_actor_bio)) {
+  if (empty($person_node->field_actor_bio)) {
+    $show_tabs = FALSE;
+  } else {
     $description_actor = $person_node_wrapper->field_actor_bio->value->value();
     if (empty($description_actor)) {
       $show_tabs = FALSE;
@@ -613,8 +615,9 @@ function _usanetwork_person_render_cast_recap_block() {
           'file' => $recap_video_file,
           'pub_mpx_player_parameters' => array(
             'autoPlay' => 'false',
-            'form' => 'html'
-          )
+            'form' => 'html',
+          ),
+          'player_id' => '4Dl3P2Df_j5l',
         )),
         'video_title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
             (!empty($recap_video_file->field_mpx_title) ? $file_wrapper->field_mpx_title->value() : ''),

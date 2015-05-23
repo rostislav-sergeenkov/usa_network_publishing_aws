@@ -318,6 +318,7 @@ function _usanetwork_episodes_episodes_carousel() {
             'url' => url('node/' . $episode->nid),
             'active' => ($episode->nid == $season_node->nid) ? TRUE : FALSE,
             'season_number' => !empty($season_number) ? $season_number : '',
+            'icon_type' => usanetwork_core_api_get_media_icon('node', $episode->nid),
           );
           $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
           $rendered_items['horizontal'][] = theme('usanetwork_episodes_episodes_carousel_item_h', $episode_variables);
@@ -363,7 +364,7 @@ function _usanetwork_episodes_main_block() {
     if (!empty($episode_node->field_tv_cover_media)) {
       $image = $episode_node_wrapper->field_tv_cover_media->value();
     }
-    if (!empty($season_num) && !empty($episode_num) && !empty($episode_node->field_show)) {
+    if (!empty($season->nid) && !empty($season_num) && !empty($episode_num) && !empty($episode_node->field_show)) {
       $show_id = $episode_node_wrapper->field_show->nid->value();
       $query = db_select('file_managed', 'file_managed');
       $query->fields('file_managed', array('fid'));
@@ -381,6 +382,7 @@ function _usanetwork_episodes_main_block() {
       if (!empty($result)) {
         $episode_link = url('file/' . $result['fid']);
       }
+      $navigation_links = _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season->nid, $episode_num);
     }
     $theme_variables = array(
       'sharebar' => !empty($sharebar) ? render($sharebar) : '',
@@ -391,6 +393,7 @@ function _usanetwork_episodes_main_block() {
       'episode_video_link' => !empty($episode_link) ? $episode_link : NULL,
       'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'air_date_text' => !empty($episode_node->field_original_air_date) ? gmdate('F j, Y', $episode_node_wrapper->field_original_air_date->value->value()) : '',
+      'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
     );
     $block = module_invoke('usanetwork_episodes', 'block_view', 'usanetwork_episodes_ep_carousel');
     $theme_variables['ep_carousel'] = render($block['content']);
@@ -1114,4 +1117,37 @@ function _usanetwork_episodes_render_related_content_item_default($data) {
   );
 
   return theme('usanetwork_episode_related_item', $theme_variables);
+}
+
+function _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season_id, $episode_id) {
+  $nav_links = array();
+  $previous_episode = $episode_id - 1;
+  $query = db_select('node', 'node');
+  $query->fields('node', array('nid'));
+  $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+  $query->innerJoin('field_data_field_season', 'field_season', 'field_season.entity_id = node.nid');
+  $query->innerJoin('field_data_field_episode_number', 'field_episode_number', 'field_episode_number.entity_id = node.nid');
+  $query->condition('field_show.field_show_target_id', $show_id);
+  $query->condition('field_season.field_season_target_id', $season_id);
+  $query->condition('field_episode_number.field_episode_number_value', $previous_episode);
+  $query->range(0, 1);
+  $result = $query->execute()->fetchAssoc();
+  if (!empty($result)) {
+    $nav_links['previous'] = url('node/' . $result['nid']);
+  }
+  $next_episode = $episode_id + 1;
+  $query = db_select('node', 'node');
+  $query->fields('node', array('nid'));
+  $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+  $query->innerJoin('field_data_field_season', 'field_season', 'field_season.entity_id = node.nid');
+  $query->innerJoin('field_data_field_episode_number', 'field_episode_number', 'field_episode_number.entity_id = node.nid');
+  $query->condition('field_show.field_show_target_id', $show_id);
+  $query->condition('field_season.field_season_target_id', $season_id);
+  $query->condition('field_episode_number.field_episode_number_value', $next_episode);
+  $query->range(0, 1);
+  $result = $query->execute()->fetchAssoc();
+  if (!empty($result)) {
+    $nav_links['next'] = url('node/' . $result['nid']);
+  }
+  return $nav_links;
 }

@@ -3521,6 +3521,9 @@ input[type="radio"], input[type="checkbox"] {
 .icons-block a.plus-icon:before {
   content: "\e606";
 }
+.icons-block a.schedule-icon-font:before {
+  content: '\e616';
+}
 
 body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
   content: "\e602";
@@ -5796,6 +5799,7 @@ header .tab-item .see-all-link {
   right: 0;
   position: absolute;
   top: 0;
+  z-index: 1;
 }
 header .tab-item .see-all-link a {
   background: #8b8b8c;
@@ -6528,9 +6532,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:bef
     font-size: 15px;
   }
 }
+header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:last-child {
+  margin-right: 0;
+}
 header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a.seeit-reminder {
   clear: none;
-  margin: 0;
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .time {
   color: #ffffff;

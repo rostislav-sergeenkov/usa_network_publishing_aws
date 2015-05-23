@@ -733,6 +733,7 @@ header {
       right: 0;
       position: absolute;
       top: 0;
+      z-index: 1;
       a {
         background: $header-tab-button-back;
         color: #ffffff;
@@ -1338,9 +1339,11 @@ header {
                   font-size: 15px;
                 }
               }
+              &:last-child {
+                margin-right: 0;
+              }
               &.seeit-reminder {
                 clear: none;
-                margin: 0;
               }
             }
           }

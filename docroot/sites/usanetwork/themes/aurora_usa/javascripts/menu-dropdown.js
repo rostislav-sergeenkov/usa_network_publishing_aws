@@ -37,6 +37,17 @@
       }
     },
 
+    onTotalMCScrollFlag: null,
+    onTotalMCScrollOffset: null,
+    MCScrollInstance: null,
+
+    destroyScroll: function() {
+      $('.tab-item').mCustomScrollbar('destroy');
+      setTimeout(function() {
+        $('.tab-item').css('height', 'auto');
+      }, 500);
+    },
+
     tabItemScroll: function() {
       var $tab = $('.tab-item.active'),
           tab_h = $tab.height(),
@@ -44,14 +55,7 @@
           window_h = $(window).height(),
           header_h = $('.header-nav-bar').height(),
           ad_offset = ad_h - $(window).scrollTop(),
-          scroll_h = window_h - header_h - ad_offset,
-
-          destroyScroll = function() {
-            $('.tab-item').mCustomScrollbar('destroy');
-            setTimeout(function() {
-              $('.tab-item').css('height', 'auto');
-            }, 500);
-          };
+          scroll_h = window_h - header_h - ad_offset;
 
       if (tab_h + header_h + ad_offset > window_h) {
         $tab.mCustomScrollbar({
@@ -60,16 +64,13 @@
           callbacks: {
             whileScrolling: function(){
               if (this.mcs.topPct == 100) {
-                $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
-                $('.tab-item.active').slideUp(350).removeClass('active');
-
-                destroyScroll();
+                Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag = true;
               }
             }
           }
         });
       } else {
-        destroyScroll();
+        Drupal.behaviors.usanetwork_menu_dropdown.destroyScroll();
       }
     },
 
@@ -310,6 +311,20 @@
         if (!$('.tab-item').hasClass('mCustomScrollbar') && window.innerWidth >= window_size_tablet_portrait && !$('body').hasClass('consumptionator-page')) {
           $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
           $('.tab-item.active').slideUp(100).removeClass('active');
+        }
+
+        if (Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag) {
+          Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset = $(window).scrollTop();
+
+          if (Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset > 100) {
+            Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag = false;
+            Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset = null;
+
+            $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
+            $('.tab-item.active').slideUp(350).removeClass('active');
+
+            Drupal.behaviors.usanetwork_menu_dropdown.destroyScroll();
+          }
         }
       });
     }

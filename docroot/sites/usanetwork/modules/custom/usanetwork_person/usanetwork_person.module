@@ -452,7 +452,9 @@ function _usanetwork_person_characters_main_block() {
     }
   }
 
-  if (!empty($person_node->field_actor_bio)) {
+  if (empty($person_node->field_actor_bio)) {
+    $show_tabs = FALSE;
+  } else {
     $description_actor = $person_node_wrapper->field_actor_bio->value->value();
     if (empty($description_actor)) {
       $show_tabs = FALSE;

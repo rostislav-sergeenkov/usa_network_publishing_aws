@@ -3,7 +3,6 @@
   <div class="carousel-description-item start">
     <div class="description-wrapper">
       <div class="description-block">
-        <div class="caption">access all full episodes</div>
         <div class="title show-color show-color-border <?php print $carousel_border; ?>">
           <?php print $show_title; ?>
           <?php if (!empty($sponsored)) : ?>

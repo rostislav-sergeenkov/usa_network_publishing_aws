@@ -3358,12 +3358,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
     'custom_classes' => NULL,
     'target_url' => url('file/' . $file->fid),
     'media_icon' => !empty($icon_type) ? $icon_type : 'video-icon',
-    'caption' => ($current_item_index == $big_element_index)
-      ? (!empty($own_promo_lines['topic'])
-        ? $own_promo_lines['topic']
-        : ''
-      )
-      : '',
+    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
     'title' => !empty($own_promo_lines['title'])
       ? $own_promo_lines['title']
       : $file->filename,

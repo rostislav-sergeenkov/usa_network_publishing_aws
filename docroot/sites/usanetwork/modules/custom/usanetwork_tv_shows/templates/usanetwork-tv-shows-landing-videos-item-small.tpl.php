@@ -10,6 +10,9 @@
         <div class="meta-wrapper-inner">
           <div class="meta-icon <?php print $media_icon; ?>"></div>
           <div class="meta">
+            <?php if (!empty($caption)): ?>
+              <div class="caption"><?php print $caption; ?></div>
+            <?php endif; ?>
             <?php if (!empty($title)): ?>
               <div class="title"><?php print $title; ?></div>
             <?php endif; ?>

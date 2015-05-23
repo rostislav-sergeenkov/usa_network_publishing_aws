@@ -3379,8 +3379,8 @@ input[type="radio"], input[type="checkbox"] {
   left: 50%;
   margin-left: -18px;
   position: absolute;
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -836px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -822px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -3398,8 +3398,8 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (max-width: 480px) {
   .social-usa.resize-avail-480:after {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1428px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1414px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -3424,8 +3424,8 @@ input[type="radio"], input[type="checkbox"] {
   left: 50%;
   margin-left: -8px;
   position: absolute;
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1579px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1565px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -3449,8 +3449,8 @@ input[type="radio"], input[type="checkbox"] {
   left: 50%;
   margin-left: -8px;
   position: absolute;
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1535px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1521px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -5039,8 +5039,8 @@ header .nav-bar-tabs {
     position: absolute;
     right: 20px;
     top: 20px;
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1904px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1890px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5048,8 +5048,8 @@ header .nav-bar-tabs {
     width: 10px;
   }
   header .nav-bar-tabs ul li.expanded > a.active:after {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1919px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1905px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5111,8 +5111,8 @@ header .nav-bar-tabs {
     margin-top: -15px;
     position: absolute;
     top: 50%;
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1280px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1266px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5328,8 +5328,8 @@ header .user-profile a:after {
   margin-top: -15px;
   position: absolute;
   top: 50%;
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1280px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1266px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -5347,8 +5347,8 @@ header .user-profile a:after {
 }
 @media (max-width: 1024px) {
   header .user-profile a:after {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1645px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1631px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5395,8 +5395,8 @@ header .search a:after {
   margin-top: -15px;
   position: absolute;
   top: 50%;
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -685px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -671px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -5414,8 +5414,8 @@ header .search a:after {
 }
 @media (max-width: 1024px) {
   header .search a:after {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1065px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1051px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5469,8 +5469,8 @@ header .main-menu-open a {
   width: 100%;
 }
 header .main-menu-open a.active:after {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1878px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1864px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -5501,8 +5501,8 @@ header .main-menu-open a:after {
   margin-left: -13px;
   position: absolute;
   top: 50%;
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1934px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1920px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -5520,8 +5520,8 @@ header .main-menu-open a:after {
 }
 @media (max-width: 1024px) {
   header .main-menu-open a:after {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1954px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1940px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -5792,6 +5792,17 @@ header .tab-item.active {
   border-top: 1px solid darkgrey;
   display: block;
 }
+header .tab-item.shows-tab .show-tab-wrapper {
+  margin: 0 auto;
+  max-width: 1778px;
+  position: relative;
+  width: 100%;
+}
+header .tab-item.shows-tab .show-tab-wrapper:after {
+  clear: both;
+  content: '';
+  display: table;
+}
 header .tab-item.shows-tab .panel-pane {
   float: left;
   position: relative;
@@ -5922,11 +5933,11 @@ header .tab-item.shows-tab .pane-menu-also-on-usa:only-child ul {
   column-gap: 3em;
 }
 header .tab-item.full-episode-tab {
-  padding: 60px 45px;
   color: #ffffff;
 }
 header .tab-item.full-episode-tab .full-episode-tab-wrapper {
   margin: 0 auto;
+  max-width: 1779px;
   position: relative;
   width: 100%;
 }
@@ -5941,125 +5952,118 @@ header .tab-item.full-episode-tab:after {
   display: table;
 }
 header .tab-item.full-episode-tab h2 {
-  color: #dcddde;
-  font-size: 20px;
+  color: #adadad;
   font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 1.46341vw;
   letter-spacing: 2px;
-  margin-bottom: 30px;
+  margin-bottom: 1.26829vw;
   text-transform: uppercase;
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   header .tab-item.full-episode-tab h2 {
-    font-size: 32px;
-    margin-bottom: 50px;
+    font-size: 28px;
+    margin-bottom: 24px;
   }
 }
-@media (max-width: 1280px) {
+@media (max-width: 1024px) {
   header .tab-item.full-episode-tab h2 {
-    font-size: 20px;
+    font-size: 15px;
+    margin-bottom: 13px;
   }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list {
-  margin-right: 15.76%;
-  width: 84.24%;
+  width: 100%;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list:after {
   clear: both;
   content: '';
   display: table;
 }
-header .tab-item.full-episode-tab .latest-full-episodes .links-block {
-  float: right;
-  width: 15.76%;
+header .tab-item.full-episode-tab .latest-full-episodes .see-all-link {
+  right: 0;
+  position: absolute;
+  top: -2.04878vw;
 }
-header .tab-item.full-episode-tab .latest-full-episodes .links-block a {
-  background: #1c1c1c;
-  display: table;
-  height: 13.8vw;
-  opacity: 0.7;
-  width: 100%;
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link {
+    top: -39px;
+  }
 }
-header .tab-item.full-episode-tab .latest-full-episodes .links-block a:hover {
-  opacity: 1;
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link {
+    top: -21px;
+  }
 }
-header .tab-item.full-episode-tab .latest-full-episodes .links-block a:first-child {
-  margin-bottom: 1.33vw;
-}
-header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
+header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a {
+  background: #8b8b8c;
   color: #ffffff;
-  display: table-cell;
+  font-size: 0.97561vw;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 32px;
-  line-height: 36px;
-  text-align: center;
+  line-height: 1;
+  padding: 1.26829vw 2.43902vw 1.26829vw 1.46341vw;
+  position: relative;
   text-transform: uppercase;
-  vertical-align: middle;
 }
-@media (min-width: 1601px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
-    font-size: 36px;
-    line-height: 40px;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .links-block a > div {
-    font-size: 24px;
-    line-height: 28px;
-  }
-}
-header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
-  display: block;
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 5px;
-}
-@media (min-width: 1601px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a {
     font-size: 18px;
-    line-height: 22px;
+    padding: 24px 46px 24px 27px;
   }
 }
 @media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .links-block a span {
-    font-size: 13px;
-    line-height: 16px;
+  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a {
+    font-size: 10px;
+    padding: 13px 25px 13px 15px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes .links-block a .icon {
+header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a:after {
+  content: "\e608";
+  color: #ffffff;
+  font-family: "ico-font";
+  font-size: 0.97561vw;
   display: block;
+  position: absolute;
+  right: 0.78049vw;
+  top: 50%;
+  margin-top: -0.4878vw;
+  line-height: 1;
 }
-header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-icon {
-  border: 1px solid #ffffff;
-  border-radius: 4px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  letter-spacing: 1.5px;
-  line-height: 22px;
-  margin: 15px auto 0;
-  padding: 0 4px;
-  text-transform: uppercase;
-  width: 46px;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .links-block a .live-icon {
-    margin: 10px auto 0;
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a:after {
+    font-size: 18px;
+    margin-top: -9px;
+    right: 14.8px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes .links-block a .eye-icon {
-  font-style: normal;
-  margin: 0 auto;
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a:after {
+    font-size: 10px;
+    margin-top: -5px;
+    right: 8px;
+  }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node {
   float: left;
-  height: 13.8vw;
-  margin-right: 1.71%;
+  height: 16.97561vw;
+  margin-right: 1.1%;
   position: relative;
-  width: 31.62%;
+  width: 32.6%;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(1), header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(2), header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(3) {
-  margin-bottom: 1.33vw;
+  margin-bottom: 1.01463vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(1), header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(2), header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(3) {
+    margin-bottom: 19.5px;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(3), header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(6) {
+  margin-right: 0;
+}
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node {
+    height: 322.7px;
+  }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a {
   color: #ffffff;
@@ -6539,8 +6543,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:after {
   content: '';
   display: block;
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -454px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -409px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -6557,8 +6561,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:nth-child(4):after {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -416px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -371px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -6575,8 +6579,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .search-show header .tab-item.share-tab .tab-item-content .node .meta .episode-rate .stars-rate ul li:nth-child(5):after {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -416px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -371px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -6692,8 +6696,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .search-show header .header-nav-bar .usa-logo a:after {
     content: '';
     display: block;
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -660px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -646px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -6856,8 +6860,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   background: #363636;
 }
 .search-show header .header-nav-bar .show-title-wrapper .show-title-block .tab.share h1 a:after {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -335px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -290px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -6975,8 +6979,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .search-show header .nav-bar-tabs .back-to-show a:after {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1878px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1864px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -7001,8 +7005,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 480px) {
   .search-show header .nav-bar-tabs .back-to-show a:after {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1858px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1844px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -7056,8 +7060,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .consumptionator-page header .header-nav-bar .usa-logo a:after, .node-type-catchall-page header .header-nav-bar .usa-logo a:after, .page-videos-live header .header-nav-bar .usa-logo a:after, .node-type-media-gallery header .header-nav-bar .usa-logo a:after, .node-type-person header .header-nav-bar .usa-logo a:after {
     content: '';
     display: block;
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -660px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -646px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -7218,8 +7222,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -203px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -158px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -7244,13 +7248,13 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -20px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -615px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
-    height: 40px;
-    width: 40px;
+    height: 26px;
+    width: 26px;
     left: 65px;
     margin-left: -20px;
     margin-top: -20px;
@@ -8015,8 +8019,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   width: 90px;
 }
 .page-videos .page-title .sign-in-link:before {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -439px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -394px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -8045,8 +8049,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   white-space: nowrap;
 }
 .page-videos .page-title .sign-in-link.active:before {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1878px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1864px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -10535,8 +10539,8 @@ footer .legal-and-social .footer-social-bar a {
   margin-left: 6px;
 }
 footer .legal-and-social .footer-social-bar a.instagram {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1708px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1694px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -10553,8 +10557,8 @@ footer .legal-and-social .footer-social-bar a.instagram {
   }
 }
 footer .legal-and-social .footer-social-bar a.twitter {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1670px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1656px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -10571,8 +10575,8 @@ footer .legal-and-social .footer-social-bar a.twitter {
   }
 }
 footer .legal-and-social .footer-social-bar a.facebook {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1835px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1821px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -15203,8 +15207,8 @@ footer h2 {
   opacity: 0.3;
 }
 .shows-block .show-info-block .social-icons a.facebook {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1774px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1760px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -15221,8 +15225,8 @@ footer h2 {
   }
 }
 .shows-block .show-info-block .social-icons a.twitter {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1011px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -997px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -15239,8 +15243,8 @@ footer h2 {
   }
 }
 .shows-block .show-info-block .social-icons a.instagram {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1090px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1076px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -15257,8 +15261,8 @@ footer h2 {
   }
 }
 .shows-block .show-info-block .social-icons a.pinterest {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -629px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -584px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -15275,8 +15279,8 @@ footer h2 {
   }
 }
 .shows-block .show-info-block .social-icons a.youtube {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -751px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -737px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -15293,8 +15297,8 @@ footer h2 {
   }
 }
 .shows-block .show-info-block .social-icons a.googleplus {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -720px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -706px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -16142,8 +16146,8 @@ footer h2 {
   opacity: 0.3;
 }
 .show-title-block .social-icons a.facebook {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1774px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1760px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -16161,8 +16165,8 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.facebook {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1751px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1737px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -16180,8 +16184,8 @@ footer h2 {
   }
 }
 .show-title-block .social-icons a.twitter {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1011px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -997px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -16199,8 +16203,8 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.twitter {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1512px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1498px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -16218,8 +16222,8 @@ footer h2 {
   }
 }
 .show-title-block .social-icons a.instagram {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1090px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1076px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -16237,8 +16241,8 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.instagram {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1447px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1433px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -16256,8 +16260,8 @@ footer h2 {
   }
 }
 .show-title-block .social-icons a.pinterest {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -629px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -584px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -16275,8 +16279,8 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.pinterest {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -862px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -848px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -16294,8 +16298,8 @@ footer h2 {
   }
 }
 .show-title-block .social-icons a.youtube {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -751px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -737px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -16313,8 +16317,8 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.youtube {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -782px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -768px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -16332,8 +16336,8 @@ footer h2 {
   }
 }
 .show-title-block .social-icons a.googleplus {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -720px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -706px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -16351,8 +16355,8 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons a.googleplus {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1042px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1028px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -17128,8 +17132,8 @@ footer h2 {
 }
 @media (max-width: 640px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .open-description {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1146px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1132px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -17203,8 +17207,8 @@ footer h2 {
 }
 @media (max-width: 640px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .open-description {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1315px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1301px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -18821,8 +18825,8 @@ body.person-page #main {
   content: '';
   display: block;
   position: absolute;
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -1562px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -1548px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -18842,8 +18846,8 @@ body.person-page #main {
 }
 @media (max-width: 480px) {
   .carousel ul li .video-auth .meta-wrap:after {
-    background-image: url('../images/sprites-sd6102a3a38.png');
-    background-position: 0 -1693px;
+    background-image: url('../images/sprites-s9f4579b009.png');
+    background-position: 0 -1679px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -27477,8 +27481,8 @@ yx-axis
 }
 .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description,
 .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -587px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -542px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -27671,8 +27675,8 @@ yx-axis
 }
 .page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description,
 .page-accessibility .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description {
-  background-image: url('../images/sprites-sd6102a3a38.png');
-  background-position: 0 -885px;
+  background-image: url('../images/sprites-s9f4579b009.png');
+  background-position: 0 -871px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;

@@ -14,7 +14,9 @@
   </div>
   <div class="tab-content">
     <div class="tab-item shows-tab">
-      <?php print $content['reg_tab_shows']; ?>
+      <div class="show-tab-wrapper">
+        <?php print $content['reg_tab_shows']; ?>
+      </div>
     </div>
     <div class="tab-item full-episode-tab">
       <div class="full-episode-tab-wrapper">

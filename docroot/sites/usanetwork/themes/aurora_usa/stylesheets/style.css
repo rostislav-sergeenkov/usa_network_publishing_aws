@@ -7554,11 +7554,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 1024px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
-    padding-right: 190px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info {
     padding-right: 0;
   }
 }
@@ -7577,7 +7572,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   letter-spacing: 0.75px;
   line-height: 16px;
 }
-.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .title, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .title {
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .title, .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta h1, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .title, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta h1 {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 16px;
   letter-spacing: 1px;
@@ -7612,6 +7607,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
   .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
   .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
+    position: relative;
     width: 170px;
   }
 }

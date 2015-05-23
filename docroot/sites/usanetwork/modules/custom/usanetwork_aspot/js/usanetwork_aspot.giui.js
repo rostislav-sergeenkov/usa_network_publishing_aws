@@ -363,8 +363,6 @@
           });
         });
       }
-
-      return
     },
     attach: function (context, settings) {
 

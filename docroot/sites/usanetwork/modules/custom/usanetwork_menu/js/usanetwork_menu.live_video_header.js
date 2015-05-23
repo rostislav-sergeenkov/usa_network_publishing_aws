@@ -36,16 +36,16 @@
               shareButtons: "facebook, twitter, tumblr, pinterest, share",
               shortURLs: "never",
               showCounts: "none"
-            }
+            };
 
             var url = window.location.href.split('#')[0];
             sharebar.gigyaSharebar.ua = {
               description: 'Stream USA Network TV live on your desktop',
               imageBhev: "url",
-              imageUrl: Drupal.settings.basePath + '/sites/usanetwork/themes/aurora_usa/images/usa_liveTV.jpg',
+              imageUrl: Drupal.settings.usanetwork_menu.usa_live_tv_img,
               linkBack: url,
               title: 'USA Network Live TV Streaming'
-            }
+            };
             Drupal.gigya.showSharebar(sharebar);
 
           },

@@ -119,27 +119,6 @@ function usanetwork_tv_schedule_block_view($delta) {
  */
 function usanetwork_tv_schedule_theme() {
   return array(
-    'usanetwork_tv_schedule_navigation' => array(
-      'file' => 'usanetwork_tv_schedule.theme.inc',
-      'variables' => array(
-        'timestamp' => null,
-        'first_day' => 'sun',
-      ),
-    ),
-    'usanetwork_tv_schedule_navigation_week' => array(
-      'file' => 'usanetwork_tv_schedule.theme.inc',
-      'variables' => array(
-        'timestamp' => null,
-        'first_day' => 'sun',
-        'offset' => 0,
-      ),
-    ),
-    'usanetwork_tv_schedule_navigation_weekday' => array(
-      'file' => 'usanetwork_tv_schedule.theme.inc',
-      'variables' => array(
-        'timestamp' => null,
-      ),
-    ),
     'usanetwork_tv_schedule_day_small' => array(
       'file' => 'usanetwork_tv_schedule.theme.inc',
       'variables' => array(

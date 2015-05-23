@@ -50,7 +50,7 @@
       </div>
     </div>
     <?php if (!empty($gallery_rec)): ?>
-      <div class="gallery-recap-block">
+      <div class="gallery-recap-block show-border">
         <?php print $gallery_rec; ?>
       </div>
     <?php endif; ?>

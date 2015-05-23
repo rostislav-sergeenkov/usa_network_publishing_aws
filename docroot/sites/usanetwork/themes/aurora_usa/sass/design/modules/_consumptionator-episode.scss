@@ -12,20 +12,9 @@
     width: 74.7%;
     background: #ffffff;
     color: #000000;
-    padding: 45px 38px 45px 58px;
     @include breakpoint($bp-1280-width) {
       float: none;
-      padding: 25px 31px 38px 36px;
       width: 100%;
-    }
-    @include breakpoint($bp-1024-width) {
-      padding: 24px;
-    }
-    @include breakpoint($bp-768-width) {
-      padding: 38px 24px 38px 24px;
-    }
-    @include breakpoint($bp-640-width) {
-      padding: 56.25vw 0 0;
     }
   }
   .consum-sidebar {
@@ -170,6 +159,23 @@
           text-align: center;
         }
       }
+    }
+  }
+  .gallery-recap-block {
+    background: $consup-gallery-bg;
+    border-bottom: 2px solid;
+    padding: 40px 35px 104px;
+    @include breakpoint($bp-min-1901-width) {
+      padding: 40px 55px 104px;
+    }
+    @include breakpoint($bp-1280-width) {
+      padding: 40px 75px 90px;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding: 40px 24px 90px;
+    }
+    @include breakpoint($bp-640-width) {
+      padding: 40px 0 75px;
     }
   }
 }

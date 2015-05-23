@@ -1416,7 +1416,8 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
         return '';
       }
       if (!empty($promo_entity->field_promo_image_override)) {
-        $field_image_override = reset(field_get_items($promo['target_type'], $promo_entity, 'field_promo_image_override'));
+        $field_image_override = field_get_items($promo['target_type'], $promo_entity, 'field_promo_image_override');
+        $field_image_override = reset($field_image_override);
         $content_image = $field_image_override['uri'];
       }
       else {
@@ -1424,7 +1425,8 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
       }
       if (!empty($promo_entity->field_promo_link)) {
         $promo_link_field = field_get_items($promo['target_type'], $promo_entity, 'field_promo_link');
-        $promo_link = url(reset(reset($promo_link_field)));
+        $promo_link = reset($promo_link_field);
+        $promo_link = url($promo_link['url']);
       }
       else {
         $promo_link = url($promo['target_type'] . '/' . $promo['target_id']);

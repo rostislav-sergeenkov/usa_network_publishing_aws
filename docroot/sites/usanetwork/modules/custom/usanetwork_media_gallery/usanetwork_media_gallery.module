@@ -104,6 +104,7 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_media_gallery_consumptionator_slides' => array(
       'variables' => array(
+        'sharebar' => NULL,
         'slides' => array(),
       ),
       'path' => $path . '/templates',
@@ -225,7 +226,10 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
   if (isset($node->type) && $node->type == 'media_gallery') {
     $slides = array();
-
+    if (!empty($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this image');
+    }
     $gallery_field = field_get_items('node', $node, 'field_media_items');
 
     $image_cover_field = field_get_items('node', $node, 'field_cover_item');
@@ -238,12 +242,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
           $gallery_file = (object)$gallery_file;
         }
 
-        if (!empty($node->field_gigya_share_bar)) {
-          $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
-          $sharebar['#title'] = t('Share this image');
-        }
         $slide_variables = array(
-          'gigya_id' => !empty($sharebar) ? render($sharebar) : NULL,
           'image' => theme_image(array(
             'path' => $gallery_file->uri,
             'attributes' => array(),
@@ -266,7 +265,10 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
       }
     }
 
-    return theme('usanetwork_media_gallery_consumptionator_slides', array('slides' => $slides));
+    return theme('usanetwork_media_gallery_consumptionator_slides', array(
+      'slides' => $slides,
+      'sharebar' => !empty($sharebar) ? render($sharebar) : NULL,
+    ));
   }
 
   return '';

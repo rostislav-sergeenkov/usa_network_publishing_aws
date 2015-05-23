@@ -2642,7 +2642,7 @@ function _usa_mpx_video_clips_render() {
              'description' => !empty($promo_data['description']) ? $promo_data['description'] :
                  (!empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : ''),
              'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
-             'icon_type' => usanetwork_core_api_get_media_icon('file', $related_video_file->fid)
+             'icon_type' => usanetwork_core_api_get_media_icon('file', $related_video_file->fid),
            );
          }
        }

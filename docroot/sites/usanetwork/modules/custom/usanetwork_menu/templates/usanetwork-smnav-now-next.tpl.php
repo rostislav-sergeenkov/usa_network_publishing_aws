@@ -45,10 +45,10 @@
         <div class="icons-block">
           <?php print l(t('Live'), 'videos/live', array('attributes' => array('class' => array('live-icon', 'icon')), 'absolute' => true ));?>
           <?php if (!empty($on_now['episode_full_url'])): ?>
-            <a class="episode-description icon" href="<?php print $on_now['episode_full_url']; ?>"></a>
+            <a class="episode-description icon" href="<?php print $on_now['episode_full_url']; ?>" data-name="description"></a>
           <?php endif; ?>
           <?php if (!empty($on_now['syndicated_url'])): ?>
-            <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $on_now['syndicated_url']; ?>"></a>
+            <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $on_now['syndicated_url']; ?>" data-name="reminder"></a>
           <?php endif; ?>
         </div>
       </div>
@@ -81,10 +81,10 @@
         </div>
         <div class="icons-block">
           <?php if (!empty($up_next['episode_full_url'])): ?>
-            <a class="episode-description icon" href="<?php print $up_next['episode_full_url']; ?>"></a>
+            <a class="episode-description icon" href="<?php print $up_next['episode_full_url']; ?>" data-name="description"></a>
           <?php endif; ?>
           <?php if (!empty($up_next['syndicated_url'])): ?>
-            <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $up_next['syndicated_url']; ?>"></a>
+            <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $up_next['syndicated_url']; ?>" data-name="reminder"></a>
           <?php endif; ?>
         </div>
       </div>

@@ -98,60 +98,62 @@
       //  }, 500, "home Cast & Crew gallery");
       //});
 
-      // init mps block for node-type-person
-      if(body.hasClass('node-type-person')) {
+      body.once(function () {
+        // init mps block for node-type-person
+        if(body.hasClass('node-type-person')) {
 
-        var mainBlock = $('.consumptionator-characters-main-block'),
-            infoBlockAd = $('.character-info-block .block-character-info-content .advert .topbox'),
-            sidebarAd = $('.consum-sidebar .advert .topbox'),
-            nameAd = 'topbox',
-            selector = '#' + nameAd;
+          var mainBlock = $('.consumptionator-characters-main-block'),
+              infoBlockAd = $('.character-info-block .block-character-info-content .advert .topbox'),
+              sidebarAd = $('.consum-sidebar .advert .topbox'),
+              nameAd = 'topbox',
+              selector = '#' + nameAd;
 
-        if(window.innerWidth >= window_size_desktop) {
-          sidebarAd.attr('id', nameAd);
-          Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-        } else {
-          mainBlock.addClass('mobile');
-          infoBlockAd.attr('id', nameAd);
-          Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+          if(window.innerWidth >= window_size_desktop) {
+            sidebarAd.attr('id', nameAd);
+            Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+          } else {
+            mainBlock.addClass('mobile');
+            infoBlockAd.attr('id', nameAd);
+            Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+          }
+
+
+          $(window).bind('resize', function () {
+            waitForFinalEvent(function(){
+              if(window.innerWidth >= window_size_desktop && mainBlock.hasClass('mobile')) {
+
+                mainBlock.removeClass('mobile');
+                sidebarAd.attr('id', nameAd);
+                infoBlockAd.removeAttr('id').empty();
+
+                Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+                Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+
+              } else if(window.innerWidth < window_size_desktop && !mainBlock.hasClass('mobile')){
+
+                mainBlock.addClass('mobile');
+                infoBlockAd.attr('id', nameAd);
+                sidebarAd.removeAttr('id').empty();
+
+                Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+                Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+              }
+            }, 0, "node-type-person");
+          });
         }
 
+        // init mps block for node-type-catchall-page
+        if(body.hasClass('node-type-catchall-page')) {
+          if(settings.CatchallRefreshSettings) {
 
-        $(window).bind('resize', function () {
-          waitForFinalEvent(function(){
-            if(window.innerWidth >= window_size_desktop && mainBlock.hasClass('mobile')) {
+            var interval = settings.CatchallRefreshSettings.time * 1000;
 
-              mainBlock.removeClass('mobile');
-              sidebarAd.attr('id', nameAd);
-              infoBlockAd.removeAttr('id').empty();
-
-              Drupal.behaviors.mpsAdvert.mpsMakeRequest();
-              Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-
-            } else if(window.innerWidth < window_size_desktop && !mainBlock.hasClass('mobile')){
-
-              mainBlock.addClass('mobile');
-              infoBlockAd.attr('id', nameAd);
-              sidebarAd.removeAttr('id').empty();
-
-              Drupal.behaviors.mpsAdvert.mpsMakeRequest();
-              Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-            }
-          }, 0, "node-type-person");
-        });
-      }
-
-      // init mps block for node-type-catchall-page
-      if(body.hasClass('node-type-catchall-page')) {
-        if(settings.CatchallRefreshSettings) {
-
-          var interval = settings.CatchallRefreshSettings.time * 1000;
-
-          setInterval(function() {
-            Drupal.behaviors.mpsAdvert.mpsRefreshAd(Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner);
-          }, interval);
+            setInterval(function() {
+              Drupal.behaviors.mpsAdvert.mpsRefreshAd(Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner);
+            }, interval);
+          }
         }
-      }
+      });
     }
   };
 }(jQuery));

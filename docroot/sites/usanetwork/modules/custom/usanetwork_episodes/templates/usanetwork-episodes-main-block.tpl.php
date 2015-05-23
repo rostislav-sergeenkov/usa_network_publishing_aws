@@ -15,24 +15,24 @@
 ?>
 <div class="consumptionator-episode-main-block">
   <div class="episode-info-main-block">
-    <div class="episode-info-block">
+    <div class="episode-info-block show-border">
       <div class="episode-info-header">
         <div class="episode-title-block">
           <div class="episode-title">
             <?php print $episode_title; ?>
           </div>
           <div class="additional">
-            <?php print t('S').$season_number.t(' episode ').$episode_number.'<span class="aired">'.t('Aired on ').'</span>'.$air_date_text; ?>
+            <?php print '<span class="episode">'.t('S').$season_number.t(' episode ').$episode_number.'</span><span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?>
           </div>
         </div>
         <div class="share">
           <?php print $sharebar; ?>
+          <?php if (!empty($episode_video_link)): ?>
+            <div class="episode-button show-color">
+              <a href="<?php print $episode_video_link; ?>"></a>
+            </div>
+          <?php endif; ?>
         </div>
-        <?php if (!empty($episode_video_link)): ?>
-          <div class="episode-button">
-            <a href="<?php print $episode_video_link; ?>"></a>
-          </div>
-        <?php endif; ?>
       </div>
       <div class="episode-info-image">
         <?php if (!empty($image_desktop)): ?>
@@ -50,7 +50,7 @@
       </div>
     </div>
     <?php if (!empty($gallery_rec)): ?>
-      <div class="gallery-recap-block">
+      <div class="gallery-recap-block show-border">
         <?php print $gallery_rec; ?>
       </div>
     <?php endif; ?>

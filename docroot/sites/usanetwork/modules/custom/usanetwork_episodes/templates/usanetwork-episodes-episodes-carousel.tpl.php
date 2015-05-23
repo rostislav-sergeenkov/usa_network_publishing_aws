@@ -8,19 +8,19 @@
   <div class="items-block-title episodes-block-title">
     <h2><?php print t('Season ').$season_number.t(' episode guides')?></h2>
   </div>
-  <?php if (!empty($episodes['horizontal'])): ?>
+  <?php if (!empty($episodes['vertical'])): ?>
     <div class="episodes-list-slider vertical" data-mode="vertical">
       <ul class="slider-vertical">
-        <?php foreach ($episodes['horizontal'] as $item_v): ?>
+        <?php foreach ($episodes['vertical'] as $item_v): ?>
           <?php print $item_v; ?>
         <?php endforeach; ?>
       </ul>
     </div>
   <?php endif; ?>
-  <?php if (!empty($episodes['vertical'])): ?>
+  <?php if (!empty($episodes['horizontal'])): ?>
     <div class="episodes-list-slider horizontal no-hidden-items" data-mode="horizontal">
       <ul class="slider-horizontal">
-        <?php foreach ($episodes['vertical'] as $item_h): ?>
+        <?php foreach ($episodes['horizontal'] as $item_h): ?>
           <?php print $item_h; ?>
         <?php endforeach; ?>
       </ul>

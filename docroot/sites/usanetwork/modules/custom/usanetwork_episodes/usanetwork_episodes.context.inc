@@ -56,7 +56,7 @@ function usanetwork_episodes_context_default_contexts() {
         'tv_episode' => 'tv_episode',
       ),
       'options' => array(
-        'node_form' => '1',
+        'node_form' => '0',
       ),
     ),
   );

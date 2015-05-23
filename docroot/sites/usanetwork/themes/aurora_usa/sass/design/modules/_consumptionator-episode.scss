@@ -12,10 +12,8 @@
     width: 74.7%;
     background: #ffffff;
     color: #000000;
-    padding: 45px 38px 45px 58px;
     @include breakpoint($bp-1280-width) {
       float: none;
-      padding: 25px 31px 38px 36px;
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
@@ -214,11 +212,11 @@
           margin: 0 0 6vw 0;
           padding: 0;
         }
-@include breakpoint($bp-640-width) {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+        @include breakpoint($bp-640-width) {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
       }
       .episode-info-description {
         font-family: $avalon-book;
@@ -401,6 +399,23 @@
           text-align: center;
         }
       }
+    }
+  }
+  .gallery-recap-block {
+    background: $consup-gallery-bg;
+    border-bottom: 2px solid;
+    padding: 40px 35px 104px;
+    @include breakpoint($bp-min-1901-width) {
+      padding: 40px 55px 104px;
+    }
+    @include breakpoint($bp-1280-width) {
+      padding: 40px 75px 90px;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding: 40px 24px 90px;
+    }
+    @include breakpoint($bp-640-width) {
+      padding: 40px 0 75px;
     }
   }
 }

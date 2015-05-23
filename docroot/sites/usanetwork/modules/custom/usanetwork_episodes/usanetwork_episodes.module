@@ -357,10 +357,10 @@ function _usanetwork_episodes_main_block() {
       $season = $episode_node_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
         $season_num_items = reset($season_num_items);
-        $episode_num = $season_num_items['value'];
+        $season_num = $season_num_items['value'];
       }
     }
-    $season_num = !empty($episode_node->field_episode_number) ? $episode_node_wrapper->field_episode_number->value() : '';
+    $episode_num = !empty($episode_node->field_episode_number) ? $episode_node_wrapper->field_episode_number->value() : '';
     if (!empty($episode_node->field_tv_cover_media)) {
       $image = $episode_node_wrapper->field_tv_cover_media->value();
     }

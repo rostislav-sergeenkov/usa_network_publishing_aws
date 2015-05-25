@@ -515,7 +515,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     $theme_variables['title'] = $current_season_data_item->season_title;
 
     if (!empty($episodes_data)) {
-      foreach ($episodes_data as $episode_data) {
+      foreach ($episodes_data as $episode_data_index => $episode_data) {
         $image_url = usanetwork_core_api_get_content_image('node', $episode_data->nid);
 
         $theme_item_variables = array(
@@ -540,6 +540,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'gallery_url' => !empty($episode_data->gallery_nid)
             ? url('node/' . $episode_data->gallery_nid)
             : '',
+          'active' => ($display_filters_block && $episode_data_index == 0) ? TRUE : FALSE,
         );
 
         $theme_variables['items'][] = theme('usanetwork_episodes_landing_episodes_list_item', $theme_item_variables);

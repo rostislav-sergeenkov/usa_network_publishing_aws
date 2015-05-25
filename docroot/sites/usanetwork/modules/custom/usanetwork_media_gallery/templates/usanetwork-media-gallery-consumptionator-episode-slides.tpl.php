@@ -1,7 +1,7 @@
 <?php
 /**
  * $slides - array of pre-rendered slides
- * $gallery_type - string value of gallery type
+ * $block_title - string
  */
 ?>
 <div class="consum-sidebar">
@@ -21,8 +21,8 @@
   </div>
   <div class="items-block gallaries-thumbs-block">
     <div class="items-block-title galleries-block-title">
-      <?php if (!empty($gallery_type)): ?>
-        <h2><?php print $gallery_type; ?></h2>
+      <?php if (!empty($block_title)): ?>
+        <h2><?php print $block_title; ?></h2>
       <?php endif; ?>
     </div>
     <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>

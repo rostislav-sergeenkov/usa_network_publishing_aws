@@ -2,6 +2,41 @@
 
   var USAN = USAN || {};
 
+  function gigyaSharebar(slide, index) {
+    if (typeof Drupal.gigya != 'undefined') {
+      var slider = $('.gallery-wrapper');
+      var $sharebar = slider.find('.field-name-field-gigya-share-bar > div');
+      if ($sharebar.length > 0) {
+        var $title = slide.find('.gallery-name').text();
+        var $currentImage = slide.find('.asset-img img');
+        var $currentCaption = slide.find('.slide-info .description').text();
+
+        sharebar = new Object();
+        sharebar.gigyaSharebar = {
+          containerID: "gigya-share",
+          iconsOnly: true,
+          layout: "horizontal",
+          shareButtons: "facebook, twitter, tumblr, pinterest, share",
+          shortURLs: "never",
+          showCounts: "none"
+        };
+
+        //var url = window.location.href + '#' + index;
+        var url = window.location.href;
+
+        sharebar.gigyaSharebar.ua = {
+          description: $currentCaption,
+          imageBhev: "url",
+          imageUrl: $currentImage.attr('src'),
+          linkBack: url,
+          title: $title
+        };
+
+        Drupal.gigya.showSharebar(sharebar);
+      }
+    }
+  }
+
   //make pager position
   function pagerPosition(pager) {
     var pagerItem = pager.find('.bx-pager-item'),
@@ -76,7 +111,7 @@
   USAN.gallery = (function () {
 
     function pagerItems() {
-      var container = $('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main'),
+      var container = $('.gallery-wrapper'),
           pager = container.find('.bx-custom-pager'),
           pagerItem = container.find('.bx-pager-item'),
           pagerItemLink = pager.find('.bx-pager-link'),
@@ -95,6 +130,11 @@
         //move pager items position
         movePagerItems(pager);
       });
+
+      var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index'),
+          slide = $('#bxslider-gallery .slide').eq(index).addClass('active');
+
+      gigyaSharebar(slide, index);
     }
 
     var options = {
@@ -127,10 +167,24 @@
       speed: 600,
       onSliderLoad: pagerItems,
       onSlideBefore: function ($slideElement, oldIndex, newIndex) {
-        Drupal.behaviors.omniture_tracking.photoGalleries();
+
+        $('#bxslider-gallery .slide').removeClass('active');
+
+        if ($('body').hasClass('node-type-media-gallery')) {
+          var name = $('#bxslider-gallery .slide .gallery-name').eq(0).text();
+          Drupal.behaviors.omniture_tracking.photoGalleries(name);
+        }
       },
       onSlideAfter: function ($slideElement, oldIndex, newIndex) {
-        Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+
+        var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index'),
+            slide = $('#bxslider-gallery .slide').eq(index).addClass('active');
+
+        gigyaSharebar(slide, index);
+
+        if ($('body').hasClass('node-type-media-gallery')) {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        }
       }
     };
 
@@ -159,13 +213,16 @@
     };
   })();
 
-
   $(document).ready(function () {
     // bxslider-gallery slider initialization
-    if ($('body').hasClass('node-type-media-gallery')) {
+    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode')) {
 
+      if ($('#bxslider-gallery').length == 0) {
+        return false;
+      }
       var gallery = USAN.gallery.init('#bxslider-gallery');
-      var container = $('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main');
+
+      var container = $('.gallery-wrapper');
 
       if(window.innerWidth < window_size_tablet) {
         $('#bxslider-gallery').addClass('mobile');

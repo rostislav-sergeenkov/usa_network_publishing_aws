@@ -11,7 +11,7 @@
  */
 ?>
 <div class="header-nav-bar">
-  <div class="usa-logo show-color hover-avail"><a href="<?php print $main_url; ?>"></a></div>
+  <div class="usa-logo show-color hover-avail"><a class="logo" href="<?php print $main_url; ?>"></a></div>
   <div class="nav-bar-tabs">
     <div class="menu-item show-color hover-avail show-name">
       <a href="<?php print $show_url; ?>">
@@ -47,9 +47,6 @@
               <?php if (!empty($details['episode_info']['season_number']) && !empty($details['episode_info']['episode_number'])): ?>
                 <div class="additional">
                   <span>S<?php print $details['episode_info']['season_number'] ?> <?php print t('episode') . ' ' . $details['episode_info']['episode_number']; ?></span>
-                <?php if (!empty($details['episode_info']['duration'])): ?>
-                  <?php print $details['episode_info']['duration']; ?>
-                <?php endif; ?>
                 </div>
               <?php endif; ?>
             </div>

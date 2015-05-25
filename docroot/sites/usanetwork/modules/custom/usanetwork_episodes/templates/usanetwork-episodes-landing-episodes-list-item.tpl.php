@@ -14,7 +14,7 @@
  * $gallery_url' => URL to Gallery page
  */
 ?>
-<div class="episode-landing-list-item">
+<div class="episode-landing-list-item<?php if (!empty($active)): print ' active'; endif; ?>">
   <div class="episode-landing-list-item-inner">
     <div class="episode-landing-info-block">
       <div class="open-description"></div>

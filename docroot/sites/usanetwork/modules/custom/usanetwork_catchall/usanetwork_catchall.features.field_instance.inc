@@ -354,6 +354,89 @@ function usanetwork_catchall_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-catchall_page-field_gigya_share_bar'
+  $field_instances['node-catchall_page-field_gigya_share_bar'] = array(
+    'bundle' => 'catchall_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'gigya',
+        'settings' => array(
+          'gigya_sharebar_advanced' => array(
+            'iconsOnly' => 'true',
+          ),
+          'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
+          'gigya_sharebar_container_id' => 'gigya-share',
+          'gigya_sharebar_desc' => '[node:field_usa_og_description]',
+          'gigya_sharebar_image_behavior' => 'default',
+          'gigya_sharebar_image_url' => '',
+          'gigya_sharebar_layout' => 'horizontal',
+          'gigya_sharebar_link_back' => '[node:url:absolute]',
+          'gigya_sharebar_override_default' => TRUE,
+          'gigya_sharebar_short_url' => 0,
+          'gigya_sharebar_showcounts' => 'none',
+          'gigya_sharebar_title' => '[node:title]',
+        ),
+        'type' => 'gigya_sharebar_formatter_default',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_gigya_share_bar',
+    'label' => 'Gigya Share Bar',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'gigya',
+      'settings' => array(),
+      'type' => 'sharebar',
+      'weight' => 63,
+    ),
+  );
+
   // Exported field_instance: 'node-catchall_page-field_ideamelt_action_type'
   $field_instances['node-catchall_page-field_ideamelt_action_type'] = array(
     'bundle' => 'catchall_page',
@@ -830,7 +913,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 59,
+      'weight' => 17,
     ),
   );
 
@@ -1730,6 +1813,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Description');
   t('Enable Automatic Ad and Omniture Refresh');
   t('Enable Nitro');
+  t('Gigya Share Bar');
   t('H1');
   t('IdeaMelt action type');
   t('IdeaMelt object type');

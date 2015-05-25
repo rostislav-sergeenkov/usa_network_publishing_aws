@@ -29,7 +29,7 @@
           <?php print $sharebar; ?>
           <?php if (!empty($episode_video_link)): ?>
             <div class="episode-button show-color">
-              <a href="<?php print $episode_video_link; ?>"></a>
+              <a href="<?php print $episode_video_link; ?>"><?php print t('Watch the episode'); ?></a>
             </div>
           <?php endif; ?>
         </div>
@@ -53,6 +53,12 @@
       <div class="gallery-recap-block show-border">
         <?php print $gallery_rec; ?>
       </div>
+    <?php endif; ?>
+    <?php if (!empty($navigation_links['previous'])): ?>
+      <?php print $navigation_links['previous']; ?>
+    <?php endif; ?>
+    <?php if (!empty($navigation_links['next'])): ?>
+      <?php print $navigation_links['next']; ?>
     <?php endif; ?>
   </div>
   <div class="consum-sidebar">

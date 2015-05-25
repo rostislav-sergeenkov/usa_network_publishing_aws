@@ -7,7 +7,7 @@
  * $episode - episode number
  */
 ?>
-<div class="node node-usanetwork-promo aspot-carousel-promo">
+<div class="node node-usanetwork-promo aspot-carousel-promo<?php if (!empty($active)): print ' active show-border'; endif; ?>">
   <a href="<?php print (!empty($gallery_url))? $gallery_url: '#'; ?>">
     <div class="meta-wrapper">
       <div class="meta-back"></div>

@@ -41,6 +41,8 @@
         }
       }
 
+      $('.usa-wrap .ajax-load-block .node-usanetwork-promo a').unbind('click');
+
       var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit + additional_arguments;
 
       $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
@@ -62,6 +64,15 @@
           } else {
             Drupal.behaviors.omniture_tracking.infiniteScroll(counter);
           }
+
+          // Promo click omniture
+          $('.usa-wrap .ajax-load-block .node-usanetwork-promo a').once('omniture-tracking', function() {
+            $(this).on('click', function (e) {
+              e.preventDefault();
+              var self = $(this);
+              Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+            });
+          });
 
           // node-type-tv-show
           if ($('body').hasClass('node-type-tv-show')) {

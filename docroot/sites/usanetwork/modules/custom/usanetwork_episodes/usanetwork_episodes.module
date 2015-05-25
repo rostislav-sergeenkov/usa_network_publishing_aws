@@ -330,10 +330,15 @@ function _usanetwork_episodes_episodes_carousel() {
           $field_show_items = reset($field_show_items);
           $show_id = $field_show_items['target_id'];
         }
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $advert = render($advert_block['content']);
+        }
         $theme_variables = array(
           'season_number' => !empty($season_number) ? $season_number : '',
           'episodes' => !empty($rendered_items) ? $rendered_items : array(),
           'all_episodes_link' => !empty($show_id) ? url('node/' . $show_id .'/episodes') : '',
+          'advert_block' => isset($advert) ? $advert : NULL,
         );
         return theme('usanetwork_episodes_episodes_carousel', $theme_variables);
       }
@@ -382,7 +387,7 @@ function _usanetwork_episodes_main_block() {
       if (!empty($result)) {
         $episode_link = url('file/' . $result['fid']);
       }
-      $navigation_links = _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season->nid, $episode_num);
+      $navigation_links = _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season->nid, $episode_num, $season_num);
     }
     $theme_variables = array(
       'sharebar' => !empty($sharebar) ? render($sharebar) : '',
@@ -515,7 +520,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     $theme_variables['title'] = $current_season_data_item->season_title;
 
     if (!empty($episodes_data)) {
-      foreach ($episodes_data as $episode_data) {
+      foreach ($episodes_data as $episode_data_index => $episode_data) {
         $image_url = usanetwork_core_api_get_content_image('node', $episode_data->nid);
 
         $theme_item_variables = array(
@@ -540,6 +545,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'gallery_url' => !empty($episode_data->gallery_nid)
             ? url('node/' . $episode_data->gallery_nid)
             : '',
+          'active' => ($display_filters_block && $episode_data_index == 0) ? TRUE : FALSE,
         );
 
         $theme_variables['items'][] = theme('usanetwork_episodes_landing_episodes_list_item', $theme_item_variables);
@@ -1119,7 +1125,7 @@ function _usanetwork_episodes_render_related_content_item_default($data) {
   return theme('usanetwork_episode_related_item', $theme_variables);
 }
 
-function _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season_id, $episode_id) {
+function _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season_id, $episode_id, $season_num) {
   $nav_links = array();
   $previous_episode = $episode_id - 1;
   $query = db_select('node', 'node');
@@ -1133,7 +1139,11 @@ function _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season_id, $epis
   $query->range(0, 1);
   $result = $query->execute()->fetchAssoc();
   if (!empty($result)) {
-    $nav_links['previous'] = url('node/' . $result['nid']);
+    $label = t('S@season Episode @episode', array(
+      '@season' => $season_num,
+      '@episode' => $previous_episode,
+    ));
+    $nav_links['previous'] = l($label, 'node/' . $result['nid'],  array('attributes' => array('class' => array('episode-change-link', 'previous'))));
   }
   $next_episode = $episode_id + 1;
   $query = db_select('node', 'node');
@@ -1147,7 +1157,11 @@ function _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season_id, $epis
   $query->range(0, 1);
   $result = $query->execute()->fetchAssoc();
   if (!empty($result)) {
-    $nav_links['next'] = url('node/' . $result['nid']);
+    $label = t('S@season Episode @episode', array(
+      '@season' => $season_num,
+      '@episode' => $next_episode,
+    ));
+    $nav_links['next'] = l($label, 'node/' . $result['nid'], array('attributes' => array('class' => array('episode-change-link', 'next'))));
   }
   return $nav_links;
 }

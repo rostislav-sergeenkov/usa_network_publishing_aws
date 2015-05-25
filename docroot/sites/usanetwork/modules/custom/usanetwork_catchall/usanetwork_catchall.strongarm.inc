@@ -86,22 +86,22 @@ function usanetwork_catchall_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '13',
         ),
         'title' => array(
           'weight' => '7',
         ),
         'path' => array(
-          'weight' => '10',
-        ),
-        'redirect' => array(
           'weight' => '12',
         ),
+        'redirect' => array(
+          'weight' => '14',
+        ),
         'xmlsitemap' => array(
-          'weight' => '13',
+          'weight' => '15',
         ),
         'locations' => array(
-          'weight' => '14',
+          'weight' => '16',
         ),
       ),
       'display' => array(),

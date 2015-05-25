@@ -196,6 +196,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline',
       'path' => $subtheme_path,
       'variables' => array(
+        'gallery_title' => NULL,
         'description' => NULL,
         'content' => NULL,
       ),
@@ -219,6 +220,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
 //      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/ms_characters_styles.css',
       $site_theme_path . '/css/fonts.css',
       $site_theme_path . '/css/ms_styles.css',
+      $site_theme_path . '/css/ms_gigya_share.css',
       $site_theme_path . '/css/ms_home.css',
       $site_theme_path . '/css/ms_videos.css',
       $site_theme_path . '/css/ms_timeline.css',
@@ -246,7 +248,8 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
       $site_theme_path . '/js/ms_quizzes.js',
       $site_theme_path . '/js/date.js',
       $site_theme_path . '/js/counter.rf.js',
-      $module_path . '/js/usanetwork_video_endcard.js',
+      $site_theme_path . '/js/ms_video_endcard.js',
+      //$module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );

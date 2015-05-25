@@ -858,6 +858,8 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
 }
 
 function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
+  $result = '';
+
   if ($schedule_item->program_type == 'movie') {
     // Find nodes with the same title (applicable for Catchall pages and others in future)
     $entities = entity_load('node', FALSE, array('title' => $schedule_item->title));
@@ -889,7 +891,7 @@ function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
       if (!empty($entity_image_fid)) {
         $file = file_load($entity_image_fid);
 
-        return $file->uri;
+        $result = $file->uri;
       }
     }
   }
@@ -921,14 +923,18 @@ function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
           $image_field = field_get_items('node', $show_node, 'field_usa_tv_on_now');
 
           if (!empty($image_field)) {
-            return $image_field[0]['uri'];
+            $result = $image_field[0]['uri'];
           }
         }
       }
     }
   }
 
-  return '';
+  if (empty($result) && $schedule_item->program_type == 'movie') {
+    $result = usanetwork_schedule_get_movie_default_image();
+  }
+
+  return $result;
 }
 
 /**

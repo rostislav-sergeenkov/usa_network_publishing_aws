@@ -102,6 +102,10 @@
             <?php print $video_desc; ?>
           <?php endif; ?>
         </div>
+        <div id="video-gigya-share-container">
+          <div id="video-gigya-share-title">Share this video</div>
+          <div id="video-gigya-share" class="video-gigya-share"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -134,17 +138,6 @@
                 </ul>
               </div>
             </div>
-<?php /* ?>
-            <div class="expandable-toggle-wrap <?php if (!empty($more_videos)): ?>active<?php endif; ?>">
-              <div class="expandable-toggle">
-                <div class="item-list">
-                  <ul class="pager pager-load-more">
-                    <li class="pager-next first last more">more</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-<?php */ ?>
           </div>
         </div>
       </div>

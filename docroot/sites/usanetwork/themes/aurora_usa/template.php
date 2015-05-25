@@ -99,6 +99,10 @@ function aurora_usa_preprocess_html(&$vars) {
       $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
     }
   }
+  $status = drupal_get_http_header("status");
+  if ($status == '403 Forbidden') {
+    $vars['classes_array'][] = 'page-403';
+  }
 }
 
 /**

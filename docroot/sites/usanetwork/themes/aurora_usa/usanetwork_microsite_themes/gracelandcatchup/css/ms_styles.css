@@ -36,8 +36,8 @@ div {
 img.tracking {
   display: none;
 }
-#microsite iframe {
-  border: 0 solid transparent;
+body > iframe {
+  display: none;
 }
 
 /* ANIMATIONS */

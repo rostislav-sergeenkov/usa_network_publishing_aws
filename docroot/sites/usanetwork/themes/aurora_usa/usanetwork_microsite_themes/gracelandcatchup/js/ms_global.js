@@ -85,8 +85,9 @@ var initialPageLoad = 1;
       }
       if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
         Drupal.behaviors.ms_global.setOmnitureData(sectionId);
+        Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
-usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
+//usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
       }
     },
 
@@ -123,7 +124,7 @@ usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection)
             downEnabled = (sectionId == firstSection || sectionId == 'site-nav') ? false : true,
             upEnabled = (sectionId == lastSection || sectionId == 'site-nav') ? false : true;
 
-usa_debug('========= initializing waypoints for section ' + sectionId);
+//usa_debug('========= initializing waypoints for section ' + sectionId);
         if (sectionId != 'site-nav') {
           Drupal.behaviors.ms_global.waypoints['down'][sectionId] = new Waypoint.Inview({
             element: document.getElementById(sectionId),
@@ -404,6 +405,12 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
     },
 
     // SECTIONS
+    setActiveMenuItem: function(anchor) {
+      // set active menu item
+      $('#site-nav-links li, #site-nav-links-mobile li').removeClass('active disabled');
+      $('#site-nav-links li.' + anchor + ', #site-nav-links-mobile li.' + anchor).addClass('active');
+    },
+
     //scroll to top
     scrollToTop: function() {
       $('.section.active').animate({
@@ -415,7 +422,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
     sectionScroll: function(anchor, item, itemTitle) {
       item = item || '';
       itemTitle = itemTitle || '';
-usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
+//usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
       var basePath = Drupal.settings.microsites_settings.base_path,
           anchorItem = $('#nav-' + anchor),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
@@ -436,19 +443,19 @@ usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle +
             break;
           case 'quizzes':
             var quizNodeId = $('#microsite #quizzes #quizzes-nav-list a[href="' + basePath + '/quizzes/' + item + '"]').parent().attr('data-node-id');
-usa_debug('========== calling switchQuizzes(' + quizNodeId + ')');
+//usa_debug('========== calling switchQuizzes(' + quizNodeId + ')');
             Drupal.behaviors.ms_quizzes.switchQuizzes(quizNodeId);
             break;
         }
       }
 
       // now scroll to the next section
-//      var siteNavHeight = (anchor != 'home' && anchor != 'videos') ? $('#site-nav').height() : 0,
       var nextSectionElem = document.getElementById(anchor),
-          nextSectionTop = nextSectionElem.offsetTop; // nextSectionElem.offsetTop - siteNavHeight;
-usa_debug('====== nextSection: ' + nextSection + ', nextSectionTop: ' + nextSectionTop);
+          offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 5,
+          nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0; // nextSectionElem.offsetTop - siteNavHeight;
+//usa_debug('====== nextSection: ' + nextSection + ', nextSectionTop: ' + nextSectionTop);
       $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
-usa_debug('======== microsite animate complete');
+//usa_debug('======== microsite animate complete');
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
 
@@ -472,11 +479,36 @@ usa_debug('======== microsite animate complete');
           }
         }
 
-        // set active menu item
-        $('#site-nav-links li').removeClass('active disabled');
-        $('#nav-' + anchor).addClass('active');
+        Drupal.behaviors.ms_global.setActiveMenuItem(anchor);
       });
       Drupal.behaviors.ms_global.globalInitialPageLoad = false;
+    },
+
+    // RESIZING
+    // resize response
+    resizeResponse: function() {
+      var wwidth = $(window).width(),
+          $siteNav = $('#site-nav');
+
+      if (wwidth < 874) {
+        $siteNav.addClass('mobile');
+      }
+      else {
+        $siteNav.removeClass('mobile');
+      }
+
+      if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
+        $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
+      }
+      else {
+        $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
+      }
+
+      if (typeof Waypoint != 'undefined') Waypoint.refreshAll();
+
+      if ($('#videos').length > 0) Drupal.behaviors.ms_videos.setVideoHeight();
+
+      if ($('#quizzes').length > 0) Drupal.behaviors.ms_quizzes.reloadSliders();
     },
 
     attach: function (context, settings) {
@@ -502,35 +534,39 @@ usa_debug('======== microsite animate complete');
         $siteNav.removeClass('mobile');
       }
 
-      $('#video-container').addClass('active');
-      var urlParts = self.parseUrl(history.state['path']);
-      if (urlParts['section'] == 'videos' && urlParts['item']) {
-        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
-      }
-      else {
-        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
-      }
-
       // TIME OUT
       // we need to allow time for the page to load -- especially videos
       setTimeout(function(){
+        if ($('#videos').length > 0) {
+          Drupal.behaviors.ms_videos.setVideoHeight();
+
+          $('#video-container').addClass('active');
+          var urlParts = self.parseUrl(window.location.href); // history.state['path']);
+          if (urlParts['section'] == 'videos' && urlParts['item']) {
+            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
+          }
+          else {
+            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
+          }
+        }
+
         // initialize clicks in microsite menu
         $('#microsite li.internal a').on('click', function(e){
           e.preventDefault();
           var $parent = $(this).parent(),
               anchor = $parent.attr('data-menuanchor');
 
-usa_debug('======== clicked on ' + $parent.attr('id') + ', anchor: ' + anchor);
+//usa_debug('======== clicked on ' + $parent.attr('id') + ', anchor: ' + anchor);
           if ($('#site-nav-links li').hasClass('disabled')) {
-usa_debug('======== site-nav-links disabled');
+//usa_debug('======== site-nav-links disabled');
             return false;
           }
           else {
-usa_debug('======= disabling site-nav-links li');
+//usa_debug('======= disabling site-nav-links li');
             $('#site-nav-links li').addClass('disabled');
           }
 
-usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
+//usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
           Drupal.behaviors.ms_global.sectionScroll(anchor);
           if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });
@@ -559,34 +595,36 @@ usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
         }
 
         self.create728x90Ad();
-      }, 500);
+      }, 2000);
       // END TIME OUT
 
       // Turn off the popstate/hashchange tve-core.js event listeners
       $(window).off('popstate');
       $(window).off('hashchange');
 
-      // Turn on browser history functionality -- for example, browser back button.
-      // Popped variable is used to detect initial (useless) popstate.
-      // If history.state exists, assume browser isn't going to fire initial popstate.
-      var popped = ('state' in window.history && window.history.state !== null),
-          initialURL = location.href;
-      $(window).on('popstate');
-      $(window).bind('popstate', function(event) {
-        // Ignore inital popstate that some browsers fire on page load
-        var initialPop = !popped && location.href == initialURL
-        popped = true;
+      if ($('html.ie9').length > 0) {
+        // Turn on browser history functionality -- for example, browser back button.
+        // Popped variable is used to detect initial (useless) popstate.
+        // If history.state exists, assume browser isn't going to fire initial popstate.
+        var popped = ('state' in window.history && window.history.state !== null),
+            initialURL = location.href;
+        $(window).on('popstate');
+        $(window).bind('popstate', function(event) {
+          // Ignore inital popstate that some browsers fire on page load
+          var initialPop = !popped && location.href == initialURL
+          popped = true;
 
-        if (initialPop) return;
+          if (initialPop) return;
 
-        usa_debug('============= onpopstate activated! new state: ');
-        usa_debug(history.state);
-        var urlParts = self.parseUrl(history.state['path']),
+//usa_debug('============= onpopstate activated! new state: ');
+//usa_debug(history.state);
+          var urlParts = self.parseUrl(history.state['path']),
 
-            anchor = urlParts['section'],
-            item = urlParts['item'];
-        self.sectionScroll(anchor, item);
-      });
+              anchor = urlParts['section'],
+              item = urlParts['item'];
+          self.sectionScroll(anchor, item);
+        });
+      }
 
       // RESIZE
       // set resize and orientation change
@@ -594,27 +632,10 @@ usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
       $(window).bind('resize', function () {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function(){
-          var wwidth = $(window).width(),
-              $siteNav = $('#site-nav');
-
-          if (wwidth < 874) {
-            $siteNav.addClass('mobile');
-          }
-          else {
-            $siteNav.removeClass('mobile');
-          }
-
-          if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
-            $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
-          }
-          else {
-            $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
-          }
-
-          if (typeof Waypoint != 'undefined') Waypoint.refreshAll();
+          if (!self.initialPageLoad) self.resizeResponse();
         }, 250);
       });
-//      window.addEventListener('orientationchange', self.reloadSliders);
+      window.addEventListener('orientationchange', self.resizeResponse);
 
     }
   }

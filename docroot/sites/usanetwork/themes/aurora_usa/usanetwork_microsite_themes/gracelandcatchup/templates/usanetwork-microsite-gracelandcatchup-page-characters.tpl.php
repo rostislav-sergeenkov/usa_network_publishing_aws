@@ -12,10 +12,10 @@
  * -  -  - $people[n]['quotes'][m]['source'] - string value of source field
  * -  - $people[n]['title'] - the title of the person
  * -  - $people[n]['social'] - pre-rendered list of social follow icons
- * -  - $people[n]['description'] - the description of the person
+ * -  - $people[n]['description'] - the biography of the person or character
  * -  - $people[n]['role'] - role of the person
  * -  - $people[n]['character_bio_summary'] - Summary of the character bio
- * -  - $people[n]['character_bio'] - character bio
+ * -  - $people[n]['character_bio'] - microsite character bio
  * -  - $people[n]['actor_bio'] - actor bio
  * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
  * -  - $people[n]['preview_image_url'] - Image preview for a hover action.
@@ -101,6 +101,10 @@
               <div class="character-image"><img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['cover_image_url']; ?>" align="left"></div>
               <?php endif; ?>
               <?php print $person['description']; ?>
+              <?php if (!empty($person['actor_bio'])): ?>
+                <h3>Actor Bio</h3>
+                <?php print $person['actor_bio']; ?>
+              <?php endif; ?>
             </div>
           <?php endif; ?>
           </div>

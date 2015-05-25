@@ -430,11 +430,13 @@
           });
         }
 
+/*
         // set resize and orientation change
         $(window).bind('resize', function () {
           self.reloadSliders();
         });
         window.addEventListener('orientationchange', self.reloadSliders);
+*/
       }
     }
   }

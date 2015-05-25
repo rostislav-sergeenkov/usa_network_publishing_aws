@@ -5226,7 +5226,7 @@ header .nav-bar-tabs {
     cursor: pointer;
     display: block;
     font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 1.26829vw;
     height: 100%;
     line-height: 90px;
     letter-spacing: 0.5px;
@@ -5247,13 +5247,14 @@ header .nav-bar-tabs {
 }
 @media (min-width: 769px) and (min-width: 1901px) {
   header .nav-bar-tabs a {
-    font-size: 40px;
+    font-size: 24px;
     line-height: 135px;
     padding: 0 30px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   header .nav-bar-tabs a {
+    font-size: 13px;
     line-height: 50px;
   }
 }
@@ -16700,12 +16701,44 @@ footer h2 {
   color: #ffffff;
   float: left;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 24px;
+  font-size: 1.85366vw;
   letter-spacing: 1px;
   line-height: 67px;
-  margin: 0 30px 0 20px;
-  max-width: 260px;
+  margin: 0 2.34146vw 0 20px;
   text-transform: uppercase;
+}
+@media (min-width: 769px) {
+  .show-title-block h1 {
+    max-width: 24.70741vw;
+  }
+}
+@media (min-width: 1901px) {
+  .show-title-block h1 {
+    font-size: 36px;
+    line-height: 100px;
+    margin: 0 44.5px 0 20px;
+    max-width: 470px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-title-block h1 {
+    line-height: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .show-title-block h1 {
+    font-size: 14px;
+    margin: 0 20px 0 20px;
+  }
+}
+@media (max-width: 480px) {
+  .show-title-block h1 {
+    display: table-cell;
+    float: none;
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
+  }
 }
 .show-title-block h1 a {
   color: #ffffff;
@@ -16717,30 +16750,6 @@ footer h2 {
 .show-title-block h1 a:focus {
   outline: none;
 }
-@media (min-width: 1901px) {
-  .show-title-block h1 {
-    font-size: 36px;
-    line-height: 100px;
-    max-width: 380px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-title-block h1 {
-    font-size: 18px;
-    line-height: 50px;
-    max-width: 194px;
-  }
-}
-@media (max-width: 480px) {
-  .show-title-block h1 {
-    display: table-cell;
-    float: none;
-    font-size: 16px;
-    line-height: 1;
-    text-align: center;
-    vertical-align: middle;
-  }
-}
 .show-title-block a:visited, .show-title-block a:active {
   color: #ffffff;
   outline: none !important;
@@ -16749,38 +16758,36 @@ footer h2 {
   display: table;
   float: right;
   height: 100%;
-  max-width: 135px;
+  max-width: 12.68293vw;
   text-align: right;
 }
 @media (max-width: 1024px) {
   .show-title-block .schedule {
-    max-width: 110px;
+    max-width: 130px;
   }
 }
 @media (min-width: 1901px) {
   .show-title-block .schedule {
-    max-width: 205px;
+    max-width: 241px;
   }
 }
 .show-title-block .schedule .time {
   color: #ffffff;
   display: table-cell;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 0.97561vw;
+  line-height: 1.5;
   text-transform: uppercase;
   vertical-align: middle;
 }
 @media (min-width: 1901px) {
   .show-title-block .schedule .time {
     font-size: 18px;
-    line-height: 26px;
   }
 }
 @media (max-width: 1024px) {
   .show-title-block .schedule .time {
     font-size: 10px;
-    line-height: 16px;
   }
 }
 @media (max-width: 768px) {
@@ -17062,19 +17069,8 @@ footer h2 {
 .show-menu-tab {
   float: left;
   height: 100%;
-  max-width: 55%;
+  max-width: 56%;
   position: relative;
-  width: calc(100% - 560px);
-}
-@media (min-width: 1901px) {
-  .show-menu-tab {
-    width: calc(100% - 650px);
-  }
-}
-@media (max-width: 1024px) {
-  .show-menu-tab {
-    width: calc(100% - 448px);
-  }
 }
 @media (max-width: 768px) {
   .show-menu-tab {
@@ -17082,16 +17078,17 @@ footer h2 {
   }
 }
 .show-menu-tab .show-menu {
-  display: table;
+  display: block;
   height: 100%;
   position: relative;
   width: 100%;
 }
 .show-menu-tab .show-menu > li {
-  display: table-cell;
+  display: block;
+  float: left;
   height: 67px;
   padding: 0;
-  vertical-align: middle;
+  position: relative;
 }
 @media (min-width: 1901px) {
   .show-menu-tab .show-menu > li {
@@ -17110,18 +17107,20 @@ footer h2 {
   color: #ffffff;
   display: block;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 1.07317vw;
   line-height: 67px;
   height: 67px;
+  padding: 0 2.34146vw;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
 }
 @media (min-width: 1901px) {
   .show-menu-tab .show-menu > li > a {
-    font-size: 20px;
-    line-height: 100px;
+    font-size: 21px;
     height: 100px;
+    line-height: 100px;
+    padding: 0 44.5px;
   }
 }
 @media (max-width: 1024px) {

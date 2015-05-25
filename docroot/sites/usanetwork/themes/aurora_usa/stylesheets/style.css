@@ -15281,6 +15281,7 @@ footer h2 {
 
 #block-usanetwork-mpx-video-usanetwork-social-content .show-border {
   border-bottom: 2px solid;
+  overflow: hidden;
   max-height: 700px;
   padding: 20px 16px 0;
 }

@@ -83,11 +83,11 @@
   @include clear();
   background: $poll-back;
   overflow: hidden;
-  padding: 30px 22px 0;
+  padding: 0 22px;
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-1901-width) {
-    padding: 40px 32px 0;
+    padding: 0 32px;
   }
   @include breakpoint($bp-min-641-width) {
     min-height: 290px;
@@ -133,7 +133,9 @@
       padding: 40px;
     }
     @include breakpoint($between-1025-1280) {
-      width: calc(75% - 300px);
+      float: none;
+      margin-left: 300px;
+      width: calc(100% - 600px);
     }
     @include breakpoint($between-641-1024) {
       width: calc(100% - 300px);

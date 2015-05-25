@@ -14042,7 +14042,7 @@ footer h2 {
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
     font-size: 13px;
-    padding: 10px 5%;
+    padding: 10px 9%;
   }
 }
 @media (max-width: 1024px) {
@@ -30083,7 +30083,7 @@ body.blog .view-display-id-blog_content .views-row {
 .about-show-block {
   background: #e9eaeb;
   overflow: hidden;
-  padding: 30px 22px 0;
+  padding: 0 22px;
   position: relative;
   width: 100%;
 }
@@ -30094,7 +30094,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (min-width: 1901px) {
   .about-show-block {
-    padding: 40px 32px 0;
+    padding: 0 32px;
   }
 }
 @media (min-width: 641px) {
@@ -30155,7 +30155,9 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .about-show-block .about-show-text-block {
-    width: calc(75% - 300px);
+    float: none;
+    margin-left: 300px;
+    width: calc(100% - 600px);
   }
 }
 @media (min-width: 641px) and (max-width: 1024px) {

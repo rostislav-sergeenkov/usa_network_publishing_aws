@@ -4,6 +4,9 @@
 #microsite h3 {
   line-height: 1em;
 }
+#microsite .usanetwork-quiz h3.field-label {
+  display: block;
+}
 #microsite #quizzes .full-pane {
   max-width: 1244px;
   margin-top: 12px;
@@ -54,6 +57,9 @@
 #microsite #quizzes .usanetwork-quiz .content-wrap .sidebar {
   margin-left: 40px;
   width: 300px;
+  float: left;
+}
+#microsite #quizzes .sharebar > h3 {
   float: left;
 }
 #microsite #quizzes .usanetwork-quiz-questions.questions .page-note {

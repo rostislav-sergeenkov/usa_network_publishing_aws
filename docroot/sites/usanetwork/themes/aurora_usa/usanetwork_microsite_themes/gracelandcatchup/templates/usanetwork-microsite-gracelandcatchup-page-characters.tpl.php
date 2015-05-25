@@ -16,6 +16,7 @@
  * -  - $people[n]['role'] - role of the person
  * -  - $people[n]['character_bio_summary'] - Summary of the character bio
  * -  - $people[n]['character_bio'] - character bio
+ * -  - $people[n]['actor_bio'] - actor bio
  * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
  * -  - $people[n]['preview_image_url'] - Image preview for a hover action.
  * -  - $people[n]['cover_image_url'] - Cover image.

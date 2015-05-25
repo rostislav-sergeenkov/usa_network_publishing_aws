@@ -55,10 +55,10 @@
       </div>
     <?php endif; ?>
     <?php if (!empty($navigation_links['previous'])): ?>
-      <a href="<?php print $navigation_links['previous']; ?>" class="episode-change-link previous"><?php print t('previous'); ?></a>
+      <?php print $navigation_links['previous']; ?>
     <?php endif; ?>
     <?php if (!empty($navigation_links['next'])): ?>
-      <a href="<?php print $navigation_links['next']; ?>" class="episode-change-link next"><?php print t('next'); ?></a>
+      <?php print $navigation_links['next']; ?>
     <?php endif; ?>
   </div>
   <div class="consum-sidebar">

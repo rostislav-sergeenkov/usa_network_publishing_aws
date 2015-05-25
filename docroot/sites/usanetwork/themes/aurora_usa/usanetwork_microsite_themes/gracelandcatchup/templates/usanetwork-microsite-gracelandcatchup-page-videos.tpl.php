@@ -104,7 +104,7 @@
         </div>
         <div id="video-gigya-share-container">
           <div id="video-gigya-share-title">Share this video</div>
-          <div id="video-gigya-share" class="video-gigya-share" data-video-thumbnail="<?php print $image; ?>"></div>
+          <div id="video-gigya-share" class="video-gigya-share"></div>
         </div>
       </div>
     </div>

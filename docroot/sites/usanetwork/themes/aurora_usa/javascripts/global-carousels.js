@@ -124,6 +124,12 @@
                       }
                     }
                   },
+                  swipeUp: function(e) {
+                    e.preventDefault();
+                  },
+                  swipeDown: function(e) {
+                    e.preventDefault();
+                  },
                   tap: function (event, target) {
                     var click_on_opened = $(target).closest('li.active').length > 0;
                     var tapHandler = function() {

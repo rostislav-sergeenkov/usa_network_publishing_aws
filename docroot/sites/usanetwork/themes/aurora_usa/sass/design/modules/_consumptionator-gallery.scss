@@ -8,7 +8,9 @@
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
       height: 42.01875vw;
-      max-height: 1050px;
+      max-height: 1080px;
+      max-width: 1920px;
+      margin: 0 auto;
     }
     @include breakpoint($between-1025-1280) {
       height: calc((100vw - 320px) * 0.5625);

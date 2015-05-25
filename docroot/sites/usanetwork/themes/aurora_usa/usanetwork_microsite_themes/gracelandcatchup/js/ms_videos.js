@@ -5,14 +5,14 @@
   Drupal.behaviors.ms_videos = {
 
     // Gigya share bar
-    updateGigyaSharebarOmniture: function(initialPageLoad) {
+    updateGigyaSharebarOmniture: function(initialPageLoad, preview_image) {
       initialPageLoad = initialPageLoad || 0;
       if (typeof Drupal.gigya != 'undefined') {
         var sharebar = new Object(),
             $videoInfoContainer = $('#videos #video-container .video-player-desc'),
             caption = $videoInfoContainer.find('.video-description').text(),
             title = $videoInfoContainer.find('.video-title').text(),
-            imageSrc = $('#videos #video-gigya-share').attr('data-video-thumbnail');
+            imageSrc = preview_image;
 
         sharebar.gigyaSharebar = {
           containerID: "video-gigya-share",
@@ -85,7 +85,8 @@
       .done(function(data) {
         var image = data.default_image,
             description = data.description_template,
-            player = data.player;
+            player = data.player,
+            preview_image = data.preview_image;
 
         if (playerAuth.hasClass('active-player')) {
           playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
@@ -103,7 +104,7 @@
         Drupal.behaviors.ms_videos.setVideoHeight();
 
         // initialize Gigya sharebar
-        Drupal.behaviors.ms_videos.updateGigyaSharebarOmniture(initialPageLoad);
+        Drupal.behaviors.ms_videos.updateGigyaSharebarOmniture(initialPageLoad, preview_image);
       })
       .fail(function(jqXHR, textStatus) {
         usa_debug('ajax call failed -- textStatus: ' + textStatus);

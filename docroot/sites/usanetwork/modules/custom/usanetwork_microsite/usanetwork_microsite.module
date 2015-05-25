@@ -1267,9 +1267,6 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
 
   $is_full = _usanetwork_microsite_define_full_episode($file);
 
-  $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-  $renderable_image = file_create_url($image['#path']);
-
   return array(
     'title' => !empty($file->field_mpx_title)
       ? $file_wrapper->field_mpx_title->value()
@@ -1317,10 +1314,12 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
 
   //set image for not logged in user
   $auth_episode = _usanetwork_microsite_define_auth($file);
+  $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
   if ($auth_episode) {
-    $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
     $renderable_image = theme('image', array('path' =>$image['#path']));
   }
+
+  $preview_image = file_create_url($image['#path']);
 
   //set video descriprion
   $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
@@ -1329,9 +1328,10 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
 
   $result = array(
-     'default_image' => isset($renderable_image) ? $renderable_image : '',
-     'player' => $video,
-     'description_template' => theme($theme_registry_name, $video_desc),
+    'default_image' => isset($renderable_image) ? $renderable_image : '',
+    'player' => $video,
+    'description_template' => theme($theme_registry_name, $video_desc),
+    'preview_image' => $preview_image,
   );
   drupal_json_output($result);
   exit();

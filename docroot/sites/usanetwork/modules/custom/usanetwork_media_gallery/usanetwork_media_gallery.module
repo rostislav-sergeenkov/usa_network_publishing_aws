@@ -104,6 +104,7 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_media_gallery_consumptionator_slides' => array(
       'variables' => array(
+        'sharebar' => NULL,
         'slides' => array(),
       ),
       'path' => $path . '/templates',
@@ -225,7 +226,10 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
   if (isset($node->type) && $node->type == 'media_gallery') {
     $slides = array();
-
+    if (!empty($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this image');
+    }
     $gallery_field = field_get_items('node', $node, 'field_media_items');
 
     $image_cover_field = field_get_items('node', $node, 'field_cover_item');
@@ -238,12 +242,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
           $gallery_file = (object)$gallery_file;
         }
 
-        if (!empty($node->field_gigya_share_bar)) {
-          $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
-          $sharebar['#title'] = t('Share this image');
-        }
         $slide_variables = array(
-          'gigya_id' => !empty($sharebar) ? render($sharebar) : NULL,
           'image' => theme_image(array(
             'path' => $gallery_file->uri,
             'attributes' => array(),
@@ -266,7 +265,10 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
       }
     }
 
-    return theme('usanetwork_media_gallery_consumptionator_slides', array('slides' => $slides));
+    return theme('usanetwork_media_gallery_consumptionator_slides', array(
+      'slides' => $slides,
+      'sharebar' => !empty($sharebar) ? render($sharebar) : NULL,
+    ));
   }
 
   return '';
@@ -287,16 +289,24 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       $node_wrapper = entity_metadata_wrapper('node', $node);
       $show_nid = $node_wrapper->field_show->nid->value();
       $gallery_type = $node_wrapper->field_gallery_type->value();
-      $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type);
+      $gallery_field_season_id_value = _usanetwork_get_field_item('node', $node, 'field_season', 'target_id');
+      if (!empty($gallery_field_season_id_value)) {
+        $tv_season_node = node_load($gallery_field_season_id_value);
+        $season_id = _usanetwork_get_field_item('node', $tv_season_node, 'field_season_id', 'value');
+      }
+      if ($gallery_type == 'Episodic Gallery' && !empty($gallery_field_season_id_value)) {
+        $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type, $gallery_field_season_id_value);
+      }
+      else {
+        $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type);
+      }
+
       if (empty($galleries_list['node'])) {
         return '';
       }
       $galleries_list = entity_load('node', array_keys($galleries_list['node']));
       $rendered_items = array();
       foreach ($galleries_list as $gallery_item) {
-        if ($gallery_item->nid == $node->nid) {
-          continue;
-        }
         $own_promo_lines = _usanetwork_promo_node_get_promo_lines($gallery_item);
         if (!empty($gallery_item->field_promo_image_override)) {
           $field_image_override = reset(field_get_items('node', $gallery_item, 'field_promo_image_override'));
@@ -310,6 +320,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
           'image_url' => !empty($promo_image_url) ? image_style_url('111x74', $promo_image_url) : '',
           'title' => $own_promo_lines['title'],
           'description' => $own_promo_lines['description'],
+          'active' => ($gallery_item->nid == $node->nid) ? TRUE : FALSE,
         );
 
         $gallery_item_horizontal = array(
@@ -317,6 +328,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
           'image_url' => !empty($promo_image_url) ? image_style_url('full_episodes_633x356', $promo_image_url) : '',
           'title' => $own_promo_lines['title'],
           'description' => $own_promo_lines['description'],
+          'active' => ($gallery_item->nid == $node->nid) ? TRUE : FALSE,
         );
 
         $rendered_items['slides_vertical'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_vertical', $gallery_item_vertical);
@@ -324,11 +336,6 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       }
 
 
-      $gallery_field_season_id_value = _usanetwork_get_field_item('node', $node, 'field_season', 'target_id');
-      if (!empty($gallery_field_season_id_value)) {
-        $tv_season_node = node_load($gallery_field_season_id_value);
-        $season_id = _usanetwork_get_field_item('node', $tv_season_node, 'field_season_id', 'value');
-      }
 
       $advert_block = module_invoke('mps', 'block_view', 'topbox');
       if (!empty($advert_block['content'])) {
@@ -346,6 +353,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         'slides_vertical' => !empty($rendered_items['slides_vertical']) ? $rendered_items['slides_vertical'] : '',
         'slides_horizontal' => !empty($rendered_items['slides_horizontal']) ? $rendered_items['slides_horizontal'] : '',
         'ad' => isset($advert) ? $advert : NULL,
+        'link' => url('node/' . $show_nid . '/photos'),
       ));
     }
   }
@@ -359,13 +367,16 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
  * @param $show_nid
  * @param $season_nid
  */
-function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type) {
+function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type, $episode_num = NULL) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'media_gallery')
     ->propertyCondition('status', NODE_PUBLISHED)
     ->fieldCondition('field_show', 'target_id', $show_nid, '=')
     ->fieldCondition('field_gallery_type', 'value', $gallery_type, '=');
+  if (is_numeric($episode_num)) {
+    $query->fieldCondition('field_season', 'target_id', $episode_num, '=');
+  }
   return $query->execute();
 }
 

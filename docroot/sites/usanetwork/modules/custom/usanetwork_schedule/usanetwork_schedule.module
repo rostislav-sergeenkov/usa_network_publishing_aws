@@ -66,6 +66,46 @@ function usanetwork_schedule_cron() {
 }
 
 /**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_schedule_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['usa_movie_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('USA Movie settings'),
+    '#description' => t('Display settings of USA Movie items'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['usa_movie_settings']['usanetwork_schedule_movie_image_fid'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('Default image'),
+    '#description' => t('The image appears if Drupal has no possibility to find image for USA Movie on Schedule page or bar'),
+    '#default_value' => variable_get('usanetwork_schedule_movie_image_fid', NULL),
+    '#upload_location' => 'public://',
+  );
+}
+
+/**
+ * Returns image URL for default image for schedule.
+ *
+ * @param null $image_style_name - machine-readable name of applicable image style.
+ */
+function usanetwork_schedule_get_movie_default_image($image_style_name = NULL) {
+  $default_image_fid = variable_get('usanetwork_schedule_movie_image_fid', NULL);
+
+  if (!empty($default_image_fid)) {
+    $file = file_load($default_image_fid);
+
+    return !empty($image_style_name)
+      ? image_style_url($image_style_name, $file->uri)
+      : $file->uri;
+  }
+
+  return '';
+}
+
+/**
  * Pulls data from service and puts it to datatable.
  */
 function usanetwork_schedule_pull() {

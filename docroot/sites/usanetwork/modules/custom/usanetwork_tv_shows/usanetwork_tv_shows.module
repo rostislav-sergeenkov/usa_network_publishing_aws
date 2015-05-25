@@ -3036,6 +3036,11 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
   $query->addField('th', 'parent', 'parent_tid');
   $query->condition('f.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
   $query->condition('f.published', '1');
+  $query->leftJoin('field_data_field_promo_exclude_from_related', 'promo_exclude_field', 'promo_exclude_field.entity_id=f.fid');
+  $no_promo_exclude_field = db_or();
+  $no_promo_exclude_field->condition('promo_exclude_field.field_promo_exclude_from_related_value', 1, '<>');
+  $no_promo_exclude_field->condition('promo_exclude_field.field_promo_exclude_from_related_value', NULL);
+  $query->condition($no_promo_exclude_field);
   $query->leftJoin('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id=f.fid');
   $query->addField('full_episode', 'field_mpx_full_episode_value', 'is_full');
   $query->orderBy($sort_field, $sort_direction);
@@ -3190,7 +3195,10 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
     $query->leftJoin('field_data_field_usa_video_terms', 't', 'f.fid=t.entity_id');
     $query->addField('t', 'field_usa_video_terms_target_id', 'category_term');
     $query->leftJoin('field_data_field_promo_exclude_from_related', 'promo_exclude_field', 'promo_exclude_field.entity_id=f.fid');
-    $query->condition('promo_exclude_field.field_promo_exclude_from_related_value', 1, '<>');
+    $no_promo_exclude_field = db_or();
+    $no_promo_exclude_field->condition('promo_exclude_field.field_promo_exclude_from_related_value', 1, '<>');
+    $no_promo_exclude_field->condition('promo_exclude_field.field_promo_exclude_from_related_value', NULL);
+    $query->condition($no_promo_exclude_field);
     $query->addField('promo_exclude_field', 'field_promo_exclude_from_related_value', 'exclude');
     $query->leftJoin('field_data_field_promo_created_ovts', 'promo_date_field', 'promo_date_field.entity_id=f.fid');
     $query->addField('promo_date_field', 'field_promo_created_ovts_value', 'overriding_date');
@@ -3323,7 +3331,8 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
   $big_element_index = $is_item_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK - 1);
 
   if (!empty($file->field_promo_image_override)) {
-    $field_image_override = reset(field_get_items('file', $file, 'field_promo_image_override'));
+    $field_image_override = field_get_items('file', $file, 'field_promo_image_override');
+    $field_image_override = reset($field_image_override);
     $image_url = $field_image_override['uri'];
   }
   else {
@@ -3341,8 +3350,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
       $desktop_image = image_style_url('456x372', $image_url);
     }
   }
-  $query_params = drupal_get_query_parameters();
-  $own_promo_lines = !empty($query_params['category']) ? _usanetwork_promo_file_get_promo_lines($file, TRUE) : _usanetwork_promo_file_get_promo_lines($file);
+  $own_promo_lines = _usanetwork_promo_file_get_promo_lines($file);
   $icon_type = usanetwork_core_api_get_media_icon('file', $file->fid);
 
   $theme_variables = array(
@@ -3350,12 +3358,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
     'custom_classes' => NULL,
     'target_url' => url('file/' . $file->fid),
     'media_icon' => !empty($icon_type) ? $icon_type : 'video-icon',
-    'caption' => ($current_item_index == $big_element_index)
-      ? (!empty($own_promo_lines['topic'])
-        ? $own_promo_lines['topic']
-        : ''
-      )
-      : '',
+    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
     'title' => !empty($own_promo_lines['title'])
       ? $own_promo_lines['title']
       : $file->filename,

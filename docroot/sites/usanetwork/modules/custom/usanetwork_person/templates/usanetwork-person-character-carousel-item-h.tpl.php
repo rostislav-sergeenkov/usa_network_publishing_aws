@@ -13,6 +13,7 @@
         <div class="meta-wrapper">
           <div class="meta-back"></div>
           <div class="meta-wrapper-inner">
+            <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
             <div class="meta">
               <?php if (!empty($title)): ?>
                 <div class="title"><?php print $title; ?></div>

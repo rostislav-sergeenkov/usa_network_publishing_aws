@@ -56,6 +56,6 @@
   </div>
   <!-- change link to special photo page for show-->
   <div class="more-items more-photos show-color">
-    <a href="/photos"><?php print t('View all photos'); ?></a>
+    <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
   </div>
 </div>

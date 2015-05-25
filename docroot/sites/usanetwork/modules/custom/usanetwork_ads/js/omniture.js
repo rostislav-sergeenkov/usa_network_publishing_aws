@@ -3,10 +3,10 @@
  */
 (function ($) {
   Drupal.behaviors.omniture_tracking = {
-    omniturePresent: function() {
+    omniturePresent: function () {
       if (typeof s == 'object'
-        && typeof s.tl == 'function'
-        && typeof s.manageVars == 'function') {
+          && typeof s.tl == 'function'
+          && typeof s.manageVars == 'function') {
         return true;
       }
       false;
@@ -19,25 +19,31 @@
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
 
         var $self = elem,
-            menu_name = $self.text();
+            menu_name;
+
+        if ($self.hasClass('logo')) {
+          menu_name = 'Home';
+        } else {
+          menu_name = $self.text();
+        }
 
         if ($self.hasClass('active')) {
           // do not track when closing
           return;
         }
 
-        s.linkTrackVars='events,eVar63';
+        s.linkTrackVars = 'events,eVar63';
         s.linkTrackEvents = s.events = 'event63';
         s.eVar63 = menu_name;
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
-          s.bcf = function() {
-            setTimeout(function() {
+          s.bcf = function () {
+            setTimeout(function () {
               window.location = $self.attr('href');
             }, 500);
           };
         }
-        s.tl(this,'o','Global Menu Click');
+        s.tl(this, 'o', 'Global Menu Click');
         s.manageVars("clearVars", s.linkTrackVars, 1);
       }
     },
@@ -46,46 +52,47 @@
 
       var $self = elem;
 
-      s.linkTrackVars='events,eVar64';
+      s.linkTrackVars = 'events,eVar64';
       s.linkTrackEvents = s.events = 'event64';
       s.eVar64 = name;
-
-      if ($self.attr('href') != '#') {
-        s.bcf = function() {
-          setTimeout(function() {
+      if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
+        s.bcf = function () {
+          setTimeout(function () {
             window.location = $self.attr('href');
           }, 500);
         };
       }
-      s.tl(this,'o','Global SubMenu Click');
+      s.tl(this, 'o', 'Global SubMenu Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
     infiniteScroll: function (counter, event) {
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-        if(event === "click") {
+        if (event === "click") {
 
-          s.linkTrackVars='events,eVar21';
+          s.linkTrackVars = 'events,eVar21';
           s.linkTrackEvents = s.events = 'event4';
           s.eVar21 = "Page " + counter;
 
-          s.tl(this,'o','Infinite Scroll Click Load');
+          s.tl(this, 'o', 'Infinite Scroll Click Load');
           s.manageVars("clearVars", s.linkTrackVars, 1);
 
         } else {
 
-          s.linkTrackVars='events,eVar21';
+          s.linkTrackVars = 'events,eVar21';
           s.linkTrackEvents = s.events = 'event5';
           s.eVar21 = "Page " + counter;
 
-          s.tl(this,'o','Infinite Scroll Auto Load');
+          s.tl(this, 'o', 'Infinite Scroll Auto Load');
           s.manageVars("clearVars", s.linkTrackVars, 1);
         }
       }
     },
 
-    photoGalleries: function () {
+    photoGalleries: function (name) {
       if (typeof s_gi != 'undefined') {
+        s.linkTrackVars = 'events,prop5';
+        s.prop5 = name;
         void (s.t());
       }
     },
@@ -96,35 +103,35 @@
           item_name = '',
           name;
 
-      if($self.hasClass('icon')) {
+      if ($self.hasClass('icon')) {
 
-        name = $self.data('name');
+        name = $self.data('name').trim();
         item_name = name.charAt(0).toUpperCase() + name.substr(1);
 
-      } else if ($self.hasClass('on-now-link') || $self.hasClass('up-next-link') && item_name === ''){
+      } else if ($self.hasClass('on-now-link') || $self.hasClass('up-next-link') && item_name === '') {
 
-        name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text();
+        name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
         item_name = 'Show : ' + name;
 
       } else {
 
-        item_name = $self.text();
+        item_name = $self.text().trim();
 
       }
 
-      s.linkTrackVars='events,eVar65';
+      s.linkTrackVars = 'events,eVar65';
       s.linkTrackEvents = s.events = 'event65';
       s.eVar65 = 'Schedule Bar : ' + item_name;
 
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
-        s.bcf = function() {
-          setTimeout(function() {
+        s.bcf = function () {
+          setTimeout(function () {
             window.location = $self.attr('href');
           }, 500);
         };
       }
 
-      s.tl(this,'o','Schedule Bar Click');
+      s.tl(this, 'o', 'Schedule Bar Click');
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -134,19 +141,19 @@
           social_name = $self.data('name'),
           name = social_name.charAt(0).toUpperCase() + social_name.substr(1);
 
-      s.linkTrackVars='events,eVar74';
+      s.linkTrackVars = 'events,eVar74';
       s.linkTrackEvents = s.events = 'event40';
       s.eVar74 = name;
 
       if ($self.attr('href') != '#') {
-        s.bcf = function() {
-          setTimeout(function() {
+        s.bcf = function () {
+          setTimeout(function () {
             window.location = $self.attr('href');
           }, 500);
         };
       }
 
-      s.tl(this,'o','Social Follow');
+      s.tl(this, 'o', 'Social Follow');
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -155,21 +162,169 @@
       var $self = elem,
           link_name = $self.text();
 
-      s.linkTrackVars='events,eVar63,eVar64';
-      s.linkTrackEvents = s.events = 'event63,event64’';
+      s.linkTrackVars = 'events,eVar63,eVar64';
+      s.linkTrackEvents = s.events = 'event63,event64';
       s.eVar63 = 'Footer';
       s.eVar64 = link_name;
 
       if ($self.attr('href') != '#') {
-        s.bcf = function() {
-          setTimeout(function() {
+        s.bcf = function () {
+          setTimeout(function () {
             window.location = $self.attr('href');
           }, 500);
         };
       }
 
-      s.tl(this,'o','Footer Item Clicked');
+      s.tl(this, 'o', 'Footer Item Clicked');
       s.manageVars("clearVars", s.linkTrackVars, 1);
+    },
+
+    promoClick: function ($self, name, show_name) {
+
+      if (show_name === '') {
+        s.linkTrackVars = 'events,eVar55';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar55 = name;
+      } else {
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = show_name;
+        s.eVar55 = name;
+      }
+
+      if ($self.attr('href') != '#') {
+        s.bcf = function () {
+          setTimeout(function () {
+            window.location = $self.attr('href');
+          }, 500);
+        };
+      }
+
+      s.tl(this, 'o', name + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
+    globalPromoClick: function (self) {
+      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+        var body = $('body'),
+            $self = self,
+            global_show_name = $('header .nav-bar-tabs .show-name').text().trim() || '',
+            show_name,
+            page_name,
+            name;
+
+        // Home page
+        if (body.hasClass('page-home')) {
+          page_name = 'Home Page ';
+          if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
+            name = page_name + 'Shows Carousel';
+          }
+          if ($self.closest('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').length > 0) {
+            name = page_name + 'Full Latest Carousel';
+          }
+          if ($self.closest('.featured-block').length > 0) {
+            name = page_name + 'Featured Carousel';
+          }
+          if ($self.closest('#block-usanetwork-blocks-usanetwork-social-carousel').length > 0) {
+            name = page_name + 'Social Carousel';
+          }
+        }
+
+        // Show page
+        if (body.hasClass('usa-tv-show')) {
+          page_name = 'Show Page ';
+          if ($self.closest('.aspot-and-episodes .episodes-list').length > 0) {
+            name = page_name + 'Latest Full Episodes Block';
+          }
+          if ($self.closest('.best-of-block').length > 0) {
+            name = page_name + $('.best-of-block .section-title').text() + 'Block';
+          }
+          if ($self.closest('.show-latest-block').length > 0) {
+            name = page_name + 'The Latest Block';
+          }
+        }
+
+        // Show videos page
+        if (body.hasClass('page-node-videos')) {
+          page_name = 'Show Videos Page ';
+          if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-vl').length > 0) {
+            name = page_name + 'All Videos Block';
+          }
+        }
+
+        // Full episodes page
+        if (body.hasClass('page-videos')) {
+          page_name = 'Full Episodes Page ';
+          if ($self.closest('.carousel-block').length > 0) {
+            show_name = $self.closest('.carousel-block').find('.description-block .title').text();
+            name = page_name + show_name + ' Carousel';
+          }
+        }
+
+        // Cast page
+        if (body.hasClass('page-node-cast')) {
+          page_name = 'Cast Page ';
+          if ($self.closest('#block-usanetwork-person-usanetwork-person-cast-crew').length > 0) {
+            name = page_name + 'Cast & Crew Block';
+          }
+        }
+
+        // Catchall page
+        if (body.hasClass('node-type-catchall-page')) {
+          page_name = 'Catchall Page ';
+          if ($self.closest('#block-usanetwork-blocks-usanetwork-catchall-related').length > 0) {
+            name = page_name + 'Related Content Block';
+          }
+        }
+
+        // Episode Consumptionator page
+        if (body.hasClass('node-type-tv-episode')) {
+          page_name = 'Episode Consumptionator Page ';
+          if ($self.closest('.consumptionator-episode-main-block .episodes-list-slider').length > 0) {
+            name = page_name + 'Episode Guides Carousel';
+          }
+          if ($self.closest('#block-usanetwork-episodes-usanetwork-episode-rel-content').length > 0) {
+            name = page_name + 'Related Content Block';
+          }
+        }
+
+        // Video Consumptionator page
+        if (body.hasClass('consumptionator-video-page')) {
+          page_name = 'Video Consumptionator Page ';
+          if ($self.closest('.video-block .episodes-list-slider').length > 0) {
+            name = page_name + 'Episodes Carousel';
+          }
+          if ($self.closest('#block-usanetwork-mpx-video-usa-mpx-cons-related').length > 0) {
+            name = page_name + 'Related Content Block';
+          }
+        }
+
+        // Person Consumptionator page
+        if (body.hasClass('node-type-person')) {
+          page_name = 'Person Consumptionator Page ';
+          if ($self.closest('.consumptionator-characters-main-block .episodes-list-slider').length > 0) {
+            name = page_name + 'Character Carousel';
+          }
+          if ($self.closest('#block-usanetwork-person-usa-cons-chars-related-content').length > 0) {
+            name = page_name + 'Related Content Block';
+          }
+        }
+
+        // Media Gallery Consumptionator page
+        if (body.hasClass('node-type-media-gallery')) {
+          page_name = 'Gallery Consumptionator Page ';
+          if ($self.closest('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main .episodes-list-slider').length > 0) {
+            name = page_name + 'Episode Galleries Block';
+          }
+          if ($self.closest('#block-usanetwork-media-gallery-usa-gallery-cons-related').length > 0) {
+            name = page_name + 'Related Content Block';
+          }
+        }
+
+        // init omniture tracking
+        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name);
+      }
     },
 
     attach: function (context, settings) {
@@ -178,11 +333,19 @@
       }
 
       //redesign
+      $('.usa-wrap .node-usanetwork-promo a').once('omniture-tracking', function() {
+        $(this).on('click', function (e) {
+          e.preventDefault();
+          var self = $(this);
+          Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+        });
+      });
+
 
       // Click main menu links
       $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
       '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
-      '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function() {
+      '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function () {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
@@ -191,12 +354,12 @@
         });
       });
 
-      //Click on submenu item
+      // Click on submenu item
       $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
       '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
       '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
       '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
-      '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function() {
+      '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
@@ -204,7 +367,7 @@
             var $self = $(this),
                 sub_menu_name;
 
-            if($self.hasClass('full-episodes-link')) {
+            if ($self.hasClass('full-episodes-link')) {
               sub_menu_name = $self.data('name');
             } else {
               sub_menu_name = $self.text();
@@ -218,8 +381,8 @@
       // Click on submenu schedule items
       $('.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .node-usanetwork-promo a,' +
       '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .on-now-panel-title a,' +
-      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .icons-block a.live-icon,' +
-      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-primetime a.more').once('omniture-tracking', function() {
+      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .icons-block a,' +
+      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-primetime a').once('omniture-tracking', function () {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
@@ -227,10 +390,13 @@
             var $self = $(this),
                 sub_menu_name = '';
 
-            if($self.closest('.on-now-panel-title').length) {
+            if ($self.closest('.on-now-panel-title').length) {
               sub_menu_name = $self.text();
-            } else if($self.closest('.node-usanetwork-promo').length && !$self.hasClass('live-icon') && sub_menu_name === '') {
+            } else if ($self.closest('.node-usanetwork-promo').length && !$self.hasClass('icon') && sub_menu_name === '') {
               sub_menu_name = $self.closest('.node-usanetwork-promo').find('.title-overlay .title').text();
+            } else if ($self.hasClass('icon') && !$self.hasClass('live-icon') && sub_menu_name === '') {
+              var name = $self.data('name');
+              sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
             } else {
               sub_menu_name = $self.text();
             }
@@ -242,7 +408,8 @@
 
       //Click on Social Follow item
       $('#block-usanetwork-home-usanetwork-home-shows-queue .social-follow a,' +
-      'header .show-title-block-wrapper .social-follow a').once('omniture-tracking', function() {
+      'header .show-title-block-wrapper .social-follow a,' +
+      '.footer-social-bar a').once('omniture-tracking', function () {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
@@ -252,8 +419,8 @@
       });
 
       // Gigya share bar
-      $('.field-type-gigya-sharebar').once('omniture-tracking', function() {
-        $(this).on('click', '.gig-share-button', function(e) {
+      $('.field-type-gigya-sharebar').once('omniture-tracking', function () {
+        $(this).on('click', '.gig-share-button', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             var $self = $(this);
             var $container = $self.parents('.gig-button-container');
@@ -275,14 +442,14 @@
             s.linkTrackEvents = s.events = 'event41';
             s.eVar73 = 'example Patrick J. Adams Interview'; //todo add title name
             s.eVar74 = network;
-            s.tl(this,'o','Social Share');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            s.tl(this, 'o', 'Social Share');
+            s.manageVars('clearVars', s.linkTrackVars, 1);
           }
         });
       });
 
       //Click on footer item
-      $('#footer .footer-menu-wrapper a').once('omniture-tracking', function() {
+      $('#footer .footer-menu-wrapper a').once('omniture-tracking', function () {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
@@ -291,11 +458,9 @@
         });
       });
 
-
-
       $(window).load(function () {
         //Click on ON NOW / TONIGHT items
-        $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function() {
+        $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               e.preventDefault();
@@ -308,7 +473,7 @@
       //-------- end --------
 
 
-      function ucfirst(string){
+      function ucfirst(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
 
@@ -321,72 +486,72 @@
       });
 
       //Quizes omniture tracking. Track show Question
-      $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function() {
-        $(this).on('show', function(e) {
+      $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function () {
+        $(this).on('show', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
 
             var quizes = settings.usanetwork_quiz;
             var quiz_setting = quizes[nid];
             var quizShow = quiz_setting['quizShow'],
-            quizTitle = quiz_setting['quizTitle'],
-            quizType = quiz_setting['quizType'];
+                quizTitle = quiz_setting['quizTitle'],
+                quizType = quiz_setting['quizType'];
 
             var quizQuestionNumber = $(this).index() + 1;
             var quizQuestionTitle = $(this).find('.question-title').text();
 
             s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-            s.linkTrackVars='events,prop58,eVar58';
-            s.linkTrackEvents=s.events='event88';
-            s.eVar58=s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
-            s.tl(this,'o','Poll/Question Shown');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            s.linkTrackVars = 'events,prop58,eVar58';
+            s.linkTrackEvents = s.events = 'event88';
+            s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
+            s.tl(this, 'o', 'Poll/Question Shown');
+            s.manageVars('clearVars', s.linkTrackVars, 1);
           }
         });
       });
 
       //Quizes omniture tracking. Track answer Question
-      $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
+      $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function () {
+        $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
 
             var quizes = settings.usanetwork_quiz;
             var quiz_setting = quizes[nid];
             var quizShow = quiz_setting['quizShow'],
-            quizTitle = quiz_setting['quizTitle'],
-            quizType = quiz_setting['quizType'];
+                quizTitle = quiz_setting['quizTitle'],
+                quizType = quiz_setting['quizType'];
 
             var $quizQuestion = $(this).parents('.usanetwork-quiz-question');
             var quizQuestionNumber = $quizQuestion.index() + 1;
             var quizQuestionTitle = $(this).closest('.usanetwork-quiz-question').find('.question-title').text();
             var quizQuestionValue = $(this).attr('value');
 
-            s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question '+quizQuestionNumber;
-            s.linkTrackVars='events,prop58,eVar58';
-            s.linkTrackEvents=s.events='event89';
-            s.eVar58=s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle + ' : Answer : ' + quizQuestionValue;
-            s.tl(this,'o','Poll/Question Answered');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
+            s.linkTrackVars = 'events,prop58,eVar58';
+            s.linkTrackEvents = s.events = 'event89';
+            s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle + ' : Answer : ' + quizQuestionValue;
+            s.tl(this, 'o', 'Poll/Question Answered');
+            s.manageVars('clearVars', s.linkTrackVars, 1);
           }
         });
       });
 
       //Quizes omniture tracking. Track restart button
-      $('.usanetwork-quiz-results input[type="button"]').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
+      $('.usanetwork-quiz-results input[type="button"]').once('omniture-tracking', function () {
+        $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
 
             var quizes = settings.usanetwork_quiz;
             var quiz_setting = quizes[nid];
             var quizShow = quiz_setting['quizShow'],
-            quizTitle = quiz_setting['quizTitle'],
-            quizType = quiz_setting['quizType'];
+                quizTitle = quiz_setting['quizTitle'],
+                quizType = quiz_setting['quizType'];
 
             s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType);
-            s.linkTrackVars='events,eVar65,prop65';
-            s.linkTrackEvents=s.events='event65';
+            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackEvents = s.events = 'event65';
             s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
-            s.tl(this,'o','Restart');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            s.tl(this, 'o', 'Restart');
+            s.manageVars('clearVars', s.linkTrackVars, 1);
           }
         });
       });

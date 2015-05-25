@@ -3521,6 +3521,9 @@ input[type="radio"], input[type="checkbox"] {
 .icons-block a.plus-icon:before {
   content: "\e606";
 }
+.icons-block a.schedule-icon-font:before {
+  content: '\e616';
+}
 
 body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
   content: "\e602";
@@ -5792,6 +5795,61 @@ header .tab-item.active {
   border-top: 1px solid darkgrey;
   display: block;
 }
+header .tab-item .see-all-link {
+  right: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+header .tab-item .see-all-link a {
+  background: #8b8b8c;
+  color: #ffffff;
+  display: block;
+  font-size: 0.97561vw;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 1;
+  padding: 1.26829vw 2.43902vw 1.26829vw 1.46341vw;
+  position: relative;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  header .tab-item .see-all-link a {
+    font-size: 18px;
+    padding: 24px 46px 24px 27px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item .see-all-link a {
+    font-size: 10px;
+    padding: 13px 25px 13px 15px;
+  }
+}
+header .tab-item .see-all-link a:after {
+  content: "\e608";
+  color: #ffffff;
+  font-family: "ico-font";
+  font-size: 0.97561vw;
+  display: block;
+  position: absolute;
+  right: 0.78049vw;
+  top: 50%;
+  margin-top: -0.4878vw;
+  line-height: 1;
+}
+@media (min-width: 1901px) {
+  header .tab-item .see-all-link a:after {
+    font-size: 18px;
+    margin-top: -9px;
+    right: 14.8px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item .see-all-link a:after {
+    font-size: 10px;
+    margin-top: -5px;
+    right: 8px;
+  }
+}
 header .tab-item.shows-tab .show-tab-wrapper {
   margin: 0 auto;
   max-width: 1778px;
@@ -5946,16 +6004,6 @@ header .tab-item.full-episode-tab {
     padding: 24px 30px 50px;
   }
 }
-@media (max-width: 768px) {
-  header .tab-item.full-episode-tab {
-    padding: 20px;
-  }
-}
-@media (max-width: 480px) {
-  header .tab-item.full-episode-tab {
-    padding: 10px;
-  }
-}
 header .tab-item.full-episode-tab .full-episode-tab-wrapper {
   margin: 0 auto;
   max-width: 1779px;
@@ -6002,60 +6050,6 @@ header .tab-item.full-episode-tab .latest-full-episodes .full-episodes-list:afte
   clear: both;
   content: '';
   display: table;
-}
-header .tab-item.full-episode-tab .latest-full-episodes .see-all-link {
-  right: 0;
-  position: absolute;
-  top: 0;
-}
-header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a {
-  background: #8b8b8c;
-  color: #ffffff;
-  display: block;
-  font-size: 0.97561vw;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 1;
-  padding: 1.26829vw 2.43902vw 1.26829vw 1.46341vw;
-  position: relative;
-  text-transform: uppercase;
-}
-@media (min-width: 1901px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a {
-    font-size: 18px;
-    padding: 24px 46px 24px 27px;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a {
-    font-size: 10px;
-    padding: 13px 25px 13px 15px;
-  }
-}
-header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a:after {
-  content: "\e608";
-  color: #ffffff;
-  font-family: "ico-font";
-  font-size: 0.97561vw;
-  display: block;
-  position: absolute;
-  right: 0.78049vw;
-  top: 50%;
-  margin-top: -0.4878vw;
-  line-height: 1;
-}
-@media (min-width: 1901px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a:after {
-    font-size: 18px;
-    margin-top: -9px;
-    right: 14.8px;
-  }
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .see-all-link a:after {
-    font-size: 10px;
-    margin-top: -5px;
-    right: 8px;
-  }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node {
   float: left;
@@ -6187,46 +6181,117 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .m
     line-height: 17px;
   }
 }
+header .tab-item.schedule-tab {
+  padding: 2.34146vw 2.92683vw 4.87805vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab {
+    padding: 48px 53px 96px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab {
+    padding: 24px 30px 50px;
+  }
+}
+header .tab-item.schedule-tab .schedule-tab-wrapper {
+  margin: 0 auto;
+  max-width: 1778px;
+  position: relative;
+  width: 100%;
+}
+header .tab-item.schedule-tab .schedule-tab-wrapper:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+header .tab-item.schedule-tab h2 {
+  color: #adadad;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 1.46341vw;
+  letter-spacing: 2px;
+  margin-bottom: 1.26829vw;
+  padding-top: 3.70732vw;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+    padding-top: 70.5px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab h2 {
+    font-size: 15px;
+    margin-bottom: 13px;
+    padding-top: 38px;
+  }
+}
+header .tab-item.schedule-tab h2 a {
+  color: #adadad;
+}
+header .tab-item.schedule-tab h2 a:hover {
+  color: #adadad;
+}
 header .tab-item.schedule-tab .on-now-panel {
   float: left;
+  margin-right: 4%;
   position: relative;
-  width: 55%;
+  width: 65%;
 }
-header .tab-item.schedule-tab .on-now-panel:before {
-  background: #dcddde;
+header .tab-item.schedule-tab .on-now-panel .on-now-panel-title {
+  position: relative;
+  width: 100%;
+}
+header .tab-item.schedule-tab .on-now-panel .on-now-panel-title:after {
+  clear: both;
   content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  right: 0px;
-  width: 1px;
+  display: table;
 }
 header .tab-item.schedule-tab .on-now-panel .node {
-  margin-top: 40px;
-  padding-bottom: 20px;
   position: relative;
-  width: 80%;
+  width: 100%;
 }
 header .tab-item.schedule-tab .on-now-panel .node:after {
   clear: both;
   content: '';
   display: table;
 }
-header .tab-item.schedule-tab .on-now-panel .node.on-now .on-now-panel-title {
-  top: -40px;
-}
 header .tab-item.schedule-tab .on-now-panel .node.up-next h2 {
   float: left;
-  font-size: 18px;
+  font-family: "texgyrescholabold_italic", Times, serif;
 }
 header .tab-item.schedule-tab .on-now-panel .node .asset-img {
   float: left;
+  height: 7.90244vw;
   overflow: hidden;
-  max-height: 81px;
-  width: 143px;
+  position: relative;
+  width: 13.95122vw;
+}
+header .tab-item.schedule-tab .on-now-panel .node .asset-img img {
+  height: 100%;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .on-now-panel .node .asset-img {
+    height: 150px;
+    width: 265px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .node .asset-img {
+    height: 81px;
+    width: 143px;
+  }
 }
 header .tab-item.schedule-tab .on-now-panel .node > a ~ .meta {
-  margin-left: 155px;
+  margin-left: 15.12195vw;
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .node > a ~ .meta {
+    margin-left: 155px;
+  }
 }
 @media (max-width: 1024px) {
   header .tab-item.schedule-tab .on-now-panel .node > a ~ .icons-block {
@@ -6242,159 +6307,175 @@ header .tab-item.schedule-tab .on-now-panel .node .meta {
 header .tab-item.schedule-tab .on-now-panel .node .meta .title {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 1.46341vw;
   letter-spacing: 1px;
+  line-height: 1.5;
   text-transform: uppercase;
 }
 @media (min-width: 1025px) {
   header .tab-item.schedule-tab .on-now-panel .node .meta .title {
-    padding-right: 70px;
+    padding-right: 16.58537vw;
+  }
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .on-now-panel .node .meta .title {
+    font-size: 28px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .node .meta .title {
+    font-size: 15px;
   }
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta .caption {
   color: #dcddde;
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
+  font-size: 1.26829vw;
   letter-spacing: 1px;
-  line-height: 20px;
+  line-height: 1.5;
   text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .on-now-panel .node .meta .caption {
+    font-size: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .node .meta .caption {
+    font-size: 13px;
+  }
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta .description {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 1.26829vw;
   line-height: 1.3;
 }
-header .tab-item.schedule-tab .on-now-panel .on-now-panel-title {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  left: 0;
-  position: absolute;
-  top: -30px;
-  text-transform: uppercase;
-}
-header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 24px;
-  letter-spacing: 2px;
-}
-@media (min-width: 1601px) {
-  header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
-    font-size: 32px;
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .on-now-panel .node .meta .description {
+    font-size: 24px;
   }
 }
-@media (max-width: 1280px) {
-  header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
-    font-size: 20px;
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .node .meta .description {
+    font-size: 13px;
   }
-}
-header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 a {
-  color: #dcddde;
-}
-header .tab-item.schedule-tab .on-now-panel .on-now-panel-title .episode-airtime {
-  float: left;
-  margin-left: 40px;
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block {
   position: absolute;
-  top: 0px;
-  right: -15%;
+  top: 0;
+  right: 0;
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block {
+    width: 155px;
+    right: 100%;
+    top: 90px;
+  }
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block a {
   color: #ffffff !important;
+  clear: none;
   display: inline-block;
   float: none;
-  vertical-align: top;
+  margin-right: 1.95122vw;
+  vertical-align: middle;
 }
-@media (max-width: 1280px) {
+@media (min-width: 1901px) {
   header .tab-item.schedule-tab .on-now-panel .icons-block a {
-    margin-right: 20px;
+    margin-right: 37px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a {
+    margin-right: 7px;
+  }
+}
+header .tab-item.schedule-tab .on-now-panel .icons-block a:last-child {
+  margin-right: 0;
+}
+header .tab-item.schedule-tab .on-now-panel .icons-block a:before {
+  font-size: 1.46341vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a:before {
+    font-size: 28px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a:before {
+    font-size: 15px;
   }
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon {
-  border: 1px solid #ffffff;
-  border-radius: 4px;
+  background: #8b8b8c;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 0.97561vw;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  letter-spacing: 1.5px;
-  line-height: 22px;
-  padding: 0 4px;
+  line-height: 1;
+  padding: 0.68293vw 2.43902vw 0.68293vw 0.97561vw;
+  position: relative;
   text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon {
+    font-size: 18px;
+    padding: 13px 46px 13px 18px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon {
+    font-size: 10px;
+    padding: 7px 25px 7px 10px;
+  }
+}
+header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon:after {
+  content: "\e608";
+  color: #ffffff;
+  font-family: "ico-font";
+  font-size: 0.97561vw;
+  display: block;
+  position: absolute;
+  right: 0.78049vw;
+  top: 50%;
+  margin-top: -0.4878vw;
+  line-height: 1;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon:after {
+    font-size: 18px;
+    margin-top: -9px;
+    right: 14.8px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .icons-block a.live-icon:after {
+    font-size: 10px;
+    margin-top: -5px;
+    right: 8px;
+  }
 }
 header .tab-item.schedule-tab .primetime-panel {
   float: left;
-  margin-top: 40px;
-  padding-left: 40px;
   position: relative;
-  width: 45%;
-}
-header .tab-item.schedule-tab .primetime-panel:before {
-  background: #dcddde;
-  content: '';
-  display: block;
-  height: 100%;
-  left: -1px;
-  position: absolute;
-  width: 1px;
-}
-header .tab-item.schedule-tab .primetime-panel .more-link {
-  bottom: -40px;
-  right: 0px;
-  padding-right: 20px;
-  position: absolute;
-}
-@media (max-width: 1024px) {
-  header .tab-item.schedule-tab .primetime-panel .more-link {
-    margin-right: 15px;
-  }
-}
-header .tab-item.schedule-tab .primetime-panel .more-link a {
-  color: #ffffff;
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 16px;
-  line-height: 20px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-header .tab-item.schedule-tab .primetime-panel .more-link a:hover {
-  text-decoration: underline;
-}
-header .tab-item.schedule-tab .primetime-panel .more-link a:after {
-  color: #ffffff;
-  content: "\e608";
-  display: block;
-  font-family: "ico-font";
-  font-size: 13px;
-  right: 0;
-  margin-top: -10px;
-  position: absolute;
-  top: 50%;
-}
-header .tab-item.schedule-tab .primetime-panel h2 {
-  color: #dcddde;
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 24px;
-  position: absolute;
-  text-transform: uppercase;
-  top: -40px;
-}
-@media (min-width: 1601px) {
-  header .tab-item.schedule-tab .primetime-panel h2 {
-    font-size: 32px;
-  }
-}
-@media (max-width: 1280px) {
-  header .tab-item.schedule-tab .primetime-panel h2 {
-    font-size: 20px;
-  }
+  width: 31%;
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item {
-  height: 75px;
+  height: 7.5122vw;
   overflow: hidden;
-  padding-left: 20px;
+  padding-left: 1.95122vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item {
+    height: 143px;
+    padding-left: 37px;
+  }
 }
 @media (max-width: 1024px) {
   header .tab-item.schedule-tab .primetime-panel .schedule-item {
     height: 90px;
+    padding-left: 20px;
   }
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item:nth-child(2n-1) {
@@ -6404,15 +6485,21 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item > div {
   float: left;
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block {
-  margin-top: -8px;
+  margin-top: -0.97561vw;
   position: absolute;
-  right: 15px;
+  right: 0.97561vw;
   top: 50%;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block {
+    margin-top: -18px;
+    right: 18.5px;
+  }
 }
 @media (max-width: 1024px) {
   header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block {
-    bottom: 10px;
-    left: 100px;
+    bottom: 5px;
+    left: 70px;
     margin-top: 0px;
     right: auto;
     top: auto;
@@ -6420,46 +6507,126 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block {
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a {
   color: #ffffff !important;
+  margin-right: 1.95122vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a {
+    margin-right: 37px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a {
+    margin-right: 20px;
+  }
+}
+header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:before {
+  font-size: 1.46341vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:before {
+    font-size: 28px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:before {
+    font-size: 15px;
+  }
+}
+header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:last-child {
+  margin-right: 0;
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a.seeit-reminder {
   clear: none;
-  margin: 0;
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .time {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  margin-top: 15px;
+  font-size: 0.97561vw;
+  margin-top: 1.65854vw;
   text-transform: uppercase;
-  width: 80px;
+  width: 4.87805vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .time {
+    font-size: 18px;
+    margin-top: 31.5px;
+    width: 93px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .time {
+    font-size: 10px;
+    margin-top: 17px;
+    width: 50px;
+  }
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .time span {
   display: block;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 1.46341vw;
+  line-height: 1.4;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .time span {
+    font-size: 28px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .time span {
+    font-size: 15px;
+  }
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 1.46341vw;
   line-height: 1.3;
-  margin-top: 20px;
+  margin-top: 1.65854vw;
   text-transform: uppercase;
 }
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info {
+    font-size: 28px;
+    margin-top: 31.5px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info {
+    font-size: 15px;
+    margin-top: 17px;
+    width: calc(100% - 70px);
+  }
+}
 header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info > div {
+  max-width: 15.60976vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-@media (max-width: 1280px) {
+@media (min-width: 1901px) {
   header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info > div {
-    max-width: 180px;
+    max-width: 297px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info > div {
+    max-width: none;
   }
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .episode-title {
   font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 1.26829vw;
   letter-spacing: 1px;
   margin-top: 5px;
+}
+@media (min-width: 1901px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .episode-title {
+    font-size: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .episode-title {
+    font-size: 13px;
+  }
 }
 
 .search-show header .tab-item.active {
@@ -13528,6 +13695,39 @@ footer h2 {
     padding: 56.25vw 0 0;
   }
 }
+.consumptionator-episode-main-block .episode-info-main-block .episode-change-link {
+  bottom: 10px;
+  color: #1e1e1e;
+  display: block;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  position: absolute;
+  text-transform: uppercase;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-change-link:after {
+  color: #1e1e1e;
+  font-family: "ico-font";
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -6px;
+  line-height: 1;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-change-link.previous {
+  left: 20px;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-change-link.previous:after {
+  content: "\e607";
+  left: -15px;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-change-link.next {
+  right: 20px;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-change-link.next:after {
+  content: "\e608";
+  right: -15px;
+}
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block {
   padding: 45px 93px 45px 70px;
 }
@@ -13701,9 +13901,6 @@ footer h2 {
   float: right;
   margin-top: 20px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   text-align: left;
 }
 @media (max-width: 1280px) {
@@ -13737,16 +13934,16 @@ footer h2 {
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
   color: #ffffff;
-  display: inline-block;
+  display: block;
   text-transform: uppercase;
   font-size: 15px;
-  padding: 15px 0 15px calc(14% + 30px);
+  padding: 15px 0 15px 30px;
   position: relative;
   width: 100%;
 }
 @media (min-width: 1901px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .episode-button a {
-    padding: 15px 0 15px calc(14% + 40px);
+    padding: 15px 0 15px 40px;
   }
 }
 @media (max-width: 1280px) {

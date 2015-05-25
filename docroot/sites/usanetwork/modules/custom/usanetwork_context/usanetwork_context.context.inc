@@ -223,6 +223,11 @@ function usanetwork_context_context_default_contexts() {
         'term_form' => '1',
       ),
     ),
+    'user' => array(
+      'values' => array(
+        'anonymous user' => 'anonymous user',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(

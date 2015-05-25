@@ -827,7 +827,7 @@ function _usanetwork_menu_full_episodes_block() {
     $items_variables = array(
       'url' => url('file/' . $episode->fid),
       'logo' => isset($logo) ? $logo_image : NULL,
-      'additional' => t('Seas@season Episode @episode_number', array(
+      'additional' => t('Season @season Episode @episode_number', array(
         '@season' => $episode_season,
         '@episode_number' => $episode_number
        )),

@@ -3646,12 +3646,6 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   max-width: 970px;
 }
 
-header .tab-content .full-episode-tab-wrapper .sponsored {
-  right: 0;
-  position: absolute;
-  top: 0;
-}
-
 .page-file header .header-nav-bar .nav-bar-tabs .sponsored {
   display: table;
   float: left;
@@ -6074,6 +6068,23 @@ header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(3), head
     height: 322.7px;
   }
 }
+header .tab-item.full-episode-tab .latest-full-episodes .node:not(.sponsored-enable) a:hover .meta-wrapper .meta {
+  display: block;
+  margin-top: -2.14634vw;
+  max-width: none;
+  position: absolute;
+  top: 50%;
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node:not(.sponsored-enable) a:hover .meta-wrapper .meta {
+    margin-top: -22px;
+  }
+}
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node:not(.sponsored-enable) a:hover .meta-wrapper .meta {
+    margin-top: -40.5px;
+  }
+}
 header .tab-item.full-episode-tab .latest-full-episodes .node a {
   color: #ffffff;
   display: block;
@@ -6085,24 +6096,10 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a {
 header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .asset-img {
   opacity: 1;
 }
-header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta {
-  display: block;
-  margin-top: -19px;
-  max-width: none;
-  position: absolute;
-  top: 50%;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta {
-    margin-top: -15px;
-  }
-}
-@media (min-width: 1601px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta {
-    margin-top: -22px;
-  }
-}
 header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .meta-icon {
+  display: block;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .sponsored {
   display: block;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .additional {
@@ -6141,44 +6138,80 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .m
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
   display: none;
-  height: 37px;
-  margin: 0 auto 5px;
+  height: 4.29268vw;
+  margin: 0 auto 0.4878vw;
   position: relative;
-  width: 37px;
+  width: 4.29268vw;
 }
 @media (max-width: 1024px) {
   header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
-    height: 26px;
-    width: 26px;
-  }
-}
-@media (min-width: 1601px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
     height: 44px;
+    margin-bottom: 5px;
     width: 44px;
   }
 }
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .meta-icon {
+    height: 81px;
+    margin-bottom: 9.3px;
+    width: 81px;
+  }
+}
 header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .logo {
-  margin: 0 auto;
-  max-width: 60%;
+  height: 3.60976vw;
+  line-height: 1;
+  margin: 0 auto 0.4878vw;
+  position: relative;
+  width: 17.85366vw;
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .logo {
+    height: 37px;
+    margin-bottom: 5px;
+    width: 183px;
+  }
+}
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .logo {
+    height: 68px;
+    margin-bottom: 9.3px;
+    width: 339px;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .logo img {
+  height: 100%;
+  width: 100%;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .sponsored {
+  display: none;
+  margin: 0 auto 0.4878vw;
+}
+@media (max-width: 1024px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .sponsored {
+    display: none !important;
+    margin-bottom: 5px;
+  }
+}
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .sponsored {
+    margin-bottom: 9.3px;
+  }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .additional {
   display: none;
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
+  font-size: 1.07317vw;
   letter-spacing: 1px;
-  line-height: 15px;
+  line-height: 1.3;
 }
 @media (max-width: 1024px) {
   header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .additional {
-    font-size: 9px;
-    line-height: 11px;
+    font-size: 11px;
   }
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   header .tab-item.full-episode-tab .latest-full-episodes .node a .meta-wrapper .meta .additional {
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 21px;
   }
 }
 header .tab-item.schedule-tab {

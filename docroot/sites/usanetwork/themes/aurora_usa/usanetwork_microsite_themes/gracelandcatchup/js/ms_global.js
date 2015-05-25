@@ -173,6 +173,28 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       $('title').text(item + ' | ' + section + ' | ' + basePageName);
     },
 
+    // @TODO: set up Omniture for button clicks
+    setOmnitureButtonClick: function (elem) {
+      var $self = elem,
+          social_name = $self.data('name'),
+          name = social_name.charAt(0).toUpperCase() + social_name.substr(1);
+
+      s.linkTrackVars='events,eVar74';
+      s.linkTrackEvents = s.events = 'event40';
+      s.eVar74 = name;
+
+      if ($self.attr('href') != '#') {
+        s.bcf = function() {
+          setTimeout(function() {
+            window.location = $self.attr('href');
+          }, 500);
+        };
+      }
+
+      s.tl(this,'o','Social Follow');
+      s.manageVars("clearVars", s.linkTrackVars, 1);
+    },
+
     // setOmnitureData
     setOmnitureData: function(anchor, itemTitle) {
       var anchor = anchor || null,
@@ -205,8 +227,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
           pageName = itemTitle + ' | Video | ' + pageName;
           break;
         case 'timeline':
-          // @TODO: DV -- DYNAMICALLY GET THE timelineTitle IN THE LINE BELOW
-          var timelineTitle = 'Graceland Catchup Timeline'; // $('#microsite #timeline').text();
+          var timelineTitle = $('#microsite #timeline #timeline-title').text();
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #timeline .timeline-items .timeline-item.active .timeline-item-details > h2').text();
@@ -394,6 +415,7 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
     sectionScroll: function(anchor, item, itemTitle) {
       item = item || '';
       itemTitle = itemTitle || '';
+usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
       var basePath = Drupal.settings.microsites_settings.base_path,
           anchorItem = $('#nav-' + anchor),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
@@ -414,16 +436,19 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
             break;
           case 'quizzes':
             var quizNodeId = $('#microsite #quizzes #quizzes-nav-list a[href="' + basePath + '/quizzes/' + item + '"]').parent().attr('data-node-id');
+usa_debug('========== calling switchQuizzes(' + quizNodeId + ')');
             Drupal.behaviors.ms_quizzes.switchQuizzes(quizNodeId);
             break;
         }
       }
 
       // now scroll to the next section
-      var siteNavHeight = (anchor != 'home' && anchor != 'videos') ? $('#site-nav').height() : 0,
-          nextSectionElem = document.getElementById(anchor),
+//      var siteNavHeight = (anchor != 'home' && anchor != 'videos') ? $('#site-nav').height() : 0,
+      var nextSectionElem = document.getElementById(anchor),
           nextSectionTop = nextSectionElem.offsetTop; // nextSectionElem.offsetTop - siteNavHeight;
-      $('body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
+usa_debug('====== nextSection: ' + nextSection + ', nextSectionTop: ' + nextSectionTop);
+      $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
+usa_debug('======== microsite animate complete');
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
 
@@ -492,16 +517,20 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
         // initialize clicks in microsite menu
         $('#microsite li.internal a').on('click', function(e){
           e.preventDefault();
+          var $parent = $(this).parent(),
+              anchor = $parent.attr('data-menuanchor');
 
-usa_debug('======== clicked on ' + $(this).parent().attr('id'));
+usa_debug('======== clicked on ' + $parent.attr('id') + ', anchor: ' + anchor);
           if ($('#site-nav-links li').hasClass('disabled')) {
+usa_debug('======== site-nav-links disabled');
             return false;
           }
           else {
+usa_debug('======= disabling site-nav-links li');
             $('#site-nav-links li').addClass('disabled');
           }
 
-          var anchor = $(this).parent().attr('data-menuanchor');
+usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
           Drupal.behaviors.ms_global.sectionScroll(anchor);
           if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });

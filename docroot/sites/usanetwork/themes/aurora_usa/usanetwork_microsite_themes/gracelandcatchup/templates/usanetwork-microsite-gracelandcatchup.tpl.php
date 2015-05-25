@@ -24,6 +24,7 @@
 // @TODO: DV -- SET THE FOLLOWING PATH IN THE MODULE FILE AND MAKE IT AVAILABLE
 // TO ALL TEMPLATE FILES
 $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup';
+$timestamp = date("m/d/y",time());
 ?>
 
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
@@ -55,7 +56,13 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gr
         <section id="site-nav-content" class="clearfix">
           <div id="site-nav-left"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
           <div id="site-nav-center">
-            <div id="site-nav-top"><a id="gracelandcu-logo" class="internal" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.svg" alt="Graceland Catchup HQ logo"></a><a id="gracelandcu-sponsor" href=""><img src="<?php print $themePath; ?>/images/graceland-s2catchup-camry-sticky.svg" alt="Sponsored by Toyota"></a></div>
+            <div id="site-nav-top">
+              <a id="gracelandcu-logo" class="internal" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.svg" alt="Graceland Catchup HQ logo"></a>
+              <a id="gracelandcu-sponsor" href="http://ad.doubleclick.net/ddm/jump/N2724.117456.USANETWORK.COM/B8757919.118407814;sz=1x1;ord=<?php print $timestamp; ?>?" target="_blank">
+                <img class="tracking" src="http://ad.doubleclick.net/ddm/ad/N2724.117456.USANETWORK.COM/B8757919.118407814;sz=1x1;ord=<?php print $timestamp; ?>?" border="0" width="1" height="1" alt="Advertisement">
+                <img src="<?php print $themePath; ?>/images/graceland-s2catchup-camry-sticky.svg" alt="Sponsored by Toyota">
+              </a>
+            </div>
             <div id="site-nav-bottom">
               <div id="site-nav-links">
                 <ul id="site-nav-links-list">

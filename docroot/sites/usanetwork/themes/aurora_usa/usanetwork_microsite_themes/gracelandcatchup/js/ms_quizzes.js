@@ -10,6 +10,7 @@
     init300x250Ad: function(nid) {
       var _target = '.ad-container'; // '.dart-name-300x250_ifr_reload';
       mps.insertAd(mps._select(_target),'topbox');
+      mps.refreshAds('topbox');
     },
 
     initGigyaSharebar: function() {

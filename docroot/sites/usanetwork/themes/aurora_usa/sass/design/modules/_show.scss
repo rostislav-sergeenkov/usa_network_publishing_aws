@@ -1116,12 +1116,34 @@
     color: #ffffff;
     float: left;
     font-family: $avalon-medium;
-    font-size: 24px;
+    font-size: get-vw(19px, 1025);
     letter-spacing: 1px;
     line-height: 67px;
-    margin: 0 30px 0 20px;
-    max-width: 260px;
+    margin: 0 get-vw(24px, 1025) 0 20px;
     text-transform: uppercase;
+    @include breakpoint($bp-min-769-width) {
+      max-width: get-vw(190px, 769);
+    }
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 36px;
+      line-height: 100px;
+      margin: 0 44.5px 0 20px;
+      max-width: 470px;
+    }
+    @include breakpoint($bp-1024-width) {
+      line-height: 50px;
+    }
+    @include breakpoint($bp-768-width) {
+      font-size: 14px;
+      margin: 0 20px 0 20px;
+    }
+    @include breakpoint($bp-480-width) {
+      display: table-cell;
+      float: none;
+      line-height: 1;
+      text-align: center;
+      vertical-align: middle;
+    }
     a {
       color: #ffffff;
       font-family: $avalon-demi;
@@ -1131,24 +1153,6 @@
       &:focus {
       outline: none;
       }
-    }
-    @include breakpoint($bp-min-1901-width) {
-      font-size: 36px;
-      line-height: 100px;
-      max-width: 380px;
-    }
-    @include breakpoint($bp-1024-width) {
-      font-size: 18px;
-      line-height: 50px;
-      max-width: 194px;
-    }
-    @include breakpoint($bp-480-width) {
-      display: table-cell;
-      float: none;
-      font-size: 16px;
-      line-height: 1;
-      text-align: center;
-      vertical-align: middle;
     }
   }
   a {
@@ -1161,29 +1165,27 @@
     display: table;
     float: right;
     height: 100%;
-    max-width: 135px;
+    max-width: get-vw(130px, 1025);
     text-align: right;
     @include breakpoint($bp-1024-width) {
-      max-width: 110px;
+      max-width: 130px;
     }
     @include breakpoint($bp-min-1901-width) {
-      max-width: 205px;
+      max-width: 241px;
     }
     .time {
       color: #ffffff;
       display: table-cell;
       font-family: $avalon-medium;
-      font-size: 12px;
-      line-height: 18px;
+      font-size: get-vw(10px, 1025);
+      line-height: 1.5;
       text-transform: uppercase;
       vertical-align: middle;
       @include breakpoint($bp-min-1901-width) {
         font-size: 18px;
-        line-height: 26px;
       }
       @include breakpoint($bp-1024-width) {
         font-size: 10px;
-        line-height: 16px;
       }
       @include breakpoint($bp-768-width) {
         display: none;
@@ -1265,28 +1267,22 @@
 .show-menu-tab {
   float: left;
   height: 100%;
-  max-width: 55%;
+  max-width: 56%;
   position: relative;
-  width: calc(100% - 560px);
-  @include breakpoint($bp-min-1901-width) {
-    width: calc(100% - 650px);
-  }
-  @include breakpoint($bp-1024-width) {
-    width: calc(100% - 448px);
-  }
   @include breakpoint($bp-768-width) {
     display: none;
   }
   .show-menu {
-    display: table;
+    display: block;
     height: 100%;
     position: relative;
     width: 100%;
     > li {
-      display: table-cell;
+      display: block;
+      float: left;
       height: 67px;
       padding: 0;
-      vertical-align: middle;
+      position: relative;
       @include breakpoint($bp-min-1901-width) {
         height: 100px;
       }
@@ -1300,16 +1296,18 @@
         color: #ffffff;
         display: block;
         font-family: $avalon-medium;
-        font-size: 12px;
+        font-size: get-vw(11px, 1025);
         line-height: 67px;
         height: 67px;
+        padding: 0 get-vw(24px, 1025);
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
-          font-size: 20px;
-          line-height: 100px;
+          font-size: 21px;
           height: 100px;
+          line-height: 100px;
+          padding: 0 44.5px;
         }
         @include breakpoint($bp-1024-width) {
           height: 50px;

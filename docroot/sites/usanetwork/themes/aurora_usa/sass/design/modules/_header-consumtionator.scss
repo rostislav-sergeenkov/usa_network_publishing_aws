@@ -76,7 +76,7 @@
             color: #ffffff;
             display: block;
             font-family: $avalon-medium;
-            font-size: 20px;
+            font-size: get-vw(13px, 1025);
             height: auto;
             margin: 0 auto;
             line-height: 90px;
@@ -89,11 +89,11 @@
               font-family: $avalon-medium;
             }
             @include breakpoint($bp-min-1901-width) {
-              font-size: 40px;
+              font-size: 24px;
               line-height: 135px;
             }
             @include breakpoint($bp-1024-width) {
-              font-size: 16px;
+              font-size: 13px;
               line-height: 72px;
             }
             @include breakpoint($bp-768-width) {

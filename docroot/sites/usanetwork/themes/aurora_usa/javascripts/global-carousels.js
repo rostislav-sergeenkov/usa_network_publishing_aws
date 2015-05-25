@@ -124,6 +124,8 @@
                       }
                     }
                   },
+                  swipeUp: function(e) {},
+                  swipeDown: function(e) {},
                   tap: function (event, target) {
                     var click_on_opened = $(target).closest('li.active').length > 0;
                     var tapHandler = function() {

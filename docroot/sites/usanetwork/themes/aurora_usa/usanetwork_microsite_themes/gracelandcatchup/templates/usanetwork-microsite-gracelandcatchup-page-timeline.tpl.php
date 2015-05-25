@@ -4,7 +4,8 @@
  *
  * Variables:
  * - $section_title - the title of the section
- * - $content - the URL of page background
+ * - $description - the description for this section
+ * - $gallery_title - the title of the timeline gallery
  * - $content - the URL of page background
  */
 ?>
@@ -19,8 +20,12 @@
   <div class="section-description"><?php print $description; ?></div>
 <?php endif; ?>
 
-<?php
+<?php if (!empty($gallery_title)): ?>
+  <div id="timeline-title"><?php print $gallery_title; ?></div>
+<?php endif; ?>
+
+<?php if (!empty($content)):
   print $content;
-?>
+endif; ?>
 
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_timeline"></div>

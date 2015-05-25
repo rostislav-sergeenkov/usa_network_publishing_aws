@@ -16,6 +16,7 @@
  * -  - $people[n]['role'] - role of the person
  * -  - $people[n]['character_bio_summary'] - Summary of the character bio
  * -  - $people[n]['character_bio'] - character bio
+ * -  - $people[n]['actor_bio'] - actor bio
  * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
  * -  - $people[n]['preview_image_url'] - Image preview for a hover action.
  * -  - $people[n]['cover_image_url'] - Cover image.
@@ -41,21 +42,15 @@
   <div id="character-nav">
     <ul>
       <?php foreach ($people as $person): ?>
-<!--
-      <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>" data-id="<?php if(!empty($person['id'])) print $person['id']; ?>">
--->
       <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="" data-id="<?php if(!empty($person['id'])) print $person['id']; ?>">
         <div class="character-nav-link"></div>
         <div class="tooltip">
-          <?php /* if(!empty($person['preview_image_url'])): ?>
-          <img src="<?php if(!empty($person['preview_image_url'])) print $person['preview_image_url']; ?>">
-          <?php endif; */ ?>
           <?php if(!empty($person['cover_image_url'])): ?>
           <img src="<?php if(!empty($person['cover_image_url'])) print $person['cover_image_url']; ?>">
           <?php endif; ?>
           <div class="caption">
             <div>
-              <span class="person-name"><?php /* if(!empty($person['title'])) print $person['title']; */ ?><?php if(!empty($person['role'])) print $person['role']; ?></span>
+              <span class="person-name"><?php if(!empty($person['role'])) print $person['role']; ?></span>
               <span class="agency"></span>
             </div>
             <div class="role"></div>
@@ -99,9 +94,6 @@
               </div>
             </div>
           <?php endif; ?>
-          <?php /* if (!empty($person['preview_image_url'])): ?>
-          <img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['preview_image_url']; ?>" align="left">
-          <?php endif; */ ?>
           <div class="character-bios-container clearfix">
           <?php if (!empty($person['description'])): ?>
             <div class="text actor active clearfix">

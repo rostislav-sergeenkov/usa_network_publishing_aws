@@ -321,7 +321,7 @@ header {
         cursor: pointer;
         display: block;
         font-family: $avalon-medium;
-        font-size: 15px;
+        font-size: get-vw(13px, 1025);
         height: 100%;
         line-height: 90px;
         letter-spacing: 0.5px;
@@ -329,11 +329,12 @@ header {
         text-decoration: none;
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
-          font-size: 40px;
+          font-size: 24px;
           line-height: 135px;
           padding: 0 30px;
         }
         @include breakpoint($bp-1024-width) {
+          font-size: 13px;
           line-height: 50px;
         }
         &.active {

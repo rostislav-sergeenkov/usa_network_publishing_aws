@@ -52,18 +52,18 @@
 
     // Init all vertical carousels
     initVSliders: function() {
-      var calculateItems = function(slider) {
+      var calculateItems = function(slider, $context) {
         var current_top_slide = slider.getCurrentSlide() + 1,
-            container_h = $(this).height(),
-            slide_h = $(this).find('.slide-item').height(),
+            container_h = $context.height(),
+            slide_h = $context.find('.slide-item').height(),
             visible_slides = Math.floor(container_h / slide_h),
             shift_last = slide_h - (container_h - (slide_h * visible_slides));
 
         if (!slider.end) {
-          if ((slider.getSlideCount() - current_top_slide <= 2)) {
+          if ((slider.getSlideCount() - current_top_slide <= visible_slides)) {
             slider.end = true;
 
-            $(this).animate({
+            $context.animate({
               'top': '-=' + shift_last
             }, 300);
           } else {
@@ -78,28 +78,29 @@
         slider.end = false;
         Drupal.behaviors.bxslider_carousels.varray.push(slider);
 
+        $(this).mousewheel(function(e) {
+          e.preventDefault();
+
+          if (e.deltaY < 0) {
+            calculateItems(slider, $(this));
+          } else {
+            $(this).css('top', 0);
+            slider.goToPrevSlide();
+            slider.end = false;
+          }
+        });
+
         $(this).swipe({
           swipeUp: function() {
-            calculateItems(slider);
+            calculateItems(slider, $(this));
           },
           swipeDown: function() {
+            $(this).css('top', 0);
             slider.goToPrevSlide();
             slider.end = false;
           },
           threshold: 0,
           excludedElements: 'button, input, select, textarea, .noSwipe'
-        });
-
-        $(this).mousewheel(function(e) {
-          console.log(e);
-          e.preventDefault();
-
-          if (e.deltaY < 0) {
-            calculateItems(slider);
-          } else {
-            slider.goToPrevSlide();
-            slider.end = false;
-          }
         });
       });
     },

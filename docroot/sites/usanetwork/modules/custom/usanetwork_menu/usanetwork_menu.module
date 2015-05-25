@@ -992,6 +992,10 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
     if (!empty($node->field_usa_og_image)) {
       $image = $entity_wrapper->field_usa_og_image->value();
     }
+    if (!empty($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this gallery');
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
@@ -1001,6 +1005,7 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() : '',
+        'sharebar' => !empty($sharebar) ? render($sharebar) : '',
       ),
     );
     return theme('usanetwork_menu_consumptionator_catchall', $theme_variables);

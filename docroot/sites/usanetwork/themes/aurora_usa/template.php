@@ -157,7 +157,6 @@ function aurora_usa_preprocess_page(&$vars) {
     $vars['page']['catchall_seo_title'] = $node->title;
   }
   if ($node && $node->type == "media_gallery") {
-    drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
   if(!empty($node) && $node->type == 'tv_episode') {

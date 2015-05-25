@@ -398,6 +398,14 @@ function usanetwork_menu_image_default_styles() {
     'label' => '633x356',
     'effects' => array(
       array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 633,
+          'height' => 356,
+        ),
+        'weight' => 0,
+      ),
+      array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -669,10 +677,16 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
     $theme_variables = array();
 
     if (!empty($data['now'])) {
+      $image_url = _usanetwork_tv_schedule_get_schedule_item_image($data['now']);
+
+      if (empty($image_url)) {
+        $image_url = _usanetwork_menu_show_menu_get_image_preview_url($data['now']->nid);
+      }
+
       $theme_variables['on_now'] = array(
-        'image' => !empty($data['now']->nid)
+        'image' => !empty($image_url)
             ? theme('image', array(
-              'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['now']->nid),
+              'path' => $image_url,
               'attributes' => array(
                 'class' => array(
                   'running-now-show-preview-image'
@@ -692,7 +706,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'node_url' => !empty($data['now']->nid)
             ? (url('node/' . $data['now']->nid))
             : '',
-        'syndicated_url' => _usanetwork_menu_get_reminder_url($data['now']->nid),
+        'syndicated_url' => ($data['now']->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($data['now']->nid) : '',
         'episode_full_url' => url('schedule', array('query' => array('guid' => $data['now']->guid))),
         'show_class' => !empty($data['now']->nid)
             ? usanetwork_tv_shows_color_show_css_class($data['now']->nid)
@@ -700,10 +714,16 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
       );
     }
     if (!empty($data['next'])) {
+      $image_url = _usanetwork_tv_schedule_get_schedule_item_image($data['next']);
+
+      if (empty($image_url)) {
+        $image_url = _usanetwork_menu_show_menu_get_image_preview_url($data['next']->nid);
+      }
+
       $theme_variables['up_next'] = array(
         'image' => !empty($data['next']->nid)
             ? theme('image', array(
-              'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['next']->nid),
+              'path' => $image_url,
               'attributes' => array(
                 'class' => array(
                   'running-next-show-preview-image'
@@ -729,7 +749,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'node_url' => !empty($data['next']->nid)
             ? (url('node/' . $data['next']->nid))
             : '',
-        'syndicated_url' => _usanetwork_menu_get_reminder_url($data['next']->nid),
+        'syndicated_url' => ($data['next']->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($data['next']->nid) : '',
         'episode_full_url' => url('schedule', array('query' => array('guid' => $data['next']->guid))),
         'show_class' => !empty($data['next']->nid)
             ? usanetwork_tv_shows_color_show_css_class($data['next']->nid)
@@ -805,7 +825,7 @@ function _usanetwork_menu_full_episodes_block() {
     $items_variables = array(
       'url' => url('file/' . $episode->fid),
       'logo' => isset($logo) ? $logo_image : NULL,
-      'additional' => t('S@season Episode @episode_number', array(
+      'additional' => t('Season @season Episode @episode_number', array(
         '@season' => $episode_season,
         '@episode_number' => $episode_number
        )),
@@ -975,7 +995,7 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'catchall_name' => $node->title,
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() : '',
@@ -1024,7 +1044,7 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'gallery_name' => !empty($node->title) ? $node->title : '',
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
         'sharebar' => !empty($sharebar) ? render($sharebar) : '',
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
@@ -1074,7 +1094,7 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'episode_name' => !empty($node->title) ? $node->title : '',
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : $node->title,
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
         'sharebar' => !empty($sharebar) ? render($sharebar) : '',
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
@@ -1115,7 +1135,7 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'person_name' => !empty($node->title) ? $node->title : '',
-      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : 'Character bio: <span>'.$node->title.'</span>',
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
@@ -1243,11 +1263,8 @@ function _usanetwork_menu_render_live_video_header_ajax($offset) {
       'show_url' => !empty($on_now_item->nid)
         ? url('node/' . $on_now_item->nid)
         : url('<front>'),
-      'show_name' => !empty($on_now_item->database_show_title)
-        ? $on_now_item->database_show_title
-        : (!empty($on_now_item->show_title)
-          ? $on_now_item->show_title
-          : t('USA Movie')),
+      'show_name' => ($on_now_item->program_type == 'movie') ? t('USA Movie') :
+          (!empty($on_now_item->show_title) ? $on_now_item->show_title : ''),
       'episode' => array(
         'image_url' => !empty($image_url)
           ? image_style_url('300x250', $image_url)
@@ -1289,7 +1306,14 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/jstz-1.0.4.min.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.live_video_header.js');
-
+  drupal_add_js(
+    array(
+      'usanetwork_menu' => array(
+        'usa_live_tv_img' => file_create_url('sites/usanetwork/themes/aurora_usa/images/usa_liveTV.jpg'),
+      )
+    ),
+    'setting'
+  );
   $menu_items = _usa_auth_prepare_menu_items();
   $auth_links = array(
     '#theme' => 'item_list',
@@ -1358,7 +1382,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'show_title' => ($on_now->program_type == 'movie') ? t('USA Movie') :
           (!empty($on_now->show_title) ? $on_now->show_title : ''),
       'episode_title' => $on_now->title,
-      'syndicated_url' => _usanetwork_menu_get_reminder_url($on_now->nid),
+      'syndicated_url' => ($on_now->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($on_now->nid) : '',
       'episode_full_url' => url('schedule', array('query' => array('guid' => $on_now->guid))),
       'episode_class' => !empty($on_now->nid)
         ? usanetwork_tv_shows_color_show_css_class($on_now->nid) . ' show-color-border'
@@ -1380,7 +1404,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'episode_title' => $up_next->title,
       'time' => date('g:i', $up_next->start_time),
       'day_part' => date('A', $up_next->start_time),
-      'syndicated_url' => _usanetwork_menu_get_reminder_url($up_next->nid),
+      'syndicated_url' => ($up_next->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($up_next->nid) : '',
       'episode_full_url' => url('schedule', array('query' => array('guid' => $up_next->guid))),
       'episode_class' => !empty($up_next->nid)
         ? usanetwork_tv_shows_color_show_css_class($up_next->nid) . ' show-color-border'
@@ -1396,7 +1420,7 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
             (!empty($tonight_item->show_title) ? $tonight_item->show_title : ''),
         'time' => date('g:i', $tonight_item->start_time),
         'day_part' => date('A', $tonight_item->start_time),
-        'syndicated_url' => _usanetwork_menu_get_reminder_url($tonight_item->nid),
+        'syndicated_url' => ($tonight_item->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($tonight_item->nid) : '',
         'episode_full_url' => url('schedule', array('query' => array('guid' => $tonight_item->guid))),
         'episode_class' => !empty($tonight_item->nid)
           ? usanetwork_tv_shows_color_show_css_class($tonight_item->nid) . ' show-color-border'

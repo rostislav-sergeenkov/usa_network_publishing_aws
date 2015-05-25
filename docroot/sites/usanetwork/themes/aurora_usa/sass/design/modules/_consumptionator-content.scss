@@ -136,7 +136,7 @@
     }
     h2 {
       color: #ffffff;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 15px;
       margin: 0;
       text-transform: uppercase;
@@ -154,6 +154,7 @@
       }
       @include breakpoint($bp-480-width) {
         font-size: 20px;
+        width: 90%;
       }
     }
   }
@@ -201,7 +202,7 @@
           top: 50%;
           width: 75px;
           &.active {
-            border-left: 7px solid;
+            border-left: 3px solid;
           }
           @include breakpoint($bp-min-1901-width) {
             height: 74px;
@@ -336,13 +337,16 @@
         @include breakpoint($bp-min-641-width) {
           height: 100%!important;
         }
+        @include breakpoint($bp-640-width) {
+          width: 100%;
+        }
       }
       li {
         float: left;
         margin-right: 2px;
         position: relative;
         height: 100%;
-        width: 33%;
+        width: 33vw;
         @extend %aspot-carousel-promo;
         @include breakpoint($bp-640-width) {
           float: none;
@@ -351,16 +355,19 @@
         }
       }
       .node {
+        height: 100%;
+        position: relative;
+        width: 100%;
         &.active {
           &:before {
-            border-left: 7px solid;
+            border-left: 3px solid;
             content: '';
             display: block;
             height: 100%;
             left: 0;
             position: absolute;
             top: 0;
-            width: 7px;
+            width: 0px;
             z-index: 2;
           }
         }
@@ -445,7 +452,7 @@
     & a {
       color: #ffffff;
       display: block;
-      font-family: $avalon-demi;
+      font-family: $avalon-medium;
       font-size: 15px;
       letter-spacing: 1px;
       line-height: 40px;

@@ -21,14 +21,14 @@ function usanetwork_showpages_menu() {
     'type' => MENU_CALLBACK,
   );
   // tv show episodes landing page
-  $items['node/%node/episodes'] = array(
+  /*$items['node/%node/episodes'] = array(
     'title' => t('Episodes'),
     'page callback' => 'usanetwork_showpages_episodes',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_showpages_menu_access',
     'access arguments' => array(1),
     'type' => MENU_CALLBACK,
-  );
+  );*/
   // tv show cast landing page
   $items['node/%node/cast'] = array(
     'title' => t('Cast'),
@@ -634,6 +634,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         // quiz_TITLE | Quizzes | SHOW_NAME | SITE_TITLE
         case 'quizzes':
           $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          break;
+        // cast_summy
+        case 'cast':
           break;
         // Show Landing Page
         case '':

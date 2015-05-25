@@ -24,7 +24,7 @@ function usanetwork_umbel_menu() {
  */
 function usanetwork_umbel_page_alter(&$page) {
   if (!path_is_admin(current_path())) {
-  
+
 // initiating umbel
     $footer = "<script type=\"text/javascript\">
 window._umbel = window._umbel || [];
@@ -36,13 +36,13 @@ window._umbel = window._umbel || [];
 </script>";
 // set variables from page
     $footer .= '<script type="text/javascript">
-var umbel_parametr;
+var umbel_parameter;
 if (typeof umbel != \'undefined\') {
-  umbel_parametr = umbel;
+  umbel_parameter = umbel;
 } else {
-  umbel_parametr = s.pageName;
+  umbel_parameter = s.pageName;
 }
-_umbel.push({"type":"send","name":"action.tag","value": [s.prop10, s.prop4, umbel_parametr]}); 
+_umbel.push({"type":"send","name":"action.tag","value": [s.prop10, s.prop4, umbel_parameter]});
 </script>';
 
     $page['page_bottom']['umbel'] =  array(

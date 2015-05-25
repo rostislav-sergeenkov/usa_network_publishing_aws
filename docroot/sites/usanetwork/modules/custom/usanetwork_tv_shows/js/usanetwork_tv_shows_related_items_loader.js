@@ -26,6 +26,9 @@
           case 'characters-consumptionator':
             service_name = 'usanetwork-characters';
             break;
+          case 'episode-consumptionator':
+            service_name = 'usanetwork-tv-episode';
+            break;
           case 'videos-landing':
             service_name = 'videos-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'

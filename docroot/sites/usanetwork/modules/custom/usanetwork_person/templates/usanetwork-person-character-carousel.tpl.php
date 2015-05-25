@@ -27,6 +27,7 @@
     <a href="javascript:void(0)" class="jcarousel-control-prev"></a>
     <a href="javascript:void(0)" class="jcarousel-control-next"></a>
   </div>
+</div>
 <?php endif; ?>
 
 

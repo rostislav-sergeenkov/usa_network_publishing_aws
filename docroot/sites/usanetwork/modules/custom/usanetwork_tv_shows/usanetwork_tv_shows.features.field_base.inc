@@ -2004,6 +2004,40 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_tve_preview_episode'
+  $field_bases['field_tve_preview_episode'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tve_preview_episode',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'views',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => 'entityreference_2',
+          'view_name' => 'related_show_video_autocomplete',
+        ),
+      ),
+      'target_type' => 'file',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_tvs_about'
   $field_bases['field_tvs_about'] = array(
     'active' => 1,

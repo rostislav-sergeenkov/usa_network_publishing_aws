@@ -97,6 +97,31 @@
     content: '\e60d';
   }
 }*/
+.font-icon {
+  background: #ffffff;
+  border-radius: 50%;
+  height: 37px;
+  margin-top: -19px;
+  position: absolute;
+  top: 50%;
+  width: 37px;
+  &:before {
+    font-family: $ico-font;
+    font-size: 20px;
+    line-height: 37px;
+    height: 37px;
+    margin-top: -10px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 37px;
+  }
+  &.video-font-icon {
+    &:before {
+      content: '\e60f';
+    }
+  }
+}
 .social-usa {
   &:after {
     bottom: 8%;
@@ -213,75 +238,77 @@
   }
 }
 
-.field-type-gigya-sharebar {
-  .gig-button-container {
-    &.gig-button-container-facebook {
-      td {
-        > div {
-          &:before {
-            content: "\e602";
-            color: $consum-carousel-text;
+body:not(.blog) {
+  .field-type-gigya-sharebar {
+    .gig-button-container {
+      &.gig-button-container-facebook {
+        td {
+          > div {
+            &:before {
+              content: "\e602";
+              color: $consum-carousel-text;
+            }
           }
         }
       }
-    }
-    td {
-      > div {
-        background-image: none !important;
-        display: block;
-        font-family: "ico-font";
-        font-size: 32px;
-        @include breakpoint ($bp-768-width) {
-          font-size: 26px;
-        }
-      }
-    }
-    &.gig-button-container-facebook {
       td {
         > div {
-          &:before {
-            content: "\e602";
-            color: $consum-carousel-text;
+          background-image: none !important;
+          display: block;
+          font-family: "ico-font";
+          font-size: 32px;
+          @include breakpoint ($bp-1024-width) {
+            font-size: 26px;
           }
         }
       }
-    }
-    &.gig-button-container-twitter {
-      td {
-        > div {
-          &:before {
-            content: "\e603";
-            color: $consum-carousel-text;
+      &.gig-button-container-facebook {
+        td {
+          > div {
+            &:before {
+              content: "\e602";
+              color: $consum-carousel-text;
+            }
           }
         }
       }
-    }
-    &.gig-button-container-tumblr {
-      td {
-        > div {
-          &:before {
-            content: "\e604";
-            color: $consum-carousel-text;
+      &.gig-button-container-twitter {
+        td {
+          > div {
+            &:before {
+              content: "\e603";
+              color: $consum-carousel-text;
+            }
           }
         }
       }
-    }
-    &.gig-button-container-pinterest {
-      td {
-        > div {
-          &:before {
-            content: "\e605";
-            color: $consum-carousel-text;
+      &.gig-button-container-tumblr {
+        td {
+          > div {
+            &:before {
+              content: "\e604";
+              color: $consum-carousel-text;
+            }
           }
         }
       }
-    }
-    &.gig-button-container-share {
-      td {
-        > div {
-          &:before {
-            content: "\e606";
-            color: $consum-carousel-text;
+      &.gig-button-container-pinterest {
+        td {
+          > div {
+            &:before {
+              content: "\e605";
+              color: $consum-carousel-text;
+            }
+          }
+        }
+      }
+      &.gig-button-container-share {
+        td {
+          > div {
+            &:before {
+              content: "\e606";
+              color: $consum-carousel-text;
+            }
           }
         }
       }

@@ -914,6 +914,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
             'video_title' => $video->title,
             'video_additional' => t('S@season episode @episode', array('@season' => $video->field_mpx_season_number_value, '@episode' => $video->field_mpx_episode_number_value)),
             'video_image' => $video_image,
+            'icon_type' => usanetwork_core_api_get_media_icon('file', $video->fid),
           );
           $carousel_items .= theme('usanetwork_mpx_video_show_full_episode_item', $theme_item_variables);
 
@@ -2045,6 +2046,8 @@ function usanetwork_mpx_video_usa_omniture_alter(&$omniture_variables, $context)
     list($entity_id,, $bundle) = entity_extract_ids($entity_type, $entity);
     if ($entity_type == 'file' && in_array($bundle, _usanetwork_mpx_video_get_all_file_types())) {
       $video_variables = _usanetwork_mpx_video_file_omniture($entity, $entity_type);
+    } else if ($entity_type == 'node') {
+      $video_variables['umbel'] = $entity->title;
     }
   }
   else if ($context['menu_item']['path'] == 'videos') {
@@ -2095,6 +2098,7 @@ function _usanetwork_mpx_video_file_omniture($entity, $entity_type){
     else {
       $video_variables['s.prop5'] = "Video : Short Form";
     }
+    $video_variables['umbel'] = $entity->filename;
   }
 
   return $video_variables;
@@ -2638,6 +2642,7 @@ function _usa_mpx_video_clips_render() {
              'description' => !empty($promo_data['description']) ? $promo_data['description'] :
                  (!empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : ''),
              'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
+             'icon_type' => usanetwork_core_api_get_media_icon('file', $related_video_file->fid),
            );
          }
        }

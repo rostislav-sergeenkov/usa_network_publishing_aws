@@ -19,7 +19,13 @@
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
 
         var $self = elem,
-            menu_name = $self.text();
+            menu_name;
+
+        if($self.hasClass('logo')) {
+          menu_name = 'Home';
+        } else {
+          menu_name = $self.text();
+        }
 
         if ($self.hasClass('active')) {
           // do not track when closing
@@ -49,8 +55,7 @@
       s.linkTrackVars='events,eVar64';
       s.linkTrackEvents = s.events = 'event64';
       s.eVar64 = name;
-
-      if ($self.attr('href') != '#') {
+      if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
         s.bcf = function() {
           setTimeout(function() {
             window.location = $self.attr('href');
@@ -84,8 +89,10 @@
       }
     },
 
-    photoGalleries: function () {
+    photoGalleries: function (name) {
       if (typeof s_gi != 'undefined') {
+        s.linkTrackVars = 'events,prop5';
+        s.prop5 = name;
         void (s.t());
       }
     },
@@ -98,17 +105,17 @@
 
       if($self.hasClass('icon')) {
 
-        name = $self.data('name');
+        name = $self.data('name').trim();
         item_name = name.charAt(0).toUpperCase() + name.substr(1);
 
       } else if ($self.hasClass('on-now-link') || $self.hasClass('up-next-link') && item_name === ''){
 
-        name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text();
+        name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
         item_name = 'Show : ' + name;
 
       } else {
 
-        item_name = $self.text();
+        item_name = $self.text().trim();
 
       }
 
@@ -156,7 +163,7 @@
           link_name = $self.text();
 
       s.linkTrackVars='events,eVar63,eVar64';
-      s.linkTrackEvents = s.events = 'event63,event64’';
+      s.linkTrackEvents = s.events = 'event63,event64';
       s.eVar63 = 'Footer';
       s.eVar64 = link_name;
 
@@ -218,8 +225,8 @@
       // Click on submenu schedule items
       $('.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .node-usanetwork-promo a,' +
       '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .on-now-panel-title a,' +
-      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .icons-block a.live-icon,' +
-      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-primetime a.more').once('omniture-tracking', function() {
+      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .icons-block a,' +
+      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-primetime a').once('omniture-tracking', function() {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
@@ -229,8 +236,11 @@
 
             if($self.closest('.on-now-panel-title').length) {
               sub_menu_name = $self.text();
-            } else if($self.closest('.node-usanetwork-promo').length && !$self.hasClass('live-icon') && sub_menu_name === '') {
+            } else if($self.closest('.node-usanetwork-promo').length && !$self.hasClass('icon') && sub_menu_name === '') {
               sub_menu_name = $self.closest('.node-usanetwork-promo').find('.title-overlay .title').text();
+            } else if($self.hasClass('icon') && !$self.hasClass('live-icon') && sub_menu_name === '') {
+              var name = $self.data('name');
+              sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
             } else {
               sub_menu_name = $self.text();
             }
@@ -242,7 +252,8 @@
 
       //Click on Social Follow item
       $('#block-usanetwork-home-usanetwork-home-shows-queue .social-follow a,' +
-      'header .show-title-block-wrapper .social-follow a').once('omniture-tracking', function() {
+      'header .show-title-block-wrapper .social-follow a,' +
+      '.footer-social-bar a').once('omniture-tracking', function() {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();

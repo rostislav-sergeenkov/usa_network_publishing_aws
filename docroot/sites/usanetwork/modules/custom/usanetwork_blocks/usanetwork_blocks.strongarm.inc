@@ -15,9 +15,9 @@ function usanetwork_blocks_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_links';
   $strongarm->value = '<div class="footer-social-bar">
-<a class="facebook" href="https://www.facebook.com/USANetwork"></a>
-<a class="twitter" href="https://twitter.com/usa_network"></a>
-<a class="instagram" href="http://instagram.com/USANetwork"></a>
+<a class="facebook" data-name="facebook" href="https://www.facebook.com/USANetwork"></a>
+<a class="twitter" data-name="twitter" href="https://twitter.com/usa_network"></a>
+<a class="instagram" data-name="instagram" href="http://instagram.com/USANetwork"></a>
 </div>';
   $export['usanetwork_social_links'] = $strongarm;
 

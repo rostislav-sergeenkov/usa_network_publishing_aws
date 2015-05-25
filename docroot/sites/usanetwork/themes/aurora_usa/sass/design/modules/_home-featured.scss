@@ -1,7 +1,7 @@
 .featured-block {
   background: $poll-back;
   overflow: hidden;
-  padding: 40px 0px;
+  padding: 40px 0;
   position: relative;
   width: 100%;
   .carousel {
@@ -120,7 +120,7 @@
         .more {
           bottom: 5%;
           color: #ffffff;
-          font-family: $avalon-demi;
+          font-family: $avalon-medium;
           font-size: 12px;
           height: auto;
           right: 5%;

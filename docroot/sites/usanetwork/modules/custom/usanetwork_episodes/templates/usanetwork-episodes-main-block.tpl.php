@@ -9,14 +9,55 @@
 * $image_mobile - URL for img.
 * $image_desktop - URL for img.
 * $air_date_text - string
+* $ep_carousel - rendered episode carousel block
+* $gallery_rec - rendered gallery recap block
 */
 ?>
-<?php print $sharebar; ?> <br>
-<?php print $episode_title; ?> <br>
-<?php print $body; ?> <br>
-<?php print $season_number; ?> <br>
-<?php print $episode_number; ?> <br>
-<?php print $episode_video_link; ?> <br>
-<?php print $image_mobile; ?> <br>
-<?php print $image_desktop; ?> <br>
-<?php print $air_date_text; ?> <br>
+<div class="consumptionator-episode-main-block">
+  <div class="episode-info-main-block">
+    <div class="episode-info-block show-border">
+      <div class="episode-info-header">
+        <div class="episode-title-block">
+          <div class="episode-title">
+            <?php print $episode_title; ?>
+          </div>
+          <div class="additional">
+            <?php print '<span class="episode">'.t('S').$season_number.t(' episode ').$episode_number.'</span><span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?>
+          </div>
+        </div>
+        <div class="share">
+          <?php print $sharebar; ?>
+          <?php if (!empty($episode_video_link)): ?>
+            <div class="episode-button show-color">
+              <a href="<?php print $episode_video_link; ?>"></a>
+            </div>
+          <?php endif; ?>
+        </div>
+      </div>
+      <div class="episode-info-image">
+        <?php if (!empty($image_desktop)): ?>
+          <div class="asset-img"><img src="<?php print $image_desktop; ?>" alt="" title="<?php print $episode_title; ?>" /></div>
+        <?php endif; ?>
+      </div>
+      <div class="node-wrapper advert">
+        <div class="advertisement">
+        </div>
+      </div>
+      <div class="episode-info-description">
+        <?php if (!empty($body)): ?>
+          <?php print $body; ?>
+        <?php endif; ?>
+      </div>
+    </div>
+    <?php if (!empty($gallery_rec)): ?>
+      <div class="gallery-recap-block show-border">
+        <?php print $gallery_rec; ?>
+      </div>
+    <?php endif; ?>
+  </div>
+  <div class="consum-sidebar">
+    <?php if (!empty($ep_carousel)): ?>
+      <?php print $ep_carousel; ?>
+    <?php endif; ?>
+  </div>
+</div>

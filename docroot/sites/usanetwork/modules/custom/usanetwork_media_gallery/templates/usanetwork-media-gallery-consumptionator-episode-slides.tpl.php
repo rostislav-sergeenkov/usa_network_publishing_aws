@@ -20,11 +20,11 @@
     </div>
   </div>
   <div class="items-block gallaries-thumbs-block">
-    <?php if (!empty($gallery_type)): ?>
-      <div class="items-block-title galleries-block-title">
+    <div class="items-block-title galleries-block-title">
+      <?php if (!empty($gallery_type)): ?>
         <h2><?php print $gallery_type; ?></h2>
-      </div>
-    <?php endif; ?>
+      <?php endif; ?>
+    </div>
     <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>
       <?php if (!empty($slides_vertical)): ?>
         <div class="episodes-list-slider vertical" data-mode="vertical">
@@ -56,6 +56,6 @@
   </div>
   <!-- change link to special photo page for show-->
   <div class="more-items more-photos show-color">
-    <a href="/photos"><?php print t('View all photos'); ?></a>
+    <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
   </div>
 </div>

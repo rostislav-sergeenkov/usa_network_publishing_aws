@@ -1,8 +1,7 @@
 <h2 class="pane-title">latest full episodes</h2>
 <div class="full-episodes-list-wrap">
-  <div class="links-block">
-    <a href="/videos"><div><span>View All</span> Full<br> Episodes <i class="eye-icon icon"></i></div></a>
-    <a href="/videos/live"><div><span>Watch</span> Live TV <i class="live-icon icon">live</i></div></a>
+  <div class="see-all-link">
+    <a href="/videos">see more episodes</a>
   </div>
   <div class="full-episodes-list">
     <?php foreach ($items as $item) :?>

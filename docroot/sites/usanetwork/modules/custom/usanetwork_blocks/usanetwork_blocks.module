@@ -733,6 +733,7 @@ function _usanetwork_blocks_social_carousel_block_content() {
             'icon_text' => $promo_data['cta'],
             'show_name' => ($promo_data['show_name'] != $promo_data['topic']) ? $promo_data['show_name'] : '',
             'description' => $promo_data['description'],
+            'cta' => !empty($promo_data['cta']) ? $promo_data['cta'] : '',
           );
           $theme_variables['promos'][] = $episode_theme_variables;
         }

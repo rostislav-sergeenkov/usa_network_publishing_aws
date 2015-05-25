@@ -861,6 +861,7 @@
           display: none;
         }
         .advertisement {
+          overflow: hidden;
           @include breakpoint($bp-min-1901-width) {
             left: 50%;
             height: 250px;

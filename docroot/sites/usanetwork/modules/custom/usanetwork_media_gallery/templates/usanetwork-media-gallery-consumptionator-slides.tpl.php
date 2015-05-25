@@ -13,4 +13,7 @@
     <?php endforeach; ?>
     </div>
   <?php endif; ?>
+  <div class="share-bar">
+    <?php print $sharebar; ?>
+  </div>
 </div>

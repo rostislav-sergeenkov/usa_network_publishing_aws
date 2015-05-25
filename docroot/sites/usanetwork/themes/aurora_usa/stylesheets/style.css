@@ -16382,6 +16382,9 @@ footer h2 {
     display: none;
   }
 }
+.shows-block .show-info-block .show-central-info .advert .advertisement {
+  overflow: hidden;
+}
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-central-info .advert .advertisement {
     left: 50%;

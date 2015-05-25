@@ -13642,6 +13642,9 @@ footer h2 {
     height: 100%;
     width: 100%;
   }
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta-icon {
+    display: none;
+  }
   .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta {
     color: #afafaf;
     padding-left: 4%;
@@ -14165,6 +14168,9 @@ footer h2 {
     display: table;
     height: 100%;
     width: 100%;
+  }
+  .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta-icon {
+    display: none;
   }
   .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal li .meta-wrapper .meta {
     color: #afafaf;

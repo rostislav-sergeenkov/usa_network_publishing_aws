@@ -30136,13 +30136,18 @@ body.blog .view-display-id-blog_content .views-row {
   float: left;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
-  line-height: 1.2;
+  line-height: 1.4;
   padding: 30px;
-  width: calc(75% - 300px);
+  width: 50%;
 }
 @media (min-width: 1901px) {
   .about-show-block .about-show-text-block {
     padding: 40px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .about-show-block .about-show-text-block {
+    width: calc(75% - 300px);
   }
 }
 @media (min-width: 641px) and (max-width: 1024px) {
@@ -30226,14 +30231,14 @@ body.blog .view-display-id-blog_content .views-row {
   .about-show-block .about-show-text-block .about-show-text-block-more a {
     font-size: 18px;
     padding: 19.5px 37.5px 19.5px 30px;
-    width: 180px;
+    width: 223px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
   .about-show-block .about-show-text-block .about-show-text-block-more a {
     font-size: 10px;
-    padding: 10px 20px 10px 15px;
-    width: 90px;
+    padding: 13px 25px 13px 20px;
+    width: 120px;
   }
 }
 .about-show-block .about-show-text-block .about-show-text-block-more a:after {
@@ -30241,25 +30246,25 @@ body.blog .view-display-id-blog_content .views-row {
   content: "\e608";
   display: block;
   font-family: "ico-font";
-  font-size: 10px;
+  font-size: 0.97561vw;
   line-height: 1;
   position: absolute;
-  margin-top: -5px;
-  right: 16px;
+  margin-top: -0.4878vw;
+  right: 1.56098vw;
   top: 50%;
 }
 @media (min-width: 1901px) {
   .about-show-block .about-show-text-block .about-show-text-block-more a:after {
-    font-size: 15px;
-    margin-top: -7.5px;
-    right: 24px;
+    font-size: 18px;
+    margin-top: -9px;
+    right: 29.7px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
   .about-show-block .about-show-text-block .about-show-text-block-more a:after {
-    font-size: 8px;
-    margin-top: -4px;
-    right: 12px;
+    font-size: 10px;
+    margin-top: -5px;
+    right: 16px;
   }
 }
 .about-show-block .about-show-advert-block {
@@ -30267,6 +30272,15 @@ body.blog .view-display-id-blog_content .views-row {
   position: absolute;
   right: 0;
   top: 50%;
+  width: 25%;
+}
+.about-show-block .about-show-advert-block > div {
+  text-align: center;
+}
+@media (max-width: 1280px) {
+  .about-show-block .about-show-advert-block {
+    width: 300px;
+  }
 }
 @media (max-width: 640px) {
   .about-show-block .about-show-advert-block {

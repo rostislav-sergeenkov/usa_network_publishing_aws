@@ -1080,10 +1080,6 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this Episode Guide');
     }
-    if ($air_date_items = field_get_items('node', $node, 'field_original_air_date')) {
-      $air_date_items = reset($air_date_items);
-      $duration =  gmdate('H:i:s', $air_date_items['value2'] - $air_date_items['value']);
-    }
     if (!empty($node->field_season)) {
       $season = $entity_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
@@ -1105,7 +1101,6 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
         'episode_info' => array(
             'season_number' => !empty($node->field_episode_number) ? $entity_wrapper->field_episode_number->value() : '',
             'episode_number' => !empty($episode_num) ? $episode_num : '',
-            'duration' => !empty($duration) ? $duration : '',
           ),
       ),
     );

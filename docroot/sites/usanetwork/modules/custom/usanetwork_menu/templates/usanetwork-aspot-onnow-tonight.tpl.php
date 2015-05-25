@@ -25,7 +25,7 @@
                 <?php endif; ?>
                 <div class="icons-block">
                   <?php if (!empty($on_now_block_item['up_next']['episode_full_url'])): ?>
-                    <a class="episode-description icon" data-name="description"
+                    <a class="schedule-icon-font icon" data-name="description"
                        href="<?php print $on_now_block_item['up_next']['episode_full_url']; ?>"></a>
                   <?php endif; ?>
                   <?php if (!empty($on_now_block_item['up_next']['syndicated_url'])): ?>
@@ -67,7 +67,7 @@
                 <?php endif; ?>
                 <div class="icons-block">
                   <?php if (!empty($on_now_block_item['on_now']['episode_full_url'])): ?>
-                    <a class="episode-description icon" data-name="description"
+                    <a class="schedule-icon-font icon" data-name="description"
                        href="<?php print $on_now_block_item['on_now']['episode_full_url']; ?>"></a>
                   <?php endif; ?>
                   <?php if (!empty($on_now_block_item['on_now']['syndicated_url'])): ?>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="icons-block">
                   <?php if (!empty($tonight_block_item['episode_full_url'])): ?>
-                    <a class="episode-description icon" data-name="description"
+                    <a class="schedule-icon-font icon" data-name="description"
                        href="<?php print $tonight_block_item['episode_full_url']; ?>"></a>
                   <?php endif; ?>
                   <?php if (!empty($tonight_block_item['syndicated_url'])): ?>

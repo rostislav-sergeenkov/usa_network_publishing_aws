@@ -685,8 +685,9 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
 
       $theme_variables['on_now'] = array(
         'image' => !empty($image_url)
-            ? theme('image', array(
+            ? theme('image_style', array(
               'path' => $image_url,
+              'style_name' => '300x169',
               'attributes' => array(
                 'class' => array(
                   'running-now-show-preview-image'
@@ -722,8 +723,9 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
 
       $theme_variables['up_next'] = array(
         'image' => !empty($data['next']->nid)
-            ? theme('image', array(
+            ? theme('image_style', array(
               'path' => $image_url,
+              'style_name' => '300x169',
               'attributes' => array(
                 'class' => array(
                   'running-next-show-preview-image'
@@ -1023,10 +1025,6 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     }
     if (!empty($node->field_episode)) {
       $episode = $entity_wrapper->field_episode->value();
-      if ($air_date_items = field_get_items('node', $episode, 'field_original_air_date')) {
-        $air_date_items = reset($air_date_items);
-        $duration =  gmdate('H:i:s', $air_date_items['value2'] - $air_date_items['value']);
-      }
       if ($episode_num_items = field_get_items('node', $episode, 'field_episode_number')) {
         $episode_num_items = reset($episode_num_items);
         $season_num = $episode_num_items['value'];
@@ -1054,7 +1052,6 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
             'episode_title' => $episode->title,
             'season_number' => !empty($season_num) ? $season_num : '',
             'episode_number' => !empty($episode_num) ? $episode_num : '',
-            'duration' => !empty($duration) ? $duration : '',
           ) : NULL,
       ),
     );

@@ -12,7 +12,7 @@
 <div class="episode-landing-list-items-season" data-season-number="<?php print $season_number; ?>">
   <div class="upper-bar">
     <div class="title">
-      <h2><?php print $title; ?></h2>
+      <h2><?php print $title.t(' episodes'); ?></h2>
     </div>
     <?php if (!empty($filters)): ?>
       <div class="all-seasons-filter item-filter">

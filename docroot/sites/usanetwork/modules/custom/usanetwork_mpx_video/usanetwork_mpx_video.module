@@ -2851,7 +2851,7 @@ function usanetwork_social_content_block() {
 
       if (!empty($SpredFast_ID)) {
         $id = 'mr-space_' . $SpredFast_ID;
-        $output = '<div class="mr-space" id="' . $id . '" data-space-id="usa-network/' . $SpredFast_ID . '" style="min-height: 500px;"></div>';
+        $output = '<div class="show-border"><div class="mr-space" id="' . $id . '" data-space-id="usa-network/' . $SpredFast_ID . '" style="min-height: 500px;"></div></div>';
         drupal_add_js('!function(a,b,c,d,e,f,g,h,i,j,k){h=a[d]=a[d]||{},h.ui=h.ui||[],i=a[e]=a[e]||{},i[f]||(j=b.getElementsByTagName(c)[0],k=b.createElement(c),k.src="//platform.massrelevance.com/js/massrel.js",j.parentNode.insertBefore(k,j),i[f]=function(){h.ui.push([].slice.call(arguments))}),i[f]("load",{el:b.getElementById(g)})}(window,document,"script","massrel","spredfast","exp","' . $id . '");', array('type' => 'inline', 'scope' => 'footer'));
       }
     }

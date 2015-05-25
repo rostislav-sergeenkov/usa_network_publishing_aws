@@ -22,25 +22,47 @@
       padding: 56.25vw 0 0;
     }
     .episode-change-link {
-      bottom: 10px;
+      bottom: 39px;
       color: $change-episode-color;
       display: block;
       font-family: $avalon-book;
-      font-size: 14px;
+      font-size: 21px;
       position: absolute;
       text-transform: uppercase;
+      @include breakpoint($bp-1280-width) {
+        bottom: 34px;
+        font-size: 14px;
+      }
+      @include breakpoint($bp-768-width) {
+        bottom: 36px;
+        font-size: 13px;
+      }
       &:after {
         color: $change-episode-color;
         font-family: "ico-font";
-        font-size: 12px;
+        font-size: 14px;
         display: block;
         position: absolute;
         top: 50%;
-        margin-top: -6px;
+        margin-top: -8px;
         line-height: 1;
+        @include breakpoint($bp-1280-width) {
+          font-size: 11px;
+          margin-top: -6px;
+        }
       }
       &.previous {
         left: 20px;
+        margin-left: 32px;
+        @include breakpoint($bp-min-1901-width) {
+          margin-left: 48px;
+        }
+        @include breakpoint($bp-1280-width) {
+          margin-left: 68px;
+        }
+        @include breakpoint($bp-1024-width) {
+          margin-left: 20px;
+        }
         &:after {
           content: "\e607";
           left: -15px;
@@ -48,6 +70,16 @@
       }
       &.next {
         right: 20px;
+        margin-right: 32px;
+        @include breakpoint($bp-min-1901-width) {
+          margin-right: 48px;
+        }
+        @include breakpoint($bp-1280-width) {
+          margin-right: 68px;
+        }
+        @include breakpoint($bp-1024-width) {
+          margin-right: 20px;
+        }
         &:after {
           content: "\e608";
           right: -15px;

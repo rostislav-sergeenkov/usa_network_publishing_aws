@@ -86,6 +86,6 @@ $timestamp = date("m/d/y",time());
   </div>
 </div>
 
-<div id="home-usa-logo"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
+<div id="home-usa-logo"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
 
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>

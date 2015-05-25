@@ -495,7 +495,7 @@ usa_debug('======== microsite animate complete');
       var wwidth = $(window).width(),
           $siteNav = $('#site-nav');
 
-      if (wwidth < 844) {
+      if (wwidth < 874) {
         $siteNav.addClass('mobile');
       }
       else {
@@ -597,7 +597,7 @@ usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
           var wwidth = $(window).width(),
               $siteNav = $('#site-nav');
 
-          if (wwidth < 844) {
+          if (wwidth < 874) {
             $siteNav.addClass('mobile');
           }
           else {

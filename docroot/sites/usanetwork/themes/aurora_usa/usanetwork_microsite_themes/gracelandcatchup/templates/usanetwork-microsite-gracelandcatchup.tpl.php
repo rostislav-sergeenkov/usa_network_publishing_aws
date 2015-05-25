@@ -54,7 +54,7 @@ $timestamp = date("m/d/y",time());
       <div id="site-nav" class="section">
         <a name="site-nav"></a>
         <section id="site-nav-content" class="clearfix">
-          <div id="site-nav-left"><a href="http://www.usanetwork.com" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
+          <div id="site-nav-left"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
           <div id="site-nav-center">
             <div id="site-nav-top">
               <a id="gracelandcu-logo" class="internal" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.svg" alt="Graceland Catchup HQ logo"></a>
@@ -81,10 +81,10 @@ $timestamp = date("m/d/y",time());
           </div>
           <div id="site-nav-right">
             <div id="site-nav-social">
-              <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
-              <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+              <a class="facebook" href="http://www.facebook.com/GracelandTV" target="_blank"></a>
+              <a class="twitter" href="http://twitter.com/GracelandTV" target="_blank"></a>
             </div>
-            <div id="site-nav-show-site-link"><a href="http://www.usanetwork.com/graceland" target="_blank">Visit Show Site</a></div>
+            <div id="site-nav-show-site-link"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>/graceland" target="_blank">Visit Show Site</a></div>
           </div>
 
           <div id="site-nav-mobile">
@@ -101,8 +101,8 @@ $timestamp = date("m/d/y",time());
                 <?php endif; ?>
                 <li id="site-nav-show-site-link"><a href="http://www.usanetwork.com/graceland" target="_blank">Visit Show Site</a></li>
                 <li id="site-nav-social">
-                  <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
-                  <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+                  <a class="facebook" href="http://www.facebook.com/GracelandTV" target="_blank"></a>
+                  <a class="twitter" href="http://twitter.com/GracelandTV" target="_blank"></a>
                 </li>
               </ul>
             </div>

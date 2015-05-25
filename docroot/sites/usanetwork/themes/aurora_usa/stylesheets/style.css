@@ -13732,26 +13732,60 @@ footer h2 {
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-change-link {
-  bottom: 10px;
+  bottom: 39px;
   color: #1e1e1e;
   display: block;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 21px;
   position: absolute;
   text-transform: uppercase;
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link {
+    bottom: 34px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link {
+    bottom: 36px;
+    font-size: 13px;
+  }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-change-link:after {
   color: #1e1e1e;
   font-family: "ico-font";
-  font-size: 12px;
+  font-size: 14px;
   display: block;
   position: absolute;
   top: 50%;
-  margin-top: -6px;
+  margin-top: -8px;
   line-height: 1;
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link:after {
+    font-size: 11px;
+    margin-top: -6px;
+  }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.previous {
   left: 20px;
+  margin-left: 32px;
+}
+@media (min-width: 1901px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.previous {
+    margin-left: 48px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.previous {
+    margin-left: 68px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.previous {
+    margin-left: 20px;
+  }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.previous:after {
   content: "\e607";
@@ -13759,6 +13793,22 @@ footer h2 {
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.next {
   right: 20px;
+  margin-right: 32px;
+}
+@media (min-width: 1901px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.next {
+    margin-right: 48px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.next {
+    margin-right: 68px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.next {
+    margin-right: 20px;
+  }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-change-link.next:after {
   content: "\e608";

@@ -333,6 +333,8 @@
       }
 
       //redesign
+
+      // Click promo item
       $('.usa-wrap .node-usanetwork-promo a').once('omniture-tracking', function() {
         $(this).on('click', function (e) {
           e.preventDefault();

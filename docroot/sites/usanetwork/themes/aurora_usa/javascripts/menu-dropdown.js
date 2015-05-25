@@ -147,6 +147,13 @@
               if (tab.attr('data-state') == 'active') {
                 tab.removeClass('active').attr('data-state', '');
                 tab_containers.eq(index).slideUp(animation_speed).removeClass('active');
+
+                if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
+                  tab_containers.eq(index).mCustomScrollbar('destroy');
+                  setTimeout(function () {
+                    tab_containers.eq(index).css('height', 'auto');
+                  }, 500);
+                }
               } else {
                 tabs.removeClass('active').attr('data-state', '');
 

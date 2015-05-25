@@ -2418,7 +2418,7 @@ function _usanetwork_microsite_get_first_published_item($entity_wrapper) {
   }
   else {
     foreach ($entity as $entity_object) {
-      if ($entity_object->status == NODE_PUBLISHED) {
+      if ($entity_object->mpx_video_data['status'] == NODE_PUBLISHED) {
         return $entity_object;
       }
     }

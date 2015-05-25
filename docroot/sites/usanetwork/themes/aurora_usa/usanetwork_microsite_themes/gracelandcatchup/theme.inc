@@ -196,6 +196,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline',
       'path' => $subtheme_path,
       'variables' => array(
+        'gallery_title' => NULL,
         'description' => NULL,
         'content' => NULL,
       ),

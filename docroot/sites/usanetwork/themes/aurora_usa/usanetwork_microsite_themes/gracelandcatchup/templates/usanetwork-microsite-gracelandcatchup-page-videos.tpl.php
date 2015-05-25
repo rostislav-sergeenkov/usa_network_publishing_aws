@@ -138,17 +138,6 @@
                 </ul>
               </div>
             </div>
-<?php /* ?>
-            <div class="expandable-toggle-wrap <?php if (!empty($more_videos)): ?>active<?php endif; ?>">
-              <div class="expandable-toggle">
-                <div class="item-list">
-                  <ul class="pager pager-load-more">
-                    <li class="pager-next first last more">more</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-<?php */ ?>
           </div>
         </div>
       </div>

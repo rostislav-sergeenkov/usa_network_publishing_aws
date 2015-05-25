@@ -9,8 +9,10 @@
 
       $personList.find('li').each(function(){
         var personId = $(this).attr('data-id');
-        $(this).find('.agency').html(person[personId]['agency']);
-        $(this).find('.role').html(person[personId]['role']);
+        if (typeof person[personId] != 'undefined') {
+          if (typeof person[personId]['agency'] != 'undefined') $(this).find('.agency').html(person[personId]['agency']);
+          if (typeof person[personId]['role'] != 'undefined') $(this).find('.role').html(person[personId]['role']);
+        }
       });
     },
 
@@ -22,7 +24,7 @@
         $('#character-nav li#nav-' + person + ', #character-info li#' + person).addClass('active');
           $('#character-info #' + person).animate({ 'opacity': 1 }, 500);
 
-usa_debug('========= showCharacterInfo: anchorFull: ' + anchorFull);
+//usa_debug('========= showCharacterInfo: anchorFull: ' + anchorFull);
         if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
           Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
           Drupal.behaviors.ms_global.setOmnitureData('characters', personName);

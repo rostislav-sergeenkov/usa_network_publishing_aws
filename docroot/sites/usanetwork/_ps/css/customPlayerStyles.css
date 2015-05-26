@@ -621,14 +621,11 @@ a img.ymalthumbnew {
     .endcardymalheading {
         display:none;
     }
-    .endcardymalheading {
-        display:none;
-    }
     .endcardlinktextwrap {
         display: none;
     }
     .ymalcountdown {
-        font: normal 26px Arial,Verdana,Helvetica;
+        font: normal 23px Arial,Verdana,Helvetica;
         line-height: 1em;
     }
 
@@ -671,9 +668,6 @@ a img.ymalthumbnew {
     }
     .socialem {
         width: 50px;
-    }
-    .ymalcountdown {
-        display: inline-block;
     }
     .cardInner {
         width: 85%;

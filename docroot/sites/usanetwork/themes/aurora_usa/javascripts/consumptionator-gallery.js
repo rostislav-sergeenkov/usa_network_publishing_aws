@@ -125,7 +125,7 @@
       var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index'),
           slide = $('#bxslider-gallery .slide').eq(index).addClass('active');
 
-      //gigyaSharebar(slide, index);
+      gigyaSharebar(slide, index);
     }
 
     var options = {

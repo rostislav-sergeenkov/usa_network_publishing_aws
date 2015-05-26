@@ -39,6 +39,7 @@
 
     onTotalMCScrollFlag: null,
     onTotalMCScrollOffset: null,
+    onTotalMCScrollStartOffset: null,
     MCScrollInstance: null,
 
     destroyScroll: function() {
@@ -65,6 +66,7 @@
             whileScrolling: function(){
               if (this.mcs.topPct == 100) {
                 Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag = true;
+                Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollStartOffset = $(window).scrollTop();
               }
             }
           }
@@ -334,7 +336,7 @@
           if (Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag) {
             Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset = $(window).scrollTop();
 
-            if (Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset > 100) {
+            if ((Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset - Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollStartOffset) > 100) {
               Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag = false;
               Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset = null;
 

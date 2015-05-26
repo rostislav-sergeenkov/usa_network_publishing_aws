@@ -468,6 +468,8 @@ function _usanetwork_person_characters_main_block() {
     }
   }
 
+  $social_block = module_invoke('usanetwork_mpx_video', 'block_view', 'usanetwork_social_content');
+
   $theme_variables = array(
     'sharebar' => !empty($sharebar) ? render($sharebar) : '',
     'character_full_name' => $person_node->title,
@@ -488,6 +490,7 @@ function _usanetwork_person_characters_main_block() {
       : '',
     'show_tabs' => isset($show_tabs) ? $show_tabs : NULL,
     'cast_landing_link' => !empty($person_node->field_show) ? l(t('Go to cast & info'), 'node/' . $person_node_wrapper->field_show->nid->value() . '/cast') : '',
+    'social_block' => render($social_block['content']),
   );
 
   return theme('usanetwork_person_character_main_block', $theme_variables);

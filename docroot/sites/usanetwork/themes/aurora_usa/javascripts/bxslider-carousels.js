@@ -63,6 +63,8 @@
           if ((slider.getSlideCount() - current_top_slide <= visible_slides)) {
             slider.end = true;
 
+
+            $('.aspot-and-episodes .episodes-list').removeClass('shadow');
             $context.animate({
               'top': '-=' + shift_last
             }, 300);
@@ -84,6 +86,7 @@
           if (e.deltaY < 0) {
             calculateItems(slider, $(this));
           } else {
+            $('.aspot-and-episodes .episodes-list').addClass('shadow');
             $(this).css('top', 0);
             slider.goToPrevSlide();
             slider.end = false;
@@ -95,6 +98,7 @@
             calculateItems(slider, $(this));
           },
           swipeDown: function() {
+            $('.aspot-and-episodes .episodes-list').addClass('shadow');
             $(this).css('top', 0);
             slider.goToPrevSlide();
             slider.end = false;

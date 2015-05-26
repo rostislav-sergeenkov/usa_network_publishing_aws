@@ -76,6 +76,8 @@
       }
     },
 
+    startScrollAt: null,
+
     attach: function(context){
       $('body').once(function () {
         var tablet = false;
@@ -328,9 +330,18 @@
         $(window).on("scroll", function () {
           Drupal.behaviors.usanetwork_menu_dropdown.stickyHeader();
 
-          if (!$('.tab-item').hasClass('mCustomScrollbar') && window.innerWidth >= window_size_tablet_portrait && !$('body').hasClass('consumptionator-page')) {
-            $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
-            $('.tab-item.active').slideUp(100).removeClass('active');
+          if ($('.tab-item.active').length > 0) {
+            if (Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt == null) {
+              Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt = $(window).scrollTop();
+            }
+
+            if (($(window).scrollTop() - Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt) > 100) {
+              if (!$('.tab-item').hasClass('mCustomScrollbar') && window.innerWidth >= window_size_tablet_portrait && !$('body').hasClass('consumptionator-page')) {
+                $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
+                $('.tab-item.active').slideUp(350).removeClass('active');
+                Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt = null;
+              }
+            }
           }
 
           if (Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag) {

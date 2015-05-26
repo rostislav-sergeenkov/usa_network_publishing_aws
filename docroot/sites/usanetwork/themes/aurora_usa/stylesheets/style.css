@@ -15112,15 +15112,20 @@ footer h2 {
   }
 }
 .consum-sidebar .download-app .download-button {
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 16px;
   margin: 5px auto 0;
-  padding: 10px 20px 10px 10px;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   width: 220px;
+}
+.consum-sidebar .download-app .download-button a {
+  color: #ffffff;
+  display: block;
+  font-size: 16px;
+  padding: 10px 20px 10px 10px;
+}
+.consum-sidebar .download-app .download-button a:focus {
+  outline: none;
 }
 .consum-sidebar .download-app .download-button:after {
   color: #ffffff;
@@ -15146,7 +15151,7 @@ footer h2 {
   .consum-sidebar .download-app .download-button:after {
     font-size: 10px;
     line-height: 10px;
-    margin-top: -4px;
+    margin-top: -6px;
   }
 }
 @media (max-width: 480px) {
@@ -15159,25 +15164,31 @@ footer h2 {
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consum-sidebar .download-app .download-button {
-    font-size: 10px;
     margin-left: calc(50% + 10px);
-    padding: 5px 10px 5px 5px;
     width: 130px;
+  }
+  .consum-sidebar .download-app .download-button a {
+    font-size: 10px;
+    padding: 5px 10px 5px 5px;
   }
 }
 @media (max-width: 1024px) {
   .consum-sidebar .download-app .download-button {
-    font-size: 14px;
     margin-left: calc(50% + 10px);
     margin-top: 10px;
     width: 190px;
   }
+  .consum-sidebar .download-app .download-button a {
+    font-size: 14px;
+  }
 }
 @media (max-width: 480px) {
   .consum-sidebar .download-app .download-button {
+    width: 130px;
+  }
+  .consum-sidebar .download-app .download-button a {
     font-size: 10px;
     padding: 5px 10px 5px 5px;
-    width: 130px;
   }
 }
 
@@ -17615,8 +17626,9 @@ footer h2 {
 .videos-landing-page-container .upper-menu .item-filter.sorter-items.open .filter-menu {
   display: block;
 }
-.videos-landing-page-container .upper-menu .sorters-description {
+.videos-landing-page-container .upper-menu .sorters-description h1 {
   width: 100%;
+  margin: 0;
   float: left;
   line-height: 4em;
   font-size: 18px;
@@ -17624,19 +17636,19 @@ footer h2 {
   color: #666666;
 }
 @media (max-width: 1280px) {
-  .videos-landing-page-container .upper-menu .sorters-description {
+  .videos-landing-page-container .upper-menu .sorters-description h1 {
     font-size: 12px;
   }
 }
 @media (max-width: 640px) {
-  .videos-landing-page-container .upper-menu .sorters-description {
+  .videos-landing-page-container .upper-menu .sorters-description h1 {
     display: none;
   }
 }
-.videos-landing-page-container .upper-menu .sorters-description strong {
+.videos-landing-page-container .upper-menu .sorters-description h1 strong {
   text-transform: uppercase;
 }
-.videos-landing-page-container .upper-menu .sorters-description strong:last-child {
+.videos-landing-page-container .upper-menu .sorters-description h1 strong:last-child {
   text-transform: uppercase;
   font-style: italic;
 }

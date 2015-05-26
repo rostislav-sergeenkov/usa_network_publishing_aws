@@ -429,7 +429,6 @@ a img.ymalthumbnew {
     color:#555;
 }
 
-
 /* Embed card */
 .embedCardblocker {
     display:none;
@@ -622,18 +621,14 @@ a img.ymalthumbnew {
     .endcardymalheading {
         display:none;
     }
-    .endcardymalheading {
-        display:none;
-    }
     .endcardlinktextwrap {
         display: none;
     }
     .ymalcountdown {
-        display: inline-block !important;
-        padding: 0 3px;
+        font: normal 23px Arial,Verdana,Helvetica;
+        line-height: 1em;
     }
 
-    /*//////////////////////////////////*/
     .endcardheading {
         padding: 0;
     }
@@ -679,11 +674,6 @@ a img.ymalthumbnew {
     }
     .endcardymalitems {
         margin-top: 1%;
-    }
-}
-@media only screen and (min-height: 350px) {
-    .ymalcountdown {
-        display: inline-block;
     }
 }
 

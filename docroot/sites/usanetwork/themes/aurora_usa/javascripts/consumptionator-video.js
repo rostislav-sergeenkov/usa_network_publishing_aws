@@ -1,6 +1,14 @@
 (function ($) {
 
   Drupal.behaviors.consumptionator_video = {
+
+    mobileModal: function () {
+      // check if user uses mobile device
+      if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
+        var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
+        Drupal.behaviors.video_mobile.showMobileVideoModal(os);
+      }
+    },
     attach: function (context, settings) {
 
       var current_iframe = $('.consumptionator-video-page .video-player-wrapper iframe');
@@ -14,6 +22,8 @@
         current_iframe.attr('src', '');
         current_iframe.attr('src', current_src);
       });
+
+      Drupal.behaviors.consumptionator_video.mobileModal();
 
       //init custom scrollbar for social block
       //var container = $('#block-usanetwork-mpx-video-usanetwork-social-content .content .show-border');

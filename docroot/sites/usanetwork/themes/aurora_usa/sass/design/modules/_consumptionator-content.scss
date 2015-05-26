@@ -619,15 +619,20 @@
       }
     }
     .download-button {
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 16px;
       margin: 5px auto 0;
-      padding: 10px 20px 10px 10px;
       position: relative;
       text-align: center;
       text-transform: uppercase;
       width: 220px;
+      a {
+        color: #ffffff;
+        display: block;
+        font-size: 16px;
+        padding: 10px 20px 10px 10px;
+        &:focus {
+          outline: none;
+        }
+      }
       &:after {
         color: #ffffff;
         content: "\e608";
@@ -648,7 +653,7 @@
         @include breakpoint($bp-1024-width) {
           font-size: 10px;
           line-height: 10px;
-          margin-top: -4px;
+          margin-top: -6px;
         }
         @include breakpoint($bp-480-width) {
           font-size: 7px;
@@ -658,21 +663,27 @@
         }
       }
       @include breakpoint($between-1025-1280) {
-        font-size: 10px;
         margin-left: calc(50% + 10px);
-        padding: 5px 10px 5px 5px;
         width: 130px;
+        a {
+          font-size: 10px;
+          padding: 5px 10px 5px 5px;
+        }
       }
       @include breakpoint($bp-1024-width) {
-        font-size: 14px;
         margin-left: calc(50% + 10px);
         margin-top: 10px;
         width: 190px;
+        a {
+          font-size: 14px;
+        }
       }
       @include breakpoint($bp-480-width) {
-        font-size: 10px;
-        padding: 5px 10px 5px 5px;
         width: 130px;
+        a {
+          font-size: 10px;
+          padding: 5px 10px 5px 5px;
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-#full-bleed-promo {
+#full-bleed-promo.full-bleed-enable {
   .full-bleed-wrapper {
     @include clear();
     margin: 0 auto;
@@ -79,7 +79,7 @@
   }
 }
 
-.about-show-block {
+.about-show-block.about-show-enable {
   @include clear();
   background: $poll-back;
   overflow: hidden;

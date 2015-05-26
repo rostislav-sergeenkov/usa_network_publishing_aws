@@ -57,7 +57,7 @@ $timestamp = date("m/d/y",time());
           <div id="site-nav-left"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
           <div id="site-nav-center">
             <div id="site-nav-top">
-              <a id="gracelandcu-logo" class="internal" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.svg" alt="Graceland Catchup HQ logo"></a>
+              <a id="gracelandcu-logo" class="internal" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.png" alt="Graceland Catchup HQ logo"></a>
               <a id="gracelandcu-sponsor" href="http://ad.doubleclick.net/ddm/jump/N2724.117456.USANETWORK.COM/B8757919.118407814;sz=1x1;ord=<?php print $timestamp; ?>?" target="_blank">
                 <img class="tracking" src="http://ad.doubleclick.net/ddm/ad/N2724.117456.USANETWORK.COM/B8757919.118407814;sz=1x1;ord=<?php print $timestamp; ?>?" border="0" width="1" height="1" alt="Advertisement">
                 <img src="<?php print $themePath; ?>/images/graceland-s2catchup-camry-sticky.svg" alt="Sponsored by Toyota">
@@ -69,7 +69,7 @@ $timestamp = date("m/d/y",time());
                   <?php if (!empty($sections)): ?>
                     <?php foreach ($sections as $sectionNav): ?>
                       <?php if ($sectionNav['type'] != 'home'): ?>
-                      <li id="nav-<?php print $sectionNav['type']; ?>" class="internal<?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
+                      <li id="nav-<?php print $sectionNav['type']; ?>" class="internal <?php print $sectionNav['type']; ?><?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
                         <?php print $sectionNav['link']; ?>
                       </li>
                       <?php endif; ?>
@@ -93,7 +93,7 @@ $timestamp = date("m/d/y",time());
                 <?php if (!empty($sections)): ?>
                   <?php foreach ($sections as $sectionNav): ?>
                     <?php if ($sectionNav['type'] != 'home'): ?>
-                    <li id="nav-<?php print $sectionNav['type']; ?>" class="internal mobile<?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
+                    <li id="mobile-nav-<?php print $sectionNav['type']; ?>" class="internal mobile <?php print $sectionNav['type']; ?><?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
                       <?php print $sectionNav['link']; ?>
                     </li>
                     <?php endif; ?>

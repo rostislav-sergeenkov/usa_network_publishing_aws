@@ -5759,7 +5759,7 @@ header .tab-content:after {
 }
 header .tab-item {
   background: #363435;
-  border-top: 1px solid transparent;
+  /*border-top: 1px solid transparent;*/
   display: none;
   letter-spacing: 0.5px;
   height: auto;
@@ -5793,7 +5793,7 @@ header .tab-item:after {
   }
 }
 header .tab-item.active {
-  border-top: 1px solid darkgrey;
+  /*border-top: 1px solid $header-tab-back-hover;*/
   display: block;
 }
 header .tab-item .see-all-link {

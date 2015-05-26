@@ -517,6 +517,9 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
       $theme_variables['is_global_block'] = FALSE;
     }
 
+    if (!empty($query['season'])) {
+      $theme_variables['is_global_block'] = FALSE;
+    }
     $theme_variables['title'] = $current_season_data_item->season_title;
 
     if (!empty($episodes_data)) {

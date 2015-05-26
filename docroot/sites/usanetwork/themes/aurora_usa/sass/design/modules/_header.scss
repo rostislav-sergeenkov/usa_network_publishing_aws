@@ -698,7 +698,8 @@ header {
   }
   .tab-content {
     @include clear();
-    position: relative;
+    position: absolute;
+    z-index: 9999;
     width: 100%;
     @include breakpoint($bp-768-width) {
       display: none;

@@ -911,7 +911,7 @@ function _usanetwork_person_render_cast_crew_block() {
       if (!empty($person_role)) {
         if (strtolower($person_role) == 'character') {
           if (!empty($person_node->field_usa_actor_name)) {
-            $person_role = t('played by @actor_name', array(
+            $person_role = t('@actor_name', array(
                 '@actor_name' => $person_node_wrapper->field_usa_actor_name->value(),
               )
             );

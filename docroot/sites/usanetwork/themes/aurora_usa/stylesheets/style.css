@@ -13273,32 +13273,35 @@ footer h2 {
   width: 74.7%;
   background: #ffffff;
   color: #000000;
-  padding: 45px 38px 45px 58px;
+  padding: 45px 0;
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block {
     float: none;
-    padding: 25px 31px 38px 36px;
+    padding: 25px 0 38px 0;
     width: 100%;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block {
-    padding: 24px;
+    padding: 24px 0;
+    border-bottom: 2px solid;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block {
-    padding: 38px 24px 38px 24px;
+    padding: 38px 0 38px 0;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block {
     padding: 56.25vw 0 0;
+    border-bottom: 8px solid;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header {
   margin-bottom: 30px;
+  padding: 0 38px 0 58px;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header:after {
   clear: both;
@@ -13308,6 +13311,12 @@ footer h2 {
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-header {
     margin-bottom: 15px;
+    padding: 0 31px 0 36px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
+    padding: 0 24px;
   }
 }
 @media (max-width: 640px) {
@@ -13421,10 +13430,23 @@ footer h2 {
     line-height: 2em;
   }
 }
+.consumptionator-characters-main-block .character-info-block .block-character-info-content {
+  padding: 0 38px 0 58px;
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-content:after {
   clear: both;
   content: '';
   display: table;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content {
+    padding: 0 31px 0 36px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content {
+    padding: 0 24px;
+  }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
   width: 46.8%;
@@ -13496,13 +13518,13 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
-    padding: 10px 46px;
+    padding: 10px 22px;
     width: 100%;
   }
 }
 @media (max-width: 480px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
-    padding: 10px 25px;
+    padding: 10px 1px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description iframe {

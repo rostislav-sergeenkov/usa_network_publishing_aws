@@ -4,7 +4,7 @@
  */
 ?>
 <div class="consumptionator-characters-main-block">
-  <div class="character-info-block">
+  <div class="character-info-block show-border">
     <div class="block-character-info-header">
       <div class="block-character-info-header-left">
         <?php if (!empty($character_full_name)): ?>

@@ -83,26 +83,33 @@
   @include clear();
   background: $poll-back;
   overflow: hidden;
-  padding: 30px 22px 0;
+  padding: 0 22px;
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-1901-width) {
-    padding: 40px 32px 0;
+    padding: 0 32px;
   }
   @include breakpoint($bp-min-641-width) {
     min-height: 290px;
   }
+  @include breakpoint($bp-640-width) {
+    padding: 22px 22px 0;
+  }
   .about-show-block-inner {
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
     @include breakpoint($bp-min-1901-width) {
+      height: 100%;
       max-width: 1868px;
       margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
     }
     @include breakpoint($bp-640-width) {
+      height: 100%;
+      overflow: hidden;
       padding-bottom: 35vw;
+      position: relative;
+      width: 100%;
     }
   }
   .about-show-image-block {
@@ -127,13 +134,19 @@
     font-family: $avalon-medium;
     height: 100%;
     line-height: 1.4;
-    padding: 30px;
+    padding: 35px get-vw(54px, 1025);
     width: 50%;
+    @include breakpoint($bp-min-641-width) {
+      margin-top: 2.5vw;
+    }
     @include breakpoint($bp-min-1901-width) {
-      padding: 40px;
+      margin-top: 47.5px;
+      padding: 50px 100px;
     }
     @include breakpoint($between-1025-1280) {
-      width: calc(75% - 300px);
+      float: none;
+      margin-left: 300px;
+      width: calc(100% - 600px);
     }
     @include breakpoint($between-641-1024) {
       width: calc(100% - 300px);
@@ -146,12 +159,12 @@
       font-family: $tex-gyreschola-italic;
       font-size: get-vw(16px, 1025);
       letter-spacing: 1px;
-      margin-bottom: get-vw(35px, 1025);
+      margin-bottom: get-vw(25px, 1025);
       text-align: center;
       text-transform: uppercase;
       @include breakpoint($bp-min-1901-width) {
         font-size: 24px;
-        margin-bottom: 45px;
+        margin-bottom: 46px;
       }
       @include breakpoint($bp-1024-width) {
         font-size: 16px;
@@ -165,20 +178,20 @@
     }
     .about-show-text-block-description {
       font-size: get-vw(13px, 1025);
-      margin-bottom: get-vw(60px, 1025);
+      margin-bottom: get-vw(29px, 1025);
       text-align: center;
       @include breakpoint($bp-min-1901-width) {
         font-size: 24px;
-        margin-bottom: 80px;
+        margin-bottom: 53.8px;
       }
       @include breakpoint($bp-1024-width) {
         font-size: 13px;
       }
       @include breakpoint($bp-640-width) {
-        margin-bottom: 50px;
+        margin-bottom: 40px;
       }
       @include breakpoint($bp-480-width) {
-        margin-bottom: 30px;
+        margin-bottom: 25px;
       }
     }
     .about-show-text-block-more {

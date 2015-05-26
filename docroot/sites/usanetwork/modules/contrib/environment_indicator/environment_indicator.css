@@ -3,7 +3,7 @@
   text-align: center;
   white-space: nowrap;
   color: white;
-  text-shadow: 0 -1px 1px #333;
+  text-shadow: 0 -1px 1px #333333;
   font-weight: bold;
   z-index: 10;
   left: 0;
@@ -11,6 +11,8 @@
 }
 
 #admin-menu #environment-indicator { float: right; left: auto; right: auto; }
+
+#navbar-administration.navbar-oriented .navbar-tab.environment-indicator { float: right; left: auto; right: auto; }
 
 .fixed-yes { position: fixed; }
 .fixed-yes.position-bottom { bottom: 0; }
@@ -57,7 +59,7 @@ div#toolbar div.toolbar-menu { padding: 5px 20px 5px 10px; }
 #toolbar .item-list ul.environment-switcher-container li.environment-switcher {
   list-style: none;
   float: left;
-  background-color: #333;
+  background-color: #333333;
   margin: 0 3px;
   padding: 3px 8px;
   -moz-border-radius: 15px;
@@ -70,24 +72,24 @@ div#toolbar div.toolbar-menu { padding: 5px 20px 5px 10px; }
 
 #environment-indicator .item-list ul.environment-switcher-container li.environment-switcher:hover,
 #toolbar .item-list ul.environment-switcher-container li.environment-switcher:hover {
-  background-color: #DDD;
-  -moz-box-shadow: inset 0 1px 5px #333;
-  -webkit-box-shadow: inset 0 1px 5px #333;
-  -o-box-shadow: inset 0 1px 5px #333;
-  box-shadow: inset 0 1px 5px #333;
+  background-color: #dddddd;
+  -moz-box-shadow: inset 0 1px 5px #333333;
+  -webkit-box-shadow: inset 0 1px 5px #333333;
+  -o-box-shadow: inset 0 1px 5px #333333;
+  box-shadow: inset 0 1px 5px #333333;
 }
 #environment-indicator .item-list ul.environment-switcher-container li.environment-switcher a,
-#toolbar .item-list ul.environment-switcher-container li.environment-switcher a { color: #DDD; text-decoration: none; background-color: transparent !important; }
+#toolbar .item-list ul.environment-switcher-container li.environment-switcher a { color: #dddddd; text-decoration: none; background-color: transparent !important; }
 #environment-indicator .item-list ul.environment-switcher-container li.environment-switcher:hover a,
-#toolbar .item-list ul.environment-switcher-container li.environment-switcher:hover a { color: #333; }
+#toolbar .item-list ul.environment-switcher-container li.environment-switcher:hover a { color: #333333; }
 
 #environment-indicator .item-list, #toolbar .item-list {
   display: none;
   padding: 10px;
-  -moz-box-shadow: inset 0 0 5px #333;
-  -webkit-box-shadow: inset 0 0 5px #333;
-  -o-box-shadow: inset 0 0 5px #333;
-  box-shadow: inset 0 0 5px #333;
+  -moz-box-shadow: inset 0 0 5px #333333;
+  -webkit-box-shadow: inset 0 0 5px #333333;
+  -o-box-shadow: inset 0 0 5px #333333;
+  box-shadow: inset 0 0 5px #333333;
 }
 
 #admin-menu #environment-indicator .item-list {
@@ -95,4 +97,28 @@ div#toolbar div.toolbar-menu { padding: 5px 20px 5px 10px; }
   left: 0;
   right: 0;
   margin-top: 5px;
+}
+
+#navbar-administration .navbar-menu-item.navbar-menu-item-indicator {
+  padding: 0.3em;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0.7em 1.03333em;
+}
+
+.navbar-bar .navbar-icon-environment:before {
+  background-image: url("images/env-bebebe.svg");
+}
+.no-svg .navbar-bar .navbar-icon-environment:before {
+  background-image: url("images/env-bebebe.png");
+}
+.navbar-bar .navbar-icon-environment:active:before,
+.navbar-bar .navbar-icon-environment.navbar-active:before {
+  background-image: url("images/env-ffffff.svg");
+}
+.no-svg .navbar-bar .navbar-icon-environment:active:before,
+.no-svg .navbar-bar .navbar-icon-environment.navbar-active:before {
+  background-image: url("images/env-ffffff.png");
 }

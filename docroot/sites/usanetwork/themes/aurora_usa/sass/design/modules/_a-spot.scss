@@ -448,7 +448,7 @@
       width: 100%;
     }
     @include breakpoint ($bp-min-769-width) {
-      &:after {
+      &.shadow:after {
         content: '';
         display: block;
         width: 100%;

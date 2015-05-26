@@ -141,7 +141,7 @@
         dataPlayerId = data.data.player_id;
         dataFid = data.data.fid;
       }
-
+//usa_debug('========= micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')\ndataFid: ' + dataFid);
       if ($('#video-filter').length) {
         filter = $('#video-filter .filter-item.active').attr('data-filter-name');
         url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
@@ -531,6 +531,7 @@
         $('.featured-asset').removeClass('tve-overlay');
       });
 
+/*
       var resizeTimer;
       $(window).bind('resize', function () {
         if (typeof resizeTimer != 'undefined') clearTimeout(resizeTimer);
@@ -540,6 +541,7 @@
         }, 1000);
       });
       window.addEventListener('orientationchange', self.setVideoHeight);
+*/
     }
   }
 })(jQuery);

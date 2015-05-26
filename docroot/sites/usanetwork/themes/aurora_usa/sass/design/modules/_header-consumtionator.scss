@@ -332,7 +332,7 @@
               width: 170px;
             }
             @include breakpoint($bp-768-width) {
-              position: static;
+              position: relative;
             }
             h3 {
               color: $poll-back;

@@ -7725,7 +7725,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
   .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
   .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
-    position: static;
+    position: relative;
   }
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar h3,
@@ -26994,7 +26994,7 @@ yx-axis
   }
 }
 @media (min-width: 769px) {
-  .aspot-and-episodes .episodes-list:after {
+  .aspot-and-episodes .episodes-list.shadow:after {
     content: '';
     display: block;
     width: 100%;

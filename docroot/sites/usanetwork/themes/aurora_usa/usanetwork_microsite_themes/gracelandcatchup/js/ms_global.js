@@ -88,63 +88,91 @@ var initialPageLoad = 1;
         Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
         Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-//usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
+usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
       }
     },
 
+    // waypointHandler
+    sectionTimer: null,
+    waypointHandler: function(event, sectionId, direction){
+      usa_debug('========== waypointHandler(' + event + ', ' + sectionId + ', ' + direction + ')');
+
+      // if more than one function call arrives before the timeout is done,
+      // clear the timer and start over. This is to prevent, rapid scrolling
+      // or navigation clicks from triggering Omniture calls
+      clearTimeout(Drupal.behaviors.ms_global.sectionTimer);
+      Drupal.behaviors.ms_global.sectionTimer = setTimeout(function(){
+//        var anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId,
+//            urlSection = Drupal.behaviors.ms_global.parseUrl()['section'];
+        var urlSection = Drupal.behaviors.ms_global.parseUrl()['section'];
+        if (urlSection != sectionId) {
+          usa_debug('========== waypointHandler event triggered on ' + sectionId);
+          $('.section.active').removeClass('active');
+          $('#' + sectionId).addClass('active');
+          Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
+        }
+      }, 1000);
+    },
+
+
     // initializeWaypoints -- for triggering section scroll events
-    waypoints: {'down': {}, 'up': {}},
+//    waypoints: {'down': {}, 'up': {}},
+    waypoints: {},
     initializeWaypoints: function() {
       // When scrolling down, send Omniture page call when top of next section hits bottom of sticky nav
       // When scrolling up, send Omniture page call when bottom of previous section hits bottom of window
-      var sectionTimer;
-      function handler(event, sectionId, direction){
-        usa_debug('handler(' + event + ', ' + sectionId + ', ' + direction + ')');
-
-        // if more than one function call arrives before the timeout is done,
-        // clear the timer and start over. This is to prevent, rapid scrolling
-        // or navigation clicks from triggering Omniture calls
-        clearTimeout(sectionTimer);
-        sectionTimer = setTimeout(function(){
-          var anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId,
-              urlSection = Drupal.behaviors.ms_global.parseUrl()['section'];
-          if (urlSection != sectionId) {
-            usa_debug('========== handler event triggered on ' + sectionId);
-            $('.section.active').removeClass('active');
-            $('#' + sectionId).addClass('active');
-            Drupal.behaviors.ms_global.waypointResponse(direction, sectionId);
-          }
-        }, 1000);
-      }
 
       // loop through each section
       $('.section').each(function(){
-        var sectionId = $(this).attr('id'),
+        var sectionId = $(this).attr('id');
+/*
             firstSection = $('.section:first').attr('id'),
             lastSection = $('.section:last').attr('id'),
             downEnabled = (sectionId == firstSection || sectionId == 'site-nav') ? false : true,
             upEnabled = (sectionId == lastSection || sectionId == 'site-nav') ? false : true;
-
-//usa_debug('========= initializing waypoints for section ' + sectionId);
+*/
+usa_debug('========= initializing waypoints for section ' + sectionId);
         if (sectionId != 'site-nav') {
-          Drupal.behaviors.ms_global.waypoints['down'][sectionId] = new Waypoint.Inview({
+//          Drupal.behaviors.ms_global.waypoints['down'][sectionId] = new Waypoint.Inview({
+          Drupal.behaviors.ms_global.waypoints[sectionId] = new Waypoint.Inview({
             element: document.getElementById(sectionId),
 //            enter: function(direction) { handler('enter', sectionId, direction); },
             entered: function(direction) {
 //              if (sectionId == firstSection || sectionId == lastSection)
-                handler('entered', sectionId, direction);
+              Drupal.behaviors.ms_global.waypointHandler('entered', sectionId, direction);
             },
-            exit: function(direction) { handler('exit', sectionId, direction); },
+            exit: function(direction) {
+              Drupal.behaviors.ms_global.waypointHandler('exit', sectionId, direction);
+            },
 //            exited: function(direction) { handler('exited', sectionId, direction); }
           })
         }
       }); // end each section loop
     },
 
+    // setSectionIdsArray
+    sectionIds: [],
+    setSectionIdsArray: function() {
+      $('.section').each(function(index, section) {
+        Drupal.behaviors.ms_global.sectionIds[index] = $(this).attr('id');
+      });
+usa_debug('============= sectionIds: ');
+usa_debug(Drupal.behaviors.ms_global.sectionIds);
+    },
+
+    // getScrollDirectionUsingSections
+    getScrollDirectionUsingSections: function(nextSection) {
+      var currentActiveSection = $('.section.active').attr('id'),
+          currentActiveSectionPosition = Drupal.behaviors.ms_global.sectionIds.indexOf(currentActiveSection),
+          nextSectionPosition = Drupal.behaviors.ms_global.sectionIds.indexOf(nextSection),
+          direction = ((nextSectionPosition - currentActiveSectionPosition) > 0) ? 'down' : 'up';
+      return direction;
+    },
 
     // getScrollDirection
     lastYScrollPosition: 0,
     getScrollDirection: function() {
+usa_debug('========= sectionScroll -- lastYScrollPosition: ' + Drupal.behaviors.ms_global.lastYScrollPosition + ',  pageYOffset: ' + window.pageYOffset);
       scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
       Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
       return scrollDirection;
@@ -232,7 +260,15 @@ var initialPageLoad = 1;
           var timelineTitle = $('#microsite #timeline #timeline-title').text();
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery'; // This is intentional per Loretta!
-          if (itemTitle == '') itemTitle = $('#microsite #timeline .timeline-items .timeline-item.active .timeline-item-details > h2').text();
+          if (itemTitle == '') {
+            var $item = $('#microsite #timeline .timeline-items .timeline-item.active'),
+                itemSeason = $item.attr('data-season-num'),
+                itemEpisode = $item.attr('data-episode-num'),
+                itemEpisodeName = $item.attr('data-episode-name'),
+                itemScene = $item.attr('data-description');
+            itemTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
+//            itemTitle = $('#microsite #timeline .timeline-items .timeline-item.active .timeline-item-details > h2').text();
+          }
           s.prop5 = siteName + ' : Timeline SlideShow : ' + timelineTitle;
           s.pageName = s.prop5 + ' : ' + itemTitle;
           pageName = itemTitle + ' | Timeline Slideshow | ' + pageName;
@@ -428,8 +464,10 @@ var initialPageLoad = 1;
           anchorItem = $('#nav-' + anchor),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
           nextSection = '#' + anchor,
-          nextSectionId = $(nextSection).attr('id');
-
+          nextSectionId = $(nextSection).attr('id'),
+          direction = Drupal.behaviors.ms_global.getScrollDirectionUsingSections(anchor), // getScrollDirection(),
+          offsetDirection = (direction == 'down') ? 1 : -1;
+usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirection: ' + offsetDirection);
       // if this is IE9, reload the correct page
       if ($('html.ie9').length > 0) {
         window.location.href = anchorFull.replace('/home', '');
@@ -452,9 +490,9 @@ var initialPageLoad = 1;
 
       // now scroll to the next section
       var nextSectionElem = document.getElementById(anchor),
-          offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 5,
-          nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0; // nextSectionElem.offsetTop - siteNavHeight;
-//usa_debug('====== nextSection: ' + nextSection + ', nextSectionTop: ' + nextSectionTop);
+          offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
+          nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
+usa_debug('====== sectionScroll -- nextSection: ' + nextSection + ', offsetAmount: ' + offsetAmount + ', nextSectionTop: ' + nextSectionTop);
       $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
 //usa_debug('======== microsite animate complete');
         $('.section').removeClass('active');
@@ -471,18 +509,19 @@ var initialPageLoad = 1;
         if (nextSectionId != 'videos') {
           Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
           if (videoContainer.attr('data-ad-start') == 'true') {
-            videoContainer.find('.active-player .custom-play').addClass('active').show();
+//            videoContainer.find('.active-player .custom-play').addClass('active').show();
             videoContainer.find('.active-player .custom-play').click(function () {
               $pdk.controller.clickPlayButton(true);
               $pdk.controller.pause(false);
-              $('.active-player .custom-play').removeClass('active').hide();
+//              $('.active-player .custom-play').removeClass('active').hide();
             });
           }
         }
 
         Drupal.behaviors.ms_global.setActiveMenuItem(anchor);
       });
-      Drupal.behaviors.ms_global.globalInitialPageLoad = false;
+
+      if (anchor != 'home') Drupal.behaviors.ms_global.globalInitialPageLoad = false;
     },
 
     // RESIZING
@@ -534,6 +573,8 @@ var initialPageLoad = 1;
       else {
         $siteNav.removeClass('mobile');
       }
+
+      self.setSectionIdsArray();
 
       // TIME OUT
       // we need to allow time for the page to load -- especially videos
@@ -591,11 +632,13 @@ var initialPageLoad = 1;
             self.sectionScroll(urlParts['section'], urlParts['item']);
           }, 1000);
         }
+/*
         else {
           self.globalInitialPageLoad = false;
         }
-
+*/
         self.create728x90Ad();
+
       }, 2000);
       // END TIME OUT
 

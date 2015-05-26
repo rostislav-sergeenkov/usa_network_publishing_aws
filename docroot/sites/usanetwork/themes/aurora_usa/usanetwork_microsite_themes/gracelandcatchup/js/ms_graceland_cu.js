@@ -47,13 +47,6 @@
       }
     },
 
-    //scroll to top
-    micrositeScrollToTop: function scrollToTop() {
-      $('.section.active').animate({
-        scrollTop: 0
-      }, 2000);
-    },
-
     // ATTACH
     attach: function (context, settings) {
       // set defaults

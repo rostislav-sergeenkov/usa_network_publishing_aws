@@ -2676,7 +2676,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $node = $section_wrapper->field_ms_timeline_gallery->value();
               $omniture_prop5 = t($entity->title . ' : Timeline Slideshow : ' . $node->title);
               // @TODO - DV: We must pull the "S1 Episode 1 | Pilot | Scene 1'" info in the next line from the CMS
-              $omniture_pagename = t($entity->title . ' : Timeline Slideshow : ' . $node->title . ' : S1 Episode 1 | Pilot | Scene 1');
+              $omniture_pagename = t($entity->title . ' : Timeline Slideshow : ' . $node->title . ' : Season 1 Episode 1 | Pilot | Scene 1');
               $umbel = $node->title;
             }
           }

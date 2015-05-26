@@ -13296,7 +13296,7 @@ footer h2 {
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block {
     padding: 56.25vw 0 0;
-    border-bottom: 7px solid;
+    border-bottom: 8px solid;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header {
@@ -26924,7 +26924,7 @@ yx-axis
   }
 }
 @media (min-width: 769px) {
-  .aspot-and-episodes .episodes-list:after {
+  .aspot-and-episodes .episodes-list.shadow:after {
     content: '';
     display: block;
     width: 100%;

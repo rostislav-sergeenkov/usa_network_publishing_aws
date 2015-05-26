@@ -21,10 +21,5 @@
       </span>
       <span class="slide-index"></span>
     </div>
-    <?php if ($gigya_id): ?>
-      <div class="social-bar">
-       <?php print $gigya_id; ?>
-      </div>
-    <?php endif; ?>
   </div>
 </div>

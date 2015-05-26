@@ -27,11 +27,6 @@
   <div class="section-description"><?php print $description; ?></div>
 <?php endif; ?>
 
-<!-- <div id="quiz-section-description" class="section-description">
-Test your knowledge of Graceland. Lorem ipsum dolor sit amet, consectutur adipiscing ellt.<br>
-WARNING &mdash; CONTAINS SPOILERS!
-</div> -->
-
 <div class="full-pane clearfix">
   <?php if (!empty($page['quiz_html']) && !empty($page['nid'])): ?>
   <div id="viewport">
@@ -49,15 +44,13 @@ WARNING &mdash; CONTAINS SPOILERS!
       <h3 class="quiz-title"><?php print $page['title']; ?></h3>
       <?php endif; ?>
 
-      <?php // if (!empty($h1)): ?>
-        <?php if ($status == 'active'): ?>
-        <h1 class="seo-h1"><?php print $h1; ?></h1>
-        <?php else: ?>
-        <h3 class="seo-h1"><?php print $h1; ?></h3>
-        <?php endif; ?>
+      <?php if ($status == 'active'): ?>
+      <h1 class="seo-h1"><?php print $h1; ?></h1>
+      <?php else: ?>
+      <h3 class="seo-h1"><?php print $h1; ?></h3>
       <?php endif; ?>
     </div>
-    <?php // endif; ?>
+    <?php endif; ?>
 
     <div id="quiz-loader"><img src="/sites/usanetwork/themes/aurora_usa/images/ajax-loader.gif" alt="loading animation"></div>
   </div>

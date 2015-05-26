@@ -47,9 +47,6 @@
               <?php if (!empty($details['episode_info']['season_number']) && !empty($details['episode_info']['episode_number'])): ?>
                 <div class="additional">
                   <span>S<?php print $details['episode_info']['season_number'] ?> <?php print t('episode') . ' ' . $details['episode_info']['episode_number']; ?></span>
-                <?php if (!empty($details['episode_info']['duration'])): ?>
-                  <?php print $details['episode_info']['duration']; ?>
-                <?php endif; ?>
                 </div>
               <?php endif; ?>
             </div>

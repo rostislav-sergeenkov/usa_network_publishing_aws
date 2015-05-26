@@ -16,14 +16,15 @@
       });
 
       //init custom scrollbar for social block
-      var container = $('#block-usanetwork-mpx-video-usanetwork-social-content .content');
+      //var container = $('#block-usanetwork-mpx-video-usanetwork-social-content .content .show-border');
 
-      $(container).mCustomScrollbar({
-        axis: "y",
-        theme: "light",
-        scrollEasing: "easeOut"
-      });
-
+      //if(container.length > 0) {
+      //  $(container).mCustomScrollbar({
+      //    axis: "y",
+      //    theme: "light",
+      //    scrollEasing: "easeOut"
+      //  });
+      //}
     }
   };
 

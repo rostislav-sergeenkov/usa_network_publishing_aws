@@ -1,4 +1,4 @@
-#full-bleed-promo {
+#full-bleed-promo.full-bleed-enable {
   .full-bleed-wrapper {
     @include clear();
     margin: 0 auto;
@@ -79,7 +79,7 @@
   }
 }
 
-.about-show-block {
+.about-show-block.about-show-enable {
   @include clear();
   background: $poll-back;
   overflow: hidden;
@@ -126,11 +126,14 @@
     float: left;
     font-family: $avalon-medium;
     height: 100%;
-    line-height: 1.2;
+    line-height: 1.4;
     padding: 30px;
-    width: calc(75% - 300px);
+    width: 50%;
     @include breakpoint($bp-min-1901-width) {
       padding: 40px;
+    }
+    @include breakpoint($between-1025-1280) {
+      width: calc(75% - 300px);
     }
     @include breakpoint($between-641-1024) {
       width: calc(100% - 300px);
@@ -192,33 +195,33 @@
         @include breakpoint($bp-min-1901-width) {
           font-size: 18px;
           padding: 19.5px 37.5px 19.5px 30px;
-          width: 180px;
+          width: 223px;
         }
-        @include breakpoint($bp-480-width) {
+        @include breakpoint($bp-1024-width) {
           font-size: 10px;
-          padding: 10px 20px 10px 15px;
-          width: 90px;
+          padding: 13px 25px 13px 20px;
+          width: 120px;
         }
         &:after {
           color: #ffffff;
           content: "\e608";
           display: block;
           font-family: "ico-font";
-          font-size: 10px;
+          font-size: get-vw(10px, 1025);
           line-height: 1;
           position: absolute;
-          margin-top: -5px;
-          right: 16px;
+          margin-top: get-vw(-5px, 1025);
+          right: get-vw(16px, 1025);
           top: 50%;
           @include breakpoint($bp-min-1901-width) {
-            font-size: 15px;
-            margin-top: -7.5px;
-            right: 24px;
+            font-size: 18px;
+            margin-top: -9px;
+            right: 29.7px;
           }
-          @include breakpoint($bp-480-width) {
-            font-size: 8px;
-            margin-top: -4px;
-            right: 12px;
+          @include breakpoint($bp-1024-width) {
+            font-size: 10px;
+            margin-top: -5px;
+            right: 16px;
           }
         }
       }
@@ -229,6 +232,13 @@
     position: absolute;
     right: 0;
     top: 50%;
+    width: 25%;
+    > div {
+      text-align: center;
+    }
+    @include breakpoint($bp-1280-width) {
+      width: 300px;
+    }
     @include breakpoint($bp-640-width) {
       display: none;
     }

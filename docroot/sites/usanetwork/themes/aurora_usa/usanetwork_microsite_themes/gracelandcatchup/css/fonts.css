@@ -1,4 +1,11 @@
 @font-face {
+  font-family: 'ico-font';
+  src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ico-font.eot");
+  src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ico-font.eot?#iefix") format("embedded-opentype"), url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ico-font.woff") format("woff"), url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ico-font.ttf") format("truetype"), url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ico-font.svg#itc_avant_garde_gothic_prdemi") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: "Proxima N W01 Thin Reg";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/37994fca-b67e-41db-94b3-44077c62810a.eot?iefix") format("eot"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/da176885-bee9-49f7-88f0-d7ad9229ddd7.woff") format("woff"),

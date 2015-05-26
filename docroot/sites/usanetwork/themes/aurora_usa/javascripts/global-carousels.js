@@ -124,6 +124,8 @@
                       }
                     }
                   },
+                  swipeUp: function(e) {},
+                  swipeDown: function(e) {},
                   tap: function (event, target) {
                     var click_on_opened = $(target).closest('li.active').length > 0;
                     var tapHandler = function() {
@@ -366,7 +368,7 @@
     },
     showOpen: function (target) {
       var current_item = target.closest('li');
-      var current_item_node = current_item.find('.node-usanetwork-promo');
+      var current_item_node = current_item.find('.node').eq(0);
       var carousel = target.closest('ul');
       var current_left = parseInt(carousel.css('left'));
       var width = desktop_show_open_width;
@@ -411,7 +413,7 @@
     },
     showClose: function (item) {
       var carousel = item.closest('ul');
-      var current_item_node = item.find('.node-usanetwork-promo');
+      var current_item_node = item.find('.node').eq(0);
       var left = parseInt(item.attr('data-left'));
       var item_width = parseInt(item.attr('data-width'));
       carousel.animate({left: left}, 500);

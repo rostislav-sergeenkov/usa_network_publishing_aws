@@ -12,5 +12,8 @@
       </div>
     <?php endforeach; ?>
     </div>
+    <div class="share-bar">
+      <?php print $sharebar; ?>
+    </div>
   <?php endif; ?>
 </div>

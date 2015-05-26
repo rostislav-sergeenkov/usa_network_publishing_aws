@@ -28,5 +28,5 @@
     $('header .header-nav-bar').addClass('tve-sign');
 
   }
-  
+
 })(angular, jQuery);

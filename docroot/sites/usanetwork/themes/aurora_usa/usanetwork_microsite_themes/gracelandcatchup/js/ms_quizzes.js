@@ -8,7 +8,7 @@
     },
 */
     init300x250Ad: function(nid) {
-      var _target = '.ad-container'; // '.dart-name-300x250_ifr_reload';
+      var _target = '.ad-container';
       mps.insertAd(mps._select(_target),'topbox');
       mps.refreshAds('topbox');
     },
@@ -48,6 +48,7 @@
     },
 
     updateSettingsGigyaSharebars: function(title, link, description, imageUrl) {
+usa_debug('======== ms_quizzes.js -- updateSettingsGigyaSharebars(' + title + ', ' + link + ', ' + description + ', ' + imageUrl + ')');
       var newSharebarObj = [];
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'quiz-gigya-share', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'gigya-share--2', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
@@ -430,11 +431,13 @@
           });
         }
 
+/*
         // set resize and orientation change
         $(window).bind('resize', function () {
           self.reloadSliders();
         });
         window.addEventListener('orientationchange', self.reloadSliders);
+*/
       }
     }
   }

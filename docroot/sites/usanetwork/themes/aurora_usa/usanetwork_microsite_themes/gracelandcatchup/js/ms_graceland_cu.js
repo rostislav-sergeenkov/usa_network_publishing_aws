@@ -64,86 +64,70 @@
           self = this;
 
 
-//      $(document).ready(function(){
-        var homeSectionHeight,
-            siteNavTimer,
-            siteNavPositionTimer,
-            scrollTimer,
-            allAdsLoaded = false,
-            scrollDirection;
+      var homeSectionHeight,
+          siteNavTimer,
+          siteNavPositionTimer,
+          scrollTimer,
+          allAdsLoaded = false,
+          scrollDirection;
 
-        setTimeout(function(){
-          homeSectionHeight = self.getHeightHomeSection();
-          self.setSiteNav();
-        }, 500);
+      setTimeout(function(){
+        homeSectionHeight = self.getHeightHomeSection();
+        self.setSiteNav();
+      }, 500);
 
 
-        // SCROLLING
-        $(window).on('scroll', function() {
-          if (typeof siteNavPositionTimer == 'undefined') {
-            siteNavPositionTimer = setTimeout(function(){
-              var position = (window.pageYOffset >= homeSectionHeight) ? 'fixed' : 'relative';
-              $('#site-nav').css({'position': position});
-              siteNavPositionTimer = clearTimeout(siteNavPositionTimer);
-            }, 15);
-          }
+      // SCROLLING
+      $(window).on('scroll', function() {
+        if (typeof siteNavPositionTimer == 'undefined') {
+          siteNavPositionTimer = setTimeout(function(){
+            var position = (window.pageYOffset >= homeSectionHeight) ? 'fixed' : 'relative';
+            $('#site-nav').css({'position': position});
+            siteNavPositionTimer = clearTimeout(siteNavPositionTimer);
+          }, 15);
+        }
 
-          if (typeof siteNavTimer == 'undefined') {
-            siteNavTimer = setTimeout(function(){
-              self.setSiteNav();
-              siteNavTimer = clearTimeout(siteNavTimer);
-            }, 200);
-          }
+        if (typeof siteNavTimer == 'undefined') {
+          siteNavTimer = setTimeout(function(){
+            self.setSiteNav();
+            siteNavTimer = clearTimeout(siteNavTimer);
+          }, 200);
+        }
 
-          // initial load of each ad as it comes into view
-          scrollTimer = clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(function() {
-            scrollDirection = Drupal.behaviors.ms_global.getScrollDirection();
+        // initial load of each ad as it comes into view
+        scrollTimer = clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function() {
+          scrollDirection = Drupal.behaviors.ms_global.getScrollDirection();
 
-            console.log('============ Haven\'t scrolled in 250ms!\nscrollDirection: ' + scrollDirection);
-            if (!allAdsLoaded) {
-              allAdsLoaded = true;
-              $('#microsite .section').each(function(){
-                var sectionId = $(this).attr('id');
-                if (sectionId != 'site-nav') {
-                  if ($('#' + sectionId + ' .ad-leaderboard').html() == '') {
-                    allAdsLoaded = false;
+//usa_debug('============ Haven\'t scrolled in 250ms!\nscrollDirection: ' + scrollDirection);
+          if (!allAdsLoaded) {
+            allAdsLoaded = true;
+            $('#microsite .section').each(function(){
+              var sectionId = $(this).attr('id');
+              if (sectionId != 'site-nav') {
+                if ($('#' + sectionId + ' .ad-leaderboard').html() == '') {
+                  allAdsLoaded = false;
 //usa_debug('============= 728x90 ad not loaded yet for #' + sectionId + ', allAdsLoaded: ' + allAdsLoaded);
-                    if (sectionId == 'videos') {
-                      var $activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
-                          dataFullEpisode = $activeVideoThumb.attr('data-full-episode');
+                  if (sectionId == 'videos') {
+                    var $activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
+                        dataFullEpisode = $activeVideoThumb.attr('data-full-episode');
 
-                      if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
-                        Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-                      }
+                    if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
+                      Drupal.behaviors.ms_global.create728x90Ad(sectionId);
                     }
-                    else {
-                      if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
+                  }
+                  else {
+                    if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
 //usa_debug('============ scroll triggered create728x90Ad(' + sectionId + ')');
-                        Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-                      }
+                      Drupal.behaviors.ms_global.create728x90Ad(sectionId);
                     }
                   }
-
-/*
-                  if (sectionId == 'quizzes') {
-                    if ($('.dart-name-300x250_ifr_reload_quizzes').html() == '') {
-                      allAdsLoaded = false;
-//usa_debug('============= 300x250 ad not loaded yet for #' + sectionId + ', allAdsLoaded: ' + allAdsLoaded);
-                      if (Drupal.behaviors.ms_global.isScrolledIntoView('.dart-name-300x250_ifr_reload_quizzes')) {
-//usa_debug('============ scroll triggered create300x250Ad(' + sectionId + ')');
-                        Drupal.behaviors.ms_global.create300x250Ad(sectionId);
-                      }
-                    }
-                  }
-*/
                 }
-              });
-            }
-          }, 250);
-        });
-//      });
-
+              }
+            });
+          }
+        }, 250);
+      });
     }
   }
 })(jQuery);

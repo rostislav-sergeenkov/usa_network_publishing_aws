@@ -2413,12 +2413,20 @@ function _usanetwork_microsite_get_first_published_item($entity_wrapper) {
 
   $entity = $entity_wrapper->value();
 
-  if (!is_array($entity) && $entity->status == NODE_PUBLISHED) {
-    return $entity;
+  if (!is_array($entity)) {
+    if (!empty($entity->nid) && $entity->status == NODE_PUBLISHED) {
+      return $entity;
+    }
+    elseif (!empty($entity->fid) && $entity->mpx_video_data['status'] == NODE_PUBLISHED) {
+      return $entity;
+    }
   }
   else {
     foreach ($entity as $entity_object) {
-      if ($entity_object->mpx_video_data['status'] == NODE_PUBLISHED) {
+      if (!empty($entity_object->nid) && $entity_object->status == NODE_PUBLISHED) {
+        return $entity_object;
+      }
+      elseif (!empty($entity_object->fid) && $entity_object->mpx_video_data['status'] == NODE_PUBLISHED) {
         return $entity_object;
       }
     }

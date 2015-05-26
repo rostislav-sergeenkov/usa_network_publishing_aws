@@ -16,7 +16,11 @@
     <div class="download-app-wrapper">
       <div class="image-block"></div>
       <div class="text-block">Get USA NOW to watch full episodes from any device.</div>
-      <div class="download-button show-color">Download the app</div>
+      <div class="download-button show-color">
+        <a href="/app" target="_self">
+          Download the app
+        </a>
+      </div>
     </div>
   </div>
   <div class="items-block gallaries-thumbs-block">

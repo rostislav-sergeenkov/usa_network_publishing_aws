@@ -11,26 +11,33 @@
     width: 74.7%;
     background: #ffffff;
     color: #000000;
-    padding: 45px 38px 45px 58px;
+    padding: 45px 0;
     @include breakpoint($bp-1280-width) {
       float: none;
-      padding: 25px 31px 38px 36px;
+      padding: 25px 0 38px 0;
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
-      padding: 24px;
+      padding: 24px 0;
+      border-bottom: 2px solid;
     }
     @include breakpoint($bp-768-width) {
-      padding: 38px 24px 38px 24px;
+      padding: 38px 0 38px 0;
     }
     @include breakpoint ($bp-640-width) {
       padding: 56.25vw 0 0;
+      border-bottom: 8px solid;
     }
     .block-character-info-header {
       @include clear();
       margin-bottom: 30px;
+      padding: 0 38px 0 58px;
       @include breakpoint($bp-1280-width) {
         margin-bottom: 15px;
+        padding: 0 31px 0 36px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 0 24px;
       }
       @include breakpoint($bp-640-width) {
         margin-bottom: 0;
@@ -115,6 +122,13 @@
     }
     .block-character-info-content {
       @include clear();
+      padding: 0 38px 0 58px;
+      @include breakpoint($bp-1280-width) {
+        padding: 0 31px 0 36px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 0 24px;
+      }
       .asset-img {
         width: 46.8%;
         float: left;
@@ -167,11 +181,11 @@
           width: 57%;
         }
         @include breakpoint($bp-640-width) {
-          padding: 10px 46px;
+          padding: 10px 22px;
           width: 100%
         }
         @include breakpoint($bp-480-width) {
-          padding: 10px 25px;
+          padding: 10px 1px;
         }
         iframe {
           width: 100%;

@@ -121,11 +121,6 @@
         //move pager items position
         movePagerItems(pager);
       });
-
-      var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index'),
-          slide = $('#bxslider-gallery .slide').eq(index).addClass('active');
-
-      gigyaSharebar(slide, index);
     }
 
     var options = {
@@ -203,6 +198,13 @@
       timers[uniqueId] = setTimeout(callback, ms);
     };
   })();
+
+  $(window).load(function () {
+    var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index'),
+        slide = $('#bxslider-gallery .slide').eq(index).addClass('active');
+
+    gigyaSharebar(slide, index);
+  });
 
   $(document).ready(function () {
     // bxslider-gallery slider initialization

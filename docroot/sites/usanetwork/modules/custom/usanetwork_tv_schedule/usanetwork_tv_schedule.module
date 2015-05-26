@@ -899,7 +899,7 @@ function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
     $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
     $show_name = $schedule_item->show_title;
 
-    if (isset($show_title_aliases[$schedule_item->show_title])) {
+    if (isset($show_title_aliases[$show_name])) {
       $show_name = $show_title_aliases[$show_name];
     }
     else {
@@ -932,6 +932,9 @@ function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
 
   if (empty($result) && $schedule_item->program_type == 'movie') {
     $result = usanetwork_schedule_get_movie_default_image();
+  }
+  elseif (empty($result) && $schedule_item->program_type != 'movie') {
+    $result = usanetwork_schedule_get_episode_default_image();
   }
 
   return $result;

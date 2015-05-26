@@ -2,37 +2,28 @@
 
   var USAN = USAN || {};
 
-  function gigyaSharebar(slide, index) {
+  function gigyaSharebar(slide, indexSlide) {
     if (typeof Drupal.gigya != 'undefined') {
       var slider = $('.gallery-wrapper');
       var $sharebar = slider.find('.field-name-field-gigya-share-bar > div');
       if ($sharebar.length > 0) {
-        var $title = slide.find('.gallery-name').text();
+        var $currentDescription = slide.find('.slide-info .description').text();
+        if ($currentDescription == '' && $('meta[property="og:description"]').length > 0) {
+          $currentDescription = $('meta[property="og:description"]').attr('content');
+        }
         var $currentImage = slide.find('.asset-img img');
-        var $currentCaption = slide.find('.slide-info .description').text();
-
-        sharebar = new Object();
-        sharebar.gigyaSharebar = {
-          containerID: "gigya-share",
-          iconsOnly: true,
-          layout: "horizontal",
-          shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          shortURLs: "never",
-          showCounts: "none"
-        };
-
-        //var url = window.location.href + '#' + index;
         var url = window.location.href;
-
-        sharebar.gigyaSharebar.ua = {
-          description: $currentCaption,
-          imageBhev: "url",
-          imageUrl: $currentImage.attr('src'),
-          linkBack: url,
-          title: $title
-        };
-
-        Drupal.gigya.showSharebar(sharebar);
+        $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+          if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
+            var url = window.location.href.split('#')[0];
+            //sharebar.gigyaSharebar.ua.linkBack = url + '#' + (slider.currentSlide + 1);
+            sharebar.gigyaSharebar.ua.linkBack = url + '#' + indexSlide;
+            sharebar.gigyaSharebar.ua.imageBhev = 'url';
+            sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('data-src-share') ? $currentImage.attr('data-src-share') : $currentImage.attr('src');
+            sharebar.gigyaSharebar.ua.description = $currentDescription;
+            Drupal.gigya.showSharebar(sharebar);
+          }
+        });
       }
     }
   }

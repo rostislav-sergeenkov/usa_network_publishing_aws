@@ -94,6 +94,8 @@
 
                 $container.swipe({
                   excludedElements: "button, input, select, textarea, .noSwipe",
+                  allowPageScroll: "vertical",
+                  threshold: 50,
                   swipeRight: function () {
                     if (!$carousel.hasClass('stop')) {
                       var visible_item = $container.jcarousel('visible').index($container.find('li.first'));
@@ -123,12 +125,6 @@
                         $container.jcarousel('scroll', '+=' + count);
                       }
                     }
-                  },
-                  swipeUp: function(e) {
-                    e.preventDefault();
-                  },
-                  swipeDown: function(e) {
-                    e.preventDefault();
                   },
                   tap: function (event, target) {
                     var click_on_opened = $(target).closest('li.active').length > 0;

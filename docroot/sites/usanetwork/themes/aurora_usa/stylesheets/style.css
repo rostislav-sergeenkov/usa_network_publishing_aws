@@ -26902,7 +26902,7 @@ yx-axis
   }
 }
 @media (min-width: 769px) {
-  .aspot-and-episodes .episodes-list:after {
+  .aspot-and-episodes .episodes-list.shadow:after {
     content: '';
     display: block;
     width: 100%;

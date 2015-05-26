@@ -226,7 +226,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
   if (isset($node->type) && $node->type == 'media_gallery') {
     $slides = array();
-    if (!empty($node->field_gigya_share_bar)) {
+    if (isset($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this image');
     }

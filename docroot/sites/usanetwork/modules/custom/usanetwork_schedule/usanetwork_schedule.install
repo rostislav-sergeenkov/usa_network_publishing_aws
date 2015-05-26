@@ -145,3 +145,19 @@ function usanetwork_schedule_update_7126() {
     variable_set('usanetwork_schedule_movie_image_fid', $file->fid);
   }
 }
+
+/**
+ * Add default image to non USA Movie field
+ */
+function usanetwork_schedule_update_7127() {
+  global $user;
+
+  $image_url = drupal_get_path('module', 'usanetwork_schedule') . '/images/USA_1920x1057.jpg';
+  $image = file_get_contents($image_url);
+  $file = file_save_data($image, 'public://usaepisode_default_image.jpg', FILE_EXISTS_RENAME);
+
+  if ($file) {
+    file_usage_add($file, 'user', 'user', $user->uid);
+    variable_set('usanetwork_schedule_episode_image_fid', $file->fid);
+  }
+}

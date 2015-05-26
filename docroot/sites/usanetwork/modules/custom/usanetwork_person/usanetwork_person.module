@@ -468,6 +468,8 @@ function _usanetwork_person_characters_main_block() {
     }
   }
 
+  $social_block = module_invoke('usanetwork_mpx_video', 'block_view', 'usanetwork_social_content');
+
   $theme_variables = array(
     'sharebar' => !empty($sharebar) ? render($sharebar) : '',
     'character_full_name' => $person_node->title,
@@ -488,6 +490,7 @@ function _usanetwork_person_characters_main_block() {
       : '',
     'show_tabs' => isset($show_tabs) ? $show_tabs : NULL,
     'cast_landing_link' => !empty($person_node->field_show) ? l(t('Go to cast & info'), 'node/' . $person_node_wrapper->field_show->nid->value() . '/cast') : '',
+    'social_block' => render($social_block['content']),
   );
 
   return theme('usanetwork_person_character_main_block', $theme_variables);
@@ -905,6 +908,13 @@ function _usanetwork_person_render_cast_crew_block() {
         $image = $person_node_wrapper->field_usa_character_thumb->value();
       }
       $person_role = !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '';
+      if (!empty($person_role)) {
+        if (strtolower($person_role) == 'character') {
+          if (!empty($person_node->field_usa_actor_name)) {
+            $person_role = $person_node_wrapper->field_usa_actor_name->value();
+          }
+        }
+      }
       $theme_variables['persons'][] = array(
         'name' => !empty($person_node->title) ? $person_node->title : '',
         'role' => strtolower($person_role) != 'blank' ? $person_role : '',

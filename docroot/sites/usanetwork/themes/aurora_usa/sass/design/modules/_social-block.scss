@@ -1,28 +1,28 @@
 #block-usanetwork-mpx-video-usanetwork-social-content {
-  padding: 20px 16px 0;
-  @include breakpoint($bp-min-1901-width) {
-    padding-top: 30px;
-  }
-  @include breakpoint($bp-768-width) {
-    padding-top: 30px;
-  }
-  @include breakpoint($bp-640-width) {
-    padding-top: 20px;
-  }
-  @include breakpoint($bp-480-width) {
-    padding: 20px 10px 0;
-  }
-  .content {
+  .show-border{
     border-bottom: 2px solid;
-    max-height: 615px;
+    overflow: hidden;
+    max-height: 700px;
+    padding: 20px 16px 0;
     @include breakpoint($bp-min-1901-width) {
-      max-height: 885px;
+      max-height: 800px;
+      padding-top: 30px;
+    }
+    @include breakpoint($bp-1280-width) {
+      max-height: 600px;
     }
     @include breakpoint($bp-1024-width) {
       max-height: 445px;
     }
+    @include breakpoint($bp-768-width) {
+      padding-top: 30px;
+    }
     @include breakpoint($bp-640-width) {
       max-height: 1695px;
+      padding-top: 20px;
+    }
+    @include breakpoint($bp-480-width) {
+      padding: 20px 10px 0;
     }
   }
 }

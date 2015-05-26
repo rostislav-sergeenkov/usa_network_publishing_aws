@@ -94,6 +94,8 @@
 
                 $container.swipe({
                   excludedElements: "button, input, select, textarea, .noSwipe",
+                  allowPageScroll: "vertical",
+                  threshold: 50,
                   swipeRight: function () {
                     if (!$carousel.hasClass('stop')) {
                       var visible_item = $container.jcarousel('visible').index($container.find('li.first'));
@@ -124,8 +126,6 @@
                       }
                     }
                   },
-                  swipeUp: function(e) {},
-                  swipeDown: function(e) {},
                   tap: function (event, target) {
                     var click_on_opened = $(target).closest('li.active').length > 0;
                     var tapHandler = function() {

@@ -4,7 +4,7 @@
  */
 ?>
 <div class="consumptionator-characters-main-block">
-  <div class="character-info-block">
+  <div class="character-info-block show-border">
     <div class="block-character-info-header">
       <div class="block-character-info-header-left">
         <?php if (!empty($character_full_name)): ?>
@@ -59,6 +59,11 @@
         </div>
       </div>
     </div>
+    <?php if (!empty($social_block)) : ?>
+      <div class="block-character-social-content">
+        <?php print $social_block; ?>
+      </div>
+    <?php endif; ?>
   </div>
   <div class="consum-sidebar">
     <div class="node-wrapper advert">

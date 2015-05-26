@@ -99,6 +99,24 @@
       }
     }
     &:hover {
+      .bx-viewport {
+        .bxslider-gallery {
+          .slide {
+            .node {
+              .slide-info {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+      .bx-controls {
+        .bx-custom-pager {
+          @include breakpoint($bp-min-769-width) {
+            display: block !important;
+          }
+        }
+      }
       .share-bar {
         display: block;
       }
@@ -268,26 +286,6 @@
     .bx-wrapper {
       height: 100%;
       position: relative;
-      &:hover {
-        .bx-viewport {
-          .bxslider-gallery {
-            .slide {
-              .node {
-                .slide-info {
-                  display: block;
-                }
-              }
-            }
-          }
-        }
-        .bx-controls {
-          .bx-custom-pager {
-            @include breakpoint($bp-min-769-width) {
-              display: block;
-            }
-          }
-        }
-      }
       .bx-viewport {
         height: 100% !important;
       }

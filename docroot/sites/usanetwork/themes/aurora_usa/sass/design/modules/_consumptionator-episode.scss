@@ -243,7 +243,7 @@
               }
               @include breakpoint($bp-1280-width) {
                 font-size: 13px;
-                padding: 10px 5%;
+                padding: 10px 9%;
               }
               @include breakpoint($bp-1024-width) {
                 font-size: 12px;

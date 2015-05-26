@@ -106,6 +106,25 @@ function usanetwork_schedule_get_movie_default_image($image_style_name = NULL) {
 }
 
 /**
+ * Returns image URL for default image for schedule.
+ *
+ * @param null $image_style_name - machine-readable name of applicable image style.
+ */
+function usanetwork_schedule_get_episode_default_image($image_style_name = NULL) {
+  $default_image_fid = variable_get('usanetwork_schedule_episode_image_fid', NULL);
+
+  if (!empty($default_image_fid)) {
+    $file = file_load($default_image_fid);
+
+    return !empty($image_style_name)
+      ? image_style_url($image_style_name, $file->uri)
+      : $file->uri;
+  }
+
+  return '';
+}
+
+/**
  * Pulls data from service and puts it to datatable.
  */
 function usanetwork_schedule_pull() {
@@ -335,7 +354,7 @@ function _usanetwork_schedule_get_show_alias_names() {
         $matches = array();
 
         if (preg_match("/^(.+)\s*\|\s*(.+)$/", $alias, $matches)) {
-          $data[$matches[1]] = $matches[2];
+          $data[trim($matches[1])] = trim($matches[2]);
         }
       }
     }

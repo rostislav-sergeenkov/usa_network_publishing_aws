@@ -7770,6 +7770,14 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .node-type-person header .tab-content .tab-item .tab-item-content .sharebar .field-name-field-gigya-share-bar {
   margin-bottom: 0;
 }
+.consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container,
+.consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container,
+.node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container,
+.page-videos-live header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container,
+.node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container,
+.node-type-person header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container {
+  padding: 0;
+}
 .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container td > div,
 .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container td > div,
 .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container td > div, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container td > div,
@@ -7777,6 +7785,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container td > div,
 .node-type-person header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container td > div {
   font-size: 1.95122vw;
+  padding: 0;
+  margin: 0 1.17073vw 0 0;
   width: 1.95122vw !important;
 }
 @media (min-width: 1901px) {
@@ -7787,6 +7797,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container td > div,
   .node-type-person header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container td > div {
     font-size: 37px;
+    margin: 0 22.3px 0 0;
     width: 37px !important;
   }
 }
@@ -7798,6 +7809,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar .field-type-gigya-sharebar .gig-button-container td > div,
   .node-type-person header .tab-content .tab-item .tab-item-content .sharebar .field-type-gigya-sharebar .gig-button-container td > div {
     font-size: 20px;
+    margin: 0 12px 0 0;
     width: 20px !important;
   }
 }

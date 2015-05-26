@@ -700,7 +700,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'image' => !empty($image_url)
             ? theme('image_style', array(
               'path' => $image_url,
-              'style_name' => '300x169',
+              'style_name' => '300x169_video',
               'attributes' => array(
                 'class' => array(
                   'running-now-show-preview-image'
@@ -738,7 +738,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'image' => !empty($data['next']->nid)
             ? theme('image_style', array(
               'path' => $image_url,
-              'style_name' => '300x169',
+              'style_name' => '300x169_video',
               'attributes' => array(
                 'class' => array(
                   'running-next-show-preview-image'

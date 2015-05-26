@@ -11341,8 +11341,8 @@ footer h2 {
   display: block;
 }
 @media (min-width: 769px) {
-  .consumptionator-page .gallery-wrapper:hover .bx-controls .bx-custom-pager, .node-type-media-gallery .gallery-wrapper:hover .bx-controls .bx-custom-pager, .node-type-tv-episode .gallery-wrapper:hover .bx-controls .bx-custom-pager {
-    display: block !important;
+  .consumptionator-page .gallery-wrapper:hover .bx-wrapper .bx-controls .bx-custom-pager, .node-type-media-gallery .gallery-wrapper:hover .bx-wrapper .bx-controls .bx-custom-pager, .node-type-tv-episode .gallery-wrapper:hover .bx-wrapper .bx-controls .bx-custom-pager {
+    display: block;
   }
 }
 .consumptionator-page .gallery-wrapper:hover .share-bar, .node-type-media-gallery .gallery-wrapper:hover .share-bar, .node-type-tv-episode .gallery-wrapper:hover .share-bar {

@@ -110,10 +110,12 @@
           }
         }
       }
-      .bx-controls {
-        .bx-custom-pager {
-          @include breakpoint($bp-min-769-width) {
-            display: block !important;
+      .bx-wrapper {
+        .bx-controls {
+          .bx-custom-pager {
+            @include breakpoint($bp-min-769-width) {
+              display: block;
+            }
           }
         }
       }

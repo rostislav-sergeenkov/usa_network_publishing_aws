@@ -23,7 +23,7 @@ $timestamp = date("m/d/y",time());
 
 <div id="gracelandcatchup-home" class="clearfix">
   <div id="home-content-container">
-    <div id="home-logo"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.svg" alt="Graceland Catchup HQ" /></div>
+    <div id="home-logo"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.png" alt="Graceland Catchup HQ" /></div>
     <div id="home-sponsored">
       <a href="http://ad.doubleclick.net/ddm/jump/N2724.117456.USANETWORK.COM/B8757919.118407814;sz=1x1;ord=<?php print $timestamp; ?>?" target="_blank">
         <img class="tracking" src="http://ad.doubleclick.net/ddm/ad/N2724.117456.USANETWORK.COM/B8757919.118407814;sz=1x1;ord=<?php print $timestamp; ?>?" border="0" width="1" height="1" alt="Advertisement">

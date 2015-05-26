@@ -50,6 +50,59 @@ Project demo: http://shindiristudio.com/timeline
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
+    initializeTimeline: function() {
+      // Initialize the timeline
+      $this = $('.tl3').timeline({
+        openTriggerClass : '.read-more',
+        startItem : '01/01/01',
+        closeText : ''
+      });
+
+      $('.tl3').on('scrollStart.Timeline', function(e){
+        usa_debug('TIMELINE: start'); // start scroll
+      });
+
+      $('.tl3').on('scrollStop.Timeline', function(e){
+        usa_debug('TIMELINE: end'); // end scroll
+      });
+
+      $this.timeline('setWidthHeightMargin');
+
+      var timeline_settings = $this.data('timeline').options;
+      $this.find(timeline_settings.itemClass).find('img').on('dragstart', function(event) {
+        if (!($(this).hasClass('timeline-rollover-bottom')))
+          event.preventDefault();
+      });
+
+      $('.timeline-image-rollover-bottom').on('dragstart', function(event) {
+        $(this).addClass("disableClick");
+        event.preventDefault();
+      });
+
+      $('.timeline-image-rollover-bottom').on('mousedown', function(event) {
+        if (!$(this).is("hover")) {
+          $(this).removeClass("disableClick");
+        }
+      });
+
+      $('.timeline-image-rollover-bottom').on('click', function(event) {
+        if ($(this).hasClass('disableClick')) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        $(this).removeClass('disableClick')
+      });
+
+
+      // set social sharing clicks
+      jQuery('#timeline_gallery .share-items .facebook').on('click', function() {
+        Drupal.behaviors.timeline_gallery.socialShareOmniture('Facebook');
+      });
+      jQuery('#timeline_gallery .share-items .twitter').on('click', function() {
+        Drupal.behaviors.timeline_gallery.socialShareOmniture('Twitter');
+      });
+    },
+
     attach: function (context, settings) {
 
       var t_methods = {
@@ -986,58 +1039,18 @@ usa_debug(nodes);
         }
       };
 
-      $(document).ready(function(){
-        // Initialize the timeline
-        $this = $('.tl3').timeline({
-          openTriggerClass : '.read-more',
-          startItem : '01/01/01', // '01/01',
-          closeText : ''
-        });
-
-        $('.tl3').on('scrollStart.Timeline', function(e){
-          usa_debug('TIMELINE: start'); // start scroll
-        });
-
-        $('.tl3').on('scrollStop.Timeline', function(e){
-          usa_debug('TIMELINE: end'); // end scroll
-        });
-
-        $this.timeline('setWidthHeightMargin');
-
-        var timeline_settings = $this.data('timeline').options;
-        $this.find(timeline_settings.itemClass).find('img').on('dragstart', function(event) {
-          if (!($(this).hasClass('timeline-rollover-bottom')))
-            event.preventDefault();
-        });
-
-        $('.timeline-image-rollover-bottom').on('dragstart', function(event) {
-          $(this).addClass("disableClick");
-          event.preventDefault();
-        });
-
-        $('.timeline-image-rollover-bottom').on('mousedown', function(event) {
-          if (!$(this).is("hover")) {
-            $(this).removeClass("disableClick");
+      function initializeTimer() {
+//usa_debug('========== timeline -- initializeTimer()');
+        setTimeout(function(){
+          if (typeof categories == 'object' && typeof segments == 'object') {
+            self.initializeTimeline();
           }
-        });
-
-        $('.timeline-image-rollover-bottom').on('click', function(event) {
-          if ($(this).hasClass('disableClick')) {
-            event.preventDefault();
-            event.stopPropagation();
+          else {
+            initializeTimer();
           }
-          $(this).removeClass('disableClick')
-        });
-
-
-        // set social sharing clicks
-        jQuery('#timeline_gallery .share-items .facebook').on('click', function() {
-          self.socialShareOmniture('Facebook');
-        });
-        jQuery('#timeline_gallery .share-items .twitter').on('click', function() {
-          self.socialShareOmniture('Twitter');
-        });
-      });
+        }, 1000);
+      }
+      setTimeout(initializeTimer, 1000);
 
       // WINDOW RESIZING
       var windowResizeTimer;

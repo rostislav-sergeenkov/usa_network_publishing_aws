@@ -67,6 +67,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'role' => NULL,
             'character_bio_summary' => NULL,
             'character_bio' => NULL,
+            'actor_bio' => NULL,
             'quotes' => array(
               0 => array(
                 'quote' => NULL,

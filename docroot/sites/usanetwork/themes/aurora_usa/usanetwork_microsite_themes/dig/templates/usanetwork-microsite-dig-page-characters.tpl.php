@@ -16,6 +16,7 @@
  * -  - $people[n]['role'] - role of the person
  * -  - $people[n]['character_bio_summary'] - Summary of the character bio
  * -  - $people[n]['character_bio'] - character bio
+ * -  - $people[n]['actor_bio'] - actor bio
  * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
  * -  - $people[n]['preview_image_url'] - Image preview for a hover action.
  * - $is_last - flag of the latest section (appears only on the latest)
@@ -134,21 +135,21 @@
             <?php if (!empty($person['role'])): ?>
               <div class="character-role"><?php print $person['role']; ?></div>
             <?php endif; ?>
-            <?php if (!empty($person['description']) && !empty($person['character_bio'])): ?>
+            <?php if (!empty($person['description']) && !empty($person['actor_bio'])): ?>
               <div class="character-bio-tabs clearfix">
                 <div class="actor active">Actor Bio</div>
                 <div class="character">Character Bio</div>
               </div>
             <?php endif; ?>
             <div class="character-bios-container clearfix">
-            <?php if (!empty($person['description'])): ?>
-              <div class="text actor active clearfix">
-                <?php print $person['description']; ?>
+            <?php if (!empty($person['actor_bio'])): ?>
+              <div class="text actor clearfix<?php print (!empty($person['actor_bio'])) ? ' active' : ''; ?>">
+                <?php print $person['actor_bio']; ?>
               </div>
             <?php endif; ?>
-            <?php if (!empty($person['character_bio'])): ?>
-              <div class="text character clearfix">
-                <?php print $person['character_bio']; ?>
+            <?php if (!empty($person['description'])): ?>
+              <div class="text character clearfix<?php print (empty($person['actor_bio'])) ? ' active' : ''; ?>">
+                <?php print $person['description']; ?>
               </div>
             <?php endif; ?>
             </div>

@@ -11,6 +11,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.endcardblocker .ymalitemswrapnew a {
     display: block;
 }
 .endcardblocker textarea,
@@ -646,8 +649,8 @@ a img.ymalthumbnew {
     }
     .endcardreplay {
         margin-right: 0;
-        width: 40px;
-        height: 33px;
+        width: 22px;
+        height: 18px;
         background-size: 70% !important;
     }
     .endcardsocialheading {
@@ -657,7 +660,7 @@ a img.ymalthumbnew {
         margin-top: 1%;
     }
     .endcardvideotitle {
-        font-size: 15px;
+        font-size: 13px;
     }
     .socialButtons {
         margin-top: 1%;
@@ -665,11 +668,11 @@ a img.ymalthumbnew {
     .social {
         background-size: 70%;
         width: 27px;
-        height: 18px;
+        height: 22px;
         margin-right: 0;
     }
     .socialem {
-        width: 42px;
+        width: 50px;
     }
     .cardInner {
         width: 85%;

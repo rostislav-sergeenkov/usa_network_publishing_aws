@@ -3350,7 +3350,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
       $desktop_image = image_style_url('456x372', $image_url);
     }
   }
-  $own_promo_lines = _usanetwork_promo_file_get_promo_lines($file);
+  $own_promo_lines = _usanetwork_promo_pull_file_promo_details($file);
   $icon_type = usanetwork_core_api_get_media_icon('file', $file->fid);
 
   $theme_variables = array(
@@ -3359,8 +3359,8 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $curre
     'target_url' => url('file/' . $file->fid),
     'media_icon' => !empty($icon_type) ? $icon_type : 'video-icon',
     'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
-    'title' => !empty($own_promo_lines['title'])
-      ? $own_promo_lines['title']
+    'title' => !empty($own_promo_lines['promo_title'])
+      ? $own_promo_lines['promo_title']
       : $file->filename,
     'additional' => !empty($own_promo_lines['description'])
       ? $own_promo_lines['description']

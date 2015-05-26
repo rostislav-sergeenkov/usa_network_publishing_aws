@@ -3289,13 +3289,13 @@ function usanetwork_person_field_default_field_instances() {
   t('Person: Prefix');
   t('Person: Suffix');
   t('Pinterest page');
+  t('Promo Image Override');
   t('Quotation');
   t('Role');
   t('Show');
   t('Specify the title to be displayed in place of the promotional URL (required). If any, enter a promotional URL (e.g. Twitter, Facebook).');
   t('Tumblr Page');
   t('Twitter page');
-  t('Promo Image Override');
 
   return $field_instances;
 }

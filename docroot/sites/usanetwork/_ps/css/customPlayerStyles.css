@@ -429,7 +429,6 @@ a img.ymalthumbnew {
     color:#555;
 }
 
-
 /* Embed card */
 .embedCardblocker {
     display:none;
@@ -629,11 +628,10 @@ a img.ymalthumbnew {
         display: none;
     }
     .ymalcountdown {
-        display: inline-block !important;
-        padding: 0 3px;
+        font: normal 26px Arial,Verdana,Helvetica;
+        line-height: 1em;
     }
 
-    /*//////////////////////////////////*/
     .endcardheading {
         padding: 0;
     }
@@ -674,16 +672,14 @@ a img.ymalthumbnew {
     .socialem {
         width: 50px;
     }
+    .ymalcountdown {
+        display: inline-block;
+    }
     .cardInner {
         width: 85%;
     }
     .endcardymalitems {
         margin-top: 1%;
-    }
-}
-@media only screen and (min-height: 350px) {
-    .ymalcountdown {
-        display: inline-block;
     }
 }
 

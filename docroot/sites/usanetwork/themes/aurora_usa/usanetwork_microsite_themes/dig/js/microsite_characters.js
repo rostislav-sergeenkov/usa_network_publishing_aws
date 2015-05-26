@@ -99,7 +99,7 @@
     },
 
     micrositeSetPath : function setPath(nextItemId) {
-      var anchorFull = Drupal.behaviors.microsite_characters.basePath + '/characters/' + nextItemId;
+      var anchorFull = Drupal.settings.microsites_settings.base_path + '/characters/' + nextItemId;
       // if this is IE9, reload the correct page
       if ($('html.ie9').length > 0) {
         window.location.href = anchorFull;

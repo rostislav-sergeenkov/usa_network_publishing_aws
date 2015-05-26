@@ -66,6 +66,73 @@ function usanetwork_schedule_cron() {
 }
 
 /**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_schedule_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['usa_schedule_images_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('USA Schedule image settings'),
+    '#description' => t('Display settings of schedule items'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['usa_schedule_images_settings']['usanetwork_schedule_movie_image_fid'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('USA Movie default image'),
+    '#description' => t('The image appears if Drupal has no possibility to find image for USA Movie on Schedule page or bar'),
+    '#default_value' => variable_get('usanetwork_schedule_movie_image_fid', NULL),
+    '#upload_location' => 'public://',
+  );
+
+  $form['usa_schedule_images_settings']['usanetwork_schedule_episode_image_fid'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('USA Episode default image'),
+    '#description' => t('The image appears if Drupal has no possibility to find image for USA Episode on Schedule page or bar'),
+    '#default_value' => variable_get('usanetwork_schedule_episode_image_fid', NULL),
+    '#upload_location' => 'public://',
+  );
+}
+
+/**
+ * Returns image URL for default image for schedule.
+ *
+ * @param null $image_style_name - machine-readable name of applicable image style.
+ */
+function usanetwork_schedule_get_movie_default_image($image_style_name = NULL) {
+  $default_image_fid = variable_get('usanetwork_schedule_movie_image_fid', NULL);
+
+  if (!empty($default_image_fid)) {
+    $file = file_load($default_image_fid);
+
+    return !empty($image_style_name)
+      ? image_style_url($image_style_name, $file->uri)
+      : $file->uri;
+  }
+
+  return '';
+}
+
+/**
+ * Returns image URL for default image for schedule.
+ *
+ * @param null $image_style_name - machine-readable name of applicable image style.
+ */
+function usanetwork_schedule_get_episode_default_image($image_style_name = NULL) {
+  $default_image_fid = variable_get('usanetwork_schedule_episode_image_fid', NULL);
+
+  if (!empty($default_image_fid)) {
+    $file = file_load($default_image_fid);
+
+    return !empty($image_style_name)
+      ? image_style_url($image_style_name, $file->uri)
+      : $file->uri;
+  }
+
+  return '';
+}
+
+/**
  * Pulls data from service and puts it to datatable.
  */
 function usanetwork_schedule_pull() {
@@ -257,47 +324,25 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
   if (empty($data)) {
     return;
   }
-
   $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
 
   foreach ($data as &$schedule_item) {
-    $show_result = _usanetwork_schedule_get_show_node_info_by_title($schedule_item->show_title);
 
-    if (!empty($show_result)) {
-      $show_result = reset($show_result);
-
-      $schedule_item->database_show_title = $show_result->field_display_title_value;
-      $schedule_item->nid = $show_result->nid;
-
-      continue;
-    }
-    $show_nid = _usanetwork_tv_schedule_find_show_by_title($schedule_item->show_title);
-    if (!empty($show_nid)) {
-      $show_node = node_load($show_nid);
-      $schedule_item->nid = $show_nid;
-      $schedule_item->database_show_title = $show_node->title;
-      continue;
-    }
-
-    $alias_title = trim($schedule_item->show_title);
-
-    if (empty($schedule_item->nid) && !empty($show_title_aliases[$alias_title])) {
-      $alias = trim($show_title_aliases[$alias_title]);
-      $show_node_info = _usanetwork_schedule_get_show_node_info_by_title($alias);
-
-      if (!empty($show_node_info)) {
-        $show_node_info = reset($show_node_info);
-
-        $schedule_item->nid = $show_node_info->nid;
-        $schedule_item->database_show_title = $show_node_info->field_display_title_value;
+    if ($schedule_item->program_type != 'movie') {
+      $needle = $schedule_item->show_title;
+      $alias_title = trim($schedule_item->show_title);
+      $needle = !empty($show_title_aliases[$alias_title]) ? $show_title_aliases[$alias_title] : $needle;
+      $show_result = _usanetwork_schedule_get_show_node_info_by_title($needle);
+      if (!empty($show_result)) {
+        $show_result = reset($show_result);
+        $schedule_item->nid = $show_result->nid;
+        continue;
       }
-      else {
-        $schedule_item->database_show_title = $schedule_item->title;
+      $show_nid = _usanetwork_tv_schedule_find_show_by_title($schedule_item->show_title);
+      if (!empty($show_nid)) {
+        $schedule_item->nid = $show_nid;
+        continue;
       }
-    }
-    elseif (empty($schedule_item->nid) && empty($show_title_aliases[$alias_title])) {
-      $schedule_item->database_show_title = t('USA Movie') . ' ' . $schedule_item->title;
-      $schedule_item->nid = NULL;
     }
   }
 }
@@ -317,7 +362,7 @@ function _usanetwork_schedule_get_show_alias_names() {
         $matches = array();
 
         if (preg_match("/^(.+)\s*\|\s*(.+)$/", $alias, $matches)) {
-          $data[$matches[1]] = $matches[2];
+          $data[trim($matches[1])] = trim($matches[2]);
         }
       }
     }

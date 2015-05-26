@@ -55,7 +55,8 @@ css for Ie browser version detection
   color: white;
   display: inline-block;
   font: 200 1.25em/26px Proxima N W01 Bold, Helvetica, Arial, sans-serif;
-  font-family: 'avalonbold', Helvetica, Arial, sans-serif;
+  /*font-family: 'avalonbold', Helvetica, Arial, sans-serif;*/
+  font-family: 'avalonmedium', Helvetica, Arial, sans-serif;
   font-size: 24px;
   text-transform: uppercase;
 }

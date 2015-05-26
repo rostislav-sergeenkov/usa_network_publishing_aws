@@ -854,10 +854,9 @@ function usanetwork_quiz_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 27,
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -941,10 +940,9 @@ function usanetwork_quiz_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 24,
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -998,13 +996,9 @@ function usanetwork_quiz_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 29,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -1077,10 +1071,9 @@ function usanetwork_quiz_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 26,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -1135,10 +1128,9 @@ function usanetwork_quiz_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 22,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -1193,10 +1185,9 @@ function usanetwork_quiz_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 25,
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -1251,10 +1242,9 @@ function usanetwork_quiz_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 23,
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'microsite_output' => array(
         'label' => 'above',

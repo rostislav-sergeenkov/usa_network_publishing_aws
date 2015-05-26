@@ -43,7 +43,7 @@
   max-width: 460px;
   margin-bottom: 2%;
 }
-#home #home-nav {
+#home #home-content-container #home-nav {
   width: 54%;
   height: auto;
   margin-bottom: 4%;
@@ -81,8 +81,8 @@
   position: absolute;
   bottom: 16px;
   left: 10px;
-  width: 76px;
-  height: 34px;
+  width: 45px;
+  height: 20px;
   cursor: pointer;
 }
 

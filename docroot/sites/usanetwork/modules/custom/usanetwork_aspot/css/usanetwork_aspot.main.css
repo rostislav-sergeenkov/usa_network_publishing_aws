@@ -55,7 +55,7 @@
 
 .draggable-area.mobile div[data-rel="title"],
 .draggable-area.desktop div[data-rel="title"] {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: initial;
   text-transform: uppercase;
 }
@@ -72,7 +72,7 @@
 .draggable-area.mobile .aspot-draggable-cta-button,
 .draggable-area.desktop .aspot-draggable-cta-button {
   background: #2c2c2c;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   text-decoration: none;
   text-transform: uppercase;
 }

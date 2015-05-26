@@ -1,3 +1,6 @@
+#microsite #timeline-title {
+  display: none;
+}
 #microsite .timeline-item img {
   width: initial;
 }

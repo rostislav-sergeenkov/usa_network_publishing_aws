@@ -2,6 +2,32 @@
 
   var USAN = USAN || {};
 
+  function gigyaSharebar(slide, indexSlide) {
+    if (typeof Drupal.gigya != 'undefined') {
+      var slider = $('.gallery-wrapper');
+      var $sharebar = slider.find('.field-name-field-gigya-share-bar > div');
+      if ($sharebar.length > 0) {
+        var $currentDescription = slide.find('.slide-info .description').text();
+        if ($currentDescription == '' && $('meta[property="og:description"]').length > 0) {
+          $currentDescription = $('meta[property="og:description"]').attr('content');
+        }
+        var $currentImage = slide.find('.asset-img img');
+        var url = window.location.href;
+        $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+          if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
+            var url = window.location.href.split('#')[0];
+            //sharebar.gigyaSharebar.ua.linkBack = url + '#' + (slider.currentSlide + 1);
+            sharebar.gigyaSharebar.ua.linkBack = url + '#' + indexSlide;
+            sharebar.gigyaSharebar.ua.imageBhev = 'url';
+            sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('data-src-share') ? $currentImage.attr('data-src-share') : $currentImage.attr('src');
+            sharebar.gigyaSharebar.ua.description = $currentDescription;
+            Drupal.gigya.showSharebar(sharebar);
+          }
+        });
+      }
+    }
+  }
+
   //make pager position
   function pagerPosition(pager) {
     var pagerItem = pager.find('.bx-pager-item'),
@@ -76,7 +102,7 @@
   USAN.gallery = (function () {
 
     function pagerItems() {
-      var container = $('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main'),
+      var container = $('.gallery-wrapper'),
           pager = container.find('.bx-custom-pager'),
           pagerItem = container.find('.bx-pager-item'),
           pagerItemLink = pager.find('.bx-pager-link'),
@@ -95,6 +121,11 @@
         //move pager items position
         movePagerItems(pager);
       });
+
+      var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index'),
+          slide = $('#bxslider-gallery .slide').eq(index).addClass('active');
+
+      gigyaSharebar(slide, index);
     }
 
     var options = {
@@ -126,8 +157,25 @@
       adaptiveHeightSpeed: 200,
       speed: 600,
       onSliderLoad: pagerItems,
-      onSlideAfter: function () {
-        Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+      onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+
+        $('#bxslider-gallery .slide').removeClass('active');
+
+        if ($('body').hasClass('node-type-media-gallery')) {
+          var name = $('#bxslider-gallery .slide .gallery-name').eq(0).text();
+          Drupal.behaviors.omniture_tracking.photoGalleries(name);
+        }
+      },
+      onSlideAfter: function ($slideElement, oldIndex, newIndex) {
+
+        var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index'),
+            slide = $('#bxslider-gallery .slide').eq(index).addClass('active');
+
+        gigyaSharebar(slide, index);
+
+        if ($('body').hasClass('node-type-media-gallery')) {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        }
       }
     };
 
@@ -156,13 +204,16 @@
     };
   })();
 
-
   $(document).ready(function () {
     // bxslider-gallery slider initialization
-    if ($('body').hasClass('node-type-media-gallery')) {
+    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode')) {
 
+      if ($('#bxslider-gallery').length == 0) {
+        return false;
+      }
       var gallery = USAN.gallery.init('#bxslider-gallery');
-      var container = $('#block-usanetwork-media-gallery-usa-gallery-consumptionator-main');
+
+      var container = $('.gallery-wrapper');
 
       if(window.innerWidth < window_size_tablet) {
         $('#bxslider-gallery').addClass('mobile');

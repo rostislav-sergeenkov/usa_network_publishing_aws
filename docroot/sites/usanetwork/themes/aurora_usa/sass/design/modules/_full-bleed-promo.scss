@@ -1,13 +1,15 @@
-#full-bleed-promo {
-  @include clear();
-  margin: 0 auto;
-  position: relative;
-  min-height: 250px;
-  max-height: 500px;
-  max-width: 1650px;
-  min-width: 300px;
-  @include breakpoint($bp-768-width) {
-    @include clear;
+#full-bleed-promo.full-bleed-enable {
+  .full-bleed-wrapper {
+    @include clear();
+    margin: 0 auto;
+    position: relative;
+    min-height: 250px;
+    //  max-height: 500px;
+    max-width: 1650px;
+    min-width: 300px;
+    @include breakpoint($bp-768-width) {
+      @include clear;
+    }
   }
   .block-content {
     display: block;
@@ -21,13 +23,27 @@
       margin-right: 0;
       text-align: center;
     }
+    &.sponsored-enable {
+      margin-right: 0;
+      max-width: none;
+      @include breakpoint($bp-1024-width) {
+        margin-right: 0;
+      }
+      @include breakpoint($bp-640-width) {
+        margin-right: 0;
+        text-align: left;
+      }
+    }
     & > a {
       display: block;
     }
     .sponsored {
-      width: 100%;
-      iframe {
-        width: 100%;
+      margin-right: 330px;
+      @include breakpoint($bp-1024-width) {
+        margin-right: 320px;
+      }
+      @include breakpoint($bp-640-width) {
+        margin-right: 0;
       }
     }
   }
@@ -54,30 +70,46 @@
     }
   }
 }
-.about-show-block {
+.usa-tv-show {
+  #full-bleed-promo,
+  .about-show-block {
+    &.show-border {
+      border-bottom: 1px solid;
+    }
+  }
+}
+
+.about-show-block.about-show-enable {
   @include clear();
   background: $poll-back;
   overflow: hidden;
-  padding: 30px 22px 0;
+  padding: 0 22px;
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-1901-width) {
-    padding: 40px 32px 0;
+    padding: 0 32px;
   }
   @include breakpoint($bp-min-641-width) {
     min-height: 290px;
   }
+  @include breakpoint($bp-640-width) {
+    padding: 22px 22px 0;
+  }
   .about-show-block-inner {
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
     @include breakpoint($bp-min-1901-width) {
+      height: 100%;
       max-width: 1868px;
       margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
     }
     @include breakpoint($bp-640-width) {
+      height: 100%;
+      overflow: hidden;
       padding-bottom: 35vw;
+      position: relative;
+      width: 100%;
     }
   }
   .about-show-image-block {
@@ -101,11 +133,20 @@
     float: left;
     font-family: $avalon-medium;
     height: 100%;
-    line-height: 1.2;
-    padding: 30px;
-    width: calc(75% - 300px);
+    line-height: 1.4;
+    padding: 35px get-vw(54px, 1025);
+    width: 50%;
+    @include breakpoint($bp-min-641-width) {
+      margin-top: 2.5vw;
+    }
     @include breakpoint($bp-min-1901-width) {
-      padding: 40px;
+      margin-top: 47.5px;
+      padding: 50px 100px;
+    }
+    @include breakpoint($between-1025-1280) {
+      float: none;
+      margin-left: 300px;
+      width: calc(100% - 600px);
     }
     @include breakpoint($between-641-1024) {
       width: calc(100% - 300px);
@@ -116,80 +157,84 @@
     }
     .about-show-text-block-title {
       font-family: $tex-gyreschola-italic;
-      font-size: 16px;
+      font-size: get-vw(16px, 1025);
       letter-spacing: 1px;
-      margin-bottom: 35px;
+      margin-bottom: get-vw(25px, 1025);
       text-align: center;
       text-transform: uppercase;
       @include breakpoint($bp-min-1901-width) {
         font-size: 24px;
-        margin-bottom: 45px;
+        margin-bottom: 46px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: 16px;
       }
       @include breakpoint($bp-640-width) {
         margin-bottom: 25px;
       }
       @include breakpoint($bp-480-width) {
-        font-size: 16px;
         margin-bottom: 15px;
       }
     }
     .about-show-text-block-description {
-      font-size: 16px;
-      margin-bottom: 60px;
+      font-size: get-vw(13px, 1025);
+      margin-bottom: get-vw(29px, 1025);
       text-align: center;
       @include breakpoint($bp-min-1901-width) {
         font-size: 24px;
-        margin-bottom: 80px;
+        margin-bottom: 53.8px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: 13px;
       }
       @include breakpoint($bp-640-width) {
-        margin-bottom: 50px;
+        margin-bottom: 40px;
       }
       @include breakpoint($bp-480-width) {
-        font-size: 12px;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
       }
     }
     .about-show-text-block-more {
       a {
         color: #ffffff;
         display: block;
-        font-size: 12px;
+        font-size: get-vw(12px, 1025);
         line-height: 1;
         margin: 0 auto;
-        padding: 13px 25px 13px 20px;
+        padding: get-vw(13px, 1025) get-vw(25px, 1025) get-vw(13px, 1025) get-vw(20px, 1025);
         position: relative;
         text-transform: uppercase;
-        width: 120px;
+        width: get-vw(120px, 1025);
         @include breakpoint($bp-min-1901-width) {
           font-size: 18px;
           padding: 19.5px 37.5px 19.5px 30px;
-          width: 180px;
+          width: 223px;
         }
-        @include breakpoint($bp-480-width) {
+        @include breakpoint($bp-1024-width) {
           font-size: 10px;
-          padding: 10px 20px 10px 15px;
-          width: 90px;
+          padding: 13px 25px 13px 20px;
+          width: 120px;
         }
         &:after {
           color: #ffffff;
           content: "\e608";
           display: block;
           font-family: "ico-font";
-          font-size: 10px;
+          font-size: get-vw(10px, 1025);
           line-height: 1;
           position: absolute;
-          margin-top: -5px;
-          right: 16px;
+          margin-top: get-vw(-5px, 1025);
+          right: get-vw(16px, 1025);
           top: 50%;
           @include breakpoint($bp-min-1901-width) {
-            font-size: 15px;
-            margin-top: -7.5px;
-            right: 24px;
+            font-size: 18px;
+            margin-top: -9px;
+            right: 29.7px;
           }
-          @include breakpoint($bp-480-width) {
-            font-size: 8px;
-            margin-top: -4px;
-            right: 12px;
+          @include breakpoint($bp-1024-width) {
+            font-size: 10px;
+            margin-top: -5px;
+            right: 16px;
           }
         }
       }
@@ -200,6 +245,13 @@
     position: absolute;
     right: 0;
     top: 50%;
+    width: 25%;
+    > div {
+      text-align: center;
+    }
+    @include breakpoint($bp-1280-width) {
+      width: 300px;
+    }
     @include breakpoint($bp-640-width) {
       display: none;
     }

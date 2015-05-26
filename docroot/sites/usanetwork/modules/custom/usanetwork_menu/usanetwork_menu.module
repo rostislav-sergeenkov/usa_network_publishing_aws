@@ -393,6 +393,19 @@ function usanetwork_menu_image_default_styles() {
     ),
   );
 
+  $styles['339x68'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 339,
+          'height' => 68,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
   $styles['full_episodes_633x356'] = array(
     'name' => '633x356',
     'label' => '633x356',
@@ -798,11 +811,6 @@ function _usanetwork_menu_full_episodes_block() {
 
     if (!empty($show)) {
       $logo = usanetwork_core_api_get_content_image('node', $show, 'banner');
-      if (isset($logo)) {
-        $logo_image = theme('image', array(
-          'path' => $logo,
-        ));
-      }
     }
     $episode_season = !empty($episode->field_mpx_season_number)
       ? $episode_wrapper->field_mpx_season_number->value()
@@ -826,7 +834,7 @@ function _usanetwork_menu_full_episodes_block() {
 
     $items_variables = array(
       'url' => url('file/' . $episode->fid),
-      'logo' => isset($logo) ? $logo_image : NULL,
+      'logo' => !empty($logo) ? theme('image_style', array('path' => $logo, 'style_name' => '339x68')) : NULL,
       'additional' => t('Season @season Episode @episode_number', array(
         '@season' => $episode_season,
         '@episode_number' => $episode_number
@@ -1080,10 +1088,6 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this Episode Guide');
     }
-    if ($air_date_items = field_get_items('node', $node, 'field_original_air_date')) {
-      $air_date_items = reset($air_date_items);
-      $duration =  gmdate('H:i:s', $air_date_items['value2'] - $air_date_items['value']);
-    }
     if (!empty($node->field_season)) {
       $season = $entity_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
@@ -1105,7 +1109,6 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
         'episode_info' => array(
             'season_number' => !empty($node->field_episode_number) ? $entity_wrapper->field_episode_number->value() : '',
             'episode_number' => !empty($episode_num) ? $episode_num : '',
-            'duration' => !empty($duration) ? $duration : '',
           ),
       ),
     );

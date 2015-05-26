@@ -44,6 +44,65 @@
       height: 100%;
       width: 100%;
     }
+    .share-bar {
+      display: none;
+      right: 150px;
+      position: absolute;
+      margin-top: -33px;
+      top: 90%;
+      width: 200px;
+      z-index: 55;
+      @include breakpoint($bp-1900-width) {
+        right: 125px;
+      }
+      @include breakpoint($bp-1280-width) {
+        right: 70px;
+        width: 175px;
+      }
+      @include breakpoint($bp-1024-width) {
+        display: block;
+        margin-top: 0;
+        bottom: 30px;
+        top: auto;
+      }
+      @include breakpoint($bp-768-width) {
+        width: 150px;
+      }
+      @include breakpoint($bp-640-width) {
+        bottom: 10px;
+        right: 0;
+        width: 100%;
+      }
+      h3.field-label {
+        color: $free-full-episodes;
+        font-size: 14px;
+        font-family: $avalon-book;
+        line-height: 20px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        @include breakpoint($bp-1280-width) {
+          font-size: 12px;
+          line-height: 18px;
+        }
+        @include breakpoint($bp-640-width) {
+          text-align: center;
+        }
+      }
+      .field-name-field-gigya-share-bar {
+        margin-bottom: 0;
+        table {
+          @include breakpoint($bp-640-width) {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+    &:hover {
+      .share-bar {
+        display: block;
+      }
+    }
     .bxslider-gallery {
       height: 100%;
       .slide {
@@ -109,16 +168,16 @@
               height: 72px;
               overflow: hidden;
               margin-bottom: 0;
-              padding-right: 390px;
+              padding-right: 400px;
               position: absolute;
               text-overflow: ellipsis;
               top: 36px;
-              width: auto;
+              width: 100%;
               @include breakpoint($bp-1900-width) {
                 font-size: 16px;
                 line-height: 22px;
                 height: 44px;
-                padding-right: 350px;
+                padding-right: 375px;
                 top: 20px;
               }
               @include breakpoint($bp-1280-width) {
@@ -126,19 +185,19 @@
                 line-height: 20px;
                 height: 40px;
                 left: 70px;
-                padding-right: 280px;
+                padding-right: 320px;
                 top: 15px;
               }
               @include breakpoint($bp-1024-width) {
                 font-size: 12px;
                 line-height: 18px;
                 height: 54px;
-                padding-right: 265px;
+                padding-right: 325px;
                 top: 35px;
               }
               @include breakpoint($bp-768-width) {
                 height: 72px;
-                padding-right: 240px;
+                padding-right: 325px;
               }
               @include breakpoint($bp-640-width) {
                 margin-top: 60px;
@@ -150,71 +209,26 @@
                 margin: 0;
               }
             }
-            .social-bar {
-              right: 150px;
-              position: absolute;
-              margin-top: -33px;
-              top: 50%;
-              width: 200px;
-              @include breakpoint($bp-1900-width) {
-                right: 125px;
-              }
-              @include breakpoint($bp-1280-width) {
-                right: 70px;
-              }
-              @include breakpoint($bp-1024-width) {
-                margin-top: 0;
-                top: 35px;
-                width: 175px;
-              }
-              @include breakpoint($bp-768-width) {
-                width: 150px;
-              }
-              @include breakpoint($bp-640-width) {
-                margin-top: 20px;
-                position: static;
-                width: 100%;
-              }
-              .social-title {
-                color: $free-full-episodes;
-                font-size: 14px;
-                font-family: $avalon-book;
-                line-height: 20px;
-                margin-top: 0;
-                margin-bottom: 10px;
-                text-transform: uppercase;
-                @include breakpoint($bp-1280-width) {
-                  font-size: 12px;
-                  line-height: 18px;
-                }
-                @include breakpoint($bp-640-width) {
-                  text-align: center;
-                }
-              }
-              .field-name-field-gigya-share-bar {
-                margin-bottom: 0;
-                table {
-                  @include breakpoint($bp-640-width) {
-                    margin: 0 auto;
-                  }
-                }
-              }
-            }
             .slider-counter {
               bottom: 5px;
               color: $consum-carousel-text;
               font-size: 25px;
               font-family: $tex-gyreschola-italic;
               left: 45px;
+              overflow: hidden;
               position: absolute;
-              padding-right: 350px;
+              padding-right: 400px;
               text-transform: uppercase;
+              text-overflow: ellipsis;
+              width: 100%;
+              white-space: nowrap;
               .slide-index {
                 font-size: 27px;
                 font-family: $avalon-medium;
               }
               @include breakpoint($bp-1900-width) {
                 font-size: 13px;
+                padding-right: 375px;
                 .slide-index {
                   font-size: 14px;
                 }
@@ -223,13 +237,14 @@
                 bottom: 0;
                 font-size: 12px;
                 left: 70px;
+                padding-right: 320px;
                 .slide-index {
                   font-size: 13px;
                 }
               }
               @include breakpoint($bp-1024-width) {
                 bottom: 0;
-                padding-right: 265px;
+                padding-right: 325px;
               }
               @include breakpoint($bp-768-width) {
                 bottom: 5px;
@@ -243,6 +258,7 @@
                 margin-top: 15px;
                 padding-right: 0;
                 position: static;
+                text-align: center;
               }
             }
           }

@@ -59,6 +59,11 @@
         </div>
       </div>
     </div>
+    <?php if (!empty($social_block)) : ?>
+      <div class="block-character-social-content">
+        <?php print $social_block; ?>
+      </div>
+    <?php endif; ?>
   </div>
   <div class="consum-sidebar">
     <div class="node-wrapper advert">

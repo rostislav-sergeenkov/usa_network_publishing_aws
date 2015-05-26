@@ -45,7 +45,7 @@
       $('.tab-item').mCustomScrollbar('destroy');
       setTimeout(function() {
         $('.tab-item').css('height', 'auto');
-      }, 500);
+      }, 600);
     },
 
     tabItemScroll: function() {
@@ -54,10 +54,10 @@
           ad_h = $('.ad-leaderboard').height() + 20,
           window_h = $(window).height(),
           header_h = $('.header-nav-bar').height(),
-          ad_offset = ad_h - $(window).scrollTop(),
+          ad_offset = ((ad_h - $(window).scrollTop()) < 0) ? 0 : ad_h - $(window).scrollTop(),
           scroll_h = window_h - header_h - ad_offset;
 
-      if (tab_h + header_h + ad_offset > window_h) {
+      if ((tab_h + header_h + ad_offset) > window_h) {
         $tab.mCustomScrollbar({
           setHeight: scroll_h,
           scrollInertia: 0,
@@ -146,14 +146,12 @@
             if (window.innerWidth >= window_size_tablet_portrait) {
               if (tab.attr('data-state') == 'active') {
                 tab.removeClass('active').attr('data-state', '');
-                tab_containers.eq(index).slideUp(animation_speed).removeClass('active');
-
-                if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
-                  tab_containers.eq(index).mCustomScrollbar('destroy');
-                  setTimeout(function () {
+                tab_containers.eq(index).slideUp(animation_speed, function() {
+                  if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
+                    tab_containers.eq(index).mCustomScrollbar('destroy');
                     tab_containers.eq(index).css('height', 'auto');
-                  }, 500);
-                }
+                  }
+                }).removeClass('active');
               } else {
                 tabs.removeClass('active').attr('data-state', '');
 
@@ -161,6 +159,10 @@
                   $(".tab .no-refresh").unbind('click');
                   tab_container_act
                       .slideUp(animation_speed, function () {
+                        if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
+                          tab_containers.eq(index).mCustomScrollbar('destroy');
+                          tab_containers.eq(index).css('height', 'auto');
+                        }
                         $(".tab .no-refresh").unbind('click');
                         openTab();
                       })
@@ -182,14 +184,12 @@
 
             if (tab.attr('data-state') == 'active') {
               tab.removeClass('active').attr('data-state', '');
-              tab_containers.eq(index).slideUp(animation_speed).removeClass('active');
-
-              if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
-                tab_containers.eq(index).mCustomScrollbar('destroy');
-                setTimeout(function () {
+              tab_containers.eq(index).slideUp(animation_speed, function() {
+                if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
+                  tab_containers.eq(index).mCustomScrollbar('destroy');
                   tab_containers.eq(index).css('height', 'auto');
-                }, 500);
-              }
+                }
+              }).removeClass('active');
             } else {
               tabs.removeClass('active').attr('data-state', '');
 
@@ -197,6 +197,10 @@
                 $(".tab .no-refresh").unbind('click');
                 tab_container_act
                     .slideUp(animation_speed, function () {
+                      if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
+                        tab_containers.eq(index).mCustomScrollbar('destroy');
+                        tab_containers.eq(index).css('height', 'auto');
+                      }
                       $(".tab .no-refresh").unbind('click');
                       openTab();
                     })

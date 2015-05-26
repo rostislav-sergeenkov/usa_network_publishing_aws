@@ -134,7 +134,7 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_media_gallery_consumptionator_episode_slides' => array(
       'variables' => array(
-        'gallery_type' => NULL,
+        'block_title' => NULL,
         'slides_vertical' => array(),
         'slides_horizontal' => array(),
       ),
@@ -226,7 +226,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
   if (isset($node->type) && $node->type == 'media_gallery') {
     $slides = array();
-    if (!empty($node->field_gigya_share_bar)) {
+    if (isset($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this image');
     }
@@ -295,9 +295,11 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         $season_id = _usanetwork_get_field_item('node', $tv_season_node, 'field_season_id', 'value');
       }
       if ($gallery_type == 'Episodic Gallery' && !empty($gallery_field_season_id_value)) {
+        $block_title = t('S!number episode galleries', array('!number' => !empty($season_id) ? $season_id : ''));
         $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type, $gallery_field_season_id_value);
       }
       else {
+        $block_title = $gallery_type;
         $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type);
       }
 
@@ -343,13 +345,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       }
 
       return theme('usanetwork_media_gallery_consumptionator_episode_slides', array(
-        'gallery_type' => !empty($season_id)
-          ? t('S!number episode galleries', array(
-            '!number' => $season_id,
-          ))
-          : ((!empty($gallery_type))
-            ? $gallery_type
-            : '') ,
+        'block_title' => !empty($block_title) ? $block_title : t('Other'),
         'slides_vertical' => !empty($rendered_items['slides_vertical']) ? $rendered_items['slides_vertical'] : '',
         'slides_horizontal' => !empty($rendered_items['slides_horizontal']) ? $rendered_items['slides_horizontal'] : '',
         'ad' => isset($advert) ? $advert : NULL,

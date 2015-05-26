@@ -94,6 +94,7 @@
 
                 $container.swipe({
                   excludedElements: "button, input, select, textarea, .noSwipe",
+                  allowPageScroll: "vertical",
                   swipeRight: function () {
                     if (!$carousel.hasClass('stop')) {
                       var visible_item = $container.jcarousel('visible').index($container.find('li.first'));

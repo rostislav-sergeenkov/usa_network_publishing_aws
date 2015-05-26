@@ -454,6 +454,7 @@ body{
   text-align: center;
   color: #000;
   font-size: 1.125em;
+  margin: 0 auto;
 }
 .section-description p {
   margin: 0;

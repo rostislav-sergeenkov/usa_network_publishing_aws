@@ -27215,7 +27215,6 @@ yx-axis
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
   float: left;
-  box-sizing: border-box;
   margin-right: 2px;
   margin-bottom: 0;
   height: 100%;
@@ -30300,6 +30299,11 @@ body.blog .view-display-id-blog_content .views-row {
     width: 30%;
   }
 }
+@media (min-width: 1281px) {
+  .about-show-block.about-show-enable .about-show-image-block ~ .about-show-text-block {
+    margin-left: 0;
+  }
+}
 .about-show-block.about-show-enable .about-show-text-block {
   color: #545454;
   float: left;
@@ -30312,6 +30316,11 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 641px) {
   .about-show-block.about-show-enable .about-show-text-block {
     margin-top: 2.5vw;
+  }
+}
+@media (min-width: 1025px) {
+  .about-show-block.about-show-enable .about-show-text-block {
+    margin-left: 25%;
   }
 }
 @media (min-width: 1901px) {

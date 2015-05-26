@@ -127,6 +127,11 @@
       right: 0;
       width: 30%;
     }
+    & ~ .about-show-text-block {
+      @include breakpoint($bp-min-1281-width) {
+        margin-left: 0;
+      }
+    }
   }
   .about-show-text-block {
     color: $poll-color;
@@ -138,6 +143,9 @@
     width: 50%;
     @include breakpoint($bp-min-641-width) {
       margin-top: 2.5vw;
+    }
+    @include breakpoint($bp-min-1025-width) {
+      margin-left: 25%;
     }
     @include breakpoint($bp-min-1901-width) {
       margin-top: 47.5px;

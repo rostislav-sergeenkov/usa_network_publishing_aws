@@ -324,12 +324,14 @@
             right: 0;
             position: absolute;
             top: 0;
-            width: 190px;
-            margin-right: 16px;
+            width: get-vw(150px, 1025);
+            @include breakpoint($bp-min-1901-width) {
+              width: 278px;
+            }
             @include breakpoint($bp-1024-width) {
               padding-top: 20px;
               position: relative;
-              width: 170px;
+              width: 150px;
             }
             @include breakpoint($bp-768-width) {
               position: relative;

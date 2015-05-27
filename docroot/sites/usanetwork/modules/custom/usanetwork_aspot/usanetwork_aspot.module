@@ -850,7 +850,8 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
     $banner_images['mobile'] = $banner_images['desktop'];
   }
 
-  $field_aspot_linked_content = _usanetwork_get_field_item('node', $aspot_node, 'field_aspot_linked_content' ,'target_id');
+  // Temporary set Sponsored as always FALSE.
+  /*$field_aspot_linked_content = _usanetwork_get_field_item('node', $aspot_node, 'field_aspot_linked_content' ,'target_id');
   if ($field_aspot_linked_content) {
     $file_liked = file_load($field_aspot_linked_content);
     if ($file_liked) {
@@ -860,7 +861,8 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         $file_id = '/file/' . $file_liked->fid;
       }
     }
-  }
+  }*/
+  $sponsored = FALSE;
 
   $theme_array = array(
     'show_url' => !empty($aspot_node->field_usa_aspot_link)

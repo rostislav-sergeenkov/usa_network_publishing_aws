@@ -93,6 +93,87 @@ Project demo: http://shindiristudio.com/timeline
         $(this).removeClass('disableClick')
       });
 
+      // OMNITURE
+      // Timeline omniture tracking. Track scene changes via scene buttons
+      $('.node-timeline-gallery .timeline-line .timeline-node').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          e.preventDefault();
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            var pageTitle = $('#page-title').text(),
+                currentId = $(this).attr('href').replace('#', ''),
+                $item = $('.timeline-items .timeline-item[data-id="' + currentId + '"]'),
+                itemSeason = $item.attr('data-season-num'),
+                itemEpisode = $item.attr('data-episode-num'),
+                itemEpisodeName = $item.attr('data-episode-name'),
+                itemScene = $item.attr('data-description'),
+                slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
+            if (pageTitle == '') pageTitle = $('#timeline-title').text();
+
+            s.prop3 = 'Gallery';
+            s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
+            s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + pageTitle;
+            s.pageName = s.prop5 + ' : ' + slideTitle;
+
+            if (typeof s_gi != 'undefined') {
+              void(s.t()); // omniture page call
+            }
+          }
+        });
+      });
+
+      // Timeline omniture tracking. Track scene changes via next / previous buttons
+      $('.node-timeline-gallery .timeline-controls .timeline-left, .node-timeline-gallery .timeline-controls .timeline-right').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            var pageTitle = $('#page-title').text(),
+//                slideTitle = String($('.timeline-items .timeline-item.active .timeline-item-details > h2').text());
+                $item = $('.timeline-items .timeline-item.active'),
+                itemSeason = $item.attr('data-season-num'),
+                itemEpisode = $item.attr('data-episode-num'),
+                itemEpisodeName = $item.attr('data-episode-name'),
+                itemScene = $item.attr('data-description'),
+                slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
+            if (pageTitle == '') pageTitle = $('#timeline-title').text();
+
+            s.prop3 = 'Gallery';
+            s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
+            s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + pageTitle;
+            s.pageName = s.prop5 + ' : ' + slideTitle;
+
+            if (typeof s_gi != 'undefined') {
+              void(s.t()); // omniture page call
+            }
+          }
+        });
+      });
+
+      // Timeline omniture tracking. Track scene changes via season 1 or 2 buttons
+      $('.node-timeline-gallery .timeline-line #timeline-line-full-left, .node-timeline-gallery .timeline-line #timeline-line-full-right').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            var pageTitle = $('#page-title').text(),
+                // @TODO -- DV: THE FOLLOWING CODE WILL NEED TO BE UPDATED WHEN WE START ADDING MORE TIMELINES -- ESPECIALLY WITH MORE SEASONS
+                currentId = ($(this).attr('id') == 'timeline-line-full-left') ? '01/01/01' : '01/01/02',
+//                slideTitle = String($('.timeline-items .timeline-item[data-id=\'' + currentId + '\'] .timeline-item-details > h2').text());
+                $item = $('.timeline-items .timeline-item[data-id="' + currentId + '"]'),
+                itemSeason = $item.attr('data-season-num'),
+                itemEpisode = $item.attr('data-episode-num'),
+                itemEpisodeName = $item.attr('data-episode-name'),
+                itemScene = $item.attr('data-description'),
+                slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
+            if (pageTitle == '') pageTitle = $('#timeline-title').text();
+
+            s.prop3 = 'Gallery';
+            s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
+            s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + pageTitle;
+            s.pageName = s.prop5 + ' : ' + slideTitle;
+
+            if (typeof s_gi != 'undefined') {
+              void(s.t()); // omniture page call
+            }
+          }
+        });
+      });
 
       // set social sharing clicks
       jQuery('#timeline_gallery .share-items .facebook').on('click', function() {

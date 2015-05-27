@@ -18,6 +18,8 @@
   margin: 0 auto;
   max-width: 1000px;
 }
+
+/* TVe Help Link and Overlay */
 #microsite .featured-asset .tve-help-link {
   margin-top: 4px;
 }
@@ -25,6 +27,39 @@
   width: auto;
   height: 16px;
 }
+#microsite .featured-asset .tve-help .tve-download-link {
+  max-width: 326px;
+  margin: 30px auto 0;
+}
+#microsite .featured-asset .tve-help .tve-download-link a {
+  max-width: 110px;
+  display: inline-block;
+  margin-right: 29px;
+}
+#microsite .featured-asset .tve-help .tve-download-link img {
+  padding-left: 0;
+}
+#microsite .featured-asset .tve-help .tve-download-link a.usanow-icon {
+  max-width: 37px;
+}
+#microsite .featured-asset .tve-help .tve-download-link a:last-child {
+  margin-right: 0;
+}
+#microsite .featured-asset .tve-help .tve-close {
+  float: none;
+  position: absolute;
+  top: inherit;
+  bottom: 10px;
+  right: 10px;
+  text-transform: uppercase;
+  color: #0AB6E8;
+}
+#microsite .featured-asset .tve-help .tve-close > img {
+  padding-bottom: 4px;
+  max-width: 22px;
+}
+
+
 #microsite .video-player-desc {
   width: calc(100% - 164px);
   float: left;

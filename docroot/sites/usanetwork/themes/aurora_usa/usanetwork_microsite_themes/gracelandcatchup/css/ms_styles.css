@@ -227,6 +227,7 @@ body{
 #site-nav #site-nav-top {
   width: 55%;
   margin: 0 auto;
+  max-width: 592px;
 }
 #site-nav #site-nav-top a {
   float: left;

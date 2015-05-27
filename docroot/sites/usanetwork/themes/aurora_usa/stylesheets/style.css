@@ -7704,8 +7704,17 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   right: 0;
   position: absolute;
   top: 0;
-  width: 190px;
-  margin-right: 16px;
+  width: 14.63415vw;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .consumptionator-page header .tab-content .tab-item .tab-item-content .sharebar, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-catchall-page header .tab-content .tab-item .tab-item-content .sharebar, .page-videos-live header .tab-content .tab-item .tab-item-content .social-bar,
+  .page-videos-live header .tab-content .tab-item .tab-item-content .sharebar, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-media-gallery header .tab-content .tab-item .tab-item-content .sharebar, .node-type-person header .tab-content .tab-item .tab-item-content .social-bar,
+  .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
+    width: 278px;
+  }
 }
 @media (max-width: 1024px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .social-bar,
@@ -7716,7 +7725,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .node-type-person header .tab-content .tab-item .tab-item-content .sharebar {
     padding-top: 20px;
     position: relative;
-    width: 170px;
+    width: 150px;
   }
 }
 @media (max-width: 768px) {
@@ -11351,7 +11360,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper {
     width: calc(100% - 320px);
-    z-index: 2;
+    z-index: 1;
   }
 }
 @media (max-width: 1024px) {
@@ -12796,7 +12805,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
     width: calc(100% - 320px);
-    z-index: 2;
+    z-index: 1;
   }
 }
 @media (max-width: 1024px) {

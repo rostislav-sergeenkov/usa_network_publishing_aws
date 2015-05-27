@@ -992,14 +992,14 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   float: right;
   height: 200px;
   margin: 0;
-  padding: 0 20px;
+  padding: 15px 20px 0;
   position: relative;
   width: 175px;
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper, .related-content-block ul li .social-promo .meta-wrapper {
     height: 284px;
-    padding: 0 30px;
+    padding: 24px 30px 0;
     width: 249px;
   }
 }
@@ -1011,7 +1011,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper, .related-content-block ul li .social-promo .meta-wrapper {
-    padding: 0 30px;
+    padding: 24px 30px 0;
+  }
+}
+@media (max-width: 480px) {
+  .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper, .related-content-block ul li .social-promo .meta-wrapper {
+    padding: 13px 20px 0;
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper:before, .related-content-block ul li .social-promo .meta-wrapper:before {
@@ -1052,21 +1057,21 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-size: 9px;
   line-height: 11px;
   letter-spacing: 1px;
-  margin-top: 15px;
+  margin-bottom: 15px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic, .related-content-block ul li .social-promo .meta-wrapper .topic {
     font-size: 14px;
     line-height: 16px;
-    margin-top: 24px;
+    margin-bottom: 22px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic, .related-content-block ul li .social-promo .meta-wrapper .topic {
     font-size: 14px;
     line-height: 16px;
-    margin-top: 24px;
+    margin-bottom: 22px;
   }
 }
 @media (max-width: 640px) {
@@ -1079,7 +1084,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .topic, .related-content-block ul li .social-promo .meta-wrapper .topic {
     font-size: 8px;
     line-height: 10px;
-    margin-top: 13px;
+    margin-bottom: 13px;
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo .meta-wrapper .show-title {
@@ -1087,21 +1092,20 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-size: 11px;
   letter-spacing: 1px;
   line-height: 13px;
-  margin-top: 15px;
+  margin-bottom: 5px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo .meta-wrapper .show-title {
     font-size: 16px;
     line-height: 18px;
-    margin-top: 22px;
+    margin-bottom: 5px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo .meta-wrapper .show-title {
     font-size: 16px;
     line-height: 18px;
-    margin-top: 22px;
   }
 }
 @media (max-width: 640px) {
@@ -1114,7 +1118,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo .meta-wrapper .show-title {
     font-size: 9px;
     line-height: 11px;
-    margin-top: 13px;
+    margin-bottom: 4px;
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
@@ -1122,21 +1126,20 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-size: 15px;
   letter-spacing: 1px;
   line-height: 18px;
-  margin-top: 5px;
+  margin-bottom: 13px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
     font-size: 21px;
     line-height: 24px;
-    margin-top: 5px;
+    margin-bottom: 20px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
     font-size: 21px;
     line-height: 24px;
-    margin-top: 5px;
   }
 }
 @media (max-width: 640px) {
@@ -1149,14 +1152,13 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .title, .related-content-block ul li .social-promo .meta-wrapper .title {
     font-size: 13px;
     line-height: 15px;
-    margin-top: 4px;
+    margin-bottom: 8px;
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 20px;
-  margin-top: 13px;
   text-transform: none;
   white-space: normal;
 }
@@ -1164,14 +1166,13 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 20px;
     line-height: 26px;
-    margin-top: 15px;
+    max-height: 108px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 20px;
     line-height: 26px;
-    margin-top: 15px;
     max-height: 158px;
   }
 }
@@ -1185,7 +1186,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 11px;
     line-height: 13px;
-    margin-top: 8px;
     max-height: 50px;
   }
 }

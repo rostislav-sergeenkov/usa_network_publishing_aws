@@ -51,6 +51,10 @@ function usanetwork_media_gallery_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usa_gallery_show_gallery_lmb'] = array(
+    'info' => 'Show gallery landing page: main block',
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -79,6 +83,11 @@ function usanetwork_media_gallery_block_view($delta = '') {
     case 'usa_gallery_cons_related':
       $block['subject'] = '';
       $block['content'] = _usanetwork_media_gallery_related_content_block();
+      break;
+
+    case 'usa_gallery_show_gallery_lmb':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_media_show_gallery_lmb_block();
       break;
   }
 
@@ -194,6 +203,12 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
         'show_nid' => NULL,
       ),
       'template' => 'templates/usanetwork-media-gallery-related-items-container',
+    ),
+    'usanetwork_media_gallery_photo_lmb_block' => array(
+      'variables' => array(
+        'promos' => array(),
+      ),
+      'template' => 'templates/usanetwork-media-gallery-photo-lmb-block',
     ),
   );
 }
@@ -438,6 +453,88 @@ function _usanetwork_media_gallery_related_content_block() {
 }
 
 /**
+ * Renders main block for gallery landing page.
+ */
+function _usanetwork_media_show_gallery_lmb_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  $theme_variables = array();
+  if (!empty($show_node)) {
+    $field_promo_items = field_get_items('node', $show_node, 'field_show_plmb_promo');
+    if (!empty($field_promo_items) && is_array($field_promo_items)) {
+      $i = 0;
+      $promos = array();
+      foreach ($field_promo_items as $promo_reference) {
+        $promo_entity = entity_load($promo_reference['target_type'], array($promo_reference['target_id']));
+        if (empty($promo_entity)) {
+          continue;
+        }
+        else {
+          $promo_entity = reset($promo_entity);
+        }
+        switch ($promo_reference['target_type']) {
+          case 'node':
+            $promo_data = _usanetwork_promo_pull_node_promo_details($promo_entity);
+            break;
+          case 'file':
+            $promo_data = _usanetwork_promo_pull_file_promo_details($promo_entity);
+            break;
+        }
+        if (empty($promo_data)) {
+          continue;
+        }
+        if (!empty($promo_entity->field_promo_image_override)) {
+          $field_image_override = reset(field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_image_override'));
+          $promo_image_url = $field_image_override['uri'];
+        }
+        else {
+          $promo_image_url = usanetwork_core_api_get_content_image($promo_reference['target_type'], $promo_entity);
+        }
+        if (!empty($promo_entity->field_promo_link)) {
+          $promo_link_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_link');
+          $promo_link = url(reset(reset($promo_link_field)));
+        }
+        else {
+          $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
+        }
+        $is_first = ($i == 0) ? TRUE : FALSE;
+        $i++;
+        $promos[] = array(
+          'url' => $promo_link,
+          'image' => array(
+            'mobile' => !empty($promo_image_url)
+                ? image_style_url('719x414', $promo_image_url) : NULL,
+            'desktop' => !empty($promo_image_url)
+                ? ($is_first
+                  ? image_style_url('927x756', $promo_image_url)
+                  : image_style_url('456x372', $promo_image_url)
+                )
+                : NULL,
+          ),
+          'icon_type' => $promo_data['icon_type'],
+          'icon_text' => $promo_data['cta'],
+          'caption' => $promo_data['show_name'],
+          'title' => $promo_data['promo_title'],
+          'description' => $promo_data['description'],
+          'more_link' => $promo_data['cta'],
+          'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
+          'is_first' => $is_first,
+        );
+      }
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+      $theme_variables = array(
+        'promos' => $promos,
+        'ad' => isset($advert) ? $advert : FALSE,
+      );
+      return theme('usanetwork_tv_shows_video_lmb_block', $theme_variables);
+    }
+  }
+  return '';
+}
+
+/**
  * Renders block of items (default number of items in the block is 6)
  */
 function _usanetwork_media_gallery_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
@@ -615,3 +712,4 @@ function usanetwork_media_gallery_get_related_content_ajax($tv_show_node, $start
 
   return drupal_json_output($response);
 }
+

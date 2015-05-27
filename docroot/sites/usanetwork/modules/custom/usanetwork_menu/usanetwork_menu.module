@@ -697,17 +697,15 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
       }
 
       $theme_variables['on_now'] = array(
-        'image' => !empty($image_url)
-            ? theme('image_style', array(
+        'image' => theme('image_style', array(
               'path' => $image_url,
-              'style_name' => '300x169',
+              'style_name' => '300x169_video',
               'attributes' => array(
                 'class' => array(
                   'running-now-show-preview-image'
                 ),
               ),
-            ))
-            : '',
+            )),
         'title' => ($data['now']->program_type == 'movie') ? t('USA Movie') :
             (!empty($data['now']->show_title) ? $data['now']->show_title : ''),
         'label_link' => l(t('On now'), 'videos/live'),
@@ -735,17 +733,15 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
       }
 
       $theme_variables['up_next'] = array(
-        'image' => !empty($data['next']->nid)
-            ? theme('image_style', array(
+        'image' => theme('image_style', array(
               'path' => $image_url,
-              'style_name' => '300x169',
+              'style_name' => '300x169_video',
               'attributes' => array(
                 'class' => array(
                   'running-next-show-preview-image'
                 ),
               ),
-            ))
-            : '',
+            )),
         'title' => ($data['next']->program_type == 'movie') ? t('USA Movie') :
             (!empty($data['next']->show_title) ? $data['next']->show_title : ''),
         'label_link' => !empty($data['next']->nid) ? l(t('Up next'), 'node/' . $data['next']->nid) : t('Up next'),
@@ -771,7 +767,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
             : 'show-undefined',
       );
     }
-
+    
     return drupal_json_output(array(
       'html' => theme('usanetwork_menu_smnav_now_next', $theme_variables),
     ));

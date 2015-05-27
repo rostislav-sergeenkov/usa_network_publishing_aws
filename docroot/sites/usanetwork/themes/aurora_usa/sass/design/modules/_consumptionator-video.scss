@@ -27,7 +27,7 @@
       width: 74.7%;
       @include breakpoint($between-1025-1280) {
         width: calc(100% - 320px);
-        z-index: 2;
+        z-index: 1;
       }
       @include breakpoint($bp-1024-width) {
         height: 56.25vw;

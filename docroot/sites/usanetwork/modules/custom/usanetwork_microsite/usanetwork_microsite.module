@@ -2676,7 +2676,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $node = $section_wrapper->field_ms_timeline_gallery->value();
               $omniture_prop5 = t($entity->title . ' : Timeline Slideshow : ' . $node->title);
               // @TODO - DV: We must pull the "S1 Episode 1 | Pilot | Scene 1'" info in the next line from the CMS
-              $omniture_pagename = t($entity->title . ' : Timeline Slideshow : ' . $node->title . ' : S1 Episode 1 | Pilot | Scene 1');
+              $omniture_pagename = t($entity->title . ' : Timeline Slideshow : ' . $node->title . ' : Season 1 Episode 1 | Pilot | Scene 1');
               $umbel = $node->title;
             }
           }
@@ -3328,7 +3328,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     $query->condition($db_or);
     $query->condition('fs.field_show_target_id', $show_id, '=');
     $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
-    $query->orderBy('mpx.airdate', 'DESC');
+    $query->orderBy('mpx.airdate', 'ASC');
     $query_results = $query->execute()->fetchAll();
     if (!empty($query_results)) {
       $files_array = array();

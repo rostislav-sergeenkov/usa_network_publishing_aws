@@ -207,6 +207,10 @@
         videoContainer.removeClass('play pause').addClass('pause');
         $pdk.controller.clickPlayButton(false);
         $pdk.controller.pause(true);
+        videoContainer.find('.active-player .custom-play').click(function () {
+          $pdk.controller.clickPlayButton(true);
+          $pdk.controller.pause(false);
+        });
       }
     },
     // SetPlayPlayer

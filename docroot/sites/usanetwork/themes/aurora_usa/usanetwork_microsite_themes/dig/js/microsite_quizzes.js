@@ -1,11 +1,12 @@
 (function ($) {
   Drupal.behaviors.microsite_quizzes = {
     quizIsLoading: null,
-/*
-    micrositeInit300x250Ad: function(nid) {
-      $('#microsite #usanetwork-quiz-' + nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center>');
+    init300x250Ad: function(nid) {
+      var _target = '.ad-container';
+      mps.insertAd(mps._select(_target),'topbox');
+      mps.refreshAds('topbox');
     },
-*/
+
     micrositeInitGigyaSharebar: function() {
       if (typeof gigya !== 'undefined') {
         if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
@@ -105,20 +106,23 @@
       $('#microsite #quizzes .usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function() {
         $(this).on('show', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var quiz_setting = settings.usanetwork_quiz;
-            var quizShow = quiz_setting['quizShow'],
-            quizTitle = quiz_setting['quizTitle'],
-            quizType = quiz_setting['quizType'];
+            if (!$(this).hasClass('shown')) {
+              $(this).addClass('shown');
+              var quiz_setting = settings.usanetwork_quiz;
+              var quizShow = quiz_setting['quizShow'],
+              quizTitle = quiz_setting['quizTitle'],
+              quizType = quiz_setting['quizType'];
 
-            var quizQuestionNumber = $(this).index() + 1;
-            var quizQuestionTitle = $(this).find('.question-title').text();
+              var quizQuestionNumber = $(this).index() + 1;
+              var quizQuestionTitle = $(this).find('.question-title').text();
 
-            s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-            s.linkTrackVars='events,prop58,eVar58';
-            s.linkTrackEvents=s.events='event88';
-            s.eVar58=s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
-            s.tl(this,'o','Poll/Question Shown');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+              s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
+              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackEvents = s.events = 'event88';
+              s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
+              s.tl(this,'o','Poll/Question Shown');
+              s.manageVars('clearVars',s.linkTrackVars,1);
+            }
           }
         });
       });
@@ -127,22 +131,26 @@
       $('#microsite #quizzes .usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var quiz_setting = settings.usanetwork_quiz; // quizes[nid];
-            var quizShow = quiz_setting['quizShow'],
-            quizTitle = quiz_setting['quizTitle'],
-            quizType = quiz_setting['quizType'];
+            if (!$(this).hasClass('answered')) {
+              $(this).addClass('answered');
+              var quiz_setting = settings.usanetwork_quiz; // quizes[nid];
+              var quizShow = quiz_setting['quizShow'],
+              quizTitle = quiz_setting['quizTitle'],
+              quizType = quiz_setting['quizType'];
 
-            var $quizQuestion = $(this).parents('.usanetwork-quiz-question');
-            var quizQuestionNumber = $quizQuestion.index() + 1;
-            var quizQuestionTitle = $(this).closest('.usanetwork-quiz-question').find('.question-title').text();
-            var quizQuestionValue = $(this).attr('value');
+              var $quizQuestion = $(this).parents('.usanetwork-quiz-question');
+              var quizQuestionNumber = $quizQuestion.index() + 1;
+              var quizQuestionTitle = $(this).closest('.usanetwork-quiz-question').find('.question-title').text();
+              var quizQuestionValue = $(this).attr('value');
 
-            s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-            s.linkTrackVars='events,prop58,eVar58';
-            s.linkTrackEvents=s.events='event89';
-            s.eVar58=s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle + ' : Answer : ' + quizQuestionValue;
-            s.tl(this,'o','Poll/Question Answered');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+              s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
+              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackEvents = s.events = 'event89';
+              s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
+              s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle + ' : Answer : ' + quizQuestionValue;
+              s.tl(this,'o','Poll/Question Answered');
+              s.manageVars('clearVars',s.linkTrackVars,1);
+            }
           }
         });
       });
@@ -151,14 +159,17 @@
       $('#microsite #quizzes .usanetwork-quiz-results input[type="button"]').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            $('.usanetwork-quiz-questions .usanetwork-quiz-question').removeClass('shown');
+            $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').removeClass('answered');
+
             var quiz_setting = settings.usanetwork_quiz,
                 quizShow = quiz_setting['quizShow'],
                 quizTitle = quiz_setting['quizTitle'],
                 quizType = quiz_setting['quizType'];
 
             s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType);
-            s.linkTrackVars='events,eVar65,prop65';
-            s.linkTrackEvents=s.events='event65';
+            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackEvents = s.events = 'event65';
             s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
             s.tl(this,'o','Restart');
             s.manageVars('clearVars',s.linkTrackVars,1);
@@ -243,7 +254,9 @@
                 Drupal.behaviors.microsite_scroll.create728x90Ad();
 
                 // show 300x250 ad on splash page
-//                Drupal.behaviors.microsite_quizzes.micrositeInit300x250Ad(data.nid);
+                setTimeout(function(){
+                  Drupal.behaviors.microsite_quizzes.init300x250Ad(data.nid);
+                }, 500);
 
                 // set url
                 Drupal.behaviors.microsite_scroll.micrositeChangeUrl('quizzes', link);

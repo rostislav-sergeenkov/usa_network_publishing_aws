@@ -47,6 +47,7 @@
   width: 54%;
   height: auto;
   margin-bottom: 4%;
+  max-width: 650px;
 }
 #home #home-nav li {
   float: left;
@@ -54,6 +55,7 @@
   width: 23%;
   margin: 0 5.1667%;
   height: auto;
+  max-width: 150px;
 }
 #home #home-nav li .spoiler {
   float: left;

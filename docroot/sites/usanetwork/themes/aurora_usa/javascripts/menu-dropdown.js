@@ -39,6 +39,7 @@
 
     onTotalMCScrollFlag: null,
     onTotalMCScrollOffset: null,
+    onTotalMCScrollStartOffset: null,
     MCScrollInstance: null,
 
     destroyScroll: function() {
@@ -65,6 +66,7 @@
             whileScrolling: function(){
               if (this.mcs.topPct == 100) {
                 Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag = true;
+                Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollStartOffset = $(window).scrollTop();
               }
             }
           }
@@ -73,6 +75,8 @@
         Drupal.behaviors.usanetwork_menu_dropdown.destroyScroll();
       }
     },
+
+    startScrollAt: null,
 
     attach: function(context){
       $('body').once(function () {
@@ -326,15 +330,24 @@
         $(window).on("scroll", function () {
           Drupal.behaviors.usanetwork_menu_dropdown.stickyHeader();
 
-          if (!$('.tab-item').hasClass('mCustomScrollbar') && window.innerWidth >= window_size_tablet_portrait && !$('body').hasClass('consumptionator-page')) {
-            $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
-            $('.tab-item.active').slideUp(100).removeClass('active');
+          if ($('.tab-item.active').length > 0) {
+            if (Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt == null) {
+              Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt = $(window).scrollTop();
+            }
+
+            if (($(window).scrollTop() - Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt) > 100) {
+              if (!$('.tab-item').hasClass('mCustomScrollbar') && window.innerWidth >= window_size_tablet_portrait && !$('body').hasClass('consumptionator-page')) {
+                $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
+                $('.tab-item.active').slideUp(350).removeClass('active');
+                Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt = null;
+              }
+            }
           }
 
           if (Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag) {
             Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset = $(window).scrollTop();
 
-            if (Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset > 100) {
+            if ((Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset - Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollStartOffset) > 100) {
               Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag = false;
               Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollOffset = null;
 

@@ -698,7 +698,8 @@ header {
   }
   .tab-content {
     @include clear();
-    position: relative;
+    position: absolute;
+    z-index: 9999;
     width: 100%;
     @include breakpoint($bp-768-width) {
       display: none;
@@ -707,7 +708,7 @@ header {
   .tab-item {
     @include clear();
     background: $header-tab-back-new;
-    border-top: 1px solid transparent;
+    /*border-top: 1px solid transparent;*/
     display: none;
     letter-spacing: 0.5px;
     height: auto;
@@ -727,7 +728,7 @@ header {
       padding: 10px;
     }
     &.active {
-      border-top: 1px solid $header-tab-back-hover;
+      /*border-top: 1px solid $header-tab-back-hover;*/
       display: block;
     }
     .see-all-link {

@@ -39,7 +39,6 @@
       $('#character-info li.active').animate({ 'opacity': 0 }, 500, function(){
           $('#character-nav li, #character-info li').removeClass('active');
         Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
-        // Drupal.behaviors.ms_global.create728x90Ad('characters');
       });
     },
 

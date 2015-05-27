@@ -11684,6 +11684,12 @@ footer h2 {
   top: 40%;
   z-index: 51;
 }
+@media (min-width: 1025px) {
+  .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager {
+    margin-top: -157.5px;
+    height: 315px;
+  }
+}
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager:hover, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager:hover, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager:hover {
   width: 130px;
 }

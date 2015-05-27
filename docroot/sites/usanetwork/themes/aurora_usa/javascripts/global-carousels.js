@@ -388,6 +388,9 @@
       var left = (window.innerWidth - width_block) / 2 - item_width - current_item.offset()['left'] + current_left;
       carousel.animate({left: left}, 500);
       current_item.animate({width: width}, 500, 'easeInCubic');
+      if(!current_item_node.hasClass('advert-enable')) {
+        Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
+      }
       current_item.addClass('active');
       current_item_node.addClass('open');
       current_item.find('.show-open').css('max-width', item_width);
@@ -398,14 +401,16 @@
       current_item.attr('data-width', item_width);
       carousel.addClass('stop');
 
-      if(window.innerWidth >= window_size_tablet_portrait ) {
-        if (current_item_node.data('mpspath') && !current_item_node.hasClass('ad-enable')) {
-          current_item_node.addClass('ad-enable');
-          Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
-        } else {
-          Drupal.behaviors.mpsAdvert.homeShowsQueueInsertAd(current_item_node);
-        }
-      }
+
+
+      //if(window.innerWidth >= window_size_tablet_portrait ) {
+      //  if (current_item_node.data('mpspath') && !current_item_node.hasClass('ad-enable')) {
+      //    current_item_node.addClass('ad-enable');
+      //    Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
+      //  } else {
+      //    Drupal.behaviors.mpsAdvert.homeShowsQueueInsertAd(current_item_node);
+      //  }
+      //}
 
       /*current_item.find('.show-open').bind('click', function() {
         Drupal.behaviors.global_carousels.showClose(current_item);
@@ -431,13 +436,13 @@
       item.removeAttr('data-width');
       carousel.removeClass('stop');
 
-      if(window.innerWidth >= window_size_tablet_portrait ) {
-        if (current_item_node.data('mpspath')) {
-          Drupal.behaviors.mpsSponsorShip.removeExecSponsoredBlock(current_item_node);
-        } else {
-          Drupal.behaviors.mpsAdvert.homeShowsQueueRemoveAd(current_item_node);
-        }
-      }
+      //if(window.innerWidth >= window_size_tablet_portrait ) {
+      //  if (current_item_node.data('mpspath')) {
+      //    Drupal.behaviors.mpsSponsorShip.removeExecSponsoredBlock(current_item_node);
+      //  } else {
+      //    Drupal.behaviors.mpsAdvert.homeShowsQueueRemoveAd(current_item_node);
+      //  }
+      //}
 
       //item.find('.show-open').unbind('click');
     },

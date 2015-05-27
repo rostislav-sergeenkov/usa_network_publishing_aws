@@ -2787,10 +2787,13 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     }
   }
 
+  // Temporary set Sponsored as always FALSE.
+  /*
   if (!empty($data->sponsored)) {
     $sponsored = TRUE;
     $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
-  }
+  }*/
+  $sponsored = FALSE;
 
   if (!empty($data->raw_image_uri)) {
     $desktop_image = $is_big

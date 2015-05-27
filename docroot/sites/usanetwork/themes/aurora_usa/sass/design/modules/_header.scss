@@ -11,19 +11,16 @@ header {
   h2 {
     margin: 0;
   }
-  .ad-728x90 {
-
-  }
   .header-nav-bar {
     background-color: $header-tab-back;
-    height: 90px;
+    height: get-vw(73px, 1025);
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1901-width) {
       height: 135px;
     }
     @include breakpoint($bp-1024-width) {
-      height: 50px;
+      height: 73px;
     }
     @include breakpoint($bp-768-width) {
       background: $footer-links;
@@ -53,9 +50,9 @@ header {
     background: $usa-logo-back;
     float: left;
     height: 100%;
-    width: 125px;
+    width: get-vw(100px, 1025);
     @include breakpoint($bp-min-1901-width) {
-      width: 190px;
+      width: 185px;
     }
     @include breakpoint($bp-1024-width) {
       width: 100px;
@@ -94,16 +91,6 @@ header {
   .nav-bar-tabs {
     float: left;
     height: 100%;
-    width: 605px;
-    @include breakpoint($bp-min-1901-width) {
-      width: 750px;
-    }
-    @include breakpoint($bp-1280-width) {
-      width: 485px;
-    }
-    @include breakpoint($bp-1024-width) {
-      width: 400px;
-    }
     @include breakpoint($bp-768-width) {
       clear: both;
       display: none;
@@ -296,14 +283,18 @@ header {
     }
     @include breakpoint($bp-min-769-width) {
       ul {
-        display: table;
-        width: 100%;
+        display: block;
+        li {
+          &.expanded {
+            list-style: none;
+          }
+        }
       }
       .header-show-menu {
         display: none;
       }
       .tab {
-        display: table-cell;
+        float: left;
         height: 100%;
         padding: 0;
         .item-list {
@@ -323,18 +314,23 @@ header {
         font-family: $avalon-medium;
         font-size: get-vw(13px, 1025);
         height: 100%;
-        line-height: 90px;
+        line-height: get-vw(73px, 1025);
         letter-spacing: 0.5px;
+        padding: 0 get-vw(48px, 1025);
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
           font-size: 24px;
           line-height: 135px;
-          padding: 0 30px;
+          padding: 0 89px;
         }
         @include breakpoint($bp-1024-width) {
           font-size: 13px;
+          line-height: 73px;
+          padding: 0 48px;
+        }
+        @include breakpoint($bp-768-width) {
           line-height: 50px;
         }
         &.active {
@@ -708,7 +704,6 @@ header {
   .tab-item {
     @include clear();
     background: $header-tab-back-new;
-    /*border-top: 1px solid transparent;*/
     display: none;
     letter-spacing: 0.5px;
     height: auto;
@@ -728,7 +723,6 @@ header {
       padding: 10px;
     }
     &.active {
-      /*border-top: 1px solid $header-tab-back-hover;*/
       display: block;
     }
     .see-all-link {

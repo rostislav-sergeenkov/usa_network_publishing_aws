@@ -227,6 +227,7 @@ body{
 #site-nav #site-nav-top {
   width: 55%;
   margin: 0 auto;
+  max-width: 592px;
 }
 #site-nav #site-nav-top a {
   float: left;
@@ -465,7 +466,7 @@ section h2 {
   font-size: 2.75em;
   text-align: center;
   text-transform: uppercase;
-  margin: 90px 0 25px; /* 25px 0; */
+  margin: 90px 0 25px;
   clear: both;
 }
 #microsite #sections {
@@ -478,7 +479,7 @@ section h2 {
   position: relative;
   top: 0;
   left: 0;
-  padding: 15px 0 60px; /* 15px 0 30px; */
+  padding: 15px 0 60px;
 }
 #home.section {
   background-color: #000;

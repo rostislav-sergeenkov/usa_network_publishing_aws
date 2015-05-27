@@ -110,10 +110,12 @@
           }
         }
       }
-      .bx-controls {
-        .bx-custom-pager {
-          @include breakpoint($bp-min-769-width) {
-            display: block !important;
+      .bx-wrapper {
+        .bx-controls {
+          .bx-custom-pager {
+            @include breakpoint($bp-min-769-width) {
+              display: block;
+            }
           }
         }
       }
@@ -311,6 +313,10 @@
           position: absolute;
           top: 40%;
           z-index: 51;
+          @include breakpoint($bp-min-1025-width) {
+            margin-top: -157.5px;
+            height: 315px;
+          }
           &:hover {
             width: 130px;
           }

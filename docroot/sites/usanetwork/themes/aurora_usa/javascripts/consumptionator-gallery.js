@@ -11,13 +11,20 @@
         if ($currentDescription == '' && $('meta[property="og:description"]').length > 0) {
           $currentDescription = $('meta[property="og:description"]').attr('content');
         }
-        var $currentImage = slide.find('.asset-img img');
-        var url = window.location.href;
+        var $currentImage = slide.find('.asset-img img'),
+            url = window.location.href.split('#')[0],
+            slideIndex;
+
+        if(indexSlide > 0 ) {
+          slideIndex = '#' + (indexSlide + 1);
+        } else {
+          slideIndex = '';
+        }
+
         $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
           if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
             var url = window.location.href.split('#')[0];
-            //sharebar.gigyaSharebar.ua.linkBack = url + '#' + (slider.currentSlide + 1);
-            sharebar.gigyaSharebar.ua.linkBack = url + '#' + indexSlide + 1;
+            sharebar.gigyaSharebar.ua.linkBack = url + slideIndex;
             sharebar.gigyaSharebar.ua.imageBhev = 'url';
             sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('data-src-share') ? $currentImage.attr('data-src-share') : $currentImage.attr('src');
             sharebar.gigyaSharebar.ua.description = $currentDescription;
@@ -71,15 +78,16 @@
         itemLength = pagerItem.length;
 
     if(elem) {
-      pagerItemLinkActiveIndex = elem.find('.bx-pager-link').attr('data-slide-index');
+      pagerItemLinkActiveIndex = elem.find('.bx-pager-link').data('slide-index');
     } else {
-      pagerItemLinkActiveIndex = pager.find('.bx-pager-link.active').attr('data-slide-index')
+      pagerItemLinkActiveIndex = pager.find('.bx-pager-link.active').data('slide-index');
     }
 
     if (window.innerWidth >= window_size_tablet) {
+      var itemHeight = pagerItemLink.innerHeight();
       if (itemLength >= 10) {
         if (pagerItemLinkActiveIndex > 3) {
-          var marginTop = pagerItemLinkActiveIndex * (pagerItemLink.innerHeight() * 2) - (pagerItemLink.innerHeight() * 2) * 4;
+          var marginTop = pagerItemLinkActiveIndex * (itemHeight * 2) - (itemHeight * 2) * 4;
           pagerItem.eq(0).css('margin-top', - marginTop + 'px');
         } else if (pagerItemLinkActiveIndex <= 3) {
           pagerItem.eq(0).css('margin-top', 0 + 'px');
@@ -87,7 +95,7 @@
       }
     }
     if (window.innerWidth < window_size_tablet) {
-      var itemWidth = pagerItem.width();
+      var itemWidth = pagerItem.innerWidth();
       if (itemLength >= 10) {
         if (pagerItemLinkActiveIndex > 3) {
           var left = pagerItemLinkActiveIndex * (itemWidth * 2) - (itemWidth * 2) * 4;
@@ -212,6 +220,10 @@
       }
       gallery = USAN.gallery.init('#bxslider-gallery');
 
+      var index = 0,
+          slide = $('#bxslider-gallery .slide').eq(0);
+
+      gigyaSharebar(slide, index);
 
       var container = $('.gallery-wrapper');
 
@@ -241,30 +253,32 @@
       });
 
       $(window).load(function () {
-        var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index'),
-            slide = $('#bxslider-gallery .slide.active');
 
-        gigyaSharebar(slide, index);
+        var hash = window.location.hash;
+        if (hash) {
+          $current = /\d+/.exec(hash)[0];
+          $current = (parseInt($current) || 1) - 1;
 
-        var url = window.location.href,
-            urlParts = url.split('#'),
-            urlLength = urlParts.length;
+          var slideCount = $('.gallery-wrapper .slide').last().index(),
+              pager = $('.gallery-wrapper .bx-custom-pager');
 
-        if (urlLength > 0) {
-          var slideIndex = urlParts[urlLength - 1];
-          gallery.goToSlide(slideIndex - 1);
+          if ($current <= slideCount) {
+            gallery.goToSlide($current);
+            movePagerItems(pager);
+          }
         }
-
       });
 
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
-          var pagerItemLinkActiveIndex = container.find('.bx-pager-link.active').attr('data-slide-index');
+          var pagerItemLinkActiveIndex = container.find('.bx-pager-link.active').data('slide-index');
+
           if(window.innerWidth < window_size_tablet) {
             if(!$('#bxslider-gallery').hasClass('mobile')){
               $('#bxslider-gallery').addClass('mobile');
               gallery.reloadSlider();
               gallery.goToSlide(pagerItemLinkActiveIndex);
+              movePagerItems($('.gallery-wrapper .bx-custom-pager'));
             }
           }
           if(window.innerWidth > window_size_tablet) {
@@ -272,6 +286,9 @@
               $('#bxslider-gallery').removeClass('mobile');
               gallery.reloadSlider();
               gallery.goToSlide(pagerItemLinkActiveIndex);
+              setTimeout(function () {
+                movePagerItems($('.gallery-wrapper .bx-custom-pager'));
+              }, 1000);
             }
           }
         }, 0, "consumptionator gallery");

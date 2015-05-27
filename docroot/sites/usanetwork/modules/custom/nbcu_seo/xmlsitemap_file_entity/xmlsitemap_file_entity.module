@@ -66,24 +66,24 @@ function xmlsitemap_file_entity_xmlsitemap_process_file_links(array $fids) {
 /**
  * Implements hook_file_entity_insert().
  */
-/*function xmlsitemap_file_entity_file_insert(stdClass $file) {
+function xmlsitemap_file_entity_file_insert(stdClass $file) {
   xmlsitemap_file_entity_file_update($file);
-}*/
+}
 
 /**
  * Implements hook_file_entity_update().
  */
-/*function xmlsitemap_file_entity_file_update(stdClass $file) {
+function xmlsitemap_file_entity_file_update(stdClass $file) {
   $link = xmlsitemap_file_entity_create_link($file);
   xmlsitemap_link_save($link);
-}*/
+}
 
 /**
  * Implements hook_file_delete().
  */
-/*function xmlsitemap_file_entity_file_delete(stdClass $file) {
+function xmlsitemap_file_entity_file_delete(stdClass $file) {
   xmlsitemap_link_delete('file', $file->fid);
-}*/
+}
 
 /**
  * Implements hook_comment_update().

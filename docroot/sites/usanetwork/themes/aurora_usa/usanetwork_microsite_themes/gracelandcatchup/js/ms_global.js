@@ -88,22 +88,20 @@ var initialPageLoad = 1;
         Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
         Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
+//usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
       }
     },
 
     // waypointHandler
     sectionTimer: null,
     waypointHandler: function(event, sectionId, direction){
-      usa_debug('========== waypointHandler(' + event + ', ' + sectionId + ', ' + direction + ')');
+//usa_debug('========== waypointHandler(' + event + ', ' + sectionId + ', ' + direction + ')');
 
       // if more than one function call arrives before the timeout is done,
       // clear the timer and start over. This is to prevent, rapid scrolling
       // or navigation clicks from triggering Omniture calls
       clearTimeout(Drupal.behaviors.ms_global.sectionTimer);
       Drupal.behaviors.ms_global.sectionTimer = setTimeout(function(){
-//        var anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId,
-//            urlSection = Drupal.behaviors.ms_global.parseUrl()['section'];
         var urlSection = Drupal.behaviors.ms_global.parseUrl()['section'];
         if (urlSection != sectionId) {
           usa_debug('========== waypointHandler event triggered on ' + sectionId);
@@ -116,7 +114,6 @@ usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection)
 
 
     // initializeWaypoints -- for triggering section scroll events
-//    waypoints: {'down': {}, 'up': {}},
     waypoints: {},
     initializeWaypoints: function() {
       // When scrolling down, send Omniture page call when top of next section hits bottom of sticky nav
@@ -125,20 +122,12 @@ usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection)
       // loop through each section
       $('.section').each(function(){
         var sectionId = $(this).attr('id');
-/*
-            firstSection = $('.section:first').attr('id'),
-            lastSection = $('.section:last').attr('id'),
-            downEnabled = (sectionId == firstSection || sectionId == 'site-nav') ? false : true,
-            upEnabled = (sectionId == lastSection || sectionId == 'site-nav') ? false : true;
-*/
-usa_debug('========= initializing waypoints for section ' + sectionId);
+//usa_debug('========= initializing waypoints for section ' + sectionId);
         if (sectionId != 'site-nav') {
-//          Drupal.behaviors.ms_global.waypoints['down'][sectionId] = new Waypoint.Inview({
           Drupal.behaviors.ms_global.waypoints[sectionId] = new Waypoint.Inview({
             element: document.getElementById(sectionId),
 //            enter: function(direction) { handler('enter', sectionId, direction); },
             entered: function(direction) {
-//              if (sectionId == firstSection || sectionId == lastSection)
               Drupal.behaviors.ms_global.waypointHandler('entered', sectionId, direction);
             },
             exit: function(direction) {
@@ -156,8 +145,8 @@ usa_debug('========= initializing waypoints for section ' + sectionId);
       $('.section').each(function(index, section) {
         Drupal.behaviors.ms_global.sectionIds[index] = $(this).attr('id');
       });
-usa_debug('============= sectionIds: ');
-usa_debug(Drupal.behaviors.ms_global.sectionIds);
+//usa_debug('============= sectionIds: ');
+//usa_debug(Drupal.behaviors.ms_global.sectionIds);
     },
 
     // getScrollDirectionUsingSections
@@ -172,7 +161,7 @@ usa_debug(Drupal.behaviors.ms_global.sectionIds);
     // getScrollDirection
     lastYScrollPosition: 0,
     getScrollDirection: function() {
-usa_debug('========= sectionScroll -- lastYScrollPosition: ' + Drupal.behaviors.ms_global.lastYScrollPosition + ',  pageYOffset: ' + window.pageYOffset);
+//usa_debug('========= sectionScroll -- lastYScrollPosition: ' + Drupal.behaviors.ms_global.lastYScrollPosition + ',  pageYOffset: ' + window.pageYOffset);
       scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
       Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
       return scrollDirection;
@@ -267,7 +256,6 @@ usa_debug('========= sectionScroll -- lastYScrollPosition: ' + Drupal.behaviors.
                 itemEpisodeName = $item.attr('data-episode-name'),
                 itemScene = $item.attr('data-description');
             itemTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
-//            itemTitle = $('#microsite #timeline .timeline-items .timeline-item.active .timeline-item-details > h2').text();
           }
           s.prop5 = siteName + ' : Timeline SlideShow : ' + timelineTitle;
           s.pageName = s.prop5 + ' : ' + itemTitle;
@@ -467,7 +455,7 @@ usa_debug('========= sectionScroll -- lastYScrollPosition: ' + Drupal.behaviors.
           nextSectionId = $(nextSection).attr('id'),
           direction = Drupal.behaviors.ms_global.getScrollDirectionUsingSections(anchor), // getScrollDirection(),
           offsetDirection = (direction == 'down') ? 1 : -1;
-usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirection: ' + offsetDirection);
+//usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirection: ' + offsetDirection);
       // if this is IE9, reload the correct page
       if ($('html.ie9').length > 0) {
         window.location.href = anchorFull.replace('/home', '');
@@ -492,7 +480,7 @@ usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirect
       var nextSectionElem = document.getElementById(anchor),
           offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
-usa_debug('====== sectionScroll -- nextSection: ' + nextSection + ', offsetAmount: ' + offsetAmount + ', nextSectionTop: ' + nextSectionTop);
+//usa_debug('====== sectionScroll -- nextSection: ' + nextSection + ', offsetAmount: ' + offsetAmount + ', nextSectionTop: ' + nextSectionTop);
       $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
 //usa_debug('======== microsite animate complete');
         $('.section').removeClass('active');
@@ -509,11 +497,9 @@ usa_debug('====== sectionScroll -- nextSection: ' + nextSection + ', offsetAmoun
         if (nextSectionId != 'videos') {
           Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
           if (videoContainer.attr('data-ad-start') == 'true') {
-//            videoContainer.find('.active-player .custom-play').addClass('active').show();
             videoContainer.find('.active-player .custom-play').click(function () {
               $pdk.controller.clickPlayButton(true);
               $pdk.controller.pause(false);
-//              $('.active-player .custom-play').removeClass('active').hide();
             });
           }
         }
@@ -632,11 +618,7 @@ usa_debug('====== sectionScroll -- nextSection: ' + nextSection + ', offsetAmoun
             self.sectionScroll(urlParts['section'], urlParts['item']);
           }, 1000);
         }
-/*
-        else {
-          self.globalInitialPageLoad = false;
-        }
-*/
+
         self.create728x90Ad();
 
       }, 2000);

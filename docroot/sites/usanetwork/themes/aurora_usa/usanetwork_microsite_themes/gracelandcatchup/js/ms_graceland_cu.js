@@ -18,7 +18,6 @@
             $(this).css({'overflow': 'visible'}); // to allow hamburger hover state to work
           }
         });
-//        $videoTitle.animate({marginTop: 105}, 700);
         $homeUsaLogo.animate({'opacity': 0}, 700);
       }
     },
@@ -30,7 +29,6 @@
       if ($siteNav.css('opacity') == 1) {
 //usa_debug('========= hideSiteNav()');
         $homeUsaLogo.animate({'opacity': 1}, 700);
-//        $videoTitle.animate({marginTop: 25}, 700);
         $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
           $(this).css({'opacity': 0});
         });

@@ -2,11 +2,6 @@
   Drupal.behaviors.ms_quizzes = {
     quizIsLoading: null,
 
-/*
-    init300x250Ad: function(nid) {
-      $('#microsite #usanetwork-quiz-' + nid).children('.container').filter(':visible').find('.dart-tag').html('<center><iframe src="/custom-dart-iframe?key=300x250_ifr_reload" frameborder="0" scrolling="no" width="300" height="250"></iframe></center>');
-    },
-*/
     init300x250Ad: function(nid) {
       var _target = '.ad-container';
       mps.insertAd(mps._select(_target),'topbox');
@@ -48,7 +43,7 @@
     },
 
     updateSettingsGigyaSharebars: function(title, link, description, imageUrl) {
-usa_debug('======== ms_quizzes.js -- updateSettingsGigyaSharebars(' + title + ', ' + link + ', ' + description + ', ' + imageUrl + ')');
+//usa_debug('======== ms_quizzes.js -- updateSettingsGigyaSharebars(' + title + ', ' + link + ', ' + description + ', ' + imageUrl + ')');
       var newSharebarObj = [];
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'quiz-gigya-share', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'gigya-share--2', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
@@ -261,6 +256,8 @@ usa_debug('======== ms_quizzes.js -- updateSettingsGigyaSharebars(' + title + ',
                 // hide loader
                 Drupal.behaviors.ms_quizzes.quizIsLoading = false;
                 Drupal.behaviors.ms_quizzes.showHideLoader();
+
+                if (typeof Waypoint != 'undefined') Waypoint.refreshAll();
               });
             });
           });

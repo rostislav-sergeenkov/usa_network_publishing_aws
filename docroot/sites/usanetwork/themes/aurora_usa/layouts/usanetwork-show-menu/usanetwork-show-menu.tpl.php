@@ -14,17 +14,17 @@
   </div>
   <div class="tab-content">
     <div class="tab-item shows-tab">
-      <div class="show-tab-wrapper">
+      <div class="show-tab-wrapper tab-item-wrapper">
         <?php print $content['reg_tab_shows']; ?>
       </div>
     </div>
     <div class="tab-item full-episode-tab">
-      <div class="full-episode-tab-wrapper">
+      <div class="full-episode-tab-wrapper tab-item-wrapper">
         <?php print $content['reg_tab_full_episodes']; ?>
       </div>
     </div>
     <div class="tab-item schedule-tab">
-      <div class="schedule-tab-wrapper">
+      <div class="schedule-tab-wrapper tab-item-wrapper">
         <div class="see-all-link">
           <a href="/schedule">view full schedule</a>
         </div>

@@ -3546,6 +3546,11 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div {
     font-size: 26px;
   }
 }
+@media (max-width: 480px) {
+  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div {
+    font-size: 23px;
+  }
+}
 body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
   content: "\e602";
   color: #afafaf;
@@ -13452,11 +13457,7 @@ footer h2 {
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left {
   float: left;
-}
-@media (max-width: 320px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left {
-    float: none;
-  }
+  width: 50%;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -13483,6 +13484,11 @@ footer h2 {
     font-size: 24px;
   }
 }
+@media (max-width: 480px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 22px;
+  }
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 19.5px;
@@ -13504,13 +13510,14 @@ footer h2 {
     font-size: 10px;
   }
 }
+@media (max-width: 480px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
+    font-size: 8px;
+  }
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
   float: right;
-}
-@media (max-width: 320px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
-    float: none;
-  }
+  width: 45%;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -13546,9 +13553,11 @@ footer h2 {
 }
 @media (max-width: 320px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-    text-align: left;
-    line-height: 2em;
+    margin-bottom: 14px;
   }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share > div {
+  float: right;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content {
   padding: 0 38px 0 58px;
@@ -24757,6 +24766,13 @@ input.echo-submit-text {
   .field-type-gigya-sharebar .gig-button-container td > div:hover {
     width: 24px !important;
     height: 24px !important;
+  }
+}
+@media (max-width: 480px) {
+  .field-type-gigya-sharebar .gig-button-container td > div,
+  .field-type-gigya-sharebar .gig-button-container td > div:hover {
+    width: 22px !important;
+    height: 22px !important;
   }
 }
 .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div {

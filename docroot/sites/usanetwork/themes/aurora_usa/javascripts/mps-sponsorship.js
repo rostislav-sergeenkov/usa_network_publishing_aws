@@ -58,6 +58,27 @@
         if (body.hasClass('front')) {
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.featured-carousel li'), style.dark);
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#full-bleed-promo'), style.bleed);
+
+          var itemCarousel = $('#block-usanetwork-home-usanetwork-home-shows-queue .slides > li');
+
+          itemCarousel.each(function (index, elem) {
+            var item = $(this),
+                itemParent,
+                backgroundItem,
+                itemAdvert,
+                fileId = item.find('.node').data('mpspath');
+
+            if(item.hasClass('first')) {
+              itemParent = 0;
+            } else {
+              itemParent = item.attr('class');
+            }
+
+            backgroundItem = '#block-usanetwork-home-usanetwork-home-shows-queue .slides li.' + itemParent + ' .show-info-block-wrapper';
+            itemAdvert = '#block-usanetwork-home-usanetwork-home-shows-queue .slides li.' + itemParent + ' .advert .showcardad';
+
+            Drupal.behaviors.mpsSponsorShip.execShowCard(backgroundItem, itemAdvert, fileId);
+          });
         }
 
         // node-type-tv-show

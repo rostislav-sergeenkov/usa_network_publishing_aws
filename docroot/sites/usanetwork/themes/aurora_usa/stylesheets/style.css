@@ -1161,12 +1161,14 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   line-height: 20px;
   text-transform: none;
   white-space: normal;
+  margin-top: 13px;
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 20px;
     line-height: 26px;
     max-height: 108px;
+    margin-top: 20px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
@@ -1187,6 +1189,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     font-size: 11px;
     line-height: 13px;
     max-height: 50px;
+    margin-top: 8px;
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {

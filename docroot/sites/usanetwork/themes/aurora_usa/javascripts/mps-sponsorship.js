@@ -25,11 +25,23 @@
     // exec Show Card Sponsored Block
     execSponsoredBlock: function (block) {
 
-      // block - parent element ".slides li .node-usanetwork-promo"
-      var showCarouselItem = '.show-carousel .slides li.active',
-          fileId = block.data('mpspath');
+      if(!block.hasClass('advert-enable')) {
+        // block - parent element ".slides li .node-usanetwork-promo"
+        var showCarouselItem = '.show-carousel .slides li.',
+            fileId = block.data('mpspath'),
+            itemParent = block.closest('li'),
+            itemParentClass;
 
-      Drupal.behaviors.mpsSponsorShip.execShowCard(showCarouselItem  + ' .show-info-block-wrapper', showCarouselItem + ' .advert .showcardad',  fileId);
+        if(itemParent.hasClass('first')) {
+          itemParentClass = 0;
+        } else {
+          itemParentClass = itemParent.attr('class');
+        }
+
+        Drupal.behaviors.mpsSponsorShip.execShowCard(showCarouselItem  + itemParentClass + ' .show-info-block-wrapper', showCarouselItem + itemParentClass + ' .advert .showcardad',  fileId);
+
+        block.addClass('advert-enable');
+      }
     },
 
     // remove exec Show Card Sponsored Block
@@ -58,6 +70,27 @@
         if (body.hasClass('front')) {
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.featured-carousel li'), style.dark);
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#full-bleed-promo'), style.bleed);
+
+          //var itemCarousel = $('#block-usanetwork-home-usanetwork-home-shows-queue .slides > li');
+          //
+          //itemCarousel.each(function (index, elem) {
+          //  var item = $(this),
+          //      itemParent,
+          //      backgroundItem,
+          //      itemAdvert,
+          //      fileId = item.find('.node').data('mpspath');
+          //
+          //  if(item.hasClass('first')) {
+          //    itemParent = 0;
+          //  } else {
+          //    itemParent = item.attr('class');
+          //  }
+          //
+          //  backgroundItem = '#block-usanetwork-home-usanetwork-home-shows-queue .slides li.' + itemParent + ' .show-info-block-wrapper';
+          //  itemAdvert = '#block-usanetwork-home-usanetwork-home-shows-queue .slides li.' + itemParent + ' .advert .showcardad';
+          //
+          //  Drupal.behaviors.mpsSponsorShip.execShowCard(backgroundItem, itemAdvert, fileId);
+          //});
         }
 
         // node-type-tv-show

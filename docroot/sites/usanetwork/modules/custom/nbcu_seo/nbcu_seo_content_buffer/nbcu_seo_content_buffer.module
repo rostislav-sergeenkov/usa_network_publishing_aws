@@ -42,46 +42,46 @@ function nbcu_seo_content_buffer_nbcu_seo_xmlsitemap_types_alter(&$types) {
 /**
  * Implements hook_node_update().
  */
-/*function nbcu_seo_content_buffer_node_update($node) {
+function nbcu_seo_content_buffer_node_update($node) {
   if ($node->status == NODE_PUBLISHED && variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0) {
-    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', TRUE);
   }
-}*/
+}
 
 /**
  * Implements hook_node_insert().
  */
-/*function nbcu_seo_content_buffer_node_insert($node) {
+function nbcu_seo_content_buffer_node_insert($node) {
   if ($node->status == NODE_PUBLISHED && variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0) {
-    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', TRUE);
   }
-}*/
+}
 
 /**
  * Implements hook_file_insert().
  */
-/*function nbcu_seo_content_buffer_file_insert($file) {
+function nbcu_seo_content_buffer_file_insert($file) {
   if (
     strpos($file->type, 'mpx_video') === 0 &&
     $file->published == 1 &&
     variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0
   ) {
-    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', TRUE);
   }
-}*/
+}
 
 /**
  * Implements hook_file_update().
  */
-/*function nbcu_seo_content_buffer_file_update($file) {
+function nbcu_seo_content_buffer_file_update($file) {
   if (
     strpos($file->type, 'mpx_video') === 0 &&
     $file->published == 1 &&
     variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0
   ) {
-    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', TRUE);
   }
-}*/
+}
 
 /**
  * Catches latest 1000 (NBCU_SEO_CONTENT_BUFFER_LENGTH=1000 by default) updated links.

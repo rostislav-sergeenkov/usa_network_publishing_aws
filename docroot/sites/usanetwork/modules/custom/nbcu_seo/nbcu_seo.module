@@ -75,6 +75,12 @@ function nbcu_seo_cron() {
   // Regenerate the sitemap XML files.
   xmlsitemap_run_unprogressive_batch('nbcu_seo_xmlsitemap_regenerate_batch');
 
+  // Rebuild content buffer if content was saved.
+  if (variable_get('nbcu_seo_content_buffer_rebuild_required', FALSE) === TRUE) {
+    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', FALSE);
+  }
+
   // Ping Google with updated XML Sitemap if it possible
   nbcu_seo_ping_google_with_update();
 }

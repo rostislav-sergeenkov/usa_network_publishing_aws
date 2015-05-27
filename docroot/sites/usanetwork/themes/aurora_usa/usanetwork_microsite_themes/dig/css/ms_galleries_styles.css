@@ -106,6 +106,7 @@
 #microsite #galleries-content .flex-direction-nav {
   position: relative;
   top: -50%;
+  z-index: 20;
 }
 #microsite #galleries-content .flexslider .counter {
   position: absolute;

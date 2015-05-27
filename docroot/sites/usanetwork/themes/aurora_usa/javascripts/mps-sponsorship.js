@@ -38,7 +38,7 @@
           itemParentClass = itemParent.attr('class');
         }
 
-        Drupal.behaviors.mpsSponsorShip.execShowCard(showCarouselItem  + itemParentClass +' .show-info-block-wrapper', showCarouselItem + itemParentClass + ' .advert .showcardad',  fileId);
+        Drupal.behaviors.mpsSponsorShip.execShowCard(showCarouselItem  + itemParentClass + ' .show-info-block-wrapper', showCarouselItem + itemParentClass + ' .advert .showcardad',  fileId);
 
         block.addClass('advert-enable');
       }

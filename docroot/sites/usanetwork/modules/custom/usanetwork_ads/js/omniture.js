@@ -333,145 +333,146 @@
       }
 
       //redesign
+      if(!$('body').hasClass('page-node-microsite')) {
 
-      // Click promo item
-      $('.usa-wrap .node-usanetwork-promo a').once('omniture-tracking', function() {
-        $(this).on('click', function (e) {
-          e.preventDefault();
-          var self = $(this);
-          Drupal.behaviors.omniture_tracking.globalPromoClick(self);
-        });
-      });
-
-
-      // Click main menu links
-      $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
-      '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
-      '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function () {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+        // Click promo item
+        $('.usa-wrap .node-usanetwork-promo a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
             e.preventDefault();
-            Drupal.behaviors.omniture_tracking.mainMenuTabs($(this));
-          }
+            var self = $(this);
+            Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+          });
         });
-      });
 
-      // Click on submenu item
-      $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
-      '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
-      '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
-      '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
-      '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
 
-            var $self = $(this),
-                sub_menu_name;
-
-            if ($self.hasClass('full-episodes-link')) {
-              sub_menu_name = $self.data('name');
-            } else {
-              sub_menu_name = $self.text();
-            }
-
-            Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
-          }
-        });
-      });
-
-      // Click on submenu schedule items
-      $('.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .node-usanetwork-promo a,' +
-      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .on-now-panel-title a,' +
-      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .icons-block a,' +
-      '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-primetime a').once('omniture-tracking', function () {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-
-            var $self = $(this),
-                sub_menu_name = '';
-
-            if ($self.closest('.on-now-panel-title').length) {
-              sub_menu_name = $self.text();
-            } else if ($self.closest('.node-usanetwork-promo').length && !$self.hasClass('icon') && sub_menu_name === '') {
-              sub_menu_name = $self.closest('.node-usanetwork-promo').find('.title-overlay .title').text();
-            } else if ($self.hasClass('icon') && !$self.hasClass('live-icon') && sub_menu_name === '') {
-              var name = $self.data('name');
-              sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
-            } else {
-              sub_menu_name = $self.text();
-            }
-
-            Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
-          }
-        });
-      });
-
-      // Click on Social Follow item
-      $('#block-usanetwork-home-usanetwork-home-shows-queue .social-follow a,' +
-      'header .show-title-block-wrapper .social-follow a,' +
-      '.footer-social-bar a').once('omniture-tracking', function () {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            Drupal.behaviors.omniture_tracking.socialFollow($(this));
-          }
-        });
-      });
-
-      // Gigya share bar
-      $('.field-type-gigya-sharebar').once('omniture-tracking', function () {
-        $(this).on('click', '.gig-share-button', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var $self = $(this);
-            var $container = $self.parents('.gig-button-container');
-            var network = 'Share';
-            if ($container.hasClass('gig-button-container-facebook')) {
-              network = 'Facebook';
-            }
-            else if ($container.hasClass('gig-button-container-twitter')) {
-              network = 'Twitter';
-            }
-            else if ($container.hasClass('gig-button-container-tumblr')) {
-              network = 'Tumblr';
-            }
-            else if ($container.hasClass('gig-button-container-pinterest')) {
-              network = 'Pinterest';
-            }
-
-            s.linkTrackVars = 'events,eVar73,eVar74';
-            s.linkTrackEvents = s.events = 'event41';
-            s.eVar73 = 'example Patrick J. Adams Interview'; //todo add title name
-            s.eVar74 = network;
-            s.tl(this, 'o', 'Social Share');
-            s.manageVars('clearVars', s.linkTrackVars, 1);
-          }
-        });
-      });
-
-      //Click on footer item
-      $('#footer .footer-menu-wrapper a').once('omniture-tracking', function () {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            Drupal.behaviors.omniture_tracking.footerMenuItem($(this));
-          }
-        });
-      });
-
-      $(window).load(function () {
-        //Click on ON NOW / TONIGHT items
-        $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function () {
+        // Click main menu links
+        $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
+        '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
+        '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               e.preventDefault();
-              Drupal.behaviors.omniture_tracking.scheduleBar($(this));
+              Drupal.behaviors.omniture_tracking.mainMenuTabs($(this));
             }
           });
         });
-      });
 
+        // Click on submenu item
+        $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
+        '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
+        '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
+        '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
+        '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+
+              var $self = $(this),
+                  sub_menu_name;
+
+              if ($self.hasClass('full-episodes-link')) {
+                sub_menu_name = $self.data('name');
+              } else {
+                sub_menu_name = $self.text();
+              }
+
+              Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
+            }
+          });
+        });
+
+        // Click on submenu schedule items
+        $('.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .node-usanetwork-promo a,' +
+        '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .on-now-panel-title a,' +
+        '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .icons-block a,' +
+        '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-primetime a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+
+              var $self = $(this),
+                  sub_menu_name = '';
+
+              if ($self.closest('.on-now-panel-title').length) {
+                sub_menu_name = $self.text();
+              } else if ($self.closest('.node-usanetwork-promo').length && !$self.hasClass('icon') && sub_menu_name === '') {
+                sub_menu_name = $self.closest('.node-usanetwork-promo').find('.title-overlay .title').text();
+              } else if ($self.hasClass('icon') && !$self.hasClass('live-icon') && sub_menu_name === '') {
+                var name = $self.data('name');
+                sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
+              } else {
+                sub_menu_name = $self.text();
+              }
+
+              Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
+            }
+          });
+        });
+
+        // Click on Social Follow item
+        $('#block-usanetwork-home-usanetwork-home-shows-queue .social-follow a,' +
+        'header .show-title-block-wrapper .social-follow a,' +
+        '.footer-social-bar a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+              Drupal.behaviors.omniture_tracking.socialFollow($(this));
+            }
+          });
+        });
+
+        // Gigya share bar
+        $('.field-type-gigya-sharebar').once('omniture-tracking', function () {
+          $(this).on('click', '.gig-share-button', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              var $self = $(this);
+              var $container = $self.parents('.gig-button-container');
+              var network = 'Share';
+              if ($container.hasClass('gig-button-container-facebook')) {
+                network = 'Facebook';
+              }
+              else if ($container.hasClass('gig-button-container-twitter')) {
+                network = 'Twitter';
+              }
+              else if ($container.hasClass('gig-button-container-tumblr')) {
+                network = 'Tumblr';
+              }
+              else if ($container.hasClass('gig-button-container-pinterest')) {
+                network = 'Pinterest';
+              }
+
+              s.linkTrackVars = 'events,eVar73,eVar74';
+              s.linkTrackEvents = s.events = 'event41';
+              s.eVar73 = 'example Patrick J. Adams Interview'; //todo add title name
+              s.eVar74 = network;
+              s.tl(this, 'o', 'Social Share');
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
+          });
+        });
+
+        //Click on footer item
+        $('#footer .footer-menu-wrapper a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+              Drupal.behaviors.omniture_tracking.footerMenuItem($(this));
+            }
+          });
+        });
+
+        $(window).load(function () {
+          //Click on ON NOW / TONIGHT items
+          $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function () {
+            $(this).on('click', function (e) {
+              if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+                e.preventDefault();
+                Drupal.behaviors.omniture_tracking.scheduleBar($(this));
+              }
+            });
+          });
+        });
+      }
       //-------- end --------
 
 

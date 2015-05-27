@@ -1,7 +1,6 @@
 /**
  * Global js functions for microsite navigation
  */
-var initialPageLoad = 1;
 (function ($) {
   Drupal.behaviors.ms_global = {
 
@@ -453,7 +452,7 @@ var initialPageLoad = 1;
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
           nextSection = '#' + anchor,
           nextSectionId = $(nextSection).attr('id'),
-          direction = Drupal.behaviors.ms_global.getScrollDirectionUsingSections(anchor), // getScrollDirection(),
+          direction = Drupal.behaviors.ms_global.getScrollDirectionUsingSections(anchor),
           offsetDirection = (direction == 'down') ? 1 : -1;
 //usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirection: ' + offsetDirection);
       // if this is IE9, reload the correct page
@@ -475,6 +474,10 @@ var initialPageLoad = 1;
             break;
         }
       }
+
+      // if this is the initial page load, the page must be almost completely
+      // loaded, so let's refresh the waypoints
+      if (typeof Waypoint != 'undefined' && Drupal.behaviors.ms_global.globalInitialPageLoad) Waypoint.refreshAll();
 
       // now scroll to the next section
       var nextSectionElem = document.getElementById(anchor),
@@ -507,7 +510,9 @@ var initialPageLoad = 1;
         Drupal.behaviors.ms_global.setActiveMenuItem(anchor);
       });
 
-      if (anchor != 'home') Drupal.behaviors.ms_global.globalInitialPageLoad = false;
+      // if the window is scrolling, the page must be almost completely
+      // loaded, so the initial page load is complete
+      Drupal.behaviors.ms_global.globalInitialPageLoad = false;
     },
 
     // RESIZING
@@ -611,13 +616,14 @@ var initialPageLoad = 1;
         self.initializeWaypoints();
 
         // check url and scroll to specific content
+        // This scroll is necessary -- even if we're loading the "homepage",
+        // because we need to set globalInitialPageLoad to false, which
+        // is done in sectionScroll
         var urlParts = self.parseUrl(),
             activeSection = $('.section.active');
-        if (activeSection != urlParts['section']) {
-          setTimeout(function(){
-            self.sectionScroll(urlParts['section'], urlParts['item']);
-          }, 1000);
-        }
+        setTimeout(function(){
+          self.sectionScroll(urlParts['section'], urlParts['item']);
+        }, 2000);
 
         self.create728x90Ad();
 
@@ -658,7 +664,7 @@ var initialPageLoad = 1;
       $(window).bind('resize', function () {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function(){
-          if (!self.initialPageLoad) self.resizeResponse();
+          if (!self.globalInitialPageLoad) self.resizeResponse();
         }, 250);
       });
       window.addEventListener('orientationchange', self.resizeResponse);

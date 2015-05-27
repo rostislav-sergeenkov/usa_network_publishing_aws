@@ -116,9 +116,9 @@
               var quizQuestionTitle = $(this).find('.question-title').text();
 
               s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-              s.linkTrackVars='events,prop58,eVar58';
-              s.linkTrackEvents=s.events='event88';
-              s.eVar58=s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
+              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackEvents = s.events = 'event88';
+              s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
               s.tl(this,'o','Poll/Question Shown');
               s.manageVars('clearVars',s.linkTrackVars,1);
             }
@@ -143,9 +143,10 @@
               var quizQuestionValue = $(this).attr('value');
 
               s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-              s.linkTrackVars='events,prop58,eVar58';
-              s.linkTrackEvents=s.events='event89';
-              s.eVar58=s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle + ' : Answer : ' + quizQuestionValue;
+              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackEvents = s.events = 'event89';
+              s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
+              s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle + ' : Answer : ' + quizQuestionValue;
               s.tl(this,'o','Poll/Question Answered');
               s.manageVars('clearVars',s.linkTrackVars,1);
             }
@@ -166,8 +167,8 @@
                 quizType = quiz_setting['quizType'];
 
             s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType);
-            s.linkTrackVars='events,eVar65,prop65';
-            s.linkTrackEvents=s.events='event65';
+            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackEvents = s.events = 'event65';
             s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
             s.tl(this,'o','Restart');
             s.manageVars('clearVars',s.linkTrackVars,1);

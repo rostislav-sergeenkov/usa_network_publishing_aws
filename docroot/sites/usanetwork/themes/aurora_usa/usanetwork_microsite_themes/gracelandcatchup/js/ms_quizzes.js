@@ -110,9 +110,9 @@ usa_debug('======== ms_quizzes.js -- updateSettingsGigyaSharebars(' + title + ',
               var quizQuestionTitle = $(this).find('.question-title').text();
 
               s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-              s.linkTrackVars='events,prop58,eVar58';
-              s.linkTrackEvents=s.events='event88';
-              s.eVar58=s.prop58=quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
+              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackEvents = s.events = 'event88';
+              s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
               s.tl(this,'o','Poll/Question Shown');
               s.manageVars('clearVars',s.linkTrackVars,1);
             }
@@ -161,8 +161,8 @@ usa_debug('======== ms_quizzes.js -- updateSettingsGigyaSharebars(' + title + ',
                 quizType = quiz_setting['quizType'];
 
             s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType);
-            s.linkTrackVars='events,eVar65,prop65';
-            s.linkTrackEvents=s.events='event65';
+            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackEvents = s.events = 'event65';
             s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
             s.tl(this,'o','Restart');
             s.manageVars('clearVars',s.linkTrackVars,1);

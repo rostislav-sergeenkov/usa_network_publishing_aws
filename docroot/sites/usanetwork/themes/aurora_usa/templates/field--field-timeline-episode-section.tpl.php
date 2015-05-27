@@ -66,8 +66,6 @@
  */
 ?>
 
-<?php //print '<pre>tg_items: ' . print_r($tg_items, true) . '</pre><br><br>'; ?>
-
 <?php
 $timelineCategories = array();
 $numberOfScenesPerEpisode = array();
@@ -98,22 +96,12 @@ $firstScene = true;
           <div class="timeline-item-text">
             <?php print $scene['description']; ?>
           </div>
-<!--
-          <div class="like-share-view">
-            <div class="scene-share-holder">
-              <div class="scene-shares share"> -->
-                <div class="share">
-<!--                  <span> </span> -->
-                  <ul class="share-items">
-                    <li class="share-item twitter"><a onclick="var twShareWindow = window.open('https://twitter.com/share?url=<?php print $baseUrl . $requestUrl; ?>&amp;text=<?php print $shareDescription; ?>', 'twShareWindow', 'width=600,height=450,menubar=0,resizable=0,scrollbars=0', '_self')"><span class="socialshare twitter"></span></a></li>
-                    <li class="share-item facebook"><a class="facebook" onclick="var fbShareWindow = window.open('http://www.facebook.com/dialog/feed?app_id=241079750077&amp;link=<?php print $baseUrl . $requestUrl; ?>&amp;picture=<?php print $scene['image_src']; ?>&amp;name=<?php print $shareTitle; ?>&amp;description=<?php print $shareDescription; ?>&amp;redirect_uri=<?php print $baseUrl . $requestUrl; ?>', 'fbShareWindow', 'width=800,height=500,menubar=0,resizable=0,scrollbars=0', '_self')"><span class="socialshare facebook"></span><span class="share-text">Share on Facebook</span></a></li>
-                  </ul>
-                </div>
-<!--
-              </div>
-            </div>
+          <div class="share">
+            <ul class="share-items">
+              <li class="share-item twitter"><a onclick="var twShareWindow = window.open('https://twitter.com/share?url=<?php print $baseUrl . $requestUrl; ?>&amp;text=<?php print $shareDescription; ?>', 'twShareWindow', 'width=600,height=450,menubar=0,resizable=0,scrollbars=0', '_self')"><span class="socialshare twitter"></span></a></li>
+              <li class="share-item facebook"><a class="facebook" onclick="var fbShareWindow = window.open('http://www.facebook.com/dialog/feed?app_id=241079750077&amp;link=<?php print $baseUrl . $requestUrl; ?>&amp;picture=<?php print $scene['image_src']; ?>&amp;name=<?php print $shareTitle; ?>&amp;description=<?php print $shareDescription; ?>&amp;redirect_uri=<?php print $baseUrl . $requestUrl; ?>', 'fbShareWindow', 'width=800,height=500,menubar=0,resizable=0,scrollbars=0', '_self')"><span class="socialshare facebook"></span><span class="share-text">Share on Facebook</span></a></li>
+            </ul>
           </div>
--->
         </div>
       </div>
       <?php $firstScene = false; ?>

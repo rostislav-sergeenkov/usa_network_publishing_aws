@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -5745,7 +5745,7 @@ header .search-input-block .search-result.active .more-link a:before {
 }
 header .tab-content {
   position: absolute;
-  z-index: 9999;
+  z-index: 999;
   width: 100%;
 }
 header .tab-content:after {

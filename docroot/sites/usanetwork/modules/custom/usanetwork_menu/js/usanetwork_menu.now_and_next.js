@@ -24,6 +24,8 @@
                 trackingObject.attach(context, settings);
               }
             }
+
+            window.seeit_remind_plugin.init();
           }
         });
       }

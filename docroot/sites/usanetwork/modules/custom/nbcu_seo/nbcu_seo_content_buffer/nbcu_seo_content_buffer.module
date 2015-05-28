@@ -44,7 +44,7 @@ function nbcu_seo_content_buffer_nbcu_seo_xmlsitemap_types_alter(&$types) {
  */
 function nbcu_seo_content_buffer_node_update($node) {
   if ($node->status == NODE_PUBLISHED && variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0) {
-    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', TRUE);
   }
 }
 
@@ -53,7 +53,7 @@ function nbcu_seo_content_buffer_node_update($node) {
  */
 function nbcu_seo_content_buffer_node_insert($node) {
   if ($node->status == NODE_PUBLISHED && variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0) {
-    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', TRUE);
   }
 }
 
@@ -66,7 +66,7 @@ function nbcu_seo_content_buffer_file_insert($file) {
     $file->published == 1 &&
     variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0
   ) {
-    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', TRUE);
   }
 }
 
@@ -79,7 +79,7 @@ function nbcu_seo_content_buffer_file_update($file) {
     $file->published == 1 &&
     variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0
   ) {
-    _nbcu_seo_content_buffer_build_buffer();
+    variable_set('nbcu_seo_content_buffer_rebuild_required', TRUE);
   }
 }
 

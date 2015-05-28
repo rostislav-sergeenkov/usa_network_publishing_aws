@@ -392,6 +392,80 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type, $epis
 }
 
 /**
+ * Renders content for photos block.
+ */
+function _usanetwork_media_gallery_landing_page_photos_block() {
+
+  $tv_show_node = menu_get_object();
+
+  if (empty($tv_show_node) || $tv_show_node->type != 'tv_show') {
+    return '';
+  }
+
+  $params = _usanetwork_media_gallery_photo_landing_prepare_query_params();
+
+  $gallery_types = _usanetwork_tv_shows_landing_page_vbget_video_types($tv_show_node, $params['category'], $params['sort_by'], $params['sort_order']);
+
+  // Do not show bar it there are no videos.
+  if (empty($video_types)) {
+    return '';
+  }
+
+  $video_sorters = _usanetwork_tv_shows_landing_page_vbget_video_sorters($tv_show_node->nid, $params['category'], $params['sort_by'], $params['sort_order']);
+
+  $videos_block = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node, $params['category'],
+    $params['sort_by'], $params['sort_order']
+  );
+
+  $videos_block_next_item = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node,
+    $params['category'], $params['sort_by'], $params['sort_order'],
+    USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK, 1, FALSE
+  );
+
+  $video_filter_title = ($params['category'] != 0)
+    ? $video_types[$params['category']]['name'] . ' (' . $video_types[$params['category']]['items_count'] . ')'
+    : t('All videos');
+  $video_filter_title_short = ($params['category'] != 0)
+    ? $video_types[$params['category']]['name']
+    : t('All videos');
+  $video_sorter_title = (isset($video_sorters[$params['sort_by'] . '_' . $params['sort_order']]))
+    ? $video_sorters[$params['sort_by'] . '_' . $params['sort_order']]['title']
+    : t('Newest');
+
+  $tag_videos_type = '<strong class="videos-type">' . $video_filter_title_short . '</strong>';
+  $tag_seasons_type = '<strong class="seasons-type">' . t('all seasons') . '</strong>';
+  $tag_show_name = '<strong class="show-name">' . $tv_show_node->title . '</strong>';
+
+  $result = theme('usanetwork_tv_shows_landing_videos', array(
+    'block_title' => $video_filter_title_short,
+    'video_filters' => $video_types,
+    'video_filter_title' => $video_filter_title,
+    'video_sorters' => $video_sorters,
+    'video_sorter_title' => $video_sorter_title,
+    'videos_block' => $videos_block,
+    'show_nid' => $tv_show_node->nid,
+    'items_per_page_limit' => USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK,
+    'filter_tid' => $params['category'],
+    'sorting_column' => $params['sort_by'],
+    'sorting_order' => $params['sort_order'],
+    'load_more_link' => !empty($videos_block_next_item['items']) ? TRUE : FALSE,
+    'tabs_description' => t('Showing !videos_type from !seasons_type for !show_name', array(
+      '!videos_type' => $tag_videos_type,
+      '!seasons_type' => $tag_seasons_type,
+      '!show_name' => $tag_show_name,
+    )),
+  ));
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+  drupal_add_js(array(
+    'usanetwork_tv_show_nid' => $tv_show_node->nid,
+    'usanetwork_tv_show_page_context' => 'videos-landing',
+  ), 'setting');
+
+  return $result;
+}
+
+/**
  * Renders Block entity of related content items.
  */
 function _usanetwork_media_gallery_related_content_block() {
@@ -713,3 +787,54 @@ function usanetwork_media_gallery_get_related_content_ajax($tv_show_node, $start
   return drupal_json_output($response);
 }
 
+/**
+ * Gets and prepare params from $_GET for photos block.
+ * @return array
+ */
+function _usanetwork_media_gallery_photo_landing_prepare_query_params() {
+  $query_parameters = drupal_get_query_parameters();
+  $query_parameters['category'] = empty($query_parameters['category']) ? 0 : intval($query_parameters['category']);
+
+  if (empty($query_parameters['sort_by']) || !in_array($query_parameters['sort_by'], array('airdate'))) {
+    $query_parameters['sort_by'] = 'airdate';
+  }
+
+  if (empty($query_parameters['sort_order']) || !in_array(strtoupper($query_parameters['sort_order']), array('ASC', 'DESC'))) {
+    $query_parameters['sort_order'] = 'DESC';
+  }
+
+  return $query_parameters;
+}
+
+
+/**
+ * Returns full list of gallery types for filters of photos page.
+ *
+ * @param $show_id
+ * @return array|null
+ */
+function _usanetwork_media_gallery_get_gallery_types($show_id) {
+
+  $query = db_select('node', 'n');
+  $query->condition('n.status', '1');
+  $query->condition('n.type', 'media_gallery');
+  $query->fields('n', array('nid'));
+  $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
+  $query->condition('field_show.field_show_target_id', $show_id);
+  $query->leftJoin('field_data_field_gallery_type', 'field_gallery_type', 'n.nid=field_gallery_type.entity_id');
+  $query->fields('field_gallery_type', array('field_gallery_type_value'));
+  $query_results = $query->execute()->fetchAll();
+  if (!empty($query_results)) {
+    $result = array();
+    foreach($query_results as $query_result) {
+      if (isset($result[$query_result->field_gallery_type_value])) {
+        $result[$query_result->field_gallery_type_value]++;
+      }
+      else {
+        $result[$query_result->field_gallery_type_value] = 0;
+      }
+    }
+  }
+  $a = $result;
+  return '';
+}

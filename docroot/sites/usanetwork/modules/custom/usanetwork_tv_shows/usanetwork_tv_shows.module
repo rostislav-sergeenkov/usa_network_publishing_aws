@@ -2852,14 +2852,13 @@ function usanetwork_tv_shows_mps_parameters_alter(&$parameters){
   }
 }
 
-
 /**
  * Title callback function for TV Show landing page.
  */
 function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type) {
   $default_titles = array(
     'tv_show' => 'Videos | ' . $show_node->title . ' | USA Network',
-    'cast' => 'Characters&Crew | ' . $show_node->title . ' | USA Network',
+    'cast' => 'Cast & Info | ' . $show_node->title . ' | USA Network',
     'explore' => 'Explore | ' . $show_node->title . ' | USA Network',
   );
 

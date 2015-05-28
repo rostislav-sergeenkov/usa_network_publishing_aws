@@ -40,13 +40,6 @@ $timestamp = date("m/d/y",time());
             <?php print $section_separator; ?>
           <?php endif; ?>
         </section>
-        <?php if (!empty($section['is_last'])): // add footer ?>
-          <footer id="footer-microsite" role="contentinfo" class="clearfix">
-            <div class="region region-footer">
-              <?php print $footer; ?>
-            </div>
-          </footer>
-        <?php endif; ?>
       </div>
       <?php endif; ?>
 
@@ -110,6 +103,14 @@ $timestamp = date("m/d/y",time());
 
         </section>
       </div>
+      <?php endif; ?>
+
+      <?php if (!empty($section['is_last'])): // add footer ?>
+        <footer id="footer-microsite" role="contentinfo" class="clearfix">
+          <div class="region region-footer">
+            <?php print $footer; ?>
+          </div>
+        </footer>
       <?php endif; ?>
 
     <?php endforeach; ?>

@@ -143,7 +143,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['apachesolr_read_only'] = "0";
     break;
 
-  case 'acceptance':
+  case 'acc':
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'ACCEPTANCE';
     $conf['environment_indicator_overwritten_color'] = '#009933';

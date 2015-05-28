@@ -3186,7 +3186,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
  */
 function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $category_tid, $sort_by = 'timestamp', $sort_order = 'DESC') {
   $data = array(
-    'timestamp_DESC' => array(
+    'airdate_DESC' => array(
       'order' => 'DESC',
       'data_type' => 'airdate',
       'title' => t('Newest'),
@@ -3197,7 +3197,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $
           'sort_order' => 'DESC',
         )),
     ),
-    'timestamp_ASC' => array(
+    'airdate_ASC' => array(
       'order' => 'ASC',
       'data_type' => 'airdate',
       'title' => t('Oldest'),

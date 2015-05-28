@@ -1412,6 +1412,41 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'image',
   );
 
+  // Exported field_base: 'field_show_plmb_promo'
+  $field_bases['field_show_plmb_promo'] = array(
+    'active' => 1,
+    'cardinality' => 4,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_show_plmb_promo',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'catchall_page' => 'catchall_page',
+        'media_gallery' => 'media_gallery',
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+        'person' => 'person',
+        'post' => 'post',
+        'quiz' => 'quiz',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
+      ),
+      'entity_type_ids' => array(
+        'file' => 'file',
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
   // Exported field_base: 'field_main_link'
   $field_bases['field_main_link'] = array(
     'active' => 1,

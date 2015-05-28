@@ -98,6 +98,10 @@ function aurora_usa_preprocess_html(&$vars) {
     if (!empty($show_id)) {
       $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
     }
+    $full_video = _usanetwork_get_field_item('file', $entity, 'field_mpx_full_episode', 'value');
+    if (!empty($full_video) && ($full_video == 1)) {
+      $vars['classes_array'][] = 'page-full-video';
+    }
   }
   $status = drupal_get_http_header("status");
   if ($status == '403 Forbidden') {

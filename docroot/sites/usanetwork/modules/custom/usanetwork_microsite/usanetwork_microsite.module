@@ -2673,11 +2673,19 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           if (!empty($section_wrapper)) {
             $section_object = $section_wrapper->value();
             if (!empty($section_object->field_ms_timeline_gallery)) {
-              $node = $section_wrapper->field_ms_timeline_gallery->value();
+              $node_wrapper = $section_wrapper->field_ms_timeline_gallery;
+              $first_section_wrapper = $node_wrapper->field_timeline_episode_section->get(0);
+              $first_sason_wrapper = $first_section_wrapper->field_season;
+              $first_episode_wrapper = $first_section_wrapper->field_episode;
+              if(!empty($first_sason_wrapper)) {
+                $season_title = $first_sason_wrapper->title->value();
+                $episode_title = $first_episode_wrapper->title->value();
+                $episone_number = $first_episode_wrapper->field_episode_number->value();
+              }
               $omniture_prop5 = t($entity->title . ' : Timeline Slideshow : ' . $node->title);
               // @TODO - DV: We must pull the "S1 Episode 1 | Pilot | Scene 1'" info in the next line from the CMS
-              $omniture_pagename = t($entity->title . ' : Timeline Slideshow : ' . $node->title . ' : Season 1 Episode 1 | Pilot | Scene 1');
-              $umbel = $node->title;
+              $omniture_pagename = t($entity->title . ' : Timeline Slideshow : ' . $node_wrapper->title->value() . ' : ' . $season_title . ' Episode ' . $episone_number . ' | ' . $episode_title . ' | Scene 1');
+              $umbel = $node_wrapper->title->value();
             }
           }
           break;

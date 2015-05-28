@@ -24,9 +24,11 @@
                 scope.openLoginWindow = tveModal.openLoginModal;
                 scope.isMobile = helper.device.isMobile;
 
-                setTimeout(function() {
-                  _bindPlayerEvents();
-                }, 0);
+                //setTimeout(function() {
+                //  _bindPlayerEvents();
+                //}, 0);
+
+                window.$pdk.bindPlayerEvents = _bindPlayerEvents;
 
                 /**
                  * Bind Player Events

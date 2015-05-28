@@ -7671,6 +7671,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.46341vw;
   letter-spacing: 1px;
+  word-wrap: break-word;
   line-height: 1.6;
 }
 @media (min-width: 1901px) {

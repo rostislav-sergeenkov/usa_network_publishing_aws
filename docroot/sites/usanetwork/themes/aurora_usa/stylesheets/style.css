@@ -5753,7 +5753,7 @@ header .search-input-block .search-result.active .more-link a:before {
 }
 header .tab-content {
   position: absolute;
-  z-index: 9999;
+  z-index: 999;
   width: 100%;
 }
 header .tab-content:after {

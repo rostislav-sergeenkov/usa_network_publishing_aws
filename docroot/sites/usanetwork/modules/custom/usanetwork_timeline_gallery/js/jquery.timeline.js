@@ -422,13 +422,16 @@ Project demo: http://shindiristudio.com/timeline
               timelineItemsPaddingTopBottom = timelineItemsPaddingTop + timelineItemsPaddingBottom,
               timelineItemsPadding = timelineItemsPaddingLeft + timelineItemsPaddingRight,
               margin = (timelineWidth - (itemWidth + timeline_settings.itemMargin))/2 - timelineItemsPaddingLeft,
-              width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + timelineItemsPadding,
-              imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image').width(),
-              imgHeight = Math.floor(imgWidth * 0.5625);
+              width = ((itemWidth + timeline_settings.itemMargin) * $items.length) + timelineItemsPadding;
 
           if (data.currentIndex) {
             margin -= (itemWidth + timeline_settings.itemMargin) * data.currentIndex;
           }
+
+          $items.css({'width': itemWidth + 'px'});
+
+          var imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image').width(),
+              imgHeight = Math.floor(imgWidth * 0.5625);
 
 //usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width + ', imgWidth: ' + imgWidth + ', imgHeight: ' + imgHeight);
 

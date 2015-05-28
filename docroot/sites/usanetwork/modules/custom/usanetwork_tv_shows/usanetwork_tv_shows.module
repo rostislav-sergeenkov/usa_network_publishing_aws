@@ -2852,7 +2852,6 @@ function usanetwork_tv_shows_mps_parameters_alter(&$parameters){
   }
 }
 
-
 /**
  * Title callback function for TV Show landing page.
  */
@@ -2871,6 +2870,40 @@ function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type)
   }
 
   return $title;
+}
+
+/**
+ *  Implements hook_usa_omniture_alter().
+ */
+function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) {
+  if (!empty($context['menu_item']['path']) && !empty($context['entity']->title)) {
+    $matches = array();
+
+    if (preg_match("/^node\/([\%\d])\/(cast|episodes|videos)$/", $context['menu_item']['path'], $matches)) {
+      switch ($matches[2]) {
+        case 'cast':
+          $omniture_variables['s.prop3'] = t('Bio');
+          $omniture_variables['s.prop4'] = t('!show_title : Cast & Info', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+
+        case 'episodes':
+          $omniture_variables['s.prop3'] = t('Episode Guide');
+          $omniture_variables['s.prop4'] = t('!show_title : Episode Guide', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+
+        case 'videos':
+          $omniture_variables['s.prop3'] = t('Video');
+          $omniture_variables['s.prop4'] = t('!show_title : Video', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+      }
+    }
+  }
 }
 
 /**

@@ -13,7 +13,7 @@
  */
 ?>
 <div class="header-nav-bar">
-  <div class="usa-logo show-color hover-avail"><a href="<?php print $main_url; ?>"></a></div>
+  <div class="usa-logo show-color hover-avail"><a class="logo" href="<?php print $main_url; ?>"></a></div>
   <div class="nav-bar-tabs">
     <?php if (!empty($show_name)): ?>
       <div class="menu-item show-color hover-avail show-name">
@@ -23,11 +23,11 @@
       </div>
     <?php endif; ?>
     <div class="menu-item tab video-title info">
-      <h1>
+      <h2>
         <a class="no-refresh nolink" data-state>
-          <?php print $h1; ?>
+          <?php print $catchall_name; ?>
         </a>
-      </h1>
+      </h2>
     </div>
   </div>
 </div>
@@ -42,14 +42,18 @@
         <?php endif; ?>
         <div class="title-overlay meta">
           <div class="title">
-            <?php print $catchall_name; ?>
+            <h1><?php print !empty($h1) ? $h1 : $catchall_name;?></h1>
           </div>
           <div class="description">
             <?php print $details['description']; ?>
           </div>
+          <?php if (!empty($details['sharebar'])): ?>
+            <div class="sharebar">
+              <?php print $details['sharebar']; ?>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>
   </div>
 </div>
-

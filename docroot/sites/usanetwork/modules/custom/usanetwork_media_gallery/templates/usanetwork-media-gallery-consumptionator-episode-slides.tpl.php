@@ -1,7 +1,7 @@
 <?php
 /**
  * $slides - array of pre-rendered slides
- * $gallery_type - string value of gallery type
+ * $block_title - string
  */
 ?>
 <div class="consum-sidebar">
@@ -16,15 +16,19 @@
     <div class="download-app-wrapper">
       <div class="image-block"></div>
       <div class="text-block">Get USA NOW to watch full episodes from any device.</div>
-      <div class="download-button show-color">Download the app</div>
+      <div class="download-button show-color">
+        <a href="/app" target="_self">
+          Download the app
+        </a>
+      </div>
     </div>
   </div>
   <div class="items-block gallaries-thumbs-block">
-    <?php if (!empty($gallery_type)): ?>
-      <div class="items-block-title galleries-block-title">
-        <h2><?php print $gallery_type; ?></h2>
-      </div>
-    <?php endif; ?>
+    <div class="items-block-title galleries-block-title">
+      <?php if (!empty($block_title)): ?>
+        <h2><?php print $block_title; ?></h2>
+      <?php endif; ?>
+    </div>
     <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>
       <?php if (!empty($slides_vertical)): ?>
         <div class="episodes-list-slider vertical" data-mode="vertical">
@@ -56,6 +60,6 @@
   </div>
   <!-- change link to special photo page for show-->
   <div class="more-items more-photos show-color">
-    <a href="/photos"><?php print t('View all photos'); ?></a>
+    <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
   </div>
 </div>

@@ -5,11 +5,14 @@
   position: relative;
   width: 100%;
   .upper-menu {
-    padding: 0 30px 20px 30px;
+    padding: 0 30px;
     background: $header-tab-back;
     @include clear();
     @include breakpoint($bp-1280-width) {
-      padding: 0 20px 20px 20px;
+      padding: 0 20px;
+    }
+    @include breakpoint($bp-640-width) {
+      padding-bottom: 20px;
     }
     .item-filter {
       .filter-label {
@@ -18,7 +21,7 @@
         font-size: 20px;
         letter-spacing: 1px;
         text-transform: uppercase;
-        font-family: $avalon-demi;
+        font-family: $avalon-medium;
         line-height: 58px;
         text-align: left;
         overflow: hidden;
@@ -119,7 +122,7 @@
               color: $header-tab-text;
               display: block;
               font-size: 20px;
-              font-family: $avalon-demi;
+              font-family: $avalon-medium;
               text-transform: uppercase;
               line-height: 22px;
               text-align: left;
@@ -142,7 +145,7 @@
                 color: #ffffff;
                 display: block;
                 font-size: 14px;
-                font-family: $avalon-demi;
+                font-family: $avalon-medium;
                 height: 100%;
                 line-height: 14px;
                 letter-spacing: 1px;
@@ -221,7 +224,7 @@
               color: #ffffff;
               display: block;
               font-size: 20px;
-              font-family: $avalon-demi;
+              font-family: $avalon-medium;
               height: 100%;
               letter-spacing: 1px;
               line-height: 32px;
@@ -262,9 +265,28 @@
       }
     }
     .sorters-description {
+      h1 {
       width: 100%;
+      margin: 0;
       float: left;
-      margin-top: 1.5em;
+      line-height: 4em;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: $header-tab-text;
+        @include breakpoint($bp-1280-width) {
+          font-size: 12px;
+        }
+        @include breakpoint($bp-640-width) {
+          display: none;
+        }
+        strong {
+          text-transform: uppercase;
+          &:last-child {
+            text-transform: uppercase;
+            font-style: italic;
+          }
+        }
+      }
     }
   }
   .video-items-blocks {

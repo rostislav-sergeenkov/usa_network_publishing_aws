@@ -4,9 +4,9 @@
  */
 ?>
 <div class="videos-landing-page-container">
-  <h1 class="section-title">
+  <h2 id="videos-landing-page-header" class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All videos'); ?></span>
-  </h1>
+  </h2>
   <div class="upper-menu">
     <div class="all-items-filter item-filter">
       <?php if (!empty($video_filters)): ?>
@@ -14,7 +14,7 @@
         <ul class="filter-menu transform-filter">
           <?php foreach ($video_filters as $video_filter): ?>
             <li class="filter-item<?php if ($video_filter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $video_filter['url']; ?>" data-type="<?php print $video_filter['tid']; ?>" class="no-ajax">
+              <a href="<?php print $video_filter['url']; ?>#videos-landing-page-header" data-type="<?php print $video_filter['tid']; ?>" class="no-ajax">
                 <span class="title"><?php print $video_filter['name']; ?></span> <span class="items-in">(<?php print $video_filter['items_count']; ?>)</span>
               </a>
             </li>
@@ -28,7 +28,7 @@
         <ul class="filter-menu">
           <?php foreach ($video_sorters as $video_sorter): ?>
             <li class="filter-item sorter-item<?php if (!empty($video_sorter['order'])): print ' order-' . $video_sorter['order']; endif; ?><?php if ($video_sorter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $video_sorter['url']; ?>" data-type="<?php print $video_sorter['data_type']; ?>" class="no-ajax">
+              <a href="<?php print $video_sorter['url']; ?>#videos-landing-page-header" data-type="<?php print $video_sorter['data_type']; ?>" class="no-ajax">
                 <span class="title"><?php print $video_sorter['title']; ?></span>
               </a>
             </li>
@@ -36,9 +36,11 @@
         </ul>
       <?php endif; ?>
     </div>
-    <div class="sorters-description">
-      <?php print $tabs_description; ?>
-    </div>
+    <?php if (!empty($tabs_description)): ?>
+      <div class="sorters-description">
+        <h1><?php print $tabs_description; ?></h1>
+      </div>
+    <?php endif; ?>
   </div>
   <div class="video-items-blocks show-border ajax-load-block"
   <?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?>

@@ -87,11 +87,11 @@ $secondary-menu-bg  : $gray-med;
   }
 }
 
+
 %secondary-menu-label {
   color: $white;
   padding: 8px 5px 7px 11px;
 }
-
 
 .usa-secondary-menu {
   @extend %secondary-menu;

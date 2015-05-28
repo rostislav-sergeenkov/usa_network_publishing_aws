@@ -9,7 +9,7 @@
       var slideshowAutoplay,
           slideshowSpeed = 6000,
           sliderAuto = true,
-          slideMove = slideshowSpeed * 0.40;
+          slideMove = slideshowSpeed * 0.1;
 
       if (Drupal.settings.sliderAspot) {
         slideshowAutoplay = Drupal.settings.sliderAspot.slideshowAutoplay;
@@ -18,7 +18,7 @@
         if (slideshowSpeed <= 0) {
           slideshowSpeed = 6000;
         } else {
-          slideMove = slideshowSpeed * 0.40;
+          slideMove = slideshowSpeed * 0.1;
         }
 
         if (slideshowAutoplay === 1) {
@@ -61,7 +61,7 @@
 
         USAN.aspotSlider.animateTimeout = setTimeout(function () {
           animateContent(nextSlideContent);
-        }, 600);
+        }, slideMove * 0.5);
 
         var moveIt = function (index) {
           var nextSlideInner = el.get(0).children[index + 1].children[0],
@@ -74,7 +74,7 @@
           $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 0.5);
           $(nextSlideInner).css('width', parseInt($(window).width())).animate({
             'margin-left': '-=10%'
-          }, 600, 'easeOutBack', function () {
+          }, 600, 'easeInOutSine', function () {
             $('.next-button').fadeIn(500).removeClass('disabled');
           });
         };
@@ -145,6 +145,10 @@
       };
 
       var aspotSlider = null;
+
+      if ($('.block-usanetwork-aspot .slide').length <= 1) {
+        $('.block-usanetwork-aspot .slider').css('width', 100  + '%');
+      }
 
       $(window).load(function () {
         if ($('.block-usanetwork-aspot .slide').length > 1) {
@@ -277,6 +281,7 @@
           $mainslider.css('opacity', 0);
           aspotVideoShow();
           aspotVideoPauseFlexslider($mainslider);
+
         });
       } // A-SPOT VIDEOS
 

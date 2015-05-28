@@ -99,6 +99,10 @@ function aurora_usa_preprocess_html(&$vars) {
       $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
     }
   }
+  $status = drupal_get_http_header("status");
+  if ($status == '403 Forbidden') {
+    $vars['classes_array'][] = 'page-403';
+  }
 }
 
 /**
@@ -153,7 +157,6 @@ function aurora_usa_preprocess_page(&$vars) {
     $vars['page']['catchall_seo_title'] = $node->title;
   }
   if ($node && $node->type == "media_gallery") {
-    drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
   if(!empty($node) && $node->type == 'tv_episode') {

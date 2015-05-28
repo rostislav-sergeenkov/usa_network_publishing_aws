@@ -240,6 +240,7 @@
             $containers.filter(':visible').fadeOut(quiz.settings.animationSpeed, function() {
               $results_container.fadeIn(quiz.settings.animationSpeed, function() {
                 $(quiz).trigger('onShowResult', [$result]);
+                Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               });
             });
 

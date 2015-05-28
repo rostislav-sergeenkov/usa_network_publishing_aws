@@ -675,6 +675,12 @@ ul, li {
 }
 
 @media (max-width: 400px) {
+  .timelineFlat #timeline-line-left,
+  .timelineFlat #timeline-line-right {
+    top: 39px;
+    width: 16px;
+    height: 24px;
+  }
   .timelineFlat #timeline-line-left {
     left: -24px;
   }

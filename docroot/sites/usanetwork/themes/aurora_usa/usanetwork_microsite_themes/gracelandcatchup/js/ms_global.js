@@ -528,7 +528,7 @@
         $siteNav.removeClass('mobile');
       }
 
-      if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
+      if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && wwidth < 748) {
         $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
       }
       else {

@@ -2,13 +2,23 @@
 
   Drupal.behaviors.consumptionator_video = {
 
+    // player init bind
+    initPlayerBind: function () {
+      for (key in $pdk.controller.listeners) {
+        delete $pdk.controller.listeners[key];
+      }
+      $pdk.bindPlayerEvents();
+      $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
+    },
+
+    // check if user uses mobile device
     mobileModal: function () {
-      // check if user uses mobile device
       if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
         var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
         Drupal.behaviors.video_mobile.showMobileVideoModal(os);
       }
     },
+
     attach: function (context, settings) {
 
       var current_iframe = $('.consumptionator-video-page .video-player-wrapper iframe');

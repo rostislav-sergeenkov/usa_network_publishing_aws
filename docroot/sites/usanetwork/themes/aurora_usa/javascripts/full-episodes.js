@@ -37,16 +37,16 @@
       });
 
       // TODO: spoilers active for shows carousels
-      $('.page-videos .carousel-wrapper .carousel-description-item .title')
-          .click(function (e) {
-            if (!$(this).closest('.carousel-block').hasClass('active')) {
-              $('.full-episodes-page .carousel-wrapper .carousel-block').removeClass('active');
-              $(this).closest('.carousel-block').addClass('active');
-            } else {
-              $(this).closest('.carousel-block').removeClass('active');
-            }
-          }
-      );
+      //$('.page-videos .carousel-wrapper .carousel-description-item .title')
+      //    .click(function (e) {
+      //      if (!$(this).closest('.carousel-block').hasClass('active')) {
+      //        $('.full-episodes-page .carousel-wrapper .carousel-block').removeClass('active');
+      //        $(this).closest('.carousel-block').addClass('active');
+      //      } else {
+      //        $(this).closest('.carousel-block').removeClass('active');
+      //      }
+      //    }
+      //);
 
       $(window).bind('resize', function () {
 

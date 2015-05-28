@@ -11,7 +11,7 @@
           scroll_top = $(window).scrollTop(),
           styles = {
             'position': 'fixed',
-            'z-index': '9999',
+            'z-index': '999',
             'width': '100%',
             'top': '0'
           };

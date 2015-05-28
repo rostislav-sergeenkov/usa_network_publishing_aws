@@ -18700,16 +18700,25 @@ footer h2 {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     min-height: 870px;
   }
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+    min-height: 0;
+  }
 }
 @media (min-width: 1901px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     min-height: 890px;
     padding: 60px 32px 60px 150px;
   }
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+    min-height: 0;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     min-height: 750px;
+  }
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+    min-height: 0;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -18717,10 +18726,16 @@ footer h2 {
     min-height: 650px;
     padding: 30px 17px 30px 80px;
   }
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+    min-height: 0;
+  }
 }
 @media (max-width: 768px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
     padding: 30px 36px;
+  }
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+    min-height: 0;
   }
 }
 @media (max-width: 480px) {

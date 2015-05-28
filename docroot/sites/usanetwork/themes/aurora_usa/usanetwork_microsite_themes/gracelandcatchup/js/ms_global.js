@@ -411,7 +411,7 @@
           }
         }
         // add styles for iframe
-        if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
+        if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && $(window).width() < 748) {
           $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
           $('#' + section + ' .ad-leaderboard iframe').load(function () {
             $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 50px;}object * {max-width: 100%; max-height: 50px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
@@ -528,7 +528,7 @@
         $siteNav.removeClass('mobile');
       }
 
-      if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) {
+      if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && wwidth < 748) {
         $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
       }
       else {

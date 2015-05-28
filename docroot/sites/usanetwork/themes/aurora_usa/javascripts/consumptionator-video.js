@@ -9,7 +9,6 @@
       }
       $pdk.bindPlayerEvents();
       $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
-
     },
 
     // check if user uses mobile device
@@ -73,6 +72,8 @@
       function myStr(str1,str2,i) {
         return str1.slice(0,i)+str2+str1.slice(i)
       }
+
+      iframe.removeAttr('data-src');
     },
     /**
      * Change iframe src without Authentication.
@@ -82,7 +83,7 @@
       var iframe = $('.video-player-wrapper #pdk-player'),
           str = iframe.data('src');
 
-      iframe.attr('src', str);
+      iframe.attr('src', str).removeAttr('data-src');
     },
 
     attach: function (context, settings) {

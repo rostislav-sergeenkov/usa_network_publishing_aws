@@ -3217,6 +3217,9 @@ function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $
   return $data;
 }
 
+/**
+ * Returns cached videos data.
+ */
 function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
   $cached_data = cache_get('usanetwork_tvslp_videos_' . $show_node->nid);
 

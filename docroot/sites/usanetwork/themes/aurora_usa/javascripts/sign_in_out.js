@@ -12,13 +12,11 @@
       if ($cookies['nbcu_ap_loginpending']) {
         initHeader();
         authService.promise.then(function () {
-          Drupal.behaviors.consumptionator_video.initPlayerBind();
         });
       }
 
       if (authService.isAuthN()) {
         initHeader();
-        Drupal.behaviors.consumptionator_video.initPlayerBind();
       }
 
     }]);

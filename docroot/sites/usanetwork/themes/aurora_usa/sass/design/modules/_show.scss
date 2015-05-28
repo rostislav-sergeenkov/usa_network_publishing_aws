@@ -1100,10 +1100,8 @@
   @include breakpoint($bp-min-1901-width) {
     height: 93px;
   }
-  @include breakpoint($bp-1024-width) {
-    height: 50px;
-  }
   @include breakpoint($bp-768-width) {
+    height: 50px;
     text-align: center;
     position: relative;
   }
@@ -1131,11 +1129,9 @@
       margin: 0 44.5px 0 20px;
       max-width: 470px;
     }
-    @include breakpoint($bp-1024-width) {
-      line-height: 50px;
-    }
     @include breakpoint($bp-768-width) {
       font-size: 14px;
+      line-height: 50px;
       margin: 0 20px 0 20px;
     }
     @include breakpoint($bp-480-width) {
@@ -1198,13 +1194,14 @@
   }
   .social-icons {
     float: right;
-    margin-left: 20px;
+    margin-left: get-vw(20px, 1025);
     margin-top: calc((4.878vw - 26px)/2);
     @include breakpoint($bp-min-1901-width) {
       margin-top: 33.5px;
+      margin-left: 37px;
     }
     @include breakpoint($bp-1024-width) {
-      margin-top: 17px;
+      margin-top: calc((4.878vw - 16px)/2);
     }
     @include breakpoint($bp-768-width) {
       display: none;
@@ -1212,10 +1209,10 @@
     a {
       float: left;
       display: block;
-      margin-right: 30px;
+      margin-right: get-vw(20px, 1025);
       opacity: 0.6;
-      @include breakpoint($bp-1024-width) {
-        margin-right: 15px;
+      @include breakpoint($bp-min-1901-width) {
+        margin-right: 37px;
       }
       &:hover {
         opacity: 0.3;
@@ -1286,9 +1283,6 @@
       @include breakpoint($bp-min-1901-width) {
         height: 93px;
       }
-      @include breakpoint($bp-1024-width) {
-        height: 50px;
-      }
       .menu {
         display: none;
       }
@@ -1308,10 +1302,6 @@
           height: 93px;
           line-height: 93px;
           padding: 0 44.5px;
-        }
-        @include breakpoint($bp-1024-width) {
-          height: 50px;
-          line-height: 50px;
         }
         &:not(.active) {
           background: none;

@@ -31,8 +31,17 @@
         .sponsored {
           display: table;
           float: left;
-          height: 100%;
+          height: get-vw(73px, 1025);
           text-align: center;
+          width: 282px;
+          @include breakpoint($bp-min-1901-width) {
+            height: 135px;
+          }
+          @include breakpoint($bp-768-width) {
+            float: none;
+            height: 50px;
+            margin: 0 auto;
+          }
           .mps-slot {
             display: table-cell;
             vertical-align: middle;

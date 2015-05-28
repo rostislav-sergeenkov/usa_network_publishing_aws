@@ -12,15 +12,13 @@ header {
     margin: 0;
   }
   .header-nav-bar {
+    @include clear();
     background-color: $header-tab-back;
     height: get-vw(73px, 1025);
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1901-width) {
       height: 135px;
-    }
-    @include breakpoint($bp-1024-width) {
-      height: 73px;
     }
     @include breakpoint($bp-768-width) {
       background: $footer-links;
@@ -54,14 +52,12 @@ header {
     @include breakpoint($bp-min-1901-width) {
       width: 185px;
     }
-    @include breakpoint($bp-1024-width) {
-      width: 100px;
-    }
     &:hover {
       background: lighten($usa-logo-back, 15%);
     }
     @include breakpoint($bp-768-width) {
       height: 50px;
+      width: 75px;
       &.active {
         display: none;
       }
@@ -78,7 +74,7 @@ header {
   .show-title-wrapper {
     display: none;
     border-left: 1px solid transparent;
-    margin-left: 100px;
+    margin-left: 75px;
     margin-right: 50px;
     position: relative;
     text-align: center;
@@ -327,11 +323,10 @@ header {
         }
         @include breakpoint($bp-1024-width) {
           font-size: 13px;
-          line-height: 73px;
-          padding: 0 48px;
         }
         @include breakpoint($bp-768-width) {
           line-height: 50px;
+          padding: 0 36px;
         }
         &.active {
           background: $header-tab-back-new;

@@ -293,6 +293,7 @@
                 font-family: $avalon-medium;
                 font-size: get-vw(15px, 1025);
                 letter-spacing: 1px;
+                word-wrap: break-word;
                 line-height: 1.6;
                 @include breakpoint($bp-min-1901-width) {
                   font-size: 28px;

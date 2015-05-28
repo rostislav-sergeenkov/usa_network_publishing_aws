@@ -2666,7 +2666,7 @@ function _usa_mpx_video_clips_render() {
  */
 function _usanetwork_mpx_video_get_related_videos_for_show($show_id) {
   if (!empty($show_id)) {
-    $cache_name = 'microsite_videos_' . $show_id;
+    $cache_name = 'mpx_video_videos_' . $show_id;
     if ($cache = cache_get($cache_name)) {
       return $cache->data;
     }

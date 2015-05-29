@@ -3685,18 +3685,45 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 
 .featured-block .slides .sponsored {
+  background-color: #242424;
   bottom: 40%;
   right: 0;
   position: absolute;
+  padding: 3px 0;
+  width: 39.5%;
 }
 .featured-block .slides li.first .sponsored {
   bottom: 31%;
+  width: 30%;
+}
+
+.page-home .block-usanetwork-aspot .slide .sponsored {
+  background-color: #242424;
+  bottom: 0;
+  right: 10%;
+  position: absolute;
+  padding: 3px 0;
+  width: 14%;
+}
+@media (max-width: 640px) {
+  .page-home .block-usanetwork-aspot .slide .sponsored {
+    right: 0;
+    width: 44%;
+  }
 }
 
 .aspot-and-episodes .show-aspot .sponsored {
+  background-color: #242424;
   position: absolute;
   bottom: 0;
   right: 0;
+  padding: 3px 0;
+  width: 14%;
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .sponsored {
+    width: 44%;
+  }
 }
 .aspot-and-episodes .episodes-list.sponsored-enable > .title {
   height: calc(10% + 50px);
@@ -3714,9 +3741,12 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
+  background-color: #242424;
   bottom: 34.7%;
   right: 0;
+  padding: 3px 0;
   position: absolute;
+  width: 63%;
 }
 @media (max-width: 768px) {
   .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
@@ -3730,6 +3760,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
   bottom: 9.1vw;
+  width: 30%;
 }
 @media (max-width: 768px) {
   .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
@@ -3748,9 +3779,12 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
+  background-color: #242424;
   bottom: 9.1vw;
   right: 0;
   position: absolute;
+  padding: 3px 0;
+  width: 30%;
 }
 @media (max-width: 768px) {
   .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
@@ -3762,21 +3796,22 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
     bottom: 12.4vw;
   }
 }
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .sponsored {
   bottom: 9.1vw;
+  width: 30%;
 }
 @media (max-width: 768px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .sponsored {
     bottom: 8.6vw;
   }
 }
 @media (max-width: 640px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .sponsored {
     bottom: 29%;
   }
 }
 @media (min-width: 1901px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .node-usanetwork-promo .sponsored {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .sponsored {
     bottom: 173px;
   }
 }

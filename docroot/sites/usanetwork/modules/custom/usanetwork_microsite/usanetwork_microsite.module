@@ -99,9 +99,9 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/callback/get-section/%node/%'] = array(
-    'page callback' => 'usanetwork_microsite_get_section',
-    'page arguments' => array(2, 3),
+  $items['ajax/callback/get-section/%node/%/%'] = array(
+    'page callback' => 'usanetwork_microsite_get_section_ajax',
+    'page arguments' => array(3, 4, 5),
     'access arguments' => array('access content'),
     'delivery callback' => 'ajax_deliver',
     'type' => MENU_CALLBACK,
@@ -456,6 +456,13 @@ function usanetwork_microsite_get_section($node, $delta) {
     'content' => $section_content,
   );
   return $section;
+}
+
+function usanetwork_microsite_get_section_ajax($node, $delta, $anchor) {
+  $section = usanetwork_microsite_get_section($node, $delta);
+  $result = array('#type' => 'ajax');
+  $result['#commands'][] = ajax_command_prepend('#' . $anchor . ' .microsite-section-container', $section['content']);
+  return $result;
 }
 
 /**
@@ -1568,6 +1575,8 @@ function _usanetwork_microsite_get_theme_variables($node) {
     // Walk through connected sections
     $i = 1;
     $current_section_type = _usanetwork_microsite_get_current_section_type();
+    $use_section_ajax = _usanetwork_microsite_process_setting_data('sections_use_ajax', 'bool');
+    drupal_add_js(array('use_section_ajax' => $use_section_ajax), 'setting');
     foreach ($node_wrapper->field_ms_section as $delta => $section_wrapper) {
       $sections_no_ajax = _usanetwork_microsite_process_setting_data('sections_no_ajax', 'array');
       $section_type = $section_wrapper->field_ms_section_type->value();
@@ -1580,7 +1589,6 @@ function _usanetwork_microsite_get_theme_variables($node) {
       }
 
       $content = ' ';
-      $use_section_ajax = _usanetwork_microsite_process_setting_data('sections_use_ajax', 'bool');
       if (!$use_section_ajax || $current_section_type == $section_type || in_array($section_type, $sections_no_ajax)) {
         $content = _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper, $node, $blocks_variables);
       }

@@ -1895,13 +1895,22 @@ function theme_usanetwork_mpx_video($variables) {
   $iframe_tag = array();
   $iframe_tag['element']['#tag'] = 'iframe';
   $iframe_tag['element']['#value'] = 'Your browser does not support iframes.';
-  $iframe_tag['element']['#attributes'] = array(
-    'src' => '',
-    'frameborder' => 0,
-    'allowfullscreen' => '',
-    'id' => 'pdk-player',
-    'data-src' => url($player_source, $player_parameters),
-  );
+  if (isset($variables['accepted']) && $variables['accepted'] == TRUE) {
+    $iframe_tag['element']['#attributes'] = array(
+      'src' => '',
+      'frameborder' => 0,
+      'allowfullscreen' => '',
+      'id' => 'pdk-player',
+      'data-src' => url($player_source, $player_parameters),
+    );
+  } else {
+    $iframe_tag['element']['#attributes'] = array(
+      'src' => url($player_source, $player_parameters),
+      'frameborder' => 0,
+      'allowfullscreen' => '',
+      'id' => 'pdk-player',
+    );
+  }
 
   if (!empty($variables['width'])) {
     $iframe_tag['element']['#attributes']['width'] = $variables['width'];
@@ -2595,13 +2604,13 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-mpx-video-related-items-container',
     ),
-    'usanetwork_mpx_video_full_video_advert' =>array(
+    'usanetwork_mpx_video_full_video_advert' => array(
       'variables' => array(
         'ad' => NULL,
         'full_episode' => NULL,
       ),
       'template' => 'templates/usanetwork-mpx-video-full-video-advert',
-    )
+    ),
   );
   return $themes;
 }

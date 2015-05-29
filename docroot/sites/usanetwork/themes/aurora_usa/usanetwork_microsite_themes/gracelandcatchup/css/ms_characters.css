@@ -10,7 +10,7 @@
 }
 #character-nav li {
   float: left;
-  width: 30.33%;
+  width: 47%;
   margin: 1.5% 1.5%;
   cursor: pointer;
 }
@@ -76,8 +76,8 @@
   min-height: 12px;
 }
 #character-info li .character-image {
-  width: 203px;
-  height: 170px;
+  width: 300px;
+  height: 169px;
   overflow: hidden;
   margin: 0 20px 20px 0;
   float: left;
@@ -95,11 +95,6 @@
 #character-info .character-bios-container p {
   font-size: 1em;
 }
-/*
-#character-info li::after {
-  content: '<div id="character-close">X</div>';
-}
-*/
 #character-info .character-close {
   position: absolute;
   top: 17px;
@@ -133,3 +128,12 @@
     margin: 1% 1%;
   }
 }
+
+@media (max-width: 400px) {
+  #character-info li .character-image {
+    width: 250px;
+    height: 203px;
+    margin: 0 0 20px;
+  }
+}
+

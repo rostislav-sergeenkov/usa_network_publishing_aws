@@ -45,9 +45,14 @@ function usanetwork_facebook_tracking_page_build(&$page) {
  */
 function _usanetwork_facebook_tracking_enabled($entity, $entity_type) {
   if (!empty($entity->{USANETWORK_FACEBOOK_TRACKING_ENABLED})) {
-    $enabled = reset(field_get_items($entity_type, $entity, USANETWORK_FACEBOOK_TRACKING_ENABLED));
-    if ($enabled['value']) {
-      return true;
+    $field_items = field_get_items($entity_type, $entity, USANETWORK_FACEBOOK_TRACKING_ENABLED);
+
+    if (!empty($field_items)) {
+      $enabled = reset($field_items);
+
+      if ($enabled['value']) {
+        return true;
+      }
     }
   }
   return false;

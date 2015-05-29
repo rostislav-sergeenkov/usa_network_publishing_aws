@@ -1,24 +1,4 @@
 <div class="main">
-  <div class="page-title">
-    <h2>Latest full episodes</h2>
-    <a href="javascript:void(0)" class="sign-in-link link-color-reset">Sign in <span>All access</span></a>
-  </div>
-  <div class="tab-item log-in">
-    <div class="discription">
-      <h3>Please Login with your TV provider:</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim
-        tempor nulla in egestas. Aenean nulla tortor, accvumsan vel mauris id, condimentum lacinia mauris.
-        Suspendisse eget iaculis purus, sed tempor turpis. Aliquam euismod purus in egestas mattis. Aliquam
-        sodales at ipsum in mattis. Vestibulum in ultricies urna. Pellentesque habitant morbi tristique senectus
-        et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum
-      </p>
-      <a href="javascript:void(0)" class="more">show more</a>
-    </div>
-    <div class="check-sign-in">
-      <img src="images/sign-in.png" alt="">
-    </div>
-  </div>
   <?php if (!empty($featured_aspot)): ?>
     <div class="aspot-and-episodes">
       <div class="node usanetwork-aspot">

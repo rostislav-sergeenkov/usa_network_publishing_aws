@@ -1270,9 +1270,17 @@ input.echo-submit-text {
         height: 32px !important;
         background-image: url('../images/social_chatter_icons.png');
         background-repeat: none;
+        @include breakpoint($bp-1024-width) {
+          width: 26px !important;
+          height: 26px !important;
+        }
         @include breakpoint($bp-home-narrowest) {
           width: 24px !important;
           height: 24px !important;
+        }
+        @include breakpoint($bp-480-width) {
+          width: 22px !important;
+          height: 22px !important;
         }
       }
     }

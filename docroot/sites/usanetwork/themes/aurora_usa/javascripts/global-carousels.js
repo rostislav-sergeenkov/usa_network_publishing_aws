@@ -94,6 +94,8 @@
 
                 $container.swipe({
                   excludedElements: "button, input, select, textarea, .noSwipe",
+                  allowPageScroll: "vertical",
+                  threshold: 50,
                   swipeRight: function () {
                     if (!$carousel.hasClass('stop')) {
                       var visible_item = $container.jcarousel('visible').index($container.find('li.first'));
@@ -125,10 +127,8 @@
                     }
                   },
                   tap: function (event, target) {
-                    if ((event instanceof MouseEvent) && event.button != 0) {
-                      return false;
-                    }
-                    if (!$carousel.hasClass('stop')) {
+                    var click_on_opened = $(target).closest('li.active').length > 0;
+                    var tapHandler = function() {
                       if ($(target).attr('href')) {
                         if (!$(target).hasClass('show-open')) {
                           window.location = $(target).attr('href');
@@ -145,24 +145,54 @@
                         }
                       } else {
                         var link = $(target).closest('a');
-                        if (link.length == 0) {
-                          return false;
-                        }
-                        if (!link.hasClass('show-open')) {
-                          window.location = link.attr('href');
-                        }
-                        else {
+
+                        if ($(target).find('a.show-open').length > 0) {
                           if ($container.hasClass('start')) {
                             Drupal.behaviors.global_carousels.swipeHideDescription($container);
+
                             setTimeout(function () {
-                              Drupal.behaviors.global_carousels.showOpen($(target));
+                              Drupal.behaviors.global_carousels.showOpen($(target).find('a.show-open'));
                             }, 600);
                           }
                           else {
+                            Drupal.behaviors.global_carousels.showOpen($(target).find('a.show-open'));
+                          }
+                        }
+
+                        if (link.length == 0) {
+                          return false;
+                        }
+
+                        if (!link.hasClass('show-open')) {
+                          window.location = link.attr('href');
+                        } else {
+                          if ($container.hasClass('start')) {
+                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
+
+                            setTimeout(function () {
+                              Drupal.behaviors.global_carousels.showOpen($(target));
+                            }, 600);
+                          } else {
                             Drupal.behaviors.global_carousels.showOpen($(target));
                           }
                         }
                       }
+                    };
+
+                    if ((event instanceof MouseEvent) && event.button != 0) {
+                      return false;
+                    }
+
+                    if (($carousel.find('li.active').length > 0) && ($carousel.hasClass('stop'))) {
+                      $carousel.unbind('show:close');
+                      $carousel.on('show:close', function() {
+                        if (!click_on_opened) {
+                          tapHandler();
+                        }
+                      });
+                      Drupal.behaviors.global_carousels.showClose($carousel.find('li.active'));
+                    } else {
+                      tapHandler();
                     }
                   }
                 });
@@ -338,11 +368,12 @@
     },
     showOpen: function (target) {
       var current_item = target.closest('li');
-      var current_item_node = current_item.find('.node-usanetwork-promo');
+      var current_item_node = current_item.find('.node').eq(0);
       var carousel = target.closest('ul');
       var current_left = parseInt(carousel.css('left'));
       var width = desktop_show_open_width;
       var item_width = current_item.width();
+
       if (window.innerWidth >= window_size_desktop_large) {
         var width = desktop_show_open_width_large;
       }
@@ -357,6 +388,9 @@
       var left = (window.innerWidth - width_block) / 2 - item_width - current_item.offset()['left'] + current_left;
       carousel.animate({left: left}, 500);
       current_item.animate({width: width}, 500, 'easeInCubic');
+      if(!current_item_node.hasClass('advert-enable')) {
+        Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
+      }
       current_item.addClass('active');
       current_item_node.addClass('open');
       current_item.find('.show-open').css('max-width', item_width);
@@ -367,14 +401,16 @@
       current_item.attr('data-width', item_width);
       carousel.addClass('stop');
 
-      if(window.innerWidth >= window_size_tablet_portrait ) {
-        if (current_item_node.data('mpspath') && !current_item_node.hasClass('ad-enable')) {
-          current_item_node.addClass('ad-enable');
-          Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
-        } else {
-          Drupal.behaviors.mpsAdvert.homeShowsQueueInsertAd(current_item_node);
-        }
-      }
+
+
+      //if(window.innerWidth >= window_size_tablet_portrait ) {
+      //  if (current_item_node.data('mpspath') && !current_item_node.hasClass('ad-enable')) {
+      //    current_item_node.addClass('ad-enable');
+      //    Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
+      //  } else {
+      //    Drupal.behaviors.mpsAdvert.homeShowsQueueInsertAd(current_item_node);
+      //  }
+      //}
 
       /*current_item.find('.show-open').bind('click', function() {
         Drupal.behaviors.global_carousels.showClose(current_item);
@@ -382,13 +418,14 @@
     },
     showClose: function (item) {
       var carousel = item.closest('ul');
-      var current_item_node = item.find('.node-usanetwork-promo');
+      var current_item_node = item.find('.node').eq(0);
       var left = parseInt(item.attr('data-left'));
       var item_width = parseInt(item.attr('data-width'));
       carousel.animate({left: left}, 500);
       item.animate({width: item_width}, 500, 'easeOutQuint', function(){
         item.removeAttr('style');
         item.find('.show-open').removeAttr('style');
+        carousel.trigger('show:close');
       });
       setTimeout(function () {
         item.removeClass('active');
@@ -399,13 +436,13 @@
       item.removeAttr('data-width');
       carousel.removeClass('stop');
 
-      if(window.innerWidth >= window_size_tablet_portrait ) {
-        if (current_item_node.data('mpspath')) {
-          Drupal.behaviors.mpsSponsorShip.removeExecSponsoredBlock(current_item_node);
-        } else {
-          Drupal.behaviors.mpsAdvert.homeShowsQueueRemoveAd(current_item_node);
-        }
-      }
+      //if(window.innerWidth >= window_size_tablet_portrait ) {
+      //  if (current_item_node.data('mpspath')) {
+      //    Drupal.behaviors.mpsSponsorShip.removeExecSponsoredBlock(current_item_node);
+      //  } else {
+      //    Drupal.behaviors.mpsAdvert.homeShowsQueueRemoveAd(current_item_node);
+      //  }
+      //}
 
       //item.find('.show-open').unbind('click');
     },

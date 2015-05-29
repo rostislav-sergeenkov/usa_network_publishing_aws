@@ -13,7 +13,7 @@
  */
 ?>
 <div class="header-nav-bar live-video-nav-bar">
-  <div class="usa-logo show-color hover-avail"><a href="<?php print $main_url; ?>"></a></div>
+  <div class="usa-logo show-color hover-avail"><a class="logo" href="<?php print $main_url; ?>"></a></div>
   <div class="nav-bar-tabs">
     <div class="menu-item show-color hover-avail show-name">
       <a href="#">
@@ -23,7 +23,7 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <?php print t('Live: USA Live TV'); ?>
+          <span><?php print t('Live: USA Live TV'); ?></span>
         </a>
       </h1>
     </div>
@@ -37,7 +37,7 @@
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">
-    <div class="tab-item-content">
+    <div class="tab-item-content tab-item-wrapper">
       <div class="node node-usanetwork-promo">
         <div class="asset-img">
           <img src="" alt="">

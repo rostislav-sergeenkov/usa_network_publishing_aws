@@ -45,7 +45,7 @@
                 <div class="meta-wrapper">
                   <div class="meta-back"></div>
                   <div class="meta-wrapper-inner">
-                    <div class="meta-icon video-icon"></div>
+                    <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'video-icon'; ?>"></div>
                     <div class="meta">
                       <?php if (!empty($promo['title'])): ?>
                         <div class="title"><?php print $promo['title']; ?></div>
@@ -64,6 +64,10 @@
           </li>
         <?php endforeach; ?>
       </ul>
+      <div class="horizontal-controls">
+        <a href="javascript:void(0)" class="jcarousel-control-prev"></a>
+        <a href="javascript:void(0)" class="jcarousel-control-next"></a>
+      </div>
     </div>
   <?php endif; ?>
 </div>

@@ -1,5 +1,3 @@
-#characters {
-}
 #characters-container {
   width: 80%;
   margin: 0 auto;
@@ -44,7 +42,7 @@
   padding-left: 4px;
 }
 #character-nav .tooltip .role {
-  font-size: 0.875em;
+  font-size: 0.8em;
 }
 
 /* character info */
@@ -123,6 +121,12 @@
 }
 
 /* **************** BEGIN MEDIA QUERIES ******************* */
+@media (max-width: 1090px) {
+  #character-nav .tooltip .role {
+    font-size: 0.8em;
+  }
+}
+
 @media (max-width: 670px) {
   #character-nav li {
     width: 48%;

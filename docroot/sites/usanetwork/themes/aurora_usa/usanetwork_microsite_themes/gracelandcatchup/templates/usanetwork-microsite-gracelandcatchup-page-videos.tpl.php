@@ -47,16 +47,18 @@
       <div class="video-container-ajaxed" data-tve-player>
         <div class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
           <div class="tve-help">
-            <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after they air!
+            <div class="tve-msg">
+              By signing in with your TV provider you get access to full<br/>episodes the day after they air!
             </div>
-            <div class="tve-download">To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD THE USA NOW APP
+            <div class="tve-download">
+              To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD THE USA NOW APP
             </div>
             <div class="tve-download-link">
-              <a href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
+              <a class="google-play-icon" href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
                     src="/sites/usanetwork/themes/aurora_usa/images/googleplay.png" alt=""/></a>
-              <a href="http://www.usanetwork.com/usanow"><img
+              <a class="usanow-icon" href="http://www.usanetwork.com/usanow"><img
                     src="/sites/usanetwork/themes/aurora_usa/images/usanow.png" alt=""/></a>
-              <a href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img
+              <a class="appstore-icon" href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img
                     src="/sites/usanetwork/themes/aurora_usa/images/appstore.png" alt=""/></a>
             </div>
             <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" alt=""/>Close</div>
@@ -102,6 +104,10 @@
             <?php print $video_desc; ?>
           <?php endif; ?>
         </div>
+        <div id="video-gigya-share-container">
+          <div id="video-gigya-share-title">Share this video</div>
+          <div id="video-gigya-share" class="video-gigya-share"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -134,17 +140,6 @@
                 </ul>
               </div>
             </div>
-<?php /* ?>
-            <div class="expandable-toggle-wrap <?php if (!empty($more_videos)): ?>active<?php endif; ?>">
-              <div class="expandable-toggle">
-                <div class="item-list">
-                  <ul class="pager pager-load-more">
-                    <li class="pager-next first last more">more</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-<?php */ ?>
           </div>
         </div>
       </div>

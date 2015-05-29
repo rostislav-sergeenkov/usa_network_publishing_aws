@@ -7,7 +7,7 @@
 }
 .midbanner {
   height: auto;
-  margin: 16px auto;
+  margin: 20px auto;
   overflow: hidden;
   text-align: center;
   max-width: 970px;
@@ -24,19 +24,6 @@
   max-width: 970px;
 }
 
-// sponsorship
-header {
-  .tab-content {
-    .full-episode-tab-wrapper {
-      .sponsored {
-        right: 0;
-        position: absolute;
-        top: 0;
-      }
-    }
-  }
-}
-
 .page-file {
   header {
     .header-nav-bar {
@@ -44,8 +31,17 @@ header {
         .sponsored {
           display: table;
           float: left;
-          height: 100%;
+          height: get-vw(73px, 1025);
           text-align: center;
+          width: 282px;
+          @include breakpoint($bp-min-1901-width) {
+            height: 135px;
+          }
+          @include breakpoint($bp-768-width) {
+            float: none;
+            height: 50px;
+            margin: 0 auto;
+          }
           .mps-slot {
             display: table-cell;
             vertical-align: middle;

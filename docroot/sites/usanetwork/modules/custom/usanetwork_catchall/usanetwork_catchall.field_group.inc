@@ -110,7 +110,7 @@ function usanetwork_catchall_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA IdeaMelt',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_ideamelt_action_type',
       1 => 'field_ideamelt_object_type',
@@ -167,7 +167,7 @@ function usanetwork_catchall_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Nitro',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_enable_nitro',
       1 => 'field_nitro_action_name',
@@ -199,6 +199,7 @@ function usanetwork_catchall_field_group_info() {
     'children' => array(
       0 => 'field_usa_og_description',
       1 => 'field_seo_page_title',
+      2 => 'field_gigya_share_bar',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

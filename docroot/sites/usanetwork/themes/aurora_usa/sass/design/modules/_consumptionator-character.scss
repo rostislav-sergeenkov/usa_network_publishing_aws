@@ -1,5 +1,7 @@
 .consumptionator-characters-main-block {
   @include clear();
+  max-width: 1920px;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -9,26 +11,33 @@
     width: 74.7%;
     background: #ffffff;
     color: #000000;
-    padding: 45px 38px 45px 58px;
+    padding: 45px 0;
     @include breakpoint($bp-1280-width) {
       float: none;
-      padding: 25px 31px 38px 36px;
+      padding: 25px 0 38px 0;
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
-      padding: 24px;
+      padding: 24px 0;
+      border-bottom: 2px solid;
     }
     @include breakpoint($bp-768-width) {
-      padding: 38px 24px 38px 24px;
+      padding: 38px 0 38px 0;
     }
     @include breakpoint ($bp-640-width) {
       padding: 56.25vw 0 0;
+      border-bottom: 8px solid;
     }
     .block-character-info-header {
       @include clear();
       margin-bottom: 30px;
+      padding: 0 38px 0 58px;
       @include breakpoint($bp-1280-width) {
         margin-bottom: 15px;
+        padding: 0 31px 0 36px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 0 24px;
       }
       @include breakpoint($bp-640-width) {
         margin-bottom: 0;
@@ -39,9 +48,7 @@
       }
       .block-character-info-header-left {
         float: left;
-        @include breakpoint ($bp-320-width) {
-          float: none;
-        }
+        width: 50%;
         .full-name {
           font-family: $avalon-medium;
           font-size: 54px;
@@ -58,6 +65,9 @@
           @include breakpoint($bp-640-width) {
             font-size: 24px;
           }
+          @include breakpoint($bp-480-width) {
+            font-size: 22px;
+          }
         }
         .description {
           font-family: $tex-gyreschola-italic;
@@ -73,13 +83,14 @@
           @include breakpoint($bp-768-width) {
             font-size: 10px;
           }
+          @include breakpoint($bp-480-width) {
+            font-size: 8px;
+          }
         }
       }
       .block-character-info-header-right {
         float: right;
-        @include breakpoint ($bp-320-width) {
-          float: none;
-        }
+        width: 45%;
         .share {
           font-family: $avalon-book;
           font-size: 26px;
@@ -102,17 +113,25 @@
             @include breakpoint ($bp-1024-width) {
               font-size: 15px;
             }
-            @include breakpoint ($bp-320-width) {
-              text-align: left;
-              line-height: 2em;
+            @include breakpoint($bp-320-width) {
+              margin-bottom: 14px;
             }
           }
+          > div {
+            float: right;
+          }
         }
-
       }
     }
     .block-character-info-content {
       @include clear();
+      padding: 0 38px 0 58px;
+      @include breakpoint($bp-1280-width) {
+        padding: 0 31px 0 36px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 0 24px;
+      }
       .asset-img {
         width: 46.8%;
         float: left;
@@ -165,11 +184,11 @@
           width: 57%;
         }
         @include breakpoint($bp-640-width) {
-          padding: 10px 46px;
+          padding: 10px 22px;
           width: 100%
         }
         @include breakpoint($bp-480-width) {
-          padding: 10px 25px;
+          padding: 10px 1px;
         }
         iframe {
           width: 100%;
@@ -256,6 +275,15 @@
       }
       .episodes-list-slider {
         &.horizontal {
+          overflow: hidden;
+          position: relative;
+          ul {
+            width: 20000em;
+            position: relative;
+            @include breakpoint($bp-640-width) {
+              width: 100%;
+            }
+          }
           @include breakpoint($bp-640-width) {
             li {
               background: $consum-carousel-even;
@@ -304,6 +332,9 @@
                   display: table;
                   height: 100%;
                   width: 100%;
+                }
+                .meta-icon {
+                  display: none;
                 }
                 .meta {
                   color: $consum-carousel-text;

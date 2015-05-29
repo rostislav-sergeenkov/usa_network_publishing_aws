@@ -7,7 +7,7 @@
  * $episode - episode number
  */
 ?>
-<div class="node node-usanetwork-promo aspot-carousel-promo">
+<div class="node node-usanetwork-promo aspot-carousel-promo<?php if (!empty($active)): print ' active show-border'; endif; ?>">
   <a href="<?php print (!empty($gallery_url))? $gallery_url: '#'; ?>">
     <div class="meta-wrapper">
       <div class="meta-back"></div>
@@ -15,8 +15,8 @@
         <div class="meta-icon gallery-icon"></div>
         <div class="meta">
           <div class="title"><?php print (!empty($title))? $title: ''; ?></div>
-          <?php if (!empty($season) && !empty($episode)): ?>
-            <div class="additional"><?php print t('S!season Episode !episode', array('!season' => $season, '!episode' => $episode)); ?></div>
+          <?php if (!empty($description)): ?>
+            <div class="additional"><?php print $description; ?></div>
           <?php endif; ?>
         </div>
       </div>
@@ -26,4 +26,3 @@
     <?php endif; ?>
   </a>
 </div>
-

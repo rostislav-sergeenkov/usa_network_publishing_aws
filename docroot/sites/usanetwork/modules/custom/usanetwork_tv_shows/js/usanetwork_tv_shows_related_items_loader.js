@@ -29,6 +29,11 @@
           case 'episode-consumptionator':
             service_name = 'usanetwork-tv-episode';
             break;
+          case 'photos-landing':
+            service_name = 'usanetwork-photos-landing';
+            additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
+              + $('.ajax-load-block').data('sorting-order');
+            break;
           case 'videos-landing':
             service_name = 'videos-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'

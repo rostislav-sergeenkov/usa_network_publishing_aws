@@ -24,10 +24,11 @@
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 
+<?php if (!empty($description)): ?>
 <div id="video-section-description" class="section-description">
-Watch Season 2 Full Episodes, Season 1 and 2 Cast Interviews and Clips!<br>
-WARNING &mdash; CONTAINS SPOILERS!
+<?php print $description; ?>
 </div>
+<?php endif; ?>
 
 <?php if (!empty($filter_enabled)): ?>
   <div class="filter-wrapper">
@@ -40,19 +41,15 @@ WARNING &mdash; CONTAINS SPOILERS!
   </div>
 <?php endif; ?>
 
-<div class="full-pane">
+<div class="full-pane clearfix">
   <div class="left-pane">
     <div id="video-container" data-video-url="<?php print $in_player['url']; ?>">
       <div class="video-container-ajaxed" data-tve-player>
         <div class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
           <div class="tve-help">
-            <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after
-              they
-              air!
+            <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after they air!
             </div>
-            <div class="tve-download">To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD
-              THE
-              USA NOW APP
+            <div class="tve-download">To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD THE USA NOW APP
             </div>
             <div class="tve-download-link">
               <a href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
@@ -109,7 +106,7 @@ WARNING &mdash; CONTAINS SPOILERS!
     </div>
   </div>
 
-  <div class="right-pane">
+  <div class="right-pane clearfix">
     <?php if (!empty($videos)): ?>
     <div id="block-usanetwork-mpx-video-usa-mpx-video-views" class="block block-usanetwork-mpx-video">
       <div class="content">
@@ -118,7 +115,7 @@ WARNING &mdash; CONTAINS SPOILERS!
                class="view view-usa-mpx-video view-id-usa_mpx_video view-display-id-category_mpx_videos expandable-container view-dom-id-be381e47058d0c21dac9092cb8220a69 jquery-once-2-processed">
             <div class="view-content">
               <div class="item-list">
-                <ul>
+                <ul class="<?php print $active_filter_class; ?>">
                   <?php
                   $video_count = count($videos);
                   foreach ($videos as $v_key => $video): ?>

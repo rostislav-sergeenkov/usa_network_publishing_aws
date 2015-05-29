@@ -123,7 +123,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->pid = 'new-1';
     $pane->panel = 'five';
     $pane->type = 'block';
-    $pane->subtype = 'usanetwork_social-usa_show_landing_social';
+    $pane->subtype = 'usanetwork_social-usa_show_landing_rebelmouse';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

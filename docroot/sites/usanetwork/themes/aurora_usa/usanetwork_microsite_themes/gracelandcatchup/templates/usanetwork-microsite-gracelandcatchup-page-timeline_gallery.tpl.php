@@ -14,9 +14,9 @@
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 
-<?php if (!empty($section_description)): ?>
-  <!-- section title -->
-  <div class=""><?php print $section_description; ?></div>
+<?php if (!empty($description)): ?>
+  <!-- section description -->
+  <div class="section-description"><?php print $description; ?></div>
 <?php endif; ?>
 
 <?php

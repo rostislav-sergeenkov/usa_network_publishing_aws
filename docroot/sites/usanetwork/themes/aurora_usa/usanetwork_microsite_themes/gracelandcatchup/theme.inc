@@ -260,5 +260,6 @@ function usanetwork_microsite_gracelandcatchup_get_theme_settings() {
     'display_global_nav' => FALSE,
     'short_name_for_full_episodes' => TRUE,
     'videos_all_videos_filter' => FALSE,
+    'videos_season_filters' => TRUE,
   );
 }

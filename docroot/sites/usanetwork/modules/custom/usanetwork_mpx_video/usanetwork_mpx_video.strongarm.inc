@@ -283,6 +283,13 @@ function usanetwork_mpx_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'media_theplatform_mpx__watchdog_severity';
+  $strongarm->value = '5';
+  $export['media_theplatform_mpx__watchdog_severity'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_file_image_pattern';
   $strongarm->value = 'file/[file:name]';
   $export['pathauto_file_image_pattern'] = $strongarm;

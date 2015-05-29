@@ -22,10 +22,15 @@
   <h2 class="content"><?php print $section_title; ?></h2>
 <?php endif; ?>
 
-<div id="quiz-section-description" class="section-description">
+<?php if (!empty($description)): ?>
+  <!-- section description -->
+  <div class="section-description"><?php print $description; ?></div>
+<?php endif; ?>
+
+<!-- <div id="quiz-section-description" class="section-description">
 Test your knowledge of Graceland. Lorem ipsum dolor sit amet, consectutur adipiscing ellt.<br>
 WARNING &mdash; CONTAINS SPOILERS!
-</div>
+</div> -->
 
 <div class="full-pane clearfix">
   <?php if (!empty($page['quiz_html']) && !empty($page['nid'])): ?>

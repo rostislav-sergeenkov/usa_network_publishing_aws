@@ -1,0 +1,17 @@
+.page-videos-live{
+  #blackout-slate {
+    background: url('../images/live-player/USA_NHL_SLATE.jpg');
+    background-size: cover;
+    display : table;
+    overflow : hidden;
+    height : 100%;
+    width : 100%
+  }
+  .featured-asset .tve-help-link.signOut{
+    top: auto;
+    @include breakpoint(min-width $bp-social-lyris-large) {
+      top: 35px;
+    }
+  }
+}
+

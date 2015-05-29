@@ -8,19 +8,34 @@
 	width: 100%;
 }
 #counter li {
-	float: left;
-	list-style-type: none;
-	margin: 0 1.5%;
-	width: 30.3333%;
+  float: left;
+  list-style-type: none;
+  margin: 0 6%;
+  width: 21.333%;
 }
 .circle {
-	width: 67%;
-	height: auto;
-	display:block;
-	background-color: rgba(0,0,0,0.6);
-	border: 2px solid orange;
-	border-radius: 50%;
-	margin: 0 auto;
+  width: 100%;
+  min-width: 56px;
+  height: auto;
+  min-height: 56px;
+  display: block;
+  background-color: rgba(0,0,0,0.6);
+  border: 2px solid orange;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding-top: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.counter-container {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+}
+.counter-container > div {
+  text-align: center;
 }
 .numbers {
 	text-align: center;
@@ -29,7 +44,6 @@
 	font-style: normal;
 	color: #ffffff;
 	font-weight: lighter;
-  margin-top: 24px;
   margin-bottom: 1%;
 }
 .line {
@@ -47,7 +61,6 @@
   color: #ffffff;
 	width: 100%;
 	display:block;
-	margin-bottom: 24%;
 }
 #caption {
 	font-family: "proxima_nova_regular", Arial, Helvetica, sans-serif;
@@ -59,3 +72,15 @@
 	margin-left:auto;
 }
 
+/* *********** MEDIA QUERIES START *********** */
+@media (max-width: 1455px) {
+}
+
+@media (max-width: 1255px) {
+  .numbers {
+    font-size: 125%;
+  }
+  .title {
+    font-size: 65%;
+  }
+}

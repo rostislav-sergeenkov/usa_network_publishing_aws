@@ -703,7 +703,11 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
     if (empty($nid)) {
       if (strtoupper($show) == 'USA MOVIE') {
         $show = l(check_plain($program[0]) . $episode_suffix, 'movies', array('html' => true));
-      } else {
+      } 
+      elseif (strtoupper($show) == 'NHL PLAYOFFS') { 
+        $show = l(check_plain($program[0]) . $episode_suffix, 'http://www.usanetwork.com/nhl-2015-stanley-cup-playoffs', array('html' => true));
+      }
+      else {
         $show = check_plain($program[0]) . $episode_suffix;
       }
     } else {
@@ -1090,7 +1094,7 @@ function usanetwork_on_now_panel_node_content($node, $text, $is_on_now) {
   //$output .= usanetwork_social_server_side_chatter_box($node, 2);
 
   // Social Show block
-  $output .= usanetwork_social_show_on_now_box($node, 3);
+//  $output .= usanetwork_social_show_on_now_box($node, 3);
 
 
   return $output;

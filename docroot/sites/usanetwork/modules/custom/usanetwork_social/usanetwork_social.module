@@ -139,6 +139,10 @@ function usanetwork_social_block_info() {
     'info' => t('USA: show landing social'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
+  $blocks['usa_show_landing_rebelmouse'] = array(
+    'info' => t('USA: show landing social Rebel Mouse'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
   $blocks['usa_show_social_getglue'] = array(
     'info' => t('USA: show social getglue'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -161,6 +165,10 @@ function usanetwork_social_block_view($delta) {
     case 'usa_show_landing_social':
       $block['subject'] = '';
       $block['content'] = usanetwork_social_show_landing();
+      break;
+    case 'usa_show_landing_rebelmouse':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_social_show_landing_rebelmouse();
       break;
     case 'usa_show_social_getglue':
       $block['subject'] = '';
@@ -494,6 +502,22 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
     $output .= '</div>';
     return $output;
   }
+}
+
+/**
+ * Generate the show landing rebelmouse social block on the show homepage
+ */
+function usanetwork_social_show_landing_rebelmouse() {
+  if (path_is_admin(current_path())) {
+    return;
+  }
+  $output = '';
+  $menu_object = _usanetwork_menu_get_object();
+  if ($menu_object) {
+    $output = usanetwork_social_trending($menu_object);
+  }
+   
+  return $output;
 }
 
   /**

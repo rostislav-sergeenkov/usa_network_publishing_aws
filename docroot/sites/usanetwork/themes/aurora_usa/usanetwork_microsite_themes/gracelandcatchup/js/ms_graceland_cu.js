@@ -9,21 +9,29 @@
 
     showSiteNav: function() {
       var $siteNav = $('#site-nav'),
-          $homeUsaLogo = $('#home-usa-logo');
+          $homeUsaLogo = $('#home-usa-logo'),
+          $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 0) {
 //usa_debug('========= showSiteNav()');
-        $siteNav.css({'opacity': 1}).animate({'max-height': '80px'}, 700);
+        $siteNav.css({'opacity': 1}).animate({'max-height': '80px'}, 700, function(){
+          if ($(this).hasClass('mobile')) {
+            $(this).css({'overflow': 'visible'}); // to allow hamburger hover state to work
+          }
+        });
+        $videoTitle.animate({marginTop: 105}, 700);
         $homeUsaLogo.animate({'opacity': 0}, 700);
       }
     },
 
     hideSiteNav: function() {
       var $siteNav = $('#site-nav'),
-          $homeUsaLogo = $('#home-usa-logo');
+          $homeUsaLogo = $('#home-usa-logo'),
+          $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 1) {
 //usa_debug('========= hideSiteNav()');
         $homeUsaLogo.animate({'opacity': 1}, 700);
-        $siteNav.animate({'max-height': '0'}, 700, function(){
+        $videoTitle.animate({marginTop: 25}, 700);
+        $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
           $(this).css({'opacity': 0});
         });
       }
@@ -31,7 +39,7 @@
 
     setSiteNav: function() {
 //usa_debug('=============== setSiteNavPosition\nyScrollPos: ' + yScrollPos + '\nscrollPosTest: ' + yPos);
-      if (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav')) {
+      if (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav') || Drupal.behaviors.ms_global.isScrolledIntoView('#home-usa-logo')) {
         Drupal.behaviors.ms_graceland_cu.hideSiteNav();
       }
       else {

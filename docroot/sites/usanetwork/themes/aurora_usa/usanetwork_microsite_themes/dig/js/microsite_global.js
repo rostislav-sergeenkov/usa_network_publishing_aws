@@ -742,6 +742,19 @@ usa_debug(' ====== if videoContainer...');
         }
       });
     },
+    micrositeGetSection: function (anchor, delta) {
+      var url = Drupal.settings.basePath + 'ajax/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta;
+      $.ajax({
+        type: 'GET',
+        url: url,
+        dataType: 'json'
+      }).done(function(data) {
+        console.log(data);
+        $('#' + anchor).find('.microsite-section-container').prepend(data.content);
+        Drupal.attachBehaviors('#' + anchor);
+      });
+    },
+
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
 
@@ -931,8 +944,10 @@ usa_debug(' ====== if videoContainer...');
         }
 
         var anchor = $(this).parent().attr('data-menuanchor'),
-            anchorFull = basePath + '/' + anchor;
+            anchorFull = basePath + '/' + anchor,
+            delta = $(this).parent().attr('data-delta');
 
+        Drupal.behaviors.microsite_scroll.micrositeGetSection(anchor, delta);
         Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor);
       });

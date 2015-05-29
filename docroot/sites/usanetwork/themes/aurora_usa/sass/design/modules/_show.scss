@@ -1093,17 +1093,15 @@
 }
 
 .show-title-block {
-  height: 67px;
+  height: get-vw(50px, 1025);
   overflow: hidden;
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-1901-width) {
-    height: 100px;
-  }
-  @include breakpoint($bp-1024-width) {
-    height: 50px;
+    height: 93px;
   }
   @include breakpoint($bp-768-width) {
+    height: 50px;
     text-align: center;
     position: relative;
   }
@@ -1119,7 +1117,7 @@
     font-family: $avalon-medium;
     font-size: get-vw(19px, 1025);
     letter-spacing: 1px;
-    line-height: 67px;
+    line-height: get-vw(50px, 1025);
     margin: 0 get-vw(24px, 1025) 0 20px;
     text-transform: uppercase;
     @include breakpoint($bp-min-769-width) {
@@ -1127,15 +1125,13 @@
     }
     @include breakpoint($bp-min-1901-width) {
       font-size: 36px;
-      line-height: 100px;
+      line-height: 93px;
       margin: 0 44.5px 0 20px;
       max-width: 470px;
     }
-    @include breakpoint($bp-1024-width) {
-      line-height: 50px;
-    }
     @include breakpoint($bp-768-width) {
       font-size: 14px;
+      line-height: 50px;
       margin: 0 20px 0 20px;
     }
     @include breakpoint($bp-480-width) {
@@ -1168,8 +1164,8 @@
     height: 100%;
     max-width: get-vw(130px, 1025);
     text-align: right;
-    @include breakpoint($bp-1024-width) {
-      max-width: 130px;
+    @include breakpoint($bp-768-width) {
+      max-width: 97.5px;
     }
     @include breakpoint($bp-min-1901-width) {
       max-width: 241px;
@@ -1185,11 +1181,9 @@
       @include breakpoint($bp-min-1901-width) {
         font-size: 18px;
       }
-      @include breakpoint($bp-1024-width) {
-        font-size: 10px;
-      }
       @include breakpoint($bp-768-width) {
         display: none;
+        font-size: 7.5px;
       }
       span {
         display: block;
@@ -1200,13 +1194,14 @@
   }
   .social-icons {
     float: right;
-    margin-left: 20px;
-    margin-top: 21px;
+    margin-left: get-vw(20px, 1025);
+    margin-top: calc((4.878vw - 26px)/2);
     @include breakpoint($bp-min-1901-width) {
-      margin-top: 38px;
+      margin-top: 33.5px;
+      margin-left: 37px;
     }
     @include breakpoint($bp-1024-width) {
-      margin-top: 15px;
+      margin-top: calc((4.878vw - 16px)/2);
     }
     @include breakpoint($bp-768-width) {
       display: none;
@@ -1214,10 +1209,10 @@
     a {
       float: left;
       display: block;
-      margin-right: 30px;
+      margin-right: get-vw(20px, 1025);
       opacity: 0.6;
-      @include breakpoint($bp-1024-width) {
-        margin-right: 15px;
+      @include breakpoint($bp-min-1901-width) {
+        margin-right: 37px;
       }
       &:hover {
         opacity: 0.3;
@@ -1268,27 +1263,25 @@
 .show-menu-tab {
   float: left;
   height: 100%;
-  max-width: 56%;
+  max-width: 50%;
+  overflow: hidden;
   position: relative;
   @include breakpoint($bp-768-width) {
     display: none;
   }
   .show-menu {
     display: block;
-    height: 100%;
+    height: auto;
     position: relative;
     width: 100%;
     > li {
       display: block;
       float: left;
-      height: 67px;
+      height: get-vw(50px, 1025);
       padding: 0;
       position: relative;
       @include breakpoint($bp-min-1901-width) {
-        height: 100px;
-      }
-      @include breakpoint($bp-1024-width) {
-        height: 50px;
+        height: 93px;
       }
       .menu {
         display: none;
@@ -1298,21 +1291,17 @@
         display: block;
         font-family: $avalon-medium;
         font-size: get-vw(11px, 1025);
-        line-height: 67px;
-        height: 67px;
+        line-height: get-vw(50px, 1025);
+        height: get-vw(50px, 1025);
         padding: 0 get-vw(24px, 1025);
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
           font-size: 21px;
-          height: 100px;
-          line-height: 100px;
+          height: 93px;
+          line-height: 93px;
           padding: 0 44.5px;
-        }
-        @include breakpoint($bp-1024-width) {
-          height: 50px;
-          line-height: 50px;
         }
         &:not(.active) {
           background: none;

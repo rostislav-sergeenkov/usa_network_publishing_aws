@@ -3663,8 +3663,21 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 .page-file header .header-nav-bar .nav-bar-tabs .sponsored {
   display: table;
   float: left;
-  height: 100%;
+  height: 7.12195vw;
   text-align: center;
+  width: 282px;
+}
+@media (min-width: 1901px) {
+  .page-file header .header-nav-bar .nav-bar-tabs .sponsored {
+    height: 135px;
+  }
+}
+@media (max-width: 768px) {
+  .page-file header .header-nav-bar .nav-bar-tabs .sponsored {
+    float: none;
+    height: 50px;
+    margin: 0 auto;
+  }
 }
 .page-file header .header-nav-bar .nav-bar-tabs .sponsored .mps-slot {
   display: table-cell;
@@ -4898,18 +4911,18 @@ header h2 {
 }
 header .header-nav-bar {
   background-color: #e1e1e1;
-  height: 90px;
+  height: 7.12195vw;
   position: relative;
   width: 100%;
+}
+header .header-nav-bar:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 @media (min-width: 1901px) {
   header .header-nav-bar {
     height: 135px;
-  }
-}
-@media (max-width: 1024px) {
-  header .header-nav-bar {
-    height: 50px;
   }
 }
 @media (max-width: 768px) {
@@ -4939,16 +4952,11 @@ header .usa-logo {
   background: #2c2c2c;
   float: left;
   height: 100%;
-  width: 125px;
+  width: 9.7561vw;
 }
 @media (min-width: 1901px) {
   header .usa-logo {
-    width: 190px;
-  }
-}
-@media (max-width: 1024px) {
-  header .usa-logo {
-    width: 100px;
+    width: 185px;
   }
 }
 header .usa-logo:hover {
@@ -4957,6 +4965,7 @@ header .usa-logo:hover {
 @media (max-width: 768px) {
   header .usa-logo {
     height: 50px;
+    width: 75px;
   }
   header .usa-logo.active {
     display: none;
@@ -4973,7 +4982,7 @@ header .usa-logo a {
 header .show-title-wrapper {
   display: none;
   border-left: 1px solid transparent;
-  margin-left: 100px;
+  margin-left: 75px;
   margin-right: 50px;
   position: relative;
   text-align: center;
@@ -4987,22 +4996,6 @@ header .show-title-wrapper {
 header .nav-bar-tabs {
   float: left;
   height: 100%;
-  width: 605px;
-}
-@media (min-width: 1901px) {
-  header .nav-bar-tabs {
-    width: 750px;
-  }
-}
-@media (max-width: 1280px) {
-  header .nav-bar-tabs {
-    width: 485px;
-  }
-}
-@media (max-width: 1024px) {
-  header .nav-bar-tabs {
-    width: 400px;
-  }
 }
 @media (max-width: 768px) {
   header .nav-bar-tabs {
@@ -5215,14 +5208,16 @@ header .nav-bar-tabs {
 }
 @media (min-width: 769px) {
   header .nav-bar-tabs ul {
-    display: table;
-    width: 100%;
+    display: block;
+  }
+  header .nav-bar-tabs ul li.expanded {
+    list-style: none;
   }
   header .nav-bar-tabs .header-show-menu {
     display: none;
   }
   header .nav-bar-tabs .tab {
-    display: table-cell;
+    float: left;
     height: 100%;
     padding: 0;
   }
@@ -5242,8 +5237,9 @@ header .nav-bar-tabs {
     font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 1.26829vw;
     height: 100%;
-    line-height: 90px;
+    line-height: 7.12195vw;
     letter-spacing: 0.5px;
+    padding: 0 4.68293vw;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -5263,13 +5259,18 @@ header .nav-bar-tabs {
   header .nav-bar-tabs a {
     font-size: 24px;
     line-height: 135px;
-    padding: 0 30px;
+    padding: 0 89px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   header .nav-bar-tabs a {
     font-size: 13px;
+  }
+}
+@media (min-width: 769px) and (max-width: 768px) {
+  header .nav-bar-tabs a {
     line-height: 50px;
+    padding: 0 36px;
   }
 }
 header .user-profile, header .search {
@@ -5768,7 +5769,6 @@ header .tab-content:after {
 }
 header .tab-item {
   background: #363435;
-  /*border-top: 1px solid transparent;*/
   display: none;
   letter-spacing: 0.5px;
   height: auto;
@@ -5802,7 +5802,6 @@ header .tab-item:after {
   }
 }
 header .tab-item.active {
-  /*border-top: 1px solid $header-tab-back-hover;*/
   display: block;
 }
 header .tab-item .see-all-link {
@@ -7259,26 +7258,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 
 .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
   background: #2c2c2c;
-  height: 90px !important;
   position: relative;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
-    height: 135px !important;
-  }
-  .consumptionator-page header .header-nav-bar .usa-logo, .node-type-catchall-page header .header-nav-bar .usa-logo, .page-videos-live header .header-nav-bar .usa-logo, .node-type-media-gallery header .header-nav-bar .usa-logo, .node-type-person header .header-nav-bar .usa-logo {
-    width: 190px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
-    height: 72px !important;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
-    height: 50px !important;
-  }
 }
 @media (max-width: 480px) {
   .consumptionator-page header .header-nav-bar .usa-logo, .node-type-catchall-page header .header-nav-bar .usa-logo, .page-videos-live header .header-nav-bar .usa-logo, .node-type-media-gallery header .header-nav-bar .usa-logo, .node-type-person header .header-nav-bar .usa-logo {
@@ -7319,23 +7299,18 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: block;
   height: 100%;
   width: 100%;
-  max-width: calc(100% - 125px);
+  max-width: calc(100% - 9.76vw);
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 190px);
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 100px);
+    max-width: calc(100% - 185px);
   }
 }
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
     clear: none;
-    margin-left: 100px;
-    max-width: calc(100% - 100px);
+    margin-left: 75px;
+    max-width: calc(100% - 75px);
     width: 100%;
   }
 }
@@ -7343,6 +7318,16 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
     margin-left: 50px;
     max-width: calc(100% - 50px);
+  }
+}
+@media (min-width: 769px) {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name, .page-videos-live header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name, .node-type-person header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name {
+    max-width: calc((100% - 282px)*0.3);
+  }
+}
+@media (min-width: 769px) {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info, .node-type-person header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info {
+    max-width: calc((100% - 282px)*0.7);
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item {
@@ -7355,8 +7340,14 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   text-align: center;
   vertical-align: middle;
 }
+@media (max-width: 768px) {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item {
+    height: 50px;
+  }
+}
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item h1, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item h2, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item h2, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item h2, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item h2, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item h1, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item h2 {
   margin: 0;
+  height: 100%;
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
   background: none;
@@ -7365,35 +7356,15 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   color: #ffffff;
   display: block;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.26829vw;
-  height: auto;
+  height: 100%;
   margin: 0 auto;
-  line-height: 90px;
   overflow: hidden;
-  padding: 0 30px;
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a span {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-}
-@media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
-    font-size: 24px;
-    line-height: 135px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
-    font-size: 13px;
-    line-height: 72px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
-    line-height: 50px;
-  }
 }
 @media (max-width: 640px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item a {
@@ -7410,11 +7381,17 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     width: 100%;
   }
 }
-@media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
-    max-width: calc(100% - 50px);
-    padding: 0;
-  }
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
+  display: table;
+  height: 100%;
+  line-height: 1.2;
+  position: relative;
+  text-align: center;
+  white-space: normal;
+}
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span {
+  display: table-cell;
+  vertical-align: middle;
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info {
   border-left: 1px solid #363636;
@@ -7428,28 +7405,33 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
+  padding-left: 6.92683vw;
+  display: table;
+  height: 100%;
+  line-height: 1.2;
   position: relative;
-  padding-left: 90px;
   text-align: left;
+  white-space: normal;
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
-    padding-left: 130px;
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
-    padding-left: 70px;
+    padding-left: 132px;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
     overflow: hidden;
     padding: 0;
-    text-indent: 110%;
-    text-overflow: clip;
-    white-space: nowrap;
     width: 50px;
+  }
+}
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a span {
+  display: table-cell;
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a span {
+    display: none;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
@@ -7462,8 +7444,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   width: 26px;
   content: '';
   display: block;
-  left: 45px;
-  margin-left: -13px;
+  left: calc((6.93vw - 26px)/2);
   margin-top: -13px;
   position: absolute;
   top: 50%;
@@ -7486,8 +7467,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     display: block;
     height: 40px;
     width: 40px;
-    left: 65px;
-    margin-left: -20px;
+    left: 46px;
     margin-top: -20px;
   }
 }
@@ -7500,14 +7480,10 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     width: 40px;
   }
 }
-@media (max-width: 1280px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-    left: 35px;
-  }
-}
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     left: 50%;
+    margin-left: -13px;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover {
@@ -7532,6 +7508,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   background: #363435;
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content, .node-type-catchall-page header .tab-content .tab-item .tab-item-content, .page-videos-live header .tab-content .tab-item .tab-item-content, .node-type-media-gallery header .tab-content .tab-item .tab-item-content, .node-type-person header .tab-content .tab-item .tab-item-content {
+  margin: 0 auto;
+  max-width: 1804px;
   position: relative;
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node:after, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node:after, .page-videos-live header .tab-content .tab-item .tab-item-content .node:after, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node:after, .node-type-person header .tab-content .tab-item .tab-item-content .node:after {
@@ -7842,53 +7820,32 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: none;
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-video-page header .region-header.sticky .block-usanetwork-menu.open, .page-videos-live header .region-header.sticky .block-usanetwork-menu.open {
-    background: none;
-  }
-  .consumptionator-video-page header .region-header.sticky .block-usanetwork-menu.open .tab-content .tab-item, .page-videos-live header .region-header.sticky .block-usanetwork-menu.open .tab-content .tab-item {
-    padding-top: 40px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
   .consumptionator-video-page header .region-header .block-usanetwork-menu.open, .page-videos-live header .region-header .block-usanetwork-menu.open {
     background: #363435;
   }
   .consumptionator-video-page header .region-header .block-usanetwork-menu.open .tve-help-link.signOut .tve-header-links .first, .page-videos-live header .region-header .block-usanetwork-menu.open .tve-help-link.signOut .tve-header-links .first {
     display: none;
   }
-  .consumptionator-video-page header .region-header .block-usanetwork-menu.open .tab-content .tab-item, .page-videos-live header .region-header .block-usanetwork-menu.open .tab-content .tab-item {
-    padding-top: 5px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-video-page header .header-nav-bar.tve-sign, .page-videos-live header .header-nav-bar.tve-sign {
-    margin-bottom: 35px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-video-page header .header-nav-bar.tve-sign, .page-videos-live header .header-nav-bar.tve-sign {
-    margin-bottom: 0;
-  }
 }
 .consumptionator-video-page header .header-nav-bar.tve-sign .tve-help-link.signOut ul.tve-header-links li.first, .page-videos-live header .header-nav-bar.tve-sign .tve-help-link.signOut ul.tve-header-links li.first {
   display: block;
 }
 .consumptionator-video-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs {
-  max-width: calc(100% - 215px);
+  max-width: calc(100% - 17vw);
 }
 @media (min-width: 1901px) {
   .consumptionator-video-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 325px);
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-video-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 172px);
+    max-width: calc(100% - 320px);
   }
 }
 @media (max-width: 768px) {
   .consumptionator-video-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 100px);
+    max-width: calc(100% - 75px);
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-video-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs {
+    max-width: calc(100% - 50px);
   }
 }
 .consumptionator-video-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info {
@@ -7930,16 +7887,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: table-cell;
   height: 100%;
   vertical-align: middle;
-  width: 135px;
+  width: 7.12195vw;
 }
-@media (max-width: 1900px) {
+@media (min-width: 1901px) {
   .consumptionator-video-page header .header-nav-bar .tve-help-link.signOut .links-wrapper, .page-videos-live header .header-nav-bar .tve-help-link.signOut .links-wrapper {
-    width: 90px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-video-page header .header-nav-bar .tve-help-link.signOut .links-wrapper, .page-videos-live header .header-nav-bar .tve-help-link.signOut .links-wrapper {
-    width: 72px;
+    width: 135px;
   }
 }
 .consumptionator-video-page header .header-nav-bar .tve-help-link.signOut a, .page-videos-live header .header-nav-bar .tve-help-link.signOut a {
@@ -9453,14 +9405,13 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .five-promo-item-block ul li:nth-child(2) > div, .five-promo-item-block ul li .last > div {
   float: left;
   height: 49.2%;
-  margin-right: 1.6%;
   width: 49.2%;
 }
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(1), .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(1), .five-promo-item-block ul li .last > div:nth-child(2) {
   margin-bottom: 1.6%;
 }
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li:nth-child(2) > div:nth-child(4), .five-promo-item-block ul li .last > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(4) {
-  margin-right: 0;
+  float: right;
 }
 .five-promo-item-block.show-video-landing-main-block {
   border-top: 0;
@@ -16849,23 +16800,19 @@ footer h2 {
 }
 
 .show-title-block {
-  height: 67px;
+  height: 4.87805vw;
   overflow: hidden;
   position: relative;
   width: 100%;
 }
 @media (min-width: 1901px) {
   .show-title-block {
-    height: 100px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-title-block {
-    height: 50px;
+    height: 93px;
   }
 }
 @media (max-width: 768px) {
   .show-title-block {
+    height: 50px;
     text-align: center;
     position: relative;
   }
@@ -16884,7 +16831,7 @@ footer h2 {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.85366vw;
   letter-spacing: 1px;
-  line-height: 67px;
+  line-height: 4.87805vw;
   margin: 0 2.34146vw 0 20px;
   text-transform: uppercase;
 }
@@ -16896,19 +16843,15 @@ footer h2 {
 @media (min-width: 1901px) {
   .show-title-block h1 {
     font-size: 36px;
-    line-height: 100px;
+    line-height: 93px;
     margin: 0 44.5px 0 20px;
     max-width: 470px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-title-block h1 {
-    line-height: 50px;
   }
 }
 @media (max-width: 768px) {
   .show-title-block h1 {
     font-size: 14px;
+    line-height: 50px;
     margin: 0 20px 0 20px;
   }
 }
@@ -16942,9 +16885,9 @@ footer h2 {
   max-width: 12.68293vw;
   text-align: right;
 }
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .show-title-block .schedule {
-    max-width: 130px;
+    max-width: 97.5px;
   }
 }
 @media (min-width: 1901px) {
@@ -16966,14 +16909,10 @@ footer h2 {
     font-size: 18px;
   }
 }
-@media (max-width: 1024px) {
-  .show-title-block .schedule .time {
-    font-size: 10px;
-  }
-}
 @media (max-width: 768px) {
   .show-title-block .schedule .time {
     display: none;
+    font-size: 7.5px;
   }
 }
 .show-title-block .schedule .time span {
@@ -16983,17 +16922,18 @@ footer h2 {
 }
 .show-title-block .social-icons {
   float: right;
-  margin-left: 20px;
-  margin-top: 21px;
+  margin-left: 1.95122vw;
+  margin-top: calc((4.878vw - 26px)/2);
 }
 @media (min-width: 1901px) {
   .show-title-block .social-icons {
-    margin-top: 38px;
+    margin-top: 33.5px;
+    margin-left: 37px;
   }
 }
 @media (max-width: 1024px) {
   .show-title-block .social-icons {
-    margin-top: 15px;
+    margin-top: calc((4.878vw - 16px)/2);
   }
 }
 @media (max-width: 768px) {
@@ -17004,12 +16944,12 @@ footer h2 {
 .show-title-block .social-icons a {
   float: left;
   display: block;
-  margin-right: 30px;
+  margin-right: 1.95122vw;
   opacity: 0.6;
 }
-@media (max-width: 1024px) {
+@media (min-width: 1901px) {
   .show-title-block .social-icons a {
-    margin-right: 15px;
+    margin-right: 37px;
   }
 }
 .show-title-block .social-icons a:hover {
@@ -17250,7 +17190,8 @@ footer h2 {
 .show-menu-tab {
   float: left;
   height: 100%;
-  max-width: 56%;
+  max-width: 50%;
+  overflow: hidden;
   position: relative;
 }
 @media (max-width: 768px) {
@@ -17260,25 +17201,20 @@ footer h2 {
 }
 .show-menu-tab .show-menu {
   display: block;
-  height: 100%;
+  height: auto;
   position: relative;
   width: 100%;
 }
 .show-menu-tab .show-menu > li {
   display: block;
   float: left;
-  height: 67px;
+  height: 4.87805vw;
   padding: 0;
   position: relative;
 }
 @media (min-width: 1901px) {
   .show-menu-tab .show-menu > li {
-    height: 100px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-menu-tab .show-menu > li {
-    height: 50px;
+    height: 93px;
   }
 }
 .show-menu-tab .show-menu > li .menu {
@@ -17289,8 +17225,8 @@ footer h2 {
   display: block;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.07317vw;
-  line-height: 67px;
-  height: 67px;
+  line-height: 4.87805vw;
+  height: 4.87805vw;
   padding: 0 2.34146vw;
   text-align: center;
   text-decoration: none;
@@ -17299,15 +17235,9 @@ footer h2 {
 @media (min-width: 1901px) {
   .show-menu-tab .show-menu > li > a {
     font-size: 21px;
-    height: 100px;
-    line-height: 100px;
+    height: 93px;
+    line-height: 93px;
     padding: 0 44.5px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-menu-tab .show-menu > li > a {
-    height: 50px;
-    line-height: 50px;
   }
 }
 .show-menu-tab .show-menu > li > a:not(.active) {

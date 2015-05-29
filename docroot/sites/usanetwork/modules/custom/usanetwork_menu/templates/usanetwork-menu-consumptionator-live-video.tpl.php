@@ -23,7 +23,7 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <?php print t('Live: USA Live TV'); ?>
+          <span><?php print t('Live: USA Live TV'); ?></span>
         </a>
       </h1>
     </div>
@@ -37,7 +37,7 @@
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">
-    <div class="tab-item-content">
+    <div class="tab-item-content tab-item-wrapper">
       <div class="node node-usanetwork-promo">
         <div class="asset-img">
           <img src="" alt="">

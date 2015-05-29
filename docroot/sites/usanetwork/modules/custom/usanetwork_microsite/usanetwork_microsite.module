@@ -99,6 +99,14 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/callback/get-section/%node/%'] = array(
+    'page callback' => 'usanetwork_microsite_get_section',
+    'page arguments' => array(2, 3),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'ajax_deliver',
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 

@@ -13403,6 +13403,9 @@ footer h2 {
   background: #ffffff;
   color: #000000;
   padding: 45px 0;
+  padding-bottom: 10000px;
+  margin-bottom: -10000px;
+  overflow: hidden;
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block {

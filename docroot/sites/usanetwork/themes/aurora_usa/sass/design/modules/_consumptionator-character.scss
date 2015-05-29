@@ -12,6 +12,9 @@
     background: #ffffff;
     color: #000000;
     padding: 45px 0;
+    padding-bottom: 10000px;
+    margin-bottom: -10000px;
+    overflow: hidden;
     @include breakpoint($bp-1280-width) {
       float: none;
       padding: 25px 0 38px 0;

@@ -30,6 +30,8 @@
         slideWidth = 255;
       }
 
+
+
       Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'vertical',
         minSlides: 1,

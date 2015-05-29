@@ -1,4 +1,4 @@
-.videos-landing-page-container {
+.landing-page-container {
   background: $poll-back;
   overflow: hidden;
   padding-top: 40px;
@@ -289,7 +289,7 @@
       }
     }
   }
-  .video-items-blocks {
+  .landing-items-blocks {
     @include clear();
     border-bottom: 2px solid;
     margin-bottom: 100px;

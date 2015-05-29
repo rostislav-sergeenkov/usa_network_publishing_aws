@@ -454,7 +454,7 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL
     ->entityCondition('bundle', 'media_gallery')
     ->propertyCondition('status', NODE_PUBLISHED)
     ->fieldCondition('field_show', 'target_id', $show_nid, '=')
-    ->propertyOrderBy('changed', $sorting);
+    ->propertyOrderBy('created', $sorting);
 
   if(is_numeric($start) && is_numeric($lenght)) {
     $query->range($start, $lenght);

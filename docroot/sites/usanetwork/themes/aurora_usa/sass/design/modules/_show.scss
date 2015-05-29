@@ -20,15 +20,12 @@
             z-index: 1;
           }
         }
-        img {
-          &.desktop {
+        .desktop {
+          img {
             -webkit-transition: all 0.5s ease-out 0.3s;
             -moz-transition: all 0.5s ease-out 0.3s;
             -o-transition: all 0.5s ease-out 0.3s;
             transition: all 0.5s ease-out 0.3s;
-          }
-          &.mobile {
-            display: none;
           }
         }
       }
@@ -88,18 +85,20 @@
                 }
               }
               .desktop {
-                opacity:0.8;
-                -moz-opacity:0.8;
-                filter: alpha(opacity=80);
-                -khtml-opacity: 0.8;
-                -webkit-transform: scale(1.05);
-                -moz-transform: scale(1.05);
-                -o-transform: scale(1.05);
-                transform: scale(1.05);
-                -webkit-transition: all 0.3s ease-out 0s;
-                -moz-transition: all 0.3s ease-out 0s;
-                -o-transition: all 0.3s ease-out 0s;
-                transition: all 0.3s ease-out 0s;
+                img {
+                  opacity:0.8;
+                  -moz-opacity:0.8;
+                  filter: alpha(opacity=80);
+                  -khtml-opacity: 0.8;
+                  -webkit-transform: scale(1.05);
+                  -moz-transform: scale(1.05);
+                  -o-transform: scale(1.05);
+                  transform: scale(1.05);
+                  -webkit-transition: all 0.3s ease-out 0s;
+                  -moz-transition: all 0.3s ease-out 0s;
+                  -o-transition: all 0.3s ease-out 0s;
+                  transition: all 0.3s ease-out 0s;
+                }
               }
             }
           }

@@ -15452,14 +15452,11 @@ footer h2 {
   transition: all 0s ease-out 0.3s;
   z-index: 1;
 }
-.shows-block .show-carousel > ul > li img.desktop {
+.shows-block .show-carousel > ul > li .desktop img {
   -webkit-transition: all 0.5s ease-out 0.3s;
   -moz-transition: all 0.5s ease-out 0.3s;
   -o-transition: all 0.5s ease-out 0.3s;
   transition: all 0.5s ease-out 0.3s;
-}
-.shows-block .show-carousel > ul > li img.mobile {
-  display: none;
 }
 .shows-block .show-carousel > ul > li.active > .node:before {
   -webkit-box-shadows: -2.5px 4.33px 5px rgba(0, 0, 0, 0.35);
@@ -15535,7 +15532,7 @@ footer h2 {
     cursor: pointer;
     z-index: 2;
   }
-  .shows-block .show-carousel > ul > li:not(.active) > .node:hover .desktop {
+  .shows-block .show-carousel > ul > li:not(.active) > .node:hover .desktop img {
     opacity: 0.8;
     -moz-opacity: 0.8;
     filter: alpha(opacity=80);

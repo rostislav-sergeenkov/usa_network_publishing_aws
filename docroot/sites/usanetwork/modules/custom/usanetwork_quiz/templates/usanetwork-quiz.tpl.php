@@ -1,11 +1,11 @@
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if ($splash): ?>
+<div class="<?php print !empty($classes) ? $classes : ''; ?>"<?php print !empty($attributes) ? $attributes : ''; ?>>
+  <?php if (!empty($splash)): ?>
     <?php print $splash; ?>
   <?php endif; ?>
-  <?php if ($questions): ?>
+  <?php if (!empty($questions)): ?>
     <?php print $questions; ?>
   <?php endif; ?>
-  <?php if ($results): ?>
+  <?php if (!empty($results)): ?>
     <?php print $results; ?>
   <?php endif; ?>
 </div>

@@ -131,7 +131,7 @@
         },
 
         logger: {
-          useWatchdog: true,
+          useWatchDog: true,
           url: basePath + 'adobe-pass/log',
 
           // Your custom logger callback.
@@ -217,12 +217,20 @@
         },
         attributes = {
           id: config.accessEnablerId,
-          name: config.accessEnablerId
+          name: config.accessEnablerId,
+          style: "position: fixed; z-index: 9999; display: inline-block; " +
+            "visibility: visible; left: 0px !important; top: 0px !important;"
         },
         ACCESS_ENABLER_CONTAINER_ID = 'contentAccessEnabler',
         container = document.createElement('div');
-
       container.id = ACCESS_ENABLER_CONTAINER_ID;
+      
+      // Avoids loading access enabler swf file if flash is disabled.
+      if (!swfobject.hasFlashPlayerVersion(config.adobePassFlashVer)) {
+        config.authNCheckedFailedCallback(false);
+        return;
+      }
+
       $(document.body).append(container);
 
       swfobject.embedSWF(
@@ -304,7 +312,7 @@
 
       // Enabler configuration.
       accessEnabler.setProviderDialogURL(NONE_URL);
-      accessEnabler.setRequestor(config.adobePassRequestorId, null);
+      accessEnabler.setRequestor(config.adobePassRequestorId, null, config.refreshlessConfig);
       accessEnabler.checkAuthentication();
 
       return this;
@@ -380,10 +388,10 @@
           'authnStatus': 'Not Authenticated',
           'mvpd_id': providerId
         },
-        selectedProvider = config.mvpdService.getMvpd(providerId);
+        selectedProviderInfo = config.mvpdService.getMvpd(providerId);
 
-      if (selectedProvider) {
-        selectedProvider.then(function(data) {
+      if (selectedProviderInfo) {
+        selectedProviderInfo.then(function(data) {
             if (data['is_new_window'] == TRUE_FLAG) {
               createMVPDWindow();
             }
@@ -398,7 +406,7 @@
         aeCheckTimeoutId = setTimeout(function() {
           if (!mvpdWindow) {
             logError({
-              message: config.logger.message.TIMEOUT
+              message: config.logger.messages.TIMEOUT
             });
           }
 
@@ -448,7 +456,7 @@
               trackNonEntitledMvpd();
             }
           }, function(error, status) {
-            var errorMsg = status || config.logger.message.NON_ENTITLED_MVPD;
+            var errorMsg = status || config.logger.messages.NON_ENTITLED_MVPD;
 
             if (status) {
               runCallback();
@@ -554,6 +562,13 @@
     }
 
     /**
+     * Destroy iframe opened for MVPD login.
+     */
+    function destroyIframe() {
+      config.destroyIframe();
+    }
+
+    /**
      * MVPD Login screen in a new window rather than iframe workflow.
      */
     function createMVPDWindow() {
@@ -625,6 +640,10 @@
       var loggerConfig = config.logger;
 
       error.level = error.level || loggerConfig.errorLvl.ERROR;
+
+      if (error.level == 'info') {
+        return false;
+      }
 
       if (loggerConfig.useWatchDog) {
         $.ajax({
@@ -729,6 +748,7 @@
         'initiateCheckAuthProcess': initiateCheckAuthProcess,
         'stopAECheck': stopAECheck,
         'createIframe': createIframe,
+        'destroyIframe' : destroyIframe,
         'performPostAuthCheckActions': performPostAuthCheckActions,
         'getAuthentication': getAuthentication,
         'login': login,
@@ -761,6 +781,7 @@
    * This is the entry point for your communication with the AE.
    */
   window.swfLoaded = function() {
+    accessEnabler.bind('errorEvent', 'tveAdobePassLogError');
     tve.adobePass.initiateCheckAuthProcess();
   };
 
@@ -784,6 +805,13 @@
    */
   window.tveAdobePassLogError = function() {
     return tve.adobePass.logError.apply(null, arguments);
+  };
+
+  /**
+   * Callback that destroys an MVPD's iFrame.
+   */
+  window.destroyIFrame = function() {
+    tve.adobePass.destroyIframe();
   };
 
   /**

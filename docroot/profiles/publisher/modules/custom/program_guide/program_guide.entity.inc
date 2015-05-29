@@ -2,7 +2,6 @@
 
 /**
  * @file
- *
  * Class API and helper for our program entity.
  */
 

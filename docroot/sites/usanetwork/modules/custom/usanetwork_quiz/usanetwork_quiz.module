@@ -543,10 +543,9 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
   // add ads
   $splash = theme('usanetwork_quiz_splash');
   if (($phase == 'splash' && !empty($splash)) || ($phase == 'questions' && empty($splash))) {
-    $block = block_load('dart', 'dart-tag-300x250_ifr_reload');
-    $vars['content']['ads'] = _block_get_renderable_array(_block_render_blocks(array($block)));
-    $vars['content']['ads']['#prefix'] = '<div class="ad-container">';
-    $vars['content']['ads']['#suffix'] = '</div>';
+    $vars['content']['ads'] = '';
+    $vars['content']['ads']['#prefix'] = '<div class="ad-container"><div id="topbox">';
+    $vars['content']['ads']['#suffix'] = '</div></div>';
   }
 }
 

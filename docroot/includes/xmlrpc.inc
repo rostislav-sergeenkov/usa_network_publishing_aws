@@ -178,7 +178,7 @@ function xmlrpc_message_parse($xmlrpc_message) {
   xml_set_element_handler($xmlrpc_message->_parser, 'xmlrpc_message_tag_open', 'xmlrpc_message_tag_close');
   xml_set_character_data_handler($xmlrpc_message->_parser, 'xmlrpc_message_cdata');
   xmlrpc_message_set($xmlrpc_message);
-  
+
   // Strip XML declaration.
   $header = preg_replace('/<\?xml.*?\?'.'>/s', '', substr($xmlrpc_message->message, 0, 100), 1);
   $xml = trim(substr_replace($xmlrpc_message->message, $header, 0, 100));

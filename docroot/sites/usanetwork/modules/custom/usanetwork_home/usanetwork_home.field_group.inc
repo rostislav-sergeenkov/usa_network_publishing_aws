@@ -60,7 +60,7 @@ function usanetwork_home_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'No more than 3 A-spots are recommended for this region',
+        'description' => 'Unlimited A-spots',
       ),
       'formatter' => 'collapsible',
     ),
@@ -88,8 +88,8 @@ function usanetwork_home_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 3 promos recommended for this region.<br />
-On page load, only the first promo in each spot will be displayed.  Additional promos will be displayed in sets that users can page through using the A-spot\'s previous/next arrows.',
+        'description' => 'A maximum of 1 promo for this region.<br />
+On page load, only the first promo in each spot will be displayed.',
       ),
       'formatter' => 'collapsible',
     ),
@@ -117,13 +117,68 @@ On page load, only the first promo in each spot will be displayed.  Additional p
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 3 promos recommended for this region.<br />
-On page load, only the first promo in each spot will be displayed.  Additional promos will be displayed in sets that users can page through using the A-spot\'s previous/next arrows.',
+        'description' => 'A maximum of 1 promo for this region.<br />
+On page load, only the first promo in each spot will be displayed.',
       ),
       'formatter' => 'collapsible',
     ),
   );
   $export['group_hp_cspots|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_hp_full_bleed_promo|node|usa_homepage|form';
+  $field_group->group_name = 'group_hp_full_bleed_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Full Bleed Promo',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_hp_full_bleed_promo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-hp-full-bleed-promo field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_hp_full_bleed_promo|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_hp_full_episodes_carousel|node|usa_homepage|form';
+  $field_group->group_name = 'group_hp_full_episodes_carousel';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Full episode carousel',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_hp_episodes_block_title',
+      1 => 'field_carousel_rows_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-hp-full-episodes-carousel field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_hp_full_episodes_carousel|node|usa_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -167,9 +222,8 @@ On page load, only the first promo in each spot will be displayed.  Additional p
     'weight' => '8',
     'children' => array(
       0 => 'field_hp_promo_carousel',
-      1 => 'field_hp_promo_carousel_title',
-      2 => 'field_hp_display_promo_carousel',
-      3 => 'field_hp_promo_carousel_display',
+      1 => 'field_hp_promo_carousel_display',
+      2 => 'field_hp_promo_carousel_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -193,16 +247,19 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Featured',
+    'label' => 'Featured-Themed',
     'weight' => '7',
     'children' => array(
-      0 => 'field_hp_promos',
-      1 => 'field_hp_episodes_block_title',
-      2 => 'field_hp_promos_block_title',
+      0 => 'field_hp_promos_block_title',
+      1 => 'field_additional_text',
+      2 => 'field_caption_text',
+      3 => 'field_hp_promo_background',
+      4 => 'field_hp_promo_logo',
+      5 => 'field_hp_ft_featured',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Featured',
+      'label' => 'Featured-Themed',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
@@ -242,6 +299,35 @@ If more than 4 are added a carousel will be triggered on page load so content ca
     ),
   );
   $export['group_slide_settings|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_social_promo_carousel|node|usa_homepage|form';
+  $field_group->group_name = 'group_social_promo_carousel';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Social carousel',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_social_promo_title',
+      1 => 'field_social_promo_additional',
+      2 => 'field_hp_ft_social',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-social-promo-carousel field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_social_promo_carousel|node|usa_homepage|form'] = $field_group;
 
   return $export;
 }

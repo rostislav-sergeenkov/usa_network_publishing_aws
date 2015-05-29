@@ -542,7 +542,7 @@ function usanetwork_mpx_video_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => '300x250',
+    'image_style' => '300x169_video',
   );
   $export['mpx_video_2__vid_teaser_front__media_theplatform_mpx_image'] = $file_display;
 

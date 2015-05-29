@@ -9,9 +9,10 @@ define('USANETWORK_USANOW_ANDROID_URL', 'https://play.google.com/store/apps/deta
  */
 function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, $langcode) {
   if ($entity_type == 'file' && in_array($entity->type, _pub_mpx_get_mpx_account_video_file_types(TRUE)) && $view_mode == 'full') {
-    $full_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_full_episode'));
-    if ($full_episode) {
-      $full_episode = (bool) $full_episode['value'];
+
+    $full_episode = FALSE;
+    if ($full_episode_field_value = _usanetwork_get_field_item('file', $entity, 'field_mpx_full_episode', 'value')) {
+      $full_episode = $full_episode_field_value == '1' ? TRUE : FALSE;
     }
 
     if ($full_episode) {
@@ -38,7 +39,7 @@ function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, 
             . '<img class="mobile-logo-exp" src="' . url(drupal_get_path('module', 'usanetwork_video_mobile') . '/img/logo-mobile-exp.png') . '">'
             . '<div id="mobileVideoModalButtons">'
             . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
-            . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">'. '</div>'
+            . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">' . '</div>'
             . '</div>',
           ),
         ),

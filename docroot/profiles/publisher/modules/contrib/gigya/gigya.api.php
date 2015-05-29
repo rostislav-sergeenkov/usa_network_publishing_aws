@@ -46,8 +46,8 @@ function hook_notify_login_user_info_alter($gigya_user_info) {
  * Implements hook_gigya_gigya_create_user_alter().
  *
  * This hook is called before a new user is created via gigya login. The parameter
- * that is passed to the alter function is the form_state that gets sent to drupal regestration form
- * and the bio, the gigya user info as it is returend from gigya
+ * that is passed to the alter function is the form_state that gets sent to drupal registration form
+ * and the bio, the gigya user info as it is returned from gigya
  */
 function hook_gigya_create_user_alter(&$form_state, $bio) {
   $form_state['custom_field'] = 'some value';
@@ -93,7 +93,7 @@ function hook_gigya_connectui_alter($gigya_connect_params) {
  * http://developers.gigya.com/020_Client_API/020_Methods/socialize.showAddConnectionsUI
  * @endlink
  */
-function hook_gigya_sharebar_alter($share_settings) {
+function hook_gigya_sharebar_alter($share_settings, $context) {
   $share_settings['grayedOutScreenOpacity'] = 30;
   $share_settings['gigyaSharebar']['shareButtons'] = array(
     array(
@@ -143,7 +143,7 @@ function hook_gigya_sharebar_alter($share_settings) {
  * http://developers.gigya.com/020_Client_API/020_Methods/socialize.showReactionsBarUI
  * @endlink
  */
-function hook_gigya_reactions_alter($reactions_settings) {
+function hook_gigya_reactions_alter($reactions_settings, $context) {
   $reactions_settings['promptShare'] = FALSE;
 }
 
@@ -189,7 +189,7 @@ function hook_gigya_tokens_alter(&$replacements, $tokens, $gigya_user_info) {
   //take the first name from a different provider
   $replacements['gigya:gigya-firstName'] = $gigya_user_info['identities'][2]['firstName'];
   //When using RaaS you would have the custom data fields under data
-  $replacements['[gigya:subscribe]'] = $gigya_info['data']['subscribe'];
+  $replacements['[gigya:subscribe]'] = $gigya_user_info['data']['subscribe'];
 }
 
 /**
@@ -202,6 +202,16 @@ function hook_gigya_tokens_alter(&$replacements, $tokens, $gigya_user_info) {
  * @param $gigya_info
  */
 function hook_gigya_raas_create_user_alter(&$new_user_array, $gigya_info) {
+  // Use the user first name as a drupal user name
+  $new_user_array['name'] = $gigya_info['firstName'];
+}
+
+/**
+ * @param array $edit the user edit array
+ * @param object $user the Drupal user object
+ * @param array $gigya_info the gigya account as returned from getAccountInfo
+ */
+function hook_gigya_raas_update_user_alter(&$edit, $user, $gigya_info) {
   // Use the user first name as a drupal user name
   $new_user_array['name'] = $gigya_info['firstName'];
 }
@@ -233,4 +243,36 @@ function hook_gigya_gm_block_alter(&$js_array, $js_block_name) {
  */
 function hook_gigya_gm_notifications_alter(&$notification_settings) {
   $notification_settings['closeTimeout'] = 0;
+}
+
+/**
+ * The following example adds the hometown to the user info request so it could be used later in the field mappings.
+ * @param $req_params
+ */
+function hook_gigya_get_account_info_alter(&$req_params) {
+  $req_params['extraProfileFields'] = "username,hometown";
+}
+
+/**
+ * Lets other alter the upon user creation.
+ * The following example adds a field named some_field to the profile of the type main.
+ * @param object $profile the profile2 object
+ * @param array $gigya_account the gigya account array as retread from gigya getAccountInfo.
+ */
+function hook_gigya_raas_create_profile2_alter(&$profile, $gigya_account) {
+  if ($profile->type == "main") {
+    $profile->some_field[LANGUAGE_NONE][0]['value'] = $gigya_account['profile']['zip'];
+  }
+}
+
+/**
+ * Lets other alter the upon user update/login.
+ * The following example changes the value of the field named some_field of the profile of the type main.
+ * @param object $profile the profile2 object
+ * @param array $gigya_account the gigya account array as retread from gigya getAccountInfo.
+ */
+function hook_gigya_raas_update_profile2_alter(&$profile, $gigya_account) {
+  if ($profile->type == "main") {
+    $profile->some_field[LANGUAGE_NONE][0]['value'] = $gigya_account['profile']['zip'];
+  }
 }

@@ -192,10 +192,11 @@ function usanetwork_microsite_gracelandcatchup_get_theme_registry_variables() {
         'section_title' => NULL,
       ),
     ),
-    'usanetwork_microsite_gracelandcatchup_page_timeline_gallery' => array(
-      'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline_gallery',
+    'usanetwork_microsite_gracelandcatchup_page_timeline' => array(
+      'template' => 'usanetwork-microsite-gracelandcatchup-page-timeline',
       'path' => $subtheme_path,
       'variables' => array(
+        'gallery_title' => NULL,
         'description' => NULL,
         'content' => NULL,
       ),
@@ -219,6 +220,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
 //      $theme_path . '/usanetwork_microsite_themes/gracelandcatchup/css/ms_characters_styles.css',
       $site_theme_path . '/css/fonts.css',
       $site_theme_path . '/css/ms_styles.css',
+      $site_theme_path . '/css/ms_gigya_share.css',
       $site_theme_path . '/css/ms_home.css',
       $site_theme_path . '/css/ms_videos.css',
       $site_theme_path . '/css/ms_timeline.css',
@@ -237,6 +239,8 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
       $site_theme_path . '/js/microsite_characters_bxslider.js',
 */
       $module_path . '/js/jquery.bxslider.min.js',
+      $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
+      $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view
       $site_theme_path . '/js/ms_graceland_cu.js',
       $site_theme_path . '/js/ms_global.js',
       $site_theme_path . '/js/ms_videos.js',
@@ -244,7 +248,8 @@ function usanetwork_microsite_gracelandcatchup_get_theme_includes() {
       $site_theme_path . '/js/ms_quizzes.js',
       $site_theme_path . '/js/date.js',
       $site_theme_path . '/js/counter.rf.js',
-      $module_path . '/js/usanetwork_video_endcard.js',
+      $site_theme_path . '/js/ms_video_endcard.js',
+      //$module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );
@@ -261,5 +266,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_settings() {
     'short_name_for_full_episodes' => TRUE,
     'videos_all_videos_filter' => FALSE,
     'videos_season_filters' => TRUE,
+    'character_bios_remove_video_tags' => TRUE,
+    'sections_use_ajax' => FALSE,
   );
 }

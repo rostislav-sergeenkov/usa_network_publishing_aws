@@ -594,7 +594,7 @@ class CascadingStylesheetsTestCase extends DrupalWebTestCase {
   }
 
   function setUp() {
-    parent::setUp('php', 'locale', 'common_test');
+    parent::setUp('locale', 'common_test');
     // Reset drupal_add_css() before each test.
     drupal_static_reset('drupal_add_css');
   }
@@ -661,6 +661,10 @@ class CascadingStylesheetsTestCase extends DrupalWebTestCase {
     drupal_add_css($css);
     $styles = drupal_get_css();
     $this->assertTrue(strpos($styles, $css) > 0, 'Rendered CSS includes the added stylesheet.');
+    // Verify that newlines are properly added inside style tags.
+    $query_string = variable_get('css_js_query_string', '0');
+    $css_processed = "<style type=\"text/css\" media=\"all\">\n@import url(\"" . check_plain(file_create_url($css)) . "?" . $query_string ."\");\n</style>";
+    $this->assertEqual(trim($styles), $css_processed, 'Rendered CSS includes newlines inside style tags for JavaScript use.');
   }
 
   /**
@@ -725,29 +729,12 @@ class CascadingStylesheetsTestCase extends DrupalWebTestCase {
    * Tests rendering inline stylesheets through a full page request.
    */
   function testRenderInlineFullPage() {
-    $css = 'body { font-size: 254px; }';
     // Inline CSS is minified unless 'preprocess' => FALSE is passed as a
     // drupal_add_css() option.
     $expected = 'body{font-size:254px;}';
 
-    // Create a node, using the PHP filter that tests drupal_add_css().
-    $php_format_id = 'php_code';
-    $settings = array(
-      'type' => 'page',
-      'body' => array(
-        LANGUAGE_NONE => array(
-          array(
-            'value' => t('This tests the inline CSS!') . "<?php drupal_add_css('$css', 'inline'); ?>",
-            'format' => $php_format_id,
-          ),
-        ),
-      ),
-      'promote' => 1,
-    );
-    $node = $this->drupalCreateNode($settings);
-
     // Fetch the page.
-    $this->drupalGet('node/' . $node->nid);
+    $this->drupalGet('common-test/css-render-inline-full-page');
     $this->assertRaw($expected, 'Inline stylesheets appear in the full page rendering.');
   }
 
@@ -914,9 +901,10 @@ class CascadingStylesheetsUnitTest extends DrupalUnitTestCase {
    * Tests basic CSS loading with and without optimization via drupal_load_stylesheet().
    *
    * Known tests:
-   * - Retain white-space in selectors. (http://drupal.org/node/472820)
-   * - Proper URLs in imported files. (http://drupal.org/node/265719)
-   * - Retain pseudo-selectors. (http://drupal.org/node/460448)
+   * - Retain white-space in selectors. (https://drupal.org/node/472820)
+   * - Proper URLs in imported files. (https://drupal.org/node/265719)
+   * - Retain pseudo-selectors. (https://drupal.org/node/460448)
+   * - Don't adjust data URIs. (https://drupal.org/node/2142441)
    */
   function testLoadCssBasic() {
     // Array of files to test living in 'simpletest/files/css_test_files/'.
@@ -1079,6 +1067,74 @@ class DrupalHTTPRequestTestCase extends DrupalWebTestCase {
     // Request front page and check for matching Content-Language.
     $request = drupal_http_request(url('<front>', array('absolute' => TRUE)));
     $this->assertEqual($request->headers['content-language'], 'de', 'Content-Language HTTP header is German.');
+  }
+}
+
+/**
+ * Tests parsing of the HTTP response status line.
+ */
+class DrupalHTTPResponseStatusLineTest extends DrupalUnitTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Drupal HTTP request response status parsing',
+      'description' => 'Perform unit tests on _drupal_parse_response_status().',
+      'group' => 'System',
+    );
+  }
+
+  /**
+   * Tests parsing HTTP response status line.
+   */
+  public function testStatusLine() {
+    // Grab the big array of test data from statusLineData().
+    $data = $this->statusLineData();
+    foreach($data as $test_case) {
+      $test_data = array_shift($test_case);
+      $expected = array_shift($test_case);
+
+      $outcome = _drupal_parse_response_status($test_data);
+
+      foreach(array_keys($expected) as $key) {
+        $this->assertIdentical($outcome[$key], $expected[$key]);
+      }
+    }
+  }
+
+  /**
+   * Data provider for testStatusLine().
+   *
+   * @return array
+   *   Test data.
+   */
+  protected function statusLineData() {
+    return array(
+      array(
+        'HTTP/1.1 200 OK',
+        array(
+          'http_version' => 'HTTP/1.1',
+          'response_code' => '200',
+          'reason_phrase' => 'OK',
+        ),
+      ),
+      // Data set with no reason phrase.
+      array(
+        'HTTP/1.1 200',
+        array(
+          'http_version' => 'HTTP/1.1',
+          'response_code' => '200',
+          'reason_phrase' => '',
+        ),
+      ),
+      // Arbitrary strings.
+      array(
+        'version code multi word explanation',
+        array(
+          'http_version' => 'version',
+          'response_code' => 'code',
+          'reason_phrase' => 'multi word explanation',
+        ),
+      ),
+    );
   }
 }
 
@@ -1465,6 +1521,59 @@ class JavaScriptTestCase extends DrupalWebTestCase {
     drupal_add_js('misc/collapse.js', array('group' => JS_LIBRARY, 'every_page' => TRUE, 'weight' => -21));
     $javascript = drupal_get_js();
     $this->assertTrue(strpos($javascript, 'misc/collapse.js') < strpos($javascript, 'misc/jquery.js'), 'Rendering a JavaScript file above jQuery.');
+  }
+
+  /**
+   * Tests adding JavaScript files with additional attributes.
+   */
+  function testAttributes() {
+    $js = 'misc/collapse.js';
+    drupal_add_js($js, array('async' => 'async', 'defer' => 'defer'));
+    $javascript = drupal_get_js();
+    preg_match('#<script.+src="' . preg_quote(file_create_url($js)) . '[^>]*>#', $javascript, $match);
+    $match = !empty($match[0]) ? $match[0] : '';
+    $this->assertTrue(strpos($match, 'defer="defer"') && strpos($match, 'async="async"'), 'Rendered internal JavaScript with correct defer attribute.');
+
+    $js = 'http://example.com/script.js';
+    drupal_add_js($js, array('async' => 'async', 'defer' => 'defer', 'type' => 'external'));
+    $javascript = drupal_get_js();
+    preg_match('#<script.+src="' . preg_quote($js) . '[^>]*>#', $javascript, $match);
+    $match = !empty($match[0]) ? $match[0] : '';
+    $this->assertTrue(strpos($match, 'defer="defer"') && strpos($match, 'async="async"'), 'Rendered external JavaScript with correct defer attribute.');
+  }
+
+  /**
+   * Tests that attributes are maintained when JS aggregation is enabled.
+   */
+  function testAggregatedAttributes() {
+    // Enable aggregation.
+    variable_set('preprocess_js', TRUE);
+
+    // Async & Defer allowed to aggregate
+    $js = 'misc/collapse.js';
+    drupal_add_js($js, array('async' => 'async', 'defer' => 'defer'));
+    $javascript = drupal_get_js();
+    // This is a little tricky, we grab the second aggregated script tag.
+    // The first aggregation will be just jquery + drupal
+    preg_match_all('#<script[^>]+src="[^"]*js_[^"]+"[^>]*>#', $javascript, $match);
+    $match = !empty($match[0][1]) ? $match[0][1] : '';
+    $this->assertTrue(strpos($match, 'defer="defer"') && strpos($match, 'async="async"'), 'Rendered aggregated internal JavaScript with correct defer attribute.');
+
+    // Attributes break out of aggregation for safety / extensibility
+    $js = 'misc/collapse.js';
+    drupal_add_js($js, array('attributes' => array('async' => 'async', 'defer' => 'defer')));
+    $javascript = drupal_get_js();
+    preg_match('#<script.+src="' . preg_quote(file_create_url($js)) . '[^>]*>#', $javascript, $match);
+    $match = !empty($match[0]) ? $match[0] : '';
+    $this->assertTrue(strpos($match, 'defer="defer"') && strpos($match, 'async="async"'), 'Rendered non-aggregated internal JavaScript with correct defer attribute.');
+
+    // External does not aggregate
+    $js = 'http://example.com/script.js';
+    drupal_add_js($js, array('async' => 'async', 'defer' => 'defer', 'type' => 'external'));
+    $javascript = drupal_get_js();
+    preg_match('#<script.+src="' . preg_quote($js) . '[^>]*>#', $javascript, $match);
+    $match = !empty($match[0]) ? $match[0] : '';
+    $this->assertTrue(strpos($match, 'defer="defer"') && strpos($match, 'async="async"'), 'Rendered external JavaScript with correct defer attribute.');
   }
 
   /**

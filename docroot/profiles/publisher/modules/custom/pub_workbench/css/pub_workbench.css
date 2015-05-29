@@ -64,10 +64,7 @@
   overflow: hidden;
   display: inline-block;
 }
-#revision-form-table .form-textarea-wrapper textarea {
-  width: 500px;
-  height: 26px;
-}
+
 /* HISTORY COLUMN */
 .views-field-history-list p span {
   font-weight: bold;

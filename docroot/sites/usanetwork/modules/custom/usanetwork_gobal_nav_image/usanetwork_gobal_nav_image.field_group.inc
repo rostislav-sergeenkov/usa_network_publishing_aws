@@ -25,7 +25,8 @@ function usanetwork_gobal_nav_image_field_group_info() {
     'children' => array(
       0 => 'field_gobal_nav_image',
       1 => 'field_nav_img_link',
-      2 => 'title',
+      2 => 'field_global_nav_cta_text',
+      3 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

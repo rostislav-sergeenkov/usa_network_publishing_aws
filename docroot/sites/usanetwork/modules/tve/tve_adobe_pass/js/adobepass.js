@@ -64,21 +64,21 @@
     swfobject.embedSWF(
         // AccessEnabler.swf location.
         config.adobePassAccessEnablerLoc,
-        // Container ID to embed AccessEnabled.swf.
+      // Container ID to embed AccessEnabled.swf.
         ACCESS_ENABLER_CONTAINER_ID,
-        // Object size 1pxx1px.
+      // Object size 1pxx1px.
         1, 1,
-        // Minimum flash version.
+      // Minimum flash version.
         config.adobePassFlashVer,
-        // XiSwfUrlStr.
+      // XiSwfUrlStr.
         null,
-        // Flash variables.
+      // Flash variables.
         null,
-        // Parameters.
+      // Parameters.
         params,
-        // Object attributes.
+      // Object attributes.
         attributes,
-        // Onload callback.
+      // Onload callback.
         accessLoadedCheck
     );
   }
@@ -217,13 +217,17 @@
 
     if (isAuthenticated) {
       _setCookie({'authn': isAuthenticated, 'selectedProvider': selected.MVPD });
-      if(!$('body').hasClass('page-videos-live')){
-        changeSrc(selected.MVPD);
+      if (!$('body').hasClass('page-videos-live')) {
+        Drupal.behaviors.consumptionator_video.changeSrcFullVideos(selected.MVPD);
+        Drupal.behaviors.consumptionator_video.initPlayerBind();
       }
-
     }
     else {
       _deleteCookie();
+      if (!$('body').hasClass('page-videos-live') && !$('body').hasClass('page-full-video')) {
+        Drupal.behaviors.consumptionator_video.changeSrc();
+        Drupal.behaviors.consumptionator_video.initPlayerBind();
+      }
       if (selected.MVPD != null) {
         accessEnabler.setSelectedProvider(null);
       }
@@ -389,59 +393,6 @@
    */
   function _deleteCookie(input) {
     $.cookie(USER_COOKIE, '', { expires: -1, path: basePath });
-  }
-
-  /**
-   * Change iframe src after Authentication.
-   */
-  function changeSrc(mvpd) {
-    var iframe = $('.video-player-wrapper iframe');
-    var str = iframe.attr('src');
-    var current_src = parseURL(str);
-    if (current_src.params.MVPDid){
-      str = str.replace('MVPDid='+current_src.params.MVPDid, 'MVPDid='+mvpd);
-      iframe.attr('src', str);
-    }
-    else {
-      var i=str.indexOf('#');
-      if (i != -1){
-        str = myStr(str,'&MVPDid='+mvpd,i);
-        iframe.attr('src', str);
-      }
-      else {
-        str += '&MVPDid='+mvpd;
-      }
-    }
-    function parseURL(url) {
-      var a =  document.createElement('a');
-      a.href = url;
-      return {
-        source: url,
-        protocol: a.protocol.replace(':',''),
-        host: a.hostname,
-        port: a.port,
-        query: a.search,
-        params: (function(){
-          var ret = {},
-            seg = a.search.replace(/^\?/,'').split('&'),
-            len = seg.length, i = 0, s;
-          for (;i<len;i++) {
-            if (!seg[i]) { continue; }
-            s = seg[i].split('=');
-            ret[s[0]] = s[1];
-          }
-          return ret;
-        })(),
-        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [,''])[1],
-        hash: a.hash.replace('#',''),
-        path: a.pathname.replace(/^([^\/])/,'/$1'),
-        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [,''])[1],
-        segments: a.pathname.replace(/^\//,'').split('/')
-      };
-    }
-    function myStr(str1,str2,i) {
-      return str1.slice(0,i)+str2+str1.slice(i)
-    }
   }
 
   function _publishApi(instance) {

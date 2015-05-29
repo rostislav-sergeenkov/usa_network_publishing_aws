@@ -1,0 +1,6 @@
+name = (Do not use) Embed External
+description = Provides functionality for embedding external resources inside local content.
+core = 7.x
+version = 7.x-0.x
+dependencies[] = ctools
+dependencies[] = html5_tools

@@ -1,0 +1,37 @@
+.ie9 {
+  header {
+    .originals-shows-menu {
+      ul {
+        li {
+          float: left;
+          margin-left: 0;
+          padding-left: 1.5em;
+          width: 50%;
+        }
+      }
+    }
+  }
+  footer {
+    .shows-menu, .app-and-services-menu {
+      ul.menu {
+        @include clear;
+        li {
+          float: left;
+          width: 33.33333%;
+          @include breakpoint($bp-768-width) {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+  .show-menu-tab {
+    .show-menu li.active ul.menu {
+      @include clear;
+      li {
+        float: left;
+        width: 33.33333%;
+      }
+    }
+  }
+}

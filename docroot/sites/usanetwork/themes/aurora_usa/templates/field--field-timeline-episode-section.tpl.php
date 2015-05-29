@@ -25,6 +25,13 @@
  *     field type is "text" it would result in "field-type-text".
  *   - field-label-[label_display]: The current label position. For example, if
  *     the label position is "above" it would result in "field-label-above".
+ * - $baseUrl - the request protocol (e.g. http://) and domain name
+ * - $requestUrl - the url path of the page
+ * - $imageBaseUrl - the url path to the timeline icons and structural images
+ *
+ * Sharing information
+ * - $shareTitle - the title or "name" for social sharing
+ * - $shareDescription - the social sharing description
  *
  * Other variables:
  * - $element['#object']: The entity to which the field is attached.
@@ -59,16 +66,10 @@
  */
 ?>
 
-<?php //print '<pre>tg_items: ' . print_r($tg_items, true) . '</pre><br><br>'; ?>
-
 <?php
-$baseUrl = 'http://' . $_SERVER['HTTP_HOST'];
-$requestUrl = $_SERVER['REQUEST_URI'];
-$imageBaseUrl = '/sites/usanetwork/themes/aurora_usa/images';
-$shareTitle = 'Experience+the+Graceland+Catchup+HQ';
-$shareDescription = 'Get+caught+up+on+Season+1+before+the+Graceland+premiere+on+June+11+10%2F9c';
 $timelineCategories = array();
 $numberOfScenesPerEpisode = array();
+$firstScene = true;
 ?>
 
 <section id="timeline-player-slideshow-area">
@@ -86,7 +87,7 @@ $numberOfScenesPerEpisode = array();
     <?php print '<!-- Season ' . $seasonNum . ' | Episode ' . $episodeNum . ': ' . $episode['episode_name'] . ' -->' . "\n"; ?>
     <?php $timelineCategories[$seasonNum][$episodeNum] = 's' . $seasonNum . ' ep' . $episodeNum; ?>
     <?php foreach($episode['scenes'] as $scene): ?>
-      <div class="timeline-item<?php if ($seasonNum == 1 && $episodeNum == 1) print ' active'; ?>" data-id="<?php print ($scene['scene_number'] < 10) ? '0' . $scene['scene_number'] : $scene['scene_number']; ?>/<?php print ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>/<?php print ($seasonNum < 10) ? '0' . $seasonNum : $seasonNum; ?>" data-description="Scene <?php print $scene['scene_number']; ?>" data-fid="<?php print $scene['fid']; ?>" data-imagesrc="<?php print $scene['image_src']; ?>">
+      <div class="timeline-item<?php if ($firstScene) print ' active'; ?>" data-id="<?php print ($scene['scene_number'] < 10) ? '0' . $scene['scene_number'] : $scene['scene_number']; ?>/<?php print ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>/<?php print ($seasonNum < 10) ? '0' . $seasonNum : $seasonNum; ?>" data-season-num="<?php print $seasonNum; ?>" data-episode-num="<?php print $episodeNum; ?>" data-episode-name="<?php print $episode['episode_name']; ?>" data-description="Scene <?php print $scene['scene_number']; ?>" data-fid="<?php print $scene['fid']; ?>" data-imagesrc="<?php print $scene['image_src']; ?>">
         <div class="timeline-item-image">
           <img src="<?php print $scene['image_src']; ?>" alt="" class="slideshowimage"/>
         </div>
@@ -95,24 +96,15 @@ $numberOfScenesPerEpisode = array();
           <div class="timeline-item-text">
             <?php print $scene['description']; ?>
           </div>
-<!--
-          <div class="like-share-view">
-            <div class="scene-share-holder">
-              <div class="scene-shares share"> -->
-                <div class="share">
-<!--                  <span> </span> -->
-                  <ul class="share-items">
-                    <li class="share-item twitter"><a onclick="var twShareWindow = window.open('https://twitter.com/share?url=<?php print $baseUrl . $requestUrl; ?>&amp;text=<?php print $shareDescription; ?>', 'twShareWindow', 'width=600,height=450,menubar=0,resizable=0,scrollbars=0', '_self')"><span class="socialshare twitter"></span><!-- <img src="/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/twitter.png" class="socialshare"> --></a></li>
-                    <li class="share-item facebook"><a class="facebook" onclick="var fbShareWindow = window.open('http://www.facebook.com/dialog/feed?app_id=241079750077&amp;link=<?php print $baseUrl . $requestUrl; ?>&amp;picture=<?php print $scene['image_src']; ?>&amp;name=<?php print $shareTitle; ?>&amp;description=<?php print $shareDescription; ?>&amp;redirect_uri=<?php print $baseUrl . $requestUrl; ?>', 'fbShareWindow', 'width=800,height=500,menubar=0,resizable=0,scrollbars=0', '_self')"><span class="socialshare facebook"></span><!-- <img src="/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/facebook.png" class="socialshare"> --><span class="share-text">Share on Facebook</span></a></li>
-                  </ul>
-                </div>
-<!--
-              </div>
-            </div>
+          <div class="share">
+            <ul class="share-items">
+              <li class="share-item twitter"><a onclick="var twShareWindow = window.open('https://twitter.com/share?url=<?php print $baseUrl . $requestUrl; ?>&amp;text=<?php print $shareDescription; ?>', 'twShareWindow', 'width=600,height=450,menubar=0,resizable=0,scrollbars=0', '_self')"><span class="socialshare twitter"></span></a></li>
+              <li class="share-item facebook"><a class="facebook" onclick="var fbShareWindow = window.open('http://www.facebook.com/dialog/feed?app_id=241079750077&amp;link=<?php print $baseUrl . $requestUrl; ?>&amp;picture=<?php print $scene['image_src']; ?>&amp;name=<?php print $shareTitle; ?>&amp;description=<?php print $shareDescription; ?>&amp;redirect_uri=<?php print $baseUrl . $requestUrl; ?>', 'fbShareWindow', 'width=800,height=500,menubar=0,resizable=0,scrollbars=0', '_self')"><span class="socialshare facebook"></span><span class="share-text">Share on Facebook</span></a></li>
+            </ul>
           </div>
--->
         </div>
       </div>
+      <?php $firstScene = false; ?>
     <?php endforeach; // scene ?>
     <?php $numberOfScenesPerEpisode[$seasonNum][$episodeNum] = count($episode['scenes']); ?>
   <?php endforeach; // episode ?>

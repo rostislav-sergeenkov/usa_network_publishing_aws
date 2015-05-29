@@ -218,20 +218,20 @@
   .expandable-toggle {
     li {
       &.more:after {
-        @extend %more-triangle; 
+        @extend %more-triangle;
       }
       &.less:after {
         @extend %less-triangle;
       }
     }
-  }  
+  }
   .expandable-toggle  {
     li {
       font-size: 16px;
       margin: 0;
       padding: 0;
       a {
-        color: $tan; 
+        color: $tan;
         &:after {
           @extend %more-triangle;
         }

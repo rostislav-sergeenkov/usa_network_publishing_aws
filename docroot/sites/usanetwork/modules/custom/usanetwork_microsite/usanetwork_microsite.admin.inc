@@ -129,7 +129,7 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
       //Timeline gallery
       $form[$k]['field_ms_timeline_gallery']['#states'] = array(
         'visible' => array(
-          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'timeline_gallery'),
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'timeline'),
         ),
       );
     }

@@ -39,3 +39,91 @@ longer. This hugely decreases the stress on your web servers and leaves more
 "PHP processes" available for actual back-end traffic. Basically every site will
 benefit from implementing this, especially content-focused sites like news
 sites, blogs and brand sites.
+
+Configurability
+================================================================================
+By strict design and principle, this module doesn't have any UI exposed settings
+or configuration forms. The reason behind this philosophy is that - as a pure -
+utility module only site administrators should be able to change anything and if
+they do, things should be traceable in settings.php. Although Acquia Purge
+attempts to stay as turnkey and zeroconf as possible, the following options
+exist as of this version and documented below:
+
+╔══════════════════════════╦═══════╦═══════════════════════════════════════════╗
+║      $conf setting       ║ Deflt ║               Description                 ║
+╠══════════════════════════╬═══════╬═══════════════════════════════════════════╣
+║ acquia_purge_domains     ║ FALSE ║ Allows you to control which domains will  ║
+║                          ║       ║ get purged, see DOMAINS.txt               ║
+║                          ║       ║                                           ║
+║ acquia_purge_cron        ║ FALSE ║ Once set to TRUE, this will switch the    ║
+║                          ║       ║ queue processing entirely to cron and     ║
+║                          ║       ║ disable the client-side progressbar. Do   ║
+║                          ║       ║ keep an eye on 'drush ap-list' once       ║
+║                          ║       ║ enabled as the queue can grow too fast    ║
+║                          ║       ║ requiring a cron interval increase.       ║
+║                          ║       ║ $conf['acquia_purge_cron'] = TRUE;        ║
+║                          ║       ║                                           ║
+║ acquia_purge_http        ║ TRUE  ║ Purging of http:// schemes, which is      ║
+║                          ║       ║ the default behavior. You can disable     ║
+║                          ║       ║ it with FALSE, as long as you then do     ║
+║                          ║       ║ purge https://. Else the system will      ║
+║                          ║       ║ shut itself down and report an error.     ║
+║                          ║       ║ $conf['acquia_purge_http'] = FALSE;       ║
+║                          ║       ║                                           ║
+║                          ║       ║                                           ║
+║ acquia_purge_https       ║ FALSE ║ EXPERIMENTAL https:// scheme support,     ║
+║                          ║       ║ disabled by default. Once enabled the     ║
+║                          ║       ║ total amount of work done will double,    ║
+║                          ║       ║ so monitor your system closely and        ║
+║                          ║       ║ consider disabling http:// if your site   ║
+║                          ║       ║ is fully https:// based (redirecting).    ║
+║                          ║       ║ $conf['acquia_purge_https'] = TRUE;       ║
+║                          ║       ║                                           ║
+║ acquia_purge_base_path   ║(auto) ║ In some cases Drupal isn't served on the  ║
+║                          ║       ║ same URL as where its edited, which will  ║
+║                          ║       ║ cause different paths to be purged than   ║
+║                          ║       ║ necessary. By overriding this setting,    ║
+║                          ║       ║ Drupal's base_path() will no longer be    ║
+║                          ║       ║ used to construct purges. Use only when   ║
+║                          ║       ║ you know what you are doing.              ║
+║                          ║       ║ $conf['acquia_purge_base_path'] = '/sub/';║
+║                          ║       ║                                           ║
+║ acquia_purge_log_success ║ TRUE  ║ By default this module will log both      ║
+║                          ║       ║ successes and failure, which is helpful   ║
+║                          ║       ║ for those setting the module up. But once ║
+║                          ║       ║ implemented and working fine, it can      ║
+║                          ║       ║ be heavy on your log files. By setting    ║
+║                          ║       ║ this to FALSE, only failure will be put   ║
+║                          ║       ║ into your logs and thus reduce queries    ║
+║                          ║       ║ or disk writes (for log files).           ║
+║                          ║       ║ $conf['acquia_purge_log_success'] = FALSE;║
+║                          ║       ║                                           ║
+║ acquia_purge_variations  ║ TRUE  ║ If enabled, this aids administrators using║
+║                          ║       ║ 'drush ap-purge' or the manual purge form ║
+║                          ║       ║ as it will automatically purge common     ║
+║                          ║       ║ variations of the paths to be purged. For ║
+║                          ║       ║ instance, versions with ?page parameters  ║
+║                          ║       ║ and paths with trailing slashes are       ║
+║                          ║       ║ made up for every manually purged path but║
+║                          ║       ║ this behavior can be disabled with:       ║
+║                          ║       ║ $conf['acquia_purge_variations'] = FALSE; ║
+║                          ║       ║                                           ║
+║ acquia_purge_memcache    ║ TRUE  ║ Determines whether Acquia Purge needs to  ║
+║                          ║       ║ store its state data in memory when       ║
+║                          ║       ║ $conf['cache_default_class'] is set to use║
+║                          ║       ║ it. This reduces I/O activity drastically ║
+║                          ║       ║ compared to the fallback file based state ║
+║                          ║       ║ storage and also improves deduplication of║
+║                          ║       ║ queue items drastically. If you are seeing║
+║                          ║       ║ issues with queuing and purging items, you║
+║                          ║       ║ can consider disabling it followed by     ║
+║                          ║       ║ 'drush ap-forget' to see if that works.   ║
+║                          ║       ║ $conf['acquia_purge_memcache'] = FALSE;   ║
+║                          ║       ║                                           ║
+║ acquia_purge_token       ║ NULL  ║ If set will send a token in the header.   ║
+║                          ║       ║ This allows Acquia to authenticate the    ║
+║                          ║       ║ purger and help offset DDOS style purging.║
+║                          ║       ║ You need to contact Acquia directly and   ║
+║                          ║       ║ have them give you a token.               ║
+║                          ║       ║                                           ║
+╚══════════════════════════╩═══════╩═══════════════════════════════════════════╝

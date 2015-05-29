@@ -70,8 +70,12 @@ function usanetwork_tv_shows_display_field_formatter_settings_summary($field, $i
 
   if ($display['type'] == 'usanetwork_tv_shows_display_entity_view') {
     $entity_info = entity_get_info($field['settings']['target_type']);
-    $summary[] = t('Rendered as @mode', array('@mode' => isset($entity_info['view modes'][$settings['view_mode']]['label']) ? $entity_info['view modes'][$settings['view_mode']]['label'] : $settings['view_mode']));
-    $summary[] = !empty($settings['links']) ? t('Display links') : t('Do not display links');
+    $summary[] = t('Rendered as @mode', array('@mode' => isset($entity_info['view modes'][$settings['view_mode']]['label'])
+          ? $entity_info['view modes'][$settings['view_mode']]['label']
+          : $settings['view_mode']));
+    $summary[] = !empty($settings['links'])
+        ? t('Display links')
+        : t('Do not display links');
   }
 
   return implode('<br />', $summary);
@@ -101,7 +105,9 @@ function usanetwork_tv_shows_display_field_formatter_view($entity_type, $entity,
 
   // Check if first promo should be large
   $promo_large = reset(field_get_items($entity_type, $entity, 'field_usa_tv_promo_large'));
-  $promo_large = (isset($promo_large['value']) && $promo_large['value']) ? true : false;
+  $promo_large = (isset($promo_large['value']) && $promo_large['value'])
+      ? true
+      : false;
 
   switch ($display['type']) {
     case 'usanetwork_tv_shows_display_entity_view':
@@ -116,7 +122,9 @@ function usanetwork_tv_shows_display_field_formatter_view($entity_type, $entity,
         $entity = clone $item['entity'];
         unset($entity->content);
         // Select view mode according promo large option and item delta
-        $view_mode = ($promo_large && $delta == 0) ? $settings['view_mode_large'] : $settings['view_mode'];
+        $view_mode = ($promo_large && $delta == 0)
+            ? $settings['view_mode_large']
+            : $settings['view_mode'];
         $result[$delta] = entity_view($field['settings']['target_type'], array($item['target_id'] => $entity), $view_mode, $langcode, FALSE);
 
         if (empty($settings['links']) && isset($result[$delta][$field['settings']['target_type']][$item['target_id']]['links'])) {
@@ -145,7 +153,9 @@ function usanetwork_tv_shows_display_preprocess_field(&$variables, $hook) {
 
     // Check if first promo should be large
     $promo_large = reset(field_get_items($field['#entity_type'], $entity, 'field_usa_tv_promo_large'));
-    $promo_large = (isset($promo_large['value']) && $promo_large['value']) ? true : false;
+    $promo_large = (isset($promo_large['value']) && $promo_large['value'])
+        ? true
+        : false;
     if ($promo_large) {
       // Add class to the field
       $variables['classes_array'][] = 'first-promo-large';
@@ -166,7 +176,7 @@ function usanetwork_tv_shows_display_node_view($node, $view_mode, $langcode) {
         'usanetwork_tv_shows' => array(
           'promo_rows' => $promo_rows['value'],
         ),
-      ), array('type' => 'setting'));
+          ), array('type' => 'setting'));
     }
   }
 }

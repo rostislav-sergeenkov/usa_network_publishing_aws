@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Drush integration for state_flow_schedule
+ * Drush integration for state_flow_schedule.
  */
 
 /**
@@ -11,7 +11,7 @@
 function state_flow_schedule_drush_help($command) {
   switch ($command) {
     case 'drush:state_flow_schedule':
-      return dt('Process nodes that have been scheduled to publish in state_machine.');
+      return dt('Process entities that have been scheduled to publish in state_machine.');
   }
 }
 
@@ -21,11 +21,12 @@ function state_flow_schedule_drush_help($command) {
 function state_flow_schedule_drush_command() {
   $items = array();
   $items['process-items'] = array(
-    'description' => dt('Process nodes that have been scheduled to publish in state_machine.'),
+    'description' => dt('Process entities that have been scheduled to publish in state_machine.'),
     /* @TODO
     'arguments'   => array(
-      'nid'    => dt('An optional node id'),
-      'vid'    => dt('An optional node revision id'),
+      'entity_type'    => dt('An optional entity type'),
+      'entity_id'    => dt('An optional entity id'),
+      'revision_id'    => dt('An optional entity revision id'),
       'time'    => dt('An optional strtotime() string in a valid format'),
     ),
     */
@@ -39,19 +40,19 @@ function state_flow_schedule_drush_command() {
 }
 
 /**
- * Publish scheduled nodes via drush
- *
+ * Publish scheduled entities via drush.
  */
 function drush_state_flow_schedule_process_items() {
   global $user;
   $user = user_load(1);
-  $results = state_flow_schedule_get_scheduled_nodes(NULL, NULL, time());
+  $results = state_flow_schedule_get_scheduled_entities(NULL, NULL, NULL, time());
 
-  foreach ($results as $data) {
-    $node = node_load($data->nid, $data->vid);
-    $msg = dt('Attempting to publish nid:!nid, vid:!vid', array('!nid' => $node->nid, '!vid' => $node->vid));
-    drush_print("\n" . $msg . "\n");
-    $state_flow = state_flow_load_state_machine($node, TRUE);
-    $state_flow->fire_event('publish', $user->uid, 'Published via drush.');
+  if (empty($results)) {
+    drush_log(dt('No scheduled items to process.'), 'completed');
+    return;
   }
+  foreach ($results as $data) {
+    state_flow_schedule_process_scheduled_item($data->sid, 'Executed ' . $data->target_event . ' via cron.');
+  }
+  drupal_set_message(dt('All scheduled items processed.'), 'status');
 }

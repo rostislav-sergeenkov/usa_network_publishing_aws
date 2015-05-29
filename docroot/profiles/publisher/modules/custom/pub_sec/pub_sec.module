@@ -13,6 +13,11 @@ function pub_sec_menu_alter(&$items) {
     // Do not allow importing from local system.
     unset($items['admin/content/file/import']);
   }
+
+  if (isset($items['admin/views/ajax/autocomplete/user'])) {
+    // Do not allow non-admin users access to user autocomplete.
+    $items['admin/views/ajax/autocomplete/user']['access arguments'] = array('administer site configuration');
+  }
 }
 
 /**

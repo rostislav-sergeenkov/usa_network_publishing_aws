@@ -91,3 +91,12 @@ function hook_iib_entity_item_alter(&$items, $entity, $extra) {
 function example_module_node_view($vars) {
   iib_set_item($vars['node']->body);
 }
+
+/**
+ * Allow modules to alter if the iib should be rendered but hidden
+ *
+ * @param bool
+ */
+function hook_iib_hidden_alter(&$hidden) {
+  $hidden = TRUE;
+}

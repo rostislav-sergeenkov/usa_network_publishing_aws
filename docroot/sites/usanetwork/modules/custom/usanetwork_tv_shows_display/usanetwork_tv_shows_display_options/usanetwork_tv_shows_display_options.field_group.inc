@@ -52,9 +52,10 @@ function usanetwork_tv_shows_display_options_field_group_info() {
     'label' => 'Featured',
     'weight' => '89',
     'children' => array(
-      0 => 'field_usa_tv_promo',
-      1 => 'field_usa_tv_promo_large',
-      2 => 'field_usa_tv_promo_rows',
+      0 => 'field_tvs_aspot_promo_btitle',
+      1 => 'field_usa_tv_promo',
+      2 => 'field_usa_tv_promo_large',
+      3 => 'field_usa_tv_promo_rows',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

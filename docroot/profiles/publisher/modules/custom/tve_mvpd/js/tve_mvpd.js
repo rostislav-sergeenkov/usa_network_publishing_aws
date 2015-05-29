@@ -6,9 +6,19 @@
     return Date.now ? Date.now() : Number(new Date);
   };
 
+  function getFeature (name) {
+    try {
+      if (window[name] !== null) {
+        return window[name];
+      }
+    }
+    catch (e) {}
+    return null;
+  }
+
   // LocalStorage wrapper to provide MVPD data cache.
   var appCache = {
-    storage: window.localStorage || window.sessionStorage,
+    storage: getFeature('localStorage') || getFeature('sessionStorage'),
     get: function(key) {
       var data;
 
@@ -92,7 +102,7 @@
 
         context = mvpdSet[platformKey] && mvpdSet[platformKey].all;
 
-        if (!context) {
+        if (!context || !context.length) {
           return null;
         }
 
@@ -115,8 +125,8 @@
     this.config = config = $.extend({
 
       path: getBasePath() + 'mvpd',
-      // 1 day cache valid timeout.
-      cacheTimeout: 86400000,
+      // 10 minutes cache valid timeout (in milliseconds).
+      cacheTimeout: 600000,
       logError: function() {}
 
     }, config);
@@ -211,8 +221,8 @@
 
       this.platforms = this.platforms || {};
 
-      return this.platforms[config.providerId] = {
-        url: config.serviceUrl,
+      return this.platforms[config.platformId] = this.platforms[config.platformId] || {
+        url: config.url,
         getMvpd: function(id) {
           return self.getMvpd(id, config);
         }
@@ -296,10 +306,11 @@
             var processedProviders = [],
               featuredProviders = [],
               mappingRules = {
-                mvpd_id: 'mvpd',
+                mvpd: 'mvpd_id',
                 title: 'title',
-                isNewWindow: 'is_new_window',
-                mvpd_logo: 'pickerImage'
+                is_new_window: 'isNewWindow',
+                pickerImage: 'mvpd_logo',
+                pickerImage_2x: 'mvpd_logo_2x'
               },
               isMvpdFeatured = function(mvpd) {
                 // not featured tier is 2
@@ -315,7 +326,7 @@
               current = providers[i];
               isFeatured = isMvpdFeatured(current);
 
-              current = mapObjectFields(current, mappingRules);
+              current = processObjectFields(current, mappingRules);
 
               processedProviders.push(current);
               if (isFeatured) {
@@ -363,7 +374,7 @@
 
       /**
        * @doc function
-       * @description Creates new object with the keys provided by mapping rules
+       * @description Processes the object and formates the output
        *
        * @param {Object} obj initial object to be mapped
        * @param {Object} mappingRules mapping rules with the following style {key: value}
@@ -372,16 +383,18 @@
        * @throws {TypeError} if obj is null or undefined
        * @returns {Object}
        */
-      function mapObjectFields(obj, mappingRules) {
+      function processObjectFields(obj, mappingRules) {
         var mappedResult = {};
 
         if (!existy(obj)) {
           throw new TypeError;
         }
-
-        for (var key in mappingRules) {
+        for (var key in obj) {
           if (mappingRules.hasOwnProperty(key)) {
-            mappedResult[key] = obj[mappingRules[key]];
+            mappedResult[mappingRules[key]] = obj[key];
+          }
+          else {
+            mappedResult[key] = obj[key];
           }
         }
 

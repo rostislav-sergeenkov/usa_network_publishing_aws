@@ -17,19 +17,18 @@ function usanetwork_showpages_menu() {
     'title' => t('Photos'),
     'page callback' => 'usanetwork_showpages_photos',
     'page arguments' => array(1),
-    'access callback' => 'usanetwork_showpages_menu_access',
-    'access arguments' => array(1),
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   // tv show episodes landing page
-  $items['node/%node/episodes'] = array(
+  /*$items['node/%node/episodes'] = array(
     'title' => t('Episodes'),
     'page callback' => 'usanetwork_showpages_episodes',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_showpages_menu_access',
     'access arguments' => array(1),
     'type' => MENU_CALLBACK,
-  );
+  );*/
   // tv show cast landing page
   $items['node/%node/cast'] = array(
     'title' => t('Cast'),
@@ -247,8 +246,6 @@ function usanetwork_showpages_showbanner() {
  * associated with a show
  */
 function usanetwork_showpages_photos($node) {
-  $render = array();
-
   // if there is no show NID get out of there
   if (!isset($node->nid)) {
     return;
@@ -259,7 +256,6 @@ function usanetwork_showpages_photos($node) {
   $query->entityCondition('bundle', array('media_gallery'));
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show);
-//  $query->fieldCondition('field_episode', 'target_id', 'NULL', '!=');
   $query->propertyOrderBy('created', 'DESC');
   $query->range(0, 1);
   // execute the query
@@ -267,8 +263,8 @@ function usanetwork_showpages_photos($node) {
   // load the related gallery
   // then go to that page
   if (!empty($result['node'])) {
-    $nid = array_keys($result['node']);
-    $nid = $nid[0];
+    $gallery = reset($result['node']);
+    $nid = $gallery->nid;
     drupal_goto('node/' . $nid);
   }
   // or go back to the show node
@@ -639,6 +635,10 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         case 'quizzes':
           $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           break;
+        // cast_summy
+        case 'cast':
+        case 'explore':
+          break;
         // Show Landing Page
         case '':
           if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
@@ -757,7 +757,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
       $show = reset($show_field);
     }
     if (isset($show)) {
-      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $file->filename, '@showname' => $show['entity']->title));
+      $show_entity_title = !empty($show['entity']->title) ? $show['entity']->title : '';
+      $filename = !empty($file->filename) ? $file->filename : '';
+      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $filename, '@showname' => $show_entity_title));
     } else {
       $head_title = t("@video | Videos | USA Network", array('@video' => $file->filename));
     }

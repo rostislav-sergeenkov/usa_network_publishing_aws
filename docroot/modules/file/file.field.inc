@@ -92,6 +92,7 @@ function file_field_instance_settings_form($field, $instance) {
     '#description' => t('Separate extensions with a space or comma and do not include the leading dot.'),
     '#element_validate' => array('_file_generic_settings_extensions'),
     '#weight' => 1,
+    '#maxlength' => 256,
     // By making this field required, we prevent a potential security issue
     // that would allow files of any type to be uploaded.
     '#required' => TRUE,
@@ -183,7 +184,7 @@ function file_field_load($entity_type, $entities, $field, $instances, $langcode,
     foreach ($items[$id] as $delta => $item) {
       // If the file does not exist, mark the entire item as empty.
       if (empty($item['fid']) || !isset($files[$item['fid']])) {
-        $items[$id][$delta] = NULL;
+        unset($items[$id][$delta]);
       }
       else {
         $items[$id][$delta] = array_merge((array) $files[$item['fid']], $item);

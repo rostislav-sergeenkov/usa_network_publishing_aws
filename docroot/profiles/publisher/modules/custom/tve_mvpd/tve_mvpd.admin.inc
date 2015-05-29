@@ -8,15 +8,13 @@
  */
 
 /**
- * Form builder callback for MVPD connection settings form.
+ * Form constructor for admin/config/services/mvpd/connection.
  *
- * @param array $form
- * @param array $form_state
- *
- * @return array $form
+ * @see tve_mvpd_menu()
+ * @ingroup forms
  */
 function tve_mvpd_admin_connection_form($form, &$form_state) {
-  // Get "MVPD Admin" service url.
+  // Get "MVPD Admin" service URL.
   $service_url = _tve_mvpd_get_service_url();
   if ($service_url) {
     $form['tve_mvpd_service_url_info'] = array(
@@ -29,31 +27,117 @@ function tve_mvpd_admin_connection_form($form, &$form_state) {
     drupal_set_message(t('MVPD service URL incorrect (or not provided).'), 'warning');
   }
 
+  // We'll add this suffix to fields that are required, so they look as normal
+  // required fields, while their values are checked manually in custom
+  // validation handler. Made because we have checkbox-dependant required state.
+  $required_suffix = ' <span class="form-required" title="' . t('This field is required.') . '">*</span>';
+
+  // Advanced input mode.
+  $form['tve_mvpd_advanced_mode'] = array(
+    '#title' => t('Advanced settings'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('tve_mvpd_advanced_mode', 0),
+    '#description' => t('For experienced users only.'),
+  );
+
+  // Raw MVPD service url.
+  $form['tve_mvpd_service_raw'] = array(
+    '#title' => t('Absolute MVPD Service URL') . $required_suffix,
+    '#type' => 'textfield',
+    '#default_value' => variable_get('tve_mvpd_service_raw', ''),
+    '#description' => t('Absolute and complete (raw) URL to the MVPD service.'),
+    '#states' => array(
+      'invisible' => array(
+        ':input#edit-tve-mvpd-advanced-mode' => array('checked' => FALSE),
+      ),
+    ),
+  );
+
+  $form['security'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => FALSE,
+    '#title' => t('Security'),
+    '#states' => array(
+      'invisible' => array(
+        ':input#edit-tve-mvpd-advanced-mode' => array('checked' => FALSE),
+      ),
+    ),
+  );
+
+  // Authentication mechanism.
+  $form['security']['tve_mvpd_security'] = array(
+    '#title' => t('Endpoint authentication mechanism'),
+    '#type' => 'select',
+    '#options' => array(
+      'api_key' => t('API Key only'),
+      'sha256' => t('Key + Secret + Timestamp Hash (SHA-256)'),
+      'md5' => t('Key + Secret + Timestamp Hash (MD5)'),
+    ),
+    '#default_value' => variable_get('tve_mvpd_security', 'api_key'),
+    '#description' => t('Select authentication mechanism.'),
+  );
+
+  // API key.
+  $form['security']['tve_mvpd_api_key'] = array(
+    '#title' => t('API Key') . $required_suffix,
+    '#type' => 'textfield',
+    '#default_value' => variable_get('tve_mvpd_api_key', ''),
+    '#description' => t('The value of the API key is a 24 character alphanumeric string.'),
+  );
+
+  // Secret key.
+  $form['security']['tve_mvpd_api_secret'] = array(
+    '#title' => t('Secret Key') . $required_suffix,
+    '#type' => 'textfield',
+    '#default_value' => variable_get('tve_mvpd_api_secret', ''),
+    '#description' => t('The value of the secret key is a 10 character alphanumeric string.'),
+    '#states' => array(
+      'invisible' => array(
+        ':input#edit-tve-mvpd-security' => array('value' => 'api_key'),
+      ),
+    ),
+  );
+
   // MVPD service url.
   $form['tve_mvpd_service'] = array(
-    '#title' => t('MVPD Service URL'),
+    '#title' => t('MVPD Service URL') . $required_suffix,
     '#type' => 'textfield',
     '#default_value' => variable_get('tve_mvpd_service', ''),
-    '#required' => TRUE,
     '#description' => t('Absolute URL to the MVPD service.'),
+    '#states' => array(
+      'invisible' => array(
+        ':input#edit-tve-mvpd-advanced-mode' => array('checked' => TRUE),
+      ),
+    ),
   );
-  // Requestor id.
+
+  // Requestor ID.
   $form['tve_mvpd_brand_id'] = array(
-    '#title' => t('Requestor ID'),
+    '#title' => t('Requestor ID') . $required_suffix,
     '#type' => 'textfield',
     '#default_value' => variable_get('tve_mvpd_brand_id', ''),
-    '#required' => TRUE,
-    '#description' => t('Specify unique requestor id.'),
+    '#description' => t('Specify unique requestor ID.'),
+    '#states' => array(
+      'invisible' => array(
+        ':input#edit-tve-mvpd-advanced-mode' => array('checked' => TRUE),
+      ),
+    ),
   );
+
   // Instance (environment).
   $form['tve_mvpd_instance'] = array(
-    '#title' => t('Instance'),
+    '#title' => t('Instance') . $required_suffix,
     '#type' => 'select',
     '#options' => drupal_map_assoc(array(TVE_MVPD_INST_PROD, TVE_MVPD_INST_STAGE)),
     '#default_value' => variable_get('tve_mvpd_instance', ''),
-    '#required' => TRUE,
     '#description' => t('Specify type of an instance.'),
+    '#states' => array(
+      'invisible' => array(
+        ':input#edit-tve-mvpd-advanced-mode' => array('checked' => TRUE),
+      ),
+    ),
   );
+
   // Generic "error" message.
   $form['tve_mvpd_error_message'] = array(
     '#title' => t('Generic Error Message'),
@@ -63,66 +147,129 @@ function tve_mvpd_admin_connection_form($form, &$form_state) {
     '#description' => t('Provide text of a generic error message.'),
   );
 
+  // "Check connection" button.
+  $form['tve_mvpd_check_connection'] = array(
+    '#type' => 'button',
+    '#value' => t('Check Connection'),
+    '#name' => 'check_connection',
+  );
+
   return system_settings_form($form);
 }
 
 /**
- * TVE MVPD connection settings form validation callback.
- *
- * @param array $form
- * @param array $form_state
+ * Form validation handler for tve_mvpd_admin_connection_form().
  */
 function tve_mvpd_admin_connection_form_validate($form, &$form_state) {
-  // MVPD service url.
-  $service = &$form_state['values']['tve_mvpd_service'];
-  $service = trim($service);
+  // Advanced mode.
+  if (!empty($form_state['values']['tve_mvpd_advanced_mode'])) {
+    $service_url = trim($form_state['values']['tve_mvpd_service_raw'], '/');
+    $form_state['values']['tve_mvpd_service_url'] = $service_url;
+    $api_key = trim($form_state['values']['tve_mvpd_api_key']);
+    $secret_key = trim($form_state['values']['tve_mvpd_api_secret']);
+    $method = $form_state['values']['tve_mvpd_security'];
 
-  // Brand id.
-  $brand = &$form_state['values']['tve_mvpd_brand_id'];
-  $brand = trim($brand);
+    if (empty($service_url)) {
+      form_set_error('tve_mvpd_service_raw', t('MVPD Service URL field is requred.'));
+      return;
+    }
 
-  // Brand instance (environment).
-  $instance = &$form_state['values']['tve_mvpd_instance'];
+    if (empty($api_key)) {
+      form_set_error('tve_mvpd_api_key', t('API Key field is requred.'));
+      return;
+    }
 
-  if (!valid_url($service)) {
-    // Set error if url is not valid.
-    form_set_error('tve_mvpd_service', t('Invalid MVPD Service URL'));
+    if (!valid_url($service_url)) {
+      form_set_error('tve_mvpd_service_raw', t('Invalid MVPD Service URL'));
+      return;
+    }
+
+    $query = array('api_key' => $api_key);
+    if (in_array($method, array('sha256', 'md5'))) {
+      if (!$secret_key) {
+        form_set_error('tve_mvpd_api_secret', t('Secret Key field is requred.'));
+        return;
+      }
+      $query['sig'] = tve_mvpd_generate_signature($api_key, $secret_key, $method);
+    }
+
+    $service_url = url($service_url, array('query' => $query));
+  }
+  // Simple mode.
+  else {
+    $service = trim($form_state['values']['tve_mvpd_service'], '/');
+    if (empty($service)) {
+      form_set_error('tve_mvpd_service_raw', t('MVPD Service URL field is requred.'));
+      return;
+    }
+
+    if (!valid_url($service)) {
+      form_set_error('tve_mvpd_service', t('Invalid MVPD Service URL'));
+      return;
+    }
+
+    $brand = trim($form_state['values']['tve_mvpd_brand_id']);
+    if (empty($brand)) {
+      form_set_error('tve_mvpd_brand_id', t('Requestor ID field is requred.'));
+      return;
+    }
+    $form_state['values']['tve_mvpd_brand_id'] = $brand;
+
+    $instance = trim($form_state['values']['tve_mvpd_instance']);
+    if (empty($brand)) {
+      form_set_error('tve_mvpd_brand_id', t('Instance field is requred.'));
+      return;
+    }
+    $form_state['values']['tve_mvpd_instance'] = $instance;
+
+    $service_url = "{$service}/{$brand}/{$instance}";
+    $form_state['values']['tve_mvpd_service_url'] = $service_url;
+  }
+
+  if ('check_connection' != $form_state['triggering_element']['#name']) {
+    return;
+  }
+
+  $results = _tve_mvpd_get_providers_from_service($service_url);
+
+  if (!$results) {
+    form_set_error('', t('Could not retrieve MVPD data from URL %url', array(
+      '%url' => $service_url,
+    )));
   }
   else {
-    // Final url for MVPD service including brand and its environment.
-    $form_state['values']['tve_mvpd_service_url'] = implode('/', array($service, $brand, $instance));
-
-    // Check availability of MVPD data for final url.
-    if (!_tve_mvpd_get_providers_from_service($form_state['values']['tve_mvpd_service_url'])) {
-      form_set_error('', t('Could not retrieve MVPD data for %inst instance of %brand brand. Please check service URL and requestor ID.', array('%inst' => $instance, '%brand' => $brand)));
+    drupal_set_message(t('Service URL %url has been requested successfully.', array(
+      '%url' => $service_url,
+    )));
+    if (module_exists('devel')) {
+      dpm($results, t('Results'));
     }
   }
 }
 
 /**
- * Form builder callback for MVPD settings form.
+ * Form constructor for admin/config/services/mvpd.
  *
- * @param array $form
- * @param array $form_state
- *
- * @return array $form
+ * @see tve_mvpd_menu()
+ * @ingroup forms
  */
 function tve_mvpd_admin_form($form, &$form_state) {
   // Retrieve all available MVPD providers.
-  $providers = _tve_mvpd_get_providers();
-  if (NULL === $providers) {
+  $default_providers = _tve_mvpd_get_providers();
+  if ($default_providers === NULL) {
     // Providers not found.
     drupal_set_message(t('Providers (MVPDs) not found. Please check connection settings to MVPD service on the "MVPD Connection" page.'), 'warning');
     return $form;
   }
 
-  // Place featured providers to the top, sorted by weight,
+  // Place featured providers on top, sorted by weight,
   // and place non-featured providers below featured, sorted by title.
-  usort($providers, '_tve_mvpd_compare_providers');
+  usort($default_providers, '_tve_mvpd_compare_providers');
 
-  // Get providers with overridden settings.
-  $configured_providers = variable_get('tve_mvpd_providers', array());
-  $default_settings = variable_get('tve_mvpd_default_settings', array());
+  // Get providers with configured settings.
+  $configured_providers = variable_get('tve_mvpd_configured_providers', array());
+
+  $default_global_settings = variable_get('tve_mvpd_default_settings', array());
 
   // Default global settings form.
   $form['default_settings'] = array(
@@ -140,7 +287,7 @@ function tve_mvpd_admin_form($form, &$form_state) {
       TVE_MVPD_LOGO_DARK => t('Dark'),
       TVE_MVPD_LOGO_LIGHT => t('Light'),
     ),
-    '#default_value' => isset($default_settings['mvpd_logo']) ? $default_settings['mvpd_logo'] : TVE_MVPD_LOGO_DARK,
+    '#default_value' => isset($default_global_settings['mvpd_logo']) ? $default_global_settings['mvpd_logo'] : TVE_MVPD_LOGO_DARK,
   );
 
   $form['default_settings']['mvpd_color'] = array(
@@ -151,7 +298,7 @@ function tve_mvpd_admin_form($form, &$form_state) {
       TVE_MVPD_COLOR_DARK => t('Dark'),
       TVE_MVPD_COLOR_LIGHT => t('Light'),
     ),
-    '#default_value' => isset($default_settings['mvpd_color']) ? $default_settings['mvpd_color'] : TVE_MVPD_COLOR_LIGHT,
+    '#default_value' => isset($default_global_settings['mvpd_color']) ? $default_global_settings['mvpd_color'] : TVE_MVPD_COLOR_LIGHT,
   );
 
   // "Reset" confirmation button.
@@ -162,9 +309,9 @@ function tve_mvpd_admin_form($form, &$form_state) {
   );
 
   // Create form elements for all providers.
-  foreach ($providers as $provider) {
+  foreach ($default_providers as $default_provider) {
     // Prepare machine name for a form element.
-    $mvpd_title = _tve_mvpd_get_clean_title($provider->field_mvpd_id);
+    $mvpd_title = _tve_mvpd_get_clean_title($default_provider->field_mvpd_id);
     $messages = array(
       'overridden' => '',
       'conflict' => '',
@@ -177,7 +324,7 @@ function tve_mvpd_admin_form($form, &$form_state) {
         '!status' => t('Overridden'),
       ));
 
-      // Using plain html because theme_html_tag adds "\n" symbol at the end,
+      // Using plain HTML because theme_html_tag adds "\n" symbol at the end,
       // which breaks layout in Chrome.
       $messages['overridden'] = '<span class="mvpd-overridden-logo">' . $messages['overridden'] . '</span>';
     }
@@ -189,23 +336,23 @@ function tve_mvpd_admin_form($form, &$form_state) {
     }
 
     // Options for select (radios) inputs.
-    $options = _tve_mvpd_get_mvpd_data($provider, $current_provider_data);
+    $options = _tve_mvpd_get_mvpd_data($default_provider, $current_provider_data);
 
     // Checks conflicts.
-    $messages['conflict_color'] = _tve_mvpd_check_default_logos($options, $current_provider_data, $default_settings, 'mvpd_color');
-    $messages['conflict_logo'] = _tve_mvpd_check_default_logos($options, $current_provider_data, $default_settings, 'mvpd_logo');
+    $messages['conflict_color'] = _tve_mvpd_check_default_logos($options, $current_provider_data, $default_global_settings, 'mvpd_color');
+    $messages['conflict_logo'] = _tve_mvpd_check_default_logos($options, $current_provider_data, $default_global_settings, 'mvpd_logo');
     if ($messages['conflict_color'] || $messages['conflict_logo']) {
       $messages['conflict'] = format_string(' (!status)', array(
         '!status' => t('Conflict with default settings'),
       ));
 
-      // Using plain html because theme_html_tag adds "\n" symbol at the end,
+      // Using plain HTML because theme_html_tag() adds "\n" symbol at the end,
       // which breaks layout in Chrome.
       $messages['conflict'] = '<span class="mvpd-conflict-logo">' . $messages['conflict'] . '</span>';
     }
 
     // Insert the "Featured MVPDs" label above them, once.
-    if ($provider->featured && !isset($featured_mvpds_label_inserted)) {
+    if ($default_provider->featured && !isset($featured_mvpds_label_inserted)) {
       $featured_mvpds_label_inserted = TRUE;
 
       $form['featured_mvpds_label'] = array(
@@ -217,7 +364,7 @@ function tve_mvpd_admin_form($form, &$form_state) {
     }
 
     // Insert the "Other MVPDs" label above them, once.
-    if (!$provider->featured && !isset($other_mvpds_label_inserted)) {
+    if (!$default_provider->featured && !isset($other_mvpds_label_inserted)) {
       $other_mvpds_label_inserted = TRUE;
 
       $form['other_mvpds_label'] = array(
@@ -231,7 +378,7 @@ function tve_mvpd_admin_form($form, &$form_state) {
     // Personal fieldset for provider.
     $form[$mvpd_title] = array(
       '#type' => 'fieldset',
-      '#title' => $provider->title . $messages['overridden'] . $messages['conflict'],
+      '#title' => $default_provider->title . $messages['overridden'] . $messages['conflict'],
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
       '#tree' => TRUE,
@@ -264,24 +411,24 @@ function tve_mvpd_admin_form($form, &$form_state) {
     '#value' => t('Save configuration'),
   );
 
+  // @todo Use system_settings_form($form) or explain 'why' we don't use it.
   return $form;
 }
 
 /**
- * Submit callback for 'Reset to defaults' button.
+ * Submission handler for 'Reset to defaults' button element.
  *
- * @param array $form
- * @param array $form_state
+ * @see tve_mvpd_admin_form()
  */
 function _tve_mvpd_reset_button_submit($form, &$form_state) {
   $form_state['redirect'] = 'admin/config/services/mvpd-reset';
 }
 
 /**
- * Confirmation form builder for 'Reset to defaults' action.
+ * Form constructor for admin/config/services/mvpd-reset.
  *
- * @param array $form
- * @param array $form_state
+ * @see tve_mvpd_menu()
+ * @ingroup forms
  */
 function _tve_mvpd_reset_confirm_form($form, &$form_state) {
   return confirm_form(
@@ -295,54 +442,49 @@ function _tve_mvpd_reset_confirm_form($form, &$form_state) {
 }
 
 /**
- * Submit callback for 'Reset to defaults' action.
- *
- * @param array $form
- * @param array $form_state
- *
+ * Form submission handler for _tve_mvpd_reset_confirm_form().
  */
 function _tve_mvpd_reset_confirm_form_submit($form, &$form_state) {
-  variable_del('tve_mvpd_providers');
+  variable_del('tve_mvpd_configured_providers');
   drupal_set_message(t('Default MVPD settings restored.'));
 
   $form_state['redirect'] = 'admin/config/services/mvpd';
 }
 
 /**
- * Form submit callback for MVPD settings form.
- *
- * @param array $form
- * @param array $form_state
- *
+ * Form submission handler for tve_mvpd_admin_form().
  */
-function _tve_mvpd_admin_form_submit($form, &$form_state) {
+function tve_mvpd_admin_form_submit($form, &$form_state) {
+  // Default global settings.
   if (!empty($form_state['values']['default_settings'])) {
     variable_set('tve_mvpd_default_settings', $form_state['values']['default_settings']);
   }
   unset($form_state['values']['default_settings']);
 
-  $providers = array();
+  $configured_providers = array();
   foreach ($form_state['values'] as $name => $value) {
     // Collect all provider settings - each provider has its own
     // "[provider] => (array) [settings]" pair inside $form_state['values'].
     if (is_array($value) &&
       ($value['mvpd_logo'] != TVE_MVPD_DEFAULT || $value['mvpd_color'] != TVE_MVPD_DEFAULT)) {
       // Each provider has array of settings (at least two properties).
-      $providers[$name] = $value;
+      $configured_providers[$name] = $value;
     }
   }
-  variable_set('tve_mvpd_providers', $providers);
+  variable_set('tve_mvpd_configured_providers', $configured_providers);
+  drupal_set_message(t('The configuration options have been saved.'));
 }
 
 /**
  * Checks MVPD data and compares with default settings.
- * Returns cleaned data.
  *
- * @param array $provider mvpd data
- * @param array $default default settings
+ * @param array $provider
+ *   MVPD data.
+ * @param array $default
+ *   Default settings.
  *
  * @return array
- *  Options for select inputs.
+ *   Returns cleaned data. Options for select inputs.
  */
 function _tve_mvpd_get_mvpd_data($provider, &$default) {
   // "MVPD color" property.
@@ -350,12 +492,12 @@ function _tve_mvpd_get_mvpd_data($provider, &$default) {
     TVE_MVPD_DEFAULT => 'Default global settings',
   );
   if (!empty($provider->{TVE_MVPD_COLOR_DARK})) {
-    // Dark color value (url to an image).
+    // Dark color value (URL to an image).
     $mvpd_color[TVE_MVPD_COLOR_DARK] = $provider->{TVE_MVPD_COLOR_DARK};
   }
 
   if (!empty($provider->{TVE_MVPD_COLOR_LIGHT})) {
-    // Light color value (url to an image).
+    // Light color value (URL to an image).
     $mvpd_color[TVE_MVPD_COLOR_LIGHT] = $provider->{TVE_MVPD_COLOR_LIGHT};
   }
 
@@ -369,20 +511,13 @@ function _tve_mvpd_get_mvpd_data($provider, &$default) {
     TVE_MVPD_DEFAULT => 'Default global settings',
   );
   if (!empty($provider->{TVE_MVPD_LOGO_DARK})) {
-    // Dark logo value (url to an image).
+    // Dark logo value (URL to an image).
     $mvpd_logos[TVE_MVPD_LOGO_DARK] = $provider->{TVE_MVPD_LOGO_DARK};
   }
 
   if (!empty($provider->{TVE_MVPD_LOGO_LIGHT})) {
-    // Light logo value (url to an image).
+    // Light logo value (URL to an image).
     $mvpd_logos[TVE_MVPD_LOGO_LIGHT] = $provider->{TVE_MVPD_LOGO_LIGHT};
-  }
-
-  if (!empty($provider->{TVE_MVPD_LOGO_ALT})) {
-    // Alternative logos (urls to an images).
-    foreach ($provider->{TVE_MVPD_LOGO_ALT} as $logo_id => $logo_url) {
-      $mvpd_logos[$logo_id] = $logo_url;
-    }
   }
 
   if (!isset($default['mvpd_logo'], $mvpd_logos[$default['mvpd_logo']])) {
@@ -397,15 +532,25 @@ function _tve_mvpd_get_mvpd_data($provider, &$default) {
 }
 
 /**
- * Checks default logo by logo type and if default logo settings does not exist
- * returns conflict text with html tag for form field description.
+ * Checks default logo by logo type.
  *
- * @param $options
- * @param $provider
- * @param $settings
- * @param $logo_type
+ * If default logo settings don't exist return conflict text with HTML tag for
+ * form field description.
  *
- * @return string $conflict_text
+ * @param array $options
+ *   Logo options.
+ *
+ * @param array $provider
+ *   Information on the MVPD provider.
+ *
+ * @param array $settings
+ *   Logo settings.
+ *
+ * @param string $logo_type
+ *   What type of logo is being displayed.
+ *
+ * @return string
+ *   Empty string or themed HTML to display an error.
  */
 function _tve_mvpd_check_default_logos($options, $provider, $settings, $logo_type) {
   $conflict_text = '';
@@ -428,9 +573,15 @@ function _tve_mvpd_check_default_logos($options, $provider, $settings, $logo_typ
  * Compares providers by featured status, weight, or name.
  *
  * @param object $provider1
+ *   The first provider.
+ *
  * @param object $provider2
+ *   The second provider.
  *
  * @return int
+ *   1, 0, or -1 depending on provider data.
+ *
+ * @see tve_mvpd_admin_form()
  */
 function _tve_mvpd_compare_providers($provider1, $provider2) {
   if ($provider1->featured && !$provider2->featured) {

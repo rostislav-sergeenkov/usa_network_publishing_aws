@@ -24,7 +24,7 @@
       </div>
     <?php endif; ?>
   </div>
-  <div class="cast-and-info-description">
+  <div class="cast-and-info-description<?php print (empty($second_image))? ' no-image': ''; ?>">
     <?php if (!empty($description)): ?>
       <div class="description">
         <?php print $description; ?>

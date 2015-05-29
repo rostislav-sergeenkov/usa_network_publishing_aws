@@ -71,7 +71,7 @@
               if ((slider.getSlideCount() - start_slide) == visible_slides) {
                 slider.goToSlide(start_slide - 1);
               } else {
-                slider.goToSlide(start_slide - 2);
+                slider.goToSlide(start_slide - visible_slides);
               }
 
               $('.aspot-and-episodes .episodes-list').removeClass('shadow');

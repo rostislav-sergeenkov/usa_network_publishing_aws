@@ -47,6 +47,7 @@
 #microsite #quizzes .usanetwork-quiz {
   width: 100%;
   max-width: 1244px;
+  min-width: 250px;
   overflow: hidden;
 }
 #microsite #quizzes .usanetwork-quiz .content-wrap .center {

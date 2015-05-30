@@ -689,7 +689,7 @@ ul, li {
   }
   .timelineFlat #timeline-line-full-left,
   .timelineFlat #timeline-line-full-right {
-    top: 50px;
+    top: 45px;
   }
   .timelineFlat #timeline-line-full-left {
     left: -62px;

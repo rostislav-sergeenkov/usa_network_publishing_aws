@@ -1198,13 +1198,10 @@
   .social-icons {
     float: right;
     margin-left: get-vw(20px, 1025);
-    margin-top: calc((4.878vw - 26px)/2);
+    margin-top: get-vw(17px, 1025);
     @include breakpoint($bp-min-1901-width) {
-      margin-top: 33.5px;
       margin-left: 37px;
-    }
-    @include breakpoint($bp-1024-width) {
-      margin-top: calc((4.878vw - 16px)/2);
+      margin-top: 31.5px;
     }
     @include breakpoint($bp-768-width) {
       display: none;
@@ -1212,48 +1209,45 @@
     a {
       float: left;
       display: block;
+      line-height: 1;
       margin-right: get-vw(20px, 1025);
       opacity: 0.6;
+      position: relative;
+      vertical-align: middle;
       @include breakpoint($bp-min-1901-width) {
         margin-right: 37px;
+      }
+      &:before {
+        color: #ffffff;
+        display: block;
+        font-family: $ico-font;
+        font-weight: normal;
+        font-size: get-vw(16px, 1025);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 30px;
+        }
       }
       &:hover {
         opacity: 0.3;
       }
       &.facebook {
-        @include sprite-background(fb-icon-header);
-        @include breakpoint($bp-1024-width) {
-          @include sprite-background(fb-icon-header-small);
+        &:before {
+          content: '\e618';
         }
       }
       &.twitter {
-        @include sprite-background(twitter-icon-header);
-        @include breakpoint($bp-1024-width) {
-          @include sprite-background(twitter-icon-header-small);
+        &:before {
+          content: '\e61a';
         }
       }
-      &.instagram {
-        @include sprite-background(insta-icon-header);
-        @include breakpoint($bp-1024-width) {
-          @include sprite-background(insta-icon-header-small);
+      &.tumblr {
+        &:before {
+          content: '\e619';
         }
       }
       &.pinterest {
-        @include sprite-background(pinterest-icon-header);
-        @include breakpoint($bp-1024-width) {
-          @include sprite-background(pinterest-icon-header-small);
-        }
-      }
-      &.youtube {
-        @include sprite-background(youtube-icon-header);
-        @include breakpoint($bp-1024-width) {
-          @include sprite-background(youtube-icon-header-small);
-        }
-      }
-      &.googleplus {
-        @include sprite-background(gplus-icon-header);
-        @include breakpoint($bp-1024-width) {
-          @include sprite-background(gplus-icon-header-small);
+        &:before {
+          content: '\e617';
         }
       }
       &:nth-child(n + 3) {

@@ -173,6 +173,9 @@
             position: absolute;
             padding: 3px 0;
             width: 30%;
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 173px;
+            }
             @include breakpoint($bp-768-width) {
               bottom: 8.6vw;
             }
@@ -185,17 +188,39 @@
           .sponsored {
             bottom: 9.1vw;
             width: 28%;
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 173px;
+            }
             @include breakpoint($bp-768-width) {
               bottom: 8.6vw;
             }
             @include breakpoint($bp-640-width) {
               bottom: 29%;
             }
-            @include breakpoint($bp-min-1901-width) {
-              bottom: 173px;
-            }
           }
         }
+      }
+    }
+  }
+}
+
+#block-usanetwork-mpx-video-usa-mpx-cons-related {
+  .node-usanetwork-promo {
+    .sponsored {
+      background-color: $sponsorship-dark;
+      bottom: 9.1vw;
+      right: 0;
+      position: absolute;
+      padding: 3px 0;
+      width: 30%;
+      @include breakpoint($bp-min-1901-width) {
+        bottom: 173px;
+      }
+      @include breakpoint($bp-768-width) {
+        bottom: 8.6vw;
+      }
+      @include breakpoint($bp-640-width) {
+        bottom: 29%;
       }
     }
   }

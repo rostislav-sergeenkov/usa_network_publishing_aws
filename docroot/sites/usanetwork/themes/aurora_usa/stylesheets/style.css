@@ -776,14 +776,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
-  margin-bottom: 8px;
   text-align: center;
 }
 @media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-large .meta .caption {
     font-size: 16px;
     line-height: 20px;
-    margin-bottom: 10px;
   }
 }
 @media (max-width: 768px) {
@@ -801,14 +799,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 .featured-block .carousel ul li .featured-large .meta .title {
   font-size: 16px;
   line-height: 20px;
-  margin-bottom: 8px;
   text-align: center;
 }
 @media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-large .meta .title {
     font-size: 18px;
     line-height: 24px;
-    margin-bottom: 10px;
   }
 }
 @media (max-width: 480px) {

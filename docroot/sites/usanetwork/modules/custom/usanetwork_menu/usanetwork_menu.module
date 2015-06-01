@@ -138,7 +138,7 @@ function usanetwork_menu_block_view($delta = '') {
       break;
 
     case 'usanetwork_menu_sm_primetime':
-      $block['subject'] = t('Primetime tonight');
+      $block['subject'] = t('Tonight');
       $block['content'] = _usanetwork_menu_show_menu_primetime_block();
       break;
 

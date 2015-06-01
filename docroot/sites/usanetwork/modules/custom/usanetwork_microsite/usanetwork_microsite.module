@@ -3335,9 +3335,11 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = fm.fid');
     $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
     $query->innerJoin('field_data_field_mpx_episode_number', 'fen', 'fen.entity_id = fm.fid');
+    $query->innerJoin('field_data_field_mpx_season_number', 'fsn', 'fsn.entity_id = fm.fid');
     $query->condition($db_or);
     $query->condition('fs.field_show_target_id', $show_id, '=');
     $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
+    $query->orderBy('cast(fsn.field_mpx_season_number_value as unsigned)', 'DESC');
     $query->orderBy('cast(fen.field_mpx_episode_number_value as unsigned)', $order_for_full_episodes);
     $query->orderBy('mpx.airdate', 'DESC');
     $query_results = $query->execute()->fetchAll();

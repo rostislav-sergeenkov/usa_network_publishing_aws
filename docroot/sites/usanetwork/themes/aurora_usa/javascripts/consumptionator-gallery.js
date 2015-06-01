@@ -168,10 +168,8 @@
 
         $('#bxslider-gallery .slide').removeClass('active');
 
-        if ($('body').hasClass('node-type-media-gallery')) {
-          var name = $('#bxslider-gallery .slide .gallery-name').eq(0).text();
-          Drupal.behaviors.omniture_tracking.photoGalleries(name);
-        }
+        var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();
+        Drupal.behaviors.omniture_tracking.photoGalleries(name);
       },
       onSlideAfter: function ($slideElement, oldIndex, newIndex) {
 

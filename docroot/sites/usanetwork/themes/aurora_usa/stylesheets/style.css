@@ -11325,8 +11325,8 @@ footer h2 {
 @media (min-width: 1281px) {
   .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block {
     height: 42.01875vw;
-    max-height: 1080px;
-    max-width: 1920px;
+    max-height: 1093.75px;
+    max-width: 2500px;
     margin: 0 auto;
   }
 }
@@ -12768,8 +12768,8 @@ footer h2 {
 @media (min-width: 1281px) {
   .consumptionator-page .video-block, .page-videos-live .video-block {
     height: 42.01875vw;
-    max-height: 1080px;
-    max-width: 1920px;
+    max-height: 1093.75px;
+    max-width: 2500px;
     margin: 0 auto;
   }
 }
@@ -13367,8 +13367,6 @@ footer h2 {
 }
 
 .consumptionator-characters-main-block {
-  max-width: 1920px;
-  margin: 0 auto;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -13860,8 +13858,6 @@ footer h2 {
 }
 
 .consumptionator-episode-main-block {
-  max-width: 1920px;
-  margin: 0 auto;
   overflow: hidden;
   position: relative;
   width: 100%;

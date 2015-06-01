@@ -122,18 +122,21 @@
   }
 }
 
+@media (max-width: 900px) {
+  #character-info li .character-image {
+    width: 100%;
+    height: auto;
+    margin: 0 0 20px;
+  }
+  #character-nav .tooltip .caption {
+    position: relative;
+    height: 90px;
+  }
+}
+
 @media (max-width: 670px) {
   #character-nav li {
     width: 48%;
     margin: 1% 1%;
   }
 }
-
-@media (max-width: 400px) {
-  #character-info li .character-image {
-    width: 250px;
-    height: 203px;
-    margin: 0 0 20px;
-  }
-}
-

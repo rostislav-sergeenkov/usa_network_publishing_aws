@@ -342,7 +342,7 @@
             });
             Drupal.behaviors.ms_videos.setActiveThumbnail();
             if (typeof Waypoint != 'undefined') {
-              usa_debug('======== refreshing all waypoints');
+              //usa_debug('======== refreshing all waypoints');
               Waypoint.refreshAll();
             }
           });

@@ -30609,6 +30609,9 @@ body.blog .view-display-id-blog_content .views-row {
 .usa-wrap {
   background-color: #e9eaeb;
 }
+.page-user .usa-wrap .region-content {
+  color: #545454;
+}
 
 .usa-adrails[data-menu-position="closed"] .usa-wrap {
   margin: 0 auto;

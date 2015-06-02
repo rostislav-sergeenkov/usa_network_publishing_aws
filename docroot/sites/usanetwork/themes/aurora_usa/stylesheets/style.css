@@ -10764,7 +10764,7 @@ footer .block-usanetwork-lyris form > div .placeholder {
   font-style: normal;
 }
 footer .block-usanetwork-lyris form > div label {
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-weight: 400;
   display: inline-block;
   padding-right: 35px;
@@ -11045,7 +11045,7 @@ footer .shows-menu ul a:hover, footer .app-and-services-menu ul a:hover {
 }
 footer h2 {
   color: #dcddde;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 20px;
   margin-top: 0;
   padding-left: 50px;
@@ -16958,7 +16958,7 @@ footer h2 {
 }
 .show-title-block h1 a, .show-title-block h2 a {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 .show-title-block h1 a:hover, .show-title-block h2 a:hover {
   color: #ffffff;

@@ -99,7 +99,7 @@
     top: 30%;
   }
   #home #home-logo {
-    width: 80%;
+    width: 86%;
   }
   #home #home-sponsored {
     width: 50%;
@@ -112,12 +112,22 @@
   #home #home-countdown {
     width: 48%;
   }
-  #home #home-nav {
-    width: 80%;
+  #home #home-content-container #home-nav {
+    width: 68%;
+  }
+  #home #home-nav li {
+    width: 29.3%;
+    margin: 0 2%;
+  }
+  #microsite .ad-leaderboard {
+    margin-top: 144px;
   }
 }
 
 @media (max-width: 670px) {
+  #home #home-content-container #home-nav {
+    width: 90%;
+  }
   #home #home-usa-logo {
     width: 38px;
     height: auto;
@@ -130,3 +140,4 @@
     font-size: 0.8em;
   }
 }
+

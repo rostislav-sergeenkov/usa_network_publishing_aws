@@ -14,7 +14,7 @@
 ?>
 <div class="header-nav-bar">
   <div class="usa-logo show-color hover-avail"><a class="logo" href="<?php print $main_url; ?>"></a></div>
-  <div class="nav-bar-tabs">
+  <div class="nav-bar-tabs<?php print (!empty($sponsored))? ' sponsored-enable': '';?>">
     <div class="menu-item show-color hover-avail show-name">
       <a href="<?php print $show_url; ?>">
         <span><?php print $show_name; ?></span>
@@ -23,7 +23,7 @@
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>
-          <?php print $episode['video_type'];?>: <?php print $episode['title']; ?>
+          <span><?php print $episode['video_type'];?>: <?php print $episode['title']; ?></span>
         </a>
       </h2>
     </div>
@@ -34,13 +34,17 @@
   <div class="tve-help-link signOut" data-ng-if="global.isAuthN">
     <?php print $authbar; ?>
   </div>
-  <div class="tve-help-link signIn">
+  <div class="tve-help-link signIn no-auth">
+    <a href="javascript:void(o)" class="loginButton clean"
+       data-ng-if="!global.isAuthN"
+       data-ng-click="openLoginWindow()" data-ng-cloak="">
+    </a>
     <div class="tve-help-sign ng-scope" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"></div>
   </div>
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">
-    <div class="tab-item-content">
+    <div class="tab-item-content tab-item-wrapper">
       <div class="node node-usanetwork-promo">
         <div class="asset-img">
           <img src="<?php print $episode['image_url']; ?>" alt="">

@@ -277,6 +277,48 @@ function usanetwork_home_image_default_styles() {
     'label' => '383x144',
   );
 
+  $styles['453x973'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 453,
+          'height' => 973,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 453,
+          'height' => 973,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['906x1946'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 906,
+          'height' => 1946,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 906,
+          'height' => 1946,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   return $styles;
 }
 
@@ -1259,15 +1301,10 @@ function _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper) {
   $show_node = $show_node_wrapper->value();
   $tune_in_date = '';
 
-  $desktop_image_url = '';
-  $mobile_image_url = '';
 
   if (!empty($show_node->field_tvs_desktop_cimage)) {
-    $desktop_image_url = $show_node_wrapper->field_tvs_desktop_cimage->file->url->value();
-  }
-
-  if (!empty($show_node->field_tvs_mobile_cimage)) {
-    $mobile_image_url = $show_node_wrapper->field_tvs_mobile_cimage->file->url->value();
+    $desktop_image_uri = $show_node_wrapper->field_tvs_desktop_cimage->value();
+    $desktop_image_uri = $desktop_image_uri['uri'];
   }
 
   if (!empty($show_node->field_usa_tv_tune_in_date)) {
@@ -1289,8 +1326,8 @@ function _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper) {
     'show_title' => $show_node_wrapper->title->value(),
     'show_url' => url('node/' . $show_nid),
     'show_schedule_date' => $tune_in_date,
-    'desktop_image_url' => $desktop_image_url,
-    'mobile_image_url' => $mobile_image_url,
+    'show_image_desktop' => !empty($desktop_image_uri) ? image_style_url('453x973', $desktop_image_uri) : '',
+    'show_image_retina' => !empty($desktop_image_uri) ? image_style_url('906x1946', $desktop_image_uri) : '',
     'top_info' => _usanetwork_home_shows_queue_get_top_info_content($show_node_wrapper),
     'central_info' => _usanetwork_home_shows_queue_get_central_info_content($show_node_wrapper),
     'bottom_info' => _usanetwork_home_shows_queue_get_bottom_info_content($show_node_wrapper),

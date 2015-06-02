@@ -23,7 +23,7 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <?php print t('Live: USA Live TV'); ?>
+          <span><?php print t('Live: USA Live TV'); ?></span>
         </a>
       </h1>
     </div>
@@ -31,13 +31,17 @@
   <div class="tve-help-link signOut" data-ng-if="global.isAuthN">
     <?php print $authbar; ?>
   </div>
-  <div class="tve-help-link signIn">
+  <div class="tve-help-link signIn no-auth">
+    <a href="javascript:void(o)" class="loginButton clean"
+       data-ng-if="!global.isAuthN"
+       data-ng-click="openLoginWindow()" data-ng-cloak="">
+    </a>
     <div class="tve-help-sign ng-scope" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"></div>
   </div>
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">
-    <div class="tab-item-content">
+    <div class="tab-item-content tab-item-wrapper">
       <div class="node node-usanetwork-promo">
         <div class="asset-img">
           <img src="" alt="">

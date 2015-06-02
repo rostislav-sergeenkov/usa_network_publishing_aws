@@ -13,13 +13,13 @@ include_once 'usanetwork_showpages.features.inc';
  */
 function usanetwork_showpages_menu() {
   // tv show photos landing page
-  $items['node/%node/photos'] = array(
+ /* $items['node/%node/photos'] = array(
     'title' => t('Photos'),
     'page callback' => 'usanetwork_showpages_photos',
     'page arguments' => array(1),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
-  );
+  );*/
   // tv show episodes landing page
   /*$items['node/%node/episodes'] = array(
     'title' => t('Episodes'),
@@ -638,6 +638,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         // cast_summy
         case 'cast':
         case 'explore':
+        case 'photos':
           break;
         // Show Landing Page
         case '':

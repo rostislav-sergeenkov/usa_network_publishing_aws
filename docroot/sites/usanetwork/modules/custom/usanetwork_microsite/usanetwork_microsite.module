@@ -745,7 +745,7 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
 /**
  * Renders gallery page.
  */
-function _usanetwork_microsite_render_page_galleries($section_wrapper) {
+function _usanetwork_microsite_render_page_galleries($section_wrapper, $node) {
   $section_object = $section_wrapper->value();
   $theme_variables = array();
 
@@ -787,7 +787,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       '0',
     );
     $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
-    $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
+    $theme_variables['microsite_url'] = url('node/' . $node->nid . '/microsite');
   }
 
   return $theme_variables;

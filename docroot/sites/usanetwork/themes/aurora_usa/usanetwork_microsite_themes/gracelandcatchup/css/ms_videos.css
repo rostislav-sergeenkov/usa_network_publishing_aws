@@ -495,26 +495,6 @@
   }
 }
 
-@media (max-width: 1779px) {
-  #microsite #videos .expandable-toggle-wrap {
-    width: 930px;
-  }
-}
-
-@media (max-width: 1174px) {
-  #microsite .left-pane {
-    width: 100%;
-  }
-  #microsite .right-pane {
-    clear: left;
-    margin-left: 0;
-    width: 100%;
-  }
-  #microsite .block-usanetwork-mpx-video .full-episodes li.grid-item {
-    width: 22%;
-  }
-}
-
 @media (min-width: 641px) {
   #video-container .featured-asset .tve-help {
     font-size: 16px;
@@ -558,6 +538,33 @@
   #video-container .featured-asset.file-video-mpx .locked-msg {
     left: 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 1779px) {
+  #microsite #videos .expandable-toggle-wrap {
+    width: 930px;
+  }
+}
+
+@media (max-width: 1174px) {
+  #microsite .left-pane {
+    width: 100%;
+  }
+  #microsite .right-pane {
+    clear: left;
+    margin-left: 0;
+    width: 100%;
+  }
+  #microsite .block-usanetwork-mpx-video .full-episodes li.grid-item {
+    width: 22%;
+  }
+  #microsite #video-filter li.filter-item {
+    width: 49%;
+    margin: 2% 2% 0 0;
+  }
+  #microsite #video-filter li.filter-item:nth-child(even) {
+    margin-right: 0;
   }
 }
 
@@ -638,10 +645,23 @@
     height: 37px;
     padding: 5px;
   }
+  #video-container .featured-asset.file-video-mpx .video-player-wrapper a:after {
+    width: 90%;
+    margin-left: -45%;
+    background-size: contain;
+  }
+  #microsite .featured-asset .tve-help-link {
+    float: left;
+    clear: left;
+  }
+  #microsite .featured-asset .tve-help-sign {
+    margin-left: 0;
+  }
   #video-container .featured-asset .tve-help {
     font-size: 11px;
     line-height: 16px;
     float: none;
+    clear: left;
     left: 0;
     height: 186px;
     width: 300px;

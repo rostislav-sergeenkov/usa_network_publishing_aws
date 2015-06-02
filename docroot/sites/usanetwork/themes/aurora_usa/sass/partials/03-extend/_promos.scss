@@ -77,12 +77,10 @@
         font-family: $avalon-medium;
         font-size: 14px;
         line-height: 18px;
-        margin-bottom: 8px;
         text-align: center;
         @include breakpoint($bp-min-1601-width) {
           font-size: 16px;
           line-height: 20px;
-          margin-bottom: 10px;
         }
         @include breakpoint($bp-768-width) {
           font-size: 12px;
@@ -96,12 +94,10 @@
       .title {
         font-size: 16px;
         line-height: 20px;
-        margin-bottom: 8px;
         text-align: center;
         @include breakpoint($bp-min-1601-width) {
           font-size: 18px;
           line-height: 24px;
-          margin-bottom: 10px;
         }
         @include breakpoint($bp-480-width) {
           font-size: 14px;

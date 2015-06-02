@@ -29,6 +29,11 @@
           case 'episode-consumptionator':
             service_name = 'usanetwork-tv-episode';
             break;
+          case 'photos-landing':
+            service_name = 'usanetwork-photos-landing';
+            additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
+              + $('.ajax-load-block').data('sorting-order');
+            break;
           case 'videos-landing':
             service_name = 'videos-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
@@ -73,14 +78,6 @@
               Drupal.behaviors.omniture_tracking.globalPromoClick(self);
             });
           });
-
-          // node-type-tv-show
-          if ($('body').hasClass('node-type-tv-show')) {
-            var lastList = $('.ajax-load-block ul').last(),
-                listElem = lastList.find('.node-usanetwork-promo');
-
-            Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(listElem, 'dark');
-          }
 
           if (typeof window.picturefill != 'undefined') {
             window.picturefill();
@@ -128,7 +125,7 @@
               : 0;
         var additional_offset = (window.innerHeight < window_size_desktop_large)? 130: 230;
         if (load_more_offset - window.innerHeight + additional_offset - scroll_top < 0){
-          if ($('.ajax-load-block .load-more-link a').hasClass('disabled') || $('.ajax-load-block .load-more-link a').hasClass('disabled-infinity')){
+          if ($('.ajax-load-block .load-more-link a').hasClass('disabled') || $('.ajax-load-block .load-more-link a').hasClass('disabled-infinity') || $('.ajax-load-block .load-more-link a').length == 0){
             return false;
           }
           $('.ajax-load-block .load-more-link a').addClass('disabled');

@@ -67,11 +67,13 @@
       if(blockAd.find('.mps-slot').length > 0) {
         return false;
       } else {
-        if (counter > 0) {
-          Drupal.behaviors.mpsAdvert.mpsMakeRequest();
-        }
+
+        var lastList = $('.ajax-load-block ul').last(),
+            listElem = lastList.find('.node-usanetwork-promo');
+
+        Drupal.behaviors.mpsAdvert.mpsMakeRequest();
         Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-        counter = counter + 1;
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(listElem, 'dark');
       }
     },
 

@@ -21,7 +21,7 @@
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>
-          <?php print t('Character bio');?>: <span><?php print $person_name; ?></span>
+          <span><?php print t('Character bio');?>: <?php print $person_name; ?></span>
         </a>
       </h2>
     </div>
@@ -29,7 +29,7 @@
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">
-    <div class="tab-item-content">
+    <div class="tab-item-content tab-item-wrapper">
       <div class="node node-usanetwork-promo">
         <?php if (!empty($details['image'])): ?>
           <div class="asset-img">

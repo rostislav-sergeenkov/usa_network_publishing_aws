@@ -638,6 +638,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         // cast_summy
         case 'cast':
         case 'explore':
+        case 'photos':
           break;
         // Show Landing Page
         case '':

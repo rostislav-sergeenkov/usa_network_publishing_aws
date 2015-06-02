@@ -1278,6 +1278,10 @@ input.echo-submit-text {
           width: 24px !important;
           height: 24px !important;
         }
+        @include breakpoint($bp-480-width) {
+          width: 22px !important;
+          height: 22px !important;
+        }
       }
     }
     &.gig-button-container-facebook {

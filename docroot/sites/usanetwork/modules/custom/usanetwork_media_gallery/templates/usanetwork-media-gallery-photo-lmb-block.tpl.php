@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="landing-main-block show-video-landing-main-block five-promo-item-block show-border">
+<div class="landing-main-block show-photo-landing-main-block five-promo-item-block show-border">
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>
@@ -44,7 +44,7 @@
           <li class="last">
           <?php $second_item = false; ?>
         <?php endif; ?>
-          <div class="node node-usanetwork-promo usanetwork-tv-shows-video-lmb <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
+          <div class="node node-usanetwork-promo usanetwork-tv-shows-photo-lmb <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">

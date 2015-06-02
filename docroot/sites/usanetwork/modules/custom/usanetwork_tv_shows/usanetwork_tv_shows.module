@@ -836,6 +836,10 @@ function usanetwork_tv_shows_related_content_cache_form_submit(&$form, &$form_st
       $tv_show_node = node_load($matches[1]);
 
       _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_episode_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_person_content($tv_show_node);
     }
   }
 }
@@ -1882,6 +1886,11 @@ function _usanetwork_tv_shows_cache_set_related_video_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -1923,6 +1932,11 @@ function _usanetwork_tv_shows_cache_set_related_gallery_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -1960,6 +1974,11 @@ function _usanetwork_tv_shows_cache_set_related_person_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -2000,6 +2019,11 @@ function _usanetwork_tv_shows_cache_set_related_episode_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -2592,15 +2616,13 @@ function _usanetwork_tv_shows_render_best_of_block() {
           $promo_link = url($promo_reference['target_type'] . '/' . $promo_reference['target_id']);
         }
 
-        // Temporary set $sponsored as FALSE.
-        /*if (!empty($promo_entity->field_sponsored)) {
+        if (!empty($promo_entity->field_sponsored)) {
           $field_sponsored = _usanetwork_get_field_item($promo_reference['target_type'], $promo_entity, 'field_sponsored', 'value');
           if ($field_sponsored == '1') {
             $sponsored = TRUE;
             $content_id = '/' . $promo_reference['target_type'] . '/' . $promo_reference['target_id'];
           }
-        }*/
-        $sponsored = FALSE;
+        }
 
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
@@ -2789,13 +2811,10 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     }
   }
 
-  // Temporary set Sponsored as always FALSE.
-  /*
   if (!empty($data->sponsored)) {
     $sponsored = TRUE;
     $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
-  }*/
-  $sponsored = FALSE;
+  }
 
   if (!empty($data->raw_image_uri)) {
     $desktop_image = $is_big
@@ -2852,15 +2871,15 @@ function usanetwork_tv_shows_mps_parameters_alter(&$parameters){
   }
 }
 
-
 /**
  * Title callback function for TV Show landing page.
  */
 function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type) {
   $default_titles = array(
-    'tv_show' => 'Videos | ' . $show_node->title . ' | USA Network',
-    'cast' => 'Characters&Crew | ' . $show_node->title . ' | USA Network',
-    'explore' => 'Explore | ' . $show_node->title . ' | USA Network',
+    'tv_show' => 'Videos | ' . $show_node->title,
+    'cast' => 'Cast & Info | ' . $show_node->title,
+    'explore' => 'Explore | ' . $show_node->title,
+    'photos' => 'Photos | ' . $show_node->title,
   );
 
   if (!empty($show_node) && isset($default_titles[$page_type])) {
@@ -2871,6 +2890,47 @@ function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type)
   }
 
   return $title;
+}
+
+/**
+ *  Implements hook_usa_omniture_alter().
+ */
+function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) {
+  if (!empty($context['menu_item']['path']) && !empty($context['entity']->title)) {
+    $matches = array();
+
+    if (preg_match("/^node\/([\%\d])\/(cast|episodes|videos)$/", $context['menu_item']['path'], $matches)) {
+      switch ($matches[2]) {
+        case 'cast':
+          $omniture_variables['s.prop3'] = t('Bio');
+          $omniture_variables['s.prop4'] = t('!show_title : Cast & Info', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+
+        case 'episodes':
+          $omniture_variables['s.prop3'] = t('Episode Guide');
+          $omniture_variables['s.prop4'] = t('!show_title : Episode Guide', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+
+        case 'videos':
+          $omniture_variables['s.prop3'] = t('Video');
+          $omniture_variables['s.prop4'] = t('!show_title : Video', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+
+        case 'videos':
+          $omniture_variables['s.prop3'] = t('Photos');
+          $omniture_variables['s.prop4'] = t('!show_title : Photos', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+      }
+    }
+  }
 }
 
 /**
@@ -3153,7 +3213,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
  */
 function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $category_tid, $sort_by = 'timestamp', $sort_order = 'DESC') {
   $data = array(
-    'timestamp_DESC' => array(
+    'airdate_DESC' => array(
       'order' => 'DESC',
       'data_type' => 'airdate',
       'title' => t('Newest'),
@@ -3164,7 +3224,7 @@ function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $
           'sort_order' => 'DESC',
         )),
     ),
-    'timestamp_ASC' => array(
+    'airdate_ASC' => array(
       'order' => 'ASC',
       'data_type' => 'airdate',
       'title' => t('Oldest'),
@@ -3184,6 +3244,9 @@ function _usanetwork_tv_shows_landing_page_vbget_video_sorters($show_node_nid, $
   return $data;
 }
 
+/**
+ * Returns cached videos data.
+ */
 function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
   $cached_data = cache_get('usanetwork_tvslp_videos_' . $show_node->nid);
 

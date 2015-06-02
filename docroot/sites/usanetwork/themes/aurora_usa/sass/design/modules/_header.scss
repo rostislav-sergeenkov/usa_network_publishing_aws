@@ -11,19 +11,14 @@ header {
   h2 {
     margin: 0;
   }
-  .ad-728x90 {
-
-  }
   .header-nav-bar {
+    @include clear();
     background-color: $header-tab-back;
-    height: 90px;
+    height: get-vw(73px, 1025);
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1901-width) {
       height: 135px;
-    }
-    @include breakpoint($bp-1024-width) {
-      height: 50px;
     }
     @include breakpoint($bp-768-width) {
       background: $footer-links;
@@ -53,18 +48,16 @@ header {
     background: $usa-logo-back;
     float: left;
     height: 100%;
-    width: 125px;
+    width: get-vw(100px, 1025);
     @include breakpoint($bp-min-1901-width) {
-      width: 190px;
-    }
-    @include breakpoint($bp-1024-width) {
-      width: 100px;
+      width: 185px;
     }
     &:hover {
       background: lighten($usa-logo-back, 15%);
     }
     @include breakpoint($bp-768-width) {
       height: 50px;
+      width: 75px;
       &.active {
         display: none;
       }
@@ -81,7 +74,7 @@ header {
   .show-title-wrapper {
     display: none;
     border-left: 1px solid transparent;
-    margin-left: 100px;
+    margin-left: 75px;
     margin-right: 50px;
     position: relative;
     text-align: center;
@@ -94,16 +87,6 @@ header {
   .nav-bar-tabs {
     float: left;
     height: 100%;
-    width: 605px;
-    @include breakpoint($bp-min-1901-width) {
-      width: 750px;
-    }
-    @include breakpoint($bp-1280-width) {
-      width: 485px;
-    }
-    @include breakpoint($bp-1024-width) {
-      width: 400px;
-    }
     @include breakpoint($bp-768-width) {
       clear: both;
       display: none;
@@ -296,14 +279,18 @@ header {
     }
     @include breakpoint($bp-min-769-width) {
       ul {
-        display: table;
-        width: 100%;
+        display: block;
+        li {
+          &.expanded {
+            list-style: none;
+          }
+        }
       }
       .header-show-menu {
         display: none;
       }
       .tab {
-        display: table-cell;
+        float: left;
         height: 100%;
         padding: 0;
         .item-list {
@@ -323,19 +310,23 @@ header {
         font-family: $avalon-medium;
         font-size: get-vw(13px, 1025);
         height: 100%;
-        line-height: 90px;
+        line-height: get-vw(73px, 1025);
         letter-spacing: 0.5px;
+        padding: 0 get-vw(48px, 1025);
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
           font-size: 24px;
           line-height: 135px;
-          padding: 0 30px;
+          padding: 0 89px;
         }
         @include breakpoint($bp-1024-width) {
           font-size: 13px;
+        }
+        @include breakpoint($bp-768-width) {
           line-height: 50px;
+          padding: 0 36px;
         }
         &.active {
           background: $header-tab-back-new;
@@ -699,7 +690,7 @@ header {
   .tab-content {
     @include clear();
     position: absolute;
-    z-index: 9999;
+    z-index: 999;
     width: 100%;
     @include breakpoint($bp-768-width) {
       display: none;
@@ -708,7 +699,6 @@ header {
   .tab-item {
     @include clear();
     background: $header-tab-back-new;
-    /*border-top: 1px solid transparent;*/
     display: none;
     letter-spacing: 0.5px;
     height: auto;
@@ -728,7 +718,6 @@ header {
       padding: 10px;
     }
     &.active {
-      /*border-top: 1px solid $header-tab-back-hover;*/
       display: block;
     }
     .see-all-link {
@@ -741,7 +730,7 @@ header {
         color: #ffffff;
         display: block;
         font-size: get-vw(10px, 1025);
-        font-family: $avalon-medium;
+        font-family: $avalon-book;
         line-height: 1;
         padding: get-vw(13px, 1025) get-vw(25px, 1025) get-vw(13px, 1025) get-vw(15px, 1025);
         position: relative;
@@ -1121,17 +1110,17 @@ header {
         font-size: get-vw(15px, 1025);
         letter-spacing: 2px;
         margin-bottom: get-vw(13px, 1025);
-        padding-top: get-vw(38px, 1025);
+        padding-top: get-vw(45px, 1025);
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
           font-size: 28px;
           margin-bottom: 24px;
-          padding-top: 70.5px;
+          padding-top: 83.5px;
         }
         @include breakpoint($bp-1024-width) {
           font-size: 15px;
           margin-bottom: 13px;
-          padding-top: 38px;
+          padding-top: 45px;
         }
         a {
           color: $header-tab-title;
@@ -1144,7 +1133,7 @@ header {
         float: left;
         margin-right: 4%;
         position: relative;
-        width: 65%;
+        width: 60%;
         .on-now-panel-title {
           @include clear();
           position: relative;
@@ -1160,7 +1149,7 @@ header {
           &.up-next {
             h2 {
               float: left;
-              font-family: $tex-gyreschola-bold;
+              font-family: $tex-gyreschola-italic;
             }
           }
           .asset-img {
@@ -1205,7 +1194,7 @@ header {
             margin-left: 0px;
             .title {
               color: #ffffff;
-              font-family: $avalon-medium;
+              font-family: $avalon-book;
               font-size: get-vw(15px, 1025);
               letter-spacing: 1px;
               line-height: 1.5;
@@ -1221,7 +1210,7 @@ header {
               }
             }
             .caption {
-              color: $footer-links;
+              color: $schedule-caption-color;
               font-family: $tex-gyreschola-italic;
               font-size: get-vw(13px, 1025);
               letter-spacing: 1px;
@@ -1236,8 +1225,9 @@ header {
             }
             .description {
               color: #ffffff;
-              font-family: $avalon-medium;
+              font-family: $avalon-book;
               font-size: get-vw(13px, 1025);
+              letter-spacing: 1px;
               line-height: 1.3;
               @include breakpoint($bp-min-1901-width) {
                 font-size: 24px;
@@ -1262,10 +1252,10 @@ header {
             clear: none;
             display: inline-block;
             float: none;
-            margin-right: get-vw(20px, 1025);
+            margin-right: get-vw(18px, 1025);
             vertical-align: middle;
             @include breakpoint($bp-min-1901-width) {
-              margin-right: 37px;
+              margin-right: 33.4px;
             }
             @include breakpoint($bp-1024-width) {
               margin-right: 7px;
@@ -1287,7 +1277,7 @@ header {
               color: #ffffff;
               display: inline-block;
               font-size: get-vw(10px, 1025);
-              font-family: $avalon-medium;
+              font-family: $avalon-book;
               line-height: 1;
               padding: get-vw(7px, 1025) get-vw(25px, 1025) get-vw(7px, 1025) get-vw(10px, 1025);
               position: relative;
@@ -1298,7 +1288,7 @@ header {
               }
               @include breakpoint($bp-1024-width) {
                 font-size: 10px;
-                padding: 7px 25px 7px 10px;
+                padding: 7px 23px 7px 8px;
               }
               &:after {
                 content: "\e608";
@@ -1329,7 +1319,7 @@ header {
       .primetime-panel {
         float: left;
         position: relative;
-        width: 31%;
+        width: 36%;
         .schedule-item {
           height: get-vw(77px, 1025);
           overflow: hidden;
@@ -1343,7 +1333,7 @@ header {
             padding-left: 20px;
           }
           &:nth-child(2n-1) {
-            background: $poll-color;
+            background: $tonight-section-back;
           }
           & > div {
             float: left;
@@ -1366,12 +1356,12 @@ header {
             }
             a {
               color: #ffffff !important;
-              margin-right: get-vw(20px, 1025);
+              margin-right: get-vw(18px, 1025);
               @include breakpoint($bp-min-1901-width) {
-                margin-right: 37px;
+                margin-right: 33.4px;
               }
               @include breakpoint($bp-1024-width) {
-                margin-right: 20px;
+                margin-right: 18px;
               }
               &:before {
                 font-size: get-vw(15px, 1025);
@@ -1392,7 +1382,7 @@ header {
           }
           .time {
             color: #ffffff;
-            font-family: $avalon-medium;
+            font-family: $avalon-book;
             font-size: get-vw(10px, 1025);
             margin-top: get-vw(17px, 1025);
             text-transform: uppercase;
@@ -1421,7 +1411,7 @@ header {
           }
           .episode-info {
             color: #ffffff;
-            font-family: $avalon-medium;
+            font-family: $avalon-book;
             font-size: get-vw(15px, 1025);
             line-height: 1.3;
             margin-top: get-vw(17px, 1025);
@@ -1436,12 +1426,12 @@ header {
               width: calc(100% - 70px);
             }
             > div {
-              max-width: get-vw(160px, 1025);
+              max-width: get-vw(200px, 1025);
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
               @include breakpoint($bp-min-1901-width) {
-               max-width: 297px;
+               max-width: 371px;
               }
               @include breakpoint($bp-1024-width) {
                 max-width: none;

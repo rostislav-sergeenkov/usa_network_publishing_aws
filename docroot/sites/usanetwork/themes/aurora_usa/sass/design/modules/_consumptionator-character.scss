@@ -1,7 +1,5 @@
 .consumptionator-characters-main-block {
   @include clear();
-  max-width: 1920px;
-  margin: 0 auto;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -48,9 +46,7 @@
       }
       .block-character-info-header-left {
         float: left;
-        @include breakpoint ($bp-320-width) {
-          float: none;
-        }
+        width: 50%;
         .full-name {
           font-family: $avalon-medium;
           font-size: 54px;
@@ -67,6 +63,9 @@
           @include breakpoint($bp-640-width) {
             font-size: 24px;
           }
+          @include breakpoint($bp-480-width) {
+            font-size: 22px;
+          }
         }
         .description {
           font-family: $tex-gyreschola-italic;
@@ -82,13 +81,14 @@
           @include breakpoint($bp-768-width) {
             font-size: 10px;
           }
+          @include breakpoint($bp-480-width) {
+            font-size: 8px;
+          }
         }
       }
       .block-character-info-header-right {
         float: right;
-        @include breakpoint ($bp-320-width) {
-          float: none;
-        }
+        width: 45%;
         .share {
           font-family: $avalon-book;
           font-size: 26px;
@@ -111,13 +111,14 @@
             @include breakpoint ($bp-1024-width) {
               font-size: 15px;
             }
-            @include breakpoint ($bp-320-width) {
-              text-align: left;
-              line-height: 2em;
+            @include breakpoint($bp-320-width) {
+              margin-bottom: 14px;
             }
           }
+          > div {
+            float: right;
+          }
         }
-
       }
     }
     .block-character-info-content {

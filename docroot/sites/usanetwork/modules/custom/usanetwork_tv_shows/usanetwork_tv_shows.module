@@ -1624,9 +1624,14 @@ function _usanetwork_tv_shows_submenu() {
       }
     }
   }
-  
+  $show_title = array(
+    '#type' => 'html_tag',
+    '#tag' => (arg(2) == 'photos' || arg(2) == 'videos') ? 'h2' : 'h1',
+    '#attributes' => array('class' => 'title'),
+    '#value' => l($show_title, 'node/' . $show->nid),
+  );
   return theme('usanetwork_tv_shows_submenu', array(
-    'show_title' => l($show_title, 'node/' . $show->nid),
+    'show_title' => theme('html_tag', array('element' => $show_title)),
     'weekday' => isset($show_weekday) ? $show_weekday : NULL,
     'time' => isset($show_time) ? $show_time : NULL,
     'social_icons' => $social_links,

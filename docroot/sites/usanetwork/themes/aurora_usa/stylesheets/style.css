@@ -16917,7 +16917,7 @@ footer h2 {
     width: 100%;
   }
 }
-.show-title-block h1 {
+.show-title-block h1, .show-title-block h2 {
   color: #ffffff;
   float: left;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -16928,12 +16928,12 @@ footer h2 {
   text-transform: uppercase;
 }
 @media (min-width: 769px) {
-  .show-title-block h1 {
+  .show-title-block h1, .show-title-block h2 {
     max-width: 24.70741vw;
   }
 }
 @media (min-width: 1901px) {
-  .show-title-block h1 {
+  .show-title-block h1, .show-title-block h2 {
     font-size: 36px;
     line-height: 93px;
     margin: 0 44.5px 0 20px;
@@ -16941,14 +16941,14 @@ footer h2 {
   }
 }
 @media (max-width: 768px) {
-  .show-title-block h1 {
+  .show-title-block h1, .show-title-block h2 {
     font-size: 14px;
     line-height: 50px;
     margin: 0 20px 0 20px;
   }
 }
 @media (max-width: 480px) {
-  .show-title-block h1 {
+  .show-title-block h1, .show-title-block h2 {
     display: table-cell;
     float: none;
     line-height: 1;
@@ -16956,14 +16956,14 @@ footer h2 {
     vertical-align: middle;
   }
 }
-.show-title-block h1 a {
+.show-title-block h1 a, .show-title-block h2 a {
   color: #ffffff;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
-.show-title-block h1 a:hover {
+.show-title-block h1 a:hover, .show-title-block h2 a:hover {
   color: #ffffff;
 }
-.show-title-block h1 a:focus {
+.show-title-block h1 a:focus, .show-title-block h2 a:focus {
   outline: none;
 }
 .show-title-block a:visited, .show-title-block a:active {

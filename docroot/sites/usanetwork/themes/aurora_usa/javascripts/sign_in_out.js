@@ -11,8 +11,7 @@
 
       if ($cookies['nbcu_ap_loginpending']) {
         initHeader();
-        authService.promise.then(function () {
-        });
+        //authService.promise.then(function () {});
       }
 
       if (authService.isAuthN()) {
@@ -26,6 +25,11 @@
   function initHeader() {
 
     $('header .header-nav-bar').addClass('tve-sign');
+
+    if($('header .tve-help-link.signIn').hasClass('no-auth')) {
+      $('header .tve-help-link.signIn').removeClass('no-auth');
+      $('header .tve-help-link.signIn .loginButton').remove();
+    }
 
   }
 

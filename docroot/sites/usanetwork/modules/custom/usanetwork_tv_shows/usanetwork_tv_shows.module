@@ -2879,6 +2879,7 @@ function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type)
     'tv_show' => 'Videos | ' . $show_node->title,
     'cast' => 'Cast & Info | ' . $show_node->title,
     'explore' => 'Explore | ' . $show_node->title,
+    'photos' => 'Photos | ' . $show_node->title,
   );
 
   if (!empty($show_node) && isset($default_titles[$page_type])) {
@@ -2917,6 +2918,13 @@ function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) 
         case 'videos':
           $omniture_variables['s.prop3'] = t('Video');
           $omniture_variables['s.prop4'] = t('!show_title : Video', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+
+        case 'videos':
+          $omniture_variables['s.prop3'] = t('Photos');
+          $omniture_variables['s.prop4'] = t('!show_title : Photos', array(
             '!show_title' => $context['entity']->title
           ));
           break;

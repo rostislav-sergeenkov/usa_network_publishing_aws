@@ -231,8 +231,9 @@ Drupal.wysiwyg.editor.instance.ckeditor = {
     return content;
   },
 
-  insert: function(content) {
+  insert: function(content, isWidget) {
     content = this.prepareContent(content);
+    var widgets, widgetName;
     if (CKEDITOR.env.webkit || CKEDITOR.env.chrome || CKEDITOR.env.opera || CKEDITOR.env.safari) {
       // Works around a WebKit bug which removes wrapper elements.
       // @see https://drupal.org/node/1927968
@@ -245,6 +246,16 @@ Drupal.wysiwyg.editor.instance.ckeditor = {
         switch(item.type) {
           case 1:
             CKEDITOR.instances[this.field].insertElement(item);
+            // Widget initialization support.
+            // @see http://stackoverflow.com/a/20245520/292408
+            if (CKEDITOR.instances[this.field].widgets && isWidget) {
+              widgets = CKEDITOR.instances[this.field].widgets.registered;
+              for (widgetName in widgets) {
+                if (widgets.hasOwnProperty(widgetName)) {
+                  CKEDITOR.instances[this.field].widgets.initOn(item, widgetName);
+                }
+              }
+            }
             break;
           case 3:
             CKEDITOR.instances[this.field].insertText(item.getText());

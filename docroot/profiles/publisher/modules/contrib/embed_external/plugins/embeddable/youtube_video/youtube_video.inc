@@ -25,7 +25,7 @@ function embed_external_youtube_video_configure(&$form_state) {
   $form['youtube_video_video_url'] = array(
     '#type' => 'textfield',
     '#title' => t('Video URL'),
-    '#description' => t('Example: <em>https://www.youtube.com/watch?v=BROWqjuTM0g</em>'),
+    '#description' => t('Example: <em>https://www.youtube.com/watch?v=dQw4w9WgXcQ</em>'),
     '#size' => 60,
     '#maxlength' => 1000,
     '#required' => TRUE,
@@ -59,4 +59,24 @@ function embed_external_youtube_video_render($html_dom, $attributes) {
   $container_element->appendChild($post_embed);
 
   return $container_element;
+}
+
+/**
+ * Form validation handler for embed_external_youtube_video_configure().
+ * @see embed_external_youtube_video_configure().
+ */
+function embed_external_youtube_video_configure_validate(&$form_state, $form) {
+  $youtube_url = $form_state['values']['youtube_video_video_url'];
+  $url_parts = parse_url($youtube_url);
+  $url_parts['query'] ? parse_str($url_parts['query'], $url_parts['query']) : NULL;
+  $message = t('@youtube_url is not a valid youtube video.', array('@youtube_url' => $youtube_url));
+  if (empty($url_parts['query']['v'])) {
+    form_set_error('youtube_video_video_url', $message);
+  }
+  else {
+    $request = drupal_http_request('http://gdata.youtube.com/feeds/api/videos/' . $url_parts['query']['v']);
+    if ($request->code != 200) {
+      form_set_error('youtube_video_video_url', $message);
+    }
+  }
 }

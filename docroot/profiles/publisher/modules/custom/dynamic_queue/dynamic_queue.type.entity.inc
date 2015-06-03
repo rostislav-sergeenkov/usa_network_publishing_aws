@@ -29,7 +29,7 @@ class DynamicQueueEntityType extends Entity {
    * Creates a DynamicQueueEntityType object.
    *
    * @param array $values
-   *   An array of values that define the Dyanamic Queue type.
+   *   An array of values that define the Dynamic Queue type.
    *
    * @return DynamicQueueEntityType
    *   The Dynamic Queue type entity object.
@@ -115,12 +115,12 @@ function dynamic_queue_type_get_types($name = NULL) {
  * @see dynamic_queue_type_form_submit()
  * @see dynamic_queue_type_form_validate()
  */
-function dynamic_queue_type_form($form, $form_state, $DynamicQueueEntityType, $op = 'edit') {
+function dynamic_queue_type_form($form, $form_state, $dynamic_queue_entity_type, $op = 'edit') {
 
   $form['label'] = array(
     '#type' => 'textfield',
     '#title' => t('Name'),
-    '#default_value' => $DynamicQueueEntityType->label,
+    '#default_value' => $dynamic_queue_entity_type->label,
     '#description' => t('The human-readable name of this dynamic queue type. This text will be displayed as part of the list on the Add new dynamic queue page. It is recommended that this name begin with a capital letter and contain only letters, numbers, and spaces. This name must be unique.'),
   );
 
@@ -128,7 +128,7 @@ function dynamic_queue_type_form($form, $form_state, $DynamicQueueEntityType, $o
     '#type' => 'machine_name',
     '#title' => t('machine_name'),
     '#maxlength' => 32,
-    '#default_value' => $DynamicQueueEntityType->type,
+    '#default_value' => $dynamic_queue_entity_type->type,
     '#machine_name' => array(
       'exists' => 'dynamic_queue_type_get_types',
       'source' => array('label'),
@@ -148,9 +148,9 @@ function dynamic_queue_type_form($form, $form_state, $DynamicQueueEntityType, $o
     '#title' => t('Entity type'),
     '#type' => 'select',
     '#options' => $entity_types,
-    '#default_value' => $DynamicQueueEntityType->entity_type,
+    '#default_value' => $dynamic_queue_entity_type->entity_type,
     '#required' => TRUE,
-    '#disabled' => $DynamicQueueEntityType->is_new ? FALSE : TRUE,
+    '#disabled' => $dynamic_queue_entity_type->is_new ? FALSE : TRUE,
     '#ajax' => array(
       'callback' => 'dynamic_queue_type_entity_type_callback',
     ),
@@ -176,7 +176,7 @@ function dynamic_queue_type_form($form, $form_state, $DynamicQueueEntityType, $o
     '#title' => t('Cache lifetime'),
     '#type' => 'select',
     '#options' => $period,
-    '#default_value' => $DynamicQueueEntityType->cache_lifetime,
+    '#default_value' => $dynamic_queue_entity_type->cache_lifetime,
     '#description' => t('Cached Dynamic Queues will not be re-created until at least this much time has elapsed.'),
   );
 
@@ -185,7 +185,7 @@ function dynamic_queue_type_form($form, $form_state, $DynamicQueueEntityType, $o
     '#tree' => TRUE,
   );
 
-  $entity_type = !empty($form_state['values']['entity_type']) ? $form_state['values']['entity_type'] : $DynamicQueueEntityType->entity_type;
+  $entity_type = !empty($form_state['values']['entity_type']) ? $form_state['values']['entity_type'] : $dynamic_queue_entity_type->entity_type;
   $bundles = array();
   foreach ($entity_info[$entity_type]['bundles'] as $bundle_name => $bundle_info) {
     $bundles[$bundle_name] = $bundle_info['label'];
@@ -203,7 +203,7 @@ function dynamic_queue_type_form($form, $form_state, $DynamicQueueEntityType, $o
     '#prefix' => '<div id="dynamic-queue-target-bundles">',
     '#suffix' => '</div>',
     '#options' => $bundles,
-    '#default_value' => !empty($DynamicQueueEntityType->settings['allowed_bundles']['target_bundles']) ? $DynamicQueueEntityType->settings['allowed_bundles']['target_bundles'] : array(),
+    '#default_value' => !empty($dynamic_queue_entity_type->settings['allowed_bundles']['target_bundles']) ? $dynamic_queue_entity_type->settings['allowed_bundles']['target_bundles'] : array(),
     '#multiple' => TRUE,
     '#description' => t('The bundles of the entity type that can be referenced. Optional, leave empty for all bundles.'),
   );
@@ -234,8 +234,8 @@ function dynamic_queue_type_form($form, $form_state, $DynamicQueueEntityType, $o
   foreach ($fields_by_vocabulary as $vocabulary_machine_name => $fields) {
     $vocab = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name);
 
-    if (!$DynamicQueueEntityType->is_new && isset($DynamicQueueEntityType->settings['taxonomy']['fields'])) {
-      $settings_taxonomy_fields = $DynamicQueueEntityType->settings['taxonomy']['fields'];
+    if (!$dynamic_queue_entity_type->is_new && isset($dynamic_queue_entity_type->settings['taxonomy']['fields'])) {
+      $settings_taxonomy_fields = $dynamic_queue_entity_type->settings['taxonomy']['fields'];
 
       $default_values = array();
       // Grab the previously selected fields for these taxonomies.
@@ -316,8 +316,8 @@ function dynamic_queue_type_form_submit(&$form, &$form_state) {
   unset($form_state['values']['settings']['settings__active_tab']);
 
   // Create the object and save.
-  $DynamicQueueEntityType = entity_ui_form_submit_build_entity($form, $form_state);
-  $DynamicQueueEntityType->save();
+  $dynamic_queue_entity_type = entity_ui_form_submit_build_entity($form, $form_state);
+  $dynamic_queue_entity_type->save();
 
   $form_state['redirect'] = 'admin/structure/dynamic-queue';
 }

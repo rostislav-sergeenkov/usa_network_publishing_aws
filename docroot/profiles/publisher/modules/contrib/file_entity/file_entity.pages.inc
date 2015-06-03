@@ -499,7 +499,9 @@ function file_entity_upload_destination_uri(array $params, array $data = array()
   // Replace tokens.
   $destination = token_replace($destination, $data);
 
-  return $params['uri_scheme'] . '://' . $destination;
+  $result = $params['uri_scheme'] . '://' . $destination;
+  drupal_alter('file_entity_upload_destination_uri', $result, $params, $data);
+  return $result;
 }
 
 /**

@@ -21,13 +21,19 @@
         </div>
       </div>
     </div>
-    <?php if (!empty($desktop_image_url) || !empty($mobile_image_url)): ?>
-      <div class="asset-img">
-        <?php if (!empty($desktop_image_url)): ?>
-          <img class="desktop" alt="" src="<?php print $desktop_image_url; ?>">
+    <?php if (!empty($show_image_desktop) || !empty($show_image_retina)): ?>
+      <div class="asset-img desktop" data-picture data-alt="" data-class="tile-img">
+        <?php if (!empty($show_image_desktop)): ?>
+          <div data-src="<?php print $show_image_desktop; ?>"></div>
+          <!--[if (IE 8) & (!IEMobile)]>
+          <div data-src="<?php print $show_image_desktop; ?>"></div>
+          <![endif]-->
         <?php endif; ?>
-        <?php if (!empty($mobile_image_url)): ?>
-          <img class="mobile" alt="" src="<?php print $mobile_image_url; ?>">
+        <?php if (!empty($show_image_retina)): ?>
+          <div data-media="(min-device-pixel-ratio: 2.0)" data-src="<?php print $show_image_retina; ?>"></div>
+        <?php endif; ?>
+        <?php if (!empty($show_image_desktop)): ?>
+          <noscript><img src="<?php print $show_image_desktop; ?>" width="453" height="973" alt="" title="" /></noscript>
         <?php endif; ?>
       </div>
     <?php endif; ?>

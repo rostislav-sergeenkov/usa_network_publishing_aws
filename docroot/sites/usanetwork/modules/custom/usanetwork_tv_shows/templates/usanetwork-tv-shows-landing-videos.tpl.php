@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="videos-landing-page-container">
+<div class="landing-page-container videos-landing-page-container">
   <h2 id="videos-landing-page-header" class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All videos'); ?></span>
   </h2>
@@ -42,7 +42,7 @@
       </div>
     <?php endif; ?>
   </div>
-  <div class="video-items-blocks show-border ajax-load-block"
+  <div class="landing-items-blocks video-items-blocks show-border ajax-load-block"
   <?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?>
   <?php if (!empty($items_per_page_limit)): print ' data-show-items-limit="' . $items_per_page_limit . '"'; endif; ?>
   <?php print ' data-filter-tid="' . $filter_tid . '"'; ?>

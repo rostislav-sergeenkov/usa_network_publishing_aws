@@ -1,7 +1,7 @@
 <?php
 /*$topic, $show-name, $promo_title, $description, $color_class, $icon_type I use for social promo in usa-social-carousel.tpl.php */
 ?>
-<div class="node node-usanetwork-promo social-promo<?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
+<div class="node node-usanetwork-promo social-promo ymal-promo<?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
   <?php if (!empty($target_url)): ?>
     <a href="<?php print $target_url; ?>">
       <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">

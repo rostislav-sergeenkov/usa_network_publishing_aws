@@ -133,6 +133,12 @@
       var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index');
 
       $('#bxslider-gallery .slide').eq(index).addClass('active');
+      $('#bxslider-gallery').removeClass('on-load');
+
+      if(window.innerWidth < window_size_tablet) {
+        var page_wrapper_offset = $('#bxslider-gallery .slide.active .asset-img img').height() + 13;
+        $('#bx-custom-pager-wrapper').css({'top' : page_wrapper_offset + 'px'});
+      }
     }
 
     var options = {
@@ -177,6 +183,11 @@
             slide = $('#bxslider-gallery .slide').eq(index).addClass('active');
 
         gigyaSharebar(slide, index);
+
+        if(window.innerWidth < window_size_tablet) {
+          var page_wrapper_offset = slide.find('.asset-img img').height() + 13;
+          $('#bx-custom-pager-wrapper').animate({top: page_wrapper_offset + 'px'}, 100);
+        }
 
         if ($('body').hasClass('node-type-media-gallery')) {
           Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
@@ -283,6 +294,8 @@
               gallery.unmousewheel();
               movePagerItems($('.gallery-wrapper .bx-custom-pager'));
             }
+            var page_wrapper_offset = $('#bxslider-gallery .slide.active .asset-img img').height() + 13;
+            $('#bx-custom-pager-wrapper').css({'top' : page_wrapper_offset + 'px'});
           }
           if(window.innerWidth > window_size_tablet) {
             if($('#bxslider-gallery').hasClass('mobile')){

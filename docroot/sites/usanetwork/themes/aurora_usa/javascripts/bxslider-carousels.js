@@ -30,6 +30,8 @@
         slideWidth = 255;
       }
 
+
+
       Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'vertical',
         minSlides: 1,
@@ -52,33 +54,62 @@
 
     // Init all vertical carousels
     initVSliders: function() {
-      var calculateItems = function(slider, $context) {
+      var calculateItems = function(slider, $context, start_slide) {
         var current_top_slide = slider.getCurrentSlide() + 1,
             container_h = $context.height(),
             slide_h = $context.find('.slide-item').height(),
             visible_slides = Math.floor(container_h / slide_h),
-            shift_last = slide_h - (container_h - (slide_h * visible_slides));
+            shift_last = slide_h - (container_h - (slide_h * visible_slides)),
+            shiftAnimate = function() {
+              $context.animate({
+                'top': '-=' + shift_last
+              }, 300);
+            };
 
-        if (!slider.end) {
-          if ((slider.getSlideCount() - current_top_slide <= visible_slides)) {
-            slider.end = true;
 
+        if (typeof start_slide != 'undefined') {
+          if (start_slide > 0) {
+            if ((slider.getSlideCount() - (start_slide + 1) < visible_slides)) {
+              if ((slider.getSlideCount() - start_slide) == visible_slides) {
+                slider.goToSlide(start_slide - 1);
+              } else {
+                slider.goToSlide(start_slide - visible_slides);
+              }
 
-            $('.aspot-and-episodes .episodes-list').removeClass('shadow');
-            $context.animate({
-              'top': '-=' + shift_last
-            }, 300);
-          } else {
-            slider.goToNextSlide();
+              $('.aspot-and-episodes .episodes-list').removeClass('shadow');
+
+              slider.end = true;
+              shiftAnimate();
+            } else {
+              slider.goToSlide(start_slide);
+            }
+          }
+        } else {
+          if (!slider.end) {
+            if ((slider.getSlideCount() - current_top_slide <= visible_slides)) {
+              $('.aspot-and-episodes .episodes-list').removeClass('shadow');
+
+              slider.end = true;
+              shiftAnimate();
+            } else {
+              slider.goToNextSlide();
+            }
           }
         }
       };
 
       $('.slider-vertical').each(function () {
-        var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.vsettings);
+        var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.vsettings),
+            start_slide = null;
 
-        slider.end = false;
         Drupal.behaviors.bxslider_carousels.varray.push(slider);
+        slider.end = false;
+
+        if ($('.consumptionator-page.node-type-media-gallery .slider-vertical li .asset-img').hasClass('active')) {
+          start_slide = $('.slider-vertical li .asset-img.active').closest('li').index();
+
+          calculateItems(slider, slider, start_slide);
+        }
 
         $(this).mousewheel(function(e) {
           e.preventDefault();

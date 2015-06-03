@@ -8,8 +8,8 @@
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
       height: 42.01875vw;
-      max-height: 1080px;
-      max-width: 1920px;
+      max-height: 1093.75px;
+      max-width: 2500px;
       margin: 0 auto;
     }
     @include breakpoint($between-1025-1280) {
@@ -31,11 +31,8 @@
       z-index: 1;
     }
     @include breakpoint($bp-1024-width) {
-      height: calc(56.25vw + 130px);
-      width: 100%;
-    }
-    @include breakpoint($bp-768-width) {
       height: calc(56.25vw + 145px);
+      width: 100%;
     }
     @include breakpoint($bp-640-width) {
       height: calc(56.25vw + 280px)
@@ -60,9 +57,10 @@
         width: 175px;
       }
       @include breakpoint($bp-1024-width) {
+        bottom: 30px;
         display: block;
         margin-top: 0;
-        bottom: 30px;
+        right: 50px;
         top: auto;
       }
       @include breakpoint($bp-768-width) {
@@ -104,7 +102,10 @@
           .slide {
             .node {
               .slide-info {
-                display: block;
+                display: table;
+                @include breakpoint($bp-1024-width) {
+                  display: block;
+                }
               }
             }
           }
@@ -135,11 +136,8 @@
             height: 100%;
             position: relative;
             @include breakpoint($bp-1024-width) {
-              height: calc(100% - 130px);
-              overflow: hidden;
-            }
-            @include breakpoint($bp-768-width) {
               height: calc(100% - 145px);
+              overflow: hidden;
             }
             @include breakpoint($bp-640-width) {
               height: calc(100% - 280px);
@@ -171,9 +169,6 @@
             }
             @include breakpoint($bp-1024-width) {
               display: block;
-              height: 130px;
-            }
-            @include breakpoint($bp-768-width) {
               height: 145px;
             }
             @include breakpoint($bp-640-width) {
@@ -181,46 +176,46 @@
             }
             .description {
               color: $consup-gallery-description;
-              font-size: 30px;
+              display: block;
+              font-size: get-vw(14px, 1025);
               font-family: $avalon-medium;
-              line-height: 36px;
+              line-height: 1.5;
               left: 45px;
-              height: 72px;
               overflow: hidden;
               margin-bottom: 0;
-              padding-right: 400px;
-              position: absolute;
+              padding-bottom: 40px;
+              padding-right: 220px;
+              padding-top: 20px;
               text-overflow: ellipsis;
               top: 36px;
               width: 100%;
+              @include breakpoint($bp-min-1025-width) {
+                display: table-cell;
+              }
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 26px;
+              }
               @include breakpoint($bp-1900-width) {
-                font-size: 16px;
-                line-height: 22px;
                 height: 44px;
-                padding-right: 375px;
+                padding-right: 220px;
                 top: 20px;
               }
               @include breakpoint($bp-1280-width) {
-                font-size: 14px;
-                line-height: 20px;
                 height: 40px;
                 left: 70px;
-                padding-right: 320px;
+                padding-right: 190px;
                 top: 15px;
               }
               @include breakpoint($bp-1024-width) {
-                font-size: 12px;
-                line-height: 18px;
-                height: 54px;
-                padding-right: 325px;
-                top: 35px;
-              }
-              @include breakpoint($bp-768-width) {
-                height: 72px;
-                padding-right: 325px;
+                font-size: 14px;
+                height: auto;
+                max-height: 115px;
+                padding-right: 170px;
+                padding-top: 30px;
               }
               @include breakpoint($bp-640-width) {
                 margin-top: 60px;
+                max-height: 125px;
                 padding: 0;
                 position: static;
                 text-align: center;
@@ -275,7 +270,7 @@
                 }
               }
               @include breakpoint($bp-640-width) {
-                margin-top: 15px;
+                margin-top: 5px;
                 padding-right: 0;
                 position: static;
                 text-align: center;
@@ -293,14 +288,11 @@
       }
       .bx-controls {
         #bx-custom-pager-wrapper {
-          bottom: 105px;
+          bottom: 120px;
           right: 50%;
           overflow: hidden;
           position: absolute;
           z-index: 51;
-          @include breakpoint($bp-768-width) {
-            bottom: 120px;
-          }
           @include breakpoint($bp-640-width) {
             bottom: 245px;
           }
@@ -417,12 +409,9 @@
               width: 44px;
             }
             @include breakpoint($bp-1024-width) {
-              bottom: 40px;
+              bottom: 50px;
               margin-top: 0;
               top: auto;
-            }
-            @include breakpoint($bp-768-width) {
-              bottom: 50px;
             }
             @include breakpoint($bp-640-width) {
               bottom: 150px;
@@ -500,9 +489,6 @@
       overflow: visible;
     }
     @include breakpoint($bp-1024-width) {
-      height: calc((56.25vw - 48px) + 130px);
-    }
-    @include breakpoint($bp-768-width) {
       height: calc((56.25vw - 48px) + 145px);
     }
     @include breakpoint($bp-640-width) {

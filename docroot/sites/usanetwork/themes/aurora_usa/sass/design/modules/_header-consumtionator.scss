@@ -2,20 +2,7 @@
   header {
     .header-nav-bar {
       background: $schedule-tonight;
-      height: 90px !important;
       position: relative;
-      @include breakpoint($bp-min-1901-width) {
-        height: 135px !important;
-        .usa-logo {
-          width: 190px;
-        }
-      }
-      @include breakpoint($bp-1024-width) {
-        height: 72px !important;
-      }
-      @include breakpoint($bp-768-width) {
-        height: 50px !important;
-      }
       @include breakpoint($bp-480-width) {
         .usa-logo {
           position: relative;
@@ -40,22 +27,33 @@
         display: block;
         height: 100%;
         width: 100%;
-        max-width: calc(100% - 125px);
+        max-width: calc(100% - 9.76vw);
         @include breakpoint($bp-min-1901-width) {
-          max-width: calc(100% - 190px);
-        }
-        @include breakpoint($bp-1024-width) {
-          max-width: calc(100% - 100px);
+          max-width: calc(100% - 185px);
         }
         @include breakpoint($bp-768-width) {
           clear: none;
-          margin-left: 100px;
-          max-width: calc(100% - 100px);
+          margin-left: 75px;
+          max-width: calc(100% - 75px);
           width: 100%;
         }
         @include breakpoint($bp-480-width) {
           margin-left: 50px;
           max-width: calc(100% - 50px);
+        }
+        &.sponsored-enable {
+          .menu-item {
+            &.show-name {
+              @include breakpoint($bp-min-769-width) {
+                max-width: calc((100% - 282px)*0.3);
+              }
+            }
+            &.info {
+              @include breakpoint($bp-min-769-width) {
+                max-width: calc((100% - 282px)*0.7);
+              }
+            }
+          }
         }
         .menu-item {
           box-sizing: border-box;
@@ -66,8 +64,12 @@
           text-transform: uppercase;
           text-align: center;
           vertical-align: middle;
+          @include breakpoint($bp-768-width) {
+            height: 50px;
+          }
           h1, h2 {
             margin: 0;
+            height: 100%;
           }
           a {
             background: none;
@@ -76,28 +78,14 @@
             color: #ffffff;
             display: block;
             font-family: $avalon-medium;
-            font-size: get-vw(13px, 1025);
-            height: auto;
+            height: 100%;
             margin: 0 auto;
-            line-height: 90px;
             overflow: hidden;
-            padding: 0 30px;
             text-decoration: none;
             text-overflow: ellipsis;
             white-space: nowrap;
             span {
               font-family: $avalon-medium;
-            }
-            @include breakpoint($bp-min-1901-width) {
-              font-size: 24px;
-              line-height: 135px;
-            }
-            @include breakpoint($bp-1024-width) {
-              font-size: 13px;
-              line-height: 72px;
-            }
-            @include breakpoint($bp-768-width) {
-              line-height: 50px;
             }
             @include breakpoint($bp-640-width) {
               font-size: 14px;
@@ -111,9 +99,15 @@
               width: 100%;
             }
             a {
-              @include breakpoint($bp-768-width) {
-                max-width: calc(100% - 50px);
-                padding: 0;
+              display: table;
+              height: 100%;
+              line-height: 1.2;
+              position: relative;
+              text-align: center;
+              white-space: normal;
+              span {
+                display: table-cell;
+                vertical-align: middle;
               }
             }
           }
@@ -126,43 +120,44 @@
               width: 50px;
             }
             a {
+              padding-left: get-vw(71px, 1025);
+              display: table;
+              height: 100%;
+              line-height: 1.2;
               position: relative;
-              padding-left: 90px;
               text-align: left;
+              white-space: normal;
               @include breakpoint($bp-min-1901-width) {
-                padding-left: 130px;
-              }
-              @include breakpoint($bp-1280-width) {
-                padding-left: 70px;
+                padding-left: 132px;
               }
               @include breakpoint($bp-768-width) {
                 overflow: hidden;
                 padding: 0;
-                text-indent: 110%;
-                text-overflow: clip;
-                white-space: nowrap;
                 width: 50px;
+              }
+              span {
+                display: table-cell;
+                vertical-align: middle;
+                @include breakpoint($bp-768-width) {
+                  display: none;
+                }
               }
               &:before {
                 @include sprite-background(info-icon-small);
                 content: '';
                 display: block;
-                left: 45px;
-                margin-left: -13px;
+                left: calc((6.93vw - 26px)/2);
                 margin-top: -13px;
                 position: absolute;
                 top: 50%;
                 @include breakpoint($bp-min-1901-width) {
                   @include sprite-background(info-icon);
-                  left: 65px;
-                  margin-left: -20px;
+                  left: 46px;
                   margin-top: -20px;
-                }
-                @include breakpoint($bp-1280-width) {
-                  left: 35px;
                 }
                 @include breakpoint($bp-768-width) {
                   left: 50%;
+                  margin-left: -13px;
                 }
               }
               &.no-refresh {
@@ -193,6 +188,8 @@
           background: $header-tab-back-new;
         }
         .tab-item-content {
+          margin: 0 auto;
+          max-width: 1804px;
           position: relative;
           .node {
             @include clear;
@@ -400,16 +397,6 @@
               }
             }
           }
-          &.open {
-            @include breakpoint($between-769-1024) {
-              background: none;
-              .tab-content {
-                .tab-item {
-                  padding-top: 40px;
-                }
-              }
-            }
-          }
         }
       }
       .block-usanetwork-menu {
@@ -423,11 +410,6 @@
                 }
               }
             }
-            .tab-content {
-              .tab-item {
-                padding-top: 5px;
-              }
-            }
           }
         }
       }
@@ -435,12 +417,6 @@
 
     .header-nav-bar {
       &.tve-sign {
-        @include breakpoint($bp-1024-width) {
-          margin-bottom: 35px;
-        }
-        @include breakpoint($bp-768-width) {
-          margin-bottom: 0;
-        }
         .tve-help-link {
           &.signOut {
             ul.tve-header-links {
@@ -452,15 +428,15 @@
         }
       }
       .nav-bar-tabs {
-        max-width: calc(100% - 215px);
+        max-width: calc(100% - 17vw);
         @include breakpoint($bp-min-1901-width) {
-          max-width: calc(100% - 325px);
-        }
-        @include breakpoint($bp-1024-width) {
-          max-width: calc(100% - 172px);
+          max-width: calc(100% - 320px);
         }
         @include breakpoint($bp-768-width) {
-          max-width: calc(100% - 100px);
+          max-width: calc(100% - 75px);
+        }
+        @include breakpoint($bp-480-width) {
+          max-width: calc(100% - 50px);
         }
         .menu-item.info {
           border-right: none;
@@ -498,12 +474,9 @@
             display: table-cell;
             height: 100%;
             vertical-align: middle;
-            width: 135px;
-            @include breakpoint($bp-1900-width) {
-              width: 90px;
-            }
-            @include breakpoint($bp-1024-width) {
-              width: 72px;
+            width: get-vw(73px, 1025);
+            @include breakpoint($bp-min-1901-width) {
+              width: 135px;
             }
           }
           a {

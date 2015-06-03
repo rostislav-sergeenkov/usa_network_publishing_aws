@@ -143,7 +143,7 @@
       }
 //usa_debug('========= micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')\ndataFid: ' + dataFid);
       if ($('#video-filter').length) {
-        filter = $('#video-filter .filter-item.active').attr('data-filter-name');
+        filter = $('#video-filter li.filter-item.active').data('filter-name');
         url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
       }
       else {
@@ -342,7 +342,7 @@
             });
             Drupal.behaviors.ms_videos.setActiveThumbnail();
             if (typeof Waypoint != 'undefined') {
-              usa_debug('======== refreshing all waypoints');
+              //usa_debug('======== refreshing all waypoints');
               Waypoint.refreshAll();
             }
           });

@@ -103,11 +103,12 @@
 
               var quizQuestionNumber = $(this).index() + 1;
               var quizQuestionTitle = $(this).find('.question-title').text();
+              var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
               s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
               s.linkTrackVars = 'events,prop58,eVar58';
               s.linkTrackEvents = s.events = 'event88';
-              s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
+              s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.tl(this,'o','Poll/Question Shown');
               s.manageVars('clearVars',s.linkTrackVars,1);
             }
@@ -129,13 +130,14 @@
               var $quizQuestion = $(this).parents('.usanetwork-quiz-question');
               var quizQuestionNumber = $quizQuestion.index() + 1;
               var quizQuestionTitle = $(this).closest('.usanetwork-quiz-question').find('.question-title').text();
+              var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
               var quizQuestionValue = $(this).attr('value');
 
               s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
               s.linkTrackVars = 'events,prop58,eVar58';
               s.linkTrackEvents = s.events = 'event89';
-              s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle;
-              s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestionTitle + ' : Answer : ' + quizQuestionValue;
+              s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
+              s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
               s.tl(this,'o','Poll/Question Answered');
               s.manageVars('clearVars',s.linkTrackVars,1);
             }

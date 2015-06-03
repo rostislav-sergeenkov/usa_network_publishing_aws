@@ -1,10 +1,15 @@
 <?php
 
 /**
-  * Implements hook_install()
-  */
+ * @file
+ * Install, update and uninstall functions for the pub_promotional_content module.
+ */
+
+/**
+ * Implements hook_install().
+ */
 function pub_promotional_content_install() {
-  $home_rotator = new stdClass;
+  $home_rotator = new stdClass();
   $home_rotator->api_version = 2;
   $home_rotator->name = 'homepage_rotator';
   $home_rotator->title = 'Home Page Rotator';
@@ -30,7 +35,7 @@ function pub_promotional_content_install() {
   nodequeue_save($home_rotator);
 
   $image_settings = variable_get('field_bundle_settings_file__image');
-  $image_settings['view_modes']['promoted_content']['custom_settings'] = true;
+  $image_settings['view_modes']['promoted_content']['custom_settings'] = TRUE;
 }
 
 /**

@@ -28,6 +28,8 @@ function publisher_install() {
   _publisher_setup_themes($profile);
   _publisher_setup_wysiwyg($profile);
   _publisher_setup_settings($profile);
+
+  variable_set('jquery_update_jquery_version', '1.8');
 }
 
 /**

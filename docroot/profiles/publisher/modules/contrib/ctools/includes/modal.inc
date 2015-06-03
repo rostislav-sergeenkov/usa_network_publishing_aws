@@ -67,6 +67,7 @@ function ctools_modal_add_js() {
   drupal_add_library('system', 'drupal.progress');
   drupal_add_library('system', 'drupal.ajax');
   ctools_add_js('modal');
+  ctools_add_js('default-action');
 
   ctools_add_css('modal');
   $done = TRUE;

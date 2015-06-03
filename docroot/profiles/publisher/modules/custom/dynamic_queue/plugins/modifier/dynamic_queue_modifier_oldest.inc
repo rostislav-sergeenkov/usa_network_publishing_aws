@@ -28,8 +28,8 @@ class DynamicQueueModifierOldest extends DynamicQueueModifierBase implements Dyn
   /**
    * {@inheritdoc}
    */
-  public static function alterForm(&$form, $settings, $DynamicQueue, $op) {
-    // Do nothing, as this is a sort modifer.
+  public static function alterForm(&$form, $settings, $dynamic_queue, $op, &$form_state) {
+    // Do nothing, as this is a sort modifier.
   }
 
   /**

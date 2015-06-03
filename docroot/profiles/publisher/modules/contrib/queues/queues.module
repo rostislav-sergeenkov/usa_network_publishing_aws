@@ -231,7 +231,7 @@ function queue_entity_access($op = 'edit', $queue = NULL, $account = NULL) {
     return TRUE;
   }
   if (isset($queue) && $type_name = $queue->type) {
-    $type_name = check_plain($type->type);
+    $type_name = check_plain($type_name);
 
     switch ($op) {
       case 'edit':

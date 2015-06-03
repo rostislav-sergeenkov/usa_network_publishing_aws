@@ -40,6 +40,10 @@
               + $('.ajax-load-block').data('sorting-column') + '/'
               + $('.ajax-load-block').data('sorting-order');
             break;
+          case 'all-shows-landing':
+            service_name = 'all-shows-landing';
+            additional_arguments = '/' + $('.ajax-load-block').data('sorting-order');
+            break;
           default:
             service_name = 'usanetwork-tv-shows';
             break;
@@ -47,8 +51,12 @@
       }
 
       $('.usa-wrap .ajax-load-block .node-usanetwork-promo a').unbind('click');
-
-      var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit + additional_arguments;
+      if (show_nid == 0) {
+        var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/' + start_from +'/'+ limit + additional_arguments;
+      }
+      else {
+        var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit + additional_arguments;
+      }
 
       $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
       $.ajax({

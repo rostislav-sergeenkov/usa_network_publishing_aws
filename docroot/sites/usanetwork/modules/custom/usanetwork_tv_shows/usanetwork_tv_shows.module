@@ -1628,9 +1628,14 @@ function _usanetwork_tv_shows_submenu() {
       }
     }
   }
-  
+  $show_title = array(
+    '#type' => 'html_tag',
+    '#tag' => (arg(2) == 'photos' || arg(2) == 'videos') ? 'h2' : 'h1',
+    '#attributes' => array('class' => 'title'),
+    '#value' => l($show_title, 'node/' . $show->nid),
+  );
   return theme('usanetwork_tv_shows_submenu', array(
-    'show_title' => l($show_title, 'node/' . $show->nid),
+    'show_title' => theme('html_tag', array('element' => $show_title)),
     'weekday' => isset($show_weekday) ? $show_weekday : NULL,
     'time' => isset($show_time) ? $show_time : NULL,
     'social_icons' => $social_links,
@@ -2879,6 +2884,7 @@ function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type)
     'tv_show' => 'Videos | ' . $show_node->title,
     'cast' => 'Cast & Info | ' . $show_node->title,
     'explore' => 'Explore | ' . $show_node->title,
+    'photos' => 'Photos | ' . $show_node->title,
   );
 
   if (!empty($show_node) && isset($default_titles[$page_type])) {
@@ -2917,6 +2923,13 @@ function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) 
         case 'videos':
           $omniture_variables['s.prop3'] = t('Video');
           $omniture_variables['s.prop4'] = t('!show_title : Video', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+
+        case 'videos':
+          $omniture_variables['s.prop3'] = t('Photos');
+          $omniture_variables['s.prop4'] = t('!show_title : Photos', array(
             '!show_title' => $context['entity']->title
           ));
           break;

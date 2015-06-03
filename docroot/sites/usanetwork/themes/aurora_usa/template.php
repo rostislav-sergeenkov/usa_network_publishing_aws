@@ -98,6 +98,10 @@ function aurora_usa_preprocess_html(&$vars) {
     if (!empty($show_id)) {
       $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
     }
+    $full_video = _usanetwork_get_field_item('file', $entity, 'field_mpx_entitlement', 'value');
+    if (!empty($full_video) && ($full_video == 'auth')) {
+      $vars['classes_array'][] = 'page-auth-video';
+    }
   }
   $status = drupal_get_http_header("status");
   if ($status == '403 Forbidden') {
@@ -138,10 +142,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
   drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
   drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
-  drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
-    'type' => 'external',
-    'scope' => 'footer',
-  ));
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',

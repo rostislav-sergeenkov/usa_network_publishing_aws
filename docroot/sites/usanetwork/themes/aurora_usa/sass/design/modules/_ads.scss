@@ -12,6 +12,11 @@
 }
 .usa-wrap {
   background-color: $poll-back;
+  .page-user & {
+    .region-content {
+      color: $poll-color;
+    }
+  }
 }
 
 .usa-adrails[data-menu-position="closed"] {

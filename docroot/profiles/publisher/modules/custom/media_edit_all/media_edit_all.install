@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Install functions for media_edit_all module.
+ */
+
+/**
+ * Enable jquery_update module.
+ */
+function media_edit_all_update_7000() {
+  if (!module_exists('jquery_update')) {
+    module_enable(array('jquery_update'));
+    variable_set('jquery_update_jquery_version', '1.8');
+  }
+}

@@ -425,6 +425,18 @@ function personalize_agent_start_now($agent_data) {
  * Implements hook_page_build().
  */
 function personalize_page_build(&$page) {
+  // Add JavaScript polyfills.
+  $path = base_path() . drupal_get_path('module', 'personalize') . '/js/personalize.ie8.js';
+  $polyfill = array(
+    '#tag' => 'script',
+    '#attributes' => array(
+      'src' => $path,
+    ),
+    '#prefix' => '<!--[if lte IE 8]>',
+    '#suffix' => '</script><![endif]-->',
+  );
+  drupal_add_html_head($polyfill, 'personalize_polyfill_ie8');
+
   // Add the necessary JavaScript settings for personalization.
   $settings = array(
     'optionPreselectParam' => PERSONALIZE_PRESELECTION_PARAM,
@@ -591,7 +603,8 @@ function personalize_form_visitor_actions_form_alter(&$form, &$form_state) {
     $form['advanced']['personalize_goal'] = array(
       '#type' => 'checkbox',
       '#title' => t('Add as a goal to the @campaign campaign', array('@campaign' => $campaign)),
-      '#default_value' => 1,
+      // Only check this by default if we're creating a new action.
+      '#default_value' => !isset($form['#visitor_action']['machine_name']),
     );
     $form['advanced']['personalize_goal_value'] = array(
       '#type' => 'textfield',
@@ -2040,6 +2053,7 @@ function personalize_agent_save($agent) {
     $agent = (object) $agent_array;
   }
 
+  module_invoke_all('personalize_agent_presave', $agent);
   entity_save('personalize_agent', $agent);
 
   // Make sure the static cache for this agent is reset.
@@ -3038,7 +3052,9 @@ function _personalize_convert_option_set_to_js_setting($option_set) {
     if (isset($option_set->winner) && $option_set->winner == $option['option_id']) {
       $os_array['winner'] = $i;
     }
-    $os_array['options'][$i]['option_label'] = filter_xss($option['option_label']);
+    if (isset($option['option_label'])) {
+      $os_array['options'][$i]['option_label'] = filter_xss($option['option_label']);
+    }
   }
   $os_array['option_names'] = $option_names;
   $os_array += array(

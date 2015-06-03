@@ -602,12 +602,20 @@ ul, li {
 }
 
 /* SHARING */
-.timeline-item .share {
+.timeline-item .timeline-gigya-share-container {
   position: absolute;
   bottom: 8px;
   right: 8px;
   height: 32px;
+  z-index: 100;
 }
+.timeline-item .timeline-gigya-share-container > div {
+  float: left;
+}
+.timeline-item .timeline-gigya-share-container .timeline-gigya-share-title {
+  padding-right: 8px;
+}
+/*
 .timeline-item .share li {
   float: right;
   list-style: none;
@@ -637,6 +645,7 @@ ul, li {
 .timeline-item .share li span.share-text {
   display: none;
 }
+*/
 
 /* timeline gallery description */
 .field-name-body {

@@ -6,7 +6,7 @@
           aspotShowSlide = $('#main-slider .slide .slide-content');
 
       // init add style for Aspot druggeble elements
-      if($('body').hasClass('front')) {
+      if(!$('body').hasClass('usa-tv-show')) {
         changeDraggableElementsPosition(aspotHomeSlide);
       } else {
         changeDraggableElementsPosition(aspotShowSlide);
@@ -52,7 +52,7 @@
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
           // init add style for Aspot druggeble elements
-          if($('body').hasClass('front')) {
+          if(!$('body').hasClass('usa-tv-show')) {
             changeDraggableElementsPosition(aspotHomeSlide);
           } else {
             changeDraggableElementsPosition(aspotShowSlide);

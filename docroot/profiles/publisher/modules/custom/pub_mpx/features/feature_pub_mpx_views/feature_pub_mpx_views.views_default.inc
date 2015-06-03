@@ -36,6 +36,12 @@ function feature_pub_mpx_views_views_default_views() {
   $handler->display->display_options['pager']['options']['total_pages'] = '5';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: thePlatform MPX Video: thePlatform MPX Video Thumbnail */
+  $handler->display->display_options['fields']['thumbnail_url']['id'] = 'thumbnail_url';
+  $handler->display->display_options['fields']['thumbnail_url']['table'] = 'mpx_video';
+  $handler->display->display_options['fields']['thumbnail_url']['field'] = 'thumbnail_url';
+  $handler->display->display_options['fields']['thumbnail_url']['label'] = '';
+  $handler->display->display_options['fields']['thumbnail_url']['element_label_colon'] = FALSE;
   /* Field: File: File ID */
   $handler->display->display_options['fields']['fid']['id'] = 'fid';
   $handler->display->display_options['fields']['fid']['table'] = 'file_managed';
@@ -54,18 +60,22 @@ function feature_pub_mpx_views_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: File: Published */
+  $handler->display->display_options['fields']['published']['id'] = 'published';
+  $handler->display->display_options['fields']['published']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['published']['field'] = 'published';
+  $handler->display->display_options['fields']['published']['label'] = 'View State';
+  $handler->display->display_options['fields']['published']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['published']['type'] = 'custom';
+  $handler->display->display_options['fields']['published']['type_custom_true'] = 'Public';
+  $handler->display->display_options['fields']['published']['type_custom_false'] = 'Not public';
+  $handler->display->display_options['fields']['published']['not'] = 0;
   /* Field: thePlatform MPX Video: thePlatform MPX Video Description */
   $handler->display->display_options['fields']['description']['id'] = 'description';
   $handler->display->display_options['fields']['description']['table'] = 'mpx_video';
   $handler->display->display_options['fields']['description']['field'] = 'description';
   $handler->display->display_options['fields']['description']['label'] = 'Description';
   $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
-  /* Field: thePlatform MPX Video: thePlatform MPX Video Thumbnail */
-  $handler->display->display_options['fields']['thumbnail_url']['id'] = 'thumbnail_url';
-  $handler->display->display_options['fields']['thumbnail_url']['table'] = 'mpx_video';
-  $handler->display->display_options['fields']['thumbnail_url']['field'] = 'thumbnail_url';
-  $handler->display->display_options['fields']['thumbnail_url']['label'] = '';
-  $handler->display->display_options['fields']['thumbnail_url']['element_label_colon'] = FALSE;
   /* Sort criterion: File: Upload date */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
@@ -123,10 +133,29 @@ function feature_pub_mpx_views_views_default_views() {
     6 => 0,
     7 => 0,
   );
+  /* Filter criterion: File: Public or Not public */
+  $handler->display->display_options['filters']['view_state']['id'] = 'view_state';
+  $handler->display->display_options['filters']['view_state']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['view_state']['field'] = 'view_state';
+  $handler->display->display_options['filters']['view_state']['value'] = 'All';
+  $handler->display->display_options['filters']['view_state']['group'] = 1;
+  $handler->display->display_options['filters']['view_state']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['view_state']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['view_state']['expose']['label'] = 'View State';
+  $handler->display->display_options['filters']['view_state']['expose']['operator'] = 'view_state_op';
+  $handler->display->display_options['filters']['view_state']['expose']['identifier'] = 'view_state';
+  $handler->display->display_options['filters']['view_state']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    21 => 0,
+  );
   /* Filter criterion: thePlatform MPX Video: thePlatform MPX Categories */
   $handler->display->display_options['filters']['categories']['id'] = 'categories';
   $handler->display->display_options['filters']['categories']['table'] = 'mpx_video';
   $handler->display->display_options['filters']['categories']['field'] = 'categories';
+  $handler->display->display_options['filters']['categories']['group'] = 1;
   $handler->display->display_options['filters']['categories']['exposed'] = TRUE;
   $handler->display->display_options['filters']['categories']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['categories']['expose']['label'] = 'Categories';

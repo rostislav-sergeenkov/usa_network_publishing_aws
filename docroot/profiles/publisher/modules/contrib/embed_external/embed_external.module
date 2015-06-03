@@ -138,13 +138,33 @@ function embed_external_wysiwyg_include_directory($type) {
 }
 
 /**
+ * Implements hook_wysiwyg_plugin().
+ */
+function embed_external_wysiwyg_plugin($editor, $version) {
+  if ($version > 4 && $editor == 'ckeditor') {
+    return array(
+      'embed_external_widget' => array(
+        'url' => 'https://www.drupal.org/project/embed_external',
+        'path' => drupal_get_path('module', 'embed_external') . '/plugins/wysiwyg/embed_external',
+        'filename' => 'embed_external_widget.js',
+        'buttons' => array(
+          'embed_external_widget' => t('Embed External Widget'),
+        ),
+        'load' => TRUE,
+        'internal' => FALSE,
+      ),
+    );
+  }
+}
+
+/**
  * Implements hook_filter_info().
  */
 function embed_external_filter_info() {
   $filters = array();
 
   $filters['embed_external'] = array(
-    'title' => t('External embed'),
+    'title' => t('Embed external'),
     'description' => t("Replaces &lt;iframe&gt; elements with the appropriate embed markup."),
     'process callback' => 'embed_external_filter_process',
     'tips callback' => 'embed_external_filter_tips',
@@ -297,7 +317,7 @@ function embed_external_plugin_preview($plugin) {
  * @param $page_callback_result
  *   The result of the page callback, usually embed_external_plugin_preview().
  *
- * @return void
+ * @return
  */
 function embed_external_deliver_preview($page_callback_result) {
   // Menu status constants are integers; page content is a string or array.
@@ -314,7 +334,7 @@ function embed_external_deliver_preview($page_callback_result) {
   // automagically.
   drupal_add_js(drupal_get_path('module', 'embed_external') . '/js/iframeResizer.contentWindow.min.js');
 
-  // Get page styles and Javascript.
+  // Get page styles and JavaScript.
   $styles = drupal_get_css();
   $scripts = drupal_get_js();
 
@@ -457,7 +477,7 @@ function embed_external_plugin_select_form($pluginset, $return_id, $js = NULL, $
     print ajax_render($commands);
   }
   else {
-    // We don't care about non-Javascript uses of this form because
+    // We don't care about non-JavaScript uses of this form because
     // WYSIWYG won't work without it anyway.
     drupal_not_found();
   }
@@ -704,8 +724,9 @@ function embed_external_plugin_select_get_result($form_state) {
  */
 function embed_external_generate_embed_snippet($configuration) {
   $configuration = (array) $configuration;
-
-  $output = "<div class='embed-external-wrapper'><div class='embed-external-overlay'></div><iframe class='embed-external' ";
+  // We have to wrap the iframe with a div because otherwise CKEditor won't
+  // recognize it as a block-level element and it will nest it inside <p> tags.
+  $output = "<div class='embed-external-wrapper'><iframe class='embed-external' ";
   foreach ($configuration as $key => $value) {
     $output .= "data-" . str_replace('_', '-', $key) . "='" . $value . "' ";
   }
@@ -714,7 +735,7 @@ function embed_external_generate_embed_snippet($configuration) {
   $url = url('embed_external/preview/' . $configuration['plugin'], array('query' => $configuration));
   $output .= "src='" . $url . "' ";
 
-  $output .= " scrolling='no' frameborder='0' /></div>";
+  $output .= " scrolling='no' frameborder='0'></iframe></div>";
 
   return $output;
 }

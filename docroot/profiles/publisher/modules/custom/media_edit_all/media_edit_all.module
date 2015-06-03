@@ -122,5 +122,7 @@ function media_edit_all_field_widget_form_alter(&$element, &$form_state, $contex
   if (isset($element['#field_name']) && !isset($media_fields[$element['#field_name']]) && in_array($element['#field_name'], $media_fields['fields'])) {
     $media_fields[$element['#field_name']] = TRUE;
     $element['#attached']['library'][] = array('media_edit_all', 'media.editAll');
+    // Add a class for this field so media-edit-all.js can use it.
+    $element['#attributes']['class'][] = 'media-edit-all-field';
   }
 }

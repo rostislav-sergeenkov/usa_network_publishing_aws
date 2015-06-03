@@ -184,9 +184,10 @@
 
           $.each(Drupal.settings.media.wysiwyg_allowed_attributes, function(i, a) {
             if (value = element.attr(a)) {
-              // Replace &quot; by \" to avoid error with JSON format.
+              // Replace &quot; with " to avoid error with JSON format. Note
+              // that it will be JSON encoded later to \".
               if (typeof value == 'string') {
-                value = value.replace('&quot;', '\\"');
+                value = value.replace(/&quot;/g, '"');
               }
               file_info.attributes[a] = value;
             }

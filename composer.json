@@ -11,7 +11,7 @@
     "require": {
         "composer/installers": "@dev",
         "drush/drush": "6.4.0",
-        "nbcuots/publisher7": "7.55.0"
+        "nbcuots/publisher7": "7.58.0"
     },
     "scripts": {
       "post-install-cmd": "vendor/nbcuots/publisher7/scripts/publisher-install",

@@ -346,6 +346,18 @@ function ctools_wizard_wrapper($form, &$form_state) {
       );
     }
 
+    // If we have a back button, then we probably have a next or finish or return
+    // button, so figure out where to add the default action class.
+    if (!empty($form_info['show back']) && isset($form_state['previous'])) {
+      ctools_add_js('default-action');
+      if (isset($form['buttons']['next'])) {
+        $form['buttons']['next']['#attributes']['class'][] = 'ctools-default-action';
+      }
+      else if (isset($form['buttons']['return'])) {
+        $form['buttons']['return']['#attributes']['class'][] = 'ctools-default-action';
+      }
+    }
+
     // If we are allowed to cancel, place a cancel button.
     if ((isset($form_info['cancel path']) && !isset($form_info['show cancel'])) || !empty($form_info['show cancel'])) {
       $form['buttons']['cancel'] = array(

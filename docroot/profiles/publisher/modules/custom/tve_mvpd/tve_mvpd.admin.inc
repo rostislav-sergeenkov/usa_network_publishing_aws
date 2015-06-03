@@ -27,9 +27,9 @@ function tve_mvpd_admin_connection_form($form, &$form_state) {
     drupal_set_message(t('MVPD service URL incorrect (or not provided).'), 'warning');
   }
 
-  // We'll add this suffix to fields that are required, so they look as normal
-  // required fields, while their values are checked manually in custom
-  // validation handler. Made because we have checkbox-dependant required state.
+  // This suffix is added to fields with checkbox-dependant required state
+  // so they look as normal required fields, while their values are checked
+  // in custom validation handler.
   $required_suffix = ' <span class="form-required" title="' . t('This field is required.') . '">*</span>';
 
   // Advanced input mode.
@@ -40,7 +40,7 @@ function tve_mvpd_admin_connection_form($form, &$form_state) {
     '#description' => t('For experienced users only.'),
   );
 
-  // Raw MVPD service url.
+  // Raw MVPD service URL.
   $form['tve_mvpd_service_raw'] = array(
     '#title' => t('Absolute MVPD Service URL') . $required_suffix,
     '#type' => 'textfield',
@@ -81,6 +81,7 @@ function tve_mvpd_admin_connection_form($form, &$form_state) {
   $form['security']['tve_mvpd_api_key'] = array(
     '#title' => t('API Key') . $required_suffix,
     '#type' => 'textfield',
+    '#maxlength' => 24,
     '#default_value' => variable_get('tve_mvpd_api_key', ''),
     '#description' => t('The value of the API key is a 24 character alphanumeric string.'),
   );
@@ -98,12 +99,12 @@ function tve_mvpd_admin_connection_form($form, &$form_state) {
     ),
   );
 
-  // MVPD service url.
+  // MVPD service URL.
   $form['tve_mvpd_service'] = array(
     '#title' => t('MVPD Service URL') . $required_suffix,
     '#type' => 'textfield',
     '#default_value' => variable_get('tve_mvpd_service', ''),
-    '#description' => t('Absolute URL to the MVPD service.'),
+    '#description' => t('Absolute URL to the MVPD service must include Brand, Instanse and Platform. Example: http://mvpd-admin.nbcuni.com/mvpd/service/style/prod.'),
     '#states' => array(
       'invisible' => array(
         ':input#edit-tve-mvpd-advanced-mode' => array('checked' => TRUE),
@@ -111,31 +112,20 @@ function tve_mvpd_admin_connection_form($form, &$form_state) {
     ),
   );
 
-  // Requestor ID.
-  $form['tve_mvpd_brand_id'] = array(
-    '#title' => t('Requestor ID') . $required_suffix,
+  // MVPD details service URL.
+  $form['tve_mvpd_details_service_url'] = array(
+    '#title' => t('MVPD details service URL'),
     '#type' => 'textfield',
-    '#default_value' => variable_get('tve_mvpd_brand_id', ''),
-    '#description' => t('Specify unique requestor ID.'),
-    '#states' => array(
-      'invisible' => array(
-        ':input#edit-tve-mvpd-advanced-mode' => array('checked' => TRUE),
-      ),
-    ),
+    '#default_value' => tve_mvpd_get_mvpd_details_service_url(),
+    '#description' => t('Absolute URL to the MVPD details service.'),
   );
 
-  // Instance (environment).
-  $form['tve_mvpd_instance'] = array(
-    '#title' => t('Instance') . $required_suffix,
-    '#type' => 'select',
-    '#options' => drupal_map_assoc(array(TVE_MVPD_INST_PROD, TVE_MVPD_INST_STAGE)),
-    '#default_value' => variable_get('tve_mvpd_instance', ''),
-    '#description' => t('Specify type of an instance.'),
-    '#states' => array(
-      'invisible' => array(
-        ':input#edit-tve-mvpd-advanced-mode' => array('checked' => TRUE),
-      ),
-    ),
+  // Brand details service URL.
+  $form['tve_mvpd_brand_details_service_url'] = array(
+    '#title' => t('Brand details service URL'),
+    '#type' => 'textfield',
+    '#default_value' => tve_mvpd_get_brand_details_service_url(),
+    '#description' => t('Absolute URL to the Brand details service.'),
   );
 
   // Generic "error" message.
@@ -163,19 +153,19 @@ function tve_mvpd_admin_connection_form($form, &$form_state) {
 function tve_mvpd_admin_connection_form_validate($form, &$form_state) {
   // Advanced mode.
   if (!empty($form_state['values']['tve_mvpd_advanced_mode'])) {
+    $service_field = 'tve_mvpd_service_raw';
     $service_url = trim($form_state['values']['tve_mvpd_service_raw'], '/');
-    $form_state['values']['tve_mvpd_service_url'] = $service_url;
     $api_key = trim($form_state['values']['tve_mvpd_api_key']);
     $secret_key = trim($form_state['values']['tve_mvpd_api_secret']);
     $method = $form_state['values']['tve_mvpd_security'];
 
     if (empty($service_url)) {
-      form_set_error('tve_mvpd_service_raw', t('MVPD Service URL field is requred.'));
+      form_set_error('tve_mvpd_service_raw', t('MVPD Service URL field is required.'));
       return;
     }
 
     if (empty($api_key)) {
-      form_set_error('tve_mvpd_api_key', t('API Key field is requred.'));
+      form_set_error('tve_mvpd_api_key', t('API Key field is required.'));
       return;
     }
 
@@ -187,7 +177,7 @@ function tve_mvpd_admin_connection_form_validate($form, &$form_state) {
     $query = array('api_key' => $api_key);
     if (in_array($method, array('sha256', 'md5'))) {
       if (!$secret_key) {
-        form_set_error('tve_mvpd_api_secret', t('Secret Key field is requred.'));
+        form_set_error('tve_mvpd_api_secret', t('Secret Key field is required.'));
         return;
       }
       $query['sig'] = tve_mvpd_generate_signature($api_key, $secret_key, $method);
@@ -197,33 +187,40 @@ function tve_mvpd_admin_connection_form_validate($form, &$form_state) {
   }
   // Simple mode.
   else {
-    $service = trim($form_state['values']['tve_mvpd_service'], '/');
-    if (empty($service)) {
-      form_set_error('tve_mvpd_service_raw', t('MVPD Service URL field is requred.'));
+    $service_field = 'tve_mvpd_service';
+    $service_url = trim($form_state['values']['tve_mvpd_service'], '/');
+    if (empty($service_url)) {
+      form_set_error('tve_mvpd_service_raw', t('MVPD Service URL field is required.'));
       return;
     }
 
-    if (!valid_url($service)) {
+    if (!valid_url($service_url)) {
       form_set_error('tve_mvpd_service', t('Invalid MVPD Service URL'));
       return;
     }
+  }
 
-    $brand = trim($form_state['values']['tve_mvpd_brand_id']);
-    if (empty($brand)) {
-      form_set_error('tve_mvpd_brand_id', t('Requestor ID field is requred.'));
-      return;
+  $form_state['values']['tve_mvpd_service_url'] = $service_url;
+  $service_response = _tve_mvpd_get_service_response($service_url);
+
+  if (!$service_response->response_is_valid) {
+    form_set_error($service_field, t('Could not retrieve any data from MVPD details service.'));
+
+    if (module_exists('devel')) {
+      dpm($service_response, t('MVPD details service response'));
     }
-    $form_state['values']['tve_mvpd_brand_id'] = $brand;
+  }
 
-    $instance = trim($form_state['values']['tve_mvpd_instance']);
-    if (empty($brand)) {
-      form_set_error('tve_mvpd_brand_id', t('Instance field is requred.'));
-      return;
-    }
-    $form_state['values']['tve_mvpd_instance'] = $instance;
+  $details_service_url = $form_state['values']['tve_mvpd_details_service_url'];
+  if ($details_service_url && !valid_url($details_service_url, TRUE)) {
+    form_set_error('tve_mvpd_details_service_url', t('MVPD details service URL is invalid. Please recheck.'));
+    return;
+  }
 
-    $service_url = "{$service}/{$brand}/{$instance}";
-    $form_state['values']['tve_mvpd_service_url'] = $service_url;
+  $brand_details_service_url = $form_state['values']['tve_mvpd_brand_details_service_url'];
+  if ($brand_details_service_url && !valid_url($brand_details_service_url, TRUE)) {
+    form_set_error('tve_mvpd_brand_details_service_url', t('Brand details service URL is invalid. Please recheck.'));
+    return;
   }
 
   if ('check_connection' != $form_state['triggering_element']['#name']) {
@@ -231,9 +228,8 @@ function tve_mvpd_admin_connection_form_validate($form, &$form_state) {
   }
 
   $results = _tve_mvpd_get_providers_from_service($service_url);
-
   if (!$results) {
-    form_set_error('', t('Could not retrieve MVPD data from URL %url', array(
+    form_set_error($service_field, t('Could not retrieve MVPD data from URL %url', array(
       '%url' => $service_url,
     )));
   }
@@ -243,6 +239,18 @@ function tve_mvpd_admin_connection_form_validate($form, &$form_state) {
     )));
     if (module_exists('devel')) {
       dpm($results, t('Results'));
+    }
+  }
+
+  if ($details_service_url) {
+    $details_service_response = _tve_mvpd_get_service_response($details_service_url);
+
+    if (!$details_service_response->response_is_valid) {
+      form_set_error('', t('Could not retrieve any data from MVPD details service.'));
+
+      if (module_exists('devel')) {
+        dpm($details_service_response, t('MVPD details service response'));
+      }
     }
   }
 }
@@ -412,6 +420,7 @@ function tve_mvpd_admin_form($form, &$form_state) {
   );
 
   // @todo Use system_settings_form($form) or explain 'why' we don't use it.
+
   return $form;
 }
 
@@ -567,6 +576,44 @@ function _tve_mvpd_check_default_logos($options, $provider, $settings, $logo_typ
   }
 
   return $conflict_text;
+}
+
+/**
+ * Returns response of the MVPD service.
+ *
+ * @param $url
+ *
+ * @return object
+ */
+function _tve_mvpd_get_service_response($url) {
+  $response = drupal_http_request(
+    $url,
+    array(
+      'timeout' => TVE_MVPD_SERVICE_REQUEST_TIMEOUT,
+    )
+  );
+  $response->response_is_valid = _tve_mvpd_is_service_response_valid($response);
+
+  return $response;
+}
+
+/**
+ * Checks the accessibility of the MVPD service.
+ *
+ * Analyzes HTTP-response returned by drupal_http_request().
+ * Returns TRUE if service response is valid and can be used by TVE application.
+ *
+ * @see drupal_http_request()
+ *
+ * @param $response
+ *
+ * @return bool
+ */
+function _tve_mvpd_is_service_response_valid($response) {
+  return !isset($response->error)
+  && 200 == $response->code
+  && $response->data != '"error"'
+  && !empty($response->data);
 }
 
 /**

@@ -109,7 +109,7 @@
         $.each(context, function(index, provider) {
 
           // mvpd_id is a unique field.
-          if (provider.mvpd_id === id) {
+          if (provider && provider.mvpd_id === id) {
 
             // semorizing found provider
             platformFromMemory[id] = result = provider;
@@ -393,9 +393,7 @@
           if (mappingRules.hasOwnProperty(key)) {
             mappedResult[mappingRules[key]] = obj[key];
           }
-          else {
-            mappedResult[key] = obj[key];
-          }
+          mappedResult[key] = obj[key];
         }
 
         return mappedResult;

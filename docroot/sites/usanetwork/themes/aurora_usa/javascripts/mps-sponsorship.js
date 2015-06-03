@@ -64,7 +64,7 @@
 
       body.once(function () {
         // main menu
-        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), style.dark);
+        //Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), style.dark);
 
         // home page
         if (body.hasClass('front')) {

@@ -11,8 +11,8 @@
 
       if ($cookies['nbcu_ap_loginpending']) {
         initHeader();
-        //authService.promise.then(function () {
-        //});
+        authService.promise.then(function () {
+        });
       }
 
       if (authService.isAuthN()) {

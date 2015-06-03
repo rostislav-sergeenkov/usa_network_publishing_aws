@@ -11563,7 +11563,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .asset-img, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .asset-img, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .asset-img {
-    height: auto;
+    height: 56.25vw;
     overflow: hidden;
     text-align: center;
   }
@@ -11579,7 +11579,8 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .asset-img img {
     height: auto;
-    position: relative;
+    max-height: 100%;
+    max-width: 100%;
   }
 }
 .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .slide-info {
@@ -11765,6 +11766,7 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper {
     bottom: auto;
+    top: calc(56.25vw + 13px);
   }
 }
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager {

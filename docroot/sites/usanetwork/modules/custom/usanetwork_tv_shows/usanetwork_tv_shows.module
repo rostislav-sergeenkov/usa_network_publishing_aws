@@ -836,6 +836,10 @@ function usanetwork_tv_shows_related_content_cache_form_submit(&$form, &$form_st
       $tv_show_node = node_load($matches[1]);
 
       _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_gallery_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_episode_content($tv_show_node);
+      _usanetwork_tv_shows_cache_rebuild_related_person_content($tv_show_node);
     }
   }
 }
@@ -1882,6 +1886,11 @@ function _usanetwork_tv_shows_cache_set_related_video_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -1923,6 +1932,11 @@ function _usanetwork_tv_shows_cache_set_related_gallery_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -1960,6 +1974,11 @@ function _usanetwork_tv_shows_cache_set_related_person_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -2000,6 +2019,11 @@ function _usanetwork_tv_shows_cache_set_related_episode_content($tv_show_node) {
       }
 
       $cached_data_item->media_icon = $media_icon;
+
+      if (!empty($entity->field_sponsored)) {
+        $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+        $cached_data_item->sponsored = $field_sponsored;
+      }
     }
   }
 
@@ -2855,6 +2879,7 @@ function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type)
     'tv_show' => 'Videos | ' . $show_node->title,
     'cast' => 'Cast & Info | ' . $show_node->title,
     'explore' => 'Explore | ' . $show_node->title,
+    'photos' => 'Photos | ' . $show_node->title,
   );
 
   if (!empty($show_node) && isset($default_titles[$page_type])) {
@@ -2893,6 +2918,13 @@ function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) 
         case 'videos':
           $omniture_variables['s.prop3'] = t('Video');
           $omniture_variables['s.prop4'] = t('!show_title : Video', array(
+            '!show_title' => $context['entity']->title
+          ));
+          break;
+
+        case 'videos':
+          $omniture_variables['s.prop3'] = t('Photos');
+          $omniture_variables['s.prop4'] = t('!show_title : Photos', array(
             '!show_title' => $context['entity']->title
           ));
           break;

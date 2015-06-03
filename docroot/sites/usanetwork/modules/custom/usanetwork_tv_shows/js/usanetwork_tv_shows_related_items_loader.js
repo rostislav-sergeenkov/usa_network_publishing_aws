@@ -125,7 +125,7 @@
               : 0;
         var additional_offset = (window.innerHeight < window_size_desktop_large)? 130: 230;
         if (load_more_offset - window.innerHeight + additional_offset - scroll_top < 0){
-          if ($('.ajax-load-block .load-more-link a').hasClass('disabled') || $('.ajax-load-block .load-more-link a').hasClass('disabled-infinity')){
+          if ($('.ajax-load-block .load-more-link a').hasClass('disabled') || $('.ajax-load-block .load-more-link a').hasClass('disabled-infinity') || $('.ajax-load-block .load-more-link a').length == 0){
             return false;
           }
           $('.ajax-load-block .load-more-link a').addClass('disabled');

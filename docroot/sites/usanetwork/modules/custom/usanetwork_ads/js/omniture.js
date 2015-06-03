@@ -339,7 +339,8 @@
       if(!$('body').hasClass('page-node-microsite')) {
 
         // Click promo item
-        $('.usa-wrap .node-usanetwork-promo a').once('omniture-tracking', function () {
+        $('.usa-wrap .node-usanetwork-promo a,' +
+        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             e.preventDefault();
             var self = $(this);
@@ -385,10 +386,7 @@
         });
 
         // Click on submenu schedule items
-        $('.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .node-usanetwork-promo a,' +
-        '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .on-now-panel-title a,' +
-        '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .icons-block a,' +
-        '.schedule-tab .pane-usanetwork-menu-usanetwork-menu-sm-primetime a').once('omniture-tracking', function () {
+        $('header .schedule-tab a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               e.preventDefault();
@@ -444,9 +442,29 @@
                 network = 'Pinterest';
               }
 
+              var name = '';
+
+              if($(this).closest('.gallery-wrapper').length > 0) {
+
+                name = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text();
+
+              } else if($(this).closest('header .tab-item-wrapper').length > 0) {
+
+                name = $('header .tab-item-wrapper .node-usanetwork-promo .title').text();
+
+              } else if($(this).closest('.block-character-info-header').length > 0) {
+
+                name = $('.block-character-info-header .full-name').text();
+
+              } else if($(this).closest('.episode-info-block').length > 0) {
+
+                name = $('.episode-info-block .episode-title').text();
+
+              }
+
               s.linkTrackVars = 'events,eVar73,eVar74';
               s.linkTrackEvents = s.events = 'event41';
-              s.eVar73 = 'example Patrick J. Adams Interview'; //todo add title name
+              s.eVar73 = name.trim();
               s.eVar74 = network;
               s.tl(this, 'o', 'Social Share');
               s.manageVars('clearVars', s.linkTrackVars, 1);

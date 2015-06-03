@@ -67,14 +67,13 @@
       if(blockAd.find('.mps-slot').length > 0) {
         return false;
       } else {
+
+        var lastList = $('.ajax-load-block ul').last(),
+            listElem = lastList.find('.node-usanetwork-promo');
+
         Drupal.behaviors.mpsAdvert.mpsMakeRequest();
         Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-        // node-type-tv-show
-        if ($('body').hasClass('node-type-tv-show')) {
-          var lastList = $('.ajax-load-block ul').last(),
-              listElem = lastList.find('.node-usanetwork-promo');
-          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(listElem, 'dark');
-        }
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(listElem, 'dark');
       }
     },
 

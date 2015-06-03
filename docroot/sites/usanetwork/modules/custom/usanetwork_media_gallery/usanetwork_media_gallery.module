@@ -449,28 +449,35 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
  * @param $season_nid
  */
 function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL, $episode_num = NULL, $sorting = 'ASC', $start = NULL, $lenght = NULL) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'media_gallery')
-    ->propertyCondition('status', NODE_PUBLISHED)
-    ->fieldCondition('field_show', 'target_id', $show_nid, '=')
-    ->propertyOrderBy('created', $sorting);
-
+  $query = db_select('node', 'node');
+  $query->fields('node', array('nid'));
+  $query->condition('node.type', 'media_gallery');
+  $query->condition('node.status', NODE_PUBLISHED);
+  $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+  $query->condition('field_show.field_show_target_id', $show_nid);
+  $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
+  $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+  $query->orderBy('sorted_time', $sorting);
   if(is_numeric($start) && is_numeric($lenght)) {
     $query->range($start, $lenght);
   }
-
   if (is_string($gallery_type)) {
-    $query->fieldCondition('field_gallery_type', 'value', $gallery_type, '=');
+    $query->leftJoin('field_data_field_gallery_type', 'gallery_type', 'gallery_type.entity_id = node.nid');
+    $query->condition('gallery_type.field_gallery_type_value', $gallery_type);
   }
   if (is_numeric($episode_num)) {
-    $query->fieldCondition('field_season', 'target_id', $episode_num, '=');
+    $query->leftJoin('field_data_field_season', 'field_season', 'field_season.entity_id = node.nid');
+    $query->condition('field_season.field_season_target_id', $episode_num);
   }
-  $result = $query->execute();
-  if (empty($result['node'])) {
-    return '';
+  $results = $query->execute()->fetchAll();
+  if (!empty($results)) {
+    $node_ids = array();
+    foreach ($results as $result) {
+      $node_ids[] = $result->nid;
+    }
+    return entity_load('node', $node_ids);
   }
-  return entity_load('node', array_keys($result['node']));
+  return FALSE;
 }
 
 /**
@@ -770,6 +777,10 @@ function _usanetwork_media_gallery_render_related_content_item_default($data) {
     $mobile_image = image_style_url('591x330', $data->raw_image_uri);
   }
 
+  if (!empty($data->sponsored)) {
+    $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
+  }
+
   $theme_variables = array(
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
@@ -785,6 +796,7 @@ function _usanetwork_media_gallery_render_related_content_item_default($data) {
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,
     'media_icon' => $data->media_icon,
+    'content_id' => isset($content_id) ? $content_id : FALSE,
   );
 
   return theme('usanetwork_media_gallery_related_item', $theme_variables);

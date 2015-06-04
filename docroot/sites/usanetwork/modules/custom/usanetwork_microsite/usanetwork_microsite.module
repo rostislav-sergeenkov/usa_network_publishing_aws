@@ -297,12 +297,13 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 
       $microsite_url = url('node/' . arg(1) . '/microsite');
       $microsite_theme_path = '/' . drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/' . $microsite_wrapper->field_ms_theme->value();
+      $anchor_delta = usanetwork_microsite_delta_anchor_relations($node);
       $microsites_settings = array(
         'nid' => $node->nid,
         'title' => $node->title,
         'base_path' => ($microsite_url) ? $microsite_url : '/dig',
         'microsite_theme_path' => $microsite_theme_path,
-
+        'anchor_delta' => $anchor_delta,
       );
       drupal_add_js(array('microsites_settings' => $microsites_settings), 'setting');
 
@@ -3563,4 +3564,30 @@ function _usanetwork_microsite_get_short_name_for_video($file) {
 function usanetwork_microsite_get_id_by_string($string) {
   module_load_include('inc', 'pathauto', 'pathauto');
   return pathauto_cleanstring($string);
+}
+
+/**
+ * Retrieve array with anchor delta relations.
+ *
+ * @param $node
+ * @return array
+ */
+function usanetwork_microsite_delta_anchor_relations($node) {
+  $relations = array();
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  foreach ($node_wrapper->field_ms_section as $delta => $section_wrapper) {
+    $anchor = usanetwork_microsite_get_anchor_from_section($section_wrapper);
+    $relations[$anchor] = $delta;
+  }
+  return $relations;
+}
+
+/**
+ * Get anchor for section.
+ *
+ * @param $section_wrapper
+ * @return mixed
+ */
+function usanetwork_microsite_get_anchor_from_section($section_wrapper) {
+  return $section_wrapper->field_ms_section_type->value();
 }

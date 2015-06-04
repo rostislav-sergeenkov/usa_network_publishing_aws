@@ -39,6 +39,7 @@ Project demo: http://shindiristudio.com/timeline
 (function ($) {
   Drupal.behaviors.timeline_gallery = {
 
+/*
     // socialShareOmniture
     socialShareOmniture: function(shareType) {
       usa_debug('USA: ' + shareType + 'Share()');
@@ -49,12 +50,112 @@ Project demo: http://shindiristudio.com/timeline
       s.tl(this,'o','Social Share');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
+*/
+    // Gigya share bar
+    sendSocialShareOmniture: function(shareType, title) {
+      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+        s.linkTrackVars = 'events,eVar73,eVar74';
+        s.linkTrackEvents = s.events = 'event41';
+        s.eVar73 = title;
+        s.eVar74 = shareType;
+      s.eVar74 = shareType;
+        s.tl(this, 'o', 'Social Share');
+        s.manageVars('clearVars', s.linkTrackVars, 1);
+      }
+    },
+
+    updateGigyaSharebar: function(shareBarId, previewImage) {
+      usa_debug('======== updateGigyaSharebar(' + shareBarId + ', ' + previewImage + ')');
+      if (typeof Drupal.gigya != 'undefined') {
+        var sharebar = new Object(),
+            $timelineContainer = $('#timeline-player-slideshow-area .timelineFlat'),
+            caption = $timelineContainer.attr('data-share-description'), //.find('.video-description').text(),
+            title = $timelineContainer.attr('data-share-title'), // .find('.video-title').text(),
+            imageSrc = previewImage;
+
+        sharebar.gigyaSharebar = {
+          containerID: shareBarId,
+          iconsOnly: true,
+          layout: "horizontal",
+          shareButtons: "facebook, twitter, tumblr, pinterest, share",
+          shortURLs: "never",
+          showCounts: "none"
+        }
+
+        sharebar.gigyaSharebar.ua = {
+          description: caption,
+          imageBhev: "url",
+          imageUrl: imageSrc,
+          linkBack: url,
+          title: title
+        }
+        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+
+/*
+        // set social sharing clicks
+        setTimeout(function(){
+          $('#' + shareBarId).find('.gig-share-button').on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              var $self = $(this);
+              var $container = $self.parents('.gig-button-container');
+              var network = 'Share';
+              if ($container.hasClass('gig-button-container-facebook')) {
+                network = 'Facebook';
+              }
+              else if ($container.hasClass('gig-button-container-twitter')) {
+                network = 'Twitter';
+              }
+              else if ($container.hasClass('gig-button-container-tumblr')) {
+                network = 'Tumblr';
+              }
+              else if ($container.hasClass('gig-button-container-pinterest')) {
+                network = 'Pinterest';
+              }
+
+              s.linkTrackVars = 'events,eVar73,eVar74';
+              s.linkTrackEvents = s.events = 'event41';
+              s.eVar73 = title; // 'example Patrick J. Adams Interview'; //todo add title name
+              s.eVar74 = network;
+              s.tl(this, 'o', 'Social Share');
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
+          });
+        }, 1000);
+*/
+      }
+    },
+
+    setOmnitureData: function(currentId) {
+      if ($('body').hasClass('page-node-microsite') && typeof Drupal.behaviors.ms_global != 'undefined' && typeof Drupal.behaviors.ms_global.setOmnitureData == 'function') {
+        Drupal.behaviors.ms_global.setOmnitureData('timeline');
+      }
+      else if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+        var pageTitle = $('#page-title').text(),
+//            currentId = $(this).attr('href').replace('#', ''),
+            $item = $('.timeline-items .timeline-item[data-id="' + currentId + '"]'),
+            itemSeason = $item.attr('data-season-num'),
+            itemEpisode = $item.attr('data-episode-num'),
+            itemEpisodeName = $item.attr('data-episode-name'),
+            itemScene = $item.attr('data-description'),
+            slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
+        if (pageTitle == '') pageTitle = $('#timeline-title').text();
+
+        s.prop3 = 'Gallery';
+        s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
+        s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + pageTitle;
+        s.pageName = s.prop5 + ' : ' + slideTitle;
+
+        if (typeof s_gi != 'undefined') {
+          void(s.t()); // omniture page call
+        }
+      }
+    },
 
     initializeTimeline: function() {
       // Initialize the timeline
       $this = $('.tl3').timeline({
         openTriggerClass : '.read-more',
-        startItem : '01/01/01',
+        startItem : '01/01/01', // @TODO: Update this so that it dynamically pulls in the 1st item
         closeText : ''
       });
 
@@ -98,90 +199,65 @@ Project demo: http://shindiristudio.com/timeline
       $('.node-timeline-gallery .timeline-line .timeline-node').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           e.preventDefault();
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var pageTitle = $('#page-title').text(),
-                currentId = $(this).attr('href').replace('#', ''),
-                $item = $('.timeline-items .timeline-item[data-id="' + currentId + '"]'),
-                itemSeason = $item.attr('data-season-num'),
-                itemEpisode = $item.attr('data-episode-num'),
-                itemEpisodeName = $item.attr('data-episode-name'),
-                itemScene = $item.attr('data-description'),
-                slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
-            if (pageTitle == '') pageTitle = $('#timeline-title').text();
-
-            s.prop3 = 'Gallery';
-            s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
-            s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + pageTitle;
-            s.pageName = s.prop5 + ' : ' + slideTitle;
-
-            if (typeof s_gi != 'undefined') {
-              void(s.t()); // omniture page call
-            }
-          }
+          var currentId = $(this).attr('href').replace('#', '');
+          Drupal.behaviors.timeline_gallery.setOmnitureData(currentId);
         });
       });
 
       // Timeline omniture tracking. Track scene changes via next / previous buttons
       $('.node-timeline-gallery .timeline-controls .timeline-left, .node-timeline-gallery .timeline-controls .timeline-right').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var pageTitle = $('#page-title').text(),
-//                slideTitle = String($('.timeline-items .timeline-item.active .timeline-item-details > h2').text());
-                $item = $('.timeline-items .timeline-item.active'),
-                itemSeason = $item.attr('data-season-num'),
-                itemEpisode = $item.attr('data-episode-num'),
-                itemEpisodeName = $item.attr('data-episode-name'),
-                itemScene = $item.attr('data-description'),
-                slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
-            if (pageTitle == '') pageTitle = $('#timeline-title').text();
-
-            s.prop3 = 'Gallery';
-            s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
-            s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + pageTitle;
-            s.pageName = s.prop5 + ' : ' + slideTitle;
-
-            if (typeof s_gi != 'undefined') {
-              void(s.t()); // omniture page call
-            }
-          }
+          e.preventDefault();
+          var currentId = $('.timeline-items .timeline-item.active').attr('data-id');
+          Drupal.behaviors.timeline_gallery.setOmnitureData(currentId);
         });
       });
 
       // Timeline omniture tracking. Track scene changes via season 1 or 2 buttons
       $('.node-timeline-gallery .timeline-line #timeline-line-full-left, .node-timeline-gallery .timeline-line #timeline-line-full-right').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var pageTitle = $('#page-title').text(),
-                // @TODO -- DV: THE FOLLOWING CODE WILL NEED TO BE UPDATED WHEN WE START ADDING MORE TIMELINES -- ESPECIALLY WITH MORE SEASONS
-                currentId = ($(this).attr('id') == 'timeline-line-full-left') ? '01/01/01' : '01/01/02',
-//                slideTitle = String($('.timeline-items .timeline-item[data-id=\'' + currentId + '\'] .timeline-item-details > h2').text());
-                $item = $('.timeline-items .timeline-item[data-id="' + currentId + '"]'),
-                itemSeason = $item.attr('data-season-num'),
-                itemEpisode = $item.attr('data-episode-num'),
-                itemEpisodeName = $item.attr('data-episode-name'),
-                itemScene = $item.attr('data-description'),
-                slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
-            if (pageTitle == '') pageTitle = $('#timeline-title').text();
-
-            s.prop3 = 'Gallery';
-            s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
-            s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + pageTitle;
-            s.pageName = s.prop5 + ' : ' + slideTitle;
-
-            if (typeof s_gi != 'undefined') {
-              void(s.t()); // omniture page call
-            }
-          }
+          e.preventDefault();
+          // @TODO -- DV: THE FOLLOWING CODE WILL NEED TO BE UPDATED WHEN WE START ADDING MORE TIMELINES -- ESPECIALLY WITH MORE SEASONS
+          var currentId = ($(this).attr('id') == 'timeline-line-full-left') ? '01/01/01' : '01/01/02';
+          Drupal.behaviors.timeline_gallery.setOmnitureData(currentId);
         });
       });
 
-      // set social sharing clicks
+      var $timelineActiveSharebar = $('.node-timeline-gallery .timeline-item.active .timeline-gigya-share');
+      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+        var shareBarId = $timelineActiveSharebar.attr('id'),
+            previewImage = $timelineActiveSharebar.attr('data-share-picture');
+        Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
+      }
+
+      var $timelineGigyaShareButtons = $('.node-timeline-gallery .timeline-item .timeline-gigya-share .gig-button-container .gig-share-button');
+      $timelineGigyaShareButtons.unbind('click');
+      $timelineGigyaShareButtons.bind('click', function(){
+        var $container = $(this).parent('.gig-button-container'),
+            shareType = 'Share',
+            title = $('.timelineFlat').attr('data-share-title');
+        if ($container.hasClass('gig-button-container-facebook')) {
+          shareType = 'Facebook';
+        }
+        else if ($container.hasClass('gig-button-container-twitter')) {
+          shareType = 'Twitter';
+        }
+        else if ($container.hasClass('gig-button-container-tumblr')) {
+          shareType = 'Tumblr';
+        }
+        else if ($container.hasClass('gig-button-container-pinterest')) {
+          shareType = 'Pinterest';
+        }
+        Drupal.behaviors.timeline_gallery.sendSocialShareOmniture(shareType, title);
+      });
+/*
       jQuery('#timeline_gallery .share-items .facebook').on('click', function() {
         Drupal.behaviors.timeline_gallery.socialShareOmniture('Facebook');
       });
       jQuery('#timeline_gallery .share-items .twitter').on('click', function() {
         Drupal.behaviors.timeline_gallery.socialShareOmniture('Twitter');
       });
+*/
     },
 
     attach: function (context, settings) {
@@ -373,6 +449,7 @@ Project demo: http://shindiristudio.com/timeline
             });
           }
 
+/*
           // Bind open on click
           $this.find(timeline_settings.openTriggerClass).click(function(){
             $this.timeline('goTo', $(this).attr('data-id'), $(this).attr('data-count'), true);
@@ -382,6 +459,7 @@ Project demo: http://shindiristudio.com/timeline
           $this.find('.timeline-close').click(function(){
             $this.timeline('close',$(this).attr('data-id'),$(this).attr('data-count'));
           });
+*/
 
           // Show when loaded
           $this.css({height: 'auto'}).show();
@@ -831,6 +909,12 @@ Project demo: http://shindiristudio.com/timeline
             activeTimelineItem.addClass('active');
 //usa_debug('========== currentId: ' + currentId + ', activeTimelineItem: ');
 //usa_debug(activeTimelineItem);
+
+            // create Gigya share bar
+            var $gigyaShareBar = $timelineItems.find('.timeline-item.active .timeline-gigya-share'),
+                shareBarId = $gigyaShareBar.attr('id'),
+                previewImage = $gigyaShareBar.attr('data-share-picture');
+            Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
           }
           return $this;
         }, // end goTo

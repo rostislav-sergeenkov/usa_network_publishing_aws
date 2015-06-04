@@ -214,99 +214,93 @@
     },
 
     // setOmnitureData
-    setOmnitureData: function(anchor, itemTitle) {
-      var anchor = anchor || null,
-          itemTitle = itemTitle || '',
-          siteName = Drupal.settings.microsites_settings.title,
-          basePageName = siteName + ' | USA Network';
+    setOmnitureData: function(anchor, contentName) {
+      var anchor = anchor || null;
       if (!anchor) {
         var sectionData = Drupal.behaviors.ms_global.parseUrl();
         anchor = sectionData['section'];
       }
-      var sectionTitle = Drupal.behaviors.ms_global.toTitleCase(anchor),
-          pageName = basePageName;
-      s.pageName = siteName;
-      s.prop3 = sectionTitle;
-      s.prop4 = siteName + ' : ' + sectionTitle;
-      s.prop5 = s.prop4;
-      if (itemTitle != '') {
-        pageName = itemTitle + ' | ' + pageName;
-        s.pageName += ' : ' + itemTitle;
-      }
+      var contentName = contentName || null, // contentName aka itemTitle
+          siteName = Drupal.settings.microsites_settings.title,
+          pageName = null,
+          contentType = Drupal.behaviors.ms_global.toTitleCase(anchor),
+          altContentType = null,
+          specificContentName = null;
 
       // set section-specific overrides
       switch (anchor) {
         case 'videos':
-          s.prop3 = 'Video';
-          s.prop4 = siteName + ' : Video';
-          if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
-          s.prop5 = siteName + ' : Video : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Video | ' + pageName;
+          contentType = 'Video';
+          if (!contentName) contentName = $('#microsite #videos-content .video-title').text();
           break;
         case 'timeline':
-          var timelineTitle = $('#microsite #timeline #timeline-title').text();
-          s.prop3 = 'Gallery';
-          s.prop4 = siteName + ' : Gallery'; // This is intentional per Loretta!
-          if (itemTitle == '') {
-            var $item = $('#microsite #timeline .timeline-items .timeline-item.active'),
-                itemSeason = $item.attr('data-season-num'),
-                itemEpisode = $item.attr('data-episode-num'),
-                itemEpisodeName = $item.attr('data-episode-name'),
-                itemScene = $item.attr('data-description');
-            itemTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
-          }
-          s.prop5 = siteName + ' : Timeline SlideShow : ' + timelineTitle;
-          s.pageName = s.prop5 + ' : ' + itemTitle;
-          pageName = itemTitle + ' | Timeline Slideshow | ' + pageName;
+          contentType = 'Gallery';
+          altContentType = 'Timeline Slideshow';
+          if (!contentName) contentName = $('#microsite #timeline #timeline-title').text();
+          var $item = $('#microsite #timeline .timeline-items .timeline-item.active'),
+              itemSeason = $item.attr('data-season-num'),
+              itemEpisode = $item.attr('data-episode-num'),
+              itemEpisodeName = $item.attr('data-episode-name'),
+              itemScene = $item.attr('data-description');
+          specificContentName = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
           break;
         case 'quizzes':
-          s.prop3 = 'Quiz';
-          s.prop4 = siteName + ' : Quiz';
-          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h1').text();
-          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h3.quiz-title').text();
-          s.prop5 = siteName + ' : Quiz : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Quiz | ' + pageName;
+          contentType = 'Quiz';
+          if (!contentName) contentName = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h1').text();
+          if (!contentName) contentName = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h3.quiz-title').text();
           break;
         case 'characters':
-          s.prop3 = 'Bio';
-          s.prop4 = 'Profile Page'; // This is intentional per Loretta!
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
-          s.prop5 = (itemTitle != '') ? siteName + ' : Bio : ' + itemTitle : siteName + ' : Bio';
-          s.pageName = s.prop5;
-          pageName = (itemTitle != '') ? itemTitle + ' | Bio | ' + pageName : 'Bio | ' + pageName;
+          contentType = 'Bio';
+          if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h3').text();
+          if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h1').text();
           break;
-/* DON'T DELETE THE FOLLOWING, BECAUSE IT CAN BE USED IN FUTURE MICROSITES
+/* DON'T DELETE THE FOLLOWING! IT CAN BE USED IN FUTURE MICROSITES!
         case 'about':
-          pageName = sectionTitle + ' | ' + pageName;
-          s.pageName += ' : ' + sectionTitle;
           break;
         case 'galleries':
+          contentType = 'Gallery';
+          if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
+          if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
           var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
               $slider = slider.data('flexslider'),
               currentSlide = $slider.currentSlide + 1;
           if (!currentSlide) currentSlide = 1;
-          s.prop3 = 'Gallery';
-          s.prop4 = siteName + ' : Gallery';
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
-          s.prop5 = siteName + ' : Gallery : ' + itemTitle;
-          s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-          pageName = itemTitle + ' | Gallery | ' + pageName;
+          specificContentName = 'Photo ' + currentSlide;
           break;
         case 'episodes':
-          s.prop3 = 'Episode Guide';
-          s.prop4 = siteName + ' : Episode Guide';
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
-          s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Episode Guide | ' + pageName;
+          contentType = 'Episode Guide';
+          if (!contentName) contentName = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
+          if (!contentName) contentName = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
           break;
 */
       }
+
+      // Build array of omniture "nodes" that make up the pageName
+      // This array must have the nodes in the correct order:
+      // show_name : microsite_name : content_type : content_name : specific_content_name
+      // If show_name == microsite_name, show only microsite_name
+      // Example 1: Dig : Gallery : Ancient Relics : Photo 1
+      // Example 2: Graceland : Graceland Catchup : Timeline Slideshow : Graceland Timeline : Season 1 Episode 2 Scene 3
+      var joinStr = ' : ',
+          omnitureArray = [],
+          showName = s.prop10;
+      if (showName != siteName) {
+        omnitureArray.push(showName); // show_name
+      }
+      omnitureArray.push(siteName); // microsite_name
+      if (altContentType) omnitureArray.push(altContentType); // content_type
+      else omnitureArray.push(contentType); // content_type
+      if (contentName) omnitureArray.push(contentName); // content_name
+      if (specificContentName) omnitureArray.push(specificContentName); // specific_content_name
+      s.pageName = omnitureArray.join(joinStr);
+      s.prop3 = contentType;
+      s.prop4 = (contentType == 'Bio') ? 'Profile Page' : omnitureArray[0] + joinStr + omnitureArray[1]; // 'Profile Page' is intentional per Loretta!
+      s.prop5 = omnitureArray[0] + joinStr + omnitureArray[1] + joinStr + omnitureArray[2];
+
+      var reverseOmnitureArray = omnitureArray.reverse();
+      pageName = (reverseOmnitureArray.join(' | ') + ' | USANetwork').replace('Home | ', '');
+
+
       $('title').text(pageName);
 
       if (typeof s_gi != 'undefined') {

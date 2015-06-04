@@ -131,7 +131,39 @@ function usanetwork_context_context_default_contexts() {
   $export['show_page'] = $context;
 
   $context = new stdClass();
-  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'shows_landing';
+  $context->description = 'All shows landing page';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'shows' => 'shows',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_all_shows' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_all_shows',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('All shows landing page');
+  $export['shows_landing'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'usa_leader_reloadable';
   $context->description = 'reloadable iframe leaderboard';

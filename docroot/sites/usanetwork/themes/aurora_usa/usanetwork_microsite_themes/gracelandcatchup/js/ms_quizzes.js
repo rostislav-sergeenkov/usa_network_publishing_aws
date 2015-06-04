@@ -18,6 +18,7 @@
       }
     },
 
+/*
     setOmnitureData: function setOmnitureData(itemTitle){
       var anchor = 'quizzes',
           itemTitle = itemTitle || '',
@@ -41,6 +42,7 @@
         void(s.t()); // omniture page call
       }
     },
+*/
 
     updateSettingsGigyaSharebars: function(title, link, description, imageUrl) {
 //usa_debug('======== ms_quizzes.js -- updateSettingsGigyaSharebars(' + title + ', ' + link + ', ' + description + ', ' + imageUrl + ')');
@@ -238,7 +240,8 @@
               // show the quiz now
               activeQuizContainer.find('li#quiz-' + data.nid).animate({'opacity': 1}, 1000, function(){
                 // send Omniture data
-                Drupal.behaviors.ms_quizzes.setOmnitureData(data.title);
+//                Drupal.behaviors.ms_quizzes.setOmnitureData(data.title);
+                Drupal.behaviors.ms_global.setOmnitureData('quizzes', data.title);
 
                 // refresh the 728x90 ad
                 Drupal.behaviors.ms_global.create728x90Ad();

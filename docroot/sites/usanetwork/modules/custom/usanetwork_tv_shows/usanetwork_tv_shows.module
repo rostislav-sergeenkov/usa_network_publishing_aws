@@ -3781,12 +3781,10 @@ function _usanetwork_tv_shows_all_shows_block_item($show) {
   $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $show, 'field_usa_tv_tune_in_date', 'value');
   $theme_variables = array(
     'target_url' => url('node/' . $show->nid),
-    'media_icon' => !empty($own_promo_lines['icon_type']) ? $own_promo_lines['icon_type'] : 'video-icon',
     'caption' => 'Promo line 1',
     'title' => $show->title,
     'additional' => !empty($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : 'field_usa_tv_tune_in_date',
-    'image_mobile' => image_style_url('456x372', $image_url),
-    'image_desktop' => image_style_url('456x372', $image_url),
+    'image_desktop' => image_style_url('539x303', $image_url),
   );
   return theme('usanetwork_tv_shows_shows_landing_item', $theme_variables);
 }

@@ -209,6 +209,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
 
+    $conf['acquia_purge_domains'] = array('www.usanetwork.com');
+
     // www redirect
     default_site_request_handler();
 

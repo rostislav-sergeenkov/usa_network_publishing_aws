@@ -3817,7 +3817,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   }
 }
 
-#block-usanetwork-mpx-video-usa-mpx-cons-related .node-usanetwork-promo .sponsored {
+.related-content-block .node-usanetwork-promo .sponsored {
   background-color: #242424;
   bottom: 9.1vw;
   right: 0;
@@ -3826,17 +3826,17 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   width: 30%;
 }
 @media (min-width: 1901px) {
-  #block-usanetwork-mpx-video-usa-mpx-cons-related .node-usanetwork-promo .sponsored {
+  .related-content-block .node-usanetwork-promo .sponsored {
     bottom: 173px;
   }
 }
 @media (max-width: 768px) {
-  #block-usanetwork-mpx-video-usa-mpx-cons-related .node-usanetwork-promo .sponsored {
+  .related-content-block .node-usanetwork-promo .sponsored {
     bottom: 8.6vw;
   }
 }
 @media (max-width: 640px) {
-  #block-usanetwork-mpx-video-usa-mpx-cons-related .node-usanetwork-promo .sponsored {
+  .related-content-block .node-usanetwork-promo .sponsored {
     bottom: 29%;
   }
 }
@@ -11879,7 +11879,7 @@ footer h2 {
   position: absolute;
   top: 90%;
   width: 38px;
-  z-index: 1000;
+  z-index: 55;
 }
 @media (min-width: 1901px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {

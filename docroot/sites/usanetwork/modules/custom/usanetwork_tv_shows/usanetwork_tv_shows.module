@@ -18,6 +18,7 @@ define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_EPISODE_QUEUE', 12);
 define('USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK', 9);
 define('USA_TV_SHOW_ALL_VIDEOS_EPISODE', 0);
 define('USA_TV_SHOW_FULL_EPISODE', -1);
+define('USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK', 12);
 
 /**
  *  Implements hook_menu().
@@ -80,6 +81,20 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
+  $items['shows'] = array(
+    'title' => t('Usanetwork | All Shows'),
+    'page callback' => 'usanetwork_tv_shows_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['ajax/all-shows-landing/get-related/%/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_tv_shows_all_shows_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -121,6 +136,11 @@ function usanetwork_tv_shows_block_info() {
 
   $blocks['usanetwork_tv_shows_video_lmb'] = array(
     'info' => t('Tv Shows: Video landing main block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_tv_shows_all_shows'] = array(
+    'info' => t('Tv Shows: Shows landing - all shows'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -180,6 +200,10 @@ function usanetwork_tv_shows_block_view($delta = '') {
       $block['content'] = array(
         '#markup' => _usanetwork_tv_shows_render_video_lmb_block(),
       );
+      break;
+    case 'usanetwork_tv_shows_all_shows':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_all_shows_block();
       break;
   }
 
@@ -312,6 +336,30 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-about-block',
     ),
+    'usanetwork_tv_shows_shows_landing' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-shows-landing',
+    ),
+    'usanetwork_tv_shows_shows_landing_block' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-shows-landing-block',
+    ),
+    'usanetwork_tv_shows_shows_landing_item' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-shows-landing-item',
+    ),    
   );
 }
 
@@ -3469,4 +3517,159 @@ function usanetwork_tv_shows_show_has_full_episodes($show_id) {
     $result = $query->execute()->fetchAssoc();
   }
   return !empty($result) ? TRUE : FALSE;
+}
+
+/**
+ * Renders content for photos block.
+ */
+function _usanetwork_tv_shows_all_shows_block() {
+  $params = drupal_get_query_parameters();
+  if (empty($params['sort_order']) || !in_array($params['sort_order'], array('ASC', 'DESC'))) {
+    $params['sort_order'] = 'ASC';
+  }
+  $sorters = _usanetwork_tv_shows_all_shows_landing_page_sorters();
+  $shows = _usanetwork_tv_shows_all_shows_get_shows(0, USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK + 1, $params['sort_order']);
+  $load_more = FALSE;
+  if (count($shows) >= USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK) {
+    $shows = array_slice($shows, 0, USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK);
+    $load_more = TRUE;
+  }
+  $shows_block = _usanetwork_tv_shows_all_shows_render_block($shows);
+  $video_sorter_title = $sorters[$params['sort_order']]['title'];
+  $result = theme('usanetwork_tv_shows_shows_landing', array(
+    'block_title' => t('All Shows'),
+    'show_sorters' => $sorters,
+    'show_sorter_title' => $video_sorter_title,
+    'shows_block' => $shows_block,
+    'items_per_page_limit' => USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK,
+    'sorting_order' => $params['sort_order'],
+    'load_more_link' => $load_more,
+  ));
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+  drupal_add_js(array(
+    'usanetwork_tv_show_page_context' => 'all-shows-landing',
+  ), 'setting');
+
+  return $result;
+}
+
+/**
+ * Returns show nodes.
+ *
+ * @param int $offset
+ * @param int $limit
+ * @param string $sort
+ *
+ * @return array
+ */
+function _usanetwork_tv_shows_all_shows_get_shows($offset = 0, $limit = USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK, $sort = 'ASC') {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'tv_show')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->propertyOrderBy('title', $sort)
+    ->range($offset, $limit);
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+    $nodes = entity_load('node', array_keys($result['node']));
+    return $nodes;
+  }
+  return FALSE;
+}
+
+/**
+ *
+ * Returns block of N items for shows page.
+ * @param $items
+
+ */
+function _usanetwork_tv_shows_all_shows_render_block($items) {
+
+  $theme_variables = array();
+  foreach ($items as $item) {
+    $theme_variables['items'][] = _usanetwork_tv_shows_all_shows_block_item($item);
+  }
+  return theme('usanetwork_tv_shows_shows_landing_block', $theme_variables);
+}
+
+
+/**
+ * Returns default sorters for gallery page.
+ *
+ * @return array
+ */
+function _usanetwork_tv_shows_all_shows_landing_page_sorters() {
+
+  $data['ASC'] = array(
+    'order' => 'ASC',
+    'title' => t('Sort A - Z'),
+    'active' => FALSE,
+    'url' => url('shows', array(
+      'query' => array(
+        'sort_order' => 'ASC',
+      )
+    )),
+  );
+  $data['DESC'] = array(
+    'order' => 'DESC',
+    'title' => t('Sort Z - A'),
+    'active' => FALSE,
+    'url' => url('shows', array(
+      'query' => array(
+        'sort_order' => 'DESC',
+      )
+    )),
+  );
+
+  if (isset($params['sort_order'])) {
+    $data[$params['sort_order']]['active'] = TRUE;
+  }
+
+  return $data;
+}
+
+/**
+ * Returns one item of block of photos page.
+ *
+ * @param $node
+ *
+ * @return mixed|string
+ */
+function _usanetwork_tv_shows_all_shows_block_item($show) {
+
+  $image_url = usanetwork_core_api_get_content_image('node', $show);
+  $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $show, 'field_usa_tv_tune_in_date', 'value');
+  $theme_variables = array(
+    'target_url' => url('node/' . $show->nid),
+    'media_icon' => !empty($own_promo_lines['icon_type']) ? $own_promo_lines['icon_type'] : 'video-icon',
+    'caption' => 'Promo line 1',
+    'title' => $show->title,
+    'additional' => !empty($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : 'field_usa_tv_tune_in_date',
+    'image_mobile' => image_style_url('456x372', $image_url),
+    'image_desktop' => image_style_url('456x372', $image_url),
+  );
+  return theme('usanetwork_tv_shows_shows_landing_item', $theme_variables);
+}
+
+
+
+function usanetwork_tv_shows_all_shows_ajax($offset = 0, $limit = USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK, $order = 'ASC') {
+  $response = array(
+    'overlimited' => FALSE,
+    'rendered' => '',
+  );
+  $shows = _usanetwork_tv_shows_all_shows_get_shows($offset, $limit + 1, $order);
+  if (empty($shows)) {
+    $response['overlimited'] = TRUE;
+    return drupal_json_output($response);
+  }
+  elseif(count($shows) >= $limit) {
+    $shows = array_slice($shows, 0, $limit);
+  }
+  else {
+    $response['overlimited'] = TRUE;
+  }
+  $response['rendered'] = $shows_block = _usanetwork_tv_shows_all_shows_render_block($shows);
+  return drupal_json_output($response);
 }

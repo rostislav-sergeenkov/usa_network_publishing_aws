@@ -11879,7 +11879,7 @@ footer h2 {
   position: absolute;
   top: 90%;
   width: 38px;
-  z-index: 1000;
+  z-index: 55;
 }
 @media (min-width: 1901px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {

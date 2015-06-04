@@ -32,7 +32,6 @@
             <?php if (!empty($show_poster['desktop'])): ?>
               <noscript><img src="<?php print $show_poster['desktop']; ?>" width="2880" height="1260" alt="" title="" /></noscript>
             <?php endif; ?>
-
           </div>
         <?php endif; ?>
       </a>
@@ -65,6 +64,9 @@
               <div class="social_meter aspot-draggable-element" <?php if (!empty($social_meter_style['desktop'])): print 'data-style-desktop="' . $social_meter_style['desktop'] . '" data-style-mobile="' . $social_meter_style['mobile'] . '"'; endif; ?>>
                 <?php print $social_meter; ?>
               </div>
+            <?php endif; ?>
+            <?php if (!empty($content_path)) : ?>
+              <div class="sponsored" data-mpspath="<?php print $content_path; ?>" data-scalemps="1"></div>
             <?php endif; ?>
           </div>
         </div>

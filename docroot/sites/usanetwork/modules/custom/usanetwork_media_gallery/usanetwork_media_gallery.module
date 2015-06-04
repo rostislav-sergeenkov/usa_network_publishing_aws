@@ -627,9 +627,15 @@ function _usanetwork_media_show_gallery_lmb_block() {
         }
         switch ($promo_reference['target_type']) {
           case 'node':
+            if ($promo_entity->status != NODE_PUBLISHED) {
+              continue(2);
+            }
             $promo_data = _usanetwork_promo_pull_node_promo_details($promo_entity);
             break;
           case 'file':
+            if (!isset($promo_entity->mpx_video_data['status']) || $promo_entity->mpx_video_data['status'] != NODE_PUBLISHED) {
+              continue(2);
+            }
             $promo_data = _usanetwork_promo_pull_file_promo_details($promo_entity);
             break;
         }

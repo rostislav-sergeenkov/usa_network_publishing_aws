@@ -795,10 +795,16 @@ function _usanetwork_person_render_related_content_items_block($data, $start_fro
       $is_data_item_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
 
       if (!empty($data_item->ymal)) {
-        $theme_variables['related_items'][] = _usanetwork_person_render_related_content_item_ymal($data_item);
+        $theme_variables['related_items'][] = array(
+          'content' => _usanetwork_person_render_related_content_item_ymal($data_item),
+          'is_ymal' => TRUE,
+        );
       }
       else {
-        $theme_variables['related_items'][] = _usanetwork_person_render_related_content_item($data_item, $is_data_item_even);
+        $theme_variables['related_items'][] = array(
+          'content' => _usanetwork_person_render_related_content_item($data_item, $is_data_item_even),
+          'is_ymal' => FALSE,
+        );
       }
     }
 

@@ -87,15 +87,12 @@
         Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
         Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-//usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
       }
     },
 
     // waypointHandler
     sectionTimer: null,
     waypointHandler: function(event, sectionId, direction){
-//usa_debug('========== waypointHandler(' + event + ', ' + sectionId + ', ' + direction + ')');
-
       // if more than one function call arrives before the timeout is done,
       // clear the timer and start over. This is to prevent, rapid scrolling
       // or navigation clicks from triggering Omniture calls
@@ -121,7 +118,6 @@
       // loop through each section
       $('.section').each(function(){
         var sectionId = $(this).attr('id');
-//usa_debug('========= initializing waypoints for section ' + sectionId);
         if (sectionId != 'site-nav') {
           Drupal.behaviors.ms_global.waypoints[sectionId] = new Waypoint.Inview({
             element: document.getElementById(sectionId),
@@ -144,8 +140,6 @@
       $('.section').each(function(index, section) {
         Drupal.behaviors.ms_global.sectionIds[index] = $(this).attr('id');
       });
-//usa_debug('============= sectionIds: ');
-//usa_debug(Drupal.behaviors.ms_global.sectionIds);
     },
 
     // getScrollDirectionUsingSections
@@ -160,7 +154,6 @@
     // getScrollDirection
     lastYScrollPosition: 0,
     getScrollDirection: function() {
-//usa_debug('========= sectionScroll -- lastYScrollPosition: ' + Drupal.behaviors.ms_global.lastYScrollPosition + ',  pageYOffset: ' + window.pageYOffset);
       scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
       Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
       return scrollDirection;
@@ -211,6 +204,35 @@
 
       s.tl(this,'o','Social Follow');
       s.manageVars("clearVars", s.linkTrackVars, 1);
+    },
+
+    // Gigya share bar clicks
+    sendSocialShareOmniture: function($this, title) {
+      title = title || null;
+      var $container = $this.parents('.gig-button-container'),
+          shareType = 'Share',
+          shareTitle = title;
+      if ($container.hasClass('gig-button-container-facebook')) {
+        shareType = 'Facebook';
+      }
+      else if ($container.hasClass('gig-button-container-twitter')) {
+        shareType = 'Twitter';
+      }
+      else if ($container.hasClass('gig-button-container-tumblr')) {
+        shareType = 'Tumblr';
+      }
+      else if ($container.hasClass('gig-button-container-pinterest')) {
+        shareType = 'Pinterest';
+      }
+
+      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+        s.linkTrackVars = 'events,eVar73,eVar74';
+        s.linkTrackEvents = s.events = 'event41';
+        s.eVar73 = shareTitle;
+        s.eVar74 = shareType;
+        s.tl(this, 'o', 'Social Share');
+        s.manageVars('clearVars', s.linkTrackVars, 1);
+      }
     },
 
     // setOmnitureData
@@ -440,7 +462,6 @@
     sectionScroll: function(anchor, item, itemTitle) {
       item = item || '';
       itemTitle = itemTitle || '';
-//usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
       var basePath = Drupal.settings.microsites_settings.base_path,
           anchorItem = $('#nav-' + anchor),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
@@ -448,7 +469,7 @@
           nextSectionId = $(nextSection).attr('id'),
           direction = Drupal.behaviors.ms_global.getScrollDirectionUsingSections(anchor),
           offsetDirection = (direction == 'down') ? 1 : -1;
-//usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirection: ' + offsetDirection);
+
       // if this is IE9, reload the correct page
       if ($('html.ie9').length > 0) {
         window.location.href = anchorFull.replace('/home', '');
@@ -463,7 +484,6 @@
             break;
           case 'quizzes':
             var quizNodeId = $('#microsite #quizzes #quizzes-nav-list a[href="' + basePath + '/quizzes/' + item + '"]').parent().attr('data-node-id');
-//usa_debug('========== calling switchQuizzes(' + quizNodeId + ')');
             Drupal.behaviors.ms_quizzes.switchQuizzes(quizNodeId);
             break;
         }
@@ -477,9 +497,8 @@
       var nextSectionElem = document.getElementById(anchor),
           offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
-//usa_debug('====== sectionScroll -- nextSection: ' + nextSection + ', offsetAmount: ' + offsetAmount + ', nextSectionTop: ' + nextSectionTop);
+
       $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
-//usa_debug('======== microsite animate complete');
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
 
@@ -583,17 +602,13 @@
           var $parent = $(this).parent(),
               anchor = $parent.attr('data-menuanchor');
 
-//usa_debug('======== clicked on ' + $parent.attr('id') + ', anchor: ' + anchor);
           if ($('#site-nav-links li').hasClass('disabled')) {
-//usa_debug('======== site-nav-links disabled');
             return false;
           }
           else {
-//usa_debug('======= disabling site-nav-links li');
             $('#site-nav-links li').addClass('disabled');
           }
 
-//usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
           Drupal.behaviors.ms_global.sectionScroll(anchor);
           if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });

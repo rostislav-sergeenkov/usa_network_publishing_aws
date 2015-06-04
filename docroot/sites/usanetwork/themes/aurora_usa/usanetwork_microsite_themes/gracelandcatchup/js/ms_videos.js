@@ -11,7 +11,7 @@
         var sharebar = new Object(),
             $videoInfoContainer = $('#videos #video-container .video-player-desc'),
             caption = $videoInfoContainer.find('.video-description').text(),
-            title = $videoInfoContainer.find('.video-title').text(),
+            shareTitle = $videoInfoContainer.find('.video-title').text(),
             imageSrc = preview_image;
 
         sharebar.gigyaSharebar = {
@@ -28,27 +28,16 @@
           imageBhev: "url",
           imageUrl: imageSrc,
           linkBack: url,
-          title: title
+          title: shareTitle
         }
-        Drupal.gigya.showSharebar(sharebar);
+        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
 
-/*
-        // omniture
-        if (!initialPageLoad) {
-          var siteName = Drupal.settings.microsites_settings.title,
-              basePath = Drupal.settings.microsites_settings.base_path,
-              basePageName = siteName + ' | USA Network';
-
-          s.prop3 = 'Videos';
-          s.prop4 = siteName + ' : Videos';
-          s.prop5 = siteName + ' : Videos : ' + title;
-          s.pageName = s.prop5;
-          document.title = title + ' | Video | ' + basePageName;
-          if (typeof s_gi != 'undefined') {
-            void (s.t());
-          }
-        }
-*/
+        // reset Gigya share bar clicks
+        var $shareButtons = $('#video-gigya-share .gig-share-button div');
+        $shareButtons.unbind('click');
+        $shareButtons.bind('click', function(){
+          Drupal.behaviors.ms_global.sendSocialShareOmniture($(this), shareTitle);
+        });
       }
     },
 
@@ -56,7 +45,6 @@
     setVideoHeight: function() {
       var vWidth = $('#microsite #videos #video-container').width(),
           vHeight = Math.floor(vWidth * 0.5626);
-//usa_debug('========== setVideoHeight()\nvWidth: ' + vWidth + ' => vHeight: ' + vHeight);
       $('#microsite .file-video-mpx.view-mode-inline_content iframe, #microsite .featured-asset .video-player-wrapper iframe').css({'height': vHeight + 'px'});
     },
 
@@ -260,11 +248,6 @@
         return false;
       }
 
-/*
-      if (!Drupal.behaviors.ms_global.globalInitialPageLoad && refreshAdsOmniture) {
-        Drupal.behaviors.ms_global.setOmnitureData(anchor, itemTitle);
-      }
-*/
       if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
         Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
       }
@@ -545,18 +528,6 @@
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
         $('.featured-asset').removeClass('tve-overlay');
       });
-
-/*
-      var resizeTimer;
-      $(window).bind('resize', function () {
-        if (typeof resizeTimer != 'undefined') clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-          usa_debug('another resize event');
-          self.setVideoHeight();
-        }, 1000);
-      });
-      window.addEventListener('orientationchange', self.setVideoHeight);
-*/
     }
   }
 })(jQuery);

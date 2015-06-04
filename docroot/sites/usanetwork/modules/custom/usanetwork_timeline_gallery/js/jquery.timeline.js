@@ -39,38 +39,44 @@ Project demo: http://shindiristudio.com/timeline
 (function ($) {
   Drupal.behaviors.timeline_gallery = {
 
-/*
-    // socialShareOmniture
-    socialShareOmniture: function(shareType) {
-      usa_debug('USA: ' + shareType + 'Share()');
-      s.linkTrackVars = 'events,eVar74';
-      s.linkTrackEvents = 'event41';
-      s.events = 'event41';
-      s.eVar74 = shareType;
-      s.tl(this,'o','Social Share');
-      s.manageVars('clearVars', s.linkTrackVars, 1);
-    },
-*/
+    timelineTitle: null,
+    timelineShareTitle: null,
+
     // Gigya share bar
-    sendSocialShareOmniture: function(shareType, title) {
+    sendSocialShareOmniture: function($this) {
+      var $container = $this.parents('.gig-button-container'),
+          shareType = 'Share',
+          shareTitle = Drupal.behaviors.timeline_gallery.timelineShareTitle;
+      if ($container.hasClass('gig-button-container-facebook')) {
+        shareType = 'Facebook';
+      }
+      else if ($container.hasClass('gig-button-container-twitter')) {
+        shareType = 'Twitter';
+      }
+      else if ($container.hasClass('gig-button-container-tumblr')) {
+        shareType = 'Tumblr';
+      }
+      else if ($container.hasClass('gig-button-container-pinterest')) {
+        shareType = 'Pinterest';
+      }
+
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
         s.linkTrackVars = 'events,eVar73,eVar74';
         s.linkTrackEvents = s.events = 'event41';
-        s.eVar73 = title;
+        s.eVar73 = shareTitle;
         s.eVar74 = shareType;
-      s.eVar74 = shareType;
         s.tl(this, 'o', 'Social Share');
         s.manageVars('clearVars', s.linkTrackVars, 1);
       }
     },
 
     updateGigyaSharebar: function(shareBarId, previewImage) {
-      usa_debug('======== updateGigyaSharebar(' + shareBarId + ', ' + previewImage + ')');
+      //usa_debug('======== updateGigyaSharebar(' + shareBarId + ', ' + previewImage + ')');
       if (typeof Drupal.gigya != 'undefined') {
         var sharebar = new Object(),
             $timelineContainer = $('#timeline-player-slideshow-area .timelineFlat'),
-            caption = $timelineContainer.attr('data-share-description'), //.find('.video-description').text(),
-            title = $timelineContainer.attr('data-share-title'), // .find('.video-title').text(),
+            caption = $timelineContainer.attr('data-share-description'),
+            shareTitle = Drupal.behaviors.timeline_gallery.timelineShareTitle,
             imageSrc = previewImage;
 
         sharebar.gigyaSharebar = {
@@ -87,41 +93,16 @@ Project demo: http://shindiristudio.com/timeline
           imageBhev: "url",
           imageUrl: imageSrc,
           linkBack: url,
-          title: title
+          title: shareTitle
         }
         if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
 
-/*
-        // set social sharing clicks
-        setTimeout(function(){
-          $('#' + shareBarId).find('.gig-share-button').on('click', function (e) {
-            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              var $self = $(this);
-              var $container = $self.parents('.gig-button-container');
-              var network = 'Share';
-              if ($container.hasClass('gig-button-container-facebook')) {
-                network = 'Facebook';
-              }
-              else if ($container.hasClass('gig-button-container-twitter')) {
-                network = 'Twitter';
-              }
-              else if ($container.hasClass('gig-button-container-tumblr')) {
-                network = 'Tumblr';
-              }
-              else if ($container.hasClass('gig-button-container-pinterest')) {
-                network = 'Pinterest';
-              }
-
-              s.linkTrackVars = 'events,eVar73,eVar74';
-              s.linkTrackEvents = s.events = 'event41';
-              s.eVar73 = title; // 'example Patrick J. Adams Interview'; //todo add title name
-              s.eVar74 = network;
-              s.tl(this, 'o', 'Social Share');
-              s.manageVars('clearVars', s.linkTrackVars, 1);
-            }
-          });
-        }, 1000);
-*/
+        // reset Gigya share bar clicks
+        var $timelineGigyaShareButtons = $('#' + shareBarId + ' .gig-share-button div');
+        $timelineGigyaShareButtons.unbind('click');
+        $timelineGigyaShareButtons.bind('click', function(){
+          Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this));
+        });
       }
     },
 
@@ -130,19 +111,17 @@ Project demo: http://shindiristudio.com/timeline
         Drupal.behaviors.ms_global.setOmnitureData('timeline');
       }
       else if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-        var pageTitle = $('#page-title').text(),
-//            currentId = $(this).attr('href').replace('#', ''),
+        var title = Drupal.behaviors.timeline_gallery.timelineTitle,
             $item = $('.timeline-items .timeline-item[data-id="' + currentId + '"]'),
             itemSeason = $item.attr('data-season-num'),
             itemEpisode = $item.attr('data-episode-num'),
             itemEpisodeName = $item.attr('data-episode-name'),
             itemScene = $item.attr('data-description'),
             slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
-        if (pageTitle == '') pageTitle = $('#timeline-title').text();
 
         s.prop3 = 'Gallery';
         s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
-        s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + pageTitle;
+        s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + title;
         s.pageName = s.prop5 + ' : ' + slideTitle;
 
         if (typeof s_gi != 'undefined') {
@@ -165,6 +144,11 @@ Project demo: http://shindiristudio.com/timeline
 
       $('.tl3').on('scrollStop.Timeline', function(e){
         usa_debug('TIMELINE: end'); // end scroll
+        // create Gigya share bar
+        var $gigyaShareBar = $('.timeline-items .timeline-item.active .timeline-gigya-share'),
+            shareBarId = $gigyaShareBar.attr('id'),
+            previewImage = $gigyaShareBar.attr('data-share-picture');
+        Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
       });
 
       $this.timeline('setWidthHeightMargin');
@@ -223,42 +207,20 @@ Project demo: http://shindiristudio.com/timeline
         });
       });
 
+      // set timeline title and timeline share title
+      var title = $('#page-title').text();
+      if (title == '') title = $('#timeline-title').text();
+      Drupal.behaviors.timeline_gallery.timelineTitle = title;
+      Drupal.behaviors.timeline_gallery.timelineShareTitle = $('.timelineFlat').attr('data-share-title');
+
+      // create Gigya share bar
       var $timelineActiveSharebar = $('.node-timeline-gallery .timeline-item.active .timeline-gigya-share');
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
         var shareBarId = $timelineActiveSharebar.attr('id'),
             previewImage = $timelineActiveSharebar.attr('data-share-picture');
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
       }
-
-      var $timelineGigyaShareButtons = $('.node-timeline-gallery .timeline-item .timeline-gigya-share .gig-button-container .gig-share-button');
-      $timelineGigyaShareButtons.unbind('click');
-      $timelineGigyaShareButtons.bind('click', function(){
-        var $container = $(this).parent('.gig-button-container'),
-            shareType = 'Share',
-            title = $('.timelineFlat').attr('data-share-title');
-        if ($container.hasClass('gig-button-container-facebook')) {
-          shareType = 'Facebook';
-        }
-        else if ($container.hasClass('gig-button-container-twitter')) {
-          shareType = 'Twitter';
-        }
-        else if ($container.hasClass('gig-button-container-tumblr')) {
-          shareType = 'Tumblr';
-        }
-        else if ($container.hasClass('gig-button-container-pinterest')) {
-          shareType = 'Pinterest';
-        }
-        Drupal.behaviors.timeline_gallery.sendSocialShareOmniture(shareType, title);
-      });
-/*
-      jQuery('#timeline_gallery .share-items .facebook').on('click', function() {
-        Drupal.behaviors.timeline_gallery.socialShareOmniture('Facebook');
-      });
-      jQuery('#timeline_gallery .share-items .twitter').on('click', function() {
-        Drupal.behaviors.timeline_gallery.socialShareOmniture('Twitter');
-      });
-*/
-    },
+    }, // end initializeTimeline
 
     attach: function (context, settings) {
 
@@ -330,8 +292,6 @@ Project demo: http://shindiristudio.com/timeline
 
           // Create wrapper elements, and needed properties for timeline-items
           $this.append('<div class="clear"></div>');
-//usa_debug('============== $this: ');
-//usa_debug($this); // $this = $('.timelineFlat.timelineFlatPortfolio.tl3')
           $this.wrapInner('<div class="timeline-items" />');
 
           if('ontouchstart' in window) {
@@ -362,10 +322,6 @@ Project demo: http://shindiristudio.com/timeline
                 $items.find('.timeline-item-image').height(imgHeight);
               }
               margin = Math.ceil((timelineWidth - itemWidth)/2);
-
-//usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', startIndex: ' + startIndex + ', $items.length: ' + $items.length + ', itemOpenWidth: ' + itemOpenWidth + ' => margin: ' + margin + ', width: ' + width + ', timelineItemsPaddingLeft: ' + timelineItemsPaddingLeft + ', timelineItemsPaddingRight: ' + timelineItemsPaddingRight + ', timelineItemsPadding: ' + timelineItemsPadding + ', $timelineItems: ');
-//usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', startIndex: ' + startIndex + ', $items.length: ' + $items.length + ', itemOpenWidth: ' + itemOpenWidth + ' => margin: ' + margin + ', $timelineItems: ');
-//usa_debug($timelineItems);
 
           var data = $this.data('timeline');
 
@@ -489,7 +445,7 @@ Project demo: http://shindiristudio.com/timeline
               $timelineItems =  $this.find('.timeline-items'),
               $items = $this.find(timeline_settings.itemClass),
               $lines = $this.find('.timeline-view'),
-              timelineWidth = $this.width(), // $this.find('.timeline-items-holder').width(),
+              timelineWidth = $this.width(),
               itemWidth = Math.ceil(timelineWidth * timeline_settings.percentItemWidth),
               lineWidth = Math.ceil(timelineWidth * timeline_settings.percentLineWidth);
           if (itemWidth > 2866) itemWidth = 2866;
@@ -510,8 +466,6 @@ Project demo: http://shindiristudio.com/timeline
 
           var imgWidth = $timelineItems.find('.timeline-item:first .timeline-item-image').width(),
               imgHeight = Math.floor(imgWidth * 0.5625);
-
-//usa_debug('========= timelineWidth: ' + timelineWidth + ', itemWidth: ' + itemWidth + ', timeline_settings.itemMargin: ' + timeline_settings.itemMargin + ', $items.length: ' + $items.length + ' => margin: ' + margin + ', width: ' + width + ', imgWidth: ' + imgWidth + ', imgHeight: ' + imgHeight);
 
           // reset data values
           data.itemWidth = itemWidth;
@@ -538,7 +492,7 @@ Project demo: http://shindiristudio.com/timeline
               timelineItemShareHeight = $('#timeline .timeline-item .share:first').height(),
               timelineItemTitleHeight = $('#timeline .timeline-item h2:first').height(),
               timelineItemTextHeight = Math.floor(imgHeight - timelineItemShareHeight - timelineItemTitleHeight - timelineItemTextTopBottomMargin);
-//usa_debug('======= timelineItemText height calculation -- timelineItemTextTopBottomMargin: ' + timelineItemTextTopBottomMargin + ', timelineItemShareHeight: ' + timelineItemShareHeight + ', timelineItemTitleHeight: ' + timelineItemTitleHeight + ', timelineItemTextHeight: ' + timelineItemTextHeight);
+
           $timelineItemText.css({'height': timelineItemTextHeight + 'px'});
 
           $lines.css({'width': lineWidth + 'px'}).parents('.timeline-line').css({'width': lineWidth + 'px'});
@@ -800,7 +754,7 @@ Project demo: http://shindiristudio.com/timeline
 
         // GO TO ITEM
         goTo : function (id, data_count, openElement) {
-//usa_debug('========== goTo(' + id + ', ' + data_count + ', ' + openElement + ')');
+          //usa_debug('========== goTo(' + id + ', ' + data_count + ', ' + openElement + ')');
           var $this = this,
               data = $this.data('timeline'),
               speed = data.options.scrollSpeed,
@@ -809,8 +763,6 @@ Project demo: http://shindiristudio.com/timeline
               timelineWidth = $this.find('.timeline-line').width(), // the line nav -- not the entire timeline container
               count = -1,
               found = false;
-//usa_debug('======= data: ');
-//usa_debug(data);
 
           // Find item index
           $items.each(function(index){
@@ -825,20 +777,17 @@ Project demo: http://shindiristudio.com/timeline
 
           // Move if found
           if (found) {
-//usa_debug('======= if (found)');
             // Move lineView (dots) to current element
             var $nodes = $this.find('.timeline-node');
             $nodes.removeClass('active');
             var $goToNode = $nodes.parent().parent().find('[href="#'+id+'"]').addClass('active');
             data.lineMargin = -parseInt($goToNode.parent().parent().attr('data-id'), 10)*100;
-//usa_debug('======== data.lineMargin: ' + data.lineMargin);
 
             // check if responsive width
             if ($this.find('.timeline-view:first').width() > $this.find('.timeline-line').width()) {
               data.lineMargin *=2;
               if ($goToNode.parent().hasClass('right')) data.lineMargin -= 100;
             }
-//usa_debug('======== data.lineMargin: ' + data.lineMargin);
 
             if (data.noAnimation){
               data.noAnimation = false;
@@ -861,17 +810,14 @@ Project demo: http://shindiristudio.com/timeline
 
             // Scroll
             var itemWidth = $this.find('.timeline-item:first').width();
-//usa_debug('======== data.margin: ' + data.margin);
             data.margin += (itemWidth + data.options.itemMargin)*(data.currentIndex - count);
-//usa_debug('========= data.itemWidth: ' + data.itemWidth + ', itemWidth: ' + itemWidth + ', data.options.itemMargin: ' + data.options.itemMargin + ', data.currentIndex: ' + data.currentIndex + ', count: ' + count + ' => data.margin: ' + data.margin);
             data.currentIndex = count;
 
             var multiply = (parseInt(data.iholder.css('margin-left')) - data.margin)/data.itemWidth;
 
             // RF CODE CHANGE
-//usa_debug('========== RF DEBUG: multiply = ' + String(multiply));
-//usa_debug(data);
-// NOTE: data.iholder = $('.timeline-items')
+            //usa_debug('========== RF DEBUG: multiply = ' + String(multiply));
+            // NOTE: data.iholder = $('.timeline-items')
             var currentId = data.items[data.currentIndex].dataset.id;
             var ignoreMultiply = false;
 
@@ -884,10 +830,13 @@ Project demo: http://shindiristudio.com/timeline
             }
 
             if (multiply == 0 || ignoreMultiply == true) {
+              data.iholder.stop(true).animate({marginLeft : data.margin}, speed+(speed/5)*(Math.abs(multiply)-1), easing);
+/*
               data.iholder.stop(true).animate({marginLeft : data.margin}, speed+(speed/5)*(Math.abs(multiply)-1), easing, function() {
                 // Trigger ScrollStopIgnore event - this is for events that didn't really move on to the next/previous item
                 $this.trigger('scrollStopIgnore.Timeline');
               });
+*/
             }
             else {
     					if (typeof Drupal.behaviors.ms_global == 'object' && typeof Drupal.behaviors.ms_global.create728x90Ad == 'function') {
@@ -907,14 +856,6 @@ Project demo: http://shindiristudio.com/timeline
                 activeTimelineItem = $timelineItems.find('.timeline-item[data-id="' + currentId + '"]');
             $timelineItems.find('.timeline-item').removeClass('active');
             activeTimelineItem.addClass('active');
-//usa_debug('========== currentId: ' + currentId + ', activeTimelineItem: ');
-//usa_debug(activeTimelineItem);
-
-            // create Gigya share bar
-            var $gigyaShareBar = $timelineItems.find('.timeline-item.active .timeline-gigya-share'),
-                shareBarId = $gigyaShareBar.attr('id'),
-                previewImage = $gigyaShareBar.attr('data-share-picture');
-            Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
           }
           return $this;
         }, // end goTo
@@ -925,7 +866,6 @@ Project demo: http://shindiristudio.com/timeline
               data = $this.data('timeline'),
               speed = data.options.scrollSpeed,
               easing = data.options.easing;
-//usa_debug('=========== lineLeft: speed: ' + speed + ', easing: ' + easing);
           if (data.lineMargin != 0 && data.options.categories) {
             data.lineMargin += 100;
             $this.find('.timeline-wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing);
@@ -944,8 +884,6 @@ Project demo: http://shindiristudio.com/timeline
           else {
             var viewCount = data.lineViewCount;
           }
-//usa_debug('=========== lineRight: viewCount: ' + viewCount + ', data.lineMargin: ' + data.lineMargin + ', data.options.categories: ');
-//usa_debug(data.options.categories);
 
           if (data.lineMargin != -(viewCount-1)*100 && data.options.categories) {
             data.lineMargin -= 100;
@@ -955,7 +893,6 @@ Project demo: http://shindiristudio.com/timeline
 
         // Create timeline nav elements and css dependent properties
         createElements : function() {
-//usa_debug('========== createElements()');
           var $this = this,
               data = $this.data('timeline'),
               $items = data.items;
@@ -971,17 +908,10 @@ Project demo: http://shindiristudio.com/timeline
               minY = 99999,
               maxM = 0,
               maxY = 0;
-/*
-usa_debug('======= months: ');
-usa_debug(months);
-usa_debug('======= monthsDays: ' );
-usa_debug(monthsDays);
-*/
           if (!data.options.yearsOn) maxY = 99999;
 
           var yearsArr = {};
           if (!data.options.categories) {
-//usa_debug('======= if (!data.options.categories)');
             $items.each(function(){
               var dataId = $(this).attr('data-id'),
                   dataArray = dataId.split('/'),
@@ -997,8 +927,6 @@ usa_debug(monthsDays);
 
           // LOOP THROUGH EACH ITEM AND CREATE ELEMENTS
           // find timeline date range and make node elements
-//usa_debug('=========== $items: ');
-//usa_debug($items);
           $items.each(function(index) {
             var dataId = $(this).attr('data-id'),
                 nodeName = $(this).attr('data-name'),
@@ -1007,21 +935,16 @@ usa_debug(monthsDays);
                 d = parseInt(dataArray[0], 10),
                 m = ($.inArray(dataArray[1], months) != -1) ? $.inArray(dataArray[1], months) : parseInt(dataArray[1], 10),
                 y = parseInt(dataArray[2], 10);
-//usa_debug('======== d: ' + d + ', m: ' + m + ', y: ' + y);
             if (typeof yearsArr[y] == 'undefined') yearsArr[y] = {};
             if (typeof yearsArr[y][m] == 'undefined') yearsArr[y][m] = {};
             yearsArr[y][m][d] = dataId;
             var isActive = (index == data.currentIndex ? ' active' : '');
             // leftPos = position of dots for each episode
             if (data.options.categories) {
-//usa_debug('=========== y: ' + y + ', m: ' + m + ', monthsDays: ');
-//usa_debug(monthsDays);
               var leftPos = (data.options.yearsOn) ? (100/(monthsDays[1][y][m] + 1)) * d : (100/(monthsDays[m] + 1)) * d;
-//usa_debug('============ data.options.categories => leftPos: ' + leftPos + '\nmonthsDays[m]: ' + monthsDays[m] + '\nd: ' + d);
             }
             else {
               var leftPos = (100/(maxY-minY))*(d-minY);
-//usa_debug('============ data.options.categories else => leftPos: ' + leftPos + '\nmaxY: ' + maxY + '\nminY: ' + minY + '\nd: ' + d);
             }
             var nName = ((typeof nodeName != 'undefined') ? nodeName : d);
 
@@ -1032,16 +955,8 @@ usa_debug(monthsDays);
 
             nodes[dataId]+='</a>\n';
           });
-/*
-usa_debug('========== yearsArr: ');
-usa_debug(yearsArr);
-usa_debug('========== nodes: ');
-usa_debug(nodes);
-*/
 
           // Make wrapper elements
-//usa_debug('============= yearsOn: ' + data.options.yearsOn + ', Object.keys(yearsArr).length: ' + Object.keys(yearsArr).length + ', yearsArr: ');
-//usa_debug(yearsArr);
           if (data.options.yearsOn && Object.keys(yearsArr).length > 1) {
           html = '\n' +
     '		<div id="timeline-line-full-left"><span class="title">Season 1</span><span class="arrow"></span>' +
@@ -1058,7 +973,6 @@ usa_debug(nodes);
 
           // Prepare for loop, every view has 2 months, we show both if first has nodes in it
           if (!data.options.categories) {
-//usa_debug('========= if (!data.options.categories)');
             html +=
             '<div class="timeline-view" data-id="'+cnt+'">\n'+
             '					<div class="timeline-m">\n';
@@ -1071,11 +985,9 @@ usa_debug(nodes);
           else {
             var firstMonth = true,
                 cnt = 0;
-//usa_debug('=========== else');
             for (var yr in yearsArr) {
               for (var mnth in yearsArr[yr]) {
                 if (firstMonth) {
-//usa_debug('============ if (firstMonth) : cnt: ' + cnt + ', months[(cnt + 1)]: ' + months[(cnt + 1)] + ', mnth: ' + mnth);
                   firstMonth = !firstMonth;
                   html +=
                 '<div class="timeline-view" data-id="'+cnt+'"><span class="vert-end-line"></span>\n'+
@@ -1084,14 +996,12 @@ usa_debug(nodes);
 
                   // Fill with nodes
                   for (dy in yearsArr[yr][mnth]) {
-//usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
                     html+= nodes[yearsArr[yr][mnth][dy]];
                   }
                   html +=
         '					</div> <!-- KRAJ PRVOG -->\n';
                 }
                 else {
-//usa_debug('============ else !firstMonth : cnt: ' + cnt + ', months[(cnt + 1)]: ' + months[(cnt + 1)] + ', mnth: ' + mnth);
                   firstMonth = !firstMonth;
                   html +=
         '					<div class="timeline-m right">\n'+
@@ -1099,7 +1009,6 @@ usa_debug(nodes);
 
                   // Fill with nodes
                   for (dy in yearsArr[yr][mnth]) {
-//usa_debug('============= yr: ' + yr + ', mnth: ' + mnth + ', dy: ' + dy);
                     html+= nodes[yearsArr[yr][mnth][dy]];
                   }
                   html +=
@@ -1131,8 +1040,6 @@ usa_debug(nodes);
           data.lineViewCount = cnt;
           // Add generated html and set width & margin for dynamic timeline
           $this.find('.timeline-line:first').html(html);
-//usa_debug('=========== .timeline-line:first: ');
-//usa_debug($this.find('.timeline-line:first'));
           $this.find('.timeline-node').each(function(){
             var $thisNode = $(this);
             $(this).find('span').hide();
@@ -1163,13 +1070,12 @@ usa_debug(nodes);
             });
           });
 
+          // INITIALIZE CLICKS
           $this.find('#timeline-line-left').on('click', function(){
-//usa_debug('============ #timeline-line-left click');
             $this.timeline('lineLeft');
           });
 
           $this.find('#timeline-line-right').on('click', function(){
-//usa_debug('============ #timeline-line-right click');
             $this.timeline('lineRight');
           });
 
@@ -1186,13 +1092,17 @@ usa_debug(nodes);
             $this.timeline('goTo', '01/01/02');
             $(this).find('.timeline-node:last').addClass('active');
           });
+
+          // Gigya share buttons
+          var $timelineGigyaShareButtons = $('.node-timeline-gallery .timeline-item .timeline-gigya-share .gig-button-container .gig-share-button div');
+          $timelineGigyaShareButtons.on('click', function(){
+            Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this)); // shareType, title);
+          });
+
         } // end createElements
       }; // end t_methods
 
-
       var self = this;
-
-
 
       // Initiate methods
       $.fn.timeline = function( method ) {
@@ -1208,7 +1118,6 @@ usa_debug(nodes);
       };
 
       function initializeTimer() {
-//usa_debug('========== timeline -- initializeTimer()');
         setTimeout(function(){
           if (typeof categories == 'object' && typeof segments == 'object') {
             self.initializeTimeline();
@@ -1229,8 +1138,6 @@ usa_debug(nodes);
           var data = $this.data('timeline');
               id = $this.find('.timeline-node.active:first').attr('href').substr(1);
 
-//usa_debug('=========== data: ');
-//usa_debug(data);
           var dataId = data.items.eq(data.currentIndex).attr('data-id');
           var dataCount = data.items.eq(data.currentIndex).attr('data-count');
           $this.timeline('goTo', dataId);

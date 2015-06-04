@@ -426,7 +426,7 @@
             position: absolute;
             top: 90%;
             width: 38px;
-            z-index: 1000;
+            z-index: 55;
             @include breakpoint($bp-min-1901-width) {
               margin-top: -22px;
               height: 44px;

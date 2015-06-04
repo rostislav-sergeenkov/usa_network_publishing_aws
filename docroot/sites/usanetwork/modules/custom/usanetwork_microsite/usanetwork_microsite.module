@@ -2579,7 +2579,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
     $entity = $context['entity'];
     if ($entity->type == 'usanetwork_microsite') {
       $node = menu_get_object();
-      if(!isset($node->type) || $node->type != 'usanetwork_microsite') {
+      if (!isset($node->type) || $node->type != 'usanetwork_microsite') {
         return;
       }
       $node_wrapper = entity_metadata_wrapper('node', $node);
@@ -2625,7 +2625,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           $content_type = 'Bio';
           if (isset($args[4])) {
             $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
-            if(!empty($node)) {
+            if (!empty($node)) {
               $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
               $content_name = $person_names['person_title'];
               $umbel = $person_names['person_title'];
@@ -2680,7 +2680,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $first_section_wrapper = $node_wrapper->field_timeline_episode_section->get(0);
               $first_season_wrapper = $first_section_wrapper->field_season;
               $first_episode_wrapper = $first_section_wrapper->field_episode;
-              if(!empty($first_season_wrapper)) {
+              if (!empty($first_season_wrapper)) {
                 $season_title = $first_season_wrapper->title->value();
                 $episode_title = $first_episode_wrapper->title->value();
                 $episode_number = $first_episode_wrapper->field_episode_number->value();
@@ -2693,9 +2693,9 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'episodes':
           $content_type = 'Episode Guide';
-          if(isset($args[4])) {
+          if (isset($args[4])) {
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'episodes');
-            if(!empty($node)) {
+            if (!empty($node)) {
               $content_name = $node->title;
               $umbel = $node->title;
             }
@@ -2741,9 +2741,9 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'quizzes':
           $content_type = 'Quiz';
-          if(isset($args[4])) {
+          if (isset($args[4])) {
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'quizzes');
-            if(!empty($node)) {
+            if (!empty($node)) {
               $content_name = $node->title;
             }
           }
@@ -2775,12 +2775,22 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
       }
       $omniture_array[] = $entity->title; // microsite_name
       $omniture_array[] = ($content_type == 'Gallery' && !empty($alt_content_type)) ? $alt_content_type : $content_type; // content_type
-      if (!empty($content_name)) $omniture_array[] = $content_name; // content_name
-      if (!empty($specific_content_name)) $omniture_array[] = $specific_content_name; // specific_content_name
+      if (!empty($content_name)) {
+        $omniture_array[] = $content_name; // content_name
+      }
+      if (!empty($specific_content_name)) {
+        $omniture_array[] = $specific_content_name; // specific_content_name
+      }
       if ($entity->title == 'Dig') {
-        if ($content_type == 'Home') $omniture_variables['s.pageName'] = $omniture_array[0] . $join_str . 'Dig Deeper';
-        elseif ($content_type == 'About') $omniture_variables['s.pageName'] = join($join_str, array_slice($omniture_array, 0, 2)) . $join_str . 'Dig Deeper';
-        else $omniture_variables['s.pageName'] = join($join_str, $omniture_array);
+        if ($content_type == 'Home') {
+          $omniture_variables['s.pageName'] = $omniture_array[0] . $join_str . 'Dig Deeper';
+        }
+        elseif ($content_type == 'About') {
+          $omniture_variables['s.pageName'] = join($join_str, array_slice($omniture_array, 0, 2)) . $join_str . 'Dig Deeper';
+        }
+        else {
+          $omniture_variables['s.pageName'] = join($join_str, $omniture_array);
+        }
       }
       else {
         $omniture_variables['s.pageName'] = join($join_str, $omniture_array);

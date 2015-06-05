@@ -243,7 +243,7 @@
           anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
       // if this is IE9, reload the correct page
-      if ($('html.ie9').length > 0) {
+      if ($('html').hasClass('ie9')) {
         window.location.href = anchorFull;
         return false;
       }

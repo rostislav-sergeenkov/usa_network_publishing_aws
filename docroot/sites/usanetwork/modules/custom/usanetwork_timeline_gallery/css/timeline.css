@@ -139,7 +139,7 @@ ul, li {
 /* node on the timeline */
 .timelineFlat a.timeline-node {
 	text-decoration: none;
-	padding: 38px 0 4px;
+	padding: 38px 0;
 	height: 10px;
 	font-size: 0.75em;
 	top: -16px;
@@ -147,6 +147,7 @@ ul, li {
 	outline: none;
   position: absolute;
   text-align: center;
+  z-index: 100;
 }
 .timelineFlat a.timeline-node:after {
 	content: "";
@@ -159,6 +160,8 @@ ul, li {
 	left: 50%;
 	margin: 0 0 0 -7px;
 	background: #d2d2d2;
+	z-index: 0;
+	display: inline;
 }
 .timelineFlat a.timeline-node.active {
 	color: #dd5555;
@@ -185,23 +188,27 @@ ul, li {
 	text-transform: uppercase;
 }
 .timelineFlat a.timeline-node:hover .timeline-node-desc {
-	top: 0;
+	top: -30px;
 	opacity: 1;
+	z-index: 200;
 }
 
 /* dot hover tooltip */
-.timelineFlat .timeline-node-desc span {
+.timelineFlat .timeline-node-desc {
+/*
 	white-space: nowrap;
 	margin-left: -50%;
 	margin-right: 50%;
 	margin-top: -18px;
+*/
+	margin: -18px 50% 0 -50%;
 	display: block !important;
 	padding: 4px 8px;
 	border-radius: 3px;
 	background-color: #56000A;
 	position: relative;
 }
-.timelineFlat .timeline-node-desc span:after {
+.timelineFlat .timeline-node-desc:after {
 	content: "";
 	width: 0;
 	height: 0;

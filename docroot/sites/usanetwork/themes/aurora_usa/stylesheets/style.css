@@ -1263,6 +1263,281 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-left: -20px;
   }
 }
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo, .related-content-block ul li .social-promo.ymal-promo {
+    height: 115vw;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .asset-img, .related-content-block ul li .social-promo.ymal-promo .asset-img {
+  height: 100%;
+  width: 62%;
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .asset-img, .related-content-block ul li .social-promo.ymal-promo .asset-img {
+    width: 64%;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .asset-img, .related-content-block ul li .social-promo.ymal-promo .asset-img {
+    width: 100%;
+    height: 44.6%;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper {
+  height: 100%;
+  width: 38%;
+  padding: 30px 30px 0;
+}
+@media (min-width: 1601px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper {
+    padding: 50px 40px 0;
+  }
+}
+@media (max-width: 1024px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper {
+    padding: 20px 20px 0;
+  }
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper {
+    width: 36%;
+    padding: 12px 12px 0;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper {
+    width: 100%;
+    height: 55.4%;
+    padding: 25px 14.8% 0;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
+  height: calc(100% - 83px);
+}
+@media (min-width: 1601px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
+    height: calc(100% - 120px);
+  }
+}
+@media (max-width: 1024px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
+    height: calc(100% - 66px);
+  }
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
+    height: calc(100% - 52px);
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
+    height: calc(100% - 80px);
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .topic, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .topic {
+  line-height: 1em;
+  font-size: 12px;
+  margin-bottom: 17px;
+}
+@media (min-width: 1601px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .topic, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .topic {
+    font-size: 18px;
+    line-height: 1em;
+  }
+}
+@media (max-width: 1024px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .topic, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .topic {
+    font-size: 9.6px;
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .topic, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .topic {
+    font-size: 7.18px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .topic, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .topic {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .show-title {
+  line-height: 1em;
+  font-size: 24px;
+  margin-bottom: 17px;
+}
+@media (min-width: 1601px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .show-title {
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .show-title {
+    font-size: 19.2px;
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .show-title {
+    font-size: 14.35px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .show-title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .show-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .title {
+  line-height: 1em;
+  font-size: 12px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  margin-bottom: 17px;
+}
+@media (min-width: 1601px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .title {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .title {
+    font-size: 9.6px;
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .title {
+    font-size: 7.18px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .title, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .title {
+    font-size: 10px;
+    margin-bottom: 15px;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
+  line-height: 1.5em;
+  font-size: 14px;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  margin-top: 17px;
+}
+@media (min-width: 1601px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
+    font-size: 20px;
+    max-height: 146px;
+  }
+}
+@media (max-width: 1024px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
+    font-size: 11.2px;
+    margin-top: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
+    font-size: 8.37px;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
+    font-size: 10px;
+    margin-top: 15px;
+    min-height: 28vw;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta-button {
+  font-size: 15px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  margin-top: 23px;
+}
+@media (min-width: 1601px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta-button {
+    font-size: 23px;
+  }
+}
+@media (max-width: 1024px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta-button {
+    font-size: 12px;
+    margin-top: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta-button {
+    font-size: 8.97px;
+    line-height: 22px;
+    height: 22px;
+    margin-top: 15px;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta-button {
+    font-size: 12px;
+    height: 35px;
+    line-height: 35px;
+    margin: auto;
+    max-width: 260px;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper:before, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper:before {
+  width: 10px;
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper:before, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper:before {
+    width: 6px;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper:before, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper:before {
+    width: 100%;
+    height: 6px;
+  }
+}
+.social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-icon, .related-content-block ul li .social-promo.ymal-promo .meta-icon {
+  left: 62.5%;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  margin-top: -22px;
+  top: 50%;
+}
+@media (min-width: 1601px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-icon, .related-content-block ul li .social-promo.ymal-promo .meta-icon {
+    left: 62.5%;
+    margin-left: -30px;
+    margin-top: -30px;
+    top: 50%;
+  }
+}
+@media (max-width: 1024px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-icon, .related-content-block ul li .social-promo.ymal-promo .meta-icon {
+    height: 36px;
+    width: 36px;
+    margin-left: -18px;
+    margin-top: -18px;
+  }
+}
+@media (max-width: 768px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-icon, .related-content-block ul li .social-promo.ymal-promo .meta-icon {
+    margin-left: -15px;
+    margin-top: -15px;
+    height: 30px;
+    width: 30px;
+    left: 64%;
+  }
+}
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-icon, .related-content-block ul li .social-promo.ymal-promo .meta-icon {
+    top: 44.7%;
+    left: 50%;
+  }
+}
 
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .asset-img, .aspot-and-episodes .episodes-list .aspot-carousel-promo .asset-img {
   height: 100%;
@@ -15548,6 +15823,10 @@ footer h2 {
   }
   .related-content-block ul li:last-child, .related-content-block ul li.last {
     margin-bottom: 0;
+  }
+  .related-content-block ul li.ymal-item {
+    height: 115vw;
+    margin: 40px 0 0;
   }
 }
 .related-content-block ul li > div {

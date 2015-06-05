@@ -8325,6 +8325,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .consumptionator-video-page header .header-nav-bar .tve-help-link a:focus, .page-videos-live header .header-nav-bar .tve-help-link a:focus {
   outline: none;
 }
+.consumptionator-video-page header .header-nav-bar .tve-help-link.signOut + .signIn.no-auth, .page-videos-live header .header-nav-bar .tve-help-link.signOut + .signIn.no-auth {
+  border: none;
+  height: auto;
+  width: auto;
+}
 .consumptionator-video-page header .header-nav-bar .tve-help-link.signOut:hover, .page-videos-live header .header-nav-bar .tve-help-link.signOut:hover {
   background: #363636;
 }
@@ -8399,6 +8404,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth {
   border-left: 1px solid #363636;
+  display: block;
   box-sizing: border-box;
   width: 135px;
 }
@@ -9327,6 +9333,14 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .page-videos .carousel-wrapper .carousel-block-left:nth-child(2n) {
   background: #e9eaeb;
 }
+@media (max-width: 480px) {
+  .page-videos .carousel-wrapper .carousel-block-left.active .carousel-description-item.sponsored-enable {
+    height: 110px;
+  }
+  .page-videos .carousel-wrapper .carousel-block-left.active .carousel-description-item.sponsored-enable .title {
+    line-height: 40px !important;
+  }
+}
 .page-videos .carousel-wrapper .carousel-block-left .more-episodes {
   color: #545454;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -9483,6 +9497,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 @media (max-width: 480px) {
   .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item .description-wrapper .description-block .additional-text {
     display: none;
+  }
+}
+@media (max-width: 480px) {
+  .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item .description-wrapper .description-block .sponsored {
+    width: 175px;
   }
 }
 

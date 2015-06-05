@@ -61,7 +61,12 @@
 
       setTimeout(function(){
         homeSectionHeight = self.getHeightHomeSection();
-        self.setSiteNav();
+        if ($('html').hasClass('ie9')) {
+          self.showSiteNav();
+        }
+        else {
+          self.setSiteNav();
+        }
       }, 500);
 
 
@@ -75,7 +80,7 @@
           }, 15);
         }
 
-        if (typeof siteNavTimer == 'undefined') {
+        if (!$('html').hasClass('ie9') && typeof siteNavTimer == 'undefined') {
           siteNavTimer = setTimeout(function(){
             self.setSiteNav();
             siteNavTimer = clearTimeout(siteNavTimer);

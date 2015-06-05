@@ -818,7 +818,8 @@ Project demo: http://shindiristudio.com/timeline
             // RF CODE CHANGE
             //usa_debug('========== RF DEBUG: multiply = ' + String(multiply));
             // NOTE: data.iholder = $('.timeline-items')
-            var currentId = data.items[data.currentIndex].dataset.id;
+            var currentId = id; // data.items[data.currentIndex].dataset.id;
+
             var ignoreMultiply = false;
 
             if (multiply < 0 && multiply > -0.3) {
@@ -949,9 +950,9 @@ Project demo: http://shindiristudio.com/timeline
             var nName = ((typeof nodeName != 'undefined') ? nodeName : d);
 
             // Store node element
-            nodes[dataId] = '<a href="#'+dataId+'" class="timeline-node'+isActive+'" style="left: '+leftPos+'%">';
+            nodes[dataId] = '<a href="#'+dataId+'" class="timeline-node'+isActive+'" style="left: '+leftPos+'%">\n';
 
-            if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="timeline-node-desc"><span>'+dataDesc+'</span></span>';
+            if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="timeline-node-desc">'+dataDesc+'</span>\n';
 
             nodes[dataId]+='</a>\n';
           });
@@ -1130,19 +1131,21 @@ Project demo: http://shindiristudio.com/timeline
       setTimeout(initializeTimer, 1000);
 
       // WINDOW RESIZING
-      var windowResizeTimer;
-      $(window).resize(function() {
-        windowResizeTimer = clearTimeout(windowResizeTimer);
-        windowResizeTimer = setTimeout(function(){
-          $this.timeline('setWidthHeightMargin');
-          var data = $this.data('timeline');
-              id = $this.find('.timeline-node.active:first').attr('href').substr(1);
+      if (!$('html').hasClass('ie9')) {
+        var windowResizeTimer;
+        $(window).resize(function() {
+          windowResizeTimer = clearTimeout(windowResizeTimer);
+          windowResizeTimer = setTimeout(function(){
+            $this.timeline('setWidthHeightMargin');
+            var data = $this.data('timeline');
+                id = $this.find('.timeline-node.active:first').attr('href').substr(1);
 
-          var dataId = data.items.eq(data.currentIndex).attr('data-id');
-          var dataCount = data.items.eq(data.currentIndex).attr('data-count');
-          $this.timeline('goTo', dataId);
-        }, 500);
-      });
+            var dataId = data.items.eq(data.currentIndex).attr('data-id');
+            var dataCount = data.items.eq(data.currentIndex).attr('data-count');
+            $this.timeline('goTo', dataId);
+          }, 500);
+        });
+      }
     }
   }
 })(jQuery);

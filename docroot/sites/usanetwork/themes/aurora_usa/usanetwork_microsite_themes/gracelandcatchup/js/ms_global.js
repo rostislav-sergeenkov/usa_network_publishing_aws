@@ -39,8 +39,9 @@
       var basePath = Drupal.settings.microsites_settings.base_path;
 
       // if this is IE9, reload the correct page
-      if ($('html.ie9').length > 0) {
-        window.location.href = anchorFull.replace('/home', '');
+      if ($('html').hasClass('ie9')) {
+//usa_debug('======== changeUrl(' + anchor + ', ' + anchorFull + ')');
+//        window.location.href = anchorFull.replace('/home', '');
         return false;
       }
 
@@ -471,8 +472,12 @@
           offsetDirection = (direction == 'down') ? 1 : -1;
 
       // if this is IE9, reload the correct page
-      if ($('html.ie9').length > 0) {
-        window.location.href = anchorFull.replace('/home', '');
+      if ($('html').hasClass('ie9')) {
+//usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
+//        window.location.href = anchorFull.replace('/home', '');
+        // if the window is scrolling, the page must be almost completely
+        // loaded, so the initial page load is complete
+        Drupal.behaviors.ms_global.globalInitialPageLoad = false;
         return false;
       }
 
@@ -557,7 +562,7 @@
 
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
-      if (!$('html.ie9').length) {
+      if (!$('html').hasClass('ie9')) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }
 
@@ -622,7 +627,7 @@
         });
 
         // initialize the waypoints
-        self.initializeWaypoints();
+        if (!$('html').hasClass('ie9')) self.initializeWaypoints();
 
         // check url and scroll to specific content
         // This scroll is necessary -- even if we're loading the "homepage",
@@ -643,7 +648,8 @@
       $(window).off('popstate');
       $(window).off('hashchange');
 
-      if ($('html.ie9').length > 0) {
+/*
+      if (!$('html').hasClass('ie9')) {
         // Turn on browser history functionality -- for example, browser back button.
         // Popped variable is used to detect initial (useless) popstate.
         // If history.state exists, assume browser isn't going to fire initial popstate.
@@ -666,6 +672,7 @@
           self.sectionScroll(anchor, item);
         });
       }
+*/
 
       // RESIZE
       // set resize and orientation change

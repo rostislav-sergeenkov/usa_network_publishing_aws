@@ -1263,6 +1263,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     margin-left: -20px;
   }
 }
+@media (max-width: 640px) {
+  .social-block.carousel-block .carousel ul li .social-promo.ymal-promo, .related-content-block ul li .social-promo.ymal-promo {
+    height: 115vw;
+  }
+}
 .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .asset-img, .related-content-block ul li .social-promo.ymal-promo .asset-img {
   height: 100%;
   width: 62%;
@@ -15708,6 +15713,10 @@ footer h2 {
   }
   .related-content-block ul li:last-child, .related-content-block ul li.last {
     margin-bottom: 0;
+  }
+  .related-content-block ul li.ymal-item {
+    height: 115vw;
+    margin: 40px 0;
   }
 }
 .related-content-block ul li > div {

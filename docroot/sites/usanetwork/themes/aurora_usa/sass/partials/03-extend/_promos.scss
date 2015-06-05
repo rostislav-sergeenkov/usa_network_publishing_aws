@@ -477,6 +477,9 @@
       }
     }
     &.ymal-promo {
+      @include breakpoint($bp-640-width) {
+        height: 115vw;
+      }
       .asset-img {
         height: 100%;
         width: 62%;

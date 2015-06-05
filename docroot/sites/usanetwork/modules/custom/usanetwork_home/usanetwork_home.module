@@ -926,13 +926,24 @@ function usanetwork_home_form_usa_homepage_node_form_alter(&$form, &$form_state)
 
   $form['field_hp_promo_carousel_title']['#states'] = array(
     'visible' => array(
-      ':input[name="field_hp_promo_carousel_display[und]"]' => array('checked' => true)
+      ':input[name="field_hp_promo_carousel_display[und]"]' => array('checked' => true),
+    )
+  );
+  $form['field_hp_promo_carousel']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_hp_promo_carousel_display[und]"]' => array('checked' => true),
     )
   );
 
-  $form['field_hp_promo_carousel']['#states'] = array(
+  //Full Episodes view States
+  $form['field_full_episodes_semi']['#states'] = array(
     'visible' => array(
-      ':input[name="field_hp_promo_carousel_display[und]"]' => array('checked' => true)
+      ':input[name="field_full_episodes_options[und]"]' => array('value' => 'semiauto'),
+    )
+  );
+  $form['field_full_episodes_manual']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_full_episodes_options[und]"]' => array('value' => 'manual'),
     )
   );
 

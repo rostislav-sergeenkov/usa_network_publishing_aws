@@ -1307,6 +1307,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 @media (max-width: 640px) {
   .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper {
     width: 100%;
+    height: 55.4%;
     padding: 25px 14.8% 0;
   }
 }
@@ -1330,7 +1331,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (max-width: 640px) {
   .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
-    height: calc(44.6% - 37px);
+    height: calc(100% - 80px);
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .topic, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .topic {
@@ -15825,7 +15826,7 @@ footer h2 {
   }
   .related-content-block ul li.ymal-item {
     height: 115vw;
-    margin: 40px 0;
+    margin: 40px 0 0;
   }
 }
 .related-content-block ul li > div {

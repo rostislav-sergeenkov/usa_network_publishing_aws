@@ -17383,6 +17383,16 @@ footer h2 {
 .content .landing-page-container.all-shows-landing-page-container {
   padding-top: 77px;
 }
+@media (max-width: 1280px) {
+  .content .landing-page-container.all-shows-landing-page-container {
+    padding-top: 55px;
+  }
+}
+@media (max-width: 1280px) {
+  .content .landing-page-container.all-shows-landing-page-container {
+    padding-top: 42px;
+  }
+}
 .content .landing-page-container.all-shows-landing-page-container .section-title {
   margin-bottom: 50px;
 }
@@ -17408,7 +17418,12 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .content .landing-page-container.all-shows-landing-page-container .upper-menu {
-    top: 33px;
+    top: -6px;
+  }
+}
+@media (max-width: 640px) {
+  .content .landing-page-container.all-shows-landing-page-container .upper-menu {
+    padding-right: 10px;
   }
 }
 .content .landing-page-container.all-shows-landing-page-container .upper-menu .item-filter.sorter-items {

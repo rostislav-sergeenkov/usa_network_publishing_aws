@@ -1,5 +1,5 @@
 .content {
-  .landing-page-container.all-shows-landing-page-container {
+  .all-shows-landing-page-container {
     padding-top: 77px;
     @include breakpoint($bp-1280-width) {
       padding-top: 55px;
@@ -27,6 +27,9 @@
       margin-top: 41px;
       @include breakpoint($bp-1280-width) {
         top: -6px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding-right: 20px;
       }
       @include breakpoint($bp-640-width) {
         padding-right: 10px;

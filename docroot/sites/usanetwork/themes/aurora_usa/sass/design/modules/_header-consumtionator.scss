@@ -547,12 +547,9 @@
             border-left: 1px solid $consup-border;
             display: block;
             box-sizing: border-box;
-            width: 135px;
-            @include breakpoint($bp-1900-width) {
-              width: 90px;
-            }
-            @include breakpoint($bp-1024-width) {
-              width: 72px;
+            width: get-vw(73px, 1025);
+            @include breakpoint($bp-min-1901-width) {
+              width: 135px;
             }
             &:hover {
               background: $consup-border;

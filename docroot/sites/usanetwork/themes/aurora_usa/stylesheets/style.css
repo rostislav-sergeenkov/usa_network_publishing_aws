@@ -744,32 +744,31 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   height: 52px;
   left: 50%;
   margin-left: -26px;
+  margin-top: -26px;
   position: relative;
   width: 52px;
 }
+@media (min-width: 1601px) {
+  .featured-block .carousel ul li .featured-large .meta .meta-icon {
+    height: 66px;
+    margin-left: -33px;
+    margin-top: -33px;
+    width: 66px;
+  }
+}
 @media (max-width: 768px) {
   .featured-block .carousel ul li .featured-large .meta .meta-icon {
-    position: absolute;
+    height: 7.1875vw;
     left: 4%;
     margin-left: 0;
-    margin-top: -26px;
-  }
-}
-@media (max-width: 480px) {
-  .featured-block .carousel ul li .featured-large .meta .meta-icon {
-    height: 44px;
-    margin-top: -22px;
-    width: 44px;
+    margin-top: -3.59375vw;
+    position: absolute;
+    width: 7.1875vw;
   }
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .caption, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .title, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .additional {
-    padding-left: calc(8% + 52px);
-  }
-}
-@media (max-width: 480px) {
-  .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .caption, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .title, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .additional {
-    padding-left: calc(8% + 44px);
+    padding-left: calc(8% + 7.1875vw);
   }
 }
 .featured-block .carousel ul li .featured-large .meta .caption {
@@ -780,20 +779,14 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-large .meta .caption {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 22.5px;
+    line-height: 26px;
   }
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li .featured-large .meta .caption {
-    font-size: 12px;
-    line-height: 14px;
-  }
-}
-@media (max-width: 480px) {
-  .featured-block .carousel ul li .featured-large .meta .caption {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 1.71875vw;
+    line-height: 3.125vw;
   }
 }
 .featured-block .carousel ul li .featured-large .meta .title {
@@ -803,14 +796,14 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-large .meta .title {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 26px;
+    line-height: 30px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .featured-block .carousel ul li .featured-large .meta .title {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 2.5vw;
+    line-height: 3.125vw;
   }
 }
 .featured-block .carousel ul li .featured-large .meta .additional {
@@ -822,14 +815,14 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-large .meta .additional {
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 16.5px;
+    line-height: 20px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .featured-block .carousel ul li .featured-large .meta .additional {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 1.71875vw;
+    line-height: 3.125vw;
   }
 }
 @media (max-width: 768px) {
@@ -884,19 +877,33 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   top: 50%;
   width: 37px;
 }
-@media (max-width: 480px) {
+@media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-small .meta-icon {
-    height: 30px;
-    margin-top: -15px;
-    width: 30px;
+    height: 62px;
+    margin-top: -31px;
+    width: 62px;
+  }
+}
+@media (max-width: 768px) {
+  .featured-block .carousel ul li .featured-small .meta-icon {
+    height: 6.25vw;
+    margin-left: 0;
+    margin-top: -3.125vw;
+    position: absolute;
+    width: 6.25vw;
   }
 }
 .featured-block .carousel ul li .featured-small .meta-icon ~ .meta {
   padding-left: calc(8% + 37px);
 }
-@media (max-width: 480px) {
+@media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-small .meta-icon ~ .meta {
-    padding-left: calc(8% + 30px);
+    padding-left: calc(8% + 62px);
+  }
+}
+@media (max-width: 768px) {
+  .featured-block .carousel ul li .featured-small .meta-icon ~ .meta {
+    padding-left: calc(8% + 6.25vw);
   }
 }
 .featured-block .carousel ul li .featured-small .meta {
@@ -912,32 +919,32 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   font-size: 14px;
   line-height: 18px;
 }
-@media (max-width: 640px) {
+@media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-small .meta .caption {
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 18px;
+    line-height: 22px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .featured-block .carousel ul li .featured-small .meta .caption {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 1.71875vw;
+    line-height: 2.8125vw;
   }
 }
 .featured-block .carousel ul li .featured-small .meta .title {
   font-size: 16px;
   line-height: 20px;
 }
-@media (max-width: 640px) {
+@media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-small .meta .title {
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 30px;
+    line-height: 36px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .featured-block .carousel ul li .featured-small .meta .title {
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 2.5vw;
+    line-height: 2.8125vw;
   }
 }
 .featured-block .carousel ul li .featured-small .meta .additional {
@@ -946,16 +953,16 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   line-height: 14px;
   text-transform: uppercase;
 }
-@media (max-width: 640px) {
+@media (min-width: 1601px) {
   .featured-block .carousel ul li .featured-small .meta .additional {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 16.5px;
+    line-height: 20px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .featured-block .carousel ul li .featured-small .meta .additional {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 1.71875vw;
+    line-height: 2.8125vw;
   }
 }
 
@@ -8462,16 +8469,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   border-left: 1px solid #363636;
   display: block;
   box-sizing: border-box;
-  width: 135px;
+  width: 7.12195vw;
 }
-@media (max-width: 1900px) {
+@media (min-width: 1901px) {
   .consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth {
-    width: 90px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth {
-    width: 72px;
+    width: 135px;
   }
 }
 .consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth:hover, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth:hover {

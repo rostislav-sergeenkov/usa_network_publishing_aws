@@ -3,12 +3,11 @@
  *
  */
 ?>
-<div class="node node-usanetwork-promo small three-line-video<?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
+<div class="node node-usanetwork-promo all-shows-promo<?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
   <?php if (!empty($target_url)): ?>
     <a href="<?php print $target_url; ?>">
       <div class="meta-wrapper">
         <div class="meta-wrapper-inner">
-          <div class="meta-icon <?php print $media_icon; ?>"></div>
           <div class="meta">
             <?php if (!empty($caption)): ?>
               <div class="caption"><?php print $caption; ?></div>

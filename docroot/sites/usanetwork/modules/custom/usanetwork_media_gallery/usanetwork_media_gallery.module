@@ -7,6 +7,7 @@
 include_once 'usanetwork_media_gallery.features.inc';
 
 define('USA_GALLERY_RELATED_CONTENT_ITEMS', 6);
+define('USA_GALLERY_OTHER_TYPE_MACHINE_NAME', '0');
 define('USA_GALLERY_OTHER_TYPE_LABEL', t('Other'));
 define('USA_GALLERY_ALL_GALLERIES_LABEL', t('All galleries'));
 define('USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK', 9);
@@ -504,7 +505,7 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
   $gallery_block = _usanetwork_media_gallery_landing_page_vbget_photos_block($galleries, 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK);
 
   $section_name = $params['category'] === NULL ? USA_GALLERY_ALL_GALLERIES_LABEL :
-    ($params['category'] === '0' ? USA_GALLERY_OTHER_TYPE_LABEL : $params['category']);
+    ($params['category'] === USA_GALLERY_OTHER_TYPE_MACHINE_NAME ? USA_GALLERY_OTHER_TYPE_LABEL : $params['category']);
   $key = md5($params['category']);
   $video_filter_title = ($params['category'] !== NULL)
     ? $section_name . ' (' . $gallery_types[$key]['items_count'] . ')'
@@ -627,9 +628,15 @@ function _usanetwork_media_show_gallery_lmb_block() {
         }
         switch ($promo_reference['target_type']) {
           case 'node':
+            if ($promo_entity->status != NODE_PUBLISHED) {
+              continue(2);
+            }
             $promo_data = _usanetwork_promo_pull_node_promo_details($promo_entity);
             break;
           case 'file':
+            if (!isset($promo_entity->mpx_video_data['status']) || $promo_entity->mpx_video_data['status'] != NODE_PUBLISHED) {
+              continue(2);
+            }
             $promo_data = _usanetwork_promo_pull_file_promo_details($promo_entity);
             break;
         }
@@ -889,7 +896,7 @@ function _usanetwork_media_gallery_photo_landing_prepare_query_params() {
     $query_parameters['category'] = NULL;
   }
   elseif ($query_parameters['category'] == USA_GALLERY_OTHER_TYPE_LABEL) {
-    $query_parameters['category'] = '0';
+    $query_parameters['category'] = USA_GALLERY_OTHER_TYPE_MACHINE_NAME;
   }
 
   if (empty($query_parameters['sort_order']) || !in_array(strtoupper($query_parameters['sort_order']), array('ASC', 'DESC'))) {
@@ -926,7 +933,7 @@ function _usanetwork_media_gallery_get_gallery_types($show_id, $params) {
       else {
         $result[$key]['active'] = (md5($params['category']) == $key) ? TRUE : FALSE;
         $result[$key]['items_count'] = 1;
-        $result[$key]['name'] = (empty($query_result->field_gallery_type_value) || $query_result->field_gallery_type_value == '0') ?
+        $result[$key]['name'] = (empty($query_result->field_gallery_type_value) || $query_result->field_gallery_type_value === USA_GALLERY_OTHER_TYPE_MACHINE_NAME) ?
           USA_GALLERY_OTHER_TYPE_LABEL : $query_result->field_gallery_type_value;
         $result[$key]['id'] =  $query_result->field_gallery_type_value;
         $result[$key]['url'] = url('node/' . $show_id . '/photos', array(
@@ -935,6 +942,12 @@ function _usanetwork_media_gallery_get_gallery_types($show_id, $params) {
             'sort_order' => $params['sort_order'],
           )));
       }
+    }
+    $other_type_key = md5(USA_GALLERY_OTHER_TYPE_MACHINE_NAME);
+    if (isset($result[$other_type_key]) && $result[$other_type_key] !== end($result)) {
+      $buf = $result[$other_type_key];
+      unset($result[$other_type_key]);
+      $result[$other_type_key] = $buf;
     }
     $all_galleries = array(
       'items_count' => count($query_results),

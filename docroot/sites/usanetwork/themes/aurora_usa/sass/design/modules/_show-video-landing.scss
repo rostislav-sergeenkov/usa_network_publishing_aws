@@ -299,14 +299,67 @@
     @include breakpoint($bp-min-1901-width) {
       margin-bottom: 190px;
     }
+    &.all-shows-items-blocks {
+      padding: 20px 20px 40px;
+      @include breakpoint($bp-min-1901-width) {
+        padding: 20px 32px 40px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 20px 10px 40px;
+      }
+      ul {
+        max-width: 1820px;
+        li {
+          height: 13.2vw;
+          margin-bottom: 0;
+          margin-right: 0.6%;
+          margin-top: 0.58vw;
+          width: 24.55%;
+          @extend %all-shows-promo;
+          @include breakpoint($bp-min-1901-width) {
+            height: 251px;
+            margin-top: 11px;
+          }
+          @include breakpoint($bp-min-1281-width) {
+            &:nth-child(4n) {
+              margin-right: 0;
+            }
+          }
+          @include breakpoint($between-769-1280) {
+            height: 16.9vw;
+            margin-right: 1.1%;
+            margin-top: 1.05vw;
+            width: 32.6%;
+            &:nth-child(3n) {
+              margin-right: 0;
+            }
+          }
+          @include breakpoint($bp-768-width) {
+            height: 26vw;
+            margin-right: 0;
+            margin-top: 1.9vw;
+            width: 49%;
+            &:nth-child(2n) {
+              float: right;
+              margin-right: 0;
+            }
+          }
+          > div {
+            float: none;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
     ul {
       @include clear();
+      margin: 0 auto;
       padding: 0;
       position: relative;
       width: 100%;
       @include breakpoint($bp-min-1901-width) {
         max-width: 1868px;
-        margin: 0 auto;
       }
       li {
         float: left;

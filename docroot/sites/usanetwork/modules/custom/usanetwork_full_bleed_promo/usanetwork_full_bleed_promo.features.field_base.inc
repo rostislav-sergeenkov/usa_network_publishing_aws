@@ -77,10 +77,12 @@ function usanetwork_full_bleed_promo_field_default_field_bases() {
     'module' => 'usanetwork_dynamic_entity_reference',
     'settings' => array(
       'entity_bundles' => array(
+        'blog' => 'blog',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
         'person' => 'person',
+        'post' => 'post',
         'quiz' => 'quiz',
         'tv_show' => 'tv_show',
         'usa_homepage' => 'usa_homepage',
@@ -89,6 +91,7 @@ function usanetwork_full_bleed_promo_field_default_field_bases() {
       'entity_type_ids' => array(
         'file' => 'file',
         'node' => 'node',
+        'taxonomy_term' => 'taxonomy_term',
       ),
     ),
     'translatable' => 0,

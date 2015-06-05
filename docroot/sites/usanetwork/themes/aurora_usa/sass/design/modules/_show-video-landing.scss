@@ -304,7 +304,7 @@
       @include breakpoint($bp-min-1901-width) {
         padding: 20px 32px 40px;
       }
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-768-width) {
         padding: 20px 10px 40px;
       }
       ul {
@@ -320,12 +320,12 @@
             height: 251px;
             margin-top: 11px;
           }
-          @include breakpoint($bp-min-1025-width) {
+          @include breakpoint($bp-min-1281-width) {
             &:nth-child(4n) {
               margin-right: 0;
             }
           }
-          @include breakpoint($between-641-1024) {
+          @include breakpoint($between-769-1280) {
             height: 16.9vw;
             margin-right: 1.1%;
             margin-top: 1.05vw;
@@ -334,7 +334,7 @@
               margin-right: 0;
             }
           }
-          @include breakpoint($bp-640-width) {
+          @include breakpoint($bp-768-width) {
             height: 26vw;
             margin-right: 0;
             margin-top: 1.9vw;

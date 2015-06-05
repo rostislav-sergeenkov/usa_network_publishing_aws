@@ -16,6 +16,7 @@
     @include breakpoint($bp-1280-width) {
       float: none;
       padding: 25px 0 38px 0;
+      margin-bottom: 0;
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {

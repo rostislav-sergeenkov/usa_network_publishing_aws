@@ -7962,55 +7962,29 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-  background-image: url('../images/sprites-s1f91cb9de1.png');
-  background-position: 0 -629px;
-  background-repeat: no-repeat;
-  overflow: hidden;
+  content: '\e61d';
   display: block;
-  height: 26px;
-  width: 26px;
-  content: '';
-  display: block;
-  left: calc((6.93vw - 26px)/2);
-  margin-top: -13px;
+  font-family: "ico-font";
+  left: 2.20936vw;
+  font-size: 2.52499vw;
+  line-height: 1;
+  margin-top: -1.26249vw;
   position: absolute;
   top: 50%;
 }
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-    background-image: url('../images/sprites-retina-saaa1024be6.png');
-    background-size: 65px 1803px;
-    background-position: 0 -435px;
-    height: 26px;
-    width: 26px;
-  }
-}
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-    background-image: url('../images/sprites-s1f91cb9de1.png');
-    background-position: 0 -553px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    display: block;
-    height: 40px;
-    width: 40px;
-    left: 46px;
-    margin-top: -20px;
-  }
-}
-@media (min-width: 1901px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1901px) and (-o-min-device-pixel-ratio: 3 / 2), (min-width: 1901px) and (min--moz-device-pixel-ratio: 2), (min-width: 1901px) and (min-device-pixel-ratio: 2), (min-width: 1901px) and (min-resolution: 144dppx) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
-    background-image: url('../images/sprites-retina-saaa1024be6.png');
-    background-size: 65px 1803px;
-    background-position: 0 -40px;
-    height: 40px;
-    width: 40px;
+    left: 42px;
+    margin-top: -24px;
+    font-size: 48px;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     left: 50%;
-    margin-left: -13px;
+    font-size: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover {
@@ -8510,26 +8484,27 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   width: 100%;
 }
 .consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth .loginButton:before, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth .loginButton:before {
-  background-image: url('../images/sprites-s1f91cb9de1.png');
-  background-position: 0 -1280px;
-  background-repeat: no-repeat;
-  overflow: hidden;
+  content: '\e61e';
   display: block;
-  height: 30px;
-  width: 27px;
-  content: '';
-  display: block;
+  font-family: "ico-font";
+  font-size: 2.10416vw;
+  left: 50%;
+  line-height: 1;
+  margin-left: -1.05208vw;
+  margin-top: -1.05208vw;
   position: absolute;
-  left: calc(50% - 13px);
-  top: calc(50% - 15px);
+  top: 50%;
 }
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
+@media (min-width: 1901px) {
   .consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth .loginButton:before, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth .loginButton:before {
-    background-image: url('../images/sprites-retina-saaa1024be6.png');
-    background-size: 65px 1803px;
-    background-position: 0 -1171px;
-    height: 30px;
-    width: 27px;
+    font-size: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth .loginButton:before, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth .loginButton:before {
+    display: none;
   }
 }
 .consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth .tve-help-sign, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth .tve-help-sign {

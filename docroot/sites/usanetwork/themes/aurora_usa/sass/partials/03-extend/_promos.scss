@@ -1645,10 +1645,10 @@
             @include breakpoint ($bp-min-1901-width) {
               font-size: 15px;
             }
-            @include breakpoint ($between-641-1024) {
+            @include breakpoint ($between-769-1280) {
               font-size: get-vw(8px, 768);
             }
-            @include breakpoint ($bp-640-width) {
+            @include breakpoint ($bp-768-width) {
               font-size: get-vw(10px, 640);
             }
           }
@@ -1660,10 +1660,10 @@
             @include breakpoint ($bp-min-1901-width) {
               font-size: 23px;
             }
-            @include breakpoint ($between-641-1024) {
+            @include breakpoint ($between-769-1280) {
               font-size: get-vw(12px, 768);
             }
-            @include breakpoint ($bp-640-width) {
+            @include breakpoint ($bp-768-width) {
               font-size: get-vw(15px, 640);
             }
           }
@@ -1675,10 +1675,10 @@
             @include breakpoint ($bp-min-1901-width) {
               font-size: 15px;
             }
-            @include breakpoint ($between-641-1024) {
+            @include breakpoint ($between-769-1280) {
               font-size: get-vw(8px, 768);
             }
-            @include breakpoint ($bp-640-width) {
+            @include breakpoint ($bp-768-width) {
               font-size: get-vw(10px, 640);
             }
           }

@@ -466,6 +466,11 @@
           outline: none;
         }
         &.signOut {
+          & + .signIn.no-auth {
+            border: none;
+            height: auto;
+            width: auto;
+          }
           &:hover {
             background: $consup-border;
           }
@@ -536,6 +541,7 @@
         &.signIn {
           &.no-auth {
             border-left: 1px solid $consup-border;
+            display: block;
             box-sizing: border-box;
             width: 135px;
             @include breakpoint($bp-1900-width) {

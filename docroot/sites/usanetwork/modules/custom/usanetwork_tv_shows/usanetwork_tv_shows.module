@@ -3882,6 +3882,7 @@ function usanetwork_tv_shows_get_ymal_item($show_node) {
         'media_icon' => 'about-show-icon-default',
         'ymal_about' => $about_field_data,
         'ymal' => TRUE,
+        'show_color' => usanetwork_tv_shows_color_show_css_class($related_show_node),
       );
     }
   }
@@ -3916,6 +3917,7 @@ function usanetwork_tv_shows_render_related_content_item_ymal($data) {
     'image_mobile' => $mobile_image,
     'icon_type' => $data->media_icon,
     'cta' => t('See more'),
+    'color_class' => !empty($data->show_color) ? $data->show_color : '',
   );
   return theme('usanetwork_tv_shows_related_ymal_item', $theme_variables);
 }

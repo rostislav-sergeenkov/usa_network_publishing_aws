@@ -19,7 +19,7 @@
       <div class="meta-wrapper show-color-border <?php print !empty($color_class) ? $color_class : ''; ?>">
         <div class="meta">
           <?php if (!empty($caption)): ?>
-            <div class="caption"><?php print $caption; ?></div>
+            <div class="topic"><?php print $caption; ?></div>
           <?php endif; ?>
           <?php if (!empty($show_name)): ?>
             <div class="show-title"><?php print $show_name; ?></div>
@@ -32,7 +32,7 @@
           <?php endif; ?>
         </div>
         <?php if (!empty($cta)): ?>
-          <div class="meta-button show-color tertiary <?php print !empty($color_class) ? $color_class : ''; ?>"><?php print $cta; ?></div>
+          <div class="meta-button show-color other-show-page tertiary <?php print !empty($color_class) ? $color_class : ''; ?>"><?php print $cta; ?></div>
         <?php endif; ?>
       </div>
       <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>

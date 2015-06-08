@@ -478,9 +478,6 @@
       .asset-img {
         height: 100%;
         width: 62%;
-        @include breakpoint($bp-768-width) {
-          width: 64%;
-        }
         @include breakpoint($bp-640-width) {
           width: 100%;
           height: 44.6%;
@@ -497,13 +494,12 @@
           padding: 20px 20px 0;
         }
         @include breakpoint($bp-768-width) {
-          width: 36%;
           padding: 12px 12px 0;
         }
         @include breakpoint($bp-640-width) {
           width: 100%;
           height: 55.4%;
-          padding: 25px 14.8% 0;
+          padding: get-vw(45px, 640) 14.8% 0;
         }
         .meta {
           height: calc(100% - 83px);
@@ -528,6 +524,9 @@
             font-size: 16px;
             margin-bottom: 17px;
           }
+          @include breakpoint($between-641-768) {
+            font-size: 6.5px;
+          }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(16px, 640);
             margin-bottom: get-vw(17px, 640);
@@ -541,6 +540,9 @@
           @include breakpoint($bp-min-1901-width) {
             font-size: 24px;
             margin-bottom: 17px;
+          }
+          @include breakpoint($between-641-768) {
+            font-size: 10px;
           }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(24px, 640);
@@ -556,6 +558,9 @@
             font-size: 16px;
             margin-bottom: 17px;
           }
+          @include breakpoint($between-641-768) {
+            font-size: 6.5px;
+          }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(16px, 640);
             margin-bottom: get-vw(17px, 640);
@@ -569,6 +574,9 @@
           @include breakpoint($bp-min-1901-width) {
             font-size: 21px;
             margin-top: 17px;
+          }
+          @include breakpoint($between-641-768) {
+            font-size: 8.5px;
           }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(21px, 640);
@@ -601,45 +609,38 @@
           }
         }
         &:before {
-          width: 10px;
-          @include breakpoint($bp-768-width) {
-            width: 6px;
-          }
           @include breakpoint($bp-640-width) {
             width: 100%;
-            height: 6px;
+            height: 3px;
           }
         }
       }
       .meta-icon {
         left: 62.5%;
-        width: 44px;
-        height: 44px;
-        margin-left: -22px;
-        margin-top: -22px;
+        height: get-vw(64px, 1901);
+        margin-left: get-vw(-32px, 1901);
+        margin-top: get-vw(-32px, 1901);
         top: 50%;
-        @include breakpoint($bp-min-1601-width) {
-          left: 62.5%;
-          margin-left: -30px;
-          margin-top: -30px;
-          top: 50%;
+        width: get-vw(64px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          height: 64px;
+          margin-left: -32px;
+          margin-top: -32px;
+          width: 64px;
         }
-        @include breakpoint($bp-1024-width) {
-          height: 36px;
-          width: 36px;
-          margin-left: -18px;
-          margin-top: -18px;
-        }
-        @include breakpoint($bp-768-width) {
-          margin-left: -15px;
-          margin-top: -15px;
-          height: 30px;
-          width: 30px;
-          left: 64%;
+        @include breakpoint($between-641-768) {
+          height: 26px;
+          margin-left: -13px;
+          margin-top: -13px;
+          width: 26px;
         }
         @include breakpoint($bp-640-width) {
-          top: 44.7%;
+          height: get-vw(64px, 640);
           left: 50%;
+          margin-left: get-vw(-32px, 640);
+          margin-top: get-vw(-32px, 640);
+          top: 44.6%;
+          width: get-vw(64px, 640);
         }
       }
     }

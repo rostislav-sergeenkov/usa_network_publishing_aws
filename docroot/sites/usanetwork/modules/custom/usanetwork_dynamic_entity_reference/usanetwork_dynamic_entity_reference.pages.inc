@@ -104,6 +104,36 @@ function _usanetwork_dynamic_entity_reference_get_file_query($target_bundles, $m
 }
 
 /**
+ * Builds default query for files.
+ *
+ * @param $target_bundles
+ * @param null $match
+ * @param string $match_operator
+ * @return \Drupal\Core\Database\Query\Select|SelectQuery
+ */
+function _usanetwork_dynamic_entity_reference_get_taxonomy_term_query($target_bundles, $match = NULL, $match_operator = 'LIKE'){
+  if ($match_operator == 'LIKE' && !empty($match)) {
+    $match = '%' . $match . '%';
+  }
+
+  $helper_query = db_select('taxonomy_vocabulary', 'tv')
+    ->fields('tv', array('vid'));
+  $helper_query->condition('tv.machine_name', $target_bundles, is_array($target_bundles) ? 'IN' : '=');
+
+  $query = db_select('taxonomy_term_data', 'ttd');
+  $query->fields('ttd', array('tid', 'vid', 'name'));
+  $query->join('taxonomy_vocabulary', 'tv', 'ttd.vid = tv.vid');
+  $query->condition('tv.machine_name', $target_bundles, is_array($target_bundles) ? 'IN' : '=');
+
+  if (isset($match)) {
+    $query->condition('ttd.name', $match, $match_operator);
+    $query->orderBy('ttd.name', 'ASC');
+  }
+
+  return $query;
+}
+
+/**
  * Checks if $target_bundles are videos
  * @param $target_bundles
  * @return bool
@@ -157,6 +187,9 @@ function usanetwork_dynamic_entity_reference_build_entity_query($target_type, $t
     case 'file':
       $query = _usanetwork_dynamic_entity_reference_get_file_query($target_bundles, $match, $match_operator);
       break;
+    case 'taxonomy_term':
+      $query = _usanetwork_dynamic_entity_reference_get_taxonomy_term_query($target_bundles, $match, $match_operator);
+      break;
     default:
       $query = NULL;
       break;
@@ -205,6 +238,7 @@ function usanetwork_dynamic_entity_reference_get_referenceable_entities($instanc
     switch ($target_type) {
       case 'file': $entity_id_key = 'fid'; $entity_load_callback = 'file_load'; break;
       case 'node': $entity_id_key = 'nid'; $entity_load_callback = 'node_load'; break;
+      case 'taxonomy_term': $entity_id_key = 'tid'; $entity_load_callback = 'taxonomy_term_load'; break;
       default: continue;
     }
 

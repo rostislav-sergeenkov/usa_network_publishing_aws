@@ -59,12 +59,16 @@ function usanetwork_tve_video_add_custom_player_variables(&$variables, $type = '
 function usanetwork_tve_video_theme($existing, $type, $theme, $path) {
   return array(
     'usanetwork_tve_live_video' => array(
-    'variables' => array(
-      'file' => NULL,
-      'player_id' => NULL,
-      'width' => NULL,
-      'height' => NULL,
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
     ),
+    'usanetwork_tve_video_auth_menu' => array(
+      'variables' => array(),
+      'template' => 'templates/usanetwork-tve-video-auth-menu',
     ),
   );
 }
@@ -139,4 +143,48 @@ function usanetwork_tve_video_page_alter(&$page) {
       unset($page['page_bottom']['tve_auth']);
     }
   }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_tve_video_block_info() {
+  $blocks['usanetwork_tve_video_auth_menu'] = array(
+    'info' => t('MPX Sign In Block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'region' => 'header',
+    'status' => 0,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_tve_video_block_view($delta = '') {
+  $block = array();
+  if ('usanetwork_tve_video_auth_menu' == $delta) {
+    $block['content'] =  usanetwork_tve_video_auth_menu();
+  }
+
+  return $block;
+}
+
+/**
+ * Realization of usanetwork_tve_video_auth_menu block
+ */
+function usanetwork_tve_video_auth_menu() {
+  $menu_items = _usa_auth_prepare_menu_items();
+  $auth_links = array(
+    '#theme' => 'item_list',
+    '#items' => $menu_items,
+    '#attributes' => array('class' => array('tve-header-links', 'inline')),
+    '#prefix' => '<div class="links-wrapper">',
+    '#suffix' => '</div>',
+  );
+  $theme_variables = array(
+    'authbar' => !empty($lock) ? (!empty($auth_links) ? drupal_render($auth_links) : '') : '',
+  );
+  return theme('usanetwork_tve_video_auth_menu', $theme_variables);
 }

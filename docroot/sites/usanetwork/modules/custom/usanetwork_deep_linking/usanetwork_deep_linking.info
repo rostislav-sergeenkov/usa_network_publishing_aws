@@ -1,0 +1,4 @@
+name = USA Network Deep Linking
+description = Mobile / Tablet Deep Linking for USA Network.
+package = USA Network
+core = 7.x

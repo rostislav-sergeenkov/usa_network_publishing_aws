@@ -35,7 +35,7 @@
           <?php endif; ?>
         </div>
         <?php if (!empty($cta)): ?>
-          <div class="meta-button show-color tertiary <?php print !empty($color_class) ? $color_class : ''; ?>"><?php print $cta; ?></div>
+          <div class="meta-button show-color other-show-page tertiary <?php print !empty($color_class) ? $color_class : ''; ?>"><?php print $cta; ?></div>
         <?php endif; ?>
       </div>
       <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'gallery-icon'; ?>"></div>

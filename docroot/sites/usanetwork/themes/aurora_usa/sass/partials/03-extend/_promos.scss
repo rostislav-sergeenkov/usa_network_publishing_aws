@@ -68,9 +68,19 @@
           position: absolute;
           width: get-vw(46px, 640);
         }
+        @include breakpoint($bp-480-width) {
+          height: 34.5px;
+          margin-left: 0;
+          margin-top: -17.25px;
+          position: absolute;
+          width: 34.5px;
+        }
         ~ .caption, ~ .title, ~ .additional {
           @include breakpoint($bp-768-width) {
             padding-left: calc(8% + 7.1875vw);
+          }
+          @include breakpoint($bp-480-width) {
+            padding-left: calc(8% + 34.5px);
           }
         }
       }
@@ -80,12 +90,16 @@
         line-height: 18px;
         text-align: center;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 22.5px;
-          line-height: 26px;
+          font-size: 18px;
+          line-height: 24px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(11px, 640);
-          line-height: get-vw(20px, 640);
+          font-size: get-vw(18px, 768);
+          line-height: get-vw(22px, 768);
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 9.5px;
+          line-height: 12px;
         }
       }
       .title {
@@ -93,12 +107,16 @@
         line-height: 20px;
         text-align: center;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 26px;
+          font-size: 24px;
           line-height: 30px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(16px, 640);
-          line-height: get-vw(20px, 640);
+          font-size: get-vw(24px, 768);
+          line-height: get-vw(27px, 768);
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 13px;
+          line-height: 15px;
         }
       }
       .additional {
@@ -108,12 +126,16 @@
         text-align: center;
         text-transform: uppercase;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 16.5px;
+          font-size: 16px;
           line-height: 20px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(11px, 640);
-          line-height: get-vw(20px, 640);
+          font-size: get-vw(16px, 768);
+          line-height: get-vw(22px, 768);
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 9px;
+          line-height: 12px;
         }
       }
       .caption, .title, .additional {
@@ -178,11 +200,12 @@
         width: 62px;
       }
       @include breakpoint($bp-768-width) {
-        height: get-vw(40px, 640);
+        height: get-vw(46px, 640);
+        left: 4%;
         margin-left: 0;
-        margin-top: get-vw(-20px, 640);
+        margin-top: get-vw(-23px, 640);
         position: absolute;
-        width: get-vw(40px, 640);
+        width: get-vw(46px, 640);
       }
       ~ .meta {
         padding-left: calc(8% + 37px);
@@ -190,7 +213,7 @@
           padding-left: calc(8% + 62px);
         }
         @include breakpoint($bp-768-width) {
-          padding-left: calc(8% + 6.25vw);
+          padding-left: calc(8% + 7.1875vw);
         }
       }
     }
@@ -210,20 +233,20 @@
           line-height: 22px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(11px, 640);
-          line-height: get-vw(18px, 640);
+          font-size: get-vw(18px, 768);
+          line-height: get-vw(22px, 768);
         }
       }
       .title {
         font-size: 16px;
         line-height: 20px;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 30px;
-          line-height: 36px;
+          font-size: 24px;
+          line-height: 30px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(16px, 640);
-          line-height: get-vw(18px, 640);
+          font-size: get-vw(24px, 768);
+          line-height: get-vw(27px, 768);
         }
       }
       .additional {
@@ -232,12 +255,12 @@
         line-height: 14px;
         text-transform: uppercase;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 16.5px;
+          font-size: 16px;
           line-height: 20px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(11px, 640);
-          line-height: get-vw(18px, 640);
+          font-size: get-vw(16px, 768);
+          line-height: get-vw(22px, 768);
         }
       }
     }
@@ -321,23 +344,14 @@
         margin-bottom: 15px;
         text-transform: uppercase;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 14px;
+          font-size: 16px;
           line-height: 16px;
           margin-bottom: 22px;
         }
-        @include breakpoint($between-641-768) {
-          font-size: 14px;
-          line-height: 16px;
-          margin-bottom: 22px;
-        }
-        @include breakpoint($bp-640-width) {
-          font-size: 10px;
-          line-height: 12px;
-        }
-        @include breakpoint($bp-480-width) {
-          font-size: 8px;
-          line-height: 10px;
-          margin-bottom: 13px;
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(13px, 768);
+          line-height: 1;
+          margin-bottom: get-vw(22px, 768);
         }
       }
       .show-title {
@@ -349,21 +363,13 @@
         text-transform: uppercase;
         @include breakpoint($bp-min-1601-width) {
           font-size: 16px;
-          line-height: 18px;
+          line-height: 16px;
           margin-bottom: 5px;
         }
-        @include breakpoint($between-641-768) {
-          font-size: 16px;
-          line-height: 18px;
-        }
-        @include breakpoint($bp-640-width) {
-          font-size: 12px;
-          line-height: 14px;
-        }
-        @include breakpoint($bp-480-width) {
-          font-size: 9px;
-          line-height: 11px;
-          margin-bottom: 4px;
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(16px, 768);
+          line-height: 1;
+          margin-bottom: get-vw(5px, 768);
         }
       }
       .title {
@@ -378,18 +384,10 @@
           line-height: 24px;
           margin-bottom: 20px;
         }
-        @include breakpoint($between-641-768) {
-          font-size: 21px;
-          line-height: 24px;
-        }
-        @include breakpoint($bp-640-width) {
-          font-size: 16px;
-          line-height: 18px;
-        }
-        @include breakpoint($bp-480-width) {
-          font-size: 13px;
-          line-height: 15px;
-          margin-bottom: 8px;
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(22px, 768);
+          line-height: 1;
+          margin-bottom: get-vw(20px, 768);
         }
       }
       .additional {
@@ -400,25 +398,15 @@
         white-space: normal;
         margin-top: 13px;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 20px;
-          line-height: 26px;
+          font-size: 19px;
+          line-height: 24px;
           max-height: 108px;
           margin-top: 20px;
         }
-        @include breakpoint($between-641-768) {
-          font-size: 20px;
-          line-height: 26px;
-          max-height: 158px;
-        }
-        @include breakpoint($bp-640-width) {
-          font-size: 14px;
-          max-height: 120px;
-        }
-        @include breakpoint($bp-480-width) {
-          font-size: 11px;
-          line-height: 13px;
-          max-height: 50px;
-          margin-top: 8px;
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(19px, 768);
+          line-height: 1.4;
+          margin-top: get-vw(20px, 768);
         }
       }
       .meta-button {
@@ -434,13 +422,13 @@
         text-transform: uppercase;
         width: 100%;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 15px;
+          font-size: 19px;
           height: 48px;
           line-height: 48px;
           margin-top: 16px;
         }
         @include breakpoint($between-641-768) {
-          font-size: 15px;
+          font-size: 19px;
           height: 48px;
           line-height: 48px;
           margin-top: 14px;
@@ -533,89 +521,58 @@
           }
         }
         .topic {
-          line-height: 1em;
-          font-size: 12px;
-          margin-bottom: 17px;
-          @include breakpoint($bp-min-1601-width) {
-            font-size: 18px;
-            line-height: 1em;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 9.6px;
-            margin-bottom: 15px;
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: 7.18px;
-            margin-bottom: 10px;
+          font-size: get-vw(16px, 1901);
+          line-height: 1;
+          margin-bottom: get-vw(17px, 1901);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 16px;
+            margin-bottom: 17px;
           }
           @include breakpoint($bp-640-width) {
-            font-size: 13px;
-            margin-bottom: 15px;
+            font-size: get-vw(16px, 640);
+            margin-bottom: get-vw(17px, 640);
           }
         }
         .show-title {
-          line-height: 1em;
-          font-size: 24px;
-          margin-bottom: 17px;
-          @include breakpoint($bp-min-1601-width) {
-            font-size: 35px;
-            margin-bottom: 20px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 19.2px;
-            margin-bottom: 15px;
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: 14.35px;
-            margin-bottom: 10px;
+          font-size: get-vw(24px, 1901);
+          line-height: 1;
+          margin-bottom: get-vw(17px, 1901);
+          white-space: normal;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 24px;
+            margin-bottom: 17px;
           }
           @include breakpoint($bp-640-width) {
-            font-size: 16px;
-            margin-bottom: 15px;
+            font-size: get-vw(24px, 640);
+            margin-bottom: get-vw(17px, 640);
           }
         }
         .title {
-          line-height: 1em;
-          font-size: 12px;
           font-family: $tex-gyreschola-italic;
-          margin-bottom: 17px;
-          @include breakpoint($bp-min-1601-width) {
-            font-size: 18px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 9.6px;
-            margin-bottom: 15px;
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: 7.18px;
-            margin-bottom: 10px;
+          font-size: get-vw(16px, 1901);
+          line-height: 1;
+          margin-bottom: get-vw(17px, 1901);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 16px;
+            margin-bottom: 17px;
           }
           @include breakpoint($bp-640-width) {
-            font-size: 10px;
-            margin-bottom: 15px;
+            font-size: get-vw(16px, 640);
+            margin-bottom: get-vw(17px, 640);
           }
         }
         .additional {
-          line-height: 1.5em;
-          font-size: 14px;
           font-family: $avalon-book;
-          margin-top: 17px;
-          @include breakpoint($bp-min-1601-width) {
-            font-size: 20px;
-            max-height: 146px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 11.2px;
-            margin-top: 15px;
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: 8.37px;
-            margin-top: 10px;
+          line-height: 1.5;
+          font-size: get-vw(21px, 1901);
+          margin-top: get-vw(17px, 1901);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 21px;
+            margin-top: 17px;
           }
           @include breakpoint($bp-640-width) {
-            font-size: 10px;
-            margin-top: 15px;
-            min-height: 28vw;
+            font-size: get-vw(21px, 640);
+            margin-top: get-vw(17px, 640);
           }
         }
         .meta-button {

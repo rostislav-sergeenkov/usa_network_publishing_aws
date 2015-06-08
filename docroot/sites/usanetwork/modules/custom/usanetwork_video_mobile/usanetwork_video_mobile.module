@@ -17,14 +17,14 @@ function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, 
 
     if ($full_episode) {
       // add itunes meta
-      $metatag = array(
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'apple-itunes-app',
-          'content' => 'app-id=' . USANETWORK_USANOW_ITUNES_ID . ', affiliate-data=, app-argument=/usa',
-        ),
-      );
-      $entity->content['#attached']['drupal_add_html_head'][] = array($metatag, 'itunes_metatag');
+//      $metatag = array(
+//        '#tag' => 'meta',
+//        '#attributes' => array(
+//          'name' => 'apple-itunes-app',
+//          'content' => 'app-id=' . USANETWORK_USANOW_ITUNES_ID . ', affiliate-data=, app-argument=/usa',
+//        ),
+//      );
+//      $entity->content['#attached']['drupal_add_html_head'][] = array($metatag, 'itunes_metatag');
 
       // attach javascript
       $entity->content['#attached']['js'][] = array(

@@ -18,17 +18,14 @@
       </div>
       <div class="meta-wrapper show-color-border <?php print !empty($color_class) ? $color_class : ''; ?>">
         <div class="meta">
-          <?php if (!empty($ymal_about)): ?>
-            <div class="caption"><?php print $ymal_about; ?></div>
-          <?php endif; ?>
-          <?php if (!empty($topic)): ?>
-            <div class="topic"><?php print $topic; ?></div>
+          <?php if (!empty($caption)): ?>
+            <div class="caption"><?php print $caption; ?></div>
           <?php endif; ?>
           <?php if (!empty($show_name)): ?>
             <div class="show-title"><?php print $show_name; ?></div>
           <?php endif; ?>
-          <?php if (!empty($promo_title)): ?>
-            <div class="title"><?php print $promo_title; ?></div>
+          <?php if (!empty($title)): ?>
+            <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
           <?php if (!empty($description)): ?>
             <div class="additional"><?php print $description; ?></div>
@@ -38,7 +35,7 @@
           <div class="meta-button show-color tertiary <?php print !empty($color_class) ? $color_class : ''; ?>"><?php print $cta; ?></div>
         <?php endif; ?>
       </div>
-      <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'gallery-icon'; ?>"></div>
+      <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
     </a>
   <?php endif; ?>
 </div>

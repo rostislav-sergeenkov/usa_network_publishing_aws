@@ -18894,7 +18894,6 @@ footer h2 {
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
   color: #545454;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 36px;
   line-height: 132px;
   margin: 0 0 0 20px;
@@ -28459,6 +28458,7 @@ yx-axis
   margin-top: 20px;
   position: relative;
   padding: 0;
+  border-bottom: 2px solid #2c2c2c;
 }
 .page-schedule .schedule-wrapper .schedule-table .carousel-vert,
 .page-accessibility .schedule-wrapper .schedule-table .carousel-vert {

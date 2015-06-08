@@ -28458,6 +28458,7 @@ yx-axis
   margin-top: 20px;
   position: relative;
   padding: 0;
+  border-bottom: 2px solid #2c2c2c;
 }
 .page-schedule .schedule-wrapper .schedule-table .carousel-vert,
 .page-accessibility .schedule-wrapper .schedule-table .carousel-vert {

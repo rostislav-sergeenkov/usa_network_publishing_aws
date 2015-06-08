@@ -46,7 +46,7 @@ function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, 
 
       $advert_id = _usanetwork_get_field_item('file', $entity, 'field_mpx_external_advertiser_id', 'value');
       if (!empty($advert_id)) {
-        $ios_link = USA_DEEP_LINKING_IOS_SCHEME . '?target=videoAsset&ID=' . $advert_id;
+        $ios_link = USANETWORK_DEEP_LINKING_IOS_SCHEME . '?target=videoAsset&ID=' . $advert_id;
         $apple_itunes_app_tag['#attributes']['content'] .= ', app-argument=' . $ios_link;
         $js_settings['usa']['deepLinking'] = $ios_link;
       }

@@ -316,7 +316,7 @@ function _usanetwork_episodes_episodes_carousel() {
             'title' => !empty($episode->title) ? $episode->title : '',
             'episode_number' => !empty($episode_number) ? $episode_number : '',
             'url' => url('node/' . $episode->nid),
-            'active' => ($episode->nid == $season_node->nid) ? TRUE : FALSE,
+            'active' => ($episode->nid == $episode_node->nid) ? TRUE : FALSE,
             'season_number' => !empty($season_number) ? $season_number : '',
             'icon_type' => usanetwork_core_api_get_media_icon('node', $episode->nid),
           );

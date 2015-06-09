@@ -137,6 +137,11 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_tv_shows_mb'] = array(
+    'info' => t('Tv Shows: Shows landing - Main Block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -198,6 +203,11 @@ function usanetwork_tv_shows_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_all_shows_block();
       break;
+    case 'usanetwork_tv_shows_mb':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_mb_block();
+      break;
+
   }
 
   return $block;
@@ -369,6 +379,12 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'icon_type' => NULL,
       ),
       'template' => 'templates/usanetwork-tv-shows-related-ymal-item',
+    ),
+    'usanetwork_tv_shows_all_shows_mb' => array(
+      'variables' => array(
+        'promos' => array(),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-all-shows-mb',
     ),
   );
 }
@@ -3713,6 +3729,60 @@ function _usanetwork_tv_shows_all_shows_block() {
 }
 
 /**
+ * Renders content for shows landing main block.
+ */
+function _usanetwork_tv_shows_mb_block() {
+  $featured_shows_id = variable_get('shows_landing_shows', array());
+  if (!empty($featured_shows_id)) {
+    $i = 0;
+    foreach ($featured_shows_id as $featured_show_id) {
+      $featured_show = NULL;
+      if (preg_match("/^(.+)\[node:(\d+)\]$/", $featured_show_id, $matches)) {
+        $featured_show = node_load($matches[2]);
+      }
+      if (!empty($featured_show) && $featured_show->type = 'tv_show') {
+        $is_first = ($i == 0) ? TRUE : FALSE;
+        $i++;
+        $cover_media = _usanetwork_get_field_item('node', $featured_show, 'field_tv_cover_media', 'uri');
+        $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $featured_show, 'field_usa_tv_tune_in_date', 'value');
+        if (!empty($usa_tv_tune_in_date)) {
+          $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);
+        }
+        $promos[] = array(
+          'url' => url('node/' . $featured_show->nid),
+          'image' => array(
+            'mobile' => !empty($cover_media)
+                ? image_style_url('719x414', $cover_media) : NULL,
+            'desktop' => !empty($cover_media)
+                ? ($is_first
+                  ? image_style_url('927x756', $cover_media)
+                  : image_style_url('456x372', $cover_media)
+                )
+                : NULL,
+          ),
+          'icon_type' => 'about-show-icon-default',
+          'caption' => !empty($usa_tv_tune_in_date[0]) ? $usa_tv_tune_in_date[0] : '',
+          'title' => $featured_show->title,
+          'description' => !empty($usa_tv_tune_in_date[1]) ? $usa_tv_tune_in_date[1] : '',
+          'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
+          'is_first' => $is_first,
+        );
+      }
+    }
+    $advert_block = module_invoke('mps', 'block_view', 'topbox');
+    if (!empty($advert_block['content'])) {
+      $advert = render($advert_block['content']);
+    }
+    $theme_variables = array(
+      'promos' => !empty($promos) ? $promos : FALSE,
+      'ad' => isset($advert) ? $advert : FALSE,
+    );
+    return theme('usanetwork_tv_shows_all_shows_mb', $theme_variables);
+  }
+  return FALSE;
+}
+
+/**
  * Returns show nodes.
  *
  * @param int $offset
@@ -3800,11 +3870,14 @@ function _usanetwork_tv_shows_all_shows_block_item($show) {
 
   $image_url = usanetwork_core_api_get_content_image('node', $show);
   $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $show, 'field_usa_tv_tune_in_date', 'value');
+  if (!empty($usa_tv_tune_in_date)) {
+    $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);
+  }
   $theme_variables = array(
     'target_url' => url('node/' . $show->nid),
-    'caption' => 'Promo line 1',
+    'caption' => !empty($usa_tv_tune_in_date[0]) ? $usa_tv_tune_in_date[0] : '',
     'title' => $show->title,
-    'additional' => !empty($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : 'field_usa_tv_tune_in_date',
+    'additional' => !empty($usa_tv_tune_in_date[1]) ? $usa_tv_tune_in_date[1] : '',
     'image_desktop' => image_style_url('539x303', $image_url),
   );
   return theme('usanetwork_tv_shows_shows_landing_item', $theme_variables);

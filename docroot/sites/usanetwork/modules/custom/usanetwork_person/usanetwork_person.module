@@ -532,7 +532,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
         'image_url' => image_style_url('111x74', $image_url),
         'show_class' => usanetwork_tv_shows_color_show_css_class($tv_show_node_nid),
         'title' => $person_node->title,
-        'additional' => $role,
+        'additional' => strtolower($role) != 'blank' ? $role : '',
         'active' => ($person_node->nid == $current_person_nid)
           ? TRUE
           : FALSE,
@@ -543,7 +543,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
         'image_url' => image_style_url('full_episodes_633x356', $image_url),
         'show_class' => usanetwork_tv_shows_color_show_css_class($tv_show_node_nid),
         'title' => $person_node->title,
-        'additional' => $role,
+        'additional' => strtolower($role) != 'blank' ? $role : '',
         'active' => ($person_node->nid == $current_person_nid)
           ? TRUE
           : FALSE,

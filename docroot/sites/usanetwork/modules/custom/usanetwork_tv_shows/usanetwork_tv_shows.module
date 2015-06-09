@@ -1695,6 +1695,7 @@ function _usanetwork_tv_shows_submenu() {
           'show-color',
         );
         $menu_item_url = $show_menu_item_main_link[0]['url'];
+        $menu_item_url_query = $show_menu_item_main_link[0]['query'];
         $menu_link_page = arg(1, $menu_item_url);
         if (!empty($requested_page) && !empty($menu_link_page) && strcasecmp($requested_page, $menu_link_page) === 0) {
           $classes[] = 'active';
@@ -1703,6 +1704,7 @@ function _usanetwork_tv_shows_submenu() {
           'attributes' => array(
             'class' => $classes,
           ),
+          'query' => $menu_item_url_query,
         ));
       }
     }

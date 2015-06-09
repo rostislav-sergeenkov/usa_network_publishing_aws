@@ -116,8 +116,7 @@ function theme_usanetwork_tve_live_video($variables) {
  * Implements hook_js_alter().
  */
 function usanetwork_tve_video_js_alter(&$javascript) {
-  $view_tve_script = _usanetwork_mpx_video_is_video_page();
-  if (!$view_tve_script) {
+  if (path_is_admin(current_path())) {
     $tve_analytics_js_path = drupal_get_path('module', 'pub_analytics') . '/js/tve-analytics.js';
     if (isset($javascript[$tve_analytics_js_path])) {
       unset($javascript[$tve_analytics_js_path]);
@@ -130,9 +129,8 @@ function usanetwork_tve_video_js_alter(&$javascript) {
  *
  * Trying fix more button issue 
  */
-function usanetwork_tve_video_page_alter(&$page) { 
-  $view_tve_script = _usanetwork_mpx_video_is_video_page();
-  if (!$view_tve_script) {
+function usanetwork_tve_video_page_alter(&$page) {
+  if (path_is_admin(current_path())) {
     if (isset($page['page_bottom']['tve_adobe_pass'])) {
       unset($page['page_bottom']['tve_adobe_pass']);
     }

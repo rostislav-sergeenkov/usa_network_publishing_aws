@@ -68,8 +68,10 @@ function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, 
             'modal' => '<div class="wrap"><h3>' . t('Want to watch episodes of your favorite shows?') . '</h3><hr>'
             . '<img class="mobile-logo-exp" src="' . url(drupal_get_path('module', 'usanetwork_video_mobile') . '/img/logo-mobile-exp.png') . '">'
             . '<div id="mobileVideoModalButtons">'
-            . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
-            . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">' . '</div>'
+//            . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
+              . '<a href="" class="download-app-button">Download USA NOW app</a>'
+              . '<a href="" class="close-reveal-modal">No thanks, keep browsing</a>'
+//            . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">' . '</div>'
             . '</div>',
           ),
         ),

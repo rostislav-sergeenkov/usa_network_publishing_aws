@@ -13,10 +13,10 @@
 				// create modal dialog
 				var $modal = $('<div id="mobileVideoModal"></div>');
 				$modal.append(Drupal.settings.usanetwork_video_mobile.modal);
-				$modal.find('.download-app-button').click(function() {
-					window.location.href = Drupal.settings.usanetwork_video_mobile.url[os];
-					Drupal.behaviors.video_mobile.hideMobileVideoModal();
-				});
+				//$modal.find('.download-app-button').click(function() {
+				//	window.location.href = Drupal.settings.usanetwork_video_mobile.url[os];
+				//	Drupal.behaviors.video_mobile.hideMobileVideoModal();
+				//});
 				$modal.find('.close-reveal-modal').click(function() {
 					Drupal.behaviors.video_mobile.hideMobileVideoModal();
 				});
@@ -41,7 +41,12 @@
       var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
 			if($('#microsite').length == 0){
 				// show modal dialog
-				Drupal.behaviors.video_mobile.showMobileVideoModal(os);
+        Drupal.behaviors.video_mobile.showMobileVideoModal(os);
+        if (os === 'iOS' && Drupal.settings.usa.deepLinking) {
+          $('a.download-app-button').attr('href', Drupal.settings.usa.deepLinking);
+        } else {
+          $('a.download-app-button').attr('href', Drupal.settings.usanetwork_video_mobile.url[os]);
+        }
 			}
     }
   });

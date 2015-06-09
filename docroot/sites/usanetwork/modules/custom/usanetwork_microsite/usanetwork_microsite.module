@@ -16,6 +16,7 @@ define('USANETWORK_MICROSITE_QUIZ_NODE_TYPE', 'quiz');
 define('USANETWORK_MICROSITE_GALLERY_NODE_TYPE', 'media_gallery');
 define("USANETWORK_MICROSITE_ALL_VIDEOS", "All videos");
 define("USANETWORK_MICROSITE_FULL_VIDEO", "Full episodes");
+define("USANETWORK_MICROSITE_USA_VIDEO_TERMS_VOC", 66);
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -1159,7 +1160,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     }
 
     // Create filter menu.
-    if (!empty($video_types) && is_array($video_types)) {
+    if (!empty($video_types) && is_array($video_types) && count($video_types) > 1) {
       $id = 0;
       foreach ($video_types as $type => $type_el) {
         $children = array();
@@ -3315,6 +3316,8 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
   $field_item = field_get_items('node', $node, 'field_show');
   $show_id = $field_item[0]['target_id'];
   $order_for_full_episodes = _usanetwork_microsite_process_setting_data('videos_full_episode_sort_order', 'string', $node);
+  $allowed_filters = _usanetwork_microsite_get_allowed_filters($node);
+  $filters_tids = _usanetwork_microsite_get_filters_tids($allowed_filters);
   if (!empty($show_id)) {
     $cache_name = 'microsite_videos_' . $show_id;
     if ($cache = cache_get($cache_name)) {
@@ -3326,17 +3329,34 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     $small_video = db_and()
       ->condition('fm.type', 'mpx_video_1', '=')
       ->condition('mfe.field_mpx_full_episode_value', '0', '=');
+    if (!empty($filters_tids)) {
+      $small_video->condition('fvt.field_usa_video_terms_target_id', $filters_tids, 'IN');
+    }
     $db_or = db_or()
       ->condition($small_video)
       ->condition($full_video);
+
     $query = db_select('mpx_video', 'mpx');
+    $query->distinct();
     $query->fields('mpx', array('fid'));
     $query->innerJoin('file_managed', 'fm', 'mpx.fid = fm.fid');
     $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = fm.fid');
     $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
     $query->innerJoin('field_data_field_mpx_episode_number', 'fen', 'fen.entity_id = fm.fid');
     $query->innerJoin('field_data_field_mpx_season_number', 'fsn', 'fsn.entity_id = fm.fid');
-    $query->condition($db_or);
+    $query->innerJoin('field_data_field_usa_video_terms', 'fvt', 'fvt.entity_id = fm.fid');
+    if (!empty($filters_tids) && in_array(USANETWORK_MICROSITE_FULL_VIDEO, $allowed_filters)) {
+      $query->condition($db_or);
+    }
+    elseif (in_array(USANETWORK_MICROSITE_FULL_VIDEO, $allowed_filters)) {
+      $query->condition($full_video);
+    }
+    elseif (!empty($filters_tids)) {
+      $query->condition($small_video);
+    }
+    else {
+      $query->condition($db_or);
+    }
     $query->condition('fs.field_show_target_id', $show_id, '=');
     $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
     $query->orderBy('cast(fsn.field_mpx_season_number_value as unsigned)', 'DESC');
@@ -3353,6 +3373,22 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     }
   }
   return FALSE;
+}
+
+function _usanetwork_microsite_get_filters_tids($filters) {
+  $filter_tids = array();
+  foreach ($filters as $filter) {
+    if (is_numeric($filter)) {
+      $filter_tids[] = (int) $filter;
+    }
+  }
+  return $filter_tids;
+}
+
+function _usanetwork_microsite_get_allowed_filters($node) {
+  $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_type($node, 'videos');
+  $allowed_filters = $section_wrapper->field_ms_video_filters->value();
+  return $allowed_filters;
 }
 
 function usanetwork_microsite_get_custom_js($node) {
@@ -3394,6 +3430,11 @@ function _usanetwork_microsite_process_setting_data($setting_key, $value_type = 
         $setting = 0;
       }
       break;
+    case 'array':
+      if (!isset($setting) || $setting === NULL) {
+        $setting = array();
+      }
+      break;
   }
   return $setting;
 }
@@ -3416,7 +3457,7 @@ function usanetwork_microsite_default_get_theme_settings() {
     'videos_season_filters' => FALSE,
     'short_name_for_full_episodes' => FALSE,
     'character_bios_remove_video_tags' => TRUE,
-    'videos_full_episode_sort_order' => 'ASC'
+    'videos_full_episode_sort_order' => 'ASC',
   );
 }
 
@@ -3504,4 +3545,24 @@ function _usanetwork_microsite_get_short_name_for_video($file) {
 function usanetwork_microsite_get_id_by_string($string) {
   module_load_include('inc', 'pathauto', 'pathauto');
   return pathauto_cleanstring($string);
+}
+
+function usanetwork_microsite_get_filters_by_show($show_id) {
+  $node = node_load($show_id);
+  $show_name = $node->title;
+  $term = taxonomy_get_term_by_name($show_name, 'usa_video_terms');
+  $filter_terms = array();
+  if (!empty($term)) {
+    $filter_terms = taxonomy_get_children(key($term));
+  }
+  return $filter_terms;
+}
+
+function usanetwork_microsite_video_filters_allowed_values() {
+  $terms = taxonomy_get_tree(USANETWORK_MICROSITE_USA_VIDEO_TERMS_VOC);
+  $options = array(USANETWORK_MICROSITE_FULL_VIDEO => USANETWORK_MICROSITE_FULL_VIDEO);
+  foreach ($terms as $term) {
+    $options[$term->tid] = $term->name;
+  }
+  return $options;
 }

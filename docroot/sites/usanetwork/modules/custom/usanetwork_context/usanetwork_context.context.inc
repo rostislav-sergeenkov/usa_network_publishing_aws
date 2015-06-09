@@ -146,11 +146,17 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_mb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_mb',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'usanetwork_tv_shows-usanetwork_tv_shows_all_shows' => array(
           'module' => 'usanetwork_tv_shows',
           'delta' => 'usanetwork_tv_shows_all_shows',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),

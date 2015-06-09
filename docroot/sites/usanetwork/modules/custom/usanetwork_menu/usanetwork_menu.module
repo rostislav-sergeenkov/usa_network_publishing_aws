@@ -1005,8 +1005,13 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this gallery');
     }
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
+      'authbar' => isset($authbar) ? $authbar : NULL,
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'catchall_name' => $node->title,
@@ -1051,8 +1056,13 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
         }
       }
     }
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
+      'authbar' => isset($authbar) ? $authbar : NULL,
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'gallery_name' => !empty($node->title) ? $node->title : '',
@@ -1096,7 +1106,12 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
         $episode_num = $season_num_items['value'];
       }
     }
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
+    }
     $theme_variables = array(
+      'authbar' => isset($authbar) ? $authbar : NULL,
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
@@ -1136,7 +1151,12 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this bio');
     }
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
+    }
     $theme_variables = array(
+      'authbar' => isset($authbar) ? $authbar : NULL,
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',

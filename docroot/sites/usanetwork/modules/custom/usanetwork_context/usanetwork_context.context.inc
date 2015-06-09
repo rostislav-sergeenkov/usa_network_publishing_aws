@@ -135,7 +135,7 @@ function usanetwork_context_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'shows_landing';
   $context->description = 'All shows landing page';
-  $context->tag = '';
+  $context->tag = 'shows';
   $context->conditions = array(
     'path' => array(
       'values' => array(

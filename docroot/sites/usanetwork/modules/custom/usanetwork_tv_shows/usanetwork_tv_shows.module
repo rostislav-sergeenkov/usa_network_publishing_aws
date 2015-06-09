@@ -3761,11 +3761,7 @@ function _usanetwork_tv_shows_mb_block() {
       if (!empty($featured_show) && $featured_show->type = 'tv_show') {
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
-        if (!empty($featured_show->field_tv_cover_media)) {
-          $cover_media = field_get_items('node', $featured_show, 'field_tv_cover_media');
-          $cover_media = reset($cover_media);
-          $cover_media = $cover_media['uri'];
-        }
+        $cover_media = _usanetwork_get_field_item('node', $featured_show, 'field_tv_cover_media', 'uri');
         $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $featured_show, 'field_usa_tv_tune_in_date', 'value');
         if (!empty($usa_tv_tune_in_date)) {
           $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);

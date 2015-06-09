@@ -23,6 +23,29 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
       }
     }
   }
+  $show_id = NULL;
+  if (isset($form['field_show'][$langcode]['#default_value'][0])) {
+    $show_id = $form['field_show'][$langcode]['#default_value'][0];
+  }
+  if ($show_id) {
+    $filter_terms = usanetwork_microsite_get_filters_by_show($show_id);
+    $filter_options = array(USANETWORK_MICROSITE_FULL_VIDEO => USANETWORK_MICROSITE_FULL_VIDEO);
+    foreach ($filter_terms as $term) {
+      $filter_options[$term->tid] = $term->name;
+    }
+    foreach ($field_ms_section_items as &$section_item) {
+      if(isset($section_item['field_ms_video_filters'])) {
+        $section_item['field_ms_video_filters'][$langcode]['#options'] = $filter_options;
+      }
+    }
+  }
+  else {
+    foreach ($field_ms_section_items as &$section_item) {
+      if(isset($section_item['field_ms_video_filters'])) {
+        $section_item['field_ms_video_filters'][$langcode]['#access'] = FALSE;
+      }
+    }
+  }
 }
 
 // This determines what fields to display for each section type
@@ -121,8 +144,14 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
 
       // Videos.
       $form[$k]['field_ms_videos']['#states'] = array(
-        'disabled' => array(
-          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_video_adding_type][' . $lang . ']"]' => array('value' => 'videos'),
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'videos'),
+        ),
+      );
+
+      $form[$k]['field_ms_video_filters']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'videos'),
         ),
       );
 

@@ -105,23 +105,6 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-person-related-item',
     ),
-    'usanetwork_person_related_ymal_item' => array(
-      'variables' => array(
-        'classes' => NULL,
-        'custom_classes' => NULL,
-        'target_url' => NULL,
-        'topic' => NULL,
-        'show_name' => NULL,
-        'promo_title' => NULL,
-        'description' => NULL,
-        'image_mobile' => NULL,
-        'image_desktop' => NULL,
-        'cta' => NULL,
-        'color_class' => NULL,
-        'icon_type' => NULL,
-      ),
-      'template' => 'templates/usanetwork-person-related-ymal-item',
-    ),
     'usanetwork_person_cast_lmb_block' => array(
       'variables' => array(
         'head_image' => NULL,
@@ -549,7 +532,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
         'image_url' => image_style_url('111x74', $image_url),
         'show_class' => usanetwork_tv_shows_color_show_css_class($tv_show_node_nid),
         'title' => $person_node->title,
-        'additional' => $role,
+        'additional' => strtolower($role) != 'blank' ? $role : '',
         'active' => ($person_node->nid == $current_person_nid)
           ? TRUE
           : FALSE,
@@ -560,7 +543,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
         'image_url' => image_style_url('full_episodes_633x356', $image_url),
         'show_class' => usanetwork_tv_shows_color_show_css_class($tv_show_node_nid),
         'title' => $person_node->title,
-        'additional' => $role,
+        'additional' => strtolower($role) != 'blank' ? $role : '',
         'active' => ($person_node->nid == $current_person_nid)
           ? TRUE
           : FALSE,
@@ -683,7 +666,7 @@ function _usanetwork_person_characters_related_content_block() {
     }
   }
 
-  $you_may_also_like_item = _usanetwork_person_get_ymal_item($tv_show_node);
+  $you_may_also_like_item = usanetwork_tv_shows_get_ymal_item($tv_show_node);
   $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content(
     $tv_show_node,
     0, !empty($you_may_also_like_item)
@@ -714,41 +697,6 @@ function _usanetwork_person_characters_related_content_block() {
   return '';
 }
 
-/**
- * Returns YouMayAlsoLike item for consumptionator character page.
- */
-function _usanetwork_person_get_ymal_item($show_node) {
-  if (!empty($show_node->field_usa_tv_related_shows)) {
-    $related_show_field = field_get_items('node', $show_node, 'field_usa_tv_related_shows');
-
-    if (!empty($related_show_field[0]['target_id'])) {
-      $related_show_node = node_load($related_show_field[0]['target_id']);
-      $about_field_data = '';
-
-      if (!empty($related_show_node->field_about_ymal)) {
-        $about_field = field_get_items('node', $related_show_node, 'field_about_ymal');
-
-        if (!empty($about_field)) {
-          $about_field_data = check_plain(reset(reset($about_field)));
-        }
-      }
-
-      return (object)array(
-        'entity_type' => 'node',
-        'bundle' => $related_show_node->type,
-        'entity_id' => $related_show_node->nid,
-        'created' => $related_show_node->created,
-        'timestamp' => $related_show_node->changed,
-        'title' => $related_show_node->title,
-        'show_title' => $about_field_data,
-        'raw_image_uri' => usanetwork_core_api_get_content_image('node', $related_show_node),
-        'media_icon' => usanetwork_core_api_get_media_icon('node', $related_show_node->nid),
-        'ymal_about' => $about_field_data,
-        'ymal' => TRUE,
-      );
-    }
-  }
-}
 
 /**
  * AJAX callback for getting related content items.
@@ -795,10 +743,16 @@ function _usanetwork_person_render_related_content_items_block($data, $start_fro
       $is_data_item_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
 
       if (!empty($data_item->ymal)) {
-        $theme_variables['related_items'][] = _usanetwork_person_render_related_content_item_ymal($data_item);
+        $theme_variables['related_items'][] = array(
+          'content' => usanetwork_tv_shows_render_related_content_item_ymal($data_item),
+          'is_ymal' => TRUE,
+        );
       }
       else {
-        $theme_variables['related_items'][] = _usanetwork_person_render_related_content_item($data_item, $is_data_item_even);
+        $theme_variables['related_items'][] = array(
+          'content' => _usanetwork_person_render_related_content_item($data_item, $is_data_item_even),
+          'is_ymal' => FALSE,
+        );
       }
     }
 
@@ -852,44 +806,6 @@ function _usanetwork_person_render_related_content_item($data, $is_data_item_eve
   return theme('usanetwork_person_related_item', $theme_variables);
 }
 
-/**
- * Renders YouMayAlsoLike item (featured function).
- */
-function _usanetwork_person_render_related_content_item_ymal($data) {
-  $classes = array();
-  $desktop_image = $mobile_image = '';
-  $target_url = '<front>';
-
-  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array('file', 'node'))) {
-    $target_url = url($data->entity_type . '/' . $data->entity_id);
-  }
-
-  if (!empty($data->raw_image_uri)) {
-    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
-    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
-  }
-
-  $theme_variables = array(
-    'custom_classes' => implode(" ", $classes),
-    'target_url' => $target_url,
-    'topic' => !empty($data->promo_topic)
-      ? check_plain($data->promo_topic)
-      : '',
-    'show_name' => NULL,
-    'promo_title' => !empty($data->promo_title)
-      ? check_plain($data->promo_title)
-      : $data->title,
-    'description' => !empty($data->promo_description)
-      ? check_plain($data->promo_description)
-      : '',
-    'image_desktop' => $desktop_image,
-    'image_mobile' => $mobile_image,
-    'media_icon' => $data->media_icon,
-    'cta' => NULL,
-    'ymal_about' => $data->ymal_about,
-  );
-  return theme('usanetwork_person_related_ymal_item', $theme_variables);
-}
 
 /**
  * Renders cast & crew block for cast landing page.

@@ -73,7 +73,8 @@
               'pub_mpx_player_parameters' => array(
                 'autoPlay' => 'true',
                 'form' => 'html'
-              )
+              ),
+              'accepted' => TRUE,
             ));
             ?>
           <?php endif; ?>
@@ -92,7 +93,8 @@
               'pub_mpx_player_parameters' => array(
                 'autoPlay' => 'true',
                 'form' => 'html'
-              )
+              ),
+              'accepted' => TRUE,
             ));
             ?>
           <?php endif; ?>

@@ -11,14 +11,6 @@
       $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
     },
 
-    // check if user uses mobile device
-    mobileModal: function () {
-      if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
-        var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
-        Drupal.behaviors.video_mobile.showMobileVideoModal(os);
-      }
-    },
-
     /**
      * Change iframe src after Authentication.
      */
@@ -92,9 +84,6 @@
       var iframe_height = current_iframe.width() * 9 / 16;
       current_iframe.height(iframe_height);
 
-      if ($('body').hasClass('page-full-video')) {
-        Drupal.behaviors.consumptionator_video.mobileModal();
-      }
     }
   };
 

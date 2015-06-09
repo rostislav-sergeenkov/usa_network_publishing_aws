@@ -39,8 +39,9 @@
       var basePath = Drupal.settings.microsites_settings.base_path;
 
       // if this is IE9, reload the correct page
-      if ($('html.ie9').length > 0) {
-        window.location.href = anchorFull.replace('/home', '');
+      if ($('html').hasClass('ie9')) {
+//usa_debug('======== changeUrl(' + anchor + ', ' + anchorFull + ')');
+//        window.location.href = anchorFull.replace('/home', '');
         return false;
       }
 
@@ -87,15 +88,12 @@
         Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
         Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-//usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
       }
     },
 
     // waypointHandler
     sectionTimer: null,
     waypointHandler: function(event, sectionId, direction){
-//usa_debug('========== waypointHandler(' + event + ', ' + sectionId + ', ' + direction + ')');
-
       // if more than one function call arrives before the timeout is done,
       // clear the timer and start over. This is to prevent, rapid scrolling
       // or navigation clicks from triggering Omniture calls
@@ -121,7 +119,6 @@
       // loop through each section
       $('.section').each(function(){
         var sectionId = $(this).attr('id');
-//usa_debug('========= initializing waypoints for section ' + sectionId);
         if (sectionId != 'site-nav') {
           Drupal.behaviors.ms_global.waypoints[sectionId] = new Waypoint.Inview({
             element: document.getElementById(sectionId),
@@ -144,8 +141,6 @@
       $('.section').each(function(index, section) {
         Drupal.behaviors.ms_global.sectionIds[index] = $(this).attr('id');
       });
-//usa_debug('============= sectionIds: ');
-//usa_debug(Drupal.behaviors.ms_global.sectionIds);
     },
 
     // getScrollDirectionUsingSections
@@ -160,7 +155,6 @@
     // getScrollDirection
     lastYScrollPosition: 0,
     getScrollDirection: function() {
-//usa_debug('========= sectionScroll -- lastYScrollPosition: ' + Drupal.behaviors.ms_global.lastYScrollPosition + ',  pageYOffset: ' + window.pageYOffset);
       scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
       Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
       return scrollDirection;
@@ -213,100 +207,123 @@
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
+    // Gigya share bar clicks
+    sendSocialShareOmniture: function($this, title) {
+      title = title || null;
+      var $container = $this.parents('.gig-button-container'),
+          shareType = 'Share',
+          shareTitle = title;
+      if ($container.hasClass('gig-button-container-facebook')) {
+        shareType = 'Facebook';
+      }
+      else if ($container.hasClass('gig-button-container-twitter')) {
+        shareType = 'Twitter';
+      }
+      else if ($container.hasClass('gig-button-container-tumblr')) {
+        shareType = 'Tumblr';
+      }
+      else if ($container.hasClass('gig-button-container-pinterest')) {
+        shareType = 'Pinterest';
+      }
+
+      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+        s.linkTrackVars = 'events,eVar73,eVar74';
+        s.linkTrackEvents = s.events = 'event41';
+        s.eVar73 = shareTitle;
+        s.eVar74 = shareType;
+        s.tl(this, 'o', 'Social Share');
+        s.manageVars('clearVars', s.linkTrackVars, 1);
+      }
+    },
+
     // setOmnitureData
-    setOmnitureData: function(anchor, itemTitle) {
-      var anchor = anchor || null,
-          itemTitle = itemTitle || '',
-          siteName = Drupal.settings.microsites_settings.title,
-          basePageName = siteName + ' | USA Network';
+    setOmnitureData: function(anchor, contentName) {
+      var anchor = anchor || null;
       if (!anchor) {
         var sectionData = Drupal.behaviors.ms_global.parseUrl();
         anchor = sectionData['section'];
       }
-      var sectionTitle = Drupal.behaviors.ms_global.toTitleCase(anchor),
-          pageName = basePageName;
-      s.pageName = siteName;
-      s.prop3 = sectionTitle;
-      s.prop4 = siteName + ' : ' + sectionTitle;
-      s.prop5 = s.prop4;
-      if (itemTitle != '') {
-        pageName = itemTitle + ' | ' + pageName;
-        s.pageName += ' : ' + itemTitle;
-      }
+      var contentName = contentName || null, // contentName aka itemTitle
+          siteName = Drupal.settings.microsites_settings.title,
+          pageName = null,
+          contentType = Drupal.behaviors.ms_global.toTitleCase(anchor),
+          altContentType = null,
+          specificContentName = null;
 
       // set section-specific overrides
       switch (anchor) {
         case 'videos':
-          s.prop3 = 'Video';
-          s.prop4 = siteName + ' : Video';
-          if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
-          s.prop5 = siteName + ' : Video : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Video | ' + pageName;
+          contentType = 'Video';
+          if (!contentName) contentName = $('#microsite #videos-content .video-title').text();
           break;
         case 'timeline':
-          var timelineTitle = $('#microsite #timeline #timeline-title').text();
-          s.prop3 = 'Gallery';
-          s.prop4 = siteName + ' : Gallery'; // This is intentional per Loretta!
-          if (itemTitle == '') {
-            var $item = $('#microsite #timeline .timeline-items .timeline-item.active'),
-                itemSeason = $item.attr('data-season-num'),
-                itemEpisode = $item.attr('data-episode-num'),
-                itemEpisodeName = $item.attr('data-episode-name'),
-                itemScene = $item.attr('data-description');
-            itemTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
-          }
-          s.prop5 = siteName + ' : Timeline SlideShow : ' + timelineTitle;
-          s.pageName = s.prop5 + ' : ' + itemTitle;
-          pageName = itemTitle + ' | Timeline Slideshow | ' + pageName;
+          contentType = 'Gallery';
+          altContentType = 'Timeline Slideshow';
+          if (!contentName) contentName = $('#microsite #timeline #timeline-title').text();
+          var $item = $('#microsite #timeline .timeline-items .timeline-item.active'),
+              itemSeason = $item.attr('data-season-num'),
+              itemEpisode = $item.attr('data-episode-num'),
+              itemEpisodeName = $item.attr('data-episode-name'),
+              itemScene = $item.attr('data-description');
+          specificContentName = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
           break;
         case 'quizzes':
-          s.prop3 = 'Quiz';
-          s.prop4 = siteName + ' : Quiz';
-          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h1').text();
-          if (itemTitle == '') itemTitle = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h3.quiz-title').text();
-          s.prop5 = siteName + ' : Quiz : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Quiz | ' + pageName;
+          contentType = 'Quiz';
+          if (!contentName) contentName = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h1').text();
+          if (!contentName) contentName = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h3.quiz-title').text();
           break;
         case 'characters':
-          s.prop3 = 'Bio';
-          s.prop4 = 'Profile Page'; // This is intentional per Loretta!
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
-          s.prop5 = (itemTitle != '') ? siteName + ' : Bio : ' + itemTitle : siteName + ' : Bio';
-          s.pageName = s.prop5;
-          pageName = (itemTitle != '') ? itemTitle + ' | Bio | ' + pageName : 'Bio | ' + pageName;
+          contentType = 'Bio';
+          if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h3').text();
+          if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h1').text();
           break;
-/* DON'T DELETE THE FOLLOWING, BECAUSE IT CAN BE USED IN FUTURE MICROSITES
+/* DON'T DELETE THE FOLLOWING! IT CAN BE USED IN FUTURE MICROSITES!
         case 'about':
-          pageName = sectionTitle + ' | ' + pageName;
-          s.pageName += ' : ' + sectionTitle;
           break;
         case 'galleries':
+          contentType = 'Gallery';
+          if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
+          if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
           var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
               $slider = slider.data('flexslider'),
               currentSlide = $slider.currentSlide + 1;
           if (!currentSlide) currentSlide = 1;
-          s.prop3 = 'Gallery';
-          s.prop4 = siteName + ' : Gallery';
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
-          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
-          s.prop5 = siteName + ' : Gallery : ' + itemTitle;
-          s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-          pageName = itemTitle + ' | Gallery | ' + pageName;
+          specificContentName = 'Photo ' + currentSlide;
           break;
         case 'episodes':
-          s.prop3 = 'Episode Guide';
-          s.prop4 = siteName + ' : Episode Guide';
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
-          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
-          s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
-          s.pageName = s.prop5;
-          pageName = itemTitle + ' | Episode Guide | ' + pageName;
+          contentType = 'Episode Guide';
+          if (!contentName) contentName = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
+          if (!contentName) contentName = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
           break;
 */
       }
+
+      // Build array of omniture "nodes" that make up the pageName
+      // This array must have the nodes in the correct order:
+      // show_name : microsite_name : content_type : content_name : specific_content_name
+      // If show_name == microsite_name, show only microsite_name
+      // Example 1: Dig : Gallery : Ancient Relics : Photo 1
+      // Example 2: Graceland : Graceland Catchup : Timeline Slideshow : Graceland Timeline : Season 1 Episode 2 Scene 3
+      var joinStr = ' : ',
+          omnitureArray = [],
+          showName = s.prop10;
+      if (showName != siteName) {
+        omnitureArray.push(showName); // show_name
+      }
+      omnitureArray.push(siteName); // microsite_name
+      if (altContentType) omnitureArray.push(altContentType); // content_type
+      else omnitureArray.push(contentType); // content_type
+      if (contentName) omnitureArray.push(contentName); // content_name
+      if (specificContentName) omnitureArray.push(specificContentName); // specific_content_name
+      s.pageName = omnitureArray.join(joinStr);
+      s.prop3 = contentType;
+      s.prop4 = (contentType == 'Bio') ? 'Profile Page' : omnitureArray[0] + joinStr + omnitureArray[1]; // 'Profile Page' is intentional per Loretta!
+      s.prop5 = omnitureArray[0] + joinStr + omnitureArray[1] + joinStr + omnitureArray[2];
+
+      var reverseOmnitureArray = omnitureArray.reverse();
+      pageName = (reverseOmnitureArray.join(' | ') + ' | USANetwork').replace('Home | ', '');
+
+
       $('title').text(pageName);
 
       if (typeof s_gi != 'undefined') {
@@ -446,7 +463,6 @@
     sectionScroll: function(anchor, item, itemTitle) {
       item = item || '';
       itemTitle = itemTitle || '';
-//usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
       var basePath = Drupal.settings.microsites_settings.base_path,
           anchorItem = $('#nav-' + anchor),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
@@ -454,10 +470,14 @@
           nextSectionId = $(nextSection).attr('id'),
           direction = Drupal.behaviors.ms_global.getScrollDirectionUsingSections(anchor),
           offsetDirection = (direction == 'down') ? 1 : -1;
-//usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirection: ' + offsetDirection);
+
       // if this is IE9, reload the correct page
-      if ($('html.ie9').length > 0) {
-        window.location.href = anchorFull.replace('/home', '');
+      if ($('html').hasClass('ie9')) {
+//usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
+//        window.location.href = anchorFull.replace('/home', '');
+        // if the window is scrolling, the page must be almost completely
+        // loaded, so the initial page load is complete
+        Drupal.behaviors.ms_global.globalInitialPageLoad = false;
         return false;
       }
 
@@ -469,7 +489,6 @@
             break;
           case 'quizzes':
             var quizNodeId = $('#microsite #quizzes #quizzes-nav-list a[href="' + basePath + '/quizzes/' + item + '"]').parent().attr('data-node-id');
-//usa_debug('========== calling switchQuizzes(' + quizNodeId + ')');
             Drupal.behaviors.ms_quizzes.switchQuizzes(quizNodeId);
             break;
         }
@@ -483,9 +502,8 @@
       var nextSectionElem = document.getElementById(anchor),
           offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
-//usa_debug('====== sectionScroll -- nextSection: ' + nextSection + ', offsetAmount: ' + offsetAmount + ', nextSectionTop: ' + nextSectionTop);
+
       $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
-//usa_debug('======== microsite animate complete');
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
 
@@ -544,7 +562,7 @@
 
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
-      if (!$('html.ie9').length) {
+      if (!$('html').hasClass('ie9')) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }
 
@@ -589,17 +607,13 @@
           var $parent = $(this).parent(),
               anchor = $parent.attr('data-menuanchor');
 
-//usa_debug('======== clicked on ' + $parent.attr('id') + ', anchor: ' + anchor);
           if ($('#site-nav-links li').hasClass('disabled')) {
-//usa_debug('======== site-nav-links disabled');
             return false;
           }
           else {
-//usa_debug('======= disabling site-nav-links li');
             $('#site-nav-links li').addClass('disabled');
           }
 
-//usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
           Drupal.behaviors.ms_global.sectionScroll(anchor);
           if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });
@@ -613,7 +627,7 @@
         });
 
         // initialize the waypoints
-        self.initializeWaypoints();
+        if (!$('html').hasClass('ie9')) self.initializeWaypoints();
 
         // check url and scroll to specific content
         // This scroll is necessary -- even if we're loading the "homepage",
@@ -634,7 +648,8 @@
       $(window).off('popstate');
       $(window).off('hashchange');
 
-      if ($('html.ie9').length > 0) {
+/*
+      if (!$('html').hasClass('ie9')) {
         // Turn on browser history functionality -- for example, browser back button.
         // Popped variable is used to detect initial (useless) popstate.
         // If history.state exists, assume browser isn't going to fire initial popstate.
@@ -657,6 +672,7 @@
           self.sectionScroll(anchor, item);
         });
       }
+*/
 
       // RESIZE
       // set resize and orientation change

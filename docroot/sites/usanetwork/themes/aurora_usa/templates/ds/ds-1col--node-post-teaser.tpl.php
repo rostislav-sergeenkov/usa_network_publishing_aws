@@ -12,7 +12,8 @@
 
   <div class="post-top">
     <div class="field-title">
-      <?php print l($title, $node_url); ?>
+      <?php //print l($title, $node_url); ?>
+      <a href="<?php print $node_url; ?>"><?php print $title; ?></a>
     </div>
     <div class="field-author">
       <?php print render($content['author'][0]); ?>

@@ -40,3 +40,13 @@
 .show-<?php print $node_code; ?> .show-border.tertiary, .show-<?php print $node_code; ?> .show-border.tertiary:before, .show-<?php print $node_code; ?> .show-border.tertiary:after {
   border-color: <?php print $tertiary_color_code; ?> !important;
 }
+.show-<?php print $node_code; ?>.show-color.other-show-page {
+  background: <?php print $primary_color_code; ?>;
+}
+.show-<?php print $node_code; ?>.show-color.other-show-page.secondary {
+  background: <?php print $secondary_color_code; ?>;
+}
+.show-<?php print $node_code; ?>.show-color.other-show-page.tertiary {
+  background: <?php print $tertiary_color_code; ?>;
+}
+

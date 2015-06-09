@@ -12,38 +12,13 @@
       if (typeof gigya !== 'undefined') {
         if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
           $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-            Drupal.gigya.showSharebar(sharebar);
+            if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
           });
         }
       }
     },
 
-    setOmnitureData: function setOmnitureData(itemTitle){
-      var anchor = 'quizzes',
-          itemTitle = itemTitle || '',
-          siteName = Drupal.behaviors.ms_quizzes.siteName,
-          pageName = Drupal.behaviors.ms_quizzes.basePageName,
-          sectionTitle = 'Quiz',
-          pageName = sectionTitle + ' | ' + pageName;
-
-      s.pageName = siteName + ' : ' + sectionTitle;
-      s.prop3 = sectionTitle;
-      s.prop4 = siteName + ' : ' + sectionTitle;
-      s.prop5 = siteName + ' : ' + sectionTitle;
-      if (itemTitle != '') {
-        pageName = itemTitle + ' | ' + pageName;
-        s.pageName += ' : ' + itemTitle;
-        s.prop5 += ' : ' + itemTitle;
-      }
-      $('title').text(pageName);
-
-      if (typeof s_gi != 'undefined') {
-        void(s.t()); // omniture page call
-      }
-    },
-
     updateSettingsGigyaSharebars: function(title, link, description, imageUrl) {
-//usa_debug('======== ms_quizzes.js -- updateSettingsGigyaSharebars(' + title + ', ' + link + ', ' + description + ', ' + imageUrl + ')');
       var newSharebarObj = [];
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'quiz-gigya-share', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
       newSharebarObj.push({"gigyaSharebar": {"ua": {"linkBack": link, "title": title, "description": description, "imageBhev": "url", "imageUrl": imageUrl}, "shareButtons": "facebook, twitter, tumblr, pinterest, share", "shortURLs": "never", "containerID": 'gigya-share--2', "showCounts": "none", "layout": "horizontal", "iconsOnly": true}});
@@ -63,30 +38,7 @@
       // Gigya share bar
       $('#microsite #quizzes .field-type-gigya-sharebar').once('omniture-tracking', function() {
         $(this).on('click', '.gig-share-button', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var $self = $(this);
-            var $container = $self.parents('.gig-button-container');
-            var network = 'Share';
-            if ($container.hasClass('gig-button-container-facebook')) {
-              network = 'Facebook';
-            }
-            else if ($container.hasClass('gig-button-container-twitter')) {
-              network = 'Twitter';
-            }
-            else if ($container.hasClass('gig-button-container-tumblr')) {
-              network = 'Tumblr';
-            }
-            else if ($container.hasClass('gig-button-container-pinterest')) {
-              network = 'Pinterest';
-            }
-
-            s.linkTrackVars = 'events,eVar74';
-            s.linkTrackEvents = 'event41';
-            s.events = 'event41';
-            s.eVar74 = network;
-            s.tl(this,'o','Social Share');
-            s.manageVars('clearVars',s.linkTrackVars,1);
-          }
+          Drupal.behaviors.ms_global.sendSocialShareOmniture($(this), Drupal.settings.gigyaSharebars[0].gigyaSharebar.ua.title);
         });
       });
 
@@ -220,9 +172,8 @@
               // reset Gigya share bar
               var link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + Drupal.settings.quizzes[quizNodeId].url,
                   imageUrl = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img').attr('src');
-
-              // reset Gigya share bar
               Drupal.behaviors.ms_quizzes.updateSettingsGigyaSharebars(data.title, link, data.description, imageUrl);
+
               // show Gigya share bar
               Drupal.behaviors.ms_quizzes.initGigyaSharebar();
 
@@ -238,7 +189,7 @@
               // show the quiz now
               activeQuizContainer.find('li#quiz-' + data.nid).animate({'opacity': 1}, 1000, function(){
                 // send Omniture data
-                Drupal.behaviors.ms_quizzes.setOmnitureData(data.title);
+                Drupal.behaviors.ms_global.setOmnitureData('quizzes', data.title);
 
                 // refresh the 728x90 ad
                 Drupal.behaviors.ms_global.create728x90Ad();
@@ -393,6 +344,8 @@
         setTimeout(function(){
           // load Gigya share bar
           self.initGigyaSharebar();
+          // reset quiz to track clicks in Omniture
+          self.resetOmnitureClicks(quizId);
         }, 1000);
 
 
@@ -439,14 +392,6 @@
             }
           });
         }
-
-/*
-        // set resize and orientation change
-        $(window).bind('resize', function () {
-          self.reloadSliders();
-        });
-        window.addEventListener('orientationchange', self.reloadSliders);
-*/
       }
     }
   }

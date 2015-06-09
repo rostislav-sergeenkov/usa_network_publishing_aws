@@ -477,6 +477,18 @@
       &:nth-child(2n) {
         background: $poll-back;
       }
+      @include breakpoint($bp-480-width) {
+        &.active {
+          .carousel-description-item {
+            &.sponsored-enable{
+              height: 110px;
+              .title {
+                line-height: 40px !important;
+              }
+            }
+          }
+        }
+      }
       .more-episodes {
         color: $poll-color;
         font-family: $avalon-medium;
@@ -602,6 +614,11 @@
               }
               @include breakpoint($bp-480-width) {
                 display: none;
+              }
+            }
+            .sponsored {
+              @include breakpoint($bp-480-width) {
+                width: 175px;
               }
             }
           }

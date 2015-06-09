@@ -64,10 +64,11 @@
 
       body.once(function () {
         // main menu
-        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), style.dark);
+        //Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), style.dark);
 
         // home page
         if (body.hasClass('front')) {
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#block-usanetwork-aspot-usanetwork-aspot-carousel .slide'), style.dark);
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.featured-carousel li'), style.dark);
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#full-bleed-promo'), style.bleed);
 

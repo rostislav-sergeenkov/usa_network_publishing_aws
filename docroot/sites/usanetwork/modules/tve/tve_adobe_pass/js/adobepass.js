@@ -217,14 +217,14 @@
 
     if (isAuthenticated) {
       _setCookie({'authn': isAuthenticated, 'selectedProvider': selected.MVPD });
-      if (!$('body').hasClass('page-videos-live')) {
+      if (!$('body').hasClass('page-videos-live') && !$('body').hasClass('page-node-microsite')) {
         Drupal.behaviors.consumptionator_video.changeSrcFullVideos(selected.MVPD);
         Drupal.behaviors.consumptionator_video.initPlayerBind();
       }
     }
     else {
       _deleteCookie();
-      if (!$('body').hasClass('page-videos-live') && !$('body').hasClass('page-full-video')) {
+      if (!$('body').hasClass('page-videos-live') && !$('body').hasClass('page-auth-video') && !$('body').hasClass('page-node-microsite')) {
         Drupal.behaviors.consumptionator_video.changeSrc();
         Drupal.behaviors.consumptionator_video.initPlayerBind();
       }

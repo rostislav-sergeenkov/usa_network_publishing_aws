@@ -1,10 +1,12 @@
 (function ($) {
+  "use strict";
 
   // Declared here because it is used in Drupal.wysiwyg.plugins.embed_external
   // and Drupal.embed_external.wysiwygAppendMarkup.
   var embed_external_edit_element;
   var embed_external_edit_element_editor;
-
+  Drupal.wysiwyg = Drupal.wysiwyg || {};
+  Drupal.wysiwyg.plugins = Drupal.wysiwyg.plugins || {};
   Drupal.wysiwyg.plugins.embed_external = {
 
     /**
@@ -54,57 +56,43 @@
         $script.src = previewScript;
         $editor_instance.document.getHead().$.appendChild($script);
 
-        $editor_instance.addCommand('embed_external_edit', {
+        $editor_instance.addCommand('embedExternalDelete', {
           state: CKEDITOR.TRISTATE_DISABLED,
           exec: function (editor) {
-            // Fire off a modal much like the External Embed plugin button does,
-            // but while POSTing data for the already existing element.
-            var $anonymous_link = $('<a></a>').attr('href', embed_external_ajax_form_href).addClass('ctools-use-modal');
-            // Bind the CTools ajax link handler.
-            $anonymous_link.click(Drupal.CTools.Modal.clickAjaxLink);
-            // Create a Drupal ajax object - borrowed from Drupal.behaviors.ZZCToolsModal.attach().
-            var element_settings = {};
-            if ($anonymous_link.attr('href')) {
-              element_settings.url = $anonymous_link.attr('href');
-              element_settings.event = 'click';
-              element_settings.progress = { type: 'throbber' };
-            }
-            var base = $anonymous_link.attr('href');
-            Drupal.ajax[base] = new Drupal.ajax(base, $anonymous_link, element_settings);
-            // Include the edit element's data in the AJAX POST.
-            Drupal.ajax[base].options.data.embed_external_edit = {};
-            // $(element.$) is needed to retrieve the jQuery object for a CKEditor DOM element.
-            var edit_element_data = $(embed_external_edit_element.$).children('iframe.embed-external').data();
-            for (p in edit_element_data) {
-              Drupal.ajax[base].options.data.embed_external_edit[p] = edit_element_data[p];
-            }
-            // Click the constructed link to fire off the modal.
-            $anonymous_link.click();
+            var parent = embed_external_edit_element.getParent();
+            parent.remove();
           }
         });
 
         if ($editor_instance.contextMenu) {
           $editor_instance.addMenuGroup('embedExternalGroup');
-          $editor_instance.addMenuItem('EmbedExternal', {
-              label: 'Edit Embed External',
-              icon: Drupal.settings.wysiwyg.plugins.drupal.embed_external.path + '/images/embed_external.png',
-              command: 'embed_external_edit',
-              group: 'embedExternalGroup'
+          $editor_instance.addMenuItem('embedExternalDelete', {
+            label: 'Delete embedded content',
+            icon: Drupal.settings.wysiwyg.plugins.drupal.embed_external.path + '/images/glyphicons-208-remove-2.png',
+            command: 'embedExternalDelete',
+            group: 'embedExternalGroup'
           });
-          $editor_instance.contextMenu.addListener(function(element) {
-            if (element.getAscendant('div').hasClass('embed-external-wrapper')) {
-              embed_external_edit_element = element.getAscendant('div');
-              embed_external_edit_element_editor = CKEDITOR.instances[ev.editor.name];
+          $editor_instance.contextMenu.addListener(function(element, selection, path) {
+            // The getChild() could need some tweaking if there are ever more
+            // children inside the <div> wrapper.
+            var embedIframe = element.getChild(0);
 
-              return { EmbedExternal: CKEDITOR.TRISTATE_OFF };
+            // Big hack due to bug in addListener() passing the wrong element
+            // depending on which OS you are using. Works as expected in Linux
+            // & Windows but not on Mac on any browser.
+            // @see http://dev.ckeditor.com/ticket/11842 (bug report)
+            // @see http://www.javascripter.net/faq/operatin.htm (workaround)
+            if (navigator.appVersion.indexOf("Mac")!=-1) {
+              embedIframe = element;
             }
-            // A <br> element gets injected inside the div.embed-external-overlay
-            // element when an existing node is edited.  Handle this case.
-            if (element.getAscendant('div').hasClass('embed-external-overlay')) {
-              embed_external_edit_element = element.getAscendant('div').getAscendant('div');
+
+            if (embedIframe && embedIframe.hasClass('embed-external-wrapper')) {
+              embed_external_edit_element = embedIframe ;
               embed_external_edit_element_editor = CKEDITOR.instances[ev.editor.name];
 
-              return { EmbedExternal: CKEDITOR.TRISTATE_OFF };
+              return {
+                embedExternalDelete: CKEDITOR.TRISTATE_OFF
+              };
             }
           });
         }
@@ -149,7 +137,7 @@
       embed_external_edit_element = null;
     }
 
-    Drupal.wysiwyg.instances[instanceId].insert(content);
+    Drupal.wysiwyg.instances[instanceId].insert(content, true);
 
     // Upon insertion of the embed iframe we need to resize it. Note that
     // the below code is only necessary because on initial editing, the

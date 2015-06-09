@@ -27,7 +27,7 @@ class DynamicQueueModifierTVShow extends DynamicQueueModifierBase implements Dyn
   /**
    * {@inheritdoc}
    */
-  public static function alterForm(&$form, $settings, $DynamicQueue, $op) {
+  public static function alterForm(&$form, $settings, $DynamicQueue, $op, &$form_state) {
     $tv_show_query = db_select('node', 'n')
       ->fields('n', array('nid', 'title'))
       ->condition('n.status', 1)
@@ -41,6 +41,7 @@ class DynamicQueueModifierTVShow extends DynamicQueueModifierBase implements Dyn
     $form['tv_show_select'] = array(
       '#type' => 'select',
       '#title' => t('TV Shows'),
+      '#description' => t('Finds content based on relationship to a TV show.'),
       '#options' => $tv_select,
       '#default_value' => isset($settings['tv_show_select']) ? $settings['tv_show_select'] : '',
     );

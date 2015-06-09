@@ -69,7 +69,7 @@ function pub_report_client_cron() {
   $settings = _pub_report_client_get_current_values();
 
   // If the API key hasn't yet been applied, don't continue.
-  if (empty($settings->api_key)) {
+  if (empty($settings->api_key) && variable_get('pub_report_enable', TRUE)) {
     return;
   }
 

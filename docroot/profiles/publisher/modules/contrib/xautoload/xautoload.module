@@ -37,6 +37,15 @@ function xautoload_custom_theme() {
 }
 
 /**
+ * Implements hook_system_theme_info().
+ *
+ * We only do this because that's the first hook to fire in update.php page.
+ */
+function xautoload_system_theme_info() {
+  xautoload()->phaseControl->enterMainPhase();
+}
+
+/**
  * Implements hook_init()
  *
  * Note:

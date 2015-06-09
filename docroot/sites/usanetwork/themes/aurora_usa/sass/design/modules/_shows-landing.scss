@@ -1,3 +1,8 @@
+#block-usanetwork-tv-shows-usanetwork-tv-shows-mb {
+  .show-all-shows-main-block {
+    border-bottom: 2px solid $usa-logo-back;
+  }
+}
 .content {
   .all-shows-landing-page-container {
     padding-top: 77px;
@@ -6,6 +11,10 @@
     }
     @include breakpoint($bp-1280-width) {
       padding-top: 42px;
+    }
+    .landing-items-blocks {
+      border-bottom: 2px solid $usa-logo-back;
+      margin-bottom: 0px;
     }
     .section-title {
       margin-bottom: 50px;

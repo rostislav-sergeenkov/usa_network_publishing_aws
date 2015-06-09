@@ -1533,185 +1533,121 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 10px;
-  line-height: 16px;
+  font-size: 0.94687vw;
+  line-height: 1.05208vw;
   margin-left: 0;
 }
 @media (min-width: 1901px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
-    font-size: 15px;
+    font-size: 18px;
     line-height: 20px;
   }
 }
-@media (max-width: 1280px) {
+@media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
-    font-size: 8px;
-    line-height: 18px;
-  }
-}
-@media (max-width: 1024px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
-    font-size: 10px;
-    line-height: 14px;
-  }
-}
-@media (max-width: 768px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
-    font-size: 8px;
-    line-height: 16px;
+    font-size: 1.25vw;
+    line-height: 2.5vw;
   }
 }
 @media (max-width: 640px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
-    font-size: 12px;
-    line-height: 22px;
-  }
-}
-@media (max-width: 480px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption {
-    font-size: 10px;
-    line-height: 16px;
+    font-size: 2.8125vw;
+    line-height: 3.125vw;
   }
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 19px;
+  font-size: 1.26249vw;
+  line-height: 1.57812vw;
   margin-left: 0;
 }
 @media (min-width: 1901px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
-    font-size: 23px;
+    font-size: 24px;
     line-height: 30px;
   }
 }
-@media (max-width: 1280px) {
+@media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
-    font-size: 10px;
-    line-height: 18px;
-  }
-}
-@media (max-width: 1024px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
-    font-size: 10px;
-    line-height: 14px;
-  }
-}
-@media (max-width: 768px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 1.875vw;
+    line-height: 2.8125vw;
   }
 }
 @media (max-width: 640px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
-    font-size: 20px;
-    line-height: 26px;
-  }
-}
-@media (max-width: 480px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 3.75vw;
+    line-height: 4.6875vw;
   }
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 10px;
-  line-height: 19px;
+  font-size: 0.84166vw;
+  line-height: 1.05208vw;
   margin-left: 0;
 }
 @media (min-width: 1901px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
-    font-size: 15px;
-    line-height: 22px;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
-@media (max-width: 1280px) {
+@media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
-    font-size: 8px;
-    line-height: 16px;
-  }
-}
-@media (max-width: 1024px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
-    font-size: 10px;
-    line-height: 14px;
-  }
-}
-@media (max-width: 768px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
-    font-size: 8px;
-    line-height: 16px;
+    font-size: 1.25vw;
+    line-height: 2.5vw;
   }
 }
 @media (max-width: 640px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
-    font-size: 16px;
-    line-height: 22px;
-  }
-}
-@media (max-width: 480px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
-    font-size: 10px;
-    line-height: 16px;
+    font-size: 2.5vw;
+    line-height: 3.125vw;
   }
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
+  height: 2.52499vw;
   left: 4%;
-  margin-top: -19px;
+  margin-top: -1.26249vw;
   position: absolute;
   top: 50%;
+  width: 2.52499vw;
 }
 @media (min-width: 1901px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
-    height: 47px;
+    height: 48px;
     margin-top: -24px;
-    width: 47px;
+    width: 48px;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
-    height: 30px;
-    margin-top: -15px;
-    width: 30px;
+    height: 4.6875vw;
+    margin-top: -2.34375vw;
+    width: 4.6875vw;
   }
 }
 @media (max-width: 640px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
-    height: 37px;
-    margin-top: -19px;
-    width: 37px;
-  }
-}
-@media (max-width: 480px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon {
-    height: 30px;
-    margin-top: -15px;
-    width: 30px;
+    height: 7.5vw;
+    margin-top: -3.75vw;
+    width: 7.5vw;
   }
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
-  padding-left: calc(8% + 37px);
+  padding-left: calc(8% + 2.52vw);
 }
 @media (min-width: 1901px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
-    padding-left: calc(8% + 47px);
+    padding-left: calc(8% + 48px);
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
-    padding-left: calc(8% + 30px);
+    padding-left: calc(8% + 4.6875vw);
   }
 }
 @media (max-width: 640px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
-    padding-left: calc(8% + 37px);
-  }
-}
-@media (max-width: 480px) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
-    padding-left: calc(8% + 30px);
+    padding-left: calc(8% + 7.5vw);
   }
 }
 .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-wrapper, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-wrapper {
@@ -1719,39 +1655,32 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .caption, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .caption {
-    font-size: 11px;
-    line-height: 14px;
+    font-size: 1.40625vw;
+    line-height: 1.5625vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .title, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .title {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1.875vw;
+    line-height: 2.34375vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta .additional, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta .additional {
-    font-size: 11px;
-    line-height: 14px;
+    font-size: 1.25vw;
+    line-height: 1.5625vw;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
-    height: 37px;
-    margin-top: -19px;
-    width: 37px;
+    height: 3.75vw;
+    margin-top: -1.875vw;
+    width: 3.75vw;
   }
 }
-@media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon {
-    height: 30px;
-    margin-top: -15px;
-    width: 30px;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .consumptionator-page .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .consum-sidebar .episodes-list-slider.horizontal .consumptionator-page li .aspot-carousel-promo .meta-icon ~ .meta, .consumptionator-page .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .consumptionator-page .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
-    padding-left: calc(8% + 30px);
+    padding-left: calc(8% + 3.75vw);
   }
 }
 
@@ -2041,6 +1970,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     line-height: 2;
   }
 }
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption {
+    font-size: 9.5px;
+  }
+}
 @media (min-width: 1601px) {
   .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title {
     font-size: 18px;
@@ -2051,6 +1985,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title {
     font-size: 2.5vw;
     line-height: 1.4;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title {
+    font-size: 13px;
   }
 }
 .full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
@@ -2141,12 +2080,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
     width: 60px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta-icon {
-    height: 30px;
-    margin-left: -15px;
-    margin-top: -15px;
-    width: 30px;
+    height: 7.8125vw;
+    margin-left: -3.90625vw;
+    margin-top: -3.90625vw;
+    width: 7.8125vw;
   }
 }
 .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta {
@@ -2187,26 +2126,20 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 22.5px;
   }
 }
 @media (max-width: 1280px) {
   .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 18px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
-    font-size: 11px;
-    line-height: 14px;
-  }
-}
-@media (max-width: 480px) {
-  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .caption {
-    font-size: 9px;
-    line-height: 11px;
+    font-size: 1.95313vw;
+    line-height: 2.34375vw;
   }
 }
 .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
@@ -2216,51 +2149,158 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 30px;
+    line-height: 36px;
   }
 }
 @media (max-width: 1280px) {
   .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 18px;
+    line-height: 24px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
-    font-size: 16px;
-    line-height: 20px;
-  }
-}
-@media (max-width: 480px) {
-  .shows-block .show-info-block .show-bottom-info ul li .show-inner .meta .title {
-    font-size: 13px;
-    line-height: 15px;
+    font-size: 2.60417vw;
+    line-height: 3.38542vw;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional {
-    font-size: 9px;
-    line-height: 14px;
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption {
+    font-size: 1.23698vw;
+    line-height: 1.5625vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title {
-    font-size: 13px;
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title {
+    font-size: 1.69271vw;
+    line-height: 2.08333vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional {
+    font-size: 1.17188vw;
+    line-height: 1.5625vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon {
+    height: 3.90625vw;
+    margin-top: -1.95313vw;
+    width: 3.90625vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta {
+    padding-left: calc(8% + 3.9vw);
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+    height: 25%;
+  }
+}
+@media (max-width: 640px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper {
+    height: 29%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption {
+    font-size: 1.23698vw;
+    line-height: 1.5625vw;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption {
+    font-size: 2.5vw;
+    line-height: 3.33333vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption {
+    font-size: 12px;
     line-height: 16px;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon {
-    height: 37px;
-    margin-top: -19px;
-    width: 37px;
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title {
+    font-size: 1.69271vw;
+    line-height: 2.08333vw;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta {
-    padding-left: calc(8% + 37px);
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title {
+    font-size: 3.75vw;
+    line-height: 4.375vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional {
+    font-size: 1.17188vw;
+    line-height: 1.5625vw;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional {
+    font-size: 2.5vw;
+    line-height: 3.33333vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon {
+    height: 3.90625vw;
+    margin-top: -1.95313vw;
+    width: 3.90625vw;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon {
+    height: 7.5vw;
+    margin-top: -3.75vw;
+    width: 7.5vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon {
+    height: 36px;
+    margin-top: -18px;
+    width: 36px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta {
+    padding-left: calc(8% + 3.9vw);
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta {
+    padding-left: calc(8% + 7.5vw);
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta {
+    padding-left: calc(8% + 36px);
   }
 }
 .five-promo-item-block ul li:nth-child(2) .three-line-video .asset-img, .five-promo-item-block ul li .last .three-line-video .asset-img, .landing-page-container .landing-items-blocks ul li .three-line-video .asset-img {
@@ -2304,116 +2344,148 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 100%;
 }
 .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .caption, .five-promo-item-block ul li .last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
-  font-size: 10px;
-  line-height: 16px;
+  font-size: 0.94687vw;
+  line-height: 1.26249vw;
 }
 @media (min-width: 1901px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .caption, .five-promo-item-block ul li .last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 24px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .caption, .five-promo-item-block ul li .last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 9.5px;
+    line-height: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .caption, .five-promo-item-block ul li .last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
+    font-size: 1.97917vw;
+    line-height: 2.5vw;
   }
 }
 @media (max-width: 480px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .caption, .five-promo-item-block ul li .last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 9.5px;
+    line-height: 12px;
   }
 }
 .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .title, .five-promo-item-block ul li .last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 1.26249vw;
+  line-height: 1.57812vw;
 }
 @media (min-width: 1901px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .title, .five-promo-item-block ul li .last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
-    font-size: 22px;
-    line-height: 26px;
+    font-size: 24px;
+    line-height: 30px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .title, .five-promo-item-block ul li .last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .title, .five-promo-item-block ul li .last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
+    font-size: 2.70833vw;
+    line-height: 3.33333vw;
   }
 }
 @media (max-width: 480px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .title, .five-promo-item-block ul li .last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 13px;
+    line-height: 16px;
   }
 }
 .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .additional, .five-promo-item-block ul li .last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 10px;
-  line-height: 16px;
+  font-size: 0.84166vw;
+  line-height: 1.15729vw;
 }
 @media (min-width: 1901px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .additional, .five-promo-item-block ul li .last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .additional, .five-promo-item-block ul li .last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 9px;
+    line-height: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .additional, .five-promo-item-block ul li .last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
+    font-size: 1.875vw;
+    line-height: 2.5vw;
   }
 }
 @media (max-width: 480px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta .additional, .five-promo-item-block ul li .last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 9px;
+    line-height: 12px;
   }
 }
 .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon, .five-promo-item-block ul li .last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
   left: 4%;
-  margin-top: -19px;
+  height: 2.52499vw;
+  margin-top: -1.26249vw;
   position: absolute;
   top: 50%;
+  width: 2.52499vw;
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon, .five-promo-item-block ul li .last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
-    height: 47px;
+    height: 48px;
     margin-top: -24px;
-    width: 47px;
+    width: 48px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon, .five-promo-item-block ul li .last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
-    height: 30px;
-    margin-top: -15px;
-    width: 30px;
+    height: 26px;
+    margin-top: -13px;
+    width: 26px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon, .five-promo-item-block ul li .last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
+    height: 5.41667vw;
+    margin-top: -2.70833vw;
+    width: 5.41667vw;
   }
 }
 @media (max-width: 480px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon, .five-promo-item-block ul li .last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
-    height: 30px;
-    margin-top: -15px;
-    width: 30px;
+    height: 26px;
+    margin-top: -13px;
+    width: 26px;
   }
 }
 .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
-  padding-left: calc(8% + 37px);
+  padding-left: calc(8% + 2.52vw);
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
-    padding-left: calc(8% + 47px);
+    padding-left: calc(8% + 48px);
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
-    padding-left: calc(8% + 30px);
+    padding-left: calc(8% + 26px);
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
+    padding-left: calc(8% + 5.417vw);
   }
 }
 @media (max-width: 480px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
-    padding-left: calc(8% + 30px);
+    padding-left: calc(8% + 26px);
   }
 }
 
@@ -2434,12 +2506,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 @media (min-width: 641px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
   }
 }
@@ -2474,88 +2546,148 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   width: 100%;
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 1.15729vw;
+  line-height: 1.57812vw;
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
     font-size: 22px;
     line-height: 30px;
   }
 }
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
+    font-size: 2.5vw;
+    line-height: 3.33333vw;
+  }
+}
 @media (max-width: 480px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 12px;
+    line-height: 16px;
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 1.78853vw;
+  line-height: 2.10416vw;
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
     font-size: 34px;
     line-height: 40px;
   }
 }
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
+    font-size: 3.75vw;
+    line-height: 4.375vw;
+  }
+}
 @media (max-width: 480px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 21px;
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 1.15729vw;
+  line-height: 1.57812vw;
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
     font-size: 22px;
     line-height: 30px;
   }
 }
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
+    font-size: 2.5vw;
+    line-height: 3.33333vw;
+  }
+}
 @media (max-width: 480px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 12px;
+    line-height: 16px;
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
   left: 4%;
-  height: 42px;
-  margin-top: -21px;
+  height: 4.20831vw;
+  margin-top: -2.10416vw;
   position: absolute;
   top: 50%;
-  width: 42px;
+  width: 4.20831vw;
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
     height: 80px;
     margin-top: -40px;
     width: 80px;
   }
 }
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
+    height: 42px;
+    margin-top: -21px;
+    width: 42px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
+    height: 7.5vw;
+    margin-top: -3.75vw;
+    width: 7.5vw;
+  }
+}
 @media (max-width: 480px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
-    height: 30px;
-    margin-top: -15px;
-    width: 30px;
+    height: 36px;
+    margin-top: -18px;
+    width: 36px;
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
-  padding-left: calc(8% + 42px);
+  padding-left: calc(8% + 4.2vw);
 }
-@media (min-width: 1601px) {
+@media (min-width: 1901px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
     padding-left: calc(8% + 80px);
   }
 }
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
+    padding-left: calc(8% + 42px);
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
+    padding-left: calc(8% + 7.5vw);
+  }
+}
 @media (max-width: 480px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
-    padding-left: calc(8% + 30px);
+    padding-left: calc(8% + 36px);
   }
 }
 
@@ -9977,69 +10109,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     width: 100%;
   }
 }
-@media (min-width: 641px) and (max-width: 768px) {
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .meta-wrapper {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
-    height: 25%;
-  }
-}
-@media (max-width: 640px) {
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .meta-wrapper {
-    height: 29%;
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .caption {
-    font-size: 14px;
-    line-height: 18px;
-  }
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .title {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .additional {
-    font-size: 14px;
-    line-height: 18px;
-  }
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .meta-icon {
-    left: 4%;
-    height: 42px;
-    margin-top: -21px;
-    width: 42px;
-  }
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .meta-icon ~ .meta {
-    padding-left: calc(8% + 42px);
-  }
-}
-@media (max-width: 480px) {
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .caption {
-    font-size: 10px;
-    line-height: 13px;
-  }
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .title {
-    font-size: 14px;
-    line-height: 18px;
-  }
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .additional {
-    font-size: 10px;
-    line-height: 13px;
-  }
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .meta-icon {
-    left: 4%;
-    height: 30px;
-    margin-top: -15px;
-    width: 30px;
-  }
-  .five-promo-item-block.landing-main-block ul li.last > div:not(.advert-block) .meta-icon ~ .meta {
-    padding-left: calc(8% + 30px);
-  }
-}
 @media (min-width: 769px) and (max-width: 1280px) {
   .five-promo-item-block.landing-main-block ul li.last > div:nth-child(3) {
     margin-right: 0;
@@ -16889,53 +16958,50 @@ footer h2 {
   margin-top: -18.5px;
   margin-left: 0px;
   top: 50%;
-  left: 20px;
+  left: 4%;
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon {
     height: 50px;
-    left: 25px;
     margin-top: -25px;
     width: 50px;
   }
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon {
-    height: 30px;
-    left: 15px;
-    margin-top: -15px;
-    width: 30px;
+    height: 4.6875vw;
+    margin-top: -2.34375vw;
+    width: 4.6875vw;
   }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon {
-    height: 24px;
-    left: 10px;
-    margin-top: -12px;
-    width: 24px;
+    height: 22.5px;
+    margin-top: -12.25px;
+    width: 22.5px;
   }
 }
 .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon ~ .meta {
-  padding-left: 70px;
+  padding-left: calc(8% + 37px);
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon ~ .meta {
-    padding-left: 95px;
+    padding-left: calc(8% + 50px);
   }
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon ~ .meta {
-    padding-left: 55px;
+    padding-left: calc(8% + 4.6875vw);
   }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta-icon ~ .meta {
-    padding-left: 40px;
+    padding-left: calc(8% + 22.5px);
   }
 }
 .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta {
   display: table-cell;
-  padding-left: 0px;
+  padding-left: 4%;
   vertical-align: middle;
   width: 100%;
 }
@@ -16961,20 +17027,14 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title {
-    font-size: 14px;
-    line-height: 18px;
-  }
-}
-@media (max-width: 640px) {
-  .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title {
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 1.82292vw;
+    line-height: 2.34375vw;
   }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 8.75px;
+    line-height: 11.25px;
   }
 }
 .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional {
@@ -16992,20 +17052,14 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional {
-    font-size: 11px;
-    line-height: 14px;
-  }
-}
-@media (max-width: 640px) {
-  .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 1.43229vw;
+    line-height: 1.82292vw;
   }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 7px;
+    line-height: 8.75px;
   }
 }
 .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper-inner {
@@ -17149,16 +17203,22 @@ footer h2 {
     line-height: 24px;
   }
 }
-@media (max-width: 640px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .shows-block .show-info-block .show-description .node .heading {
-    font-size: 11px;
-    line-height: 18px;
+    font-size: 1.46484vw;
+    line-height: 2.34375vw;
+  }
+}
+@media (max-width: 768px) {
+  .shows-block .show-info-block .show-description .node .heading {
+    font-size: 1.95313vw;
+    line-height: 3.125vw;
   }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-description .node .heading {
     font-size: 9px;
-    line-height: 14px;
+    line-height: 15px;
   }
 }
 .shows-block .show-info-block .show-description .node .subheading {
@@ -17170,20 +17230,26 @@ footer h2 {
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-description .node .subheading {
-    font-size: 26px;
-    line-height: 34px;
+    font-size: 30px;
+    line-height: 38px;
   }
 }
-@media (max-width: 640px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .shows-block .show-info-block .show-description .node .subheading {
-    font-size: 22px;
-    line-height: 26px;
+    font-size: 2.92969vw;
+    line-height: 3.71094vw;
+  }
+}
+@media (max-width: 768px) {
+  .shows-block .show-info-block .show-description .node .subheading {
+    font-size: 3.90625vw;
+    line-height: 4.94792vw;
   }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-description .node .subheading {
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 18.75px;
+    line-height: 23.75px;
   }
 }
 .shows-block .show-info-block .show-description .node .about-content {
@@ -17200,16 +17266,25 @@ footer h2 {
     margin-top: 20px;
   }
 }
-@media (max-width: 640px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .shows-block .show-info-block .show-description .node .about-content {
-    font-size: 11px;
-    line-height: 14px;
-    margin-top: 10px;
+    font-size: 1.36719vw;
+    line-height: 1.95313vw;
+    margin-top: 1.95313vw;
+  }
+}
+@media (max-width: 768px) {
+  .shows-block .show-info-block .show-description .node .about-content {
+    font-size: 1.82292vw;
+    line-height: 2.60417vw;
+    margin-top: 2.60417vw;
   }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-description .node .about-content {
-    display: none;
+    font-size: 8.75px;
+    line-height: 12.5px;
+    margin-top: 12.5px;
   }
 }
 .shows-block .show-info-block .show-description .node .show-link {
@@ -17679,6 +17754,10 @@ footer h2 {
   }
 }
 
+#block-usanetwork-tv-shows-usanetwork-tv-shows-mb .show-all-shows-main-block {
+  border-bottom: 2px solid #2c2c2c;
+}
+
 .content .all-shows-landing-page-container {
   padding-top: 77px;
 }
@@ -17691,6 +17770,10 @@ footer h2 {
   .content .all-shows-landing-page-container {
     padding-top: 42px;
   }
+}
+.content .all-shows-landing-page-container .landing-items-blocks {
+  border-bottom: 2px solid #2c2c2c;
+  margin-bottom: 0px;
 }
 .content .all-shows-landing-page-container .section-title {
   margin-bottom: 50px;

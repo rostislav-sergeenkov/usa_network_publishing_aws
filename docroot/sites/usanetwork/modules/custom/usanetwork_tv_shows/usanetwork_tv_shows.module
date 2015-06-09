@@ -19,7 +19,6 @@ define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_CATCHALL_QUEUE', 12);
 define('USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK', 9);
 define('USA_TV_SHOW_ALL_VIDEOS_EPISODE', 0);
 define('USA_TV_SHOW_FULL_EPISODE', -1);
-define('USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK', 12);
 
 /**
  *  Implements hook_menu().
@@ -89,13 +88,6 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
-  $items['ajax/all-shows-landing/get-related/%/%/%'] = array(
-    'title' => 'Related content',
-    'page callback' => 'usanetwork_tv_shows_all_shows_ajax',
-    'page arguments' => array(3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
   return $items;
 }
 
@@ -3720,12 +3712,7 @@ function _usanetwork_tv_shows_all_shows_block() {
     $params['sort_order'] = 'ASC';
   }
   $sorters = _usanetwork_tv_shows_all_shows_landing_page_sorters();
-  $shows = _usanetwork_tv_shows_all_shows_get_shows(0, USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK + 1, $params['sort_order']);
-  $load_more = FALSE;
-  if (count($shows) >= USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK) {
-    $shows = array_slice($shows, 0, USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK);
-    $load_more = TRUE;
-  }
+  $shows = _usanetwork_tv_shows_all_shows_get_shows(NULL, NULL, $params['sort_order']);
   $shows_block = _usanetwork_tv_shows_all_shows_render_block($shows);
   $video_sorter_title = $sorters[$params['sort_order']]['title'];
   $result = theme('usanetwork_tv_shows_shows_landing', array(
@@ -3735,14 +3722,7 @@ function _usanetwork_tv_shows_all_shows_block() {
     'shows_block' => $shows_block,
     'items_per_page_limit' => USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK,
     'sorting_order' => $params['sort_order'],
-    'load_more_link' => $load_more,
   ));
-
-  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-  drupal_add_js(array(
-    'usanetwork_tv_show_page_context' => 'all-shows-landing',
-  ), 'setting');
-
   return $result;
 }
 
@@ -3814,8 +3794,10 @@ function _usanetwork_tv_shows_all_shows_get_shows($offset = 0, $limit = USA_TV_S
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'tv_show')
     ->propertyCondition('status', NODE_PUBLISHED)
-    ->propertyOrderBy('title', $sort)
-    ->range($offset, $limit);
+    ->propertyOrderBy('title', $sort);
+  if (is_numeric($offset) && is_numeric($limit)) {
+    $query->range($offset, $limit);
+  }
   $result = $query->execute();
   if (!empty($result['node'])) {
     $nodes = entity_load('node', array_keys($result['node']));
@@ -3901,25 +3883,6 @@ function _usanetwork_tv_shows_all_shows_block_item($show) {
 
 
 
-function usanetwork_tv_shows_all_shows_ajax($offset = 0, $limit = USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK, $order = 'ASC') {
-  $response = array(
-    'overlimited' => FALSE,
-    'rendered' => '',
-  );
-  $shows = _usanetwork_tv_shows_all_shows_get_shows($offset, $limit + 1, $order);
-  if (empty($shows)) {
-    $response['overlimited'] = TRUE;
-    return drupal_json_output($response);
-  }
-  elseif(count($shows) >= $limit) {
-    $shows = array_slice($shows, 0, $limit);
-  }
-  else {
-    $response['overlimited'] = TRUE;
-  }
-  $response['rendered'] = $shows_block = _usanetwork_tv_shows_all_shows_render_block($shows);
-  return drupal_json_output($response);
-}
 
 /**
  * Returns "You may also like" rendered item.

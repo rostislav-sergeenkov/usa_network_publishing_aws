@@ -1333,17 +1333,13 @@ function _usanetwork_menu_consumptionator_block_live_video() {
     ),
     'setting'
   );
-  $menu_items = _usa_auth_prepare_menu_items();
-  $auth_links = array(
-    '#theme' => 'item_list',
-    '#items' => $menu_items,
-    '#attributes' => array('class' => array('tve-header-links', 'inline')),
-    '#prefix' => '<div class="links-wrapper">',
-    '#suffix' => '</div>',
-  );
+  $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+  if (!empty($advert_block['content'])) {
+    $authbar = render($advert_block['content']);
+  }
 
   $theme_variables = array(
-    'authbar' => !empty($auth_links) ? drupal_render($auth_links) : '',
+    'authbar' => !empty($authbar) ? $authbar : NULL,
     'main_url' => url('<front>'),
   );
   return theme('usanetwork_menu_consumptionator_live_video', $theme_variables);

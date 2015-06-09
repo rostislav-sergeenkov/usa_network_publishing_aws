@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="landing-main-block show-photo-landing-main-block five-promo-item-block show-border">
+<div class="landing-main-block show-all-shows-main-block five-promo-item-block show-border">
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>

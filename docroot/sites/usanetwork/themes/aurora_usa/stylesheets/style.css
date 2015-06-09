@@ -17754,6 +17754,10 @@ footer h2 {
   }
 }
 
+#block-usanetwork-tv-shows-usanetwork-tv-shows-mb .show-all-shows-main-block {
+  border-bottom: 2px solid #2c2c2c;
+}
+
 .content .all-shows-landing-page-container {
   padding-top: 77px;
 }
@@ -17766,6 +17770,10 @@ footer h2 {
   .content .all-shows-landing-page-container {
     padding-top: 42px;
   }
+}
+.content .all-shows-landing-page-container .landing-items-blocks {
+  border-bottom: 2px solid #2c2c2c;
+  margin-bottom: 0px;
 }
 .content .all-shows-landing-page-container .section-title {
   margin-bottom: 50px;

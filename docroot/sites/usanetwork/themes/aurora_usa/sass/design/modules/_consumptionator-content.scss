@@ -741,6 +741,10 @@
         &:last-child, &.last {
           margin-bottom: 0;
         }
+        &.ymal-item {
+          height: 115vw;
+          margin: 40px 0 0;
+        }
       }
       > div {
         height: 100%;

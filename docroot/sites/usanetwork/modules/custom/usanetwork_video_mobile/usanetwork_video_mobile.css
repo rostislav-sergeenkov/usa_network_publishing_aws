@@ -60,12 +60,35 @@
   width: 200px;
   border: 1px solid #4c4c4c;
   text-transform: uppercase;
+  vertical-align: top;
   font-size: 12px;
 }
 #mobileVideoModalButtons input.download-app-button {
   background-color: #00B5EA;
 }
 #mobileVideoModalButtons input.close-reveal-modal {
+  background-color: #999999;
+  right: auto;
+  top: auto;
+}
+#mobileVideoModalButtons .download-app-button,
+#mobileVideoModalButtons .close-reveal-modal {
+  box-sizing: border-box;
+  border-radius: 0;
+  color: #FFFFFF;
+  display: inline-block;
+  line-height: 40px;
+  margin: 5px;
+  width: 200px;
+  border: 1px solid #4c4c4c;
+  text-transform: uppercase;
+  vertical-align: top;
+  font-size: 12px;
+}
+#mobileVideoModalButtons .download-app-button {
+  background-color: #00B5EA;
+}
+#mobileVideoModalButtons .close-reveal-modal {
   background-color: #999999;
   right: auto;
   top: auto;

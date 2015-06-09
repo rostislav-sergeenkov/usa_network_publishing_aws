@@ -143,21 +143,25 @@
                 }
               }
               &:before {
-                @include sprite-background(info-icon-small);
-                content: '';
+                content: '\e61d';
                 display: block;
-                left: calc((6.93vw - 26px)/2);
-                margin-top: -13px;
+                font-family: $ico-font;
+                left: get-vw(42px, 1901);
+                font-size: get-vw(48px, 1901);
+                line-height: 1;
+                margin-top: get-vw(-24px, 1901);
                 position: absolute;
                 top: 50%;
                 @include breakpoint($bp-min-1901-width) {
-                  @include sprite-background(info-icon);
-                  left: 46px;
-                  margin-top: -20px;
+                  left: 42px;
+                  margin-top: -24px;
+                  font-size: 48px;
                 }
                 @include breakpoint($bp-768-width) {
                   left: 50%;
-                  margin-left: -13px;
+                  font-size: 20px;
+                  margin-left: -10px;
+                  margin-top: -10px;
                 }
               }
               &.no-refresh {
@@ -466,6 +470,11 @@
           outline: none;
         }
         &.signOut {
+          & + .signIn.no-auth {
+            border: none;
+            height: auto;
+            width: auto;
+          }
           &:hover {
             background: $consup-border;
           }
@@ -536,13 +545,11 @@
         &.signIn {
           &.no-auth {
             border-left: 1px solid $consup-border;
+            display: block;
             box-sizing: border-box;
-            width: 135px;
-            @include breakpoint($bp-1900-width) {
-              width: 90px;
-            }
-            @include breakpoint($bp-1024-width) {
-              width: 72px;
+            width: get-vw(73px, 1025);
+            @include breakpoint($bp-min-1901-width) {
+              width: 135px;
             }
             &:hover {
               background: $consup-border;
@@ -553,12 +560,24 @@
               position: relative;
               width: 100%;
               &:before {
-                @include sprite-background(profile-icon);
-                content: '';
+                content: '\e61e';
                 display: block;
+                font-family: $ico-font;
+                font-size: get-vw(40px, 1901);
+                left: 50%;
+                line-height: 1;
+                margin-left: get-vw(-20px, 1901);
+                margin-top: get-vw(-20px, 1901);
                 position: absolute;
-                left: calc(50% - 13px);
-                top: calc(50% - 15px);
+                top: 50%;
+                @include breakpoint($bp-min-1901-width) {
+                  font-size: 40px;
+                  margin-left: -20px;
+                  margin-top: -20px;
+                }
+                @include breakpoint($bp-768-width) {
+                  display: none;
+                }
               }
             }
             .tve-help-sign {

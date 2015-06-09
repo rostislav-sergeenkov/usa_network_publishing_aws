@@ -365,6 +365,9 @@
               position: relative;
               vertical-align: top;
               width: 30%;
+              @include breakpoint($bp-min-2500-width) {
+                height: 410px;
+              }
               @include breakpoint($bp-1280-width) {
                 height: 14vw;
                 margin-right: 12px;

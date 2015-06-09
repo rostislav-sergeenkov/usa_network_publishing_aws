@@ -2726,7 +2726,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'timeline':
           $content_type = 'Gallery';
-          $alt_content_type = 'Timeline Slideshow';
+          $alt_content_type = 'Timeline';
           $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'timeline');
           if (!empty($section_wrapper)) {
             $section_object = $section_wrapper->value();
@@ -2741,7 +2741,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 $episode_number = $first_episode_wrapper->field_episode_number->value();
               }
               $content_name = $node_wrapper->title->value();
-              $specific_content_name = $season_title . ' Episode ' . $episode_number . ' | ' . $episode_title . ' | Scene 1';
+              $specific_content_name = str_replace('Season ', 'S', $season_title) . ' E' . $episode_number . ' Scene 1';
               $umbel = $node_wrapper->title->value();
             }
           }
@@ -2822,7 +2822,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
       // show_name : microsite_name : content_type : content_name : specific_content_name
       // If show_name == microsite_name, show only microsite_name
       // Example 1: Dig : Gallery : Ancient Relics : Photo 1
-      // Example 2: Graceland : Graceland Catchup : Timeline Slideshow : Graceland Timeline : Season 1 Episode 2 Scene 3
+      // Example 2: Graceland : Graceland Catchup : Timeline : Graceland Timeline : S1 E2 Scene 3
       $join_str = ' : ';
       $omniture_array = array();
       if ($show_name != $entity->title) {

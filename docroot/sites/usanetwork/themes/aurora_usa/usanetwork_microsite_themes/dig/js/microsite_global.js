@@ -165,7 +165,7 @@
         case 'galleries':
           var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
               $slider = slider.data('flexslider'),
-              currentSlide = $slider.currentSlide + 1;
+              currentSlide = (typeof $slider != 'undefined' && $slider.hasOwnProperty('currentSlide')) ? parseInt($slider.currentSlide) + 1 : 1;
           if (!currentSlide) currentSlide = 1;
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';

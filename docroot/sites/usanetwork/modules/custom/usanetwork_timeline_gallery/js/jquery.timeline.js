@@ -121,7 +121,7 @@ Project demo: http://shindiristudio.com/timeline
 
         s.prop3 = 'Gallery';
         s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
-        s.prop5 = s.prop10 + ' : Timeline SlideShow : ' + title;
+        s.prop5 = s.prop10 + ' : Timeline : ' + title;
         s.pageName = s.prop5 + ' : ' + slideTitle;
 
         if (typeof s_gi != 'undefined') {

@@ -17,7 +17,7 @@
           };
 
       if ($('body').hasClass('node-type-tv-show')) {
-        if ((scroll_top > (ad_h + navbar_h + 20)) && ($(window).width() > 768)) {
+        if ((scroll_top > (ad_h + navbar_h + 20)) && ($(window).width() >= window_size_tablet_portrait)) {
           $header_submenu.css(styles);
           $ad.css('margin-bottom', navbar_h);
         } else if (scroll_top < (ad_h + navbar_h + 20)) {
@@ -25,7 +25,7 @@
           $ad.css('margin-bottom', 0);
         }
       } else {
-        if ((scroll_top > ad_h + 20) && ($(window).width() > 768)) {
+        if ((scroll_top > ad_h + 20) && ($(window).width() >= window_size_tablet_portrait)) {
           $header_full.addClass('sticky');
           $header_full.css(styles);
           $ad.css('margin-bottom', header_full_h);
@@ -37,10 +37,40 @@
       }
     },
 
-    onTotalMCScrollFlag: null,
-    onTotalMCScrollOffset: null,
-    onTotalMCScrollStartOffset: null,
-    MCScrollInstance: null,
+      stickyFilterbar: function () {
+        var $ad = $('.ad-leaderboard'),
+            $header_submenu = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu'),
+            $navbar = $('.header-nav-bar'),
+            $upper_menu = $('.upper-menu'),
+            $landing_main_block = $('.landing-main-block'),
+            $h2_landing = $('.landing-page-container h2'),
+            ad_h = $ad.height(),
+            navbar_h = $navbar.height(),
+            header_submenu_h = $header_submenu.height(),
+            landing_main_block_h = $landing_main_block.height(),
+            h2_landing_h = $h2_landing.height(),
+            scroll_top = $(window).scrollTop(),
+            styles_filterbar = {
+              'position': 'fixed',
+              'z-index': '999',
+              'width': '100%',
+              'top': header_submenu_h
+            };
+        if ($('body').hasClass('page-node-videos') || $('body').hasClass('page-node-photos')) {
+          if ((scroll_top > (ad_h + navbar_h + header_submenu_h + landing_main_block_h + h2_landing_h)) && ($(window).width() >= window_size_tablet_portrait )) {
+            $upper_menu.css(styles_filterbar);
+            $ad.css('margin-bottom', navbar_h );
+          } else if (scroll_top  < (ad_h + navbar_h + header_submenu_h + landing_main_block_h + h2_landing_h)) {
+            $upper_menu.attr('style', '');
+            $ad.css('margin-bottom', 0);
+          }
+        }
+      },
+
+      onTotalMCScrollFlag: null,
+      onTotalMCScrollOffset: null,
+      onTotalMCScrollStartOffset: null,
+      MCScrollInstance: null,
 
     closeTab: function() {
       setTimeout(function() {
@@ -303,6 +333,7 @@
 
         $(window).load(function () {
           Drupal.behaviors.usanetwork_menu_dropdown.stickyHeader();
+          Drupal.behaviors.usanetwork_menu_dropdown.stickyFilterbar();
 
           $('.calendar-reminder').click(function () {
             if (getInternetExplorerVersion() !== -1) {
@@ -313,6 +344,7 @@
 
         $(window).bind('resize', function () {
           Drupal.behaviors.usanetwork_menu_dropdown.stickyHeader();
+          Drupal.behaviors.usanetwork_menu_dropdown.stickyFilterbar();
 
           showTitleMove();
           showMenuMove();
@@ -341,6 +373,7 @@
 
         $(window).on("scroll", function () {
           Drupal.behaviors.usanetwork_menu_dropdown.stickyHeader();
+          Drupal.behaviors.usanetwork_menu_dropdown.stickyFilterbar();
 
           if ($('.tab-item.active').length > 0) {
             if (Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt == null) {

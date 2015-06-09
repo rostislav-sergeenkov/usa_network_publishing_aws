@@ -14,6 +14,13 @@
  * @ingroup tve_mvpd
  */
 
+// MVPD Service URLs.
+define('TVE_MVPD_MVPD_DETAILS_SERVICE_URL', 'http://mvpd-admin.nbcuni.com/mvpd/service/custom-feed/mvpd_details');
+define('TVE_MVPD_BRAND_DETAILS_SERVICE_URL', 'http://mvpd-admin.nbcuni.com/mvpd/service/custom-feed/brand_details');
+
+// Request timeout for MVPD service.
+define('TVE_MVPD_SERVICE_REQUEST_TIMEOUT', 15);
+
 // MVPD fields (properties).
 define('TVE_MVPD_DEFAULT', 'default');
 define('TVE_MVPD_COLOR_DARK', 'field_mvpd_dark_color');
@@ -441,7 +448,12 @@ function _tve_mvpd_get_providers_from_service($service_url) {
     return NULL;
   }
 
-  $data = json_decode($response->data);
+  if (_tve_mvpd_is_mpvd_v2_service_url($service_url)) {
+    $data = _tve_mvpd_transform_v2_to_v1(json_decode($response->data));
+  }
+  else {
+    $data = json_decode($response->data);
+  }
 
   if ($data === 'error') {
     watchdog('tve_mvpd', 'Error response form MVPD service (!url).', array('!url' => $service_url), WATCHDOG_ERROR);
@@ -449,6 +461,108 @@ function _tve_mvpd_get_providers_from_service($service_url) {
   }
 
   return $data;
+}
+
+/**
+ * Returns TRUE if provided MVPD URL supports v2 of MVPD Service.
+ *
+ * @param $url
+ *
+ * @return bool
+ */
+function _tve_mvpd_is_mpvd_v2_service_url($url) {
+  $url_parts = parse_url($url);
+
+  if (isset($url_parts['path'])) {
+    $path_parts = explode('/', trim($url_parts['path'], '/'));
+
+    if (isset($path_parts[2]) && 'v2' == $path_parts[2]) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Transforms data format of MVPD v2 to MVPD v1.
+ *
+ * @param $mvpd_data
+ *
+ * @return array
+ */
+function _tve_mvpd_transform_v2_to_v1($mvpd_data) {
+  if (!is_array($mvpd_data)) {
+    return 'error';
+  }
+
+  if (count($mvpd_data) !== 2) {
+    return 'error';
+  }
+
+  $data = array();
+  $messages = $mvpd_data[0];
+  $mvpds = $mvpd_data[1];
+
+  foreach ($mvpds as $mvpd) {
+    foreach ($messages as $message_id => $message) {
+      if (!isset($mvpd->{$message_id})) {
+        $mvpd->{$message_id} = $message;
+      }
+    }
+
+    $data[] = _tve_mvpd_transform_v2_to_v1_fields($mvpd, $messages->file_path);
+  }
+
+  return $data;
+}
+
+/**
+ * Returns array of V2 field names mapped to V1 field names.
+ *
+ * @param $mvpd_v2
+ * @param $file_path
+ *
+ * @return stdClass
+ */
+function _tve_mvpd_transform_v2_to_v1_fields($mvpd_v2, $file_path) {
+  $mvpd_v1 = new stdClass();
+  $shared_logos = array(
+    'mvpd_logo_dark',
+    'mvpd_logo_light',
+    'mvpd_dark_color',
+    'mvpd_light_color',
+    'white_logo_2x',
+    'color_logo_2x',
+  );
+  $shared_fields = array(
+    'title',
+    'featured',
+    'weight',
+    'is_darker_logo',
+  );
+
+  foreach ($mvpd_v2 as $field_name => $field_value) {
+    $field_name_v1 = 'field_' . $field_name;
+
+    if (in_array($field_name, $shared_logos)) {
+      if (!valid_url($field_value, TRUE)) {
+        $field_value = $file_path . $field_value;
+      }
+
+      $mvpd_v1->{$field_name_v1} = $field_value;
+    }
+    elseif (in_array($field_name, $shared_fields)) {
+      $mvpd_v1->{$field_name} = $field_value;
+    }
+    else {
+      $mvpd_v1->{$field_name_v1} = $field_value;
+    }
+  }
+
+  unset($mvpd_v2);
+
+  return $mvpd_v1;
 }
 
 /**
@@ -469,7 +583,8 @@ function _tve_mvpd_get_providers() {
  */
 function _tve_mvpd_get_service_url() {
   if (!variable_get('tve_mvpd_advanced_mode', 0)) {
-    return check_url(variable_get('tve_mvpd_service_url'));
+    // check_url() is not appropriate because we are using query parameters.
+    return drupal_strip_dangerous_protocols(variable_get('tve_mvpd_service_url'));
   }
 
   $api_key = variable_get('tve_mvpd_api_key', '');
@@ -482,6 +597,24 @@ function _tve_mvpd_get_service_url() {
   }
 
   return url(check_url(variable_get('tve_mvpd_service_url')), array('query' => $query));
+}
+
+/**
+ * Returns MVPD details service URL.
+ *
+ * @return string
+ */
+function tve_mvpd_get_mvpd_details_service_url() {
+  return variable_get('tve_mvpd_details_service_url', TVE_MVPD_MVPD_DETAILS_SERVICE_URL);
+}
+
+/**
+ * Returns Brand details service URL.
+ *
+ * @return string
+ */
+function tve_mvpd_get_brand_details_service_url() {
+  return variable_get('tve_mvpd_brand_details_service_url', TVE_MVPD_BRAND_DETAILS_SERVICE_URL);
 }
 
 /**

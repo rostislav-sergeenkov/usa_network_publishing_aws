@@ -16,6 +16,11 @@ function acquia_lift_profiles_admin_form($form, &$form_state) {
     '#default_value' => variable_get('acquia_lift_profiles_account_name', ''),
     '#required' => TRUE,
   );
+  $form['acquia_lift_profiles_site_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Acquia Lift Profiles Customer Site'),
+    '#default_value' => variable_get('acquia_lift_profiles_site_name', ''),
+  );
   $form['acquia_lift_profiles_api_url'] = array(
     '#type' => 'textfield',
     '#title' => t('Acquia Lift Profiles API URL'),
@@ -101,20 +106,6 @@ function acquia_lift_profiles_admin_form($form, &$form_state) {
   // Only show the "Tracked actions" selector if acquia_lift_profiles has already been
   // configured for API connections.
   if (acquia_lift_profiles_is_configured(TRUE)) {
-    $action_settings = variable_get('acquia_lift_profiles_tracked_actions', array());
-    $actions = visitor_actions_get_actions();
-    $options = array();
-    foreach ($actions as $name => $info) {
-      $options[$name] = $info['label'];
-    }
-    $form['acquia_lift_profiles_tracked_actions'] = array(
-      '#title' => t('Actions to track for Acquia Lift Profiles'),
-      '#type' => 'select',
-      '#options' => $options,
-      '#multiple' => TRUE,
-      '#default_value' => $action_settings,
-      '#size' => count($options),
-    );
     module_load_include('inc', 'personalize', 'personalize.admin');
     $groups = personalize_get_grouped_context_options(NULL, TRUE, array('acquia_lift_profiles_context', 'acquia_lift_context'));
     $udf_mappings = variable_get('acquia_lift_profiles_udf_mappings', array());
@@ -204,6 +195,7 @@ function acquia_lift_profiles_admin_form_submit($form, &$form_state) {
   }
   $variables = array(
     'acquia_lift_profiles_account_name',
+    'acquia_lift_profiles_site_name',
     'acquia_lift_profiles_access_key',
     'acquia_lift_profiles_secret_key',
     'acquia_lift_profiles_capture_identity',
@@ -252,6 +244,8 @@ function acquia_lift_profiles_admin_form_submit($form, &$form_state) {
     variable_set('acquia_lift_profiles_udf_mappings', $mapped_contexts);
   }
 
+  module_load_include('inc', 'acquia_lift_profiles', 'acquia_lift_profiles.batch');
+  acquia_lift_batch_sync_actions();
   drupal_set_message(t('The configuration settings have been saved.'), 'status');
 }
 

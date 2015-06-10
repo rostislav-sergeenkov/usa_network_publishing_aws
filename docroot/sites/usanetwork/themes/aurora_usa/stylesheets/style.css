@@ -6378,20 +6378,20 @@ header .tab-item .see-all-link a {
   font-size: 0.97561vw;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   line-height: 1;
-  padding: 1.26829vw 2.43902vw 1.26829vw 1.46341vw;
+  padding: 0.97561vw 2.43902vw 0.97561vw 1.46341vw;
   position: relative;
   text-transform: uppercase;
 }
 @media (min-width: 1901px) {
   header .tab-item .see-all-link a {
     font-size: 18px;
-    padding: 24px 46px 24px 27px;
+    padding: 18px 46px 18px 27px;
   }
 }
 @media (max-width: 1024px) {
   header .tab-item .see-all-link a {
     font-size: 10px;
-    padding: 13px 25px 13px 15px;
+    padding: 10px 25px 10px 15px;
   }
 }
 header .tab-item .see-all-link a:after {
@@ -6420,6 +6420,19 @@ header .tab-item .see-all-link a:after {
     right: 8px;
   }
 }
+header .tab-item.shows-tab {
+  padding: 2.34146vw 2.92683vw 4.87805vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.shows-tab {
+    padding: 48px 53px 96px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.shows-tab {
+    padding: 24px 30px 50px;
+  }
+}
 header .tab-item.shows-tab .show-tab-wrapper {
   margin: 0 auto;
   max-width: 1778px;
@@ -6441,18 +6454,21 @@ header .tab-item.shows-tab .panel-pane h2 {
   font-size: 1.46341vw;
   letter-spacing: 2px;
   margin-bottom: 3.41463vw;
+  padding-top: 2.53659vw;
   text-transform: uppercase;
 }
 @media (min-width: 1901px) {
   header .tab-item.shows-tab .panel-pane h2 {
     font-size: 28px;
     margin-bottom: 65px;
+    padding-top: 48px;
   }
 }
 @media (max-width: 1024px) {
   header .tab-item.shows-tab .panel-pane h2 {
     font-size: 15px;
     margin-bottom: 35px;
+    padding-top: 26px;
   }
 }
 header .tab-item.shows-tab .panel-pane ul {

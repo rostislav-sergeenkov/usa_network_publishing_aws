@@ -732,16 +732,16 @@ header {
         font-size: get-vw(10px, 1025);
         font-family: $avalon-book;
         line-height: 1;
-        padding: get-vw(13px, 1025) get-vw(25px, 1025) get-vw(13px, 1025) get-vw(15px, 1025);
+        padding: get-vw(10px, 1025) get-vw(25px, 1025) get-vw(10px, 1025) get-vw(15px, 1025);
         position: relative;
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
           font-size: 18px;
-          padding: 24px 46px 24px 27px;
+          padding: 18px 46px 18px 27px;
         }
         @include breakpoint($bp-1024-width) {
           font-size: 10px;
-          padding: 13px 25px 13px 15px;
+          padding: 10px 25px 10px 15px;
         }
         &:after {
           content: "\e608";
@@ -768,6 +768,13 @@ header {
       }
     }
     &.shows-tab {
+      padding: get-vw(24px, 1025) get-vw(30px, 1025) get-vw(50px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        padding: 48px 53px 96px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 24px 30px 50px;
+      }
       .show-tab-wrapper {
         @include clear;
         margin: 0 auto;
@@ -784,14 +791,17 @@ header {
           font-size: get-vw(15px, 1025);
           letter-spacing: 2px;
           margin-bottom: get-vw(35px, 1025);
+          padding-top: get-vw(26px, 1025);
           text-transform: uppercase;
           @include breakpoint($bp-min-1901-width) {
             font-size: 28px;
             margin-bottom: 65px;
+            padding-top: 48px;
           }
           @include breakpoint($bp-1024-width) {
             font-size: 15px;
             margin-bottom: 35px;
+            padding-top: 26px;
           }
         }
         ul {

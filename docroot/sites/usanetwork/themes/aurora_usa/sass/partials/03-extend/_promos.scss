@@ -1267,7 +1267,7 @@
           height: 25%;
         }
         @include breakpoint($bp-640-width) {
-          height: 29%;
+          height: 29%!important;
         }
       }
       .meta {

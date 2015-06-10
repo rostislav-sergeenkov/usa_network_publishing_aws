@@ -43,6 +43,7 @@ function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, 
 
       $js_settings['usa']['msAppId'] = USANETWORK_DEEP_LINKING_WINDOWS_APP_ID;
       $js_settings['usa']['itunesAppId'] = USANETWORK_USANOW_ITUNES_ID;
+      $js_settings['usa']['itunesAppLink'] = 'itms-apps://itunes.apple.com/app/id' . USANETWORK_USANOW_ITUNES_ID;
 
       $advert_id = _usanetwork_get_field_item('file', $entity, 'field_mpx_external_advertiser_id', 'value');
       if (!empty($advert_id)) {

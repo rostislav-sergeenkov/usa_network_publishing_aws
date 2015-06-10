@@ -22,6 +22,7 @@
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
+  height: 560px;
   width: 640px;
 }
 .draggable-area.desktop {
@@ -29,10 +30,12 @@
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
+  height: 560px;
   width: 1280px;
 }
 
 .draggable-area.desktop#edit-field-aspot-enabled-tgi-preview {
+  height: 550px;
   width: 983px;
 }
 /* Draggable elements */

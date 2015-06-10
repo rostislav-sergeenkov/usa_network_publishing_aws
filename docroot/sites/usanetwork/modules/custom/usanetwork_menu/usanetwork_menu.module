@@ -1578,6 +1578,7 @@ function usanetwork_menu_shows_landing_main_form_submit($form, &$form_state) {
     $header_shows[$i] = !empty($form_state['values']['usa_show_' . $i]) ? $form_state['values']['usa_show_' . $i] : '';
   }
   variable_set('shows_landing_shows', $header_shows);
+  drupal_set_message(t('All shows page has been successfully updated'));
 }
 
 /**

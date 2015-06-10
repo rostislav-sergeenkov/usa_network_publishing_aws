@@ -107,7 +107,7 @@
       }
 
       // Perform a redirect to the app on full episodes from iOS devices.
-      if (this.performIosRedirect) {
+      if (this.performIosRedirect && !$('body').hasClass('page-auth-video')) {
         this.iosRedirect();
       }
 

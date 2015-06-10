@@ -18157,6 +18157,8 @@ footer h2 {
   }
 }
 .landing-page-container .upper-menu .sorters-description h1 strong {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   text-transform: uppercase;
 }
 .landing-page-container .upper-menu .sorters-description h1 strong:last-child {
@@ -18790,10 +18792,11 @@ footer h2 {
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
   color: #ffffff;
   display: inline-block;
-  text-transform: uppercase;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 20px;
   padding: 15px 0 15px calc(14% + 26px);
   position: relative;
+  text-transform: uppercase;
   width: 100%;
 }
 @media (min-width: 1901px) {

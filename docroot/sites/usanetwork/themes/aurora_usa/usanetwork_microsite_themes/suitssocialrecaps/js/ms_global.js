@@ -226,7 +226,7 @@
           contentType = Drupal.behaviors.ms_global.toTitleCase(anchor),
           altContentType = null,
           specificContentName = null;
-usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), siteName: ' + siteName + ', contentType: ' + contentType);
+//usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), siteName: ' + siteName + ', contentType: ' + contentType);
 
       // set section-specific overrides
       switch (anchor) {
@@ -365,7 +365,6 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
     // and the 300x250 at about the same time, so we create the 728x90
     // first and then create the 300x250
     create728x90Ad: function () {
-//      var $ad = $('.dart-name-728x90_ifr_reload_' + section);
       var $ad = $('.ad-leaderboard');
 
       if ($ad.hasClass('loading')) {
@@ -376,9 +375,8 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
         $ad.addClass('loading');
 
         // check to see if there is an ad already there
-//        if ($('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
-//          adBlock = '.dart-name-728x90_ifr_reload_' + section;
-        if ($('.ad-leaderboard iframe').length) {
+        if ($ad.find('iframe').length > 0) {
+//usa_debug('======== create728x90Ad() -> if iframe length > 0');
           adBlock = '.ad-leaderboard';
           Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
         }
@@ -393,28 +391,30 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
 
           Drupal.DART.tag('{"machinename":"ad-leaderboard","name":"728x90 script","pos":"7","sz":"728x90","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"728x90","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
 
+//usa_debug('======== create728x90Ad() -> else iframe length <= 0, iframeQueue.length: ' + iframeQueue.length + ', iframeQueue: ');
+//usa_debug(iframeQueue);
+
           // write iframe ad units to page
           if (iframeQueue.length) {
             for (var i = 0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
               // 728x90
-              if (iframeQueue[i].tag.indexOf('728x90') != '-1') {
-//                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
-                $('.ad-leaderboard').html(iframeQueue[i].html);
+              if (iframeQueue[i].tag.indexOf('728x90') != -1 || iframeQueue[i].tag.indexOf('ad-leaderboard') != -1) {
+                $ad.html(iframeQueue[i].html);
               }
             }
           }
         }
         // add styles for iframe
         if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && $(window).width() < 748) {
-          $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
-          $('.ad-leaderboard iframe').load(function () {
-            $('.ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 50px;}object * {max-width: 100%; max-height: 50px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+          $ad.css({'width': '300px', 'height': '50px'});
+          $ad.find('iframe').load(function () {
+            $ad.find('iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 50px;}object * {max-width: 100%; max-height: 50px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
           });
         }
         else {
-          $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
-          $('.ad-leaderboard iframe').load(function () {
-            $('.ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+          $ad.css({'width': '728px', 'height': '90px'});
+          $ad.find('iframe').load(function () {
+            $ad.find('iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
           });
         }
 
@@ -509,6 +509,7 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
       Drupal.behaviors.ms_global.globalInitialPageLoad = false;
     },
 
+/*
     // RESIZING
     // resize response
     resizeResponse: function() {
@@ -535,7 +536,7 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
 
       if ($('#quizzes').length > 0) Drupal.behaviors.ms_quizzes.reloadSliders();
     },
-
+*/
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
       if (!$('html.ie9').length) {
@@ -565,35 +566,6 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
         }
 
 /*
-        // initialize clicks in microsite menu
-        $('#microsite li.internal a').on('click', function(e){
-          e.preventDefault();
-          var $parent = $(this).parent(),
-              anchor = $parent.attr('data-menuanchor');
-
-//usa_debug('======== clicked on ' + $parent.attr('id') + ', anchor: ' + anchor);
-          if ($('#site-nav-links li').hasClass('disabled')) {
-//usa_debug('======== site-nav-links disabled');
-            return false;
-          }
-          else {
-//usa_debug('======= disabling site-nav-links li');
-            $('#site-nav-links li').addClass('disabled');
-          }
-
-//usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
-          Drupal.behaviors.ms_global.sectionScroll(anchor);
-          if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
-        });
-
-        // initialize graceland cu logo click
-        $('#gracelandcu-logo').on('click', function(){
-          var anchor = 'home',
-              anchorFull = basePath + '/' + anchor;
-
-          Drupal.behaviors.ms_global.sectionScroll(anchor);
-        });
-
         // initialize the waypoints
         self.initializeWaypoints();
 
@@ -606,9 +578,8 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
         setTimeout(function(){
           self.sectionScroll(urlParts['section'], urlParts['item']);
         }, 2000);
-*/
         self.create728x90Ad();
-
+*/
       }, 2000);
       // END TIME OUT
 
@@ -640,6 +611,7 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
         });
       }
 
+/*
       // RESIZE
       // set resize and orientation change
       var resizeTimer;
@@ -650,7 +622,7 @@ usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), sit
         }, 250);
       });
 //      window.addEventListener('orientationchange', self.resizeResponse);
-
+*/
     }
   }
 })(jQuery);

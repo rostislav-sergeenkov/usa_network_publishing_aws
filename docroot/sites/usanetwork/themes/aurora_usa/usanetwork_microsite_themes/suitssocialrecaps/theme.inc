@@ -63,21 +63,22 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_registry_variables() {
  */
 function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
+  $site_default_theme_path = $theme_path . '/usanetwork_microsite_themes/default';
   $site_theme_path = $theme_path . '/usanetwork_microsite_themes/suitssocialrecaps';
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
   return array(
     'css' => array(
-      $site_theme_path . '/css/fonts.css',
+      $site_default_theme_path . '/css/fonts.css',
       $site_theme_path . '/css/ms_styles.css',
-      $site_theme_path . '/css/ms_gigya_share.css',
-      $site_theme_path . '/css/ms_videos.css',
+      $site_default_theme_path . '/css/ms_gigya_share.css',
+      $site_default_theme_path . '/css/ms_videos.css',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
     'js' => array(
       '/sites/usanetwork/modules/contrib/gigya/js/gigya_sharebar.js',
-      $site_theme_path . '/js/ms_graceland_cu.js',
+      $site_theme_path . '/js/ms_site.js',
       $site_theme_path . '/js/ms_global.js',
       $site_theme_path . '/js/ms_videos.js',
       $site_theme_path . '/js/ms_video_endcard.js',
@@ -98,5 +99,7 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_settings() {
     'short_name_for_full_episodes' => TRUE,
     'videos_all_videos_filter' => FALSE,
     'videos_season_filters' => FALSE,
+    'sections_use_ajax' => FALSE,
+
   );
 }

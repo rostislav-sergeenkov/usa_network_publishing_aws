@@ -16189,11 +16189,15 @@ footer h2 {
     padding: 12px 30px 12px 12px;
   }
 }
+@media (max-width: 640px) {
+  .shows-block .carousel .show-link a {
+    padding: 8px 25px 6px 8px;
+    font-size: 11px;
+  }
+}
 @media (max-width: 480px) {
   .shows-block .carousel .show-link a {
     line-height: 10px;
-    padding: 8px 20px 8px 8px;
-    font-size: 10px;
   }
 }
 .shows-block .carousel .show-link a:after {
@@ -17270,7 +17274,7 @@ footer h2 {
   .shows-block .show-info-block .show-description .node .about-content {
     font-size: 8.75px;
     line-height: 12.5px;
-    margin-top: 12.5px;
+    margin-top: 10px;
   }
 }
 .shows-block .show-info-block .show-description .node .show-link {
@@ -17287,10 +17291,14 @@ footer h2 {
     margin-right: -76px;
   }
 }
+@media (max-width: 640px) {
+  .shows-block .show-info-block .show-description .node .show-link {
+    margin-right: -44px;
+  }
+}
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-description .node .show-link {
     bottom: 5px;
-    margin-right: -43px;
   }
 }
 .shows-block .show-info-block .show-bottom-info {
@@ -18166,13 +18174,14 @@ footer h2 {
   display: block;
 }
 .landing-page-container .upper-menu .sorters-description h1 {
+  color: #666666;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
   float: left;
   line-height: 4em;
   font-size: 18px;
   letter-spacing: 1px;
-  color: #666666;
 }
 @media (max-width: 1280px) {
   .landing-page-container .upper-menu .sorters-description h1 {

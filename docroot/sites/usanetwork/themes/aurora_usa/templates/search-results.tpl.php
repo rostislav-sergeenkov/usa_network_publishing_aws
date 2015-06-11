@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation for displaying search results.
@@ -23,19 +22,45 @@
  * @ingroup themeable
  */
 ?>
-<?php if ($search_results): ?>
-  <div class="search-header clearfix">
-    <h1><?php print t('Search Results for:');?> <span><?php print $keywords; ?></span></h1>
-    <?php print $pager; ?>
+<div class="search-filter">
+  <div class="item-filter">
+    <div class="item-label page-numbers">
+      <?php print $result_count; ?>
+    </div>
+    <?php print $content_type_select; ?>
   </div>
-  <div class="search-totals"><?php print $search_totals; ?></div>
-  <ol class="search-results <?php print $module; ?>-results">
-    <?php print $search_results; ?>
-  </ol>
+  <div class="item-filter">
+    <div class="item-label">
+      <?php print t('For'); ?>
+    </div>
+    <div class="filter-button close">
+      <?php print $keywords; ?>
+    </div>
+  </div>
+  <div class="item-filter">
+    <div class="item-label">
+      <?php print t('In'); ?>
+    </div>
+    <?php print $tv_show_select; ?>
+  </div>
+  <div class="item-filter">
+    <div class="item-label">
+      <?php print t('Sorted by'); ?>
+    </div>
+    <?php print $sort_select; ?>
+  </div>
+  <div class="filter-reset">
+    <a href="javascript:void(0)">Reset</a>
+  </div>
+</div>
+
+<?php if ($search_results): ?>
+  <?php print $search_results; ?>
   <div class="search-footer">
     <?php print $pager; ?>
   </div>
 <?php else : ?>
-  <h2><?php print t('Your search yielded no results');?></h2>
+  <h2><?php print t('Your search yielded no results'); ?></h2>
   <?php print search_help('search#noresults', drupal_help_arg()); ?>
 <?php endif; ?>
+

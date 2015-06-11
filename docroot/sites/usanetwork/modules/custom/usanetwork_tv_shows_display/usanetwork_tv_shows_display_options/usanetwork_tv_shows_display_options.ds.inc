@@ -21,9 +21,6 @@ function usanetwork_tv_shows_display_options_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'media_large' => array(
-        0 => 'field_promo_wide_image',
-      ),
       'media' => array(
         0 => 'field_promo_regular_image',
       ),
@@ -48,7 +45,6 @@ function usanetwork_tv_shows_display_options_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'field_promo_wide_image' => 'media_large',
       'field_promo_regular_image' => 'media',
       'field_promo_text_line_1' => 'title',
       'field_promo_text_line_2' => 'caption',

@@ -8,12 +8,17 @@
  *
  * See docroot/.p7settings/README.settings.php.md for more information.
  */
+/**
+ * Start with a reasonable minimum php memory limit.
+ */
+ini_set('memory_limit', '512M');
 
 // Set $site to the string shortname of the current multisite.
 $conf['pub_site_shortname'] = 'usanetwork';
 
 // Include the environment-agnostic file from Publisher7 core.
-require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+//require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+require_once dirname(__FILE__) . "/../../profiles/publisher/settings.publisher.php";
 
 // Include the local settings file if we're on a local machine. This
 // is still included conditionally because Jenkins clones lack a settings.local.
@@ -34,7 +39,7 @@ $conf['acquia_hosting_disable_sa_2014_005_fix'] = TRUE;
 //require_once dirname(__FILE__) . "/settings.site.php";
 
 if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
-  $prod_include = '/var/www/site-php/usanetwork/D7-usanetwork-settings.inc';
+  $prod_include = '/var/www/site-php/nbcuusa/D7-nbcuusa-settings.inc';
   if (file_exists($prod_include)) {
     include($prod_include);
   }
@@ -42,9 +47,12 @@ if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
     // fallback behavior, e.g., a 404 page
   }
 }
-elseif (file_exists('/var/www/site-php')) {
+elseif (file_exists('/var/www/site-php/usanetwork')) {
   require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
-}
+} 
+elseif (file_exists('/var/www/site-php/nbcuusa')) {
+  require('/var/www/site-php/nbcuusa/nbcuusa-settings.inc');
+} 
 
 // Next, determine the environment we're in.  Environment types (qa, acceptance,
 // stage and prod) are defined in project-config.yml.
@@ -93,9 +101,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
-    $conf["acquia_identifier"] = "GMWX-32384";
-    $conf["acquia_key"] = "1166f38ec6b5d664b8fb6b085fde8232";
-    $conf["apachesolr_path"] = "/solr/GMWX-32384";
+    $conf["acquia_identifier"] = "AUWZ-71210";
+    $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
+    $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "1";
 
     // Turn on display PHP errors
@@ -129,13 +137,13 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
-    $conf["acquia_identifier"] = "GMWX-32384";
-    $conf["acquia_key"] = "1166f38ec6b5d664b8fb6b085fde8232";
-    $conf["apachesolr_path"] = "/solr/GMWX-32384";
+    $conf["acquia_identifier"] = "AUWZ-71210";
+    $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
+    $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
     break;
 
-  case 'acceptance':
+  case 'acc':
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'ACCEPTANCE';
     $conf['environment_indicator_overwritten_color'] = '#009933';
@@ -159,9 +167,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
-    $conf["acquia_identifier"] = "GMWX-32384";
-    $conf["acquia_key"] = "1166f38ec6b5d664b8fb6b085fde8232";
-    $conf["apachesolr_path"] = "/solr/GMWX-32384";
+    $conf["acquia_identifier"] = "AUWZ-71210";
+    $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
+    $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
 
     // Turn on display PHP errors
@@ -196,10 +204,12 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 
     //Acquia Search settings
-    $conf["acquia_identifier"] = "CGJK-32328";
-    $conf["acquia_key"] = "dc2bfa15286aedc061f759dfd20e2f9a";
-    $conf["apachesolr_path"] = "/solr/CGJK-32328";
+    $conf["acquia_identifier"] = "AUWZ-71210";
+    $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
+    $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
+
+    $conf['acquia_purge_domains'] = array('www.usanetwork.com');
 
     // www redirect
     default_site_request_handler();

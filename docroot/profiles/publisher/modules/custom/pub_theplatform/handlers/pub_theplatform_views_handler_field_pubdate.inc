@@ -15,12 +15,15 @@ class pub_theplatform_views_handler_field_pubDate extends views_handler_field_da
    *
    * This uses an api that Views exposes for exactly this simplicity.
    *
-   * @param $values
+   * @param mixed $values
    *   An object containing all retrieved values.
-   * @param $field
+   * @param null $field
    *   Optional name of the field where the value is stored.
+   *
+   * @return string
+   *   The date in the desired format.
    */
-  function get_value($values, $field = NULL) {
+  public function get_value($values, $field = NULL) {
     $alias = isset($field) ? $this->aliases[$field] : $this->field_alias;
 
     $pubDate = $values->{$alias};
@@ -29,5 +32,4 @@ class pub_theplatform_views_handler_field_pubDate extends views_handler_field_da
 
     return $date;
   }
-
 }

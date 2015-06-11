@@ -1,9 +1,11 @@
 <?php
 
 /**
- * Class for handling a view that gets its data not from the database, but from
- * a Solr server.
+ * @file
+ * Views query plugin for Apache Solr Views.
+ * Gets its data not from the database, but from a Solr server.
  */
+
 class apachesolr_views_query extends views_plugin_query {
 
   /**
@@ -11,6 +13,7 @@ class apachesolr_views_query extends views_plugin_query {
    */
   protected $params;
   protected $query_params;
+  public $orderby = array();
 
   /**
    * Array of all encountered errors. Each of these is fatal, meaning that a
@@ -32,6 +35,16 @@ class apachesolr_views_query extends views_plugin_query {
    */
   protected $where = array();
 
+  /**
+   * The default group operator.
+   *
+   * @var string
+   */
+  protected $group_operator = 'AND';
+
+  /**
+   * Builds what is necessary prior to executing the query.
+   */
   public function build(&$view) {
     $view->init_pager();
 
@@ -49,7 +62,7 @@ class apachesolr_views_query extends views_plugin_query {
 
     $params = array();
     if (isset($this->params['q'])) {
-      $params['q'] =  $this->params['q'];
+      $params['q'] = $this->params['q'];
     }
 
     $params['rows'] = $this->pager->options['items_per_page'];
@@ -68,9 +81,9 @@ class apachesolr_views_query extends views_plugin_query {
     $params['fl'] = implode(',', $params['fl']);
 
     $where = $this->where;
-    //Remove any empty conditions (exposed filters), they will cause an error
-    foreach($where as &$where_condition){
-      foreach($where_condition['conditions'] as $index => $condition){
+    // Remove any empty conditions (exposed filters), they will cause an error.
+    foreach ($where as &$where_condition) {
+      foreach ($where_condition['conditions'] as $index => $condition) {
         if ($condition['value'] == '') {
           unset($where_condition['conditions'][$index]);
         }
@@ -98,7 +111,7 @@ class apachesolr_views_query extends views_plugin_query {
   /**
    * Let modules modify the query just prior to finalizing it.
    */
-  function alter(&$view) {
+  public function alter(&$view) {
     foreach (module_implements('views_query_alter') as $module) {
       $function = $module . '_views_query_alter';
       $function($view, $this);
@@ -106,11 +119,10 @@ class apachesolr_views_query extends views_plugin_query {
   }
 
   /**
-   * Executes the query and fills the associated view object with according
-   * values.
+   * Executes the query.
    *
-   * Values to set: $view->result, $view->total_rows, $view->execute_time,
-   * $view->pager['current_page'].
+   * Assigns the resulting values to the view object.
+   * Values to set: $view->result, $view->total_rows, $view->execute_time.
    */
   public function execute(&$view) {
     try {
@@ -131,11 +143,8 @@ class apachesolr_views_query extends views_plugin_query {
       $solr = apachesolr_get_solr($env_id);
       $query = new ApachesolrViewsSolrBaseQuery('apachesolr', $solr, $this->query_params, '', current_path());
 
-      // Add sorting.
-      if (isset($this->params['sort'])) {
-        $query->setAvailableSort($this->params['sort'][0], $this->params['sort'][1]);
-        $query->setSolrsort($this->params['sort'][0], $this->params['sort'][1]);
-      }
+      // Add sorting. The setSolrsort method can't be used, because it doesn't support multiple sorting criteria.
+      $query->replaceParam('sort', $this->orderby);
 
       $query->page = $this->pager->current_page;
 
@@ -203,7 +212,7 @@ class apachesolr_views_query extends views_plugin_query {
   }
 
   public function add_sort($field, $order) {
-    $this->params['sort'] = array($field, $order);
+    $this->orderby[] = "$field $order";
   }
 
   public function add_parameter($key, $value) {
@@ -281,5 +290,11 @@ class apachesolr_views_query extends views_plugin_query {
 
     $groups[$group]['type'] = strtoupper($type);
     return $group;
+  }
+
+  /**
+   * Implement ensure_table, do nothing.
+   */
+  function ensure_table($table, $relationship = NULL, $join = NULL) {
   }
 }

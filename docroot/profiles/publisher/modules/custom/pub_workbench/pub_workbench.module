@@ -54,6 +54,17 @@ function pub_workbench_views_default_views_alter(&$views) {
   if (isset($views['queues_revision_list'])) {
     $views['queues_revision_list']->disabled = TRUE;
   }
+  if (isset($views['dynamic_queue_revision_list'])) {
+    $views['dynamic_queue_revision_list']->disabled = TRUE;
+  }
+  if (isset($views['pub_workbench_dynamic_queue_revision_list'])) {
+    if (!module_exists('dynamic_queue_workbench')) {
+      $views['pub_workbench_dynamic_queue_revision_list']->disabled = TRUE;
+    }
+  }
+  if (isset($views['pub_workbench_moderation'])) {
+    $views['pub_workbench_moderation']->disabled = TRUE;
+  }
 }
 
 /**
@@ -87,10 +98,27 @@ function pub_workbench_views_pre_render(&$view) {
     }
     drupal_add_css(drupal_get_path('module', 'pub_workbench') . '/css/pub_workbench.css');
   }
+
+  if ($view->name == 'pub_workbench_dynamic_queue_revision_list') {
+    $keys = array_keys($view->result);
+    if (!empty($keys)) {
+      $limit = variable_get('dynamic_queue_number_of_revs_displayed_' . dynamic_queue_load($view->result[$keys[0]]->state_flow_states_entity_id)->type);
+      if ($limit > 0) {
+        $view->result = array_slice($view->result, 0, $limit);
+      }
+    }
+    drupal_add_css(drupal_get_path('module', 'pub_workbench') . '/css/pub_workbench.css');
+  }
 }
 
+/**
+ * Additional submission handler for queues_type_form().
+ *
+ * @see queues_type_form()
+ * @see pub_workbench_form_alter()
+ */
 function pub_workbench_save_queue_revs_displayed(&$form, $form_state) {
-  variable_set('queue_number_of_revs_displayed_'.$form['type']['#default_value'],$form_state['values']['queue_number_of_revs_displayed']);
+  variable_set('queue_number_of_revs_displayed_' . $form['type']['#default_value'], $form_state['values']['queue_number_of_revs_displayed']);
 }
 
 /**
@@ -102,8 +130,16 @@ function pub_workbench_form_alter(&$form, &$form_state, $form_id) {
     $form['description']['#weight'] = -1;
   }
 
-  if ($form_id == 'queues_type_form' || $form_id == 'node_type_form' || $form_id == 'file_entity_file_type_form') {
-    $select_values = array(0 => 'All', 3 => 3, 5 => 5, 10 => 10 , 15 => 15, 20 => 20, 50 => 50);
+  $form_list = array(
+    'queues_type_form', 'node_type_form',
+    'file_entity_file_type_form', 'dynamic_queue_type_form',
+  );
+  if (in_array($form_id, $form_list)) {
+    $select_values = array(
+      0 => 'All', 3 => 3,  5 => 5,
+      10 => 10, 15 => 15, 20 => 20,
+      50 => 50,
+    );
 
     if ($form_id == 'node_type_form') {
       $fieldname = 'node_number_of_revs_displayed';
@@ -115,6 +151,12 @@ function pub_workbench_form_alter(&$form, &$form_state, $form_id) {
       $insert_field_after = "target";
       $type = $form['type']['#default_value'];
       $form['#submit'][] = 'pub_workbench_save_queue_revs_displayed';
+    }
+    elseif ($form_id == 'dynamic_queue_type_form') {
+      $fieldname = 'dynamic_queue_number_of_revs_displayed';
+      $insert_field_after = "entity_type";
+      $type = $form['type']['#default_value'];
+      $form['#submit'][] = 'pub_workbench_dynamic_queue_type_form_submit';
     }
     else {
       // For file_entity_file_type_form forms that we don't want to display
@@ -135,11 +177,29 @@ function pub_workbench_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 
-  // Use date popup picker on admin/workbench/scheduled/content, admin/workbench/scheduled/videos.
+  // Use date popup picker on admin/workbench/scheduled/content
+  // & admin/workbench/scheduled/videos.
   if ($form['#id'] === 'views-exposed-form-pub-workbench-scheduled-content-page' ||
     $form['#id'] === 'views-exposed-form-pub-workbench-scheduled-videos-page') {
     _pub_workbench_use_date_popup($form, 'time_scheduled');
   }
+
+  // We manually call the form_alter() here because we unset it in
+  // pub_workbench_module_implements_alter(). We do this because we don't want
+  // Sticky Edit Actions on this path.
+  if (!drupal_match_path(current_path(), '*/*/revisions-state-flow-states') && module_exists('sticky_edit_actions')) {
+    sticky_edit_actions_form_alter($form, $form_state, $form_id);
+  }
+}
+
+/**
+ * Additional form submission handler for dynamic_queue_type_form().
+ *
+ * @see dynamic_queue_type_form()
+ * @see pub_workbench_form_alter()
+ */
+function pub_workbench_dynamic_queue_type_form_submit(&$form, $form_state) {
+  variable_set('dynamic_queue_number_of_revs_displayed_' . $form['type']['#default_value'], $form_state['values']['dynamic_queue_number_of_revs_displayed']);
 }
 
 /**
@@ -175,19 +235,19 @@ function pub_workbench_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['options']['sticky']['#default_value'] = 0;
     $form['options']['sticky']['#access'] = FALSE;
     $form['options']['#attached']['js'][drupal_get_path('module', 'pub_workbench') . '/pub_workbench.js'] = array(
-      'weight' => 10
+      'weight' => 10,
     );
     $form['options']['#attached']['css'][drupal_get_path('module', 'pub_workbench') . '/css/pub-workbench-node.css'] = array(
-      'weight' => 10
+      'weight' => 10,
     );
 
-    // Disable the "new revision" checkbox (and make sure its checked) when adding a node.
+    // Disable the "new revision" checkbox and check it when adding a node.
     if (is_null($form['nid']['#value'])) {
       $form['options']['revision']['#default_value'] = 1;
       $form['options']['revision']['#access'] = FALSE;
     }
     else {
-      // If the user chooses the "Unpublish" Moderation State, disable the option
+      // If the user chooses "Unpublish" disable the option.
       // for creating a new revision.
       $form['options']['revision']['#states'] = array(
         'disabled' => array(
@@ -220,6 +280,14 @@ function pub_workbench_form_revision_scheduler_add_form_alter(&$form, &$form_sta
     $form['datetime']['#date_format'] = variable_get('date_format_edit_date', 'm/d/Y - h:i A');
     $form['datetime']['#date_increment'] = 5;
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pub_workbench_form_state_flow_entity_events_revision_alter(&$form, &$form_state, $form_id) {
+  $form['event_comment']['#cols'] = 22;
+  $form['event_comment']['#rows'] = 2;
 }
 
 /**
@@ -259,16 +327,23 @@ function pub_workbench_preprocess_views_view_field(&$variables) {
  * Implements hook_workbench_module_implements_alter().
  */
 function pub_workbench_module_implements_alter(&$implementations, $hook) {
-  if ($hook == 'form_node_form_alter' || $hook == 'form_alter') {
-    // Move pub_workbench_form_node_form_alter() to the end of the list.
-    // I did this in code instead of database because we want to be after,
-    // workbench, workbench_moderation, state_flow_entity, state_machine.
-    // A decent amount of modules, better done in code ;-/.
-    if (isset($implementations['pub_workbench'])) {
-      $group = $implementations['pub_workbench'];
-      unset($implementations['pub_workbench']);
-      $implementations['pub_workbench'] = $group;
-    }
+  // Move pub_workbench_form_node_form_alter() to the end of the list.
+  // I did this in code instead of database because we want to be after,
+  // workbench, workbench_moderation, state_flow_entity, state_machine.
+  // A decent amount of modules, better done in code ;-/.
+  if (($hook === 'form_node_form_alter' || $hook === 'form_alter') && isset($implementations['pub_workbench'])) {
+    $group = $implementations['pub_workbench'];
+    unset($implementations['pub_workbench']);
+    $implementations['pub_workbench'] = $group;
+  }
+
+  // Remove Sticky Edit Actions on the revisions page because they don't have a
+  // standard submit page or button. There are two wild cards because this path
+  // is provided by both the State Flow and Dynamic Queue modules.
+  // The way this gets called is by manually calling the
+  // sticky_edit_actions_form_alter() in  pub_workbench_form_alter().
+  if ($hook === 'form_alter') {
+    unset($implementations['sticky_edit_actions']);
   }
 }
 
@@ -314,7 +389,7 @@ function _pub_workbench_use_date_popup(&$form, $key) {
   if (!isset($form['#attached']['css'])) {
     $form['#attached']['css'] = array();
   }
-  if (!in_array(drupal_get_path('module', 'pub_workbench').'/css/pub_workbench.css', $form['#attached']['css'])) {
-    $form['#attached']['css'][] = drupal_get_path('module', 'pub_workbench').'/css/pub_workbench.css';
+  if (!in_array(drupal_get_path('module', 'pub_workbench') . '/css/pub_workbench.css', $form['#attached']['css'])) {
+    $form['#attached']['css'][] = drupal_get_path('module', 'pub_workbench') . '/css/pub_workbench.css';
   }
 }

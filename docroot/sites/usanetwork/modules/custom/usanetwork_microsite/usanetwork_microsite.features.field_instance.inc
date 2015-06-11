@@ -104,7 +104,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -153,7 +153,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -251,7 +251,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -304,7 +304,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -399,7 +399,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -495,6 +495,93 @@ function usanetwork_microsite_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_ms_section-field_ms_timeline_gallery'
+  $field_instances['field_collection_item-field_ms_section-field_ms_timeline_gallery'] = array(
+    'bundle' => 'field_ms_section',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 31,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_ms_timeline_gallery',
+    'label' => 'Timeline gallery',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_ms_section-field_ms_video_filters'
+  $field_instances['field_collection_item-field_ms_section-field_ms_video_filters'] = array(
+    'bundle' => 'field_ms_section',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 32,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_ms_video_filters',
+    'label' => 'Video filters',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 17,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_ms_section-field_ms_videos'
   $field_instances['field_collection_item-field_ms_section-field_ms_videos'] = array(
     'bundle' => 'field_ms_section',
@@ -540,7 +627,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -580,7 +667,7 @@ function usanetwork_microsite_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -1377,35 +1464,25 @@ function usanetwork_microsite_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 9,
+      'weight' => 15,
     ),
   );
 
   // Exported field_instance: 'node-usanetwork_microsite-field_ms_theme'
   $field_instances['node-usanetwork_microsite-field_ms_theme'] = array(
     'bundle' => 'usanetwork_microsite',
-    'default_value' => array(
-      0 => array(
-        'value' => 'old',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 3,
+        'type' => 'text_default',
+        'weight' => 13,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1430,14 +1507,28 @@ function usanetwork_microsite_field_default_field_instances() {
     'label' => 'Theme',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 7,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
     ),
   );
 
@@ -1507,7 +1598,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 16,
     ),
   );
 
@@ -1577,7 +1668,7 @@ function usanetwork_microsite_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 17,
     ),
   );
 
@@ -1635,7 +1726,7 @@ function usanetwork_microsite_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 14,
     ),
   );
 
@@ -1684,6 +1775,7 @@ function usanetwork_microsite_field_default_field_instances() {
     'label' => 'Instagram Page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-instagram usasocial-instagram',
         'configurable_title' => 0,
@@ -1697,6 +1789,7 @@ function usanetwork_microsite_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'instagram',
       'url' => 0,
@@ -1757,6 +1850,7 @@ function usanetwork_microsite_field_default_field_instances() {
     'label' => 'Facebook page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-fb usasocial-fb',
         'configurable_title' => 0,
@@ -1770,6 +1864,7 @@ function usanetwork_microsite_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'facebook',
       'url' => 0,
@@ -1830,6 +1925,7 @@ function usanetwork_microsite_field_default_field_instances() {
     'label' => 'Pinterest page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-pinterest usasocial-pinterest',
         'configurable_title' => 0,
@@ -1843,6 +1939,7 @@ function usanetwork_microsite_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'pinterest',
       'url' => 0,
@@ -1903,6 +2000,7 @@ function usanetwork_microsite_field_default_field_instances() {
     'label' => 'Tumblr Page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-tumblr usasocial-tumblr',
         'configurable_title' => 0,
@@ -1916,6 +2014,7 @@ function usanetwork_microsite_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'tumblr',
       'url' => 0,
@@ -1976,6 +2075,7 @@ function usanetwork_microsite_field_default_field_instances() {
     'label' => 'Twitter page',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'show-twitter usasocial-twitter',
         'configurable_title' => 0,
@@ -1989,6 +2089,7 @@ function usanetwork_microsite_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'twitter',
       'url' => 0,
@@ -2041,11 +2142,13 @@ function usanetwork_microsite_field_default_field_instances() {
   t('Source');
   t('The html for a separator that appears between each section.');
   t('Theme');
+  t('Timeline gallery');
   t('Tumblr Page');
   t('Tune-in');
   t('Twitter page');
   t('Video');
   t('Video adding type');
+  t('Video filters');
   t('slideshowSpeed');
 
   return $field_instances;

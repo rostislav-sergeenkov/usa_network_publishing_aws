@@ -27,7 +27,6 @@ features[features_overrides][] = field_instance.node-usanetwork_promo-field_prom
 features[features_overrides][] = field_instance.node-usanetwork_promo-field_promo_regular_image.display|promo_teaser_large
 features[features_overrides][] = field_instance.node-usanetwork_promo-field_promo_text_line_1.display|promo_teaser_large
 features[features_overrides][] = field_instance.node-usanetwork_promo-field_promo_text_line_2.display|promo_teaser_large
-features[features_overrides][] = field_instance.node-usanetwork_promo-field_promo_wide_image.display|promo_teaser_large
 features[features_overrides][] = field_instance.node-usanetwork_promo-field_show.display|promo_teaser_large
 features[features_overrides][] = page_manager_handlers.node_view_panel_context_2.conf|display|content|new-2|configuration|formatter
 features[features_overrides][] = page_manager_handlers.node_view_panel_context_2.conf|display|content|new-2|configuration|formatter_settings|view_mode_large

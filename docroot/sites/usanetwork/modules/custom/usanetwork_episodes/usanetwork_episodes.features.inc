@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function usanetwork_episodes_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -35,23 +38,24 @@ function usanetwork_episodes_image_default_styles() {
   // Exported image style: episode_wide.
   $styles['episode_wide'] = array(
     'name' => 'episode_wide',
+    'label' => 'episode_wide',
     'effects' => array(
-      2 => array(
-        'label' => 'Focus Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-        'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-        'form callback' => 'imagefield_focus_scale_and_crop_form',
-        'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-        'module' => 'imagefield_focus',
-        'name' => 'imagefield_focus_scale_and_crop',
+      12 => array(
+        'label' => 'Focal Point Scale And Crop',
+        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+        'effect callback' => 'focal_point_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'focal_point',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 1230,
           'height' => 360,
-          'strength' => 'high',
         ),
-        'weight' => 2,
+        'weight' => -10,
       ),
-      3 => array(
+      11 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -64,10 +68,73 @@ function usanetwork_episodes_image_default_styles() {
           'width' => 1230,
           'height' => 360,
         ),
-        'weight' => 2,
+        'weight' => -9,
       ),
     ),
     'label' => 'episode_wide',
+  );
+
+  $styles['634x349'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 634,
+          'height' => 349,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 634,
+          'height' => 349,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['769x434'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 769,
+          'height' => 434,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 769,
+          'height' => 434,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  $styles['677x381'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 677,
+          'height' => 381,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 677,
+          'height' => 381,
+        ),
+        'weight' => 1,
+      ),
+    ),
   );
 
   return $styles;

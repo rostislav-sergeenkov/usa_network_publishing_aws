@@ -274,7 +274,7 @@ function ctools_wizard_wrapper($form, &$form_state) {
   if (!empty($form_info['show trail'])) {
     ctools_add_css('wizard');
     $form['ctools_trail'] = array(
-      '#markup' => theme(array('ctools_wizard_trail__' . $form_info['id'], 'ctools_wizard_trail'), array('trail' => $trail)),
+      '#markup' => theme(array('ctools_wizard_trail__' . $form_info['id'], 'ctools_wizard_trail'), array('trail' => $trail, 'form_info' => $form_info)),
       '#weight' => -1000,
     );
   }
@@ -344,6 +344,18 @@ function ctools_wizard_wrapper($form, &$form_state) {
         '#wizard type' => 'finish',
         '#attributes' => $button_attributes,
       );
+    }
+
+    // If we have a back button, then we probably have a next or finish or return
+    // button, so figure out where to add the default action class.
+    if (!empty($form_info['show back']) && isset($form_state['previous'])) {
+      ctools_add_js('default-action');
+      if (isset($form['buttons']['next'])) {
+        $form['buttons']['next']['#attributes']['class'][] = 'ctools-default-action';
+      }
+      else if (isset($form['buttons']['return'])) {
+        $form['buttons']['return']['#attributes']['class'][] = 'ctools-default-action';
+      }
     }
 
     // If we are allowed to cancel, place a cancel button.

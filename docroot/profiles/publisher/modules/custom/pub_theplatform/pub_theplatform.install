@@ -1,7 +1,16 @@
 <?php
+/**
+ * @file
+ * Contains install and update functions for pub_theplatform.
+ */
 
+/**
+ * Implements hook_install().
+ */
 function pub_theplatform_install() {
-  drupal_set_message('Make sure you goto '.l('/admin/config/services/theplatform', 'admin/config/services/theplatform').' and set your site settings.');
+  $t = get_t();
+
+  drupal_set_message($t("Make sure you goto <a href='/admin/config/services/theplatform'>/admin/config/services/theplatform</a> and set your site settings."));
 }
 
 /**
@@ -14,15 +23,16 @@ function pub_theplatform_update_dependencies() {
   return $dependencies;
 }
 
-/*
+/**
  * Activate this display if we're updating.
  */
 function pub_theplatform_update_7001(&$sandbox) {
-  //  Load and submit the form so that we have the values we need prepped in the DB.  This is a workaround for the File Entity Module.
+  // Load and submit the form so that we have the values we need prepped in the
+  // DB. This is a workaround for the File Entity Module.
   module_load_include('inc', 'file_entity', 'file_entity.admin');
   $form = drupal_get_form('file_entity_file_display_form', 'video', 'default');
   drupal_form_submit('file_entity_file_display_form', $form, 'video', 'default');
-  //  Set up the values that we need and save them.
+  // Set up the values that we need and save them.
   $display = file_displays_load('video', 'default', TRUE);
   $display = $display['theplatform_iframe'];
   $display->status = 1;
@@ -30,15 +40,15 @@ function pub_theplatform_update_7001(&$sandbox) {
 }
 
 /**
-* Update thePlatform files to the new video file_entity type.
-*/
+ * Update thePlatform files to the new video file_entity type.
+ */
 function pub_theplatform_update_7002() {
   $video_type = file_type_load('video');
   $video_type->mimetypes[] = 'video/theplatform';
-  // maybe also add stream if is not there already?
+  // Maybe also add stream if is not there already?
   file_type_save($video_type);
 
-  // Update existing files
+  // Update existing files.
   db_query("UPDATE {file_managed} SET type = 'video' WHERE type = 'undefined' AND filemime = 'video/theplatform'");
 }
 
@@ -63,25 +73,3 @@ function pub_theplatform_field_schema($field) {
     'indexes' => $indexes,
   );
 }
-
-/**
- * Implements hook_requirements().
- */
-/*
-
-DISABLING FOR NOW
-
-function pub_theplatform_requirements($phase) {
-
-  if ($phase != 'install') {
-    return array();
-  }
-
-  $requirements = array();
-  $requirements['pub_theplatform_module_check']['title'] = t('Conflicting Module Check.');
-  $requirements['pub_theplatform_module_check']['description'] = t('The pub_theplatform module cannot be enabled while the pub_mpx module is enabled.');
-  $requirements['pub_theplatform_module_check']['severity'] = module_exists('pub_mpx') ? REQUIREMENT_ERROR : REQUIREMENT_OK;
-
-  return $requirements;
-}
-//*/

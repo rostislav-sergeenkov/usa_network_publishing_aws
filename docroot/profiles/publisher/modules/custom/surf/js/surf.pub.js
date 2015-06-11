@@ -49,26 +49,28 @@
  */
 Drupal.behaviors.surfPub = {
     attach: function (context, settings) {
-      var element = '#' + settings.surf.element;
-      if ($(element).length != 0) {
+      if (settings.surf) {
+        var element = '#' + settings.surf.element;
+        if ($(element).length != 0) {
 
-        // Init Surf
-        SURF.init(settings.surf);
+          // Init Surf
+          SURF.init(settings.surf);
 
-        // Bind Surf Events. Leave these in tact so we can handle the session data.
-        SURF.event.bind(SURF.events.READY, Drupal.surf.events.ready);
-        SURF.event.bind(SURF.events.SIGNIN, Drupal.surf.events.signIn);
-        SURF.event.bind(SURF.events.SIGNIN_WITH_SOCIAL_PROVIDER, Drupal.surf.events.signInSocial);
-        SURF.event.bind(SURF.events.CREATE_ACCOUNT, Drupal.surf.events.createAccount);
-        SURF.event.bind(SURF.events.EDIT_ACCOUNT, Drupal.surf.events.editAccount);
-        SURF.event.bind(SURF.events.ACCOUNT_UPDATED, Drupal.surf.events.accountUpdated);
+          // Bind Surf Events. Leave these in tact so we can handle the session data.
+          SURF.event.bind(SURF.events.READY, Drupal.surf.events.ready);
+          SURF.event.bind(SURF.events.SIGNIN, Drupal.surf.events.signIn);
+          SURF.event.bind(SURF.events.SIGNIN_WITH_SOCIAL_PROVIDER, Drupal.surf.events.signInSocial);
+          SURF.event.bind(SURF.events.CREATE_ACCOUNT, Drupal.surf.events.createAccount);
+          SURF.event.bind(SURF.events.EDIT_ACCOUNT, Drupal.surf.events.editAccount);
+          SURF.event.bind(SURF.events.ACCOUNT_UPDATED, Drupal.surf.events.accountUpdated);
 
-        SURF.event.bind(SURF.events.SIGNIN_ERROR, Drupal.surf.events.error);
-        SURF.event.bind(SURF.events.SIGNOUT_ERROR, Drupal.surf.events.error);
-        SURF.event.bind(SURF.events.SIGNIN_WITH_SOCIAL_PROVIDER_ERROR, Drupal.surf.events.error);
-        SURF.event.bind(SURF.events.CREATE_ACCOUNT_ERROR, Drupal.surf.events.error);
-        SURF.event.bind(SURF.events.EDIT_ACCOUNT_ERROR, Drupal.surf.events.error);
-        SURF.event.bind(SURF.events.LINK_ACCOUNT_ERROR, Drupal.surf.events.error);
+          SURF.event.bind(SURF.events.SIGNIN_ERROR, Drupal.surf.events.error);
+          SURF.event.bind(SURF.events.SIGNOUT_ERROR, Drupal.surf.events.error);
+          SURF.event.bind(SURF.events.SIGNIN_WITH_SOCIAL_PROVIDER_ERROR, Drupal.surf.events.error);
+          SURF.event.bind(SURF.events.CREATE_ACCOUNT_ERROR, Drupal.surf.events.error);
+          SURF.event.bind(SURF.events.EDIT_ACCOUNT_ERROR, Drupal.surf.events.error);
+          SURF.event.bind(SURF.events.LINK_ACCOUNT_ERROR, Drupal.surf.events.error);
+        }
       }
     }
  };

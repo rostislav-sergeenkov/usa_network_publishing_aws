@@ -8,16 +8,24 @@
 
 class state_flow_handler_field_is_node_revision_published extends views_handler_field {
 
-  function construct() {
+  /**
+   * {@inheritdoc}
+   */
+  public function construct() {
     parent::construct();
-    // @todo, these lines were commented out as part of this issue: http://drupal.org/node/1775540
+    // @todo, these lines were commented out as part of this issue:
+    // http://drupal.org/node/1775540
     // $this->additional_fields['node_vid'] = array('table' => 'node', 'field' => 'vid');
     // $this->additional_fields['node_status'] = array('table' => 'node', 'field' => 'status');
     $this->additional_fields['nid'] = array('field' => 'nid');
   }
 
-  function option_definition() {
-    // @todo, do we need the parent options? A lot of the variables don't apply at all.
+  /**
+   * {@inheritdoc}
+   */
+  public function option_definition() {
+    // @todo, do we need the parent options? A lot of the variables don't apply
+    // at all.
     $options = parent::option_definition();
 
     $options['yes_text'] = array('default' => 'Yes', 'translatable' => TRUE);
@@ -26,7 +34,10 @@ class state_flow_handler_field_is_node_revision_published extends views_handler_
     return $options;
   }
 
-  function options_form(&$form, &$form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function options_form(&$form, &$form_state) {
 
     $form['yes_text'] = array(
       '#type' => 'textfield',
@@ -47,7 +58,7 @@ class state_flow_handler_field_is_node_revision_published extends views_handler_
    * get_live_vid() and get_live_status() are bad work-arounds to this
    * problem: http://drupal.org/node/1775540
    */
-  function get_live_vid($nid) {
+  public function get_live_vid($nid) {
 
     if (!empty($nid)) {
 
@@ -64,7 +75,7 @@ class state_flow_handler_field_is_node_revision_published extends views_handler_
     return FALSE;
   }
 
-  function get_live_status($nid) {
+  public function get_live_status($nid) {
 
     if (!empty($nid)) {
       $live_revision = db_select('node', 'n')
@@ -80,6 +91,9 @@ class state_flow_handler_field_is_node_revision_published extends views_handler_
     return FALSE;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function render($values) {
 
     $nid = $this->get_value($values, 'nid');
@@ -90,7 +104,7 @@ class state_flow_handler_field_is_node_revision_published extends views_handler_
     $live_status = $this->get_live_status($nid);
 
     if (!empty($live_vid) && !empty($vid) && !empty($live_status)) {
-      if ( $live_status && $live_vid == $vid) {
+      if ($live_status && $live_vid == $vid) {
         return check_plain($this->options['yes_text']);
       }
     }

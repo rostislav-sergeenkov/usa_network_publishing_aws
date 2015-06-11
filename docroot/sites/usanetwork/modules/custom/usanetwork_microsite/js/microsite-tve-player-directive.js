@@ -95,7 +95,13 @@
 								}else{
 									videoContainer.addClass('start play');
 								}
-								Drupal.behaviors.microsite_scroll.micrositeAdAdded();
+								// @TODO: Consolidate or update the microsite js so that the following if-else statement is not needed.
+								if (typeof Drupal.behaviors.microsite_scroll == 'object' && typeof Drupal.behaviors.microsite_scroll.micrositeAdAdded == 'function') {
+								  Drupal.behaviors.microsite_scroll.micrositeAdAdded();
+								}
+								else if (typeof Drupal.behaviors.ms_videos == 'object' && typeof Drupal.behaviors.ms_videos.adAdded == 'function') {
+								  Drupal.behaviors.ms_videos.adAdded();
+                }
 							}
 
 							function _showPicker() {

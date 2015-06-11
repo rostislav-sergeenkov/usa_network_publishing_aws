@@ -25,81 +25,56 @@
  *
  * @see gigya_shareui_general_action()
  */
-/*function gigya_execute_replacement(&$value, $key, $params) {
-  // Extract the variables.
-  extract($params);
-  // Load the object by is type.
-  // @TODO: check why we are loading the object, not sure we need.
-
-  switch ($type) {
-    case 'node':
-      $object = node_load($object->nid);
-      break;
-    case 'comment':
-      $object = comment_load($object->cid);
-      break;
-    case 'user':
-      $object = user_load($object->uid);
-      break;
-  }
-  // Check if $value is string.
-  //@ TODO: maybe if we declare the variable type in the function we dont need to check it here :) function gigya_execute_replacement(string &$value, $key, $params) {
-  if (is_string($value)) {
-    // If token module is enabled make the token maninpulation first.
-  if (module_exists('token')) {
-      foreach ($token_types as $token_type) {
-        // If the object type is comment and the token type is node we need to pass to the token_replace function the node object so we check it.
-        if ($type == 'comment' && $token_type == 'node') {
-          $value = token_replace($value, array($type => node_load($object->nid)));
-        }
-        else {
-          $value = token_replace($value, array($type => $the_object));
-        }
-      }
-    }
-    // Make the Gigya replacments.
-    $value = strtr($value, $replacements);
-  }
-}*/
 
 /**
- *  Callback for array_walk().
+ * Callback for array_walk().
  *
- *  Receives form items and assesses whether or not they're input fields.
- *  If so, then it tries to set the default value based on the profile mappings.
+ * Receives form items and assesses whether or not they're input fields.
+ * If so, then it tries to set the default value based on the profile mappings.
  *
- *  @see gigya_form_alter()
+ * see gigya_form_alter()
  */
 function gigya_apply_profile_mapping(&$field, $key) {
   if (is_array($field)) {
-      // Check for some key elements. We do this explicitly to make sure the
-      // indexes are defined and avoid PHP notices.
-      $type = isset($field['#type']) ? $field['#type'] : '';
-      $field_name = isset($field['#field_name']) ? $field['#field_name'] : '';
-      $theme = isset($field['#theme']) ? $field['#theme'] : '';
+    // Check for some key elements. We do this explicitly to make sure the
+    // indexes are defined and avoid PHP notices.
+    $type = isset($field['#type']) ? $field['#type'] : '';
+    $field_name = isset($field['#field_name']) ? $field['#field_name'] : '';
+    $theme = isset($field['#theme']) ? $field['#theme'] : '';
 
-      // Is it a standard type to replace?
-      if (in_array($type, array('checkbox', 'checkboxes', 'date', 'radio', 'radios', 'select', 'textarea', 'textfield'))) {
-        if (isset($field['#default_value'])) {
-          $orig = $field['#default_value'];
-          $token = token_replace(variable_get('gigya_map_' . $key, ''));
-          $field['#default_value'] = $token ? $token : $orig;
-        }
-      }
-      // If it isn't and we have a #field_name, just go for it.
-      elseif ($field_name && $type) {
-        if (isset($field['#default_value'])) {
-          $orig = $field['#default_value'];
-          $token = token_replace(variable_get('gigya_map_' . $field['#field_name'], ''), 'gigya');
-          $field['#default_value']['value'] = $token ? $token : $orig;
-        }
-      }
-      // If it is a fieldset or multi-value field, drill in.
-      elseif ($type == 'fieldset' || $theme == 'content_multiple_values') {
-        array_walk($field, 'gigya_apply_profile_mapping');
+    // Is it a standard type to replace?
+    if (in_array($type, array(
+        'checkbox',
+        'checkboxes',
+        'date',
+        'radio',
+        'radios',
+        'select',
+        'textarea',
+        'textfield',
+      )
+    )
+    ) {
+      if (isset($field['#default_value'])) {
+        $orig = $field['#default_value'];
+        $token = token_replace(variable_get('gigya_map_' . $key, ''));
+        $field['#default_value'] = $token ? $token : $orig;
       }
     }
+    // If it isn't and we have a #field_name, just go for it.
+    elseif ($field_name && $type) {
+      if (isset($field['#default_value'])) {
+        $orig = $field['#default_value'];
+        $token = token_replace(variable_get('gigya_map_' . $field['#field_name'], ''), 'gigya');
+        $field['#default_value']['value'] = $token ? $token : $orig;
+      }
+    }
+    // If it is a fieldset or multi-value field, drill in.
+    elseif ($type == 'fieldset' || $theme == 'content_multiple_values') {
+      array_walk($field, 'gigya_apply_profile_mapping');
+    }
   }
+}
 
 /**
  * Get an avatar picutre url from Gigya by $uid.
@@ -107,7 +82,7 @@ function gigya_apply_profile_mapping(&$field, $key) {
  * @param string $uid
  *   The user id to get the avatar for.
  *
- * @return
+ * @return bool
  *   The user thumbnail url if he has one or the photoURL if not.
  */
 function gigya_avatar_check($uid) {
@@ -129,9 +104,8 @@ function gigya_avatar_check($uid) {
  * @param string $uid
  *   the user id to get the picture for.
  *
- * @return
+ * @return bool|object
  *   A file object if the user has avatar picture and we successfuly save the
- *   file, FALSE if not.
  */
 function gigya_save_userpic($uid) {
   // Get Facebook user picture's url.
@@ -139,7 +113,11 @@ function gigya_save_userpic($uid) {
     $result = drupal_http_request($avatar);
 
     if ($result->code != 200) {
-      watchdog('gigya', 'Failed importing user avatar for @uid, code : @code', array('@uid' => $uid, '@code' => $result->code));
+      watchdog('gigya', 'Failed importing user avatar for @uid, code : @code', array(
+          '@uid' => $uid,
+          '@code' => $result->code,
+        )
+      );
       return FALSE;
     }
 
@@ -151,7 +129,7 @@ function gigya_save_userpic($uid) {
     $dest .= '/' . $filename;
 
     $file = file_save_data($result->data, $dest, FILE_EXISTS_REPLACE);
-    // Resizing
+    // Resizing.
     list($width, $height) = sscanf(variable_get('user_picture_dimensions', '85x85'), '%dx%d');
     image_scale_and_crop($file, $dest, $width, $height);
     drupal_set_message(t('User picture saved successfully!'));
@@ -164,7 +142,7 @@ function gigya_save_userpic($uid) {
   }
 }
 
-/*
+/**
  * Prepare a keyed array of languages.
  *
  * @return array
@@ -252,9 +230,10 @@ function _gigya_get_profile_fields() {
 }
 
 /**
- * Callback for array_walk.
+ * Callback for array_walk, helper function for trimming.
  *
- * Helper function for trimming.
+ * @value string
+ *   The string to trim.
  */
 function _gigya_trim_value(&$value) {
   $value = trim($value);
@@ -265,15 +244,14 @@ function _gigya_trim_value(&$value) {
  *
  * @param string $uid
  *   The drupal User ID.
- * @param boolean $is_new_user
+ * @param bool $is_new_user
  *   Tell Gigya if we add a new user.
  * @param mixed $user_info_json
  *   Extra info for the user.
- *   @see gigya_user_login()
+ *   see gigya_user_login()
  *
- * @return
- *   True if the notify login request succeeded or the error message from Gigya
- *   if not.
+ * @return bool|null|string
+ *   True if the notify login request succeeded or the error message from Gigya.
  */
 function gigya_notify_login($uid, $is_new_user = FALSE, $user_info_json = NULL) {
   $apikey = variable_get('gigya_APIKey', '');
@@ -284,20 +262,19 @@ function gigya_notify_login($uid, $is_new_user = FALSE, $user_info_json = NULL) 
     $request->setParam('newUser', TRUE);
   }
   if (!empty($user_info_json)) {
-    $request->setParam('userInfo', $user_info_json);
+    $request->setParam('user_info', $user_info_json);
   }
   $response = $request->send();
   if ($response->getErrorCode() !== 0) {
-    //error
-    watchdog('gigya', 'error in notify login');
+    // Error.
+    watchdog('gigya', 'error in notify login, the message was @msg', array('@msg' => $response->getErrorMessage()));
     return $response->getErrorMessage();
   }
   try {
     setcookie($response->getString("cookieName"), $response->getString("cookieValue"), 0, $response->getString("cookiePath"), $response->getString("cookieDomain"));
   }
   catch (Exception $e) {
-    watchdog('gigya', 'error seting gigya cookie');
-    watchdog('gigya', 'error message : @error', array('@error' => $e->getMessage()));
+    watchdog('gigya', 'error setting gigya cookie, the error message was @error', array('@error' => $e->getMessage()));
   }
 
   return TRUE;
@@ -313,7 +290,7 @@ function gigya_notify_login($uid, $is_new_user = FALSE, $user_info_json = NULL) 
  * @param mixed $response
  *   The SDK response.
  *
- * @return
+ * @return bool
  *   True if response signature is valid false if not.
  */
 function _gigya_validate_sig($response) {
@@ -358,7 +335,9 @@ function gigya_validate($apikey, $secretkey, $data_center, $update = FALSE) {
   $request = new GSRequest($apikey, $secretkey, 'shortenURL');
   $request->setAPIDomain($data_center);
   $request->setParam('url', 'http://gigya.com');
+  ini_set('arg_separator.output', '&');
   $response = $request->send();
+  ini_restore ( 'arg_separator.output' );
   $error = $response->getErrorCode();
   if (!$update) {
     if ($error == 0) {
@@ -366,7 +345,8 @@ function gigya_validate($apikey, $secretkey, $data_center, $update = FALSE) {
       variable_set('need_validation_msg', TRUE);
       variable_set('gigya_validate', TRUE);
       return TRUE;
-    } else {
+    }
+    else {
       variable_set('gigya_validate', FALSE);
       return $response;
     }
@@ -387,10 +367,11 @@ function gigya_validate($apikey, $secretkey, $data_center, $update = FALSE) {
 /**
  * Delete user from Gigya's database.
  *
- * @param int $timestamp
- *   The request timestamp.
  * @param int $uid
  *   The drupal user id to delete.
+ *
+ * internal param int $timestamp The request timestamp.*
+ * The request timestamp.
  *
  * @return array
  *   The response from Gigya.
@@ -412,7 +393,8 @@ function gigya_delete_account($uid) {
  *
  * @param mixed $gigya_uid
  *   The Gigya uid.
- * @param int $uid
+ * @param int $drupal_uid
+ *   internal param int $uid The drupal user id.*
  *   The drupal user id.
  *
  * @return array
@@ -437,7 +419,8 @@ function gigya_notify_registration($gigya_uid, $drupal_uid) {
  *
  * @param mixed $gigya_uid
  *   The Gigya uid.
- * @param int $uid
+ * @param int $drupal_uid
+ *   internal param int $uid The drupal user id.*
  *   The drupal user id.
  *
  * @return array
@@ -484,12 +467,13 @@ function gigya_get_user_info($gigya_uid) {
  *   The Gigya uid.
  * @param array $params
  *   An associative array of params to pass to Gigya.
- *   @see http://developers.gigya.com/020_Client_API/020_Methods/socialize.getFriends
+ *   see http://developers.gigya.com/020_Client_API/020_Methods/socialize.getFriends
  *
  * @return array
  *   The response from Gigya.
+ * deprecated
  */
-function gigya_get_friends_info($gigya_uid, $params) {
+function gigya_get_friends_info($gigya_uid, $params = array()) {
   if (empty($gigya_uid)) {
     return FALSE;
   }
@@ -526,19 +510,18 @@ function gigya_set_status($gigya_uid, $status) {
 }
 
 /**
- * Publishes a user action to the newsfeed stream on all the connected providers
- * that support this feature.
+ * Publishes a user action to the newsfeed on all the connected providers.
  *
  * @param mixed $gigya_uid
  *   The Gigya uid.
  * @param array $content
- *   - template :  the template.
- *   - action : the action.
- *   - title : the action title.
- *   - path : the path.
+ *   template :  the template.
+ *   action : the action.
+ *   title : the action title.
+ *   path : the path.
  *
  * @return array
- *   The response from Gigya.
+ *   The response from Gigya or FALSE if there is no uid.
  */
 function gigya_publish_user_action($gigya_uid, $content) {
   if (empty($gigya_uid)) {
@@ -560,7 +543,7 @@ function gigya_publish_user_action($gigya_uid, $content) {
  *   The Gigya uid.
  *
  * @return array
- *   The response from Gigya.
+ *   The response from Gigya or FALSE if there is no uid.
  */
 function gigya_logout_uid($gigya_uid) {
   if (empty($gigya_uid)) {
@@ -577,7 +560,7 @@ function gigya_logout_uid($gigya_uid) {
 /*
  * Handles all calls to the Gigya API.
  */
-require_once(drupal_get_path('module', 'gigya') . '/GSSDK.php');
+require_once drupal_get_path('module', 'gigya') . '/GSSDK.php';
 
 /**
  * Helper function that handles Gigya API calls.
@@ -586,6 +569,9 @@ require_once(drupal_get_path('module', 'gigya') . '/GSSDK.php');
  *   The Gigya API method.
  * @param mixed $params
  *   The method parameters.
+ *
+ * @param bool $return_code
+ *   Should error be returned.
  *
  * @return array
  *   The Gigya response.
@@ -605,10 +591,12 @@ function _gigya_api($method, $params, $return_code = FALSE) {
     }
   }
   $request->setAPIDomain(variable_get('gigya_data_center', 'us1.gigya.com'));
+  ini_set('arg_separator.output', '&');
   $response = $request->send();
+  ini_restore ( 'arg_separator.output' );
   if (variable_get('gigya_debug', FALSE)) {
-    $req_dump = print_r($request, true);
-    $res_dump = print_r($response, true);
+    $req_dump = print_r($request, TRUE);
+    $res_dump = print_r($response, TRUE);
     watchdog('gigya', 'Request sent to gigya <br /><pre>' . $req_dump . '</pre>', NULL, WATCHDOG_DEBUG);
     watchdog('gigya', 'Response from gigya <br /><pre>' . $res_dump . '</pre>', NULL, WATCHDOG_DEBUG);
   }
@@ -619,15 +607,34 @@ function _gigya_api($method, $params, $return_code = FALSE) {
   return _gigya_convert_json_to_array($response->getResponseText());
 }
 
+function _get_gigya_account($params) {
+  $gigya_account = _gigya_api("accounts.getAccountInfo", $params, TRUE);
+  // If we get an error retry
+  if (is_numeric($gigya_account)) {
+    $gigya_account = _gigya_api("accounts.getAccountInfo", $params, TRUE);
+  }
+  return $gigya_account;
+}
+
+function _disable_gigya_account($uid) {
+  $params = array(
+    'UID' => $uid,
+    'isActive' => false
+  );
+  return _gigya_api('account.setAccountInfo', $params);
+}
 /**
  * Internal helper function to deal cleanly with various HTTP response codes.
  *
  * @param mixed $response
  *   the gigya response.
- * @param boolean $user_info
+ * @param bool $user_info
  *   tell if the request has the user info parm.
  *
- * @return boolean
+ * @param bool $return_error
+ *   Should error be returned.
+ *
+ * @return bool
  *   true if we have errors false if not.
  */
 function _gigya_request_failure($response, $user_info = NULL, $return_error = FALSE) {
@@ -648,57 +655,104 @@ function _gigya_request_failure($response, $user_info = NULL, $return_error = FA
       else {
         return ($return_error) ? $code : FALSE;
       }
-      break;
+
     case '403005':
       if (variable_get('gigya_validate', FALSE)) {
         return FALSE;
       }
       else {
-        watchdog('gigya',  $response->getErrorMessage(), NULL, WATCHDOG_WARNING);
+        watchdog('gigya', $response->getErrorMessage(), NULL, WATCHDOG_WARNING);
         return (isset($return_error)) ? $code : TRUE;
       }
-      break;
+
     default:
       return ($return_error) ? $code : TRUE;
-      break;
   }
 }
 
 /**
  * Convert JSON response to a PHP array.
  *
- * @parm $data
+ * @param string $data
  *   The JSON data.
  *
  * @return array
  *   The converted array from the JSON.
  */
 function _gigya_convert_json_to_array($data) {
-  $array =  json_decode($data, TRUE);
+  $array = json_decode($data, TRUE);
   return $array;
 }
 
 
 /**
- * Checks if user exist by querying the database
- * @param (String) $id email or username
+ * Checks if user exist by querying the database.
+ *
+ * @param string $id
+ *   email or username.
+ *
  * @return bool
+ *   True if user exist.
  */
-function gigya_dose_user_exist ($id) {
-  return (bool) db_select('users')->fields('users', array('uid'))->condition('mail', db_like($id), 'LIKE')->range(0, 1)->execute()->fetchField() || (bool) db_select('users')->fields('users', array('uid'))->condition('name', db_like($id), 'LIKE')->range(0, 1)->execute()->fetchField();
+function gigya_dose_user_exist($id) {
+  return (bool) db_select('users')->fields('users', array('uid'))->condition('mail', db_like($id), 'LIKE')->range(0, 1)
+    ->execute()->fetchField() || (bool) db_select('users')->fields('users', array('uid'))
+    ->condition('name', db_like($id), 'LIKE')->range(0, 1)->execute()->fetchField();
 }
 
 /**
- * Checks if this email is the primary user email
- * @param $userInfo the user info from accounts.getUserInfo api call
- * @param $email
+ * Checks if this email is the primary user email.
+ *
+ * @param array $user_info
+ *   The user info from accounts.getUserInfo api call.
+ * @param string $email
+ *   The user email.
+ *
  * @return bool
+ *   True if this email is the primary.
  */
-function gigya_is_raas_primary_user($userInfo, $email) {
-  foreach ($userInfo['loginIDs'] as $email_array) {
-    if(in_array($email, $email_array)){
-      return TRUE;
+function gigya_is_raas_primary_user($user_info, $email) {
+  return in_array($email, $user_info['loginIDs']['emails']);
+}
+
+function gigya_get_raas_fields() {
+  $cache = cache_get('raas_fields', 'cache');
+  if (!$cache) {
+    $gigya_schema = _gigya_api('accounts.getSchema', array(), TRUE);
+    if (!empty($gigya_schema) && is_array($gigya_schema)) {
+      $profile_fields = array_keys($gigya_schema['profileSchema']['fields']);
+      foreach ($profile_fields as $field) {
+        $fld = current(explode('.', $field));
+        $schema['Profile fields']['profile.' . $fld] = $fld;
+      }
+      $data_fields = array_keys($gigya_schema['dataSchema']['fields']);
+      foreach ($data_fields as $field) {
+        $schema['data fields']['data.' . $field] = $field;
+      }
+      cache_set('raas_fields', $schema, 'cache', CACHE_TEMPORARY);
+      return $schema;
+    } else {
+      return array();
+    }
+
+  } else {
+    return $cache->data;
+  }
+}
+
+function gigya_get_nested_value($array, $keys) {
+  while (!empty($keys)) {
+    $key = array_shift($keys);
+    if (array_key_exists($key, $array)) {
+      $array = $array[$key];
+    } elseif(gettype($array) == 'array') {
+      return drupal_json_encode($array);
+    } else {
+      return FALSE;
     }
   }
-  return FALSE;
+  if (gettype($array) == 'array') {
+    return drupal_json_encode($array);
+  }
+  return $array;
 }

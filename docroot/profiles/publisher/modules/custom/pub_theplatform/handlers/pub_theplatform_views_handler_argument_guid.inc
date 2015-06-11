@@ -16,13 +16,13 @@ class pub_theplatform_views_handler_argument_guid extends views_handler_argument
   /**
    * Add this filter to the request.
    */
-  function query($group_by = FALSE) {
+  public function query($group_by = FALSE) {
     $value = $this->value;
     if (!is_array($this->value)) {
       $value = array($this->value);
     }
     foreach ($value as $i => $rid) {
-      $this->query->theP->addArg('byGuid', $rid);
+      $this->query->thePlatform->addArg('byGuid', $rid);
     }
   }
 }

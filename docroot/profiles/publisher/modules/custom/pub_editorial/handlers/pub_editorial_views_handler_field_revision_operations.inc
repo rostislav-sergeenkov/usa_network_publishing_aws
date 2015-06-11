@@ -41,7 +41,7 @@ class pub_editorial_views_handler_field_revision_operations extends pub_editoria
       );
     }
 
-    if($state == 'published') {
+    if ($state == 'published') {
       drupal_add_library('system', 'drupal.ajax');
       ctools_include('modal');
       ctools_include('ajax');

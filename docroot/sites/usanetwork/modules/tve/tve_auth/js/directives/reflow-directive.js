@@ -5,15 +5,15 @@
 	 */
 	.directive('tveReflow', [function() {
 		return {
-        link : function($scope, $elem, $attrs) {
-          var browser = $.browser;
+      link : function($scope, $elem, $attrs) {
+        var browser = $.browser;
 
-          if (!browser || browser.msie) {
-            setTimeout(function() {
-              $elem.css('opacity', $elem.css('opacity'));
-            }, 0);
-          }
+        if (!browser || browser.msie) {
+          setTimeout(function() {
+            $elem.css('opacity', $elem.css('opacity'));
+          }, 0);
         }
+      }
 		};
 	}]);
 })(angular, jQuery);

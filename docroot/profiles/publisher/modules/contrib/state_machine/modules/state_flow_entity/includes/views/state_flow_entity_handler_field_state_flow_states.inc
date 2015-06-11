@@ -2,12 +2,16 @@
 
 /**
  * @file
- * A helper class that is extended by state_flow_entity_handler_field_link and state_flow_entity_handler_field_events_form.
+ * A helper class that is extended by state_flow_entity_handler_field_link and
+ * state_flow_entity_handler_field_events_form.
  */
 
 class state_flow_entity_handler_field_state_flow_states extends views_handler_field {
 
-  function construct() {
+  /**
+   * {@inheritdoc}
+   */
+  public function construct() {
     parent::construct();
     $this->additional_fields['entity_type'] = array('table' => 'state_flow_states', 'field' => 'entity_type');
     $this->additional_fields['entity_id'] = array('table' => 'state_flow_states', 'field' => 'entity_id');
@@ -15,8 +19,12 @@ class state_flow_entity_handler_field_state_flow_states extends views_handler_fi
     $this->additional_fields['active'] = array('table' => 'state_flow_states', 'field' => 'active');
   }
 
-  function option_definition() {
-    // @todo, do we need the parent options? A lot of the variables don't apply at all.
+  /**
+   * {@inheritdoc}
+   */
+  public function option_definition() {
+    // @todo, do we need the parent options? A lot of the variables don't apply
+    // at all.
     $options = parent::option_definition();
     $options['active_revision_handling'] = array('default' => 'both');
 
@@ -25,16 +33,23 @@ class state_flow_entity_handler_field_state_flow_states extends views_handler_fi
     return $options;
   }
 
-  function init(&$view, &$options) {
-    // An older version of this handler used a boolean option show_only_for_active_revision_ids
-    // which corresponds to the 'active' setting in 'active_revision_handling'
+  /**
+   * {@inheritdoc}
+   */
+  public function init(&$view, &$options) {
+    // An older version of this handler used a boolean option
+    // show_only_for_active_revision_ids which corresponds to the 'active'
+    // setting in 'active_revision_handling'.
     if (!empty($options['show_only_for_active_revision_ids']) && empty($options['active_revision_handling'])) {
       $options['active_revision_handling'] = 'active';
     }
     parent::init($view, $options);
   }
 
-  function options_form(&$form, &$form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
 
     $options = $this->option_definition();

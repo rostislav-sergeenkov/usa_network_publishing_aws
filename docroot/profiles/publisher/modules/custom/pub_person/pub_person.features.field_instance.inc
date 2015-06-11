@@ -488,6 +488,7 @@ function pub_person_field_default_field_instances() {
     'label' => 'External Links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,

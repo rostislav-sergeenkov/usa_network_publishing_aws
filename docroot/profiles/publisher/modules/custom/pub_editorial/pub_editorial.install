@@ -6,10 +6,11 @@
  */
 
 /**
- * Implements hook install
+ * Implements hook install.
  */
 function pub_editorial_install() {
   pub_editorial_update_7001();
+  pub_editorial_markdown_text_format();
 }
 
 /**
@@ -26,4 +27,21 @@ function pub_editorial_update_7002() {
   if (!module_exists('prepopulate')) {
     module_enable(array('prepopulate'));
   }
+}
+
+/**
+ * Update the Publisher profile schema to be 0, not -1.
+ */
+function pub_editorial_update_7003() {
+  if (!module_exists('publisher')) {
+    include_once DRUPAL_ROOT . "/profiles/publisher/publisher.install";
+  }
+  publisher_update_7002();
+}
+
+/**
+ * Update existing installs to have the Markdown text format.
+ */
+function pub_editorial_update_7004() {
+  pub_editorial_markdown_text_format();
 }

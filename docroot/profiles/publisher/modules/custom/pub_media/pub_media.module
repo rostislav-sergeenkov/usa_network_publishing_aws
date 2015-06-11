@@ -15,7 +15,7 @@ function pub_media_menu() {
     'title arguments' => array(1),
     'page callback' => 'pub_media_gallery_display_item_by_id',
     'page arguments' => array(1, 3),
-    'access_callback' => 'node_access',
+    'access callback' => 'node_access',
     'access arguments' => array('view', 1),
     'type' => MENU_NORMAL_ITEM,
   );
@@ -24,7 +24,7 @@ function pub_media_menu() {
     'title arguments' => array(1),
     'page callback' => 'pub_media_gallery_display_item_by_index',
     'page arguments' => array(1, 3),
-    'access_callback' => 'node_access',
+    'access callback' => 'node_access',
     'access arguments' => array('view', 1),
     'type' => MENU_NORMAL_ITEM,
   );
@@ -137,7 +137,7 @@ function pub_media_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 
-  // Adding the ability to apply the original metadata in case the author 
+  // Adding the ability to apply the original metadata in case the author
   // decides they want to revert back to it.
   if (module_exists('simple_exif')) {
     if (($form_id === 'file_entity_add_upload' && isset($form['#entity']) && strstr($form['#entity']->type, "image")) ||
@@ -148,7 +148,7 @@ function pub_media_form_alter(&$form, &$form_state, $form_id) {
         '#weight' => 50,
         '#value' => t('Apply Embedded Metadata'),
         '#ajax' => array(
-          'callback' => 'simple_exif_update_form_values',
+          'callback' => 'simple_exif_reapply_exif_metadata',
           'wrapper' => 'edit-filename',
         ),
         '#attached' => array(
@@ -170,15 +170,17 @@ function pub_media_form_alter(&$form, &$form_state, $form_id) {
   // Display the URLs on the Media Gallery page, though not on "adds."  The reason:
   // we don't have the necessary node ID on "add."
   $action = $form['#action'];
-  if ($form_id == 'media_gallery_node_form' && strpos($action, 'add') === FALSE) {
-    $max_delta = $form['field_media_items'][LANGUAGE_NONE]['#max_delta'];
+  if ($form_id == 'media_gallery_node_form' && strpos($action, 'add') === FALSE && isset($form['field_media_items'][LANGUAGE_NONE]['#file_upload_delta'])) {
+    $max_delta = $form['field_media_items'][LANGUAGE_NONE]['#file_upload_delta'];
 
-    for ($index = 0; $index <= $max_delta; $index++) {
-      $fid = $form['field_media_items'][LANGUAGE_NONE][$index]['#default_value']['fid'];
-      $item_url = _pub_media_generate_gallery_item_url($form['#node'], $fid);
+    for ($index = 0; $index < $max_delta; $index++) {
+      if (isset($form['field_media_items'][LANGUAGE_NONE][$index]['#default_value']['fid'])) {
+        $fid = $form['field_media_items'][LANGUAGE_NONE][$index]['#default_value']['fid'];
+        $item_url = _pub_media_generate_gallery_item_url($form['#node'], $fid);
 
-      $form['field_media_items'][LANGUAGE_NONE][$index]['#item_url'] = $item_url;
-      $form['field_media_items'][LANGUAGE_NONE][$index]['#pre_render'][] = 'pub_media_pre_render_media_item';
+        $form['field_media_items'][LANGUAGE_NONE][$index]['#item_url'] = $item_url;
+        $form['field_media_items'][LANGUAGE_NONE][$index]['#pre_render'][] = 'pub_media_pre_render_media_item';
+      }
     }
   }
 
@@ -207,6 +209,18 @@ function pub_media_pre_render_media_item($element) {
     '#markup' => "<a href=\"item/$fid\">$base_url/$item_url</a>",
     '#weight' => 50,
   );
+
+  // If we already have a file, we don't want to show the browse and attach
+  // controls.
+  if (!empty($element['#value']['fid'])) {
+    $element['upload']['#access'] = FALSE;
+    $element['browse_button']['#access'] = FALSE;
+    $element['attach_button']['#access'] = FALSE;
+  }
+  // If we don't already have a file, there is nothing to remove.
+  else {
+    $element['remove_button']['#access'] = FALSE;
+  }
 
   return $element;
 }

@@ -25,35 +25,10 @@
 }
 
 .node-type-usa-tve-video,
-.node-type-usa-video,
-.page-videos {
+.node-type-usa-video {
   #block-system-main {
     border-bottom: 1px solid $gray-dark;
     padding-bottom: 16px;
-  }
-}
-
-.block-usanetwork-video,
-.block-usanetwork-mpx-video {
-  @extend %grid-small-wide-two-three-four;
-  margin: 0 auto;
-  .ajax-content {
-    position: relative;
-    &.ajax-loading {
-      > div {
-        opacity: 0.5;
-      }
-      .ajax-loader {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        opacity: 1;
-        background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
-      }
-    }
   }
 }
 
@@ -95,7 +70,7 @@
   .file.view-mode-full {
     .meta-head {
       h1.show-name {
-        font-family: "Proxima N W01 Smbd";
+        font-family: $avalon-medium;
         font-size: 30px;
       }
     }
@@ -458,6 +433,7 @@
         display: none;
       }
     }
+
     &.open {
       ul.categories {
         z-index: 99;
@@ -783,11 +759,12 @@
       }
     }
     .locked-msg {
-      position: absolute;
-      top: 40px;
       left: 5px;
       margin: 0 auto;
+      position: absolute;
       text-align: center;
+      text-shadow: 1px 1px 5px black;
+      top: 40px;
       z-index: 10;
       .first-line {
         display:block;
@@ -1638,7 +1615,7 @@
   &.loginModal {
     .richContent {
       h1 {
-        font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+        font-family: $avalon-medium;
         font-size: 30px;
         letter-spacing: 1px;
         margin: 0;
@@ -1646,7 +1623,7 @@
         padding: 0;
       }
       h2 {
-        font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+        font-family: $avalon-medium;
         font-size: 22px;
         color: #4f4f4f;
         letter-spacing: 0.5px;
@@ -1721,7 +1698,7 @@
       .buttonBar {
         margin-top:0px !important;
         button {
-          font-family: Proxima N W01 Bold,Helvetica,Arial,sans-serif;
+          font-family: $avalon-medium;
           font-size: 18px !important;
           font-weight: normal !important;
         }

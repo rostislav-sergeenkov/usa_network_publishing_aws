@@ -88,6 +88,32 @@
   cursor: pointer;
 }
 
+/* Next button */
+#microsite div.scroll {
+  position: absolute;
+  bottom: 5px;
+  left: 100%;
+  margin: 0 0 0 calc(-50% - 24px);
+  width: 48px;
+  cursor: pointer;
+  padding: 0;
+}
+#microsite .scroll div {
+  text-align: center;
+  line-height: 18px;
+  width: 48px;
+  font-size: 14px;
+  padding-top: 3px;
+  background-color: #fff;
+  color: #000;
+}
+#microsite .scroll img {
+  width: 14px;
+  height: 25px;
+  margin: 0 auto;
+}
+
+
 /* ************** BEGIN MEDIA QUERIES ************* */
 @media (max-width: 900px) {
   #gracelandcatchup-home {

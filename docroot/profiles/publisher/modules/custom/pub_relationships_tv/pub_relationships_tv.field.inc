@@ -2,7 +2,6 @@
 
 /**
  * @file
- *
  * Field settings for Pub TV Relationships.
  */
 
@@ -173,7 +172,6 @@ function pub_relationships_tv_return_episodes($selected_season) {
   $query->fieldCondition('field_season', 'target_id', $selected_season);
   $result = $query->execute();
 
-
   // Add each episode that belongs to the user-selected show to the options
   // array.
   if (isset($result['field_collection_item'])) {
@@ -315,8 +313,10 @@ function pub_relationships_tv_field_delete_instance($instance) {
   // sure to delete our variable if it happens to be set.
   if (isset($instance['field_name']) && ($instance['field_name'] == TV_FIELD_NAME)) {
     // If we're the one deleted it then we don't need to do anything.
-    // This is easy to tell mainly because we only pass a certain number of items to delete_instance.
-    // Field config passes the entire instance. So we're going to check for field_id.
+    // This is easy to tell mainly because we only pass a certain number of
+    // items to delete_instance.
+    // Field config passes the entire instance. So we're going to check for
+    // field_id.
     if (!empty($instance['field_id']) && !empty($instance['bundle'])) {
       $form_key = 'pub_relationships_tv_content_type_' . $instance['bundle'];
       variable_set($form_key, 0);
@@ -388,7 +388,6 @@ function pub_relationships_tv_create_field_if_empty() {
     // We need to clear the cache again.
   }
 
-
   // We need to create a show instance.
   $episode_collection_instance = array(
     'field_name' => 'field_episode',
@@ -400,7 +399,7 @@ function pub_relationships_tv_create_field_if_empty() {
     ),
   );
 
-  $instance =  field_info_instance('field_collection_item', 'field_episode', TV_FIELD_NAME);
+  $instance = field_info_instance('field_collection_item', 'field_episode', TV_FIELD_NAME);
   if (empty($instance)) {
     field_create_instance($episode_collection_instance);
 

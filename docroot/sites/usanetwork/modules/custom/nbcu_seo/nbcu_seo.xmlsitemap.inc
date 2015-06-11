@@ -463,6 +463,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
   $query->leftJoin('cache_xmlsitemap_link', 'c', 'c.cid = CONCAT(\'nbcu_seo_xmlsitemap:' . $type . ':\', CONCAT_WS(\'_\', x.id, x.type))');
   $query->condition('xlt.link_type', $type, '=');
   $query->isNull('cid');
+  $query->orderBy('x.id', 'DESC');
   $query->orderBy('x.language', 'DESC');
   $query->orderBy('x.loc');
   $query->addTag('nbcu_seo_xmlsitemap_generate');

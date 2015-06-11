@@ -38,7 +38,7 @@
 
       <?php if (!empty($section['is_last'])): // add footer ?>
         <div id="offerpop" class="section">
-          <iframe id="offerpop-iframe" src="http://offerpop.com/commerce/gallery/12784" width="100%" frameborder="0" scrolling="yes" seamless="seamless"></iframe>
+          <iframe id="offerpop-iframe" src="http://offerpop.com/commerce/gallery/12784" width="100%" frameborder="0" scrolling="no" seamless="seamless"></iframe>
         </div>
 
         <footer id="footer-microsite" role="contentinfo" class="clearfix">
@@ -56,64 +56,3 @@
     <?php print $facebook_tracking_html; ?>
   <?php endif; ?>
 </div>
-
-
-<script>
-function resizeResponse() {
-  var wwidth = $(window).width();
-
-  if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && wwidth < 748) {
-    $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
-  }
-  else {
-    $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
-  }
-
-  if ($('#videos').length > 0) Drupal.behaviors.ms_videos.setVideoHeight();
-
-  initIframeResize();
-}
-
-function initIframeResize(delay) {
-  delay = delay || 700;
-  setTimeout(function() {
-    var ifrm = document.getElementById('offerpop-iframe'),
-        hostname = window.location.hostname;
-    ifrm.contentWindow.postMessage(hostname, 'http://offerpop.com');
-usa_debug('========== initIframeResize(), hostname: ' + hostname);
-  }, delay);
-}
-
-function setIframeHeight(ifrmHeight) {
-usa_debug('============== parent.setIframeHeight(' + ifrmHeight + ')');
-  var ifrm = document.getElementById('offerpop-iframe');
-  ifrm.style.visibility = 'hidden';
-  ifrm.style.height = ifrmHeight;
-  ifrm.style.visibility = 'visible';
-}
-
-// Create IE + others compatible event handler
-var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-var eventer = window[eventMethod];
-var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-
-// Listen to message from child window
-eventer(messageEvent,function(e) {
-	if (e.origin == 'http://offerpop.com') {
-    console.log('parent received message!:  ' + e.data);
-    setIframeHeight(e.data);
-  }
-}, false);
-
-// RE-SIZING
-$(document).ready(function(){
-  $('#offerpop-iframe').on('load', function(){ initIframeResize(4000); });
-});
-
-var resizeTimer;
-$(window).bind('resize', function(){
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(resizeResponse, 800);
-});
-window.addEventListener('orientationchange', resizeResponse);
-</script>

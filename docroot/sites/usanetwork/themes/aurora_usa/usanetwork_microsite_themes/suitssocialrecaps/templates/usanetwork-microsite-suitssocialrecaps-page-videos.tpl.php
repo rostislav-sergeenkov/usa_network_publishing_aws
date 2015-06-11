@@ -19,10 +19,6 @@
  */
 ?>
 
-<!--
-<div class="ad_728x90 ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
--->
-
 <div class="header"></div>
 
 <?php if (!empty($section_title)): ?>

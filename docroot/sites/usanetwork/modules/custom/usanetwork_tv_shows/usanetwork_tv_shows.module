@@ -82,7 +82,7 @@ function usanetwork_tv_shows_menu() {
   );
 
   $items['shows'] = array(
-    'title' => t('Usanetwork | All Shows'),
+    'title' => t('Shows'),
     'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,

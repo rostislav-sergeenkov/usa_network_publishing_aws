@@ -191,6 +191,12 @@
               offset_percent_X = Math.round(parseInt(offset_px_X) / imgWidth * 100);
             }
 
+            if(offset_percent_X < 0 && offset_percent_X < -100) {
+              offset_percent_X = 0;
+            } else if(offset_percent_X > 0) {
+              offset_percent_X = 0;
+            }
+
             elementsMeta.aspot_offset_percent = {
               dataRel: 'aspot_offset_percent',
               shiftPercent: offset_percent_X
@@ -357,10 +363,19 @@
         });
 
         $('#field-aspot-preview-' + prefix + 'bg-offset-add-more-wrapper input').bind('change', function () {
-          usanetwork_aspot_giui_fill_draggable_items_input();
+
+          var bg_offset = $(this).val();
+
+          if(bg_offset < 0 && bg_offset < -100) {
+            $(this).val(-2680);
+          } else if(bg_offset > 0) {
+            $(this).val(0);
+          }
+
           backgroundPreviewingBlock.css({
-            'background-position': $(this).val() + 'px 0px'
+            'background-position': $(this).val()+ 'px 0px'
           });
+          usanetwork_aspot_giui_fill_draggable_items_input();
         });
       }
     },

@@ -1,0 +1,351 @@
+/* GENERAL */
+html {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #000;
+  background-color: #FFF;
+}
+body {
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  background-color: #000 !important;
+}
+html,
+body {
+  font-size: 16px !important;
+  line-height: 18px !important;
+}
+#microsite ul {
+  margin: 0;
+  padding: 0;
+}
+#microsite li {
+  list-style-type: none;
+}
+#microsite img {
+  width: 100%;
+  height: auto;
+}
+div {
+  margin: 0;
+  padding: 0;
+}
+img.tracking {
+  display: none;
+}
+body > iframe {
+  display: none;
+}
+
+/* ANIMATIONS */
+/* FADE-IN ANIMATION */
+.fadein {
+  /* CSS needed for animation
+  ---------------------------------------------------- */
+  opacity:0;
+  -webkit-animation:fadein ease 1;
+  -moz-animation:fadein ease 1;
+  -o-animation:fadein ease 1;
+  animation:fadein ease 1;
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  -o-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+}
+.ie9 .fadein {
+  opacity: 1;
+}
+
+/* Animation Times - Time for image to fade in
+---------------------------------------------------- */
+.fadein-1s {
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  -o-animation-duration:1s;
+  animation-duration:1s;
+}
+.fadein-3s {
+  -webkit-animation-duration:3s;
+  -moz-animation-duration:3s;
+  -o-animation-duration:3s;
+  animation-duration:3s;
+}
+.fadein-5s {
+  -webkit-animation-duration:5s;
+  -moz-animation-duration:5s;
+  -o-animation-duration:5s;
+  animation-duration:5s;
+}
+/* Animation Delay - Time for image to be delayed
+---------------------------------------------------- */
+.fadein-delay-1s {
+  -webkit-animation-delay:1s;
+  -moz-animation-delay:1s;
+  -o-animation-delay:1s;
+  animation-delay:1s;
+}
+.fadein-delay-3s {
+  -webkit-animation-delay:3s;
+  -moz-animation-delay:3s;
+  -o-animation-delay:3s;
+  animation-delay:3s;
+}
+.fadein-delay-5s {
+  -webkit-animation-delay:5s;
+  -moz-animation-delay:5s;
+  -o-animation-delay:5s;
+  animation-delay:5s;
+}
+/* Key Frames
+---------------------------------------------------- */
+@-webkit-keyframes fadein { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadein { from { opacity:0; } to { opacity:1; } }
+@-o-keyframes fadein { from { opacity:0; } to { opacity:1; } }
+@keyframes fadein { from { opacity:0; } to { opacity:1; } }
+
+
+/* SCROLLBARS */
+/* IE scrollbars */
+body{
+  scrollbar-base-color: #000;
+  scrollbar-face-color: #333;
+  scrollbar-3dlight-color: #333;
+  scrollbar-highlight-color: #333;
+  scrollbar-track-color: #000;
+  scrollbar-arrow-color: #000;
+  scrollbar-shadow-color: #222;
+  scrollbar-dark-shadow-color: #000;
+}
+/* Webkit scrollbars - Safari, Chrome */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #000;
+  border-left: 0 solid transparent;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #333;
+  background: rgba(255,255,255,0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255,255,255,0.8);
+}
+
+/* MAIN STRUCTURE */
+.page-node-microsite .usa-wrap {
+  background-color: #FFF;
+  margin: 0;
+  padding: 0;
+}
+.page-node-microsite #main {
+  padding: 0;
+}
+#microsite {
+  background-image: url("../images/suits_inspiration_critic_bg.jpg");
+  background-position: center top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #FFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+#microsite a {
+  outline: none;
+}
+#microsite .full-pane {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+
+
+/* SECTIONS CONTAINERS */
+#videos .header {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding-top: 12.784%;
+  background-image: url("../images/suits_socialrecap_header.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  margin-bottom: 20px;
+}
+
+.section-description {
+  text-align: left;
+  color: #000;
+  font-size: 1.125em;
+  margin: 0 auto;
+}
+.section-description p {
+  margin: 0;
+}
+section h2 {
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  color: #56000A;
+  font-size: 2.75em;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 90px 0 25px;
+  clear: both;
+}
+#microsite #sections {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+.section {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 15px 0 60px;
+  width: 96%;
+  max-width: 945px;
+  margin: 0 auto;
+}
+#home.section {
+  background-color: #000;
+  padding: 0 0 60px;
+}
+#site-nav.section {
+  padding: 0;
+}
+#characters.section {
+  padding-bottom: 0;
+}
+#characters section {
+  padding-bottom: 30px;
+}
+
+/* ADS */
+#microsite .ad-leaderboard {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 728px;
+  height: 90px;
+  margin: 40px auto 20px;
+  overflow: visible;
+}
+#ad_300x250_1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 250px;
+  width: 300px;
+  margin-bottom: 30px;
+  float: right;
+}
+
+/* FOOTER */
+#microsite footer {
+  border-top: 1px solid #414141;
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 0 25px 85px;
+  z-index: 50;
+  color: #717274;
+}
+#microsite footer li.leaf {
+  float: left;
+  padding-right: 20px;
+  list-style-type: none;
+  list-style-image: none;
+}
+#microsite footer li a {
+  color: #717274;
+  display: inline-block;
+  line-height: 2.1em;
+  padding: 10px 0 5px;
+  display: block;
+}
+#microsite footer li a:visited,
+#microsite footer li a:focus {
+  color: #717274;
+}
+#microsite footer li a:hover,
+#microsite footer li a:active {
+  color: #a3a3a3;
+}
+#microsite #_bapw-icon {
+  width: 14px;
+  height: 18px;
+}
+#microsite footer #footer-message {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 12px;
+  font-size: 10px;
+  color: #717274;
+  line-height: 18px;
+  margin-top: 0;
+  clear: left;
+}
+
+/* BEGIN MEDIA QUERIES */
+@media (min-width: 1740px) {
+  #site-nav #site-nav-center {
+    margin-left: calc(-50% - 700px);
+    max-width: 1400px;
+  }
+  #site-nav #site-nav-top a {
+    margin-top: 1%;
+  }
+}
+
+@media (max-width: 990px) {
+  #microsite footer {
+    padding-bottom: 48px;
+  }
+  #microsite footer li.leaf {
+    float: none;
+  }
+  #microsite footer li a {
+    line-height: 1em;
+    padding: 12px 0 0;
+  }
+  #microsite footer #footer-message {
+    margin-top: 20px;
+    line-height: 14px;
+  }
+}
+
+@media (max-width: 920px) {
+  html,
+  body {
+    font-size: 14px !important;
+    line-height: 16px !important;
+  }
+}
+
+@media (max-width: 670px) {
+  html,
+  body {
+    font-size: 12px !important;
+    line-height: 14px !important;
+  }
+  #site-nav-left {
+    width: 38px;
+    height: 58.5px;
+  }
+}

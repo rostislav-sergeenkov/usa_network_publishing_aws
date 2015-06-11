@@ -75,6 +75,7 @@ dependencies[] = wysiwyg
 ; Custom Modules
 dependencies[] = pub_ads
 dependencies[] = pub_analytics
+dependencies[] = pub_chosen
 dependencies[] = pub_editorial
 dependencies[] = pub_hide_submit
 dependencies[] = pub_media

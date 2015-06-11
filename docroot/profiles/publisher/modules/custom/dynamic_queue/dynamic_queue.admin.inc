@@ -147,17 +147,17 @@ class DynamicQueueEntityUIController extends EntityDefaultUIController {
  *
  * @see dynamic_queue_form_submit()
  */
-function dynamic_queue_form($form, &$form_state, $DynamicQueueEntity, $op) {
+function dynamic_queue_form($form, &$form_state, $dynamic_queue_entity, $op) {
 
   $form['title'] = array(
     '#type' => 'textfield',
     '#title' => t('Title'),
     '#required' => TRUE,
-    '#default_value' => $DynamicQueueEntity->title,
+    '#default_value' => $dynamic_queue_entity->title,
     '#weight' => -10,
   );
 
-  $DynamicQueueType = dynamic_queue_type_get_types($DynamicQueueEntity->type);
+  $dynamic_queue_type = dynamic_queue_type_get_types($dynamic_queue_entity->type);
 
   $form['settings'] = array(
     '#type' => 'fieldset',
@@ -168,8 +168,9 @@ function dynamic_queue_form($form, &$form_state, $DynamicQueueEntity, $op) {
   $form['settings']['target_bundles'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Target bundles'),
-    '#options' => $DynamicQueueType->get_allowed_bundle_options(),
-    '#default_value' => isset($DynamicQueueEntity->settings['target_bundles']) ? $DynamicQueueEntity->settings['target_bundles'] : array(),
+    '#description' => t('Select one or more content type(s).'),
+    '#options' => $dynamic_queue_type->get_allowed_bundle_options(),
+    '#default_value' => isset($dynamic_queue_entity->settings['target_bundles']) ? $dynamic_queue_entity->settings['target_bundles'] : array(),
     '#required' => TRUE,
   );
 
@@ -184,15 +185,16 @@ function dynamic_queue_form($form, &$form_state, $DynamicQueueEntity, $op) {
       $sort_options[$plugin['name']] = $class->getName();
     }
     else {
-      $class->alterForm($form['settings'], $DynamicQueueEntity->settings, $DynamicQueueEntity, $op);
+      $class->alterForm($form['settings'], $dynamic_queue_entity->settings, $dynamic_queue_entity, $op, $form_state);
     }
   }
   if (!empty($sort_options)) {
     $form['settings']['sort'] = array(
       '#type' => 'radios',
       '#title' => t('Sort by'),
+      '#description' => t('Controls the display order of search results.'),
       '#options' => $sort_options,
-      '#default_value' => isset($DynamicQueueEntity->settings['sort']) ? $DynamicQueueEntity->settings['sort'] : NULL,
+      '#default_value' => isset($dynamic_queue_entity->settings['sort']) ? $dynamic_queue_entity->settings['sort'] : NULL,
       '#required' => TRUE,
     );
   }
@@ -200,19 +202,19 @@ function dynamic_queue_form($form, &$form_state, $DynamicQueueEntity, $op) {
   $form['settings']['pager'] = array(
     '#type' => 'numberfield',
     '#title' => t('Items per page'),
-    '#default_value' => isset($DynamicQueueEntity->settings['pager']) ? $DynamicQueueEntity->settings['pager'] : '10',
+    '#description' => t('Limit the number of items per page.'),
+    '#default_value' => isset($dynamic_queue_entity->settings['pager']) ? $dynamic_queue_entity->settings['pager'] : '10',
     '#min' => 1,
     '#max' => 20,
-    '#description' => t('Limit the number of items per page.'),
   );
 
   $form['settings']['limit'] = array(
     '#type' => 'numberfield',
     '#title' => t('Limit total'),
-    '#default_value' => isset($DynamicQueueEntity->settings['limit']) ? $DynamicQueueEntity->settings['limit'] : '10',
+    '#description' => t('Limit the total number of items in the queue. Set 0 for no limit.'),
+    '#default_value' => isset($dynamic_queue_entity->settings['limit']) ? $dynamic_queue_entity->settings['limit'] : '10',
     '#min' => 0,
     '#max' => 20,
-    '#description' => t('Limit the total number of items in the queue. Set 0 for no limit.'),
   );
 
   // Publishing options.
@@ -229,17 +231,17 @@ function dynamic_queue_form($form, &$form_state, $DynamicQueueEntity, $op) {
   $form['options']['publishing']['status'] = array(
     '#type' => 'checkbox',
     '#title' => t('Published'),
-    '#default_value' => $DynamicQueueEntity->status,
+    '#default_value' => $dynamic_queue_entity->status,
   );
 
   $form['options']['publishing']['revision']['is_new_revision'] = array(
     '#type' => 'checkbox',
     '#title' => t('Create new revision'),
-    '#default_value' => $DynamicQueueEntity->default_revision,
+    '#default_value' => $dynamic_queue_entity->default_revision,
     '#id' => 'edit-revision',
   );
 
-  if ($DynamicQueueEntity->is_new === TRUE) {
+  if ($dynamic_queue_entity->is_new === TRUE) {
     // On new Entities, hide the checkbox and always make a new revision.
     $form['options']['publishing']['revision']['#access'] = FALSE;
     $form['default_revision'] = array(
@@ -251,7 +253,7 @@ function dynamic_queue_form($form, &$form_state, $DynamicQueueEntity, $op) {
     $form['options']['publishing']['revision']['default_revision'] = array(
       '#type' => 'checkbox',
       '#title' => t('Set Revision as default'),
-      '#default_value' => $DynamicQueueEntity->isDefaultRevision(),
+      '#default_value' => $dynamic_queue_entity->isDefaultRevision(),
       '#states' => array(
         // Hide if the option above is disabled, to avoid potential data loss.
         'invisible' => array(
@@ -261,7 +263,7 @@ function dynamic_queue_form($form, &$form_state, $DynamicQueueEntity, $op) {
     );
   }
 
-  field_attach_form('dynamic_queue', $DynamicQueueEntity, $form, $form_state);
+  field_attach_form('dynamic_queue', $dynamic_queue_entity, $form, $form_state);
 
   $form['actions'] = array(
     '#type' => 'actions',
@@ -283,16 +285,16 @@ function dynamic_queue_form($form, &$form_state, $DynamicQueueEntity, $op) {
 function dynamic_queue_form_submit($form, &$form_state) {
 
   // Build the dynamic queue from submitted values.
-  $DynamicQueueEntity = $form_state['dynamic_queue'];
-  $DynamicQueueType = dynamic_queue_type_get_types($DynamicQueueEntity->type);
-  $form_state['values']['settings']['entity_type'] = $DynamicQueueType->entity_type;
-  entity_form_submit_build_entity('dynamic_queue', $DynamicQueueEntity, $form, $form_state);
+  $dynamic_queue_entity = $form_state['dynamic_queue'];
+  $dynamic_queue_type = dynamic_queue_type_get_types($dynamic_queue_entity->type);
+  $form_state['values']['settings']['entity_type'] = $dynamic_queue_type->entity_type;
+  entity_form_submit_build_entity('dynamic_queue', $dynamic_queue_entity, $form, $form_state);
 
   // Save the dynamic queue.
-  $DynamicQueueEntity->save();
+  $dynamic_queue_entity->save();
 
   // Redirect user back to administration page.
-  $form_state['redirect'] = 'dynamic-queue/' . $DynamicQueueEntity->dqid;
+  $form_state['redirect'] = 'dynamic-queue/' . $dynamic_queue_entity->dqid;
 }
 
 
@@ -461,7 +463,7 @@ function dynamic_queue_render_page($dynamic_queue_entity, $revision_id = NULL) {
  * View a Dynamic Queue entity.
  *
  * @param DynamicQueueEntity $dynamic_queue_entity
- *   The Dyamic Queue Entity being viewed.
+ *   The Dynamic Queue Entity being viewed.
  * @param int $revision_id
  *   The Revision ID of the Dynamic Queue being viewed.
  *
@@ -505,7 +507,7 @@ function dynamic_queue_revision_redirect($dynamic_queue) {
  * @return array|mixed
  *   The revision form.
  */
-function dynamic_queue_revision_edit($DynamicQueueEntity, $revision_id) {
+function dynamic_queue_revision_edit($dynamic_queue_entity, $revision_id) {
   $entity = entity_revision_load('dynamic_queue', $revision_id);
   return entity_ui_get_form('dynamic_queue', $entity, 'edit');
 }

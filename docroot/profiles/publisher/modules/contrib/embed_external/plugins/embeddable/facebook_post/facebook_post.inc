@@ -55,7 +55,7 @@ function embed_external_facebook_post_render($html_dom, $attributes) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=242394805806687&version=v2.0";
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.2";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 EOL;
@@ -72,4 +72,18 @@ EOL;
   $container_element->appendChild($post_embed);
 
   return $container_element;
+}
+
+
+/**
+ * Form validation handler for embed_external_facebook_post_configure().
+ * @see embed_external_facebook_post_configure().
+ */
+function embed_external_facebook_post_configure_validate(&$form_state, $form) {
+  $facebook_post = trim($form_state['values']['facebook_post_post_url']);
+  $pattern = '/^(https?:\/\/)?((w{3}\.)?)facebook.com\/(([a-z\d.]{5,})?)/';
+  $message = t('@facebook_post is not a valid facebook post.', array('@facebook_post' => $facebook_post));
+  if (!preg_match($pattern, $facebook_post, $matches)) {
+    form_set_error('facebook_post_post_url', $message);
+  }
 }

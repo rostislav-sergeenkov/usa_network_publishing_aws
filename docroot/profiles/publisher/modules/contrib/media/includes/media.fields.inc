@@ -116,6 +116,7 @@ function media_field_widget_form(&$form, &$form_state, $field, $instance, $langc
         'max_filesize' => isset($field_settings['max_filesize']) ? $field_settings['max_filesize'] : 0,
         'uri_scheme' => !empty($field['settings']['uri_scheme']) ? $field['settings']['uri_scheme'] : file_default_scheme(),
         'multiselect' => $field['cardinality'] == FIELD_CARDINALITY_UNLIMITED,
+        'field' => $field['field_name'],
       ),
     ),
     // Allows this field to return an array instead of a single value.

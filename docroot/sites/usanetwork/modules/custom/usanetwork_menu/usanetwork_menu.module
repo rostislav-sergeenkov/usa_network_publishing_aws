@@ -1020,7 +1020,7 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
     }
     if (!empty($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
-      $sharebar['#title'] = t('Share this gallery');
+      $sharebar['#title'] = t('Share');
     }
     $theme_variables = array(
       'main_url' => url('<front>'),
@@ -1578,6 +1578,7 @@ function usanetwork_menu_shows_landing_main_form_submit($form, &$form_state) {
     $header_shows[$i] = !empty($form_state['values']['usa_show_' . $i]) ? $form_state['values']['usa_show_' . $i] : '';
   }
   variable_set('shows_landing_shows', $header_shows);
+  drupal_set_message(t('All shows page has been successfully updated'));
 }
 
 /**

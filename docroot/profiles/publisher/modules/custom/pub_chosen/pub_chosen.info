@@ -1,0 +1,11 @@
+name = Pub Chosen
+description = Configuration of Chosen settings.
+core = 7.x
+package = Publisher
+dependencies[] = chosen
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = chosen_jquery_selector
+features[variable][] = chosen_minimum_multiple
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][strongarm] = strongarm

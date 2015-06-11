@@ -133,6 +133,8 @@
       var index = $('.gallery-wrapper .bx-custom-pager .bx-pager-link.active').data('slide-index');
 
       $('#bxslider-gallery .slide').eq(index).addClass('active');
+      $('#bxslider-gallery').removeClass('on-load');
+
     }
 
     var options = {

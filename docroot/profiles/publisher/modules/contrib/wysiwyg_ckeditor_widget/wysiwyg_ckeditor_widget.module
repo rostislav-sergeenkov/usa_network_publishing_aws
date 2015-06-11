@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Provides WYSIWYG module integration for the ckeditor widget plugin.
+ */
+
+/**
+ * Implements hook_wysiwyg_plugin().
+ */
+function wysiwyg_ckeditor_widget_wysiwyg_plugin($editor, $version) {
+  if ($editor === 'ckeditor') {
+    return array(
+      'widget' => array(
+        'url' => 'http://ckeditor.com/addon/widget',
+        'buttons' => array('widget' => t('Widget')),
+        'load' => TRUE,
+        'internal' => TRUE,
+      ),
+    );
+  }
+}

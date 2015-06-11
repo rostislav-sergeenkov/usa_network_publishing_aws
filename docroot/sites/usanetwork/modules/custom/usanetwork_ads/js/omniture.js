@@ -192,7 +192,7 @@
         s.eVar55 = name;
       }
 
-      if ($self.attr('href') != '#') {
+      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0 ) {
         s.bcf = function () {
           setTimeout(function () {
             window.location = $self.attr('href');
@@ -218,7 +218,7 @@
         if (body.hasClass('page-home')) {
           page_name = 'Home Page ';
           if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
-            name = page_name + 'Shows Carousel';
+            name = page_name + 'Show Card Carousel';
           }
           if ($self.closest('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').length > 0) {
             name = page_name + 'Full Latest Carousel';

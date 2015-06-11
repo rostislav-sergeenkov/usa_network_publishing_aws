@@ -14,8 +14,6 @@ function tve_mvpd_uninstall() {
   variable_del('tve_mvpd_configured_providers');
   variable_del('tve_mvpd_default_settings');
   variable_del('tve_mvpd_service');
-  variable_del('tve_mvpd_brand_id');
-  variable_del('tve_mvpd_instance');
   variable_del('tve_mvpd_error_message');
   variable_del('tve_mvpd_service_url');
 }
@@ -67,4 +65,12 @@ function tve_mvpd_update_7100($phase) {
     variable_set('tve_mvpd_configured_providers', $old_variable);
     variable_del('tve_mvpd_providers');
   }
+}
+
+/**
+ * Removes unused variables.
+ */
+function tve_mvpd_update_7101() {
+  variable_del('tve_mvpd_brand_id');
+  variable_del('tve_mvpd_instance');
 }

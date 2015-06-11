@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Install functions for Embed External.
+ */
+
+/**
  * Implements hook_schema().
  */
 function embed_external_schema() {
@@ -52,4 +57,3 @@ function embed_external_schema() {
 
   return $schema;
 }
-

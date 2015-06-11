@@ -348,6 +348,9 @@
         height: 100%;
         width: 33vw;
         @extend %aspot-carousel-promo;
+        @include breakpoint($bp-min-641-width) {
+          max-width: 33.3vw;
+        }
         @include breakpoint($bp-640-width) {
           float: none;
           height: 56.25vw;
@@ -737,6 +740,10 @@
         width: 100%;
         &:last-child, &.last {
           margin-bottom: 0;
+        }
+        &.ymal-item {
+          height: 115vw;
+          margin: 40px 0 0;
         }
       }
       > div {

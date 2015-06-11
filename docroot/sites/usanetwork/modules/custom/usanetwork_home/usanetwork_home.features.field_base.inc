@@ -119,6 +119,85 @@ function usanetwork_home_field_default_field_bases() {
     'type' => 'text',
   );
 
+// Exported field_base: 'field_full_episodes_manual'
+  $field_bases['field_full_episodes_manual'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_full_episodes_manual',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+      ),
+      'entity_type_ids' => array(
+        'file' => 'file',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
+  // Exported field_base: 'field_full_episodes_options'
+  $field_bases['field_full_episodes_options'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_full_episodes_options',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'auto' => 'Fully Automatic',
+        'semiauto' => 'Semi-automatic',
+        'manual' => 'Manual',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_full_episodes_semi'
+  $field_bases['field_full_episodes_semi'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_full_episodes_semi',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'tv_show' => 'tv_show',
+      ),
+      'entity_type_ids' => array(
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
   // Exported field_base: 'field_hp_content_carousel'
   $field_bases['field_hp_content_carousel'] = array(
     'active' => 1,
@@ -178,15 +257,15 @@ function usanetwork_home_field_default_field_bases() {
     'module' => 'usanetwork_dynamic_entity_reference',
     'settings' => array(
       'entity_bundles' => array(
+        'catchall_page' => 'catchall_page',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
         'person' => 'person',
         'post' => 'post',
+        'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
-        'quiz' => 'quiz',
-        'catchall_page' => 'catchall_page',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -213,15 +292,15 @@ function usanetwork_home_field_default_field_bases() {
     'module' => 'usanetwork_dynamic_entity_reference',
     'settings' => array(
       'entity_bundles' => array(
+        'catchall_page' => 'catchall_page',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
         'person' => 'person',
         'post' => 'post',
+        'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
-        'quiz' => 'quiz',
-        'catchall_page' => 'catchall_page',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

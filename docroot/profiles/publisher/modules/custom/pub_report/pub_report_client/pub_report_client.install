@@ -11,7 +11,7 @@ function pub_report_client_requirements($phase) {
   $t = get_t();
   $requirements = array();
 
-  if ($phase == 'runtime') {
+  if ($phase == 'runtime' && variable_get('pub_report_enable', TRUE)) {
     $server_url = variable_get('pub_report_client_url', '');
     $not_set = $server_url == '';
 

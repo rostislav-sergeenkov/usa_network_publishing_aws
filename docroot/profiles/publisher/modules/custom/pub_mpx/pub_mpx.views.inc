@@ -345,6 +345,20 @@ function pub_mpx_views_data_alter(&$data) {
   if (isset($data['revision_scheduler']['actions']['field']['handler'])) {
     $data['revision_scheduler']['actions']['field']['handler'] = 'pub_mpx_revision_scheduler_handler_field_actions';
   }
+
+  // Filter for view_state.
+  $data['file_managed']['view_state'] = array(
+    'title' => t('Public or Not public'),
+    'help' => t('Whether or not the media content is public.'),
+    'filter' => array(
+      'field' => 'published',
+      'handler' => 'pub_mpx_handler_filter_boolean_public',
+      'label' => t('View State'),
+      'type' => 'public-notpublic',
+      'use equal' => TRUE,
+    ),
+  );
+
 }
 
 /**

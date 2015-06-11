@@ -3083,7 +3083,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   $field_instances['node-tv_show-field_cast_head_image'] = array(
     'bundle' => 'tv_show',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Min 2880x1260',
     'display' => array(
       'block_cover_title' => array(
         'label' => 'above',
@@ -3153,7 +3153,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '2880x1260',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3194,7 +3194,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   $field_instances['node-tv_show-field_cast_head_mob_image'] = array(
     'bundle' => 'tv_show',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Min 640x560',
     'display' => array(
       'block_cover_title' => array(
         'label' => 'above',
@@ -3264,7 +3264,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '640x560',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3390,7 +3390,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   $field_instances['node-tv_show-field_cast_second_image'] = array(
     'bundle' => 'tv_show',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Min 475x537',
     'display' => array(
       'block_cover_title' => array(
         'label' => 'above',
@@ -3460,7 +3460,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '475x537',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),

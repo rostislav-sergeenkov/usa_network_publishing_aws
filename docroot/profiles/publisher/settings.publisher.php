@@ -37,6 +37,11 @@ $conf['allow_authorize_operations'] = FALSE;
 $conf['ignore_site_directory_permissions'] = TRUE;
 
 /**
+ * Set up syslog to use key=value so Splunk can extract fields automatically.
+ */
+$conf['syslog_format'] = 'base_url=!base_url timestamp=!timestamp type=!type ip=!ip request_uri=!request_uri referer=!referer uid=!uid link=!link message=!message';
+
+/**
  * Memcache settings.
  */
 if (class_exists('Memcache')) {
@@ -78,7 +83,7 @@ else {
 /**
  * SSO settings.
  */
-$conf['pub_sso_password_reset'] = 'https://sso.external.nbcuni.com/nbcucentral/jsp/pwchange.jsp';
+$conf['pub_sso_password_reset'] = 'https://sso.inbcu.com/nbcucentral/app/pwchange.jsp';
 // Set pub_sso_server. Allowed values are 'stage' and 'prod'
 // Duplicate this setting at sites/default/sso/env.inc
 // TODO: Remove the need to duplicate this setting
@@ -135,8 +140,8 @@ ini_set('session.cookie_lifetime', 2000000);
  * and increase the limits of these variables.  For more information, see
  * http://php.net/manual/pcre.configuration.php.
  */
-# ini_set('pcre.backtrack_limit', 200000);
-# ini_set('pcre.recursion_limit', 200000);
+// ini_set('pcre.backtrack_limit', 200000);
+// ini_set('pcre.recursion_limit', 200000);
 
 /**
  * Drupal automatically generates a unique session cookie name for each site
@@ -147,4 +152,4 @@ ini_set('session.cookie_lifetime', 2000000);
  * between your various domains. Make sure to always start the $cookie_domain
  * with a leading dot, as per RFC 2109.
  */
-# $cookie_domain = '.example.com';
+// $cookie_domain = '.example.com';

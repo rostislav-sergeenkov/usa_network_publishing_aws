@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pub Chosen feature.
+ */
+
+include_once 'pub_chosen.features.inc';

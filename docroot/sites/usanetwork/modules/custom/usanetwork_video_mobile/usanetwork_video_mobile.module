@@ -16,36 +16,39 @@ function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, 
     }
 
     if ($full_episode) {
-      // add itunes meta
-      $metatag = array(
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'apple-itunes-app',
-          'content' => 'app-id=' . USANETWORK_USANOW_ITUNES_ID . ', affiliate-data=, app-argument=/usa',
-        ),
-      );
-      $entity->content['#attached']['drupal_add_html_head'][] = array($metatag, 'itunes_metatag');
-
-      // attach javascript
-      $entity->content['#attached']['js'][] = array(
-        'type' => 'setting',
-        'data' => array(
-          'usanetwork_video_mobile' => array(
-            'url' => array(
-              'iOS' => USANETWORK_USANOW_IOS_URL,
-              'android' => USANETWORK_USANOW_ANDROID_URL,
-            ),
-            'modal' => '<div class="wrap"><h3>' . t('Want to watch episodes of your favorite shows?') . '</h3><hr>'
-            . '<img class="mobile-logo-exp" src="' . url(drupal_get_path('module', 'usanetwork_video_mobile') . '/img/logo-mobile-exp.png') . '">'
-            . '<div id="mobileVideoModalButtons">'
-            . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
-            . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">' . '</div>'
-            . '</div>',
+      $player_id = pub_mpx_player_data_load($entity);
+      if ($player_id['pid'] != 'dd_usa_vod_noauth') {
+        // add itunes meta
+        $metatag = array(
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'apple-itunes-app',
+            'content' => 'app-id=' . USANETWORK_USANOW_ITUNES_ID . ', affiliate-data=, app-argument=/usa',
           ),
-        ),
-      );
-      $entity->content['#attached']['js'][] = drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js';
-      $entity->content['#attached']['css'][] = drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css';
+        );
+        $entity->content['#attached']['drupal_add_html_head'][] = array($metatag, 'itunes_metatag');
+
+        // attach javascript
+        $entity->content['#attached']['js'][] = array(
+          'type' => 'setting',
+          'data' => array(
+            'usanetwork_video_mobile' => array(
+              'url' => array(
+                'iOS' => USANETWORK_USANOW_IOS_URL,
+                'android' => USANETWORK_USANOW_ANDROID_URL,
+              ),
+              'modal' => '<div class="wrap"><h3>' . t('Want to watch episodes of your favorite shows?') . '</h3><hr>'
+                . '<img class="mobile-logo-exp" src="' . url(drupal_get_path('module', 'usanetwork_video_mobile') . '/img/logo-mobile-exp.png') . '">'
+                . '<div id="mobileVideoModalButtons">'
+                . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
+                . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">' . '</div>'
+                . '</div>',
+            ),
+          ),
+        );
+        $entity->content['#attached']['js'][] = drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js';
+        $entity->content['#attached']['css'][] = drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css';
+      }
     }
   }
 }

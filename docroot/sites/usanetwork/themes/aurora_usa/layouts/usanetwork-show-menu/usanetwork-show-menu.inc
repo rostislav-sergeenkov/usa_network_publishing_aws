@@ -13,6 +13,7 @@ $plugin = array(
 function usanetwork_pl_show_menu_render() {
   $regions = array(
     'reg_menu' => t('Menu'),
+    'profile' => t('Profile'),
     'reg_mobile_menu' => t('Mobile menu'),
     'reg_tab_shows' => t('TAB: Shows'),
     'reg_tab_full_episodes' => t('TAB: Full Episodes'),

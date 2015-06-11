@@ -89,3 +89,5 @@ $timestamp = date("m/d/y",time());
 <div id="home-usa-logo"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
 
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
+
+<div class="scroll-to-next scroll clearfix"><div>Next</div><center><img src="/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/scroll_down_arrow.png" /></center></div>

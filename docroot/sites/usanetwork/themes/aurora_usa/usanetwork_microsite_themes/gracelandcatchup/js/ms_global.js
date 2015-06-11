@@ -626,6 +626,13 @@
           Drupal.behaviors.ms_global.sectionScroll(anchor);
         });
 
+        // initialize home next button click
+        $('#home .scroll').on('click', function(){
+          var anchor = 'videos',
+              anchorFull = basePath + '/' + anchor;
+          Drupal.behaviors.ms_global.sectionScroll(anchor);
+        });
+
         // initialize the waypoints
         if (!$('html').hasClass('ie9')) self.initializeWaypoints();
 

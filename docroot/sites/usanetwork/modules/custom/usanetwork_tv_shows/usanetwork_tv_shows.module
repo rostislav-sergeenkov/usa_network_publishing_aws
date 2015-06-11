@@ -3714,7 +3714,7 @@ function _usanetwork_tv_shows_all_shows_block() {
     $params['sort_order'] = 'ASC';
   }
   $sorters = _usanetwork_tv_shows_all_shows_landing_page_sorters();
-  $shows = _usanetwork_tv_shows_all_shows_get_shows(NULL, NULL, $params['sort_order']);
+  $shows = _usanetwork_tv_shows_all_shows_get_shows($params['sort_order']);
   $shows_block = _usanetwork_tv_shows_all_shows_render_block($shows);
   $video_sorter_title = $sorters[$params['sort_order']]['title'];
   $result = theme('usanetwork_tv_shows_shows_landing', array(
@@ -3722,7 +3722,6 @@ function _usanetwork_tv_shows_all_shows_block() {
     'show_sorters' => $sorters,
     'show_sorter_title' => $video_sorter_title,
     'shows_block' => $shows_block,
-    'items_per_page_limit' => USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK,
     'sorting_order' => $params['sort_order'],
   ));
   return $result;
@@ -3791,15 +3790,12 @@ function _usanetwork_tv_shows_mb_block() {
  *
  * @return array
  */
-function _usanetwork_tv_shows_all_shows_get_shows($offset = 0, $limit = USA_TV_SHOW_ALL_SHOWS_LIMIT_IN_BLOCK, $sort = 'ASC') {
+function _usanetwork_tv_shows_all_shows_get_shows($sort = 'ASC') {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'tv_show')
     ->propertyCondition('status', NODE_PUBLISHED)
     ->propertyOrderBy('title', $sort);
-  if (is_numeric($offset) && is_numeric($limit)) {
-    $query->range($offset, $limit);
-  }
   $result = $query->execute();
   if (!empty($result['node'])) {
     $nodes = entity_load('node', array_keys($result['node']));

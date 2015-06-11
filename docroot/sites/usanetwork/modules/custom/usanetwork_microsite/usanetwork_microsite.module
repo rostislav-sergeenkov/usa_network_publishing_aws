@@ -92,6 +92,21 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/get-section/%node/%'] = array(
+    'page callback' => 'usanetwork_microsite_get_section',
+    'page arguments' => array(2, 3),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['ajax/callback/get-section/%node/%/%'] = array(
+    'page callback' => 'usanetwork_microsite_get_section_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'ajax_deliver',
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -283,12 +298,13 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 
       $microsite_url = url('node/' . arg(1) . '/microsite');
       $microsite_theme_path = '/' . drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/' . $microsite_wrapper->field_ms_theme->value();
+      $anchor_delta = usanetwork_microsite_delta_anchor_relations($node);
       $microsites_settings = array(
         'nid' => $node->nid,
         'title' => $node->title,
         'base_path' => ($microsite_url) ? $microsite_url : '/dig',
         'microsite_theme_path' => $microsite_theme_path,
-
+        'anchor_delta' => $anchor_delta,
       );
       drupal_add_js(array('microsites_settings' => $microsites_settings), 'setting');
 
@@ -423,6 +439,32 @@ function _usanetwork_microsite_render_page($microsite_theme_name, $section_wrapp
     $theme_variables = array_merge($theme_variables, array('blocks' => $blocks_variables));
     return theme($theme_registry_name, $theme_variables);
   }
+}
+
+function usanetwork_microsite_get_section($node, $delta) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $section_wrapper = NULL;
+  if (isset($node_wrapper->field_ms_section[$delta])) {
+    $section_wrapper = $node_wrapper->field_ms_section[$delta];
+  }
+
+  if ($section_wrapper) {
+    $blocks_variables = usanetwork_microsite_get_blocks($node);
+    // @todo $blocks_variables only related with section blocks should be taken.
+    // because ajax call with all blocks can be slow.
+    $section_content = _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper, $node, $blocks_variables);
+  }
+  $section = array(
+    'content' => $section_content,
+  );
+  return $section;
+}
+
+function usanetwork_microsite_get_section_ajax($node, $delta, $anchor) {
+  $section = usanetwork_microsite_get_section($node, $delta);
+  $result = array('#type' => 'ajax');
+  $result['#commands'][] = ajax_command_prepend('#' . $anchor . ' .microsite-section-container', $section['content']);
+  return $result;
 }
 
 /**
@@ -705,7 +747,7 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
 /**
  * Renders gallery page.
  */
-function _usanetwork_microsite_render_page_galleries($section_wrapper) {
+function _usanetwork_microsite_render_page_galleries($section_wrapper, $node) {
   $section_object = $section_wrapper->value();
   $theme_variables = array();
 
@@ -747,7 +789,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       '0',
     );
     $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
-    $theme_variables['microsite_url'] = url('node/' . arg(1) . '/microsite');
+    $theme_variables['microsite_url'] = url('node/' . $node->nid . '/microsite');
   }
 
   return $theme_variables;
@@ -1519,7 +1561,7 @@ function _usanetwork_microsite_get_section_background_image($section_wrapper, $i
  */
 function _usanetwork_microsite_get_theme_variables($node) {
   $node_wrapper = entity_metadata_wrapper('node', $node);
-  $blocks_variables = usanetwork_microsite_get_blocks();
+  $blocks_variables = usanetwork_microsite_get_blocks($node);
 
   // Fill base variables
   $theme_variables = _usanetwork_microsite_theme_get_base_variables($node_wrapper);
@@ -1534,7 +1576,13 @@ function _usanetwork_microsite_get_theme_variables($node) {
 
     // Walk through connected sections
     $i = 1;
-    foreach ($node_wrapper->field_ms_section as $section_wrapper) {
+    $current_section_type = _usanetwork_microsite_get_current_section_type();
+    $use_section_ajax = _usanetwork_microsite_process_setting_data('sections_use_ajax', 'bool');
+    drupal_add_js(array('use_section_ajax' => $use_section_ajax), 'setting');
+    foreach ($node_wrapper->field_ms_section as $delta => $section_wrapper) {
+      $sections_no_ajax = _usanetwork_microsite_process_setting_data('sections_no_ajax', 'array');
+      $section_type = $section_wrapper->field_ms_section_type->value();
+
       // Fill base section values
       $section_base_variables = _usanetwork_microsite_theme_get_section_base_variables($section_wrapper);
 
@@ -1542,12 +1590,18 @@ function _usanetwork_microsite_get_theme_variables($node) {
         continue;
       }
 
+      $content = ' ';
+      if (!$use_section_ajax || $current_section_type == $section_type || in_array($section_type, $sections_no_ajax)) {
+        $content = _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper, $node, $blocks_variables);
+      }
+
       $pages[$section_base_variables['type']] = array(
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
         'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i, 'class' => 'scroll-link'))),
+        'delta' => (string) $delta,
 //        'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
-        'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper, $node, $blocks_variables),
+        'content' => $content,
       );
       $i++;
 
@@ -2576,29 +2630,34 @@ function _usanetwork_microsite_endcard_prepare_related_item($node_nid, $related_
  * Alter sitecatalyst variables variables.
  */
 function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context) {
-  // @todo I think we shouldn't use t() for string for omniture. If need, we shouldn't do it twice.
   if ($context['entity']){
     $entity = $context['entity'];
     if ($entity->type == 'usanetwork_microsite') {
       $node = menu_get_object();
-      if(!isset($node->type) || $node->type != 'usanetwork_microsite') {
+      if (!isset($node->type) || $node->type != 'usanetwork_microsite') {
         return;
       }
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $show = $node_wrapper->field_show->value();
+      $show_name = '';
+      if (!empty($show)) {
+        $show_name = $show->title;
+      }
+
       $args = arg();
       //@todo get section arg as in preprocess function
       $path = isset($args[3]) ? $args[3] : '';
       switch ($path) {
         case '':
         case 'home':
-          $omniture_prop3 = 'Home';
+          $content_type = 'Home';
           break;
         case 'videos':
-          $omniture_prop3 = 'Video';
+          $content_type = 'Video';
           if(isset($args[4])) {
             $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4], FALSE);
             if(isset($video_file) && !empty($video_file->filename)) {
-              $omniture_prop5 = t('!entity_title : Video : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
-              $omniture_pagename = $omniture_prop5;
+              $content_name = $video_file->filename;
               $umbel = $video_file->filename;
             }
           }
@@ -2609,8 +2668,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               if (!empty($videos_section_object->field_ms_videos)) {
                 $video_file = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
                 if (!empty($video_file)) {
-                  $omniture_prop5 = t('!entity_title : Video : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
-                  $omniture_pagename = $omniture_prop5;
+                  $content_name = $video_file->filename;
                   $umbel = $video_file->filename;
                 }
               }
@@ -2618,18 +2676,17 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           }
           break;
         case 'characters':
-          $omniture_prop3 = 'Bio';
-          $omniture_prop4 = 'Profile Page'; // This is intentional per Loretta!
+          $characters_homepage_present = _usanetwork_microsite_process_setting_data('characters_homepage_present', 'bool');
+          $content_type = 'Bio';
           if (isset($args[4])) {
             $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
-            if(!empty($node)) {
+            if (!empty($node)) {
               $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
-              $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
-              $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+              $content_name = $person_names['person_title'];
               $umbel = $person_names['person_title'];
             }
           }
-          else {
+          elseif (!$characters_homepage_present) {
             $characters_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
             if (!empty($characters_section_wrapper)) {
               $characters_section_object = $characters_section_wrapper->value();
@@ -2637,8 +2694,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 $node = _usanetwork_microsite_get_first_published_item($characters_section_wrapper->field_ms_person);
                 if (!empty($node)) {
                   $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
-                  $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
-                  $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+                  $content_name = $person_names['person_title'];
                   $umbel = $person_names['person_title'];
                 }
               }
@@ -2646,12 +2702,12 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           }
           break;
         case 'galleries':
-          $omniture_prop3 = 'Gallery';
+          $content_type = 'Gallery';
           if(isset($args[4])) {
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'galleries');
             if(!empty($node)) {
-              $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
-              $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+              $content_name = $node->title;
+              $specific_content_name = 'Photo 1';
               $umbel = $node->title;
             }
           }
@@ -2661,42 +2717,41 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $galleries_section_object = $galleries_section_wrapper->value();
               if (!empty($galleries_section_object->field_ms_media_gallery)) {
                 $node = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
-                $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
-                $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+                $content_name = $node->title;
+                $specific_content_name = 'Photo 1';
                 $umbel = $node->title;
               }
             }
           }
           break;
         case 'timeline':
-          $omniture_prop3 = 'Gallery';
+          $content_type = 'Gallery';
+          $alt_content_type = 'Timeline';
           $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'timeline');
           if (!empty($section_wrapper)) {
             $section_object = $section_wrapper->value();
             if (!empty($section_object->field_ms_timeline_gallery)) {
               $node_wrapper = $section_wrapper->field_ms_timeline_gallery;
               $first_section_wrapper = $node_wrapper->field_timeline_episode_section->get(0);
-              $first_sason_wrapper = $first_section_wrapper->field_season;
+              $first_season_wrapper = $first_section_wrapper->field_season;
               $first_episode_wrapper = $first_section_wrapper->field_episode;
-              if(!empty($first_sason_wrapper)) {
-                $season_title = $first_sason_wrapper->title->value();
+              if (!empty($first_season_wrapper)) {
+                $season_title = $first_season_wrapper->title->value();
                 $episode_title = $first_episode_wrapper->title->value();
-                $episone_number = $first_episode_wrapper->field_episode_number->value();
+                $episode_number = $first_episode_wrapper->field_episode_number->value();
               }
-              $omniture_prop5 = t($entity->title . ' : Timeline Slideshow : ' . $node->title);
-              // @TODO - DV: We must pull the "S1 Episode 1 | Pilot | Scene 1'" info in the next line from the CMS
-              $omniture_pagename = t($entity->title . ' : Timeline Slideshow : ' . $node_wrapper->title->value() . ' : ' . $season_title . ' Episode ' . $episone_number . ' | ' . $episode_title . ' | Scene 1');
+              $content_name = $node_wrapper->title->value();
+              $specific_content_name = str_replace('Season ', 'S', $season_title) . ' E' . $episode_number . ' Scene 1';
               $umbel = $node_wrapper->title->value();
             }
           }
           break;
         case 'episodes':
-          $omniture_prop3 = 'Episode Guide';
-          if(isset($args[4])) {
+          $content_type = 'Episode Guide';
+          if (isset($args[4])) {
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'episodes');
-            if(!empty($node)) {
-              $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
-              $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+            if (!empty($node)) {
+              $content_name = $node->title;
               $umbel = $node->title;
             }
           }
@@ -2707,8 +2762,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               if (!empty($episodes_section_object->field_ms_episode)) {
                 $node = _usanetwork_microsite_get_first_published_item($episodes_section_wrapper->field_ms_episode);
                 if (!empty($node)) {
-                  $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
-                  $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+                  $content_name = $node->title;
                   $umbel = $node->title;
                 }
               }
@@ -2716,16 +2770,15 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           }
           break;
         case 'about':
-          $omniture_prop3 = 'About';
-          $umbel = $omniture_prop3;
+          $content_type = 'About';
+          $umbel = $content_type;
           break;
         case 'games':
-          $omniture_prop3 = 'Games';
+          $content_type = 'Games';
           if(isset($args[4])) {
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'games');
             if(!empty($node)) {
-              $omniture_prop5 = $entity->title . ' : Games : ' .  $node->title;
-              $omniture_pagename = $entity->title . ' : Games : ' . $node->title;
+              $content_name = $node->title;
             }
           }
           else {
@@ -2735,20 +2788,18 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               if (!empty($section_object->field_ms_catchall_page)) {
                 $node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_catchall_page);
                 if (!empty($node)) {
-                  $omniture_prop5 = $entity->title . ' : Games : ' .  $node->title;
-                  $omniture_pagename = $entity->title . ' : Games : ' . $node->title;
+                  $content_name = $node->title;
                 }
               }
             }
           }
           break;
         case 'quizzes':
-          $omniture_prop3 = 'Quiz';
-          if(isset($args[4])) {
+          $content_type = 'Quiz';
+          if (isset($args[4])) {
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'quizzes');
-            if(!empty($node)) {
-              $omniture_prop5 = $entity->title . ' : Quiz : ' .  $node->title;
-              $omniture_pagename = $entity->title . ' : Quiz : ' . $node->title;
+            if (!empty($node)) {
+              $content_name = $node->title;
             }
           }
           else {
@@ -2758,23 +2809,52 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               if (!empty($section_object->field_ms_quiz)) {
                 $node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_quiz);
                 if (!empty($node)) {
-                  $omniture_prop5 = $entity->title . ' : Quiz : ' .  $node->title;
-                  $omniture_pagename = $entity->title . ' : Quiz : ' . $node->title;
+                  $content_name = $node->title;
                 }
               }
             }
           }
           break;
       }
-      if (!empty($omniture_prop3)) {
-        $omniture_variables['s.prop3'] = t($omniture_prop3);
-        $omniture_variables['s.prop4'] = (!empty($omniture_prop4)) ? t($omniture_prop4) : t($entity->title . ' : ' . $omniture_prop3);
-        $omniture_variables['s.prop5'] = t($entity->title . ' : ' . $omniture_prop3);
+
+      // Build array of omniture "nodes" that make up the pageName
+      // this array must have the nodes in the correct order
+      // show_name : microsite_name : content_type : content_name : specific_content_name
+      // If show_name == microsite_name, show only microsite_name
+      // Example 1: Dig : Gallery : Ancient Relics : Photo 1
+      // Example 2: Graceland : Graceland Catchup : Timeline : Graceland Timeline : S1 E2 Scene 3
+      $join_str = ' : ';
+      $omniture_array = array();
+      if ($show_name != $entity->title) {
+        $omniture_array[] = $show_name; // show_name
       }
-      if (!empty($omniture_prop5)) {
-        $omniture_variables['s.prop5'] = $omniture_prop5;
-        $omniture_variables['s.pageName'] = $omniture_pagename;
+      $omniture_array[] = $entity->title; // microsite_name
+      $omniture_array[] = ($content_type == 'Gallery' && !empty($alt_content_type)) ? $alt_content_type : $content_type; // content_type
+      if (!empty($content_name)) {
+        $omniture_array[] = $content_name; // content_name
       }
+      if (!empty($specific_content_name)) {
+        $omniture_array[] = $specific_content_name; // specific_content_name
+      }
+      if ($entity->title == 'Dig') {
+        if ($content_type == 'Home') {
+          $omniture_variables['s.pageName'] = $omniture_array[0] . $join_str . 'Dig Deeper';
+        }
+        elseif ($content_type == 'About') {
+          $omniture_variables['s.pageName'] = join($join_str, array_slice($omniture_array, 0, 2)) . $join_str . 'Dig Deeper';
+        }
+        else {
+          $omniture_variables['s.pageName'] = join($join_str, $omniture_array);
+        }
+      }
+      else {
+        $omniture_variables['s.pageName'] = join($join_str, $omniture_array);
+      }
+      $omniture_variables['s.prop3'] = $content_type;
+      $omniture_variables['s.prop10'] = $omniture_array[0];
+      $omniture_variables['s.prop4'] = ($content_type == 'Bio') ? 'Profile Page' : join($join_str, array_slice($omniture_array, 0, 2)); // 'Profile Page' is intentional per Loretta
+      $omniture_variables['s.prop5'] = join($join_str, array_slice($omniture_array, 0, 3));
+
       if (!empty($umbel)) {
         $omniture_variables['umbel'] = $umbel;
       }
@@ -3457,7 +3537,10 @@ function usanetwork_microsite_default_get_theme_settings() {
     'videos_season_filters' => FALSE,
     'short_name_for_full_episodes' => FALSE,
     'character_bios_remove_video_tags' => TRUE,
+    'sections_use_ajax' => TRUE,
+    'sections_no_ajax' => array('videos'),
     'videos_full_episode_sort_order' => 'ASC',
+    'characters_homepage_present' => FALSE,
   );
 }
 
@@ -3497,10 +3580,9 @@ function usanetwork_microsite_get_theme_settings($microsite_node = NULL, $reset 
   return (array) $settings;
 }
 
-function usanetwork_microsite_get_actual_blocks_names($reset = FALSE) {
+function usanetwork_microsite_get_actual_blocks_names($node, $reset = FALSE) {
   $blocks = &drupal_static(__FUNCTION__);
   if (!isset($blocks) || $reset) {
-    $node = menu_get_object();
     $node_wrapper = entity_metadata_wrapper('node', $node);
     $theme_function = 'usanetwork_microsite_' . $node_wrapper->field_ms_theme->value() . '_get_blocks_names';
     if (is_callable($theme_function)) {
@@ -3519,13 +3601,13 @@ function usanetwork_microsite_get_blocks_names() {
   );
 }
 
-function usanetwork_microsite_get_blocks() {
-  $allowed_block = usanetwork_microsite_get_actual_blocks_names();
+function usanetwork_microsite_get_blocks($node) {
+  $allowed_block = usanetwork_microsite_get_actual_blocks_names($node);
   $blocks = array();
   foreach ($allowed_block as $block_name) {
     $block_func = 'usanetwork_microsite_block_' . $block_name;
     if (is_callable($block_func)) {
-      $blocks[$block_name] = $block_func();
+      $blocks[$block_name] = $block_func($node);
     }
   }
   return $blocks;
@@ -3545,6 +3627,32 @@ function _usanetwork_microsite_get_short_name_for_video($file) {
 function usanetwork_microsite_get_id_by_string($string) {
   module_load_include('inc', 'pathauto', 'pathauto');
   return pathauto_cleanstring($string);
+}
+
+/**
+ * Retrieve array with anchor delta relations.
+ *
+ * @param $node
+ * @return array
+ */
+function usanetwork_microsite_delta_anchor_relations($node) {
+  $relations = array();
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  foreach ($node_wrapper->field_ms_section as $delta => $section_wrapper) {
+    $anchor = usanetwork_microsite_get_anchor_from_section($section_wrapper);
+    $relations[$anchor] = $delta;
+  }
+  return $relations;
+}
+
+/**
+ * Get anchor for section.
+ *
+ * @param $section_wrapper
+ * @return mixed
+ */
+function usanetwork_microsite_get_anchor_from_section($section_wrapper) {
+  return $section_wrapper->field_ms_section_type->value();
 }
 
 function usanetwork_microsite_get_filters_by_show($show_id) {

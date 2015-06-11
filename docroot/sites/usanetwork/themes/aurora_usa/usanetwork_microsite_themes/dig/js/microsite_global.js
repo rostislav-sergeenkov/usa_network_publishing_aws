@@ -165,7 +165,7 @@
         case 'galleries':
           var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
               $slider = slider.data('flexslider'),
-              currentSlide = $slider.currentSlide + 1;
+              currentSlide = (typeof $slider != 'undefined' && $slider.hasOwnProperty('currentSlide')) ? parseInt($slider.currentSlide) + 1 : 1;
           if (!currentSlide) currentSlide = 1;
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';
@@ -742,6 +742,29 @@ usa_debug(' ====== if videoContainer...');
         }
       });
     },
+    micrositeGetSection: function (anchor) {
+      // @todo anchor == 'videos' is hardcode.
+      if(!Drupal.settings.use_section_ajax || anchor == 'videos') {
+        return;
+      }
+      var delta_anchor_relations = Drupal.settings.microsites_settings.anchor_delta;
+//      var url = Drupal.settings.basePath + 'ajax/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta;
+//      $.ajax({
+//        type: 'GET',
+//        url: url,
+//        dataType: 'json'
+//      }).done(function(data) {
+//        console.log(data);
+//        $('#' + anchor).find('.microsite-section-container').prepend(data.content);
+//        Drupal.attachBehaviors('#' + anchor);
+//      });
+      var delta = delta_anchor_relations[anchor];
+      var url = Drupal.settings.basePath + 'ajax/callback/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta + '/' + anchor;
+      var settings = {url : url};
+      var ajax = new Drupal.ajax(false, false, settings);
+      ajax.eventResponse(ajax, {});
+    },
+
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
 
@@ -931,8 +954,10 @@ usa_debug(' ====== if videoContainer...');
         }
 
         var anchor = $(this).parent().attr('data-menuanchor'),
-            anchorFull = basePath + '/' + anchor;
+            anchorFull = basePath + '/' + anchor,
+            delta = $(this).parent().attr('data-delta');
 
+        Drupal.behaviors.microsite_scroll.micrositeGetSection(anchor, delta);
         Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor);
       });

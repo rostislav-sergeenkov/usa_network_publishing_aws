@@ -39,9 +39,8 @@
       var basePath = Drupal.settings.microsites_settings.base_path;
 
       // if this is IE9, reload the correct page
-      if ($('html').hasClass('ie9')) {
-//usa_debug('======== changeUrl(' + anchor + ', ' + anchorFull + ')');
-//        window.location.href = anchorFull.replace('/home', '');
+      if ($('html.ie9').length > 0) {
+        window.location.href = anchorFull.replace('/home', '');
         return false;
       }
 
@@ -88,12 +87,15 @@
         Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
         Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+//usa_debug('========== waypointResponse -- ' + sectionId + ' ' + scrollDirection);
       }
     },
 
     // waypointHandler
     sectionTimer: null,
     waypointHandler: function(event, sectionId, direction){
+//usa_debug('========== waypointHandler(' + event + ', ' + sectionId + ', ' + direction + ')');
+
       // if more than one function call arrives before the timeout is done,
       // clear the timer and start over. This is to prevent, rapid scrolling
       // or navigation clicks from triggering Omniture calls
@@ -119,6 +121,7 @@
       // loop through each section
       $('.section').each(function(){
         var sectionId = $(this).attr('id');
+//usa_debug('========= initializing waypoints for section ' + sectionId);
         if (sectionId != 'site-nav') {
           Drupal.behaviors.ms_global.waypoints[sectionId] = new Waypoint.Inview({
             element: document.getElementById(sectionId),
@@ -141,6 +144,8 @@
       $('.section').each(function(index, section) {
         Drupal.behaviors.ms_global.sectionIds[index] = $(this).attr('id');
       });
+//usa_debug('============= sectionIds: ');
+//usa_debug(Drupal.behaviors.ms_global.sectionIds);
     },
 
     // getScrollDirectionUsingSections
@@ -155,6 +160,7 @@
     // getScrollDirection
     lastYScrollPosition: 0,
     getScrollDirection: function() {
+//usa_debug('========= sectionScroll -- lastYScrollPosition: ' + Drupal.behaviors.ms_global.lastYScrollPosition + ',  pageYOffset: ' + window.pageYOffset);
       scrollDirection = (Drupal.behaviors.ms_global.lastYScrollPosition > window.pageYOffset) ? 'up' : 'down';
       Drupal.behaviors.ms_global.lastYScrollPosition = window.pageYOffset;
       return scrollDirection;
@@ -207,35 +213,6 @@
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
-    // Gigya share bar clicks
-    sendSocialShareOmniture: function($this, title) {
-      title = title || null;
-      var $container = $this.parents('.gig-button-container'),
-          shareType = 'Share',
-          shareTitle = title;
-      if ($container.hasClass('gig-button-container-facebook')) {
-        shareType = 'Facebook';
-      }
-      else if ($container.hasClass('gig-button-container-twitter')) {
-        shareType = 'Twitter';
-      }
-      else if ($container.hasClass('gig-button-container-tumblr')) {
-        shareType = 'Tumblr';
-      }
-      else if ($container.hasClass('gig-button-container-pinterest')) {
-        shareType = 'Pinterest';
-      }
-
-      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-        s.linkTrackVars = 'events,eVar73,eVar74';
-        s.linkTrackEvents = s.events = 'event41';
-        s.eVar73 = shareTitle;
-        s.eVar74 = shareType;
-        s.tl(this, 'o', 'Social Share');
-        s.manageVars('clearVars', s.linkTrackVars, 1);
-      }
-    },
-
     // setOmnitureData
     setOmnitureData: function(anchor, contentName) {
       var anchor = anchor || null;
@@ -249,6 +226,7 @@
           contentType = Drupal.behaviors.ms_global.toTitleCase(anchor),
           altContentType = null,
           specificContentName = null;
+usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), siteName: ' + siteName + ', contentType: ' + contentType);
 
       // set section-specific overrides
       switch (anchor) {
@@ -265,7 +243,7 @@
               itemEpisode = $item.attr('data-episode-num'),
               itemEpisodeName = $item.attr('data-episode-name'),
               itemScene = $item.attr('data-description');
-          specificContentName = 'S' + itemSeason + ' E' + itemEpisode + ' ' + itemScene;
+          specificContentName = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
           break;
         case 'quizzes':
           contentType = 'Quiz';
@@ -319,10 +297,8 @@
       s.prop3 = contentType;
       s.prop4 = (contentType == 'Bio') ? 'Profile Page' : omnitureArray[0] + joinStr + omnitureArray[1]; // 'Profile Page' is intentional per Loretta!
       s.prop5 = omnitureArray[0] + joinStr + omnitureArray[1] + joinStr + omnitureArray[2];
-
       var reverseOmnitureArray = omnitureArray.reverse();
-      pageName = (reverseOmnitureArray.join(' | ') + ' | USANetwork').replace('Home | ', '');
-
+      pageName = reverseOmnitureArray.join(' | ') + ' | USANetwork';
 
       $('title').text(pageName);
 
@@ -388,11 +364,9 @@
     // there is a race condition if we try to create both the 728x90
     // and the 300x250 at about the same time, so we create the 728x90
     // first and then create the 300x250
-    create728x90Ad: function (section) {
-      if (!section) {
-        section = $('#sections .section.active').attr('id') || 'home';
-      }
-      var $ad = $('.dart-name-728x90_ifr_reload_' + section);
+    create728x90Ad: function () {
+//      var $ad = $('.dart-name-728x90_ifr_reload_' + section);
+      var $ad = $('.ad-leaderboard');
 
       if ($ad.hasClass('loading')) {
         // do nothing
@@ -402,8 +376,10 @@
         $ad.addClass('loading');
 
         // check to see if there is an ad already there
-        if ($('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
-          adBlock = '.dart-name-728x90_ifr_reload_' + section;
+//        if ($('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
+//          adBlock = '.dart-name-728x90_ifr_reload_' + section;
+        if ($('.ad-leaderboard iframe').length) {
+          adBlock = '.ad-leaderboard';
           Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
         }
         // if no 728x90 ad in this section yet, create it
@@ -415,14 +391,15 @@
           // start 728x90
           iframeQueue = new Array();
 
-          Drupal.DART.tag('{"machinename":"728x90_ifr_reload_' + section + '","name":"728x90 script","pos":"7","sz":"728x90","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"728x90","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
+          Drupal.DART.tag('{"machinename":"ad-leaderboard","name":"728x90 script","pos":"7","sz":"728x90","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"728x90","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
 
           // write iframe ad units to page
           if (iframeQueue.length) {
             for (var i = 0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
               // 728x90
               if (iframeQueue[i].tag.indexOf('728x90') != '-1') {
-                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+//                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+                $('.ad-leaderboard').html(iframeQueue[i].html);
               }
             }
           }
@@ -430,14 +407,14 @@
         // add styles for iframe
         if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && $(window).width() < 748) {
           $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
-          $('#' + section + ' .ad-leaderboard iframe').load(function () {
-            $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 50px;}object * {max-width: 100%; max-height: 50px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+          $('.ad-leaderboard iframe').load(function () {
+            $('.ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 50px;}object * {max-width: 100%; max-height: 50px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
           });
         }
         else {
           $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
-          $('#' + section + ' .ad-leaderboard iframe').load(function () {
-            $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+          $('.ad-leaderboard iframe').load(function () {
+            $('.ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
           });
         }
 
@@ -463,6 +440,7 @@
     sectionScroll: function(anchor, item, itemTitle) {
       item = item || '';
       itemTitle = itemTitle || '';
+//usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
       var basePath = Drupal.settings.microsites_settings.base_path,
           anchorItem = $('#nav-' + anchor),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
@@ -470,14 +448,10 @@
           nextSectionId = $(nextSection).attr('id'),
           direction = Drupal.behaviors.ms_global.getScrollDirectionUsingSections(anchor),
           offsetDirection = (direction == 'down') ? 1 : -1;
-
+//usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirection: ' + offsetDirection);
       // if this is IE9, reload the correct page
-      if ($('html').hasClass('ie9')) {
-//usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
-//        window.location.href = anchorFull.replace('/home', '');
-        // if the window is scrolling, the page must be almost completely
-        // loaded, so the initial page load is complete
-        Drupal.behaviors.ms_global.globalInitialPageLoad = false;
+      if ($('html.ie9').length > 0) {
+        window.location.href = anchorFull.replace('/home', '');
         return false;
       }
 
@@ -489,6 +463,7 @@
             break;
           case 'quizzes':
             var quizNodeId = $('#microsite #quizzes #quizzes-nav-list a[href="' + basePath + '/quizzes/' + item + '"]').parent().attr('data-node-id');
+//usa_debug('========== calling switchQuizzes(' + quizNodeId + ')');
             Drupal.behaviors.ms_quizzes.switchQuizzes(quizNodeId);
             break;
         }
@@ -502,8 +477,9 @@
       var nextSectionElem = document.getElementById(anchor),
           offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
-
+//usa_debug('====== sectionScroll -- nextSection: ' + nextSection + ', offsetAmount: ' + offsetAmount + ', nextSectionTop: ' + nextSectionTop);
       $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
+//usa_debug('======== microsite animate complete');
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
 
@@ -562,7 +538,7 @@
 
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
-      if (!$('html').hasClass('ie9')) {
+      if (!$('html.ie9').length) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }
 
@@ -571,19 +547,6 @@
           basePath = Drupal.settings.microsites_settings.base_path,
           basePageName = siteName + ' | USA Network',
           self = this;
-
-      // set hover state for hamburger menu on mobile devices
-      var wwidth = $(window).width(),
-          $siteNav = $('#site-nav');
-
-      if (wwidth < 874) {
-        $siteNav.addClass('mobile');
-      }
-      else {
-        $siteNav.removeClass('mobile');
-      }
-
-      self.setSectionIdsArray();
 
       // TIME OUT
       // we need to allow time for the page to load -- especially videos
@@ -601,19 +564,24 @@
           }
         }
 
+/*
         // initialize clicks in microsite menu
         $('#microsite li.internal a').on('click', function(e){
           e.preventDefault();
           var $parent = $(this).parent(),
               anchor = $parent.attr('data-menuanchor');
 
+//usa_debug('======== clicked on ' + $parent.attr('id') + ', anchor: ' + anchor);
           if ($('#site-nav-links li').hasClass('disabled')) {
+//usa_debug('======== site-nav-links disabled');
             return false;
           }
           else {
+//usa_debug('======= disabling site-nav-links li');
             $('#site-nav-links li').addClass('disabled');
           }
 
+//usa_debug('====== getting ready to call sectionScroll(' + anchor + ')');
           Drupal.behaviors.ms_global.sectionScroll(anchor);
           if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });
@@ -627,7 +595,7 @@
         });
 
         // initialize the waypoints
-        if (!$('html').hasClass('ie9')) self.initializeWaypoints();
+        self.initializeWaypoints();
 
         // check url and scroll to specific content
         // This scroll is necessary -- even if we're loading the "homepage",
@@ -638,7 +606,7 @@
         setTimeout(function(){
           self.sectionScroll(urlParts['section'], urlParts['item']);
         }, 2000);
-
+*/
         self.create728x90Ad();
 
       }, 2000);
@@ -648,8 +616,7 @@
       $(window).off('popstate');
       $(window).off('hashchange');
 
-/*
-      if (!$('html').hasClass('ie9')) {
+      if ($('html.ie9').length > 0) {
         // Turn on browser history functionality -- for example, browser back button.
         // Popped variable is used to detect initial (useless) popstate.
         // If history.state exists, assume browser isn't going to fire initial popstate.
@@ -672,7 +639,6 @@
           self.sectionScroll(anchor, item);
         });
       }
-*/
 
       // RESIZE
       // set resize and orientation change
@@ -680,10 +646,10 @@
       $(window).bind('resize', function () {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function(){
-          if (!self.globalInitialPageLoad) self.resizeResponse();
+//          if (!self.globalInitialPageLoad) self.resizeResponse();
         }, 250);
       });
-      window.addEventListener('orientationchange', self.resizeResponse);
+//      window.addEventListener('orientationchange', self.resizeResponse);
 
     }
   }

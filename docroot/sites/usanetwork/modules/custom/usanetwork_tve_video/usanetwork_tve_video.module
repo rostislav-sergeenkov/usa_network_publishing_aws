@@ -182,7 +182,7 @@ function usanetwork_tve_video_auth_menu() {
     '#suffix' => '</div>',
   );
   $theme_variables = array(
-    'authbar' => !empty($lock) ? (!empty($auth_links) ? drupal_render($auth_links) : '') : '',
+    'authbar' => drupal_render($auth_links),
   );
   return theme('usanetwork_tve_video_auth_menu', $theme_variables);
 }

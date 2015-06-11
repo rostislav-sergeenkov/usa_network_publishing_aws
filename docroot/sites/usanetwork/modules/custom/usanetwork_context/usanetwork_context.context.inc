@@ -172,6 +172,7 @@ function usanetwork_context_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('All shows landing page');
+  t('shows');
   $export['shows_landing'] = $context;
 
   $context = new stdClass();
@@ -257,6 +258,7 @@ function usanetwork_context_context_default_contexts() {
         '*/episodes' => '*/episodes',
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
+        'shows' => 'shows',
       ),
     ),
     'taxonomy_term' => array(

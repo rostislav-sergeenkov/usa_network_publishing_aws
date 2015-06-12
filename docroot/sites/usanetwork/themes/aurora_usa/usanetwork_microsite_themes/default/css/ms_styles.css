@@ -152,6 +152,9 @@ body{
 .page-node-microsite #main {
   padding: 0;
 }
+header .primary-nav #logo {
+  display: none;
+}
 #microsite {
   background-image: url("../images/suits_inspiration_critic_bg.jpg");
   background-position: center top;

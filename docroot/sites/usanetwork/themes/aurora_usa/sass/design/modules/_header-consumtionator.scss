@@ -27,9 +27,9 @@
         display: block;
         height: 100%;
         width: 100%;
-        max-width: calc(100% - 9.76vw);
+        max-width: calc(100% - (9.76vw + 7.12195vw));
         @include breakpoint($bp-min-1901-width) {
-          max-width: calc(100% - 185px);
+          max-width: calc(100% - 320px);
         }
         @include breakpoint($bp-768-width) {
           clear: none;
@@ -178,6 +178,33 @@
             }
           }
 
+        }
+      }
+    }
+    .tve-help-link {
+      float: right;
+      display: table;
+      height: 100%;
+      @include breakpoint($bp-768-width) {
+        display: none;
+      }
+      a {
+        color: #ffffff;
+      }
+      &.signOut {
+        &:hover {
+          background: $consup-border;
+        }
+        .links-wrapper {
+          border-left: 1px solid $consup-border;
+        }
+      }
+      &.signIn {
+        &.no-auth {
+          border-left: 1px solid $consup-border;
+          &:hover {
+            background: $consup-border;
+          }
         }
       }
     }
@@ -403,33 +430,6 @@
         }
         .menu-item.info {
           border-right: none;
-        }
-      }
-      .tve-help-link {
-        float: right;
-        display: table;
-        height: 100%;
-        @include breakpoint($bp-768-width) {
-          display: none;
-        }
-        a {
-          color: #ffffff;
-        }
-        &.signOut {
-          &:hover {
-            background: $consup-border;
-          }
-          .links-wrapper {
-            border-left: 1px solid $consup-border;
-          }
-        }
-        &.signIn {
-          &.no-auth {
-            border-left: 1px solid $consup-border;
-            &:hover {
-              background: $consup-border;
-            }
-          }
         }
       }
     }

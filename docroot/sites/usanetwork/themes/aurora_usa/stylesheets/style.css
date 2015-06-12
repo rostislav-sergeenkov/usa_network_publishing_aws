@@ -7293,6 +7293,7 @@ header #tve-help-link-wrapper .pane-content {
 }
 header .tve-help-link {
   display: table;
+  float: right;
   height: 100%;
 }
 @media (max-width: 768px) {
@@ -8098,11 +8099,11 @@ header .tve-help-link.signIn .inlineLoader {
   display: block;
   height: 100%;
   width: 100%;
-  max-width: calc(100% - 9.76vw);
+  max-width: calc(100% - (9.76vw + 7.12195vw));
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs, .node-type-person header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 185px);
+    max-width: calc(100% - 320px);
   }
 }
 @media (max-width: 768px) {
@@ -8267,6 +8268,31 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before {
   background-color: inherit;
+}
+.consumptionator-page header .tve-help-link, .node-type-catchall-page header .tve-help-link, .page-videos-live header .tve-help-link, .node-type-media-gallery header .tve-help-link, .node-type-person header .tve-help-link {
+  float: right;
+  display: table;
+  height: 100%;
+}
+@media (max-width: 768px) {
+  .consumptionator-page header .tve-help-link, .node-type-catchall-page header .tve-help-link, .page-videos-live header .tve-help-link, .node-type-media-gallery header .tve-help-link, .node-type-person header .tve-help-link {
+    display: none;
+  }
+}
+.consumptionator-page header .tve-help-link a, .node-type-catchall-page header .tve-help-link a, .page-videos-live header .tve-help-link a, .node-type-media-gallery header .tve-help-link a, .node-type-person header .tve-help-link a {
+  color: #ffffff;
+}
+.consumptionator-page header .tve-help-link.signOut:hover, .node-type-catchall-page header .tve-help-link.signOut:hover, .page-videos-live header .tve-help-link.signOut:hover, .node-type-media-gallery header .tve-help-link.signOut:hover, .node-type-person header .tve-help-link.signOut:hover {
+  background: #363636;
+}
+.consumptionator-page header .tve-help-link.signOut .links-wrapper, .node-type-catchall-page header .tve-help-link.signOut .links-wrapper, .page-videos-live header .tve-help-link.signOut .links-wrapper, .node-type-media-gallery header .tve-help-link.signOut .links-wrapper, .node-type-person header .tve-help-link.signOut .links-wrapper {
+  border-left: 1px solid #363636;
+}
+.consumptionator-page header .tve-help-link.signIn.no-auth, .node-type-catchall-page header .tve-help-link.signIn.no-auth, .page-videos-live header .tve-help-link.signIn.no-auth, .node-type-media-gallery header .tve-help-link.signIn.no-auth, .node-type-person header .tve-help-link.signIn.no-auth {
+  border-left: 1px solid #363636;
+}
+.consumptionator-page header .tve-help-link.signIn.no-auth:hover, .node-type-catchall-page header .tve-help-link.signIn.no-auth:hover, .page-videos-live header .tve-help-link.signIn.no-auth:hover, .node-type-media-gallery header .tve-help-link.signIn.no-auth:hover, .node-type-person header .tve-help-link.signIn.no-auth:hover {
+  background: #363636;
 }
 @media (max-width: 768px) {
   .consumptionator-page header .tab-content, .node-type-catchall-page header .tab-content, .page-videos-live header .tab-content, .node-type-media-gallery header .tab-content, .node-type-person header .tab-content {
@@ -8607,31 +8633,6 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .consumptionator-video-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info {
   border-right: none;
-}
-.consumptionator-video-page header .header-nav-bar .tve-help-link, .page-videos-live header .header-nav-bar .tve-help-link {
-  float: right;
-  display: table;
-  height: 100%;
-}
-@media (max-width: 768px) {
-  .consumptionator-video-page header .header-nav-bar .tve-help-link, .page-videos-live header .header-nav-bar .tve-help-link {
-    display: none;
-  }
-}
-.consumptionator-video-page header .header-nav-bar .tve-help-link a, .page-videos-live header .header-nav-bar .tve-help-link a {
-  color: #ffffff;
-}
-.consumptionator-video-page header .header-nav-bar .tve-help-link.signOut:hover, .page-videos-live header .header-nav-bar .tve-help-link.signOut:hover {
-  background: #363636;
-}
-.consumptionator-video-page header .header-nav-bar .tve-help-link.signOut .links-wrapper, .page-videos-live header .header-nav-bar .tve-help-link.signOut .links-wrapper {
-  border-left: 1px solid #363636;
-}
-.consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth {
-  border-left: 1px solid #363636;
-}
-.consumptionator-video-page header .header-nav-bar .tve-help-link.signIn.no-auth:hover, .page-videos-live header .header-nav-bar .tve-help-link.signIn.no-auth:hover {
-  background: #363636;
 }
 
 .page-videos-live header .header-nav-bar.tve-sign {

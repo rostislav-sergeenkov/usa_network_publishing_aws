@@ -1523,6 +1523,7 @@ header {
   }
   .tve-help-link {
     display: table;
+    float: right;
     height: 100%;
     @include breakpoint($bp-768-width) {
       display: none;

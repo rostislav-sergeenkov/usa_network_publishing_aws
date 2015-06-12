@@ -5,14 +5,29 @@
   position: relative;
   width: 100%;
   .upper-menu {
+    @include clear();
     padding: 0 30px;
     background: $header-tab-back;
-    @include clear();
+    -ms-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
     @include breakpoint($bp-1280-width) {
       padding: 0 20px;
     }
     @include breakpoint($bp-640-width) {
       padding-bottom: 20px;
+    }
+    &.fixed-position {
+      position: fixed;
+      width: 100%;
+      padding-bottom: 20px;
+      z-index: 999;
+      visibility: hidden;
+
+      &.is-visible {
+        visibility: visible;
+      }
     }
     .item-filter {
       .filter-label {

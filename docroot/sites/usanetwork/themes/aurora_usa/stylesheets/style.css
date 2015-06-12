@@ -11971,6 +11971,8 @@ footer h2 {
   .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar {
     background: #1f1f1f;
     bottom: auto;
+    height: 90px;
+    padding-top: 10px;
     position: relative;
     right: auto;
     width: 100%;
@@ -11982,7 +11984,7 @@ footer h2 {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   line-height: 20px;
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   text-transform: uppercase;
 }
 @media (max-width: 1280px) {
@@ -12002,6 +12004,15 @@ footer h2 {
 @media (max-width: 640px) {
   .consumptionator-page .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-tv-episode .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table {
     margin: 0 auto;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container {
+    margin-right: 20px;
+    padding: 0;
+  }
+  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container td > div {
+    font-size: 30px;
   }
 }
 .consumptionator-page .gallery-wrapper:hover .bx-viewport .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper:hover .bx-viewport .bxslider-gallery .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper:hover .bx-viewport .bxslider-gallery .slide .node .slide-info {
@@ -12227,7 +12238,7 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .slide-info .slider-counter {
-    margin-top: 5px;
+    margin-top: 15px;
     padding-right: 0;
     position: static;
     text-align: center;
@@ -12377,9 +12388,8 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
-    bottom: 50px;
     margin-top: 0;
-    top: auto;
+    top: calc(56.25vw + 57px);
   }
 }
 @media (max-width: 480px) {
@@ -16223,11 +16233,15 @@ footer h2 {
     padding: 12px 30px 12px 12px;
   }
 }
+@media (max-width: 640px) {
+  .shows-block .carousel .show-link a {
+    padding: 8px 25px 6px 8px;
+    font-size: 11px;
+  }
+}
 @media (max-width: 480px) {
   .shows-block .carousel .show-link a {
     line-height: 10px;
-    padding: 8px 20px 8px 8px;
-    font-size: 10px;
   }
 }
 .shows-block .carousel .show-link a:after {
@@ -17304,7 +17318,7 @@ footer h2 {
   .shows-block .show-info-block .show-description .node .about-content {
     font-size: 8.75px;
     line-height: 12.5px;
-    margin-top: 12.5px;
+    margin-top: 10px;
   }
 }
 .shows-block .show-info-block .show-description .node .show-link {
@@ -17321,10 +17335,14 @@ footer h2 {
     margin-right: -76px;
   }
 }
+@media (max-width: 640px) {
+  .shows-block .show-info-block .show-description .node .show-link {
+    margin-right: -44px;
+  }
+}
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-description .node .show-link {
     bottom: 5px;
-    margin-right: -43px;
   }
 }
 .shows-block .show-info-block .show-bottom-info {
@@ -17775,10 +17793,12 @@ footer h2 {
 }
 
 #block-usanetwork-tv-shows-usanetwork-tv-shows-mb .show-all-shows-main-block {
+  background: #e9eaeb;
   border-bottom: 2px solid #2c2c2c;
 }
 
 .content .all-shows-landing-page-container {
+  background: #dbdcdd;
   padding-top: 77px;
 }
 @media (max-width: 1280px) {
@@ -18198,13 +18218,14 @@ footer h2 {
   display: block;
 }
 .landing-page-container .upper-menu .sorters-description h1 {
+  color: #666666;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
   float: left;
   line-height: 4em;
   font-size: 18px;
   letter-spacing: 1px;
-  color: #666666;
 }
 @media (max-width: 1280px) {
   .landing-page-container .upper-menu .sorters-description h1 {

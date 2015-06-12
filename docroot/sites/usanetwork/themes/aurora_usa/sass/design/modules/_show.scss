@@ -170,10 +170,12 @@
           line-height: 20px;
           padding: 12px 30px 12px 12px;
         }
+        @include breakpoint($bp-640-width) {
+          padding: 8px 25px 6px 8px;
+          font-size: 11px;
+        }
         @include breakpoint($bp-480-width) {
           line-height: 10px;
-          padding: 8px 20px 8px 8px;
-          font-size: 10px;
         }
         &:after {
           color: #ffffff;
@@ -994,7 +996,7 @@
           @include breakpoint($bp-480-width) {
             font-size: 8.75px;
             line-height: 12.5px;
-            margin-top: 12.5px;
+            margin-top: 10px;
           }
         }
         .show-link {
@@ -1008,9 +1010,11 @@
             right: 50%;
             margin-right: -76px;
           }
+          @include breakpoint($bp-640-width) {
+            margin-right: -44px;
+          }
           @include breakpoint($bp-480-width) {
             bottom: 5px;
-            margin-right: -43px;
           }
         }
       }

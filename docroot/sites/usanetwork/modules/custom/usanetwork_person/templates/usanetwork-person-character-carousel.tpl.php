@@ -5,7 +5,7 @@
 ?>
 
 <div class="items-block-title characters-block-title">
-  <h2><?php print !empty($video_type) ? $video_type : '';?></h2>
+  <h2><?php print !empty($block_title) ? $block_title : '';?></h2>
 </div>
 <?php if (!empty($items_v)): ?>
 <div class="episodes-list-slider vertical" data-mode="vertical">

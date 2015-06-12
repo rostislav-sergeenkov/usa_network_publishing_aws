@@ -1050,7 +1050,7 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     if (!empty($node->field_cover_item)) {
       $image = $entity_wrapper->field_cover_item->value();
     }
-    if (!empty($node->field_gigya_share_bar)) {
+    if (isset($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this gallery');
     }

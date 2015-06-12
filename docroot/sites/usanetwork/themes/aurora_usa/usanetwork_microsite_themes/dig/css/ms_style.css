@@ -323,6 +323,9 @@ you can use the generic selector below, but it's slower:
 #main {
   width: 100%;
 }
+header .primary-nav #logo {
+  display: none;
+}
 #microsite {
   height: auto;
   width: 100%;

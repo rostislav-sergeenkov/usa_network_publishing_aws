@@ -78,7 +78,6 @@
     <span id="site-name">
       <?php print $site_name; ?>
     </span>
-    <?php if ($page['display_global_nav']): ?>
       <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
         <div class="primary-nav">
           <?php print render($page['personalization_trigger']); ?>
@@ -90,7 +89,6 @@
           <?php print render($page['header']); ?>
         </div>
       </div>
-    <?php endif; ?>
   </header>
 <?php endif; ?>
 <!-- /TOP TITLE AND TOOLS BAR -->

@@ -15,6 +15,9 @@
   <div class="tab-content">
     <div class="tab-item shows-tab">
       <div class="show-tab-wrapper tab-item-wrapper">
+        <div class="see-all-link">
+          <a href="/shows">see all shows</a>
+        </div>
         <?php print $content['reg_tab_shows']; ?>
       </div>
     </div>

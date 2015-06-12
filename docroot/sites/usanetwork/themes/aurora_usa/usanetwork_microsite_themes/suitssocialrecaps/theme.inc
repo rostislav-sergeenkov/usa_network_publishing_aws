@@ -95,11 +95,11 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
  */
 function usanetwork_microsite_suitssocialrecaps_get_theme_settings() {
   return array(
-    'display_global_nav' => TRUE,
+    'display_global_nav' => FALSE,
+    'consumptionator_menu' => 'catchall_page',
     'short_name_for_full_episodes' => TRUE,
     'videos_all_videos_filter' => FALSE,
     'videos_season_filters' => FALSE,
     'sections_use_ajax' => FALSE,
-
   );
 }

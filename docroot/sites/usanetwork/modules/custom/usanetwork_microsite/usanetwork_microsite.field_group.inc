@@ -201,6 +201,7 @@ function usanetwork_microsite_field_group_info() {
       0 => 'field_seo_h1',
       1 => 'field_seo_page_title',
       2 => 'field_usa_og_description',
+      3 => 'field_usa_og_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

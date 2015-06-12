@@ -280,6 +280,8 @@
           display: none;
         }
         strong {
+          font-family: $avalon-medium;
+          font-weight: normal;
           text-transform: uppercase;
           &:last-child {
             text-transform: uppercase;

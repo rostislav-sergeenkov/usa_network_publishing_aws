@@ -391,12 +391,17 @@
         }
       }
       .additional {
+        display: -webkit-box;
         font-family: $avalon-medium;
         font-size: 13px;
         line-height: 20px;
+        margin-top: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
         text-transform: none;
         white-space: normal;
-        margin-top: 13px;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
         @include breakpoint($bp-min-1601-width) {
           font-size: 19px;
           line-height: 24px;
@@ -404,9 +409,12 @@
           margin-top: 20px;
         }
         @include breakpoint($bp-768-width) {
+
           font-size: get-vw(19px, 768);
+          height: get-row-height(26.6px, 19px, 7, 768);
           line-height: 1.4;
           margin-top: get-vw(20px, 768);
+          -webkit-line-clamp: 7;
         }
       }
       .meta-button {
@@ -486,12 +494,9 @@
       .meta-wrapper {
         height: 100%;
         width: 38%;
-        padding: 30px 30px 0;
-        @include breakpoint($bp-min-1601-width) {
-          padding: 50px 40px 0;
-        }
-        @include breakpoint($bp-1024-width) {
-          padding: 20px 20px 0;
+        padding: get-vw(12px, 768) get-vw(12px, 768) 0;
+        @include breakpoint($bp-min-1901-width) {
+          padding: 29.7px 29.7px 0;
         }
         @include breakpoint($bp-768-width) {
           padding: 12px 12px 0;
@@ -502,18 +507,15 @@
           padding: get-vw(45px, 640) 14.8% 0;
         }
         .meta {
-          height: calc(100% - 83px);
-          @include breakpoint($bp-min-1601-width) {
-            height: calc(100% - 120px);
-          }
-          @include breakpoint($bp-1024-width) {
-            height: calc(100% - 66px);
+          height: calc(100% - 6.25vw);
+          @include breakpoint($bp-min-1901-width) {
+            height: calc(100% - 118.8175px);
           }
           @include breakpoint($bp-768-width) {
-            height: calc(100% - 52px);
+            height: calc(100% - 48px);
           }
           @include breakpoint($bp-640-width) {
-            height: calc(100% - 80px);
+            height: calc(100% - 12.5vw);
           }
         }
         .topic {
@@ -525,7 +527,7 @@
             margin-bottom: 17px;
           }
           @include breakpoint($between-641-768) {
-            font-size: 6.5px;
+            font-size: get-vw(6.5px, 640);
           }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(16px, 640);
@@ -542,7 +544,7 @@
             margin-bottom: 17px;
           }
           @include breakpoint($between-641-768) {
-            font-size: 10px;
+            font-size: get-vw(10px, 640);
           }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(24px, 640);
@@ -559,7 +561,7 @@
             margin-bottom: 17px;
           }
           @include breakpoint($between-641-768) {
-            font-size: 6.5px;
+            font-size: get-vw(6.5px, 640);
           }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(16px, 640);
@@ -570,42 +572,50 @@
           font-family: $avalon-book;
           line-height: 1.5;
           font-size: get-vw(21px, 1901);
+          height: get-row-height(31.5px, 21px, 7, 1901);
           margin-top: get-vw(17px, 1901);
+          max-height: none;
+          -webkit-line-clamp: 7;
           @include breakpoint($bp-min-1901-width) {
             font-size: 21px;
             margin-top: 17px;
           }
           @include breakpoint($between-641-768) {
-            font-size: 8.5px;
+            font-size: get-vw(8.5px, 640);
+            height: get-row-height(12.75px, 8.5px, 4, 640);
+            -webkit-line-clamp: 4;
           }
           @include breakpoint($bp-640-width) {
+            height: get-row-height(31.5px, 21px, 5, 640);
             font-size: get-vw(21px, 640);
             margin-top: get-vw(17px, 640);
+            -webkit-line-clamp: 5;
           }
         }
         .meta-button {
-          font-size: 15px;
           font-family: $avalon-medium;
-          margin-top: 23px;
-          @include breakpoint($bp-min-1601-width) {
+          font-size: get-vw(9px, 768);
+          height: get-vw(22px, 768);
+          margin-top: get-vw(13px, 768);
+          line-height: get-vw(22px, 768);
+          @include breakpoint($bp-min-1901-width) {
             font-size: 23px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 12px;
-            margin-top: 15px;
+            height: 54.4px;
+            line-height: 54.4px;
+            margin-top: 32.17px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: 8.97px;
+            font-size: 9px;
             line-height: 22px;
             height: 22px;
-            margin-top: 15px;
+            margin-top: 13px;
           }
           @include breakpoint($bp-640-width) {
-            font-size: 12px;
-            height: 35px;
-            line-height: 35px;
+            font-size: get-vw(16px, 640);
+            height: get-vw(35px, 640);
+            line-height: get-vw(35px, 640);
             margin: auto;
-            max-width: 260px;
+            width: 50%;
           }
         }
         &:before {

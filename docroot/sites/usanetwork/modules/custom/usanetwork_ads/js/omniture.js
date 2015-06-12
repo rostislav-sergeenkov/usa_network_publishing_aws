@@ -336,6 +336,42 @@
       }
 
       //redesign
+      // Click main menu links
+      $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
+      '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
+      '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function () {
+        $(this).on('click', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            Drupal.behaviors.omniture_tracking.mainMenuTabs($(this));
+          }
+        });
+      });
+
+      // Click on submenu item
+      $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
+      '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
+      '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
+      '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
+      '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
+        $(this).on('click', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+
+            var $self = $(this),
+                sub_menu_name;
+
+            if ($self.hasClass('full-episodes-link')) {
+              sub_menu_name = $self.data('name');
+            } else {
+              sub_menu_name = $self.text();
+            }
+
+            Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
+          }
+        });
+      });
+
       if(!$('body').hasClass('page-node-microsite')) {
 
         // Click promo item
@@ -348,42 +384,6 @@
           });
         });
 
-
-        // Click main menu links
-        $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
-        '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
-        '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
-              Drupal.behaviors.omniture_tracking.mainMenuTabs($(this));
-            }
-          });
-        });
-
-        // Click on submenu item
-        $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
-        '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
-        '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
-        '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
-        '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
-
-              var $self = $(this),
-                  sub_menu_name;
-
-              if ($self.hasClass('full-episodes-link')) {
-                sub_menu_name = $self.data('name');
-              } else {
-                sub_menu_name = $self.text();
-              }
-
-              Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
-            }
-          });
-        });
 
         // Click on submenu schedule items
         $('header .schedule-tab a').once('omniture-tracking', function () {

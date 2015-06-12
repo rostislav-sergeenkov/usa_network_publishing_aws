@@ -172,7 +172,7 @@
         }
         @include breakpoint($bp-640-width) {
           padding: 8px 25px 6px 8px;
-          font-size: 11px;
+          font-size: 10.5px;
         }
         @include breakpoint($bp-480-width) {
           line-height: 10px;
@@ -945,8 +945,8 @@
             line-height: get-vw(24px, 768);
           }
           @include breakpoint($bp-480-width) {
-            font-size: 9px;
-            line-height: 15px;
+            font-size: 7px;
+            line-height: 12px;
           }
         }
         .subheading {
@@ -968,8 +968,8 @@
             line-height: get-vw(38px, 768);
           }
           @include breakpoint($bp-480-width) {
-            font-size: 18.75px;
-            line-height: 23.75px;
+            font-size: 15px;
+            line-height: 20px;
           }
         }
         .about-content {
@@ -994,9 +994,9 @@
             margin-top: get-vw(20px, 768);
           }
           @include breakpoint($bp-480-width) {
-            font-size: 8.75px;
-            line-height: 12.5px;
-            margin-top: 10px;
+            font-size: 8px;
+            line-height: 11px;
+            margin-top: 0px;
           }
         }
         .show-link {

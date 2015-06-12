@@ -8184,6 +8184,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     margin: 20px 0 0;
   }
 }
+.consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info h1, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .meta-info h1, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .meta-info h1, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .meta-info h1, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .meta-info h1 {
+  margin: 0;
+}
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .caption, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .caption, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .caption {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 0.97561vw;

@@ -83,8 +83,8 @@
           <?php endforeach; ?>
         </ul>
         <div class="horizontal-controls">
-          <a href="javascript:void(0)" class="jcarousel-control-prev"></a>
-          <a href="javascript:void(0)" class="jcarousel-control-next"></a>
+          <a href="javascript:void(0)" class="jcarousel-control-prev link-color-reset"></a>
+          <a href="javascript:void(0)" class="jcarousel-control-next link-color-reset"></a>
         </div>
         <div class="more-button-wrapper">
           <a href="javascript:void(o)" class="more-button more">

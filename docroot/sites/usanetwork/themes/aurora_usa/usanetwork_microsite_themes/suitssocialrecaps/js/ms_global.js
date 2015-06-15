@@ -283,10 +283,9 @@
       // Example 1: Dig : Gallery : Ancient Relics : Photo 1
       // Example 2: Graceland : Graceland Catchup : Timeline : Graceland Timeline : S1 E2 Scene 3
       var joinStr = ' : ',
-          omnitureArray = [],
-          showName = s.prop10;
-      if (showName != siteName) {
-        omnitureArray.push(showName); // show_name
+          omnitureArray = [];
+      if (s.prop10 != siteName) { // s.prop10 == show_name
+        omnitureArray.push(s.prop10); // show_name
       }
       omnitureArray.push(siteName); // microsite_name
       if (altContentType) omnitureArray.push(altContentType); // content_type

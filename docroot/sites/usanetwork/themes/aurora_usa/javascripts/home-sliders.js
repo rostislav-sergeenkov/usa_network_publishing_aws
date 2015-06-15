@@ -70,6 +70,12 @@
               shiftPercent = parseInt($(nextSlideOffset).attr('data-shift-percent'));
           shiftPercent = ((shiftPercent != 'undefined') || (shiftPercent != '')) ? shiftPercent : 0;
 
+          if(shiftPercent < 0 && shiftPercent < -100) {
+            shiftPercent = 0;
+          } else if(shiftPercent > 0) {
+            shiftPercent = 0;
+          }
+
           $(nextSlideImg).css('margin-left', shiftPercent + '%');
           $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 0.5);
           $(nextSlideInner).css('width', parseInt($(window).width())).animate({

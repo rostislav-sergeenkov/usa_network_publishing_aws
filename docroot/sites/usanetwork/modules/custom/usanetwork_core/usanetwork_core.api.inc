@@ -130,7 +130,7 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
     case 'tv_episode': return 'episode-info-icon-default';
   }
 
-  return 'video-icon';
+  return 'full-video-icon-default';
 }
 
 /**

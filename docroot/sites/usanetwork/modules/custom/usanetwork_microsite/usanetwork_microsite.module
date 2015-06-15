@@ -257,7 +257,6 @@ function usanetwork_microsite_gallery_preprocess_field(&$vars) {
 function usanetwork_microsite_context_load_alter(&$context) {
   if ($context->name == 'usanetwork_microsite') {
     if (is_numeric(arg(1)) && arg(2) == 'microsite') {
-      $node = menu_get_object();
       if (!usanetwork_microsite_process_setting_data('display_global_nav', 'bool') &&
         isset($context->reactions['block']['blocks']['usanetwork_menu-usanetwork_menu_sm_menu'])
       ) {
@@ -2441,6 +2440,9 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       break;
   }
 
+  if (usanetwork_microsite_process_setting_data('consumptionator_menu')) {
+    $vars['classes_array'][] = 'consumptionator-page';
+  }
   // If there are head titles print the new ones
   if (!empty($head_title)) {
     $vars['head_title'] = $head_title;

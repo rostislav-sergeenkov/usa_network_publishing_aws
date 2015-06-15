@@ -50,9 +50,6 @@ usa_debug('============== parent.setIframeHeight(' + ifrmHeight + ')');
           basePageName = siteName + ' | USA Network',
           self = this;
 
-      // @TODO: SHOULD WE ADD THIS CLASS HERE? DOES ADDING THIS CLASS ADD ANY OTHER FUNCTIONALITY THAT MAYBE WE DON'T WANT?
-      $('body').addClass('consumptionator-page');
-
       // Create IE + others compatible event handler
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];

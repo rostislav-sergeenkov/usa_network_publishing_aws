@@ -1265,10 +1265,14 @@ function _usanetwork_menu_consumptionator_usanetwork_microsite($node) {
       $entity_wrapper = entity_metadata_wrapper('node', $node);
       $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'home');
       $image = $section_wrapper->field_usa_og_image->value();
-      if (!empty($node->field_gigya_share_bar)) {
-        $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
-        $sharebar['#title'] = t('Share');
-      }
+      $sharebar = '
+                <div class="sharebar">
+                  <h3 class="field-label">Share</h3>
+                  <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-above">
+                    <div id="gigya-share"></div>
+                  </div>
+                </div>
+      ';
       $seo_h1 =  _usanetwork_microsite_get_default_h1($node, 'home');
       $description = $section_wrapper->field_usa_og_description->value();
       $theme_variables = array(

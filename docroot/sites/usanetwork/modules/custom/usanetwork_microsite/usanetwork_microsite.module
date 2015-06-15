@@ -1266,27 +1266,29 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       $theme_variables['filter_list_active'] = $active_filter;
       $theme_variables['filter_list'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => array('filter-menu'))));
     }
-    // Get video file.
-    $file = $video_files[$show_in_player];
-    // Get player variables.
-    $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
-    $microsite_theme_name = _usanetwork_microsite_get_current_theme_name();
+    if ($show_in_player !== NULL) {
+      // Get video file.
+      $file = $video_files[$show_in_player];
+      // Get player variables.
+      $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
+      $microsite_theme_name = _usanetwork_microsite_get_current_theme_name();
 
-    $menu_items = _usa_auth_prepare_menu_items();
-    $links = array(
-      '#theme' => 'item_list',
-      '#items' => $menu_items,
-      '#attributes' => array('class' => array('tve-header-links', 'inline')),
-      '#prefix' => '<div class="links-wrapper">',
-      '#suffix' => '</div>',
-    );
+      $menu_items = _usa_auth_prepare_menu_items();
+      $links = array(
+        '#theme' => 'item_list',
+        '#items' => $menu_items,
+        '#attributes' => array('class' => array('tve-header-links', 'inline')),
+        '#prefix' => '<div class="links-wrapper">',
+        '#suffix' => '</div>',
+      );
 
-    $theme_variables['in_player'] = array(
-      'links' => $links
-    );
-    $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
-    $video_desc = array_merge($video_desc, _usanetwork_microsite_set_status_and_h1_variables($file, $section_wrapper));
-    $theme_variables['video_desc'] = theme($theme_registry_name, $video_desc);
+      $theme_variables['in_player'] = array(
+        'links' => $links
+      );
+      $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
+      $video_desc = array_merge($video_desc, _usanetwork_microsite_set_status_and_h1_variables($file, $section_wrapper));
+      $theme_variables['video_desc'] = theme($theme_registry_name, $video_desc);
+    }
   }
   return $theme_variables;
 }

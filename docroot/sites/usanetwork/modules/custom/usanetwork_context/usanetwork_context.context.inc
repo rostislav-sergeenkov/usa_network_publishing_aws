@@ -149,7 +149,7 @@ function usanetwork_context_context_default_contexts() {
         'usanetwork_menu-usanetwork_menu_page_header' => array(
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_page_header',
-          'region' => 'content',
+          'region' => 'header',
           'weight' => '-10',
         ),
         'usanetwork_tv_shows-usanetwork_tv_shows_mb' => array(
@@ -258,6 +258,7 @@ function usanetwork_context_context_default_contexts() {
         '*/episodes' => '*/episodes',
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
+        'shows' => 'shows',
       ),
     ),
     'taxonomy_term' => array(

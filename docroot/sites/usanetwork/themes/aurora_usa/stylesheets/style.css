@@ -8611,9 +8611,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   .page-videos-live .block-usanetwork-menu.open .tve-help-link.signOut .tve-header-links .first {
     display: none;
   }
-  .page-videos-live .block-usanetwork-menu.open .tab-content .tab-item {
-    padding-top: 5px;
-  }
 }
 
 #jPanelMenu-menu {

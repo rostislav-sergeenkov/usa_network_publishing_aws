@@ -1,10 +1,12 @@
 #block-usanetwork-tv-shows-usanetwork-tv-shows-mb {
   .show-all-shows-main-block {
+    background: $poll-back;
     border-bottom: 2px solid $usa-logo-back;
   }
 }
 .content {
   .all-shows-landing-page-container {
+    background: $footer-promo-links;
     padding-top: 77px;
     @include breakpoint($bp-1280-width) {
       padding-top: 55px;

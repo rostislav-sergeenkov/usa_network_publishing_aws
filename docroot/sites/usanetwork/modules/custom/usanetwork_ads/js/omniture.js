@@ -509,7 +509,7 @@
         };
       });
 
-      // Quizes omniture tracking. Track show Question
+      // Quizzes omniture tracking. Track show Question
       $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function () {
         $(this).on('show', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
@@ -536,7 +536,7 @@
         });
       });
 
-      // Quizes omniture tracking. Track answer Question
+      // Quizzes omniture tracking. Track answer Question
       $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function () {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {

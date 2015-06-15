@@ -66,6 +66,8 @@
       @include breakpoint($bp-640-width) {
         background: $gallery-description-back;
         bottom: auto;
+        height: 90px;
+        padding-top: 10px;
         position: relative;
         right: auto;
         width: 100%;
@@ -76,7 +78,7 @@
         font-family: $avalon-book;
         line-height: 20px;
         margin-top: 0;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         text-transform: uppercase;
         @include breakpoint($bp-1280-width) {
           font-size: 12px;
@@ -91,6 +93,15 @@
         table {
           @include breakpoint($bp-640-width) {
             margin: 0 auto;
+          }
+        }
+      }
+      .gig-button-container {
+        @include breakpoint($bp-640-width) {
+          margin-right: 20px;
+          padding: 0;
+          td > div {
+            font-size: 30px;
           }
         }
       }
@@ -290,7 +301,7 @@
                 }
               }
               @include breakpoint($bp-640-width) {
-                margin-top: 5px;
+                margin-top: 15px;
                 padding-right: 0;
                 position: static;
                 text-align: center;
@@ -433,9 +444,8 @@
               width: 44px;
             }
             @include breakpoint($bp-1024-width) {
-              bottom: 50px;
               margin-top: 0;
-              top: auto;
+              top: calc(56.25vw + 57px);
             }
             @include breakpoint($bp-480-width) {
               height: 30px;

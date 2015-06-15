@@ -281,13 +281,14 @@
     }
     .sorters-description {
       h1 {
-      width: 100%;
-      margin: 0;
-      float: left;
-      line-height: 4em;
-      font-size: 18px;
-      letter-spacing: 1px;
-      color: $header-tab-text;
+        color: $header-tab-text;
+        font-family: $avalon-medium;
+        width: 100%;
+        margin: 0;
+        float: left;
+        line-height: 4em;
+        font-size: 18px;
+        letter-spacing: 1px;
         @include breakpoint($bp-1280-width) {
           font-size: 12px;
         }

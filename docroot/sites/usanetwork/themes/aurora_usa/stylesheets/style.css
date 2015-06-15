@@ -18870,14 +18870,10 @@ footer h2 {
     padding: 5px 0 5px calc(5% + 5px);
   }
 }
-@media (min-width: 641px) and (max-width: 768px) {
+@media (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
+    padding: 8px 25px 8px 10px;
     font-size: 10px;
-  }
-}
-@media (max-width: 640px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    padding: 8px 35px 8px 10px;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a .font-icon {
@@ -18928,7 +18924,7 @@ footer h2 {
 @media (max-width: 640px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links {
     margin-top: 20px;
-    width: 50%;
+    width: 100%;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a {

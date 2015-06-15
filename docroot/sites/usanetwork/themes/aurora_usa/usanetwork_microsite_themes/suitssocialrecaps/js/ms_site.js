@@ -29,13 +29,13 @@
             hostname = window.location.hostname,
             env = hostname.replace('.usanetwork.com', '');
         ifrm.contentWindow.postMessage(env, 'http://offerpop.com');
-usa_debug('========== initIframeResize(), env: ' + env);
+//usa_debug('========== initIframeResize(), env: ' + env);
       }, delay);
     },
 
     // setIframeHeight
     setIframeHeight: function(ifrmHeight) {
-usa_debug('============== parent.setIframeHeight(' + ifrmHeight + ')');
+//usa_debug('============== parent.setIframeHeight(' + ifrmHeight + ')');
       var ifrm = document.getElementById('offerpop-iframe');
       ifrm.style.visibility = 'hidden';
       ifrm.style.height = ifrmHeight;
@@ -58,7 +58,7 @@ usa_debug('============== parent.setIframeHeight(' + ifrmHeight + ')');
       // Listen to message from child window
       eventer(messageEvent,function(e) {
         if (e.origin == 'http://offerpop.com') {
-usa_debug('parent received message!:  ' + e.data);
+//usa_debug('parent received message!:  ' + e.data);
           self.setIframeHeight(e.data);
         }
       }, false);
@@ -67,6 +67,17 @@ usa_debug('parent received message!:  ' + e.data);
         if (self.initialPageLoad) {
           $('header').prepend('<div id="head-leaderboard" class="ad-leaderboard"></div>');
           Drupal.behaviors.ms_global.create728x90Ad();
+
+          // set-up menu gigya share bar
+          var $infoContainer = $('#mega-nav'),
+              gigyaSettings = {
+                containerId: 'menu-gigya-share',
+                title: siteName,
+                description: $infoContainer.find('.description').text().trim(),
+                imageSrc: $infoContainer.find('.asset-img img').attr('src'),
+                url: window.location.href
+              };
+          if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.updateGigyaSharebar == 'function') Drupal.behaviors.ms_gigya.updateGigyaSharebar(1, gigyaSettings);
         }
         $('#offerpop-iframe').on('load', function(){ self.initIframeResize(4000); });
         self.initialPageLoad = false;

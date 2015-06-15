@@ -79,6 +79,7 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
     'js' => array(
       '/sites/usanetwork/modules/contrib/gigya/js/gigya_sharebar.js',
       $site_theme_path . '/js/ms_site.js',
+      $site_default_theme_path . '/js/ms_gigya.js',
       $site_theme_path . '/js/ms_global.js',
       $site_default_theme_path . '/js/ms_videos.js',
       $site_default_theme_path . '/js/ms_video_endcard.js',

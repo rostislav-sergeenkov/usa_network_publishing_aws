@@ -1921,6 +1921,9 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
   $player_id = '';
   $count = 0;
   $node = menu_get_object();
+  if (!$node) {
+    $node = menu_get_object('node', 3);
+  }
   foreach ($node_wrapper_field as $field_wrapper) {
     $mp4_url = $field_wrapper->field_mp4_video_url->value();
     $webm_url = $field_wrapper->field_webm_video_url->value();

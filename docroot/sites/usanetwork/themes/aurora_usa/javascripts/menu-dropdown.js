@@ -9,15 +9,13 @@
       header_submenu_h = subMenuSelector.outerHeight(true);
 
       function switchState() {
-        subMenuSelector.toggleClass('sticky-shows-submenu');
         $body.toggleClass('sub-menu-is-sticky');
-        setTimeout(function() {
+        subMenuSelector.toggleClass('sticky-shows-submenu');
           if($body.hasClass('sub-menu-is-sticky')) {
             $body.css('margin-top', header_submenu_h);
           } else {
             $body.css('margin-top', 0);
           }
-        }, 10);
       }
 
       if($(window).width() >= window_size_tablet_portrait) {

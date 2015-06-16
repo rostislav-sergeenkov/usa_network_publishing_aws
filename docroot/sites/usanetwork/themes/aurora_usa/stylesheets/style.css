@@ -15651,6 +15651,11 @@ footer h2 {
     width: 100%;
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .download-app {
+    height: 56vw;
+  }
+}
 .consum-sidebar .download-app .download-app-wrapper {
   display: table-cell;
   position: relative;
@@ -15727,6 +15732,13 @@ footer h2 {
     margin-left: calc(50% - 205px);
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .download-app .image-block {
+    margin-left: 9%;
+    width: 42%;
+    height: 64%;
+  }
+}
 @media (max-width: 480px) {
   .consum-sidebar .download-app .image-block {
     height: 136px;
@@ -15759,10 +15771,20 @@ footer h2 {
     margin-left: calc(50% + 10px);
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .download-app .text-block {
+    margin-left: calc(50% + 49px);
+    max-width: 165px;
+    font-size: 20px;
+    margin-top: 3.4%;
+  }
+}
 @media (max-width: 480px) {
   .consum-sidebar .download-app .text-block {
     font-size: 14px;
-    max-width: 150px;
+    max-width: 131px;
+    margin-left: calc(50% + 15px);
+    margin-top: 5px;
   }
 }
 .consum-sidebar .download-app .download-button {
@@ -15836,9 +15858,20 @@ footer h2 {
     font-size: 14px;
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .download-app .download-button {
+    margin-left: calc(50% + 49px);
+    margin-top: 5.1%;
+    width: 30.5%;
+    min-width: 163px;
+  }
+}
 @media (max-width: 480px) {
   .consum-sidebar .download-app .download-button {
     width: 130px;
+    margin-left: calc(50% + 15px);
+    min-width: initial;
+    margin-top: 10px;
   }
   .consum-sidebar .download-app .download-button a {
     font-size: 10px;

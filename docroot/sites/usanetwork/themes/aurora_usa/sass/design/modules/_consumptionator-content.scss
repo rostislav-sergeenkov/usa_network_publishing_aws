@@ -529,6 +529,9 @@
     @include breakpoint($bp-768-width) {
       width: 100%;
     }
+    @include breakpoint($bp-640-width) {
+      height: 56vw;
+    }
     .download-app-wrapper {
       display: table-cell;
       position: relative;
@@ -592,6 +595,11 @@
         float: left;
         margin-left: calc(50% - 205px);
       }
+      @include breakpoint($bp-640-width) {
+        margin-left: 9%;
+        width: 42%;
+        height: 64%;
+      }
       @include breakpoint($bp-480-width) {
         height: 136px;
         margin-left: calc(50% - 150px);
@@ -616,9 +624,17 @@
       @include breakpoint($bp-1024-width) {
         margin-left: calc(50% + 10px);
       }
+      @include breakpoint($bp-640-width) {
+        margin-left: calc(50% + 49px);
+        max-width: 165px;
+        font-size: 20px;
+        margin-top: 3.4%;
+      }
       @include breakpoint($bp-480-width) {
         font-size: 14px;
-        max-width: 150px;
+        max-width: 131px;
+        margin-left: calc(50% + 15px);
+        margin-top: 5px;
       }
     }
     .download-button {
@@ -681,8 +697,17 @@
           font-size: 14px;
         }
       }
+      @include breakpoint($bp-640-width) {
+        margin-left: calc(50% + 49px);
+        margin-top: 5.1%;
+        width: 30.5%;
+        min-width: 163px;
+      }
       @include breakpoint($bp-480-width) {
         width: 130px;
+        margin-left: calc(50% + 15px);
+        min-width: initial;
+        margin-top: 10px;
         a {
           font-size: 10px;
           padding: 5px 10px 5px 5px;

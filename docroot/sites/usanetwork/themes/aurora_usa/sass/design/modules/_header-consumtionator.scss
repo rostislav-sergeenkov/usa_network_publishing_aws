@@ -418,6 +418,12 @@
     }
     .header-nav-bar {
 
+      &.tve-sign {
+        @include breakpoint($between-769-1024) {
+          margin-bottom: 35px;
+        }
+      }
+
       .nav-bar-tabs {
         max-width: calc(100% - 17vw);
         @include breakpoint($bp-min-1901-width) {
@@ -440,7 +446,7 @@
         display: block !important;
         height: 100%;
         @include breakpoint($bp-768-width) {
-          display: none;
+          display: none !important;
         }
         a {
           color: #ffffff;

@@ -1,0 +1,330 @@
+<?php
+
+/**
+ * @file
+ * Tests text filters html5_tools replacements.
+ */
+
+/**
+ * Unit tests for core filters.
+ */
+class Html5FilterUnitTestCase extends DrupalUnitTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'HTML5 Tools Filters',
+      'description' => 'Tests HTML5 Tools filters individually.',
+      'group' => 'HTML5 Tools',
+    );
+  }
+
+  function setUp() {
+    parent::setUp();
+
+    drupal_load('module', 'xautoload');
+    drupal_load('module', 'html5_tools');
+    _xautoload_register();
+    spl_autoload_unregister('drupal_autoload_class');
+    spl_autoload_unregister('drupal_autoload_interface');
+  }
+
+  /**
+   * Tests filter settings, defaults, access restrictions and similar.
+   *
+   * @todo This is for functions like filter_filter and check_markup, whose
+   *   functionality is not completely focused on filtering. Some ideas:
+   *   restricting formats according to user permissions, proper cache
+   *   handling, defaults -- allowed tags/attributes/protocols.
+   *
+   * @todo It is possible to add script, iframe etc. to allowed tags, but this
+   *   makes HTML filter completely ineffective.
+   *
+   * @todo Class, id, name and xmlns should be added to disallowed attributes,
+   *   or better a whitelist approach should be used for that too.
+   */
+  function testHtmlFilter() {
+    // Setup dummy filter object.
+    $filter = new stdClass();
+    $filter->settings = array(
+      'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd>',
+      'filter_html_help' => 1,
+      'filter_html_nofollow' => 0,
+    );
+
+    // HTML filter is not able to secure some tags, these should never be
+    // allowed.
+    $f = _html5_tools_filter_html('<script />', $filter);
+    $this->assertNoNormalized($f, 'script', 'HTML filter should always remove script tags.');
+
+    $f = _html5_tools_filter_html('<iframe />', $filter);
+    $this->assertNoNormalized($f, 'iframe', 'HTML filter should always remove iframe tags.');
+
+    $f = _html5_tools_filter_html('<object />', $filter);
+    $this->assertNoNormalized($f, 'object', 'HTML filter should always remove object tags.');
+
+    $f = _html5_tools_filter_html('<style />', $filter);
+    $this->assertNoNormalized($f, 'style', 'HTML filter should always remove style tags.');
+
+    // Some tags make CSRF attacks easier, let the user take the risk herself.
+    $f = _html5_tools_filter_html('<img />', $filter);
+    $this->assertNoNormalized($f, 'img', 'HTML filter should remove img tags on default.');
+
+    $f = _html5_tools_filter_html('<input />', $filter);
+    $this->assertNoNormalized($f, 'img', 'HTML filter should remove input tags on default.');
+
+    // Filtering content of some attributes is infeasible, these shouldn't be
+    // allowed too.
+    $f = _html5_tools_filter_html('<p style="display: none;" />', $filter);
+    $this->assertNoNormalized($f, 'style', 'HTML filter should remove style attribute on default.');
+
+    $f = _html5_tools_filter_html('<p onerror="alert(0);" />', $filter);
+    $this->assertNoNormalized($f, 'onerror', 'HTML filter should remove on* attributes on default.');
+
+    $f = _html5_tools_filter_html('<code onerror>&nbsp;</code>', $filter);
+    $this->assertNoNormalized($f, 'onerror', 'HTML filter should remove empty on* attributes on default.');
+  }
+
+  /**
+   * Test HTML5 tags.
+   */
+  function testHtml5Tags() {
+    $filter = new stdClass();
+    $filter->settings = array(
+      'allowed_html' => '<a>',
+      'filter_html_help' => 1,
+      'filter_html_nofollow' => 1,
+    );
+
+    $test_markup = '<video></video><a href="https://duckduckgo.com">Test link</a>';
+
+    // Test that we still get an <a> tag back.
+    $f = _html5_tools_filter_html($test_markup, $filter);
+    $this->assertNormalized($f, '<a href', 'HTML5 Tags: None enabled');
+
+    // Now enable the video element
+    $filter->settings['allowed_html'] = '<a> <video>';
+
+    $f = _html5_tools_filter_html($test_markup, $filter);
+    $this->assertNormalized($f, 'video', 'HTML5 Tags: Video enabled');
+  }
+
+  /**
+   * Test HTML5 tags.
+   */
+  function testHtml5Attributes() {
+    $filter = new stdClass();
+    $filter->settings = array(
+      'allowed_html' => '<a>',
+      'filter_html_help' => 1,
+      'filter_html_nofollow' => 1,
+    );
+
+    $test_markup = '<a href="https://duckduckgo.com" data-arbitrary-string="arbitrary-value">Test link</a>';
+
+    // Test that we still get the attribute in the tag back.
+    $f = _html5_tools_filter_html($test_markup, $filter);
+    $this->assertNormalized($f, 'data-arbitrary-string', 'HTML5 arbitrary attribute: _html5_tools_filter_html works');
+  }
+
+  /**
+   * Tests the spam deterrent.
+   */
+  function testNoFollowFilter() {
+    // Setup dummy filter object.
+    $filter = new stdClass();
+    $filter->settings = array(
+      'allowed_html' => '<a>',
+      'filter_html_help' => 1,
+      'filter_html_nofollow' => 1,
+    );
+
+    // Test if the rel="nofollow" attribute is added, even if we try to prevent
+    // it.
+    $f = _html5_tools_filter_html('<a href="http://www.example.com/">text</a>', $filter);
+    $this->assertNormalized($f, 'rel="nofollow"', 'Spam deterrent -- no evasion.');
+
+    $f = _html5_tools_filter_html('<A href="http://www.example.com/">text</a>', $filter);
+    $this->assertNormalized($f, 'rel="nofollow"', 'Spam deterrent evasion -- capital A.');
+
+    $f = _html5_tools_filter_html("<a/href=\"http://www.example.com/\">text</a>", $filter);
+    $this->assertNormalized($f, 'rel="nofollow"', 'Spam deterrent evasion -- non whitespace character after tag name.');
+
+    $f = _html5_tools_filter_html("<\0a\0 href=\"http://www.example.com/\">text</a>", $filter);
+    $this->assertNormalized($f, 'rel="nofollow"', 'Spam deterrent evasion -- some nulls.');
+
+    $f = _html5_tools_filter_html('<a href="http://www.example.com/" rel="follow">text</a>', $filter);
+    $this->assertNoNormalized($f, 'rel="follow"', 'Spam deterrent evasion -- with rel set - rel="follow" removed.');
+    $this->assertNormalized($f, 'rel="nofollow"', 'Spam deterrent evasion -- with rel set - rel="nofollow" added.');
+  }
+
+  /**
+   * Asserts multiple filter output expectations for multiple input strings.
+   *
+   * @param $filter
+   *   A input filter object.
+   * @param $tests
+   *   An associative array, whereas each key is an arbitrary input string and
+   *   each value is again an associative array whose keys are filter output
+   *   strings and whose values are Booleans indicating whether the output is
+   *   expected or not.
+   *
+   * For example:
+   * @code
+   * $tests = array(
+   *   'Input string' => array(
+   *     '<p>Input string</p>' => TRUE,
+   *     'Input string<br' => FALSE,
+   *   ),
+   * );
+   * @endcode
+   */
+  function assertFilteredString($filter, $tests) {
+    foreach ($tests as $source => $tasks) {
+      $function = $filter->callback;
+      $result = $function($source, $filter);
+      foreach ($tasks as $value => $is_expected) {
+        // Not using assertIdentical, since combination with strpos() is hard to grok.
+        if ($is_expected) {
+          $success = $this->assertTrue(strpos($result, $value) !== FALSE, format_string('@source: @value found.', array(
+            '@source' => var_export($source, TRUE),
+            '@value' => var_export($value, TRUE),
+          )));
+        }
+        else {
+          $success = $this->assertTrue(strpos($result, $value) === FALSE, format_string('@source: @value not found.', array(
+            '@source' => var_export($source, TRUE),
+            '@value' => var_export($value, TRUE),
+          )));
+        }
+        if (!$success) {
+          $this->verbose('Source:<pre>' . check_plain(var_export($source, TRUE)) . '</pre>'
+            . '<hr />' . 'Result:<pre>' . check_plain(var_export($result, TRUE)) . '</pre>'
+            . '<hr />' . ($is_expected ? 'Expected:' : 'Not expected:')
+            . '<pre>' . check_plain(var_export($value, TRUE)) . '</pre>'
+          );
+        }
+      }
+    }
+  }
+
+  /**
+   * Tests the HTML corrector filter.
+   *
+   * @todo This test could really use some validity checking function.
+   */
+  function testHtmlCorrectorFilter() {
+    // Tag closing.
+    $f = _html5_tools_filter_htmlcorrector('<p>text');
+    $this->assertEqual($f, '<p>text</p>', 'HTML corrector -- tag closing at the end of input.');
+
+    $f = _html5_tools_filter_htmlcorrector('<p>text<p><p>text');
+    $this->assertEqual($f, '<p>text</p><p></p><p>text</p>', 'HTML corrector -- tag closing.');
+
+    $f = _html5_tools_filter_htmlcorrector("<ul><li>e1<li>e2");
+    $this->assertEqual($f, "<ul><li>e1</li><li>e2</li></ul>", 'HTML corrector -- unclosed list tags.');
+
+    $f = _html5_tools_filter_htmlcorrector('<div id="d">content');
+    $this->assertEqual($f, '<div id="d">content</div>', 'HTML corrector -- unclosed tag with attribute.');
+
+    $f = _html5_tools_filter_htmlcorrector('<P>test</P>');
+    $this->assertEqual($f, '<p>test</p>', 'HTML corrector -- Convert uppercased tags to proper lowercased ones.');
+
+    $f = _html5_tools_filter_htmlcorrector('<P>test</p>');
+    $this->assertEqual($f, '<p>test</p>', 'HTML corrector -- Convert uppercased tags to proper lowercased ones.');
+
+    $f = _html5_tools_filter_htmlcorrector('<br></br>');
+    $this->assertEqual($f, '<br>', "HTML corrector -- Transform empty tags to a single tag if the tag's content model is EMPTY.");
+
+    $f = _html5_tools_filter_htmlcorrector('<div></div>');
+    $this->assertEqual($f, '<div></div>', "HTML corrector -- Do not transform empty tags to a single closed tag if the tag's content model is not EMPTY.");
+
+    $f = _html5_tools_filter_htmlcorrector('<p>line1<br/><hr/>line2</p>');
+    $this->assertEqual($f, '<p>line1<br></p><hr>line2', 'HTML corrector -- Move non-inline elements outside of inline containers.');
+
+    $f = _html5_tools_filter_htmlcorrector('<p>line1<div>line2</div></p>');
+    $this->assertEqual($f, '<p>line1</p><div>line2</div>', 'HTML corrector -- Move non-inline elements outside of inline containers.');
+
+    $f = _html5_tools_filter_htmlcorrector('<p>test<p>test</p>\n');
+    $this->assertEqual($f, '<p>test</p><p>test</p>\n', 'HTML corrector -- Auto-close improperly nested tags.');
+
+    $f = _html5_tools_filter_htmlcorrector('<p>Line1<br><STRONG>bold stuff</b>');
+    $this->assertEqual($f, '<p>Line1<br><strong>bold stuff</strong></p>', 'HTML corrector -- Properly close unclosed tags, and remove useless closing tags.');
+
+    $f = _html5_tools_filter_htmlcorrector('test <!-- this is a comment -->');
+    $this->assertEqual($f, 'test <!-- this is a comment -->', 'HTML corrector -- Do not touch HTML comments.');
+
+    $f = _html5_tools_filter_htmlcorrector('test <!--this is a comment-->');
+    $this->assertEqual($f, 'test <!--this is a comment-->', 'HTML corrector -- Do not touch HTML comments.');
+
+    $f = _html5_tools_filter_htmlcorrector('test <!-- comment <p>another
+    <strong>multiple</strong> line
+    comment</p> -->');
+    $this->assertEqual($f, 'test <!-- comment <p>another
+    <strong>multiple</strong> line
+    comment</p> -->', 'HTML corrector -- Do not touch HTML comments.');
+
+    $f = _html5_tools_filter_htmlcorrector('test <!-- comment <p>another comment</p> -->');
+    $this->assertEqual($f, 'test <!-- comment <p>another comment</p> -->', 'HTML corrector -- Do not touch HTML comments.');
+
+    $f = _html5_tools_filter_htmlcorrector('test <!--break-->');
+    $this->assertEqual($f, 'test <!--break-->', 'HTML corrector -- Do not touch HTML comments.');
+
+    $f = _html5_tools_filter_htmlcorrector('<p>test\n</p>\n');
+    $this->assertEqual($f, '<p>test\n</p>\n', 'HTML corrector -- New-lines are accepted and kept as-is.');
+
+    $f = _html5_tools_filter_htmlcorrector('<p>دروبال');
+    $this->assertEqual($f, '<p>دروبال</p>', 'HTML corrector -- Encoding is correctly kept.');
+
+    // Test that we still get the attribute in the tag back.
+    $f = _html5_tools_filter_htmlcorrector('<a href="https://duckduckgo.com" data-arbitrary-string="arbitrary-value">Test link</a>');
+    $this->assertNormalized($f, 'data-arbitrary-string', 'HTML corrector -- user-defined attributes are correctly kept');
+
+  }
+
+  /**
+   * Asserts that a text transformed to lowercase with HTML entities decoded does contains a given string.
+   *
+   * Otherwise fails the test with a given message, similar to all the
+   * SimpleTest assert* functions.
+   *
+   * Note that this does not remove nulls, new lines and other characters that
+   * could be used to obscure a tag or an attribute name.
+   *
+   * @param $haystack
+   *   Text to look in.
+   * @param $needle
+   *   Lowercase, plain text to look for.
+   * @param $message
+   *   (optional) Message to display if failed. Defaults to an empty string.
+   * @param $group
+   *   (optional) The group this message belongs to. Defaults to 'Other'.
+   * @return
+   *   TRUE on pass, FALSE on fail.
+   */
+  function assertNormalized($haystack, $needle, $message = '', $group = 'Other') {
+    return $this->assertTrue(strpos(strtolower(decode_entities($haystack)), $needle) !== FALSE, $message, $group);
+  }
+
+  /**
+   * Asserts that text transformed to lowercase with HTML entities decoded does not contain a given string.
+   *
+   * Otherwise fails the test with a given message, similar to all the
+   * SimpleTest assert* functions.
+   *
+   * Note that this does not remove nulls, new lines, and other character that
+   * could be used to obscure a tag or an attribute name.
+   *
+   * @param $haystack
+   *   Text to look in.
+   * @param $needle
+   *   Lowercase, plain text to look for.
+   * @param $message
+   *   (optional) Message to display if failed. Defaults to an empty string.
+   * @param $group
+   *   (optional) The group this message belongs to. Defaults to 'Other'.
+   * @return
+   *   TRUE on pass, FALSE on fail.
+   */
+  function assertNoNormalized($haystack, $needle, $message = '', $group = 'Other') {
+    return $this->assertTrue(strpos(strtolower(decode_entities($haystack)), $needle) === FALSE, $message, $group);
+  }
+}

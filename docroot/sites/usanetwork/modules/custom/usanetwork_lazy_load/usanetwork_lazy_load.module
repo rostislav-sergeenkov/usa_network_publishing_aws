@@ -28,11 +28,11 @@ function usanetwork_lazy_load_preprocess_block(&$variables) {
 /**
  * Implements hook_file_formatter_info_alter().
  */
-function usanetwork_lazy_load_file_formatter_info_alter(&$info) {
+/*function usanetwork_lazy_load_file_formatter_info_alter(&$info) {
   if (isset($info['media_theplatform_mpx_image'])) {
     $info['media_theplatform_mpx_image']['view callback'] = 'usanetwork_lazy_load_file_formatter_image_view';
   }
-}
+}*/
 
 /**
  * Implements hook_file_formatter_FORMATTER_view().

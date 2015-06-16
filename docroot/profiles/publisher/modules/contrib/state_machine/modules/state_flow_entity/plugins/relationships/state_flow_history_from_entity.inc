@@ -2,7 +2,8 @@
 
 /**
  * @file
- * Plugin to provide an relationship handler for state_flow_history_entity from node.
+ * Plugin to provide an relationship handler for state_flow_history_entity from
+ * node.
  */
 
 /**
@@ -14,7 +15,7 @@ $plugin = array(
   'keyword' => 'state_flow_history_entity',
   'description' => t('Adds a state'),
 
-  // @todo, take out node assumptions
+  // @todo, take out node assumptions.
   'required context' => new ctools_context_required(t('Node'), 'node'),
   'context' => 'state_flow_entity_state_flow_history_from_entity_context',
   'edit form' => 'state_flow_entity_state_flow_history_from_entity_settings_form',
@@ -29,8 +30,8 @@ function state_flow_entity_state_flow_history_from_entity_context($context, $con
   if (!empty($context->data)) {
     $entity = $context->data;
 
-    // @todo, take out node assumptions. This query code is ripped from get_history_entity()
-    // should not have this duplication.
+    // @todo, take out node assumptions. This query code is ripped from
+    // get_history_entity() should not have this duplication.
     $entity_type = 'node';
     $entity_info = entity_get_info($entity_type);
     $id_key = $entity_info['entity keys']['id'];
@@ -60,7 +61,8 @@ function state_flow_entity_state_flow_history_from_entity_context($context, $con
       $hid = $result[0];
 
       // @todo, Find out why TRUE needs to be passed as the last argument.
-      // If TRUE is not passed, there are inconsisent objects returned at node/12/revisions/53/workflow/published
+      // If TRUE is not passed, there are inconsistent objects returned at
+      // node/12/revisions/53/workflow/published
       $history_entities = entity_load('state_flow_history_entity', array($hid), array(), TRUE);
 
       if (!empty($history_entities[$hid])) {

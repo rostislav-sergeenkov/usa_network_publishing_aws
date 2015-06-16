@@ -1,4 +1,14 @@
 <?php
+/**
+ * @file
+ * usanetwork_tv_shows_color_field.features.inc
+ */
 
-// This file is deprecated and can be removed.
-// Please remove include_once('usanetwork_tv_shows_color_field.features.inc') in usanetwork_tv_shows_color_field.module as well.
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function usanetwork_tv_shows_color_field_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+}

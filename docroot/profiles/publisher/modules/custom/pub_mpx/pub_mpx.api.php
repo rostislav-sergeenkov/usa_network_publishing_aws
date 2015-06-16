@@ -67,5 +67,26 @@ function hook_pub_mpx_player_id_rulesets_info_alter(&$rulesets) {
 }
 
 /**
+ * Alter an MPX video player iframe element before it is rendered.
+ *
+ * @param array $iframe_tag
+ *   A renderable array of the iframe element. Note that the src attribute is
+ *   an array of arguments to be passed to url() at this point.
+ * @param array $context
+ *   Additional context, including the variables passed to the theme function.
+ */
+function hook_pub_mpx_player_iframe_alter(array &$iframe_tag, array $context = NULL) {
+  // If we have a file object, check to see if it is a full episode. If it is
+  // not a full episode, pass a playerType=short-form query argument on the
+  // iframe url.
+  if (isset($context['variables']['file'])) {
+    $full_episode = FieldHelper::getValue('file', $context['variables']['file'], 'field_mpx_full_episode');
+    if (isset($full_episode['value']) && !$full_episode['value']) {
+      $iframe_tag['element']['#attributes']['src']['url_options']['query']['playerType'] = 'short-form';
+    }
+  }
+}
+
+/**
  * @} End of "addtogroup hooks".
  */

@@ -7,8 +7,8 @@
 include_once 'pub_promotional_content.features.inc';
 
 /**
-  * Implements hook_ds_layout_info()
-  */
+ * Implements hook_ds_layout_info().
+ */
 function pub_promotional_content_ds_layout_info() {
   $path = drupal_get_path('module', 'pub_promotional_content');
 
@@ -17,21 +17,25 @@ function pub_promotional_content_ds_layout_info() {
       'label' => t('Promotional Content'),
       'path' => $path . '/layouts/promotional_content',
       'regions' => array(
-	'link' => t('Link'),
-	'media' => t('Media'),
-	'marquee' => t('Marquee'),
-	'title' => t('Title'),
-	'details' => t('Details'),
+        'link' => t('Link'),
+        'media' => t('Media'),
+        'marquee' => t('Marquee'),
+        'title' => t('Title'),
+        'details' => t('Details'),
       ),
-      'css' => FALSE
+      'css' => FALSE,
     ),
   );
 
   return $layouts;
 }
 
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function pub_promotional_content_preprocess_node(&$vars) {
-  // Set up variables for Promoted Content view mode of Promotional Content content type.
+  // Set up variables for Promoted Content view mode of Promotional Content
+  // content type.
   if ($vars['view_mode'] == 'promoted_content' && $vars['type'] == 'promotional_content') {
     $vars['promo_title'] = check_plain($vars['title']);
     if (!empty($vars['field_marquee_text'][0]['safe_value'])) {
@@ -39,15 +43,15 @@ function pub_promotional_content_preprocess_node(&$vars) {
       $vars['promo_marquee_position'] = check_plain($vars['field_marquee_position'][0]['value']);
     }
     else {
-      $vars['promo_marquee'] = false;
+      $vars['promo_marquee'] = FALSE;
     }
     $vars['promo_link'] = $vars['field_link'][0]['safe_value'];
     $vars['promo_link_window'] = ($vars['field_link_target'][0]['value'] == 'new') ? 'target="_blank"' : '';
-    $vars['promo_details'] = !empty($vars['field_blurb'][0]['safe_value']) ? $vars['field_blurb'][0]['safe_value'] : false;
+    $vars['promo_details'] = !empty($vars['field_blurb'][0]['safe_value']) ? $vars['field_blurb'][0]['safe_value'] : FALSE;
     $vars['type'] = $vars['field_promotional_content'][0]['type'];
   }
 
-  // Variables for TV Episode Promoted Content
+  // Variables for TV Episode Promoted Content.
   if ($vars['view_mode'] == 'promoted_content' && $vars['type'] == 'tv_episode') {
     $image = '';
 
@@ -60,8 +64,8 @@ function pub_promotional_content_preprocess_node(&$vars) {
         $image = file_load($node->field_tv_cover_media[LANGUAGE_NONE][0]['fid']);
       }
       else {
-      	$node = node_load($vars['field_show'][LANGUAGE_NONE][0]['target_id']);
-      	$image = file_load($node->field_tv_cover_media[LANGUAGE_NONE][0]['fid']);
+        $node = node_load($vars['field_show'][LANGUAGE_NONE][0]['target_id']);
+        $image = file_load($node->field_tv_cover_media[LANGUAGE_NONE][0]['fid']);
       }
     }
 
@@ -70,15 +74,14 @@ function pub_promotional_content_preprocess_node(&$vars) {
     $vars['promo_link'] = drupal_lookup_path('alias', 'node/' . $vars['node']->nid);
     $vars['promo_media_render'] = $image;
     $vars['promo_title'] = check_plain($vars['title']);
-    $vars['promo_marquee'] = false;
+    $vars['promo_marquee'] = FALSE;
     $vars['promo_marquee_position'] = 'topleft';
     $vars['promo_link_window'] = '';
-    $vars['promo_details'] = false;
+    $vars['promo_details'] = FALSE;
     $vars['type'] = 'image';
   }
 
-
-  // Variables for TV Season Promoted Content
+  // Variables for TV Season Promoted Content.
   if ($vars['view_mode'] == 'promoted_content' && $vars['type'] == 'tv_season') {
     $image = '';
     if (!empty($vars['field_tv_cover_media'])) {
@@ -94,14 +97,14 @@ function pub_promotional_content_preprocess_node(&$vars) {
     $vars['promo_link'] = drupal_lookup_path('alias', 'node/' . $vars['node']->nid);
     $vars['promo_media_render'] = $image;
     $vars['promo_title'] = check_plain($vars['title']);
-    $vars['promo_marquee'] = false;
+    $vars['promo_marquee'] = FALSE;
     $vars['promo_marquee_position'] = 'topleft';
     $vars['promo_link_window'] = '';
-    $vars['promo_details'] = false;
+    $vars['promo_details'] = FALSE;
     $vars['type'] = 'image';
   }
 
-  // Variables for TV Show Promoted Content
+  // Variables for TV Show Promoted Content.
   if ($vars['view_mode'] == 'promoted_content' && $vars['type'] == 'tv_show') {
     $image = field_view_field('node', $vars['node'], 'field_tv_cover_media');
     $image[0]['#image_style'] = "promoted_content";
@@ -110,21 +113,21 @@ function pub_promotional_content_preprocess_node(&$vars) {
     $vars['promo_link'] = drupal_lookup_path('alias', 'node/' . $vars['node']->nid);
     $vars['promo_media_render'] = $image;
     $vars['promo_title'] = check_plain($vars['title']);
-    $vars['promo_marquee'] = false;
+    $vars['promo_marquee'] = FALSE;
     $vars['promo_marquee_position'] = 'topleft';
     $vars['promo_link_window'] = '';
-    $vars['promo_details'] = false;
+    $vars['promo_details'] = FALSE;
     $vars['type'] = 'image';
   }
 
-  // Variables for Blog Promoted Content
+  // Variables for Blog Promoted Content.
   if ($vars['view_mode'] == 'promoted_content' && $vars['type'] == 'blog_post') {
     $vars['promo_link'] = drupal_lookup_path('alias', 'node/' . $vars['node']->nid);
     $vars['promo_title'] = check_plain($vars['title']);
-    $vars['promo_marquee'] = false;
+    $vars['promo_marquee'] = FALSE;
     $vars['promo_marquee_position'] = 'topleft';
     $vars['promo_link_window'] = '';
-    $vars['promo_details'] = false;
+    $vars['promo_details'] = FALSE;
     $vars['type'] = 'image';
   }
 }

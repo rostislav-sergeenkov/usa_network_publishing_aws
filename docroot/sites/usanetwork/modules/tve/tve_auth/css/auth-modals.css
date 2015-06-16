@@ -259,7 +259,7 @@
   margin-bottom: 15px;
 }
 .tveModal .modalFooter {
-  font-family: Proxima N W01 Smbd;
+  font-family: 'avalonmedium';
   font-size: 14px;
   background: #3b3b3b;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #1f1f1f), color-stop(40%, #3b3b3b), color-stop(100%, #3b3b3b));
@@ -313,7 +313,7 @@
   list-style-type: square;
 }
 .tveModal.loginModal .modalSteps li {
-  font: 14px/16px bold Proxima N W01 Bold, Helvetica, Arial, sans-serif;
+  font: 14px/16px bold 'avalonbold', Helvetica, Arial, sans-serif;
   background-repeat: no-repeat;
 }
 @media (min-width: 768px) {

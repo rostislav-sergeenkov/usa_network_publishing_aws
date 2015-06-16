@@ -1,7 +1,0 @@
-name = Pub Pipeline
-description = Additions and customizations for the Publisher CI Pipeline.
-package = Publisher
-core = 7.x
-
-dependencies[] = environment_indicator
-files[] = pub_pipeline.test

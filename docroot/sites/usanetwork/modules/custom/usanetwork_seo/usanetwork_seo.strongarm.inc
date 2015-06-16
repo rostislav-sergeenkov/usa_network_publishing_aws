@@ -14,7 +14,7 @@ function usanetwork_seo_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_batch_limit';
-  $strongarm->value = '1000';
+  $strongarm->value = '2500';
   $export['xmlsitemap_batch_limit'] = $strongarm;
 
   $strongarm = new stdClass();

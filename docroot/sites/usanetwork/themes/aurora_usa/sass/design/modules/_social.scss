@@ -897,25 +897,6 @@ input.echo-submit-text {
 
 /* show landing page social */
 
-
-.social-panel {
-  &.inner-wrapper {
-    margin-top:42px;
-    .panel-col1 {
-      @extend %two-to-one-col-social-content-no-sidebar;
-    }
-    .panel-col2 {
-      width: 100%;
-    }
-    &.panel-two-cols .panel-col2 {
-      @extend %two-to-one-col-social-sidebar;
-    }
-  }
-  &.panel-two-cols .panel-col1 {
-    @extend %two-to-one-col-social-content-sidebar;
-  }
-}
-
 #usanetwork_social_show_homepage_chatter {
   background-color: $gray-dark;
 }
@@ -1287,11 +1268,19 @@ input.echo-submit-text {
       > div:hover {
         width: 32px !important;
         height: 32px !important;
-        background-image: url('../images/social_chatter_icons.png') !important;
+        background-image: url('../images/social_chatter_icons.png');
         background-repeat: none;
+        @include breakpoint($bp-1024-width) {
+          width: 26px !important;
+          height: 26px !important;
+        }
         @include breakpoint($bp-home-narrowest) {
           width: 24px !important;
           height: 24px !important;
+        }
+        @include breakpoint($bp-480-width) {
+          width: 22px !important;
+          height: 22px !important;
         }
       }
     }

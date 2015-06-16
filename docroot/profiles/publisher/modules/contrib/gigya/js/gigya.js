@@ -1,3 +1,8 @@
+/**
+ * @file
+ * Gigya functions from Drupal
+ */
+
 (function ($) {
 
     /**
@@ -57,6 +62,7 @@
       $(ajax.element).trigger('gigyaLogin');
     }
 
+    // Send the account object that is returned in the onLogin event to Drupal.
     Drupal.gigya.raasRegLogin = function (data) {
       var base = Drupal.settings.gigya.raas.linkId || $('.gigya-raas-login').attr('id');
       var element_settings = {};
@@ -65,6 +71,17 @@
       var ajax = new Drupal.ajax(base, $('#' + base), element_settings);
       ajax.options.data = data;
       $(ajax.element).trigger('gigyaLogin');
+    }
+
+    Drupal.gigya.profileUpdated = function (data) {
+      console.log(data);
+      var base = 'gigyaRequestForms',
+          element_settings = {};
+      element_settings.url = Drupal.settings.basePath + 'raas-profile-update';
+      element_settings.event = 'gigyaProfileUp';
+      var ajax = new Drupal.ajax(base, $('#' + base), element_settings);
+      ajax.options.data = data.profile;
+      $(ajax.element).trigger('gigyaProfileUp');
     }
 
     /**

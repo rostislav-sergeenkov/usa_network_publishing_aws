@@ -26,8 +26,8 @@ function usanetwork_search_apachesolr_search_default_searchers() {
     'apachesolr_search_per_page' => 10,
     'apachesolr_search_spellcheck' => 0,
     'apachesolr_search_search_box' => 0,
-    'apachesolr_search_allow_user_input' => 0,
-    'apachesolr_search_browse' => 'browse',
+    'apachesolr_search_allow_user_input' => 1,
+    'apachesolr_search_browse' => 'results',
   );
   $export['core_search'] = $searcher;
 

@@ -1,6 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Class pub_report_server_handler_filter_sitename
+ */
+
 class pub_report_server_handler_filter_sitename extends views_handler_filter {
+  /**
+   * {@inheritdoc}
+   */
   function exposed_form(&$form, &$form_state) {
     parent::exposed_form($form, $form_state);
 

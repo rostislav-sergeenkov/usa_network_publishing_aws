@@ -31,16 +31,16 @@ function state_flow_entity_entity_load(&$entities, $entity_type) {
   // is state-able?
   if (!empty($entity_info['state_flow_entity'])) {
 
-    // get the revision id that is available to be published
+    // Get the revision id that is available to be published.
     foreach ($entities as $entity_id => $entity) {
       if ($revision_key && $machine = state_flow_entity_load_state_machine($entity, $entity_type)) {
         list($entity_id, $revision_id, $bundle) = entity_extract_ids($entity_type, $entity);
-        /* this is the vid in the node table i.e. the thing that can be published
-        * each entity-specific state flow class should set this ID
-        * See state_flow_node.inc for an example
-        */
+        // This is the vid in the node table i.e. the thing that can be
+        // published each entity-specific state flow class should set this ID
+        // See state_flow_node.inc for an example.
 
-        // @todo, this is already getting set in set_available_publish_revision()
+        // @todo, this is already getting set in
+        // set_available_publish_revision()
         // So it should not need to be reset on the same object.
         if (!empty($machine->object->published_revision_id)) {
           $entity->published_revision_id = $machine->object->published_revision_id;
@@ -98,13 +98,15 @@ function _state_flow_entity_entity_update($entity, $entity_type) {
   // is state-able?
   if (!empty($entity_info['state_flow_entity'])) {
 
-    // write history and update active revision for this entity
+    // Write history and update active revision for this entity.
     $machine = state_flow_entity_load_state_machine($entity, $entity_type);
     // @todo 7.x-2.x introduces a new method in the base StateMachine class
-    // called ignore().  this needs to be reviewed and tested
+    // called ignore().
+    // This needs to be reviewed and tested.
     if (method_exists($machine, 'ignore') && !($machine->ignore())) {
 
-      // @todo There is a lot of duplicate functionality in fire_event() and update_entity()
+      // @todo There is a lot of duplicate functionality in fire_event() and
+      // update_entity().
       // They might need to be merged.
       if (!empty($entity->event)) {
         $machine->fire_event($entity->event, $user->uid, $entity->event_comment);
@@ -127,12 +129,12 @@ function state_flow_entity_entity_delete($entity, $entity_type) {
   // @todo should we have a dedicated function to determine if this entity type
   // is state-able?
   if (!empty($entity_info['state_flow_entity'])) {
-    // delete history and active revision records for this entity
+    // Delete history and active revision records for this entity.
     $machine = state_flow_entity_load_state_machine($entity, $entity_type);
     // @todo deleting field data needs testing
     field_attach_delete('state_flow_history_entity', $machine->get_history_entity());
 
-    // delete all state flow revision records for this entity
+    // Delete all state flow revision records for this entity.
     db_delete('state_flow_history')
       ->condition('entity_id', $entity->{$id_key})
       ->condition('entity_type', $entity_type)
@@ -147,23 +149,28 @@ function state_flow_entity_entity_delete($entity, $entity_type) {
 /**
  * Load the state_flow state_machine for the given node.
  *
- * @param $entity object
- * @param $entity_type string
- *  the machine name of the entity_type
- * @param $reset legacy
+ * @param object $entity
+ *   The entity to handle.
+ * @param string $entity_type
+ *   The machine name of the entity_type.
+ * @param bool $reset
+ *   (legacy) Reset
+ *
+ * @return StateFlowEntity
+ *   The state flow entity.
  */
 function state_flow_entity_load_state_machine($entity, $entity_type = 'node', $reset = FALSE) {
 
   if (!empty($entity->state_flow) && $reset === FALSE) {
     // @todo, review how this is set in the first place and if it is a good idea
     // for entities to carry around their machine objects.
-    // Something like this is necessary to update history records twice during the
-    // node save process.
+    // Something like this is necessary to update history records twice during
+    // the node save process.
     $entity->state_flow->set_object($entity);
     return $entity->state_flow;
   }
 
-   $entity_info = entity_get_info($entity_type);
+  $entity_info = entity_get_info($entity_type);
 
   // @todo should we have a dedicated function to determine if this entity type
   // is state-able?
@@ -174,24 +181,24 @@ function state_flow_entity_load_state_machine($entity, $entity_type = 'node', $r
     return FALSE;
   }
 
-  // @todo, what's the point of using this objects array if it is not statically cached?
-  // And this function would break if there were more than one entity type in play because
-  // It is just building up an array keyed by revision_id so node vids and user vids could
-  // collide.
+  // @todo, what's the point of using this objects array if it is not statically
+  // cached?
+  // And this function would break if there were more than one entity type in
+  // play because it is just building up an array keyed by revision_id so node
+  // vids and user vids could collide.
 
   $objects = array();
   $machine_type = 'state_flow_entity';
 
   ctools_include('plugins');
 
-  //allow other modules to invoke other machine types
-
+  // Allow other modules to invoke other machine types.
   drupal_alter('state_flow_entity_machine_type', $machine_type, $entity, $entity_type);
 
   // @todo, We should return FALSE if this entity is not state-able.
   // This will likely require cleanup around functions that don't expect this.
   // if ($machine_type === FALSE) {
-    // return FALSE;
+  //   return FALSE;
   // }
 
   $plugin = ctools_get_plugins('state_flow_entity', 'plugins', $machine_type);
@@ -201,7 +208,8 @@ function state_flow_entity_load_state_machine($entity, $entity_type = 'node', $r
     $plugin['object'] = $entity;
     $state_flow_object = new $class($plugin);
 
-    // This will return false if this is a new entity like on the node create form.
+    // This will return FALSE if this is a new entity like on the node create
+    // form.
     if (!empty($entity->$revision_key)) {
       $objects[$entity->$revision_key] = $state_flow_object;
     }
@@ -237,27 +245,27 @@ function state_flow_entity_set_entity_saved($entity_type, $entity_id, $entity) {
   $saved = &drupal_static('sfe_set_entity_saved', array());
   $saved[$entity_type][$entity_id] = $entity;
 
-  // register a shutdown function because hook_exit doesn't run on cron.
+  // Register a shutdown function because hook_exit doesn't run on cron.
   drupal_register_shutdown_function('state_flow_entity_exit');
 }
 
 /**
  * Inform external systems about a workflow transition.
- *
  */
 function state_flow_entity_invoke_event_handlers($object, $state, $history_entity) {
-  // Load related objects
+  // Load related objects.
   $author = !empty($object->uid) ? user_load($object->uid) : drupal_anonymous_user();
 
   // Invoke the Rules state_flow_event_fired event.
   if ($object && module_exists('rules')) {
 
     $wrapped_entity = entity_metadata_wrapper($history_entity->entity_type, $object);
-    rules_invoke_event('state_flow_entity_event_fired', $wrapped_entity, $author, $state, $history_entity->event, $history_entity);
+    $wrapped_history_entity = entity_metadata_wrapper('state_flow_history_entity', $history_entity->hid);
+    rules_invoke_event('state_flow_entity_event_fired', $wrapped_entity, $author, $state, $history_entity->event, $wrapped_history_entity);
   }
 
-  // @todo, this hook should get all of the same paramenters as the rules_invoke_event() call.
-  module_invoke_all('state_flow_event', $state);
+  // These are not in the same order as the rules call above for BC reasons.
+  module_invoke_all('state_flow_event', $state, $object, $history_entity->event, $history_entity);
 }
 
 /**
@@ -265,13 +273,15 @@ function state_flow_entity_invoke_event_handlers($object, $state, $history_entit
  *
  * This function is patterned on node_view().
  *
- * @param state_flow_history_entity
+ * @param object $state_flow_history_entity
  *   An entity object.
- * @param $view_mode
- *   A string machine name of the view mode to be rendered.
+ * @param string $view_mode
+ *   The machine name of the view mode to be rendered.
+ *
+ * @return string
+ *   The rendered entity.
  */
 function state_flow_entity_state_flow_history_entity_view($state_flow_history_entity, $view_mode = 'full') {
-
 
   // Allow modules to change the view mode.
   $context = array(
@@ -287,7 +297,8 @@ function state_flow_entity_state_flow_history_entity_view($state_flow_history_en
   $state_flow_history_entity->content += field_attach_view('state_flow_history_entity', $state_flow_history_entity, $view_mode);
 
   $build = $state_flow_history_entity->content;
-  // We don't need duplicate rendering info in state_flow_history_entity->content.
+  // We don't need duplicate rendering info in
+  // state_flow_history_entity->content.
   unset($state_flow_history_entity->content);
 
   $build += array(
@@ -297,7 +308,7 @@ function state_flow_entity_state_flow_history_entity_view($state_flow_history_en
   );
 
   // Allow modules to modify the structured state_flow_history_entity.
-  $type = 'state_flow_entity_history';
+  $type = 'state_flow_history_entity';
   drupal_alter(array('entity_view'), $build, $type);
   $return = drupal_render($build);
   return $return;
@@ -316,8 +327,9 @@ function state_flow_entity_theme() {
 }
 
 /**
- * Implementation of hook_ctools_plugin_directory() to let the system know
- * we implement task and task_handler plugins.
+ * Implements hook_ctools_plugin_directory().
+ *
+ * Let the system know we implement task and task_handler plugins.
  */
 function state_flow_entity_ctools_plugin_directory($module, $plugin) {
   // Most of this module is implemented as an export ui plugin, and the
@@ -359,7 +371,7 @@ function state_flow_entity_entity_info() {
       ),
       'bundles' => array(
         'state_flow_history_entity' => array(
-         'label' => t('State Flow'),
+          'label' => t('State Flow'),
           'admin' => array(
             'path' => 'admin/config/workflow/state-flow-history-entity',
             'access arguments' => array(
@@ -367,7 +379,7 @@ function state_flow_entity_entity_info() {
             ),
           ),
         ),
-     ),
+      ),
     ),
   );
 
@@ -383,8 +395,8 @@ function template_preprocess_state_flow_history_entity(&$variables) {
 
   $state_flow_history_entity = $variables['elements']['#state_flow_history_entity'];
 
-  // These variables should be plain text already. Double check. There should not be a risk of
-  // double-escaping as these should all be plain alphanumeric.
+  // These variables should be plain text already. Double check. There should
+  // not be a risk of double-escaping as these should all be plain alphanumeric.
   $variables['hid'] = check_plain($state_flow_history_entity->hid);
   $variables['state'] = check_plain($state_flow_history_entity->state);
   $variables['from_state'] = check_plain($state_flow_history_entity->from_state);
@@ -413,7 +425,7 @@ function state_flow_entity_menu() {
   $items = array();
 
   $items['admin/config/workflow/state-flow-history-entity'] = array(
-   'title' => 'State Flow History Entities',
+    'title' => 'State Flow History Entities',
      // @todo make more descriptive once this path does something.
     'description' => 'Add fields to State Flow History Entities.',
     'page callback' => 'state_flow_entity_history_entity_admin',
@@ -433,8 +445,8 @@ function state_flow_entity_menu() {
 /**
  * Returns the configuration page for state flow history entities.
  *
- * @todo, this path is still a placeholder. It may eventually list different bundles
- * for the state_flow_history_entity entity_type.
+ * @todo, this path is still a placeholder. It may eventually list different
+ * bundles for the state_flow_history_entity entity_type.
  */
 function state_flow_entity_history_entity_admin() {
   return t('This is a placeholder for bundle administration. This is discussed at http://drupal.org/node/1412728.');
@@ -468,7 +480,7 @@ function state_flow_entity_history_entity_label_get($entity, array $options, $na
  */
 function state_flow_entity_state_labels() {
 
-  //@todo, this function should have static caching.
+  // @todo, this function should have static caching.
 
   $all_plugins = ctools_get_plugins('state_flow_entity', 'plugins');
 
@@ -488,7 +500,7 @@ function state_flow_entity_state_labels() {
 /**
  * Implements hook_entity_property_info().
  *
- * @see entity_api module.
+ * @see hook_entity_property_info()
  */
 function state_flow_entity_entity_property_info() {
   $info = array();
@@ -560,6 +572,17 @@ function state_flow_entity_entity_property_info() {
       'setter callback' => 'entity_property_verbatim_set',
       'schema field' => 'uid',
     ),
+    'event' => array(
+      'label' => t("Event"),
+      'type' => 'text',
+      'description' => t("The event that prompted this state change."),
+      'sanitize' => 'filter_xss',
+    ),
+    'entity_revision' => array(
+      'label' => t('Entity revision'),
+      'type' => 'entity',
+      'description' => t('The entity revision object.'),
+    ),
   );
 
   return $info;
@@ -575,7 +598,7 @@ function state_flow_entity_ctools_plugin_type() {
       'use hooks' => TRUE,
       'info file' => TRUE,
       'alterable' => TRUE,
-      'classes' => array('handler')
+      'classes' => array('handler'),
     ),
   );
   return $plugins;
@@ -625,7 +648,7 @@ function state_flow_entity_state_flow_entity_plugins() {
       'path' => $path,
       'parent' => 'state_flow_entity',
       'workflow_options' => $workflow_options,
-      'entity_type' => 'node'
+      'entity_type' => 'node',
     ),
   );
 
@@ -635,11 +658,12 @@ function state_flow_entity_state_flow_entity_plugins() {
 /**
  * Get the active revision id for an entity.
  *
- * @param $entity
+ * @param object $entity
  *   An entity object such as a node object.
- * @param $entity_type
+ * @param string $entity_type
  *   A text string for the machine name of an entity such as 'node'.
- * @return
+ *
+ * @return int
  *   A revision id for the 'active' revision, which, in the normal behavior of
  *   this module, is the revision saved most recently.
  */
@@ -654,13 +678,14 @@ function state_flow_entity_get_active_revision_id($entity, $entity_type) {
 /**
  * Get the active revision for an entity.
  *
- * @param $entity
+ * @param object $entity
  *   An entity object such as a node object.
- * @param $entity_type
+ * @param string $entity_type
  *   A text string for the machine name of an entity such as 'node'.
- * @return
- *   An entity object for the 'active' revision, which, in the normal behavior of
- *   this module, is the revision saved most recently.
+ *
+ * @return object
+ *   An entity object for the 'active' revision, which, in the normal behavior
+ *   of this module, is the revision saved most recently.
  */
 function state_flow_entity_get_active_revision($entity, $entity_type) {
 
@@ -673,7 +698,7 @@ function state_flow_entity_get_active_revision($entity, $entity_type) {
   list($entity_id, $revision_id, $bundle) = entity_extract_ids($entity_type, $entity);
   $conditions = array($revision_key => $active_id);
 
-  // entity load returns an array of objects and this function only needs
+  // Entity load returns an array of objects and this function only needs
   // to return one object.
   $active_revisions = entity_load($entity_type, array($entity_id), $conditions);
   $active_revision = $active_revisions[$entity_id];

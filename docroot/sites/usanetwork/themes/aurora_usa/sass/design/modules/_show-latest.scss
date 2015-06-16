@@ -1,0 +1,184 @@
+.show-latest-block {
+  @include clear();
+  background: $poll-back;
+  border-bottom: 2px solid;
+  margin-bottom: 100px;
+  padding: 40px 16px;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-1901-width) {
+    margin-bottom: 190px;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 40px 10px;
+  }
+  ul {
+    @include clear();
+    margin: 0 auto;
+    max-width: 1868px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    &.odd {
+      li {
+        &.first {
+          margin-bottom: 0.735vw;
+          @include breakpoint($bp-min-1901-width) {
+            margin-bottom: 14.5px;
+          }
+          @include breakpoint($bp-768-width) {
+            margin-bottom: 1.47vw;
+          }
+          > div {
+            float: left;
+            height: 25.4vw;
+            margin-right: 0.8%;
+            width: 49.6%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-right: 1.6%;
+              width: 49.2%;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+        &.last {
+          > div {
+            float: left;
+            height: 25.4vw;
+            width: 49.6%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
+            @include breakpoint($bp-768-width) {
+              width: 49.2%;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+              margin-bottom: 1.47vw;
+              &:first-child {
+                margin-right: 1.6%;
+              }
+            }
+            &:nth-child(2) {
+              @include breakpoint($bp-min-641-width) {
+                left: 0;
+                position: absolute;
+                top: 26.135vw;
+              }
+              @include breakpoint($between-641-768) {
+                top: 26.87vw;
+              }
+              @include breakpoint($bp-min-1901-width) {
+                top: 497px;
+              }
+            }
+            &:nth-child(3) {
+              float: right;
+              height: 51.535vw;
+              @include breakpoint($bp-min-1901-width) {
+                height: 980px;
+              }
+              @include breakpoint($between-641-768) {
+                height: 52.27vw;
+              }
+              @include breakpoint($bp-640-width) {
+                height: 51.6vw;
+                float: none;
+                margin-bottom: 0;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.even {
+      li {
+        &.first {
+          > div {
+            float: left;
+            height: 25.4vw;
+            margin-bottom: 0.735vw;
+            width: 49.6%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+              margin-bottom: 14.5px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-bottom: 1.47vw;
+              width: 49.2%;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
+            &:first-child {
+              height: 51.535vw;;
+              margin-right: 0.8%;
+              @include breakpoint($bp-min-1901-width) {
+                height: 980px;
+              }
+              @include breakpoint($between-641-768) {
+                height: 52.27vw;
+                margin-right: 1.6%;
+              }
+              @include breakpoint($bp-640-width) {
+                height: 51.6vw;
+                margin-right: 0;
+                width: 100%;
+              }
+            }
+            &:nth-child(2) {
+              @include breakpoint($bp-640-width) {
+                margin-right: 1.6%;
+              }
+            }
+          }
+        }
+        &.last {
+          > div {
+            float: left;
+            height: 25.4vw;
+            margin-right: 0.8%;
+            width: 49.6%;
+            @include breakpoint($bp-min-1901-width) {
+              height: 483px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-right: 1.6%;
+              width: 49.2%;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 36.6vw;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+    li {
+      float: left;
+      height: auto;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      @extend %show-latest-promo;
+      @extend %meta;
+      > div {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implemenation of hook_menu().
+ * Implements hook_menu().
  */
 function pub_qa_releases_menu() {
   $items['admin/utilities/build_qa_release'] = array(
@@ -31,7 +31,7 @@ function pub_qa_releases_release_form($form, &$form_state) {
     $pub_core_tags_branches = array_merge($pub_core_tags, $pub_core_branches);
   }
 
-  // Get a list of destinations
+  // Get a list of destinations.
   $destinations = publisher_utilities_destinations('pub7', TRUE);
 
   $form = array(
@@ -123,6 +123,7 @@ function pub_qa_releases_release_form_submit($form, $form_state) {
       $batch = _pub_qa_releases_build_batch($form_state['values']);
       batch_set($batch);
       break;
+
     case t('Clear Build Files'):
       $batch = _pub_qa_releases_clear_batch();
       batch_set($batch);
@@ -130,6 +131,12 @@ function pub_qa_releases_release_form_submit($form, $form_state) {
   }
 }
 
+/**
+ * Provide information for the process of clearing build files.
+ *
+ * @return array
+ *   An associative array providing information on the clear process.
+ */
 function _pub_qa_releases_clear_batch() {
   $batch = array(
     'title' => t('Clearing all build files.'),
@@ -160,24 +167,28 @@ function _pub_qa_releases_build_batch($values) {
   $batch = array(
     'title' => t('Releasing to %destination', array('%destination' => $destination['repository'])),
     'operations' => array(
-      array('pub_qa_releases_clone_repo', array(
-        $pub_core_source['repository'],
-        $pub_core_git_repo_url,
-        $pub_core_source['tag_or_branch'],
-      )),
-      array('pub_qa_releases_clone_repo', array(
-        $destination['repository'],
-        $destination_git_repo_url,
-        '',
-      )),
-      array('pub_qa_releases_sync_code', array(
-        $pub_core_source['repository'],
-        $destination['repository']
-      )),
-      array('pub_qa_releases_create_tag', array(
-        $destination['repository'],
-        $pub_core_source['tag_or_branch'],
-      )),
+      array('pub_qa_releases_clone_repo',
+        array(
+          $pub_core_source['repository'],
+          $pub_core_git_repo_url,
+          $pub_core_source['tag_or_branch'],
+        )),
+      array('pub_qa_releases_clone_repo',
+        array(
+          $destination['repository'],
+          $destination_git_repo_url,
+          '',
+        )),
+      array('pub_qa_releases_sync_code',
+        array(
+          $pub_core_source['repository'],
+          $destination['repository'],
+        )),
+      array('pub_qa_releases_create_tag',
+        array(
+          $destination['repository'],
+          $pub_core_source['tag_or_branch'],
+        )),
     ),
     'finished' => 'pub_qa_releases_build_batch_complete',
     'file' => drupal_get_path('module', 'pub_qa_releases') . '/pub_qa_releases.batch.inc',

@@ -2,7 +2,6 @@
 
 /**
  * @file
- *
  * Field settings for Pub TV Relationships.
  */
 
@@ -173,7 +172,6 @@ function pub_relationships_tv_return_episodes($selected_season) {
   $query->fieldCondition('field_season', 'target_id', $selected_season);
   $result = $query->execute();
 
-
   // Add each episode that belongs to the user-selected show to the options
   // array.
   if (isset($result['field_collection_item'])) {
@@ -249,26 +247,57 @@ function pub_relationships_tv_return_seasons($selected_show, $include_unpublishe
 function pub_relationships_tv_show_valid_fields(&$form, $bundle) {
   $field = & $form[TV_FIELD_NAME][LANGUAGE_NONE][0];
   $drop_key = 'pub_relationships_tv_content_type_' . $bundle . '_level';
-  $config =variable_get($drop_key, FALSE);
+  $config = variable_get($drop_key, FALSE);
   if ($config !== FALSE) {
     switch ($config) {
       case 'show':
         // We hide the season, and episode.
+        // Entity reference builds out #options for each field, and by default
+        // they are not filtered by show or season. We could write a new ER
+        // plugin to fix things there, but this module is already deprecated
+        // for pub_relationships_tv_enhanced. To prevent caching #options in
+        // the form cache, we hardcode #value instead.
         $field['field_season']['#access'] = FALSE;
+        $field['field_season'][LANGUAGE_NONE]['#value'] = $field['field_season'][LANGUAGE_NONE]['#default_value'];
+        if ($field['field_season'][LANGUAGE_NONE]['#value']) {
+          $field['field_season'][LANGUAGE_NONE]['#options'] = array(
+            $field['field_season'][LANGUAGE_NONE]['#value'] => $field['field_season'][LANGUAGE_NONE]['#value'],
+          );
+        }
+        else {
+          $field['field_season'][LANGUAGE_NONE]['#options'] = $field['field_season'][LANGUAGE_NONE]['#value'];
+        }
+
         $field['field_episode']['#access'] = FALSE;
+        $field['field_episode'][LANGUAGE_NONE]['#value'] = $field['field_episode'][LANGUAGE_NONE]['#default_value'];
+        if ($field['field_episode'][LANGUAGE_NONE]['#value']) {
+          $field['field_episode'][LANGUAGE_NONE]['#options'] = array(
+            $field['field_episode'][LANGUAGE_NONE]['#value'] => $field['field_episode'][LANGUAGE_NONE]['#value'],
+          );
+        }
+        else {
+          $field['field_episode'][LANGUAGE_NONE]['#options'] = $field['field_episode'][LANGUAGE_NONE]['#value'];
+        }
         break;
+
       case 'season':
         // We hide episode.
         $field['field_season']['#prefix'] = '<div id="season-wrapper">';
         $field['field_season']['#suffix'] = '</div>';
         $field['field_episode']['#access'] = FALSE;
+        $field['field_episode'][LANGUAGE_NONE]['#value'] = $field['field_episode'][LANGUAGE_NONE]['#default_value'];
+        $field['field_episode'][LANGUAGE_NONE]['#options'] = array(
+          $field['field_episode'][LANGUAGE_NONE]['#value'] => $field['field_episode'][LANGUAGE_NONE]['#value'],
+        );
         break;
+
       case 'episode':
         $field['field_season']['#prefix'] = '<div id="season-wrapper">';
         $field['field_season']['#suffix'] = '</div>';
         $field['field_episode']['#prefix'] = '<div id="episode-wrapper">';
         $field['field_episode']['#suffix'] = '</div>';
         break;
+
       default:
         // We do nada.
         break;
@@ -284,8 +313,10 @@ function pub_relationships_tv_field_delete_instance($instance) {
   // sure to delete our variable if it happens to be set.
   if (isset($instance['field_name']) && ($instance['field_name'] == TV_FIELD_NAME)) {
     // If we're the one deleted it then we don't need to do anything.
-    // This is easy to tell mainly because we only pass a certain number of items to delete_instance.
-    // Field config passes the entire instance. So we're going to check for field_id.
+    // This is easy to tell mainly because we only pass a certain number of
+    // items to delete_instance.
+    // Field config passes the entire instance. So we're going to check for
+    // field_id.
     if (!empty($instance['field_id']) && !empty($instance['bundle'])) {
       $form_key = 'pub_relationships_tv_content_type_' . $instance['bundle'];
       variable_set($form_key, 0);
@@ -357,7 +388,6 @@ function pub_relationships_tv_create_field_if_empty() {
     // We need to clear the cache again.
   }
 
-
   // We need to create a show instance.
   $episode_collection_instance = array(
     'field_name' => 'field_episode',
@@ -369,7 +399,7 @@ function pub_relationships_tv_create_field_if_empty() {
     ),
   );
 
-  $instance =  field_info_instance('field_collection_item', 'field_episode', TV_FIELD_NAME);
+  $instance = field_info_instance('field_collection_item', 'field_episode', TV_FIELD_NAME);
   if (empty($instance)) {
     field_create_instance($episode_collection_instance);
 

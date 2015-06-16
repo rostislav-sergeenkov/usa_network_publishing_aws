@@ -15,12 +15,12 @@ class pub_theplatform_views_handler_argument_customvalue extends views_handler_a
   /**
    * Add this filter to the request.
    */
-  function query($group_by = FALSE) {
+  public function query($group_by = FALSE) {
     $value = isset($this->options['default_argument_options']['argument']) ? $this->options['default_argument_options']['argument'] : 'true';
 
     list(, $field) = explode('_', $this->options['id'], 2);
 
-    $this->query->theP->addArg('byCustomValue', '{'.$field.'}{'.$value.'}');
+    $this->query->thePlatform->addArg('byCustomValue', '{' . $field . '}{' . $value . '}');
   }
 }
 

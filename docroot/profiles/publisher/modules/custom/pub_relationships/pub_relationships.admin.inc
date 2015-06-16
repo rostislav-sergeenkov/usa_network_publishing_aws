@@ -2,12 +2,14 @@
 
 /**
  * @file
- *
  * Admin configuration for Publisher Relationships module.
  */
 
 /**
+ * Provides initial configuration form for Publisher Relationships.
  *
+ * @return array
+ *   The form structure.
  */
 function pub_relationships_config() {
   $form = array();

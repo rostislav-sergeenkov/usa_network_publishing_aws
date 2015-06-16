@@ -23,7 +23,7 @@ function pub_media_metatag_export_default() {
       'og:image' => array(
         'value' => '[node:field_cover_item]',
       ),
-      'twitter:image' => array(
+      'twitter:image:src' => array(
         'value' => '[node:field_cover_item]',
       ),
     ),

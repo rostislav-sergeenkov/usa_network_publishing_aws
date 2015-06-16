@@ -1,3 +1,8 @@
+/**
+ * @file
+ * Drupal behaviors for gigya.
+ */
+
 (function ($) {
     /**
      * @todo Undocumented Code!
@@ -28,9 +33,11 @@
 
           // Attach event handlers.
           if (typeof  Drupal.settings.gigya.regEvents === 'undefined') {
+            // If we are in RaaS mode register the RaaS login function.
             if (Drupal.settings.gigya.loginMode === 'raas') {
               gigya.accounts.addEventHandlers({onLogin:Drupal.gigya.raasRegLogin, onLogout: Drupal.gigya.logoutCallback});
             }
+            // If we are in socialize mode register the socialize login function.
             else {
               gigya.socialize.addEventHandlers({onLogin:Drupal.gigya.loginCallback, onLogout: Drupal.gigya.logoutCallback});
             }
@@ -58,8 +65,8 @@
               mediaObj.src = Drupal.settings.gigya.shareUIParams.imageUrl;
             }
             else if (Drupal.settings.gigya.shareUIParams.imageBhev === 'default') {
-              if ($('meta[property=og:image]').length > 0) {
-                mediaObj.src = $('meta[property=og:image]').attr('content');
+              if ($('meta[property="og:image"]').length > 0) {
+                mediaObj.src = $('meta[property="og:image"]').attr('content');
               }
               else {
                 mediaObj.src = $('#block-system-main img').eq(0).attr('src') || $('img').eq(0).attr('src');
@@ -176,7 +183,7 @@
     Drupal.behaviors.gigyaRaas = {
       attach: function (context, settings) {
         if (typeof gigya !== 'undefined') {
-          if ( typeof Drupal.settings.gigya.raas !== 'undefined') {
+          if (Drupal.settings.gigya.loginMode == 'raas') {
             $('.gigya-raas-login').once('gigya-raas').click( function (e) {
               e.preventDefault();
               gigya.accounts.showScreenSet(Drupal.settings.gigya.raas.login);
@@ -187,8 +194,9 @@
               gigya.accounts.showScreenSet(Drupal.settings.gigya.raas.register);
               Drupal.settings.gigya.raas.linkId = $(this).attr('id');
             });
-            $('.gigya-raas-prof, a:[href="/user"]').once('gigya-raas').click( function (e) {
+            $('.gigya-raas-prof, a[href="/user"]').once('gigya-raas').click( function (e) {
               e.preventDefault();
+              Drupal.settings.gigya.raas.profile.onAfterSubmit = Drupal.gigya.profileUpdated;
               gigya.accounts.showScreenSet(Drupal.settings.gigya.raas.profile);
             });
             var loginDiv = $('#gigya-raas-login-div');
@@ -208,6 +216,7 @@
             var profDiv = $('#gigya-raas-profile-div');
             if ((profDiv.size() > 0) && (typeof Drupal.settings.gigya.raas.profile !== 'undefined')) {
               Drupal.settings.gigya.raas.profile.containerID = profDiv.eq(0).attr('id');
+              Drupal.settings.gigya.raas.profile.onAfterSubmit = Drupal.gigya.profileUpdated;
               gigya.accounts.showScreenSet(Drupal.settings.gigya.raas.profile);
             }
           }

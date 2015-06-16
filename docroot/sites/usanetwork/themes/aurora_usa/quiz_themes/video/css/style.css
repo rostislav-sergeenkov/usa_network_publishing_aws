@@ -8,7 +8,7 @@
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .quiz-title {
   display: block;
-  font-family: "Proxima N W01 Reg",Arial,sans-serif;
+  font-family: 'avalonregular',Arial,sans-serif;
   font-size: 26px;
   font-weight: normal;
   letter-spacing: 0.05em;
@@ -21,7 +21,7 @@
   width: 615px;
 }
 .usanetwork-quiz-questions.questions .page-note {
-  font-family: "avalonmedium","Proxima N W01 Smbd",Arial,sans-serif;
+  font-family: "avalonmedium",Arial,sans-serif;
   font-size: 16px;
   right: 15px;
   text-align: right;
@@ -37,19 +37,19 @@
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .center .description,
 .usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .center .result-description {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: 'avalonregular', Arial, sans-serif;
   font-size: 18px;
   line-height: 1.3;
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .center .score-container {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: 'avalonregular', Arial, sans-serif;
   font-size: 18px;
   font-weight: bold;
   margin-top: 20px;
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .center .entry-button {
   border-radius: 0;
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: 'avalonregular', Arial, sans-serif;
   font-weight: bold;
   margin: 0;
   text-transform: uppercase;
@@ -57,13 +57,13 @@
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .center .repeat-button {
   border-radius: 0;
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: 'avalonregular', Arial, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   width: 300px;
 }
 .usanetwork-quiz-question .question-title {
-  font-family: "avalonmedium","Proxima N W01 Smbd",Arial,sans-serif;
+  font-family: "avalonmedium",Arial,sans-serif;
   font-size: 20px;
   line-height: 1.2;
 }
@@ -100,7 +100,7 @@
   border: none;
   background: #2d2d2d;
   display: table-cell;
-  font-family: "avalonmedium","Proxima N W01 Smbd",Arial,sans-serif;
+  font-family: "avalonmedium",Arial,sans-serif;
   font-size: 18px;
   line-height: 1;
   height: 56px;
@@ -116,7 +116,7 @@
   margin: 25px 0px;
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .sidebar .sharebar .field-label {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: 'avalonregular', Arial, sans-serif;
   letter-spacing: 0;
 }
 

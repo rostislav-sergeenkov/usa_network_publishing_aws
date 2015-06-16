@@ -79,3 +79,41 @@
   }
 }
 
+@mixin linksSeparator($separator-font-size, $separator-left, $separator-right, $separator-color) {
+  &:after {
+    color: $separator-color;
+    content: "|";
+    display: inline-block;
+    font-size: $separator-font-size;
+    margin-left: $separator-left;
+    margin-right: $separator-right;
+  }
+}
+
+// Read the article: http://sassbreak.com/viewport-relative-headings-with-sass
+// VW function
+@function get-vw($target, $bp) {
+  // 1 vw is equal to 1% of the viewport width
+  $breakpoint: $bp;
+  $vw-context: ($breakpoint * .01) * 1px; // 1% viewport width
+  @return ($target/$vw-context) * 1vw;
+}
+@function get-row-height($target-line-height, $target-font-size, $rows, $bp) {
+  // 1 vw is equal to 1% of the viewport width
+  $breakpoint: $bp;
+  $font-diff: $target-font-size + ($target-line-height - $target-font-size)/2;
+  $vw-context: ($breakpoint * .01) * 1px; // 1% viewport width
+  @return (($target-line-height * ($rows - 1) + $font-diff)/$vw-context)  * 1vw;
+}
+
+// example
+//.selector {
+//  font-size: get-vw(16px, 1025);
+//  or
+//  @include vw(72px);
+//}
+
+//@mixin vw($size, $bp-width) {
+//  font-size: get-vw($size, $bp-width);
+//}
+

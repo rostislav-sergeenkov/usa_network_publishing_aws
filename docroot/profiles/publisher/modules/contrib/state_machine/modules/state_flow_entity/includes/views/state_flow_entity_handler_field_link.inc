@@ -7,14 +7,20 @@
 
 class state_flow_entity_handler_field_link extends state_flow_entity_handler_field_state_flow_states {
 
-  function option_definition() {
+  /**
+   * {@inheritdoc}
+   */
+  public function option_definition() {
     $options = parent::option_definition();
     $options['link_type'] = array('default' => 'revision_delete_path');
     $options['link_text'] = array('default' => 'Delete');
     return $options;
   }
 
-  function options_form(&$form, &$form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
 
     $form['link_type'] = array(
@@ -39,10 +45,13 @@ class state_flow_entity_handler_field_link extends state_flow_entity_handler_fie
     );
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function render($values) {
 
-    // Make sure these options are set
-    if (!empty($this->aliases['active']) && !empty($this->options['active_revision_handling'])  ) {
+    // Make sure these options are set.
+    if (!empty($this->aliases['active']) && !empty($this->options['active_revision_handling'])) {
       $active_revision_handling = $this->options['active_revision_handling'];
       $active_alias = $this->aliases['active'];
 

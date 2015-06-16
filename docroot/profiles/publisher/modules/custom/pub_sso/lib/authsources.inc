@@ -14,13 +14,7 @@ include dirname(__FILE__) . '/env.inc';
 $environment_config = array(
   'entityID' => $environment_info['entity_id'],
   'idp' => $environment_info['metadata.key'],
-  // Will be determined below, within domains.inc.
-  'authentication-source.key' => '',
+  'authentication-source.key' => $environment_info['authentication-source.key'],
+  'public.key' => $conf['pub_sso_server'] . '.pub.crt',
+  'private.key' => $conf['pub_sso_server'] . '.prv.pem',
 );
-
-// The list of authentication sources keys.
-include_once DRUPAL_ROOT . '/' . conf_path() . '/sso/domains.inc';
-
-if (array_key_exists($_SERVER['SERVER_NAME'], $domains)) {
-  $environment_config['authentication-source.key'] = $domains[$_SERVER['SERVER_NAME']];
-}

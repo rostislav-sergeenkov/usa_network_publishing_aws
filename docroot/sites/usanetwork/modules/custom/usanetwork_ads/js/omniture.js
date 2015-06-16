@@ -71,7 +71,7 @@
         if (event === "click") {
 
           s.linkTrackVars = 'events,eVar21';
-          s.linkTrackEvents = s.events = 'event4';
+          s.linkTrackEvents = s.events = 'event4,event6';
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Click Load');
@@ -80,7 +80,7 @@
         } else {
 
           s.linkTrackVars = 'events,eVar21';
-          s.linkTrackEvents = s.events = 'event5';
+          s.linkTrackEvents = s.events = 'event5,event6';
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Auto Load');
@@ -179,6 +179,19 @@
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
+    showCardClick: function (item_node) {
+
+      var show_name = item_node.find($('.show-open .title')).text();
+
+      s.linkTrackVars = 'events,prop4,prop10';
+      s.linkTrackEvents = s.events = 'prop4,prop10';
+      s.prop4 = show_name + ' : Home Page Show Card';
+      s.prop10 = show_name;
+
+      s.tl(this, 'o', 'Home Page Show Card Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
     promoClick: function ($self, name, show_name) {
 
       if (show_name === '') {
@@ -192,7 +205,7 @@
         s.eVar55 = name;
       }
 
-      if ($self.attr('href') != '#') {
+      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0 ) {
         s.bcf = function () {
           setTimeout(function () {
             window.location = $self.attr('href');
@@ -218,7 +231,7 @@
         if (body.hasClass('page-home')) {
           page_name = 'Home Page ';
           if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
-            name = page_name + 'Shows Carousel';
+            name = page_name + 'Show Card Carousel';
           }
           if ($self.closest('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').length > 0) {
             name = page_name + 'Full Latest Carousel';
@@ -509,7 +522,7 @@
         };
       });
 
-      // Quizes omniture tracking. Track show Question
+      // Quizzes omniture tracking. Track show Question
       $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function () {
         $(this).on('show', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
@@ -536,7 +549,7 @@
         });
       });
 
-      // Quizes omniture tracking. Track answer Question
+      // Quizzes omniture tracking. Track answer Question
       $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function () {
         $(this).on('click', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {

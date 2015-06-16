@@ -92,13 +92,15 @@ class DynamicQueueEntityController extends EntityAPIController {
       }
 
       // Render the entities.
-      $entities = entity_load('node', $entity_ids);
-      $entity_list_view_mode = variable_get('dynamic_queue_' . $dynamic_queue_bundle . '_' . $dynamic_queue_view_mode . '_entity_list_view_mode', 'default');
-      $content['dynamic_queue'][$dynamic_queue->dqid]['entity_list_view'] = entity_view('node', $entities, $entity_list_view_mode);
-      $content['dynamic_queue'][$dynamic_queue->dqid]['page'] = array('#theme' => 'pager');
+      if (!empty($entity_ids)) {
+        $entities = entity_load('node', $entity_ids);
+        $entity_list_view_mode = variable_get('dynamic_queue_' . $dynamic_queue_bundle . '_' . $dynamic_queue_view_mode . '_entity_list_view_mode', 'default');
+        $content['dynamic_queue'][$dynamic_queue->dqid]['entity_list_view'] = entity_view('node', $entities, $entity_list_view_mode);
+        $content['dynamic_queue'][$dynamic_queue->dqid]['page'] = array('#theme' => 'pager');
 
-      if (isset($extra_fields['entity_list']['weight'])) {
-        $content['dynamic_queue'][$dynamic_queue->dqid]['entity_list_view']['#weight'] = $extra_fields['entity_list']['weight'];
+        if (isset($extra_fields['entity_list']['weight'])) {
+          $content['dynamic_queue'][$dynamic_queue->dqid]['entity_list_view']['#weight'] = $extra_fields['entity_list']['weight'];
+        }
       }
     }
 

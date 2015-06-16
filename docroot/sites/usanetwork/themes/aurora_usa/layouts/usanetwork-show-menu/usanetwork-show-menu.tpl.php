@@ -7,6 +7,9 @@
     <div class="nav-bar-tabs">
       <?php print $content['reg_menu']; ?>
     </div>
+    <div id="tve-help-link-wrapper">
+      <?php print $content['profile']; ?>
+    </div>
     <div class="main-menu-open"><a href="#" class="link-color-reset"></a></div>
   </div>
   <div class="header-small-menu menu">
@@ -15,6 +18,9 @@
   <div class="tab-content">
     <div class="tab-item shows-tab">
       <div class="show-tab-wrapper tab-item-wrapper">
+        <div class="see-all-link">
+          <a href="/shows">see all shows</a>
+        </div>
         <?php print $content['reg_tab_shows']; ?>
       </div>
     </div>

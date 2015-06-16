@@ -31,6 +31,24 @@ function mps_menu() {
     'page arguments' => array('mps_admin_form'),
     'access arguments' => array('administer mps account'),
   );
+  $items['node/%node/mps'] = array(
+    'title' => 'JSON Data',
+    'page callback' => 'mps_load_info',
+    'page arguments' => array('node', 1),
+    'access arguments' => array('access mps information'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'mps.pages.inc',
+    'weight' => 100,
+  );
+  $items['file/%file/mps'] = array(
+    'title' => 'JSON Data',
+    'page callback' => 'mps_load_info',
+    'page arguments' => array('file', 1),
+    'access arguments' => array('access mps information'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'mps.pages.inc',
+    'weight' => 100,
+  );
   return $items;
 }
 
@@ -41,6 +59,9 @@ function mps_permission() {
   return array(
     'administer mps account' => array(
       'title' => t('Administer MPS account'),
+    ),
+    'access mps information' => array(
+      'title' => t('View MPS information'),
     ),
   );
 }

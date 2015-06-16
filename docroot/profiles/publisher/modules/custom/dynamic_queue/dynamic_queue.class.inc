@@ -17,12 +17,14 @@ interface DynamicQueueModifierInterface {
    *   The form array.
    * @param array $settings
    *   The settings of all plugins.
-   * @param DynamicQueueEntity $DynamicQueue
+   * @param DynamicQueueEntity $dynamic_queue
    *   The Dynamic Queue entity object.
    * @param string $op
    *   The operation being performed.
+   * @param array $form_state
+   *   The form state array.
    */
-  public static function alterForm(&$form, $settings, $DynamicQueue, $op);
+  public static function alterForm(&$form, $settings, $dynamic_queue, $op, &$form_state);
 
   /**
    * Alters the query.
@@ -73,7 +75,7 @@ abstract class DynamicQueueModifierBase implements DynamicQueueModifierInterface
   /**
    * {@inheritdoc}
    */
-  public static function alterForm(&$form, $settings, $DynamicQueue, $op) {
+  public static function alterForm(&$form, $settings, $dynamic_queue, $op, &$form_state) {
     $form['example'] = array(
       '#type' => 'textfield',
       '#title' => t('Title contains'),

@@ -592,7 +592,7 @@
             margin-top: -16px;
             opacity: 1;
             position: absolute;
-            top: 42%;
+            top: 50%;
           }
         }
       }
@@ -615,9 +615,12 @@
           margin-bottom: 0;
           height: 100%;
           position: relative;
+          width: 33vw;
+          @include breakpoint($bp-min-641-width) {
+            max-width: 33.3vw;
+          }
           @include breakpoint($between-641-768) {
             height: 18.5625vw;
-            width: 33vw;
           }
           @include breakpoint($bp-640-width) {
             float: none;

@@ -27,6 +27,9 @@ function pub_wysiwyg_wysiwyg_default_profiles() {
           'Italic' => 1,
           'Link' => 1,
         ),
+        'embed_external_widget' => array(
+          'embed_external_widget' => 1,
+        ),
         'youtube' => array(
           'Youtube' => 1,
         ),
@@ -34,6 +37,7 @@ function pub_wysiwyg_wysiwyg_default_profiles() {
           'MPX' => 1,
         ),
         'drupal' => array(
+          'embed_external' => 1,
           'media' => 1,
         ),
       ),
@@ -49,6 +53,7 @@ function pub_wysiwyg_wysiwyg_default_profiles() {
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
       'advanced__active_tab' => 'edit-basic',
       'forcePasteAsPlainText' => 0,
+      'embed_external_pluginset' => 'publisher7_default_plugin',
     ),
   );
 

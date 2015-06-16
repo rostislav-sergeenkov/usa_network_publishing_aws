@@ -1,6 +1,5 @@
 <div class="carousel-block carousel-block-left">
-
-  <div class="carousel-description-item start">
+  <div class="carousel-description-item start <?php print !empty($sponsored)? ' sponsored-enable' : ''; ?>">
     <div class="description-wrapper">
       <div class="description-block">
         <div class="title show-color show-color-border <?php print $carousel_border; ?>">

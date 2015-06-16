@@ -65,6 +65,14 @@ function usanetwork_menu() {
     'access callback' => TRUE,
   );
 
+  $items['admin/usanetwork/promo-icon-css'] = array(
+    'title' => t('Promo Icon CSS'),
+    'description' => t('Promo icon css regenerate page'),
+    'access arguments' => array('administer usanetwork'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_promo_css_config')
+  );
+
   return $items;
 }
 
@@ -280,6 +288,7 @@ function theme_usanetwork_item_list($variables) {
           $also_on_usa_menu = menu_load('menu-also-on-usa');
           $also_on_usa_links = menu_load_links('menu-also-on-usa');
 
+//          $links[] = l('All Shows', 'shows', array('attributes' => array('class' => 'title-link')));
           if (!empty($current_shows)) {
 
             $links[] = '<span class="no-link">' . t('Current Shows') . '</span>';
@@ -483,11 +492,43 @@ function _create_promo_icon_css() {
         $image = field_get_items('taxonomy_term', $term, 'field_usa_term_image');
         if (!empty($image)) {
           $image = reset($image);
-          $image = image_style_url('thumbnail', $image['uri']);
+          $parsed_url = parse_url(image_style_url('thumbnail', $image['uri']));
+          $image = $parsed_url['path'] . '?' . $parsed_url['query'];
           $css_text .= '.' . str_replace(' ', '_', $term->name) . '-icon { background-image: url(' . $image . '); }' . PHP_EOL;
         }
       }
       file_unmanaged_save_data($css_text, USANETWORK_PROMO_ICON_CSS_PATH, FILE_EXISTS_REPLACE);
     }
   }
+}
+
+/**
+ * Page callback for configuring page
+ */
+function usanetwork_promo_css_config() {
+
+  $form['description'] = array(
+    '#type' => 'markup',
+    '#markup' => t('Recreate CSS schema for promo icons.'),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Recreate'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler.
+ *
+ * @param array $form
+ *   Form API form.
+ * @param array $form_state
+ *   Form API form.
+ */
+function usanetwork_promo_css_config_submit($form, &$form_state) {
+  _create_promo_icon_css();
+  drupal_set_message(t('Promo icon css is recreated.'));
 }

@@ -27,9 +27,9 @@
         display: block;
         height: 100%;
         width: 100%;
-        max-width: calc(100% - 9.76vw);
+        max-width: calc(100% - (9.76vw + 7.12195vw));
         @include breakpoint($bp-min-1901-width) {
-          max-width: calc(100% - 185px);
+          max-width: calc(100% - 320px);
         }
         @include breakpoint($bp-768-width) {
           clear: none;
@@ -143,21 +143,25 @@
                 }
               }
               &:before {
-                @include sprite-background(info-icon-small);
-                content: '';
+                content: '\e61d';
                 display: block;
-                left: calc((6.93vw - 26px)/2);
-                margin-top: -13px;
+                font-family: $ico-font;
+                left: get-vw(42px, 1901);
+                font-size: get-vw(48px, 1901);
+                line-height: 1;
+                margin-top: get-vw(-24px, 1901);
                 position: absolute;
                 top: 50%;
                 @include breakpoint($bp-min-1901-width) {
-                  @include sprite-background(info-icon);
-                  left: 46px;
-                  margin-top: -20px;
+                  left: 42px;
+                  margin-top: -24px;
+                  font-size: 48px;
                 }
                 @include breakpoint($bp-768-width) {
                   left: 50%;
-                  margin-left: -13px;
+                  font-size: 20px;
+                  margin-left: -10px;
+                  margin-top: -10px;
                 }
               }
               &.no-refresh {
@@ -174,6 +178,33 @@
             }
           }
 
+        }
+      }
+    }
+    .tve-help-link {
+      float: right;
+      display: table;
+      height: 100%;
+      @include breakpoint($bp-768-width) {
+        display: none;
+      }
+      a {
+        color: #ffffff;
+      }
+      &.signOut {
+        &:hover {
+          background: $consup-border;
+        }
+        .links-wrapper {
+          border-left: 1px solid $consup-border;
+        }
+      }
+      &.signIn {
+        &.no-auth {
+          border-left: 1px solid $consup-border;
+          &:hover {
+            background: $consup-border;
+          }
         }
       }
     }
@@ -290,6 +321,7 @@
                 font-family: $avalon-medium;
                 font-size: get-vw(15px, 1025);
                 letter-spacing: 1px;
+                word-wrap: break-word;
                 line-height: 1.6;
                 @include breakpoint($bp-min-1901-width) {
                   font-size: 28px;
@@ -383,49 +415,8 @@
     .tab-content {
       z-index: 2;
     }
-    .region-header {
-      &.sticky {
-        .block-usanetwork-menu {
-          .header-nav-bar {
-            margin-bottom: 0;
-          }
-          .tve-help-link.signOut {
-            .tve-header-links {
-              .first {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-      .block-usanetwork-menu {
-        &.open {
-          @include breakpoint($between-769-1024) {
-            background: $header-tab-back-new;
-            .tve-help-link.signOut {
-              .tve-header-links {
-                .first {
-                  display: none;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
     .header-nav-bar {
-      &.tve-sign {
-        .tve-help-link {
-          &.signOut {
-            ul.tve-header-links {
-              li.first {
-                display: block;
-              }
-            }
-          }
-        }
-      }
+
       .nav-bar-tabs {
         max-width: calc(100% - 17vw);
         @include breakpoint($bp-min-1901-width) {
@@ -439,127 +430,6 @@
         }
         .menu-item.info {
           border-right: none;
-        }
-      }
-      .tve-help-link {
-        float: right;
-        display: table;
-        height: 100%;
-        @include breakpoint($bp-768-width) {
-          display: none;
-        }
-        ul, li {
-          font-size: 12px;
-          line-height: normal;
-          margin: 0;
-        }
-        a {
-          color: #ffffff;
-          outline: none;
-          font-size: 16px;
-          @include breakpoint($bp-768-width) {
-            font-size: 14px;
-          }
-        }
-        a:focus {
-          outline: none;
-        }
-        &.signOut {
-          &:hover {
-            background: $consup-border;
-          }
-          .links-wrapper {
-            border-left: 1px solid $consup-border;
-            display: table-cell;
-            height: 100%;
-            vertical-align: middle;
-            width: get-vw(73px, 1025);
-            @include breakpoint($bp-min-1901-width) {
-              width: 135px;
-            }
-          }
-          a {
-            font-size: 16px;
-            line-height: 1.3;
-            @include breakpoint($bp-1900-width) {
-              font-size: 12px;
-              line-height: 1.2;
-            }
-          }
-          .actionLink {
-            .signOut{
-              display: block;
-              height: 40px;
-              margin: 0 auto;
-              overflow: hidden;
-              text-transform: uppercase;
-              text-align: center;
-              width: 40px;
-              @include breakpoint($bp-1900-width) {
-                height: 30px;
-                width: 30px;
-              }
-            }
-          }
-          ul.tve-header-links {
-            li.first {
-              display: none;
-              bottom: -25px;
-              left: 74.7%;
-              position: absolute;
-              text-align: right;
-              width: 25.3%;
-              z-index: 1;
-              @include breakpoint($bp-1280-width) {
-                left: auto;
-                right: 0;
-                width: 320px;
-              }
-              @include breakpoint($bp-1024-width) {
-                left: 0;
-                width: 100%;
-              }
-            }
-          }
-          .providerLogo {
-            box-sizing: border-box;
-            display: block;
-            padding-right: 15px;
-            text-align: right;
-            width: 100%;
-            img {
-              height: 16px;
-            }
-          }
-        }
-        &.signIn {
-          .tve-help-sign {
-            box-sizing: border-box;
-            bottom: -33px;
-            left: 74.7%;
-            padding-right: 15px;
-            position: absolute;
-            text-align: right;
-            width: 25.3%;
-            z-index: 1;
-            @include breakpoint($bp-1280-width) {
-              left: auto;
-              right: 0;
-              width: 320px;
-            }
-            @include breakpoint($bp-1024-width) {
-              left: 0;
-              width: 100%;
-            }
-          }
-          .inlineLoader {
-            background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
-            display: inline-block;
-            height: 30px;
-            margin: 0 5px;
-            vertical-align: middle;
-            width: 30px;
-          }
         }
       }
     }

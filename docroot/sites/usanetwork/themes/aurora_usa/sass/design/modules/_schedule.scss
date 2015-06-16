@@ -303,18 +303,13 @@
       margin-top: 20px;
       position: relative;
       padding: 0;
+      border-bottom: 2px solid $usa-logo-back;
       .carousel-vert {
         overflow: hidden;
         position: static;
         margin: 0;
         padding: 0;
         max-height: 770px;
-        //          @include breakpoint($bp-1024-width){
-        //            max-height: 476px;
-        //          }
-        //          @include breakpoint($bp-640-width){
-        //            max-height: 385px;
-        //          }
       }
       .jcarousel-control-next {
         display: block;

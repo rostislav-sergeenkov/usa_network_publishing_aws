@@ -27,11 +27,14 @@ class DynamicQueueModifierTaxonomy extends DynamicQueueModifierBase implements D
   /**
    * {@inheritdoc}
    */
-  public static function alterForm(&$form, $settings, $DynamicQueue, $op) {
-    $dynamic_queue_type = dynamic_queue_type_load($DynamicQueue->type);
+  public static function alterForm(&$form, $settings, $dynamic_queue, $op, &$form_state) {
+    $dynamic_queue_type = dynamic_queue_type_load($dynamic_queue->type);
 
     $form['#attached']['css'][] = drupal_get_path('module', 'dynamic_queue') . '/css/dynamic_queue.css';
-    $form['terms'] = array();
+    $form['terms'] = array(
+      '#type' => 'fieldset',
+      '#description' => t('To filter the content, select one or more entries in the fields below. Selecting more entries within a field narrows the results.'),
+    );
 
     $fields = array();
     if (isset($dynamic_queue_type->settings['taxonomy']['fields'])) {
@@ -47,8 +50,8 @@ class DynamicQueueModifierTaxonomy extends DynamicQueueModifierBase implements D
     $fields = self::getFilterFieldsByBundles($fields, $bundles, $dynamic_queue_type->entity_type);
 
     $dynamic_queue_terms = array();
-    if (isset($DynamicQueue->settings['terms'])) {
-      $dynamic_queue_terms = $DynamicQueue->settings['terms'];
+    if (isset($dynamic_queue->settings['terms'])) {
+      $dynamic_queue_terms = $dynamic_queue->settings['terms'];
     }
 
     // Grab information about the bundles, so we can determine the fields that

@@ -8,7 +8,7 @@
     <div class="meta-wrapper">
       <div class="meta-back"></div>
       <div class="meta-wrapper-inner">
-        <div class="meta-icon video-icon"></div>
+        <div class="meta-icon full-video-icon-default"></div>
         <div class="meta">
           <?php if ($caption && $caption != "&nbsp;"): ?>
             <div class="caption"><?php print $caption; ?></div>

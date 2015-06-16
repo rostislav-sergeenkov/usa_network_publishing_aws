@@ -267,5 +267,7 @@ function usanetwork_microsite_gracelandcatchup_get_theme_settings() {
     'videos_all_videos_filter' => FALSE,
     'videos_season_filters' => TRUE,
     'character_bios_remove_video_tags' => TRUE,
+    'videos_full_episode_sort_order' => 'ASC',
+    'characters_homepage_present' => TRUE,
   );
 }

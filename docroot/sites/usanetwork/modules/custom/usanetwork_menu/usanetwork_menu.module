@@ -2,6 +2,7 @@
 
 define('USANETWORK_MENU_FULL_EPISODES_NUMBER', 6);
 
+define('USANETWORK_MENU_SHOWS_LANDING_SHOWS_NUMBER', 4);
 include_once 'usanetwork_menu.features.inc';
 
 
@@ -45,6 +46,22 @@ function usanetwork_menu_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  // admin area
+  $items['admin/usanetwork/shows-landing-page'] = array(
+    'title' => 'Shows Landing Page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_menu_shows_landing_main_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  // Show autocompliter.
+  $items['usanetwork_menu/shows/autocomplete'] = array(
+    'title' => 'Select content',
+    'page callback' => 'usanetwork_menu_shows_autocomplete',
+    'access arguments' => array('administer nodes'),
+    'delivery callback' => 'drupal_deliver_html_page',
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -443,6 +460,11 @@ function usanetwork_menu_image_default_styles() {
  * Render header main menu block
  */
 function _usanetwork_menu_main_menu_block() {
+  drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
+    'type' => 'external',
+    'scope' => 'footer',
+  ));
+
   $menu = menu_load('main-menu');
   if (!$menu) {
     return;
@@ -998,10 +1020,15 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
     }
     if (!empty($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
-      $sharebar['#title'] = t('Share this gallery');
+      $sharebar['#title'] = t('Share');
+    }
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
     }
     $theme_variables = array(
       'main_url' => url('<front>'),
+      'authbar' => isset($authbar) ? $authbar : NULL,
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'catchall_name' => $node->title,
@@ -1046,8 +1073,13 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
         }
       }
     }
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
+      'authbar' => isset($authbar) ? $authbar : NULL,
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'gallery_name' => !empty($node->title) ? $node->title : '',
@@ -1091,7 +1123,12 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
         $episode_num = $season_num_items['value'];
       }
     }
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
+    }
     $theme_variables = array(
+      'authbar' => isset($authbar) ? $authbar : NULL,
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
@@ -1131,7 +1168,12 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this bio');
     }
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
+    }
     $theme_variables = array(
+      'authbar' => isset($authbar) ? $authbar : NULL,
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
@@ -1160,22 +1202,15 @@ function _usanetwork_menu_consumptionator_block_video($file) {
       $sharebar = field_view_field('file', $file, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this video');
     }
-    $menu_items = _usa_auth_prepare_menu_items();
-    $auth_links = array(
-      '#theme' => 'item_list',
-      '#items' => $menu_items,
-      '#attributes' => array('class' => array('tve-header-links', 'inline')),
-      '#prefix' => '<div class="links-wrapper">',
-      '#suffix' => '</div>',
-    );
+
+    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($advert_block['content'])) {
+      $authbar = render($advert_block['content']);
+    }
+
     $file_wrapper = entity_metadata_wrapper('file', $file);
 
     $episode_image_uri = _usanetwork_mpx_video_get_image_path($file);
-
-    if (!empty($file->field_mpx_entitlement)) {
-      $field_mpx_entitlement = $file_wrapper->field_mpx_entitlement->value();
-      $lock = ($field_mpx_entitlement && $field_mpx_entitlement == 'auth') ? TRUE : FALSE;
-    }
 
     //Sponsored MPS
     if (!empty($file->field_sponsored)) {
@@ -1188,7 +1223,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
 
     $theme_variables = array(
       'sharebar' => !empty($sharebar) ? drupal_render($sharebar) : '',
-      'authbar' => !empty($lock) ? (!empty($auth_links) ? drupal_render($auth_links) : '') : '',
+      'authbar' => !empty($authbar) ? ($authbar) : '',
       'main_url' => url('<front>'),
       'show_url' => !empty($file->field_show)
           ? url('node/' . $file_wrapper->field_show->value()->nid)
@@ -1315,17 +1350,13 @@ function _usanetwork_menu_consumptionator_block_live_video() {
     ),
     'setting'
   );
-  $menu_items = _usa_auth_prepare_menu_items();
-  $auth_links = array(
-    '#theme' => 'item_list',
-    '#items' => $menu_items,
-    '#attributes' => array('class' => array('tve-header-links', 'inline')),
-    '#prefix' => '<div class="links-wrapper">',
-    '#suffix' => '</div>',
-  );
+  $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+  if (!empty($advert_block['content'])) {
+    $authbar = render($advert_block['content']);
+  }
 
   $theme_variables = array(
-    'authbar' => !empty($auth_links) ? drupal_render($auth_links) : '',
+    'authbar' => !empty($authbar) ? $authbar : NULL,
     'main_url' => url('<front>'),
   );
   return theme('usanetwork_menu_consumptionator_live_video', $theme_variables);
@@ -1491,6 +1522,72 @@ function usanetwork_menu_full_shows_autocomplete($title) {
     }
   }
   drupal_json_output($output);
+}
+
+/*
+ * Show with full episodes autocomplete callback.
+ */
+function usanetwork_menu_shows_autocomplete($title) {
+  $query = db_select('node', 'n');
+  $query->fields('n',array('nid', 'title'));
+  $query->condition('n.title', '%' . $title . '%', 'LIKE');
+  $query->condition('n.type', 'tv_show', '=');
+  $query->condition('n.status', NODE_PUBLISHED, '=');
+  $query->range(0, 10);
+  $result = $query->execute()->fetchAll();
+
+  $output = array();
+  if (!empty($result) && is_array($result)) {
+    foreach($result as $row) {
+      $row->title = check_plain($row->title);
+      $key = $row->title . ' [node:' . $row->nid . ']';
+      $output[$key] = $row->title;
+    }
+  }
+  drupal_json_output($output);
+}
+
+/**
+ *  Return shows landing page control form.
+ */
+function usanetwork_menu_shows_landing_main_form($form, &$form_state) {
+  $header_shows = variable_get('shows_landing_shows', array());
+
+  $form['header_shows'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Shows Landing Page Features'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  for ($i = 0; $i < USANETWORK_MENU_SHOWS_LANDING_SHOWS_NUMBER; $i++) {
+    $form['header_shows']['usa_show_' . $i] = array(
+      '#type' => 'textfield',
+      '#required' => FALSE,
+      '#default_value' => !empty($header_shows[$i])
+          ? $header_shows[$i]
+          : '',
+      '#autocomplete_path' => 'usanetwork_menu/shows/autocomplete',
+    );
+  }
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Save',
+  );
+  return $form;
+}
+
+
+/**
+ *  Return shows landing page control form.
+ */
+function usanetwork_menu_shows_landing_main_form_submit($form, &$form_state) {
+  $header_shows = array();
+  for ($i = 0; $i < USANETWORK_MENU_SHOWS_LANDING_SHOWS_NUMBER; $i++) {
+    $header_shows[$i] = !empty($form_state['values']['usa_show_' . $i]) ? $form_state['values']['usa_show_' . $i] : '';
+  }
+  variable_set('shows_landing_shows', $header_shows);
+  drupal_set_message(t('All shows page has been successfully updated'));
 }
 
 /**

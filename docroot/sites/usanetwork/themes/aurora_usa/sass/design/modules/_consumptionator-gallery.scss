@@ -31,11 +31,8 @@
       z-index: 1;
     }
     @include breakpoint($bp-1024-width) {
-      height: calc(56.25vw + 145px);
+      height: auto;
       width: 100%;
-    }
-    @include breakpoint($bp-640-width) {
-      height: calc(56.25vw + 280px)
     }
     > .node {
       height: 100%;
@@ -67,8 +64,12 @@
         width: 150px;
       }
       @include breakpoint($bp-640-width) {
-        bottom: 10px;
-        right: 0;
+        background: $gallery-description-back;
+        bottom: auto;
+        height: 90px;
+        padding-top: 10px;
+        position: relative;
+        right: auto;
         width: 100%;
       }
       h3.field-label {
@@ -77,7 +78,7 @@
         font-family: $avalon-book;
         line-height: 20px;
         margin-top: 0;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         text-transform: uppercase;
         @include breakpoint($bp-1280-width) {
           font-size: 12px;
@@ -92,6 +93,15 @@
         table {
           @include breakpoint($bp-640-width) {
             margin: 0 auto;
+          }
+        }
+      }
+      .gig-button-container {
+        @include breakpoint($bp-640-width) {
+          margin-right: 20px;
+          padding: 0;
+          td > div {
+            font-size: 30px;
           }
         }
       }
@@ -126,21 +136,32 @@
     }
     .bxslider-gallery {
       height: 100%;
+      &.on-load {
+        .slide {
+          @include breakpoint($bp-1024-width) {
+            display: none;
+            &:first-child {
+              display: block;
+            }
+          }
+        }
+      }
       .slide {
         background: $usa-logo-back;
+        height: auto;
         position: relative;
-        height: 100% !important;
+        @include breakpoint($bp-min-1025-width) {
+          height: 100% !important;
+        }
         .node {
           height: 100%;
           .asset-img {
             height: 100%;
             position: relative;
             @include breakpoint($bp-1024-width) {
-              height: calc(100% - 145px);
+              height: 56.25vw;
               overflow: hidden;
-            }
-            @include breakpoint($bp-640-width) {
-              height: calc(100% - 280px);
+              text-align: center;
             }
             img {
               bottom: 0;
@@ -149,6 +170,11 @@
               top: 0;
               margin: auto;
               position: absolute;
+              @include breakpoint($bp-1024-width) {
+                height: auto;
+                max-height: 100%;
+                max-width: 100%;
+              }
             }
           }
           .slide-info {
@@ -168,11 +194,18 @@
               padding: 0 70px;
             }
             @include breakpoint($bp-1024-width) {
+              background: $gallery-description-back;
               display: block;
-              height: 145px;
+              height: auto;
+              min-height: 145px;
+              position: relative;
             }
             @include breakpoint($bp-640-width) {
-              height: 280px;
+              height: auto;
+              min-height: 90px;
+            }
+            @include breakpoint($bp-480-width) {
+              padding: 0 50px;
             }
             .description {
               color: $consup-gallery-description;
@@ -209,14 +242,12 @@
               @include breakpoint($bp-1024-width) {
                 font-size: 14px;
                 height: auto;
-                max-height: 115px;
                 padding-right: 170px;
                 padding-top: 30px;
               }
               @include breakpoint($bp-640-width) {
-                margin-top: 60px;
-                max-height: 125px;
-                padding: 0;
+                margin-top: 0px;
+                padding: 30px 0 0;
                 position: static;
                 text-align: center;
               }
@@ -270,10 +301,11 @@
                 }
               }
               @include breakpoint($bp-640-width) {
-                margin-top: 5px;
+                margin-top: 15px;
                 padding-right: 0;
                 position: static;
                 text-align: center;
+                white-space: normal;
               }
             }
           }
@@ -284,7 +316,9 @@
       height: 100%;
       position: relative;
       .bx-viewport {
-        height: 100% !important;
+        @include breakpoint($bp-min-1025-width) {
+          height: 100% !important;
+        }
       }
       .bx-controls {
         #bx-custom-pager-wrapper {
@@ -293,8 +327,9 @@
           overflow: hidden;
           position: absolute;
           z-index: 51;
-          @include breakpoint($bp-640-width) {
-            bottom: 245px;
+          @include breakpoint($bp-1024-width) {
+            bottom: auto;
+            top: calc(56.25vw + 13px);
           }
         }
         .bx-custom-pager {
@@ -402,19 +437,19 @@
             position: absolute;
             top: 90%;
             width: 38px;
-            z-index: 1000;
+            z-index: 55;
             @include breakpoint($bp-min-1901-width) {
               margin-top: -22px;
               height: 44px;
               width: 44px;
             }
             @include breakpoint($bp-1024-width) {
-              bottom: 50px;
               margin-top: 0;
-              top: auto;
+              top: calc(56.25vw + 57px);
             }
-            @include breakpoint($bp-640-width) {
-              bottom: 150px;
+            @include breakpoint($bp-480-width) {
+              height: 30px;
+              width: 30px;
             }
             &:hover {
               background: none;
@@ -436,6 +471,9 @@
               @include breakpoint($bp-min-1901-width) {
                 font-size: 44px;
               }
+              @include breakpoint($bp-480-width) {
+                font-size: 30px;
+              }
             }
             &.bx-prev {
               right: 105px;
@@ -445,6 +483,9 @@
               @include breakpoint($bp-1280-width) {
                 left: 15px;
                 right: auto;
+              }
+              @include breakpoint($bp-480-width) {
+                left: 10px;
               }
               &:after {
                 content: "\e607";
@@ -457,6 +498,9 @@
               }
               @include breakpoint($bp-1280-width) {
                 right: 15px;
+              }
+              @include breakpoint($bp-480-width) {
+                right: 10px;
               }
               &:after {
                 content: "\e608";
@@ -487,12 +531,6 @@
     @include breakpoint($between-1025-1280) {
       height: calc((100vw - 150px) * 0.5625);
       overflow: visible;
-    }
-    @include breakpoint($bp-1024-width) {
-      height: calc((56.25vw - 48px) + 145px);
-    }
-    @include breakpoint($bp-640-width) {
-      height: calc(56.25vw + 280px)
     }
   }
 }

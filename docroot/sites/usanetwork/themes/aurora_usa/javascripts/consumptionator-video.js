@@ -11,14 +11,6 @@
       $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
     },
 
-    // check if user uses mobile device
-    mobileModal: function () {
-      if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
-        var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
-        Drupal.behaviors.video_mobile.showMobileVideoModal(os);
-      }
-    },
-
     /**
      * Change iframe src after Authentication.
      */
@@ -92,9 +84,16 @@
       var iframe_height = current_iframe.width() * 9 / 16;
       current_iframe.height(iframe_height);
 
-      if ($('body').hasClass('page-full-video')) {
-        Drupal.behaviors.consumptionator_video.mobileModal();
-      }
+      $(window).load(function () {
+        if (usa_deviceInfo.mobileDevice) {
+          if($('#pdk-player').length > 0) {
+            if (!$('body').hasClass('page-videos-live') && !$('body').hasClass('page-auth-video') && !$('body').hasClass('page-node-microsite')) {
+              Drupal.behaviors.consumptionator_video.changeSrc();
+              Drupal.behaviors.consumptionator_video.initPlayerBind();
+            }
+          }
+        }
+      })
     }
   };
 

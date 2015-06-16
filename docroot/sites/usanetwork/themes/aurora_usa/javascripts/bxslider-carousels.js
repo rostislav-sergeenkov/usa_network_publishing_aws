@@ -152,7 +152,21 @@
           }
 
           $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-        })
+        }).swipe({
+            excludedElements: "button, input, select, textarea, .noSwipe",
+            allowPageScroll: "vertical",
+            threshold: 50,
+            swipeRight: function () {
+              if(window.innerWidth >= window_size_mobile_641) {
+                $(this).jcarousel('scroll', '-=3');
+              }
+            },
+            swipeLeft: function () {
+              if(window.innerWidth >= window_size_mobile_641) {
+                $(this).jcarousel('scroll', '+=3');
+              }
+            }
+          })
         .jcarousel({
           animation: {
             duration: 500,

@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e2e3bba1b6eb537e78affb5515cebcff",
+    "hash": "7b709078b8b33f6ff6bb2c87eafe0cd1",
     "packages": [
         {
             "name": "composer/installers",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "f8c20b427de1cfe7a28a015c1640ce4e4eef1e33"
+                "reference": "a66f93a541c2214b4865161426b077e2b7d951de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/f8c20b427de1cfe7a28a015c1640ce4e4eef1e33",
-                "reference": "f8c20b427de1cfe7a28a015c1640ce4e4eef1e33",
+                "url": "https://api.github.com/repos/composer/installers/zipball/a66f93a541c2214b4865161426b077e2b7d951de",
+                "reference": "a66f93a541c2214b4865161426b077e2b7d951de",
                 "shasum": ""
             },
             "replace": {
@@ -99,7 +99,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-03-26 16:11:30"
+            "time": "2015-04-21 19:54:55"
         },
         {
             "name": "drush/drush",
@@ -168,16 +168,16 @@
         },
         {
             "name": "nbcuots/publisher7",
-            "version": "7.55.0",
+            "version": "7.58.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:NBCUOTS/Publisher7.git",
-                "reference": "e70c13f4516d9939779a14ab4b1546e95e1209ef"
+                "reference": "1920e385a22fb399f561be0e21682d9953c1d4d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NBCUOTS/Publisher7/zipball/e70c13f4516d9939779a14ab4b1546e95e1209ef",
-                "reference": "e70c13f4516d9939779a14ab4b1546e95e1209ef",
+                "url": "https://api.github.com/repos/NBCUOTS/Publisher7/zipball/1920e385a22fb399f561be0e21682d9953c1d4d9",
+                "reference": "1920e385a22fb399f561be0e21682d9953c1d4d9",
                 "shasum": ""
             },
             "require": {
@@ -188,7 +188,7 @@
                 "drupal/coder": ">7",
                 "facebook/webdriver": "dev-master",
                 "jakub-onderka/php-parallel-lint": "0.*",
-                "nbcuots/flo": "0.1.0",
+                "nbcuots/flo": "0.0.2",
                 "phpmd/phpmd": "dev-master",
                 "phpunit/php-code-coverage": "2.0.*",
                 "phpunit/phpunit": "4.1.6",
@@ -201,10 +201,10 @@
             ],
             "description": "The base Publisher7 platform.",
             "support": {
-                "source": "https://github.com/NBCUOTS/Publisher7/tree/7.55.0",
+                "source": "https://github.com/NBCUOTS/Publisher7/tree/7.58.0",
                 "issues": "https://github.com/NBCUOTS/Publisher7/issues"
             },
-            "time": "2015-03-18 14:15:24"
+            "time": "2015-05-01 16:03:18"
         }
     ],
     "packages-dev": [],

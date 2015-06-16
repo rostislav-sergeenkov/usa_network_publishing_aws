@@ -8,7 +8,6 @@
     <h2><?php print !empty($video_type) ? $video_type : '';?></h2>
   </div>
   <?php if (!empty($promos) && is_array($promos)): ?>
-
     <div class="episodes-list-slider vertical" data-mode="vertical">
       <ul class="slider-vertical">
         <?php foreach($promos as $promo):?>

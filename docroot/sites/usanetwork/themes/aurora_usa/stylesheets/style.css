@@ -5479,10 +5479,15 @@ header ul, header li, header ol {
 header h2 {
   margin: 0;
 }
-header .region-header.sticky .block-usanetwork-menu .header-nav-bar {
+@media (min-width: 769px) and (max-width: 1024px) {
+  header .region-header:not(.sticky-shows-submenu) .block-usanetwork-menu.sign-enable .tab-content {
+    top: calc(100% - 35px);
+  }
+}
+header .region-header.sticky-shows-submenu .block-usanetwork-menu .header-nav-bar {
   margin-bottom: 0;
 }
-header .region-header.sticky .block-usanetwork-menu .tve-help-link.signOut .tve-header-links .first {
+header .region-header.sticky-shows-submenu .block-usanetwork-menu .tve-help-link.signOut .tve-header-links .first {
   display: none;
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -7353,8 +7358,9 @@ header .tve-help-link.signOut:hover {
 }
 header .tve-help-link.signOut .links-wrapper {
   border-left: 1px solid #e1e1e1;
-  display: table-cell;
+  display: table;
   height: 100%;
+  margin-top: 0;
   vertical-align: middle;
   width: 7.12195vw;
 }
@@ -7362,6 +7368,10 @@ header .tve-help-link.signOut .links-wrapper {
   header .tve-help-link.signOut .links-wrapper {
     width: 135px;
   }
+}
+header .tve-help-link.signOut .links-wrapper > .item-list {
+  display: table-cell;
+  vertical-align: middle;
 }
 header .tve-help-link.signOut a {
   font-size: 16px;
@@ -8612,6 +8622,11 @@ header .tve-help-link.signIn .inlineLoader {
 .consumptionator-video-page header .tab-content, .page-videos-live header .tab-content {
   z-index: 2;
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-video-page header .header-nav-bar.tve-sign, .page-videos-live header .header-nav-bar.tve-sign {
+    margin-bottom: 35px;
+  }
+}
 .consumptionator-video-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs {
   max-width: calc(100% - 17vw);
 }
@@ -8641,7 +8656,7 @@ header .tve-help-link.signIn .inlineLoader {
 }
 @media (max-width: 768px) {
   .consumptionator-video-page header .header-nav-bar .tve-help-link, .page-videos-live header .header-nav-bar .tve-help-link {
-    display: none;
+    display: none !important;
   }
 }
 .consumptionator-video-page header .header-nav-bar .tve-help-link a, .page-videos-live header .header-nav-bar .tve-help-link a {
@@ -8660,6 +8675,11 @@ header .tve-help-link.signIn .inlineLoader {
   background: #363636;
 }
 
+@media (min-width: 769px) {
+  .page-videos-live header .region-header:not(.sticky-shows-submenu) .block-usanetwork-menu.sign-enable .tab-content {
+    top: calc(100% - 35px);
+  }
+}
 .page-videos-live header .header-nav-bar.tve-sign {
   margin-bottom: 35px;
 }

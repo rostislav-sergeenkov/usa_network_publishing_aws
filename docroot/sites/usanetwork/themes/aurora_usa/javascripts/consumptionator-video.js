@@ -84,6 +84,16 @@
       var iframe_height = current_iframe.width() * 9 / 16;
       current_iframe.height(iframe_height);
 
+      $(window).load(function () {
+        if (usa_deviceInfo.mobileDevice) {
+          if($('#pdk-player').length > 0) {
+            if (!$('body').hasClass('page-videos-live') && !$('body').hasClass('page-auth-video') && !$('body').hasClass('page-node-microsite')) {
+              Drupal.behaviors.consumptionator_video.changeSrc();
+              Drupal.behaviors.consumptionator_video.initPlayerBind();
+            }
+          }
+        }
+      })
     }
   };
 

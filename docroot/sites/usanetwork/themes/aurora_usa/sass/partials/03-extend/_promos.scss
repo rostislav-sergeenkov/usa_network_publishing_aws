@@ -1819,6 +1819,11 @@
       position: absolute;
       top: 50%;
       width: get-vw(80px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        height: 80px;
+        margin-top: -40px;
+        width: 80px;
+      }
       @include breakpoint($bp-768-width) {
         height: get-vw(26px, 480);
         margin-top: get-vw(-13px, 480);
@@ -1831,6 +1836,9 @@
       }
       ~ .meta {
         padding-left: calc(8% + 4.2vw);
+        @include breakpoint($bp-min-1901-width) {
+          padding-left: calc(8% + 80px);
+        }
         @include breakpoint($bp-768-width) {
           padding-left: calc(8% + 5.417vw);
         }

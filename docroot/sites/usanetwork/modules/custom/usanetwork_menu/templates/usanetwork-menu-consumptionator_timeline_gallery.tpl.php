@@ -26,9 +26,6 @@
       </h2>
     </div>
   </div>
-  <?php if (!empty($authbar)) : ?>
-    <?php print $authbar; ?>
-  <?php endif; ?>
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">
@@ -45,11 +42,6 @@
               <?php if (!empty($details['episode_info']['episode_title'])): ?>
                 <div class="title">
                   <h1><?php print !empty($h1) ? $h1 : $details['episode_info']['episode_title']; ?></h1>
-                </div>
-              <?php endif; ?>
-              <?php if (!empty($details['episode_info']['season_number']) && !empty($details['episode_info']['episode_number'])): ?>
-                <div class="additional">
-                  <span>S<?php print $details['episode_info']['season_number'] ?> <?php print t('episode') . ' ' . $details['episode_info']['episode_number']; ?></span>
                 </div>
               <?php endif; ?>
             </div>

@@ -304,6 +304,9 @@
                      margin: 20px 0 0;
                    }
                  }
+                h1 {
+                  margin: 0;
+                }
               }
               .caption {
                 font-family: $avalon-book;
@@ -317,7 +320,7 @@
                   font-size: 10px;
                 }
               }
-              .title, h1{
+              .title, h1 {
                 font-family: $avalon-medium;
                 font-size: get-vw(15px, 1025);
                 letter-spacing: 1px;
@@ -455,11 +458,6 @@
             .first {
               display: none;
             }
-          }
-        }
-        .tab-content {
-          .tab-item {
-            padding-top: 5px;
           }
         }
       }

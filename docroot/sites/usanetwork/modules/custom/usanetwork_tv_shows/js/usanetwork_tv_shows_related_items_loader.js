@@ -32,6 +32,9 @@
           case 'usanetwork-catchall':
             service_name = 'usanetwork-catchall';
             break;
+          case 'usanetwork-timeline-gallery':
+            service_name = 'usanetwork-timeline-gallery';
+            break;
           case 'photos-landing':
             service_name = 'usanetwork-photos-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'

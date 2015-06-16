@@ -184,7 +184,7 @@
 //    .tve-help-link {
 //      background: none;
 //      float: right;
-//      display: table;
+//      display: block;
 //      height: 100%;
 //      @include breakpoint($bp-768-width) {
 //        display: none;
@@ -437,7 +437,7 @@
       .tve-help-link {
         background: none;
         float: right;
-        display: table !important;
+        display: block !important;
         height: 100%;
         @include breakpoint($bp-768-width) {
           display: none;

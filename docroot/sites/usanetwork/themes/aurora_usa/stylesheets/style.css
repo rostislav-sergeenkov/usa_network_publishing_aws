@@ -8636,7 +8636,7 @@ header .tve-help-link.signIn .inlineLoader {
 .consumptionator-video-page header .header-nav-bar .tve-help-link, .page-videos-live header .header-nav-bar .tve-help-link {
   background: none;
   float: right;
-  display: table !important;
+  display: block !important;
   height: 100%;
 }
 @media (max-width: 768px) {

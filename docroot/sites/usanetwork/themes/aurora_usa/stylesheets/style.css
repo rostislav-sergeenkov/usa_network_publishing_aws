@@ -28223,10 +28223,10 @@ yx-axis
   content: '';
   display: table;
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .page-schedule .shows-filters,
   .page-accessibility .shows-filters {
-    margin-right: 5px;
+    margin-right: 9px;
   }
 }
 @media (max-width: 320px) {
@@ -28255,7 +28255,7 @@ yx-axis
   .page-schedule .shows-filters .item-filter,
   .page-accessibility .shows-filters .item-filter {
     min-width: 122px;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 }
 .page-schedule .shows-filters .item-filter:last-child,
@@ -28358,7 +28358,7 @@ yx-axis
 @media (max-width: 1280px) {
   .page-schedule .shows-filters .item-filter .filter-menu,
   .page-accessibility .shows-filters .item-filter .filter-menu {
-    margin-top: 24px;
+    margin-top: 23px;
   }
 }
 .page-schedule .shows-filters .item-filter .filter-menu li,
@@ -28374,7 +28374,7 @@ yx-axis
   font-size: 20px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
-  line-height: 22px;
+  line-height: 23px;
   text-align: left;
   padding: 9px 20px;
   text-decoration: none;
@@ -28389,14 +28389,14 @@ yx-axis
   .page-schedule .shows-filters .item-filter .filter-menu li a,
   .page-accessibility .shows-filters .item-filter .filter-menu li a {
     font-size: 17px;
-    line-height: 12px;
+    line-height: 20px;
   }
 }
 @media (max-width: 480px) {
   .page-schedule .shows-filters .item-filter .filter-menu li a,
   .page-accessibility .shows-filters .item-filter .filter-menu li a {
     font-size: 12px;
-    line-height: 12px;
+    line-height: 15px;
   }
 }
 .page-schedule .shows-filters .show-filter-reset,

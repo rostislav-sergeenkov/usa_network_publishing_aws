@@ -25,7 +25,7 @@
     <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
       <?php if (!empty($section['content']) && !empty($section['type'])): ?>
-      <div id="<?php print $section['type']; ?>" class="section<?php print ($section['type'] == $current_section) ? ' active' : ''; ?>">
+      <div id="<?php print $section['type']; ?>" class="section<?php print ($section['type'] == 'videos') ? ' active' : ''; ?>">
         <a name="<?php print $section['type']; ?>"></a>
         <section id="<?php print $section['type']; ?>-content" class="clearfix fadein fadein-1s fadein-delay-1s">
             <?php print $section['content']; ?>

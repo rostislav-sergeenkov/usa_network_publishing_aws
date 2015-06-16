@@ -180,6 +180,9 @@ header .primary-nav #logo {
 
 /* SECTIONS CONTAINERS */
 #videos .header {
+  position: relative;
+  top: 0;
+  left: 0;
   display: block;
   width: 100%;
   height: auto;
@@ -191,7 +194,18 @@ header .primary-nav #logo {
   background-size: contain;
   margin-bottom: 20px;
 }
-
+#videos #header-sponsor-link {
+  display: block;
+  width: 22%;
+  height: 100%;
+  background-color: pink;
+  opacity: 0.5;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  cursor: pointer;
+}
 .section-description {
   text-align: left;
   color: #000;

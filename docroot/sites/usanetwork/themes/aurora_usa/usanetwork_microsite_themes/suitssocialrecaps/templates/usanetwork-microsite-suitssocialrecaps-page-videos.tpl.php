@@ -19,7 +19,9 @@
  */
 ?>
 
-<div class="header"></div>
+<div class="header">
+  <a id="header-sponsor-link"></a>
+</div>
 
 <?php if (!empty($section_title)): ?>
   <!-- section title -->

@@ -181,33 +181,34 @@
         }
       }
     }
-    .tve-help-link {
-      float: right;
-      display: table;
-      height: 100%;
-      @include breakpoint($bp-768-width) {
-        display: none;
-      }
-      a {
-        color: #ffffff;
-      }
-      &.signOut {
-        &:hover {
-          background: $consup-border;
-        }
-        .links-wrapper {
-          border-left: 1px solid $consup-border;
-        }
-      }
-      &.signIn {
-        &.no-auth {
-          border-left: 1px solid $consup-border;
-          &:hover {
-            background: $consup-border;
-          }
-        }
-      }
-    }
+//    .tve-help-link {
+//      background: none;
+//      float: right;
+//      display: table;
+//      height: 100%;
+//      @include breakpoint($bp-768-width) {
+//        display: none;
+//      }
+//      a {
+//        color: #ffffff;
+//      }
+//      &.signOut {
+//        &:hover {
+//          background: $consup-border;
+//        }
+//        .links-wrapper {
+//          border-left: 1px solid $consup-border;
+//        }
+//      }
+//      &.signIn {
+//        &.no-auth {
+//          border-left: 1px solid $consup-border;
+//          &:hover {
+//            background: $consup-border;
+//          }
+//        }
+//      }
+//    }
     .tab-content {
       @include breakpoint($bp-768-width) {
         display: block;
@@ -430,6 +431,35 @@
         }
         .menu-item.info {
           border-right: none;
+        }
+      }
+
+      .tve-help-link {
+        background: none;
+        float: right;
+        display: table !important;
+        height: 100%;
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
+        a {
+          color: #ffffff;
+        }
+        &.signOut {
+          &:hover {
+            background: $consup-border;
+          }
+          .links-wrapper {
+            border-left: 1px solid $consup-border;
+          }
+        }
+        &.signIn {
+          &.no-auth {
+            border-left: 1px solid $consup-border;
+            &:hover {
+              background: $consup-border;
+            }
+          }
         }
       }
     }

@@ -103,13 +103,13 @@
         // Initialize the object.
         this.init.apply(this, arguments);
 
-        // Perform a redirect to the app on full episodes from iOS devices.
-        if (this.performIosRedirect && ($('body').hasClass('page-auth-video') || $('body').hasClass('page-videos-live'))) {
-          this.iosRedirect();
-        }
-
         if (usa_deviceInfo.mobileDevice) {
           this.loadMobileModal();
+        }
+
+        // Perform a redirect to the app on full episodes from iOS devices.
+        if (this.performIosRedirect) {
+          this.iosRedirect();
         }
 
         return this;

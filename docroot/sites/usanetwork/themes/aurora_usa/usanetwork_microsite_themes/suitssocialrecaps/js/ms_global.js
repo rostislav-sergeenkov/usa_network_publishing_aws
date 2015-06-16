@@ -39,7 +39,7 @@
       var basePath = Drupal.settings.microsites_settings.base_path;
 
       // if this is IE9, reload the correct page
-      if ($('html.ie9').length > 0) {
+      if ($('html').hasClass('ie9')) {
         window.location.href = anchorFull.replace('/home', '');
         return false;
       }
@@ -60,6 +60,7 @@
     },
 
     // NAVIGATION
+/*
     // waypointResponse
     waypointResponse: function(scrollDirection, sectionId) {
       // make sure user stays on section long enough to see it before
@@ -137,7 +138,7 @@
         }
       }); // end each section loop
     },
-
+*/
     // setSectionIdsArray
     sectionIds: [],
     setSectionIdsArray: function() {
@@ -191,28 +192,6 @@
       $('title').text(item + ' | ' + section + ' | ' + basePageName);
     },
 
-    // @TODO: set up Omniture for button clicks
-    setOmnitureButtonClick: function (elem) {
-      var $self = elem,
-          social_name = $self.data('name'),
-          name = social_name.charAt(0).toUpperCase() + social_name.substr(1);
-
-      s.linkTrackVars='events,eVar74';
-      s.linkTrackEvents = s.events = 'event40';
-      s.eVar74 = name;
-
-      if ($self.attr('href') != '#') {
-        s.bcf = function() {
-          setTimeout(function() {
-            window.location = $self.attr('href');
-          }, 500);
-        };
-      }
-
-      s.tl(this,'o','Social Follow');
-      s.manageVars("clearVars", s.linkTrackVars, 1);
-    },
-
     // setOmnitureData
     setOmnitureData: function(anchor, contentName) {
       var anchor = anchor || null;
@@ -234,6 +213,7 @@
           contentType = 'Video';
           if (!contentName) contentName = $('#microsite #videos-content .video-title').text();
           break;
+/* DON'T DELETE THE FOLLOWING! IT CAN BE USED IN FUTURE MICROSITES!
         case 'timeline':
           contentType = 'Gallery';
           altContentType = 'Timeline';
@@ -255,7 +235,6 @@
           if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h3').text();
           if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h1').text();
           break;
-/* DON'T DELETE THE FOLLOWING! IT CAN BE USED IN FUTURE MICROSITES!
         case 'about':
           break;
         case 'galleries':
@@ -422,12 +401,13 @@
     },
 
     // SECTIONS
+/*
     setActiveMenuItem: function(anchor) {
       // set active menu item
       $('#site-nav-links li, #site-nav-links-mobile li').removeClass('active disabled');
       $('#site-nav-links li.' + anchor + ', #site-nav-links-mobile li.' + anchor).addClass('active');
     },
-
+*/
     //scroll to top
     scrollToTop: function() {
       $('.section.active').animate({
@@ -435,6 +415,7 @@
       }, 2000);
     },
 
+/*
     // sectionScroll
     sectionScroll: function(anchor, item, itemTitle) {
       item = item || '';
@@ -449,7 +430,7 @@
           offsetDirection = (direction == 'down') ? 1 : -1;
 //usa_debug('========= sectionScroll -- direction: ' + direction + ', offsetDirection: ' + offsetDirection);
       // if this is IE9, reload the correct page
-      if ($('html.ie9').length > 0) {
+      if ($('html').hasClass('ie9')) {
         window.location.href = anchorFull.replace('/home', '');
         return false;
       }
@@ -507,7 +488,7 @@
       // loaded, so the initial page load is complete
       Drupal.behaviors.ms_global.globalInitialPageLoad = false;
     },
-
+*/
 /*
     // RESIZING
     // resize response
@@ -538,7 +519,7 @@
 */
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
-      if (!$('html.ie9').length) {
+      if (!$('html').hasClass('ie9')) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }
 
@@ -579,6 +560,7 @@
         }, 2000);
         self.create728x90Ad();
 */
+        self.globalInitialPageLoad = false;
       }, 2000);
       // END TIME OUT
 
@@ -586,7 +568,8 @@
       $(window).off('popstate');
       $(window).off('hashchange');
 
-      if ($('html.ie9').length > 0) {
+/*
+      if (!$('html').hasClass('ie9')) {
         // Turn on browser history functionality -- for example, browser back button.
         // Popped variable is used to detect initial (useless) popstate.
         // If history.state exists, assume browser isn't going to fire initial popstate.
@@ -603,24 +586,11 @@
 //usa_debug('============= onpopstate activated! new state: ');
 //usa_debug(history.state);
           var urlParts = self.parseUrl(history.state['path']),
-
               anchor = urlParts['section'],
               item = urlParts['item'];
           self.sectionScroll(anchor, item);
         });
       }
-
-/*
-      // RESIZE
-      // set resize and orientation change
-      var resizeTimer;
-      $(window).bind('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function(){
-//          if (!self.globalInitialPageLoad) self.resizeResponse();
-        }, 250);
-      });
-//      window.addEventListener('orientationchange', self.resizeResponse);
 */
     }
   }

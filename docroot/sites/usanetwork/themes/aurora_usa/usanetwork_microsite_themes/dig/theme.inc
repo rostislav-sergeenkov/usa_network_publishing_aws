@@ -247,6 +247,7 @@ function usanetwork_microsite_dig_get_theme_settings() {
     'default_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
     'default_mobile_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
     'videos_limit' => 12,
+    'sections_use_ajax' => FALSE,
   );
 }
 

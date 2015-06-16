@@ -3,8 +3,6 @@
  */
 (function ($) {
   Drupal.behaviors.ms_site = {
-    initialPageLoad: true,
-
     // resizeResponse
     resizeResponse: function() {
       var wwidth = $(window).width();
@@ -64,7 +62,7 @@
       }, false);
 
       setTimeout(function(){
-        if (self.initialPageLoad) {
+        if (Drupal.behaviors.ms_global.globalInitialPageLoad) {
           $('header').prepend('<div id="head-leaderboard" class="ad-leaderboard"></div>');
           Drupal.behaviors.ms_global.create728x90Ad();
 
@@ -80,7 +78,6 @@
           if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.updateGigyaSharebar == 'function') Drupal.behaviors.ms_gigya.updateGigyaSharebar(1, gigyaSettings);
         }
         $('#offerpop-iframe').on('load', function(){ self.initIframeResize(4000); });
-        self.initialPageLoad = false;
       }, 500);
 
       // RE-SIZING

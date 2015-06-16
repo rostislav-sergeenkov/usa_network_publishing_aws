@@ -174,9 +174,10 @@ usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
           ad_300x250_1.closest('li.ad').show();
         }
         // if not a full episode
-        // AND the video leaderboard ad is in view OR there is no video leaderboard ad but there is a page head leaderboard ad that is in view
+        // AND the video leaderboard ad is in view
+        // OR there is no video leaderboard ad but there is a page head leaderboard ad that is in view
         // then update the leaderboard ad
-        if (dataFullEpisode == 'false' && (Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard') || ($('#videos .ad-leaderboard').length <= 0 && $('#head-leaderboard').length >= 0 && Drupal.behaviors.ms_global.isScrolledIntoView('#head-leaderboard')))) {
+        if (dataFullEpisode == 'false' && (Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard') || (!Drupal.behaviors.ms_global.globalInitialPageLoad && $('#videos .ad-leaderboard').length <= 0 && $('#head-leaderboard').length >= 0 && Drupal.behaviors.ms_global.isScrolledIntoView('#head-leaderboard')))) {
           Drupal.behaviors.ms_global.create728x90Ad();
         }
       }

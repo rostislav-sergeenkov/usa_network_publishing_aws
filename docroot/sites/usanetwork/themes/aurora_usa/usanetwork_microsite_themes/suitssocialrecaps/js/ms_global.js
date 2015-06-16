@@ -560,6 +560,7 @@
         }, 2000);
         self.create728x90Ad();
 */
+        self.globalInitialPageLoad = false;
       }, 2000);
       // END TIME OUT
 

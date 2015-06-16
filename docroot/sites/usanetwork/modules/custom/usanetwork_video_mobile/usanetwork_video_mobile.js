@@ -108,6 +108,10 @@
           this.iosRedirect();
         }
 
+        if (usa_deviceInfo.mobileDevice) {
+          this.loadMobileModal();
+        }
+
         return this;
       }
     }

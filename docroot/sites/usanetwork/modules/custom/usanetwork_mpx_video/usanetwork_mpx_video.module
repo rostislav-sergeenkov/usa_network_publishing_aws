@@ -2371,28 +2371,6 @@ function usanetwork_mpx_video_file_formatter_video_view($file, $display, $langco
 }
 
 /*
- * Helper function for determine is this video page
- */
-
-function _usanetwork_mpx_video_is_video_page() {
-  $is_video_page = FALSE;
-  $current_menu_item = menu_get_item();
-  $current_menu_item_path = $current_menu_item['path'];
-
-  if (($current_menu_item_path == 'videos') || ($current_menu_item_path == 'videos/live') || ($current_menu_item_path == 'node/%/microsite')) {
-    $is_video_page = TRUE;
-  }
-  else {
-    $file = menu_get_object('file');
-    if ($file) {
-      $is_video_page = TRUE;
-    }
-  }
-
-  return $is_video_page;
-}
-
-/*
  * Altering nbcu_seo_xmlsitemap_remove_element
  */
 

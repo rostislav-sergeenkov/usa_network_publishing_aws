@@ -8675,6 +8675,11 @@ header .tve-help-link.signIn .inlineLoader {
   background: #363636;
 }
 
+@media (min-width: 769px) {
+  .page-videos-live header .region-header:not(.sticky-shows-submenu) .block-usanetwork-menu.sign-enable .tab-content {
+    top: calc(100% - 35px);
+  }
+}
 .page-videos-live header .header-nav-bar.tve-sign {
   margin-bottom: 35px;
 }

@@ -473,6 +473,19 @@
 }
 .page-videos-live {
   header {
+    .region-header {
+      &:not(.sticky-shows-submenu) {
+        .block-usanetwork-menu {
+          &.sign-enable {
+            @include breakpoint($bp-min-769-width) {
+              .tab-content {
+                top: calc(100% - 35px);
+              }
+            }
+          }
+        }
+      }
+    }
     .header-nav-bar {
       &.tve-sign {
         margin-bottom: 35px;

@@ -1519,6 +1519,7 @@ header {
     }
   }
   #tve-help-link-wrapper {
+    display: none !important;
     float: right;
     height: 100%;
     position: relative;
@@ -1535,7 +1536,8 @@ header {
     }
   }
   .tve-help-link {
-    display: table;
+    background: $footer-back;
+    display: none !important;
     float: right;
     height: 100%;
     @include breakpoint($bp-768-width) {
@@ -1547,7 +1549,7 @@ header {
       margin: 0;
     }
     a {
-      color: $header-tab-text;
+      color: #ffffff;
       outline: none;
       font-size: 16px;
       @include breakpoint($bp-768-width) {

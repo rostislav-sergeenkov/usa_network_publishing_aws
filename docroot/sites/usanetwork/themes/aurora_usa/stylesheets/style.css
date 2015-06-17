@@ -17977,7 +17977,9 @@ footer h2 {
   background: #e1e1e1;
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  position: relative;
   transform: translateZ(0);
+  z-index: 2;
 }
 .landing-page-container .upper-menu:after {
   clear: both;

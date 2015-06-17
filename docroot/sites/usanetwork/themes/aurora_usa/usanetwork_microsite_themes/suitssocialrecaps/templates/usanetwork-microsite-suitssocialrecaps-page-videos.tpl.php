@@ -34,7 +34,7 @@
 </div>
 <?php endif; ?>
 
-<?php if (!empty($filter_enabled)): ?>
+<?php if (!empty($filter_enabled) && !empty($filter_list_active)): ?>
   <div class="filter-wrapper">
     <div id="video-filter">
       <div class="filter-label">

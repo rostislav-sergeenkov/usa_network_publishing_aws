@@ -244,7 +244,8 @@
 }
 
 body:not(.blog) {
-  .field-type-gigya-sharebar {
+  .field-type-gigya-sharebar,
+  .timeline-gigya-share {
     .gig-button-container {
       &.gig-button-container-facebook {
         td {

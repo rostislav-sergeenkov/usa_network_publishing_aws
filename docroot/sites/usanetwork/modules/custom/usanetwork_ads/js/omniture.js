@@ -85,7 +85,9 @@
 
           s.tl(this, 'o', 'Infinite Scroll Auto Load');
           s.manageVars("clearVars", s.linkTrackVars, 1);
+          void (s.t());
         }
+
       }
     },
 
@@ -188,6 +190,7 @@
       s.prop4 = show_name + ' : Home Page Show Card';
       s.prop10 = show_name;
 
+      void (s.t());
       s.tl(this, 'o', 'Home Page Show Card Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },

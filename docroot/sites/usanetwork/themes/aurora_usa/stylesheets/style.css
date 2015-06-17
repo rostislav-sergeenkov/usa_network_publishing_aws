@@ -17971,13 +17971,16 @@ footer h2 {
   padding-top: 40px;
   position: relative;
   width: 100%;
+  z-index: 2;
 }
 .landing-page-container .upper-menu {
   padding: 0 30px;
   background: #e1e1e1;
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  position: relative;
   transform: translateZ(0);
+  z-index: 2;
 }
 .landing-page-container .upper-menu:after {
   clear: both;

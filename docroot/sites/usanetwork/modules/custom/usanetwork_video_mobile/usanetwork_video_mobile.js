@@ -17,7 +17,8 @@
         // create modal dialog
         var $modal = $('<div id="mobileVideoModal"></div>');
         $modal.append(Drupal.settings.usanetwork_video_mobile.modal);
-        $modal.find('.close-reveal-modal').click(function() {
+        $modal.find('.close-reveal-modal').click(function(e) {
+          e.preventDefault();
           Drupal.behaviors.video_mobile.hideMobileVideoModal();
         });
         $('body').append($modal);
@@ -93,25 +94,26 @@
 
     attach : function (context, settings) {
 
-      // If this has already run once on this page, don't run it again.
-      if (this.inited) {
+      if(usa_deviceInfo.mobileDevice) {
+        // If this has already run once on this page, don't run it again.
+        if (this.inited) {
+          return this;
+        }
+
+        // Initialize the object.
+        this.init.apply(this, arguments);
+
+        if (usa_deviceInfo.mobileDevice) {
+          this.loadMobileModal();
+        }
+
+        // Perform a redirect to the app on full episodes from iOS devices.
+        if (this.performIosRedirect) {
+          this.iosRedirect();
+        }
+
         return this;
       }
-
-      // Initialize the object.
-      this.init.apply(this, arguments);
-
-      // Disable the player on all mobile devices.
-      if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
-        this.loadMobileModal();
-      }
-
-      // Perform a redirect to the app on full episodes from iOS devices.
-      if (this.performIosRedirect && $('body').hasClass('page-auth-video')) {
-        this.iosRedirect();
-      }
-
-      return this;
     }
   };
 }) (jQuery);

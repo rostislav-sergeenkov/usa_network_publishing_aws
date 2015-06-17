@@ -36,6 +36,7 @@
       right: 0;
       padding-right: 45px;
       margin-top: 41px;
+      z-index: 1;
       @include breakpoint($bp-1280-width) {
         top: -6px;
       }

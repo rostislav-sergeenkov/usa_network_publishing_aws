@@ -4,9 +4,15 @@
   #footer-promo-links {
     display: table;
     margin: 0 auto;
-    padding: 25px 0;
+    padding: get-vw(46px, 1901) 0;
     max-width: 1100px;
     width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      padding: 46px 0;
+    }
+    @include breakpoint($bp-480-width) {
+      padding: 11.615px 0;
+    }
     .footer-promo-link-item {
       display: table-cell;
       cursor: pointer;
@@ -22,27 +28,35 @@
       .image {
         line-height: 0;
         img {
-          max-width: 50px;
+          max-width: get-vw(75px, 1901);
           width: 100%;
-          @include breakpoint($bp-768-width) {
-            max-width: 46px;
+          @include breakpoint($bp-min-1901-width) {
+            max-width: 75px;
+          }
+          @include breakpoint($bp-480-width) {
+            max-width: 18.9px;
           }
         }
       }
       .title {
         color: $poll-color;
         font-family: $avalon-medium;
-        font-size: 13px;
-        margin-top: 5px;
+        font-size: get-vw(26px, 1901);
+        line-height: get-vw(34px, 1901);
+        margin-top: get-vw(21px, 1901);
         overflow: hidden;
         text-transform: uppercase;
         text-overflow: ellipsis;
         white-space: nowrap;
-        @include breakpoint($bp-768-width) {
-          font-size: 12px;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 26px;
+          line-height: 34px;
+          margin-top: 21px;
         }
         @include breakpoint($bp-480-width) {
-          font-size: 8px;
+          font-size: 6.6px;
+          line-height: 8.6px;
+          margin-top: 5.3px;
         }
       }
     }

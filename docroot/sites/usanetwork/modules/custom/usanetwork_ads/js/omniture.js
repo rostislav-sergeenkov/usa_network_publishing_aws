@@ -71,7 +71,8 @@
         if (event === "click") {
 
           s.linkTrackVars = 'events,eVar21';
-          s.linkTrackEvents = s.events = 'event4,event6';
+          s.linkTrackEvents = s.events = 'event4';
+          //s.linkTrackEvents = s.events = 'event4,event6';
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Click Load');
@@ -80,7 +81,8 @@
         } else {
 
           s.linkTrackVars = 'events,eVar21';
-          s.linkTrackEvents = s.events = 'event5,event6';
+          s.linkTrackEvents = s.events = 'event5';
+          //s.linkTrackEvents = s.events = 'event5,event6';
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Auto Load');
@@ -185,7 +187,7 @@
       var show_name = item_node.find($('.show-open .title')).text();
 
       s.linkTrackVars = 'events,prop4,prop10';
-      s.linkTrackEvents = s.events = 'event6';
+      //s.linkTrackEvents = s.events = 'event6';
       s.prop4 = show_name + ' : Home Page Show Card';
       s.prop10 = show_name;
 

@@ -15651,6 +15651,11 @@ footer h2 {
     width: 100%;
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .download-app {
+    height: 56vw;
+  }
+}
 .consum-sidebar .download-app .download-app-wrapper {
   display: table-cell;
   position: relative;
@@ -15727,6 +15732,13 @@ footer h2 {
     margin-left: calc(50% - 205px);
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .download-app .image-block {
+    margin-left: 9%;
+    width: 42%;
+    height: 64%;
+  }
+}
 @media (max-width: 480px) {
   .consum-sidebar .download-app .image-block {
     height: 136px;
@@ -15759,10 +15771,20 @@ footer h2 {
     margin-left: calc(50% + 10px);
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .download-app .text-block {
+    margin-left: calc(50% + 49px);
+    max-width: 165px;
+    font-size: 20px;
+    margin-top: 3.4%;
+  }
+}
 @media (max-width: 480px) {
   .consum-sidebar .download-app .text-block {
     font-size: 14px;
-    max-width: 150px;
+    max-width: 131px;
+    margin-left: calc(50% + 15px);
+    margin-top: 5px;
   }
 }
 .consum-sidebar .download-app .download-button {
@@ -15836,9 +15858,20 @@ footer h2 {
     font-size: 14px;
   }
 }
+@media (max-width: 640px) {
+  .consum-sidebar .download-app .download-button {
+    margin-left: calc(50% + 49px);
+    margin-top: 5.1%;
+    width: 30.5%;
+    min-width: 163px;
+  }
+}
 @media (max-width: 480px) {
   .consum-sidebar .download-app .download-button {
     width: 130px;
+    margin-left: calc(50% + 15px);
+    min-width: initial;
+    margin-top: 10px;
   }
   .consum-sidebar .download-app .download-button a {
     font-size: 10px;
@@ -28190,10 +28223,10 @@ yx-axis
   content: '';
   display: table;
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .page-schedule .shows-filters,
   .page-accessibility .shows-filters {
-    margin-right: 5px;
+    margin-right: 9px;
   }
 }
 @media (max-width: 320px) {
@@ -28222,7 +28255,7 @@ yx-axis
   .page-schedule .shows-filters .item-filter,
   .page-accessibility .shows-filters .item-filter {
     min-width: 122px;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 }
 .page-schedule .shows-filters .item-filter:last-child,
@@ -28325,7 +28358,7 @@ yx-axis
 @media (max-width: 1280px) {
   .page-schedule .shows-filters .item-filter .filter-menu,
   .page-accessibility .shows-filters .item-filter .filter-menu {
-    margin-top: 24px;
+    margin-top: 23px;
   }
 }
 .page-schedule .shows-filters .item-filter .filter-menu li,
@@ -28341,9 +28374,9 @@ yx-axis
   font-size: 20px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
-  line-height: 22px;
+  line-height: 25px;
   text-align: left;
-  padding: 9px 20px;
+  padding: 10px 20px;
   text-decoration: none;
   width: 100%;
 }
@@ -28356,14 +28389,15 @@ yx-axis
   .page-schedule .shows-filters .item-filter .filter-menu li a,
   .page-accessibility .shows-filters .item-filter .filter-menu li a {
     font-size: 17px;
-    line-height: 12px;
+    line-height: 20px;
+    padding: 5px 20px;
   }
 }
 @media (max-width: 480px) {
   .page-schedule .shows-filters .item-filter .filter-menu li a,
   .page-accessibility .shows-filters .item-filter .filter-menu li a {
     font-size: 12px;
-    line-height: 12px;
+    line-height: 15px;
   }
 }
 .page-schedule .shows-filters .show-filter-reset,
@@ -28935,34 +28969,39 @@ yx-axis
 }
 .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description,
 .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
-  background-image: url('../images/sprites-s1f91cb9de1.png');
-  background-position: 0 -20px;
-  background-repeat: no-repeat;
-  overflow: hidden;
+  right: 50px;
   display: block;
   height: 37px;
-  width: 37px;
-  display: block;
+  line-height: 37px;
+  width: 45px;
   position: absolute;
-  margin-left: -18.5px;
-  margin-top: -18.5px;
-  right: 50px;
+  margin-top: -17.5px;
   top: 50%;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
-    background-image: url('../images/sprites-retina-saaa1024be6.png');
-    background-size: 65px 1803px;
-    background-position: 0 0;
-    height: 37px;
-    width: 37px;
-  }
+  color: #545454;
 }
 @media (max-width: 640px) {
   .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description,
   .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
     right: 0;
+  }
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description,
+  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
+    width: 37px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before,
+.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before {
+  content: '\e61c';
+  font-family: "ico-font";
+  font-size: 45px;
+  width: auto;
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before,
+  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before {
+    font-size: 30px;
   }
 }
 .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block,
@@ -29127,25 +29166,9 @@ yx-axis
 .page-accessibility .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time span {
   color: #ffffff;
 }
-.page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description,
-.page-accessibility .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description {
-  background-image: url('../images/sprites-s1f91cb9de1.png');
-  background-position: 0 -885px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 37px;
-  width: 37px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description,
-  .page-accessibility .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description {
-    background-image: url('../images/sprites-retina-saaa1024be6.png');
-    background-size: 65px 1803px;
-    background-position: 0 -135px;
-    height: 37px;
-    width: 37px;
-  }
+.page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description:before,
+.page-accessibility .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description:before {
+  content: '\e61b';
 }
 .page-schedule .ad-728x90,
 .page-accessibility .ad-728x90 {

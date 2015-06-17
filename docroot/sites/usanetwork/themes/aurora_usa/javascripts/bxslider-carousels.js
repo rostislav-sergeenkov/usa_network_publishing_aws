@@ -14,7 +14,8 @@
       minSlides: 3,
       maxSlides: 3,
       slideMargin: 0,
-      responsive: true
+      responsive: true,
+      touchEnabled: false
     },
 
     // Settings for vertical and horizontal bxSlider carousels
@@ -37,7 +38,8 @@
         minSlides: 1,
         maxSlides: 1,
         useCSS: true,
-        easing: 'ease-in'
+        easing: 'ease-in',
+        touchEnabled: false
       });
       Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
         mode: 'horizontal',
@@ -59,7 +61,8 @@
             container_h = $context.height(),
             slide_h = $context.find('.slide-item').height(),
             visible_slides = Math.floor(container_h / slide_h),
-            shift_last = slide_h - (container_h - (slide_h * visible_slides)),
+            shift_last = slide_h - container_h + slide_h * visible_slides,
+            slidesCount = slider.getSlideCount(),
             shiftAnimate = function() {
               $context.animate({
                 'top': '-=' + shift_last
@@ -76,7 +79,7 @@
                 slider.goToSlide(start_slide - visible_slides);
               }
 
-              $('.aspot-and-episodes .episodes-list').removeClass('shadow');
+              $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
 
               slider.end = true;
               shiftAnimate();
@@ -86,13 +89,18 @@
           }
         } else {
           if (!slider.end) {
-            if ((slider.getSlideCount() - current_top_slide <= visible_slides)) {
-              $('.aspot-and-episodes .episodes-list').removeClass('shadow');
+            var current = slider.getCurrentSlide() + 1;
+            if (slidesCount - current_top_slide <= visible_slides) {
+              $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
 
               slider.end = true;
               shiftAnimate();
             } else {
-              slider.goToNextSlide();
+              if((slidesCount - 3) == current) {
+                slider.goToNextSlide();
+              } else {
+                slider.goToSlide(current + 1);
+              }
             }
           }
         }
@@ -111,32 +119,42 @@
           calculateItems(slider, slider, start_slide);
         }
 
-        $(this).mousewheel(function(e) {
-          e.preventDefault();
+        if(!$('html').hasClass('touch')) {
+          $(this).on('mousewheel', function(e) {
+            e.preventDefault();
 
-          if (e.deltaY < 0) {
-            calculateItems(slider, $(this));
-          } else {
-            $('.aspot-and-episodes .episodes-list').addClass('shadow');
-            $(this).css('top', 0);
-            slider.goToPrevSlide();
-            slider.end = false;
-          }
-        });
-
-        $(this).swipe({
-          swipeUp: function() {
-            calculateItems(slider, $(this));
-          },
-          swipeDown: function() {
-            $('.aspot-and-episodes .episodes-list').addClass('shadow');
-            $(this).css('top', 0);
-            slider.goToPrevSlide();
-            slider.end = false;
-          },
-          threshold: 0,
-          excludedElements: 'button, input, select, textarea, .noSwipe'
-        });
+            if (e.deltaY < 0) {
+              calculateItems(slider, $(this));
+            } else {
+              $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
+              $(this).css('top', 0);
+              if(slider.getCurrentSlide() == 1) {
+                slider.goToPrevSlide();
+              } else if(slider.getCurrentSlide() != 0) {
+                slider.goToSlide(slider.getCurrentSlide() - 2);
+              }
+              slider.end = false;
+            }
+          });
+        } else {
+          $(this).swipe({
+           swipeUp: function() {
+           calculateItems(slider, $(this));
+           },
+           swipeDown: function() {
+           $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
+           $(this).css('top', 0);
+           if(slider.getCurrentSlide() == 1) {
+           slider.goToPrevSlide();
+           } else if(slider.getCurrentSlide() != 0) {
+           slider.goToSlide(slider.getCurrentSlide() - 2);
+           }
+           slider.end = false;
+           },
+           threshold: 10,
+           excludedElements: 'button, input, select, textarea, .noSwipe'
+           });
+        }
       });
     },
 

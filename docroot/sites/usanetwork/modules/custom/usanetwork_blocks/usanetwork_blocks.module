@@ -250,8 +250,8 @@ function usanetwork_blocks_image_default_styles() {
       0 => array(
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 48,
-          'height' => 48,
+          'width' => 75,
+          'height' => 75,
         ),
         'weight' => 0,
       ),
@@ -264,8 +264,8 @@ function usanetwork_blocks_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 48,
-          'height' => 48,
+          'width' => 75,
+          'height' => 75,
         ),
         'weight' => 0,
       ),

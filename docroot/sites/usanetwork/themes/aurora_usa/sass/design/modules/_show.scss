@@ -136,7 +136,7 @@
     padding: 40px;
   }
   @include breakpoint($bp-768-width) {
-    padding: 37px 0px 0px 20px;
+    padding: get-vw(37px, 768) 0px 0px get-vw(20px, 768);
   }
   .carousel {
     .jcarousel-controls {
@@ -340,9 +340,13 @@
               font-size: 20px;
               line-height: 28px;
             }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(24px, 768);
+              line-height: get-vw(30px, 768);
+            }
             @include breakpoint($bp-480-width) {
-              font-size: 18px;
-              line-height: 24px;
+              font-size: 15px;
+              line-height: 18.75px;
             }
             @include breakpoint($bp-min-1901-width) {
               font-size: 30px;
@@ -353,8 +357,13 @@
             font-size: 12px;
             margin-left: 10%;
             margin-right: 40px;
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(14px, 768);
+              margin-right: get-vw(40px, 768);
+            }
             @include breakpoint($bp-480-width) {
-              font-size: 10px;
+              font-size: 8.75px;
+              margin-right: 25px;
             }
             @include breakpoint($bp-min-1901-width) {
               font-size: 16px;
@@ -362,8 +371,11 @@
             }
             span {
               font-size: 12px;
+              @include breakpoint($bp-768-width) {
+                font-size: get-vw(14px, 768);
+              }
               @include breakpoint($bp-480-width) {
-                font-size: 10px;
+                font-size: 8.75px;
               }
               @include breakpoint($bp-min-1901-width) {
                 font-size: 16px;
@@ -402,7 +414,7 @@
     .show-carousel {
       margin-left: 0px;
       margin-bottom: 0px;
-      margin-top: 20px;
+      margin-top: get-vw(20px, 768);
       padding-left: 0;
       &.start {
         margin-left: 0px;
@@ -424,7 +436,7 @@
       }
     }
     .carousel-description-item {
-      margin-bottom: 30px;
+      margin-bottom: get-vw(30px, 768);
       left: 0px;
       position: relative;
       top: 0;
@@ -440,16 +452,34 @@
       .description-block {
         display: block;
       }
-      .caption, .title, .additional-text {
-        font-size: 16px;
+      .caption, .additional-text {
+        font-size: get-vw(16px, 768);
         text-align: left;
       }
       .title {
         float: none;
-        font-size: 30px;
-        line-height: 35px;
-        margin: 10px 0;
-        max-width: 200px;
+        font-size: get-vw(30px, 768);
+        line-height: get-vw(35px, 768);
+        margin: get-vw(10px, 768) 0;
+        max-width: get-vw(200px, 768);
+        text-align: left;
+      }
+    }
+  }
+  @include breakpoint($bp-480-width) {
+    .show-carousel {
+      margin-top: 12.5px;
+    }
+    .carousel-description-item {
+      margin-bottom: 18.75px;
+      .caption, .additional-text {
+        font-size: 10px;
+      }
+      .title {
+        font-size: 18.75px;
+        line-height: 22px;
+        margin: 6px 0;
+        max-width: 125px;
       }
     }
   }

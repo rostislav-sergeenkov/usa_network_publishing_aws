@@ -215,13 +215,13 @@
   }
   @include breakpoint($bp-768-width) {
     &.carousel-block {
-      padding: 60px 0px 0px;
+      padding: get-vw(60px, 768) 0px 0px;
     }
     .carousel {
       position: relative;
       margin-left: 0;
       margin-bottom: 0px;
-      margin-top: 55px;
+      margin-top: get-vw(55px, 768);
       padding: 0 10px;
       ul {
         width: 100%;
@@ -239,7 +239,7 @@
         display: block;
         float: none;
         margin-right: 0;
-        padding: 0px 0px 0px 20px;
+        padding: 0px 0px 0px get-vw(20px, 768);
         width: 100%;
       }
       .description-block {
@@ -250,26 +250,58 @@
         text-align: left;
       }
       .caption, .additional-text {
-        font-size: 24px;
-        line-height: 30px;
+        font-size: get-vw(24px, 768);
+        line-height: get-vw(30px, 768);
       }
       .title {
         float: none;
-        font-size: 40px;
-        line-height: 45px;
-        margin: 10px 0;
-        max-width: 300px;
+        font-size: get-vw(40px, 768);
+        line-height: get-vw(45px, 768);
+        margin: get-vw(10px, 768) 0;
+        max-width: get-vw(300px, 768);
       }
       .additional-text {
         float: left;
-        line-height: 24px;
+        line-height: get-vw(24px, 768);
       }
       .logo {
         float: left;
-        margin-left: 20px;
+        margin-left: get-vw(20px, 768);
         margin-top: 0px;
         img {
-          max-height: 24px;
+          max-height: get-vw(24px, 768);
+        }
+      }
+    }
+  }
+  @include breakpoint($bp-480-width) {
+    &.carousel-block {
+      padding: 37.5px 0px 0px;
+    }
+    .carousel {
+      margin-top: 34.375px;
+    }
+    .carousel-description-item {
+      .description-wrapper {
+        padding: 0px 0px 0px 12.5px;
+      }
+      .caption, .additional-text {
+        font-size: 15px;
+        line-height: 18.75px;
+      }
+      .title {
+        font-size: 25px;
+        line-height: 28.125px;
+        margin: 6.25px 0;
+        max-width: 187.5px;
+      }
+      .additional-text {
+        line-height: 15px;
+      }
+      .logo {
+        margin-left: 12.5px;
+        img {
+          max-height: 15px;
         }
       }
     }

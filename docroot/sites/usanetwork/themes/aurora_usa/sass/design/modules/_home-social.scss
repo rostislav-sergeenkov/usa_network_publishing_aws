@@ -8,7 +8,10 @@
     padding: 40px;
   }
   @include breakpoint($bp-768-width) {
-    padding: 60px 0px 0px;
+    padding: get-vw(60px, 768) 0px 0px;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 37.5px 0px 0px;
   }
   .carousel {
     @include breakpoint($between-769-1024) {
@@ -152,8 +155,8 @@
   @include breakpoint($bp-768-width) {
     .carousel {
       margin-left: 0;
-      margin-bottom: 10px;
-      margin-top: 50px;
+      margin-bottom: get-vw(10px, 768);
+      margin-top: get-vw(50px, 768);
       padding: 0 10px;
       ul {
         width: 100%;
@@ -179,21 +182,38 @@
       }
       .title {
         background: none;
-        font-size: 34px;
-        line-height: 40px;
-        padding: 0 10px 0 0;
+        font-size: get-vw(34px, 768);
+        line-height: get-vw(40px, 768);
+        padding: 0 get-vw(10px, 768) 0 0;
         margin: 0;
-        max-width: 300px;
+        max-width: get-vw(300px, 768);
         &:after {
           display: none;
         }
       }
       .additional-text {
-        font-size: 22px;
-        line-height: 22px;
+        font-size: get-vw(22px, 768);
+        line-height: 1;
       }
       .caption, .title, .additional-text {
         text-align: left;
+      }
+    }
+  }
+  @include breakpoint($bp-480-width) {
+    .carousel {
+      margin-bottom: 6.25px;
+      margin-top: 31.25px;
+    }
+    .carousel-description-item {
+      .title {
+        font-size: 21.25px;
+        line-height: 25px;
+        padding: 0 6.25px 0 0;
+        max-width: 187.5px;
+      }
+      .additional-text {
+        font-size: 13.75px;
       }
     }
   }

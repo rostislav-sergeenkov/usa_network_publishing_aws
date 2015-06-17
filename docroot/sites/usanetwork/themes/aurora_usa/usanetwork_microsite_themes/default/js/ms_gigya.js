@@ -41,11 +41,13 @@
         if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
 
         // reset Gigya share bar clicks
-        var $shareButtons = $('#' + containerId + ' .gig-share-button div');
-//        $shareButtons.unbind('click');
-        $shareButtons.on('click', function(){
-          Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);
-        });
+        setTimeout(function(){
+          var $shareButtons = $('#' + containerId + ' .gig-share-button div');
+          $shareButtons.unbind('click');
+          $shareButtons.bind('click', function(){
+            Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);
+          });
+        }, 1000);
       }
     },
 

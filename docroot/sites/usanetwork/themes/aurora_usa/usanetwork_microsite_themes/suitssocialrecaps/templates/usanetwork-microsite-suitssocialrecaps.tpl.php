@@ -38,7 +38,7 @@
 
       <?php if (!empty($section['is_last'])): // add footer ?>
         <div id="offerpop" class="section">
-          <iframe id="offerpop-iframe" src="http://offerpop.com/commerce/gallery/12784" width="100%" frameborder="0" scrolling="no" seamless="seamless"></iframe>
+          <iframe id="offerpop-iframe" src="http://offerpop.com/commerce/gallery/12784" width="100%" frameborder="0" scrolling="auto"></iframe>
         </div>
 
         <footer id="footer-microsite" role="contentinfo" class="clearfix">

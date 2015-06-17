@@ -36,7 +36,7 @@
         var $shareButtons = $('#video-gigya-share .gig-share-button div');
         $shareButtons.unbind('click');
         $shareButtons.bind('click', function(){
-          Drupal.behaviors.ms_global.sendSocialShareOmniture($(this), shareTitle);
+          if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.sendSocialShareOmniture == 'function') Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);
         });
       }
     },

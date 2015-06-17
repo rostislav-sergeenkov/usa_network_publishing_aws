@@ -148,7 +148,7 @@ body{
   background-color: #FFF;
   margin: 0;
   padding: 0;
-  top: -6px;
+  top: 0;
 }
 .page-node-microsite #main {
   padding: 0;
@@ -195,14 +195,12 @@ header .primary-nav #logo {
   margin-bottom: 20px;
 }
 #videos #header-sponsor-link {
-  display: block;
-  width: 22%;
-  height: 100%;
-  background-color: pink;
-  opacity: 0.5;
   position: absolute;
   bottom: 0;
   right: 0;
+  display: block;
+  width: 22%;
+  height: 100%;
   z-index: 100;
   cursor: pointer;
 }
@@ -265,10 +263,7 @@ header .ad-leaderboard,
   overflow: visible;
 }
 header .ad-leaderboard {
-  margin: 0 auto;
-}
-header #mega-nav {
-  margin-top: 6px;
+  margin: 0 auto 6px;
 }
 #ad_300x250_1 {
   position: relative;

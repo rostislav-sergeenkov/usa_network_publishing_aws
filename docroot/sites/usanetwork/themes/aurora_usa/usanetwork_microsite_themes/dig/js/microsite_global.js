@@ -740,17 +740,33 @@ usa_debug(' ====== if videoContainer...');
       if (!Drupal.settings.use_section_ajax) {
         return;
       }
-      var $anchor = $('#' + anchor);
-      if (!$anchor.hasClass('loaded') && $anchor.find('.microsite-section-container > div').length <= 1) {
-//usa_debug('======== micrositeGetSection(' + anchor + ')');
-        var delta_anchor_relations = Drupal.settings.microsites_settings.anchor_delta,
-            delta = delta_anchor_relations[anchor],
-            url = Drupal.settings.basePath + 'ajax/callback/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta + '/' + anchor,
-            settings = {url : url, effect : 'fade'},
-            ajax = new Drupal.ajax(false, false, settings);
-        ajax.eventResponse(ajax, {});
-      }
-      $anchor.addClass('loaded');
+
+      var delta_anchor_relations = Drupal.settings.microsites_settings.anchor_delta;
+      var delta = delta_anchor_relations[anchor];
+      var url = Drupal.settings.basePath + 'ajax/callback/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta;
+      $.ajax({
+        type: 'GET',
+        url: url,
+        dataType: 'json'
+      }).done(function(data) {
+        console.log(data);
+        var settings =  $.parseJSON(data.settings);
+        $.extend(true, Drupal.settings, settings);
+        $('#' + anchor).find('.microsite-section-container').prepend(data.content);
+        Drupal.attachBehaviors('#' + anchor);
+      });
+
+//      var $anchor = $('#' + anchor);
+//      if (!$anchor.hasClass('loaded') && $anchor.find('.microsite-section-container > div').length <= 1) {
+////usa_debug('======== micrositeGetSection(' + anchor + ')');
+//        var delta_anchor_relations = Drupal.settings.microsites_settings.anchor_delta,
+//            delta = delta_anchor_relations[anchor],
+//            url = Drupal.settings.basePath + 'ajax/callback/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta + '/' + anchor,
+//            settings = {url : url, effect : 'fade'},
+//            ajax = new Drupal.ajax(false, false, settings);
+//        ajax.eventResponse(ajax, {});
+//      }
+//      $anchor.addClass('loaded');
     },
 
     attach: function (context, settings) {

@@ -92,9 +92,9 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/get-section/%node/%'] = array(
+  $items['ajax/callback/get-section/%node/%'] = array(
     'page callback' => 'usanetwork_microsite_get_section',
-    'page arguments' => array(2, 3),
+    'page arguments' => array(3, 4),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
@@ -475,9 +475,12 @@ function usanetwork_microsite_get_section($node, $delta) {
     // @todo $blocks_variables only related with section blocks should be taken.
     // because ajax call with all blocks can be slow.
     $section_content = _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper, $node, $blocks_variables);
+    $js_settings = drupal_add_js();
+    $js_settings_string = drupal_json_encode(drupal_array_merge_deep_array($js_settings['settings']['data']));
   }
   $section = array(
     'content' => $section_content,
+    'settings' => $js_settings_string,
   );
   return $section;
 }

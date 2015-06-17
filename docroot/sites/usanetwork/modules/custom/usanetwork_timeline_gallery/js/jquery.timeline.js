@@ -77,7 +77,8 @@ Project demo: http://shindiristudio.com/timeline
             $timelineContainer = $('#timeline-player-slideshow-area .timelineFlat'),
             caption = $timelineContainer.attr('data-share-description'),
             shareTitle = Drupal.behaviors.timeline_gallery.timelineShareTitle,
-            imageSrc = previewImage;
+            imageSrc = previewImage,
+            url = window.location.href;
 
         sharebar.gigyaSharebar = {
           containerID: shareBarId,
@@ -117,7 +118,7 @@ Project demo: http://shindiristudio.com/timeline
             itemEpisode = $item.attr('data-episode-num'),
             itemEpisodeName = $item.attr('data-episode-name'),
             itemScene = $item.attr('data-description'),
-            slideTitle = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
+            slideTitle = 'S' + itemSeason + ' E' + itemEpisode + ' ' + itemScene;
 
         s.prop3 = 'Gallery';
         s.prop4 = s.prop10 + ' : Gallery'; // This is intentional per Loretta!
@@ -208,8 +209,8 @@ Project demo: http://shindiristudio.com/timeline
       });
 
       // set timeline title and timeline share title
-      var title = $('#page-title').text();
-      if (title == '') title = $('#timeline-title').text();
+      var title = $('#timeline-title').text();
+      if (title == '') title = $('.node-timeline-gallery .field-item p').text();
       Drupal.behaviors.timeline_gallery.timelineTitle = title;
       Drupal.behaviors.timeline_gallery.timelineShareTitle = $('.timelineFlat').attr('data-share-title');
 

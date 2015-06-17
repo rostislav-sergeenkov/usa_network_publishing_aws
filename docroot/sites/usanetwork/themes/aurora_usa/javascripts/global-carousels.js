@@ -401,8 +401,7 @@
       current_item.attr('data-width', item_width);
       carousel.addClass('stop');
 
-      var name = 'Home Page Show Card Carousel';
-      Drupal.behaviors.omniture_tracking.promoClick(current_item_node, name, '');
+      Drupal.behaviors.omniture_tracking.showCardClick(current_item_node);
 
       //if(window.innerWidth >= window_size_tablet_portrait ) {
       //  if (current_item_node.data('mpspath') && !current_item_node.hasClass('ad-enable')) {

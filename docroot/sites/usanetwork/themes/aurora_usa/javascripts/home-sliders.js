@@ -9,7 +9,9 @@
       var slideshowAutoplay,
           slideshowSpeed = 6000,
           sliderAuto = true,
-          slideMove = slideshowSpeed * 0.1;
+          slideMove = slideshowSpeed * 0.1,
+          timer_id,
+          _self = this;
 
       if (Drupal.settings.sliderAspot) {
         slideshowAutoplay = Drupal.settings.sliderAspot.slideshowAutoplay;
@@ -37,13 +39,18 @@
       };
 
       var changeLogoColor = function (element) {
-        var logo = $('.home-logo');
-        var show = $(element).closest('.node').attr('data-show');
-        var old_show = logo.attr('data-show');
+        var $logo = $('.home-logo'),
+            show = $(element).closest('.node').attr('data-show'),
+            old_show = $logo.attr('data-show');
+
+        if($logo.hasClass('isStopped')) {
+          return false;
+        }
+
         if (old_show) {
-          logo.removeClass(old_show).addClass(show).attr('data-show', show);
+          $logo.removeClass(old_show).addClass(show).attr('data-show', show);
         } else {
-          logo.addClass(show).attr('data-show', show);
+          $logo.addClass(show).attr('data-show', show);
         }
       };
 
@@ -119,14 +126,13 @@
           controls: false,
           auto: sliderAuto,
           autoHover: true,
-          speed: 1000,
           pause: slideshowSpeed,
           useCSS: false,
           preloadImages: 'all',
           onSlideBefore: hideFocusSlide,
           onSlideAfter: showFocusSlide,
           onSliderLoad: function (el, slide, old, active) {
-            var first_slide = $('#main-slider-wrapper .slide').not($('.slide.bx-clone')).get(0);
+            var first_slide = $('.slide', '#main-slider-wrapper').not($('.slide.bx-clone')).get(0);
 
             changeLogoColor($(first_slide).find('.slide-content'));
             showFocusSlide(el, slide, old, active);
@@ -142,7 +148,7 @@
             changeLogoColor(slide.find('.slide-content'));
           };
           settings.onSliderLoad = function () {
-            var first_slide = $('#main-slider-wrapper .slide').not($('.slide.bx-clone')).get(0);
+            var first_slide = $('.slide', '#main-slider-wrapper').not($('.slide.bx-clone')).get(0);
             changeLogoColor($(first_slide).find('.slide-content'));
           };
         }
@@ -152,41 +158,80 @@
 
       var aspotSlider = null;
 
-      if ($('.block-usanetwork-aspot .slide').length <= 1) {
-        $('.block-usanetwork-aspot .slider').css('width', 100  + '%');
+      if ($('.slide', '.block-usanetwork-aspot').length <= 1) {
+        $('.slider', '.block-usanetwork-aspot').css('width', 100  + '%');
       }
 
-      $(window).load(function () {
-        if ($('.block-usanetwork-aspot .slide').length > 1) {
-          aspotSlider = initSlider();
+      $(document.body).once(function() {
+        $(window).load(function () {
+          if ($('.slide', '.block-usanetwork-aspot').length > 1) {
+            aspotSlider = initSlider();
 
-          $('.next-button')
-            .hide()
-            .addClass('disabled')
-            .click(function () {
-              aspotSlider.goToNextSlide();
-            });
-        }
-      });
+            $('.next-button')
+              .hide()
+              .addClass('disabled')
+              .on('click', function (e) {
+                aspotSlider.goToNextSlide();
+              });
+          }
+        });
 
-      $(window).bind('resize', function () {
-        if ($('.block-usanetwork-aspot .slide').length > 1) {
-          $('.next-button').hide().addClass('disabled');
-          aspotSlider.stopAuto();
-          clearTimeout(Drupal.behaviors.homeSlides._timeVar);
+        $(window).on('scroll', function(e) {
+          if(aspotSlider) {
+            var $stickyMenu = $('.region-header'),
+                $slider = $('.slider');
 
-          Drupal.behaviors.homeSlides._timeVar = setTimeout(function () {
-            var currentSlide = aspotSlider.getCurrentSlide();
+            clearTimeout(timer_id);
+            timer_id = setTimeout(function() {
+              if($stickyMenu.hasClass('sticky-shows-submenu')) {
+                if(!$slider.hasClass('isStopped')) {
+                  aspotSlider.stopAuto();
+                  $slider.addClass('isStopped')
+                } else {
+                  return false;
+                }
+              } else {
+                if($slider.hasClass('isStopped')) {
+                  aspotSlider.startAuto();
+                  $slider.removeClass('isStopped')
+                } else {
+                  return false;
+                }
+              }
+            }, 200);
+          }
+        });
 
-            aspotSlider.destroySlider();
-            $('.slider .wrp, .slider .full-image').stop().css({'margin-left': '0'});
+        $(window).on('resize', function () {
+          if ($('.slide', '.block-usanetwork-aspot').length > 1) {
+            $('.next-button').hide().addClass('disabled');
+            aspotSlider.stopAuto();
+            clearTimeout(timer_id);
 
-            Drupal.behaviors.homeSlides.aspotSlider = aspotSlider = initSlider();
-            aspotSlider.startAuto();
-          }, 500);
+            timer_id = setTimeout(function () {
+              var currentSlide = aspotSlider.getCurrentSlide(),
+                  $stickyMenu = $('.region-header'),
+                  $slider = $('.slider'),
+                  $logo = $('.home-logo');
 
-          $('.slider .wrp').attr('style', '');
-        }
+              aspotSlider.destroySlider();
+              $('.wrp, .full-image', $slider).stop().css({'margin-left': '0'});
+              $logo.addClass('isStopped');
+
+              _self.aspotSlider = aspotSlider = initSlider();
+              aspotSlider.goToSlide(currentSlide);
+
+              setTimeout(function() {
+                $logo.removeClass('isStopped');
+                if($stickyMenu.hasClass('sticky')) {
+                  aspotSlider.stopAuto();
+                }
+              }, 500);
+            }, 500);
+
+            $('.wrp', '.slider').attr('style', '');
+          }
+        });
       });
 
       //old code

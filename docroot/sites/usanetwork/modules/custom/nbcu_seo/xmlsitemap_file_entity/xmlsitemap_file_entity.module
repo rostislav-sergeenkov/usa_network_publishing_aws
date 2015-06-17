@@ -35,10 +35,21 @@ function xmlsitemap_file_entity_xmlsitemap_index_links($limit) {
  *   An array of file IDs.
  */
 function xmlsitemap_file_entity_xmlsitemap_process_file_links(array $fids) {
+  module_load_include('inc', 'xmlsitemap', 'xmlsitemap.generate');
   $files = file_load_multiple($fids);
   foreach ($files as $file) {
     $link = xmlsitemap_file_entity_create_link($file);
-    xmlsitemap_link_save($link);
+    $remove_element = FALSE;
+    if ($file->type == 'mpx_video_1' || $file->type == 'mpx_video_2') {
+      $analized_element = array(
+        'link' => $link,
+        'type' => 'video',
+      );
+      drupal_alter('nbcu_seo_xmlsitemap_remove_element', $analized_element, $remove_element);
+    }
+    if ($remove_element === FALSE) {
+      xmlsitemap_link_save($link);
+    }
   }
 
   if (count($fids) != count($files)) {

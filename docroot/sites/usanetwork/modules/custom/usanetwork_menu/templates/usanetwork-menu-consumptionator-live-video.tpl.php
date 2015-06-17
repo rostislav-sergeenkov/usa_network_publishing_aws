@@ -28,16 +28,9 @@
       </h1>
     </div>
   </div>
-  <div class="tve-help-link signOut" data-ng-if="global.isAuthN">
+  <?php if (!empty($authbar)) : ?>
     <?php print $authbar; ?>
-  </div>
-  <div class="tve-help-link signIn no-auth">
-    <a href="javascript:void(o)" class="loginButton clean"
-       data-ng-if="!global.isAuthN"
-       data-ng-click="openLoginWindow()" data-ng-cloak="">
-    </a>
-    <div class="tve-help-sign ng-scope" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"></div>
-  </div>
+  <?php endif; ?>
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">

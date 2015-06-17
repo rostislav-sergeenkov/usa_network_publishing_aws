@@ -57,8 +57,8 @@ function usanetwork_tv_shows_field_group_info() {
       2 => 'field_primary_genre',
       3 => 'field_tv_external_links',
       4 => 'field_tv_show_marquee',
-      5 => 'field_syndicated',
-      6 => 'field_current_show',
+      5 => 'field_current_show',
+      6 => 'field_syndicated',
       7 => 'group_floodlight_tag',
     ),
     'format_type' => 'tab',
@@ -86,9 +86,9 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Main Block',
     'weight' => '133',
     'children' => array(
-      0 => 'field_cast_head_image',
-      1 => 'field_cast_second_image',
-      2 => 'field_cast_description',
+      0 => 'field_cast_description',
+      1 => 'field_cast_head_image',
+      2 => 'field_cast_second_image',
       3 => 'field_cast_head_mob_image',
     ),
     'format_type' => 'fieldset',
@@ -575,8 +575,8 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Latest Full Episode Alternate Content Area',
     'weight' => '88',
     'children' => array(
-      0 => 'field_tvs_lea_block_title',
-      1 => 'field_alternative_content',
+      0 => 'field_alternative_content',
+      1 => 'field_tvs_lea_block_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -837,8 +837,9 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Show Cast Landing Page',
     'weight' => '16',
     'children' => array(
-      0 => 'group_cast_main',
-      1 => 'group_cast_recap',
+      0 => 'group_social_meter',
+      1 => 'group_cast_main',
+      2 => 'group_cast_recap',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1006,6 +1007,35 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_social_meter|node|tv_show|form';
+  $field_group->group_name = 'group_social_meter';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_show_cast_landing';
+  $field_group->data = array(
+    'label' => 'Social meter',
+    'weight' => '135',
+    'children' => array(
+      0 => 'field_social_enable',
+      1 => 'field_social_sfs_id',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Social meter',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_social_meter|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_sync_settings|node|tv_show|form';
   $field_group->group_name = 'group_sync_settings';
   $field_group->entity_type = 'node';
@@ -1105,8 +1135,8 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Best of',
     'weight' => '76',
     'children' => array(
-      0 => 'field_tvs_best_of_title',
-      1 => 'field_tvs_best_of_items',
+      0 => 'field_tvs_best_of_items',
+      1 => 'field_tvs_best_of_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1243,13 +1273,13 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_display_title',
       1 => 'field_usa_tv_on_now',
-      2 => 'field_pathauto_alias',
-      3 => 'field_facebook_tracking_enabled',
-      4 => 'field_usa_tv_related_shows',
+      2 => 'field_usa_tv_tune_in_date',
+      3 => 'field_pathauto_alias',
+      4 => 'field_facebook_tracking_enabled',
       5 => 'field_tvs_about',
-      6 => 'field_tvs_show_latest_feed',
-      7 => 'field_about_ymal',
-      8 => 'field_usa_tv_tune_in_date',
+      6 => 'field_usa_tv_related_shows',
+      7 => 'field_tvs_show_latest_feed',
+      8 => 'field_about_ymal',
       9 => 'field_tvs_show_latest_lnd_feed',
       10 => 'field_see_it_url',
       11 => 'group_usa_tv_promo_vids',

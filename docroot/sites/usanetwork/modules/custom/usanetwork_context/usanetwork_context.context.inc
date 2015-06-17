@@ -176,52 +176,6 @@ function usanetwork_context_context_default_contexts() {
   $export['shows_landing'] = $context;
 
   $context = new stdClass();
-  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'usa_leader_reloadable';
-  $context->description = 'reloadable iframe leaderboard';
-  $context->tag = 'ads';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'catchall_seo_page' => 'catchall_seo_page',
-        'media_gallery' => 'media_gallery',
-        'quiz' => 'quiz',
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        'games' => 'games',
-        'games/*' => 'games/*',
-        '*/games/*' => '*/games/*',
-        '*/*/games/*' => '*/*/games/*',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'dart-dart-tag-728x90_ifr_reload' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-728x90_ifr_reload',
-          'region' => 'leaderboard',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('ads');
-  t('reloadable iframe leaderboard');
-  $export['usa_leader_reloadable'] = $context;
-
-  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'usa_leader_standard';

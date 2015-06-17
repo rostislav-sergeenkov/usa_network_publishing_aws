@@ -40,7 +40,6 @@ features[context][] = show_banner
 features[context][] = show_page
 features[context][] = shows_landing
 features[context][] = timeline_gallery
-features[context][] = usa_leader_reloadable
 features[context][] = usa_leader_standard
 features[context][] = usa_nitro
 features[context][] = usanetwork_homepage

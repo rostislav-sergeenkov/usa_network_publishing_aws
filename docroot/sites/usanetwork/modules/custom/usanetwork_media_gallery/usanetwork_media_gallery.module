@@ -765,33 +765,19 @@ function usanetwork_media_gallery_get_related_content_ajax($tv_show_node, $start
   $response = array(
     'found' => FALSE,
     'total' => 0,
-    'overlimited' => FALSE,
+    'overlimited' => TRUE,
     'rendered' => '',
   );
-
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_gallery_content($tv_show_node, $start_from, $limit);
-
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_gallery_content($tv_show_node, $start_from, $limit + 1);
   if (!empty($related_content)) {
-    $last_entry = end($related_content);
-    $items_last = _usanetwork_tv_shows_cache_get_number_of_last_items($tv_show_node, $last_entry->entity_type, $last_entry->entity_id);
-
-    $response['found'] = TRUE;
-    $response['total'] = count($related_content);
-    $response['rendered'] = _usanetwork_media_gallery_render_related_content_items_block($related_content, $start_from, $limit);
-
-    if ($items_last == 0 || $items_last <= $limit) {
-      $response['overlimited'] = TRUE;
-    }
-    else {
+    if (count($related_content) > $limit) {
       $response['overlimited'] = FALSE;
+      $related_content = array_slice($related_content, 0, $limit);
     }
-
-    return drupal_json_output($response);
+    $response['rendered'] = _usanetwork_media_gallery_render_related_content_items_block($related_content, $start_from, $limit);
+    $response['total'] = count($related_content);
+    $response['found'] = TRUE;
   }
-  elseif (empty($related_content) && $start_from > 0) {
-    $response['overlimited'] = TRUE;
-  }
-
   return drupal_json_output($response);
 }
 

@@ -184,7 +184,7 @@
       var show_name = item_node.find($('.show-open .title')).text();
 
       s.linkTrackVars = 'events,prop4,prop10';
-      s.linkTrackEvents = s.events = 'prop4,prop10';
+      s.linkTrackEvents = s.events = 'event6';
       s.prop4 = show_name + ' : Home Page Show Card';
       s.prop10 = show_name;
 

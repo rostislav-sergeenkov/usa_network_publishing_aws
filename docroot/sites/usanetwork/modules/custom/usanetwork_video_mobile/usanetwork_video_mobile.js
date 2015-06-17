@@ -103,17 +103,12 @@
         // Initialize the object.
         this.init.apply(this, arguments);
 
-        // Disable the player on all mobile devices.
-        if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
+        if (usa_deviceInfo.mobileDevice) {
           this.loadMobileModal();
-          if (!$('body').hasClass('page-videos-live') && !$('body').hasClass('page-auth-video') && !$('body').hasClass('page-node-microsite')) {
-            Drupal.behaviors.consumptionator_video.changeSrc();
-            Drupal.behaviors.consumptionator_video.initPlayerBind();
-          }
         }
 
         // Perform a redirect to the app on full episodes from iOS devices.
-        if (this.performIosRedirect && ($('body').hasClass('page-auth-video') || $('body').hasClass('page-videos-live'))) {
+        if (this.performIosRedirect) {
           this.iosRedirect();
         }
 

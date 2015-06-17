@@ -206,6 +206,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'usanetwork_timeline_gallery-usa_timeline_gal_related' => array(
+          'module' => 'usanetwork_timeline_gallery',
+          'delta' => 'usa_timeline_gal_related',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

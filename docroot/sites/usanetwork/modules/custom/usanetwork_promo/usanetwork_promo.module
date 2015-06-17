@@ -430,6 +430,10 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
       $result['description'] = t('Blog');
       break;
+    case 'timeline_gallery':
+      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      $result['description'] = t('Timeline Gallery');
+      break;
     case 'tv_episode':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
       $season_node = !empty($node->field_season) ? $node_wrapper->field_season->value() : NULL;

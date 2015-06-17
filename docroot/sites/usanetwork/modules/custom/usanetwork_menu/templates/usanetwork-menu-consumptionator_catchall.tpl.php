@@ -30,6 +30,9 @@
       </h2>
     </div>
   </div>
+  <?php if (!empty($authbar)) : ?>
+    <?php print $authbar; ?>
+  <?php endif; ?>
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">

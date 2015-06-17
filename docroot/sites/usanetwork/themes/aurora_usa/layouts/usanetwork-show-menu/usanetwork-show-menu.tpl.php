@@ -7,6 +7,9 @@
     <div class="nav-bar-tabs">
       <?php print $content['reg_menu']; ?>
     </div>
+    <div id="tve-help-link-wrapper">
+      <?php print $content['profile']; ?>
+    </div>
     <div class="main-menu-open"><a href="#" class="link-color-reset"></a></div>
   </div>
   <div class="header-small-menu menu">

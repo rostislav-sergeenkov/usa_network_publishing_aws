@@ -1093,6 +1093,18 @@
   }
 }
 
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu{
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.sticky-shows-submenu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
 .show-title-block-wrapper {
   border: 0;
   @include breakpoint($bp-768-width) {

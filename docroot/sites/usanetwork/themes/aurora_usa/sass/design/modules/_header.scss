@@ -12,7 +12,18 @@ header {
     margin: 0;
   }
   .region-header {
-    &.sticky {
+    &:not(.sticky-shows-submenu) {
+      .block-usanetwork-menu {
+        &.sign-enable {
+          @include breakpoint($between-769-1024) {
+            .tab-content {
+              top: calc(100% - 35px);
+            }
+          }
+        }
+      }
+    }
+    &.sticky-shows-submenu {
       .block-usanetwork-menu {
         .header-nav-bar {
           margin-bottom: 0;
@@ -26,7 +37,7 @@ header {
         }
       }
     }
-    .block-usanetwork-menu {
+      .block-usanetwork-menu {
       &.open {
         @include breakpoint($between-769-1024) {
           background: $header-tab-back-new;
@@ -300,6 +311,19 @@ header {
                 border-color: $header-menu-item-separator;
                 color: $bottom-footer-back;
                 padding-left: 50px;
+              }
+              .title-link {
+                background: $footer-back;
+                border-bottom: 1px solid $header-menu-item-separator;
+                color: $bottom-footer-back;
+                display: block;
+                font-family: $tex-gyreschola-italic;
+                font-size: 16px;
+                height: 30px;
+                line-height: 30px;
+                padding-left: 30px;
+                text-transform: uppercase;
+                width: 100%;
               }
               span.no-link {
                 background: $footer-back;
@@ -1506,6 +1530,7 @@ header {
     }
   }
   #tve-help-link-wrapper {
+    display: none !important;
     float: right;
     height: 100%;
     position: relative;
@@ -1522,7 +1547,8 @@ header {
     }
   }
   .tve-help-link {
-    display: table;
+    background: $footer-back;
+    display: none !important;
     float: right;
     height: 100%;
     @include breakpoint($bp-768-width) {
@@ -1534,7 +1560,7 @@ header {
       margin: 0;
     }
     a {
-      color: $header-tab-text;
+      color: #ffffff;
       outline: none;
       font-size: 16px;
       @include breakpoint($bp-768-width) {
@@ -1555,12 +1581,17 @@ header {
       }
       .links-wrapper {
         border-left: 1px solid $header-tab-back;
-        display: table-cell;
+        display: table;
         height: 100%;
+        margin-top: 0;
         vertical-align: middle;
         width: get-vw(73px, 1025);
         @include breakpoint($bp-min-1901-width) {
           width: 135px;
+        }
+        > .item-list {
+          display: table-cell;
+          vertical-align: middle;
         }
       }
       a {

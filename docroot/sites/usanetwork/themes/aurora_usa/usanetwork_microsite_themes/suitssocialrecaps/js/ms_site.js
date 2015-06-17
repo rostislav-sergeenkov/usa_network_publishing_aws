@@ -16,7 +16,7 @@
 
       if ($('#videos').length > 0) Drupal.behaviors.ms_videos.setVideoHeight();
 
-      initIframeResize();
+      Drupal.behaviors.ms_site.initIframeResize();
     },
 
     // initIframeResize

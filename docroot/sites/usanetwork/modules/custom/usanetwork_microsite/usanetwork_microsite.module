@@ -94,7 +94,7 @@ function usanetwork_microsite_menu() {
 
   $items['ajax/callback/get-section/%node/%'] = array(
     'page callback' => 'usanetwork_microsite_get_section',
-    'page arguments' => array(3, 4, 5),
+    'page arguments' => array(3, 4),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,

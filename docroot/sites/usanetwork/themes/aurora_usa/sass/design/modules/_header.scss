@@ -12,7 +12,18 @@ header {
     margin: 0;
   }
   .region-header {
-    &.sticky {
+    &:not(.sticky-shows-submenu) {
+      .block-usanetwork-menu {
+        &.sign-enable {
+          @include breakpoint($between-769-1024) {
+            .tab-content {
+              top: calc(100% - 35px);
+            }
+          }
+        }
+      }
+    }
+    &.sticky-shows-submenu {
       .block-usanetwork-menu {
         .header-nav-bar {
           margin-bottom: 0;
@@ -26,7 +37,7 @@ header {
         }
       }
     }
-    .block-usanetwork-menu {
+      .block-usanetwork-menu {
       &.open {
         @include breakpoint($between-769-1024) {
           background: $header-tab-back-new;
@@ -1570,12 +1581,17 @@ header {
       }
       .links-wrapper {
         border-left: 1px solid $header-tab-back;
-        display: table-cell;
+        display: table;
         height: 100%;
+        margin-top: 0;
         vertical-align: middle;
         width: get-vw(73px, 1025);
         @include breakpoint($bp-min-1901-width) {
           width: 135px;
+        }
+        > .item-list {
+          display: table-cell;
+          vertical-align: middle;
         }
       }
       a {

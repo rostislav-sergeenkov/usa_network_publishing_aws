@@ -1048,3 +1048,12 @@ function usanetwork_core_update_7170() {
     module_enable(array('usanetwork_social_meter'));
   }
 }
+
+/**
+ * Enables context_block_disable module.
+ */
+function usanetwork_core_update_7171() {
+  if (!module_exists('context_block_disable')) {
+    module_enable(array('context_block_disable'));
+  }
+}

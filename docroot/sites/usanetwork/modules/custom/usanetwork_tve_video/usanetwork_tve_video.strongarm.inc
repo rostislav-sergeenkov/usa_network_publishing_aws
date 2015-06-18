@@ -13,13 +13,6 @@ function usanetwork_tve_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'sitecatalyst_tve_report_suite_id';
-  $strongarm->value = 'nbcutve';
-  $export['sitecatalyst_tve_report_suite_id'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'tve_adobe_pass_accessenabler_loc';
   $strongarm->value = 'http://entitlement.auth.adobe.com/entitlement/AccessEnabler.swf';
   $export['tve_adobe_pass_accessenabler_loc'] = $strongarm;

@@ -744,17 +744,21 @@ usa_debug(' ====== if videoContainer...');
       var delta_anchor_relations = Drupal.settings.microsites_settings.anchor_delta;
       var delta = delta_anchor_relations[anchor];
       var url = Drupal.settings.basePath + 'ajax/callback/get-section/' + Drupal.settings.microsites_settings.nid + '/' + delta;
-      $.ajax({
-        type: 'GET',
-        url: url,
-        dataType: 'json'
-      }).done(function(data) {
-        console.log(data);
-        var settings =  $.parseJSON(data.settings);
-        $.extend(true, Drupal.settings, settings);
-        $('#' + anchor).find('.microsite-section-container').prepend(data.content);
-        Drupal.attachBehaviors('#' + anchor);
-      });
+      var $anchor = $('#' + anchor);
+      if (!$anchor.hasClass('loaded') && $anchor.find('.microsite-section-container > div').length <= 1) {
+        $.ajax({
+          type: 'GET',
+          url: url,
+          dataType: 'json'
+        }).done(function (data) {
+          console.log(data);
+          var settings = $.parseJSON(data.settings);
+          $.extend(true, Drupal.settings, settings);
+          $('#' + anchor).find('.microsite-section-container').prepend(data.content);
+          Drupal.attachBehaviors('#' + anchor);
+          $anchor.addClass('loaded');
+        });
+      }
 
 //      var $anchor = $('#' + anchor);
 //      if (!$anchor.hasClass('loaded') && $anchor.find('.microsite-section-container > div').length <= 1) {

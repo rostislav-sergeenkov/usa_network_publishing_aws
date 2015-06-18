@@ -72,6 +72,7 @@ function aurora_usa_preprocess_html(&$vars) {
       'catchall_page',
       'person',
       'tv_episode',
+      'quiz',
       'timeline_gallery',
     );
     if (in_array($entity->type, $consumptionator_node_types)) {

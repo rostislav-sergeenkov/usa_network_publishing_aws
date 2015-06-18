@@ -49,6 +49,14 @@ function usanetwork_taxonomy_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'explore_tags' => array(
+      'name' => 'Explore Tags',
+      'machine_name' => 'explore_tags',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'rating_attributes' => array(
       'name' => 'TV Rating Attributes',
       'machine_name' => 'rating_attributes',

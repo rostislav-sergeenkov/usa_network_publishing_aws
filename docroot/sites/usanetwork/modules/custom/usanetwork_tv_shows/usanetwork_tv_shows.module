@@ -363,7 +363,42 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-shows-landing-item',
     ),
-    'usanetwork_tv_shows_related_ymal_item' => array(
+    'usanetwork_tv_shows_all_shows_mb' => array(
+      'variables' => array(
+        'promos' => array(),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-all-shows-mb',
+    ),
+    'usanetwork_tv_shows_consumptionator_related_items_container' => array(
+      'variables' => array(
+        'related_items_block' => NULL,
+        'load_more_link' => NULL,
+        'items_pre_page_limit' => NULL,
+        'show_nid' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-consumptionator-related-items-container',
+    ),
+    'usanetwork_tv_shows_consumptionator_related_item' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-consumptionator-related-item',
+    ),
+    'usanetwork_tv_shows_consumptionator_related_items_block' => array(
+      'variables' => array(
+        'ad' => NULL,
+        'related_items' => array(),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-consumptionator-related-items-block',
+    ),
+    'usanetwork_tv_shows_consumptionator_related_ymal_item' => array(
       'variables' => array(
         'classes' => NULL,
         'custom_classes' => NULL,
@@ -378,13 +413,7 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'color_class' => NULL,
         'icon_type' => NULL,
       ),
-      'template' => 'templates/usanetwork-tv-shows-related-ymal-item',
-    ),
-    'usanetwork_tv_shows_all_shows_mb' => array(
-      'variables' => array(
-        'promos' => array(),
-      ),
-      'template' => 'templates/usanetwork-tv-shows-all-shows-mb',
+      'template' => 'templates/usanetwork-tv-shows-consumptionator-related-ymal-item',
     ),
   );
 }
@@ -3890,13 +3919,10 @@ function _usanetwork_tv_shows_all_shows_block_item($show) {
   return theme('usanetwork_tv_shows_shows_landing_item', $theme_variables);
 }
 
-
-
-
 /**
  * Returns "You may also like" rendered item.
  */
-function usanetwork_tv_shows_get_ymal_item($show_node) {
+function usanetwork_tv_shows_consumptionator_get_ymal_item($show_node) {
   if (!empty($show_node->field_usa_tv_related_shows)) {
     $related_show_field = field_get_items('node', $show_node, 'field_usa_tv_related_shows');
 
@@ -3934,10 +3960,86 @@ function usanetwork_tv_shows_get_ymal_item($show_node) {
   return NULL;
 }
 
+/*
+* Renders block of items (default number of items in the block is 6)
+ */
+function usanetwork_tv_shows_consumptionator_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
+  if (!empty($data)) {
+
+    $ad_id = intval($start_from / $limit);
+
+    $theme_variables = array(
+      'related_items' => array(),
+      'ad' => $start_from == 0 ? FALSE : TRUE,
+      'ad_id' => $ad_id,
+    );
+
+    foreach ($data as $data_index => $data_item) {
+      if (!empty($data_item->ymal)) {
+        $theme_variables['related_items'][] = _usanetwork_tv_shows_consumptionator_render_related_content_item_ymal($data_item);
+      }
+      else {
+        $theme_variables['related_items'][] = _usanetwork_tv_shows_consumptionator_render_related_content_item_default($data_item);
+      }
+    }
+
+    return theme('usanetwork_tv_shows_consumptionator_related_items_block', $theme_variables);
+  }
+
+  return '';
+}
+
+
+/**
+ * Renders default item.
+ */
+function _usanetwork_tv_shows_consumptionator_render_related_content_item_default($data) {
+  $classes = array();
+  $desktop_image = $mobile_image = '';
+  $target_url = '<front>';
+
+  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
+      'file',
+      'node'
+    ))
+  ) {
+    $target_url = url($data->entity_type . '/' . $data->entity_id);
+  }
+
+  if (!empty($data->raw_image_uri)) {
+    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
+    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
+  }
+
+  if (!empty($data->sponsored)) {
+    $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
+  }
+
+  $theme_variables = array(
+    'custom_classes' => implode(" ", $classes),
+    'target_url' => $target_url,
+    'caption' => !empty($data->promo_topic)
+        ? htmlspecialchars($data->promo_topic)
+        : '',
+    'title' => !empty($data->promo_title)
+        ? htmlspecialchars($data->promo_title)
+        : $data->title,
+    'additional' => !empty($data->promo_description)
+        ? htmlspecialchars($data->promo_description)
+        : '',
+    'image_desktop' => $desktop_image,
+    'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
+    'content_id' => isset($content_id) ? $content_id : FALSE,
+  );
+
+  return theme('usanetwork_tv_shows_consumptionator_related_item', $theme_variables);
+}
+
 /**
  * Renders YouMayAlsoLike item (featured function).
  */
-function usanetwork_tv_shows_render_related_content_item_ymal($data) {
+function _usanetwork_tv_shows_consumptionator_render_related_content_item_ymal($data) {
   $classes = array();
   $desktop_image = $mobile_image = '';
   $target_url = '<front>';
@@ -3964,5 +4066,5 @@ function usanetwork_tv_shows_render_related_content_item_ymal($data) {
     'cta' => t('See more'),
     'color_class' => !empty($data->show_color) ? $data->show_color : '',
   );
-  return theme('usanetwork_tv_shows_related_ymal_item', $theme_variables);
+  return theme('usanetwork_tv_shows_consumptionator_related_ymal_item', $theme_variables);
 }

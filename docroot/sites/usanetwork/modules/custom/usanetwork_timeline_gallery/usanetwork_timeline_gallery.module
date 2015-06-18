@@ -26,43 +26,6 @@ function usanetwork_timeline_gallery_menu() {
   return $items;
 }
 
-/**
- * Implements hook_theme().
- */
-
-function usanetwork_timeline_gallery_theme($existing, $type, $theme, $path) {
-  return array(
-    'usanetwork_timeline_gallery_related_item' => array(
-      'variables' => array(
-        'classes' => NULL,
-        'custom_classes' => NULL,
-        'target_url' => NULL,
-        'caption' => NULL,
-        'title' => NULL,
-        'additional' => NULL,
-        'image_mobile' => NULL,
-        'image_desktop' => NULL,
-      ),
-      'template' => 'templates/usanetwork-timeline-gallery-related-item',
-    ),
-    'usanetwork_timeline_gallery_related_items_block' => array(
-      'variables' => array(
-        'ad' => NULL,
-        'related_items' => array(),
-      ),
-      'template' => 'templates/usanetwork-timeline-gallery-related-items-block',
-    ),
-    'usanetwork_timeline_gallery_related_items_container' => array(
-      'variables' => array(
-        'related_items_block' => NULL,
-        'load_more_link' => NULL,
-        'items_pre_page_limit' => NULL,
-        'show_nid' => NULL,
-      ),
-      'template' => 'templates/usanetwork-timeline-gallery-related-items-container',
-    ),
-  );
-}
 
 function usanetwork_timeline_gallery_preprocess_field(&$vars) {
   if ($vars['element']['#field_name'] == 'field_timeline_episode_section') {
@@ -449,7 +412,7 @@ function _usanetwork_timeline_gallery_related_content() {
       $show = is_array($show) ? reset($show) : $show;
       $show = node_load($show['target_id']);
       if (!empty($show)) {
-        $you_may_also_like_item = usanetwork_tv_shows_get_ymal_item($show);
+        $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($show);
         $related_content = _usanetwork_tv_shows_cache_get_limited_related_timeline_gallery_content(
           $show, 0,
           !empty($you_may_also_like_item)
@@ -466,8 +429,8 @@ function _usanetwork_timeline_gallery_related_content() {
               'usanetwork_tv_show_nid' => $show->nid,
               'usanetwork_tv_show_page_context' => 'usanetwork-timeline-gallery',
             ), 'setting');
-            $block_of_items = _usanetwork_timeline_gallery_render_related_content_items_block($related_content);
-            return theme('usanetwork_timeline_gallery_related_items_container', array(
+            $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
+            return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
               'related_items_block' => $block_of_items,
               'load_more_link' => TRUE,
               'show_nid' => $show->nid,
@@ -481,81 +444,6 @@ function _usanetwork_timeline_gallery_related_content() {
   return '';
 }
 
-/*
-* Renders block of items (default number of items in the block is 6)
- */
-function _usanetwork_timeline_gallery_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
-  if (!empty($data)) {
-
-    $ad_id = intval($start_from / $limit);
-
-    $theme_variables = array(
-      'related_items' => array(),
-      'ad' => $start_from == 0 ? FALSE : TRUE,
-      'ad_id' => $ad_id,
-    );
-
-    foreach ($data as $data_index => $data_item) {
-      if (!empty($data_item->ymal)) {
-        $theme_variables['related_items'][] = usanetwork_tv_shows_render_related_content_item_ymal($data_item);
-      }
-      else {
-        $theme_variables['related_items'][] = _usanetwork_timeline_gallery_render_related_content_item_default($data_item);
-      }
-    }
-
-    return theme('usanetwork_timeline_gallery_related_items_block', $theme_variables);
-  }
-
-  return '';
-}
-
-
-/**
- * Renders default item.
- */
-function _usanetwork_timeline_gallery_render_related_content_item_default($data) {
-  $classes = array();
-  $desktop_image = $mobile_image = '';
-  $target_url = '<front>';
-
-  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
-      'file',
-      'node'
-    ))
-  ) {
-    $target_url = url($data->entity_type . '/' . $data->entity_id);
-  }
-
-  if (!empty($data->raw_image_uri)) {
-    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
-    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
-  }
-
-  if (!empty($data->sponsored)) {
-    $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
-  }
-
-  $theme_variables = array(
-    'custom_classes' => implode(" ", $classes),
-    'target_url' => $target_url,
-    'caption' => !empty($data->promo_topic)
-        ? htmlspecialchars($data->promo_topic)
-        : '',
-    'title' => !empty($data->promo_title)
-        ? htmlspecialchars($data->promo_title)
-        : $data->title,
-    'additional' => !empty($data->promo_description)
-        ? htmlspecialchars($data->promo_description)
-        : '',
-    'image_desktop' => $desktop_image,
-    'image_mobile' => $mobile_image,
-    'media_icon' => $data->media_icon,
-    'content_id' => isset($content_id) ? $content_id : FALSE,
-  );
-
-  return theme('usanetwork_timeline_gallery_related_item', $theme_variables);
-}
 
 function usanetwork_timeline_gallery_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
   $response = array(
@@ -570,7 +458,7 @@ function usanetwork_timeline_gallery_get_related_content_ajax($tv_show_node, $st
       $response['overlimited'] = FALSE;
       $related_content = array_slice($related_content, 0, $limit);
     }
-    $response['rendered'] = _usanetwork_timeline_gallery_render_related_content_items_block($related_content, $start_from, $limit);
+    $response['rendered'] = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
     $response['total'] = count($related_content);
     $response['found'] = TRUE;
   }

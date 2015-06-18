@@ -41,6 +41,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
+        'usanetwork_quiz-usanetwork_quiz_related' => array(
+          'module' => 'usanetwork_quiz',
+          'delta' => 'usanetwork_quiz_related',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',

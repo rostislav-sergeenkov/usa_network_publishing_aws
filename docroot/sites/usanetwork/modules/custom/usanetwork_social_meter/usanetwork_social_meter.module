@@ -43,9 +43,10 @@ function usanetwork_social_meter_form_alter(&$form, &$form_state, $form_id) {
     'quiz_node_form',
     'catchall_page_node_form',
     'file_entity_edit',
+    'tv_show_node_form',
   );
   if (in_array($form_id, $form_ids_to_alter)) {
-    if (isset($form['field_social_hashtag']) && isset($form['field_social_sfs_id'])) {
+    if (isset($form['field_social_hashtag'])) {
       $form['field_social_hashtag']['#element_validate'] = array('usanetwork_social_meter_validate_hashtag');
       $form['field_social_hashtag']['#states'] = array(
         'visible' => array(
@@ -54,6 +55,8 @@ function usanetwork_social_meter_form_alter(&$form, &$form_state, $form_id) {
           ),
         ),
       );
+    }
+    if (isset($form['field_social_sfs_id'])) {
       $form['field_social_sfs_id']['#element_validate'] = array('usanetwork_social_meter_validate_sfs_id');
       $form['field_social_sfs_id']['#states'] = array(
         'visible' => array(

@@ -6,7 +6,7 @@
 
 include_once 'usanetwork_timeline_gallery.features.inc';
 
-define('USA_CATCHALL_RELATED_CONTENT_ITEMS', 6);
+define('USA_TIMELINE_RELATED_CONTENT_ITEMS', 6);
 /**
  * Implements hook_preprocess_field().
  */
@@ -453,8 +453,8 @@ function _usanetwork_timeline_gallery_related_content() {
         $related_content = _usanetwork_tv_shows_cache_get_limited_related_timeline_gallery_content(
           $show, 0,
           !empty($you_may_also_like_item)
-            ? USA_CATCHALL_RELATED_CONTENT_ITEMS - 1
-            : USA_CATCHALL_RELATED_CONTENT_ITEMS
+            ? USA_TIMELINE_RELATED_CONTENT_ITEMS - 1
+            : USA_TIMELINE_RELATED_CONTENT_ITEMS
         );
         if (!empty($you_may_also_like_item)) {
           $related_content[] = $you_may_also_like_item;
@@ -471,7 +471,7 @@ function _usanetwork_timeline_gallery_related_content() {
               'related_items_block' => $block_of_items,
               'load_more_link' => TRUE,
               'show_nid' => $show->nid,
-              'items_pre_page_limit' => USA_CATCHALL_RELATED_CONTENT_ITEMS,
+              'items_pre_page_limit' => USA_TIMELINE_RELATED_CONTENT_ITEMS,
             ));
           }
         }

@@ -184,29 +184,37 @@
 
     showCardClick: function (item_node) {
 
-      //var show_name = item_node.find($('.show-open .title')).text();
+      var show_name = item_node.find($('.show-open .title')).text();
 
       //s.linkTrackVars = 'events,prop4,prop10';
       //s.linkTrackEvents = s.events = 'event6';
       //s.prop4 = show_name + ' : Home Page Show Card';
       //s.prop10 = show_name;
 
-      void (s.t());
+      if (typeof s_gi != 'undefined') {
+        s.linkTrackVars = 'events,prop4,prop10';
+        s.prop4 = show_name + ' : Home Page Show Card';
+        s.prop10 = show_name;
+        void (s.t());
+      }
+
+      s.linkTrackEvents = s.events = 'event51';
+      s.prop4 = s.prop10 = '';
       s.tl(this, 'o', 'Home Page Show Card Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
-    promoClick: function ($self, name, show_name, is_show_card, prop4, prop10) {
+    promoClick: function ($self, name, show_name, prop4, prop10) {
 
       if (show_name === '') {
-        if (is_show_card === 1) {
+        if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
           s.linkTrackVars = 'events,prop4,prop10,eVar55';
             s.prop4 = prop4;
             s.prop10 = prop10;
         } else {
           s.linkTrackVars = 'events,eVar55';
         }
-        s.linkTrackEvents = s.events = 'event51, event';
+        s.linkTrackEvents = s.events = 'event51';
         s.eVar55 = name;
       } else {
         s.linkTrackVars = 'events,eVar55,eVar33';
@@ -243,10 +251,9 @@
           page_name = 'Home Page ';
           if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
             name = page_name + 'Show Card Carousel';
-            is_show_card = 1;
-            var show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text();
-            prop4 = show_name + ' : Home Page Show Card';
-            prop10 = show_name;
+            var item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text();
+            prop4 = item_show_name + ' : Home Page Show Card';
+            prop10 = item_show_name;
           }
           if ($self.closest('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').length > 0) {
             name = page_name + 'Full Latest Carousel';
@@ -351,7 +358,7 @@
         }
 
         // init omniture tracking
-        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name, is_show_card, prop4, prop10);
+        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name, prop4, prop10);
       }
     },
 

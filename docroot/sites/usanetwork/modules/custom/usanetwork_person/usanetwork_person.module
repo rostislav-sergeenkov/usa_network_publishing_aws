@@ -352,6 +352,7 @@ function usanetwork_person_gigya_sharebar_alter(&$share_settings, $context) {
  * Renders main block for consumptionator character page.
  */
 function _usanetwork_person_characters_main_block() {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_person') . '/js/usanetwork_person.js');
   if (path_is_admin(current_path())) {
     return '';
   }

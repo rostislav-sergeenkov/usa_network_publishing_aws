@@ -617,7 +617,7 @@
       }
       .schedule {
         float: left;
-        @include breakpoint($bp-480-width) {
+        @include breakpoint($bp-768-width) {
           display: table;
           position: relative;
           height: 100%;
@@ -634,14 +634,18 @@
           @include breakpoint($bp-min-1901-width) {
             font-size: 32px;
           }
-          @include breakpoint($bp-480-width) {
+          @include breakpoint($bp-768-width) {
             display: table-cell;
-            font-size: 16px;
+            font-size: get-vw(24px, 768);
             float: none;
-            line-height: 20px;
+            line-height: get-vw(30px, 768);
             margin: 0;
             position: relative;
             vertical-align: middle;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 15px;
+            line-height: 18.75px;
           }
         }
         .time {
@@ -657,11 +661,20 @@
             line-height: 20px;
             margin-top: 6px;
           }
+          @include breakpoint($bp-768-width) {
+            display: table-cell;
+            float: none;
+            font-size: get-vw(12px, 768);
+            line-height: get-vw(14px, 768);
+            margin-left: 0;
+            margin-top: 0;
+            padding-left: get-vw(8px, 768);
+            vertical-align: middle;
+          }
           @include breakpoint($bp-480-width) {
-            font-size: 10px;
-            line-height: 14px;
-            margin-top: 12px;
-            margin-left: 8px;
+            font-size: 7.5px;
+            line-height: 8.75px;
+            padding-left: 5px;
           }
           span {
             display: block;

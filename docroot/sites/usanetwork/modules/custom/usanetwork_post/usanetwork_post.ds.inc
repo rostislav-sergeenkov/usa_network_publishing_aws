@@ -114,28 +114,6 @@ function usanetwork_post_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
-    'regions' => array(
-      'ds_content' => array(
-        0 => 'field_post_cover',
-        1 => 'title',
-        2 => 'field_sub_title',
-        3 => 'author',
-        4 => 'body',
-        5 => 'field_gigya_share_bar',
-        6 => 'post_date',
-        7 => 'comments',
-      ),
-    ),
-    'fields' => array(
-      'field_post_cover' => 'ds_content',
-      'title' => 'ds_content',
-      'field_sub_title' => 'ds_content',
-      'author' => 'ds_content',
-      'body' => 'ds_content',
-      'field_gigya_share_bar' => 'ds_content',
-      'post_date' => 'ds_content',
-      'comments' => 'ds_content',
-    ),
     'classes' => array(),
   );
   $export['node|post|default'] = $ds_layout;

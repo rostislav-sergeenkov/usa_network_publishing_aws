@@ -619,8 +619,11 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
   // add ads
   $splash = theme('usanetwork_quiz_splash');
   if (($phase == 'splash' && !empty($splash)) || ($phase == 'questions' && empty($splash))) {
+    $menu_object = menu_get_object();
     $vars['content']['ads'] = '';
-    $vars['content']['ads']['#prefix'] = '<div class="ad-container"><div id="topbox">';
+    $vars['content']['ads']['#prefix'] = (!empty($menu_object->type) && $menu_object->type == 'quiz')
+      ? '<div class="ad-container"><div class="topbox">'
+      : '<div class="ad-container"><div id="topbox">';
     $vars['content']['ads']['#suffix'] = '</div></div>';
   }
 }

@@ -35,6 +35,7 @@ dependencies[] = usanetwork_snipe
 dependencies[] = usanetwork_static_page
 dependencies[] = usanetwork_timeline_gallery
 dependencies[] = usanetwork_token
+features[context][] = post_node
 features[context][] = quiz_node
 features[context][] = schedule_page
 features[context][] = show_banner
@@ -51,3 +52,4 @@ features[context][] = videos_landing
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
+

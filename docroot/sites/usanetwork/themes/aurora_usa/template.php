@@ -74,6 +74,7 @@ function aurora_usa_preprocess_html(&$vars) {
       'tv_episode',
       'quiz',
       'timeline_gallery',
+      'post',
     );
     if (in_array($entity->type, $consumptionator_node_types)) {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');

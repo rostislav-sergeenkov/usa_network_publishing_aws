@@ -2,13 +2,11 @@
 ?>
 <div class="node-wrapper advert">
   <div class="advertisement">
-    <?php if (!empty($advert_block)): ?>
-      <?php print $advert_block; ?>
-    <?php endif; ?>
+    <div class="topbox"></div>
   </div>
 </div>
-<div class="items-block episodes-block">
-  <div class="items-block-title episodes-block-title">
+<div class="items-block quizes-block">
+  <div class="items-block-title quizes-block-title">
     <h2><?php print $block_title;?></h2>
   </div>
   <?php if (!empty($quizes['vertical'])): ?>

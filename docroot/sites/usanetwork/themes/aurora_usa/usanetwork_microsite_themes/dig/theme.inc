@@ -231,6 +231,8 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
       drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js',
+      drupal_get_path('module', 'usanetwork_gallery_content') . '/js/usanetwork_gallery_content.js',
+      drupal_get_path('module', 'flexslider') . '/assets/js/flexslider.load.js',
     ),
   );
 }

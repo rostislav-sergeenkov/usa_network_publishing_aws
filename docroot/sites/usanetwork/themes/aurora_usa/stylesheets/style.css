@@ -3671,6 +3671,30 @@ ul.menu li {
   line-height: 0;
 }
 
+.person-quotation {
+  font-family: "texgyrescholaitalic", Times, serif;
+  display: block;
+  position: relative;
+  text-align: center;
+}
+.person-quotation:before, .person-quotation:after {
+  position: absolute;
+  font-family: "ico-font";
+  display: block;
+  padding: 10px;
+  color: #2c2c2c;
+}
+.person-quotation:before {
+  content: '\e61f';
+  top: -18px;
+  left: -13px;
+}
+.person-quotation:after {
+  content: '\e620';
+  bottom: -15px;
+  right: -10px;
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;
@@ -14564,6 +14588,62 @@ footer h2 {
     color: #545454;
   }
 }
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
+  font-size: 32px;
+  padding: 32px 39px 42px 53px;
+  margin: 54px 0 58px;
+  border: 1px solid #e9eaeb;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
+    padding: 24px 21px 37px 53px;
+    margin: 26px 0 30px;
+    font-size: 22px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
+    padding: 37px 29px 50px 60px;
+    margin: 32px 0 34px;
+    font-size: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
+    padding: 25px 29px 38px 41px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
+    padding: 20px 40px 22px 40px;
+    margin: 18px 0 25px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:before, .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:after {
+  background-color: #ffffff;
+  font-size: 50px;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:before, .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:after {
+    font-size: 37px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:before, .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:after {
+    font-size: 45px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:before, .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:after {
+    font-size: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:before, .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:after {
+    font-size: 24px;
+  }
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-item {
   display: none;
 }
@@ -14977,6 +15057,62 @@ footer h2 {
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description p:first-child {
   margin-top: 0;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation {
+  font-size: 30px;
+  padding: 35px 25px 38px 25px;
+  margin: 53px 0 23px;
+  border: 1px solid #e9eaeb;
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation {
+    padding: 25px 16px 30px 16px;
+    margin: 35px 0 16px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation {
+    padding: 25px 15px 28px 10px;
+    margin: 38px 0 19px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation {
+    padding: 25px 80px 28px 80px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation {
+    padding: 23px 11px 26px 8px;
+    margin: 32px 0 19px;
+  }
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after {
+  background-color: #ffffff;
+  font-size: 50px;
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after {
+    font-size: 37px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after {
+    font-size: 45px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after {
+    font-size: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after {
+    font-size: 24px;
+  }
 }
 @media (max-width: 1024px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .node-wrapper.advert {
@@ -19610,6 +19746,66 @@ footer h2 {
 }
 .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description p {
   margin: 0.5em 0;
+}
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+  font-size: 53px;
+  padding: 72px 94px 80px 120px;
+  margin: 54px 0 60px;
+  border: 1px solid #b5b3b4;
+  line-height: 1em;
+}
+@media (max-width: 1280px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+    padding: 47px 51px 52px 72px;
+    margin: 34px 0 35px;
+    font-size: 32px;
+  }
+}
+@media (max-width: 1024px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+    padding: 38px 31px 37px 56px;
+    margin: 30px 0 40px;
+    font-size: 24.75px;
+    line-height: 1.2em;
+  }
+}
+@media (max-width: 768px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+    padding: 23px 45px 26px 46px;
+    font-size: 17px;
+    margin: 20px 0 17px;
+  }
+}
+@media (max-width: 640px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+    padding: 20px 40px 22px 40px;
+    font-size: 13px;
+    margin: 19px 0 22px;
+  }
+}
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+  background-color: #e9eaeb;
+  font-size: 69px;
+}
+@media (max-width: 1280px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+    font-size: 44px;
+  }
+}
+@media (max-width: 1024px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+    font-size: 39px;
+  }
+}
+@media (max-width: 768px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+    font-size: 29px;
+  }
+}
+@media (max-width: 640px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+    font-size: 21px;
+  }
 }
 .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
   display: block;

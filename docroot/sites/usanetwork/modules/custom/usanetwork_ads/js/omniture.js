@@ -71,7 +71,8 @@
         if (event === "click") {
 
           s.linkTrackVars = 'events,eVar21';
-          s.linkTrackEvents = s.events = 'event4,event6';
+          s.linkTrackEvents = s.events = 'event4';
+          //s.linkTrackEvents = s.events = 'event4,event6';
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Click Load');
@@ -80,12 +81,14 @@
         } else {
 
           s.linkTrackVars = 'events,eVar21';
-          s.linkTrackEvents = s.events = 'event5,event6';
+          s.linkTrackEvents = s.events = 'event5';
+          //s.linkTrackEvents = s.events = 'event5,event6';
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Auto Load');
           s.manageVars("clearVars", s.linkTrackVars, 1);
         }
+        void (s.t());
       }
     },
 
@@ -181,22 +184,29 @@
 
     showCardClick: function (item_node) {
 
-      var show_name = item_node.find($('.show-open .title')).text();
+      //var show_name = item_node.find($('.show-open .title')).text();
 
-      s.linkTrackVars = 'events,prop4,prop10';
-      s.linkTrackEvents = s.events = 'event6';
-      s.prop4 = show_name + ' : Home Page Show Card';
-      s.prop10 = show_name;
+      //s.linkTrackVars = 'events,prop4,prop10';
+      //s.linkTrackEvents = s.events = 'event6';
+      //s.prop4 = show_name + ' : Home Page Show Card';
+      //s.prop10 = show_name;
 
+      void (s.t());
       s.tl(this, 'o', 'Home Page Show Card Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
-    promoClick: function ($self, name, show_name) {
+    promoClick: function ($self, name, show_name, is_show_card, prop4, prop10) {
 
       if (show_name === '') {
-        s.linkTrackVars = 'events,eVar55';
-        s.linkTrackEvents = s.events = 'event51';
+        if (is_show_card === 1) {
+          s.linkTrackVars = 'events,prop4,prop10,eVar55';
+            s.prop4 = prop4;
+            s.prop10 = prop10;
+        } else {
+          s.linkTrackVars = 'events,eVar55';
+        }
+        s.linkTrackEvents = s.events = 'event51, event';
         s.eVar55 = name;
       } else {
         s.linkTrackVars = 'events,eVar55,eVar33';
@@ -225,13 +235,18 @@
             global_show_name = $('header .nav-bar-tabs .show-name').text().trim() || '',
             show_name,
             page_name,
-            name;
+            name,
+            is_show_card = 0, prop4 = '', prop10 = '';
 
         // Home page
         if (body.hasClass('page-home')) {
           page_name = 'Home Page ';
           if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
             name = page_name + 'Show Card Carousel';
+            is_show_card = 1;
+            var show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text();
+            prop4 = show_name + ' : Home Page Show Card';
+            prop10 = show_name;
           }
           if ($self.closest('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').length > 0) {
             name = page_name + 'Full Latest Carousel';
@@ -336,7 +351,7 @@
         }
 
         // init omniture tracking
-        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name);
+        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name, is_show_card, prop4, prop10);
       }
     },
 

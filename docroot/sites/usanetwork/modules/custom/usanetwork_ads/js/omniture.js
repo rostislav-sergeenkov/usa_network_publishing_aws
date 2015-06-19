@@ -104,17 +104,26 @@
 
       var $self = elem,
           item_name = '',
+          showName,
           name;
+
 
       if ($self.hasClass('icon')) {
 
+        showName = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').html().split('<br>');
         name = $self.data('name').trim();
-        item_name = name.charAt(0).toUpperCase() + name.substr(1);
+        item_name = name.charAt(0).toUpperCase() + name.substr(1) + ' : ' +showName[0].trim();
 
-      } else if ($self.hasClass('on-now-link') || $self.hasClass('up-next-link') && item_name === '') {
+      } else if ($self.hasClass('on-now-link')) {
+        //
+        //name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
+        //item_name = 'Show : ' + name;
 
-        name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
-        item_name = 'Show : ' + name;
+        item_name = 'On Now';
+
+      } else if ($self.hasClass('up-next-link')) {
+
+        item_name = 'Up Next';
 
       } else {
 
@@ -294,6 +303,14 @@
           page_name = 'Show Videos Page ';
           if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-vl').length > 0) {
             name = page_name + 'All Videos Block';
+          }
+        }
+
+        // Page shows
+        if (body.hasClass('page-shows')) {
+          page_name = 'Shows Page ';
+          if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-all-shows').length > 0) {
+            name = page_name + 'All Shows';
           }
         }
 

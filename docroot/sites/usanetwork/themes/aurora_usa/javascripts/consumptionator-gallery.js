@@ -171,7 +171,7 @@
         $('#bxslider-gallery .slide').removeClass('active');
 
         var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();
-        Drupal.behaviors.omniture_tracking.photoGalleries(name);
+        Drupal.behaviors.omniture_tracking.newPageView(name);
       },
       onSlideAfter: function ($slideElement, oldIndex, newIndex) {
 

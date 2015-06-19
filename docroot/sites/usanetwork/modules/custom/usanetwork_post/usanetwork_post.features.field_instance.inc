@@ -25,9 +25,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'inline_content' => array(
@@ -96,9 +95,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 16,
       ),
       'inline_content' => array(
@@ -162,9 +160,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 21,
       ),
       'inline_content' => array(
@@ -229,9 +226,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 33,
       ),
       'inline_content' => array(
@@ -291,9 +287,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 18,
       ),
       'inline_content' => array(
@@ -352,9 +347,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'collection',
         'settings' => array(),
-        'type' => 'collection',
+        'type' => 'hidden',
         'weight' => 19,
       ),
       'inline_content' => array(
@@ -416,9 +410,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'inline',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 13,
       ),
       'inline_content' => array(
@@ -481,11 +474,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 12,
       ),
       'inline_content' => array(
@@ -560,11 +550,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 14,
       ),
       'inline_content' => array(
@@ -635,9 +622,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 23,
       ),
       'inline_content' => array(
@@ -701,12 +687,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => 'post_cover',
-        ),
-        'type' => 'image',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'inline_content' => array(
@@ -810,9 +792,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 20,
       ),
       'inline_content' => array(
@@ -876,12 +857,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 34,
       ),
       'inline_content' => array(
@@ -973,11 +950,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 17,
       ),
       'inline_content' => array(
@@ -1041,9 +1015,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 35,
       ),
       'inline_content' => array(
@@ -1108,9 +1081,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'inline_content' => array(
@@ -1184,9 +1156,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 15,
       ),
       'inline_content' => array(

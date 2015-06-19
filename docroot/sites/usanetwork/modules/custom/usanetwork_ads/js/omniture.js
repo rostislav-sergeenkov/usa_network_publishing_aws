@@ -92,10 +92,10 @@
       }
     },
 
-    photoGalleries: function (name) {
+    newPageView: function (name) {
       if (typeof s_gi != 'undefined') {
         s.linkTrackVars = 'events,prop5';
-        s.prop5 = name;
+        s.prop5 = name.trim();
         void (s.t());
       }
     },
@@ -104,17 +104,26 @@
 
       var $self = elem,
           item_name = '',
+          showName,
           name;
+
 
       if ($self.hasClass('icon')) {
 
+        showName = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').html().split('<br>');
         name = $self.data('name').trim();
-        item_name = name.charAt(0).toUpperCase() + name.substr(1);
+        item_name = name.charAt(0).toUpperCase() + name.substr(1) + ' : ' +showName[0].trim();
 
-      } else if ($self.hasClass('on-now-link') || $self.hasClass('up-next-link') && item_name === '') {
+      } else if ($self.hasClass('on-now-link')) {
+        //
+        //name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
+        //item_name = 'Show : ' + name;
 
-        name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
-        item_name = 'Show : ' + name;
+        item_name = 'On Now';
+
+      } else if ($self.hasClass('up-next-link')) {
+
+        item_name = 'Up Next';
 
       } else {
 
@@ -163,7 +172,7 @@
     footerMenuItem: function (elem) {
 
       var $self = elem,
-          link_name = $self.text();
+          link_name = $self.text().replace(' New!', '');
 
       s.linkTrackVars = 'events,eVar63,eVar64';
       s.linkTrackEvents = s.events = 'event63,event64';
@@ -204,16 +213,29 @@
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
-    promoClick: function ($self, name, show_name, prop4, prop10) {
+    showCardPromoClick: function ($self, name, prop4, prop10) {
+
+      s.linkTrackVars = 'events,prop4,prop10,eVar55';
+      s.prop4 = prop4;
+      s.prop10 = prop10;
+      s.linkTrackEvents = s.events = 'event51';
+      s.eVar55 = name;
+
+      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
+        s.bcf = function () {
+          setTimeout(function () {
+            window.location = $self.attr('href');
+          }, 500);
+        };
+      }
+
+      s.tl(this, 'o', name + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+    promoClick: function ($self, name, show_name) {
 
       if (show_name === '') {
-        if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
-          s.linkTrackVars = 'events,prop4,prop10,eVar55';
-            s.prop4 = prop4;
-            s.prop10 = prop10;
-        } else {
-          s.linkTrackVars = 'events,eVar55';
-        }
+        s.linkTrackVars = 'events,eVar55';
         s.linkTrackEvents = s.events = 'event51';
         s.eVar55 = name;
       } else {
@@ -223,7 +245,7 @@
         s.eVar55 = name;
       }
 
-      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0 ) {
+      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
         s.bcf = function () {
           setTimeout(function () {
             window.location = $self.attr('href');
@@ -243,17 +265,13 @@
             global_show_name = $('header .nav-bar-tabs .show-name').text().trim() || '',
             show_name,
             page_name,
-            name,
-            is_show_card = 0, prop4 = '', prop10 = '';
+            name;
 
         // Home page
         if (body.hasClass('page-home')) {
           page_name = 'Home Page ';
           if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
             name = page_name + 'Show Card Carousel';
-            var item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text();
-            prop4 = item_show_name + ' : Home Page Show Card';
-            prop10 = item_show_name;
           }
           if ($self.closest('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').length > 0) {
             name = page_name + 'Full Latest Carousel';
@@ -285,6 +303,14 @@
           page_name = 'Show Videos Page ';
           if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-vl').length > 0) {
             name = page_name + 'All Videos Block';
+          }
+        }
+
+        // Page shows
+        if (body.hasClass('page-shows')) {
+          page_name = 'Shows Page ';
+          if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-all-shows').length > 0) {
+            name = page_name + 'All Shows';
           }
         }
 
@@ -358,7 +384,7 @@
         }
 
         // init omniture tracking
-        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name, prop4, prop10);
+        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name);
       }
     },
 
@@ -371,15 +397,26 @@
       }
 
       //redesign
-      if(!$('body').hasClass('page-node-microsite')) {
+      if (!$('body').hasClass('page-node-microsite')) {
 
         // Click promo item
         $('.usa-wrap .node-usanetwork-promo a,' +
-        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
+        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +
+        '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             e.preventDefault();
             var self = $(this);
-            Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+            if(self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
+
+              var name = 'Home Page Show Card Carousel',
+                item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text(),
+                prop4 = item_show_name + ' : Home Page Show Card',
+                prop10 = item_show_name;
+
+              Drupal.behaviors.omniture_tracking.showCardPromoClick(self, name, prop4, prop10);
+            } else {
+              Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+            }
           });
         });
 
@@ -427,17 +464,43 @@
               e.preventDefault();
 
               var $self = $(this),
-                  sub_menu_name = '';
+                  sub_menu_name = '',
+                  name,
+                  paneTitle,
+                  itemName;
 
-              if ($self.closest('.on-now-panel-title').length) {
-                sub_menu_name = $self.text();
-              } else if ($self.closest('.node-usanetwork-promo').length && !$self.hasClass('icon') && sub_menu_name === '') {
-                sub_menu_name = $self.closest('.node-usanetwork-promo').find('.title-overlay .title').text();
-              } else if ($self.hasClass('icon') && !$self.hasClass('live-icon') && sub_menu_name === '') {
-                var name = $self.data('name');
-                sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
+              if($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-now-and-next').length > 0) {
+
+                paneTitle = $self.closest('.node-usanetwork-promo').find('h2').text().trim();
+                itemName = $self.closest('.node-usanetwork-promo').find('.title').text().trim();
+
+                if($self.hasClass('live-icon')){
+
+                  name = $self.text().trim();
+
+                } else if($self.data('name') === 'description' || $self.data('name') === 'reminder') {
+
+                  name = $self.data('name');
+                  sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
+
+                } else {
+
+                  sub_menu_name = $self.text();
+
+                }
+
+              } else if($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-primetime').length > 0) {
+
+                name = $self.data('name');
+                paneTitle = $('.pane-usanetwork-menu-usanetwork-menu-sm-primetime h2.pane-title').text().trim();
+                itemName = $self.closest('.schedule-item').find('.episode-show').text().trim();
+                sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
+
               } else {
-                sub_menu_name = $self.text();
+
+                name = $self.text();
+                sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
+
               }
 
               Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
@@ -453,6 +516,16 @@
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               e.preventDefault();
               Drupal.behaviors.omniture_tracking.socialFollow($(this));
+            }
+          });
+        });
+
+        // Click on node-type-person data-tab character-bio / actor-bio
+        $('#block-usanetwork-person-usa-cons-chars-main-block .description li[data-tab]').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              var name = $(this).text().trim();
+              Drupal.behaviors.omniture_tracking.newPageView(name);
             }
           });
         });
@@ -479,19 +552,19 @@
 
               var name = '';
 
-              if($(this).closest('.gallery-wrapper').length > 0) {
+              if ($(this).closest('.gallery-wrapper').length > 0) {
 
                 name = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text();
 
-              } else if($(this).closest('header .tab-item-wrapper').length > 0) {
+              } else if ($(this).closest('header .tab-item-wrapper').length > 0) {
 
                 name = $('header .tab-item-wrapper .node-usanetwork-promo .title').text();
 
-              } else if($(this).closest('.block-character-info-header').length > 0) {
+              } else if ($(this).closest('.block-character-info-header').length > 0) {
 
                 name = $('.block-character-info-header .full-name').text();
 
-              } else if($(this).closest('.episode-info-block').length > 0) {
+              } else if ($(this).closest('.episode-info-block').length > 0) {
 
                 name = $('.episode-info-block .episode-title').text();
 

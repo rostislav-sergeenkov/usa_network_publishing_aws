@@ -35,6 +35,12 @@
           case 'usanetwork-timeline-gallery':
             service_name = 'usanetwork-timeline-gallery';
             break;
+          case 'quiz-consumptionator':
+            service_name = 'quiz-consumptionator';
+            break;
+          case 'usanetwork-post':
+            service_name = 'usanetwork-post';
+            break;
           case 'photos-landing':
             service_name = 'usanetwork-photos-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'

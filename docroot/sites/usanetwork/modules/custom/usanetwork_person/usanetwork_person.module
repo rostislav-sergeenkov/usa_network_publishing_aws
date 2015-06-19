@@ -352,6 +352,7 @@ function usanetwork_person_gigya_sharebar_alter(&$share_settings, $context) {
  * Renders main block for consumptionator character page.
  */
 function _usanetwork_person_characters_main_block() {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_person') . '/js/usanetwork_person.js');
   if (path_is_admin(current_path())) {
     return '';
   }
@@ -644,8 +645,8 @@ function _usanetwork_person_characters_related_content_block() {
   }
 
   $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($tv_show_node);
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content(
-    $tv_show_node,
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content(
+    $tv_show_node, $person_node->type,
     0, !empty($you_may_also_like_item)
       ? USA_TV_SHOW_RELATED_ITEMS_ON_PAGE
       : USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1);
@@ -685,7 +686,7 @@ function usanetwork_person_get_related_content_ajax($tv_show_node, $start_from =
     'overlimited' => TRUE,
     'rendered' => '',
   );
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content($tv_show_node, $start_from, $limit + 1);
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'person', $start_from, $limit + 1);
   if (!empty($related_content)) {
     if (count($related_content) > $limit) {
       $response['overlimited'] = FALSE;

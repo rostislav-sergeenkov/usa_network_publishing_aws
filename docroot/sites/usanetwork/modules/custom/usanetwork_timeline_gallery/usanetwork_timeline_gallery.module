@@ -397,24 +397,15 @@ function _usanetwork_timeline_gallery_related_content() {
 
   $node = menu_get_object('node');
   if (!empty($node) && $node->type == 'timeline_gallery') {
-    if (empty($node->field_tvs_show_latest_feed)) {
-      return '';
-    }
-    else {
-      $latest_content_flag_field = field_get_items('node', $node, 'field_tvs_show_latest_feed');
 
-      if ($latest_content_flag_field[0]['value'] == 0) {
-        return '';
-      }
-    }
     $show = field_get_items('node', $node, 'field_show');
     if (!empty($show)) {
       $show = is_array($show) ? reset($show) : $show;
       $show = node_load($show['target_id']);
       if (!empty($show)) {
         $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($show);
-        $related_content = _usanetwork_tv_shows_cache_get_limited_related_timeline_gallery_content(
-          $show, 0,
+        $related_content = _usanetwork_tv_shows_cache_get_limited_related_content(
+          $show, $node->type, 0,
           !empty($you_may_also_like_item)
             ? USA_TIMELINE_RELATED_CONTENT_ITEMS - 1
             : USA_TIMELINE_RELATED_CONTENT_ITEMS
@@ -452,7 +443,7 @@ function usanetwork_timeline_gallery_get_related_content_ajax($tv_show_node, $st
     'overlimited' => TRUE,
     'rendered' => '',
   );
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_timeline_gallery_content($tv_show_node, $start_from, $limit + 1);
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'timeline_gallery', $start_from, $limit + 1);
   if (!empty($related_content)) {
     if (count($related_content) > $limit) {
       $response['overlimited'] = FALSE;

@@ -13,6 +13,47 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'post_node';
+  $context->description = '';
+  $context->tag = 'node';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'post' => 'post',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_post-usanetwork_post_related' => array(
+          'module' => 'usanetwork_post',
+          'delta' => 'usanetwork_post_related',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('node');
+  $export['post_node'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'quiz_node';
   $context->description = '';
   $context->tag = 'node';
@@ -40,6 +81,12 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usanetwork_quiz_main',
           'region' => 'content',
           'weight' => '-9',
+        ),
+        'usanetwork_quiz-usanetwork_quiz_related' => array(
+          'module' => 'usanetwork_quiz',
+          'delta' => 'usanetwork_quiz_related',
+          'region' => 'content',
+          'weight' => '-8',
         ),
         'system-main' => array(
           'module' => 'system',
@@ -278,7 +325,7 @@ function usanetwork_context_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('node');
   $export['timeline_gallery'] = $context;
-  
+
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
@@ -550,6 +597,7 @@ function usanetwork_context_context_default_contexts() {
         'catchall_page' => 'catchall_page',
         'media_gallery' => 'media_gallery',
         'person' => 'person',
+        'post' => 'post',
         'quiz' => 'quiz',
         'timeline_gallery' => 'timeline_gallery',
         'tv_episode' => 'tv_episode',

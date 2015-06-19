@@ -22,6 +22,7 @@
  * - $ad300x250 - the code to render the 300 x 250 ad
  */
 ?>
+<div class="section-wrapper">
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_galleries"></div>
 <div class="full-pane">
   <?php if (!empty($gallery)): ?>
@@ -125,4 +126,5 @@
     <?php endif; ?>
     <?php if (empty($episodic_galleries)): ?><div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_galleries"></div><?php endif; ?>
   </div>
+</div>
 </div>

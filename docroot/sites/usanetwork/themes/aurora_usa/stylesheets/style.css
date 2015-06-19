@@ -8695,9 +8695,6 @@ header .tve-help-link.signIn .inlineLoader {
   .page-videos-live .block-usanetwork-menu.open .tve-help-link.signOut .tve-header-links .first {
     display: none;
   }
-  .page-videos-live .block-usanetwork-menu.open .tab-content .tab-item {
-    padding-top: 5px;
-  }
 }
 
 #jPanelMenu-menu {
@@ -17896,6 +17893,7 @@ footer h2 {
   right: 0;
   padding-right: 45px;
   margin-top: 41px;
+  z-index: 1;
 }
 @media (max-width: 1280px) {
   .content .all-shows-landing-page-container .upper-menu {
@@ -17979,7 +17977,9 @@ footer h2 {
   background: #e1e1e1;
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  position: relative;
   transform: translateZ(0);
+  z-index: 2;
 }
 .landing-page-container .upper-menu:after {
   clear: both;

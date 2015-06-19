@@ -417,13 +417,11 @@
       z-index: 2;
     }
     .header-nav-bar {
-
       &.tve-sign {
         @include breakpoint($between-769-1024) {
           margin-bottom: 35px;
         }
       }
-
       .nav-bar-tabs {
         max-width: calc(100% - 17vw);
         @include breakpoint($bp-min-1901-width) {
@@ -439,7 +437,6 @@
           border-right: none;
         }
       }
-
       .tve-help-link {
         background: none;
         float: right;
@@ -506,18 +503,6 @@
             }
           }
         }
-        .tab-content {
-          .tab-item {
-            padding-top: 5px;
-          }
-        }
-      }
-    }
-  }
-  .tve-help-link {
-    ul.tve-header-links {
-      li.first {
-
       }
     }
   }

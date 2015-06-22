@@ -369,3 +369,10 @@ header .ad-leaderboard {
     height: 58.5px;
   }
 }
+
+@media (max-width: 400px) {
+  #ad_300x250_1 {
+    height: auto;
+    margin-bottom: 0;
+  }
+}

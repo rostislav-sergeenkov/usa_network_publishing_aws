@@ -1050,8 +1050,8 @@ function _usanetwork_menu_consumptionator_block() {
       elseif ($entity->type == 'quiz') {
         return _usanetwork_menu_consumptionator_block_quiz($entity);
       }
-      elseif ($entity->type == 'post') {
-        return _usanetwork_menu_consumptionator_block_post($entity);
+      elseif ($entity->type == 'consumpt_post') {
+        return _usanetwork_menu_consumptionator_block_consumpt_post($entity);
       }
     }
   }
@@ -1314,7 +1314,7 @@ function _usanetwork_menu_consumptionator_block_quiz($node) {
 /**
  * Renders Consumtionator Menu block for person.
  */
-function _usanetwork_menu_consumptionator_block_post($node) {
+function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
 
   if (!empty($node)) {
 

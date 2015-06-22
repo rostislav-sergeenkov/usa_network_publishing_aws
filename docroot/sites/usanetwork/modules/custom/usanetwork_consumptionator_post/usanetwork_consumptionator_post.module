@@ -50,11 +50,11 @@ function usanetwork_consumptionator_post_block_view($delta = '') {
 
   switch ($delta) {
     case 'usanetwork_cons_post_related':
-      $block['subject'] = t('Latest Posts');
+      $block['subject'] = '';
       $block['content'] = _usanetwork_consumptionator_post_related_content_block();
       break;
     case 'usanetwork_cons_post_main':
-      $block['subject'] = t('Latest Posts');
+      $block['subject'] = '';
       $block['content'] = _usanetwork_consumptionator_post_main_block();
       break;
   }
@@ -68,7 +68,6 @@ function _usanetwork_consumptionator_post_related_content_block() {
   if (path_is_admin(current_path())) {
     return '';
   }
-
   $content = menu_get_object('node');
 
   if (!empty($content)) {
@@ -76,7 +75,6 @@ function _usanetwork_consumptionator_post_related_content_block() {
 
     if (!empty($show_field)) {
       $tv_show_node = node_load($show_field[0]['target_id']);
-
 
       $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($tv_show_node);
 
@@ -138,7 +136,7 @@ function _usanetwork_consumptionator_post_get_related_content_ajax($tv_show_node
 function _usanetwork_consumptionator_post_main_block() {
 
   $node = menu_get_object('node');
-  if (isset($node->type) && $node->type == 'post') {
+  if (isset($node->type) && $node->type == 'consumpt_post') {
     if (isset($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share');

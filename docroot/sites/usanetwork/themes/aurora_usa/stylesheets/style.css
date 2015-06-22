@@ -5775,7 +5775,7 @@ header .nav-bar-tabs {
     border-bottom: 1px solid #b9b9b9;
     color: #757575;
     display: block;
-    font-family: "texgyrescholaitalic", Times, serif;
+    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 16px;
     height: 30px;
     line-height: 30px;
@@ -14458,7 +14458,7 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
-    width: 38%;
+    width: 300px;
   }
 }
 @media (max-width: 640px) {
@@ -14476,7 +14476,7 @@ footer h2 {
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
   display: none;
 }
-@media (min-width: 769px) and (max-width: 1280px) {
+@media (min-width: 641px) and (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
     display: block;
   }
@@ -14493,6 +14493,11 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
     width: 42.62%;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
+    width: 300px;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert .advertisement {
@@ -14512,7 +14517,7 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
-    width: 57%;
+    width: calc(100% - 310px);
   }
 }
 @media (max-width: 640px) {

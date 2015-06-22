@@ -37,7 +37,7 @@
           </div>
         <?php endif; ?>
         <div class="title-overlay meta">
-          <?php if (!empty($quiz_name)): ?>
+          <?php if (!empty($post_name)): ?>
             <div class="title">
              <h1><?php print !empty($h1) ? $h1 : $post_name; ?></h1>
             </div>

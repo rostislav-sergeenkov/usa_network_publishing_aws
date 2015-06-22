@@ -399,6 +399,44 @@
       //redesign
       if (!$('body').hasClass('page-node-microsite')) {
 
+        // Home Page A-spot click
+        //$( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
+        //".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
+        $('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            e.preventDefault();
+
+            var target = $(this),
+                page = $('body').hasClass('page-home') ? 'Home' : 'Show',
+                pageName = page + ' Page A-Spot ',
+                name,
+                fullName;
+
+            if (target.hasClass('asset-img-link')) {
+
+              name = 'Image';
+
+            } else if(target.hasClass('cta-button-link')) {
+
+              name = target.data('cta-link');
+
+            } else if(target.hasClass('social-meter-link')) {
+
+              name = 'Social';
+
+            } else {
+
+              name = '';
+
+            }
+
+            fullName = pageName + name;
+
+            //Drupal.behaviors.omniture_tracking.promoClick(target, fullName);
+          })
+        });
+
+
         // Click promo item
         $('.usa-wrap .node-usanetwork-promo a,' +
         '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +

@@ -432,7 +432,7 @@
 
             fullName = pageName + name;
 
-            //Drupal.behaviors.omniture_tracking.promoClick(target, fullName);
+            Drupal.behaviors.omniture_tracking.promoClick(target, fullName);
           })
         });
 

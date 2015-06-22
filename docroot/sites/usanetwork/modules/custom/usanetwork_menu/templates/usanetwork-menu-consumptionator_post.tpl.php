@@ -21,7 +21,7 @@
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>
-          <span><?php print t('Post');?>: <?php print $post_name; ?></span>
+          <span><?php print t('Blog Post');?>: <?php print $post_name; ?></span>
         </a>
       </h2>
     </div>

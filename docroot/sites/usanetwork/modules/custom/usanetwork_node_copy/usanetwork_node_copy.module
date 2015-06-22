@@ -48,7 +48,26 @@ function usanetwork_node_copy($original_node) {
       $node->created = NULL;
       $node->menu = NULL;
       $node->path = NULL;
-      $node->files = array();
+      if ($original_node->type == 'usanetwork_aspot') {
+        $nl = $original_node->language;
+        foreach (array('field_usa_aspot_desktop', 'field_usa_aspot_mobile', 'field_usa_aspot_tablet_portrait',
+                   'field_usa_tv_aspot_desktop', 'field_usa_tv_aspot_mobile') as $field) {
+          //used hard code because field_get_items
+          $aspot_file_fid = $original_node->{$field}[$nl][0]['fid'];
+          if ($aspot_file_fid) {
+            $aspot_file = file_load($aspot_file_fid);
+            if (($field == 'field_usa_aspot_desktop') || ($field == 'field_usa_tv_aspot_desktop')) {
+              $destination = 'aspot_desktop';
+            } else {
+              $destination = 'aspot_mobile';
+            }
+            $new_aspot_file = file_copy($aspot_file, 'public://' . $destination);
+            $node->{$field}[$nl][0] = (array) $new_aspot_file;
+          }
+        }
+      } else {
+        $node->files = array();
+      }
       
       $db_select = db_select('node', 'n')
           ->condition('n.title', '%' . db_like($node->title) . '%', 'like')

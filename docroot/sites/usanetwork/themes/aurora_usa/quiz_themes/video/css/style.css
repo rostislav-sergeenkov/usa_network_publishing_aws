@@ -120,7 +120,7 @@
   letter-spacing: 0;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .usanetwork-quiz.usanetwork-quiz-theme-video .quiz-title {
     margin: 0 auto;
     margin-bottom: 15px;
@@ -134,7 +134,7 @@
     width: 615px;
   }
 }
-@media (max-width: 645px) {
+@media (max-width: 640px) {
   .usanetwork-quiz.usanetwork-quiz-theme-video .quiz-title {
     width: 300px;
   }

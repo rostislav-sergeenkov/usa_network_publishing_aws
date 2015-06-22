@@ -141,7 +141,7 @@
           width: 42.62%;
         }
         @include breakpoint($bp-768-width) {
-          width: 38%;
+          width: 300px;
         }
         @include breakpoint($bp-640-width) {
           height: 56.25vw;
@@ -156,7 +156,7 @@
       }
       .advert {
         display: none;
-        @include breakpoint($between-769-1280) {
+        @include breakpoint($between-641-1280) {
           display: block;
         }
         @include breakpoint($bp-1280-width) {
@@ -168,6 +168,9 @@
         }
         @include breakpoint($bp-1024-width) {
           width: 42.62%;
+        }
+        @include breakpoint($bp-768-width) {
+          width: 300px;
         }
         .advertisement {
           height: 250px;
@@ -183,7 +186,7 @@
           width: 56%;
         }
         @include breakpoint($bp-768-width) {
-          width: 57%;
+          width: calc(100% - 310px);
         }
         @include breakpoint($bp-640-width) {
           padding: 10px 22px;

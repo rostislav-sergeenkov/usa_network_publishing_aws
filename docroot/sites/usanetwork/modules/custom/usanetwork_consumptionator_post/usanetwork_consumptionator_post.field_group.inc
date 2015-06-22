@@ -115,7 +115,7 @@ function usanetwork_consumptionator_post_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Gallery Recap',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_gallery_recap',
     ),
@@ -164,6 +164,35 @@ function usanetwork_consumptionator_post_field_group_info() {
     ),
   );
   $export['group_promo_details|node|consumpt_post|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|consumpt_post|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'consumpt_post';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Seo',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_usa_og_description',
+      1 => 'field_usa_og_image',
+      2 => 'field_seo_h1',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|consumpt_post|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

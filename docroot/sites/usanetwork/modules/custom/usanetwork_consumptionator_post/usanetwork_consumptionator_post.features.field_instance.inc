@@ -76,10 +76,9 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => 0,
     ),
   );
-
 
   // Exported field_instance: 'node-consumpt_post-field_blog_display_author'
   $field_instances['node-consumpt_post-field_blog_display_author'] = array(
@@ -211,7 +210,6 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       'weight' => 14,
     ),
   );
-
 
   // Exported field_instance: 'node-consumpt_post-field_collection'
   $field_instances['node-consumpt_post-field_collection'] = array(
@@ -411,6 +409,67 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-consumpt_post-field_gallery_recap'
+  $field_instances['node-consumpt_post-field_gallery_recap'] = array(
+    'bundle' => 'consumpt_post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 38,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_gallery_recap',
+    'label' => 'Gallery Recap',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-consumpt_post-field_gigya_share_bar'
   $field_instances['node-consumpt_post-field_gigya_share_bar'] = array(
     'bundle' => 'consumpt_post',
@@ -472,7 +531,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 42,
+      'weight' => 9,
     ),
   );
 
@@ -714,7 +773,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 8,
+      'weight' => 1,
     ),
   );
 
@@ -784,7 +843,71 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         ),
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-consumpt_post-field_post_source'
+  $field_instances['node-consumpt_post-field_post_source'] = array(
+    'bundle' => 'consumpt_post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_post_source',
+    'label' => 'Post Source',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -2,
     ),
   );
 
@@ -1393,7 +1516,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => -4,
     ),
   );
 
@@ -1538,7 +1661,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => -3,
     ),
   );
 
@@ -1614,7 +1737,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => -1,
     ),
   );
 
@@ -1631,10 +1754,12 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
   t('Exclude from Related Content block');
   t('Field for sub title');
   t('For post default value is value of category or blog.  ');
+  t('Gallery Recap');
   t('Gigya Share Bar');
   t('Media Gallery');
   t('Override default value');
   t('Post Cover');
+  t('Post Source');
   t('Promo Image Override');
   t('Short Description');
   t('Show');

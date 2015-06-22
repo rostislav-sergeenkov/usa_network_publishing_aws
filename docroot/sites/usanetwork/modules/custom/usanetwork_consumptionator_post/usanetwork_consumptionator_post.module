@@ -11,6 +11,52 @@ define('USANETWORK_FIELD_BLOG', 'field_blog');
 
 
 /**
+ * Implements hook_theme().
+ */
+function usanetwork_consumptionator_post_theme() {
+
+  return array(
+
+    'usanetwork_cons_post_main' => array(
+      'variables' => array(
+        'rendered_quiz' => NULL,
+        'rendered_carousel' => NULL,
+      ),
+      'template' => 'templates/usanetwork-cons-post-main',
+    ),
+    'usanetwork_cons_post_carousel' => array(
+      'variables' => array(
+        'quizes' => array(),
+      ),
+      'template' => 'templates/usanetwork-cons-post-carousel',
+    ),
+    'usanetwork_cons_post_carousel_item_h' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'active' => NULL,
+      ),
+      'template' => 'templates/usanetwork-cons-post-carousel-item-h',
+    ),
+    'usanetwork_cons_post_carousel_item_v' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'active' => NULL,
+      ),
+      'template' => 'templates/usanetwork-cons-post-carousel-item-v',
+    ),
+    'usanetwork_cons_post_gallery_rec' => array(
+      'variables' => array(
+        'gallery_html' => NULL,
+        'block_title' =>NULL,
+      ),
+      'template' => 'templates/usanetwork-cons-post-gallery-rec',
+    ),
+  );
+}
+
+/**
  *  Implements hook_menu().
  */
 function usanetwork_consumptionator_post_menu() {
@@ -137,36 +183,36 @@ function _usanetwork_consumptionator_post_main_block() {
 
   $node = menu_get_object('node');
   if (isset($node->type) && $node->type == 'consumpt_post') {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
     if (isset($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share');
     }
-    if (!empty($node->field_promo_created_ovts)) {
-      $field_created_ovts = field_get_items('node', $node, 'field_promo_created_ovts');
-      $field_created_ovts = reset($field_created_ovts);
-      $creating_date = $field_created_ovts['value'];
-    }
-    elseif(!empty($node->created)) {
-      $creating_date = $node->created;
-    }
-    if (!empty($node->body)) {
-      $field_body = field_get_items('node', $node, 'body');
-      $field_body = reset($field_body);
-      $body = $field_body['value'];
-    }
-    if (!empty($node->field_blog)) {
-      $field_blog = field_get_items('node', $node, 'field_blog');
-      $field_blog = reset($field_blog);
-      $blog_tid = $field_blog['tid'];
+    if (!empty($node->field_content_tags)) {
+      $tags = $node_wrapper->field_content_tags->value();
+      $tags_names = array();
+      foreach ($tags as $tag) {
+        $tags_names[] = $tag->name;
+      }
+      $tags_names = implode(', ', $tags_names);
     }
     $theme_variables = array(
       'title' => !empty($node->title) ? $node->title : '',
       'sharebar' => !empty($sharebar) ? render($sharebar) : '',
-      'creating_date' => !empty($creating_date) ? date('F j, Y', $creating_date) : '',
-      'body' => !empty($body) ? $body : '',
-      'rendered_carousel' => !empty($blog_tid) ? _usanetwork_consumptionator_post_posts_carousel($blog_tid, $node->nid) : '',
+      'creating_date' => !empty($node->field_promo_created_ovts)
+          ? date('n/j/y', $node_wrapper->field_promo_created_ovts->value())
+          : date('n/j/y', $node->created),
+      'tags' => !empty($tags_names) ? $tags_names : '',
+      'body' => !empty($node->body) ? $node_wrapper->body->value->value() : '',
+      'rendered_carousel' => !empty($node->field_show)
+          ? _usanetwork_consumptionator_post_posts_carousel($node_wrapper->field_show->nid->value(), $node->nid)
+          : '',
+      'source' => !empty($node->field_post_source) ? $node_wrapper->field_post_source->value() : '',
+      'gallery_rec' => !empty($node->field_gallery_recap)
+          ? _usanetwork_consumptionator_post_gallery_recap($node_wrapper->field_gallery_recap->nid->value())
+          : '',
     );
-    return theme('usanetwork_quiz_main_block', $theme_variables);
+    return theme('usanetwork_cons_post_main', $theme_variables);
   }
   return '';
 }
@@ -174,53 +220,76 @@ function _usanetwork_consumptionator_post_main_block() {
 /*
  * Renders posts carousel for blog.
 */
-function _usanetwork_consumptionator_post_posts_carousel($blog_id, $post_id = NULL) {
+function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NULL) {
 
-  $node = menu_get_object('node');
-  if (is_numeric($blog_id)) {
-   // $q
-    $node_wrapper = entity_metadata_wrapper('node', $node);
-    $show_id = $node_wrapper->field_show->nid->value();
+  if (is_numeric($show_id)) {
+
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'quiz')
-      ->fieldCondition('field_show', 'target_id', $show_id, '=');
-    $explore_tag = !empty($node->field_explore_tag) ? $node_wrapper->field_explore_tag->value() : NULL;
-    if (!empty($explore_tag)) {
-      $query->fieldCondition('field_explore_tag', 'tid', $explore_tag->tid, '=');
-    }
+      ->entityCondition('bundle', 'consumpt_post')
+      ->fieldCondition('field_show', 'target_id', $show_id, '=')
+      ->propertyOrderBy('created');
+
     $result = $query->execute();
     if (isset($result['node'])) {
-      $quizes = entity_load('node', array_keys($result['node']));
+      $posts = entity_load('node', array_keys($result['node']));
       $rendered_items = array();
-      foreach ($quizes as $quiz) {
-        if (!empty($quiz->field_promo_image_override)) {
-          $image = field_get_items('node', $quiz, 'field_promo_image_override');
+      foreach ($posts as $post) {
+        if (!empty($post->field_post_cover)) {
+          $image = field_get_items('node', $post, 'field_post_cover');
           $image = reset($image);
         }
+        elseif (!empty($post->field_promo_image_override)) {
+          $image = field_get_items('node', $post, 'field_promo_image_override');
+          $image = reset($image);
+        }
+        if (!empty($post->field_post_source)) {
+          $post_source = field_get_items('node', $post, 'field_post_source');
+          $post_source = reset($post_source);
+          $post_source = $post_source['value'];
+        }
         $episode_variables = array(
-          'title' => !empty($quiz->title) ? $quiz->title : '',
-          'url' => url('node/' . $quiz->nid),
-          'active' => ($node->nid == $quiz->nid) ? TRUE : FALSE,
-          'icon_type' => usanetwork_core_api_get_media_icon('node', $quiz->nid),
+          'title' => !empty($post->title) ? $post->title : '',
+          'additional' => !empty($post_source) ? $post_source : t('by Author'),
+          'url' => url('node/' . $post->nid),
+          'active' => ($post_id == $post->nid) ? TRUE : FALSE,
+          'icon_type' => usanetwork_core_api_get_media_icon('node', $post->nid),
         );
         $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
         $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-        $rendered_items['horizontal'][] = theme('usanetwork_quiz_quizes_carousel_item_h', $episode_variables);
+        $rendered_items['horizontal'][] = theme('usanetwork_cons_post_carousel_item_h', $episode_variables);
         $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-        $rendered_items['vertical'][] = theme('usanetwork_quiz_quizes_carousel_item_v', $episode_variables);
+        $rendered_items['vertical'][] = theme('usanetwork_cons_post_carousel_item_v', $episode_variables);
       }
       $advert_block = module_invoke('mps', 'block_view', 'topbox');
       if (!empty($advert_block['content'])) {
         $advert = render($advert_block['content']);
       }
       $theme_variables = array(
-        'quizes' => !empty($rendered_items) ? $rendered_items : array(),
+        'posts' => !empty($rendered_items) ? $rendered_items : array(),
         'advert_block' => isset($advert) ? $advert : NULL,
-        'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All quizes'),
+        'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All blog posts'),
+        'posts_landing_link' => l('View all posts', ''),
       );
-      return theme('usanetwork_quiz_quizes_carousel', $theme_variables);
+      return theme('usanetwork_cons_post_carousel', $theme_variables);
     }
+  }
+  return '';
+}
+
+/*
+ * Renders usanetwork_episodes_gallery_recap block.
+*/
+function _usanetwork_consumptionator_post_gallery_recap($gallery_id) {
+
+  if (is_numeric($gallery_id)) {
+    $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id));
+    $theme_variables = array(
+      'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
+      'block_title' => t('Gallery Recap'),
+    );
+
+    return theme('usanetwork_cons_post_gallery_rec', $theme_variables);
   }
   return '';
 }

@@ -11612,59 +11612,31 @@ footer .legal-and-social .footer-social-bar a {
 footer .legal-and-social .footer-social-bar a:last-child {
   margin-right: 0;
 }
-footer .legal-and-social .footer-social-bar a.instagram {
-  background-image: url('../images/sprites-s1f91cb9de1.png');
-  background-position: 0 -1708px;
-  background-repeat: no-repeat;
-  overflow: hidden;
+footer .legal-and-social .footer-social-bar a:before {
+  color: #939393;
   display: block;
-  height: 18px;
-  width: 18px;
+  font-family: "ico-font";
+  font-weight: normal;
+  font-size: 1.85366vw;
 }
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  footer .legal-and-social .footer-social-bar a.instagram {
-    background-image: url('../images/sprites-retina-saaa1024be6.png');
-    background-size: 65px 1803px;
-    background-position: 0 -1555px;
-    height: 18px;
-    width: 18px;
+@media (min-width: 1901px) {
+  footer .legal-and-social .footer-social-bar a:before {
+    font-size: 35.2px;
   }
+}
+@media (max-width: 768px) {
+  footer .legal-and-social .footer-social-bar a:before {
+    font-size: 14.3px;
+  }
+}
+footer .legal-and-social .footer-social-bar a.instagram:before {
+  content: '\e621';
 }
 footer .legal-and-social .footer-social-bar a.twitter:before {
-  color: #939393;
   content: '\e61a';
-  display: block;
-  font-family: "ico-font";
-  font-weight: normal;
-  font-size: 1.85366vw;
-}
-@media (min-width: 1901px) {
-  footer .legal-and-social .footer-social-bar a.twitter:before {
-    font-size: 35.2px;
-  }
-}
-@media (max-width: 768px) {
-  footer .legal-and-social .footer-social-bar a.twitter:before {
-    font-size: 14.3px;
-  }
 }
 footer .legal-and-social .footer-social-bar a.facebook:before {
-  color: #939393;
   content: '\e618';
-  display: block;
-  font-family: "ico-font";
-  font-weight: normal;
-  font-size: 1.85366vw;
-}
-@media (min-width: 1901px) {
-  footer .legal-and-social .footer-social-bar a.facebook:before {
-    font-size: 35.2px;
-  }
-}
-@media (max-width: 768px) {
-  footer .legal-and-social .footer-social-bar a.facebook:before {
-    font-size: 14.3px;
-  }
 }
 footer .legal-and-social .footer-social-bar a:hover {
   opacity: 0.7;

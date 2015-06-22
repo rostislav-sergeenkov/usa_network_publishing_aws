@@ -15039,7 +15039,7 @@ footer h2 {
   width: 74.7%;
   background: #ffffff;
   color: #000000;
-  padding: 45px 0;
+  padding: 0;
   padding-bottom: 10000px;
   margin-bottom: -10000px;
   overflow: hidden;
@@ -15047,26 +15047,71 @@ footer h2 {
 @media (max-width: 1280px) {
   .consumptionator-quiz-main-block article.node-quiz {
     float: none;
-    padding: 25px 0 38px 0;
+    padding: 0;
     margin-bottom: 0;
     width: 100%;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-quiz-main-block article.node-quiz {
-    padding: 24px 0;
     border-bottom: 2px solid;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-quiz-main-block article.node-quiz {
-    padding: 38px 0 38px 0;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-quiz-main-block article.node-quiz {
-    padding: 56.25vw 0 0;
     border-bottom: 8px solid;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
+    font-size: 3.4375vw;
+    margin: 7.8125vw auto;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
+    font-size: 16.5px;
+    margin: 37.6px auto;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .repeat-button {
+    font-size: 3.4375vw;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .repeat-button {
+    font-size: 16.5px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-questions.questions .page-note {
+    font-size: 2.5vw;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title {
+    font-size: 4.0625vw;
+  }
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer {
+  width: 49%;
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n + 1) {
+  clear: left;
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n) {
+  clear: right;
+  float: right;
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n):after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
+    font-size: 2.8125vw;
   }
 }
 

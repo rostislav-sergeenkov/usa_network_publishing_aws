@@ -15069,6 +15069,36 @@ footer h2 {
     border-bottom: 8px solid;
   }
 }
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-questions.questions .page-note {
+    font-size: 2.5vw;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title {
+    font-size: 4.0625vw;
+  }
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer {
+  width: 49%;
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n + 1) {
+  clear: left;
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n) {
+  clear: right;
+  float: right;
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n):after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
+    font-size: 2.8125vw;
+  }
+}
 
 .node-type-catchall-page .block-system {
   width: 100%;

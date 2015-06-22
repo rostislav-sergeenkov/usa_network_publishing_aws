@@ -56,8 +56,6 @@ function scrollToAnchorName(targetName) {
   }, 1000);
 }
 
-window.viewportUnitsBuggyfill.init();
-
 $(window).bind('resize', function () {
 
   show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;

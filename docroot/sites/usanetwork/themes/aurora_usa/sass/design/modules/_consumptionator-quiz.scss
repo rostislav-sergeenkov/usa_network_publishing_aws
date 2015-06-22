@@ -30,5 +30,37 @@
       padding: 56.25vw 0 0;
       border-bottom: 8px solid;
     }
+    .usanetwork-quiz-questions {
+      &.questions {
+        .page-note {
+          @include breakpoint ($bp-640-width) {
+            font-size: get-vw(16px, 640);
+          }
+        }
+      }
+    }
+    .usanetwork-quiz-question {
+      .question-title {
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(26px, 640);
+        }
+      }
+    }
+    .usanetwork-quiz-answer {
+      width: 49%;
+      &:nth-child(2n + 1) {
+        clear: left;
+      }
+      &:nth-child(2n) {
+        clear: right;
+        float: right;
+        @include clear();
+      }
+      .answer-title {
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(18px, 640);
+        }
+      }
+    }
   }
 }

@@ -11695,16 +11695,16 @@ footer .shows-menu ul, footer .app-and-services-menu ul {
 }
 footer .shows-menu ul li, footer .app-and-services-menu ul li {
   line-height: 1;
-  margin-bottom: 1.95122vw;
+  margin-bottom: 1.46341vw;
 }
 @media (min-width: 1901px) {
   footer .shows-menu ul li, footer .app-and-services-menu ul li {
-    margin-bottom: 37.1px;
+    margin-bottom: 28px;
   }
 }
 @media (max-width: 480px) {
   footer .shows-menu ul li, footer .app-and-services-menu ul li {
-    margin-bottom: 9.37px;
+    margin-bottom: 7px;
   }
 }
 footer .shows-menu ul a, footer .app-and-services-menu ul a {

@@ -17,19 +17,26 @@
     },
 
     showCharacterInfo: function(person) {
-        var anchor = 'characters',
-            anchorFull = Drupal.settings.microsites_settings.base_path + '/' + anchor + '/' + person,
-            personName = $('#character-info #' + person + ' > h3').text();
-        if (personName == '') personName = $('#character-info #' + person + ' > h1').text();
-        $('#character-nav li#nav-' + person + ', #character-info li#' + person).addClass('active');
-          $('#character-info #' + person).animate({ 'opacity': 1 }, 500);
+      var anchor = 'characters',
+          anchorFull = Drupal.settings.microsites_settings.base_path + '/' + anchor + '/' + person,
+          personName = $('#character-info #' + person + ' > h3').text();
+      if (personName == '') personName = $('#character-info #' + person + ' > h1').text();
+      $('#character-nav li#nav-' + person + ', #character-info li#' + person).addClass('active');
+
+      var nextSectionElem = document.getElementById(anchor),
+          offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * -1,
+          nextSectionTop = nextSectionElem.offsetTop + offsetAmount;
+
+      $('#character-info #' + person).animate({ 'opacity': 1 }, 500, function(){
+        $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing');
+      });
 
 //usa_debug('========= showCharacterInfo: anchorFull: ' + anchorFull);
-        if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
-          Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
-          Drupal.behaviors.ms_global.setOmnitureData('characters', personName);
-        }
-        Drupal.behaviors.ms_global.create728x90Ad('characters');
+      if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
+        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+        Drupal.behaviors.ms_global.setOmnitureData('characters', personName);
+      }
+      Drupal.behaviors.ms_global.create728x90Ad('characters');
     },
 
     closeCharacterInfo: function() {

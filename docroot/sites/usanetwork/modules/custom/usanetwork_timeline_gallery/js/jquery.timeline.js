@@ -490,7 +490,7 @@ Project demo: http://shindiristudio.com/timeline
 
           var $timelineItemText = $items.find('.timeline-item-text'),
               timelineItemTextTopBottomMargin = Math.ceil(parseInt($timelineItemText.css('margin-top')) + parseInt($timelineItemText.css('margin-bottom'))),
-              timelineItemShareHeight = $('#timeline .timeline-item .share:first').height(),
+              timelineItemShareHeight = $('#timeline .timeline-item .timeline-gigya-share-container:first').height(),
               timelineItemTitleHeight = $('#timeline .timeline-item h2:first').height(),
               timelineItemTextHeight = Math.floor(imgHeight - timelineItemShareHeight - timelineItemTitleHeight - timelineItemTextTopBottomMargin);
 
@@ -1137,7 +1137,9 @@ Project demo: http://shindiristudio.com/timeline
         $(window).resize(function() {
           windowResizeTimer = clearTimeout(windowResizeTimer);
           windowResizeTimer = setTimeout(function(){
-            $this.timeline('setWidthHeightMargin');
+            setTimeout(function(){
+              $this.timeline('setWidthHeightMargin');
+            }, 500);
             var data = $this.data('timeline');
                 id = $this.find('.timeline-node.active:first').attr('href').substr(1);
 

@@ -45,7 +45,11 @@
         <?php endif; ?>
         <div class="meta">
           <div class="title">
-            <h2><?php print !empty($h1) ? $h1 : $catchall_name;?></h2>
+          <?php if (!empty($h1)): ?>
+            <h1><?php print $h1; ?></h1>
+          <?php elseif (!empty($catchall_name)): ?>
+            <h1><?php print $catchall_name; ?></h1>
+          <?php endif; ?>
           </div>
           <div class="description">
             <?php print $details['description']; ?>

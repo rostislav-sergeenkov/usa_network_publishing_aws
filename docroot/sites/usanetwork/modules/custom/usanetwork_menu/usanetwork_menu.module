@@ -1292,7 +1292,7 @@ function _usanetwork_menu_consumptionator_usanetwork_microsite($node) {
                     <div id="menu-gigya-share"></div>
                   </div>
       ';
-      $seo_h1 =  _usanetwork_microsite_get_default_h1($node, 'home');
+      $seo_h1 =  _usanetwork_microsite_get_h1_tag($section_wrapper);
       $description = $section_wrapper->field_usa_og_description->value();
       $theme_variables = array(
         'main_url' => url('<front>'),

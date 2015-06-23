@@ -43,7 +43,7 @@
             <img src="<?php print $details['image']; ?>" alt="">
           </div>
         <?php endif; ?>
-        <div class="title-overlay meta">
+        <div class="meta">
           <div class="title">
             <h2><?php print !empty($h1) ? $h1 : $catchall_name;?></h2>
           </div>

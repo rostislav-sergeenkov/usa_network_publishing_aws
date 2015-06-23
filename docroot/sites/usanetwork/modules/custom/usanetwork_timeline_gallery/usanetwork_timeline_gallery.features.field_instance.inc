@@ -222,7 +222,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'inline_content' => array(

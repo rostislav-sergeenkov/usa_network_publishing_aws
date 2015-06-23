@@ -35,11 +35,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'usanetwork_post-usanetwork_cons_post_related' => array(
+        'usanetwork_consumptionator_post-usanetwork_cons_post_main' => array(
+          'module' => 'usanetwork_consumptionator_post',
+          'delta' => 'usanetwork_cons_post_main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_consumptionator_post-usanetwork_cons_post_related' => array(
           'module' => 'usanetwork_consumptionator_post',
           'delta' => 'usanetwork_cons_post_related',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -336,6 +342,7 @@ function usanetwork_context_context_default_contexts() {
     'node' => array(
       'values' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_post' => 'consumpt_post',
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
@@ -364,6 +371,7 @@ function usanetwork_context_context_default_contexts() {
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
         'shows' => 'shows',
+        '*/blog' => '*/blog',
       ),
     ),
     'taxonomy_term' => array(

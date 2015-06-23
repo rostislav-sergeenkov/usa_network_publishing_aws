@@ -17,10 +17,13 @@
  * - $section_title - the title of the section
  * - $background_url - the URL of page background
  */
+$time = time();
 ?>
 
 <div class="header">
-  <a id="header-sponsor-link"></a>
+  <a id="header-sponsor-link" href="http://ad.doubleclick.net/ddm/jump/N3753.117456.USANETWORK/B8145637.117886813;sz=1x1;kw=gs_custom;ord=<?php print $time; ?>?" target="_blank"><IMG SRC="http://ad.doubleclick.net/ddm/ad/N3753.117456.USANETWORK/B8145637.117886813;sz=1x1;kw=gs_custom;ord=<?php print $time; ?>?" BORDER=0 WIDTH=1 HEIGHT=1 ALT="Advertisement"></a>
+  <a id="header-sponsor-tracking-pixel" href="http://ad.doubleclick.net/ddm/jump/N3753.117456.USANETWORK/B8145637.117886818;sz=1x1;kw=gs_custom;ord=<?php print $time; ?>?">
+  <IMG SRC="http://ad.doubleclick.net/ddm/ad/N3753.117456.USANETWORK/B8145637.117886818;sz=1x1;kw=gs_custom;ord=<?php print $time; ?>?" BORDER=0 WIDTH=1 HEIGHT=1 ALT="Advertisement"></a>
 </div>
 
 <?php if (!empty($section_title)): ?>

@@ -86,7 +86,7 @@
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(self.resizeResponse, 800);
       });
-      window.addEventListener('orientationchange', self.resizeResponse);
+      window.addEventListener('orientationchange', function() { setTimeout(self.resizeResponse, 800); });
     }
   }
 })(jQuery);

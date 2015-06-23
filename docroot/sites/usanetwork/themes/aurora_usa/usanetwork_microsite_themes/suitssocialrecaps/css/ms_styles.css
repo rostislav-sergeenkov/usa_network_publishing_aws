@@ -204,6 +204,11 @@ header .primary-nav #logo {
   z-index: 100;
   cursor: pointer;
 }
+#videos #header-sponsor-tracking-pixel {
+  display: none;
+  width: 1px;
+  height: 1px;
+}
 .section-description {
   text-align: left;
   color: #000;

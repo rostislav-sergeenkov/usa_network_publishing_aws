@@ -371,18 +371,22 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
 
   if (!empty($posts_data)) {
     foreach ($posts_data as $post_data_index => $post_data) {
-      $image_url = usanetwork_core_api_get_content_image('node', $post_data->nid);
-
+      $cover_file = entity_load('file', array($post_data->post_cover_fid));
+      if (!empty($cover_file)) {
+        $cover_file = reset($cover_file);
+        $cover_uri = $cover_file->uri;
+      }
       $theme_item_variables = array(
         'blog_url' => isset($post_data->nid)
           ? url('node/' . $post_data->nid)
           : NULL,
-        'desktop_image_url' => image_style_url('677x381', $image_url),
+        'desktop_image_url' => image_style_url('677x381', $cover_uri),
         'title' => $post_data->title,
         'description' => $post_data->description,
         'post_date' => !empty($post_data->created)
           ? gmdate('m/d/Y', $post_data->created)
           : NULL,
+        'tags' => $post_data->tags,
       );
 
       $theme_variables['items'][] = theme('usanetwork_blog_landing_posts_list_item', $theme_item_variables);
@@ -405,20 +409,34 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid) {
     $query->fields('cp', array('nid', 'title', 'created'));
     $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
     $query->addField('show_field', 'field_show_target_id', 'show_nid');
+    $query->leftJoin('field_data_body', 'body_field', 'body_field.entity_id=cp.nid');
+    $query->addField('body_field', 'body_value', 'body');
+    $query->leftJoin('field_data_field_summary', 'field_summary', 'field_summary.entity_id=cp.nid');
+    $query->addField('field_summary', 'field_summary_value', 'summary');
     $query->leftJoin('field_data_field_post_cover', 'post_cover', 'post_cover.entity_id=cp.nid');
     $query->addField('post_cover', 'field_post_cover_fid', 'post_cover_fid');
+    $query->leftJoin('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=cp.nid');
+    $query->addField('tags_field', 'field_content_tags_tid', 'tag_tid');
+    $query->leftJoin('taxonomy_term_data', 'term', 'term.tid=tags_field.field_content_tags_tid');
     $query->condition('cp.type', 'consumpt_post');
     $query->condition('cp.status', NODE_PUBLISHED);
     $query->condition('show_field.field_show_target_id', $show_nid);
-    $query = dpq($query, TRUE);
+    $query->groupBy('cp.nid');
+    $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');
+    $sql = dpq($query, TRUE);
     $result = $query->execute()->fetchAll();
 
     if ($result) {
       foreach ($result as &$result_item) {
-        $result_item->description = _usanetwork_episodes_get_season_episodes_description($result_item);
+        $result_item->description = _usanetwork_consumptionator_post_get_season_episodes_description($result_item);
       }
     }
+    cache_set($cache_name, $result, 'cache', time() + 900);
   }
+  else {
+    $result = $cache->data;
+  }
+  return $result;
 }
 
 /**
@@ -427,17 +445,17 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid) {
  * @return string
  */
 function _usanetwork_consumptionator_post_get_season_episodes_description($result_item) {
-  if (!empty($result_item->short_description)) {
-    return $result_item->short_description;
+  if (!empty($result_item->summary)) {
+    return $result_item->summary;
   }
-  if (!empty($result_item->full_description)) {
-    if (stripos($result_item->full_description, '<p>') === FALSE) {
-      return $result_item->full_description;
+  if (!empty($result_item->body)) {
+    if (stripos($result_item->body, '<p>') === FALSE) {
+      return $result_item->body;
     }
     else {
       $matches = array();
 
-      if (preg_match("#<p[^>]*>(.*)</p>#isU", $result_item->full_description, $matches)) {
+      if (preg_match("#<p[^>]*>(.*)</p>#isU", $result_item->body, $matches)) {
         return '<p>' . $matches[1] . '</p>';
       }
     }

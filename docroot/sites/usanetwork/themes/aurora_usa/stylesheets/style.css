@@ -3695,6 +3695,41 @@ ul.menu li {
   right: -10px;
 }
 
+.lines-quotation {
+  font-family: "texgyrescholaitalic", Times, serif;
+  display: block;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  padding: 37px 25px 43px 27px;
+  margin: 54px 0 28px;
+  border-top: 3px solid;
+  border-bottom: 3px solid;
+  line-height: 1.5em;
+}
+@media (max-width: 1280px) {
+  .lines-quotation {
+    font-size: 20px;
+    padding: 22px 15px 36px 15px;
+    margin: 34px 0 19px;
+    border-width: 2px;
+  }
+}
+@media (max-width: 768px) {
+  .lines-quotation {
+    padding: 22px 100px 27px 100px;
+    margin: 38px 0 23px;
+    line-height: 1.4em;
+  }
+}
+@media (max-width: 640px) {
+  .lines-quotation {
+    margin-bottom: 17px;
+    padding: 22px 15px 27px 15px;
+    color: black;
+  }
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;

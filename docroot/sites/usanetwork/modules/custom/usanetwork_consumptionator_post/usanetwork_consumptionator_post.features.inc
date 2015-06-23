@@ -1,14 +1,23 @@
 <?php
 /**
  * @file
- * usanetwork_post.features.inc
+ * usanetwork_consumptionator_post.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
 function usanetwork_consumptionator_post_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
+  if ($module == "ds" && $api == "ds") {
+    return array("version" => "1");
+  }
   if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+  if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
   if ($module == "strongarm" && $api == "strongarm") {
@@ -32,4 +41,11 @@ function usanetwork_consumptionator_post_node_info() {
     ),
   );
   return $items;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function usanetwork_consumptionator_post_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }

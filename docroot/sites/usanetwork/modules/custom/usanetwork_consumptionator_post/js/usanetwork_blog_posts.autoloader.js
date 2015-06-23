@@ -4,7 +4,7 @@
 
   Drupal.behaviors.usanetwork_blog_posts_autoloader = {
     loadPageItems: function(eventClick) {
-      var showNid = $('.episode-landing-list-items-seasons').data('show-nid'),
+      var showNid = $('.landing-list-items-all').data('show-nid'),
           click = eventClick || '';
 
       if (showNid > 0) {
@@ -49,7 +49,7 @@
             if (Drupal.settings.newSeasonNumber != 1) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
             } else {
-              $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-items-seasons').css({'margin-bottom' : '0px'});
+              $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all').css({'margin-bottom' : '0px'});
             }
           },
           error: function () {

@@ -19514,18 +19514,18 @@ footer h2 {
     right: 8px;
   }
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-items-seasons {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all {
   margin-bottom: 100px;
   position: relative;
   width: 100%;
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons:after, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-items-seasons:after {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all:after, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (min-width: 1901px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-items-seasons {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all {
     margin-bottom: 190px;
   }
 }
@@ -19703,6 +19703,16 @@ footer h2 {
   }
 }
 
+@media (max-width: 640px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .title {
+    margin-bottom: 0px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .posted-date {
+    margin-bottom: 20px;
+  }
+}
 #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div:after {
   content: "\e608";
   color: #ffffff;

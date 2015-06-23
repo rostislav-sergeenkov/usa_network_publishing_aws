@@ -389,7 +389,7 @@
       }
     }
   }
-  .episode-landing-list-items-seasons {
+  .landing-list-items-all {
     @include clear();
     margin-bottom: 100px;
     position: relative;
@@ -548,6 +548,20 @@
 }
 #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
   .episode-landing-list-item {
+    &.active {
+      .episode-landing-info-block {
+        .title {
+          @include breakpoint($bp-640-width) {
+            margin-bottom: 0px;
+          }
+        }
+      }
+      .posted-date {
+        @include breakpoint($bp-640-width) {
+          margin-bottom: 20px;
+        }
+      }
+    }
     .buttons-bar {
       .buttons {
         > div {

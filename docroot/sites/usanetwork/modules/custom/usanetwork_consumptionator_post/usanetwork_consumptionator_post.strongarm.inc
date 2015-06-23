@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * usanetwork_post.strongarm.inc
+ * usanetwork_consumptionator_post.strongarm.inc
  */
 
 /**
@@ -13,63 +13,63 @@ function usanetwork_consumptionator_post_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_post';
+  $strongarm->name = 'comment_anonymous_consumpt_post';
   $strongarm->value = '0';
-  $export['comment_anonymous_post'] = $strongarm;
+  $export['comment_anonymous_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_post';
+  $strongarm->name = 'comment_consumpt_post';
+  $strongarm->value = '1';
+  $export['comment_consumpt_post'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_consumpt_post';
   $strongarm->value = 1;
-  $export['comment_default_mode_post'] = $strongarm;
+  $export['comment_default_mode_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_post';
+  $strongarm->name = 'comment_default_per_page_consumpt_post';
   $strongarm->value = '50';
-  $export['comment_default_per_page_post'] = $strongarm;
+  $export['comment_default_per_page_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_post';
+  $strongarm->name = 'comment_form_location_consumpt_post';
   $strongarm->value = 1;
-  $export['comment_form_location_post'] = $strongarm;
+  $export['comment_form_location_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_post';
+  $strongarm->name = 'comment_preview_consumpt_post';
   $strongarm->value = '1';
-  $export['comment_post'] = $strongarm;
+  $export['comment_preview_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_post';
-  $strongarm->value = '1';
-  $export['comment_preview_post'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_post';
+  $strongarm->name = 'comment_subject_field_consumpt_post';
   $strongarm->value = 1;
-  $export['comment_subject_field_post'] = $strongarm;
+  $export['comment_subject_field_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'date_format_blog_post_date';
+  $strongarm->name = 'date_format_blog_consumpt_post_date';
   $strongarm->value = 'l, F j, Y';
-  $export['date_format_blog_post_date'] = $strongarm;
+  $export['date_format_blog_consumpt_post_date'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__post';
+  $strongarm->name = 'field_bundle_settings_node__consumpt_post';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
@@ -181,61 +181,54 @@ function usanetwork_consumptionator_post_strongarm() {
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__post'] = $strongarm;
+  $export['field_bundle_settings_node__consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_post';
+  $strongarm->name = 'menu_options_consumpt_post';
   $strongarm->value = array(
     0 => 'main-menu',
   );
-  $export['menu_options_post'] = $strongarm;
+  $export['menu_options_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_post';
+  $strongarm->name = 'menu_parent_consumpt_post';
   $strongarm->value = 'main-menu:0';
-  $export['menu_parent_post'] = $strongarm;
+  $export['menu_parent_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_post';
+  $strongarm->name = 'node_options_consumpt_post';
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
   );
-  $export['node_options_post'] = $strongarm;
+  $export['node_options_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_post';
+  $strongarm->name = 'node_preview_consumpt_post';
   $strongarm->value = '1';
-  $export['node_preview_post'] = $strongarm;
+  $export['node_preview_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_post';
+  $strongarm->name = 'node_submitted_consumpt_post';
   $strongarm->value = 1;
-  $export['node_submitted_post'] = $strongarm;
+  $export['node_submitted_consumpt_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'page_manager_term_view_disabled';
-  $strongarm->value = FALSE;
-  $export['page_manager_term_view_disabled'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'representative_image_field_node_post';
+  $strongarm->name = 'representative_image_field_node_consumpt_post';
   $strongarm->value = 'field_cover_media';
-  $export['representative_image_field_node_post'] = $strongarm;
+  $export['representative_image_field_node_consumpt_post'] = $strongarm;
 
   return $export;
 }

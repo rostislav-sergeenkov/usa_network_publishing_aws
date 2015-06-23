@@ -301,3 +301,27 @@ address {
   height: 0;
   line-height: 0;
 }
+
+.person-quotation {
+  font-family: $tex-gyreschola-italic;
+  display: block;
+  position: relative;
+  text-align: center;
+  &:before, &:after {
+    position: absolute;
+    font-family: "ico-font";
+    display: block;
+    padding: 10px;
+    color: $usa-logo-back;
+  }
+  &:before {
+    content: '\e61f';
+    top: -18px;
+    left: -13px;
+  }
+  &:after {
+    content: '\e620';
+    bottom: -15px;
+    right: -10px;
+  }
+}

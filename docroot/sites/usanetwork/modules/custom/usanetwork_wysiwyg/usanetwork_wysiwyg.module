@@ -19,6 +19,15 @@ function usanetwork_wysiwyg_plugin($editor, $version) {
         'load' => TRUE,
         'settings' => array(),
       ),
+      'lines_quotation' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'lines_quotation_tinymce_plugin.js',
+        'buttons' => array(
+          'lines_quotation' => t('Lines quotation')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
     );
   }
 }

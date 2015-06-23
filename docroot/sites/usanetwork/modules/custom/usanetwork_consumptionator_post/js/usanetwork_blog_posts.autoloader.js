@@ -5,18 +5,20 @@
   Drupal.behaviors.usanetwork_blog_posts_autoloader = {
     loadPageItems: function(eventClick) {
       var showNid = $('.landing-list-items-all').data('show-nid'),
-          click = eventClick || '';
+          click = eventClick || '',
+          offset = $('.ajax-load-block > .landing-list-items-one-item').length;
 
       if (showNid > 0) {
 
         var serviceUrl = '/ajax/usanetwork-blog-posts/get-related/' + showNid + '/' + offset;
-
+        console.info(serviceUrl);
         $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
         $.ajax({
           type: 'GET',
           url: serviceUrl,
           dataType: 'json',
           success: function (data) {
+            console.info(data);
             $('.ajax-load-block .load-more-link').before(data.rendered);
             $('.ajax-load-block .load-more-link .load-more-loader').remove();
 

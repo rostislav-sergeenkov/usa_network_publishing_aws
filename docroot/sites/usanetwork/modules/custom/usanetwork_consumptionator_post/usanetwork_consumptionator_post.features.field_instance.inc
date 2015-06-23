@@ -418,11 +418,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 38,
       ),
       'inline_content' => array(
@@ -479,23 +476,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'gigya',
-        'settings' => array(
-          'gigya_sharebar_advanced' => array(
-            'iconsOnly' => 'true',
-          ),
-          'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
-          'gigya_sharebar_container_id' => 'gigya-share',
-          'gigya_sharebar_desc' => '[node:summary]',
-          'gigya_sharebar_image_behavior' => 'default',
-          'gigya_sharebar_image_url' => '',
-          'gigya_sharebar_layout' => 'horizontal',
-          'gigya_sharebar_link_back' => '[node:url:absolute]',
-          'gigya_sharebar_override_default' => FALSE,
-          'gigya_sharebar_short_url' => 0,
-          'gigya_sharebar_showcounts' => 'none',
-          'gigya_sharebar_title' => '[node:title]',
-        ),
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 36,
       ),
@@ -856,9 +837,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 37,
       ),
       'inline_content' => array(
@@ -925,14 +905,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 33,
       ),
@@ -1011,7 +984,6 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 32,
@@ -1170,9 +1142,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 27,
       ),
       'inline_content' => array(
@@ -1246,9 +1217,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 26,
       ),
       'inline_content' => array(
@@ -1322,9 +1292,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 24,
       ),
       'inline_content' => array(
@@ -1398,7 +1367,6 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 25,
@@ -1468,9 +1436,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 41,
       ),
       'inline_content' => array(
@@ -1814,9 +1781,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 39,
       ),
       'inline_content' => array(
@@ -1877,12 +1843,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 40,
       ),
       'inline_content' => array(

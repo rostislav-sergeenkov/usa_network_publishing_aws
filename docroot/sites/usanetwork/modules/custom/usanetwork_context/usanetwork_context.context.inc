@@ -35,11 +35,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'usanetwork_post-usanetwork_cons_post_related' => array(
+        'usanetwork_consumptionator_post-usanetwork_cons_post_main' => array(
+          'module' => 'usanetwork_consumptionator_post',
+          'delta' => 'usanetwork_cons_post_main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_consumptionator_post-usanetwork_cons_post_related' => array(
           'module' => 'usanetwork_consumptionator_post',
           'delta' => 'usanetwork_cons_post_related',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),

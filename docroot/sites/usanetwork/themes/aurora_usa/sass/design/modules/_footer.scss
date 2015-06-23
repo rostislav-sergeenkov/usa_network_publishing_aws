@@ -313,12 +313,12 @@ footer {
       }
       li {
         line-height: 1;
-        margin-bottom: get-vw(20px, 1025);
+        margin-bottom: get-vw(15px, 1025);
         @include breakpoint($bp-min-1901-width) {
-          margin-bottom: 37.1px;
+          margin-bottom: 28px;
         }
         @include breakpoint($bp-480-width) {
-          margin-bottom: 9.37px;
+          margin-bottom: 7px;
         }
       }
       a {

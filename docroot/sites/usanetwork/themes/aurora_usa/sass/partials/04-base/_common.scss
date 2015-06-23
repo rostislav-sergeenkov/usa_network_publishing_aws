@@ -347,7 +347,7 @@ address {
     margin: 38px 0 23px;
     line-height: 1.4em;
   }
-  @include breakpoint($bp-640-width){
+  @include breakpoint($bp-640-width) {
     margin-bottom: 17px;
     padding: 22px 15px 27px 15px;
     color: $black-true;

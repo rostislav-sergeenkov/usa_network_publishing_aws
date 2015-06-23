@@ -557,7 +557,10 @@
 
       if ($('#videos').length > 0) Drupal.behaviors.ms_videos.setVideoHeight();
 
-      if ($('#quizzes').length > 0) Drupal.behaviors.ms_quizzes.reloadSliders();
+      if ($('#quizzes').length > 0) {
+        Drupal.behaviors.ms_quizzes.reloadSliders();
+        Drupal.behaviors.ms_quizzes.refresh300x250Ad();
+      }
     },
 
     attach: function (context, settings) {

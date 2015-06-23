@@ -56,3 +56,10 @@
   content: "\e606";
   color: #afafaf;
 }
+
+@media (max-width: 960px) {
+  #microsite #quizzes .field-type-gigya-sharebar {
+    float: left;
+    margin: 0 0 0 5px;
+  }
+}

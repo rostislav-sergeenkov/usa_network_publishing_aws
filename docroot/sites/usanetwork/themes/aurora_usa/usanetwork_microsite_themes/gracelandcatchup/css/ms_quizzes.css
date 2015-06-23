@@ -271,7 +271,7 @@
 .usanetwork-quiz .content-wrap .sidebar .ad-container {
   display: block;
   width: 300px;
-  height: 250px;
+  height: auto;
 }
 
 /* loading animation */

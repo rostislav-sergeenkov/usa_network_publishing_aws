@@ -11,14 +11,12 @@
       if (showNid > 0) {
 
         var serviceUrl = '/ajax/usanetwork-blog-posts/get-related/' + showNid + '/' + offset;
-        console.info(serviceUrl);
         $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
         $.ajax({
           type: 'GET',
           url: serviceUrl,
           dataType: 'json',
           success: function (data) {
-            console.info(data);
             $('.ajax-load-block .load-more-link').before(data.rendered);
             $('.ajax-load-block .load-more-link .load-more-loader').remove();
 
@@ -48,7 +46,7 @@
               });
             });
 
-            if (Drupal.settings.newSeasonNumber != 1) {
+            if (data.overlimited == false) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
             } else {
               $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all').css({'margin-bottom' : '0px'});

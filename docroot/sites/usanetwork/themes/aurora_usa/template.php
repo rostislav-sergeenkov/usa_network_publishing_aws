@@ -169,6 +169,9 @@ function aurora_usa_preprocess_page(&$vars) {
   if(!empty($node) && $node->type == 'tv_episode') {
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
+  if(!empty($node) && $node->type == 'consumpt_post') {
+    drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
+  }
   // add ios touch icon
   $ios_icon = array(
     '#tag' => 'link',

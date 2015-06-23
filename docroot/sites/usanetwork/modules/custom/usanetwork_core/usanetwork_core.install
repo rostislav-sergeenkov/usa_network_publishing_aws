@@ -1057,3 +1057,12 @@ function usanetwork_core_update_7171() {
     module_enable(array('context_block_disable'));
   }
 }
+
+/**
+ * Enables usanetwork_consumptionator_post module.
+ */
+function usanetwork_core_update_7172() {
+  if (!module_exists('usanetwork_consumptionator_post')) {
+    module_enable(array('usanetwork_consumptionator_post'));
+  }
+}

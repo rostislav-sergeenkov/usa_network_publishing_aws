@@ -336,6 +336,7 @@ function usanetwork_context_context_default_contexts() {
     'node' => array(
       'values' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_post' => 'consumpt_post',
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
@@ -364,6 +365,7 @@ function usanetwork_context_context_default_contexts() {
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
         'shows' => 'shows',
+        '*/blog' => '*/blog',
       ),
     ),
     'taxonomy_term' => array(

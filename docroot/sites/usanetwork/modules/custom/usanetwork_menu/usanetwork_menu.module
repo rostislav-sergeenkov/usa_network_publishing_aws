@@ -470,7 +470,7 @@ function _usanetwork_menu_main_menu_block() {
     return;
   }
   $menu_links = menu_load_links($menu['menu_name']);
-  
+
   //menu element for mobile menu on Show Page
   $show = menu_get_object();
   if (isset($show->type) && $show->type == 'tv_show') {
@@ -789,7 +789,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
             : 'show-undefined',
       );
     }
-    
+
     return drupal_json_output(array(
       'html' => theme('usanetwork_menu_smnav_now_next', $theme_variables),
     ));
@@ -999,6 +999,9 @@ function _usanetwork_menu_consumptionator_block() {
       }
       elseif ($entity->type == 'tv_episode') {
         return _usanetwork_menu_consumptionator_episode_guide($entity);
+      }
+      elseif ($entity->type == 'usanetwork_microsite') {
+        return _usanetwork_menu_consumptionator_usanetwork_microsite($entity);
       }
     }
   }
@@ -1267,6 +1270,40 @@ function _usanetwork_menu_consumptionator_block_video($file) {
   }
   return '';
 }
+
+function _usanetwork_menu_consumptionator_usanetwork_microsite($node) {
+  if (!empty($node)) {
+    $menu_type = usanetwork_microsite_process_setting_data('consumptionator_menu');
+    if ($menu_type == 'catchall_page') {
+      $entity_wrapper = entity_metadata_wrapper('node', $node);
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'home');
+      $image = $section_wrapper->field_usa_og_image->value();
+      $sharebar = '
+                  <h3 class="field-label">Share</h3>
+                  <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-above">
+                    <div id="menu-gigya-share"></div>
+                  </div>
+      ';
+      $seo_h1 =  _usanetwork_microsite_get_default_h1($node, 'home');
+      $description = $section_wrapper->field_usa_og_description->value();
+      $theme_variables = array(
+        'main_url' => url('<front>'),
+        'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+        'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+        'catchall_name' => $node->title,
+        'h1' => !empty($seo_h1) ? $seo_h1 : '',
+        'details' => array(
+          'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
+          'description' => !empty($description) ? $description : '',
+          'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+        ),
+      );
+      return theme('usanetwork_menu_consumptionator_catchall', $theme_variables);
+    }
+    return '';
+  }
+}
+
 /**
  * Renders Consumtionator Menu block for static pages
  */

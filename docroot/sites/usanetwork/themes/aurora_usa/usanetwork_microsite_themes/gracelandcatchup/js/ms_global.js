@@ -258,14 +258,14 @@
           break;
         case 'timeline':
           contentType = 'Gallery';
-          altContentType = 'Timeline Slideshow';
+          altContentType = 'Timeline';
           if (!contentName) contentName = $('#microsite #timeline #timeline-title').text();
           var $item = $('#microsite #timeline .timeline-items .timeline-item.active'),
               itemSeason = $item.attr('data-season-num'),
               itemEpisode = $item.attr('data-episode-num'),
               itemEpisodeName = $item.attr('data-episode-name'),
               itemScene = $item.attr('data-description');
-          specificContentName = 'Season ' + itemSeason + ' Episode ' + itemEpisode + ' | ' + itemEpisodeName + ' | ' + itemScene;
+          specificContentName = 'S' + itemSeason + ' E' + itemEpisode + ' ' + itemScene;
           break;
         case 'quizzes':
           contentType = 'Quiz';
@@ -303,7 +303,7 @@
       // show_name : microsite_name : content_type : content_name : specific_content_name
       // If show_name == microsite_name, show only microsite_name
       // Example 1: Dig : Gallery : Ancient Relics : Photo 1
-      // Example 2: Graceland : Graceland Catchup : Timeline Slideshow : Graceland Timeline : Season 1 Episode 2 Scene 3
+      // Example 2: Graceland : Graceland Catchup : Timeline : Graceland Timeline : S1 E2 Scene 3
       var joinStr = ' : ',
           omnitureArray = [],
           showName = s.prop10;

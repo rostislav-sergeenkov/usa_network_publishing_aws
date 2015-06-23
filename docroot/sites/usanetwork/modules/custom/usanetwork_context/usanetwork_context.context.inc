@@ -447,9 +447,16 @@ function usanetwork_context_context_default_contexts() {
         'media_gallery' => 'media_gallery',
         'person' => 'person',
         'tv_episode' => 'tv_episode',
+        'usanetwork_microsite' => 'usanetwork_microsite',
       ),
       'options' => array(
         'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/microsite' => 'node/*/microsite',
+        'node/*/microsite/*' => 'node/*/microsite/*',
       ),
     ),
   );

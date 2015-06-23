@@ -364,32 +364,21 @@
       }
 
       //redesign
+      // Click main menu links
+      $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
+      '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
+      '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function () {
+        $(this).on('click', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            Drupal.behaviors.omniture_tracking.mainMenuTabs($(this));
+          }
+        });
+      });
+
       if(!$('body').hasClass('page-node-microsite')) {
 
-        // Click promo item
-        $('.usa-wrap .node-usanetwork-promo a,' +
-        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            e.preventDefault();
-            var self = $(this);
-            Drupal.behaviors.omniture_tracking.globalPromoClick(self);
-          });
-        });
-
-
-        // Click main menu links
-        $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
-        '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
-        '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
-              Drupal.behaviors.omniture_tracking.mainMenuTabs($(this));
-            }
-          });
-        });
-
-        // Click on submenu item
+         // Click on submenu item
         $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
         '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
         '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
@@ -412,6 +401,17 @@
             }
           });
         });
+
+       // Click promo item
+        $('.usa-wrap .node-usanetwork-promo a,' +
+        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            e.preventDefault();
+            var self = $(this);
+            Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+          });
+        });
+
 
         // Click on submenu schedule items
         $('header .schedule-tab a').once('omniture-tracking', function () {

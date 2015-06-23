@@ -388,6 +388,14 @@ function usanetwork_menu_theme() {
       ),
       'template' => 'templates/usanetwork-menu-static-page-header',
     ),
+    'usanetwork_menu_consumptionator_microsite_catchall' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'catchall_name' => NULL,
+      ),
+      'template' => 'templates/usanetwork-menu-microsite-consumptionator_catchall',
+    ),
   );
 }
 
@@ -1298,7 +1306,7 @@ function _usanetwork_menu_consumptionator_usanetwork_microsite($node) {
           'sharebar' => !empty($sharebar) ? render($sharebar) : '',
         ),
       );
-      return theme('usanetwork_menu_consumptionator_catchall', $theme_variables);
+      return theme('usanetwork_menu_consumptionator_microsite_catchall', $theme_variables);
     }
     return '';
   }

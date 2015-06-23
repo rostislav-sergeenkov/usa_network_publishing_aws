@@ -19,19 +19,19 @@
     <div class="episode-landing-info-block">
       <div class="open-description"></div>
       <div class="title"><?php print $title; ?></div>
+      <?php if (!empty($post_date)): ?>
+        <div class="posted-date">
+          <?php print t('Posted on') . ' ' . $post_date; ?>
+        </div>
+      <?php endif; ?>
       <div class="image-block">
         <div class="asset-img">
           <img src="<?php print $desktop_image_url; ?>" alt=""/>
         </div>
       </div>
-      <?php if (!empty($post_date)): ?>
-        <div class="airing-date">
-          <?php print t('Posted on') . ' ' . $post_date; ?>
-        </div>
-      <?php endif; ?>
       <?php if (!empty($tags)): ?>
         <div class="tags">
-          <?php print t('Tags:') . ' ' . $tags; ?>
+          <?php print '<span>'.t('Tags:') . '</span> ' . $tags; ?>
         </div>
       <?php endif; ?>
       <div class="description"><?php print $description; ?></div>

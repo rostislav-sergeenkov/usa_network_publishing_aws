@@ -48,6 +48,9 @@ function usanetwork_wysiwyg_wysiwyg_default_profiles() {
         'person_quotation' => array(
           'person_quotation' => 1,
         ),
+        'lines_quotation' => array(
+          'lines_quotation' => 1,
+        ),
         'drupal' => array(
           'media' => 1,
           'usa_inline_gallery' => 1,
@@ -111,6 +114,9 @@ function usanetwork_wysiwyg_wysiwyg_default_profiles() {
         ),
         'person_quotation' => array(
           'person_quotation' => 1,
+        ),
+        'lines_quotation' => array(
+          'lines_quotation' => 1,
         ),
         'drupal' => array(
           'media' => 1,

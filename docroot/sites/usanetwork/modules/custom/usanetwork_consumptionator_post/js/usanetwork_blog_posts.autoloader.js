@@ -2,20 +2,15 @@
 
   var counter = 0;
 
-  Drupal.behaviors.usanetwork_episodes_autoloader = {
+  Drupal.behaviors.usanetwork_blog_posts_autoloader = {
     loadPageItems: function(eventClick) {
       var showNid = $('.landing-list-items-all').data('show-nid'),
-          click = eventClick || '';
+          click = eventClick || '',
+          offset = $('.ajax-load-block > .landing-list-items-one-item').length;
 
       if (showNid > 0) {
-        Drupal.settings.lastSeasonNumber = $('.landing-list-items-all .landing-list-items-one-item').last().data('season-number');
 
-        if (Drupal.settings.lastSeasonNumber > 1) {
-          Drupal.settings.newSeasonNumber = Drupal.settings.lastSeasonNumber - 1;
-        }
-
-        var serviceUrl = '/ajax/usanetwork-tv-show-episodes/get-related/' + showNid + '/' + Drupal.settings.newSeasonNumber;
-
+        var serviceUrl = '/ajax/usanetwork-blog-posts/get-related/' + showNid + '/' + offset;
         $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
         $.ajax({
           type: 'GET',
@@ -39,8 +34,8 @@
               window.picturefill();
             }
 
-            $('#block-usanetwork-episodes-usa-landing-tvep-list-block .open-description').unbind('click');
-            $('#block-usanetwork-episodes-usa-landing-tvep-list-block .open-description').each( function(){
+            $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .open-description').unbind('click');
+            $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .open-description').each( function(){
               $(this).click(function(){
                 var current_item = $(this).closest('.episode-landing-list-item');
                 if(current_item.hasClass('active')){
@@ -51,10 +46,10 @@
               });
             });
 
-            if (Drupal.settings.newSeasonNumber != 1) {
+            if (data.overlimited == false) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
             } else {
-              $('#block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all').css({'margin-bottom' : '0px'});
+              $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all').css({'margin-bottom' : '0px'});
             }
           },
           error: function () {
@@ -64,7 +59,7 @@
       }
     },
     attach: function (context, settings) {
-      $('#block-usanetwork-episodes-usa-landing-tvep-list-block .open-description').each( function(){
+      $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .open-description').each( function(){
         $(this).click(function(){
           var current_item = $(this).closest('.episode-landing-list-item');
           if(current_item.hasClass('active')){

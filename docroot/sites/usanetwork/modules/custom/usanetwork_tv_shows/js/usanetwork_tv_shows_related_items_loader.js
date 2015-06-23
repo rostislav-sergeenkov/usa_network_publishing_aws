@@ -133,6 +133,8 @@
         $(this).addClass('disabled');
         if ($(this).hasClass('more-episodes')){
           Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems();
+        } else if($('.ajax-load-block .load-more-link a').hasClass('more-posts')) {
+          Drupal.behaviors.usanetwork_blog_posts_autoloader.loadPageItems();
         } else {
           Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems(click);
         }
@@ -151,7 +153,10 @@
           $('.ajax-load-block .load-more-link a').addClass('disabled');
           if ($('.ajax-load-block .load-more-link a').hasClass('more-episodes')){
             Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems();
-          } else {
+          } else if($('.ajax-load-block .load-more-link a').hasClass('more-posts')) {
+            Drupal.behaviors.usanetwork_blog_posts_autoloader.loadPageItems();
+          }
+          else {
             Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems();
           }
         }

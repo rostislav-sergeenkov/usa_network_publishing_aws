@@ -9,26 +9,73 @@
     width: 74.7%;
     background: #ffffff;
     color: #000000;
-    padding: 45px 0;
+    padding: 0;
     padding-bottom: 10000px;
     margin-bottom: -10000px;
     overflow: hidden;
     @include breakpoint($bp-1280-width) {
       float: none;
-      padding: 25px 0 38px 0;
+      padding: 0;
       margin-bottom: 0;
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
-      padding: 24px 0;
       border-bottom: 2px solid;
     }
-    @include breakpoint($bp-768-width) {
-      padding: 38px 0 38px 0;
-    }
     @include breakpoint ($bp-640-width) {
-      padding: 56.25vw 0 0;
       border-bottom: 8px solid;
+    }
+    .usanetwork-quiz {
+      .entry-button {
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(22px, 640);
+          margin: get-vw(50px, 640) auto;
+        }
+        @include breakpoint ($bp-480-width) {
+          font-size: 16.5px;
+          margin: 37.6px auto;
+        }
+      }
+      .repeat-button {
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(22px, 640);
+        }
+        @include breakpoint ($bp-480-width) {
+          font-size: 16.5px;
+        }
+      }
+    }
+    .usanetwork-quiz-questions {
+      &.questions {
+        .page-note {
+          @include breakpoint ($bp-640-width) {
+            font-size: get-vw(16px, 640);
+          }
+        }
+      }
+    }
+    .usanetwork-quiz-question {
+      .question-title {
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(26px, 640);
+        }
+      }
+    }
+    .usanetwork-quiz-answer {
+      width: 49%;
+      &:nth-child(2n + 1) {
+        clear: left;
+      }
+      &:nth-child(2n) {
+        clear: right;
+        float: right;
+        @include clear();
+      }
+      .answer-title {
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(18px, 640);
+        }
+      }
     }
   }
 }

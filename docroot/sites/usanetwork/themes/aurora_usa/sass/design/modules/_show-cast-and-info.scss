@@ -75,6 +75,50 @@
       p {
         margin: 0.5em 0;
       }
+      .person-quotation {
+        font-size: 53px;
+        padding: 72px 94px 80px 120px;
+        margin: 54px 0 60px;
+        border: 1px solid $schedule-caption-color;
+        line-height: 1em;
+        @include breakpoint($bp-1280-width) {
+          padding: 47px 51px 52px 72px;
+          margin: 34px 0 35px;
+          font-size: 32px;
+        }
+        @include breakpoint($bp-1024-width) {
+          padding: 38px 31px 37px 56px;
+          margin: 30px 0 40px;
+          font-size: 24.75px;
+          line-height: 1.2em;
+        }
+        @include breakpoint($bp-768-width) {
+          padding: 23px 45px 26px 46px;
+          font-size: 17px;
+          margin: 20px 0 17px;
+        }
+        @include breakpoint($bp-640-width) {
+          padding: 20px 40px 22px 40px;
+          font-size: 13px;
+          margin: 19px 0 22px;
+        }
+        &:before, &:after {
+          background-color: $poll-back;
+          font-size: 69px;
+          @include breakpoint($bp-1280-width) {
+            font-size: 44px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: 39px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: 29px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 21px;
+          }
+        }
+      }
     }
     .advert {
       display: block;

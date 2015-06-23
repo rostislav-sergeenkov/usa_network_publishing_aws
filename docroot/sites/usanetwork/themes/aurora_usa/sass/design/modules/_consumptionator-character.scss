@@ -141,7 +141,7 @@
           width: 42.62%;
         }
         @include breakpoint($bp-768-width) {
-          width: 38%;
+          width: 300px;
         }
         @include breakpoint($bp-640-width) {
           height: 56.25vw;
@@ -156,7 +156,7 @@
       }
       .advert {
         display: none;
-        @include breakpoint($between-769-1280) {
+        @include breakpoint($between-641-1280) {
           display: block;
         }
         @include breakpoint($bp-1280-width) {
@@ -168,6 +168,9 @@
         }
         @include breakpoint($bp-1024-width) {
           width: 42.62%;
+        }
+        @include breakpoint($bp-768-width) {
+          width: 300px;
         }
         .advertisement {
           height: 250px;
@@ -183,7 +186,7 @@
           width: 56%;
         }
         @include breakpoint($bp-768-width) {
-          width: 57%;
+          width: calc(100% - 310px);
         }
         @include breakpoint($bp-640-width) {
           padding: 10px 22px;
@@ -241,6 +244,46 @@
             width: 100%;
             font-size: 18px;
             color: $poll-color;
+          }
+          .person-quotation {
+            font-size: 32px;
+            padding: 32px 39px 42px 53px;
+            margin: 54px 0 58px;
+            border: 1px solid $poll-back;
+            @include breakpoint($bp-1280-width) {
+              padding: 24px 21px 37px 53px;
+              margin: 26px 0 30px;
+              font-size: 22px;
+            }
+            @include breakpoint($bp-1024-width) {
+              padding: 37px 29px 50px 60px;
+              margin: 32px 0 34px;
+              font-size: 30px;
+            }
+            @include breakpoint($bp-768-width) {
+              padding: 25px 29px 38px 41px;
+              font-size: 20px;
+            }
+            @include breakpoint($bp-640-width) {
+              padding: 20px 40px 22px 40px;
+              margin: 18px 0 25px;
+            }
+            &:before, &:after {
+              background-color: #ffffff;
+              font-size: 50px;
+              @include breakpoint($bp-1280-width) {
+                font-size: 37px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 45px;
+              }
+              @include breakpoint($bp-768-width) {
+                font-size: 36px;
+              }
+              @include breakpoint($bp-640-width) {
+                font-size: 24px;
+              }
+            }
           }
         }
         .description-item {

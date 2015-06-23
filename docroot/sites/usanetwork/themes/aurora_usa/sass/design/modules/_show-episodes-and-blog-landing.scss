@@ -1,4 +1,4 @@
-#block-usanetwork-episodes-usa-landing-tvep-list-block {
+#block-usanetwork-episodes-usa-landing-tvep-list-block, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
   @include clear();
   color: $poll-color;
   position: relative;
@@ -43,7 +43,7 @@
             top: 5px;
           }
         }
-        .image-block, .airing-date, .expiration-date, .description {
+        .image-block, .airing-date, .expiration-date, .description, .tags {
           @include breakpoint($bp-640-width) {
             display: block;
           }
@@ -151,12 +151,24 @@
         }
       }
       .airing-date,
-      .expiration-date {
+      .expiration-date,
+      .posted-date {
         font-family: $tex-gyreschola-italic;
         text-transform: uppercase;
         font-size: 18px;
         @include breakpoint($bp-1280-width) {
           font-size: 12px;
+        }
+      }
+      .tags {
+        font-family: $avalon-book;
+        text-transform: uppercase;
+        font-size: 18px;
+        @include breakpoint($bp-1280-width) {
+          font-size: 12px;
+        }
+        span {
+          font-family: $avalon-medium;
         }
       }
       .description {
@@ -179,7 +191,7 @@
           }
         }
       }
-      .image-block, .airing-date, .expiration-date, .description {
+      .image-block, .airing-date, .expiration-date, .description, .tags {
         @include breakpoint($bp-640-width) {
           display: none;
         }
@@ -377,7 +389,7 @@
       }
     }
   }
-  .episode-landing-list-items-seasons {
+  .landing-list-items-all {
     @include clear();
     margin-bottom: 100px;
     position: relative;
@@ -534,6 +546,46 @@
     }
   }
 }
-
+#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
+  .episode-landing-list-item {
+    &.active {
+      .episode-landing-info-block {
+        .title {
+          @include breakpoint($bp-640-width) {
+            margin-bottom: 0px;
+          }
+        }
+      }
+      .posted-date {
+        @include breakpoint($bp-640-width) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .buttons-bar {
+      .buttons {
+        > div {
+          &:after {
+            content: "\e608";
+            color: #ffffff;
+            font-family: "ico-font";
+            font-size: 11px;
+            display: block;
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            margin-top: -5px;
+            line-height: 1;
+            z-index: 3;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 14px;
+              margin-top: -7px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 

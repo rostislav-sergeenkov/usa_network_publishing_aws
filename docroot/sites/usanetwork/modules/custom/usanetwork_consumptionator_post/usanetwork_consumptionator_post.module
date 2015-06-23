@@ -423,7 +423,6 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid) {
     $query->condition('show_field.field_show_target_id', $show_nid);
     $query->groupBy('cp.nid');
     $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');
-    $sql = dpq($query, TRUE);
     $result = $query->execute()->fetchAll();
 
     if ($result) {

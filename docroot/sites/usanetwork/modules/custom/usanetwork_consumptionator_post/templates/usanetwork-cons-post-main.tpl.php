@@ -22,7 +22,7 @@
             <?php print $title; ?>
           </div>
           <div class="additional">
-            <?php print '<span class="episode">' . t('Posted on ') . $creating_date . t(' * Tags: ') . $tags;?>
+            <?php print '<span class="episode">' . t('Posted on ') . $creating_date .'</span><span class="tags-title">'. t(' Tags: ') . '</span><span class="tags">' . $tags . '</span>';?>
           </div>
         </div>
         <div class="share">

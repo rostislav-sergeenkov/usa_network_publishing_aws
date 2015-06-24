@@ -155,6 +155,21 @@
                 content: '';
               }
             }
+            .tags-title {
+              font-family: $avalon-medium;
+              margin-left: 1em;
+              position: relative;
+              &:after {
+                left: -0.5em;
+                content: '.';
+                line-height: 1;
+                position: absolute;
+                top: -5px;
+                @include breakpoint($bp-1280-width) {
+                  top: -2px;
+                }
+              }
+            }
             .aired {
               text-transform: none;
             }

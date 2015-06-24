@@ -150,11 +150,30 @@
 
           Drupal.behaviors.mpsAdvert.consumptionatorChangeAd(mainBlock, infoBlock);
         }
+
         // init mps block for node-type-tv-episode
         if(body.hasClass('node-type-tv-episode')) {
 
           mainBlock = $('.consumptionator-episode-main-block');
           infoBlock = $('.episode-info-main-block');
+
+          Drupal.behaviors.mpsAdvert.consumptionatorChangeAd(mainBlock, infoBlock);
+        }
+
+        // init mps block for node-type-quiz
+        if(body.hasClass('node-type-quiz')) {
+
+          mainBlock = $('#block-usanetwork-quiz-usanetwork-quiz-main');
+          infoBlock = $('.consumptionator-quiz-main-block article.node-quiz');
+
+          Drupal.behaviors.mpsAdvert.consumptionatorChangeAd(mainBlock, infoBlock);
+        }
+
+        // init mps block for node-type-consumpt-post
+        if(body.hasClass('node-type-consumpt-post')) {
+
+          mainBlock = $('.consumptionator-post-main-block');
+          infoBlock = $('.post-info-main-block');
 
           Drupal.behaviors.mpsAdvert.consumptionatorChangeAd(mainBlock, infoBlock);
         }

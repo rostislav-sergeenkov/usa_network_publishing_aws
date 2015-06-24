@@ -622,7 +622,7 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
     $menu_object = menu_get_object();
     $vars['content']['ads'] = '';
     $vars['content']['ads']['#prefix'] = (!empty($menu_object->type) && $menu_object->type == 'quiz')
-      ? '<div class="ad-container"><div class="topbox">'
+      ? '<div class="ad-container advert"><div class="topbox">'
       : '<div class="ad-container"><div id="topbox">';
     $vars['content']['ads']['#suffix'] = '</div></div>';
   }

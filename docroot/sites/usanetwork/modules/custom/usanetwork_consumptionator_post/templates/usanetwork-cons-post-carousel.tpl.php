@@ -5,8 +5,8 @@
     <div class="topbox"></div>
   </div>
 </div>
-<div class="items-block quizes-block">
-  <div class="items-block-title quizes-block-title">
+<div class="items-block posts-block">
+  <div class="items-block-title posts-block-title">
     <h2><?php print $block_title;?></h2>
   </div>
   <?php if (!empty($posts['vertical'])): ?>
@@ -32,7 +32,7 @@
     </div>
   <?php endif; ?>
 </div>
-<div class="more-items more-quizes show-color">
+<div class="more-items more-posts show-color">
   <?php if (!empty($posts_landing_link)): ?>
     <?php print $posts_landing_link; ?>
   <?php endif; ?>

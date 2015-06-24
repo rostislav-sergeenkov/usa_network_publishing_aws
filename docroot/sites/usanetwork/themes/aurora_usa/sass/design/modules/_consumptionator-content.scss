@@ -717,7 +717,7 @@
   }
 }
 
-.consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block {
+.consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
   .consum-sidebar {
     @include breakpoint($bp-1280-width) {
       float: none;

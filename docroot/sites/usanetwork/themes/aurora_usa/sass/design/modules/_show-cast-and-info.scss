@@ -66,10 +66,8 @@
         font-size: 14px;
         width: calc(100% - 340px);
       }
-      @include breakpoint($bp-768-width) {
-        width: 100%;
-      }
       @include breakpoint($bp-640-width) {
+        width: 100%;
         font-size: 12px;
       }
       p {
@@ -125,7 +123,7 @@
       float: right;
       height: 250px;
       width: 300px;
-      @include breakpoint($bp-768-width) {
+      @include breakpoint($bp-640-width) {
         display: none;
       }
     }
@@ -138,6 +136,9 @@
       right: 24px;
       width: 30%;
       @include breakpoint($bp-768-width) {
+        width: 41%;
+      }
+      @include breakpoint($bp-640-width) {
         display: none;
       }
     }

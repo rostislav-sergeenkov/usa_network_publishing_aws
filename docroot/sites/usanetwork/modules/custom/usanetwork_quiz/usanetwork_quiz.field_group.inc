@@ -61,7 +61,8 @@ function usanetwork_quiz_field_group_info() {
       3 => 'field_show',
       4 => 'field_usa_tv_show_color',
       5 => 'field_usa_tv_show_hover_color',
-      6 => 'title',
+      6 => 'field_explore_tag',
+      7 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

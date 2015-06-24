@@ -1,0 +1,58 @@
+/* gigya */
+.node-type-timeline-gallery .field-type-gigya-sharebar {
+  width: 150px;
+  float: right;
+  height: 29px;
+  margin: 5px 0 0;
+}
+.node-type-timeline-gallery #video-gigya-share,
+.node-type-timeline-gallery #gigya-share {
+  width: 196px;
+  float: left;
+  margin-left: 0;
+  clear: none;
+}
+.node-type-timeline-gallery div.gig-button-container {
+  padding: 0;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 3px 0;
+}
+.node-type-timeline-gallery .gig-bar-container .gig-button-container td > div,
+.node-type-timeline-gallery .gig-bar-container .gig-button-container td > div:hover,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container td > div,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container td > div:hover {
+  background-image: none !important;
+  display: block;
+  font-family: "ico-font";
+  font-size: 24px;
+  width: 24px !important;
+  height: 24px !important;
+  background-image: url("../images/social_chatter_icons.png");
+  background-repeat: none;
+}
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-facebook td > div:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+  content: "\e602";
+  color: #afafaf;
+}
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-twitter td > div:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+  content: "\e603";
+  color: #afafaf;
+}
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-tumblr td > div:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+  content: "\e604";
+  color: #afafaf;
+}
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-pinterest td > div:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+  content: "\e605";
+  color: #afafaf;
+}
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-share td > div:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+  content: "\e606";
+  color: #afafaf;
+}

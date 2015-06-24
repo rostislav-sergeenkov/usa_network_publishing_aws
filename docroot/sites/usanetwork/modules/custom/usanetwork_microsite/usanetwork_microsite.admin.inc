@@ -84,13 +84,10 @@ function usanetwork_microsite_ms_section_add_more_ajax($form, $form_state) {
   $show_id = usanetwork_microsite_get_show_id_by_form_state($form_values);
   usanetwork_microsite_set_video_filters_options($show_id, $field_items, $langcode);
   foreach ($field_items as &$field) {
-    $section_type = usanetwork_microsite_get_section_type_by_section_field($field, $langcode);
-    if (!empty($section_type) && $section_type == 'videos') {
-      $field_options = usanetwork_microsite_get_multiple_elements_from_field($field['field_ms_video_filters'][$langcode]);
-      foreach ($field_options as $key => $field_option) {
-        if (!isset($field['field_ms_video_filters'][$langcode]['#options'][$field_option['#return_value']])) {
-          unset($field['field_ms_video_filters'][$langcode][$field_option['#return_value']]);
-        }
+    $field_options = usanetwork_microsite_get_multiple_elements_from_field($field['field_ms_video_filters'][$langcode]);
+    foreach ($field_options as $key => $field_option) {
+      if (!isset($field['field_ms_video_filters'][$langcode]['#options'][$field_option['#return_value']])) {
+        unset($field['field_ms_video_filters'][$langcode][$field_option['#return_value']]);
       }
     }
   }

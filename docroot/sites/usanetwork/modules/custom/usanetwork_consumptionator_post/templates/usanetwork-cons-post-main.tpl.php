@@ -13,12 +13,12 @@
  * $gallery_rec - rendered gallery recap block
  */
 ?>
-<div class="consumptionator-episode-main-block">
-  <div class="episode-info-main-block">
-    <div class="episode-info-block show-border">
-      <div class="episode-info-header">
-        <div class="episode-title-block">
-          <div class="episode-title">
+<div class="consumptionator-post-main-block">
+  <div class="post-info-main-block">
+    <div class="post-info-block show-border">
+      <div class="post-info-header">
+        <div class="post-title-block">
+          <div class="post-title">
             <?php print $title; ?>
           </div>
           <div class="additional">
@@ -34,7 +34,7 @@
           <div class="topbox"></div>
         </div>
       </div>
-      <div class="episode-info-description">
+      <div class="post-info-description">
         <?php if (!empty($body)): ?>
           <?php print $body; ?>
         <?php endif; ?>
@@ -42,7 +42,6 @@
           <?php print t('Source: ') .  $source; ?>
         <?php endif; ?>
       </div>
-
     </div>
     <?php if (!empty($gallery_rec)): ?>
       <div class="gallery-recap-block show-border">

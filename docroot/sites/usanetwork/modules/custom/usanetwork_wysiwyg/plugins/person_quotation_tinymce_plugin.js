@@ -9,13 +9,8 @@
 
 
       editor.addCommand('mcePersonQuotation', function() {
-        editor.focus();
-
-        var text = editor.selection.getContent({'format': 'html'});
-
-        if (text && text.length > 0) {
-          editor.execCommand('mceInsertContent', false, '<span class="person-quotation">' + text + '</span>');
-        }
+        tinymce.activeEditor.formatter.register( 'person_quotation', {inline : 'span', 'classes' : 'person-quotation'} );
+        tinymce.activeEditor.formatter.toggle('person_quotation');
       });
 
       editor.addButton('person_quotation', {

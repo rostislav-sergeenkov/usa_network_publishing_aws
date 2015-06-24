@@ -491,6 +491,9 @@ function usanetwork_menu_gigya_sharebar_alter(&$share_settings, $context) {
   if ($context['entity_type'] == 'node') {
     $node = $context['entity'];
     $node_wrapper = entity_metadata_wrapper('node', $node);
+    if ($node->type == 'catchall_page') {
+      $share_settings['gigyaSharebar']['ua']['description'] = !empty($node->field_usa_og_description) ? $node_wrapper->field_usa_og_description->value() : '';
+    }
     if (!empty($node->field_share_title)) {
       $share_settings['gigyaSharebar']['ua']['title'] = $node_wrapper->field_share_title->value();
     }

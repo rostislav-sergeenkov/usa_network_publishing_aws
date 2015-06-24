@@ -491,6 +491,9 @@ function usanetwork_menu_gigya_sharebar_alter(&$share_settings, $context) {
   if ($context['entity_type'] == 'node') {
     $node = $context['entity'];
     $node_wrapper = entity_metadata_wrapper('node', $node);
+    if ($node->type == 'catchall_page') {
+      $share_settings['gigyaSharebar']['ua']['description'] = !empty($node->field_usa_og_description) ? $node_wrapper->field_usa_og_description->value() : '';
+    }
     if (!empty($node->field_share_title)) {
       $share_settings['gigyaSharebar']['ua']['title'] = $node_wrapper->field_share_title->value();
     }
@@ -1050,8 +1053,8 @@ function _usanetwork_menu_consumptionator_block() {
       elseif ($entity->type == 'quiz') {
         return _usanetwork_menu_consumptionator_block_quiz($entity);
       }
-      elseif ($entity->type == 'post') {
-        return _usanetwork_menu_consumptionator_block_post($entity);
+      elseif ($entity->type == 'consumpt_post') {
+        return _usanetwork_menu_consumptionator_block_consumpt_post($entity);
       }
     }
   }
@@ -1314,7 +1317,7 @@ function _usanetwork_menu_consumptionator_block_quiz($node) {
 /**
  * Renders Consumtionator Menu block for person.
  */
-function _usanetwork_menu_consumptionator_block_post($node) {
+function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
 
   if (!empty($node)) {
 

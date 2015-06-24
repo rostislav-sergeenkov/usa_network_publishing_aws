@@ -1,12 +1,12 @@
 .consumptionator-page, .node-type-tv-episode {
 
 }
-.consumptionator-episode-main-block {
+.consumptionator-episode-main-block, .consumptionator-post-main-block {
   @include clear();
   overflow: hidden;
   position: relative;
   width: 100%;
-  .episode-info-main-block {
+  .episode-info-main-block, .post-info-main-block {
     float: left;
     position: relative;
     width: 74.7%;
@@ -84,7 +84,7 @@
         }
       }
     }
-    .episode-info-block {
+    .episode-info-block, .post-info-block {
       padding: 45px 93px 45px 70px;
       @include breakpoint($bp-1280-width) {
         padding: 38px 58px 38px 45px;
@@ -99,7 +99,7 @@
         padding: 30px 6%;
       }
       @include clear();
-      .episode-info-header {
+      .episode-info-header, .post-info-header {
         @include clear();
         position: relative;
         margin-bottom: 10px;
@@ -109,7 +109,7 @@
         @include breakpoint($bp-1024-width) {
           margin-bottom: 17px;
         }
-        .episode-title-block {
+        .episode-title-block, .post-title-block {
           float: left;
           width: 70%;
           @include breakpoint($bp-768-width) {
@@ -119,7 +119,7 @@
             float: none;
             width: 100%;
           }
-          .episode-title {
+          .episode-title, .post-title {
             font-family: $avalon-medium;
             font-size: 54px;
             line-height: 1.3;
@@ -153,6 +153,21 @@
               font-family: $tex-gyreschola-italic;
               &:after {
                 content: '';
+              }
+            }
+            .tags-title {
+              font-family: $avalon-medium;
+              margin-left: 1em;
+              position: relative;
+              &:after {
+                left: -0.5em;
+                content: '.';
+                line-height: 1;
+                position: absolute;
+                top: -5px;
+                @include breakpoint($bp-1280-width) {
+                  top: -2px;
+                }
               }
             }
             .aired {
@@ -257,7 +272,7 @@
           }
         }
       }
-      .episode-info-image {
+      .episode-info-image, .post-info-image {
         float: right;
         width: 61.1%;
         padding: 12px 0 20px 0;
@@ -277,7 +292,7 @@
           left: 0;
         }
       }
-      .episode-info-description {
+      .episode-info-description, .post-info-description {
         font-family: $avalon-book;
         font-size: 26px;
         line-height: 1.6em;

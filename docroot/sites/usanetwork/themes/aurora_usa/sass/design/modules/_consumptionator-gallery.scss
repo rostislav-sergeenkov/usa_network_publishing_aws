@@ -1,4 +1,4 @@
-.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode {
+.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post {
   .gallery-block {
     @include clear;
     margin: 0;
@@ -512,7 +512,7 @@
     }
   }
 }
-.node-type-tv-episode {
+.node-type-tv-episode, .node-type-consumpt-post {
   .gallery-wrapper {
     float: none;
     margin: 0;

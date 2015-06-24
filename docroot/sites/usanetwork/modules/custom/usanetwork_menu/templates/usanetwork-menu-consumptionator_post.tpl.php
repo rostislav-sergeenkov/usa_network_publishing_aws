@@ -21,7 +21,7 @@
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>
-          <span><?php print t('Post');?>: <?php print $post_name; ?></span>
+          <span><?php print t('Blog Post');?>: <?php print $post_name; ?></span>
         </a>
       </h2>
     </div>
@@ -37,7 +37,7 @@
           </div>
         <?php endif; ?>
         <div class="title-overlay meta">
-          <?php if (!empty($quiz_name)): ?>
+          <?php if (!empty($post_name)): ?>
             <div class="title">
              <h1><?php print !empty($h1) ? $h1 : $post_name; ?></h1>
             </div>

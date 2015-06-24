@@ -29,6 +29,11 @@
           <?php print $sharebar; ?>
         </div>
       </div>
+      <div class="post-info-image">
+        <?php if (!empty($image_desktop)): ?>
+          <div class="asset-img"><img src="<?php print $image_desktop; ?>" alt="" title="<?php print $title; ?>" /></div>
+        <?php endif; ?>
+      </div>
       <div class="node-wrapper advert">
         <div class="advertisement">
           <div class="topbox"></div>
@@ -47,6 +52,12 @@
       <div class="gallery-recap-block show-border">
         <?php print $gallery_rec; ?>
       </div>
+    <?php endif; ?>
+    <?php if (!empty($navigation_links['previous'])): ?>
+      <?php print $navigation_links['previous']; ?>
+    <?php endif; ?>
+    <?php if (!empty($navigation_links['next'])): ?>
+      <?php print $navigation_links['next']; ?>
     <?php endif; ?>
   </div>
   <div class="consum-sidebar">

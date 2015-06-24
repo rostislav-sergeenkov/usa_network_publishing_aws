@@ -244,11 +244,15 @@ function _usanetwork_consumptionator_post_main_block() {
     }
     $creating_date = !empty($node->field_promo_created_ovts) ? $node_wrapper->field_promo_created_ovts->value() : $node->created;
     $navigation_links = _usanetwork_consumptionator_post_get_post_nav_links($node);
+    if (!empty($node->field_tv_cover_media)) {
+      $image = $node_wrapper->field_tv_cover_media->value();
+    }
     $theme_variables = array(
       'title' => !empty($node->title) ? $node->title : '',
       'sharebar' => !empty($sharebar) ? render($sharebar) : '',
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
       'creating_date' => date('n/j/y', $creating_date),
+      'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'tags' => !empty($tags_names) ? $tags_names : '',
       'body' => !empty($node->body) ? $node_wrapper->body->value->value() : '',
       'rendered_carousel' => !empty($node->field_show)
@@ -527,7 +531,8 @@ function _usanetwork_consumptionator_post_get_post_nav_links($post_node) {
     $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
     $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
     $query->condition('field_show.field_show_target_id', $show_id);
-    $query->condition('sorted_time', $post_creating_date, '>');
+    $query->condition('node.type', 'consumpt_post');
+    $query->havingCondition('sorted_time', $post_creating_date, '<');
     $query->range(0, 1);
     $result = $query->execute()->fetchAssoc();
     if (!empty($result)) {
@@ -539,7 +544,8 @@ function _usanetwork_consumptionator_post_get_post_nav_links($post_node) {
     $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
     $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
     $query->condition('field_show.field_show_target_id', $show_id);
-    $query->condition('sorted_time', $post_creating_date, '<');
+    $query->havingCondition('sorted_time', $post_creating_date, '>');
+    $query->condition('node.type', 'consumpt_post');
     $query->range(0, 1);
     $result = $query->execute()->fetchAssoc();
     if (!empty($result)) {

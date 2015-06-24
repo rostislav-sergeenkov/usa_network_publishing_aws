@@ -3686,13 +3686,15 @@ ul.menu li {
 }
 .person-quotation:before {
   content: '\e61f';
-  top: -18px;
-  left: -13px;
+  top: -8px;
+  left: -1px;
+  padding: 0 10px 10px 0;
 }
 .person-quotation:after {
   content: '\e620';
-  bottom: -15px;
-  right: -10px;
+  bottom: -5px;
+  right: -1px;
+  padding: 10px 0 0 10px;
 }
 
 .lines-quotation {
@@ -14628,6 +14630,8 @@ footer h2 {
   padding: 32px 39px 42px 53px;
   margin: 54px 0 58px;
   border: 1px solid #e9eaeb;
+  display: block;
+  clear: both;
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
@@ -15115,6 +15119,8 @@ footer h2 {
   padding: 35px 25px 38px 25px;
   margin: 53px 0 23px;
   border: 1px solid #e9eaeb;
+  display: block;
+  clear: both;
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation {
@@ -15140,6 +15146,7 @@ footer h2 {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation {
     padding: 23px 11px 26px 8px;
     margin: 32px 0 19px;
+    color: black;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation:before, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation:before, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation:before, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation:before, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation:before, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation:before, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation:after, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation:before, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation:after, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation:before, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation:after {
@@ -19895,6 +19902,8 @@ footer h2 {
   margin: 54px 0 60px;
   border: 1px solid #b5b3b4;
   line-height: 1em;
+  display: block;
+  clear: both;
 }
 @media (max-width: 1280px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {

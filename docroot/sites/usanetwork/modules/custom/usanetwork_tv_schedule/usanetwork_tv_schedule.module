@@ -858,6 +858,7 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
 }
 
 function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
+  // @TODO: Need refactoring on next sprint.
   $result = '';
 
   if ($schedule_item->program_type == 'movie') {
@@ -915,6 +916,9 @@ function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
 
     if (!empty($show_name)) {
       $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+      if (empty($show_nid)) {
+        $show_nid = _usanetwork_tv_schedule_find_show_by_title($show_name);
+      }
 
       if (!empty($show_nid)) {
         $show_node = node_load($show_nid);

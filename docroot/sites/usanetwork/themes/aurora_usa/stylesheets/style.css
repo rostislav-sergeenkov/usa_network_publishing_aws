@@ -19757,12 +19757,44 @@ footer h2 {
 
 @media (max-width: 640px) {
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .title {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 @media (max-width: 640px) {
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .posted-date {
     margin-bottom: 20px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar {
+    width: 49.5%;
+    float: right;
+  }
+}
+#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div {
+  width: 36%;
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div {
+    width: 87%;
+  }
+}
+#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
+  padding: 20px 0 20px calc(14% + 2px);
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
+    padding: 10px 0 10px calc(14% + 2px);
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
+    padding: 5px 0 5px calc(14% + 2px);
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
+    padding: 5px 0 5px calc(12% + 2px);
   }
 }
 #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div:after {
@@ -19772,7 +19804,7 @@ footer h2 {
   font-size: 11px;
   display: block;
   position: absolute;
-  right: 14px;
+  right: 13%;
   top: 50%;
   margin-top: -5px;
   line-height: 1;
@@ -19782,6 +19814,11 @@ footer h2 {
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div:after {
     font-size: 14px;
     margin-top: -7px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div:after {
+    right: 11%;
   }
 }
 

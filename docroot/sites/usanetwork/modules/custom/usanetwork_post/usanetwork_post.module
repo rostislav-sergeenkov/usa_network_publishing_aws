@@ -9,22 +9,6 @@ include_once 'usanetwork_post.field.inc';
 
 define('USANETWORK_FIELD_BLOG', 'field_blog');
 
-
-/**
- *  Implements hook_menu().
- */
-function usanetwork_post_menu() {
-  $items = array();
-  $items['ajax/usanetwork-post/get-related/%node/%/%'] = array(
-    'title' => 'Related content',
-    'page callback' => '_usanetwork_post_get_related_content_ajax',
-    'page arguments' => array(3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-  return $items;
-}
-
 /**
  * Implements hook_block_info().
  */
@@ -46,11 +30,6 @@ function usanetwork_post_block_info() {
 
   $blocks['usanetwork_post_latest'] = array(
     'info' => t('Blog Latest Posts'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
-  $blocks['usanetwork_post_related'] = array(
-    'info' => t('Blog Consumptionator: Related Content'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
@@ -79,10 +58,6 @@ function usanetwork_post_block_view($delta = '') {
     case 'usanetwork_post_latest':
       $block['subject'] = t('Latest Posts');
       $block['content'] = _usanetwork_post_get_latest_posts();
-      break;
-    case 'usanetwork_post_related':
-      $block['subject'] = t('Latest Posts');
-      $block['content'] = _usanetwork_post_related_content_block();
       break;
   }
   return $block;
@@ -1013,73 +988,3 @@ function theme_usanetwork_post_author_display($variables) {
   return $output;
 }
 
-/**
- * Renders Block entity of related content items.
- */
-function _usanetwork_post_related_content_block() {
-  if (path_is_admin(current_path())) {
-    return '';
-  }
-
-  $content = menu_get_object('node');
-
-  if (!empty($content)) {
-    $show_field = field_get_items('node', $content, 'field_show');
-
-    if (!empty($show_field)) {
-      $tv_show_node = node_load($show_field[0]['target_id']);
-
-
-      $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($tv_show_node);
-
-      $related_content = _usanetwork_tv_shows_cache_get_limited_related_content(
-        $tv_show_node, $content->type, 0,
-        !empty($you_may_also_like_item)
-          ? USA_QUIZ_RELATED_CONTENT_ITEMS - 1
-          : USA_QUIZ_RELATED_CONTENT_ITEMS
-      );
-
-      if (!empty($you_may_also_like_item)) {
-        $related_content[] = $you_may_also_like_item;
-      }
-
-      if (!empty($related_content)) {
-        drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-        drupal_add_js(array(
-          'usanetwork_tv_show_nid' => $tv_show_node->nid,
-          'usanetwork_tv_show_page_context' => 'usanetwork-post',
-          'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
-        ), 'setting');
-
-        $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
-
-        return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
-          'related_items_block' => $block_of_items,
-          'load_more_link' => TRUE,
-          'show_nid' => $tv_show_node->nid,
-          'items_pre_page_limit' => USA_QUIZ_RELATED_CONTENT_ITEMS,
-        ));
-      }
-    }
-  }
-}
-
-function _usanetwork_post_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
-  $response = array(
-    'found' => FALSE,
-    'total' => 0,
-    'overlimited' => TRUE,
-    'rendered' => '',
-  );
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'post', $start_from, $limit + 1);
-  if (!empty($related_content)) {
-    if (count($related_content) > $limit) {
-      $response['overlimited'] = FALSE;
-      $related_content = array_slice($related_content, 0, $limit);
-    }
-    $response['rendered'] = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
-    $response['total'] = count($related_content);
-    $response['found'] = TRUE;
-  }
-  return drupal_json_output($response);
-}

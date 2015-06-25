@@ -9,13 +9,8 @@
 
 
       editor.addCommand('mceLinesQuotation', function() {
-        editor.focus();
-
-        var text = editor.selection.getContent({'format': 'html'});
-
-        if (text && text.length > 0) {
-          editor.execCommand('mceInsertContent', false, '<span class="lines-quotation show-border">' + text + '</span>');
-        }
+        tinymce.activeEditor.formatter.register( 'lines_quotation', {inline : 'span', 'classes' : 'lines-quotation show-border'} );
+        tinymce.activeEditor.formatter.toggle('lines_quotation');
       });
 
       editor.addButton('lines_quotation', {

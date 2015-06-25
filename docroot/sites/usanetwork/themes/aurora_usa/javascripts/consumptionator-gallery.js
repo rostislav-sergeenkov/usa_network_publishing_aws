@@ -236,7 +236,7 @@
 
   $(document).ready(function () {
     // bxslider-gallery slider initialization
-    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode')) {
+    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post')) {
 
       if ($('#bxslider-gallery').length == 0) {
         return false;

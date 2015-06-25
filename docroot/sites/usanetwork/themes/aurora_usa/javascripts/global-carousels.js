@@ -462,7 +462,7 @@
         Drupal.behaviors.global_carousels.carouselInit();
       });
 
-      $(window).load(function () {
+      //$(window).load(function () {
         Drupal.behaviors.global_carousels.carouselInit();
 
         $(".carousel.start .jcarousel-control-next").unbind('click');
@@ -494,7 +494,7 @@
           }
         });
 
-      });
+      //});
 
     }
   };

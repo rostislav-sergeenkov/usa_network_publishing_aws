@@ -8,16 +8,12 @@ require_once 'usanetwork_core.api.inc';
 function usanetwork_core_js_alter(&$javascript) {
   $javascript['misc/ajax.js']['data'] = drupal_get_path('module', 'usanetwork_core') . '/js/ajax.js';
 }
-
 /**
- * Implements hook_preprocess_html()
- * custom titles for home pages
+ * Implements hook_wysiwyg_editor_settings_alter()
  */
-function usanetwork_core_preprocess_html(&$vars) {
-
-  if (path_is_admin(current_path())) {
-    drupal_add_css(drupal_get_path('module', 'usanetwork_core') . '/css/wysiwyg_admin.css');
-  }
+function usanetwork_core_wysiwyg_editor_settings_alter(&$settings, &$context)
+{
+  $settings['content_css'] .= "," . url(drupal_get_path('module', 'usanetwork_core') . '/css/wysiwyg_admin.css');
 }
 
 /**

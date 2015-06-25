@@ -541,7 +541,7 @@
             Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
           }
           else {
-            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
+            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
           }
         }
 

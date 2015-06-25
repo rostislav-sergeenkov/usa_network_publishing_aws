@@ -358,6 +358,11 @@
             }
           }
         }
+        .lines-quotation {
+          @include breakpoint($bp-768-width) {
+            padding: 22px 15px 36px 15px;
+          }
+        }
       }
       .node-wrapper {
         &.advert {

@@ -203,6 +203,9 @@ header {
                 height: 40px;
                 > a {
                   line-height: 40px;
+                  &.active {
+                    opacity: 0.8;
+                  }
                   &:before {
                     bottom: 0px;
                     content: '';

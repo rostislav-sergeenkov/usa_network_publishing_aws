@@ -5734,6 +5734,9 @@ header .nav-bar-tabs {
   header .nav-bar-tabs ul li.header-show-menu ul.menu > li > a {
     line-height: 40px;
   }
+  header .nav-bar-tabs ul li.header-show-menu ul.menu > li > a.active {
+    opacity: 0.8;
+  }
   header .nav-bar-tabs ul li.header-show-menu ul.menu > li > a:before {
     bottom: 0px;
     content: '';

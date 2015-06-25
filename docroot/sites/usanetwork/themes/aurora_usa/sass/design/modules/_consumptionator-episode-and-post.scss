@@ -320,6 +320,8 @@
           padding: 35px 25px 38px 25px;
           margin: 53px 0 23px;
           border: 1px solid $poll-back;
+          display: block;
+          clear: both;
           @include breakpoint($bp-1280-width) {
             padding: 25px 16px 30px 16px;
             margin: 35px 0 16px;
@@ -337,6 +339,7 @@
           @include breakpoint($bp-640-width) {
             padding: 23px 11px 26px 8px;
             margin: 32px 0 19px;
+            color: #000000;
           }
           &:before, &:after {
             background-color: #ffffff;

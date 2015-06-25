@@ -3,12 +3,6 @@
  *
  */
 ?>
-<?php if (!empty($rendered_quiz)): ?>
-  <?php print $rendered_quiz; ?>
-<?php endif; ?>
-
-<?php
-/*
 <div class="consumptionator-quiz-main-block">
   <?php if (!empty($rendered_quiz)): ?>
       <?php print $rendered_quiz; ?>
@@ -24,5 +18,3 @@
     </div>
   </div>
 </div>
-*/
-?>

@@ -14671,9 +14671,9 @@ footer h2 {
     margin-bottom: 190px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .related-content-block {
-    padding: 40px 10px;
+    padding: 40px 0px;
   }
 }
 .related-content-block ul {
@@ -14716,14 +14716,23 @@ footer h2 {
     height: 51.6vw;
     margin-bottom: 2px;
     margin-right: 0;
+    padding: 0 16px;
     width: 100%;
   }
   .related-content-block ul li:last-child, .related-content-block ul li.last {
     margin-bottom: 0;
   }
   .related-content-block ul li.ymal-item {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
     height: 115vw;
     margin: 40px 0 0;
+    padding: 0;
+  }
+}
+@media (max-width: 480px) {
+  .related-content-block ul li {
+    padding: 0 10px;
   }
 }
 .related-content-block ul li > div {

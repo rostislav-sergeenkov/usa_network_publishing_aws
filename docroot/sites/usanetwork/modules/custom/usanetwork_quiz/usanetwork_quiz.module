@@ -902,7 +902,7 @@ function _usanetwork_quiz_main_block() {
     $quiz_content = drupal_render(node_view($node, 'full'));
     $theme_variables = array(
       'rendered_quiz' => $quiz_content,
-      'rendered_carousel' => _usanetwork_quiz_quizes_carousel(),
+    //  'rendered_carousel' => _usanetwork_quiz_quizes_carousel(),
       'cast_landing_link' => l(t('View all games and quizzes'), ''),
     );
     return theme('usanetwork_quiz_main_block', $theme_variables);

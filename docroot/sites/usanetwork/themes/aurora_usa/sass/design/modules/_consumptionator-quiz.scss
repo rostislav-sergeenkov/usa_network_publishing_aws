@@ -78,4 +78,14 @@
       }
     }
   }
+  .consum-sidebar {
+    .items-block {
+      @include breakpoint($bp-min-1281-width) {
+        height: 245px;
+      }
+      @include breakpoint($bp-min-1901-width) {
+        height: 400px;
+      }
+    }
+  }
 }

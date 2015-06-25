@@ -956,7 +956,7 @@ function _usanetwork_quiz_quizes_carousel() {
         $theme_variables = array(
           'quizes' => !empty($rendered_items) ? $rendered_items : array(),
           'advert_block' => isset($advert) ? $advert : NULL,
-          'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All quizes'),
+          'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All quizzes'),
         );
         return theme('usanetwork_quiz_quizes_carousel', $theme_variables);
       }

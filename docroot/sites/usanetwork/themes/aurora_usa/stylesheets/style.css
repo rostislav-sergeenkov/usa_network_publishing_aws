@@ -11717,32 +11717,32 @@ footer .shows-menu ul, footer .app-and-services-menu ul {
 }
 footer .shows-menu ul li, footer .app-and-services-menu ul li {
   line-height: 1;
-  margin-bottom: 1.46341vw;
+  margin-bottom: 0.89427vw;
 }
 @media (min-width: 1901px) {
   footer .shows-menu ul li, footer .app-and-services-menu ul li {
-    margin-bottom: 28px;
+    margin-bottom: 17px;
   }
 }
 @media (max-width: 480px) {
   footer .shows-menu ul li, footer .app-and-services-menu ul li {
-    margin-bottom: 7px;
+    margin-bottom: 4.3px;
   }
 }
 footer .shows-menu ul a, footer .app-and-services-menu ul a {
   color: #dcddde;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.36585vw;
+  font-size: 1.02578vw;
   line-height: 1.4;
   text-decoration: none;
   text-transform: uppercase;
 }
 @media (min-width: 1901px) {
   footer .shows-menu ul a, footer .app-and-services-menu ul a {
-    font-size: 26px;
+    font-size: 19.5px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   footer .shows-menu ul a, footer .app-and-services-menu ul a {
     font-size: 10.5px;
   }

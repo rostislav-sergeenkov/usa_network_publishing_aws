@@ -313,25 +313,25 @@ footer {
       }
       li {
         line-height: 1;
-        margin-bottom: get-vw(15px, 1025);
+        margin-bottom: get-vw(17px, 1901);
         @include breakpoint($bp-min-1901-width) {
-          margin-bottom: 28px;
+          margin-bottom: 17px;
         }
         @include breakpoint($bp-480-width) {
-          margin-bottom: 7px;
+          margin-bottom: 4.3px;
         }
       }
       a {
         color: $footer-links;
         font-family: $avalon-medium;
-        font-size: get-vw(14px, 1025);
+        font-size: get-vw(19.5px, 1901);
         line-height: 1.4;
         text-decoration: none;
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
-          font-size: 26px;
+          font-size: 19.5px;
         }
-        @include breakpoint($bp-768-width) {
+        @include breakpoint($bp-1024-width) {
           font-size: 10.5px;
         }
         span {

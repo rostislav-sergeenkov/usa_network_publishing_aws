@@ -304,6 +304,10 @@
     margin-left: auto;
     margin-right: auto;
   }
+  /* 300x250 ad */
+  .usanetwork-quiz .content-wrap .sidebar .ad-container {
+    display: none;
+  }
   #microsite section .microsite-section-container {
     width: 90%;
   }

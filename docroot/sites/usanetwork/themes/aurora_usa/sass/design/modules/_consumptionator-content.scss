@@ -878,8 +878,8 @@
   @include breakpoint($bp-min-1901-width) {
     margin-bottom: 190px;
   }
-  @include breakpoint($bp-480-width) {
-    padding: 40px 10px;
+  @include breakpoint($bp-640-width) {
+    padding: 40px 0px;
   }
   ul {
     @include clear();
@@ -912,14 +912,21 @@
         height: 51.6vw;
         margin-bottom: 2px;
         margin-right: 0;
+        padding: 0 16px;
         width: 100%;
         &:last-child, &.last {
           margin-bottom: 0;
         }
         &.ymal-item {
+          border-bottom: 1px solid;
+          border-top: 1px solid;
           height: 115vw;
           margin: 40px 0 0;
+          padding: 0;
         }
+      }
+      @include breakpoint($bp-480-width) {
+        padding: 0 10px;
       }
       > div {
         height: 100%;

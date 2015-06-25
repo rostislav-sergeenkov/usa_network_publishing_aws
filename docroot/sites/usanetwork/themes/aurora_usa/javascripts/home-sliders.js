@@ -1,4 +1,3 @@
-// FLEXSLIDER for homepage
 (function($) {
   Drupal.behaviors.homeSlides = {
     _timeVar: null,

@@ -250,6 +250,8 @@
             padding: 32px 39px 42px 53px;
             margin: 54px 0 58px;
             border: 1px solid $poll-back;
+            display: block;
+            clear: both;
             @include breakpoint($bp-1280-width) {
               padding: 24px 21px 37px 53px;
               margin: 26px 0 30px;

@@ -316,13 +316,15 @@ address {
   }
   &:before {
     content: '\e61f';
-    top: -18px;
-    left: -13px;
+    top: -8px;
+    left: -1px;
+    padding: 0 10px 10px 0;
   }
   &:after {
     content: '\e620';
-    bottom: -15px;
-    right: -10px;
+    bottom: -5px;
+    right: -1px;
+    padding: 10px 0 0 10px;
   }
 }
 .lines-quotation {

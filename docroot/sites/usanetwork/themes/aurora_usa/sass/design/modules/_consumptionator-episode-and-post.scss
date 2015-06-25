@@ -339,7 +339,7 @@
           @include breakpoint($bp-640-width) {
             padding: 23px 11px 26px 8px;
             margin: 32px 0 19px;
-            color: $black-true;
+            color: #000000;
           }
           &:before, &:after {
             background-color: #ffffff;

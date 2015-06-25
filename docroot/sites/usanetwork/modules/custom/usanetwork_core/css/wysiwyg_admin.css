@@ -10,7 +10,7 @@
 }
 .person-quotation:before, .person-quotation:after {
   position: absolute;
-  font-family: "ico-font";
+  font-family: "texgyrescholaitalic", Times, serif;
   display: block;
   padding: 10px;
   font-size: 30px;

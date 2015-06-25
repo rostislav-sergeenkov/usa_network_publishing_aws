@@ -85,16 +85,14 @@
 
           $(nextSlideImg).css('margin-left', shiftPercent + '%');
           $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 0.5);
-          $(nextSlideInner).css('width', parseInt($(window).width())).animate({
-            'margin-left': '-=10%'
-          }, 600, 'easeInOutSine', function() {
-            $('.next-button').fadeIn(500).removeClass('disabled');
+          $(nextSlideInner).animate({
+            'margin-left': '-10%'
+          }, slideMove*1.2, 'easeInOutSine', function() {
+            $('.next-button').fadeIn(400).removeClass('disabled');
           });
         };
 
-        USAN.aspotSlider.showTimeout = setTimeout(function() {
-          moveIt(index);
-        }, slideMove);
+        moveIt(index);
       };
 
       var hideFocusSlide = function(el, slide, old, active) {
@@ -107,13 +105,9 @@
               nextSlideImg = $(nextSlideInner).find('img').get(0);
           $(nextSlideInner).find('.usanetwork-aspot').css('opacity', 1);
 
-          $(nextSlideImg).animate({
+          $(nextSlideImg, nextSlideInner).animate({
             'margin-left': '0'
-          }, 400, null);
-
-          $(nextSlideInner).animate({
-            'margin-left': '0'
-          }, 400, null).css('width', parseInt($(window).width()));
+          }, slideMove*0.8);
 
           $('.next-button').fadeOut(200).addClass('disabled');
         };
@@ -187,21 +181,20 @@
               }
             };
 
-        $(window).load(function() {
-          setTimeout(function() {
-            if ($('.slide', '.block-usanetwork-aspot').length > 1) {
-              aspotSlider = initSlider();
+        // Init slider
+        setTimeout(function() {
+          if ($('.slide', '.block-usanetwork-aspot').length > 1) {
+            aspotSlider = initSlider();
 
-              $('.next-button', context)
-                  .hide()
-                  .addClass('disabled')
-                  .on('click', function(e) {
-                    aspotSlider.goToNextSlide();
-                  });
-              setTimeout(svitchSlider, 200);
-            }
-          }, 300);
-        });
+            $('.next-button', context)
+                .hide()
+                .addClass('disabled')
+                .on('click', function(e) {
+                  aspotSlider.goToNextSlide();
+                });
+            setTimeout(svitchSlider, 200);
+          }
+        }, 300);
 
         $(window).on('scroll', function(e) {
           if (aspotSlider) {
@@ -226,7 +219,6 @@
               });
               $logo.addClass('isStopped');
 
-              //_self.aspotSlider = aspotSlider = initSlider(currentSlide);
               aspotSlider = null;
               aspotSlider = initSlider(currentSlide);
 

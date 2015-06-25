@@ -12148,6 +12148,7 @@ footer h2 {
   }
 }
 .consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper {
+  background: #1f1f1f;
   float: left;
   height: 100%;
   position: relative;
@@ -12350,7 +12351,7 @@ footer h2 {
 @media (max-width: 640px) {
   .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .bxslider-gallery .slide .node .slide-info {
     height: auto;
-    min-height: 90px;
+    min-height: 100px;
   }
 }
 @media (max-width: 480px) {

@@ -10,6 +10,17 @@ function usanetwork_core_js_alter(&$javascript) {
 }
 
 /**
+ * Implements hook_preprocess_html()
+ * custom titles for home pages
+ */
+function usanetwork_core_preprocess_html(&$vars) {
+
+  if (path_is_admin(current_path())) {
+    drupal_add_css(drupal_get_path('module', 'usanetwork_core') . '/css/wysiwyg_admin.css');
+  }
+}
+
+/**
  * Implements hook_menu().
  */
 function usanetwork_core_menu() {

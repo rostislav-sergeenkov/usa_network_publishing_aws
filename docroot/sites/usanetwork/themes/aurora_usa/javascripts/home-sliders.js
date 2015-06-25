@@ -122,9 +122,11 @@
         moveIt(index);
       };
 
-      var initSlider = function(options) {
+      var initSlider = function(startSlide, options) {
+
         var settings = $.extend({
           pager: false,
+          startSlide: startSlide || 0,
           controls: false,
           auto: sliderAuto,
           autoHover: true,
@@ -224,8 +226,9 @@
               });
               $logo.addClass('isStopped');
 
-              _self.aspotSlider = aspotSlider = initSlider();
-              aspotSlider.goToSlide(currentSlide);
+              //_self.aspotSlider = aspotSlider = initSlider(currentSlide);
+              aspotSlider = null;
+              aspotSlider = initSlider(currentSlide);
 
               setTimeout(function() {
                 $logo.removeClass('isStopped');

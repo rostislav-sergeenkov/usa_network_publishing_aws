@@ -552,7 +552,7 @@
       .episode-landing-info-block {
         .title {
           @include breakpoint($bp-640-width) {
-            margin-bottom: 0px;
+            margin-bottom: 0;
           }
         }
       }
@@ -563,8 +563,28 @@
       }
     }
     .buttons-bar {
+      @include breakpoint($between-641-768) {        
+        width: 49.5%;
+        float: right;
+      }
       .buttons {
         > div {
+          width: 36%;
+          @include breakpoint($between-641-768) {
+            width: 87%;
+          }
+          a {
+            padding: 20px 0 20px calc(14% + 2px);
+            @include breakpoint($bp-1280-width) {
+              padding: 10px 0 10px calc(14% + 2px);
+            }
+            @include breakpoint($bp-1024-width) {
+              padding: 5px 0 5px calc(14% + 2px);
+            }
+            @include breakpoint($bp-640-width) {
+              padding: 5px 0 5px calc(12% + 2px);
+            }
+          }
           &:after {
             content: "\e608";
             color: #ffffff;
@@ -572,7 +592,7 @@
             font-size: 11px;
             display: block;
             position: absolute;
-            right: 14px;
+            right: 13%;
             top: 50%;
             margin-top: -5px;
             line-height: 1;
@@ -580,6 +600,9 @@
             @include breakpoint($bp-min-1601-width) {
               font-size: 14px;
               margin-top: -7px;
+            }
+            @include breakpoint($bp-1024-width) {
+              right: 11%;
             }
           }
         }

@@ -162,7 +162,6 @@
             $('.header-show-menu .show-menu').removeClass('inner');
             $('.nav-bar-tabs .expanded > a:not(.no-refresh)').unbind('click');
             $('.header-show-menu .show-menu').appendTo('.show-menu-tab');
-            $('.show-menu > li, .show-menu > li > a').removeClass('active');
           }
         }
 
@@ -304,7 +303,7 @@
             search_input_block.addClass('active');
             //usa_logo.addClass('active');
             menu.addClass('active');
-            if ($('body').hasClass('usa-tv-show')) {
+            if ($('body').hasClass('node-type-tv-show')) {
               menu_link.addClass('show-color');
             }
             title_wrapper.toggle();
@@ -368,7 +367,7 @@
           showMenuMove();
 
           if (window.innerWidth < window_size_tablet_portrait && !tablet) {
-            if ($body.hasClass('page-home') || $body.hasClass('usa-tv-show')) {
+            if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show')) {
               $('header .tab-item.active').removeClass('active').removeAttr('style');
               $(".tab .no-refresh.active").removeClass('active').attr('data-state', '');
             }
@@ -377,7 +376,7 @@
           }
 
           if (window.innerWidth >= window_size_tablet_portrait && tablet) {
-            if ($body.hasClass('page-home') || $body.hasClass('usa-tv-show')) {
+            if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show')) {
               if ($(".main-menu-open").hasClass('active')) {
                 $('.nav-bar-tabs .expanded.active').removeClass('active');
                 $('.nav-bar-tabs .expanded > a.active').removeClass('active');

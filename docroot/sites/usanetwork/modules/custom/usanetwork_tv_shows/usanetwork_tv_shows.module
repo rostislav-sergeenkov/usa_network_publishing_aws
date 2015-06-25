@@ -3420,10 +3420,13 @@ function usanetwork_tv_shows_consumptionator_render_related_content_items_block(
 
     foreach ($data as $data_index => $data_item) {
       if (!empty($data_item->ymal)) {
-        $theme_variables['related_items'][] = _usanetwork_tv_shows_consumptionator_render_related_content_item_ymal($data_item);
+        $theme_variables['related_items'][] = array(
+          'render' => _usanetwork_tv_shows_consumptionator_render_related_content_item_ymal($data_item),
+          'ymal' => TRUE,
+        );
       }
       else {
-        $theme_variables['related_items'][] = _usanetwork_tv_shows_consumptionator_render_related_content_item_default($data_item);
+        $theme_variables['related_items'][]['render'] = _usanetwork_tv_shows_consumptionator_render_related_content_item_default($data_item);
       }
     }
 

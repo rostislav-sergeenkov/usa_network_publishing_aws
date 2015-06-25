@@ -899,13 +899,17 @@ function _usanetwork_quiz_main_block() {
 
   $node = menu_get_object('node');
   if (isset($node->type) && $node->type == 'quiz') {
-    $quiz_content = drupal_render(node_view($node, 'full'));
-    $theme_variables = array(
-      'rendered_quiz' => $quiz_content,
-      'rendered_carousel' => _usanetwork_quiz_quizes_carousel(),
-      'cast_landing_link' => l(t('View all games and quizzes'), ''),
-    );
-    return theme('usanetwork_quiz_main_block', $theme_variables);
+    if (!empty($node->field_show)) {
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $show = $node_wrapper->field_show->value();
+      $quiz_content = drupal_render(node_view($node, 'full'));
+      $theme_variables = array(
+        'rendered_quiz' => $quiz_content,
+        'rendered_carousel' => _usanetwork_quiz_quizes_carousel(),
+        'cast_landing_link' => l(t('Explore @show', array('@show' => $show->title)), 'node/' . $show->nid),
+      );
+      return theme('usanetwork_quiz_main_block', $theme_variables);
+    }
   }
   return '';
 }
@@ -956,7 +960,7 @@ function _usanetwork_quiz_quizes_carousel() {
         $theme_variables = array(
           'quizes' => !empty($rendered_items) ? $rendered_items : array(),
           'advert_block' => isset($advert) ? $advert : NULL,
-          'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All quizzes'),
+          'block_title' => !empty($explore_tag) ? $explore_tag->name : t('Quizzes'),
         );
         return theme('usanetwork_quiz_quizes_carousel', $theme_variables);
       }

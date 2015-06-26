@@ -300,9 +300,9 @@ footer {
       -ms-column-gap: 2em;
       -o-column-gap: 2em;
       column-gap: 2em;
-      margin: get-vw(20px, 1025) 0px get-vw(40px, 1025) get-vw(155px, 1025);
+      margin: get-vw(20px, 1025) 0px get-vw(20px, 1025) get-vw(155px, 1025);
       @include breakpoint($bp-min-1901-width) {
-        margin: 37.1px 0px 74.2px 287.5px;
+        margin: 37.1px 0px 37.1px 287.5px;
       }
       @include breakpoint($bp-768-width) {
         -webkit-column-count: 2;
@@ -310,6 +310,10 @@ footer {
         -ms-column-count: 2;
         -o-column-count: 2;
         column-count: 2;
+        margin: get-vw(20px, 1025) 0px get-vw(20px, 1025) get-vw(50px, 1025);
+      }
+      @include breakpoint($bp-480-width) {
+        margin: 9.4px 0px 9.4px 23.4px;
       }
       li {
         line-height: 1;
@@ -347,21 +351,20 @@ footer {
     color: $footer-links;
     font-family: $avalon-medium;
     font-size: get-vw(23px, 1025);
-    margin-top: 0;
-    padding-left: get-vw(50px, 1025);
-    padding-top: get-vw(40px, 1025);
+    margin-left: get-vw(50px, 1025);
+    margin-top: get-vw(30px, 1025);
     text-transform: uppercase;
     @include breakpoint($bp-min-1901-width) {
       font-size: 42.6px;
-      padding-left: 92.75px;
-      padding-top: 74.2px;
+      margin-left: 92.75px;
+      margin-top: 55.65px;
     }
     @include breakpoint($bp-768-width) {
       font-size: 17.3px;
     }
     @include breakpoint($bp-480-width) {
-      padding-left: 23.4px;
-      padding-top: 18.7px;
+      margin-left: 23.4px;
+      margin-top: 14px;
     }
   }
 }

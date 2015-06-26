@@ -609,7 +609,7 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
   $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
   $sharebar['#title'] = t('Share:');
   if ($phase == 'results') {
-    $sharebar['#title'] = t('Share result:');
+    $sharebar['#title'] = t('Share your result:');
   }
   $sharebar['#prefix'] = '<div class="sharebar">';
   $sharebar['#suffix'] = '</div>';

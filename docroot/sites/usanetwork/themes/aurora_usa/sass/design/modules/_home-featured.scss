@@ -228,6 +228,7 @@
       }
     }
     .carousel-description-item {
+      height: auto;
       left: 0px;
       position: relative;
       top: 0;
@@ -238,6 +239,7 @@
       .description-wrapper {
         display: block;
         float: none;
+        height: auto;
         margin-right: 0;
         padding: 0px 0px 0px get-vw(20px, 768);
         width: 100%;

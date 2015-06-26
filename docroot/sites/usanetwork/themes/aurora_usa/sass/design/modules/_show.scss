@@ -436,8 +436,9 @@
       }
     }
     .carousel-description-item {
-      margin-bottom: get-vw(30px, 768);
+      height: auto;
       left: 0px;
+      margin-bottom: get-vw(30px, 768);
       position: relative;
       top: 0;
       width: 100%;
@@ -447,6 +448,7 @@
       .description-wrapper {
         display: block;
         float: none;
+        height: auto;
         width: 100%;
       }
       .description-block {
@@ -1029,17 +1031,26 @@
           @include breakpoint($between-769-1024) {
             font-size: get-vw(14px, 1024);
             line-height: get-vw(20px, 1024);
-            margin-top: get-vw(20px, 1024);
+            margin-top: get-vw(16px, 1024);
           }
           @include breakpoint($bp-768-width) {
+            display: -webkit-box;
             font-size: get-vw(14px, 768);
+            height: get-row-height(20px, 14px, 5, 768);
             line-height: get-vw(20px, 768);
-            margin-top: get-vw(20px, 768);
+            margin-top: get-vw(16px, 768);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
           }
           @include breakpoint($bp-480-width) {
             font-size: 8px;
+            height: 21px;
             line-height: 11px;
             margin-top: 0px;
+            -webkit-line-clamp: 2;
           }
         }
         .show-link {

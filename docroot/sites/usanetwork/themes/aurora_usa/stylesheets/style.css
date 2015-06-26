@@ -16100,7 +16100,7 @@ footer h2 {
   content: '.';
   line-height: 1;
   position: absolute;
-  top: -5px;
+  top: -4px;
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional .tags-title:after, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .additional .tags-title:after, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .additional .tags-title:after, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .additional .tags-title:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .additional .tags-title:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .additional .tags-title:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .additional .tags-title:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .additional .tags-title:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional .tags-title:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .additional .tags-title:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .additional .tags-title:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .additional .tags-title:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .additional .tags-title:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .additional .tags-title:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .additional .tags-title:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .additional .tags-title:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional .tags-title:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .additional .tags-title:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .additional .tags-title:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .additional .tags-title:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .additional .tags-title:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .additional .tags-title:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .additional .tags-title:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .additional .tags-title:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional .tags-title:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .additional .tags-title:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .additional .tags-title:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .additional .tags-title:after, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .additional .tags-title:after, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .additional .tags-title:after, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .additional .tags-title:after, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .additional .tags-title:after {
@@ -16443,16 +16443,19 @@ footer h2 {
     border-bottom: 8px solid;
   }
 }
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
+  margin: 50px 0;
+}
 @media (max-width: 640px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
     font-size: 3.4375vw;
-    margin: 7.8125vw auto;
+    margin: 7.8125vw 0;
   }
 }
 @media (max-width: 480px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
     font-size: 16.5px;
-    margin: 37.6px auto;
+    margin: 37.6px 0;
   }
 }
 @media (max-width: 640px) {
@@ -16463,12 +16466,50 @@ footer h2 {
 @media (max-width: 480px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .repeat-button {
     font-size: 16.5px;
+  }
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap {
+  padding: 40px;
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap {
+    padding: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap {
+    padding: 10px;
+  }
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .center {
+  margin-right: 0;
+  width: 100%;
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar {
+  margin-top: 20px;
+}
+@media (max-width: 480px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 1281px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar .ad-container {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar .ad-container {
+    display: none;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-questions.questions .page-note {
     font-size: 2.5vw;
   }
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title {
+  text-align: center;
 }
 @media (max-width: 640px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title {
@@ -16489,6 +16530,9 @@ footer h2 {
   clear: both;
   content: '';
   display: table;
+}
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
+  width: 280px;
 }
 @media (max-width: 640px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {

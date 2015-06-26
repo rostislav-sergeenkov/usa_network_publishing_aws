@@ -164,7 +164,7 @@
                 content: '.';
                 line-height: 1;
                 position: absolute;
-                top: -5px;
+                top: -4px;
                 @include breakpoint($bp-1280-width) {
                   top: -2px;
                 }

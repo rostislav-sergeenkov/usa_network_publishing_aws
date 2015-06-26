@@ -319,7 +319,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
         'posts' => !empty($rendered_items) ? $rendered_items : array(),
         'advert_block' => isset($advert) ? $advert : NULL,
         'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All blog posts'),
-        'posts_landing_link' => l('View all posts', ''),
+        'posts_landing_link' => l('View all posts', 'node/' . $show_id . '/blog'),
       );
       return theme('usanetwork_cons_post_carousel', $theme_variables);
     }

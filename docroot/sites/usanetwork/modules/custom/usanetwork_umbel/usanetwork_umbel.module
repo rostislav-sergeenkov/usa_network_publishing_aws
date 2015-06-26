@@ -24,32 +24,12 @@ function usanetwork_umbel_menu() {
  */
 function usanetwork_umbel_page_alter(&$page) {
   if (!path_is_admin(current_path())) {
+    $usanetwork_umbel_tracking_code = variable_get('usanetwork_umbel_tracking_code', 'iwgdlxrtqfiiortz');
+    drupal_add_js(array('umbel_code' => $usanetwork_umbel_tracking_code),'setting');
 
-// initiating umbel
-    $footer = "<script type=\"text/javascript\">
-window._umbel = window._umbel || [];
-(function() {
-  var u = document.createElement('script'); u.type = 'text/javascript'; u.async = true;
-  u.src = document.location.protocol + '//tags.api.umbel.com/" . variable_get('usanetwork_umbel_tracking_code', 'iwgdlxrtqfiiortz') . "/w.js?d=' + new   Date().getMonth() + '-' + new Date().getDate();
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(u, s);
-})();
-</script>";
-// set variables from page
-    $footer .= '<script type="text/javascript">
-var umbel_parameter;
-if (typeof umbel != \'undefined\') {
-  umbel_parameter = umbel;
-} else {
-  umbel_parameter = s.pageName;
-}
-_umbel.push({"type":"send","name":"action.tag","value": [s.prop10, s.prop4, umbel_parameter]});
-</script>';
-
-    $page['page_bottom']['umbel'] =  array(
-      'footer'=> array(
-        '#type' => 'markup',
-        '#markup' => $footer,
-      ),
+    $page['page_bottom']['umbel']['#attached']['js'][drupal_get_path('module', 'usanetwork_umbel') . '/js/usanetwork_umbel_main.js'] =  array(
+      'type' => 'file',
+      'scope' => 'footer',
     );
   }
 }

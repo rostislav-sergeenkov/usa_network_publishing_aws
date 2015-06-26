@@ -941,6 +941,10 @@ function _usanetwork_quiz_quizes_carousel() {
             $image = field_get_items('node', $quiz, 'field_promo_image_override');
             $image = reset($image);
           }
+          elseif (!empty($quiz->field_quiz_splash_image)) {
+            $image = field_get_items('node', $quiz, 'field_quiz_splash_image');
+            $image = reset($image);
+          }
           $episode_variables = array(
             'title' => !empty($quiz->title) ? $quiz->title : '',
             'url' => url('node/' . $quiz->nid),

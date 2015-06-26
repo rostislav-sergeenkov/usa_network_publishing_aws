@@ -3703,32 +3703,42 @@ ul.menu li {
   position: relative;
   text-align: center;
   font-size: 30px;
-  padding: 37px 25px 43px 27px;
+  padding: 37px 27px;
   margin: 54px 0 28px;
   border-top: 3px solid;
   border-bottom: 3px solid;
   line-height: 1.5em;
 }
+.post-info-description .lines-quotation {
+  display: block;
+  overflow: hidden;
+}
 @media (max-width: 1280px) {
   .lines-quotation {
-    font-size: 20px;
-    padding: 22px 15px 36px 15px;
+    font-size: 22px;
+    padding: 30px 15px;
     margin: 34px 0 19px;
     border-width: 2px;
   }
 }
+@media (max-width: 1024px) {
+  .post-info-description .lines-quotation {
+    overflow: initial;
+  }
+}
 @media (max-width: 768px) {
   .lines-quotation {
-    padding: 22px 100px 27px 100px;
+    padding: 22px 40px;
     margin: 38px 0 23px;
     line-height: 1.4em;
+    font-size: 17px;
   }
 }
 @media (max-width: 640px) {
   .lines-quotation {
     margin-bottom: 17px;
-    padding: 22px 15px 27px 15px;
-    color: black;
+    padding: 22px 15px;
+    font-size: 14px;
   }
 }
 
@@ -15784,7 +15794,7 @@ footer h2 {
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
   font-size: 32px;
-  padding: 32px 39px 42px 53px;
+  padding: 32px 53px 38px 56px;
   margin: 54px 0 58px;
   border: 1px solid #e9eaeb;
   display: block;
@@ -15792,28 +15802,32 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
-    padding: 24px 21px 37px 53px;
+    padding: 24px 43px 28px 55px;
     margin: 26px 0 30px;
     font-size: 22px;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
-    padding: 37px 29px 50px 60px;
+    padding: 37px 49px 41px 60px;
     margin: 32px 0 34px;
-    font-size: 30px;
+    font-size: 22px;
+    line-height: 1.4em;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
-    padding: 25px 29px 38px 41px;
+    padding: 22px 40px;
     font-size: 20px;
+    line-height: 1.2em;
+    color: #242424;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation {
     padding: 20px 40px 22px 40px;
     margin: 18px 0 25px;
+    color: #545454;
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:before, .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .description-items .person-quotation:after {
@@ -16273,7 +16287,7 @@ footer h2 {
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation {
   font-size: 30px;
-  padding: 35px 25px 38px 25px;
+  padding: 35px 55px;
   margin: 53px 0 23px;
   border: 1px solid #e9eaeb;
   display: block;
@@ -16281,29 +16295,28 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation {
-    padding: 25px 16px 30px 16px;
+    padding: 25px 39px 25px 44px;
     margin: 35px 0 16px;
     font-size: 20px;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation {
-    padding: 25px 15px 28px 10px;
+    padding: 25px 50px 25px 54px;
     margin: 38px 0 19px;
     font-size: 20px;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation {
-    padding: 25px 80px 28px 80px;
+    padding: 25px 80px;
     font-size: 20px;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation {
-    padding: 23px 11px 26px 8px;
+    padding: 23px 30px;
     margin: 32px 0 19px;
-    color: #000000;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation:before, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation:before, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation:before, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation:before, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .person-quotation:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation:before, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .person-quotation:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation:before, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .person-quotation:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation:before, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .person-quotation:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation:before, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .person-quotation:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation:before, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .person-quotation:after, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation:before, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .person-quotation:after, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation:before, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .person-quotation:after {
@@ -16332,7 +16345,7 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .lines-quotation, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .lines-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .lines-quotation, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .lines-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .lines-quotation, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .lines-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .lines-quotation, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .lines-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .lines-quotation, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .lines-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .lines-quotation, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .lines-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .lines-quotation, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .lines-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .lines-quotation, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .lines-quotation {
-    padding: 22px 15px 36px 15px;
+    padding: 22px 15px;
   }
 }
 @media (max-width: 1024px) {
@@ -19950,7 +19963,7 @@ footer h2 {
 }
 .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
   font-size: 53px;
-  padding: 72px 94px 80px 120px;
+  padding: 72px 100px 75px 120px;
   margin: 54px 0 60px;
   border: 1px solid #b5b3b4;
   line-height: 1em;
@@ -19959,14 +19972,14 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
-    padding: 47px 51px 52px 72px;
+    padding: 47px 72px;
     margin: 34px 0 35px;
     font-size: 32px;
   }
 }
 @media (max-width: 1024px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
-    padding: 38px 31px 37px 56px;
+    padding: 38px 50px;
     margin: 30px 0 40px;
     font-size: 24.75px;
     line-height: 1.2em;
@@ -19974,14 +19987,14 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
-    padding: 23px 45px 26px 46px;
+    padding: 23px 45px;
     font-size: 17px;
     margin: 20px 0 17px;
   }
 }
 @media (max-width: 640px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
-    padding: 20px 40px 22px 40px;
+    padding: 22px 40px;
     font-size: 13px;
     margin: 19px 0 22px;
   }
@@ -20008,6 +20021,11 @@ footer h2 {
 @media (max-width: 640px) {
   .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
     font-size: 21px;
+  }
+}
+@media (max-width: 768px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .lines-quotation {
+    padding: 22px 20px;
   }
 }
 .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {

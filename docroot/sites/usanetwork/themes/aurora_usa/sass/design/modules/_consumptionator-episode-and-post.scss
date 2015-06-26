@@ -317,29 +317,28 @@
         }
         .person-quotation {
           font-size: 30px;
-          padding: 35px 25px 38px 25px;
+          padding: 35px 55px;
           margin: 53px 0 23px;
           border: 1px solid $poll-back;
           display: block;
           clear: both;
           @include breakpoint($bp-1280-width) {
-            padding: 25px 16px 30px 16px;
+            padding: 25px 39px 25px 44px;
             margin: 35px 0 16px;
             font-size: 20px;
           }
           @include breakpoint($bp-1024-width) {
-            padding: 25px 15px 28px 10px;
+            padding: 25px 50px 25px 54px;
             margin: 38px 0 19px;
             font-size: 20px;
           }
           @include breakpoint($bp-768-width) {
-            padding: 25px 80px 28px 80px;
+            padding: 25px 80px;
             font-size: 20px;
           }
           @include breakpoint($bp-640-width) {
-            padding: 23px 11px 26px 8px;
+            padding: 23px 30px;
             margin: 32px 0 19px;
-            color: #000000;
           }
           &:before, &:after {
             background-color: #ffffff;
@@ -360,7 +359,7 @@
         }
         .lines-quotation {
           @include breakpoint($bp-768-width) {
-            padding: 22px 15px 36px 15px;
+            padding: 22px 15px;
           }
         }
       }

@@ -85,18 +85,18 @@
       }
     }
     .episode-info-block, .post-info-block {
-      padding: 45px 93px 45px 70px;
+      padding: 45px 93px 90px 70px;
       @include breakpoint($bp-1280-width) {
-        padding: 38px 58px 38px 45px;
+        padding: 38px 58px 76px 45px;
       }
       @include breakpoint($bp-1024-width) {
-        padding: 53px 11.8%;
+        padding: 53px 11.8% 90px;
       }
       @include breakpoint($bp-768-width) {
-        padding: 50px 6.7%;
+        padding: 50px 6.7% 90px;
       }
       @include breakpoint($bp-640-width) {
-        padding: 30px 6%;
+        padding: 30px 6% 75px;
       }
       @include clear();
       .episode-info-header, .post-info-header {
@@ -313,6 +313,9 @@
         p {
           &:first-child {
             margin-top: 0;
+          }
+          &:last-child {
+            margin-bottom: 0;
           }
         }
         .person-quotation {

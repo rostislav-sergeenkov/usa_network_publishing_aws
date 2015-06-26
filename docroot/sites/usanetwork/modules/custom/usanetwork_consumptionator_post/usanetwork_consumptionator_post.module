@@ -7,6 +7,7 @@
 include_once 'usanetwork_consumptionator_post.features.inc';
 
 define('USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS', 10);
+define('USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH', 410);
 
 
 /**
@@ -487,7 +488,7 @@ function _usanetwork_consumptionator_post_get_season_episodes_description($resul
       $matches = array();
 
       if (preg_match("#<p[^>]*>(.*)</p>#isU", $result_item->body, $matches)) {
-        return '<p>' . $matches[1] . '</p>';
+        return '<p>' . truncate_utf8($matches[1], USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH, TRUE, TRUE) . '</p>';
       }
     }
   }

@@ -10,8 +10,8 @@
     @include breakpoint($bp-min-1901-width) {
       padding: 46px 0;
     }
-    @include breakpoint($bp-480-width) {
-      padding: 11.615px 0;
+    @include breakpoint($bp-768-width) {
+      padding: 18.584px 0;
     }
     .footer-promo-link-item {
       display: table-cell;
@@ -33,15 +33,15 @@
           @include breakpoint($bp-min-1901-width) {
             max-width: 75px;
           }
-          @include breakpoint($bp-480-width) {
-            max-width: 18.9px;
+          @include breakpoint($bp-768-width) {
+            max-width: 30.3px;
           }
         }
       }
       .title {
         color: $poll-color;
         font-family: $avalon-medium;
-        font-size: get-vw(26px, 1901);
+        font-size: get-vw(9.5px, 768);
         line-height: get-vw(34px, 1901);
         margin-top: get-vw(21px, 1901);
         overflow: hidden;
@@ -49,14 +49,14 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         @include breakpoint($bp-min-1901-width) {
-          font-size: 26px;
+          font-size: 23.5px;
           line-height: 34px;
           margin-top: 21px;
         }
-        @include breakpoint($bp-480-width) {
-          font-size: 6.6px;
-          line-height: 8.6px;
-          margin-top: 5.3px;
+        @include breakpoint($bp-768-width) {
+          font-size: 9.5px;
+          line-height: 13.7px;
+          margin-top: 8.5px;
         }
       }
     }

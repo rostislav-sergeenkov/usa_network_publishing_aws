@@ -406,7 +406,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
           ? gmdate('m/d/Y', $post_data->created)
           : NULL,
         'tags' => $post_data->tags,
-        'active' => $post_data_index == 0 ? TRUE : FALSE,
+        'active' => (!$ajax_load && $post_data_index == 0) ? TRUE : FALSE,
       );
 
       $theme_variables['items'][] = theme('usanetwork_blog_landing_posts_list_item', $theme_item_variables);

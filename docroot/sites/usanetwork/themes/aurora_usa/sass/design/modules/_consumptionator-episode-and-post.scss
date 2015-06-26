@@ -277,6 +277,8 @@
         width: 61.1%;
         padding: 12px 0 20px 0;
         margin-left: 30px;
+        position: relative;
+        z-index: 1;
         @include breakpoint($bp-1280-width) {
           padding-top: 5px;
         }

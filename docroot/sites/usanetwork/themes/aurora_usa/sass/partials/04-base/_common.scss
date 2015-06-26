@@ -338,20 +338,11 @@ address {
   border-top: 3px solid;
   border-bottom: 3px solid;
   line-height: 1.5em;
-  .post-info-description & {
-    display: block;
-    overflow: hidden;
-  }
   @include breakpoint($bp-1280-width) {
     font-size: 22px;
     padding: 30px 15px;
     margin: 34px 0 19px;
     border-width: 2px;
-  }
-  @include breakpoint($bp-1024-width) {
-    .post-info-description & {
-     overflow: initial;
-    }
   }
   @include breakpoint($bp-768-width) {
     padding: 22px 40px;

@@ -3709,21 +3709,12 @@ ul.menu li {
   border-bottom: 3px solid;
   line-height: 1.5em;
 }
-.post-info-description .lines-quotation {
-  display: block;
-  overflow: hidden;
-}
 @media (max-width: 1280px) {
   .lines-quotation {
     font-size: 22px;
     padding: 30px 15px;
     margin: 34px 0 19px;
     border-width: 2px;
-  }
-}
-@media (max-width: 1024px) {
-  .post-info-description .lines-quotation {
-    overflow: initial;
   }
 }
 @media (max-width: 768px) {
@@ -16234,6 +16225,8 @@ footer h2 {
   width: 61.1%;
   padding: 12px 0 20px 0;
   margin-left: 30px;
+  position: relative;
+  z-index: 1;
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-image, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-image, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-image, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-image, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-image, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-image, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-image, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-image, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-image, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-image, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-image, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-image, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-image, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-image, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-image, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-image {

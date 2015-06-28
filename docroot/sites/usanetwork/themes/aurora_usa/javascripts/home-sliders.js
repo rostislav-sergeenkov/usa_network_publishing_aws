@@ -82,9 +82,7 @@
       //==============
       $(document.body).once(function () {
 
-        console.info(slide.length);
         if (slide.length === 1) {
-          console.info('false');
           changeLogoColor(slide.find('.slide-content'));
           return false;
         }

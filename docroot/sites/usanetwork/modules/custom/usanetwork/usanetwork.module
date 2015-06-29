@@ -533,3 +533,17 @@ function usanetwork_promo_css_config_submit($form, &$form_state) {
   _create_promo_icon_css();
   drupal_set_message(t('Promo icon css is recreated.'));
 }
+
+/**
+ *  Implements hook_access().
+ */
+function usanetwork_usa_umbel_alter(&$settings) {
+  $current_menu_item = menu_get_item();
+  if ($current_menu_item['path'] == 'home') {
+    $settings = array(
+      'usa_umbel_param_1' => "Global",
+      'usa_umbel_param_2' => "Landing Page",
+      'usa_umbel_param_3' => "Homepage",
+    );
+  }
+}

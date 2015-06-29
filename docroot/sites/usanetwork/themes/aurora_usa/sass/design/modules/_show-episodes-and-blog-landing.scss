@@ -573,6 +573,9 @@
           @include breakpoint($between-641-768) {
             width: 87%;
           }
+          @include breakpoint($bp-640-width) {
+            width: 150px;
+          }
           a {
             padding: 20px 0 20px calc(14% + 2px);
             @include breakpoint($bp-1280-width) {

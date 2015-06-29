@@ -322,6 +322,23 @@
             margin-bottom: 0;
           }
         }
+        .source {
+          font-family: $avalon-medium;
+          color: $schedule-pm-color;
+          letter-spacing: 2px;
+          font-size: 16px;
+          text-transform: uppercase;
+          line-height: 1;
+          @include breakpoint($bp-1280-width) {
+            font-size: 13px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 12px;
+          }
+        }
+        .source-title {
+          font-family: $avalon-book;
+        }
         .person-quotation {
           font-size: 30px;
           padding: 35px 55px;

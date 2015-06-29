@@ -3,18 +3,17 @@
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
-  height: 43.75vw;
-  max-height: 43.75vw;
-//  height: 43.75vw;
-//  padding-bottom: 43.7%; /* ~16:7 */
+  height: 0;
+// max-height: 43.75vw;
+  padding-bottom: 43.7%; /* ~16:7 */
   position: relative;
   @include breakpoint($bp-min-2500-width) {
-    max-height: 1094px;
+//    max-height: 1094px;
+    padding-bottom: 1094px;
   }
   @include breakpoint($bp-640-width) {
-//    padding-bottom: 87.45%;
-    height: 90.625vw;
-    max-height: 90.625vw;
+    padding-bottom: 87.45%;
+//    max-height: 90.625vw;
 
   }
 

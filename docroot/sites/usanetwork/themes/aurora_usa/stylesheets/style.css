@@ -27882,19 +27882,19 @@ yx-axis
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
-  height: 43.75vw;
-  max-height: 43.75vw;
+  height: 0;
+  padding-bottom: 43.7%;
+  /* ~16:7 */
   position: relative;
 }
 @media (min-width: 2500px) {
   #block-usanetwork-aspot-usanetwork-aspot-carousel {
-    max-height: 1094px;
+    padding-bottom: 1094px;
   }
 }
 @media (max-width: 640px) {
   #block-usanetwork-aspot-usanetwork-aspot-carousel {
-    height: 90.625vw;
-    max-height: 90.625vw;
+    padding-bottom: 87.45%;
   }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {

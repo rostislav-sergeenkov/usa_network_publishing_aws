@@ -2,8 +2,9 @@
   Drupal.behaviors.microsite_characters = {
 
     micrositeSetCharNavWidthHeight: function setCharNavWidth() {
-      var charactersNav = $('#characters .character-nav'),
-          numCharacters = charactersNav.find('li').length,
+      var charactersNav = $('#characters .character-nav');
+      if(charactersNav.length > 0) {
+        var numCharacters = charactersNav.find('li').length,
           nextPrevWidth = $('#characters #nav-prev').outerWidth(true),
           navElemWidth = charactersNav.find('li').outerWidth(true),
           charNavListWidth = (numCharacters * navElemWidth),
@@ -12,13 +13,14 @@
           nextPrevHeight = charactersNav.find('#nav-prev').outerHeight(true),
           navElemHeight = charactersNav.find('li').outerHeight(true),
           navHeight = (navElemHeight > nextPrevHeight) ? nextPrevHeight : navElemHeight;
-      if (charNavWidth > maxCharNavWidth) {
-        charNavListWidth = Math.ceil(numCharacters/2) * navElemWidth;
-        charNavWidth = charNavListWidth + (nextPrevWidth * 2);
-        navHeight = (navHeight * 2) + 6;
+        if (charNavWidth > maxCharNavWidth) {
+          charNavListWidth = Math.ceil(numCharacters / 2) * navElemWidth;
+          charNavWidth = charNavListWidth + (nextPrevWidth * 2);
+          navHeight = (navHeight * 2) + 6;
+        }
+        charactersNav.find('ul').width(charNavListWidth).height(navHeight);
+        charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
       }
-      charactersNav.find('ul').width(charNavListWidth).height(navHeight);
-      charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
     },
 
     micrositeSetNavNextPrevState: function setNavNextPreState() {
@@ -249,7 +251,7 @@
 
     attach: function (context, settings) {
       // check to make sure there's a characters section
-      if ($('#characters').length > 0) {
+      if ($('#character-inner-container').length > 0) {
         Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
         var characters = $('#microsite #character-info'),
             activeCharacter = characters.find('li.active').attr('id'),

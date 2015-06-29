@@ -674,6 +674,9 @@ ul, li {
   .timelineFlat #timeline-line-full-right .title {
     display: none;
   }
+  .timelineFlat .timeline-item .timeline-item-text {
+    font-size: 1em;
+  }
 }
 
 @media (max-width: 920px) {
@@ -687,6 +690,7 @@ ul, li {
   }
   .timelineFlat .timeline-item .timeline-item-text {
     margin-top: 12px;
+    font-size: 1.125em;
   }
 }
 

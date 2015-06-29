@@ -7,9 +7,8 @@
  */
 
 
-function usanetwork_microsite_block_meet_the_cast() {
+function usanetwork_microsite_block_meet_the_cast($node) {
   $characters = array();
-  $node = menu_get_object();
   $characters_section_wrapper =_usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
   if (!empty($characters_section_wrapper)) {
     $characters_section_object = $characters_section_wrapper->value();

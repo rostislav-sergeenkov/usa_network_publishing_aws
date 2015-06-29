@@ -508,6 +508,18 @@ function usanetwork_menu_gigya_sharebar_alter(&$share_settings, $context) {
     if (!empty($node->field_share_description)) {
       $share_settings['gigyaSharebar']['ua']['description'] = $node_wrapper->field_share_description->value();
     }
+    if ($node->type == 'consumpt_post') {
+      if (!empty($node->field_usa_og_image)) {
+        $image = $node_wrapper->field_usa_og_image->value();
+      }
+      elseif (!empty($node->field_post_cover)) {
+        $image = $node_wrapper->field_post_cover->value();
+      }
+      if (!empty($image)) {
+        $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($image['uri']);
+        $share_settings['gigyaSharebar']['ua']['imageBhev'] = 'url';
+      }
+    }
   }
 }
 

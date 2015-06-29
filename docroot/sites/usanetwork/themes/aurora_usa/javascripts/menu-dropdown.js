@@ -137,7 +137,9 @@
         }
 
         Drupal.behaviors.usanetwork_menu_dropdown.tabItemScroll();
-        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), 'dark');
+
+        // init sponsored in for tab full-episodes-list
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), 'dark-menu');
 
         function showTitleMove() {
           var $showTitleBlock = $('.show-title-block', '.show-title-block-wrapper');

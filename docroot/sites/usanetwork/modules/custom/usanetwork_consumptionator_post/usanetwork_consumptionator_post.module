@@ -305,14 +305,17 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
           $image = field_get_items('node', $post, 'field_promo_image_override');
           $image = reset($image);
         }
-        if (!empty($post->field_post_source)) {
-          $post_source = field_get_items('node', $post, 'field_post_source');
-          $post_source = reset($post_source);
-          $post_source = $post_source['value'];
+        if (!empty($post->field_promo_created_ovts)) {
+          $created_ovts = field_get_items('node', $post, 'field_promo_created_ovts');
+          $created_ovts = reset($created_ovts);
+          $created_ovts = $created_ovts['value'];
+        }
+        else {
+          $created_ovts = $post->created;
         }
         $episode_variables = array(
           'title' => !empty($post->title) ? $post->title : '',
-          'additional' => !empty($post_source) ? $post_source : t('by Author'),
+          'additional' => t('Posted on @date', array('@date' =>date('n/j/y', $created_ovts))),
           'url' => url('node/' . $post->nid),
           'active' => ($post_id == $post->nid) ? TRUE : FALSE,
           'icon_type' => usanetwork_core_api_get_media_icon('node', $post->nid),

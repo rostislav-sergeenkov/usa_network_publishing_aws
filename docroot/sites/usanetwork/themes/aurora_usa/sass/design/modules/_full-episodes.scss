@@ -519,13 +519,15 @@
       }
       .carousel-description-item {
         height: auto;
+        left: -300px;
         margin: 40px auto;
         @include breakpoint($bp-1600-width) {
-          left: -175px;
+          left: -200px;
         }
-        &.start{
+        &.start {
+          left: 60px;
           @include breakpoint($bp-1600-width) {
-            left: 50px;
+            left: 25px;
           }
           @include breakpoint($bp-480-width) {
             left: 0;
@@ -540,8 +542,9 @@
         }
         .description-wrapper {
           display: block;
+          width: 300px;
           @include breakpoint($bp-1600-width) {
-            width: 175px;
+            width: 200px;
           }
           @include breakpoint($bp-480-width) {
             background: $schedule-tonight;
@@ -581,10 +584,10 @@
               vertical-align: middle;
               @include breakpoint($bp-min-481-width) {
                 background: none;
-                width: 175px;
+                width: 200px;
               }
               @include breakpoint($bp-min-1601-width) {
-                width: 250px;
+                width: 300px;
               }
               @include breakpoint($bp-480-width) {
                 cursor: pointer;

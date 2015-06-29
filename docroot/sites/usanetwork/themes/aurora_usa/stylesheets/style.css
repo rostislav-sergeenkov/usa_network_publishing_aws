@@ -15985,6 +15985,7 @@ footer h2 {
   right: -15px;
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
+  border-bottom: 2px solid;
   padding: 45px 93px 90px 70px;
 }
 @media (max-width: 1280px) {
@@ -16004,6 +16005,7 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
+    border-bottom: 0;
     padding: 30px 6% 75px;
   }
 }

@@ -316,10 +316,11 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
       if (!empty($advert_block['content'])) {
         $advert = render($advert_block['content']);
       }
+      $show_node = node_load($show_id);
       $theme_variables = array(
         'posts' => !empty($rendered_items) ? $rendered_items : array(),
         'advert_block' => isset($advert) ? $advert : NULL,
-        'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All blog posts'),
+        'block_title' => t('@show_name blog', array('@show_name' => $show_node->title)),
         'posts_landing_link' => l('View all posts', 'node/' . $show_id . '/blog'),
       );
       return theme('usanetwork_cons_post_carousel', $theme_variables);

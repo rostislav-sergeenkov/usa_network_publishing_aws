@@ -85,6 +85,7 @@
       }
     }
     .episode-info-block, .post-info-block {
+      border-bottom: 2px solid;
       padding: 45px 93px 90px 70px;
       @include breakpoint($bp-1280-width) {
         padding: 38px 58px 76px 45px;
@@ -96,6 +97,7 @@
         padding: 50px 6.7% 90px;
       }
       @include breakpoint($bp-640-width) {
+        border-bottom: 0;
         padding: 30px 6% 75px;
       }
       @include clear();

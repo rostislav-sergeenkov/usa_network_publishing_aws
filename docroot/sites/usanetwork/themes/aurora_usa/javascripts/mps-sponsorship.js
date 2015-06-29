@@ -52,12 +52,16 @@
 
     attach: function (context, settings) {
 
+      //init sponsored in for tab full-episodes-list in menu-dropdown.js line 142
+      //init sponsored for ajax content mid-banner in mps-advert.js line 78
+
       var body = $('body');
 
       // styles Sponsored Block
       var style = {
         bleed: 'bleed',
         dark: 'dark',
+        darkMenu: 'dark-menu',
         light: 'light',
         light_stacked: 'light-stacked'
       };
@@ -106,8 +110,6 @@
         if ($('.ajax-load-block').length > 0) {
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.ajax-load-block .node-usanetwork-promo'), style.dark);
         }
-
-
 
         // page-videos
         if (body.hasClass('page-videos')) {

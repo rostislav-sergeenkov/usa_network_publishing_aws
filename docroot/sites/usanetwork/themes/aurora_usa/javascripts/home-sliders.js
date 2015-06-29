@@ -77,9 +77,7 @@
           //settings
           autoplay: startAuto,
           effect: 'slide',
-          //grabCursor: true,
           loop: true,
-          parallax: true,
           slidesPerView: 1,
           speed: 1000,
 

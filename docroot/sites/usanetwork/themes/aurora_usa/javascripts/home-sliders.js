@@ -2,15 +2,6 @@
   Drupal.behaviors.homeSlides = {
     attach: function (context, settings) {
 
-
-      //mySwiper.onResize();
-      //mySwiper.stopAutoplay();
-      //mySwiper.startAutoplay();
-
-      //=========================================
-
-      USAN.aspotSlider = {};
-
       // vars
       var aspotSlider = null,
           slidesSettings = [],

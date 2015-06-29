@@ -19909,6 +19909,11 @@ footer h2 {
     width: 87%;
   }
 }
+@media (max-width: 640px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div {
+    width: 150px;
+  }
+}
 #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
   padding: 20px 0 20px calc(14% + 2px);
 }

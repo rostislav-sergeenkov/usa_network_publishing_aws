@@ -32,16 +32,24 @@
       }
     }
     .meta-back {
-      display: none;
+      bottom: 0;
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      @include breakpoint($bp-min-769-width) {
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+        background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+        background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+      }
       @include breakpoint($bp-768-width) {
         background: #000000;
-        bottom: 0;
-        display: block;
-        height: 100%;
         opacity: 0.6;
-        overflow: hidden;
-        position: absolute;
-        width: 100%;
       }
     }
     .meta {
@@ -680,7 +688,7 @@
     .meta-wrapper {
       background: $video-promo-back-gray;
       bottom: 0;
-      height: 45%;
+      height: 33%;
       position: absolute;
       width: 100%;
       z-index: 1;
@@ -1819,6 +1827,11 @@
       position: absolute;
       top: 50%;
       width: get-vw(80px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        height: 80px;
+        margin-top: -40px;
+        width: 80px;
+      }
       @include breakpoint($bp-768-width) {
         height: get-vw(26px, 480);
         margin-top: get-vw(-13px, 480);
@@ -1831,6 +1844,9 @@
       }
       ~ .meta {
         padding-left: calc(8% + 4.2vw);
+        @include breakpoint($bp-min-1901-width) {
+          padding-left: calc(8% + 80px);
+        }
         @include breakpoint($bp-768-width) {
           padding-left: calc(8% + 5.417vw);
         }

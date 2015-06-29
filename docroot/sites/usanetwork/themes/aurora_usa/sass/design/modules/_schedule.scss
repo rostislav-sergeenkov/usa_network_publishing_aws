@@ -6,8 +6,8 @@
       text-align: right;
       margin: 20px 20px 20px 0;
       @include clear;
-      @include breakpoint($bp-768-width) {
-        margin-right: 5px;
+      @include breakpoint($bp-480-width) {
+        margin-right: 9px;
       }
       @include breakpoint($bp-320-width) {
         text-align: left;
@@ -25,7 +25,7 @@
         }
         @include breakpoint($bp-480-width) {
           min-width: 122px;
-          margin-right: 10px;
+          margin-right: 5px;
         }
         &:last-child {
           margin-right: 0;
@@ -104,7 +104,7 @@
             margin-top: 29px;
           }
           @include breakpoint($bp-1280-width){
-            margin-top: 24px;
+            margin-top: 23px;
           }
           li {
             overflow: hidden;
@@ -116,9 +116,9 @@
               font-size: 20px;
               font-family: $avalon-medium;
               height: 100%;
-              line-height: 22px;
+              line-height: 25px;
               text-align: left;
-              padding: 9px 20px;
+              padding: 10px 20px;
               text-decoration: none;
               width: 100%;
               &:hover, &.active {
@@ -126,11 +126,12 @@
               }
               @include breakpoint($bp-1280-width){
                 font-size: 17px;
-                line-height: 12px;
+                line-height: 20px;
+                padding: 5px 20px;
               }
               @include breakpoint($bp-480-width){
                 font-size: 12px;
-                line-height: 12px;
+                line-height: 15px;
               }
             }
           }
@@ -537,15 +538,29 @@
                 }
               }
               .open-description {
-                @include sprite-background(plus-icon-round);
-                display: block;
-                position: absolute;
-                margin-left: -18.5px;
-                margin-top: -18.5px;
                 right: 50px;
+                display: block;
+                height: 37px;
+                line-height: 37px;
+                width: 45px;
+                position: absolute;
+                margin-top: -17.5px;
                 top: 50%;
+                color: $poll-color;
                 @include breakpoint($bp-640-width) {
                   right: 0;
+                }
+                @include breakpoint($bp-480-width) {
+                  width: 37px;
+                }
+                &:before {
+                  content: '\e61c';
+                  font-family: "ico-font";
+                  font-size: 45px;
+                  width: auto;
+                  @include breakpoint($bp-480-width) {
+                    font-size: 30px;
+                  }
                 }
               }
             }
@@ -662,7 +677,9 @@
                   }
                 }
                 .open-description {
-                  @include sprite-background(minus-icon-round);
+                  &:before {
+                    content: '\e61b';
+                  }
                 }
               }
             }

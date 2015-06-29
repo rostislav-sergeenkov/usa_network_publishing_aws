@@ -4,11 +4,11 @@
 
   Drupal.behaviors.usanetwork_episodes_autoloader = {
     loadPageItems: function(eventClick) {
-      var showNid = $('.episode-landing-list-items-seasons').data('show-nid'),
+      var showNid = $('.landing-list-items-all').data('show-nid'),
           click = eventClick || '';
 
       if (showNid > 0) {
-        Drupal.settings.lastSeasonNumber = $('.episode-landing-list-items-seasons .episode-landing-list-items-season').last().data('season-number');
+        Drupal.settings.lastSeasonNumber = $('.landing-list-items-all .landing-list-items-one-item').last().data('season-number');
 
         if (Drupal.settings.lastSeasonNumber > 1) {
           Drupal.settings.newSeasonNumber = Drupal.settings.lastSeasonNumber - 1;
@@ -54,7 +54,7 @@
             if (Drupal.settings.newSeasonNumber != 1) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
             } else {
-              $('#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-items-seasons').css({'margin-bottom' : '0px'});
+              $('#block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all').css({'margin-bottom' : '0px'});
             }
           },
           error: function () {

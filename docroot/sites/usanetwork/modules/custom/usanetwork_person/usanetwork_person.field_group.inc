@@ -23,8 +23,8 @@ function usanetwork_person_field_group_info() {
     'label' => 'Microsite Character Info',
     'weight' => '3',
     'children' => array(
-      0 => 'field_person_ms_character_bio',
-      1 => 'field_person_ms_background',
+      0 => 'field_person_ms_background',
+      1 => 'field_person_ms_character_bio',
       2 => 'field_quotation',
     ),
     'format_type' => 'tab',

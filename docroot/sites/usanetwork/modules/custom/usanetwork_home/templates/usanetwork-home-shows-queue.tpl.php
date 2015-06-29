@@ -30,8 +30,8 @@
           </li>
         <?php endforeach; ?>
       </ul>
-      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
-      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
     </div>
   <?php endif; ?>
 </div>

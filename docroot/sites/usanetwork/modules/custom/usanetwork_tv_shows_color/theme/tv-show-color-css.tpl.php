@@ -13,6 +13,9 @@
 .show-<?php print $node_code; ?> .icons-block a {
   color: <?php print $primary_color_code; ?>!important;
 }
+.show-<?php print $node_code; ?> .person-quotation:before, .show-<?php print $node_code; ?> .person-quotation:after {
+  color: <?php print $primary_color_code; ?>!important;
+}
 .show-<?php print $node_code; ?> .show-color, .show-<?php print $node_code; ?>.show-color {
   background: <?php print $primary_color_code; ?>;
 }

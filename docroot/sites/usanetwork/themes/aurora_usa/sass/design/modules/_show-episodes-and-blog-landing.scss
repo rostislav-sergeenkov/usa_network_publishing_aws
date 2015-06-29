@@ -1,4 +1,4 @@
-#block-usanetwork-episodes-usa-landing-tvep-list-block {
+#block-usanetwork-episodes-usa-landing-tvep-list-block, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
   @include clear();
   color: $poll-color;
   position: relative;
@@ -43,7 +43,7 @@
             top: 5px;
           }
         }
-        .image-block, .airing-date, .expiration-date, .description {
+        .image-block, .airing-date, .expiration-date, .description, .tags {
           @include breakpoint($bp-640-width) {
             display: block;
           }
@@ -151,12 +151,24 @@
         }
       }
       .airing-date,
-      .expiration-date {
+      .expiration-date,
+      .posted-date {
         font-family: $tex-gyreschola-italic;
         text-transform: uppercase;
         font-size: 18px;
         @include breakpoint($bp-1280-width) {
           font-size: 12px;
+        }
+      }
+      .tags {
+        font-family: $avalon-book;
+        text-transform: uppercase;
+        font-size: 18px;
+        @include breakpoint($bp-1280-width) {
+          font-size: 12px;
+        }
+        span {
+          font-family: $avalon-medium;
         }
       }
       .description {
@@ -179,7 +191,7 @@
           }
         }
       }
-      .image-block, .airing-date, .expiration-date, .description {
+      .image-block, .airing-date, .expiration-date, .description, .tags {
         @include breakpoint($bp-640-width) {
           display: none;
         }
@@ -271,11 +283,13 @@
               font-size: 12px;
               padding: 5px 35px 5px 10px;
             }
-            @include breakpoint($between-641-768) {
+            @include breakpoint($between-769-990) {
               font-size: 10px;
+              padding: 5px 0 5px calc(5% + 5px);
             }
-            @include breakpoint($bp-640-width) {
-              padding: 8px 35px 8px 10px;
+            @include breakpoint($bp-768-width) {
+              padding: 8px 25px 8px 10px;
+              font-size: 10px;
             }
             .font-icon {
               background: #ffffff;
@@ -311,14 +325,14 @@
       }
       .links {
         float: right;
-        width: 36%;
+        width: 37%;
         @include breakpoint($between-641-768) {
           margin-top: 12px;
           width: 50%;
         }
         @include breakpoint($bp-640-width) {
           margin-top: 20px;
-          width: 50%;
+          width: 100%;
         }
         > a {
           display: block;
@@ -375,7 +389,7 @@
       }
     }
   }
-  .episode-landing-list-items-seasons {
+  .landing-list-items-all {
     @include clear();
     margin-bottom: 100px;
     position: relative;
@@ -532,6 +546,69 @@
     }
   }
 }
-
+#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
+  .episode-landing-list-item {
+    &.active {
+      .episode-landing-info-block {
+        .title {
+          @include breakpoint($bp-640-width) {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .posted-date {
+        @include breakpoint($bp-640-width) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .buttons-bar {
+      @include breakpoint($between-641-768) {        
+        width: 49.5%;
+        float: right;
+      }
+      .buttons {
+        > div {
+          width: 36%;
+          @include breakpoint($between-641-768) {
+            width: 87%;
+          }
+          a {
+            padding: 20px 0 20px calc(14% + 2px);
+            @include breakpoint($bp-1280-width) {
+              padding: 10px 0 10px calc(14% + 2px);
+            }
+            @include breakpoint($bp-1024-width) {
+              padding: 5px 0 5px calc(14% + 2px);
+            }
+            @include breakpoint($bp-640-width) {
+              padding: 5px 0 5px calc(12% + 2px);
+            }
+          }
+          &:after {
+            content: "\e608";
+            color: #ffffff;
+            font-family: "ico-font";
+            font-size: 11px;
+            display: block;
+            position: absolute;
+            right: 13%;
+            top: 50%;
+            margin-top: -5px;
+            line-height: 1;
+            z-index: 3;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 14px;
+              margin-top: -7px;
+            }
+            @include breakpoint($bp-1024-width) {
+              right: 11%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 

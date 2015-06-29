@@ -4065,16 +4065,9 @@ function usanetwork_promo_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 28,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -4133,10 +4126,9 @@ function usanetwork_promo_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 27,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'microsite_output' => array(
         'label' => 'above',

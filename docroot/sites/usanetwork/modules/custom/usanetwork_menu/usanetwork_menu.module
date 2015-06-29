@@ -357,6 +357,15 @@ function usanetwork_menu_theme() {
       ),
       'template' => 'templates/usanetwork-menu-consumptionator_gallery',
     ),
+    'usanetwork_menu_consumptionator_timeline_gallery' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'gallery_name' => NULL,
+        'details' => array(),
+      ),
+      'template' => 'templates/usanetwork-menu-consumptionator_timeline_gallery',
+    ),
     'usanetwork_menu_consumptionator_episode_guide' => array(
       'variables' => array(
         'show_url' => NULL,
@@ -374,6 +383,24 @@ function usanetwork_menu_theme() {
         'details' => array(),
       ),
       'template' => 'templates/usanetwork-menu-consumptionator_person',
+    ),
+    'usanetwork_menu_consumptionator_quiz' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'person_name' => NULL,
+        'details' => array(),
+      ),
+      'template' => 'templates/usanetwork-menu-consumptionator_quiz',
+    ),
+    'usanetwork_menu_consumptionator_post' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'h1' => NULL,
+        'details' => array(),
+      ),
+      'template' => 'templates/usanetwork-menu-consumptionator_post',
     ),
     'usanetwork_menu_consumptionator_live_video' => array(
       'variables' => array(
@@ -462,6 +489,26 @@ function usanetwork_menu_image_default_styles() {
   );
 
   return $styles;
+}
+
+
+/**
+ * Alter gigya share settings.
+ */
+function usanetwork_menu_gigya_sharebar_alter(&$share_settings, $context) {
+  if ($context['entity_type'] == 'node') {
+    $node = $context['entity'];
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    if ($node->type == 'catchall_page') {
+      $share_settings['gigyaSharebar']['ua']['description'] = !empty($node->field_usa_og_description) ? $node_wrapper->field_usa_og_description->value() : '';
+    }
+    if (!empty($node->field_share_title)) {
+      $share_settings['gigyaSharebar']['ua']['title'] = $node_wrapper->field_share_title->value();
+    }
+    if (!empty($node->field_share_description)) {
+      $share_settings['gigyaSharebar']['ua']['description'] = $node_wrapper->field_share_description->value();
+    }
+  }
 }
 
 /**
@@ -1008,6 +1055,15 @@ function _usanetwork_menu_consumptionator_block() {
       elseif ($entity->type == 'tv_episode') {
         return _usanetwork_menu_consumptionator_episode_guide($entity);
       }
+      elseif ($entity->type == 'timeline_gallery') {
+        return _usanetwork_menu_consumptionator_block_timeline_gallery($entity);
+      }
+      elseif ($entity->type == 'quiz') {
+        return _usanetwork_menu_consumptionator_block_quiz($entity);
+      }
+      elseif ($entity->type == 'consumpt_post') {
+        return _usanetwork_menu_consumptionator_block_consumpt_post($entity);
+      }
       elseif ($entity->type == 'usanetwork_microsite') {
         return _usanetwork_menu_consumptionator_usanetwork_microsite($entity);
       }
@@ -1066,7 +1122,7 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     if (!empty($node->field_cover_item)) {
       $image = $entity_wrapper->field_cover_item->value();
     }
-    if (!empty($node->field_gigya_share_bar)) {
+    if (isset($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this gallery');
     }
@@ -1108,6 +1164,40 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
       ),
     );
     return theme('usanetwork_menu_consumptionator_gallery', $theme_variables);
+  }
+  return '';
+}
+
+
+/**
+ * Renders Consumtionator Menu block for gallery.
+ */
+function _usanetwork_menu_consumptionator_block_timeline_gallery($node) {
+
+  if (!empty($node)) {
+
+    $entity_wrapper = entity_metadata_wrapper('node', $node);
+    if (!empty($node->field_cover_item)) {
+      $image = $entity_wrapper->field_cover_item->value();
+    }
+    if (isset($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this gallery');
+    }
+    $theme_variables = array(
+      'main_url' => url('<front>'),
+      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'gallery_name' => !empty($node->title) ? $node->title : '',
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'details' => array(
+        'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+        'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
+        'description' => !empty($node->field_summary) ? $entity_wrapper->field_summary->value() : '',
+        'gallery_type' => t('Timeline Gallery'),
+      ),
+    );
+    return theme('usanetwork_menu_consumptionator_timeline_gallery', $theme_variables);
   }
   return '';
 }
@@ -1198,6 +1288,75 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       ),
     );
     return theme('usanetwork_menu_consumptionator_person', $theme_variables);
+  }
+  return '';
+}
+
+/**
+ * Renders Consumtionator Menu block for person.
+ */
+function _usanetwork_menu_consumptionator_block_quiz($node) {
+
+  if (!empty($node)) {
+
+    $entity_wrapper = entity_metadata_wrapper('node', $node);
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    if (isset($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this quiz');
+    }
+    $theme_variables = array(
+      'main_url' => url('<front>'),
+      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'quiz_name' => !empty($node->title) ? $node->title : '',
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'details' => array(
+        'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
+        'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
+            (!empty($node->body) ? $entity_wrapper->body->value->value() : ''),
+        'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+      ),
+    );
+    return theme('usanetwork_menu_consumptionator_quiz', $theme_variables);
+  }
+  return '';
+}
+
+/**
+ * Renders Consumtionator Menu block for person.
+ */
+function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
+
+  if (!empty($node)) {
+
+    $entity_wrapper = entity_metadata_wrapper('node', $node);
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_post_cover)) {
+      $image = $entity_wrapper->field_post_cover->value();
+    }
+    if (isset($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share this post');
+    }
+    $theme_variables = array(
+      'main_url' => url('<front>'),
+      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'post_name' => !empty($node->title) ? $node->title : '',
+      'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'details' => array(
+        'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
+        'description' => !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
+            (!empty($node->field_summary) ? $entity_wrapper->field_summary->value->value() : ''),
+        'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+      ),
+    );
+    return theme('usanetwork_menu_consumptionator_post', $theme_variables);
   }
   return '';
 }

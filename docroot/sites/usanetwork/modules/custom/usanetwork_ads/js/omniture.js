@@ -112,7 +112,7 @@
 
         showName = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').html().split('<br>');
         name = $self.data('name').trim();
-        item_name = name.charAt(0).toUpperCase() + name.substr(1) + ' : ' +showName[0].trim();
+        item_name = name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + showName[0].trim();
 
       } else if ($self.hasClass('on-now-link')) {
         //
@@ -399,69 +399,7 @@
       //redesign
       if (!$('body').hasClass('page-node-microsite')) {
 
-        // Home Page A-spot click
-        //$( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
-        //".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
-        $('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            e.preventDefault();
-
-            var target = $(this),
-                page = $('body').hasClass('page-home') ? 'Home' : 'Show',
-                pageName = page + ' Page A-Spot ',
-                name,
-                fullName;
-
-            if (target.hasClass('asset-img-link')) {
-
-              name = 'Image';
-
-            } else if(target.hasClass('cta-button-link')) {
-
-              name = target.data('cta-link');
-
-            } else if(target.hasClass('social-meter-link')) {
-
-              name = 'Social';
-
-            } else {
-
-              name = '';
-
-            }
-
-            fullName = pageName + name;
-
-            Drupal.behaviors.omniture_tracking.promoClick(target, fullName);
-          })
-        });
-
-
-        // Click promo item
-        $('.usa-wrap .node-usanetwork-promo a,' +
-        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +
-        '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            e.preventDefault();
-            var self = $(this);
-            if(self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
-
-              var name = 'Home Page Show Card Carousel',
-                item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text(),
-                prop4 = item_show_name + ' : Home Page Show Card',
-                prop10 = item_show_name;
-
-              Drupal.behaviors.omniture_tracking.showCardPromoClick(self, name, prop4, prop10);
-            } else {
-              Drupal.behaviors.omniture_tracking.globalPromoClick(self);
-            }
-          });
-        });
-      });
-
-      if(!$('body').hasClass('page-node-microsite')) {
-
-         // Click on submenu item
+        // Click on submenu item
         $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
         '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
         '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
@@ -485,16 +423,66 @@
           });
         });
 
-       // Click promo item
+        // Home Page A-spot click
+        //$( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
+        //".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
+        $('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            e.preventDefault();
+
+            var target = $(this),
+                page = $('body').hasClass('page-home') ? 'Home' : 'Show',
+                pageName = page + ' Page A-Spot ',
+                name,
+                fullName;
+
+            if (target.hasClass('asset-img-link')) {
+              name = 'Image';
+            } else if (target.hasClass('cta-button-link')) {
+              name = target.data('cta-link');
+            } else if (target.hasClass('social-meter-link')) {
+              name = 'Social';
+            } else {
+              name = '';
+            }
+
+            fullName = pageName + name;
+
+            Drupal.behaviors.omniture_tracking.promoClick(target, fullName);
+          })
+        });
+
+
+        // Click promo item
         $('.usa-wrap .node-usanetwork-promo a,' +
-        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
+        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +
+        '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             e.preventDefault();
             var self = $(this);
-            Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+            if (self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
+
+              var name = 'Home Page Show Card Carousel',
+                  item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text(),
+                  prop4 = item_show_name + ' : Home Page Show Card',
+                  prop10 = item_show_name;
+
+              Drupal.behaviors.omniture_tracking.showCardPromoClick(self, name, prop4, prop10);
+            } else {
+              Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+            }
           });
         });
 
+        // Click promo item
+        //$('.usa-wrap .node-usanetwork-promo a,' +
+        //'#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
+        //  $(this).on('click', function (e) {
+        //    e.preventDefault();
+        //    var self = $(this);
+        //    Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+        //  });
+        //});
 
         // Click on submenu schedule items
         $('header .schedule-tab a').once('omniture-tracking', function () {
@@ -508,38 +496,28 @@
                   paneTitle,
                   itemName;
 
-              if($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-now-and-next').length > 0) {
+              if ($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-now-and-next').length > 0) {
 
                 paneTitle = $self.closest('.node-usanetwork-promo').find('h2').text().trim();
                 itemName = $self.closest('.node-usanetwork-promo').find('.title').text().trim();
 
-                if($self.hasClass('live-icon')){
-
+                if ($self.hasClass('live-icon')) {
                   name = $self.text().trim();
-
-                } else if($self.data('name') === 'description' || $self.data('name') === 'reminder') {
-
+                } else if ($self.data('name') === 'description' || $self.data('name') === 'reminder') {
                   name = $self.data('name');
                   sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
-
                 } else {
-
                   sub_menu_name = $self.text();
-
                 }
 
-              } else if($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-primetime').length > 0) {
-
+              } else if ($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-primetime').length > 0) {
                 name = $self.data('name');
                 paneTitle = $('.pane-usanetwork-menu-usanetwork-menu-sm-primetime h2.pane-title').text().trim();
                 itemName = $self.closest('.schedule-item').find('.episode-show').text().trim();
                 sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
-
               } else {
-
                 name = $self.text();
                 sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
-
               }
 
               Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
@@ -592,21 +570,13 @@
               var name = '';
 
               if ($(this).closest('.gallery-wrapper').length > 0) {
-
                 name = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text();
-
               } else if ($(this).closest('header .tab-item-wrapper').length > 0) {
-
                 name = $('header .tab-item-wrapper .node-usanetwork-promo .title').text();
-
               } else if ($(this).closest('.block-character-info-header').length > 0) {
-
                 name = $('.block-character-info-header .full-name').text();
-
               } else if ($(this).closest('.episode-info-block').length > 0) {
-
                 name = $('.episode-info-block .episode-title').text();
-
               }
 
               s.linkTrackVars = 'events,eVar73,eVar74';

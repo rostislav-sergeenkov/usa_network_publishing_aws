@@ -73,6 +73,8 @@
 
         Drupal.behaviors.mpsAdvert.mpsMakeRequest();
         Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+
+        // init sponsored for ajax content mid-banner
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(listElem, 'dark');
       }
     },

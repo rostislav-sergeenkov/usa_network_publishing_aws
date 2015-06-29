@@ -21,7 +21,7 @@
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>
-          <span><?php if (!empty($details['episode_type'])): ?><?php print $details['episode_type'] . ': '; ?><?php endif; ?><?php print $episode_name; ?></span>
+          <span><?php print t('Episode guide: '); ?><?php print $episode_name; ?></span>
         </a>
       </h2>
     </div>
@@ -65,9 +65,9 @@
               <?php print $details['description']; ?>
             </div>
           <?php endif; ?>
-          <?php if (!empty($sharebar)): ?>
+          <?php if (!empty($details['sharebar'])): ?>
             <div class="sharebar">
-              <?php print $sharebar; ?>
+              <?php print $details['sharebar']; ?>
             </div>
           <?php endif; ?>
         </div>
@@ -75,4 +75,3 @@
     </div>
   </div>
 </div>
-

@@ -181,33 +181,34 @@
         }
       }
     }
-    .tve-help-link {
-      float: right;
-      display: table;
-      height: 100%;
-      @include breakpoint($bp-768-width) {
-        display: none;
-      }
-      a {
-        color: #ffffff;
-      }
-      &.signOut {
-        &:hover {
-          background: $consup-border;
-        }
-        .links-wrapper {
-          border-left: 1px solid $consup-border;
-        }
-      }
-      &.signIn {
-        &.no-auth {
-          border-left: 1px solid $consup-border;
-          &:hover {
-            background: $consup-border;
-          }
-        }
-      }
-    }
+//    .tve-help-link {
+//      background: none;
+//      float: right;
+//      display: block;
+//      height: 100%;
+//      @include breakpoint($bp-768-width) {
+//        display: none;
+//      }
+//      a {
+//        color: #ffffff;
+//      }
+//      &.signOut {
+//        &:hover {
+//          background: $consup-border;
+//        }
+//        .links-wrapper {
+//          border-left: 1px solid $consup-border;
+//        }
+//      }
+//      &.signIn {
+//        &.no-auth {
+//          border-left: 1px solid $consup-border;
+//          &:hover {
+//            background: $consup-border;
+//          }
+//        }
+//      }
+//    }
     .tab-content {
       @include breakpoint($bp-768-width) {
         display: block;
@@ -320,7 +321,7 @@
                   font-size: 10px;
                 }
               }
-              .title, h1 {
+              .title, h1, h2 {
                 font-family: $avalon-medium;
                 font-size: get-vw(15px, 1025);
                 letter-spacing: 1px;
@@ -419,7 +420,11 @@
       z-index: 2;
     }
     .header-nav-bar {
-
+      &.tve-sign {
+        @include breakpoint($between-769-1024) {
+          margin-bottom: 35px;
+        }
+      }
       .nav-bar-tabs {
         max-width: calc(100% - 17vw);
         @include breakpoint($bp-min-1901-width) {
@@ -435,11 +440,52 @@
           border-right: none;
         }
       }
+      .tve-help-link {
+        background: none;
+        float: right;
+        display: block !important;
+        height: 100%;
+        @include breakpoint($bp-768-width) {
+          display: none !important;
+        }
+        a {
+          color: #ffffff;
+        }
+        &.signOut {
+          &:hover {
+            background: $consup-border;
+          }
+          .links-wrapper {
+            border-left: 1px solid $consup-border;
+          }
+        }
+        &.signIn {
+          &.no-auth {
+            border-left: 1px solid $consup-border;
+            &:hover {
+              background: $consup-border;
+            }
+          }
+        }
+      }
     }
   }
 }
 .page-videos-live {
   header {
+    .region-header {
+      &:not(.sticky-shows-submenu) {
+        .block-usanetwork-menu {
+          &.sign-enable {
+            @include breakpoint($bp-min-769-width) {
+              .tab-content {
+                top: calc(100% - 35px);
+              }
+            }
+          }
+        }
+      }
+    }
     .header-nav-bar {
       &.tve-sign {
         margin-bottom: 35px;
@@ -460,13 +506,6 @@
             }
           }
         }
-      }
-    }
-  }
-  .tve-help-link {
-    ul.tve-header-links {
-      li.first {
-
       }
     }
   }

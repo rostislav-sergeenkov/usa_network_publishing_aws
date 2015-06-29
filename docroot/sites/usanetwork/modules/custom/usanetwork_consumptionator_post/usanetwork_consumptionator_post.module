@@ -1,0 +1,562 @@
+<?php
+
+/**
+ * @file
+ * Code for the Post feature.
+ */
+include_once 'usanetwork_consumptionator_post.features.inc';
+
+define('USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS', 10);
+define('USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH', 410);
+
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_consumptionator_post_theme() {
+
+  return array(
+
+    'usanetwork_cons_post_main' => array(
+      'variables' => array(
+        'rendered_quiz' => NULL,
+        'rendered_carousel' => NULL,
+      ),
+      'template' => 'templates/usanetwork-cons-post-main',
+    ),
+    'usanetwork_cons_post_carousel' => array(
+      'variables' => array(
+        'quizes' => array(),
+      ),
+      'template' => 'templates/usanetwork-cons-post-carousel',
+    ),
+    'usanetwork_cons_post_carousel_item_h' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'active' => NULL,
+      ),
+      'template' => 'templates/usanetwork-cons-post-carousel-item-h',
+    ),
+    'usanetwork_cons_post_carousel_item_v' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'active' => NULL,
+      ),
+      'template' => 'templates/usanetwork-cons-post-carousel-item-v',
+    ),
+    'usanetwork_cons_post_gallery_rec' => array(
+      'variables' => array(
+        'gallery_html' => NULL,
+        'block_title' =>NULL,
+      ),
+      'template' => 'templates/usanetwork-cons-post-gallery-rec',
+    ),
+    'usanetwork_blog_landing_posts_list_item' => array(
+      'variables' => array(
+        'blog_url' => NULL,
+        'desktop_image_url' => NULL,
+        'title' => NULL,
+        'description' => NULL,
+        'post_date' => NULL,
+      ),
+      'template' => 'templates/usanetwork-blog-landing-posts-list-item',
+    ),
+    'usanetwork_blog_landing_posts' => array(
+      'variables' => array(
+        'items' => array(),
+        'ad' => NULL,
+        'title' => NULL,
+        'show_nid' => NULL,
+      ),
+      'template' => 'templates/usanetwork-blog-landing-posts',
+    ),
+  );
+}
+
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_consumptionator_post_menu() {
+  $items = array();
+  $items['ajax/usanetwork-post/get-related/%node/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => '_usanetwork_consumptionator_post_get_related_content_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['node/%node/blog'] = array(
+    'title' => 'Blog',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_consumptionator_post_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['ajax/usanetwork-blog-posts/get-related/%node/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_consumptionator_post_blog_get_posts_ajax',
+    'page arguments' => array(3, 4),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_consumptionator_post_block_info() {
+
+  $blocks['usanetwork_cons_post_related'] = array(
+    'info' => t('Blog Consumptionator: Related Content'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  $blocks['usanetwork_cons_post_main'] = array(
+    'info' => t('Blog Consumptionator: Main Block'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  $blocks['usa_landing_blog_post_list_block'] = array(
+    'info' => t('Usanetwork blog: List'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_consumptionator_post_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_cons_post_related':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_consumptionator_post_related_content_block();
+      break;
+    case 'usanetwork_cons_post_main':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_consumptionator_post_main_block();
+      break;
+    case 'usa_landing_blog_post_list_block':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_consumptionator_post_get_blog_posts_list_block();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Renders Block entity of related content items.
+ */
+function _usanetwork_consumptionator_post_related_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+  $content = menu_get_object('node');
+
+  if (!empty($content)) {
+    $show_field = field_get_items('node', $content, 'field_show');
+
+    if (!empty($show_field)) {
+      $tv_show_node = node_load($show_field[0]['target_id']);
+
+      $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($tv_show_node);
+
+      $related_content = _usanetwork_tv_shows_cache_get_limited_related_content(
+        $tv_show_node, $content->type, 0,
+        !empty($you_may_also_like_item)
+          ? USA_QUIZ_RELATED_CONTENT_ITEMS - 1
+          : USA_QUIZ_RELATED_CONTENT_ITEMS
+      );
+
+      if (!empty($you_may_also_like_item)) {
+        $related_content[] = $you_may_also_like_item;
+      }
+
+      if (!empty($related_content)) {
+        drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+        drupal_add_js(array(
+          'usanetwork_tv_show_nid' => $tv_show_node->nid,
+          'usanetwork_tv_show_page_context' => 'usanetwork-post',
+          'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
+        ), 'setting');
+
+        $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
+
+        return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
+          'related_items_block' => $block_of_items,
+          'load_more_link' => TRUE,
+          'show_nid' => $tv_show_node->nid,
+          'items_pre_page_limit' => USA_QUIZ_RELATED_CONTENT_ITEMS,
+        ));
+      }
+    }
+  }
+}
+
+function _usanetwork_consumptionator_post_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => TRUE,
+    'rendered' => '',
+  );
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'post', $start_from, $limit + 1);
+  if (!empty($related_content)) {
+    if (count($related_content) > $limit) {
+      $response['overlimited'] = FALSE;
+      $related_content = array_slice($related_content, 0, $limit);
+    }
+    $response['rendered'] = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
+    $response['total'] = count($related_content);
+    $response['found'] = TRUE;
+  }
+  return drupal_json_output($response);
+}
+
+/**
+ * Renders main block for quiz landing page.
+ */
+function _usanetwork_consumptionator_post_main_block() {
+
+  $node = menu_get_object('node');
+  if (isset($node->type) && $node->type == 'consumpt_post') {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    if (isset($node->field_gigya_share_bar)) {
+      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+      $sharebar['#title'] = t('Share');
+    }
+    if (!empty($node->field_content_tags)) {
+      $tags = $node_wrapper->field_content_tags->value();
+      $tags_names = array();
+      foreach ($tags as $tag) {
+        $tags_names[] = $tag->name;
+      }
+      $tags_names = implode(', ', $tags_names);
+    }
+    $creating_date = !empty($node->field_promo_created_ovts) ? $node_wrapper->field_promo_created_ovts->value() : $node->created;
+    $navigation_links = _usanetwork_consumptionator_post_get_post_nav_links($node);
+    if (!empty($node->field_post_cover)) {
+      $image = $node_wrapper->field_post_cover->value();
+    }
+    $theme_variables = array(
+      'title' => !empty($node->title) ? $node->title : '',
+      'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+      'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
+      'creating_date' => date('n/j/y', $creating_date),
+      'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
+      'tags' => !empty($tags_names) ? $tags_names : '',
+      'body' => !empty($node->body) ? $node_wrapper->body->value->value() : '',
+      'rendered_carousel' => !empty($node->field_show)
+          ? _usanetwork_consumptionator_post_posts_carousel($node_wrapper->field_show->nid->value(), $node->nid)
+          : '',
+      'source' => !empty($node->field_post_source) ? $node_wrapper->field_post_source->value() : '',
+      'gallery_rec' => !empty($node->field_gallery_recap)
+          ? _usanetwork_consumptionator_post_gallery_recap($node_wrapper->field_gallery_recap->nid->value())
+          : '',
+    );
+    return theme('usanetwork_cons_post_main', $theme_variables);
+  }
+  return '';
+}
+
+/*
+ * Renders posts carousel for blog.
+*/
+function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NULL) {
+
+  if (is_numeric($show_id)) {
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'consumpt_post')
+      ->fieldCondition('field_show', 'target_id', $show_id, '=')
+      ->propertyOrderBy('created');
+
+    $result = $query->execute();
+    if (isset($result['node'])) {
+      $posts = entity_load('node', array_keys($result['node']));
+      $rendered_items = array();
+      foreach ($posts as $post) {
+        if (!empty($post->field_post_cover)) {
+          $image = field_get_items('node', $post, 'field_post_cover');
+          $image = reset($image);
+        }
+        elseif (!empty($post->field_promo_image_override)) {
+          $image = field_get_items('node', $post, 'field_promo_image_override');
+          $image = reset($image);
+        }
+        if (!empty($post->field_post_source)) {
+          $post_source = field_get_items('node', $post, 'field_post_source');
+          $post_source = reset($post_source);
+          $post_source = $post_source['value'];
+        }
+        $episode_variables = array(
+          'title' => !empty($post->title) ? $post->title : '',
+          'additional' => !empty($post_source) ? $post_source : t('by Author'),
+          'url' => url('node/' . $post->nid),
+          'active' => ($post_id == $post->nid) ? TRUE : FALSE,
+          'icon_type' => usanetwork_core_api_get_media_icon('node', $post->nid),
+        );
+        $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
+        $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+        $rendered_items['horizontal'][] = theme('usanetwork_cons_post_carousel_item_h', $episode_variables);
+        $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+        $rendered_items['vertical'][] = theme('usanetwork_cons_post_carousel_item_v', $episode_variables);
+      }
+      $advert_block = module_invoke('mps', 'block_view', 'topbox');
+      if (!empty($advert_block['content'])) {
+        $advert = render($advert_block['content']);
+      }
+      $show_node = node_load($show_id);
+      $theme_variables = array(
+        'posts' => !empty($rendered_items) ? $rendered_items : array(),
+        'advert_block' => isset($advert) ? $advert : NULL,
+        'block_title' => t('@show_name blog', array('@show_name' => $show_node->title)),
+        'posts_landing_link' => l('View all posts', 'node/' . $show_id . '/blog'),
+      );
+      return theme('usanetwork_cons_post_carousel', $theme_variables);
+    }
+  }
+  return '';
+}
+
+/*
+ * Renders usanetwork_episodes_gallery_recap block.
+*/
+function _usanetwork_consumptionator_post_gallery_recap($gallery_id) {
+
+  if (is_numeric($gallery_id)) {
+    $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id));
+    $theme_variables = array(
+      'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
+      'block_title' => t('Gallery Recap'),
+    );
+
+    return theme('usanetwork_cons_post_gallery_rec', $theme_variables);
+  }
+  return '';
+}
+
+
+function usanetwork_consumptionator_post_blank_page() {
+  return '';
+}
+
+function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_node = NULL, $offset = 0, $show_ad = FALSE, $ajax_load = FALSE) {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  if ($tv_show_node === NULL) {
+    $tv_show_node = menu_get_object();
+  }
+
+  if (empty($tv_show_node) || (!empty($tv_show_node) && isset($tv_show_node->type) && $tv_show_node->type != 'tv_show')) {
+    return '';
+  }
+
+  $count = _usanetwork_consumptionator_post_get_posts_count($tv_show_node->nid);
+  $last_element_index = $offset * USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS + USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS;
+  $load_more_link = TRUE;
+  if ($last_element_index >= $count) {
+    $load_more_link = FALSE;
+  }
+  $theme_variables = array(
+    'items' => array(),
+    'ad' => FALSE,
+    'title' => NULL,
+    'show_nid' => $tv_show_node->nid,
+    'ajax_load' => $ajax_load,
+    'load_more_link' => $load_more_link,
+  );
+
+  $posts_data = _usanetwork_consumptionator_post_get_posts_data($tv_show_node->nid, $offset);
+
+  if ($show_ad === FALSE) {
+    $theme_variables['ad'] = FALSE;
+  }
+  else {
+    $theme_variables['ad'] = TRUE;
+  }
+
+  $theme_variables['title'] = $tv_show_node->title . ' blog';
+
+  if (!empty($posts_data)) {
+    foreach ($posts_data as $post_data_index => $post_data) {
+      $cover_file = entity_load('file', array($post_data->post_cover_fid));
+      if (!empty($cover_file)) {
+        $cover_file = reset($cover_file);
+        $cover_uri = $cover_file->uri;
+      }
+      $theme_item_variables = array(
+        'blog_url' => isset($post_data->nid)
+          ? url('node/' . $post_data->nid)
+          : NULL,
+        'desktop_image_url' => image_style_url('677x381', $cover_uri),
+        'title' => $post_data->title,
+        'description' => $post_data->description,
+        'post_date' => !empty($post_data->created)
+          ? gmdate('m/d/Y', $post_data->created)
+          : NULL,
+        'tags' => $post_data->tags,
+        'active' => (!$ajax_load && $post_data_index == 0) ? TRUE : FALSE,
+      );
+
+      $theme_variables['items'][] = theme('usanetwork_blog_landing_posts_list_item', $theme_item_variables);
+    }
+  }
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
+
+  return !empty($theme_variables['items'])
+    ? theme('usanetwork_blog_landing_posts', $theme_variables)
+    : '';
+}
+
+function _usanetwork_consumptionator_post_get_posts_data($show_nid, $offset = 0) {
+  $cache_name = 'blog_landing_page_' . $show_nid . '_' . $offset;
+  $cache = cache_get($cache_name);
+  if (empty($cache)) {
+    $query = db_select('node', 'cp');
+    $query->fields('cp', array('nid', 'title'));
+    $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
+    $query->addField('show_field', 'field_show_target_id', 'show_nid');
+    $query->leftJoin('field_data_body', 'body_field', 'body_field.entity_id=cp.nid');
+    $query->addField('body_field', 'body_value', 'body');
+    $query->leftJoin('field_data_field_summary', 'field_summary', 'field_summary.entity_id=cp.nid');
+    $query->addField('field_summary', 'field_summary_value', 'summary');
+    $query->leftJoin('field_data_field_post_cover', 'post_cover', 'post_cover.entity_id=cp.nid');
+    $query->addField('post_cover', 'field_post_cover_fid', 'post_cover_fid');
+    $query->leftJoin('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=cp.nid');
+    $query->addField('tags_field', 'field_content_tags_tid', 'tag_tid');
+    $query->leftJoin('taxonomy_term_data', 'term', 'term.tid=tags_field.field_content_tags_tid');
+    $query->leftJoin('field_data_field_promo_created_ovts', 'post_covts', 'post_covts.entity_id=cp.nid');
+    $query->addField('post_covts', 'field_promo_created_ovts_value', 'created');
+    $query->condition('cp.type', 'consumpt_post');
+    $query->condition('cp.status', NODE_PUBLISHED);
+    $query->condition('show_field.field_show_target_id', $show_nid);
+    $query->groupBy('cp.nid');
+    $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');
+    $query->orderBy('post_covts.field_promo_created_ovts_value', 'DESC');
+    $query->range($offset * USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS, USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS);
+    $result = $query->execute()->fetchAll();
+
+    if ($result) {
+      foreach ($result as &$result_item) {
+        $result_item->description = _usanetwork_consumptionator_post_get_season_episodes_description($result_item);
+      }
+    }
+    cache_set($cache_name, $result, 'cache', time() + 900);
+  }
+  else {
+    $result = $cache->data;
+  }
+  return $result;
+}
+
+function _usanetwork_consumptionator_post_get_posts_count($show_nid) {
+  $query = db_select('node', 'cp');
+  $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
+  $query->condition('cp.type', 'consumpt_post');
+  $query->condition('cp.status', NODE_PUBLISHED);
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->addExpression("COUNT(*)", 'count');
+  $result = $query->execute()->fetchObject();
+  return $result->count;
+}
+/**
+ * Picks correct description for TV Episode item of Episodes landing page.
+ * @param $result_item
+ * @return string
+ */
+function _usanetwork_consumptionator_post_get_season_episodes_description($result_item) {
+  if (!empty($result_item->summary)) {
+    return $result_item->summary;
+  }
+  if (!empty($result_item->body)) {
+    if (stripos($result_item->body, '<p>') === FALSE) {
+      return $result_item->body;
+    }
+    else {
+      $matches = array();
+
+      if (preg_match("#<p[^>]*>(.*)</p>#isU", $result_item->body, $matches)) {
+        return '<p>' . truncate_utf8($matches[1], USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH, TRUE, TRUE) . '</p>';
+      }
+    }
+  }
+
+  return '';
+}
+
+function usanetwork_consumptionator_post_blog_get_posts_ajax($tv_show_node, $offset) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => FALSE,
+    'rendered' => '',
+  );
+
+  $count = _usanetwork_consumptionator_post_get_posts_count($tv_show_node->nid);
+  $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_node, $offset, TRUE, TRUE);
+
+  $response['found'] = TRUE;
+  $response['rendered'] = $block;
+  $response['total'] = !empty($block) ? 1 : 0;
+
+  $last_element_index = $offset * USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS + USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS;
+  if ($last_element_index >= $count) {
+    $response['overlimited'] = TRUE;
+  }
+
+  return drupal_json_output($response);
+}
+
+function _usanetwork_consumptionator_post_get_post_nav_links($post_node) {
+  $node_wrapper = entity_metadata_wrapper('node', $post_node);
+  if (!empty($post_node->field_show)) {
+    $show_id = $node_wrapper->field_show->nid->value();
+    $post_creating_date = !empty($post_node->field_promo_created_ovts) ? $node_wrapper->field_promo_created_ovts->value() : $post_node->created;
+    $nav_links = array();
+    $query = db_select('node', 'node');
+    $query->fields('node', array('nid'));
+    $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+    $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
+    $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+    $query->condition('field_show.field_show_target_id', $show_id);
+    $query->condition('node.type', 'consumpt_post');
+    $query->havingCondition('sorted_time', $post_creating_date, '<');
+    $query->orderBy('sorted_time', 'DESC');
+    $query->range(0, 1);
+    $result = $query->execute()->fetchAssoc();
+    if (!empty($result)) {
+      $nav_links['previous'] = l(t('Previous post'), 'node/' . $result['nid'],  array('attributes' => array('class' => array('episode-change-link', 'previous'))));
+    }
+    $query = db_select('node', 'node');
+    $query->fields('node', array('nid'));
+    $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+    $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
+    $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+    $query->condition('field_show.field_show_target_id', $show_id);
+    $query->havingCondition('sorted_time', $post_creating_date, '>');
+    $query->orderBy('sorted_time', 'ASC');
+    $query->condition('node.type', 'consumpt_post');
+    $query->range(0, 1);
+    $result = $query->execute()->fetchAssoc();
+    if (!empty($result)) {
+      $nav_links['next'] = l(t('Next post'), 'node/' . $result['nid'],  array('attributes' => array('class' => array('episode-change-link', 'next'))));
+    }
+    return $nav_links;
+  }
+  return array();
+}

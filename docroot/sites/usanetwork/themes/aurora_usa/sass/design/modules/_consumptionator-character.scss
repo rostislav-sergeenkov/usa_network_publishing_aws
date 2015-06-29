@@ -141,7 +141,7 @@
           width: 42.62%;
         }
         @include breakpoint($bp-768-width) {
-          width: 38%;
+          width: 300px;
         }
         @include breakpoint($bp-640-width) {
           height: 56.25vw;
@@ -156,7 +156,7 @@
       }
       .advert {
         display: none;
-        @include breakpoint($between-769-1280) {
+        @include breakpoint($between-641-1280) {
           display: block;
         }
         @include breakpoint($bp-1280-width) {
@@ -168,6 +168,9 @@
         }
         @include breakpoint($bp-1024-width) {
           width: 42.62%;
+        }
+        @include breakpoint($bp-768-width) {
+          width: 300px;
         }
         .advertisement {
           height: 250px;
@@ -183,7 +186,7 @@
           width: 56%;
         }
         @include breakpoint($bp-768-width) {
-          width: 57%;
+          width: calc(100% - 310px);
         }
         @include breakpoint($bp-640-width) {
           padding: 10px 22px;
@@ -242,159 +245,58 @@
             font-size: 18px;
             color: $poll-color;
           }
+          .person-quotation {
+            font-size: 32px;
+            padding: 32px 53px 38px 56px;
+            margin: 54px 0 58px;
+            border: 1px solid $poll-back;
+            display: block;
+            clear: both;
+            @include breakpoint($bp-1280-width) {
+              padding: 24px 43px 28px 55px;
+              margin: 26px 0 30px;
+              font-size: 22px;
+            }
+            @include breakpoint($bp-1024-width) {
+              padding: 37px 49px 41px 60px;
+              margin: 32px 0 34px;
+              font-size: 22px;
+              line-height: 1.4em;
+            }
+            @include breakpoint($bp-768-width) {
+              padding: 22px 40px;
+              font-size: 20px;
+              line-height: 1.2em;
+              color: $sponsorship-dark;
+            }
+            @include breakpoint($bp-640-width) {
+              padding: 20px 40px 22px 40px;
+              margin: 18px 0 25px;
+              color: $poll-color;
+            }
+            &:before, &:after {
+              background-color: #ffffff;
+              font-size: 50px;
+              @include breakpoint($bp-1280-width) {
+                font-size: 37px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 45px;
+              }
+              @include breakpoint($bp-768-width) {
+                font-size: 36px;
+              }
+              @include breakpoint($bp-640-width) {
+                font-size: 24px;
+              }
+            }
+          }
         }
         .description-item {
           display: none;
           &.active {
             display: block;
           }
-        }
-      }
-    }
-  }
-  .consum-sidebar {
-    @include breakpoint($bp-1280-width) {
-      float: none;
-      height: auto;
-      padding: 0;
-      position: relative;
-      width: 100%;
-    }
-    .items-block {
-      @include breakpoint($bp-min-1281-width) {
-        height: 420px;
-      }
-      @include breakpoint($bp-min-1901-width) {
-        height: 645px;
-      }
-      @include breakpoint($bp-1280-width) {
-        height: auto;
-        padding: 0;
-        position: relative;
-        right: auto;
-        top: auto;
-        width: 100%;
-      }
-      .episodes-list-slider {
-        &.horizontal {
-          overflow: hidden;
-          position: relative;
-          ul {
-            width: 20000em;
-            position: relative;
-            @include breakpoint($bp-640-width) {
-              width: 100%;
-            }
-          }
-          @include breakpoint($bp-640-width) {
-            li {
-              background: $consum-carousel-even;
-              height: 75px;
-              position: relative;
-              width: 100%!important;
-              &:nth-child(odd) {
-                background: $consum-carousel-odd;
-              }
-              &:nth-child(even) {
-                background: $consum-carousel-even;
-              }
-              > div {
-                height: 100%;
-                width: 100%;
-              }
-              a {
-                height: 100%;
-                width: 100%;
-              }
-              .asset-img {
-                height: 50px;
-                left: 4%;
-                margin-top: -25px;
-                position: absolute;
-                top: 50%;
-                width: 75px;
-                &.active {
-                  border-left: 7px solid;
-                }
-                img {
-                  height: 100%;
-                  width: 100%;
-                }
-                & ~ .meta-wrapper {
-                  .meta {
-                    padding-left: calc(8% + 75px);
-                  }
-                }
-              }
-              .meta-wrapper {
-                background: none;
-                height: 100%;
-                width: 100%;
-                .meta-wrapper-inner {
-                  display: table;
-                  height: 100%;
-                  width: 100%;
-                }
-                .meta-icon {
-                  display: none;
-                }
-                .meta {
-                  color: $consum-carousel-text;
-                  padding-left: 4%;
-                  display: table-cell;
-                  max-width: 100px;
-                  vertical-align: middle;
-                  width: 100%;
-                  .caption {
-                    font-size: 10px;
-                    line-height: 13px;
-                  }
-                  .title {
-                    font-size: 15px;
-                    line-height: 18px;
-                    margin-bottom: 7px;
-                  }
-                  .additional {
-                    font-family: $tex-gyreschola-italic;
-                    font-size: 10px;
-                    line-height: 13px;
-                    text-transform: uppercase;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    .more-items {
-      @include breakpoint($bp-1280-width) {
-        top: 0;
-      }
-      a {
-        @include breakpoint($bp-640-width) {
-          font-size: 15px;
-          height: 45px;
-          line-height: 45px;
-        }
-      }
-    }
-    .advert {
-      @include breakpoint($bp-1280-width) {
-        display: none;
-      }
-    }
-    .items-block-title {
-      @include breakpoint($bp-640-width) {
-       height: 45px;
-       line-height: 45px;
-        padding-left: 0;
-      }
-      h2 {
-        @include breakpoint($bp-640-width) {
-          font-size: 23px;
-          line-height: 45px;
-          text-align: center;
         }
       }
     }

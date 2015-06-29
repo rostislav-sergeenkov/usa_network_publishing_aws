@@ -9,6 +9,7 @@
  * -  - $sections[n]['type'] - machine-readable name of a section
  * -  - $sections[n]['name'] - human-readable name of a section
  * -  - $sections[n]['is_last'] - flag of the latest section (appears only on the latest)
+ * -  - $sections[n]['delta'] - section delta. It will use if we show several sections with one type.
  * - $section_separator - pre-rendered sections separator
  * - $tune_in - pre-rendered content of Tune In field
  * - $sections_navlinks - pre-rendered array of navigation items:
@@ -58,9 +59,9 @@
       <div id="left-nav-links">
         <ul id="left-nav-links-list">
           <?php if ($current_section == 'home'): ?>
-          <li id="nav-home" class="internal active" data-menuanchor="home">
+          <li id="nav-home" class="internal active" data-menuanchor="home" data-delta="0">
           <?php else: ?>
-          <li id="nav-home" class="internal" data-menuanchor="home">
+          <li id="nav-home" class="internal" data-menuanchor="home" data-delta="0">
           <?php endif; ?>
             <a class="scroll-link" href="#section-home" data-menuitem="1">
               <?php if ($current_section == 'home' && !empty($h1)): ?>
@@ -86,11 +87,11 @@
             <?php foreach ($sections as $section): ?>
               <?php if ($section['type'] != 'home'): ?>
                 <?php if ($section['type'] == $current_section): ?>
-                  <li id="nav-<?php print $section['type']; ?>" class="internal active" data-menuanchor="<?php print $section['type']; ?>">
+                  <li id="nav-<?php print $section['type']; ?>" class="internal active" data-menuanchor="<?php print $section['type']; ?>" data-delta="<?php print $section['delta']; ?>">
                     <?php print $section['link']; ?>
                   </li>
                 <?php else: ?>
-                  <li id="nav-<?php print $section['type']; ?>" class="internal" data-menuanchor="<?php print $section['type']; ?>">
+                  <li id="nav-<?php print $section['type']; ?>" class="internal" data-menuanchor="<?php print $section['type']; ?>" data-delta="<?php print $section['delta']; ?>">
                     <?php print $section['link']; ?>
                   </li>
                 <?php endif; ?>

@@ -803,13 +803,19 @@
       content: "\e609";
       display: block;
       font-family: "ico-font";
-      font-size: 24px;
+      font-size: get-vw(24px, 768);
       left: 50%;
-      line-height: 24px;
-      margin-left: -12px;
-      margin-top: 5px;
+      line-height: get-vw(24px, 768);
+      margin-left: get-vw(-12px, 768);
+      margin-top: get-vw(5px, 768);
       position: absolute;
       top: 50%;
+      @include breakpoint($bp-480-width) {
+        font-size: 15px;
+        line-height: 15px;
+        margin-left: -7.5px;
+        margin-top: 3.125px;
+      }
     }
     &.more {
       .close-text {
@@ -829,9 +835,9 @@
       color: #ffffff;
       display: block;
       font-family: $avalon-medium;
-      font-size: 20px;
-      height: 100px;
-      line-height: 80px;
+      font-size: get-vw(20px, 768);
+      height: get-vw(100px, 768);
+      line-height: get-vw(80px, 768);
       letter-spacing: 1px;
       position: relative;
       text-align: center;
@@ -839,9 +845,9 @@
       width: 100%;
     }
     @include breakpoint($bp-480-width) {
-      font-size: 15px;
-      height: 60px;
-      line-height: 48px;
+      font-size: 12.5px;
+      height: 62.5px;
+      line-height: 50px;
     }
   }
 }

@@ -20,6 +20,7 @@ function usanetwork_consumptionator_post_context_default_contexts() {
     'path' => array(
       'values' => array(
         'node/*/blog' => 'node/*/blog',
+        'node/*/blog/*' => 'node/*/blog/*',
       ),
     ),
   );

@@ -4,13 +4,13 @@
  */
 ?>
 
-<div class="slide">
+<div class="swiper-slide">
   <div class="wrp">
-    <div class="node usanetwork-aspot <?php print $show_class; ?>" data-show="<?php print $show_class; ?>">
+    <div class="node usanetwork-aspot <?php print $show_class; ?>"  data-show="<?php print $show_class; ?>">
       <a href="<?php print $show_url; ?>" class="asset-img-link" target="_self">
         <?php if (!empty($show_poster)): ?>
           <div class="asset-img" data-picture data-alt="" data-class="tile-img">
-            <div class="hidden offset-data" data-shift-percent="<?php print $show_image_bg_offset; ?>"></div>
+            <div class="hidden offset-data" data-img-src="<?php print $show_poster['desktop']; ?>" data-shift-percent="<?php print $show_image_bg_offset; ?>"></div>
             <?php if (!empty($show_poster['mobile'])): ?>
               <div data-src="<?php print $show_poster['mobile']; ?>"></div>
             <?php endif; ?>

@@ -2,7 +2,7 @@
   Drupal.behaviors.usanetwork_aspot_home_page_giui = {
     attach: function (context, settings) {
 
-      var aspotHomeSlide = $('#block-usanetwork-aspot-usanetwork-aspot-carousel .slider .slide'),
+      var aspotHomeSlide = $('#block-usanetwork-aspot-usanetwork-aspot-carousel  .swiper-slide'),
           aspotShowSlide = $('#main-slider .slide .slide-content');
 
       // init add style for Aspot druggeble elements

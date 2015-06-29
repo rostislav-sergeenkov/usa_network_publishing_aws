@@ -275,15 +275,18 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
 
   if (is_numeric($show_id)) {
 
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'consumpt_post')
-      ->fieldCondition('field_show', 'target_id', $show_id, '=')
-      ->propertyOrderBy('created');
-
-    $result = $query->execute();
-    if (isset($result['node'])) {
-      $posts = entity_load('node', array_keys($result['node']));
+    $query = db_select('node', 'node');
+    $query->fields('node', array('nid'));
+    $query->condition('node.type', 'consumpt_post');
+    $query->condition('node.status', NODE_PUBLISHED);
+    $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+    $query->condition('field_show.field_show_target_id', $show_id);
+    $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
+    $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+    $query->orderBy('sorted_time', 'DESC');
+    $result = $query->execute()->fetchAllKeyed();
+    if (isset($result)) {
+      $posts = entity_load('node', array_keys($result));
       $rendered_items = array();
       foreach ($posts as $post) {
         if (!empty($post->field_post_cover)) {

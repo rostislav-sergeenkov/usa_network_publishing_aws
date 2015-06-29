@@ -25,27 +25,20 @@
           startAuto,
           slideMove = sliderSpeed * 0.1; // default value
 
-      // check vars value
+      // check settings value
       if (settings.sliderAspot) {
         sliderAutoplay = Number(settings.sliderAspot.slideshowAutoplay);
         sliderSpeed = Number(settings.sliderAspot.slideshowSpeed);
 
         // check sliderSpeed
         if (sliderSpeed <= 0 || sliderSpeed < 6000) {
-
           sliderSpeed = 6000;
-
         }
-
         // check autoplay params
         if (sliderAutoplay === 1) {
-
           startAuto = sliderSpeed;
-
         } else if (sliderAutoplay === 0) {
-
           startAuto = 0;
-
         }
 
         slideMove = sliderSpeed * 0.1;
@@ -96,7 +89,7 @@
           // change slide events
           // 1
           onTransitionStart: function (swiper) {
-            if(window.innerWidth < window_size_mobile_641) {
+            if (window.innerWidth < window_size_mobile_641) {
               return false;
             }
             hideFocusSlide();
@@ -107,7 +100,7 @@
           //onTransitionEnd: function (swiper) {},
           // 4
           onSlideChangeEnd: function (swiper) {
-            if(window.innerWidth < window_size_mobile_641) {
+            if (window.innerWidth < window_size_mobile_641) {
               // change logo color
               activeSlide = aspotBlock.find('.swiper-slide-active');
               changeLogoColor(activeSlide.find('.slide-content'));

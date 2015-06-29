@@ -27880,42 +27880,29 @@ yx-axis
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
-  height: 0;
-  padding-bottom: 43.7%;
-  /* ~16:7 */
+  height: 43.75vw;
+  max-height: 43.75vw;
   position: relative;
 }
 @media (min-width: 2500px) {
   #block-usanetwork-aspot-usanetwork-aspot-carousel {
-    height: 1094px;
     max-height: 1094px;
   }
 }
 @media (max-width: 640px) {
   #block-usanetwork-aspot-usanetwork-aspot-carousel {
-    padding-bottom: 87.45%;
+    height: 90.625vw;
+    max-height: 90.625vw;
   }
-}
-#block-usanetwork-aspot-usanetwork-aspot-carousel > .content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
   -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
   -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
   -o-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
   box-shadow: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: 0;
-  background-position-x: 0;
+  background: #000000;
   cursor: pointer;
   height: 100%;
-  opacity: 0.5;
-  -moz-opacity: 0.5;
   position: absolute;
   right: -10%;
   top: 0;
@@ -27927,13 +27914,20 @@ yx-axis
     display: none !important;
   }
 }
-#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:hover {
+#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button .next-button-wrapper {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 0;
+  background-position-x: 0;
+  opacity: 0.5;
+  -moz-opacity: 0.5;
+  height: 100%;
+  width: 100%;
+}
+#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button .next-button-wrapper:hover {
   opacity: 1;
 }
-#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:hover ~ .bx-wrapper .slide .wrp > .node {
-  opacity: 1 !important;
-}
-#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button:after {
+#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button .next-button-wrapper:after {
   color: #ffffff;
   content: "\e608";
   display: block;

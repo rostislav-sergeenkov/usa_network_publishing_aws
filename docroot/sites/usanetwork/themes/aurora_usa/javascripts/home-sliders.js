@@ -17,6 +17,7 @@
           stickyMenu = $('.region-header'),
           aspotBlock = $('.block-usanetwork-aspot'),
           nextButton = $('.block-usanetwork-aspot .next-button'),
+          nextButtonWrapper = $('.block-usanetwork-aspot .next-button-wrapper'),
           slider = $('.block-usanetwork-aspot .swiper-container'),
           slide = $('.block-usanetwork-aspot .swiper-slide'),
       // settings
@@ -137,7 +138,9 @@
             }
 
             // remove loader
-            aspotBlock.css('background-image', 'none');
+            aspotBlock.css({
+              'background-image': 'none'
+            });
           }
         });
 
@@ -204,7 +207,7 @@
           shiftBg = slidesSettings[index].shiftPercent;
         }
 
-        $(nextButton).css({
+        $(nextButtonWrapper).css({
           'background-image': 'url(' + imgUrl + ')',
           'background-position-x': shiftBg + '%'
         })

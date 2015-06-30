@@ -3198,7 +3198,7 @@ function _usanetwork_tv_shows_all_shows_block() {
   if (empty($params['sort_order']) || !in_array($params['sort_order'], array('ASC', 'DESC'))) {
     $params['sort_order'] = 'ASC';
   }
-  $sorters = _usanetwork_tv_shows_all_shows_landing_page_sorters();
+  $sorters = _usanetwork_tv_shows_all_shows_landing_page_sorters($params);
   $shows = _usanetwork_tv_shows_all_shows_get_shows($params['sort_order']);
   $shows_block = _usanetwork_tv_shows_all_shows_render_block($shows);
   $video_sorter_title = $sorters[$params['sort_order']]['title'];
@@ -3310,7 +3310,7 @@ function _usanetwork_tv_shows_all_shows_render_block($items) {
  *
  * @return array
  */
-function _usanetwork_tv_shows_all_shows_landing_page_sorters() {
+function _usanetwork_tv_shows_all_shows_landing_page_sorters($params) {
 
   $data['ASC'] = array(
     'order' => 'ASC',

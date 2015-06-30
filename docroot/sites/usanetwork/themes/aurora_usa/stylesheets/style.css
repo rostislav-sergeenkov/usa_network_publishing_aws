@@ -18823,6 +18823,9 @@ footer h2 {
   position: relative;
   width: 100%;
 }
+.landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li:hover span, .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li.active span {
+  color: #383838;
+}
 .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a {
   color: #ffffff;
   display: block;

@@ -268,7 +268,11 @@ function _usanetwork_consumptionator_post_main_block() {
           : '',
       'source' => !empty($node->field_post_source) ? $node_wrapper->field_post_source->value() : '',
       'gallery_rec' => !empty($node->field_gallery_recap)
-          ? _usanetwork_consumptionator_post_gallery_recap($node_wrapper->field_gallery_recap->nid->value())
+          ? _usanetwork_consumptionator_post_gallery_recap
+          (
+              $node_wrapper->field_gallery_recap->nid->value(),
+              !empty($node->field_gallery_recap_block_title) ? $node_wrapper->field_gallery_recap_block_title->value() : NULL
+          )
           : '',
     );
     return theme('usanetwork_cons_post_main', $theme_variables);
@@ -350,13 +354,13 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
 /*
  * Renders usanetwork_episodes_gallery_recap block.
 */
-function _usanetwork_consumptionator_post_gallery_recap($gallery_id) {
+function _usanetwork_consumptionator_post_gallery_recap($gallery_id, $block_title = NULL) {
 
   if (is_numeric($gallery_id)) {
     $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id));
     $theme_variables = array(
       'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
-      'block_title' => t('Gallery Recap'),
+      'block_title' => !empty($block_title) ? $block_title : t('Gallery Recap'),
     );
 
     return theme('usanetwork_cons_post_gallery_rec', $theme_variables);

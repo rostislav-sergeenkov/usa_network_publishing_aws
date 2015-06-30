@@ -173,6 +173,11 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'main' => 'field_post_cover',
       'cover' => 'field_post_cover',
     ),
+    // Post
+    'consumpt_post' => array(
+      'main' => 'field_post_cover',
+      'cover' => 'field_post_cover',
+    ),
     // Promo
     'usanetwork_promo' => array(
       'main' => 'field_promo_regular_image',

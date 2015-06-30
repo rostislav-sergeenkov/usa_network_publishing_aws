@@ -371,7 +371,8 @@ function usanetwork_context_context_default_contexts() {
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
         'shows' => 'shows',
-        '*/blog' => '*/blog',
+        'node/*/blog' => 'node/*/blog',
+        'node/*/blog/*' => 'node/*/blog/*',
       ),
     ),
     'taxonomy_term' => array(

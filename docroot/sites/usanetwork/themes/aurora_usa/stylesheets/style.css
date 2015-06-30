@@ -10292,6 +10292,9 @@ header .tve-help-link.signIn .inlineLoader {
     padding: 40px 10px;
   }
 }
+.show-latest-block.infinity-finished {
+  margin-bottom: 0;
+}
 .show-latest-block ul {
   margin: 0 auto;
   max-width: 1868px;
@@ -14703,6 +14706,9 @@ footer h2 {
     padding: 40px 0px;
   }
 }
+.related-content-block.infinity-finished {
+  margin-bottom: 0;
+}
 .related-content-block ul {
   margin: 0 auto;
   max-width: 1868px;
@@ -18886,6 +18892,9 @@ footer h2 {
     margin-bottom: 190px;
   }
 }
+.landing-page-container .landing-items-blocks.infinity-finished {
+  margin-bottom: 0;
+}
 .landing-page-container .landing-items-blocks.all-shows-items-blocks {
   padding: 20px 20px 40px;
 }
@@ -19689,6 +19698,9 @@ footer h2 {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all {
     margin-bottom: 190px;
   }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all.infinity-finished, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all.infinity-finished {
+  margin-bottom: 0;
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar {
   height: 135px;

@@ -345,7 +345,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
       $theme_variables = array(
         'posts' => !empty($rendered_items) ? $rendered_items : array(),
         'advert_block' => isset($advert) ? $advert : NULL,
-        'block_title' => t('@show_name blog', array('@show_name' => $show_node->title)),
+        'block_title' => !empty($show_blog_title) ? $show_blog_title : t('@show_name blog', array('@show_name' => $show_node->title)),
         'posts_landing_link' => l('View all posts', 'node/' . $show_id . '/blog' . $blog_url),
       );
       return theme('usanetwork_cons_post_carousel', $theme_variables);
@@ -515,7 +515,7 @@ function _usanetwork_consumptionator_post_get_season_episodes_description($resul
   }
   if (!empty($result_item->body)) {
     if (stripos($result_item->body, '<p>') === FALSE) {
-      return $result_item->body;
+      return truncate_utf8($result_item->body, USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH, TRUE, TRUE);
     }
     else {
       $matches = array();

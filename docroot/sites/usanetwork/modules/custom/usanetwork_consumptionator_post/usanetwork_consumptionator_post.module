@@ -238,10 +238,6 @@ function _usanetwork_consumptionator_post_main_block() {
   $node = menu_get_object('node');
   if (isset($node->type) && $node->type == 'consumpt_post') {
     $node_wrapper = entity_metadata_wrapper('node', $node);
-    if (isset($node->field_gigya_share_bar)) {
-      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
-      $sharebar['#title'] = t('Share');
-    }
     if (!empty($node->field_content_tags)) {
       $tags = $node_wrapper->field_content_tags->value();
       $tags_names = array();
@@ -255,14 +251,15 @@ function _usanetwork_consumptionator_post_main_block() {
     if (!empty($node->field_post_cover)) {
       $image = $node_wrapper->field_post_cover->value();
     }
+    $body = !empty($node->body) ? $node_wrapper->body->value->value() : '';
     $theme_variables = array(
       'title' => !empty($node->title) ? $node->title : '',
-      'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+      'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $body),
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
       'creating_date' => date('n/j/y', $creating_date),
       'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'tags' => !empty($tags_names) ? $tags_names : '',
-      'body' => !empty($node->body) ? $node_wrapper->body->value->value() : '',
+      'body' => $body,
       'rendered_carousel' => !empty($node->field_show)
           ? _usanetwork_consumptionator_post_posts_carousel($node_wrapper->field_show->nid->value(), $node->nid)
           : '',
@@ -447,6 +444,9 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
 
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
+
+  $title = $theme_variables['title'] . ' | Blog | ' . $tv_show_node->title . ' | USA Network';
+  drupal_set_title($title);
 
   return !empty($theme_variables['items'])
     ? theme('usanetwork_blog_landing_posts', $theme_variables)

@@ -640,6 +640,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         case 'explore':
         case 'photos':
           break;
+        case 'blog':
+          $a = 1;
+          break;
         // Show Landing Page
         case '':
           if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {

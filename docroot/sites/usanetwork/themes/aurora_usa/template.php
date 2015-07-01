@@ -155,9 +155,6 @@ function aurora_usa_preprocess_page(&$vars) {
     '#suffix' => '</script><![endif]-->',
   );
   drupal_add_html_head($icomoon_ie_fix, 'icomoon_ie_fix');
-  if(arg(0) == 'social') {
-    drupal_add_js($theme_path . '/javascripts/follow-social.js');
-  }
   $node = menu_get_object();
   $vars['page']['catchall_seo_title'] = '';
   if ($node && $node->type == "catchall_seo_page" && !$node->field_show) {
@@ -917,16 +914,12 @@ function aurora_usa_preprocess_views_view(&$vars) {
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/cast-carousel.js');
     }
 
     if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-carousel.js');
-    }
-    if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'attachment_2') {
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/follow-social.js');
     }
   }
 

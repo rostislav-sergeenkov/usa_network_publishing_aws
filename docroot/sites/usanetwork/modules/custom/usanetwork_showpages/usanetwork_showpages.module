@@ -749,6 +749,10 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = t("@showname - @title | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           }
           break;
+        case 'consumpt_post':
+          $blog_title = usanetwork_consumptionator_post_get_blog_title($show);
+          $head_title = $node->title . ' | ' . $blog_title .  ' | Blog | ' . $show->title . ' | USA Network';
+          break;
       }
     }
     // end of node types

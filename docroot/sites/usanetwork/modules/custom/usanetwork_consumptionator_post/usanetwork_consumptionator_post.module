@@ -413,12 +413,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
     $theme_variables['ad'] = TRUE;
   }
 
-  $blog_title = _usanetwork_get_field_item('node', $tv_show_node, 'field_show_blog_title', 'value');
-  if ($blog_title) {
-    $theme_variables['title'] = $blog_title;
-  } else {
-    $theme_variables['title'] = $tv_show_node->title . ' blog';
-  }
+  $theme_variables['title'] = usanetwork_consumptionator_post_get_blog_title($tv_show_node);
 
   if (!empty($posts_data)) {
     foreach ($posts_data as $post_data_index => $post_data) {
@@ -492,6 +487,15 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $offset = 0)
     $result = $cache->data;
   }
   return $result;
+}
+
+function usanetwork_consumptionator_post_get_blog_title($tv_show_node) {
+  $blog_title = _usanetwork_get_field_item('node', $tv_show_node, 'field_show_blog_title', 'value');
+  if ($blog_title) {
+    return $blog_title;
+  } else {
+    return $tv_show_node->title . ' blog';
+  }
 }
 
 function _usanetwork_consumptionator_post_get_posts_count($show_nid) {

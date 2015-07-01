@@ -448,6 +448,9 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
 
+  $title = $theme_variables['title'] . ' | Blog | ' . $tv_show_node->title . ' | USA Network';
+  drupal_set_title($title);
+
   return !empty($theme_variables['items'])
     ? theme('usanetwork_blog_landing_posts', $theme_variables)
     : '';

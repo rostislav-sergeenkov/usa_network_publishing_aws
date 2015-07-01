@@ -220,8 +220,15 @@ function usanetwork_consumptionator_post_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_consumpt_post';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_consumpt_post'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_consumpt_post_pattern';
+  $strongarm->value = '[node:field-show]/blog/[node:field-show:field_show_blog_title]/[node:title]';
+  $export['pathauto_node_consumpt_post_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

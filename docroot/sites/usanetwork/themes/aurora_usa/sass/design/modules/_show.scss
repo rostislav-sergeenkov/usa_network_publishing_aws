@@ -4,6 +4,9 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   .show-carousel {
     > ul {
       > li {
@@ -265,7 +268,8 @@
               width: 30px;
             }
             @include breakpoint($bp-480-width) {
-              width: 18px;
+              right: -12px;
+              width: 30px;
             }
             &:after {
               color: #ffffff;
@@ -278,6 +282,10 @@
               position: absolute;
               right: 50%;
               top: 50%;
+              @include breakpoint($bp-480-width) {
+                left: 0;
+                right: auto;
+              }
             }
           }
         }

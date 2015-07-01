@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -16609,6 +16609,9 @@ footer h2 {
   overflow: hidden;
   position: relative;
   width: 100%;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .shows-block .show-carousel > ul > li > .node:before {
   left: auto;
@@ -16877,7 +16880,8 @@ footer h2 {
 }
 @media (max-width: 480px) {
   .shows-block .carousel ul li a.close-button {
-    width: 18px;
+    right: -12px;
+    width: 30px;
   }
 }
 .shows-block .carousel ul li a.close-button:after {
@@ -16891,6 +16895,12 @@ footer h2 {
   position: absolute;
   right: 50%;
   top: 50%;
+}
+@media (max-width: 480px) {
+  .shows-block .carousel ul li a.close-button:after {
+    left: 0;
+    right: auto;
+  }
 }
 .shows-block .carousel ul li .meta-wrapper {
   background: none;

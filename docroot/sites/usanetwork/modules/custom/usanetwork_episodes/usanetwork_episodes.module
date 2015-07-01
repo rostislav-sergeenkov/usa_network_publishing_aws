@@ -243,7 +243,7 @@ function _usanetwork_episodes_episodes_carousel() {
     if (!empty($season_node)) {
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'node')
-        ->entityCondition('entity_type', 'node')
+        ->propertyCondition('status', NODE_PUBLISHED)
         ->entityCondition('bundle', 'tv_episode')
         ->fieldCondition('field_season', 'target_id', $season_node->nid, '=')
         // +0 for sorting numerically varchar field.

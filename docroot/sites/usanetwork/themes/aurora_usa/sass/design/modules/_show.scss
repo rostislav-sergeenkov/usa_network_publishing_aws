@@ -239,7 +239,6 @@
             overflow: hidden;
             position: relative;
             width: 100%;
-            z-index: 0;
             > .meta-wrapper {
               .additional {
                 white-space: normal;
@@ -494,7 +493,7 @@
     position: absolute;
     top: 0px;
     width: auto;
-    z-index: 3; //temp value
+    z-index: 1; //temp value
     @include breakpoint($bp-min-1901-width) {
       left: 434px;
       min-width: 1730px;
@@ -521,7 +520,6 @@
       right: 40px;
       position: absolute;
       top: 25px;
-      z-index: 1;
       @include breakpoint($bp-min-1901-width) {
         right: 60px;
         top: 65px;

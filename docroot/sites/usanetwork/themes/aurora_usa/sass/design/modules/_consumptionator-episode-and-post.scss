@@ -336,15 +336,16 @@
             font-size: 12px;
           }
         }
-        .source-title, a.source-title {
+        .source-title {
           font-family: $avalon-book;
           color: $schedule-pm-color;
         }
-        a.source-title{
+        a.source-title {
+          color: $source-link;
           &:hover,
           &:active {
+            color: $source-link;
             text-decoration: underline;
-            color: $schedule-pm-color;
           }
         }
         .person-quotation {

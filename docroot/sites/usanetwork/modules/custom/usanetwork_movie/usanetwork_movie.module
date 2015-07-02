@@ -1,0 +1,339 @@
+<?php
+
+
+define('USANETWORK_MOVIE_LANDING_MOVIES_NUMBER', 4);
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_movie_menu() {
+  $items = array();
+
+  $items['all-movies'] = array(
+    'title' => t('Movies'),
+    'page callback' => 'usanetwork_tv_shows_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  // admin area
+  $items['admin/usanetwork/movies-landing-page'] = array(
+    'title' => 'Movies Landing Page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_movie_movies_landing_main_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  $items['usanetwork_menu/movies/autocomplete'] = array(
+    'title' => 'Select content',
+    'page callback' => 'usanetwork_movie_movies_autocomplete',
+    'access arguments' => array('administer nodes'),
+    'delivery callback' => 'drupal_deliver_html_page',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ *  Implements hook_block_info().
+ */
+function usanetwork_movie_block_info() {
+  $blocks = array();
+
+  $blocks['usanetwork_movie_mb'] = array(
+    'info' => t('Movies: Main Block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_movie_all_shows'] = array(
+    'info' => t('Movies: All shows'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_movie_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_movie_movies_landing_block' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-movie-movies-landing-block',
+    ),
+    'usanetwork_movies_shows_landing_item' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-movies-movies-landing-item',
+    ),
+    'usanetwork_movies_all_movies_mb' => array(
+      'variables' => array(
+        'promos' => array(),
+      ),
+      'template' => 'templates/usanetwork-movies-all-movies-mb',
+    ),
+  );
+}
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_movie_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_movie_mb':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_movies_mb_block();
+      break;
+    case 'usanetwork_movie_all_shows':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_movie_all_movies_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Renders content for photos block.
+ */
+function _usanetwork_movie_all_movies_block() {
+  $params = drupal_get_query_parameters();
+  if (empty($params['sort_order']) || !in_array($params['sort_order'], array('ASC', 'DESC'))) {
+    $params['sort_order'] = 'ASC';
+  }
+  $sorters = _usanetwork_movie_all_shows_landing_page_sorters($params);
+  $shows = _usanetwork_movie_all_shows_get_movies($params['sort_order']);
+  $shows_block = _usanetwork_movies_all_movies_render_block($shows);
+  $video_sorter_title = $sorters[$params['sort_order']]['title'];
+  $result = theme('usanetwork_tv_shows_shows_landing', array(
+    'block_title' => t('All Movies'),
+    'show_sorters' => $sorters,
+    'show_sorter_title' => $video_sorter_title,
+    'shows_block' => $shows_block,
+    'sorting_order' => $params['sort_order'],
+  ));
+  return $result;
+}
+
+/**
+ * Returns default sorters for gallery page.
+ *
+ * @return array
+ */
+function _usanetwork_movie_all_shows_landing_page_sorters($params) {
+
+  $data['ASC'] = array(
+    'order' => 'ASC',
+    'title' => t('Sort A - Z'),
+    'active' => FALSE,
+    'url' => url('all-movies', array(
+      'query' => array(
+        'sort_order' => 'ASC',
+      )
+    )),
+  );
+  $data['DESC'] = array(
+    'order' => 'DESC',
+    'title' => t('Sort Z - A'),
+    'active' => FALSE,
+    'url' => url('all-movies', array(
+      'query' => array(
+        'sort_order' => 'DESC',
+      )
+    )),
+  );
+
+  if (isset($params['sort_order'])) {
+    $data[$params['sort_order']]['active'] = TRUE;
+  }
+
+  return $data;
+}
+
+/**
+ * Returns show nodes.
+ *
+ * @param int $offset
+ * @param int $limit
+ * @param string $sort
+ *
+ * @return array
+ */
+function _usanetwork_movie_all_shows_get_movies($sort = 'ASC') {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'tv_show')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->propertyOrderBy('title', $sort);
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+    $nodes = entity_load('node', array_keys($result['node']));
+    return $nodes;
+  }
+  return FALSE;
+}
+
+/**
+ *
+ * Returns block of N items for shows page.
+ * @param $items
+
+ */
+function _usanetwork_movies_all_movies_render_block($items) {
+
+  $theme_variables = array();
+  foreach ($items as $item) {
+    $theme_variables['items'][] = _usanetwork_movies_all_shows_block_item($item);
+  }
+  return theme('usanetwork_movie_movies_landing_block', $theme_variables);
+}
+
+/**
+ * Returns one item of block of photos page.
+ *
+ * @param $node
+ *
+ * @return mixed|string
+ */
+function _usanetwork_movies_all_shows_block_item($show) {
+
+  $image_url = usanetwork_core_api_get_content_image('node', $show);
+  $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $show, 'field_usa_tv_tune_in_date', 'value');
+  if (!empty($usa_tv_tune_in_date)) {
+    $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);
+  }
+  $theme_variables = array(
+    'target_url' => url('node/' . $show->nid),
+    'caption' => !empty($usa_tv_tune_in_date[0]) ? $usa_tv_tune_in_date[0] : '',
+    'title' => $show->title,
+    'additional' => !empty($usa_tv_tune_in_date[1]) ? $usa_tv_tune_in_date[1] : '',
+    'image_desktop' => image_style_url('539x303', $image_url),
+  );
+  return theme('usanetwork_movies_shows_landing_item', $theme_variables);
+}
+
+/**
+ * Renders content for shows landing main block.
+ */
+function _usanetwork_movies_mb_block() {
+  $featured_movies_id = variable_get('movies_landing_movies', array());
+  if (!empty($featured_movies_id)) {
+    $i = 0;
+    foreach ($featured_movies_id as $featured_movie_id) {
+      $featured_movie = NULL;
+      if (preg_match("/^(.+)\[node:(\d+)\]$/", $featured_movie_id, $matches)) {
+        $featured_movie = node_load($matches[2]);
+      }
+      if (!empty($featured_movie) && $featured_movie->type = 'tv_show') {
+        $is_first = ($i == 0) ? TRUE : FALSE;
+        $i++;
+        $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
+        $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $featured_movie, 'field_usa_tv_tune_in_date', 'value');
+        if (!empty($usa_tv_tune_in_date)) {
+          $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);
+        }
+        $promos[] = array(
+          'url' => url('node/' . $featured_movie->nid),
+          'image' => array(
+            'mobile' => !empty($cover_media)
+                ? image_style_url('719x414', $cover_media) : NULL,
+            'desktop' => !empty($cover_media)
+                ? ($is_first
+                  ? image_style_url('927x756', $cover_media)
+                  : image_style_url('456x372', $cover_media)
+                )
+                : NULL,
+          ),
+          'icon_type' => 'about-show-icon-default',
+          'caption' => !empty($usa_tv_tune_in_date[0]) ? $usa_tv_tune_in_date[0] : '',
+          'title' => $featured_movie->title,
+          'description' => !empty($usa_tv_tune_in_date[1]) ? $usa_tv_tune_in_date[1] : '',
+          'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
+          'is_first' => $is_first,
+        );
+      }
+    }
+    $advert_block = module_invoke('mps', 'block_view', 'topbox');
+    if (!empty($advert_block['content'])) {
+      $advert = render($advert_block['content']);
+    }
+    $theme_variables = array(
+      'promos' => !empty($promos) ? $promos : FALSE,
+      'ad' => isset($advert) ? $advert : FALSE,
+    );
+    return theme('usanetwork_movies_all_movies_mb', $theme_variables);
+  }
+  return FALSE;
+}
+
+/**
+ *  Return shows landing page control form.
+ */
+function usanetwork_movie_movies_landing_main_form($form, &$form_state) {
+  $header_shows = variable_get('movies_landing_movies', array());
+
+  $form['header_movies'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Movies Landing Page Features'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  for ($i = 0; $i < USANETWORK_MOVIE_LANDING_MOVIES_NUMBER; $i++) {
+    $form['header_shows']['usa_movie_' . $i] = array(
+      '#type' => 'textfield',
+      '#required' => FALSE,
+      '#default_value' => !empty($header_shows[$i])
+          ? $header_shows[$i]
+          : '',
+      '#autocomplete_path' => 'usanetwork_menu/movies/autocomplete',
+    );
+  }
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Save',
+  );
+  return $form;
+}
+
+/**
+ *  Return shows landing page control form.
+ */
+function usanetwork_movie_movies_landing_main_form_submit($form, &$form_state) {
+  $header_shows = array();
+  for ($i = 0; $i < USANETWORK_MOVIE_LANDING_MOVIES_NUMBER; $i++) {
+    $header_shows[$i] = !empty($form_state['values']['usa_movie_' . $i]) ? $form_state['values']['usa_movie_' . $i] : '';
+  }
+  variable_set('movies_landing_movies', $header_shows);
+  drupal_set_message(t('All movies page has been successfully updated'));
+}
+
+/*
+ * Show with full episodes autocomplete callback.
+ */
+function usanetwork_movie_movies_autocomplete($title) {
+  $query = db_select('node', 'n');
+  $query->fields('n',array('nid', 'title'));
+  $query->condition('n.title', '%' . $title . '%', 'LIKE');
+  $query->condition('n.type', 'tv_show', '=');
+  $query->condition('n.status', NODE_PUBLISHED, '=');
+  $query->range(0, 10);
+  $result = $query->execute()->fetchAll();
+
+  $output = array();
+  if (!empty($result) && is_array($result)) {
+    foreach($result as $row) {
+      $row->title = check_plain($row->title);
+      $key = $row->title . ' [node:' . $row->nid . ']';
+      $output[$key] = $row->title;
+    }
+  }
+  drupal_json_output($output);
+}

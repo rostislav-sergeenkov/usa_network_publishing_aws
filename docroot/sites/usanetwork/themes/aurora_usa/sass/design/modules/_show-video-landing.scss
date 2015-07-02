@@ -318,6 +318,9 @@
     @include breakpoint($bp-min-1901-width) {
       margin-bottom: 190px;
     }
+    &.infinity-finished {
+      margin-bottom: 0;
+    }
     &.all-shows-items-blocks {
       padding: 20px 20px 40px;
       @include breakpoint($bp-min-1901-width) {

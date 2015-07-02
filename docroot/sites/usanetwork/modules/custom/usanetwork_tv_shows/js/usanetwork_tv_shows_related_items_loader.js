@@ -1,6 +1,14 @@
 (function($) {
   var counter = 0;
 
+  $(document).ready(function(){
+    if(($('.ajax-load-block .load-more-link a').length > 0)) {
+      $('#footer').addClass('hidden');
+    } else {
+      $('.ajax-load-block').addClass('infinity-finished');
+    }
+  });
+
   Drupal.behaviors.usanetwork_tv_shows_related_items_loader = {
     getItems: function(eventClick) {
       var limit = $('.ajax-load-block').data('show-items-limit') || 5;
@@ -105,6 +113,9 @@
 
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
+          } else {
+            $('#footer').removeClass('hidden');
+            $('.ajax-load-block').addClass('infinity-finished');
           }
           //if (number_ul > 2) {
           //  $('.ajax-load-block .load-more-link a').addClass('disabled-infinity');
@@ -124,7 +135,6 @@
        * %start_from - number of items that must be ignored from the beginning
        * %limit - number of items that must be pulled
        */
-
       $('.ajax-load-block .load-more-link a').click(function(){
         if ($(this).hasClass('disabled')){
           return false;
@@ -145,7 +155,7 @@
             load_more_offset = ($('.load-more-link').offset() != null)
               ? $('.load-more-link').offset().top
               : 0;
-        var additional_offset = (window.innerHeight < window_size_desktop_large)? 130: 230;
+        var additional_offset = (window.innerHeight < window_size_desktop_large)? 70: 120;
         if (load_more_offset - window.innerHeight + additional_offset - scroll_top < 0){
           if ($('.ajax-load-block .load-more-link a').hasClass('disabled') || $('.ajax-load-block .load-more-link a').hasClass('disabled-infinity') || $('.ajax-load-block .load-more-link a').length == 0){
             return false;

@@ -397,6 +397,9 @@
     @include breakpoint($bp-min-1901-width) {
       margin-bottom: 190px;
     }
+    &.infinity-finished {
+      margin-bottom: 0;
+    }
   }
   .upper-bar {
     height: 135px;

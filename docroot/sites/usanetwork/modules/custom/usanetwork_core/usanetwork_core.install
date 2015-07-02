@@ -1066,3 +1066,12 @@ function usanetwork_core_update_7172() {
     module_enable(array('usanetwork_consumptionator_post'));
   }
 }
+
+/**
+ * Enables usanetwork_movie module.
+ */
+function usanetwork_core_update_7173() {
+  if (!module_exists('usanetwork_movie')) {
+    module_enable(array('usanetwork_movie'));
+  }
+}

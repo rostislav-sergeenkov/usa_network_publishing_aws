@@ -12,6 +12,9 @@
   @include breakpoint($bp-480-width) {
     padding: 40px 10px;
   }
+  &.infinity-finished {
+    margin-bottom: 0;
+  }
   ul {
     @include clear();
     margin: 0 auto;

@@ -186,7 +186,7 @@
                     if (($carousel.find('li.active').length > 0) && ($carousel.hasClass('stop'))) {
                       $carousel.unbind('show:close');
                       $carousel.on('show:close', function() {
-                        if (!click_on_opened) {
+                        if (!$(target).closest('li.active').length > 0) {
                           tapHandler();
                         }
                       });

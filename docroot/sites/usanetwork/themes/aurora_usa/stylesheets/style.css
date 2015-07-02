@@ -16876,7 +16876,6 @@ footer h2 {
   overflow: hidden;
   position: relative;
   width: 100%;
-  z-index: 0;
 }
 .shows-block .carousel ul li a.show-open > .meta-wrapper .additional {
   white-space: normal;
@@ -17156,7 +17155,7 @@ footer h2 {
   position: absolute;
   top: 0px;
   width: auto;
-  z-index: 3;
+  z-index: 1;
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block {
@@ -17194,7 +17193,6 @@ footer h2 {
   right: 40px;
   position: absolute;
   top: 25px;
-  z-index: 1;
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-link {

@@ -305,15 +305,53 @@ address {
 
 .person-quotation {
   font-family: $tex-gyreschola-italic;
-  display: block;
   position: relative;
   text-align: center;
+  font-size: 30px;
+  padding: 35px 55px;
+  margin: 54px 0 54px;
+  border: 1px solid $poll-back;
+  display: block;
+  clear: both;
+  @include breakpoint($bp-1280-width) {
+    padding: 25px 39px 25px 44px;
+    margin: 35px 0 35px;
+    font-size: 20px;
+  }
+  @include breakpoint($bp-1024-width) {
+    padding: 25px 50px 25px 54px;
+    margin: 38px 0 38px;
+    font-size: 20px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: 25px 80px;
+    font-size: 20px;
+  }
+  @include breakpoint($bp-640-width) {
+    padding: 23px 30px;
+    margin: 32px 0 32px;
+  }
   &:before, &:after {
     position: absolute;
     font-family: "ico-font";
     display: block;
     padding: 10px;
     color: $usa-logo-back;
+    background-color: #ffffff;
+    font-size: 50px;
+    line-height: 1em;
+    @include breakpoint($bp-1280-width) {
+      font-size: 37px;
+    }
+    @include breakpoint($bp-1024-width) {
+      font-size: 45px;
+    }
+    @include breakpoint($bp-768-width) {
+      font-size: 36px;
+    }
+    @include breakpoint($bp-640-width) {
+      font-size: 24px;
+    }
   }
   &:before {
     content: '\e61f';

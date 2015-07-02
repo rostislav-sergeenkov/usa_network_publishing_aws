@@ -7,10 +7,6 @@
           slidesSettings = [],
           dataShiftPercent,
           dataImgSrc,
-          nextSlideIndex,
-          nextSlideContent,
-          activeSlide,
-          activeSlideContent,
           timer_id,
           timer_id_animate,
       // elements
@@ -18,35 +14,24 @@
           aspotBlock = $('.block-usanetwork-aspot'),
           nextButton = $('.block-usanetwork-aspot .next-button'),
           nextButtonWrapper = $('.block-usanetwork-aspot .next-button-wrapper'),
-          slider = $('.block-usanetwork-aspot .swiper-container'),
-          slide = $('.block-usanetwork-aspot .swiper-slide'),
+          slider = $('.block-usanetwork-aspot .slider-container'),
+          slide = $('.block-usanetwork-aspot .slide'),
       // settings
           sliderAutoplay,
           sliderSpeed = 6000, // default value
           startAuto,
           slideMove = sliderSpeed * 0.1; // default value
 
-      // check settings value
-      if (settings.sliderAspot) {
-        sliderAutoplay = Number(settings.sliderAspot.slideshowAutoplay);
-        sliderSpeed = Number(settings.sliderAspot.slideshowSpeed);
-
-        // check sliderSpeed
-        if (sliderSpeed <= 0 || sliderSpeed < 6000) {
-          sliderSpeed = 6000;
-        }
-        // check autoplay params
-        if (sliderAutoplay === 1) {
-          startAuto = sliderSpeed;
-        } else if (sliderAutoplay === 0) {
-          startAuto = 0;
-        }
-
-        slideMove = sliderSpeed * 0.1;
+      // check count slides before init
+      if (slide.length === 1) {
+        // change logo color
+        changeLogoColor(slide.find('.slide-content'));
+        return false;
       }
 
+
       // make slides settings
-      $(slide).each(function (index, item) {
+      slide.each(function (index, item) {
 
         dataShiftPercent = Math.abs($(item).find('.offset-data').data('shift-percent'));
         dataImgSrc = $(item).find('.offset-data').data('img-src');
@@ -62,119 +47,75 @@
         })
       });
 
-      //==============
-      // init slider
-      //==============
       $(document.body).once(function () {
 
-        if (slide.length === 1) {
+        // Start init slider
+        // On init slide change
+        slider.on('init', function (event, slick) {
+          console.info('init');
+          console.info(slick);
+          var nextIndex = slick.currentSlide + 1;
+
+          // start next button
+          nextButton.addClass('ready');
+
+          // change logo color
           changeLogoColor(slide.find('.slide-content'));
-          return false;
-        }
-        // init
-        aspotSlider = new Swiper('.swiper-container', {
 
-          //settings
-          autoplay: startAuto,
-          effect: 'slide',
-          loop: true,
-          slidesPerView: 1,
-          speed: 1000,
+          // show next button
+          showNextbutton(nextIndex);
 
-          // controls
-          nextButton: '.block-usanetwork-aspot .next-button',
+        })
 
-          // callbacks
-          // change slide events
-          // 1
-          onTransitionStart: function (swiper) {
-            if (window.innerWidth < window_size_mobile_641) {
-              return false;
-            }
-            hideFocusSlide();
-          },
-          // 2
-          //onSlideChangeStart: function (swiper) {},
-          // 3
-          //onTransitionEnd: function (swiper) {},
-          // 4
-          onSlideChangeEnd: function (swiper) {
-            if (window.innerWidth < window_size_mobile_641) {
-              // change logo color
-              activeSlide = aspotBlock.find('.swiper-slide-active');
-              changeLogoColor(activeSlide.find('.slide-content'));
+            // init slider
+            .slick({
+              //adaptiveHeight: true,
+              autoplay: true,
+              autoplaySpeed: 6000,
+              cssEase: 'linear',
+              easing: 'linear',
+              infinite: true,
+              //lazyLoad: 'ondemand',
+              //lazyLoad: 'progressive',
+              pauseOnHover: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              speed: 1000,
 
-              return false;
-            }
-            showFocusSlide();
-          },
-          // on init
-          onInit: function (swiper) {
-
-            clearTimeout(timer_id);
-
-            timer_id = setTimeout(function () {
-              // check sticky menu
-              svitchSlider();
-            }, 600); // dependence from stickyHeader: timeout = 500
-
-            // change logo color
-            activeSlide = aspotBlock.find('.swiper-slide-active');
-            changeLogoColor(activeSlide.find('.slide-content'));
-
-            // change background on next-button
-            nextSlideIndex = aspotBlock.find('.swiper-slide-next').data('swiper-slide-index');
-            changeBgNextButton(nextSlideIndex);
-
-            // check if autostart = 0
-            if (startAuto === 0) {
-              clearTimeout(timer_id_animate);
-
-              timer_id_animate = setTimeout(function () {
-                showFocusSlide();
-              }, slideMove * 0.5)
-            }
-
-            // remove loader
-            aspotBlock.css({
-              'background-image': 'none'
-            });
-          }
-        });
-
-        // event on hover
-        slider
-            .mouseover(function () {
-              aspotSlider.stopAutoplay();
+              // controls
+              nextArrow: nextButton,
+              prevArrow: ''
             })
-            .mouseout(function () {
-              aspotSlider.startAutoplay();
-            });
 
-        // shech sticky header for autoplay on scroll
-        $(window).on('scroll', function (e) {
-          if (aspotSlider) {
-            clearTimeout(timer_id);
-            timer_id = setTimeout(svitchSlider, 200);
-          }
-        });
+            // On before slide change
+            .on('afterChange', function (event, slick, currentSlide) {
+              console.info('afterChange');
 
-        $(window).on('resize', function (e) {
-          if ($('.slide', '.block-usanetwork-aspot').length > 1) {
-            aspotSlider.stopAuto();
-            clearTimeout(timer_id);
+              var nextSlideIndex = currentSlide + 1;
 
-            timer_id = setTimeout(function () {
-
-              if (stickyMenu.hasClass('sticky-shows-submenu')) {
-                aspotSlider.stopAutoplay();
-              } else {
-                aspotSlider.startAutoplay();
+              if (nextSlideIndex > (slick.$slides.length - 1)) {
+                nextSlideIndex = 0;
               }
-            }, 1000);
-          }
-        });
 
+              // show next button
+              showNextbutton(nextSlideIndex);
+
+
+              // change logo color
+              changeLogoColor(slide.eq(currentSlide).find('.slide-content'));
+            })
+
+            // On before slide change
+            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+              console.info('beforeChange');
+              // remove loader
+              $(aspotBlock).once(function () {
+                $(this).addClass('load');
+              });
+
+              hideNextbutton();
+            });
+        // end init slider
 
       });
 
@@ -211,80 +152,25 @@
         })
       }
 
-      // check sticky menu
-      function svitchSlider() {
-        if (stickyMenu.hasClass('sticky-shows-submenu')) {
-          if (!slider.hasClass('isStopped')) {
-            aspotSlider.stopAutoplay();
-            slider.addClass('isStopped')
-          } else {
-            return false;
-          }
-        } else {
-          if (slider.hasClass('isStopped')) {
-            aspotSlider.startAutoplay();
-            slider.removeClass('isStopped')
-          } else {
-            return false;
-          }
-        }
-      }
-
-      // show focus slide content
-      function showFocusSlide() {
-        activeSlide = aspotBlock.find('.swiper-slide-active');
-        activeSlideContent = activeSlide.find('.slide-content');
-
-        clearTimeout(timer_id_animate);
-
-        timer_id_animate = setTimeout(function () {
-          changeLogoColor(activeSlideContent);
-          $(activeSlideContent).animate({
-            'opacity': 1
-          }, slideMove * 0.5, showNextbutton);
-        }, slideMove * 0.5);
-      }
-
-      // hide focus slide content
-      function hideFocusSlide() {
-        nextSlideContent = aspotBlock.find('.swiper-slide-next .slide-content');
-
-        if (nextSlideContent.length === 0) {
-          nextSlideContent = slide.eq(1).find('.slide-content');
-        }
-
-        $(nextSlideContent).css({
-          'opacity': 0
-        });
-
-        hideNextbutton();
+      // hide next button
+      function hideNextbutton() {
+        $(nextButton).animate({
+          right: '-10%'
+        }, 300);
       }
 
       // show next button
-      function showNextbutton() {
-        nextSlideIndex = aspotBlock.find('.swiper-slide-next').data('swiper-slide-index');
-
-        if (nextSlideIndex === undefined) {
-          nextSlideIndex = 1;
-        }
+      function showNextbutton(nextIndex) {
 
         // change background on next-button
-        changeBgNextButton(nextSlideIndex);
+        changeBgNextButton(nextIndex);
         $(nextButton).animate({
-          opasity: 'show',
           right: 0
-        }, slideMove);
+        }, 600);
       }
 
-      // hide next button
-      function hideNextbutton() {
-        $(nextButton).fadeOut(slideMove * 0.5, function () {
-          $(this).css({
-            opasity: 0,
-            right: '-10%'
-          })
-        });
-      }
+
+
     }
   };
 }(jQuery));

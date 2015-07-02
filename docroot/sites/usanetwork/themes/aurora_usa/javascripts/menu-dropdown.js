@@ -6,6 +6,12 @@
 
       if(!(offsetTop && subMenuSelector)) {return false;}
 
+      if (!subMenuSelector.hasClass('sticky-shows-submenu')) {
+        if (Math.round(subMenuSelector.offset().top) !== offsetTop) {
+          offsetTop = Math.round(subMenuSelector.offset().top);
+        }
+      }
+
       header_submenu_h = subMenuSelector.outerHeight(true);
 
       function switchState() {
@@ -34,6 +40,9 @@
           header_submenu_h = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu').outerHeight(true) - 1;
 
       if(!offsetTop) {return false;}
+
+      console.info('stickyFilterbar');
+      console.info(offsetTop);
 
       if ($(window).width() >= window_size_tablet_portrait) {
         if(!$('.fixed-position').length) {

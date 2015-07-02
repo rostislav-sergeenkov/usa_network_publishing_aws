@@ -247,7 +247,6 @@
           }
           .person-quotation {
             margin: 54px 0 58px;
-            clear: both;
             @include breakpoint($bp-1280-width) {
               margin: 26px 0 30px;
             }

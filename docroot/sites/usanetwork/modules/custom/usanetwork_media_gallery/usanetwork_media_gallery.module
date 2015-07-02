@@ -451,6 +451,7 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
   }
   $gallery_sorters = _usanetwork_media_gallery_landing_page_sorters($tv_show_node->nid, $params);
   $galleries = _usanetwork_media_gallery_get_galleries($tv_show_node->nid, $params['category'], NULL, $params['sort_order'], 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK + 1);
+  $load_more = &drupal_static('load_more_link');
   $load_more = FALSE;
   if (count($galleries) >= USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK) {
     $galleries = array_slice($galleries, 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK);
@@ -549,10 +550,11 @@ function _usanetwork_media_gallery_related_content_block() {
         ), 'setting');
 
         $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
-
+        $load_more_link = &drupal_static('load_more_link');
+        $load_more_link = TRUE;
         return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
           'related_items_block' => $block_of_items,
-          'load_more_link' => TRUE,
+          'load_more_link' => $load_more_link,
           'show_nid' => $tv_show_node->nid,
           'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
         ));

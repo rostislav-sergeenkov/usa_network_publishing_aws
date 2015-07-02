@@ -215,7 +215,6 @@ function usanetwork_microsite_dig_get_theme_includes() {
         //'http://pdk.theplatform.com/current/pdk/tpPdkController.js',
         //'http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js',
         //'http://pdk.theplatform.com/pdk/tpPdkController.js',
-//      $theme_path . '/javascripts/video-dropdowns.js',
 //      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
 //      $theme_path . '/javascripts/jquery.carouFredSel.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_global.js',

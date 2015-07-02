@@ -1075,3 +1075,12 @@ function usanetwork_core_update_7173() {
     module_enable(array('usanetwork_movie'));
   }
 }
+
+/**
+ * Enables nbcu_seo_landings module.
+ */
+function usanetwork_core_update_7174() {
+  if (!module_exists('nbcu_seo_landings')) {
+    module_enable(array('nbcu_seo_landings'));
+  }
+}

@@ -10,7 +10,7 @@ global $conf;
 // This is a duplicate setting from settings.publisher.php
 $conf['pub_sso_server'] = 'stage';
 
-$environment_info['database_name'] = 'nbcu_usa';
+$environment_info['database_name'] = 'nbcuusadev';
 $environment_info['cert_directory_directory'] = 'usanetwork';
 $environment_info['dynamic_domains'] = FALSE;
 
@@ -27,9 +27,7 @@ switch ($conf['pub_sso_server']) {
   default:
     $environment_info['entity_id'] = 'usaNetworksp';
     $environment_info['metadata_name'] = 'Publisher Stage';
-    $environment_info['metadata_signonservice'] = 'https://fss.external.stg.nbcuni.com/fss/idp/SSO.saml2';
     $environment_info['metadata_signonservice'] = 'https://fss.stg.inbcu.com/fss/idp/SSO.saml2';
-    $environment_info['metadata_logoutservice'] = 'https://ssologin.external.stg.nbcuni.com/ssologin/logoff.jsp';
     $environment_info['metadata_logoutservice'] = 'https://ssologin.stg.inbcu.com/ssologin/logoff.jsp?app=https://sso.stg.inbcu.com/';
     $environment_info['metadata.key'] = 'usanetworkVID';
     break;

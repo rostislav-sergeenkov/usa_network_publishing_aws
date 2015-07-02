@@ -165,7 +165,6 @@ function usanetwork_microsite_js_alter(&$javascript) {
     $theme_path = drupal_get_path('theme', 'aurora_usa');
     if(!usanetwork_microsite_process_setting_data('display_global_nav', 'bool')) {
       unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);
-      unset($javascript[$theme_path . '/javascripts/main-navigation.js']);
     }
     unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
   }

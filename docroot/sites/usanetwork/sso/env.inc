@@ -8,9 +8,14 @@
 global $conf;
 // Set pub_sso_server. Allowed values are 'stage' and 'prod'
 // This is a duplicate setting from settings.publisher.php
-$conf['pub_sso_server'] = 'stage';
+if (empty($_ENV['AH_SITE_ENVIRONMENT']) || ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod')) {
+  $conf['pub_sso_server'] = 'stage';
+  $environment_info['database_name'] = 'nbcuusadev';
+} else {
+  $conf['pub_sso_server'] = 'prod';
+  $environment_info['database_name'] = 'nbcuusa';
+}
 
-$environment_info['database_name'] = 'nbcuusadev';
 $environment_info['cert_directory_directory'] = 'usanetwork';
 $environment_info['dynamic_domains'] = FALSE;
 

@@ -339,6 +339,7 @@ address {
     color: $usa-logo-back;
     background-color: #ffffff;
     font-size: 50px;
+    line-height: 1em;
     @include breakpoint($bp-1280-width) {
       font-size: 37px;
     }

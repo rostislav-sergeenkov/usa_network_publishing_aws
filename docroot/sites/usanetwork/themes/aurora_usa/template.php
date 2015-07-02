@@ -134,7 +134,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/matchmedia.js');
   drupal_add_js($theme_path . '/javascripts/picturefill.js');
   drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.scrollTo-1.4.3.1.js');
   drupal_add_js($theme_path . '/javascripts/mps-advert.js');
   drupal_add_js($theme_path . '/javascripts/mps-sponsorship.js');
   drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
@@ -555,7 +554,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_hp_promos':
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
       foreach ($vars['items'] as $delta => $item) {
         $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }

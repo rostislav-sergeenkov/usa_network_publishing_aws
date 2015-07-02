@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -27860,6 +27860,7 @@ yx-axis
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  will-change: transform, opacity;
 }
 @media (min-width: 2500px) {
   #block-usanetwork-aspot-usanetwork-aspot-carousel {
@@ -27876,6 +27877,9 @@ yx-axis
 #block-usanetwork-aspot-usanetwork-aspot-carousel.load {
   background-image: none;
   min-height: inherit;
+}
+#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
+  will-change: transform, opacity;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button.ready {
   -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
@@ -27926,6 +27930,12 @@ yx-axis
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
   width: 100%;
+}
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
+  position: relative;
+}
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slide .slide-content {
+  opacity: 0;
 }
 
 .usanetwork-aspot .aspot-draggable-element {

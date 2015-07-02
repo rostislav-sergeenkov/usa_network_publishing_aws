@@ -10,6 +10,7 @@
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  will-change: transform, opacity;
   @include breakpoint($bp-min-2500-width) {
     min-height: 1090px;
     max-height: 1094px;
@@ -26,6 +27,7 @@
   }
 
   .next-button {
+    will-change: transform, opacity;
     &.ready {
       -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
       -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
@@ -75,6 +77,12 @@
   .asset-img {
     img {
       width: 100%;
+    }
+  }
+  .slide {
+    position: relative;
+    .slide-content {
+      opacity: 0;
     }
   }
 //  .slider-container {

@@ -8,7 +8,11 @@
           dataShiftPercent,
           dataImgSrc,
           timer_id,
-          timer_id_animate,
+          timerAnimate,
+          timerAnimateHide,
+          timerAnimateShow,
+          nextSlideContent,
+          activeSlideContent,
       // elements
           stickyMenu = $('.region-header'),
           aspotBlock = $('.block-usanetwork-aspot'),
@@ -19,14 +23,35 @@
       // settings
           sliderAutoplay,
           sliderSpeed = 6000, // default value
-          startAuto,
+          startAuto = true,
           slideMove = sliderSpeed * 0.1; // default value
 
       // check count slides before init
       if (slide.length === 1) {
         // change logo color
         changeLogoColor(slide.find('.slide-content'));
+
+        // stop init
         return false;
+      }
+
+      // check settings value
+      if (settings.sliderAspot) {
+        sliderAutoplay = Math.abs(settings.sliderAspot.slideshowAutoplay);
+        sliderSpeed = Math.abs(settings.sliderAspot.slideshowSpeed);
+
+        if (sliderSpeed <= 0 || sliderSpeed < 6000) {
+          sliderSpeed = 6000;
+        }
+
+        if (sliderAutoplay === 1) {
+          startAuto = true;
+        } else if (sliderAutoplay === 0) {
+          startAuto = false;
+        }
+
+        slideMove = sliderSpeed * 0.1;
+        timerAnimate = slideMove;
       }
 
 
@@ -63,24 +88,26 @@
           changeLogoColor(slide.find('.slide-content'));
 
           // show next button
-          showNextbutton(nextIndex);
+          //showNextbutton(nextIndex);
 
         })
 
             // init slider
             .slick({
-              //adaptiveHeight: true,
-              autoplay: true,
-              autoplaySpeed: 6000,
+
+              // slider settings
+              adaptiveHeight: true,
+              //autoplay: startAuto,
+              autoplaySpeed: sliderSpeed,
               cssEase: 'linear',
               easing: 'linear',
               infinite: true,
-              //lazyLoad: 'ondemand',
+              lazyLoad: 'ondemand',
               //lazyLoad: 'progressive',
               pauseOnHover: true,
               slidesToShow: 1,
               slidesToScroll: 1,
-              speed: 1000,
+              speed: 600,
 
               // controls
               nextArrow: nextButton,
@@ -89,7 +116,7 @@
 
             // On before slide change
             .on('afterChange', function (event, slick, currentSlide) {
-              console.info('afterChange');
+              //console.info('afterChange');
 
               var nextSlideIndex = currentSlide + 1;
 
@@ -98,8 +125,11 @@
               }
 
               // show next button
-              showNextbutton(nextSlideIndex);
-
+              timer_id = setTimeout(function () {
+                //show focus slide content
+                showFocusSlide(currentSlide, nextSlideIndex);
+                clearTimeout(timer_id);
+              }, slideMove);
 
               // change logo color
               changeLogoColor(slide.eq(currentSlide).find('.slide-content'));
@@ -107,16 +137,31 @@
 
             // On before slide change
             .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-              console.info('beforeChange');
+              //console.info('beforeChange');
               // remove loader
               $(aspotBlock).once(function () {
                 $(this).addClass('load');
               });
 
+              // hide next button
               hideNextbutton();
             });
         // end init slider
 
+        // start autoplay
+        $(window).load(function () {
+
+          clearTimeout(timer_id);
+
+          timer_id = setTimeout(function () {
+            //show focus slide content
+            showFocusSlide(slider.slick('slickCurrentSlide'), slider.slick('slickCurrentSlide') + 1);
+
+            if (startAuto) {
+              slider.slick('slickPlay');
+            }
+          }, timerAnimate);
+        });
       });
 
       //=============
@@ -152,25 +197,59 @@
         })
       }
 
+      // hide focus slide content
+      function hideFocusSlide(nextIndex) {
+        nextSlideContent = slide.eq(nextIndex).not('.slick-cloned').find('.slide-content');
+
+        $(nextSlideContent).css({
+          'opacity': 0
+        });
+      }
+
       // hide next button
       function hideNextbutton() {
-        $(nextButton).animate({
-          right: '-10%'
-        }, 300);
+        $(nextButton).fadeOut(timerAnimate * 0.5, function () {
+          $(this).css({
+            display: 'block',
+            right: '-10%'
+          });
+        });
       }
 
       // show next button
-      function showNextbutton(nextIndex) {
+      function showNextbutton() {
+        $(nextButton).animate({
+          right: 0
+        }, timerAnimate);
+      }
+
+      // show focus slide content
+      function showFocusSlide(currentIndex, nextIndex) {
+        activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
 
         // change background on next-button
         changeBgNextButton(nextIndex);
-        $(nextButton).animate({
-          right: 0
-        }, 600);
+
+        // hide focus slide content
+        hideFocusSlide(nextIndex);
+
+        // show next button
+        showNextbutton();
+
+        clearTimeout(timerAnimateShow);
+
+        timerAnimateShow = setTimeout(function () {
+          // change logo color
+          changeLogoColor(activeSlideContent);
+        }, slideMove * 0.5);
+
+        $(activeSlideContent).animate({
+          'opacity': 1
+        }, slideMove * 0.5, showNextbutton);
+
+
+
       }
-
-
-
     }
   };
 }(jQuery));

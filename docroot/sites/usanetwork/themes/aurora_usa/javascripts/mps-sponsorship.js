@@ -17,6 +17,7 @@
         var sponsoredBlock = $(element).find('.sponsored');
         if (sponsoredBlock.length) {
           var fileId = sponsoredBlock.data('mpspath');
+          sponsoredBlock.addClass('active');
           Drupal.behaviors.mpsSponsorShip.insertLogo(mps._select(sponsoredBlock), styleBlock, fileId);
         }
       });

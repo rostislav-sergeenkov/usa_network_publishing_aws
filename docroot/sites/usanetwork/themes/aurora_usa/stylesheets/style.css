@@ -4334,8 +4334,10 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   bottom: 40%;
   right: 0;
   position: absolute;
-  padding: 3px 0;
   width: 39.5%;
+}
+.featured-block .slides .sponsored.active {
+  padding: 3px 0;
 }
 .featured-block .slides li.first .sponsored {
   bottom: 31%;
@@ -4347,8 +4349,10 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   bottom: 0;
   right: 10%;
   position: absolute;
-  padding: 3px 0;
   width: 14%;
+}
+.page-home .block-usanetwork-aspot .slide .sponsored.active {
+  padding: 3px 0;
 }
 @media (max-width: 640px) {
   .page-home .block-usanetwork-aspot .slide .sponsored {
@@ -4362,8 +4366,10 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 3px 0;
   width: 14%;
+}
+.aspot-and-episodes .show-aspot .sponsored.active {
+  padding: 3px 0;
 }
 @media (max-width: 640px) {
   .aspot-and-episodes .show-aspot .sponsored {
@@ -4387,21 +4393,13 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
   background-color: #242424;
-  bottom: 34.7%;
+  bottom: 25%;
   right: 0;
-  padding: 3px 0;
   position: absolute;
   width: 63%;
 }
-@media (max-width: 768px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
-    bottom: 8.6vw;
-  }
-}
-@media (max-width: 640px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
-    bottom: 12.4vw;
-  }
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored.active {
+  padding: 3px 0;
 }
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
   bottom: 9.1vw;
@@ -4428,8 +4426,10 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   bottom: 9.1vw;
   right: 0;
   position: absolute;
-  padding: 3px 0;
   width: 30%;
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored.active {
+  padding: 3px 0;
 }
 @media (min-width: 1901px) {
   .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
@@ -4471,8 +4471,10 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   bottom: 9.1vw;
   right: 0;
   position: absolute;
-  padding: 3px 0;
   width: 30%;
+}
+.related-content-block .node-usanetwork-promo .sponsored.active {
+  padding: 3px 0;
 }
 @media (min-width: 1901px) {
   .related-content-block .node-usanetwork-promo .sponsored {

@@ -827,6 +827,34 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_show_blog_landing|node|tv_show|form';
+  $field_group->group_name = 'group_show_blog_landing';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Show Blog Landing Page',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_show_blog_title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Show Blog Landing Page',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => 'group-show-blog-landing field-group-tab',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_show_blog_landing|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_show_cast_landing|node|tv_show|form';
   $field_group->group_name = 'group_show_cast_landing';
   $field_group->entity_type = 'node';
@@ -835,7 +863,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Cast Landing Page',
-    'weight' => '16',
+    'weight' => '14',
     'children' => array(
       0 => 'group_social_meter',
       1 => 'group_cast_main',
@@ -892,7 +920,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Photo Landing Page',
-    'weight' => '18',
+    'weight' => '17',
     'children' => array(
       0 => 'field_show_plmb_promo',
     ),
@@ -919,7 +947,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Video Landing Page',
-    'weight' => '17',
+    'weight' => '16',
     'children' => array(
       0 => 'field_show_vlmb_promo',
     ),
@@ -1161,7 +1189,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Shows Queue Block',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_tvs_desktop_cimage',
       1 => 'field_tvs_mobile_cimage',
@@ -1367,7 +1395,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_usa_og_image',
     ),

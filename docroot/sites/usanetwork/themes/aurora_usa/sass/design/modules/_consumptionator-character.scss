@@ -246,49 +246,16 @@
             color: $poll-color;
           }
           .person-quotation {
-            font-size: 32px;
-            padding: 32px 53px 38px 56px;
             margin: 54px 0 58px;
-            border: 1px solid $poll-back;
-            display: block;
-            clear: both;
             @include breakpoint($bp-1280-width) {
-              padding: 24px 43px 28px 55px;
               margin: 26px 0 30px;
-              font-size: 22px;
-            }
-            @include breakpoint($bp-1024-width) {
-              padding: 37px 49px 41px 60px;
-              margin: 32px 0 34px;
-              font-size: 22px;
-              line-height: 1.4em;
             }
             @include breakpoint($bp-768-width) {
               padding: 22px 40px;
-              font-size: 20px;
-              line-height: 1.2em;
-              color: $sponsorship-dark;
             }
             @include breakpoint($bp-640-width) {
-              padding: 20px 40px 22px 40px;
               margin: 18px 0 25px;
               color: $poll-color;
-            }
-            &:before, &:after {
-              background-color: #ffffff;
-              font-size: 50px;
-              @include breakpoint($bp-1280-width) {
-                font-size: 37px;
-              }
-              @include breakpoint($bp-1024-width) {
-                font-size: 45px;
-              }
-              @include breakpoint($bp-768-width) {
-                font-size: 36px;
-              }
-              @include breakpoint($bp-640-width) {
-                font-size: 24px;
-              }
             }
           }
         }

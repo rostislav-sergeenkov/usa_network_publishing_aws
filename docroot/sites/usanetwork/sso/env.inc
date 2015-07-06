@@ -81,6 +81,7 @@ if (array_key_exists($_SERVER['SERVER_NAME'], $domains)) {
 // This condition is for SSO with dynamic domains.
 // It's for non-prod environments only.
 if(empty($environment_info['authentication-source.key']) && !empty($main_domain) && $conf['pub_sso_server'] == 'stage') {
+//if(empty($environment_info['authentication-source.key']) && !empty($main_domain)) {
   $main_domain_key = array_keys($main_domain);
   $main_domain_pattern = reset($main_domain_key);
   if ($main_domain_pattern && preg_match('/' . $main_domain_pattern . '$/', $_SERVER['SERVER_NAME'])) {

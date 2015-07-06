@@ -2149,10 +2149,11 @@ function _usanetwork_tv_shows_related_content_block() {
     ), 'setting');
 
     $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
-
+    $load_more_link = &drupal_static('load_more_link');
+    $load_more_link = TRUE;
     return theme('usanetwork_tv_shows_related_items_container', array(
       'related_items_block' => $block_of_items,
-      'load_more_link' => TRUE,
+      'load_more_link' => $load_more_link,
       'show_nid' => $tv_show_node->nid,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
     ));
@@ -2748,7 +2749,8 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
   $tag_videos_type = '<strong class="videos-type">' . $video_filter_title_short . '</strong>';
   $tag_seasons_type = '<strong class="seasons-type">' . t('all seasons') . '</strong>';
   $tag_show_name = '<strong class="show-name">' . $tv_show_node->title . '</strong>';
-
+  $load_more_link = &drupal_static('load_more_link');
+  $load_more_link = !empty($videos_block_next_item['items']) ? TRUE : FALSE;
   $result = theme('usanetwork_tv_shows_landing_videos', array(
     'block_title' => $video_filter_title_short,
     'video_filters' => $video_types,
@@ -2761,7 +2763,7 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
     'filter_tid' => $query_parameters['category'],
     'sorting_column' => $query_parameters['sort_by'],
     'sorting_order' => $query_parameters['sort_order'],
-    'load_more_link' => !empty($videos_block_next_item['items']) ? TRUE : FALSE,
+    'load_more_link' => $load_more_link,
     'tabs_description' => t('Showing !videos_type from !seasons_type for !show_name', array(
       '!videos_type' => $tag_videos_type,
       '!seasons_type' => $tag_seasons_type,

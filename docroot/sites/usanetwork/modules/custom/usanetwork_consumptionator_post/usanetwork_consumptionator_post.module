@@ -7,7 +7,7 @@
 include_once 'usanetwork_consumptionator_post.features.inc';
 
 define('USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS', 10);
-define('USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH', 410);
+define('USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH', 390);
 
 
 /**
@@ -89,6 +89,14 @@ function usanetwork_consumptionator_post_menu() {
   );
 
   $items['node/%node/blog'] = array(
+    'title' => 'Blog',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_consumptionator_post_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['node/%node/blog/%'] = array(
     'title' => 'Blog',
     'page arguments' => array(1),
     'page callback' => 'usanetwork_consumptionator_post_blank_page',
@@ -211,7 +219,7 @@ function _usanetwork_consumptionator_post_get_related_content_ajax($tv_show_node
     'overlimited' => TRUE,
     'rendered' => '',
   );
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'post', $start_from, $limit + 1);
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'consumpt_post', $start_from, $limit + 1);
   if (!empty($related_content)) {
     if (count($related_content) > $limit) {
       $response['overlimited'] = FALSE;
@@ -232,10 +240,6 @@ function _usanetwork_consumptionator_post_main_block() {
   $node = menu_get_object('node');
   if (isset($node->type) && $node->type == 'consumpt_post') {
     $node_wrapper = entity_metadata_wrapper('node', $node);
-    if (isset($node->field_gigya_share_bar)) {
-      $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
-      $sharebar['#title'] = t('Share');
-    }
     if (!empty($node->field_content_tags)) {
       $tags = $node_wrapper->field_content_tags->value();
       $tags_names = array();
@@ -249,20 +253,25 @@ function _usanetwork_consumptionator_post_main_block() {
     if (!empty($node->field_post_cover)) {
       $image = $node_wrapper->field_post_cover->value();
     }
+    $body = !empty($node->body) ? $node_wrapper->body->value->value() : '';
     $theme_variables = array(
       'title' => !empty($node->title) ? $node->title : '',
-      'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+      'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $body),
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
       'creating_date' => date('n/j/y', $creating_date),
       'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'tags' => !empty($tags_names) ? $tags_names : '',
-      'body' => !empty($node->body) ? $node_wrapper->body->value->value() : '',
+      'body' => $body,
       'rendered_carousel' => !empty($node->field_show)
           ? _usanetwork_consumptionator_post_posts_carousel($node_wrapper->field_show->nid->value(), $node->nid)
           : '',
       'source' => !empty($node->field_post_source) ? $node_wrapper->field_post_source->value() : '',
       'gallery_rec' => !empty($node->field_gallery_recap)
-          ? _usanetwork_consumptionator_post_gallery_recap($node_wrapper->field_gallery_recap->nid->value())
+          ? _usanetwork_consumptionator_post_gallery_recap
+          (
+              $node_wrapper->field_gallery_recap->nid->value(),
+              !empty($node->field_gallery_recap_block_title) ? $node_wrapper->field_gallery_recap_block_title->value() : NULL
+          )
           : '',
     );
     return theme('usanetwork_cons_post_main', $theme_variables);
@@ -277,15 +286,18 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
 
   if (is_numeric($show_id)) {
 
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'consumpt_post')
-      ->fieldCondition('field_show', 'target_id', $show_id, '=')
-      ->propertyOrderBy('created');
-
-    $result = $query->execute();
-    if (isset($result['node'])) {
-      $posts = entity_load('node', array_keys($result['node']));
+    $query = db_select('node', 'node');
+    $query->fields('node', array('nid'));
+    $query->condition('node.type', 'consumpt_post');
+    $query->condition('node.status', NODE_PUBLISHED);
+    $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+    $query->condition('field_show.field_show_target_id', $show_id);
+    $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
+    $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+    $query->orderBy('sorted_time', 'DESC');
+    $result = $query->execute()->fetchAllKeyed();
+    if (isset($result)) {
+      $posts = entity_load('node', array_keys($result));
       $rendered_items = array();
       foreach ($posts as $post) {
         if (!empty($post->field_post_cover)) {
@@ -296,14 +308,17 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
           $image = field_get_items('node', $post, 'field_promo_image_override');
           $image = reset($image);
         }
-        if (!empty($post->field_post_source)) {
-          $post_source = field_get_items('node', $post, 'field_post_source');
-          $post_source = reset($post_source);
-          $post_source = $post_source['value'];
+        if (!empty($post->field_promo_created_ovts)) {
+          $created_ovts = field_get_items('node', $post, 'field_promo_created_ovts');
+          $created_ovts = reset($created_ovts);
+          $created_ovts = $created_ovts['value'];
+        }
+        else {
+          $created_ovts = $post->created;
         }
         $episode_variables = array(
           'title' => !empty($post->title) ? $post->title : '',
-          'additional' => !empty($post_source) ? $post_source : t('by Author'),
+          'additional' => t('Posted on @date', array('@date' =>date('n/j/y', $created_ovts))),
           'url' => url('node/' . $post->nid),
           'active' => ($post_id == $post->nid) ? TRUE : FALSE,
           'icon_type' => usanetwork_core_api_get_media_icon('node', $post->nid),
@@ -319,11 +334,18 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
         $advert = render($advert_block['content']);
       }
       $show_node = node_load($show_id);
+      $show_blog_title = _usanetwork_get_field_item('node', $show_node, 'field_show_blog_title', 'value');
+      if ($show_blog_title) {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $blog_url = '/' .pathauto_cleanstring($show_blog_title);
+      } else {
+        $blog_url = '';
+      }
       $theme_variables = array(
         'posts' => !empty($rendered_items) ? $rendered_items : array(),
         'advert_block' => isset($advert) ? $advert : NULL,
-        'block_title' => t('@show_name blog', array('@show_name' => $show_node->title)),
-        'posts_landing_link' => l('View all posts', 'node/' . $show_id . '/blog'),
+        'block_title' => !empty($show_blog_title) ? $show_blog_title : t('@show_name blog', array('@show_name' => $show_node->title)),
+        'posts_landing_link' => l('View all posts', 'node/' . $show_id . '/blog' . $blog_url),
       );
       return theme('usanetwork_cons_post_carousel', $theme_variables);
     }
@@ -334,13 +356,13 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $post_id = NU
 /*
  * Renders usanetwork_episodes_gallery_recap block.
 */
-function _usanetwork_consumptionator_post_gallery_recap($gallery_id) {
+function _usanetwork_consumptionator_post_gallery_recap($gallery_id, $block_title = NULL) {
 
   if (is_numeric($gallery_id)) {
     $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id));
     $theme_variables = array(
       'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
-      'block_title' => t('Gallery Recap'),
+      'block_title' => !empty($block_title) ? $block_title : t('Gallery Recap'),
     );
 
     return theme('usanetwork_cons_post_gallery_rec', $theme_variables);
@@ -390,7 +412,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
     $theme_variables['ad'] = TRUE;
   }
 
-  $theme_variables['title'] = $tv_show_node->title . ' blog';
+  $theme_variables['title'] = usanetwork_consumptionator_post_get_blog_title($tv_show_node);
 
   if (!empty($posts_data)) {
     foreach ($posts_data as $post_data_index => $post_data) {
@@ -419,6 +441,9 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
 
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
+
+  $title = $theme_variables['title'] . ' | Blog | ' . $tv_show_node->title . ' | USA Network';
+  drupal_set_title($title);
 
   return !empty($theme_variables['items'])
     ? theme('usanetwork_blog_landing_posts', $theme_variables)
@@ -466,6 +491,15 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $offset = 0)
   return $result;
 }
 
+function usanetwork_consumptionator_post_get_blog_title($tv_show_node) {
+  $blog_title = _usanetwork_get_field_item('node', $tv_show_node, 'field_show_blog_title', 'value');
+  if ($blog_title) {
+    return $blog_title;
+  } else {
+    return $tv_show_node->title . ' blog';
+  }
+}
+
 function _usanetwork_consumptionator_post_get_posts_count($show_nid) {
   $query = db_select('node', 'cp');
   $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
@@ -487,7 +521,7 @@ function _usanetwork_consumptionator_post_get_season_episodes_description($resul
   }
   if (!empty($result_item->body)) {
     if (stripos($result_item->body, '<p>') === FALSE) {
-      return $result_item->body;
+      return truncate_utf8($result_item->body, USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH, TRUE, TRUE);
     }
     else {
       $matches = array();

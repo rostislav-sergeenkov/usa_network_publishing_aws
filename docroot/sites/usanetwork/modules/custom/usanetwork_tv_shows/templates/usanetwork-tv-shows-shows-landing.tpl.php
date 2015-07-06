@@ -23,7 +23,7 @@
       <?php endif; ?>
     </div>
   </div>
-  <div class="landing-items-blocks all-shows-items-blocks show-border ajax-load-block"
+  <div class="landing-items-blocks all-shows-items-blocks show-border ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"
   <?php if (!empty($items_per_page_limit)): print ' data-show-items-limit="' . $items_per_page_limit . '"'; endif; ?>
   <?php if (!empty($sorting_order)): print ' data-sorting-order="' . $sorting_order . '"'; endif; ?>>
     <?php if (!empty($shows_block)): ?>

@@ -49,7 +49,7 @@
             if (data.overlimited == false) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
             } else {
-              $('#footer').removeClass('hidden');
+              $('#footer > .region-footer').removeClass('hidden');
               $('.ajax-load-block').addClass('infinity-finished');
             }
           },

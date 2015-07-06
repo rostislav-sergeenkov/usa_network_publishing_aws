@@ -663,10 +663,11 @@ function _usanetwork_person_characters_related_content_block() {
     ), 'setting');
 
     $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content, 0, 1);
-
+    $load_more_link = &drupal_static('load_more_link');
+    $load_more_link = TRUE;
     return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
       'related_items_block' => $block_of_items,
-      'load_more_link' => TRUE,
+      'load_more_link' => $load_more_link,
       'show_nid' => $tv_show_node->nid,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1,
     ));

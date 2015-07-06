@@ -386,6 +386,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
   $current_season_data_item = NULL;
   $current_season_data_item_index = NULL;
   $last_season_data = NULL;
+  $next_season_available = &drupal_static('load_more_link');
   $next_season_available = FALSE;
 
   $theme_variables = array(
@@ -434,11 +435,12 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     }
 
     if ($current_season_data_item_index + 1 < count($season_ids)) {
-      $theme_variables['load_more_link'] = TRUE;
+      $next_season_available = TRUE;
     }
     else {
-      $theme_variables['load_more_link'] = FALSE;
+      $next_season_available = FALSE;
     }
+    $theme_variables['load_more_link'] = $next_season_available;
 
     if ($display_filters_block) {
       $theme_variables['filters'][0] = array(
@@ -892,10 +894,11 @@ function _usanetwork_episodes_get_episode_related_content_block() {
         ), 'setting');
 
         $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
-
+        $load_more_link = &drupal_static('load_more_link');
+        $load_more_link = TRUE;
         return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
           'related_items_block' => $block_of_items,
-          'load_more_link' => TRUE,
+          'load_more_link' => $load_more_link,
           'show_nid' => $tv_show_node->nid,
           'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
         ));

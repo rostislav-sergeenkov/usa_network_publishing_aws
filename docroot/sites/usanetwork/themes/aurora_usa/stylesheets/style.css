@@ -4179,43 +4179,43 @@ input[type="radio"], input[type="checkbox"] {
   content: '\e616';
 }
 
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:before {
   content: "\e602";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div {
   background-image: none !important;
   display: block;
   font-family: "ico-font";
   font-size: 32px;
 }
 @media (max-width: 1024px) {
-  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div {
+  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div {
     font-size: 26px;
   }
 }
 @media (max-width: 480px) {
-  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div {
+  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div {
     font-size: 23px;
   }
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:before {
   content: "\e602";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:before {
   content: "\e603";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:before {
   content: "\e604";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:before {
   content: "\e605";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:before {
   content: "\e606";
   color: #afafaf;
 }
@@ -18400,6 +18400,45 @@ footer h2 {
   }
 }
 
+@media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details {
+    padding: 20px 8px 10px 10px;
+  }
+}
+@media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details h2 {
+    font-size: 12px;
+    max-width: 234px;
+    text-align: left;
+    left: 10px;
+    right: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details h2 .divider {
+    margin: 0;
+  }
+}
+@media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details .timeline-item-text {
+    max-height: 80px;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+}
+@media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details .timeline-gigya-share-container {
+    font-size: 12px;
+    bottom: -6px;
+  }
+}
+@media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat #timeline-line-full-right {
+    top: 40px;
+  }
+}
+
 #block-usanetwork-tv-shows-usanetwork-tv-shows-mb .show-all-shows-main-block {
   background: #e9eaeb;
   border-bottom: 2px solid #2c2c2c;
@@ -26083,11 +26122,14 @@ input.echo-submit-text {
   overflow: hidden;
 }
 
-.field-type-gigya-sharebar {
+.field-type-gigya-sharebar,
+.node-type-timeline-gallery .timeline-gigya-share {
   margin-bottom: 20px;
 }
 .field-type-gigya-sharebar .gig-button-container td > div,
-.field-type-gigya-sharebar .gig-button-container td > div:hover {
+.field-type-gigya-sharebar .gig-button-container td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
   width: 32px !important;
   height: 32px !important;
   background-image: url("../images/social_chatter_icons.png");
@@ -26095,92 +26137,118 @@ input.echo-submit-text {
 }
 @media (max-width: 1024px) {
   .field-type-gigya-sharebar .gig-button-container td > div,
-  .field-type-gigya-sharebar .gig-button-container td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
     width: 26px !important;
     height: 26px !important;
   }
 }
 @media (max-width: 709px) {
   .field-type-gigya-sharebar .gig-button-container td > div,
-  .field-type-gigya-sharebar .gig-button-container td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
     width: 24px !important;
     height: 24px !important;
   }
 }
 @media (max-width: 480px) {
   .field-type-gigya-sharebar .gig-button-container td > div,
-  .field-type-gigya-sharebar .gig-button-container td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
     width: 22px !important;
     height: 22px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div {
   background-position: 1px -2908px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:hover {
   background-position: 1px -2948px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div {
     background-position: 1px -3422px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:hover {
     background-position: 1px -3452px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div {
   background-position: 1px -2750px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:hover {
   background-position: 1px -2790px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div {
     background-position: 1px -3304px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:hover {
     background-position: 1px -3334px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div {
   background-position: 1px -3225px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:hover {
   background-position: 1px -3265px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div {
     background-position: 1px -3660px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:hover {
     background-position: 1px -3690px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div {
   background-position: 1px -3067px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:hover {
   background-position: 1px -3107px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div {
     background-position: 1px -3542px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:hover {
     background-position: 1px -3572px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div {
   background-position: 5px -3717px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:hover {
   background-position: 5px -3747px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div {
     background-position: 4px -3779px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:hover {
     background-position: 4px -3804px !important;
   }
 }

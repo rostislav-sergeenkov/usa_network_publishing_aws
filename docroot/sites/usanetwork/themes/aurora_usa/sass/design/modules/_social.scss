@@ -1237,7 +1237,8 @@ input.echo-submit-text {
   overflow: hidden;
 }
 
-.field-type-gigya-sharebar {
+.field-type-gigya-sharebar,
+.node-type-timeline-gallery .timeline-gigya-share {
   margin-bottom: 20px;
   .gig-button-container {
     td {

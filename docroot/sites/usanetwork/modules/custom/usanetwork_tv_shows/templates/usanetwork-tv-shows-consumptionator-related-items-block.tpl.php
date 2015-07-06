@@ -7,8 +7,8 @@
 <ul>
   <?php if (!empty($related_items)): ?>
       <?php foreach ($related_items as $related_item): ?>
-        <li <?php print $related_item['is_ymal'] ?  'class="ymal-item"' : '';?>>
-          <?php print $related_item['content']; ?>
+        <li<?php print !empty($related_item['ymal']) ? ' class="ymal-item show-border"' : '';?>>
+          <?php print $related_item['render']; ?>
         </li>
       <?php endforeach; ?>
   <?php endif; ?>

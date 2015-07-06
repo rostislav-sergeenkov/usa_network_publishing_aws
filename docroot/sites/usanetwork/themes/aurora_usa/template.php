@@ -71,7 +71,10 @@ function aurora_usa_preprocess_html(&$vars) {
       'media_gallery',
       'catchall_page',
       'person',
-      'tv_episode'
+      'tv_episode',
+      'quiz',
+      'timeline_gallery',
+      'consumpt_post',
     );
     if (in_array($entity->type, $consumptionator_node_types)) {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
@@ -129,7 +132,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   drupal_add_js($theme_path . '/javascripts/tableheader.js');
   drupal_add_js($theme_path . '/javascripts/jquery.mCustomScrollbar.concat.min.js');
-  drupal_add_js($theme_path . '/javascripts/viewport-units-buggyfill.js');
   drupal_add_js($theme_path . '/javascripts/matchmedia.js');
   drupal_add_js($theme_path . '/javascripts/picturefill.js');
   drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
@@ -164,6 +166,9 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
   if(!empty($node) && $node->type == 'tv_episode') {
+    drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
+  }
+  if(!empty($node) && $node->type == 'consumpt_post') {
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
   // add ios touch icon

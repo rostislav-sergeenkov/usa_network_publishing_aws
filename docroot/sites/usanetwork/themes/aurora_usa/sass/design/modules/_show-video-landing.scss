@@ -236,6 +236,11 @@
             overflow: hidden;
             position: relative;
             width: 100%;
+            &:hover, &.active {
+              span {
+                color: $gray-dark-darker;
+              }
+            }
             a {
               color: #ffffff;
               display: block;

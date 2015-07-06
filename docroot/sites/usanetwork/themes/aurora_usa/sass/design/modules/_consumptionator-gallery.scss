@@ -1,4 +1,4 @@
-.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode {
+.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post {
   .gallery-block {
     @include clear;
     margin: 0;
@@ -22,6 +22,7 @@
     }
   }
   .gallery-wrapper {
+    background: $gallery-description-back;
     float: left;
     height: 100%;
     position: relative;
@@ -202,7 +203,7 @@
             }
             @include breakpoint($bp-640-width) {
               height: auto;
-              min-height: 90px;
+              min-height: 100px;
             }
             @include breakpoint($bp-480-width) {
               padding: 0 50px;
@@ -512,7 +513,7 @@
     }
   }
 }
-.node-type-tv-episode {
+.node-type-tv-episode, .node-type-consumpt-post {
   .gallery-wrapper {
     float: none;
     margin: 0;

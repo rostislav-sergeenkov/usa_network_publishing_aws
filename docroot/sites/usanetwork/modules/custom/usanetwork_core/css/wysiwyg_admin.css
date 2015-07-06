@@ -1,0 +1,41 @@
+.person-quotation {
+  font-family: "texgyrescholaitalic", Times, serif;
+  display: block;
+  position: relative;
+  text-align: center;
+  border: 1px solid #9E9E9E;
+  padding: 14px 21px 18px 13px;
+  margin: 16px 0 21px;
+  font-size: 20px;
+}
+.person-quotation:before, .person-quotation:after {
+  position: absolute;
+  font-family: "texgyrescholaitalic", Times, serif;
+  display: block;
+  padding: 10px;
+  font-size: 30px;
+  color: #2c2c2c;
+  content: '"';
+  background-color: #ffffff;
+}
+.person-quotation:before {
+  top: -15px;
+  left: -13px;
+}
+.person-quotation:after {
+  bottom: -26px;
+  right: -10px;
+}
+
+.lines-quotation {
+  font-family: "texgyrescholaitalic", Times, serif;
+  display: block;
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 25px 18px 15px;
+  margin: 20px 0 20px;
+  border-top: 2px solid #9E9E9E;
+  border-bottom: 2px solid #9E9E9E;
+  line-height: 1em;
+}

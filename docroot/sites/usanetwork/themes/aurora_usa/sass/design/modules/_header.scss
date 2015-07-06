@@ -203,6 +203,9 @@ header {
                 height: 40px;
                 > a {
                   line-height: 40px;
+                  &.active {
+                    opacity: 0.8;
+                  }
                   &:before {
                     bottom: 0px;
                     content: '';
@@ -311,19 +314,6 @@ header {
                 border-color: $header-menu-item-separator;
                 color: $bottom-footer-back;
                 padding-left: 50px;
-              }
-              .title-link {
-                background: $footer-back;
-                border-bottom: 1px solid $header-menu-item-separator;
-                color: $bottom-footer-back;
-                display: block;
-                font-family: $tex-gyreschola-italic;
-                font-size: 16px;
-                height: 30px;
-                line-height: 30px;
-                padding-left: 30px;
-                text-transform: uppercase;
-                width: 100%;
               }
               span.no-link {
                 background: $footer-back;

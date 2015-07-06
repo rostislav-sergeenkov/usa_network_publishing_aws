@@ -428,7 +428,15 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       break;
     case 'post':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
-      $result['description'] = t('Blog');
+      $result['description'] = t('Blog post');
+      break;
+    case 'consumpt_post':
+      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      $result['description'] = t('Blog post');
+      break;
+    case 'timeline_gallery':
+      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      $result['description'] = t('Timeline Gallery');
       break;
     case 'tv_episode':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;

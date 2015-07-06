@@ -21,7 +21,7 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Floodlight Tag',
-    'weight' => '10',
+    'weight' => '13',
     'children' => array(
       0 => 'field_floodlight_category',
       1 => 'field_floodlight_type',
@@ -136,7 +136,7 @@ On page load, only the first promo in each spot will be displayed.',
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Full Bleed Promo',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_hp_full_bleed_promo',
     ),
@@ -163,7 +163,7 @@ On page load, only the first promo in each spot will be displayed.',
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Full episode carousel',
-    'weight' => '8',
+    'weight' => '10',
     'children' => array(
       0 => 'field_hp_episodes_block_title',
       1 => 'field_carousel_rows_number',
@@ -194,7 +194,7 @@ On page load, only the first promo in each spot will be displayed.',
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Global Nav images',
-    'weight' => '9',
+    'weight' => '12',
     'children' => array(
       0 => 'field_hp_nav_img_more',
       1 => 'field_hp_nav_img_shows',
@@ -222,7 +222,7 @@ On page load, only the first promo in each spot will be displayed.',
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo carousel',
-    'weight' => '8',
+    'weight' => '11',
     'children' => array(
       0 => 'field_hp_promo_carousel',
       1 => 'field_hp_promo_carousel_display',
@@ -273,6 +273,33 @@ If more than 4 are added a carousel will be triggered on page load so content ca
     ),
   );
   $export['group_hp_promos|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_show_card|node|usa_homepage|form';
+  $field_group->group_name = 'group_show_card';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Show Card Carousel',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_hp_show_card_elements',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-show-card field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_show_card|node|usa_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

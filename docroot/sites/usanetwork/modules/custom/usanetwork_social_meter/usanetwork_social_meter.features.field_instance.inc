@@ -1688,10 +1688,9 @@ function usanetwork_social_meter_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 29,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -1737,10 +1736,9 @@ function usanetwork_social_meter_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 30,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -1795,10 +1793,9 @@ function usanetwork_social_meter_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 31,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'microsite_output' => array(
         'label' => 'above',

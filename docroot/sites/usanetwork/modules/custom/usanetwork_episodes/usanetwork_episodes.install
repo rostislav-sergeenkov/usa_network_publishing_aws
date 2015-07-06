@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_update_N().
+ * Update Episode Guide URL scheme
+ */
+function usanetwork_episodes_update_7100() {
+  $queue = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('n.type', 'tv_episode');
+  $results = $queue->execute()->fetchCol();
+
+  $all_episodes = node_load_multiple($results);
+  foreach ($all_episodes as  $episode) {
+    pathauto_node_update_alias($episode, 'update');
+  }
+}

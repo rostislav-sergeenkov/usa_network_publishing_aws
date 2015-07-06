@@ -76,19 +76,14 @@
       .person-quotation {
         font-size: 53px;
         padding: 72px 100px 75px 120px;
-        margin: 54px 0 60px;
         border: 1px solid $schedule-caption-color;
         line-height: 1em;
-        display: block;
-        clear: both;
         @include breakpoint($bp-1280-width) {
           padding: 47px 72px;
-          margin: 34px 0 35px;
           font-size: 32px;
         }
         @include breakpoint($bp-1024-width) {
           padding: 38px 50px;
-          margin: 30px 0 40px;
           font-size: 24.75px;
           line-height: 1.2em;
         }

@@ -322,46 +322,30 @@
             margin-bottom: 0;
           }
         }
-        .person-quotation {
-          font-size: 30px;
-          padding: 35px 55px;
-          margin: 53px 0 23px;
-          border: 1px solid $poll-back;
-          display: block;
-          clear: both;
+        .source {
+          font-family: $avalon-medium;
+          color: $schedule-pm-color;
+          letter-spacing: 2px;
+          font-size: 16px;
+          text-transform: uppercase;
+          line-height: 1;
           @include breakpoint($bp-1280-width) {
-            padding: 25px 39px 25px 44px;
-            margin: 35px 0 16px;
-            font-size: 20px;
-          }
-          @include breakpoint($bp-1024-width) {
-            padding: 25px 50px 25px 54px;
-            margin: 38px 0 19px;
-            font-size: 20px;
-          }
-          @include breakpoint($bp-768-width) {
-            padding: 25px 80px;
-            font-size: 20px;
+            font-size: 13px;
           }
           @include breakpoint($bp-640-width) {
-            padding: 23px 30px;
-            margin: 32px 0 19px;
+            font-size: 12px;
           }
-          &:before, &:after {
-            background-color: #ffffff;
-            font-size: 50px;
-            @include breakpoint($bp-1280-width) {
-              font-size: 37px;
-            }
-            @include breakpoint($bp-1024-width) {
-              font-size: 45px;
-            }
-            @include breakpoint($bp-768-width) {
-              font-size: 36px;
-            }
-            @include breakpoint($bp-640-width) {
-              font-size: 24px;
-            }
+        }
+        .source-title {
+          font-family: $avalon-book;
+          color: $schedule-pm-color;
+        }
+        a.source-title {
+          color: $source-link;
+          &:hover,
+          &:active {
+            color: $source-link;
+            text-decoration: underline;
           }
         }
         .lines-quotation {

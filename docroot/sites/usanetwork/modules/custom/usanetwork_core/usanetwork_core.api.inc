@@ -24,12 +24,9 @@ function usanetwork_core_api_get_content_image($entity_type, $entity, $image_typ
   }
 
   if ($entity_type == 'file') {
-    $file_stream_wrapper = file_stream_wrapper_get_instance_by_uri($entity->uri);
+    $file_uri = _usanetwork_mpx_video_get_image_path($entity);
 
-    if ($file_stream_wrapper) {
-      // The image type for this entity type is always default, the limit is always 1 and return URI only is always true too.
-      return @$file_stream_wrapper->getLocalThumbnailPath();
-    }
+    return $file_uri;
   }
   else {
     $entity_field_aliases_callback = '_usanetwork_core_api_get_' . $entity_type . '_image_field_names';
@@ -173,6 +170,11 @@ function _usanetwork_core_api_get_node_image_field_names() {
     ),
     // Post
     'post' => array(
+      'main' => 'field_post_cover',
+      'cover' => 'field_post_cover',
+    ),
+    // Post
+    'consumpt_post' => array(
       'main' => 'field_post_cover',
       'cover' => 'field_post_cover',
     ),

@@ -4,6 +4,9 @@
   overflow: hidden;
   text-align: center;
   max-width: 970px;
+  @include breakpoint($bp-640-width) {
+    margin: 3px auto;
+  }
 }
 .midbanner {
   height: auto;

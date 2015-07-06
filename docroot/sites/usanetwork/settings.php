@@ -86,7 +86,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
-    $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'dev/sites/default/files-private';
+    $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'dev/sites/usanetwork/files-private';
 
     // Memchache settings
     $conf['cache_backends'][] = './includes/cache-install.inc';

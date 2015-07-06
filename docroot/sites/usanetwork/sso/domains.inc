@@ -5,7 +5,7 @@
  * IDM/SSO team.
  */
 
-//$domains = array(
+$domains = array(
 //  'local.usanetwork.com' => 'usa-local',
 //  'dev-beta.usanetwork.com' => 'usa-devbeta',
 //  'dev.usanetwork.com' => 'usa-dev',
@@ -17,7 +17,7 @@
 //  'origin-www.usanetwork.com' => 'usa-origin',
 //  'usanetwork.com' => 'usa-prod',
 //  'www.usanetwork.com' => 'usa-www',
-//);
+);
 $main_domain = array (
   'usanetwork.com' => 'usanetwork',
 );

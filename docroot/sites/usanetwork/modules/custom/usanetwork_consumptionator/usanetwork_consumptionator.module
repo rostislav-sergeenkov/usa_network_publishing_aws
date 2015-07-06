@@ -393,9 +393,9 @@ function _usanetwork_consumptionator_load_ymal_content($show_nids = array(), $st
 
       $is_full = !empty($related_item->is_full)
         ? (
-          $related_item->is_full == 1
-            ? t('Full episode')
-            : t('Promo')
+        $related_item->is_full == 1
+          ? t('Full episode')
+          : t('Promo')
         )
         : t('Promo');
 
@@ -426,26 +426,26 @@ function _usanetwork_consumptionator_load_ymal_content($show_nids = array(), $st
 
       $theme_variables = array(
         'classes' => !empty($related_item->show_nid)
-          ? usanetwork_tv_shows_color_show_css_class($related_item->show_nid)
-          : '',
+            ? usanetwork_tv_shows_color_show_css_class($related_item->show_nid)
+            : '',
         'content_url' => !empty($related_item->fid)
-          ? url('file/' . $related_item->fid)
-          : '',
+            ? url('file/' . $related_item->fid)
+            : '',
         'image_url' => !empty($episode_image_uri)
-          ? image_style_url('634x349', $episode_image_uri)
-          : '',
+            ? image_style_url('634x349', $episode_image_uri)
+            : '',
         'caption' => $video_caption,
         'title' => !empty($related_item->video_title)
-          ? $related_item->video_title
-          : '',
+            ? $related_item->video_title
+            : '',
         'additional' => $additional_text,
       );
 
       $result_items[] = array(
         'li_class' => $item_class,
         'content' => $render
-          ? theme('usanetwork_consumptionator_ymal_item', $theme_variables)
-          : $theme_variables,
+            ? theme('usanetwork_consumptionator_ymal_item', $theme_variables)
+            : $theme_variables,
       );
     }
   }
@@ -525,17 +525,17 @@ function _usanetwork_consumptionator_load_related_content($show_nid, $start_from
 
       $theme_variables = array(
         'content_url' => !empty($related_item->assoc_fid)
-          ? url('file/' . $related_item->assoc_fid)
-          : url('node/' . $related_item->nid),
+            ? url('file/' . $related_item->assoc_fid)
+            : url('node/' . $related_item->nid),
         'image_url' => !empty($image_uri)
-          ? image_style_url('634x349', $image_uri)
-          : '',
+            ? image_style_url('634x349', $image_uri)
+            : '',
         'caption' => !empty($caption_prefix)
-          ? $caption_prefix . ': ' . $related_item->show_title
-          : $related_item->show_title,
+            ? $caption_prefix . ': ' . $related_item->show_title
+            : $related_item->show_title,
         'title' => !empty($related_item->promo_title)
-          ? $related_item->promo_title
-          : $related_item->title,
+            ? $related_item->promo_title
+            : $related_item->title,
         'additional' => array(
           'left' => $additional_text['left'],
           'right' => $additional_text['right'],
@@ -545,8 +545,8 @@ function _usanetwork_consumptionator_load_related_content($show_nid, $start_from
       $result_items[] = array(
         'li_class' => $item_class,
         'content' => $render
-          ? theme('usanetwork_consumptionator_related_item', $theme_variables)
-          : $theme_variables,
+            ? theme('usanetwork_consumptionator_related_item', $theme_variables)
+            : $theme_variables,
       );
 
       $item_index++;

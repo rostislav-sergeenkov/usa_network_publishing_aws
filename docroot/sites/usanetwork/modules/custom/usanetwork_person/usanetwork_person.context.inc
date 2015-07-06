@@ -44,6 +44,12 @@ function usanetwork_person_context_default_contexts() {
           'region' => 'content',
           'weight' => '-8',
         ),
+        'usanetwork_mpx_video-usanetwork_social_content' => array(
+          'module' => 'usanetwork_mpx_video',
+          'delta' => 'usanetwork_social_content',
+          'region' => 'content',
+          'weight' => '-7',
+        ),
       ),
     ),
   );

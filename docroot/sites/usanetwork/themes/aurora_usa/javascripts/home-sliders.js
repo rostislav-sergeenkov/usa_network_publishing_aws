@@ -161,11 +161,11 @@
           aspotSlider = initSlider();
 
           $('.next-button')
-            .hide()
-            .addClass('disabled')
-            .click(function () {
-              aspotSlider.goToNextSlide();
-            });
+              .hide()
+              .addClass('disabled')
+              .click(function () {
+                aspotSlider.goToNextSlide();
+              });
         }
       });
 

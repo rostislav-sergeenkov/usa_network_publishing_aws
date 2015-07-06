@@ -14,8 +14,8 @@
         <li<?php print ($key == 0) ? ' class="first"' : ''; ?>><?php print $item; ?></li>
       <?php endforeach; ?>
     </ul>
-    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
-    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>
+    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
+    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
   </div>
   <a href="javascript:void(0)" class="more-button more">
     <span class="more-text"><?php print t('More full episodes'); ?></span>

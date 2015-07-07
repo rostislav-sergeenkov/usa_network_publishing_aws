@@ -130,19 +130,19 @@ else {
  * A utility function for pulling Acquia DB information.
  */
 function sso_db_info($db_name) {
-  if (file_exists('/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/creds.json')) {
-    $creds_json = file_get_contents('/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/creds.json');
+  if (file_exists('/var/www/site-php/' . $_ENV['AH_SITE_NAME'] . '/creds.json')) {
+    $creds_json = file_get_contents('/var/www/site-php/' . $_ENV['AH_SITE_NAME'] . '/creds.json');
     $databases = json_decode($creds_json, TRUE);
     $db = $databases['databases'][$db_name];
     $db['host'] = ($host = sso_db_current_host($db['db_cluster_id'])) ? $host : key($db['db_url_ha']);
   }
-  elseif (file_exists('/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/' . $_ENV['AH_SITE_GROUP'] . '-settings.inc')) {
+  elseif (file_exists('/var/www/site-php/' . $_ENV['AH_SITE_NAME'] . '/' . $_ENV['AH_SITE_NAME'] . '-settings.inc')) {
     /*
      * @todo
      * We'll ultimately want to pull this from a creds.json, in keeping with the
      * Acquia method.
      */
-    require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/' . $_ENV['AH_SITE_GROUP'] . '-settings.inc';
+    require '/var/www/site-php/' . $_ENV['AH_SITE_NAME'] . '/' . $_ENV['AH_SITE_NAME'] . '-settings.inc';
 
     $db = array();
     $db['driver'] = $databases['default']['default']['driver'];

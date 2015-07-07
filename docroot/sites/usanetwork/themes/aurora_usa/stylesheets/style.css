@@ -2327,17 +2327,12 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-wrapper, .five-promo-item-block ul li .last .three-line-video .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper {
   background: #656364;
   bottom: 0;
-  height: 34.7%;
+  height: 25%;
   position: absolute;
   width: 100%;
   z-index: 1;
 }
-@media (min-width: 641px) and (max-width: 768px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-wrapper, .five-promo-item-block ul li .last .three-line-video .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper {
-    height: 8.6vw;
-  }
-}
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-wrapper, .five-promo-item-block ul li .last .three-line-video .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper {
     height: 12.4vw;
   }
@@ -4282,6 +4277,11 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   text-align: center;
   max-width: 970px;
 }
+@media (max-width: 640px) {
+  #topbanner {
+    margin: 3px auto;
+  }
+}
 
 .midbanner {
   height: auto;
@@ -4351,7 +4351,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   position: absolute;
   width: 14%;
 }
-.page-home .block-usanetwork-aspot .slide .sponsored.active {
+.page-home .block-usanetwork-aspot .swiper-slide .sponsored.active {
   padding: 3px 0;
 }
 @media (max-width: 640px) {
@@ -5827,7 +5827,7 @@ header .nav-bar-tabs {
   }
   header .nav-bar-tabs ul > li a {
     background: #363435;
-    border-bottom: 2px solid darkgrey;
+    border-bottom: 2px solid #666666;
     color: #ffffff;
     cursor: pointer;
     display: block;
@@ -5889,7 +5889,7 @@ header .nav-bar-tabs {
   }
   header .nav-bar-tabs ul > li ul.menu li a {
     background: darkgrey;
-    border-bottom: 1px solid #dcddde;
+    border-bottom: 2px solid #dcddde;
     line-height: 30px;
     padding-left: 40px;
   }
@@ -5897,15 +5897,15 @@ header .nav-bar-tabs {
     padding-left: 50px;
   }
   header .nav-bar-tabs ul > li ul.menu.categorized-menu a {
-    background: darkgrey;
-    border-color: #b9b9b9;
-    color: #757575;
+    background: #444444;
+    border-color: #666666;
+    color: #ffffff;
     padding-left: 50px;
   }
   header .nav-bar-tabs ul > li ul.menu.categorized-menu span.no-link {
-    background: darkgrey;
-    border-bottom: 1px solid #b9b9b9;
-    color: #757575;
+    background: #444444;
+    border-bottom: 2px solid #666666;
+    color: #ffffff;
     display: block;
     font-family: "texgyrescholaitalic", Times, serif;
     height: 30px;
@@ -6195,7 +6195,7 @@ header .search a.active {
   }
 }
 header .main-menu-open {
-  background: darkgrey;
+  background: #666666;
   display: none;
   height: 50px;
   right: 0px;
@@ -6209,7 +6209,6 @@ header .main-menu-open {
   }
 }
 header .main-menu-open.active {
-  background: #757575;
   border-left: 1px solid #dcddde;
 }
 header .main-menu-open a {
@@ -6862,6 +6861,9 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a {
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .asset-img {
   opacity: 1;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper {
+  z-index: 2;
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .meta-icon {
   display: block;
@@ -8589,19 +8591,19 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .title, .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta h1, .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta h2, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .title, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta h1, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta h2 {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.46341vw;
+  font-size: 1.76749vw;
   letter-spacing: 1px;
   word-wrap: break-word;
   line-height: 1.6;
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .title, .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta h1, .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta h2, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .title, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta h1, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta h2 {
-    font-size: 28px;
+    font-size: 33.6px;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .title, .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta h1, .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta h2, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .title, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta h1, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta h2, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .title, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta h1, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta h2 {
-    font-size: 15px;
+    font-size: 18px;
   }
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .additional, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .additional, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .additional, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .additional, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .additional {
@@ -17406,6 +17408,7 @@ footer h2 {
     display: table-cell;
     font-size: 3.125vw;
     float: none;
+    letter-spacing: 1px;
     line-height: 3.90625vw;
     margin: 0;
     position: relative;
@@ -17426,6 +17429,11 @@ footer h2 {
   line-height: 18px;
   margin-top: 8px;
   text-transform: uppercase;
+  /*@include breakpoint($bp-480-width) {
+    font-size: 7.5px;
+    line-height: 8.75px;
+    padding-left: 5px;
+  }*/
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-top-info .schedule .time {
@@ -17446,11 +17454,9 @@ footer h2 {
     vertical-align: middle;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .shows-block .show-info-block .show-top-info .schedule .time {
-    font-size: 7.5px;
-    line-height: 8.75px;
-    padding-left: 5px;
+    display: none;
   }
 }
 .shows-block .show-info-block .show-top-info .schedule .time span {
@@ -17791,7 +17797,7 @@ footer h2 {
 }
 .shows-block .show-info-block .show-description .node .meta-wrapper {
   height: 100%;
-  padding: 20px 0 55px;
+  padding: 18px 0 55px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -17804,12 +17810,8 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .shows-block .show-info-block .show-description .node .meta-wrapper {
-    padding: 12px 0 55px;
-  }
-}
-@media (max-width: 640px) {
-  .shows-block .show-info-block .show-description .node .meta-wrapper {
-    padding: 8px 0 35px;
+    padding: 5px 0 35px;
+    width: 90%;
   }
 }
 .shows-block .show-info-block .show-description .node .heading {
@@ -17888,8 +17890,8 @@ footer h2 {
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .shows-block .show-info-block .show-description .node .about-content {
-    font-size: 1.36719vw;
-    line-height: 1.95313vw;
+    font-size: 2.29492vw;
+    line-height: 2.49023vw;
     margin-top: 1.5625vw;
   }
 }
@@ -17932,7 +17934,8 @@ footer h2 {
 }
 @media (max-width: 640px) {
   .shows-block .show-info-block .show-description .node .show-link {
-    margin-right: -44px;
+    bottom: 8px;
+    margin-right: -46px;
   }
 }
 @media (max-width: 480px) {
@@ -18116,7 +18119,8 @@ footer h2 {
     display: table-cell;
     float: none;
     line-height: 1;
-    text-align: center;
+    padding-left: 10px;
+    text-align: left;
     vertical-align: middle;
   }
 }
@@ -19761,6 +19765,7 @@ footer h2 {
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2 {
   color: #545454;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 36px;
   line-height: 132px;
   margin: 0 0 0 20px;
@@ -28664,6 +28669,14 @@ yx-axis
 @media (min-width: 641px) and (max-width: 768px) {
   .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
     height: 18.5625vw;
+  }
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li .meta-icon {
+    height: 30px;
+    margin-top: -15px;
+    width: 30px;
+  }
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li .meta-icon ~ .meta {
+    padding-left: calc(8% + 30px);
   }
 }
 @media (max-width: 640px) {

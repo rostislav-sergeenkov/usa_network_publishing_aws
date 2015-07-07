@@ -5,7 +5,7 @@
   overflow: hidden;
   min-height: 43vw;
   max-height: 43.75vw;
-//  padding-bottom: 43.7%; /* ~16:7 */
+  //  padding-bottom: 43.7%; /* ~16:7 */
   position: relative;
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -14,10 +14,10 @@
   @include breakpoint($bp-min-2500-width) {
     min-height: 1090px;
     max-height: 1094px;
-//    padding-bottom: 1094px;
+    //    padding-bottom: 1094px;
   }
   @include breakpoint($bp-640-width) {
-//    padding-bottom: 87.45%;
+    //    padding-bottom: 87.45%;
     min-height: 90vw;
     max-height: 90.625vw;
   }
@@ -76,29 +76,46 @@
   }
   .asset-img {
     img {
+      position: relative;
       width: 100%;
     }
   }
   .slide {
     position: relative;
+    z-index: 0;
+
+    .clone-img {
+      display: none;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+    .wrp {
+      background: #000000;
+//      overflow: hidden;
+    }
     .slide-content {
+      overflow: hidden;
       opacity: 0;
     }
   }
-//  .slider-container {
-//    overflow: hidden;
-//    width: 1000%;
-//  }
-//  .slide {
-//    float: left;
-//    position: relative;
-//    width: 100vw;
-//    .wrp {
-//      background: #000000;
-//      overflow: hidden;
-//    }
-//  }
+  //  .slider-container {
+  //    overflow: hidden;
+  //    width: 1000%;
+  //  }
+  //  .slide {
+  //    float: left;
+  //    position: relative;
+  //    width: 100vw;
+  //    .wrp {
+  //      background: #000000;
+  //      overflow: hidden;
+  //    }
+  //  }
 }
+
 .usanetwork-aspot {
 
   .aspot-draggable-element {
@@ -255,8 +272,8 @@
       &:before {
         border: solid 0.9375vw;
         border-color: inherit;
-        border-right-color: transparent!important;
-        border-bottom-color: transparent!important;
+        border-right-color: transparent !important;
+        border-bottom-color: transparent !important;
         content: "";
         display: block;
         height: 0;
@@ -395,6 +412,7 @@
     }
   }
 }
+
 .aspot-and-episodes {
   @include clear();
   overflow: hidden;
@@ -472,7 +490,7 @@
       position: relative;
       width: 100%;
     }
-    @include breakpoint ($bp-min-769-width) {
+    @include breakpoint($bp-min-769-width) {
       &.shadow:after {
         content: '';
         display: block;
@@ -480,12 +498,12 @@
         height: 9.1vw;
         position: absolute;
         bottom: 0;
-        background: -moz-linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135,135,135,0)), color-stop(100%, rgba(0,0,0,1)));
-        background: -webkit-linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
-        background: -o-linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
-        background: -ms-linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
-        background: linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
+        background: -moz-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135, 135, 135, 0)), color-stop(100%, rgba(0, 0, 0, 1)));
+        background: -webkit-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        background: -o-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        background: -ms-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        background: linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
         z-index: 1;
       }
@@ -586,7 +604,7 @@
           top: 0px;
           height: 100%;
           z-index: 9;
-          background: rgba(255,255,255,0.6);
+          background: rgba(255, 255, 255, 0.6);
           &.jcarousel-control-prev {
             left: 0;
             width: 60px;
@@ -682,7 +700,7 @@
         @include breakpoint($bp-480-width) {
           line-height: 80px;
         }
-        &.close{
+        &.close {
           .more-text {
             display: none;
           }
@@ -690,7 +708,7 @@
             display: block;
           }
         }
-        &.more{
+        &.more {
           .more-text {
             display: block;
           }

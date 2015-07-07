@@ -10,8 +10,11 @@
           timer_id,
           timerAnimate,
           timerAnimateHide,
-          timerAnimateShow,
+          timeAnimateShow,
+          nextSlide,
           nextSlideContent,
+          nextSlideImg,
+          activeSlide,
           activeSlideContent,
       // elements
           stickyMenu = $('.region-header'),
@@ -20,11 +23,13 @@
           nextButtonWrapper = $('.block-usanetwork-aspot .next-button-wrapper'),
           slider = $('.block-usanetwork-aspot .slider-container'),
           slide = $('.block-usanetwork-aspot .slide'),
+          slideCloneImg = $('.block-usanetwork-aspot .slide .clone-img'),
       // settings
           sliderAutoplay,
           sliderSpeed = 6000, // default value
           startAuto = true,
-          slideMove = sliderSpeed * 0.1; // default value
+          slideMove = sliderSpeed * 0.1, // default value
+          slideMoveSpeed = 1000;
 
       // check count slides before init
       if (slide.length === 1) {
@@ -50,8 +55,8 @@
           startAuto = false;
         }
 
-        slideMove = sliderSpeed * 0.1;
-        timerAnimate = slideMove;
+        slideMove = timeAnimateShow = sliderSpeed * 0.1;
+
       }
 
 
@@ -77,19 +82,17 @@
         // Start init slider
         // On init slide change
         slider.on('init', function (event, slick) {
-          console.info('init');
-          console.info(slick);
-          var nextIndex = slick.currentSlide + 1;
+          //console.info('init');
+          //console.info(slick);
 
           // start next button
           nextButton.addClass('ready');
 
+          // show content
+          slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('opacity', 1);
+
           // change logo color
           changeLogoColor(slide.find('.slide-content'));
-
-          // show next button
-          //showNextbutton(nextIndex);
-
         })
 
             // init slider
@@ -97,9 +100,10 @@
 
               // slider settings
               adaptiveHeight: true,
-              //autoplay: startAuto,
+              autoplay: false,
               autoplaySpeed: sliderSpeed,
-              cssEase: 'linear',
+              centerPadding: '0',
+              cssEase: 'ease',
               easing: 'linear',
               infinite: true,
               lazyLoad: 'ondemand',
@@ -107,7 +111,7 @@
               pauseOnHover: true,
               slidesToShow: 1,
               slidesToScroll: 1,
-              speed: 600,
+              speed: slideMoveSpeed,
 
               // controls
               nextArrow: nextButton,
@@ -116,51 +120,40 @@
 
             // On before slide change
             .on('afterChange', function (event, slick, currentSlide) {
-              //console.info('afterChange');
 
               var nextSlideIndex = currentSlide + 1;
 
+              // check next slide index
               if (nextSlideIndex > (slick.$slides.length - 1)) {
                 nextSlideIndex = 0;
               }
-
-              // show next button
-              timer_id = setTimeout(function () {
-                //show focus slide content
-                showFocusSlide(currentSlide, nextSlideIndex);
-                clearTimeout(timer_id);
-              }, slideMove);
-
-              // change logo color
-              changeLogoColor(slide.eq(currentSlide).find('.slide-content'));
+              // show slide content
+              showElements(currentSlide, nextSlideIndex);
             })
 
             // On before slide change
             .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-              //console.info('beforeChange');
-              // remove loader
-              $(aspotBlock).once(function () {
-                $(this).addClass('load');
-              });
 
-              // hide next button
-              hideNextbutton();
+              // hide slide content
+              hideElements(currentSlide, nextSlide, slick.autoPlayTimer);
             });
         // end init slider
 
-        // start autoplay
+        //start autoplay
         $(window).load(function () {
 
-          clearTimeout(timer_id);
+          var currentSlide = slider.slick('slickCurrentSlide'),
+              nextSlide = slider.slick('slickCurrentSlide') + 1;
 
-          timer_id = setTimeout(function () {
-            //show focus slide content
-            showFocusSlide(slider.slick('slickCurrentSlide'), slider.slick('slickCurrentSlide') + 1);
+          // remove loader
+          $(aspotBlock).addClass('load');
 
-            if (startAuto) {
-              slider.slick('slickPlay');
-            }
-          }, timerAnimate);
+          //show slide content (currentSlide, nextSlide)
+          showElements(currentSlide, nextSlide);
+
+          if (startAuto) {
+            slider.slick('slickPlay');
+          }
         });
       });
 
@@ -182,73 +175,91 @@
       }
 
       // change background on next-button
-      function changeBgNextButton(index) {
+      function setNextSlide(nextIndex) {
 
         var imgUrl, shiftBg;
 
-        if (slidesSettings[index]) {
-          imgUrl = slidesSettings[index].src;
-          shiftBg = slidesSettings[index].shiftPercent;
+        if (slidesSettings[nextIndex]) {
+          imgUrl = slidesSettings[nextIndex].src;
+          shiftBg = slidesSettings[nextIndex].shiftPercent;
         }
 
         $(nextButtonWrapper).css({
           'background-image': 'url(' + imgUrl + ')',
           'background-position-x': shiftBg + '%'
-        })
-      }
-
-      // hide focus slide content
-      function hideFocusSlide(nextIndex) {
-        nextSlideContent = slide.eq(nextIndex).not('.slick-cloned').find('.slide-content');
-
-        $(nextSlideContent).css({
-          'opacity': 0
         });
-      }
 
-      // hide next button
-      function hideNextbutton() {
-        $(nextButton).fadeOut(timerAnimate * 0.5, function () {
-          $(this).css({
-            display: 'block',
-            right: '-10%'
-          });
+        slide.eq(nextIndex).not('.slick-cloned').find('.clone-img').css({
+          'display': 'block',
+          'right': shiftBg + '%'
         });
+        //slide.eq(nextIndex).not('.slick-cloned').find('.asset-img img').css({
+        //  'display': 'block',
+        //  'right': shiftBg + '%'
+        //});
       }
 
       // show next button
       function showNextbutton() {
         $(nextButton).animate({
           right: 0
-        }, timerAnimate);
+        }, timeAnimateShow, 'linear');
       }
 
-      // show focus slide content
-      function showFocusSlide(currentIndex, nextIndex) {
+      // show slide content
+      function showElements(currentIndex, nextIndex) {
+
         activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
+        activeSlide = slide.eq(currentIndex).not('.slick-cloned');
+        nextSlide = slide.eq(nextIndex).not('.slick-cloned');
+
+        var clone = slide.eq(currentIndex).not('.slick-cloned').find('.clone-img');
+
+
+        nextSlide.css('z-index', 0);
+        activeSlide.css('z-index', 1);
 
         // change background on next-button
-        changeBgNextButton(nextIndex);
+        setNextSlide(nextIndex);
 
-        // hide focus slide content
-        hideFocusSlide(nextIndex);
+        clone.hide();
 
-        // show next button
-        showNextbutton();
-
-        clearTimeout(timerAnimateShow);
-
-        timerAnimateShow = setTimeout(function () {
-          // change logo color
-          changeLogoColor(activeSlideContent);
-        }, slideMove * 0.5);
-
+        // show current slide content
         $(activeSlideContent).animate({
           'opacity': 1
-        }, slideMove * 0.5, showNextbutton);
+        }, slideMove * 0.5, 'linear', function () {
+          // change logo color
+          changeLogoColor(activeSlideContent);
+
+          // show next button
+          showNextbutton();
+        });
+      }
+
+      // hide slide content
+      function hideElements(currentIndex, nextIndex, t) {
+        var clone = slide.eq(nextIndex).not('.slick-cloned').find('.clone-img');
+        nextSlideImg = slide.eq(nextIndex).not('.slick-cloned').find('.asset-img img');
+        nextSlideContent = slide.eq(nextIndex).not('.slick-cloned').find('.slide-content');
+
+        $(nextSlideContent).css('opacity', 0);
+
+        // hide next button
+        $(nextButton).fadeOut(200, function () {
+          $(this).css({
+            display: 'block',
+            right: '-10%'
+          });
+        });
+
+        $(clone).animate({
+          'right': '100%'
+        }, t, 'linear');
 
 
-
+        //$(nextSlideImg).animate({
+        //  'right': '100%'
+        //},t, 'linear');
       }
     }
   };

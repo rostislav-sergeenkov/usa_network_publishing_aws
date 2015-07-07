@@ -20,6 +20,7 @@
           nextButtonWrapper = $('.block-usanetwork-aspot .next-button-wrapper'),
           slider = $('.block-usanetwork-aspot .swiper-container'),
           slide = $('.block-usanetwork-aspot .swiper-slide'),
+          slideImg = $('.block-usanetwork-aspot .swiper-slide img'),
       // settings
           sliderAutoplay,
           sliderSpeed = 6000, // default value

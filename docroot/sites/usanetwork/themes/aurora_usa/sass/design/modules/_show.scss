@@ -648,6 +648,7 @@
             display: table-cell;
             font-size: get-vw(24px, 768);
             float: none;
+            letter-spacing: 1px;
             line-height: get-vw(30px, 768);
             margin: 0;
             position: relative;
@@ -681,11 +682,14 @@
             padding-left: get-vw(8px, 768);
             vertical-align: middle;
           }
-          @include breakpoint($bp-480-width) {
+          @include breakpoint($bp-640-width) {
+            display: none;
+          }
+          /*@include breakpoint($bp-480-width) {
             font-size: 7.5px;
             line-height: 8.75px;
             padding-left: 5px;
-          }
+          }*/
           span {
             display: block;
             font-family: $tex-gyreschola-italic
@@ -966,7 +970,7 @@
         width: 100%;
         .meta-wrapper {
           height: 100%;
-          padding: 20px 0 55px;
+          padding: 18px 0 55px;
           margin: 0 auto;
           overflow: hidden;
           position: relative;
@@ -975,10 +979,8 @@
             padding: 20px 0 70px;
           }
           @include breakpoint($bp-640-width) {
-            padding: 12px 0 55px;
-          }
-          @include breakpoint($bp-640-width) {
-            padding: 8px 0 35px;
+            padding: 5px 0 35px;
+            width: 90%;
           }
         }
         .heading {
@@ -1037,8 +1039,8 @@
             margin-top: 20px;
           }
           @include breakpoint($between-769-1024) {
-            font-size: get-vw(14px, 1024);
-            line-height: get-vw(20px, 1024);
+            font-size: get-vw(23.5px, 1024);
+            line-height: get-vw(25.5px, 1024);
             margin-top: get-vw(16px, 1024);
           }
           @include breakpoint($bp-768-width) {
@@ -1073,7 +1075,8 @@
             margin-right: -76px;
           }
           @include breakpoint($bp-640-width) {
-            margin-right: -44px;
+            bottom: 8px;
+            margin-right: -46px;
           }
           @include breakpoint($bp-480-width) {
             bottom: 5px;

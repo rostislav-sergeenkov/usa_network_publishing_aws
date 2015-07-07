@@ -1372,14 +1372,11 @@
     .meta-wrapper {
       background: $video-promo-back-gray;
       bottom: 0;
-      height: 34.7%;
+      height: 25%;
       position: absolute;
       width: 100%;
       z-index: 1;
-      @include breakpoint($between-641-768) {
-        height: 8.6vw;
-      }
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-480-width) {
         height: 12.4vw;
       }
     }

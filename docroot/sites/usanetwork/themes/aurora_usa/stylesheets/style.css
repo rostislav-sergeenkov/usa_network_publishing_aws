@@ -1,8 +1,8 @@
 @charset "IBM866";
-.clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
+.clearfix, #utilities, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
-.clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
+.clearfix:after, #utilities:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
   content: "\0020";
   display: table;
   clear: both;
@@ -13,7 +13,7 @@
   visibility: hidden;
 }
 
-#site-name, .title-overlay .field-name-field-caption, .grid-container-small .asset-thumb .field-name-field-caption, [id='person-content'] .node-media-gallery .field-name-title .field-name-field-caption {
+#site-name {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -24,7 +24,7 @@
   width: 1px;
 }
 
-.focusable#site-name, .title-overlay .focusable.field-name-field-caption, .grid-container-small .asset-thumb .focusable.field-name-field-caption, [id='person-content'] .node-media-gallery .field-name-title .focusable.field-name-field-caption {
+.focusable#site-name {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -34,7 +34,7 @@
   position: absolute;
   width: 1px;
 }
-.focusable#site-name:active, .title-overlay .focusable.field-name-field-caption:active, .grid-container-small .asset-thumb .focusable.field-name-field-caption:active, [id='person-content'] .node-media-gallery .field-name-title .focusable.field-name-field-caption:active, .focusable#site-name:focus, .title-overlay .focusable.field-name-field-caption:focus, .grid-container-small .asset-thumb .focusable.field-name-field-caption:focus, [id='person-content'] .node-media-gallery .field-name-title .focusable.field-name-field-caption:focus {
+.focusable#site-name:active, .focusable#site-name:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -471,13 +471,6 @@ you can use the generic selector below, but it's slower:
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-}
-
-.panel-twocol-nested-right-twocol .panel-five {
-  margin-left: -15px;
-  margin-right: -15px;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 .pager-load-more {
@@ -2180,37 +2173,37 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
     font-size: 1.23698vw;
     line-height: 1.5625vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .title {
     font-size: 1.69271vw;
     line-height: 2.08333vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional {
     font-size: 1.17188vw;
     line-height: 1.5625vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon {
     height: 3.90625vw;
     margin-top: -1.95313vw;
     width: 3.90625vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
     padding-left: calc(8% + 3.9vw);
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
@@ -2222,97 +2215,97 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now
   }
 }
 @media (max-width: 640px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper {
     height: 29% !important;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
     font-size: 1.23698vw;
     line-height: 1.5625vw;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
     font-size: 2.5vw;
     line-height: 3.33333vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
     font-size: 12px;
     line-height: 16px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .title {
     font-size: 1.69271vw;
     line-height: 2.08333vw;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .title {
     font-size: 3.75vw;
     line-height: 4.375vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .title {
     font-size: 18px;
     line-height: 21px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional {
     font-size: 1.17188vw;
     line-height: 1.5625vw;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional {
     font-size: 2.5vw;
     line-height: 3.33333vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional {
     font-size: 12px;
     line-height: 16px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon {
     height: 3.90625vw;
     margin-top: -1.95313vw;
     width: 3.90625vw;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon {
     height: 7.5vw;
     margin-top: -3.75vw;
     width: 7.5vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon {
     height: 36px;
     margin-top: -18px;
     width: 36px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
     padding-left: calc(8% + 3.9vw);
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
     padding-left: calc(8% + 7.5vw);
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
     padding-left: calc(8% + 36px);
   }
 }
@@ -4499,7 +4492,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   }
 }
 
-.clearfix:after, #utilities:after, .panel-twocol-nested-right-twocol .panel-five:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
+.clearfix:after, #utilities:after, .lyris .pane-content:after, .usa-secondary-menu ul:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
   content: "";
   display: table;
   clear: both;
@@ -4596,118 +4589,8 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   clear: both;
 }
 
-.grid-container-small .grid-item, #block-views-usa-mpx-video-fullepisodes-live .grid-item, .region-content .block-usanetwork-tv-schedule .grid-item, .expandable-container .pane-content ul li, .expandable-container.promo-ads-panel ul li, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
+#block-views-usa-mpx-video-fullepisodes-live .grid-item, .region-content .block-usanetwork-tv-schedule .grid-item, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
   margin-bottom: 15px;
-}
-
-.ie8 .grid-container-small .grid-item {
-  float: left;
-  clear: none;
-  width: 48.4966%;
-  margin: 0 7px 15px 0;
-}
-@media (max-width: 771px) {
-  .grid-container-small .grid-item:nth-of-type(odd) {
-    width: 48.49661%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .grid-container-small .grid-item:nth-of-type(even) {
-    width: 48.49661%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    padding-right: 0;
-  }
-  .grid-container-small .grid-item:nth-of-type(2n + 3) {
-    clear: both;
-  }
-}
-@media (min-width: 525px) and (max-width: 771px) {
-  .grid-container-small {
-    width: 477px;
-  }
-}
-@media (min-width: 772px) and (max-width: 1019px) {
-  .grid-container-small {
-    width: 714px;
-  }
-  .grid-container-small .grid-item:nth-of-type(3n + 1) {
-    width: 32.01024%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .grid-container-small .grid-item:nth-of-type(3n + 2) {
-    width: 32.01024%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 33.99488%;
-    clear: none;
-  }
-  .grid-container-small .grid-item:nth-of-type(3n + 3) {
-    width: 32.01024%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    padding-right: 0;
-  }
-  .grid-container-small .grid-item:nth-of-type(3n + 4) {
-    clear: both;
-  }
-  .ie8 .grid-container-small .grid-item {
-    float: left;
-    clear: none;
-    width: 32.0102%;
-  }
-}
-@media (min-width: 1020px) {
-  .grid-container-small {
-    width: 953px;
-  }
-  .grid-container-small .grid-item:nth-of-type(4n + 1) {
-    width: 23.88915%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .grid-container-small .grid-item:nth-of-type(4n + 2) {
-    width: 23.88915%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 25.37028%;
-    clear: none;
-  }
-  .grid-container-small .grid-item:nth-of-type(4n + 3) {
-    width: 23.88915%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 50.74056%;
-    clear: none;
-  }
-  .grid-container-small .grid-item:nth-of-type(4n + 4) {
-    width: 23.88915%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    padding-right: 0;
-  }
-  .grid-container-small .grid-item:nth-of-type(4n + 5) {
-    clear: both;
-  }
-  .ie8 .grid-container-small .grid-item {
-    float: left;
-    clear: none;
-    width: 23.8892%;
-    margin: 0 10px 15px 0;
-  }
 }
 
 @media (max-width: 486px) {
@@ -4808,264 +4691,6 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 .usa-adrails #block-views-usa-mpx-video-fullepisodes-live, .usa-adrails .region-content .block-usanetwork-tv-schedule, .region-content .usa-adrails .block-usanetwork-tv-schedule {
   width: 929px;
-}
-
-@media (min-width: 645px) and (max-width: 958px) {
-  .expandable-container .pane-content ul li:nth-of-type(odd) {
-    width: 48.82813%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(even) {
-    width: 48.82813%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    padding-right: 0;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(2n + 3) {
-    clear: both;
-  }
-}
-@media (min-width: 959px) and (max-width: 1274px) {
-  .expandable-container .pane-content ul li:nth-of-type(3n + 1) {
-    width: 32.29974%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(3n + 2) {
-    width: 32.29974%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 33.85013%;
-    clear: none;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(3n + 3) {
-    width: 32.29974%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    padding-right: 0;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(3n + 4) {
-    clear: both;
-  }
-}
-@media (min-width: 1275px) {
-  .expandable-container .pane-content ul li:nth-of-type(4n + 1) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(4n + 2) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 25.28958%;
-    clear: none;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(4n + 3) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 50.57915%;
-    clear: none;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(4n + 4) {
-    width: 24.13127%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    padding-right: 0;
-  }
-  .expandable-container .pane-content ul li:nth-of-type(4n + 5) {
-    clear: both;
-  }
-}
-.usa-adrails .expandable-container .pane-content ul li:nth-of-type(3n + 1), .expandable-container .usa-adrails .pane-content ul li:nth-of-type(3n + 1), .ie8 .expandable-container .pane-content ul li:nth-of-type(3n + 1), .expandable-container .ie8 .pane-content ul li:nth-of-type(3n + 1) {
-  width: 32.29974%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 0%;
-  clear: none;
-}
-.usa-adrails .expandable-container .pane-content ul li:nth-of-type(3n + 2), .expandable-container .usa-adrails .pane-content ul li:nth-of-type(3n + 2), .ie8 .expandable-container .pane-content ul li:nth-of-type(3n + 2), .expandable-container .ie8 .pane-content ul li:nth-of-type(3n + 2) {
-  width: 32.29974%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 33.85013%;
-  clear: none;
-}
-.usa-adrails .expandable-container .pane-content ul li:nth-of-type(3n + 3), .expandable-container .usa-adrails .pane-content ul li:nth-of-type(3n + 3), .ie8 .expandable-container .pane-content ul li:nth-of-type(3n + 3), .expandable-container .ie8 .pane-content ul li:nth-of-type(3n + 3) {
-  width: 32.29974%;
-  float: right;
-  margin-left: 0;
-  margin-right: 0;
-  clear: none;
-  padding-right: 0;
-}
-.usa-adrails .expandable-container .pane-content ul li:nth-of-type(3n + 4), .expandable-container .usa-adrails .pane-content ul li:nth-of-type(3n + 4), .ie8 .expandable-container .pane-content ul li:nth-of-type(3n + 4), .expandable-container .ie8 .pane-content ul li:nth-of-type(3n + 4) {
-  clear: both;
-}
-
-@media (min-width: 645px) and (max-width: 958px) {
-  .expandable-container.promo-ads-panel ul li:nth-of-type(1) {
-    width: 48.82813%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(2n + 2) {
-    width: 48.82813%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-    clear: both;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(2n + 3) {
-    width: 48.82813%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-  }
-}
-@media (min-width: 959px) and (max-width: 1274px) {
-  .expandable-container.promo-ads-panel ul li:nth-of-type(1) {
-    width: 32.29974%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(2) {
-    width: 32.29974%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 33.85013%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 3) {
-    width: 32.29974%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-    clear: both;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 4) {
-    width: 32.29974%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 33.85013%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 5) {
-    width: 32.29974%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-  }
-}
-@media (min-width: 1275px) {
-  .expandable-container.promo-ads-panel ul li:nth-of-type(1) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(2) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 25.28958%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(3) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 50.57915%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(4n + 4) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-    clear: both;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(4n + 5) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 25.28958%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(4n + 6) {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 50.57915%;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel ul li:nth-of-type(4n + 7) {
-    width: 24.13127%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-  }
-}
-.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(1), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(1) {
-  width: 32.29974%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 0%;
-  clear: none;
-}
-.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(2), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(2) {
-  width: 32.29974%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 33.85013%;
-  clear: none;
-}
-.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 3), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 3) {
-  width: 32.29974%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 0%;
-  clear: none;
-  clear: both;
-}
-.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 4), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 4) {
-  width: 32.29974%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 33.85013%;
-  clear: none;
-}
-.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 5), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 5) {
-  width: 32.29974%;
-  float: right;
-  margin-left: 0;
-  margin-right: 0;
-  clear: none;
 }
 
 .node-type-catchall-page .tiles {
@@ -7082,6 +6707,7 @@ header .tab-item.schedule-tab .on-now-panel .node > a ~ .meta {
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta {
   margin-left: 0px;
+  position: relative;
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta .title {
   color: #ffffff;
@@ -8463,6 +8089,7 @@ header .tve-help-link.signIn .inlineLoader {
   color: #ffffff;
   margin-left: 18.04878vw;
   padding-top: 0;
+  position: relative;
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
@@ -8856,44 +8483,6 @@ header .tve-help-link.signIn .inlineLoader {
   color: white;
 }
 
-.title-overlay, .grid-container-small .asset-thumb, [id='person-content'] .node-media-gallery .field-name-title {
-  position: relative;
-  display: block;
-}
-.title-overlay h2, .grid-container-small .asset-thumb h2, [id='person-content'] .node-media-gallery .field-name-title h2 {
-  margin-bottom: 2px;
-  font-size: 20px;
-}
-.title-overlay .meta, .grid-container-small .asset-thumb .meta, [id='person-content'] .node-media-gallery .field-name-title .meta, .title-overlay h2, .grid-container-small .asset-thumb h2, [id='person-content'] .node-media-gallery .field-name-title h2 {
-  bottom: 0;
-  color: white;
-  display: block;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  white-space: nowrap;
-  padding: 12px 15px 9px;
-  margin: 0;
-  overflow: hidden;
-}
-
-.caption-overlay {
-  position: relative;
-  display: block;
-}
-.caption-overlay .caption-fields-wrapper {
-  height: 77px;
-  bottom: 0;
-  color: white;
-  display: block;
-  left: 0;
-  position: absolute;
-  width: 300px;
-  white-space: nowrap;
-  padding: 17px 15px 8px;
-  margin: 0 2px 2px;
-  overflow: hidden;
-}
 .caption-overlay .caption-fields-wrapper h3 {
   margin: 0 0 3px;
   line-height: 22.5px;
@@ -8908,15 +8497,7 @@ header .tve-help-link.signIn .inlineLoader {
 .node-usanetwork-promo.promo-hide-overlay .upcoming-movie .meta,
 .upcoming-movie .node-usanetwork-promo.promo-hide-overlay .meta,
 .node-usanetwork-promo.promo-hide-overlay .title-overlay,
-.node-usanetwork-promo.promo-hide-overlay .grid-container-small .asset-thumb,
-.grid-container-small .node-usanetwork-promo.promo-hide-overlay .asset-thumb,
-.node-usanetwork-promo.promo-hide-overlay [id='person-content'] .node-media-gallery .field-name-title,
-[id='person-content'] .node-media-gallery .node-usanetwork-promo.promo-hide-overlay .field-name-title,
-.node-usanetwork-promo.promo-hide-overlay .title-overlay.meta,
-.node-usanetwork-promo.promo-hide-overlay .grid-container-small .meta.asset-thumb,
-.grid-container-small .node-usanetwork-promo.promo-hide-overlay .meta.asset-thumb,
-.node-usanetwork-promo.promo-hide-overlay [id='person-content'] .node-media-gallery .meta.field-name-title,
-[id='person-content'] .node-media-gallery .node-usanetwork-promo.promo-hide-overlay .meta.field-name-title {
+.node-usanetwork-promo.promo-hide-overlay .title-overlay.meta {
   background: none;
 }
 
@@ -9003,101 +8584,6 @@ header .tve-help-link.signIn .inlineLoader {
   display: none;
 }
 
-.filter-dropdown {
-  background: #3d3d3d;
-  cursor: pointer;
-  margin-bottom: 15px;
-  padding: 7px 9px 6px;
-  position: relative;
-  z-index: 50;
-}
-.filter-dropdown:before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 6px;
-  border-color: white transparent transparent transparent;
-  margin-top: -3px;
-  position: absolute;
-  right: 8px;
-  top: 50%;
-}
-.filter-dropdown a {
-  color: white;
-  display: inline-block;
-  width: 100%;
-}
-.filter-dropdown a:visited {
-  color: white;
-}
-.filter-dropdown a:focus {
-  color: white;
-}
-.filter-dropdown a:hover {
-  color: white;
-}
-.filter-dropdown a:active {
-  color: white;
-}
-.filter-dropdown .menu-label, .filter-dropdown .views-row {
-  display: block;
-  height: auto;
-}
-.filter-dropdown .filter-menu {
-  background: #3d3d3d;
-  display: none;
-  position: absolute;
-  right: 0px;
-  top: 100%;
-  width: 100%;
-}
-.filter-dropdown ul.filter-menu {
-  padding-left: 0;
-}
-.filter-dropdown .menu-item {
-  margin: 0;
-  border-color: #575757;
-  border-style: solid;
-  border-width: 1px 0 0;
-}
-.filter-dropdown .menu-item:hover {
-  background: #444;
-}
-.open.filter-dropdown {
-  z-index: 95;
-}
-.open.filter-dropdown:before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 6px;
-  border-color: #878785 transparent transparent transparent;
-}
-.open.filter-dropdown .menu-label {
-  color: #878785;
-}
-.open.filter-dropdown .filter-menu {
-  display: block;
-}
-
-.view-usa-episodes.view-display-id-panel_pane_3, .view-id-usa_episodes.view-display-id-panel_pane_1 {
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  line-height: 1;
-  font-size: 20px;
-}
-.view-usa-episodes.view-display-id-panel_pane_3 .menu-label, .view-id-usa_episodes.view-display-id-panel_pane_1 .menu-label {
-  padding: 5px 5px 5px 5px;
-}
-.view-usa-episodes.view-display-id-panel_pane_3 a, .view-id-usa_episodes.view-display-id-panel_pane_1 a {
-  padding: 15px 14px 13px;
-}
-.view-usa-episodes.view-display-id-panel_pane_3:before, .view-id-usa_episodes.view-display-id-panel_pane_1:before {
-  right: 14px;
-}
-
 .page-videos .page-title {
   padding-right: 90px;
 }
@@ -9171,9 +8657,8 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .page-videos .page-title .sign-in-link span {
   display: block;
-  font-family: "texgyrescholaregular", Times, serif;
-  font-size: 14;
-  font-style: italic;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 14px;
   line-height: 20px;
   text-transform: lowercase;
 }
@@ -11965,216 +11450,6 @@ footer h2 {
   margin: 0;
 }
 
-.title-overlay .meta, .grid-container-small .asset-thumb .meta, [id='person-content'] .node-media-gallery .field-name-title .meta, .title-overlay h2, .grid-container-small .asset-thumb h2, [id='person-content'] .node-media-gallery .field-name-title h2, .caption-overlay .caption-fields-wrapper {
-  background-color: rgba(0, 0, 0, 0.85);
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, black));
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
-  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, #000000 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#000000',GradientType=0 );
-}
-
-@media (min-width: 769px) {
-  .view-id-usa_episodes.view-display-id-panel_pane_1 {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 15px;
-  }
-  .view-id-usa_episodes.view-display-id-panel_pane_1 .menu-label {
-    display: none;
-  }
-  .view-id-usa_episodes.view-display-id-panel_pane_1 a {
-    display: block;
-    border-color: #3d3d3d;
-    border-style: solid;
-    border-width: 1px 0 0;
-    color: #878785;
-    font-size: 16px;
-    padding: 6px 14px;
-  }
-  .view-id-usa_episodes.view-display-id-panel_pane_1 a.active {
-    background: #161616;
-    border-width: 1px 0 1px 1px;
-    color: white;
-    margin-bottom: -1px;
-    margin-right: -16px;
-    padding-right: 30px;
-    position: relative;
-  }
-  .view-id-usa_episodes.view-display-id-panel_pane_1 a.active:hover {
-    color: white;
-  }
-  .view-id-usa_episodes.view-display-id-panel_pane_1 a.active:after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    border: solid 5px;
-    border-color: transparent transparent transparent white;
-    content: "";
-    margin-top: -5px;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-  }
-}
-.no-mediaqueries .view-id-usa_episodes.view-display-id-panel_pane_1 {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 15px;
-}
-.no-mediaqueries .view-id-usa_episodes.view-display-id-panel_pane_1 .menu-label {
-  display: none;
-}
-.no-mediaqueries .view-id-usa_episodes.view-display-id-panel_pane_1 a {
-  display: block;
-  border-color: #3d3d3d;
-  border-style: solid;
-  border-width: 1px 0 0;
-  color: #878785;
-  font-size: 16px;
-  padding: 6px 14px;
-}
-.no-mediaqueries .view-id-usa_episodes.view-display-id-panel_pane_1 a.active {
-  background: #161616;
-  border-width: 1px 0 1px 1px;
-  color: white;
-  margin-bottom: -1px;
-  margin-right: -16px;
-  padding-right: 30px;
-  position: relative;
-}
-.no-mediaqueries .view-id-usa_episodes.view-display-id-panel_pane_1 a.active:hover {
-  color: white;
-}
-.no-mediaqueries .view-id-usa_episodes.view-display-id-panel_pane_1 a.active:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 5px;
-  border-color: transparent transparent transparent white;
-  content: "";
-  margin-top: -5px;
-  position: absolute;
-  right: 20px;
-  top: 50%;
-}
-
-.view-id-usa_episodes.view-display-id-panel_pane_4 h1 {
-  font-size: 12px;
-  color: #878785;
-  margin: 0 0 -1.5em 0;
-}
-.view-id-usa_episodes.view-display-id-panel_pane_4 h1 span {
-  color: white;
-  font-size: 2.04em;
-  margin: 0.83em 0;
-  display: inline-block;
-  display: inline;
-  float: left;
-}
-
-@media (min-width: 769px) {
-  .panel-twocol-nested-right-twocol .panel-one {
-    border-color: #3d3d3d;
-    border-style: solid;
-    border-width: 0 1px 0 0;
-    margin-right: -1px;
-    padding-right: 15px;
-    width: 251px;
-  }
-}
-.no-mediaqueries .panel-twocol-nested-right-twocol .panel-one {
-  border-color: #3d3d3d;
-  border-style: solid;
-  border-width: 0 1px 0 0;
-  margin-right: -1px;
-  padding-right: 15px;
-  width: 251px;
-}
-
-.panel-twocol-nested-right-twocol .panel-two {
-  margin-bottom: 30px;
-}
-.panel-twocol-nested-right-twocol .panel-two .pane-node-title h1 {
-  font-size: 27px;
-}
-
-@media (min-width: 769px) {
-  .panel-twocol-nested-right-twocol .panel-wrapper {
-    border-color: #3d3d3d;
-    border-style: solid;
-    border-width: 0 0 0 1px;
-    margin-left: 250px;
-    padding-left: 5%;
-  }
-}
-.no-mediaqueries .panel-twocol-nested-right-twocol .panel-wrapper {
-  border-color: #3d3d3d;
-  border-style: solid;
-  border-width: 0 0 0 1px;
-  margin-left: 250px;
-  padding-left: 5%;
-}
-
-.panel-twocol-nested-right-twocol .panel-three {
-  padding-bottom: 1.5em;
-}
-
-.panel-twocol-nested-right-twocol .panel-four .pane-dart-dart-tag-300x250-scr {
-  margin-bottom: 15px;
-}
-@media (min-width: 660px) and ("no-query" ".no-mediaqueries": 769px) {
-  .panel-twocol-nested-right-twocol .panel-four {
-    width: 630px;
-  }
-  .panel-twocol-nested-right-twocol .panel-four .pane-2, .panel-twocol-nested-right-twocol .panel-four .pane-usa-gallery-panel-pane-2 {
-    display: inline;
-    float: right;
-    margin-right: 15px;
-  }
-}
-
-.panel-twocol-nested-right-twocol .panel-five {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  background: #1f1f1f;
-  border-color: #2d2d2d;
-  border-style: solid;
-  border-width: 1px 0 0;
-  margin-top: 30px;
-}
-.panel-twocol-nested-right-twocol .panel-five .pane-1 {
-  display: inline;
-  float: left;
-  width: 100%;
-}
-@media (min-width: 500px) {
-  .panel-twocol-nested-right-twocol .panel-five .pane-1 {
-    margin-left: -250px;
-    padding-left: 250px;
-  }
-}
-.panel-twocol-nested-right-twocol .panel-five .pane-usa-cast-panel-pane-1 {
-  display: inline;
-  float: right;
-  max-width: 221px;
-  margin-left: 1em;
-}
-.ie8 .panel-twocol-nested-right-twocol .panel-five .pane-usa-cast-panel-pane-1 {
-  float: none;
-}
-.ie8 .panel-twocol-nested-right-twocol .panel-five .pane-usa-cast-panel-pane-1 img {
-  width: 221px;
-}
-
-.panel-pane p {
-  word-wrap: break-word;
-}
-
 .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .node-type-consumpt-post .gallery-block {
   margin: 0;
   overflow: hidden;
@@ -12791,103 +12066,6 @@ footer h2 {
   .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper {
     height: calc((100vw - 150px) * 0.5625);
     overflow: visible;
-  }
-}
-
-@media (min-width: 525px) {
-  .grid-container-small {
-    margin: 0 auto 30px;
-  }
-}
-@media (max-width: 524px) {
-  .grid-container-small {
-    margin: 0 auto 20px;
-    width: 300px;
-  }
-}
-
-@media (min-width: 1275px) {
-  .grid-container-small {
-    width: 1140px;
-  }
-}
-.grid-container-small .asset-thumb {
-  background: url("../images/gallery_background_logo_small_b.png") no-repeat;
-  background-size: 100%;
-  border: 2px solid #2d2d2d;
-}
-@media (min-width: 1020px) {
-  .grid-container-small .asset-thumb {
-    height: 194px;
-  }
-}
-@media (min-width: 1275px) {
-  .grid-container-small .asset-thumb {
-    height: 231px;
-  }
-}
-@media (min-width: 772px) and (max-width: 1019px) {
-  .grid-container-small .asset-thumb {
-    height: 194px;
-  }
-}
-@media (min-width: 525px) and (max-width: 771px) {
-  .grid-container-small .asset-thumb {
-    height: 194px;
-  }
-}
-@media (max-width: 524px) {
-  .grid-container-small .asset-thumb {
-    height: 126px;
-  }
-}
-.grid-container-small .asset-thumb.active {
-  border-color: white;
-}
-.grid-container-small .asset-thumb .meta {
-  padding: 6px 10px 5px;
-}
-@media (max-width: 524px) {
-  .grid-container-small .asset-thumb .meta {
-    font-size: 12px;
-  }
-}
-.grid-container-small .asset-thumb .season-episode {
-  font-size: 14px;
-}
-@media (max-width: 524px) {
-  .grid-container-small .asset-thumb .season-episode {
-    font-size: 12px;
-  }
-}
-.grid-container-small .asset-thumb img {
-  min-height: 111px;
-  min-width: 133px;
-  width: 100%;
-}
-@media (min-width: 1020px) {
-  .grid-container-small .asset-thumb img {
-    height: 186px;
-  }
-}
-@media (min-width: 1275px) {
-  .grid-container-small .asset-thumb img {
-    height: 223px;
-  }
-}
-@media (min-width: 772px) and (max-width: 1019px) {
-  .grid-container-small .asset-thumb img {
-    height: 186px;
-  }
-}
-@media (min-width: 525px) and (max-width: 771px) {
-  .grid-container-small .asset-thumb img {
-    height: 186px;
-  }
-}
-@media (max-width: 524px) {
-  .grid-container-small .asset-thumb img {
-    height: 118px;
   }
 }
 
@@ -18536,7 +17714,7 @@ footer h2 {
   }
 }
 
-#block-usanetwork-tv-shows-usanetwork-tv-shows-mb .show-all-shows-main-block {
+#block-usanetwork-tv-shows-usanetwork-tv-shows-mb .landing-main-block, #block-usanetwork-movie-usanetwork-movie-all-shows .landing-main-block {
   background: #e9eaeb;
   border-bottom: 2px solid #2c2c2c;
 }
@@ -29173,749 +28351,6 @@ yx-axis
     font-size: 10px;
   }
 }
-.page-schedule .schedule-wrapper,
-.page-accessibility .schedule-wrapper {
-  margin: 0 auto;
-  max-width: 2500px;
-  min-width: 300px;
-  position: relative;
-}
-.page-schedule .schedule-wrapper .schedule-navigation,
-.page-accessibility .schedule-wrapper .schedule-navigation {
-  background-color: #636363;
-  position: relative;
-  overflow: hidden;
-  display: block;
-  width: auto;
-  margin: 0;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul,
-.page-accessibility .schedule-wrapper .schedule-navigation ul {
-  vertical-align: middle;
-  border-top: 1px solid #ffffff;
-  width: 20000em;
-  position: relative;
-  display: block;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul:after,
-.page-accessibility .schedule-wrapper .schedule-navigation ul:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li {
-  border-right: 1px solid #e9eaeb;
-  height: 123px;
-  display: block;
-  float: left;
-}
-@media (max-width: 1280px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li {
-    height: 82px;
-  }
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li {
-    height: 66px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li:first-child,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li:first-child {
-  border-left: 1px solid #e9eaeb;
-}
-@media (max-width: 768px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li:first-child,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li:first-child {
-    border-left: 0 solid #ffffff;
-  }
-  .page-schedule .schedule-wrapper .schedule-navigation ul li:last-child,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li:last-child {
-    border-right: 0 solid #ffffff;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li:hover, .page-schedule .schedule-wrapper .schedule-navigation ul li.active,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li:hover,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li.active {
-  background-color: #313131;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li:hover a, .page-schedule .schedule-wrapper .schedule-navigation ul li.active a,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li:hover a,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li.active a {
-  color: #ffffff;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li a,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li a {
-  color: #e1e1e1;
-  display: block;
-  height: 100%;
-  padding-top: 13px;
-  text-decoration: none;
-  text-align: center;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li a span,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li a span {
-  display: block;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li a span.week-day {
-  font-size: 56px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 62px;
-}
-@media (max-width: 1280px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li a span.week-day {
-    font-size: 40px;
-    line-height: 37px;
-  }
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li a span.week-day {
-    font-size: 28px;
-    line-height: 24px;
-  }
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li a span.week-day {
-    font-size: 20px;
-    line-height: 30px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li a span.date,
-.page-accessibility .schedule-wrapper .schedule-navigation ul li a span.date {
-  font-size: 30px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 32px;
-}
-@media (max-width: 1280px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li a span.date,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li a span.date {
-    font-size: 20px;
-    line-height: 22px;
-  }
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li a span.date,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li a span.date {
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-navigation ul li a span.date,
-  .page-accessibility .schedule-wrapper .schedule-navigation ul li a span.date {
-    font-size: 10px;
-    line-height: 5px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-navigation-controls,
-.page-accessibility .schedule-wrapper .schedule-navigation-controls {
-  position: absolute;
-  background-color: #313131;
-  top: 0;
-  cursor: pointer;
-  height: 67px;
-  width: 50px;
-  vertical-align: middle;
-  border-top: 1px solid white;
-}
-.page-schedule .schedule-wrapper .schedule-navigation-controls:after,
-.page-accessibility .schedule-wrapper .schedule-navigation-controls:after {
-  color: #ffffff;
-  display: block;
-  font-family: "ico-font";
-  font-size: 20px;
-  line-height: 20px;
-  left: 50%;
-  margin-left: -10px;
-  margin-top: -10px;
-  position: absolute;
-  top: 50%;
-}
-.page-schedule .schedule-wrapper .schedule-navigation-controls.jcarousel-control-prev,
-.page-accessibility .schedule-wrapper .schedule-navigation-controls.jcarousel-control-prev {
-  left: 0;
-  border-right: 1px solid #ffffff;
-}
-.page-schedule .schedule-wrapper .schedule-navigation-controls.jcarousel-control-prev:after,
-.page-accessibility .schedule-wrapper .schedule-navigation-controls.jcarousel-control-prev:after {
-  content: '\e607';
-}
-.page-schedule .schedule-wrapper .schedule-navigation-controls.jcarousel-control-next,
-.page-accessibility .schedule-wrapper .schedule-navigation-controls.jcarousel-control-next {
-  right: 0;
-  border-left: 1px solid #ffffff;
-}
-.page-schedule .schedule-wrapper .schedule-navigation-controls.jcarousel-control-next:after,
-.page-accessibility .schedule-wrapper .schedule-navigation-controls.jcarousel-control-next:after {
-  content: '\e608';
-}
-.page-schedule .schedule-wrapper .time-zone,
-.page-accessibility .schedule-wrapper .time-zone {
-  padding: 0 30px;
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .time-zone,
-  .page-accessibility .schedule-wrapper .time-zone {
-    text-align: center;
-  }
-}
-.page-schedule .schedule-wrapper .time-zone a,
-.page-accessibility .schedule-wrapper .time-zone a {
-  font-size: 18px;
-  color: #606060;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  text-decoration: none;
-}
-.page-schedule .schedule-wrapper .schedule-table,
-.page-accessibility .schedule-wrapper .schedule-table {
-  margin-top: 20px;
-  position: relative;
-  padding: 0;
-  border-bottom: 2px solid #2c2c2c;
-}
-.page-schedule .schedule-wrapper .schedule-table .carousel-vert,
-.page-accessibility .schedule-wrapper .schedule-table .carousel-vert {
-  overflow: hidden;
-  position: static;
-  margin: 0;
-  padding: 0;
-  max-height: 770px;
-}
-.page-schedule .schedule-wrapper .schedule-table .jcarousel-control-next,
-.page-accessibility .schedule-wrapper .schedule-table .jcarousel-control-next {
-  display: block;
-  height: 19px;
-  line-height: 19px;
-  margin-left: -9.5px;
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  top: 0;
-}
-.page-schedule .schedule-wrapper .schedule-table .jcarousel-control-next:before,
-.page-accessibility .schedule-wrapper .schedule-table .jcarousel-control-next:before {
-  content: "\e60a";
-  color: #545454;
-  font-family: "ico-font";
-  font-size: 32px;
-  display: block;
-}
-.page-schedule .schedule-wrapper .schedule-table .jcarousel-control-prev,
-.page-accessibility .schedule-wrapper .schedule-table .jcarousel-control-prev {
-  display: block;
-  height: 19px;
-  line-height: 19px;
-  margin-left: -9.5px;
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  text-decoration: none;
-}
-.page-schedule .schedule-wrapper .schedule-table .jcarousel-control-prev:before,
-.page-accessibility .schedule-wrapper .schedule-table .jcarousel-control-prev:before {
-  content: "\e609";
-  color: #545454;
-  font-family: "ico-font";
-  font-size: 32px;
-  display: block;
-}
-.page-schedule .schedule-wrapper .schedule-table ul,
-.page-accessibility .schedule-wrapper .schedule-table ul {
-  width: 100%;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li.date-separate,
-.page-accessibility .schedule-wrapper .schedule-table ul li.date-separate {
-  background-color: #757575 !important;
-  color: #ffffff;
-  font-size: 32px;
-  line-height: 60px;
-  padding-left: calc((10% - 90px) / 2 + 7px);
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li.date-separate,
-  .page-accessibility .schedule-wrapper .schedule-table ul li.date-separate {
-    font-size: 22px;
-    line-height: 50px;
-    padding-left: 30px;
-  }
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li.date-separate,
-  .page-accessibility .schedule-wrapper .schedule-table ul li.date-separate {
-    padding-left: 15px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li.date-separate .day-shcedule,
-.page-accessibility .schedule-wrapper .schedule-table ul li.date-separate .day-shcedule {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li.date-separate .date-shcedule,
-.page-accessibility .schedule-wrapper .schedule-table ul li.date-separate .date-shcedule {
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li,
-.page-accessibility .schedule-wrapper .schedule-table ul li {
-  float: none;
-  margin: 0;
-  height: auto;
-  width: 100%;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li:nth-child(odd),
-.page-accessibility .schedule-wrapper .schedule-table ul li:nth-child(odd) {
-  background-color: #dcddde;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item {
-  box-sizing: border-box;
-  padding: 20px 0 20px 7px;
-  width: 100%;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item {
-    padding-left: 30px;
-  }
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item {
-    padding-right: 30px;
-  }
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item {
-    padding: 20px 10px 20px 15px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block {
-  display: table;
-  position: relative;
-  width: 100%;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-  width: 10%;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper {
-    width: 20%;
-    min-width: 100px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
-  margin: 0 auto;
-  font-size: 20px;
-  color: #606060;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 28px;
-  width: 90px;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
-    width: auto;
-  }
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
-    font-size: 16px;
-    line-height: 22px;
-  }
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
-  color: #545454;
-  font-size: 36px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  letter-spacing: 3px;
-  line-height: 42px;
-  display: block;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
-    font-size: 20px;
-    line-height: 28px;
-    display: inline;
-  }
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
-    font-size: 16px;
-    line-height: 22px;
-  }
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info {
-  display: table-cell;
-  vertical-align: middle;
-  text-transform: uppercase;
-  padding-left: 10px;
-  padding-right: 20px;
-  width: 60%;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
-  font-size: 20px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  float: left;
-  width: 50%;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
-    width: 100%;
-  }
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
-    font-size: 16px;
-    line-height: 22px;
-  }
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show a,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show a {
-  color: #545454;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
-  font-size: 20px;
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
-  float: left;
-  width: 50%;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
-    display: none;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title a,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title a {
-  color: #545454;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block {
-  display: table-cell;
-  vertical-align: middle;
-  padding-right: 100px;
-  width: 30%;
-  position: relative;
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block {
-    padding: 0;
-    height: 37px;
-    width: 37px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule {
-  float: left;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule:after,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule {
-    display: none;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule .icon,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule .icon {
-  display: block;
-  float: left;
-  height: auto;
-  margin-right: 27px;
-  position: relative;
-  text-decoration: none;
-  width: auto;
-}
-@media (max-width: 768px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule .icon,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule .icon {
-    margin-right: 20px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .rating,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .rating {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  float: left;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .rating,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .rating {
-    display: none;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper {
-  padding-right: 30px;
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper {
-    display: none;
-  }
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper .rating,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper .rating {
-    display: block;
-    float: none;
-    text-align: right;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
-  right: 50px;
-  display: block;
-  height: 37px;
-  line-height: 37px;
-  width: 45px;
-  position: absolute;
-  margin-top: -17.5px;
-  top: 50%;
-  color: #545454;
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
-    right: 0;
-  }
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
-    width: 37px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before {
-  content: '\e61c';
-  font-family: "ico-font";
-  font-size: 45px;
-  width: auto;
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before {
-    font-size: 30px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block {
-  display: none;
-  padding-top: 20px;
-  width: 100%;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node {
-  margin-right: 50px;
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node {
-    margin-right: 0;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a {
-  color: #ffffff;
-  display: block;
-  padding-left: 10%;
-  padding-right: 30%;
-  text-decoration: none;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a:after,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a {
-    padding: 0;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
-  float: left;
-  width: 50%;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
-    width: 300px;
-  }
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
-    float: none;
-    width: 100%;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
-  max-width: 300px;
-  width: 100%;
-}
-@media (min-width: 1601px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
-    max-width: 440px;
-  }
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
-    max-width: 100%;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
-  float: left;
-  font-size: 16px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  line-height: 22px;
-  padding-left: 20px;
-  margin: 0;
-  position: static;
-  width: 50%;
-  max-width: 450px;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-@media (max-width: 768px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
-    float: none;
-    padding-left: 0;
-    margin-left: 320px;
-    width: auto;
-  }
-}
-@media (max-width: 640px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
-    font-size: 12px;
-    line-height: 18px;
-    margin-left: 0;
-    max-width: 100%;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
-  display: none;
-  padding: 5px 0;
-  position: relative;
-}
-@media (max-width: 1024px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
-    display: block;
-  }
-}
-@media (max-width: 768px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
-    margin-top: 20px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .episode-title,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .episode-title {
-  font-size: 16px;
-  line-height: 22px;
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
-  margin-right: 100px;
-}
-@media (max-width: 480px) {
-  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .episode-title,
-  .page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .episode-title {
-    font-size: 14px;
-  }
-}
-.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .rating,
-.page-accessibility .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .rating {
-  font-size: 12px;
-  line-height: 22px;
-  right: 0;
-  position: absolute;
-  top: 5px;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li.active,
-.page-accessibility .schedule-wrapper .schedule-table ul li.active {
-  background-color: #757575;
-  color: #ffffff;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li.active .hidden-block,
-.page-accessibility .schedule-wrapper .schedule-table ul li.active .hidden-block {
-  display: block;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time, .page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time span,
-.page-accessibility .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time,
-.page-accessibility .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time span {
-  color: #ffffff;
-}
-.page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description:before,
-.page-accessibility .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description:before {
-  content: '\e61b';
-}
 .page-schedule .ad-728x90,
 .page-accessibility .ad-728x90 {
   margin: 0 auto;
@@ -29940,6 +28375,635 @@ yx-axis
   .page-accessibility .ad-728x90 img {
     width: 100%;
   }
+}
+
+.schedule-wrapper {
+  margin: 0 auto;
+  max-width: 2500px;
+  min-width: 300px;
+  position: relative;
+}
+.schedule-wrapper .schedule-navigation {
+  background-color: #636363;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: auto;
+  margin: 0;
+}
+.schedule-wrapper .schedule-navigation ul {
+  vertical-align: middle;
+  border-top: 1px solid #ffffff;
+  width: 20000em;
+  position: relative;
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.schedule-wrapper .schedule-navigation ul:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.schedule-wrapper .schedule-navigation ul li {
+  border-right: 1px solid #e9eaeb;
+  height: 123px;
+  display: block;
+  float: left;
+}
+@media (max-width: 1280px) {
+  .schedule-wrapper .schedule-navigation ul li {
+    height: 82px;
+  }
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-navigation ul li {
+    height: 66px;
+  }
+}
+.schedule-wrapper .schedule-navigation ul li:first-child {
+  border-left: 1px solid #e9eaeb;
+}
+@media (max-width: 768px) {
+  .schedule-wrapper .schedule-navigation ul li:first-child {
+    border-left: 0 solid #ffffff;
+  }
+  .schedule-wrapper .schedule-navigation ul li:last-child {
+    border-right: 0 solid #ffffff;
+  }
+}
+.schedule-wrapper .schedule-navigation ul li:hover, .schedule-wrapper .schedule-navigation ul li.active {
+  background-color: #313131;
+}
+.schedule-wrapper .schedule-navigation ul li:hover a, .schedule-wrapper .schedule-navigation ul li.active a {
+  color: #ffffff;
+}
+.schedule-wrapper .schedule-navigation ul li a {
+  color: #e1e1e1;
+  display: block;
+  height: 100%;
+  padding-top: 13px;
+  text-decoration: none;
+  text-align: center;
+}
+.schedule-wrapper .schedule-navigation ul li a span {
+  display: block;
+}
+.schedule-wrapper .schedule-navigation ul li a span.week-day {
+  font-size: 56px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 62px;
+}
+@media (max-width: 1280px) {
+  .schedule-wrapper .schedule-navigation ul li a span.week-day {
+    font-size: 40px;
+    line-height: 37px;
+  }
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-navigation ul li a span.week-day {
+    font-size: 28px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-navigation ul li a span.week-day {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+.schedule-wrapper .schedule-navigation ul li a span.date {
+  font-size: 30px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 32px;
+}
+@media (max-width: 1280px) {
+  .schedule-wrapper .schedule-navigation ul li a span.date {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-navigation ul li a span.date {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-navigation ul li a span.date {
+    font-size: 10px;
+    line-height: 5px;
+  }
+}
+.schedule-wrapper .schedule-navigation-controls {
+  position: absolute;
+  background-color: #313131;
+  top: 0;
+  cursor: pointer;
+  height: 67px;
+  width: 50px;
+  vertical-align: middle;
+  border-top: 1px solid white;
+}
+.schedule-wrapper .schedule-navigation-controls:after {
+  color: #ffffff;
+  display: block;
+  font-family: "ico-font";
+  font-size: 20px;
+  line-height: 20px;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: absolute;
+  top: 50%;
+}
+.schedule-wrapper .schedule-navigation-controls.jcarousel-control-prev {
+  left: 0;
+  border-right: 1px solid #ffffff;
+}
+.schedule-wrapper .schedule-navigation-controls.jcarousel-control-prev:after {
+  content: '\e607';
+}
+.schedule-wrapper .schedule-navigation-controls.jcarousel-control-next {
+  right: 0;
+  border-left: 1px solid #ffffff;
+}
+.schedule-wrapper .schedule-navigation-controls.jcarousel-control-next:after {
+  content: '\e608';
+}
+.schedule-wrapper .time-zone {
+  padding: 0 30px;
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .time-zone {
+    text-align: center;
+  }
+}
+.schedule-wrapper .time-zone a {
+  font-size: 18px;
+  color: #606060;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+}
+.schedule-wrapper .schedule-table {
+  margin-top: 20px;
+  position: relative;
+  padding: 0;
+  border-bottom: 2px solid #2c2c2c;
+}
+.schedule-wrapper .schedule-table .carousel-vert {
+  overflow: hidden;
+  position: static;
+  margin: 0;
+  padding: 0;
+  max-height: 770px;
+}
+.schedule-wrapper .schedule-table .jcarousel-control-next {
+  display: block;
+  height: 19px;
+  line-height: 19px;
+  margin-left: -9.5px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+.schedule-wrapper .schedule-table .jcarousel-control-next:before {
+  content: "\e60a";
+  color: #545454;
+  font-family: "ico-font";
+  font-size: 32px;
+  display: block;
+}
+.schedule-wrapper .schedule-table .jcarousel-control-prev {
+  display: block;
+  height: 19px;
+  line-height: 19px;
+  margin-left: -9.5px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  text-decoration: none;
+}
+.schedule-wrapper .schedule-table .jcarousel-control-prev:before {
+  content: "\e609";
+  color: #545454;
+  font-family: "ico-font";
+  font-size: 32px;
+  display: block;
+}
+.schedule-wrapper .schedule-table ul {
+  width: 100%;
+}
+.schedule-wrapper .schedule-table ul li.date-separate {
+  background-color: #757575 !important;
+  color: #ffffff;
+  font-size: 32px;
+  line-height: 60px;
+  padding-left: calc((10% - 90px) / 2 + 7px);
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li.date-separate {
+    font-size: 22px;
+    line-height: 50px;
+    padding-left: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-table ul li.date-separate {
+    padding-left: 15px;
+  }
+}
+.schedule-wrapper .schedule-table ul li.date-separate .day-shcedule {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+.schedule-wrapper .schedule-table ul li.date-separate .date-shcedule {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+}
+.schedule-wrapper .schedule-table ul li {
+  float: none;
+  margin: 0;
+  height: auto;
+  width: 100%;
+}
+.schedule-wrapper .schedule-table ul li:nth-child(odd) {
+  background-color: #dcddde;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item {
+  box-sizing: border-box;
+  padding: 20px 0 20px 7px;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item {
+    padding-left: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item {
+    padding-right: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item {
+    padding: 20px 10px 20px 15px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block {
+  display: table;
+  position: relative;
+  width: 100%;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  width: 10%;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper {
+    width: 20%;
+    min-width: 100px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
+  margin: 0 auto;
+  font-size: 20px;
+  color: #606060;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 28px;
+  width: 90px;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
+    width: auto;
+  }
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
+  color: #545454;
+  font-size: 36px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  letter-spacing: 3px;
+  line-height: 42px;
+  display: block;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
+    font-size: 20px;
+    line-height: 28px;
+    display: inline;
+  }
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info {
+  display: table-cell;
+  vertical-align: middle;
+  text-transform: uppercase;
+  padding-left: 10px;
+  padding-right: 20px;
+  width: 60%;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+  font-size: 20px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  float: left;
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show a {
+  color: #545454;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
+  font-size: 20px;
+  font-family: "texgyrescholaregular", Times, serif;
+  font-style: italic;
+  float: left;
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
+    display: none;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title a {
+  color: #545454;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block {
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 100px;
+  width: 30%;
+  position: relative;
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block {
+    padding: 0;
+    height: 37px;
+    width: 37px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule {
+  float: left;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule {
+    display: none;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule .icon {
+  display: block;
+  float: left;
+  height: auto;
+  margin-right: 27px;
+  position: relative;
+  text-decoration: none;
+  width: auto;
+}
+@media (max-width: 768px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule .icon {
+    margin-right: 20px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .rating {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  float: left;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .rating {
+    display: none;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper {
+  padding-right: 30px;
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .rating-wrapper .rating {
+    display: block;
+    float: none;
+    text-align: right;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
+  right: 50px;
+  display: block;
+  height: 37px;
+  line-height: 37px;
+  width: 45px;
+  position: absolute;
+  margin-top: -17.5px;
+  top: 50%;
+  color: #545454;
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
+    right: 0;
+  }
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description {
+    width: 37px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before {
+  content: '\e61c';
+  font-family: "ico-font";
+  font-size: 45px;
+  width: auto;
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .open-description:before {
+    font-size: 30px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block {
+  display: none;
+  padding-top: 20px;
+  width: 100%;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node {
+  margin-right: 50px;
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node {
+    margin-right: 0;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a {
+  color: #ffffff;
+  display: block;
+  padding-left: 10%;
+  padding-right: 30%;
+  text-decoration: none;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a {
+    padding: 0;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
+  float: left;
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
+    width: 300px;
+  }
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
+    float: none;
+    width: 100%;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
+  max-width: 300px;
+  width: 100%;
+}
+@media (min-width: 1601px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
+    max-width: 440px;
+  }
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
+    max-width: 100%;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
+  float: left;
+  font-size: 16px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 22px;
+  padding-left: 20px;
+  margin: 0;
+  position: static;
+  width: 50%;
+  max-width: 450px;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
+    float: none;
+    padding-left: 0;
+    margin-left: 320px;
+    width: auto;
+  }
+}
+@media (max-width: 640px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
+  display: none;
+  padding: 5px 0;
+  position: relative;
+}
+@media (max-width: 1024px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
+    margin-top: 20px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .episode-title {
+  font-size: 16px;
+  line-height: 22px;
+  font-family: "texgyrescholaregular", Times, serif;
+  font-style: italic;
+  margin-right: 100px;
+}
+@media (max-width: 480px) {
+  .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .episode-title {
+    font-size: 14px;
+  }
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .rating {
+  font-size: 12px;
+  line-height: 22px;
+  right: 0;
+  position: absolute;
+  top: 5px;
+}
+.schedule-wrapper .schedule-table ul li.active {
+  background-color: #757575;
+  color: #ffffff;
+}
+.schedule-wrapper .schedule-table ul li.active .hidden-block {
+  display: block;
+}
+.schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time, .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time span {
+  color: #ffffff;
+}
+.schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description:before {
+  content: '\e61b';
 }
 
 #block-usanetwork-menu-usanetwork-menu-aspot-ot .spinner {
@@ -30639,215 +29703,6 @@ yx-axis
   position: relative;
 }
 
-.expandable-container .expandable-toggle:after, .view .expandable-toggle li.more:after, .view .expandable-toggle li a:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 18px;
-  border-color: #b0b0b0 transparent transparent transparent;
-  border-width: 12px 18px 18px;
-  top: 18px;
-  content: "\0020";
-  left: 50%;
-  margin-left: -18px;
-  position: absolute;
-}
-
-.expandable-container.expanded .expandable-toggle:after, .view .expandable-toggle li.less:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 18px;
-  border-color: transparent transparent #b0b0b0 transparent;
-  border-width: 18px 18px 12px;
-  bottom: 18px;
-  left: 50%;
-  top: auto;
-  margin-left: -18px;
-  position: absolute;
-}
-
-.expandable-container {
-  clear: both;
-  margin: 0 0 15px;
-}
-.expandable-container .panel-col1 {
-  float: none;
-}
-.expandable-container .pane-content {
-  overflow: hidden;
-}
-.expandable-container .expandable-toggle-wrap {
-  clear: both;
-  margin: 0 auto;
-  padding: 14px 0;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-.expandable-container .expandable-toggle-wrap:before, .expandable-container .expandable-toggle-wrap:after {
-  border-color: #4b4b4b;
-  border-style: solid;
-  border-width: 0 0 1px;
-  content: "\0020";
-  position: absolute;
-  top: 50%;
-  width: 50%;
-}
-.expandable-container .expandable-toggle-wrap:before {
-  left: -30px;
-}
-.expandable-container .expandable-toggle-wrap:after {
-  right: -30px;
-}
-.expandable-container .expandable-toggle-wrap.off {
-  display: none;
-}
-.expandable-container .expandable-toggle {
-  color: #b0b0b0;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  margin: 0 auto;
-  position: relative;
-}
-.expandable-container.view .expandable-toggle:after, .expandable-container.view.expanded .expandable-toggle:after {
-  border: 0;
-}
-.expandable-container .less {
-  display: none;
-}
-.expandable-container.expanded .more {
-  display: none;
-}
-.expandable-container.expanded .less {
-  display: block;
-}
-.expandable-container.disabled .expandable-toggle-wrap {
-  display: none;
-}
-
-.expandable-container.promo-ads-panel .first-promo-large .asset-img-large {
-  display: none;
-}
-.expandable-container.promo-ads-panel .first-promo-large .node-usanetwork-promo-iframe {
-  line-height: 0;
-}
-@media (min-width: 645px) and (max-width: 958px) {
-  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
-    float: left;
-    margin: 0 14px 15px 0;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li.odd, .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
-    margin: 0 0 15px 0;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
-    margin-right: 315px;
-  }
-}
-@media (min-width: 959px) and (max-width: 1274px) {
-  .expandable-container.promo-ads-panel .first-promo-large li, .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
-    float: left;
-    margin: 0 14px 15px 0;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li.odd, .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
-    margin: 0 14px 15px 0;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(3n+5) {
-    margin: 0 0 15px 0;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:first-child, .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
-    margin-right: 14px;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
-    margin: 0 314px 15px 0;
-  }
-}
-@media (min-width: 1275px) {
-  .expandable-container.promo-ads-panel .first-promo-large {
-    overflow: hidden;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li, .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
-    float: left;
-    margin: 0 14px 15px 0;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li.odd, .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
-    margin: 0 14px 15px 0;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(4n+6) {
-    margin: 0 0 15px 0;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:first-child, .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
-    margin-right: 14px;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
-    margin: 0 314px 15px 0;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li {
-    float: left;
-    clear: none;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li .asset-img {
-    overflow: hidden;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li .asset-img img {
-    display: block;
-    width: 100%;
-    height: auto;
-    vertical-align: top;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li .asset-img-large {
-    display: block;
-    width: 617px;
-    height: 254px;
-    border: 2px solid #2d2d2d;
-    overflow: hidden;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li .asset-img-large img {
-    display: block;
-    width: 100%;
-    height: auto;
-    vertical-align: top;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:first-child {
-    width: 615px;
-    height: 254px;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:first-child .asset-img {
-    display: none;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:first-child .caption-fields-wrapper {
-    width: 613px;
-  }
-  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
-    margin: 0 315px 15px 0;
-  }
-}
-.expandable-container.promo-ads-panel .first-promo-large .expandable-toggle-wrap {
-  display: none;
-}
-.expandable-container .view-content > .item-list {
-  clear: both;
-  overflow: hidden;
-}
-
-.view .ajax-progress, .view .ajax-progress-throbber {
-  display: none;
-}
-.view .expandable-toggle li {
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-}
-.view .expandable-toggle li a {
-  color: #b0b0b0;
-}
-
 .maintenance-page #page {
   padding: 0 15px;
   margin: 4em auto;
@@ -31372,7 +30227,7 @@ body.blog .view-display-id-blog_content .views-row {
   margin-top: 4px;
   text-align: left;
 }
-@media (max-width: 1014px) {
+@media (max-width: 1024px) {
   .node-catchall-seo-page .group-left {
     max-width: 967px;
     width: 100%;
@@ -31388,7 +30243,7 @@ body.blog .view-display-id-blog_content .views-row {
   margin-top: 4px;
   width: 300px;
 }
-@media (max-width: 1014px) {
+@media (max-width: 1024px) {
   .node-catchall-seo-page .group-right {
     max-width: 967px;
     width: 100%;

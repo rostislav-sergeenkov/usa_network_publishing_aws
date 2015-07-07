@@ -130,8 +130,8 @@ else {
  * A utility function for pulling Acquia DB information.
  */
 function sso_db_info($db_name) {
-  if (file_exists('/var/www/site-php/' . $_ENV['AH_SITE_NAME'] . '/creds.json')) {
-    $creds_json = file_get_contents('/var/www/site-php/' . $_ENV['AH_SITE_NAME'] . '/creds.json');
+  if (file_exists('/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . $_ENV['AH_SITE_ENVIRONMENT'] . '/creds.json')) {
+    $creds_json = file_get_contents('/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . $_ENV['AH_SITE_ENVIRONMENT'] . '/creds.json');
     $databases = json_decode($creds_json, TRUE);
     $db = $databases['databases'][$db_name];
     $db['host'] = ($host = sso_db_current_host($db['db_cluster_id'])) ? $host : key($db['db_url_ha']);

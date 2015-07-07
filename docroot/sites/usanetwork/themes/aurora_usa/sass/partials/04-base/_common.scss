@@ -291,9 +291,12 @@ address {
 }
 .page-403 {
   .region.region-content {
+    border: 2px solid $forbidden-border;
     color: #000000;
-    margin: 20px 0 20px 20px;
-    text-align: left;
+    font-family: $avalon-demi;
+    margin: 20px 20% 20px 20%;
+    padding: 10px;
+    text-align: center;
   }
 }
 
@@ -301,6 +304,10 @@ address {
   display: block;
   height: 0;
   line-height: 0;
+}
+
+.seeit-iframe-wrapper {
+  z-index: 9999!important;
 }
 
 .person-quotation {

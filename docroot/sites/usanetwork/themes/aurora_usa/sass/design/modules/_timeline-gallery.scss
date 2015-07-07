@@ -1,43 +1,60 @@
 .node-type-timeline-gallery {
-  .timelineFlat {
-    .timeline-item {
-      .timeline-item-details {
-        @include breakpoint($bp-480-width) {
-          padding: 20px 8px 10px 10px;
+  .sharebar {
+    .field-type-gigya-sharebar {
+      width: 100%;
+      margin: 0;
+      .gig-button-container {
+        td > div {
+          margin: 0 get-vw(5px, 1025) 0 0 !important;
+          width: get-vw(20px, 1025) !important;
         }
-        h2 {
-          @include breakpoint($bp-480-width) {
-            font-size: 12px;
-            max-width: 234px;
-            text-align: left;
-            left: 10px;
-            right: auto;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            .divider {
-              margin: 0;
-            }
-          }
-        }
-        .timeline-item-text {
-          @include breakpoint($bp-480-width) {
-            max-height: 80px;
-            font-size: 13px;
-            margin-top: 6px;
-          }
-        }
-        .timeline-gigya-share-container {
-          @include breakpoint($bp-480-width) {
-            font-size: 12px;
-            bottom: -6px;
-          }
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 37px;
+          margin: 0 12px 0 0;
+          width: 37px !important;
         }
       }
     }
-    #timeline-line-full-right {
-      @include breakpoint($bp-480-width) {
-        top: 40px;
+    .timelineFlat {
+      .timeline-item {
+        .timeline-item-details {
+          @include breakpoint($bp-480-width) {
+            padding: 20px 8px 10px 10px;
+          }
+          h2 {
+            @include breakpoint($bp-480-width) {
+              font-size: 12px;
+              max-width: 234px;
+              text-align: left;
+              left: 10px;
+              right: auto;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              .divider {
+                margin: 0;
+              }
+            }
+          }
+          .timeline-item-text {
+            @include breakpoint($bp-480-width) {
+              max-height: 80px;
+              font-size: 13px;
+              margin-top: 6px;
+            }
+          }
+          .timeline-gigya-share-container {
+            @include breakpoint($bp-480-width) {
+              font-size: 12px;
+              bottom: -6px;
+            }
+          }
+        }
+      }
+      #timeline-line-full-right {
+        @include breakpoint($bp-480-width) {
+          top: 40px;
+        }
       }
     }
   }

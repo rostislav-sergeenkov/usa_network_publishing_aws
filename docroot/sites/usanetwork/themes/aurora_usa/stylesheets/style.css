@@ -18431,13 +18431,28 @@ footer h2 {
   }
 }
 
+.node-type-timeline-gallery .sharebar .field-type-gigya-sharebar {
+  width: 100%;
+  margin: 0;
+}
+.node-type-timeline-gallery .sharebar .field-type-gigya-sharebar .gig-button-container td > div {
+  margin: 0 0.4878vw 0 0 !important;
+  width: 1.95122vw !important;
+}
+@media (min-width: 1901px) {
+  .node-type-timeline-gallery .sharebar .field-type-gigya-sharebar .gig-button-container {
+    font-size: 37px;
+    margin: 0 12px 0 0;
+    width: 37px !important;
+  }
+}
 @media (max-width: 480px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details {
+  .node-type-timeline-gallery .sharebar .timelineFlat .timeline-item .timeline-item-details {
     padding: 20px 8px 10px 10px;
   }
 }
 @media (max-width: 480px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details h2 {
+  .node-type-timeline-gallery .sharebar .timelineFlat .timeline-item .timeline-item-details h2 {
     font-size: 12px;
     max-width: 234px;
     text-align: left;
@@ -18447,25 +18462,25 @@ footer h2 {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details h2 .divider {
+  .node-type-timeline-gallery .sharebar .timelineFlat .timeline-item .timeline-item-details h2 .divider {
     margin: 0;
   }
 }
 @media (max-width: 480px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details .timeline-item-text {
+  .node-type-timeline-gallery .sharebar .timelineFlat .timeline-item .timeline-item-details .timeline-item-text {
     max-height: 80px;
     font-size: 13px;
     margin-top: 6px;
   }
 }
 @media (max-width: 480px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-item .timeline-item-details .timeline-gigya-share-container {
+  .node-type-timeline-gallery .sharebar .timelineFlat .timeline-item .timeline-item-details .timeline-gigya-share-container {
     font-size: 12px;
     bottom: -6px;
   }
 }
 @media (max-width: 480px) {
-  .node-type-timeline-gallery .timelineFlat #timeline-line-full-right {
+  .node-type-timeline-gallery .sharebar .timelineFlat #timeline-line-full-right {
     top: 40px;
   }
 }

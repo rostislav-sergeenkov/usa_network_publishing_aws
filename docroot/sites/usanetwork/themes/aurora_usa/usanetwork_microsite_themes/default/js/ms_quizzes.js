@@ -11,7 +11,7 @@
 
     refresh300x250Ad: function() {
 //usa_debug('========== quiz ad -- refresh300x250Ad()');
-      if ($(window).width() >= 640 && $('#topbox .mps-slot').length < 1) {
+      if ($(window).width() > 640 && $('#topbox .mps-slot').length < 1) {
         setTimeout(Drupal.behaviors.ms_quizzes.init300x250Ad, 1000);
       }
       else {
@@ -207,7 +207,7 @@
 
                 // show 300x250 ad on splash page
                 setTimeout(function(){
-                  if ($(window).width() >= 640) Drupal.behaviors.ms_quizzes.init300x250Ad();
+                  if ($(window).width() > 640) Drupal.behaviors.ms_quizzes.init300x250Ad();
                 }, 1000);
 
                 // set url

@@ -42,7 +42,7 @@
         <div class="asset-img">
           <img src="<?php print $episode['image_url']; ?>" alt="">
         </div>
-        <div class="title-overlay meta">
+        <div class="meta">
           <div class="meta-info">
             <div class="caption"><?php print $episode['video_type']; ?></div>
             <div class="title">

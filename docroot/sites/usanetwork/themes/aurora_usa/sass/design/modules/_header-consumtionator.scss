@@ -247,6 +247,7 @@
               color: #ffffff;
               margin-left: get-vw(185px, 1025);
               padding-top: 0;
+              position: relative;
               @include breakpoint($bp-min-1901-width) {
                 margin-left: 343px;
               }

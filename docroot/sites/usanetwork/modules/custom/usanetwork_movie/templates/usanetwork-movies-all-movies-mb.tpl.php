@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="landing-main-block show-all-shows-main-block five-promo-item-block show-border">
+<div class="landing-main-block movie-all-movies-main-block five-promo-item-block show-border">
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>
@@ -44,7 +44,7 @@
           <li class="last">
           <?php $second_item = false; ?>
         <?php endif; ?>
-          <div class="node node-usanetwork-promo usanetwork-tv-shows-all-shows-lmb <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
+          <div class="node node-usanetwork-promo usanetwork-movies-all-movies-lmb <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">

@@ -319,7 +319,7 @@
           &:first-child {
             margin-top: 0;
             .lines-quotation {
-              @include breakpoint($bp-min-1281-width){
+              @include breakpoint($bp-min-1281-width) {
                 margin-top: 0;
               }
             }

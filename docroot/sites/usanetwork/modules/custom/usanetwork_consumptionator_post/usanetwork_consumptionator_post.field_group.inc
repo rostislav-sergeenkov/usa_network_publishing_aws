@@ -56,10 +56,10 @@ function usanetwork_consumptionator_post_field_group_info() {
       0 => 'body',
       1 => 'field_post_cover',
       2 => 'field_post_cover_toggle',
-      3 => 'field_show',
-      4 => 'field_sub_title',
-      5 => 'field_summary',
-      6 => 'field_post_source',
+      3 => 'field_post_source',
+      4 => 'field_show',
+      5 => 'field_sub_title',
+      6 => 'field_summary',
       7 => 'title',
       8 => 'group_blog_displaying_author',
     ),
@@ -118,6 +118,7 @@ function usanetwork_consumptionator_post_field_group_info() {
     'weight' => '10',
     'children' => array(
       0 => 'field_gallery_recap',
+      1 => 'field_gallery_recap_block_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -178,9 +179,9 @@ function usanetwork_consumptionator_post_field_group_info() {
     'label' => 'Seo',
     'weight' => '11',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_usa_og_image',
-      2 => 'field_seo_h1',
+      0 => 'field_seo_h1',
+      1 => 'field_usa_og_description',
+      2 => 'field_usa_og_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

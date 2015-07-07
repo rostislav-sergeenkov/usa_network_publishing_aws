@@ -243,7 +243,7 @@ function _usanetwork_episodes_episodes_carousel() {
     if (!empty($season_node)) {
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'node')
-        ->entityCondition('entity_type', 'node')
+        ->propertyCondition('status', NODE_PUBLISHED)
         ->entityCondition('bundle', 'tv_episode')
         ->fieldCondition('field_season', 'target_id', $season_node->nid, '=')
         // +0 for sorting numerically varchar field.
@@ -309,10 +309,6 @@ function _usanetwork_episodes_main_block() {
   $episode_node = menu_get_object();
   if (!empty($episode_node->type) && $episode_node->type == 'tv_episode') {
     $episode_node_wrapper = entity_metadata_wrapper('node', $episode_node);
-    if (!empty($episode_node->field_gigya_share_bar)) {
-      $sharebar = field_view_field('node', $episode_node, 'field_gigya_share_bar');
-      $sharebar['#title'] = t('Share');
-    }
     if (!empty($episode_node->field_season)) {
       $season = $episode_node_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
@@ -344,10 +340,11 @@ function _usanetwork_episodes_main_block() {
       }
       $navigation_links = _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season->nid, $episode_num, $season_num);
     }
+    $body = !empty($episode_node->body) ? $episode_node_wrapper->body->value->value() : '';
     $theme_variables = array(
-      'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+      'sharebar' => usanetwork_menu_render_sharebar($episode_node, 'node', t('Share'), $episode_node->title , $body),
       'episode_title' => $episode_node->title,
-      'body' => !empty($episode_node->body) ? $episode_node_wrapper->body->value->value() : '',
+      'body' => $body,
       'season_number' => !empty($season_num) ? $season_num : '',
       'episode_number' => !empty($episode_num) ? $episode_num : '',
       'episode_video_link' => !empty($episode_link) ? $episode_link : NULL,
@@ -386,6 +383,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
   $current_season_data_item = NULL;
   $current_season_data_item_index = NULL;
   $last_season_data = NULL;
+  $next_season_available = &drupal_static('load_more_link');
   $next_season_available = FALSE;
 
   $theme_variables = array(
@@ -434,11 +432,12 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     }
 
     if ($current_season_data_item_index + 1 < count($season_ids)) {
-      $theme_variables['load_more_link'] = TRUE;
+      $next_season_available = TRUE;
     }
     else {
-      $theme_variables['load_more_link'] = FALSE;
+      $next_season_available = FALSE;
     }
+    $theme_variables['load_more_link'] = $next_season_available;
 
     if ($display_filters_block) {
       $theme_variables['filters'][0] = array(
@@ -892,10 +891,11 @@ function _usanetwork_episodes_get_episode_related_content_block() {
         ), 'setting');
 
         $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
-
+        $load_more_link = &drupal_static('load_more_link');
+        $load_more_link = TRUE;
         return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
           'related_items_block' => $block_of_items,
-          'load_more_link' => TRUE,
+          'load_more_link' => $load_more_link,
           'show_nid' => $tv_show_node->nid,
           'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
         ));

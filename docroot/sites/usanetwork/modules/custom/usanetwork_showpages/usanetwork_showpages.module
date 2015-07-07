@@ -640,6 +640,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         case 'explore':
         case 'photos':
           break;
+        case 'blog':
+          // Title is set via drupal_set_title in usanetwork_consumptionator_post.module .
+          break;
         // Show Landing Page
         case '':
           if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
@@ -748,6 +751,10 @@ function usanetwork_showpages_preprocess_html(&$vars) {
           else {
             $head_title = t("@showname - @title | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           }
+          break;
+        case 'consumpt_post':
+          $blog_title = usanetwork_consumptionator_post_get_blog_title($show);
+          $head_title = $node->title . ' | ' . $blog_title .  ' | Blog | ' . $show->title . ' | USA Network';
           break;
       }
     }

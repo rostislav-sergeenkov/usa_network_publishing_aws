@@ -1,7 +1,7 @@
 name = USA Network Quizzes
 core = 7.x
 package = USA Network
-version = 7.x-1.3
+version = 7.x-1.4
 project = usanetwork_quiz
 dependencies[] = colorfield
 dependencies[] = ctools
@@ -121,6 +121,7 @@ features[variable][] = menu_parent_quiz
 features[variable][] = node_options_quiz
 features[variable][] = node_preview_quiz
 features[variable][] = node_submitted_quiz
+features[variable][] = pathauto_node_quiz_pattern
 features[variable][] = representative_image_field_node_quiz
 features[variable][] = usanetwork_quiz_player
 features_exclude[dependencies][usanetwork_seo] = usanetwork_seo

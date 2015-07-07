@@ -45,7 +45,7 @@
           <?php print $body; ?>
         <?php endif; ?>
         <?php if (!empty($source)): ?>
-          <?php print t('Source: ') .  $source; ?>
+          <?php print '<p class="source">' . t('Source: ') . '<span class="source-title">' .  $source . '</span></p>'; ?>
         <?php endif; ?>
       </div>
     </div>

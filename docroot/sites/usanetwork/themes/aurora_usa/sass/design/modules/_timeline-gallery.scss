@@ -1,0 +1,44 @@
+.node-type-timeline-gallery {
+  .timelineFlat {
+    .timeline-item {
+      .timeline-item-details {
+        @include breakpoint($bp-480-width) {
+          padding: 20px 8px 10px 10px;
+        }
+        h2 {
+          @include breakpoint($bp-480-width) {
+            font-size: 12px;
+            max-width: 234px;
+            text-align: left;
+            left: 10px;
+            right: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            .divider {
+              margin: 0;
+            }
+          }
+        }
+        .timeline-item-text {
+          @include breakpoint($bp-480-width) {
+            max-height: 80px;
+            font-size: 13px;
+            margin-top: 6px;
+          }
+        }
+        .timeline-gigya-share-container {
+          @include breakpoint($bp-480-width) {
+            font-size: 12px;
+            bottom: -6px;
+          }
+        }
+      }
+    }
+    #timeline-line-full-right {
+      @include breakpoint($bp-480-width) {
+        top: 40px;
+      }
+    }
+  }
+}

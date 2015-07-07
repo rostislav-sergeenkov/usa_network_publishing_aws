@@ -1,14 +1,6 @@
 (function($) {
   var counter = 0;
 
-  $(document).ready(function(){
-    if(($('.ajax-load-block .load-more-link a').length > 0)) {
-      $('#footer').addClass('hidden');
-    } else {
-      $('.ajax-load-block').addClass('infinity-finished');
-    }
-  });
-
   Drupal.behaviors.usanetwork_tv_shows_related_items_loader = {
     getItems: function(eventClick) {
       var limit = $('.ajax-load-block').data('show-items-limit') || 5;
@@ -114,7 +106,7 @@
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
           } else {
-            $('#footer').removeClass('hidden');
+            $('#footer > .region-footer').removeClass('hidden');
             $('.ajax-load-block').addClass('infinity-finished');
           }
           //if (number_ul > 2) {

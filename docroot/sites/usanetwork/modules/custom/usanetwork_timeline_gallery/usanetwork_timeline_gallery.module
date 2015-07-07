@@ -423,9 +423,11 @@ function _usanetwork_timeline_gallery_related_content() {
               'usanetwork_tv_show_page_context' => 'usanetwork-timeline-gallery',
             ), 'setting');
             $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
+            $load_more_link = &drupal_static('load_more_link');
+            $load_more_link = TRUE;
             return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
               'related_items_block' => $block_of_items,
-              'load_more_link' => TRUE,
+              'load_more_link' => $load_more_link,
               'show_nid' => $show->nid,
               'items_pre_page_limit' => USA_TIMELINE_RELATED_CONTENT_ITEMS,
             ));

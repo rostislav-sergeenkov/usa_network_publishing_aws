@@ -4,7 +4,7 @@
  */
 ?>
 
-<div class="swiper-slide">
+<div class="slide">
   <div class="wrp">
     <div class="node usanetwork-aspot <?php print $show_class; ?>"  data-show="<?php print $show_class; ?>">
       <a href="<?php print $show_url; ?>" class="asset-img-link" target="_self">

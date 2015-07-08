@@ -947,13 +947,17 @@ function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
 /**
  * TV schedule page menu callback
  */
-function usanetwork_tv_schedule_schedule_page() {
+function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_page = TRUE) {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.filter.js');
 
   // - show_nid - the node id for Show filter
   // - show_time - the timerange name for Time filter
   // - sdate - the day timestamp for getting a schedule
-  $query_params = drupal_get_query_parameters();
+  if (isset($parameters)) {
+    $query_params = $parameters;
+  } else {
+    $query_params = drupal_get_query_parameters();
+  }
 
   date_default_timezone_set('America/New_York');
 
@@ -1063,14 +1067,14 @@ function usanetwork_tv_schedule_schedule_page() {
         'link_name' => $link_name,
         'link_class' => (!empty($selected_schedule->guid) && $selected_schedule->guid === $tv_schedule_item->guid) ? 'active' : NULL,
         'show_class' => !empty($show_node) ? usanetwork_tv_shows_color_show_css_class($show_node)
-              : '',
+          : '',
         'time' => date('g:i', $start_time),
         'day_part' => date('A', $start_time),
         'episode_show' => $show_name,
         'episode_title' => !empty($tv_episode) ? $tv_episode->title : $episode_title,
         'episode_fid' => !empty($tv_episode) ? $tv_episode->fid : '',
         'icon_reminder_url' => !empty($show_nid) ? _usanetwork_menu_get_reminder_url($show_nid)
-              : '',
+          : '',
         'rating' => $rating,
         'episode_url' => !empty($tv_episode) ? url('file/' . $tv_episode->fid) : '',
         'episode_image_url' => $item_image,
@@ -1093,34 +1097,42 @@ function usanetwork_tv_schedule_schedule_page() {
     }
   }
 
-  asort($shows_filter);
-  $shows_filter = array(t('Show all')) + $shows_filter;
-  if (!empty($filter_show_nid)) {
-    $filter_show_node = node_load($filter_show_nid);
+  if ($show_full_page) {
+    asort($shows_filter);
+    $shows_filter = array(t('Show all')) + $shows_filter;
+    if (!empty($filter_show_nid)) {
+      $filter_show_node = node_load($filter_show_nid);
+    }
+    $start_date = ($filter_day < REQUEST_TIME + (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60)) ? $filter_day : 0;
+    $theme_variables = array(
+      'filter' => array(
+        'show_name' => array(
+          'selected' => array(
+            'nid' => !empty($filter_show_nid) ? $filter_show_nid : 0,
+            'title' => !empty($filter_show_nid) ? $filter_show_node->title : t('Show all'),
+          ),
+          'list' => $shows_filter,
+        ),
+        'show_time' => array(
+          'selected' => array(
+            'tid' => (empty($filter_show_time) || (!empty($filter_show_time) && $filter_show_time == 'all_time'))
+              ? 'all_time' : $filter_show_time,
+            'title' => (empty($filter_show_time) || (!empty($filter_show_time) && $filter_show_time == 'all_time'))
+              ? $filter_show_time_values['all_time'] : $filter_show_time_values[$filter_show_time],
+          ),
+          'list' => $filter_show_time_values,
+        ),
+      ),
+      'navigation' => empty($filter_show_nid) ? _usanetwork_tv_schedule_get_week_navigation($start_date) : '',
+      'schedule_table' => $schedule_rows,
+    );
+  } else {
+    $theme_variables = array(
+      'navigation' => array(),
+      'filter' => array(),
+      'schedule_table' => $schedule_rows,
+    );
   }
-  $start_date = ($filter_day < REQUEST_TIME + (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60)) ? $filter_day : 0;
-  $theme_variables = array(
-    'filter' => array(
-      'show_name' => array(
-        'selected' => array(
-          'nid' => !empty($filter_show_nid) ? $filter_show_nid : 0,
-          'title' => !empty($filter_show_nid) ? $filter_show_node->title : t('Show all'),
-        ),
-        'list' => $shows_filter,
-      ),
-      'show_time' => array(
-        'selected' => array(
-          'tid' => (empty($filter_show_time) || (!empty($filter_show_time) && $filter_show_time == 'all_time'))
-                ? 'all_time' : $filter_show_time,
-          'title' => (empty($filter_show_time) || (!empty($filter_show_time) && $filter_show_time == 'all_time'))
-                ? $filter_show_time_values['all_time'] : $filter_show_time_values[$filter_show_time],
-        ),
-        'list' => $filter_show_time_values,
-      ),
-    ),
-    'navigation' => empty($filter_show_nid) ? _usanetwork_tv_schedule_get_week_navigation($start_date) : '',
-    'schedule_table' => $schedule_rows,
-  );
 
   return theme('usanetwork_tv_schedule_table', $theme_variables);
 }

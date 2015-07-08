@@ -3,13 +3,9 @@
     attach: function (context, settings) {
 
       // vars
-      var aspotSlider = null,
-          slidesSettings = [],
+      var slidesSettings = [],
           dataShiftPercent,
           dataImgSrc,
-          timer_id,
-          timerAnimate,
-          timerAnimateHide,
           timeAnimateShow,
           nextSlide,
           nextSlideContent,
@@ -23,13 +19,14 @@
           nextButtonWrapper = $('.block-usanetwork-aspot .next-button-wrapper'),
           slider = $('.block-usanetwork-aspot .slider-container'),
           slide = $('.block-usanetwork-aspot .slide'),
-          slideCloneImg = $('.block-usanetwork-aspot .slide .clone-img'),
       // settings
           sliderAutoplay,
           sliderSpeed = 6000, // default value
           startAuto = true,
           slideMove = sliderSpeed * 0.1, // default value
-          slideMoveSpeed = 1000;
+          slideMoveSpeed = 600,
+      // name animation
+          nameAnimation = 'linear';
 
       // check count slides before init
       if (slide.length === 1) {
@@ -103,8 +100,8 @@
               autoplay: false,
               autoplaySpeed: sliderSpeed,
               centerPadding: '0',
-              cssEase: 'ease',
-              easing: 'linear',
+              cssEase: '',
+              easing: nameAnimation,
               infinite: true,
               lazyLoad: 'ondemand',
               //lazyLoad: 'progressive',
@@ -112,6 +109,7 @@
               slidesToShow: 1,
               slidesToScroll: 1,
               speed: slideMoveSpeed,
+              useCSS: false,
 
               // controls
               nextArrow: nextButton,
@@ -135,7 +133,7 @@
             .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
               // hide slide content
-              hideElements(currentSlide, nextSlide, slick.autoPlayTimer);
+              hideElements(currentSlide, nextSlide);
             });
         // end init slider
 
@@ -189,45 +187,36 @@
           'background-position-x': shiftBg + '%'
         });
 
-        slide.eq(nextIndex).not('.slick-cloned').find('.clone-img').css({
-          'display': 'block',
-          'right': shiftBg + '%'
+        slide.eq(nextIndex).find('.asset-img img').css({
+          'margin-left': - shiftBg + '%'
         });
-        //slide.eq(nextIndex).not('.slick-cloned').find('.asset-img img').css({
-        //  'display': 'block',
-        //  'right': shiftBg + '%'
-        //});
       }
 
       // show next button
       function showNextbutton() {
         $(nextButton).animate({
           right: 0
-        }, timeAnimateShow, 'linear');
+        }, timeAnimateShow, nameAnimation);
       }
 
       // show slide content
       function showElements(currentIndex, nextIndex) {
 
         activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
-        activeSlide = slide.eq(currentIndex).not('.slick-cloned');
-        nextSlide = slide.eq(nextIndex).not('.slick-cloned');
+        activeSlide = slide.eq(currentIndex);
+        nextSlide = slide.eq(nextIndex);
 
-        var clone = slide.eq(currentIndex).not('.slick-cloned').find('.clone-img');
-
-
-        nextSlide.css('z-index', 0);
+        // set z-index for active & next slides
         activeSlide.css('z-index', 1);
+        nextSlide.css('z-index', 0);
 
         // change background on next-button
         setNextSlide(nextIndex);
 
-        clone.hide();
-
         // show current slide content
         $(activeSlideContent).animate({
           'opacity': 1
-        }, slideMove * 0.5, 'linear', function () {
+        }, slideMove * 0.5, nameAnimation, function () {
           // change logo color
           changeLogoColor(activeSlideContent);
 
@@ -237,29 +226,23 @@
       }
 
       // hide slide content
-      function hideElements(currentIndex, nextIndex, t) {
-        var clone = slide.eq(nextIndex).not('.slick-cloned').find('.clone-img');
-        nextSlideImg = slide.eq(nextIndex).not('.slick-cloned').find('.asset-img img');
-        nextSlideContent = slide.eq(nextIndex).not('.slick-cloned').find('.slide-content');
+      function hideElements(currentIndex, nextIndex) {
+        nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
+        nextSlideContent = slide.eq(nextIndex).find('.slide-content');
 
         $(nextSlideContent).css('opacity', 0);
 
+        $(nextSlideImg).animate({
+          'margin-left': '0'
+        }, slideMoveSpeed, nameAnimation);
+
         // hide next button
-        $(nextButton).fadeOut(200, function () {
+        $(nextButton).fadeOut(400, function () {
           $(this).css({
             display: 'block',
             right: '-10%'
           });
         });
-
-        $(clone).animate({
-          'right': '100%'
-        }, t, 'linear');
-
-
-        //$(nextSlideImg).animate({
-        //  'right': '100%'
-        //},t, 'linear');
       }
     }
   };

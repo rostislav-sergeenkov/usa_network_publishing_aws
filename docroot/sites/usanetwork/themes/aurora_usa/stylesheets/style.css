@@ -28015,20 +28015,14 @@ yx-axis
   display: block;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
-  position: relative;
   width: 100%;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
   position: relative;
   z-index: 0;
 }
-#block-usanetwork-aspot-usanetwork-aspot-carousel .slide .clone-img {
-  display: none;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  height: 100%;
-  width: 100%;
+#block-usanetwork-aspot-usanetwork-aspot-carousel .slide.slick-active {
+  z-index: 1;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .wrp {
   background: #000000;

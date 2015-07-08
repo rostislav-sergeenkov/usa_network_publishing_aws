@@ -76,21 +76,14 @@
   }
   .asset-img {
     img {
-      position: relative;
       width: 100%;
     }
   }
   .slide {
     position: relative;
     z-index: 0;
-
-    .clone-img {
-      display: none;
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: absolute;
-      height: 100%;
-      width: 100%;
+    &.slick-active {
+      z-index: 1;
     }
     .wrp {
       background: #000000;

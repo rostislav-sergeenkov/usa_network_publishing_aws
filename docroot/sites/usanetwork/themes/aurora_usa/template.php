@@ -142,8 +142,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
   drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
   drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
-  drupal_add_js($theme_path . '/javascripts/slick.min.js');
-  drupal_add_js($theme_path . '/javascripts/swiper.jquery.js');
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',

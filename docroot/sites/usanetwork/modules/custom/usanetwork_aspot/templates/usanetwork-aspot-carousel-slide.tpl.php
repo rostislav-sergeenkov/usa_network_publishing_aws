@@ -6,7 +6,6 @@
 
 <div class="slide">
   <div class="wrp">
-    <div class="clone-img" style="background-image: url('<?php print $show_poster['desktop']; ?>')"></div>
     <div class="node usanetwork-aspot <?php print $show_class; ?>"  data-show="<?php print $show_class; ?>">
       <a href="<?php print $show_url; ?>" class="asset-img-link" target="_self">
         <?php if (!empty($show_poster)): ?>

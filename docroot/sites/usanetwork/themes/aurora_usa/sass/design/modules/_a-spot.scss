@@ -7,17 +7,15 @@
   max-height: 43.75vw;
   //  padding-bottom: 43.7%; /* ~16:7 */
   position: relative;
-  -ms-transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
   will-change: transform, opacity;
+
   @include breakpoint($bp-min-2500-width) {
     min-height: 1090px;
     max-height: 1094px;
-    //    padding-bottom: 1094px;
+    // padding-bottom: 1094px;
   }
   @include breakpoint($bp-640-width) {
-    //    padding-bottom: 87.45%;
+    // padding-bottom: 87.45%;
     min-height: 90vw;
     max-height: 90.625vw;
   }
@@ -73,6 +71,7 @@
   }
   .asset-img-link {
     display: block;
+    line-height: 0;
   }
   .asset-img {
     img {
@@ -81,6 +80,7 @@
   }
   .slide {
     position: relative;
+    width: 100vw;
     z-index: 0;
     &.slick-active {
       z-index: 1;
@@ -92,6 +92,9 @@
     .slide-content {
       overflow: hidden;
       opacity: 0;
+      @include breakpoint($bp-640-width) {
+        opacity: 1;
+      }
     }
   }
   //  .slider-container {

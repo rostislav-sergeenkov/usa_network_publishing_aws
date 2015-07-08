@@ -54,6 +54,11 @@ function usanetwork_movie_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_movie_schedule'] = array(
+    'info' => t('Movies: Schedule'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -62,6 +67,14 @@ function usanetwork_movie_block_info() {
  */
 function usanetwork_movie_theme($existing, $type, $theme, $path) {
   return array(
+    'usanetwork_movie_movies_landing' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-movie-movies-landing',
+    ),
     'usanetwork_movie_movies_landing_block' => array(
       'variables' => array(
         'advert_block' => NULL,
@@ -84,6 +97,12 @@ function usanetwork_movie_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-movies-all-movies-mb',
     ),
+    'usanetwork_movies_schedule' => array(
+      'variables' => array(
+        'schedule' => array(),
+      ),
+      'template' => 'templates/usanetwork-movies-schedule',
+    ),
   );
 }
 /**
@@ -100,6 +119,10 @@ function usanetwork_movie_block_view($delta = '') {
     case 'usanetwork_movie_all_shows':
       $block['subject'] = '';
       $block['content'] = _usanetwork_movie_all_movies_block();
+      break;
+    case 'usanetwork_movie_schedule':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_movie_all_movies_schedule();
       break;
   }
 
@@ -204,7 +227,7 @@ function _usanetwork_movie_all_movies_block() {
   $shows = _usanetwork_movie_all_shows_get_movies($params['sort_order']);
   $shows_block = _usanetwork_movies_all_movies_render_block($shows);
   $video_sorter_title = $sorters[$params['sort_order']]['title'];
-  $result = theme('usanetwork_tv_shows_shows_landing', array(
+  $result = theme('usanetwork_movie_movies_landing', array(
     'block_title' => t('All Movies'),
     'show_sorters' => $sorters,
     'show_sorter_title' => $video_sorter_title,
@@ -428,4 +451,15 @@ function usanetwork_movie_movies_autocomplete($title) {
     }
   }
   drupal_json_output($output);
+}
+
+function _usanetwork_movie_all_movies_schedule() {
+  $movie = node_load_multiple(array(), array('title' => 'Movies'));
+  $movie = reset($movie);
+  $schedule = usanetwork_tv_schedule_schedule_page(array('show_nid' => $movie->nid), FALSE);
+  $theme_variables = array(
+    'block_title' => t('Movie Schedule'),
+    'schedule' => $schedule,
+  );
+  return theme('usanetwork_movies_schedule', $theme_variables);
 }

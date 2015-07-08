@@ -4589,7 +4589,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   clear: both;
 }
 
-#block-views-usa-mpx-video-fullepisodes-live .grid-item, .region-content .block-usanetwork-tv-schedule .grid-item, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
+#block-views-usa-mpx-video-fullepisodes-live .grid-item, .region-content .block-usanetwork-tv-schedule .grid-item, .node-type-catchall-page .tiles .ad, .upcoming-movie {
   margin-bottom: 15px;
 }
 
@@ -8506,63 +8506,6 @@ header .tve-help-link.signIn .inlineLoader {
   height: 254px;
   overflow: hidden;
   width: 304px;
-}
-
-.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
-.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
-  display: block;
-}
-@media (max-width: 644px) {
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
-    display: none;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
-    display: none;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
-    display: none;
-  }
-}
-@media (min-width: 1275px) {
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
-    display: block;
-  }
-}
-.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
-.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
-  display: none;
-}
-@media (max-width: 644px) {
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
-    display: block;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
-    display: block;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
-    display: block;
-  }
-}
-@media (min-width: 1275px) {
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
-  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
-    display: none;
-  }
 }
 
 .node-usanetwork-promo .caption-overlay .promo-cta {
@@ -29597,47 +29540,6 @@ yx-axis
     height: 0px;
     border-top: 5px solid #0ab6e8;
   }
-}
-
-.featured-movie.aspot .meta-wrap {
-  top: auto;
-  bottom: 0;
-  padding-left: 30px;
-}
-.featured-movie.aspot .show-title {
-  font-size: 28px;
-  margin-bottom: 0px;
-}
-.featured-movie.aspot .show-title:after {
-  display: none;
-}
-.featured-movie.aspot .show-time {
-  font-size: 18px;
-  letter-spacing: 1px;
-}
-
-.upcoming-movies .ad {
-  margin-right: 0;
-}
-@media (min-width: 710px) {
-  .upcoming-movies .ad {
-    position: relative;
-  }
-}
-.upcoming-movies a {
-  color: white;
-}
-.upcoming-movies a:visited {
-  color: white;
-}
-.upcoming-movies a:focus {
-  color: white;
-}
-.upcoming-movies a:hover {
-  color: white;
-}
-.upcoming-movies a:active {
-  color: white;
 }
 
 .upcoming-movie {

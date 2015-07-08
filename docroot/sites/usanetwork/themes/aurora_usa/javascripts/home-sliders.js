@@ -31,8 +31,14 @@
 
       // check count slides before init
       if (slide.length === 1) {
-        // change logo color
-        changeLogoColor(slide.find('.slide-content'));
+        $(window).load(function () {
+          // change logo color
+          changeLogoColor(slide.find('.slide-content'));
+
+          $(slide).find('.slide-content').animate({'opacity': 1}, slideMove, nameAnimation, function () {
+            aspotBlock.addClass('load');
+          });
+        });
 
         // stop init
         return false;

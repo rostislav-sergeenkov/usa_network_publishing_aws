@@ -22,6 +22,11 @@
   &.load {
     background-image: none;
     min-height: inherit;
+    .slide-content {
+      @include breakpoint($bp-640-width) {
+        opacity: 1;
+      }
+    }
   }
 
   .next-button {
@@ -92,24 +97,8 @@
     .slide-content {
       overflow: hidden;
       opacity: 0;
-      @include breakpoint($bp-640-width) {
-        opacity: 1;
-      }
     }
   }
-  //  .slider-container {
-  //    overflow: hidden;
-  //    width: 1000%;
-  //  }
-  //  .slide {
-  //    float: left;
-  //    position: relative;
-  //    width: 100vw;
-  //    .wrp {
-  //      background: #000000;
-  //      overflow: hidden;
-  //    }
-  //  }
 }
 
 .usanetwork-aspot {

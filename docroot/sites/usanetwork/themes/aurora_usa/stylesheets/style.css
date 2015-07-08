@@ -27173,6 +27173,11 @@ yx-axis
   background-image: none;
   min-height: inherit;
 }
+@media (max-width: 640px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel.load .slide-content {
+    opacity: 1;
+  }
+}
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
   will-change: transform, opacity;
 }
@@ -27241,11 +27246,6 @@ yx-axis
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .slide-content {
   overflow: hidden;
   opacity: 0;
-}
-@media (max-width: 640px) {
-  #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .slide-content {
-    opacity: 1;
-  }
 }
 
 .usanetwork-aspot .aspot-draggable-element {

@@ -1,7 +1,4 @@
 (function ($) {
-
-  console.info(usa_deviceInfo);
-
   Drupal.behaviors.homeSlides = {
     attach: function (context, settings) {
 

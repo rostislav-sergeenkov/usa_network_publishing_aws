@@ -34,7 +34,6 @@ dependencies[] = usanetwork_opengraph
 dependencies[] = usanetwork_promo
 dependencies[] = usanetwork_social
 dependencies[] = usanetwork_taxonomy
-
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
@@ -86,6 +85,6 @@ features[variable][] = node_preview_movie
 features[variable][] = node_submitted_movie
 features[variable][] = representative_image_field_node_movie
 features_exclude[dependencies][gigya] = gigya
+features_exclude[dependencies][usanetwork_gallery_content] = usanetwork_gallery_content
 features_exclude[field_base][field_gigya_share_bar] = field_gigya_share_bar
 features_exclude[field_instance][node-movie-field_gigya_share_bar] = node-movie-field_gigya_share_bar
-

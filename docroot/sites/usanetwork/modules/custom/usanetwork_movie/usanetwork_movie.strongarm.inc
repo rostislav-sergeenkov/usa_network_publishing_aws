@@ -14,7 +14,7 @@ function usanetwork_movie_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_movie';
-  $strongarm->value = 0;
+  $strongarm->value = '0';
   $export['comment_anonymous_movie'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -42,7 +42,7 @@ function usanetwork_movie_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_movie';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_movie'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -93,6 +93,69 @@ function usanetwork_movie_strongarm() {
         'custom_settings' => FALSE,
       ),
       'promoted_content' => array(
+        'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'page_collection_resources' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'microsite_output' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title_lg' => array(
+        'custom_settings' => FALSE,
+      ),
+      'carousel_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cast_carousel' => array(
+        'custom_settings' => FALSE,
+      ),
+      'follow_social' => array(
+        'custom_settings' => FALSE,
+      ),
+      'global_nav_block_more' => array(
+        'custom_settings' => FALSE,
+      ),
+      'global_nav_block_shows' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo_bspot' => array(
+        'custom_settings' => FALSE,
+      ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser_large' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -149,7 +212,7 @@ function usanetwork_movie_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_movie';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_movie'] = $strongarm;
 
   $strongarm = new stdClass();

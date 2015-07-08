@@ -35,6 +35,7 @@ dependencies[] = usanetwork_promo
 dependencies[] = usanetwork_social
 dependencies[] = usanetwork_taxonomy
 
+features[context][] = movies_all
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2

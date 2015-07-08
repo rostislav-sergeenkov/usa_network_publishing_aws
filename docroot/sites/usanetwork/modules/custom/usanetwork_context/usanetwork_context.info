@@ -37,7 +37,6 @@ dependencies[] = usanetwork_static_page
 dependencies[] = usanetwork_timeline_gallery
 dependencies[] = usanetwork_token
 features[context][] = post_node
-features[context][] = movies_all
 features[context][] = quiz_node
 features[context][] = schedule_page
 features[context][] = show_banner

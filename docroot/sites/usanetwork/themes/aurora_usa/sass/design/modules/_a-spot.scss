@@ -24,7 +24,7 @@
     min-height: inherit;
     .slide-content {
       @include breakpoint($bp-640-width) {
-        opacity: 1;
+        display: block;
       }
     }
   }
@@ -96,7 +96,7 @@
     }
     .slide-content {
       overflow: hidden;
-      opacity: 0;
+      display: none;
     }
   }
 }

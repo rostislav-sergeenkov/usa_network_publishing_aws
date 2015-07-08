@@ -27175,7 +27175,7 @@ yx-axis
 }
 @media (max-width: 640px) {
   #block-usanetwork-aspot-usanetwork-aspot-carousel.load .slide-content {
-    opacity: 1;
+    display: block;
   }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
@@ -27245,7 +27245,7 @@ yx-axis
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .slide-content {
   overflow: hidden;
-  opacity: 0;
+  display: none;
 }
 
 .usanetwork-aspot .aspot-draggable-element {

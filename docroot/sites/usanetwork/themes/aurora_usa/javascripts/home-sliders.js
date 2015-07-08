@@ -35,7 +35,7 @@
           // change logo color
           changeLogoColor(slide.find('.slide-content'));
 
-          $(slide).find('.slide-content').fadeTo(slideMove, 1, function () {
+          $(slide).find('.slide-content').fadeIn(slideMove, function () {
             aspotBlock.addClass('load');
           });
         });
@@ -49,7 +49,7 @@
         sliderAutoplay = Math.abs(settings.sliderAspot.slideshowAutoplay);
         sliderSpeed = Math.abs(settings.sliderAspot.slideshowSpeed);
 
-        if (sliderSpeed <= 0 || sliderSpeed < 6000) {
+        if (sliderSpeed <= 0 || sliderSpeed < 2000) {
           sliderSpeed = 6000;
         }
 
@@ -90,7 +90,7 @@
               nextButton.addClass('ready');
 
               // show content
-              slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('opacity', 1);
+              slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('display', 'block');
 
               // change logo color
               changeLogoColor(slide.find('.slide-content'));
@@ -319,7 +319,7 @@
         changeLogoColor(activeSlideContent);
 
         // show current slide content
-        $(activeSlideContent).fadeTo(slideMove * 0.5, 1, function () {
+        $(activeSlideContent).fadeIn(slideMove * 0.5, function () {
           // show next button
           showNextbutton();
         });
@@ -330,7 +330,7 @@
         nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
         nextSlideContent = slide.eq(nextIndex).find('.slide-content');
 
-        $(nextSlideContent).css('opacity', 0);
+        $(nextSlideContent).css('display', 'none');
 
         $(nextSlideImg).animate({
           'margin-left': '0'

@@ -93,7 +93,7 @@
           // init slider
             .slick({
               // slider settings
-              adaptiveHeight: true,
+              //adaptiveHeight: true,
               autoplay: false,
               autoplaySpeed: sliderSpeed,
               centerPadding: '0',
@@ -220,7 +220,8 @@
               } else {
                 slider.slick('slickPlay');
               }
-            }, 1000);
+
+            }, 500);
           }
         });
 

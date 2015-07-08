@@ -135,7 +135,7 @@ Project demo: http://shindiristudio.com/timeline
       // Initialize the timeline
       $this = $('.tl3').timeline({
         openTriggerClass : '.read-more',
-        startItem : '01/01/01', // @TODO: Update this so that it dynamically pulls in the 1st item
+        startItem : $('.timeline-item:first').attr('data-id'),
         closeText : ''
       });
 

@@ -1,45 +1,5 @@
-.title-overlay {
-  position: relative;
-  display: block;
-  h2 {
-    margin-bottom: 2px;
-    font-size: 20px;
-  }
-  .meta, h2 {
-    @extend %metadata-gradient;
-    bottom: 0;
-    color: $white;
-    display: block;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    white-space: nowrap;
-    padding: 12px 15px 9px;
-    margin: 0;
-    overflow: hidden;
-
-  }
-  .field-name-field-caption {
-    @extend %visuallyhidden;
-  }
-}
-
 .caption-overlay {
-  position: relative;
-  display: block;
   .caption-fields-wrapper {
-    @extend %metadata-gradient;
-    height: 77px;
-    bottom: 0;
-    color: $white;
-    display: block;
-    left: 0;
-    position: absolute;
-    width: 300px;
-    white-space: nowrap;
-    padding: 17px 15px 8px;
-    margin: 0 2px 2px;
-    overflow: hidden;
     h3 {
       margin: 0 0 3px;
       line-height: 22.5px;
@@ -49,7 +9,6 @@
       @extend %regular-15;
       > div {
         display: inline;
-//        padding-right: 5px;
       }
     }
   }

@@ -17618,9 +17618,9 @@ footer h2 {
   width: 1.95122vw !important;
 }
 @media (min-width: 1901px) {
-  .node-type-timeline-gallery .sharebar .field-type-gigya-sharebar .gig-button-container {
+  .node-type-timeline-gallery .sharebar .field-type-gigya-sharebar .gig-button-container td > div {
     font-size: 37px;
-    margin: 0 12px 0 0;
+    margin: 0 12px 0 0 !important;
     width: 37px !important;
   }
 }
@@ -17630,18 +17630,20 @@ footer h2 {
   }
 }
 .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 {
-  width: 100%;
+  width: 98%;
+  padding: 0 20px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
   .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 {
-    padding: 0 20px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: 12px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 {
+    font-size: 10px;
+  }
+}
+@media (max-width: 768px) {
   .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 {
     font-size: 12px;
     text-align: left;

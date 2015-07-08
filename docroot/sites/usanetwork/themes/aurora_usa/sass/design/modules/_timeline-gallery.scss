@@ -7,11 +7,11 @@
         td > div {
           margin: 0 get-vw(5px, 1025) 0 0 !important;
           width: get-vw(20px, 1025) !important;
-        }
-        @include breakpoint($bp-min-1901-width) {
-          font-size: 37px;
-          margin: 0 12px 0 0;
-          width: 37px !important;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 37px;
+            margin: 0 12px 0 0 !important;
+            width: 37px !important;
+          }
         }
       }
     }
@@ -23,15 +23,15 @@
           padding: 20px 8px 10px 10px;
         }
         h2 {
-          width: 100%;
-          @include breakpoint($bp-768-width) {
-            padding: 0 20px;
-            display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+          width: 98%;
+          padding: 0 20px;
+          @include breakpoint($bp-1280-width) {
+            font-size: 12px;
           }
-          @include breakpoint($bp-480-width) {
+          @include breakpoint($bp-1024-width) {
+            font-size: 10px;
+          }
+          @include breakpoint($bp-768-width) {
             font-size: 12px;
             text-align: left;
             left: 10px;

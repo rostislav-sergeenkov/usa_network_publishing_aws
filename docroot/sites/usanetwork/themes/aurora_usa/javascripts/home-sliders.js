@@ -35,7 +35,7 @@
           // change logo color
           changeLogoColor(slide.find('.slide-content'));
 
-          $(slide).find('.slide-content').animate({'opacity': 1}, slideMove, nameAnimation, function () {
+          $(slide).find('.slide-content').fadeTo(slideMove, 1, function () {
             aspotBlock.addClass('load');
           });
         });
@@ -319,9 +319,7 @@
         changeLogoColor(activeSlideContent);
 
         // show current slide content
-        $(activeSlideContent).animate({
-          'opacity': 1
-        }, slideMove * 0.5, nameAnimation, function () {
+        $(activeSlideContent).fadeTo(slideMove * 0.5, 1, function () {
           // show next button
           showNextbutton();
         });

@@ -169,18 +169,11 @@ function usanetwork_tv_shows_color_theme() {
  * Implements hook_node_presave().
  */
 function usanetwork_tv_shows_color_node_presave($node) {
-  if (!isset($node->op) && $node->type == 'tv_show') {
-
-    $node_code = field_get_items('node', $node, 'field_pathauto_alias');
+  if (!isset($node->op) && ($node->type == 'tv_show' || $node->type == 'movie')) {
+    $node_code = usanetwork_tv_shows_color_get_node_code($node);
     $primary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color');
     $secondary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color_second');
     $tertiary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color_tertiary');
-    if (!$node_code) {
-      return;
-    }
-    else {
-      $node_code = reset($node_code);
-    }
     if ($primary_color_code) {
       $primary_color_code = reset($primary_color_code);
     }
@@ -193,7 +186,7 @@ function usanetwork_tv_shows_color_node_presave($node) {
     if (empty($primary_color_code) || empty($secondary_color_code) || empty($tertiary_color_code)) {
       if (empty($primary_color_code)) {
         $default_colors = usanetwork_tv_shows_color_default_codes();
-        $default_node_colors = isset($default_colors[$node_code['value']]) ? $default_colors[$node_code['value']] : FALSE;
+        $default_node_colors = isset($default_colors[$node_code]) ? $default_colors[$node_code] : FALSE;
       }
       if (empty($default_node_colors) && $primary_color_code) {
         $secondary_color_code = !$secondary_color_code ? $primary_color_code : $secondary_color_code;
@@ -227,6 +220,24 @@ function usanetwork_tv_shows_color_node_presave($node) {
         file_unmanaged_save_data($css, $tv_show_css, FILE_EXISTS_REPLACE);
       }
     }
+  }
+}
+
+function usanetwork_tv_shows_color_get_node_code($node) {
+  $node_code = NULL;
+  if ($node->type == 'tv_show') {
+    $node_code = field_get_items('node', $node, 'field_pathauto_alias');
+    if (!$node_code) {
+      return;
+    }
+    else {
+      $node_code = reset($node_code);
+    }
+    return $node_code['value'];
+  }
+  elseif ($node->type == 'movie') {
+    module_load_include('inc', 'pathauto', 'pathauto');
+    return pathauto_cleanstring($node->title);
   }
 }
 

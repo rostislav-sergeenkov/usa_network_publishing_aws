@@ -144,6 +144,9 @@ function usanetwork_tv_shows_color_add_css() {
   if (file_exists('public://tv_show_color/tv_show_color_schema.css')) {
     drupal_add_css('public://tv_show_color/tv_show_color_schema.css', array('type' => 'file', 'group' => CSS_THEME));
   }
+  if (file_exists('public://movie_color/movie_color_schema.css')) {
+    drupal_add_css('public://movie_color/movie_color_schema.css', array('type' => 'file', 'group' => CSS_THEME));
+  }
 }
 
 /**
@@ -161,6 +164,16 @@ function usanetwork_tv_shows_color_theme() {
       ),
       'path' => $module_path . '/theme',
       'template' => 'tv-show-color-css',
+    ),
+    'usanetwork_movie_color_css' => array(
+      'variables' => array(
+        'node_code' => NULL,
+        'primary_color_code' => NULL,
+        'secondary_color_code' => NULL,
+        'tertiary_color_code' => NULL,
+      ),
+      'path' => $module_path . '/theme',
+      'template' => 'movie-color-css',
     ),
   );
 }
@@ -201,23 +214,35 @@ function usanetwork_tv_shows_color_node_presave($node) {
         return;
       }
     }
-    $node_css = theme('usanetwork_tv_show_color_css', array(
-      'node_code' => $node_code['value'],
-      'primary_color_code' => $primary_color_code['rgb'],
-      'secondary_color_code' => $secondary_color_code['rgb'],
-      'tertiary_color_code' => $tertiary_color_code['rgb'],
-    ));
-    $tv_show_css_dir = 'public://tv_show_color/nodes';
-    $tv_show_css = 'public://tv_show_color/tv_show_color_schema.css';
-    if (file_prepare_directory($tv_show_css_dir, FILE_CREATE_DIRECTORY)) {
-      $saved = file_unmanaged_save_data($node_css, $tv_show_css_dir . '/' . $node_code['value'] . '_' . $node->nid . '.css', FILE_EXISTS_REPLACE);
+    if ($node->type == 'tv_show') {
+      $node_css = theme('usanetwork_tv_show_color_css', array(
+        'node_code' => $node_code,
+        'primary_color_code' => $primary_color_code['rgb'],
+        'secondary_color_code' => $secondary_color_code['rgb'],
+        'tertiary_color_code' => $tertiary_color_code['rgb'],
+      ));
+      $css_dir = 'public://tv_show_color/nodes';
+      $css_file = 'public://tv_show_color/tv_show_color_schema.css';
+    }
+    elseif ($node->type == 'movie') {
+      $node_css = theme('usanetwork_movie_color_css', array(
+        'node_code' => $node_code,
+        'primary_color_code' => $primary_color_code['rgb'],
+        'secondary_color_code' => $secondary_color_code['rgb'],
+        'tertiary_color_code' => $tertiary_color_code['rgb'],
+      ));
+      $css_dir = 'public://movie_color/nodes';
+      $css_file = 'public://movie_color/movie_color_schema.css';
+    }
+    if (file_prepare_directory($css_dir, FILE_CREATE_DIRECTORY)) {
+      $saved = file_unmanaged_save_data($node_css, $css_dir . '/' . $node_code . '_' . $node->nid . '.css', FILE_EXISTS_REPLACE);
       if ($saved) {
-        $files = file_scan_directory($tv_show_css_dir, '/\.css/');
+        $files = file_scan_directory($css_dir, '/\.css/');
         $css = '';
         foreach ($files as $file) {
           $css .= file_get_contents($file->uri);
         }
-        file_unmanaged_save_data($css, $tv_show_css, FILE_EXISTS_REPLACE);
+        file_unmanaged_save_data($css, $css_file, FILE_EXISTS_REPLACE);
       }
     }
   }

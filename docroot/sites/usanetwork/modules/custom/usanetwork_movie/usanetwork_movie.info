@@ -29,6 +29,7 @@ dependencies[] = text
 dependencies[] = usanetwork
 dependencies[] = usanetwork_dynamic_entity_reference
 dependencies[] = usanetwork_full_bleed_promo
+dependencies[] = usanetwork_menu
 dependencies[] = usanetwork_mps
 dependencies[] = usanetwork_nitro
 dependencies[] = usanetwork_opengraph

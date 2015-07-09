@@ -1373,7 +1373,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
         ? $file_wrapper->field_mpx_description->value()
         : '');
     $theme_variables = array(
-      'sharebar' => usanetwork_menu_render_sharebar($file, 'file', t('Share this post'), $file_wrapper->name->value(), $description),
+      'sharebar' => usanetwork_menu_render_sharebar($file, 'file', t('Share this video'), $file_wrapper->name->value(), $description),
       'authbar' => !empty($authbar) ? ($authbar) : '',
       'main_url' => url('<front>'),
       'show_url' => !empty($file->field_show)
@@ -1825,7 +1825,6 @@ function usanetwork_menu_form_usanetwork_settings_form_submit(&$form, &$form_sta
 function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, $description, $image_uri = '') {
 
   if (isset($entity->field_gigya_share_bar)) {
-    $sharebar['#title'] = $label;
     $share_settings = array(
       'title' => strip_tags($title),
       'description' => strip_tags($description),
@@ -1835,6 +1834,7 @@ function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, 
       $share_settings['imageBhev'] = 'url';
     }
     $sharebar = field_view_field($entity_type, $entity, 'field_gigya_share_bar', array('share_settings' => $share_settings));
+    $sharebar['#title'] = $label;
     return !empty($sharebar) ? render($sharebar) : '';
   }
   return '';

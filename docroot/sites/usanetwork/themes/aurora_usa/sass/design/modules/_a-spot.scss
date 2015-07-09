@@ -3,84 +3,104 @@
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
-  height: 0;
-// max-height: 43.75vw;
-  padding-bottom: 43.7%; /* ~16:7 */
+  min-height: 43vw;
+  max-height: 43.75vw;
+  //  padding-bottom: 43.7%; /* ~16:7 */
   position: relative;
+  will-change: transform, opacity;
+
   @include breakpoint($bp-min-2500-width) {
-//    max-height: 1094px;
-    padding-bottom: 1094px;
+    min-height: 1090px;
+    max-height: 1094px;
+    // padding-bottom: 1094px;
   }
   @include breakpoint($bp-640-width) {
-    padding-bottom: 87.45%;
-//    max-height: 90.625vw;
-
+    // padding-bottom: 87.45%;
+    min-height: 90vw;
+    max-height: 90.625vw;
+  }
+  &.load {
+    background-image: none;
+    min-height: inherit;
+    .slide-content {
+      @include breakpoint($bp-640-width) {
+        opacity: 1;
+      }
+    }
   }
 
   .next-button {
-    -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
-    -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
-    -o-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
-    box-shadow: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
-    background: #000000;
-    cursor: pointer;
-    height: 100%;
-    position: absolute;
-    right: -10%;
-    top: 0;
-    width: 10%;
-    z-index: 2;
-    @include breakpoint($bp-640-width) {
-      display: none !important;
-    }
-    .next-button-wrapper {
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position-y: 0;
-      background-position-x: 0;
-      opacity: 0.5;
-      -moz-opacity: 0.5;
+    will-change: transform, opacity;
+    &.ready {
+      -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+      -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+      -o-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+      box-shadow: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
+      background: #000000;
+      cursor: pointer;
       height: 100%;
-      width: 100%;
-      &:hover {
-        opacity: 1;
+      position: absolute;
+      right: -10%;
+      top: 0;
+      width: 10%;
+      z-index: 2;
+      @include breakpoint($bp-640-width) {
+        display: none !important;
       }
-      &:after {
-        color: #ffffff;
-        content: "\e608";
-        display: block;
-        font-family: $ico-font;
-        font-size: 28px;
-        position: absolute;
-        margin-right: -14px;
-        margin-top: -14px;
-        right: 50%;
-        top: 50%;
+      .next-button-wrapper {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-y: 0;
+        background-position-x: 0;
+        opacity: 0.5;
+        -moz-opacity: 0.5;
+        height: 100%;
+        width: 100%;
+        &:hover {
+          opacity: 1;
+        }
+        &:after {
+          color: #ffffff;
+          content: "\e608";
+          display: block;
+          font-family: $ico-font;
+          font-size: 28px;
+          position: absolute;
+          margin-right: -14px;
+          margin-top: -14px;
+          right: 50%;
+          top: 50%;
+        }
       }
     }
   }
   .asset-img-link {
     display: block;
+    line-height: 0;
   }
   .asset-img {
     img {
       width: 100%;
     }
   }
-//  .slider {
-//    overflow: hidden;
-//    width: 1000%;
-//  }
-//  .slide {
-//    float: left;
-//    position: relative;
-//    width: 100vw;
-//    .wrp {
-//      background: #000000;
+  .slide {
+    position: relative;
+    width: 100vw;
+    z-index: 0;
+    &.slick-active {
+      z-index: 1;
+    }
+    .wrp {
+      background: #000000;
 //      overflow: hidden;
-//    }
-//  }
+    }
+    .slide-content {
+      overflow: hidden;
+      opacity: 0;
+    }
+  }
 }
+
 .usanetwork-aspot {
 
   .aspot-draggable-element {
@@ -237,8 +257,8 @@
       &:before {
         border: solid 0.9375vw;
         border-color: inherit;
-        border-right-color: transparent!important;
-        border-bottom-color: transparent!important;
+        border-right-color: transparent !important;
+        border-bottom-color: transparent !important;
         content: "";
         display: block;
         height: 0;
@@ -377,6 +397,7 @@
     }
   }
 }
+
 .aspot-and-episodes {
   @include clear();
   overflow: hidden;
@@ -454,7 +475,7 @@
       position: relative;
       width: 100%;
     }
-    @include breakpoint ($bp-min-769-width) {
+    @include breakpoint($bp-min-769-width) {
       &.shadow:after {
         content: '';
         display: block;
@@ -462,12 +483,12 @@
         height: 9.1vw;
         position: absolute;
         bottom: 0;
-        background: -moz-linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135,135,135,0)), color-stop(100%, rgba(0,0,0,1)));
-        background: -webkit-linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
-        background: -o-linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
-        background: -ms-linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
-        background: linear-gradient(to bottom, rgba(135,135,135,0) 0%,rgba(0,0,0,1) 100%);
+        background: -moz-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135, 135, 135, 0)), color-stop(100%, rgba(0, 0, 0, 1)));
+        background: -webkit-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        background: -o-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        background: -ms-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        background: linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
         z-index: 1;
       }
@@ -568,7 +589,7 @@
           top: 0px;
           height: 100%;
           z-index: 9;
-          background: rgba(255,255,255,0.6);
+          background: rgba(255, 255, 255, 0.6);
           &.jcarousel-control-prev {
             left: 0;
             width: 60px;
@@ -664,7 +685,7 @@
         @include breakpoint($bp-480-width) {
           line-height: 80px;
         }
-        &.close{
+        &.close {
           .more-text {
             display: none;
           }
@@ -672,7 +693,7 @@
             display: block;
           }
         }
-        &.more{
+        &.more {
           .more-text {
             display: block;
           }

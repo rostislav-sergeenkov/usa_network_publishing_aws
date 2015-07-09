@@ -3226,7 +3226,7 @@ function _usanetwork_tv_shows_mb_block() {
       if (preg_match("/^(.+)\[node:(\d+)\]$/", $featured_show_id, $matches)) {
         $featured_show = node_load($matches[2]);
       }
-      if (!empty($featured_show) && $featured_show->type = 'tv_show') {
+      if (!empty($featured_show) && $featured_show->type == 'tv_show') {
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
         $cover_media = usanetwork_core_api_get_content_image('node', $featured_show);

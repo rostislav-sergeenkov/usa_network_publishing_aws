@@ -3,50 +3,67 @@
     attach: function (context, settings) {
 
       // vars
-      var aspotSlider = null,
-          slidesSettings = [],
+      var slidesSettings = [],
           dataShiftPercent,
           dataImgSrc,
-          nextSlideIndex,
+          timeAnimateShow,
+          nextSlide,
           nextSlideContent,
+          nextSlideImg,
           activeSlide,
           activeSlideContent,
           timer_id,
-          timer_id_animate,
       // elements
           stickyMenu = $('.region-header'),
           aspotBlock = $('.block-usanetwork-aspot'),
           nextButton = $('.block-usanetwork-aspot .next-button'),
           nextButtonWrapper = $('.block-usanetwork-aspot .next-button-wrapper'),
-          slider = $('.block-usanetwork-aspot .swiper-container'),
-          slide = $('.block-usanetwork-aspot .swiper-slide'),
+          slider = $('.block-usanetwork-aspot .slider-container'),
+          slide = $('.block-usanetwork-aspot .slide'),
       // settings
           sliderAutoplay,
           sliderSpeed = 6000, // default value
-          startAuto,
-          slideMove = sliderSpeed * 0.1; // default value
+          startAuto = true,
+          slideMove = sliderSpeed * 0.1, // default value
+          slideMoveSpeed = 700,
+      // name animation
+          nameAnimation = 'linear'; // defoult animation
+
+      // check count slides before init
+      if (slide.length === 1) {
+        $(window).load(function () {
+          // change logo color
+          changeLogoColor(slide.find('.slide-content'));
+
+          $(slide).find('.slide-content').fadeTo(slideMove, 1, function () {
+            aspotBlock.addClass('load');
+          });
+        });
+
+        // stop init
+        return false;
+      }
 
       // check settings value
       if (settings.sliderAspot) {
-        sliderAutoplay = Number(settings.sliderAspot.slideshowAutoplay);
-        sliderSpeed = Number(settings.sliderAspot.slideshowSpeed);
+        sliderAutoplay = Math.abs(settings.sliderAspot.slideshowAutoplay);
+        sliderSpeed = Math.abs(settings.sliderAspot.slideshowSpeed);
 
-        // check sliderSpeed
         if (sliderSpeed <= 0 || sliderSpeed < 6000) {
           sliderSpeed = 6000;
         }
-        // check autoplay params
+
         if (sliderAutoplay === 1) {
-          startAuto = sliderSpeed;
+          startAuto = true;
         } else if (sliderAutoplay === 0) {
-          startAuto = 0;
+          startAuto = false;
         }
 
-        slideMove = sliderSpeed * 0.1;
+        slideMove = timeAnimateShow = sliderSpeed * 0.1;
       }
 
       // make slides settings
-      $(slide).each(function (index, item) {
+      slide.each(function (index, item) {
 
         dataShiftPercent = Math.abs($(item).find('.offset-data').data('shift-percent'));
         dataImgSrc = $(item).find('.offset-data').data('img-src');
@@ -62,119 +79,157 @@
         })
       });
 
-      //==============
-      // init slider
-      //==============
       $(document.body).once(function () {
 
-        if (slide.length === 1) {
-          changeLogoColor(slide.find('.slide-content'));
-          return false;
-        }
-        // init
-        aspotSlider = new Swiper('.swiper-container', {
+        // Start init slider
+        // On init slide change
+        slider
+            .on('init', function (event, slick) {
 
-          //settings
-          autoplay: startAuto,
-          effect: 'slide',
-          loop: true,
-          slidesPerView: 1,
-          speed: 1000,
+              // start next button
+              nextButton.addClass('ready');
 
-          // controls
-          nextButton: '.block-usanetwork-aspot .next-button',
+              // show content
+              slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('opacity', 1);
 
-          // callbacks
-          // change slide events
-          // 1
-          onTransitionStart: function (swiper) {
-            if (window.innerWidth < window_size_mobile_641) {
-              return false;
-            }
-            hideFocusSlide();
-          },
-          // 2
-          //onSlideChangeStart: function (swiper) {},
-          // 3
-          //onTransitionEnd: function (swiper) {},
-          // 4
-          onSlideChangeEnd: function (swiper) {
-            if (window.innerWidth < window_size_mobile_641) {
               // change logo color
-              activeSlide = aspotBlock.find('.swiper-slide-active');
-              changeLogoColor(activeSlide.find('.slide-content'));
+              changeLogoColor(slide.find('.slide-content'));
+            })
 
-              return false;
-            }
-            showFocusSlide();
-          },
-          // on init
-          onInit: function (swiper) {
+          // init slider
+            .slick({
+              // slider settings
+              //adaptiveHeight: true,
+              autoplay: false,
+              autoplaySpeed: sliderSpeed,
+              centerPadding: '0',
+              cssEase: '',
+              easing: nameAnimation,
+              infinite: true,
+              lazyLoad: 'ondemand',
+              //lazyLoad: 'progressive',
+              pauseOnHover: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              speed: slideMoveSpeed,
+              useCSS: false,
 
-            clearTimeout(timer_id);
+              // controls
+              nextArrow: nextButton,
+              prevArrow: ''
+            })
 
-            timer_id = setTimeout(function () {
-              // check sticky menu
-              svitchSlider();
-            }, 600); // dependence from stickyHeader: timeout = 500
+          // On before slide change
+            .on('afterChange', function (event, slick, currentSlide) {
 
-            // change logo color
-            activeSlide = aspotBlock.find('.swiper-slide-active');
-            changeLogoColor(activeSlide.find('.slide-content'));
+              if (window.innerWidth < window_size_mobile_641) {
+                return false;
+              }
 
-            // change background on next-button
-            nextSlideIndex = aspotBlock.find('.swiper-slide-next').data('swiper-slide-index');
-            changeBgNextButton(nextSlideIndex);
+              var nextSlideIndex = currentSlide + 1;
 
-            // check if autostart = 0
-            if (startAuto === 0) {
-              clearTimeout(timer_id_animate);
+              // check next slide index
+              if (nextSlideIndex > (slick.$slides.length - 1)) {
+                nextSlideIndex = 0;
+              }
 
-              timer_id_animate = setTimeout(function () {
-                showFocusSlide();
-              }, slideMove * 0.5)
-            }
+              //
+              if (stickyMenu.hasClass('sticky-shows-submenu')) {
+                slider.slick('slickPause');
+              } else {
+                slider.slick('slickPlay');
+              }
 
-            // remove loader
-            aspotBlock.css({
-              'background-image': 'none'
+              // show slide content
+              showElements(currentSlide, nextSlideIndex);
+            })
+
+          // On before slide change
+            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+
+              if (window.innerWidth < window_size_mobile_641) {
+                return false;
+              }
+
+              // hide slide content
+              hideElements(currentSlide, nextSlide);
             });
+        // end init slider
+
+        //start autoplay
+        $(window).load(function () {
+
+          var currentSlide = slider.slick('slickCurrentSlide'),
+              nextSlide = slider.slick('slickCurrentSlide') + 1;
+
+          // remove loader
+          $(aspotBlock).addClass('load');
+
+          if (window.innerWidth >= window_size_mobile_641) {
+            //show slide content (currentSlide, nextSlide)
+            showElements(currentSlide, nextSlide);
           }
+
+          if (startAuto) {
+            slider.slick('slickPlay');
+          }
+
+          clearTimeout(timer_id);
+
+          timer_id = setTimeout(function () {
+            // check sticky menu
+            svitchSlider();
+          }, 600); // dependence from stickyHeader: timeout = 500
+
+          // fix autoplay when click next button
+          $(nextButton).on('click', function () {
+            if (!$(this).hasClass('disable')) {
+              slider.slick('slickPause');
+            }
+          });
         });
 
         // event on hover
         slider
             .mouseover(function () {
-              aspotSlider.stopAutoplay();
+              slider.slick('slickPause');
             })
             .mouseout(function () {
-              aspotSlider.startAutoplay();
+              if (stickyMenu.hasClass('sticky-shows-submenu')) {
+                slider.slick('slickPause');
+              } else {
+                slider.slick('slickPlay');
+              }
             });
 
         // shech sticky header for autoplay on scroll
         $(window).on('scroll', function (e) {
-          if (aspotSlider) {
+          if (slide.length > 1) {
             clearTimeout(timer_id);
             timer_id = setTimeout(svitchSlider, 200);
           }
         });
 
         $(window).on('resize', function (e) {
-          if ($('.slide', '.block-usanetwork-aspot').length > 1) {
-            aspotSlider.stopAuto();
+          if (slide.length > 1) {
+
+            // reset slide img margin-left
+            resetSlide();
+
+            slider.slick('slickPause');
+
             clearTimeout(timer_id);
 
             timer_id = setTimeout(function () {
-
               if (stickyMenu.hasClass('sticky-shows-submenu')) {
-                aspotSlider.stopAutoplay();
+                slider.slick('slickPause');
               } else {
-                aspotSlider.startAutoplay();
+                slider.slick('slickPlay');
               }
-            }, 1000);
+
+            }, 500);
           }
         });
-
 
       });
 
@@ -195,34 +250,18 @@
         }
       }
 
-      // change background on next-button
-      function changeBgNextButton(index) {
-
-        var imgUrl, shiftBg;
-
-        if (slidesSettings[index]) {
-          imgUrl = slidesSettings[index].src;
-          shiftBg = slidesSettings[index].shiftPercent;
-        }
-
-        $(nextButtonWrapper).css({
-          'background-image': 'url(' + imgUrl + ')',
-          'background-position-x': shiftBg + '%'
-        })
-      }
-
       // check sticky menu
       function svitchSlider() {
         if (stickyMenu.hasClass('sticky-shows-submenu')) {
           if (!slider.hasClass('isStopped')) {
-            aspotSlider.stopAutoplay();
+            slider.slick('slickPause');
             slider.addClass('isStopped')
           } else {
             return false;
           }
         } else {
           if (slider.hasClass('isStopped')) {
-            aspotSlider.startAutoplay();
+            slider.slick('slickPlay');
             slider.removeClass('isStopped')
           } else {
             return false;
@@ -230,59 +269,79 @@
         }
       }
 
-      // show focus slide content
-      function showFocusSlide() {
-        activeSlide = aspotBlock.find('.swiper-slide-active');
-        activeSlideContent = activeSlide.find('.slide-content');
-
-        clearTimeout(timer_id_animate);
-
-        timer_id_animate = setTimeout(function () {
-          changeLogoColor(activeSlideContent);
-          $(activeSlideContent).animate({
-            'opacity': 1
-          }, slideMove * 0.5, showNextbutton);
-        }, slideMove * 0.5);
+      // reset all slides img
+      function resetSlide() {
+        slide.find('.asset-img img').css('margin-left', 0);
       }
 
-      // hide focus slide content
-      function hideFocusSlide() {
-        nextSlideContent = aspotBlock.find('.swiper-slide-next .slide-content');
+      // change background on next-button
+      function setNextSlide(nextIndex) {
 
-        if (nextSlideContent.length === 0) {
-          nextSlideContent = slide.eq(1).find('.slide-content');
+        var imgUrl, shiftBg;
+
+        if (slidesSettings[nextIndex]) {
+          imgUrl = slidesSettings[nextIndex].src;
+          shiftBg = slidesSettings[nextIndex].shiftPercent;
         }
 
-        $(nextSlideContent).css({
-          'opacity': 0
+        $(nextButtonWrapper).css({
+          'background-image': 'url(' + imgUrl + ')',
+          'background-position-x': shiftBg + '%'
         });
 
-        hideNextbutton();
+        slide.eq(nextIndex).find('.asset-img img').css('margin-left', - shiftBg + '%');
       }
 
       // show next button
       function showNextbutton() {
-        nextSlideIndex = aspotBlock.find('.swiper-slide-next').data('swiper-slide-index');
-
-        if (nextSlideIndex === undefined) {
-          nextSlideIndex = 1;
-        }
-
-        // change background on next-button
-        changeBgNextButton(nextSlideIndex);
         $(nextButton).animate({
-          opasity: 'show',
-          right: 0
-        }, slideMove);
+          'right': '+=10%'
+        }, timeAnimateShow, nameAnimation, function () {
+          $(this).removeClass('disable');
+        });
       }
 
-      // hide next button
-      function hideNextbutton() {
-        $(nextButton).fadeOut(slideMove * 0.5, function () {
-          $(this).css({
-            opasity: 0,
-            right: '-10%'
-          })
+      // show slide content
+      function showElements(currentIndex, nextIndex) {
+
+        activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
+        activeSlide = slide.eq(currentIndex);
+        nextSlide = slide.eq(nextIndex);
+
+        // set z-index for active & next slides
+        activeSlide.css('z-index', 1);
+        nextSlide.css('z-index', 0);
+
+        // change background on next-button
+        setNextSlide(nextIndex);
+
+        // change logo color
+        changeLogoColor(activeSlideContent);
+
+        // show current slide content
+        $(activeSlideContent).fadeTo(slideMove * 0.5, 1, function () {
+          // show next button
+          showNextbutton();
+        });
+      }
+
+      // hide slide content
+      function hideElements(currentIndex, nextIndex) {
+        nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
+        nextSlideContent = slide.eq(nextIndex).find('.slide-content');
+
+        $(nextSlideContent).css('opacity', 0);
+
+        $(nextSlideImg).animate({
+          'margin-left': '0'
+        }, slideMoveSpeed, nameAnimation);
+
+        // hide next button
+        $(nextButton).fadeOut(200, function () {
+          $(this).addClass('disable').css({
+            display: 'block',
+            'right': '-10%'
+          });
         });
       }
     }

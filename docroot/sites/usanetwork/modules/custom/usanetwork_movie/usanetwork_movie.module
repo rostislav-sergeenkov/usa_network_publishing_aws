@@ -14,7 +14,7 @@ define('USANETWORK_MOVIE_LANDING_MOVIES_NUMBER', 4);
 function usanetwork_movie_menu() {
   $items = array();
 
-  $items['all-movies'] = array(
+  $items['movies'] = array(
     'title' => t('Movies'),
     'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
@@ -54,6 +54,11 @@ function usanetwork_movie_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_movie_schedule'] = array(
+    'info' => t('Movies: Schedule'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   $blocks['usanetwork_movie_submenu'] = array(
     'info' => t('Movie: submenu block'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -67,6 +72,14 @@ function usanetwork_movie_block_info() {
  */
 function usanetwork_movie_theme($existing, $type, $theme, $path) {
   return array(
+    'usanetwork_movie_movies_landing' => array(
+      'variables' => array(
+        'advert_block' => NULL,
+        'about_image' => NULL,
+        'about_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-movie-movies-landing',
+    ),
     'usanetwork_movie_movies_landing_block' => array(
       'variables' => array(
         'advert_block' => NULL,
@@ -97,6 +110,12 @@ function usanetwork_movie_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-movie-submenu',
     ),
+    'usanetwork_movies_schedule' => array(
+      'variables' => array(
+        'schedule' => array(),
+      ),
+      'template' => 'templates/usanetwork-movies-schedule',
+    ),
   );
 }
 
@@ -118,6 +137,10 @@ function usanetwork_movie_block_view($delta = '') {
     case 'usanetwork_movie_submenu':
       $block['subject'] = '';
       $block['content'] = usanetwork_movie_submenu();
+      break;
+    case 'usanetwork_movie_schedule':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_movie_all_movies_schedule();
       break;
   }
 
@@ -259,7 +282,7 @@ function _usanetwork_movie_all_movies_block() {
   $shows = _usanetwork_movie_all_shows_get_movies($params['sort_order']);
   $shows_block = _usanetwork_movies_all_movies_render_block($shows);
   $video_sorter_title = $sorters[$params['sort_order']]['title'];
-  $result = theme('usanetwork_tv_shows_shows_landing', array(
+  $result = theme('usanetwork_movie_movies_landing', array(
     'block_title' => t('All Movies'),
     'show_sorters' => $sorters,
     'show_sorter_title' => $video_sorter_title,
@@ -378,7 +401,7 @@ function _usanetwork_movies_mb_block() {
       if (preg_match("/^(.+)\[node:(\d+)\]$/", $featured_movie_id, $matches)) {
         $featured_movie = node_load($matches[2]);
       }
-      if (!empty($featured_movie) && $featured_movie->type = 'tv_show') {
+      if (!empty($featured_movie) && $featured_movie->type == 'movie') {
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
         $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
@@ -421,10 +444,10 @@ function _usanetwork_movies_mb_block() {
 }
 
 /**
- *  Return shows landing page control form.
+ *  Return moviw landing page control form.
  */
 function usanetwork_movie_movies_landing_main_form($form, &$form_state) {
-  $header_shows = variable_get('movies_landing_movies', array());
+  $header_movies = variable_get('movies_landing_movies', array());
 
   $form['header_movies'] = array(
     '#type' => 'fieldset',
@@ -434,11 +457,11 @@ function usanetwork_movie_movies_landing_main_form($form, &$form_state) {
   );
 
   for ($i = 0; $i < USANETWORK_MOVIE_LANDING_MOVIES_NUMBER; $i++) {
-    $form['header_shows']['usa_movie_' . $i] = array(
+    $form['header_movies']['usa_movie_' . $i] = array(
       '#type' => 'textfield',
       '#required' => FALSE,
-      '#default_value' => !empty($header_shows[$i])
-          ? $header_shows[$i]
+      '#default_value' => !empty($header_movies[$i])
+          ? $header_movies[$i]
           : '',
       '#autocomplete_path' => 'usanetwork_menu/movies/autocomplete',
     );
@@ -451,25 +474,25 @@ function usanetwork_movie_movies_landing_main_form($form, &$form_state) {
 }
 
 /**
- *  Return shows landing page control form.
+ *  Return movie landing page control form.
  */
 function usanetwork_movie_movies_landing_main_form_submit($form, &$form_state) {
-  $header_shows = array();
+  $header_movies = array();
   for ($i = 0; $i < USANETWORK_MOVIE_LANDING_MOVIES_NUMBER; $i++) {
-    $header_shows[$i] = !empty($form_state['values']['usa_movie_' . $i]) ? $form_state['values']['usa_movie_' . $i] : '';
+    $header_movies[$i] = !empty($form_state['values']['usa_movie_' . $i]) ? $form_state['values']['usa_movie_' . $i] : '';
   }
-  variable_set('movies_landing_movies', $header_shows);
+  variable_set('movies_landing_movies', $header_movies);
   drupal_set_message(t('All movies page has been successfully updated'));
 }
 
 /*
- * Show with full episodes autocomplete callback.
+ * Return with movies autocomplete callback.
  */
 function usanetwork_movie_movies_autocomplete($title) {
   $query = db_select('node', 'n');
   $query->fields('n',array('nid', 'title'));
   $query->condition('n.title', '%' . $title . '%', 'LIKE');
-  $query->condition('n.type', 'tv_show', '=');
+  $query->condition('n.type', 'movie', '=');
   $query->condition('n.status', NODE_PUBLISHED, '=');
   $query->range(0, 10);
   $result = $query->execute()->fetchAll();
@@ -483,4 +506,15 @@ function usanetwork_movie_movies_autocomplete($title) {
     }
   }
   drupal_json_output($output);
+}
+
+function _usanetwork_movie_all_movies_schedule() {
+  $movie = node_load_multiple(array(), array('title' => 'Movies'));
+  $movie = reset($movie);
+  $schedule = usanetwork_tv_schedule_schedule_page(array('show_nid' => $movie->nid), FALSE);
+  $theme_variables = array(
+    'block_title' => t('Movie Schedule'),
+    'schedule' => $schedule,
+  );
+  return theme('usanetwork_movies_schedule', $theme_variables);
 }

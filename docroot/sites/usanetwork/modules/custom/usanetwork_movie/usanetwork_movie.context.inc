@@ -19,7 +19,7 @@ function usanetwork_movie_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'all-movies' => 'all-movies',
+        'all-movies' => 'movies',
       ),
     ),
   );

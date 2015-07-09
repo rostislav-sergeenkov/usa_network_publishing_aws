@@ -49,8 +49,8 @@ function usanetwork_movie_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
-  $blocks['usanetwork_movie_all_shows'] = array(
-    'info' => t('Movies: All shows'),
+  $blocks['usanetwork_movie_all_movies'] = array(
+    'info' => t('Movies: All movies'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -88,13 +88,13 @@ function usanetwork_movie_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-movie-movies-landing-block',
     ),
-    'usanetwork_movies_shows_landing_item' => array(
+    'usanetwork_movie_movies_landing_item' => array(
       'variables' => array(
         'advert_block' => NULL,
         'about_image' => NULL,
         'about_text' => NULL,
       ),
-      'template' => 'templates/usanetwork-movies-movies-landing-item',
+      'template' => 'templates/usanetwork-movie-movies-landing-item',
     ),
     'usanetwork_movies_all_movies_mb' => array(
       'variables' => array(
@@ -130,7 +130,7 @@ function usanetwork_movie_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = _usanetwork_movies_mb_block();
       break;
-    case 'usanetwork_movie_all_shows':
+    case 'usanetwork_movie_all_movies':
       $block['subject'] = '';
       $block['content'] = _usanetwork_movie_all_movies_block();
       break;
@@ -278,15 +278,15 @@ function _usanetwork_movie_all_movies_block() {
   if (empty($params['sort_order']) || !in_array($params['sort_order'], array('ASC', 'DESC'))) {
     $params['sort_order'] = 'ASC';
   }
-  $sorters = _usanetwork_movie_all_shows_landing_page_sorters($params);
-  $shows = _usanetwork_movie_all_shows_get_movies($params['sort_order']);
-  $shows_block = _usanetwork_movies_all_movies_render_block($shows);
+  $sorters = _usanetwork_movie_all_movies_landing_page_sorters($params);
+  $movies = _usanetwork_movie_all_movies_get_movies($params['sort_order']);
+  $movies_block = _usanetwork_movies_all_movies_render_block($movies);
   $video_sorter_title = $sorters[$params['sort_order']]['title'];
   $result = theme('usanetwork_movie_movies_landing', array(
     'block_title' => t('All Movies'),
-    'show_sorters' => $sorters,
-    'show_sorter_title' => $video_sorter_title,
-    'shows_block' => $shows_block,
+    'movie_sorters' => $sorters,
+    'movie_sorter_title' => $video_sorter_title,
+    'movies_block' => $movies_block,
     'sorting_order' => $params['sort_order'],
   ));
   return $result;
@@ -297,13 +297,13 @@ function _usanetwork_movie_all_movies_block() {
  *
  * @return array
  */
-function _usanetwork_movie_all_shows_landing_page_sorters($params) {
+function _usanetwork_movie_all_movies_landing_page_sorters($params) {
 
   $data['ASC'] = array(
     'order' => 'ASC',
     'title' => t('Sort A - Z'),
     'active' => FALSE,
-    'url' => url('all-movies', array(
+    'url' => url('movies', array(
       'query' => array(
         'sort_order' => 'ASC',
       )
@@ -313,7 +313,7 @@ function _usanetwork_movie_all_shows_landing_page_sorters($params) {
     'order' => 'DESC',
     'title' => t('Sort Z - A'),
     'active' => FALSE,
-    'url' => url('all-movies', array(
+    'url' => url('movies', array(
       'query' => array(
         'sort_order' => 'DESC',
       )
@@ -328,7 +328,7 @@ function _usanetwork_movie_all_shows_landing_page_sorters($params) {
 }
 
 /**
- * Returns show nodes.
+ * Returns movie nodes.
  *
  * @param int $offset
  * @param int $limit
@@ -336,10 +336,10 @@ function _usanetwork_movie_all_shows_landing_page_sorters($params) {
  *
  * @return array
  */
-function _usanetwork_movie_all_shows_get_movies($sort = 'ASC') {
+function _usanetwork_movie_all_movies_get_movies($sort = 'ASC') {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'tv_show')
+    ->entityCondition('bundle', 'movie')
     ->propertyCondition('status', NODE_PUBLISHED)
     ->propertyOrderBy('title', $sort);
   $result = $query->execute();
@@ -352,7 +352,7 @@ function _usanetwork_movie_all_shows_get_movies($sort = 'ASC') {
 
 /**
  *
- * Returns block of N items for shows page.
+ * Returns block of N items for movies page.
  * @param $items
 
  */
@@ -360,7 +360,7 @@ function _usanetwork_movies_all_movies_render_block($items) {
 
   $theme_variables = array();
   foreach ($items as $item) {
-    $theme_variables['items'][] = _usanetwork_movies_all_shows_block_item($item);
+    $theme_variables['items'][] = _usanetwork_movies_all_movies_block_item($item);
   }
   return theme('usanetwork_movie_movies_landing_block', $theme_variables);
 }
@@ -372,25 +372,43 @@ function _usanetwork_movies_all_movies_render_block($items) {
  *
  * @return mixed|string
  */
-function _usanetwork_movies_all_shows_block_item($show) {
-
-  $image_url = usanetwork_core_api_get_content_image('node', $show);
-  $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $show, 'field_usa_tv_tune_in_date', 'value');
-  if (!empty($usa_tv_tune_in_date)) {
-    $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);
-  }
+function _usanetwork_movies_all_movies_block_item($movie) {
+  $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
+  $image_url = usanetwork_core_api_get_content_image('node', $movie);
   $theme_variables = array(
-    'target_url' => url('node/' . $show->nid),
-    'caption' => !empty($usa_tv_tune_in_date[0]) ? $usa_tv_tune_in_date[0] : '',
-    'title' => $show->title,
-    'additional' => !empty($usa_tv_tune_in_date[1]) ? $usa_tv_tune_in_date[1] : '',
+    'target_url' => url('node/' . $movie->nid),
+    'caption' => '',
+    'title' => $movie->title,
+    'additional' => $schedule_data,
     'image_desktop' => image_style_url('539x303', $image_url),
   );
-  return theme('usanetwork_movies_shows_landing_item', $theme_variables);
+  return theme('usanetwork_movie_movies_landing_item', $theme_variables);
 }
 
 /**
- * Renders content for shows landing main block.
+ * Helper function for getting schedule time for movie
+ */
+function usanetwork_movie_schedule_get_data($title) {
+  $query = db_select('usanetwork_schedule', 's');
+  $query->fields('s', array());
+  $query->condition('title', $title);
+  $query->condition('s.start_time', time(), '>=');
+  $query->orderBy('s.start_time', 'ASC');
+  $result = $query->execute()->fetchAssoc();
+  $date = '';
+  if (!empty($result)) {
+    $date .= date('l F j', $result['start_time']);
+    $dt = new DateTime(date('Y-m-d h:i:s A',  $result['start_time']), new DateTimeZone('America/New_York'));
+    $time_ny = $dt->format('g');
+    $dt->setTimezone(new DateTimeZone('America/Chicago'));
+    $time_central = $dt->format('g');
+    $date .= ' ' . $time_ny . '/' . $time_central . 'c';
+  }
+  return $date;
+}
+
+/**
+ * Renders content for movies landing main block.
  */
 function _usanetwork_movies_mb_block() {
   $featured_movies_id = variable_get('movies_landing_movies', array());
@@ -405,10 +423,7 @@ function _usanetwork_movies_mb_block() {
         $is_first = ($i == 0) ? TRUE : FALSE;
         $i++;
         $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
-        $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $featured_movie, 'field_usa_tv_tune_in_date', 'value');
-        if (!empty($usa_tv_tune_in_date)) {
-          $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);
-        }
+        $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
         $promos[] = array(
           'url' => url('node/' . $featured_movie->nid),
           'image' => array(
@@ -422,9 +437,9 @@ function _usanetwork_movies_mb_block() {
                 : NULL,
           ),
           'icon_type' => 'about-show-icon-default',
-          'caption' => !empty($usa_tv_tune_in_date[0]) ? $usa_tv_tune_in_date[0] : '',
+          'caption' => '',
           'title' => $featured_movie->title,
-          'description' => !empty($usa_tv_tune_in_date[1]) ? $usa_tv_tune_in_date[1] : '',
+          'description' => $show_time,
           'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
           'is_first' => $is_first,
         );

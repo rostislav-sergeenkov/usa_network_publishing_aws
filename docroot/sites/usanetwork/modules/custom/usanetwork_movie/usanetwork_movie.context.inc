@@ -19,7 +19,7 @@ function usanetwork_movie_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'all-movies' => 'all-movies',
+        'all-movies' => 'movies',
       ),
     ),
   );
@@ -38,9 +38,9 @@ function usanetwork_movie_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'usanetwork_movie-usanetwork_movie_all_shows' => array(
+        'usanetwork_movie-usanetwork_movie_all_movies' => array(
           'module' => 'usanetwork_movie',
-          'delta' => 'usanetwork_movie_all_shows',
+          'delta' => 'usanetwork_movie_all_movies',
           'region' => 'content',
           'weight' => '-9',
         ),

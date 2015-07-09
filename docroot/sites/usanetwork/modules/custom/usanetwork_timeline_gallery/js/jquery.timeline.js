@@ -223,6 +223,9 @@ Project demo: http://shindiristudio.com/timeline
             previewImage = $timelineActiveSharebar.attr('data-share-picture');
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
       }
+
+      // hide previous button
+      $('.timeline-left').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
     }, // end initializeTimeline
 
     get1stSceneLastSeason: function() {
@@ -869,7 +872,24 @@ Project demo: http://shindiristudio.com/timeline
                 activeTimelineItem = $timelineItems.find('.timeline-item[data-id="' + currentId + '"]');
             $timelineItems.find('.timeline-item').removeClass('active');
             activeTimelineItem.addClass('active');
+
+            // hide next / previous buttons if last or first scene
+            var firstScene = $timelineItems.find('.timeline-item:first').attr('data-id'),
+                lastScene = $timelineItems.find('.timeline-item:last').attr('data-id');
+            if (currentId == firstScene) {
+              $('.timeline-left').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
+            }
+            else if (currentId == lastScene) {
+              $('.timeline-right').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
+            }
+            if ($('.timeline-left').css('display') == 'none' && currentId != firstScene) {
+              $('.timeline-left').css({'display': 'block'}).animate({'opacity': 1}, 500);
+            }
+            if ($('.timeline-right').css('display') == 'none' && currentId != lastScene) {
+              $('.timeline-right').css({'display': 'block'}).animate({'opacity': 1}, 500);
+            }
           }
+
           return $this;
         }, // end goTo
 

@@ -16769,6 +16769,23 @@ footer h2 {
   }
 }
 @media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-node {
+    padding: 38px 0;
+  }
+}
+@media (max-width: 640px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-line .timeline-holder .timeline-node-desc {
+    padding: 4px;
+    font-size: 8px;
+  }
+}
+@media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-line .timeline-holder .timeline-node-desc {
+    padding: 4px 2px;
+    letter-spacing: -0.5px;
+  }
+}
+@media (max-width: 480px) {
   .node-type-timeline-gallery .timelineFlat #timeline-line-full-right {
     top: 40px;
   }

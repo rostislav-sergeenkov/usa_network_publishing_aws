@@ -92,6 +92,25 @@
         }
       }
     }
+    .timeline-node {
+      @include breakpoint($bp-480-width) {
+        padding: 38px 0;
+      }
+    }
+    .timeline-line {
+      .timeline-holder {
+        .timeline-node-desc {
+          @include breakpoint($bp-640-width) {
+            padding: 4px;
+            font-size: 8px;
+          }
+          @include breakpoint($bp-480-width) {
+            padding: 4px 2px;
+            letter-spacing: -0.5px;
+          }
+        }
+      }
+    }
     #timeline-line-full-right {
       @include breakpoint($bp-480-width) {
         top: 40px;
@@ -99,4 +118,3 @@
     }
   }
 }
-

@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="landing-page-container all-shows-landing-page-container">
+<div class="landing-page-container all-movies-landing-page-container">
   <h2 class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All Movies'); ?></span>
   </h2>
@@ -23,7 +23,7 @@
       <?php endif; ?>
     </div>
   </div>
-  <div class="landing-items-blocks all-shows-items-blocks show-border ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"
+  <div class="landing-items-blocks all-movies-items-blocks show-border ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"
   <?php if (!empty($items_per_page_limit)): print ' data-show-items-limit="' . $items_per_page_limit . '"'; endif; ?>
   <?php if (!empty($sorting_order)): print ' data-sorting-order="' . $sorting_order . '"'; endif; ?>>
     <?php if (!empty($shows_block)): ?>

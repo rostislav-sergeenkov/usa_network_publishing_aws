@@ -161,6 +161,12 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'media_items' => 'field_media_items',
       'og_image' => 'field_usa_og_image',
     ),
+    // Movie
+    'movie' => array(
+      'main' => 'field_movie_cover_media',
+      'cover' => 'field_movie_cover_media',
+      'og_image' => 'field_usa_og_image',
+    ),
     // Person
     'person' => array(
       'main' => 'field_person_cover_photo',

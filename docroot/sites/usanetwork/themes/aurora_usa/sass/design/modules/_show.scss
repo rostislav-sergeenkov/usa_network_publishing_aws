@@ -1267,6 +1267,7 @@
       line-height: 1.5;
       text-transform: uppercase;
       vertical-align: middle;
+      white-space: nowrap;
       @include breakpoint($bp-min-1901-width) {
         font-size: 18px;
       }
@@ -1278,6 +1279,7 @@
         display: block;
         font-family: $tex-gyreschola-italic;
         letter-spacing: 2px;
+        white-space: nowrap;
       }
     }
   }

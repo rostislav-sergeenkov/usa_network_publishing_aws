@@ -773,12 +773,8 @@ function usanetwork_movie_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'colorfield',
-        'settings' => array(
-          'height' => 20,
-          'width' => 20,
-        ),
-        'type' => 'colorfield_color_swatch',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 17,
       ),
       'inline_content' => array(
@@ -833,12 +829,8 @@ function usanetwork_movie_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'colorfield',
-        'settings' => array(
-          'height' => 20,
-          'width' => 20,
-        ),
-        'type' => 'colorfield_color_swatch',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 18,
       ),
       'inline_content' => array(
@@ -893,12 +885,8 @@ function usanetwork_movie_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'colorfield',
-        'settings' => array(
-          'height' => 20,
-          'width' => 20,
-        ),
-        'type' => 'colorfield_color_swatch',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 19,
       ),
       'inline_content' => array(
@@ -953,9 +941,8 @@ function usanetwork_movie_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 20,
       ),
       'inline_content' => array(

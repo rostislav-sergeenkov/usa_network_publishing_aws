@@ -83,12 +83,9 @@ function usanetwork_movie_field_group_info() {
     'label' => 'Movie color',
     'weight' => '3',
     'children' => array(
-      0 => 'field_movie_color_primary',
-      1 => 'field_movie_color_secondary',
-      2 => 'field_movie_color_tertiary',
-      3 => 'field_usa_tv_show_color',
-      4 => 'field_usa_tv_show_color_second',
-      5 => 'field_usa_tv_show_color_tertiary',
+      0 => 'field_usa_tv_show_color',
+      1 => 'field_usa_tv_show_color_second',
+      2 => 'field_usa_tv_show_color_tertiary',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -118,8 +115,8 @@ function usanetwork_movie_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_movie_cover_media',
-      2 => 'title',
-      3 => 'field_summary',
+      2 => 'field_summary',
+      3 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -132,6 +129,33 @@ function usanetwork_movie_field_group_info() {
     ),
   );
   $export['group_required_information|node|movie|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_custom_tab|node|movie|form';
+  $field_group->group_name = 'group_usa_custom_tab';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'movie';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'USA Custom',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_usa_tv_tune_in_date',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-usa-custom-tab field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_usa_custom_tab|node|movie|form'] = $field_group;
 
   return $export;
 }

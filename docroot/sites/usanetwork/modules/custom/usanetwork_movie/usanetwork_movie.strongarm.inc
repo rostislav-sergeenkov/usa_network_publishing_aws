@@ -162,13 +162,22 @@ function usanetwork_movie_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'title' => array(
           'weight' => '2',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '5',
+        ),
+        'locations' => array(
+          'weight' => '9',
+        ),
+        'redirect' => array(
+          'weight' => '8',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '7',
         ),
       ),
       'display' => array(),

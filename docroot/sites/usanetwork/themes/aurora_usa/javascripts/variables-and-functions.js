@@ -14,19 +14,27 @@ var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;
 
 var USAN = USAN || {};
 
-var waitForFinalEvent = function () {
-  var timers = {};
 
+// waitForFinalEvent
+var waitForFinalEvent = (function () {
+  var timers = {};
   return function (callback, ms, uniqueId) {
-    if (!uniqueId) {
-      uniqueId = "Don't call this twice without a uniqueId";
-    }
-    if (timers[uniqueId]) {
-      clearTimeout (timers[uniqueId]);
-    }
+    if (!uniqueId) { uniqueId = "Don't call this twice without a uniqueId"; }
+    if (timers[uniqueId]) { clearTimeout (timers[uniqueId]); }
     timers[uniqueId] = setTimeout(callback, ms);
   };
-};
+})();
+
+//Example
+//jQuery(window).scroll(function() {
+//  waitForFinalEvent(function(){
+//    positionFooter();
+//  },100,"positioned footer");
+//
+//});
+
+// end
+
 
 function getInternetExplorerVersion()
 {

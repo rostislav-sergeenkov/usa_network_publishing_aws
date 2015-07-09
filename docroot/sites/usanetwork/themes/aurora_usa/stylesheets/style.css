@@ -25355,11 +25355,15 @@ yx-axis
   min-height: inherit;
 }
 @media (max-width: 640px) {
-  #block-usanetwork-aspot-usanetwork-aspot-carousel.load .slide-content {
-    opacity: 1;
+  #block-usanetwork-aspot-usanetwork-aspot-carousel.load .slide .slide-content {
+    display: block !important;
   }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
+  display: none;
+  position: absolute;
+  right: -10%;
+  top: 0;
   will-change: transform, opacity;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button.ready {
@@ -25369,10 +25373,9 @@ yx-axis
   box-shadow: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
   background: #000000;
   cursor: pointer;
+  display: block;
   height: 100%;
-  position: absolute;
   right: -10%;
-  top: 0;
   width: 10%;
   z-index: 2;
 }
@@ -25426,7 +25429,7 @@ yx-axis
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide .slide-content {
   overflow: hidden;
-  opacity: 0;
+  display: none;
 }
 
 .usanetwork-aspot .aspot-draggable-element {

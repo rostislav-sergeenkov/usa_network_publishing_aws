@@ -256,20 +256,26 @@ ul, li {
 	color: #56000A;
 }
 .timelineFlat #timeline-line-full-left .title {
+  display: inline-block;
   margin-right: 6px;
+  vertical-align: top;
 }
 .timelineFlat #timeline-line-full-right .title {
+  display: inline-block;
   margin-left: 6px;
+  vertical-align: top;
 }
 .timelineFlat #timeline-line-full-left .arrow,
 .timelineFlat #timeline-line-full-right .arrow {
+  display: inline-block;
   width: 26px;
   height: 20px;
+  vertical-align: top;
 }
 /* line REW arrow */
 .timelineFlat #timeline-line-full-left .arrow {
   background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowREW-maroon.svg') no-repeat 0 0 transparent;
-  padding-left: 20px;
+  /*padding-left: 20px;*/
 }
 .timelineFlat #timeline-line-full-left:hover .arrow {
   background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowREW-black.svg') no-repeat 0 0 transparent;
@@ -277,7 +283,7 @@ ul, li {
 /* line FFWD arrow */
 .timelineFlat #timeline-line-full-right .arrow {
   background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowFFW-maroon.svg') no-repeat 0 0 transparent;
-  padding-right: 20px;
+  /*padding-right: 20px;*/
 }
 .timelineFlat #timeline-line-full-right:hover .arrow {
   background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowFFW-black.svg') no-repeat 0 0 transparent;

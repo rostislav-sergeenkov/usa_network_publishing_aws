@@ -32,40 +32,6 @@
   }
 }
 
-.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay {
-  .title-wide,
-  .caption-wide {
-    display:block;
-    @include breakpoint($bp-video-player-section) {
-      display:none;
-    }
-    @include breakpoint($bp-video-mid-range4-width) {
-      display:none;
-    }
-    @include breakpoint($bp-video-high-range-width) {
-      display:none;
-    }
-    @include breakpoint($bp-video-very-large-width) {
-      display:block;
-    }
-  }
-  .title,
-  .caption {
-    display: none;
-    @include breakpoint($bp-video-player-section) {
-      display:block;
-    }
-    @include breakpoint($bp-video-mid-range4-width) {
-      display:block;
-    }
-    @include breakpoint($bp-video-high-range-width) {
-      display:block;
-    }
-    @include breakpoint($bp-video-very-large-width) {
-      display:none;
-    }
-  }
-}
 .node-usanetwork-promo .caption-overlay {
   .promo-cta {
     width: 44px;

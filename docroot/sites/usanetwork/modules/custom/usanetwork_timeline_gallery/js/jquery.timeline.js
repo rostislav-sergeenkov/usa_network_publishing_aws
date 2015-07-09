@@ -80,6 +80,8 @@ Project demo: http://shindiristudio.com/timeline
             imageSrc = previewImage,
             url = window.location.href;
 
+        if (caption == '') caption = $('.node-timeline-gallery .field-name-body .field-item').text();
+
         sharebar.gigyaSharebar = {
           containerID: shareBarId,
           iconsOnly: true,
@@ -202,17 +204,17 @@ Project demo: http://shindiristudio.com/timeline
       $('.node-timeline-gallery .timeline-line #timeline-line-full-left, .node-timeline-gallery .timeline-line #timeline-line-full-right').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           e.preventDefault();
-          // @TODO -- DV: THE FOLLOWING CODE WILL NEED TO BE UPDATED WHEN WE START ADDING MORE TIMELINES -- ESPECIALLY WITH MORE SEASONS
-          var currentId = ($(this).attr('id') == 'timeline-line-full-left') ? '01/01/01' : '01/01/02';
+          var currentId = ($(this).attr('id') == 'timeline-line-full-left') ? $('.timeline-item:first').attr('data-id') : Drupal.behaviors.timeline_gallery.get1stSceneLastSeason();
           Drupal.behaviors.timeline_gallery.setOmnitureData(currentId);
         });
       });
 
       // set timeline title and timeline share title
-      var title = $('#timeline-title').text();
-      if (title == '') title = $('.node-timeline-gallery .field-item p').text();
+      var title = $('#timeline-title').text(), // in microsites
+          shareTitle = $('.timelineFlat').attr('data-share-title');
+      if (title == '') title = $('body h1:first').text(); // in timeline gallery consumptionator page
       Drupal.behaviors.timeline_gallery.timelineTitle = title;
-      Drupal.behaviors.timeline_gallery.timelineShareTitle = $('.timelineFlat').attr('data-share-title');
+      Drupal.behaviors.timeline_gallery.timelineShareTitle = (shareTitle != '') ? shareTitle : title;
 
       // create Gigya share bar
       var $timelineActiveSharebar = $('.node-timeline-gallery .timeline-item.active .timeline-gigya-share');
@@ -222,6 +224,16 @@ Project demo: http://shindiristudio.com/timeline
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
       }
     }, // end initializeTimeline
+
+    get1stSceneLastSeason: function() {
+      var categoryKeys = Object.keys(categories),
+          lastSeason = categoryKeys[(categoryKeys.length - 1)],
+          lastSeasonEpisodes = categories[lastSeason],
+          lastSeasonFirstEpisode = Object.keys(lastSeasonEpisodes)[0],
+          lastSeasonText = (lastSeason < 10) ? '0' + lastSeason : lastSeason,
+          lastSeasonEpisodeText = (lastSeasonFirstEpisode < 10) ? '0' + lastSeasonFirstEpisode : lastSeasonFirstEpisode;
+      return '01/' + lastSeasonEpisodeText + '/' + lastSeasonText;
+    },
 
     attach: function (context, settings) {
 
@@ -637,7 +649,7 @@ Project demo: http://shindiristudio.com/timeline
                         $('.ajax-preloading-holder').remove();
                         $(this).attr('data-access', '');
 
-                        /* trigger */
+                        // trigger
                         var event = jQuery.Event( 'ajaxLoaded.timeline' );
                         event.element = $newThis.find('.timeline-item-open-content');
                         $( "body" ).trigger( event );
@@ -649,7 +661,7 @@ Project demo: http://shindiristudio.com/timeline
                       $('.ajax-preloading-holder').remove();
                       $(this).attr('data-access', '');
 
-                      /* trigger */
+                      // trigger
                       var event = jQuery.Event( 'ajaxLoaded.timeline' );
                       event.element = $newThis.find('.timeline-item-open-content');
                       $( "body" ).trigger( event );
@@ -660,7 +672,7 @@ Project demo: http://shindiristudio.com/timeline
                     $newThis.find('.timeline-item-open-content').html(data);
                     $('.ajax-preloading-holder').remove();
 
-                    /* trigger */
+                    // trigger
                     var event = jQuery.Event( 'ajaxLoaded.timeline' );
                     event.element = $newThis.find('.timeline-item-open-content');
                     $( "body" ).trigger( event );
@@ -797,7 +809,6 @@ Project demo: http://shindiristudio.com/timeline
             else {
               $this.find('.timeline-wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing );
             }
-
 
             if (data.open) {
               $this.timeline('close', data.open, id, data_count);
@@ -1091,14 +1102,14 @@ Project demo: http://shindiristudio.com/timeline
           // Bind goTo function to FFWD click event
           $(this).find('#timeline-line-full-right').on('click', function(e){
             $this.find('.timeline-node').removeClass('active');
-            $this.timeline('goTo', '01/01/02');
+            $this.timeline('goTo', Drupal.behaviors.timeline_gallery.get1stSceneLastSeason());
             $(this).find('.timeline-node:last').addClass('active');
           });
 
           // Gigya share buttons
           var $timelineGigyaShareButtons = $('.node-timeline-gallery .timeline-item .timeline-gigya-share .gig-button-container .gig-share-button div');
           $timelineGigyaShareButtons.on('click', function(){
-            Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this)); // shareType, title);
+            Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this));
           });
 
         } // end createElements

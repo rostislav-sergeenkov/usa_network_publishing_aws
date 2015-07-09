@@ -14,6 +14,7 @@ features[variable][] = pathauto_node_catchall_page_pattern
 features[variable][] = pathauto_node_media_gallery_pattern
 features[variable][] = pathauto_node_person_pattern
 features[variable][] = pathauto_node_post_pattern
+features[variable][] = pathauto_node_timeline_gallery_pattern
 features[variable][] = pathauto_node_tv_episode_pattern
 features[variable][] = pathauto_node_tv_season_pattern
 features[variable][] = pathauto_node_tv_show_pattern

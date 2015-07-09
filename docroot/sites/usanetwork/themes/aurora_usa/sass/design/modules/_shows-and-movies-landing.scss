@@ -5,7 +5,7 @@
   }
 }
 .content {
-  .all-shows-landing-page-container {
+  .all-shows-landing-page-container, .all-movies-landing-page-container {
     background: $footer-promo-links;
     padding-top: 77px;
     @include breakpoint($bp-1280-width) {

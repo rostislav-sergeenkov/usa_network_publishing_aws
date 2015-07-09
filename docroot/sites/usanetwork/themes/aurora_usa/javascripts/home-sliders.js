@@ -35,7 +35,7 @@
           // change logo color
           changeLogoColor(slide.find('.slide-content'));
 
-          $(slide).find('.slide-content').fadeTo(slideMove, 1, function () {
+          slide.find('.slide-content').fadeIn(slideMove, function () {
             aspotBlock.addClass('load');
           });
         });
@@ -49,7 +49,7 @@
         sliderAutoplay = Math.abs(settings.sliderAspot.slideshowAutoplay);
         sliderSpeed = Math.abs(settings.sliderAspot.slideshowSpeed);
 
-        if (sliderSpeed <= 0 || sliderSpeed < 6000) {
+        if (sliderSpeed <= 0 || sliderSpeed < 2000) {
           sliderSpeed = 6000;
         }
 
@@ -90,7 +90,7 @@
               nextButton.addClass('ready');
 
               // show content
-              slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('opacity', 1);
+              slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('display', 'block');
 
               // change logo color
               changeLogoColor(slide.find('.slide-content'));
@@ -122,6 +122,7 @@
           // On before slide change
             .on('afterChange', function (event, slick, currentSlide) {
 
+              // check on resolution
               if (window.innerWidth < window_size_mobile_641) {
                 return false;
               }
@@ -133,12 +134,8 @@
                 nextSlideIndex = 0;
               }
 
-              //
-              if (stickyMenu.hasClass('sticky-shows-submenu')) {
-                slider.slick('slickPause');
-              } else {
-                slider.slick('slickPlay');
-              }
+              // check sticky header & slider pause
+              svitchSlider();
 
               // show slide content
               showElements(currentSlide, nextSlideIndex);
@@ -153,6 +150,24 @@
 
               // hide slide content
               hideElements(currentSlide, nextSlide);
+            })
+
+          // On swipe
+            .on('swipe', function (event, slick, direction) {
+
+              if (window.innerWidth < window_size_mobile_641) {
+                return false;
+              }
+
+              // stop autoplay
+              slider.addClass('isStopped');
+              slider.slick('slickPause');
+
+              if (direction === 'right') {
+                resetSlide();
+              }
+              // hide next button
+              hideNextButton();
             });
         // end init slider
 
@@ -174,17 +189,17 @@
             slider.slick('slickPlay');
           }
 
-          clearTimeout(timer_id);
-
-          timer_id = setTimeout(function () {
+          waitForFinalEvent(function () {
             // check sticky menu
             svitchSlider();
-          }, 600); // dependence from stickyHeader: timeout = 500
+          }, 600, 'load page'); // dependence from stickyHeader: timeout = 500
+
 
           // fix autoplay when click next button
           $(nextButton).on('click', function () {
             if (!$(this).hasClass('disable')) {
-              slider.slick('slickPause');
+              // stop auto play
+              stopAutoplay();
             }
           });
         });
@@ -192,50 +207,71 @@
         // event on hover
         slider
             .mouseover(function () {
-              slider.slick('slickPause');
+              // stop auto play
+              stopAutoplay();
             })
             .mouseout(function () {
-              if (stickyMenu.hasClass('sticky-shows-submenu')) {
-                slider.slick('slickPause');
-              } else {
-                slider.slick('slickPlay');
-              }
+              // check sticky menu
+              svitchSlider();
             });
 
         // shech sticky header for autoplay on scroll
-        $(window).on('scroll', function (e) {
+        $(window).on('scroll', function () {
           if (slide.length > 1) {
-            clearTimeout(timer_id);
-            timer_id = setTimeout(svitchSlider, 200);
+            waitForFinalEvent(function () {
+              // check sticky menu
+              svitchSlider();
+            }, 200, 'scroll page');
           }
         });
 
-        $(window).on('resize', function (e) {
+        $(window).on('resize', function () {
+
           if (slide.length > 1) {
 
             // reset slide img margin-left
             resetSlide();
 
-            slider.slick('slickPause');
+            // stop auto play
+            stopAutoplay();
 
-            clearTimeout(timer_id);
+            waitForFinalEvent(function () {
 
-            timer_id = setTimeout(function () {
-              if (stickyMenu.hasClass('sticky-shows-submenu')) {
-                slider.slick('slickPause');
-              } else {
-                slider.slick('slickPlay');
-              }
+              ////check on resize next-button state
+              //if(nextButton.hasClass('disable')) {
+              //  if (window.innerWidth >= window_size_mobile_641) {
+              //    var currentSlide = slider.slick('slickCurrentSlide'),
+              //        nextSlide = slider.slick('slickCurrentSlide') + 1;
+              //
+              //    // check next slide index
+              //    if (nextSlide > (slide.length - 1)) {
+              //      nextSlide = 0;
+              //    }
+              //
+              //    //show slide content (currentSlide, nextSlide)
+              //    showElements(currentSlide, nextSlide);
+              //  }
+              //}
 
-            }, 500);
+              // check sticky menu
+              svitchSlider();
+
+            }, 500, 'aspot resize');
+
           }
         });
-
       });
 
       //=============
       // functions
       //=============
+
+      // stop auto play
+      function stopAutoplay() {
+        slider
+            .slick('slickPause')
+            .addClass('isStopped');
+      }
 
       // change logo color
       function changeLogoColor(element) {
@@ -319,9 +355,19 @@
         changeLogoColor(activeSlideContent);
 
         // show current slide content
-        $(activeSlideContent).fadeTo(slideMove * 0.5, 1, function () {
+        activeSlideContent.fadeIn(slideMove * 0.7, function () {
           // show next button
           showNextbutton();
+        });
+      }
+
+      // hide next button
+      function hideNextButton() {
+        nextButton.fadeOut(200, function () {
+          $(this).addClass('disable').css({
+            'display': 'block',
+            'right': '-10%'
+          });
         });
       }
 
@@ -330,19 +376,14 @@
         nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
         nextSlideContent = slide.eq(nextIndex).find('.slide-content');
 
-        $(nextSlideContent).css('opacity', 0);
+        $(nextSlideContent).css('display', 'none');
 
         $(nextSlideImg).animate({
           'margin-left': '0'
         }, slideMoveSpeed, nameAnimation);
 
         // hide next button
-        $(nextButton).fadeOut(200, function () {
-          $(this).addClass('disable').css({
-            display: 'block',
-            'right': '-10%'
-          });
-        });
+        hideNextButton();
       }
     }
   };

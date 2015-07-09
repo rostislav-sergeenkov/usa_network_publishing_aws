@@ -59,6 +59,11 @@ function usanetwork_movie_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_movie_submenu'] = array(
+    'info' => t('Movie: submenu block'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
   return $blocks;
 }
 
@@ -97,6 +102,14 @@ function usanetwork_movie_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-movies-all-movies-mb',
     ),
+    'usanetwork_movie_submenu' => array(
+      'variables' => array(
+        'show_title' => NULL,
+        'weekday' => NULL,
+        'time' => NULL,
+      ),
+      'template' => 'templates/usanetwork-movie-submenu',
+    ),
     'usanetwork_movies_schedule' => array(
       'variables' => array(
         'schedule' => array(),
@@ -105,6 +118,7 @@ function usanetwork_movie_theme($existing, $type, $theme, $path) {
     ),
   );
 }
+
 /**
  *  Implements hook_block_view().
  */
@@ -119,6 +133,10 @@ function usanetwork_movie_block_view($delta = '') {
     case 'usanetwork_movie_all_movies':
       $block['subject'] = '';
       $block['content'] = _usanetwork_movie_all_movies_block();
+      break;
+    case 'usanetwork_movie_submenu':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_movie_submenu();
       break;
     case 'usanetwork_movie_schedule':
       $block['subject'] = '';
@@ -170,6 +188,43 @@ function usanetwork_movie_form_movie_node_form_alter(&$form, &$form_state, $form
       }
     }
   }
+}
+
+function usanetwork_movie_submenu() {
+  $movie = menu_get_object();
+
+  if (!is_object($movie) || (!isset($movie->type) || $movie->type != 'movie')) {
+    return '';
+  }
+
+  $movie_title = $movie->title;
+
+  //@todo process tune in date can be in separate function. We have similar code in _usanetwork_tv_shows_submenu function.
+
+  $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $movie, 'field_usa_tv_tune_in_date', 'value');
+
+  if ($usa_tv_tune_in_date) {
+    if (strpos($usa_tv_tune_in_date, '<br>') === FALSE) {
+      $movie_time = $usa_tv_tune_in_date;
+    } else {
+      $movie_tunein = explode('<br>', $usa_tv_tune_in_date);
+      $movie_weekday = array_shift($movie_tunein);
+      $movie_time = implode(' ', $movie_tunein);
+    }
+  }
+
+  $movie_title = array(
+    '#type' => 'html_tag',
+    '#tag' => 'h1',
+    '#attributes' => array('class' => 'title'),
+    '#value' => l($movie_title, 'node/' . $movie->nid),
+  );
+  return theme('usanetwork_tv_shows_submenu', array(
+    'show_title' => theme('html_tag', array('element' => $movie_title)),
+    'weekday' => isset($movie_weekday) ? $movie_weekday : NULL,
+    'time' => isset($movie_time) ? $movie_time : NULL,
+  ));
+
 }
 
 /**

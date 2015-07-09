@@ -84,6 +84,11 @@ function aurora_usa_preprocess_html(&$vars) {
       $show_class = drupal_html_class('show-' . $show_title);
       $vars['classes_array'][] = $show_class;
     }
+    elseif ($entity->type == 'movie') {
+      $movie_title = usanetwork_tv_shows_color_get_node_code($entity);
+      $movie_class = drupal_html_class('movie-' . $movie_title);
+      $vars['classes_array'][] = $movie_class;
+    }
     else {
       $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
       if (!empty($show_id)) {

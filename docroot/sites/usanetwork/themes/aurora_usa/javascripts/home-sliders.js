@@ -33,7 +33,7 @@
       if (slide.length === 1) {
         $(window).load(function () {
           // change logo color
-          changeLogoColor(slide.find('.slide-content'));
+          changeLogoColor(slide.length - 1);
 
           slide.find('.slide-content').fadeIn(slideMove, function () {
             aspotBlock.addClass('load');
@@ -93,7 +93,7 @@
               slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('display', 'block');
 
               // change logo color
-              changeLogoColor(slide.find('.slide-content'));
+              changeLogoColor(slick.currentSlide);
             })
 
           // init slider
@@ -122,8 +122,10 @@
           // On before slide change
             .on('afterChange', function (event, slick, currentSlide) {
 
-              // check on resolution
+              // check on resolution &
               if (window.innerWidth < window_size_mobile_641) {
+                // change logo color
+                changeLogoColor(currentSlide);
                 return false;
               }
 
@@ -274,9 +276,9 @@
       }
 
       // change logo color
-      function changeLogoColor(element) {
+      function changeLogoColor(elementIndex) {
         var $logo = $('.home-logo'),
-            show = $(element).closest('.node').attr('data-show'),
+            show = slide.eq(elementIndex).not('.slick-cloned').find('.node').attr('data-show'),
             old_show = $logo.attr('data-show');
 
         if (old_show) {
@@ -352,7 +354,7 @@
         setNextSlide(nextIndex);
 
         // change logo color
-        changeLogoColor(activeSlideContent);
+        changeLogoColor(currentIndex);
 
         // show current slide content
         activeSlideContent.fadeIn(slideMove * 0.7, function () {

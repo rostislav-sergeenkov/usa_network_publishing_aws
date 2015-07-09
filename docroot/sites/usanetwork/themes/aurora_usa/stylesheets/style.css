@@ -16424,6 +16424,7 @@ footer h2 {
   line-height: 1.5;
   text-transform: uppercase;
   vertical-align: middle;
+  white-space: nowrap;
 }
 @media (min-width: 1901px) {
   .show-title-block .schedule .time {
@@ -16440,6 +16441,7 @@ footer h2 {
   display: block;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 2px;
+  white-space: nowrap;
 }
 .show-title-block .social-icons {
   float: right;

@@ -119,6 +119,7 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
   }
 
   switch ($entity->type) {
+    case 'timeline_gallery':
     case 'media_gallery': return 'gallery-icon-default';
     case 'mpx_video_1':
     case 'mpx_video_2': return 'full-video-icon-default';

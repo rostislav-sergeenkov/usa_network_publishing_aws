@@ -16770,7 +16770,7 @@ footer h2 {
 }
 @media (max-width: 480px) {
   .node-type-timeline-gallery .timelineFlat .timeline-node {
-    padding: 38px 0;
+    padding: 38px  14px;
   }
 }
 @media (max-width: 640px) {

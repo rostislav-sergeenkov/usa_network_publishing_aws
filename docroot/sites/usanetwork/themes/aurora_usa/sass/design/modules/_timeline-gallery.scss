@@ -94,7 +94,7 @@
     }
     .timeline-node {
       @include breakpoint($bp-480-width) {
-        padding: 38px 0;
+        padding: 38px  14px;
       }
     }
     .timeline-line {

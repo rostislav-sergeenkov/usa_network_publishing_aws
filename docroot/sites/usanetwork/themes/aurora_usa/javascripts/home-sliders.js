@@ -12,7 +12,6 @@
           nextSlideImg,
           activeSlide,
           activeSlideContent,
-          timer_id,
       // elements
           stickyMenu = $('.region-header'),
           aspotBlock = $('.block-usanetwork-aspot'),
@@ -25,15 +24,15 @@
           sliderSpeed = 6000, // default value
           startAuto = true,
           slideMove = sliderSpeed * 0.1, // default value
-          slideMoveSpeed = 700,
+          slideMoveSpeed = 800,
       // name animation
-          nameAnimation = 'linear'; // defoult animation
+          nameAnimation = 'linear'; // default animation
 
       // check count slides before init
       if (slide.length === 1) {
         $(window).load(function () {
           // change logo color
-          changeLogoColor(slide.find('.slide-content'));
+          changeLogoColor(slide.length - 1);
 
           slide.find('.slide-content').fadeIn(slideMove, function () {
             aspotBlock.addClass('load');
@@ -93,7 +92,7 @@
               slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('display', 'block');
 
               // change logo color
-              changeLogoColor(slide.find('.slide-content'));
+              changeLogoColor(slick.currentSlide);
             })
 
           // init slider
@@ -122,11 +121,6 @@
           // On before slide change
             .on('afterChange', function (event, slick, currentSlide) {
 
-              // check on resolution
-              if (window.innerWidth < window_size_mobile_641) {
-                return false;
-              }
-
               var nextSlideIndex = currentSlide + 1;
 
               // check next slide index
@@ -143,21 +137,12 @@
 
           // On before slide change
             .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-
-              if (window.innerWidth < window_size_mobile_641) {
-                return false;
-              }
-
               // hide slide content
               hideElements(currentSlide, nextSlide);
             })
 
           // On swipe
             .on('swipe', function (event, slick, direction) {
-
-              if (window.innerWidth < window_size_mobile_641) {
-                return false;
-              }
 
               // stop autoplay
               slider.addClass('isStopped');
@@ -166,6 +151,7 @@
               if (direction === 'right') {
                 resetSlide();
               }
+
               // hide next button
               hideNextButton();
             });
@@ -193,7 +179,6 @@
             // check sticky menu
             svitchSlider();
           }, 600, 'load page'); // dependence from stickyHeader: timeout = 500
-
 
           // fix autoplay when click next button
           $(nextButton).on('click', function () {
@@ -237,27 +222,10 @@
 
             waitForFinalEvent(function () {
 
-              ////check on resize next-button state
-              //if(nextButton.hasClass('disable')) {
-              //  if (window.innerWidth >= window_size_mobile_641) {
-              //    var currentSlide = slider.slick('slickCurrentSlide'),
-              //        nextSlide = slider.slick('slickCurrentSlide') + 1;
-              //
-              //    // check next slide index
-              //    if (nextSlide > (slide.length - 1)) {
-              //      nextSlide = 0;
-              //    }
-              //
-              //    //show slide content (currentSlide, nextSlide)
-              //    showElements(currentSlide, nextSlide);
-              //  }
-              //}
-
               // check sticky menu
               svitchSlider();
 
             }, 500, 'aspot resize');
-
           }
         });
       });
@@ -274,9 +242,9 @@
       }
 
       // change logo color
-      function changeLogoColor(element) {
+      function changeLogoColor(elementIndex) {
         var $logo = $('.home-logo'),
-            show = $(element).closest('.node').attr('data-show'),
+            show = slide.eq(elementIndex).not('.slick-cloned').find('.node').attr('data-show'),
             old_show = $logo.attr('data-show');
 
         if (old_show) {
@@ -340,47 +308,58 @@
       // show slide content
       function showElements(currentIndex, nextIndex) {
 
-        activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
-        activeSlide = slide.eq(currentIndex);
-        nextSlide = slide.eq(nextIndex);
-
-        // set z-index for active & next slides
-        activeSlide.css('z-index', 1);
-        nextSlide.css('z-index', 0);
-
-        // change background on next-button
-        setNextSlide(nextIndex);
-
         // change logo color
-        changeLogoColor(activeSlideContent);
+        changeLogoColor(currentIndex);
 
-        // show current slide content
-        activeSlideContent.fadeIn(slideMove * 0.7, function () {
-          // show next button
-          showNextbutton();
-        });
+        // for resolutions more 640 px
+        if (window.innerWidth >= window_size_mobile_641) {
+
+          activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
+          activeSlide = slide.eq(currentIndex);
+          nextSlide = slide.eq(nextIndex);
+
+          // set z-index for active & next slides
+          activeSlide.css('z-index', 1);
+          nextSlide.css('z-index', 0);
+
+          // change background on next-button
+          setNextSlide(nextIndex);
+
+          // show current slide content
+          activeSlideContent.fadeIn(slideMove * 0.7, function () {
+            // show next button
+            showNextbutton();
+          });
+        }
       }
 
       // hide next button
       function hideNextButton() {
-        nextButton.fadeOut(200, function () {
-          $(this).addClass('disable').css({
-            'display': 'block',
-            'right': '-10%'
+        if (!nextButton.hasClass('disable')) {
+          nextButton.fadeOut(200, function () {
+            $(this).addClass('disable').css({
+              'display': 'block',
+              'right': '-10%'
+            });
           });
-        });
+        }
       }
 
       // hide slide content
       function hideElements(currentIndex, nextIndex) {
-        nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
-        nextSlideContent = slide.eq(nextIndex).find('.slide-content');
 
-        $(nextSlideContent).css('display', 'none');
+        // for resolutions more 640 px
+        if (window.innerWidth >= window_size_mobile_641) {
 
-        $(nextSlideImg).animate({
-          'margin-left': '0'
-        }, slideMoveSpeed, nameAnimation);
+          nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
+          nextSlideContent = slide.eq(nextIndex).find('.slide-content');
+
+          $(nextSlideContent).css('display', 'none');
+
+          $(nextSlideImg).animate({
+            'margin-left': '0'
+          }, slideMoveSpeed, nameAnimation);
+        }
 
         // hide next button
         hideNextButton();

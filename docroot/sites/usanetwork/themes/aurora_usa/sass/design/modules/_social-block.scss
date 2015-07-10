@@ -1,5 +1,5 @@
 #block-usanetwork-mpx-video-usanetwork-social-content {
-  .show-border{
+  .social-block{
     border-bottom: 2px solid;
     overflow: hidden;
     max-height: 700px;
@@ -23,6 +23,14 @@
     }
     @include breakpoint($bp-480-width) {
       padding: 20px 10px 0;
+    }
+  }
+  .page-node-cast & {
+    .social-block {
+      margin-bottom: 20px;
+      @include breakpoint($bp-min-1901-width) {
+        margin-bottom: 30px;
+      }
     }
   }
 }

@@ -35,6 +35,12 @@ function usanetwork_movie_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'usanetwork_movie-usanetwork_movie_related' => array(
+          'module' => 'usanetwork_movie',
+          'delta' => 'usanetwork_movie_related',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

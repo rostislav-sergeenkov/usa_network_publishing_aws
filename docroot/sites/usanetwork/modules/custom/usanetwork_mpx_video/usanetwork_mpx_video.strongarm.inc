@@ -92,16 +92,19 @@ function usanetwork_mpx_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'filename' => array(
-          'weight' => '-10',
+          'weight' => '0',
         ),
         'preview' => array(
-          'weight' => '-5',
+          'weight' => '1',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '28',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '19',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '20',
         ),
       ),
       'display' => array(

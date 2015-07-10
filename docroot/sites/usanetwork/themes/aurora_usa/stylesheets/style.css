@@ -16806,7 +16806,7 @@ footer h2 {
   background-color: #2c2c2c;
 }
 
-#block-usanetwork-tv-shows-usanetwork-tv-shows-mb .landing-main-block, #block-usanetwork-movie-usanetwork-movie-all-shows .landing-main-block {
+#block-usanetwork-tv-shows-usanetwork-tv-shows-mb .landing-main-block, #block-usanetwork-movie-usanetwork-movie-all-shows .landing-main-block, #block-usanetwork-movie-usanetwork-movie-mb .landing-main-block {
   background: #e9eaeb;
   border-bottom: 2px solid #2c2c2c;
 }
@@ -25457,6 +25457,7 @@ yx-axis
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 1.1vw;
   line-height: 1;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 @media (min-width: 2500px) {
@@ -25466,17 +25467,19 @@ yx-axis
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
-    font-size: 1.875vw;
+    font-size: 2.7vw;
   }
 }
 .usanetwork-aspot .meta-wrap .title_prefix p, .usanetwork-aspot .meta-wrap .start p {
   margin: 0;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .usanetwork-aspot .meta-wrap .title {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 6vw;
-  line-height: 1;
+  letter-spacing: 0.02em;
+  line-height: 0.88;
   margin: 0;
   text-transform: uppercase;
 }
@@ -25492,6 +25495,7 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap .title p {
   margin: 0;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .usanetwork-aspot .meta-wrap .show-timer {
   color: #ffffff;
@@ -25551,25 +25555,15 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap .cta-link {
   position: relative;
-  max-width: 20vw;
-}
-@media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .cta-link {
-    max-width: 500px;
-  }
-}
-@media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .cta-link {
-    max-width: 35vw;
-  }
 }
 .usanetwork-aspot .meta-wrap .cta-link a {
   color: #ffffff;
   display: block;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.27vw;
+  letter-spacing: 0.1em;
   line-height: 1.8;
-  padding: 1.7vw 3.125vw 1.7vw 2.54vw;
+  padding: 1.4vw 4.5vw 1.4vw 3.5vw;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
@@ -25577,12 +25571,13 @@ yx-axis
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .cta-link a {
     font-size: 31.74px;
-    padding: 42.5px 78px 42.5px 63.5px;
+    padding: 35px 112.3px 35px 87.5px;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .cta-link a {
-    font-size: 2.1875vw;
+    font-size: 2.7vw;
+    padding: 1.4vw 6.5vw 1.4vw 3.5vw;
   }
 }
 .usanetwork-aspot .meta-wrap .cta-link a:after {
@@ -25594,14 +25589,14 @@ yx-axis
   line-height: 1;
   position: absolute;
   margin-top: -0.5vw;
-  right: 1.4vw;
+  right: 2.4vw;
   top: 50%;
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .cta-link a:after {
     font-size: 25px;
     margin-top: -12.5px;
-    right: 35px;
+    right: 60px;
   }
 }
 @media (max-width: 640px) {

@@ -311,6 +311,46 @@ function usanetwork_tv_shows_color_show_css_class($show_node) {
 }
 
 /**
+ * Return css class for movie
+ */
+function usanetwork_tv_shows_color_movie_css_class($movie_node) {
+  if (!is_object($movie_node)) {
+    $movie_id = $movie_node;
+    $movie_css_class = &drupal_static('show_css_class_' . $movie_node, FALSE);
+    if ($movie_css_class) {
+      // get show css class from static variable
+      return $movie_css_class;
+    }
+    $movie_node = node_load($movie_node);
+    if (empty($movie_node)) {
+      return false;
+    }
+  }
+  else {
+    $movie_id = $movie_node->nid;
+    $movie_css_class = &drupal_static('show_css_class_' . $movie_node->nid, FALSE);
+    if ($movie_css_class) {
+      return $movie_css_class;
+    }
+  }
+
+  // get show css class from static variable
+  if ($movie_class_cache = cache_get('show_id_' . $movie_id, 'show_class')) {
+    $movie_css_class = $movie_class_cache->data;
+    return $movie_class_cache->data;
+  }
+
+  module_load_include('inc', 'pathauto', 'pathauto');
+  $movie_css_class =  pathauto_cleanstring($movie_node->title);
+
+  //set show css class from show in cache
+  cache_set('show_id_' . $movie_id, $movie_css_class, 'show_class');
+
+  return $movie_css_class;
+}
+
+
+/**
  * Page callback for configuring page
  */
 function usanetwork_tv_shows_color_config() {

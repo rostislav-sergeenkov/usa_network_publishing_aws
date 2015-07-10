@@ -77,6 +77,7 @@ features[field_instance][] = node-movie-field_movie_release_year
 features[field_instance][] = node-movie-field_movie_secondary_genre
 features[field_instance][] = node-movie-field_movie_tags
 features[field_instance][] = node-movie-field_movie_type
+features[field_instance][] = node-movie-field_promo_violator_name
 features[field_instance][] = node-movie-field_summary
 features[field_instance][] = node-movie-field_usa_tv_show_color
 features[field_instance][] = node-movie-field_usa_tv_show_color_second

@@ -116,7 +116,9 @@ function usanetwork_movie_field_group_info() {
       0 => 'body',
       1 => 'field_movie_cover_media',
       2 => 'field_summary',
-      3 => 'title',
+      3 => 'field_aspot_image',
+      4 => 'field_promo_violator_name',
+      5 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

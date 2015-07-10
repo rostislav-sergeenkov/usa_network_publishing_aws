@@ -461,9 +461,10 @@ function _usanetwork_movies_all_movies_render_block($items) {
 function _usanetwork_movies_all_movies_block_item($movie) {
   $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
+  $cover_media = usanetwork_core_api_get_content_image('node', $movie);
   $theme_variables = array(
     'target_url' => url('node/' . $movie->nid),
-    'caption' => '',
+    'caption' => $cover_media,
     'title' => $movie->title,
     'additional' => $schedule_data,
     'image_desktop' => image_style_url('539x303', $image_url),
@@ -510,6 +511,7 @@ function _usanetwork_movies_mb_block() {
         $i++;
         $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
         $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
+        $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
         $promos[] = array(
           'url' => url('node/' . $featured_movie->nid),
           'image' => array(
@@ -523,7 +525,7 @@ function _usanetwork_movies_mb_block() {
                 : NULL,
           ),
           'icon_type' => 'about-show-icon-default',
-          'caption' => '',
+          'caption' => $caption,
           'title' => $featured_movie->title,
           'description' => $show_time,
           'class' => $is_first ? 'three-line-video-large' : 'three-line-video',

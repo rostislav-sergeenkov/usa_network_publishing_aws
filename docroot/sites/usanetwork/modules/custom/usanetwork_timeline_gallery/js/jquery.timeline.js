@@ -142,11 +142,13 @@ Project demo: http://shindiristudio.com/timeline
       });
 
       $('.tl3').on('scrollStart.Timeline', function(e){
-        usa_debug('TIMELINE: start'); // start scroll
+        //usa_debug('TIMELINE: start'); // start scroll
+        //usa_debug(e);
       });
 
       $('.tl3').on('scrollStop.Timeline', function(e){
-        usa_debug('TIMELINE: end'); // end scroll
+        //usa_debug('TIMELINE: end'); // end scroll
+        //usa_debug(e);
         // create Gigya share bar
         var $gigyaShareBar = $('.timeline-items .timeline-item.active .timeline-gigya-share'),
             shareBarId = $gigyaShareBar.attr('id'),
@@ -559,7 +561,7 @@ Project demo: http://shindiristudio.com/timeline
         touchEnd : function(xpos) {
           var $this = this,
               data = $this.data('timeline'),
-              itemWidth = data.itemWidth + data.options.itemMargin,
+              itemWidth = (data.itemWidth + data.options.itemMargin)/3, // reduce the swipe distance to one-third of the item width
               itemC = data.currentIndex,
               mod = 0,
               xmargin = xpos - data.mousestartpos;

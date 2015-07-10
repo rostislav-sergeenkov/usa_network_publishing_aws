@@ -64,6 +64,11 @@ function usanetwork_movie_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['usanetwork_movie_cast_crew_block'] = array(
+    'info' => t('Movie: Cast and Crew'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -116,6 +121,13 @@ function usanetwork_movie_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-movies-schedule',
     ),
+    'usanetwork_movie_cast_crew_block' => array(
+      'variables' => array(
+        'title' => NULL,
+        'persons' => array(),
+      ),
+      'template' => 'templates/usanetwork-movie-cast-crew-block',
+    ),
   );
 }
 
@@ -141,6 +153,10 @@ function usanetwork_movie_block_view($delta = '') {
     case 'usanetwork_movie_schedule':
       $block['subject'] = '';
       $block['content'] = _usanetwork_movie_all_movies_schedule();
+      break;
+    case 'usanetwork_movie_cast_crew_block':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_movie_render_cast_crew_block();
       break;
   }
 
@@ -523,6 +539,9 @@ function usanetwork_movie_movies_autocomplete($title) {
   drupal_json_output($output);
 }
 
+/*
+ * Schedule Block for all movie page
+ */
 function _usanetwork_movie_all_movies_schedule() {
   $movie = node_load_multiple(array(), array('title' => 'Movies'));
   $movie = reset($movie);
@@ -532,4 +551,61 @@ function _usanetwork_movie_all_movies_schedule() {
     'schedule' => $schedule,
   );
   return theme('usanetwork_movies_schedule', $theme_variables);
+}
+
+/*
+ * Cast and Crew Block for Movie Page
+ */
+function usanetwork_movie_render_cast_crew_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $movie_node = menu_get_object();
+
+  if (empty($movie_node) || (!empty($movie_node) && isset($movie_node->type) && $movie_node->type != 'movie')) {
+    return '';
+  }
+
+  $results = array();
+  $credits = field_get_items('node', $movie_node, 'field_movie_credit');
+  if ($credits) {
+    foreach ($credits as $credit) {
+      $credit_object = field_collection_item_load($credit['value']);
+      $movie_credit_person = field_get_items('field_collection_item', $credit_object, 'field_movie_credit_person');
+      $results[] = reset($movie_credit_person);
+    }
+  }
+  if (!empty($results)) {
+    $theme_variables['title'] = t('Cast & Crew');
+    foreach($results as $result) {
+      $node_ids[] = !empty($result['target_id']) ? $result['target_id'] : NULL;
+    }
+    $person_nodes = node_load_multiple($node_ids);
+    if (empty($person_nodes)) {
+      return '';
+    }
+    foreach ($person_nodes as $person_node) {
+      $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
+      if (!empty($person_node->field_usa_character_thumb)) {
+        $image = $person_node_wrapper->field_usa_character_thumb->value();
+      }
+      $person_role = !empty($person_node->field_role) ? $person_node_wrapper->field_role->name->value() : '';
+      if (!empty($person_role)) {
+        if (strtolower($person_role) == 'character') {
+          if (!empty($person_node->field_usa_actor_name)) {
+            $person_role = $person_node_wrapper->field_usa_actor_name->value();
+          }
+        }
+      }
+      $theme_variables['persons'][] = array(
+        'name' => !empty($person_node->title) ? $person_node->title : '',
+        'role' => strtolower($person_role) != 'blank' ? $person_role : '',
+        'image' => !empty($image) ? image_style_url('420x420', $image['uri']) : '',
+        'url' => url('node/' . $person_node->nid),
+      );
+    }
+    return theme('usanetwork_movie_cast_crew_block', $theme_variables);
+  }
+  return '';
 }

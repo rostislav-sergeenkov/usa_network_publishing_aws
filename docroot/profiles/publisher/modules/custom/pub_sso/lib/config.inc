@@ -63,22 +63,13 @@ if ($_ENV['AH_SITE_ENVIRONMENT'] != 'local' && $_ENV['AH_SITE_ENVIRONMENT'] != '
   // Acquia environment.
   $creds = sso_db_info($environment_config['ah_database_name']);
 
-//  if (file_exists('/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/sites/' . $environment_info['cert_directory_directory'] . '/files-private/sso_cert')) {
-//    // Cert directory on Acquia environments.
-//    $environment_config['certdir'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/sites/' . $environment_info['cert_directory_directory'] . '/files-private/sso_cert';
-//  }
-//  else {
-//    // Cert directory for other environments, like AWS.
-//    $environment_config['certdir'] = DRUPAL_ROOT . '/sites/' . $environment_info['cert_directory_directory'] . '/files-private/sso_cert';
-//  }
-
-  if (file_exists('/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/sites/default/files-private/sso_cert')) {
+  if (file_exists('/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/sites/' . $environment_info['cert_directory_directory'] . '/files-private/sso_cert')) {
     // Cert directory on Acquia environments.
-    $environment_config['certdir'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/sites/default/files-private/sso_cert';
+    $environment_config['certdir'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/sites/' . $environment_info['cert_directory_directory'] . '/files-private/sso_cert';
   }
   else {
     // Cert directory for other environments, like AWS.
-    $environment_config['certdir'] = DRUPAL_ROOT . '/sites/default/files-private/sso_cert';
+    $environment_config['certdir'] = DRUPAL_ROOT . '/sites/' . $environment_info['cert_directory_directory'] . '/files-private/sso_cert';
   }
 
   $environment_config['store.sql.dsn'] = sprintf('mysql:host=%s;port=%s;dbname=%s', $creds['host'], $creds['port'], $creds['name']);
@@ -130,8 +121,8 @@ else {
  * A utility function for pulling Acquia DB information.
  */
 function sso_db_info($db_name) {
-  if (file_exists('/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . $_ENV['AH_SITE_ENVIRONMENT'] . '/creds.json')) {
-    $creds_json = file_get_contents('/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . $_ENV['AH_SITE_ENVIRONMENT'] . '/creds.json');
+  if (file_exists('/var/www/site-php/' . $_ENV['AH_SITE_NAME'] . '/creds.json')) {
+    $creds_json = file_get_contents('/var/www/site-php/' . $_ENV['AH_SITE_NAME'] . '/creds.json');
     $databases = json_decode($creds_json, TRUE);
     $db = $databases['databases'][$db_name];
     $db['host'] = ($host = sso_db_current_host($db['db_cluster_id'])) ? $host : key($db['db_url_ha']);

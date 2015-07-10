@@ -142,11 +142,13 @@ Project demo: http://shindiristudio.com/timeline
       });
 
       $('.tl3').on('scrollStart.Timeline', function(e){
-        usa_debug('TIMELINE: start'); // start scroll
+        //usa_debug('TIMELINE: start'); // start scroll
+        //usa_debug(e);
       });
 
       $('.tl3').on('scrollStop.Timeline', function(e){
-        usa_debug('TIMELINE: end'); // end scroll
+        //usa_debug('TIMELINE: end'); // end scroll
+        //usa_debug(e);
         // create Gigya share bar
         var $gigyaShareBar = $('.timeline-items .timeline-item.active .timeline-gigya-share'),
             shareBarId = $gigyaShareBar.attr('id'),
@@ -223,6 +225,9 @@ Project demo: http://shindiristudio.com/timeline
             previewImage = $timelineActiveSharebar.attr('data-share-picture');
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
       }
+
+      // hide previous button
+      $('.timeline-left').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
     }, // end initializeTimeline
 
     get1stSceneLastSeason: function() {
@@ -556,7 +561,7 @@ Project demo: http://shindiristudio.com/timeline
         touchEnd : function(xpos) {
           var $this = this,
               data = $this.data('timeline'),
-              itemWidth = data.itemWidth + data.options.itemMargin,
+              itemWidth = (data.itemWidth + data.options.itemMargin)/3, // reduce the swipe distance to one-third of the item width
               itemC = data.currentIndex,
               mod = 0,
               xmargin = xpos - data.mousestartpos;
@@ -869,7 +874,24 @@ Project demo: http://shindiristudio.com/timeline
                 activeTimelineItem = $timelineItems.find('.timeline-item[data-id="' + currentId + '"]');
             $timelineItems.find('.timeline-item').removeClass('active');
             activeTimelineItem.addClass('active');
+
+            // hide next / previous buttons if last or first scene
+            var firstScene = $timelineItems.find('.timeline-item:first').attr('data-id'),
+                lastScene = $timelineItems.find('.timeline-item:last').attr('data-id');
+            if (currentId == firstScene) {
+              $('.timeline-left').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
+            }
+            else if (currentId == lastScene) {
+              $('.timeline-right').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
+            }
+            if ($('.timeline-left').css('display') == 'none' && currentId != firstScene) {
+              $('.timeline-left').css({'display': 'block'}).animate({'opacity': 1}, 500);
+            }
+            if ($('.timeline-right').css('display') == 'none' && currentId != lastScene) {
+              $('.timeline-right').css({'display': 'block'}).animate({'opacity': 1}, 500);
+            }
           }
+
           return $this;
         }, // end goTo
 

@@ -15,7 +15,7 @@ if (empty($_ENV['AH_SITE_ENVIRONMENT']) || ($_ENV['AH_SITE_ENVIRONMENT'] !== 'pr
 }
 
 $environment_info['database_name'] = 'nbcuusa';
-$environment_info['cert_directory_directory'] = 'usanetwork';
+$environment_info['cert_directory_directory'] = 'default';
 $environment_info['dynamic_domains'] = FALSE;
 
 switch ($conf['pub_sso_server']) {

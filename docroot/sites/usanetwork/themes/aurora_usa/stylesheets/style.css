@@ -16791,6 +16791,10 @@ footer h2 {
   }
 }
 
+.touch .node-type-timeline-gallery .timeline-item-details {
+  background-color: #2c2c2c;
+}
+
 #block-usanetwork-tv-shows-usanetwork-tv-shows-mb .landing-main-block, #block-usanetwork-movie-usanetwork-movie-all-shows .landing-main-block {
   background: #e9eaeb;
   border-bottom: 2px solid #2c2c2c;

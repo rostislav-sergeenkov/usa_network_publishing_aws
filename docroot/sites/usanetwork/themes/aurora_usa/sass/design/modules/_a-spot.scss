@@ -8,7 +8,6 @@
   //  padding-bottom: 43.7%; /* ~16:7 */
   position: relative;
   will-change: transform, opacity;
-
   @include breakpoint($bp-min-2500-width) {
     min-height: 1090px;
     max-height: 1094px;
@@ -34,10 +33,8 @@
   .next-button {
     display: none;
     position: absolute;
-    right: -10%;
     top: 0;
     will-change: transform, opacity;
-
 
     &.ready {
       -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);

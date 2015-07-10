@@ -393,6 +393,9 @@ header {
         &:hover {
           background: $header-tab-back-hover;
         }
+        &:focus, &:visited, &:active {
+          outline: none;
+        }
       }
     }
   }

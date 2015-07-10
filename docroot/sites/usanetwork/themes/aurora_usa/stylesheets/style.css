@@ -5610,6 +5610,9 @@ header .nav-bar-tabs {
   header .nav-bar-tabs a:hover {
     background: darkgrey;
   }
+  header .nav-bar-tabs a:focus, header .nav-bar-tabs a:visited, header .nav-bar-tabs a:active {
+    outline: none;
+  }
 }
 @media (min-width: 769px) and (min-width: 1901px) {
   header .nav-bar-tabs a {
@@ -16769,9 +16772,30 @@ footer h2 {
   }
 }
 @media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-node {
+    padding: 38px 0;
+  }
+}
+@media (max-width: 640px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-line .timeline-holder .timeline-node-desc {
+    padding: 4px;
+    font-size: 8px;
+  }
+}
+@media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat .timeline-line .timeline-holder .timeline-node-desc {
+    padding: 4px 2px;
+    letter-spacing: -0.5px;
+  }
+}
+@media (max-width: 480px) {
   .node-type-timeline-gallery .timelineFlat #timeline-line-full-right {
     top: 40px;
   }
+}
+
+.touch .node-type-timeline-gallery .timeline-item-details {
+  background-color: #2c2c2c;
 }
 
 #block-usanetwork-tv-shows-usanetwork-tv-shows-mb .landing-main-block, #block-usanetwork-movie-usanetwork-movie-all-shows .landing-main-block {

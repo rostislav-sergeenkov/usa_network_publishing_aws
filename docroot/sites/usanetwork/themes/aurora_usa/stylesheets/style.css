@@ -5610,6 +5610,9 @@ header .nav-bar-tabs {
   header .nav-bar-tabs a:hover {
     background: darkgrey;
   }
+  header .nav-bar-tabs a:focus, header .nav-bar-tabs a:visited, header .nav-bar-tabs a:active {
+    outline: none;
+  }
 }
 @media (min-width: 769px) and (min-width: 1901px) {
   header .nav-bar-tabs a {

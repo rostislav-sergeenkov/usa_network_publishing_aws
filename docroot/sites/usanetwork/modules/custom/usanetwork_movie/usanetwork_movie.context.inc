@@ -69,19 +69,19 @@ function usanetwork_movie_context_default_contexts() {
         ),
         'usanetwork_movie-usanetwork_movies_mb' => array(
           'module' => 'usanetwork_movie',
-          'delta' => 'usanetwork_movie_mb',
+          'delta' => 'usanetwork_movies_mb',
           'region' => 'content',
           'weight' => '-10',
         ),
         'usanetwork_movie-usanetwork_movies_all_movies' => array(
           'module' => 'usanetwork_movie',
-          'delta' => 'usanetwork_movie_all_movies',
+          'delta' => 'usanetwork_movies_all_movies',
           'region' => 'content',
           'weight' => '-9',
         ),
         'usanetwork_movie-usanetwork_movies_schedule' => array(
           'module' => 'usanetwork_movie',
-          'delta' => 'usanetwork_movie_schedule',
+          'delta' => 'usanetwork_movies_schedule',
           'region' => 'content',
           'weight' => '-8',
         ),

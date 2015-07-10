@@ -16790,6 +16790,9 @@ footer h2 {
     top: 40px;
   }
 }
+.node-type-timeline-gallery .timelineFlat #timeline-line-full-right .title:hover {
+  color: #000;
+}
 
 .touch .node-type-timeline-gallery .timeline-item-details {
   background-color: #2c2c2c;

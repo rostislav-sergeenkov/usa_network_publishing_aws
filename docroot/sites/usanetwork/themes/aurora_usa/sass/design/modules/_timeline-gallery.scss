@@ -116,6 +116,13 @@
         top: 40px;
       }
     }
+    #timeline-line-full-right {
+      .title {
+        &:hover {
+          color: #000;
+        }
+      }
+    }
   }
 }
 .touch {

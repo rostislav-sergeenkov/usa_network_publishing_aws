@@ -456,12 +456,8 @@ function usanetwork_mpx_video_global_videos_page() {
 
         if ($i == 0) {
           $video_image = array(
-            'mobile' => image_style_url('640x640', $image),
-            'mobile_retina' => image_style_url('1280x1280', $image),
-            'tablet' => image_style_url('1024x576', $image),
-            'tablet_retina' => image_style_url('2048x1152', $image),
-            'desktop' => image_style_url('2500x1407', $image),
-            'desktop_retina' => image_style_url('5000x2814', $image),
+            'mobile' => image_style_url('640x560', $image),
+            'desktop' => image_style_url('2880x1620', $image),
           );
           $featured_aspot = array(
             'aspot_image' => $video_image,

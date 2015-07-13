@@ -1298,19 +1298,16 @@ function usanetwork_movie_render_cast_crew_block() {
   $movie_node = _usanetwork_movie_menu_get_current_movie_node();
 
   if (!empty($movie_node)) {
-    $results = array();
-    $credits = field_get_items('node', $movie_node, 'field_movie_credit');
-    if ($credits) {
-      foreach ($credits as $credit) {
-        $credit_object = field_collection_item_load($credit['value']);
-        $movie_credit_person = field_get_items('field_collection_item', $credit_object, 'field_movie_credit_person');
-        $results[] = reset($movie_credit_person);
-      }
-    }
+    $select = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('n.type', 'person');
+    $select->leftJoin('field_data_field_movie', 'fdfm', 'fdfm.entity_id = n.nid');
+     $select->condition('fdfm.field_movie_target_id', $movie_node->nid);
+    $results = $select->execute()->fetchAll();
     if (!empty($results)) {
       $theme_variables['title'] = t('Cast & Crew');
       foreach($results as $result) {
-        $node_ids[] = !empty($result['target_id']) ? $result['target_id'] : NULL;
+        $node_ids[] = !empty($result->nid) ? $result->nid : NULL;
       }
       $person_nodes = node_load_multiple($node_ids);
       if (empty($person_nodes)) {

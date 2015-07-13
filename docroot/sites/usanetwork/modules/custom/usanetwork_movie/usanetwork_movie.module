@@ -461,10 +461,10 @@ function _usanetwork_movies_all_movies_render_block($items) {
 function _usanetwork_movies_all_movies_block_item($movie) {
   $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
-  $cover_media = usanetwork_core_api_get_content_image('node', $movie);
+  $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
     'target_url' => url('node/' . $movie->nid),
-    'caption' => $cover_media,
+    'caption' => $caption,
     'title' => $movie->title,
     'additional' => $schedule_data,
     'image_desktop' => image_style_url('539x303', $image_url),

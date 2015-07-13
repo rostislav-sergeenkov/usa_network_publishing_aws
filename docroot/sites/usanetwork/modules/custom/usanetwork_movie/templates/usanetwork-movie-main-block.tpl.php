@@ -8,9 +8,7 @@
 <div class="block-usanetwork-person-usanetwork-person-cast-lmb-block show-border">
   <div class="cast-and-info-header-image">
     <?php if (!empty($head_image)): ?>
-      <div class="asset-img" data-picture data-alt="" data-class="tile-img">
-        <?php print $head_image; ?>
-      </div>
+      <?php print $head_image; ?>
     <?php endif; ?>
   </div>
   <div class="cast-and-info-description">

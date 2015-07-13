@@ -664,6 +664,7 @@ function usanetwork_movie_related_content_block() {
       'related_items_block' => $block_of_items,
       'load_more_link' => $load_more_link,
       'show_nid' => $movie_node->nid,
+      'movie_title' => $movie_node->title,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
     ));
   }
@@ -771,11 +772,8 @@ function usanetwork_movie_get_related_content($movie_node, $start_from = 0, $lim
       'values' => array(
         'usanetwork_promo',
         'media_gallery',
-        'post',
-        'consumpt_post',
         'person',
         'quiz',
-        'timeline_gallery',
         'catchall_page'),
       'operator' => 'IN',
     ),

@@ -16781,7 +16781,7 @@ footer h2 {
 }
 @media (max-width: 480px) {
   .node-type-timeline-gallery .timelineFlat .timeline-node {
-    padding: 38px 0;
+    padding: 38px  14px;
   }
 }
 @media (max-width: 640px) {
@@ -16800,6 +16800,9 @@ footer h2 {
   .node-type-timeline-gallery .timelineFlat #timeline-line-full-right {
     top: 40px;
   }
+}
+.node-type-timeline-gallery .timelineFlat #timeline-line-full-right .title:hover {
+  color: #000;
 }
 
 .touch .node-type-timeline-gallery .timeline-item-details {

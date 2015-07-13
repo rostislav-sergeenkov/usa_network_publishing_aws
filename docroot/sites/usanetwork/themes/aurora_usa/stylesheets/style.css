@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -18380,7 +18380,8 @@ footer h2 {
   background-color: #e9eaeb;
 }
 
-.block-usanetwork-person-usanetwork-person-cast-lmb-block {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block,
+.block-usanetwork-movie-usanetwork-lmb-block {
   background: #e9eaeb;
   border-bottom: 2px solid;
   height: auto;
@@ -18388,75 +18389,123 @@ footer h2 {
   position: relative;
   width: 100%;
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block:after {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block:after,
+.block-usanetwork-movie-usanetwork-lmb-block:after {
   clear: both;
   content: '';
   display: table;
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-header-image {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-header-image,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-header-image {
   position: relative;
   width: 100%;
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-header-image,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-header-image {
+  height: 43.75vw;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 2500px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-header-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-header-image {
+    height: 1094px;
+  }
+}
+@media (max-width: 640px) {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-header-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-header-image {
+    height: 87.5vw;
+  }
+}
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description {
   margin: 0 auto;
   max-width: 1868px;
   padding: 40px 24px 40px 90px;
   position: relative;
   width: 100%;
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description:after {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description:after, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description:after,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description:after,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (min-width: 1281px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description {
     min-height: 870px;
   }
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description.no-image {
     min-height: 0;
   }
 }
 @media (min-width: 1901px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description {
     min-height: 890px;
     padding: 60px 32px 60px 150px;
   }
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description.no-image {
     min-height: 0;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description {
     min-height: 750px;
   }
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description.no-image {
     min-height: 0;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description {
     min-height: 650px;
     padding: 30px 17px 30px 80px;
   }
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description.no-image {
     min-height: 0;
   }
 }
 @media (max-width: 768px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description {
     padding: 30px 36px;
   }
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description.no-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description.no-image {
     min-height: 0;
   }
 }
 @media (max-width: 480px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description {
     padding: 20px 24px;
   }
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description {
   color: #000000;
   float: left;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -18464,100 +18513,146 @@ footer h2 {
   width: 60%;
 }
 @media (min-width: 1901px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description {
     font-size: 26px;
     line-height: 32px;
   }
 }
 @media (max-width: 1024px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description {
     font-size: 14px;
     width: calc(100% - 340px);
   }
 }
 @media (max-width: 640px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description {
     width: 100%;
     font-size: 12px;
   }
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description p {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description p, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description p,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description p,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description p {
   margin: 0.5em 0;
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation {
   font-size: 53px;
   padding: 72px 100px 75px 120px;
   border: 1px solid #b5b3b4;
   line-height: 1em;
 }
 @media (max-width: 1280px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation {
     padding: 47px 72px;
     font-size: 32px;
   }
 }
 @media (max-width: 1024px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation {
     padding: 38px 50px;
     font-size: 24.75px;
     line-height: 1.2em;
   }
 }
 @media (max-width: 768px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation {
     padding: 23px 45px;
     font-size: 17px;
     margin: 20px 0 17px;
   }
 }
 @media (max-width: 640px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation {
     padding: 22px 40px;
     font-size: 13px;
     margin: 19px 0 22px;
   }
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:after,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:before,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:after,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:before,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:after {
   background-color: #e9eaeb;
   font-size: 69px;
 }
 @media (max-width: 1280px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:after,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:before,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:after,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:before,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:after {
     font-size: 44px;
   }
 }
 @media (max-width: 1024px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:after,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:before,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:after,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:before,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:after {
     font-size: 39px;
   }
 }
 @media (max-width: 768px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:after,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:before,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:after,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:before,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:after {
     font-size: 29px;
   }
 }
 @media (max-width: 640px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .person-quotation:after, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:before, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .person-quotation:after,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:before,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .person-quotation:after,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:before,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .person-quotation:after {
     font-size: 21px;
   }
 }
 @media (max-width: 768px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .lines-quotation {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description .lines-quotation, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description .lines-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description .lines-quotation,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description .lines-quotation {
     padding: 22px 20px;
   }
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .advert,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .advert,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .advert {
   display: block;
   float: right;
   height: 250px;
   width: 300px;
 }
 @media (max-width: 640px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .advert,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .advert,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .advert {
     display: none;
   }
 }
-.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .back-image,
+.block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .back-image,
+.block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .back-image {
   bottom: 0;
   line-height: 1;
   max-height: 537px;
@@ -18567,12 +18662,16 @@ footer h2 {
   width: 30%;
 }
 @media (max-width: 768px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .back-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .back-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .back-image {
     width: 41%;
   }
 }
 @media (max-width: 640px) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
+  .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .back-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .back-image,
+  .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .back-image {
     display: none;
   }
 }

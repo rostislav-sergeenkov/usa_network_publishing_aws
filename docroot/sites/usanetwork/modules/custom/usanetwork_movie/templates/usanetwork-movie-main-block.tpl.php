@@ -5,13 +5,14 @@
  * $description' - string (html)
  */
 ?>
-<div class="block-usanetwork-person-usanetwork-person-cast-lmb-block show-border">
-  <div class="cast-and-info-header-image">
-    <?php if (!empty($head_image)): ?>
+<div class="block-usanetwork-movie-usanetwork-lmb-block show-border">
+  <?php if (!empty($head_image)): ?>
+    <div class="movie-info-header-image">
       <?php print $head_image; ?>
-    <?php endif; ?>
-  </div>
-  <div class="cast-and-info-description">
+    </div>
+  <?php endif; ?>
+
+  <div class="movie-info-description no-image">
     <?php if (!empty($description)): ?>
       <div class="description">
         <?php print $description; ?>

@@ -10,140 +10,6 @@
 function usanetwork_movie_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'field_collection_item-field_movie_credit-field_movie_credit_character'
-  $field_instances['field_collection_item-field_movie_credit-field_movie_credit_character'] = array(
-    'bundle' => 'field_movie_credit',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 2,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_movie_credit_character',
-    'label' => 'Character',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 43,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_movie_credit-field_movie_credit_person'
-  $field_instances['field_collection_item-field_movie_credit-field_movie_credit_person'] = array(
-    'bundle' => 'field_movie_credit',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_movie_credit_person',
-    'label' => 'Person',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 41,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_movie_credit-field_movie_credit_role'
-  $field_instances['field_collection_item-field_movie_credit-field_movie_credit_role'] = array(
-    'bundle' => 'field_movie_credit',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 1,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_movie_credit_role',
-    'label' => 'Role',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 42,
-    ),
-  );
-
   // Exported field_instance: 'node-movie-body'
   $field_instances['node-movie-body'] = array(
     'bundle' => 'movie',
@@ -155,7 +21,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -200,7 +66,65 @@ function usanetwork_movie_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 4,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-movie-field_aspot_image'
+  $field_instances['node-movie-field_aspot_image'] = array(
+    'bundle' => 'movie',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_image',
+    'label' => 'A-Spot Image',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 3,
     ),
   );
 
@@ -214,7 +138,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -277,56 +201,7 @@ function usanetwork_movie_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-movie-field_movie_credit'
-  $field_instances['node-movie-field_movie_credit'] = array(
-    'bundle' => 'movie',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_movie_credit',
-    'label' => 'Credit',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -341,7 +216,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -402,6 +277,64 @@ function usanetwork_movie_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-movie-field_movie_latest_feed'
+  $field_instances['node-movie-field_movie_latest_feed'] = array(
+    'bundle' => 'movie',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_movie_latest_feed',
+    'label' => 'Show content feed on Movie page',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-movie-field_movie_primary_genre'
   $field_instances['node-movie-field_movie_primary_genre'] = array(
     'bundle' => 'movie',
@@ -413,7 +346,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -462,7 +395,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -510,7 +443,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -570,7 +503,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -619,7 +552,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -671,7 +604,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -709,6 +642,69 @@ function usanetwork_movie_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-movie-field_promo_violator_name'
+  $field_instances['node-movie-field_promo_violator_name'] = array(
+    'bundle' => 'movie',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_promo_violator_name',
+    'label' => 'Promo Violator',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-movie-field_summary'
   $field_instances['node-movie-field_summary'] = array(
     'bundle' => 'movie',
@@ -720,7 +716,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -760,7 +756,7 @@ function usanetwork_movie_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -775,7 +771,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 13,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -831,7 +827,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 14,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -887,7 +883,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 15,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -943,7 +939,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 16,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -997,20 +993,19 @@ function usanetwork_movie_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Character');
+  t('A-Spot Image');
   t('Cover Media');
-  t('Credit');
   t('External Links');
   t('Movie Type');
-  t('Person');
   t('Primary Color');
   t('Primary Genre');
+  t('Promo Violator');
   t('Rating');
   t('Release Year');
-  t('Role');
   t('Secondary Color');
   t('Secondary Genre');
   t('Short Synopsis');
+  t('Show content feed on Movie page');
   t('Specify the title to be displayed in place of the promotional URL (required). If any, enter a promotional URL  (e.g. Twitter, Facebook).');
   t('Synopsis');
   t('Tags');

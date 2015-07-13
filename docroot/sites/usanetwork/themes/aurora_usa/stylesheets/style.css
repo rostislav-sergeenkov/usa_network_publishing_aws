@@ -8614,7 +8614,6 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .page-videos .main .aspot-and-episodes {
   margin-bottom: 50px;
-  height: 100%;
 }
 .page-videos .main .aspot-and-episodes:after {
   clear: both;
@@ -8624,6 +8623,7 @@ header .tve-help-link.signIn .inlineLoader {
 @media (max-width: 1024px) {
   .page-videos .main .aspot-and-episodes {
     margin-bottom: 0;
+    height: 100%;
   }
 }
 .page-videos .main .aspot-and-episodes > .node {
@@ -8734,13 +8734,15 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li {
   background: none;
-  height: 20%;
-  padding-left: 2px;
-  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+  height: 25%;
+  overflow: hidden;
 }
 @media (min-width: 641px) and (max-width: 1024px) {
   .page-videos .main .aspot-and-episodes .episodes-list ul li {
     float: left;
+    border: none;
     margin-bottom: 10px;
     padding: 0;
     width: 49%;
@@ -8756,15 +8758,12 @@ header .tve-help-link.signIn .inlineLoader {
 }
 @media (max-width: 640px) {
   .page-videos .main .aspot-and-episodes .episodes-list ul li {
+    border: none;
     padding: 0;
-    display: none;
-  }
-  .page-videos .main .aspot-and-episodes .episodes-list ul li:nth-child(1), .page-videos .main .aspot-and-episodes .episodes-list ul li:nth-child(2) {
-    display: block;
   }
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li:last-child {
-  padding-bottom: 0;
+  border-bottom: none;
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li a {
   display: block;
@@ -8838,39 +8837,6 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span {
   font-size: 9px;
-}
-.page-videos .main .aspot-and-episodes .episodes-list .more-button {
-  display: none;
-  position: relative;
-}
-@media (max-width: 640px) {
-  .page-videos .main .aspot-and-episodes .episodes-list .more-button {
-    background: #8f8f8f;
-    border-top: 2px solid darkgrey;
-    clear: both;
-    display: block;
-    height: 70px;
-    width: 100%;
-  }
-}
-.page-videos .main .aspot-and-episodes .episodes-list .more-button a {
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-.page-videos .main .aspot-and-episodes .episodes-list .more-button a:before {
-  color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  display: block;
-  left: 50%;
-  margin-left: -30px;
-  margin-top: -8px;
-  position: absolute;
-  text-transform: uppercase;
-  text-decoration: none;
-  top: 50%;
 }
 .page-videos .main .ad-728x90 {
   display: none;

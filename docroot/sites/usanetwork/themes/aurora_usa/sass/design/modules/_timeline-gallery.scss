@@ -115,12 +115,26 @@
       @include breakpoint($bp-480-width) {
         top: 40px;
       }
-    }
-    #timeline-line-full-right {
       .title {
+        margin: 0;
         &:hover {
           color: #000;
         }
+      }
+      .arrow {
+        padding-right: 20px;
+        margin-right: 6px;
+      }
+    }
+    #timeline-line-full-left {
+      @include breakpoint($bp-480-width) {
+        top: 40px;
+      }
+      .title {
+        margin: 0;
+      }
+      .arrow {
+        padding-left: 20px;
       }
     }
   }

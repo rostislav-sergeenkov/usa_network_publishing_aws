@@ -16801,8 +16801,26 @@ footer h2 {
     top: 40px;
   }
 }
+.node-type-timeline-gallery .timelineFlat #timeline-line-full-right .title {
+  margin: 0;
+}
 .node-type-timeline-gallery .timelineFlat #timeline-line-full-right .title:hover {
   color: #000;
+}
+.node-type-timeline-gallery .timelineFlat #timeline-line-full-right .arrow {
+  padding-right: 20px;
+  margin-right: 6px;
+}
+@media (max-width: 480px) {
+  .node-type-timeline-gallery .timelineFlat #timeline-line-full-left {
+    top: 40px;
+  }
+}
+.node-type-timeline-gallery .timelineFlat #timeline-line-full-left .title {
+  margin: 0;
+}
+.node-type-timeline-gallery .timelineFlat #timeline-line-full-left .arrow {
+  padding-left: 20px;
 }
 
 .touch .node-type-timeline-gallery .timeline-item-details {

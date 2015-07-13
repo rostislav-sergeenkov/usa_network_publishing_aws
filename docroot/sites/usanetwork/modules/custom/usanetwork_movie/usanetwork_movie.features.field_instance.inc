@@ -10,140 +10,6 @@
 function usanetwork_movie_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'field_collection_item-field_movie_credit-field_movie_credit_character'
-  $field_instances['field_collection_item-field_movie_credit-field_movie_credit_character'] = array(
-    'bundle' => 'field_movie_credit',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 2,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_movie_credit_character',
-    'label' => 'Character',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 43,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_movie_credit-field_movie_credit_person'
-  $field_instances['field_collection_item-field_movie_credit-field_movie_credit_person'] = array(
-    'bundle' => 'field_movie_credit',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_movie_credit_person',
-    'label' => 'Person',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 0,
-          'mode' => 'default',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 41,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_movie_credit-field_movie_credit_role'
-  $field_instances['field_collection_item-field_movie_credit-field_movie_credit_role'] = array(
-    'bundle' => 'field_movie_credit',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 1,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_movie_credit_role',
-    'label' => 'Role',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 42,
-    ),
-  );
-
   // Exported field_instance: 'node-movie-body'
   $field_instances['node-movie-body'] = array(
     'bundle' => 'movie',
@@ -336,55 +202,6 @@ function usanetwork_movie_field_default_field_instances() {
       ),
       'type' => 'media_generic',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-movie-field_movie_credit'
-  $field_instances['node-movie-field_movie_credit'] = array(
-    'bundle' => 'movie',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_movie_credit',
-    'label' => 'Credit',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 5,
     ),
   );
 
@@ -1177,18 +994,14 @@ function usanetwork_movie_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A-Spot Image');
-  t('Character');
   t('Cover Media');
-  t('Credit');
   t('External Links');
   t('Movie Type');
-  t('Person');
   t('Primary Color');
   t('Primary Genre');
   t('Promo Violator');
   t('Rating');
   t('Release Year');
-  t('Role');
   t('Secondary Color');
   t('Secondary Genre');
   t('Short Synopsis');

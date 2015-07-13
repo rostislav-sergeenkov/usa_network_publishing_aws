@@ -105,7 +105,7 @@ function usanetwork_mpx_video_field_default_field_bases() {
       'format' => array(
         0 => 'format',
       ),
-        ),
+    ),
     'locked' => 0,
     'module' => 'text',
     'settings' => array(

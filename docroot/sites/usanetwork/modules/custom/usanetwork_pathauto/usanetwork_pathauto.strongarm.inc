@@ -34,6 +34,13 @@ function usanetwork_pathauto_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_movie_pattern';
+  $strongarm->value = 'movies/[node:title]';
+  $export['pathauto_node_movie_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_person_pattern';
   $strongarm->value = '[node:field_show]/cast/[node:title]';
   $export['pathauto_node_person_pattern'] = $strongarm;

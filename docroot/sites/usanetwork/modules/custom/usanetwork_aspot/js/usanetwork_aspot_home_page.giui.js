@@ -3,16 +3,17 @@
     attach: function (context, settings) {
 
       var aspotHomeSlide = $('#block-usanetwork-aspot-usanetwork-aspot-carousel .slide'),
-          aspotShowSlide = $('#main-slider .slide .slide-content');
+          aspotShowSlide = $('#main-slider .slide .slide-content'),
+          aspotMovieSlide = $('#block-usanetwork-movie-usanetwork-movie-main-block .slide .slide-content');
 
       // init add style for Aspot druggeble elements
-      if(!$('body').hasClass('usa-tv-show')) {
-        changeDraggableElementsPosition(aspotHomeSlide);
-      } else {
+      if($('body').hasClass('usa-tv-show')) {
         changeDraggableElementsPosition(aspotShowSlide);
+      } else if($('body').hasClass('page-home')) {
+        changeDraggableElementsPosition(aspotHomeSlide);
+      } else if($('body').hasClass('node-type-movie')) {
+        changeDraggableElementsPosition(aspotMovieSlide);
       }
-
-
 
       function changeDraggableElementsPosition(elem) {
         $.each(elem, function (indexItem, itemElement) {
@@ -35,19 +36,6 @@
           }
         });
       }
-
-      var waitForFinalEvent = (function () {
-        var timers = {};
-        return function (callback, ms, uniqueId) {
-          if (!uniqueId) {
-            uniqueId = "Don't call this twice without a uniqueId";
-          }
-          if (timers[uniqueId]) {
-            clearTimeout (timers[uniqueId]);
-          }
-          timers[uniqueId] = setTimeout(callback, ms);
-        };
-      })();
 
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){

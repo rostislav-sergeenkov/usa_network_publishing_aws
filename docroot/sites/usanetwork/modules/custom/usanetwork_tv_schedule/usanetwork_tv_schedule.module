@@ -870,6 +870,15 @@ function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
 
       foreach ($entities as $node_entity) {
         switch ($node_entity->type) {
+          case 'movie':
+            $cover_image_field = field_get_items('node', $node_entity, 'field_movie_cover_media');
+
+            if (!empty($cover_image_field)) {
+              $entity_image_fid = reset($cover_image_field[0]);
+              break;
+            }
+
+            break;
           case 'catchall_page':
             $og_image_field = field_get_items('node', $node_entity, 'field_usa_og_image');
 
@@ -1019,6 +1028,9 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
         $show_name = $show_title_aliases[$show_name];
       }
       $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+      if (empty($show_nid) && $tv_schedule_item->program_type == 'movie') {
+        $movie_nid = _usanetwork_tv_schedule_get_nid_by_title($episode_title, 'movie');
+      }
       if (empty($show_nid)) {
         $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'catchall_page');
       }
@@ -1026,6 +1038,7 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
         $show_nid = _usanetwork_tv_schedule_find_show_by_title($show_name);
       }
       $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
+      $movie_node = !empty($movie_nid) ? node_load($movie_nid) : NULL;
       if (!empty($show_node)) {
         $show_name = $show_node->title;
         $shows_filter[$show_nid] = $show_name;
@@ -1061,13 +1074,20 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
       else {
         $description = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : $tv_episode->description;
       }
+      $show_color = NULL;
+      if ($show_node) {
+        if ($show_node->type == 'tv_show') {
+          $show_color = usanetwork_tv_shows_color_show_css_class($show_node);
+        } elseif (!empty($movie_node)) {
+          $show_color = usanetwork_tv_shows_color_movie_css_class($movie_node);
+        }
+      }
       $theme_row_variables = array(
         'show_nid' => $show_nid,
-        'show_url' => url('node/' . $show_nid),
+        'show_url' => !empty($movie_node) ? url('node/' . $movie_nid) : url('node/' . $show_nid),
         'link_name' => $link_name,
         'link_class' => (!empty($selected_schedule->guid) && $selected_schedule->guid === $tv_schedule_item->guid) ? 'active' : NULL,
-        'show_class' => !empty($show_node) ? usanetwork_tv_shows_color_show_css_class($show_node)
-          : '',
+        'show_class' => !empty($show_color) ? $show_color : '',
         'time' => date('g:i', $start_time),
         'day_part' => date('A', $start_time),
         'episode_show' => $show_name,

@@ -312,6 +312,9 @@
         // Show photos page
         if (body.hasClass('page-node-photos')) {
           page_name = 'Show Photos Page ';
+          if ($self.closest('#block-usanetwork-media-gallery-usa-gallery-show-gallery-lmb').length > 0) {
+            name = page_name + 'Show Photo Landing Main Block';
+          }
           if ($self.closest('#block-usanetwork-media-gallery-usa-gallery-show-gallery-all').length > 0) {
             name = page_name + 'All Galleries Block';
           }

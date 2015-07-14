@@ -246,7 +246,8 @@ Project demo: http://shindiristudio.com/timeline
         init : function( options ) {
 
           // Default settings
-          var timeline_settings = $.extend( {
+          var swipeOn = (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) ? true : false,
+              timeline_settings = $.extend( {
             'itemClass'             : '.timeline-item',      // class used for timeline items
             'itemOpenClass'         : '.timeline-item-open', // class used for item details
             'openTriggerClass'      : '',                    // class of read more element (default uses whole item to trigger open event)
@@ -260,7 +261,7 @@ Project demo: http://shindiristudio.com/timeline
             'categories'            : categories,            // categories shown above timeline (months are default)
             'numberOfSegments'      : segments,              // number of elements per category (number of days)
             'yearsOn'               : true,                  // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
-            'swipeOn'               : true,                  // turn on swipe moving function
+            'swipeOn'               : swipeOn,                  // turn on swipe moving function
             'hideTimeline'          : false,                 // hides the timeline line
             'hideControls'          : false,                 // hides the prev/next controls
             'closeItemOnTransition' : false,                 // if true, closes the item after transition

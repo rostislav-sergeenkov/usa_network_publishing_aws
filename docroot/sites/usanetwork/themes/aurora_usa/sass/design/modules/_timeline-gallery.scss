@@ -126,6 +126,11 @@
           content: '\e615';
           color: #56000A;
         }
+        &:hover {
+          &:before {
+            color: #000;
+          }
+        }
       }
     }
     #timeline-line-full-left {
@@ -147,6 +152,11 @@
         &:before {
           content: '\e614';
           color: $microsite-arrow;
+        }
+        &:hover {
+          &:before {
+            color: #000;
+          }
         }
       }
     }

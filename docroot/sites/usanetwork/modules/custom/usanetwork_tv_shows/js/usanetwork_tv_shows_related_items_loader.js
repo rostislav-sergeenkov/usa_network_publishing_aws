@@ -6,7 +6,7 @@
       var limit = $('.ajax-load-block').data('show-items-limit') || 5;
       var nid = Drupal.settings.usanetwork_tv_show_nid || $('.ajax-load-block').data('show-nid') || Drupal.settings.usanetwork_movie_nid || 0;
       var number_ul = $('.ajax-load-block > ul').length;
-      var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || 0;
+      var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || Drupal.settings.usanetwork_movie_offset || 0;
       var start_from = limit*number_ul + negativeOffset;
       var service_name = '';
       var additional_arguments = '';

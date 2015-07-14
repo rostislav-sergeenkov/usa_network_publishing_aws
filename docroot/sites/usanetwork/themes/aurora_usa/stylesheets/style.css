@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -79,6 +79,16 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
 }
 .show-color.hover-avail:hover {
   background: #525252;
+}
+
+.page-movies .show-color {
+  background: #3d415b;
+}
+.page-movies .show-color.secondary {
+  background: #19204c;
+}
+.page-movies .show-color.hover-avail:hover {
+  background: #5c6289;
 }
 
 @font-face {
@@ -14837,6 +14847,7 @@ footer h2 {
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  will-change: transform, opacity;
 }
 .shows-block .show-carousel > ul > li > .node:before {
   left: auto;

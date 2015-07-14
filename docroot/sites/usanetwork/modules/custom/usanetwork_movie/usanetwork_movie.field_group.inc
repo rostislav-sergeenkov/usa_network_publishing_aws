@@ -147,6 +147,7 @@ function usanetwork_movie_field_group_info() {
     'children' => array(
       0 => 'field_usa_tv_tune_in_date',
       1 => 'field_movie_latest_feed',
+      2 => 'field_movies_latest_lnd_feed',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

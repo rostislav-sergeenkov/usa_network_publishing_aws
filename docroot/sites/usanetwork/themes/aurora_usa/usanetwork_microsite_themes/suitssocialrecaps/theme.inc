@@ -77,7 +77,7 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
     'js' => array(
-      '/sites/usanetwork/modules/contrib/gigya/js/gigya_sharebar.js',
+      drupal_get_path('module', 'gigya'). '/js/gigya_sharebar.js',
       $site_theme_path . '/js/ms_site.js',
       $site_default_theme_path . '/js/ms_gigya.js',
       $site_theme_path . '/js/ms_global.js',

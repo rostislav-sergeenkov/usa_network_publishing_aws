@@ -105,57 +105,85 @@
           }
         }
       }
-    }
-    #timeline-line-full-right {
-      top: 35px;
-      .title {
-        margin: 0 0 0 14px;
-        line-height: 30px;
-        &:hover {
-          color: #000;
+      #timeline-line-right,
+      #timeline-line-left {
+        top: 39px;
+        @include breakpoint($bp-640-width) {
+          top: 40px;
+        }
+        @include breakpoint($bp-480-width) {
+          top: 39px;
         }
       }
-      .arrow {
-        background: none;
-        width: 36px;
-        height: 27px;
-        font-size: 27px;
-        font-family: 'ico-font';
-        display: block;
-        &:before {
-          content: '\e615';
-          color: #56000A;
+      #timeline-line-full-right {
+        top: 36px;
+        right: -193px;
+        @include breakpoint($bp-1280-width) {
+          right: -187px;
         }
-        &:hover {
-          &:before {
+        @include breakpoint($bp-640-width) {
+          top: 37px;
+          right: -177px;
+        }
+        @include breakpoint($bp-480-width) {
+          top: 36px;
+        }
+        .title {
+          margin: 0 0 0 14px;
+          line-height: 27px;
+          &:hover {
             color: #000;
           }
         }
-      }
-    }
-    #timeline-line-full-left {
-      top: 35px;
-      .title {
-        margin: 0 10px 0 0;
-        line-height: 30px;
-        &:hover {
-          color: #000;
-        }
-      }
-      .arrow {
-        background: none;
-        width: 36px;
-        height: 27px;
-        font-size: 27px;
-        font-family: 'ico-font';
-        display: block;
-        &:before {
-          content: '\e614';
-          color: $microsite-arrow;
-        }
-        &:hover {
+        .arrow {
+          background: none;
+          width: 28px;
+          height: 27px;
+          font-size: 27px;
+          font-family: 'ico-font';
+          display: block;
           &:before {
+            content: '\e615';
+            color: #56000A;
+          }
+          &:hover {
+            &:before {
+              color: #000;
+            }
+          }
+        }
+      }
+      #timeline-line-full-left {
+        top: 36px;
+        @include breakpoint($bp-640-width) {
+          top: 37px;
+          left: -68px;
+        }
+        @include breakpoint($bp-480-width) {
+          top: 35px;
+        }
+        .title {
+          margin: 0 10px 0 0;
+          line-height: 27px;
+          &:hover {
             color: #000;
+          }
+        }
+        .arrow {
+          background: none;
+          width: 28px;
+          height: 27px;
+          font-size: 27px;
+          font-family: 'ico-font';
+          display: block;
+          &:before {
+            content: '\e614';
+            color: $microsite-arrow;
+          }
+          &:hover {
+            &:before {
+              color: #000;
+            }
           }
         }
       }

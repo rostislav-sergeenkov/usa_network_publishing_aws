@@ -116,6 +116,7 @@ $schedule-caption-color: #b5b3b4;
 $tonight-section-back: #2e2c2d;
 $gallery-description-back : #1f1f1f;
 $source-link:  #e5e5e5;
+$usa-movie-back: #3d415b;
 
 .show-color-border, .asset-img.show {
   position: relative;
@@ -144,6 +145,20 @@ $source-link:  #e5e5e5;
     }
   }
 }
+.page-movies {
+  .show-color {
+    background: $usa-movie-back;
+    &.secondary {
+      background: adjust-color($usa-movie-back, $saturation: 30, $lightness: -10);
+    }
+    &.hover-avail {
+      &:hover {
+        background: lighten($usa-movie-back, 15%);
+      }
+    }
+  }
+}
+
 
 
 

@@ -92,11 +92,6 @@
         }
       }
     }
-    .timeline-node {
-      @include breakpoint($bp-480-width) {
-        padding: 38px  14px;
-      }
-    }
     .timeline-line {
       .timeline-holder {
         .timeline-node-desc {
@@ -112,29 +107,47 @@
       }
     }
     #timeline-line-full-right {
-      @include breakpoint($bp-480-width) {
-        top: 40px;
-      }
+      top: 35px;
       .title {
-        margin: 0;
+        margin: 0 0 0 14px;
+        line-height: 30px;
         &:hover {
           color: #000;
         }
       }
       .arrow {
-        padding-right: 20px;
-        margin-right: 6px;
+        background: none;
+        width: 36px;
+        height: 27px;
+        font-size: 27px;
+        font-family: 'ico-font';
+        display: block;
+        &:before {
+          content: '\e615';
+          color: #56000A;
+        }
       }
     }
     #timeline-line-full-left {
-      @include breakpoint($bp-480-width) {
-        top: 40px;
-      }
+      top: 35px;
       .title {
-        margin: 0;
+        margin: 0 10px 0 0;
+        line-height: 30px;
+        &:hover {
+          color: #000;
+        }
       }
       .arrow {
-        padding-left: 20px;
+        background: none;
+        width: 36px;
+        height: 27px;
+        font-size: 27px;
+        font-family: 'ico-font';
+        display: block;
+        &:before {
+          content: '\e614';
+          color: $microsite-arrow;
+        }
       }
     }
   }

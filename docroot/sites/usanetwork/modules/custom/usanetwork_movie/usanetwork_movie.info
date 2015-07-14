@@ -95,6 +95,7 @@ features[variable][] = node_options_movie
 features[variable][] = node_preview_movie
 features[variable][] = node_submitted_movie
 features[variable][] = representative_image_field_node_movie
+features[variable][] = xmlsitemap_settings_node_movie
 features_exclude[dependencies][gigya] = gigya
 features_exclude[dependencies][usanetwork_gallery_content] = usanetwork_gallery_content
 features_exclude[field_base][field_gigya_share_bar] = field_gigya_share_bar

@@ -3227,32 +3227,34 @@ function _usanetwork_tv_shows_mb_block() {
         $featured_show = node_load($matches[2]);
       }
       if (!empty($featured_show) && $featured_show->type == 'tv_show') {
-        $is_first = ($i == 0) ? TRUE : FALSE;
-        $i++;
-        $cover_media = usanetwork_core_api_get_content_image('node', $featured_show);
-        $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $featured_show, 'field_usa_tv_tune_in_date', 'value');
-        if (!empty($usa_tv_tune_in_date)) {
-          $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);
-        }
-        $promos[] = array(
-          'url' => url('node/' . $featured_show->nid),
-          'image' => array(
-            'mobile' => !empty($cover_media)
+        if ($featured_show->status) {
+          $is_first = ($i == 0) ? TRUE : FALSE;
+          $i++;
+          $cover_media = usanetwork_core_api_get_content_image('node', $featured_show);
+          $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $featured_show, 'field_usa_tv_tune_in_date', 'value');
+          if (!empty($usa_tv_tune_in_date)) {
+            $usa_tv_tune_in_date = explode('<br>', $usa_tv_tune_in_date);
+          }
+          $promos[] = array(
+            'url' => url('node/' . $featured_show->nid),
+            'image' => array(
+              'mobile' => !empty($cover_media)
                 ? image_style_url('719x414', $cover_media) : NULL,
-            'desktop' => !empty($cover_media)
+              'desktop' => !empty($cover_media)
                 ? ($is_first
                   ? image_style_url('927x756', $cover_media)
                   : image_style_url('456x372', $cover_media)
                 )
                 : NULL,
-          ),
-          'icon_type' => 'about-show-icon-default',
-          'caption' => !empty($usa_tv_tune_in_date[0]) ? $usa_tv_tune_in_date[0] : '',
-          'title' => $featured_show->title,
-          'description' => !empty($usa_tv_tune_in_date[1]) ? $usa_tv_tune_in_date[1] : '',
-          'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
-          'is_first' => $is_first,
-        );
+            ),
+            'icon_type' => 'about-show-icon-default',
+            'caption' => !empty($usa_tv_tune_in_date[0]) ? $usa_tv_tune_in_date[0] : '',
+            'title' => $featured_show->title,
+            'description' => !empty($usa_tv_tune_in_date[1]) ? $usa_tv_tune_in_date[1] : '',
+            'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
+            'is_first' => $is_first,
+          );
+        }
       }
     }
     $advert_block = module_invoke('mps', 'block_view', 'topbox');

@@ -536,30 +536,32 @@ function _usanetwork_movies_mb_block() {
         $featured_movie = node_load($matches[2]);
       }
       if (!empty($featured_movie) && $featured_movie->type == 'movie') {
-        $is_first = ($i == 0) ? TRUE : FALSE;
-        $i++;
-        $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
-        $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
-        $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
-        $promos[] = array(
-          'url' => url('node/' . $featured_movie->nid),
-          'image' => array(
-            'mobile' => !empty($cover_media)
+        if ($featured_movie->status) {
+          $is_first = ($i == 0) ? TRUE : FALSE;
+          $i++;
+          $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
+          $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
+          $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
+          $promos[] = array(
+            'url' => url('node/' . $featured_movie->nid),
+            'image' => array(
+              'mobile' => !empty($cover_media)
                 ? image_style_url('719x414', $cover_media) : NULL,
-            'desktop' => !empty($cover_media)
+              'desktop' => !empty($cover_media)
                 ? ($is_first
                   ? image_style_url('927x756', $cover_media)
                   : image_style_url('456x372', $cover_media)
                 )
                 : NULL,
-          ),
-          'icon_type' => 'about-show-icon-default',
-          'caption' => $caption,
-          'title' => $featured_movie->title,
-          'description' => $show_time,
-          'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
-          'is_first' => $is_first,
-        );
+            ),
+            'icon_type' => 'about-show-icon-default',
+            'caption' => $caption,
+            'title' => $featured_movie->title,
+            'description' => $show_time,
+            'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
+            'is_first' => $is_first,
+          );
+        }
       }
     }
     $advert_block = module_invoke('mps', 'block_view', 'topbox');

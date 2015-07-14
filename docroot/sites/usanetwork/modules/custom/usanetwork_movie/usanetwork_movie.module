@@ -16,7 +16,7 @@ function usanetwork_movie_menu() {
 
   $items['movies'] = array(
     'title' => t('Movies'),
-    'page callback' => 'usanetwork_tv_shows_blank_page',
+    'page callback' => 'usanetwork_movies_blank_page',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
   );
@@ -182,6 +182,35 @@ function usanetwork_movie_theme($existing, $type, $theme, $path) {
         'description' => NULL,
       ),
       'template' => 'templates/usanetwork-movie-main-block',
+    ),
+    'usanetwork_movie_consumptionator_related_items_container' => array(
+      'variables' => array(
+        'related_items_block' => NULL,
+        'load_more_link' => NULL,
+        'items_pre_page_limit' => NULL,
+        'show_nid' => NULL,
+      ),
+      'template' => 'templates/usanetwork-movie-consumptionator-related-items-container',
+    ),
+    'usanetwork_movie_consumptionator_related_items_block' => array(
+      'variables' => array(
+        'ad' => NULL,
+        'related_items' => array(),
+      ),
+      'template' => 'templates/usanetwork-movie-consumptionator-related-items-block',
+    ),
+    'usanetwork_movie_consumptionator_related_item' => array(
+      'variables' => array(
+        'classes' => NULL,
+        'custom_classes' => NULL,
+        'target_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => NULL,
+        'image_mobile' => NULL,
+        'image_desktop' => NULL,
+      ),
+      'template' => 'templates/usanetwork-movie-consumptionator-related-item',
     ),
   );
 }
@@ -650,7 +679,7 @@ function usanetwork_movie_related_content_block() {
     }
   }
 
-  $related_content = _usanetwork_movie_cache_get_limited_related_show_content($movie_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
+  $related_content = _usanetwork_movie_cache_get_limited_related_movie_content($movie_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
 
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
@@ -659,7 +688,7 @@ function usanetwork_movie_related_content_block() {
       'usanetwork_movie_page_context' => 'moviepage',
     ), 'setting');
 
-    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
+    $block_of_items = _usanetwork_movie_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
     $load_more_link = &drupal_static('load_more_link');
     $load_more_link = TRUE;
     return theme('usanetwork_movie_related_items_container', array(
@@ -675,8 +704,8 @@ function usanetwork_movie_related_content_block() {
 }
 
 
-function _usanetwork_movie_cache_get_limited_related_show_content($movie_node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
-  $data = _usanetwork_movie_cache_get_related_show_content($movie_node);
+function _usanetwork_movie_cache_get_limited_related_movie_content($movie_node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+  $data = _usanetwork_movie_cache_get_related_movie_content($movie_node);
 
   if (!empty($data)) {
     if ($limit == 0) {
@@ -698,11 +727,11 @@ function _usanetwork_movie_cache_get_limited_related_show_content($movie_node, $
  * @param $accurate - if true cache will be create if it does not exist
  * @return bool|int|null|object|stdClass
  */
-function _usanetwork_movie_cache_get_related_show_content($movie_node, $full_object = FALSE, $accurate = FALSE) {
+function _usanetwork_movie_cache_get_related_movie_content($movie_node, $full_object = FALSE, $accurate = FALSE) {
   $data = cache_get('usa_movie_related_' . $movie_node->nid);
 
   if (!$accurate && empty($data)) {
-    _usanetwork_movie_cache_set_related_show_content($movie_node);
+    _usanetwork_movie_cache_set_related_movie_content($movie_node);
 
     $data = cache_get('usa_movie_related_' . $movie_node->nid);
   }
@@ -717,7 +746,7 @@ function _usanetwork_movie_cache_get_related_show_content($movie_node, $full_obj
  *
  * @param $movie_node
  */
-function _usanetwork_movie_cache_set_related_show_content($movie_node) {
+function _usanetwork_movie_cache_set_related_movie_content($movie_node) {
   $cached_data = usanetwork_movie_get_related_content($movie_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE);
 
   if (!empty($cached_data)) {
@@ -1126,7 +1155,7 @@ function usanetwork_movie_get_related_content_ajax($movie_node, $start_from = 0,
   );
 
   $is_even = (($start_from + 1) % 2 == 0) ? TRUE : FALSE;
-  $related_content = _usanetwork_movie_cache_get_limited_related_show_content($movie_node, $start_from, $limit);
+  $related_content = _usanetwork_movie_cache_get_limited_related_movie_content($movie_node, $start_from, $limit);
 
   if (!empty($related_content)) {
     $response['found'] = TRUE;
@@ -1337,4 +1366,299 @@ function usanetwork_movie_render_cast_crew_block() {
     }
   }
   return '';
+}
+
+/**
+ * Returns limited number of cached records for gallery page.
+ *
+ * @param $movie_node
+ * @param int $start_from
+ * @param $limit = 0, if = 0 it returns all data.
+ */
+function _usanetwork_movie_cache_get_limited_related_content($movie_node, $node_type, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+  $data = _usanetwork_movie_cache_get_related_content($movie_node, $node_type);
+
+  if (!empty($data)) {
+    if ($limit == 0) {
+      return array_splice($data, $start_from, count($data));
+    }
+    else {
+      return array_splice($data, $start_from, $limit);
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Pulls from cache a list of node and files of related show for gallery page. If the cache is empty - it makes the data.
+ *
+ * @param $movie_node
+ * @param $full_object - if true returns full object of Drupal cache
+ * @param $accurate - if true cache will be create if it does not exist
+ * @return bool|int|null|object|stdClass
+ */
+function _usanetwork_movie_cache_get_related_content($movie_node, $node_type, $full_object = FALSE, $accurate = FALSE) {
+  $cache_name = _usanetwork_movie_create_related_content_cache_name($movie_node->nid, $node_type);
+  $data = cache_get($cache_name);
+
+  if (!$accurate && empty($data)) {
+    _usanetwork_movie_cache_set_related_content($movie_node, $node_type);
+
+    $data = cache_get($cache_name);
+  }
+
+  return $full_object
+    ? $data
+    : $data->data;
+}
+
+/**
+ * Caches a list of node and files of related movie for gallery page.
+ *
+ * @param $movie_node
+ */
+function _usanetwork_movie_cache_set_related_content($movie_node, $node_type) {
+  $cached_data = usanetwork_movie_get_related_content($movie_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE, $node_type, USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUIZ_QUEUE);
+  if (!empty($cached_data)) {
+    foreach ($cached_data as $cached_id => &$cached_data_item) {
+      $entity = entity_load($cached_data_item->entity_type, array($cached_data_item->entity_id));
+      if (isset($entity[$cached_data_item->entity_id])) {
+        $entity = $entity[$cached_data_item->entity_id];
+      }
+      else {
+        continue;
+      }
+      if (!empty($entity->field_promo_image_override)) {
+        $field_image_override_items = field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override');
+
+        if (!empty($field_image_override_items)) {
+          $field_image_override = reset($field_image_override_items);
+          $content_image = $field_image_override['uri'];
+        }
+      }
+      else {
+        $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $entity);
+      }
+      $media_icon = usanetwork_core_api_get_media_icon($cached_data_item->entity_type, $cached_data_item->entity_id);
+
+      if (!empty($content_image)) {
+        $cached_data_item->raw_image_uri = $content_image;
+      }
+
+      $cached_data_item->media_icon = $media_icon;
+
+      if ($cached_data_item->entity_type !== 'file') {
+        if (!empty($entity->field_sponsored)) {
+          $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+          $cached_data_item->sponsored = $field_sponsored;
+        }
+      }
+    }
+  }
+  $cache_name = _usanetwork_movie_create_related_content_cache_name($movie_node->nid, $node_type);
+  cache_set($cache_name, $cached_data);
+}
+
+/*
+ * Create cache name for related content blocks.
+ */
+function _usanetwork_movie_create_related_content_cache_name($movie_nid, $node_type) {
+  return 'usa_movie_related_' . $node_type . '_' . $movie_nid;
+}
+
+/*
+* Renders block of items (default number of items in the block is 6)
+ */
+function usanetwork_movie_consumptionator_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
+  if (!empty($data)) {
+
+    $ad_id = intval($start_from / $limit);
+
+    $theme_variables = array(
+      'related_items' => array(),
+      'ad' => $start_from == 0 ? FALSE : TRUE,
+      'ad_id' => $ad_id,
+    );
+
+    foreach ($data as $data_index => $data_item) {
+      $theme_variables['related_items'][]['render'] = _usanetwork_movie_consumptionator_render_related_content_item_default($data_item);
+    }
+
+    return theme('usanetwork_movie_consumptionator_related_items_block', $theme_variables);
+  }
+
+  return '';
+}
+
+/**
+ * Renders default item.
+ */
+function _usanetwork_movie_consumptionator_render_related_content_item_default($data) {
+  $classes = array();
+  $desktop_image = $mobile_image = '';
+  $target_url = '<front>';
+
+  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
+      'file',
+      'node'
+    ))
+  ) {
+    $target_url = url($data->entity_type . '/' . $data->entity_id);
+  }
+
+  if (!empty($data->raw_image_uri)) {
+    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
+    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
+  }
+
+  if (!empty($data->sponsored)) {
+    $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
+  }
+
+  $theme_variables = array(
+    'custom_classes' => implode(" ", $classes),
+    'target_url' => $target_url,
+    'caption' => !empty($data->promo_topic)
+      ? htmlspecialchars($data->promo_topic)
+      : '',
+    'title' => !empty($data->promo_title)
+      ? htmlspecialchars($data->promo_title)
+      : $data->title,
+    'additional' => !empty($data->promo_description)
+      ? htmlspecialchars($data->promo_description)
+      : '',
+    'image_desktop' => $desktop_image,
+    'image_mobile' => $mobile_image,
+    'media_icon' => $data->media_icon,
+    'content_id' => isset($content_id) ? $content_id : FALSE,
+  );
+
+  return theme('usanetwork_movie_consumptionator_related_item', $theme_variables);
+}
+
+function usanetwork_movie_consumptionator_get_ymal_item($node) {
+  return NULL;
+}
+
+/**
+ * Returns limited number of cached records for consumptionator page.
+ *
+ * @param $movie_node
+ * @param int $start_from
+ * @param $limit = 0, if = 0 it returns all data.
+ */
+function _usanetwork_movie_cache_get_limited_related_video_content($movie_node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+  $data = _usanetwork_movie_cache_get_related_video_content($movie_node);
+
+  if (!empty($data)) {
+    if ($limit == 0) {
+      return array_splice($data, $start_from, count($data));
+    }
+    else {
+      return array_splice($data, $start_from, $limit);
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Pulls from cache a list of node and files of related movie for consumptionator page. If the cache is empty - it makes the data.
+ *
+ * @param $movie_node
+ * @param $full_object - if true returns full object of Drupal cache
+ * @param $accurate - if true cache will be create if it does not exist
+ * @return bool|int|null|object|stdClass
+ */
+function _usanetwork_movie_cache_get_related_video_content($movie_node, $full_object = FALSE, $accurate = FALSE) {
+  $data = cache_get('usa_movie_related_video_' . $movie_node->nid);
+
+  if (!$accurate && empty($data)) {
+    _usanetwork_movie_cache_set_related_video_content($movie_node);
+
+    $data = cache_get('usa_movie_related_video_' . $movie_node->nid);
+  }
+
+  return $full_object
+    ? $data
+    : $data->data;
+}
+
+/**
+ * Caches a list of node and files of related movie for consumptionator page.
+ *
+ * @param $movie_node
+ */
+function _usanetwork_movie_cache_set_related_video_content($movie_node) {
+  $cached_data = usanetwork_movie_get_related_video_content($movie_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE);
+
+  if (!empty($cached_data)) {
+    foreach ($cached_data as $cached_id => &$cached_data_item) {
+      $entity = entity_load($cached_data_item->entity_type, array($cached_data_item->entity_id));
+      if (isset($entity[$cached_data_item->entity_id])) {
+        $entity = $entity[$cached_data_item->entity_id];
+      }
+      else {
+        continue;
+      }
+      if (!empty($entity->field_promo_image_override)) {
+        $field_image_override_items = field_get_items($cached_data_item->entity_type, $entity, 'field_promo_image_override');
+
+        if (!empty($field_image_override_items)) {
+          $field_image_override = reset($field_image_override_items);
+          $content_image = $field_image_override['uri'];
+        }
+      }
+      else {
+        $content_image = usanetwork_core_api_get_content_image($cached_data_item->entity_type, $entity);
+      }
+      $media_icon = usanetwork_core_api_get_media_icon($cached_data_item->entity_type, $cached_data_item->entity_id);
+
+      if (!empty($content_image)) {
+        $cached_data_item->raw_image_uri = $content_image;
+      }
+
+      $cached_data_item->media_icon = $media_icon;
+
+      if ($cached_data_item->entity_type !== 'file') {
+        if (!empty($entity->field_sponsored)) {
+          $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
+          $cached_data_item->sponsored = $field_sponsored;
+        }
+      }
+    }
+  }
+
+  cache_set('usa_movie_related_video_' . $movie_node->nid, $cached_data);
+}
+
+/**
+ * Returns related content of $movie_node TV Movie for consumptionator page.
+ * @param $movie_node
+ * @param int $start_from
+ * @param int $limit
+ */
+function usanetwork_movie_get_related_video_content($movie_node, $start_from = 0, $limit = 1) {
+  $sorted_content = array();
+  $left_to_sort = USA_TV_SHOW_RELATED_CONSUMPTIONATOR_VIDEOS_QUEUE;
+
+  $content = usanetwork_movie_get_related_content($movie_node, $start_from, $limit);
+
+  if (!empty($content) && $left_to_sort > 0) {
+    foreach ($content as $content_index => $content_item) {
+      if ($left_to_sort <= 0) {
+        break;
+      }
+
+      if ($content_item->bundle == 'mpx_video_1' || $content_item->bundle == 'mpx_video_2') {
+        $sorted_content[] = $content_item;
+
+        unset($content[$content_index]);
+        $left_to_sort--;
+      }
+    }
+  }
+
+  return array_merge($sorted_content, $content);
 }

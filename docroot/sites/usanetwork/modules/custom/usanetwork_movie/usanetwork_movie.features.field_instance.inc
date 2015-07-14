@@ -316,7 +316,7 @@ function usanetwork_movie_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_movie_latest_feed',
-    'label' => 'Show content feed on Movie page',
+    'label' => 'Movie content feed on Movie page',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -639,6 +639,64 @@ function usanetwork_movie_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-movie-field_movies_latest_lnd_feed'
+  $field_instances['node-movie-field_movies_latest_lnd_feed'] = array(
+    'bundle' => 'movie',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_movies_latest_lnd_feed',
+    'label' => 'Movie content feed on Consumptionator page',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 13,
     ),
   );
 
@@ -997,6 +1055,8 @@ function usanetwork_movie_field_default_field_instances() {
   t('Cover Media');
   t('External Links');
   t('Movie Type');
+  t('Movie content feed on Consumptionator page');
+  t('Movie content feed on Movie page');
   t('Primary Color');
   t('Primary Genre');
   t('Promo Violator');
@@ -1005,7 +1065,6 @@ function usanetwork_movie_field_default_field_instances() {
   t('Secondary Color');
   t('Secondary Genre');
   t('Short Synopsis');
-  t('Show content feed on Movie page');
   t('Specify the title to be displayed in place of the promotional URL (required). If any, enter a promotional URL  (e.g. Twitter, Facebook).');
   t('Synopsis');
   t('Tags');

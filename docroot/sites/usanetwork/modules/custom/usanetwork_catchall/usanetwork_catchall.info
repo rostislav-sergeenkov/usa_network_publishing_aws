@@ -63,6 +63,7 @@ features[field_instance][] = node-catchall_page-field_enable_nitro
 features[field_instance][] = node-catchall_page-field_gigya_share_bar
 features[field_instance][] = node-catchall_page-field_ideamelt_action_type
 features[field_instance][] = node-catchall_page-field_ideamelt_object_type
+features[field_instance][] = node-catchall_page-field_movie
 features[field_instance][] = node-catchall_page-field_nitro_action_name
 features[field_instance][] = node-catchall_page-field_refresh_time
 features[field_instance][] = node-catchall_page-field_send_ideamelt_notification

@@ -341,7 +341,7 @@ function usanetwork_tv_shows_color_movie_css_class($movie_node) {
   }
 
   module_load_include('inc', 'pathauto', 'pathauto');
-  $movie_css_class =  pathauto_cleanstring($movie_node->title);
+  $movie_css_class = 'movie-' . drupal_clean_css_identifier(pathauto_cleanstring($movie_node->title));
 
   //set show css class from show in cache
   cache_set('show_id_' . $movie_id, $movie_css_class, 'show_class');

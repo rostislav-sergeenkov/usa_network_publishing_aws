@@ -24,9 +24,14 @@
 #home #home-logo {
   width: 42%;
 }
-#home #home-sponsored {
+#home #home-sponsored.camry2015 {
   width: 24%;
-  margin-bottom: 3.1%;
+}
+#home #home-sponsored.camry {
+  width: 20%;
+}
+#home #home-sponsored.corolla {
+  width: 21%;
 }
 #home #home-tunein,
 #home #home-description {

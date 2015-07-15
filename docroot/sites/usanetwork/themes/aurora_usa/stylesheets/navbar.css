@@ -24,6 +24,16 @@
   background: #525252;
 }
 
+.page-movies .show-color {
+  background: #3d415b;
+}
+.page-movies .show-color.secondary {
+  background: #19204c;
+}
+.page-movies .show-color.hover-avail:hover {
+  background: #5c6289;
+}
+
 @font-face {
   font-family: "avalonextra_light";
   src: url("../fonts/Avalon-XLight-webfont.eot?iefix") format("eot");

@@ -995,7 +995,7 @@ Project demo: http://shindiristudio.com/timeline
           // Make wrapper elements
           if (data.options.yearsOn && Object.keys(yearsArr).length > 1) {
           html = '\n' +
-    '		<div id="timeline-line-full-left"><span class="title">Season 1</span><span class="arrow"></span>' +
+    '		<div id="timeline-line-full-left"><span class="title">Season ' + Object.keys(yearsArr)[0] + '</span><span class="arrow"></span>' +
     '</div><div id="timeline-line-left"></div><div id="timeline-line-right"></div><div id="timeline-line-full-right"><span class="arrow"></span><span class="title">Season ' + Object.keys(yearsArr)[(Object.keys(yearsArr).length - 1)] + '</span></div>\n' +
     '		<div class="timeline-holder">\n' +
     '			<div class="timeline-wrapper">\n';

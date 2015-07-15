@@ -305,7 +305,7 @@ ul, li {
 }
 .timelineFlat #timeline-line-right {
   background: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-black.svg') no-repeat 0 0 transparent;
-	right: -40px;
+	right: -30px;
 }
 
 /* timeline */
@@ -404,7 +404,7 @@ ul, li {
 }
 .timelineFlat .timeline-item span {
 	display: block;
-	margin: 0px 20px 10px;
+	margin: 0 20px 10px;
 	height: 75px;
 }
 .timelineFlat .timeline-item .read-more {

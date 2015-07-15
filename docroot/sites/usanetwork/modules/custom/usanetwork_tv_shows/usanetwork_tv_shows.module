@@ -370,7 +370,7 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-all-shows-mb',
     ),
-    'usanetwork_tv_shows_consumptionator_related_items_container' => array(
+    'usanetwork_tv_show_consumptionator_related_items_container' => array(
       'variables' => array(
         'related_items_block' => NULL,
         'load_more_link' => NULL,
@@ -1802,7 +1802,7 @@ function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0,
         'consumpt_post',
         'person',
         'quiz',
-        'timeline_gallery',
+//        'timeline_gallery',
         'catchall_page'),
       'operator' => 'IN',
     ),
@@ -2071,7 +2071,7 @@ function _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_no
  * @param int $start_from
  * @param $limit = 0, if = 0 it returns all data.
  */
-function _usanetwork_tv_shows_cache_get_limited_related_video_content($tv_show_node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+function _usanetwork_tv_show_cache_get_limited_related_video_content($tv_show_node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
   $data = _usanetwork_tv_shows_cache_get_related_video_content($tv_show_node);
 
   if (!empty($data)) {
@@ -3371,7 +3371,7 @@ function _usanetwork_tv_shows_all_shows_block_item($show) {
 /**
  * Returns "You may also like" rendered item.
  */
-function usanetwork_tv_shows_consumptionator_get_ymal_item($show_node) {
+function usanetwork_tv_show_consumptionator_get_ymal_item($show_node) {
   if (!empty($show_node->field_usa_tv_related_shows)) {
     $related_show_field = field_get_items('node', $show_node, 'field_usa_tv_related_shows');
 
@@ -3412,7 +3412,7 @@ function usanetwork_tv_shows_consumptionator_get_ymal_item($show_node) {
 /*
 * Renders block of items (default number of items in the block is 6)
  */
-function usanetwork_tv_shows_consumptionator_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
+function usanetwork_tv_show_consumptionator_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
   if (!empty($data)) {
 
     $ad_id = intval($start_from / $limit);
@@ -3528,7 +3528,7 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_ymal($
  * @param int $start_from
  * @param $limit = 0, if = 0 it returns all data.
  */
-function _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, $node_type, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+function _usanetwork_tv_show_cache_get_limited_related_content($tv_show_node, $node_type, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
   $data = _usanetwork_tv_shows_cache_get_related_content($tv_show_node, $node_type);
 
   if (!empty($data)) {

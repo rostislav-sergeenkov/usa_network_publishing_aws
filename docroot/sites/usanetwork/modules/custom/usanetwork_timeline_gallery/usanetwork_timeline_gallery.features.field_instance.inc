@@ -46,7 +46,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_episode',
     'label' => 'Episode',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -95,7 +95,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_season',
     'label' => 'Season',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),

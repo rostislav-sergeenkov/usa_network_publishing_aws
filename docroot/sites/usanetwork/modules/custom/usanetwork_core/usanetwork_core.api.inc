@@ -241,3 +241,37 @@ function _usanetwork_core_api_get_node_image_field_names() {
     ),
   );
 }
+
+function usanetwork_core_api_get_tv_content_fields_names() {
+  return array(
+    'tv_show' => 'field_show',
+    'movie' => 'field_movie',
+  );
+}
+
+function usanetwork_core_api_get_tv_content_node($entity) {
+  $field_names = usanetwork_core_api_get_tv_content_fields_names();
+  if (isset($entity->nid)) {
+    $entity_wrapper = entity_metadata_wrapper('node', $entity);
+  }
+  else {
+    $entity_wrapper = entity_metadata_wrapper('file', $entity);
+  }
+  foreach($field_names as $tv_content_type => $field_name) {
+    if (!empty($entity->$field_name)) {
+      return $entity_wrapper->$field_name->value();
+    }
+  }
+  return NULL;
+}
+
+function usanetwork_core_api_check_display_relate_content($node) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  if ($node->type == 'tv_show') {
+    $check = $node_wrapper->field_tvs_show_latest_lnd_feed->value();
+  }
+  elseif ($node->type == 'movie') {
+    $check = $node_wrapper->field_movies_latest_lnd_feed->value();
+  }
+  return $check;
+}

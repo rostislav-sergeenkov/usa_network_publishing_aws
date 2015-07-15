@@ -106,60 +106,6 @@
         }
       }
     }
-    #timeline-line-full-right {
-      top: 35px;
-      .title {
-        margin: 0 0 0 14px;
-        line-height: 30px;
-        &:hover {
-          color: #000;
-        }
-      }
-      .arrow {
-        background: none;
-        width: 36px;
-        height: 27px;
-        font-size: 27px;
-        font-family: 'ico-font';
-        display: block;
-        &:before {
-          content: '\e615';
-          color: #56000A;
-        }
-        &:hover {
-          &:before {
-            color: #000;
-          }
-        }
-      }
-    }
-    #timeline-line-full-left {
-      top: 35px;
-      .title {
-        margin: 0 10px 0 0;
-        line-height: 30px;
-        &:hover {
-          color: #000;
-        }
-      }
-      .arrow {
-        background: none;
-        width: 36px;
-        height: 27px;
-        font-size: 27px;
-        font-family: 'ico-font';
-        display: block;
-        &:before {
-          content: '\e614';
-          color: $microsite-arrow;
-        }
-        &:hover {
-          &:before {
-            color: #000;
-          }
-        }
-      }
-    }
   }
 }
 .touch {

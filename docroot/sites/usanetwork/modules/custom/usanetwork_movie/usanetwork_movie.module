@@ -16,7 +16,7 @@ function usanetwork_movie_menu() {
 
   $items['movies'] = array(
     'title' => t('Movies'),
-    'page callback' => 'usanetwork_movies_blank_page',
+    'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
   );

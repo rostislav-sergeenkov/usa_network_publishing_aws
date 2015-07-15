@@ -117,6 +117,8 @@ $tonight-section-back: #2e2c2d;
 $gallery-description-back : #1f1f1f;
 $source-link:  #e5e5e5;
 $usa-movie-back: #3d415b;
+$usa-movie-secondary-back: #434664;
+$usa-movie-tertiary-back: #33374e;
 $microsite-arrow: #56000a;
 
 .show-color-border, .asset-img.show {
@@ -146,17 +148,20 @@ $microsite-arrow: #56000a;
     }
   }
 }
-.page-movies {
+.page-movies, .node-type-movie {
   .show-color {
     background: $usa-movie-back;
     &.secondary {
-      background: adjust-color($usa-movie-back, $saturation: 30, $lightness: -10);
+      background: $usa-movie-secondary-back;
     }
-    &.hover-avail {
+    &.hover-avail, &.tertiary {
       &:hover {
-        background: lighten($usa-movie-back, 15%);
+        background: $usa-movie-tertiary-back;
       }
     }
+  }
+  .show-border {
+    border-color: $usa-movie-back;
   }
 }
 

@@ -127,6 +127,11 @@
                     }
                   },
                   tap: function (event, target) {
+
+                    if ($(target).hasClass('slides')) {
+                      return false;
+                    }
+
                     var click_on_opened = $(target).closest('li.active').length > 0;
                     var tapHandler = function() {
                       if ($(target).attr('href')) {
@@ -186,7 +191,12 @@
                     if (($carousel.find('li.active').length > 0) && ($carousel.hasClass('stop'))) {
                       $carousel.unbind('show:close');
                       $carousel.on('show:close', function() {
+                        if ($(target).closest('a.show-open').hasClass('active')) {
+                          $(target).closest('a.show-open').removeClass('active');
+                          return false;
+                        }
                         if (!$(target).closest('li.active').length > 0) {
+                          $carousel.find('a.show-open.active').removeClass('active');
                           tapHandler();
                         }
                       });
@@ -368,6 +378,7 @@
     },
     showOpen: function (target) {
       var current_item = target.closest('li');
+      var current_item_show_open_link = current_item.find('a.show-open');
       var current_item_node = current_item.find('.node').eq(0);
       var carousel = target.closest('ul');
       var current_left = parseInt(carousel.css('left'));
@@ -408,6 +419,7 @@
         Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
       }
       current_item.addClass('active');
+      current_item_show_open_link.addClass('active');
       current_item_node.addClass('open');
       current_item.find('.show-open').css('max-width', item_width);
       setTimeout(function () {

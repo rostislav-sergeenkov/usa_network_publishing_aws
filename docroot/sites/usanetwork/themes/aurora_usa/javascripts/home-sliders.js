@@ -298,11 +298,18 @@
 
       // show next button
       function showNextbutton() {
-        $(nextButton).animate({
-          'right': '+=10%'
-        }, timeAnimateShow, nameAnimation, function () {
-          $(this).removeClass('disable');
+        $(nextButton).velocity({
+          'right': '0'
+        }, timeAnimateShow, nameAnimation, {
+          complete: function () {
+            $(nextButton).removeClass('disable');
+          }
         });
+        //$(nextButton).animate({
+        //  'right': '+=10%'
+        //}, timeAnimateShow, nameAnimation, function () {
+        //  $(this).removeClass('disable');
+        //});
       }
 
       // show slide content
@@ -335,14 +342,12 @@
 
       // hide next button
       function hideNextButton() {
-        if (!nextButton.hasClass('disable')) {
-          nextButton.fadeOut(200, function () {
-            $(this).addClass('disable').css({
-              'display': 'block',
-              'right': '-10%'
-            });
+        nextButton.fadeOut(200, function () {
+          $(this).addClass('disable').css({
+            'display': 'block',
+            'right': '-10%'
           });
-        }
+        });
       }
 
       // hide slide content

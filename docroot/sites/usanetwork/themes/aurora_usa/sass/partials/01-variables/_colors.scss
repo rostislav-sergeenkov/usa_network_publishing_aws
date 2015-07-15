@@ -146,17 +146,20 @@ $microsite-arrow: #56000a;
     }
   }
 }
-.page-movies {
+.page-movies, .node-type-movie {
   .show-color {
     background: $usa-movie-back;
     &.secondary {
       background: adjust-color($usa-movie-back, $saturation: 30, $lightness: -10);
     }
-    &.hover-avail {
+    &.hover-avail, &.tertiary {
       &:hover {
         background: lighten($usa-movie-back, 15%);
       }
     }
+  }
+  .show-border {
+    border-color: $usa-movie-back;
   }
 }
 

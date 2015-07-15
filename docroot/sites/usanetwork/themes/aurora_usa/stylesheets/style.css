@@ -81,14 +81,17 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
   background: #525252;
 }
 
-.page-movies .show-color {
+.page-movies .show-color, .node-type-movie .show-color {
   background: #3d415b;
 }
-.page-movies .show-color.secondary {
+.page-movies .show-color.secondary, .node-type-movie .show-color.secondary {
   background: #19204c;
 }
-.page-movies .show-color.hover-avail:hover {
+.page-movies .show-color.hover-avail:hover, .page-movies .show-color.tertiary:hover, .node-type-movie .show-color.hover-avail:hover, .node-type-movie .show-color.tertiary:hover {
   background: #5c6289;
+}
+.page-movies .show-border, .node-type-movie .show-border {
+  border-color: #3d415b;
 }
 
 @font-face {

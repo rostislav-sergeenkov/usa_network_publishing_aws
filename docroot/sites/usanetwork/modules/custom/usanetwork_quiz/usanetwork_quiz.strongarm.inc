@@ -149,6 +149,9 @@ function usanetwork_quiz_strongarm() {
       'microsite_output' => array(
         'custom_settings' => TRUE,
       ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

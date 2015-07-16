@@ -698,6 +698,13 @@ function usanetwork_mpx_video_file_presave($file) {
         $show = $node->title;
       }
     }
+    if ((count($categories) == 2) && ($categories[1] == 'Movies')) {
+      $node = _usanetwork_mpx_video_node_load_by_title($file->filename, 'movie');
+      if (isset($node->nid)) {
+        $file->field_movie[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
+        $movie = $node->title;
+      }
+    }
   }
 
   $unique_saved_category = array_unique($saved_category);
@@ -763,8 +770,9 @@ function usanetwork_mpx_video_file_presave($file) {
       if ($set_alias) {
         if (isset($show)) {
           $new_path = pathauto_cleanstring(str_replace(' ', '', $show)) . '/videos/' . pathauto_cleanstring($title);
-        }
-        else {
+        } elseif (isset($movie)) {
+          $new_path = 'movies/' . pathauto_cleanstring($movie) . '/videos/' . pathauto_cleanstring($title);
+        } else {
           $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
         }
       }
@@ -1966,11 +1974,14 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($analized
     //check if file is from correct account
     $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
     $mpx_import_account = $mpx_account->import_account;
-    $full_episode = $file->field_mpx_full_episode[$langcode];
-    if (!empty($full_episode)) {
-      $full_episode = reset($full_episode);
+    $full_episode = FALSE;
+    if (isset($file->field_mpx_full_episode[$langcode])) {
+      $full_episode = $file->field_mpx_full_episode[$langcode];
       if (!empty($full_episode)) {
-        $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
+        $full_episode = reset($full_episode);
+        if (!empty($full_episode)) {
+          $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
+        }
       }
     }
 
@@ -1982,11 +1993,13 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($analized
 
     //check if exist show
     $is_show_exist = FALSE;
-    $show = $file->field_show[$langcode];
-    if (!empty($show)) {
-      $show = reset($show);
+    if (isset($file->field_show[$langcode])) {
+      $show = $file->field_show[$langcode];
       if (!empty($show)) {
-        $is_show_exist = TRUE;
+        $show = reset($show);
+        if (!empty($show)) {
+          $is_show_exist = TRUE;
+        }
       }
     }
 

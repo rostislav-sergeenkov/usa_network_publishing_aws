@@ -16768,6 +16768,32 @@ footer h2 {
     bottom: -6px;
   }
 }
+.node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-left, .node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-right {
+  background-image: none;
+}
+.node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-left:after, .node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-right:after {
+  display: block;
+  color: white;
+  font-family: "ico-font";
+  font-size: 28px;
+  left: 50%;
+  margin-left: -14px;
+  margin-top: -14px;
+  position: absolute;
+  top: 50%;
+}
+.node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-left:hover:after, .node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-right:hover:after {
+  color: grey;
+}
+.node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-left:hover:active:after, .node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-right:hover:active:after {
+  color: white;
+}
+.node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-left:after {
+  content: '\e607';
+}
+.node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-right:after {
+  content: '\e608';
+}
 @media (max-width: 640px) {
   .node-type-timeline-gallery .timelineFlat .timeline-line .timeline-holder .timeline-node-desc {
     padding: 4px;

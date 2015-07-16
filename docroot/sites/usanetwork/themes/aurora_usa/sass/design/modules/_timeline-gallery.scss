@@ -92,6 +92,42 @@
         }
       }
     }
+    .timeline-controls {
+      .timeline-left, .timeline-right {
+        background-image: none;
+        &:after {
+          display: block;
+          color: white;
+          font-family: "ico-font";
+          font-size: 28px;
+          left: 50%;
+          margin-left: -14px;
+          margin-top: -14px;;
+          position: absolute;
+          top: 50%;
+        }
+        &:hover {
+          &:after {
+            color: grey;
+          }
+          &:active {
+            &:after {
+              color: white;
+            }
+          }
+        }
+      }
+      .timeline-left {
+        &:after {
+          content: '\e607';
+        }
+      }
+      .timeline-right {
+        &:after {
+          content: '\e608';
+        }
+      }
+    }
     .timeline-line {
       .timeline-holder {
         .timeline-node-desc {

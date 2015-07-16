@@ -12,12 +12,13 @@ include_once 'usanetwork_pathauto.features.inc';
 function usanetwork_pathauto_pathauto_alias_alter(&$alias, array &$context) {
   if (($context['module'] == 'node') && (in_array($context['type'], array('usanetwork_promo', 'person', 'media_gallery', 'quiz', 'catchall_page')))) {
     $node = $context['data']['node'];
-    $movie_field = _usanetwork_get_field_item('node', $node, 'field_movie', 'target_id');
-    if ($movie_field) {
-      $movie = node_load($movie_field);
-      module_load_include('inc', 'pathauto', 'pathauto');
-      $movie_title = pathauto_cleanstring($movie->title);
-      $alias = 'movies/' . $movie_title . '/' . $alias;
+    $tv_content = usanetwork_core_api_get_tv_content_node($node);
+    if ($tv_content) {
+      if ($tv_content->type == 'movie') {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $movie_title = pathauto_cleanstring($tv_content->title);
+        $alias = 'movies/' . $movie_title . '/' . $alias;
+      }
     }
   }
 }

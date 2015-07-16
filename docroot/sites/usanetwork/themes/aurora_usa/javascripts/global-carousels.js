@@ -127,6 +127,11 @@
                     }
                   },
                   tap: function (event, target) {
+
+                    if ($(target).hasClass('slides')) {
+                      return false;
+                    }
+
                     var click_on_opened = $(target).closest('li.active').length > 0;
                     var tapHandler = function() {
                       if ($(target).attr('href')) {
@@ -186,7 +191,12 @@
                     if (($carousel.find('li.active').length > 0) && ($carousel.hasClass('stop'))) {
                       $carousel.unbind('show:close');
                       $carousel.on('show:close', function() {
+                        if ($(target).closest('a.show-open').hasClass('active')) {
+                          $(target).closest('a.show-open').removeClass('active');
+                          return false;
+                        }
                         if (!$(target).closest('li.active').length > 0) {
+                          $carousel.find('a.show-open.active').removeClass('active');
                           tapHandler();
                         }
                       });
@@ -368,6 +378,7 @@
     },
     showOpen: function (target) {
       var current_item = target.closest('li');
+      var current_item_show_open_link = current_item.find('a.show-open');
       var current_item_node = current_item.find('.node').eq(0);
       var carousel = target.closest('ul');
       var current_left = parseInt(carousel.css('left'));
@@ -375,10 +386,21 @@
       var item_width = current_item.width();
 
       if (window.innerWidth >= window_size_desktop_large) {
-        var width = desktop_show_open_width_large;
+
+        var browserName = browserDetect(),
+            widthDiff = window.innerWidth - $(window).innerWidth();
+
+        if (browserName === 'safari' && window.innerWidth - widthDiff >= window_size_desktop_large) {
+          width = desktop_show_open_width_large;
+        } else if (browserName !== 'safari') {
+          if (window.innerWidth >= window_size_desktop_large) {
+            width = desktop_show_open_width_large;
+          }
+        }
       }
+
       if (window.innerWidth < window_size_desktop) {
-        width = window.innerWidth - 2*show_carousel_margin + item_width;
+        width = window.innerWidth - 2 * show_carousel_margin + item_width;
       }
       if (window.innerWidth < window_size_mobile) {
         var scrollWidth = window.innerWidth - document.body.clientWidth;
@@ -386,12 +408,18 @@
       }
       var width_block = width - item_width;
       var left = (window.innerWidth - width_block) / 2 - item_width - current_item.offset()['left'] + current_left;
-      carousel.animate({left: left}, 500);
-      current_item.animate({width: width}, 500, 'easeInCubic');
+
+      carousel.velocity({ left: left }, 500, 'linear');
+      current_item.velocity({ width: width }, 500, 'easeInCubic');
+
+      //carousel.animate({left: left}, 500);
+      //current_item.animate({width: width}, 500, 'easeInCubic');
+
       if(!current_item_node.hasClass('advert-enable')) {
         Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
       }
       current_item.addClass('active');
+      current_item_show_open_link.addClass('active');
       current_item_node.addClass('open');
       current_item.find('.show-open').css('max-width', item_width);
       setTimeout(function () {

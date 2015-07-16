@@ -92,9 +92,40 @@
         }
       }
     }
-    .timeline-node {
-      @include breakpoint($bp-480-width) {
-        padding: 38px  14px;
+    .timeline-controls {
+      .timeline-left, .timeline-right {
+        background-image: none;
+        &:after {
+          display: block;
+          color: white;
+          font-family: "ico-font";
+          font-size: 28px;
+          left: 50%;
+          margin-left: -14px;
+          margin-top: -14px;;
+          position: absolute;
+          top: 50%;
+        }
+        &:hover {
+          &:after {
+            color: grey;
+          }
+          &:active {
+            &:after {
+              color: white;
+            }
+          }
+        }
+      }
+      .timeline-left {
+        &:after {
+          content: '\e607';
+        }
+      }
+      .timeline-right {
+        &:after {
+          content: '\e608';
+        }
       }
     }
     .timeline-line {
@@ -108,18 +139,6 @@
             padding: 4px 2px;
             letter-spacing: -0.5px;
           }
-        }
-      }
-    }
-    #timeline-line-full-right {
-      @include breakpoint($bp-480-width) {
-        top: 40px;
-      }
-    }
-    #timeline-line-full-right {
-      .title {
-        &:hover {
-          color: #000;
         }
       }
     }

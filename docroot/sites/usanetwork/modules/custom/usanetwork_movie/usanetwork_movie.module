@@ -16,7 +16,7 @@ function usanetwork_movie_menu() {
 
   $items['movies'] = array(
     'title' => t('Movies'),
-    'page callback' => 'usanetwork_movies_blank_page',
+    'page callback' => 'usanetwork_tv_shows_blank_page',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
   );
@@ -1663,4 +1663,52 @@ function usanetwork_movie_get_related_video_content($movie_node, $start_from = 0
   }
 
   return array_merge($sorted_content, $content);
+}
+
+/**
+ *  Implements hook_usa_omniture_alter().
+ */
+function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
+  if (!empty($context['menu_item']['path'])) {
+    //all movie page
+    if ($context['menu_item']['path'] == 'movies') {
+      $omniture_variables = array(
+        's.prop2' => t('Movies'),
+        's.prop3' => t('Movies'),
+        's.prop4' => t('Movies : Home'),
+        's.prop10' => t('Movies'),
+      );
+    }
+  }
+  //Movie Landing Page
+  if (!empty($context['entity']) && $context['entity']->type == 'movie') {
+    $omniture_variables = array(
+      's.prop2' => t('Movies'),
+      's.prop3' => t('Movies'),
+      's.prop4' => t('Movies : !movie_title', array(
+        '!movie_title' => $context['entity']->title
+      )),
+      's.prop10' => t('Movies'),
+    );
+  }
+
+  //Consumptionator Pages
+  if (!empty($context['entity']) && in_array($context['entity']->type, array('media_gallery', 'person', 'quiz', 'catchall_page'))) {
+    $movie_field = _usanetwork_get_field_item('node', $context['entity'], 'field_movie', 'target_id');
+    if ($movie_field) {
+      $movie = node_load($movie_field);
+      $omniture_variables = array(
+        's.prop2' => t('Movies'),
+        's.prop3' => t('Movies'),
+        's.prop4' => t('Movies : !movie_title', array(
+          '!movie_title' => $movie->title
+        )),
+        's.prop5' => t('Movies : !movie_title : !content_title', array(
+          '!movie_title' => $movie->title,
+          '!content_title' => $context['entity']->title,
+        )),
+        's.prop10' => t('Movies'),
+      );
+    }
+  }
 }

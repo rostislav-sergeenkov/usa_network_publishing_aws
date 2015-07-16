@@ -90,9 +90,14 @@ function aurora_usa_preprocess_html(&$vars) {
       $vars['classes_array'][] = $movie_class;
     }
     else {
-      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
-      if (!empty($show_id)) {
-        $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
+      $tv_content_node = usanetwork_core_api_get_tv_content_node($entity);
+      if (!empty($tv_content_node)) {
+        if ($tv_content_node->type == 'tv_show') {
+          $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($tv_content_node);
+        }
+        elseif ($tv_content_node->type == 'movie') {
+          $vars['classes_array'][] = usanetwork_tv_shows_color_movie_css_class($tv_content_node);
+        }
       }
     }
   }
@@ -102,9 +107,14 @@ function aurora_usa_preprocess_html(&$vars) {
       $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js');
     }
-    $show_id = _usanetwork_get_field_item('file', $entity, 'field_show', 'target_id');
-    if (!empty($show_id)) {
-      $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($entity);
+    if (!empty($tv_content_node)) {
+      if ($tv_content_node->type == 'tv_show') {
+        $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($tv_content_node);
+      }
+      elseif ($tv_content_node->type == 'movie') {
+        $vars['classes_array'][] = usanetwork_tv_shows_color_movie_css_class($tv_content_node);
+      }
     }
     $full_video = _usanetwork_get_field_item('file', $entity, 'field_mpx_entitlement', 'value');
     if (!empty($full_video) && ($full_video == 'auth')) {
@@ -132,6 +142,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
+  drupal_add_js($theme_path . '/javascripts/velocity.min.js');
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   drupal_add_js($theme_path . '/javascripts/tableheader.js');

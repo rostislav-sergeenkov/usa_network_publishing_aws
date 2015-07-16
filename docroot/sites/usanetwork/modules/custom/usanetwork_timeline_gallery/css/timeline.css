@@ -256,11 +256,11 @@ ul, li {
 }
 .timelineFlat #timeline-line-full-left .arrow:before,
 .timelineFlat #timeline-line-full-right .arrow:before {
-  color: #56000A;
+  color: #000000;
 }
 .timelineFlat #timeline-line-full-left .arrow:hover:before,
 .timelineFlat #timeline-line-full-right .arrow:hover:before {
-  color:#000000;
+  color: #000000;
 }
 .timelineFlat #timeline-line-full-left .arrow:before {
   content: '\e614';
@@ -270,6 +270,7 @@ ul, li {
 }
 .timelineFlat #timeline-line-full-left .title,
 .timelineFlat #timeline-line-full-right .title {
+	background: none;
   display: inline-block;
   font-size: 1em;
   line-height: 27px;

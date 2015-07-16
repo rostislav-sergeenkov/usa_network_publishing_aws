@@ -4,7 +4,7 @@
 .movie-<?php print $node_code; ?>.show-color-border:before, .movie-<?php print $node_code; ?>.asset-img.show:before {
   background: <?php print $primary_color_code; ?>;
 }
-.movie-<?php print $node_code; ?>.show-color.show-font, .movie-<?php print $node_code; ?> .show-color.show-font {
+.movie-<?php print $node_code; ?>:not(.page-node-microsite).show-color.show-font, .movie-<?php print $node_code; ?>:not(.page-node-microsite) .show-color.show-font {
  color: <?php print $primary_color_code; ?> !important;
 }
 .movie-<?php print $node_code; ?>.item-hover:hover {

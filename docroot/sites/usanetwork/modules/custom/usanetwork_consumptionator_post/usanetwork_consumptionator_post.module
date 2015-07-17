@@ -605,13 +605,21 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
     $matches = array();
 
     if (!empty($context['entity']) && $context['entity']->type == 'tv_show') {
-      $blog_name = _usanetwork_get_field_item('node', $context['entity'], 'field_show_blog_title', 'value');
+      $blog_name = usanetwork_consumptionator_post_get_blog_title($context['entity']);
+      $omniture_show_variables = _usanetwork_ads_entity_settings($context['entity'], 'node');
+      $omniture_show_variables = $omniture_show_variables['omniture']['variables'];
+      foreach ($omniture_show_variables as $variable) {
+        if ($variable['key'] == 's.prop2') {
+          $content_group = $variable['value'];
+        }
+      }
       if (preg_match("/^node\/([\%\d])\/(blog)$/", $context['menu_item']['path'], $matches)) {
         $omniture_variables = array(
+          's.prop2' => $content_group,
           's.prop3' => t('Blog'),
           's.prop4' => t('!show_name : !blog_name', array(
             '!show_name' => $context['entity']->title,
-            '!blog_name' => (!empty($blog_name)) ? $blog_name : '',
+            '!blog_name' => $blog_name,
           )),
           's.prop10' => t('!show_name', array(
             '!show_name' => $context['entity']->title
@@ -625,7 +633,7 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
     $show_field = _usanetwork_get_field_item('node', $context['entity'], 'field_show', 'target_id');
     if ($show_field) {
       $show = node_load($show_field);
-      $blog_name = _usanetwork_get_field_item('node', $show, 'field_show_blog_title', 'value');
+      $blog_name = usanetwork_consumptionator_post_get_blog_title($show);
       $omniture_show_variables = _usanetwork_ads_entity_settings($show, 'node');
       $omniture_show_variables = $omniture_show_variables['omniture']['variables'];
       foreach ($omniture_show_variables as $variable) {
@@ -638,11 +646,11 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
         's.prop3' => t('Blog'),
         's.prop4' => t('!show_name : !blog_name', array(
           '!show_name' => $show->title,
-          '!blog_name' => (!empty($blog_name)) ? $blog_name : '',
+          '!blog_name' => $blog_name,
         )),
         's.prop5' => t('!show_name : !blog_name : !post_title', array(
           '!show_name' => $show->title,
-          '!blog_name' => (!empty($blog_name)) ? $blog_name : '',
+          '!blog_name' => $blog_name,
           '!post_title' => $context['entity']->title,
         )),
         's.prop10' => t('!show_name', array(

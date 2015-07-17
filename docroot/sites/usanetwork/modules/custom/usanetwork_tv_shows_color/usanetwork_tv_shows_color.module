@@ -368,6 +368,11 @@ function usanetwork_tv_shows_color_config() {
     '#value' => t('Regenerate'),
   );
 
+  $form['br'] = array(
+    '#type' => 'markup',
+    '#markup' => '<br>',
+  );
+
   $form['description_movie'] = array(
     '#type' => 'markup',
     '#markup' => t('Regenerate color schema for all published Movies '),

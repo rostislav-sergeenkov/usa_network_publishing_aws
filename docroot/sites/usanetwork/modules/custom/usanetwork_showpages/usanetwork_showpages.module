@@ -682,12 +682,12 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             // check for role and actor field
             // CHARACTER_NAME played by ACTOR_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
             if (!empty($role) && $role[0]['taxonomy_term']->name == 'Character' && !empty($actor)) {
-              $head_title = t("@person played by @actor | Characters & Crew | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@person' => $node->title, '@actor' => $actor[0]['safe_value']));
+              $head_title = t("@person played by @actor | Cast & Crew | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@person' => $node->title, '@actor' => $actor[0]['safe_value']));
             }
             // everyone else
             // CHARACTER_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
             else {
-              $head_title = t("@person | Characters & Crew | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@person' => $node->title));
+              $head_title = t("@person | Cast & Crew | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@person' => $node->title));
             }
           }
           break;
@@ -748,13 +748,21 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             }
           }
           break;
+        case 'timeline_gallery':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $head_title = t("@title | Timeline Galllery | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
+          }
+          break;
         // QUIZ SHOW_NAME - TITLE | SITE_TITLE
         case 'quiz':
           if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $head_title = t("@tv_content_name - @title | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
+            $head_title = t("@title | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
           }
           break;
         case 'consumpt_post':

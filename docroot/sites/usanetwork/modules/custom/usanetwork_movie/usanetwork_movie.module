@@ -1693,22 +1693,24 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
   }
 
   //Consumptionator Pages
-  if (!empty($context['entity']) && in_array($context['entity']->type, array('media_gallery', 'person', 'quiz', 'catchall_page'))) {
-    $movie_field = _usanetwork_get_field_item('node', $context['entity'], 'field_movie', 'target_id');
-    if ($movie_field) {
-      $movie = node_load($movie_field);
-      $omniture_variables = array(
-        's.prop2' => t('Movies'),
-        's.prop3' => t('Movies'),
-        's.prop4' => t('Movies : !movie_title', array(
-          '!movie_title' => $movie->title
-        )),
-        's.prop5' => t('Movies : !movie_title : !content_title', array(
-          '!movie_title' => $movie->title,
-          '!content_title' => $context['entity']->title,
-        )),
-        's.prop10' => t('Movies'),
-      );
+  if (!empty($context['entity']) && in_array($context['entity']->type,
+      array('media_gallery', 'person', 'quiz', 'catchall_page'))) {
+    $tv_content = usanetwork_core_api_get_tv_content_node($context['entity']);
+    if ($tv_content) {
+      if ($tv_content->type == 'movie') {
+        $omniture_variables = array(
+          's.prop2' => t('Movies'),
+          's.prop3' => t('Movies'),
+          's.prop4' => t('Movies : !movie_title', array(
+            '!movie_title' => $tv_content->title
+          )),
+          's.prop5' => t('Movies : !movie_title : !content_title', array(
+            '!movie_title' => $tv_content->title,
+            '!content_title' => $context['entity']->title,
+          )),
+          's.prop10' => t('Movies'),
+        );
+      }
     }
   }
 }

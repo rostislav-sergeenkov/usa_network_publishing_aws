@@ -1331,9 +1331,10 @@ function usanetwork_movie_render_cast_crew_block() {
   if (!empty($movie_node)) {
     $select = db_select('node', 'n')
       ->fields('n', array('nid'))
-      ->condition('n.type', 'person');
+      ->condition('n.type', 'person')
+      ->condition('n.status', NODE_PUBLISHED);
     $select->leftJoin('field_data_field_movie', 'fdfm', 'fdfm.entity_id = n.nid');
-     $select->condition('fdfm.field_movie_target_id', $movie_node->nid);
+    $select->condition('fdfm.field_movie_target_id', $movie_node->nid);
     $results = $select->execute()->fetchAll();
     if (!empty($results)) {
       $theme_variables['title'] = t('Cast & Crew');

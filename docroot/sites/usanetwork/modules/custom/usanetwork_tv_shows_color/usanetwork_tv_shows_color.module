@@ -144,6 +144,9 @@ function usanetwork_tv_shows_color_add_css() {
   if (file_exists('public://tv_show_color/tv_show_color_schema.css')) {
     drupal_add_css('public://tv_show_color/tv_show_color_schema.css', array('type' => 'file', 'group' => CSS_THEME));
   }
+  if (file_exists('public://movie_color/movie_color_schema.css')) {
+    drupal_add_css('public://movie_color/movie_color_schema.css', array('type' => 'file', 'group' => CSS_THEME));
+  }
 }
 
 /**
@@ -162,6 +165,16 @@ function usanetwork_tv_shows_color_theme() {
       'path' => $module_path . '/theme',
       'template' => 'tv-show-color-css',
     ),
+    'usanetwork_movie_color_css' => array(
+      'variables' => array(
+        'node_code' => NULL,
+        'primary_color_code' => NULL,
+        'secondary_color_code' => NULL,
+        'tertiary_color_code' => NULL,
+      ),
+      'path' => $module_path . '/theme',
+      'template' => 'movie-color-css',
+    ),
   );
 }
 
@@ -169,18 +182,11 @@ function usanetwork_tv_shows_color_theme() {
  * Implements hook_node_presave().
  */
 function usanetwork_tv_shows_color_node_presave($node) {
-  if (!isset($node->op) && $node->type == 'tv_show') {
-
-    $node_code = field_get_items('node', $node, 'field_pathauto_alias');
+  if (!isset($node->op) && ($node->type == 'tv_show' || $node->type == 'movie')) {
+    $node_code = usanetwork_tv_shows_color_get_node_code($node);
     $primary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color');
     $secondary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color_second');
     $tertiary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color_tertiary');
-    if (!$node_code) {
-      return;
-    }
-    else {
-      $node_code = reset($node_code);
-    }
     if ($primary_color_code) {
       $primary_color_code = reset($primary_color_code);
     }
@@ -193,7 +199,7 @@ function usanetwork_tv_shows_color_node_presave($node) {
     if (empty($primary_color_code) || empty($secondary_color_code) || empty($tertiary_color_code)) {
       if (empty($primary_color_code)) {
         $default_colors = usanetwork_tv_shows_color_default_codes();
-        $default_node_colors = isset($default_colors[$node_code['value']]) ? $default_colors[$node_code['value']] : FALSE;
+        $default_node_colors = isset($default_colors[$node_code]) ? $default_colors[$node_code] : FALSE;
       }
       if (empty($default_node_colors) && $primary_color_code) {
         $secondary_color_code = !$secondary_color_code ? $primary_color_code : $secondary_color_code;
@@ -208,25 +214,55 @@ function usanetwork_tv_shows_color_node_presave($node) {
         return;
       }
     }
-    $node_css = theme('usanetwork_tv_show_color_css', array(
-      'node_code' => $node_code['value'],
-      'primary_color_code' => $primary_color_code['rgb'],
-      'secondary_color_code' => $secondary_color_code['rgb'],
-      'tertiary_color_code' => $tertiary_color_code['rgb'],
-    ));
-    $tv_show_css_dir = 'public://tv_show_color/nodes';
-    $tv_show_css = 'public://tv_show_color/tv_show_color_schema.css';
-    if (file_prepare_directory($tv_show_css_dir, FILE_CREATE_DIRECTORY)) {
-      $saved = file_unmanaged_save_data($node_css, $tv_show_css_dir . '/' . $node_code['value'] . '_' . $node->nid . '.css', FILE_EXISTS_REPLACE);
+    if ($node->type == 'tv_show') {
+      $node_css = theme('usanetwork_tv_show_color_css', array(
+        'node_code' => $node_code,
+        'primary_color_code' => $primary_color_code['rgb'],
+        'secondary_color_code' => $secondary_color_code['rgb'],
+        'tertiary_color_code' => $tertiary_color_code['rgb'],
+      ));
+      $css_dir = 'public://tv_show_color/nodes';
+      $css_file = 'public://tv_show_color/tv_show_color_schema.css';
+    }
+    elseif ($node->type == 'movie') {
+      $node_css = theme('usanetwork_movie_color_css', array(
+        'node_code' => $node_code,
+        'primary_color_code' => $primary_color_code['rgb'],
+        'secondary_color_code' => $secondary_color_code['rgb'],
+        'tertiary_color_code' => $tertiary_color_code['rgb'],
+      ));
+      $css_dir = 'public://movie_color/nodes';
+      $css_file = 'public://movie_color/movie_color_schema.css';
+    }
+    if (file_prepare_directory($css_dir, FILE_CREATE_DIRECTORY)) {
+      $saved = file_unmanaged_save_data($node_css, $css_dir . '/' . $node_code . '_' . $node->nid . '.css', FILE_EXISTS_REPLACE);
       if ($saved) {
-        $files = file_scan_directory($tv_show_css_dir, '/\.css/');
+        $files = file_scan_directory($css_dir, '/\.css/');
         $css = '';
         foreach ($files as $file) {
           $css .= file_get_contents($file->uri);
         }
-        file_unmanaged_save_data($css, $tv_show_css, FILE_EXISTS_REPLACE);
+        file_unmanaged_save_data($css, $css_file, FILE_EXISTS_REPLACE);
       }
     }
+  }
+}
+
+function usanetwork_tv_shows_color_get_node_code($node) {
+  $node_code = NULL;
+  if ($node->type == 'tv_show') {
+    $node_code = field_get_items('node', $node, 'field_pathauto_alias');
+    if (!$node_code) {
+      return;
+    }
+    else {
+      $node_code = reset($node_code);
+    }
+    return $node_code['value'];
+  }
+  elseif ($node->type == 'movie') {
+    module_load_include('inc', 'pathauto', 'pathauto');
+    return pathauto_cleanstring($node->title);
   }
 }
 
@@ -273,6 +309,46 @@ function usanetwork_tv_shows_color_show_css_class($show_node) {
 
   return $show_css_class;
 }
+
+/**
+ * Return css class for movie
+ */
+function usanetwork_tv_shows_color_movie_css_class($movie_node) {
+  if (!is_object($movie_node)) {
+    $movie_id = $movie_node;
+    $movie_css_class = &drupal_static('show_css_class_' . $movie_node, FALSE);
+    if ($movie_css_class) {
+      // get show css class from static variable
+      return $movie_css_class;
+    }
+    $movie_node = node_load($movie_node);
+    if (empty($movie_node)) {
+      return false;
+    }
+  }
+  else {
+    $movie_id = $movie_node->nid;
+    $movie_css_class = &drupal_static('show_css_class_' . $movie_node->nid, FALSE);
+    if ($movie_css_class) {
+      return $movie_css_class;
+    }
+  }
+
+  // get show css class from static variable
+  if ($movie_class_cache = cache_get('show_id_' . $movie_id, 'show_class')) {
+    $movie_css_class = $movie_class_cache->data;
+    return $movie_class_cache->data;
+  }
+
+  module_load_include('inc', 'pathauto', 'pathauto');
+  $movie_css_class = 'movie-' . drupal_clean_css_identifier(pathauto_cleanstring($movie_node->title));
+
+  //set show css class from show in cache
+  cache_set('show_id_' . $movie_id, $movie_css_class, 'show_class');
+
+  return $movie_css_class;
+}
+
 
 /**
  * Page callback for configuring page

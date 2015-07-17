@@ -282,6 +282,7 @@ function usanetwork_aspot_block_view($delta = '') {
         '#markup' => _usanetwork_aspot_carousel_block(),
         '#attached' => array(
           'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/slick.min.js',
             path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',
             drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
           ),
@@ -739,7 +740,7 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
       ? url($aspot_node_wrapper->field_usa_aspot_link->url->value())
       : '',
     'show_class' => !empty($show_node)
-      ? usanetwork_tv_shows_color_show_css_class($show_node)
+      ? (($show_node->type == 'tv_show') ? usanetwork_tv_shows_color_show_css_class($show_node) : usanetwork_tv_shows_color_movie_css_class($show_node))
       : '',
     'show_poster' => array(
       'mobile' => image_style_url('640x560', $banner_images['mobile']),

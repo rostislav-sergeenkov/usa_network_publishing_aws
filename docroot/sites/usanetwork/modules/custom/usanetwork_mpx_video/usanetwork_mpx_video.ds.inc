@@ -18,12 +18,12 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_companion_rectangle_small' => array(
-      'weight' => 9,
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'video_mpx_companion_rectangle' => array(
-      'weight' => '10',
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -63,12 +63,12 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_companion_rectangle_small' => array(
-      'weight' => 9,
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'video_mpx_companion_rectangle' => array(
-      'weight' => '10',
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -208,7 +208,6 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       ),
       'description' => array(
         0 => 'field_mpx_description',
-        1 => 'field_gigya_share_bar',
       ),
       'ad_comp' => array(
         0 => 'video_companion_rectangle_small',
@@ -224,7 +223,6 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'field_mpx_episode_number' => 'episode',
       'field_mpx_airdate' => 'airdate',
       'field_mpx_description' => 'description',
-      'field_gigya_share_bar' => 'description',
       'video_companion_rectangle_small' => 'ad_comp',
       'video_mpx_companion_rectangle' => 'ad_comp',
     ),
@@ -476,7 +474,6 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       ),
       'description' => array(
         0 => 'field_mpx_description',
-        1 => 'field_gigya_share_bar',
       ),
       'ad_comp' => array(
         0 => 'video_companion_rectangle_small',
@@ -492,7 +489,6 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'field_mpx_episode_number' => 'episode',
       'field_mpx_airdate' => 'airdate',
       'field_mpx_description' => 'description',
-      'field_gigya_share_bar' => 'description',
       'video_companion_rectangle_small' => 'ad_comp',
       'video_mpx_companion_rectangle' => 'ad_comp',
     ),

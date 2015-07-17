@@ -39,7 +39,7 @@
         <div class="asset-img">
           <img src="" alt="">
         </div>
-        <div class="title-overlay meta">
+        <div class="meta">
           <div class="meta-info">
             <div class="caption"></div>
             <div class="title"></div>

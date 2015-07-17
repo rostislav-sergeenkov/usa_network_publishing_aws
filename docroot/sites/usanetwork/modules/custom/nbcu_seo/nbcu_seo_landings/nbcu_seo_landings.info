@@ -1,0 +1,5 @@
+name = XML sitemap custom landings
+description = Add custom landing links to sitemap.
+package = XML sitemap
+core = 7.x
+dependencies[] = xmlsitemap

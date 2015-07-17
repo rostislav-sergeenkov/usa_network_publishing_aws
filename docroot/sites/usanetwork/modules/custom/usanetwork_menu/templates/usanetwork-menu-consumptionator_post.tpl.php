@@ -36,7 +36,7 @@
             <img src="<?php print $details['image']; ?>" alt="">
           </div>
         <?php endif; ?>
-        <div class="title-overlay meta">
+        <div class="meta">
           <?php if (!empty($post_name)): ?>
             <div class="title">
              <h1><?php print !empty($h1) ? $h1 : $post_name; ?></h1>

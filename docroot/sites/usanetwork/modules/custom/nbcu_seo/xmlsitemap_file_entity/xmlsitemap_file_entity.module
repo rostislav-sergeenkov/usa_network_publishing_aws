@@ -75,6 +75,30 @@ function xmlsitemap_file_entity_xmlsitemap_process_file_links(array $fids) {
 }
 
 /**
+ * Helper function for saving correct value
+ */
+function xmlsitemap_file_entity_process_link_options($file) {
+  if (isset($file->xmlsitemap)) {
+    $xml_link = $file->xmlsitemap;
+    $fields = array(
+      'status' => XMLSITEMAP_STATUS_DEFAULT,
+      'priority' => XMLSITEMAP_PRIORITY_DEFAULT
+    );
+
+    foreach ($fields as $field => $default) {
+      if ($xml_link[$field] === 'default') {
+        $xml_link[$field] = isset($xml_link[$field . '_default']) ? $xml_link[$field . '_default'] : $default;
+        $xml_link[$field . '_override'] = 0;
+      }
+      else {
+        $xml_link[$field . '_override'] = 1;
+      }
+    }
+    $file->xmlsitemap = $xml_link;
+  }
+}
+
+/**
  * Implements hook_file_entity_insert().
  */
 function xmlsitemap_file_entity_file_insert(stdClass $file) {
@@ -85,6 +109,7 @@ function xmlsitemap_file_entity_file_insert(stdClass $file) {
  * Implements hook_file_entity_update().
  */
 function xmlsitemap_file_entity_file_update(stdClass $file) {
+  xmlsitemap_file_entity_process_link_options($file);
   $link = xmlsitemap_file_entity_create_link($file);
   xmlsitemap_link_save($link);
 }

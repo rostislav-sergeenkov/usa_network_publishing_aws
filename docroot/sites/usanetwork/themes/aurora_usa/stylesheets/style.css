@@ -16794,18 +16794,6 @@ footer h2 {
 .node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-right:after {
   content: '\e608';
 }
-@media (max-width: 640px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-line .timeline-holder .timeline-node-desc {
-    padding: 4px;
-    font-size: 8px;
-  }
-}
-@media (max-width: 480px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-line .timeline-holder .timeline-node-desc {
-    padding: 4px 2px;
-    letter-spacing: -0.5px;
-  }
-}
 
 .touch .node-type-timeline-gallery .timeline-item-details ::-webkit-scrollbar {
   width: 10px;

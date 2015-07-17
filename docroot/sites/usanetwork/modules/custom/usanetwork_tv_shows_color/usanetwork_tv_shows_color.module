@@ -242,7 +242,9 @@ function usanetwork_tv_shows_color_node_presave($node) {
         foreach ($files as $file) {
           $css .= file_get_contents($file->uri);
         }
-        file_unmanaged_save_data($css, $css_file, FILE_EXISTS_REPLACE);
+        if (file_unmanaged_save_data($css, $css_file, FILE_EXISTS_REPLACE)) {
+          return TRUE;
+        }
       }
     }
   }
@@ -355,12 +357,29 @@ function usanetwork_tv_shows_color_movie_css_class($movie_node) {
  */
 function usanetwork_tv_shows_color_config() {
 
-  $form['description'] = array(
+  $form['description_show'] = array(
     '#type' => 'markup',
     '#markup' => t('Regenerate color schema for all published TV Shows '),
   );
 
-  $form['submit'] = array(
+  $form['submit_show'] = array(
+    '#name' => 'regenerate_shows',
+    '#type' => 'submit',
+    '#value' => t('Regenerate'),
+  );
+
+  $form['br'] = array(
+    '#type' => 'markup',
+    '#markup' => '<br>',
+  );
+
+  $form['description_movie'] = array(
+    '#type' => 'markup',
+    '#markup' => t('Regenerate color schema for all published Movies '),
+  );
+
+  $form['submit_movie'] = array(
+    '#name' => 'regenerate_movies',
     '#type' => 'submit',
     '#value' => t('Regenerate'),
   );
@@ -377,17 +396,25 @@ function usanetwork_tv_shows_color_config() {
  *   Form API form.
  */
 function usanetwork_tv_shows_color_config_submit($form, &$form_state) {
-  $function = 'usanetwork_tv_shows_color_butch_op';
+  $function = 'usanetwork_tv_content_color_butch_op';
+  if ($form_state['triggering_element']['#name'] == 'regenerate_shows') {
 
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', 'tv_show');
-  $query->propertyCondition('status', NODE_PUBLISHED);
-  $tv_shows_ids = $query->execute();
-
-  if (isset($tv_shows_ids['node'])) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', 'tv_show');
+    $query->propertyCondition('status', NODE_PUBLISHED);
+    $tv_content_ids = $query->execute();
+  }
+  elseif ($form_state['triggering_element']['#name'] == 'regenerate_movies') {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', 'movie');
+    $query->propertyCondition('status', NODE_PUBLISHED);
+    $tv_content_ids = $query->execute();
+  }
+  if (isset($tv_content_ids['node'])) {
     $operations = array();
-    foreach (array_keys($tv_shows_ids['node']) as $nid) {
+    foreach (array_keys($tv_content_ids['node']) as $nid) {
       $operations[] = array(
         $function,
         array(
@@ -396,8 +423,8 @@ function usanetwork_tv_shows_color_config_submit($form, &$form_state) {
       );
     }
     batch_set(array(
-      'operations' => $operations
-        )
+        'operations' => $operations
+      )
     );
   }
 }
@@ -406,15 +433,16 @@ function usanetwork_tv_shows_color_config_submit($form, &$form_state) {
  * Batch operation for batch.
  * 
  */
-function usanetwork_tv_shows_color_butch_op($nid, &$context) {
+function usanetwork_tv_content_color_butch_op($nid, &$context) {
   $node = node_load($nid);
   if ($node) {
     $result = module_invoke('usanetwork_tv_shows_color', 'node_presave', $node);
     if ($result) {
       $context['message'] = t('Generating css for node "@title" color schema', array('@title' => $node->title));
+      drupal_set_message(t('Generating css for node "@title" color schema', array('@title' => $node->title)));
     }
     else {
-      drupal_set_message(t('Generating css for node "@title" color schema Failed', array('@title' => $node->title)));
+      drupal_set_message(t('Generating css for node "@title" color schema Failed', array('@title' => $node->title)), 'warning');
     }
   }
 }

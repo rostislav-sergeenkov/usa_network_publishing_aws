@@ -223,9 +223,11 @@ function usanetwork_timeline_gallery_set_season_options($form_state, &$field_ite
       $field_item['field_season']['#disabled'] = FALSE;
       $selected_season = $field_item['field_season'][LANGUAGE_NONE]['#default_value'];
       if ($triggering_element != 'field_timeline_episode_section_add_more' || empty($selected_season)) {
-        $field_item['field_episode'][LANGUAGE_NONE]['#options'] = array('_none' => t('- None -'));
-        $field_item['field_episode'][LANGUAGE_NONE]['#default_value'] = '_none';
-        $field_item['field_episode']['#disabled'] = TRUE;
+        if (!empty($seasons) && is_array($seasons)) {
+          $episodes = usanetwork_timeline_gallery_return_episodes(key($seasons));
+          $field_item['field_episode'][LANGUAGE_NONE]['#options'] = $episodes;
+          $field_item['field_episode']['#disabled'] = FALSE;
+        }
       }
       else {
         $episodes = usanetwork_timeline_gallery_return_episodes($selected_season[0]);
@@ -285,7 +287,6 @@ function usanetwork_timeline_gallery_return_seasons($selected_show) {
   $query->fieldCondition('field_show', 'target_id', $selected_show);
   $show_result = $query->execute();
 
-  $options = array('_none' => t('- None -'));
   // Add each season that belongs to the user-selected show to the options
   // array.
   if (isset($show_result['node'])) {
@@ -373,7 +374,6 @@ function usanetwork_timeline_gallery_return_episodes($selected_season) {
   $query->fieldCondition('field_season', 'target_id', $selected_season);
   $season_result = $query->execute();
 
-  $options = array('_none' => t('- None -'));
   // Add each episod that belongs to the user-selected season to the options
   // array.
   if (isset($season_result['node'])) {

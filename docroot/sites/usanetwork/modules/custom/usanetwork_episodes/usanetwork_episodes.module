@@ -383,6 +383,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
   $current_season_data_item = NULL;
   $current_season_data_item_index = NULL;
   $last_season_data = NULL;
+  $next_season_available = &drupal_static('load_more_link');
   $next_season_available = FALSE;
 
   $theme_variables = array(
@@ -431,11 +432,12 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     }
 
     if ($current_season_data_item_index + 1 < count($season_ids)) {
-      $theme_variables['load_more_link'] = TRUE;
+      $next_season_available = TRUE;
     }
     else {
-      $theme_variables['load_more_link'] = FALSE;
+      $next_season_available = FALSE;
     }
+    $theme_variables['load_more_link'] = $next_season_available;
 
     if ($display_filters_block) {
       $theme_variables['filters'][0] = array(
@@ -867,9 +869,9 @@ function _usanetwork_episodes_get_episode_related_content_block() {
         }
       }
 
-      $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($tv_show_node);
+      $you_may_also_like_item = usanetwork_tv_show_consumptionator_get_ymal_item($tv_show_node);
 
-      $related_content = _usanetwork_tv_shows_cache_get_limited_related_content(
+      $related_content = _usanetwork_tv_show_cache_get_limited_related_content(
         $tv_show_node, $content->type, 0,
         !empty($you_may_also_like_item)
           ? USA_EPISODE_RELATED_CONTENT_ITEMS - 1
@@ -888,11 +890,12 @@ function _usanetwork_episodes_get_episode_related_content_block() {
           'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
         ), 'setting');
 
-        $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
-
-        return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
+        $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
+        $load_more_link = &drupal_static('load_more_link');
+        $load_more_link = TRUE;
+        return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
           'related_items_block' => $block_of_items,
-          'load_more_link' => TRUE,
+          'load_more_link' => $load_more_link,
           'show_nid' => $tv_show_node->nid,
           'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
         ));
@@ -909,13 +912,13 @@ function usanetwork_episodes_get_related_content_ajax($tv_show_node, $start_from
     'overlimited' => TRUE,
     'rendered' => '',
   );
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'tv_episode', $start_from, $limit + 1);
+  $related_content = _usanetwork_tv_show_cache_get_limited_related_content($tv_show_node, 'tv_episode', $start_from, $limit + 1);
   if (!empty($related_content)) {
     if (count($related_content) > $limit) {
       $response['overlimited'] = FALSE;
       $related_content = array_slice($related_content, 0, $limit);
     }
-    $response['rendered'] = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
+    $response['rendered'] = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
     $response['total'] = count($related_content);
     $response['found'] = TRUE;
   }

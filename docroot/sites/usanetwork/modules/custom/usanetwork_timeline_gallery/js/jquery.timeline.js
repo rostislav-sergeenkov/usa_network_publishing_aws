@@ -80,6 +80,8 @@ Project demo: http://shindiristudio.com/timeline
             imageSrc = previewImage,
             url = window.location.href;
 
+        if (caption == '') caption = $('.node-timeline-gallery .field-name-body .field-item').text();
+
         sharebar.gigyaSharebar = {
           containerID: shareBarId,
           iconsOnly: true,
@@ -135,16 +137,18 @@ Project demo: http://shindiristudio.com/timeline
       // Initialize the timeline
       $this = $('.tl3').timeline({
         openTriggerClass : '.read-more',
-        startItem : '01/01/01', // @TODO: Update this so that it dynamically pulls in the 1st item
+        startItem : $('.timeline-item:first').attr('data-id'),
         closeText : ''
       });
 
       $('.tl3').on('scrollStart.Timeline', function(e){
-        usa_debug('TIMELINE: start'); // start scroll
+        //usa_debug('TIMELINE: start'); // start scroll
+        //usa_debug(e);
       });
 
       $('.tl3').on('scrollStop.Timeline', function(e){
-        usa_debug('TIMELINE: end'); // end scroll
+        //usa_debug('TIMELINE: end'); // end scroll
+        //usa_debug(e);
         // create Gigya share bar
         var $gigyaShareBar = $('.timeline-items .timeline-item.active .timeline-gigya-share'),
             shareBarId = $gigyaShareBar.attr('id'),
@@ -202,17 +206,17 @@ Project demo: http://shindiristudio.com/timeline
       $('.node-timeline-gallery .timeline-line #timeline-line-full-left, .node-timeline-gallery .timeline-line #timeline-line-full-right').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           e.preventDefault();
-          // @TODO -- DV: THE FOLLOWING CODE WILL NEED TO BE UPDATED WHEN WE START ADDING MORE TIMELINES -- ESPECIALLY WITH MORE SEASONS
-          var currentId = ($(this).attr('id') == 'timeline-line-full-left') ? '01/01/01' : '01/01/02';
+          var currentId = ($(this).attr('id') == 'timeline-line-full-left') ? $('.timeline-item:first').attr('data-id') : Drupal.behaviors.timeline_gallery.get1stSceneLastSeason();
           Drupal.behaviors.timeline_gallery.setOmnitureData(currentId);
         });
       });
 
       // set timeline title and timeline share title
-      var title = $('#timeline-title').text();
-      if (title == '') title = $('.node-timeline-gallery .field-item p').text();
+      var title = $('#timeline-title').text(), // in microsites
+          shareTitle = $('.timelineFlat').attr('data-share-title');
+      if (title == '') title = $('body h1:first').text(); // in timeline gallery consumptionator page
       Drupal.behaviors.timeline_gallery.timelineTitle = title;
-      Drupal.behaviors.timeline_gallery.timelineShareTitle = $('.timelineFlat').attr('data-share-title');
+      Drupal.behaviors.timeline_gallery.timelineShareTitle = (shareTitle != '') ? shareTitle : title;
 
       // create Gigya share bar
       var $timelineActiveSharebar = $('.node-timeline-gallery .timeline-item.active .timeline-gigya-share');
@@ -221,7 +225,20 @@ Project demo: http://shindiristudio.com/timeline
             previewImage = $timelineActiveSharebar.attr('data-share-picture');
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
       }
+
+      // hide previous button
+      $('.timeline-left').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
     }, // end initializeTimeline
+
+    get1stSceneLastSeason: function() {
+      var categoryKeys = Object.keys(categories),
+          lastSeason = categoryKeys[(categoryKeys.length - 1)],
+          lastSeasonEpisodes = categories[lastSeason],
+          lastSeasonFirstEpisode = Object.keys(lastSeasonEpisodes)[0],
+          lastSeasonText = (lastSeason < 10) ? '0' + lastSeason : lastSeason,
+          lastSeasonEpisodeText = (lastSeasonFirstEpisode < 10) ? '0' + lastSeasonFirstEpisode : lastSeasonFirstEpisode;
+      return '01/' + lastSeasonEpisodeText + '/' + lastSeasonText;
+    },
 
     attach: function (context, settings) {
 
@@ -229,7 +246,8 @@ Project demo: http://shindiristudio.com/timeline
         init : function( options ) {
 
           // Default settings
-          var timeline_settings = $.extend( {
+          var swipeOn = (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice) ? true : false,
+              timeline_settings = $.extend( {
             'itemClass'             : '.timeline-item',      // class used for timeline items
             'itemOpenClass'         : '.timeline-item-open', // class used for item details
             'openTriggerClass'      : '',                    // class of read more element (default uses whole item to trigger open event)
@@ -243,7 +261,7 @@ Project demo: http://shindiristudio.com/timeline
             'categories'            : categories,            // categories shown above timeline (months are default)
             'numberOfSegments'      : segments,              // number of elements per category (number of days)
             'yearsOn'               : true,                  // show years (can be any number you use in data-id (elementNumber/category/yearOrSomeOtherNumber))
-            'swipeOn'               : true,                  // turn on swipe moving function
+            'swipeOn'               : swipeOn,                  // turn on swipe moving function
             'hideTimeline'          : false,                 // hides the timeline line
             'hideControls'          : false,                 // hides the prev/next controls
             'closeItemOnTransition' : false,                 // if true, closes the item after transition
@@ -544,7 +562,7 @@ Project demo: http://shindiristudio.com/timeline
         touchEnd : function(xpos) {
           var $this = this,
               data = $this.data('timeline'),
-              itemWidth = data.itemWidth + data.options.itemMargin,
+              itemWidth = (data.itemWidth + data.options.itemMargin)/3, // reduce the swipe distance to one-third of the item width
               itemC = data.currentIndex,
               mod = 0,
               xmargin = xpos - data.mousestartpos;
@@ -637,7 +655,7 @@ Project demo: http://shindiristudio.com/timeline
                         $('.ajax-preloading-holder').remove();
                         $(this).attr('data-access', '');
 
-                        /* trigger */
+                        // trigger
                         var event = jQuery.Event( 'ajaxLoaded.timeline' );
                         event.element = $newThis.find('.timeline-item-open-content');
                         $( "body" ).trigger( event );
@@ -649,7 +667,7 @@ Project demo: http://shindiristudio.com/timeline
                       $('.ajax-preloading-holder').remove();
                       $(this).attr('data-access', '');
 
-                      /* trigger */
+                      // trigger
                       var event = jQuery.Event( 'ajaxLoaded.timeline' );
                       event.element = $newThis.find('.timeline-item-open-content');
                       $( "body" ).trigger( event );
@@ -660,7 +678,7 @@ Project demo: http://shindiristudio.com/timeline
                     $newThis.find('.timeline-item-open-content').html(data);
                     $('.ajax-preloading-holder').remove();
 
-                    /* trigger */
+                    // trigger
                     var event = jQuery.Event( 'ajaxLoaded.timeline' );
                     event.element = $newThis.find('.timeline-item-open-content');
                     $( "body" ).trigger( event );
@@ -798,7 +816,6 @@ Project demo: http://shindiristudio.com/timeline
               $this.find('.timeline-wrapper').stop(true).animate({marginLeft : data.lineMargin+'%'}, speed, easing );
             }
 
-
             if (data.open) {
               $this.timeline('close', data.open, id, data_count);
             }
@@ -858,7 +875,24 @@ Project demo: http://shindiristudio.com/timeline
                 activeTimelineItem = $timelineItems.find('.timeline-item[data-id="' + currentId + '"]');
             $timelineItems.find('.timeline-item').removeClass('active');
             activeTimelineItem.addClass('active');
+
+            // hide next / previous buttons if last or first scene
+            var firstScene = $timelineItems.find('.timeline-item:first').attr('data-id'),
+                lastScene = $timelineItems.find('.timeline-item:last').attr('data-id');
+            if (currentId == firstScene) {
+              $('.timeline-left').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
+            }
+            else if (currentId == lastScene) {
+              $('.timeline-right').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
+            }
+            if ($('.timeline-left').css('display') == 'none' && currentId != firstScene) {
+              $('.timeline-left').css({'display': 'block'}).animate({'opacity': 1}, 500);
+            }
+            if ($('.timeline-right').css('display') == 'none' && currentId != lastScene) {
+              $('.timeline-right').css({'display': 'block'}).animate({'opacity': 1}, 500);
+            }
           }
+
           return $this;
         }, // end goTo
 
@@ -961,8 +995,8 @@ Project demo: http://shindiristudio.com/timeline
           // Make wrapper elements
           if (data.options.yearsOn && Object.keys(yearsArr).length > 1) {
           html = '\n' +
-    '		<div id="timeline-line-full-left"><span class="title">Season 1</span><span class="arrow"></span>' +
-    '</div><div id="timeline-line-left"></div><div id="timeline-line-right"></div><div id="timeline-line-full-right"><span class="arrow"></span><span class="title">Season ' + Object.keys(yearsArr)[(Object.keys(yearsArr).length - 1)] + '</span></div>\n' +
+    '		<div id="timeline-line-full-left"><span class="title show-color show-font">Season ' + Object.keys(yearsArr)[0] + '</span><span class="arrow"></span>' +
+    '</div><div id="timeline-line-left"></div><div id="timeline-line-right"></div><div id="timeline-line-full-right"><span class="arrow"></span><span class="title show-color show-font">Season ' + Object.keys(yearsArr)[(Object.keys(yearsArr).length - 1)] + '</span></div>\n' +
     '		<div class="timeline-holder">\n' +
     '			<div class="timeline-wrapper">\n';
           }
@@ -1091,14 +1125,14 @@ Project demo: http://shindiristudio.com/timeline
           // Bind goTo function to FFWD click event
           $(this).find('#timeline-line-full-right').on('click', function(e){
             $this.find('.timeline-node').removeClass('active');
-            $this.timeline('goTo', '01/01/02');
+            $this.timeline('goTo', Drupal.behaviors.timeline_gallery.get1stSceneLastSeason());
             $(this).find('.timeline-node:last').addClass('active');
           });
 
           // Gigya share buttons
           var $timelineGigyaShareButtons = $('.node-timeline-gallery .timeline-item .timeline-gigya-share .gig-button-container .gig-share-button div');
           $timelineGigyaShareButtons.on('click', function(){
-            Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this)); // shareType, title);
+            Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this));
           });
 
         } // end createElements

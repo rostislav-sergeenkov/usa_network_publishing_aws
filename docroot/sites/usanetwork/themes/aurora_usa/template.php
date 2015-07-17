@@ -84,10 +84,20 @@ function aurora_usa_preprocess_html(&$vars) {
       $show_class = drupal_html_class('show-' . $show_title);
       $vars['classes_array'][] = $show_class;
     }
+    elseif ($entity->type == 'movie') {
+      $movie_title = usanetwork_tv_shows_color_get_node_code($entity);
+      $movie_class = drupal_html_class('movie-' . $movie_title);
+      $vars['classes_array'][] = $movie_class;
+    }
     else {
-      $show_id = _usanetwork_get_field_item('node', $entity, 'field_show', 'target_id');
-      if (!empty($show_id)) {
-        $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
+      $tv_content_node = usanetwork_core_api_get_tv_content_node($entity);
+      if (!empty($tv_content_node)) {
+        if ($tv_content_node->type == 'tv_show') {
+          $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($tv_content_node);
+        }
+        elseif ($tv_content_node->type == 'movie') {
+          $vars['classes_array'][] = usanetwork_tv_shows_color_movie_css_class($tv_content_node);
+        }
       }
     }
   }
@@ -97,9 +107,14 @@ function aurora_usa_preprocess_html(&$vars) {
       $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js');
     }
-    $show_id = _usanetwork_get_field_item('file', $entity, 'field_show', 'target_id');
-    if (!empty($show_id)) {
-      $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($show_id);
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($entity);
+    if (!empty($tv_content_node)) {
+      if ($tv_content_node->type == 'tv_show') {
+        $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($tv_content_node);
+      }
+      elseif ($tv_content_node->type == 'movie') {
+        $vars['classes_array'][] = usanetwork_tv_shows_color_movie_css_class($tv_content_node);
+      }
     }
     $full_video = _usanetwork_get_field_item('file', $entity, 'field_mpx_entitlement', 'value');
     if (!empty($full_video) && ($full_video == 'auth')) {
@@ -127,7 +142,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
-  drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
+  drupal_add_js($theme_path . '/javascripts/velocity.min.js');
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   drupal_add_js($theme_path . '/javascripts/tableheader.js');
@@ -135,7 +150,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/matchmedia.js');
   drupal_add_js($theme_path . '/javascripts/picturefill.js');
   drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.scrollTo-1.4.3.1.js');
   drupal_add_js($theme_path . '/javascripts/mps-advert.js');
   drupal_add_js($theme_path . '/javascripts/mps-sponsorship.js');
   drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
@@ -154,9 +168,6 @@ function aurora_usa_preprocess_page(&$vars) {
     '#suffix' => '</script><![endif]-->',
   );
   drupal_add_html_head($icomoon_ie_fix, 'icomoon_ie_fix');
-  if(arg(0) == 'social') {
-    drupal_add_js($theme_path . '/javascripts/follow-social.js');
-  }
   $node = menu_get_object();
   $vars['page']['catchall_seo_title'] = '';
   if ($node && $node->type == "catchall_seo_page" && !$node->field_show) {
@@ -458,9 +469,6 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
         }
         break;
       case 'usanetwork_video-usa_video_views':
-      case 'usanetwork_mpx_video-usa_mpx_video_views':
-        drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
-        break;
       case 'views-usa_cast-block_2':
       case 'views-usa_shows-block_2':
         $vars['classes_array'][] = drupal_html_class('social-follow-block');
@@ -561,7 +569,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_hp_promos':
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
       foreach ($vars['items'] as $delta => $item) {
         $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }
@@ -583,7 +590,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           case 'follow_social':
             //remove role field
             // hide title with js because ds will not let us properly preprocess
-            drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/social-character.js');
             unset($vars['items'][0]);
             break;
         }
@@ -916,16 +922,12 @@ function aurora_usa_preprocess_views_view(&$vars) {
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/cast-carousel.js');
     }
 
     if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-carousel.js');
-    }
-    if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'attachment_2') {
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/follow-social.js');
     }
   }
 

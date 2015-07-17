@@ -176,9 +176,9 @@ function _usanetwork_consumptionator_post_related_content_block() {
     if (!empty($show_field)) {
       $tv_show_node = node_load($show_field[0]['target_id']);
 
-      $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($tv_show_node);
+      $you_may_also_like_item = usanetwork_tv_show_consumptionator_get_ymal_item($tv_show_node);
 
-      $related_content = _usanetwork_tv_shows_cache_get_limited_related_content(
+      $related_content = _usanetwork_tv_show_cache_get_limited_related_content(
         $tv_show_node, $content->type, 0,
         !empty($you_may_also_like_item)
           ? USA_QUIZ_RELATED_CONTENT_ITEMS - 1
@@ -197,11 +197,13 @@ function _usanetwork_consumptionator_post_related_content_block() {
           'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
         ), 'setting');
 
-        $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
+        $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
 
-        return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
+        $load_more_link = &drupal_static('load_more_link');
+        $load_more_link = TRUE;
+        return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
           'related_items_block' => $block_of_items,
-          'load_more_link' => TRUE,
+          'load_more_link' => $load_more_link,
           'show_nid' => $tv_show_node->nid,
           'items_pre_page_limit' => USA_QUIZ_RELATED_CONTENT_ITEMS,
         ));
@@ -217,13 +219,13 @@ function _usanetwork_consumptionator_post_get_related_content_ajax($tv_show_node
     'overlimited' => TRUE,
     'rendered' => '',
   );
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'consumpt_post', $start_from, $limit + 1);
+  $related_content = _usanetwork_tv_show_cache_get_limited_related_content($tv_show_node, 'consumpt_post', $start_from, $limit + 1);
   if (!empty($related_content)) {
     if (count($related_content) > $limit) {
       $response['overlimited'] = FALSE;
       $related_content = array_slice($related_content, 0, $limit);
     }
-    $response['rendered'] = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
+    $response['rendered'] = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
     $response['total'] = count($related_content);
     $response['found'] = TRUE;
   }
@@ -593,4 +595,68 @@ function _usanetwork_consumptionator_post_get_post_nav_links($post_node) {
     return $nav_links;
   }
   return array();
+}
+
+/**
+ *  Implements hook_usa_omniture_alter().
+ */
+function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables, $context) {
+  if (!empty($context['menu_item']['path']) && !empty($context['entity']->title)) {
+    $matches = array();
+
+    if (!empty($context['entity']) && $context['entity']->type == 'tv_show') {
+      $blog_name = usanetwork_consumptionator_post_get_blog_title($context['entity']);
+      $omniture_show_variables = _usanetwork_ads_entity_settings($context['entity'], 'node');
+      $omniture_show_variables = $omniture_show_variables['omniture']['variables'];
+      foreach ($omniture_show_variables as $variable) {
+        if ($variable['key'] == 's.prop2') {
+          $content_group = $variable['value'];
+        }
+      }
+      if (preg_match("/^node\/([\%\d])\/(blog)$/", $context['menu_item']['path'], $matches)) {
+        $omniture_variables = array(
+          's.prop2' => $content_group,
+          's.prop3' => t('Blog'),
+          's.prop4' => t('!show_name : !blog_name', array(
+            '!show_name' => $context['entity']->title,
+            '!blog_name' => $blog_name,
+          )),
+          's.prop10' => t('!show_name', array(
+            '!show_name' => $context['entity']->title
+          )),
+        );
+      }
+    }
+  }
+
+  if (!empty($context['entity']) && $context['entity']->type == 'consumpt_post') {
+    $show_field = _usanetwork_get_field_item('node', $context['entity'], 'field_show', 'target_id');
+    if ($show_field) {
+      $show = node_load($show_field);
+      $blog_name = usanetwork_consumptionator_post_get_blog_title($show);
+      $omniture_show_variables = _usanetwork_ads_entity_settings($show, 'node');
+      $omniture_show_variables = $omniture_show_variables['omniture']['variables'];
+      foreach ($omniture_show_variables as $variable) {
+        if ($variable['key'] == 's.prop2') {
+          $content_group = $variable['value'];
+        }
+      }
+      $omniture_variables = array(
+        's.prop2' => $content_group,
+        's.prop3' => t('Blog'),
+        's.prop4' => t('!show_name : !blog_name', array(
+          '!show_name' => $show->title,
+          '!blog_name' => $blog_name,
+        )),
+        's.prop5' => t('!show_name : !blog_name : !post_title', array(
+          '!show_name' => $show->title,
+          '!blog_name' => $blog_name,
+          '!post_title' => $context['entity']->title,
+        )),
+        's.prop10' => t('!show_name', array(
+          '!show_name' => $show->title
+        )),
+      );
+    }
+  }
 }

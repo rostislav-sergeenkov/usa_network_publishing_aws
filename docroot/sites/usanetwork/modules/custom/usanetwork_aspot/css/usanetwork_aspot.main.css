@@ -83,17 +83,19 @@
 /* mobile */
 .draggable-area.mobile div[data-rel="title"] {
   font-size: 67px;
-  line-height: 1;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
 }
 .draggable-area.mobile div[data-rel="title_prefix"] {
-  font-size: 12px;
+  font-size: 17.28px;
   line-height: 1;
+  letter-spacing: 0.1em;
 }
 .draggable-area.mobile .aspot-draggable-cta-button {
-  font-size: 14px;
+  font-size: 17.28px;
+  letter-spacing: 0.1em;
   line-height: 1.8;
-  max-width: 224px;
-  padding: 11px 20px 11px 16.5px;
+  padding: 8.96px 41.6px 8.96px 22.4px;
 }
 .draggable-area.mobile div[data-rel="social_meter"]{
   font-size: 22px;
@@ -105,17 +107,19 @@
 /* desktop */
 .draggable-area.desktop div[data-rel="title"] {
   font-size: 77px;
-  line-height: 1;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
 }
 .draggable-area.desktop div[data-rel="title_prefix"] {
   font-size: 14px;
   line-height: 1;
+  letter-spacing: 0.1em;
 }
 .draggable-area.desktop .aspot-draggable-cta-button {
   font-size: 16.5px;
+  letter-spacing: 0.1em;
   line-height: 1.8;
-  max-width: 256px;
-  padding: 21.76px 40px 21.76px 32.5px;
+  padding: 17.92px 57.6px 17.92px 44.78px;
 }
 .draggable-area.desktop div[data-rel="social_meter"]{
   font-size: 24px;

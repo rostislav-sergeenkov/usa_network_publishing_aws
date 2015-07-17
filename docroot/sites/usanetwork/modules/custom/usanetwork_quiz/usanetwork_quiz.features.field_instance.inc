@@ -930,7 +930,7 @@ function usanetwork_quiz_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -974,6 +974,49 @@ function usanetwork_quiz_field_default_field_instances() {
       'settings' => array(),
       'type' => 'sharebar',
       'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-quiz-field_movie'
+  $field_instances['node-quiz-field_movie'] = array(
+    'bundle' => 'quiz',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this page is associated with a movie please select from the list above.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_movie',
+    'label' => 'Movie',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 14,
     ),
   );
 
@@ -1782,7 +1825,7 @@ function usanetwork_quiz_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -2044,7 +2087,7 @@ function usanetwork_quiz_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_show',
     'label' => 'Related Show',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2356,7 +2399,7 @@ function usanetwork_quiz_field_default_field_instances() {
         ),
       ),
       'type' => 'colorfield_unified_textfield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -2406,7 +2449,7 @@ function usanetwork_quiz_field_default_field_instances() {
         ),
       ),
       'type' => 'colorfield_unified_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -2425,7 +2468,9 @@ function usanetwork_quiz_field_default_field_instances() {
   t('Gigya Share Bar');
   t('H1');
   t('Header Image');
+  t('If this page is associated with a movie please select from the list above.');
   t('Image');
+  t('Movie');
   t('OG Description');
   t('OG Image');
   t('Page Title');

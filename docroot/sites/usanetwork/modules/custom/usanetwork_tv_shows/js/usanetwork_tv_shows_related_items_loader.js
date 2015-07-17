@@ -4,16 +4,16 @@
   Drupal.behaviors.usanetwork_tv_shows_related_items_loader = {
     getItems: function(eventClick) {
       var limit = $('.ajax-load-block').data('show-items-limit') || 5;
-      var show_nid = Drupal.settings.usanetwork_tv_show_nid || $('.ajax-load-block').data('show-nid') || 0;
+      var nid = Drupal.settings.usanetwork_tv_show_nid || $('.ajax-load-block').data('show-nid') || Drupal.settings.usanetwork_movie_nid || 0;
       var number_ul = $('.ajax-load-block > ul').length;
-      var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || 0;
+      var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || Drupal.settings.usanetwork_movie_offset || 0;
       var start_from = limit*number_ul + negativeOffset;
       var service_name = '';
       var additional_arguments = '';
       var click = eventClick || '';
-
-      if (typeof Drupal.settings.usanetwork_tv_show_page_context != 'undefined') {
-        switch (Drupal.settings.usanetwork_tv_show_page_context) {
+      var page_context = Drupal.settings.usanetwork_tv_show_page_context || Drupal.settings.usanetwork_movie_page_context;
+      if (typeof page_context != 'undefined') {
+        switch (page_context) {
           case 'consumptionator':
             service_name = 'usanetwork-mpx-video';
             break;
@@ -56,6 +56,9 @@
             service_name = 'all-shows-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('sorting-order');
             break;
+          case 'moviepage':
+            service_name = 'usanetwork-movie';
+            break;
           default:
             service_name = 'usanetwork-tv-shows';
             break;
@@ -63,11 +66,11 @@
       }
 
       $('.usa-wrap .ajax-load-block .node-usanetwork-promo a').unbind('click');
-      if (show_nid == 0) {
+      if (nid == 0) {
         var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/' + start_from +'/'+ limit + additional_arguments;
       }
       else {
-        var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ show_nid +'/'+ start_from +'/'+ limit + additional_arguments;
+        var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ nid +'/'+ start_from +'/'+ limit + additional_arguments;
       }
 
       $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
@@ -105,6 +108,9 @@
 
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
+          } else {
+            $('#footer > .region-footer').removeClass('hidden');
+            $('.ajax-load-block').addClass('infinity-finished');
           }
           //if (number_ul > 2) {
           //  $('.ajax-load-block .load-more-link a').addClass('disabled-infinity');
@@ -124,7 +130,10 @@
        * %start_from - number of items that must be ignored from the beginning
        * %limit - number of items that must be pulled
        */
-
+      if(!$('#footer > .region-footer').hasClass('hidden') && ($('.ajax-load-block .load-more-link a').length > 0)) {
+        $('#footer > .region-footer').addClass('hidden');
+      }
+      
       $('.ajax-load-block .load-more-link a').click(function(){
         if ($(this).hasClass('disabled')){
           return false;
@@ -145,7 +154,7 @@
             load_more_offset = ($('.load-more-link').offset() != null)
               ? $('.load-more-link').offset().top
               : 0;
-        var additional_offset = (window.innerHeight < window_size_desktop_large)? 130: 230;
+        var additional_offset = (window.innerHeight < window_size_desktop_large)? 70: 120;
         if (load_more_offset - window.innerHeight + additional_offset - scroll_top < 0){
           if ($('.ajax-load-block .load-more-link a').hasClass('disabled') || $('.ajax-load-block .load-more-link a').hasClass('disabled-infinity') || $('.ajax-load-block .load-more-link a').length == 0){
             return false;

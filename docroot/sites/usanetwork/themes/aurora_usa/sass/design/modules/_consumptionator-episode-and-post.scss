@@ -277,7 +277,8 @@
       .episode-info-image, .post-info-image {
         float: right;
         width: 61.1%;
-        padding: 12px 0 20px 0;
+        padding: 12px 0 20px 15px;
+        background-color: #ffffff;
         margin-left: 30px;
         position: relative;
         z-index: 1;
@@ -317,9 +318,20 @@
         p {
           &:first-child {
             margin-top: 0;
+            .lines-quotation {
+              @include breakpoint($bp-min-1281-width) {
+                margin-top: 0;
+              }
+            }
           }
           &:last-child {
             margin-bottom: 0;
+          }
+        }
+        .lines-quotation {
+
+          @include breakpoint($bp-768-width) {
+            padding: 22px 15px;
           }
         }
         .source {
@@ -348,14 +360,15 @@
             text-decoration: underline;
           }
         }
-        .lines-quotation {
-          @include breakpoint($bp-768-width) {
-            padding: 22px 15px;
-          }
-        }
       }
       .node-wrapper {
         &.advert {
+          @include breakpoint($between-1025-1280) {
+            clear: right;
+            display: block;
+            float: right;
+            margin: 0 0 20px 20px;
+          }
           @include breakpoint($bp-1024-width) {
             display: block;
             width: 39%;

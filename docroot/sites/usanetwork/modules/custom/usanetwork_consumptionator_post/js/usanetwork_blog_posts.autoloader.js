@@ -49,7 +49,8 @@
             if (data.overlimited == false) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
             } else {
-              $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-all').css({'margin-bottom' : '0px'});
+              $('#footer > .region-footer').removeClass('hidden');
+              $('.ajax-load-block').addClass('infinity-finished');
             }
           },
           error: function () {

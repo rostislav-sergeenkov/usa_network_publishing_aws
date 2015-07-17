@@ -19,6 +19,12 @@
       }
 
       if($(window).width() >= window_size_tablet_portrait) {
+        // check offsetTop value
+        if (!subMenuSelector.hasClass('sticky-shows-submenu')) {
+          if (Math.round(subMenuSelector.offset().top) !== offsetTop) {
+            offsetTop = Math.round(subMenuSelector.offset().top);
+          }
+        }
         if ($(window).scrollTop() >= offsetTop) {
           return !subMenuSelector.hasClass('sticky-shows-submenu') ? switchState() : false;
         } else {
@@ -29,11 +35,32 @@
       }
     },
 
-    stickyFilterbar: function (offsetTop) {
+    stickyFilterbar: function (offsetTop, $userMenu, $submenu) {
       var $upper_menu = $('.upper-menu'),
           header_submenu_h = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu').outerHeight(true) - 1;
 
       if(!offsetTop) {return false;}
+
+      if (!$('.fixed-position').length) {
+        // check offsetTop value
+        if (Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1) !== offsetTop) {
+          offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1);
+        }
+        // check on class sticky-shows-submenu
+        if ($submenu.hasClass('sticky-shows-submenu')) {
+          offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1 - header_submenu_h)
+        }
+      } else {
+        // check on class sticky-shows-submenu
+        if (Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1) !== offsetTop) {
+          if ($submenu.hasClass('sticky-shows-submenu') && $('.fixed-position').length) {
+            offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1)
+          }
+          if ($('.fixed-position').css('top') !== header_submenu_h) {
+            $('.fixed-position').css('top', header_submenu_h)
+          }
+        }
+      }
 
       if ($(window).width() >= window_size_tablet_portrait) {
         if(!$('.fixed-position').length) {
@@ -336,6 +363,8 @@
 
         showTitleMove();
         showMenuMove();
+        //temporary hard code
+        $(".tab .no-refresh[href^='/movies']").removeClass('no-refresh active');
 
         $(".tab .no-refresh").removeClass('active').bind('click', tabNavHandler);
         $(".main-menu-open a").bind('click', menuOpenHandler);
@@ -344,7 +373,7 @@
         setTimeout(function() {
           _self.stickyHeader(submenuOffsetTop, $submenu);
           if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
-            _self.stickyFilterbar(upperMenuOffsetTop);
+            _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
         }, 500);
 
@@ -361,7 +390,7 @@
           timer_id = setTimeout(function() {
             _self.stickyHeader(submenuOffsetTop, $submenu);
             if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
-              _self.stickyFilterbar(upperMenuOffsetTop);
+              _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
           }, 300);
 
@@ -393,7 +422,7 @@
         $(window).on('scroll', function (e) {
           _self.stickyHeader(submenuOffsetTop, $submenu);
           if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
-            _self.stickyFilterbar(upperMenuOffsetTop);
+            _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
 
           if ($('.tab-item.active').length) {

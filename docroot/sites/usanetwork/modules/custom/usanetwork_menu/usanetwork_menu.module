@@ -1181,8 +1181,12 @@ function _usanetwork_menu_consumptionator_block_timeline_gallery($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_cover_item)) {
+
+    if (!empty($node->field_usa_og_image)) {
       $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_cover_item)) {
+      $image = $entity_wrapper->field_cover_item->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->field_summary) ? $entity_wrapper->field_summary->value() : '');

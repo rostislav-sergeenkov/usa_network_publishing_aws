@@ -239,6 +239,13 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'main' => 'field_video_thumbnail',
       'thumbnail' => 'field_video_thumbnail',
     ),
+    // Timeline gallery
+    'timeline_gallery' => array(
+      'main' => 'field_cover_item',
+      'cover' => 'field_cover_item',
+      'media_items' => 'field_media_items',
+      'og_image' => 'field_usa_og_image',
+    ),
   );
 }
 

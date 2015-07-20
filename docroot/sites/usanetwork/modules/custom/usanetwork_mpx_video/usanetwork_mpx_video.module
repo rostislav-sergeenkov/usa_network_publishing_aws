@@ -1697,45 +1697,46 @@ function usanetwork_mpx_video_usa_omniture_alter(&$omniture_variables, $context)
  * Help function for set variables for file
  */
 function _usanetwork_mpx_video_file_omniture($entity, $entity_type){
-  $movie_field = _usanetwork_get_field_item('file', $entity, 'field_movie', 'target_id');
-  if ($movie_field) {
-    $movie = node_load($movie_field);
-    $video_variables['s.prop2'] = t('Movies');
-    $video_variables['s.prop3'] = t('Movies');
-    $video_variables['s.prop4'] = t('Movies : !movie_title', array(
-      '!movie_title' => $movie->title,
-    ));
-    $video_variables['s.prop5'] = t('Movies : !movie_title : !video_title', array(
-      '!movie_title' => $movie->title,
-      '!video_title' => $entity->filename,
-    ));
-    $video_variables['s.prop10'] = t('Movies');
-  } else {
-    $video_variables = array(
-      's.prop3' => 'Video',
-      's.prop4' => 'Video',
-    );
+  $tv_content = usanetwork_core_api_get_tv_content_node($entity);
+  if ($tv_content) {
+    if ($tv_content->type == 'movie') {
+      $video_variables['s.prop2'] = t('Movies');
+      $video_variables['s.prop3'] = t('Movies');
+      $video_variables['s.prop4'] = t('Movies : !movie_title', array(
+        '!movie_title' => $tv_content->title,
+      ));
+      $video_variables['s.prop5'] = t('Movies : !movie_title : !video_title', array(
+        '!movie_title' => $tv_content->title,
+        '!video_title' => $entity->filename,
+      ));
+      $video_variables['s.prop10'] = t('Movies');
+    }
+    else {
+      $video_variables = array(
+        's.prop3' => 'Video',
+        's.prop4' => 'Video',
+      );
 
-    if (!empty($entity->field_mpx_full_episode)) {
-      $full_episode = _usanetwork_get_field_item($entity_type, $entity, 'field_mpx_full_episode', 'value');
-      if ($full_episode == '1') {
-        if (!empty($entity->field_mpx_entitlement)) {
-          $entitlement_episode = _usanetwork_get_field_item($entity_type, $entity, 'field_mpx_entitlement', 'value');
-          if ($entitlement_episode == 'auth') {
-            $video_variables['s.prop5'] = "Video : Full Episodes : Authenticated";
-          }
-          else {
-            $video_variables['s.prop5'] = "Video : Full Episodes : Free";
+      if (!empty($entity->field_mpx_full_episode)) {
+        $full_episode = _usanetwork_get_field_item($entity_type, $entity, 'field_mpx_full_episode', 'value');
+        if ($full_episode == '1') {
+          if (!empty($entity->field_mpx_entitlement)) {
+            $entitlement_episode = _usanetwork_get_field_item($entity_type, $entity, 'field_mpx_entitlement', 'value');
+            if ($entitlement_episode == 'auth') {
+              $video_variables['s.prop5'] = "Video : Full Episodes : Authenticated";
+            }
+            else {
+              $video_variables['s.prop5'] = "Video : Full Episodes : Free";
+            }
           }
         }
+        else {
+          $video_variables['s.prop5'] = "Video : Short Form";
+        }
+        $video_variables['umbel'] = $entity->filename;
       }
-      else {
-        $video_variables['s.prop5'] = "Video : Short Form";
-      }
-      $video_variables['umbel'] = $entity->filename;
     }
   }
-
   return $video_variables;
 }
 

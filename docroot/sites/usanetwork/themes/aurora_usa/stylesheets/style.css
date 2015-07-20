@@ -16716,28 +16716,30 @@ footer h2 {
   }
 }
 .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
   margin: 30px 0 30px;
 }
-@media (max-width: 1024px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text {
-    margin-top: 20px;
-    max-height: 198px;
-  }
+.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text p, .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text span {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif !important;
 }
 @media (min-width: 1025px) {
   .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text {
-    max-height: 203px;
+    max-height: calc(100% - 70px);
   }
 }
-@media (min-width: 1281px) {
+@media (max-width: 1024px) {
   .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text {
-    max-height: none;
+    font-size: 15px;
+    margin-top: 20px;
+    max-height: calc(100% - 65px);
   }
 }
 @media (max-width: 640px) {
   .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text {
-    max-height: 80px;
     font-size: 13px;
+    max-height: calc(100% - 40px);
     margin-top: 6px;
   }
 }

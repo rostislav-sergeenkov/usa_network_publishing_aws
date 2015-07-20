@@ -8,10 +8,14 @@
 global $conf;
 // Set pub_sso_server. Allowed values are 'stage' and 'prod'
 // This is a duplicate setting from settings.publisher.php
-$conf['pub_sso_server'] = 'stage';
+if (empty($_ENV['AH_SITE_ENVIRONMENT']) || ($_ENV['AH_SITE_ENVIRONMENT'] !== 'prod')) {
+  $conf['pub_sso_server'] = 'stage';
+} else {
+  $conf['pub_sso_server'] = 'prod';
+}
 
-$environment_info['database_name'] = 'nbcu_usa';
-$environment_info['cert_directory_directory'] = 'usanetwork';
+$environment_info['database_name'] = 'nbcuusa';
+$environment_info['cert_directory_directory'] = 'default';
 $environment_info['dynamic_domains'] = FALSE;
 
 switch ($conf['pub_sso_server']) {
@@ -27,9 +31,7 @@ switch ($conf['pub_sso_server']) {
   default:
     $environment_info['entity_id'] = 'usaNetworksp';
     $environment_info['metadata_name'] = 'Publisher Stage';
-    $environment_info['metadata_signonservice'] = 'https://fss.external.stg.nbcuni.com/fss/idp/SSO.saml2';
     $environment_info['metadata_signonservice'] = 'https://fss.stg.inbcu.com/fss/idp/SSO.saml2';
-    $environment_info['metadata_logoutservice'] = 'https://ssologin.external.stg.nbcuni.com/ssologin/logoff.jsp';
     $environment_info['metadata_logoutservice'] = 'https://ssologin.stg.inbcu.com/ssologin/logoff.jsp?app=https://sso.stg.inbcu.com/';
     $environment_info['metadata.key'] = 'usanetworkVID';
     break;
@@ -78,6 +80,7 @@ if (array_key_exists($_SERVER['SERVER_NAME'], $domains)) {
 // This condition is for SSO with dynamic domains.
 // It's for non-prod environments only.
 if(empty($environment_info['authentication-source.key']) && !empty($main_domain) && $conf['pub_sso_server'] == 'stage') {
+//if(empty($environment_info['authentication-source.key']) && !empty($main_domain)) {
   $main_domain_key = array_keys($main_domain);
   $main_domain_pattern = reset($main_domain_key);
   if ($main_domain_pattern && preg_match('/' . $main_domain_pattern . '$/', $_SERVER['SERVER_NAME'])) {

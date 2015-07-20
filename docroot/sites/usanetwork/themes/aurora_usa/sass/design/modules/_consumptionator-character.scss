@@ -195,7 +195,36 @@
         @include breakpoint($bp-480-width) {
           padding: 10px 1px;
         }
+        .file-video-mpx.view-mode-inline_content {
+          position: relative;
+          width: 100%;
+          @include breakpoint($bp-min-1901-width) {
+            height: 19vw;
+          }
+          @include breakpoint($bp-min-2500-width) {
+            height: 475px;
+          }
+          @include breakpoint($bp-1900-width) {
+            height: 18.5vw;
+          }
+          @include breakpoint($bp-1600-width) {
+            height: 18vw;
+          }
+          @include breakpoint($between-1025-1280) {
+            height: 25vw;
+          }
+          @include breakpoint($between-769-1024) {
+            height: 29.5vw;
+          }
+          @include breakpoint($between-641-768) {
+            height: 27.5vw;
+          }
+          @include breakpoint($bp-640-width) {
+            height: 46.75vw;
+          }
+        }
         iframe {
+          height: 100%;
           width: 100%;
         }
         ul {

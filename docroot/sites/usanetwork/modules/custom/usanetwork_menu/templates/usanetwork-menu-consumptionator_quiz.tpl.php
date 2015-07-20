@@ -36,7 +36,7 @@
             <img src="<?php print $details['image']; ?>" alt="">
           </div>
         <?php endif; ?>
-        <div class="title-overlay meta">
+        <div class="meta">
           <?php if (!empty($quiz_name)): ?>
             <div class="title">
              <h1><?php print !empty($h1) ? $h1 : $quiz_name; ?></h1>

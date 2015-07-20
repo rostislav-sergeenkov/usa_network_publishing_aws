@@ -42,7 +42,7 @@
       </div>
     <?php endif; ?>
   </div>
-  <div class="landing-items-blocks video-items-blocks show-border ajax-load-block"
+  <div class="landing-items-blocks video-items-blocks show-border ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"
   <?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?>
   <?php if (!empty($items_per_page_limit)): print ' data-show-items-limit="' . $items_per_page_limit . '"'; endif; ?>
   <?php print ' data-filter-tid="' . $filter_tid . '"'; ?>

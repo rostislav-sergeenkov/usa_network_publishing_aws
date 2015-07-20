@@ -417,6 +417,5 @@ function usanetwork_promo_field_default_field_bases() {
     'type' => 'text',
   );
 
-
   return $field_bases;
 }

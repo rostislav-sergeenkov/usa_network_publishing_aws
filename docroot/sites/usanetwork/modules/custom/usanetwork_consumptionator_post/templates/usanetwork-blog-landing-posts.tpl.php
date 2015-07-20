@@ -7,7 +7,7 @@
   <div class="midbanner" id="show-blog-landing-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
 <?php if (!$ajax_load): ?>
-<div class="landing-list-items-all blog-landing-list-items ajax-load-block" data-show-nid="<?php print $show_nid; ?>">
+<div class="landing-list-items-all blog-landing-list-items ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>" data-show-nid="<?php print $show_nid; ?>">
   <?php endif; ?>
   <div class="landing-list-items-one-item blog-landing-list-items-one-item">
     <?php if (!$ajax_load): ?>

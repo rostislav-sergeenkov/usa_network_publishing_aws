@@ -169,7 +169,7 @@ function usanetwork_person_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -552,7 +552,7 @@ function usanetwork_person_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -631,7 +631,7 @@ function usanetwork_person_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1012,6 +1012,79 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'node-person-field_movie'
+  $field_instances['node-person-field_movie'] = array(
+    'bundle' => 'person',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this page is associated with a movie please select from the list above.',
+    'display' => array(
+      'cast_carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 47,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_movie',
+    'label' => 'Movie',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 3,
     ),
   );
 
@@ -2234,7 +2307,7 @@ function usanetwork_person_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -2476,7 +2549,7 @@ function usanetwork_person_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_show',
     'label' => 'Show',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
@@ -2574,7 +2647,7 @@ function usanetwork_person_field_default_field_instances() {
         'soft_length_minimum' => '',
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -3271,6 +3344,7 @@ function usanetwork_person_field_default_field_instances() {
   t('H1');
   t('Hide from cast carousel');
   t('Hide from social follow block');
+  t('If this page is associated with a movie please select from the list above.');
   t('If you have selected \'Character\' as this person\'s role please enter the full name of the actor who plays the character in this field.');
   t('Legal Name: First Name');
   t('Legal Name: Last Name');
@@ -3278,6 +3352,7 @@ function usanetwork_person_field_default_field_instances() {
   t('Legal Name: Prefix');
   t('Legal Name: Suffix');
   t('Maximum 150 characters recommended, OK to exceed for search results and indexing but most relevant information should be listed first.');
+  t('Movie');
   t('Nitro action name');
   t('OG Description');
   t('OG Image');

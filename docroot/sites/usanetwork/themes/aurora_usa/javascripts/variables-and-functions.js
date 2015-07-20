@@ -14,19 +14,27 @@ var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;
 
 var USAN = USAN || {};
 
-var waitForFinalEvent = function () {
-  var timers = {};
 
+// waitForFinalEvent
+var waitForFinalEvent = (function () {
+  var timers = {};
   return function (callback, ms, uniqueId) {
-    if (!uniqueId) {
-      uniqueId = "Don't call this twice without a uniqueId";
-    }
-    if (timers[uniqueId]) {
-      clearTimeout (timers[uniqueId]);
-    }
+    if (!uniqueId) { uniqueId = "Don't call this twice without a uniqueId"; }
+    if (timers[uniqueId]) { clearTimeout (timers[uniqueId]); }
     timers[uniqueId] = setTimeout(callback, ms);
   };
-};
+})();
+
+//Example
+//jQuery(window).scroll(function() {
+//  waitForFinalEvent(function(){
+//    positionFooter();
+//  },100,"positioned footer");
+//
+//});
+
+// end
+
 
 function getInternetExplorerVersion()
 {
@@ -82,5 +90,34 @@ $(document).ready(function(){
   });
 
 });
+
+// detect browser
+function browserDetect() {
+
+  var browserName = '';
+
+  //Check if browser is IE or not
+  if (navigator.userAgent.search("MSIE") >= 0) {
+    browserName = 'msie';
+  }
+  //Check if browser is Chrome or not
+  else if (navigator.userAgent.search("Chrome") >= 0) {
+    browserName = 'chrome';
+  }
+  //Check if browser is Firefox or not
+  else if (navigator.userAgent.search("Firefox") >= 0) {
+    browserName = 'firefox';
+  }
+  //Check if browser is Safari or not
+  else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+    browserName = 'safari';
+  }
+  //Check if browser is Opera or not
+  else if (navigator.userAgent.search("Opera") >= 0) {
+    browserName = 'opera';
+  }
+
+  return browserName;
+}
 
 

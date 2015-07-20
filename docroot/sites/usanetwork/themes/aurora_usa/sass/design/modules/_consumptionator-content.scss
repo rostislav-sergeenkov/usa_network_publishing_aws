@@ -854,13 +854,12 @@
       @include breakpoint($bp-640-width) {
         height: 45px;
         line-height: 45px;
-        padding-left: 0;
       }
       h2 {
         @include breakpoint($bp-640-width) {
-          font-size: 23px;
+          font-size: 20px;
           line-height: 45px;
-          text-align: center;
+          text-align: left;
         }
       }
     }
@@ -880,6 +879,9 @@
   }
   @include breakpoint($bp-640-width) {
     padding: 40px 0px;
+  }
+  &.infinity-finished {
+    margin-bottom: 0;
   }
   ul {
     @include clear();

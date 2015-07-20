@@ -301,8 +301,22 @@
         // Show videos page
         if (body.hasClass('page-node-videos')) {
           page_name = 'Show Videos Page ';
+          if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-lmb').length > 0) {
+            name = page_name + 'Show Video Landing Main Block';
+          }
           if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-vl').length > 0) {
             name = page_name + 'All Videos Block';
+          }
+        }
+
+        // Show photos page
+        if (body.hasClass('page-node-photos')) {
+          page_name = 'Show Photos Page ';
+          if ($self.closest('#block-usanetwork-media-gallery-usa-gallery-show-gallery-lmb').length > 0) {
+            name = page_name + 'Show Photo Landing Main Block';
+          }
+          if ($self.closest('#block-usanetwork-media-gallery-usa-gallery-show-gallery-all').length > 0) {
+            name = page_name + 'All Galleries Block';
           }
         }
 
@@ -502,7 +516,7 @@
                 itemName = $self.closest('.node-usanetwork-promo').find('.title').text().trim();
 
                 if ($self.hasClass('live-icon')) {
-                  name = $self.text().trim();
+                  sub_menu_name = $self.text().trim();
                 } else if ($self.data('name') === 'description' || $self.data('name') === 'reminder') {
                   name = $self.data('name');
                   sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;

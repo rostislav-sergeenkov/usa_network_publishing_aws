@@ -232,30 +232,7 @@
       s.tl(this, 'o', name + ' Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
-    promoClick: function ($self, name, show_name) {
 
-      if (show_name === '') {
-        s.linkTrackVars = 'events,eVar55';
-        s.linkTrackEvents = s.events = 'event51';
-        s.eVar55 = name;
-      } else {
-        s.linkTrackVars = 'events,eVar55,eVar33';
-        s.linkTrackEvents = s.events = 'event51';
-        s.eVar33 = show_name;
-        s.eVar55 = name;
-      }
-
-      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
-        s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
-        };
-      }
-
-      s.tl(this, 'o', name + ' Click');
-      s.manageVars('clearVars', s.linkTrackVars, 1);
-    },
     aspotClick: function ($self, pageName, name, slideName) {
 
       if ($self.hasClass('next-button')) {
@@ -280,6 +257,42 @@
       }
 
       s.tl(this, 'o', pageName + ' ' + name + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
+    carouselNavClick: function (fullName, nameNav) {
+
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = nameNav;
+        s.eVar55 = fullName;
+
+      s.tl(this, 'o', fullName + ' ' + nameNav + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
+    promoClick: function ($self, name, show_name) {
+
+      if (show_name === '') {
+        s.linkTrackVars = 'events,eVar55';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar55 = name;
+      } else {
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = show_name;
+        s.eVar55 = name;
+      }
+
+      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
+        s.bcf = function () {
+          setTimeout(function () {
+            window.location = $self.attr('href');
+          }, 500);
+        };
+      }
+
+      s.tl(this, 'o', name + ' Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -518,18 +531,65 @@
         '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +
         '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
-            e.preventDefault();
-            var self = $(this);
-            if (self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+              var self = $(this);
+              if (self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
 
-              var name = 'Home Page Show Card Carousel',
-                  item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text(),
-                  prop4 = item_show_name + ' : Home Page Show Card',
-                  prop10 = item_show_name;
+                var name = 'Home Page Show Card Carousel',
+                    item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text(),
+                    prop4 = item_show_name + ' : Home Page Show Card',
+                    prop10 = item_show_name;
 
-              Drupal.behaviors.omniture_tracking.showCardPromoClick(self, name, prop4, prop10);
-            } else {
-              Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+                Drupal.behaviors.omniture_tracking.showCardPromoClick(self, name, prop4, prop10);
+              } else {
+                Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+              }
+            }
+          });
+        });
+
+        // Click promo item
+        $('a.jcarousel-controls').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+
+              var body = $('body'),
+                  target = $(this),
+                  pageName, blockName, nameNav, fullName;
+
+              if (target.hasClass('jcarousel-control-prev')) {
+                nameNav = 'Back';
+              } else if (target.hasClass('jcarousel-control-next')) {
+                nameNav = 'Next';
+              }
+
+              if (body.hasClass('page-home')) {
+                pageName = 'Home Page';
+
+                if (target.closest('.shows-block').length > 0) {
+                  blockName = target.closest('.shows-block').data('block-name');
+                } else if (target.closest('.full-episodes-block').length > 0) {
+                  blockName = target.closest('.full-episodes-block').data('block-name');
+                } else if (target.closest('.featured-block').length > 0) {
+                  blockName = target.closest('.featured-block').data('block-name');
+                } else if (target.closest('.social-block').length > 0) {
+                  blockName = target.closest('.social-block').data('block-name');
+                }
+
+
+              } else if (body.hasClass('page-videos')) {
+                pageName = 'Full Episodes Landing Page';
+                blockName = target.closest('.carousel-block').data('block-name');
+              } else if (body.hasClass('consumptionator-page')) {
+                pageName = 'Consumptionator Page';
+                blockName = target.closest('.episodes-list-slider.horizontal').data('block-name');
+              }
+
+              fullName = pageName + ' ' + blockName;
+
+              Drupal.behaviors.omniture_tracking.carouselNavClick(fullName, nameNav);
             }
           });
         });

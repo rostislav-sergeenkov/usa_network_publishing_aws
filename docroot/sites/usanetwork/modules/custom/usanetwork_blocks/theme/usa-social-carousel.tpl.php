@@ -3,7 +3,7 @@
  * Template for blocks.
 */
 ?>
-<div class="social-block carousel-block">
+<div class="social-block carousel-block" data-block-name="Social Carousel">
   <div class="carousel-description-item start">
     <div class="description-wrapper">
       <div class="description-block">

@@ -142,7 +142,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
-  //drupal_add_js($theme_path . '/javascripts/velocity.min.js');
+  drupal_add_js($theme_path . '/javascripts/velocity.min.js');
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   drupal_add_js($theme_path . '/javascripts/tableheader.js');

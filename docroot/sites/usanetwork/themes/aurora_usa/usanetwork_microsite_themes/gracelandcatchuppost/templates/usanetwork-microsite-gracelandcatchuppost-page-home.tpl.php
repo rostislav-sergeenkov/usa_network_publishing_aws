@@ -18,16 +18,29 @@
 // @TODO: DV -- SET THE FOLLOWING PATH IN THE MODULE FILE AND MAKE IT AVAILABLE
 // TO ALL TEMPLATE FILES
 $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost';
+date_default_timezone_set('America/New_York');
 $timestamp = time();
+$sponsorClass = 'camry2015';
+$sponsorImg = 'graceland-s2catchup-camry.svg';
+$sponsorPresentedBy = 'Presented by the Bold 2015 Camry';
+if ($timestamp > mktime(0, 0, 1, 8, 16, 2015)): // after Aug 16, 2015 00:00:01 AM ET
+  $sponsorClass = 'corolla';
+  $sponsorImg = 'graceland-s2catchup-toyotacorrolla.svg';
+  $sponsorPresentedBy = 'Presented by Toyota Corolla';
+elseif ($timestamp > mktime(0, 0, 1, 7, 14, 2015)): // after Jul 14, 2015 00:00:01 AM ET
+  $sponsorClass = 'camry';
+  $sponsorImg = 'graceland-s2catchup-toyotacamry.svg';
+  $sponsorPresentedBy = 'Presented by Toyota Camry';
+endif;
 ?>
 
 <div id="gracelandcatchup-home" class="clearfix">
   <div id="home-content-container">
     <div id="home-logo"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.png" alt="Graceland Catchup HQ" /></div>
-    <div id="home-sponsored">
+    <div id="home-sponsored" class="<?php print $sponsorClass; ?>">
       <a href="http://ad.doubleclick.net/ddm/jump/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" target="_blank">
         <img class="tracking" src="http://ad.doubleclick.net/ddm/ad/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" border="0" width="1" height="1" alt="Advertisement">
-        <img src="<?php print $themePath; ?>/images/graceland-s2catchup-camry.svg" alt="Presented by the Bold 2015 Camry">
+        <img src="<?php print $themePath; ?>/images/<?php print $sponsorImg; ?>" alt="<?php print $sponsorPresentedBy; ?>">
       </a>
     </div>
     <div id="home-tunein"><?php if (!empty($tune_in)) print $tune_in; ?></div>

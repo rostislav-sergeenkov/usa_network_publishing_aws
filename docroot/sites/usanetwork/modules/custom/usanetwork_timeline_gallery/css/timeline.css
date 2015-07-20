@@ -257,7 +257,7 @@ ul, li {
   height: 27px;
   font-size: 27px;
   font-family: 'ico-font';
-  display: block;
+  display: inline-block;
 }
 .timelineFlat #timeline-line-full-left .arrow:before,
 .timelineFlat #timeline-line-full-right .arrow:before {
@@ -294,7 +294,7 @@ ul, li {
 }
 .timelineFlat #timeline-line-full-right .title {
   vertical-align: top;
-  margin: 0 0 0 12px;
+  margin: 0 0 0 10px;
 }
 
 /* next / previous buttons for line */

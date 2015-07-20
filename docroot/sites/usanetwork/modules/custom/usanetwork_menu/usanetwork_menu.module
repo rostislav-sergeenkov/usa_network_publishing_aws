@@ -1119,7 +1119,10 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_cover_item)) {
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_cover_item)) {
       $image = $entity_wrapper->field_cover_item->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
@@ -1178,7 +1181,11 @@ function _usanetwork_menu_consumptionator_block_timeline_gallery($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_cover_item)) {
+
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_cover_item)) {
       $image = $entity_wrapper->field_cover_item->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
@@ -1552,6 +1559,18 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   if (!empty($advert_block['content'])) {
     $authbar = render($advert_block['content']);
   }
+
+  $query = db_select('file_managed', 'fm')
+    ->fields('fm', array('fid'))
+    ->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+  $query->leftJoin('field_data_field_usa_video_terms' , 'fdfuvt', 'fdfuvt.entity_id = fm.fid');
+  $query->innerJoin('taxonomy_term_data', 'ttd', 'fdfuvt.field_usa_video_terms_target_id = ttd.tid');
+  $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+  $query->condition('mv.status', 1);
+  $query->condition('ttd.name', 'Live');
+  $live_video_fid = $query->execute()->fetchField();
+  $live_video = file_load($live_video_fid);
+  $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar');
 
   $theme_variables = array(
     'authbar' => !empty($authbar) ? $authbar : NULL,

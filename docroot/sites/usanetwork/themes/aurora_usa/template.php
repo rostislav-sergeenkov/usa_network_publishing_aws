@@ -97,6 +97,7 @@ function aurora_usa_preprocess_html(&$vars) {
         }
         elseif ($tv_content_node->type == 'movie') {
           $vars['classes_array'][] = usanetwork_tv_shows_color_movie_css_class($tv_content_node);
+          $vars['classes_array'][] = 'movie-consumptionator';
         }
       }
     }

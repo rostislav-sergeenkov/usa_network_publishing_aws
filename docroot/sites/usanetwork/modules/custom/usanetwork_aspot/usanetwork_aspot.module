@@ -742,6 +742,9 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
     'show_class' => !empty($show_node)
       ? (($show_node->type == 'tv_show') ? usanetwork_tv_shows_color_show_css_class($show_node) : usanetwork_tv_shows_color_movie_css_class($show_node))
       : '',
+    'show_name' => !empty($show_node->title)
+      ? $show_node->title
+      : '',
     'show_poster' => array(
       'mobile' => image_style_url('640x560', $banner_images['mobile']),
       'mobile_retina' => image_style_url('1280x1120', $banner_images['mobile']),
@@ -885,6 +888,9 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
       ? url($aspot_node_wrapper->field_usa_aspot_link->url->value())
       : '',
     'show_class' => usanetwork_tv_shows_color_show_css_class($show_node),
+    'show_name' => !empty($show_node->title)
+      ? $show_node->title
+      : '',
     'show_poster' => array(
       'mobile' => image_style_url('640x560', $banner_images['mobile']),
       'desktop' => image_style_url('2880x1620', $banner_images['desktop']),

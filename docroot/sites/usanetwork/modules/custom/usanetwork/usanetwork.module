@@ -185,6 +185,15 @@ function usanetwork_preprocess_page(&$variables) {
   drupal_add_js(trim($usanetwork_global_js, "\n"), array('type' => 'inline', 'scope' => 'header'));
 }
 
+function usanetwork_preprocess_region(&$variables) {
+  if($variables['region'] == "footer"){
+    $load_more_link = &drupal_static('load_more_link');
+    if ($load_more_link) {
+      $variables['classes_array'][] = 'hidden';
+    }
+  }
+}
+
 /**
  * Returns HTML for a list or nested list of items.
  *

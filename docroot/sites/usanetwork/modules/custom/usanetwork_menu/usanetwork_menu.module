@@ -1090,11 +1090,14 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);
     }
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
+    $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
+    $field = $tv_content_fields[$tv_content_node];
     $theme_variables = array(
       'main_url' => url('<front>'),
       'authbar' => isset($authbar) ? $authbar : NULL,
-      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
-      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',
+      'show_name' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
       'catchall_name' => $node->title,
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
@@ -1116,7 +1119,10 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_cover_item)) {
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_cover_item)) {
       $image = $entity_wrapper->field_cover_item->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
@@ -1139,11 +1145,14 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);
     }
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
+    $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
+    $field = $tv_content_fields[$tv_content_node->type];
     $theme_variables = array(
       'main_url' => url('<front>'),
       'authbar' => isset($authbar) ? $authbar : NULL,
-      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
-      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',
+      'show_name' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
       'gallery_name' => !empty($node->title) ? $node->title : '',
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
@@ -1172,7 +1181,11 @@ function _usanetwork_menu_consumptionator_block_timeline_gallery($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_cover_item)) {
+
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_cover_item)) {
       $image = $entity_wrapper->field_cover_item->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
@@ -1262,11 +1275,14 @@ function _usanetwork_menu_consumptionator_block_person($node) {
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);
     }
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
+    $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
+    $field = $tv_content_fields[$tv_content_node->type];
     $theme_variables = array(
       'authbar' => isset($authbar) ? $authbar : NULL,
       'main_url' => url('<front>'),
-      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
-      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',
+      'show_name' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
       'person_name' => !empty($node->title) ? $node->title : '',
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
@@ -1293,10 +1309,13 @@ function _usanetwork_menu_consumptionator_block_quiz($node) {
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
+    $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
+    $field = $tv_content_fields[$tv_content_node->type];
     $theme_variables = array(
       'main_url' => url('<front>'),
-      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
-      'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',
+      'show_name' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
       'quiz_name' => !empty($node->title) ? $node->title : '',
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
@@ -1372,15 +1391,18 @@ function _usanetwork_menu_consumptionator_block_video($file) {
       (!empty($file->field_mpx_description)
         ? $file_wrapper->field_mpx_description->value()
         : '');
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($file);
+    $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
+    $field = $tv_content_fields[$tv_content_node->type];
     $theme_variables = array(
       'sharebar' => usanetwork_menu_render_sharebar($file, 'file', t('Share this video'), $file_wrapper->name->value(), $description),
       'authbar' => !empty($authbar) ? ($authbar) : '',
       'main_url' => url('<front>'),
-      'show_url' => !empty($file->field_show)
-          ? url('node/' . $file_wrapper->field_show->value()->nid)
+      'show_url' => !empty($file->{$field})
+          ? url('node/' . $file_wrapper->{$field}->value()->nid)
           : '',
-      'show_name' => !empty($file->field_show)
-        ? $file_wrapper->field_show->value()->title
+      'show_name' => !empty($file->{$field})
+        ? $file_wrapper->{$field}->value()->title
         : '',
       'h1' => !empty($file->field_seo_h1) ? $file_wrapper->field_seo_h1->value() : '',
       'episode' => array(
@@ -1537,6 +1559,18 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   if (!empty($advert_block['content'])) {
     $authbar = render($advert_block['content']);
   }
+
+  $query = db_select('file_managed', 'fm')
+    ->fields('fm', array('fid'))
+    ->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+  $query->leftJoin('field_data_field_usa_video_terms' , 'fdfuvt', 'fdfuvt.entity_id = fm.fid');
+  $query->innerJoin('taxonomy_term_data', 'ttd', 'fdfuvt.field_usa_video_terms_target_id = ttd.tid');
+  $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+  $query->condition('mv.status', 1);
+  $query->condition('ttd.name', 'Live');
+  $live_video_fid = $query->execute()->fetchField();
+  $live_video = file_load($live_video_fid);
+  $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar');
 
   $theme_variables = array(
     'authbar' => !empty($authbar) ? $authbar : NULL,

@@ -1238,7 +1238,7 @@
 }
 %three-line-video-promo {
   .three-line-video {
-    &.usanetwork-tv-shows-video-lmb, &.usanetwork-tv-shows-landing-videos-item-small, &.usanetwork-tv-shows-photo-lmb, &.usanetwork-tv-shows-all-shows-lmb {
+    &.usanetwork-tv-shows-video-lmb, &.usanetwork-tv-shows-landing-videos-item-small, &.usanetwork-tv-shows-photo-lmb, &.usanetwork-tv-shows-all-shows-lmb, &.usanetwork-movies-all-movies-lmb {
       .meta {
         .caption {
           @include breakpoint($between-769-1024) {
@@ -1272,7 +1272,7 @@
         }
       }
     }
-    &.usanetwork-tv-shows-video-lmb, &.usanetwork-tv-shows-photo-lmb, &.usanetwork-tv-shows-all-shows-lmb {
+    &.usanetwork-tv-shows-video-lmb, &.usanetwork-tv-shows-photo-lmb, &.usanetwork-tv-shows-all-shows-lmb, &.usanetwork-movies-all-movies-lmb {
       .meta-wrapper {
         @include breakpoint($between-641-768) {
           background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
@@ -1372,14 +1372,11 @@
     .meta-wrapper {
       background: $video-promo-back-gray;
       bottom: 0;
-      height: 34.7%;
+      height: 25%;
       position: absolute;
       width: 100%;
       z-index: 1;
-      @include breakpoint($between-641-768) {
-        height: 8.6vw;
-      }
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-480-width) {
         height: 12.4vw;
       }
     }

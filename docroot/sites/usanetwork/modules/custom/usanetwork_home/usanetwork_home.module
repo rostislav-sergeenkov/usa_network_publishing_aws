@@ -1302,20 +1302,23 @@ function _usanetwork_home_shows_queue_block() {
     );
 
     foreach ($show_card_items as $show_node_wrapper) {
-      $slide_li_class = '';
+      $show_published = $show_node_wrapper->status->value();
+      if ($show_published) {
+        $slide_li_class = '';
 
-      if ($slide_index == 0) {
-        $slide_li_class = 'first';
+        if ($slide_index == 0) {
+          $slide_li_class = 'first';
+        }
+
+        $slide = array(
+          'class' => $slide_index . ' ' . $slide_li_class,
+          'content' => _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper),
+        );
+
+        $theme_variables['slides'][] = $slide;
+
+        $slide_index++;
       }
-
-      $slide = array(
-        'class' => $slide_index . ' ' . $slide_li_class,
-        'content' => _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper),
-      );
-
-      $theme_variables['slides'][] = $slide;
-
-      $slide_index++;
     }
 
     return theme('usanetwork_home_shows_queue', $theme_variables);

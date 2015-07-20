@@ -113,10 +113,32 @@ function theme_usanetwork_tve_live_video($variables) {
 }
 
 /*
+ * Helper function for determine video page
+ */
+function _usanetwork_tve_video_is_video_page() {
+  $is_video_page = FALSE;
+  $current_menu_item = menu_get_item();
+  $current_menu_item_path = $current_menu_item['path'];
+
+  if (($current_menu_item_path == 'videos') || ($current_menu_item_path == 'videos/live') || ($current_menu_item_path == 'node/%/microsite')) {
+    $is_video_page = TRUE;
+  } else {
+    $file = menu_get_object('file');
+    if ($file) {
+      $is_video_page = TRUE;
+    }
+  }
+
+  return $is_video_page;
+}
+
+/*
  * Implements hook_js_alter().
  */
 function usanetwork_tve_video_js_alter(&$javascript) {
-  if (path_is_admin(current_path())) {
+//  if (path_is_admin(current_path())) {
+  $view_tve_script = _usanetwork_tve_video_is_video_page();
+  if (!$view_tve_script) {
     $tve_analytics_js_path = drupal_get_path('module', 'pub_analytics') . '/js/tve-analytics.js';
     if (isset($javascript[$tve_analytics_js_path])) {
       unset($javascript[$tve_analytics_js_path]);
@@ -130,7 +152,9 @@ function usanetwork_tve_video_js_alter(&$javascript) {
  * Trying fix more button issue 
  */
 function usanetwork_tve_video_page_alter(&$page) {
-  if (path_is_admin(current_path())) {
+//  if (path_is_admin(current_path())) {
+  $view_tve_script = _usanetwork_tve_video_is_video_page();
+  if (!$view_tve_script) {
     if (isset($page['page_bottom']['tve_adobe_pass'])) {
       unset($page['page_bottom']['tve_adobe_pass']);
     }

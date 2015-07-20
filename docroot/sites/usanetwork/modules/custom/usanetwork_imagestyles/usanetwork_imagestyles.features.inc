@@ -703,6 +703,18 @@ function usanetwork_imagestyles_image_default_styles() {
     'name' => 'timeline_gallery_image',
     'label' => 'Timeline gallery image',
     'effects' => array(
+      2 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1920,
+          'height' => 1080,
+          'focal_point_advanced' => array(
+            'shift_x' => '',
+            'shift_y' => '',
+          ),
+        ),
+        'weight' => -10,
+      ),
       1 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',

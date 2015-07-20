@@ -298,18 +298,18 @@
 
       // show next button
       function showNextbutton() {
-        /*$(nextButton).velocity({
+        $(nextButton).velocity({
           'right': '0'
         }, timeAnimateShow, nameAnimation, {
           complete: function () {
             $(nextButton).removeClass('disable');
           }
-        });*/
-        $(nextButton).animate({
-          'right': '+=10%'
-        }, timeAnimateShow, nameAnimation, function () {
-          $(this).removeClass('disable');
         });
+        //$(nextButton).animate({
+        //  'right': '+=10%'
+        //}, timeAnimateShow, nameAnimation, function () {
+        //  $(this).removeClass('disable');
+        //});
       }
 
       // show slide content

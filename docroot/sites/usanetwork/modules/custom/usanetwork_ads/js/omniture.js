@@ -445,6 +445,8 @@
     omnitureMaxQuestionCharacters: 35,
 
     attach: function (context, settings) {
+
+      console.info()
       if (typeof s != 'object') {
         return;
       }
@@ -583,8 +585,28 @@
                 pageName = 'Full Episodes Landing Page';
                 blockName = target.closest('.carousel-block').data('block-name');
               } else if (body.hasClass('consumptionator-page')) {
-                pageName = 'Consumptionator Page';
+
+                if (body.hasClass('consumptionator-video-page')) {
+                  pageName = 'Consumptionator Video Page';
+                } else if (body.hasClass('node-type-consumpt-post')) {
+                  pageName = 'Consumptionator Post Page';
+                } else if (body.hasClass('node-type-media-gallery')) {
+                  pageName = 'Consumptionator Gallery Page';
+                }  else if (body.hasClass('node-type-person')) {
+                  pageName = 'Consumptionator Person Page';
+                }  else if (body.hasClass('node-type-quiz')) {
+                  pageName = 'Consumptionator Quiz Page';
+                } else {
+                  pageName = 'Consumptionator Page';
+                }
+
                 blockName = target.closest('.episodes-list-slider.horizontal').data('block-name');
+              } else if (body.hasClass('node-type-tv-show')) {
+                pageName = 'Show Page';
+                blockName = target.closest('.episodes-list-slider.horizontal').data('block-name');
+              } else {
+                pageName = 'Page';
+                blockName = 'Right Rail Carousel';
               }
 
               fullName = pageName + ' ' + blockName;

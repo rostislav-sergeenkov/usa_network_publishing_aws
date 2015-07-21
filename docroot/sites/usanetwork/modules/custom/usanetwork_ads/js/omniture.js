@@ -304,6 +304,7 @@
             global_show_name = $('header .nav-bar-tabs .show-name').text().trim() || '',
             show_name,
             page_name,
+            blockName,
             name;
 
         // Home page
@@ -330,7 +331,8 @@
             name = page_name + 'Latest Full Episodes Block';
           }
           if ($self.closest('.best-of-block').length > 0) {
-            name = page_name + $('.best-of-block .section-title').text() + 'Block';
+            blockName = $('.best-of-block .section-title').text().trim();
+            name = page_name + blockName + ' Block';
           }
           if ($self.closest('.show-latest-block').length > 0) {
             name = page_name + 'The Latest Block';
@@ -345,6 +347,30 @@
           }
           if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-vl').length > 0) {
             name = page_name + 'All Videos Block';
+          }
+        }
+
+        // Movies page
+        if (body.hasClass('page-movies')) {
+          page_name = 'Movies Page ';
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movies-mb').length > 0) {
+            name = page_name + 'Movies Main Block';
+          }
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movies-all-movies').length > 0) {
+            name = page_name + 'All Movies Block';
+          }
+        }
+
+        // Movie page
+        if (body.hasClass('node-type-movie')) {
+          page_name = 'Movie Page ';
+          //show_name = $('.show-title-block .title a').text().trim();
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movie-related').length > 0) {
+            blockName = $('#block-usanetwork-movie-usanetwork-movie-related .section-title').text().trim();
+            name = page_name + blockName + ' Block';
+          }
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movie-cast-crew-block').length > 0) {
+            name = page_name + 'Cast & Crew Block';
           }
         }
 

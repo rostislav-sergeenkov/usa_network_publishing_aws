@@ -496,11 +496,11 @@ function usanetwork_menu_image_default_styles() {
  * Alter gigya share settings.
  */
 function usanetwork_menu_gigya_sharebar_alter(&$share_settings, $context) {
+  if (!empty($context['display']['share_settings']) ) {
+    $share_settings['gigyaSharebar']['ua'] = array_merge($share_settings['gigyaSharebar']['ua'], $context['display']['share_settings']);
+  }
   if ($context['entity_type'] == 'node') {
     $node = $context['entity'];
-    if (!empty($context['display']['share_settings']) ) {
-      $share_settings['gigyaSharebar']['ua'] = array_merge($share_settings['gigyaSharebar']['ua'], $context['display']['share_settings']);
-    }
     $node_wrapper = entity_metadata_wrapper('node', $node);
     if (!empty($node->field_share_title)) {
       $share_settings['gigyaSharebar']['ua']['title'] = $node_wrapper->field_share_title->value();

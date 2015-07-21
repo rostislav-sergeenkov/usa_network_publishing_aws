@@ -1273,6 +1273,13 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
     $query->condition('episode_num.field_mpx_episode_number_value', $episode_num);
   }
 
+  $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = f.fid');
+  $query->condition(
+    db_or()
+      ->condition('fdfml.field_mpx_language_value', 'en', '=')
+      ->isNull('fdfml.field_mpx_language_value')
+  );
+
   $query->addField('sn', 'title', 'show_title');
   $query->condition('fshow.field_show_target_id', $show_id);
   $query->condition('fshow.deleted', 0);

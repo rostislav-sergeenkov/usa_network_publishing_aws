@@ -304,6 +304,7 @@
             global_show_name = $('header .nav-bar-tabs .show-name').text().trim() || '',
             show_name,
             page_name,
+            blockName,
             name;
 
         // Home page
@@ -330,7 +331,8 @@
             name = page_name + 'Latest Full Episodes Block';
           }
           if ($self.closest('.best-of-block').length > 0) {
-            name = page_name + $('.best-of-block .section-title').text() + 'Block';
+            blockName = $('.best-of-block .section-title').text().trim();
+            name = page_name + blockName + ' Block';
           }
           if ($self.closest('.show-latest-block').length > 0) {
             name = page_name + 'The Latest Block';

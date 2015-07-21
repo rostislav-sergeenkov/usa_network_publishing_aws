@@ -350,6 +350,30 @@
           }
         }
 
+        // Movies page
+        if (body.hasClass('page-movies')) {
+          page_name = 'Movies Page ';
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movies-mb').length > 0) {
+            name = page_name + 'Movies Main Block';
+          }
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movies-all-movies').length > 0) {
+            name = page_name + 'All Movies Block';
+          }
+        }
+
+        // Movie page
+        if (body.hasClass('node-type-movie')) {
+          page_name = 'Movie Page ';
+          //show_name = $('.show-title-block .title a').text().trim();
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movie-related').length > 0) {
+            blockName = $('#block-usanetwork-movie-usanetwork-movie-related .section-title').text().trim();
+            name = page_name + blockName + ' Block';
+          }
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movie-cast-crew-block').length > 0) {
+            name = page_name + 'Cast & Crew Block';
+          }
+        }
+
         // Show photos page
         if (body.hasClass('page-node-photos')) {
           page_name = 'Show Photos Page ';

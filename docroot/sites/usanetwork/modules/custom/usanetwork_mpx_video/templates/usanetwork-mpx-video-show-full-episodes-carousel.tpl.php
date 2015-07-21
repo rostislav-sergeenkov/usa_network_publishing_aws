@@ -1,4 +1,4 @@
-<div class="carousel-block carousel-block-left">
+<div class="carousel-block carousel-block-left" data-block-name="<?php print $show_title; ?> Carousel">
   <div class="carousel-description-item start <?php print !empty($sponsored)? ' sponsored-enable' : ''; ?>">
     <div class="description-wrapper">
       <div class="description-block">

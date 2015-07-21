@@ -52,7 +52,7 @@
           <?php endforeach; ?>
         </ul>
       </div>
-      <div class="episodes-list-slider horizontal show-border" data-mode="horizontal">
+      <div class="episodes-list-slider horizontal show-border" data-mode="horizontal" data-block-name="Right Rail Carousel">
         <ul class="slider-horizontal">
           <?php foreach ($episodes as $episode): ?>
             <li class="slide-item">
@@ -83,8 +83,8 @@
           <?php endforeach; ?>
         </ul>
         <div class="horizontal-controls">
-          <a href="javascript:void(0)" class="jcarousel-control-prev link-color-reset"></a>
-          <a href="javascript:void(0)" class="jcarousel-control-next link-color-reset"></a>
+          <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
+          <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
         </div>
         <div class="more-button-wrapper">
           <a href="javascript:void(o)" class="more-button more">

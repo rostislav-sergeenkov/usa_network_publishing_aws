@@ -569,6 +569,11 @@ function usanetwork_mpx_video_full_video_autocomplete($title = '') {
   $query->fields('f',array('fid','filename'));
   $query->condition('f.filename', '%' . $title . '%' ,'LIKE');
   $query->condition('f.type', 'mpx_video_2' ,'=');
+  $query->innerJoin('mpx_video', 'mpx_video', 'mpx_video.fid = f.fid');
+  $db_or = db_or();
+  $db_or->condition('mpx_video.status', 0, '<>');
+  $db_or->condition('mpx_video.airdate', REQUEST_TIME, '>=');
+  $query->condition($db_or);
   $query->range(0, 10);
   $result = $query->execute()->fetchAll();
   $output = array();

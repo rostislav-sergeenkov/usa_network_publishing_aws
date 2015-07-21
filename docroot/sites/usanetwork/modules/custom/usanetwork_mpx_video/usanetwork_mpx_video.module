@@ -289,6 +289,12 @@ function _usanetwork_mpx_video_get_latest_episodes_for_show($range = NULL, $targ
     $query->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
     $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
     $query->condition('fdfs.field_show_target_id', $target_tvshow_nid);
+    $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fs.fid');
+    $query->condition(
+      db_or()
+        ->condition('fdfml.field_mpx_language_value', 'en', '=')
+        ->isNull('fdfml.field_mpx_language_value')
+    );
     $query->condition('fs.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
     $query->condition('fs.published', '1');
     $query->condition('mv.status', '1');

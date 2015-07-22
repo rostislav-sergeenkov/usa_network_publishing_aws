@@ -588,9 +588,9 @@
                   pageName, blockName, nameNav, fullName;
 
               if (target.hasClass('jcarousel-control-prev')) {
-                nameNav = 'Back';
+                nameNav = 'Carousel Back';
               } else if (target.hasClass('jcarousel-control-next')) {
-                nameNav = 'Next';
+                nameNav = 'Carousel Next';
               }
 
               if (body.hasClass('page-home')) {

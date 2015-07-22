@@ -158,6 +158,31 @@ function usanetwork_mpx_video_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_mpx_language'
+  $field_bases['field_mpx_language'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mpx_language',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'en' => 'English',
+        'es' => 'Spanish',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_mpx_season_number'
   $field_bases['field_mpx_season_number'] = array(
     'active' => 1,

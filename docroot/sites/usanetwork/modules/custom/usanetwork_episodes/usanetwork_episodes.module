@@ -496,10 +496,10 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'title' => $episode_data->title,
           'description' => $episode_data->description,
           'airing_date' => !empty($episode_data->airdate)
-            ? gmdate('m/d/Y', $episode_data->airdate)
+            ? date('m/d/Y', $episode_data->airdate)
             : NULL,
           'expiration_date' => !empty($episode_data->expiration_date)
-            ? gmdate('m/d/Y', $episode_data->expiration_date)
+            ? date('m/d/Y', $episode_data->expiration_date)
             : NULL,
           'guide_url' => url('node/' . $episode_data->nid),
           'gallery_url' => !empty($episode_data->gallery_nid)

@@ -587,6 +587,11 @@ function usanetwork_mpx_video_full_video_autocomplete($title = '') {
   $query->fields('f',array('fid','filename'));
   $query->condition('f.filename', '%' . $title . '%' ,'LIKE');
   $query->condition('f.type', 'mpx_video_2' ,'=');
+  $query->innerJoin('mpx_video', 'mpx_video', 'mpx_video.fid = f.fid');
+  $db_or = db_or();
+  $db_or->condition('mpx_video.status', 0, '<>');
+  $db_or->condition('mpx_video.airdate', REQUEST_TIME, '>=');
+  $query->condition($db_or);
   $query->range(0, 10);
   $result = $query->execute()->fetchAll();
   $output = array();
@@ -1578,8 +1583,6 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $file_wrapper = entity_metadata_wrapper('file', $file);
       $image_path = _usanetwork_mpx_video_get_image_path($file);
       $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($image_path);
-      $share_settings['gigyaSharebar']['ua']['title'] = $file->filename;
-      $share_settings['gigyaSharebar']['ua']['description'] = !empty($file->field_mpx_description) ?  $file_wrapper->field_mpx_description->value() : '';
       $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
 
       // change url for live player

@@ -20,6 +20,8 @@ define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUIZ_QUEUE', 12);
 define('USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK', 9);
 define('USA_TV_SHOW_ALL_VIDEOS_EPISODE', 0);
 define('USA_TV_SHOW_FULL_EPISODE', -1);
+define('USA_TV_SHOW_SUBTITLE_FULL_EPISODE', -2);
+
 
 /**
  *  Implements hook_menu().
@@ -2856,6 +2858,8 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
   $query->condition($no_promo_exclude_field);
   $query->leftJoin('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id=f.fid');
   $query->addField('full_episode', 'field_mpx_full_episode_value', 'is_full');
+  $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = f.fid');
+  $query->addField('fdfml', 'field_mpx_language_value', 'language');
   $query->orderBy($sort_field, $sort_direction);
 
   $query_result = $query->execute()->fetchAll();
@@ -2890,14 +2894,33 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
           )),
         'active' => FALSE,
       ),
+      USA_TV_SHOW_SUBTITLE_FULL_EPISODE => array(
+        'tid' => USA_TV_SHOW_SUBTITLE_FULL_EPISODE,
+        'name' => t('Full episodes Con-Subtitulos'),
+        'items' => array(),
+        'items_count' => 0,
+        'url' => url('node/' . $show_node->nid) . '/videos?' . http_build_query(array(
+            'category' => USA_TV_SHOW_SUBTITLE_FULL_EPISODE,
+            'sort_by' => $sort_field,
+            'sort_order' => $sort_direction,
+          )),
+        'active' => FALSE,
+      ),
     );
 
     // Fill other elements
     foreach ($query_result as $query_result_key => $query_result_item) {
       if (!empty($query_result_item->is_full)) {
-        if (!in_array($query_result_item->fid, $result[USA_TV_SHOW_FULL_EPISODE]['items'])) {
-          $result[USA_TV_SHOW_FULL_EPISODE]['items'][] = $query_result_item->fid;
-          $result[USA_TV_SHOW_FULL_EPISODE]['items_count']++;
+        if (empty($query_result_item->language) || $query_result_item->language == 'en') {
+          if (!in_array($query_result_item->fid, $result[USA_TV_SHOW_FULL_EPISODE]['items'])) {
+            $result[USA_TV_SHOW_FULL_EPISODE]['items'][] = $query_result_item->fid;
+            $result[USA_TV_SHOW_FULL_EPISODE]['items_count']++;
+          }
+        } else {
+          if (!in_array($query_result_item->fid, $result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]['items'])) {
+            $result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]['items'][] = $query_result_item->fid;
+            $result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]['items_count']++;
+          }
         }
       }
 
@@ -2942,6 +2965,9 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
 
     if ($result[USA_TV_SHOW_FULL_EPISODE]['items_count'] == 0) {
       unset($result[USA_TV_SHOW_FULL_EPISODE]);
+    }
+    if ($result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]['items_count'] == 0) {
+      unset($result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]);
     }
 
     if (!empty($result[$selected_category])) {
@@ -3020,6 +3046,8 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
     $query->addField('promo_date_field', 'field_promo_created_ovts_value', 'overriding_date');
     $query->leftJoin('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id=f.fid');
     $query->addField('full_episode', 'field_mpx_full_episode_value', 'is_full');
+    $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = f.fid');
+    $query->addField('fdfml', 'field_mpx_language_value', 'language');
 
     $result = $query->execute()->fetchAll();
 
@@ -3048,8 +3076,14 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
         }
 
         if (!empty($result_item->is_full)) {
-          if (!in_array(-1, $sorted_result[$result_item->fid]->category_term)) {
-            $sorted_result[$result_item->fid]->category_term[] = -1;
+          if (empty($result_item->language) || ($result_item->language == 'en')) {
+            if (!in_array(-1, $sorted_result[$result_item->fid]->category_term)) {
+              $sorted_result[$result_item->fid]->category_term[] = -1;
+            }
+          } else {
+            if (!in_array(-2, $sorted_result[$result_item->fid]->category_term)) {
+              $sorted_result[$result_item->fid]->category_term[] = -2;
+            }
           }
         }
       }

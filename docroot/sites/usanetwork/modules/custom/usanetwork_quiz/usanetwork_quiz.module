@@ -924,6 +924,7 @@ function _usanetwork_quiz_quizes_carousel() {
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', 'quiz')
+        ->propertyCondition('status', NODE_PUBLISHED)
         ->fieldCondition('field_show', 'target_id', $show_id, '=');
       $explore_tag = !empty($node->field_explore_tag) ? $node_wrapper->field_explore_tag->value() : NULL;
       if (!empty($explore_tag)) {

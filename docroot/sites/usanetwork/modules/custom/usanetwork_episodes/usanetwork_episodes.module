@@ -484,7 +484,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'full_episode_url' => isset($episode_data->fid)
             ? url('file/' . $episode_data->fid)
             : NULL,
-          'second_full_episode_url' => isset($episode_data->subtitle_video)
+          'second_full_episode_url' => (!empty($episode_data->subtitle_video))
             ? url('file/' . $episode_data->subtitle_video)
             : NULL,
           'preview_episode_url' => isset($episode_data->preview_fid)
@@ -742,7 +742,7 @@ function _usanetwork_episodes_get_subtitle_video($show_nid, $season_number, $epi
   $query->join('field_data_field_mpx_full_episode', 'full_episode_field', 'full_episode_field.entity_id=mpxv.fid');
   $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
   // Join MPX Language
-  $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = mpxv.fid');
+  $query->join('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = mpxv.fid');
   $query->condition('fdfml.field_mpx_language_value', 'en', '<>');
 
   $result = $query->execute()->fetchField();

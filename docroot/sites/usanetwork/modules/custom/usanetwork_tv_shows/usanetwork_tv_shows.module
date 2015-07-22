@@ -850,7 +850,7 @@ function usanetwork_tv_shows_entity_query_alter($query) {
   if (isset($query->tags['usanetwork_dynamic_entity_reference'])) {
     if (!empty($query->metaData['instance_info'])) {
       $instance_info = $query->metaData['instance_info'];
-      if ($instance_info['bundle_name'] == 'tv_show' && in_array($instance_info['field_name'], array('field_tvs_best_of_items', 'field_show_vlmb_promo'))) {
+      if ($instance_info['bundle_name'] == 'tv_show' && in_array($instance_info['field_name'], array('field_show_vlmb_promo'))) {
         $query->fieldCondition('field_show', 'target_id', $instance_info['entity_id'], '=');
       }
     }
@@ -1030,17 +1030,23 @@ function _usanetwork_tv_shows_form_remove_multiple_from_field(&$form, $field_nam
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, $form_id) {
-  if (!empty($form['field_tvs_best_of_title'])) {
-    $form_language = $form['language']['#value'];
-
-    _usanetwork_tv_shows_form_remove_multiple_from_field($form, 'field_usa_tv_a_spot', $form_language);
-    _usanetwork_tv_shows_form_remove_multiple_from_field($form, 'field_usa_tv_related_shows', $form_language);
-    if (empty($form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'])) {
-      $show_title = $form['title']['#default_value'];
-      $default_best_of_value = t('Best of !show_title', array('!show_title' => $show_title));
-
-      $form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'] = $default_best_of_value;
-      $form['field_tvs_best_of_title'][$form_language][0]['value']['#description'] = t('Default: !default_title', array('!default_title' => $default_best_of_value));
+  $form_language = $form['language']['#value'];
+  _usanetwork_tv_shows_form_remove_multiple_from_field($form, 'field_usa_tv_a_spot', $form_language);
+  _usanetwork_tv_shows_form_remove_multiple_from_field($form, 'field_usa_tv_related_shows', $form_language);
+  if (!empty($form['field_tvs_best_of'][$form_language])) {
+    foreach($form['field_tvs_best_of'][$form_language] as $key => &$property) {
+      if (is_numeric($key)) {
+        if (empty($property['field_collection_best_of_title'][$form_language][0]['value']['#default_value'])) {
+          $show_title = $form['title']['#default_value'];
+          $default_best_of_value = t('Best of !show_title', array('!show_title' => $show_title));
+          $property['field_collection_best_of_title'][$form_language][0]['value']['#default_value'] = $default_best_of_value;
+          $property['field_collection_best_of_title'][$form_language][0]['value']['#description'] = t('Default: !default_title', array('!default_title' => $default_best_of_value));
+          $last_item = $key;
+        }
+      }
+    }
+    if (!empty($last_item)) {
+      $form['field_tvs_best_of'][$form_language][$last_item]['field_collection_best_of_title'][$form_language][0]['value']['#default_value'] = '';
     }
   }
 

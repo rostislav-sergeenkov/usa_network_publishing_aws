@@ -5,13 +5,19 @@
   Drupal.behaviors.usanetwork_chartbeat = {
     attach: function (context, settings) {
       $('body').once(function () {
+        chartbeat_domain = Drupal.settings.chartbeat_domain;
+
         var _sf_async_config = {};
         /** CONFIGURATION START **/
         _sf_async_config.uid = 61038;
-        _sf_async_config.domain = 'usanetwork.com';
+        _sf_async_config.domain = chartbeat_domain;
         _sf_async_config.useCanonical = true;
-        _sf_async_config.sections = s.prop10;
-        _sf_async_config.type = s.prop3;
+        if (typeof s.prop10 != 'undefined') {
+          _sf_async_config.sections = s.prop10;
+        }
+        if (typeof s.prop3 != 'undefined') {
+          _sf_async_config.type = s.prop3;
+        }
         /** CONFIGURATION END **/
         (function() {
           function loadChartbeat() {

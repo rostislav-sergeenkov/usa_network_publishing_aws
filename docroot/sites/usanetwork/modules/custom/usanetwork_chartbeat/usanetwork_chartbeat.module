@@ -11,6 +11,12 @@ function usanetwork_chartbeat_page_alter(&$page) {
   if (!path_is_admin(current_path())) {
 
     drupal_add_js('var _sf_startpt=(new Date()).getTime()', 'inline');
+    if (_usanetwork_widget_get_environment() == 'prod') {
+      $domain = 'usanetwork.com';
+    } else {
+      $domain = $_SERVER['SERVER_NAME'];
+    }
+    drupal_add_js(array('chartbeat_domain' => $domain), 'setting');
 
     $page['page_bottom']['chartbeat']['#attached']['js'][drupal_get_path('module', 'usanetwork_chartbeat') . '/js/usanetwork_chartbeat.js'] =  array(
       'type' => 'file',

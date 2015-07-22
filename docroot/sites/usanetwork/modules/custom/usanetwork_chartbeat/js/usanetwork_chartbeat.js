@@ -7,7 +7,7 @@
       $('body').once(function () {
         chartbeat_domain = Drupal.settings.chartbeat_domain;
 
-        var _sf_async_config = {};
+        window._sf_async_config = {};
         /** CONFIGURATION START **/
         _sf_async_config.uid = 61038;
         _sf_async_config.domain = chartbeat_domain;

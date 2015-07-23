@@ -13,19 +13,23 @@
     padding-bottom: 10000px;
     margin-bottom: -10000px;
     overflow: hidden;
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($between-1025-1280) {
+      width: calc(100% - 320px);
+    }
+    @include breakpoint($bp-1024-width) {
+      border-bottom: 2px solid;
       float: none;
       padding: 0;
       margin-bottom: 0;
       width: 100%;
     }
-    @include breakpoint($bp-1024-width) {
-      border-bottom: 2px solid;
-    }
     @include breakpoint ($bp-640-width) {
       border-bottom: 8px solid;
     }
     .usanetwork-quiz {
+      @include breakpoint($bp-1280-width) {
+        width: auto;
+      }
       .entry-button {
         margin: 50px 0;
         @include breakpoint ($bp-640-width) {
@@ -110,7 +114,7 @@
   }
   .consum-sidebar {
     .items-block {
-      @include breakpoint($bp-min-1281-width) {
+      @include breakpoint($bp-min-1025-width) {
         height: 245px;
       }
       @include breakpoint($bp-min-1901-width) {

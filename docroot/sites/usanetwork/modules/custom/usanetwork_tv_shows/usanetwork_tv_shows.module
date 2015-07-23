@@ -1113,7 +1113,7 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0,
       $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=field_blog.field_blog_tid');
     }
     else {
-      $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=n.nid');
+      $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=n.nid AND show_field.entity_type = \'node\'');
     }
     $query->condition('show_field.field_show_target_id', $show_id);
     $query->addField('show_field', 'entity_type', 'entity_type');

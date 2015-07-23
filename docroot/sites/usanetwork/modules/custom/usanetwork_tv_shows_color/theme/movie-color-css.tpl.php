@@ -52,7 +52,7 @@
 .movie-<?php print $node_code; ?>.show-color.other-show-page.tertiary {
   background: <?php print $tertiary_color_code; ?>;
 }
-.movie-<?php print $node_code; ?> .usanetwork-quiz .answer-type-image img:hover {
+.movie-<?php print $node_code; ?> .usanetwork-quiz .answer-image img:hover {
   border-color: <?php print $primary_color_code; ?> !important;
 }
 

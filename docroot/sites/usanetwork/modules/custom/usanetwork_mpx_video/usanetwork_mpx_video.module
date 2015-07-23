@@ -2262,6 +2262,7 @@ function _usa_mpx_video_clips_render() {
 function _usanetwork_mpx_video_get_related_videos_for_show($show_id, $language) {
   if (!empty($show_id)) {
     $cache_name = 'mpx_video_videos_' . $show_id;
+    $cache_name .= ((empty($language)) || $language == 'en') ? '' : '_' . $language;
     if ($cache = cache_get($cache_name)) {
       return $cache->data;
     }

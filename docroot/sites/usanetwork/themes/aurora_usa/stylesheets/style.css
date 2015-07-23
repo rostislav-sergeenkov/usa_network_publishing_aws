@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -25513,8 +25513,7 @@ yx-axis
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button.ready .next-button-wrapper {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: 0;
-  background-position-x: 0;
+  background-position: 0 0;
   opacity: 0.5;
   -moz-opacity: 0.5;
   height: 100%;

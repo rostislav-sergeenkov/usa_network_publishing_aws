@@ -290,7 +290,7 @@
 
         $(nextButtonWrapper).css({
           'background-image': 'url(' + imgUrl + ')',
-          'background-position-x': shiftBg + '%'
+          'background-position': shiftBg + '%' + ' 0'
         });
 
         slide.eq(nextIndex).find('.asset-img img').css('margin-left', - shiftBg + '%');

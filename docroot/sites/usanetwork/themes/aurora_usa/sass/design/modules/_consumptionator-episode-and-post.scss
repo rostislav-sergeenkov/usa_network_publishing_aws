@@ -393,7 +393,7 @@
     }
     @include breakpoint($bp-1280-width) {
       border-bottom: 2px solid;
-      padding: 40px 75px 90px;
+      padding: 30px 25px 90px;
     }
     @include breakpoint($bp-1024-width) {
       padding: 40px 24px 90px;
@@ -401,6 +401,36 @@
     @include breakpoint($bp-640-width) {
       border-bottom: 12px solid;
       padding: 40px 0 75px;
+    }
+    .gallery-wrapper {
+      @include breakpoint($between-1025-1280) {
+        height: calc((100vw - 370px) * 0.5625);
+      }
+      .bx-wrapper {
+        .bx-controls {
+          .bx-custom-pager {
+            .bx-pager-item {
+              @include breakpoint($between-1025-1280) {
+                height: 13px;
+                margin: 0px 15px 13px auto;
+                width: 13px;
+              }
+              a {
+                @include breakpoint($between-1025-1280) {
+                  height: 13px;
+                  width: 13px;
+                }
+                img {
+                  @include breakpoint($between-1025-1280) {
+                    max-width: 75px;
+                    width: 75px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

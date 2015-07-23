@@ -256,6 +256,32 @@
       s.tl(this, 'o', name + ' Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
+    aspotClick: function ($self, pageName, name, slideName) {
+
+      if ($self.hasClass('next-button')) {
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = name;
+        s.eVar55 = pageName;
+      } else {
+        s.linkTrackVars = 'events,eVar55,eVar33,eVar35';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = slideName;
+        s.eVar35 = name;
+        s.eVar55 = pageName;
+      }
+
+      if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
+        s.bcf = function () {
+          setTimeout(function () {
+            window.location = $self.attr('href');
+          }, 500);
+        };
+      }
+
+      s.tl(this, 'o', pageName + ' ' + name + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
 
     globalPromoClick: function (self) {
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
@@ -438,34 +464,54 @@
         });
 
         // Home Page A-spot click
-        //$( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
-        //".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
-        $('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
+        $( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
+        "#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button," +
+        ".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
+        //$('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
-            e.preventDefault();
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
 
-            var target = $(this),
-                page = $('body').hasClass('page-home') ? 'Home' : 'Show',
-                pageName = page + ' Page A-Spot ',
-                name,
-                fullName;
+              var target = $(this),
+                  pageName = $('body').hasClass('page-home') ? 'Homepage A-Spot' : 'Show Landing A-Spot',
+                  slideBlock, showName, titleName, slideName, name, titleField, titleClone;
 
-            if (target.hasClass('asset-img-link')) {
-              name = 'Image';
-            } else if (target.hasClass('cta-button-link')) {
-              name = target.data('cta-link');
-            } else if (target.hasClass('social-meter-link')) {
-              name = 'Social';
-            } else {
-              name = '';
+              if (target.hasClass('next-button')) {
+                name = 'Peek Ahead Strip';
+              } else {
+                slideBlock = target.closest('.node.usanetwork-aspot.');
+                showName = slideBlock.data('show-name').trim();
+                titleField = slideBlock.find('.slide-content .title');
+                titleClone = titleField.clone();
+
+                // check title value about tag style & br
+                titleClone.find('br').replaceWith(' ');
+
+                if (titleField.find('style').length > 0) {
+                  // delete style from clone
+                  titleClone.find('style').empty();
+                  titleName = titleClone.text().trim();
+                } else {
+                  titleName = titleClone.text().trim();
+                }
+
+                slideName = showName + ' : ' + titleName;
+
+                if (target.hasClass('asset-img-link')) {
+                  name = 'BACKGROUND_IMAGE';
+                } else if (target.hasClass('cta-button-link')) {
+                  name = target.data('cta-link');
+                } else if (target.hasClass('social-meter-link')) {
+                  name = 'SOCIAL_INDICATOR';
+                } else {
+                  name = '';
+                }
+              }
+
+              Drupal.behaviors.omniture_tracking.aspotClick(target, pageName, name, slideName);
             }
-
-            fullName = pageName + name;
-
-            Drupal.behaviors.omniture_tracking.promoClick(target, fullName);
           })
         });
-
 
         // Click promo item
         $('.usa-wrap .node-usanetwork-promo a,' +

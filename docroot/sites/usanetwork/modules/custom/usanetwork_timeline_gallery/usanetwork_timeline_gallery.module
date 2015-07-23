@@ -7,6 +7,7 @@
 include_once 'usanetwork_timeline_gallery.features.inc';
 
 define('USA_TIMELINE_RELATED_CONTENT_ITEMS', 6);
+define('USA_TIMELINE_MAX_PHOTOS_ON_EPISODE', 7);
 /**
  * Implements hook_preprocess_field().
  */
@@ -117,6 +118,7 @@ function usanetwork_timeline_gallery_block_view($delta = '') {
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_timeline_gallery_form_timeline_gallery_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['#validate'][] = '_usanetwork_timeline_gallery_node_form_validate';
   if (!empty($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE) {
     // Change ajax callback to custom callback.
     $form['field_timeline_episode_section'][LANGUAGE_NONE]['add_more']['#ajax']['callback'] = 'usanetwork_timeline_gallery_season_add_more_ajax';
@@ -200,6 +202,22 @@ function usanetwork_timeline_gallery_form_timeline_gallery_node_form_alter(&$for
     }
   }
 }
+/*
+ * Validate count of photos on timeline gallery.
+ */
+function _usanetwork_timeline_gallery_node_form_validate($form, &$form_state) {
+
+  if (isset($form_state['values']['field_timeline_episode_section'][LANGUAGE_NONE]) && is_array($form_state['values']['field_timeline_episode_section'][LANGUAGE_NONE])) {
+    foreach($form_state['values']['field_timeline_episode_section'][LANGUAGE_NONE] as $key => $item) {
+      if (isset($item['field_timeline_media_item'][LANGUAGE_NONE]) && is_array($item['field_timeline_media_item'][LANGUAGE_NONE])) {
+        if (count($item['field_timeline_media_item'][LANGUAGE_NONE]) > USA_TIMELINE_MAX_PHOTOS_ON_EPISODE) {
+          form_set_error('', t('Maximum @max photos on one episode', array('@max' => USA_TIMELINE_MAX_PHOTOS_ON_EPISODE)));
+        }
+      }
+    }
+  }
+}
+
 
 /**
  * @param $form_values

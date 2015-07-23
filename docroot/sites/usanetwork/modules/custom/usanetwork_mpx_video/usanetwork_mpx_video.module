@@ -242,6 +242,12 @@ function _usanetwork_mpx_video_get_latest_episodes_for_show($range = NULL, $targ
     $subquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = fm.fid');
     $subquery->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
     $subquery->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+    $subquery->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fm.fid');
+    $subquery->condition(
+      db_or()
+        ->condition('fdfml.field_mpx_language_value', 'en', '=')
+        ->isNull('fdfml.field_mpx_language_value')
+    );
     $subquery->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
     $subquery->condition('mv.status', '1');
     $subquery->addExpression('MAX(mv.airdate)', 'max_data');
@@ -261,6 +267,12 @@ function _usanetwork_mpx_video_get_latest_episodes_for_show($range = NULL, $targ
     $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
     $query->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
     $query->condition('mv.status', '1');
+    $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fs.fid');
+    $query->condition(
+      db_or()
+        ->condition('fdfml.field_mpx_language_value', 'en', '=')
+        ->isNull('fdfml.field_mpx_language_value')
+    );
     $query->join($subquery, 'subsub', 'subsub.max_data = mv.airdate and fdfs.field_show_target_id = subsub.field_show_target_id');
     $query->addExpression('MAX(fs.fid)', 'max_fid');
     $query->groupBy('fdfs.field_show_target_id');
@@ -277,6 +289,12 @@ function _usanetwork_mpx_video_get_latest_episodes_for_show($range = NULL, $targ
     $query->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
     $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
     $query->condition('fdfs.field_show_target_id', $target_tvshow_nid);
+    $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fs.fid');
+    $query->condition(
+      db_or()
+        ->condition('fdfml.field_mpx_language_value', 'en', '=')
+        ->isNull('fdfml.field_mpx_language_value')
+    );
     $query->condition('fs.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
     $query->condition('fs.published', '1');
     $query->condition('mv.status', '1');
@@ -2191,7 +2209,8 @@ function _usa_mpx_video_clips_render() {
    if (!empty($show)) {
      $show = reset($show);
      $show = $show['target_id'];
-     $related_videos = _usanetwork_mpx_video_get_related_videos_for_show($show);
+     $language = _usanetwork_get_field_item('file', $file, 'field_mpx_language', 'value');
+     $related_videos = _usanetwork_mpx_video_get_related_videos_for_show($show, $language);
      if (!empty($related_videos)) {
        $filter = usanetwork_mpx_video_get_video_category($file);
        foreach ($related_videos as $related_video) {
@@ -2240,7 +2259,7 @@ function _usa_mpx_video_clips_render() {
 /**
  * Returns list of related video files id.
  */
-function _usanetwork_mpx_video_get_related_videos_for_show($show_id) {
+function _usanetwork_mpx_video_get_related_videos_for_show($show_id, $language) {
   if (!empty($show_id)) {
     $cache_name = 'mpx_video_videos_' . $show_id;
     if ($cache = cache_get($cache_name)) {
@@ -2262,6 +2281,17 @@ function _usanetwork_mpx_video_get_related_videos_for_show($show_id) {
     $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
     $query->condition($db_or);
     $query->condition('fs.field_show_target_id', $show_id, '=');
+    if ((empty($language)) || $language == 'en') {
+      $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fm.fid');
+      $query->condition(
+        db_or()
+          ->condition('fdfml.field_mpx_language_value', $language, '=')
+          ->isNull('fdfml.field_mpx_language_value')
+      );
+    } else {
+      $query->innerJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fm.fid');
+      $query->condition('fdfml.field_mpx_language_value', $language, '=');
+    }
     $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
     $query->orderBy('mpx.airdate', 'DESC');
     $query_results = $query->execute()->fetchAll();

@@ -20,6 +20,8 @@ define('USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUIZ_QUEUE', 12);
 define('USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK', 9);
 define('USA_TV_SHOW_ALL_VIDEOS_EPISODE', 0);
 define('USA_TV_SHOW_FULL_EPISODE', -1);
+define('USA_TV_SHOW_SUBTITLE_FULL_EPISODE', -2);
+
 
 /**
  *  Implements hook_menu().
@@ -848,7 +850,7 @@ function usanetwork_tv_shows_entity_query_alter($query) {
   if (isset($query->tags['usanetwork_dynamic_entity_reference'])) {
     if (!empty($query->metaData['instance_info'])) {
       $instance_info = $query->metaData['instance_info'];
-      if ($instance_info['bundle_name'] == 'tv_show' && in_array($instance_info['field_name'], array('field_tvs_best_of_items', 'field_show_vlmb_promo'))) {
+      if ($instance_info['bundle_name'] == 'tv_show' && in_array($instance_info['field_name'], array('field_show_vlmb_promo'))) {
         $query->fieldCondition('field_show', 'target_id', $instance_info['entity_id'], '=');
       }
     }
@@ -1028,17 +1030,23 @@ function _usanetwork_tv_shows_form_remove_multiple_from_field(&$form, $field_nam
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, $form_id) {
-  if (!empty($form['field_tvs_best_of_title'])) {
-    $form_language = $form['language']['#value'];
-
-    _usanetwork_tv_shows_form_remove_multiple_from_field($form, 'field_usa_tv_a_spot', $form_language);
-    _usanetwork_tv_shows_form_remove_multiple_from_field($form, 'field_usa_tv_related_shows', $form_language);
-    if (empty($form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'])) {
-      $show_title = $form['title']['#default_value'];
-      $default_best_of_value = t('Best of !show_title', array('!show_title' => $show_title));
-
-      $form['field_tvs_best_of_title'][$form_language][0]['value']['#default_value'] = $default_best_of_value;
-      $form['field_tvs_best_of_title'][$form_language][0]['value']['#description'] = t('Default: !default_title', array('!default_title' => $default_best_of_value));
+  $form_language = $form['language']['#value'];
+  _usanetwork_tv_shows_form_remove_multiple_from_field($form, 'field_usa_tv_a_spot', $form_language);
+  _usanetwork_tv_shows_form_remove_multiple_from_field($form, 'field_usa_tv_related_shows', $form_language);
+  if (!empty($form['field_tvs_best_of'][$form_language])) {
+    foreach($form['field_tvs_best_of'][$form_language] as $key => &$property) {
+      if (is_numeric($key)) {
+        if (empty($property['field_collection_best_of_title'][$form_language][0]['value']['#default_value'])) {
+          $show_title = $form['title']['#default_value'];
+          $default_best_of_value = t('Best of !show_title', array('!show_title' => $show_title));
+          $property['field_collection_best_of_title'][$form_language][0]['value']['#default_value'] = $default_best_of_value;
+          $property['field_collection_best_of_title'][$form_language][0]['value']['#description'] = t('Default: !default_title', array('!default_title' => $default_best_of_value));
+          $last_item = $key;
+        }
+      }
+    }
+    if (!empty($last_item)) {
+      $form['field_tvs_best_of'][$form_language][$last_item]['field_collection_best_of_title'][$form_language][0]['value']['#default_value'] = '';
     }
   }
 
@@ -1272,6 +1280,13 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
     $query->addField('episode_num', 'field_mpx_episode_number_value', 'episode_number');
     $query->condition('episode_num.field_mpx_episode_number_value', $episode_num);
   }
+
+  $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = f.fid');
+  $query->condition(
+    db_or()
+      ->condition('fdfml.field_mpx_language_value', 'en', '=')
+      ->isNull('fdfml.field_mpx_language_value')
+  );
 
   $query->addField('sn', 'title', 'show_title');
   $query->condition('fshow.field_show_target_id', $show_id);
@@ -1731,7 +1746,7 @@ function _usanetwork_tv_shows_submenu() {
           'show-color',
         );
         $menu_item_url = $show_menu_item_main_link[0]['url'];
-        $menu_item_url_query = $show_menu_item_main_link[0]['query'];
+        $menu_item_url_query = (isset($show_menu_item_main_link[0]['query'])) ? $show_menu_item_main_link[0]['query'] : '';
         $menu_link_page = arg(1, $menu_item_url);
         if (!empty($requested_page) && !empty($menu_link_page) && strcasecmp($requested_page, $menu_link_page) === 0) {
           $classes[] = 'active';
@@ -2849,6 +2864,8 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
   $query->condition($no_promo_exclude_field);
   $query->leftJoin('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id=f.fid');
   $query->addField('full_episode', 'field_mpx_full_episode_value', 'is_full');
+  $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = f.fid');
+  $query->addField('fdfml', 'field_mpx_language_value', 'language');
   $query->orderBy($sort_field, $sort_direction);
 
   $query_result = $query->execute()->fetchAll();
@@ -2883,14 +2900,33 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
           )),
         'active' => FALSE,
       ),
+      USA_TV_SHOW_SUBTITLE_FULL_EPISODE => array(
+        'tid' => USA_TV_SHOW_SUBTITLE_FULL_EPISODE,
+        'name' => t('Full episodes Con-Subtitulos'),
+        'items' => array(),
+        'items_count' => 0,
+        'url' => url('node/' . $show_node->nid) . '/videos?' . http_build_query(array(
+            'category' => USA_TV_SHOW_SUBTITLE_FULL_EPISODE,
+            'sort_by' => $sort_field,
+            'sort_order' => $sort_direction,
+          )),
+        'active' => FALSE,
+      ),
     );
 
     // Fill other elements
     foreach ($query_result as $query_result_key => $query_result_item) {
       if (!empty($query_result_item->is_full)) {
-        if (!in_array($query_result_item->fid, $result[USA_TV_SHOW_FULL_EPISODE]['items'])) {
-          $result[USA_TV_SHOW_FULL_EPISODE]['items'][] = $query_result_item->fid;
-          $result[USA_TV_SHOW_FULL_EPISODE]['items_count']++;
+        if (empty($query_result_item->language) || $query_result_item->language == 'en') {
+          if (!in_array($query_result_item->fid, $result[USA_TV_SHOW_FULL_EPISODE]['items'])) {
+            $result[USA_TV_SHOW_FULL_EPISODE]['items'][] = $query_result_item->fid;
+            $result[USA_TV_SHOW_FULL_EPISODE]['items_count']++;
+          }
+        } else {
+          if (!in_array($query_result_item->fid, $result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]['items'])) {
+            $result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]['items'][] = $query_result_item->fid;
+            $result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]['items_count']++;
+          }
         }
       }
 
@@ -2935,6 +2971,9 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
 
     if ($result[USA_TV_SHOW_FULL_EPISODE]['items_count'] == 0) {
       unset($result[USA_TV_SHOW_FULL_EPISODE]);
+    }
+    if ($result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]['items_count'] == 0) {
+      unset($result[USA_TV_SHOW_SUBTITLE_FULL_EPISODE]);
     }
 
     if (!empty($result[$selected_category])) {
@@ -3013,6 +3052,8 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
     $query->addField('promo_date_field', 'field_promo_created_ovts_value', 'overriding_date');
     $query->leftJoin('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id=f.fid');
     $query->addField('full_episode', 'field_mpx_full_episode_value', 'is_full');
+    $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = f.fid');
+    $query->addField('fdfml', 'field_mpx_language_value', 'language');
 
     $result = $query->execute()->fetchAll();
 
@@ -3041,8 +3082,14 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
         }
 
         if (!empty($result_item->is_full)) {
-          if (!in_array(-1, $sorted_result[$result_item->fid]->category_term)) {
-            $sorted_result[$result_item->fid]->category_term[] = -1;
+          if (empty($result_item->language) || ($result_item->language == 'en')) {
+            if (!in_array(-1, $sorted_result[$result_item->fid]->category_term)) {
+              $sorted_result[$result_item->fid]->category_term[] = -1;
+            }
+          } else {
+            if (!in_array(-2, $sorted_result[$result_item->fid]->category_term)) {
+              $sorted_result[$result_item->fid]->category_term[] = -2;
+            }
           }
         }
       }

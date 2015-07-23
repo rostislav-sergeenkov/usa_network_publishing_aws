@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -9253,6 +9253,9 @@ header .tve-help-link.signIn .inlineLoader {
   clear: both;
   content: '';
   display: table;
+}
+.five-promo-item-block:nth-child(even) {
+  background: #e9eaeb;
 }
 @media (max-width: 480px) {
   .five-promo-item-block {

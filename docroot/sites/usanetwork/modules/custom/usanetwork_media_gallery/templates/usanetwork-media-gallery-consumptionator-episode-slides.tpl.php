@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div class="items-block gallaries-thumbs-block">
+  <div class="items-block galleries-thumbs-block">
     <div class="items-block-title galleries-block-title">
       <?php if (!empty($block_title)): ?>
         <h2><?php print $block_title; ?></h2>

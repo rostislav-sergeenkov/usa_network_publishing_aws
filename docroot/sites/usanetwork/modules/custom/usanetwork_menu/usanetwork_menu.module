@@ -1131,13 +1131,13 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
       $episode = $entity_wrapper->field_episode->value();
       if ($episode_num_items = field_get_items('node', $episode, 'field_episode_number')) {
         $episode_num_items = reset($episode_num_items);
-        $season_num = $episode_num_items['value'];
+        $episode_num = $episode_num_items['value'];
       }
       if ($episode->field_season) {
         $season = $entity_wrapper->field_season->value();
         if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
           $season_num_items = reset($season_num_items);
-          $episode_num = $season_num_items['value'];
+          $season_num = $season_num_items['value'];
         }
       }
     }
@@ -1225,7 +1225,7 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
       $season = $entity_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
         $season_num_items = reset($season_num_items);
-        $episode_num = $season_num_items['value'];
+        $season_num = $season_num_items['value'];
       }
     }
     $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
@@ -1245,8 +1245,8 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
         'description' => $description,
         'episode_type' => !empty($node->field_tv_episode_type) ? $entity_wrapper->field_tv_episode_type->name->value() : '',
         'episode_info' => array(
-            'season_number' => !empty($node->field_episode_number) ? $entity_wrapper->field_episode_number->value() : '',
-            'episode_number' => !empty($episode_num) ? $episode_num : '',
+            'season_number' => !empty($season_num) ? $season_num : '',
+            'episode_number' => !empty($node->field_episode_number) ? $entity_wrapper->field_episode_number->value() : '',
           ),
       ),
     );

@@ -140,6 +140,8 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
         }
       }
 
+      $language = _usanetwork_get_field_item('file', $file, 'field_mpx_language', 'value');
+
       while (count($tids) > 0 && count($items) < USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
         $tid = _usanetwork_video_endcard_get_deepest_term($tids);
         if ($tid === false) {
@@ -178,6 +180,19 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
           $query->orderBy('v.airdate', 'DESC')
             ->orderBy('v.created', 'DESC');
         }
+
+        if ((empty($language)) || $language == 'en') {
+          $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fd.entity_id = fdfml.entity_id');
+          $query->condition(
+            db_or()
+              ->condition('fdfml.field_mpx_language_value', $language, '=')
+              ->isNull('fdfml.field_mpx_language_value')
+          );
+        } else {
+          $query->innerJoin('field_data_field_mpx_language', 'fdfml', 'fd.entity_id = fdfml.entity_id');
+          $query->condition('fdfml.field_mpx_language_value', $language, '=');
+        }
+
         $result = $query->execute()
           ->fetchAllAssoc('entity_id');
 

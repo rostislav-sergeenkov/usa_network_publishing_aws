@@ -39,7 +39,8 @@
       })).load(function () {
             backgroundPreviewingBlock.attr('data-img-width', this.width);
             backgroundPreviewingBlock.css({
-              'height': this.height
+              'height': this.height,
+              'width': this.width * 0.1
             });
           });
 

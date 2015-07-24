@@ -748,10 +748,10 @@ function usanetwork_person_usa_omniture_alter(&$omniture_variables, $context) {
     $role = _usanetwork_get_field_item('node', $context['entity'], 'field_role', 'taxonomy_term');
     if (!empty($role)) {
       if (strtolower($role->name) == 'character') {
-        $omniture_variables['s.prop5'] = "Actor Bio";
+        $omniture_variables['s.prop5'] = "Character Bio";
       }
       else {
-        $omniture_variables['s.prop5'] = "Character Bio";
+        $omniture_variables['s.prop5'] = "Actor Bio";
       }
     }
   }

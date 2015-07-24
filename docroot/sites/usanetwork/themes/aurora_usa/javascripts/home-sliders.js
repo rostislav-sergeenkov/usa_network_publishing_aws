@@ -308,8 +308,6 @@
           easing: nameAnimation,
           complete: function (elements) {
             nextButton.removeClass('disable');
-
-
             svitchSlider();
           }
         });

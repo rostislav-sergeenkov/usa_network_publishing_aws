@@ -62,8 +62,9 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
     $vars['tg_items'] = $tg_items;
     $node = $vars['element']['#object'];
     $node_wrapper = entity_metadata_wrapper('node', $node);
-    $vars['shareTitle'] = $node_wrapper->field_share_title->value();
-    $vars['shareDescription'] = $node_wrapper->field_share_description->value();
+    $vars['shareTitle'] = !empty($node->field_share_title) ? $node_wrapper->field_share_title->value() : $node_wrapper->title->value();
+    $vars['shareDescription'] = !empty($node->field_share_description) ? $node_wrapper->field_share_description->value() :
+      (!empty($node->field_usa_og_description) ? $node_wrapper->field_usa_og_description->value() : '');
     $vars['baseUrl'] = $base_url;
     $vars['requestUrl'] = request_uri();
     $vars['imageBaseUrl'] = '/' . path_to_theme() . '/images';
@@ -210,7 +211,13 @@ function _usanetwork_timeline_gallery_node_form_validate($form, &$form_state) {
   if (isset($form_state['values']['field_timeline_episode_section'][LANGUAGE_NONE]) && is_array($form_state['values']['field_timeline_episode_section'][LANGUAGE_NONE])) {
     foreach($form_state['values']['field_timeline_episode_section'][LANGUAGE_NONE] as $key => $item) {
       if (isset($item['field_timeline_media_item'][LANGUAGE_NONE]) && is_array($item['field_timeline_media_item'][LANGUAGE_NONE])) {
-        if (count($item['field_timeline_media_item'][LANGUAGE_NONE]) > USA_TIMELINE_MAX_PHOTOS_ON_EPISODE) {
+        $count = 0;
+        foreach ($item['field_timeline_media_item'][LANGUAGE_NONE] as $element) {
+          if (!empty($element['fid'])) {
+            $count++;
+          }
+        }
+        if ($count > USA_TIMELINE_MAX_PHOTOS_ON_EPISODE) {
           form_set_error('', t('Maximum @max photos on one episode', array('@max' => USA_TIMELINE_MAX_PHOTOS_ON_EPISODE)));
         }
       }

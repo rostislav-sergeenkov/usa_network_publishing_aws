@@ -9323,13 +9323,28 @@ header .tve-help-link.signIn .inlineLoader {
 .five-promo-item-block ul li:nth-child(2), .five-promo-item-block ul li .last {
   float: right;
 }
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2), .five-promo-item-block ul li .last {
+    height: auto;
+  }
+}
 .five-promo-item-block ul li:nth-child(2) > div, .five-promo-item-block ul li .last > div {
   float: left;
   height: 49.2%;
   width: 49.2%;
 }
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) > div, .five-promo-item-block ul li .last > div {
+    height: 36.83vw;
+  }
+}
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(1), .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(1), .five-promo-item-block ul li .last > div:nth-child(2) {
   margin-bottom: 1.6%;
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) > div:nth-child(1), .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(1), .five-promo-item-block ul li .last > div:nth-child(2) {
+    margin-bottom: 1.47vw;
+  }
 }
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li:nth-child(2) > div:nth-child(4), .five-promo-item-block ul li .last > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(4) {
   float: right;

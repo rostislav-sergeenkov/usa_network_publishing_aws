@@ -14783,6 +14783,9 @@ footer h2 {
     border-bottom: 8px solid;
   }
 }
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz {
+  max-width: 1000px;
+}
 @media (max-width: 1280px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz {
     width: auto;
@@ -14876,8 +14879,12 @@ footer h2 {
   content: '';
   display: table;
 }
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner {
+  max-width: 320px;
+}
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
-  width: 280px;
+  padding: 5px;
+  width: 320px;
 }
 @media (max-width: 640px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {

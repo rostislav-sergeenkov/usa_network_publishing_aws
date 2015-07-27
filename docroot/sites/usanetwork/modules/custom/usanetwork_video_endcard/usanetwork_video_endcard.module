@@ -185,7 +185,7 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
           $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fd.entity_id = fdfml.entity_id');
           $query->condition(
             db_or()
-              ->condition('fdfml.field_mpx_language_value', $language, '=')
+              ->condition('fdfml.field_mpx_language_value', 'en', '=')
               ->isNull('fdfml.field_mpx_language_value')
           );
         } else {

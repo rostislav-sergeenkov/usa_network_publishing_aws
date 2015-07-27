@@ -2280,13 +2280,14 @@ function _usanetwork_mpx_video_get_related_videos_for_show($show_id, $language) 
     $query->innerJoin('file_managed', 'fm', 'mpx.fid = fm.fid');
     $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = fm.fid');
     $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
+    $query->condition('mpx.status', 1);
     $query->condition($db_or);
     $query->condition('fs.field_show_target_id', $show_id, '=');
     if ((empty($language)) || $language == 'en') {
       $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fm.fid');
       $query->condition(
         db_or()
-          ->condition('fdfml.field_mpx_language_value', $language, '=')
+          ->condition('fdfml.field_mpx_language_value', 'en', '=')
           ->isNull('fdfml.field_mpx_language_value')
       );
     } else {

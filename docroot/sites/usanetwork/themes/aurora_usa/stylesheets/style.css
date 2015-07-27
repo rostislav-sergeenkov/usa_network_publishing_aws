@@ -17110,6 +17110,7 @@ footer h2 {
     vertical-align: middle;
     min-width: 205px;
     width: 205px;
+    margin-bottom: 1px;
     margin-right: 25px;
     margin-top: 15px;
   }
@@ -17151,6 +17152,7 @@ footer h2 {
   padding: 0;
   border: 1px solid #959595;
   cursor: pointer;
+  margin-bottom: 1px;
   margin-top: 20px;
   margin-right: 30px;
 }
@@ -17169,6 +17171,7 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li {
+    margin-bottom: 0;
     margin-top: 0;
     overflow: hidden;
     position: relative;
@@ -17238,6 +17241,7 @@ footer h2 {
 }
 .landing-page-container .upper-menu .item-filter.sorter-items {
   float: right;
+  margin-bottom: 1px;
   margin-top: 20px;
   position: relative;
   text-align: right;

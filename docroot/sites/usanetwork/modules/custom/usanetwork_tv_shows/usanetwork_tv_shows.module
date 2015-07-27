@@ -880,6 +880,28 @@ function usanetwork_tv_shows_query_alter($query) {
     $db_or->condition('mpx_video.airdate', REQUEST_TIME, '>=');
     $query->condition($db_or);
   }
+  // Alter query for insert video option on editor.
+  elseif ($query->hasTag('entityreference')) {
+    $field_info = $query->getMetaData('field');
+    if (!empty($field_info['settings']['module']) && $field_info['settings']['module'] == 'usanetwork_entity_insert') {
+      if (!empty($field_info['settings']['handler_settings']['target_bundles'])) {
+        $bundles = $field_info['settings']['handler_settings']['target_bundles'];
+        if (is_array($bundles) && in_array('mpx_video_1', $bundles)) {
+          $conditions =& $query->conditions();
+          foreach ($conditions as &$condition) {
+            if (isset($condition['field']) && $condition['field'] == 'status') {
+              $condition['field'] = 'file_managed.status';
+            }
+          }
+          $query->innerJoin('mpx_video', 'mpx_video', 'mpx_video.fid = file_managed.fid');
+          $db_or = db_or();
+          $db_or->condition('mpx_video.status', 0, '<>');
+          $db_or->condition('mpx_video.airdate', REQUEST_TIME, '>=');
+          $query->condition($db_or);
+        }
+      }
+    }
+  }
 }
 
 /**

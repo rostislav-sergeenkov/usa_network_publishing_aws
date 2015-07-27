@@ -2632,7 +2632,8 @@ function _usanetwork_tv_shows_render_related_content_item($data, $is_even = FALS
     'is_even' => $is_even,
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
-    'caption' => !empty($data->promo_topic) ? check_plain($data->promo_topic) : '',
+    'caption' => !empty($data->promo_violator) ? check_plain($data->promo_violator) :
+        ($data->bundle == 'mpx_video_2' ? t('Full Episode') : ''),
     'title' => !empty($data->promo_title) ? check_plain($data->promo_title) : '',
     'additional' => !empty($data->promo_description) ? check_plain($data->promo_description) : '',
     'image_desktop' => $desktop_image,
@@ -3566,9 +3567,8 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
   $theme_variables = array(
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
-    'caption' => !empty($data->promo_topic)
-        ? htmlspecialchars($data->promo_topic)
-        : '',
+    'caption' => !empty($data->promo_violator) ? check_plain($data->promo_violator) :
+        ($data->bundle == 'mpx_video_2' ? t('Full Episode') : ''),
     'title' => !empty($data->promo_title)
         ? htmlspecialchars($data->promo_title)
         : $data->title,

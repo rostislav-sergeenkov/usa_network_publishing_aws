@@ -1163,10 +1163,9 @@ function usanetwork_movie_get_related_content_ajax($movie_node, $start_from = 0,
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
     $response['rendered'] = _usanetwork_movie_render_related_content_items_block($related_content, TRUE, $is_even, $start_from, $limit, TRUE);
-
-    return drupal_json_output($response);
   }
-  elseif (empty($related_content) && $start_from > 0) {
+
+  if (count($related_content) < $limit && $start_from > 0) {
     $response['overlimited'] = TRUE;
   }
 

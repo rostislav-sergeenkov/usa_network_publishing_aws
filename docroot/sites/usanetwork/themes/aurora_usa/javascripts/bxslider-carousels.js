@@ -228,8 +228,25 @@
 
       Drupal.behaviors.bxslider_carousels.extendSettings();
       if (slideItem.length > 2) {
-        Drupal.behaviors.bxslider_carousels.initVSliders();
+        //Drupal.behaviors.bxslider_carousels.initVSliders();
       }
+      $('.slider-vertical').mCustomScrollbar({
+        axis:"y",
+        autoHideScrollbar: true,
+        scrollInertia: 0,
+        scrollbarPosition: "inside",
+        callbacks: {
+          whileScrolling: function(){
+            if (this.mcs.topPct === 100) {
+              $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
+            } else {
+              if (!$('.episodes-list', '.aspot-and-episodes').hasClass('shadow')) {
+                $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
+              }
+            }
+          }
+        }
+      });
 
       $(window).bind('resize', function () {
         setTimeout(function() {

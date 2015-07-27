@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -23960,6 +23960,7 @@ y-axis
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 1;
 }
 
 .mCSB_outside + .mCSB_scrollTools {

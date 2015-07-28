@@ -85,7 +85,7 @@
           nameAd = 'topbox',
           selector = '#' + nameAd;
 
-      if(window.innerWidth >= window_size_desktop) {
+      if(window.innerWidth >= window_size_tablet) {
         sidebarAd.attr('id', nameAd);
         Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
       } else {
@@ -94,22 +94,9 @@
         Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
       }
 
-      var waitForFinalEvent = (function () {
-        var timers = {};
-        return function (callback, ms, uniqueId) {
-          if (!uniqueId) {
-            uniqueId = "Don't call this twice without a uniqueId";
-          }
-          if (timers[uniqueId]) {
-            clearTimeout (timers[uniqueId]);
-          }
-          timers[uniqueId] = setTimeout(callback, ms);
-        };
-      })();
-
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
-          if(window.innerWidth >= window_size_desktop && mainBlock.hasClass('mobile')) {
+          if(window.innerWidth >= window_size_tablet && mainBlock.hasClass('mobile')) {
 
             mainBlock.removeClass('mobile');
             sidebarAd.attr('id', nameAd);
@@ -118,7 +105,7 @@
             Drupal.behaviors.mpsAdvert.mpsMakeRequest();
             Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
 
-          } else if(window.innerWidth < window_size_desktop && !mainBlock.hasClass('mobile')){
+          } else if(window.innerWidth < window_size_tablet && !mainBlock.hasClass('mobile')){
 
             mainBlock.addClass('mobile');
             infoBlockAd.attr('id', nameAd);

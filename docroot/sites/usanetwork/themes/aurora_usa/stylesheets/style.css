@@ -7116,12 +7116,12 @@ header .tve-help-link.signOut .links-wrapper > .item-list {
 }
 header .tve-help-link.signOut a {
   font-size: 16px;
-  line-height: 1.3;
+  line-height: 20px;
 }
 @media (max-width: 1900px) {
   header .tve-help-link.signOut a {
     font-size: 12px;
-    line-height: 1.2;
+    line-height: 15px;
   }
 }
 header .tve-help-link.signOut .actionLink .signOut {
@@ -9254,6 +9254,9 @@ header .tve-help-link.signIn .inlineLoader {
   content: '';
   display: table;
 }
+.five-promo-item-block:nth-child(even) {
+  background: #e9eaeb;
+}
 @media (max-width: 480px) {
   .five-promo-item-block {
     padding: 40px 10px;
@@ -9320,13 +9323,28 @@ header .tve-help-link.signIn .inlineLoader {
 .five-promo-item-block ul li:nth-child(2), .five-promo-item-block ul li .last {
   float: right;
 }
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2), .five-promo-item-block ul li .last {
+    height: auto;
+  }
+}
 .five-promo-item-block ul li:nth-child(2) > div, .five-promo-item-block ul li .last > div {
   float: left;
   height: 49.2%;
   width: 49.2%;
 }
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) > div, .five-promo-item-block ul li .last > div {
+    height: 36.83vw;
+  }
+}
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(1), .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(1), .five-promo-item-block ul li .last > div:nth-child(2) {
   margin-bottom: 1.6%;
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) > div:nth-child(1), .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(1), .five-promo-item-block ul li .last > div:nth-child(2) {
+    margin-bottom: 1.47vw;
+  }
 }
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li:nth-child(2) > div:nth-child(4), .five-promo-item-block ul li .last > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(4) {
   float: right;
@@ -10519,6 +10537,11 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .node-type-consumpt-post .gallery-block {
     height: auto;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-page .gallery-block .consum-sidebar .download-app, .node-type-media-gallery .gallery-block .consum-sidebar .download-app, .node-type-tv-episode .gallery-block .consum-sidebar .download-app, .node-type-consumpt-post .gallery-block .consum-sidebar .download-app {
+    display: none;
   }
 }
 .consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper {
@@ -12434,7 +12457,7 @@ footer h2 {
   left: 0;
   width: 100%;
 }
-@media (min-width: 641px) and (max-width: 1280px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .consum-sidebar .more-items {
     background: none !important;
   }
@@ -12786,7 +12809,21 @@ footer h2 {
   }
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #block-usanetwork-media-gallery-usa-gallery-consumptionator-main .consum-sidebar .more-items, .consumptionator-video-page .video-block .consum-sidebar .more-items {
+    background: none !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar, .consumptionator-episode-main-block .consum-sidebar, .consumptionator-quiz-main-block .consum-sidebar, .consumptionator-post-main-block .consum-sidebar {
+    float: left;
+    padding: 0;
+    position: relative;
+    width: 320px;
+  }
+}
+@media (max-width: 1024px) {
   .consumptionator-characters-main-block .consum-sidebar, .consumptionator-episode-main-block .consum-sidebar, .consumptionator-quiz-main-block .consum-sidebar, .consumptionator-post-main-block .consum-sidebar {
     float: none;
     height: auto;
@@ -12795,7 +12832,7 @@ footer h2 {
     width: 100%;
   }
 }
-@media (min-width: 1281px) {
+@media (min-width: 1025px) {
   .consumptionator-characters-main-block .consum-sidebar .items-block, .consumptionator-episode-main-block .consum-sidebar .items-block, .consumptionator-quiz-main-block .consum-sidebar .items-block, .consumptionator-post-main-block .consum-sidebar .items-block {
     height: 420px;
   }
@@ -12805,7 +12842,12 @@ footer h2 {
     height: 645px;
   }
 }
-@media (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block, .consumptionator-episode-main-block .consum-sidebar .items-block, .consumptionator-quiz-main-block .consum-sidebar .items-block, .consumptionator-post-main-block .consum-sidebar .items-block {
+    position: relative;
+  }
+}
+@media (max-width: 1024px) {
   .consumptionator-characters-main-block .consum-sidebar .items-block, .consumptionator-episode-main-block .consum-sidebar .items-block, .consumptionator-quiz-main-block .consum-sidebar .items-block, .consumptionator-post-main-block .consum-sidebar .items-block {
     height: auto;
     padding: 0;
@@ -12815,9 +12857,19 @@ footer h2 {
     width: 100%;
   }
 }
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.vertical, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.vertical, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.vertical, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.vertical {
+    display: block;
+  }
+}
 .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal {
   overflow: hidden;
   position: relative;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal {
+    display: none;
+  }
 }
 .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul {
   width: 20000em;
@@ -12904,9 +12956,24 @@ footer h2 {
     text-transform: uppercase;
   }
 }
-@media (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .more-items, .consumptionator-episode-main-block .consum-sidebar .more-items, .consumptionator-quiz-main-block .consum-sidebar .more-items, .consumptionator-post-main-block .consum-sidebar .more-items {
+    bottom: 0;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: auto;
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
   .consumptionator-characters-main-block .consum-sidebar .more-items, .consumptionator-episode-main-block .consum-sidebar .more-items, .consumptionator-quiz-main-block .consum-sidebar .more-items, .consumptionator-post-main-block .consum-sidebar .more-items {
     top: 0;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .more-items a, .consumptionator-episode-main-block .consum-sidebar .more-items a, .consumptionator-quiz-main-block .consum-sidebar .more-items a, .consumptionator-post-main-block .consum-sidebar .more-items a {
+    padding-left: 25px;
   }
 }
 @media (max-width: 640px) {
@@ -12916,7 +12983,7 @@ footer h2 {
     line-height: 45px;
   }
 }
-@media (max-width: 1280px) {
+@media (max-width: 1024px) {
   .consumptionator-characters-main-block .consum-sidebar .advert, .consumptionator-episode-main-block .consum-sidebar .advert, .consumptionator-quiz-main-block .consum-sidebar .advert, .consumptionator-post-main-block .consum-sidebar .advert {
     display: none;
   }
@@ -12925,6 +12992,11 @@ footer h2 {
   .consumptionator-characters-main-block .consum-sidebar .items-block-title, .consumptionator-episode-main-block .consum-sidebar .items-block-title, .consumptionator-quiz-main-block .consum-sidebar .items-block-title, .consumptionator-post-main-block .consum-sidebar .items-block-title {
     height: 45px;
     line-height: 45px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block-title h2, .consumptionator-episode-main-block .consum-sidebar .items-block-title h2, .consumptionator-quiz-main-block .consum-sidebar .items-block-title h2, .consumptionator-post-main-block .consum-sidebar .items-block-title h2 {
+    width: 100%;
   }
 }
 @media (max-width: 640px) {
@@ -13739,18 +13811,17 @@ footer h2 {
   margin-bottom: -10000px;
   overflow: hidden;
 }
-@media (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block {
-    float: none;
-    padding: 25px 0 38px 0;
-    margin-bottom: 0;
-    width: 100%;
+    width: calc(100% - 320px);
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block {
-    padding: 24px 0;
     border-bottom: 2px solid;
+    padding: 24px 0;
+    margin-bottom: 0;
+    width: 100%;
   }
 }
 @media (max-width: 768px) {
@@ -13772,12 +13843,6 @@ footer h2 {
   clear: both;
   content: '';
   display: table;
-}
-@media (max-width: 1280px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
-    margin-bottom: 15px;
-    padding: 0 31px 0 36px;
-  }
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-header {
@@ -13946,22 +14011,17 @@ footer h2 {
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
   display: none;
 }
-@media (min-width: 641px) and (max-width: 1280px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
     display: block;
   }
 }
-@media (max-width: 1280px) {
+@media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
     float: left;
     clear: left;
     height: 250px;
     margin-top: 45px;
-    width: 46.8%;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-content .advert {
     width: 42.62%;
   }
 }
@@ -14027,7 +14087,7 @@ footer h2 {
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .description .file-video-mpx.view-mode-inline_content {
-    height: 25vw;
+    height: 18vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -14150,7 +14210,12 @@ footer h2 {
   background: #ffffff;
   color: #000000;
 }
-@media (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block, .consumptionator-episode-main-block .post-info-main-block, .consumptionator-post-main-block .episode-info-main-block, .consumptionator-post-main-block .post-info-main-block {
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
   .consumptionator-episode-main-block .episode-info-main-block, .consumptionator-episode-main-block .post-info-main-block, .consumptionator-post-main-block .episode-info-main-block, .consumptionator-post-main-block .post-info-main-block {
     float: none;
     width: 100%;
@@ -14606,10 +14671,7 @@ footer h2 {
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .node-wrapper.advert, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .node-wrapper.advert, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .node-wrapper.advert, .consumptionator-episode-main-block .post-info-main-block .post-info-block .node-wrapper.advert, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .node-wrapper.advert, .consumptionator-post-main-block .episode-info-main-block .post-info-block .node-wrapper.advert, .consumptionator-post-main-block .post-info-main-block .episode-info-block .node-wrapper.advert, .consumptionator-post-main-block .post-info-main-block .post-info-block .node-wrapper.advert {
-    clear: right;
-    display: block;
-    float: right;
-    margin: 0 0 20px 20px;
+    display: none;
   }
 }
 @media (max-width: 1024px) {
@@ -14642,7 +14704,7 @@ footer h2 {
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .gallery-recap-block, .consumptionator-post-main-block .gallery-recap-block {
     border-bottom: 2px solid;
-    padding: 40px 75px 90px;
+    padding: 30px 25px 90px;
   }
 }
 @media (max-width: 1024px) {
@@ -14654,6 +14716,30 @@ footer h2 {
   .consumptionator-episode-main-block .gallery-recap-block, .consumptionator-post-main-block .gallery-recap-block {
     border-bottom: 12px solid;
     padding: 40px 0 75px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper {
+    height: calc((100vw - 370px) * 0.5625);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item {
+    height: 13px;
+    margin: 0px 15px 13px auto;
+    width: 13px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a {
+    height: 13px;
+    width: 13px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img {
+    max-width: 75px;
+    width: 75px;
   }
 }
 
@@ -14678,22 +14764,28 @@ footer h2 {
   margin-bottom: -10000px;
   overflow: hidden;
 }
-@media (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-quiz-main-block article.node-quiz {
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-quiz-main-block article.node-quiz {
+    border-bottom: 2px solid;
     float: none;
     padding: 0;
     margin-bottom: 0;
     width: 100%;
   }
 }
-@media (max-width: 1024px) {
-  .consumptionator-quiz-main-block article.node-quiz {
-    border-bottom: 2px solid;
-  }
-}
 @media (max-width: 640px) {
   .consumptionator-quiz-main-block article.node-quiz {
     border-bottom: 8px solid;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz {
+    width: auto;
   }
 }
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
@@ -14792,7 +14884,7 @@ footer h2 {
     font-size: 2.8125vw;
   }
 }
-@media (min-width: 1281px) {
+@media (min-width: 1025px) {
   .consumptionator-quiz-main-block .consum-sidebar .items-block {
     height: 245px;
   }
@@ -17033,6 +17125,7 @@ footer h2 {
     vertical-align: middle;
     min-width: 205px;
     width: 205px;
+    margin-bottom: 1px;
     margin-right: 25px;
     margin-top: 15px;
   }
@@ -17074,6 +17167,7 @@ footer h2 {
   padding: 0;
   border: 1px solid #959595;
   cursor: pointer;
+  margin-bottom: 1px;
   margin-top: 20px;
   margin-right: 30px;
 }
@@ -17092,6 +17186,7 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li {
+    margin-bottom: 0;
     margin-top: 0;
     overflow: hidden;
     position: relative;
@@ -17161,6 +17256,7 @@ footer h2 {
 }
 .landing-page-container .upper-menu .item-filter.sorter-items {
   float: right;
+  margin-bottom: 1px;
   margin-top: 20px;
   position: relative;
   text-align: right;

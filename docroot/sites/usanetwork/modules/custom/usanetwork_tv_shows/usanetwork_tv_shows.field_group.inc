@@ -1163,8 +1163,7 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Best of',
     'weight' => '76',
     'children' => array(
-      0 => 'field_tvs_best_of_items',
-      1 => 'field_tvs_best_of_title',
+      0 => 'field_tvs_best_of',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -506,6 +506,62 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_collection_best_of_items'
+  $field_bases['field_collection_best_of_items'] = array(
+    'active' => 1,
+    'cardinality' => 5,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_collection_best_of_items',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'catchall_page' => 'catchall_page',
+        'media_gallery' => 'media_gallery',
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+        'person' => 'person',
+        'post' => 'post',
+        'quiz' => 'quiz',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
+      ),
+      'entity_type_ids' => array(
+        'file' => 'file',
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
+  // Exported field_base: 'field_collection_best_of_title'
+  $field_bases['field_collection_best_of_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_collection_best_of_title',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_content_tags'
   $field_bases['field_content_tags'] = array(
     'active' => 1,
@@ -1412,41 +1468,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_show_plmb_promo'
-  $field_bases['field_show_plmb_promo'] = array(
-    'active' => 1,
-    'cardinality' => 4,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_show_plmb_promo',
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'usanetwork_dynamic_entity_reference',
-    'settings' => array(
-      'entity_bundles' => array(
-        'catchall_page' => 'catchall_page',
-        'media_gallery' => 'media_gallery',
-        'mpx_video_1' => 'mpx_video_1',
-        'mpx_video_2' => 'mpx_video_2',
-        'person' => 'person',
-        'post' => 'post',
-        'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
-      ),
-      'entity_type_ids' => array(
-        'file' => 'file',
-        'node' => 'node',
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'usanetwork_dynamic_entity_reference',
-  );
-
   // Exported field_base: 'field_main_link'
   $field_bases['field_main_link'] = array(
     'active' => 1,
@@ -1879,6 +1900,41 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_show_plmb_promo'
+  $field_bases['field_show_plmb_promo'] = array(
+    'active' => 1,
+    'cardinality' => 4,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_show_plmb_promo',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'catchall_page' => 'catchall_page',
+        'media_gallery' => 'media_gallery',
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+        'person' => 'person',
+        'post' => 'post',
+        'quiz' => 'quiz',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
+      ),
+      'entity_type_ids' => array(
+        'file' => 'file',
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
   // Exported field_base: 'field_show_vlmb_promo'
   $field_bases['field_show_vlmb_promo'] = array(
     'active' => 1,
@@ -2113,61 +2169,28 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_tvs_best_of_items'
-  $field_bases['field_tvs_best_of_items'] = array(
+  // Exported field_base: 'field_tvs_best_of'
+  $field_bases['field_tvs_best_of'] = array(
     'active' => 1,
-    'cardinality' => 5,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_tvs_best_of_items',
+    'field_name' => 'field_tvs_best_of',
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'revision_id' => array(
+        0 => 'revision_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'usanetwork_dynamic_entity_reference',
+    'module' => 'field_collection',
     'settings' => array(
-      'entity_bundles' => array(
-        'catchall_page' => 'catchall_page',
-        'media_gallery' => 'media_gallery',
-        'mpx_video_1' => 'mpx_video_1',
-        'mpx_video_2' => 'mpx_video_2',
-        'person' => 'person',
-        'post' => 'post',
-        'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
-      ),
-      'entity_type_ids' => array(
-        'file' => 'file',
-        'node' => 'node',
-      ),
+      'hide_blank_items' => 0,
+      'path' => '',
     ),
     'translatable' => 0,
-    'type' => 'usanetwork_dynamic_entity_reference',
+    'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_tvs_best_of_title'
-  $field_bases['field_tvs_best_of_title'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_tvs_best_of_title',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
 
   // Exported field_base: 'field_tvs_desktop_cimage'
   $field_bases['field_tvs_desktop_cimage'] = array(

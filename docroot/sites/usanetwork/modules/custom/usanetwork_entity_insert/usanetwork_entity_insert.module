@@ -172,6 +172,7 @@ function _usanetwork_entity_insert_suggestions($type, $title = '') {
     // settings for entityrefference selection handler
     $settings = array(
       'settings' => array(
+        'module' => 'usanetwork_entity_insert',
         'handler' => 'base',
         'target_type' => $entity_type,
         'handler_settings' => array(

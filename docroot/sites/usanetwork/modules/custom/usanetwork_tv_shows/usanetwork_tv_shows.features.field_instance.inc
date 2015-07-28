@@ -2891,7 +2891,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 74,
+      'weight' => 75,
     ),
   );
 
@@ -6062,7 +6062,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 76,
+      'weight' => 77,
     ),
   );
 
@@ -9145,6 +9145,85 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tv_show-field_imdb_url'
+  $field_instances['node-tv_show-field_imdb_url'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 197,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_imdb_url',
+    'label' => 'IMDB URL',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'urlwidget',
+      'weight' => 79,
+    ),
+  );
+
   // Exported field_instance: 'node-tv_show-field_instagram_show_id'
   $field_instances['node-tv_show-field_instagram_show_id'] = array(
     'bundle' => 'tv_show',
@@ -9615,7 +9694,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 73,
+      'weight' => 74,
     ),
   );
 
@@ -12367,7 +12446,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'urls_search' => 'start',
       ),
       'type' => 'advanced_link',
-      'weight' => 75,
+      'weight' => 76,
     ),
   );
 
@@ -12450,7 +12529,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'size' => 40,
       ),
       'type' => 'text_textfield',
-      'weight' => 72,
+      'weight' => 73,
     ),
   );
 
@@ -12623,7 +12702,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'weight' => 125,
     ),
   );
-
 
   // Exported field_instance: 'node-tv_show-field_tvs_desktop_cimage'
   $field_instances['node-tv_show-field_tvs_desktop_cimage'] = array(
@@ -16370,6 +16448,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Hide from cast carousel');
   t('Hide from social follow block');
   t('IDENTITYMANAGERURL');
+  t('IMDB URL');
   t('ITEMSPERPAGE');
   t('IdeaMelt action type');
   t('Instagram page');

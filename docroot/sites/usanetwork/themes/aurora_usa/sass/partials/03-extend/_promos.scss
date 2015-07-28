@@ -437,6 +437,9 @@
         text-align: center;
         text-transform: uppercase;
         width: 100%;
+        &.no-show {
+          background: $schedule-caption-color;
+        }
         @include breakpoint($bp-min-1601-width) {
           font-size: 19px;
           height: 48px;

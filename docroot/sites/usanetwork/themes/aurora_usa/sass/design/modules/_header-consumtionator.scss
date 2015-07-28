@@ -105,6 +105,12 @@
               position: relative;
               text-align: center;
               white-space: normal;
+              @include breakpoint($bp-min-1025-width) {
+                font-size: get-vw(19.2px, 1280);
+              }
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 28.5px;
+              }
               span {
                 display: table-cell;
                 vertical-align: middle;

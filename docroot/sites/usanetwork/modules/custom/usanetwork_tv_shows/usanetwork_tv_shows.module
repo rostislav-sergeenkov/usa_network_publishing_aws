@@ -2414,6 +2414,7 @@ function _usanetwork_tv_shows_render_best_of_block($block_title, $field_promo_it
     else {
       $promo_entity = reset($promo_entity);
     }
+    $promo_data = array();
     switch ($promo_reference['target_type']) {
       case 'node':
         if ($promo_entity->status == NODE_PUBLISHED) {
@@ -2510,6 +2511,7 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
         else {
           $promo_entity = reset($promo_entity);
         }
+        $promo_data = array();
         switch ($promo_reference['target_type']) {
           case 'node':
             $promo_data = _usanetwork_promo_pull_node_promo_details($promo_entity);

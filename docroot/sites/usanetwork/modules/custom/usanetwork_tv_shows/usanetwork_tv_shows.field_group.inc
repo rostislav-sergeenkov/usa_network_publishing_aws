@@ -59,7 +59,8 @@ function usanetwork_tv_shows_field_group_info() {
       4 => 'field_tv_show_marquee',
       5 => 'field_current_show',
       6 => 'field_syndicated',
-      7 => 'group_floodlight_tag',
+      7 => 'field_imdb_url',
+      8 => 'group_floodlight_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

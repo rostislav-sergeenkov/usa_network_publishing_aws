@@ -2677,6 +2677,7 @@ function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type)
     'cast' => 'Cast & Info | ' . $show_node->title,
     'explore' => 'Explore | ' . $show_node->title,
     'photos' => 'Photos | ' . $show_node->title,
+    'episodes' => 'Episodes | ' . $show_node->title,
   );
 
   if (!empty($show_node) && isset($default_titles[$page_type])) {

@@ -611,6 +611,7 @@ function _usanetwork_media_show_gallery_lmb_block() {
         else {
           $promo_entity = reset($promo_entity);
         }
+        $promo_data = array();
         switch ($promo_reference['target_type']) {
           case 'node':
             if ($promo_entity->status != NODE_PUBLISHED) {

@@ -1063,6 +1063,161 @@ function usanetwork_mpx_video_page_alter(&$page) {
   if (module_exists('views_load_more')) {
     drupal_add_js(drupal_get_path('module', 'views_load_more') . '/views_load_more.js');
   }
+
+  $file = menu_get_object('file');
+  if (!empty($file)) {
+    $google_watch_variables = _usanetwork_get_google_watch_variables($file);
+    $header = '<script type=\'application/ld+json\'>' . drupal_json_encode($google_watch_variables)  . '</script>';
+    $page['page_top']['google_watch'] =  array(
+      'footer'=> array(
+        '#type' => 'markup',
+        '#markup' => $header,
+      ),
+    );
+  }
+}
+
+/*
+ * Variables for Google Search
+ */
+function _usanetwork_get_google_watch_variables($file) {
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  if (isset($file->field_mpx_guid)) {
+    $guid = $file_wrapper->field_mpx_guid->value();
+  }
+  if (isset($file->field_mpx_episode_number)) {
+    $episode_number = $file_wrapper->field_mpx_episode_number->value();
+  }
+  if (isset($file->field_mpx_season_number)) {
+    $season_number = $file_wrapper->field_mpx_season_number->value();
+  }
+  if (isset($file->field_mpx_entitlement)) {
+    $entitlement = $file_wrapper->field_mpx_entitlement->value();
+  }
+  if (isset($file->field_mpx_available_date)) {
+    $available_date = $file_wrapper->field_mpx_available_date->value();
+  }
+  if (isset($file->field_mpx_expiration_date)) {
+    $expiration_date = $file_wrapper->field_mpx_expiration_date->value();
+  }
+  if (isset($file->field_mpx_external_advertiser_id)) {
+    $advertiser_id = $file_wrapper->field_mpx_external_advertiser_id->value();
+    $ios_link = USANETWORK_DEEP_LINKING_IOS_SCHEME . '?target=videoAsset&ID=' . $advertiser_id;
+  }
+  if (isset($file->field_mpx_description)) {
+    $description = $file_wrapper->field_mpx_description->value();
+  }
+  if (isset($file->field_show)) {
+    $show = $file_wrapper->field_show->value();
+  }
+  $show_imdb_field = _usanetwork_get_field_item('node', $show, 'field_imdb_url', 'value');
+
+  if (isset($show)) {
+    if (isset($episode_number)) {
+      $query = db_select('node', 'n')
+        ->fields('n', array('nid'));
+      $query->join('field_data_field_episode_number', 'fdfen', 'fdfen.entity_id = n.nid');
+      $query->condition('fdfen.field_episode_number_value', $episode_number);
+      $query->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = n.nid');
+      $query->condition('fdfs.field_show_target_id', $show->nid, '=');
+      $tv_episode_nid = $query->execute()->fetchObject();
+      if ($tv_episode_nid) {
+        $tv_episode = node_load($tv_episode_nid->nid);
+        $episode_imdb = _usanetwork_get_field_item('node', $tv_episode, 'field_imdb_url', 'value');
+      }
+    }
+  }
+
+  if (isset($file->field_promo_image_override)) {
+    $image_file = $file_wrapper->field_promo_image_override->value();
+    $image = $image_file['uri'];
+  }
+  if (!isset($image)) {
+    $image = _usanetwork_mpx_video_get_image_path($file);
+  }
+
+  $url_image = image_style_url('640x560', $image);
+
+  //TODO: check pathes
+  $google_watch = array(
+    '@context' => 'http://schema.org',
+    '@id' => $guid,
+    '@type' => 'TVEpisode',
+    'name' => $file->filename,
+    'episodeNumber' => isset($episode_number) ? $episode_number : '',
+    'partOfSeason' => array(
+      '@type' => 'TVSeason',
+      'seasonNumber' => isset($season_number) ? $season_number : '',
+    ),
+    'partOfSeries' => array(
+      '@type' => 'TVSeries',
+      'name' => $show->title,
+      'sameAs' => (!empty($show_imdb_field)) ? $show_imdb_field : '',
+    ),
+    'potentialAction' => array(
+      '0' => array(
+        '@type' => 'WatchAction',
+        'target' => url('file/' . $file->fid, array('absolute' => TRUE)),
+        'expectsAcceptanceOf' => array(
+          '@type' => 'Offer',
+          'category' => isset($entitlement) ? $entitlement : '',
+          'availabilityStarts' => date('Y-m-d\TH:i', $available_date),
+          'availabilityEnds' => date('Y-m-d\TH:i', $expiration_date),
+          'eligibleRegion' => array(
+            '@type' => 'Country',
+            'name' => 'US',
+          ),
+        ),
+      ),
+      '1' => array(
+        '@type' => 'WatchAction',
+        'target' => isset($ios_link) ? $ios_link : '',
+        'expectsAcceptanceOf' => array(
+          '@type' => 'Offer',
+          'category' => isset($entitlement) ? $entitlement : '',
+          'availabilityStarts' => date('Y-m-d\TH:i', $available_date),
+          'availabilityEnds' => date('Y-m-d\TH:i', $expiration_date),
+          'eligibleRegion' => array(
+            '@type' => 'Country',
+            'name' => 'US',
+          ),
+        ),
+      ),
+    ),
+//TODO: Add related content and add checking
+//    'hasPart' => array(
+//      '@type' => 'TVClip',
+//      'description' => 'trailer',
+//      'timeRequired' => 'PT2M5S',
+//      'potentialAction' => array(
+//        '@type' => 'WatchAction',
+//        'target' => 'android-app://com.app.foo/bar/vid/2356866',
+//        'expectsAcceptanceOf' => array(
+//          'category' => 'free',
+//          'availabilityStarts' => '2014-09-01T00:00',
+//          'availabilityEnds' => '2015-09-01T00:00',
+//        ),
+//      ),
+//    ),
+
+    'image' => array(
+      '@type' => 'ImageObject',
+      'height' => 640,
+      'width' => 560,
+      'url' => $url_image,
+    ),
+    'sameAs' => isset($episode_imdb) ? $episode_imdb : '',
+    'description' => isset($description) ? $description : '',
+    //TODO:
+//    'actor' => array(
+//      '@type' => 'Person',
+//      'name' => 'Jim Parsons',
+//      'sameAs' => 'http://www.imdb.com/name/nm1433588/',
+//    ),
+  );
+
+
+  return $google_watch;
 }
 
 /**

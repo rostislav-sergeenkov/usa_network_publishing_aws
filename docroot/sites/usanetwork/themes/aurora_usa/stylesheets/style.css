@@ -1201,6 +1201,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
   text-transform: uppercase;
   width: 100%;
 }
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button.no-show, .related-content-block ul li .social-promo .meta-wrapper .meta-button.no-show {
+  background: #b5b3b4;
+}
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
     font-size: 19px;
@@ -9323,13 +9326,28 @@ header .tve-help-link.signIn .inlineLoader {
 .five-promo-item-block ul li:nth-child(2), .five-promo-item-block ul li .last {
   float: right;
 }
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2), .five-promo-item-block ul li .last {
+    height: auto;
+  }
+}
 .five-promo-item-block ul li:nth-child(2) > div, .five-promo-item-block ul li .last > div {
   float: left;
   height: 49.2%;
   width: 49.2%;
 }
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) > div, .five-promo-item-block ul li .last > div {
+    height: 36.83vw;
+  }
+}
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(1), .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(1), .five-promo-item-block ul li .last > div:nth-child(2) {
   margin-bottom: 1.6%;
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) > div:nth-child(1), .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(1), .five-promo-item-block ul li .last > div:nth-child(2) {
+    margin-bottom: 1.47vw;
+  }
 }
 .five-promo-item-block ul li:nth-child(2) > div:nth-child(2), .five-promo-item-block ul li:nth-child(2) > div:nth-child(4), .five-promo-item-block ul li .last > div:nth-child(2), .five-promo-item-block ul li .last > div:nth-child(4) {
   float: right;
@@ -14768,6 +14786,9 @@ footer h2 {
     border-bottom: 8px solid;
   }
 }
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz {
+  max-width: 1000px;
+}
 @media (max-width: 1280px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz {
     width: auto;
@@ -14861,8 +14882,12 @@ footer h2 {
   content: '';
   display: table;
 }
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner {
+  max-width: 320px;
+}
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
-  width: 280px;
+  padding: 5px;
+  width: 320px;
 }
 @media (max-width: 640px) {
   .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {

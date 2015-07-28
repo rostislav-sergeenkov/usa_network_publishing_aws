@@ -1201,6 +1201,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
   text-transform: uppercase;
   width: 100%;
 }
+.social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button.no-show, .related-content-block ul li .social-promo .meta-wrapper .meta-button.no-show {
+  background: #b5b3b4;
+}
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
     font-size: 19px;

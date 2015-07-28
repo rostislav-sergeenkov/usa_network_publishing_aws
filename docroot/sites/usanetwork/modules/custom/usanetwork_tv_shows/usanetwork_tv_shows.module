@@ -1290,16 +1290,16 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $start_from = 0, $lim
   // Attach promo call to action
   $query->leftJoin('field_data_field_promo_call_to_action_text', 'fnp_cta', 'fnp_cta.entity_id=f.fid');
   $query->addField('fnp_cta', 'field_promo_call_to_action_text_value', 'promo_cta');
+  // Attach season and episode.
+  $query->leftJoin('field_data_field_mpx_season_number', 'season_num', 'f.fid=season_num.entity_id');
+  $query->addField('season_num', 'field_mpx_season_number_value', 'season_number');
+  $query->leftJoin('field_data_field_mpx_episode_number', 'episode_num', 'f.fid=episode_num.entity_id');
+  $query->addField('episode_num', 'field_mpx_episode_number_value', 'episode_number');
 
   if ($season_num) {
-    $query->leftJoin('field_data_field_mpx_season_number', 'season_num', 'f.fid=season_num.entity_id');
-    $query->addField('season_num', 'field_mpx_season_number_value', 'season_number');
     $query->condition('season_num.field_mpx_season_number_value', $season_num);
   }
-
   if ($episode_num) {
-    $query->leftJoin('field_data_field_mpx_episode_number', 'episode_num', 'f.fid=episode_num.entity_id');
-    $query->addField('episode_num', 'field_mpx_episode_number_value', 'episode_number');
     $query->condition('episode_num.field_mpx_episode_number_value', $episode_num);
   }
 
@@ -1920,27 +1920,51 @@ function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0,
  * @param int $limit
  */
 function usanetwork_tv_shows_get_related_video_content($tv_show_node, $start_from = 0, $limit = 1) {
-  $sorted_content = array();
+
   $left_to_sort = USA_TV_SHOW_RELATED_CONSUMPTIONATOR_VIDEOS_QUEUE;
 
   $content = usanetwork_tv_shows_get_related_content($tv_show_node, $start_from, $limit);
-
+  $sorted_content_clips = array();
+  $sorted_content_full = array();
   if (!empty($content) && $left_to_sort > 0) {
     foreach ($content as $content_index => $content_item) {
       if ($left_to_sort <= 0) {
         break;
       }
-
-      if ($content_item->bundle == 'mpx_video_1' || $content_item->bundle == 'mpx_video_2') {
-        $sorted_content[] = $content_item;
-
+      if ($content_item->bundle == 'mpx_video_1') {
+        $sorted_content_clips[] = $content_item;
+        unset($content[$content_index]);
+        $left_to_sort--;
+      }
+      elseif ($content_item->bundle == 'mpx_video_2') {
+        $sorted_content_full[] = $content_item;
         unset($content[$content_index]);
         $left_to_sort--;
       }
     }
   }
-
-  return array_merge($sorted_content, $content);
+  if (!empty($sorted_content_full)) {
+    usort($sorted_content_full, function ($a, $b) {
+      if ($a->season_number > $b->season_number) {
+        return -1;
+      }
+      elseif ($a->season_number < $b->season_number) {
+        return 1;
+      }
+      else {
+        if ($a->episode_number > $b->episode_number) {
+          return -1;
+        }
+        elseif ($a->episode_number < $b->episode_number) {
+          return 1;
+        }
+        else {
+          return 0;
+        }
+      }
+    });
+  }
+  return array_merge($sorted_content_full, $sorted_content_clips, $content);
 }
 
 

@@ -12165,7 +12165,7 @@ footer h2 {
 }
 .consum-sidebar .episodes-list-slider.vertical {
   display: block;
-  height: calc(100% - 84px);
+  height: calc(100% - 85px);
 }
 @media (min-width: 1901px) {
   .consum-sidebar .episodes-list-slider.vertical {
@@ -12863,6 +12863,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.vertical, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.vertical, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.vertical, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.vertical {
     display: block;
+    height: calc(100% - 90px);
   }
 }
 .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal {

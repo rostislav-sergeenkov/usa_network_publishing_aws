@@ -20,6 +20,13 @@
     @include breakpoint($bp-1024-width) {
       height: auto;
     }
+    .consum-sidebar {
+      .download-app {
+        @include breakpoint($bp-640-width) {
+          display: none;
+        }
+      }
+    }
   }
   .gallery-wrapper {
     background: $gallery-description-back;

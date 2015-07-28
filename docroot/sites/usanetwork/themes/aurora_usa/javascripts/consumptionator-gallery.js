@@ -170,8 +170,12 @@
 
         $('#bxslider-gallery .slide').removeClass('active');
 
-        var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();
-        Drupal.behaviors.omniture_tracking.newPageView(name);
+        //var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();
+        //Drupal.behaviors.omniture_tracking.newPageView(name);
+
+        if (typeof s_gi != 'undefined') {
+          void (s.t());
+        }
       },
       onSlideAfter: function ($slideElement, oldIndex, newIndex) {
 

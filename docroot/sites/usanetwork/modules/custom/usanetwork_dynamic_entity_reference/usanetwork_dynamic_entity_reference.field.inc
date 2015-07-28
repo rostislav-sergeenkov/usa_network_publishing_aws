@@ -96,7 +96,14 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
   switch ($instance['widget']['type']) {
     case 'usanetwork_dynamic_entity_reference_default':
 
-      $entity = $element['#entity'];
+      if ($element['#entity_type'] == 'field_collection_item') {
+        $entity = $element['#entity']->hostEntity();
+        $entity_type = $element['#entity']->hostEntityType();
+      }
+      else {
+        $entity = $element['#entity'];
+        $entity_type = $element['#entity_type'];
+      }
       $item = isset($items[$delta]) ? $items[$delta] : NULL;
       if ($item) {
         $entities = entity_load($item['target_type'], array($item['target_id']));
@@ -110,15 +117,15 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
         }
       }
 
-      // 0: Primary ID of the entity.
-      if (!empty($entity)) {
-        $instance_info = entity_extract_ids($element['#entity_type'], $element['#entity']);
+      // 0: Primary ID of the entity, 1: revision ID, 2: - bundle
+      if (!empty($entity) && !empty($entity_type)) {
+        $instance_info = entity_extract_ids($entity_type, $entity);
       }
       // Prepare the autocomplete path parameters.
       $autocomplete_path_parameters = array(
         'field_name' => $element['#field_name'],
-        'entity_type' => $element['#entity_type'],
-        'bundle_name' => $element['#bundle'],
+        'entity_type' => $entity_type,
+        'bundle_name' => !empty($instance_info[2]) ? $instance_info[2] : NULL,
         'instance_id' => !empty($instance_info[0]) ? $instance_info[0] : NULL,
         'target_type' => $item ? $item['target_type'] : NULL,
         'string' => NULL,

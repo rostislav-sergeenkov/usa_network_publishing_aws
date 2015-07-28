@@ -3468,7 +3468,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     $query->innerJoin('file_managed', 'fm', 'mpx.fid = fm.fid');
     $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = fm.fid');
     $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
-    $query->innerJoin('field_data_field_mpx_episode_number', 'fen', 'fen.entity_id = fm.fid');
+    $query->leftJoin('field_data_field_mpx_episode_number', 'fen', 'fen.entity_id = fm.fid');
     $query->innerJoin('field_data_field_mpx_season_number', 'fsn', 'fsn.entity_id = fm.fid');
     $query->innerJoin('field_data_field_usa_video_terms', 'fvt', 'fvt.entity_id = fm.fid');
     if (!empty($filters_tids) && in_array(USANETWORK_MICROSITE_FULL_VIDEO, $allowed_filters)) {

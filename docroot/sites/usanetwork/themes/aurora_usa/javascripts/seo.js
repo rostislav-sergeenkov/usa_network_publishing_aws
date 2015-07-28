@@ -155,8 +155,15 @@
               case 'media_gallery_node_form':
                 show = (show != '')
                        ? ' ' + show + ' |'
-                       : '';                  
+                       : '';
                 inputDefaultValue = title + ' | ' + Drupal.t('Photo Galleries') + ' |' + show + ' ' + titleSuffix;
+                break;
+              case 'consumpt_post_node_form':
+                var customBlogTitle = (Drupal.settings.usanetwork_seo !== undefined && Drupal.settings.usanetwork_seo.customBlogTitle !== undefined) ? Drupal.settings.usanetwork_seo.customBlogTitle : (show + ' ' + Drupal.t('blog'));
+                show = (show != '')
+                  ? ' ' + show + ' |'
+                  : '';
+                inputDefaultValue = title + ' | ' + customBlogTitle + ' | '+ Drupal.t('Blog') + ' |' + show + ' ' + titleSuffix;
                 break;
               case 'quiz_node_form':
                 show = (show != '')

@@ -176,12 +176,13 @@ function usanetwork_consumptionator_post_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Seo',
+    'label' => 'SEO',
     'weight' => '11',
     'children' => array(
       0 => 'field_seo_h1',
       1 => 'field_usa_og_description',
       2 => 'field_usa_og_image',
+      3 => 'field_seo_page_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

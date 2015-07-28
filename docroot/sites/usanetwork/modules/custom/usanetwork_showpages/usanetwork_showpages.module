@@ -639,6 +639,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         case 'cast':
         case 'explore':
         case 'photos':
+        case 'episodes':
           break;
         case 'blog':
           // Title is set via drupal_set_title in usanetwork_consumptionator_post.module .

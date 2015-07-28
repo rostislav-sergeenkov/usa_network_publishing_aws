@@ -17,7 +17,8 @@ function usanetwork_episodes_menu() {
   $items = array();
 
   $items['node/%node/episodes'] = array(
-    'title' => 'Episodes',
+    'title callback' => 'usanetwork_tv_shows_landing_page_title_callback',
+    'title arguments' => array(1, 'episodes'),
     'page arguments' => array(1),
     'page callback' => 'usanetwork_episodes_blank_page',
     'access arguments' => array('access content'),

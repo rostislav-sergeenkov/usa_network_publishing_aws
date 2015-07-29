@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -25725,6 +25725,25 @@ yx-axis
 .usanetwork-aspot .meta-wrap .title p {
   margin: 0;
   text-shadow: 1px 1px 0.5em #333333;
+}
+.usanetwork-aspot .meta-wrap .aspot-description {
+  color: #ffffff;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 1.875vw;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin: 0;
+  text-transform: none;
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description {
+    font-size: 46.875px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description {
+    font-size: 3.125vw;
+  }
 }
 .usanetwork-aspot .meta-wrap .show-timer {
   color: #ffffff;

@@ -102,14 +102,20 @@
               display: table;
               height: 100%;
               line-height: 1.2;
+              padding-top: get-vw(3px, 1025);
               position: relative;
               text-align: center;
               white-space: normal;
               @include breakpoint($bp-min-1025-width) {
                 font-size: get-vw(19.2px, 1280);
+                padding-top: get-vw(4px, 1901);
               }
               @include breakpoint($bp-min-1901-width) {
                 font-size: 28.5px;
+                padding-top: 4px;
+              }
+              @include breakpoint($bp-768-width) {
+                padding-top: 2px;
               }
               span {
                 display: table-cell;
@@ -127,14 +133,19 @@
             }
             a {
               padding-left: get-vw(71px, 1025);
+              padding-top: get-vw(3px, 1025);
               display: table;
               height: 100%;
               line-height: 1.2;
               position: relative;
               text-align: left;
               white-space: normal;
+              @include breakpoint($bp-min-1025-width) {
+                padding-top: get-vw(4px, 1901);
+              }
               @include breakpoint($bp-min-1901-width) {
                 padding-left: 132px;
+                padding-top: 4px;
               }
               @include breakpoint($bp-768-width) {
                 overflow: hidden;

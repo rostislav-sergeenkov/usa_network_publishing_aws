@@ -416,8 +416,8 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
     $episode_element = array(
       'show_class' => $show_color,
       'url' => url('file/' . $episode->fid),
-      'caption' => t('@show: S@season Episode @episode_number', array('@show' => $show->title, '@season' => $episode_season, '@episode_number' => $episode_number)),
-      'title' => $episode->filename,
+      'title' => $show->title,
+      'caption' => t('S@season EP@episode_number @episode_title', array('@episode_title' => $episode->filename, '@season' => $episode_season, '@episode_number' => $episode_number)),
       'image' => $video_image,
       'icon' => usanetwork_core_api_get_media_icon('file', $episode->fid),
     );

@@ -2757,8 +2757,9 @@ function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) 
 function _usanetwork_tv_shows_landing_page_get_validated_query_params() {
   $query_parameters = drupal_get_query_parameters();
 
-  if (empty($query_parameters['category'])) { // Set default category 0 (all videos)
-    $query_parameters['category'] = 0;
+  // Set default category.
+  if (!isset($query_parameters['category'])) {
+    $query_parameters['category'] = USA_TV_SHOW_FULL_EPISODE;
   }
   else {
     $query_parameters['category'] = intval($query_parameters['category']); // Set integer value of category (term id)

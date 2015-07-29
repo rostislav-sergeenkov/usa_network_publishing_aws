@@ -425,7 +425,6 @@
               tvs_aspot_elements : showUiPositionsVal
             }
           };
-          console.info(myData);
           headInput.val(JSON.stringify(myData));
         }
       });

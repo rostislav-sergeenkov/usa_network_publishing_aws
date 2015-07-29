@@ -25774,6 +25774,9 @@ yx-axis
     font-size: 3.125vw;
   }
 }
+.usanetwork-aspot .meta-wrap .aspot-description p {
+  margin: 0;
+}
 .usanetwork-aspot .meta-wrap .show-timer {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;

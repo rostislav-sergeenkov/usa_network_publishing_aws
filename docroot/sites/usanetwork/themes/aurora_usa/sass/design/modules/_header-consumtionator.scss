@@ -102,7 +102,6 @@
               display: table;
               height: 100%;
               line-height: 1.2;
-              padding-top: get-vw(3px, 1025);
               position: relative;
               text-align: center;
               white-space: normal;
@@ -113,6 +112,10 @@
               @include breakpoint($bp-min-1901-width) {
                 font-size: 28.5px;
                 padding-top: 4px;
+              }
+              @include breakpoint($between-769-1024) {
+                font-size: 15px;
+                padding-top: get-vw(3.2px, 1025);
               }
               @include breakpoint($bp-768-width) {
                 padding-top: 2px;
@@ -133,7 +136,6 @@
             }
             a {
               padding-left: get-vw(71px, 1025);
-              padding-top: get-vw(3px, 1025);
               display: table;
               height: 100%;
               line-height: 1.2;
@@ -146,6 +148,9 @@
               @include breakpoint($bp-min-1901-width) {
                 padding-left: 132px;
                 padding-top: 4px;
+              }
+              @include breakpoint($between-769-1024) {
+                padding-top: get-vw(3.5px, 1025);
               }
               @include breakpoint($bp-768-width) {
                 overflow: hidden;

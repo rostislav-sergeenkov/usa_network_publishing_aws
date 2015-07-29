@@ -5,8 +5,8 @@
       <div class="meta-wrapper-inner">
         <div class="meta-icon <?php (!empty($icon)) ? print $icon : 'video-icon'; ?>"></div>
         <div class="meta">
-          <div class="caption"><?php print $caption; ?></div>
           <div class="title"><?php print $title; ?></div>
+          <div class="caption"><?php print $caption; ?></div>
         </div>
       </div>
     </div>

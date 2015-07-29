@@ -925,7 +925,7 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title)
       )
       : FALSE,
-    'show_description_style' => isset($draggable_data->data->tvs_aspot_elements->description)
+    'show_description_style' => isset($draggable_data->data->tvs_aspot_elements->aspot_description)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->aspot_description),
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->aspot_description)

@@ -1150,7 +1150,7 @@ function _usanetwork_get_google_watch_variables($file) {
   if (!isset($image)) {
     $image = _usanetwork_mpx_video_get_image_path($file);
   }
-  $url_image = image_style_url('633x356', $image);
+  $url_image = image_style_url('full_episodes_633x356', $image);
 
   //actors
   if (isset($show)) {

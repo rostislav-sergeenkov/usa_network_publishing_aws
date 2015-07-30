@@ -1125,6 +1125,8 @@ function _usanetwork_get_google_watch_variables($file) {
   }
   $show_imdb_field = _usanetwork_get_field_item('node', $show, 'field_imdb_url', 'value');
 
+  $series_id =  _usanetwork_get_field_item('node', $show, 'field_series_id', 'value');
+
   if (isset($show) && (isset($episode_number))) {
     $query = db_select('node', 'n')
       ->fields('n', array('nid'))
@@ -1156,12 +1158,19 @@ function _usanetwork_get_google_watch_variables($file) {
       ->fields('n', array('nid'))
       ->fields('fdfiu', array('field_imdb_url_value'))
       ->fields('fdfuan', array('field_usa_actor_name_value'))
+      ->fields('fdfpfn', array('field_person_first_name_value'))
+      ->fields('fdfpln', array('field_person_last_name_value'))
+      ->fields('ttd', array('name'))
       ->condition('type', 'person')
       ->condition('status', '1');
     $query->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = n.nid');
     $query->condition('fdfs.field_show_target_id', $show->nid, '=');
     $query->leftJoin('field_data_field_usa_actor_name', 'fdfuan', 'fdfuan.entity_id = n.nid');
     $query->leftJoin('field_data_field_imdb_url', 'fdfiu', 'fdfiu.entity_id = n.nid');
+    $query->leftJoin('field_data_field_role', 'fdfr', 'fdfr.entity_id = n.nid');
+    $query->leftJoin('taxonomy_term_data', 'ttd', 'ttd.tid = fdfr.field_role_tid');
+    $query->leftJoin('field_data_field_person_first_name', 'fdfpfn', 'fdfpfn.entity_id = n.nid');
+    $query->leftJoin('field_data_field_person_last_name', 'fdfpln', 'fdfpln.entity_id = n.nid');
     $persons = $query->execute()->fetchAll();
   }
 
@@ -1170,6 +1179,7 @@ function _usanetwork_get_google_watch_variables($file) {
       ->fields('fm', array('fid'))
       ->fields('mv', array('available_date'))
       ->fields('mv', array('expiration_date'))
+      ->fields('fdfmd', array('field_mpx_duration_value'))
       ->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
       ->condition('published', '1');
     $query->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fm.fid');
@@ -1181,7 +1191,8 @@ function _usanetwork_get_google_watch_variables($file) {
     $query->join('field_data_field_mpx_season_number', 'fdfmsn', 'fdfmsn.entity_id = fm.fid');
     $query->condition('fdfmsn.field_mpx_season_number_value', $season_number, '=');
     $query->join('mpx_video', 'mv', 'mv.fid = fm.fid');
-    $short_episode = $query->execute()->fetchAll();
+    $query->join('field_data_field_mpx_duration', 'fdfmd', 'fdfmd.entity_id = fm.fid');
+    $short_episode = $query->execute()->fetchObject();
   }
 
   $google_watch = array(
@@ -1200,6 +1211,9 @@ function _usanetwork_get_google_watch_variables($file) {
     ),
   );
 
+  if (!empty($series_id)) {
+    $google_watch['partOfSeries']['@id'] = $series_id;
+  }
   if (!empty($show_imdb_field)) {
     $google_watch['partOfSeries']['sameAs'] = $show_imdb_field;
   }
@@ -1243,16 +1257,15 @@ function _usanetwork_get_google_watch_variables($file) {
       ),
     ),
   );
-//TODO: Add related content and add checking
-
   if ($short_episode) {
     $google_watch['hasPart'] = array(
       '@type' => 'TVClip',
       'description' => 'trailer',
-      'timeRequired' => 'PT2M5S',
+      'timeRequired' => gmdate("\P\Ti\Ms\S", $short_episode->field_mpx_duration_value),
+      'timeRequired' => 'PT' . (int)gmdate("i", $short_episode->field_mpx_duration_value) .
+        'M' . (int)gmdate("s", $short_episode->field_mpx_duration_value) . 'S',
       'potentialAction' => array(
         '@type' => 'WatchAction',
-        'target' => 'android-app://com.app.foo/bar/vid/2356866',
         'expectsAcceptanceOf' => array(
           'category' => 'free',
           'availabilityStarts' => date('Y-m-d\TH:i', $short_episode->available_date),
@@ -1279,10 +1292,17 @@ function _usanetwork_get_google_watch_variables($file) {
     $google_watch['actor'] = array();
     $i = 0;
     foreach ($persons as $person) {
-      $google_watch['actor'][$i] = array(
-        '@type' => 'Person',
-        'name' => $person->field_usa_actor_name_value,
-      );
+      if (strtolower($person->name) == 'character'){
+        $google_watch['actor'][$i] = array(
+          '@type' => 'Person',
+          'name' => $person->field_usa_actor_name_value,
+        );
+      } else {
+        $google_watch['actor'][$i] = array(
+          '@type' => 'Person',
+          'name' => $person->field_person_first_name_value . ' ' . $person->field_person_last_name_value,
+        );
+      }
       if (!empty($person->field_imdb_url_value)) {
         $google_watch['actor'][$i]['sameAs'] = $person->field_imdb_url_value;
       }

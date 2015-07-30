@@ -2815,7 +2815,11 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
   if (empty($video_types)) {
     return '';
   }
-
+  elseif (empty($video_types[$query_parameters['category']])) {
+    // Set category to default if no desired category.
+    $query_parameters['category'] = USA_TV_SHOW_ALL_VIDEOS_EPISODE;
+    $video_types[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['active'] = TRUE;
+  }
   $video_sorters = _usanetwork_tv_shows_landing_page_vbget_video_sorters($tv_show_node->nid, $query_parameters['category'],
     $query_parameters['sort_by'], $query_parameters['sort_order']
   );

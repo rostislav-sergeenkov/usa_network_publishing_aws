@@ -25,8 +25,7 @@ function usanetwork_umbel_menu() {
 function usanetwork_umbel_page_alter(&$page) {
   if (!path_is_admin(current_path())) {
     $usa_umbel_parameters = array();
-    drupal_alter('usa_umbel', $usa_umbel_parameters);
-
+    $usa_umbel_parameters = _usanetwork_umbel_variables($usa_umbel_parameters);
     $usanetwork_umbel_tracking_code = variable_get('usanetwork_umbel_tracking_code', 'iwgdlxrtqfiiortz');
     drupal_add_js(array('umbel_code' => $usanetwork_umbel_tracking_code, 'umbel_settings' => $usa_umbel_parameters),'setting');
 
@@ -35,4 +34,34 @@ function usanetwork_umbel_page_alter(&$page) {
       'scope' => 'footer',
     );
   }
+}
+
+/**
+ *  Umbel Scheme
+ */
+function _usanetwork_umbel_variables($settings) {
+  //homepage
+  $current_menu_item = menu_get_item();
+  if ($current_menu_item['path'] == 'home') {
+    $settings = array(
+      'usa_umbel_param_1' => "Global",
+      'usa_umbel_param_2' => "Landing Page",
+      'usa_umbel_param_3' => "Homepage",
+    );
+  }
+  if ($current_menu_item['path'] == 'shows') {
+    $settings = array(
+      'usa_umbel_param_1' => "Global",
+      'usa_umbel_param_2' => "Landing Page",
+      'usa_umbel_param_3' => "Shows",
+    );
+  }
+  if ($current_menu_item['path'] == 'videos') {
+    $settings = array(
+      'usa_umbel_param_1' => "Global",
+      'usa_umbel_param_2' => "Landing Page",
+      'usa_umbel_param_3' => "Full Episodes",
+    );
+  }
+  return $settings;
 }

@@ -2,160 +2,26 @@
   Drupal.behaviors.bxslider_carousels = {
     // Arrays for vertical and horizontal bxSlider objects
     harray: [],
-    varray: [],
-    // Base settings for bxSlider carousels
-    bsettings: {
-      pager: false,
-      controls: false,
-      auto: false,
-      speed: 400,
-      infiniteLoop: false,
-      useCSS: false,
-      minSlides: 3,
-      maxSlides: 3,
-      slideMargin: 0,
-      responsive: true,
-      touchEnabled: false
-    },
-
-    // Settings for vertical and horizontal bxSlider carousels
-    vsettings: {},
-    hsettings: {},
-    extendSettings: function () {
-
-      //var slideWidth;
-      //
-      //if($('body').hasClass('consumptionator-page')) {
-      //  slideWidth = window.innerWidth / 3 - 6;
-      //} else {
-      //  slideWidth = 255;
-      //}
-      //
-      //
-      //
-      //Drupal.behaviors.bxslider_carousels.vsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
-      //  mode: 'vertical',
-      //  minSlides: 1,
-      //  maxSlides: 1,
-      //  useCSS: true,
-      //  easing: 'ease-in',
-      //  touchEnabled: false
-      //});
-      //Drupal.behaviors.bxslider_carousels.hsettings = $.extend({}, Drupal.behaviors.bxslider_carousels.bsettings, {
-      //  mode: 'horizontal',
-      //  controls: true,
-      //  minSlides: 3,
-      //  maxSlides: 3,
-      //  hideControlOnEnd: true,
-      //  nextText: '',
-      //  prevText: '',
-      //  adaptiveHeight: true,
-      //  slideWidth : slideWidth
-      //});
-    },
 
     // Init all vertical carousels
     initVSliders: function() {
-      //var calculateItems = function(slider, $context, start_slide) {
-      //  var current_top_slide = slider.getCurrentSlide() + 1,
-      //      container_h = $context.height(),
-      //      slide_h = $context.find('.slide-item').height(),
-      //      visible_slides = Math.floor(container_h / slide_h),
-      //      shift_last = slide_h - container_h + slide_h * visible_slides,
-      //      slidesCount = slider.getSlideCount(),
-      //      shiftAnimate = function() {
-      //        $context.animate({
-      //          'top': '-=' + shift_last
-      //        }, 300);
-      //      };
-      //
-      //
-      //  if (typeof start_slide != 'undefined') {
-      //    if (start_slide > 0) {
-      //      if ((slider.getSlideCount() - (start_slide + 1) < visible_slides)) {
-      //        if ((slider.getSlideCount() - start_slide) == visible_slides) {
-      //          slider.goToSlide(start_slide - 1);
-      //        } else {
-      //          slider.goToSlide(start_slide - visible_slides);
-      //        }
-      //
-      //        $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
-      //
-      //        slider.end = true;
-      //        shiftAnimate();
-      //      } else {
-      //        slider.goToSlide(start_slide);
-      //      }
-      //    }
-      //  } else {
-      //    if (!slider.end) {
-      //      var current = slider.getCurrentSlide() + 1;
-      //      if (slidesCount - current_top_slide <= visible_slides) {
-      //        $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
-      //
-      //        slider.end = true;
-      //        shiftAnimate();
-      //      } else {
-      //        if((slidesCount - 3) == current) {
-      //          slider.goToNextSlide();
-      //        } else {
-      //          slider.goToSlide(current + 1);
-      //        }
-      //      }
-      //    }
-      //  }
-      //};
-      //
-      //$('.slider-vertical').each(function () {
-      //  var slider = $(this).bxSlider(Drupal.behaviors.bxslider_carousels.vsettings),
-      //      start_slide = null;
-      //
-      //  Drupal.behaviors.bxslider_carousels.varray.push(slider);
-      //  slider.end = false;
-      //
-      //  if ($('.consumptionator-page.node-type-media-gallery .slider-vertical li .asset-img').hasClass('active')) {
-      //    start_slide = $('.slider-vertical li .asset-img.active').closest('li').index();
-      //
-      //    calculateItems(slider, slider, start_slide);
-      //  }
-      //
-      //  if(!$('html').hasClass('touch')) {
-      //    $(this).on('mousewheel', function(e) {
-      //      e.preventDefault();
-      //
-      //      if (e.deltaY < 0) {
-      //        calculateItems(slider, $(this));
-      //      } else {
-      //        $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
-      //        $(this).css('top', 0);
-      //        if(slider.getCurrentSlide() == 1) {
-      //          slider.goToPrevSlide();
-      //        } else if(slider.getCurrentSlide() != 0) {
-      //          slider.goToSlide(slider.getCurrentSlide() - 2);
-      //        }
-      //        slider.end = false;
-      //      }
-      //    });
-      //  } else {
-      //    $(this).swipe({
-      //     swipeUp: function() {
-      //     calculateItems(slider, $(this));
-      //     },
-      //     swipeDown: function() {
-      //     $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
-      //     $(this).css('top', 0);
-      //     if(slider.getCurrentSlide() == 1) {
-      //     slider.goToPrevSlide();
-      //     } else if(slider.getCurrentSlide() != 0) {
-      //     slider.goToSlide(slider.getCurrentSlide() - 2);
-      //     }
-      //     slider.end = false;
-      //     },
-      //     threshold: 10,
-      //     excludedElements: 'button, input, select, textarea, .noSwipe'
-      //     });
-      //  }
-      //});
+      $('.slider-vertical').mCustomScrollbar({
+        axis:"y",
+        autoHideScrollbar: true,
+        scrollInertia: 0,
+        scrollbarPosition: "inside",
+        callbacks: {
+          whileScrolling: function(){
+            if (this.mcs.topPct >= 97) {
+              $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
+            } else {
+              if (!$('.episodes-list', '.aspot-and-episodes').hasClass('shadow')) {
+                $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
+              }
+            }
+          }
+        }
+      });
     },
 
     // Init all horizontal carousels
@@ -226,27 +92,8 @@
 
       Drupal.behaviors.bxslider_carousels.initHSliders();
 
-      //Drupal.behaviors.bxslider_carousels.extendSettings();x
-      if (slideItem.length > 2) {
-        //Drupal.behaviors.bxslider_carousels.initVSliders();
-      }
-      $('.slider-vertical').mCustomScrollbar({
-        axis:"y",
-        autoHideScrollbar: true,
-        scrollInertia: 0,
-        scrollbarPosition: "inside",
-        callbacks: {
-          whileScrolling: function(){
-            if (this.mcs.topPct === 100) {
-              $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
-            } else {
-              if (!$('.episodes-list', '.aspot-and-episodes').hasClass('shadow')) {
-                $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
-              }
-            }
-          }
-        }
-      });
+      // init right rail carousel
+      Drupal.behaviors.bxslider_carousels.initVSliders();
 
       $(window).bind('resize', function () {
         setTimeout(function() {
@@ -290,4 +137,3 @@
     }
   };
 }(jQuery));
-

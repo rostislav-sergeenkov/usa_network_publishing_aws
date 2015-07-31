@@ -413,8 +413,32 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       $result['description'] = t('Bio');
       break;
     case 'media_gallery':
-      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      if (!empty($node->field_episode)) {
+        $episode = $node_wrapper->field_episode->value();
+        if ($episode_num_items = field_get_items('node', $episode, 'field_episode_number')) {
+          $episode_num_items = reset($episode_num_items);
+          $episode_num = $episode_num_items['value'];
+        }
+        if ($episode->field_season) {
+          $season = $node_wrapper->field_season->value();
+          if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
+            $season_num_items = reset($season_num_items);
+            $season_num = $season_num_items['value'];
+          }
+        }
+      }
+      $title = !empty($node->title) ? $node_wrapper->title->value() : NULL;
       $gallery_type = !empty($node->field_gallery_type) ? $node_wrapper->field_gallery_type->value() : NULL;
+      if ($gallery_type == 'Episodic Gallery' && !empty($episode_num) && !empty($season_num)) {
+        $result['title'] = t('S@season EP@episode: @title', array(
+          '@season' => $season_num,
+          '@episode' => $episode_num,
+          '@title' => $title,
+        ));
+      }
+      else {
+        $result['title'] = $title;
+      }
       $result['description'] = empty($gallery_type) ? t('Gallery ') : $gallery_type . ' ';
       $result['description'] .= (!empty($node->field_media_items)
           ? ((!empty($node->field_cover_item))

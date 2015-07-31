@@ -2,7 +2,7 @@
 .page-accessibility {
   color: $poll-color;
   background-color: $poll-back;
-    .shows-filters {
+  .shows-filters {
       text-align: right;
       margin: 20px 20px 20px 0;
       @include clear;
@@ -157,553 +157,555 @@
       }
     }
 
-  .schedule-wrapper {
-    margin: 0 auto;
-    max-width: 2500px;
-    min-width: 300px;
-    position: relative;
-    .schedule-navigation {
-      background-color: $gray-darker-light;
-      position: relative;
-      overflow: hidden;
-      display: block;
-      width: auto;
-      margin: 0;
-      ul {
-        vertical-align: middle;
-        border-top: 1px solid #ffffff;
-        @include clear;
-        width: 20000em;
-        position: relative;
-        display: block;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        li {
-          border-right: 1px solid $poll-back;
-          height: 123px;
-          display: block;
-          float: left;
-          @include breakpoint($bp-1280-width) {
-            height: 82px;
-          }
-          @include breakpoint($bp-1024-width) {
-            height: 66px;
-          }
-          &:first-child {
-            border-left: 1px solid $poll-back;
-          }
-          @include breakpoint($bp-768-width) {
-            &:first-child {
-              border-left: 0 solid #ffffff;
-            }
-            &:last-child {
-              border-right: 0 solid #ffffff;
-            }
-          }
-          &:hover, &.active {
-            background-color: $gray-med-darker;
-            a {
-              color: #ffffff;
-            }
-          }
-          a {
-            color: $header-tab-back;
-            display: block;
-            height: 100%;
-            padding-top: 13px;
-            text-decoration: none;
-            text-align: center;
-            span {
-              display: block;
-              &.week-day {
-                font-size: 56px;
-                font-family: $avalon-medium;
-                line-height: 62px;
-                @include breakpoint($bp-1280-width) {
-                  font-size: 40px;
-                  line-height: 37px;
-                }
-                @include breakpoint($bp-1024-width) {
-                  font-size: 28px;
-                  line-height: 24px;
-                }
-                @include breakpoint($bp-480-width) {
-                  font-size: 20px;
-                  line-height: 30px;
-                }
-              }
-              &.date {
-                font-size: 30px;
-                font-family: $avalon-medium;
-                line-height: 32px;
-                @include breakpoint($bp-1280-width) {
-                  font-size: 20px;
-                  line-height: 22px;
-                }
-                @include breakpoint($bp-1024-width) {
-                  font-size: 16px;
-                  line-height: 24px;
-                }
-                @include breakpoint($bp-480-width) {
-                  font-size: 10px;
-                  line-height: 5px;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    .schedule-navigation-controls {
-      position: absolute;
-      background-color: $gray-med-darker;
-      top: 0;
-      cursor: pointer;
-      height: 67px;
-      width: 50px;
-      vertical-align: middle;
-      border-top: 1px solid white;
-      &:after {
-        color: #ffffff;
-        display: block;
-        font-family: $ico-font;
-        font-size: 20px;
-        line-height: 20px;
-        left: 50%;
-        margin-left: -10px;
-        margin-top: -10px;
-        position: absolute;
-        top: 50%;
-      }
-      &.jcarousel-control-prev {
-        left: 0;
-        border-right: 1px solid #ffffff;
-        &:after {content: '\e607';}
-      }
-      &.jcarousel-control-next {
-        right: 0;
-        border-left: 1px solid #ffffff;
-        &:after {content: '\e608';}
-      }
 
-    }
-    .time-zone {
-      padding: 0 30px;
-      @include breakpoint($bp-480-width) {
-        text-align: center;
-      }
-      a {
-        font-size: 18px;
-        color: $schedule-pm-color;
-        font-family: $avalon-medium;
-        text-decoration: none;
-      }
-    }
-    .schedule-table {
-      margin-top: 20px;
-      position: relative;
-      padding: 0;
-      border-bottom: 2px solid $usa-logo-back;
-      .carousel-vert {
-        overflow: hidden;
-        position: static;
-        margin: 0;
-        padding: 0;
-        max-height: 770px;
-      }
-      .jcarousel-control-next {
-        display: block;
-        height: 19px;
-        line-height: 19px;
-        margin-left: -9.5px;
-        overflow: hidden;
-        position: absolute;
-        left: 50%;
-        top: 0;
-        &:before {
-          content: "\e60a";
-          color: $poll-color;
-          font-family: $ico-font;
-          font-size: 32px;
-          display: block;
-        }
-      }
-      .jcarousel-control-prev {
-        display: block;
-        height: 19px;
-        line-height: 19px;
-        margin-left: -9.5px;
-        overflow: hidden;
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        text-decoration: none;
-        &:before {
-          content: "\e609";
-          color: $poll-color;
-          font-family: $ico-font;
-          font-size: 32px;
-          display: block;
-        }
-      }
-      ul {
-        width: 100%;
-        li.date-separate {
-          background-color: $bottom-footer-back !important;
-          color: #ffffff;
-          font-size: 32px;
-          line-height: 60px;
-          padding-left: calc((10% - 90px) / 2 + 7px);
-          @include breakpoint($bp-1024-width) {
-            font-size: 22px;
-            line-height: 50px;
-            padding-left: 30px;
-          }
-          @include breakpoint($bp-480-width) {
-            padding-left: 15px;
-          }
-          .day-shcedule {
-            font-family: $avalon-medium;
-          }
-          .date-shcedule {
-            font-family: $avalon-book;
-          }
-        }
-        li {
-          float: none;
-          margin: 0;
-          height: auto;
-          width: 100%;
-          &:nth-child(odd) {
-            background-color: $footer-links;
-          }
-          .schedule-item {
-            box-sizing: border-box;
-            padding: 20px 0 20px 7px;
-            width: 100%;
-            @include breakpoint($bp-1024-width) {
-              padding-left: 30px;
-            }
-            @include breakpoint($bp-640-width) {
-              padding-right: 30px;
-            }
-            @include breakpoint($bp-480-width) {
-              padding: 20px 10px 20px 15px;
-            }
-            .visible-block {
-              display: table;
-              position: relative;
-              width: 100%;
-              .time-wrapper {
-                display: table-cell;
-                vertical-align: middle;
-                width: 10%;
-                @include breakpoint($bp-1024-width) {
-                  width: 20%;
-                  min-width: 100px;
-                }
-                .time {
-                  margin: 0 auto;
-                  font-size: 20px;
-                  color: $schedule-pm-color;
-                  font-family: $avalon-medium;
-                  line-height: 28px;
-                  width: 90px;
-                  @include breakpoint($bp-1024-width) {
-                    width: auto;
-                  }
-                  @include breakpoint($bp-640-width) {
-                    font-size: 16px;
-                    line-height: 22px;
-                  }
-                  @include breakpoint($bp-480-width) {
-                    font-size: 14px;
-                    line-height: 20px;
-                  }
-                  span {
-                    color: $poll-color;
-                    font-size: 36px;
-                    font-family: $avalon-medium;
-                    letter-spacing: 3px;
-                    line-height: 42px;
-                    display: block;
-                    @include breakpoint($bp-1024-width) {
-                      font-size: 20px;
-                      line-height: 28px;
-                      display: inline;
-                    }
-                    @include breakpoint($bp-640-width) {
-                      font-size: 16px;
-                      line-height: 22px;
-                    }
-                    @include breakpoint($bp-480-width) {
-                      font-size: 14px;
-                      line-height: 20px;
-                    }
-                  }
-                }
-              }
-              .episode-info {
-                display: table-cell;
-                vertical-align: middle;
-                text-transform: uppercase;
-                padding-left: 10px;
-                padding-right: 20px;
-                width: 60%;
-                .episode-show {
-                  font-size: 20px;
-                  font-family: $avalon-medium;
-                  float: left;
-                  width: 50%;
-                  @include breakpoint($bp-1024-width) {
-                    width: 100%;
-                  }
-                  @include breakpoint($bp-640-width) {
-                    font-size: 16px;
-                    line-height: 22px;
-                  }
-                  @include breakpoint($bp-480-width) {
-                    font-size: 14px;
-                    line-height: 20px;
-                  }
-                  a {
-                    color: $poll-color;
-                  }
-                }
-                .episode-title {
-                  font-size: 20px;
-                  font-family: $cent-725BT-italic;
-                  font-style: italic;
-                  float: left;
-                  width: 50%;
-                  @include breakpoint($bp-1024-width) {
-                    display: none;
-                  }
-                  a {
-                    color: $poll-color;
-                  }
-                }
-              }
-              .icons-block {
-                display: table-cell;
-                vertical-align: middle;
-                padding-right: 100px;
-                width: 30%;
-                position: relative;
-                @include breakpoint($bp-640-width) {
-                  padding: 0;
-                  height: 37px;
-                  width: 37px;
-                }
-                .icons-schedule {
-                  @include clear;
-                  float: left;
-                  @include breakpoint($bp-640-width) {
-                    display: none;
-                  }
-                  .icon {
-                    display: block;
-                    float: left;
-                    height: auto;
-                    margin-right: 27px;
-                    position: relative;
-                    text-decoration: none;
-                    width: auto;
-                    @include breakpoint($bp-768-width) {
-                      margin-right: 20px;
-                    }
-                  }
-                }
-                .rating {
-                  font-family: $avalon-medium;
-                  font-size: 14px;
-                  float: left;
-                  @include breakpoint($bp-1024-width) {
-                    display: none;
-                  }
-                }
-              }
-              .rating-wrapper {
-                padding-right: 30px;
-                @include breakpoint($bp-640-width) {
-                  display: none;
-                }
-                .rating {
-                  @include breakpoint($bp-1024-width) {
-                    display: block;
-                    float: none;
-                    text-align: right;
-                  }
-                }
-              }
-              .open-description {
-                right: 50px;
-                display: block;
-                height: 37px;
-                line-height: 37px;
-                width: 45px;
-                position: absolute;
-                margin-top: -17.5px;
-                top: 50%;
-                color: $poll-color;
-                @include breakpoint($bp-640-width) {
-                  right: 0;
-                }
-                @include breakpoint($bp-480-width) {
-                  width: 37px;
-                }
-                &:before {
-                  content: '\e61c';
-                  font-family: "ico-font";
-                  font-size: 45px;
-                  width: auto;
-                  @include breakpoint($bp-480-width) {
-                    font-size: 30px;
-                  }
-                }
-              }
-            }
-            .hidden-block {
-              display: none;
-              padding-top: 20px;
-              width: 100%;
-              .node {
-                margin-right: 50px;
-                @include breakpoint($bp-640-width) {
-                  margin-right: 0;
-                }
-                a {
-                  @include clear;
-                  color: #ffffff;
-                  display: block;
-                  padding-left: 10%;
-                  padding-right: 30%;
-                  text-decoration: none;
-                  @include breakpoint($bp-1024-width) {
-                    padding: 0;
-                  }
-                  .asset-img {
-                    float: left;
-                    width: 50%;
-                    @include breakpoint($bp-1024-width) {
-                      width: 300px;
-                    }
-                    @include breakpoint($bp-640-width) {
-                      float: none;
-                      width: 100%;
-                    }
-                    img {
-                      max-width: 300px;
-                      width: 100%;
-                      @include breakpoint($bp-min-1601-width) {
-                        max-width: 440px;
-                      }
-                      @include breakpoint($bp-640-width) {
-                        max-width: 100%;
-                      }
-                    }
-                  }
-                  .meta {
-                    float: left;
-                    font-size: 16px;
-                    font-family: $avalon-medium;
-                    line-height: 22px;
-                    padding-left: 20px;
-                    margin: 0;
-                    position: static;
-                    width: 50%;
-                    max-width: 450px;
-                    @include breakpoint($bp-1024-width) {
-                      font-size: 14px;
-                      line-height: 20px;
-                    }
-                    @include breakpoint($bp-768-width) {
-                      float: none;
-                      padding-left: 0;
-                      margin-left: 320px;
-                      width: auto;
-                    }
-                    @include breakpoint($bp-640-width) {
-                      font-size: 12px;
-                      line-height: 18px;
-                      margin-left: 0;
-                      max-width: 100%;
-                    }
-                    .episode-info {
-                      display: none;
-                      padding: 5px 0;
-                      position: relative;
-                      @include breakpoint($bp-1024-width) {
-                        display: block;
-                      }
-                      @include breakpoint($bp-768-width) {
-                        margin-top: 20px;
-                      }
-                      .episode-title {
-                        font-size: 16px;
-                        line-height: 22px;
-                        font-family: $cent-725BT-italic;
-                        font-style: italic;
-                        margin-right: 100px;
-                        @include breakpoint($bp-480-width) {
-                          font-size: 14px;
-                        }
-                      }
-                      .rating {
-                        font-size: 12px;
-                        line-height: 22px;
-                        right: 0;
-                        position: absolute;
-                        top: 5px;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          &.active {
-            background-color: $bottom-footer-back;
-            color: #ffffff;
-            .hidden-block {
-              display: block;
-            }
-            .schedule-item {
-              .visible-block {
-                .time-wrapper {
-                  .time, .time span {
-                    color: #ffffff;
-                  }
-                }
-                .open-description {
-                  &:before {
-                    content: '\e61b';
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
   .ad-728x90 {
     margin: 0 auto;
     padding: 10px 0;
     max-width: 728px;
-a {
-  display: block;
-  max-height: 90px;
-}
-@include breakpoint($bp-768-width) {
-  height: 100%;
-  a {
-    height: auto;
+    a {
+      display: block;
+      max-height: 90px;
+    }
+    @include breakpoint($bp-768-width) {
+      height: 100%;
+      a {
+        height: auto;
+      }
+      img {
+        width: 100%;
+      }
+    }
   }
-  img {
-    width: 100%;
+}
+.schedule-wrapper {
+  margin: 0 auto;
+  max-width: 2500px;
+  min-width: 300px;
+  position: relative;
+  .schedule-navigation {
+    background-color: $gray-darker-light;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: auto;
+    margin: 0;
+    ul {
+      vertical-align: middle;
+      border-top: 1px solid #ffffff;
+      @include clear;
+      width: 20000em;
+      position: relative;
+      display: block;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        border-right: 1px solid $poll-back;
+        height: 123px;
+        display: block;
+        float: left;
+        @include breakpoint($bp-1280-width) {
+          height: 82px;
+        }
+        @include breakpoint($bp-1024-width) {
+          height: 66px;
+        }
+        &:first-child {
+          border-left: 1px solid $poll-back;
+        }
+        @include breakpoint($bp-768-width) {
+          &:first-child {
+            border-left: 0 solid #ffffff;
+          }
+          &:last-child {
+            border-right: 0 solid #ffffff;
+          }
+        }
+        &:hover, &.active {
+          background-color: $gray-med-darker;
+          a {
+            color: #ffffff;
+          }
+        }
+        a {
+          color: $header-tab-back;
+          display: block;
+          height: 100%;
+          padding-top: 13px;
+          text-decoration: none;
+          text-align: center;
+          span {
+            display: block;
+            &.week-day {
+              font-size: 56px;
+              font-family: $avalon-medium;
+              line-height: 62px;
+              @include breakpoint($bp-1280-width) {
+                font-size: 40px;
+                line-height: 37px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 28px;
+                line-height: 24px;
+              }
+              @include breakpoint($bp-480-width) {
+                font-size: 20px;
+                line-height: 30px;
+              }
+            }
+            &.date {
+              font-size: 30px;
+              font-family: $avalon-medium;
+              line-height: 32px;
+              @include breakpoint($bp-1280-width) {
+                font-size: 20px;
+                line-height: 22px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 16px;
+                line-height: 24px;
+              }
+              @include breakpoint($bp-480-width) {
+                font-size: 10px;
+                line-height: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .schedule-navigation-controls {
+    position: absolute;
+    background-color: $gray-med-darker;
+    top: 0;
+    cursor: pointer;
+    height: 67px;
+    width: 50px;
+    vertical-align: middle;
+    border-top: 1px solid white;
+    &:after {
+      color: #ffffff;
+      display: block;
+      font-family: $ico-font;
+      font-size: 20px;
+      line-height: 20px;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      position: absolute;
+      top: 50%;
+    }
+    &.jcarousel-control-prev {
+      left: 0;
+      border-right: 1px solid #ffffff;
+      &:after {content: '\e607';}
+    }
+    &.jcarousel-control-next {
+      right: 0;
+      border-left: 1px solid #ffffff;
+      &:after {content: '\e608';}
+    }
+
+  }
+  .time-zone {
+    padding: 0 30px;
+    @include breakpoint($bp-480-width) {
+      text-align: center;
+    }
+    a {
+      font-size: 18px;
+      color: $schedule-pm-color;
+      font-family: $avalon-medium;
+      text-decoration: none;
+    }
+  }
+  .schedule-table {
+    margin-top: 20px;
+    position: relative;
+    padding: 0;
+    border-bottom: 2px solid $usa-logo-back;
+    .carousel-vert {
+      overflow: hidden;
+      position: static;
+      margin: 0;
+      padding: 0;
+      max-height: 770px;
+    }
+    .jcarousel-control-next {
+      display: block;
+      height: 19px;
+      line-height: 19px;
+      margin-left: -9.5px;
+      overflow: hidden;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      &:before {
+        content: "\e60a";
+        color: $poll-color;
+        font-family: $ico-font;
+        font-size: 32px;
+        display: block;
+      }
+    }
+    .jcarousel-control-prev {
+      display: block;
+      height: 19px;
+      line-height: 19px;
+      margin-left: -9.5px;
+      overflow: hidden;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      text-decoration: none;
+      &:before {
+        content: "\e609";
+        color: $poll-color;
+        font-family: $ico-font;
+        font-size: 32px;
+        display: block;
+      }
+    }
+    ul {
+      width: 100%;
+      li.date-separate {
+        background-color: $bottom-footer-back !important;
+        color: #ffffff;
+        font-size: 32px;
+        line-height: 60px;
+        padding-left: calc((10% - 90px) / 2 + 7px);
+        @include breakpoint($bp-1024-width) {
+          font-size: 22px;
+          line-height: 50px;
+          padding-left: 30px;
+        }
+        @include breakpoint($bp-480-width) {
+          padding-left: 15px;
+        }
+        .day-shcedule {
+          font-family: $avalon-medium;
+        }
+        .date-shcedule {
+          font-family: $avalon-book;
+        }
+      }
+      li {
+        float: none;
+        margin: 0;
+        height: auto;
+        width: 100%;
+        &:nth-child(odd) {
+          background-color: $footer-links;
+        }
+        .schedule-item {
+          box-sizing: border-box;
+          padding: 20px 0 20px 7px;
+          width: 100%;
+          @include breakpoint($bp-1024-width) {
+            padding-left: 30px;
+          }
+          @include breakpoint($bp-640-width) {
+            padding-right: 30px;
+          }
+          @include breakpoint($bp-480-width) {
+            padding: 20px 10px 20px 15px;
+          }
+          .visible-block {
+            display: table;
+            position: relative;
+            width: 100%;
+            .time-wrapper {
+              display: table-cell;
+              vertical-align: middle;
+              width: 10%;
+              @include breakpoint($bp-1024-width) {
+                width: 20%;
+                min-width: 100px;
+              }
+              .time {
+                margin: 0 auto;
+                font-size: 20px;
+                color: $schedule-pm-color;
+                font-family: $avalon-medium;
+                line-height: 28px;
+                width: 90px;
+                @include breakpoint($bp-1024-width) {
+                  width: auto;
+                }
+                @include breakpoint($bp-640-width) {
+                  font-size: 16px;
+                  line-height: 22px;
+                }
+                @include breakpoint($bp-480-width) {
+                  font-size: 14px;
+                  line-height: 20px;
+                }
+                span {
+                  color: $poll-color;
+                  font-size: 36px;
+                  font-family: $avalon-medium;
+                  letter-spacing: 3px;
+                  line-height: 42px;
+                  display: block;
+                  @include breakpoint($bp-1024-width) {
+                    font-size: 20px;
+                    line-height: 28px;
+                    display: inline;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    font-size: 16px;
+                    line-height: 22px;
+                  }
+                  @include breakpoint($bp-480-width) {
+                    font-size: 14px;
+                    line-height: 20px;
+                  }
+                }
+              }
+            }
+            .episode-info {
+              display: table-cell;
+              vertical-align: middle;
+              text-transform: uppercase;
+              padding-left: 10px;
+              padding-right: 20px;
+              width: 60%;
+              .episode-show {
+                font-size: 20px;
+                font-family: $avalon-medium;
+                float: left;
+                width: 50%;
+                @include breakpoint($bp-1024-width) {
+                  width: 100%;
+                }
+                @include breakpoint($bp-640-width) {
+                  font-size: 16px;
+                  line-height: 22px;
+                }
+                @include breakpoint($bp-480-width) {
+                  font-size: 14px;
+                  line-height: 20px;
+                }
+                a {
+                  color: $poll-color;
+                }
+              }
+              .episode-title {
+                font-size: 20px;
+                font-family: $cent-725BT-italic;
+                font-style: italic;
+                float: left;
+                width: 50%;
+                @include breakpoint($bp-1024-width) {
+                  display: none;
+                }
+                a {
+                  color: $poll-color;
+                }
+              }
+            }
+            .icons-block {
+              display: table-cell;
+              vertical-align: middle;
+              padding-right: 100px;
+              width: 30%;
+              position: relative;
+              @include breakpoint($bp-640-width) {
+                padding: 0;
+                height: 37px;
+                width: 37px;
+              }
+              .icons-schedule {
+                @include clear;
+                float: left;
+                @include breakpoint($bp-640-width) {
+                  display: none;
+                }
+                .icon {
+                  display: block;
+                  float: left;
+                  height: auto;
+                  margin-right: 27px;
+                  position: relative;
+                  text-decoration: none;
+                  width: auto;
+                  @include breakpoint($bp-768-width) {
+                    margin-right: 20px;
+                  }
+                }
+              }
+              .rating {
+                font-family: $avalon-medium;
+                font-size: 14px;
+                float: left;
+                @include breakpoint($bp-1024-width) {
+                  display: none;
+                }
+              }
+            }
+            .rating-wrapper {
+              padding-right: 30px;
+              @include breakpoint($bp-640-width) {
+                display: none;
+              }
+              .rating {
+                @include breakpoint($bp-1024-width) {
+                  display: block;
+                  float: none;
+                  text-align: right;
+                }
+              }
+            }
+            .open-description {
+              right: 50px;
+              display: block;
+              height: 37px;
+              line-height: 37px;
+              width: 45px;
+              position: absolute;
+              margin-top: -17.5px;
+              top: 50%;
+              color: $poll-color;
+              @include breakpoint($bp-640-width) {
+                right: 0;
+              }
+              @include breakpoint($bp-480-width) {
+                width: 37px;
+              }
+              &:before {
+                content: '\e61c';
+                font-family: "ico-font";
+                font-size: 45px;
+                width: auto;
+                @include breakpoint($bp-480-width) {
+                  font-size: 30px;
+                }
+              }
+            }
+          }
+          .hidden-block {
+            display: none;
+            padding-top: 20px;
+            width: 100%;
+            .node {
+              margin-right: 50px;
+              @include breakpoint($bp-640-width) {
+                margin-right: 0;
+              }
+              a {
+                @include clear;
+                color: #ffffff;
+                display: block;
+                padding-left: 10%;
+                padding-right: 30%;
+                text-decoration: none;
+                @include breakpoint($bp-1024-width) {
+                  padding: 0;
+                }
+                .asset-img {
+                  float: left;
+                  width: 50%;
+                  @include breakpoint($bp-1024-width) {
+                    width: 300px;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    float: none;
+                    width: 100%;
+                  }
+                  img {
+                    max-width: 300px;
+                    width: 100%;
+                    @include breakpoint($bp-min-1601-width) {
+                      max-width: 440px;
+                    }
+                    @include breakpoint($bp-640-width) {
+                      max-width: 100%;
+                    }
+                  }
+                }
+                .meta {
+                  float: left;
+                  font-size: 16px;
+                  font-family: $avalon-medium;
+                  line-height: 22px;
+                  padding-left: 20px;
+                  margin: 0;
+                  position: static;
+                  width: 50%;
+                  max-width: 450px;
+                  @include breakpoint($bp-1024-width) {
+                    font-size: 14px;
+                    line-height: 20px;
+                  }
+                  @include breakpoint($bp-768-width) {
+                    float: none;
+                    padding-left: 0;
+                    margin-left: 320px;
+                    width: auto;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    font-size: 12px;
+                    line-height: 18px;
+                    margin-left: 0;
+                    max-width: 100%;
+                  }
+                  .episode-info {
+                    display: none;
+                    padding: 5px 0;
+                    position: relative;
+                    @include breakpoint($bp-1024-width) {
+                      display: block;
+                    }
+                    @include breakpoint($bp-768-width) {
+                      margin-top: 20px;
+                    }
+                    .episode-title {
+                      font-size: 16px;
+                      line-height: 22px;
+                      font-family: $cent-725BT-italic;
+                      font-style: italic;
+                      margin-right: 100px;
+                      @include breakpoint($bp-480-width) {
+                        font-size: 14px;
+                      }
+                    }
+                    .rating {
+                      font-size: 12px;
+                      line-height: 22px;
+                      right: 0;
+                      position: absolute;
+                      top: 5px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.active {
+          background-color: $bottom-footer-back;
+          color: #ffffff;
+          .hidden-block {
+            display: block;
+          }
+          .schedule-item {
+            .visible-block {
+              .time-wrapper {
+                .time, .time span {
+                  color: #ffffff;
+                }
+              }
+              .open-description {
+                &:before {
+                  content: '\e61b';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
-}
-}
+

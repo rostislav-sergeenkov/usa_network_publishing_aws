@@ -36,7 +36,7 @@
             <img src="<?php print $details['image']; ?>" alt="">
           </div>
         <?php endif; ?>
-        <div class="title-overlay meta">
+        <div class="meta">
           <?php if (!empty($details['episode_info'])): ?>
             <div class="meta-info">
               <?php if (!empty($details['episode_info']['episode_title'])): ?>

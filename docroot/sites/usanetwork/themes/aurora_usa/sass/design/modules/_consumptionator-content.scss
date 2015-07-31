@@ -162,7 +162,7 @@
     position: relative;
     &.vertical {
       display: block;
-      height: calc(100% - 84px);
+      height: calc(100% - 85px);
       @include breakpoint($bp-min-1901-width) {
         height: calc(100% - 140px);
       }
@@ -433,7 +433,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    @include breakpoint($between-641-1280) {
+    @include breakpoint($between-641-1024) {
       background: none!important;
     }
     @include breakpoint($bp-1280-width) {
@@ -716,10 +716,24 @@
     }
   }
 }
-
+#block-usanetwork-media-gallery-usa-gallery-consumptionator-main, .consumptionator-video-page .video-block {
+  .consum-sidebar {
+    .more-items {
+      @include breakpoint($between-1025-1280) {
+        background: none!important;
+      }
+    }
+  }
+}
 .consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
   .consum-sidebar {
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($between-1025-1280) {
+      float: left;
+      padding: 0;
+      position: relative;
+      width: 320px;
+    }
+    @include breakpoint($bp-1024-width) {
       float: none;
       height: auto;
       padding: 0;
@@ -727,13 +741,16 @@
       width: 100%;
     }
     .items-block {
-      @include breakpoint($bp-min-1281-width) {
+      @include breakpoint($bp-min-1025-width) {
         height: 420px;
       }
       @include breakpoint($bp-min-1901-width) {
         height: 645px;
       }
-      @include breakpoint($bp-1280-width) {
+      @include breakpoint($between-1025-1280) {
+        position: relative;
+      }
+      @include breakpoint($bp-1024-width) {
         height: auto;
         padding: 0;
         position: relative;
@@ -742,9 +759,18 @@
         width: 100%;
       }
       .episodes-list-slider {
+        &.vertical {
+          @include breakpoint($between-1025-1280) {
+            display: block;
+            height: calc(100% - 90px);
+          }
+        }
         &.horizontal {
           overflow: hidden;
           position: relative;
+          @include breakpoint($between-1025-1280) {
+            display: none;
+          }
           ul {
             width: 20000em;
             position: relative;
@@ -834,10 +860,21 @@
       }
     }
     .more-items {
-      @include breakpoint($bp-1280-width) {
+      @include breakpoint($between-1025-1280) {
+        bottom: 0;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: auto;
+        width: 100%;
+      }
+      @include breakpoint($bp-1024-width) {
         top: 0;
       }
       a {
+        @include breakpoint($between-1025-1280) {
+          padding-left: 25px;
+        }
         @include breakpoint($bp-640-width) {
           font-size: 15px;
           height: 45px;
@@ -846,7 +883,7 @@
       }
     }
     .advert {
-      @include breakpoint($bp-1280-width) {
+      @include breakpoint($bp-1024-width) {
         display: none;
       }
     }
@@ -854,13 +891,15 @@
       @include breakpoint($bp-640-width) {
         height: 45px;
         line-height: 45px;
-        padding-left: 0;
       }
       h2 {
+        @include breakpoint($between-1025-1280) {
+          width: 100%;
+        }
         @include breakpoint($bp-640-width) {
-          font-size: 23px;
+          font-size: 20px;
           line-height: 45px;
-          text-align: center;
+          text-align: left;
         }
       }
     }
@@ -880,6 +919,9 @@
   }
   @include breakpoint($bp-640-width) {
     padding: 40px 0px;
+  }
+  &.infinity-finished {
+    margin-bottom: 0;
   }
   ul {
     @include clear();

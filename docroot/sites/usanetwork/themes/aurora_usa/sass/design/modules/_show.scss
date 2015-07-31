@@ -4,6 +4,10 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, opacity;
   .show-carousel {
     > ul {
       > li {
@@ -265,7 +269,8 @@
               width: 30px;
             }
             @include breakpoint($bp-480-width) {
-              width: 18px;
+              right: -12px;
+              width: 30px;
             }
             &:after {
               color: #ffffff;
@@ -278,6 +283,10 @@
               position: absolute;
               right: 50%;
               top: 50%;
+              @include breakpoint($bp-480-width) {
+                left: 0;
+                right: auto;
+              }
             }
           }
         }
@@ -436,8 +445,9 @@
       }
     }
     .carousel-description-item {
-      margin-bottom: get-vw(30px, 768);
+      height: auto;
       left: 0px;
+      margin-bottom: get-vw(30px, 768);
       position: relative;
       top: 0;
       width: 100%;
@@ -447,6 +457,7 @@
       .description-wrapper {
         display: block;
         float: none;
+        height: auto;
         width: 100%;
       }
       .description-block {
@@ -638,6 +649,7 @@
             display: table-cell;
             font-size: get-vw(24px, 768);
             float: none;
+            letter-spacing: 1px;
             line-height: get-vw(30px, 768);
             margin: 0;
             position: relative;
@@ -671,11 +683,14 @@
             padding-left: get-vw(8px, 768);
             vertical-align: middle;
           }
-          @include breakpoint($bp-480-width) {
+          @include breakpoint($bp-640-width) {
+            display: none;
+          }
+          /*@include breakpoint($bp-480-width) {
             font-size: 7.5px;
             line-height: 8.75px;
             padding-left: 5px;
-          }
+          }*/
           span {
             display: block;
             font-family: $tex-gyreschola-italic
@@ -956,7 +971,7 @@
         width: 100%;
         .meta-wrapper {
           height: 100%;
-          padding: 20px 0 55px;
+          padding: 18px 0 55px;
           margin: 0 auto;
           overflow: hidden;
           position: relative;
@@ -965,10 +980,8 @@
             padding: 20px 0 70px;
           }
           @include breakpoint($bp-640-width) {
-            padding: 12px 0 55px;
-          }
-          @include breakpoint($bp-640-width) {
-            padding: 8px 0 35px;
+            padding: 5px 0 35px;
+            width: 90%;
           }
         }
         .heading {
@@ -1027,19 +1040,28 @@
             margin-top: 20px;
           }
           @include breakpoint($between-769-1024) {
-            font-size: get-vw(14px, 1024);
-            line-height: get-vw(20px, 1024);
-            margin-top: get-vw(20px, 1024);
+            font-size: get-vw(23.5px, 1024);
+            line-height: get-vw(25.5px, 1024);
+            margin-top: get-vw(16px, 1024);
           }
           @include breakpoint($bp-768-width) {
+            display: -webkit-box;
             font-size: get-vw(14px, 768);
+            height: get-row-height(20px, 14px, 5, 768);
             line-height: get-vw(20px, 768);
-            margin-top: get-vw(20px, 768);
+            margin-top: get-vw(16px, 768);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
           }
           @include breakpoint($bp-480-width) {
             font-size: 8px;
+            height: 21px;
             line-height: 11px;
             margin-top: 0px;
+            -webkit-line-clamp: 2;
           }
         }
         .show-link {
@@ -1054,7 +1076,8 @@
             margin-right: -76px;
           }
           @include breakpoint($bp-640-width) {
-            margin-right: -44px;
+            bottom: 8px;
+            margin-right: -46px;
           }
           @include breakpoint($bp-480-width) {
             bottom: 5px;
@@ -1204,7 +1227,8 @@
       display: table-cell;
       float: none;
       line-height: 1;
-      text-align: center;
+      padding-left: 10px;
+      text-align: left;
       vertical-align: middle;
     }
     a {
@@ -1244,6 +1268,7 @@
       line-height: 1.5;
       text-transform: uppercase;
       vertical-align: middle;
+      white-space: nowrap;
       @include breakpoint($bp-min-1901-width) {
         font-size: 18px;
       }
@@ -1255,6 +1280,7 @@
         display: block;
         font-family: $tex-gyreschola-italic;
         letter-spacing: 2px;
+        white-space: nowrap;
       }
     }
   }

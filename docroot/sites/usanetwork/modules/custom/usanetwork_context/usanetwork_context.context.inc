@@ -343,6 +343,7 @@ function usanetwork_context_context_default_contexts() {
       'values' => array(
         'catchall_page' => 'catchall_page',
         'consumpt_post' => 'consumpt_post',
+        'movie' => 'movie',
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
@@ -371,7 +372,9 @@ function usanetwork_context_context_default_contexts() {
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
         'shows' => 'shows',
-        '*/blog' => '*/blog',
+        'node/*/blog' => 'node/*/blog',
+        'node/*/blog/*' => 'node/*/blog/*',
+        'movies' => 'movies',
       ),
     ),
     'taxonomy_term' => array(
@@ -609,9 +612,16 @@ function usanetwork_context_context_default_contexts() {
         'quiz' => 'quiz',
         'timeline_gallery' => 'timeline_gallery',
         'tv_episode' => 'tv_episode',
+        'usanetwork_microsite' => 'usanetwork_microsite',
       ),
       'options' => array(
         'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/microsite' => 'node/*/microsite',
+        'node/*/microsite/*' => 'node/*/microsite/*',
       ),
     ),
   );

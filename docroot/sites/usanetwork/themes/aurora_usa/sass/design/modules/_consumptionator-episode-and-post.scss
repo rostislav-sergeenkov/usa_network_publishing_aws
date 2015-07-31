@@ -12,7 +12,10 @@
     width: 74.7%;
     background: #ffffff;
     color: #000000;
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($between-1025-1280) {
+      width: calc(100% - 320px);
+    }
+    @include breakpoint($bp-1024-width) {
       float: none;
       width: 100%;
     }
@@ -85,18 +88,20 @@
       }
     }
     .episode-info-block, .post-info-block {
-      padding: 45px 93px 45px 70px;
+      border-bottom: 2px solid;
+      padding: 45px 93px 90px 70px;
       @include breakpoint($bp-1280-width) {
-        padding: 38px 58px 38px 45px;
+        padding: 38px 58px 76px 45px;
       }
       @include breakpoint($bp-1024-width) {
-        padding: 53px 11.8%;
+        padding: 53px 11.8% 90px;
       }
       @include breakpoint($bp-768-width) {
-        padding: 50px 6.7%;
+        padding: 50px 6.7% 90px;
       }
       @include breakpoint($bp-640-width) {
-        padding: 30px 6%;
+        border-bottom: 0;
+        padding: 30px 6% 75px;
       }
       @include clear();
       .episode-info-header, .post-info-header {
@@ -164,7 +169,7 @@
                 content: '.';
                 line-height: 1;
                 position: absolute;
-                top: -5px;
+                top: -4px;
                 @include breakpoint($bp-1280-width) {
                   top: -2px;
                 }
@@ -275,8 +280,11 @@
       .episode-info-image, .post-info-image {
         float: right;
         width: 61.1%;
-        padding: 12px 0 20px 0;
+        padding: 12px 0 20px 15px;
+        background-color: #ffffff;
         margin-left: 30px;
+        position: relative;
+        z-index: 1;
         @include breakpoint($bp-1280-width) {
           padding-top: 5px;
         }
@@ -313,59 +321,54 @@
         p {
           &:first-child {
             margin-top: 0;
-          }
-        }
-        .person-quotation {
-          font-size: 30px;
-          padding: 35px 25px 38px 25px;
-          margin: 53px 0 23px;
-          border: 1px solid $poll-back;
-          display: block;
-          clear: both;
-          @include breakpoint($bp-1280-width) {
-            padding: 25px 16px 30px 16px;
-            margin: 35px 0 16px;
-            font-size: 20px;
-          }
-          @include breakpoint($bp-1024-width) {
-            padding: 25px 15px 28px 10px;
-            margin: 38px 0 19px;
-            font-size: 20px;
-          }
-          @include breakpoint($bp-768-width) {
-            padding: 25px 80px 28px 80px;
-            font-size: 20px;
-          }
-          @include breakpoint($bp-640-width) {
-            padding: 23px 11px 26px 8px;
-            margin: 32px 0 19px;
-            color: #000000;
-          }
-          &:before, &:after {
-            background-color: #ffffff;
-            font-size: 50px;
-            @include breakpoint($bp-1280-width) {
-              font-size: 37px;
+            .lines-quotation {
+              @include breakpoint($bp-min-1281-width) {
+                margin-top: 0;
+              }
             }
-            @include breakpoint($bp-1024-width) {
-              font-size: 45px;
-            }
-            @include breakpoint($bp-768-width) {
-              font-size: 36px;
-            }
-            @include breakpoint($bp-640-width) {
-              font-size: 24px;
-            }
+          }
+          &:last-child {
+            margin-bottom: 0;
           }
         }
         .lines-quotation {
+
           @include breakpoint($bp-768-width) {
-            padding: 22px 15px 36px 15px;
+            padding: 22px 15px;
+          }
+        }
+        .source {
+          font-family: $avalon-medium;
+          color: $schedule-pm-color;
+          letter-spacing: 2px;
+          font-size: 16px;
+          text-transform: uppercase;
+          line-height: 1;
+          @include breakpoint($bp-1280-width) {
+            font-size: 13px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 12px;
+          }
+        }
+        .source-title {
+          font-family: $avalon-book;
+          color: $schedule-pm-color;
+        }
+        a.source-title {
+          color: $source-link;
+          &:hover,
+          &:active {
+            color: $source-link;
+            text-decoration: underline;
           }
         }
       }
       .node-wrapper {
         &.advert {
+          @include breakpoint($between-1025-1280) {
+            display: none;
+          }
           @include breakpoint($bp-1024-width) {
             display: block;
             width: 39%;
@@ -390,7 +393,7 @@
     }
     @include breakpoint($bp-1280-width) {
       border-bottom: 2px solid;
-      padding: 40px 75px 90px;
+      padding: 30px 25px 90px;
     }
     @include breakpoint($bp-1024-width) {
       padding: 40px 24px 90px;
@@ -398,6 +401,36 @@
     @include breakpoint($bp-640-width) {
       border-bottom: 12px solid;
       padding: 40px 0 75px;
+    }
+    .gallery-wrapper {
+      @include breakpoint($between-1025-1280) {
+        height: calc((100vw - 370px) * 0.5625);
+      }
+      .bx-wrapper {
+        .bx-controls {
+          .bx-custom-pager {
+            .bx-pager-item {
+              @include breakpoint($between-1025-1280) {
+                height: 13px;
+                margin: 0px 15px 13px auto;
+                width: 13px;
+              }
+              a {
+                @include breakpoint($between-1025-1280) {
+                  height: 13px;
+                  width: 13px;
+                }
+                img {
+                  @include breakpoint($between-1025-1280) {
+                    max-width: 75px;
+                    width: 75px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

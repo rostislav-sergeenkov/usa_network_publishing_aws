@@ -28,7 +28,8 @@ function usanetwork_catchall_field_group_info() {
       2 => 'field_automatic_refresh',
       3 => 'field_refresh_time',
       4 => 'field_tvs_show_latest_feed',
-      5 => 'title',
+      5 => 'field_movie',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -200,6 +201,7 @@ function usanetwork_catchall_field_group_info() {
       0 => 'field_usa_og_description',
       1 => 'field_seo_page_title',
       2 => 'field_gigya_share_bar',
+      3 => 'field_seo_h1',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -17,7 +17,8 @@ function usanetwork_episodes_menu() {
   $items = array();
 
   $items['node/%node/episodes'] = array(
-    'title' => 'Episodes',
+    'title callback' => 'usanetwork_tv_shows_landing_page_title_callback',
+    'title arguments' => array(1, 'episodes'),
     'page arguments' => array(1),
     'page callback' => 'usanetwork_episodes_blank_page',
     'access arguments' => array('access content'),
@@ -243,7 +244,7 @@ function _usanetwork_episodes_episodes_carousel() {
     if (!empty($season_node)) {
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'node')
-        ->entityCondition('entity_type', 'node')
+        ->propertyCondition('status', NODE_PUBLISHED)
         ->entityCondition('bundle', 'tv_episode')
         ->fieldCondition('field_season', 'target_id', $season_node->nid, '=')
         // +0 for sorting numerically varchar field.
@@ -309,10 +310,6 @@ function _usanetwork_episodes_main_block() {
   $episode_node = menu_get_object();
   if (!empty($episode_node->type) && $episode_node->type == 'tv_episode') {
     $episode_node_wrapper = entity_metadata_wrapper('node', $episode_node);
-    if (!empty($episode_node->field_gigya_share_bar)) {
-      $sharebar = field_view_field('node', $episode_node, 'field_gigya_share_bar');
-      $sharebar['#title'] = t('Share');
-    }
     if (!empty($episode_node->field_season)) {
       $season = $episode_node_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
@@ -344,10 +341,11 @@ function _usanetwork_episodes_main_block() {
       }
       $navigation_links = _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season->nid, $episode_num, $season_num);
     }
+    $body = !empty($episode_node->body) ? $episode_node_wrapper->body->value->value() : '';
     $theme_variables = array(
-      'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+      'sharebar' => usanetwork_menu_render_sharebar($episode_node, 'node', t('Share'), $episode_node->title , $body),
       'episode_title' => $episode_node->title,
-      'body' => !empty($episode_node->body) ? $episode_node_wrapper->body->value->value() : '',
+      'body' => $body,
       'season_number' => !empty($season_num) ? $season_num : '',
       'episode_number' => !empty($episode_num) ? $episode_num : '',
       'episode_video_link' => !empty($episode_link) ? $episode_link : NULL,
@@ -386,6 +384,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
   $current_season_data_item = NULL;
   $current_season_data_item_index = NULL;
   $last_season_data = NULL;
+  $next_season_available = &drupal_static('load_more_link');
   $next_season_available = FALSE;
 
   $theme_variables = array(
@@ -434,11 +433,12 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     }
 
     if ($current_season_data_item_index + 1 < count($season_ids)) {
-      $theme_variables['load_more_link'] = TRUE;
+      $next_season_available = TRUE;
     }
     else {
-      $theme_variables['load_more_link'] = FALSE;
+      $next_season_available = FALSE;
     }
+    $theme_variables['load_more_link'] = $next_season_available;
 
     if ($display_filters_block) {
       $theme_variables['filters'][0] = array(
@@ -485,6 +485,9 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'full_episode_url' => isset($episode_data->fid)
             ? url('file/' . $episode_data->fid)
             : NULL,
+          'second_full_episode_url' => (!empty($episode_data->subtitle_video))
+            ? url('file/' . $episode_data->subtitle_video)
+            : NULL,
           'preview_episode_url' => isset($episode_data->preview_fid)
             ? url('file/' . $episode_data->preview_fid)
             : NULL,
@@ -494,10 +497,10 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'title' => $episode_data->title,
           'description' => $episode_data->description,
           'airing_date' => !empty($episode_data->airdate)
-            ? gmdate('m/d/Y', $episode_data->airdate)
+            ? date('m/d/Y', $episode_data->airdate)
             : NULL,
           'expiration_date' => !empty($episode_data->expiration_date)
-            ? gmdate('m/d/Y', $episode_data->expiration_date)
+            ? date('m/d/Y', $episode_data->expiration_date)
             : NULL,
           'guide_url' => url('node/' . $episode_data->nid),
           'gallery_url' => !empty($episode_data->gallery_nid)
@@ -706,6 +709,13 @@ function _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_n
   // Join MPX Full episode
   $query->join('field_data_field_mpx_full_episode', 'full_episode_field', 'full_episode_field.entity_id=mpxv.fid');
   $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  // LeftJoin MPX Language
+  $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = mpxv.fid');
+  $query->condition(
+    db_or()
+      ->condition('fdfml.field_mpx_language_value', 'en', '=')
+      ->isNull('fdfml.field_mpx_language_value')
+  );
 
   $result = $query->execute()->fetchAll();
 
@@ -714,6 +724,31 @@ function _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_n
   }
 
   return NULL;
+}
+
+function _usanetwork_episodes_get_subtitle_video($show_nid, $season_number, $episode_number) {
+  $query = db_select('mpx_video', 'mpxv');
+  $query->fields('mpxv', array('fid'));
+  $query->condition('mpxv.status', '1');
+  // Join Season number
+  $query->join('field_data_field_mpx_season_number', 'mpx_season_number', 'mpx_season_number.entity_id=mpxv.fid');
+  $query->condition('mpx_season_number.field_mpx_season_number_value', $season_number);
+  // Join Episode number
+  $query->join('field_data_field_mpx_episode_number', 'mpx_episode_number', 'mpx_episode_number.entity_id=mpxv.fid');
+  $query->condition('mpx_episode_number.field_mpx_episode_number_value', $episode_number);
+  // Join TV Show
+  $query->join('field_data_field_show', 'mpx_show_field', 'mpx_show_field.entity_id=mpxv.fid');
+  $query->condition('mpx_show_field.field_show_target_id', $show_nid);
+  // Join MPX Full episode
+  $query->join('field_data_field_mpx_full_episode', 'full_episode_field', 'full_episode_field.entity_id=mpxv.fid');
+  $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  // Join MPX Language
+  $query->join('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = mpxv.fid');
+  $query->condition('fdfml.field_mpx_language_value', 'en', '<>');
+
+  $result = $query->execute()->fetchField();
+
+  return $result;
 }
 
 function _usanetwork_episodes_get_episodic_gallery($episode_nid) {
@@ -806,6 +841,7 @@ function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid
 
         $result_item->description = _usanetwork_episodes_get_season_episodes_description($result_item);
         $result_item->gallery_nid = _usanetwork_episodes_get_episodic_gallery($result_item->nid);
+        $result_item->subtitle_video = _usanetwork_episodes_get_subtitle_video($show_nid, $season_number, $result_item->episode_number);
       }
     }
 
@@ -870,9 +906,9 @@ function _usanetwork_episodes_get_episode_related_content_block() {
         }
       }
 
-      $you_may_also_like_item = usanetwork_tv_shows_consumptionator_get_ymal_item($tv_show_node);
+      $you_may_also_like_item = usanetwork_tv_show_consumptionator_get_ymal_item($tv_show_node);
 
-      $related_content = _usanetwork_tv_shows_cache_get_limited_related_content(
+      $related_content = _usanetwork_tv_show_cache_get_limited_related_content(
         $tv_show_node, $content->type, 0,
         !empty($you_may_also_like_item)
           ? USA_EPISODE_RELATED_CONTENT_ITEMS - 1
@@ -891,11 +927,12 @@ function _usanetwork_episodes_get_episode_related_content_block() {
           'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
         ), 'setting');
 
-        $block_of_items = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content);
-
-        return theme('usanetwork_tv_shows_consumptionator_related_items_container', array(
+        $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
+        $load_more_link = &drupal_static('load_more_link');
+        $load_more_link = TRUE;
+        return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
           'related_items_block' => $block_of_items,
-          'load_more_link' => TRUE,
+          'load_more_link' => $load_more_link,
           'show_nid' => $tv_show_node->nid,
           'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
         ));
@@ -912,13 +949,13 @@ function usanetwork_episodes_get_related_content_ajax($tv_show_node, $start_from
     'overlimited' => TRUE,
     'rendered' => '',
   );
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_content($tv_show_node, 'tv_episode', $start_from, $limit + 1);
+  $related_content = _usanetwork_tv_show_cache_get_limited_related_content($tv_show_node, 'tv_episode', $start_from, $limit + 1);
   if (!empty($related_content)) {
     if (count($related_content) > $limit) {
       $response['overlimited'] = FALSE;
       $related_content = array_slice($related_content, 0, $limit);
     }
-    $response['rendered'] = usanetwork_tv_shows_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
+    $response['rendered'] = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
     $response['total'] = count($related_content);
     $response['found'] = TRUE;
   }

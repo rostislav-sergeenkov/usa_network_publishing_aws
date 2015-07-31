@@ -24,12 +24,9 @@ function usanetwork_core_api_get_content_image($entity_type, $entity, $image_typ
   }
 
   if ($entity_type == 'file') {
-    $file_stream_wrapper = file_stream_wrapper_get_instance_by_uri($entity->uri);
+    $file_uri = _usanetwork_mpx_video_get_image_path($entity);
 
-    if ($file_stream_wrapper) {
-      // The image type for this entity type is always default, the limit is always 1 and return URI only is always true too.
-      return @$file_stream_wrapper->getLocalThumbnailPath();
-    }
+    return $file_uri;
   }
   else {
     $entity_field_aliases_callback = '_usanetwork_core_api_get_' . $entity_type . '_image_field_names';
@@ -122,6 +119,7 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
   }
 
   switch ($entity->type) {
+    case 'timeline_gallery':
     case 'media_gallery': return 'gallery-icon-default';
     case 'mpx_video_1':
     case 'mpx_video_2': return 'full-video-icon-default';
@@ -164,6 +162,12 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'media_items' => 'field_media_items',
       'og_image' => 'field_usa_og_image',
     ),
+    // Movie
+    'movie' => array(
+      'main' => 'field_movie_cover_media',
+      'cover' => 'field_movie_cover_media',
+      'og_image' => 'field_usa_og_image',
+    ),
     // Person
     'person' => array(
       'main' => 'field_person_cover_photo',
@@ -173,6 +177,11 @@ function _usanetwork_core_api_get_node_image_field_names() {
     ),
     // Post
     'post' => array(
+      'main' => 'field_post_cover',
+      'cover' => 'field_post_cover',
+    ),
+    // Post
+    'consumpt_post' => array(
       'main' => 'field_post_cover',
       'cover' => 'field_post_cover',
     ),
@@ -230,5 +239,46 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'main' => 'field_video_thumbnail',
       'thumbnail' => 'field_video_thumbnail',
     ),
+    // Timeline gallery
+    'timeline_gallery' => array(
+      'main' => 'field_cover_item',
+      'cover' => 'field_cover_item',
+      'media_items' => 'field_media_items',
+      'og_image' => 'field_usa_og_image',
+    ),
   );
+}
+
+function usanetwork_core_api_get_tv_content_fields_names() {
+  return array(
+    'tv_show' => 'field_show',
+    'movie' => 'field_movie',
+  );
+}
+
+function usanetwork_core_api_get_tv_content_node($entity) {
+  $field_names = usanetwork_core_api_get_tv_content_fields_names();
+  if (isset($entity->nid)) {
+    $entity_wrapper = entity_metadata_wrapper('node', $entity);
+  }
+  else {
+    $entity_wrapper = entity_metadata_wrapper('file', $entity);
+  }
+  foreach($field_names as $tv_content_type => $field_name) {
+    if (!empty($entity->$field_name)) {
+      return $entity_wrapper->$field_name->value();
+    }
+  }
+  return NULL;
+}
+
+function usanetwork_core_api_check_display_relate_content($node) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  if ($node->type == 'tv_show') {
+    $check = $node_wrapper->field_tvs_show_latest_lnd_feed->value();
+  }
+  elseif ($node->type == 'movie') {
+    $check = $node_wrapper->field_movies_latest_lnd_feed->value();
+  }
+  return $check;
 }

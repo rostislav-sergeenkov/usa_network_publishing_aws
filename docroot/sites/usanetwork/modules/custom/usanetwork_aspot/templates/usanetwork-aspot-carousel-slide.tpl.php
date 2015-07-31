@@ -6,11 +6,11 @@
 
 <div class="slide">
   <div class="wrp">
-    <div class="node usanetwork-aspot <?php print $show_class; ?>" data-show="<?php print $show_class; ?>">
+    <div class="node usanetwork-aspot <?php print $show_class; ?>"  data-show-name="<?php print $show_name; ?>"  data-show="<?php print $show_class; ?>">
       <a href="<?php print $show_url; ?>" class="asset-img-link" target="_self">
         <?php if (!empty($show_poster)): ?>
           <div class="asset-img" data-picture data-alt="" data-class="tile-img">
-            <div class="hidden offset-data" data-shift-percent="<?php print $show_image_bg_offset; ?>"></div>
+            <div class="hidden offset-data" data-img-src="<?php print $show_poster['desktop']; ?>" data-shift-percent="<?php print $show_image_bg_offset; ?>"></div>
             <?php if (!empty($show_poster['mobile'])): ?>
               <div data-src="<?php print $show_poster['mobile']; ?>"></div>
             <?php endif; ?>
@@ -40,6 +40,8 @@
           <div class="meta">
             <div class="title_prefix aspot-draggable-element" <?php if (!empty($show_title_prefix_style['desktop'])): print ' data-style-desktop="' . $show_title_prefix_style['desktop'] . '" data-style-mobile="' . $show_title_prefix_style['mobile'] . '"'; endif; ?>><?php print $show_title_prefix; ?></div>
             <div class="title aspot-draggable-element" <?php if (!empty($show_title_style['desktop'])): print ' data-style-desktop="' . $show_title_style['desktop'] . '" data-style-mobile="' . $show_title_style['mobile'] . '"'; endif; ?>><?php print $show_title; ?></div>
+            <div class="aspot-description aspot-draggable-element" <?php if (!empty($show_description_style['desktop'])): print ' data-style-desktop="' . $show_description_style['desktop'] . '" data-style-mobile="' . $show_description_style['mobile'] . '"'; endif; ?>><?php print $show_desc; ?></div>
+
             <?php if (!empty($show_timer)): ?>
               <div class="show-timer">
                 <div class="start" <?php if (!empty($show_timer['title_prefix_style'])): print ' style="' . $show_timer['title_prefix_style'] . '"'; endif; ?>>
@@ -55,7 +57,7 @@
               <?php $counter = 0; ?>
               <?php foreach ($cta_buttons as $cta_button): ?>
                 <div <?php print 'class="cta_button_' . $counter . ' cta-link aspot-draggable-element"' ?><?php if (!empty($cta_button['style']['desktop'])): print 'data-style-desktop="' . $cta_button['style']['desktop'] . '" data-style-mobile="' . $cta_button['style']['mobile'] . '"'; endif; ?>>
-                  <a href="<?php print $cta_button['url']; ?>" class="cta-button-link show-color hover-avail" data-cta-link="CTA<?php print $counter; ?>"><?php print $cta_button['text']; ?></a>
+                  <a href="<?php print $cta_button['url']; ?>" class="cta-button-link show-color hover-avail" data-cta-link="CTA_LINK_<?php print $counter; ?>"><?php print $cta_button['text']; ?></a>
                 </div>
                 <?php $counter++; ?>
               <?php endforeach; ?>

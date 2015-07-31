@@ -88,13 +88,15 @@
 							function _onReleaseStart(){
 								videoContainer.removeClass('play pause');
 
+/*
 								if(!$('#videos').hasClass('active')){
 									$pdk.controller.clickPlayButton(false);
 									$pdk.controller.pause(true);
 									videoContainer.addClass('start pause');
 								}else{
+*/
 									videoContainer.addClass('start play');
-								}
+//								}
 								// @TODO: Consolidate or update the microsite js so that the following if-else statement is not needed.
 								if (typeof Drupal.behaviors.microsite_scroll == 'object' && typeof Drupal.behaviors.microsite_scroll.micrositeAdAdded == 'function') {
 								  Drupal.behaviors.microsite_scroll.micrositeAdAdded();

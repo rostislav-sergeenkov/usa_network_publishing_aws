@@ -59,7 +59,7 @@ function usanetwork_person_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('shows');
   $export['cast_landing'] = $context;
-  
+
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
@@ -101,7 +101,7 @@ function usanetwork_person_context_default_contexts() {
     ),
   );
   $context->condition_mode = 0;
-  
+
   // Translatables
   // Included for use with string extractors like potx.
   t('node');

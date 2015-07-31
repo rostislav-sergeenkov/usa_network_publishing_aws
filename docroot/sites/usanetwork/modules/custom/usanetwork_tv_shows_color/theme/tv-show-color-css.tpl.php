@@ -4,7 +4,7 @@
 .show-<?php print $node_code; ?>.show-color-border:before, .show-<?php print $node_code; ?>.asset-img.show:before {
   background: <?php print $primary_color_code; ?>;
 }
-.show-<?php print $node_code; ?>.show-color.show-font, .show-<?php print $node_code; ?> .show-color.show-font {
+.show-<?php print $node_code; ?>:not(.page-node-microsite).show-color.show-font, .show-<?php print $node_code; ?>:not(.page-node-microsite) .show-color.show-font {
  color: <?php print $primary_color_code; ?> !important;
 }
 .show-<?php print $node_code; ?>.item-hover:hover {
@@ -51,5 +51,8 @@
 }
 .show-<?php print $node_code; ?>.show-color.other-show-page.tertiary {
   background: <?php print $tertiary_color_code; ?>;
+}
+.show-<?php print $node_code; ?> .usanetwork-quiz .answer-image img:hover {
+  border-color: <?php print $primary_color_code; ?> !important;
 }
 

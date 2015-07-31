@@ -40,9 +40,8 @@
       }
       span {
         display: block;
-        font-family: $cent-725BT-italic;
-        font-size: 14;
-        font-style: italic;
+        font-family: $tex-gyreschola-italic;
+        font-size: 14px;
         line-height: 20px;
         text-transform: lowercase;
       }
@@ -111,9 +110,9 @@
     .aspot-and-episodes {
       @include clear;
       margin-bottom: 50px;
-      height: 100%;
       @include breakpoint($bp-1024-width) {
         margin-bottom: 0;
+        height: 100%;
       }
       & > .node {
         float: left;
@@ -211,11 +210,13 @@
           }
           li {
             background: none;
-            height: 20%;
-            padding-left: 2px;
-            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            border-left: 2px solid transparent;
+            height: 25%;
+            overflow: hidden;
             @include breakpoint($between-641-1024) {
               float: left;
+              border: none;
               margin-bottom: 10px;
               padding: 0;
               width: 49%;
@@ -223,18 +224,15 @@
                 margin-right: 2%;
               }
             }
-            @include breakpoint($bp-768-width){
+            @include breakpoint($bp-768-width) {
               display: block;
             }
             @include breakpoint($bp-640-width) {
+              border: none;
               padding: 0;
-              display: none;
-              &:nth-child(1), &:nth-child(2) {
-                display: block;
-              }
             }
             &:last-child {
-              padding-bottom: 0;
+              border-bottom: none;
             }
             a {
               display: block;
@@ -303,37 +301,6 @@
                   }
                 }
               }
-            }
-          }
-        }
-        .more-button {
-          display: none;
-          position: relative;
-          @include breakpoint($bp-640-width) {
-            background: $full-episodes-light-back;
-            border-top: 2px solid $footer-back;
-            clear: both;
-            display: block;
-            height: 70px;
-            width: 100%;
-          }
-          a {
-            display: block;
-            height: 100%;
-            position: absolute;
-            width: 100%;
-            &:before {
-              color: #ffffff;
-              font-family: $avalon-medium;
-              font-size: 15px;
-              display: block;
-              left: 50%;
-              margin-left: -30px;
-              margin-top: -8px;
-              position: absolute;
-              text-transform: uppercase;
-              text-decoration: none;
-              top: 50%;
             }
           }
         }
@@ -519,13 +486,15 @@
       }
       .carousel-description-item {
         height: auto;
+        left: -300px;
         margin: 40px auto;
         @include breakpoint($bp-1600-width) {
-          left: -175px;
+          left: -200px;
         }
-        &.start{
+        &.start {
+          left: 60px;
           @include breakpoint($bp-1600-width) {
-            left: 50px;
+            left: 25px;
           }
           @include breakpoint($bp-480-width) {
             left: 0;
@@ -540,8 +509,9 @@
         }
         .description-wrapper {
           display: block;
+          width: 300px;
           @include breakpoint($bp-1600-width) {
-            width: 175px;
+            width: 200px;
           }
           @include breakpoint($bp-480-width) {
             background: $schedule-tonight;
@@ -581,10 +551,10 @@
               vertical-align: middle;
               @include breakpoint($bp-min-481-width) {
                 background: none;
-                width: 175px;
+                width: 200px;
               }
               @include breakpoint($bp-min-1601-width) {
-                width: 250px;
+                width: 300px;
               }
               @include breakpoint($bp-480-width) {
                 cursor: pointer;

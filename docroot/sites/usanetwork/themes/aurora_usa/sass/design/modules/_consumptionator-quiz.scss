@@ -13,27 +13,33 @@
     padding-bottom: 10000px;
     margin-bottom: -10000px;
     overflow: hidden;
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($between-1025-1280) {
+      width: calc(100% - 320px);
+    }
+    @include breakpoint($bp-1024-width) {
+      border-bottom: 2px solid;
       float: none;
       padding: 0;
       margin-bottom: 0;
       width: 100%;
     }
-    @include breakpoint($bp-1024-width) {
-      border-bottom: 2px solid;
-    }
     @include breakpoint ($bp-640-width) {
       border-bottom: 8px solid;
     }
     .usanetwork-quiz {
+      max-width: 1000px;
+      @include breakpoint($bp-1280-width) {
+        width: auto;
+      }
       .entry-button {
+        margin: 50px 0;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(22px, 640);
-          margin: get-vw(50px, 640) auto;
+          margin: get-vw(50px, 640) 0;
         }
         @include breakpoint ($bp-480-width) {
           font-size: 16.5px;
-          margin: 37.6px auto;
+          margin: 37.6px 0;
         }
       }
       .repeat-button {
@@ -42,6 +48,33 @@
         }
         @include breakpoint ($bp-480-width) {
           font-size: 16.5px;
+        }
+      }
+      .content-wrap {
+        padding: 40px;
+        @include breakpoint ($bp-640-width) {
+          padding: 20px;
+        }
+        @include breakpoint ($bp-480-width) {
+          padding: 10px;
+        }
+        .center {
+          margin-right: 0;
+          width: 100%;
+        }
+        .sidebar {
+          margin-top: 20px;
+          @include breakpoint ($bp-480-width) {
+            margin-top: 10px;
+          }
+          .ad-container {
+            @include breakpoint ($bp-min-1281-width) {
+              display: none;
+            }
+            @include breakpoint ($bp-640-width) {
+              display: none;
+            }
+          }
         }
       }
     }
@@ -56,6 +89,7 @@
     }
     .usanetwork-quiz-question {
       .question-title {
+        text-align: center;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(26px, 640);
         }
@@ -71,7 +105,12 @@
         float: right;
         @include clear();
       }
+      .inner {
+        max-width: 320px;
+      }
       .answer-title {
+        padding: 5px;
+        width: 320px;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(18px, 640);
         }
@@ -80,7 +119,7 @@
   }
   .consum-sidebar {
     .items-block {
-      @include breakpoint($bp-min-1281-width) {
+      @include breakpoint($bp-min-1025-width) {
         height: 245px;
       }
       @include breakpoint($bp-min-1901-width) {

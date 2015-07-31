@@ -39,7 +39,8 @@
       })).load(function () {
             backgroundPreviewingBlock.attr('data-img-width', this.width);
             backgroundPreviewingBlock.css({
-              'height': this.height
+              'height': this.height,
+              'width': this.width * 0.1
             });
           });
 
@@ -188,7 +189,7 @@
             if (imgWidth === 0) {
               offset_percent_X = 0;
             } else {
-              offset_percent_X = Math.round(parseInt(offset_px_X) / imgWidth * 100);
+              offset_percent_X = ((parseInt(offset_px_X) / imgWidth * 100) / 0.9).toFixed(2);
             }
 
             if(offset_percent_X < 0 && offset_percent_X < -100) {
@@ -366,8 +367,8 @@
 
           var bg_offset = $(this).val();
 
-          if(bg_offset < 0 && bg_offset < -100) {
-            $(this).val(-2680);
+          if(bg_offset < 0 && bg_offset < -2592) {
+            $(this).val(-2592);
           } else if(bg_offset > 0) {
             $(this).val(0);
           }
@@ -424,7 +425,6 @@
               tvs_aspot_elements : showUiPositionsVal
             }
           };
-          console.info(myData);
           headInput.val(JSON.stringify(myData));
         }
       });

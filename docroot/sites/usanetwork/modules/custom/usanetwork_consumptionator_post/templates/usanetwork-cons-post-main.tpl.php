@@ -22,7 +22,8 @@
             <?php print $title; ?>
           </div>
           <div class="additional">
-            <?php print '<span class="episode">' . t('Posted on ') . $creating_date .'</span><span class="tags-title">'. t(' Tags: ') . '</span><span class="tags">' . $tags . '</span>';?>
+            <?php print '<span class="episode">' . t('Posted on ') . $creating_date . '</span>';?>
+            <?php if (!empty($tags)): print '<span class="tags-title">' . t(' Tags: ') . '</span><span class="tags">' . $tags . '</span>'; endif;?>
           </div>
         </div>
         <div class="share">
@@ -44,7 +45,7 @@
           <?php print $body; ?>
         <?php endif; ?>
         <?php if (!empty($source)): ?>
-          <?php print t('Source: ') .  $source; ?>
+          <?php print '<p class="source">' . t('Source: ') . '<span class="source-title">' .  $source . '</span></p>'; ?>
         <?php endif; ?>
       </div>
     </div>

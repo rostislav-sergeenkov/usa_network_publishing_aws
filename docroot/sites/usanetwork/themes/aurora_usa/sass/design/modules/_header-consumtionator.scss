@@ -105,6 +105,21 @@
               position: relative;
               text-align: center;
               white-space: normal;
+              @include breakpoint($bp-min-1025-width) {
+                font-size: get-vw(19.2px, 1280);
+                padding-top: get-vw(4px, 1901);
+              }
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 28.5px;
+                padding-top: 4px;
+              }
+              @include breakpoint($between-769-1024) {
+                font-size: 15px;
+                padding-top: get-vw(3.2px, 1025);
+              }
+              @include breakpoint($bp-768-width) {
+                padding-top: 2px;
+              }
               span {
                 display: table-cell;
                 vertical-align: middle;
@@ -127,8 +142,15 @@
               position: relative;
               text-align: left;
               white-space: normal;
+              @include breakpoint($bp-min-1025-width) {
+                padding-top: get-vw(4px, 1901);
+              }
               @include breakpoint($bp-min-1901-width) {
                 padding-left: 132px;
+                padding-top: 4px;
+              }
+              @include breakpoint($between-769-1024) {
+                padding-top: get-vw(3.5px, 1025);
               }
               @include breakpoint($bp-768-width) {
                 overflow: hidden;
@@ -247,6 +269,7 @@
               color: #ffffff;
               margin-left: get-vw(185px, 1025);
               padding-top: 0;
+              position: relative;
               @include breakpoint($bp-min-1901-width) {
                 margin-left: 343px;
               }
@@ -321,17 +344,17 @@
                   font-size: 10px;
                 }
               }
-              .title, h1 {
+              .title, h1, h2 {
                 font-family: $avalon-medium;
-                font-size: get-vw(15px, 1025);
+                font-size: get-vw(33.6px, 1901);
                 letter-spacing: 1px;
                 word-wrap: break-word;
                 line-height: 1.6;
                 @include breakpoint($bp-min-1901-width) {
-                  font-size: 28px;
+                  font-size: 33.6px;
                 }
                 @include breakpoint($bp-1024-width) {
-                  font-size: 15px;
+                  font-size: 18px;
                 }
               }
               .additional {

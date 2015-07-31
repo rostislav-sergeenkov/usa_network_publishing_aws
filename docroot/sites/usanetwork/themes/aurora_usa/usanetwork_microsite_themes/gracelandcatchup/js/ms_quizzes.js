@@ -2,9 +2,13 @@
   Drupal.behaviors.ms_quizzes = {
     quizIsLoading: null,
 
-    init300x250Ad: function(nid) {
+    init300x250Ad: function() {
       var _target = '.ad-container';
       mps.insertAd(mps._select(_target),'topbox');
+      mps.refreshAds('topbox');
+    },
+
+    refresh300x250Ad: function() {
       mps.refreshAds('topbox');
     },
 
@@ -196,7 +200,7 @@
 
                 // show 300x250 ad on splash page
                 setTimeout(function(){
-                  Drupal.behaviors.ms_quizzes.init300x250Ad(data.nid);
+                  Drupal.behaviors.ms_quizzes.init300x250Ad();
                 }, 500);
 
                 // set url

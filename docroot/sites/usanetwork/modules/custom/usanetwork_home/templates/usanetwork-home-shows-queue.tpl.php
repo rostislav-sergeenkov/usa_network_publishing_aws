@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="shows-block">
+<div class="shows-block" data-block-name="Show Card Carousel">
   <div class="carousel-description-item start">
     <div class="description-wrapper">
       <div class="description-block">

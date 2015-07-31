@@ -1,4 +1,4 @@
-<div class="full-episodes-block carousel-block">
+<div class="full-episodes-block carousel-block" data-block-name="Full Episodes Carousel">
   <div class="carousel-description-item start">
     <div class="description-wrapper">
       <div class="description-block">

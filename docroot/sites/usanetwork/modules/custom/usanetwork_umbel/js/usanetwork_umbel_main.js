@@ -5,28 +5,44 @@
   Drupal.behaviors.usanetwork_umbel = {
     attach: function (context, settings) {
       $('body').once(function () {
-        umbel_code = Drupal.settings.umbel_code;
+        umbelCode = Drupal.settings.umbel_code;
+        umbelSettings = Drupal.settings.umbel_settings;
 
         window._umbel = window._umbel || [];
         (function () {
           var u = document.createElement('script');
           u.type = 'text/javascript';
           u.async = true;
-          u.src = document.location.protocol + '//tags.api.umbel.com/' + umbel_code + '/w.js?d=' + new Date().getMonth() + '-' + new Date().getDate();
+          u.src = document.location.protocol + '//tags.api.umbel.com/' + umbelCode + '/w.js?d=' + new Date().getMonth() + '-' + new Date().getDate();
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(u, s);
         })();
 
-        //var umbel_parameter;
-        if (typeof umbel != 'undefined') {
-          umbel_parameter = umbel;
+        settigngsParameter1 = umbelSettings.usa_umbel_param_1;
+        settigngsParameter2 = umbelSettings.usa_umbel_param_2;
+        settigngsParameter3 = umbelSettings.usa_umbel_param_3;
+
+        if (typeof settigngsParameter1 != 'undefined') {
+          umbelParameter1 = settigngsParameter1;
         } else {
-          umbel_parameter = s.pageName;
+          umbelParameter1 = s.prop10;
+        }
+
+        if (typeof settigngsParameter2 != 'undefined') {
+          umbelParameter2 = settigngsParameter2;
+        } else {
+          umbelParameter2 = s.prop4;
+        }
+
+        if (typeof settigngsParameter3 != 'undefined') {
+          umbelParameter3 = settigngsParameter3;
+        } else {
+          umbelParameter3 = s.pageName;
         }
         _umbel.push({
           "type": "send",
           "name": "action.tag",
-          "value": [s.prop10, s.prop4, umbel_parameter]
+          "value": [umbelParameter1, umbelParameter2, umbelParameter3]
         });
       });
     }

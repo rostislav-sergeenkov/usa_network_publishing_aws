@@ -429,7 +429,7 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       }
       $title = !empty($node->title) ? $node_wrapper->title->value() : NULL;
       $gallery_type = !empty($node->field_gallery_type) ? $node_wrapper->field_gallery_type->value() : NULL;
-      if ($gallery_type == 'Episodic Gallery' && !empty($episode_num) && !empty($season_num)) {
+      if (!empty($episode_num) && !empty($season_num)) {
         $result['title'] = t('S@season EP@episode: @title', array(
           '@season' => $season_num,
           '@episode' => $episode_num,

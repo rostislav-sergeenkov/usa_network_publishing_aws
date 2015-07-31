@@ -1242,20 +1242,20 @@ function _usanetwork_get_google_watch_variables($file) {
         ),
       ),
     ),
-    '1' => array(
-      '@type' => 'WatchAction',
-      'target' => isset($ios_link) ? $ios_link : '',
-      'expectsAcceptanceOf' => array(
-        '@type' => 'Offer',
-        'category' => $entitlement,
-        'availabilityStarts' => date('Y-m-d\TH:i', $available_date),
-        'availabilityEnds' => date('Y-m-d\TH:i', $expiration_date),
-        'eligibleRegion' => array(
-          '@type' => 'Country',
-          'name' => 'US',
-        ),
-      ),
-    ),
+//    '1' => array(
+//      '@type' => 'WatchAction',
+//      'target' => isset($ios_link) ? $ios_link : '',
+//      'expectsAcceptanceOf' => array(
+//        '@type' => 'Offer',
+//        'category' => $entitlement,
+//        'availabilityStarts' => date('Y-m-d\TH:i', $available_date),
+//        'availabilityEnds' => date('Y-m-d\TH:i', $expiration_date),
+//        'eligibleRegion' => array(
+//          '@type' => 'Country',
+//          'name' => 'US',
+//        ),
+//      ),
+//    ),
   );
   if ($short_episode) {
     $google_watch['hasPart'] = array(

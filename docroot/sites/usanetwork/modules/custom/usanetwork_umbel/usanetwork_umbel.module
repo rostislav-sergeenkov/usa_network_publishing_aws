@@ -70,8 +70,8 @@ function _usanetwork_umbel_variables($settings) {
     case 'schedule':
       $settings = array(
         'usa_umbel_param_1' => "Global",
-        'usa_umbel_param_2' => "Landing Page",
-        'usa_umbel_param_3' => "Schedule",
+        'usa_umbel_param_2' => "Schedule",
+        'usa_umbel_param_3' => "Full Schedule",
       );
       break;
     case 'accessibility':

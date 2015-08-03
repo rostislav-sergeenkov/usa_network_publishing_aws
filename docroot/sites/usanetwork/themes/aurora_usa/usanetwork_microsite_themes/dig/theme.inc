@@ -16,6 +16,14 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'tune_in' => NULL,
         'sections_navlinks' => array(),
         'facebook_tracking_html' => NULL,
+        'quizzes' => array(
+          0 => array(
+            'nid' => NULL,
+            'title' => NULL,
+            'url' => NULL,
+            'status' => NULL,
+          ),
+        ),
       ),
     ),
     'usanetwork_microsite_dig_page_home' => array(
@@ -59,6 +67,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'role' => NULL,
             'character_bio_summary' => NULL,
             'character_bio' => NULL,
+            'actor_bio' => NULL,
             'quotes' => array(
               0 => array(
                 'quote' => NULL,
@@ -107,8 +116,27 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-dig-page-games',
       'path' => $subtheme_path,
       'variables' => array(
-        'pages' => array(
-          'html' => NULL,
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
+        ),
+      ),
+    ),
+    'usanetwork_microsite_dig_page_quizzes' => array(
+      'template' => 'usanetwork-microsite-dig-page-quizzes',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
+        ),
+        'quizzes_nav' => array(
+          0 => array(
+            'nid' => NULL,
+            'title' => NULL,
+            'url' => NULL,
+            'cover_img' => NULL,
+          ),
         ),
       ),
     ),
@@ -171,12 +199,22 @@ function usanetwork_microsite_dig_get_theme_includes() {
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
   return array(
+    'css' => array(
+      $module_path . '/css/jquery.bxslider.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_quizzes.css',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
+      drupal_get_path('module', 'usanetwork_quiz') . '/css/usanetwork_quiz.css'
+    ),
     'js' => array(
         //'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
         //'http://pdk.theplatform.com/current/pdk/tpPdkController.js',
         //'http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js',
         //'http://pdk.theplatform.com/pdk/tpPdkController.js',
-//      $theme_path . '/javascripts/video-dropdowns.js',
 //      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
 //      $theme_path . '/javascripts/jquery.carouFredSel.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_global.js',
@@ -188,17 +226,35 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_episodes.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes.js',
       $module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
+      drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js',
+      drupal_get_path('module', 'usanetwork_gallery_content') . '/js/usanetwork_gallery_content.js',
+      drupal_get_path('module', 'flexslider') . '/assets/js/flexslider.load.js',
     ),
-    'css' => array(
-      $module_path . '/css/jquery.bxslider.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_episodes.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css',
-      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
-    ),
+  );
+}
+
+/**
+ * Return array with theme settings for dig theme.
+ * This settings override defaults or it allow add new setting for current
+ * instance of microsite.
+ */
+function usanetwork_microsite_dig_get_theme_settings() {
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
+  return array(
+    'display_global_nav' => FALSE,
+    'default_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
+    'default_mobile_char_bg' => $theme_path . '/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
+    'videos_limit' => 12,
+    'sections_use_ajax' => FALSE,
+  );
+}
+
+
+function usanetwork_microsite_dig_get_blocks_names() {
+  return array(
+    'meet_the_cast',
   );
 }

@@ -1,15 +1,10 @@
 (function ($) {
   Drupal.behaviors.microsite_characters = {
-    // @TODO: What's the best Drupal way to handle the following default variables?
-    siteName: 'Dig',
-    basePath: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig',
-    basePageName: 'Dig | USA Network',
-    defaultCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
-    defaultMobileCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
 
     micrositeSetCharNavWidthHeight: function setCharNavWidth() {
-      var charactersNav = $('#characters .character-nav'),
-          numCharacters = charactersNav.find('li').length,
+      var charactersNav = $('#characters .character-nav');
+      if(charactersNav.length > 0) {
+        var numCharacters = charactersNav.find('li').length,
           nextPrevWidth = $('#characters #nav-prev').outerWidth(true),
           navElemWidth = charactersNav.find('li').outerWidth(true),
           charNavListWidth = (numCharacters * navElemWidth),
@@ -18,13 +13,14 @@
           nextPrevHeight = charactersNav.find('#nav-prev').outerHeight(true),
           navElemHeight = charactersNav.find('li').outerHeight(true),
           navHeight = (navElemHeight > nextPrevHeight) ? nextPrevHeight : navElemHeight;
-      if (charNavWidth > maxCharNavWidth) {
-        charNavListWidth = Math.ceil(numCharacters/2) * navElemWidth;
-        charNavWidth = charNavListWidth + (nextPrevWidth * 2);
-        navHeight = (navHeight * 2) + 6;
+        if (charNavWidth > maxCharNavWidth) {
+          charNavListWidth = Math.ceil(numCharacters / 2) * navElemWidth;
+          charNavWidth = charNavListWidth + (nextPrevWidth * 2);
+          navHeight = (navHeight * 2) + 6;
+        }
+        charactersNav.find('ul').width(charNavListWidth).height(navHeight);
+        charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
       }
-      charactersNav.find('ul').width(charNavListWidth).height(navHeight);
-      charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
     },
 
     micrositeSetNavNextPrevState: function setNavNextPreState() {
@@ -254,10 +250,18 @@
     },
 
     attach: function (context, settings) {
-      if ($('#characters').length > 0) {
+      // check to make sure there's a characters section
+      if ($('#character-inner-container').length > 0) {
         Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
         var characters = $('#microsite #character-info'),
-            activeCharacter = characters.find('li.active').attr('id');
+            activeCharacter = characters.find('li.active').attr('id'),
+            self = this;
+        self.siteName = Drupal.settings.microsites_settings.title;
+        self.basePath = Drupal.settings.microsites_settings.microsite_theme_path;
+        self.basePageName = Drupal.settings.microsites_settings.title + ' | USA Network';
+        self.defaultCharBg = Drupal.settings.microsite_characters.default_char_bg;
+        self.defaultMobileCharBg = Drupal.settings.microsite_characters.default_mobile_char_bg;
+
         Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
         Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
 

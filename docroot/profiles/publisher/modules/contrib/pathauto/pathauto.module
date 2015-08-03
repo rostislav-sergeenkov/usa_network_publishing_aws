@@ -548,6 +548,13 @@ function pathauto_node_update_alias(stdClass $node, $op, array $options = array(
     return;
   }
 
+  // State Machine 3.x does two node_save()'s, which doesn't have pathauto
+  // support yet.
+  // @see https://www.drupal.org/node/2363585
+  if (module_exists('state_flow') && !empty($node->state_flow_node_set_published)) {
+    return;
+  }
+
   $options += array('language' => pathauto_entity_language('node', $node));
 
   // Skip processing if the node has no pattern.

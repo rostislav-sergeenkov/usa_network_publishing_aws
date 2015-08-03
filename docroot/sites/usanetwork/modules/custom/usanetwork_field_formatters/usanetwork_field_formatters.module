@@ -16,6 +16,11 @@ function usanetwork_field_formatters_field_formatter_info() {
     'field types' => array('text_long'), //This will only be available to long text fields
     'description' => t('This formatter should be used for outputting custom css inserted in a long text/plain text field.'),
   );
+  $custom_formatters['custom_css_ajax'] = array(
+    'label' => t('Custom CSS For Ajax'),
+    'field types' => array('text_long'), //This will only be available to long text fields
+    'description' => t('This formatter should be used for outputting custom css inserted in a long text/plain when entity is loaded by ajax call.'),
+  );
   $custom_formatters['custom_js'] = array(
     'label' => t('Custom JS'),
     'field types' => array('text_long'), //This will only be available to long text fields
@@ -174,8 +179,8 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
     case 'raw_formatter':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
-          '#theme' => 'raw_formatter', 
-          '#data' => $item['value'], 
+          '#theme' => 'raw_formatter',
+          '#data' => $item['value'],
         );
       }
       break;
@@ -184,7 +189,7 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
           '#data' => drupal_add_css(
-            $item['value'], 
+            $item['value'],
             array(
               'group' => CSS_THEME,
               'type' => 'inline',
@@ -192,6 +197,14 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
               'preprocess' => FALSE,
               'weight' => '9999',
             )),
+        );
+      }
+      break;
+    case 'custom_css_ajax':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => 'custom_css_ajax_formatter',
+          '#data' => $item['value'],
         );
       }
       break;
@@ -219,7 +232,7 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
 */
 function usanetwork_field_formatters_theme() {
   $items = array();
-  
+
   $items['raw_formatter'] = array(
     'template'  => 'templates/raw-formatter',
     'variables' => array('data' => ''),
@@ -229,6 +242,13 @@ function usanetwork_field_formatters_theme() {
     'render element' => 'element',
     'file' => 'usanetwork_field_formatters.theme.inc',
   );
+
+  $items['custom_css_ajax_formatter'] = array(
+    //'render element' => 'element',
+    'variables' => array('data' => NULL),
+    'file' => 'usanetwork_field_formatters.theme.inc',
+  );
+
 
   return $items;
 }

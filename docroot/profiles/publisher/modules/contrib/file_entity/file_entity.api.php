@@ -405,3 +405,17 @@ function hook_file_metadata_info() {
 function hook_file_metadata_info_alter() {
 
 }
+
+/**
+ * Alter the upload location for the file add upload form.
+ *
+ * @param string &$uri
+ *   The URI to alter.
+ * @param array $params
+ *   An array of parameters from the media browser.
+ * @param array $data
+ *   (optional) An array of token objects to pass to token_replace().
+ */
+function hook_file_entity_upload_destination_uri_alter(&$uri, array $params, array $data = array()) {
+
+}

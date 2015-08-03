@@ -1,1 +1,1 @@
-<?php define('PUBLISHER_VERSION', '7.38.0');
+<?php define('PUBLISHER_VERSION', '7.58.0');

@@ -1,6 +1,0 @@
-name = Publisher Test Module
-core = 7.x
-hidden = true
-
-files[] = publisherWebTestCase.php
-files[] = tests/publisherProfileTest.test

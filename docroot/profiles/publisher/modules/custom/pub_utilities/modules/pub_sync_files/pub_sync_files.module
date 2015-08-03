@@ -43,7 +43,7 @@ function pub_sync_files_sync_form($form, &$form_state) {
 
   $form['site_source'] = array(
     '#type' => 'fieldset',
-    '#description' => t('Choose the source site which the files will be sync\'d from.'),
+    '#description' => t("Choose the source site which the files will be sync'd from."),
     '#collabsible' => FALSE,
     '#title' => 'Source: site',
     '#tree' => TRUE,
@@ -146,14 +146,16 @@ function _pub_sync_files_sync_form_ajax_callback($form, $form_state) {
 }
 
 /**
+ * Helper function to get the sync files directory for the specified site.
+ *
  * Helper function to get the sync files directory for the specified site. The
  * directory is created if it doesn't already exist.
  *
- * @param sting $site_name
+ * @param string $site_name
  *   The short name of the site.
  *
  * @return string
- *   The curent working directory.
+ *   The current working directory.
  */
 function _pub_sync_files_get_sync_dir($site_name) {
   // Create the sync files directory in the private files directory.

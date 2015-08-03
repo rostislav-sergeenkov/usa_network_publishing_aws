@@ -1,0 +1,244 @@
+// advert
+#topbanner {
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 970px;
+  @include breakpoint($bp-640-width) {
+    margin: 3px auto;
+  }
+}
+.midbanner {
+  height: auto;
+  margin: 20px auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 970px;
+  @include breakpoint($bp-640-width) {
+    margin: 1.47vw auto;
+    max-width: 100%;
+    width: 300px;
+  }
+}
+.companionContainer {
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 970px;
+}
+
+.page-file {
+  header {
+    .header-nav-bar {
+      .nav-bar-tabs {
+        .sponsored {
+          display: table;
+          float: left;
+          height: get-vw(73px, 1025);
+          text-align: center;
+          width: 282px;
+          @include breakpoint($bp-min-1901-width) {
+            height: 135px;
+          }
+          @include breakpoint($bp-768-width) {
+            float: none;
+            height: 50px;
+            margin: 0 auto;
+          }
+          .mps-slot {
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.featured-block {
+  .slides {
+    .sponsored {
+      &.active {
+        padding: 3px 0;
+      }
+      background-color: $sponsorship-dark;
+      bottom: 40%;
+      right: 0;
+      position: absolute;
+      width: 39.5%;
+      z-index: 2;
+    }
+    li {
+      &.first {
+        .sponsored {
+          bottom: 31%;
+          width: 30%;
+        }
+      }
+    }
+  }
+}
+.page-home {
+  .block-usanetwork-aspot{
+    .slide {
+      .sponsored {
+        &.active {
+          padding: 3px 0;
+        }
+        background-color: $sponsorship-dark;
+        bottom: 0;
+        right: 10%;
+        position: absolute;
+        width: 14%;
+        @include breakpoint($bp-640-width) {
+          right: 0;
+          width: 44%;
+        }
+      }
+    }
+  }
+}
+.aspot-and-episodes {
+  .show-aspot {
+    .sponsored {
+      &.active {
+        padding: 3px 0;
+      }
+      background-color: $sponsorship-dark;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 14%;
+      @include breakpoint($bp-640-width) {
+        width: 44%;
+      }
+    }
+  }
+  .episodes-list {
+    &.sponsored-enable {
+      > .title {
+        height: calc(10% + 50px);
+        @include breakpoint($bp-768-width) {
+         height: 105px;
+        }
+        .title-wrapper {
+          height: 50%;
+        }
+      }
+      .episodes-list-slider {
+        &.vertical {
+          height: calc(90% - 50px);
+        }
+      }
+    }
+  }
+}
+
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of {
+  .five-promo-item-block{
+    .sponsored {
+      &.active {
+         padding: 3px 0;
+       }
+      background-color: $sponsorship-dark;
+//      bottom: 34.7%;
+      bottom: 25%;
+      right: 0;
+      position: absolute;
+      width: 63%;
+//      @include breakpoint($bp-768-width) {
+//        bottom: 8.6vw;
+//      }
+//      @include breakpoint($bp-640-width) {
+//        bottom: 12.4vw;
+//      }
+    }
+    li{
+      &.first{
+        .sponsored {
+          bottom: 9.1vw;
+          width: 30%;
+          @include breakpoint($bp-768-width) {
+            bottom: 25%;
+          }
+          @include breakpoint($bp-640-width) {
+            bottom: 29%;
+          }
+          @include breakpoint($bp-min-1901-width) {
+            bottom: 173px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related {
+  .show-latest-block {
+    ul {
+      li{
+        .node-usanetwork-promo {
+          .sponsored {
+            &.active {
+              padding: 3px 0;
+            }
+            background-color: $sponsorship-dark;
+            bottom: 9.1vw;
+            right: 0;
+            position: absolute;
+            width: 30%;
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 173px;
+            }
+            @include breakpoint($bp-768-width) {
+              bottom: 8.6vw;
+            }
+            @include breakpoint($bp-640-width) {
+              bottom: 12.4vw;
+            }
+          }
+        }
+        .node-usanetwork-promo.big {
+          .sponsored {
+            bottom: 9.1vw;
+            width: 28%;
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 173px;
+            }
+            @include breakpoint($bp-768-width) {
+              bottom: 8.6vw;
+            }
+            @include breakpoint($bp-640-width) {
+              bottom: 29%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.related-content-block {
+  .node-usanetwork-promo {
+    .sponsored {
+      &.active {
+        padding: 3px 0;
+      }
+      background-color: $sponsorship-dark;
+      bottom: 9.1vw;
+      right: 0;
+      position: absolute;
+      width: 30%;
+      @include breakpoint($bp-min-1901-width) {
+        bottom: 173px;
+      }
+      @include breakpoint($bp-768-width) {
+        bottom: 8.6vw;
+      }
+      @include breakpoint($bp-640-width) {
+        bottom: 29%;
+      }
+    }
+  }
+}

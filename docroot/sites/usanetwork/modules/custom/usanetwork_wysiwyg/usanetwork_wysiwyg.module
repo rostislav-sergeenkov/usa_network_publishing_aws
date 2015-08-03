@@ -3,3 +3,31 @@
  * @file
  * Drupal needs this blank file.
  */
+
+/**
+ *  Implements hook_wysiwyg_plugin().
+ */
+function usanetwork_wysiwyg_plugin($editor, $version) {
+  if ($editor == 'tinymce') {
+    return array(
+      'person_quotation' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'person_quotation_tinymce_plugin.js',
+        'buttons' => array(
+          'person_quotation' => t('Person quotation')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+      'lines_quotation' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'lines_quotation_tinymce_plugin.js',
+        'buttons' => array(
+          'lines_quotation' => t('Lines quotation')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+    );
+  }
+}

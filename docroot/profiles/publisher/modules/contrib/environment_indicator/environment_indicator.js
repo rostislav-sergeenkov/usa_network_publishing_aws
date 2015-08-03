@@ -8,25 +8,25 @@
           environment_text_color = settings.environment_indicator['toolbar-text-color'],
           $name = $('<div>').addClass('environment-indicator-name-wrapper').html(environment_name),
           $toolbar = $('#toolbar, #navbar-bar', context);
-        $('#toolbar div.toolbar-menu', $toolbar).once('environment_indicator').prepend($name);
-        $('#toolbar div.toolbar-menu', $toolbar).css('background-color', environment_color);
-        $('#toolbar div.toolbar-menu .item-list', $toolbar).css('background-color', changeColor(environment_color, 0.15, true));
-        $('#toolbar div.toolbar-menu ul li:not(.environment-switcher) a', $toolbar).css('background-color', environment_color).css('color', environment_text_color);
-        $('#toolbar div.toolbar-drawer', $toolbar).css('background-color', changeColor(environment_color, 0.25)).find('ul li a').css('color', changeColor(environment_text_color, 0.25));
-        $('#toolbar div.toolbar-menu ul li a', $toolbar).hover(function () {
+        $('div.toolbar-menu', $toolbar).once('environment_indicator').prepend($name);
+        $('div.toolbar-menu', $toolbar).css('background-color', environment_color);
+        $('div.toolbar-menu .item-list', $toolbar).css('background-color', changeColor(environment_color, 0.15, true));
+        $('div.toolbar-menu ul li:not(.environment-switcher) a', $toolbar).css('background-color', environment_color).css('color', environment_text_color);
+        $('div.toolbar-drawer', $toolbar).css('background-color', changeColor(environment_color, 0.25)).find('ul li a').css('color', changeColor(environment_text_color, 0.25));
+        $('div.toolbar-menu ul li a', $toolbar).hover(function () {
           $(this).css('background-color', changeColor(environment_color, 0.1)).css('color', changeColor(environment_text_color, 0.1));
         }, function () {
           $(this).css('background-color', environment_color).css('color', environment_text_color);
-          $('#toolbar div.toolbar-menu ul li.active-trail a', $toolbar).css('background-color', changeColor(environment_color, 0.1)).css('color', changeColor(environment_text_color, 0.1));
+          $('div.toolbar-menu ul li.active-trail a', $toolbar).css('background-color', changeColor(environment_color, 0.1)).css('color', changeColor(environment_text_color, 0.1));
         });
-        $('#toolbar div.toolbar-menu ul li.active-trail a', $toolbar).css('background-image', 'none').css('background-color', changeColor(environment_color, 0.1)).css('color', changeColor(environment_text_color, 0.1));
-        $('#toolbar div.toolbar-drawer ul li a', $toolbar).hover(function () {
+        $('div.toolbar-menu ul li.active-trail a', $toolbar).css('background-image', 'none').css('background-color', changeColor(environment_color, 0.1)).css('color', changeColor(environment_text_color, 0.1));
+        $('div.toolbar-drawer ul li a', $toolbar).hover(function () {
           $(this).css('background-color', changeColor(environment_color, 0.1, true)).css('color', changeColor(environment_text_color, 0.1, true));
         }, function () {
           $(this).css('background-color', changeColor(environment_color, 0.25)).css('color', changeColor(environment_text_color, 0.25));
-          $('#toolbar div.toolbar-drawer ul li.active-trail a', $toolbar).css('background-color', changeColor(environment_color, 0.1, true)).css('color', changeColor(environment_text_color, 0.1, true));
+          $('div.toolbar-drawer ul li.active-trail a', $toolbar).css('background-color', changeColor(environment_color, 0.1, true)).css('color', changeColor(environment_text_color, 0.1, true));
         });
-        $('#toolbar div.toolbar-drawer ul li.active-trail a', $toolbar).css('background-image', 'none').css('background-color', changeColor(environment_color, 0.1, true)).css('color', changeColor(environment_text_color, 0.1, true));
+        $('div.toolbar-drawer ul li.active-trail a', $toolbar).css('background-image', 'none').css('background-color', changeColor(environment_color, 0.1, true)).css('color', changeColor(environment_text_color, 0.1, true));
         // Move switcher bar to the top
         var $switcher_container = $('.environment-switcher-container', $toolbar);
         var $switcher = $switcher_container.parent().clone();
@@ -73,7 +73,6 @@
     attach: function (context, settings) {
       if (typeof(settings.navbar) != 'undefined' && typeof(settings.environment_indicator) != 'undefined' && typeof(settings.environment_indicator['toolbar-color']) != 'undefined') {
         $('#navbar-administration .navbar-bar', context).css('background-color', settings.environment_indicator['toolbar-color']);
-        $('#navbar-administration .navbar-tab *:not(select)', context).css('color', settings.environment_indicator['toolbar-text-color']);
       }
     }
   };

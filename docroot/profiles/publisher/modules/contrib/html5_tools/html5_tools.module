@@ -1,5 +1,8 @@
 <?php
 
+// Code related to the HTML5 text filters.
+require_once dirname(__FILE__) . '/html5_tools.filter.inc';
+
 /**
  * Implements hook_menu().
  */
@@ -50,6 +53,32 @@ function html5_tools_help($path, $arg) {
       return t("HTML5 simplifies many things about HTML. Some of these new standards are a bit tricky to implement in Drupal, because they are hardcoded into Drupal core. You can alter some of them by using theme override functions in your theme's template.php file, but this module provides tools for accomplishing these changes more easily.");
       break;
   }
+}
+
+/**
+ * Implements hook_libraries_info().
+ */
+function html5_tools_libraries_info() {
+  return array(
+    'html5-php' => array(
+      'name' => 'HTML5-PHP',
+      'vendor url' => 'http://masterminds.github.io/html5-php/',
+      'download url' => 'https://github.com/Masterminds/html5-php',
+      'version' => '2.x',
+      'xautoload' => function($adapter) {
+        /**
+         * @var \Drupal\xautoload\Adapter\LocalDirectoryAdapter $adapter
+         *   An adapter object that can register stuff into the class loader.
+         */
+        $adapter->addPsr4('Masterminds\HTML5\\', 'src/HTML5');
+      },
+      'files' => array(
+        'php' => array(
+          'src/HTML5.php',
+        ),
+      ),
+    ),
+  );
 }
 
 /**

@@ -6,7 +6,7 @@
       <a href="<?php print $link; ?>" target="<?php print $target; ?>" class="carousel-item-link">
     <?php endif; ?>
   <?php endif; ?>
-  <div class="title-overlay meta">
+  <div class="meta">
     <?php if ($cta && $cta != '&nbsp;' && $action_type == 'video'): ?>
       <div class="promo-cta"><?php print $cta; ?></div>
     <?php endif; ?>

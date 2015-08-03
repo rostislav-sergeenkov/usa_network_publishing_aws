@@ -1,0 +1,344 @@
+/* SITE NAV */
+#site-nav {
+  width: 100%;
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #000;
+  color: #FFF;
+  z-index: 100;
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  font-size: 1.06em;
+}
+#site-nav #site-nav-content {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+#site-nav a,
+#site-nav a:link,
+#site-nav a:visited {
+  color: #FFF;
+  text-transform: uppercase;
+}
+#site-nav a:hover,
+#site-nav a:active,
+#site-nav li.active a {
+  color: #FFE476;
+}
+#site-nav-left {
+  width: 45px;
+  height: 70px;
+  position: relative;
+  bottom: 8px;
+  left: 8px;
+}
+#site-nav-left a {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+#site-nav #site-nav-center {
+  position: absolute;
+  bottom: 8px;
+  left: 100%;
+  margin: 0;
+  width: calc(100% - 221px);
+  margin-left: calc(-50% - ((100% - 221px)/2));
+}
+#site-nav #site-nav-top {
+  width: 55%;
+  margin: 0 auto;
+  max-width: 592px;
+}
+#site-nav #site-nav-top.camry,
+#site-nav #site-nav-top.corolla {
+  position: relative;
+  top: 6px;
+}
+#site-nav #site-nav-top a {
+  float: left;
+  margin-top: 2%;
+}
+#site-nav #site-nav-top a#gracelandcu-logo.camry2015 {
+  width: 64%;
+}
+#site-nav #site-nav-top a#gracelandcu-logo.camry,
+#site-nav #site-nav-top a#gracelandcu-logo.corolla {
+  width: 70%;
+}
+#site-nav #site-nav-top a#gracelandcu-sponsor.camry2015 {
+  width: 35.22%;
+  margin-left: 0.78%;
+}
+#site-nav #site-nav-top a#gracelandcu-sponsor.camry,
+#site-nav #site-nav-top a#gracelandcu-sponsor.corolla {
+  width: 25.22%;
+  margin-left: 4.78%;
+  margin-top: 1.2%;
+}
+#site-nav #site-nav-bottom {
+  display: block;
+}
+#site-nav-links {
+  display: table;
+  margin: 0 auto;
+  clear: both;
+}
+#site-nav ul {
+  width: 100%;
+}
+#site-nav li {
+  float: left;
+  padding: 10px 10px 0;
+}
+#site-nav li a {
+  width: 100%;
+  display: block;
+}
+#site-nav #site-nav-right {
+  display: block;
+}
+#site-nav-right {
+  width: 145px;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+#site-nav-right #site-nav-social {
+  position: absolute;
+  right: 8px;
+  bottom: 1.9em;
+}
+#site-nav-right #site-nav-social a {
+  float: left;
+  width: 26px;
+  height: 26px;
+}
+.page-node-microsite #site-nav #site-nav-social a.instagram {
+  background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/icon_instagram.png");
+}
+.page-node-microsite #site-nav #site-nav-social a.twitter {
+  background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/icon_twitter.png");
+}
+.page-node-microsite #site-nav #site-nav-social a.facebook {
+  background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/icon_fb.png");
+}
+.page-node-microsite #site-nav #site-nav-social a.youtube {
+  background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchup/images/icons/icon_youtube.png");
+}
+.page-node-microsite #site-nav #site-nav-social a:hover {
+  opacity: 0.7;
+}
+#site-nav-right #site-nav-show-site-link {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  line-height: 1em;
+}
+#site-nav-right #site-nav-show-site-link a {
+  font-size: 0.75em;
+}
+.page-node-microsite #site-nav #site-nav-social a,
+.page-node-microsite #site-nav #site-nav-social a:link,
+.page-node-microsite #site-nav #site-nav-social a:visited,
+#site-nav-right #site-nav-show-site-link a,
+#site-nav-right #site-nav-show-site-link a:link,
+#site-nav-right #site-nav-show-site-link a:visited,
+#site-nav-mobile a,
+#site-nav-mobile a:link,
+#site-nav-mobile a:visited {
+  color: #818181;
+  margin-left: 4px;
+}
+#site-nav-mobile li.internal a,
+#site-nav-mobile li.internal a:link,
+#site-nav-mobile li.internal a:visited {
+  color: #FFF;
+}
+.page-node-microsite #site-nav #site-nav-social a:hover,
+.page-node-microsite #site-nav #site-nav-social a:active,
+#site-nav-right #site-nav-show-site-link a:hover,
+#site-nav-right #site-nav-show-site-link a:active,
+#site-nav-mobile li a:hover,
+#site-nav-mobile li a:active {
+  color: #FFF;
+}
+#site-nav-mobile li.internal a:hover,
+#site-nav-mobile li.internal a:active,
+#site-nav-mobile li.internal.active a {
+  color: #FFE476;
+}
+#site-nav #site-nav-mobile {
+  display: none;
+}
+
+/* SITE NAV MOBILE */
+#site-nav.mobile {
+  overflow: visible;
+}
+#site-nav.mobile #site-nav-left {
+  float: left;
+}
+#site-nav.mobile #site-nav-center {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0 0 0 22px;
+  width: calc(100% - 504px);
+  max-width: 317px;
+  min-width: 244px;
+  margin: 0 auto;
+}
+#site-nav.mobile #site-nav-bottom {
+  display: none;
+}
+#site-nav.mobile #site-nav-top {
+  width: 100%;
+}
+#site-nav.mobile #site-nav-top a#gracelandcu-logo {
+  width: 96%;
+}
+#site-nav.mobile #site-nav-top a#gracelandcu-sponsor.camry2015 {
+  width: 64%;
+  margin: 2% 0 0 16%;
+}
+#site-nav.mobile #site-nav-top a#gracelandcu-sponsor.camry,
+#site-nav.mobile #site-nav-top a#gracelandcu-sponsor.corolla {
+  width: 44%;
+  margin: 2% 0 0 28%;
+}
+#site-nav.mobile #site-nav-right {
+  display: none;
+}
+#site-nav-mobile {
+  width: 50px;
+  height: 34px;
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+}
+#site-nav.mobile #site-nav-mobile {
+  display: block;
+}
+/* start hamburger icon */
+#site-nav .mobi-menu-icon {
+  display: inline-block;
+  width: 25px;
+  text-indent: -999px;
+}
+#site-nav .border-icon {
+  height: 25px;
+  border-top: 5px solid #818181;
+  border-bottom: 5px solid #818181;
+}
+#site-nav .border-icon:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  border-top: 5px solid #818181;
+}
+#site-nav-mobile:hover .border-icon {
+  border-top-color: #FFF;
+  border-bottom-color: #FFF;
+}
+#site-nav-mobile:hover .border-icon:before {
+  border-top-color: #FFF;
+}
+/* end hamburger icon */
+
+#site-nav-links-mobile {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#site-nav-links-mobile ul#site-nav-links-list-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  margin-top: 28px;
+  right: -16px;
+  width: 150px;
+  height: auto;
+  z-index: 10;
+}
+#site-nav-mobile:hover ul#site-nav-links-list-mobile,
+#site-nav-mobile ul#site-nav-links-list-mobile.active {
+  display: block;
+}
+#site-nav-links-mobile li {
+  float: none;
+  clear: both;
+  width: 150px;
+  position: relative;
+  top: 0;
+  right: 0;
+  background-color: #333;
+  color: #FFF;
+  height: 34px;
+  text-indent: 0;
+  z-index: 10;
+}
+#site-nav-mobile #site-nav-social {
+  height: 42px;
+}
+#site-nav-mobile #site-nav-social a {
+  width: 26px;
+  height: 26px;
+  float: left;
+}
+#site-nav.section {
+  padding: 0;
+}
+
+/* BEGIN MEDIA QUERIES */
+@media (max-width: 1760px) {
+  #site-nav #site-nav-top a#gracelandcu-sponsor.camry,
+  #site-nav #site-nav-top a#gracelandcu-sponsor.corolla {
+    margin-top: 2.2%;
+  }
+}
+
+@media (min-width: 1740px) {
+  #site-nav #site-nav-center {
+    margin-left: calc(-50% - 700px);
+    max-width: 1400px;
+  }
+  #site-nav #site-nav-top a {
+    margin-top: 1%;
+  }
+}
+
+@media (max-width: 1250px) {
+  #site-nav #site-nav-top.camry,
+  #site-nav #site-nav-top.corolla {
+    top: 4px;
+  }
+  #site-nav #site-nav-top a#gracelandcu-sponsor.camry,
+  #site-nav #site-nav-top a#gracelandcu-sponsor.corolla {
+    margin-top: 2.2%;
+  }
+}
+
+@media (max-width: 1050px) {
+  #site-nav #site-nav-top a#gracelandcu-sponsor.camry,
+  #site-nav #site-nav-top a#gracelandcu-sponsor.corolla {
+    width: 24.22%;
+  }
+}
+
+@media (max-width: 670px) {
+  #site-nav-left {
+    width: 38px;
+    height: 58.5px;
+  }
+}

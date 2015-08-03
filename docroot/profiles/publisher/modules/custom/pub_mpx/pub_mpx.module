@@ -137,7 +137,7 @@ function pub_mpx_menu() {
 
   $items = array();
   $items['pub-mpx-monitoring-page'] = array(
-    'title' => t('MPX Monitoring Page'),
+    'title' => 'MPX Monitoring Page',
     'page callback' => '_pub_mpx_monitoring_page',
     'access arguments' => array('access content'),
   );
@@ -410,7 +410,6 @@ function _pub_mpx_monitoring_page() {
     );
     //*/
 
-
     $output['account_' . $account_id . '_tests'] = $account_output;
   }
 
@@ -456,7 +455,6 @@ function _pub_mpx_file_access($op, $file = NULL, $account = NULL) {
  * Implements hook_revision_scheduler_list_page_alter().
  */
 function pub_mpx_revision_scheduler_list_page_alter(&$build, $entity_type, $entity) {
-
   // Restrict if this is an mpx video file.
   if (empty($entity->type) || strpos($entity->type, 'mpx_video') !== 0) {
     return FALSE;
@@ -466,18 +464,17 @@ function pub_mpx_revision_scheduler_list_page_alter(&$build, $entity_type, $enti
   $file_bundle_overridable_fields = variable_get('pub_mpx_' . $entity->type . '_overridable_fields', array());
 
   if (!$mpx_value_overrides_enabled) {
-
     // Customize a message for users with different access because we don't want
     // some users trying to enable overrides when they cannot.
     $message = t('Manually running or deleting scheduled operations is unavailable because MPX value overrides are not enabled.');
     if (user_access('administer file types')) {
-      $message .= t(' To enable MPX value overrides go to !file-types and edit the file type in question.', array(
+      $message .= ' ' . t('To enable MPX value overrides go to !file-types and edit the file type in question.', array(
         '!file-types' => l('admin/structure/file-types', 'admin/structure/file-types'),
         )
       );
     }
     else {
-      $message .= t(' Contact your site administrator if you want this enabled.');
+      $message .= ' ' . t('Contact your site administrator if you want this enabled.');
     }
     drupal_set_message($message, 'warning', FALSE);
   }
@@ -487,15 +484,15 @@ function pub_mpx_revision_scheduler_list_page_alter(&$build, $entity_type, $enti
     if (!$mpx_value_overrides_enabled ||
         ($row_operation->operation == 'publish' && empty($file_bundle_overridable_fields['field_mpx_available_date'])) ||
         ($row_operation->operation == 'unpublish' && empty($file_bundle_overridable_fields['field_mpx_expiration_date']))) {
-      if (is_array($row[3]) && isset($row[3]['data']['#links']['run'])) {
-        unset($row[3]['data']['#links']['run']['href']);
-        $row[3]['data']['#links']['run']['attributes']['class'] = !empty($row[3]['data']['#links']['run']['attributes']['class']) ?
-          $row[3]['data']['#links']['run']['attributes']['class'] . ' disabled' : 'disabled';
+      if (is_array($row[4]) && isset($row[4]['data']['#links']['run'])) {
+        unset($row[4]['data']['#links']['run']['href']);
+        $row[4]['data']['#links']['run']['attributes']['class'] = !empty($row[4]['data']['#links']['run']['attributes']['class']) ?
+          $row[4]['data']['#links']['run']['attributes']['class'] . ' disabled' : 'disabled';
       }
-      if (is_array($row[3]) && isset($row[3]['data']['#links']['delete'])) {
-        unset($row[3]['data']['#links']['delete']['href']);
-        $row[3]['data']['#links']['delete']['attributes']['class'] = !empty($row[3]['data']['#links']['delete']['attributes']['class']) ?
-          $row[3]['data']['#links']['delete']['attributes']['class'] . ' disabled' : 'disabled';
+      if (is_array($row[4]) && isset($row[4]['data']['#links']['delete'])) {
+        unset($row[4]['data']['#links']['delete']['href']);
+        $row[4]['data']['#links']['delete']['attributes']['class'] = !empty($row[4]['data']['#links']['delete']['attributes']['class']) ?
+          $row[4]['data']['#links']['delete']['attributes']['class'] . ' disabled' : 'disabled';
       }
       if ($row_operation->operation == 'publish') {
         drupal_set_message(t('Manually running or deleting Publish operations is unavailable because default MPX value overrides are not enabled for the Available Date field.'), 'warning', FALSE);
@@ -505,23 +502,25 @@ function pub_mpx_revision_scheduler_list_page_alter(&$build, $entity_type, $enti
       }
     }
     // Disable the operations if the user does not have permission to do so.
-    $completed = is_string($row[3]) ? strtolower($row[3]) === 'completed' : FALSE;
+    $completed = is_string($row[4]) ? strtolower($row[4]) === 'completed' : FALSE;
     if (!$mpx_value_overrides_enabled && !$completed) {
-      unset($row[3]['data']['#theme']);
-      unset($row[3]['data']['#links']);
-      unset($row[3]['data']['#title']);
-      $row[3]['data']['#markup'] = t('No operations available.');
+      if (is_array($row[4]) && !empty($row[4]['data'])) {
+        unset($row[4]['data']['#theme']);
+        unset($row[4]['data']['#links']);
+        unset($row[4]['data']['#title']);
+        $row[4]['data']['#markup'] = t('No operations available.');
+      }
     }
-    elseif ($entity->published && $row_operation->operation == 'publish' && is_array($row[3]) && isset($row[3]['data']['#links']['run'])) {
-      unset($row[3]['data']['#links']['run']['href']);
-      $row[3]['data']['#links']['run']['attributes']['class'] = !empty($row[3]['data']['#links']['run']['attributes']['class']) ?
-        $row[3]['data']['#links']['run']['attributes']['class'] . ' disabled' : 'disabled';
+    elseif ($entity->published && $row_operation->operation == 'publish' && is_array($row[4]) && isset($row[4]['data']['#links']['run'])) {
+      unset($row[4]['data']['#links']['run']['href']);
+      $row[4]['data']['#links']['run']['attributes']['class'] = !empty($row[4]['data']['#links']['run']['attributes']['class']) ?
+        $row[4]['data']['#links']['run']['attributes']['class'] . ' disabled' : 'disabled';
       drupal_set_message(t('Manually running the Publish operation is unavailable because this file is already published.'), 'warning');
     }
-    elseif (!$entity->published && $row_operation->operation == 'unpublish' && is_array($row[3]) && isset($row[3]['data']['#links']['run'])) {
-      unset($row[3]['data']['#links']['run']['href']);
-      $row[3]['data']['#links']['run']['attributes']['class'] = !empty($row[3]['data']['#links']['run']['attributes']['class']) ?
-        $row[3]['data']['#links']['run']['attributes']['class'] . ' disabled' : 'disabled';
+    elseif (!$entity->published && $row_operation->operation == 'unpublish' && is_array($row[4]) && isset($row[4]['data']['#links']['run'])) {
+      unset($row[4]['data']['#links']['run']['href']);
+      $row[4]['data']['#links']['run']['attributes']['class'] = !empty($row[4]['data']['#links']['run']['attributes']['class']) ?
+        $row[4]['data']['#links']['run']['attributes']['class'] . ' disabled' : 'disabled';
       drupal_set_message(t('Manually running the Unpublish operation is unavailable because this file is already unpublished.'), 'warning');
     }
   }
@@ -587,22 +586,6 @@ function pub_mpx_field_attach_load($entity_type, $entities, $age, $options) {
         ->execute()
         ->fetchAll();
       $entity->mpx_video_data = !empty($mpx_video_data) ? (array) reset($mpx_video_data) : array();
-      // Attach the mpx_player_data array.
-      $entity->mpx_player_data = array();
-      if (!empty($entity->mpx_video_data['player_id'])) {
-        $mpx_player_data = db_select('mpx_player', 'p')
-          ->fields('p')
-          ->condition('player_id', $entity->mpx_video_data['player_id'], '=')
-          ->execute()
-          ->fetchAll();
-        $entity->mpx_player_data = !empty($mpx_player_data) ? (array) reset($mpx_player_data) : array();
-      }
-      else {
-        if(!empty($entity->mpx_video_data['parent_account'])) {
-          $video_account = _media_theplatform_mpx_get_account_data($entity->mpx_video_data['parent_account']);
-          $entity->mpx_player_data = media_theplatform_mpx_get_mpx_player_by_player_id($video_account->default_player);
-        }
-      }
     }
     elseif ($entity->type == 'mpx_player') {
       $mpx_player_data = db_select('mpx_player', 'p')
@@ -610,7 +593,7 @@ function pub_mpx_field_attach_load($entity_type, $entities, $age, $options) {
         ->condition('fid', $entity->fid, '=')
         ->execute()
         ->fetchAll();
-      $entity->mpx_player_data = !empty($mpx_player_data) ? (array)reset($mpx_player_data) : array();
+      $entity->mpx_player_data = !empty($mpx_player_data) ? (array) reset($mpx_player_data) : array();
     }
   }
 }
@@ -627,6 +610,12 @@ function pub_mpx_theme($existing, $type, $theme, $path) {
       'player_id' => NULL,
       'width' => NULL,
       'height' => NULL,
+    ),
+  );
+  $items['pub_mpx_video_by_guid'] = array(
+    'variables' => array(
+      'file' => NULL,
+      'player_pid' => NULL,
     ),
   );
   $items['pub_mpx_inactive_video'] = array(
@@ -647,6 +636,63 @@ function theme_pub_mpx_inactive_video($variables) {
 }
 
 /**
+ * Theme function to render mpx video by GUID.
+ */
+function theme_pub_mpx_video_by_guid($variables) {
+  $file = $variables['file'];
+
+  // Check to be sure we have a GUID for this video. If not, log an error and
+  // return an empty string.
+  if (empty($file->field_mpx_guid[LANGUAGE_NONE][0]['value'])) {
+    $message = 'No Media GUID stored for MPX video @filename (@uri).';
+    $t_args = array(
+      '@filename' => $file->filename,
+      '@uri' => $file->uri,
+    );
+    watchdog('Pub MPX', $message, $t_args, WATCHDOG_WARNING);
+    return '';
+  }
+
+  $player_source = _pub_mpx_file_entity_to_iframe_url($file);
+
+  $player_parameters = array(
+    'query' => array('form' => 'html'),
+    'external' => TRUE,
+  );
+
+  $iframe_tag['element']['#tag'] = 'iframe';
+  $iframe_tag['element']['#value'] = 'Your browser does not support iframes.';
+  $iframe_tag['element']['#attributes'] = array(
+    'src' => array(
+      'url_path' => $player_source,
+      'url_options' => $player_parameters,
+    ),
+    'frameborder' => 0,
+    'allowfullscreen' => '',
+    'id' => drupal_html_id('pdk-player'),
+  );
+
+  if (!empty($variables['width'])) {
+    $iframe_tag['element']['#attributes']['width'] = $variables['width'];
+  }
+  if (!empty($variables['height'])) {
+    $iframe_tag['element']['#attributes']['height'] = $variables['height'];
+  }
+
+  // Allow other modules to alter the iframe before rendering.
+  $context = array(
+    'variables' => $variables,
+    'function' => __FUNCTION__,
+  );
+  drupal_alter('pub_mpx_player_iframe', $iframe_tag, $context);
+
+  // Create the URL after the alter occurs.
+  $iframe_tag['element']['#attributes']['src'] = url($iframe_tag['element']['#attributes']['src']['url_path'], $iframe_tag['element']['#attributes']['src']['url_options']);
+
+  return theme('html_tag', $iframe_tag);
+}
+
+/**
  * Theme function to render mpx video.
  */
 function theme_pub_mpx_video($variables) {
@@ -657,12 +703,13 @@ function theme_pub_mpx_video($variables) {
   $mpx_account_pid = $mpx_account->account_pid;
   $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($mpx_account->default_player);
 
+  $mpx_player_data = pub_mpx_player_data_load($file);
   $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
-      (!empty($file->mpx_player_data['pid']) ? $file->mpx_player_data['pid'] : $mpx_account_default_player['pid']);
+      (!empty($mpx_player_data['pid']) ? $mpx_player_data['pid'] : $mpx_account_default_player['pid']);
 
   $released_file_pid = NULL;
-  if (!empty($file->field_mpx_main_released_file_pid[ LANGUAGE_NONE ][0]['value'])) {
-    $released_file_pid = $file->field_mpx_main_released_file_pid[ LANGUAGE_NONE ][0]['value'];
+  if (!empty($file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'])) {
+    $released_file_pid = $file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'];
   }
   elseif (!empty($file->field_mpx_main_released_file_pid[0]['value'])) {
     $released_file_pid = $file->field_mpx_main_released_file_pid[0]['value'];
@@ -673,13 +720,11 @@ function theme_pub_mpx_video($variables) {
   }
 
   // Example iframe provided within the MPX console.
-  //   <iframe src="http://player.theplatform.com/p/vCBdGC/C4Urwvl8rU61/embed/select/XaFHqcNj3NFM" width="480" height="270" frameborder="0" allowfullscreen>Your browser does not support iframes.</iframe>
+  // <iframe src="http://player.theplatform.com/p/vCBdGC/C4Urwvl8rU61/embed/select/XaFHqcNj3NFM" width="480" height="270" frameborder="0" allowfullscreen>Your browser does not support iframes.</iframe>
 
-  // Add id attribute to player iframe and a option to pass in extra query
-  // params to the iframe url.
-
+  // Add ID attribute to player iframe and an option to pass in extra query
+  // params to the iframe URL.
   $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/' . $released_file_pid;
-
   $player_parameters = array(
     'query' => (isset($variables['pub_mpx_player_parameters']) ? $variables['pub_mpx_player_parameters'] : array()),
     'external' => TRUE,
@@ -704,7 +749,11 @@ function theme_pub_mpx_video($variables) {
     $iframe_tag['element']['#attributes']['height'] = $variables['height'];
   }
 
-  drupal_alter('pub_mpx_player_iframe', $iframe_tag);
+  $context = array(
+    'variables' => $variables,
+    'function' => __FUNCTION__,
+  );
+  drupal_alter('pub_mpx_player_iframe', $iframe_tag, $context);
 
   $iframe_tag['element']['#attributes']['src'] = url($iframe_tag['element']['#attributes']['src']['url_path'], $iframe_tag['element']['#attributes']['src']['url_options']);
 
@@ -753,12 +802,23 @@ function _pub_mpx_get_players($key = 'pid', $account_id = NULL, $status = NULL, 
  */
 function pub_mpx_media_browser_plugin_info() {
 
-  return array('pub_mpx_video' =>
-    array(
+  return array(
+    'pub_mpx_video' => array(
       'title' => t('Publisher7 MPX Video'),
       'class' => 'MediaBrowserPubMPXVideo',
     ),
   );
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function pub_mpx_ctools_plugin_directory($module, $type) {
+  if ($module == 'embed_external' && $type == 'embeddable') {
+    return 'plugins/embeddable';
+  }
+
+  return NULL;
 }
 
 /**
@@ -1050,7 +1110,8 @@ function _pub_mpx_default_mpx_field_instances() {
   $mpx_file_field_instances = array(
 
     'field_mpx_released_file_pids' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_released_file_pids',
       'label' => 'MPX Released File Public IDs',
@@ -1070,7 +1131,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_main_released_file_pid' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_main_released_file_pid',
       'label' => 'MPX Media Default Released File Public ID',
@@ -1089,7 +1151,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_media_categories' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_media_categories',
       'label' => 'MPX Media Categories',
@@ -1109,7 +1172,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_title' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_title',
       'label' => 'MPX Media Title',
@@ -1129,7 +1193,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_id' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_id',
       'label' => 'MPX Media ID',
@@ -1149,7 +1214,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_guid' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_guid',
       'label' => 'MPX Media GUID',
@@ -1169,7 +1235,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_description' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_description',
       'label' => 'MPX Media Description',
@@ -1188,7 +1255,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_author' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_author',
       'label' => 'MPX Media Author',
@@ -1208,7 +1276,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_airdate' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_airdate',
       'label' => 'MPX Media Air Date',
@@ -1232,7 +1301,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_available_date' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_available_date',
       'label' => 'MPX Media Available Date',
@@ -1256,7 +1326,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_expiration_date' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_expiration_date',
       'label' => 'MPX Media Expiration Date',
@@ -1280,7 +1351,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_keywords' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_keywords',
       'label' => 'MPX Media Keywords',
@@ -1299,7 +1371,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_copyright' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_copyright',
       'label' => 'MPX Media Copyright',
@@ -1319,7 +1392,8 @@ function _pub_mpx_default_mpx_field_instances() {
     ),
 
     'field_mpx_related_link' => array(
-      'bundle' => NULL,  // Defined per file type.
+      // Defined per file type.
+      'bundle' => NULL,
       'entity_type' => 'file',
       'field_name' => 'field_mpx_related_link',
       'label' => 'MPX Media Related Link',
@@ -1711,7 +1785,7 @@ function _pub_mpx_get_mpx_default_field_db_overrides($field_name, $file) {
   $field_language = field_language('file', $file, $field_name);
 
   foreach ($field_overrides_result as $row) {
-    $field_overrides[ $field_language ][] = array('value' => $row->{$field_column});
+    $field_overrides[$field_language][] = array('value' => $row->{$field_column});
   }
 
   return $field_overrides !== FALSE ? $field_overrides : array();
@@ -2321,7 +2395,7 @@ function _pub_mpx_form_file_entity_edit_submit(&$form, &$form_state) {
   _media_theplatform_mpx_update_file_uri($form_state['file']->fid, $new_file_uri);
   // Flush file entity cache.
   entity_get_controller('file')->resetCache(array($form_state['file']->fid));
-  // TODO: cache still stuck after saving
+  // TODO: cache still stuck after saving.
 }
 
 /**
@@ -2333,7 +2407,7 @@ function pub_mpx_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
   $field_module = $form['#field']['module'];
   $field_type = $form['#field']['type'];
 
-  if (!isset($supported_types[ $field_module ]) || !in_array($field_type, $supported_types[ $field_module ])) {
+  if (!isset($supported_types[$field_module]) || !in_array($field_type, $supported_types[$field_module])) {
     return;
   }
 
@@ -2351,7 +2425,7 @@ function pub_mpx_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('MPX Media Data Field Path'),
     '#default_value' => isset($instance_widget_settings['pub_mpx']['media_data_fieldpath']) ?
-        $instance_widget_settings['pub_mpx']['media_data_fieldpath'] : NULL,
+      $instance_widget_settings['pub_mpx']['media_data_fieldpath'] : NULL,
     '#description' => t('The media feed data field name, in relation to the "entries" element, that contains the data for this field, to be populated during import and updates. Refer to the JSON feed output for data element names, they often differ from the XML output.'),
   );
 
@@ -2393,7 +2467,7 @@ function pub_mpx_form_file_entity_file_type_form_alter(&$form, &$form_state) {
     // URL alias field selection.
     $mpx_video_field_options = array('' => t('-- None --'));
     foreach (field_info_instances('file', $file_type) as $name => $data) {
-      $mpx_video_field_options[ $name ] = $data['label'];
+      $mpx_video_field_options[$name] = $data['label'];
     }
     $form['pub_mpx']['pub_mpx_' . $file_type . '_url_alias_field'] = array(
       '#type' => 'select',
@@ -2412,7 +2486,7 @@ function pub_mpx_form_file_entity_file_type_form_alter(&$form, &$form_state) {
     $field_override_options = array();
     foreach (drupal_map_assoc(array_keys(_pub_mpx_default_mpx_field_bases())) as $machine_name) {
       $field_info = field_info_instance('file', $machine_name, $file_type);
-      $field_override_options[ $machine_name ] = $field_info['label'];
+      $field_override_options[$machine_name] = $field_info['label'];
     }
     $form['pub_mpx']['pub_mpx_' . $file_type . '_overridable_fields'] = array(
       '#type' => 'checkboxes',
@@ -2601,10 +2675,10 @@ function pub_mpx_field_storage_pre_load($entity_type, $entities, $age, &$skip_fi
         $field_info = field_info_field($entity_field);
         // Convert single fields to an array.
         if ($field_info['cardinality'] == 1) {
-          $field_data = array($mpx_video_data[ $db_field ]);
+          $field_data = array($mpx_video_data[$db_field]);
         }
         else {
-          $field_data = unserialize($mpx_video_data[ $db_field ]);
+          $field_data = unserialize($mpx_video_data[$db_field]);
           if (!is_array($field_data)) {
             $file->{$entity_field} = array();
             continue;
@@ -2614,17 +2688,17 @@ function pub_mpx_field_storage_pre_load($entity_type, $entities, $age, &$skip_fi
         // Store the data from the mpx_video table as fields in the file.
         foreach ($field_data as $value) {
           if ($field_info['module'] == 'text' && ($field_info['type'] == 'text' || $field_info['type'] == 'text_long')) {
-            $file->{$entity_field}[ LANGUAGE_NONE ][] = array(
+            $file->{$entity_field}[LANGUAGE_NONE][] = array(
               'value' => $value,
               'format' => 'filtered_html',
               'safe_value' => check_plain($value),
             );
           }
           elseif ($field_info['module'] == 'list' && $field_info['type'] == 'list_boolean') {
-            $file->{$entity_field}[ LANGUAGE_NONE ][]['value'] = (int)$value;
+            $file->{$entity_field}[LANGUAGE_NONE][]['value'] = (int) $value;
           }
           elseif ($field_info['module'] == 'date') {
-            $file->{$entity_field}[ LANGUAGE_NONE ][] = array(
+            $file->{$entity_field}[LANGUAGE_NONE][] = array(
               'value' => $value,
               'timezone' => date_get_timezone($field_info['settings']['tz_handling'], ''),
               'timezone_db' => date_get_timezone_db($field_info['settings']['tz_handling']),
@@ -2647,7 +2721,7 @@ function pub_mpx_field_storage_pre_load($entity_type, $entities, $age, &$skip_fi
  *   The UNIX time when to schedule the revision. Pass NULL or a time in the
  *   past to deregister any non-queued scheduled operation for that file and
  *   that operation.
- * @param stdClass $file
+ * @param object $file
  *   The file entity to schedule.*
  */
 function _pub_mpx_default_mpx_scheduling_field_handler($operation, $mpx_date_field_value, &$file) {
@@ -2698,14 +2772,14 @@ function _pub_mpx_default_mpx_scheduling_field_handler($operation, $mpx_date_fie
   elseif ($mpx_date_field_value && empty($scheduled_operation) &&
       $mpx_date_field_value > REQUEST_TIME) {
     $operation_data['id'] = NULL;
-    revision_scheduler_operation_save((object)$operation_data);
+    revision_scheduler_operation_save((object) $operation_data);
   }
   // If the scheduled time does not match the field value, and has not already
   // been queued, then update the operation with the value.
   elseif ($mpx_date_field_value && !empty($scheduled_operation->time_scheduled) &&
       $scheduled_operation->time_scheduled != $mpx_date_field_value) {
     $operation_data['id'] = $scheduled_operation->id;
-    revision_scheduler_operation_save((object)$operation_data);
+    revision_scheduler_operation_save((object) $operation_data);
   }
 }
 
@@ -2721,8 +2795,8 @@ function _pub_mpx_url_alias_handler(&$file) {
   }
 
   $mpx_property_values = _pub_mpx_get_file_mpx_property_values($file);
-  $url_alias_entity_field_value = isset($file->{$url_alias_field}[ LANGUAGE_NONE ][0]['value']) ?
-    $file->{$url_alias_field}[ LANGUAGE_NONE ][0]['value'] : NULL;
+  $url_alias_entity_field_value = isset($file->{$url_alias_field}[LANGUAGE_NONE][0]['value']) ?
+    $file->{$url_alias_field}[LANGUAGE_NONE][0]['value'] : NULL;
   $url_alias_property_value = isset($mpx_property_values[$url_alias_field][0]) ?
     $mpx_property_values[$url_alias_field][0] : NULL;
 
@@ -3040,7 +3114,7 @@ function pub_mpx_media_theplatform_mpx_media_import_item_alter(&$media_item, $me
 
       $media_data_fieldpath = $info['widget']['settings']['pub_mpx']['media_data_fieldpath'];
       // Get the data that matches the field path.
-      $media_item['field_data'][ $info['field_name'] ] = _media_theplatform_mpx_get_media_item_data($media_data_fieldpath, $media_data);
+      $media_item['field_data'][$info['field_name']] = _media_theplatform_mpx_get_media_item_data($media_data_fieldpath, $media_data);
     }
   }
 
@@ -3067,6 +3141,10 @@ function pub_mpx_media_theplatform_mpx_media_import_item_alter(&$media_item, $me
       $media_item['player_id'] = pub_mpx_get_player_id_by_guid($ruleset['guid'], $account);
     }
   }
+
+  // Clear the _pub_mpx_get_file_mpx_property_values static cache.  It
+  // accumulates too much (unnecessary) data during ingestion.
+  drupal_static_reset('_pub_mpx_get_file_mpx_property_values');
 }
 
 /**
@@ -3126,6 +3204,10 @@ function pub_mpx_get_player_id_by_guid($guid, $account = NULL) {
  */
 function _pub_mpx_enforce_field_length_limits($field_info, $field_value) {
 
+  if (is_array($field_value)) {
+    return $field_value;
+  }
+
   if ($field_info['module'] && $field_info['type'] == 'text') {
     $max_length = !empty($field_info['settings']['max_length']) ? $field_info['settings']['max_length'] : 255;
     if (strlen($field_value) > $max_length) {
@@ -3176,22 +3258,22 @@ function pub_mpx_media_theplatform_mpx_import_media($op, $media_item, $account) 
     }
 
     foreach ($media_item['field_data'] as $field_name => $field_data) {
-      //  (Re)Set custom fields.
+      // (Re)Set custom fields.
       $file->{$field_name} = array();
       $field_info = field_info_field($field_name);
       // Process multiple value fields.
       if (is_array($field_data)) {
         foreach ($field_data as $key => $value) {
           if ($field_info['module'] == 'date' && $field_info['type'] == 'datestamp') {
-            $file->{$field_name}[ LANGUAGE_NONE ][ $key ]['value'] = _pub_mpx_enforce_field_length_limits($field_info, (float)$value / 1000);
+            $file->{$field_name}[LANGUAGE_NONE][$key]['value'] = _pub_mpx_enforce_field_length_limits($field_info, (float) $value / 1000);
           }
           elseif ($field_info['module'] == 'list' && $field_info['type'] == 'list_boolean') {
             $value = $value === 'true' ? TRUE : ($value === 'false' ? FALSE : $value);
-            $file->{$field_name}[ LANGUAGE_NONE ][ $key ]['value'] = (int)$value;
+            $file->{$field_name}[LANGUAGE_NONE][$key]['value'] = (int) $value;
           }
           elseif ($field_info['module'] == 'text') {
             $value = _pub_mpx_enforce_field_length_limits($field_info, $value);
-            $file->{$field_name}[ LANGUAGE_NONE ][ $key ] = array(
+            $file->{$field_name}[LANGUAGE_NONE][$key] = array(
               "value" => $value,
               "summary" => $value,
               "format" => "filtered_html",
@@ -3203,15 +3285,15 @@ function pub_mpx_media_theplatform_mpx_import_media($op, $media_item, $account) 
       }
       else {
         if ($field_info['module'] == 'date' && $field_info['type'] == 'datestamp') {
-          $file->{$field_name}[ LANGUAGE_NONE ][0]['value'] = _pub_mpx_enforce_field_length_limits($field_info, (float)$field_data / 1000);
+          $file->{$field_name}[LANGUAGE_NONE][0]['value'] = _pub_mpx_enforce_field_length_limits($field_info, (float) $field_data / 1000);
         }
         elseif ($field_info['module'] == 'list' && $field_info['type'] == 'list_boolean') {
           $value = $field_data === 'true' ? TRUE : ($field_data === 'false' ? FALSE : $field_data);
-          $file->{$field_name}[ LANGUAGE_NONE ][0]['value'] = (int)$value;
+          $file->{$field_name}[LANGUAGE_NONE][0]['value'] = (int) $value;
         }
         elseif ($field_info['module'] == 'text') {
           $value = _pub_mpx_enforce_field_length_limits($field_info, $field_data);
-          $file->{$field_name}[ LANGUAGE_NONE ][0] = array(
+          $file->{$field_name}[LANGUAGE_NONE][0] = array(
             "value" => $value,
             "summary" => $value,
             "format" => "filtered_html",
@@ -3225,6 +3307,15 @@ function pub_mpx_media_theplatform_mpx_import_media($op, $media_item, $account) 
     }
 
     file_save($file);
+
+    // Download the thumbnail image.
+    // This will reduce performance during ingestion,
+    // but it improves UX when managing MPX video or browsing media gallery.
+    // Also, this needs to be done after file_save(),
+    // since it assumes that the thumbnail is stale and deletes it.
+    if (!empty($media_item['thumbnail_url'])) {
+      pub_mpx_cache_thumbnail($media_item['thumbnail_url']);
+    }
   }
 }
 
@@ -3233,14 +3324,13 @@ function pub_mpx_media_theplatform_mpx_import_media($op, $media_item, $account) 
  */
 function pub_mpx_media_theplatform_mpx_set_video_inactive($id, $op) {
 
-  // Clear the file entity cache for deleted/unpublished media.
   $media_fid = db_query('SELECT fid FROM {mpx_video} WHERE id = :id', array('id' => $id))->fetchField();
 
-  if ($media_fid) {
-    cache_clear_all($media_fid, 'cache_entity_file', TRUE);
+  if (!$media_fid) {
+    return;
   }
 
-  // Save the file as unpublished.
+  // Save the file as unpublished, which also clears the file entity cache.
   $file = file_load($media_fid);
   $file->published = 0;
 
@@ -3275,20 +3365,21 @@ function _pub_mpx_get_media_item_data($path = NULL, $media_data = NULL, $debug =
   $tmp_data = &$media_data;
 
   foreach ($path_parts as $field) {
-    if (isset($tmp_data[ $field ])) {
-      $tmp_data = &$tmp_data[ $field ];
+    if (isset($tmp_data[$field])) {
+      $tmp_data = &$tmp_data[$field];
       $data = $tmp_data;
     }
     elseif (is_array($tmp_data)) {
       foreach ($tmp_data as $key => $value) {
-        if (isset($value[ $field ])) {
-          $tmp_data[ $key ] = $value[ $field ];
+        if (isset($value[$field])) {
+          $tmp_data[$key] = $value[$field];
           $data = $tmp_data;
         }
         elseif (is_array($value)) {
           $tmp = array();
           foreach ($value as $k => $v) {
-            $tmp[] = $v[ $field ];  // Doesn't work, needs recursive function.
+            // Doesn't work, needs recursive function.
+            $tmp[] = $v[$field];
           }
           $tmp_data = $tmp;
           $data = $tmp_data;
@@ -3335,7 +3426,7 @@ function pub_mpx_views_any_filter($form, &$form_state) {
 function pub_mpx_representative_image_field_elements_alter(&$elements) {
 
   if ($elements['#field_type'] == 'file' && isset($elements['#items'][0]['fid'])) {
-    $file = (object)$elements['#items'][0];
+    $file = (object) $elements['#items'][0];
     if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
       $elements = array(
         '#theme' => 'pub_mpx_video',
@@ -3354,15 +3445,17 @@ function _pub_mpx_add_video_js_and_css($uri) {
 
   $files = entity_load('file', FALSE, array('uri' => $uri));
 
-  if (empty($files) || !is_object($file[0]) || empty($file[0]->fid)) {
+  if (empty($files) || !is_object($files[0]) || empty($files[0]->fid)) {
     return;
   }
 
   $file = &$file[0];
   $player_data = array();
 
-  if (($file->filemime == 'video/mpx' || $file->filemime == 'player/mpx')
-      && !empty($file->mpx_player_data['player_data'])) {
+  if ($file->filemime == 'video/mpx') {
+    $player_data = unserialize(pub_mpx_player_data_load($file));
+  }
+  elseif ($file->filemime == 'player/mpx' && !empty($file->mpx_player_data['player_data'])) {
     $player_data = unserialize($file->mpx_player_data['player_data']);
   }
 
@@ -3371,7 +3464,7 @@ function _pub_mpx_add_video_js_and_css($uri) {
   }
 
   // Add meta tags.
-  if (isset($player_data['meta']) && is_array($player_data['meta'])){
+  if (isset($player_data['meta']) && is_array($player_data['meta'])) {
     foreach ($player_data['meta'] as $tag_name => $tag_content) {
       $tag = array(
         '#tag' => 'meta',
@@ -3467,7 +3560,7 @@ function _pub_mpx_get_players_in_use() {
 
   $players = array();
   foreach ($result as $record) {
-    if ($record->player_id != null) {
+    if ($record->player_id != NULL) {
       $players[] = $record->player_id;
     }
   }
@@ -3532,14 +3625,14 @@ function pub_mpx_media_theplatform_mpx_delete_account($account_id) {
 
 
 // Run this with this drush command:
-//   drush php-eval '_mpx_rain_dance_fix();'
+// drush php-eval '_mpx_rain_dance_fix();'
 function _mpx_rain_dance_fix() {
 
   // Turn off player and media sync.
   variable_set('media_theplatform_mpx__cron_players', 0);
   variable_set('media_theplatform_mpx__cron_videos', 0);
 
-  // Clear mpx video cron queue
+  // Clear mpx video cron queue.
   db_delete('queue')
     ->condition('name', 'media_theplatform_mpx_video_cron_queue')
     ->execute();
@@ -3551,7 +3644,7 @@ function _mpx_rain_dance_fix() {
     $cron_queue->createItem($row->fid);
   }
 
-  // Queue videos for deletion
+  // Queue videos for deletion.
   foreach (db_query("SELECT fid FROM mpx_video") as $row) {
     $cron_queue->createItem($row->fid);
   }
@@ -3630,7 +3723,7 @@ function _pub_mpx_use_date_popup(&$form, $key) {
   if (!isset($form['#attached']['css'])) {
     $form['#attached']['css'] = array();
   }
-  if (!in_array(drupal_get_path('module', 'pub_mpx').'/css/pub_mpx.css', $form['#attached']['css'])) {
+  if (!in_array(drupal_get_path('module', 'pub_mpx') . '/css/pub_mpx.css', $form['#attached']['css'])) {
     $form['#attached']['css'][] = drupal_get_path('module', 'pub_mpx').'/css/pub_mpx.css';
   }
 }
@@ -3735,4 +3828,94 @@ function pub_mpx_representative_image_views_handler_render($type, $entity, $fiel
   else {
     return NULL;
   }
+}
+
+/**
+ * Return the MPX player data for an entity.
+ *
+ * This is primarily for video bundles, but would work for any entity that
+ * contains a mpx_video_data field. The player data is quite large as it
+ * contains player HTML and CSS, so try to only load this when actually
+ * displaying a video.
+ *
+ * @param object $entity
+ *   The entity to return the MPX player data for.
+ *
+ * @return array
+ *   An array of MPX player data.
+ */
+function pub_mpx_player_data_load($entity) {
+  if (!empty($entity->mpx_video_data['player_id'])) {
+    $mpx_player_data = db_select('mpx_player', 'p')
+      ->fields('p')
+      ->condition('player_id', $entity->mpx_video_data['player_id'], '=')
+      ->execute()
+      ->fetchAll();
+    $mpx_player_data = !empty($mpx_player_data) ? (array) reset($mpx_player_data) : array();
+  }
+  else {
+    if (!empty($entity->mpx_video_data['parent_account'])) {
+      $video_account = _media_theplatform_mpx_get_account_data($entity->mpx_video_data['parent_account']);
+      $mpx_player_data = media_theplatform_mpx_get_mpx_player_by_player_id($video_account->default_player);
+    }
+  }
+
+  return $mpx_player_data;
+}
+
+/**
+ * Returns an iframe embed URL given a file entity.
+ *
+ * @param object $file
+ *
+ * @return false|string
+ */
+function _pub_mpx_file_entity_to_iframe_url($file) {
+  if (!is_object($file) || empty($file->mpx_video_data['guid'])) {
+    return FALSE;
+  }
+  // Retrieve the video's account data to construct the iframe URL.
+  $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+  if (!is_object($mpx_account) || empty($mpx_account->account_pid) || empty($mpx_account->account_id)) {
+    return FALSE;
+  }
+  // Retrieve the video's default player data to construct the iframe URL.
+  $mpx_player = pub_mpx_player_data_load($file);
+  if (!is_array($mpx_player) || empty($mpx_player['pid'])) {
+    return FALSE;
+  }
+
+  $account_id = basename($mpx_account->account_id);
+
+  return '//player.theplatform.com/p/' . $mpx_account->account_pid . '/' . $mpx_player['pid']
+    . '/embed/select/media/guid/' . $account_id . '/' . $file->mpx_video_data['guid'];
+}
+
+/**
+ * Returns an iframe embed URL given an mpx file entity URL.
+ *
+ * @param string $url
+ *
+ * @return false|string
+ */
+function _pub_mpx_file_url_to_iframe_url($url) {
+  $url_parts = parse_url($url);
+  // If the URL path is missing, we won't be able to load a file - skip.
+  if (empty($url_parts['path'])) {
+    return FALSE;
+  }
+  $path = trim($url_parts['path'], '/');
+  // Attempt to get the source path if this is an alias path.
+  if (strpos($path, 'file/') !== 0) {
+    $path = drupal_lookup_path('source', $path);
+  }
+  // If this isn't a file entity path, we have nothing to work with - skip.
+  if (strpos($path, 'file/') !== 0) {
+    return FALSE;
+  }
+
+  $fid = str_replace('file/', '', $path);
+  $file = file_load($fid);
+
+  return _pub_mpx_file_entity_to_iframe_url($file);
 }

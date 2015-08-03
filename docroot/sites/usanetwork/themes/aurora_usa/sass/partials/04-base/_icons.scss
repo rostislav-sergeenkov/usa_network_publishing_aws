@@ -1,0 +1,368 @@
+.meta-icon {
+  background-size: contain;
+  @extend %meta-icon;
+}
+/*
+.play-icon, .video-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e60f';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.play-icon-half {
+  &:before {
+    @extend %meta-icon;
+    background: none !important;
+    color: #ffffff !important;
+    font-size: 37px !important;
+    content: '\e60e';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.article-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e612';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.game-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e611';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.photo-icon, .gallery-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e610';
+  }
+  &.resize-avail-1024, &.resize-avail-480 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        font-size: 16px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+.poll-icon {
+  &:before {
+    @extend %meta-icon;
+    content: '\e60d';
+  }
+}*/
+.font-icon {
+  background: #ffffff;
+  border-radius: 50%;
+  height: 37px;
+  margin-top: -19px;
+  position: absolute;
+  top: 50%;
+  width: 37px;
+  &:before {
+    font-family: $ico-font;
+    font-size: 20px;
+    line-height: 37px;
+    height: 37px;
+    margin-top: -10px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 37px;
+  }
+  &.video-font-icon {
+    &:before {
+      content: '\e60f';
+    }
+  }
+}
+.social-usa {
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -18px;
+    position: absolute;
+    @include sprite-background(usa-icon);
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:after {
+        @include sprite-background(usa-icon-small);
+      }
+    }
+  }
+}
+
+.social-insta {
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -8px;
+    position: absolute;
+    @include sprite-background(social-insta-icon);
+  }
+}
+
+.social-twitter {
+
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -8px;
+    position: absolute;
+    @include sprite-background(social-twitter-icon);
+  }
+}
+
+.eye-icon {
+  &:before {
+    display: block;
+    content: '\e613';
+    font-family: $ico-font;
+  }
+}
+
+.icons-block {
+  display: block;
+  a {
+    color: #ffffff;
+    display: block;
+    float: left;
+    font-weight: normal;
+    height: auto;
+    margin: 0;
+    margin-right: 27px;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+    &:last-child, .last {
+      margin-right: 0px;
+    }
+    &:before {
+      display: block;
+      font-family: $ico-font;
+      font-size: 16px;
+      width: auto;
+    }
+    &.episode-description {
+      &:before {
+        content: '\e601';
+      }
+    }
+    &.calendar-reminder {
+
+      span {
+        display: none;
+      }
+      &:before {
+        content: '\e600';
+      }
+    }
+    &.facebook {
+      &:before {
+        content: "\e602";
+      }
+    }
+    &.twitter {
+      &:before {
+        content: "\e603";
+      }
+    }
+    &.tumblr {
+      &:before {
+        content: "\e604";
+      }
+    }
+    &.pinterest {
+      &:before {
+        content: "\e605";
+      }
+    }
+    &.plus-icon {
+      &:before {
+        content: "\e606";
+      }
+    }
+    &.schedule-icon-font {
+      &:before {
+        content: '\e616';
+      }
+    }
+  }
+}
+
+body:not(.blog) {
+  .field-type-gigya-sharebar,
+  &.node-type-timeline-gallery .timeline-gigya-share {
+    .gig-button-container {
+      &.gig-button-container-facebook {
+        td {
+          > div {
+            &:before {
+              content: "\e602";
+              color: $consum-carousel-text;
+            }
+          }
+        }
+      }
+      td {
+        > div {
+          background-image: none !important;
+          display: block;
+          font-family: "ico-font";
+          font-size: 32px;
+          @include breakpoint ($bp-1024-width) {
+            font-size: 26px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 23px;
+          }
+        }
+      }
+      &.gig-button-container-facebook {
+        td {
+          > div {
+            &:before {
+              content: "\e602";
+              color: $consum-carousel-text;
+            }
+          }
+        }
+      }
+      &.gig-button-container-twitter {
+        td {
+          > div {
+            &:before {
+              content: "\e603";
+              color: $consum-carousel-text;
+            }
+          }
+        }
+      }
+      &.gig-button-container-tumblr {
+        td {
+          > div {
+            &:before {
+              content: "\e604";
+              color: $consum-carousel-text;
+            }
+          }
+        }
+      }
+      &.gig-button-container-pinterest {
+        td {
+          > div {
+            &:before {
+              content: "\e605";
+              color: $consum-carousel-text;
+            }
+          }
+        }
+      }
+      &.gig-button-container-share {
+        td {
+          > div {
+            &:before {
+              content: "\e606";
+              color: $consum-carousel-text;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.user-content-icon-default {
+  background-image: url(../images/default-promo-icons/user-content-icon.png);
+}
+.trending-secondary-icon-default {
+  background-image: url(../images/default-promo-icons/trending-secondary-icon.png);
+}
+.trending-primary-icon-default {
+  background-image: url(../images/default-promo-icons/trending-primary-icon.png);
+}
+.sounds-icon-default {
+  background-image: url(../images/default-promo-icons/sounds-icon.png);
+}
+.schedule-icon-default {
+  background-image: url(../images/default-promo-icons/schedule-icon.png);
+}
+.video-clip-icon-default {
+  background-image: url(../images/default-promo-icons/video-clip-icon.png);
+}
+.full-video-icon-default {
+  background-image: url(../images/default-promo-icons/full-video-icon.png);
+}
+.quiz-icon-default {
+  background-image: url(../images/default-promo-icons/quiz-icon.png);
+}
+.game-icon-default {
+  background-image: url(../images/default-promo-icons/game-icon.png);
+}
+.featured-icon-default {
+   background-image: url(../images/default-promo-icons/featured-icon.png);
+}
+.episode-info-icon-default {
+  background-image: url(../images/default-promo-icons/episode-info-icon.png);
+}
+.cast-crew-icon-default {
+  background-image: url(../images/default-promo-icons/cast-crew-icon.png);
+}
+.about-show-icon-default {
+  background-image: url(../images/default-promo-icons/about-show-icon.png);
+}
+.gallery-icon-default {
+  background-image: url(../images/default-promo-icons/gallery-icon.png);
+}

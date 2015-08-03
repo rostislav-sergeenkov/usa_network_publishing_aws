@@ -5,3 +5,4 @@ package = Media
 dependencies[] = ctools
 dependencies[] = media
 dependencies[] = multiform
+dependencies[] = jquery_update

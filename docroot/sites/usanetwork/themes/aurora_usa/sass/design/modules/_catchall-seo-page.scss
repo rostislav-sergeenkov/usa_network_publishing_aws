@@ -15,7 +15,7 @@
       background-color: #313131;
       color: #fff;
       padding: 15px;
-      font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;
+      font-family: $avalon-book;
       font-size: 18px;
       letter-spacing: 3px;
     }
@@ -28,7 +28,7 @@
     width: 100%;
     margin-top: 4px;
     text-align: left;
-    @include breakpoint($bp-catchall-seo-1) {
+    @include breakpoint($bp-1024-width) {
       max-width: 967px;
       width: 100%;
     }
@@ -44,7 +44,7 @@
     position: relative;
     margin-top: 4px;
     width: 300px;
-    @include breakpoint($bp-catchall-seo-1) {
+    @include breakpoint($bp-1024-width) {
       max-width: 967px;
       width: 100%;
     }

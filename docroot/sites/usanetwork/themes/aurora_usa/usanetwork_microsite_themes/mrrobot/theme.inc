@@ -16,12 +16,21 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
         'tune_in' => NULL,
         'sections_navlinks' => array(),
         'facebook_tracking_html' => NULL,
+        'quizzes' => array(
+          0 => array(
+            'nid' => NULL,
+            'title' => NULL,
+            'url' => NULL,
+            'status' => NULL,
+          ),
+        ),
       ),
     ),
     'usanetwork_microsite_mrrobot_page_home' => array(
       'template' => 'usanetwork-microsite-mrrobot-page-home',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'aspots' => array(),
         'featured' => array(),
         'characters' => array(
@@ -51,6 +60,7 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-mrrobot-page-characters',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'people' => array(
           0 => array(
             'id' => NULL,
@@ -67,6 +77,7 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
             ),
             'status' => NULL,
             'background_url' => NULL,
+            'cover_image_url' => NULL,
             'preview_image_url' => NULL,
             'social' => array(
               'facebook' => NULL,
@@ -83,6 +94,7 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-mrrobot-page-galleries',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'background_url' => NULL,
         'gallery' => array(),
         'episodic_galleries' => array(
@@ -107,8 +119,28 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-mrrobot-page-games',
       'path' => $subtheme_path,
       'variables' => array(
-        'pages' => array(
-          'html' => NULL,
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
+        ),
+      ),
+    ),
+    'usanetwork_microsite_mrrobot_page_quizzes' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-quizzes',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'description' => NULL,
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
+        ),
+        'quizzes_nav' => array(
+          0 => array(
+            'nid' => NULL,
+            'title' => NULL,
+            'url' => NULL,
+            'cover_img' => NULL,
+          ),
         ),
       ),
     ),
@@ -116,6 +148,7 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-mrrobot-page-videos',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'videos' => array(
           0 => array(
             'url' => NULL,
@@ -143,6 +176,7 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-mrrobot-page-episodes',
       'path' => $subtheme_path,
       'variables' => array(
+        'description' => NULL,
         'episodes' => array(
           0 => array(
             'id' => NULL,
@@ -158,6 +192,15 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
         'section_title' => NULL,
       ),
     ),
+    'usanetwork_microsite_mrrobot_page_timeline' => array(
+      'template' => 'usanetwork-microsite-mrrobot-page-timeline',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'gallery_title' => NULL,
+        'description' => NULL,
+        'content' => NULL,
+      ),
+    ),
   );
 }
 
@@ -167,38 +210,58 @@ function usanetwork_microsite_mrrobot_get_theme_registry_variables() {
  */
 function usanetwork_microsite_mrrobot_get_theme_includes() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
+  $default_theme_path = $theme_path . '/usanetwork_microsite_themes/default';
+  $site_theme_path = $theme_path . '/usanetwork_microsite_themes/mrrobot';
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
   return array(
+    'css' => array(
+      $default_theme_path . '/css/fonts.css',
+      $default_theme_path . '/css/ms_styles.css',
+      $default_theme_path . '/css/site_nav.css',
+      $default_theme_path . '/css/ms_gigya_share.css',
+      $site_theme_path . '/css/ms_home.css',
+      $default_theme_path . '/css/ms_videos.css',
+      $default_theme_path . '/css/ms_timeline.css',
+      $default_theme_path . '/css/ms_characters.css',
+//      $default_theme_path . '/css/trivia.css',
+      $default_theme_path . '/css/ms_quizzes.css',
+//      $default_theme_path . '/css/counter.css',
+      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
+      $site_theme_path . '/css/ms_site.css',
+    ),
     'js' => array(
-/*
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_characters_bxslider.js',
-*/
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_global.js',
-//      $module_path . '/js/jquery.bxslider.min.js',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_flexslider.js',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_gallery_carousel.js',
-//      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_galleries_bxslider.js',
-//      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_characters.js',
-/*
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/js/microsite_episodes.js',
-*/
-      $module_path . '/js/usanetwork_video_endcard.js',
+      $module_path . '/js/jquery.bxslider.min.js',
+      $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
+      $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view
+      $site_theme_path . '/js/ms_site.js',
+      $default_theme_path . '/js/ms_global.js',
+      $default_theme_path . '/js/ms_videos.js',
+      $default_theme_path . '/js/ms_characters.js',
+      $default_theme_path . '/js/ms_quizzes.js',
+//      $site_theme_path . '/js/date.js',
+//      $site_theme_path . '/js/counter.rf.js',
+      $default_theme_path . '/js/ms_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
-    'css' => array(
-//      $module_path . '/css/jquery.bxslider.css',
-//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_style.css',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/mrrobot_styles.css',
-//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_galleries_styles.css',
-//      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_characters_styles.css',
-/*
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/ms_episodes.css',
-      $theme_path . '/usanetwork_microsite_themes/mrrobot/css/trivia.css',
-      drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
-*/
-    ),
+  );
+}
+
+/**
+ * Return array with theme settings for mrrobot theme.
+ * This settings override defaults or it allow add new setting for current
+ * instance of microsite.
+ */
+function usanetwork_microsite_mrrobot_get_theme_settings() {
+  return array(
+    'display_global_nav' => FALSE,
+    'short_name_for_full_episodes' => TRUE,
+    'videos_all_videos_filter' => FALSE,
+    'videos_season_filters' => TRUE,
+    'character_bios_remove_video_tags' => TRUE,
+    'sections_use_ajax' => FALSE,
+    'videos_full_episode_sort_order' => 'ASC',
+    'characters_homepage_present' => TRUE,
   );
 }

@@ -5,6 +5,9 @@
   background-color: #fff;
   color: #000;
 }
+.usanetwork-quiz ~ h3.field-label {
+    display: none;
+}
 .usanetwork-quiz .content-wrap {
   padding: 40px;
 }
@@ -131,7 +134,7 @@
 }
 
 /* Breakpoints */
-@media (max-width: 1334px) {
+@media (max-width: 1280px) {
   .usanetwork-quiz {
     width: 930px;
   }
@@ -142,7 +145,7 @@
     width: 240px;
   }
 }
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .node-type-quiz #main {
     padding-left: 0;
     padding-right: 0;
@@ -169,7 +172,7 @@
     width: 280px;
   }
 }
-@media (max-width: 620px) {
+@media (max-width: 640px) {
   .usanetwork-quiz-answer.answer-type-text > .inner {
     margin: 0 5px;
   }

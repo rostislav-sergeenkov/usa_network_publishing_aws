@@ -65,13 +65,16 @@ function gigya_uninstall() {
  * Implements hook_requirements().
  */
 function gigya_requirements($phase) {
+  $requirements = array();
   if ($phase == 'install') {
     if (!function_exists('hash_hmac')) {
-      $requirements[] = array(
+      $requirements['gigya_hash_hmac'] = array(
         'title' => 'Gigya requires the PHP Hash extension',
         'description' => 'The <a href="http://us2.php.net/manual/en/book.hash.php">PHP Hash extension</a> is required for the Gigya module to function properly',
         'severity' => REQUIREMENT_ERROR,
       );
     }
   }
+
+  return $requirements;
 }

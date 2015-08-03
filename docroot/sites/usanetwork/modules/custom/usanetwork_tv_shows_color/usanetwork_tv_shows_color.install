@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Generate common tv shows color schema file for all nodes
+ */
+function usanetwork_tv_shows_color_update_7029() {
+  features_revert_module('usanetwork_tv_shows_color_field');
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', 'tv_show');
+  $query->propertyCondition('status', NODE_PUBLISHED);
+  $tv_shows_ids = $query->execute();
+  if (isset($tv_shows_ids['node'])) {
+    foreach (array_keys($tv_shows_ids['node']) as $nid) {
+      $node = node_load($nid);
+      module_invoke('usanetwork_tv_shows_color', 'node_presave', $node);
+    }
+  }
+}

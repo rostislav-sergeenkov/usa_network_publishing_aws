@@ -1,0 +1,4 @@
+name = WYSIWYG ckeditor Widget
+description = Provides WYSIWYG integration for the ckeditor widget plugin.
+core = 7.x
+dependencies[] = wysiwyg

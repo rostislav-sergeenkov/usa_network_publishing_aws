@@ -7,8 +7,8 @@
 include_once 'pub_tv.features.inc';
 
 /**
-  * Implements hook_form_FORM_ID_alter
-  */
+ * Implements hook_form_FORM_ID_alter().
+ */
 function pub_tv_form_tv_episode_node_form_alter(&$form, &$form_state) {
   // Add AJAX handling to the the show field so that users only see seasons for
   // the selected show.
@@ -126,8 +126,10 @@ function pub_tv_form_tv_episode_node_form_alter(&$form, &$form_state) {
 }
 
 /**
- * AJAX callback function that populates the "season" entity reference field
- * with seasons for the user specifid show.
+ * Populates the "season" entity reference field.
+ *
+ * An Ajax callback function that populates the "season" entity reference field
+ * with seasons for the user specified show.
  *
  * @see pub_tv_form_episode_node_form_alter()
  */
@@ -165,7 +167,7 @@ function pub_tv_entity_insert($entity, $type) {
           'Suggestive Dialogue',
           'Coarse or Crude Language',
           'Sexual Situations',
-          'Violence'
+          'Violence',
         );
         break;
 
@@ -190,4 +192,83 @@ function pub_tv_entity_insert($entity, $type) {
       taxonomy_term_save($term);
     }
   }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function pub_tv_node_presave($node) {
+  // For TV season and episode nodes created with devel_generate, create
+  // realistic field_season_id and field_episode_num values.
+  if (!empty($node->devel_generate) && empty($node->nid)) {
+    if ($node->type == 'tv_season' && !empty($node->field_tv_shows[LANGUAGE_NONE][0]['show'])) {
+      $season_id = pub_tv_get_max_season_id($node->field_tv_shows[LANGUAGE_NONE][0]['show']) + 1;
+      $node->field_season_id[LANGUAGE_NONE][0]['value'] = $season_id;
+      $node->title = sprintf("S%02s %s", $season_id, $node->title);
+    }
+    elseif ($node->type == 'tv_episode' && !empty($node->field_tv_shows[LANGUAGE_NONE][0]['season'])) {
+      $episode_number = pub_tv_get_max_episode_number($node->field_tv_shows[LANGUAGE_NONE][0]['show'], $node->field_tv_shows[LANGUAGE_NONE][0]['season']) + 1;
+      $node->field_episode_number[LANGUAGE_NONE][0]['value'] = $episode_number;
+      $node->title = sprintf("E%03s %s", $episode_number, $node->title);
+    }
+  }
+}
+
+/**
+ * Generate a valid value for a season node's field_season_id field.
+ *
+ * @param int $show_nid
+ *   A tv_show node ID.
+ *
+ * @return int
+ *   The largest field_season_id value for the given show and season.
+ */
+function pub_tv_get_max_season_id($show_nid) {
+  $max_season_id = 0;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', 'tv_season');
+  $query->fieldCondition('field_tv_shows', 'show', $show_nid);
+  $query->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT');
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $seasons = node_load_multiple(array_keys($results['node']));
+    foreach ($seasons as $season) {
+      if (!empty($season->field_season_id[LANGUAGE_NONE][0]['value']) && is_numeric($season->field_season_id[LANGUAGE_NONE][0]['value'])) {
+        $max_season_id = max($max_season_id, $season->field_season_id[LANGUAGE_NONE][0]['value']);
+      }
+    }
+  }
+  return $max_season_id;
+}
+
+/**
+ * Find the largest episode number for a current show and season.
+ *
+ * @param int $show_nid
+ *   A tv_episode node ID.
+ * @param int $season_nid
+ *   A tv_season node ID.
+ *
+ * @return int
+ *   The largest field_episode_number value for the given show and season.
+ */
+function pub_tv_get_max_episode_number($show_nid, $season_nid) {
+  $max_episode_num = 0;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', 'tv_episode');
+  $query->fieldCondition('field_tv_shows', 'show', $show_nid);
+  $query->fieldCondition('field_tv_shows', 'season', $season_nid);
+  $query->addTag('DANGEROUS_ACCESS_CHECK_OPT_OUT');
+  $results = $query->execute();
+  if (!empty($results['node'])) {
+    $episodes = node_load_multiple(array_keys($results['node']));
+    foreach ($episodes as $episode) {
+      if (!empty($episode->field_episode_number[LANGUAGE_NONE][0]['value']) && is_numeric($episode->field_episode_number[LANGUAGE_NONE][0]['value'])) {
+        $max_episode_num = max($max_episode_num, $episode->field_episode_number[LANGUAGE_NONE][0]['value']);
+      }
+    }
+  }
+  return $max_episode_num;
 }

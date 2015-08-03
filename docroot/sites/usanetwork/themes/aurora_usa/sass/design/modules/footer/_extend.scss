@@ -1,8 +1,0 @@
-%footer-links {
-  @extend %regular-14;
-  color: $gray-dark-light;
-  padding: 11px 5px 8px 25px;
-  a {
-    @include link-colors($gray-dark-light, $gray-extra-light, $gray-extra-light, $gray-dark-light, $gray-dark-light);
-  }
-}

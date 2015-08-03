@@ -1,0 +1,249 @@
+#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest {
+  width: 100%;
+}
+.full-episodes-block.carousel-block {
+  background: $poll-back;
+  overflow: hidden;
+  padding: 40px 60px;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-1024-width) {
+    padding: 40px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: get-vw(60px, 768) 0px 0px;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 37.5px 0px 0px;
+  }
+  .carousel {
+    @include breakpoint($between-769-1024) {
+      &.start {
+        margin-left: 165px;
+        overflow: hidden;
+        &:hover {
+          .jcarousel-control-next {
+            right: 125px;
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-min-1025-width) {
+      &.start {
+        margin-left: 165px;
+        overflow: hidden;
+        &:hover {
+          .jcarousel-control-next {
+            right: 105px;
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-min-1601-width) {
+      &.start {
+        margin-left: 265px;
+        &:hover {
+          .jcarousel-control-next {
+            right: 205px;
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-768-width) {
+      &.start {
+        margin-left: 0px;
+      }
+      .jcarousel-controls {
+        display: none;
+      }
+    }
+    &.carousel_2_rows {
+      height: 515px;
+      .node-usanetwork-promo {
+        margin-bottom: 15px;
+      }
+      @include breakpoint($bp-min-1601-width) {
+        height: 573px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+      }
+    }
+    ul {
+      li {
+        margin-right: 15px;
+        @include breakpoint($bp-min-1601-width) {
+          height: 279px;
+          width: 335px;
+        }
+        @extend %video-promo;
+      }
+    }
+  }
+  .carousel-description-item {
+    left: -225px;
+    width: 225px;
+    &.start {
+      left: 0;
+    }
+    .description-wrapper {
+      padding: 40px;
+      width: 100%;
+    }
+    @include breakpoint($between-769-1024) {
+      left: -205px;
+      width: 205px;
+    }
+    @include breakpoint($bp-min-1601-width) {
+      left: -325px;
+      width: 325px;
+    }
+    .caption, .additional-text {
+      font-size: 12px;
+      line-height: 14px;
+      text-align: right;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 17px;
+        line-height: 20px;
+      }
+    }
+    .title {
+      font-size: 22px;
+      margin: 10px 0;
+      position: relative;
+      text-align: right;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 32px;
+        line-height: 40px;
+        margin: 15px 0;
+      }
+    }
+    .link {
+      text-align: right;
+      a {
+        color: $poll-color;
+        font-family: $tex-gyreschola-bold;
+        font-size: 12px;
+        letter-spacing: 1px;
+        line-height: 14px;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 14px;
+          line-height: 16px;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  @include breakpoint($bp-768-width) {
+    .carousel {
+      margin-left: 0;
+      margin-bottom: 10px;
+      margin-top: get-vw(50px, 768);
+      padding: 0 10px;
+      ul {
+        width: 100%;
+        li {
+          margin-bottom: 15px;
+        }
+      }
+      &.carousel_1_rows {
+        ul {
+          li {
+            float: left;
+            height: 38.5vw;
+            margin-right: 2%;
+            min-height: 115px;
+            width: 49%;
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      &.carousel_2_rows {
+        li {
+          height: 38.5vw;
+          margin-right: 0;
+          width: 100%;
+          .node-usanetwork-promo {
+            float: left;
+            margin-bottom: 0;
+            margin-right: 2%;
+            min-height: 115px;
+            width: 49%;
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+    .carousel-description-item {
+      height: auto;
+      left: 0px;
+      padding: 0px 20px;
+      position: relative;
+      top: 0;
+      width: 100%;
+      &.start {
+        left: 0px;
+      }
+      .description-wrapper {
+        display: block;
+        float: none;
+        height: auto;
+        padding: 0;
+        width: 100%;
+      }
+      .description-block {
+        display: block;
+      }
+      .title {
+        background: none;
+        font-size: get-vw(34px, 768);
+        line-height: get-vw(40px, 768);
+        margin: 0;
+        &:after {
+          display: none;
+        }
+      }
+      .link {
+        a {
+          font-size: get-vw(17px, 768);
+          line-height: get-vw(20px, 768);
+        }
+      }
+      .additional-text {
+        font-size: get-vw(17px, 768);
+        line-height: get-vw(20px, 768);
+      }
+      .caption, .title, .additional-text, .link {
+        text-align: left;
+      }
+    }
+  }
+  @include breakpoint($bp-480-width) {
+    .carousel {
+      margin-top: 31.25px;
+    }
+    .carousel-description-item {
+      .title {
+        font-size: 21px;
+        line-height: 25px;
+      }
+      .link {
+        a {
+          font-size: 10.5px;
+          line-height: 12.5px;
+        }
+      }
+      .additional-text {
+        font-size: 10.5px;
+        line-height: 12.5px;
+      }
+    }
+  }
+}

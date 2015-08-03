@@ -34,6 +34,13 @@ function usanetwork_pathauto_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_movie_pattern';
+  $strongarm->value = 'movies/[node:title]';
+  $export['pathauto_node_movie_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_person_pattern';
   $strongarm->value = '[node:field_show]/cast/[node:title]';
   $export['pathauto_node_person_pattern'] = $strongarm;
@@ -48,8 +55,15 @@ function usanetwork_pathauto_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_timeline_gallery_pattern';
+  $strongarm->value = '[node:field-show:field-pathauto-alias]/timeline-gallery/[node:title]';
+  $export['pathauto_node_timeline_gallery_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_tv_episode_pattern';
-  $strongarm->value = '[node:field_show]/episodes/[node:field_episode_number]-[node:field_episode_number]';
+  $strongarm->value = '[node:field_show]/episode-guide/[node:field_season]-episode-[node:field_episode_number]-[node:title]';
   $export['pathauto_node_tv_episode_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

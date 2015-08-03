@@ -463,6 +463,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
   $query->leftJoin('cache_xmlsitemap_link', 'c', 'c.cid = CONCAT(\'nbcu_seo_xmlsitemap:' . $type . ':\', CONCAT_WS(\'_\', x.id, x.type))');
   $query->condition('xlt.link_type', $type, '=');
   $query->isNull('cid');
+  $query->orderBy('x.id', 'DESC');
   $query->orderBy('x.language', 'DESC');
   $query->orderBy('x.loc');
   $query->addTag('nbcu_seo_xmlsitemap_generate');
@@ -597,68 +598,5 @@ function nbcu_seo_xmlsitemap_regenerate_batch_generate_index($smid, $type, array
   }
   elseif ($sitemap->chunks > 1) {
     nbcu_seo_xmlsitemap_generate_index($sitemap, $type);
-  }
-}
-
-/**
- * Implements hook_xmlsitemap_link_insert().
- */
-function nbcu_seo_xmlsitemap_link_insert(array $link) {
-  $types = module_invoke_all('nbcu_seo_xmpsitemap_link_type', $link);
-  if (!empty($types)) {
-    $smids = db_query("SELECT smid FROM {xmlsitemap_sitemap}")->fetchCol();
-    $regenerate = variable_get('nbcu_seo_xmlsitemap_regenerate_needed', array());
-    foreach ($types as $type) {
-      foreach ($smids as $smid) {
-        $regenerate[$smid] = isset($regenerate[$smid]) ? $regenerate[$smid] : array();
-        $regenerate[$smid][$type] = isset($regenerate[$smid][$type]) ? $regenerate[$smid][$type] : FALSE;
-        $regenerate[$smid][$type] = TRUE;
-      }
-      variable_set('nbcu_seo_xmlsitemap_regenerate_needed', $regenerate);
-
-      db_insert('xmlsitemap_link_type')
-        ->fields(array(
-          'id' => $link['id'],
-          'type' => $link['type'],
-          'link_type' => $type,
-        ))
-        ->execute();
-    }
-  }
-}
-
-/**
- * Implements hook_xmlsitemap_link_update().
- */
-function nbcu_seo_xmlsitemap_link_update(array $link) {
-  $sitemap_types = nbcu_seo_xmlsitemap_types();
-  foreach ($sitemap_types as $type) {
-    $cid = 'nbcu_seo_xmlsitemap:' . $type . ':' . $link['id'] . '_' . $link['type'];
-    cache_clear_all($cid, 'cache_xmlsitemap_link'); // clear cache
-  }
-  $types = module_invoke_all('nbcu_seo_xmpsitemap_link_type', $link);
-  db_delete('xmlsitemap_link_type')
-    ->condition('id', $link['id'], '=')
-    ->condition('type', $link['type'], '=')
-    ->execute();
-  if (!empty($types)) {
-    $smids = db_query("SELECT smid FROM {xmlsitemap_sitemap}")->fetchCol();
-    $regenerate = variable_get('nbcu_seo_xmlsitemap_regenerate_needed', array());
-    foreach ($types as $type) {
-      foreach ($smids as $smid) {
-        $regenerate[$smid] = isset($regenerate[$smid]) ? $regenerate[$smid] : array();
-        $regenerate[$smid][$type] = isset($regenerate[$smid][$type]) ? $regenerate[$smid][$type] : FALSE;
-        $regenerate[$smid][$type] = TRUE;
-      }
-      variable_set('nbcu_seo_xmlsitemap_regenerate_needed', $regenerate);
-
-      db_insert('xmlsitemap_link_type')
-        ->fields(array(
-          'id' => $link['id'],
-          'type' => $link['type'],
-          'link_type' => $type,
-        ))
-        ->execute();
-    }
   }
 }

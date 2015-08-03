@@ -1,1 +1,0 @@
-[![Build Status](https://travis-ci.org/Miljar/php-exif.png)](https://travis-ci.org/Miljar/php-exif)

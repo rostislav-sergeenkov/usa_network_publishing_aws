@@ -146,28 +146,41 @@ function usanetwork_quiz_strongarm() {
       'promo_teaser_large' => array(
         'custom_settings' => FALSE,
       ),
+      'microsite_output' => array(
+        'custom_settings' => TRUE,
+      ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '10',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
-          'weight' => '10',
+          'weight' => '11',
+        ),
+        'locations' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(
         'quiz' => array(
           'default' => array(
+            'weight' => '2',
+            'visible' => TRUE,
+          ),
+          'microsite_output' => array(
             'weight' => '2',
             'visible' => TRUE,
           ),
@@ -215,6 +228,13 @@ function usanetwork_quiz_strongarm() {
   $strongarm->name = 'node_submitted_quiz';
   $strongarm->value = 0;
   $export['node_submitted_quiz'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_quiz_pattern';
+  $strongarm->value = '[node:field_show]/quiz/[node:title]';
+  $export['pathauto_node_quiz_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

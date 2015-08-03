@@ -192,6 +192,17 @@ class date_views_argument_handler extends date_views_argument_handler_simple {
         $date_handler->db_timezone = date_get_timezone_db($field['tz_handling']);
         $date_handler->local_timezone = date_get_timezone($field['tz_handling']);
         date_views_set_timezone($date_handler, $this, $field);
+
+        // Allow argument to override default timezone behavior.
+        if (isset($this->options['timezone'])) {
+          if ($this->options['timezone'] === 'current_user_timezone') {
+            $date_handler->local_timezone = date_default_timezone();
+          }
+          else {
+            $date_handler->local_timezone = $this->options['timezone'];
+          }
+        }
+
         $this->query_fields[] = array('field' => $field, 'date_handler' => $date_handler);
       }
     }

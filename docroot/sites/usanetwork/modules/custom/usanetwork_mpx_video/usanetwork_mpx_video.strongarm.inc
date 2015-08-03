@@ -85,20 +85,26 @@ function usanetwork_mpx_video_strongarm() {
       'post_cover' => array(
         'custom_settings' => FALSE,
       ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'filename' => array(
-          'weight' => '-10',
+          'weight' => '0',
         ),
         'preview' => array(
-          'weight' => '-5',
+          'weight' => '1',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '28',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '19',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '20',
         ),
       ),
       'display' => array(
@@ -132,6 +138,10 @@ function usanetwork_mpx_video_strongarm() {
             'visible' => TRUE,
           ),
           'inline_content' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'microsite_thumbnail' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),
@@ -204,6 +214,12 @@ function usanetwork_mpx_video_strongarm() {
       'vid_teaser_front' => array(
         'custom_settings' => TRUE,
       ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -250,6 +266,10 @@ function usanetwork_mpx_video_strongarm() {
             'weight' => '0',
             'visible' => TRUE,
           ),
+          'microsite_thumbnail' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
         ),
       ),
     ),
@@ -262,6 +282,13 @@ function usanetwork_mpx_video_strongarm() {
   $strongarm->name = 'media_theplatform_mpx__cron_videos_per_run';
   $strongarm->value = '250';
   $export['media_theplatform_mpx__cron_videos_per_run'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'media_theplatform_mpx__watchdog_severity';
+  $strongarm->value = '5';
+  $export['media_theplatform_mpx__watchdog_severity'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

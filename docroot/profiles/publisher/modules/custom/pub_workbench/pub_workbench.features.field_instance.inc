@@ -41,7 +41,7 @@ function pub_workbench_field_default_field_instances() {
       'settings' => array(
         'match_operator' => 'CONTAINS',
         'path' => '',
-        'size' => 60,
+        'size' => 15,
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 1,

@@ -26,7 +26,7 @@
               tveAnalytics = tve.analytics,
               loadedImages;
 
-          //@TODO: not transparent ids: welcome modal window has a preview_step === 1, login window steps start from 2;
+          //not transparent ids: welcome modal window has a preview_step === 1, login window steps start from 2;
           previewStep = !!previewStep && (previewStep - 1);
 
           $modalInstance.result.then(null, function() {

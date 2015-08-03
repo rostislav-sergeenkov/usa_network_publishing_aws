@@ -18,12 +18,12 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_companion_rectangle_small' => array(
-      'weight' => 9,
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'video_mpx_companion_rectangle' => array(
-      'weight' => '10',
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -63,12 +63,12 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_companion_rectangle_small' => array(
-      'weight' => 9,
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'video_mpx_companion_rectangle' => array(
-      'weight' => '10',
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -208,7 +208,6 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       ),
       'description' => array(
         0 => 'field_mpx_description',
-        1 => 'field_gigya_share_bar',
       ),
       'ad_comp' => array(
         0 => 'video_companion_rectangle_small',
@@ -224,7 +223,6 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'field_mpx_episode_number' => 'episode',
       'field_mpx_airdate' => 'airdate',
       'field_mpx_description' => 'description',
-      'field_gigya_share_bar' => 'description',
       'video_companion_rectangle_small' => 'ad_comp',
       'video_mpx_companion_rectangle' => 'ad_comp',
     ),
@@ -255,6 +253,36 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'layout_wrapper' => 'div',
   );
   $export['file|mpx_video_1|inline_content'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|mpx_video_1|microsite_thumbnail';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'mpx_video_1';
+  $ds_layout->view_mode = 'microsite_thumbnail';
+  $ds_layout->layout = 'video_mpx_teaser';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'file',
+      ),
+      'title' => array(
+        0 => 'field_mpx_title',
+      ),
+      'caption' => array(
+        0 => 'field_seo_h1',
+      ),
+    ),
+    'fields' => array(
+      'file' => 'media',
+      'field_mpx_title' => 'title',
+      'field_seo_h1' => 'caption',
+    ),
+    'classes' => array(),
+  );
+  $export['file|mpx_video_1|microsite_thumbnail'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -446,7 +474,6 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       ),
       'description' => array(
         0 => 'field_mpx_description',
-        1 => 'field_gigya_share_bar',
       ),
       'ad_comp' => array(
         0 => 'video_companion_rectangle_small',
@@ -462,13 +489,42 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'field_mpx_episode_number' => 'episode',
       'field_mpx_airdate' => 'airdate',
       'field_mpx_description' => 'description',
-      'field_gigya_share_bar' => 'description',
       'video_companion_rectangle_small' => 'ad_comp',
       'video_mpx_companion_rectangle' => 'ad_comp',
     ),
     'classes' => array(),
   );
   $export['file|mpx_video_2|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|mpx_video_2|microsite_thumbnail';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'mpx_video_2';
+  $ds_layout->view_mode = 'microsite_thumbnail';
+  $ds_layout->layout = 'video_mpx_teaser';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'file',
+      ),
+      'title' => array(
+        0 => 'field_mpx_title',
+      ),
+      'caption' => array(
+        0 => 'field_seo_h1',
+      ),
+    ),
+    'fields' => array(
+      'file' => 'media',
+      'field_mpx_title' => 'title',
+      'field_seo_h1' => 'caption',
+    ),
+    'classes' => array(),
+  );
+  $export['file|mpx_video_2|microsite_thumbnail'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -516,19 +572,25 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'media' => array(
         0 => 'file',
       ),
-      'caption' => array(
-        0 => 'field_mpx_title',
-        1 => 'field_mpx_airdate',
-      ),
       'title' => array(
         0 => 'field_show',
+      ),
+      'caption' => array(
+        0 => 'field_mpx_title',
+      ),
+      'meta' => array(
+        0 => 'field_mpx_episode_number',
+        1 => 'field_mpx_season_number',
+        2 => 'field_mpx_duration',
       ),
     ),
     'fields' => array(
       'file' => 'media',
-      'field_mpx_title' => 'caption',
-      'field_mpx_airdate' => 'caption',
       'field_show' => 'title',
+      'field_mpx_title' => 'caption',
+      'field_mpx_episode_number' => 'meta',
+      'field_mpx_season_number' => 'meta',
+      'field_mpx_duration' => 'meta',
     ),
     'classes' => array(),
   );

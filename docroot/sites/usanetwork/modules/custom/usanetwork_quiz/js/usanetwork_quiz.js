@@ -102,6 +102,7 @@
           if (!isNaN(value) && $question.length > 0) {
             quizHandler.selectAnswer($questions.index($question), value);
           }
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
         });
         $(quiz).trigger('onInit');
       },
@@ -239,6 +240,7 @@
             $containers.filter(':visible').fadeOut(quiz.settings.animationSpeed, function() {
               $results_container.fadeIn(quiz.settings.animationSpeed, function() {
                 $(quiz).trigger('onShowResult', [$result]);
+                Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               });
             });
 
@@ -272,8 +274,28 @@
         $ads.appendTo($visible.find('.sidebar'));
       }
     },
-    attach: function(context, settings) {
-      var quizes = settings.usanetwork_quiz;
+
+    refreshSharebar: function($result, container, elem) {
+      var $container = $result.closest(container);
+      var $sharebar = $container.find(elem);
+
+      $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+        if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
+          var image = $result.find('.result-image img').attr('src');
+          if (image) {
+            sharebar.gigyaSharebar.ua.imageBhev = 'url';
+            sharebar.gigyaSharebar.ua.imageUrl = image;
+          }
+          else {
+            sharebar.gigyaSharebar.ua.imageBhev = 'default';
+          }
+          sharebar.gigyaSharebar.ua.description = $result.find('.result-description .share').text();
+          Drupal.gigya.showSharebar(sharebar);
+        }
+      });
+    },
+
+    initQuizzes: function(quizes) {
       for (nid in quizes) {
         var quiz_setting = quizes[nid];
         var $container = $(quiz_setting.container);
@@ -289,9 +311,11 @@
               },
               onStart: function() {
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);
+                Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               },
               onRestart: function() {
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);
+                Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               },
               onShowQuestion: function(e, $question) {
                 if (typeof usa_refreshBannerAd != 'undefined') {
@@ -299,31 +323,32 @@
                 }
               },
               onBeforeResult: function(e, $result) {
-                var $container = $result.closest('.container');
-                var $sharebar = $container.find('.field-name-field-gigya-share-bar > div');
-
-                $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-                  if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
-                    var image = $result.find('.result-image img').attr('src');
-                    if (image) {
-                      sharebar.gigyaSharebar.ua.imageBhev = 'url';
-                      sharebar.gigyaSharebar.ua.imageUrl = image;
-                    }
-                    else {
-                      sharebar.gigyaSharebar.ua.imageBhev = 'default';
-                    }
-                    sharebar.gigyaSharebar.ua.description = $result.find('.result-description .share').text();
-                    Drupal.gigya.showSharebar(sharebar);
-                  }
-                });
+                Drupal.behaviors.usanetwork_quiz.refreshSharebar($result, '.container', '.field-name-field-gigya-share-bar > div');
               },
               onShowResult: function(e, $result) {
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);
+                if (typeof usa_refreshBannerAd != 'undefined') {
+                  usa_refreshBannerAd();
+                }
               }
             }]);
           }
         });
       }
+    },
+
+    attach: function(context, settings) {
+      var quizes = settings.usanetwork_quiz,
+          self = this;
+
+      self.initQuizzes(quizes);
+
+      $(window).load(function () {
+        // init mps advert topbox
+        Drupal.behaviors.mpsAdvert.mpsLoadAd('#topbox', Drupal.behaviors.mpsAdvert.mpsNameAD.topbox);
+      });
+
+
     }
   };
 })(jQuery);

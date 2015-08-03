@@ -197,9 +197,15 @@
   margin: 0 15px 0 0;
   font-size: 1.4em;
   letter-spacing: .05em;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium",Helvetica,Arial,sans-serif;
+  width: 100%;
 }
-/**/
+#microsite #episodes h1.seo-h1,
+#microsite #episodes h3.seo-h1 {
+  font-size: 16px;
+  line-height: 1.5em;
+  text-transform: none;
+}
 #microsite #episodes .episode-role {
   color: #e5ce96;
   font-style: italic;

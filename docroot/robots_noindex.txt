@@ -1,24 +1,2 @@
 User-agent: *
-Disallow: *
-
-User-agent: Twitterbot
-Disallow: * 
-Allow: /videos 
-Allow: /burnnotice/videos
-Allow: /chrisleyknowsbest/videos
-Allow: /covertaffairs/videos
-Allow: /graceland/videos
-Allow: /modernfamily/videos
-Allow: /ncis/videos
-Allow: /necessaryroughness/videos
-Allow: /psych/videos
-Allow: /playinghouse/videos
-Allow: /royalpains/videos
-Allow: /sirens/videos
-Allow: /suits/videos
-Allow: /summercamp/videos
-Allow: /themoment/videos
-Allow: /usadaytime/videos
-Allow: /whitecollar/videos
-Allow: /wwe/videos
-Allow: /sites/usanetwork/files/video/
+Disallow: /

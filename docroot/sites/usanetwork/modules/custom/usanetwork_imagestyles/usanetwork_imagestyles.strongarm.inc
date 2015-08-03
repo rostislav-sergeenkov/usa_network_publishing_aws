@@ -27,8 +27,8 @@ function usanetwork_imagestyles_strongarm() {
     'respondlarge' => 765.625,
     'respondxl' => 1339.84375,
     'respondxl2' => 2344.7265625,
-    'respondxl3' => 4103.27148438,
-    'respondxl4' => 7180.72509766,
+    'respondxl3' => 4103.271484375,
+    'respondxl4' => 7180.7250976562,
   );
   $export['borealis_responsive_builds'] = $strongarm;
 
@@ -120,17 +120,17 @@ function usanetwork_imagestyles_strongarm() {
           'weight' => '1',
         ),
         2 => array(
-          'label' => 'Focus Scale And Crop',
-          'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-          'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-          'form callback' => 'imagefield_focus_scale_and_crop_form',
-          'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-          'module' => 'imagefield_focus',
-          'name' => 'imagefield_focus_scale_and_crop',
+          'label' => 'Focal Point Scale And Crop',
+          'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+          'effect callback' => 'focal_point_scale_and_crop_effect',
+          'dimensions callback' => 'image_resize_dimensions',
+          'form callback' => 'image_resize_form',
+          'summary theme' => 'image_resize_summary',
+          'module' => 'focal_point',
+          'name' => 'focal_point_scale_and_crop',
           'data' => array(
             'width' => '960',
             'height' => '540',
-            'strength' => 'low',
           ),
           'weight' => '2',
         ),
@@ -168,13 +168,14 @@ function usanetwork_imagestyles_strongarm() {
       'storage' => 2,
       'effects' => array(
         2 => array(
-          'label' => 'Focus Scale And Crop',
-          'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-          'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-          'form callback' => 'imagefield_focus_scale_and_crop_form',
-          'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-          'module' => 'imagefield_focus',
-          'name' => 'imagefield_focus_scale_and_crop',
+          'label' => 'Focal Point Scale And Crop',
+          'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+          'effect callback' => 'focal_point_scale_and_crop_effect',
+          'dimensions callback' => 'image_resize_dimensions',
+          'form callback' => 'image_resize_form',
+          'summary theme' => 'image_resize_summary',
+          'module' => 'focal_point',
+          'name' => 'focal_point_scale_and_crop',
           'data' => array(
             'width' => '1230',
             'height' => '360',
@@ -218,27 +219,9 @@ function usanetwork_imagestyles_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'imagefield_focus_media_settings';
-  $strongarm->value = array(
-    'focus' => '1',
-    'focus_lock_ratio' => '',
-    'focus_min_size' => '',
-  );
-  $export['imagefield_focus_media_settings'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'image_toolkit';
   $strongarm->value = 'imagemagick';
   $export['image_toolkit'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagefield_focus_image_style';
-  $strongarm->value = 'usa_image_focus';
-  $export['imagefield_focus_image_style'] = $strongarm;
 
   return $export;
 }

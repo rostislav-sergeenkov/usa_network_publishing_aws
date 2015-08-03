@@ -63,8 +63,8 @@ function state_flow_entity_form_content_type_content_types() {
 }
 
 /**
-* Render the custom content type.
-*/
+ * Render the custom content type.
+ */
 function state_flow_entity_form_content_type_render($subtype, $conf, $panel_args, $context) {
 
   if (empty($context) || empty($context->data)) {
@@ -73,7 +73,8 @@ function state_flow_entity_form_content_type_render($subtype, $conf, $panel_args
 
   $entity_type = $subtype;
 
-  // The form might be for the entity passed into this function or for the "active" entity.
+  // The form might be for the entity passed into this function or for the
+  // "active" entity.
   if (!empty($conf['entity_to_use']) && $conf['entity_to_use'] == 'active') {
     $entity_info = entity_get_info($entity_type);
     $revision_key = $entity_info['entity keys']['revision'];
@@ -98,7 +99,7 @@ function state_flow_entity_form_content_type_render($subtype, $conf, $panel_args
   );
 
   module_load_include('inc', 'state_flow_entity', 'state_flow_entity.forms');
-  $output =  drupal_get_form('state_flow_entity_events_revision', $entity, $entity_type, NULL, $form_options);
+  $output = drupal_get_form('state_flow_entity_events_revision', $entity, $entity_type, NULL, $form_options);
 
   // Build the content type block.
   $block = new stdClass();
@@ -114,15 +115,14 @@ function state_flow_entity_form_content_type_render($subtype, $conf, $panel_args
 }
 
 /**
-* Returns an edit form for custom type settings.
-*/
+ * Returns an edit form for custom type settings.
+ */
 function state_flow_entity_form_content_type_formatter_options($form, &$form_state) {
 
   if (empty($form_state['conf']['formatter_settings'])) {
     $form_state['conf']['formatter_settings'] = array();
   }
   $conf = $form_state['conf'];
-
 
   $form['entity_to_use'] = array(
     '#type' => 'select',
@@ -145,8 +145,8 @@ function state_flow_entity_form_content_type_formatter_options_submit($form, &$f
 }
 
 /**
-* Returns the administrative title for a type.
-*/
+ * Returns the administrative title for a type.
+ */
 function state_flow_entity_form_content_type_admin_title($subtype, $conf, $context) {
 
   // @todo, this function is not getting called.

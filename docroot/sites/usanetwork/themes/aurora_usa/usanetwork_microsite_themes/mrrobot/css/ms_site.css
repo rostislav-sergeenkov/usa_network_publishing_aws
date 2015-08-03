@@ -1,0 +1,36 @@
+/* GENERAL */
+html {
+  color: #000;
+  background-color: #CCC;
+}
+body {
+  background-color: #CCC !important;
+}
+
+/* MAIN STRUCTURE */
+.page-node-microsite .usa-wrap {
+  background-color: #CCC;
+}
+
+/* SECTIONS CONTAINERS */
+/* VIDEOS */
+#videos .header {
+  background-image: none;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item {
+  background-color: #999;
+  text-transform: none;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item:hover,
+#microsite .block-usanetwork-mpx-video li.grid-item.active {
+  background-color: #56000A;
+}
+#video-filter li.filter-item:hover,
+#video-filter li.filter-item.active {
+  background-color: #56000A;
+}
+
+#character-info .section {
+  background-color: transparent;
+  padding: 0;
+}

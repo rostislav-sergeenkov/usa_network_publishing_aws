@@ -161,12 +161,15 @@
           ad_300x250_1.attr('id', 'ad_300x250').empty();
         }
         if (ad_728x90.length == 1 && ad_728x90.attr('id') != 'ad_728x90_1') {
-          if (ad_728x90.hasAttribute('class')) {
+usa_debug('ad_728x90: ', ad_728x90);
+//          if (ad_728x90.hasAttribute('class')) {
             ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
+/*
           }
           else {
             ad_728x90.attr('data-class', defaultDataClass).addClass('ad_728x90').attr('id', 'ad_728x90_1');
           }
+*/
         }
 
         $('#videos .full-pane').addClass('full-desc');

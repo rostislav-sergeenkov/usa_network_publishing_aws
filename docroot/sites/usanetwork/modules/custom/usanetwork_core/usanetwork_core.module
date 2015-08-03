@@ -556,15 +556,15 @@ function usa_l($text, $path, array $options = array()) {
 function _usanetwork_core_get_video_title($file, $title = '') {
 
   if (empty($title)) {
-    $title = !empty($file->filename) ? $file->filename : $title;
+    $title = check_plain(!empty($file->filename) ? $file->filename : $title);
   }
 
-  if (!empty($file->field_show)) {
+  if (isset($file->type) && $file->type == 'mpx_video_2' && !empty($file->field_show)) {
     $file_wrapper = entity_metadata_wrapper('file', $file);
     $show = $file_wrapper->field_show->value();
     if (!empty($show->field_disable_uppercase)) {
       if ($file_wrapper->field_show->field_disable_uppercase->value()) {
-        return '<span style="text-transform:none">' . check_plain($title) . '</span>';
+        return '<span style="text-transform:none">' . $title . '</span>';
       }
     }
   }
@@ -576,17 +576,15 @@ function _usanetwork_core_get_video_title($file, $title = '') {
  */
 function _usanetwork_core_get_node_title($node, $title = '') {
   if (empty($title)) {
-    $title = !empty($node->title) ? $node->title : $title;
+    $title = check_plain(!empty($node->title) ? $node->title : $title);
   }
 
-  if (isset($node->type) && $node->type == 'tv_episode') {
-    if (!empty($node->field_show)) {
-      $file_wrapper = entity_metadata_wrapper('node', $node);
-      $show = $file_wrapper->field_show->value();
-      if (!empty($show->field_disable_uppercase)) {
-        if ($file_wrapper->field_show->field_disable_uppercase->value()) {
-          return '<span style="color:red">' . check_plain($title) . '</span>';
-        }
+  if (isset($node->type) && $node->type == 'tv_episode' && !empty($node->field_show)) {
+    $file_wrapper = entity_metadata_wrapper('node', $node);
+    $show = $file_wrapper->field_show->value();
+    if (!empty($show->field_disable_uppercase)) {
+      if ($file_wrapper->field_show->field_disable_uppercase->value()) {
+        return '<span style="text-transform:none">' . $title . '</span>';
       }
     }
   }

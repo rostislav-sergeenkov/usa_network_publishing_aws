@@ -409,15 +409,16 @@
       var width_block = width - item_width;
       var left = (window.innerWidth - width_block) / 2 - item_width - current_item.offset()['left'] + current_left;
 
+      if(!current_item_node.hasClass('advert-enable')) {
+        Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
+      }
+
       carousel.velocity({ left: left }, 500, 'linear');
       current_item.velocity({ width: width }, 500, 'easeInCubic');
 
       //carousel.animate({left: left}, 500);
       //current_item.animate({width: width}, 500, 'easeInCubic');
 
-      if(!current_item_node.hasClass('advert-enable')) {
-        Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
-      }
       current_item.addClass('active');
       current_item_show_open_link.addClass('active');
       current_item_node.addClass('open');

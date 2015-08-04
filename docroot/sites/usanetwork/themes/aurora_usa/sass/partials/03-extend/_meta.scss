@@ -9,21 +9,24 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .caption{
+    .caption {
       font-size: 13px;
       font-family: $avalon-book;
       letter-spacing: 0.75px;
     }
-    .title{
+    .title {
       font-size: 16px;
       font-family: $avalon-medium;
       letter-spacing: 1px;
+      .no-uppercase {
+        text-transform: none!important;
+      }
     }
-    .additional{
+    .additional {
       font-size: 11px;
       font-family: $avalon-medium;
       letter-spacing: 1px;
-      span{
+      span {
         font-size: 11px;
         font-family: $tex-gyreschola-italic;
         letter-spacing: 1px;

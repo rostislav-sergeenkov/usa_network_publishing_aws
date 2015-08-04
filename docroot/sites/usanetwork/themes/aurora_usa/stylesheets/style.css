@@ -669,6 +669,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title .no-uppercase, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title .no-uppercase, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title .no-uppercase, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title .no-uppercase, .five-promo-item-block ul li.first .meta .title .no-uppercase, .five-promo-item-block ul li:nth-child(2) .meta .title .no-uppercase, .five-promo-item-block ul li .last .meta .title .no-uppercase, .show-latest-block ul li .meta .title .no-uppercase, .consum-sidebar .episodes-list-slider.vertical li .meta .title .no-uppercase, .related-content-block ul li .meta .title .no-uppercase, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title .no-uppercase, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title .no-uppercase, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title .no-uppercase, .shows-block .show-info-block .show-bottom-info ul li .meta .title .no-uppercase, .landing-page-container .landing-items-blocks ul li .meta .title .no-uppercase, .carousel ul li .meta .title .no-uppercase, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title .no-uppercase {
+  text-transform: none !important;
+}
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -25840,6 +25843,22 @@ yx-axis
 .usanetwork-aspot .meta-wrap .cta-link {
   position: relative;
 }
+.usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) a {
+  background: none !important;
+}
+.usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+  padding: 1.4vw 4.5vw 1.4vw 3.5vw;
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+    padding: 35px 112.3px 35px 87.5px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+    padding: 1.4vw 6.5vw 1.4vw 3.5vw;
+  }
+}
 .usanetwork-aspot .meta-wrap .cta-link a {
   color: #ffffff;
   display: block;
@@ -25847,7 +25866,7 @@ yx-axis
   font-size: 1.27vw;
   letter-spacing: 0.1em;
   line-height: 1.8;
-  padding: 1.4vw 4.5vw 1.4vw 3.5vw;
+  padding: 0 4.5vw 0 0;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
@@ -25855,13 +25874,13 @@ yx-axis
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .cta-link a {
     font-size: 31.74px;
-    padding: 35px 112.3px 35px 87.5px;
+    padding: 0 112.3px 0 0;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .cta-link a {
     font-size: 2.7vw;
-    padding: 1.4vw 6.5vw 1.4vw 3.5vw;
+    padding: 0 6.5vw 0 0;
   }
 }
 .usanetwork-aspot .meta-wrap .cta-link a:after {

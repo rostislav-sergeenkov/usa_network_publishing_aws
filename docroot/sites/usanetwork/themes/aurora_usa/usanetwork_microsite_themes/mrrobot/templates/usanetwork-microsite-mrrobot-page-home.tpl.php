@@ -20,17 +20,21 @@
 $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost';
 date_default_timezone_set('America/New_York');
 $timestamp = time();
+$showCountdown = true;
 $sponsorClass = 'camry2015';
 $sponsorImg = 'graceland-s2catchup-camry.svg';
 $sponsorPresentedBy = 'Presented by the Bold 2015 Camry';
-if ($timestamp > mktime(0, 0, 1, 8, 16, 2015)): // after Aug 16, 2015 00:00:01 AM ET
+if ($timestamp > mktime(22, 0, 1, 8, 26, 2015)): // after Aug 26, 2015 10:00:01 PM ET, which is the start of the finale episode
+  $showCountdown = false;
   $sponsorClass = 'corolla';
   $sponsorImg = 'graceland-s2catchup-toyotacorrolla.svg';
   $sponsorPresentedBy = 'Presented by Toyota Corolla';
+/*
 elseif ($timestamp > mktime(0, 0, 1, 7, 14, 2015)): // after Jul 14, 2015 00:00:01 AM ET
   $sponsorClass = 'camry';
   $sponsorImg = 'graceland-s2catchup-toyotacamry.svg';
   $sponsorPresentedBy = 'Presented by Toyota Camry';
+*/
 endif;
 ?>
 
@@ -46,7 +50,7 @@ endif;
     <div id="home-tunein"><?php if (!empty($tune_in)) print $tune_in; ?></div>
 
     <!-- start countdown timer -->
-<?php /* COMMENTED BY DV ON JUNE 16, 2015 FOR POST-PREMIERE RE-LAUNCH ON JUNE 25
+<?php if ($showCountdown): ?>
     <div id="home-countdown">
       <div id="countHolder">
         <div id="counter">
@@ -85,7 +89,7 @@ endif;
         <div id="caption">*Time is EST and CST</div>
       </div><!-- #countHolder -->
     </div><!-- end countdown timer -->
-<?php */ ?>
+<?php endif; ?>
 
     <?php if (!empty($description)): ?>
     <div id="home-description" class="section-description"><?php print $description; ?></div>

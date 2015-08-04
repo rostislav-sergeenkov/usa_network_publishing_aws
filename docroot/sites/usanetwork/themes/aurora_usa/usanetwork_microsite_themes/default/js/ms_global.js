@@ -277,7 +277,6 @@
           if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h3').text();
           if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h1').text();
           break;
-/* DON'T DELETE THE FOLLOWING! IT CAN BE USED IN FUTURE MICROSITES!
         case 'about':
           break;
         case 'galleries':
@@ -295,7 +294,6 @@
           if (!contentName) contentName = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
           if (!contentName) contentName = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
           break;
-*/
       }
 
       // Build array of omniture "nodes" that make up the pageName
@@ -442,6 +440,10 @@
         }
 
         $ad.removeClass('loading');
+      }
+
+      if (section == 'galleries') {
+        Drupal.behaviors.ms_global.create300x250Ad(section);
       }
     },
 
@@ -621,8 +623,8 @@
           if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
         });
 
-        // initialize graceland cu logo click
-        $('#gracelandcu-logo').on('click', function(){
+        // initialize site nav logo click
+        $('#site-nav-logo').on('click', function(){
           var anchor = 'home',
               anchorFull = basePath + '/' + anchor;
 

@@ -36,6 +36,11 @@
       });
     },
 
+    setOverlayBgColor: function() {
+      var sectionBgColor = $('#characters.section').css('background-color');
+      $('#characters #character-info li').css('background-color', sectionBgColor);
+    },
+
     attach: function (context, settings) {
       // set defaults
       var self = this;
@@ -49,6 +54,8 @@
       $('#microsite #character-info li .character-close').on('click', function(e){
         self.closeCharacterInfo();
       });
+
+      self.setOverlayBgColor();
     }
   }
 })(jQuery);

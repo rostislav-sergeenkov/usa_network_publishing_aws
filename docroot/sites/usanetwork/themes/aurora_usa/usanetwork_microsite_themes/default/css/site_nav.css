@@ -66,19 +66,19 @@
   float: left;
   margin-top: 2%;
 }
-#site-nav #site-nav-top a#gracelandcu-logo.camry2015 {
+#site-nav #site-nav-top a#site-nav-logo.camry2015 {
   width: 64%;
 }
-#site-nav #site-nav-top a#gracelandcu-logo.camry,
-#site-nav #site-nav-top a#gracelandcu-logo.corolla {
+#site-nav #site-nav-top a#site-nav-logo.camry,
+#site-nav #site-nav-top a#site-nav-logo.corolla {
   width: 70%;
 }
-#site-nav #site-nav-top a#gracelandcu-sponsor.camry2015 {
+#site-nav #site-nav-top a#site-nav-sponsor.camry2015 {
   width: 35.22%;
   margin-left: 0.78%;
 }
-#site-nav #site-nav-top a#gracelandcu-sponsor.camry,
-#site-nav #site-nav-top a#gracelandcu-sponsor.corolla {
+#site-nav #site-nav-top a#site-nav-sponsor.camry,
+#site-nav #site-nav-top a#site-nav-sponsor.corolla {
   width: 25.22%;
   margin-left: 4.78%;
   margin-top: 1.2%;
@@ -203,15 +203,15 @@
 #site-nav.mobile #site-nav-top {
   width: 100%;
 }
-#site-nav.mobile #site-nav-top a#gracelandcu-logo {
+#site-nav.mobile #site-nav-top a#site-nav-logo {
   width: 96%;
 }
-#site-nav.mobile #site-nav-top a#gracelandcu-sponsor.camry2015 {
+#site-nav.mobile #site-nav-top a#site-nav-sponsor.camry2015 {
   width: 64%;
   margin: 2% 0 0 16%;
 }
-#site-nav.mobile #site-nav-top a#gracelandcu-sponsor.camry,
-#site-nav.mobile #site-nav-top a#gracelandcu-sponsor.corolla {
+#site-nav.mobile #site-nav-top a#site-nav-sponsor.camry,
+#site-nav.mobile #site-nav-top a#site-nav-sponsor.corolla {
   width: 44%;
   margin: 2% 0 0 28%;
 }
@@ -302,8 +302,8 @@
 
 /* BEGIN MEDIA QUERIES */
 @media (max-width: 1760px) {
-  #site-nav #site-nav-top a#gracelandcu-sponsor.camry,
-  #site-nav #site-nav-top a#gracelandcu-sponsor.corolla {
+  #site-nav #site-nav-top a#site-nav-sponsor.camry,
+  #site-nav #site-nav-top a#site-nav-sponsor.corolla {
     margin-top: 2.2%;
   }
 }
@@ -323,15 +323,15 @@
   #site-nav #site-nav-top.corolla {
     top: 4px;
   }
-  #site-nav #site-nav-top a#gracelandcu-sponsor.camry,
-  #site-nav #site-nav-top a#gracelandcu-sponsor.corolla {
+  #site-nav #site-nav-top a#site-nav-sponsor.camry,
+  #site-nav #site-nav-top a#site-nav-sponsor.corolla {
     margin-top: 2.2%;
   }
 }
 
 @media (max-width: 1050px) {
-  #site-nav #site-nav-top a#gracelandcu-sponsor.camry,
-  #site-nav #site-nav-top a#gracelandcu-sponsor.corolla {
+  #site-nav #site-nav-top a#site-nav-sponsor.camry,
+  #site-nav #site-nav-top a#site-nav-sponsor.corolla {
     width: 24.22%;
   }
 }

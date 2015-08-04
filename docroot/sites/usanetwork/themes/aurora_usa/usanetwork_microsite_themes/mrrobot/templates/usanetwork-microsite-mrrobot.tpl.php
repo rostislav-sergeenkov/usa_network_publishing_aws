@@ -63,8 +63,8 @@ endif;
           <div id="site-nav-left"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
           <div id="site-nav-center">
             <div id="site-nav-top" class="<?php print $sponsorClass; ?>">
-              <a id="gracelandcu-logo" class="internal <?php print $sponsorClass; ?>" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.png" alt="Graceland Catchup HQ logo"></a>
-              <a id="gracelandcu-sponsor" class="<?php print $sponsorClass; ?>" href="http://ad.doubleclick.net/ddm/jump/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" target="_blank">
+              <a id="site-nav-logo" class="internal <?php print $sponsorClass; ?>" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.png" alt="Graceland Catchup HQ logo"></a>
+              <a id="site-nav-sponsor" class="<?php print $sponsorClass; ?>" href="http://ad.doubleclick.net/ddm/jump/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" target="_blank">
                 <img class="tracking" src="http://ad.doubleclick.net/ddm/ad/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" border="0" width="1" height="1" alt="Advertisement">
                 <img src="<?php print $themePath; ?>/images/<?php print $sponsorImg; ?>" alt="<?php print $sponsorPresentedBy; ?>">
               </a>

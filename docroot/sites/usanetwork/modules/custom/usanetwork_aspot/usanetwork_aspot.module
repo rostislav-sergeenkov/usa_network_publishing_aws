@@ -998,7 +998,7 @@ function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_eleme
   $output .= 'top: ';
   $output .= isset($draggable_data_element->percentMY) ? $draggable_data_element->percentMY . '%;' : 'auto; ';
   $output .= 'width: ';
-  $output .= isset($draggable_data_element->width) ? $draggable_data_element->width. '%;' : 'auto;';
+  $output .= isset($draggable_data_element->widthM) ? $draggable_data_element->widthM. '%;' : 'auto;';
   return $output;
 }
 
@@ -1095,6 +1095,7 @@ function _usanetwork_aspot_get_draggable_ui_default_settings_element() {
     'invertMX' => NULL,
     'invertMY' => NULL,
     'width' => NULL,
+    'widthM' => NULL,
   );
 }
 
@@ -1146,7 +1147,7 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
 
     foreach ($cta_buttons as $cta_button_index => $cta_button) {
       $new_button_id = 'cta_button_' . $cta_button_index;
-      $new_button_title = 'CTA ' . $cta_button['title'];
+      $new_button_title = $cta_button['title'];
       $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_gi, $language, 'cta_button');
 
       if (isset($aspot_elements[$new_button_id])) {
@@ -1155,7 +1156,7 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
       }
       else {
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
-          'value' => 'CTA ' . $new_button_title,
+          'value' => $new_button_title,
           'enabled' => $new_button_enabled,
           'display' => 'none',
           'percentX' => 'auto',
@@ -1167,6 +1168,7 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
           'invertMX' => NULL,
           'invertMY' => NULL,
           'width' => NULL,
+          'widthM' => NULL,
         ));
       }
     }
@@ -1182,7 +1184,7 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
 
     foreach ($cta_buttons as $cta_button_index => $cta_button) {
       $new_button_id = 'cta_button_' . $cta_button_index;
-      $new_button_title = 'CTA ' . $cta_button['title'];
+      $new_button_title = $cta_button['title'];
       $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_tgi, $language, 'cta_button');
 
       if (isset($aspot_elements[$new_button_id])) {
@@ -1191,7 +1193,7 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
       }
       else {
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
-          'value' => 'CTA ' . $new_button_title,
+          'value' => $new_button_title,
           'enabled' => $new_button_enabled,
           'display' => 'none',
           'percentX' => 'auto',
@@ -1203,6 +1205,7 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
           'invertMX' => NULL,
           'invertMY' => NULL,
           'width' => NULL,
+          'widthM' => NULL,
         ));
       }
     }

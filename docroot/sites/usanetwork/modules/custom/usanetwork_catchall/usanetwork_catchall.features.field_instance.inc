@@ -980,7 +980,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 62,
     ),
   );
 

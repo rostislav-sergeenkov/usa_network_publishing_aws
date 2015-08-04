@@ -53,6 +53,7 @@ function usanetwork_aspot_field_default_field_bases() {
       'allowed_values' => array(
         'title_prefix' => 'Page title prefix',
         'title' => 'Page title',
+        'aspot_description' => 'Description',
         'cta_button' => 'Call to action button',
         'social_meter' => 'Social meter',
       ),
@@ -80,6 +81,7 @@ function usanetwork_aspot_field_default_field_bases() {
       'allowed_values' => array(
         'title_prefix' => 'Page title prefix',
         'title' => 'Page title',
+        'aspot_description' => 'Description',
         'cta_button' => 'Call to action button',
         'social_meter' => 'Social meter',
       ),
@@ -116,6 +118,25 @@ function usanetwork_aspot_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_aspot_gi_desc'
+  $field_bases['field_aspot_gi_desc'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_aspot_gi_desc',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_aspot_gi_draggable_data'
@@ -217,6 +238,25 @@ function usanetwork_aspot_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_aspot_tgi_desc'
+  $field_bases['field_aspot_tgi_desc'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_aspot_tgi_desc',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_aspot_tgi_draggable_data'

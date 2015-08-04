@@ -5,7 +5,7 @@
     <?php if (!empty($url)): ?>
       <a href="<?php print $url; ?>">
         <?php if (!empty($image)): ?>
-          <div class="asset-img <?php if (!empty($active)): print ' active show-border'; endif; ?>"><img src="<?php print $image;?>" alt="" title="<?php print $img_title; ?>"></div>
+          <div class="asset-img <?php if (!empty($active)): print ' active show-border'; endif; ?>"><img src="<?php print $image;?>" alt="" title="<?php print $title; ?>"></div>
         <?php endif; ?>
         <div class="meta-wrapper">
           <div class="meta-wrapper-inner">

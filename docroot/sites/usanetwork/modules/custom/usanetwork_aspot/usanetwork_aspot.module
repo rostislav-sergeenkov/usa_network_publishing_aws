@@ -149,6 +149,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
 
   $form['#attached']['js'][] = libraries_get_path('draggable_background') . '/draggable_background.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot.giui.js';
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_default_position.js';
   $form['#attached']['js'][] = array(
     'data' => array(
       'giui_settings' => $previewing_settings

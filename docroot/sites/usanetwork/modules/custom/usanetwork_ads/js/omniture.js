@@ -232,6 +232,45 @@
       s.tl(this, 'o', name + ' Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
+
+    aspotClick: function ($self, pageName, name, slideName) {
+
+      if ($self.hasClass('next-button')) {
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = name;
+        s.eVar55 = pageName;
+      } else {
+        s.linkTrackVars = 'events,eVar55,eVar33,eVar35';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = slideName;
+        s.eVar35 = name;
+        s.eVar55 = pageName;
+      }
+
+      if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
+        s.bcf = function () {
+          setTimeout(function () {
+            window.location = $self.attr('href');
+          }, 500);
+        };
+      }
+
+      s.tl(this, 'o', pageName + ' ' + name + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
+    carouselNavClick: function (fullName, nameNav) {
+
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = nameNav;
+        s.eVar55 = fullName;
+
+      s.tl(this, 'o', fullName + ' ' + nameNav + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
     promoClick: function ($self, name, show_name) {
 
       if (show_name === '') {
@@ -265,6 +304,7 @@
             global_show_name = $('header .nav-bar-tabs .show-name').text().trim() || '',
             show_name,
             page_name,
+            blockName,
             name;
 
         // Home page
@@ -291,7 +331,8 @@
             name = page_name + 'Latest Full Episodes Block';
           }
           if ($self.closest('.best-of-block').length > 0) {
-            name = page_name + $('.best-of-block .section-title').text() + 'Block';
+            blockName = $('.best-of-block .section-title').text().trim();
+            name = page_name + blockName + ' Block';
           }
           if ($self.closest('.show-latest-block').length > 0) {
             name = page_name + 'The Latest Block';
@@ -306,6 +347,30 @@
           }
           if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-vl').length > 0) {
             name = page_name + 'All Videos Block';
+          }
+        }
+
+        // Movies page
+        if (body.hasClass('page-movies')) {
+          page_name = 'Movies Page ';
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movies-mb').length > 0) {
+            name = page_name + 'Movies Main Block';
+          }
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movies-all-movies').length > 0) {
+            name = page_name + 'All Movies Block';
+          }
+        }
+
+        // Movie page
+        if (body.hasClass('node-type-movie')) {
+          page_name = 'Movie Page ';
+          //show_name = $('.show-title-block .title a').text().trim();
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movie-related').length > 0) {
+            blockName = $('#block-usanetwork-movie-usanetwork-movie-related .section-title').text().trim();
+            name = page_name + blockName + ' Block';
+          }
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movie-cast-crew-block').length > 0) {
+            name = page_name + 'Cast & Crew Block';
           }
         }
 
@@ -406,6 +471,8 @@
     omnitureMaxQuestionCharacters: 35,
 
     attach: function (context, settings) {
+
+      console.info()
       if (typeof s != 'object') {
         return;
       }
@@ -438,52 +505,139 @@
         });
 
         // Home Page A-spot click
-        //$( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
-        //".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
-        $('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
+        $( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
+        "#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button," +
+        ".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
+        //$('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
-            e.preventDefault();
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
 
-            var target = $(this),
-                page = $('body').hasClass('page-home') ? 'Home' : 'Show',
-                pageName = page + ' Page A-Spot ',
-                name,
-                fullName;
+              var target = $(this),
+                  pageName = $('body').hasClass('page-home') ? 'Homepage A-Spot' : 'Show Landing A-Spot',
+                  slideBlock, showName, titleName, slideName, name, titleField, titleClone;
 
-            if (target.hasClass('asset-img-link')) {
-              name = 'Image';
-            } else if (target.hasClass('cta-button-link')) {
-              name = target.data('cta-link');
-            } else if (target.hasClass('social-meter-link')) {
-              name = 'Social';
-            } else {
-              name = '';
+              if (target.hasClass('next-button')) {
+                name = 'Peek Ahead Strip';
+              } else {
+                slideBlock = target.closest('.node.usanetwork-aspot.');
+                showName = slideBlock.data('show-name').trim();
+                titleField = slideBlock.find('.slide-content .title');
+                titleClone = titleField.clone();
+
+                // check title value about tag style & br
+                titleClone.find('br').replaceWith(' ');
+
+                if (titleField.find('style').length > 0) {
+                  // delete style from clone
+                  titleClone.find('style').empty();
+                  titleName = titleClone.text().trim();
+                } else {
+                  titleName = titleClone.text().trim();
+                }
+
+                slideName = showName + ' : ' + titleName;
+
+                if (target.hasClass('asset-img-link')) {
+                  name = 'BACKGROUND_IMAGE';
+                } else if (target.hasClass('cta-button-link')) {
+                  name = target.data('cta-link');
+                } else if (target.hasClass('social-meter-link')) {
+                  name = 'SOCIAL_INDICATOR';
+                } else {
+                  name = '';
+                }
+              }
+
+              Drupal.behaviors.omniture_tracking.aspotClick(target, pageName, name, slideName);
             }
-
-            fullName = pageName + name;
-
-            Drupal.behaviors.omniture_tracking.promoClick(target, fullName);
           })
         });
-
 
         // Click promo item
         $('.usa-wrap .node-usanetwork-promo a,' +
         '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +
         '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
-            e.preventDefault();
-            var self = $(this);
-            if (self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+              var self = $(this);
+              if (self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
 
-              var name = 'Home Page Show Card Carousel',
-                  item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text(),
-                  prop4 = item_show_name + ' : Home Page Show Card',
-                  prop10 = item_show_name;
+                var name = 'Home Page Show Card Carousel',
+                    item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text(),
+                    prop4 = item_show_name + ' : Home Page Show Card',
+                    prop10 = item_show_name;
 
-              Drupal.behaviors.omniture_tracking.showCardPromoClick(self, name, prop4, prop10);
-            } else {
-              Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+                Drupal.behaviors.omniture_tracking.showCardPromoClick(self, name, prop4, prop10);
+              } else {
+                Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+              }
+            }
+          });
+        });
+
+        // Click promo item
+        $('a.jcarousel-controls').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+
+              var body = $('body'),
+                  target = $(this),
+                  pageName, blockName, nameNav, fullName;
+
+              if (target.hasClass('jcarousel-control-prev')) {
+                nameNav = 'Carousel Back';
+              } else if (target.hasClass('jcarousel-control-next')) {
+                nameNav = 'Carousel Next';
+              }
+
+              if (body.hasClass('page-home')) {
+                pageName = 'Home Page';
+
+                if (target.closest('.shows-block').length > 0) {
+                  blockName = target.closest('.shows-block').data('block-name');
+                } else if (target.closest('.full-episodes-block').length > 0) {
+                  blockName = target.closest('.full-episodes-block').data('block-name');
+                } else if (target.closest('.featured-block').length > 0) {
+                  blockName = target.closest('.featured-block').data('block-name');
+                } else if (target.closest('.social-block').length > 0) {
+                  blockName = target.closest('.social-block').data('block-name');
+                }
+
+
+              } else if (body.hasClass('page-videos')) {
+                pageName = 'Full Episodes Landing Page';
+                blockName = target.closest('.carousel-block').data('block-name');
+              } else if (body.hasClass('consumptionator-page')) {
+
+                if (body.hasClass('consumptionator-video-page')) {
+                  pageName = 'Consumptionator Video Page';
+                } else if (body.hasClass('node-type-consumpt-post')) {
+                  pageName = 'Consumptionator Post Page';
+                } else if (body.hasClass('node-type-media-gallery')) {
+                  pageName = 'Consumptionator Gallery Page';
+                }  else if (body.hasClass('node-type-person')) {
+                  pageName = 'Consumptionator Person Page';
+                }  else if (body.hasClass('node-type-quiz')) {
+                  pageName = 'Consumptionator Quiz Page';
+                } else {
+                  pageName = 'Consumptionator Page';
+                }
+
+                blockName = target.closest('.episodes-list-slider.horizontal').data('block-name');
+              } else if (body.hasClass('node-type-tv-show')) {
+                pageName = 'Show Page';
+                blockName = target.closest('.episodes-list-slider.horizontal').data('block-name');
+              } else {
+                pageName = 'Page';
+                blockName = 'Right Rail Carousel';
+              }
+
+              fullName = pageName + ' ' + blockName;
+
+              Drupal.behaviors.omniture_tracking.carouselNavClick(fullName, nameNav);
             }
           });
         });

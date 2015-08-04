@@ -562,7 +562,7 @@ Project demo: http://shindiristudio.com/timeline
         touchEnd : function(xpos) {
           var $this = this,
               data = $this.data('timeline'),
-              itemWidth = (data.itemWidth + data.options.itemMargin)/3, // reduce the swipe distance to one-third of the item width
+              itemWidth = (data.itemWidth + data.options.itemMargin)/4, // reduce the swipe distance to one-third of the item width
               itemC = data.currentIndex,
               mod = 0,
               xmargin = xpos - data.mousestartpos;

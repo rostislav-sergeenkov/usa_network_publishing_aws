@@ -14,74 +14,84 @@
           $controls = $('.schedule-wrapper .schedule-navigation-controls');
 
       $navigation
-        .on('jcarousel:create jcarousel:reload', function () {
-          var $carousel = $(this),
-              width = null,
-              margin = $navigation.css('margin-left'),
-              hideControls = function() {
-                $controls.hide();
-                $navigation.css('margin', '0');
-              },
-              showControls = function() {
-                $controls.show();
-                $navigation.css('margin', '0 50px');
-              };
+          .on('jcarousel:create jcarousel:reload', function () {
+            var $carousel = $(this),
+                width = null,
+                margin = $navigation.css('margin-left'),
+                hideControls = function () {
+                  $controls.hide();
+                  $navigation.css('margin', '0');
+                },
+                showControls = function () {
+                  $controls.show();
+                  $navigation.css('margin', '0 50px');
+                };
 
-          if (margin == '0px') {
-            width = $carousel.innerWidth();
-          } else {
-            width = $carousel.innerWidth() + 100;
-          }
-
-          if (width <= 320) {
-            width = width - 100;
-            width = width / 3;
-
-            showControls();
-          } else if ((width > 320) && (width <= 768)) {
-            width = width - 100;
-            width = width / 5;
-
-            showControls();
-          } else {
-            if (window.innerWidth >= window_size_tablet_portrait) {
-              hideControls();
+            if (margin == '0px') {
+              width = $carousel.innerWidth();
+            } else {
+              width = $carousel.innerWidth() + 100;
             }
 
-            width = width / 7;
-          }
+            if (width <= 320) {
+              width = width - 100;
+              width = width / 3;
 
-          $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-        })
-        .jcarousel({
-          animation: {
-            duration: 500,
-            easing: 'linear'
-          },
-          rtl: false
-        });
+              showControls();
+            } else if ((width > 320) && (width <= 768)) {
+              width = width - 100;
+              width = width / 5;
+
+              showControls();
+            } else {
+              if (window.innerWidth >= window_size_tablet_portrait) {
+                hideControls();
+              }
+
+              width = width / 7;
+            }
+
+            $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
+          })
+          .swipe({
+            excludedElements: "button, input, select, textarea, .noSwipe",
+            threshold: 50,
+            swipeRight: function () {
+              $(this).jcarousel('scroll', '-=3');
+            },
+            swipeLeft: function () {
+              $(this).jcarousel('scroll', '+=3');
+            }
+          })
+          .jcarousel({
+            animation: {
+              duration: 500,
+              easing: 'linear'
+            },
+            rtl: false
+          });
 
       $('.jcarousel-control-prev')
-        .on('jcarouselcontrol:active', function () {
-          $(this).removeClass('inactive');
-        })
-        .on('jcarouselcontrol:inactive', function () {
-          $(this).addClass('inactive');
-        })
-        .jcarouselControl({
-          target: '-=1'
-        });
+          .on('jcarouselcontrol:active', function () {
+            $(this).removeClass('inactive');
+          })
+          .on('jcarouselcontrol:inactive', function () {
+            $(this).addClass('inactive');
+          })
+          .jcarouselControl({
+            target: '-=1'
+          });
 
       $('.jcarousel-control-next')
-        .on('jcarouselcontrol:active', function () {
-          $(this).removeClass('inactive');
-        })
-        .on('jcarouselcontrol:inactive', function () {
-          $(this).addClass('inactive');
-        })
-        .jcarouselControl({
-          target: '+=1'
-        });
+          .on('jcarouselcontrol:active', function () {
+            $(this).removeClass('inactive');
+          })
+          .on('jcarouselcontrol:inactive', function () {
+            $(this).addClass('inactive');
+          })
+          .jcarouselControl({
+            target: '+=1'
+          });
     },
 
     attach: function (context) {

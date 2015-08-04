@@ -5,6 +5,9 @@
   padding: 40px 16px;
   position: relative;
   width: 100%;
+  &:nth-child(even) {
+    background: $poll-back;
+  }
   @include breakpoint($bp-480-width) {
     padding: 40px 10px;
   }
@@ -62,12 +65,21 @@
         float: right;
         @extend %three-line-video-promo;
         @extend %meta;
+        @include breakpoint($bp-768-width) {
+          height: auto;
+        }
         > div {
           float: left;
           height: 49.2%;
           width: 49.2%;
+          @include breakpoint($bp-768-width) {
+            height: 36.83vw;
+          }
           &:nth-child(1), &:nth-child(2) {
             margin-bottom: 1.6%;
+            @include breakpoint($bp-768-width) {
+              margin-bottom: 1.47vw;
+            }
           }
           &:nth-child(2), &:nth-child(4) {
             float: right;

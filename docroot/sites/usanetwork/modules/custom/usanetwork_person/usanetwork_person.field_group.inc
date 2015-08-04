@@ -55,6 +55,7 @@ function usanetwork_person_field_group_info() {
       0 => 'field_person_birth_date',
       1 => 'field_person_birth_location',
       2 => 'field_person_external_links',
+      3 => 'field_imdb_url',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

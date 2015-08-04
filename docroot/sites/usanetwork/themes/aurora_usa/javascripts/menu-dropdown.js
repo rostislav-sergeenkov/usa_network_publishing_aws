@@ -204,7 +204,9 @@
               index = $(".tab .no-refresh").index(tab),
               animation_speed = 350;
 
-          Drupal.behaviors.omniture_tracking.mainMenuTabs(tab);
+          if (typeof s === 'object') {
+            Drupal.behaviors.omniture_tracking.mainMenuTabs(tab);
+          }
 
           var openTab = function () {
 

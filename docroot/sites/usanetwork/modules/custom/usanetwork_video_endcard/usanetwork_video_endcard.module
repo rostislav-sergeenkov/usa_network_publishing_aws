@@ -29,6 +29,36 @@ function usanetwork_video_endcard_menu() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_video_endcard_image_default_styles() {
+  $styles = array();
+
+  $styles['409x231'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 409,
+          'height' => 231,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 409,
+          'height' => 231,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Menu callback for related items.
  */
 function usanetwork_video_endcard_related_items() {
@@ -67,6 +97,12 @@ function usanetwork_video_endcard_related_items() {
 
       $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category);
       foreach ($related_files as $related_file) {
+        $overriden_image = NULL;
+        if (!empty($related_file->field_promo_image_override)) {
+          $overriden_image = field_get_items('file', $related_file, 'field_promo_image_override');
+          $overriden_image = reset($overriden_image);
+          $overriden_image = image_style_url('409x231', $overriden_image['uri']);
+        }
         $uri = entity_uri('file', $related_file);
         $item = array(
           'guid' => $related_file->mpx_video_data['guid'],
@@ -74,7 +110,7 @@ function usanetwork_video_endcard_related_items() {
           'title' => $related_file->filename,
           'media$thumbnails' => array(
             array(
-              'plfile$url' => $related_file->mpx_video_data['thumbnail_url'],
+              'plfile$url' => !empty($overriden_image) ? $overriden_image : $related_file->mpx_video_data['thumbnail_url'],
             ),
           ),
         );
@@ -104,6 +140,8 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
         }
       }
 
+      $language = _usanetwork_get_field_item('file', $file, 'field_mpx_language', 'value');
+
       while (count($tids) > 0 && count($items) < USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
         $tid = _usanetwork_video_endcard_get_deepest_term($tids);
         if ($tid === false) {
@@ -131,8 +169,30 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
         $query->condition('fe.entity_type', 'file', '=')
           ->condition('fe.field_mpx_full_episode_value', $full_episode ? '1' : '0', '=');
 
-        $query->orderBy('v.airdate', 'DESC')
-          ->orderBy('v.created', 'DESC');
+        if ($full_episode) {
+          $query->innerJoin('field_data_field_mpx_episode_number', 'ep', 'fd.entity_id = ep.entity_id');
+          // +0 for sorting numerically varchar field.
+          $query->orderBy('ep.field_mpx_episode_number_value+0', 'ASC')
+            ->orderBy('v.airdate', 'ASC')
+            ->orderBy('v.created', 'ASC');
+        }
+        else {
+          $query->orderBy('v.airdate', 'DESC')
+            ->orderBy('v.created', 'DESC');
+        }
+
+        if ((empty($language)) || $language == 'en') {
+          $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fd.entity_id = fdfml.entity_id');
+          $query->condition(
+            db_or()
+              ->condition('fdfml.field_mpx_language_value', 'en', '=')
+              ->isNull('fdfml.field_mpx_language_value')
+          );
+        } else {
+          $query->innerJoin('field_data_field_mpx_language', 'fdfml', 'fd.entity_id = fdfml.entity_id');
+          $query->condition('fdfml.field_mpx_language_value', $language, '=');
+        }
+
         $result = $query->execute()
           ->fetchAllAssoc('entity_id');
 

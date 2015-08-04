@@ -17,7 +17,8 @@ function usanetwork_episodes_menu() {
   $items = array();
 
   $items['node/%node/episodes'] = array(
-    'title' => 'Episodes',
+    'title callback' => 'usanetwork_tv_shows_landing_page_title_callback',
+    'title arguments' => array(1, 'episodes'),
     'page arguments' => array(1),
     'page callback' => 'usanetwork_episodes_blank_page',
     'access arguments' => array('access content'),
@@ -484,6 +485,9 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'full_episode_url' => isset($episode_data->fid)
             ? url('file/' . $episode_data->fid)
             : NULL,
+          'second_full_episode_url' => (!empty($episode_data->subtitle_video))
+            ? url('file/' . $episode_data->subtitle_video)
+            : NULL,
           'preview_episode_url' => isset($episode_data->preview_fid)
             ? url('file/' . $episode_data->preview_fid)
             : NULL,
@@ -493,10 +497,10 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'title' => $episode_data->title,
           'description' => $episode_data->description,
           'airing_date' => !empty($episode_data->airdate)
-            ? gmdate('m/d/Y', $episode_data->airdate)
+            ? date('m/d/Y', $episode_data->airdate)
             : NULL,
           'expiration_date' => !empty($episode_data->expiration_date)
-            ? gmdate('m/d/Y', $episode_data->expiration_date)
+            ? date('m/d/Y', $episode_data->expiration_date)
             : NULL,
           'guide_url' => url('node/' . $episode_data->nid),
           'gallery_url' => !empty($episode_data->gallery_nid)
@@ -705,6 +709,13 @@ function _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_n
   // Join MPX Full episode
   $query->join('field_data_field_mpx_full_episode', 'full_episode_field', 'full_episode_field.entity_id=mpxv.fid');
   $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  // LeftJoin MPX Language
+  $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = mpxv.fid');
+  $query->condition(
+    db_or()
+      ->condition('fdfml.field_mpx_language_value', 'en', '=')
+      ->isNull('fdfml.field_mpx_language_value')
+  );
 
   $result = $query->execute()->fetchAll();
 
@@ -713,6 +724,31 @@ function _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_n
   }
 
   return NULL;
+}
+
+function _usanetwork_episodes_get_subtitle_video($show_nid, $season_number, $episode_number) {
+  $query = db_select('mpx_video', 'mpxv');
+  $query->fields('mpxv', array('fid'));
+  $query->condition('mpxv.status', '1');
+  // Join Season number
+  $query->join('field_data_field_mpx_season_number', 'mpx_season_number', 'mpx_season_number.entity_id=mpxv.fid');
+  $query->condition('mpx_season_number.field_mpx_season_number_value', $season_number);
+  // Join Episode number
+  $query->join('field_data_field_mpx_episode_number', 'mpx_episode_number', 'mpx_episode_number.entity_id=mpxv.fid');
+  $query->condition('mpx_episode_number.field_mpx_episode_number_value', $episode_number);
+  // Join TV Show
+  $query->join('field_data_field_show', 'mpx_show_field', 'mpx_show_field.entity_id=mpxv.fid');
+  $query->condition('mpx_show_field.field_show_target_id', $show_nid);
+  // Join MPX Full episode
+  $query->join('field_data_field_mpx_full_episode', 'full_episode_field', 'full_episode_field.entity_id=mpxv.fid');
+  $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  // Join MPX Language
+  $query->join('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = mpxv.fid');
+  $query->condition('fdfml.field_mpx_language_value', 'en', '<>');
+
+  $result = $query->execute()->fetchField();
+
+  return $result;
 }
 
 function _usanetwork_episodes_get_episodic_gallery($episode_nid) {
@@ -805,6 +841,7 @@ function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid
 
         $result_item->description = _usanetwork_episodes_get_season_episodes_description($result_item);
         $result_item->gallery_nid = _usanetwork_episodes_get_episodic_gallery($result_item->nid);
+        $result_item->subtitle_video = _usanetwork_episodes_get_subtitle_video($show_nid, $season_number, $result_item->episode_number);
       }
     }
 

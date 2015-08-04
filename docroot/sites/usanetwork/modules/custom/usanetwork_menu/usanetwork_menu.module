@@ -496,11 +496,11 @@ function usanetwork_menu_image_default_styles() {
  * Alter gigya share settings.
  */
 function usanetwork_menu_gigya_sharebar_alter(&$share_settings, $context) {
+  if (!empty($context['display']['share_settings']) ) {
+    $share_settings['gigyaSharebar']['ua'] = array_merge($share_settings['gigyaSharebar']['ua'], $context['display']['share_settings']);
+  }
   if ($context['entity_type'] == 'node') {
     $node = $context['entity'];
-    if (!empty($context['display']['share_settings']) ) {
-      $share_settings['gigyaSharebar']['ua'] = array_merge($share_settings['gigyaSharebar']['ua'], $context['display']['share_settings']);
-    }
     $node_wrapper = entity_metadata_wrapper('node', $node);
     if (!empty($node->field_share_title)) {
       $share_settings['gigyaSharebar']['ua']['title'] = $node_wrapper->field_share_title->value();
@@ -1092,7 +1092,9 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
     }
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
-    $field = $tv_content_fields[$tv_content_node];
+    if (!empty($tv_content_node->type)) {
+      $field = !empty($tv_content_fields[$tv_content_node->type]) ? $tv_content_fields[$tv_content_node->type] : NULL;
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'authbar' => isset($authbar) ? $authbar : NULL,
@@ -1131,13 +1133,13 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
       $episode = $entity_wrapper->field_episode->value();
       if ($episode_num_items = field_get_items('node', $episode, 'field_episode_number')) {
         $episode_num_items = reset($episode_num_items);
-        $season_num = $episode_num_items['value'];
+        $episode_num = $episode_num_items['value'];
       }
       if ($episode->field_season) {
         $season = $entity_wrapper->field_season->value();
         if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
           $season_num_items = reset($season_num_items);
-          $episode_num = $season_num_items['value'];
+          $season_num = $season_num_items['value'];
         }
       }
     }
@@ -1148,18 +1150,30 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
     $field = $tv_content_fields[$tv_content_node->type];
+    $node_title = !empty($node->title) ? $entity_wrapper->title->value() : NULL;
+    $gallery_type = !empty($node->field_gallery_type) ? $entity_wrapper->field_gallery_type->value() : '';
+    if (!empty($episode_num) && !empty($season_num)) {
+      $title = t('S@season EP@episode: @title', array(
+        '@season' => $season_num,
+        '@episode' => $episode_num,
+        '@title' => $node_title,
+      ));
+    }
+    else {
+      $title = $node_title;
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'authbar' => isset($authbar) ? $authbar : NULL,
       'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',
       'show_name' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
-      'gallery_name' => !empty($node->title) ? $node->title : '',
+      'gallery_name' => $title,
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
         'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share this gallery'), $node->title, $description),
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => $description,
-        'gallery_type' => !empty($node->field_gallery_type) ? $entity_wrapper->field_gallery_type->value() : '',
+        'gallery_type' => $gallery_type,
         'episode_info' => !empty($episode) ? array(
             'episode_title' => $episode->title,
             'season_number' => !empty($season_num) ? $season_num : '',
@@ -1190,6 +1204,8 @@ function _usanetwork_menu_consumptionator_block_timeline_gallery($node) {
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->field_summary) ? $entity_wrapper->field_summary->value() : '');
+    $share_description = !empty($node->field_share_description) ? $entity_wrapper->field_share_description->value() :
+      (!empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() : '');
     $theme_variables = array(
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
@@ -1197,7 +1213,7 @@ function _usanetwork_menu_consumptionator_block_timeline_gallery($node) {
       'gallery_name' => !empty($node->title) ? $node->title : '',
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(
-        'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share this gallery'), $node->title, $description),
+        'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share this gallery'), $node->title, $share_description),
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => $description,
         'gallery_type' => t('Timeline Gallery'),
@@ -1225,7 +1241,7 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
       $season = $entity_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
         $season_num_items = reset($season_num_items);
-        $episode_num = $season_num_items['value'];
+        $season_num = $season_num_items['value'];
       }
     }
     $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
@@ -1245,8 +1261,8 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
         'description' => $description,
         'episode_type' => !empty($node->field_tv_episode_type) ? $entity_wrapper->field_tv_episode_type->name->value() : '',
         'episode_info' => array(
-            'season_number' => !empty($node->field_episode_number) ? $entity_wrapper->field_episode_number->value() : '',
-            'episode_number' => !empty($episode_num) ? $episode_num : '',
+            'season_number' => !empty($season_num) ? $season_num : '',
+            'episode_number' => !empty($node->field_episode_number) ? $entity_wrapper->field_episode_number->value() : '',
           ),
       ),
     );

@@ -59,7 +59,9 @@ function usanetwork_tv_shows_field_group_info() {
       4 => 'field_tv_show_marquee',
       5 => 'field_current_show',
       6 => 'field_syndicated',
-      7 => 'group_floodlight_tag',
+      7 => 'field_imdb_url',
+      8 => 'field_series_id',
+      9 => 'group_floodlight_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -266,6 +268,7 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'field_content_tags',
       1 => 'field_original_air_date',
       2 => 'field_tv_episode_type',
+      3 => 'field_imdb_url',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -419,7 +422,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_additional_information';
   $field_group->data = array(
     'label' => 'Floodlight Tag',
-    'weight' => '77',
+    'weight' => '78',
     'children' => array(
       0 => 'field_floodlight_category',
       1 => 'field_floodlight_type',
@@ -865,9 +868,9 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Show Cast Landing Page',
     'weight' => '14',
     'children' => array(
-      0 => 'group_social_meter',
-      1 => 'group_cast_main',
-      2 => 'group_cast_recap',
+      0 => 'group_cast_main',
+      1 => 'group_cast_recap',
+      2 => 'group_social_meter',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1163,8 +1166,7 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Best of',
     'weight' => '76',
     'children' => array(
-      0 => 'field_tvs_best_of_items',
-      1 => 'field_tvs_best_of_title',
+      0 => 'field_tvs_best_of',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

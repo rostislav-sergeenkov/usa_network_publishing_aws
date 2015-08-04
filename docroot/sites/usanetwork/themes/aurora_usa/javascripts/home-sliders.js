@@ -181,7 +181,7 @@
           }, 600, 'load page'); // dependence from stickyHeader: timeout = 500
 
           // fix autoplay when click next button
-          $(nextButton).on('click', function () {
+          nextButton.on('click', function () {
             if (!$(this).hasClass('disable')) {
               // stop auto play
               stopAutoplay();
@@ -265,7 +265,9 @@
           }
         } else {
           if (slider.hasClass('isStopped')) {
-            slider.slick('slickPlay');
+            if (startAuto) {
+              slider.slick('slickPlay');
+            }
             slider.removeClass('isStopped')
           } else {
             return false;
@@ -290,21 +292,26 @@
 
         $(nextButtonWrapper).css({
           'background-image': 'url(' + imgUrl + ')',
-          'background-position-x': shiftBg + '%'
+          'background-position': shiftBg + '%' + ' 0'
         });
 
-        slide.eq(nextIndex).find('.asset-img img').css('margin-left', - shiftBg + '%');
+        slide.eq(nextIndex).find('.asset-img img').css('margin-left', -shiftBg + '%');
       }
 
       // show next button
       function showNextbutton() {
-        $(nextButton).velocity({
-          'right': '0'
-        }, timeAnimateShow, nameAnimation, {
-          complete: function () {
-            $(nextButton).removeClass('disable');
+
+        nextButton.velocity({
+              'right': '0'
+            }, {
+          duration: timeAnimateShow,
+          easing: nameAnimation,
+          complete: function (elements) {
+            nextButton.removeClass('disable');
+            svitchSlider();
           }
         });
+
         //$(nextButton).animate({
         //  'right': '+=10%'
         //}, timeAnimateShow, nameAnimation, function () {

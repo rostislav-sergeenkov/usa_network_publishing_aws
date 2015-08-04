@@ -162,7 +162,7 @@
     position: relative;
     &.vertical {
       display: block;
-      height: calc(100% - 84px);
+      height: calc(100% - 85px);
       @include breakpoint($bp-min-1901-width) {
         height: calc(100% - 140px);
       }
@@ -762,6 +762,7 @@
         &.vertical {
           @include breakpoint($between-1025-1280) {
             display: block;
+            height: calc(100% - 90px);
           }
         }
         &.horizontal {

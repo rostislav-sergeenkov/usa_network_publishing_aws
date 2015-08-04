@@ -27,6 +27,7 @@
       border-bottom: 8px solid;
     }
     .usanetwork-quiz {
+      max-width: 1000px;
       @include breakpoint($bp-1280-width) {
         width: auto;
       }
@@ -104,8 +105,12 @@
         float: right;
         @include clear();
       }
+      .inner {
+        max-width: 320px;
+      }
       .answer-title {
-        width: 280px;
+        padding: 5px;
+        width: 320px;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(18px, 640);
         }

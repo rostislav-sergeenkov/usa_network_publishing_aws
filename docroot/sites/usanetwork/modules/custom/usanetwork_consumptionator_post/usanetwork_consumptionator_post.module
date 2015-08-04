@@ -122,7 +122,7 @@ function usanetwork_consumptionator_post_block_info() {
 
   $blocks['usanetwork_cons_post_related'] = array(
     'info' => t('Blog Consumptionator: Related Content'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   $blocks['usanetwork_cons_post_main'] = array(

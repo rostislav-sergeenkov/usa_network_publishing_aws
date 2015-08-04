@@ -126,7 +126,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 59,
+      'weight' => 58,
     ),
   );
 
@@ -260,6 +260,76 @@ function usanetwork_aspot_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_gi_desc'
+  $field_instances['node-usanetwork_aspot-field_aspot_gi_desc'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 70,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_gi_desc',
+    'label' => 'Description',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 62,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_aspot-field_aspot_gi_draggable_data'
   $field_instances['node-usanetwork_aspot-field_aspot_gi_draggable_data'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -325,7 +395,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 62,
+      'weight' => 61,
     ),
   );
 
@@ -394,7 +464,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 61,
+      'weight' => 60,
     ),
   );
 
@@ -463,7 +533,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 60,
+      'weight' => 59,
     ),
   );
 
@@ -598,6 +668,76 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
+      'weight' => 73,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_tgi_desc'
+  $field_instances['node-usanetwork_aspot-field_aspot_tgi_desc'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 69,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_tgi_desc',
+    'label' => 'Description',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
       'weight' => 72,
     ),
   );
@@ -3719,6 +3859,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Call to action');
   t('Custom call-to-action buttons. Before adding or editing the form you should save draggable form items.');
   t('Custom title for A-Spot carousel');
+  t('Description');
   t('Desktop Image');
   t('Desktop image');
   t('Download URL field value in Advanced Settings in the Files Blade for media item in MPX.');
@@ -3734,7 +3875,8 @@ Suggested max dimensions 380px x 80px<br/>
   t('If the display requires a Call to Action icon please select the type here.');
   t('If this is related to a show please select that from the list.');
   t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
-  t('Largest retina image minimum 2490w x 1418h, scales for tablet devices');
+  t('Largest retina image minimum 2880 x 1620, scales for tablet devices');
+  t('Largest retina image minimum 2880w x 1260h, scales for tablet devices');
   t('Link');
   t('List of enabled draggable elements that should be displayed in A-Spot carousel');
   t('MP4 Video URL');
@@ -3744,7 +3886,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Mobile Text line 2 Font Size');
   t('Mobile Text line 3 Font Size');
   t('Mobile image');
-  t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.');
+  t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 640w x 560h.');
   t('Optional image to display in place of the Title Text Line 1. <br/>
 Suggested max dimensions 380px x 80px<br/>
 * Title Text Line 1 will render as the alt text.');
@@ -3760,7 +3902,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Tablet Portrait Text line 1 Font Size');
   t('Tablet Portrait Text line 2 Font Size');
   t('Tablet Portrait Text line 3 Font Size');
-  t('Tablet Portrait image. Minimum 1230w x 700h.');
+  t('Tablet Portrait image. Minimum 1024 x 448.');
   t('Target');
   t('Text Line 1 Font Size');
   t('Text Line 1 Image');

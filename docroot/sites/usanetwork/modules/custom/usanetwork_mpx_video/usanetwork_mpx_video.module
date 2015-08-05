@@ -466,7 +466,7 @@ function usanetwork_mpx_video_global_videos_page() {
           $video_caption = $show->title;
         }
 
-        $video_title = $file->filename;
+        $video_title = _usanetwork_core_get_video_title($file);
         $video_season = _usanetwork_get_field_item('file', $file, 'field_mpx_field_season', 'value');
         $video_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_field_episode', 'value');
         $video_additional = ($video_season) ? t('S@season episodes @episode', array('@season' => $video_season, '@episode' => $video_episode)) : FALSE;
@@ -547,7 +547,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
           $theme_item_variables = array(
             'is_first' => ($id === 0) ? TRUE : FALSE,
             'video_url' => url('file/' . $video->fid),
-            'video_title' => $video->title,
+            'video_title' => _usanetwork_core_get_video_title($file),
             'video_additional' => t('S@season episode @episode', array('@season' => $video->field_mpx_season_number_value, '@episode' => $video->field_mpx_episode_number_value)),
             'video_image' => $video_image,
             'icon_type' => usanetwork_core_api_get_media_icon('file', $video->fid),

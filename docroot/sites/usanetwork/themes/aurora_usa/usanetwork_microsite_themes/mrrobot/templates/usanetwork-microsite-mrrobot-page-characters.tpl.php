@@ -50,10 +50,9 @@
           <?php endif; ?>
           <div class="caption">
             <div>
-              <span class="person-name"><?php if(!empty($person['role'])) print $person['role']; ?></span>
-              <span class="agency"></span>
+              <span class="person-name"><?php if(!empty($person['title'])) print $person['title']; ?></span>
             </div>
-            <div class="role"></div>
+            <div class="role"><?php if(!empty($person['role'])) print $person['role']; ?></div>
           </div>
         </div>
       </li>

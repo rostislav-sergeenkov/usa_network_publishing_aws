@@ -13,14 +13,14 @@ $(document).ready(function() {
         $('#mobile-aspot-draggable-title').css({left: '34px',position: 'absolute',top: '281px'});
         $('#mobile-aspot-draggable-aspot_description').css({left: '37px',position: 'absolute',top: '353px'});
         $('#mobile-aspot-draggable-cta_button_0').css({left: '36px',position: 'absolute',top: '402px'});
-        $('#mobile-aspot-draggable-cta_button_1').css({left: '17px',position: 'absolute',top: '462px'});
-        $('#mobile-aspot-draggable-cta_button_2').css({left: '17px',position: 'absolute',top: '505px'});
+        $('#mobile-aspot-draggable-cta_button_1').css({left: '36px',position: 'absolute',top: '462px'});
+        $('#mobile-aspot-draggable-cta_button_2').css({left: '36px',position: 'absolute',top: '505px'});
 
         $('#aspot-draggable-title_prefix').css({left: '78px',position: 'absolute',top: '249px'});
         $('#aspot-draggable-title').css({left: '75px',position: 'absolute',top: '275px'});
         $('#aspot-draggable-aspot_description').css({left: '78px',position: 'absolute',top: '353px'});
         $('#aspot-draggable-cta_button_0').css({left: '79px',position: 'absolute',top: '409px'});
-        $('#aspot-draggable-cta_button_1').css({left: '37px',position: 'absolute',top: '484px'});
+        $('#aspot-draggable-cta_button_1').css({left: '79px',position: 'absolute',top: '484px'});
         $('#aspot-draggable-cta_button_2').css({left: '335px',position: 'absolute',top: '484px'});
 
         homeAspot.setPosition();
@@ -33,13 +33,13 @@ $(document).ready(function() {
         $('#mobile-aspot-draggable-tv_show-title').css({left: '54px',position: 'absolute',top: '314px'});
         $('#mobile-aspot-draggable-tv_show-aspot_description').css({left: '58px',position: 'absolute',top: '382px'});
         $('#mobile-aspot-draggable-tv_show-cta_button_0').css({left: '55px',position: 'absolute',top: '441px'});
-        $('#mobile-aspot-draggable-tv_show-cta_button_1').css({left: '36px',position: 'absolute',top: '495px'});
+        $('#mobile-aspot-draggable-tv_show-cta_button_1').css({left: '55px',position: 'absolute',top: '495px'});
 
         $('#aspot-draggable-tv_show-title_prefix').css({left: '43px',position: 'absolute',top: '268px'});
         $('#aspot-draggable-tv_show-title').css({left: '40px',position: 'absolute',top: '291px'});
         $('#aspot-draggable-tv_show-aspot_description').css({left: '46px',position: 'absolute',top: '364px'});
         $('#aspot-draggable-tv_show-cta_button_0').css({left: '45px',position: 'absolute',top: '416px'});
-        $('#aspot-draggable-tv_show-cta_button_1').css({left: '3px',position: 'absolute',top: '485px'});
+        $('#aspot-draggable-tv_show-cta_button_1').css({left: '45px',position: 'absolute',top: '485px'});
 
         showAspot.setPosition();
       }
@@ -53,14 +53,14 @@ $(document).ready(function() {
         $('#mobile-aspot-draggable-title_prefix').css({left: String((mobileTitleLeft + 3) + 'px'),position: 'absolute'});
         $('#mobile-aspot-draggable-aspot_description').css({left: String((mobileTitleLeft + 3) + 'px'),position: 'absolute'});
         $('#mobile-aspot-draggable-cta_button_0').css({left: String((mobileTitleLeft - 1) + 'px'),position: 'absolute'});
-        $('#mobile-aspot-draggable-cta_button_1').css({left: String((mobileTitleLeft - 17) + 'px'),position: 'absolute'});
-        $('#mobile-aspot-draggable-cta_button_2').css({left: String((mobileTitleLeft - 17) + 'px'),position: 'absolute'});
+        $('#mobile-aspot-draggable-cta_button_1').css({left: String((mobileTitleLeft - 1) + 'px'),position: 'absolute'});
+        $('#mobile-aspot-draggable-cta_button_2').css({left: String((mobileTitleLeft - 1) + 'px'),position: 'absolute'});
 
         var titleLeft = parseInt($('#aspot-draggable-title').css('left'));
         $('#aspot-draggable-title_prefix').css({left: String((titleLeft + 3) + 'px'),position: 'absolute'});
         $('#aspot-draggable-aspot_description').css({left: String((titleLeft + 3) + 'px'),position: 'absolute'});
         $('#aspot-draggable-cta_button_0').css({left: String((titleLeft + 4) + 'px'),position: 'absolute'});
-        $('#aspot-draggable-cta_button_1').css({left: String((titleLeft - 38) + 'px'),position: 'absolute'});
+        $('#aspot-draggable-cta_button_1').css({left: String((titleLeft + 4) + 'px'),position: 'absolute'});
         $('#aspot-draggable-cta_button_2').css({left: String((titleLeft + 409) + 'px'),position: 'absolute'});
 
         homeAspot.setPosition();
@@ -74,13 +74,13 @@ $(document).ready(function() {
         $('#mobile-aspot-draggable-tv_show-title_prefix').css({left: String((mobileTitleLeft + 2) + 'px'),position: 'absolute'});
         $('#mobile-aspot-draggable-tv_show-aspot_description').css({left: String((mobileTitleLeft + 4) + 'px'),position: 'absolute'});
         $('#mobile-aspot-draggable-tv_show-cta_button_0').css({left: String((mobileTitleLeft + 1) + 'px'),position: 'absolute'});
-        $('#mobile-aspot-draggable-tv_show-cta_button_1').css({left: String((mobileTitleLeft - 18) + 'px'),position: 'absolute'});
+        $('#mobile-aspot-draggable-tv_show-cta_button_1').css({left: String((mobileTitleLeft + 1) + 'px'),position: 'absolute'});
 
         var titleLeft = parseInt($('#aspot-draggable-tv_show-title').css('left'));
         $('#aspot-draggable-tv_show-title_prefix').css({left: String((titleLeft + 3) + 'px'),position: 'absolute'});
         $('#aspot-draggable-tv_show-aspot_description').css({left: String((titleLeft + 6) + 'px'),position: 'absolute'});
         $('#aspot-draggable-tv_show-cta_button_0').css({left: String((titleLeft + 5) + 'px'),position: 'absolute'});
-        $('#aspot-draggable-tv_show-cta_button_1').css({left: String((titleLeft - 37) + 'px'),position: 'absolute'});
+        $('#aspot-draggable-tv_show-cta_button_1').css({left: String((titleLeft + 5) + 'px'),position: 'absolute'});
 
         showAspot.setPosition();
       }

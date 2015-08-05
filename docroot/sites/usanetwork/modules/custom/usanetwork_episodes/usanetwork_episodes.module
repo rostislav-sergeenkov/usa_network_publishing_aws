@@ -258,6 +258,7 @@ function _usanetwork_episodes_episodes_carousel() {
           $season_number = $season_num_items['value'];
         }
         foreach ($episodes as $episode) {
+          $own_promo_lines = _usanetwork_promo_node_get_promo_lines($episode);
           if (!empty($episode->field_tv_cover_media)) {
             $image = field_get_items('node', $episode, 'field_tv_cover_media');
             $image = reset($image);
@@ -268,7 +269,8 @@ function _usanetwork_episodes_episodes_carousel() {
             $episode_number = $field_episode_items['value'];
           }
           $episode_variables = array(
-            'title' => !empty($episode->title) ? $episode->title : '',
+            'title' => !empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '',
+            'img_title' => $episode->title,
             'episode_number' => !empty($episode_number) ? $episode_number : '',
             'url' => url('node/' . $episode->nid),
             'active' => ($episode->nid == $episode_node->nid) ? TRUE : FALSE,
@@ -480,7 +482,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     if (!empty($episodes_data)) {
       foreach ($episodes_data as $episode_data_index => $episode_data) {
         $image_url = usanetwork_core_api_get_content_image('node', $episode_data->nid);
-
+        $episode_node = node_load($episode_data->nid);
         $theme_item_variables = array(
           'full_episode_url' => isset($episode_data->fid)
             ? url('file/' . $episode_data->fid)
@@ -494,7 +496,7 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
           'desktop_image_url' => image_style_url('677x381', $image_url),
           'season_number' => $current_season_data_item->season_number,
           'episode_number' => $episode_data->episode_number,
-          'title' => $episode_data->title,
+          'title' => _usanetwork_core_get_node_title($episode_node, $episode_data->title),
           'description' => $episode_data->description,
           'airing_date' => !empty($episode_data->airdate)
             ? date('m/d/Y', $episode_data->airdate)

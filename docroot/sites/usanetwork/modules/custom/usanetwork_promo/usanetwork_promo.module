@@ -323,6 +323,9 @@ function _usanetwork_promo_pull_node_promo_details($entity_object) {
   if (!empty($entity_object)) {
     $promo_wrapper = entity_metadata_wrapper('node', $entity_object);
     $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $promo_wrapper, 'node');
+    if (!empty($promo_fields['promo_title'])) {
+      $promo_fields['promo_title'] = _usanetwork_core_get_node_title($entity_object, $promo_fields['promo_title']);
+    }
     if (empty($promo_fields['promo_title']) || empty($promo_fields['description'])) {
       $own_fields = _usanetwork_promo_node_get_promo_lines($entity_object);
       $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
@@ -350,6 +353,9 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
     if (!empty($entity_object)) {
       $file_wrapper = entity_metadata_wrapper('file', $entity_object);
       $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper, 'file');
+      if (!empty($promo_fields['promo_title'])) {
+        $promo_fields['promo_title'] = _usanetwork_core_get_video_title($entity_object, $promo_fields['promo_title']);
+      }
       if (empty($promo_fields['promo_title']) || empty($promo_fields['description']) || empty($promo_fields['topic']) ) {
         $own_fields = _usanetwork_promo_file_get_promo_lines($entity_object);
         $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
@@ -374,12 +380,15 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
  * @return array|null
  */
 function _usanetwork_promo_file_get_promo_lines($file, $no_video_type = NULL) {
+  if (empty($file)) {
+    return FALSE;
+  }
   $result = array();
   $file_wrapper = entity_metadata_wrapper('file', $file);
   $full_episode = $file_wrapper->field_mpx_full_episode->value();
   $episode_season = !empty($file->field_mpx_season_number) ? $file_wrapper->field_mpx_season_number->value() : NULL;
   $episode_number = !empty($file->field_mpx_episode_number) ? $file_wrapper->field_mpx_episode_number->value() : NULL;
-  $result['title'] = $file->filename;
+  $result['title'] = _usanetwork_core_get_video_title($file);
   if ($full_episode) {
     $result['topic'] = t('Full Episode');
     $result['description'] = t('S@season EP@episode_number', array('@season' => $episode_season, '@episode_number' => $episode_number));
@@ -404,6 +413,9 @@ function _usanetwork_promo_file_get_promo_lines($file, $no_video_type = NULL) {
  * @return array|null
  */
 function _usanetwork_promo_node_get_promo_lines($node) {
+  if (empty($node)) {
+    return FALSE;
+  }
   $result = array();
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $lang = LANGUAGE_NONE;
@@ -463,7 +475,7 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       $result['description'] = t('Timeline Gallery');
       break;
     case 'tv_episode':
-      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      $result['title'] = _usanetwork_core_get_node_title($node);
       $season_node = !empty($node->field_season) ? $node_wrapper->field_season->value() : NULL;
       $season_id = field_get_items('node', $season_node, 'field_season_id');
       if ($season_id) {

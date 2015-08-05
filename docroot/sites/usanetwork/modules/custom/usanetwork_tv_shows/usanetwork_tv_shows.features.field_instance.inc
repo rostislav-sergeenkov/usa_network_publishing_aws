@@ -2891,7 +2891,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 75,
+      'weight' => 76,
     ),
   );
 
@@ -6062,7 +6062,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 77,
+      'weight' => 78,
     ),
   );
 
@@ -6146,6 +6146,89 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'options_onoff',
       'weight' => 72,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_disable_uppercase'
+  $field_instances['node-tv_show-field_disable_uppercase'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'All related videos and episode guides will not use UPPERCASE anywhere if this checkbox is selected.',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 48,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_disable_uppercase',
+    'label' => 'Disable Uppercase',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 73,
     ),
   );
 
@@ -9220,7 +9303,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         ),
       ),
       'type' => 'urlwidget',
-      'weight' => 79,
+      'weight' => 80,
     ),
   );
 
@@ -9694,7 +9777,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 74,
+      'weight' => 75,
     ),
   );
 
@@ -10056,7 +10139,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 80,
+      'weight' => 81,
     ),
   );
 
@@ -12534,7 +12617,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'urls_search' => 'start',
       ),
       'type' => 'advanced_link',
-      'weight' => 76,
+      'weight' => 77,
     ),
   );
 
@@ -12617,7 +12700,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'size' => 40,
       ),
       'type' => 'text_textfield',
-      'weight' => 73,
+      'weight' => 74,
     ),
   );
 
@@ -16472,6 +16555,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('About YMAL');
   t('Air Date');
   t('Air Dates');
+  t('All related videos and episode guides will not use UPPERCASE anywhere if this checkbox is selected.');
   t('Alternative content');
   t('An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.');
   t('An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.
@@ -16496,6 +16580,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Description');
   t('Desktop / Tablet URL');
   t('Desktop carousel image');
+  t('Disable Uppercase');
   t('Display Title');
   t('EQL Token');
   t('Echo Marker');

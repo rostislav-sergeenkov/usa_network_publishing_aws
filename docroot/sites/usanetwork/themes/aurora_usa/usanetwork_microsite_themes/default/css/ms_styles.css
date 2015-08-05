@@ -18,6 +18,9 @@ body {
   font-size: 16px !important;
   line-height: 18px !important;
 }
+body.page-node-microsite {
+  color: #000;
+}
 #microsite ul {
   margin: 0;
   padding: 0;

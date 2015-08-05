@@ -1,3 +1,6 @@
+
+var homeAspot, showAspot;
+
 (function ($) {
 
   Drupal.behaviors.usanetwork_aspot_giui = {
@@ -379,6 +382,9 @@
           usanetwork_aspot_giui_fill_draggable_items_input();
         });
       }
+      return {
+        setPosition: usanetwork_aspot_giui_fill_draggable_items_input
+      };
     },
     attach: function (context, settings) {
 
@@ -390,8 +396,8 @@
           showUi = $('#edit-group_usa_tv_aspot_ui');
 
       // init aspot
-      var homeAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(homePrefixId, homeUi, showUi, homeDraggeblePrefix);
-      var showAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(showPrefiksId, showUi, homeUi, showDraggeblePrefix);
+      homeAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(homePrefixId, homeUi, showUi, homeDraggeblePrefix);
+      showAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(showPrefiksId, showUi, homeUi, showDraggeblePrefix);
 
       $('#usanetwork-aspot-node-form').submit(function () {
 

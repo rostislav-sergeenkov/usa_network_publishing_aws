@@ -25717,6 +25717,7 @@ yx-axis
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
@@ -25739,6 +25740,7 @@ yx-axis
   letter-spacing: 0.02em;
   line-height: 0.88;
   margin: 0;
+  text-shadow: 1px 1px 0.5em #333333;
   text-transform: uppercase;
 }
 @media (min-width: 2500px) {
@@ -25763,6 +25765,7 @@ yx-axis
   line-height: 1;
   margin: 0;
   text-transform: none;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description {
@@ -25776,6 +25779,7 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap .aspot-description p {
   margin: 0;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .usanetwork-aspot .meta-wrap .show-timer {
   color: #ffffff;

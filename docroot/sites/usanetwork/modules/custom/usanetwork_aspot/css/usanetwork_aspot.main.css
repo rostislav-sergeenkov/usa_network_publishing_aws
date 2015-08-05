@@ -46,8 +46,10 @@
   /*border-radius: 6px;*/
   /*border: solid 1px #666;*/
   color: #ffffff;
+  box-sizing: border-box;
   display: block;
   line-height: normal;
+  outline: 1px solid #ffffff;
   /*margin: 0;*/
   /*padding: 3px;*/
   /*top: 0;*/
@@ -86,7 +88,7 @@
 
 /* mobile */
 .draggable-area.mobile div[data-rel="title"] {
-  font-size: 67px;
+  font-size: 66.56px;
   line-height: 0.88;
   letter-spacing: 0.02em;
 }
@@ -119,7 +121,7 @@
 }
 /* desktop */
 .draggable-area.desktop div[data-rel="title"] {
-  font-size: 77px;
+  font-size: 76.8px;
   line-height: 0.88;
   letter-spacing: 0.02em;
 }
@@ -129,12 +131,12 @@
   letter-spacing: 0.05em;
 }
 .draggable-area.desktop div[data-rel="title_prefix"] {
-  font-size: 14px;
+  font-size: 14.08px;
   line-height: 1;
   letter-spacing: 0.1em;
 }
 .draggable-area.desktop .aspot-draggable-cta-button {
-  font-size: 16.5px;
+  font-size: 16px;
   letter-spacing: 0.1em;
   line-height: 1.8;
   padding: 0 57.6px 0 0;
@@ -153,4 +155,53 @@
 #edit-field-aspot-gi-draggable-data {
   display: none;
   visibility: hidden;
+}
+
+/* custom buttons*/
+#edit-group_usa_aspot_ui .wrapper-mobile,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile,
+#edit-group_usa_aspot_ui .wrapper-desktop,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop{
+  position: relative;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper{
+  position: absolute;
+  top: 30px;
+}
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
+  left: 850px;
+  top: 102%;
+}
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
+  left: 650px;
+}
+#edit-group_usa_aspot_ui .wrapper-mobile .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .buttons-wrapper{
+  left: 700px;
+}
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper .button,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper .button{
+  display: inline-block;
+  margin-right: 30px;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper .button,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button{
+  background: #e4e4e4;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #e4e4e4;
+  border-bottom: 1px solid #b4b4b4;
+  border-left-color: #d2d2d2;
+  border-right-color: #d2d2d2;
+  cursor: pointer;
+  padding: 4px 17px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper .button:hover,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button:hover{
+  background: #a1a1a1;
 }

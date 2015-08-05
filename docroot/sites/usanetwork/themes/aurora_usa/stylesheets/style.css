@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -25713,6 +25713,9 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap {
   position: static;
+}
+.usanetwork-aspot .meta-wrap .aspot-draggable-element {
+  box-sizing: border-box;
 }
 .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
   color: #ffffff;

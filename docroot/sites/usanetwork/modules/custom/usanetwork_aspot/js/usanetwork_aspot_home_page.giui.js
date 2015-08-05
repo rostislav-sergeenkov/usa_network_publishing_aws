@@ -21,15 +21,51 @@
           if(container.find('.aspot-draggable-element')){
             var currentEl = container.find('.meta .aspot-draggable-element');
             $.each(currentEl, function(indexEl, elem){
-              var styleDesktop = $(this).attr('data-style-desktop'),
-                  styleMobile = $(this).attr('data-style-mobile');
+              var self = $(this),
+                  styleDesktop = $(this).attr('data-style-desktop'),
+                  styleMobile = $(this).attr('data-style-mobile'),
+                  elWidth, maxWidth, betweenWidth, myArr = [];
               if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
-                $(this).attr('style', styleMobile);
+                self.attr('style', styleMobile);
               } else {
                 if (window.innerWidth >= window_size_mobile_641) {
-                  $(this).attr('style', styleDesktop);
+
+                  self.attr('style', styleDesktop);
+
+                  elWidth = self.data('width');
+
+                  // create attributes data width for bp 2500 & 640-768
+                  if(!self.data('max-width')) {
+                    if (elWidth === 'auto') {
+                      self.attr('data-max-width', elWidth);
+                    } else {
+                      maxWidth = (elWidth / 100 * 2500) + 'px';
+                      self.attr('data-max-width', maxWidth);
+                    }
+                  }
+
+                  if($('body').hasClass('usa-tv-show')) {
+                    if(!self.data('between-width')) {
+                      if (elWidth === 'auto') {
+                        self.attr('data-between-width', elWidth);
+                      } else {
+                        betweenWidth = elWidth + '%';
+                        self.attr('data-between-width', betweenWidth);
+                      }
+                    }
+                  }
+
+                  // change width on tv-show page
+                  if(window.innerWidth >= window_size_mobile_641 && window.innerWidth <= window_size_tablet_portrait) {
+                    self.css('width', self.data('between-width'));
+                  }
+
+                  if(window.innerWidth >= window_size_desktop_max_width) {
+                    self.css('width', self.data('max-width'));
+                  }
+
                 } else if (window.innerWidth < window_size_mobile_641){
-                  $(this).attr('style', styleMobile);
+                  self.attr('style', styleMobile);
                 }
               }
             });

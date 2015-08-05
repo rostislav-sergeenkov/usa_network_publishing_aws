@@ -626,7 +626,10 @@ var homeAspot, showAspot;
               left: titleLeft + settingsAspot[elName].alignLeft + 'px'
             });
           }
-        })
+        });
+
+        // set positions
+        usanetwork_aspot_giui_fill_draggable_items_input();
       }
 
       // default settings for draggable elements on cklick

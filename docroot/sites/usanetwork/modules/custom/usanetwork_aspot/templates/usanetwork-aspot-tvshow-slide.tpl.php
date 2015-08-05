@@ -28,7 +28,11 @@
       <div class="slide-content">
         <div class="meta-wrap">
           <div class="meta">
-            <div class="title_prefix aspot-draggable-element"<?php if (!empty($show_title_prefix_style['desktop'])): print ' data-style-desktop="' . $show_title_prefix_style['desktop'] . '" data-style-mobile="' . $show_title_prefix_style['mobile'] . '"'; endif; ?>><?php print $show_title_prefix; ?></div>
+            <div class="title_prefix aspot-draggable-element"
+              <?php if (!empty($show_title_prefix_style['width'])): print ' data-width="' . $show_title_prefix_style['width'] . '"'; endif; ?>
+              <?php if (!empty($show_title_prefix_style['desktop'])): print ' data-style-desktop="' . $show_title_prefix_style['desktop'] . '" data-style-mobile="' . $show_title_prefix_style['mobile'] . '"'; endif; ?>>
+              <?php print $show_title_prefix; ?>
+            </div>
             <div class="title aspot-draggable-element"<?php if (!empty($show_title_style['desktop'])): print ' data-style-desktop="' . $show_title_style['desktop'] . '" data-style-mobile="' . $show_title_style['mobile'] . '"'; endif; ?>><?php print $show_title; ?></div>
             <div class="aspot-description aspot-draggable-element"<?php if (!empty($show_description_style['desktop'])): print ' data-style-desktop="' . $show_description_style['desktop'] . '" data-style-mobile="' . $show_description_style['mobile'] . '"'; endif; ?>><?php print $show_desc; ?></div>
             <?php if (!empty($show_timer)): ?>

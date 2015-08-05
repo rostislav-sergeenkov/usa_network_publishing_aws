@@ -46,8 +46,10 @@
   /*border-radius: 6px;*/
   /*border: solid 1px #666;*/
   color: #ffffff;
+  box-sizing: border-box;
   display: block;
   line-height: normal;
+  outline: 1px solid #ffffff;
   /*margin: 0;*/
   /*padding: 3px;*/
   /*top: 0;*/
@@ -87,7 +89,7 @@
 
 /* mobile */
 .draggable-area.mobile div[data-rel="title"] {
-  font-size: 67px;
+  font-size: 66.56px;
   line-height: 0.88;
   letter-spacing: 0.02em;
 }
@@ -116,7 +118,7 @@
 }
 /* desktop */
 .draggable-area.desktop div[data-rel="title"] {
-  font-size: 77px;
+  font-size: 76.8px;
   line-height: 0.88;
   letter-spacing: 0.02em;
 }
@@ -126,12 +128,12 @@
   letter-spacing: 0.05em;
 }
 .draggable-area.desktop div[data-rel="title_prefix"] {
-  font-size: 14px;
+  font-size: 14.08px;
   line-height: 1;
   letter-spacing: 0.1em;
 }
 .draggable-area.desktop .aspot-draggable-cta-button {
-  font-size: 16.5px;
+  font-size: 16px;
   letter-spacing: 0.1em;
   line-height: 1.8;
   padding: 17.92px 57.6px 17.92px 44.78px;

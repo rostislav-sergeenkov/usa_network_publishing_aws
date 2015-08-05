@@ -550,3 +550,43 @@ function usa_l($text, $path, array $options = array()) {
   // in an HTML argument context, we need to encode it properly.
   return '<a href="' . check_plain(url($path, $options)) . '"' . drupal_attributes($options['attributes']) . '>' . ($options['html'] ? $text : check_plain($text)) . '</a>';
 }
+/*
+ * Function returns filename with css style if it needed.
+ */
+function _usanetwork_core_get_video_title($file, $title = '') {
+
+  if (empty($title)) {
+    $title = check_plain(!empty($file->filename) ? $file->filename : $title);
+  }
+
+  if (isset($file->type) && $file->type == 'mpx_video_2' && !empty($file->field_show)) {
+    $file_wrapper = entity_metadata_wrapper('file', $file);
+    $show = $file_wrapper->field_show->value();
+    if (!empty($show->field_disable_uppercase)) {
+      if ($file_wrapper->field_show->field_disable_uppercase->value()) {
+        return '<span class="no-uppercase">' . $title . '</span>';
+      }
+    }
+  }
+  return $title;
+}
+
+/*
+ * Function returns filename with css style if it needed.
+ */
+function _usanetwork_core_get_node_title($node, $title = '') {
+  if (empty($title)) {
+    $title = check_plain(!empty($node->title) ? $node->title : $title);
+  }
+
+  if (isset($node->type) && $node->type == 'tv_episode' && !empty($node->field_show)) {
+    $file_wrapper = entity_metadata_wrapper('node', $node);
+    $show = $file_wrapper->field_show->value();
+    if (!empty($show->field_disable_uppercase)) {
+      if ($file_wrapper->field_show->field_disable_uppercase->value()) {
+        return '<span class="no-uppercase">' . $title . '</span>';
+      }
+    }
+  }
+  return $title;
+}

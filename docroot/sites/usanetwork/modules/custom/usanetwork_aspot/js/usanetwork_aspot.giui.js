@@ -45,20 +45,20 @@ var homeAspot, showAspot;
         },
         cta_button_1: {
           dataRel: "cta_button_1",
-          alignLeft: -38,
-          alignLeftM: -17,
-          left: '37px',
+          alignLeft: 4,
+          alignLeftM: -1,
+          left: '79px',
           top: '484px',
-          leftM: '17px',
+          leftM: '36px',
           topM: '462px'
         },
         cta_button_2: {
           dataRel: "cta_button_2",
           alignLeft: 409,
-          alignLeftM: -17,
+          alignLeftM: -1,
           left: '335px',
           top: '484px',
-          leftM: '17px',
+          leftM: '36px',
           topM: '505px'
         }
       },
@@ -101,11 +101,11 @@ var homeAspot, showAspot;
         },
         cta_button_1: {
           dataRel: "cta_button_1",
-          alignLeft: -37,
-          alignLeftM: -18,
-          left: '3px',
+          alignLeft: 5,
+          alignLeftM: 1,
+          left: '45px',
           top: '485px',
-          leftM: '36px',
+          leftM: '55px',
           topM: '495px'
         }
       }
@@ -382,11 +382,11 @@ var homeAspot, showAspot;
 
         // add title for draggable aria
         carouselElementPreviewingBlock
-            .before('<h2>'+ pageName +' Desktop Vertion</h2>' +
-            '<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>');
+            .before('<h2>'+ pageName +' Desktop Vertion</h2>')
+            .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>');
         carouselElementPreviewingBlockMobile
-            .before('<h2>'+ pageName +' Mobile Version</h2>' +
-            '<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>'
+            .before('<h2>'+ pageName +' Mobile Version</h2>')
+            .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>'
         );
 
         var draggableElementsData = Object.keys(aspot_elements);

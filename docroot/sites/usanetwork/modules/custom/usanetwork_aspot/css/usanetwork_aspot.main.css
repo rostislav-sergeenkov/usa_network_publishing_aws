@@ -156,3 +156,52 @@
   display: none;
   visibility: hidden;
 }
+
+/* custom buttons*/
+#edit-group_usa_aspot_ui .wrapper-mobile,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile,
+#edit-group_usa_aspot_ui .wrapper-desktop,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop{
+  position: relative;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper{
+  position: absolute;
+  top: 30px;
+}
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
+  left: 850px;
+  top: 102%;
+}
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
+  left: 650px;
+}
+#edit-group_usa_aspot_ui .wrapper-mobile .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .buttons-wrapper{
+  left: 700px;
+}
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper .button,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper .button{
+  display: inline-block;
+  margin-right: 30px;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper .button,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button{
+  background: #e4e4e4;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #e4e4e4;
+  border-bottom: 1px solid #b4b4b4;
+  border-left-color: #d2d2d2;
+  border-right-color: #d2d2d2;
+  cursor: pointer;
+  padding: 4px 17px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper .button:hover,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button:hover{
+  background: #a1a1a1;
+}

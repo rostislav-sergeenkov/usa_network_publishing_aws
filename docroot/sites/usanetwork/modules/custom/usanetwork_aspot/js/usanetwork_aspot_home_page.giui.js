@@ -30,48 +30,41 @@
               } else {
                 if (window.innerWidth >= window_size_mobile_641) {
 
-                  if(!container.hasClass('desktop')) {
-                    container.addClass('desktop');
-                  }
-
                   self.attr('style', styleDesktop);
 
-                  //elWidth = self.data('width');
-                  elWidth = 60;
+                  elWidth = self.data('width');
 
                   // create attributes data width for bp 2500 & 640-768
                   if(!self.data('max-width')) {
-                    maxWidth = (elWidth / 100 * 2500) + 'px';
-                    self.attr('data-max-width', maxWidth);
-                  }
-                  if(!self.data('between-width')) {
-                    betweenWidth = elWidth + '%';
-                    self.attr('data-between-width', betweenWidth);
+                    if (elWidth === 'auto') {
+                      self.attr('data-max-width', elWidth);
+                    } else {
+                      maxWidth = (elWidth / 100 * 2500) + 'px';
+                      self.attr('data-max-width', maxWidth);
+                    }
                   }
 
-                  //if(window.innerWidth >= window_size_mobile_641 || window.innerWidth <= window_size_tablet_portrait) {
-                  //
-                  //} else if(window.innerWidth >= window_size_mobile_641 || window.innerWidth <= window_size_tablet_portrait) {
-                  //  if(!container.hasClass('desktop-between')) {
-                  //    container.addClass('desktop-between');
-                  //    self.width(self.data('between-width'));
-                  //  }
-                  //  if(container.hasClass('desktop-max-width')) {
-                  //    container.removeClass('desktop-max-width')
-                  //  }
-                  //} else if(window.innerWidth >= window_size_desktop_max_width) {
-                  //  if(!container.hasClass('desktop-max-width')) {
-                  //    container.addClass('desktop-max-width');
-                  //    self.width(self.data('max-width'));
-                  //  }
-                  //  if(container.hasClass('desktop-between')) {
-                  //    container.removeClass('desktop-between')
-                  //  }
-                  //}
-                } else if (window.innerWidth < window_size_mobile_641){
-                  if(container.hasClass('desktop')) {
-                    container.removeClass('desktop');
+                  if($('body').hasClass('usa-tv-show')) {
+                    if(!self.data('between-width')) {
+                      if (elWidth === 'auto') {
+                        self.attr('data-between-width', elWidth);
+                      } else {
+                        betweenWidth = elWidth + '%';
+                        self.attr('data-between-width', betweenWidth);
+                      }
+                    }
                   }
+
+                  // change width on tv-show page
+                  if(window.innerWidth >= window_size_mobile_641 && window.innerWidth <= window_size_tablet_portrait) {
+                    self.css('width', self.data('between-width'));
+                  }
+
+                  if(window.innerWidth >= window_size_desktop_max_width) {
+                    self.css('width', self.data('max-width'));
+                  }
+
+                } else if (window.innerWidth < window_size_mobile_641){
                   self.attr('style', styleMobile);
                 }
               }

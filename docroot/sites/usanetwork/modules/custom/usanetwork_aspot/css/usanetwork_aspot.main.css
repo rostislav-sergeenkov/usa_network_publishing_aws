@@ -81,7 +81,6 @@
 }
 .draggable-area.mobile .aspot-draggable-cta-button,
 .draggable-area.desktop .aspot-draggable-cta-button {
-  background: #2c2c2c;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   text-decoration: none;
   text-transform: uppercase;
@@ -107,6 +106,10 @@
   font-size: 17.28px;
   letter-spacing: 0.1em;
   line-height: 1.8;
+  padding: 0 41.6px 0 0;
+}
+.draggable-area.mobile .aspot-draggable-cta-button[data-rel="cta_button_0"] {
+  background: #2c2c2c;
   padding: 8.96px 41.6px 8.96px 22.4px;
 }
 .draggable-area.mobile div[data-rel="social_meter"]{
@@ -136,6 +139,10 @@
   font-size: 16px;
   letter-spacing: 0.1em;
   line-height: 1.8;
+  padding: 0 57.6px 0 0;
+}
+.draggable-area.desktop .aspot-draggable-cta-button[data-rel="cta_button_0"] {
+  background: #2c2c2c;
   padding: 17.92px 57.6px 17.92px 44.78px;
 }
 .draggable-area.desktop div[data-rel="social_meter"]{

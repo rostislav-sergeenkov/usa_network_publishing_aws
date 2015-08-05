@@ -564,7 +564,7 @@ function _usanetwork_core_get_video_title($file, $title = '') {
     $show = $file_wrapper->field_show->value();
     if (!empty($show->field_disable_uppercase)) {
       if ($file_wrapper->field_show->field_disable_uppercase->value()) {
-        return '<span style="text-transform:none">' . $title . '</span>';
+        return '<span class="no-uppercase">' . $title . '</span>';
       }
     }
   }
@@ -584,7 +584,7 @@ function _usanetwork_core_get_node_title($node, $title = '') {
     $show = $file_wrapper->field_show->value();
     if (!empty($show->field_disable_uppercase)) {
       if ($file_wrapper->field_show->field_disable_uppercase->value()) {
-        return '<span style="text-transform:none">' . $title . '</span>';
+        return '<span class="no-uppercase">' . $title . '</span>';
       }
     }
   }

@@ -1103,6 +1103,9 @@ function _usanetwork_get_google_watch_variables($file) {
   }
   if (isset($file->field_mpx_entitlement)) {
     $entitlement = $file_wrapper->field_mpx_entitlement->value();
+    if ($entitlement == 'auth') {
+      $entitlement = 'subscription';
+    }
   }
   if (isset($file->field_mpx_airdate)) {
     $air_date = $file_wrapper->field_mpx_airdate->value();

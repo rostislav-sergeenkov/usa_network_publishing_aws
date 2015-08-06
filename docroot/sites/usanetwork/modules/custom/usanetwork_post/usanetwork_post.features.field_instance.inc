@@ -28,7 +28,7 @@ function usanetwork_post_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -96,10 +96,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 16,
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -162,10 +161,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 21,
+        'type' => 'hidden',
+        'weight' => 24,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -229,10 +227,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 33,
+        'type' => 'hidden',
+        'weight' => 36,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -291,10 +288,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 18,
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -352,10 +348,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'collection',
         'settings' => array(),
-        'type' => 'collection',
-        'weight' => 19,
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -416,10 +411,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'inline',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 13,
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -481,12 +475,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 12,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -560,12 +551,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 14,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -635,10 +623,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 23,
+        'type' => 'hidden',
+        'weight' => 25,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -707,7 +694,7 @@ function usanetwork_post_field_default_field_instances() {
           'image_style' => 'post_cover',
         ),
         'type' => 'image',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -810,10 +797,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 20,
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -876,13 +862,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 34,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -973,12 +955,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 17,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1041,10 +1020,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 35,
+        'type' => 'hidden',
+        'weight' => 38,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1111,7 +1089,7 @@ function usanetwork_post_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1184,10 +1162,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 15,
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1243,6 +1220,82 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_usa_css'
+  $field_instances['node-post-field_usa_css'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'usanetwork_field_formatters',
+        'settings' => array(),
+        'type' => 'custom_css',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_css',
+    'label' => 'Custom CSS',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 13,
     ),
   );
 

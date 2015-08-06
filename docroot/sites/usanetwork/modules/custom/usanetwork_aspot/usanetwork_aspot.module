@@ -149,7 +149,6 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
 
   $form['#attached']['js'][] = libraries_get_path('draggable_background') . '/draggable_background.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot.giui.js';
-  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_default_position.js';
   $form['#attached']['js'][] = array(
     'data' => array(
       'giui_settings' => $previewing_settings
@@ -766,25 +765,29 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
     'show_title_prefix_style' => isset($draggable_data->data->aspot_elements->title_prefix)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->title_prefix),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title_prefix)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title_prefix),
+        'width' => $draggable_data->data->aspot_elements->title_prefix->width,
       )
       : FALSE,
     'show_title_style' => isset($draggable_data->data->aspot_elements->title)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->title),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title),
+        'width' => $draggable_data->data->aspot_elements->title->width,
       )
       : FALSE,
     'show_description_style' => isset($draggable_data->data->aspot_elements->aspot_description)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->aspot_description),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->aspot_description)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->aspot_description),
+        'width' => $draggable_data->data->aspot_elements->aspot_description->width,
       )
       : FALSE,
     'social_meter_style' => isset($draggable_data->data->aspot_elements->social_meter)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->social_meter),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->social_meter)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->social_meter),
+        'width' => $draggable_data->data->aspot_elements->social_meter->width,
       )
       : FALSE,
     'show_image_bg_offset' => !empty($draggable_data->data->aspot_elements->aspot_offset_percent->shiftPercent)
@@ -921,25 +924,29 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
     'show_title_prefix_style' => isset($draggable_data->data->tvs_aspot_elements->title_prefix)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title_prefix),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title_prefix)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title_prefix),
+        'width' => $draggable_data->data->tvs_aspot_elements->title_prefix->width,
       )
       : FALSE,
     'show_title_style' => isset($draggable_data->data->tvs_aspot_elements->title)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title),
+        'width' => $draggable_data->data->tvs_aspot_elements->title->width,
       )
       : FALSE,
     'show_description_style' => isset($draggable_data->data->tvs_aspot_elements->aspot_description)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->aspot_description),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->aspot_description)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->aspot_description),
+        'width' => $draggable_data->data->tvs_aspot_elements->aspot_description->width,
       )
       : FALSE,
     'social_meter_style' => isset($draggable_data->data->tvs_aspot_elements->social_meter)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->social_meter),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->social_meter)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->social_meter),
+        'width' => $draggable_data->data->tvs_aspot_elements->social_meter->width,
       )
       : FALSE,
     'sponsored' => isset($sponsored) ? $sponsored : FALSE,
@@ -982,7 +989,9 @@ function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
   $output .= 'left: ';
   $output .= isset($draggable_data_element->percentX) ? $draggable_data_element->percentX . '%; ' : 'auto; ';
   $output .= 'top: ';
-  $output .= isset($draggable_data_element->percentY) ? $draggable_data_element->percentY . '%;' : 'auto;';
+  $output .= isset($draggable_data_element->percentY) ? $draggable_data_element->percentY . '%;' : 'auto; ';
+  $output .= 'width: ';
+  $output .= isset($draggable_data_element->width) ? $draggable_data_element->width . 'vw;' : 'auto;';
   return $output;
 }
 
@@ -994,7 +1003,9 @@ function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_eleme
   $output .= 'left: ';
   $output .= isset($draggable_data_element->percentMX) ? $draggable_data_element->percentMX . '%; ' : 'auto; ';
   $output .= 'top: ';
-  $output .= isset($draggable_data_element->percentMY) ? $draggable_data_element->percentMY . '%;' : 'auto;';
+  $output .= isset($draggable_data_element->percentMY) ? $draggable_data_element->percentMY . '%;' : 'auto; ';
+  $output .= 'width: ';
+  $output .= isset($draggable_data_element->widthM) ? $draggable_data_element->widthM. 'vw;' : 'auto;';
   return $output;
 }
 
@@ -1010,7 +1021,8 @@ function _usanetwork_aspot_get_draggable_cta_buttons($aspot_gi_cta_elements, $dr
           'text' => $cta_element['title'],
           'style' => array(
             'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data_cta->$cta_draggable_name),
-            'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_cta->$cta_draggable_name)
+            'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_cta->$cta_draggable_name),
+            'width' => $draggable_data_cta->$cta_draggable_name->width,
           )
         );
       }

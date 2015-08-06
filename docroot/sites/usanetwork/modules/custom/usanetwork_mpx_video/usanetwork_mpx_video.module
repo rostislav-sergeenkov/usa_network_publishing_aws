@@ -413,11 +413,21 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
       'path' => $episode_image,
       'style_name' => '300x250',
     ));
+    $season_info = '';
+    if (isset($episode_season)  && isset($episode_number)) {
+      $season_info= t('S@season EP@episode_number', array('@season' => $episode_season, '@episode_number' => $episode_number));
+    }
+    elseif (isset($episode_season)) {
+      $season_info = t('S@season', array('@season' => $episode_season));
+    }
+    elseif (isset($episode_number)) {
+      $season_info = t('EP@episode_number', array('@episode_number' => $episode_number));
+    }
     $episode_element = array(
       'show_class' => $show_color,
       'url' => url('file/' . $episode->fid),
       'title' => $show->title,
-      'caption' => t('S@season EP@episode_number !episode_title', array('!episode_title' => _usanetwork_core_get_video_title($episode), '@season' => $episode_season, '@episode_number' => $episode_number)),
+      'caption' => t('@season_info !episode_title', array('!episode_title' => _usanetwork_core_get_video_title($episode), '@season_info' => $season_info)),
       'image' => $video_image,
       'icon' => usanetwork_core_api_get_media_icon('file', $episode->fid),
     );

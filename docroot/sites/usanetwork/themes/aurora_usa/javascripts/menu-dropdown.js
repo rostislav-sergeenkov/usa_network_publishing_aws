@@ -204,7 +204,7 @@
               index = $(".tab .no-refresh").index(tab),
               animation_speed = 350;
 
-          if (typeof s === 'object') {
+          if (Drupal.behaviors.omniture_tracking) {
             Drupal.behaviors.omniture_tracking.mainMenuTabs(tab);
           }
 

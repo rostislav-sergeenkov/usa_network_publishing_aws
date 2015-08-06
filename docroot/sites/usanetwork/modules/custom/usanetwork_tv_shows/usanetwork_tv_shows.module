@@ -92,6 +92,14 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
+  $items['ajax/usanetwork-explore-landing/get-related/%node/%/%/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => '_usanetwork_tv_shows_explore_landing_related_content_ajax',
+    'page arguments' => array(3, 4, 5, 6, 7, 8),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -3990,7 +3998,7 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(array(
     'usanetwork_tv_show_nid' => $tv_show_node->nid,
-    'usanetwork_tv_show_page_context' => 'photos-landing',
+    'usanetwork_tv_show_page_context' => 'explore-landing',
   ), 'setting');
 
   return $result;
@@ -4036,6 +4044,12 @@ function _usanetwork_tv_shows_landing_page_explore_get_tags($show_id, $params) {
   $query->leftJoin('taxonomy_term_data', 'term_data', 'field_explore_tag.field_explore_tag_tid IS NOT NULL AND field_explore_tag.field_explore_tag_tid = term_data.tid');
   $query->fields('field_explore_tag', array('field_explore_tag_tid'));
   $query->fields('term_data', array('name'));
+  $query->leftJoin('field_data_field_promo_exclude_from_related', 'promo_exclude_field', 'promo_exclude_field.entity_id=n.nid');
+  $query->condition(
+    db_or()
+      ->condition('promo_exclude_field.field_promo_exclude_from_related_value', NULL)
+      ->condition('promo_exclude_field.field_promo_exclude_from_related_value', 0)
+  );
   $query_results = $query->execute()->fetchAll();
   if (!empty($query_results)) {
     $result = array();
@@ -4103,6 +4117,12 @@ function _usanetwork_tv_shows_landing_page_explore_get_items($show_nid, $tag_id 
   }
   $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = n.nid');
   $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, n.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+  $query->leftJoin('field_data_field_promo_exclude_from_related', 'promo_exclude_field', 'promo_exclude_field.entity_id=n.nid');
+  $query->condition(
+    db_or()
+      ->condition('promo_exclude_field.field_promo_exclude_from_related_value', NULL)
+      ->condition('promo_exclude_field.field_promo_exclude_from_related_value', 0)
+  );
   $query->orderBy('sorted_time', $sorting);
   if(is_numeric($start) && is_numeric($lenght)) {
     $query->range($start, $lenght);
@@ -4239,4 +4259,24 @@ function _usanetwork_tv_shows_landing_page_explore_sorters($show_id, $params) {
   }
 
   return $data;
+}
+
+function _usanetwork_tv_shows_explore_landing_related_content_ajax($show_node, $start_from = 0, $lenght = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK, $tag = NULL, $order = 'ASC') {
+  $response = array(
+    'overlimited' => FALSE,
+    'rendered' => '',
+  );
+  $items = _usanetwork_tv_shows_landing_page_explore_get_items($show_node->nid, $tag, $order, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK + 1);
+  if (empty($items)) {
+    $response['overlimited'] = TRUE;
+    return drupal_json_output($response);
+  }
+  elseif(count($items) >= $lenght) {
+    $items = array_slice($items, 0, $lenght);
+  }
+  else {
+    $response['overlimited'] = TRUE;
+  }
+  $response['rendered'] = _usanetwork_tv_shows_landing_page_explore_items_block($items, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
+  return drupal_json_output($response);
 }

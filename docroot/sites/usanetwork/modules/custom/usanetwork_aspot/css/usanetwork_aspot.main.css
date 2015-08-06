@@ -63,17 +63,20 @@
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: initial;
   text-transform: uppercase;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .draggable-area.mobile div[data-rel="aspot_description"],
 .draggable-area.desktop div[data-rel="aspot_description"] {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: initial;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .draggable-area.mobile div[data-rel="title_prefix"],
 .draggable-area.desktop div[data-rel="title_prefix"] {
   font-family: "texgyrescholaitalic", Times, serif;
   line-height: initial;
   text-transform: uppercase;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .draggable-area.mobile div[data-rel="social_meter"],
 .draggable-area.desktop div[data-rel="social_meter"] {

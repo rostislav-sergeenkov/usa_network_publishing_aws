@@ -590,3 +590,18 @@ function _usanetwork_core_get_node_title($node, $title = '') {
   }
   return $title;
 }
+
+/*
+ * Function returns title with css style if it needed.
+ */
+function _usanetwork_core_get_right_case_title($show_node, $title = '') {
+
+  if (!empty($show_node->field_disable_uppercase)) {
+    $disable_uppercase = field_get_items('node', $show_node, 'field_disable_uppercase');
+    $disable_uppercase = reset($disable_uppercase);
+    if (!empty($disable_uppercase['value'])) {
+      return '<span class="no-uppercase">' . $title . '</span>';
+    }
+  }
+  return $title;
+}

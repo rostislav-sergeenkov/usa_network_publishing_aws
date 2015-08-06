@@ -3805,6 +3805,9 @@ ul.menu li {
 .no-uppercase {
   text-transform: none !important;
 }
+.caption .no-uppercase {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif !important;
+}
 
 img {
   height: auto;

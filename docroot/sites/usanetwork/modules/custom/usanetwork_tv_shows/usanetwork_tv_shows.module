@@ -22,6 +22,7 @@ define('USA_TV_SHOW_ALL_VIDEOS_EPISODE', 0);
 define('USA_TV_SHOW_FULL_EPISODE', -1);
 define('USA_TV_SHOW_SUBTITLE_FULL_EPISODE', -2);
 define('USA_TV_SHOW_ALL_ITEMS_LABEL', t('All items'));
+define('USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY', 0);
 
 /**
  *  Implements hook_menu().
@@ -3953,45 +3954,35 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
   if (empty($item_tags)) {
     return '';
   }
-  $gallery_sorters = _usanetwork_media_gallery_landing_page_sorters($tv_show_node->nid, $params);
-  $items = _usanetwork_tv_shows_landing_page_explore_get_items($tv_show_node->nid, $params['tag'], $params['sort_order'], 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK + 1);
+  $sorters = _usanetwork_tv_shows_landing_page_explore_sorters($tv_show_node->nid, $params);
+  $items = _usanetwork_tv_shows_landing_page_explore_get_items($tv_show_node->nid, $params['tag'], $params['sort_order'], 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK + 1);
   $load_more = &drupal_static('load_more_link');
   $load_more = FALSE;
-  if (count($items) >= USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK) {
-    $items = array_slice($items, 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK);
+  if (count($items) >= USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK) {
+    $items = array_slice($items, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
     $load_more = TRUE;
   }
-  $items_block = _usanetwork_tv_shows_landing_page_explore_items_block($items, 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK);
-
-  $section_name = $params['category'] === NULL ? USA_GALLERY_ALL_GALLERIES_LABEL :
-    ($params['category'] === USA_GALLERY_OTHER_TYPE_MACHINE_NAME ? USA_GALLERY_OTHER_TYPE_LABEL : $params['category']);
-  $key = md5($params['category']);
-  $video_filter_title = ($params['category'] !== NULL)
-    ? $section_name . ' (' . $item_tags[$key]['items_count'] . ')'
-    : t('All galleries');
-  $video_filter_title_short = $section_name;
-  $video_sorter_title = (isset($gallery_sorters[$params['sort_order']]))
-    ? $gallery_sorters[$params['sort_order']]['title']
-    : t('Newest');
-
-  $tag_videos_type = '<strong class="photos-type">' . $video_filter_title_short . '</strong>';
-  $tag_seasons_type = '<strong class="seasons-type">' . t('all seasons') . '</strong>';
+  $items_block = _usanetwork_tv_shows_landing_page_explore_items_block($items, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
+  $key = !empty($params['tag']) ? $params['tag'] : USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY;
+  $section_name = !empty($item_tags[$key]) ? $item_tags[$key]['name'] : USA_TV_SHOW_ALL_ITEMS_LABEL;
+  $video_filter_title = !empty($item_tags[$key]) ? $section_name . ' (' . $item_tags[$key]['items_count'] . ')' : t('All Items');
+  $video_sorter_title = (isset($sorters[$params['sort_order']])) ? $sorters[$params['sort_order']]['title'] : t('Newest');
+  $item_type_tag = '<strong class="items-type">' . $section_name . '</strong>';
   $tag_show_name = '<strong class="show-name">' . $tv_show_node->title . '</strong>';
   $result = theme('usanetwork_tv_shows_explore_items', array(
     'block_title' => $section_name,
     'photo_filters' => $item_tags,
     'photo_filter_title' => $video_filter_title,
-    'photo_sorters' => $gallery_sorters,
+    'photo_sorters' => $sorters,
     'photo_sorter_title' => $video_sorter_title,
     'photos_block' => $items_block,
     'show_nid' => $tv_show_node->nid,
     'items_per_page_limit' => USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK,
-    'filter_tid' => ($params['category'] === NULL) ? USA_GALLERY_ALL_GALLERIES : $params['category'],
+    'filter_tid' => ($params['tag'] === NULL) ? USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY : $params['tag'],
     'sorting_order' => $params['sort_order'],
     'load_more_link' => $load_more,
-    'tabs_description' => t('Showing !videos_type from !seasons_type for !show_name', array(
-      '!videos_type' => $tag_videos_type,
-      '!seasons_type' => $tag_seasons_type,
+    'tabs_description' => t('Showing !item_type_tag from !show_name', array(
+      '!item_type_tag' => $item_type_tag,
       '!show_name' => $tag_show_name,
     )),
   ));
@@ -4066,7 +4057,7 @@ function _usanetwork_tv_shows_landing_page_explore_get_tags($show_id, $params) {
         }
       }
     }
-    $all_items[0] = array(
+    $all_items[USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY] = array(
       'items_count' => count($query_results),
       'name' => USA_TV_SHOW_ALL_ITEMS_LABEL,
       'url' => url('node/' . $show_id . '/explore', array(
@@ -4079,7 +4070,7 @@ function _usanetwork_tv_shows_landing_page_explore_get_tags($show_id, $params) {
       $result[$params['tag']]['active'] = TRUE;
     }
     else {
-      $result[0]['active'] = TRUE;
+      $result[USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY]['active'] = TRUE;
     }
     return $result;
   }
@@ -4210,4 +4201,42 @@ function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $curr
     : 'usanetwork_tv_shows_explore_item_small';
 
   return theme($theme_name, $theme_variables);
+}
+
+/**
+ * Returns default sorters for gallery page.
+ *
+ * @return array
+ */
+function _usanetwork_tv_shows_landing_page_explore_sorters($show_id, $params) {
+
+  if (isset($params['category']) && $params['category'] !== NULL) {
+    $url_query['category'] = $params['category'];
+  }
+  $url_query['sort_order'] = 'DESC';
+  $data['DESC'] = array(
+    'order' => 'DESC',
+    'data_type' => 'airdate',
+    'title' => t('Newest'),
+    'active' => FALSE,
+    'url' => url('node/' . $show_id . '/photos', array(
+      'query' => $url_query
+    )),
+  );
+  $url_query['sort_order'] = 'ASC';
+  $data['ASC'] = array(
+    'order' => 'ASC',
+    'data_type' => 'airdate',
+    'title' => t('Oldest'),
+    'active' => FALSE,
+    'url' => url('node/' . $show_id . '/photos', array(
+      'query' => $url_query
+    )),
+  );
+
+  if (isset($params['sort_order'])) {
+    $data[$params['sort_order']]['active'] = TRUE;
+  }
+
+  return $data;
 }

@@ -388,7 +388,7 @@ var homeAspot, showAspot;
 
         // add title for draggable aria
         carouselElementPreviewingBlock
-            .before('<h2>' + pageName + ' Desktop Vertion</h2>')
+            .before('<h2>' + pageName + ' Desktop Version</h2>')
             .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>');
         carouselElementPreviewingBlockMobile
             .before('<h2>' + pageName + ' Mobile Version</h2>')

@@ -4202,11 +4202,17 @@ function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $curr
     }
   }
   $own_promo_lines = _usanetwork_promo_pull_node_promo_details($node);
-
+  $promo_link = NULL;
+  if (!empty($node->field_promo_link)) {
+    $promo_link_field = field_get_items('node', $node, 'field_promo_link');
+    if (!empty($promo_link_field)) {
+      $promo_link = url(reset($promo_link_field[0]));
+    }
+  }
   $theme_variables = array(
     'classes' => NULL,
     'custom_classes' => NULL,
-    'target_url' => url('node/' . $node->nid),
+    'target_url' => !empty($promo_link) ? $promo_link : url('node/' . $node->nid),
     'media_icon' => !empty($own_promo_lines['icon_type']) ? $own_promo_lines['icon_type'] : 'video-icon',
     'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
     'title' => !empty($own_promo_lines['promo_title'])

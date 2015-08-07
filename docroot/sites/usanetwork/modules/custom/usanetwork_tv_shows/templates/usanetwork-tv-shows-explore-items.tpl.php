@@ -4,7 +4,7 @@
  */
 ?>
 <div class="landing-page-container explore-landing-page-container">
-  <h2 class="section-title">
+  <h2 id="explore-landing-page-header" class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All items'); ?></span>
   </h2>
   <div class="upper-menu">
@@ -14,7 +14,7 @@
         <ul class="filter-menu transform-filter">
           <?php foreach ($explore_filters as $explore_filter): ?>
             <li class="filter-item<?php if ($explore_filter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $explore_filter['url']; ?>"<?php if (isset($explore_filter['id'])):?> data-type="<?php print $explore_filter['id'];?>"<?php endif;?> class="no-ajax">
+              <a href="<?php print $explore_filter['url']; ?>#explore-landing-page-header"<?php if (isset($explore_filter['id'])):?> data-type="<?php print $explore_filter['id'];?>"<?php endif;?> class="no-ajax">
                 <span class="title"><?php print $explore_filter['name']; ?></span> <span class="items-in">(<?php print $explore_filter['items_count']; ?>)</span>
               </a>
             </li>
@@ -28,7 +28,7 @@
         <ul class="filter-menu">
           <?php foreach ($explore_sorters as $explore_sorter): ?>
             <li class="filter-item sorter-item<?php if (!empty($explore_sorter['order'])): print ' order-' . $explore_sorter['order']; endif; ?><?php if ($explore_sorter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $explore_sorter['url']; ?>" data-type="<?php print $explore_sorter['data_type']; ?>" class="no-ajax">
+              <a href="<?php print $explore_sorter['url']; ?>#explore-landing-page-header" data-type="<?php print $explore_sorter['data_type']; ?>" class="no-ajax">
                 <span class="title"><?php print $explore_sorter['title']; ?></span>
               </a>
             </li>

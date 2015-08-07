@@ -3963,7 +3963,8 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
     return '';
   }
   $sorters = _usanetwork_tv_shows_landing_page_explore_sorters($tv_show_node->nid, $params);
-  $items = _usanetwork_tv_shows_landing_page_explore_get_items($tv_show_node->nid, $params['tag'], $params['sort_order'], 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK + 1);
+  $required_tag = isset($item_tags[$params['tag']]) ? $params['tag'] : NULL;
+  $items = _usanetwork_tv_shows_landing_page_explore_get_items($tv_show_node->nid, $required_tag, $params['sort_order'], 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK + 1);
   $load_more = &drupal_static('load_more_link');
   $load_more = FALSE;
   if (count($items) >= USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK) {
@@ -3986,7 +3987,7 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
     'photos_block' => $items_block,
     'show_nid' => $tv_show_node->nid,
     'items_per_page_limit' => USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK,
-    'filter_tid' => ($params['tag'] === NULL) ? USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY : $params['tag'],
+    'filter_tid' => ($required_tag === NULL) ? USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY : $required_tag,
     'sorting_order' => $params['sort_order'],
     'load_more_link' => $load_more,
     'tabs_description' => t('Showing !item_type_tag from !show_name', array(
@@ -4239,8 +4240,8 @@ function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $curr
  */
 function _usanetwork_tv_shows_landing_page_explore_sorters($show_id, $params) {
 
-  if (isset($params['category']) && $params['category'] !== NULL) {
-    $url_query['category'] = $params['category'];
+  if (isset($params['tag']) && $params['tag'] !== NULL) {
+    $url_query['tag'] = $params['tag'];
   }
   $url_query['sort_order'] = 'DESC';
   $data['DESC'] = array(
@@ -4248,7 +4249,7 @@ function _usanetwork_tv_shows_landing_page_explore_sorters($show_id, $params) {
     'data_type' => 'airdate',
     'title' => t('Newest'),
     'active' => FALSE,
-    'url' => url('node/' . $show_id . '/photos', array(
+    'url' => url('node/' . $show_id . '/explore', array(
       'query' => $url_query
     )),
   );
@@ -4258,7 +4259,7 @@ function _usanetwork_tv_shows_landing_page_explore_sorters($show_id, $params) {
     'data_type' => 'airdate',
     'title' => t('Oldest'),
     'active' => FALSE,
-    'url' => url('node/' . $show_id . '/photos', array(
+    'url' => url('node/' . $show_id . '/explore', array(
       'query' => $url_query
     )),
   );
@@ -4275,7 +4276,7 @@ function _usanetwork_tv_shows_explore_landing_related_content_ajax($show_node, $
     'overlimited' => FALSE,
     'rendered' => '',
   );
-  $items = _usanetwork_tv_shows_landing_page_explore_get_items($show_node->nid, $tag, $order, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK + 1);
+  $items = _usanetwork_tv_shows_landing_page_explore_get_items($show_node->nid, $tag, $order, $start_from, $lenght + 1);
   if (empty($items)) {
     $response['overlimited'] = TRUE;
     return drupal_json_output($response);

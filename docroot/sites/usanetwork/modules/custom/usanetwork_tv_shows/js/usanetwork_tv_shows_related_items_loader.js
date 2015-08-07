@@ -46,6 +46,11 @@
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
               + $('.ajax-load-block').data('sorting-order');
             break;
+          case 'explore-landing':
+            service_name = 'usanetwork-explore-landing';
+            additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
+              + $('.ajax-load-block').data('sorting-order');
+            break;
           case 'videos-landing':
             service_name = 'videos-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'

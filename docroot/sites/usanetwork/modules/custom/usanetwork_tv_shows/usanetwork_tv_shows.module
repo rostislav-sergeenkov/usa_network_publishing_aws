@@ -4053,7 +4053,9 @@ function _usanetwork_tv_shows_landing_page_explore_get_tags($show_id, $params) {
   $query_results = $query->execute()->fetchAll();
   if (!empty($query_results)) {
     $result = array();
+    $unique_items = array();
     foreach($query_results as $query_result) {
+      $unique_items[$query_result->nid] = $query_result->nid;
       if (!empty($query_result->field_explore_tag_tid) && !empty($query_result->name)) {
         $key = $query_result->field_explore_tag_tid;
         if (isset($result[$key])) {
@@ -4072,7 +4074,7 @@ function _usanetwork_tv_shows_landing_page_explore_get_tags($show_id, $params) {
       }
     }
     $all_items[USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY] = array(
-      'items_count' => count($query_results),
+      'items_count' => count($unique_items),
       'name' => USA_TV_SHOW_ALL_ITEMS_LABEL,
       'url' => url('node/' . $show_id . '/explore', array(
         'query' => array(
@@ -4109,6 +4111,7 @@ function _usanetwork_tv_shows_landing_page_explore_get_items($show_nid, $tag_id 
   $query->condition('n.status', NODE_PUBLISHED);
   $query->condition('n.type', $node_types, 'IN');
   $query->fields('n', array('nid'));
+  $query->groupBy('nid');
   $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
   $query->condition('field_show.field_show_target_id', $show_nid);
   if (!empty($tag_id)) {

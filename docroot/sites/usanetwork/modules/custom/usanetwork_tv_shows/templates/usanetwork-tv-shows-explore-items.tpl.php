@@ -5,12 +5,12 @@
 ?>
 <div class="landing-page-container explore-landing-page-container">
   <h2 class="section-title">
-    <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All galleries'); ?></span>
+    <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All items'); ?></span>
   </h2>
   <div class="upper-menu">
     <div class="all-items-filter item-filter">
       <?php if (!empty($photo_filters)): ?>
-        <div class="filter-label"><?php print !empty($photo_filter_title) ? $photo_filter_title : t('All galleries'); ?></div>
+        <div class="filter-label"><?php print !empty($photo_filter_title) ? $photo_filter_title : t('All items'); ?></div>
         <ul class="filter-menu transform-filter">
           <?php foreach ($photo_filters as $photo_filter): ?>
             <li class="filter-item<?php if ($photo_filter['active'] == TRUE): print ' active'; endif; ?>">

@@ -1861,10 +1861,12 @@ function _usanetwork_tv_shows_submenu() {
         if (!empty($requested_page) && !empty($menu_link_page) && strcasecmp($requested_page, $menu_link_page) === 0) {
           $classes[] = 'active';
         }
+        $attributes = array('class' => $classes);
+        if (!empty($show_menu_item_main_link[0]['attributes'])) {
+          $attributes += $show_menu_item_main_link[0]['attributes'];
+        }
         $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $menu_item_url, array(
-          'attributes' => array(
-            'class' => $classes,
-          ),
+          'attributes' => $attributes,
           'query' => $menu_item_url_query,
         ));
       }

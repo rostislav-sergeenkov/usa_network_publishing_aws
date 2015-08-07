@@ -162,6 +162,12 @@ function usanetwork_consumptionator_post_strongarm() {
       'vid_teaser_front' => array(
         'custom_settings' => FALSE,
       ),
+      'microsite_output' => array(
+        'custom_settings' => FALSE,
+      ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -175,6 +181,12 @@ function usanetwork_consumptionator_post_strongarm() {
           'weight' => '4',
         ),
         'redirect' => array(
+          'weight' => '30',
+        ),
+        'locations' => array(
+          'weight' => '30',
+        ),
+        'xmlsitemap' => array(
           'weight' => '30',
         ),
       ),

@@ -788,9 +788,13 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
 
     $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
-    $episode_suffix = trim(check_plain($episode[0])) != '' ? '<span class="episode-suffix"> - ' . check_plain($episode[0]) . '</span>' : '';
+    $show_node = node_load($nid);
+    $episode_title = check_plain($episode[0]);
+    if (!empty($show_node)) {
+      $episode_title = _usanetwork_core_get_right_case_title($show_node, $episode_title);
+    }
+    $episode_suffix = trim($episode_title) != '' ? '<span class="episode-suffix"> - ' . $episode_title . '</span>' : '';
     $episode_show = '';
-    $episode_title = $episode[0];
 
     if (empty($nid)) {
       if (strtoupper($show) == 'USA MOVIE') {
@@ -1082,6 +1086,10 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
           $show_color = usanetwork_tv_shows_color_movie_css_class($movie_node);
         }
       }
+      $episode_title = !empty($tv_episode) ? $tv_episode->title : $episode_title;
+      if (!empty($show_node)) {
+        $episode_title = _usanetwork_core_get_right_case_title($show_node, $episode_title);
+      }
       $theme_row_variables = array(
         'show_nid' => $show_nid,
         'show_url' => !empty($movie_node) ? url('node/' . $movie_nid) : url('node/' . $show_nid),
@@ -1091,7 +1099,7 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
         'time' => date('g:i', $start_time),
         'day_part' => date('A', $start_time),
         'episode_show' => $show_name,
-        'episode_title' => !empty($tv_episode) ? $tv_episode->title : $episode_title,
+        'episode_title' => $episode_title,
         'episode_fid' => !empty($tv_episode) ? $tv_episode->fid : '',
         'icon_reminder_url' => !empty($show_nid) ? _usanetwork_menu_get_reminder_url($show_nid)
           : '',

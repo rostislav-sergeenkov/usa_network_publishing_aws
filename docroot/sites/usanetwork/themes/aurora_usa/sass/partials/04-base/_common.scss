@@ -404,5 +404,9 @@ address {
 }
 .no-uppercase {
   text-transform: none!important;
+  .caption & {
+    font-family: $avalon-book!important;
+  }
 }
+
 

@@ -4,7 +4,7 @@
  */
 ?>
 <?php if (!empty($ad)): ?>
-  <div class="midbanner" id="advert-photos-landing-<?php print $ad_id; ?>"></div>
+  <div class="midbanner" id="advert-explore-landing-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
 <?php if (!empty($items)): ?>
   <ul class="<?php print $is_even ? 'even' : 'odd'; ?>">

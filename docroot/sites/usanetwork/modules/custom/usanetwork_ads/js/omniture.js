@@ -201,16 +201,17 @@
       //s.prop10 = show_name;
 
       if (typeof s_gi != 'undefined') {
+        s.linkTrackEvents = s.events = 'event51';
         s.linkTrackVars = 'events,prop4,prop10';
         s.prop4 = show_name + ' : Home Page Show Card';
         s.prop10 = show_name;
         void (s.t());
       }
 
-      s.linkTrackEvents = s.events = 'event51';
-      s.prop4 = s.prop10 = '';
-      s.tl(this, 'o', 'Home Page Show Card Click');
-      s.manageVars('clearVars', s.linkTrackVars, 1);
+
+      //s.prop4 = s.prop10 = '';
+      //s.tl(this, 'o', 'Home Page Show Card Click');
+      //s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
     showCardPromoClick: function ($self, name, prop4, prop10) {
@@ -472,7 +473,6 @@
 
     attach: function (context, settings) {
 
-      console.info()
       if (typeof s != 'object') {
         return;
       }

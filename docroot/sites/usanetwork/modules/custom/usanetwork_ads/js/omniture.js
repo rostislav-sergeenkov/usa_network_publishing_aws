@@ -666,15 +666,18 @@
 
               if ($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-now-and-next').length > 0) {
 
-                paneTitle = $self.closest('.node-usanetwork-promo').find('h2').text().trim();
+                paneTitle = $self.closest('.node-usanetwork-promo').find('h2 a').text().trim();
                 itemName = $self.closest('.node-usanetwork-promo').find('.title').text().trim();
 
                 if ($self.hasClass('live-icon')) {
+                  console.info(1);
                   sub_menu_name = $self.text().trim();
                 } else if ($self.data('name') === 'description' || $self.data('name') === 'reminder') {
+                  console.info(2);
                   name = $self.data('name');
                   sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
                 } else {
+                  console.info(3);
                   sub_menu_name = $self.text();
                 }
 

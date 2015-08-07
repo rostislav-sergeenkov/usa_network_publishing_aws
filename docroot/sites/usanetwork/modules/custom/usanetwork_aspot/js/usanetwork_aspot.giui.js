@@ -1,4 +1,3 @@
-
 var homeAspot, showAspot;
 
 (function ($) {
@@ -188,7 +187,7 @@ var homeAspot, showAspot;
         grid: [1, 1],
         appendTo: '#edit-field-aspot-enabled-gi',
         containment: "parent",
-        snap: true,
+        //snap: true,
         cursor: "move",
         zIndex: 100,
         stop: function () {
@@ -198,21 +197,28 @@ var homeAspot, showAspot;
       };
       block.find('.aspot-draggable-element')
           .draggable(draggableOptions)
-          .resizable({
-            containment: "parent"
-            /*
-             ui.helper
-             ui.originalPosition
-             ui.originalSize
-             ui.position
-             ui.size
-             */
-
-            //start: function(e, ui) {},
-            //resize: function(e, ui) {},
-            //stop: function(e, ui) {}
-          })
           .css("position", "absolute");
+      block.find('[data-rel=title_prefix]').resizable({
+        containment: "parent"
+        /*
+         ui.helper
+         ui.originalPosition
+         ui.originalSize
+         ui.position
+         ui.size
+         */
+
+        //start: function(e, ui) {},
+        //resize: function(e, ui) {},
+        //stop: function(e, ui) {}
+      });
+      block.find('[data-rel=title]').resizable({
+        containment: "parent"
+      });
+
+      block.find('[data-rel=aspot_description]').resizable({
+        containment: "parent"
+      });
 
       /**
        * Enables draggable element (connection of checkbox and element visibility).
@@ -382,10 +388,10 @@ var homeAspot, showAspot;
 
         // add title for draggable aria
         carouselElementPreviewingBlock
-            .before('<h2>'+ pageName +' Desktop Vertion</h2>')
+            .before('<h2>' + pageName + ' Desktop Vertion</h2>')
             .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>');
         carouselElementPreviewingBlockMobile
-            .before('<h2>'+ pageName +' Mobile Version</h2>')
+            .before('<h2>' + pageName + ' Mobile Version</h2>')
             .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>'
         );
 
@@ -574,17 +580,15 @@ var homeAspot, showAspot;
             return;
           }
 
-          if(containerClass === 'wrapper-mobile') {
+          if (containerClass === 'wrapper-mobile') {
             self.css({
               left: settingsAspot[elName].leftM,
-              top: settingsAspot[elName].topM,
-              width: 'auto'
+              top: settingsAspot[elName].topM
             })
-          } else if(containerClass === 'wrapper-desktop') {
+          } else if (containerClass === 'wrapper-desktop') {
             self.css({
               left: settingsAspot[elName].left,
-              top: settingsAspot[elName].top,
-              width: 'auto'
+              top: settingsAspot[elName].top
             })
           }
         });
@@ -617,11 +621,11 @@ var homeAspot, showAspot;
             return;
           }
 
-          if(containerClass === 'wrapper-mobile') {
+          if (containerClass === 'wrapper-mobile') {
             self.css({
               left: titleLeft + settingsAspot[elName].alignLeftM + 'px'
             });
-          } else if(containerClass === 'wrapper-desktop') {
+          } else if (containerClass === 'wrapper-desktop') {
             self.css({
               left: titleLeft + settingsAspot[elName].alignLeft + 'px'
             });
@@ -637,9 +641,9 @@ var homeAspot, showAspot;
 
         var self = $(this), container, settingsAspot;
 
-        if(self.closest('.wrapper-mobile').length > 0) {
+        if (self.closest('.wrapper-mobile').length > 0) {
           container = self.closest('.wrapper-mobile');
-        } else if(self.closest('.wrapper-desktop').length > 0) {
+        } else if (self.closest('.wrapper-desktop').length > 0) {
           container = self.closest('.wrapper-desktop');
         }
 

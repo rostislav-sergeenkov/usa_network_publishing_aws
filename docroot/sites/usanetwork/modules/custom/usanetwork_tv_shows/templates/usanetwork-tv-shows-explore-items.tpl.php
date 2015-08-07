@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="landing-page-container photos-landing-page-container">
+<div class="landing-page-container explore-landing-page-container">
   <h2 class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All galleries'); ?></span>
   </h2>
@@ -42,7 +42,7 @@
       </div>
     <?php endif; ?>
   </div>
-  <div class="landing-items-blocks photo-items-blocks show-border ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"
+  <div class="landing-items-blocks explore-items-blocks show-border ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"
   <?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?>
   <?php if (!empty($items_per_page_limit)): print ' data-show-items-limit="' . $items_per_page_limit . '"'; endif; ?>
   <?php if (isset($filter_tid)): print ' data-filter-tid="' . $filter_tid . '"'; endif; ?>

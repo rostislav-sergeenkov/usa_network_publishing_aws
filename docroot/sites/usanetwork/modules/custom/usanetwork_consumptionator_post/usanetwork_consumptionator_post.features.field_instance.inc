@@ -1984,7 +1984,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'usanetwork_field_formatters',
         'settings' => array(),
         'type' => 'custom_css',

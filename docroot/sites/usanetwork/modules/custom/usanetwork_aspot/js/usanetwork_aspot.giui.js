@@ -66,10 +66,10 @@ var homeAspot, showAspot;
           dataRel: "title_prefix",
           alignLeft: 3,
           alignLeftM: 2,
-          left: '56px',
-          top: '285px',
-          leftM: '37px',
-          topM: '254px'
+          left: '43px',
+          top: '268px',
+          leftM: '56px',
+          topM: '285px'
         },
         title: {
           dataRel: "title",
@@ -309,6 +309,11 @@ var homeAspot, showAspot;
           }
           if (heightPercent_m < 0) {
             heightPercent_m = 0;
+          }
+
+          if (itemElement.hasClass('aspot-draggable-cta-button')) {
+            fieldWidthPercent = 'auto';
+            fieldWidthPercentM = 'auto';
           }
 
           elementsMeta[itemElement.data('rel')] = {
@@ -730,8 +735,10 @@ var homeAspot, showAspot;
               "display": itemElem.display,
               "left": itemElem.left,
               "top": itemElem.top,
+              'width': itemElem.width,
               "leftM": itemElem.leftM,
               "topM": itemElem.topM,
+              'widthM': itemElem.widthM,
               "percentX": itemElem.percentX,
               "percentY": itemElem.percentY,
               "percentMX": itemElem.percentMX,

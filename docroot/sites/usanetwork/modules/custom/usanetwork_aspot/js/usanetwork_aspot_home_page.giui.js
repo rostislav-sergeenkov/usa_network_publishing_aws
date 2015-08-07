@@ -49,15 +49,19 @@
                       if (elWidth === 'auto') {
                         self.attr('data-between-width', elWidth);
                       } else {
-                        betweenWidth = elWidth + '%';
+                        betweenWidth = elWidth + 'vw';
                         self.attr('data-between-width', betweenWidth);
                       }
                     }
-                  }
 
-                  // change width on tv-show page
-                  if(window.innerWidth >= window_size_mobile_641 && window.innerWidth <= window_size_tablet_portrait) {
-                    self.css('width', self.data('between-width'));
+                    // change width on tv-show page
+                    if(window.innerWidth >= window_size_mobile_641 && window.innerWidth <= window_size_tablet_portrait) {
+                      self.css('width', self.data('between-width'));
+                    }
+
+                    if(window.innerWidth >= window_size_tablet_portrait && window.innerWidth <= window_size_desktop_max_width) {
+                      self.css('width', self.data('width') + '%');
+                    }
                   }
 
                   if(window.innerWidth >= window_size_desktop_max_width) {

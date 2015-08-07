@@ -3974,17 +3974,17 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
   $items_block = _usanetwork_tv_shows_landing_page_explore_items_block($items, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
   $key = !empty($params['tag']) ? $params['tag'] : USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY;
   $section_name = !empty($item_tags[$key]) ? $item_tags[$key]['name'] : USA_TV_SHOW_ALL_ITEMS_LABEL;
-  $video_filter_title = !empty($item_tags[$key]) ? $section_name . ' (' . $item_tags[$key]['items_count'] . ')' : t('All Items');
-  $video_sorter_title = (isset($sorters[$params['sort_order']])) ? $sorters[$params['sort_order']]['title'] : t('Newest');
+  $explore_filter_title = !empty($item_tags[$key]) ? $section_name . ' (' . $item_tags[$key]['items_count'] . ')' : t('All Items');
+  $explore_sorter_title = (isset($sorters[$params['sort_order']])) ? $sorters[$params['sort_order']]['title'] : t('Newest');
   $item_type_tag = '<strong class="items-type">' . $section_name . '</strong>';
   $tag_show_name = '<strong class="show-name">' . $tv_show_node->title . '</strong>';
   $result = theme('usanetwork_tv_shows_explore_items', array(
     'block_title' => $section_name,
-    'photo_filters' => $item_tags,
-    'photo_filter_title' => $video_filter_title,
-    'photo_sorters' => $sorters,
-    'photo_sorter_title' => $video_sorter_title,
-    'photos_block' => $items_block,
+    'explore_filters' => $item_tags,
+    'explore_filter_title' => $explore_filter_title,
+    'explore_sorters' => $sorters,
+    'explore_sorter_title' => $explore_sorter_title,
+    'explore_block' => $items_block,
     'show_nid' => $tv_show_node->nid,
     'items_per_page_limit' => USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK,
     'filter_tid' => ($required_tag === NULL) ? USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY : $required_tag,

@@ -9,13 +9,13 @@
   </h2>
   <div class="upper-menu">
     <div class="all-items-filter item-filter">
-      <?php if (!empty($photo_filters)): ?>
-        <div class="filter-label"><?php print !empty($photo_filter_title) ? $photo_filter_title : t('All items'); ?></div>
+      <?php if (!empty($explore_filters)): ?>
+        <div class="filter-label"><?php print !empty($explore_filter_title) ? $explore_filter_title : t('All items'); ?></div>
         <ul class="filter-menu transform-filter">
-          <?php foreach ($photo_filters as $photo_filter): ?>
-            <li class="filter-item<?php if ($photo_filter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $photo_filter['url']; ?>"<?php if (isset($photo_filter['id'])):?> data-type="<?php print $photo_filter['id'];?>"<?php endif;?> class="no-ajax">
-                <span class="title"><?php print $photo_filter['name']; ?></span> <span class="items-in">(<?php print $photo_filter['items_count']; ?>)</span>
+          <?php foreach ($explore_filters as $explore_filter): ?>
+            <li class="filter-item<?php if ($explore_filter['active'] == TRUE): print ' active'; endif; ?>">
+              <a href="<?php print $explore_filter['url']; ?>"<?php if (isset($explore_filter['id'])):?> data-type="<?php print $explore_filter['id'];?>"<?php endif;?> class="no-ajax">
+                <span class="title"><?php print $explore_filter['name']; ?></span> <span class="items-in">(<?php print $explore_filter['items_count']; ?>)</span>
               </a>
             </li>
           <?php endforeach; ?>
@@ -23,13 +23,13 @@
       <?php endif; ?>
     </div>
     <div class="sorter-items item-filter">
-      <?php if (!empty($photo_sorters)): ?>
-        <div class="filter-label"><?php print !empty($photo_sorter_title) ? $photo_sorter_title : t('Newest'); ?></div>
+      <?php if (!empty($explore_sorters)): ?>
+        <div class="filter-label"><?php print !empty($explore_sorter_title) ? $explore_sorter_title : t('Newest'); ?></div>
         <ul class="filter-menu">
-          <?php foreach ($photo_sorters as $photo_sorter): ?>
-            <li class="filter-item sorter-item<?php if (!empty($photo_sorter['order'])): print ' order-' . $photo_sorter['order']; endif; ?><?php if ($photo_sorter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $photo_sorter['url']; ?>" data-type="<?php print $photo_sorter['data_type']; ?>" class="no-ajax">
-                <span class="title"><?php print $photo_sorter['title']; ?></span>
+          <?php foreach ($explore_sorters as $explore_sorter): ?>
+            <li class="filter-item sorter-item<?php if (!empty($explore_sorter['order'])): print ' order-' . $explore_sorter['order']; endif; ?><?php if ($explore_sorter['active'] == TRUE): print ' active'; endif; ?>">
+              <a href="<?php print $explore_sorter['url']; ?>" data-type="<?php print $explore_sorter['data_type']; ?>" class="no-ajax">
+                <span class="title"><?php print $explore_sorter['title']; ?></span>
               </a>
             </li>
           <?php endforeach; ?>
@@ -47,8 +47,8 @@
   <?php if (!empty($items_per_page_limit)): print ' data-show-items-limit="' . $items_per_page_limit . '"'; endif; ?>
   <?php if (isset($filter_tid)): print ' data-filter-tid="' . $filter_tid . '"'; endif; ?>
   <?php if (!empty($sorting_order)): print ' data-sorting-order="' . $sorting_order . '"'; endif; ?>>
-    <?php if (!empty($photos_block)): ?>
-      <?php print $photos_block; ?>
+    <?php if (!empty($explore_block)): ?>
+      <?php print $explore_block; ?>
     <?php endif; ?>
     <?php if (!empty($load_more_link)): ?>
       <div class="load-more-link"><a href="javascript:void(0)"><?php print t('Load more'); ?></a></div>

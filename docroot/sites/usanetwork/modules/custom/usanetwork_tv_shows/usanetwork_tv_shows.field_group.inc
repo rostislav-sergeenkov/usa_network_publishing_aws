@@ -1222,9 +1222,8 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_tvs_desktop_cimage',
-      1 => 'field_tvs_mobile_cimage',
-      2 => 'field_tvs_promo_items',
-      3 => 'field_tvs_promoted_content',
+      1 => 'field_tvs_promo_items',
+      2 => 'field_tvs_promoted_content',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

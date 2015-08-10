@@ -4289,6 +4289,6 @@ function _usanetwork_tv_shows_explore_landing_related_content_ajax($show_node, $
   else {
     $response['overlimited'] = TRUE;
   }
-  $response['rendered'] = _usanetwork_tv_shows_landing_page_explore_items_block($items, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
+  $response['rendered'] = _usanetwork_tv_shows_landing_page_explore_items_block($items, $start_from, $lenght);
   return drupal_json_output($response);
 }

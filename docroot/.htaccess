@@ -171,3 +171,6 @@ AddType model/vnd.collada+xml dae
       image/svg+xml
   </IfModule>
 </IfModule>
+
+RedirectMatch 301 ^/series/monk/(.*)$ http://www2.usanetwork.com/series/monk/$1
+RedirectMatch 301 ^/series/burnnotice/.*$ http://www.usanetwork.com/burnnotice

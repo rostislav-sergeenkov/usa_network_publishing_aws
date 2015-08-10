@@ -12,6 +12,15 @@
       false;
     },
 
+    goToUrl: function (elem) {
+      console.info(elem);
+      if(elem.attr('target') == '_blank') {
+        window.open(elem.attr('href'),'_blank');
+      } else {
+        window.location = elem.attr('href');
+      }
+    },
+
     //----------- redesign ---------------
 
     // main menu elem click
@@ -39,7 +48,7 @@
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
           s.bcf = function () {
             setTimeout(function () {
-              window.location = $self.attr('href');
+              Drupal.behaviors.omniture_tracking.goToUrl($self);
             }, 500);
           };
         }
@@ -58,7 +67,7 @@
       if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
         s.bcf = function () {
           setTimeout(function () {
-            window.location = $self.attr('href');
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           }, 500);
         };
       }
@@ -138,7 +147,7 @@
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
         s.bcf = function () {
           setTimeout(function () {
-            window.location = $self.attr('href');
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           }, 500);
         };
       }
@@ -160,7 +169,7 @@
       if ($self.attr('href') != '#') {
         s.bcf = function () {
           setTimeout(function () {
-            window.location = $self.attr('href');
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           }, 500);
         };
       }
@@ -182,7 +191,7 @@
       if ($self.attr('href') != '#') {
         s.bcf = function () {
           setTimeout(function () {
-            window.location = $self.attr('href');
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           }, 500);
         };
       }
@@ -225,7 +234,7 @@
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
         s.bcf = function () {
           setTimeout(function () {
-            window.location = $self.attr('href');
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           }, 500);
         };
       }
@@ -252,7 +261,7 @@
       if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
         s.bcf = function () {
           setTimeout(function () {
-            window.location = $self.attr('href');
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           }, 500);
         };
       }
@@ -288,7 +297,7 @@
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
         s.bcf = function () {
           setTimeout(function () {
-            window.location = $self.attr('href');
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           }, 500);
         };
       }

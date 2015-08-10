@@ -4041,7 +4041,7 @@ function _usanetwork_tv_shows_landing_page_explore_get_tags($show_id, $params) {
   $query->condition('n.status', NODE_PUBLISHED);
   $query->condition('n.type', $node_types, 'IN');
   $query->fields('n', array('nid'));
-  $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
+  $query->join('field_data_field_show', 'field_show', 'field_show.entity_type = \'node\' AND n.nid=field_show.entity_id');
   $query->condition('field_show.field_show_target_id', $show_id);
   $query->leftJoin('field_data_field_explore_tag', 'field_explore_tag', 'n.nid = field_explore_tag.entity_id');
   $query->leftJoin('taxonomy_term_data', 'term_data', 'field_explore_tag.field_explore_tag_tid IS NOT NULL AND field_explore_tag.field_explore_tag_tid = term_data.tid');
@@ -4115,7 +4115,7 @@ function _usanetwork_tv_shows_landing_page_explore_get_items($show_nid, $tag_id 
   $query->condition('n.type', $node_types, 'IN');
   $query->fields('n', array('nid'));
   $query->groupBy('nid');
-  $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
+  $query->join('field_data_field_show', 'field_show', 'field_show.entity_type = \'node\' AND n.nid=field_show.entity_id');
   $query->condition('field_show.field_show_target_id', $show_nid);
   if (!empty($tag_id)) {
     $query->innerJoin('field_data_field_explore_tag', 'field_explore_tag', 'n.nid = field_explore_tag.entity_id');

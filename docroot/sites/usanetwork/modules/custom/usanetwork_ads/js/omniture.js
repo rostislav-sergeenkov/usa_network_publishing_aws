@@ -13,7 +13,6 @@
     },
 
     goToUrl: function (elem) {
-      console.info(elem);
       if(elem.attr('target') == '_blank') {
       } else {
         setTimeout(function () {

@@ -178,12 +178,17 @@ footer {
     }
     li {
       float: left;
+      line-height: 1;
+      font-size: get-vw(11px, 1025);
       @include linksSeparator(get-vw(11px, 1025), get-vw(6px, 1025), get-vw(6px, 1025), $footer-link-separator);
       @include breakpoint($bp-min-1901-width) {
+        font-size: 20.4px;
         @include linksSeparator(20.4px, 11.1px, 11.1px, $footer-link-separator);
       }
       @include breakpoint($bp-768-width) {
         @include linksSeparator(8.3px, 4.5px, 4.5px, $footer-link-separator);
+        font-size: 8.3px;
+        line-height: 1.5;
       }
       &:first-child {
         padding-left: 0px;
@@ -207,6 +212,15 @@ footer {
         }
         &:hover {
           text-decoration: underline;
+        }
+        img {
+          height: get-vw(11px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            height: 20.4px;
+          }
+          @include breakpoint($bp-768-width) {
+            height: 8.3px;
+          }
         }
       }
     }

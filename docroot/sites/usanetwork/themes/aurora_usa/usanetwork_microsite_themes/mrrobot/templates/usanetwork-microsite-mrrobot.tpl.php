@@ -76,11 +76,14 @@ endif;
                     <?php foreach ($sections as $sectionNav): ?>
                       <?php if ($sectionNav['type'] != 'home'): ?>
                       <li id="nav-<?php print $sectionNav['type']; ?>" class="internal <?php print $sectionNav['type']; ?><?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
-                        <?php print $sectionNav['link']; ?>
+                        <?php print html_entity_decode($sectionNav['link']); ?>
                       </li>
                       <?php endif; ?>
                     <?php endforeach; ?>
                   <?php endif; ?>
+                  <li id="nav-dont-bother-me" class="internal dont-bother-me<?php print ('dont-bother-me' == $current_section) ? ' active' : '' ?>" data-menuanchor="dont-bother-me">
+                    <a href="#" data-menuitem="5" class="scroll-link">&lt;don't bother me&gt;</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -114,6 +117,15 @@ endif;
             </div>
           </div>
 
+        </section>
+      </div>
+      <?php endif; ?>
+
+      <?php if (!empty($section['is_last'])): // add don't bother me section ?>
+      <div id="dont-bother-me" class="section<?php print ('dont-bother-me' == $current_section) ? ' active' : ''; ?>">
+        <a name="dont-bother-me"></a>
+        <section id="dont-bother-me-content" class="clearfix fadein fadein-1s fadein-delay-1s">
+          <?php include('usanetwork-microsite-mrrobot-page-dont-bother-me.tpl.php'); ?>
         </section>
       </div>
       <?php endif; ?>

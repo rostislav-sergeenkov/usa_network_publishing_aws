@@ -83,6 +83,12 @@
         }
       }, 500);
 
+      // Remove 'Scene ' from line dot hover hints
+      setTimeout(function(){
+        $('.timeline-node .timeline-node-desc').each(function(){
+          $(this).text($(this).text().replace('Scene ', ''));
+        });
+      }, 3000);
 
       // SCROLLING
       $(window).on('scroll', function() {

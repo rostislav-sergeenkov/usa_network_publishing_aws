@@ -1871,7 +1871,7 @@ function _usanetwork_tv_shows_submenu() {
           $classes[] = 'active';
         }
         $attributes = array('class' => $classes);
-        if (!empty($show_menu_item_main_link[0]['attributes'])) {
+        if (!empty($show_menu_item_main_link[0]['attributes']['target'])) {
           $attributes += $show_menu_item_main_link[0]['attributes'];
         }
         $show_menus[$key]['main_link'] = l(html_entity_decode(drupal_ucfirst($show_menu_item_main_link[0]['title'])), $menu_item_url, array(

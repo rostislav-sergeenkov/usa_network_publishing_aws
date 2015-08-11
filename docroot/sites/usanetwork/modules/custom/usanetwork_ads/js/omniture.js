@@ -15,9 +15,10 @@
     goToUrl: function (elem) {
       console.info(elem);
       if(elem.attr('target') == '_blank') {
-        window.open(elem.attr('href'),'_blank');
       } else {
-        window.location = elem.attr('href');
+        setTimeout(function () {
+          window.location = elem.attr('href');
+        }, 500);
       }
     },
 
@@ -47,9 +48,7 @@
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
           s.bcf = function () {
-            setTimeout(function () {
-              Drupal.behaviors.omniture_tracking.goToUrl($self);
-            }, 500);
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           };
         }
         s.tl(this, 'o', 'Global Menu Click');
@@ -66,9 +65,7 @@
       s.eVar64 = name;
       if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            Drupal.behaviors.omniture_tracking.goToUrl($self);
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
       s.tl(this, 'o', 'Global SubMenu Click');
@@ -146,9 +143,7 @@
 
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            Drupal.behaviors.omniture_tracking.goToUrl($self);
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -168,9 +163,7 @@
 
       if ($self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            Drupal.behaviors.omniture_tracking.goToUrl($self);
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -190,9 +183,7 @@
 
       if ($self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            Drupal.behaviors.omniture_tracking.goToUrl($self);
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -233,9 +224,7 @@
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
         s.bcf = function () {
-          setTimeout(function () {
-            Drupal.behaviors.omniture_tracking.goToUrl($self);
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -260,9 +249,7 @@
 
       if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
         s.bcf = function () {
-          setTimeout(function () {
-            Drupal.behaviors.omniture_tracking.goToUrl($self);
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -296,9 +283,7 @@
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
         s.bcf = function () {
-          setTimeout(function () {
-            Drupal.behaviors.omniture_tracking.goToUrl($self);
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -497,7 +482,11 @@
         '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
 
               var $self = $(this),
                   sub_menu_name;

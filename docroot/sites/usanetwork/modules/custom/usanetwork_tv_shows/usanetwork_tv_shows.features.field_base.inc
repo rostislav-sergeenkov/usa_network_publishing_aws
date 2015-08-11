@@ -120,7 +120,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
   // Exported field_base: 'field_alternative_content'
   $field_bases['field_alternative_content'] = array(
     'active' => 1,
-    'cardinality' => 6,
+    'cardinality' => 10,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_alternative_content',
@@ -2335,7 +2335,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'text',
   );
-
 
   // Exported field_base: 'field_tvs_promo_items'
   $field_bases['field_tvs_promo_items'] = array(

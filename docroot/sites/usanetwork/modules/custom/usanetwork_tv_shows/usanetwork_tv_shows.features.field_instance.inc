@@ -13159,7 +13159,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-
   // Exported field_instance: 'node-tv_show-field_tvs_promo_items'
   $field_instances['node-tv_show-field_tvs_promo_items'] = array(
     'bundle' => 'tv_show',
@@ -16594,7 +16593,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Min 475x537');
   t('Min 640x560');
   t('Mobile URL');
-  t('Mobile carousel image');
   t('Nitro action name');
   t('OG Description');
   t('OG Image');

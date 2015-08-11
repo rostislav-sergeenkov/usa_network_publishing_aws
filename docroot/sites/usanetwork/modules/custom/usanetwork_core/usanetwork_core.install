@@ -1093,3 +1093,12 @@ function usanetwork_core_update_7175() {
     module_enable(array('usanetwork_movie_relation'));
   }
 }
+
+/**
+ * Enables usanetwork_related_content module.
+ */
+function usanetwork_core_update_7176() {
+  if (!module_exists('usanetwork_related_content')) {
+    module_enable(array('usanetwork_related_content'));
+  }
+}

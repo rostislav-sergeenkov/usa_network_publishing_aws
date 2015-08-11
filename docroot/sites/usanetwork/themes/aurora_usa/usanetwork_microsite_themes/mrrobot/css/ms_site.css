@@ -1,18 +1,36 @@
 /* GENERAL */
 html {
-  color: #000;
-  background-color: #CCC;
+  color: #FFF;
+  background-color: #000;
 }
 body {
-  background-color: #CCC !important;
+  background-color: #000 !important;
 }
 
 /* MAIN STRUCTURE */
 .page-node-microsite .usa-wrap {
-  background-color: #CCC;
+  background-color: #000;
+  top: -5px;
 }
 
 /* SECTIONS CONTAINERS */
+.section {
+  background-color: #000;
+}
+.section:nth-child(odd) {
+  background-color: #000;
+}
+.section:nth-child(even) {
+  background-color: #000;
+}
+section h2 {
+  color: red;
+  text-transform: none;
+}
+.section-description {
+  color: #FFF;
+}
+
 /* VIDEOS */
 #videos .header {
   background-image: none;
@@ -33,4 +51,83 @@ body {
 #character-info .section {
   background-color: transparent;
   padding: 0;
+}
+
+/* TIMELINE GALLERIES */
+.node-timeline-gallery .content {
+  background-color: #000;
+  color: #FFF;
+}
+.timelineFlat #timeline-line-left:before,
+.timelineFlat #timeline-line-right:before {
+  color: #FFF;
+}
+.timelineFlat #timeline-line-full-left .arrow:before, .timelineFlat #timeline-line-full-right .arrow:before {
+  color: limegreen;
+}
+.timelineFlat .timeline-items {
+  background-color: #222;
+}
+.timelineFlat .timeline-item h2 span {
+  color: red;
+}
+.timelineFlat .timeline-item h2 span.divider.divider-two,
+.timelineFlat .timeline-item h2 span.timeline-h2-scene-num {
+  display: none;
+}
+.timelineFlat h4.timeline-month {
+  color: #FFF;
+}
+.timelineFlat #timeline-line-full-left .title,
+.timelineFlat #timeline-line-full-right .title {
+  display: none;
+}
+.timelineFlat a.timeline-node:after:hover {
+  color: limegreen;
+}
+.timelineFlat a.timeline-node.active {
+  color: red;
+}
+.timelineFlat a.timeline-node.active:after {
+  border: 1px solid transparent;
+  background: red;
+}
+.timelineFlat .timeline-node-desc {
+  background-color: red;
+}
+.timelineFlat .timeline-node-desc:after {
+  border-top: 5px solid red;
+}
+.timelineFlat .timeline-item.active:before {
+  background-color: red;
+}
+.timelineFlat .timeline-item.active:after {
+  border-top: 5px solid red;
+}
+
+/* CHARACTERS */
+#character-infographic {
+  width: 97%;
+  height: auto;
+  text-align: center;
+  background-color: #333;
+  color: #FFF;
+  padding-top: 50%;
+  margin: 0 auto;
+}
+#character-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#character-info li {
+  top: 12px;
+}
+#character-info li,
+#character-info .character-close {
+  color: #FFF;
+}
+#character-info .character-bios-container h1,
+#character-info .character-bios-container h3 {
+  color: #FFF;
 }

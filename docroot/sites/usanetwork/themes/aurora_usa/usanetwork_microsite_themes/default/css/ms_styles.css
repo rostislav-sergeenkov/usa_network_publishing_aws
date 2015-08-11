@@ -21,6 +21,9 @@ body {
 body.page-node-microsite {
   color: #000;
 }
+.clearfix {
+  zoom: 100%;
+}
 #microsite ul {
   margin: 0;
   padding: 0;
@@ -197,7 +200,7 @@ section h2 {
   clear: both;
 }
 #microsite #sections {
-  margin: 1px 0 0;
+  margin: 0;
   padding: 0;
   background-color: #000;
 }

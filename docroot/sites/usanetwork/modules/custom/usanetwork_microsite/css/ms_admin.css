@@ -1,8 +1,11 @@
+#field-ms-section-values fieldset {
+  background-color: #EFEFEF;
+}
 #field-ms-section-values tr.section-row > td {
   position: relative;
   top: 0;
   left: 0;
-  padding-bottom: 80px;
+  padding-bottom: 58px;
 }
 /*
 #field-ms-section-values tr.section-row.open > td {
@@ -16,6 +19,24 @@
   border-width: 0;
   visibility: hidden;
 }
+#field-ms-section-values tr.section-row .field-name-field-ms-section-enabled,
+#field-ms-section-values tr.section-row .field-name-field-ms-section-type,
+#field-ms-section-values tr.section-row .field-name-field-ms-section-title {
+  float: left;
+  width: 90px;
+}
+#field-ms-section-values tr.section-row .field-name-field-ms-section-enabled {
+  margin-top: 1.8em;
+}
+#field-ms-section-values tr.section-row .field-name-field-ms-section-type {
+  width: 160px;
+}
+#field-ms-section-values tr.section-row .field-name-field-ms-section-title {
+  width: calc(100% - 250px);
+}
+.field-name-field-ms-section-text {
+  clear: left;
+}
 #field-ms-section-values tr.section-row.open .form-wrapper {
   margin: 0 0 1.5em;
   padding: 1em 0 0;
@@ -23,18 +44,49 @@
   border-width: 1px;
   visibility: visible;
 }
+#field-ms-section-values tr.section-row.open .form-wrapper.group-seo {
+  padding: 2.5em 0 0;
+}
+#field-ms-section-values tr.section-row.open .form-wrapper .fieldset-wrapper > div {
+  margin: 0;
+  padding: 2.5em 0 0;
+}
 #field-ms-section-values input[value="Remove"] {
   position: absolute;
   left: 0;
   bottom: 8px;
+  z-index: 5
 }
 .more-less-toggle {
   position: absolute;
-  bottom: 50px;
+  bottom: 22px;
   width: 96%;
   margin: 0 auto;
   text-align: center;
   cursor: pointer;
-  color: blue;
-  border-top: 1px solid blue;
+  color: #606060;
+}
+.more-less-toggle .more {
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #606060;
+  left: 100%;
+  margin-left: calc(-50% - 10px);
+}
+.more-less-toggle .less {
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #606060;
+  left: 100%;
+  margin-left: calc(-50% - 10px);
 }

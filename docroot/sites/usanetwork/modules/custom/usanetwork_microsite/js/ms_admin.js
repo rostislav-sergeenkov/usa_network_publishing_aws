@@ -11,7 +11,7 @@
     },
 
     addMoreLessToggle: function($row) {
-      $row.find(' > td:nth-child(2)').append('<div class="more-less-toggle">more</div>');
+      $row.find(' > td:nth-child(2)').append('<div class="more-less-toggle"><div class="less"></div><div class="text">more</div><div class="more"></div></div>');
     },
 
     hideAllASpotInfo: function() {
@@ -22,23 +22,38 @@
       $('.section-row-home .group-ms-aspots').show();
     },
 
+    hideAllFeaturedInfo: function() {
+      $('#field-ms-section-values .group-ms-featured').hide();
+    },
+
+    showFeaturedInfo: function() {
+      $('.section-row-home .group-ms-featured').show();
+    },
+
     showCollapsedViewAllSections: function() {
-//      $('.section-row .form-wrapper').css({'height': 0, 'visibility': 'hidden'});
       $('.field-name-field-ms-section-enabled, .field-name-field-ms-section-type, .field-name-field-ms-section-title').css({'height': 'auto', 'margin-bottom': '24px', 'visibility': 'visible'});
     },
 
     toggleFullViewSection: function(sectionRowId) {
-usa_debug('toggleFullViewSection(' + sectionRowId + ')');
-      var $sectionRow = $('#' + sectionRowId);
+      var $sectionRow = $('#' + sectionRowId),
+          offsetDirection = 1;
       if ($sectionRow.hasClass('open')) {
         $sectionRow.removeClass('open'); //.find('.form-wrapper').css({'height': 0, 'visibility': 'hidden'});
         $('.field-name-field-ms-section-enabled, .field-name-field-ms-section-type, .field-name-field-ms-section-title').css({'height': 'auto', 'margin-bottom': '24px', 'visibility': 'visible'});
-        $('.more-less-toggle').html('more');
+        $sectionRow.find('.more-less-toggle div.text').html('more');
+        $sectionRow.find('.more-less-toggle .less').hide();
+        $sectionRow.find('.more-less-toggle .more').show();
       }
       else {
+        offsetDirection = -1;
         $sectionRow.addClass('open'); //.find('.form-wrapper').css({'visibility': 'visible', 'height': 'auto'});
-        $('.more-less-toggle').html('less');
+        $sectionRow.find('.more-less-toggle div.text').html('less');
+        $sectionRow.find('.more-less-toggle .more').hide();
+        $sectionRow.find('.more-less-toggle .less').show();
       }
+      var section = document.getElementById(sectionRowId),
+        offset = section.offsetTop * offsetDirection;
+//      usa_debug('toggleFullViewSection(' + sectionRowId + ')\noffset: ' + (offset + 330) + '\nsection: ', section);
     },
 
     attach: function (context, settings) {
@@ -62,6 +77,8 @@ usa_debug('toggleFullViewSection(' + sectionRowId + ')');
       // on page load, hide unneeded info
       self.hideAllASpotInfo();
       self.showASpotInfo();
+      self.hideAllFeaturedInfo();
+      self.showFeaturedInfo();
       self.showCollapsedViewAllSections();
 
 
@@ -76,7 +93,6 @@ usa_debug('toggleFullViewSection(' + sectionRowId + ')');
       // click on more less toggle
       $('.more-less-toggle').on('click', function(){
         var sectionRowId = $(this).parents('tr.section-row').attr('id');
-//            sectionDelta = $('#' + sectionRowId + ' td.delta-order').attr('data-section-row-delta');
         self.toggleFullViewSection(sectionRowId);
       });
     }

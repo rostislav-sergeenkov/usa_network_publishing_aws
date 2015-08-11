@@ -3,6 +3,17 @@
 }
 
 /* HOME SECTION */
+#microsite #home .ad-leaderboard {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 728px;
+  height: 90px;
+  margin: 40px 0 0;
+  overflow: visible;
+  margin-left: calc(-50% - 364px);
+}
 #gracelandcatchup-home {
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost/images/graceland_catchup2015-bg-home.jpg');
   background-size: contain;

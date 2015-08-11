@@ -32,3 +32,8 @@
     </div>
   <?php endif; ?>
 </div>
+<div class="more-items more-explore show-color">
+  <?php if (!empty($show_explore_link)): ?>
+    <?php print $show_explore_link; ?>
+  <?php endif; ?>
+</div>

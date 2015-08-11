@@ -966,9 +966,9 @@ function _usanetwork_quiz_quizes_carousel() {
           'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All quizzes'),
           'show_explore_link' => !empty($explore_tag) ?
               l(t('See All @tag_name', array('@tag_name' => $explore_tag->name)),
-              'node/' . $show_id . '/explore', array('query' => array('tag' => $explore_tag->tid))) :
+              'node/' . $show_id . '/explore', array('fragment' => 'explore-landing-page-header', 'query' => array('tag' => $explore_tag->tid))) :
               l(t('Explore @show_name', array('@show_name' => $show_name)),
-                'node/' . $show_id . '/explore'),
+                'node/' . $show_id . '/explore', array('fragment' => 'explore-landing-page-header')),
         );
         return theme('usanetwork_quiz_quizes_carousel', $theme_variables);
       }

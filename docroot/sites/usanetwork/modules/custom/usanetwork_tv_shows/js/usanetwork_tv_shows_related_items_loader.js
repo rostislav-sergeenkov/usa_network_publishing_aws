@@ -77,14 +77,12 @@
       else {
         var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ nid +'/'+ start_from +'/'+ limit + additional_arguments;
       }
-
       $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
       $.ajax({
         type: 'GET',
         url: url,
         dataType: 'json',
         success: function (data) {
-
           $('.ajax-load-block .load-more-link').before(data.rendered);
           $('.ajax-load-block .load-more-link .load-more-loader').remove();
 
@@ -135,10 +133,12 @@
        * %start_from - number of items that must be ignored from the beginning
        * %limit - number of items that must be pulled
        */
-      if(!$('#footer > .region-footer').hasClass('hidden') && ($('.ajax-load-block .load-more-link a').length > 0)) {
-        $('#footer > .region-footer').addClass('hidden');
-      }
-      
+      $("#footer").once('hide-footer', function() {
+        if(!$('#footer > .region-footer').hasClass('hidden') && ($('.ajax-load-block .load-more-link a').length > 0)) {
+          $('#footer > .region-footer').addClass('hidden');
+        }
+      });
+
       $('.ajax-load-block .load-more-link a').click(function(){
         if ($(this).hasClass('disabled')){
           return false;

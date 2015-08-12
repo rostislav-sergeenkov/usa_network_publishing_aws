@@ -195,3 +195,11 @@ function usanetwork_tv_shows_update_7025() {
   field_delete_field('field_tvs_best_of_items');
   field_delete_field('field_tvs_best_of_title');
 }
+
+/**
+ * Delete unused field field_tvs_mobile_cimage.
+ */
+function usanetwork_tv_shows_update_7026() {
+
+  field_delete_field('field_tvs_mobile_cimage');
+}

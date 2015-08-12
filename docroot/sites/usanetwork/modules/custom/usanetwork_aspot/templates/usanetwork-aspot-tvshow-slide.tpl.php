@@ -28,9 +28,21 @@
       <div class="slide-content">
         <div class="meta-wrap">
           <div class="meta">
-            <div class="title_prefix aspot-draggable-element"<?php if (!empty($show_title_prefix_style['desktop'])): print ' data-style-desktop="' . $show_title_prefix_style['desktop'] . '" data-style-mobile="' . $show_title_prefix_style['mobile'] . '"'; endif; ?>><?php print $show_title_prefix; ?></div>
-            <div class="title aspot-draggable-element"<?php if (!empty($show_title_style['desktop'])): print ' data-style-desktop="' . $show_title_style['desktop'] . '" data-style-mobile="' . $show_title_style['mobile'] . '"'; endif; ?>><?php print $show_title; ?></div>
-            <div class="aspot-description aspot-draggable-element"<?php if (!empty($show_description_style['desktop'])): print ' data-style-desktop="' . $show_description_style['desktop'] . '" data-style-mobile="' . $show_description_style['mobile'] . '"'; endif; ?>><?php print $show_desc; ?></div>
+            <div class="title_prefix aspot-draggable-element"
+              <?php if (!empty($show_title_prefix_style['desktop'])): print ' data-style-desktop="' . $show_title_prefix_style['desktop'] . '" data-style-mobile="' . $show_title_prefix_style['mobile'] . '"'; endif; ?>
+              <?php if (!empty($show_title_prefix_style['width'])): print ' data-width="' . $show_title_prefix_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
+              <?php print $show_title_prefix; ?>
+            </div>
+            <div class="title aspot-draggable-element"
+              <?php if (!empty($show_title_style['desktop'])): print ' data-style-desktop="' . $show_title_style['desktop'] . '" data-style-mobile="' . $show_title_style['mobile'] . '"'; endif; ?>
+              <?php if (!empty($show_title_style['width'])): print ' data-width="' . $show_title_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
+              <?php print $show_title; ?>
+            </div>
+            <div class="aspot-description aspot-draggable-element"
+              <?php if (!empty($show_description_style['desktop'])): print ' data-style-desktop="' . $show_description_style['desktop'] . '" data-style-mobile="' . $show_description_style['mobile'] . '"'; endif; ?>
+              <?php if (!empty($show_description_style['width'])): print ' data-width="' . $show_description_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
+              <?php print $show_desc; ?>
+            </div>
             <?php if (!empty($show_timer)): ?>
               <div class="show-timer">
                 <div class="start"<?php if (!empty($show_timer['title_prefix_style'])): print ' style="' . $show_timer['title_prefix_style'] . '"'; endif; ?>>
@@ -45,14 +57,18 @@
             <?php if (!empty($cta_buttons)): ?>
               <?php $counter = 0; ?>
               <?php foreach ($cta_buttons as $cta_button): ?>
-                <div <?php print 'class="cta_button_' . $counter . ' cta-link aspot-draggable-element"' ?><?php if (!empty($cta_button['style']['desktop'])): print 'data-style-desktop="' . $cta_button['style']['desktop'] . '" data-style-mobile="' . $cta_button['style']['mobile'] . '"'; endif; ?>>
+                <div <?php print 'class="cta_button_' . $counter . ' cta-link aspot-draggable-element"' ?>
+                  <?php if (!empty($cta_button['style']['desktop'])): print 'data-style-desktop="' . $cta_button['style']['desktop'] . '" data-style-mobile="' . $cta_button['style']['mobile'] . '"'; endif; ?>
+                  <?php if (!empty($cta_button['style']['width'])): print ' data-width="' . $cta_button['style']['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
                   <a href="<?php print $cta_button['url']; ?>" class="cta-button-link show-color hover-avail" data-cta-link="CTA_LINK_<?php print $counter; ?>"><?php print $cta_button['text']; ?></a>
                 </div>
                 <?php $counter++; ?>
               <?php endforeach; ?>
             <?php endif; ?>
             <?php if (!empty($social_meter)): ?>
-              <div class="social_meter aspot-draggable-element" <?php if (!empty($social_meter_style['desktop'])): print 'data-style-desktop="' . $social_meter_style['desktop'] . '" data-style-mobile="' . $social_meter_style['mobile'] . '"'; endif; ?>>
+              <div class="social_meter aspot-draggable-element"
+                <?php if (!empty($social_meter_style['desktop'])): print 'data-style-desktop="' . $social_meter_style['desktop'] . '" data-style-mobile="' . $social_meter_style['mobile'] . '"'; endif; ?>
+                <?php if (!empty($social_meter_style['width'])): print ' data-width="' . $social_meter_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
                 <?php print $social_meter; ?>
               </div>
             <?php endif; ?>

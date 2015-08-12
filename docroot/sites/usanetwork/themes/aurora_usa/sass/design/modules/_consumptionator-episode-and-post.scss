@@ -107,9 +107,9 @@
       .episode-info-header, .post-info-header {
         @include clear();
         position: relative;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         @include breakpoint($bp-1280-width) {
-          margin-bottom: 10px;
+          margin-bottom: 34px;
         }
         @include breakpoint($bp-1024-width) {
           margin-bottom: 17px;
@@ -226,10 +226,7 @@
             position: relative;
             text-align: left;
             @include breakpoint($bp-1280-width) {
-              width: 149px;
-              margin-top: -2px;
-            }
-            @include breakpoint($bp-1280-width) {
+              margin-top: 5px;
               width: 158px;
             }
             &:after {
@@ -280,14 +277,11 @@
       .episode-info-image, .post-info-image {
         float: right;
         width: 61.1%;
-        padding: 12px 0 20px 15px;
+        padding: 0 0 20px 15px;
         background-color: #ffffff;
         margin-left: 30px;
         position: relative;
         z-index: 1;
-        @include breakpoint($bp-1280-width) {
-          padding-top: 5px;
-        }
         @include breakpoint($bp-1024-width) {
           float: none;
           width: 100%;

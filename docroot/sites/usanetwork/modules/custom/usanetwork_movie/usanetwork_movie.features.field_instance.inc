@@ -1019,9 +1019,8 @@ function usanetwork_movie_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 60,
       ),
       'follow_social' => array(

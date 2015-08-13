@@ -217,6 +217,7 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
 
   return array(
     'css' => array(
+      $module_path . '/css/jquery.bxslider.css',
       $default_theme_path . '/css/fonts.css',
       $default_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/site_nav.css',
@@ -225,9 +226,8 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $default_theme_path . '/css/ms_videos.css',
       $default_theme_path . '/css/ms_timeline.css',
       $default_theme_path . '/css/ms_characters.css',
-//      $default_theme_path . '/css/trivia.css',
       $default_theme_path . '/css/ms_quizzes.css',
-      $default_theme_path . '/css/ms_galleries.css',
+      $site_theme_path . '/css/ms_galleries.css',
       $default_theme_path . '/css/counter.css',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
       $site_theme_path . '/css/ms_site.css',
@@ -241,8 +241,8 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $default_theme_path . '/js/ms_videos.js',
       $site_theme_path . '/js/ms_characters.js',
       $default_theme_path . '/js/ms_quizzes.js',
-      $default_theme_path . '/js/ms_galleries_bxslider.js',
-      $default_theme_path . '/js/ms_gallery_carousel.js',
+      $site_theme_path . '/js/ms_galleries_bxslider.js',
+      $site_theme_path . '/js/ms_gallery_carousel.js',
       $default_theme_path . '/js/date.js',
       $site_theme_path . '/js/counter.js',
       $default_theme_path . '/js/ms_video_endcard.js',

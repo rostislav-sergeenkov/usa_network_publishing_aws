@@ -59,6 +59,7 @@ function usanetwork_timeline_gallery_field_group_info() {
       2 => 'field_show',
       3 => 'field_timeline_episode_section',
       4 => 'title',
+      5 => 'field_explore_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

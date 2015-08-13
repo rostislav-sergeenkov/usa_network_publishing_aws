@@ -1242,6 +1242,11 @@
       }
     }
   }
+  .node-type-movie & {
+    h1, h2 {
+      max-width: 100%;
+    }
+  }
   a {
     &:visited, &:active {
       color: #ffffff;

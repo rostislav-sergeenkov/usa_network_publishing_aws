@@ -120,7 +120,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
   // Exported field_base: 'field_alternative_content'
   $field_bases['field_alternative_content'] = array(
     'active' => 1,
-    'cardinality' => 6,
+    'cardinality' => 10,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_alternative_content',
@@ -1845,6 +1845,41 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_show_explore_promo'
+  $field_bases['field_show_explore_promo'] = array(
+    'active' => 1,
+    'cardinality' => 4,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_show_explore_promo',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'catchall_page' => 'catchall_page',
+        'media_gallery' => 'media_gallery',
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+        'person' => 'person',
+        'post' => 'post',
+        'quiz' => 'quiz',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
+      ),
+      'entity_type_ids' => array(
+        'file' => 'file',
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
   // Exported field_base: 'field_show_fb_page'
   $field_bases['field_show_fb_page'] = array(
     'active' => 1,
@@ -2299,28 +2334,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_tvs_mobile_cimage'
-  $field_bases['field_tvs_mobile_cimage'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_tvs_mobile_cimage',
-    'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'image',
-    'settings' => array(
-      'default_image' => 0,
-      'uri_scheme' => 'public',
-    ),
-    'translatable' => 0,
-    'type' => 'image',
   );
 
   // Exported field_base: 'field_tvs_promo_items'

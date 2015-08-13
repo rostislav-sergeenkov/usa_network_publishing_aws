@@ -402,3 +402,11 @@ address {
     font-size: 14px;
   }
 }
+.no-uppercase {
+  text-transform: none!important;
+  .caption & {
+    font-family: $avalon-book!important;
+  }
+}
+
+

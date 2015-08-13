@@ -335,11 +335,19 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
       $show_result = _usanetwork_schedule_get_show_node_info_by_title($needle);
       if (!empty($show_result)) {
         $show_result = reset($show_result);
+        $show_node = node_load($show_result->nid);
+        if (!empty($show_node)) {
+          $schedule_item->title = _usanetwork_core_get_right_case_title($show_node, $schedule_item->title);
+        }
         $schedule_item->nid = $show_result->nid;
         continue;
       }
       $show_nid = _usanetwork_tv_schedule_find_show_by_title($schedule_item->show_title);
       if (!empty($show_nid)) {
+        $show_node = node_load($show_nid);
+        if (!empty($show_node)) {
+          $schedule_item->title = _usanetwork_core_get_right_case_title($show_node, $schedule_item->title);
+        }
         $schedule_item->nid = $show_nid;
         continue;
       }

@@ -37,7 +37,7 @@ function usanetwork_post_metatag_export_default() {
       'og:image' => array(
         'value' => '[node:field_post_cover]',
       ),
-      'twitter:image' => array(
+      'twitter:image:src' => array(
         'value' => '[node:field_post_cover]',
       ),
     ),

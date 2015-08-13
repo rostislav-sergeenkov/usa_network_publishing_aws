@@ -765,25 +765,29 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
     'show_title_prefix_style' => isset($draggable_data->data->aspot_elements->title_prefix)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->title_prefix),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title_prefix)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title_prefix),
+        'width' => $draggable_data->data->aspot_elements->title_prefix->width,
       )
       : FALSE,
     'show_title_style' => isset($draggable_data->data->aspot_elements->title)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->title),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title),
+        'width' => $draggable_data->data->aspot_elements->title->width,
       )
       : FALSE,
     'show_description_style' => isset($draggable_data->data->aspot_elements->aspot_description)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->aspot_description),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->aspot_description)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->aspot_description),
+        'width' => $draggable_data->data->aspot_elements->aspot_description->width,
       )
       : FALSE,
     'social_meter_style' => isset($draggable_data->data->aspot_elements->social_meter)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->social_meter),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->social_meter)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->social_meter),
+        'width' => $draggable_data->data->aspot_elements->social_meter->width,
       )
       : FALSE,
     'show_image_bg_offset' => !empty($draggable_data->data->aspot_elements->aspot_offset_percent->shiftPercent)
@@ -920,25 +924,29 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
     'show_title_prefix_style' => isset($draggable_data->data->tvs_aspot_elements->title_prefix)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title_prefix),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title_prefix)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title_prefix),
+        'width' => $draggable_data->data->tvs_aspot_elements->title_prefix->width,
       )
       : FALSE,
     'show_title_style' => isset($draggable_data->data->tvs_aspot_elements->title)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title),
+        'width' => $draggable_data->data->tvs_aspot_elements->title->width,
       )
       : FALSE,
     'show_description_style' => isset($draggable_data->data->tvs_aspot_elements->aspot_description)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->aspot_description),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->aspot_description)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->aspot_description),
+        'width' => $draggable_data->data->tvs_aspot_elements->aspot_description->width,
       )
       : FALSE,
     'social_meter_style' => isset($draggable_data->data->tvs_aspot_elements->social_meter)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->social_meter),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->social_meter)
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->social_meter),
+        'width' => $draggable_data->data->tvs_aspot_elements->social_meter->width,
       )
       : FALSE,
     'sponsored' => isset($sponsored) ? $sponsored : FALSE,
@@ -983,7 +991,7 @@ function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
   $output .= 'top: ';
   $output .= isset($draggable_data_element->percentY) ? $draggable_data_element->percentY . '%;' : 'auto; ';
   $output .= 'width: ';
-  $output .= isset($draggable_data_element->width) ? $draggable_data_element->width . '%;' : 'auto;';
+  $output .= isset($draggable_data_element->width) ? $draggable_data_element->width . 'vw;' : 'auto;';
   return $output;
 }
 
@@ -997,7 +1005,7 @@ function _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_eleme
   $output .= 'top: ';
   $output .= isset($draggable_data_element->percentMY) ? $draggable_data_element->percentMY . '%;' : 'auto; ';
   $output .= 'width: ';
-  $output .= isset($draggable_data_element->width) ? $draggable_data_element->width. '%;' : 'auto;';
+  $output .= isset($draggable_data_element->widthM) ? $draggable_data_element->widthM. 'vw;' : 'auto;';
   return $output;
 }
 
@@ -1013,7 +1021,8 @@ function _usanetwork_aspot_get_draggable_cta_buttons($aspot_gi_cta_elements, $dr
           'text' => $cta_element['title'],
           'style' => array(
             'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data_cta->$cta_draggable_name),
-            'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_cta->$cta_draggable_name)
+            'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data_cta->$cta_draggable_name),
+            'width' => $draggable_data_cta->$cta_draggable_name->width,
           )
         );
       }
@@ -1094,6 +1103,7 @@ function _usanetwork_aspot_get_draggable_ui_default_settings_element() {
     'invertMX' => NULL,
     'invertMY' => NULL,
     'width' => NULL,
+    'widthM' => NULL,
   );
 }
 
@@ -1145,7 +1155,7 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
 
     foreach ($cta_buttons as $cta_button_index => $cta_button) {
       $new_button_id = 'cta_button_' . $cta_button_index;
-      $new_button_title = 'CTA ' . $cta_button['title'];
+      $new_button_title = $cta_button['title'];
       $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_gi, $language, 'cta_button');
 
       if (isset($aspot_elements[$new_button_id])) {
@@ -1154,7 +1164,7 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
       }
       else {
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
-          'value' => 'CTA ' . $new_button_title,
+          'value' => $new_button_title,
           'enabled' => $new_button_enabled,
           'display' => 'none',
           'percentX' => 'auto',
@@ -1166,6 +1176,7 @@ function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, 
           'invertMX' => NULL,
           'invertMY' => NULL,
           'width' => NULL,
+          'widthM' => NULL,
         ));
       }
     }
@@ -1181,7 +1192,7 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
 
     foreach ($cta_buttons as $cta_button_index => $cta_button) {
       $new_button_id = 'cta_button_' . $cta_button_index;
-      $new_button_title = 'CTA ' . $cta_button['title'];
+      $new_button_title = $cta_button['title'];
       $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_tgi, $language, 'cta_button');
 
       if (isset($aspot_elements[$new_button_id])) {
@@ -1190,7 +1201,7 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
       }
       else {
         $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
-          'value' => 'CTA ' . $new_button_title,
+          'value' => $new_button_title,
           'enabled' => $new_button_enabled,
           'display' => 'none',
           'percentX' => 'auto',
@@ -1202,6 +1213,7 @@ function _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_node, $langua
           'invertMX' => NULL,
           'invertMY' => NULL,
           'width' => NULL,
+          'widthM' => NULL,
         ));
       }
     }

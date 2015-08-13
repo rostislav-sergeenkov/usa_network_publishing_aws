@@ -1,20 +1,132 @@
+var homeAspot, showAspot;
+
 (function ($) {
 
   Drupal.behaviors.usanetwork_aspot_giui = {
 
-    initAspot: function (prefix, block, second_block, draggableId) {
+    defaultSettings: {
+      aspot_elements: {
+        title_prefix: {
+          dataRel: "title_prefix",
+          alignLeft: 3,
+          alignLeftM: 3,
+          left: '78px',
+          top: '249px',
+          leftM: '37px',
+          topM: '254px'
+        },
+        title: {
+          dataRel: "title",
+          alignLeft: 0,
+          alignLeftM: 0,
+          left: '75px',
+          top: '275px',
+          leftM: '34px',
+          topM: '281px'
+        },
+        aspot_description: {
+          dataRel: "aspot_description",
+          alignLeft: 3,
+          alignLeftM: 3,
+          left: '78px',
+          top: '353px',
+          leftM: '37px',
+          topM: '353px'
+        },
+        cta_button_0: {
+          dataRel: "cta_button_0",
+          alignLeft: 4,
+          alignLeftM: -1,
+          left: '79px',
+          top: '409px',
+          leftM: '36px',
+          topM: '402px'
+        },
+        cta_button_1: {
+          dataRel: "cta_button_1",
+          alignLeft: 4,
+          alignLeftM: -1,
+          left: '79px',
+          top: '484px',
+          leftM: '36px',
+          topM: '462px'
+        },
+        cta_button_2: {
+          dataRel: "cta_button_2",
+          alignLeft: 409,
+          alignLeftM: -1,
+          left: '335px',
+          top: '484px',
+          leftM: '36px',
+          topM: '505px'
+        }
+      },
+      tvs_aspot_elements: {
+        title_prefix: {
+          dataRel: "title_prefix",
+          alignLeft: 3,
+          alignLeftM: 2,
+          left: '43px',
+          top: '268px',
+          leftM: '56px',
+          topM: '285px'
+        },
+        title: {
+          dataRel: "title",
+          alignLeft: 0,
+          alignLeftM: 0,
+          left: '40px',
+          top: '291px',
+          leftM: '54px',
+          topM: '314px'
+        },
+        aspot_description: {
+          dataRel: "aspot_description",
+          alignLeft: 6,
+          alignLeftM: 4,
+          left: '46px',
+          top: '364px',
+          leftM: '58px',
+          topM: '382px'
+        },
+        cta_button_0: {
+          dataRel: "cta_button_0",
+          alignLeft: 5,
+          alignLeftM: 1,
+          left: '45px',
+          top: '416px',
+          leftM: '55px',
+          topM: '441px'
+        },
+        cta_button_1: {
+          dataRel: "cta_button_1",
+          alignLeft: 5,
+          alignLeftM: 1,
+          left: '45px',
+          top: '485px',
+          leftM: '55px',
+          topM: '495px'
+        }
+      }
+    },
 
-      if(draggableId != ''){
+    initAspot: function (prefix, block, second_block, draggableId, pageName) {
+
+      if (draggableId != '') {
         draggableId += '-'
       }
 
       var backgroundPreviewingContainer = $('#edit-field-aspot-preview-' + prefix + 'bg-offset'),
           backgroundPreviewingBlock = $('<div id="edit-field-aspot-preview-' + prefix + 'bg-offset-preview" class="draggable-background desktop"></div>'),
           carouselElementPreviewingContainer = $('#edit-field-aspot-enabled-' + prefix + 'gi'),
+          PreviewingBlockWrapper = $('<div id="preview-' + prefix + 'gi-wrapper" class="wrapper-desktop"></div>'),
+          PreviewingBlockWrapperMobile = $('<div id="preview-' + prefix + 'gi-wrapper-mobile" class="wrapper-mobile"></div>'),
           carouselElementPreviewingBlock = $('<div id="edit-field-aspot-enabled-' + prefix + 'gi-preview" class="draggable-area desktop"></div>'),
           carouselElementPreviewingBlockMobile = $('<div id="edit-field-aspot-enabled-' + prefix + 'gi-preview-mobile" class="draggable-area mobile"></div>'),
           aspotElementsCheckboxes = $('#edit-field-aspot-enabled-' + prefix + 'gi-und input.form-checkbox'),
-          draggableElements = [];
+          nameOffset = '<h2>Peek-ahead strip</h2>',
+          draggableElements = [],
+          defaultSettings = Drupal.behaviors.usanetwork_aspot_giui.defaultSettings;
 
       var bg_offset_value, bg_offset_image_url, bg_offset_image_url_mobile, aspot_elements;
 
@@ -75,12 +187,38 @@
         grid: [1, 1],
         appendTo: '#edit-field-aspot-enabled-gi',
         containment: "parent",
+        //snap: true,
+        cursor: "move",
+        zIndex: 100,
         stop: function () {
           usanetwork_aspot_giui_fill_draggable_items_input();
           usanetwork_aspot_giui_lock_ajax_form_submits();
         }
       };
-      block.find('.aspot-draggable-element').draggable(draggableOptions).css("position", "absolute");
+      block.find('.aspot-draggable-element')
+          .draggable(draggableOptions)
+          .css("position", "absolute");
+      block.find('[data-rel=title_prefix]').resizable({
+        containment: "parent"
+        /*
+         ui.helper
+         ui.originalPosition
+         ui.originalSize
+         ui.position
+         ui.size
+         */
+
+        //start: function(e, ui) {},
+        //resize: function(e, ui) {},
+        //stop: function(e, ui) {}
+      });
+      block.find('[data-rel=title]').resizable({
+        containment: "parent"
+      });
+
+      block.find('[data-rel=aspot_description]').resizable({
+        containment: "parent"
+      });
 
       /**
        * Enables draggable element (connection of checkbox and element visibility).
@@ -111,8 +249,8 @@
           block.find('.aspot-draggable-cta-button').hide();
         }
 
-        $('#aspot-draggable-' + draggableId  + inputElementName).hide();
-        $('#mobile-aspot-draggable-' + draggableId  + inputElementName).hide();
+        $('#aspot-draggable-' + draggableId + inputElementName).hide();
+        $('#mobile-aspot-draggable-' + draggableId + inputElementName).hide();
 
       }
 
@@ -121,6 +259,11 @@
        *
        */
 
+      function vw(target, bp) {
+        var $vw_context = bp * 0.01;
+        return target / $vw_context + 'vw';
+      }
+
       function usanetwork_aspot_giui_fill_draggable_items_input() {
 
         var elementsMeta = {};
@@ -128,6 +271,10 @@
         $.each(draggableElements, function (index, itemElement) {
 
           var mobileItemElement = carouselElementPreviewingBlockMobile.find($('#mobile-' + itemElement.attr('id')));
+          //var fieldWidth = Math.abs(itemElement.css('width').replace('px', '')).toFixed(2);
+          //var fieldWidthM = Math.abs(mobileItemElement .css('width').replace('px', '')).toFixed(2);
+          var fieldWidth = itemElement.innerWidth();
+          var fieldWidthM = mobileItemElement.innerWidth();
 
           //desktop
           var mapCX = Math.round(carouselElementPreviewingBlock.width() / 2);
@@ -138,6 +285,8 @@
           var invertY = currentElementCY > mapCY ? true : false;
           var widthPercent = (parseInt(itemElement.css('left')) / carouselElementPreviewingBlock.width() * 100).toFixed(1);
           var heightPercent = (parseInt(itemElement.css('top')) / carouselElementPreviewingBlock.height() * 100).toFixed(1);
+          var fieldWidthPercent = (fieldWidth / carouselElementPreviewingBlock.width() * 100).toFixed(1);
+
           if (widthPercent < 0) {
             widthPercent = 0;
           }
@@ -153,6 +302,8 @@
           var invert_mY = currentElement_mCY > map_mCY ? true : false;
           var widthPercent_m = Math.round(parseInt(mobileItemElement.css('left')) / carouselElementPreviewingBlockMobile.width() * 100).toFixed(1);
           var heightPercent_m = Math.round(parseInt(mobileItemElement.css('top')) / carouselElementPreviewingBlockMobile.height() * 100).toFixed(1);
+          var fieldWidthPercentM = (fieldWidthM / carouselElementPreviewingBlockMobile.width() * 100).toFixed(1);
+
           if (widthPercent_m < 0) {
             widthPercent_m = 0;
           }
@@ -160,14 +311,21 @@
             heightPercent_m = 0;
           }
 
+          if (itemElement.hasClass('aspot-draggable-cta-button')) {
+            fieldWidthPercent = 'auto';
+            fieldWidthPercentM = 'auto';
+          }
+
           elementsMeta[itemElement.data('rel')] = {
             'elementId': itemElement.attr('id'),
             'dataRel': itemElement.data('rel'),
-            'display' : itemElement.css('display'),
+            'display': itemElement.css('display'),
             'left': itemElement.css('left'),
             'top': itemElement.css('top'),
+            'width': fieldWidthPercent,
             'leftM': mobileItemElement.css('left'),
             'topM': mobileItemElement.css('top'),
+            'widthM': fieldWidthPercentM,
             'percentX': widthPercent,
             'percentY': heightPercent,
             'percentMX': widthPercent_m,
@@ -178,7 +336,7 @@
             'invertMY': invert_mY
           };
 
-          if(block.attr('id') == ('edit-group_usa_aspot_ui')){
+          if (block.attr('id') == ('edit-group_usa_aspot_ui')) {
 
             //offset
             var value = backgroundPreviewingBlock.css('backgroundPosition').split(' '),
@@ -192,9 +350,9 @@
               offset_percent_X = ((parseInt(offset_px_X) / imgWidth * 100) / 0.9).toFixed(2);
             }
 
-            if(offset_percent_X < 0 && offset_percent_X < -100) {
+            if (offset_percent_X < 0 && offset_percent_X < -100) {
               offset_percent_X = 0;
-            } else if(offset_percent_X > 0) {
+            } else if (offset_percent_X > 0) {
               offset_percent_X = 0;
             }
 
@@ -221,13 +379,27 @@
       function usanetwork_aspot_giui_setup_draggable_elements() {
         var draggableElementsObject = document.getElementById('edit-field-aspot-enabled-' + prefix + 'gi-preview');
         var draggableElementsObjectMobile = document.getElementById('edit-field-aspot-enabled-' + prefix + 'gi-preview-mobile');
+
         if ((draggableElementsObject == null) && (draggableElementsObjectMobile == null)) {
-          carouselElementPreviewingContainer.prepend(carouselElementPreviewingBlock);
-          carouselElementPreviewingContainer.prepend(carouselElementPreviewingBlockMobile);
+          carouselElementPreviewingContainer.prepend(PreviewingBlockWrapper.append(carouselElementPreviewingBlock));
+          carouselElementPreviewingContainer.prepend(PreviewingBlockWrapperMobile.append(carouselElementPreviewingBlockMobile));
         } else {
           carouselElementPreviewingBlock = $('#edit-field-aspot-enabled-' + prefix + 'gi-preview');
           carouselElementPreviewingBlockMobile = $('#edit-field-aspot-enabled-' + prefix + 'gi-preview-mobile');
         }
+
+        carouselElementPreviewingBlock = $('#edit-field-aspot-enabled-' + prefix + 'gi-preview');
+        carouselElementPreviewingBlockMobile = $('#edit-field-aspot-enabled-' + prefix + 'gi-preview-mobile');
+
+        // add title for draggable aria
+        carouselElementPreviewingBlock
+            .before('<h2>' + pageName + ' Desktop Version</h2>')
+            .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>');
+        carouselElementPreviewingBlockMobile
+            .before('<h2>' + pageName + ' Mobile Version</h2>')
+            .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>'
+        );
+
         var draggableElementsData = Object.keys(aspot_elements);
         // At the beginning when it's debugging some deprecated elements could presents in view. All the
         // deprecated elements must be removed. This function only for early stage of development but can
@@ -240,7 +412,7 @@
               draggableElementMobile = null;
           if (draggableElementsObject == null) {
             draggableElement = $('<div id="' + draggableElementId + '" class="aspot-draggable-element" data-rel="' +
-            itemElement + '">' + aspot_elements[itemElement].value + '</div>');
+                itemElement + '">' + aspot_elements[itemElement].value + '</div>');
             if (usanetwork_aspot_giui_is_cta_element(itemElement)) {
               draggableElement.addClass('aspot-draggable-cta-button');
             }
@@ -259,6 +431,11 @@
           if (aspot_elements[itemElement].top) {
             draggableElement.css({
               'top': aspot_elements[itemElement].top
+            });
+          }
+          if (aspot_elements[itemElement].width) {
+            draggableElement.css({
+              'width': aspot_elements[itemElement].width + '%'
             });
           }
 
@@ -300,6 +477,11 @@
         if (aspot_elements[itemElement].topM) {
           draggableElementMobile.css({
             'top': aspot_elements[itemElement].topM
+          });
+        }
+        if (aspot_elements[itemElement].widthM) {
+          draggableElementMobile.css({
+            'width': aspot_elements[itemElement].widthM + '%'
           });
         }
       }
@@ -344,8 +526,8 @@
         var backgroundPreviewObject = document.getElementById('edit-field-aspot-preview-' + prefix + 'bg-offset-preview');
         if (backgroundPreviewObject == null) {
           backgroundPreviewingContainer.prepend(backgroundPreviewingBlock);
-        }
-        else {
+          backgroundPreviewingContainer.prepend(nameOffset);
+        } else {
           backgroundPreviewingBlock = $('#edit-field-aspot-preview-' + prefix + 'bg-offset-preview');
         }
         backgroundPreviewingContainer.find('input[type="number"]').val(bg_offset_value);
@@ -367,18 +549,121 @@
 
           var bg_offset = $(this).val();
 
-          if(bg_offset < 0 && bg_offset < -2592) {
+          if (bg_offset < 0 && bg_offset < -2592) {
             $(this).val(-2592);
-          } else if(bg_offset > 0) {
+          } else if (bg_offset > 0) {
             $(this).val(0);
           }
 
           backgroundPreviewingBlock.css({
-            'background-position': $(this).val()+ 'px 0px'
+            'background-position': $(this).val() + 'px 0px'
           });
           usanetwork_aspot_giui_fill_draggable_items_input();
         });
       }
+
+      // set default positions
+      function setDefaultPositions(container) {
+
+        var el = container.find('.aspot-draggable-element'),
+            containerClass = container.attr('class'),
+            self, elName, settingsAspot;
+
+        // check section
+        if (block.attr('id') === 'edit-group_usa_aspot_ui') {
+          settingsAspot = defaultSettings.aspot_elements;
+        } else if (block.attr('id') === 'edit-group_usa_tv_aspot_ui') {
+          settingsAspot = defaultSettings.tvs_aspot_elements;
+        }
+
+        $.each(el, function (index, itemElement) {
+
+          self = $(itemElement);
+          elName = self.data('rel');
+
+          if (settingsAspot[elName] === undefined) {
+            return;
+          }
+
+          if (containerClass === 'wrapper-mobile') {
+            self.css({
+              left: settingsAspot[elName].leftM,
+              top: settingsAspot[elName].topM
+            })
+          } else if (containerClass === 'wrapper-desktop') {
+            self.css({
+              left: settingsAspot[elName].left,
+              top: settingsAspot[elName].top
+            })
+          }
+        });
+
+        // set positions
+        usanetwork_aspot_giui_fill_draggable_items_input();
+      }
+
+      // set align To Title
+      function setAlignToTitle(container) {
+
+        var el = container.find('.aspot-draggable-element'),
+            containerClass = container.attr('class'),
+            titleLeft = Math.abs(container.find('[data-rel=title]').css('left').replace('px', '')),
+            self, elName, settingsAspot;
+
+        // check section
+        if (block.attr('id') === 'edit-group_usa_aspot_ui') {
+          settingsAspot = defaultSettings.aspot_elements;
+        } else if (block.attr('id') === 'edit-group_usa_tv_aspot_ui') {
+          settingsAspot = defaultSettings.tvs_aspot_elements;
+        }
+
+        $.each(el, function (index, itemElement) {
+
+          self = $(itemElement);
+          elName = self.data('rel');
+
+          if (elName === 'aspot_offset_percent' || elName === 'social_meter' || elName === 'title') {
+            return;
+          }
+
+          if (containerClass === 'wrapper-mobile') {
+            self.css({
+              left: titleLeft + settingsAspot[elName].alignLeftM + 'px'
+            });
+          } else if (containerClass === 'wrapper-desktop') {
+            self.css({
+              left: titleLeft + settingsAspot[elName].alignLeft + 'px'
+            });
+          }
+        });
+
+        // set positions
+        usanetwork_aspot_giui_fill_draggable_items_input();
+      }
+
+      // default settings for draggable elements on cklick
+      carouselElementPreviewingContainer.find('.buttons-wrapper .button').on('click', function () {
+
+        var self = $(this), container, settingsAspot;
+
+        if (self.closest('.wrapper-mobile').length > 0) {
+          container = self.closest('.wrapper-mobile');
+        } else if (self.closest('.wrapper-desktop').length > 0) {
+          container = self.closest('.wrapper-desktop');
+        }
+
+        // check data attribute
+        if (self.data('button') === 'position') {
+          setDefaultPositions(container);
+        } else if (self.data('button') === 'align') {
+          setAlignToTitle(container);
+        }
+
+      });
+
+      return {
+        setPosition: usanetwork_aspot_giui_fill_draggable_items_input
+      };
     },
     attach: function (context, settings) {
 
@@ -386,12 +671,14 @@
           showPrefiksId = 't',
           homeDraggeblePrefix = '',
           showDraggeblePrefix = 'tv_show',
+          homePage = 'Homepage',
+          showPage = 'TV Show',
           homeUi = $('#edit-group_usa_aspot_ui'),
           showUi = $('#edit-group_usa_tv_aspot_ui');
 
       // init aspot
-      var homeAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(homePrefixId, homeUi, showUi, homeDraggeblePrefix);
-      var showAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(showPrefiksId, showUi, homeUi, showDraggeblePrefix);
+      homeAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(homePrefixId, homeUi, showUi, homeDraggeblePrefix, homePage);
+      showAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(showPrefiksId, showUi, homeUi, showDraggeblePrefix, showPage);
 
       $('#usanetwork-aspot-node-form').submit(function () {
 
@@ -403,26 +690,26 @@
             tvs_aspot_elements = Drupal.settings.giui_settings.tvs_aspot_elements,
             homeUiPositionsVal, showUiPositionsVal;
 
-        if((homeUiPositions == '') && (showUiPositions == '')){
+        if ((homeUiPositions == '') && (showUiPositions == '')) {
           headInput.val(headTextarea.text());
         } else {
 
-          if(homeUiPositions != '') {
+          if (homeUiPositions != '') {
             homeUiPositionsVal = JSON.parse(homeUiPositions);
           } else {
             homeUiPositionsVal = getParams(aspot_elements);
           }
 
-          if(showUiPositions != '') {
+          if (showUiPositions != '') {
             showUiPositionsVal = JSON.parse(showUiPositions);
           } else {
             showUiPositionsVal = getParams(tvs_aspot_elements);
           }
 
           var myData = {
-            data : {
-              aspot_elements : homeUiPositionsVal,
-              tvs_aspot_elements : showUiPositionsVal
+            data: {
+              aspot_elements: homeUiPositionsVal,
+              tvs_aspot_elements: showUiPositionsVal
             }
           };
           headInput.val(JSON.stringify(myData));
@@ -437,7 +724,7 @@
 
           var name = itemElem.dataRel;
 
-          if(name === 'aspot_offset_percent'){
+          if (name === 'aspot_offset_percent') {
             dataPosition[name] = {
               "shiftPercent": itemElem.shiftPercent
             }
@@ -445,11 +732,13 @@
             dataPosition[name] = {
               "elementId": itemElem.elementId,
               "dataRel": itemElem.dataRel,
-              "display" : itemElem.display,
+              "display": itemElem.display,
               "left": itemElem.left,
               "top": itemElem.top,
+              'width': itemElem.width,
               "leftM": itemElem.leftM,
               "topM": itemElem.topM,
+              'widthM': itemElem.widthM,
               "percentX": itemElem.percentX,
               "percentY": itemElem.percentY,
               "percentMX": itemElem.percentMX,

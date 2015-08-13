@@ -12,6 +12,15 @@
       false;
     },
 
+    goToUrl: function (elem) {
+      if(elem.attr('target') == '_blank') {
+      } else {
+        setTimeout(function () {
+          window.location = elem.attr('href');
+        }, 500);
+      }
+    },
+
     //----------- redesign ---------------
 
     // main menu elem click
@@ -38,9 +47,7 @@
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
           s.bcf = function () {
-            setTimeout(function () {
-              window.location = $self.attr('href');
-            }, 500);
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           };
         }
         s.tl(this, 'o', 'Global Menu Click');
@@ -57,9 +64,7 @@
       s.eVar64 = name;
       if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
       s.tl(this, 'o', 'Global SubMenu Click');
@@ -137,9 +142,7 @@
 
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -159,9 +162,7 @@
 
       if ($self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -181,9 +182,7 @@
 
       if ($self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -201,16 +200,17 @@
       //s.prop10 = show_name;
 
       if (typeof s_gi != 'undefined') {
+        s.linkTrackEvents = s.events = 'event51';
         s.linkTrackVars = 'events,prop4,prop10';
         s.prop4 = show_name + ' : Home Page Show Card';
         s.prop10 = show_name;
         void (s.t());
       }
 
-      s.linkTrackEvents = s.events = 'event51';
-      s.prop4 = s.prop10 = '';
-      s.tl(this, 'o', 'Home Page Show Card Click');
-      s.manageVars('clearVars', s.linkTrackVars, 1);
+
+      //s.prop4 = s.prop10 = '';
+      //s.tl(this, 'o', 'Home Page Show Card Click');
+      //s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
     showCardPromoClick: function ($self, name, prop4, prop10) {
@@ -223,9 +223,7 @@
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -250,9 +248,7 @@
 
       if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -286,9 +282,7 @@
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -498,7 +492,6 @@
 
     attach: function (context, settings) {
 
-      console.info()
       if (typeof s != 'object') {
         return;
       }
@@ -514,7 +507,11 @@
         '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
 
               var $self = $(this),
                   sub_menu_name;
@@ -692,15 +689,18 @@
 
               if ($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-now-and-next').length > 0) {
 
-                paneTitle = $self.closest('.node-usanetwork-promo').find('h2').text().trim();
+                paneTitle = $self.closest('.node-usanetwork-promo').find('h2 a').text().trim();
                 itemName = $self.closest('.node-usanetwork-promo').find('.title').text().trim();
 
                 if ($self.hasClass('live-icon')) {
+                  console.info(1);
                   sub_menu_name = $self.text().trim();
                 } else if ($self.data('name') === 'description' || $self.data('name') === 'reminder') {
+                  console.info(2);
                   name = $self.data('name');
                   sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
                 } else {
+                  console.info(3);
                   sub_menu_name = $self.text();
                 }
 

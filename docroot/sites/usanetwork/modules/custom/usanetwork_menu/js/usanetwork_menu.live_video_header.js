@@ -22,7 +22,7 @@
               headerBlock.find('.info-tab .asset-img img').attr('src' , on_now_vars.episode.image_url);
               headerBlock.find('.info-tab .caption').text(on_now_vars.episode.video_type);
               headerBlock.find('.info-tab .title').text(on_now_vars.episode.title);
-              var additional = '<span>S' + on_now_vars.episode.season_number + ' episode ' + on_now_vars.episode.episode_number + '</span> ' + on_now_vars.episode.running_time;
+              var additional = on_now_vars.episode.additional + ' ' + on_now_vars.episode.running_time;
               headerBlock.find('.info-tab .additional').html(additional);
               headerBlock.find('.info-tab .description').text(on_now_vars.episode.description);
               $('body').addClass(on_now_vars.episode.episode_class);

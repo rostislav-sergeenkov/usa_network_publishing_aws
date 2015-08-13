@@ -112,6 +112,9 @@
 
   .meta-wrap {
     position: static;
+    .aspot-draggable-element {
+      box-sizing: border-box;
+    }
     .title_prefix, .start {
       color: #ffffff;
       font-family: $tex-gyreschola-italic;
@@ -215,6 +218,22 @@
     }
     .cta-link {
       position: relative;
+      &:not(.cta_button_0){
+        a {
+          background: none!important;
+        }
+      }
+      &.cta_button_0 {
+        a {
+          padding: 1.4vw 4.5vw 1.4vw 3.5vw;
+          @include breakpoint($bp-min-2500-width) {
+            padding: 35px 112.3px 35px 87.5px;
+          }
+          @include breakpoint($bp-640-width) {
+            padding: 1.4vw 6.5vw 1.4vw 3.5vw;
+          }
+        }
+      }
       a {
         color: #ffffff;
         display: block;
@@ -222,17 +241,17 @@
         font-size: 1.27vw;
         letter-spacing: 0.1em;
         line-height: 1.8;
-        padding: 1.4vw 4.5vw 1.4vw 3.5vw;
+        padding: 0 4.5vw 0 0;
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
         @include breakpoint($bp-min-2500-width) {
           font-size: 31.74px;
-          padding: 35px 112.3px 35px 87.5px;
+          padding: 0 112.3px 0 0;
         }
         @include breakpoint($bp-640-width) {
           font-size: 2.7vw;
-          padding: 1.4vw 6.5vw 1.4vw 3.5vw;
+          padding: 0 6.5vw 0 0;
         }
         &:after {
           color: #ffffff;

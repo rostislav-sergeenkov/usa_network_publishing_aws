@@ -13,6 +13,45 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'explore_landing';
+  $context->description = 'Show Explore Landing Page';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/explore' => 'node/*/explore',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_lmb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_lmb',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_list' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_list',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Explore Landing Page');
+  t('show');
+  $export['explore_landing'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'consumpt_post_node';
   $context->description = '';
   $context->tag = 'node';

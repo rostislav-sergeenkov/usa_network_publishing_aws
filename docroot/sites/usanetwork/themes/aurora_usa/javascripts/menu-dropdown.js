@@ -204,7 +204,7 @@
               index = $(".tab .no-refresh").index(tab),
               animation_speed = 350;
 
-          if (typeof s === 'object') {
+          if (Drupal.behaviors.omniture_tracking) {
             Drupal.behaviors.omniture_tracking.mainMenuTabs(tab);
           }
 
@@ -374,7 +374,7 @@
         // Positioning sticky header and photo/video filters, if the page was reloaded.
         setTimeout(function() {
           _self.stickyHeader(submenuOffsetTop, $submenu);
-          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
+          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
             _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
         }, 500);
@@ -391,7 +391,7 @@
           clearTimeout(timer_id);
           timer_id = setTimeout(function() {
             _self.stickyHeader(submenuOffsetTop, $submenu);
-            if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
+            if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
               _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
           }, 300);
@@ -423,7 +423,7 @@
 
         $(window).on('scroll', function (e) {
           _self.stickyHeader(submenuOffsetTop, $submenu);
-          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
+          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
             _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
 

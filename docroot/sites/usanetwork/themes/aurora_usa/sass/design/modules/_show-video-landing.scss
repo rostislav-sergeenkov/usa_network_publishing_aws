@@ -183,6 +183,11 @@
                 color: #ffffff;
                 border-width: 0;
               }
+              @include  breakpoint($bp-768-width) {
+                span {
+                  color: $gray-dark-darker;
+                }
+              }
             }
           }
         }

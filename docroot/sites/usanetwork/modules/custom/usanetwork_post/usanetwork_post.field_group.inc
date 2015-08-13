@@ -28,6 +28,7 @@ function usanetwork_post_field_group_info() {
       2 => 'field_content_tags',
       3 => 'field_contributor',
       4 => 'field_media_gallery',
+      5 => 'field_usa_css',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -62,8 +63,7 @@ function usanetwork_post_field_group_info() {
       5 => 'field_summary',
       6 => 'field_sub_title',
       7 => 'title',
-      8 => 'group_blog_display_author',
-      9 => 'group_blog_displaying_author',
+      8 => 'group_blog_displaying_author',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

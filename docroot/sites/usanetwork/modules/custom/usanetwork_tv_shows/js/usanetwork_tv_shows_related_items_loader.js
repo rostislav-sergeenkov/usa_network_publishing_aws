@@ -46,6 +46,11 @@
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
               + $('.ajax-load-block').data('sorting-order');
             break;
+          case 'explore-landing':
+            service_name = 'usanetwork-explore-landing';
+            additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
+              + $('.ajax-load-block').data('sorting-order');
+            break;
           case 'videos-landing':
             service_name = 'videos-landing';
             additional_arguments = '/' + $('.ajax-load-block').data('filter-tid') + '/'
@@ -130,9 +135,11 @@
        * %start_from - number of items that must be ignored from the beginning
        * %limit - number of items that must be pulled
        */
-      if(!$('#footer > .region-footer').hasClass('hidden') && ($('.ajax-load-block .load-more-link a').length > 0)) {
-        $('#footer > .region-footer').addClass('hidden');
-      }
+      $("#footer").once('hide-footer', function() {
+        if(!$('#footer > .region-footer').hasClass('hidden') && ($('.ajax-load-block .load-more-link a').length > 0)) {
+          $('#footer > .region-footer').addClass('hidden');
+        }
+      });
       
       $('.ajax-load-block .load-more-link a').click(function(){
         if ($(this).hasClass('disabled')){

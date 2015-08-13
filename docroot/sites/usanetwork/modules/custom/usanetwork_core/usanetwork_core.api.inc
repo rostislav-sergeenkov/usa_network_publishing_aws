@@ -227,7 +227,6 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'on_now' => 'field_usa_tv_on_now',
       'og_image' => 'field_usa_og_image',
       'desktop_carousel' => 'field_tvs_desktop_cimage',
-      'mobile_carousel' => 'field_tvs_mobile_cimage',
     ),
     // USA MPX Video
     'usa_video' => array(

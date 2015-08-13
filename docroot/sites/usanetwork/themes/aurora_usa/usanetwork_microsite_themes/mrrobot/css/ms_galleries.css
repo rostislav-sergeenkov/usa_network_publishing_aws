@@ -16,6 +16,7 @@
 }
 #microsite section#do-not-disturb-content .right-pane {
   width: 100%;
+  max-width: 1012px;
   float: left;
   margin-top: 40px;
 }
@@ -178,7 +179,9 @@
 /* gallery / don't bother me content */
 #do-not-disturb #gallery-content {
  float: left;
- width: calc(100% - 220px);
+ width: 80%; /* calc(100% - 220px); */
+ max-width: 806px;
+ margin-right: 2%;
  position: relative;
  top: 0;
  left: 0;
@@ -210,13 +213,19 @@
 /* gallery nav */
 #do-not-disturb #gallery-nav {
   float: right;
-  width: 200px;
+  width: 18%; /* 200px; */
+  max-width: 200px;
 }
 #do-not-disturb #gallery-nav .bx-viewport {
-  height: 400px !important;
+  height: 400px;
 }
 #do-not-disturb #gallery-nav .bx-viewport a {
   display: block;
+  border: 2px solid transparent;
+}
+#do-not-disturb #gallery-nav .bx-viewport a.active {
+  display: block;
+  border: 2px solid #FFF;
 }
 #do-not-disturb #gallery-nav .bx-wrapper .bx-controls-direction a {
   top: inherit;

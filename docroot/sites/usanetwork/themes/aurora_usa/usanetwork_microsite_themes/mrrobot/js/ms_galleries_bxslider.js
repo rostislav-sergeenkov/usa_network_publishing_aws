@@ -2,6 +2,63 @@
 // This code sets up the navigation carousels for galleries
 (function ($) {
   Drupal.behaviors.micrositeGalleriesBxSliders = {
+    updateGigyaSharebarOmniture: function(initialPageLoad) {
+      initialPageLoad = initialPageLoad || 0;
+usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
+      if (typeof Drupal.gigya != 'undefined') {
+//        var slider = $slider.data('flexslider');
+        currentSlide = 1; // slider.currentSlide + 1;
+        var $sharebar = $('#do-not-disturb .field-name-field-gigya-share-bar > div');
+        if ($sharebar.length > 0) {
+          var $title = 'Do Not Disturb! I\'m watching Mr. Robot!'; // $slider.parents('.full-pane').find('.microsite-gallery-meta h2.gallery-title').text();
+//          if ($title == '') $title = $slider.parents('.full-pane').find('.microsite-gallery-meta h1.gallery-title').text();
+          var $currentImage = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/mr_robot_logo.png'; // $slider.find('.flex-active-slide .file-image img');
+          var $currentCaption = 'Do Not Disturb! I\'m watching Mr. Robot!'; // $slider.find('.flex-active-slide .field-name-field-caption p').text();
+
+          sharebar = new Object();
+          sharebar.gigyaSharebar = {
+            containerID: "gallery-gigya-share",
+            iconsOnly: true,
+            layout: "horizontal",
+            shareButtons: "facebook, twitter, tumblr, pinterest", //"facebook, twitter, tumblr, pinterest, share",
+            shortURLs: "never",
+            showCounts: "none"
+          }
+
+          var url = 'mrrobot/catchup'; // $('.bxslider li.active a').attr('href');
+          url = window.location.protocol + '//' + window.location.hostname + url;
+          sharebar.gigyaSharebar.ua = {
+            description: $currentCaption,
+            imageBhev: "url",
+            imageUrl: $currentImage.attr('src'),
+            linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
+            title: $title
+          }
+          Drupal.gigya.showSharebar(sharebar);
+
+          // omniture
+          if (!initialPageLoad) {
+            var siteName = Drupal.settings.microsites_settings.title,
+                basePath = Drupal.settings.microsites_settings.base_path,
+                basePageName = siteName + ' | USA Network';
+
+            s.prop3 = 'Do Not Disturb';
+            s.prop4 = siteName + ' : Do Not Disturb';
+            s.prop5 = siteName + ' : Do Not Disturb : ' + $title;
+            s.pageName = s.prop5 + ' : Photo ' + currentSlide;
+            document.title = $title + ' | Do Not Disturb | ' + basePageName;
+            if (typeof s_gi != 'undefined') {
+              void (s.t());
+            }
+          }
+        }
+      }
+    },
+
+    refreshBannerAd: function() {
+      jQuery('.dart-name-728x90_ifr_reload_galleries iframe').attr('src', jQuery('.dart-name-728x90_ifr_reload_galleries iframe').attr('src'));
+      jQuery('.dart-name-300x250_ifr_reload_galleries iframe').attr('src', jQuery('.dart-name-300x250_ifr_reload_galleries iframe').attr('src'));
+    },
 
     activeGalleryNavItem: null,
     galleryIsLoading: null,
@@ -384,22 +441,37 @@
           }
         });
 
+        var wwidth = $(window).width(),
+            slideWidth = parseInt(wwidth * 0.18), // 200,
+            slideHeight = slideWidth,
+            slideMargin = 10,
+            minNavSlides = 3;
+        if (slideWidth > 200) {
+          slideWidth = 200;
+          slideHeight = 200;
+        }
         $('.bxslider').bxSlider({
           pagerCustom: '#bx-pager',
           infiniteLoop: false,
-          hideControlOnEnd: true
-        });
-        $('#bx-pager').bxSlider({
-          mode: 'vertical',
-          slideWidth: 200,
-          slideHeight: 113,
-          minSlides: 3,
-          slideMargin: 10,
+          hideControlOnEnd: true,
           onSliderLoad: function(){
-            var galleryNavHeight = parseInt($('#do-not-disturb #gallery-content .bxslider img:first').height());
-usa_debug('galleryNavHeight: ' + galleryNavHeight);
-            $('#do-not-disturb #gallery-nav .bx-viewport').css({'height': galleryNavHeight + 'px !important'});
-            $('#do-not-disturb #gallery-content a.bx-prev, #do-not-disturb #gallery-nav a.bx-prev').html('Previous');
+            setTimeout(function(){
+              var galleryNavHeight = parseInt($('#do-not-disturb #gallery-content .bxslider img:first').height());
+              minNavSlides = Math.round(galleryNavHeight / (slideHeight + slideMargin));
+usa_debug('galleryNavHeight: ' + galleryNavHeight + ', galleryNavMinSlides: ' + minNavSlides);
+              $('#do-not-disturb #gallery-content a.bx-prev, #do-not-disturb #gallery-nav a.bx-prev').html('Previous');
+              $('#bx-pager').bxSlider({
+                mode: 'vertical',
+                slideWidth: slideWidth,
+                slideHeight: slideHeight,
+                minSlides: minNavSlides,
+                slideMargin: slideMargin,
+                onSliderLoad: function(){
+                  $('#do-not-disturb #gallery-nav .bx-viewport').css({'min-height': galleryNavHeight + 'px !important'});
+                  self.updateGigyaSharebarOmniture();
+                }
+              });
+            }, 2000);
           }
         });
 

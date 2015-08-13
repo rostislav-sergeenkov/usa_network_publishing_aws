@@ -25,6 +25,11 @@
  * - $section_title - Title of section.
  */
 ?>
+<?php
+// @TODO: DV -- SET THE FOLLOWING PATH IN THE MODULE FILE AND MAKE IT AVAILABLE
+// TO ALL TEMPLATE FILES
+$themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot';
+?>
 
 <?php if (!empty($section_title)): ?>
   <!-- section title -->
@@ -38,7 +43,7 @@
 
 <div id="characters-container">
   <div id="character-infographic">
-  Infographic goes here!
+    <a><img src="<?php print $themePath; ?>/images/MrRobot_Infographic_Cover_v1.jpg" alt="Mr. Robot infographic cover image"></a>
   </div>
 
   <?php if (!empty($people)): ?>
@@ -120,6 +125,11 @@
   </div>
   <?php endif; ?>
   <!-- end character info -->
+
+  <div id="character-infographic-overlay">
+    <div class="character-close">X</div>
+    <img src="<?php print $themePath; ?>/images/MrRobot_Infographic_v1.jpg" alt="Mr. Robot Infographic">
+  </div>
 </div>
 
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>

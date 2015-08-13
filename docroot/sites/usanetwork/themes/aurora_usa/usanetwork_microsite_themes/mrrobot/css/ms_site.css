@@ -36,9 +36,11 @@ section h2 {
 }
 
 /* HOME */
-#home #home-tunein,
-#home #home-description {
+#home #home-tunein {
   color: #FFF;
+}
+#home #home-content-container #home-description {
+  color: red;
 }
 #home #home-tunein {
   text-transform: none;
@@ -160,7 +162,6 @@ section h2 {
   text-align: center;
   background-color: #333;
   color: #FFF;
-  padding-top: 50%;
   margin: 0 auto 1%;
 }
 #character-wrapper {
@@ -182,4 +183,24 @@ section h2 {
 #character-info .character-bios-container h1,
 #character-info .character-bios-container h3 {
   color: #FFF;
+}
+#character-infographic-overlay {
+  display: none;
+  opacity: 0;
+  width: 98%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: calc(-50% - 49%);
+}
+#character-infographic-overlay .character-close {
+  position: absolute;
+  top: 17px;
+  right: 0;
+  font-size: 4em;
+  font-weight: 100;
+  color: #FFF;
+  cursor: pointer;
+  font-family: "avalonextra_light", sans-serif;
 }

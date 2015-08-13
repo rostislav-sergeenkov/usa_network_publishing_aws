@@ -1,0 +1,5 @@
+name = USA Network Related content
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_related_content

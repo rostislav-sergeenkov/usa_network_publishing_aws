@@ -30,6 +30,7 @@ function usanetwork_promo_field_group_info() {
       4 => 'field_promo_assoc_content',
       5 => 'field_movie',
       6 => 'title',
+      7 => 'field_explore_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

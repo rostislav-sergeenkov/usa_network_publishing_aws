@@ -59,9 +59,10 @@ function usanetwork_tv_shows_field_group_info() {
       4 => 'field_tv_show_marquee',
       5 => 'field_current_show',
       6 => 'field_syndicated',
-      7 => 'field_imdb_url',
-      8 => 'field_series_id',
-      9 => 'group_floodlight_tag',
+      7 => 'field_disable_uppercase',
+      8 => 'field_imdb_url',
+      9 => 'field_series_id',
+      10 => 'group_floodlight_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -887,6 +888,33 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_show_explore_landing|node|tv_show|form';
+  $field_group->group_name = 'group_show_explore_landing';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Show Explore Landing Page',
+    'weight' => '19',
+    'children' => array(
+      0 => 'field_show_explore_promo',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-show-explore-landing field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_show_explore_landing|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_show_menu|node|tv_show|form';
   $field_group->group_name = 'group_show_menu';
   $field_group->entity_type = 'node';
@@ -1194,9 +1222,8 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_tvs_desktop_cimage',
-      1 => 'field_tvs_mobile_cimage',
-      2 => 'field_tvs_promo_items',
-      3 => 'field_tvs_promoted_content',
+      1 => 'field_tvs_promo_items',
+      2 => 'field_tvs_promoted_content',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

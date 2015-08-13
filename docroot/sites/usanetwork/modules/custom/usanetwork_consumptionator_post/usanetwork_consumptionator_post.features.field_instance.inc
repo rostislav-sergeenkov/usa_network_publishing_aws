@@ -269,7 +269,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'collection',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -333,7 +333,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -1970,6 +1970,82 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-consumpt_post-field_usa_css'
+  $field_instances['node-consumpt_post-field_usa_css'] = array(
+    'bundle' => 'consumpt_post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'usanetwork_field_formatters',
+        'settings' => array(),
+        'type' => 'custom_css',
+        'weight' => 42,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_css',
+    'label' => 'Custom CSS',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-consumpt_post-field_usa_og_description'
   $field_instances['node-consumpt_post-field_usa_og_description'] = array(
     'bundle' => 'consumpt_post',
@@ -2145,6 +2221,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
   t('Collection');
   t('Contributor');
   t('Creating date overriding');
+  t('Custom CSS');
   t('Description');
   t('Display Author');
   t('Enable this checkbox if you want to exclude this content from "Related content" block of TV Show and Consumptionator pages.');

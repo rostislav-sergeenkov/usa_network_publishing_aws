@@ -16556,6 +16556,9 @@ footer h2 {
 .show-title-block h1 a:focus, .show-title-block h2 a:focus {
   outline: none;
 }
+.node-type-movie .show-title-block h1, .node-type-movie .show-title-block h2 {
+  max-width: 100%;
+}
 .show-title-block a:visited, .show-title-block a:active {
   color: #ffffff;
   outline: none !important;

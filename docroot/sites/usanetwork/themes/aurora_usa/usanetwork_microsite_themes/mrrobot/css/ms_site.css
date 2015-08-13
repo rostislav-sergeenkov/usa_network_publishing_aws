@@ -18,7 +18,7 @@ body {
   background-color: #000;
 }
 .section:nth-child(odd) {
-  background-color: #000;
+  background-color: #222;
 }
 .section:nth-child(even) {
   background-color: #000;
@@ -73,6 +73,13 @@ section h2 {
 /* VIDEOS */
 #videos .header {
   background-image: none;
+}
+#microsite .full-pane #video-container h1,
+#microsite .full-pane #video-container h3 {
+  color: #FFF;
+}
+#microsite .full-pane #video-container .video-description {
+  color: #FFF;
 }
 #video-filter li.filter-item {
   background-color: #333;

@@ -37,7 +37,7 @@
     // change url address
     changeUrl: function(anchor, anchorFull) {
       var basePath = Drupal.settings.microsites_settings.base_path;
-      if (anchorFull.indexOf('galleries') > -1) anchorFull.replace('galleries', 'dont-bother-me');
+      if (anchorFull.indexOf('galleries') > -1) anchorFull.replace('galleries', 'do-not-disturb');
 
       // if this is IE9, reload the correct page
       if ($('html').hasClass('ie9')) {

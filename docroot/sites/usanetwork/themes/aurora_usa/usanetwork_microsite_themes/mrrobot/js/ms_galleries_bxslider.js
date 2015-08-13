@@ -10,7 +10,7 @@
       var wwidth = $(window).width(),
           episodesNumSlides = 4,
           charsNumSlides = 5,
-          episodesPresent = ($('#microsite #dont-bother-me #ep-galleries').length > 0) ? true : false;
+          episodesPresent = ($('#microsite #do-not-disturb #ep-galleries').length > 0) ? true : false;
 
       if (1860 > wwidth && wwidth >= 1550) {
         episodesNumSlides = 3;
@@ -59,7 +59,7 @@
 
     showHidePager: function(galleryId, numGalleriesShown) {
       // set gallery nav container width
-      var $galleryNavContainer = $('#microsite #dont-bother-me ' + galleryId),
+      var $galleryNavContainer = $('#microsite #do-not-disturb ' + galleryId),
           numGalleries = $galleryNavContainer.find('li').length,
           widthOneGalleryNavItem = $galleryNavContainer.find('li').width(),
           finalWidthGalleryNav = Math.ceil(numGalleriesShown * (widthOneGalleryNavItem + 10));
@@ -75,17 +75,17 @@
     },
 
     setActiveGalleryHeight: function() {
-      var galleryWidth = $('#microsite #dont-bother-me .full-pane').width(),
+      var galleryWidth = $('#microsite #do-not-disturb .full-pane').width(),
           height = Math.ceil(galleryWidth * 9/16),
           captionHeight = 75;
-      $('#microsite #dont-bother-me .flexslider, #microsite #dont-bother-me .flexslider .slides li').height(height);
-      $('#microsite #dont-bother-me .center-wrapper').css('min-height', (height + captionHeight) + 'px');
+      $('#microsite #do-not-disturb .flexslider, #microsite #do-not-disturb .flexslider .slides li').height(height);
+      $('#microsite #do-not-disturb .center-wrapper').css('min-height', (height + captionHeight) + 'px');
     },
 
     setActiveGalleryNav: function() {
-      var activeGalleryNid = $('#microsite #dont-bother-me-content .microsite-gallery').attr('data-node-id');
-      $('#dont-bother-me .galleries-bxslider li').removeClass('active');
-      $('#dont-bother-me .galleries-bxslider li[data-node-id="' + activeGalleryNid + '"]').addClass('active');
+      var activeGalleryNid = $('#microsite #do-not-disturb-content .microsite-gallery').attr('data-node-id');
+      $('#do-not-disturb .galleries-bxslider li').removeClass('active');
+      $('#do-not-disturb .galleries-bxslider li[data-node-id="' + activeGalleryNid + '"]').addClass('active');
     },
 
     initCarousel: function(callback) {
@@ -131,8 +131,8 @@
     },
 
     showHideLoader: function() {
-      var activeGallery = $('#dont-bother-me .microsite-gallery'),
-          gLoader = $('#dont-bother-me #gallery-loader'),
+      var activeGallery = $('#do-not-disturb .microsite-gallery'),
+          gLoader = $('#do-not-disturb #gallery-loader'),
           gHeight = activeGallery.find('.flex-viewport').height();
 
       gLoader.height(gHeight);
@@ -173,10 +173,10 @@
         dataType: 'json'
       })
       .done(function(data, textStatus, jqXHR){
-        var activeGalleryMeta = $('#dont-bother-me .microsite-gallery-meta'),
-            activeGallery = $('#dont-bother-me .microsite-gallery'),
+        var activeGalleryMeta = $('#do-not-disturb .microsite-gallery-meta'),
+            activeGallery = $('#do-not-disturb .microsite-gallery'),
             activeGalleryHeight = activeGallery.height(),
-            galleryNavItems = $('#dont-bother-me .galleries-bxslider li'),
+            galleryNavItems = $('#do-not-disturb .galleries-bxslider li'),
             shareBarHtml = '<div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden"><div id="gigya-share"></div></div>';
 
           activeGallery.animate({'opacity': 0}, 1000, function(){
@@ -192,7 +192,7 @@
           activeGallery.find('.center-wrapper').html(data.rendered);
           Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
           galleryNavItems.removeClass('active');
-          $('#dont-bother-me .galleries-bxslider li[data-node-id="' + nid + '"]').addClass('active');
+          $('#do-not-disturb .galleries-bxslider li[data-node-id="' + nid + '"]').addClass('active');
           setTimeout(function(){
             Drupal.behaviors.micrositeGalleriesBxSliders.showGallery(activeGallery);
             Drupal.behaviors.micrositeGalleriesBxSliders.galleryIsLoading = false;
@@ -207,7 +207,7 @@
     },
 
     micrositeReloadSliders: function() {
-      $('#microsite #dont-bother-me .bxslider-container').width('100%');
+      $('#microsite #do-not-disturb .bxslider-container').width('100%');
 
       // set defaults
       var wwidth = $(window).width(),
@@ -234,7 +234,7 @@
           hideControlOnEnd: true,
           onSliderLoad: function(){
             Drupal.behaviors.micrositeGalleriesBxSliders.showHidePager('#ep-galleries', episodesNumSlides);
-            $('#microsite #dont-bother-me #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
+            $('#microsite #do-not-disturb #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
           }
         });
       }
@@ -254,18 +254,18 @@
           hideControlOnEnd: true,
           onSliderLoad: function(){
             Drupal.behaviors.micrositeGalleriesBxSliders.showHidePager('#character-galleries', charsNumSlides);
-            $('#microsite #dont-bother-me #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
+            $('#microsite #do-not-disturb #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
           }
         });
       }
 
-      $('#dont-bother-me .galleries-bxslider li[data-node-id="' + Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem + '"]').addClass('active');
+      $('#do-not-disturb .galleries-bxslider li[data-node-id="' + Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem + '"]').addClass('active');
     },
 
     promoClickSwitchGallery: function(anchorFull) {
       var anchorPathParts = Drupal.behaviors.ms_global.getUrlPath(anchorFull),
-          $navItems = $('#microsite #dont-bother-me .galleries-bxslider li a'),
-          matchingGalleryNavLink = $('#microsite #dont-bother-me .galleries-bxslider li').find('a[href="' +  anchorFull + '"]'),
+          $navItems = $('#microsite #do-not-disturb .galleries-bxslider li a'),
+          matchingGalleryNavLink = $('#microsite #do-not-disturb .galleries-bxslider li').find('a[href="' +  anchorFull + '"]'),
           nid = matchingGalleryNavLink.parent().attr('data-node-id'),
           anchor = anchorPathParts[1],
           item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
@@ -282,7 +282,7 @@
     changeGalleryHandler: function(e) {
       var anchorFull = this.href,
           anchorPathParts = Drupal.behaviors.ms_global.getUrlPath(anchorFull),
-          $navItems = $('#microsite #dont-bother-me .galleries-bxslider li a');
+          $navItems = $('#microsite #do-not-disturb .galleries-bxslider li a');
 
       // Unbind click while selected gallery loading
       $navItems.unbind('click').bind('click', function(e) {
@@ -301,7 +301,7 @@
       }
 
       // scroll to top of galleries section
-      $('#microsite #dont-bother-me').animate({ scrollTop: 0 }, 1000);
+      $('#microsite #do-not-disturb').animate({ scrollTop: 0 }, 1000);
 
       // switch gallery
       var nid = $(this).parent().attr('data-node-id');
@@ -316,7 +316,7 @@
     attach: function (context, settings) {
 
       // check to make sure there's a galleries section
-      if ($('#microsite #dont-bother-me').length > 0) {
+      if ($('#microsite #do-not-disturb').length > 0) {
         // set defaults
         var wwidth = $(window).width(),
             transitionWidth = 640,
@@ -329,8 +329,8 @@
 /*
         self.setActiveGalleryHeight();
 
-        if ($('#microsite #dont-bother-me #ep-galleries').length > 0) {
-          self.epGalleryBxSlider = $('#microsite #dont-bother-me #ep-galleries .galleries-bxslider').bxSlider({
+        if ($('#microsite #do-not-disturb #ep-galleries').length > 0) {
+          self.epGalleryBxSlider = $('#microsite #do-not-disturb #ep-galleries .galleries-bxslider').bxSlider({
             slideWidth: slideWidth,
             minSlides: episodesNumSlides,
             maxSlides: episodesNumSlides,
@@ -344,13 +344,13 @@
             hideControlOnEnd: true,
             onSliderLoad: function(){
               self.showHidePager('#ep-galleries', episodesNumSlides);
-              $('#microsite #dont-bother-me #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
+              $('#microsite #do-not-disturb #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
             }
           });
         }
 
-        if ($('#microsite #dont-bother-me #character-galleries').length > 0) {
-          self.characterGalleryBxSlider = $('#microsite #dont-bother-me #character-galleries .galleries-bxslider').bxSlider({
+        if ($('#microsite #do-not-disturb #character-galleries').length > 0) {
+          self.characterGalleryBxSlider = $('#microsite #do-not-disturb #character-galleries .galleries-bxslider').bxSlider({
             slideWidth: slideWidth,
             minSlides: charsNumSlides,
             maxSlides: charsNumSlides,
@@ -364,22 +364,22 @@
             hideControlOnEnd: true,
             onSliderLoad: function(){
               self.showHidePager('#character-galleries', charsNumSlides);
-              $('#microsite #dont-bother-me #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
+              $('#microsite #do-not-disturb #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
             }
           });
         }
 
         self.setActiveGalleryNav();
 
-        $('#microsite #dont-bother-me .galleries-bxslider li a').bind('click', self.changeGalleryHandler);
+        $('#microsite #do-not-disturb .galleries-bxslider li a').bind('click', self.changeGalleryHandler);
 */
 
         var slideCount = 0;
-        $('#dont-bother-me ul.slides li').each(function(){
+        $('#do-not-disturb ul.slides li').each(function(){
           if (!$(this).hasClass('clone')) {
             var imageSrc = $(this).find('img').attr('src');
-            $('#dont-bother-me .bxslider').append('<li data-slide-index="' + slideCount + '"><img src="' + imageSrc + '" /></li>');
-            $('#dont-bother-me #bx-pager').append('<a data-slide-index="' + slideCount + '" href=""><img src="' + imageSrc + '" /></a>');
+            $('#do-not-disturb .bxslider').append('<li data-slide-index="' + slideCount + '"><img src="' + imageSrc + '" /></li>');
+            $('#do-not-disturb #bx-pager').append('<a data-slide-index="' + slideCount + '" href=""><img src="' + imageSrc + '" /></a>');
             slideCount++;
           }
         });
@@ -396,18 +396,18 @@
           minSlides: 3,
           slideMargin: 10,
           onSliderLoad: function(){
-            var galleryNavHeight = parseInt($('#dont-bother-me #gallery-content .bxslider img:first').height());
+            var galleryNavHeight = parseInt($('#do-not-disturb #gallery-content .bxslider img:first').height());
 usa_debug('galleryNavHeight: ' + galleryNavHeight);
-            $('#dont-bother-me #gallery-nav .bx-viewport').css({'height': galleryNavHeight + 'px !important'});
-            $('#dont-bother-me #gallery-content a.bx-prev, #dont-bother-me #gallery-nav a.bx-prev').html('Previous');
+            $('#do-not-disturb #gallery-nav .bx-viewport').css({'height': galleryNavHeight + 'px !important'});
+            $('#do-not-disturb #gallery-content a.bx-prev, #do-not-disturb #gallery-nav a.bx-prev').html('Previous');
           }
         });
 
         // set image hover state
-        $('#dont-bother-me #gallery-content li, #dont-bother-me #gallery-content .bx-controls-direction a').hover(function(){
-          $('#dont-bother-me #gallery-content .bx-controls-direction a').css({'display': 'block', 'opacity': 0.8});
+        $('#do-not-disturb #gallery-content li, #do-not-disturb #gallery-content .bx-controls-direction a').hover(function(){
+          $('#do-not-disturb #gallery-content .bx-controls-direction a').css({'display': 'block', 'opacity': 0.8});
         }, function(){
-          $('#dont-bother-me #gallery-content .bx-controls-direction a').css({'display': 'none', 'opacity': 0});
+          $('#do-not-disturb #gallery-content .bx-controls-direction a').css({'display': 'none', 'opacity': 0});
         });
 
         $(window).bind('resize', function () {

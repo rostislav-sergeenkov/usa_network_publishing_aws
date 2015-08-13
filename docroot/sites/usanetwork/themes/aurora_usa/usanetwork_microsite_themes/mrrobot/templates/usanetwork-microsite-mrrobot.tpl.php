@@ -35,7 +35,7 @@ endif;
     <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
       <?php if (!empty($section['content']) && !empty($section['type'])): ?>
-        <?php if ($section['type'] == 'galleries'): $section['type'] = 'dont-bother-me'; endif; ?>
+        <?php if ($section['type'] == 'galleries'): $section['type'] = 'do-not-disturb'; endif; ?>
       <div id="<?php print $section['type']; ?>" class="section<?php print ($section['type'] == $current_section) ? ' active' : ''; ?>">
         <a name="<?php print $section['type']; ?>"></a>
         <section id="<?php print $section['type']; ?>-content" class="clearfix fadein fadein-1s fadein-delay-1s">
@@ -61,7 +61,7 @@ endif;
                 <ul id="site-nav-links-list">
                   <?php if (!empty($sections)): ?>
                     <?php foreach ($sections as $sectionNav): ?>
-                      <?php if ($sectionNav['type'] == 'galleries'): $sectionNav['type'] = 'dont-bother-me'; endif; ?>
+                      <?php if ($sectionNav['type'] == 'galleries'): $sectionNav['type'] = 'do-not-disturb'; endif; ?>
                       <?php if ($sectionNav['type'] != 'home'): ?>
                       <li id="nav-<?php print $sectionNav['type']; ?>" class="internal <?php print $sectionNav['type']; ?><?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
                         <?php print html_entity_decode($sectionNav['link']); ?>
@@ -69,7 +69,7 @@ endif;
                       <?php endif; ?>
                     <?php endforeach; ?>
                   <?php endif; ?>
-<!--                  <li id="nav-dont-bother-me" class="internal dont-bother-me<?php print ('dont-bother-me' == $current_section) ? ' active' : '' ?>" data-menuanchor="dont-bother-me">
+<!--                  <li id="nav-do-not-disturb" class="internal do-not-disturb<?php print ('do-not-disturb' == $current_section) ? ' active' : '' ?>" data-menuanchor="do-not-disturb">
                     <a href="#" data-menuitem="5" class="scroll-link">&lt;don't bother me&gt;</a>
                   </li> -->
                 </ul>
@@ -110,10 +110,10 @@ endif;
       <?php endif; ?>
 
       <?php /* if (!empty($section['is_last'])): // add don't bother me section ?>
-      <div id="dont-bother-me" class="section<?php print ('dont-bother-me' == $current_section) ? ' active' : ''; ?>">
-        <a name="dont-bother-me"></a>
-        <section id="dont-bother-me-content" class="clearfix fadein fadein-1s fadein-delay-1s">
-          <?php include('usanetwork-microsite-mrrobot-page-dont-bother-me.tpl.php'); ?>
+      <div id="do-not-disturb" class="section<?php print ('do-not-disturb' == $current_section) ? ' active' : ''; ?>">
+        <a name="do-not-disturb"></a>
+        <section id="do-not-disturb-content" class="clearfix fadein fadein-1s fadein-delay-1s">
+          <?php include('usanetwork-microsite-mrrobot-page-do-not-disturb.tpl.php'); ?>
         </section>
       </div>
       <?php endif; */ ?>

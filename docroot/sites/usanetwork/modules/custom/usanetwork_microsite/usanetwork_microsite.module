@@ -3482,7 +3482,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     $query->leftJoin('field_data_field_mpx_episode_number', 'fen', 'fen.entity_id = fm.fid');
     $query->innerJoin('field_data_field_mpx_season_number', 'fsn', 'fsn.entity_id = fm.fid');
     $query->innerJoin('field_data_field_usa_video_terms', 'fvt', 'fvt.entity_id = fm.fid');
-//    $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fm.fid');
+    $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fm.fid');
     if (!empty($filters_tids) && in_array(USANETWORK_MICROSITE_FULL_VIDEO, $allowed_filters)) {
       $query->condition($db_or);
     }
@@ -3495,7 +3495,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     else {
       $query->condition($db_or);
     }
-//    $query->condition($lang);
+    $query->condition($lang);
     $query->condition('fs.field_show_target_id', $show_id, '=');
     $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
     $query->orderBy('cast(fsn.field_mpx_season_number_value as unsigned)', 'DESC');

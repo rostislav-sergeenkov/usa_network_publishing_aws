@@ -78,10 +78,10 @@ endif;
           </div>
           <div id="site-nav-right">
             <div id="site-nav-social">
-              <a class="facebook" href="http://www.facebook.com/GracelandTV" target="_blank"></a>
-              <a class="twitter" href="http://twitter.com/GracelandTV" target="_blank"></a>
+              <a class="facebook" href="http://www.facebook.com/WhoIsMrRobot" target="_blank"></a>
+              <a class="twitter" href="http://twitter.com/whoismrrobot" target="_blank"></a>
             </div>
-            <div id="site-nav-show-site-link"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>/graceland" target="_blank">Visit Show Site</a></div>
+            <div id="site-nav-show-site-link"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>/mrrobot" target="_blank">Visit Show Site</a></div>
           </div>
 
           <div id="site-nav-mobile">
@@ -96,10 +96,10 @@ endif;
                     <?php endif; ?>
                   <?php endforeach; ?>
                 <?php endif; ?>
-                <li id="site-nav-show-site-link"><a href="http://www.usanetwork.com/graceland" target="_blank">Visit Show Site</a></li>
+                <li id="site-nav-show-site-link"><a href="http://www.usanetwork.com/mrrobot" target="_blank">Visit Show Site</a></li>
                 <li id="site-nav-social">
-                  <a class="facebook" href="http://www.facebook.com/GracelandTV" target="_blank"></a>
-                  <a class="twitter" href="http://twitter.com/GracelandTV" target="_blank"></a>
+                  <a class="facebook" href="http://www.facebook.com/WhoIsMrRobot" target="_blank"></a>
+                  <a class="twitter" href="http://twitter.com/whoismrrobot" target="_blank"></a>
                 </li>
               </ul>
             </div>

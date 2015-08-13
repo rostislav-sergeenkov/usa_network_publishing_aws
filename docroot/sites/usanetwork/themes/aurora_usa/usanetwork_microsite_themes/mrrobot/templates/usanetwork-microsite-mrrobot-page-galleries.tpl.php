@@ -76,7 +76,9 @@
     <div id="gallery-content">
       <ul class="bxslider"></ul>
       <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden">
-        <div id="gallery-gigya-share"></div>
+        <span id="gallery-sharing-text">Download or share this message</span>
+        <span id="gallery-download"></span>
+        <span id="gallery-gigya-share"></span>
       </div>
     </div>
 

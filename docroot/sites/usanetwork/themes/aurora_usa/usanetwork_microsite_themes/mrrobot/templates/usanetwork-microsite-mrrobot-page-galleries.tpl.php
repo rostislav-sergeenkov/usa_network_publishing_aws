@@ -35,6 +35,7 @@
 
 <div class="full-pane clearfix">
   <?php if (!empty($gallery)): ?>
+<?php /* ?>
   <div class="microsite-gallery-meta clearfix">
     <?php if (empty($h1) && !empty($gallery['title']) && $status == 'active'): ?>
       <h1 class="gallery-title"><?php print $gallery['title']; ?></h1>
@@ -54,20 +55,34 @@
       <div id="gigya-share"></div>
     </div>
   </div>
+<?php */ ?>
 
   <div class="left-pane">
     <div class="microsite-gallery" data-node-id="<?php if (!empty($gallery['gallery_nid'])) print $gallery['gallery_nid']; ?>">
       <div class="center-wrapper clearfix">
         <?php print $gallery['rendered']; ?>
+<?php /* ?>
         <div class="description-block"></div>
+<?php */ ?>
       </div>
     </div>
+<?php /* ?>
     <div id="gallery-loader"><img src="/sites/usanetwork/themes/aurora_usa/images/ajax-loader.gif" alt="loading animation"></div>
+<?php */ ?>
   </div>
   <?php endif; ?>
 
   <div class="right-pane">
-    <?php if (!empty($episodic_galleries)): ?>
+    <div id="gallery-content">
+      <ul class="bxslider"></ul>
+      <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden">
+        <div id="gallery-gigya-share"></div>
+      </div>
+    </div>
+
+    <div id="gallery-nav"><ul id="bx-pager" class="slider8"></ul></div>
+
+    <?php /* if (!empty($episodic_galleries)): ?>
     <div id="ep-galleries" class="galleries-nav narrow">
       <div id="ep-galleries-bxslider-container" class="bxslider-container">
         <h3>Episodes</h3>
@@ -99,9 +114,9 @@
       </div>
     </div>
     <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_galleries"></div>
-    <?php endif; ?>
+    <?php endif; */ ?>
 
-    <?php if (!empty($character_galleries)): ?>
+    <?php /* if (!empty($character_galleries)): ?>
     <div id="character-galleries" class="galleries-nav<?php if (empty($episodic_galleries)): ?> narrow<?php endif; ?>">
       <div id="ep-galleries-bxslider-container" class="bxslider-container">
         <h3>Featured</h3>
@@ -133,9 +148,9 @@
         </ul>
       </div>
     </div>
-    <?php endif; ?>
-    <?php if (empty($episodic_galleries)): ?><div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_galleries"></div><?php endif; ?>
+    <?php endif; */ ?>
+    <?php /* if (empty($episodic_galleries)): ?><div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_galleries"></div><?php endif; */ ?>
   </div>
 </div>
 
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_galleries"></div>
+<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_dont-bother-me"></div>

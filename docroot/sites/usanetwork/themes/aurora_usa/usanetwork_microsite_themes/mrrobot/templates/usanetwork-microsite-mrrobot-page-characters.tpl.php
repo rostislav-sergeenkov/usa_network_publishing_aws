@@ -57,7 +57,7 @@
               <div>
                 <span class="person-name"><?php if(!empty($person['title'])) print $person['title']; ?></span>
               </div>
-              <div class="role"><?php if(!empty($person['role'])) print $person['role']; ?></div>
+              <div class="role"><?php if(!empty($person['role'])): ?><?php if($person['role'] != 'Executive Producer') print 'as '; ?><?php print $person['role']; ?><?php endif; ?></div>
             </div>
           </div>
         </li>
@@ -81,7 +81,7 @@
             <?php endif; ?>
             <div class="character-close">X</div>
             <?php if (!empty($person['role'])): ?>
-              <div class="character-role"><?php print $person['role']; ?></div>
+              <div class="character-role"><?php if ($person['role'] != 'Executive Producer') print 'as '; ?><?php print $person['role']; ?></div>
             <?php endif; ?>
             <?php if (!empty($person['social'])): ?>
               <div class="character-social">

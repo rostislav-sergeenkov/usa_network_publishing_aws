@@ -18,7 +18,7 @@
             containerID: "gallery-gigya-share",
             iconsOnly: true,
             layout: "horizontal",
-            shareButtons: "facebook, twitter, tumblr, pinterest, share",
+            shareButtons: "facebook, twitter, tumblr, pinterest", //"facebook, twitter, tumblr, pinterest, share",
             shortURLs: "never",
             showCounts: "none"
           }

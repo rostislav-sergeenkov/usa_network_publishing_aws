@@ -385,7 +385,9 @@
         });
 
         $('.bxslider').bxSlider({
-          pagerCustom: '#bx-pager'
+          pagerCustom: '#bx-pager',
+          infiniteLoop: false,
+          hideControlOnEnd: true
         });
         $('#bx-pager').bxSlider({
           mode: 'vertical',

@@ -294,7 +294,6 @@
           break;
         case 'about':
           break;
-        case 'do-not-disturb':
         case 'galleries':
           contentType = 'Gallery';
           if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();

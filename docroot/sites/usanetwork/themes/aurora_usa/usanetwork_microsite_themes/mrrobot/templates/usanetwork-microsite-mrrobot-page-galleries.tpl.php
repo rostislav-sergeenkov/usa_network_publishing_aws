@@ -155,4 +155,4 @@
   </div>
 </div>
 
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_do-not-disturb"></div>
+<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_galleries"></div>

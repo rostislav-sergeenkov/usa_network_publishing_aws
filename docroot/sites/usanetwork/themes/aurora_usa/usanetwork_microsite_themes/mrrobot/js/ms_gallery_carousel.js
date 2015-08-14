@@ -78,7 +78,7 @@
 
     attach: function(settings, context) {
       // check to make sure there's a galleries section
-      if ($('#microsite #dont-bother-me > section').length > 0) {
+      if ($('#microsite #do-not-disturb > section').length > 0) {
         $('.microsite-gallery .flexslider').once('microsite-gallery-carousel', function() {
           $(this).on('start', function() {
             var $slider = $(this);

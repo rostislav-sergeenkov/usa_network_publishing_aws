@@ -54,6 +54,21 @@
       }
     },
 
+    showInfographic: function() {
+      var wwidth = $(window).width();
+      if (wwidth > 1000) {
+        $('#character-infographic-overlay').css('display', 'block').animate({'opacity': 1}, 1000);
+        $('#character-infographic-overlay .character-close').click(function(){
+          $('#character-infographic-overlay').animate({'opacity': 0}, 1000).css('display', 'none');
+        });
+      }
+      else {
+        var wHost = window.location.hostname,
+            wUrl = (wHost == 'www.usanetwork.com') ? 'http://apps.usanetwork.com/mrrobot/infographic' : 'http://stage-apps.usanetwork.com/mrrobot/infographic',
+            infographicWindow = window.open(wUrl, '_blank', 'menubar=no,resizable=yes,status=no,toolbar=no', false);
+      }
+    },
+
     // ATTACH
     attach: function (context, settings) {
       // set defaults
@@ -81,6 +96,11 @@
         else {
           self.setSiteNav();
         }
+
+        // set click on character infographic
+        $('#character-infographic a').on('click', function() {
+          self.showInfographic();
+        });
       }, 500);
 
       // Remove 'Scene ' from line dot hover hints

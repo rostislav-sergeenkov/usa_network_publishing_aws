@@ -413,11 +413,21 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
       'path' => $episode_image,
       'style_name' => '300x250',
     ));
+    $season_info = '';
+    if (isset($episode_season)  && isset($episode_number)) {
+      $season_info= t('S@season EP@episode_number', array('@season' => $episode_season, '@episode_number' => $episode_number));
+    }
+    elseif (isset($episode_season)) {
+      $season_info = t('S@season', array('@season' => $episode_season));
+    }
+    elseif (isset($episode_number)) {
+      $season_info = t('EP@episode_number', array('@episode_number' => $episode_number));
+    }
     $episode_element = array(
       'show_class' => $show_color,
       'url' => url('file/' . $episode->fid),
       'title' => $show->title,
-      'caption' => t('S@season EP@episode_number !episode_title', array('!episode_title' => _usanetwork_core_get_video_title($episode), '@season' => $episode_season, '@episode_number' => $episode_number)),
+      'caption' => t('@season_info !episode_title', array('!episode_title' => _usanetwork_core_get_video_title($episode), '@season_info' => $season_info)),
       'image' => $video_image,
       'icon' => usanetwork_core_api_get_media_icon('file', $episode->fid),
     );
@@ -466,7 +476,7 @@ function usanetwork_mpx_video_global_videos_page() {
           $video_caption = $show->title;
         }
 
-        $video_title = $file->filename;
+        $video_title = _usanetwork_core_get_video_title($file);
         $video_season = _usanetwork_get_field_item('file', $file, 'field_mpx_field_season', 'value');
         $video_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_field_episode', 'value');
         $video_additional = ($video_season) ? t('S@season episodes @episode', array('@season' => $video_season, '@episode' => $video_episode)) : FALSE;
@@ -547,7 +557,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
           $theme_item_variables = array(
             'is_first' => ($id === 0) ? TRUE : FALSE,
             'video_url' => url('file/' . $video->fid),
-            'video_title' => $video->title,
+            'video_title' => _usanetwork_core_get_video_title($file),
             'video_additional' => t('S@season episode @episode', array('@season' => $video->field_mpx_season_number_value, '@episode' => $video->field_mpx_episode_number_value)),
             'video_image' => $video_image,
             'icon_type' => usanetwork_core_api_get_media_icon('file', $video->fid),
@@ -1103,6 +1113,9 @@ function _usanetwork_get_google_watch_variables($file) {
   }
   if (isset($file->field_mpx_entitlement)) {
     $entitlement = $file_wrapper->field_mpx_entitlement->value();
+    if ($entitlement == 'auth') {
+      $entitlement = 'subscription';
+    }
   }
   if (isset($file->field_mpx_airdate)) {
     $air_date = $file_wrapper->field_mpx_airdate->value();
@@ -2581,25 +2594,7 @@ function usanetwork_mpx_video_get_video_category($video_file) {
  * AJAX callback for getting content items.
  */
 function usanetwork_mpx_video_get_related_content_ajax($node, $start_from = 0, $limit = 1) {
-  $response = array(
-    'found' => FALSE,
-    'total' => 0,
-    'overlimited' => TRUE,
-    'rendered' => '',
-  );
-  $function = '_usanetwork_' . $node->type . '_cache_get_limited_related_video_content';
-  $related_content = $function($node, $start_from, $limit + 1);
-  if (!empty($related_content)) {
-    if (count($related_content) > $limit) {
-      $response['overlimited'] = FALSE;
-      $related_content = array_slice($related_content, 0, $limit);
-    }
-    $function = 'usanetwork_' . $node->type . '_consumptionator_render_related_content_items_block';
-    $response['rendered'] = $function($related_content, $start_from, $limit);
-    $response['total'] = count($related_content);
-    $response['found'] = TRUE;
-  }
-  return drupal_json_output($response);
+  return usanetwork_related_content_get_related_content_ajax(NULL, $node, $start_from , $limit, TRUE);
 }
 
 /**

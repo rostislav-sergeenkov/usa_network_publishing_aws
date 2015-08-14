@@ -1,0 +1,57 @@
+<?php
+/**
+ * Module provide general related content functionality.
+ *
+ * Date: 30.7.15
+ * Time: 14.23
+ */
+
+/**
+ * Retrieve json relation content for ajax callbacks.
+ *
+ * @param $consum_node_type
+ * @param $tv_content_node
+ * @param int $start_from
+ * @param int $limit
+ * @return string
+ *  Json object.
+ */
+function usanetwork_related_content_get_related_content_ajax($consum_node_type, $tv_content_node, $start_from = 0, $limit = 1, $for_video = FALSE) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => TRUE,
+    'rendered' => '',
+  );
+
+  if ($limit == $start_from) {
+    $you_may_also_like_item = usanetwork_tv_show_consumptionator_get_ymal_item($tv_content_node);
+    if (!empty($you_may_also_like_item)) {
+      $start_from--;
+    }
+  }
+
+
+  if (!$for_video) {
+    $function = '_usanetwork_' . $tv_content_node->type . '_cache_get_limited_related_content';
+    $related_content = $function($tv_content_node, $consum_node_type, $start_from, $limit + 1);
+  }
+  else {
+    $function = '_usanetwork_' . $tv_content_node->type . '_cache_get_limited_related_video_content';
+    $related_content = $function($tv_content_node, $start_from, $limit + 1);
+  }
+
+
+  if (!empty($related_content)) {
+    if (count($related_content) > $limit) {
+      $response['overlimited'] = FALSE;
+      $related_content = array_slice($related_content, 0, $limit);
+    }
+    $function = 'usanetwork_' . $tv_content_node->type . '_consumptionator_render_related_content_items_block';
+    $response['rendered'] = $function($related_content, $start_from, $limit);
+    $response['total'] = count($related_content);
+    $response['found'] = TRUE;
+  }
+  return drupal_json_output($response);
+}
+

@@ -27,6 +27,7 @@ function usanetwork_consumptionator_post_field_group_info() {
       1 => 'field_content_tags',
       2 => 'field_contributor',
       3 => 'field_media_gallery',
+      4 => 'field_usa_css',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

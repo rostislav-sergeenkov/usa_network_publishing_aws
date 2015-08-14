@@ -20,24 +20,32 @@
     // parseUrl
     parseUrl: function() {
       urlPath = window.location.pathname;
-      var sectionLocation = urlPath.replace(Drupal.settings.microsites_settings.base_path, '');
-      if (sectionLocation != '') {
-        var parse = sectionLocation.split('/');
+      var location = urlPath.replace(Drupal.settings.microsites_settings.base_path, ''),
+          activeCategory = '';
+      if (location != '') {
+        var parse = location.split('/');
         activeSection = parse[1];
         activeItem = (parse.hasOwnProperty(2)) ? parse[2] : '';
+        if (activeItem != '' && parse.hasOwnProperty(3)) {
+          activeCategory = parse[2];
+          activeItem = parse[3];
+        }
       }
       else {
         activeSection = 'home';
         activeItem = '';
       }
 
-      return {'section': activeSection, 'item': activeItem};
+      return {'section': activeSection, 'category': activeCategory, 'item': activeItem};
+    },
+
+    getActiveVideoFilter: function() {
+      return $('#video-filter li.filter-item.active').attr('data_filter_class');
     },
 
     // change url address
     changeUrl: function(anchor, anchorFull) {
       var basePath = Drupal.settings.microsites_settings.base_path;
-      if (anchorFull.indexOf('galleries') > -1) anchorFull.replace('galleries', 'do-not-disturb');
 
       // if this is IE9, reload the correct page
       if ($('html').hasClass('ie9')) {
@@ -46,6 +54,12 @@
         return false;
       }
 
+      /*if (anchor == 'videos') {
+        var activeVideoFilter = Drupal.behaviors.ms_global.getActiveVideoFilter();
+        anchorFull = (activeVideoFilter != '') ? anchorFull + '/' + activeVideoFilter : anchorFull;
+        history.pushState({"path": anchorFull}, anchorFull, anchorFull);
+      }
+      else */
       if (anchor != 'home') {
         history.pushState({"path": anchorFull}, anchorFull, anchorFull);
       }
@@ -280,13 +294,14 @@
           break;
         case 'about':
           break;
+        case 'do-not-disturb':
         case 'galleries':
           contentType = 'Gallery';
           if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
           if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
           var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
-              $slider = slider.data('flexslider'),
-              currentSlide = $slider.currentSlide + 1;
+              // $slider = slider.data('flexslider'),
+              currentSlide = 1; // $slider.currentSlide + 1;
           if (!currentSlide) currentSlide = 1;
           specificContentName = 'Photo ' + currentSlide;
           break;
@@ -452,6 +467,12 @@
     setActiveMenuItem: function(anchor) {
       // set active menu item
       $('#site-nav-links li, #site-nav-links-mobile li').removeClass('active disabled');
+      if (anchor == 'videos') {
+        var activeVideoFilter = Drupal.behaviors.ms_global.getActiveVideoFilter();
+        if (activeVideoFilter == 'behind-the-scenes' || activeVideoFilter == 'must-see-moments') {
+          anchor = 'must-see-moments';
+        }
+      }
       $('#site-nav-links li.' + anchor + ', #site-nav-links-mobile li.' + anchor).addClass('active');
     },
 
@@ -566,6 +587,52 @@
       }
     },
 
+    // to navigate to a specific video filter
+    selectVideoFilter: function(anchor){
+      Drupal.behaviors.ms_global.sectionScroll('videos');
+
+      var filterClass = (window.location.hostname == 'surf.usanetwork.com' || window.location.hostname == 'local.usanetwork.com') ? 'behind-the-scenes' : 'must-see-moments';
+      if (anchor == 'videos') filterClass = 'full-episodes';
+
+      var $this = $('#video-filter li.filter-item[data_filter_class="' + filterClass + '"]'),
+          $filterItems = $('#video-filter li.filter-item'),
+          $filterMenu = $('#video-filter .filter-menu');
+usa_debug('showMustSeeMoments(), $this: ', $this);
+
+      // set active nav
+      Drupal.behaviors.ms_global.setActiveMenuItem('videos');
+
+      // set video filter
+      if ($this.hasClass('active')) {
+        return false;
+      }
+      else {
+        $filterItems.removeClass('active');
+        $this.addClass('active');
+        $('#video-filter .filter-child-item').removeClass('active');
+
+        var categoryName = $this.attr('data-filter-name'),
+            offset = 0,
+            $childItems = $this.find('.filter-child-item'),
+            url;
+        if ($childItems.length == 0) {
+          url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
+        }
+        else {
+          var season_num = $childItems.last().attr('data-season-num');
+
+          $childItems.last().addClass('active');
+          url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;;
+        }
+
+        $('#thumbnail-list .expandable-toggle li').text('more').removeClass('less').addClass('more');
+        $('#thumbnail-list').removeClass('expanded');
+
+        Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName, filterClass);
+        //if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
+      }
+    },
+
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
       if (!$('html').hasClass('ie9')) {
@@ -620,8 +687,13 @@
             $('#site-nav-links li').addClass('disabled');
           }
 
-          Drupal.behaviors.ms_global.sectionScroll(anchor);
-          if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
+          // if clicked must see moments
+          if (anchor == 'videos' || anchor == 'must-see-moments') {
+            self.selectVideoFilter(anchor);
+          }
+          else {
+            Drupal.behaviors.ms_global.sectionScroll(anchor);
+          }
         });
 
         // initialize site nav logo click

@@ -26,7 +26,7 @@ if ($timestamp > mktime(22, 0, 1, 8, 26, 2015)): // after Aug 26, 2015 10:00:01 
 endif;
 ?>
 
-<div id="gracelandcatchup-home" class="clearfix">
+<div id="home" class="clearfix">
   <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
 
   <div id="home-content-container">
@@ -82,10 +82,12 @@ endif;
 
     <div id="home-nav" class="clearfix">
       <ul>
-        <li id="confidential" class="external"><a href="http://gracelandconfidential.usanetwork.com" target="_blank"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-confidential.png" alt="Confidential button" /></div></a><div class="spoiler-alert spoiler-low"></div></li>
-        <li id="watch" class="internal" data-menuanchor="videos"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-watch.png" alt="Watch button" /></div></a><div class="spoiler-alert spoiler-moderate"></div></li>
-        <li id="slideshow" class="internal" data-menuanchor="timeline"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-slideshow.png" alt="Slideshow button" /></div></a><div class="spoiler-alert spoiler-medium"></div></li>
-        <li id="trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-trivia.png" alt="Trivia button" /></div></a><div class="spoiler-alert spoiler-high"></div></li>
+        <li id="home-nav-binge" class="internal" data-menuanchor="videos"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-watch.png" alt="Binge button" /></div></a><div class="home-button-text">watch from the beginning</div></li>
+        <li id="home-nav-must-see-moments" class="internal" data-menuanchor="must-see-moments"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-watch.png" alt="Must See Moments button" /></div></a><div class="home-button-text">watch the best scenes</div></li>
+        <li id="home-nav-behind-the-scenes" class="internal" data-menuanchor="timeline"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-slideshow.png" alt="Behind the Scenes button" /></div></a><div class="home-button-text">ones and zeros slideshow</div></li>
+        <li id="home-nav-infographic" class="internal" data-menuanchor="characters"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-trivia.png" alt="Infographic button" /></div></a><div class="home-button-text">season at a glance</div></li>
+        <li id="home-nav-do-not-disturb" class="internal" data-menuanchor="do-not-disturb"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-watch.png" alt="Do Not Disturb button" /></div></a><div class="home-button-text">social graphics</div></li>
+        <li id="home-nav-trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-trivia.png" alt="Trivia button" /></div></a><div class="home-button-text">think you know mr. robot?</div></li>
       </ul>
     </div>
   </div>

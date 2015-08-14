@@ -26,7 +26,7 @@
 $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot';
 date_default_timezone_set('America/New_York');
 $timestamp = time();
-if ($timestamp > mktime(0, 0, 1, 8, 16, 2015)): // after Aug 16, 2015 00:00:01 AM ET
+if ($timestamp > mktime(22, 0, 0, 8, 26, 2015)): // after finale premiere starts Aug 26, 2015 22:00:00 AM ET
 endif;
 ?>
 
@@ -67,11 +67,14 @@ endif;
                         <?php print html_entity_decode($sectionNav['link']); ?>
                       </li>
                       <?php endif; ?>
+
+                      <?php if ($sectionNav['type'] == 'videos'): // add must see moments nav ?>
+                      <li id="nav-must-see-moments" class="internal must-see-moments<?php print ('must-see-moments' == $current_section) ? ' active' : '' ?>" data-menuanchor="must-see-moments">
+                        <a href="#" data-menuitem="2" class="scroll-link">must see moments</a>
+                      </li>
+                      <?php endif; ?>
                     <?php endforeach; ?>
                   <?php endif; ?>
-<!--                  <li id="nav-do-not-disturb" class="internal do-not-disturb<?php print ('do-not-disturb' == $current_section) ? ' active' : '' ?>" data-menuanchor="do-not-disturb">
-                    <a href="#" data-menuitem="5" class="scroll-link">&lt;don't bother me&gt;</a>
-                  </li> -->
                 </ul>
               </div>
             </div>

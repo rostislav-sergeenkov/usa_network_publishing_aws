@@ -6,7 +6,7 @@
  */
 include_once 'usanetwork_consumptionator_post.features.inc';
 
-define('USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS', 10);
+define('USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS', 1);
 define('USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH', 390);
 
 
@@ -359,20 +359,40 @@ function usanetwork_consumptionator_post_blank_page() {
   return '';
 }
 
-function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_node = NULL, $offset = 0, $show_ad = FALSE, $ajax_load = FALSE) {
+function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL, $offset = 0, $show_ad = FALSE, $ajax_load = FALSE) {
   if (path_is_admin(current_path())) {
     return '';
   }
 
-  if ($tv_show_node === NULL) {
-    $tv_show_node = menu_get_object();
+  if ($node === NULL) {
+    $node = menu_get_object();
   }
 
-  if (empty($tv_show_node) || (!empty($tv_show_node) && isset($tv_show_node->type) && $tv_show_node->type != 'tv_show')) {
+  if (empty($node) || (!empty($node) && isset($node->type) && $node->type != 'tv_show' && $node->type != 'consumpt_blog')) {
     return '';
   }
+  switch ($node->type) {
+    case 'tv_show':
+      $show_id = $node->nid;
+      $blog_id = NULL;
+      $show_title = $node->title;
+      $blog_title = usanetwork_consumptionator_post_get_blog_title($node);
+      break;
+    case 'consumpt_blog':
+      if (empty($node->field_show)) {
+        return '';
+      }
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $show_id = $node_wrapper->field_show->nid->value();
+      $blog_id = $node->nid;
+      $show_title = $node_wrapper->field_show->title->value();
+      $blog_title = $node->title;
+      break;
+    default:
+      return '';
+  }
 
-  $count = _usanetwork_consumptionator_post_get_posts_count($tv_show_node->nid);
+  $count = _usanetwork_consumptionator_post_get_posts_count($show_id, $blog_id);
   $last_element_index = $offset * USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS + USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS;
   $load_more_link = TRUE;
   if ($last_element_index >= $count) {
@@ -382,12 +402,12 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
     'items' => array(),
     'ad' => FALSE,
     'title' => NULL,
-    'show_nid' => $tv_show_node->nid,
+    'node_nid' => $node->nid,
     'ajax_load' => $ajax_load,
     'load_more_link' => $load_more_link,
   );
 
-  $posts_data = _usanetwork_consumptionator_post_get_posts_data($tv_show_node->nid, $offset);
+  $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset);
 
   if ($show_ad === FALSE) {
     $theme_variables['ad'] = FALSE;
@@ -396,7 +416,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
     $theme_variables['ad'] = TRUE;
   }
 
-  $theme_variables['title'] = usanetwork_consumptionator_post_get_blog_title($tv_show_node);
+  $theme_variables['title'] = $blog_title;
 
   if (!empty($posts_data)) {
     foreach ($posts_data as $post_data_index => $post_data) {
@@ -426,7 +446,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
 
-  $title = $theme_variables['title'] . ' | Blog | ' . $tv_show_node->title . ' | USA Network';
+  $title = $blog_title . ' | Blog | ' . $show_title . ' | USA Network';
   drupal_set_title($title);
 
   return !empty($theme_variables['items'])
@@ -434,9 +454,9 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
     : '';
 }
 
-function _usanetwork_consumptionator_post_get_posts_data($show_nid, $offset = 0) {
-  $cache_name = 'blog_landing_page_' . $show_nid . '_' . $offset;
-  $cache = cache_get($cache_name);
+function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0) {
+//  $cache_name = 'blog_landing_page_' . $show_nid . '_' . $offset;
+ // $cache = cache_get($cache_name);
   if (empty($cache)) {
     $query = db_select('node', 'cp');
     $query->fields('cp', array('nid', 'title'));
@@ -456,6 +476,10 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $offset = 0)
     $query->condition('cp.type', 'consumpt_post');
     $query->condition('cp.status', NODE_PUBLISHED);
     $query->condition('show_field.field_show_target_id', $show_nid);
+    if (!empty($blog_nid)) {
+      $query->join('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=cp.nid');
+      $query->condition('field_consumptionator_blog.field_consumptionator_blog_target_id', $blog_nid);
+    }
     $query->groupBy('cp.nid');
     $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');
     $query->orderBy('post_covts.field_promo_created_ovts_value', 'DESC');
@@ -467,7 +491,7 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $offset = 0)
         $result_item->description = _usanetwork_consumptionator_post_get_season_episodes_description($result_item);
       }
     }
-    cache_set($cache_name, $result, 'cache', time() + 900);
+  //  cache_set($cache_name, $result, 'cache', time() + 900);
   }
   else {
     $result = $cache->data;
@@ -484,12 +508,16 @@ function usanetwork_consumptionator_post_get_blog_title($tv_show_node) {
   }
 }
 
-function _usanetwork_consumptionator_post_get_posts_count($show_nid) {
+function _usanetwork_consumptionator_post_get_posts_count($show_nid, $blog_nid = NULL) {
   $query = db_select('node', 'cp');
   $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
   $query->condition('cp.type', 'consumpt_post');
   $query->condition('cp.status', NODE_PUBLISHED);
   $query->condition('show_field.field_show_target_id', $show_nid);
+  if (!empty($blog_nid)) {
+    $query->join('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=cp.nid');
+    $query->condition('field_consumptionator_blog.field_consumptionator_blog_target_id', $blog_nid);
+  }
   $query->addExpression("COUNT(*)", 'count');
   $result = $query->execute()->fetchObject();
   return $result->count;
@@ -519,16 +547,32 @@ function _usanetwork_consumptionator_post_get_season_episodes_description($resul
   return '';
 }
 
-function usanetwork_consumptionator_post_blog_get_posts_ajax($tv_show_node, $offset) {
+function usanetwork_consumptionator_post_blog_get_posts_ajax($node, $offset) {
   $response = array(
     'found' => FALSE,
     'total' => 0,
     'overlimited' => FALSE,
     'rendered' => '',
   );
-
-  $count = _usanetwork_consumptionator_post_get_posts_count($tv_show_node->nid);
-  $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_node, $offset, TRUE, TRUE);
+  switch ($node->type) {
+    case 'tv_show':
+      $show_id = $node->nid;
+      $blog_id = NULL;
+      break;
+    case 'consumpt_blog':
+      if (empty($node->field_show)) {
+        return '';
+      }
+      $show_field = field_get_items('node', $node, 'field_show');
+      $show_field = reset($show_field);
+      $show_id = $show_field['target_id'];
+      $blog_id = $node->nid;
+      break;
+    default:
+      return '';
+  }
+  $count = _usanetwork_consumptionator_post_get_posts_count($show_id, $blog_id);
+  $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($node, $offset, TRUE, TRUE);
 
   $response['found'] = TRUE;
   $response['rendered'] = $block;

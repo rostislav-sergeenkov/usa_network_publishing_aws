@@ -45,6 +45,14 @@ function usanetwork_consumptionator_post_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'consumpt_blog' => array(
+      'name' => t('Consumptionator blog'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
   );
   drupal_alter('node_info', $items);
   return $items;

@@ -4,13 +4,13 @@
 
   Drupal.behaviors.usanetwork_blog_posts_autoloader = {
     loadPageItems: function(eventClick) {
-      var showNid = $('.landing-list-items-all').data('show-nid'),
+      var nodeNid = $('.landing-list-items-all').data('node-nid'),
           click = eventClick || '',
           offset = $('.ajax-load-block > .landing-list-items-one-item').length;
 
-      if (showNid > 0) {
+      if (nodeNid > 0) {
 
-        var serviceUrl = '/ajax/usanetwork-blog-posts/get-related/' + showNid + '/' + offset;
+        var serviceUrl = '/ajax/usanetwork-blog-posts/get-related/' + nodeNid + '/' + offset;
         $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
         $.ajax({
           type: 'GET',

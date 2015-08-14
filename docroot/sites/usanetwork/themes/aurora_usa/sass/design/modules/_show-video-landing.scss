@@ -68,6 +68,13 @@
           z-index: 3;
         }
       }
+      .filter-menu {
+        li {
+          span {
+            display: inline-block;
+          }
+        }
+      }
       &.all-items-filter {
         float: left;
         width: calc(100% - 200px);

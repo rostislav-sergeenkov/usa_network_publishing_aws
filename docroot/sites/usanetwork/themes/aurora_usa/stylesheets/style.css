@@ -17179,6 +17179,9 @@ footer h2 {
   top: 0;
   z-index: 3;
 }
+.landing-page-container .upper-menu .item-filter .filter-menu li span {
+  display: inline-block;
+}
 .landing-page-container .upper-menu .item-filter.all-items-filter {
   float: left;
   width: calc(100% - 200px);

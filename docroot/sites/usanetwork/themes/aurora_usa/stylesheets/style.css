@@ -2225,6 +2225,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
     height: 29% !important;
   }
 }
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper {
+    height: 33% !important;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
     font-size: 1.23698vw;
@@ -2539,6 +2544,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
     height: 29%;
   }
 }
+@media (max-width: 480px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
+    height: 33%;
+  }
+}
 .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper-inner, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper-inner {
   height: 100%;
   display: table;
@@ -2710,6 +2720,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
 @media (max-width: 640px) {
   .show-latest-block ul li .show-latest-promo.big .meta-wrapper, .related-content-block ul li .show-latest-promo.big .meta-wrapper {
     height: 29%;
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block ul li .show-latest-promo.big .meta-wrapper, .related-content-block ul li .show-latest-promo.big .meta-wrapper {
+    height: 33%;
   }
 }
 @media (max-width: 640px) {
@@ -4480,6 +4495,11 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 @media (max-width: 640px) {
   .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .sponsored {
     bottom: 29%;
+  }
+}
+@media (max-width: 480px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .sponsored {
+    bottom: 33%;
   }
 }
 

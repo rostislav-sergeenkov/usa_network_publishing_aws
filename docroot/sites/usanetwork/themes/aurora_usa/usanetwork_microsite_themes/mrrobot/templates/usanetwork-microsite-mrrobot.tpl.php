@@ -95,6 +95,12 @@ endif;
                       <?php print $sectionNav['link']; ?>
                     </li>
                     <?php endif; ?>
+
+                    <?php if ($sectionNav['type'] == 'videos'): // add must see moments nav ?>
+                    <li id="mobile-nav-must-see-moments" class="internal mobile must-see-moments<?php print ('must-see-moments' == $current_section) ? ' active' : '' ?>" data-menuanchor="must-see-moments">
+                      <a href="#" data-menuitem="2" class="scroll-link">must see moments</a>
+                    </li>
+                    <?php endif; ?>
                   <?php endforeach; ?>
                 <?php endif; ?>
                 <li id="site-nav-show-site-link"><a href="http://www.usanetwork.com/mrrobot" target="_blank">Visit Show Site</a></li>

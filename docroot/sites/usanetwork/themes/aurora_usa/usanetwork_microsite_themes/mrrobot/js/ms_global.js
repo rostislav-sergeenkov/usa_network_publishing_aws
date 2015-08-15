@@ -468,9 +468,12 @@
       $('#site-nav-links li, #site-nav-links-mobile li').removeClass('active disabled');
       if (anchor == 'videos') {
         var activeVideoFilter = Drupal.behaviors.ms_global.getActiveVideoFilter();
-        if (activeVideoFilter == 'behind-the-scenes' || activeVideoFilter == 'must-see-moments') {
+/*
+        if (activeVideoFilter == 'must-see-moments') {
           anchor = 'must-see-moments';
         }
+*/
+        if (activeVideoFilter != '' && activeVideoFilter != 'full-episodes') anchor = activeVideoFilter;
       }
       $('#site-nav-links li.' + anchor + ', #site-nav-links-mobile li.' + anchor).addClass('active');
     },
@@ -586,17 +589,15 @@
       }
     },
 
-    // to navigate to a specific video filter
-    selectVideoFilter: function(anchor){
+    // menu click to navigate to a specific video filter
+    selectVideoFilter: function(anchor, filterClass){
       Drupal.behaviors.ms_global.sectionScroll('videos');
 
-      var filterClass = (window.location.hostname == 'surf.usanetwork.com' || window.location.hostname == 'local.usanetwork.com') ? 'behind-the-scenes' : 'must-see-moments';
-      if (anchor == 'videos') filterClass = 'full-episodes';
-
-      var $this = $('#video-filter li.filter-item[data_filter_class="' + filterClass + '"]'),
+      var filterClass = filterClass || 'must-see-moments',
+          $this = $('#video-filter li.filter-item[data_filter_class="' + filterClass + '"]'),
           $filterItems = $('#video-filter li.filter-item'),
           $filterMenu = $('#video-filter .filter-menu');
-usa_debug('showMustSeeMoments(), $this: ', $this);
+usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $this);
 
       // set active nav
       Drupal.behaviors.ms_global.setActiveMenuItem('videos');
@@ -618,10 +619,15 @@ usa_debug('showMustSeeMoments(), $this: ', $this);
           url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
         }
         else {
-          var season_num = $childItems.last().attr('data-season-num');
-
-          $childItems.last().addClass('active');
-          url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;;
+          if (categoryName == 'Full episodes') {
+            var season_num = $childItems.last().attr('data-season-num');
+            $childItems.last().addClass('active');
+          }
+          else {
+            var season_num = $childItems.first().attr('data-season-num');
+            $childItems.first().addClass('active');
+          }
+          url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;
         }
 
         $('#thumbnail-list .expandable-toggle li').text('more').removeClass('less').addClass('more');
@@ -688,7 +694,14 @@ usa_debug('showMustSeeMoments(), $this: ', $this);
 
           // if clicked must see moments
           if (anchor == 'videos' || anchor == 'must-see-moments') {
-            self.selectVideoFilter(anchor);
+            switch(anchor) {
+              case 'videos':
+                self.selectVideoFilter('videos', 'full-episodes');
+                break;
+              case 'must-see-moments':
+                self.selectVideoFilter('videos', 'must-see-moments');
+                break;
+            }
           }
           else {
             Drupal.behaviors.ms_global.sectionScroll(anchor);

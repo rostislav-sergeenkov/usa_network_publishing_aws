@@ -233,12 +233,13 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $site_theme_path . '/css/ms_site.css',
     ),
     'js' => array(
+      'http://apps.usanetwork.com/mrrobot/catchup/msmVideosByEpisode.js',
       $module_path . '/js/jquery.bxslider.min.js',
       $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
       $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view
       $site_theme_path . '/js/ms_site.js',
       $site_theme_path . '/js/ms_global.js',
-      $default_theme_path . '/js/ms_videos.js',
+      $site_theme_path . '/js/ms_videos.js',
       $site_theme_path . '/js/ms_characters.js',
       $default_theme_path . '/js/ms_quizzes.js',
       $site_theme_path . '/js/ms_galleries_bxslider.js',

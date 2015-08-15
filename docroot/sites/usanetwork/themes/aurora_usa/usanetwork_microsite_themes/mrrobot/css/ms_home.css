@@ -14,7 +14,7 @@
   overflow: visible;
   margin-left: calc(-50% - 364px);
 }
-#gracelandcatchup-home {
+#home {
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost/images/graceland_catchup2015-bg-home.jpg');
   background-size: contain;
   background-position: center;
@@ -26,6 +26,8 @@
   margin-bottom: 0;
   color: #FFE476; /* yellow */
   text-align: center;
+  position: relative;
+  top: 5px; /* Needed for the home waypoint to trigger! */
 }
 #home #home-content-container {
   position: absolute;
@@ -68,18 +70,19 @@
   margin-bottom: 2%;
 }
 #home #home-content-container #home-nav {
-  width: 728px;
+  width: 50%;
   height: auto;
   margin-bottom: 4%;
 }
 #home #home-nav li {
   float: left;
   display: block;
-  width: 23%;
-  margin: 0 2.88%;
+  width: 21.3%;
+  margin: 0 6% 4%;
   height: auto;
   max-width: 140px;
 }
+/*
 #home #home-nav li .spoiler {
   float: left;
   clear: left;
@@ -108,6 +111,7 @@
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost/images/icons/graceland-s2catchup-spoiler-low.svg');
   background-size: 76%;
 }
+*/
 #microsite #home .ad-leaderboard {
   margin-top: 0;
 }
@@ -148,25 +152,25 @@
 
 /* ************** BEGIN MEDIA QUERIES ************* */
 @media (max-width: 1700px) {
-  #gracelandcatchup-home {
+  #home {
     margin-bottom: 174px;
   }
 }
 
 @media (max-width: 1500px) {
-  #gracelandcatchup-home {
+  #home {
     padding-top: 52%;
   }
 }
 
 @media (max-width: 1000px) {
-  #gracelandcatchup-home {
+  #home {
     padding-top: 60%;
   }
 }
 
 @media (max-width: 900px) {
-  #gracelandcatchup-home {
+  #home {
     background-size: 200%;
     background-position: center top;
     padding-top: 100%;

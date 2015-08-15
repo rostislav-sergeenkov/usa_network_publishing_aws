@@ -35,7 +35,6 @@
 
 <div class="full-pane clearfix">
   <?php if (!empty($gallery)): ?>
-<?php /* ?>
   <div class="microsite-gallery-meta clearfix">
     <?php if (empty($h1) && !empty($gallery['title']) && $status == 'active'): ?>
       <h1 class="gallery-title"><?php print $gallery['title']; ?></h1>
@@ -51,11 +50,12 @@
       <?php endif; ?>
     <?php endif; ?>
 
+<?php /* ?>
     <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden">
       <div id="gigya-share"></div>
     </div>
-  </div>
 <?php */ ?>
+  </div>
 
   <div class="left-pane">
     <div class="microsite-gallery" data-node-id="<?php if (!empty($gallery['gallery_nid'])) print $gallery['gallery_nid']; ?>">
@@ -155,4 +155,4 @@
   </div>
 </div>
 
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_do-not-disturb"></div>
+<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_galleries"></div>

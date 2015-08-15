@@ -200,7 +200,7 @@ section h2 {
   clear: both;
 }
 #microsite #sections {
-  margin: 0;
+  margin: 1px 0 0; /* 1px top margin is necessary for waypoints to work correctly! */
   padding: 0;
   background-color: #000;
 }

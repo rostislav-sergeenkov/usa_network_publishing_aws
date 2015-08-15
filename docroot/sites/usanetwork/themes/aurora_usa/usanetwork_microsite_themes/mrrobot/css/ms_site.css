@@ -71,6 +71,29 @@ section h2 {
 #site-nav li.active a {
   color: #999;
 }
+/* mobile */
+#site-nav-links-mobile ul#site-nav-links-list-mobile {
+  width: 180px;
+}
+#site-nav-links-mobile li {
+  width: 180px;
+}
+#site-nav-mobile li.internal a:hover,
+#site-nav-mobile li.internal a:active,
+#site-nav-mobile li.internal.active a {
+  color: red;
+}
+/* sub-nav */
+#video-filter li.filter-child-item {
+  background-color: #333;
+  color: #FFF;
+  border-bottom: 1px solid #444;
+}
+#video-filter li.filter-child-item:hover,
+#video-filter li.filter-child-item.active {
+  background-color: #444;
+  color: #FFF;
+}
 
 /* VIDEOS */
 #videos .header {
@@ -97,6 +120,9 @@ section h2 {
 #microsite .block-usanetwork-mpx-video li.grid-item:hover,
 #microsite .block-usanetwork-mpx-video li.grid-item.active {
   background-color: red;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item {
+  height: 54px;
 }
 
 /* TIMELINE GALLERIES */

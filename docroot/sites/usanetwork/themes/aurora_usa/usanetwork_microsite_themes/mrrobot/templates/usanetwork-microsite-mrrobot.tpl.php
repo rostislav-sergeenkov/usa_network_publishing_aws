@@ -26,7 +26,7 @@
 $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot';
 date_default_timezone_set('America/New_York');
 $timestamp = time();
-if ($timestamp > mktime(0, 0, 1, 8, 16, 2015)): // after Aug 16, 2015 00:00:01 AM ET
+if ($timestamp > mktime(22, 0, 0, 8, 26, 2015)): // after finale premiere starts Aug 26, 2015 22:00:00 AM ET
 endif;
 ?>
 
@@ -35,7 +35,6 @@ endif;
     <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
       <?php if (!empty($section['content']) && !empty($section['type'])): ?>
-        <?php if ($section['type'] == 'galleries'): $section['type'] = 'do-not-disturb'; endif; ?>
       <div id="<?php print $section['type']; ?>" class="section<?php print ($section['type'] == $current_section) ? ' active' : ''; ?>">
         <a name="<?php print $section['type']; ?>"></a>
         <section id="<?php print $section['type']; ?>-content" class="clearfix fadein fadein-1s fadein-delay-1s">
@@ -61,17 +60,19 @@ endif;
                 <ul id="site-nav-links-list">
                   <?php if (!empty($sections)): ?>
                     <?php foreach ($sections as $sectionNav): ?>
-                      <?php if ($sectionNav['type'] == 'galleries'): $sectionNav['type'] = 'do-not-disturb'; endif; ?>
                       <?php if ($sectionNav['type'] != 'home'): ?>
                       <li id="nav-<?php print $sectionNav['type']; ?>" class="internal <?php print $sectionNav['type']; ?><?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
                         <?php print html_entity_decode($sectionNav['link']); ?>
                       </li>
                       <?php endif; ?>
+
+                      <?php if ($sectionNav['type'] == 'videos'): // add must see moments nav ?>
+                      <li id="nav-must-see-moments" class="internal must-see-moments<?php print ('must-see-moments' == $current_section) ? ' active' : '' ?>" data-menuanchor="must-see-moments">
+                        <a href="#" data-menuitem="2" class="scroll-link">must see moments</a>
+                      </li>
+                      <?php endif; ?>
                     <?php endforeach; ?>
                   <?php endif; ?>
-<!--                  <li id="nav-do-not-disturb" class="internal do-not-disturb<?php print ('do-not-disturb' == $current_section) ? ' active' : '' ?>" data-menuanchor="do-not-disturb">
-                    <a href="#" data-menuitem="5" class="scroll-link">&lt;don't bother me&gt;</a>
-                  </li> -->
                 </ul>
               </div>
             </div>
@@ -94,6 +95,12 @@ endif;
                       <?php print $sectionNav['link']; ?>
                     </li>
                     <?php endif; ?>
+
+                    <?php if ($sectionNav['type'] == 'videos'): // add must see moments nav ?>
+                    <li id="mobile-nav-must-see-moments" class="internal mobile must-see-moments<?php print ('must-see-moments' == $current_section) ? ' active' : '' ?>" data-menuanchor="must-see-moments">
+                      <a href="#" data-menuitem="2" class="scroll-link">must see moments</a>
+                    </li>
+                    <?php endif; ?>
                   <?php endforeach; ?>
                 <?php endif; ?>
                 <li id="site-nav-show-site-link"><a href="http://www.usanetwork.com/mrrobot" target="_blank">Visit Show Site</a></li>
@@ -108,15 +115,6 @@ endif;
         </section>
       </div>
       <?php endif; ?>
-
-      <?php /* if (!empty($section['is_last'])): // add don't bother me section ?>
-      <div id="do-not-disturb" class="section<?php print ('do-not-disturb' == $current_section) ? ' active' : ''; ?>">
-        <a name="do-not-disturb"></a>
-        <section id="do-not-disturb-content" class="clearfix fadein fadein-1s fadein-delay-1s">
-          <?php include('usanetwork-microsite-mrrobot-page-do-not-disturb.tpl.php'); ?>
-        </section>
-      </div>
-      <?php endif; */ ?>
 
       <?php if (!empty($section['is_last'])): // add footer ?>
         <footer id="footer-microsite" role="contentinfo" class="clearfix">

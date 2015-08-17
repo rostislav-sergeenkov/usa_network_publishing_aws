@@ -100,10 +100,10 @@
         for (var j=1, numEpisodes = Object.keys(msmVideosByEpisode[i]).length; j <= numEpisodes; j++) {
           //usa_debug('addMSMVideoInfo() in season ' + i + ' and episode ' + j);
           // loop thru videos (k)
-          var numVideos = Object.keys(msmVideosByEpisode[i][j]).length;
+          var numVideos = Object.keys(msmVideosByEpisode[i][j]['fids']).length;
           if (numVideos > 0) {
             if (!firstEpisodeWithVideos) firstEpisodeWithVideos = j;
-            childHtml += '<li class="filter-child-item' + childClass + '" data-season-num="' + i + '" data-episode-num="' + j + '">S' + i + ' EP' + j + '</li>';
+            childHtml += '<li class="filter-child-item' + childClass + '" data-season-num="' + i + '" data-episode-num="' + j + '">S' + i + ' EP' + j + '<span class="msm-episode-title">' + msmVideosByEpisode[i][j]['title'] + '</span></li>';
             childClass = '';
 /*
             for (var k=0; k < numVideos; k++) {
@@ -129,7 +129,7 @@
     },
 
     // addMustSeeMomentsVideoInfo
-    // add season and episode information to Must See Moments video thumbnails
+    // add season and episode css selectors to Must See Moments video thumbnails
     addMSMVideoInfo: function(seasonNum, epNum){
       seasonNum = seasonNum || null;
       epNum = epNum || null;
@@ -145,12 +145,12 @@
         for (var j=1, numEpisodes = Object.keys(msmVideosByEpisode[i]).length; j <= numEpisodes; j++) {
           //usa_debug('addMSMVideoInfo() in season ' + i + ' and episode ' + j);
           // loop thru videos (k)
-          var numVideos = Object.keys(msmVideosByEpisode[i][j]).length;
+          var numVideos = Object.keys(msmVideosByEpisode[i][j]['fids']).length;
           if (numVideos > 0) {
             if (!firstEpisodeWithVideos) firstEpisodeWithVideos = j;
             for (var k=0; k < numVideos; k++) {
               //usa_debug('addMSMVideoInfo() -- season ' + i + ' episode ' + j + ' video ' + msmVideosByEpisode[i][j][k]);
-              $msmVideos.find('li[data-fid="' + msmVideosByEpisode[i][j][k] + '"]').addClass('season' + i + ' episode' + j);
+              $msmVideos.find('li[data-fid="' + msmVideosByEpisode[i][j]['fids'][k] + '"]').addClass('season' + i + ' episode' + j);
             }
           }
         }

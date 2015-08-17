@@ -3,8 +3,9 @@ html {
   color: #FFF;
   background-color: #000;
 }
-body {
+body.page-node-microsite {
   background-color: #000 !important;
+  font-family: source-code-pro, Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
 /* MAIN STRUCTURE */
@@ -44,6 +45,12 @@ section h2 {
 }
 #home #home-tunein {
   text-transform: none;
+}
+
+/* COUNTDOWN TIMER */
+.numbers,
+.title {
+  font-family: inherit;
 }
 .circle {
   border: 2px solid red;
@@ -88,6 +95,8 @@ section h2 {
   background-color: #333;
   color: #FFF;
   border-bottom: 1px solid #444;
+  text-align: left;
+  padding: 8px 0 8px 12px;
 }
 #video-filter li.filter-child-item:hover,
 #video-filter li.filter-child-item.active {
@@ -123,6 +132,10 @@ section h2 {
 }
 #microsite .block-usanetwork-mpx-video li.grid-item {
   height: 54px;
+}
+#videos .msm-episode-title {
+  font-size: 0.7em;
+  margin-left: 10px;
 }
 
 /* TIMELINE GALLERIES */

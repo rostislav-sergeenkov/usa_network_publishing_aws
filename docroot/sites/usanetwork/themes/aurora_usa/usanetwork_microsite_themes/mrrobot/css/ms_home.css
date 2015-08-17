@@ -82,6 +82,9 @@
   height: auto;
   max-width: 140px;
 }
+.home-button-text {
+  color: #FFF;
+}
 /*
 #home #home-nav li .spoiler {
   float: left;

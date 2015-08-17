@@ -214,11 +214,13 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
   $site_theme_path = $theme_path . '/usanetwork_microsite_themes/mrrobot';
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
+  $host = $_SERVER['HTTP_HOST'];
+  $apps_usa_host = ($host == 'www.usanetwork.com' || $host == 'origin-www.usanetwork.com' || $host == 'origin-beta.usanetwork.com' || $host == 'edit.usanetwork.com') ? 'apps.usanetwork.com' : 'stage-apps.usanetwork.com';
 
   return array(
     'css' => array(
       $module_path . '/css/jquery.bxslider.css',
-      $default_theme_path . '/css/fonts.css',
+      $site_theme_path . '/css/fonts.css',
       $default_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/site_nav.css',
       $default_theme_path . '/css/ms_gigya_share.css',
@@ -233,7 +235,9 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $site_theme_path . '/css/ms_site.css',
     ),
     'js' => array(
-      'http://apps.usanetwork.com/mrrobot/catchup/msmVideosByEpisode.js',
+//      'http://use.edgefonts.net/source-code-pro.js',
+//      $site_theme_path . '/js/source-code-pro.js',
+      'http://' . $apps_usa_host . '/mrrobot/catchup/msmVideosByEpisode.js',
       $module_path . '/js/jquery.bxslider.min.js',
       $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
       $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view

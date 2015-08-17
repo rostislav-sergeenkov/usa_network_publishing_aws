@@ -11,43 +11,6 @@ include_once 'usanetwork_ads.pages.inc';
  * Implements hook_init().
  */
 function usanetwork_ads_init() {
-  if (module_exists('usanetwork_menu')) {
-    if (path_is_admin(current_path())) {
-      return NULL;
-    }
-
-    $props = array();
-    $timezone_diff = 0;
-
-    $on_now = usanetwork_schedule_pull_on_now_item($timezone_diff);
-    $up_next = usanetwork_schedule_pull_up_next_item($timezone_diff);
-
-    $nodes = array(
-      'on_now' => FALSE,
-      'up_next' => FALSE,
-    );
-
-    if (!empty($on_now[0]) && !empty($on_now[0]->nid)) {
-      $nodes['on_now'] = node_load($on_now[0]->nid);
-    }
-
-    if (!empty($up_next[0]) && !empty($up_next[0]->nid)) {
-      $nodes['up_next'] = node_load($up_next[0]->nid);
-    }
-
-    foreach ($nodes as $key => $node) {
-      if ($node) {
-        $props[$key] = _usanetwork_ads_get_node_omniture_variables($node);
-      }
-    }
-
-    drupal_add_js(array(
-      'usanetwork_ads' => array(
-        'onnow_upnext' => $props,
-      ),
-    ), 'setting');
-  }
-
   drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer', 'every_page' => true));
   //DTM Implementation
   if (_usanetwork_widget_get_environment() == 'prod') {
@@ -745,13 +708,6 @@ function _usanetwork_ads_get_omniture_variables($omniture_settings) {
   }
 
   return $omniture_variables;
-}
-
-/**
- * Helper that returns omniture variables for a given node.
- */
-function _usanetwork_ads_get_node_omniture_variables($node) {
-  return _usanetwork_ads_get_entity_omniture_variables($node, 'node');
 }
 
 /**

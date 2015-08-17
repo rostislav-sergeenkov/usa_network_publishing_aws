@@ -372,31 +372,18 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($tv_show_nod
     return '';
   }
 
-  $count = _usanetwork_consumptionator_post_get_posts_count($tv_show_node->nid);
-  $last_element_index = $offset * USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS + USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS;
-  $load_more_link = TRUE;
-  if ($last_element_index >= $count) {
-    $load_more_link = FALSE;
-  }
   $theme_variables = array(
     'items' => array(),
-    'ad' => FALSE,
-    'title' => NULL,
+    'ad' => $show_ad,
+    'ad_id' => intval($offset / USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS),
+    'title' => usanetwork_consumptionator_post_get_blog_title($tv_show_node),
     'show_nid' => $tv_show_node->nid,
     'ajax_load' => $ajax_load,
-    'load_more_link' => $load_more_link,
+    'load_more_link' => !$ajax_load,
   );
 
   $posts_data = _usanetwork_consumptionator_post_get_posts_data($tv_show_node->nid, $offset);
 
-  if ($show_ad === FALSE) {
-    $theme_variables['ad'] = FALSE;
-  }
-  else {
-    $theme_variables['ad'] = TRUE;
-  }
-
-  $theme_variables['title'] = usanetwork_consumptionator_post_get_blog_title($tv_show_node);
 
   if (!empty($posts_data)) {
     foreach ($posts_data as $post_data_index => $post_data) {

@@ -8,13 +8,17 @@ usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
       if (typeof Drupal.gigya != 'undefined') {
 usa_debug('gallery Drupal.gigya is not undefined');
 //        var slider = $slider.data('flexslider');
-        currentSlide = 1; // slider.currentSlide + 1;
-        var $sharebar = $('#galleries #gallery-gigya-share'); // $('#galleries .field-name-field-gigya-share-bar > div');
-//        if ($sharebar.length > 0) {
-          var $title = 'Do Not Disturb! I\'m watching Mr. Robot!'; // $slider.parents('.full-pane').find('.microsite-gallery-meta h2.gallery-title').text();
-//          if ($title == '') $title = $slider.parents('.full-pane').find('.microsite-gallery-meta h1.gallery-title').text();
-          var $currentImage = 'http://' + window.location.hostname + '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/mr_robot_logo.png'; // $slider.find('.flex-active-slide .file-image img');
-          var $currentCaption = 'Do Not Disturb! I\'m watching Mr. Robot!'; // $slider.find('.flex-active-slide .field-name-field-caption p').text();
+        var $activeImage = $('#galleries #gallery-content li.active2'),
+            currentSlide = parseInt($activeImage.attr('data-slide-index')),
+            $sharebar = $('#galleries #gallery-gigya-share');
+        if (typeof currentSlide != 'number') currentSlide = 0;
+
+        // check to be sure there's a sharebar container
+        if ($sharebar.length > 0) {
+          var $title = 'Do Not Disturb! I\'m watching Mr. Robot!',
+              $currentImageSrc = $activeImage.find('img').attr('src'),
+              $currentCaption = 'Do Not Disturb! I\'m watching Mr. Robot!',
+              url = (parseInt(currentSlide) < 10) ? 'http://www.usanetwork.com/mrrobot/dnd/0' + currentSlide : 'http://www.usanetwork.com/mrrobot/dnd/' + currentSlide;
 
           sharebar = new Object();
           sharebar.gigyaSharebar = {
@@ -25,17 +29,15 @@ usa_debug('gallery Drupal.gigya is not undefined');
             shortURLs: "never",
             showCounts: "none"
           }
-usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
 
-          var url = 'http://www.usanetwork.com/node/60411?rf=1'; // 'mrrobot/catchup'; // $('.bxslider li.active a').attr('href');
-//          url = window.location.protocol + '//' + window.location.hostname + url;
           sharebar.gigyaSharebar.ua = {
             description: $currentCaption,
             imageBhev: "url",
-            imageUrl: $currentImage, // $currentImage.attr('src'),
+            imageUrl: $currentImageSrc,
             linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
             title: $title
           }
+usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
           Drupal.gigya.showSharebar(sharebar);
 
           // omniture
@@ -53,7 +55,7 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
               void (s.t());
             }
           }
-//        }
+        }
       }
     },
 
@@ -141,12 +143,25 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
       $('#microsite #galleries .center-wrapper').css('min-height', (height + captionHeight) + 'px');
     },
 
+/*
     setActiveGalleryNav: function() {
       var activeGalleryNid = $('#microsite #galleries-content .microsite-gallery').attr('data-node-id');
       $('#galleries .galleries-bxslider li').removeClass('active');
       $('#galleries .galleries-bxslider li[data-node-id="' + activeGalleryNid + '"]').addClass('active');
     },
+*/
 
+    currentSlideNum: 0,
+    setActiveGalleryImageNav: function(slideNum) {
+usa_debug('setActiveGalleryImageNav(' + slideNum + ')');
+      var $galleryContentList = $('#galleries #gallery-content ul.bxslider'),
+          $galleryNavList = $('#galleries #gallery-nav ul#bx-pager');
+      $('#galleries #gallery-content li, #galleries #gallery-nav a').removeClass('active2');
+      $('#galleries #gallery-content li[data-slide-index="' + slideNum + '"], #galleries #gallery-nav a[data-slide-index="' + slideNum + '"]').addClass('active2');
+      Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture();
+    },
+
+/*
     initCarousel: function(callback) {
       callback = callback || null;
       $slideSelector = $('.microsite-gallery .flexslider');
@@ -188,6 +203,7 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
           }
         });
     },
+*/
 
     showHideLoader: function() {
       var activeGallery = $('#galleries .microsite-gallery'),
@@ -211,6 +227,7 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
       });
     },
 
+/*
     switchGallery: function(nid, callback) {
       callback = callback || null;
 
@@ -264,6 +281,7 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
         //usa_debug(errorThrown);
       })
     },
+*/
 
     micrositeReloadSliders: function() {
       $('#microsite #galleries .bxslider-container').width('100%');
@@ -321,6 +339,7 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
       $('#galleries .galleries-bxslider li[data-node-id="' + Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem + '"]').addClass('active');
     },
 
+/*
     promoClickSwitchGallery: function(anchorFull) {
       var anchorPathParts = Drupal.behaviors.ms_global.getUrlPath(anchorFull),
           $navItems = $('#microsite #galleries .galleries-bxslider li a'),
@@ -371,6 +390,7 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
 
       history.pushState({"state": anchorFull}, anchorFull, anchorFull);
     },
+*/
 
     attach: function (context, settings) {
 
@@ -431,6 +451,8 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
         self.setActiveGalleryNav();
 
         $('#microsite #galleries .galleries-bxslider li a').bind('click', self.changeGalleryHandler);
+
+Drupal.behaviors.micrositeGalleriesBxSliders.
 */
 
         var slideCount = 0;
@@ -452,6 +474,7 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
           slideWidth = 200;
           slideHeight = 200;
         }
+
         $('.bxslider').bxSlider({
           pagerCustom: '#bx-pager',
           infiniteLoop: false,
@@ -468,9 +491,29 @@ usa_debug('galleryNavHeight: ' + galleryNavHeight + ', galleryNavMinSlides: ' + 
                 slideHeight: slideHeight,
                 minSlides: minNavSlides,
                 slideMargin: slideMargin,
+                infiniteLoop: false,
+                hideControlOnEnd: true,
                 onSliderLoad: function(){
                   $('#galleries #gallery-nav .bx-viewport').css({'min-height': galleryNavHeight + 'px !important'});
                   self.updateGigyaSharebarOmniture();
+                  self.setActiveGalleryImageNav(0);
+
+                  // initialize next/prev clicks -- only setting active nav elements
+                  $('#galleries #gallery-content .bx-controls .bx-next').on('click', function(){
+                    self.currentSlideNum++;
+                    self.setActiveGalleryImageNav(self.currentSlideNum);
+usa_debug('self.currentSlideNum: ' + self.currentSlideNum);
+                  });
+                  $('#galleries #gallery-content .bx-controls .bx-prev').on('click', function(){
+                    self.currentSlideNum--;
+                    self.setActiveGalleryImageNav(self.currentSlideNum);
+                  });
+
+                  // initialize nav button click -- only setting active nav elements
+                  $('#galleries #gallery-nav a').on('click', function(){
+                    self.currentSlideNum = parseInt($(this).attr('data-slide-index'));
+                    self.setActiveGalleryImageNav(self.currentSlideNum);
+                  });
                 }
               });
             }, 2000);

@@ -223,7 +223,7 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $site_theme_path . '/css/fonts.css',
       $default_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/site_nav.css',
-      $default_theme_path . '/css/ms_gigya_share.css',
+      $site_theme_path . '/css/ms_gigya_share.css',
       $site_theme_path . '/css/ms_home.css',
       $site_theme_path . '/css/ms_videos.css',
       $default_theme_path . '/css/ms_timeline.css',

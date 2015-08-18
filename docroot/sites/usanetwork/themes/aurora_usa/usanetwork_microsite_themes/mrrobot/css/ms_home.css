@@ -15,19 +15,23 @@
   margin-left: calc(-50% - 364px);
 }
 #home {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost/images/graceland_catchup2015-bg-home.jpg');
-  background-size: contain;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/landing_bg.jpg');
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #000;
+  background-color: #161618;
   width: 100%;
   height: auto;
   padding-top: 40%;
   margin-bottom: 0;
-  color: #FFE476; /* yellow */
+  color: #FFF;
   text-align: center;
   position: relative;
   top: 5px; /* Needed for the home waypoint to trigger! */
+}
+#home-wrapper {
+  width: 100%;
+  padding-top: 58%;
 }
 #home #home-content-container {
   position: absolute;
@@ -40,6 +44,7 @@
 }
 #home #home-logo {
   width: 42%;
+  max-width: 561px;
 }
 #home #home-sponsored.camry2015 {
   width: 24%;
@@ -80,7 +85,10 @@
   width: 21.3%;
   margin: 0 6% 4%;
   height: auto;
-  max-width: 140px;
+  max-width: 248px;
+}
+#home #home-nav li:nth-child(4n) {
+  clear: left;
 }
 .home-button-text {
   color: #FFF;

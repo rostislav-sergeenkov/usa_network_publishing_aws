@@ -92,6 +92,9 @@
           }
           else {
             // countdown reached zero
+            // remove the countdown timer
+            jQuery('#home-countdown').remove();
+/*
             // show a message and then in 1 minute, restart the countdown
             jQuery('#section_countdown h3').first().css('display', 'none');
             jQuery('#countHolder').before('<h2>An All New Episode Has Started!<br><a href="http://www.usanetwork.com/videos/live" target="_blank">Watch It Now!</a></h2>');
@@ -106,6 +109,7 @@
               jQuery('#countdown p').css('display', 'block');
               Drupal.behaviors.countdown.getNextEvent();
             }, 60 * 60 * 1000); // 1 hr
+*/
           }
           return;
         }

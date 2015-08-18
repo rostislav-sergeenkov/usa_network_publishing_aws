@@ -6,13 +6,14 @@
       initialPageLoad = initialPageLoad || 0;
 usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
       if (typeof Drupal.gigya != 'undefined') {
+usa_debug('gallery Drupal.gigya is not undefined');
 //        var slider = $slider.data('flexslider');
         currentSlide = 1; // slider.currentSlide + 1;
-        var $sharebar = $('#galleries .field-name-field-gigya-share-bar > div');
-        if ($sharebar.length > 0) {
+        var $sharebar = $('#galleries #gallery-gigya-share'); // $('#galleries .field-name-field-gigya-share-bar > div');
+//        if ($sharebar.length > 0) {
           var $title = 'Do Not Disturb! I\'m watching Mr. Robot!'; // $slider.parents('.full-pane').find('.microsite-gallery-meta h2.gallery-title').text();
 //          if ($title == '') $title = $slider.parents('.full-pane').find('.microsite-gallery-meta h1.gallery-title').text();
-          var $currentImage = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/mr_robot_logo.png'; // $slider.find('.flex-active-slide .file-image img');
+          var $currentImage = 'http://' + window.location.hostname + '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/mr_robot_logo.png'; // $slider.find('.flex-active-slide .file-image img');
           var $currentCaption = 'Do Not Disturb! I\'m watching Mr. Robot!'; // $slider.find('.flex-active-slide .field-name-field-caption p').text();
 
           sharebar = new Object();
@@ -24,13 +25,14 @@ usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
             shortURLs: "never",
             showCounts: "none"
           }
+usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
 
-          var url = 'mrrobot/catchup'; // $('.bxslider li.active a').attr('href');
-          url = window.location.protocol + '//' + window.location.hostname + url;
+          var url = 'http://www.usanetwork.com/node/60411?rf=1'; // 'mrrobot/catchup'; // $('.bxslider li.active a').attr('href');
+//          url = window.location.protocol + '//' + window.location.hostname + url;
           sharebar.gigyaSharebar.ua = {
             description: $currentCaption,
             imageBhev: "url",
-            imageUrl: $currentImage.attr('src'),
+            imageUrl: $currentImage, // $currentImage.attr('src'),
             linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
             title: $title
           }
@@ -51,7 +53,7 @@ usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
               void (s.t());
             }
           }
-        }
+//        }
       }
     },
 
@@ -166,23 +168,23 @@ usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
           start: function() {
             Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryHeight();
             var $slider = $slideSelector;
-            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
+            Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture($slider);
             var current_gallery = $slider.closest('.microsite-gallery');
             var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
             if (current_description) {
               current_gallery.find('.description-block').html(current_description);
             }
             $slider.append('<div class="counter"></div>');
-            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+//            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
 
             if (callback) callback();
           },
           after: function() {
             var $slider = $slideSelector;
-            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
-            Drupal.behaviors.microsite_gallery_carousel.refreshBannerAd();
-            Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
-            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+            Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture($slider);
+            Drupal.behaviors.micrositeGalleriesBxSliders.refreshBannerAd();
+//            Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
+//            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
           }
         });
     },
@@ -233,16 +235,16 @@ usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
         var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
             activeGallery = $('#galleries .microsite-gallery'),
             activeGalleryHeight = activeGallery.height(),
-            galleryNavItems = $('#galleries .galleries-bxslider li'),
-            shareBarHtml = '<div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden"><div id="gigya-share"></div></div>';
+            galleryNavItems = $('#galleries .galleries-bxslider li');
+//            shareBarHtml = '<div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden"><div id="gigya-share"></div></div>';
 
           activeGallery.animate({'opacity': 0}, 1000, function(){
 
           if (data.h1.length > 0 && data.title.length > 0) {
-            titleHtml = '<h2 class="seo-h1">' + data.h1 + '</h2><h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
+            titleHtml = '<h2 class="seo-h1">' + data.h1 + '</h2><h2 class="gallery-title">' + data.title + '</h2>';
             activeGalleryMeta.html(titleHtml);
           } else if (data.title.length > 0) {
-            titleHtml = '<h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
+            titleHtml = '<h2 class="gallery-title">' + data.title + '</h2>';
             activeGalleryMeta.html(titleHtml);
           }
 

@@ -120,6 +120,7 @@ section h2 {
 }
 #microsite .full-pane #video-container .video-description {
   color: #FFF;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 #video-filter li.filter-item:hover,
 #video-filter li.filter-item.active {
@@ -244,4 +245,9 @@ section h2 {
   color: #FFF;
   cursor: pointer;
   font-family: "avalonextra_light", sans-serif;
+}
+
+/* QUIZZES */
+#quizzes article.node-quiz {
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }

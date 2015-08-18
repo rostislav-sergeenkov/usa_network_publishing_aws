@@ -50,7 +50,7 @@ endif;
       <div id="site-nav" class="section">
         <a name="site-nav"></a>
         <section id="site-nav-content" class="clearfix">
-          <div id="site-nav-left"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-usa.svg" alt="USA Network logo"></a></div>
+          <div id="site-nav-left"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/usa_logo.svg" alt="USA Network logo"></a></div>
           <div id="site-nav-center">
             <div id="site-nav-top">
               <a id="site-nav-logo" class="internal" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/mr_robot_logo.png" alt="Mr. Robot logo"></a>

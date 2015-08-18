@@ -58,6 +58,7 @@ DirectoryIndex index.php index.html index.htm
 
   # Alternative robots.txt file on non-www domains.
   RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteCond %{HTTP_HOST} !^usanetwork\.com$ [NC]
   RewriteRule ^robots\.txt$ robots_noindex.txt [L]
 
   # Set "protossl" to "s" if we were accessed via https://.  This is used later

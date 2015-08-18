@@ -75,10 +75,10 @@
   <div class="right-pane">
     <div id="gallery-content">
       <ul class="bxslider"></ul>
-      <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden">
+      <div id="gallery-sharing-container">
         <span id="gallery-sharing-text">Download or share this message</span>
-        <span id="gallery-download"></span>
-        <span id="gallery-gigya-share"></span>
+        <span class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden"><span id="gallery-gigya-share"></span></span>
+        <span id="gallery-download"><a href="/sites/usanetwork/files/public/styles/1400_wide/public/chrisley_bunch.jpg?itok=Wh69fMVA" download="MrRobotDoNotDisturb.jpg"><img src="/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/icons/icon_download.png" alt="Download"></a></span>
       </div>
     </div>
 

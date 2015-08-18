@@ -224,7 +224,7 @@
   display: block;
   border: 2px solid transparent;
 }
-#galleries #gallery-nav .bx-viewport a.active {
+#galleries #gallery-nav .bx-viewport a.active2 {
   display: block;
   border: 2px solid #FFF;
 }
@@ -240,12 +240,14 @@
 }
 #galleries #gallery-nav .bx-controls-direction a.bx-prev {
   background-image: none;
+  background-color: transparent;
   left: 0;
   text-indent: -3px;
   text-align: center;
 }
 #galleries #gallery-nav .bx-wrapper .bx-next {
   background-image: none;
+  background-color: transparent;
   right: 0;
   text-indent: -3px;
   text-align: center;
@@ -261,10 +263,27 @@
 
 /* gigya */
 #microsite #galleries .field-type-gigya-sharebar {
-  width: 150px;
+  width: 125px;
   float: right;
   height: 29px;
   margin: 5px 0 0;
+}
+#galleries #gallery-sharing-container {
+  color: #6c6f71;
+  width: 100%;
+  float: right;
+  text-align: right;
+}
+#microsite #galleries #gallery-sharing-text {
+  margin-right: 8px;
+  line-height: 24px;
+}
+#microsite #galleries #gallery-download {
+  width: 24px;
+  height: 24px;
+  margin: 0 3px;
+  float: right;
+  background-color: transparent;
 }
 #microsite #galleries #gigya-share {
   width: 196px;
@@ -276,7 +295,7 @@
   padding: 0;
   display: inline-block;
   vertical-align: top;
-  margin: 0 3px 0;
+  margin: 0 3px;
 }
 #microsite .field-type-gigya-sharebar .gig-button-container td > div {
   background-image: none !important;
@@ -291,7 +310,6 @@
   background-image: url("../images/social_chatter_icons.png");
   background-repeat: none;
 }
-
 
 /* right pane content */
 #microsite #galleries .galleries-nav {
@@ -312,7 +330,7 @@
   margin: 0 0 8px;
 }
 #microsite #galleries .bx-wrapper {
-  margin: 0 0 60px;
+  margin: 0 0 15px;
 }
 #microsite #galleries .galleries-nav .bx-wrapper {
   background-color: transparent;
@@ -485,7 +503,7 @@
     width: 100%;
   }
   #microsite #galleries .bx-wrapper {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
   #microsite #galleries-content .right-pane .ad300x250 {
     float: left;

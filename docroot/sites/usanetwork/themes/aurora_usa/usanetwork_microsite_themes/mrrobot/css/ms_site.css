@@ -39,10 +39,6 @@ section h2 {
 /* HOME */
 #home.section {
   background-color: #161618;
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/landing_bg_repeat.jpg');
-  background-repeat: repeat;
-  background-position: top left;
-  background-size: 100%;
 }
 #home #home-tunein {
   color: #FFF;

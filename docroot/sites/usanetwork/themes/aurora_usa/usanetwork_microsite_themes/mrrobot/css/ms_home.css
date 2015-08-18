@@ -22,7 +22,7 @@
   background-color: #161618;
   width: 100%;
   height: auto;
-  padding-top: 40%;
+  padding: 0;
   margin-bottom: 0;
   color: #FFF;
   text-align: center;
@@ -30,12 +30,12 @@
   top: 5px; /* Needed for the home waypoint to trigger! */
 }
 #home-wrapper {
+  padding-top: 40vw;
   width: 100%;
-  padding-top: 58%;
 }
 #home #home-content-container {
   position: absolute;
-  top: 23%;
+  top: calc(1.5vw + 90px);
   left: 0;
   width: 100%;
 }
@@ -43,8 +43,9 @@
   margin: 0 auto 1.5%;
 }
 #home #home-logo {
-  width: 42%;
-  max-width: 561px;
+  width: 18%;
+  max-width: 450px;
+  margin-bottom: 2vw!important;
 }
 #home #home-sponsored.camry2015 {
   width: 24%;
@@ -58,24 +59,50 @@
 #home #home-tunein,
 #home #home-description {
   width: 100%;
-  font-size: 1.38em;
+  font-size: 0.88vw!important;
   text-align: center;
   text-shadow: 1px 1px 3px #000;
   text-transform: uppercase;
   color: #FFE476;
   margin-bottom: 1%;
 }
-#home #home-content-container #home-description {
-  margin-top: 80px;
-}
 #home #home-countdown {
-  width: 30%;
-  min-width: 236px;
-  max-width: 460px;
+  width: 18%;
+  max-width: 450px;
   margin-bottom: 2%;
 }
+#home #home-countdown .circle {
+  display: table;
+  height: 4.2vw;
+  max-height: none;
+  max-width: none;
+  padding-top: 0;
+  width: 4.2vw;
+}
+
+#home #home-countdown .counter-container {
+  display: table-cell;
+  left: 0;
+  position: relative;
+  top: 0;
+  width: 100%;
+
+  vertical-align: middle;
+}
+
+#home #home-countdown .numbers {
+  font-size: 1.28vw!important;
+  margin-bottom: 6%;
+}
+#home #home-countdown .title {
+  font-size: 0.64vw!important;
+}
+#home #home-countdown .line {
+  width: 60%;
+}
+
 #home #home-content-container #home-nav {
-  width: 50%;
+  width: 32%;
   height: auto;
   margin-bottom: 4%;
 }
@@ -87,11 +114,13 @@
   height: auto;
   max-width: 248px;
 }
-#home #home-nav li:nth-child(4n) {
+#home #home-nav li:nth-child(3n + 1) {
   clear: left;
 }
 .home-button-text {
   color: #FFF;
+  font-size: 0.72vw!important;
+  line-height: 1.3;
 }
 /*
 #home #home-nav li .spoiler {
@@ -162,35 +191,40 @@
 
 
 /* ************** BEGIN MEDIA QUERIES ************* */
-@media (max-width: 1700px) {
-  #home {
-    margin-bottom: 174px;
-  }
-}
 
-@media (max-width: 1500px) {
-  #home {
-    padding-top: 52%;
-  }
-}
-
-@media (max-width: 1000px) {
-  #home {
-    padding-top: 60%;
-  }
-}
-
-@media (max-width: 900px) {
-  #home {
-    background-size: 200%;
-    background-position: center top;
-    padding-top: 100%;
-  }
+@media (min-width: 2500px) {
   #home #home-content-container {
-    top: 30%;
+    top: 138px;
   }
   #home #home-logo {
-    width: 86%;
+    margin-bottom: 175px!important;
+  }
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 22px!important;
+  }
+  #home #home-countdown .numbers {
+    font-size: 32px!important;
+  }
+  #home #home-countdown .title {
+    font-size: 16px!important;
+  }
+  .home-button-text {
+    font-size: 16px!important;
+  }
+}
+
+@media (max-width: 1024px) {
+  #home.section {
+    background-position: center top;
+    padding-top: calc(80vw + 90px);
+  }
+  #home-wrapper {
+    padding-top: 0;
+  }
+  #home #home-logo {
+    margin-bottom: 7vw!important;
+    width: 40%;
   }
   #home #home-sponsored {
     width: 50%;
@@ -198,58 +232,81 @@
   }
   #home #home-tunein,
   #home #home-description {
-    font-size: 1em;
+    font-size: 2.15vw!important;
   }
   #home #home-countdown {
-    width: 48%;
+    width: 50%;
+  }
+  #home #home-countdown .circle {
+    height: 8vw;
+    width: 8vw;
+  }
+  #home #home-countdown .numbers {
+    font-size: 3.125vw!important;
+  }
+  #home #home-countdown .title {
+    font-size: 1.5625vw!important;
+  }
+  .home-button-text {
+    font-size: 1.5625vw!important;
+  }
+  #home #home-content-container {
+    top: calc(5vw + 90px);
   }
   #home #home-content-container #home-nav {
-    width: 668px;
+    width: 628px;
   }
   #home #home-nav li {
     width: 29.3%;
-    margin: 0 2%;
-  }
-  #microsite #home .ad-leaderboard {
-    margin-top: 144px;
+    margin: 0 2% 6%;
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 640px) {
+  #home.section {
+    padding-top: calc(100vw + 90px);
+  }
+  #home #home-countdown .circle {
+    height: 56px;
+    width: 56px;
+  }
+  #home #home-countdown .numbers {
+    font-size: 20px!important;
+  }
+  #home #home-countdown .title {
+    font-size: 10px!important;
+  }
+  .home-button-text {
+    font-size: 10px!important;
+  }
   #home #home-content-container #home-nav {
     width: 304px;
   }
   #home #home-nav li {
     width: 46%;
-    margin: 0 2% 14%;
+    margin: 0 2% 4vw;
   }
-  #microsite #home .ad-leaderboard {
-    margin-top: 370px;
-  }
-}
-
-@media (max-width: 670px) {
   #home #home-usa-logo {
     width: 38px;
     height: auto;
   }
-}
-
-@media (max-width: 620px) {
-  #microsite #home .ad-leaderboard {
-    margin-top: 450px;
+  #home #home-nav li:nth-child(3n + 1) {
+    clear: none;
+  }
+  #home #home-nav li:nth-child(2n + 1) {
+    clear: left;
   }
 }
-
-@media (max-width: 560px) {
+@media (max-width: 480px) {
+  #home.section {
+    padding-top: calc(135vw + 90px);
+  }
+  #home #home-countdown {
+    width: 65%;
+  }
   #home #home-tunein,
   #home #home-description {
-    font-size: 0.8em;
+    font-size: 10px!important;
   }
 }
 
-@media (max-width: 470px) {
-  #microsite #home .ad-leaderboard {
-    margin-top: 624px;
-  }
-}

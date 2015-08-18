@@ -12,6 +12,7 @@ body.page-node-microsite {
 .page-node-microsite .usa-wrap {
   background-color: #000;
   top: -5px;
+  margin: 0 auto;
 }
 
 /* SECTIONS CONTAINERS */

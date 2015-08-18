@@ -578,18 +578,6 @@
   }
 }
 
-@media (max-width: 920px) {
-  #video-filter li.filter-item .item-list {
-    top: 28px;
-  }
-}
-
-@media (max-width: 670px) {
-  #video-filter li.filter-item .item-list {
-    top: 24px;
-  }
-}
-
 @media (max-width: 640px) {
   #microsite .block-usanetwork-mpx-video {
     width: 100%;
@@ -663,6 +651,9 @@
     line-height: 24px;
     top: 3px;
   }
+  #video-filter li.filter-child-item {
+    font-size: 80%;
+  }
 }
 
 @media (max-width: 570px) {
@@ -675,3 +666,17 @@
     margin-left: -4px;
   }
 }
+
+@media (max-width: 480px) {
+  #videos .filter-wrapper {
+    width: 90%;
+  }
+  #videos .full-pane {
+    width: 90%;
+  }
+  #video-filter li.filter-child-item span {
+    display: block;
+    margin-left: 0px;
+  }
+}
+

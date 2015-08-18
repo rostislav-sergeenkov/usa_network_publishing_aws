@@ -173,5 +173,15 @@ AddType model/vnd.collada+xml dae
   </IfModule>
 </IfModule>
 
-RedirectMatch 301 ^/series/monk/(.*)$ http://www2.usanetwork.com/series/monk/$1
-RedirectMatch 301 ^/series/burnnotice/.*$ http://www.usanetwork.com/burnnotice
+RedirectMatch 301 ^/series/monk/?(.*)$ http://www2.usanetwork.com/series/monk/$1
+RedirectMatch 301 ^/series/thedeadzone/?(.*)$ http://www2.usanetwork.com/series/thedeadzone/$1
+RedirectMatch 301 ^/series/nashvillestar/?(.*)$ http://www2.usanetwork.com/series/nashvillestar/$1
+RedirectMatch 301 ^/series/the4400/?(.*)$ http://www2.usanetwork.com/series/the4400/$1
+RedirectMatch 301 ^/series/politicalanimals/?(.*)$ http://www2.usanetwork.com/series/politicalanimals/$1
+RedirectMatch 301 ^/series/inplainsight/?(.*)$ http://www2.usanetwork.com/series/inplainsight/$1
+RedirectMatch 301 ^/series/commonlaw/?(.*)$ http://www2.usanetwork.com/series/commonlaw/$1
+RedirectMatch 301 ^/series/fairlylegal/?(.*)$ http://www2.usanetwork.com/series/fairlylegal/$1
+RedirectMatch 301 ^/series/drsteveo/?(.*)$ http://www2.usanetwork.com/series/drsteveo/$1
+RedirectMatch 301 ^/series/burnnotice/?.*$ http://www.usanetwork.com/burnnotice
+RedirectMatch 301 ^/series/criminalintent/?.*$ http://www.usanetwork.com/criminalintent
+

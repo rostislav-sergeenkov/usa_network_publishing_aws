@@ -16,13 +16,13 @@ body.page-node-microsite {
 
 /* SECTIONS CONTAINERS */
 .section {
-  background-color: #000;
+  background-color: #161618;
 }
 .section:nth-child(odd) {
-  background-color: #222;
+  background-color: #050506;
 }
 .section:nth-child(even) {
-  background-color: #000;
+  background-color: #161618;
 }
 #character-info .section {
   background-color: transparent;
@@ -37,6 +37,13 @@ section h2 {
 }
 
 /* HOME */
+#home.section {
+  background-color: #161618;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/landing_bg_repeat.jpg');
+  background-repeat: repeat;
+  background-position: top left;
+  background-size: 100%;
+}
 #home #home-tunein {
   color: #FFF;
 }
@@ -57,6 +64,9 @@ section h2 {
 }
 
 /* SITE NAV */
+#site-nav #site-nav-content {
+  border-bottom: 2px solid #161618;
+}
 #site-nav #site-nav-top {
   width: 55%;
   margin: 0 auto;
@@ -115,9 +125,6 @@ section h2 {
 #microsite .full-pane #video-container .video-description {
   color: #FFF;
 }
-#video-filter li.filter-item {
-  background-color: #333;
-}
 #video-filter li.filter-item:hover,
 #video-filter li.filter-item.active {
   background-color: red;
@@ -134,8 +141,7 @@ section h2 {
   height: 54px;
 }
 #videos .msm-episode-title {
-  font-size: 0.7em;
-  margin-left: 10px;
+  margin-left: 26px;
 }
 
 /* TIMELINE GALLERIES */

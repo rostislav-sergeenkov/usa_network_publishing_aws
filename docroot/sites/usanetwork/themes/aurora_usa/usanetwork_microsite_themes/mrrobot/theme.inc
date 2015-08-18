@@ -225,7 +225,7 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $default_theme_path . '/css/site_nav.css',
       $default_theme_path . '/css/ms_gigya_share.css',
       $site_theme_path . '/css/ms_home.css',
-      $default_theme_path . '/css/ms_videos.css',
+      $site_theme_path . '/css/ms_videos.css',
       $default_theme_path . '/css/ms_timeline.css',
       $default_theme_path . '/css/ms_characters.css',
       $default_theme_path . '/css/ms_quizzes.css',
@@ -235,8 +235,6 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $site_theme_path . '/css/ms_site.css',
     ),
     'js' => array(
-//      'http://use.edgefonts.net/source-code-pro.js',
-//      $site_theme_path . '/js/source-code-pro.js',
       'http://' . $apps_usa_host . '/mrrobot/catchup/msmVideosByEpisode.js',
       $module_path . '/js/jquery.bxslider.min.js',
       $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view

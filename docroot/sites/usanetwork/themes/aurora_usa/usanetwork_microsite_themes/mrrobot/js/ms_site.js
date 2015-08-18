@@ -24,7 +24,7 @@
           $homeUsaLogo = $('#home-usa-logo'),
           $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 0) {
-        $siteNav.css({'opacity': 1}).animate({'max-height': '70px'}, 700, function(){
+        $siteNav.css({'opacity': 1}).animate({'max-height': '72px'}, 700, function(){
           if ($(this).hasClass('mobile')) {
             $(this).css({'overflow': 'visible'}); // to allow hamburger hover state to work
           }
@@ -157,11 +157,12 @@
       }
       if (!seasonNum) seasonNum = firstSeason;
       if (!epNum) epNum = firstEpisodeWithVideos;
-      Drupal.behaviors.ms_site.showMSMVideosBySeasonNEpisode(seasonNum, epNum);
+      Drupal.behaviors.ms_site.showMSMVideosBySeasonNEpisode(seasonNum, epNum, false);
     },
 
-    showMSMVideosBySeasonNEpisode: function(seasonNum, epNum) {
-      var seasonNum = seasonNum || 1,
+    showMSMVideosBySeasonNEpisode: function(seasonNum, epNum, autoplay) {
+      var autoplay = autoplay || true,
+          seasonNum = seasonNum || 1,
           epNum = epNum || Drupal.behaviors.ms_site.getFirstEpNumForMSMVideos(seasonNum),
           $allMsmVideos = $('#videos #thumbnail-list ul.must-see-moments li'),
           $msmVideosInEpisode = $('#videos #thumbnail-list ul.must-see-moments li.season' + seasonNum + '.episode' + epNum),
@@ -174,7 +175,7 @@ usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
         $('#videos #msm-selected-filter').animate({'opacity': 0}, 500, function(){
           $(this).html(' - S' + seasonNum + ' EP' + epNum).animate({'opacity': 1}, 500, function(){
             // select 1st video in the list
-            Drupal.behaviors.ms_videos.clickThumbnail($firstVideoInEpisode);
+            Drupal.behaviors.ms_videos.clickThumbnail($firstVideoInEpisode, autoplay);
             Drupal.behaviors.ms_videos.updateGigyaSharebar(0);
           });
         });
@@ -216,7 +217,7 @@ usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
           e.preventDefault();
           var elem = $(this);
           tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
-          Drupal.behaviors.ms_videos.clickThumbnail(elem);
+          Drupal.behaviors.ms_videos.clickThumbnail(elem, autoplay);
         });
 
         Drupal.behaviors.ms_videos.setActiveThumbnail();
@@ -226,6 +227,87 @@ usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
           Waypoint.refreshAll();
         }
       });
+    },
+
+    placeVideoFiltersInParagraphs: function() {
+      $('#videos #video-filter ul.filter-menu li').each(function(){
+        var html = $(this).html();
+        $(this).html('<p>' + html + '</p>');
+      });
+    },
+
+    setVideoFilterOrder: function() {
+/*
+      var $msmFilter = $('#videos ul.filter-menu .filter-item[data_filter_class="must-see-moments"]').removeClass('last'),
+          msmFilterNum = $msmFilter.eq(),
+          $msmFilterDOM = $('#videos ul.filter-menu li').get(msmFilterNum),
+          $videoFilterList = $('#videos ul.filter-menu'),
+          $firstFilter = $videoFilterList.find('li:first'),
+          msmFilterHtml = $msmFilter.html(),
+          firstFilterHtml = $firstFilter.html(),
+          firstFilterClass = $firstFilter.attr('data_filter_class');
+      $firstFilter.remove();
+      $msmFilter.remove();
+      $videoFilterList.prepend(msmFilterHtml);
+      $videoFilterList.prepend(firstFilterHtml);
+      $videoFilterList.find('li:last').addClass('last');
+*/
+      var desiredVideoFilterOrder = ['full-episodes', 'must-see-moments', 'clips', 'behind-the-scenes'];
+usa_debug('setVideoFilterOrder()');
+      var mylist = $('#videos ul.filter-menu');
+      var listitems = mylist.children('li').get();
+      function reinitializeClicks() {
+        // initialize video filter sub-item clicks
+        $('#video-filter .filter-child-item').click(function () {
+          Drupal.behaviors.ms_videos.processSubMenuClick($(this));
+        });
+      }
+      function setLastClass() {
+        mylist.find('.last').removeClass('last');
+        mylist.find('li:last').addClass('last');
+        reinitializeClicks();
+      }
+      listitems.sort(function(a, b) {
+        usa_debug('setVideoFilterOrder listitems.sort(a, b)');
+        usa_debug(a);
+        usa_debug(b);
+        var aFilterClass = $(a).attr('data_filter_class'),
+            bFilterClass = $(b).attr('data_filter_class'),
+            aPos = desiredVideoFilterOrder.indexOf(aFilterClass),
+            bPos = desiredVideoFilterOrder.indexOf(bFilterClass);
+        usa_debug('setVideoFilterOrder() aPos: ' + aPos + ', bPos: ' + bPos);
+//        return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+        return (aPos > bPos) ? 1 : -1;
+      })
+      var listitemsCount = 0;
+      var listitemsNum = listitems.length;
+      $.each(listitems, function(idx, itm) {
+        mylist.append(itm);
+        listitemsCount++;
+        if (listitemsCount == listitemsNum) setLastClass();
+      });
+/*
+      var sort = function(a, b) {
+        var sortOrder = 'asc',
+            $list = $('#videos ul.filter-menu'),
+            $listLi = $('li', $list);
+        $listLi.sort(function(a, b){
+          var keyA = desiredVideoFilterOrder.indexOf($(a).attr('data_filter_class'));
+          var keyB = diseredVideoFilterOrder.indexOf($(b).attr('data_filter_class'));
+usa_debug('setVideoFilterOrder keyA ' + keyA + ' keyB ' + keyB);
+          if (sortOrder == 'asc'){
+            return (keyA > keyB) ? 1 : 0;
+          }
+          else {
+            return (keyA < keyB) ? 1 : 0;
+          }
+        });
+        $.each($listLi, function(index, row){
+          $list.append(row);
+        });
+      }
+      sort();
+*/
     },
 
     // ATTACH
@@ -258,6 +340,14 @@ usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
 
         // add dropdown menu to must see moments (msm) video filter
         self.addMSMVideoFilterMenuDropdown();
+
+        // put video filter text in <p>
+        // this is to allow vertical alignment of single and multiple row text
+        self.placeVideoFiltersInParagraphs();
+
+        // designers want the Must See Moments video filter to be
+        // second in the list of filters
+        self.setVideoFilterOrder();
 
         // set click on character infographic
         $('#character-infographic a').on('click', function() {

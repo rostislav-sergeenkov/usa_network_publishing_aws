@@ -245,10 +245,12 @@ usa_debug('ad_728x90: ', ad_728x90);
     },
 
     // click Thumbnail
-    clickThumbnail: function (elem) {
+    clickThumbnail: function (elem, autoplay) {
       var refreshAdsOmniture = 0,
+          autoplay = autoplay || false,
           videoContainer = $('#video-container'),
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
+usa_debug('clickThumbnail(elem, ' + autoplay + ')');
 
       if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
         $('#thumbnail-list .item-list ul li.thumbnail').removeClass('active');
@@ -301,10 +303,11 @@ usa_debug('ad_728x90: ', ad_728x90);
     },
 
     // Get Thumbnail List
-    getThumbnailList: function (url, offset, $toggler, categoryName, filterClass, seasonNum, epNum) {
+    getThumbnailList: function (url, offset, $toggler, categoryName, filterClass, seasonNum, epNum, autoplay) {
       filterClass = filterClass || null;
       seasonNum = seasonNum || null;
       epNum = epNum || null;
+      autoplay = autoplay || false;
       $.ajax({
         type: 'GET',
         url: url,
@@ -373,7 +376,7 @@ usa_debug('getThumbnailList() -- $this: ', $(this));
                 e.preventDefault();
                 var elem = $(this);
                 tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
-                Drupal.behaviors.ms_videos.clickThumbnail(elem);
+                Drupal.behaviors.ms_videos.clickThumbnail(elem, true);
               });
               Drupal.behaviors.ms_videos.setActiveThumbnail();
               if (typeof Waypoint != 'undefined') {
@@ -393,7 +396,6 @@ usa_debug('getThumbnailList() -- $this: ', $(this));
     setActiveThumbnail: function() {
       var currentVideoUrl = $('#video-container').attr('data-video-url');
         $('#thumbnail-list').find("li[data-video-url='" + currentVideoUrl + "']").addClass('active');
-
     },
 
     // processSubMenuClick
@@ -408,7 +410,7 @@ usa_debug('getThumbnailList() -- $this: ', $(this));
         $filterChildItems.removeClass('active');
         $filterMenu.find('.filter-item').removeClass('active');
         $this.addClass('active');
-        $this.parents('li.filter-item').addClass('active');
+        $this.parents('li.filter-item').addClass('active hide');
 
         var categoryName = $('#video-filter .filter-item.active').attr('data-filter-name'),
             filterClass = $('#video-filter .filter-item.active').attr('data_filter_class');
@@ -423,12 +425,15 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
         // if user has already selected the must see moments (msm) filter
         // then show the correct season and episode videos
         if (categoryName == 'Must See Moments' && $('#videos ul.must-see-moments').length > 0) {
-          Drupal.behaviors.ms_site.showMSMVideosBySeasonNEpisode(seasonNum, epNum);
+          Drupal.behaviors.ms_site.showMSMVideosBySeasonNEpisode(seasonNum, epNum, false);
         }
         else {
-          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName, filterClass, seasonNum, epNum);
+          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName, filterClass, seasonNum, epNum, false);
         }
       }
+
+      // remove 'hide' class from parent so that the next video filter hover works
+      $this.parents('li.filter-item').removeClass('hide');
     },
 
     attach: function (context, settings) {
@@ -438,7 +443,7 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
       $('#thumbnail-list .item-list ul li.thumbnail').click(function (e) {
         e.preventDefault();
         var elem = $(this);
-        self.clickThumbnail(elem);
+        self.clickThumbnail(elem, true);
         self.updateGigyaSharebar(0);
       });
 
@@ -505,11 +510,6 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
 
           self.getThumbnailList(url, offset, null, categoryName, filterClass);
         }
-      });
-
-      // video filter sub-item clicks
-      $('#video-filter .filter-child-item').click(function () {
-        self.processSubMenuClick($(this));
       });
 
       // video items more/less toggler

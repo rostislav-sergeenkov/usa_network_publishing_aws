@@ -15,9 +15,9 @@ usa_debug('gallery Drupal.gigya is not undefined');
 
         // check to be sure there's a sharebar container
         if ($sharebar.length > 0) {
-          var $title = 'Do Not Disturb! I\'m watching Mr. Robot!',
+          var $title = 'Let the world know you\'re watching Mr. Robot.',
               $currentImageSrc = $activeImage.find('img').attr('src'),
-              $currentCaption = 'Do Not Disturb! I\'m watching Mr. Robot!',
+              $currentCaption = 'Mr. Robot time is sacred.  We understand.  That\'s why we created social shareables designed to keep the chatty corporate bureaucrats, loud-mouthed hackers and talkative friends away while your favorite show is on.  Put one up whenever you and Elliot are trying to start the revolution.',
               url = (parseInt(currentSlide) < 10) ? 'http://www.usanetwork.com/mrrobot/dnd/0' + currentSlide : 'http://www.usanetwork.com/mrrobot/dnd/' + currentSlide;
 
           sharebar = new Object();

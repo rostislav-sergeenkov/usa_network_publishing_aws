@@ -40,7 +40,7 @@
       if ($siteNav.css('opacity') == 1) {
         $homeUsaLogo.animate({'opacity': 1}, 700);
         $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
-          $(this).css({'opacity': 0});
+          $siteNav.css({'opacity': 0});
         });
       }
     },

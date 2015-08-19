@@ -78,6 +78,7 @@ section > h2 {
 /* SITE NAV */
 #site-nav {
   overflow: hidden;
+  z-index: 10000;
 }
 #site-nav #site-nav-content {
   border-bottom: 2px solid #161618;
@@ -337,6 +338,9 @@ section > h2 {
 @media (max-width: 873px) {
   #site-nav {
     overflow: visible;
+  }
+  #site-nav:hover {
+    overflow: visible!important;
   }
   #site-nav li {
     font-size: 1em;

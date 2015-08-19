@@ -29,12 +29,27 @@ body.page-node-microsite {
   background-color: transparent;
   padding: 0;
 }
-section h2 {
+section > h2 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  clear: none;
   color: red;
+  float: left;
+  margin: 0 10px 0 0;
   text-transform: none;
+  text-indent: -9999px;
 }
 .section-description {
   color: #FFF;
+  float: left;
+  margin: 10px auto 28px;
+  text-align: left;
+  width: 344px;
+}
+.section-description:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 
 /* HOME */
@@ -143,6 +158,15 @@ section h2 {
 }
 
 /* TIMELINE GALLERIES */
+#timeline section > h2 {
+  background-image: url('../images/bts_sectitle.png');
+  height: 111px;
+  margin-left: calc(50% - 333px);
+  width: 312px;
+}
+#timeline section .section-description {
+  margin-top: 0px;
+}
 .node-timeline-gallery .content {
   background-color: #000;
   color: #FFF;
@@ -199,6 +223,15 @@ section h2 {
 }
 
 /* CHARACTERS */
+#characters-container {
+  padding-top: 92px;
+}
+#characters section > h2 {
+  background-image: url('../images/character_sectitle.png');
+  height: 79px;
+  margin-left: calc(50% - 352.5px);
+  width: 351px;
+}
 #character-infographic {
   width: 98%;
   height: auto;
@@ -251,4 +284,62 @@ section h2 {
 /* QUIZZES */
 #quizzes article.node-quiz {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+}
+#quizzes section > h2 {
+  background-image: url('../images/trivia_sectitle.png');
+  height: 71px;
+  margin-left: calc(50% - 287px);
+  width: 220px;
+}
+#quizzes section .section-description {
+  margin-top: 0px;
+}
+@media (max-width: 920px) {
+  .section-description {
+    width: 324px;
+  }
+  #timeline section > h2 {
+    height: 94px;
+    margin-left: calc(50% - 298.5px);
+    width: 263px;
+  }
+  #characters section > h2 {
+    height: 66px;
+    margin-left: calc(50% - 313.5px);
+    width: 293px;
+  }
+  #characters-container {
+    padding-top: 86px;
+  }
+  #quizzes section > h2 {
+    height: 65px;
+    margin-left: calc(50% - 267.5px);
+    width: 201px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-description {
+    font-size: 0.75em;
+    margin: 0px auto 20px;
+    width: 172px;
+  }
+  #timeline section > h2 {
+    height: 43px;
+    margin-left: calc(50% - 156px);
+    width: 120px;
+  }
+  #characters section > h2 {
+    height: 27px;
+    margin-left: calc(50% - 156px);
+    width: 120px;
+  }
+  #characters-container {
+    padding-top: 62px;
+  }
+  #quizzes section > h2 {
+    height: 39px;
+    margin-left: calc(50% - 156px);
+    width: 120px;
+  }
 }

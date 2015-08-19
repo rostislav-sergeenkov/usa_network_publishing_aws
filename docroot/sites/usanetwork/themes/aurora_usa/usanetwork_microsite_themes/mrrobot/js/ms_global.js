@@ -562,9 +562,8 @@
     // RESIZING
     // resize response
     resizeResponse: function() {
-      var wwidth = $(window).width(),
+      var wwidth = window.innerWidth,
           $siteNav = $('#site-nav');
-
       if (wwidth < 874) {
         $siteNav.addClass('mobile');
       }

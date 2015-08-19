@@ -10,6 +10,12 @@
   width: 300px;
   margin-left: 20px;
 }
+#videos section h2 {
+  background-image: url('../images/watch_sectitle.png');
+  height: 78px;
+  margin-left: calc(50% - 296.5px);
+  width: 239px;
+}
 #microsite .video-container {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
@@ -578,6 +584,13 @@
     height: 346px;
   }
 }
+@media (max-width: 920px) {
+  #videos section h2 {
+    height: 66px;
+    margin-left: calc(50% - 272px);
+    width: 200px;
+  }
+}
 
 @media (max-width: 640px) {
   #microsite .block-usanetwork-mpx-video {
@@ -654,6 +667,11 @@
   }
   #video-filter li.filter-child-item {
     font-size: 80%;
+  }
+  #videos section > h2 {
+    height: 39px;
+    margin-left: calc(50% - 156px);
+    width: 119.5px;
   }
 }
 

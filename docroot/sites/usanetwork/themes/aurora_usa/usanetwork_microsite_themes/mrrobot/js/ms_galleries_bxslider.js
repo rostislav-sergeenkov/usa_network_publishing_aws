@@ -4,58 +4,26 @@
   Drupal.behaviors.micrositeGalleriesBxSliders = {
     updateGigyaSharebarOmniture: function(initialPageLoad) {
       initialPageLoad = initialPageLoad || 0;
-usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
-      if (typeof Drupal.gigya != 'undefined') {
-usa_debug('gallery Drupal.gigya is not undefined');
-//        var slider = $slider.data('flexslider');
-        var $activeImage = $('#galleries #gallery-content li.active2'),
-            currentSlide = parseInt($activeImage.attr('data-slide-index')),
-            $sharebar = $('#galleries #gallery-gigya-share');
-        if (typeof currentSlide != 'number') currentSlide = 0;
+      var $activeImage = $('#galleries #gallery-content li.active2'),
+          currentSlide = parseInt($activeImage.attr('data-slide-index')),
+          shareTitle = 'Let the world know you\'re watching Mr. Robot.',
+          currentImageSrc = $activeImage.find('img').attr('src'),
+          currentCaption = 'Mr. Robot time is sacred.  We understand.  That\'s why we created social shareables designed to keep the chatty corporate bureaucrats, loud-mouthed hackers and talkative friends away while your favorite show is on.  Put one up whenever you and Elliot are trying to start the revolution.',
+          url = (parseInt(currentSlide) < 10) ? 'http://www.usanetwork.com/mrrobot/dnd/0' + currentSlide : 'http://www.usanetwork.com/mrrobot/dnd/' + currentSlide;
+      if (typeof currentSlide != 'number') currentSlide = 0;
+      var settings = settings || {
+        containerId: 'gallery-gigya-share',
+        title: shareTitle,
+        description: currentCaption,
+        imageSrc: currentImageSrc,
+        url: url
+      };
 
-        // check to be sure there's a sharebar container
-        if ($sharebar.length > 0) {
-          var $title = 'Let the world know you\'re watching Mr. Robot.',
-              $currentImageSrc = $activeImage.find('img').attr('src'),
-              $currentCaption = 'Mr. Robot time is sacred.  We understand.  That\'s why we created social shareables designed to keep the chatty corporate bureaucrats, loud-mouthed hackers and talkative friends away while your favorite show is on.  Put one up whenever you and Elliot are trying to start the revolution.',
-              url = (parseInt(currentSlide) < 10) ? 'http://www.usanetwork.com/mrrobot/dnd/0' + currentSlide : 'http://www.usanetwork.com/mrrobot/dnd/' + currentSlide;
+      Drupal.behaviors.ms_gigya.updateGigyaSharebar(initialPageLoad, settings);
 
-          sharebar = new Object();
-          sharebar.gigyaSharebar = {
-            containerID: "gallery-gigya-share",
-            iconsOnly: true,
-            layout: "horizontal",
-            shareButtons: "facebook, twitter, tumblr, pinterest", //"facebook, twitter, tumblr, pinterest, share",
-            shortURLs: "never",
-            showCounts: "none"
-          }
-
-          sharebar.gigyaSharebar.ua = {
-            description: $currentCaption,
-            imageBhev: "url",
-            imageUrl: $currentImageSrc,
-            linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
-            title: $title
-          }
-usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
-          Drupal.gigya.showSharebar(sharebar);
-
-          // omniture
-          if (!initialPageLoad) {
-            var siteName = Drupal.settings.microsites_settings.title,
-                basePath = Drupal.settings.microsites_settings.base_path,
-                basePageName = siteName + ' | USA Network';
-
-            s.prop3 = 'Do Not Disturb';
-            s.prop4 = siteName + ' : Do Not Disturb';
-            s.prop5 = siteName + ' : Do Not Disturb : ' + $title;
-            s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-            document.title = $title + ' | Do Not Disturb | ' + basePageName;
-            if (typeof s_gi != 'undefined') {
-              void (s.t());
-            }
-          }
-        }
+      // omniture
+      if (!initialPageLoad) {
+        Drupal.behaviors.ms_global.setOmnitureData('galleries');
       }
     },
 
@@ -149,9 +117,10 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
       $('#galleries #gallery-content #gallery-download a').attr('href', imageSrc);
     },
 
-    updateImageInfo: function(slideNum) {
+    updateImageInfo: function(slideNum, initialPageLoad) {
+      var initialPageLoad = initialPageLoad || 0;
       Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryImageNav(slideNum);
-      Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture();
+      Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture(initialPageLoad);
       Drupal.behaviors.micrositeGalleriesBxSliders.setDownloadImageLink();
     },
 /*
@@ -505,7 +474,7 @@ usa_debug('galleryNavHeight: ' + galleryNavHeight + ', galleryNavMinSlides: ' + 
                 hideControlOnEnd: true,
                 onSliderLoad: function(){
                   $('#galleries #gallery-nav .bx-viewport').css({'min-height': galleryNavHeight + 'px !important'});
-                  self.updateImageInfo(0);
+                  self.updateImageInfo(0, 1);
 
                   // initialize next/prev clicks -- only setting active nav elements
                   $('#galleries #gallery-content .bx-controls .bx-next').on('click', function(){

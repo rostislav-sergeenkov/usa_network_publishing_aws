@@ -7,39 +7,22 @@
     // Gigya share bar
     updateGigyaSharebar: function(initialPageLoad, preview_image) {
       initialPageLoad = initialPageLoad || 0;
-      if (typeof Drupal.gigya != 'undefined') {
-        var sharebar = new Object(),
-            $videoInfoContainer = $('#videos #video-container .video-player-desc'),
-            caption = $videoInfoContainer.find('.video-description').text(),
-            shareTitle = $videoInfoContainer.find('.video-title').text(),
-            imageSrc = preview_image,
-            url = window.location.href;
+      var sharebar = new Object(),
+          $videoInfoContainer = $('#videos #video-container .video-player-desc'),
+          caption = $videoInfoContainer.find('.video-description').text(),
+          shareTitle = $videoInfoContainer.find('.video-title').text(),
+          imageSrc = preview_image,
+          url = window.location.href;
 
-        sharebar.gigyaSharebar = {
-          containerID: "video-gigya-share",
-          iconsOnly: true,
-          layout: "horizontal",
-          shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          shortURLs: "never",
-          showCounts: "none"
-        }
+      var settings = settings || {
+        containerId: 'video-gigya-share',
+        title: shareTitle,
+        description: caption,
+        imageSrc: imageSrc,
+        url: url
+      };
 
-        sharebar.gigyaSharebar.ua = {
-          description: caption,
-          imageBhev: "url",
-          imageUrl: imageSrc,
-          linkBack: url,
-          title: shareTitle
-        }
-        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
-
-        // reset Gigya share bar clicks
-        var $shareButtons = $('#video-gigya-share .gig-share-button div');
-        $shareButtons.unbind('click');
-        $shareButtons.bind('click', function(){
-          if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.sendSocialShareOmniture == 'function') Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);
-        });
-      }
+      Drupal.behaviors.ms_gigya.updateGigyaSharebar(initialPageLoad, settings);
     },
 
     // setVideoHeight
@@ -445,7 +428,7 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
         e.preventDefault();
         var elem = $(this);
         self.clickThumbnail(elem, true);
-        self.updateGigyaSharebar(0);
+//        self.updateGigyaSharebar(0);
       });
 
       // filter click toggles

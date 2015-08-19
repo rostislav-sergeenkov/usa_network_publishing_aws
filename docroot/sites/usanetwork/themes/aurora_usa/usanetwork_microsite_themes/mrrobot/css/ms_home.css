@@ -200,7 +200,7 @@
     padding-top: 0;
   }
   #home #home-logo {
-    margin-bottom: 7vw!important;
+    margin-bottom: 15vw!important;
     width: 40%;
   }
   #home #home-sponsored {
@@ -243,6 +243,9 @@
   #home.section {
     padding-top: calc(100vw + 90px);
   }
+  #home #home-logo {
+    margin-bottom: 21vw!important;
+  }
   #home #home-countdown .circle {
     height: 56px;
     width: 56px;
@@ -277,6 +280,11 @@
 @media (max-width: 480px) {
   #home.section {
     padding-top: calc(135vw + 90px);
+  }
+  #home #home-logo {
+    width: 48%;
+    margin-top: 4%!important;
+    margin-bottom: 32vw!important;
   }
   #home #home-countdown {
     width: 65%;

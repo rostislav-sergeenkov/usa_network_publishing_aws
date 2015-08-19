@@ -875,7 +875,7 @@ function usanetwork_mpx_video_views_default_views() {
     'field_mpx_available_date' => 'field_mpx_available_date',
     'field_mpx_expiration_date' => 'field_mpx_expiration_date',
   );
-  $handler->display->display_options['style_options']['default'] = 'updated';
+  $handler->display->display_options['style_options']['default'] = 'expiration_date';
   $handler->display->display_options['style_options']['info'] = array(
     'fid' => array(
       'sortable' => 0,
@@ -935,7 +935,7 @@ function usanetwork_mpx_video_views_default_views() {
     ),
     'expiration_date' => array(
       'sortable' => 1,
-      'default_sort_order' => 'asc',
+      'default_sort_order' => 'desc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1194,7 +1194,7 @@ function usanetwork_mpx_video_views_default_views() {
     'field_mpx_available_date' => 'field_mpx_available_date',
     'field_mpx_expiration_date' => 'field_mpx_expiration_date',
   );
-  $handler->display->display_options['style_options']['default'] = 'updated';
+  $handler->display->display_options['style_options']['default'] = 'expiration_date';
   $handler->display->display_options['style_options']['info'] = array(
     'fid' => array(
       'sortable' => 0,
@@ -1477,6 +1477,11 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['filters']['expiration_date']['value']['min'] = '+0 day';
   $handler->display->display_options['filters']['expiration_date']['value']['max'] = '+72 hours';
   $handler->display->display_options['filters']['expiration_date']['value']['type'] = 'offset';
+  /* Filter criterion: File: Published */
+  $handler->display->display_options['filters']['published']['id'] = 'published';
+  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['published']['field'] = 'published';
+  $handler->display->display_options['filters']['published']['value'] = '1';
   $handler->display->display_options['path'] = 'admin/content/file/mpxmedia/contentexpiration/expiringsoon';
   $handler->display->display_options['menu']['type'] = 'default tab';
   $handler->display->display_options['menu']['title'] = 'Expiring Soon';

@@ -143,6 +143,17 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
       $('#microsite #galleries .center-wrapper').css('min-height', (height + captionHeight) + 'px');
     },
 
+    setDownloadImageLink: function() {
+      var $activeGalleryImage = $('#galleries #gallery-content li.active2'),
+          imageSrc = $activeGalleryImage.find('img').attr('src');
+      $('#galleries #gallery-content #gallery-download a').attr('href', imageSrc);
+    },
+
+    updateImageInfo: function(slideNum) {
+      Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryImageNav(slideNum);
+      Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture();
+      Drupal.behaviors.micrositeGalleriesBxSliders.setDownloadImageLink();
+    },
 /*
     setActiveGalleryNav: function() {
       var activeGalleryNid = $('#microsite #galleries-content .microsite-gallery').attr('data-node-id');
@@ -158,7 +169,6 @@ usa_debug('setActiveGalleryImageNav(' + slideNum + ')');
           $galleryNavList = $('#galleries #gallery-nav ul#bx-pager');
       $('#galleries #gallery-content li, #galleries #gallery-nav a').removeClass('active2');
       $('#galleries #gallery-content li[data-slide-index="' + slideNum + '"], #galleries #gallery-nav a[data-slide-index="' + slideNum + '"]').addClass('active2');
-      Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture();
     },
 
 /*
@@ -495,24 +505,23 @@ usa_debug('galleryNavHeight: ' + galleryNavHeight + ', galleryNavMinSlides: ' + 
                 hideControlOnEnd: true,
                 onSliderLoad: function(){
                   $('#galleries #gallery-nav .bx-viewport').css({'min-height': galleryNavHeight + 'px !important'});
-                  self.updateGigyaSharebarOmniture();
-                  self.setActiveGalleryImageNav(0);
+                  self.updateImageInfo(0);
 
                   // initialize next/prev clicks -- only setting active nav elements
                   $('#galleries #gallery-content .bx-controls .bx-next').on('click', function(){
                     self.currentSlideNum++;
-                    self.setActiveGalleryImageNav(self.currentSlideNum);
+                    self.updateImageInfo(self.currentSlideNum);
 usa_debug('self.currentSlideNum: ' + self.currentSlideNum);
                   });
                   $('#galleries #gallery-content .bx-controls .bx-prev').on('click', function(){
                     self.currentSlideNum--;
-                    self.setActiveGalleryImageNav(self.currentSlideNum);
+                    self.updateImageInfo(self.currentSlideNum);
                   });
 
                   // initialize nav button click -- only setting active nav elements
                   $('#galleries #gallery-nav a').on('click', function(){
                     self.currentSlideNum = parseInt($(this).attr('data-slide-index'));
-                    self.setActiveGalleryImageNav(self.currentSlideNum);
+                    self.updateImageInfo(self.currentSlideNum);
                   });
                 }
               });

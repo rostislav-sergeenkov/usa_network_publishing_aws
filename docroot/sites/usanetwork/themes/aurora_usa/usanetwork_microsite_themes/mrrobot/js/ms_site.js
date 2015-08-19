@@ -237,23 +237,8 @@ usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
     },
 
     setVideoFilterOrder: function() {
-/*
-      var $msmFilter = $('#videos ul.filter-menu .filter-item[data_filter_class="must-see-moments"]').removeClass('last'),
-          msmFilterNum = $msmFilter.eq(),
-          $msmFilterDOM = $('#videos ul.filter-menu li').get(msmFilterNum),
-          $videoFilterList = $('#videos ul.filter-menu'),
-          $firstFilter = $videoFilterList.find('li:first'),
-          msmFilterHtml = $msmFilter.html(),
-          firstFilterHtml = $firstFilter.html(),
-          firstFilterClass = $firstFilter.attr('data_filter_class');
-      $firstFilter.remove();
-      $msmFilter.remove();
-      $videoFilterList.prepend(msmFilterHtml);
-      $videoFilterList.prepend(firstFilterHtml);
-      $videoFilterList.find('li:last').addClass('last');
-*/
       var desiredVideoFilterOrder = ['full-episodes', 'must-see-moments', 'clips', 'behind-the-scenes'];
-usa_debug('setVideoFilterOrder()');
+//usa_debug('setVideoFilterOrder()');
       var mylist = $('#videos ul.filter-menu');
       var listitems = mylist.children('li').get();
       function reinitializeClicks() {
@@ -268,15 +253,14 @@ usa_debug('setVideoFilterOrder()');
         reinitializeClicks();
       }
       listitems.sort(function(a, b) {
-        usa_debug('setVideoFilterOrder listitems.sort(a, b)');
-        usa_debug(a);
-        usa_debug(b);
+        //usa_debug('setVideoFilterOrder listitems.sort(a, b)');
+        //usa_debug(a);
+        //usa_debug(b);
         var aFilterClass = $(a).attr('data_filter_class'),
             bFilterClass = $(b).attr('data_filter_class'),
             aPos = desiredVideoFilterOrder.indexOf(aFilterClass),
             bPos = desiredVideoFilterOrder.indexOf(bFilterClass);
-        usa_debug('setVideoFilterOrder() aPos: ' + aPos + ', bPos: ' + bPos);
-//        return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+        //usa_debug('setVideoFilterOrder() aPos: ' + aPos + ', bPos: ' + bPos);
         return (aPos > bPos) ? 1 : -1;
       })
       var listitemsCount = 0;
@@ -286,28 +270,6 @@ usa_debug('setVideoFilterOrder()');
         listitemsCount++;
         if (listitemsCount == listitemsNum) setLastClass();
       });
-/*
-      var sort = function(a, b) {
-        var sortOrder = 'asc',
-            $list = $('#videos ul.filter-menu'),
-            $listLi = $('li', $list);
-        $listLi.sort(function(a, b){
-          var keyA = desiredVideoFilterOrder.indexOf($(a).attr('data_filter_class'));
-          var keyB = diseredVideoFilterOrder.indexOf($(b).attr('data_filter_class'));
-usa_debug('setVideoFilterOrder keyA ' + keyA + ' keyB ' + keyB);
-          if (sortOrder == 'asc'){
-            return (keyA > keyB) ? 1 : 0;
-          }
-          else {
-            return (keyA < keyB) ? 1 : 0;
-          }
-        });
-        $.each($listLi, function(index, row){
-          $list.append(row);
-        });
-      }
-      sort();
-*/
     },
 
     // ATTACH

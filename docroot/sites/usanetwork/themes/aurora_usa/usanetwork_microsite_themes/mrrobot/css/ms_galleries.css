@@ -20,7 +20,12 @@
   float: left;
   margin-top: 40px;
 }
-
+#galleries section > h2 {
+  background-image: url('../images/donotdisturb_btn.png');
+  height: 82px;
+  margin-left: calc(50% - 286px);
+  width: 218px;
+}
 
 /* left pane content */
 #microsite #galleries-content .microsite-gallery-meta {
@@ -502,6 +507,13 @@
   }
 }
 
+@media (max-width: 920px) {
+  #galleries section > h2 {
+    height: 76px;
+    margin-left: calc(50% - 268px);
+    width: 202px;
+  }
+}
 @media (max-width: 874px) {
   #microsite #galleries-content .microsite-section-container {
     width: 90%;
@@ -580,6 +592,11 @@
   #microsite #galleries-content .right-pane .ad300x250 {
     float: none;
     margin: 0 auto 30px;
+  }
+  #galleries section > h2 {
+    height: 45px;
+    margin-left: calc(50% - 156px);
+    width: 120px;
   }
 }
 

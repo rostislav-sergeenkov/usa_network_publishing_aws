@@ -92,7 +92,7 @@ $firstScene = true;
           <img src="<?php print $scene['image_src']; ?>" alt="" class="slideshowimage"/>
         </div>
         <div class="timeline-item-details">
-          <h2><?php print 'S' . $seasonNum . ' Episode ' . $episodeNum; ?> <span class="divider">|</span> <?php print $episode['episode_name']; ?> <span class="divider">|</span> Scene <?php print $scene['scene_number']; ?></h2>
+          <h2><?php print '<span class="timeline-h2-season-num">S' . $seasonNum . '</span> <span class="timeline-h2-episode-num">Ep' . $episodeNum . '</span>'; ?> <span class="divider">|</span> <?php print '<span class="timeline-h2-episode-name">' . $episode['episode_name'] . '</span>'; ?> <span class="divider divider-two">|</span> <span class="timeline-h2-scene-num">Scene <?php print $scene['scene_number']; ?></span></h2>
           <div class="timeline-item-text">
             <?php print $scene['description']; ?>
           </div>

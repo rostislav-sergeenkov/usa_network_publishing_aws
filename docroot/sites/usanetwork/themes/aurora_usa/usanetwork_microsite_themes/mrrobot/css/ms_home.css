@@ -1,0 +1,289 @@
+#microsite {
+  background-image: none;
+}
+
+/* HOME SECTION */
+#microsite #home .ad-leaderboard {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 728px;
+  height: 90px;
+  margin: 40px 0 0;
+  overflow: visible;
+  margin-left: calc(-50% - 364px);
+}
+#home {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot/images/landing_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #161618;
+  width: 100%;
+  height: 1000px;
+  padding: 0;
+  margin-bottom: 0;
+  color: #FFF;
+  text-align: center;
+  position: relative;
+  top: 5px; /* Needed for the home waypoint to trigger! */
+}
+#home-wrapper {
+  width: 100%;
+}
+#home #home-content-container {
+  position: absolute;
+  top: 135px;
+  left: 0;
+  width: 100%;
+}
+#home #home-content-container > div {
+  margin: 0 auto 1.5%;
+}
+#home #home-logo {
+  margin-bottom: 160px!important;
+  width: 450px;
+}
+#home #home-sponsored.camry2015 {
+  width: 24%;
+}
+#home #home-sponsored.camry {
+  width: 20%;
+}
+#home #home-sponsored.corolla {
+  width: 21%;
+}
+#home #home-tunein,
+#home #home-description {
+  width: 100%;
+  font-size: 1.375em;
+  text-align: center;
+  text-shadow: 1px 1px 3px #000;
+  text-transform: uppercase;
+  color: #FFE476;
+  margin-bottom: 1%;
+}
+#home #home-countdown {
+  margin-bottom: 2%;
+  width: 450px;
+}
+#home #home-countdown .circle {
+  display: table;
+  height: 96px;
+  max-height: none;
+  max-width: none;
+  padding-top: 0;
+  width: 96px;
+}
+
+#home #home-countdown .counter-container {
+  display: table-cell;
+  left: 0;
+  position: relative;
+  top: 0;
+  vertical-align: middle;
+  width: 100%;
+}
+
+#home #home-countdown .numbers {
+  font-size: 2em;
+  margin-bottom: 6%;
+}
+#home #home-countdown .title {
+  font-size: 1em;
+}
+#home #home-countdown .line {
+  width: 60%;
+}
+
+#home #home-content-container #home-nav {
+  height: auto;
+  margin-bottom: 4%;
+  width: 800px;
+}
+#home #home-nav li {
+  float: left;
+  display: block;
+  width: 21.3%;
+  margin: 0 6% 4%;
+  height: auto;
+  max-width: 248px;
+}
+#home #home-nav li:nth-child(3n + 1) {
+  clear: left;
+}
+.home-button-text {
+  color: #FFF;
+  font-size: 1em;
+  line-height: 1.3;
+}
+/*
+#home #home-nav li .spoiler {
+  float: left;
+  clear: left;
+}
+.spoiler-alert {
+  width: 100%;
+  height: auto;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 30%;
+  margin-top: 7%;
+}
+.spoiler-high {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost/images/icons/graceland-s2catchup-spoiler-high.svg');
+  background-size: 83%;
+}
+.spoiler-medium {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost/images/icons/graceland-s2catchup-spoiler-medium.svg');
+  background-size: 92%;
+}
+.spoiler-moderate {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost/images/icons/graceland-s2catchup-spoiler-moderate.svg');
+}
+.spoiler-low {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/gracelandcatchuppost/images/icons/graceland-s2catchup-spoiler-low.svg');
+  background-size: 76%;
+}
+*/
+#microsite #home .ad-leaderboard {
+  margin-top: 0;
+}
+#home #home-usa-logo {
+  position: absolute;
+  bottom: 16px;
+  left: 10px;
+  width: 45px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Next button */
+#microsite div.scroll {
+  position: absolute;
+  bottom: 5px;
+  left: 100%;
+  margin: 0 0 0 calc(-50% - 24px);
+  width: 48px;
+  cursor: pointer;
+  padding: 0;
+}
+#microsite .scroll div {
+  text-align: center;
+  line-height: 18px;
+  width: 48px;
+  font-size: 14px;
+  padding-top: 3px;
+  background-color: #fff;
+  color: #000;
+}
+#microsite .scroll img {
+  width: 14px;
+  height: 25px;
+  margin: 0 auto;
+}
+
+
+/* ************** BEGIN MEDIA QUERIES ************* */
+
+@media (max-width: 1024px) {
+  #home {
+    height: auto;
+  }
+  #home.section {
+    background-position: center top;
+    padding-top: calc(80vw + 90px);
+  }
+  #home-wrapper {
+    padding-top: 0;
+  }
+  #home #home-logo {
+    margin-bottom: 7vw!important;
+    width: 40%;
+  }
+  #home #home-sponsored {
+    width: 50%;
+    min-width: 200px;
+  }
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 2.15vw!important;
+  }
+  #home #home-countdown {
+    width: 50%;
+  }
+  #home #home-countdown .circle {
+    height: 8vw;
+    width: 8vw;
+  }
+  #home #home-countdown .numbers {
+    font-size: 3.125vw!important;
+  }
+  #home #home-countdown .title {
+    font-size: 1.5625vw!important;
+  }
+  .home-button-text {
+    font-size: 1.5625vw!important;
+  }
+  #home #home-content-container {
+    top: calc(5vw + 90px);
+  }
+  #home #home-content-container #home-nav {
+    width: 628px;
+  }
+  #home #home-nav li {
+    width: 29.3%;
+    margin: 0 2% 6%;
+  }
+}
+
+@media (max-width: 640px) {
+  #home.section {
+    padding-top: calc(100vw + 90px);
+  }
+  #home #home-countdown .circle {
+    height: 56px;
+    width: 56px;
+  }
+  #home #home-countdown .numbers {
+    font-size: 20px!important;
+  }
+  #home #home-countdown .title {
+    font-size: 10px!important;
+  }
+  .home-button-text {
+    font-size: 10px!important;
+  }
+  #home #home-content-container #home-nav {
+    width: 304px;
+  }
+  #home #home-nav li {
+    width: 46%;
+    margin: 0 2% 4vw;
+  }
+  #home #home-usa-logo {
+    width: 38px;
+    height: auto;
+  }
+  #home #home-nav li:nth-child(3n + 1) {
+    clear: none;
+  }
+  #home #home-nav li:nth-child(2n + 1) {
+    clear: left;
+  }
+}
+@media (max-width: 480px) {
+  #home.section {
+    padding-top: calc(135vw + 90px);
+  }
+  #home #home-countdown {
+    width: 65%;
+  }
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 10px!important;
+  }
+}
+

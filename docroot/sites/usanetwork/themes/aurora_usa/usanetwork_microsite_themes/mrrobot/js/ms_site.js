@@ -25,8 +25,8 @@
           $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 0) {
         $siteNav.css({'opacity': 1}).animate({'max-height': '72px'}, 700, function(){
-          if ($(this).hasClass('mobile')) {
-            $(this).css({'overflow': 'visible'}); // to allow hamburger hover state to work
+          if (window.innerWidth < 874) {
+            $siteNav.css({'overflow': 'visible'}); // to allow hamburger hover state to work
           }
         });
         $homeUsaLogo.animate({'opacity': 0}, 700);
@@ -67,7 +67,7 @@
 */
         var wHost = window.location.hostname,
             wUrl = (wHost == 'www.usanetwork.com') ? 'http://apps.usanetwork.com/mrrobot/catchup/infographic' : 'http://stage-apps.usanetwork.com/mrrobot/catchup/infographic',
-            infographicWindow = window.open(wUrl, '_blank', 'menubar=no,resizable=yes,status=no,toolbar=no', false);
+            infographicWindow = window.open(wUrl, '_blank', 'menubar=no,resizable=yes,status=no,toolbar=no,scrollbars=yes', false);
 //      }
     },
 

@@ -21,7 +21,7 @@
   background-repeat: no-repeat;
   background-color: #161618;
   width: 100%;
-  height: auto;
+  height: 1000px;
   padding: 0;
   margin-bottom: 0;
   color: #FFF;
@@ -30,12 +30,11 @@
   top: 5px; /* Needed for the home waypoint to trigger! */
 }
 #home-wrapper {
-  padding-top: 40vw;
   width: 100%;
 }
 #home #home-content-container {
   position: absolute;
-  top: calc(1.5vw + 90px);
+  top: 135px;
   left: 0;
   width: 100%;
 }
@@ -43,9 +42,8 @@
   margin: 0 auto 1.5%;
 }
 #home #home-logo {
-  width: 18%;
-  max-width: 450px;
-  margin-bottom: 2vw!important;
+  margin-bottom: 160px!important;
+  width: 450px;
 }
 #home #home-sponsored.camry2015 {
   width: 24%;
@@ -59,7 +57,7 @@
 #home #home-tunein,
 #home #home-description {
   width: 100%;
-  font-size: 0.88vw!important;
+  font-size: 1.375em;
   text-align: center;
   text-shadow: 1px 1px 3px #000;
   text-transform: uppercase;
@@ -67,17 +65,16 @@
   margin-bottom: 1%;
 }
 #home #home-countdown {
-  width: 18%;
-  max-width: 450px;
   margin-bottom: 2%;
+  width: 450px;
 }
 #home #home-countdown .circle {
   display: table;
-  height: 4.2vw;
+  height: 96px;
   max-height: none;
   max-width: none;
   padding-top: 0;
-  width: 4.2vw;
+  width: 96px;
 }
 
 #home #home-countdown .counter-container {
@@ -85,26 +82,25 @@
   left: 0;
   position: relative;
   top: 0;
-  width: 100%;
-
   vertical-align: middle;
+  width: 100%;
 }
 
 #home #home-countdown .numbers {
-  font-size: 1.28vw!important;
+  font-size: 2em;
   margin-bottom: 6%;
 }
 #home #home-countdown .title {
-  font-size: 0.64vw!important;
+  font-size: 1em;
 }
 #home #home-countdown .line {
   width: 60%;
 }
 
 #home #home-content-container #home-nav {
-  width: 32%;
   height: auto;
   margin-bottom: 4%;
+  width: 800px;
 }
 #home #home-nav li {
   float: left;
@@ -119,7 +115,7 @@
 }
 .home-button-text {
   color: #FFF;
-  font-size: 0.72vw!important;
+  font-size: 1em;
   line-height: 1.3;
 }
 /*
@@ -192,29 +188,10 @@
 
 /* ************** BEGIN MEDIA QUERIES ************* */
 
-@media (min-width: 2500px) {
-  #home #home-content-container {
-    top: 138px;
-  }
-  #home #home-logo {
-    margin-bottom: 175px!important;
-  }
-  #home #home-tunein,
-  #home #home-description {
-    font-size: 22px!important;
-  }
-  #home #home-countdown .numbers {
-    font-size: 32px!important;
-  }
-  #home #home-countdown .title {
-    font-size: 16px!important;
-  }
-  .home-button-text {
-    font-size: 16px!important;
-  }
-}
-
 @media (max-width: 1024px) {
+  #home {
+    height: auto;
+  }
   #home.section {
     background-position: center top;
     padding-top: calc(80vw + 90px);

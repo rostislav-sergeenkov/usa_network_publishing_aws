@@ -67,7 +67,7 @@
 */
         var wHost = window.location.hostname,
             wUrl = (wHost == 'www.usanetwork.com') ? 'http://apps.usanetwork.com/mrrobot/catchup/infographic' : 'http://stage-apps.usanetwork.com/mrrobot/catchup/infographic',
-            infographicWindow = window.open(wUrl, '_blank', 'menubar=no,resizable=yes,status=no,toolbar=no', false);
+            infographicWindow = window.open(wUrl, '_blank', 'menubar=no,resizable=yes,status=no,toolbar=no,scrollbars=yes', false);
 //      }
     },
 

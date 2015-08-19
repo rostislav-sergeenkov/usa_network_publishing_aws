@@ -12,7 +12,8 @@
             $videoInfoContainer = $('#videos #video-container .video-player-desc'),
             caption = $videoInfoContainer.find('.video-description').text(),
             shareTitle = $videoInfoContainer.find('.video-title').text(),
-            imageSrc = preview_image;
+            imageSrc = preview_image,
+            url = window.location.href;
 
         sharebar.gigyaSharebar = {
           containerID: "video-gigya-share",
@@ -161,7 +162,7 @@
           ad_300x250_1.attr('id', 'ad_300x250').empty();
         }
         if (ad_728x90.length == 1 && ad_728x90.attr('id') != 'ad_728x90_1') {
-usa_debug('ad_728x90: ', ad_728x90);
+//usa_debug('ad_728x90: ', ad_728x90);
 /*
           if (ad_728x90.hasAttribute('class')) {
             ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');

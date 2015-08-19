@@ -76,6 +76,9 @@ section > h2 {
 }
 
 /* SITE NAV */
+#site-nav {
+  overflow: hidden;
+}
 #site-nav #site-nav-content {
   border-bottom: 2px solid #161618;
 }
@@ -105,6 +108,8 @@ section > h2 {
   width: 180px;
 }
 #site-nav-links-mobile li {
+  font-size: 1em;
+  height: auto;
   width: 180px;
 }
 #site-nav-mobile li.internal a:hover,
@@ -294,6 +299,18 @@ section > h2 {
 #quizzes section .section-description {
   margin-top: 0px;
 }
+@media (max-width: 1280px) {
+  #site-nav li {
+    font-size: 0.875em;
+    padding: 10px 12px 0;
+  }
+}
+@media (max-width: 1024px) {
+  #site-nav li {
+    font-size: 0.75em;
+    padding: 10px 10px 0;
+  }
+}
 @media (max-width: 920px) {
   .section-description {
     width: 324px;
@@ -315,6 +332,14 @@ section > h2 {
     height: 65px;
     margin-left: calc(50% - 267.5px);
     width: 201px;
+  }
+}
+@media (max-width: 873px) {
+  #site-nav {
+    overflow: visible;
+  }
+  #site-nav li {
+    font-size: 1em;
   }
 }
 

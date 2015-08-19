@@ -161,9 +161,12 @@ function usanetwork_microsite_get_multiple_elements_from_field(&$field) {
 
 // This determines what fields to display for each section type
 function _usanetwork_microsite_section_after_build($form, &$form_state) {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/ms_admin.js');
+  drupal_add_css(drupal_get_path('module', 'usanetwork_microsite') . '/css/ms_admin.css');
+
   $lang = $form['#language'];
   foreach($form as $k => $v) {
-    if(is_numeric($k) && isset($v['#entity_type']) && $v['#entity_type']=='field_collection_item') {
+    if (is_numeric($k) && isset($v['#entity_type']) && $v['#entity_type']=='field_collection_item') {
 
       //home section
       $form[$k]['field_usa_tv_a_spot']['#states'] = array(

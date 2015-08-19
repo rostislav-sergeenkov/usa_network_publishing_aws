@@ -7,17 +7,22 @@ html {
   padding: 0;
   width: 100%;
   color: #000;
-  background-color: #FFF;
+  background-color: #CCC;
 }
 body {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  background-color: #000 !important;
 }
 html,
 body {
   font-size: 16px !important;
   line-height: 18px !important;
+}
+body.page-node-microsite {
+  color: #000;
+}
+.clearfix {
+  zoom: 100%;
 }
 #microsite ul {
   margin: 0;
@@ -145,7 +150,7 @@ body{
 
 /* MAIN STRUCTURE */
 .page-node-microsite .usa-wrap {
-  background-color: #FFF;
+  background-color: #CCC;
   margin: 0;
   padding: 0;
 }
@@ -156,11 +161,9 @@ header .primary-nav #logo {
   display: none;
 }
 #microsite {
-  background-image: url("../images/suits_inspiration_critic_bg.jpg");
-  background-position: center top;
   background-size: contain;
-  background-repeat: no-repeat;
-  background-color: #FFF;
+  background-position: center;
+  background-color: #CCC;
   position: absolute;
   top: 0;
   left: 0;
@@ -172,30 +175,17 @@ header .primary-nav #logo {
 }
 #microsite .full-pane {
   margin: 0 auto;
+  width: 80%;
   max-width: 1300px;
 }
 
-
-
 /* SECTIONS CONTAINERS */
-#videos .header {
-  display: block;
-  width: 100%;
-  height: auto;
-  padding-top: 12.784%;
-  background-image: url("../images/suits_socialrecap_header.jpg");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: contain;
-  margin-bottom: 20px;
-}
-
 .section-description {
-  text-align: left;
+  width: 92%;
+  text-align: center;
   color: #000;
   font-size: 1.125em;
-  margin: 0 auto;
+  margin: 0 auto 28px;
 }
 .section-description p {
   margin: 0;
@@ -210,31 +200,32 @@ section h2 {
   clear: both;
 }
 #microsite #sections {
-  margin: 0;
+  margin: 1px 0 0; /* 1px top margin is necessary for waypoints to work correctly! */
   padding: 0;
-  background-color: transparent;
+  background-color: #000;
 }
 .section {
+  background-color: #AEAFB1;
   position: relative;
   top: 0;
   left: 0;
   padding: 15px 0 60px;
-  width: 96%;
-  max-width: 945px;
-  margin: 0 auto;
 }
 #home.section {
   background-color: #000;
   padding: 0 0 60px;
-}
-#site-nav.section {
-  padding: 0;
 }
 #characters.section {
   padding-bottom: 0;
 }
 #characters section {
   padding-bottom: 30px;
+}
+#section:nth-child(odd) {
+  background-color: #AEAFB1;
+}
+.section:nth-child(even) {
+  background-color: #DEDEDE;
 }
 
 /* ADS */
@@ -245,7 +236,7 @@ section h2 {
   left: 0;
   width: 728px;
   height: 90px;
-  margin: 40px auto 20px;
+  margin: 40px auto 0;
   overflow: visible;
 }
 #ad_300x250_1 {
@@ -306,16 +297,6 @@ section h2 {
 }
 
 /* BEGIN MEDIA QUERIES */
-@media (min-width: 1740px) {
-  #site-nav #site-nav-center {
-    margin-left: calc(-50% - 700px);
-    max-width: 1400px;
-  }
-  #site-nav #site-nav-top a {
-    margin-top: 1%;
-  }
-}
-
 @media (max-width: 990px) {
   #microsite footer {
     padding-bottom: 48px;
@@ -346,9 +327,5 @@ section h2 {
   body {
     font-size: 12px !important;
     line-height: 14px !important;
-  }
-  #site-nav-left {
-    width: 38px;
-    height: 58.5px;
   }
 }

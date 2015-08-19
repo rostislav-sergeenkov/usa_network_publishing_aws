@@ -425,6 +425,10 @@ ul, li {
 	color: #FFF;
 	position: relative;
 }
+.timelineFlat .timeline-item h2 span {
+  display: inline;
+  margin: 0;
+}
 .timelineFlat .timeline-item span {
 	display: block;
 	margin: 0 20px 10px;

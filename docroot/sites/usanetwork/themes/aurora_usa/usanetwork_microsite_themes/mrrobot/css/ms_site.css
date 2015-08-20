@@ -243,9 +243,10 @@ section > h2 {
   width: 98%;
   height: auto;
   text-align: center;
-  background-color: #333;
+  background-color: transparent;
   color: #FFF;
   margin: 0 auto 1%;
+  cursor: pointer;
 }
 #character-wrapper {
   position: relative;

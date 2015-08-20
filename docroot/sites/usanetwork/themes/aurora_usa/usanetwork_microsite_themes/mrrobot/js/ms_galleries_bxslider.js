@@ -7,10 +7,9 @@
       var $activeImage = $('#galleries #gallery-content li.active2'),
           currentSlide = (parseInt($activeImage.attr('data-slide-index')) + 1),
           shareTitle = 'Let the world know you\'re watching Mr. Robot.',
-          currentImageSrc = $activeImage.find('img').attr('src'),
+          currentImageSrc = (typeof dndLandscapeImages == 'object') ? dndLandscapeImages[currentSlide] : $activeImage.find('img').attr('src'),
           currentCaption = 'Mr. Robot time is sacred.  We understand.  That\'s why we created social shareables designed to keep the chatty corporate bureaucrats, loud-mouthed hackers and talkative friends away while your favorite show is on.  Put one up whenever you and Elliot are trying to start the revolution.',
-          //url = (parseInt(currentSlide) < 10) ? 'http://www.usanetwork.com/mrrobot/dnd/0' + currentSlide : 'http://www.usanetwork.com/mrrobot/dnd/' + currentSlide;
-          url = 'http://www.usanetwork.com/mrrobot/catchup/galleries';
+          url = (parseInt(currentSlide) < 10) ? 'http://www.usanetwork.com/mrrobot/dnd/0' + currentSlide : 'http://www.usanetwork.com/mrrobot/dnd/' + currentSlide;
       if (typeof currentSlide != 'number') currentSlide = 1;
       var settings = settings || {
         containerId: 'gallery-gigya-share',

@@ -241,10 +241,10 @@
 
 @media (max-width: 640px) {
   #home.section {
-    padding-top: calc(100vw + 90px);
+    padding-top: calc(115vw + 90px);
   }
   #home #home-logo {
-    margin-bottom: 21vw!important;
+    margin-bottom: 28vw!important;
   }
   #home #home-countdown .circle {
     height: 56px;
@@ -279,12 +279,12 @@
 }
 @media (max-width: 480px) {
   #home.section {
-    padding-top: calc(135vw + 90px);
+    padding-top: calc(175vw + 90px);
   }
   #home #home-logo {
     width: 48%;
     margin-top: 4%!important;
-    margin-bottom: 32vw!important;
+    margin-bottom: 47vw!important;
   }
   #home #home-countdown {
     width: 65%;

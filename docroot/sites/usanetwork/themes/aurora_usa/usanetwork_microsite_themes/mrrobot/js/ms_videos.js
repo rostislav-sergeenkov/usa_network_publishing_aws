@@ -485,7 +485,7 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
               var seasonNum = childItems.first().attr('data-season-num');
               childItems.first().addClass('active');
             }
-            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;;
+            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;
           }
 
           $('#thumbnail-list .expandable-toggle li').text('more');
@@ -580,6 +580,27 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
         $('.featured-asset').removeClass('tve-overlay');
       });
+
+      //hot-fix for 1441 with hard-coded first season
+      var parseUrl = window.location.pathname.split('/');
+      var activeItem = (parseUrl.hasOwnProperty(4)) ? parseUrl[4] : '';
+      if(activeItem != '') {
+        var itemFid = $('#video-item-list-wrapper li[data-video-url="' +activeItem +'"]').attr('data-fid');
+        var itemEpisode = 1;
+        var findEpisode = false;
+        for (var i in msmVideosByEpisode[1]) {
+          if(!findEpisode){
+            for (var j = 0; j < msmVideosByEpisode[1][i]['fids'].length; j++) {
+              if (msmVideosByEpisode[1][i]['fids'][j] == itemFid) {
+                itemEpisode = i;
+                findEpisode = true;
+                break;
+              }
+            }
+          }
+        }
+        Drupal.behaviors.ms_site.addMSMVideoInfo(1, itemEpisode);
+      }
     }
   }
 })(jQuery);

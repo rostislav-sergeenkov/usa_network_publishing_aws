@@ -166,6 +166,13 @@ section > h2 {
   color: #FFF;
   line-height: 1;
 }
+.featured-asset .tve-help .tve-download,
+.featured-asset .tve-help .tve-msg {
+  color: #FFF;
+}
+#microsite .featured-asset .tve-help .tve-download-link {
+  max-width: 339px;
+}
 
 /* TIMELINE GALLERIES */
 #timeline section > h2 {
@@ -359,6 +366,13 @@ section > h2 {
   }
   #site-nav li {
     font-size: 1em;
+  }
+}
+
+@media (max-width: 722px) {
+  .featured-asset .tve-help .tve-download,
+  .featured-asset .tve-help .tve-msg {
+    font-size: 14px;
   }
 }
 

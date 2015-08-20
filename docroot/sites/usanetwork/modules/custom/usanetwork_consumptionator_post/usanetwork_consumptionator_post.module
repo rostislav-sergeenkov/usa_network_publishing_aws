@@ -6,7 +6,7 @@
  */
 include_once 'usanetwork_consumptionator_post.features.inc';
 
-define('USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS', 1);
+define('USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS', 10);
 define('USANETWORK_CONSUMPTIONATOR_POST_DESCRIPTION_LENGTH', 390);
 
 
@@ -443,8 +443,8 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
 }
 
 function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0) {
-//  $cache_name = 'blog_landing_page_' . $show_nid . '_' . $offset;
- // $cache = cache_get($cache_name);
+  $cache_name = 'blog_landing_page_' . $show_nid . '_' . $offset;
+  $cache = cache_get($cache_name);
   if (empty($cache)) {
     $query = db_select('node', 'cp');
     $query->fields('cp', array('nid', 'title'));
@@ -479,7 +479,7 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = 
         $result_item->description = _usanetwork_consumptionator_post_get_season_episodes_description($result_item);
       }
     }
-  //  cache_set($cache_name, $result, 'cache', time() + 900);
+    cache_set($cache_name, $result, 'cache', time() + 900);
   }
   else {
     $result = $cache->data;

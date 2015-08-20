@@ -58,6 +58,7 @@ DirectoryIndex index.php index.html index.htm
 
   # Alternative robots.txt file on non-www domains.
   RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteCond %{HTTP_HOST} !^usanetwork\.com$ [NC]
   RewriteRule ^robots\.txt$ robots_noindex.txt [L]
 
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
@@ -172,5 +173,29 @@ AddType model/vnd.collada+xml dae
   </IfModule>
 </IfModule>
 
-RedirectMatch 301 ^/series/monk/(.*)$ http://www2.usanetwork.com/series/monk/$1
-RedirectMatch 301 ^/series/burnnotice/.*$ http://www.usanetwork.com/burnnotice
+RedirectMatch 301 ^/series/monk/?(.*)$ http://www2.usanetwork.com/series/monk/$1
+RedirectMatch 301 ^/series/thedeadzone/?(.*)$ http://www2.usanetwork.com/series/thedeadzone/$1
+RedirectMatch 301 ^/series/nashvillestar/?(.*)$ http://www2.usanetwork.com/series/nashvillestar/$1
+RedirectMatch 301 ^/series/the4400/?(.*)$ http://www2.usanetwork.com/series/the4400/$1
+RedirectMatch 301 ^/series/politicalanimals/?(.*)$ http://www2.usanetwork.com/series/politicalanimals/$1
+RedirectMatch 301 ^/series/inplainsight/?(.*)$ http://www2.usanetwork.com/series/inplainsight/$1
+RedirectMatch 301 ^/series/commonlaw/?(.*)$ http://www2.usanetwork.com/series/commonlaw/$1
+RedirectMatch 301 ^/series/fairlylegal/?(.*)$ http://www2.usanetwork.com/series/fairlylegal/$1
+RedirectMatch 301 ^/series/drsteveo/?(.*)$ http://www2.usanetwork.com/series/drsteveo/$1
+
+RedirectMatch 301 ^/series/burnnotice/?.*$ http://www.usanetwork.com/burnnotice
+RedirectMatch 301 ^/series/criminalintent/?.*$ http://www.usanetwork.com/criminalintent
+RedirectMatch 301 ^/series/covertaffairs/?.*$ http://www.usanetwork.com/covertaffairs
+RedirectMatch 301 ^/series/graceland/?.*$ http://www.usanetwork.com/graceland
+RedirectMatch 301 ^/series/house/?.*$ http://www.usanetwork.com/house
+RedirectMatch 301 ^/series/svu/?.*$ http://www.usanetwork.com/svu
+RedirectMatch 301 ^/series/svu2/?.*$ http://www.usanetwork.com/svu
+RedirectMatch 301 ^/series/ncis/?.*$ http://www.usanetwork.com/ncis
+RedirectMatch 301 ^/series/psych/?.*$ http://www.usanetwork.com/psych
+RedirectMatch 301 ^/series/royalpains/?.*$ http://www.usanetwork.com/royalpains
+RedirectMatch 301 ^/series/suits/?.*$ http://www.usanetwork.com/suits
+RedirectMatch 301 ^/sports/westminsterdogshow/?.*$ http://www.usanetwork.com/westminsterkennelclub
+RedirectMatch 301 ^/series/whitecollar/?.*$ http://www.usanetwork.com/whitecollar
+RedirectMatch 301 ^/sports/wwe/?.*$ http://www.usanetwork.com/wwe
+RedirectMatch 301 ^/series/toughenough/?.*$ http://www.usanetwork.com/wwetoughenough
+

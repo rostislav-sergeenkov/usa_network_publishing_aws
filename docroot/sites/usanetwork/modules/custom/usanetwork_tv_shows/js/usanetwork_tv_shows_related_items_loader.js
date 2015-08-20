@@ -138,7 +138,7 @@
           $('#footer > .region-footer').addClass('hidden');
         }
       });
-
+      
       $('.ajax-load-block .load-more-link a').click(function(){
         if ($(this).hasClass('disabled')){
           return false;

@@ -2299,7 +2299,7 @@ function _usanetwork_tv_shows_related_content_block() {
     }
   }
 
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
+  $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1);
 
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
@@ -2308,9 +2308,9 @@ function _usanetwork_tv_shows_related_content_block() {
       'usanetwork_tv_show_page_context' => 'showpage',
     ), 'setting');
 
+    $load_more_link =  usanetwork_related_content_is_load_more_link($related_content, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
     $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
-    $load_more_link = &drupal_static('load_more_link');
-    $load_more_link = TRUE;
+
     return theme('usanetwork_tv_shows_related_items_container', array(
       'related_items_block' => $block_of_items,
       'load_more_link' => $load_more_link,

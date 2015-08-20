@@ -233,7 +233,8 @@ section > h2 {
   padding-top: 92px;
 }
 #characters section > h2 {
-  background-image: url('../images/character_sectitle.png');
+/*  background-image: url('../images/character_sectitle.png'); */
+  background-image: url('../images/meetthecast_sectitle.png');
   height: 79px;
   margin-left: calc(50% - 352.5px);
   width: 351px;
@@ -300,6 +301,15 @@ section > h2 {
 #quizzes section .section-description {
   margin-top: 0px;
 }
+#microsite #quizzes .full-pane > h1,
+#microsite #quizzes .full-pane > h3,
+#microsite #quizzes .active-quiz-title > h1,
+#microsite #quizzes .active-quiz-title h3 {
+  text-indent: -9999px;
+}
+
+
+/* BEGIN MEDIA QUERIES */
 @media (max-width: 1280px) {
   #site-nav li {
     font-size: 0.875em;
@@ -370,5 +380,12 @@ section > h2 {
     height: 39px;
     margin-left: calc(50% - 156px);
     width: 120px;
+  }
+}
+
+@media (max-width: 410px) {
+  .usanetwork-quiz-result .result-title {
+    font-size: 1.7em;
+    line-height: 1em;
   }
 }

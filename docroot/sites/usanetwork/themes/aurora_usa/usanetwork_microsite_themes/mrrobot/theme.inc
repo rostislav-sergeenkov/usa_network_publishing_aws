@@ -236,6 +236,7 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
     ),
     'js' => array(
       'http://' . $apps_usa_host . '/mrrobot/catchup/msmVideosByEpisode.js',
+      'http://' . $apps_usa_host . '/mrrobot/catchup/dndLandscapeImages.js',
       $module_path . '/js/jquery.bxslider.min.js',
       $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
       $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view

@@ -162,6 +162,10 @@ section > h2 {
 #videos .msm-episode-title {
   margin-left: 26px;
 }
+.featured-asset.file-video-mpx .locked-msg {
+  color: #FFF;
+  line-height: 1;
+}
 
 /* TIMELINE GALLERIES */
 #timeline section > h2 {

@@ -229,6 +229,8 @@
         .fail(function(jqXHR, textStatus, errorThrown){
           usa_debug('********************\najax fail: ');
           usa_debug(errorThrown);
+          Drupal.behaviors.ms_quizzes.quizIsLoading = false;
+          Drupal.behaviors.ms_quizzes.showHideLoader();
         });
       }
       else {

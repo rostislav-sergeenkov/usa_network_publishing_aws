@@ -233,8 +233,8 @@ section > h2 {
   padding-top: 92px;
 }
 #characters section > h2 {
-/*  background-image: url('../images/character_sectitle.png'); */
-  background-image: url('../images/meetthecast_sectitle.png');
+  background-image: url('../images/character_sectitle.png');
+/*  background-image: url('../images/meetthecast_sectitle.png'); */
   height: 79px;
   margin-left: calc(50% - 352.5px);
   width: 351px;
@@ -243,9 +243,10 @@ section > h2 {
   width: 98%;
   height: auto;
   text-align: center;
-  background-color: #333;
+  background-color: transparent;
   color: #FFF;
   margin: 0 auto 1%;
+  cursor: pointer;
 }
 #character-wrapper {
   position: relative;

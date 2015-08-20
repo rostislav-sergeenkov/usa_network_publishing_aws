@@ -233,8 +233,8 @@ section > h2 {
   padding-top: 92px;
 }
 #characters section > h2 {
-/*  background-image: url('../images/character_sectitle.png'); */
-  background-image: url('../images/meetthecast_sectitle.png');
+  background-image: url('../images/character_sectitle.png');
+/*  background-image: url('../images/meetthecast_sectitle.png'); */
   height: 79px;
   margin-left: calc(50% - 352.5px);
   width: 351px;

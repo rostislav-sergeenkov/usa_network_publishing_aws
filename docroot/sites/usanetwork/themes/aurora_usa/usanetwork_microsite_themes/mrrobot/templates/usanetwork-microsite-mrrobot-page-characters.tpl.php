@@ -42,11 +42,9 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mr
 <?php endif; ?>
 
 <div id="characters-container">
-<? /* ?>
   <div id="character-infographic">
-    <a><img src="<?php print $themePath; ?>/images/MrRobot_Infographic_Cover_v1.jpg" alt="Mr. Robot infographic cover image"></a>
+    <a><img src="http://www.usanetwork.com/sites/usanetwork/files/styles/borealis_large_respondxl2/public/MrRobot_CharacterMap_preview_1601.jpg" alt="Mr. Robot infographic preview"></a>
   </div>
-<? */ ?>
   <?php if (!empty($people)): ?>
   <div id="character-wrapper">
     <!-- character navigation -->
@@ -127,10 +125,12 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mr
   <?php endif; ?>
   <!-- end character info -->
 
+<? /* ?>
   <div id="character-infographic-overlay">
     <div class="character-close">X</div>
     <img src="<?php print $themePath; ?>/images/MrRobot_Infographic_v1.jpg" alt="Mr. Robot Infographic">
   </div>
+<? */ ?>
 </div>
 
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>

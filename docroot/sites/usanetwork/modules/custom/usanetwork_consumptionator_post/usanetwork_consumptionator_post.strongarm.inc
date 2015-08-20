@@ -365,6 +365,13 @@ function usanetwork_consumptionator_post_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_consumpt_blog_pattern';
+  $strongarm->value = '[node:field_show]/blog/[node:title]';
+  $export['pathauto_node_consumpt_blog_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_consumpt_post_pattern';
   $strongarm->value = '[node:field-show:field-pathauto-alias]/blog/[node:field-show:field_show_blog_title]/[node:title]';
   $export['pathauto_node_consumpt_post_pattern'] = $strongarm;

@@ -63,7 +63,7 @@
       var $galleryPager = $('#galleries #gallery-nav .bx-pager'),
           pagerArray = Drupal.behaviors.micrositeGalleriesBxSliders.pagerArray;
       for(page in pagerArray) {
-usa_debug('getPageNum(' + slideNum + ') -- pagerArray[page]: ', pagerArray[page]);
+//usa_debug('getPageNum(' + slideNum + ') -- pagerArray[page]: ', pagerArray[page]);
         if (pagerArray[page].indexOf(slideNum) > -1) return page;
       }
     },
@@ -73,7 +73,7 @@ usa_debug('getPageNum(' + slideNum + ') -- pagerArray[page]: ', pagerArray[page]
           newPageNum = Drupal.behaviors.micrositeGalleriesBxSliders.getPageNum(slideNum),
           $navPager = $('#galleries #gallery-nav .bx-pager'),
           currentPageNum = $navPager.find('a.active').attr('data-slide-index');
-usa_debug('setActiveGalleryImageNav(' + slideNum + '), newPageNum: ' + newPageNum + ', currentPageNum: ' + currentPageNum);
+//usa_debug('setActiveGalleryImageNav(' + slideNum + '), newPageNum: ' + newPageNum + ', currentPageNum: ' + currentPageNum);
       $galleryNav.find('a').removeClass('active2');
       $galleryNav.find('a[data-slide-index="' + slideNum + '"]').addClass('active2');
       if (currentPageNum != newPageNum) {
@@ -356,7 +356,7 @@ usa_debug('setActiveGalleryImageNav(' + slideNum + '), newPageNum: ' + newPageNu
                   onSliderLoad: function(){
 //                    $('#galleries #gallery-nav .bx-viewport').css({'min-height': galleryNavHeight + 'px'});
                     self.pagerArray = self.setPagerArray(minNavSlides);
-usa_debug('galleryNavHeight: ' + galleryNavHeight + ', galleryNavMinSlides: ' + minNavSlides + ', pagerArray: ', self.pagerArray);
+//usa_debug('galleryNavHeight: ' + galleryNavHeight + ', galleryNavMinSlides: ' + minNavSlides + ', pagerArray: ', self.pagerArray);
                     $('#galleries #gallery-content a.bx-prev, #galleries #gallery-nav a.bx-prev').html('Previous');
                     $('#galleries #gallery-content ul.bxslider li:first').addClass('active2');
                     self.updateImageInfo(0, 1);

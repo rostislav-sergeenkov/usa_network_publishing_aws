@@ -274,7 +274,9 @@
         case 'timeline':
           contentType = 'Gallery';
           altContentType = 'Timeline';
-          if (!contentName) contentName = $('#microsite #timeline #timeline-title').text();
+          contentName = $('#timeline #timeline-content > h1').text();
+          if (!contentName) contentName = $('#timeline #timeline-content > h2').text();
+          contentName = Drupal.behaviors.ms_global.toTitleCase(contentName);
           var $item = $('#microsite #timeline .timeline-items .timeline-item.active'),
               itemSeason = $item.attr('data-season-num'),
               itemEpisode = $item.attr('data-episode-num'),
@@ -296,11 +298,10 @@
           break;
         case 'galleries':
           contentType = 'Gallery';
-          if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h2.gallery-title').text();
-          if (!contentName) contentName = $('#microsite #galleries-content .microsite-gallery-meta h1.gallery-title').text();
-          var slider = $('#microsite #galleries .microsite-gallery .flexslider'),
-              // $slider = slider.data('flexslider'),
-              currentSlide = 1; // $slider.currentSlide + 1;
+          contentName = $('#galleries .microsite-gallery-meta h2.gallery-title').text();
+          if (contentName == '') omnitureTitle = $('#galleries .microsite-gallery-meta h1.gallery-title').text();
+          var $slider = $('#microsite #galleries .bx-viewport ul.bxslider'),
+              currentSlide = (parseInt($slider.find('li.active2').attr('data-slide-index')) + 1);
           if (!currentSlide) currentSlide = 1;
           specificContentName = 'Photo ' + currentSlide;
           break;
@@ -329,7 +330,7 @@
       if (contentName) omnitureArray.push(contentName); // content_name
       if (specificContentName) omnitureArray.push(specificContentName); // specific_content_name
       s.pageName = omnitureArray.join(joinStr);
-      s.prop3 = contentType;
+      s.prop3 = (contentType == 'Home') ? 'Features' : contentType;
       s.prop4 = (contentType == 'Bio') ? 'Profile Page' : omnitureArray[0] + joinStr + omnitureArray[1]; // 'Profile Page' is intentional per Loretta!
       s.prop5 = omnitureArray[0] + joinStr + omnitureArray[1] + joinStr + omnitureArray[2];
 
@@ -660,11 +661,12 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
         $siteNav.removeClass('mobile');
       }
 
-      self.setSectionIdsArray();
-
       // TIME OUT
       // we need to allow time for the page to load -- especially videos
-      setTimeout(function(){
+//      setTimeout(function(){
+      $(window).load(function(){
+        self.setSectionIdsArray();
+
         if ($('#videos').length > 0) {
           Drupal.behaviors.ms_videos.setVideoHeight();
 
@@ -736,8 +738,8 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
         }, 2000);
 
         self.create728x90Ad();
-
-      }, 2000);
+      });
+//      }, 2000);
       // END TIME OUT
 
       // Turn off the popstate/hashchange tve-core.js event listeners

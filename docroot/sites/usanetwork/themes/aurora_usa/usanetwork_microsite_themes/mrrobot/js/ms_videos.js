@@ -7,39 +7,22 @@
     // Gigya share bar
     updateGigyaSharebar: function(initialPageLoad, preview_image) {
       initialPageLoad = initialPageLoad || 0;
-      if (typeof Drupal.gigya != 'undefined') {
-        var sharebar = new Object(),
-            $videoInfoContainer = $('#videos #video-container .video-player-desc'),
-            caption = $videoInfoContainer.find('.video-description').text(),
-            shareTitle = $videoInfoContainer.find('.video-title').text(),
-            imageSrc = preview_image,
-            url = window.location.href;
+      var sharebar = new Object(),
+          $videoInfoContainer = $('#videos #video-container .video-player-desc'),
+          caption = $videoInfoContainer.find('.video-description').text(),
+          shareTitle = $videoInfoContainer.find('.video-title').text(),
+          imageSrc = preview_image,
+          url = window.location.href;
 
-        sharebar.gigyaSharebar = {
-          containerID: "video-gigya-share",
-          iconsOnly: true,
-          layout: "horizontal",
-          shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          shortURLs: "never",
-          showCounts: "none"
-        }
+      var settings = settings || {
+        containerId: 'video-gigya-share',
+        title: shareTitle,
+        description: caption,
+        imageSrc: imageSrc,
+        url: url
+      };
 
-        sharebar.gigyaSharebar.ua = {
-          description: caption,
-          imageBhev: "url",
-          imageUrl: imageSrc,
-          linkBack: url,
-          title: shareTitle
-        }
-        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
-
-        // reset Gigya share bar clicks
-        var $shareButtons = $('#video-gigya-share .gig-share-button div');
-        $shareButtons.unbind('click');
-        $shareButtons.bind('click', function(){
-          if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.sendSocialShareOmniture == 'function') Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);
-        });
-      }
+      Drupal.behaviors.ms_gigya.updateGigyaSharebar(initialPageLoad, settings);
     },
 
     // setVideoHeight
@@ -445,7 +428,7 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
         e.preventDefault();
         var elem = $(this);
         self.clickThumbnail(elem, true);
-        self.updateGigyaSharebar(0);
+//        self.updateGigyaSharebar(0);
       });
 
       // filter click toggles
@@ -502,7 +485,7 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
               var seasonNum = childItems.first().attr('data-season-num');
               childItems.first().addClass('active');
             }
-            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;;
+            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;
           }
 
           $('#thumbnail-list .expandable-toggle li').text('more');
@@ -597,6 +580,27 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
         $('.featured-asset').removeClass('tve-overlay');
       });
+
+      //hot-fix for 1441 with hard-coded first season
+      var parseUrl = window.location.pathname.split('/');
+      var activeItem = (parseUrl.hasOwnProperty(4)) ? parseUrl[4] : '';
+      if(activeItem != '') {
+        var itemFid = $('#video-item-list-wrapper li[data-video-url="' +activeItem +'"]').attr('data-fid');
+        var itemEpisode = 1;
+        var findEpisode = false;
+        for (var i in msmVideosByEpisode[1]) {
+          if(!findEpisode){
+            for (var j = 0; j < msmVideosByEpisode[1][i]['fids'].length; j++) {
+              if (msmVideosByEpisode[1][i]['fids'][j] == itemFid) {
+                itemEpisode = i;
+                findEpisode = true;
+                break;
+              }
+            }
+          }
+        }
+        Drupal.behaviors.ms_site.addMSMVideoInfo(1, itemEpisode);
+      }
     }
   }
 })(jQuery);

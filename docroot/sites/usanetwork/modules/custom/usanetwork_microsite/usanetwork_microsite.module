@@ -2896,7 +2896,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
       else {
         $omniture_variables['s.pageName'] = join($join_str, $omniture_array);
       }
-      $omniture_variables['s.prop3'] = $content_type;
+      $omniture_variables['s.prop3'] = ($content_type == 'Home') ? 'Features' : $content_type;
       $omniture_variables['s.prop10'] = $omniture_array[0];
       $omniture_variables['s.prop4'] = ($content_type == 'Bio') ? 'Profile Page' : join($join_str, array_slice($omniture_array, 0, 2)); // 'Profile Page' is intentional per Loretta
       $omniture_variables['s.prop5'] = join($join_str, array_slice($omniture_array, 0, 3));

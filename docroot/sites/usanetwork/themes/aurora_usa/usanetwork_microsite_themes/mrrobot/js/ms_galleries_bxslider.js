@@ -4,118 +4,33 @@
   Drupal.behaviors.micrositeGalleriesBxSliders = {
     updateGigyaSharebarOmniture: function(initialPageLoad) {
       initialPageLoad = initialPageLoad || 0;
-usa_debug('gallery updateGigyaSharebarOmniture(' + initialPageLoad + ')');
-      if (typeof Drupal.gigya != 'undefined') {
-usa_debug('gallery Drupal.gigya is not undefined');
-//        var slider = $slider.data('flexslider');
-        var $activeImage = $('#galleries #gallery-content li.active2'),
-            currentSlide = parseInt($activeImage.attr('data-slide-index')),
-            $sharebar = $('#galleries #gallery-gigya-share');
-        if (typeof currentSlide != 'number') currentSlide = 0;
+      var $activeImage = $('#galleries #gallery-content li.active2'),
+          currentSlide = (parseInt($activeImage.attr('data-slide-index')) + 1),
+          shareTitle = 'Let the world know you\'re watching Mr. Robot.',
+          currentImageSrc = $activeImage.find('img').attr('src'),
+          currentCaption = 'Mr. Robot time is sacred.  We understand.  That\'s why we created social shareables designed to keep the chatty corporate bureaucrats, loud-mouthed hackers and talkative friends away while your favorite show is on.  Put one up whenever you and Elliot are trying to start the revolution.',
+          //url = (parseInt(currentSlide) < 10) ? 'http://www.usanetwork.com/mrrobot/dnd/0' + currentSlide : 'http://www.usanetwork.com/mrrobot/dnd/' + currentSlide;
+          url = 'http://www.usanetwork.com/mrrobot/catchup/galleries';
+      if (typeof currentSlide != 'number') currentSlide = 1;
+      var settings = settings || {
+        containerId: 'gallery-gigya-share',
+        title: shareTitle,
+        description: currentCaption,
+        imageSrc: currentImageSrc,
+        url: url
+      };
 
-        // check to be sure there's a sharebar container
-        if ($sharebar.length > 0) {
-          var $title = 'Let the world know you\'re watching Mr. Robot.',
-              $currentImageSrc = $activeImage.find('img').attr('src'),
-              $currentCaption = 'Mr. Robot time is sacred.  We understand.  That\'s why we created social shareables designed to keep the chatty corporate bureaucrats, loud-mouthed hackers and talkative friends away while your favorite show is on.  Put one up whenever you and Elliot are trying to start the revolution.',
-              url = (parseInt(currentSlide) < 10) ? 'http://www.usanetwork.com/mrrobot/dnd/0' + currentSlide : 'http://www.usanetwork.com/mrrobot/dnd/' + currentSlide;
+      Drupal.behaviors.ms_gigya.updateGigyaSharebar(initialPageLoad, settings);
 
-          sharebar = new Object();
-          sharebar.gigyaSharebar = {
-            containerID: "gallery-gigya-share",
-            iconsOnly: true,
-            layout: "horizontal",
-            shareButtons: "facebook, twitter, tumblr, pinterest", //"facebook, twitter, tumblr, pinterest, share",
-            shortURLs: "never",
-            showCounts: "none"
-          }
-
-          sharebar.gigyaSharebar.ua = {
-            description: $currentCaption,
-            imageBhev: "url",
-            imageUrl: $currentImageSrc,
-            linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
-            title: $title
-          }
-usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
-          Drupal.gigya.showSharebar(sharebar);
-
-          // omniture
-          if (!initialPageLoad) {
-            var siteName = Drupal.settings.microsites_settings.title,
-                basePath = Drupal.settings.microsites_settings.base_path,
-                basePageName = siteName + ' | USA Network';
-
-            s.prop3 = 'Do Not Disturb';
-            s.prop4 = siteName + ' : Do Not Disturb';
-            s.prop5 = siteName + ' : Do Not Disturb : ' + $title;
-            s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-            document.title = $title + ' | Do Not Disturb | ' + basePageName;
-            if (typeof s_gi != 'undefined') {
-              void (s.t());
-            }
-          }
-        }
+      // omniture
+      if (!initialPageLoad) {
+        Drupal.behaviors.ms_global.setOmnitureData('galleries');
       }
     },
 
     refreshBannerAd: function() {
       jQuery('.dart-name-728x90_ifr_reload_galleries iframe').attr('src', jQuery('.dart-name-728x90_ifr_reload_galleries iframe').attr('src'));
       jQuery('.dart-name-300x250_ifr_reload_galleries iframe').attr('src', jQuery('.dart-name-300x250_ifr_reload_galleries iframe').attr('src'));
-    },
-
-    activeGalleryNavItem: null,
-    galleryIsLoading: null,
-
-    getNumSlidesToDisplay: function(navCategory) {
-      var wwidth = $(window).width(),
-          episodesNumSlides = 4,
-          charsNumSlides = 5,
-          episodesPresent = ($('#microsite #galleries #ep-galleries').length > 0) ? true : false;
-
-      if (1860 > wwidth && wwidth >= 1550) {
-        episodesNumSlides = 3;
-        charsNumSlides = (episodesPresent) ? 4 : 3;
-      }
-      else if (1550 > wwidth && wwidth >= 1270) {
-        episodesNumSlides = 2;
-        charsNumSlides = (episodesPresent) ? 3 : 2;
-      }
-      else if (1270 > wwidth && wwidth >= 1160) {
-        episodesNumSlides = 2;
-        charsNumSlides = (episodesPresent) ? 3 : 2;
-      }
-      else if (1160 > wwidth && wwidth >= 890) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (890 > wwidth && wwidth >= 874) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (874 > wwidth && wwidth >= 866) {
-        episodesNumSlides = 3;
-        charsNumSlides = 3;
-      }
-      else if (866 > wwidth && wwidth >= 640) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (640 > wwidth && wwidth >= 505) {
-        episodesNumSlides = 3;
-        charsNumSlides = 3;
-      }
-      else if (505 > wwidth) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-
-      if (navCategory == 'episodes') {
-        return episodesNumSlides;
-      }
-      else if (navCategory == 'other') {
-        return charsNumSlides;
-      }
     },
 
     showHidePager: function(galleryId, numGalleriesShown) {
@@ -143,77 +58,41 @@ usa_debug('gallery updateGigyaSharebarOmniture() -- sharebar: ', sharebar);
       $('#microsite #galleries .center-wrapper').css('min-height', (height + captionHeight) + 'px');
     },
 
+    // GALLERY NAVIGATION
+    getPageNum: function(slideNum) {
+      var $galleryPager = $('#galleries #gallery-nav .bx-pager'),
+          pagerArray = Drupal.behaviors.micrositeGalleriesBxSliders.pagerArray;
+      for(page in pagerArray) {
+usa_debug('getPageNum(' + slideNum + ') -- pagerArray[page]: ', pagerArray[page]);
+        if (pagerArray[page].indexOf(slideNum) > -1) return page;
+      }
+    },
+
+    setActiveGalleryImageNav: function(slideNum) {
+      var $galleryNav = $('#galleries #gallery-nav ul#bx-pager'),
+          newPageNum = Drupal.behaviors.micrositeGalleriesBxSliders.getPageNum(slideNum),
+          $navPager = $('#galleries #gallery-nav .bx-pager'),
+          currentPageNum = $navPager.find('a.active').attr('data-slide-index');
+usa_debug('setActiveGalleryImageNav(' + slideNum + '), newPageNum: ' + newPageNum + ', currentPageNum: ' + currentPageNum);
+      $galleryNav.find('a').removeClass('active2');
+      $galleryNav.find('a[data-slide-index="' + slideNum + '"]').addClass('active2');
+      if (currentPageNum != newPageNum) {
+        $navPager.find('.bx-pager-link[data-slide-index="' + newPageNum + '"]').click();
+      }
+    },
+
     setDownloadImageLink: function() {
       var $activeGalleryImage = $('#galleries #gallery-content li.active2'),
           imageSrc = $activeGalleryImage.find('img').attr('src');
       $('#galleries #gallery-content #gallery-download a').attr('href', imageSrc);
     },
 
-    updateImageInfo: function(slideNum) {
+    updateImageInfo: function(slideNum, initialPageLoad) {
+      var initialPageLoad = initialPageLoad || 0;
       Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryImageNav(slideNum);
-      Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture();
+      Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture(initialPageLoad);
       Drupal.behaviors.micrositeGalleriesBxSliders.setDownloadImageLink();
     },
-/*
-    setActiveGalleryNav: function() {
-      var activeGalleryNid = $('#microsite #galleries-content .microsite-gallery').attr('data-node-id');
-      $('#galleries .galleries-bxslider li').removeClass('active');
-      $('#galleries .galleries-bxslider li[data-node-id="' + activeGalleryNid + '"]').addClass('active');
-    },
-*/
-
-    currentSlideNum: 0,
-    setActiveGalleryImageNav: function(slideNum) {
-usa_debug('setActiveGalleryImageNav(' + slideNum + ')');
-      var $galleryContentList = $('#galleries #gallery-content ul.bxslider'),
-          $galleryNavList = $('#galleries #gallery-nav ul#bx-pager');
-      $('#galleries #gallery-content li, #galleries #gallery-nav a').removeClass('active2');
-      $('#galleries #gallery-content li[data-slide-index="' + slideNum + '"], #galleries #gallery-nav a[data-slide-index="' + slideNum + '"]').addClass('active2');
-    },
-
-/*
-    initCarousel: function(callback) {
-      callback = callback || null;
-      $slideSelector = $('.microsite-gallery .flexslider');
-      $touch = true;
-      if ($slideSelector.find('li').length <= 1) {
-        $touch = false;
-      }
-      $slideSelector
-        .parent().append('<div class="description-block"></div>');
-      $slideSelector
-        .flexslider({
-          animation: "slide",
-          useCSS: true,
-          touch: $touch,
-          smoothHeight: false,
-          slideshow: false,
-          controlNav: true,
-          directionNav: true,
-          start: function() {
-            Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryHeight();
-            var $slider = $slideSelector;
-            Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture($slider);
-            var current_gallery = $slider.closest('.microsite-gallery');
-            var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
-            if (current_description) {
-              current_gallery.find('.description-block').html(current_description);
-            }
-            $slider.append('<div class="counter"></div>');
-//            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
-
-            if (callback) callback();
-          },
-          after: function() {
-            var $slider = $slideSelector;
-            Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture($slider);
-            Drupal.behaviors.micrositeGalleriesBxSliders.refreshBannerAd();
-//            Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
-//            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
-          }
-        });
-    },
-*/
 
     showHideLoader: function() {
       var activeGallery = $('#galleries .microsite-gallery'),
@@ -237,6 +116,8 @@ usa_debug('setActiveGalleryImageNav(' + slideNum + ')');
       });
     },
 
+    activeGalleryNavItem: null,
+    galleryIsLoading: null,
 /*
     switchGallery: function(nid, callback) {
       callback = callback || null;
@@ -291,7 +172,6 @@ usa_debug('setActiveGalleryImageNav(' + slideNum + ')');
         //usa_debug(errorThrown);
       })
     },
-*/
 
     micrositeReloadSliders: function() {
       $('#microsite #galleries .bxslider-container').width('100%');
@@ -348,6 +228,7 @@ usa_debug('setActiveGalleryImageNav(' + slideNum + ')');
 
       $('#galleries .galleries-bxslider li[data-node-id="' + Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem + '"]').addClass('active');
     },
+*/
 
 /*
     promoClickSwitchGallery: function(anchorFull) {
@@ -401,6 +282,25 @@ usa_debug('setActiveGalleryImageNav(' + slideNum + ')');
       history.pushState({"state": anchorFull}, anchorFull, anchorFull);
     },
 */
+    pagerArray: null,
+    setPagerArray: function(minNavSlides) {
+      var $navPager = $('#galleries #gallery-nav .bx-pager'),
+          numPagerItems = $navPager.find('.bx-pager-item').length,
+          $galleryContent = $('#galleries #gallery-content ul.bxslider'),
+          numSlides = $galleryContent.find('li').length,
+          count = 0,
+          pagerArray = [];
+      for (var i=0; i < numPagerItems; i++) {
+        pagerArray[i] = [];
+        for (var j=0; j < minNavSlides; j++) {
+          if (count < numSlides) {
+            pagerArray[i][j] = count;
+            count++;
+          }
+        }
+      }
+      return pagerArray;
+    },
 
     attach: function (context, settings) {
 
@@ -409,61 +309,9 @@ usa_debug('setActiveGalleryImageNav(' + slideNum + ')');
         // set defaults
         var wwidth = $(window).width(),
             transitionWidth = 640,
-            episodesNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('episodes'),
-            charsNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('other'),
             slideWidth = (wwidth > transitionWidth) ? 250 : 140,
             slideMargin = 10,
             self = this;
-
-/*
-        self.setActiveGalleryHeight();
-
-        if ($('#microsite #galleries #ep-galleries').length > 0) {
-          self.epGalleryBxSlider = $('#microsite #galleries #ep-galleries .galleries-bxslider').bxSlider({
-            slideWidth: slideWidth,
-            minSlides: episodesNumSlides,
-            maxSlides: episodesNumSlides,
-            slideMargin: slideMargin,
-            nextSelector: '#ep-galleries-next',
-            prevSelector: '#ep-galleries-prev',
-            nextText: 'Next',
-            prevText: 'Previous',
-            pagerSelector: '#ep-galleries-pagers',
-            infiniteLoop: false,
-            hideControlOnEnd: true,
-            onSliderLoad: function(){
-              self.showHidePager('#ep-galleries', episodesNumSlides);
-              $('#microsite #galleries #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
-            }
-          });
-        }
-
-        if ($('#microsite #galleries #character-galleries').length > 0) {
-          self.characterGalleryBxSlider = $('#microsite #galleries #character-galleries .galleries-bxslider').bxSlider({
-            slideWidth: slideWidth,
-            minSlides: charsNumSlides,
-            maxSlides: charsNumSlides,
-            slideMargin: slideMargin,
-            nextSelector: '#character-galleries-next',
-            prevSelector: '#character-galleries-prev',
-            nextText: 'Next',
-            prevText: 'Previous',
-            pagerSelector: '#character-galleries-pagers',
-            infiniteLoop: false,
-            hideControlOnEnd: true,
-            onSliderLoad: function(){
-              self.showHidePager('#character-galleries', charsNumSlides);
-              $('#microsite #galleries #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
-            }
-          });
-        }
-
-        self.setActiveGalleryNav();
-
-        $('#microsite #galleries .galleries-bxslider li a').bind('click', self.changeGalleryHandler);
-
-Drupal.behaviors.micrositeGalleriesBxSliders.
-*/
 
         var slideCount = 0;
         $('#galleries ul.slides li').each(function(){
@@ -485,61 +333,85 @@ Drupal.behaviors.micrositeGalleriesBxSliders.
           slideHeight = 200;
         }
 
-        $('.bxslider').bxSlider({
-          pagerCustom: '#bx-pager',
-          infiniteLoop: false,
-          hideControlOnEnd: true,
-          onSliderLoad: function(){
-            setTimeout(function(){
-              var galleryNavHeight = parseInt($('#galleries #gallery-content .bxslider img:first').height());
-              minNavSlides = Math.round(galleryNavHeight / (slideHeight + slideMargin));
-usa_debug('galleryNavHeight: ' + galleryNavHeight + ', galleryNavMinSlides: ' + minNavSlides);
-              $('#galleries #gallery-content a.bx-prev, #galleries #gallery-nav a.bx-prev').html('Previous');
-              $('#bx-pager').bxSlider({
-                mode: 'vertical',
-                slideWidth: slideWidth,
-                slideHeight: slideHeight,
-                minSlides: minNavSlides,
-                slideMargin: slideMargin,
-                infiniteLoop: false,
-                hideControlOnEnd: true,
-                onSliderLoad: function(){
-                  $('#galleries #gallery-nav .bx-viewport').css({'min-height': galleryNavHeight + 'px !important'});
-                  self.updateImageInfo(0);
+        $(window).load(function(){
+          // initialize viewport/large slider
+          $('.bxslider').bxSlider({
+            pagerCustom: '#bx-pager',
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            onSliderLoad: function(){
+              setTimeout(function(){
+                var galleryNavHeight = parseInt($('#galleries #gallery-content .bxslider img:first').height());
+                minNavSlides = Math.round(galleryNavHeight / (slideHeight + slideMargin));
 
-                  // initialize next/prev clicks -- only setting active nav elements
-                  $('#galleries #gallery-content .bx-controls .bx-next').on('click', function(){
-                    self.currentSlideNum++;
-                    self.updateImageInfo(self.currentSlideNum);
-usa_debug('self.currentSlideNum: ' + self.currentSlideNum);
-                  });
-                  $('#galleries #gallery-content .bx-controls .bx-prev').on('click', function(){
-                    self.currentSlideNum--;
-                    self.updateImageInfo(self.currentSlideNum);
-                  });
+                // initialize navigation/thumbnail slider
+                $('#bx-pager').bxSlider({
+                  mode: 'vertical',
+                  slideWidth: slideWidth,
+                  slideHeight: slideHeight,
+                  minSlides: minNavSlides,
+                  slideMargin: slideMargin,
+                  infiniteLoop: false,
+                  hideControlOnEnd: true,
+                  onSliderLoad: function(){
+//                    $('#galleries #gallery-nav .bx-viewport').css({'min-height': galleryNavHeight + 'px'});
+                    self.pagerArray = self.setPagerArray(minNavSlides);
+usa_debug('galleryNavHeight: ' + galleryNavHeight + ', galleryNavMinSlides: ' + minNavSlides + ', pagerArray: ', self.pagerArray);
+                    $('#galleries #gallery-content a.bx-prev, #galleries #gallery-nav a.bx-prev').html('Previous');
+                    $('#galleries #gallery-content ul.bxslider li:first').addClass('active2');
+                    self.updateImageInfo(0, 1);
 
-                  // initialize nav button click -- only setting active nav elements
-                  $('#galleries #gallery-nav a').on('click', function(){
-                    self.currentSlideNum = parseInt($(this).attr('data-slide-index'));
-                    self.updateImageInfo(self.currentSlideNum);
-                  });
-                }
-              });
-            }, 2000);
-          }
+                    // initialize next/prev clicks -- only setting active nav elements
+                    $('#galleries #gallery-content .bx-controls .bx-next').on('click', function(){
+                      var totalNumSlides = $('#galleries #gallery-content ul.bxslider li').length,
+                          $activeSlide = $('#galleries #gallery-content ul.bxslider li.active2'),
+                          slideNum = (parseInt($activeSlide.attr('data-slide-index')) + 1);
+                      if (slideNum < totalNumSlides) {
+                        $activeSlide.removeClass('active2').next().addClass('active2');
+                        self.updateImageInfo(slideNum);
+                      }
+                    });
+                    $('#galleries #gallery-content .bx-controls .bx-prev').on('click', function(){
+                      var $activeSlide = $('#galleries #gallery-content ul.bxslider li.active2'),
+                          slideNum = (parseInt($activeSlide.attr('data-slide-index')) - 1);
+                      if (slideNum > -1) {
+                        $activeSlide.removeClass('active2').prev().addClass('active2');
+                        self.updateImageInfo(slideNum);
+                      }
+                    });
+
+                    // initialize nav button click -- only setting active nav elements
+                    $('#galleries #gallery-nav ul#bx-pager a').on('click', function(){
+                      var slideNum = parseInt($(this).attr('data-slide-index')),
+                          $galleryContent = $('#galleries #gallery-content ul.bxslider');
+                      $galleryContent.find('li').removeClass('active2');
+                      $galleryContent.find('li[data-slide-index="' + slideNum + '"]').addClass('active2');
+                      self.updateImageInfo(slideNum);
+                    });
+                  }
+                });
+              }, 2000);
+            }
+          });
+
+          // set image next/prev hover state
+          $('#galleries #gallery-content li, #galleries #gallery-content .bx-controls-direction a').hover(function(){
+            $('#galleries #gallery-content .bx-controls-direction a').each(function(){
+              if (!$(this).hasClass('disabled')) {
+                $(this).css({'display': 'block', 'opacity': 0.8});
+              }
+            });
+          }, function(){
+            $('#galleries #gallery-content .bx-controls-direction a').css({'display': 'none', 'opacity': 0});
+          });
         });
 
-        // set image hover state
-        $('#galleries #gallery-content li, #galleries #gallery-content .bx-controls-direction a').hover(function(){
-          $('#galleries #gallery-content .bx-controls-direction a').css({'display': 'block', 'opacity': 0.8});
-        }, function(){
-          $('#galleries #gallery-content .bx-controls-direction a').css({'display': 'none', 'opacity': 0});
-        });
-
+/*
         $(window).bind('resize', function () {
           self.micrositeReloadSliders();
         });
         window.addEventListener('orientationchange', self.micrositeReloadSliders);
+*/
       }
     }
   }

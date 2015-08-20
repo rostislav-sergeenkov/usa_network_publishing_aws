@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -10778,12 +10778,12 @@ footer h2 {
   top: 0;
   margin: auto;
   position: absolute;
+  max-height: 100%;
+  max-width: 100%;
 }
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-consumpt-post .gallery-wrapper .bxslider-gallery .slide .node .asset-img img {
     height: auto;
-    max-height: 100%;
-    max-width: 100%;
   }
 }
 .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .bxslider-gallery .slide .node .slide-info {

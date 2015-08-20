@@ -250,6 +250,10 @@
   text-indent: -3px;
   text-align: center;
 }
+#galleries #gallery-nav .bx-controls-direction a.bx-prev.disabled,
+#galleries #gallery-nav .bx-controls-direction a.bx-next.disabled {
+  display: none;
+}
 #galleries #gallery-nav .bx-wrapper .bx-next {
   background-image: none;
   background-color: transparent;
@@ -539,7 +543,7 @@
   }
   #microsite #galleries .field-type-gigya-sharebar {
     clear: left;
-    float: left;
+    float: right;
   }
 }
 

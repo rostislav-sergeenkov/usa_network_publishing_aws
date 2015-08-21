@@ -338,7 +338,7 @@
             pagerCustom: '#bx-pager',
             infiniteLoop: false,
             hideControlOnEnd: true,
-            touchEnabled: false,
+            touchEnabled: true,
             onSliderLoad: function(){
               setTimeout(function(){
                 var galleryNavHeight = parseInt($('#galleries #gallery-content .bxslider img:first').height());

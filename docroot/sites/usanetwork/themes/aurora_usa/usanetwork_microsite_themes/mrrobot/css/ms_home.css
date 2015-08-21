@@ -45,6 +45,12 @@
   margin-bottom: 160px!important;
   width: 450px;
 }
+#home #home-logo h1,
+#home #home-logo h2 {
+  height: 0;
+  text-indent: -9999px;
+  margin: 0;
+}
 #home #home-sponsored.camry2015 {
   width: 24%;
 }

@@ -487,6 +487,7 @@
     },
 
     // sectionScroll
+    allWaypointsSet: false,
     sectionScroll: function(anchor, item, itemTitle) {
       item = item || '';
       itemTitle = itemTitle || '';
@@ -521,7 +522,18 @@
         }
       }
 
-      // if this is the initial page load, the page must be almost completely
+      // check to make sure we have all waypoints set
+      if (!Drupal.behaviors.ms_global.allWaypointsSet) {
+        var numSections = $('#sections > .section').length;
+        if ($('#site-nav').length > 0) numSections = numSections - 1;
+        if (Object.keys(Drupal.behaviors.ms_global.waypoints).length != numSections) {
+          Waypoint.refreshAll();
+        }
+        else {
+          Drupal.behaviors.ms_global.allWaypointsSet = true;
+        }
+      }
+      // if this is the initial page load and we're scrolling, the page must be almost completely
       // loaded, so let's refresh the waypoints
       if (typeof Waypoint != 'undefined' && Drupal.behaviors.ms_global.globalInitialPageLoad) Waypoint.refreshAll();
 
@@ -557,7 +569,7 @@
 
       // if the window is scrolling, the page must be almost completely
       // loaded, so the initial page load is complete
-      //Drupal.behaviors.ms_global.globalInitialPageLoad = false;
+      Drupal.behaviors.ms_global.globalInitialPageLoad = false;
     },
 
     // RESIZING
@@ -661,87 +673,6 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
         $siteNav.removeClass('mobile');
       }
 
-      // TIME OUT
-      // we need to allow time for the page to load -- especially videos
-//      setTimeout(function(){
-      $(window).load(function(){
-        self.setSectionIdsArray();
-
-        if ($('#videos').length > 0) {
-          Drupal.behaviors.ms_videos.setVideoHeight();
-
-          $('#video-container').addClass('active');
-          var urlParts = self.parseUrl(window.location.href); // history.state['path']);
-          if (urlParts['section'] == 'videos' && urlParts['item']) {
-            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
-          }
-          else {
-            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
-          }
-        }
-
-        // initialize clicks in microsite menu
-        $('#microsite li.internal a').on('click', function(e){
-          e.preventDefault();
-          var $parent = $(this).parent(),
-              anchor = $parent.attr('data-menuanchor');
-
-          if ($('#site-nav-links li').hasClass('disabled')) {
-            return false;
-          }
-          else {
-            $('#site-nav-links li').addClass('disabled');
-          }
-
-          // if clicked must see moments
-          if (anchor == 'videos' || anchor == 'must-see-moments') {
-            switch(anchor) {
-              case 'videos':
-                self.selectVideoFilter('videos', 'full-episodes');
-                break;
-              case 'must-see-moments':
-                self.selectVideoFilter('videos', 'must-see-moments');
-                break;
-            }
-          }
-          else {
-            Drupal.behaviors.ms_global.sectionScroll(anchor);
-          }
-        });
-
-        // initialize site nav logo click
-        $('#site-nav-logo').on('click', function(){
-          var anchor = 'home',
-              anchorFull = basePath + '/' + anchor;
-
-          Drupal.behaviors.ms_global.sectionScroll(anchor);
-        });
-
-        // initialize home next button click
-        $('#home .scroll').on('click', function(){
-          var anchor = 'videos',
-              anchorFull = basePath + '/' + anchor;
-          Drupal.behaviors.ms_global.sectionScroll(anchor);
-        });
-
-        // initialize the waypoints
-        if (!$('html').hasClass('ie9')) self.initializeWaypoints();
-
-        // check url and scroll to specific content
-        // This scroll is necessary -- even if we're loading the "homepage",
-        // because we need to set globalInitialPageLoad to false, which
-        // is done in sectionScroll
-        var urlParts = self.parseUrl(),
-            activeSection = $('.section.active');
-        setTimeout(function(){
-          self.sectionScroll(urlParts['section'], urlParts['item']);
-        }, 2000);
-
-        self.create728x90Ad();
-      });
-//      }, 2000);
-      // END TIME OUT
-
       // Turn off the popstate/hashchange tve-core.js event listeners
       $(window).off('popstate');
       $(window).off('hashchange');
@@ -781,8 +712,87 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
           if (!self.globalInitialPageLoad) self.resizeResponse();
         }, 250);
       });
-      $(window).load(function() {
-        Drupal.behaviors.ms_global.globalInitialPageLoad = false;
+
+      $(window).load(function(){
+
+        if ($('#videos').length > 0) {
+          Drupal.behaviors.ms_videos.setVideoHeight();
+
+          $('#video-container').addClass('active');
+          var urlParts = self.parseUrl(window.location.href); // history.state['path']);
+          if (urlParts['section'] == 'videos' && urlParts['item']) {
+            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
+          }
+          else {
+            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
+          }
+        }
+
+        // TIME OUT
+        // we need to allow time for the page to load -- especially videos
+        setTimeout(function(){
+          // initialize clicks in microsite menu
+          $('#microsite li.internal a').on('click', function(e){
+            e.preventDefault();
+            var $parent = $(this).parent(),
+                anchor = $parent.attr('data-menuanchor');
+
+            if ($('#site-nav-links li').hasClass('disabled')) {
+              return false;
+            }
+            else {
+              $('#site-nav-links li').addClass('disabled');
+            }
+
+            // if clicked must see moments
+            if (anchor == 'videos' || anchor == 'must-see-moments') {
+              switch(anchor) {
+                case 'videos':
+                  self.selectVideoFilter('videos', 'full-episodes');
+                  break;
+                case 'must-see-moments':
+                  self.selectVideoFilter('videos', 'must-see-moments');
+                  break;
+              }
+            }
+            else {
+              Drupal.behaviors.ms_global.sectionScroll(anchor);
+            }
+          });
+
+          // initialize site nav logo click
+          $('#site-nav-logo').on('click', function(){
+            var anchor = 'home',
+                anchorFull = basePath + '/' + anchor;
+
+            Drupal.behaviors.ms_global.sectionScroll(anchor);
+          });
+
+          // initialize home next button click
+          $('#home .scroll').on('click', function(){
+            var anchor = 'videos',
+                anchorFull = basePath + '/' + anchor;
+            Drupal.behaviors.ms_global.sectionScroll(anchor);
+          });
+
+          self.setSectionIdsArray();
+
+          // initialize the waypoints
+          if (!$('html').hasClass('ie9')) self.initializeWaypoints();
+
+          // check url and scroll to specific content
+          // This scroll is necessary -- even if we're loading the "homepage",
+          // because we need to set globalInitialPageLoad to false, which
+          // is done in sectionScroll
+          var urlParts = self.parseUrl(),
+              activeSection = $('.section.active');
+          setTimeout(function(){
+            self.sectionScroll(urlParts['section'], urlParts['item']);
+          }, 2000);
+        }, 2000);
+        // END TIME OUT
+
+        self.create728x90Ad();
       });
 
     }

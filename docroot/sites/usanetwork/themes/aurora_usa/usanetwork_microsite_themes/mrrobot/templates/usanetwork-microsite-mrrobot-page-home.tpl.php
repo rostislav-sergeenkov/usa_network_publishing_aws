@@ -30,7 +30,14 @@ endif;
   <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
 
   <div id="home-content-container">
-    <div id="home-logo"><img src="<?php print $themePath; ?>/images/main_title.png" alt="Mr. Robot logo" /></div>
+    <div id="home-logo"><img src="<?php print $themePath; ?>/images/main_title.png" alt="Mr. Robot logo" />
+      <?php // @TODO: DV -- DYNAMICALLY PULL IN THE h1 TAG AND SECTION STATUS ?>
+      <?php if ($_SERVER['REQUEST_URI'] == '/mrrobot/catchup'): ?>
+      <h1 class="seo-h1">Mr. Robot Catch Up</h1>
+      <?php else: ?>
+      <h2 class="seo-h1">Mr. Robot Catch Up</h2>
+      <?php endif; ?>
+    </div>
     <div id="home-sponsored"></div>
     <div id="home-tunein"><?php if (!empty($tune_in)) print $tune_in; ?></div>
 

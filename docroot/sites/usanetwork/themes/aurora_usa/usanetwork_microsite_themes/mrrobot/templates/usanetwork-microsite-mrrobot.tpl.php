@@ -25,9 +25,11 @@
 // TO ALL TEMPLATE FILES
 $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot';
 date_default_timezone_set('America/New_York');
+/*
 $timestamp = time();
 if ($timestamp > mktime(22, 0, 0, 8, 26, 2015)): // after finale premiere starts Aug 26, 2015 22:00:00 AM ET
 endif;
+*/
 ?>
 
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>

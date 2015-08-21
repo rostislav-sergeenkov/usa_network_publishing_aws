@@ -18,6 +18,7 @@ body.page-node-microsite {
 /* SECTIONS CONTAINERS */
 .section {
   background-color: #161618;
+  padding: 80px 0 60px;
 }
 .section:nth-child(odd) {
   background-color: #050506;

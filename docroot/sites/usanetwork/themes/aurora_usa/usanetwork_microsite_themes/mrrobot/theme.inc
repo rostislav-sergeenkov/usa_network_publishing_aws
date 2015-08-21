@@ -247,7 +247,6 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $site_theme_path . '/js/ms_characters.js',
       $default_theme_path . '/js/ms_quizzes.js',
       $site_theme_path . '/js/ms_galleries_bxslider.js',
-//      $site_theme_path . '/js/ms_gallery_carousel.js',
       $default_theme_path . '/js/date.js',
       $site_theme_path . '/js/counter.js',
       $default_theme_path . '/js/ms_video_endcard.js',

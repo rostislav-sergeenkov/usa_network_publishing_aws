@@ -557,7 +557,7 @@
 
       // if the window is scrolling, the page must be almost completely
       // loaded, so the initial page load is complete
-      Drupal.behaviors.ms_global.globalInitialPageLoad = false;
+      //Drupal.behaviors.ms_global.globalInitialPageLoad = false;
     },
 
     // RESIZING
@@ -781,7 +781,9 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
           if (!self.globalInitialPageLoad) self.resizeResponse();
         }, 250);
       });
-      window.addEventListener('orientationchange', self.resizeResponse);
+      $(window).load(function() {
+        Drupal.behaviors.ms_global.globalInitialPageLoad = false;
+      });
 
     }
   }

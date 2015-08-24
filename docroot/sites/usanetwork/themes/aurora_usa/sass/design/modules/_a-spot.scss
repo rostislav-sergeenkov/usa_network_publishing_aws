@@ -447,6 +447,9 @@
   height: 43.75vw;
   position: relative;
   width: 100%;
+  @include breakpoint($bp-min-2500-width) {
+    height: 1094px;
+  }
   @include breakpoint($bp-768-width) {
     height: auto;
   }
@@ -537,6 +540,11 @@
         z-index: 1;
       }
     }
+    @include breakpoint($bp-min-2500-width) {
+      &.shadow:after {
+        height: 227.5px;
+      }
+    }
     > .title {
       background: $header-tab-back;
       height: 10%;
@@ -603,12 +611,15 @@
         li {
           background: $full-episodes-light-back;
           overflow: hidden;
-          height: 36%;
+          height: 12.4vw;
           margin-bottom: 2px;
           position: relative;
           width: 100%;
           &:nth-child(2n) {
             background: $full-episodes-dark-back;
+          }
+          @include breakpoint($bp-min-2500-width) {
+            height: 311px;
           }
         }
       }

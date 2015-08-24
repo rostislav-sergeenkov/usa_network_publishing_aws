@@ -199,7 +199,11 @@ var homeAspot, showAspot;
           .draggable(draggableOptions)
           .css("position", "absolute");
       block.find('[data-rel=title_prefix]').resizable({
-        containment: "parent"
+        containment: "parent",
+        stop: function () {
+          usanetwork_aspot_giui_fill_draggable_items_input();
+          usanetwork_aspot_giui_lock_ajax_form_submits();
+        }
         /*
          ui.helper
          ui.originalPosition
@@ -211,13 +215,22 @@ var homeAspot, showAspot;
         //start: function(e, ui) {},
         //resize: function(e, ui) {},
         //stop: function(e, ui) {}
+
       });
       block.find('[data-rel=title]').resizable({
-        containment: "parent"
+        containment: "parent",
+        stop: function () {
+          usanetwork_aspot_giui_fill_draggable_items_input();
+          usanetwork_aspot_giui_lock_ajax_form_submits();
+        }
       });
 
       block.find('[data-rel=aspot_description]').resizable({
-        containment: "parent"
+        containment: "parent",
+        stop: function () {
+          usanetwork_aspot_giui_fill_draggable_items_input();
+          usanetwork_aspot_giui_lock_ajax_form_submits();
+        }
       });
 
       /**

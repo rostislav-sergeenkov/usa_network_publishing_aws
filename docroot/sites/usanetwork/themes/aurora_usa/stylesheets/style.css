@@ -26180,6 +26180,11 @@ yx-axis
   content: '';
   display: table;
 }
+@media (min-width: 2500px) {
+  .aspot-and-episodes {
+    height: 1094px;
+  }
+}
 @media (max-width: 768px) {
   .aspot-and-episodes {
     height: auto;
@@ -26278,6 +26283,11 @@ yx-axis
     z-index: 1;
   }
 }
+@media (min-width: 2500px) {
+  .aspot-and-episodes .episodes-list.shadow:after {
+    height: 227.5px;
+  }
+}
 .aspot-and-episodes .episodes-list > .title {
   background: #e1e1e1;
   height: 10%;
@@ -26356,13 +26366,18 @@ yx-axis
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li {
   background: #8f8f8f;
   overflow: hidden;
-  height: 36%;
+  height: 12.4vw;
   margin-bottom: 2px;
   position: relative;
   width: 100%;
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li:nth-child(2n) {
   background: #7a7a7a;
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li {
+    height: 311px;
+  }
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {
   padding-top: 2px;

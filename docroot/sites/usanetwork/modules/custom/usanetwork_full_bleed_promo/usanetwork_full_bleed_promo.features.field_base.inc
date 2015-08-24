@@ -88,6 +88,8 @@ function usanetwork_full_bleed_promo_field_default_field_bases() {
         'tv_show' => 'tv_show',
         'usa_homepage' => 'usa_homepage',
         'usanetwork_promo' => 'usanetwork_promo',
+        'consumpt_post' => 'consumpt_post',
+        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

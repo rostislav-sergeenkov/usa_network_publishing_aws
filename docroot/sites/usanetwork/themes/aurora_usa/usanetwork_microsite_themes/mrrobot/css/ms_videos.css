@@ -487,6 +487,37 @@
   }
 }
 
+@media (min-width: 1280px) {
+  #video-container .featured-asset .tve-help {
+    font-size: 20px;
+    line-height: 30px;
+    height: 523px;
+    width: 100%;
+  }
+  #video-container .featured-asset .tve-help .tve-msg {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #video-container .featured-asset .tve-help .tve-download {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #video-container .featured-asset .tve-help .tve-close {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #video-container .featured-asset.file-video-mpx .locked-msg {
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1275px)
+  .featured-asset .tve-help {
+    width: 100%;
+  }
+}
+
 @media (min-width: 641px) {
   #video-container .featured-asset .tve-help {
     font-size: 16px;
@@ -506,30 +537,6 @@
   }
   #video-container .featured-asset.file-video-mpx .locked-msg .first-line {
     font-size: 20px;
-  }
-}
-
-@media (min-width: 1280px) {
-  #video-container .featured-asset .tve-help {
-    font-size: 20px;
-    line-height: 30px;
-    height: 523px;
-  }
-  #video-container .featured-asset .tve-help .tve-msg {
-    font-size: 20px;
-    line-height: 30px;
-  }
-  #video-container .featured-asset .tve-help .tve-download {
-    font-size: 20px;
-    line-height: 30px;
-  }
-  #video-container .featured-asset .tve-help .tve-close {
-    font-size: 20px;
-    line-height: 30px;
-  }
-  #video-container .featured-asset.file-video-mpx .locked-msg {
-    left: 0;
-    width: 100%;
   }
 }
 
@@ -564,18 +571,15 @@
   #ad_300x250 {
     float: right;
   }
-  #video-container .featured-asset .tve-help .tve-close {
-    top: 112px;
-  }
   #video-container .featured-asset .tve-help .tve-msg {
-    top: 52px;
+    top: 14%;
   }
   #video-container .featured-asset .tve-help .tve-download {
-    top: 82px;
+    top: 17%;
   }
   #video-container .featured-asset .tve-help .tve-download-link {
     left: 0;
-    top: 100px;
+    top: 14%
   }
   #video-container .featured-asset .tve-help {
     font-size: 16px;
@@ -584,6 +588,7 @@
     height: 346px;
   }
 }
+
 @media (max-width: 920px) {
   #videos section h2 {
     height: 66px;
@@ -640,25 +645,21 @@
   #video-container .featured-asset .tve-help {
     font-size: 11px;
     line-height: 16px;
-    float: none;
-    clear: left;
     left: 0;
-    height: 186px;
-    width: 300px;
   }
   #video-container .featured-asset .tve-help:before,
   #video-container .featured-asset .tve-help:after {
     left: 50%;
   }
   #video-container .featured-asset .tve-help .tve-msg {
-    top: 14px;
+    top: 22%;
   }
   #video-container .featured-asset .tve-help .tve-download {
-    top: -6px;
+    top: 28%;
   }
   #video-container .featured-asset .tve-help .tve-download-link {
     left: 0;
-    top: -3px;
+    top: 30%;
   }
   #video-container .featured-asset .tve-help .tve-close {
     font-size: 16px;

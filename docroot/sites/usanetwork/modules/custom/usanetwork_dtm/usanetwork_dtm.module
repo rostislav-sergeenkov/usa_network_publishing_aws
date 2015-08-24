@@ -1,0 +1,172 @@
+<?php
+/**
+ * @file
+ * Code for the USA Network Dynamic Tag Manager.
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_dtm_menu() {
+  // admin area
+  $items['admin/usanetwork/dtm'] = array(
+    'title' => 'DTM settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_dtm_admin_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_dtm.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_init().
+ */
+function usanetwork_dtm_init() {
+  if (_usanetwork_widget_get_environment() == 'prod') {
+    drupal_add_js('//assets.adobedtm.com/5ed6cf59538a2045d9fe4799a3f70da302c83d5a/satelliteLib-24e397569ca85a58d3963043838c6696e85c5e9a.js', array('scope' => 'header', 'every_page' => TRUE, 'cache' => FALSE));
+  } else {
+    drupal_add_js('//assets.adobedtm.com/5ed6cf59538a2045d9fe4799a3f70da302c83d5a/satelliteLib-24e397569ca85a58d3963043838c6696e85c5e9a-staging.js', array('scope' => 'header', 'every_page' => TRUE, 'cache' => FALSE));
+  }
+  drupal_add_js('_satellite.pageBottom();', array('type' => 'inline', 'scope' => 'footer', 'every_page' => TRUE, 'preprocess' => FALSE));
+}
+
+/**
+ *  Implements hook_usa_dart_alter().
+ */
+function usanetwork_dtm_get_midration_array() {
+  $data = array();
+  $migration_array = variable_get('usanetwork_dtm_mirgation_array', _usanetwork_dtm_default_migaration_array());
+
+  if (!empty($migration_array)) {
+    $migration_array = explode("\n", $migration_array);
+
+    if (!empty($migration_array)) {
+      foreach ($migration_array as $variable) {
+        $variables = explode('|',$variable);
+        $data[trim($variables[0])] = trim($variables[1]);
+      }
+    }
+  }
+
+  return $data;
+}
+
+/*
+ * Default migration array from ATM to DTM
+ */
+function _usanetwork_dtm_default_migaration_array() {
+  return
+    'eVar1|AdobeTracking.userGroup
+eVar3|AdobeTracking.registrationType
+eVar4|AdobeTracking.showSiteFeature
+eVar6|AdobeTracking.searchKW
+eVar9|AdobeTracking.pageName
+eVar10|AdobeTracking.showSite
+eVar20|AdobeTracking.stepByStepProcess
+eVar32|AdobeTracking.contentType
+eVar42|AdobeTracking.guid
+eVar45|AdobeTracking.businessUnit
+eVar58|AdobeTracking.questionName
+eVar68|AdobeTracking.rwdBreakpoint
+eVar69|AdobeTracking.screenHeight
+eVar70|AdobeTracking.screenWidth
+eVar71|AdobeTracking.deviceType
+eVar72|AdobeTracking.screenOrientation
+eVar73|AdobeTracking.itemShared
+eVar74|AdobeTracking.socialNetwork
+pageName|AdobeTracking.pageName
+channel|AdobeTracking.siteSection
+server|AdobeTracking.server
+s.prop1|AdobeTracking.userGroup
+s.prop2|AdobeTracking.contentGroup
+s.prop3|AdobeTracking.contentType
+s.prop4|AdobeTracking.showSiteFeature
+s.prop5|AdobeTracking.showSiteFeatureII
+s.prop6|AdobeTracking.test
+s.prop8|AdobeTracking.division
+s.prop9|AdobeTracking.businessUnit
+s.prop10|AdobeTracking.showSite
+s.prop15|AdobeTracking.customerID
+s.prop18|AdobeTracking.videoClipString
+s.prop24|AdobeTracking.USAEverywhereEvent
+s.prop31|AdobeTracking.sharedPages
+s.prop32|AdobeTracking.siteVersion
+s.prop36|AdobeTracking.pageRefresh
+s.prop58|AdobeTracking.pollQuestionName
+s.prop60|AdobeTracking.sponsorship
+s.prop68|AdobeTracking.rwdBreakpoint
+s.prop69|AdobeTracking.screenHeight
+s.prop70|AdobeTracking.screenWidth
+s.prop71|AdobeTracking.deviceType
+s.prop72|AdobeTracking.screenOrientation
+s.prop74|AdobeTracking.socialNetwork
+event13|AdobeTracking.login
+event42|AdobeTracking.registration
+event43|AdobeTracking.step1
+event44|AdobeTracking.step2
+event45|AdobeTracking.step3
+event46|AdobeTracking.step4
+event47|AdobeTracking.step5
+event88|AdobeTracking.questionShown
+s.contextData["tve_domain"]|AdobeTracking.tve_domain
+s.contextData["tve_date"]|AdobeTracking.tve_date
+s.contextData["tve_day"]|AdobeTracking.tve_day
+s.contextData["tve_hour"]|AdobeTracking.tve_hour
+s.contextData["tve_minute"]|AdobeTracking.tve_minute';
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function usanetwork_dtm_page_alter(&$page) {
+  //take all already created variables
+  $context = _sitecatalyst_get_token_context();
+  $codesnippet = token_replace(variable_get('sitecatalyst_codesnippet', ''), $context, array(
+      'clear' => TRUE,
+      'sanitize' => TRUE,
+    )) . "\n";
+
+  $extra_variables_formatted = $codesnippet;
+
+
+  if ($sitecatalyst_hooked_vars = module_invoke_all('sitecatalyst_variables', $page)) {
+    $migrated_vars = _usanetwork_dtm_migrate_vars($sitecatalyst_hooked_vars['variables']);
+    $variables = _sitecatalyst_format_variables($migrated_vars);
+  }
+
+  //may do alter
+
+  $object = "var AdobeTracking = new Object();\n";
+  $start = "<script type=\"text/javascript\">";
+  $end = "</script>\n";
+
+  $page['page_top']['usa_dtm'] =  array(
+    'header'=> array(
+      '#type' => 'markup',
+      '#markup' => $start,
+    ),
+    'variables'=> array(
+      '#type' => 'markup',
+      '#markup' => $object . $variables,
+    ),
+    'footer'=> array(
+      '#type' => 'markup',
+      '#markup' => $extra_variables_formatted . $end,
+    ),
+  );
+}
+
+function _usanetwork_dtm_migrate_vars($atm_vars) {
+  $migration_array = usanetwork_dtm_get_midration_array();
+
+  foreach ($atm_vars as $key => $value) {
+    if (isset($migration_array[$key])) {
+      $dtm_vars[$migration_array[$key]] = $value;
+    } else {
+      $dtm_vars[$key] = $value;
+    }
+  }
+
+  return $dtm_vars;
+}

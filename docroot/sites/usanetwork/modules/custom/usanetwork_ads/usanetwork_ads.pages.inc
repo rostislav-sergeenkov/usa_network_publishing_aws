@@ -377,12 +377,21 @@ function _usanetwork_ads_omniture_variable_elements($defaults = array()) {
   $form = array(
     '#type' => 'fieldset',
     '#tree' => TRUE,
-  );;
-  $form['key'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Variable Name'),
-    '#default_value' => $defaults['key'],
   );
+  if (module_enable('usanetwork_dtm')) {
+    $form['key'] = array(
+      '#type' => 'select',
+      '#title' => t('Variable Name'),
+      '#default_value' => $defaults['key'],
+      '#options' => usanetwork_dtm_get_midration_array(),
+    );
+  } else {
+    $form['key'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Variable Name'),
+      '#default_value' => $defaults['key'],
+    );
+  }
   $form['value'] = array(
     '#type' => 'textfield',
     '#title' => t('Value'),

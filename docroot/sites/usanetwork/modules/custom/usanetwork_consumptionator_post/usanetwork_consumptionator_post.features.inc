@@ -37,6 +37,14 @@ function usanetwork_consumptionator_post_views_api($module = NULL, $api = NULL) 
  */
 function usanetwork_consumptionator_post_node_info() {
   $items = array(
+    'consumpt_blog' => array(
+      'name' => t('Consumptionator blog'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'consumpt_post' => array(
       'name' => t('Consumptionator post'),
       'base' => 'node_content',

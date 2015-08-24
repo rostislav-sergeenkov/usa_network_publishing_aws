@@ -378,7 +378,7 @@ function _usanetwork_ads_omniture_variable_elements($defaults = array()) {
     '#type' => 'fieldset',
     '#tree' => TRUE,
   );
-  if (module_enable('usanetwork_dtm')) {
+  if (module_exists('usanetwork_dtm')) {
     $form['key'] = array(
       '#type' => 'select',
       '#title' => t('Variable Name'),

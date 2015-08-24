@@ -1260,7 +1260,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
         'entityreference_live_preview' => array(
           'enabled' => 0,
@@ -1271,7 +1271,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'options_select',
       'weight' => -3,
     ),
   );

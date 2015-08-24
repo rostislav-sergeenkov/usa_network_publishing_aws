@@ -726,7 +726,7 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
  * @see usanetwork_tv_shows_form_tv_episode_node_form_alter()
  */
 function usanetwork_consumptionator_post_option_populate_js($form, $form_state) {
-  return $form['field_season'];
+  return $form['field_consumptionator_blog'];
 }
 
 /**
@@ -734,7 +734,7 @@ function usanetwork_consumptionator_post_option_populate_js($form, $form_state) 
  * this is a straight rip from pub_tv old relations fields
  */
 function usanetwork_consumptionator_post_form_consumpt_post_node_form_alter(&$form, &$form_state) {
-  /*
+
   // Add AJAX handling to the the show field so that users only see seasons for
   // the selected show.
   $form['field_show'][LANGUAGE_NONE]['#ajax'] = array(
@@ -805,5 +805,5 @@ function usanetwork_consumptionator_post_form_consumpt_post_node_form_alter(&$fo
   // slected show has no seasons, make sure the season field is re-disabled.
   if ((isset($form_state['values']['field_show']) && is_null($form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'])) || (!empty($selected_show) && !isset($result['node']))) {
     $form['field_consumptionator_blog'][LANGUAGE_NONE]['#disabled'] = TRUE;
-  }*/
+  }
 }

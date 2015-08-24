@@ -55,3 +55,19 @@ function usanetwork_related_content_get_related_content_ajax($consum_node_type, 
   return drupal_json_output($response);
 }
 
+function usanetwork_related_content_is_load_more_link(&$related_content, $limit, $overlimited = FALSE) {
+  if (!$overlimited) {
+    $load_more_link = &drupal_static('load_more_link');
+  }
+  if (count($related_content) < $limit + 1) {
+    $load_more_link = FALSE;
+  }
+  else {
+    $related_content = array_slice($related_content, 0, $limit);
+    $load_more_link = TRUE;
+  }
+  if ($overlimited) {
+    $load_more_link = !$load_more_link;
+  }
+  return $load_more_link;
+}

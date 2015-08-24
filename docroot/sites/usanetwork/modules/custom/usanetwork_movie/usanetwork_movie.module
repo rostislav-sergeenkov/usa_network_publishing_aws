@@ -681,7 +681,7 @@ function usanetwork_movie_related_content_block() {
     }
   }
 
-  $related_content = _usanetwork_movie_cache_get_limited_related_movie_content($movie_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
+  $related_content = _usanetwork_movie_cache_get_limited_related_movie_content($movie_node, 0, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1);
 
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
@@ -690,9 +690,9 @@ function usanetwork_movie_related_content_block() {
       'usanetwork_movie_page_context' => 'moviepage',
     ), 'setting');
 
+    $load_more_link =  usanetwork_related_content_is_load_more_link($related_content, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
     $block_of_items = _usanetwork_movie_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
-    $load_more_link = &drupal_static('load_more_link');
-    $load_more_link = TRUE;
+
     return theme('usanetwork_movie_related_items_container', array(
       'related_items_block' => $block_of_items,
       'load_more_link' => $load_more_link,
@@ -1157,16 +1157,13 @@ function usanetwork_movie_get_related_content_ajax($movie_node, $start_from = 0,
   );
 
   $is_even = (($start_from + 1) % 2 == 0) ? TRUE : FALSE;
-  $related_content = _usanetwork_movie_cache_get_limited_related_movie_content($movie_node, $start_from, $limit);
+  $related_content = _usanetwork_movie_cache_get_limited_related_movie_content($movie_node, $start_from, $limit + 1);
 
   if (!empty($related_content)) {
+    $response['overlimited'] = usanetwork_related_content_is_load_more_link($related_content, $limit, TRUE);
     $response['found'] = TRUE;
     $response['total'] = count($related_content);
     $response['rendered'] = _usanetwork_movie_render_related_content_items_block($related_content, TRUE, $is_even, $start_from, $limit, TRUE);
-  }
-
-  if (count($related_content) < $limit && $start_from > 0) {
-    $response['overlimited'] = TRUE;
   }
 
   return drupal_json_output($response);

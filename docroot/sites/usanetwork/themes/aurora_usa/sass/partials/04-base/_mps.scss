@@ -212,6 +212,9 @@
             @include breakpoint($bp-640-width) {
               bottom: 29%;
             }
+            @include breakpoint($bp-480-width) {
+              bottom: 33%;
+            }
           }
         }
       }

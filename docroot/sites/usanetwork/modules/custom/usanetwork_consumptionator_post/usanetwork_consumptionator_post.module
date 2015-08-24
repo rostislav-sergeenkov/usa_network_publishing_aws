@@ -796,6 +796,9 @@ function usanetwork_consumptionator_post_form_consumpt_post_node_form_alter(&$fo
         $options[$node->nid] = check_plain($node->title);
       }
     }
+    else {
+      $form['field_consumptionator_blog'][LANGUAGE_NONE]['#default_value'] = NULL;
+    }
     $form['field_consumptionator_blog'][LANGUAGE_NONE]['#description'] = '';
     $form['field_consumptionator_blog'][LANGUAGE_NONE]['#options'] = $options;
   }
@@ -805,5 +808,15 @@ function usanetwork_consumptionator_post_form_consumpt_post_node_form_alter(&$fo
   // slected show has no seasons, make sure the season field is re-disabled.
   if ((isset($form_state['values']['field_show']) && is_null($form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'])) || (!empty($selected_show) && !isset($result['node']))) {
     $form['field_consumptionator_blog'][LANGUAGE_NONE]['#disabled'] = TRUE;
+  }
+}
+
+/*
+ * Implement hook_node_update.
+ */
+function usanetwork_consumptionator_post_node_update($node) {
+  if ($node->type == 'consumpt_post') {
+    module_load_include('inc', 'pathauto');
+    pathauto_create_alias('usanetwork_consumptionator_post', 'insert', 'node/'. $node->nid, array('node' => $node), $node->type); // Language is optional
   }
 }

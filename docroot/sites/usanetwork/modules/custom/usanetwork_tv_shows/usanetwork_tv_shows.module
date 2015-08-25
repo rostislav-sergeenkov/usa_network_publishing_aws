@@ -1571,10 +1571,11 @@ function _usanetwork_tv_shows_aspot_get_alternative_content($show_node) {
         $entity = reset($entity);
       }
 
-      $entity->entity_type = $alternative_content_data['target_type'];
-      $entity->entity_id = $alternative_content_data['target_id'];
-
-      $alternative_content_entities[] = $entity;
+      if (usanetwork_core_api_check_entity_publish($entity, $alternative_content_data['target_type'])) {
+        $entity->entity_type = $alternative_content_data['target_type'];
+        $entity->entity_id = $alternative_content_data['target_id'];
+        $alternative_content_entities[] = $entity;
+      }
     }
   }
 

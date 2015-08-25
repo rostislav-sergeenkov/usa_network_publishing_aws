@@ -1098,7 +1098,7 @@ function usanetwork_mpx_video_page_alter(&$page) {
 
   //HOTFIX for removing Omniture Call if Disabled Omniture Variables
   if (isset($page['page_bottom']['sitecatalyst']['footer'])) {
-    $current_menu_object = _usanetwork_menu_get_object($type);
+    $current_menu_object = _usanetwork_menu_get_object();
     $entity_settings = _usanetwork_ads_entity_settings($current_menu_object, 'node');
     if (isset($entity_settings['omniture']['disable']) && $entity_settings['omniture']['disable']) {
       $page['page_bottom']['sitecatalyst']['footer'] = str_replace('var s_code=s.t();if(s_code)document.write(s_code)', '', $page['page_bottom']['sitecatalyst']['footer']);

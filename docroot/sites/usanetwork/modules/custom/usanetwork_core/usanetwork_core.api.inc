@@ -281,3 +281,26 @@ function usanetwork_core_api_check_display_relate_content($node) {
   }
   return $check;
 }
+
+/**
+ * Check entity of the publication.
+ *
+ * @param $entity
+ * @param string $entity_type
+ * @return bool
+ */
+function usanetwork_core_api_check_entity_publish($entity, $entity_type = 'node') {
+  switch ($entity_type) {
+    case 'node':
+      if ($entity->status != NODE_PUBLISHED) {
+        return FALSE;
+      }
+      break;
+    case 'file':
+      if (!isset($entity->mpx_video_data['status']) || $entity->mpx_video_data['status'] != NODE_PUBLISHED) {
+        return FALSE;
+      }
+      break;
+  }
+  return TRUE;
+}

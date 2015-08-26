@@ -2817,8 +2817,10 @@ function usanetwork_tv_shows_landing_page_title_callback($show_node, $page_type)
 function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) {
   if (!empty($context['menu_item']['path']) && !empty($context['entity']->title)) {
     $matches = array();
-
-    if (preg_match("/^node\/([\%\d])\/(cast|episodes|videos)$/", $context['menu_item']['path'], $matches)) {
+    if ($context['menu_item']['path'] == 'node/%' && !empty($context['entity']) && $context['entity']->type == 'tv_show') {
+      $omniture_variables['s.pageName'] = $context['entity']->title;
+    }
+    elseif (preg_match("/^node\/([\%\d])\/(cast|episodes|videos)$/", $context['menu_item']['path'], $matches)) {
       switch ($matches[2]) {
         case 'cast':
           $omniture_variables['s.prop3'] = t('Bio');

@@ -631,5 +631,24 @@ and (max-device-width: 568px) {
   #microsite #galleries .galleries-nav.narrow {
     width: 100%;
   }
+  #microsite #galleries #gallery-sharing-text {
+    margin-right: 0;
+    line-height: 16px;
+    float: left;
+    width: 100%;
+    font-size: 10px;
+  }
+  #microsite #galleries .field-type-gigya-sharebar {
+    width: 141px;
+  }
+  .bx-wrapper .bx-pager.bx-default-pager a {
+    width: 5px;
+    height: 5px;
+    margin: 0 4px;
+    border-radius: 2.5px;
+  }
+  #galleries #gallery-nav .bx-wrapper .bx-controls-direction a {
+    display: none;
+  }
 }
 /*_________________*/

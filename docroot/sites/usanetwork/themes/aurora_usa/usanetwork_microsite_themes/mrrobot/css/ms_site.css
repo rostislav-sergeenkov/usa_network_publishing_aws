@@ -270,7 +270,7 @@ section > h2 {
   color: red;
 }
 #character-info li {
-  top: 8px;
+  top: 0;
 }
 #character-info li,
 #character-info .character-close {
@@ -367,6 +367,12 @@ section > h2 {
   }
   #site-nav li {
     font-size: 1em;
+  }
+}
+
+@media (max-width: 736px) {
+  #microsite #home .ad-leaderboard {
+    margin-left: calc(-50% - 150px);
   }
 }
 

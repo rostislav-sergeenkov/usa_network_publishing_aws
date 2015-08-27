@@ -2021,8 +2021,17 @@ function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
 }
 
 function usanetwork_microsite_html_head_alter(&$head_elements) {
-  if (isset($head_elements['microsite_og:title']) && isset($head_elements['metatag_og:title'])) {
-    unset($head_elements['metatag_og:title']);
+  if (isset($head_elements['microsite_og:title'])) {
+    $metateg_og_title_key = NULL;
+    foreach($head_elements as $key => $el) {
+      if (strpos($key, 'metatag_og:title') !== FALSE) {
+        $metateg_og_title_key = $key;
+        break;
+      }
+    }
+    if ($metateg_og_title_key) {
+      unset($head_elements[$metateg_og_title_key]);
+    }
   }
 }
 

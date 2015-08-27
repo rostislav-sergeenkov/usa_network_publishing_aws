@@ -28,7 +28,7 @@ function usanetwork_dtm_init() {
   } else {
     drupal_add_js('//assets.adobedtm.com/5ed6cf59538a2045d9fe4799a3f70da302c83d5a/satelliteLib-24e397569ca85a58d3963043838c6696e85c5e9a-staging.js', array('scope' => 'header', 'every_page' => TRUE, 'cache' => FALSE));
   }
-  drupal_add_js('_satellite.pageBottom();', array('type' => 'inline', 'scope' => 'footer', 'every_page' => TRUE, 'preprocess' => FALSE));
+  drupal_add_js('_satellite.pageBottom();', array('type' => 'inline', 'scope' => 'footer', 'every_page' => TRUE, 'preprocess' => FALSE, 'weight' => 20));
 }
 
 /**
@@ -57,27 +57,27 @@ function usanetwork_dtm_get_midration_array() {
  */
 function _usanetwork_dtm_default_migaration_array() {
   return
-    'eVar1|AdobeTracking.userGroup
-eVar3|AdobeTracking.registrationType
-eVar4|AdobeTracking.showSiteFeature
-eVar6|AdobeTracking.searchKW
-eVar9|AdobeTracking.pageName
-eVar10|AdobeTracking.showSite
-eVar20|AdobeTracking.stepByStepProcess
-eVar32|AdobeTracking.contentType
-eVar42|AdobeTracking.guid
-eVar45|AdobeTracking.businessUnit
-eVar58|AdobeTracking.questionName
-eVar68|AdobeTracking.rwdBreakpoint
-eVar69|AdobeTracking.screenHeight
-eVar70|AdobeTracking.screenWidth
-eVar71|AdobeTracking.deviceType
-eVar72|AdobeTracking.screenOrientation
-eVar73|AdobeTracking.itemShared
-eVar74|AdobeTracking.socialNetwork
-pageName|AdobeTracking.pageName
-channel|AdobeTracking.siteSection
-server|AdobeTracking.server
+    's.eVar1|AdobeTracking.userGroup
+s.eVar3|AdobeTracking.registrationType
+s.eVar4|AdobeTracking.showSiteFeature
+s.eVar6|AdobeTracking.searchKW
+s.eVar9|AdobeTracking.pageName
+s.eVar10|AdobeTracking.showSite
+s.eVar20|AdobeTracking.stepByStepProcess
+s.eVar32|AdobeTracking.contentType
+s.eVar42|AdobeTracking.guid
+s.eVar45|AdobeTracking.businessUnit
+s.eVar58|AdobeTracking.questionName
+s.eVar68|AdobeTracking.rwdBreakpoint
+s.eVar69|AdobeTracking.screenHeight
+s.eVar70|AdobeTracking.screenWidth
+s.eVar71|AdobeTracking.deviceType
+s.eVar72|AdobeTracking.screenOrientation
+s.eVar73|AdobeTracking.itemShared
+s.eVar74|AdobeTracking.socialNetwork
+s.pageName|AdobeTracking.pageName
+s.channel|AdobeTracking.siteSection
+s.server|AdobeTracking.server
 s.prop1|AdobeTracking.userGroup
 s.prop2|AdobeTracking.contentGroup
 s.prop3|AdobeTracking.contentType
@@ -121,21 +121,21 @@ s.contextData["tve_minute"]|AdobeTracking.tve_minute';
  */
 function usanetwork_dtm_page_alter(&$page) {
   //take all already created variables
-  $context = _sitecatalyst_get_token_context();
-  $codesnippet = token_replace(variable_get('sitecatalyst_codesnippet', ''), $context, array(
-      'clear' => TRUE,
-      'sanitize' => TRUE,
-    )) . "\n";
-
-  $extra_variables_formatted = $codesnippet;
-
+//TODO: Move this to file
+//  $context = _sitecatalyst_get_token_context();
+//  $codesnippet = token_replace(variable_get('sitecatalyst_codesnippet', ''), $context, array(
+//      'clear' => TRUE,
+//      'sanitize' => TRUE,
+//    )) . "\n";
+//
+//  $extra_variables_formatted = _usanetwork_dtm_migrate_text($codesnippet);
 
   if ($sitecatalyst_hooked_vars = module_invoke_all('sitecatalyst_variables', $page)) {
     $migrated_vars = _usanetwork_dtm_migrate_vars($sitecatalyst_hooked_vars['variables']);
     $variables = _sitecatalyst_format_variables($migrated_vars);
   }
 
-  //may do alter
+  //TODO: may do alter?
 
   $object = "var AdobeTracking = new Object();\n";
   $start = "<script type=\"text/javascript\">";
@@ -152,10 +152,18 @@ function usanetwork_dtm_page_alter(&$page) {
     ),
     'footer'=> array(
       '#type' => 'markup',
-      '#markup' => $extra_variables_formatted . $end,
+      '#markup' => $end,
     ),
   );
+
+  //TODO: what will do with this custom code?
+  drupal_add_js(drupal_get_path('module', 'usanetwork_dtm') . '/js/usanetwork_dtm.js', array('scope' => 'footer', 'every_page' => TRUE, 'cache' => FALSE));
+
+  if (isset($page['page_bottom']['sitecatalyst'])) {
+    unset($page['page_bottom']['sitecatalyst']);
+  }
 }
+
 
 function _usanetwork_dtm_migrate_vars($atm_vars) {
   $migration_array = usanetwork_dtm_get_midration_array();
@@ -169,4 +177,22 @@ function _usanetwork_dtm_migrate_vars($atm_vars) {
   }
 
   return $dtm_vars;
+}
+
+function _usanetwork_dtm_migrate_text($text) {
+  $migration_array = usanetwork_dtm_get_midration_array();
+
+  $migrated_text = str_replace(array_keys($migration_array), $migration_array, $text);
+
+  return $migrated_text;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Modifies the sitecatalyst settings form.
+ */
+function usanetwork_dtm_form_sitecatalyst_admin_settings_alter(&$form, &$form_state) {
+  $form['general']['#type'] = 'hidden';
+  $form['advanced']['#type'] = 'hidden';
 }

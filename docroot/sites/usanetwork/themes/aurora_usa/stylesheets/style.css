@@ -2225,6 +2225,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
     height: 29% !important;
   }
 }
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper {
+    height: 33% !important;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
     font-size: 1.23698vw;
@@ -2539,6 +2544,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
     height: 29%;
   }
 }
+@media (max-width: 480px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
+    height: 33%;
+  }
+}
 .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper-inner, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper-inner {
   height: 100%;
   display: table;
@@ -2710,6 +2720,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
 @media (max-width: 640px) {
   .show-latest-block ul li .show-latest-promo.big .meta-wrapper, .related-content-block ul li .show-latest-promo.big .meta-wrapper {
     height: 29%;
+  }
+}
+@media (max-width: 480px) {
+  .show-latest-block ul li .show-latest-promo.big .meta-wrapper, .related-content-block ul li .show-latest-promo.big .meta-wrapper {
+    height: 33%;
   }
 }
 @media (max-width: 640px) {
@@ -4480,6 +4495,11 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 @media (max-width: 640px) {
   .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .sponsored {
     bottom: 29%;
+  }
+}
+@media (max-width: 480px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo.big .sponsored {
+    bottom: 33%;
   }
 }
 
@@ -17182,6 +17202,9 @@ footer h2 {
   top: 0;
   z-index: 3;
 }
+.landing-page-container .upper-menu .item-filter .filter-menu li span {
+  display: inline-block;
+}
 .landing-page-container .upper-menu .item-filter.all-items-filter {
   float: left;
   width: calc(100% - 200px);
@@ -26157,6 +26180,11 @@ yx-axis
   content: '';
   display: table;
 }
+@media (min-width: 2500px) {
+  .aspot-and-episodes {
+    height: 1094px;
+  }
+}
 @media (max-width: 768px) {
   .aspot-and-episodes {
     height: auto;
@@ -26255,6 +26283,11 @@ yx-axis
     z-index: 1;
   }
 }
+@media (min-width: 2500px) {
+  .aspot-and-episodes .episodes-list.shadow:after {
+    height: 227.5px;
+  }
+}
 .aspot-and-episodes .episodes-list > .title {
   background: #e1e1e1;
   height: 10%;
@@ -26333,13 +26366,18 @@ yx-axis
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li {
   background: #8f8f8f;
   overflow: hidden;
-  height: 36%;
+  height: 12.4vw;
   margin-bottom: 2px;
   position: relative;
   width: 100%;
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li:nth-child(2n) {
   background: #7a7a7a;
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.vertical ul li {
+    height: 311px;
+  }
 }
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal {
   padding-top: 2px;

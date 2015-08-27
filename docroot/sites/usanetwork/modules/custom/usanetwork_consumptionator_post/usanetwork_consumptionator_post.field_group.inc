@@ -44,6 +44,35 @@ function usanetwork_consumptionator_post_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_basic_information|node|consumpt_blog|form';
+  $field_group->group_name = 'group_basic_information';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'consumpt_blog';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Basic Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_show',
+      1 => 'body',
+      2 => 'title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-basic-information field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_basic_information|node|consumpt_blog|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_basic_information|node|consumpt_post|form';
   $field_group->group_name = 'group_basic_information';
   $field_group->entity_type = 'node';
@@ -61,8 +90,9 @@ function usanetwork_consumptionator_post_field_group_info() {
       4 => 'field_show',
       5 => 'field_sub_title',
       6 => 'field_summary',
-      7 => 'title',
-      8 => 'group_blog_displaying_author',
+      7 => 'field_consumptionator_blog',
+      8 => 'title',
+      9 => 'group_blog_displaying_author',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -87,7 +117,7 @@ function usanetwork_consumptionator_post_field_group_info() {
   $field_group->parent_name = 'group_basic_information';
   $field_group->data = array(
     'label' => 'Displaying Author',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_blog_display_author',
       1 => 'field_override_display_author',
@@ -136,6 +166,40 @@ function usanetwork_consumptionator_post_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo_details|node|consumpt_blog|form';
+  $field_group->group_name = 'group_promo_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'consumpt_blog';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo Details',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_promo_title',
+      1 => 'field_promo_topic',
+      2 => 'field_promo_long_description',
+      3 => 'field_promo_violator_name',
+      4 => 'field_promo_exclude_from_related',
+      5 => 'field_call_to_action_type',
+      6 => 'field_promo_image_override',
+      7 => 'field_promo_created_ovts',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo-details field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo_details|node|consumpt_blog|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_promo_details|node|consumpt_post|form';
   $field_group->group_name = 'group_promo_details';
   $field_group->entity_type = 'node';
@@ -166,6 +230,36 @@ function usanetwork_consumptionator_post_field_group_info() {
     ),
   );
   $export['group_promo_details|node|consumpt_post|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|consumpt_blog|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'consumpt_blog';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_seo_h1',
+      1 => 'field_seo_page_title',
+      2 => 'field_usa_og_description',
+      3 => 'field_usa_og_image',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|consumpt_blog|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

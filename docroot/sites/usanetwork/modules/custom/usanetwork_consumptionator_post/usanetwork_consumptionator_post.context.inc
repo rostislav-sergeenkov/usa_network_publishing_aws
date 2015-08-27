@@ -17,6 +17,14 @@ function usanetwork_consumptionator_post_context_default_contexts() {
   $context->description = 'Blog Landing Page';
   $context->tag = 'shows';
   $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'consumpt_blog' => 'consumpt_blog',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
     'path' => array(
       'values' => array(
         'node/*/blog' => 'node/*/blog',

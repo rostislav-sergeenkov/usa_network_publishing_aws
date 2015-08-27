@@ -1292,6 +1292,9 @@
         @include breakpoint($bp-640-width) {
           height: 29%!important;
         }
+        @include breakpoint($bp-480-width) {
+          height: 33%!important;
+        }
       }
       .meta {
         .caption {
@@ -1542,6 +1545,9 @@
         background: $video-promo-back-gray;
         height: 29%;
       }
+      @include breakpoint($bp-480-width) {
+        height: 33%;
+      }
     }
     .meta-wrapper-inner {
       height: 100%;
@@ -1678,6 +1684,9 @@
       .meta-wrapper {
         @include breakpoint($bp-640-width) {
           height: 29%;
+        }
+        @include breakpoint($bp-480-width) {
+          height: 33%;
         }
       }
       .meta {

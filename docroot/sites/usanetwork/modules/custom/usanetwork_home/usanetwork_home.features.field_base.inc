@@ -266,6 +266,8 @@ function usanetwork_home_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'consumpt_post' => 'consumpt_post',
+        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -301,6 +303,8 @@ function usanetwork_home_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'consumpt_post' => 'consumpt_post',
+        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

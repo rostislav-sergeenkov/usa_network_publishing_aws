@@ -508,7 +508,11 @@
         //$('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
 
               var target = $(this),
                   pageName = $('body').hasClass('page-home') ? 'Homepage A-Spot' : 'Show Landing A-Spot',
@@ -557,7 +561,11 @@
         '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
               var self = $(this);
               if (self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
 
@@ -578,7 +586,11 @@
         $('a.jcarousel-controls').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
 
               var body = $('body'),
                   target = $(this),
@@ -643,7 +655,11 @@
         //$('.usa-wrap .node-usanetwork-promo a,' +
         //'#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
         //  $(this).on('click', function (e) {
-        //    e.preventDefault();
+        //    if ($(this).attr('target') == '_blank') {
+
+      //} else {
+      //  e.preventDefault();
+      //}
         //    var self = $(this);
         //    Drupal.behaviors.omniture_tracking.globalPromoClick(self);
         //  });
@@ -653,7 +669,11 @@
         $('header .schedule-tab a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
 
               var $self = $(this),
                   sub_menu_name = '',
@@ -699,7 +719,11 @@
         '.footer-social-bar a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
               Drupal.behaviors.omniture_tracking.socialFollow($(this));
             }
           });
@@ -761,7 +785,11 @@
         $('#footer .footer-menu-wrapper a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
               Drupal.behaviors.omniture_tracking.footerMenuItem($(this));
             }
           });
@@ -772,7 +800,11 @@
           $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function () {
             $(this).on('click', function (e) {
               if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-                e.preventDefault();
+                if ($(this).attr('target') == '_blank') {
+
+                } else {
+                  e.preventDefault();
+                }
                 Drupal.behaviors.omniture_tracking.scheduleBar($(this));
               }
             });

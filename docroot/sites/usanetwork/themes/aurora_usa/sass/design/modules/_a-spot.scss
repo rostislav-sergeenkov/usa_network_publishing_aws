@@ -118,7 +118,7 @@
     .title_prefix, .start {
       color: #ffffff;
       font-family: $tex-gyreschola-italic;
-      font-size: 1.1vw;
+      font-size: get-vw(27.5px, 2500);
       line-height: 1;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -137,7 +137,7 @@
     .title {
       color: #ffffff;
       font-family: $avalon-medium;
-      font-size: 6vw;
+      font-size: get-vw(150px, 2500);
       letter-spacing: 0.02em;
       line-height: 0.88;
       margin: 0;
@@ -505,6 +505,43 @@
         @include breakpoint($bp-480-width) {
           font-size: 30px;
           margin-bottom: 10px;
+        }
+      }
+      .title_prefix, .start {
+        @include breakpoint($between-641-768) {
+          font-size: get-vw(35.35px, 2500);
+        }
+      }
+      .title {
+        @include breakpoint($between-641-768) {
+          font-size: get-vw(192.8px, 2500);
+        }
+      }
+      .aspot-description {
+        @include breakpoint($between-641-768) {
+          font-size: get-vw(30.85px, 1280);
+        }
+      }
+      .cta-link {
+        &.cta_button_0 {
+          a {
+            @include breakpoint($between-641-768) {
+              padding: get-vw(45px, 2500) get-vw(144.34px, 2500) get-vw(45px, 2500) get-vw(112.47px, 2500);
+            }
+          }
+        }
+        a {
+          @include breakpoint($between-641-768) {
+            font-size: 1.63vw;
+            padding: 0 get-vw(144.34px, 2500) 0 0;
+          }
+          &:after {
+            @include breakpoint($between-641-768) {
+              font-size: 1.285vw;
+              margin-top: -0.6425vw;
+              right: 3.085vw;
+            }
+          }
         }
       }
     }

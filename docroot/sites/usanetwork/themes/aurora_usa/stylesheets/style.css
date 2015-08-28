@@ -26245,6 +26245,39 @@ yx-axis
     margin-bottom: 10px;
   }
 }
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix, .aspot-and-episodes .show-aspot .meta-wrap .start {
+    font-size: 1.414vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title {
+    font-size: 7.712vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description {
+    font-size: 2.41016vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .cta-link.cta_button_0 a {
+    padding: 1.8vw 5.7736vw 1.8vw 4.4988vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .cta-link a {
+    font-size: 1.63vw;
+    padding: 0 5.7736vw 0 0;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .cta-link a:after {
+    font-size: 1.285vw;
+    margin-top: -0.6425vw;
+    right: 3.085vw;
+  }
+}
 .aspot-and-episodes .episodes-list {
   background: #222221;
   float: left;

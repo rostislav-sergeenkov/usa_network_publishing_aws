@@ -39,7 +39,7 @@
             <img src="<?php print $details['image']; ?>" alt="">
           </div>
         <?php endif; ?>
-        <div class="title-overlay meta">
+        <div class="meta">
           <?php if (!empty($details['episode_info'])): ?>
             <div class="meta-info">
               <?php if (!empty($details['episode_info']['episode_title'])): ?>
@@ -65,9 +65,9 @@
               <?php print $details['description']; ?>
             </div>
           <?php endif; ?>
-          <?php if (!empty($sharebar)): ?>
+          <?php if (!empty($details['sharebar'])): ?>
             <div class="sharebar">
-              <?php print $sharebar; ?>
+              <?php print $details['sharebar']; ?>
             </div>
           <?php endif; ?>
         </div>
@@ -75,4 +75,3 @@
     </div>
   </div>
 </div>
-

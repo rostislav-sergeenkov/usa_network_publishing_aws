@@ -35,6 +35,7 @@ body {
   background-color: $poll-back;
   margin: 0 auto;
   width: 100%;
+  /*-webkit-font-smoothing: antialiased;*/
 }
 
 .usa-wrap {
@@ -290,9 +291,12 @@ address {
 }
 .page-403 {
   .region.region-content {
+    border: 2px solid $forbidden-border;
     color: #000000;
-    margin: 20px 0 20px 20px;
-    text-align: left;
+    font-family: $avalon-demi;
+    margin: 20px 20% 20px 20%;
+    padding: 10px;
+    text-align: center;
   }
 }
 
@@ -301,3 +305,108 @@ address {
   height: 0;
   line-height: 0;
 }
+
+.seeit-iframe-wrapper {
+  z-index: 9999!important;
+}
+
+.person-quotation {
+  font-family: $tex-gyreschola-italic;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  padding: 35px 55px;
+  margin: 54px 0 54px;
+  border: 1px solid $poll-back;
+  display: block;
+  clear: both;
+  @include breakpoint($bp-1280-width) {
+    padding: 25px 39px 25px 44px;
+    margin: 35px 0 35px;
+    font-size: 20px;
+  }
+  @include breakpoint($bp-1024-width) {
+    padding: 25px 50px 25px 54px;
+    margin: 38px 0 38px;
+    font-size: 20px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: 25px 80px;
+    font-size: 20px;
+  }
+  @include breakpoint($bp-640-width) {
+    padding: 23px 30px;
+    margin: 32px 0 32px;
+  }
+  &:before, &:after {
+    position: absolute;
+    font-family: "ico-font";
+    display: block;
+    padding: 10px;
+    color: $usa-logo-back;
+    background-color: #ffffff;
+    font-size: 50px;
+    line-height: 1em;
+    @include breakpoint($bp-1280-width) {
+      font-size: 37px;
+    }
+    @include breakpoint($bp-1024-width) {
+      font-size: 45px;
+    }
+    @include breakpoint($bp-768-width) {
+      font-size: 36px;
+    }
+    @include breakpoint($bp-640-width) {
+      font-size: 24px;
+    }
+  }
+  &:before {
+    content: '\e61f';
+    top: -8px;
+    left: -1px;
+    padding: 0 10px 10px 0;
+  }
+  &:after {
+    content: '\e620';
+    bottom: -5px;
+    right: -1px;
+    padding: 10px 0 0 10px;
+  }
+}
+.lines-quotation {
+  font-family: $tex-gyreschola-italic;
+  display: block;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  padding: 37px 27px;
+  margin: 54px 0 28px;
+  border-top: 3px solid;
+  border-bottom: 3px solid;
+  line-height: 1.5em;
+  @include breakpoint($bp-1280-width) {
+    font-size: 22px;
+    padding: 30px 15px;
+    margin: 34px 0 19px;
+    border-width: 2px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: 22px 40px;
+    margin: 38px 0 23px;
+    line-height: 1.4em;
+    font-size: 17px;
+  }
+  @include breakpoint($bp-640-width) {
+    margin-bottom: 17px;
+    padding: 22px 15px;
+    font-size: 14px;
+  }
+}
+.no-uppercase {
+  text-transform: none!important;
+  .caption & {
+    font-family: $avalon-book!important;
+  }
+}
+
+

@@ -63,26 +63,26 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_registry_variables() {
  */
 function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
-  $site_default_theme_path = $theme_path . '/usanetwork_microsite_themes/default';
+  $default_theme_path = $theme_path . '/usanetwork_microsite_themes/default';
   $site_theme_path = $theme_path . '/usanetwork_microsite_themes/suitssocialrecaps';
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
   return array(
     'css' => array(
-      $site_default_theme_path . '/css/fonts.css',
+      $default_theme_path . '/css/fonts.css',
       $site_theme_path . '/css/ms_styles.css',
-      $site_default_theme_path . '/css/ms_gigya_share.css',
-      $site_default_theme_path . '/css/ms_videos.css',
+      $default_theme_path . '/css/ms_gigya_share.css',
+      $default_theme_path . '/css/ms_videos.css',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
     'js' => array(
-      '/sites/usanetwork/modules/contrib/gigya/js/gigya_sharebar.js',
+      drupal_get_path('module', 'gigya'). '/js/gigya_sharebar.js',
       $site_theme_path . '/js/ms_site.js',
-      $site_default_theme_path . '/js/ms_gigya.js',
+      $default_theme_path . '/js/ms_gigya.js',
       $site_theme_path . '/js/ms_global.js',
-      $site_default_theme_path . '/js/ms_videos.js',
-      $site_default_theme_path . '/js/ms_video_endcard.js',
+      $default_theme_path . '/js/ms_videos.js',
+      $default_theme_path . '/js/ms_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );

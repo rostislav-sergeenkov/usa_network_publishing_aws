@@ -1048,3 +1048,57 @@ function usanetwork_core_update_7170() {
     module_enable(array('usanetwork_social_meter'));
   }
 }
+
+/**
+ * Enables context_block_disable module.
+ */
+function usanetwork_core_update_7171() {
+  if (!module_exists('context_block_disable')) {
+    module_enable(array('context_block_disable'));
+  }
+}
+
+/**
+ * Enables usanetwork_consumptionator_post module.
+ */
+function usanetwork_core_update_7172() {
+  if (!module_exists('usanetwork_consumptionator_post')) {
+    module_enable(array('usanetwork_consumptionator_post'));
+  }
+}
+
+/**
+ * Enables usanetwork_movie module.
+ */
+function usanetwork_core_update_7173() {
+  if (!module_exists('usanetwork_movie')) {
+    module_enable(array('usanetwork_movie'));
+  }
+}
+
+/**
+ * Enables nbcu_seo_landings module.
+ */
+function usanetwork_core_update_7174() {
+  if (!module_exists('nbcu_seo_landings')) {
+    module_enable(array('nbcu_seo_landings'));
+  }
+}
+
+/**
+ * Enables usanetwork_movie_relation module.
+ */
+function usanetwork_core_update_7175() {
+  if (!module_exists('usanetwork_movie_relation')) {
+    module_enable(array('usanetwork_movie_relation'));
+  }
+}
+
+/**
+ * Enables usanetwork_related_content module.
+ */
+function usanetwork_core_update_7176() {
+  if (!module_exists('usanetwork_related_content')) {
+    module_enable(array('usanetwork_related_content'));
+  }
+}

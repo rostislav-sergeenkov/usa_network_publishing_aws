@@ -7,9 +7,9 @@
   <div class="midbanner" id="show-episodes-landing-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
 <?php if (!empty($is_global_block)): ?>
-  <div class="episode-landing-list-items-seasons ajax-load-block" data-show-nid="<?php print $show_nid; ?>">
+  <div class="landing-list-items-all episode-landing-list-items-seasons ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>" data-show-nid="<?php print $show_nid; ?>">
 <?php endif; ?>
-<div class="episode-landing-list-items-season" data-season-number="<?php print $season_number; ?>">
+<div class="landing-list-items-one-item episode-landing-list-items-season" data-season-number="<?php print $season_number; ?>">
   <div class="upper-bar">
     <div class="title">
       <h2><?php print $title.t(' episodes'); ?></h2>

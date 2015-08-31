@@ -19,6 +19,12 @@
       }
 
       if($(window).width() >= window_size_tablet_portrait) {
+        // check offsetTop value
+        if (!subMenuSelector.hasClass('sticky-shows-submenu')) {
+          if (Math.round(subMenuSelector.offset().top) !== offsetTop) {
+            offsetTop = Math.round(subMenuSelector.offset().top);
+          }
+        }
         if ($(window).scrollTop() >= offsetTop) {
           return !subMenuSelector.hasClass('sticky-shows-submenu') ? switchState() : false;
         } else {
@@ -29,11 +35,32 @@
       }
     },
 
-    stickyFilterbar: function (offsetTop) {
+    stickyFilterbar: function (offsetTop, $userMenu, $submenu) {
       var $upper_menu = $('.upper-menu'),
           header_submenu_h = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu').outerHeight(true) - 1;
 
       if(!offsetTop) {return false;}
+
+      if (!$('.fixed-position').length) {
+        // check offsetTop value
+        if (Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1) !== offsetTop) {
+          offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1);
+        }
+        // check on class sticky-shows-submenu
+        if ($submenu.hasClass('sticky-shows-submenu')) {
+          offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1 - header_submenu_h)
+        }
+      } else {
+        // check on class sticky-shows-submenu
+        if (Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1) !== offsetTop) {
+          if ($submenu.hasClass('sticky-shows-submenu') && $('.fixed-position').length) {
+            offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1)
+          }
+          if ($('.fixed-position').css('top') !== header_submenu_h) {
+            $('.fixed-position').css('top', header_submenu_h)
+          }
+        }
+      }
 
       if ($(window).width() >= window_size_tablet_portrait) {
         if(!$('.fixed-position').length) {
@@ -137,7 +164,9 @@
         }
 
         Drupal.behaviors.usanetwork_menu_dropdown.tabItemScroll();
-        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), 'dark');
+
+        // init sponsored in for tab full-episodes-list
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .full-episodes-list .node-usanetwork-promo'), 'dark-menu');
 
         function showTitleMove() {
           var $showTitleBlock = $('.show-title-block', '.show-title-block-wrapper');
@@ -162,7 +191,6 @@
             $('.header-show-menu .show-menu').removeClass('inner');
             $('.nav-bar-tabs .expanded > a:not(.no-refresh)').unbind('click');
             $('.header-show-menu .show-menu').appendTo('.show-menu-tab');
-            $('.show-menu > li, .show-menu > li > a').removeClass('active');
           }
         }
 
@@ -176,7 +204,9 @@
               index = $(".tab .no-refresh").index(tab),
               animation_speed = 350;
 
-          Drupal.behaviors.omniture_tracking.mainMenuTabs(tab);
+          if (Drupal.behaviors.omniture_tracking) {
+            Drupal.behaviors.omniture_tracking.mainMenuTabs(tab);
+          }
 
           var openTab = function () {
 
@@ -304,7 +334,7 @@
             search_input_block.addClass('active');
             //usa_logo.addClass('active');
             menu.addClass('active');
-            if ($('body').hasClass('usa-tv-show')) {
+            if ($('body').hasClass('node-type-tv-show')) {
               menu_link.addClass('show-color');
             }
             title_wrapper.toggle();
@@ -335,6 +365,8 @@
 
         showTitleMove();
         showMenuMove();
+        //temporary hard code
+        $(".tab .no-refresh[href^='/movies']").removeClass('no-refresh active');
 
         $(".tab .no-refresh").removeClass('active').bind('click', tabNavHandler);
         $(".main-menu-open a").bind('click', menuOpenHandler);
@@ -342,8 +374,8 @@
         // Positioning sticky header and photo/video filters, if the page was reloaded.
         setTimeout(function() {
           _self.stickyHeader(submenuOffsetTop, $submenu);
-          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
-            _self.stickyFilterbar(upperMenuOffsetTop);
+          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
+            _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
         }, 500);
 
@@ -359,8 +391,8 @@
           clearTimeout(timer_id);
           timer_id = setTimeout(function() {
             _self.stickyHeader(submenuOffsetTop, $submenu);
-            if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
-              _self.stickyFilterbar(upperMenuOffsetTop);
+            if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
+              _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
           }, 300);
 
@@ -368,7 +400,7 @@
           showMenuMove();
 
           if (window.innerWidth < window_size_tablet_portrait && !tablet) {
-            if ($body.hasClass('page-home') || $body.hasClass('usa-tv-show')) {
+            if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show')) {
               $('header .tab-item.active').removeClass('active').removeAttr('style');
               $(".tab .no-refresh.active").removeClass('active').attr('data-state', '');
             }
@@ -377,7 +409,7 @@
           }
 
           if (window.innerWidth >= window_size_tablet_portrait && tablet) {
-            if ($body.hasClass('page-home') || $body.hasClass('usa-tv-show')) {
+            if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show')) {
               if ($(".main-menu-open").hasClass('active')) {
                 $('.nav-bar-tabs .expanded.active').removeClass('active');
                 $('.nav-bar-tabs .expanded > a.active').removeClass('active');
@@ -391,8 +423,8 @@
 
         $(window).on('scroll', function (e) {
           _self.stickyHeader(submenuOffsetTop, $submenu);
-          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos')) {
-            _self.stickyFilterbar(upperMenuOffsetTop);
+          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
+            _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
 
           if ($('.tab-item.active').length) {

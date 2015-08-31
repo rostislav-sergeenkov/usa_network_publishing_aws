@@ -1,4 +1,5 @@
-.block-usanetwork-person-usanetwork-person-cast-lmb-block {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block,
+.block-usanetwork-movie-usanetwork-lmb-block {
   @include clear();
   background: $poll-back;
   border-bottom: 2px solid;
@@ -10,7 +11,18 @@
     position: relative;
     width: 100%;
   }
-  .cast-and-info-description {
+  .movie-info-header-image {
+    height: 43.75vw;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-2500-width) {
+      height: 1094px;
+    }
+    @include breakpoint($bp-640-width) {
+      height: 87.5vw;
+    }
+  }
+  .cast-and-info-description, .movie-info-description {
     @include clear();
     margin: 0 auto;
     max-width: 1868px;
@@ -66,14 +78,58 @@
         font-size: 14px;
         width: calc(100% - 340px);
       }
-      @include breakpoint($bp-768-width) {
-        width: 100%;
-      }
       @include breakpoint($bp-640-width) {
+        width: 100%;
         font-size: 12px;
       }
       p {
         margin: 0.5em 0;
+      }
+      .person-quotation {
+        font-size: 53px;
+        padding: 72px 100px 75px 120px;
+        border: 1px solid $schedule-caption-color;
+        line-height: 1em;
+        @include breakpoint($bp-1280-width) {
+          padding: 47px 72px;
+          font-size: 32px;
+        }
+        @include breakpoint($bp-1024-width) {
+          padding: 38px 50px;
+          font-size: 24.75px;
+          line-height: 1.2em;
+        }
+        @include breakpoint($bp-768-width) {
+          padding: 23px 45px;
+          font-size: 17px;
+          margin: 20px 0 17px;
+        }
+        @include breakpoint($bp-640-width) {
+          padding: 22px 40px;
+          font-size: 13px;
+          margin: 19px 0 22px;
+        }
+        &:before, &:after {
+          background-color: $poll-back;
+          font-size: 69px;
+          @include breakpoint($bp-1280-width) {
+            font-size: 44px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: 39px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: 29px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 21px;
+          }
+        }
+      }
+      .lines-quotation {
+        @include breakpoint($bp-768-width) {
+          padding: 22px 20px;
+        }
       }
     }
     .advert {
@@ -81,7 +137,7 @@
       float: right;
       height: 250px;
       width: 300px;
-      @include breakpoint($bp-768-width) {
+      @include breakpoint($bp-640-width) {
         display: none;
       }
     }
@@ -94,6 +150,9 @@
       right: 24px;
       width: 30%;
       @include breakpoint($bp-768-width) {
+        width: 41%;
+      }
+      @include breakpoint($bp-640-width) {
         display: none;
       }
     }

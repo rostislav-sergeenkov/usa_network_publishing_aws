@@ -4,6 +4,9 @@
   overflow: hidden;
   text-align: center;
   max-width: 970px;
+  @include breakpoint($bp-640-width) {
+    margin: 3px auto;
+  }
 }
 .midbanner {
   height: auto;
@@ -56,12 +59,15 @@
 .featured-block {
   .slides {
     .sponsored {
+      &.active {
+        padding: 3px 0;
+      }
       background-color: $sponsorship-dark;
       bottom: 40%;
       right: 0;
       position: absolute;
-      padding: 3px 0;
       width: 39.5%;
+      z-index: 2;
     }
     li {
       &.first {
@@ -77,11 +83,13 @@
   .block-usanetwork-aspot{
     .slide {
       .sponsored {
+        &.active {
+          padding: 3px 0;
+        }
         background-color: $sponsorship-dark;
         bottom: 0;
         right: 10%;
         position: absolute;
-        padding: 3px 0;
         width: 14%;
         @include breakpoint($bp-640-width) {
           right: 0;
@@ -94,11 +102,13 @@
 .aspot-and-episodes {
   .show-aspot {
     .sponsored {
+      &.active {
+        padding: 3px 0;
+      }
       background-color: $sponsorship-dark;
       position: absolute;
       bottom: 0;
       right: 0;
-      padding: 3px 0;
       width: 14%;
       @include breakpoint($bp-640-width) {
         width: 44%;
@@ -128,18 +138,21 @@
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of {
   .five-promo-item-block{
     .sponsored {
+      &.active {
+         padding: 3px 0;
+       }
       background-color: $sponsorship-dark;
-      bottom: 34.7%;
+//      bottom: 34.7%;
+      bottom: 25%;
       right: 0;
-      padding: 3px 0;
       position: absolute;
       width: 63%;
-      @include breakpoint($bp-768-width) {
-        bottom: 8.6vw;
-      }
-      @include breakpoint($bp-640-width) {
-        bottom: 12.4vw;
-      }
+//      @include breakpoint($bp-768-width) {
+//        bottom: 8.6vw;
+//      }
+//      @include breakpoint($bp-640-width) {
+//        bottom: 12.4vw;
+//      }
     }
     li{
       &.first{
@@ -167,11 +180,13 @@
       li{
         .node-usanetwork-promo {
           .sponsored {
+            &.active {
+              padding: 3px 0;
+            }
             background-color: $sponsorship-dark;
             bottom: 9.1vw;
             right: 0;
             position: absolute;
-            padding: 3px 0;
             width: 30%;
             @include breakpoint($bp-min-1901-width) {
               bottom: 173px;
@@ -207,11 +222,13 @@
 .related-content-block {
   .node-usanetwork-promo {
     .sponsored {
+      &.active {
+        padding: 3px 0;
+      }
       background-color: $sponsorship-dark;
       bottom: 9.1vw;
       right: 0;
       position: absolute;
-      padding: 3px 0;
       width: 30%;
       @include breakpoint($bp-min-1901-width) {
         bottom: 173px;

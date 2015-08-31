@@ -86,7 +86,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -354,6 +354,74 @@ function usanetwork_catchall_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-catchall_page-field_explore_tag'
+  $field_instances['node-catchall_page-field_explore_tag'] = array(
+    'bundle' => 'catchall_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_explore_tag',
+    'label' => 'Explore Tag',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-catchall_page-field_gigya_share_bar'
   $field_instances['node-catchall_page-field_gigya_share_bar'] = array(
     'bundle' => 'catchall_page',
@@ -585,6 +653,73 @@ function usanetwork_catchall_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-catchall_page-field_movie'
+  $field_instances['node-catchall_page-field_movie'] = array(
+    'bundle' => 'catchall_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_movie',
+    'label' => 'Movie',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-catchall_page-field_nitro_action_name'
   $field_instances['node-catchall_page-field_nitro_action_name'] = array(
     'bundle' => 'catchall_page',
@@ -751,7 +886,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -913,7 +1048,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 62,
     ),
   );
 
@@ -1081,7 +1216,7 @@ function usanetwork_catchall_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1235,7 +1370,7 @@ function usanetwork_catchall_field_default_field_instances() {
         ),
       ),
       'type' => 'options_onoff',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
@@ -1317,7 +1452,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -1890,6 +2025,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Description');
   t('Enable Automatic Ad and Omniture Refresh');
   t('Enable Nitro');
+  t('Explore Tag');
   t('Gigya Share Bar');
   t('H1');
   t('IdeaMelt action type');
@@ -1901,6 +2037,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
 
 File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for flex/swf integration.');
   t('Maximum 150 characters recommended, OK to exceed for search results and indexing but most relevant information should be listed first.');
+  t('Movie');
   t('Nitro action name');
   t('OG Description');
   t('OG Image');

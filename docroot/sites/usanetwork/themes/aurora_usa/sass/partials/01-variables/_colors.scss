@@ -59,6 +59,8 @@ $link-border-visited: $blue;
 
 //NEW COLORS!!!!
 //color variables
+$aspot-shadow : #333333;
+$forbidden-border : #aaa;
 $usa-logo-back : #2c2c2c;
 $footer-back : #a9a9a9;
 $footer-back-home : #3d3d3d;
@@ -68,10 +70,12 @@ $bottom-footer-back : #757575;
 $bottom-footer-back-home : #262626;
 $footer-links : #dcddde;
 $footer-link-separator : #9d9d9d;
+$footer-icon-color: #939393;
 $header-tab-text : #666666;
 $header-tab-back : #e1e1e1;
 $header-tab-back-new : #363435;
 $header-tab-button-back : #8b8b8c;
+$header-menu-item-back : #444444;
 $header-tab-back-hover : #a9a9a9;
 $header-menu-item-separator : #b9b9b9;
 $header-show-caption : #3a3a3a;
@@ -111,6 +115,11 @@ $sponsorship-dark: #242424;
 $schedule-caption-color: #b5b3b4;
 $tonight-section-back: #2e2c2d;
 $gallery-description-back : #1f1f1f;
+$source-link:  #e5e5e5;
+$usa-movie-back: #3d415b;
+$usa-movie-secondary-back: #434664;
+$usa-movie-tertiary-back: #33374e;
+$microsite-arrow: #56000a;
 
 .show-color-border, .asset-img.show {
   position: relative;
@@ -139,6 +148,23 @@ $gallery-description-back : #1f1f1f;
     }
   }
 }
+.page-movies, .node-type-movie, .movie-consumptionator {
+  .show-color {
+    background: $usa-movie-back;
+    &.secondary {
+      background: $usa-movie-secondary-back;
+    }
+    &.hover-avail, &.tertiary {
+      &:hover {
+        background: $usa-movie-tertiary-back;
+      }
+    }
+  }
+  .show-border {
+    border-color: $usa-movie-back;
+  }
+}
+
 
 
 

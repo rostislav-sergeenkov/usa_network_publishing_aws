@@ -59,6 +59,7 @@ function usanetwork_timeline_gallery_field_group_info() {
       2 => 'field_show',
       3 => 'field_timeline_episode_section',
       4 => 'title',
+      5 => 'field_explore_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -99,6 +100,41 @@ function usanetwork_timeline_gallery_field_group_info() {
     ),
   );
   $export['group_gallery_ideamelt|node|timeline_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo_details|node|timeline_gallery|form';
+  $field_group->group_name = 'group_promo_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'timeline_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo Details',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_violator_name',
+      2 => 'field_promo_title',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+      5 => 'field_promo_exclude_from_related',
+      6 => 'field_promo_created_ovts',
+      7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo-details field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo_details|node|timeline_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

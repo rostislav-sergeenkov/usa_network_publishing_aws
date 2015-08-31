@@ -80,31 +80,6 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-person-character-carousel-item-v',
     ),
-    'usanetwork_person_related_items_container' => array(
-      'variables' => array(
-        'related_items_block' => NULL,
-        'load_more_link' => NULL,
-      ),
-      'template' => 'templates/usanetwork-person-related-items-container',
-    ),
-    'usanetwork_person_related_items_block' => array(
-      'variables' => array(
-        'items' => array()
-      ),
-      'template' => 'templates/usanetwork-person-related-items-block',
-    ),
-    'usanetwork_person_related_item' => array(
-      'variables' => array(
-        'custom_classes' => NULL,
-        'target_url' => NULL,
-        'caption' => NULL,
-        'title' => NULL,
-        'additional' => NULL,
-        'image_desktop' => '',
-        'image_mobile' => '',
-      ),
-      'template' => 'templates/usanetwork-person-related-item',
-    ),
     'usanetwork_person_cast_lmb_block' => array(
       'variables' => array(
         'head_image' => NULL,
@@ -377,6 +352,7 @@ function usanetwork_person_gigya_sharebar_alter(&$share_settings, $context) {
  * Renders main block for consumptionator character page.
  */
 function _usanetwork_person_characters_main_block() {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_person') . '/js/usanetwork_person.js');
   if (path_is_admin(current_path())) {
     return '';
   }
@@ -541,6 +517,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
       $theme_item_horizontal_variables = array(
         'target_url' => url('node/' . $person_node->nid),
         'image_url' => image_style_url('full_episodes_633x356', $image_url),
+        'image_url_mobile' => image_style_url('111x74', $image_url),
         'show_class' => usanetwork_tv_shows_color_show_css_class($tv_show_node_nid),
         'title' => $person_node->title,
         'additional' => strtolower($role) != 'blank' ? $role : '',
@@ -555,7 +532,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
     }
 
     $theme_variables = array(
-      'block_title' => t('Cast and Crew'),
+      'block_title' => t('Cast & Crew'),
       'items_h' => $rendered_items['horizontal'],
       'items_v' => $rendered_items['vertical'],
     );
@@ -649,27 +626,22 @@ function _usanetwork_person_characters_related_content_block() {
     return '';
   }
 
-  if (empty($person_node->field_show)) {
+  $node = usanetwork_core_api_get_tv_content_node($person_node);
+
+  if (empty($node)) {
     return '';
   }
 
-  $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
-  $tv_show_node = $person_node_wrapper->field_show->value();
-
-  if (empty($tv_show_node->field_tvs_show_latest_lnd_feed)) {
+  $display_content = usanetwork_core_api_check_display_relate_content($node);
+  if (empty($display_content)) {
     return '';
   }
-  else {
-    $latest_content_flag_field = field_get_items('node', $tv_show_node, 'field_tvs_show_latest_lnd_feed');
 
-    if ($latest_content_flag_field[0]['value'] == 0) {
-      return '';
-    }
-  }
-
-  $you_may_also_like_item = usanetwork_tv_shows_get_ymal_item($tv_show_node);
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content(
-    $tv_show_node,
+  $function = 'usanetwork_' . $node->type . '_consumptionator_get_ymal_item';
+  $you_may_also_like_item = $function($node);
+  $function = '_usanetwork_' . $node->type . '_cache_get_limited_related_content';
+  $related_content = $function(
+    $node, $person_node->type,
     0, !empty($you_may_also_like_item)
       ? USA_TV_SHOW_RELATED_ITEMS_ON_PAGE
       : USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1);
@@ -681,16 +653,18 @@ function _usanetwork_person_characters_related_content_block() {
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
     drupal_add_js(array(
-      'usanetwork_tv_show_nid' => $tv_show_node->nid,
-      'usanetwork_tv_show_page_context' => 'characters-consumptionator',
+      'usanetwork_' . $node->type . '_nid' => $node->nid,
+      'usanetwork_' . $node->type . '_page_context' => 'characters-consumptionator',
     ), 'setting');
 
-    $block_of_items = _usanetwork_person_render_related_content_items_block($related_content, 0, 1);
-
-    return theme('usanetwork_person_related_items_container', array(
+    $function = 'usanetwork_' . $node->type . '_consumptionator_render_related_content_items_block';
+    $block_of_items = $function($related_content, 0, 1);
+    $load_more_link = &drupal_static('load_more_link');
+    $load_more_link = TRUE;
+    return theme('usanetwork_' . $node->type . '_consumptionator_related_items_container', array(
       'related_items_block' => $block_of_items,
-      'load_more_link' => TRUE,
-      'show_nid' => $tv_show_node->nid,
+      'load_more_link' => $load_more_link,
+      'show_nid' => $node->nid,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1,
     ));
   }
@@ -702,106 +676,10 @@ function _usanetwork_person_characters_related_content_block() {
 /**
  * AJAX callback for getting related content items.
  */
-function usanetwork_person_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
-  $response = array(
-    'found' => FALSE,
-    'total' => 0,
-    'overlimited' => TRUE,
-    'rendered' => '',
-  );
-  $related_content = _usanetwork_tv_shows_cache_get_limited_related_person_content($tv_show_node, $start_from, $limit + 1);
-  if (!empty($related_content)) {
-    if (count($related_content) > $limit) {
-      $response['overlimited'] = FALSE;
-      $related_content = array_slice($related_content, 0, $limit);
-    }
-    $response['rendered'] = _usanetwork_person_render_related_content_items_block($related_content, $start_from, $limit);
-    $response['total'] = count($related_content);
-    $response['found'] = TRUE;
-  }
-  return drupal_json_output($response);
+function usanetwork_person_get_related_content_ajax($node, $start_from = 0, $limit = 1) {
+  return usanetwork_related_content_get_related_content_ajax('person', $node, $start_from , $limit);
 }
 
-/**
- * Renders block of 6 content items for consumptionator character page.
- */
-function _usanetwork_person_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
-  if (!empty($data)) {
-
-    $ad_id = intval($start_from / $limit);
-
-    $theme_variables = array(
-      'related_items' => array(),
-      'ad' => $start_from == 0 ? FALSE : TRUE,
-      'ad_id' => $ad_id,
-    );
-
-    foreach ($data as $data_index => $data_item) {
-      $is_data_item_even = (($data_index + 1) % 2 == 0) ? TRUE : FALSE;
-
-      if (!empty($data_item->ymal)) {
-        $theme_variables['related_items'][] = array(
-          'content' => usanetwork_tv_shows_render_related_content_item_ymal($data_item),
-          'is_ymal' => TRUE,
-        );
-      }
-      else {
-        $theme_variables['related_items'][] = array(
-          'content' => _usanetwork_person_render_related_content_item($data_item, $is_data_item_even),
-          'is_ymal' => FALSE,
-        );
-      }
-    }
-
-    return theme('usanetwork_person_related_items_block', $theme_variables);
-  }
-
-  return '';
-}
-
-/**
- * Renders default content item of related content block.
- */
-function _usanetwork_person_render_related_content_item($data, $is_data_item_even) {
-  $classes = array();
-  $desktop_image = $mobile_image = '';
-  $target_url = '<front>';
-
-  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
-      'file',
-      'node'
-    ))
-  ) {
-    $target_url = url($data->entity_type . '/' . $data->entity_id);
-
-    if (!empty($data->promo_link)) {
-      $target_url = url($data->promo_link);
-    }
-  }
-
-  if (!empty($data->raw_image_uri)) {
-    $desktop_image = image_style_url('921x488', $data->raw_image_uri);
-    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
-  }
-
-  if (!empty($data->sponsored)) {
-    $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
-  }
-
-  $theme_variables = array(
-    'custom_classes' => implode(" ", $classes),
-    'target_url' => $target_url,
-    'caption' => !empty($data->promo_topic) ? check_plain($data->promo_topic) : '',
-    'title' => !empty($data->promo_title) ? check_plain($data->promo_title) : $data->title,
-    'additional' => !empty($data->promo_description) ? check_plain($data->promo_description) : '',
-    'image_desktop' => $desktop_image,
-    'image_mobile' => $mobile_image,
-    'media_icon' => $data->media_icon,
-    'content_id' => isset($content_id) ? $content_id : FALSE,
-  );
-
-  return theme('usanetwork_person_related_item', $theme_variables);
-}
 
 
 /**
@@ -842,4 +720,21 @@ function _usanetwork_person_render_cast_crew_block() {
     return theme('usanetwork_person_cast_crew_block', $theme_variables);
   }
   return '';
+}
+
+/**
+ *  Implements hook_usa_omniture_alter().
+ */
+function usanetwork_person_usa_omniture_alter(&$omniture_variables, $context) {
+  if (!empty($context['entity']) && $context['entity']->type == 'person') {
+    $role = _usanetwork_get_field_item('node', $context['entity'], 'field_role', 'taxonomy_term');
+    if (!empty($role)) {
+      if (strtolower($role->name) == 'character') {
+        $omniture_variables['s.prop5'] = "Character Bio";
+      }
+      else {
+        $omniture_variables['s.prop5'] = "Actor Bio";
+      }
+    }
+  }
 }

@@ -4065,16 +4065,9 @@ function usanetwork_promo_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 28,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -4133,10 +4126,9 @@ function usanetwork_promo_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 27,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'microsite_output' => array(
         'label' => 'above',
@@ -4835,6 +4827,88 @@ function usanetwork_promo_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_promo-field_explore_tag'
+  $field_instances['node-usanetwork_promo-field_explore_tag'] = array(
+    'bundle' => 'usanetwork_promo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'carousel_promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'home_promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'home_promo_bspot' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_teaser_large' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_explore_tag',
+    'label' => 'Explore Tag',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_promo-field_meta_text_bar'
   $field_instances['node-usanetwork_promo-field_meta_text_bar'] = array(
     'bundle' => 'usanetwork_promo',
@@ -4918,6 +4992,88 @@ function usanetwork_promo_field_default_field_instances() {
       ),
       'type' => 'options_onoff',
       'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_promo-field_movie'
+  $field_instances['node-usanetwork_promo-field_movie'] = array(
+    'bundle' => 'usanetwork_promo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this page is associated with a movie please select from the list above.',
+    'display' => array(
+      'carousel_promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 29,
+      ),
+      'home_promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'home_promo_bspot' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promo_teaser_large' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_movie',
+    'label' => 'Movie',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 3,
     ),
   );
 
@@ -5008,7 +5164,7 @@ function usanetwork_promo_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -5099,7 +5255,7 @@ function usanetwork_promo_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -5610,7 +5766,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 2,
+      'weight' => 4,
     ),
   );
 
@@ -6512,7 +6668,6 @@ function usanetwork_promo_field_default_field_instances() {
     ),
   );
 
-
   // Exported field_instance: 'node-usanetwork_promo-field_show'
   $field_instances['node-usanetwork_promo-field_show'] = array(
     'bundle' => 'usanetwork_promo',
@@ -6596,7 +6751,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -6684,7 +6839,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -6699,12 +6854,14 @@ function usanetwork_promo_field_default_field_instances() {
   t('Description');
   t('Enable this checkbox if you want to exclude this content from "Related content" block of TV Show and Consumptionator pages.');
   t('Exclude from Related Content block');
+  t('Explore Tag');
   t('Hide Meta Text Bar (image overlay)');
   t('If this is related to a show, please select the show from the list.');
+  t('If this page is associated with a movie please select from the list above.');
   t('Link');
-  t('Minimum 1230w x 500h');
-  t('Minimum 600w x 500h - scales automatically for mobile.');
+  t('Movie');
   t('Promo Image Override');
+  t('Promo regular image');
   t('Regular Image');
   t('Show');
   t('Show Name or Violator');
@@ -6713,7 +6870,6 @@ function usanetwork_promo_field_default_field_instances() {
   t('Text Line 2');
   t('Title');
   t('Topic');
-  t('Wide Image');
   t('Wide Image Text Line 1 override');
   t('Wide Image Text Line 2 override');
 

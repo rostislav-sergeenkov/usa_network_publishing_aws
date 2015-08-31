@@ -73,26 +73,54 @@
 
         Drupal.behaviors.mpsAdvert.mpsMakeRequest();
         Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+
+        // init sponsored for ajax content mid-banner
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(listElem, 'dark');
       }
+    },
+
+    consumptionatorChangeAd: function (mainBlock, infoBlock) {
+      var infoBlockAd = infoBlock.find('.advert .topbox'),
+          sidebarAd = $('.consum-sidebar .advert .topbox'),
+          nameAd = 'topbox',
+          selector = '#' + nameAd;
+
+      if(window.innerWidth >= window_size_tablet) {
+        sidebarAd.attr('id', nameAd);
+        Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+      } else {
+        mainBlock.addClass('mobile');
+        infoBlockAd.attr('id', nameAd);
+        Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+      }
+
+      $(window).bind('resize', function () {
+        waitForFinalEvent(function(){
+          if(window.innerWidth >= window_size_tablet && mainBlock.hasClass('mobile')) {
+
+            mainBlock.removeClass('mobile');
+            sidebarAd.attr('id', nameAd);
+            infoBlockAd.removeAttr('id').empty();
+
+            Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+            Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+
+          } else if(window.innerWidth < window_size_tablet && !mainBlock.hasClass('mobile')){
+
+            mainBlock.addClass('mobile');
+            infoBlockAd.attr('id', nameAd);
+            sidebarAd.removeAttr('id').empty();
+
+            Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+            Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+          }
+        }, 0, "ad change");
+      });
     },
 
     attach: function (context, settings) {
 
       var body = $('body');
-
-      var waitForFinalEvent = (function () {
-        var timers = {};
-        return function (callback, ms, uniqueId) {
-          if (!uniqueId) {
-            uniqueId = "Don't call this twice without a uniqueId";
-          }
-          if (timers[uniqueId]) {
-            clearTimeout (timers[uniqueId]);
-          }
-          timers[uniqueId] = setTimeout(callback, ms);
-        };
-      })();
 
       //$(window).bind('resize', function () {
       //  waitForFinalEvent(function(){
@@ -102,46 +130,41 @@
 
       body.once(function () {
         // init mps block for node-type-person
+        var mainBlock, infoBlock;
+
         if(body.hasClass('node-type-person')) {
 
-          var mainBlock = $('.consumptionator-characters-main-block'),
-              infoBlockAd = $('.character-info-block .block-character-info-content .advert .topbox'),
-              sidebarAd = $('.consum-sidebar .advert .topbox'),
-              nameAd = 'topbox',
-              selector = '#' + nameAd;
+           mainBlock = $('.consumptionator-characters-main-block');
+           infoBlock = $('.character-info-block .block-character-info-content');
 
-          if(window.innerWidth >= window_size_desktop) {
-            sidebarAd.attr('id', nameAd);
-            Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-          } else {
-            mainBlock.addClass('mobile');
-            infoBlockAd.attr('id', nameAd);
-            Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-          }
+          Drupal.behaviors.mpsAdvert.consumptionatorChangeAd(mainBlock, infoBlock);
+        }
 
+        // init mps block for node-type-tv-episode
+        if(body.hasClass('node-type-tv-episode')) {
 
-          $(window).bind('resize', function () {
-            waitForFinalEvent(function(){
-              if(window.innerWidth >= window_size_desktop && mainBlock.hasClass('mobile')) {
+          mainBlock = $('.consumptionator-episode-main-block');
+          infoBlock = $('.episode-info-main-block');
 
-                mainBlock.removeClass('mobile');
-                sidebarAd.attr('id', nameAd);
-                infoBlockAd.removeAttr('id').empty();
+          Drupal.behaviors.mpsAdvert.consumptionatorChangeAd(mainBlock, infoBlock);
+        }
 
-                Drupal.behaviors.mpsAdvert.mpsMakeRequest();
-                Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
+        // init mps block for node-type-quiz
+        if(body.hasClass('node-type-quiz')) {
 
-              } else if(window.innerWidth < window_size_desktop && !mainBlock.hasClass('mobile')){
+          mainBlock = $('#block-usanetwork-quiz-usanetwork-quiz-main');
+          infoBlock = $('.consumptionator-quiz-main-block article.node-quiz');
 
-                mainBlock.addClass('mobile');
-                infoBlockAd.attr('id', nameAd);
-                sidebarAd.removeAttr('id').empty();
+          Drupal.behaviors.mpsAdvert.consumptionatorChangeAd(mainBlock, infoBlock);
+        }
 
-                Drupal.behaviors.mpsAdvert.mpsMakeRequest();
-                Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
-              }
-            }, 0, "node-type-person");
-          });
+        // init mps block for node-type-consumpt-post
+        if(body.hasClass('node-type-consumpt-post')) {
+
+          mainBlock = $('.consumptionator-post-main-block');
+          infoBlock = $('.post-info-main-block');
+
+          Drupal.behaviors.mpsAdvert.consumptionatorChangeAd(mainBlock, infoBlock);
         }
 
         // init mps block for node-type-catchall-page

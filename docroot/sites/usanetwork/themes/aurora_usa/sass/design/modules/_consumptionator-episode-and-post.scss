@@ -1,0 +1,430 @@
+.consumptionator-page, .node-type-tv-episode {
+
+}
+.consumptionator-episode-main-block, .consumptionator-post-main-block {
+  @include clear();
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  .episode-info-main-block, .post-info-main-block {
+    float: left;
+    position: relative;
+    width: 74.7%;
+    background: #ffffff;
+    color: #000000;
+    @include breakpoint($between-1025-1280) {
+      width: calc(100% - 320px);
+    }
+    @include breakpoint($bp-1024-width) {
+      float: none;
+      width: 100%;
+    }
+    @include breakpoint($bp-640-width) {
+      padding: 56.25vw 0 0;
+    }
+    .episode-change-link {
+      bottom: 39px;
+      color: $change-episode-color;
+      display: block;
+      font-family: $avalon-book;
+      font-size: 21px;
+      position: absolute;
+      text-transform: uppercase;
+      @include breakpoint($bp-1280-width) {
+        bottom: 34px;
+        font-size: 14px;
+      }
+      @include breakpoint($bp-768-width) {
+        bottom: 36px;
+        font-size: 13px;
+      }
+      &:after {
+        color: $change-episode-color;
+        font-family: "ico-font";
+        font-size: 14px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -8px;
+        line-height: 1;
+        @include breakpoint($bp-1280-width) {
+          font-size: 11px;
+          margin-top: -6px;
+        }
+      }
+      &.previous {
+        left: 20px;
+        margin-left: 32px;
+        @include breakpoint($bp-min-1901-width) {
+          margin-left: 48px;
+        }
+        @include breakpoint($bp-1280-width) {
+          margin-left: 68px;
+        }
+        @include breakpoint($bp-1024-width) {
+          margin-left: 20px;
+        }
+        &:after {
+          content: "\e607";
+          left: -15px;
+        }
+      }
+      &.next {
+        right: 20px;
+        margin-right: 32px;
+        @include breakpoint($bp-min-1901-width) {
+          margin-right: 48px;
+        }
+        @include breakpoint($bp-1280-width) {
+          margin-right: 68px;
+        }
+        @include breakpoint($bp-1024-width) {
+          margin-right: 20px;
+        }
+        &:after {
+          content: "\e608";
+          right: -15px;
+        }
+      }
+    }
+    .episode-info-block, .post-info-block {
+      border-bottom: 2px solid;
+      padding: 45px 93px 90px 70px;
+      @include breakpoint($bp-1280-width) {
+        padding: 38px 58px 76px 45px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 53px 11.8% 90px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 50px 6.7% 90px;
+      }
+      @include breakpoint($bp-640-width) {
+        border-bottom: 0;
+        padding: 30px 6% 75px;
+      }
+      @include clear();
+      .episode-info-header, .post-info-header {
+        @include clear();
+        position: relative;
+        margin-bottom: 20px;
+        @include breakpoint($bp-1280-width) {
+          margin-bottom: 34px;
+        }
+        @include breakpoint($bp-1024-width) {
+          margin-bottom: 17px;
+        }
+        .episode-title-block, .post-title-block {
+          float: left;
+          width: 70%;
+          @include breakpoint($bp-768-width) {
+            width: 60%;
+          }
+          @include breakpoint($bp-480-width) {
+            float: none;
+            width: 100%;
+          }
+          .episode-title, .post-title {
+            font-family: $avalon-medium;
+            font-size: 54px;
+            line-height: 1.3;
+            @include breakpoint($bp-1280-width) {
+              font-size: 36px;
+              line-height: 1.1em;
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: 37.8px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 36px;
+            }
+          }
+          .additional {
+            font-family: $avalon-book;
+            font-size: 19.5px;
+            color: $consum-carousel-odd;
+            text-transform: uppercase;
+            @include breakpoint($bp-1280-width) {
+              font-size: 13px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: 12px;
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: 13px;
+              line-height: 3em;
+            }
+            .episode {
+              font-family: $tex-gyreschola-italic;
+              &:after {
+                content: '';
+              }
+            }
+            .tags-title {
+              font-family: $avalon-medium;
+              margin-left: 1em;
+              position: relative;
+              &:after {
+                left: -0.5em;
+                content: '.';
+                line-height: 1;
+                position: absolute;
+                top: -4px;
+                @include breakpoint($bp-1280-width) {
+                  top: -2px;
+                }
+              }
+            }
+            .aired {
+              text-transform: none;
+            }
+          }
+        }
+        .share {
+          float: right;
+          width: 23%;
+          font-family: $avalon-book;
+          color: $consum-carousel-text;
+          @include breakpoint($bp-1280-width) {
+            width: 16%;
+          }
+          @include breakpoint($bp-1024-width) {
+            width: 22%;
+          }
+          @include breakpoint($bp-768-width) {
+            width: 36%;
+          }
+          h3 {
+            font-family: $avalon-book;
+            font-size: 22px;
+            text-align: right;
+            line-height: 1em;
+            margin: 0 0 14px 0;
+            @include breakpoint($bp-1280-width) {
+              font-size: 15px;
+              margin: -8px 0 14px 0;
+            }
+            @include breakpoint ($bp-1024-width) {
+              font-size: 15px;
+            }
+            @include breakpoint ($bp-768-width) {
+              font-size: 18px;
+            }
+            @include breakpoint ($bp-320-width) {
+              text-align: left;
+              line-height: 2em;
+            }
+          }
+          .field-type-gigya-sharebar {
+            margin-bottom: 0;
+            float: right;
+          }
+          .episode-button {
+            width: 230px;
+            float: right;
+            margin-top: 20px;
+            position: relative;
+            text-align: left;
+            @include breakpoint($bp-1280-width) {
+              margin-top: 5px;
+              width: 158px;
+            }
+            &:after {
+              content: "\e608";
+              color: #ffffff;
+              font-family: "ico-font";
+              font-size: 11px;
+              display: block;
+              position: absolute;
+              right: 14px;
+              top: 50%;
+              margin-top: -5px;
+              line-height: 1;
+              z-index: 3;
+              @include breakpoint($bp-1024-width) {
+                right: 8px;
+              }
+            }
+            a {
+              color: #ffffff;
+              display: block;
+              text-transform: uppercase;
+              font-size: 15px;
+              padding: 15px 0 15px 30px;
+              position: relative;
+              width: 100%;
+              @include breakpoint($bp-min-1901-width) {
+                padding: 15px 0 15px 40px;
+              }
+              @include breakpoint($bp-1280-width) {
+                font-size: 13px;
+                padding: 10px 9%;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 12px;
+                padding: 5px 35px 5px 10px;
+              }
+              @include breakpoint($between-641-768) {
+                font-size: 10px;
+              }
+              @include breakpoint($bp-640-width) {
+                padding: 8px 35px 8px 10px;
+              }
+            }
+          }
+        }
+      }
+      .episode-info-image, .post-info-image {
+        float: right;
+        width: 61.1%;
+        padding: 0 0 20px 15px;
+        background-color: #ffffff;
+        margin-left: 30px;
+        position: relative;
+        z-index: 1;
+        @include breakpoint($bp-1024-width) {
+          float: none;
+          width: 100%;
+          margin: 0 0 6vw 0;
+          padding: 0;
+        }
+        @include breakpoint($bp-640-width) {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+      .episode-info-description, .post-info-description {
+        font-family: $avalon-book;
+        font-size: 26px;
+        line-height: 1.6em;
+        @include breakpoint($bp-1280-width) {
+          font-size: 17px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 15px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 16px;
+        }
+        @include breakpoint($bp-640-width) {
+          width: 100%;
+          font-size: 18px;
+          color: $poll-color;
+        }
+        p {
+          &:first-child {
+            margin-top: 0;
+            .lines-quotation {
+              @include breakpoint($bp-min-1281-width) {
+                margin-top: 0;
+              }
+            }
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        .lines-quotation {
+
+          @include breakpoint($bp-768-width) {
+            padding: 22px 15px;
+          }
+        }
+        .source {
+          font-family: $avalon-medium;
+          color: $schedule-pm-color;
+          letter-spacing: 2px;
+          font-size: 16px;
+          text-transform: uppercase;
+          line-height: 1;
+          @include breakpoint($bp-1280-width) {
+            font-size: 13px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: 12px;
+          }
+        }
+        .source-title {
+          font-family: $avalon-book;
+          color: $schedule-pm-color;
+        }
+        a.source-title {
+          color: $source-link;
+          &:hover,
+          &:active {
+            color: $source-link;
+            text-decoration: underline;
+          }
+        }
+      }
+      .node-wrapper {
+        &.advert {
+          @include breakpoint($between-1025-1280) {
+            display: none;
+          }
+          @include breakpoint($bp-1024-width) {
+            display: block;
+            width: 39%;
+            float: right;
+            margin: 0 0 20px 34px;
+          }
+          @include breakpoint($bp-768-width) {
+            width: 46%;
+          }
+          @include breakpoint($bp-640-width) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .gallery-recap-block {
+    background: $consup-gallery-bg;
+    padding: 40px 35px 104px;
+    @include breakpoint($bp-min-1901-width) {
+      padding: 40px 55px 104px;
+    }
+    @include breakpoint($bp-1280-width) {
+      border-bottom: 2px solid;
+      padding: 30px 25px 90px;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding: 40px 24px 90px;
+    }
+    @include breakpoint($bp-640-width) {
+      border-bottom: 12px solid;
+      padding: 40px 0 75px;
+    }
+    .gallery-wrapper {
+      @include breakpoint($between-1025-1280) {
+        height: calc((100vw - 370px) * 0.5625);
+      }
+      .bx-wrapper {
+        .bx-controls {
+          .bx-custom-pager {
+            .bx-pager-item {
+              @include breakpoint($between-1025-1280) {
+                height: 13px;
+                margin: 0px 15px 13px auto;
+                width: 13px;
+              }
+              a {
+                @include breakpoint($between-1025-1280) {
+                  height: 13px;
+                  width: 13px;
+                }
+                img {
+                  @include breakpoint($between-1025-1280) {
+                    max-width: 75px;
+                    width: 75px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -65,7 +65,8 @@
           playerWrap = videoContainer.find('.video-player .file-video-mpx'),
           playerDesc = videoContainer.find('.video-player-desc'),
           playerAuth = videoContainer.find('.video-auth-player-wrapper'),
-          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper');
+          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper'),
+          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
 
       $.ajax({
         type: 'GET',
@@ -93,10 +94,10 @@
         Drupal.behaviors.ms_videos.micrositePlayerBind();
         Drupal.behaviors.ms_videos.setVideoHeight();
 
-usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
+//usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
         // initialize Gigya sharebar
         Drupal.behaviors.ms_videos.updateGigyaSharebar(initialPageLoad, preview_image);
-        if (!initialPageLoad) Drupal.behaviors.ms_global.setOmnitureData('videos');
+        if (!initialPageLoad && msGlobalExists && typeof Drupal.behaviors.ms_global.setOmnitureData == 'function') Drupal.behaviors.ms_global.setOmnitureData('videos');
       })
       .fail(function(jqXHR, textStatus) {
         usa_debug('ajax call failed -- textStatus: ' + textStatus);
@@ -127,7 +128,14 @@ usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
           ad_300x250 = $('#videos #ad_300x250'),
           ad_300x250_1 = $('#videos #ad_300x250_1'),
           filter,
-          url;
+          url,
+          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false,
+          defaultDataClass = 'ad_728x90 ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos';
+
+      // if there is no '#videos .ad_728x90' element,
+      // but there is an '.ad-leaderboard' element,
+      // use the .ad-leaderboard element for the video 728x90 ad
+      if (ad_728x90.length != 1 && $('.ad-leaderboard').length == 1) ad_728x90 = $('.ad-leaderboard');
 
       if (data) {
         dataPlayerId = data.data.player_id;
@@ -152,8 +160,16 @@ usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
           ad_300x250_1.closest('li.ad').hide();
           ad_300x250_1.attr('id', 'ad_300x250').empty();
         }
-        if (ad_728x90.attr('id') != 'ad_728x90_1') {
-          ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
+        if (ad_728x90.length == 1 && ad_728x90.attr('id') != 'ad_728x90_1') {
+usa_debug('ad_728x90: ', ad_728x90);
+//          if (ad_728x90.hasAttribute('class')) {
+            ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
+/*
+          }
+          else {
+            ad_728x90.attr('data-class', defaultDataClass).addClass('ad_728x90').attr('id', 'ad_728x90_1');
+          }
+*/
         }
 
         $('#videos .full-pane').addClass('full-desc');
@@ -163,8 +179,13 @@ usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
         $('#videos .full-pane').removeClass('full-desc');
         ad_300x60_1.hide();
 
-        if (ad_728x90.attr('id') == 'ad_728x90_1') {
-          ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
+        if (ad_728x90.length == 1 && ad_728x90.attr('id') == 'ad_728x90_1') {
+          if (ad_728x90.hasAttribute('data-class')) {
+            ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
+          }
+          else {
+            ad_728x90.attr('class', '').attr('class', defaultDataClass).attr('id', '').empty();
+          }
         }
         if ($('#videos').find(ad_300x250)) {
           ad_300x250.closest('li.ad').show();
@@ -173,11 +194,12 @@ usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
         if ($('#videos').find(ad_300x250_1)) {
           ad_300x250_1.closest('li.ad').show();
         }
+
         // if not a full episode
         // AND the video leaderboard ad is in view
         // OR there is no video leaderboard ad but there is a page head leaderboard ad that is in view
         // then update the leaderboard ad
-        if (dataFullEpisode == 'false' && (Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard') || (!Drupal.behaviors.ms_global.globalInitialPageLoad && $('#videos .ad-leaderboard').length <= 0 && $('#head-leaderboard').length >= 0 && Drupal.behaviors.ms_global.isScrolledIntoView('#head-leaderboard')))) {
+        if (dataFullEpisode == 'false' && msGlobalExists && (Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard') || (!Drupal.behaviors.ms_global.globalInitialPageLoad && $('#videos .ad-leaderboard').length <= 0 && $('#head-leaderboard').length >= 0 && Drupal.behaviors.ms_global.isScrolledIntoView('#head-leaderboard')))) {
           Drupal.behaviors.ms_global.create728x90Ad();
         }
       }
@@ -223,7 +245,8 @@ usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
     // click Thumbnail
     clickThumbnail: function (elem) {
       var refreshAdsOmniture = 0,
-          videoContainer = $('#video-container');
+          videoContainer = $('#video-container'),
+          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
 
       if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
         $('#thumbnail-list .item-list ul li.thumbnail').removeClass('active');
@@ -234,7 +257,7 @@ usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
         if (!elem.hasClass('active')) {
           elem.addClass('active');
         }
-        Drupal.behaviors.ms_global.scrollToTop();
+        if (msGlobalExists) Drupal.behaviors.ms_global.scrollToTop();
         return false;
       }
 
@@ -253,13 +276,19 @@ usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
         return false;
       }
 
-      if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
-        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+      if (msGlobalExists) {
+        if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
+          Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+        }
+        Drupal.behaviors.ms_global.changeTitle(itemTitle, anchorSection, basePageName);
+        Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
+        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, elem);
+        Drupal.behaviors.ms_global.scrollToTop();
       }
-      Drupal.behaviors.ms_global.changeTitle(itemTitle, anchorSection, basePageName);
-      Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
-      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, elem);
-      Drupal.behaviors.ms_global.scrollToTop();
+      else {
+        Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
+        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, elem);
+      }
     },
 
     // AD 300x250 with class ADDED

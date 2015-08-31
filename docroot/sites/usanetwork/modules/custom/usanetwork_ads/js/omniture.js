@@ -12,6 +12,15 @@
       false;
     },
 
+    goToUrl: function (elem) {
+      if(elem.attr('target') == '_blank') {
+      } else {
+        setTimeout(function () {
+          window.location = elem.attr('href');
+        }, 500);
+      }
+    },
+
     //----------- redesign ---------------
 
     // main menu elem click
@@ -38,9 +47,7 @@
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
           s.bcf = function () {
-            setTimeout(function () {
-              window.location = $self.attr('href');
-            }, 500);
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
           };
         }
         s.tl(this, 'o', 'Global Menu Click');
@@ -57,9 +64,7 @@
       s.eVar64 = name;
       if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
       s.tl(this, 'o', 'Global SubMenu Click');
@@ -92,10 +97,10 @@
       }
     },
 
-    photoGalleries: function (name) {
+    newPageView: function (name) {
       if (typeof s_gi != 'undefined') {
         s.linkTrackVars = 'events,prop5';
-        s.prop5 = name;
+        s.prop5 = name.trim();
         void (s.t());
       }
     },
@@ -104,17 +109,26 @@
 
       var $self = elem,
           item_name = '',
+          showName,
           name;
+
 
       if ($self.hasClass('icon')) {
 
+        showName = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').html().split('<br>');
         name = $self.data('name').trim();
-        item_name = name.charAt(0).toUpperCase() + name.substr(1);
+        item_name = name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + showName[0].trim();
 
-      } else if ($self.hasClass('on-now-link') || $self.hasClass('up-next-link') && item_name === '') {
+      } else if ($self.hasClass('on-now-link')) {
+        //
+        //name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
+        //item_name = 'Show : ' + name;
 
-        name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
-        item_name = 'Show : ' + name;
+        item_name = 'On Now';
+
+      } else if ($self.hasClass('up-next-link')) {
+
+        item_name = 'Up Next';
 
       } else {
 
@@ -128,9 +142,7 @@
 
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -150,9 +162,7 @@
 
       if ($self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -163,7 +173,7 @@
     footerMenuItem: function (elem) {
 
       var $self = elem,
-          link_name = $self.text();
+          link_name = $self.text().replace(' New!', '');
 
       s.linkTrackVars = 'events,eVar63,eVar64';
       s.linkTrackEvents = s.events = 'event63,event64';
@@ -172,9 +182,7 @@
 
       if ($self.attr('href') != '#') {
         s.bcf = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -184,29 +192,86 @@
 
     showCardClick: function (item_node) {
 
-      //var show_name = item_node.find($('.show-open .title')).text();
+      var show_name = item_node.find($('.show-open .title')).text();
 
       //s.linkTrackVars = 'events,prop4,prop10';
       //s.linkTrackEvents = s.events = 'event6';
       //s.prop4 = show_name + ' : Home Page Show Card';
       //s.prop10 = show_name;
 
-      void (s.t());
-      s.tl(this, 'o', 'Home Page Show Card Click');
+      if (typeof s_gi != 'undefined') {
+        s.linkTrackEvents = s.events = 'event51';
+        s.linkTrackVars = 'events,prop4,prop10';
+        s.prop4 = show_name + ' : Home Page Show Card';
+        s.prop10 = show_name;
+        void (s.t());
+      }
+
+
+      //s.prop4 = s.prop10 = '';
+      //s.tl(this, 'o', 'Home Page Show Card Click');
+      //s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
+    showCardPromoClick: function ($self, name, prop4, prop10) {
+
+      s.linkTrackVars = 'events,prop4,prop10,eVar55';
+      s.prop4 = prop4;
+      s.prop10 = prop10;
+      s.linkTrackEvents = s.events = 'event51';
+      s.eVar55 = name;
+
+      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
+        s.bcf = function () {
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
+        };
+      }
+
+      s.tl(this, 'o', name + ' Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
-    promoClick: function ($self, name, show_name, is_show_card, prop4, prop10) {
+    aspotClick: function ($self, pageName, name, slideName) {
+
+      if ($self.hasClass('next-button')) {
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = name;
+        s.eVar55 = pageName;
+      } else {
+        s.linkTrackVars = 'events,eVar55,eVar33,eVar35';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = slideName;
+        s.eVar35 = name;
+        s.eVar55 = pageName;
+      }
+
+      if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
+        s.bcf = function () {
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
+        };
+      }
+
+      s.tl(this, 'o', pageName + ' ' + name + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
+    carouselNavClick: function (fullName, nameNav) {
+
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = nameNav;
+        s.eVar55 = fullName;
+
+      s.tl(this, 'o', fullName + ' ' + nameNav + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
+    promoClick: function ($self, name, show_name) {
 
       if (show_name === '') {
-        if (is_show_card === 1) {
-          s.linkTrackVars = 'events,prop4,prop10,eVar55';
-            s.prop4 = prop4;
-            s.prop10 = prop10;
-        } else {
-          s.linkTrackVars = 'events,eVar55';
-        }
-        s.linkTrackEvents = s.events = 'event51, event';
+        s.linkTrackVars = 'events,eVar55';
+        s.linkTrackEvents = s.events = 'event51';
         s.eVar55 = name;
       } else {
         s.linkTrackVars = 'events,eVar55,eVar33';
@@ -215,7 +280,31 @@
         s.eVar55 = name;
       }
 
-      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0 ) {
+      if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
+        s.bcf = function () {
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
+        };
+      }
+
+      s.tl(this, 'o', name + ' Click');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+    aspotClick: function ($self, pageName, name, slideName) {
+
+      if ($self.hasClass('next-button')) {
+        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = name;
+        s.eVar55 = pageName;
+      } else {
+        s.linkTrackVars = 'events,eVar55,eVar33,eVar35';
+        s.linkTrackEvents = s.events = 'event51';
+        s.eVar33 = slideName;
+        s.eVar35 = name;
+        s.eVar55 = pageName;
+      }
+
+      if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
         s.bcf = function () {
           setTimeout(function () {
             window.location = $self.attr('href');
@@ -223,7 +312,7 @@
         };
       }
 
-      s.tl(this, 'o', name + ' Click');
+      s.tl(this, 'o', pageName + ' ' + name + ' Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -235,18 +324,14 @@
             global_show_name = $('header .nav-bar-tabs .show-name').text().trim() || '',
             show_name,
             page_name,
-            name,
-            is_show_card = 0, prop4 = '', prop10 = '';
+            blockName,
+            name;
 
         // Home page
         if (body.hasClass('page-home')) {
           page_name = 'Home Page ';
           if ($self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
             name = page_name + 'Show Card Carousel';
-            is_show_card = 1;
-            var show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text();
-            prop4 = show_name + ' : Home Page Show Card';
-            prop10 = show_name;
           }
           if ($self.closest('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').length > 0) {
             name = page_name + 'Full Latest Carousel';
@@ -266,7 +351,8 @@
             name = page_name + 'Latest Full Episodes Block';
           }
           if ($self.closest('.best-of-block').length > 0) {
-            name = page_name + $('.best-of-block .section-title').text() + 'Block';
+            blockName = $('.best-of-block .section-title').text().trim();
+            name = page_name + blockName + ' Block';
           }
           if ($self.closest('.show-latest-block').length > 0) {
             name = page_name + 'The Latest Block';
@@ -276,8 +362,54 @@
         // Show videos page
         if (body.hasClass('page-node-videos')) {
           page_name = 'Show Videos Page ';
+          if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-lmb').length > 0) {
+            name = page_name + 'Show Video Landing Main Block';
+          }
           if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-video-vl').length > 0) {
             name = page_name + 'All Videos Block';
+          }
+        }
+
+        // Movies page
+        if (body.hasClass('page-movies')) {
+          page_name = 'Movies Page ';
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movies-mb').length > 0) {
+            name = page_name + 'Movies Main Block';
+          }
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movies-all-movies').length > 0) {
+            name = page_name + 'All Movies Block';
+          }
+        }
+
+        // Movie page
+        if (body.hasClass('node-type-movie')) {
+          page_name = 'Movie Page ';
+          //show_name = $('.show-title-block .title a').text().trim();
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movie-related').length > 0) {
+            blockName = $('#block-usanetwork-movie-usanetwork-movie-related .section-title').text().trim();
+            name = page_name + blockName + ' Block';
+          }
+          if ($self.closest('#block-usanetwork-movie-usanetwork-movie-cast-crew-block').length > 0) {
+            name = page_name + 'Cast & Crew Block';
+          }
+        }
+
+        // Show photos page
+        if (body.hasClass('page-node-photos')) {
+          page_name = 'Show Photos Page ';
+          if ($self.closest('#block-usanetwork-media-gallery-usa-gallery-show-gallery-lmb').length > 0) {
+            name = page_name + 'Show Photo Landing Main Block';
+          }
+          if ($self.closest('#block-usanetwork-media-gallery-usa-gallery-show-gallery-all').length > 0) {
+            name = page_name + 'All Galleries Block';
+          }
+        }
+
+        // Page shows
+        if (body.hasClass('page-shows')) {
+          page_name = 'Shows Page ';
+          if ($self.closest('#block-usanetwork-tv-shows-usanetwork-tv-shows-all-shows').length > 0) {
+            name = page_name + 'All Shows';
           }
         }
 
@@ -351,7 +483,7 @@
         }
 
         // init omniture tracking
-        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name, is_show_card, prop4, prop10);
+        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name);
       }
     },
 
@@ -359,26 +491,15 @@
     omnitureMaxQuestionCharacters: 35,
 
     attach: function (context, settings) {
+
       if (typeof s != 'object') {
         return;
       }
 
       //redesign
-      // Click main menu links
-      $('#block-usanetwork-menu-usanetwork-menu-sm-menu .usa-logo a,' +
-      '#block-usanetwork-menu-usanetwork-menu-consumptionator .usa-logo a,' +
-      '#block-usanetwork-menu-usanetwork-menu-consumptionator .nav-bar-tabs .show-name a').once('omniture-tracking', function () {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            Drupal.behaviors.omniture_tracking.mainMenuTabs($(this));
-          }
-        });
-      });
+      if (!$('body').hasClass('page-node-microsite')) {
 
-      if(!$('body').hasClass('page-node-microsite')) {
-
-         // Click on submenu item
+        // Click on submenu item
         $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
         '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
         '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
@@ -386,7 +507,11 @@
         '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              e.preventDefault();
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
 
               var $self = $(this),
                   sub_menu_name;
@@ -402,16 +527,153 @@
           });
         });
 
-       // Click promo item
-        $('.usa-wrap .node-usanetwork-promo a,' +
-        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
+        // Home Page A-spot click
+        $( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
+        "#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button," +
+        ".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
+        //$('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
-            e.preventDefault();
-            var self = $(this);
-            Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+
+              var target = $(this),
+                  pageName = $('body').hasClass('page-home') ? 'Homepage A-Spot' : 'Show Landing A-Spot',
+                  slideBlock, showName, titleName, slideName, name, titleField, titleClone;
+
+              if (target.hasClass('next-button')) {
+                name = 'Peek Ahead Strip';
+              } else {
+                slideBlock = target.closest('.node.usanetwork-aspot.');
+                showName = slideBlock.data('show-name').trim();
+                titleField = slideBlock.find('.slide-content .title');
+                titleClone = titleField.clone();
+
+                // check title value about tag style & br
+                titleClone.find('br').replaceWith(' ');
+
+                if (titleField.find('style').length > 0) {
+                  // delete style from clone
+                  titleClone.find('style').empty();
+                  titleName = titleClone.text().trim();
+                } else {
+                  titleName = titleClone.text().trim();
+                }
+
+                slideName = showName + ' : ' + titleName;
+
+                if (target.hasClass('asset-img-link')) {
+                  name = 'BACKGROUND_IMAGE';
+                } else if (target.hasClass('cta-button-link')) {
+                  name = target.data('cta-link');
+                } else if (target.hasClass('social-meter-link')) {
+                  name = 'SOCIAL_INDICATOR';
+                } else {
+                  name = '';
+                }
+              }
+
+              Drupal.behaviors.omniture_tracking.aspotClick(target, pageName, name, slideName);
+            }
+          })
+        });
+
+        // Click promo item
+        $('.usa-wrap .node-usanetwork-promo a,' +
+        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +
+        '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+              var self = $(this);
+              if (self.closest('#block-usanetwork-home-usanetwork-home-shows-queue').length > 0) {
+
+                var name = 'Home Page Show Card Carousel',
+                    item_show_name = $('#block-usanetwork-home-usanetwork-home-shows-queue div.open .show-open .title').text(),
+                    prop4 = item_show_name + ' : Home Page Show Card',
+                    prop10 = item_show_name;
+
+                Drupal.behaviors.omniture_tracking.showCardPromoClick(self, name, prop4, prop10);
+              } else {
+                Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+              }
+            }
           });
         });
 
+        // Click promo item
+        $('a.jcarousel-controls').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              e.preventDefault();
+
+              var body = $('body'),
+                  target = $(this),
+                  pageName, blockName, nameNav, fullName;
+
+              if (target.hasClass('jcarousel-control-prev')) {
+                nameNav = 'Carousel Back';
+              } else if (target.hasClass('jcarousel-control-next')) {
+                nameNav = 'Carousel Next';
+              }
+
+              if (body.hasClass('page-home')) {
+                pageName = 'Home Page';
+
+                if (target.closest('.shows-block').length > 0) {
+                  blockName = target.closest('.shows-block').data('block-name');
+                } else if (target.closest('.full-episodes-block').length > 0) {
+                  blockName = target.closest('.full-episodes-block').data('block-name');
+                } else if (target.closest('.featured-block').length > 0) {
+                  blockName = target.closest('.featured-block').data('block-name');
+                } else if (target.closest('.social-block').length > 0) {
+                  blockName = target.closest('.social-block').data('block-name');
+                }
+
+
+              } else if (body.hasClass('page-videos')) {
+                pageName = 'Full Episodes Landing Page';
+                blockName = target.closest('.carousel-block').data('block-name');
+              } else if (body.hasClass('consumptionator-page')) {
+
+                if (body.hasClass('consumptionator-video-page')) {
+                  pageName = 'Consumptionator Video Page';
+                } else if (body.hasClass('node-type-consumpt-post')) {
+                  pageName = 'Consumptionator Post Page';
+                } else if (body.hasClass('node-type-media-gallery')) {
+                  pageName = 'Consumptionator Gallery Page';
+                }  else if (body.hasClass('node-type-person')) {
+                  pageName = 'Consumptionator Person Page';
+                }  else if (body.hasClass('node-type-quiz')) {
+                  pageName = 'Consumptionator Quiz Page';
+                } else {
+                  pageName = 'Consumptionator Page';
+                }
+
+                blockName = target.closest('.episodes-list-slider.horizontal').data('block-name');
+              } else if (body.hasClass('node-type-tv-show')) {
+                pageName = 'Show Page';
+                blockName = target.closest('.episodes-list-slider.horizontal').data('block-name');
+              } else {
+                pageName = 'Page';
+                blockName = 'Right Rail Carousel';
+              }
+
+              fullName = pageName + ' ' + blockName;
+
+              Drupal.behaviors.omniture_tracking.carouselNavClick(fullName, nameNav);
+            }
+          });
+        });
+
+        // Click promo item
+        //$('.usa-wrap .node-usanetwork-promo a,' +
+        //'#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
+        //  $(this).on('click', function (e) {
+        //    e.preventDefault();
+        //    var self = $(this);
+        //    Drupal.behaviors.omniture_tracking.globalPromoClick(self);
+        //  });
+        //});
 
         // Click on submenu schedule items
         $('header .schedule-tab a').once('omniture-tracking', function () {
@@ -420,17 +682,36 @@
               e.preventDefault();
 
               var $self = $(this),
-                  sub_menu_name = '';
+                  sub_menu_name = '',
+                  name,
+                  paneTitle,
+                  itemName;
 
-              if ($self.closest('.on-now-panel-title').length) {
-                sub_menu_name = $self.text();
-              } else if ($self.closest('.node-usanetwork-promo').length && !$self.hasClass('icon') && sub_menu_name === '') {
-                sub_menu_name = $self.closest('.node-usanetwork-promo').find('.title-overlay .title').text();
-              } else if ($self.hasClass('icon') && !$self.hasClass('live-icon') && sub_menu_name === '') {
-                var name = $self.data('name');
-                sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
+              if ($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-now-and-next').length > 0) {
+
+                paneTitle = $self.closest('.node-usanetwork-promo').find('h2 a').text().trim();
+                itemName = $self.closest('.node-usanetwork-promo').find('.title').text().trim();
+
+                if ($self.hasClass('live-icon')) {
+                  console.info(1);
+                  sub_menu_name = $self.text().trim();
+                } else if ($self.data('name') === 'description' || $self.data('name') === 'reminder') {
+                  console.info(2);
+                  name = $self.data('name');
+                  sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
+                } else {
+                  console.info(3);
+                  sub_menu_name = $self.text();
+                }
+
+              } else if ($self.closest('.pane-usanetwork-menu-usanetwork-menu-sm-primetime').length > 0) {
+                name = $self.data('name');
+                paneTitle = $('.pane-usanetwork-menu-usanetwork-menu-sm-primetime h2.pane-title').text().trim();
+                itemName = $self.closest('.schedule-item').find('.episode-show').text().trim();
+                sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
               } else {
-                sub_menu_name = $self.text();
+                name = $self.text();
+                sub_menu_name = name.charAt(0).toUpperCase() + name.substr(1);
               }
 
               Drupal.behaviors.omniture_tracking.subMenuItems($self, sub_menu_name);
@@ -446,6 +727,16 @@
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               e.preventDefault();
               Drupal.behaviors.omniture_tracking.socialFollow($(this));
+            }
+          });
+        });
+
+        // Click on node-type-person data-tab character-bio / actor-bio
+        $('#block-usanetwork-person-usa-cons-chars-main-block .description li[data-tab]').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              var name = $(this).text().trim();
+              Drupal.behaviors.omniture_tracking.newPageView(name);
             }
           });
         });
@@ -472,22 +763,14 @@
 
               var name = '';
 
-              if($(this).closest('.gallery-wrapper').length > 0) {
-
+              if ($(this).closest('.gallery-wrapper').length > 0) {
                 name = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text();
-
-              } else if($(this).closest('header .tab-item-wrapper').length > 0) {
-
+              } else if ($(this).closest('header .tab-item-wrapper').length > 0) {
                 name = $('header .tab-item-wrapper .node-usanetwork-promo .title').text();
-
-              } else if($(this).closest('.block-character-info-header').length > 0) {
-
+              } else if ($(this).closest('.block-character-info-header').length > 0) {
                 name = $('.block-character-info-header .full-name').text();
-
-              } else if($(this).closest('.episode-info-block').length > 0) {
-
+              } else if ($(this).closest('.episode-info-block').length > 0) {
                 name = $('.episode-info-block .episode-title').text();
-
               }
 
               s.linkTrackVars = 'events,eVar73,eVar74';

@@ -12,6 +12,23 @@ include_once 'usanetwork_seo.features.inc';
  */
 function usanetwork_seo_form_alter(&$form, &$form_state) {
   if (isset($form['field_seo_h1']) || isset($form['field_seo_page_title']) || isset($form['field_usa_og_description'])) {
+    if (!empty($form['#bundle']) && $form['#bundle'] = 'consumpt_post') {
+      if (!empty($form_state['node']->field_show)) {
+        $show_id = field_get_items('node', $form_state['node'], 'field_show');
+        $show_id = reset($show_id);
+        $show_id = $show_id['target_id'];
+        $show_node = node_load($show_id);
+        if (!empty($show_node->field_show_blog_title)) {
+          $custom_blog_title = field_get_items('node', $show_node, 'field_show_blog_title');
+          $custom_blog_title = reset($custom_blog_title);
+          $custom_blog_title = $custom_blog_title['value'];
+        }
+        else {
+          $custom_blog_title = t('@show_title blog', array('@show_title' => $show_node->title));
+        }
+        drupal_add_js(array('usanetwork_seo' => array('customBlogTitle' => $custom_blog_title)), 'setting');
+      }
+    }
     $form['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/seo.js';
   }
 }

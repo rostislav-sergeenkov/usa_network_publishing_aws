@@ -113,29 +113,6 @@ body.usa-social {
   }
 }
 
-#block-usanetwork-social-usa-show-social-tab-nav {
-  @include breakpoint($bp-social-mid-width) {
-    font-size: 20px;
-  }
-  &.open .menu-label {
-    color: $gray-extra-light;
-  }
-  .menu-label {
-    @extend %secondary-menu-label;
-  }
-  a {
-    border-top: 1px solid $gray-light;
-    color: $gray-extra-light;
-    &.active {
-      color: $white;
-    }
-    @include breakpoint($bp-social-mid-width) {
-      @include secondary-menu-wide($secondary-menu-bg);
-    }
-  }
-}
-
-
 .usa-social {
   #main {
     max-width: 1245px;
@@ -1260,7 +1237,8 @@ input.echo-submit-text {
   overflow: hidden;
 }
 
-.field-type-gigya-sharebar {
+.field-type-gigya-sharebar,
+.node-type-timeline-gallery .timeline-gigya-share {
   margin-bottom: 20px;
   .gig-button-container {
     td {

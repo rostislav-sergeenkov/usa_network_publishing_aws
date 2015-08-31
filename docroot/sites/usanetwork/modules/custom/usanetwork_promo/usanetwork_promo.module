@@ -321,16 +321,21 @@ function _usanetwork_promo_pull_node_promo_details($entity_object) {
   }
 
   if (!empty($entity_object)) {
-    $promo_wrapper = entity_metadata_wrapper('node', $entity_object);
-    $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $promo_wrapper, 'node');
-    if (empty($promo_fields['promo_title']) || empty($promo_fields['description'])) {
-      $own_fields = _usanetwork_promo_node_get_promo_lines($entity_object);
-      $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
-        (!empty($own_fields['title']) ? $own_fields['title'] : '');
-      $promo_fields['description'] = !empty($promo_fields['description']) ? $promo_fields['description'] :
-        (!empty($own_fields['description']) ? $own_fields['description'] : '');
+    if (isset($entity_object->status) && $entity_object->status == NODE_PUBLISHED) {
+      $promo_wrapper = entity_metadata_wrapper('node', $entity_object);
+      $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $promo_wrapper, 'node');
+      if (!empty($promo_fields['promo_title'])) {
+        $promo_fields['promo_title'] = _usanetwork_core_get_node_title($entity_object, $promo_fields['promo_title']);
+      }
+      if (empty($promo_fields['promo_title']) || empty($promo_fields['description'])) {
+        $own_fields = _usanetwork_promo_node_get_promo_lines($entity_object);
+        $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
+          (!empty($own_fields['title']) ? $own_fields['title'] : '');
+        $promo_fields['description'] = !empty($promo_fields['description']) ? $promo_fields['description'] :
+          (!empty($own_fields['description']) ? $own_fields['description'] : '');
+      }
+      return $promo_fields;
     }
-    return $promo_fields;
   }
 
   return NULL;
@@ -346,10 +351,13 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
   if (!is_object($entity_object)) {
     $entity_object = file_load($entity_object);
   }
-  if ($entity_object->mpx_video_data['status'] == FILE_PUBLISHED) {
+  if ($entity_object->mpx_video_data['status'] == FILE_PUBLISHED && $entity_object->published == FILE_PUBLISHED) {
     if (!empty($entity_object)) {
       $file_wrapper = entity_metadata_wrapper('file', $entity_object);
       $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper, 'file');
+      if (!empty($promo_fields['promo_title'])) {
+        $promo_fields['promo_title'] = _usanetwork_core_get_video_title($entity_object, $promo_fields['promo_title']);
+      }
       if (empty($promo_fields['promo_title']) || empty($promo_fields['description']) || empty($promo_fields['topic']) ) {
         $own_fields = _usanetwork_promo_file_get_promo_lines($entity_object);
         $promo_fields['promo_title'] = !empty($promo_fields['promo_title']) ? $promo_fields['promo_title'] :
@@ -374,15 +382,27 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
  * @return array|null
  */
 function _usanetwork_promo_file_get_promo_lines($file, $no_video_type = NULL) {
+  if (empty($file)) {
+    return FALSE;
+  }
   $result = array();
   $file_wrapper = entity_metadata_wrapper('file', $file);
   $full_episode = $file_wrapper->field_mpx_full_episode->value();
   $episode_season = !empty($file->field_mpx_season_number) ? $file_wrapper->field_mpx_season_number->value() : NULL;
   $episode_number = !empty($file->field_mpx_episode_number) ? $file_wrapper->field_mpx_episode_number->value() : NULL;
-  $result['title'] = $file->filename;
+  $result['title'] = _usanetwork_core_get_video_title($file);
   if ($full_episode) {
     $result['topic'] = t('Full Episode');
-    $result['description'] = t('S@season EP@episode_number', array('@season' => $episode_season, '@episode_number' => $episode_number));
+    $result['description'] = '';
+    if (isset($episode_season) && isset($episode_number)) {
+      $result['description'] = t('S@season EP@episode_number', array('@season' => $episode_season, '@episode_number' => $episode_number));
+    }
+    elseif (isset($episode_season)) {
+      $result['description'] = t('S@season', array('@season' => $episode_season));
+    }
+    elseif (isset($episode_number)) {
+      $result['description'] = t('EP@episode_number', array('@episode_number' => $episode_number));
+    }
   }
   else {
     $result['description'] = '';
@@ -404,6 +424,9 @@ function _usanetwork_promo_file_get_promo_lines($file, $no_video_type = NULL) {
  * @return array|null
  */
 function _usanetwork_promo_node_get_promo_lines($node) {
+  if (empty($node)) {
+    return FALSE;
+  }
   $result = array();
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $lang = LANGUAGE_NONE;
@@ -413,8 +436,32 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       $result['description'] = t('Bio');
       break;
     case 'media_gallery':
-      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      if (!empty($node->field_episode)) {
+        $episode = $node_wrapper->field_episode->value();
+        if ($episode_num_items = field_get_items('node', $episode, 'field_episode_number')) {
+          $episode_num_items = reset($episode_num_items);
+          $episode_num = $episode_num_items['value'];
+        }
+        if ($episode->field_season) {
+          $season = $node_wrapper->field_season->value();
+          if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
+            $season_num_items = reset($season_num_items);
+            $season_num = $season_num_items['value'];
+          }
+        }
+      }
+      $title = !empty($node->title) ? $node_wrapper->title->value() : NULL;
       $gallery_type = !empty($node->field_gallery_type) ? $node_wrapper->field_gallery_type->value() : NULL;
+      if (!empty($episode_num) && !empty($season_num)) {
+        $result['title'] = t('S@season EP@episode: @title', array(
+          '@season' => $season_num,
+          '@episode' => $episode_num,
+          '@title' => $title,
+        ));
+      }
+      else {
+        $result['title'] = $title;
+      }
       $result['description'] = empty($gallery_type) ? t('Gallery ') : $gallery_type . ' ';
       $result['description'] .= (!empty($node->field_media_items)
           ? ((!empty($node->field_cover_item))
@@ -428,10 +475,18 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       break;
     case 'post':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
-      $result['description'] = t('Blog');
+      $result['description'] = t('Blog post');
+      break;
+    case 'consumpt_post':
+      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      $result['description'] = t('Blog post');
+      break;
+    case 'timeline_gallery':
+      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      $result['description'] = t('Timeline Gallery');
       break;
     case 'tv_episode':
-      $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
+      $result['title'] = _usanetwork_core_get_node_title($node);
       $season_node = !empty($node->field_season) ? $node_wrapper->field_season->value() : NULL;
       $season_id = field_get_items('node', $season_node, 'field_season_id');
       if ($season_id) {

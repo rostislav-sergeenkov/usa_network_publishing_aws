@@ -35,7 +35,7 @@
         <?php endforeach; ?>
       </ul>
     </div>
-    <div class="episodes-list-slider horizontal" data-mode="horizontal">
+    <div class="episodes-list-slider horizontal" data-mode="horizontal" data-block-name="Right Rail Carousel">
       <ul class="slider-horizontal">
         <?php foreach($promos as $promo):?>
           <li class="slide-item">
@@ -64,8 +64,8 @@
         <?php endforeach; ?>
       </ul>
       <div class="horizontal-controls">
-        <a href="javascript:void(0)" class="jcarousel-control-prev"></a>
-        <a href="javascript:void(0)" class="jcarousel-control-next"></a>
+        <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
+        <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
       </div>
     </div>
   <?php endif; ?>

@@ -1,4 +1,4 @@
-<div class="carousel-block carousel-block-left">
+<div class="carousel-block carousel-block-left" data-block-name="<?php print $show_title; ?> Carousel">
   <div class="carousel-description-item start <?php print !empty($sponsored)? ' sponsored-enable' : ''; ?>">
     <div class="description-wrapper">
       <div class="description-block">
@@ -16,8 +16,8 @@
     <ul>
       <?php print $carousel_items; ?>
     </ul>
-    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
-    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>
+    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
+    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
   </div>
   <a class="get-app" href="">Get the app to watch</a>
 </div>

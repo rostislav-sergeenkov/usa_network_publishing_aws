@@ -170,8 +170,12 @@
 
         $('#bxslider-gallery .slide').removeClass('active');
 
-        var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();
-        Drupal.behaviors.omniture_tracking.photoGalleries(name);
+        //var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();
+        //Drupal.behaviors.omniture_tracking.newPageView(name);
+
+        if (typeof s_gi != 'undefined') {
+          void (s.t());
+        }
       },
       onSlideAfter: function ($slideElement, oldIndex, newIndex) {
 
@@ -236,7 +240,7 @@
 
   $(document).ready(function () {
     // bxslider-gallery slider initialization
-    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode')) {
+    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post')) {
 
       if ($('#bxslider-gallery').length == 0) {
         return false;

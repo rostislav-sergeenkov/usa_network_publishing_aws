@@ -7,26 +7,12 @@
             <?php if (!empty($featured_aspot['aspot_image']['mobile'])): ?>
               <div data-src="<?php print $featured_aspot['aspot_image']['mobile']; ?>"></div>
             <?php endif; ?>
-            <?php if (!empty($featured_aspot['aspot_image']['mobile_retina'])): ?>
-              <div data-media="(min-device-pixel-ratio: 2.0)" data-src="<?php print $featured_aspot['aspot_image']['mobile_retina']; ?>"></div>
-            <?php endif; ?>
-            <?php if (!empty($featured_aspot['aspot_image']['tablet'])): ?>
-              <div data-media="(min-width: 641px)" data-src="<?php print $featured_aspot['aspot_image']['tablet']; ?>"></div>
-            <?php endif; ?>
-            <?php if (!empty($featured_aspot['aspot_image']['tablet_retina'])): ?>
-              <div data-media="(min-width: 641px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $featured_aspot['aspot_image']['tablet_retina']; ?>"></div>
-            <?php endif; ?>
             <?php if (!empty($featured_aspot['aspot_image']['desktop'])): ?>
-              <div data-media="(min-width: 1025px)" data-src="<?php print $featured_aspot['aspot_image']['desktop']; ?>"></div>
+              <div data-media="(min-width: 641px)" data-src="<?php print $featured_aspot['aspot_image']['desktop']; ?>"></div>
               <!--[if (IE 8) & (!IEMobile)]>
               <div data-src="<?php print $featured_aspot['aspot_image']['desktop']; ?>"></div>
               <![endif]-->
-            <?php endif; ?>
-            <?php if (!empty($featured_aspot['aspot_image']['desktop_retina'])): ?>
-              <div data-media="(min-width: 1025px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $featured_aspot['aspot_image']['desktop_retina']; ?>"></div>
-            <?php endif; ?>
-            <?php if (!empty($featured_aspot['aspot_image']['desktop'])): ?>
-              <noscript><img src="<?php print $featured_aspot['aspot_image']['desktop']; ?>" width="2500" height="1407" alt="" title="" /></noscript>
+              <noscript><img src="<?php print $featured_aspot['aspot_image']['desktop']; ?>" width="2880" height="1620" alt="" title="" /></noscript>
             <?php endif; ?>
           </div>
           <div class="meta-wrapper">
@@ -63,9 +49,6 @@
           </li>
           <?php endforeach; ?>
         </ul>
-        <div class="more-button">
-          <a href="javascript:void(0)" class="more"></a>
-        </div>
       </div>
     </div>
   <?php endif; ?>

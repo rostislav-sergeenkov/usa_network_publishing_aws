@@ -335,11 +335,19 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
       $show_result = _usanetwork_schedule_get_show_node_info_by_title($needle);
       if (!empty($show_result)) {
         $show_result = reset($show_result);
+        $show_node = node_load($show_result->nid);
+        if (!empty($show_node)) {
+          $schedule_item->title = _usanetwork_core_get_right_case_title($show_node, $schedule_item->title);
+        }
         $schedule_item->nid = $show_result->nid;
         continue;
       }
       $show_nid = _usanetwork_tv_schedule_find_show_by_title($schedule_item->show_title);
       if (!empty($show_nid)) {
+        $show_node = node_load($show_nid);
+        if (!empty($show_node)) {
+          $schedule_item->title = _usanetwork_core_get_right_case_title($show_node, $schedule_item->title);
+        }
         $schedule_item->nid = $show_nid;
         continue;
       }
@@ -435,6 +443,12 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
   $query->fields('v', array('title'));
   $query->leftJoin('field_data_field_mpx_entitlement','locked_video','locked_video.entity_id = f.fid');
   $query->fields('locked_video', array('field_mpx_entitlement_value'));
+  $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = f.fid');
+  $query->condition(
+    db_or()
+      ->condition('fdfml.field_mpx_language_value', 'en', '=')
+      ->isNull('fdfml.field_mpx_language_value')
+  );
   $query->condition('v.status', 1);
   $query->orderBy('v.airdate', 'DESC');
   $query->orderBy('field_episode_number.field_mpx_episode_number_value', 'DESC');

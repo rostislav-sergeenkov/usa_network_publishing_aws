@@ -13,6 +13,155 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'explore_landing';
+  $context->description = 'Show Explore Landing Page';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/explore' => 'node/*/explore',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_lmb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_lmb',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_list' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_list',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Explore Landing Page');
+  t('show');
+  $export['explore_landing'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'consumpt_post_node';
+  $context->description = '';
+  $context->tag = 'node';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'post' => 'consumpt_post',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_consumptionator_post-usanetwork_cons_post_main' => array(
+          'module' => 'usanetwork_consumptionator_post',
+          'delta' => 'usanetwork_cons_post_main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_consumptionator_post-usanetwork_cons_post_related' => array(
+          'module' => 'usanetwork_consumptionator_post',
+          'delta' => 'usanetwork_cons_post_related',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('node');
+  $export['consumpt_post'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'quiz_node';
+  $context->description = '';
+  $context->tag = 'node';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'quiz' => 'quiz',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_quiz-usanetwork_quiz_main' => array(
+          'module' => 'usanetwork_quiz',
+          'delta' => 'usanetwork_quiz_main',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'usanetwork_quiz-usanetwork_quiz_related' => array(
+          'module' => 'usanetwork_quiz',
+          'delta' => 'usanetwork_quiz_related',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'personalization',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'block_disable' => array(
+      'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => '',
+          'weight' => '0',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('node');
+  $export['quiz_node'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'schedule_page';
   $context->description = 'the tv schedule page context';
   $context->tag = 'schedule';
@@ -178,6 +327,53 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'timeline_gallery';
+  $context->description = '';
+  $context->tag = 'node';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'timeline_gallery' => 'timeline_gallery',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_timeline_gallery-usa_timeline_gal_related' => array(
+          'module' => 'usanetwork_timeline_gallery',
+          'delta' => 'usa_timeline_gal_related',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('node');
+  $export['timeline_gallery'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'usa_leader_standard';
   $context->description = 'standard script based leaderboard ads';
   $context->tag = 'ads';
@@ -185,6 +381,8 @@ function usanetwork_context_context_default_contexts() {
     'node' => array(
       'values' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_post' => 'consumpt_post',
+        'movie' => 'movie',
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
@@ -213,6 +411,9 @@ function usanetwork_context_context_default_contexts() {
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
         'shows' => 'shows',
+        'node/*/blog' => 'node/*/blog',
+        'node/*/blog/*' => 'node/*/blog/*',
+        'movies' => 'movies',
       ),
     ),
     'taxonomy_term' => array(
@@ -446,6 +647,9 @@ function usanetwork_context_context_default_contexts() {
         'catchall_page' => 'catchall_page',
         'media_gallery' => 'media_gallery',
         'person' => 'person',
+        'consumpt_post' => 'consumpt_post',
+        'quiz' => 'quiz',
+        'timeline_gallery' => 'timeline_gallery',
         'tv_episode' => 'tv_episode',
         'usanetwork_microsite' => 'usanetwork_microsite',
       ),

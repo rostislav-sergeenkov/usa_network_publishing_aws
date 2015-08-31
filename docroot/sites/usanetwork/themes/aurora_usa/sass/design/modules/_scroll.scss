@@ -3,8 +3,6 @@
 Plugin URI: http://manos.malihu.gr/jquery-custom-content-scroller
 */
 
-
-
 /*
 CONTENTS:
 	1. BASIC STYLE - Plugin's basic/essential CSS properties (normally, should not be edited).
@@ -15,8 +13,6 @@ CONTENTS:
 	6. SCROLLBAR COLORS, OPACITY AND BACKGROUNDS
 		6.1 THEMES - Scrollbar colors, opacity, dimensions, backgrounds etc. via ready-to-use themes.
 */
-
-
 
 /*
 ------------------------------------------------------------------------------------------------------------------------
@@ -41,8 +37,6 @@ CONTENTS:
   width: auto;
   height: auto;
 }
-
-
 
 /*
 ------------------------------------------------------------------------------------------------------------------------
@@ -70,6 +64,7 @@ y-axis
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 1;
 }
 
 .mCSB_outside + .mCSB_scrollTools{ right: -26px; } /* scrollbar position: outside */
@@ -134,8 +129,6 @@ y-axis
 }
 
 .mCSB_scrollTools .mCSB_buttonDown{ bottom: 0; }
-
-
 
 /*
 ------------------------------------------------------------------------------------------------------------------------
@@ -212,8 +205,6 @@ x-axis
 
 .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight{ right: 0; }
 
-
-
 /*
 ------------------------------------------------------------------------------------------------------------------------
 4. VERTICAL AND HORIZONTAL SCROLLBARS
@@ -279,8 +270,6 @@ yx-axis
 /* non-visible horizontal scrollbar */
 .mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_container_wrapper.mCS_no_scrollbar_x.mCS_x_hidden{ margin-bottom: 0; }
 
-
-
 /*
 ------------------------------------------------------------------------------------------------------------------------
 5. TRANSITIONS
@@ -320,8 +309,6 @@ yx-axis
   margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s,
   opacity .2s ease-in-out, background-color .2s ease-in-out;
 }
-
-
 
 /*
 ------------------------------------------------------------------------------------------------------------------------
@@ -446,8 +433,6 @@ yx-axis
 
 /* ---------------------------------------- */
 
-
-
 /* theme: "light-2", "dark-2" */
 
 .mCS-light-2.mCSB_scrollTools .mCSB_draggerRail,
@@ -514,8 +499,6 @@ yx-axis
 
 /* ---------------------------------------- */
 
-
-
 /* theme: "light-thick", "dark-thick" */
 
 .mCS-light-thick.mCSB_scrollTools .mCSB_draggerRail,
@@ -559,7 +542,6 @@ yx-axis
 
 .mCS-light-thick.mCSB_scrollTools .mCSB_buttonRight{ background-position: -20px -56px; }
 
-
 /* theme: "dark-thick" */
 
 .mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail{
@@ -587,8 +569,6 @@ yx-axis
 
 /* ---------------------------------------- */
 
-
-
 /* theme: "light-thin", "dark-thin" */
 
 .mCS-light-thin.mCSB_scrollTools .mCSB_draggerRail{ background-color: #fff; background-color: rgba(255,255,255,0.1); }
@@ -605,7 +585,6 @@ yx-axis
   height: 2px;
   margin: 7px auto;
 }
-
 
 /* theme "dark-thin" */
 
@@ -627,8 +606,6 @@ yx-axis
 .mCS-dark-thin.mCSB_scrollTools .mCSB_buttonRight{ background-position: -80px -56px; }
 
 /* ---------------------------------------- */
-
-
 
 /* theme "rounded", "rounded-dark", "rounded-dots", "rounded-dots-dark" */
 
@@ -699,7 +676,6 @@ yx-axis
 
 .mCS-rounded.mCSB_scrollTools .mCSB_buttonRight{ background-position: 0 -128px; }
 
-
 /* theme "rounded-dark", "rounded-dots-dark" */
 
 .mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
@@ -722,7 +698,6 @@ yx-axis
 .mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonLeft{ background-position: -80px -112px; }
 
 .mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonRight{ background-position: -80px -128px; }
-
 
 /* theme "rounded-dots", "rounded-dots-dark" */
 
@@ -776,8 +751,6 @@ yx-axis
 .mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonRight{ background-position: -100px -128px; }
 
 /* ---------------------------------------- */
-
-
 
 /* theme "3d", "3d-dark", "3d-thick", "3d-thick-dark" */
 
@@ -888,8 +861,6 @@ yx-axis
 .mCS-3d-dark.mCSB_scrollTools .mCSB_buttonRight{	background-position: -120px -128px; }
 
 /* ---------------------------------------- */
-
-
 
 /* theme: "3d-thick", "3d-thick-dark" */
 
@@ -1122,8 +1093,6 @@ yx-axis
 
 /* ---------------------------------------- */
 
-
-
 /* theme "inset", "inset-dark", "inset-2", "inset-2-dark", "inset-3", "inset-3-dark" */
 
 .mCS-inset.mCSB_scrollTools .mCSB_draggerRail,
@@ -1270,4 +1239,3 @@ yx-axis
 .mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar{ background-color: #fff; background-color: rgba(255,255,255,0.9); }
 
 /* ---------------------------------------- */
-

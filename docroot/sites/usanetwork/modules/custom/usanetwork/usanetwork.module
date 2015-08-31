@@ -185,6 +185,15 @@ function usanetwork_preprocess_page(&$variables) {
   drupal_add_js(trim($usanetwork_global_js, "\n"), array('type' => 'inline', 'scope' => 'header'));
 }
 
+function usanetwork_preprocess_region(&$variables) {
+  if($variables['region'] == "footer"){
+    $load_more_link = &drupal_static('load_more_link');
+    if ($load_more_link) {
+      $variables['classes_array'][] = 'hidden';
+    }
+  }
+}
+
 /**
  * Returns HTML for a list or nested list of items.
  *
@@ -288,7 +297,7 @@ function theme_usanetwork_item_list($variables) {
           $also_on_usa_menu = menu_load('menu-also-on-usa');
           $also_on_usa_links = menu_load_links('menu-also-on-usa');
 
-//          $links[] = l('All Shows', 'shows', array('attributes' => array('class' => 'title-link')));
+
           if (!empty($current_shows)) {
 
             $links[] = '<span class="no-link">' . t('Current Shows') . '</span>';
@@ -296,6 +305,7 @@ function theme_usanetwork_item_list($variables) {
             foreach ($current_shows as $current_show_link) {
               $links[] = l($current_show_link->node_title, 'node/' . $current_show_link->nid);
             }
+            $links[] = l(t('See All Shows'), 'shows');
           }
 
           if (!empty($also_on_usa_links)) {

@@ -639,6 +639,10 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         case 'cast':
         case 'explore':
         case 'photos':
+        case 'episodes':
+          break;
+        case 'blog':
+          // Title is set via drupal_set_title in usanetwork_consumptionator_post.module .
           break;
         // Show Landing Page
         case '':
@@ -655,11 +659,16 @@ function usanetwork_showpages_preprocess_html(&$vars) {
           break;
       }
     }
-    // looks for nodes with a value in field_show
-    if (!empty($node->field_show)) {
-      $show_nid = field_get_items('node', $node, 'field_show');
-      $show_nid = $show_nid[0]['target_id'];
-      $show = node_load($show_nid);
+    elseif ($node->type == 'movie') {
+      if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+        $head_title = $seo_page_title[0]['value'];
+      }
+      else {
+        $head_title = t("@title | USA Network", array('@title' => $node->title));
+      }
+    }
+    $tv_content = usanetwork_core_api_get_tv_content_node($node);
+    if (!empty($tv_content)) {
       switch ($node->type) {
       // person pages have 2 cases
         case 'person':
@@ -674,12 +683,12 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             // check for role and actor field
             // CHARACTER_NAME played by ACTOR_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
             if (!empty($role) && $role[0]['taxonomy_term']->name == 'Character' && !empty($actor)) {
-              $head_title = t("@person played by @actor | Characters & Crew | @showname | USA Network", array('@showname' => $show->title, '@person' => $node->title, '@actor' => $actor[0]['safe_value']));
+              $head_title = t("@person played by @actor | Cast & Crew | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@person' => $node->title, '@actor' => $actor[0]['safe_value']));
             }
             // everyone else
             // CHARACTER_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
             else {
-              $head_title = t("@person | Characters & Crew | @showname | USA Network", array('@showname' => $show->title, '@person' => $node->title));
+              $head_title = t("@person | Cast & Crew | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@person' => $node->title));
             }
           }
           break;
@@ -692,7 +701,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $head_title = t("@episode - @season | Episode Guide | @showname | USA Network", array('@showname' => $show->title, '@episode' => $node->title, '@season' => $season->title));
+            $head_title = t("@episode - @season | Episode Guide | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@episode' => $node->title, '@season' => $season->title));
           }
           break;
         // GALLERY_TITLE | Photo Galleries | SHOW_NAME | SITE_TITLE
@@ -701,13 +710,13 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {        
-            $head_title = t("@title | Photo Galleries | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+            $head_title = t("@title | Photo Galleries | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
           }
           break;
         // VIDEO_TITLE | Videos | SHOW_NAME | SITE_TITLE
         case 'usa_video':
         case 'usa_tve_video':
-          $head_title = t("@video | Videos | @showname | USA Network", array('@showname' => $show->title, '@video' => $node->title));
+          $head_title = t("@video | Videos | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@video' => $node->title));
           break;
         // SAME LOGIC AS CUSTOM PATHS ABOVE
         case 'usanetwork_static_page':
@@ -722,15 +731,15 @@ function usanetwork_showpages_preprocess_html(&$vars) {
               switch ($path_parts[1]) {
                 // PAGE_TITLE | Feature | SHOW_TITLE | SITE_NAME
                 case 'features':
-                  $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+                  $head_title = t("@title | Features | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
                   break;
                 // PAGE_TITLE | Quizzes | SHOW_TITLE | SITE_NAME
                 case 'quizzes':
-                  $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+                  $head_title = t("@title | Quizzes | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
                   break;
                 // PAGE_TITLE | Games | SHOW_TITLE | SITE_NAME
                 case 'games':
-                  $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+                  $head_title = t("@title | Games | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
                   break;
                 // overwrite title if the second path part does not match any of top strings
                 default:
@@ -740,27 +749,41 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             }
           }
           break;
+        case 'timeline_gallery':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $head_title = t("@title | Timeline Galllery | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
+          }
+          break;
         // QUIZ SHOW_NAME - TITLE | SITE_TITLE
         case 'quiz':
           if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $head_title = t("@showname - @title | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+            $head_title = t("@title | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
+          }
+          break;
+        case 'consumpt_post':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $blog_title = usanetwork_consumptionator_post_get_blog_title($tv_content);
+            $head_title = $node->title . ' | ' . $blog_title .  ' | Blog | ' . $tv_content->title . ' | USA Network';
           }
           break;
       }
     }
     // end of node types
   } elseif ($file = menu_get_object('file')) {
-    $show_field = field_get_items('file', $file, 'field_show');
-    if ($show_field) {
-      $show = reset($show_field);
-    }
-    if (isset($show)) {
-      $show_entity_title = !empty($show['entity']->title) ? $show['entity']->title : '';
+    $tv_content = usanetwork_core_api_get_tv_content_node($file);
+    if (isset($tv_content)) {
+      $entity_title = !empty($tv_content->title) ? $tv_content->title : '';
       $filename = !empty($file->filename) ? $file->filename : '';
-      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $filename, '@showname' => $show_entity_title));
+      $head_title = t("@video | Videos | @tv_content_name | USA Network", array('@video' => $filename, '@tv_content_name' => $entity_title));
     } else {
       $head_title = t("@video | Videos | USA Network", array('@video' => $file->filename));
     }

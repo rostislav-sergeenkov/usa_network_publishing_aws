@@ -162,7 +162,7 @@
     position: relative;
     &.vertical {
       display: block;
-      height: calc(100% - 84px);
+      height: calc(100% - 85px);
       @include breakpoint($bp-min-1901-width) {
         height: calc(100% - 140px);
       }
@@ -433,7 +433,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    @include breakpoint($between-641-1280) {
+    @include breakpoint($between-641-1024) {
       background: none!important;
     }
     @include breakpoint($bp-1280-width) {
@@ -529,6 +529,9 @@
     @include breakpoint($bp-768-width) {
       width: 100%;
     }
+    @include breakpoint($bp-640-width) {
+      height: 56vw;
+    }
     .download-app-wrapper {
       display: table-cell;
       position: relative;
@@ -592,6 +595,11 @@
         float: left;
         margin-left: calc(50% - 205px);
       }
+      @include breakpoint($bp-640-width) {
+        margin-left: 9%;
+        width: 42%;
+        height: 64%;
+      }
       @include breakpoint($bp-480-width) {
         height: 136px;
         margin-left: calc(50% - 150px);
@@ -616,9 +624,17 @@
       @include breakpoint($bp-1024-width) {
         margin-left: calc(50% + 10px);
       }
+      @include breakpoint($bp-640-width) {
+        margin-left: calc(50% + 49px);
+        max-width: 165px;
+        font-size: 20px;
+        margin-top: 3.4%;
+      }
       @include breakpoint($bp-480-width) {
         font-size: 14px;
-        max-width: 150px;
+        max-width: 131px;
+        margin-left: calc(50% + 15px);
+        margin-top: 5px;
       }
     }
     .download-button {
@@ -681,11 +697,209 @@
           font-size: 14px;
         }
       }
+      @include breakpoint($bp-640-width) {
+        margin-left: calc(50% + 49px);
+        margin-top: 5.1%;
+        width: 30.5%;
+        min-width: 163px;
+      }
       @include breakpoint($bp-480-width) {
         width: 130px;
+        margin-left: calc(50% + 15px);
+        min-width: initial;
+        margin-top: 10px;
         a {
           font-size: 10px;
           padding: 5px 10px 5px 5px;
+        }
+      }
+    }
+  }
+}
+#block-usanetwork-media-gallery-usa-gallery-consumptionator-main, .consumptionator-video-page .video-block {
+  .consum-sidebar {
+    .more-items {
+      @include breakpoint($between-1025-1280) {
+        background: none!important;
+      }
+    }
+  }
+}
+.consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
+  .consum-sidebar {
+    @include breakpoint($between-1025-1280) {
+      float: left;
+      padding: 0;
+      position: relative;
+      width: 320px;
+    }
+    @include breakpoint($bp-1024-width) {
+      float: none;
+      height: auto;
+      padding: 0;
+      position: relative;
+      width: 100%;
+    }
+    .items-block {
+      @include breakpoint($bp-min-1025-width) {
+        height: 420px;
+      }
+      @include breakpoint($bp-min-1901-width) {
+        height: 645px;
+      }
+      @include breakpoint($between-1025-1280) {
+        position: relative;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: auto;
+        padding: 0;
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+      }
+      .episodes-list-slider {
+        &.vertical {
+          @include breakpoint($between-1025-1280) {
+            display: block;
+            height: calc(100% - 90px);
+          }
+        }
+        &.horizontal {
+          overflow: hidden;
+          position: relative;
+          @include breakpoint($between-1025-1280) {
+            display: none;
+          }
+          ul {
+            width: 20000em;
+            position: relative;
+            @include breakpoint($bp-640-width) {
+              width: 100%;
+            }
+          }
+          @include breakpoint($bp-640-width) {
+            li {
+              background: $consum-carousel-even;
+              height: 75px;
+              position: relative;
+              width: 100%!important;
+              &:nth-child(odd) {
+                background: $consum-carousel-odd;
+              }
+              &:nth-child(even) {
+                background: $consum-carousel-even;
+              }
+              > div {
+                height: 100%;
+                width: 100%;
+              }
+              a {
+                height: 100%;
+                width: 100%;
+              }
+              .asset-img {
+                height: 50px;
+                left: 4%;
+                margin-top: -25px;
+                position: absolute;
+                top: 50%;
+                width: 75px;
+                &.active {
+                  border-left: 7px solid;
+                }
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+                & ~ .meta-wrapper {
+                  .meta {
+                    padding-left: calc(8% + 75px);
+                  }
+                }
+              }
+              .meta-wrapper {
+                background: none;
+                height: 100%;
+                width: 100%;
+                .meta-wrapper-inner {
+                  display: table;
+                  height: 100%;
+                  width: 100%;
+                }
+                .meta-icon {
+                  display: none;
+                }
+                .meta {
+                  color: $consum-carousel-text;
+                  padding-left: 4%;
+                  display: table-cell;
+                  max-width: 100px;
+                  vertical-align: middle;
+                  width: 100%;
+                  .caption {
+                    font-size: 10px;
+                    line-height: 13px;
+                  }
+                  .title {
+                    font-size: 15px;
+                    line-height: 18px;
+                    margin-bottom: 7px;
+                  }
+                  .additional {
+                    font-family: $tex-gyreschola-italic;
+                    font-size: 10px;
+                    line-height: 13px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .more-items {
+      @include breakpoint($between-1025-1280) {
+        bottom: 0;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: auto;
+        width: 100%;
+      }
+      @include breakpoint($bp-1024-width) {
+        top: 0;
+      }
+      a {
+        @include breakpoint($between-1025-1280) {
+          padding-left: 25px;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 15px;
+          height: 45px;
+          line-height: 45px;
+        }
+      }
+    }
+    .advert {
+      @include breakpoint($bp-1024-width) {
+        display: none;
+      }
+    }
+    .items-block-title {
+      @include breakpoint($bp-640-width) {
+        height: 45px;
+        line-height: 45px;
+      }
+      h2 {
+        @include breakpoint($between-1025-1280) {
+          width: 100%;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 20px;
+          line-height: 45px;
+          text-align: left;
         }
       }
     }
@@ -703,8 +917,11 @@
   @include breakpoint($bp-min-1901-width) {
     margin-bottom: 190px;
   }
-  @include breakpoint($bp-480-width) {
-    padding: 40px 10px;
+  @include breakpoint($bp-640-width) {
+    padding: 40px 0px;
+  }
+  &.infinity-finished {
+    margin-bottom: 0;
   }
   ul {
     @include clear();
@@ -737,14 +954,21 @@
         height: 51.6vw;
         margin-bottom: 2px;
         margin-right: 0;
+        padding: 0 16px;
         width: 100%;
         &:last-child, &.last {
           margin-bottom: 0;
         }
         &.ymal-item {
+          border-bottom: 1px solid;
+          border-top: 1px solid;
           height: 115vw;
           margin: 40px 0 0;
+          padding: 0;
         }
+      }
+      @include breakpoint($bp-480-width) {
+        padding: 0 10px;
       }
       > div {
         height: 100%;

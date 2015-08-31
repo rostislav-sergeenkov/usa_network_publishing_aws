@@ -7,6 +7,46 @@
 include_once 'usanetwork_quiz.features.inc';
 
 define('USANETWORK_QUIZ_DEFAULT_COLOR', '#0ab6e8');
+define('USA_QUIZ_RELATED_CONTENT_ITEMS', 6);
+
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_quiz_block_info() {
+  $blocks = array();
+
+  $blocks['usanetwork_quiz_main'] = array(
+    'info' => t('Quiz landing: Main block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['usanetwork_quiz_related'] = array(
+    'info' => t('Quiz landing: Related content'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_quiz_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_quiz_main':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_quiz_main_block();
+      break;
+    case 'usanetwork_quiz_related':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_quiz_related_content_block();
+      break;
+  }
+
+  return $block;
+}
 
 /**
  * Implements hook_theme().
@@ -62,6 +102,35 @@ function usanetwork_quiz_theme() {
       ),
       'file' => 'usanetwork_quiz.theme.inc',
     ),
+    'usanetwork_quiz_main_block' => array(
+      'variables' => array(
+        'rendered_quiz' => NULL,
+        'rendered_carousel' => NULL,
+      ),
+      'template' => 'templates/usanetwork-quiz-main-block',
+    ),
+    'usanetwork_quiz_quizes_carousel' => array(
+      'variables' => array(
+        'quizes' => array(),
+      ),
+      'template' => 'templates/usanetwork-quiz-quizes-carousel',
+    ),
+    'usanetwork_quiz_quizes_carousel_item_h' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'active' => NULL,
+      ),
+      'template' => 'templates/usanetwork-quiz-quizes-carousel-item-h',
+    ),
+    'usanetwork_quiz_quizes_carousel_item_v' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'active' => NULL,
+      ),
+      'template' => 'templates/usanetwork-quiz-quizes-carousel-item-v',
+    ),
   );
 }
 
@@ -78,6 +147,13 @@ function usanetwork_quiz_menu() {
     'page arguments' => array('usanetwork_quiz_config_form'),
     'access arguments' => array('access administration pages'),
     'file' => 'usanetwork_quiz.admin.inc',
+  );
+  $items['ajax/quiz-consumptionator/get-related/%node/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => '_usanetwork_quiz_get_related_content_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -533,7 +609,7 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
   $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
   $sharebar['#title'] = t('Share:');
   if ($phase == 'results') {
-    $sharebar['#title'] = t('Share result:');
+    $sharebar['#title'] = t('Share your result:');
   }
   $sharebar['#prefix'] = '<div class="sharebar">';
   $sharebar['#suffix'] = '</div>';
@@ -543,8 +619,11 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
   // add ads
   $splash = theme('usanetwork_quiz_splash');
   if (($phase == 'splash' && !empty($splash)) || ($phase == 'questions' && empty($splash))) {
+    $menu_object = menu_get_object();
     $vars['content']['ads'] = '';
-    $vars['content']['ads']['#prefix'] = '<div class="ad-container"><div id="topbox">';
+    $vars['content']['ads']['#prefix'] = (!empty($menu_object->type) && $menu_object->type == 'quiz')
+      ? '<div class="ad-container advert"><div class="topbox">'
+      : '<div class="ad-container"><div id="topbox">';
     $vars['content']['ads']['#suffix'] = '</div></div>';
   }
 }
@@ -811,4 +890,149 @@ function _usanetwork_quiz_accent_color($node) {
   }
 
   return $color;
+}
+
+/**
+ * Renders main block for quiz landing page.
+ */
+function _usanetwork_quiz_main_block() {
+
+  $node = menu_get_object('node');
+  if (isset($node->type) && $node->type == 'quiz') {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $show = $node_wrapper->field_show->value();
+    $quiz_content = drupal_render(node_view($node, 'full'));
+    $theme_variables = array(
+      'rendered_quiz' => $quiz_content,
+      'rendered_carousel' => _usanetwork_quiz_quizes_carousel(),
+    );
+    return theme('usanetwork_quiz_main_block', $theme_variables);
+  }
+  return '';
+}
+
+/*
+ * Renders usanetwork_episodes_main_block.
+*/
+function _usanetwork_quiz_quizes_carousel() {
+
+  $node = menu_get_object('node');
+  if (isset($node->type) && $node->type == 'quiz') {
+    if (!empty($node->field_show)) {
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $show_id = $node_wrapper->field_show->nid->value();
+      $show_name = $node_wrapper->field_show->title->value();
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'quiz')
+        ->propertyCondition('status', NODE_PUBLISHED)
+        ->fieldCondition('field_show', 'target_id', $show_id, '=');
+      $explore_tag = !empty($node->field_explore_tag) ? $node_wrapper->field_explore_tag->value() : NULL;
+      if (!empty($explore_tag)) {
+        $query->fieldCondition('field_explore_tag', 'tid', $explore_tag->tid, '=');
+      }
+      $result = $query->execute();
+      if (isset($result['node'])) {
+        $quizes = entity_load('node', array_keys($result['node']));
+        $rendered_items = array();
+        foreach ($quizes as $quiz) {
+          if (!empty($quiz->field_promo_image_override)) {
+            $image = field_get_items('node', $quiz, 'field_promo_image_override');
+            $image = reset($image);
+          }
+          elseif (!empty($quiz->field_quiz_splash_image)) {
+            $image = field_get_items('node', $quiz, 'field_quiz_splash_image');
+            $image = reset($image);
+          }
+          $episode_variables = array(
+            'title' => !empty($quiz->title) ? $quiz->title : '',
+            'url' => url('node/' . $quiz->nid),
+            'active' => ($node->nid == $quiz->nid) ? TRUE : FALSE,
+            'icon_type' => usanetwork_core_api_get_media_icon('node', $quiz->nid),
+          );
+          $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
+          $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+          $rendered_items['horizontal'][] = theme('usanetwork_quiz_quizes_carousel_item_h', $episode_variables);
+          $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+          $rendered_items['vertical'][] = theme('usanetwork_quiz_quizes_carousel_item_v', $episode_variables);
+        }
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $advert = render($advert_block['content']);
+        }
+        $theme_variables = array(
+          'quizes' => !empty($rendered_items) ? $rendered_items : array(),
+          'advert_block' => isset($advert) ? $advert : NULL,
+          'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All quizzes'),
+          'show_explore_link' => !empty($explore_tag) ?
+              l(t('See All @tag_name', array('@tag_name' => $explore_tag->name)),
+              'node/' . $show_id . '/explore', array('fragment' => 'explore-landing-page-header', 'query' => array('tag' => $explore_tag->tid))) :
+              l(t('Explore @show_name', array('@show_name' => $show_name)),
+                'node/' . $show_id . '/explore', array('fragment' => 'explore-landing-page-header')),
+        );
+        return theme('usanetwork_quiz_quizes_carousel', $theme_variables);
+      }
+    }
+  }
+  return '';
+}
+
+/**
+ * Renders Block entity of related content items.
+ */
+function _usanetwork_quiz_related_content_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $content = menu_get_object('node');
+
+  if (!empty($content)) {
+    $node = usanetwork_core_api_get_tv_content_node($content);
+    if (!empty($node)) {
+      $display_content = usanetwork_core_api_check_display_relate_content($node);
+      if (empty($display_content)) {
+        return '';
+      }
+
+      $function = 'usanetwork_' . $node->type . '_consumptionator_get_ymal_item';
+      $you_may_also_like_item = $function($node);
+
+      $function = '_usanetwork_' . $node->type . '_cache_get_limited_related_content';
+      $related_content = $function(
+        $node, $content->type, 0,
+        !empty($you_may_also_like_item)
+          ? USA_QUIZ_RELATED_CONTENT_ITEMS - 1
+          : USA_QUIZ_RELATED_CONTENT_ITEMS
+      );
+
+      if (!empty($you_may_also_like_item)) {
+        $related_content[] = $you_may_also_like_item;
+      }
+
+      if (!empty($related_content)) {
+        drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+        drupal_add_js(array(
+          'usanetwork_' . $node->type . '_nid' => $node->nid,
+          'usanetwork_' . $node->type . '_page_context' => 'quiz-consumptionator',
+          'usanetwork_' . $node->type . '_offset' => !empty($you_may_also_like_item) ? -1 : 0,
+        ), 'setting');
+
+        $function = 'usanetwork_' . $node->type . '_consumptionator_render_related_content_items_block';
+        $block_of_items = $function($related_content);
+        $load_more_link = &drupal_static('load_more_link');
+        $load_more_link = TRUE;
+        return theme('usanetwork_' . $node->type . '_consumptionator_related_items_container', array(
+          'related_items_block' => $block_of_items,
+          'load_more_link' => $load_more_link,
+          'show_nid' => $node->nid,
+          'items_pre_page_limit' => USA_QUIZ_RELATED_CONTENT_ITEMS,
+        ));
+      }
+    }
+  }
+}
+
+function _usanetwork_quiz_get_related_content_ajax($node, $start_from = 0, $limit = 1) {
+  return usanetwork_related_content_get_related_content_ajax('quiz', $node, $start_from , $limit);
 }

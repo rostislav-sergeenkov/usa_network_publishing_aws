@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="shows-block">
+<div class="shows-block" data-block-name="Show Card Carousel">
   <div class="carousel-description-item start">
     <div class="description-wrapper">
       <div class="description-block">
@@ -30,8 +30,8 @@
           </li>
         <?php endforeach; ?>
       </ul>
-      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
-      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
     </div>
   <?php endif; ?>
 </div>

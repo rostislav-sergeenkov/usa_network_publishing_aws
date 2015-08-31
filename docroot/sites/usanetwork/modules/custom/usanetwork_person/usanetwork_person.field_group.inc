@@ -23,8 +23,8 @@ function usanetwork_person_field_group_info() {
     'label' => 'Microsite Character Info',
     'weight' => '3',
     'children' => array(
-      0 => 'field_person_ms_character_bio',
-      1 => 'field_person_ms_background',
+      0 => 'field_person_ms_background',
+      1 => 'field_person_ms_character_bio',
       2 => 'field_quotation',
     ),
     'format_type' => 'tab',
@@ -55,6 +55,7 @@ function usanetwork_person_field_group_info() {
       0 => 'field_person_birth_date',
       1 => 'field_person_birth_location',
       2 => 'field_person_external_links',
+      3 => 'field_imdb_url',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -203,7 +204,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = 'group_usa_custom';
   $field_group->data = array(
     'label' => 'Social',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_usa_link_facebook',
       1 => 'field_usa_link_pinterest',
@@ -242,7 +243,8 @@ function usanetwork_person_field_group_info() {
       4 => 'field_hide_cast_carousel',
       5 => 'field_hide_social_follow',
       6 => 'field_actor_bio',
-      7 => 'group_social',
+      7 => 'field_movie',
+      8 => 'group_social',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

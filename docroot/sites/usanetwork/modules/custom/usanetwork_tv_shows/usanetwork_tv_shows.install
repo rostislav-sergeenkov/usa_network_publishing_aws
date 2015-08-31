@@ -166,3 +166,40 @@ function usanetwork_tv_shows_update_7023() {
     }
   }
 }
+
+/**
+ * Move best of items to new system
+ */
+function usanetwork_tv_shows_update_7024() {
+  features_revert_module('usanetwork_tv_shows');
+  $show_nodes = node_load_multiple(array(), array('type' => 'tv_show'));
+  if (!empty($show_nodes)) {
+    foreach ($show_nodes as $show_node) {
+      $new_field_collection = entity_create('field_collection_item', array('field_name' => 'field_tvs_best_of'));
+      $new_field_collection->setHostEntity('node', $show_node);
+      $new_field_collection->field_collection_best_of_items = $show_node->field_tvs_best_of_items;
+      $new_field_collection->field_collection_best_of_title = $show_node->field_tvs_best_of_title;
+      $new_field_collection_wrapper = entity_metadata_wrapper('field_collection_item', $new_field_collection);
+      $show_node_wrapper = entity_metadata_wrapper('node', $show_node);
+      $new_field_collection_wrapper->save();
+      $show_node_wrapper->save();
+    }
+  }
+}
+
+/**
+ * Delete old fields
+ */
+function usanetwork_tv_shows_update_7025() {
+
+  field_delete_field('field_tvs_best_of_items');
+  field_delete_field('field_tvs_best_of_title');
+}
+
+/**
+ * Delete unused field field_tvs_mobile_cimage.
+ */
+function usanetwork_tv_shows_update_7026() {
+
+  field_delete_field('field_tvs_mobile_cimage');
+}

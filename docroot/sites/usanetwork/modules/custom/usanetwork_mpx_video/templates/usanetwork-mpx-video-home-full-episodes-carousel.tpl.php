@@ -1,4 +1,4 @@
-<div class="full-episodes-block carousel-block">
+<div class="full-episodes-block carousel-block" data-block-name="Full Episodes Carousel">
   <div class="carousel-description-item start">
     <div class="description-wrapper">
       <div class="description-block">
@@ -14,8 +14,8 @@
         <li<?php print ($key == 0) ? ' class="first"' : ''; ?>><?php print $item; ?></li>
       <?php endforeach; ?>
     </ul>
-    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
-    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>
+    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
+    <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
   </div>
   <a href="javascript:void(0)" class="more-button more">
     <span class="more-text"><?php print t('More full episodes'); ?></span>

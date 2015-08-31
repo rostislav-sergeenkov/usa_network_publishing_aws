@@ -135,13 +135,11 @@ function usanetwork_aspot_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'usanetwork_aspot';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_usa_aspot_ui';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Desktop',
     'weight' => '56',
-    'children' => array(
-      0 => 'field_aspot_preview_bg_offset',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -162,13 +160,11 @@ function usanetwork_aspot_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'usanetwork_aspot';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_usa_aspot_ui';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Mobile',
     'weight' => '55',
-    'children' => array(
-      0 => 'field_aspot_preview_mbg_offset',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -195,11 +191,12 @@ function usanetwork_aspot_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_aspot_enabled_gi',
-      1 => 'field_aspot_gi_title',
-      2 => 'field_aspot_gi_title_prefix',
-      3 => 'field_aspot_preview_bg_offset',
-      4 => 'field_aspot_gi_draggable_data',
-      5 => 'field_aspot_gi_cta',
+      1 => 'field_aspot_gi_cta',
+      2 => 'field_aspot_gi_draggable_data',
+      3 => 'field_aspot_gi_title',
+      4 => 'field_aspot_gi_title_prefix',
+      5 => 'field_aspot_preview_bg_offset',
+      6 => 'field_aspot_gi_desc',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -257,12 +254,12 @@ function usanetwork_aspot_field_group_info() {
     'label' => 'TV show A-spot UI',
     'weight' => '6',
     'children' => array(
-      0 => 'field_aspot_preview_tbg_offset',
-      1 => 'field_aspot_enabled_tgi',
-      2 => 'field_aspot_tgi_title_prefix',
+      0 => 'field_aspot_enabled_tgi',
+      1 => 'field_aspot_tgi_cta',
+      2 => 'field_aspot_tgi_draggable_data',
       3 => 'field_aspot_tgi_title',
-      4 => 'field_aspot_tgi_draggable_data',
-      5 => 'field_aspot_tgi_cta',
+      4 => 'field_aspot_tgi_title_prefix',
+      5 => 'field_aspot_tgi_desc',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -291,7 +288,6 @@ function usanetwork_aspot_field_group_info() {
     'children' => array(
       0 => 'field_usa_tv_aspot_desktop',
       1 => 'field_usa_tv_aspot_mobile',
-      2 => 'field_usa_tv_aspot_tablet_p',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -44,6 +44,12 @@ function usanetwork_person_context_default_contexts() {
           'region' => 'content',
           'weight' => '-8',
         ),
+        'usanetwork_mpx_video-usanetwork_social_content' => array(
+          'module' => 'usanetwork_mpx_video',
+          'delta' => 'usanetwork_social_content',
+          'region' => 'content',
+          'weight' => '-7',
+        ),
       ),
     ),
   );
@@ -53,7 +59,7 @@ function usanetwork_person_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('shows');
   $export['cast_landing'] = $context;
-  
+
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
@@ -95,7 +101,7 @@ function usanetwork_person_context_default_contexts() {
     ),
   );
   $context->condition_mode = 0;
-  
+
   // Translatables
   // Included for use with string extractors like potx.
   t('node');

@@ -46,8 +46,10 @@
   /*border-radius: 6px;*/
   /*border: solid 1px #666;*/
   color: #ffffff;
+  box-sizing: border-box;
   display: block;
   line-height: normal;
+  outline: 1px solid #ffffff;
   /*margin: 0;*/
   /*padding: 3px;*/
   /*top: 0;*/
@@ -61,12 +63,20 @@
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: initial;
   text-transform: uppercase;
+  text-shadow: 1px 1px 0.5em #333333;
+}
+.draggable-area.mobile div[data-rel="aspot_description"],
+.draggable-area.desktop div[data-rel="aspot_description"] {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: initial;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .draggable-area.mobile div[data-rel="title_prefix"],
 .draggable-area.desktop div[data-rel="title_prefix"] {
   font-family: "texgyrescholaitalic", Times, serif;
   line-height: initial;
   text-transform: uppercase;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .draggable-area.mobile div[data-rel="social_meter"],
 .draggable-area.desktop div[data-rel="social_meter"] {
@@ -74,7 +84,6 @@
 }
 .draggable-area.mobile .aspot-draggable-cta-button,
 .draggable-area.desktop .aspot-draggable-cta-button {
-  background: #2c2c2c;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   text-decoration: none;
   text-transform: uppercase;
@@ -82,18 +91,29 @@
 
 /* mobile */
 .draggable-area.mobile div[data-rel="title"] {
-  font-size: 67px;
+  font-size: 66.56px;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+}
+.draggable-area.mobile div[data-rel="aspot_description"] {
+  font-size: 20px;
+  letter-spacing: 0.05em;
   line-height: 1;
 }
 .draggable-area.mobile div[data-rel="title_prefix"] {
-  font-size: 12px;
+  font-size: 17.28px;
   line-height: 1;
+  letter-spacing: 0.1em;
 }
 .draggable-area.mobile .aspot-draggable-cta-button {
-  font-size: 14px;
+  font-size: 17.28px;
+  letter-spacing: 0.1em;
   line-height: 1.8;
-  max-width: 224px;
-  padding: 11px 20px 11px 16.5px;
+  padding: 0 41.6px 0 0;
+}
+.draggable-area.mobile .aspot-draggable-cta-button[data-rel="cta_button_0"] {
+  background: #2c2c2c;
+  padding: 8.96px 41.6px 8.96px 22.4px;
 }
 .draggable-area.mobile div[data-rel="social_meter"]{
   font-size: 22px;
@@ -104,18 +124,29 @@
 }
 /* desktop */
 .draggable-area.desktop div[data-rel="title"] {
-  font-size: 77px;
+  font-size: 76.8px;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+}
+.draggable-area.desktop div[data-rel="aspot_description"] {
+  font-size: 24px;
   line-height: 1;
+  letter-spacing: 0.05em;
 }
 .draggable-area.desktop div[data-rel="title_prefix"] {
-  font-size: 14px;
+  font-size: 14.08px;
   line-height: 1;
+  letter-spacing: 0.1em;
 }
 .draggable-area.desktop .aspot-draggable-cta-button {
-  font-size: 16.5px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
   line-height: 1.8;
-  max-width: 256px;
-  padding: 21.76px 40px 21.76px 32.5px;
+  padding: 0 57.6px 0 0;
+}
+.draggable-area.desktop .aspot-draggable-cta-button[data-rel="cta_button_0"] {
+  background: #2c2c2c;
+  padding: 17.92px 57.6px 17.92px 44.78px;
 }
 .draggable-area.desktop div[data-rel="social_meter"]{
   font-size: 24px;
@@ -127,4 +158,53 @@
 #edit-field-aspot-gi-draggable-data {
   display: none;
   visibility: hidden;
+}
+
+/* custom buttons*/
+#edit-group_usa_aspot_ui .wrapper-mobile,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile,
+#edit-group_usa_aspot_ui .wrapper-desktop,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop{
+  position: relative;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper{
+  position: absolute;
+  top: 30px;
+}
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
+  left: 850px;
+  top: 102%;
+}
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
+  left: 650px;
+}
+#edit-group_usa_aspot_ui .wrapper-mobile .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .buttons-wrapper{
+  left: 700px;
+}
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper .button,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper .button{
+  display: inline-block;
+  margin-right: 30px;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper .button,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button{
+  background: #e4e4e4;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #e4e4e4;
+  border-bottom: 1px solid #b4b4b4;
+  border-left-color: #d2d2d2;
+  border-right-color: #d2d2d2;
+  cursor: pointer;
+  padding: 4px 17px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+#edit-group_usa_aspot_ui .buttons-wrapper .button:hover,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button:hover{
+  background: #a1a1a1;
 }

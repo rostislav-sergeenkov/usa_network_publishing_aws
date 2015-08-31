@@ -229,6 +229,8 @@
         .fail(function(jqXHR, textStatus, errorThrown){
           usa_debug('********************\najax fail: ');
           usa_debug(errorThrown);
+          Drupal.behaviors.ms_quizzes.quizIsLoading = false;
+          Drupal.behaviors.ms_quizzes.showHideLoader();
         });
       }
       else {
@@ -267,10 +269,9 @@
     },
 
     setActiveQuizHeight: function() {
-      var activeQuiz = $('#microsite #quizzes-content .flexslider'),
-          activeQuizWidth = activeQuiz.width(),
-          newHeight = Math.ceil(activeQuizWidth * 9/16);
-      $('#microsite #quizzes-content .flexslider').height(newHeight);
+      var $activeQuiz = $('#quizzes article'),
+          questionsHeight = $activeQuiz.find('.usanetwork-quiz-questions').height();
+      $('#quizzes article > .content').css({'min-height': questionsHeight + 'px'});
     },
 
     setActiveQuizNav: function() {

@@ -7,38 +7,22 @@
     // Gigya share bar
     updateGigyaSharebar: function(initialPageLoad, preview_image) {
       initialPageLoad = initialPageLoad || 0;
-      if (typeof Drupal.gigya != 'undefined') {
-        var sharebar = new Object(),
-            $videoInfoContainer = $('#videos #video-container .video-player-desc'),
-            caption = $videoInfoContainer.find('.video-description').text(),
-            shareTitle = $videoInfoContainer.find('.video-title').text(),
-            imageSrc = preview_image;
+      var sharebar = new Object(),
+          $videoInfoContainer = $('#videos #video-container .video-player-desc'),
+          caption = $videoInfoContainer.find('.video-description').text(),
+          shareTitle = $videoInfoContainer.find('.video-title').text(),
+          imageSrc = preview_image,
+          url = window.location.href;
 
-        sharebar.gigyaSharebar = {
-          containerID: "video-gigya-share",
-          iconsOnly: true,
-          layout: "horizontal",
-          shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          shortURLs: "never",
-          showCounts: "none"
-        }
+      var settings = settings || {
+        containerId: 'video-gigya-share',
+        title: shareTitle,
+        description: caption,
+        imageSrc: imageSrc,
+        url: url
+      };
 
-        sharebar.gigyaSharebar.ua = {
-          description: caption,
-          imageBhev: "url",
-          imageUrl: imageSrc,
-          linkBack: url,
-          title: shareTitle
-        }
-        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
-
-        // reset Gigya share bar clicks
-        var $shareButtons = $('#video-gigya-share .gig-share-button div');
-        $shareButtons.unbind('click');
-        $shareButtons.bind('click', function(){
-          if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.sendSocialShareOmniture == 'function') Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);
-        });
-      }
+      Drupal.behaviors.ms_gigya.updateGigyaSharebar(initialPageLoad, settings);
     },
 
     // setVideoHeight
@@ -161,15 +145,15 @@
           ad_300x250_1.attr('id', 'ad_300x250').empty();
         }
         if (ad_728x90.length == 1 && ad_728x90.attr('id') != 'ad_728x90_1') {
-usa_debug('ad_728x90: ', ad_728x90);
-//          if (ad_728x90.hasAttribute('class')) {
-            ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
+//usa_debug('ad_728x90: ', ad_728x90);
 /*
+          if (ad_728x90.hasAttribute('class')) {
+            ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
           }
           else {
-            ad_728x90.attr('data-class', defaultDataClass).addClass('ad_728x90').attr('id', 'ad_728x90_1');
-          }
 */
+            ad_728x90.attr('data-class', defaultDataClass).addClass('ad_728x90').attr('id', 'ad_728x90_1');
+//          }
         }
 
         $('#videos .full-pane').addClass('full-desc');
@@ -180,12 +164,14 @@ usa_debug('ad_728x90: ', ad_728x90);
         ad_300x60_1.hide();
 
         if (ad_728x90.length == 1 && ad_728x90.attr('id') == 'ad_728x90_1') {
+/*
           if (ad_728x90.hasAttribute('data-class')) {
             ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
           }
           else {
+*/
             ad_728x90.attr('class', '').attr('class', defaultDataClass).attr('id', '').empty();
-          }
+//          }
         }
         if ($('#videos').find(ad_300x250)) {
           ad_300x250.closest('li.ad').show();
@@ -243,10 +229,12 @@ usa_debug('ad_728x90: ', ad_728x90);
     },
 
     // click Thumbnail
-    clickThumbnail: function (elem) {
+    clickThumbnail: function (elem, autoplay) {
       var refreshAdsOmniture = 0,
+          autoplay = autoplay || false,
           videoContainer = $('#video-container'),
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
+usa_debug('clickThumbnail(elem, ' + autoplay + ')');
 
       if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
         $('#thumbnail-list .item-list ul li.thumbnail').removeClass('active');
@@ -299,8 +287,11 @@ usa_debug('ad_728x90: ', ad_728x90);
     },
 
     // Get Thumbnail List
-    getThumbnailList: function (url, offset, $toggler, categoryName, filterClass) {
+    getThumbnailList: function (url, offset, $toggler, categoryName, filterClass, seasonNum, epNum, autoplay) {
       filterClass = filterClass || null;
+      seasonNum = seasonNum || null;
+      epNum = epNum || null;
+      autoplay = autoplay || false;
       $.ajax({
         type: 'GET',
         url: url,
@@ -311,7 +302,7 @@ usa_debug('ad_728x90: ', ad_728x90);
 
         var videoList = data.videos,
             infoMore = data.info.more,
-            adBlock = $('#thumbnail-list .thumbnail.ad'),
+            $adBlock = $('#thumbnail-list .thumbnail.ad'),
             $itemList = $('#thumbnail-list .view-content .item-list ul');
 
 //usa_debug('========= getThumbnailList -- filterClass: ' + filterClass + '\n$itemList: ');
@@ -325,51 +316,59 @@ usa_debug('ad_728x90: ', ad_728x90);
             $('#thumbnail-list .thumbnail').last().after(videoList);
           }
 
-          $(this).animate({'opacity': 1}, 500, function(){
-            var thumbnail = $('#thumbnail-list .thumbnail');
+          // add css selectors for the must see moments (msm) videos
+          // and then display only the selected msm videos
+          if (filterClass == 'must-see-moments' || categoryName == 'Must See Moments') {
+            Drupal.behaviors.ms_site.addMSMVideoInfo(seasonNum, epNum);
+          }
+          else {
+            $(this).animate({'opacity': 1}, 500, function(){
+usa_debug('getThumbnailList() -- $this: ', $(this));
+              var $thumbnails = $('#thumbnail-list .thumbnail');
 
-            if (!thumbnail.hasClass('ad')) {
-              if (thumbnail.eq(1)) {
-                thumbnail.eq(1).after(adBlock);
-              } else {
-                thumbnail.last().after(adBlock);
+              if (!$thumbnails.hasClass('ad')) {
+                if ($thumbnails.eq(1)) {
+                  $thumbnails.eq(1).after($adBlock);
+                } else {
+                  $thumbnails.last().after($adBlock);
+                }
+                $adBlock.addClass('added').hide();
               }
-              adBlock.addClass('added').hide();
-            }
 
-            if (infoMore.toString() === 'false') {
-              if (thumbnail.length < 11) {
-                $('#thumbnail-list .expandable-toggle-wrap').removeClass('active');
-                $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler');
+              if (infoMore.toString() === 'false') {
+                if ($thumbnails.length < 11) {
+                  $('#thumbnail-list .expandable-toggle-wrap').removeClass('active');
+                  $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler');
+                }
+                else {
+                  $('#thumbnail-list .expandable-toggle-wrap li').addClass('less').text('close');
+                  $('#thumbnail-list .expandable-toggle-wrap').removeClass('active').addClass('spoiler');
+                  $('#thumbnail-list').addClass('expanded');
+                }
               }
               else {
-                $('#thumbnail-list .expandable-toggle-wrap li').addClass('less').text('close');
-                $('#thumbnail-list .expandable-toggle-wrap').removeClass('active').addClass('spoiler');
-                $('#thumbnail-list').addClass('expanded');
+                $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler').addClass('active');
+                $('#thumbnail-list').removeClass('expanded');
               }
-            }
-            else {
-              $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler').addClass('active');
-              $('#thumbnail-list').removeClass('expanded');
-            }
 
-            if ($toggler) {
-              $toggler.removeClass('processed');
-            }
+              if ($toggler) {
+                $toggler.removeClass('processed');
+              }
 
-            thumbnail.unbind('click');
-            thumbnail.bind('click', function (e) {
-              e.preventDefault();
-              var elem = $(this);
-              tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
-              Drupal.behaviors.ms_videos.clickThumbnail(elem);
+              $thumbnails.unbind('click');
+              $thumbnails.bind('click', function (e) {
+                e.preventDefault();
+                var elem = $(this);
+                tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
+                Drupal.behaviors.ms_videos.clickThumbnail(elem, true);
+              });
+              Drupal.behaviors.ms_videos.setActiveThumbnail();
+              if (typeof Waypoint != 'undefined') {
+                //usa_debug('======== refreshing all waypoints');
+                Waypoint.refreshAll();
+              }
             });
-            Drupal.behaviors.ms_videos.setActiveThumbnail();
-            if (typeof Waypoint != 'undefined') {
-              //usa_debug('======== refreshing all waypoints');
-              Waypoint.refreshAll();
-            }
-          });
+          }
         });
       })
       .fail(function(jqXHR, textStatus) {
@@ -381,7 +380,44 @@ usa_debug('ad_728x90: ', ad_728x90);
     setActiveThumbnail: function() {
       var currentVideoUrl = $('#video-container').attr('data-video-url');
         $('#thumbnail-list').find("li[data-video-url='" + currentVideoUrl + "']").addClass('active');
+    },
 
+    // processSubMenuClick
+    processSubMenuClick: function($this) {
+      var $filterChildItems = $('#video-filter .filter-child-item'),
+          $filterMenu = $('#video-filter .filter-menu');
+
+      if ($this.hasClass('active')) {
+        return false;
+      }
+      else {
+        $filterChildItems.removeClass('active');
+        $filterMenu.find('.filter-item').removeClass('active');
+        $this.addClass('active');
+        $this.parents('li.filter-item').addClass('active hide');
+
+        var categoryName = $('#video-filter .filter-item.active').attr('data-filter-name'),
+            filterClass = $('#video-filter .filter-item.active').attr('data_filter_class');
+            offset = 0,
+            seasonNum = $this.attr('data-season-num'),
+            epNum = $this.attr('data-episode-num'),
+            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;
+usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum: ' + seasonNum + ', epNum: ' + epNum);
+        $('#thumbnail-list .expandable-toggle li').text('more').removeClass('less').addClass('more');
+        $('#thumbnail-list').removeClass('expanded');
+
+        // if user has already selected the must see moments (msm) filter
+        // then show the correct season and episode videos
+        if (categoryName == 'Must See Moments' && $('#videos ul.must-see-moments').length > 0) {
+          Drupal.behaviors.ms_site.showMSMVideosBySeasonNEpisode(seasonNum, epNum, false);
+        }
+        else {
+          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName, filterClass, seasonNum, epNum, false);
+        }
+      }
+
+      // remove 'hide' class from parent so that the next video filter hover works
+      $this.parents('li.filter-item').removeClass('hide');
     },
 
     attach: function (context, settings) {
@@ -391,8 +427,8 @@ usa_debug('ad_728x90: ', ad_728x90);
       $('#thumbnail-list .item-list ul li.thumbnail').click(function (e) {
         e.preventDefault();
         var elem = $(this);
-        self.clickThumbnail(elem);
-        self.updateGigyaSharebar(0);
+        self.clickThumbnail(elem, true);
+//        self.updateGigyaSharebar(0);
       });
 
       // filter click toggles
@@ -406,7 +442,7 @@ usa_debug('ad_728x90: ', ad_728x90);
         }
       });
 
-// @TODO: DV - DO WE NEED THE FOLLOWING?
+      // close video filter menus
       $('body').live('click', function (e) {
         if ($(e.target).parents().filter('#video-filter').length != 1){
           if ($('#video-filter .filter-label').hasClass('open')) {
@@ -418,15 +454,18 @@ usa_debug('ad_728x90: ', ad_728x90);
 
       // video filter clicks
       $('#video-filter li.filter-item').click(function () {
-        var filterItem = $('#video-filter li.filter-item'),
-            filterMenu = $('#video-filter .filter-menu'),
-            filterClass = $(this).attr('data_filter_class');
+        var $filterItems = $('#video-filter li.filter-item'),
+            $filterMenu = $('#video-filter .filter-menu'),
+            filterClass = $(this).attr('data_filter_class'),
+            anchor = (filterClass == 'must-see-moments') ? 'must-see-moments' : 'videos';
 
         if ($(this).hasClass('active')) {
           return false;
         }
         else {
-          filterItem.removeClass('active');
+          Drupal.behaviors.ms_global.setActiveMenuItem(anchor);
+
+          $filterItems.removeClass('active');
           $(this).addClass('active');
           $('#video-filter .filter-child-item').removeClass('active');
 
@@ -438,10 +477,15 @@ usa_debug('ad_728x90: ', ad_728x90);
             url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
           }
           else {
-            var season_num = childItems.last().attr('data-season-num');
-
-            childItems.last().addClass('active');
-            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;;
+            if (categoryName == 'Full episodes') {
+              var seasonNum = childItems.last().attr('data-season-num');
+              childItems.last().addClass('active');
+            }
+            else {
+              var seasonNum = childItems.first().attr('data-season-num');
+              childItems.first().addClass('active');
+            }
+            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;
           }
 
           $('#thumbnail-list .expandable-toggle li').text('more');
@@ -452,33 +496,7 @@ usa_debug('ad_728x90: ', ad_728x90);
         }
       });
 
-      // video filter sub-item clicks
-      $('#video-filter .filter-child-item').click(function () {
-        var filterItems = $('#video-filter .filter-child-item'),
-            filterMenu = $('#video-filter .filter-menu');
-
-        if ($(this).hasClass('active')) {
-          return false;
-        }
-        else {
-          filterItems.removeClass('active');
-          filterMenu.find('.filter-item').removeClass('active');
-          $(this).addClass('active');
-          $(this).parents('li.filter-item').addClass('active');
-
-          var categoryName = $('#video-filter .filter-item.active').attr('data-filter-name'),
-              offset = 0,
-              season_num = $(this).attr('data-season-num'),
-              url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;
-
-          $('#thumbnail-list .expandable-toggle li').text('more').removeClass('less').addClass('more');
-          $('#thumbnail-list').removeClass('expanded');
-
-          self.getThumbnailList(url, offset, null, categoryName);
-        }
-      });
-
-      // video items toggler
+      // video items more/less toggler
       var thumbnailList = $('#thumbnail-list');
       thumbnailList.each(function () {
         var $self = $(this),
@@ -562,6 +580,27 @@ usa_debug('ad_728x90: ', ad_728x90);
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
         $('.featured-asset').removeClass('tve-overlay');
       });
+
+      //hot-fix for 1441 with hard-coded first season
+      var parseUrl = window.location.pathname.split('/');
+      var activeItem = (parseUrl.hasOwnProperty(4)) ? parseUrl[4] : '';
+      if(activeItem != '') {
+        var itemFid = $('#video-item-list-wrapper li[data-video-url="' +activeItem +'"]').attr('data-fid');
+        var itemEpisode = 1;
+        var findEpisode = false;
+        for (var i in msmVideosByEpisode[1]) {
+          if(!findEpisode){
+            for (var j = 0; j < msmVideosByEpisode[1][i]['fids'].length; j++) {
+              if (msmVideosByEpisode[1][i]['fids'][j] == itemFid) {
+                itemEpisode = i;
+                findEpisode = true;
+                break;
+              }
+            }
+          }
+        }
+        Drupal.behaviors.ms_site.addMSMVideoInfo(1, itemEpisode);
+      }
     }
   }
 })(jQuery);

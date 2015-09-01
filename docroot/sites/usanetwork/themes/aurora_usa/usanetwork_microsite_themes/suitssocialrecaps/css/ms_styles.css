@@ -187,7 +187,8 @@ header .primary-nav #logo {
   width: 100%;
   height: auto;
   padding-top: 12.9%;
-  background-image: url("../images/suits_socialrecap_header.jpg");
+/*  background-image: url("../images/suits_socialrecap_header.jpg"); */
+  background-image: url("../images/suits_socialrecap_header_nolexus.jpg");
   background-position: center top;
   background-repeat: no-repeat;
   background-color: transparent;

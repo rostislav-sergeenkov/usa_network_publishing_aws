@@ -121,14 +121,11 @@ s.contextData["tve_minute"]|AdobeTracking.tve_minute';
  */
 function usanetwork_dtm_page_alter(&$page) {
   //take all already created variables
-//TODO: Move this to file
-//  $context = _sitecatalyst_get_token_context();
-//  $codesnippet = token_replace(variable_get('sitecatalyst_codesnippet', ''), $context, array(
-//      'clear' => TRUE,
-//      'sanitize' => TRUE,
-//    )) . "\n";
-//
-//  $extra_variables_formatted = _usanetwork_dtm_migrate_text($codesnippet);
+  $context = _sitecatalyst_get_token_context();
+  $codesnippet = token_replace(variable_get('usanetwork_dtm_codesnippet', ''), $context, array(
+      'clear' => TRUE,
+      'sanitize' => TRUE,
+    )) . "\n";
 
   if ($sitecatalyst_hooked_vars = module_invoke_all('sitecatalyst_variables', $page)) {
     $migrated_vars = _usanetwork_dtm_migrate_vars($sitecatalyst_hooked_vars['variables']);
@@ -136,8 +133,8 @@ function usanetwork_dtm_page_alter(&$page) {
   }
 
   //TODO: may do alter?
-
   $object = "var AdobeTracking = new Object();\n";
+
   $start = "<script type=\"text/javascript\">";
   $end = "</script>\n";
 
@@ -148,16 +145,13 @@ function usanetwork_dtm_page_alter(&$page) {
     ),
     'variables'=> array(
       '#type' => 'markup',
-      '#markup' => $object . $variables,
+      '#markup' => $object . $codesnippet. $variables,
     ),
     'footer'=> array(
       '#type' => 'markup',
       '#markup' => $end,
     ),
   );
-
-  //TODO: what will do with this custom code?
-  drupal_add_js(drupal_get_path('module', 'usanetwork_dtm') . '/js/usanetwork_dtm.js', array('scope' => 'footer', 'every_page' => TRUE, 'cache' => FALSE));
 
   if (isset($page['page_bottom']['sitecatalyst'])) {
     unset($page['page_bottom']['sitecatalyst']);

@@ -91,7 +91,6 @@
       Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryImageNav(slideNum);
       Drupal.behaviors.micrositeGalleriesBxSliders.updateGigyaSharebarOmniture(initialPageLoad);
       Drupal.behaviors.micrositeGalleriesBxSliders.setDownloadImageLink();
-      $('#galleries #gallery-content ul.bxslider').removeClass('noSwipe');
     },
 
     showHideLoader: function() {
@@ -345,46 +344,33 @@
                 var galleryNavHeight = parseInt($('#galleries #gallery-content .bxslider img:first').height());
                 minNavSlides = Math.round(galleryNavHeight / (slideHeight + slideMargin));
 
-                if ($('html').hasClass('touch')) {
-                  $('.bxslider').swipe({
-                    excludedElements: "button, input, select, textarea, .noSwipe",
-                    allowPageScroll: "vertical",
-                    threshold: 50,
-                    swipeRight: function () {
-usa_debug('swipeRight()');
-                      var $slideList = $('#galleries #gallery-content ul.bxslider');
-                      if ($slideList.hasClass('noSwipe')){
-                        return;
-                      }
-                      else {
-                        $slideList.addClass('noSwipe');
-                        var $activeSlide = $slideList.find('li.active2'),
-                            prevSlideNum = (parseInt($activeSlide.attr('data-slide-index')) - 1);
-                        if (prevSlideNum > -1) {
-                          $activeSlide.removeClass('active2').prev().addClass('active2');
-                          self.updateImageInfo(prevSlideNum);
-                        }
-                      }
-                    },
-                    swipeLeft: function () {
-usa_debug('swipeLeft()');
-                      var $slideList = $('#galleries #gallery-content ul.bxslider');
-                      if ($slideList.hasClass('noSwipe')){
-                        return;
-                      }
-                      else {
-                        $slideList.addClass('noSwipe');
-                        var totalNumSlides = $slideList.find('li').length,
-                            $activeSlide = $slideList.find('li.active2'),
-                            nextSlideNum = (parseInt($activeSlide.attr('data-slide-index')) + 1);
-                        if (nextSlideNum < totalNumSlides) {
-                          $activeSlide.removeClass('active2').next().addClass('active2');
-                          self.updateImageInfo(nextSlideNum);
-                        }
+                $('.bxslider').swipe({
+                  excludedElements: "button, input, select, textarea, .noSwipe",
+                  allowPageScroll: "vertical",
+                  threshold: 50,
+                  swipeRight: function () {
+                    if ($('html').hasClass('touch')){
+                      var $activeSlide = $('#galleries #gallery-content ul.bxslider li.active2'),
+                          slideNum = (parseInt($activeSlide.attr('data-slide-index')) - 1);
+                      if (slideNum > -1) {
+                        $activeSlide.removeClass('active2').prev().addClass('active2');
+                        self.updateImageInfo(slideNum);
                       }
                     }
-                  });
-                }
+                  },
+                  swipeLeft: function () {
+                    if ($('html').hasClass('touch')){
+                      var totalNumSlides = $('#galleries #gallery-content ul.bxslider li').length,
+                          $activeSlide = $('#galleries #gallery-content ul.bxslider li.active2'),
+                          slideNum = (parseInt($activeSlide.attr('data-slide-index')) + 1);
+                      if (slideNum < totalNumSlides) {
+                        $activeSlide.removeClass('active2').next().addClass('active2');
+                        self.updateImageInfo(slideNum);
+                      }
+                    }
+
+                  }
+                });
 
                 // initialize navigation/thumbnail slider
                 $('#bx-pager').bxSlider({

@@ -1098,8 +1098,8 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
     $theme_variables = array(
       'main_url' => url('<front>'),
       'authbar' => isset($authbar) ? $authbar : NULL,
-      'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',
-      'show_name' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
+      'show_url' => isset($field) ? (!empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '') : '',
+      'show_name' => isset($field) ? (!empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '') : '',
       'catchall_name' => $node->title,
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
       'details' => array(

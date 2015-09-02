@@ -262,6 +262,13 @@
               p {
                 margin: 0;
               }
+              a{
+                color: #ffffff;
+                &:hover {
+                  color: #ffffff;
+                  text-decoration: underline;
+                }
+              }
             }
             .slider-counter {
               bottom: 5px;

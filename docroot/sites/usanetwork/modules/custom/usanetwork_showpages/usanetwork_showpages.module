@@ -818,6 +818,7 @@ function usanetwork_showpages_filter_page($node, $path_part) {
     $path_exist = drupal_lookup_path('alias', $path) || drupal_lookup_path('source', $path);
     if (!$path_exist) {    
       drupal_not_found();
+      drupal_exit();
     } else {
       $url = drupal_lookup_path('alias', $path);
       drupal_goto($url);

@@ -370,12 +370,6 @@ section > h2 {
   }
 }
 
-@media (max-width: 736px) {
-  #microsite #home .ad-leaderboard {
-    margin-left: calc(-50% - 150px);
-  }
-}
-
 @media (max-width: 722px) {
   .featured-asset .tve-help .tve-download,
   .featured-asset .tve-help .tve-msg {
@@ -413,5 +407,12 @@ section > h2 {
   .usanetwork-quiz-result .result-title {
     font-size: 1.7em;
     line-height: 1em;
+  }
+}
+
+/* BEGIN MOBILE DEVICE QUERIES */
+@media (max-device-width: 736px) {
+  #microsite #home .ad-leaderboard {
+    margin-left: calc(-50% - 150px);
   }
 }

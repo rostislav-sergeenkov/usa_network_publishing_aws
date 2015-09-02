@@ -26,7 +26,6 @@ dependencies[] = usanetwork_tv_shows
 dependencies[] = usanetwork_widget
 dependencies[] = views
 dependencies[] = views_load_more
-features[context][] = usa_global_mpx_videos
 features[context][] = usa_mpx_videos_live
 features[context][] = usa_show_mpx_videos
 features[ctools][] = context:context:3

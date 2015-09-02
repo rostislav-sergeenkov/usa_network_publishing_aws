@@ -29,6 +29,9 @@
   position: relative;
   top: 5px; /* Needed for the home waypoint to trigger! */
 }
+#home.section {
+  padding-top: 1000px;
+}
 #home-wrapper {
   width: 100%;
 }
@@ -42,7 +45,7 @@
   margin: 0 auto 1.5%;
 }
 #home #home-logo {
-  margin-bottom: 160px!important;
+  margin-bottom: 196px !important;
   width: 450px;
 }
 #home #home-logo h1,
@@ -119,6 +122,26 @@
 #home #home-nav li:nth-child(3n + 1) {
   clear: left;
 }
+#home #home-nav #finale-packet {
+  width: 60%;
+  max-width: 442px;
+  display: block;
+  margin: 2% auto;
+  clear: left;
+  cursor: pointer;
+}
+#home #home-nav #finale-packet #finale-packet-image {
+  width: 100%;
+  padding-top: 23.3%;
+  background-image: url("../images/btn_finaleviewingpartypack.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  clear: left;
+}
+#home #home-nav #finale-packet span {
+  display: none;
+}
 .home-button-text {
   color: #FFF;
   font-size: 1em;
@@ -193,20 +216,19 @@
 
 
 /* ************** BEGIN MEDIA QUERIES ************* */
-
 @media (max-width: 1024px) {
   #home {
     height: auto;
   }
   #home.section {
     background-position: center top;
-    padding-top: calc(80vw + 90px);
+    padding-top: calc(90vw + 170px);
   }
   #home-wrapper {
     padding-top: 0;
   }
   #home #home-logo {
-    margin-bottom: 15vw!important;
+    margin-bottom: 25vw!important;
     width: 40%;
   }
   #home #home-sponsored {
@@ -247,10 +269,10 @@
 
 @media (max-width: 640px) {
   #home.section {
-    padding-top: calc(115vw + 90px);
+    padding-top: calc(128vw + 90px);
   }
   #home #home-logo {
-    margin-bottom: 28vw!important;
+    margin-bottom: 38vw!important;
   }
   #home #home-countdown .circle {
     height: 56px;
@@ -272,6 +294,9 @@
     width: 46%;
     margin: 0 2% 4vw;
   }
+  #home #home-nav #finale-packet {
+    width: 90%;
+  }
   #home #home-usa-logo {
     width: 38px;
     height: auto;
@@ -283,13 +308,13 @@
     clear: left;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   #home.section {
-    padding-top: calc(175vw + 90px);
+    padding-top: calc(204vw + 90px);
   }
   #home #home-logo {
     width: 48%;
-    margin-top: 4%!important;
+    margin-top: 20%!important;
     margin-bottom: 47vw!important;
   }
   #home #home-countdown {

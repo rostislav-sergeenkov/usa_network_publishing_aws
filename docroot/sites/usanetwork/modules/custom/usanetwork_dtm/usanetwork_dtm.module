@@ -83,7 +83,6 @@ s.prop2|AdobeTracking.contentGroup
 s.prop3|AdobeTracking.contentType
 s.prop4|AdobeTracking.showSiteFeature
 s.prop5|AdobeTracking.showSiteFeatureII
-s.prop6|AdobeTracking.test
 s.prop8|AdobeTracking.division
 s.prop9|AdobeTracking.businessUnit
 s.prop10|AdobeTracking.showSite
@@ -166,7 +165,9 @@ function _usanetwork_dtm_migrate_vars($atm_vars) {
     if (isset($migration_array[$key])) {
       $dtm_vars[$migration_array[$key]] = $value;
     } else {
-      $dtm_vars[$key] = $value;
+      if (strpos($key, 's.') !== 0) {
+        $dtm_vars[$key] = $value;
+      }
     }
   }
 

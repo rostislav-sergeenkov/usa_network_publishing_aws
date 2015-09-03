@@ -4,3 +4,48 @@
  * @file
  * Install, update and uninstall functions for the usanetwork_post module.
  */
+
+/**
+ * Update meta tags og:image for all consumptionator posts to [node:field_usa_og_image] token.
+ */
+function usanetwork_consumptionator_post_update_7001() {
+  $entity_type = 'node';
+  $bundle = 'consumpt_post';
+
+  // Query the selected entity table.
+  $entity_info = entity_get_info($entity_type);
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', $entity_type)
+    ->propertyOrderBy($entity_info['entity keys']['id']);
+
+  if ($entity_type != 'user') {
+    /**
+     * Entities which do not define a bundle such as User fail returning no results.
+     * @see http://drupal.org/node/1054168#comment-5266208
+     */
+    $query->entityCondition('bundle', $bundle);
+  }
+
+  $result = $query->execute();
+  $entity_ids = !empty($result[$entity_type]) ? array_keys($result[$entity_type]) : array();
+  foreach ($entity_ids as $entity_id) {
+    $metatags = metatag_metatags_load($entity_type, $entity_id);
+    if (!empty($metatags)) {
+      foreach ($metatags as $revision_id => $metatags_r) {
+        $data = $metatags_r[LANGUAGE_NONE];
+        $og_image_token = $data['og:image']['value'];
+        if (!empty($data['og:image']) && empty($og_image_token)) {
+          $data['og:image']['value'] = '[node:field_usa_og_image]';
+          db_update('metatag')
+            ->fields(array(
+              'data' => serialize($data),
+            ))
+            ->condition('entity_type', $entity_type)
+            ->condition('revision_id', $revision_id)
+            ->execute();
+        }
+      }
+      metatag_metatags_cache_clear($entity_type, $entity_id);
+    }
+  }
+}

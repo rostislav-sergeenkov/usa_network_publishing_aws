@@ -44,6 +44,7 @@ function usanetwork_social_meter_form_alter(&$form, &$form_state, $form_id) {
     'catchall_page_node_form',
     'file_entity_edit',
     'tv_show_node_form',
+    'consumpt_post_node_form',
   );
   if (in_array($form_id, $form_ids_to_alter)) {
     if (isset($form['field_social_hashtag'])) {

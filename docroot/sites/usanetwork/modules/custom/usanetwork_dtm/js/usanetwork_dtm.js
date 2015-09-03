@@ -4,19 +4,19 @@ if (typeof AdobeTracking != 'undefined') {
   if (typeof(document.documentElement.clientWidth) != 'undefined') {
     usa_cw = document.documentElement.clientWidth;
     if (usa_cw <= 644) {
-      AdobeTracking.searchKW8 = usa_deviceInfo.mobileDevice ? 'Smartphone Portrait' : 'Desktop';
+      AdobeTracking.rwdBreakpoint = usa_deviceInfo.mobileDevice ? 'Smartphone Portrait' : 'Desktop';
     } else if (usa_cw >= 645 && usa_cw <= 959) {
-      AdobeTracking.searchKW8 = usa_deviceInfo.mobileDevice ? 'Tablet Portrait' : 'Desktop';
+      AdobeTracking.rwdBreakpoint = usa_deviceInfo.mobileDevice ? 'Tablet Portrait' : 'Desktop';
     } else if (usa_cw >= 960 && usa_cw <= 1274) {
-      AdobeTracking.searchKW8 = usa_deviceInfo.mobileDevice ? 'Tablet Landscape' : 'Desktop';
+      AdobeTracking.rwdBreakpoint = usa_deviceInfo.mobileDevice ? 'Tablet Landscape' : 'Desktop';
     } else if (usa_cw >= 1275) {
-      AdobeTracking.searchKW8 = 'Desktop Large';
+      AdobeTracking.rwdBreakpoint = 'Desktop Large';
     }
   }
   // Desktop Large | Desktop | Tablet Landscape | Tablet Portrait | Smartphone Portrait
 
   // set screen height
-  AdobeTracking.searchKW9 = typeof(document.documentElement.clientHeight) != 'undefined' ? document.documentElement.clientHeight : '';
+  AdobeTracking.screenHeight = typeof(document.documentElement.clientHeight) != 'undefined' ? document.documentElement.clientHeight : '';
 
   // set screen width
   AdobeTracking.screenWidth = typeof(document.documentElement.clientWidth) != 'undefined' ? document.documentElement.clientWidth : '';

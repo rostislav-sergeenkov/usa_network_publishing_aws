@@ -847,7 +847,7 @@ function usanetwork_social_meter_field_default_field_instances() {
     ),
   );
 
-// Exported field_instance: 'node-consumpt_post-field_social_enable'
+  // Exported field_instance: 'node-consumpt_post-field_social_enable'
   $field_instances['node-consumpt_post-field_social_enable'] = array(
     'bundle' => 'consumpt_post',
     'default_value' => array(
@@ -866,10 +866,9 @@ function usanetwork_social_meter_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 43,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -933,10 +932,9 @@ function usanetwork_social_meter_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 44,
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1009,10 +1007,9 @@ function usanetwork_social_meter_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 45,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',

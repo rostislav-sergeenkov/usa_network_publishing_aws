@@ -127,7 +127,7 @@ function usanetwork_consumptionator_post_block_info() {
 
   $blocks['usanetwork_cons_post_main'] = array(
     'info' => t('Blog Consumptionator: Main Block'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   $blocks['usa_landing_blog_post_list_block'] = array(

@@ -9,18 +9,18 @@
   _sf_async_config.uid = 61038;
   _sf_async_config.domain = chartbeat_domain;
   _sf_async_config.useCanonical = true;
-  if (s != 'undefined') {
-    if (typeof s.prop10 != 'undefined') {
+  if (typeof s == 'object') {
+    if (typeof s.prop10 !== 'undefined') {
       _sf_async_config.sections = s.prop10;
     }
-    if (typeof s.prop3 != 'undefined') {
+    if (typeof s.prop3 !== 'undefined') {
       _sf_async_config.type = s.prop3;
     }
-  } else if (AdobeTracking != 'undefined') {
-    if (typeof AdobeTracking.showSite != 'undefined') {
+  } else if (AdobeTracking !== 'undefined') {
+    if (typeof AdobeTracking.showSite !== 'undefined') {
       _sf_async_config.sections = AdobeTracking.showSite;
     }
-    if (typeof AdobeTracking.contentType != 'undefined') {
+    if (typeof AdobeTracking.contentType !== 'undefined') {
       _sf_async_config.type = AdobeTracking.contentType;
     }
   }

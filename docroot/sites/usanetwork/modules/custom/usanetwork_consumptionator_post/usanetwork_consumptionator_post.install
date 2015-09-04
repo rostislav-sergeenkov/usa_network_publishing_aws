@@ -34,7 +34,7 @@ function usanetwork_consumptionator_post_update_7001() {
       foreach ($metatags as $revision_id => $metatags_r) {
         $data = $metatags_r[LANGUAGE_NONE];
         $og_image_token = $data['og:image']['value'];
-        if (!empty($data['og:image']) && empty($og_image_token)) {
+        if (isset($data['og:image']) && empty($og_image_token)) {
           $data['og:image']['value'] = '[node:field_usa_og_image]';
           db_update('metatag')
             ->fields(array(

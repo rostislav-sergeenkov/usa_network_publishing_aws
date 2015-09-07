@@ -146,7 +146,7 @@ function usanetwork_dtm_page_alter(&$page) {
     ),
     'variables'=> array(
       '#type' => 'markup',
-      '#markup' => $object . $codesnippet . $s_object . $variables,
+      '#markup' => $s_object . $object . $codesnippet . $variables,
     ),
     'footer'=> array(
       '#type' => 'markup',

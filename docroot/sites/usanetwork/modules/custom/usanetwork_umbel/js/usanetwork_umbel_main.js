@@ -42,7 +42,7 @@
           }
         } else {
           if (typeof AdobeTracking.showSiteFeature !== 'undefined') {
-            umbelParameter1 = AdobeTracking.showSiteFeature;
+            umbelParameter2 = AdobeTracking.showSiteFeature;
           }
         }
 
@@ -54,7 +54,7 @@
           }
         } else {
           if (typeof AdobeTracking.pageName !== 'undefined') {
-            umbelParameter1 = AdobeTracking.pageName;
+            umbelParameter3 = AdobeTracking.pageName;
           }
         }
 

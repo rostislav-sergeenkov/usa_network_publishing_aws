@@ -28,6 +28,7 @@ function usanetwork_dtm_init() {
   } else {
     drupal_add_js('//assets.adobedtm.com/5ed6cf59538a2045d9fe4799a3f70da302c83d5a/satelliteLib-24e397569ca85a58d3963043838c6696e85c5e9a-staging.js', array('scope' => 'header', 'every_page' => TRUE, 'cache' => FALSE));
   }
+  drupal_add_js(drupal_get_path('module', 'focal_point') . '/js/usanetwork_dtm_migration.js', array('scope' => 'footer', 'every_page' => TRUE, 'preprocess' => FALSE, 'weight' => 19));
   drupal_add_js('_satellite.pageBottom();', array('type' => 'inline', 'scope' => 'footer', 'every_page' => TRUE, 'preprocess' => FALSE, 'weight' => 20));
 }
 
@@ -132,6 +133,7 @@ function usanetwork_dtm_page_alter(&$page) {
   }
 
   //TODO: may do alter?
+  $s_object = "var s = new Object();\n";
   $object = "var AdobeTracking = new Object();\n";
 
   $start = "<script type=\"text/javascript\">";
@@ -144,13 +146,19 @@ function usanetwork_dtm_page_alter(&$page) {
     ),
     'variables'=> array(
       '#type' => 'markup',
-      '#markup' => $object . $codesnippet. $variables,
+      '#markup' => $object . $codesnippet . $s_object . $variables,
     ),
     'footer'=> array(
       '#type' => 'markup',
       '#markup' => $end,
     ),
   );
+
+
+  $usa_dart_js_settings = array();
+  $migration_array = usanetwork_dtm_get_midration_array();
+  $json_migration_array['USADTMMigrationArray'] = drupal_json_encode($migration_array);
+  drupal_add_js($json_migration_array, 'setting');
 
   if (isset($page['page_bottom']['sitecatalyst'])) {
     unset($page['page_bottom']['sitecatalyst']);

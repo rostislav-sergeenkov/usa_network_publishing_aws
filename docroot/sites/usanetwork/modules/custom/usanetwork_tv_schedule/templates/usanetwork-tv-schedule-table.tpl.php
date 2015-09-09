@@ -28,7 +28,7 @@
           <ul class="filter-menu">
             <?php foreach ($filter['show_name']['list'] as $node_nid => $node_title): ?>
               <li class="menu-item">
-                <a class="<?php print ($filter['show_name']['selected']['nid'] == $node_nid ) ? 'active' : ''; ?>" href="<?php print url('node/' . $node_nid); ?>" data-nid="<?php print $node_nid; ?>"><?php print $node_title; ?></a>
+                <a class="<?php print ($filter['show_name']['selected']['nid'] == $node_nid ) ? 'active' : ''; ?>" href="javascript:void(0)" data-nid="<?php print $node_nid; ?>"><?php print $node_title; ?></a>
               </li>
             <?php endforeach; ?>
           </ul>

@@ -6,7 +6,6 @@
  */
 include_once 'usanetwork_media_gallery.features.inc';
 
-define('USA_GALLERY_RELATED_CONTENT_ITEMS', 6);
 define('USA_GALLERY_OTHER_TYPE_MACHINE_NAME', '0');
 define('USA_GALLERY_OTHER_TYPE_LABEL', t('Other'));
 define('USA_GALLERY_ALL_GALLERIES_LABEL', t('All galleries'));
@@ -18,13 +17,6 @@ define('USA_GALLERY_ALL_GALLERIES', -1);
 function usanetwork_media_gallery_menu() {
   $items = array();
 
-  $items['ajax/usanetwork-media-gallery/get-related/%node/%/%'] = array(
-    'title' => 'Related content',
-    'page callback' => 'usanetwork_media_gallery_get_related_content_ajax',
-    'page arguments' => array(3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
   $items['ajax/usanetwork-photos-landing/get-related/%node/%/%/%/%'] = array(
     'title' => 'Related content',
     'page callback' => 'usanetwork_media_gallery_get_photos_landing_related_content_ajax',
@@ -523,10 +515,10 @@ function _usanetwork_media_gallery_related_content_block() {
 
       $function = '_usanetwork_' . $node->type . '_cache_get_limited_related_content';
       $related_content = $function(
-        $node, $content->type, 0,
+        $node->nid, $content, 0,
         !empty($you_may_also_like_item)
-          ? USA_GALLERY_RELATED_CONTENT_ITEMS - 1
-          : USA_GALLERY_RELATED_CONTENT_ITEMS
+          ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE - 1
+          : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE
       );
 
       if (!empty($you_may_also_like_item)) {
@@ -535,7 +527,7 @@ function _usanetwork_media_gallery_related_content_block() {
 
       if (!empty($related_content)) {
         $function = 'usanetwork_media_gallery_output_' . $node->type . '_related_content';
-        return $function($node, $you_may_also_like_item, $related_content);
+        return $function($node, $you_may_also_like_item, $related_content, $content);
       }
     }
   }
@@ -547,7 +539,7 @@ function _usanetwork_media_gallery_related_content_block() {
  * @param $related_content
  * @return string
  */
-function usanetwork_media_gallery_output_tv_show_related_content($tv_show_node, $you_may_also_like_item, $related_content) {
+function usanetwork_media_gallery_output_tv_show_related_content($tv_show_node, $you_may_also_like_item, $related_content, $content) {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(array(
     'usanetwork_tv_show_nid' => $tv_show_node->nid,
@@ -562,7 +554,8 @@ function usanetwork_media_gallery_output_tv_show_related_content($tv_show_node, 
     'related_items_block' => $block_of_items,
     'load_more_link' => $load_more_link,
     'show_nid' => $tv_show_node->nid,
-    'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
+    'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
+    'node_nid' => $content->nid,
   ));
 }
 
@@ -587,7 +580,7 @@ function usanetwork_media_gallery_output_movie_related_content($movie_node, $you
     'related_items_block' => $block_of_items,
     'load_more_link' => $load_more_link,
     'show_nid' => $movie_node->nid,
-    'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
+    'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
   ));
 }
 
@@ -678,12 +671,6 @@ function _usanetwork_media_show_gallery_lmb_block() {
     }
   }
   return '';
-}
-
-
-
-function usanetwork_media_gallery_get_related_content_ajax($node, $start_from = 0, $limit = 1) {
-  return usanetwork_related_content_get_related_content_ajax('media_gallery', $node, $start_from , $limit);
 }
 
 

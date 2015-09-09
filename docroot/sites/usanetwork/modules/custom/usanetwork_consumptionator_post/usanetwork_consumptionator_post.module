@@ -176,27 +176,8 @@ function _usanetwork_consumptionator_post_related_content_block() {
     if (!empty($show_field)) {
       $tv_show_node = node_load($show_field[0]['target_id']);
 
-      $you_may_also_like_item = usanetwork_tv_show_consumptionator_get_ymal_item($tv_show_node);
-
-      $related_content = _usanetwork_tv_show_cache_get_limited_related_content(
-        $tv_show_node, $content->type, 0,
-        !empty($you_may_also_like_item)
-          ? USA_QUIZ_RELATED_CONTENT_ITEMS - 1
-          : USA_QUIZ_RELATED_CONTENT_ITEMS
-      );
-
-      if (!empty($you_may_also_like_item)) {
-        $related_content[] = $you_may_also_like_item;
-      }
-
+      $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_show_node);
       if (!empty($related_content)) {
-        drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-        drupal_add_js(array(
-          'usanetwork_tv_show_nid' => $tv_show_node->nid,
-          'usanetwork_tv_show_page_context' => 'usanetwork-post',
-          'usanetwork_tv_show_offset' => !empty($you_may_also_like_item) ? -1 : 0,
-        ), 'setting');
-
         $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
 
         $load_more_link = &drupal_static('load_more_link');

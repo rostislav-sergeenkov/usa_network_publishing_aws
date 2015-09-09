@@ -71,3 +71,28 @@ function usanetwork_related_content_is_load_more_link(&$related_content, $limit,
   }
   return $load_more_link;
 }
+
+function usanetwork_related_content_get_related_content_for_consumpt_page($consumpt_node, $tv_conten_node) {
+  $function = 'usanetwork_' . $tv_conten_node->type . '_consumptionator_get_ymal_item';
+  $you_may_also_like_item = $function($tv_conten_node);
+  $function = '_usanetwork_' . $tv_conten_node->type . '_cache_get_limited_related_content';
+  $related_content = $function(
+    $tv_conten_node, $consumpt_node->type,
+    0, !empty($you_may_also_like_item)
+    ? USA_TV_SHOW_RELATED_ITEMS_ON_PAGE
+    : USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1);
+
+  if (!empty($you_may_also_like_item)) {
+    $related_content[] = $you_may_also_like_item;
+  }
+  if (!empty($related_content)) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+    drupal_add_js(array(
+      'usanetwork_' . $tv_conten_node->type . '_nid' => $tv_conten_node->nid,
+      'usanetwork_' . $tv_conten_node->type . '_page_context' => 'consumptionator',
+      'usanetwork_' . $tv_conten_node->type . '_offset' => !empty($you_may_also_like_item) ? -1 : 0,
+    ), 'setting');
+  }
+
+  return $related_content;
+}

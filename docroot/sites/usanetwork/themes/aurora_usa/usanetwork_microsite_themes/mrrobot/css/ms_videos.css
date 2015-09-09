@@ -480,6 +480,11 @@
   margin-top: 20px;
 }
 
+#mobileVideoModal {
+  z-index: 10500;
+}
+
+
 /* BEGIN MEDIA BREAKPOINTS */
 @media (min-width: 1780px) {
   #microsite #videos .expandable-toggle-wrap {

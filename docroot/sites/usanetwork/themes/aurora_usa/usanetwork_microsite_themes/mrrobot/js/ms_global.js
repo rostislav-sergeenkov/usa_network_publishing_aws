@@ -469,14 +469,14 @@
       $('#site-nav-links li, #site-nav-links-mobile li').removeClass('active disabled');
       if (anchor == 'videos') {
         var activeVideoFilter = Drupal.behaviors.ms_global.getActiveVideoFilter();
-/*
-        if (activeVideoFilter == 'must-see-moments') {
-          anchor = 'must-see-moments';
-        }
-*/
         if (activeVideoFilter != '' && activeVideoFilter != 'full-episodes') anchor = activeVideoFilter;
       }
       $('#site-nav-links li.' + anchor + ', #site-nav-links-mobile li.' + anchor).addClass('active');
+
+      setTimeout(function(){
+        Drupal.behaviors.ms_site.setSiteNav();
+      }, 50);
+      //usa_debug('setActiveMenuItem(' + anchor + ') is done');
     },
 
     //scroll to top

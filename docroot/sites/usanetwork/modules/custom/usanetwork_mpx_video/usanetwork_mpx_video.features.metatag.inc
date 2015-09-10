@@ -29,7 +29,7 @@ function usanetwork_mpx_video_metatag_export_default() {
         ),
       ),
       'og:title' => array(
-        'value' => 'file:name]',
+        'value' => '[file:name]',
       ),
     ),
   );

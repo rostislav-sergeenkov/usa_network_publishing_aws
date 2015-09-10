@@ -59,11 +59,11 @@ function _usanetwork_catchall_related_content() {
         return '';
       }
     }
-    $node = usanetwork_core_api_get_tv_content_node($content);
-    if (!empty($node)) {
-      $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $node);
+    $tv_content = usanetwork_core_api_get_tv_content_node($content);
+    if (!empty($tv_content)) {
+      $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_content);
       if (!empty($related_content)) {
-        $function = 'usanetwork_' . $node->type . '_consumptionator_render_related_content_items_block';
+        $function = 'usanetwork_' . $tv_content->type . '_consumptionator_render_related_content_items_block';
         $block_of_items = $function($related_content);
         $load_more_link = &drupal_static('load_more_link');
         $load_more_link = TRUE;

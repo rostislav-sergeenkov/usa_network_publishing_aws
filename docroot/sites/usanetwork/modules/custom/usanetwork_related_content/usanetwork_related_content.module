@@ -104,7 +104,7 @@ function usanetwork_related_content_get_related_content_for_consumpt_page($consu
   $you_may_also_like_item = $function($tv_conten_node);
   $function = '_usanetwork_' . $tv_conten_node->type . '_cache_get_limited_related_content';
   $related_content = $function(
-    $tv_conten_node, $consumpt_node->type,
+    $tv_conten_node->nid, $consumpt_node,
     0, !empty($you_may_also_like_item)
     ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE - 1
     : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
@@ -116,7 +116,7 @@ function usanetwork_related_content_get_related_content_for_consumpt_page($consu
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
     drupal_add_js(array(
       'usanetwork_' . $tv_conten_node->type . '_nid' => $tv_conten_node->nid,
-      'usanetwork_' . $tv_conten_node->type . '_page_context' => 'consumptionator',
+      'usanetwork_' . $tv_conten_node->type . '_page_context' => 'consumptionator_node',
       'usanetwork_' . $tv_conten_node->type . '_offset' => !empty($you_may_also_like_item) ? -1 : 0,
     ), 'setting');
   }

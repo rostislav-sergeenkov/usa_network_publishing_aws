@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * usanetwork_post.features.metatag.inc
+ * usanetwork_consumptionator_post.features.metatag.inc
  */
 
 /**
@@ -10,13 +10,10 @@
 function usanetwork_consumptionator_post_metatag_export_default() {
   $config = array();
 
-  // Exported Metatag config instance: node:post.
+  // Exported Metatag config instance: node:consumpt_post.
   $config['node:consumpt_post'] = array(
     'instance' => 'node:consumpt_post',
     'config' => array(
-      'description' => array(
-        'value' => '[node:field_summary]',
-      ),
       'robots' => array(
         'value' => array(
           'index' => 0,
@@ -32,13 +29,10 @@ function usanetwork_consumptionator_post_metatag_export_default() {
         ),
       ),
       'og:description' => array(
-        'value' => '[node:field_summary]',
+        'value' => '[node:field_usa_og_description]',
       ),
       'og:image' => array(
-        'value' => '[node:field_post_cover]',
-      ),
-      'twitter:image' => array(
-        'value' => '[node:field_post_cover]',
+        'value' => '[node:field_usa_og_image]',
       ),
     ),
   );

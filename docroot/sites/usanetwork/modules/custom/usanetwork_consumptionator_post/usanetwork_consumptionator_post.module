@@ -127,7 +127,7 @@ function usanetwork_consumptionator_post_block_info() {
 
   $blocks['usanetwork_cons_post_main'] = array(
     'info' => t('Blog Consumptionator: Main Block'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   $blocks['usa_landing_blog_post_list_block'] = array(
@@ -410,7 +410,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
   $theme_variables = array(
     'items' => array(),
     'ad' => $show_ad,
-    'ad_id' => $offset / USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS,
+    'ad_id' => intval($offset / USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS),
     'title' => NULL,
     'node_nid' => $node->nid,
     'ajax_load' => $ajax_load,

@@ -190,7 +190,7 @@
   width: 47%;
   overflow: hidden;
   background-color: #000;
-  display: table;
+  display: block;
   cursor: pointer;
   text-transform: uppercase;
 }
@@ -203,6 +203,11 @@
 #microsite .block-usanetwork-mpx-video li.grid-item:hover,
 #microsite .block-usanetwork-mpx-video li.grid-item.active {
   background-color: #484848;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item .table-file {
+  display: table;
+  height: 100%;
+  width: 100%;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;

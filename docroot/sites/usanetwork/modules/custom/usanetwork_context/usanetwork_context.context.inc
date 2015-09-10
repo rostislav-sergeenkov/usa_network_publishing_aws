@@ -58,7 +58,7 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'post' => 'consumpt_post',
+        'consumpt_post' => 'consumpt_post',
       ),
       'options' => array(
         'node_form' => '0',
@@ -80,11 +80,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'usanetwork_mpx_video-usanetwork_social_content' => array(
+          'module' => 'usanetwork_mpx_video',
+          'delta' => 'usanetwork_social_content',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
         'usanetwork_consumptionator_post-usanetwork_cons_post_related' => array(
           'module' => 'usanetwork_consumptionator_post',
           'delta' => 'usanetwork_cons_post_related',
           'region' => 'content',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -94,7 +100,7 @@ function usanetwork_context_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('node');
-  $export['consumpt_post'] = $context;
+  $export['consumpt_post_node'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

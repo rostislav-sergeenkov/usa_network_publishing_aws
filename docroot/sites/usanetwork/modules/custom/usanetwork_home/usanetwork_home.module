@@ -435,7 +435,7 @@ function _usanetwork_home_featured_carousel() {
           $promo_link_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_link');
 
           if (!empty($promo_link_field[0]['url'])) {
-            $promo_link = url($promo_link_field[0]['url']);
+            $promo_link = $promo_link_field[0]['url'];
           }
         }
         else {

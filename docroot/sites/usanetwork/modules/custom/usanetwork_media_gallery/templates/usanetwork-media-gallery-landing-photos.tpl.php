@@ -28,7 +28,7 @@
         <ul class="filter-menu">
           <?php foreach ($photo_sorters as $photo_sorter): ?>
             <li class="filter-item sorter-item<?php if (!empty($photo_sorter['order'])): print ' order-' . $photo_sorter['order']; endif; ?><?php if ($photo_sorter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $photo_sorter['url']; ?>photos-landing-page-header" data-type="<?php print $photo_sorter['data_type']; ?>" class="no-ajax">
+              <a href="<?php print $photo_sorter['url']; ?>#photos-landing-page-header" data-type="<?php print $photo_sorter['data_type']; ?>" class="no-ajax">
                 <span class="title"><?php print $photo_sorter['title']; ?></span>
               </a>
             </li>

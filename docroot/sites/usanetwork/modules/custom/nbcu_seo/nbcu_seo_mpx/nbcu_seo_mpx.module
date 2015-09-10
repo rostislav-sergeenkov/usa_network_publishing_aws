@@ -55,7 +55,7 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
           $local_thumbnail_path = $wrapper->getLocalThumbnailPath();
           $url = parse_url(file_create_url($local_thumbnail_path));
           $path = $url['path'];
-          $element[$delta]['thumbnail_loc'] = url($path);   
+          $element[$delta]['thumbnail_loc'] = url($path, array('absolute' => TRUE, 'base_url' => variable_get('xmlsitemap_base_url', $GLOBALS['base_url']),));
         }
         
         $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');

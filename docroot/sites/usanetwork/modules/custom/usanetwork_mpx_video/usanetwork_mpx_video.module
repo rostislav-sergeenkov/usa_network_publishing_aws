@@ -19,7 +19,6 @@ define('USA_MPX_VIDEO_USA_ACCOUNT_ID', '2140458126');
 define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 10);
 define("USA_MPX_VIDEO_FULL_VIDEO", "Full Episodes");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
-define('USA_MPX_VIDEO_RELATED_CONTENT_ITEMS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
 define('USA_MPX_IMAGE_SIZE', '1080');
 
@@ -68,14 +67,6 @@ function usanetwork_mpx_video_menu() {
     'page arguments' => array(3),
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_mpx_video.admin.inc',
-  );
-
-  $items['ajax/usanetwork-mpx-video/get-related/%node/%/%'] = array(
-    'title' => 'Related content',
-    'page callback' => 'usanetwork_mpx_video_get_related_content_ajax',
-    'page arguments' => array(3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -2602,13 +2593,6 @@ function usanetwork_mpx_video_get_video_category($video_file) {
 }
 
 /**
- * AJAX callback for getting content items.
- */
-function usanetwork_mpx_video_get_related_content_ajax($node, $start_from = 0, $limit = 1) {
-  return usanetwork_related_content_get_related_content_ajax(NULL, $node, $start_from , $limit, TRUE);
-}
-
-/**
  * Renders Block entity of related content items.
  */
 function usanetwork_mpx_video_related_content_block() {
@@ -2631,10 +2615,10 @@ function usanetwork_mpx_video_related_content_block() {
       $you_may_also_like_item = $function($node);
       $function = '_usanetwork_' . $node->type . '_cache_get_limited_related_video_content';
       $related_content = $function(
-        $node, 0,
+        $node->nid, $content, 0,
         !empty($you_may_also_like_item)
-          ? USA_MPX_VIDEO_RELATED_CONTENT_ITEMS - 1
-          : USA_MPX_VIDEO_RELATED_CONTENT_ITEMS
+          ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE - 1
+          : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE
       );
 
       if (!empty($you_may_also_like_item)) {
@@ -2656,7 +2640,8 @@ function usanetwork_mpx_video_related_content_block() {
           'related_items_block' => $block_of_items,
           'load_more_link' => TRUE,
           'show_nid' => $node->nid,
-          'items_pre_page_limit' => USA_MPX_VIDEO_RELATED_CONTENT_ITEMS,
+          'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
+          'file_fid' => $content->fid,
         ));
       }
     }

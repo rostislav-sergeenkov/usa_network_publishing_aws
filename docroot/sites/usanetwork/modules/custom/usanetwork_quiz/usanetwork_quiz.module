@@ -7,8 +7,6 @@
 include_once 'usanetwork_quiz.features.inc';
 
 define('USANETWORK_QUIZ_DEFAULT_COLOR', '#0ab6e8');
-define('USA_QUIZ_RELATED_CONTENT_ITEMS', 6);
-
 
 /**
  * Implements hook_block_info().
@@ -147,13 +145,6 @@ function usanetwork_quiz_menu() {
     'page arguments' => array('usanetwork_quiz_config_form'),
     'access arguments' => array('access administration pages'),
     'file' => 'usanetwork_quiz.admin.inc',
-  );
-  $items['ajax/quiz-consumptionator/get-related/%node/%/%'] = array(
-    'title' => 'Related content',
-    'page callback' => '_usanetwork_quiz_get_related_content_ajax',
-    'page arguments' => array(3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -1005,13 +996,10 @@ function _usanetwork_quiz_related_content_block() {
           'related_items_block' => $block_of_items,
           'load_more_link' => $load_more_link,
           'show_nid' => $tv_content_node->nid,
-          'items_pre_page_limit' => USA_QUIZ_RELATED_CONTENT_ITEMS,
+          'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
+          'node_nid' => $content->nid,
         ));
       }
     }
   }
-}
-
-function _usanetwork_quiz_get_related_content_ajax($node, $start_from = 0, $limit = 1) {
-  return usanetwork_related_content_get_related_content_ajax('quiz', $node, $start_from , $limit);
 }

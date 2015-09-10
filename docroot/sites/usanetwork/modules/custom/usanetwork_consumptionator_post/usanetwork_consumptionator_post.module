@@ -80,13 +80,6 @@ function usanetwork_consumptionator_post_theme() {
  */
 function usanetwork_consumptionator_post_menu() {
   $items = array();
-  $items['ajax/usanetwork-post/get-related/%node/%/%'] = array(
-    'title' => 'Related content',
-    'page callback' => '_usanetwork_consumptionator_post_get_related_content_ajax',
-    'page arguments' => array(3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
 
   $items['node/%node/blog'] = array(
     'title' => 'Blog',
@@ -186,15 +179,12 @@ function _usanetwork_consumptionator_post_related_content_block() {
           'related_items_block' => $block_of_items,
           'load_more_link' => $load_more_link,
           'show_nid' => $tv_show_node->nid,
-          'items_pre_page_limit' => USA_QUIZ_RELATED_CONTENT_ITEMS,
+          'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
+          'node_nid' => $content->nid,
         ));
       }
     }
   }
-}
-
-function _usanetwork_consumptionator_post_get_related_content_ajax($tv_show_node, $start_from = 0, $limit = 1) {
-  return usanetwork_related_content_get_related_content_ajax('consumpt_post', $tv_show_node, $start_from, $limit);
 }
 
 /**

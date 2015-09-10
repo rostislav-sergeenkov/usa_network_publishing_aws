@@ -6,22 +6,6 @@
 
 include_once 'usanetwork_person.features.inc';
 
-/**
- *  Implements hook_menu().
- */
-function usanetwork_person_menu() {
-  $items = array();
-
-  $items['ajax/usanetwork-characters/get-related/%node/%/%'] = array(
-    'title' => 'Related content',
-    'page callback' => 'usanetwork_person_get_related_content_ajax',
-    'page arguments' => array(3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
-}
 
 /**
  *  Implements hook_theme().
@@ -648,21 +632,12 @@ function _usanetwork_person_characters_related_content_block() {
       'load_more_link' => $load_more_link,
       'show_nid' => $tv_content_node->nid,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1,
+      'node_nid' => $person_node->nid,
     ));
   }
 
   return '';
 }
-
-
-/**
- * AJAX callback for getting related content items.
- */
-function usanetwork_person_get_related_content_ajax($node, $start_from = 0, $limit = 1) {
-  return usanetwork_related_content_get_related_content_ajax('person', $node, $start_from , $limit);
-}
-
-
 
 /**
  * Renders cast & crew block for cast landing page.

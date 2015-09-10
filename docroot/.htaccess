@@ -182,6 +182,7 @@ RedirectMatch 301 ^/series/inplainsight/?(.*)$ http://www2.usanetwork.com/series
 RedirectMatch 301 ^/series/commonlaw/?(.*)$ http://www2.usanetwork.com/series/commonlaw/$1
 RedirectMatch 301 ^/series/fairlylegal/?(.*)$ http://www2.usanetwork.com/series/fairlylegal/$1
 RedirectMatch 301 ^/series/drsteveo/?(.*)$ http://www2.usanetwork.com/series/drsteveo/$1
+RedirectMatch 301 ^/series/starterwife/?(.*)$ http://www2.usanetwork.com/series/starterwife/$1
 
 RedirectMatch 301 ^/series/burnnotice/?.*$ http://www.usanetwork.com/burnnotice
 RedirectMatch 301 ^/series/criminalintent/?.*$ http://www.usanetwork.com/criminalintent

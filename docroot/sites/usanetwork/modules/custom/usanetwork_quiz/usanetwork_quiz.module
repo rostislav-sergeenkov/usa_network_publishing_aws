@@ -979,44 +979,23 @@ function _usanetwork_quiz_related_content_block() {
   $content = menu_get_object('node');
 
   if (!empty($content)) {
-    $node = usanetwork_core_api_get_tv_content_node($content);
-    if (!empty($node)) {
-      $display_content = usanetwork_core_api_check_display_relate_content($node);
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($content);
+    if (!empty($tv_content_node)) {
+      $display_content = usanetwork_core_api_check_display_relate_content($tv_content_node);
       if (empty($display_content)) {
         return '';
       }
 
-      $function = 'usanetwork_' . $node->type . '_consumptionator_get_ymal_item';
-      $you_may_also_like_item = $function($node);
-
-      $function = '_usanetwork_' . $node->type . '_cache_get_limited_related_content';
-      $related_content = $function(
-        $node->nid, $content, 0,
-        !empty($you_may_also_like_item)
-          ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE - 1
-          : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE
-      );
-
-      if (!empty($you_may_also_like_item)) {
-        $related_content[] = $you_may_also_like_item;
-      }
-
+      $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_content_node);
       if (!empty($related_content)) {
-        drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-        drupal_add_js(array(
-          'usanetwork_' . $node->type . '_nid' => $node->nid,
-          'usanetwork_' . $node->type . '_page_context' => 'quiz-consumptionator',
-          'usanetwork_' . $node->type . '_offset' => !empty($you_may_also_like_item) ? -1 : 0,
-        ), 'setting');
-
-        $function = 'usanetwork_' . $node->type . '_consumptionator_render_related_content_items_block';
+        $function = 'usanetwork_' . $tv_content_node->type . '_consumptionator_render_related_content_items_block';
         $block_of_items = $function($related_content);
         $load_more_link = &drupal_static('load_more_link');
         $load_more_link = TRUE;
-        return theme('usanetwork_' . $node->type . '_consumptionator_related_items_container', array(
+        return theme('usanetwork_' . $tv_content_node->type . '_consumptionator_related_items_container', array(
           'related_items_block' => $block_of_items,
           'load_more_link' => $load_more_link,
-          'show_nid' => $node->nid,
+          'show_nid' => $tv_content_node->nid,
           'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
           'node_nid' => $content->nid,
         ));

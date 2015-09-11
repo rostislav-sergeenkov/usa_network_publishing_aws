@@ -610,45 +610,27 @@ function _usanetwork_person_characters_related_content_block() {
     return '';
   }
 
-  $tv_content = usanetwork_core_api_get_tv_content_node($person_node);
+  $tv_content_node = usanetwork_core_api_get_tv_content_node($person_node);
 
-  if (empty($tv_content)) {
+  if (empty($tv_content_node)) {
     return '';
   }
 
-  $display_content = usanetwork_core_api_check_display_relate_content($tv_content);
+  $display_content = usanetwork_core_api_check_display_relate_content($tv_content_node);
   if (empty($display_content)) {
     return '';
   }
 
-  $function = 'usanetwork_' . $tv_content->type . '_consumptionator_get_ymal_item';
-  $you_may_also_like_item = $function($tv_content);
-  $function = '_usanetwork_' . $tv_content->type . '_cache_get_limited_related_content';
-  $related_content = $function(
-    $tv_content->nid, $person_node,
-    0, !empty($you_may_also_like_item)
-      ? USA_TV_SHOW_RELATED_ITEMS_ON_PAGE
-      : USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1);
-
-  if (!empty($you_may_also_like_item)) {
-    $related_content[] = $you_may_also_like_item;
-  }
-
+  $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($person_node, $tv_content_node);
   if (!empty($related_content)) {
-    drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-    drupal_add_js(array(
-      'usanetwork_' . $tv_content->type . '_nid' => $tv_content->nid,
-      'usanetwork_' . $tv_content->type . '_page_context' => 'characters-consumptionator',
-    ), 'setting');
-
-    $function = 'usanetwork_' . $tv_content->type . '_consumptionator_render_related_content_items_block';
+    $function = 'usanetwork_' . $tv_content_node->type . '_consumptionator_render_related_content_items_block';
     $block_of_items = $function($related_content, 0, 1);
     $load_more_link = &drupal_static('load_more_link');
     $load_more_link = TRUE;
-    return theme('usanetwork_' . $tv_content->type . '_consumptionator_related_items_container', array(
+    return theme('usanetwork_' . $tv_content_node->type . '_consumptionator_related_items_container', array(
       'related_items_block' => $block_of_items,
       'load_more_link' => $load_more_link,
-      'show_nid' => $tv_content->nid,
+      'show_nid' => $tv_content_node->nid,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE + 1,
       'node_nid' => $person_node->nid,
     ));

@@ -61,24 +61,8 @@ function _usanetwork_catchall_related_content() {
     }
     $tv_content = usanetwork_core_api_get_tv_content_node($content);
     if (!empty($tv_content)) {
-      $function = 'usanetwork_' . $tv_content->type . '_consumptionator_get_ymal_item';
-      $you_may_also_like_item = $function($tv_content);
-      $function = '_usanetwork_' . $tv_content->type . '_cache_get_limited_related_content';
-      $related_content = $function(
-        $tv_content->nid, $content, 0,
-        !empty($you_may_also_like_item)
-          ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE - 1
-          : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE
-      );
-      if (!empty($you_may_also_like_item)) {
-        $related_content[] = $you_may_also_like_item;
-      }
+      $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_content);
       if (!empty($related_content)) {
-        drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-        drupal_add_js(array(
-          'usanetwork_' . $tv_content->type . '_nid' => $tv_content->nid,
-          'usanetwork_' . $tv_content->type . '_page_context' => 'usanetwork-catchall',
-        ), 'setting');
         $function = 'usanetwork_' . $tv_content->type . '_consumptionator_render_related_content_items_block';
         $block_of_items = $function($related_content);
         $load_more_link = &drupal_static('load_more_link');

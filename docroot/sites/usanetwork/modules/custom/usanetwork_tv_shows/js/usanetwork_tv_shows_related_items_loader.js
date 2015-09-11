@@ -20,13 +20,7 @@
             service_name = file_fid;
             additional_arguments = '/file';
             break;
-          case 'gallery-consumptionator':
-          case 'characters-consumptionator':
-          case 'episode-consumptionator':
-          case 'usanetwork-catchall':
-          case 'usanetwork-timeline-gallery':
-          case 'quiz-consumptionator':
-          case 'usanetwork-post':
+          case 'consumptionator_node':
             service_name = node_nid;
             break;
           case 'showpage':

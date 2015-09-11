@@ -398,7 +398,7 @@ function usanetwork_timeline_gallery_return_episodes($selected_season) {
 }
 
 /*
- * Returns content for usanetwork_catchall_related_content_content block.
+ * Returns content for usa_timeline_gal_related block.
  */
 function _usanetwork_timeline_gallery_related_content() {
   if (path_is_admin(current_path())) {
@@ -413,23 +413,9 @@ function _usanetwork_timeline_gallery_related_content() {
       $show = is_array($show) ? reset($show) : $show;
       $show = node_load($show['target_id']);
       if (!empty($show)) {
-        $you_may_also_like_item = usanetwork_tv_show_consumptionator_get_ymal_item($show);
-        $related_content = _usanetwork_tv_show_cache_get_limited_related_content(
-          $show->nid, $node, 0,
-          !empty($you_may_also_like_item)
-            ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE - 1
-            : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE
-        );
-        if (!empty($you_may_also_like_item)) {
-          $related_content[] = $you_may_also_like_item;
-        }
+        $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($node, $show);
         if (!empty($related_content)) {
           if (!empty($related_content)) {
-            drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-            drupal_add_js(array(
-              'usanetwork_tv_show_nid' => $show->nid,
-              'usanetwork_tv_show_page_context' => 'usanetwork-timeline-gallery',
-            ), 'setting');
             $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
             $load_more_link = &drupal_static('load_more_link');
             $load_more_link = TRUE;

@@ -488,7 +488,10 @@ function _usanetwork_movies_all_movies_render_block($items) {
  * @return mixed|string
  */
 function _usanetwork_movies_all_movies_block_item($movie) {
-  $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
+  $schedule_data = _usanetwork_get_field_item('node', $movie, 'field_promo_topic', 'value');
+  if (empty($schedule_data)) {
+    $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
+  }
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
@@ -540,7 +543,10 @@ function _usanetwork_movies_mb_block() {
           $is_first = ($i == 0) ? TRUE : FALSE;
           $i++;
           $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
-          $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
+          $show_time = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_topic', 'value');
+          if (empty($show_time)) {
+            $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
+          }
           $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
           $promos[] = array(
             'url' => url('node/' . $featured_movie->nid),

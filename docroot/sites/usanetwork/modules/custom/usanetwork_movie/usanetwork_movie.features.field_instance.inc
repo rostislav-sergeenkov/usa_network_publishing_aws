@@ -21,7 +21,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -81,7 +81,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -138,7 +138,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -292,7 +292,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 17,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -346,7 +346,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -395,7 +395,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -503,7 +503,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -552,7 +552,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -604,7 +604,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -657,7 +657,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 18,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -700,6 +700,69 @@ function usanetwork_movie_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-movie-field_promo_topic'
+  $field_instances['node-movie-field_promo_topic'] = array(
+    'bundle' => 'movie',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_promo_topic',
+    'label' => 'Time Override',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-movie-field_promo_violator_name'
   $field_instances['node-movie-field_promo_violator_name'] = array(
     'bundle' => 'movie',
@@ -711,7 +774,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -780,7 +843,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 125,
+        'weight' => 20,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -873,7 +936,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 126,
+        'weight' => 21,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -1021,7 +1084,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 19,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -1350,6 +1413,7 @@ function usanetwork_movie_field_default_field_instances() {
   t('Synopsis');
   t('Tags');
   t('Tertiary Color');
+  t('Time Override');
   t('Tune-in Display Date');
 
   return $field_instances;

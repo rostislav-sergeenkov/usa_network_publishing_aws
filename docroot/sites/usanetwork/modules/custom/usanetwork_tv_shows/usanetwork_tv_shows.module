@@ -2283,7 +2283,7 @@ function _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node) 
  */
 function _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node) {
   cache_clear_all('usa_tv_shows_related_video_' . $tv_show_node->nid, 'cache');
-  _usanetwork_tv_shows_cache_get_related_video_content($tv_show_node);
+  _usanetwork_tv_shows_cache_get_related_video_content($tv_show_node->nid);
 }
 
 

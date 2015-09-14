@@ -284,6 +284,12 @@
     width: 50px;
     vertical-align: middle;
     border-top: 1px solid white;
+    @include breakpoint($between-1025-1280) {
+      height: 83px;
+    }
+    @include breakpoint($bp-min-1281-width) {
+      height: 124px;
+    }
     &:after {
       color: #ffffff;
       display: block;

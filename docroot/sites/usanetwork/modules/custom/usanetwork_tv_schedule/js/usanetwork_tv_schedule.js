@@ -18,6 +18,8 @@
             var $carousel = $(this),
                 width = null,
                 margin = $navigation.css('margin-left'),
+                start_item = $carousel.find('li.active').index();
+                $carousel.jcarousel('scroll', start_item, false);
                 hideControls = function () {
                   $controls.hide();
                   $navigation.css('margin', '0');

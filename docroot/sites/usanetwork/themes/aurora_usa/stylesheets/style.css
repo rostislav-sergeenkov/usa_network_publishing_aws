@@ -27084,6 +27084,16 @@ yx-axis
   vertical-align: middle;
   border-top: 1px solid white;
 }
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .schedule-wrapper .schedule-navigation-controls {
+    height: 83px;
+  }
+}
+@media (min-width: 1281px) {
+  .schedule-wrapper .schedule-navigation-controls {
+    height: 124px;
+  }
+}
 .schedule-wrapper .schedule-navigation-controls:after {
   color: #ffffff;
   display: block;

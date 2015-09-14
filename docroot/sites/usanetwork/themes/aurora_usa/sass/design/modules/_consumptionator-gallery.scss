@@ -22,8 +22,13 @@
     }
     .consum-sidebar {
       .download-app {
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($bp-768-width) {
           display: none;
+        }
+      }
+      .more-items {
+        @include breakpoint($between-641-768) {
+          top: 0px;
         }
       }
     }
@@ -520,6 +525,22 @@
               &:after {
                 content: "\e608";
               }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.node-type-media-gallery {
+  header {
+    .header-nav-bar {
+      .nav-bar-tabs {
+        .menu-item {
+          &.info {
+            @include breakpoint($bp-768-width) {
+              background: #242424;
+              border-left: 1px solid #242424;
             }
           }
         }

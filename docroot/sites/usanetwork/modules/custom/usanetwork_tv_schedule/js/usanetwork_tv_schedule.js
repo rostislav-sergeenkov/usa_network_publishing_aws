@@ -44,11 +44,10 @@
 
               showControls();
             } else {
-              if (window.innerWidth >= window_size_tablet_portrait) {
-                hideControls();
-              }
-
+              width = width - 100;
               width = width / 7;
+
+              showControls();
             }
 
             $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');

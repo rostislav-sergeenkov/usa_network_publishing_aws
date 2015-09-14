@@ -1249,7 +1249,7 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0, $page_url 
   $date_array = array();
   $day_date = strtotime(date("Y-m-d", $start_date));
 
-  for ($day_number = 0; $day_number < 7; $day_number++) {
+  for ($day_number = 0; $day_number < 14; $day_number++) {
     $date_url = $schedule_page_url;
     $new_day = strtotime('+' . $day_number . ' days', $day_date);
     if (!empty($query_params['sdate'])) {

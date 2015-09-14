@@ -622,7 +622,7 @@ function _usanetwork_menu_show_menu_primetime_block() {
         'show_title' => $program->show_title,
         'show_episode' => $program->title,
         'node_url' => NULL,
-        'syndicated_url' => _usanetwork_menu_get_reminder_url($program->nid),
+        'syndicated_url' => isset($program->nid) ? _usanetwork_menu_get_reminder_url($program->nid) : NULL,
         'episode_full_url' => url('schedule', array('query' => array('guid' => $program->guid))),
         'show_class' => !empty($program->nid)
             ? usanetwork_tv_shows_color_show_css_class($program->nid)

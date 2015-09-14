@@ -136,15 +136,19 @@ function _usanetwork_umbel_variables($settings) {
     }
   }
 
-  if (in_array($current_menu_file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
-    $tv_show_field = _usanetwork_get_field_item('file', $current_menu_file, 'field_show', 'target_id');
-    if ($tv_show_field) {
-      $tv_show = node_load($tv_show_field);
-      $settings = array(
-        'usa_umbel_param_1' => $tv_show->title,
-        'usa_umbel_param_2' => "Video",
-        'usa_umbel_param_3' => $current_menu_file->filename,
-      );
+  if (!empty($current_menu_file)) {
+    if (isset($current_menu_file->type)) {
+      if (in_array($current_menu_file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+        $tv_show_field = _usanetwork_get_field_item('file', $current_menu_file, 'field_show', 'target_id');
+        if ($tv_show_field) {
+          $tv_show = node_load($tv_show_field);
+          $settings = array(
+            'usa_umbel_param_1' => $tv_show->title,
+            'usa_umbel_param_2' => "Video",
+            'usa_umbel_param_3' => $current_menu_file->filename,
+          );
+        }
+      }
     }
   }
 

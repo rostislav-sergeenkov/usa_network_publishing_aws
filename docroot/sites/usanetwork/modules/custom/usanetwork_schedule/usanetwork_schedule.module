@@ -146,7 +146,7 @@ function usanetwork_schedule_pull() {
     }
 
     $schedule_limit_from = strtotime('midnight -1 day +6 hours', REQUEST_TIME);
-    $schedule_limit_to = strtotime('midnight +8 days +5 hours', REQUEST_TIME);
+    $schedule_limit_to = strtotime('midnight +15 days +5 hours', REQUEST_TIME);
     db_truncate('usanetwork_schedule')->execute();
 
     foreach ($data->entries as $data_item) {

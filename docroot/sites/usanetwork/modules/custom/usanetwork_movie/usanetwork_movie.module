@@ -1380,8 +1380,20 @@ function usanetwork_movie_render_cast_crew_block() {
  * @param int $start_from
  * @param $limit = 0, if = 0 it returns all data.
  */
-function _usanetwork_movie_cache_get_limited_related_content($movie_node, $node_type, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
-  $data = _usanetwork_movie_cache_get_related_content($movie_node, $node_type);
+function _usanetwork_movie_cache_get_limited_related_content($movie_node_id, $node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+  $movie_node = node_load($movie_node_id);
+  $data = _usanetwork_movie_cache_get_related_content($movie_node, $node->type);
+
+  foreach ($data as $key => $data_item) {
+    if ($key < ($limit * 2)) {
+      if (isset($data_item->nid) && ($data_item->nid == $node->nid) && ($data_item->type == $node->type)) {
+        unset($data[$key]);
+      }
+    }
+    else {
+      break;
+    }
+  }
 
   if (!empty($data)) {
     if ($limit == 0) {

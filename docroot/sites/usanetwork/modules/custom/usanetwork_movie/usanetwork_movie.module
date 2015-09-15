@@ -1424,7 +1424,7 @@ function _usanetwork_movie_cache_get_related_content($movie_node, $node_type, $f
  * @param $movie_node
  */
 function _usanetwork_movie_cache_set_related_content($movie_node, $node_type) {
-  $cached_data = usanetwork_movie_get_related_content($movie_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE, $node_type, USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUIZ_QUEUE);
+  $cached_data = usanetwork_movie_get_related_content($movie_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE, $node_type, USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUEUE);
   if (!empty($cached_data)) {
     foreach ($cached_data as $cached_id => &$cached_data_item) {
       $entity = entity_load($cached_data_item->entity_type, array($cached_data_item->entity_id));
@@ -1646,7 +1646,7 @@ function _usanetwork_movie_cache_set_related_video_content($movie_node) {
  */
 function usanetwork_movie_get_related_video_content($movie_node, $start_from = 0, $limit = 1) {
   $sorted_content = array();
-  $left_to_sort = USA_TV_SHOW_RELATED_CONSUMPTIONATOR_VIDEOS_QUEUE;
+  $left_to_sort = USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUEUE;
 
   $content = usanetwork_movie_get_related_content($movie_node, $start_from, $limit);
 

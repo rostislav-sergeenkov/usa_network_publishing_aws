@@ -155,10 +155,10 @@ function usanetwork_dtm_page_alter(&$page) {
     ),
   );
 
-  $usa_dart_js_settings = array();
-  $migration_array = usanetwork_dtm_get_midration_array();
-  $json_migration_array['USADTMMigrationArray'] = drupal_json_encode($migration_array);
-  drupal_add_js($json_migration_array, 'setting');
+//  $usa_dart_js_settings = array();
+//  $migration_array = usanetwork_dtm_get_midration_array();
+//  $json_migration_array['USADTMMigrationArray'] = drupal_json_encode($migration_array);
+//  drupal_add_js($json_migration_array, 'setting');
 
   if (isset($page['page_bottom']['sitecatalyst'])) {
     unset($page['page_bottom']['sitecatalyst']);

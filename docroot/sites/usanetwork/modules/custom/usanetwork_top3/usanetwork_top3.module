@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the USA Network TOP3.
+ */
+
+include_once 'usanetwork_top3.features.inc';

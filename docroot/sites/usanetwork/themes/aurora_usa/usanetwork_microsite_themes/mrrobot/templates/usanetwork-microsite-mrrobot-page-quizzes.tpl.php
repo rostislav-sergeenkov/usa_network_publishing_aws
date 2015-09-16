@@ -87,4 +87,4 @@
   <?php endif; ?>
 </div>
 
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_quizzes"></div>
+<div id="ms-quizzes-leaderboard-ad" class="midbanner ad-leaderboard"></div>

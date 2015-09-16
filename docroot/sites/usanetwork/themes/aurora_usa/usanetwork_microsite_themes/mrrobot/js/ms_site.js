@@ -23,9 +23,9 @@
       var $siteNav = $('#site-nav'),
           $homeUsaLogo = $('#home-usa-logo'),
           $videoTitle = $('#videos h2');
-      //usa_debug('showSiteNav -- opacity: ' + $siteNav.css('opacity'));
       if ($siteNav.css('opacity') == 0) {
-        $siteNav.css('opacity', 1).animate({'max-height': '72px'}, 700, function(){
+        //usa_debug('showSiteNav()');
+        $siteNav.css({'opacity': 1}).animate({'max-height': '72px'}, 700, function(){
           if (window.innerWidth < 874) {
             $siteNav.css({'overflow': 'visible'}); // to allow hamburger hover state to work
           }
@@ -38,8 +38,8 @@
       var $siteNav = $('#site-nav'),
           $homeUsaLogo = $('#home-usa-logo'),
           $videoTitle = $('#videos h2');
-      //usa_debug('hideSiteNav -- opacity: ' + $siteNav.css('opacity'));
       if ($siteNav.css('opacity') == 1) {
+        usa_debug('hideSiteNav()');
         $homeUsaLogo.animate({'opacity': 1}, 700);
         $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
           $siteNav.css({'opacity': 0});
@@ -48,15 +48,17 @@
     },
 
     setSiteNav: function() {
-      var wPath = window.location.pathname,
-          homeAdInView = (Drupal.behaviors.ms_global.isScrolledIntoView('.dart-name-728x90_ifr_reload_home')) ? true : false,
+//      var wPath = window.location.pathname,
+      var homeAdInView = (Drupal.behaviors.ms_global.isScrolledIntoView('.dart-name-728x90_ifr_reload_home')) ? true : false,
           homeLogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-logo')) ? true : false,
           homeTuneInInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-tunein')) ? true : false,
           homeNavFirstInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:first')) ? true : false,
           homeNavLastInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:last')) ? true : false,
           homeFinalePacketImageInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#finale-packet-image')) ? true : false,
           homeUSALogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-usa-logo')) ? true : false;
-      if (wPath == '/mrrobot/catchup' || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeFinalePacketImageInView || homeUSALogoInView) {
+      //usa_debug('setSiteNav()');
+//      if (wPath == '/mrrobot/catchup' || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeFinalePacketImageInView || homeUSALogoInView) {
+      if (homeAdInView || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeFinalePacketImageInView || homeUSALogoInView) {
         Drupal.behaviors.ms_site.hideSiteNav();
       }
       else {
@@ -285,12 +287,6 @@
 
       setTimeout(function(){
         homeSectionHeight = self.getHeightHomeSection();
-        if ($('html').hasClass('ie9')) {
-          self.showSiteNav();
-        }
-        else {
-          self.setSiteNav();
-        }
 
         // add dropdown menu to must see moments (msm) video filter
         self.addMSMVideoFilterMenuDropdown();
@@ -302,6 +298,13 @@
         // designers want the Must See Moments video filter to be
         // second in the list of filters
         self.setVideoFilterOrder();
+
+        if ($('html').hasClass('ie9')) {
+          self.showSiteNav();
+        }
+        else {
+          self.setSiteNav();
+        }
 
         // set click on character infographic
         $('#character-infographic a').on('click', function() {

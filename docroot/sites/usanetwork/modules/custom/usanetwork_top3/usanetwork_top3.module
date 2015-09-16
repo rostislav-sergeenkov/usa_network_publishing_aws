@@ -5,3 +5,55 @@
  */
 
 include_once 'usanetwork_top3.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_top3_block_info() {
+  $blocks = array();
+  $blocks['usanetwork_top3_main_block'] = array(
+    'info' => t('TOP3: Main Block'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_top3_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'usanetwork_top3_main_block':
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_top3_main_block(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('theme', 'usanetwork_top3') . '/js/usanetwork_top3.js',
+          ),
+        ),
+      );
+  }
+  return $block;
+}
+
+/*
+ * Implements hook_theme
+ */
+function usanetwork_top3_theme($existing, $type, $theme, $path) {
+  $themes = array(
+    'usanetwork_top_main_block' => array(
+      'variables' => array(
+      ),
+      'template' => 'templates/usanetwork-top3-main-block',
+    ),
+  );
+  return $themes;
+}
+
+function _usanetwork_top3_main_block() {
+  $theme_variables = array();
+  return theme('usanetwork_top_main_block', $theme_variables);
+}

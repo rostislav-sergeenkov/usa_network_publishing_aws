@@ -49,8 +49,6 @@
 
       // if this is IE9, reload the correct page
       if ($('html').hasClass('ie9')) {
-//usa_debug('======== changeUrl(' + anchor + ', ' + anchorFull + ')');
-//        window.location.href = anchorFull.replace('/home', '');
         return false;
       }
 
@@ -66,6 +64,7 @@
       else {
         history.pushState({"path": basePath}, basePath, basePath);
       }
+usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
     },
 
     // toTitleCase
@@ -99,9 +98,9 @@
           break;
       }
       if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
-        Drupal.behaviors.ms_global.setOmnitureData(sectionId);
-        Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
+        Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
+        Drupal.behaviors.ms_global.setOmnitureData(sectionId);
         Drupal.behaviors.ms_global.create728x90Ad(sectionId);
       }
     },
@@ -128,8 +127,8 @@
     // initializeWaypoints -- for triggering section scroll events
     waypoints: {},
     initializeWaypoints: function() {
-      // When scrolling down, send Omniture page call when top of next section hits bottom of sticky nav
-      // When scrolling up, send Omniture page call when bottom of previous section hits bottom of window
+      // When scrolling down, trigger section changes when top of next section hits bottom of sticky nav
+      // When scrolling up, trigger section changes when bottom of previous section hits bottom of window
 
       // loop through each section
       $('#sections > .section').each(function(){
@@ -402,57 +401,64 @@
     // there is a race condition if we try to create both the 728x90
     // and the 300x250 at about the same time, so we create the 728x90
     // first and then create the 300x250
+    initMPS728x90Ad: function(target, type) {
+usa_debug('========== initMPS728x90Ad(' + target + ', ' + type + ')');
+      Drupal.behaviors.mpsAdvert.mpsLoadAd(target, type);
+    },
+
+    refreshMPS728x90Ad: function(target, type) {
+usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
+      var type = type || 'midbanner';
+      if ($(target + ' .mps-slot').length < 1 && $(target + ' iframe').length < 1) {
+        setTimeout(function(){
+          Drupal.behaviors.ms_global.initMPS728x90Ad(target, type);
+        }, 1000);
+      }
+      else {
+        mps.refreshAds(type);
+      }
+    },
+
     create728x90Ad: function (section) {
       if (!section) {
         section = $('#sections .section.active').attr('id') || 'home';
       }
-      var $ad = $('.dart-name-728x90_ifr_reload_' + section);
+
+      var target = '#' + section + ' #ms-' + section + '-leaderboard-ad';
+      if ($(target).length <= 0 && $('#' + section + ' .ad-leaderboard').length > 0) {
+        target = '#' + section + ' .ad-leaderboard';
+      }
+
+      var $ad = $(target),
+          $iframe = $ad.find('iframe'),
+          type = 'midbanner';
+      if ($ad.hasClass('topbanner')) {
+        type = 'topbanner';
+      }
+
+      if ($ad.length != 1) {
+        usa_debug('ERROR: More or less than one 728x90 ad detected');
+        return false;
+      }
 
       if ($ad.hasClass('loading')) {
         // do nothing
       }
       else {
-        //usa_debug('create728x90Ad(' + section + ')');
+        usa_debug('create728x90Ad(' + section + ')');
         $ad.addClass('loading');
 
         // check to see if there is an ad already there
-        if ($('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
-          adBlock = '.dart-name-728x90_ifr_reload_' + section;
-          Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
+        if ($ad.find('.mps-slot').length > 1 || $iframe.length > 1) {
+          Drupal.behaviors.mpsAdvert.mpsRemoveAd(type);
+          Drupal.behaviors.ms_global.initMPS728x90Ad(target, type);
+        }
+        else if ($ad.find('.mps-slot').length == 1 || $iframe.length == 1) {
+          Drupal.behaviors.ms_global.refreshMPS728x90Ad(target, type);
         }
         // if no 728x90 ad in this section yet, create it
         else {
-          // we have to clear the iframeQueue first and then re-build it using
-          // the Drupal.DART.tag, then we write the iframes by looping through
-          // the iframeQueue
-
-          // start 728x90
-          iframeQueue = new Array();
-
-          Drupal.DART.tag('{"machinename":"728x90_ifr_reload_' + section + '","name":"728x90 script","pos":"7","sz":"728x90","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"728x90","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=728x90;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
-
-          // write iframe ad units to page
-          if (iframeQueue.length) {
-            for (var i = 0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
-              // 728x90
-              if (iframeQueue[i].tag.indexOf('728x90') != '-1') {
-                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
-              }
-            }
-          }
-        }
-        // add styles for iframe
-        if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && $(window).width() < 748) {
-          $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
-          $('#' + section + ' .ad-leaderboard iframe').load(function () {
-            $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 50px;}object * {max-width: 100%; max-height: 50px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
-          });
-        }
-        else {
-          $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
-          $('#' + section + ' .ad-leaderboard iframe').load(function () {
-            $('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
-          });
+          Drupal.behaviors.ms_global.initMPS728x90Ad(target, type);
         }
 
         $ad.removeClass('loading');
@@ -475,7 +481,7 @@
 
       setTimeout(function(){
         Drupal.behaviors.ms_site.setSiteNav();
-      }, 50);
+      }, 200);
       //usa_debug('setActiveMenuItem(' + anchor + ') is done');
     },
 
@@ -539,10 +545,12 @@
 
       // now scroll to the next section
       var nextSectionElem = document.getElementById(anchor),
-          offsetAmount = (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
+          offsetAmount = 10, // (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
+//      if (anchor == 'quizzes') nextSectionTop = nextSectionTop + 10;
 
-      $('body, html').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
+usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ') -- nextSectionTop: ' + nextSectionTop);
+      $('body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
 
@@ -714,7 +722,6 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
       });
 
       $(window).load(function(){
-
         if ($('#videos').length > 0) {
           Drupal.behaviors.ms_videos.setVideoHeight();
 
@@ -731,6 +738,7 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
         // TIME OUT
         // we need to allow time for the page to load -- especially videos
         setTimeout(function(){
+
           // initialize clicks in microsite menu
           $('#microsite li.internal a').on('click', function(e){
             e.preventDefault();
@@ -762,17 +770,12 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
 
           // initialize site nav logo click
           $('#site-nav-logo').on('click', function(){
-            var anchor = 'home',
-                anchorFull = basePath + '/' + anchor;
-
-            Drupal.behaviors.ms_global.sectionScroll(anchor);
+            Drupal.behaviors.ms_global.sectionScroll('home');
           });
 
           // initialize home next button click
           $('#home .scroll').on('click', function(){
-            var anchor = 'videos',
-                anchorFull = basePath + '/' + anchor;
-            Drupal.behaviors.ms_global.sectionScroll(anchor);
+            Drupal.behaviors.ms_global.sectionScroll('videos');
           });
 
           self.setSectionIdsArray();
@@ -784,8 +787,7 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
           // This scroll is necessary -- even if we're loading the "homepage",
           // because we need to set globalInitialPageLoad to false, which
           // is done in sectionScroll
-          var urlParts = self.parseUrl(),
-              activeSection = $('.section.active');
+          var urlParts = self.parseUrl();
           setTimeout(function(){
             self.sectionScroll(urlParts['section'], urlParts['item']);
           }, 2000);

@@ -27,7 +27,15 @@ endif;
 ?>
 
 <div id="home-wrapper" class="clearfix">
-  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
+  <div id="head-leaderboard" class="ad-leaderboard">
+    <div class="region region-leaderboard">
+      <div id="block-mps-topbanner" class="block block-mps">
+        <div class="content">
+          <div id="topbanner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="home-content-container">
     <div id="home-logo"><img src="<?php print $themePath; ?>/images/main_title.png" alt="Mr. Robot logo" />

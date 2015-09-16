@@ -10798,12 +10798,12 @@ footer h2 {
   top: 0;
   margin: auto;
   position: absolute;
+  max-height: 100%;
+  max-width: 100%;
 }
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-consumpt-post .gallery-wrapper .bxslider-gallery .slide .node .asset-img img {
     height: auto;
-    max-height: 100%;
-    max-width: 100%;
   }
 }
 .consumptionator-page .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .bxslider-gallery .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .bxslider-gallery .slide .node .slide-info {

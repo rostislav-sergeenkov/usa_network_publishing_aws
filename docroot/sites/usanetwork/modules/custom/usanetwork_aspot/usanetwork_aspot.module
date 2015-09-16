@@ -365,6 +365,24 @@ function usanetwork_aspot_theme() {
       ),
       'template' => 'templates/usanetwork-aspot-tvshow-slide',
     ),
+    'default_aspot_preview' => array(
+      'variables' => array(
+        'node' => NULL,
+        'aspot_preview' => NULL,
+      ),
+    ),
+    'home_page_aspot_preview' => array(
+      'variables' => array(
+        'node' => NULL,
+        'aspot_preview' => NULL,
+      ),
+    ),
+    'show_aspot_preview' => array(
+      'variables' => array(
+        'node' => NULL,
+        'aspot_preview' => NULL,
+      ),
+    ),
   );
 }
 
@@ -376,14 +394,16 @@ function usanetwork_aspot_node_view($node, $view_mode, $langcode) {
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
     $default_aspot = node_view($node, 'inline_content');
     $default_aspot = drupal_render($default_aspot);
-    $node->content['default_aspot'] = array(
-      '#prefix' => '<h2>' . t('Default version (In microsite) .') . '</h2>',
-      '#markup' => $default_aspot,
+    $node->content['preview_default_aspot'] = array(
+      '#theme' => 'default_aspot_preview',
+      '#node' => $node,
+      '#aspot_preview' => $default_aspot,
       '#weight' => 0,
     );
     $node->content['preview_home_page_aspot'] = array(
-      '#prefix' => '<h2>' . t('Homepage version.') . '</h2>',
-      '#markup' => _usanetwork_aspot_render_carousel_node($node, $tv_content_node),
+      '#theme' => 'home_page_aspot_preview',
+      '#node' => $node,
+      '#aspot_preview' => _usanetwork_aspot_render_carousel_node($node, $tv_content_node),
       '#attached' => array(
         'js' => array(
           drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
@@ -392,8 +412,9 @@ function usanetwork_aspot_node_view($node, $view_mode, $langcode) {
       ),
     );
     $node->content['preview_show_aspot'] = array(
-      '#prefix' => '<h2>' . t('Show landing page version.') . '</h2>',
-      '#markup' => usanetwork_aspot_render_tvshow_slide($node, $tv_content_node),
+      '#theme' => 'show_aspot_preview',
+      '#node' => $node,
+      '#aspot_preview' => usanetwork_aspot_render_tvshow_slide($node, $tv_content_node),
       '#weight' => 2,
     );
   }
@@ -1415,4 +1436,28 @@ function ajax_aspot_draggable_ui_data_set() {
   $update_query->execute();
 
   drupal_json_output(TRUE);
+}
+
+function theme_default_aspot_preview($node) {
+  $output = '<div id="default_aspot_preview">';
+  $output .= '<h2>' . t('Default version (In microsite) .') . '</h2>';
+  $output .= $node['aspot_preview'];
+  $output .= '</div>';
+  return $output;
+}
+
+function theme_home_page_aspot_preview($node) {
+  $output = '<div id="home_page_aspot_preview">';
+  $output .= '<h2>' . t('Homepage version.') . '</h2>';
+  $output .= $node['aspot_preview'];
+  $output .= '</div>';
+  return $output;
+}
+
+function theme_show_aspot_preview($node) {
+  $output = '<div id="show_aspot_preview">';
+  $output .= '<h2>' . t('Show landing page version.') . '</h2>';
+  $output .= $node['aspot_preview'];
+  $output .= '</div>';
+  return $output;
 }

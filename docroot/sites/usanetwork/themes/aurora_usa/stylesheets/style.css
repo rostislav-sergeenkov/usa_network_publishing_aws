@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -26707,6 +26707,36 @@ yx-axis
     font-size: 24px;
     line-height: 30px;
   }
+}
+
+@media (min-width: 2500px) {
+  .node-type-usanetwork-aspot #home_page_aspot_preview,
+  .node-type-usanetwork-aspot #show_aspot_preview,
+  .node-type-usanetwork-aspot #default_aspot_preview {
+    margin: 0 auto;
+    max-width: 2500px;
+  }
+}
+.node-type-usanetwork-aspot #home_page_aspot_preview h2,
+.node-type-usanetwork-aspot #show_aspot_preview h2,
+.node-type-usanetwork-aspot #default_aspot_preview h2 {
+  color: #000000;
+  padding: 0 10px;
+}
+.node-type-usanetwork-aspot #home_page_aspot_preview .slide,
+.node-type-usanetwork-aspot #show_aspot_preview .slide {
+  position: relative;
+}
+.node-type-usanetwork-aspot #show_aspot_preview .slide {
+  width: 77.77778%;
+}
+@media (max-width: 640px) {
+  .node-type-usanetwork-aspot #show_aspot_preview .slide {
+    width: 100%;
+  }
+}
+.node-type-usanetwork-aspot #default_aspot_preview {
+  max-width: 1245px;
 }
 
 .page-schedule,

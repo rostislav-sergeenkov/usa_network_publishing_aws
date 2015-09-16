@@ -363,6 +363,12 @@ header .ad-leaderboard {
   }
 }
 
+@media (max-width: 748px) {
+  #ad_300x250_1 {
+    display: none;
+  }
+}
+
 @media (max-width: 670px) {
   html,
   body {

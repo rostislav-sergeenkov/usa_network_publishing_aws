@@ -19,7 +19,7 @@
             containerId = (settings.containerId) ? settings.containerId : 'gigya-share',
             shareDescription = (settings.description) ? settings.description : '',
             shareTitle = (settings.title) ? settings.title : '',
-            imageSrc = (settings.imageSrc) ? settings.imageSrc : preview_image,
+            imageSrc = (settings.imageSrc) ? settings.imageSrc : $('meta[property="og:image"]').attr('content'), // preview_image,
             url = (settings.url) ? settings.url : window.location.href;
 
         sharebar.gigyaSharebar = {

@@ -199,6 +199,13 @@
 
               // show the quiz now
               activeQuizContainer.find('li#quiz-' + data.nid).animate({'opacity': 1}, 1000, function(){
+                // set url
+                Drupal.behaviors.ms_global.changeUrl('quizzes', link);
+
+                // update quiz navigation
+                quizzesNav.find('li.active').removeClass('active disabled');
+                quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
+
                 // send Omniture data
                 Drupal.behaviors.ms_global.setOmnitureData('quizzes', data.title);
 
@@ -209,13 +216,6 @@
                 setTimeout(function(){
                   if ($(window).width() > 640) Drupal.behaviors.ms_quizzes.init300x250Ad();
                 }, 1000);
-
-                // set url
-                Drupal.behaviors.ms_global.changeUrl('quizzes', link);
-
-                // update quiz navigation
-                quizzesNav.find('li.active').removeClass('active disabled');
-                quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
 
                 // hide loader
                 Drupal.behaviors.ms_quizzes.quizIsLoading = false;
@@ -229,6 +229,8 @@
         .fail(function(jqXHR, textStatus, errorThrown){
           usa_debug('********************\najax fail: ');
           usa_debug(errorThrown);
+          Drupal.behaviors.ms_quizzes.quizIsLoading = false;
+          Drupal.behaviors.ms_quizzes.showHideLoader();
         });
       }
       else {
@@ -267,10 +269,9 @@
     },
 
     setActiveQuizHeight: function() {
-      var activeQuiz = $('#microsite #quizzes-content .flexslider'),
-          activeQuizWidth = activeQuiz.width(),
-          newHeight = Math.ceil(activeQuizWidth * 9/16);
-      $('#microsite #quizzes-content .flexslider').height(newHeight);
+      var $activeQuiz = $('#quizzes article'),
+          questionsHeight = $activeQuiz.find('.usanetwork-quiz-questions').height();
+      $('#quizzes article > .content').css({'min-height': questionsHeight + 'px'});
     },
 
     setActiveQuizNav: function() {

@@ -91,7 +91,7 @@
               prevArrow: prevArrow,
               slidesToShow: 1,
               slidesToScroll: 1,
-              swipe: false,
+              //swipe: false,
               speed: 300
             })
             .on('afterChange', function(event, slick, currentSlide){
@@ -100,22 +100,6 @@
             .on('beforeChange', function(event, slick, currentSlide, nextSlide){
 
             });
-
-        //---> Swipe scroll disabled for desktop
-
-        // $("#myCarousel").swiperight(function(){
-
-        //    carouselOn = true;
-        //    $("#myCarousel").carousel('prev');
-        //    top3Telemundo.prevCount();
-        //  });
-
-        // $("#myCarousel").swipeleft(function(){
-
-        //    carouselOn = true;
-        //    $("#myCarousel").carousel('next');
-        //    top3Telemundo.nextCount();
-        // });
 
       },
       droppables : function(){

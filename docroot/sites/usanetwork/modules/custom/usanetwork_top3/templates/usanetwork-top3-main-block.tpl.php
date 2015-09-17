@@ -1,57 +1,20 @@
 <div id="slider-container">
 
   <div class="slider-wrapper">
-    <div class="slide">
-      <div class="slide-content">
-        <div class="slide-content-inner" data-slide-id="0">
-          <div class="img-wrapper">
-            <img src="images/1.jpg">
+    <?php foreach ($slides as $key => $slide) : ?>
+      <div class="slide">
+        <div class="slide-content">
+          <div class="slide-content-inner" data-slide-id="<?php print $key; ?>">
+            <div class="img-wrapper">
+              <img src="<?php print $slide['image']; ?>">
+            </div>
+            <div class="video-wrapper hide-block <?php ($slide['is_video']) ? print 'is-video' : FALSE; ?>"></div>
           </div>
-          <div class="video-wrapper hide-block"></div>
         </div>
       </div>
-    </div>
-    <div class="slide">
-      <div class="slide-content">
-        <div class="slide-content-inner" data-slide-id="1">
-          <div class="img-wrapper">
-            <img src="images/2.jpg">
-          </div>
-          <div class="video-wrapper hide-block"></div>
-        </div>
-      </div>
-    </div>
-    <div class="slide">
-      <div class="slide-content">
-        <div class="slide-content-inner" data-slide-id="2">
-          <div class="img-wrapper">
-            <img src="images/3.jpg">
-          </div>
-          <div class="video-wrapper hide-block"></div>
-        </div>
-      </div>
-    </div>
-    <div class="slide">
-      <div class="slide-content">
-        <div class="slide-content-inner" data-slide-id="3">
-          <div class="img-wrapper">
-            <img src="images/4.jpg">
-          </div>
-          <div class="video-wrapper hide-block"></div>
-        </div>
-      </div>
-    </div>
-    <div class="slide">
-      <div class="slide-content">
-        <div class="slide-content-inner" data-slide-id="4">
-          <div class="img-wrapper">
-            <img src="images/5.jpg">
-          </div>
-          <div class="video-wrapper hide-block"></div>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
+
 
   <div class="counter">
     <span class="current-slide"></span>

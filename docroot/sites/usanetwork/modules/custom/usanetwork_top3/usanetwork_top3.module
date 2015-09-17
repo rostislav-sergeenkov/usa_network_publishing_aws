@@ -57,6 +57,37 @@ function usanetwork_top3_theme($existing, $type, $theme, $path) {
 }
 
 function _usanetwork_top3_main_block() {
-  $theme_variables = array();
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $node = menu_get_object('node');
+
+  if (empty($node)) {
+    return '';
+  }
+
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+
+  $slides = array();
+  if (!empty($node->field_slides_content)) {
+    foreach ($node_wrapper->field_slides_content->getIterator() as $delta => $slide_item) {
+      $slide = array();
+      $slide_image = $slide_item->field_top3_image->value();
+      $slide_video = $slide_item->field_top3_video->value();
+      if (empty($slide_image)) {
+        $slide_image_url = _usanetwork_mpx_video_get_image_path($slide_video);
+      } else {
+        $slide_image_url = $slide_image['uri'];
+      }
+      $slide['image'] = image_style_url('2880x1620', $slide_image_url);
+      $slide['is_video'] = (!empty($slide_video)) ? TRUE : FALSE;
+      $slides[] = $slide;
+    }
+  }
+
+  $theme_variables = array(
+    'slides' => $slides,
+  );
   return theme('usanetwork_top_main_block', $theme_variables);
 }

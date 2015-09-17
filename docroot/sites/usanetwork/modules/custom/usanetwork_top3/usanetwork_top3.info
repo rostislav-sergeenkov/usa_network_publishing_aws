@@ -4,6 +4,7 @@ core = 7.x
 package = USA Network
 version = 7.x-1.0
 project = usanetwork_top3
+dependencies[] = context
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = entityreference

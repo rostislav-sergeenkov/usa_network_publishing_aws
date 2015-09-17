@@ -167,7 +167,7 @@ function usanetwork_dtm_page_alter(&$page) {
   $report_id = variable_get('sitecatalyst_report_suite_id', '');
   if (!empty($report_id)) {
     $script = '<script type="text/javascript" language="JavaScript">var s_account="' . variable_get('sitecatalyst_report_suite_id', '') . '";</script>';
-    $page['page_bottom']['sitecatalyst']['header']['#markup'] = $script;
+    $page['page_bottom']['usa_dtm']['header']['#markup'] = $script;
 
     if (module_exists('tve_auth') || module_exists('tve_auth2')) {
       drupal_add_js(array(

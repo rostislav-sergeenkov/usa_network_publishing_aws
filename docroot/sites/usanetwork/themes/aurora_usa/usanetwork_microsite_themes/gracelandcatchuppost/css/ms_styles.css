@@ -237,6 +237,9 @@ header .primary-nav #logo {
   position: relative;
   top: 6px;
 }
+#site-nav #site-nav-top.no-sponsor {
+  max-width: 384px;
+}
 #site-nav #site-nav-top a {
   float: left;
   margin-top: 2%;
@@ -653,6 +656,25 @@ section h2 {
   }
 }
 
+@media (max-width: 883px) {
+  #site-nav.mobile #site-nav-center {
+    width: 100%;
+    max-width: 100%;
+    min-width: 224px;
+    margin: 0 auto;
+  }
+  #site-nav #site-nav-top.no-sponsor {
+    max-width: 100%;
+    width: 55%;
+    min-width: 224px;
+    position: absolute;
+    top: 8px;
+    left: 100%;
+    margin-left: calc(-50% - 25.2%);
+    margin-right: 0;
+  }
+}
+
 @media (max-width: 670px) {
   html,
   body {
@@ -662,5 +684,16 @@ section h2 {
   #site-nav-left {
     width: 38px;
     height: 58.5px;
+  }
+}
+
+@media (max-width: 460px) {
+  #site-nav.mobile #site-nav-center {
+    width: 224px;
+  }
+  #site-nav #site-nav-top.no-sponsor {
+    width: 224px;
+    margin-left: calc(-50% - 104px);
+    top: 9px;
   }
 }

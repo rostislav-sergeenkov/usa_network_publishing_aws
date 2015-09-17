@@ -29586,33 +29586,33 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .first-wrapper {
   border: 4px solid #ff3705;
-  width: 209px;
+  width: 20%;
   position: absolute;
-  height: 131px;
+  height: 13em;
   z-index: 1;
-  margin: 30px 0 0 185px;
+  margin: 3% 0 0 18%;
   background: url(../images/first_50.png);
   background-repeat: no-repeat;
   background-position: 152px 80px;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .second-wrapper {
   border: 4px solid #ff3705;
-  width: 209px;
+  width: 20%;
   position: absolute;
-  height: 131px;
+  height: 13em;
   z-index: 1;
-  margin: 30px 0 0 417px;
+  margin: 3% 0 0 40%;
   background: url(../images/second_50.png);
   background-repeat: no-repeat;
   background-position: 152px 80px;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .third-wrapper {
   border: 4px solid #ff3705;
-  width: 209px;
+  width: 20%;
   position: absolute;
-  height: 131px;
+  height: 13em;
   z-index: 1;
-  margin: 30px 0 0 649px;
+  margin: 3% 0 0 62%;
   background: url(../images/third_50.png);
   background-repeat: no-repeat;
   background-position: 152px 80px;

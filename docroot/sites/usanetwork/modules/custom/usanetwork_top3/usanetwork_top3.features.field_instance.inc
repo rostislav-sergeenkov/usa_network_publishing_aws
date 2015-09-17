@@ -44,7 +44,7 @@ function usanetwork_top3_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_multiselect',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'mpx' => 0,
@@ -71,7 +71,7 @@ function usanetwork_top3_field_default_field_instances() {
           'upload' => 'upload',
         ),
       ),
-      'type' => 'media_multiselect',
+      'type' => 'media_generic',
       'weight' => 0,
     ),
   );

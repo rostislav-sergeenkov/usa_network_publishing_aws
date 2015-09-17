@@ -1,5 +1,6 @@
 #block-usanetwork-top3-usanetwork-top3-main-block {
   #slider-container {
+    overflow: hidden;
     position: relative;
   }
   .slick-slider {
@@ -173,7 +174,7 @@
     transition: all 0.3s ease-out;
   }
   .drop-area {
-    position: fixed;
+    position: absolute;
     top: 100%;
     left: 0;
     z-index: 99;

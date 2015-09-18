@@ -808,21 +808,38 @@ function _usanetwork_episodes_get_season_episodes_data($season_number, $show_nid
     $query->leftJoin('field_data_field_tve_preview_episode', 'preview_field', 'preview_field.entity_id=episode_node.nid');
     $query->addField('preview_field', 'field_tve_preview_episode_target_id', 'preview_fid');
 
+    $query->leftJoin('field_data_field_original_air_date', 'field_original_air_date', 'field_original_air_date.entity_id=episode_node.nid');
+    $query->addField('field_original_air_date', 'field_original_air_date_value', 'air_date');
+
     $result = $query->execute()->fetchAll();
 
     if ($result) {
-      // Sort by episode number using integer value instead string
-      usort($result, function ($a, $b) {
-        if (intval($a->episode_number) == intval($b->episode_number)) {
-          return 0;
-        }
-        elseif (intval($a->episode_number) > intval($b->episode_number)) {
-          return -1;
-        }
-        else {
-          return 1;
-        }
-      });
+      if (intval($result[0]->episode_number) > 0) {
+        // Sort by episode number using integer value instead string
+        usort($result, function ($a, $b) {
+          if (intval($a->episode_number) == intval($b->episode_number)) {
+            return 0;
+          }
+          elseif (intval($a->episode_number) > intval($b->episode_number)) {
+            return -1;
+          }
+          else {
+            return 1;
+          }
+        });
+      } else {
+        usort($result, function ($a, $b) {
+          if (intval($a->air_date) == intval($b->air_date)) {
+            return 0;
+          }
+          elseif (intval($a->air_date) > intval($b->air_date)) {
+            return -1;
+          }
+          else {
+            return 1;
+          }
+        });
+      }
 
       foreach ($result as &$result_item) {
         $episode_data = _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_number, $result_item->episode_number);

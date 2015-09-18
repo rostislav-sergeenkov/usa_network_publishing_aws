@@ -40,6 +40,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -113,6 +115,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -170,6 +174,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Value',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -216,6 +222,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Answer type',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -230,6 +238,8 @@ function usanetwork_quiz_field_default_field_instances() {
   // Exported field_instance: 'field_collection_item-field_quiz_questions-field_quiz_answers'
   $field_instances['field_collection_item-field_quiz_questions-field_quiz_answers'] = array(
     'bundle' => 'field_quiz_questions',
+    'custom_add_another' => 'Add another answer',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -256,6 +266,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Answers',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -297,6 +309,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -370,6 +384,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -426,6 +442,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Type',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -463,6 +481,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Video',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '',
       'file_extensions' => 'txt',
@@ -533,6 +553,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -614,6 +636,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Range',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'from' => array(
         'prefix' => '',
         'suffix' => '',
@@ -662,6 +686,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Share text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -714,6 +740,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Text',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -766,6 +794,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Title',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -826,6 +856,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -877,6 +909,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -920,6 +954,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Explore Tag',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -966,6 +1002,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1009,6 +1047,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Movie',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1052,6 +1092,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1109,6 +1151,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1183,6 +1227,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1240,6 +1286,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1297,6 +1345,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1354,6 +1404,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1415,6 +1467,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Calculation method',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1458,6 +1512,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Entry text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1515,6 +1571,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1564,6 +1622,8 @@ function usanetwork_quiz_field_default_field_instances() {
   // Exported field_instance: 'node-quiz-field_quiz_questions'
   $field_instances['node-quiz-field_quiz_questions'] = array(
     'bundle' => 'quiz',
+    'custom_add_another' => 'Add another question',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1593,6 +1653,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Questions',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1636,6 +1698,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Repeat text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1693,6 +1757,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Results',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1736,6 +1802,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1818,6 +1886,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Theme',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1860,6 +1930,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Thumbnail',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => 'quiz/thumbnail',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1932,6 +2004,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Type',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1975,6 +2049,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'H1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2032,6 +2108,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2089,6 +2167,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Related Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2134,6 +2214,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Custom JS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2193,6 +2275,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'Custom CSS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2250,6 +2334,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2307,6 +2393,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2387,6 +2475,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2437,6 +2527,8 @@ function usanetwork_quiz_field_default_field_instances() {
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(

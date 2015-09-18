@@ -95,10 +95,10 @@
 
         if (args.authnStatus == 'Authenticated') {
           AdobeTracking.tve_passguid = tve.adobePass.getUserGuid();
-          s.contextData['tve.passauthensuccess'] = 'true';
+          AdobeTracking.tve_passauthensuccess = 'true';
           _trackEvent('', 'Pass:Authenticate:Success', 'contextData.tve.app,contextData.tve.passauthensuccess,contextData.tve.passguid,contextData.tve.contenthub,contextData.tve.passauthen,contextData.tve.passmvpd' + additionalKeys);
         } else {
-          s.contextData['tve.passauthenfail'] = 'true';
+          AdobeTracking.tve_passauthenfail = 'true';
           _trackEvent('', 'Pass:Authenticate:Fail', 'contextData.tve.app,contextData.tve.passauthenfail,contextData.tve.contenthub,contextData.tve.passauthen,contextData.tve.passmvpd' + additionalKeys);
         }
 
@@ -194,7 +194,6 @@
       _setPageName(pageName);
     }
 
-    //if (s.contextData['tve.contenthub'] != 'Pass') {
     if (AdobeTracking.tve_contentHub != 'Pass') {
       $.each(s.contextData, function(key, value) {
         if (key.indexOf('tve.pass') != -1) {

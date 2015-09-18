@@ -758,28 +758,29 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
       $draggable_data = json_decode($draggable_data);
     }
   }
-
+  // Preventing situation when mobile image is empty. Filling it with desktop
   if (!empty($aspot_node->field_usa_aspot_desktop)) {
-    $file = file_load($aspot_node_wrapper->field_usa_aspot_desktop->file->fid->value());
-    $banner_images['desktop'] = $file->uri;
+    $file = $aspot_node_wrapper->field_usa_aspot_desktop->value();
+    if ($file) {
+      $banner_images['desktop'] = $file['uri'];
+    }
   }
-
+// Preventing situation when mobile image is empty. Filling it with desktop
+  $banner_images['mobile'] = $banner_images['desktop'];
   if (!empty($aspot_node->field_usa_aspot_mobile)) {
-    $file = file_load($aspot_node_wrapper->field_usa_aspot_mobile->file->fid->value());
-    $banner_images['mobile'] = $file->uri;
-  }
-  else {
-    // Preventing situation when mobile image is empty. Filling it with desktop
-    $banner_images['mobile'] = $banner_images['desktop'];
+    $file = $aspot_node_wrapper->field_usa_aspot_mobile->value();
+    if ($file) {
+      $banner_images['mobile'] = $file['uri'];
+    }
   }
 
+  // Preventing situation when tablet image is empty. Filling it with desktop.
+  $banner_images['tablet'] = $banner_images['desktop'];
   if (!empty($aspot_node->field_usa_aspot_tablet_portrait)) {
-    $file = file_load($aspot_node_wrapper->field_usa_aspot_tablet_portrait->file->fid->value());
-    $banner_images['tablet'] = $file->uri;
-  }
-  else {
-    // Preventing situation when tablet image is empty. Filling it with desktop
-    $banner_images['tablet'] = $banner_images['desktop'];
+    $file = $aspot_node_wrapper->field_usa_aspot_tablet_portrait->value();
+    if ($file) {
+      $banner_images['tablet'] = $file['uri'];
+    }
   }
 
   $field_aspot_linked_content = _usanetwork_get_field_item('node', $aspot_node, 'field_aspot_linked_content' ,'target_id');

@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -29331,6 +29331,52 @@ body.blog .view-display-id-blog_content .views-row {
   overflow: hidden;
   position: relative;
 }
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide {
+  position: relative;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide.slick-active .play-button {
+  display: block;
+  background: firebrick;
+  cursor: pointer;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  height: 30px;
+  width: 100px;
+  z-index: 1;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide .play-button, #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide .play-button.inactive {
+  display: none;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .video-wrapper {
+  height: 100%;
+  width: 100%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .video-wrapper.active {
+  display: block;
+  background: #000000;
+  height: 100%;
+  width: 100%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .video-wrapper.active .fix-drag {
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  height: calc(100% - 33px);
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .img-wrapper {
+  height: 100%;
+  width: 100%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .img-wrapper img {
+  height: 100%;
+  width: 100%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .img-wrapper.inactive {
+  display: none;
+}
 #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .info {
   background: yellowgreen;
   right: 0;
@@ -29421,6 +29467,12 @@ body.blog .view-display-id-blog_content .views-row {
   background: transparent;
   color: #76737C;
   text-align: center;
+  height: 100%;
+  width: 100%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block .slide-content-inner {
+  height: 100%;
+  width: 100%;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .slide-content_remove {
   display: none;

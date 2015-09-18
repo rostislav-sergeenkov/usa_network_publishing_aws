@@ -3,12 +3,17 @@
   <div class="slider-wrapper">
     <?php foreach ($slides as $key => $slide) : ?>
       <div class="slide">
+        <div class="play-button">play-button</div>
         <div class="slide-content">
           <div class="slide-content-inner" data-slide-id="<?php print $key; ?>">
             <div class="img-wrapper">
               <img src="<?php print $slide['image']; ?>">
             </div>
-            <div class="video-wrapper hide-block <?php ($slide['is_video']) ? print 'is-video' : FALSE; ?>"></div>
+            <div class="video-wrapper hide-block"
+                 data-src="//player.theplatform.com/p/HNK2IC/dd_usa_vod_noauth/embed/select/EJIlKSvvTE19?autoPlay=false">
+              <div class="fix-drag"></div>
+            </div>
+<!--            <div class="video-wrapper hide-block --><?php //($slide['is_video']) ? print 'is-video' : FALSE; ?><!--"></div>-->
           </div>
         </div>
       </div>

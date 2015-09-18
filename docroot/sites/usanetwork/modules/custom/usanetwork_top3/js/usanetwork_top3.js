@@ -37,8 +37,119 @@
       $('.num3').fadeIn(300).animate({marginTop:'-10px'},90);
     },2000);
 
+
+    // player service
+    var playerService = {
+
+      createPlayer: function (el) {
+        console.info('createPlayer');
+        var videoBlock = el.find('.video-wrapper'),
+            imgBlock = el.find('.img-wrapper'),
+            src = videoBlock.data('src'),
+            frame = "<iframe src=" + src + " id='slide-player' allowfullscreen='' width='100%' height='100%' frameborder='0'></iframe>";
+
+        if (!videoBlock.hasClass('active')) {
+          // make image block inactive
+          imgBlock.addClass('inactive');
+
+          // show video player
+          videoBlock
+              .append(frame)
+              .addClass('active')
+              .removeClass('hide-block')
+              .velocity("fadeIn", {
+                duration: 200
+              });
+
+          // add player listeners
+          playerService.bindPlayer();
+
+          $('#slide-player').load(function () {
+
+          });
+        }
+      },
+
+      removePlayer: function (el) {
+        console.info('removePlayer');
+        var videoBlock = el.find('.video-wrapper'),
+            imgBlock = el.find('.img-wrapper'),
+            frame = videoBlock.find('#slide-player'),
+            playButton = el.find('.play-button');
+
+        if (videoBlock.hasClass('active')) {
+          // hide video block
+          videoBlock
+              .addClass('hide-block')
+              .removeClass('active')
+              .css({
+                display: 'none',
+                opacity: 0
+              });
+
+          // remove player block
+          frame.remove();
+
+          // make image block active
+          imgBlock.removeClass('inactive');
+          playButton.removeClass('inactive');
+
+
+          // reset player listeners
+          playerService.resetPlayer();
+        }
+      },
+
+      bindPlayer: function () {
+        console.info('bindPlayer');
+        // check on $pdk object
+        if (!($pdk = window.$pdk)) {
+          return;
+        }
+
+        $pdk.bind('slide-player');
+        $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+
+        function _onReleaseEnd(pdkEvent) {
+          console.info('OnReleaseEnd');
+          //slideService.resetSlide();
+        }
+      },
+
+      playPlayer: function () {
+        console.info('playPlayer');
+        $pdk.controller.clickPlayButton(true);
+        $pdk.controller.pause(false);
+      },
+
+      pausePlayer: function () {
+        console.info('pausePlayer');
+        $pdk.controller.clickPlayButton(false);
+        $pdk.controller.pause(true);
+      },
+
+      resetPlayer: function () {
+        console.info('resetPlayer');
+        $pdk.controller.listenerId = 0;
+        for (var key in $pdk.controller.listeners) {
+          delete $pdk.controller.listeners[key];
+        }
+      }
+    };
+    // end
+
     var top3Usanetwork = {
       init : function(config){
+
+        // add click on play button in slide
+        $('#slider-container .play-button').on('click', function () {
+
+          var playButton = $(this),
+              parentBlock = playButton.closest('.slide.slick-active');
+
+          playButton.addClass('inactive');
+          playerService.createPlayer(parentBlock);
+        });
 
         /*$("#loading").fadeIn();
 
@@ -98,6 +209,11 @@
               currentSlideNum.text(currentSlide + 1);
             })
             .on('beforeChange', function(event, slick, currentSlide, nextSlide){
+
+              var currentSlideBlock = sliderWrapper.find('.slide.slick-active');
+
+              // remove player
+              playerService.removePlayer(currentSlideBlock);
 
             });
 

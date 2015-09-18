@@ -46,11 +46,11 @@
         s.eVar63 = menu_name;
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
-          s.bcf = function () {
+          s.goToUrl = function () {
             Drupal.behaviors.omniture_tracking.goToUrl($self);
           };
         }
-        s.tl(this, 'o', 'Global Menu Click');
+        s.tl(this, 'o', 'Global Menu Click', null, s.goToUrl);
         s.manageVars("clearVars", s.linkTrackVars, 1);
       }
     },
@@ -63,11 +63,11 @@
       s.linkTrackEvents = s.events = 'event64';
       s.eVar64 = name;
       if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
-      s.tl(this, 'o', 'Global SubMenu Click');
+      s.tl(this, 'o', 'Global SubMenu Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -141,12 +141,12 @@
       s.eVar65 = 'Schedule Bar : ' + item_name;
 
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', 'Schedule Bar Click');
+      s.tl(this, 'o', 'Schedule Bar Click', null, s.goToUrl);
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -161,12 +161,12 @@
       s.eVar74 = name;
 
       if ($self.attr('href') != '#') {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', 'Social Follow');
+      s.tl(this, 'o', 'Social Follow', null, s.goToUrl);
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -181,12 +181,12 @@
       s.eVar64 = link_name;
 
       if ($self.attr('href') != '#') {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', 'Footer Item Clicked');
+      s.tl(this, 'o', 'Footer Item Clicked', null, s.goToUrl);
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -222,12 +222,12 @@
       s.eVar55 = name;
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', name + ' Click');
+      s.tl(this, 'o', name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -247,12 +247,12 @@
       }
 
       if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', pageName + ' ' + name + ' Click');
+      s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -281,12 +281,12 @@
       }
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', name + ' Click');
+      s.tl(this, 'o', name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
     aspotClick: function ($self, pageName, name, slideName) {
@@ -305,14 +305,14 @@
       }
 
       if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
-        s.bcf = function () {
+        s.goToUrl = function () {
           setTimeout(function () {
             window.location = $self.attr('href');
           }, 500);
         };
       }
 
-      s.tl(this, 'o', pageName + ' ' + name + ' Click');
+      s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 

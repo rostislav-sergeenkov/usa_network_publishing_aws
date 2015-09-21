@@ -182,7 +182,7 @@
 
       if ($self.attr('href') != '#') {
         s.bcf = function () {
-          //Drupal.behaviors.omniture_tracking.goToUrl($self);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 

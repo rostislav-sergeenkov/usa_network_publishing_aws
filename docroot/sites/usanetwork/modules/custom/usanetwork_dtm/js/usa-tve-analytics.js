@@ -43,7 +43,7 @@
     AdobeTracking.tve_passauthorize = status ? 'Authorized' : 'Not Authorized';
     AdobeTracking[status ? 'tve_passauthorizesuccess' : 'tve_passauthorizefail'] = 'true';
 
-    _trackEvent('', 'Pass:Authorize:' + (status ? 'Success' : 'Fail'), 'contextData.tve.app,contextData.tve.passauthorizefail,contextData.tve.passauthorizesuccess,contextData.tve.passguid,contextData.tve.passmvpd,contextData.tve.passnetwork,contextData.tve.network,contextData.tve.passauthorize' + additionalKeys);
+    _trackEvent('', 'Pass:Authorize:' + (status ? 'Success' : 'Fail'), 'AdobeTracking.tve_app,AdobeTracking.tve_passauthorizefail,AdobeTracking.tve_passauthorizesuccess,AdobeTracking.tve_passguid,AdobeTracking.tve_passmvpd,AdobeTracking.tve_passNetwork,AdobeTracking.tve_network,AdobeTracking.tve_passauthorize' + additionalKeys);
     $.cookie(AUTH_COOKIE_NAME, '1');
   }
 
@@ -78,7 +78,7 @@
         AdobeTracking.tve_platform = platform;
         AdobeTracking.tve_domain = document.domain;
 
-        _trackEvent('', args.mvpd_id + ' Selected', 'contextData.tve.platform,contextData.tve.domain,contextData.tve.passselected,contextData.tve.passmvpd,contextData.tve.passnetwork,contextData.tve.network' + additionalKeys);
+        _trackEvent('', args.mvpd_id + ' Selected', 'AdobeTracking.tve_platform,AdobeTracking.tve_domain,AdobeTracking.tve_passselected,AdobeTracking.tve_passmvpd,AdobeTracking.tve_passNetwork,AdobeTracking.tve_network' + additionalKeys);
 
         break;
       case events.ADOBE_PASS_LANDING:
@@ -96,10 +96,10 @@
         if (args.authnStatus == 'Authenticated') {
           AdobeTracking.tve_passguid = tve.adobePass.getUserGuid();
           AdobeTracking.tve_passauthensuccess = 'true';
-          _trackEvent('', 'Pass:Authenticate:Success', 'contextData.tve.app,contextData.tve.passauthensuccess,contextData.tve.passguid,contextData.tve.contenthub,contextData.tve.passauthen,contextData.tve.passmvpd' + additionalKeys);
+          _trackEvent('', 'Pass:Authenticate:Success', 'AdobeTracking.tve_app,AdobeTracking.tve_passauthensuccess,AdobeTracking.tve_passguid,AdobeTracking.tve_contentHub,AdobeTracking.tve_passauthen,AdobeTracking.tve_passmvpd' + additionalKeys);
         } else {
           AdobeTracking.tve_passauthenfail = 'true';
-          _trackEvent('', 'Pass:Authenticate:Fail', 'contextData.tve.app,contextData.tve.passauthenfail,contextData.tve.contenthub,contextData.tve.passauthen,contextData.tve.passmvpd' + additionalKeys);
+          _trackEvent('', 'Pass:Authenticate:Fail', 'AdobeTracking.tve_app,AdobeTracking.tve_passauthenfail,AdobeTracking.tve_contentHub,AdobeTracking.tve_passauthen,AdobeTracking.tve_passmvpd' + additionalKeys);
         }
 
         break;
@@ -132,7 +132,7 @@
     AdobeTracking.tve_affiliate = affiliateId;
     AdobeTracking.tve_localstream = (status ? 'true' : 'false');
 
-    _trackEvent('', 'Stream Authorization ' + (status ? 'Success' : 'Fail'), 'contextData.tve.localstream,contextData.tve.passmvpd,contextData.tve.affiliate' + additionalKeys);
+    _trackEvent('', 'Stream Authorization ' + (status ? 'Success' : 'Fail'), 'AdobeTracking.tve_localstream,AdobeTracking.tve_passmvpd,AdobeTracking.tve_affiliate' + additionalKeys);
   }
 
   function setup() {
@@ -210,7 +210,7 @@
 
   function _trackEvent(events, linkName, linkVars) {
     s.events = s.linkTrackEvents = events;
-    s.linkTrackVars = linkVars = linkVars + ',contextData.tve.minute,contextData.tve.hour,contextData.tve.day,contextData.tve.date,contextData.tve.platform,contextData.tve.domain,contextData.tve.app,contextData.tve.passnetwork,contextData.tve.network';
+    s.linkTrackVars = linkVars = linkVars + ',AdobeTracking.tve_minute,AdobeTracking.tve_hour,AdobeTracking.tve_day,AdobeTracking.tve_date,AdobeTracking.tve_platform,AdobeTracking.tve_domain,AdobeTracking.tve_app,AdobeTracking.tve_passNetwork,AdobeTracking.tve_network';
     s.pev2 = linkName;
     s.tl(true, 'o', linkName);
 

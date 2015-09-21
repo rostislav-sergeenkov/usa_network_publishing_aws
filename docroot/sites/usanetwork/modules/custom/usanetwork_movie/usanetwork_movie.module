@@ -285,24 +285,6 @@ function usanetwork_movie_form_movie_node_form_alter(&$form, &$form_state, $form
       break;
     }
   }
-
-  // If we don't find a character term in the role vocab, there's no reason to
-  // go further since the user won't be able to select the character role.
-  if (!empty($character_role_id)) {
-    $lang = $form['language']['#value'];
-
-    $field_indices = array_filter(array_keys($form['field_movie_credit'][$lang]), 'is_int');
-    foreach ($field_indices as $key) {
-      if (isset($form['field_movie_credit'][$lang][$key]['field_movie_credit_role']) &&
-        isset($form['field_movie_credit'][$lang][$key]['field_movie_credit_character'])) {
-
-        // Show the character field only if the character role has been selected.
-        $form['field_movie_credit'][$lang][$key]['field_movie_credit_character']['#states']['visible'] = array(
-          ':input[name="field_movie_credit[' . $lang . '][' . $key . '][field_movie_credit_role][' . $lang . ']"]' => array('value' => "$character_role_id"),
-        );
-      }
-    }
-  }
 }
 
 function usanetwork_movie_submenu() {

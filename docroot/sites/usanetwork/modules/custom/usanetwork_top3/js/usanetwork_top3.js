@@ -44,13 +44,13 @@
       createPlayer: function (el) {
         console.info('createPlayer');
         var videoBlock = el.find('.video-wrapper'),
-            imgBlock = el.find('.img-wrapper'),
+            neighborBlock = el.find('.slide-content-inner'),
             src = videoBlock.data('src'),
             frame = "<iframe src=" + src + " id='slide-player' allowfullscreen='' width='100%' height='100%' frameborder='0'></iframe>";
 
         if (!videoBlock.hasClass('active')) {
           // make image block inactive
-          imgBlock.addClass('inactive');
+          neighborBlock.addClass('inactive');
 
           // show video player
           videoBlock
@@ -73,7 +73,7 @@
       removePlayer: function (el) {
         console.info('removePlayer');
         var videoBlock = el.find('.video-wrapper'),
-            imgBlock = el.find('.img-wrapper'),
+            neighborBlock = el.find('.slide-content-inner'),
             frame = videoBlock.find('#slide-player'),
             playButton = el.find('.play-button');
 
@@ -91,7 +91,7 @@
           frame.remove();
 
           // make image block active
-          imgBlock.removeClass('inactive');
+          neighborBlock.removeClass('inactive');
           playButton.removeClass('inactive');
 
 
@@ -231,7 +231,7 @@
               $('.drop-area__item').removeClass('ui-sortable-handle');
 
               var cleanUp = draggableEl;
-              topItem=draggableEl.innerHTML;
+              topItem=$(draggableEl).find('.slide-content-inner').clone();
               console.info(draggableEl);
               instanceDrop = instance.el.id;
 
@@ -522,6 +522,13 @@
                 classie.remove( el , 'slide-item-grab');
               },500);
 
+              function convertCanvasToImage(canvas) {
+                var ctx = canvas.getContext('2d');
+                var image = new Image();
+                image.src = ctx['canvas'].toDataURL("image/png");
+                return image;
+              }
+
               var afterDropFn = function() {
 
                 clearInterval(dropZone2);
@@ -588,10 +595,26 @@
                   classie.add( body, 'selectionComplete' );
 
                   //highlight share btn
-                  $('#goToCanvas').css({
+                  $('#compare-button').css({
                     opacity: 1,
                     cursor: 'pointer',
                     background:'green'
+                  }).click(function(){
+                    $('#share-block img').remove();
+                    $('#share-block .first').html($('#one .img-wrapper img').clone());
+                    $('#share-block .second').html($('#two .img-wrapper img').clone());
+                    $('#share-block .third').html($('#three .img-wrapper img').clone());
+                    var shareBlock = $('#share-block'),
+                        imgShare = $('#share-img');
+                    shareBlock.css({
+                      visibility: 'visible'
+                    });
+                    html2canvas(shareBlock, {
+                      onrendered: function(canvas) {
+                        console.info(canvas);
+                        imgShare.append(convertCanvasToImage(canvas));
+                      }
+                    });
                   });
                   // show dropArea
                   $('#drop-area').css({

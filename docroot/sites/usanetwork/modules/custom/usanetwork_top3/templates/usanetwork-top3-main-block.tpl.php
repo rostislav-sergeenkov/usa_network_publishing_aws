@@ -9,12 +9,12 @@
             <div class="img-wrapper">
               <img src="<?php print $slide['image']; ?>">
             </div>
-            <div class="video-wrapper hide-block"
+          </div>
+          <div class="video-wrapper hide-block"
                  data-src="//player.theplatform.com/p/HNK2IC/dd_usa_vod_noauth/embed/select/EJIlKSvvTE19?autoPlay=false">
               <div class="fix-drag"></div>
             </div>
 <!--            <div class="video-wrapper hide-block --><?php //($slide['is_video']) ? print 'is-video' : FALSE; ?><!--"></div>-->
-          </div>
         </div>
       </div>
     <?php endforeach; ?>
@@ -29,6 +29,21 @@
 
   <div class="info">info</div>
   <div class="container-message">This slide has already chosen!</div>
+  <div id="compare-button">Compare</div>
+  <div id="share-block">
+    <div class="first">
+
+    </div>
+    <div class="img-wrap">
+      <div class="second">
+
+      </div>
+      <div class="third">
+
+      </div>
+    </div>
+  </div>
+  <div id="share-img"></div>
   <div class="prev control-button">prev</div>
   <div class="next control-button">next</div>
 

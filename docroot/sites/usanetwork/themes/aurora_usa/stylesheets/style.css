@@ -29440,6 +29440,41 @@ body.blog .view-display-id-blog_content .views-row {
 #block-usanetwork-top3-usanetwork-top3-main-block .slick-slider .slide .hide-block {
   display: none;
 }
+#block-usanetwork-top3-usanetwork-top3-main-block #compare-button {
+  background: red;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  text-transform: uppercase;
+  top: 40px;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #share-block {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #share-block .first {
+  display: inline-block;
+  width: 70%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #share-block .img-wrap {
+  display: inline-block;
+  width: 28%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #share-block img {
+  height: 100%;
+  width: 100%;
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #share-img {
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
 #block-usanetwork-top3-usanetwork-top3-main-block .container-message {
   width: 100%;
   height: 100%;

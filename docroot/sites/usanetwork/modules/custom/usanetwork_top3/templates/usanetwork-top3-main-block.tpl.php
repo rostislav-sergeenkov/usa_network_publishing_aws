@@ -29,6 +29,21 @@
 
   <div class="info">info</div>
   <div class="container-message">This slide has already chosen!</div>
+  <div id="compare-button">Compare</div>
+  <div id="share-block">
+    <div class="first">
+
+    </div>
+    <div class="img-wrap">
+      <div class="second">
+
+      </div>
+      <div class="third">
+
+      </div>
+    </div>
+  </div>
+  <div id="share-img"></div>
   <div class="prev control-button">prev</div>
   <div class="next control-button">next</div>
 

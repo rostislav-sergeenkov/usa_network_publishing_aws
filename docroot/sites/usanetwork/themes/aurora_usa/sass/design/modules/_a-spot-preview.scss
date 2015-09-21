@@ -1,0 +1,32 @@
+.node-type-usanetwork-aspot {
+  #home_page_aspot_preview,
+  #show_aspot_preview,
+  #default_aspot_preview {
+    @include breakpoint($bp-min-2500-width) {
+      margin: 0 auto;
+      max-width: 2500px;
+    }
+    h2 {
+      color: #000000;
+      padding: 0 10px;
+    }
+  }
+
+  #home_page_aspot_preview,
+  #show_aspot_preview {
+    .slide {
+      position: relative;
+    }
+  }
+  #show_aspot_preview {
+    .slide {
+      width: 77.77778%;
+      @include breakpoint($bp-640-width) {
+        width: 100%;
+      }
+    }
+  }
+  #default_aspot_preview {
+    max-width: 1245px;
+  }
+}

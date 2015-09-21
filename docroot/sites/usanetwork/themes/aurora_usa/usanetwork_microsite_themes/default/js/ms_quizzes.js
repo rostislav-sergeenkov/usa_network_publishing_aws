@@ -182,14 +182,15 @@
 
               // reset Gigya share bar
               var link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + Drupal.settings.quizzes[quizNodeId].url,
-                  imageUrl = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img').attr('src');
-              Drupal.behaviors.ms_quizzes.updateSettingsGigyaSharebars(data.title, link, data.description, imageUrl);
+                  $image = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img'),
+                  imageUrl = $image.attr('data-src'),
+                  imageSrc = $image.attr('src');
 
-              // show Gigya share bar
-              Drupal.behaviors.ms_quizzes.initGigyaSharebar();
-
-              // reset quiz to track clicks in Omniture
-              Drupal.behaviors.ms_quizzes.resetOmnitureClicks(data.nid);
+              // if lazy loader is not done, force load image
+              if (imageSrc != imageUrl) {
+                $image.attr('src', imageUrl);
+                $('#microsite #quizzes #viewport .usanetwork-quiz-questions img, #microsite #quizzes #viewport .usanetwork-quiz-results img').attr('src', imageUrl);
+              }
 
               // re-initialize quiz
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
@@ -205,6 +206,16 @@
                 // update quiz navigation
                 quizzesNav.find('li.active').removeClass('active disabled');
                 quizzesNav.find('li#nav-quiz-' + data.nid).addClass('active');
+
+                setTimeout(function() {
+                  Drupal.behaviors.ms_quizzes.updateSettingsGigyaSharebars(data.title, link, data.description, imageUrl);
+
+                  // show Gigya share bar
+                  Drupal.behaviors.ms_quizzes.initGigyaSharebar();
+
+                  // reset quiz to track clicks in Omniture
+                  Drupal.behaviors.ms_quizzes.resetOmnitureClicks(data.nid);
+                }, 1000);
 
                 // send Omniture data
                 Drupal.behaviors.ms_global.setOmnitureData('quizzes', data.title);
@@ -348,62 +359,70 @@
         var quizId = $('#microsite #quizzes #viewport li').attr('data-node-id'),
             quiz = Drupal.settings.usanetwork_quiz[quizId],
             link = window.location.protocol + '//' + window.location.hostname + Drupal.settings.microsites_settings.base_path + '/quizzes/' + Drupal.settings.quizzes[quizId].url,
-            imageUrl = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img').attr('src');
+            $image = $('#microsite #quizzes #viewport .usanetwork-quiz-splash img'),
+            imageUrl = $image.attr('data-src'),
+            imageSrc = $image.attr('src');
 
-        $('#microsite #quizzes #gigya-share').attr('id', 'quiz-gigya-share');
-        self.updateSettingsGigyaSharebars(quiz.quizTitle, link, quiz.quizDescription, imageUrl);
+        // if the lazy loader hasn't loaded the image yet, force the image load
+        if (imageSrc != imageUrl) {
+          $image.attr('src', imageUrl);
+          $('#microsite #quizzes #viewport .usanetwork-quiz-questions img, #microsite #quizzes #viewport .usanetwork-quiz-results img').attr('src', imageUrl);
+        }
 
-        setTimeout(function(){
+        $(window).load(function(){
+          var self = Drupal.behaviors.ms_quizzes;
+
+          $('#microsite #quizzes #gigya-share').attr('id', 'quiz-gigya-share');
+          self.updateSettingsGigyaSharebars(quiz.quizTitle, link, quiz.quizDescription, imageUrl);
+
           // load Gigya share bar
           self.initGigyaSharebar();
           // reset quiz to track clicks in Omniture
           self.resetOmnitureClicks(quizId);
-        }, 1000);
 
+          self.setActiveQuizHeight();
 
-        // set defaults for quiz navigation
-        var wwidth = $(window).width(),
-            transitionWidth = 640,
-            slideWidth = (wwidth > transitionWidth) ? 200 : 100,
-            slideMargin = 30,
-            numSlides = Drupal.behaviors.ms_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin),
-            self = this;
+          // set defaults for quiz navigation
+          var wwidth = $(window).width(),
+              transitionWidth = 640,
+              slideWidth = (wwidth > transitionWidth) ? 200 : 100,
+              slideMargin = 30,
+              numSlides = Drupal.behaviors.ms_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin);
 
-        self.setActiveQuizHeight();
+          if ($('#microsite #quizzes #quizzes-nav li').length > 1) {
+            self.quizBxSlider = $('#microsite #quizzes #quizzes-nav .quizzes-nav-bxslider').bxSlider({
+              minSlides: numSlides,
+              maxSlides: numSlides,
+              slideWidth: slideWidth,
+              slideMargin: slideMargin,
+              nextSelector: '#quizzes-nav-next',
+              prevSelector: '#quizzes-nav-prev',
+              nextText: 'Next',
+              prevText: 'Previous',
+              pagerSelector: '#quizzes-nav-pagers',
+              infiniteLoop: false,
+              hideControlOnEnd: true,
+              onSliderLoad: function(){
+                self.showHidePager('#quizzes-nav', numSlides);
+                $('#microsite #quizzes #quizzes-nav').animate({ 'opacity': 1 }, 1000, 'jswing');
+              }
+            });
 
-        if ($('#microsite #quizzes #quizzes-nav li').length > 1) {
-          self.quizBxSlider = $('#microsite #quizzes #quizzes-nav .quizzes-nav-bxslider').bxSlider({
-            minSlides: numSlides,
-            maxSlides: numSlides,
-            slideWidth: slideWidth,
-            slideMargin: slideMargin,
-            nextSelector: '#quizzes-nav-next',
-            prevSelector: '#quizzes-nav-prev',
-            nextText: 'Next',
-            prevText: 'Previous',
-            pagerSelector: '#quizzes-nav-pagers',
-            infiniteLoop: false,
-            hideControlOnEnd: true,
-            onSliderLoad: function(){
-              self.showHidePager('#quizzes-nav', numSlides);
-              $('#microsite #quizzes #quizzes-nav').animate({ 'opacity': 1 }, 1000, 'jswing');
-            }
-          });
+            // initialize quiz nav clicks
+            $('#microsite #quizzes-nav-list li a').click(function(e){
+              e.preventDefault();
 
-          // initialize quiz nav clicks
-          $('#microsite #quizzes-nav-list li a').click(function(e){
-            e.preventDefault();
-
-            if ($(this).hasClass('disabled')) {
-              // do nothing
-            }
-            else {
-              var clickedNodeId = $(this).parent().attr('data-node-id');
-              $(this).parent().addClass('disabled');
-              self.switchQuizzes(clickedNodeId);
-            }
-          });
-        }
+              if ($(this).hasClass('disabled')) {
+                // do nothing
+              }
+              else {
+                var clickedNodeId = $(this).parent().attr('data-node-id');
+                $(this).parent().addClass('disabled');
+                self.switchQuizzes(clickedNodeId);
+              }
+            });
+          }
+        });
       }
     }
   }

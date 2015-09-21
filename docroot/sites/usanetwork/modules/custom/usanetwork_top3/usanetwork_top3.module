@@ -31,6 +31,8 @@ function usanetwork_top3_block_view($delta) {
         '#markup' => _usanetwork_top3_main_block(),
         '#attached' => array(
           'js' => array(
+            $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js",
+            drupal_add_js($pdk_controller_url, 'external'),
             drupal_get_path('module', 'usanetwork_top3') . '/js/draggabilly.pkgd.min.js',
             drupal_get_path('module', 'usanetwork_top3') . '/js/dragdrop.js',
             drupal_get_path('theme', 'aurora_usa') . '/javascripts/slick.min.js',

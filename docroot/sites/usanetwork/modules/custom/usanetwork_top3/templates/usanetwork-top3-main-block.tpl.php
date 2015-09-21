@@ -9,12 +9,12 @@
             <div class="img-wrapper">
               <img src="<?php print $slide['image']; ?>">
             </div>
-            <div class="video-wrapper hide-block"
+          </div>
+          <div class="video-wrapper hide-block"
                  data-src="//player.theplatform.com/p/HNK2IC/dd_usa_vod_noauth/embed/select/EJIlKSvvTE19?autoPlay=false">
               <div class="fix-drag"></div>
             </div>
 <!--            <div class="video-wrapper hide-block --><?php //($slide['is_video']) ? print 'is-video' : FALSE; ?><!--"></div>-->
-          </div>
         </div>
       </div>
     <?php endforeach; ?>

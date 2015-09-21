@@ -50,9 +50,6 @@
         height: 100%;
         width: 100%;
       }
-      &.inactive {
-        display: none;
-      }
     }
     // end
 
@@ -154,6 +151,9 @@
   .slide-content-inner {
     height: 100%;
     width: 100%;
+    &.inactive {
+      display: none;
+    }
   }
   .slide-content_remove {
     display: none;

@@ -76,8 +76,8 @@
         if (event === "click") {
 
           s.linkTrackVars = 'events,eVar21';
-          s.linkTrackEvents = s.events = 'event4';
-          //s.linkTrackEvents = s.events = 'event4,event6';
+          //s.linkTrackEvents = s.events = 'event4';
+          s.linkTrackEvents = s.events = 'event4,event6';
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Click Load');
@@ -86,8 +86,8 @@
         } else {
 
           s.linkTrackVars = 'events,eVar21';
-          s.linkTrackEvents = s.events = 'event5';
-          //s.linkTrackEvents = s.events = 'event5,event6';
+          //s.linkTrackEvents = s.events = 'event5';
+          s.linkTrackEvents = s.events = 'event5,event6';
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Auto Load');
@@ -182,7 +182,7 @@
 
       if ($self.attr('href') != '#') {
         s.bcf = function () {
-          Drupal.behaviors.omniture_tracking.goToUrl($self);
+          //Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 

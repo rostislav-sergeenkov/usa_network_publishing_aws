@@ -258,9 +258,6 @@
 
                         if($.trim(slot0.html())){
 
-                          console.log(topItem === topItem);
-                          console.log('&&&&&&&&&&&&&&&&&&&');
-
                           var carouselTarget = $('#one').find('.slide-content-inner').attr('data-slide-id');
 
                           sliderWrapper.slick('slickGoTo', carouselTarget);
@@ -419,10 +416,6 @@
                   $('.container-message').fadeIn(400).addClass('not-allowed');
                 }
               }
-
-              /*carouselOn = false;
-
-               if (carouselOn) return;*/
 
               //if top 3 already selected and user wants to drag again hide top 3 again
               function isEmpty( el ){
@@ -595,11 +588,7 @@
                   classie.add( body, 'selectionComplete' );
 
                   //highlight share btn
-                  $('#compare-button').css({
-                    opacity: 1,
-                    cursor: 'pointer',
-                    background:'green'
-                  }).click(function(){
+                  $('#compare-button').addClass('ready').click(function(){
                     $('#share-block img').remove();
                     $('#share-block .first').html($('#one .img-wrapper img').clone());
                     $('#share-block .second').html($('#two .img-wrapper img').clone());
@@ -609,13 +598,27 @@
                     shareBlock.css({
                       visibility: 'visible'
                     });
+                    $('#slider-container .slider-wrapper').before('<div class="load-more-loader"></div>');
                     html2canvas(shareBlock, {
                       onrendered: function(canvas) {
                         console.info(canvas);
                         imgShare.append(convertCanvasToImage(canvas));
+                        $('.load-more-loader').remove();
+                        $('#share-button').show();
                       }
                     });
                   });
+                  $('#share-button').click(function(){
+                    $('#compare-button').removeClass('ready').unbind('click');
+                    $('#share-block').css({
+                      visibility: 'hidden'
+                    });
+                    $('#share-block img').remove();
+                    $('#share-img img').remove();
+                    $('.drop-area__item .slide-content-inner').remove();
+                    $('#share-button').hide().unbind('click');
+                  });
+
                   // show dropArea
                   $('#drop-area').css({
                     zIndex:'1000',

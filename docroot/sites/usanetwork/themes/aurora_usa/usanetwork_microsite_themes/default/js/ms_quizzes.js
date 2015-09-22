@@ -369,6 +369,47 @@
           $('#microsite #quizzes #viewport .usanetwork-quiz-questions img, #microsite #quizzes #viewport .usanetwork-quiz-results img').attr('src', imageUrl);
         }
 
+        // set defaults for quiz navigation
+        var wwidth = $(window).width(),
+            transitionWidth = 640,
+            slideWidth = (wwidth > transitionWidth) ? 200 : 100,
+            slideMargin = 30,
+            numSlides = Drupal.behaviors.ms_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin);
+
+        if ($('#microsite #quizzes #quizzes-nav li').length > 1) {
+          self.quizBxSlider = $('#microsite #quizzes #quizzes-nav .quizzes-nav-bxslider').bxSlider({
+            minSlides: numSlides,
+            maxSlides: numSlides,
+            slideWidth: slideWidth,
+            slideMargin: slideMargin,
+            nextSelector: '#quizzes-nav-next',
+            prevSelector: '#quizzes-nav-prev',
+            nextText: 'Next',
+            prevText: 'Previous',
+            pagerSelector: '#quizzes-nav-pagers',
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            onSliderLoad: function(){
+              self.showHidePager('#quizzes-nav', numSlides);
+              $('#microsite #quizzes #quizzes-nav').animate({ 'opacity': 1 }, 1000, 'jswing');
+            }
+          });
+
+          // initialize quiz nav clicks
+          $('#microsite #quizzes-nav-list li a').click(function(e){
+            e.preventDefault();
+
+            if ($(this).hasClass('disabled')) {
+              // do nothing
+            }
+            else {
+              var clickedNodeId = $(this).parent().attr('data-node-id');
+              $(this).parent().addClass('disabled');
+              self.switchQuizzes(clickedNodeId);
+            }
+          });
+        }
+
         $(window).load(function(){
           var self = Drupal.behaviors.ms_quizzes;
 
@@ -381,47 +422,6 @@
           self.resetOmnitureClicks(quizId);
 
           self.setActiveQuizHeight();
-
-          // set defaults for quiz navigation
-          var wwidth = $(window).width(),
-              transitionWidth = 640,
-              slideWidth = (wwidth > transitionWidth) ? 200 : 100,
-              slideMargin = 30,
-              numSlides = Drupal.behaviors.ms_quizzes.getNumSlidesToDisplay(slideWidth, slideMargin);
-
-          if ($('#microsite #quizzes #quizzes-nav li').length > 1) {
-            self.quizBxSlider = $('#microsite #quizzes #quizzes-nav .quizzes-nav-bxslider').bxSlider({
-              minSlides: numSlides,
-              maxSlides: numSlides,
-              slideWidth: slideWidth,
-              slideMargin: slideMargin,
-              nextSelector: '#quizzes-nav-next',
-              prevSelector: '#quizzes-nav-prev',
-              nextText: 'Next',
-              prevText: 'Previous',
-              pagerSelector: '#quizzes-nav-pagers',
-              infiniteLoop: false,
-              hideControlOnEnd: true,
-              onSliderLoad: function(){
-                self.showHidePager('#quizzes-nav', numSlides);
-                $('#microsite #quizzes #quizzes-nav').animate({ 'opacity': 1 }, 1000, 'jswing');
-              }
-            });
-
-            // initialize quiz nav clicks
-            $('#microsite #quizzes-nav-list li a').click(function(e){
-              e.preventDefault();
-
-              if ($(this).hasClass('disabled')) {
-                // do nothing
-              }
-              else {
-                var clickedNodeId = $(this).parent().attr('data-node-id');
-                $(this).parent().addClass('disabled');
-                self.switchQuizzes(clickedNodeId);
-              }
-            });
-          }
         });
       }
     }

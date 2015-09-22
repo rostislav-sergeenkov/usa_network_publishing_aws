@@ -628,6 +628,8 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
  */
 function usanetwork_quiz_form_quiz_node_form_alter(&$form, &$form_state) {
   // add questions validation
+  $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_quiz') . '/css/quiz_edit.css';
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_quiz') . '/js/quiz_edit.js';
   $lang = $form['field_quiz_questions']['#language'];
   $form['field_quiz_questions'][$lang]['#element_validate'][] = '_usanetwork_quiz_question_validate';
 
@@ -636,9 +638,9 @@ function usanetwork_quiz_form_quiz_node_form_alter(&$form, &$form_state) {
     if (is_numeric($delta)) {
       $field_item['#prefix'] = '
       <div class="question-handling">
-      <div class="question-num">Qustion ' . ($delta + 1) . '</div>
+      <div class="question-num">Question ' . ($delta + 1) . '</div>
       <div class="question-expand-collapse">
-        <a href="#" class="question-expand">+</a> / <a href="#" class="question-collapse">-</a>
+        <a href="#" class="question-expand">+</a><a href="#" class="question-collapse">-</a>
       </div>
       </div>
     ';
@@ -1070,8 +1072,8 @@ function theme_usanetwork_quiz_field_multiple_value_form($variables) {
 
     $output = '<div class="form-item">';
     $output .= '
-      <div class="expand_collapse">
-        <a href="#" class="questions_expand">Expand</a>/<a href="#" class="questions_collapse">Collapse</a> Questions
+      <div class="expand-collapse">
+        <a href="#" class="questions-expand hide">Expand questions</a><a href="#" class="questions-collapse">Collapse questions</a>
       </div>
     ';
     $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table'))));

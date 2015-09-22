@@ -1,0 +1,44 @@
+.question-handling {
+  position: relative;
+}
+.expand-collapse {
+  position: absolute;
+  right: 170px;
+}
+.expand-collapse a {
+  text-decoration: none!important;
+}
+.expand-collapse a.hide {
+  display: none;
+}
+.question-num {
+  font-size: 20px;
+  font-weight: bold;
+}
+.question-handling a {
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  text-align: center;
+  text-decoration: none!important;
+  top: 0px;
+  width: 25px;
+}
+.question-handling.hide ~ * {
+  display: none;
+}
+.question-handling.hide .question-expand {
+  display: block;
+}
+.question-handling.hide .question-collapse {
+  display: none;
+}
+
+.question-handling .question-expand {
+  display: none;
+}
+.question-handling .question-collapse {
+  display: block;
+}

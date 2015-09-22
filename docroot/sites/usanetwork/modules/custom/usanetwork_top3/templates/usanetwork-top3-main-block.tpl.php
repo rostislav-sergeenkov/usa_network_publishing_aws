@@ -42,6 +42,7 @@
 
       </div>
     </div>
+    <div id="share-button">Share</div>
   </div>
   <div id="share-img"></div>
   <div class="prev control-button">prev</div>
@@ -64,6 +65,5 @@
       <div class="drop-area__item" id="three"></div>
     </div>
   </div>
-  <div class="drop-overlay"></div>
 
 </div>

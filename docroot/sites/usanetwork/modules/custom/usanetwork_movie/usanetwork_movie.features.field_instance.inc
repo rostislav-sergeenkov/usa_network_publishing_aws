@@ -66,7 +66,7 @@ function usanetwork_movie_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 
@@ -124,7 +124,7 @@ function usanetwork_movie_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 3,
+      'weight' => 6,
     ),
   );
 
@@ -201,7 +201,7 @@ function usanetwork_movie_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 6,
+      'weight' => 9,
     ),
   );
 
@@ -759,7 +759,7 @@ function usanetwork_movie_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 11,
     ),
   );
 
@@ -822,7 +822,7 @@ function usanetwork_movie_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 10,
     ),
   );
 
@@ -1063,7 +1063,7 @@ function usanetwork_movie_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 7,
     ),
   );
 

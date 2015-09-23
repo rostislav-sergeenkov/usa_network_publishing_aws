@@ -1570,7 +1570,8 @@ function _usanetwork_movie_cache_get_limited_related_video_content($movie_node, 
  * @param $accurate - if true cache will be create if it does not exist
  * @return bool|int|null|object|stdClass
  */
-function _usanetwork_movie_cache_get_related_video_content($movie_node, $full_object = FALSE, $accurate = FALSE) {
+function _usanetwork_movie_cache_get_related_video_content($movie_nid, $full_object = FALSE, $accurate = FALSE) {
+  $movie_node = node_load($movie_nid);
   $data = cache_get('usa_movie_related_video_' . $movie_node->nid);
 
   if (!$accurate && empty($data)) {

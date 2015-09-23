@@ -715,7 +715,7 @@ function usanetwork_mpx_video_file_presave($file) {
       }
     }
 
-    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] != 'Movies On USA')) {
+    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] !== 'Movies on USA')) {
       $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show');
       if (isset($node->nid)) {
         $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
@@ -723,7 +723,7 @@ function usanetwork_mpx_video_file_presave($file) {
       }
     }
 
-    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] == 'Movies On USA')) {
+    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] == 'Movies on USA')) {
       $node = _usanetwork_mpx_video_node_load_by_title($file->filename, 'movie');
       if (isset($node->nid)) {
         $file->field_movie[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
@@ -1147,9 +1147,10 @@ function _usanetwork_get_google_watch_variables($file) {
   if (isset($file->field_show)) {
     $show = $file_wrapper->field_show->value();
   }
-  $show_imdb_field = _usanetwork_get_field_item('node', $show, 'field_imdb_url', 'value');
-
-  $series_id =  _usanetwork_get_field_item('node', $show, 'field_series_id', 'value');
+  if (!empty($show)) {
+    $show_imdb_field = _usanetwork_get_field_item('node', $show, 'field_imdb_url', 'value');
+    $series_id = _usanetwork_get_field_item('node', $show, 'field_series_id', 'value');
+  }
 
   if (isset($show) && (isset($episode_number))) {
     $query = db_select('node', 'n')
@@ -1231,7 +1232,7 @@ function _usanetwork_get_google_watch_variables($file) {
     ),
     'partOfSeries' => array(
       '@type' => 'TVSeries',
-      'name' => $show->title,
+      'name' => isset($show) ? $show->title : '',
     ),
   );
 
@@ -1281,7 +1282,7 @@ function _usanetwork_get_google_watch_variables($file) {
 //      ),
 //    ),
   );
-  if ($short_episode) {
+  if (isset($short_episode) && ($short_episode))  {
     $google_watch['hasPart'] = array(
       '@type' => 'TVClip',
       'description' => 'trailer',
@@ -1312,7 +1313,7 @@ function _usanetwork_get_google_watch_variables($file) {
     $google_watch['description'] = $description;
   }
 
-  if ($persons) {
+  if (isset($persons) && ($persons)) {
     $google_watch['actor'] = array();
     $i = 0;
     foreach ($persons as $person) {

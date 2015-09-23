@@ -200,6 +200,15 @@
     text-align: center;
     height: 100%;
     width: 100%;
+    &:hover {
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+    }
+    &:active {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
   }
   .slide-content-inner {
     height: 100%;
@@ -210,15 +219,6 @@
   }
   .slide-content_remove {
     display: none;
-  }
-  .slide-content:hover {
-    cursor: move;
-    cursor: -webkit-grab;
-    cursor: grab;
-  }
-  .slide-content:active {
-    cursor: -webkit-grabbing;
-    cursor: grabbing;
   }
   .is-dragging {
     background: #4e4c52;
@@ -240,18 +240,18 @@
     text-indent: -9000px;
     position:absolute;
     z-index: 500000;
+    &:hover {
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+    }
+    &:active {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
   }
   .slide-item-grab_remove {
     display: none;
-  }
-  .slide-item-grab:hover {
-    cursor: move;
-    cursor: -webkit-grab;
-    cursor: grab;
-  }
-  .slide-item-grab:active {
-    cursor: -webkit-grabbing;
-    cursor: grabbing;
   }
   .is-dropped {
     opacity: 0;

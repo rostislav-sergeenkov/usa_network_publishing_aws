@@ -24,7 +24,7 @@
         nextArrow = sliderContainer.find('.next'),
         prevArrow = sliderContainer.find('.prev');
 
-    var jumpDropzone = setInterval(function(){
+    /*var jumpDropzone = setInterval(function(){
       $('.num1').fadeIn(300).animate({marginTop:'-15px'},110);
       $('.num1').fadeIn(300).animate({marginTop:'-10px'},90);
       $('#drop-area').animate({zIndex:'1000',marginTop:'130px'},250);
@@ -35,7 +35,7 @@
       $('#drop-area').animate({zIndex:'1000',marginTop:'120px'},150);
       $('.num3').fadeIn(300).animate({marginTop:'-15px'},110);
       $('.num3').fadeIn(300).animate({marginTop:'-10px'},90);
-    },2000);
+    },2000);*/
 
 
     // player service
@@ -484,7 +484,7 @@
               $('.num3').css('display','none');
 
               //stop jumping dropzone
-              clearInterval(jumpDropzone);
+              //clearInterval(jumpDropzone);
 
               /*var vidPlaying = $(".active").find('.video-js');
                console.log('hasClass video-js',+vidPlaying.hasClass('video-js'));
@@ -616,6 +616,11 @@
                     $('#share-block img').remove();
                     $('#share-img img').remove();
                     $('.drop-area__item .slide-content-inner').remove();
+                    $('#drop-area').animate({
+                      zIndex:'1000',
+                      margin:"120px 0 0 0"
+                    });
+                    sliderWrapper.slick('slickGoTo', 0);
                     $('#share-button').hide().unbind('click');
                   });
 

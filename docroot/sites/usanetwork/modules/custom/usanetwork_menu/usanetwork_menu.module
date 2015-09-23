@@ -1422,7 +1422,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
         ? (!empty($file->{$field})
           ? $file_wrapper->{$field}->value()->title
           : '')
-        : 'Movies',
+        : t('Movies'),
       'h1' => !empty($file->field_seo_h1) ? $file_wrapper->field_seo_h1->value() : '',
       'episode' => array(
         'is_show_related' => $is_show_related,
@@ -1432,7 +1432,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
               ? t('Full Episode')
               : t('Video'))
             : '')
-          : 'Movie',
+          : t('Movie'),
         'image_url' => !empty($episode_image_uri)
           ? image_style_url('300x169_video', $episode_image_uri)
           : '',

@@ -18,6 +18,8 @@
             var $carousel = $(this),
                 width = null,
                 margin = $navigation.css('margin-left'),
+                start_item = $carousel.find('li.active').index();
+                $carousel.jcarousel('scroll', start_item, false);
                 hideControls = function () {
                   $controls.hide();
                   $navigation.css('margin', '0');
@@ -44,11 +46,10 @@
 
               showControls();
             } else {
-              if (window.innerWidth >= window_size_tablet_portrait) {
-                hideControls();
-              }
-
+              width = width - 100;
               width = width / 7;
+
+              showControls();
             }
 
             $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');

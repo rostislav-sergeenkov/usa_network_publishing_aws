@@ -285,24 +285,6 @@ function usanetwork_movie_form_movie_node_form_alter(&$form, &$form_state, $form
       break;
     }
   }
-
-  // If we don't find a character term in the role vocab, there's no reason to
-  // go further since the user won't be able to select the character role.
-  if (!empty($character_role_id)) {
-    $lang = $form['language']['#value'];
-
-    $field_indices = array_filter(array_keys($form['field_movie_credit'][$lang]), 'is_int');
-    foreach ($field_indices as $key) {
-      if (isset($form['field_movie_credit'][$lang][$key]['field_movie_credit_role']) &&
-        isset($form['field_movie_credit'][$lang][$key]['field_movie_credit_character'])) {
-
-        // Show the character field only if the character role has been selected.
-        $form['field_movie_credit'][$lang][$key]['field_movie_credit_character']['#states']['visible'] = array(
-          ':input[name="field_movie_credit[' . $lang . '][' . $key . '][field_movie_credit_role][' . $lang . ']"]' => array('value' => "$character_role_id"),
-        );
-      }
-    }
-  }
 }
 
 function usanetwork_movie_submenu() {
@@ -488,7 +470,10 @@ function _usanetwork_movies_all_movies_render_block($items) {
  * @return mixed|string
  */
 function _usanetwork_movies_all_movies_block_item($movie) {
-  $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
+  $schedule_data = _usanetwork_get_field_item('node', $movie, 'field_promo_topic', 'value');
+  if (empty($schedule_data)) {
+    $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
+  }
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
@@ -540,7 +525,10 @@ function _usanetwork_movies_mb_block() {
           $is_first = ($i == 0) ? TRUE : FALSE;
           $i++;
           $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
-          $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
+          $show_time = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_topic', 'value');
+          if (empty($show_time)) {
+            $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
+          }
           $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
           $promos[] = array(
             'url' => url('node/' . $featured_movie->nid),
@@ -1374,8 +1362,20 @@ function usanetwork_movie_render_cast_crew_block() {
  * @param int $start_from
  * @param $limit = 0, if = 0 it returns all data.
  */
-function _usanetwork_movie_cache_get_limited_related_content($movie_node, $node_type, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
-  $data = _usanetwork_movie_cache_get_related_content($movie_node, $node_type);
+function _usanetwork_movie_cache_get_limited_related_content($movie_node_id, $node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+  $movie_node = node_load($movie_node_id);
+  $data = _usanetwork_movie_cache_get_related_content($movie_node, $node->type);
+
+  foreach ($data as $key => $data_item) {
+    if ($key < ($limit * 2)) {
+      if (isset($data_item->nid) && ($data_item->nid == $node->nid) && ($data_item->type == $node->type)) {
+        unset($data[$key]);
+      }
+    }
+    else {
+      break;
+    }
+  }
 
   if (!empty($data)) {
     if ($limit == 0) {
@@ -1418,7 +1418,7 @@ function _usanetwork_movie_cache_get_related_content($movie_node, $node_type, $f
  * @param $movie_node
  */
 function _usanetwork_movie_cache_set_related_content($movie_node, $node_type) {
-  $cached_data = usanetwork_movie_get_related_content($movie_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE, $node_type, USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUIZ_QUEUE);
+  $cached_data = usanetwork_movie_get_related_content($movie_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE, $node_type, USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUEUE);
   if (!empty($cached_data)) {
     foreach ($cached_data as $cached_id => &$cached_data_item) {
       $entity = entity_load($cached_data_item->entity_type, array($cached_data_item->entity_id));
@@ -1640,7 +1640,7 @@ function _usanetwork_movie_cache_set_related_video_content($movie_node) {
  */
 function usanetwork_movie_get_related_video_content($movie_node, $start_from = 0, $limit = 1) {
   $sorted_content = array();
-  $left_to_sort = USA_TV_SHOW_RELATED_CONSUMPTIONATOR_VIDEOS_QUEUE;
+  $left_to_sort = USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUEUE;
 
   $content = usanetwork_movie_get_related_content($movie_node, $start_from, $limit);
 

@@ -165,7 +165,7 @@ function usanetwork_movie_strongarm() {
           'weight' => '6',
         ),
         'title' => array(
-          'weight' => '2',
+          'weight' => '5',
         ),
         'path' => array(
           'weight' => '5',

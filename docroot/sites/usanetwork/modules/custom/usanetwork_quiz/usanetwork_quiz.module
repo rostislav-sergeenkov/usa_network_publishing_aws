@@ -7,8 +7,6 @@
 include_once 'usanetwork_quiz.features.inc';
 
 define('USANETWORK_QUIZ_DEFAULT_COLOR', '#0ab6e8');
-define('USA_QUIZ_RELATED_CONTENT_ITEMS', 6);
-
 
 /**
  * Implements hook_block_info().
@@ -131,6 +129,9 @@ function usanetwork_quiz_theme() {
       ),
       'template' => 'templates/usanetwork-quiz-quizes-carousel-item-v',
     ),
+    'usanetwork_quiz_field_multiple_value_form' => array(
+      'render element' => 'element',
+    ),
   );
 }
 
@@ -147,13 +148,6 @@ function usanetwork_quiz_menu() {
     'page arguments' => array('usanetwork_quiz_config_form'),
     'access arguments' => array('access administration pages'),
     'file' => 'usanetwork_quiz.admin.inc',
-  );
-  $items['ajax/quiz-consumptionator/get-related/%node/%/%'] = array(
-    'title' => 'Related content',
-    'page callback' => '_usanetwork_quiz_get_related_content_ajax',
-    'page arguments' => array(3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -634,8 +628,24 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
  */
 function usanetwork_quiz_form_quiz_node_form_alter(&$form, &$form_state) {
   // add questions validation
+  $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_quiz') . '/css/quiz_edit.css';
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_quiz') . '/js/quiz_edit.js';
   $lang = $form['field_quiz_questions']['#language'];
   $form['field_quiz_questions'][$lang]['#element_validate'][] = '_usanetwork_quiz_question_validate';
+
+  $form['field_quiz_questions'][LANGUAGE_NONE]['#theme'] = 'usanetwork_quiz_field_multiple_value_form';
+  foreach ($form['field_quiz_questions'][LANGUAGE_NONE] as $delta => &$field_item) {
+    if (is_numeric($delta)) {
+      $field_item['#prefix'] = '
+      <div class="question-handling">
+      <div class="question-num">Question ' . ($delta + 1) . '</div>
+      <div class="question-expand-collapse">
+        <a href="#" class="question-expand">+</a><a href="#" class="question-collapse">-</a>
+      </div>
+      </div>
+    ';
+    }
+  }
 }
 
 /**
@@ -988,51 +998,96 @@ function _usanetwork_quiz_related_content_block() {
   $content = menu_get_object('node');
 
   if (!empty($content)) {
-    $node = usanetwork_core_api_get_tv_content_node($content);
-    if (!empty($node)) {
-      $display_content = usanetwork_core_api_check_display_relate_content($node);
+    $tv_content_node = usanetwork_core_api_get_tv_content_node($content);
+    if (!empty($tv_content_node)) {
+      $display_content = usanetwork_core_api_check_display_relate_content($tv_content_node);
       if (empty($display_content)) {
         return '';
       }
 
-      $function = 'usanetwork_' . $node->type . '_consumptionator_get_ymal_item';
-      $you_may_also_like_item = $function($node);
-
-      $function = '_usanetwork_' . $node->type . '_cache_get_limited_related_content';
-      $related_content = $function(
-        $node, $content->type, 0,
-        !empty($you_may_also_like_item)
-          ? USA_QUIZ_RELATED_CONTENT_ITEMS - 1
-          : USA_QUIZ_RELATED_CONTENT_ITEMS
-      );
-
-      if (!empty($you_may_also_like_item)) {
-        $related_content[] = $you_may_also_like_item;
-      }
-
+      $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_content_node);
       if (!empty($related_content)) {
-        drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-        drupal_add_js(array(
-          'usanetwork_' . $node->type . '_nid' => $node->nid,
-          'usanetwork_' . $node->type . '_page_context' => 'quiz-consumptionator',
-          'usanetwork_' . $node->type . '_offset' => !empty($you_may_also_like_item) ? -1 : 0,
-        ), 'setting');
-
-        $function = 'usanetwork_' . $node->type . '_consumptionator_render_related_content_items_block';
+        $function = 'usanetwork_' . $tv_content_node->type . '_consumptionator_render_related_content_items_block';
         $block_of_items = $function($related_content);
         $load_more_link = &drupal_static('load_more_link');
         $load_more_link = TRUE;
-        return theme('usanetwork_' . $node->type . '_consumptionator_related_items_container', array(
+        return theme('usanetwork_' . $tv_content_node->type . '_consumptionator_related_items_container', array(
           'related_items_block' => $block_of_items,
           'load_more_link' => $load_more_link,
-          'show_nid' => $node->nid,
-          'items_pre_page_limit' => USA_QUIZ_RELATED_CONTENT_ITEMS,
+          'show_nid' => $tv_content_node->nid,
+          'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
+          'node_nid' => $content->nid,
         ));
       }
     }
   }
 }
 
-function _usanetwork_quiz_get_related_content_ajax($node, $start_from = 0, $limit = 1) {
-  return usanetwork_related_content_get_related_content_ajax('quiz', $node, $start_from , $limit);
+function theme_usanetwork_quiz_field_multiple_value_form($variables) {
+  $element = $variables['element'];
+  $output = '';
+
+  if ($element['#cardinality'] > 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
+    $table_id = drupal_html_id($element['#field_name'] . '_values');
+    $order_class = $element['#field_name'] . '-delta-order';
+    $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';
+
+    $header = array(
+      array(
+        'data' => '<label>' . t('!title !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
+        'colspan' => 2,
+        'class' => array('field-label'),
+      ),
+      t('Order'),
+    );
+    $rows = array();
+
+    // Sort items according to '_weight' (needed when the form comes back after
+    // preview or failed validation)
+    $items = array();
+    foreach (element_children($element) as $key) {
+      if ($key === 'add_more') {
+        $add_more_button = &$element[$key];
+      }
+      else {
+        $items[] = &$element[$key];
+      }
+    }
+    usort($items, '_field_sort_items_value_helper');
+
+    // Add the items as table rows.
+    foreach ($items as $key => $item) {
+      $item['_weight']['#attributes']['class'] = array($order_class);
+      $delta_element = drupal_render($item['_weight']);
+      $cells = array(
+        array('data' => '', 'class' => array('field-multiple-drag')),
+        drupal_render($item),
+        array('data' => $delta_element, 'class' => array('delta-order')),
+      );
+      $rows[] = array(
+        'data' => $cells,
+        'class' => array('draggable'),
+      );
+    }
+
+    $output = '<div class="form-item">';
+    $output .= '
+      <div class="expand-collapse">
+        <a href="#" class="questions-expand hide">Expand questions</a><a href="#" class="questions-collapse">Collapse questions</a>
+      </div>
+    ';
+    $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table'))));
+    $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
+    $output .= '<div class="clearfix">' . drupal_render($add_more_button) . '</div>';
+    $output .= '</div>';
+
+    drupal_add_tabledrag($table_id, 'order', 'sibling', $order_class);
+  }
+  else {
+    foreach (element_children($element) as $key) {
+      $output .= drupal_render($element[$key]);
+    }
+  }
+
+  return $output;
 }

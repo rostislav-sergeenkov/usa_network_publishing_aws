@@ -1,3 +1,8 @@
-html.js input.field-usanetwork-entityreference-autocomplete {
+html.js input.field-usanetwork-entityreference-autocomplete,
+html.js input.field-usanetwork-entityreference-autocomplete-single {
   width: 98%;
+}
+
+html.js tr.usanetwork-entityreference-single label {
+    display: none;
 }

@@ -523,7 +523,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
   );
 
   if (!empty($section_object->field_usa_tv_a_spot)) {
-    $theme_variables['aspots'] = _usanetwork_microsite_theme_render_videos_node_items($section_wrapper->field_usa_tv_a_spot, 'full');
+    $theme_variables['aspots'] = _usanetwork_microsite_theme_render_videos_node_items($section_wrapper->field_usa_tv_a_spot, 'inline_content');
     _usanetwork_microsite_add_intro_data_to_js($section_wrapper->field_usa_tv_a_spot);
   }
 

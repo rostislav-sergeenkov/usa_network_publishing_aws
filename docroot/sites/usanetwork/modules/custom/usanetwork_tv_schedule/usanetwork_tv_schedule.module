@@ -1027,6 +1027,7 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
         }
       }
       $show_nid = NULL;
+      $movie_nid = NULL;
       $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
       if (isset($show_title_aliases[$show_name])) {
         $show_name = $show_title_aliases[$show_name];
@@ -1249,7 +1250,7 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0, $page_url 
   $date_array = array();
   $day_date = strtotime(date("Y-m-d", $start_date));
 
-  for ($day_number = 0; $day_number < 7; $day_number++) {
+  for ($day_number = 0; $day_number < 14; $day_number++) {
     $date_url = $schedule_page_url;
     $new_day = strtotime('+' . $day_number . ' days', $day_date);
     if (!empty($query_params['sdate'])) {

@@ -1,7 +1,20 @@
 #block-usanetwork-top3-usanetwork-top3-main-block {
+  background: black;
+  height: 48.5vw;
+  padding: 156px 156px 100px;
+  position: relative;
+  width: 100%;
+  & > .content {
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
   #slider-container {
+    float: left;
+    height: 100%;
     overflow: hidden;
     position: relative;
+    width: calc(100% - 410px);
     .load-more-loader {
       margin-top: -16px;;
       top: 50%;
@@ -12,15 +25,28 @@
       position: relative;
       &.slick-active {
         .play-button {
-          display: block;
-          background: firebrick;
+          background: none;
+          border: 3px solid white;
+          border-radius: 50%;
+          color: white;
           cursor: pointer;
-          left: 50%;
+          display: block;
+          height: 40px;
+          left: 15px;
           position: absolute;
-          top: 50%;
-          height: 30px;
-          width: 100px;
+          top: 15px;
+          width: 40px;
           z-index: 1;
+          &:before {
+            content: '\e60f';
+            display: block;
+            font-family: "ico-font";
+            font-size: 32px;
+            height: 100%;
+            line-height: 34px;
+            position: relative;
+            width: 100%;
+          }
         }
       }
       .play-button, .play-button.inactive {
@@ -57,35 +83,44 @@
     }
     // end
 
-    .info {
-      background: yellowgreen;
-      right: 0;
+    #counter {
+      color: white;
+      font-size: 18px;
+      left: 70px;
       position: absolute;
-      top: 0;
-    }
-    .counter {
-      background: yellowgreen;
-      left: 0;
-      position: absolute;
-      top: 0;
+      top: 15px;
     }
     .control-button {
-      background: yellowgreen;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      margin-top: -25px;
       position: absolute;
       top: 50%;
       height: 50px;
-      width: 50px;
+      width: 30px;
+      &:before {
+        display: block;
+        font-family: "ico-font";
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 50px;
+        position: absolute;
+      }
     }
     .next.control-button {
-      position: absolute;
       right: 0;
+      &:before {
+        content: "\e608";
+
+      }
     }
     .prev.control-button {
-      position: absolute;
       left: 0;
+      &:before {
+        content: "\e607";
+      }
     }
     .drag-group {
-      background: yellowgreen;
       left: 0;
       margin: 0;
       position: absolute;
@@ -113,10 +148,18 @@
       }
     }
   }
+  .right-sidebar {
+    float: left;
+    position: relative;
+    width: 410px;
+  }
   .slick-slider {
     width: 100%;
+    .slick-list, .slick-track {
+      height: 100%;
+    }
     .slide {
-      height: 56.25vw;
+      height: 100%;
       img {
         width: 100%;
       }
@@ -125,7 +168,7 @@
       }
     }
   }
-  #compare-button {
+  #share-button {
     background: red;
     left: 0;
     opacity: 0.5;
@@ -138,7 +181,7 @@
       opacity: 1;
     }
   }
-  #share-button {
+  #share-button-temp {
     background: green;
     cursor: pointer;
     display: none;
@@ -147,6 +190,81 @@
     text-transform: uppercase;
     top: 80px;
   }
+  #info-block {
+    background: black;
+    display: none;
+    height: 100%;
+    left: 0px;
+    opacity: 0.7;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    .color-text {
+      background: none;
+    }
+  }
+  #info {
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    height: 40px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 40px;
+    z-index: 3001;
+    &:before {
+      content: '\e61d';
+      display: block;
+      font-family: "ico-font";
+      font-size: 40px;
+      height: 100%;
+      line-height: 40px;
+      position: relative;
+      width: 100%;
+    }
+  }
+  #info-close {
+    border: 3px solid white;
+    border-radius: 50%;
+    color: white;
+    display: none;
+    cursor: pointer;
+    height: 40px;
+    position: absolute;
+    right: 15px;
+    text-align: center;
+    top: 15px;
+    width: 40px;
+    z-index: 3001;
+    &:before {
+      content: 'X';
+      display: block;
+      //font-family: "ico-font";
+      font-size: 32px;
+      font-weight: bold;
+      height: 100%;
+      line-height: 34px;
+      position: relative;
+      width: 100%;
+    }
+  }
+  #share-block-preview {
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    .first, .second, .third{
+      display: inline-block;
+      width: 23%;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
   #share-block {
     height: 100%;
     left: 0;
@@ -154,17 +272,13 @@
     top: 0;
     visibility: hidden;
     width: 100%;
-    .first{
+    .first {
       display: inline-block;
       width: 70%;
     }
-    .img-wrap{
+    .img-wrap {
       display: inline-block;
       width: 28%;
-    }
-    img {
-      height: 100%;
-      width: 100%;
     }
   }
   #share-img {
@@ -190,7 +304,9 @@
     left: 0;
   }
   .slider-wrapper {
+    height: 100%;
     margin: 0 auto;
+    width: 100%;
   }
   .slide-content {
     font-size: 2em;
@@ -200,6 +316,15 @@
     text-align: center;
     height: 100%;
     width: 100%;
+    &:hover {
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+    }
+    &:active {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
   }
   .slide-content-inner {
     height: 100%;
@@ -210,15 +335,6 @@
   }
   .slide-content_remove {
     display: none;
-  }
-  .slide-content:hover {
-    cursor: move;
-    cursor: -webkit-grab;
-    cursor: grab;
-  }
-  .slide-content:active {
-    cursor: -webkit-grabbing;
-    cursor: grabbing;
   }
   .is-dragging {
     background: #4e4c52;
@@ -240,18 +356,18 @@
     text-indent: -9000px;
     position:absolute;
     z-index: 500000;
+    &:hover {
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+    }
+    &:active {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
   }
   .slide-item-grab_remove {
     display: none;
-  }
-  .slide-item-grab:hover {
-    cursor: move;
-    cursor: -webkit-grab;
-    cursor: grab;
-  }
-  .slide-item-grab:active {
-    cursor: -webkit-grabbing;
-    cursor: grabbing;
   }
   .is-dropped {
     opacity: 0;
@@ -270,12 +386,13 @@
     transition: all 0.3s ease-out;
   }
   .drop-area {
+    height: calc((100vw - 712px)*0.1125 + 30px);
+    margin: calc((100vw - 712px)*0.05625) 0 0 0;
     position: absolute;
     top: 100%;
     left: 0;
     z-index: 99;
     width: 100%;
-    height: 17em;
     background: transparent;
     text-align: center;
     -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.6,0,0.4,1);
@@ -303,16 +420,14 @@
   .drop-area__item {
     position: relative;
     display: inline-block;
-    margin: 3% 1% 0% 1%;
-    max-width: 23em;
-    width: 20%;
-    height: 13em;
-    border-radius: 4px;
-    background: rgba(255,6,6,0.7);
+    height: calc((100vw - 712px)*0.1125);
+    margin: 30px 1% 0 1%;
     -webkit-transition: -webkit-transform 0.3s, background 0.3s;
     transition: transform 0.3s, background 0.3s;
     -webkit-backface-visibility: hidden;
+    opacity: 0.7;
     overflow: hidden;
+    width: 20%;
     &.highlight {
       background: #ff3705;
       -webkit-transform: scale3d(1.08,1.08,1);
@@ -371,40 +486,6 @@
     transform: scale3d(1,1,1);
   }
 
-  .first-wrapper{
-    border: 4px solid #ff3705;
-    width: 20%;
-    position: absolute;
-    height: 13em;
-    z-index: 1;
-    margin: 3% 0 0 18%;
-    background: url(../images/first_50.png);
-    background-repeat: no-repeat;
-    background-position: 152px 80px;
-  }
-  .second-wrapper{
-    border: 4px solid #ff3705;
-    width: 20%;
-    position: absolute;
-    height: 13em;
-    z-index: 1;
-    margin: 3% 0 0 40%;
-    background: url(../images/second_50.png);
-    background-repeat: no-repeat;
-    background-position: 152px 80px;
-  }
-  .third-wrapper{
-    border: 4px solid #ff3705;
-    width: 20%;
-    position: absolute;
-    height: 13em;
-    z-index: 1;
-    margin: 3% 0 0 62%;
-    background: url(../images/third_50.png);
-    background-repeat: no-repeat;
-    background-position: 152px 80px;
-  }
-
   .dummy,
   .dummy::after {
     position: absolute;
@@ -454,39 +535,6 @@
     transition: opacity 0.5s;
     -webkit-transition-delay: 0s; /* Safari */
     transition-delay: 0s;
-  }
-
-  .info {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 3001;
-    color: white;
-    border-radius: 50%;
-    opacity: .5px;
-  }
-  #iinfo {
-    z-index: 3010;
-    color: white;
-    border: 2px solid white;
-    padding: 5px 20px;
-    font-size: 28px;
-    font-weight: 900;
-    position: absolute;
-    cursor: pointer;
-  }
-
-  #info {
-    padding: 26px 25px;
-    -webkit-transition: -webkit-transform 1s;
-    -moz-transition: -moz-transform 1s;
-    -o-transition: -o-transform 1s;
-    transition: transform 1s;
-    position: absolute;
-    top: 15px;
-    right: 16px;
-    background-color: rgba(0,0,0, 0.4);
-    z-index: 3003;
   }
 
   #synopsis {

@@ -1102,3 +1102,12 @@ function usanetwork_core_update_7176() {
     module_enable(array('usanetwork_related_content'));
   }
 }
+
+/**
+ * Enables custom_add_another module.
+ */
+function usanetwork_core_update_7177() {
+  if (!module_exists('custom_add_another')) {
+    module_enable(array('custom_add_another'));
+  }
+}

@@ -38,7 +38,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 53,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -98,7 +98,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 51,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -154,7 +154,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 57,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -209,7 +209,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 60,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -284,7 +284,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 34,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -353,7 +353,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 63,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -422,7 +422,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 62,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -491,7 +491,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 61,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -560,7 +560,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 58,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -620,7 +620,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 59,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -696,7 +696,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 35,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -766,7 +766,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 56,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -836,7 +836,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 49,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -906,7 +906,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 38,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -974,10 +974,11 @@ function usanetwork_aspot_field_default_field_instances() {
         'weight' => 11,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 11,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1042,10 +1043,13 @@ function usanetwork_aspot_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
+        'weight' => 16,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1110,10 +1114,11 @@ function usanetwork_aspot_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 17,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1185,10 +1190,14 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 21,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1260,10 +1269,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 20,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1332,10 +1342,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 18,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1404,10 +1415,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 19,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1472,10 +1484,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 15,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1549,10 +1562,13 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
+        'weight' => 23,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1617,10 +1633,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 24,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1689,10 +1706,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 27,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1761,10 +1779,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 25,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1833,10 +1852,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 26,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1901,10 +1921,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 22,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1978,10 +1999,13 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
+        'weight' => 29,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2046,10 +2070,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 30,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2118,10 +2143,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 33,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2190,10 +2216,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 31,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2262,10 +2289,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 32,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2330,10 +2358,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 28,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2404,7 +2433,7 @@ Suggested max dimensions 380px x 80px<br/>
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 55,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2460,10 +2489,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 10,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_default',
+        'weight' => 10,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2530,7 +2560,7 @@ Suggested max dimensions 380px x 80px<br/>
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 52,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2602,7 +2632,7 @@ Suggested max dimensions 380px x 80px<br/>
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 48,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2662,10 +2692,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 14,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'list_key',
+        'weight' => 14,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2723,10 +2754,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 8,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'list_default',
+        'weight' => 8,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2786,7 +2818,7 @@ Suggested max dimensions 380px x 80px<br/>
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 54,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2858,10 +2890,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 9,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'list_default',
+        'weight' => 9,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2920,9 +2953,13 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'page_collection_resources' => array(
@@ -3008,10 +3045,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 13,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'link_plain',
+        'weight' => 13,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3095,10 +3133,14 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 2,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 2,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3188,10 +3230,14 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 1,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 1,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3274,10 +3320,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 4,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 4,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3343,10 +3390,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 6,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 6,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3412,10 +3460,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 7,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 7,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3481,10 +3530,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 12,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 12,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3554,10 +3604,11 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 3,
       ),
       'inline_content' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 3,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3626,7 +3677,7 @@ Suggested max dimensions 380px x 80px<br/>
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 39,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3717,7 +3768,7 @@ Suggested max dimensions 380px x 80px<br/>
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 37,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3806,7 +3857,7 @@ Suggested max dimensions 380px x 80px<br/>
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 50,
       ),
       'page_collection_resources' => array(
         'label' => 'above',

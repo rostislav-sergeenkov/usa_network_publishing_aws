@@ -5,6 +5,8 @@
     getItems: function(eventClick) {
       var limit = $('.ajax-load-block').data('show-items-limit') || 5;
       var nid = Drupal.settings.usanetwork_tv_show_nid || $('.ajax-load-block').data('show-nid') || Drupal.settings.usanetwork_movie_nid || 0;
+      var node_nid = $('.ajax-load-block').data('node-nid') || 0;
+      var file_fid = $('.ajax-load-block').data('file-fid') || 0;
       var number_ul = $('.ajax-load-block > ul').length;
       var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || Drupal.settings.usanetwork_movie_offset || 0;
       var start_from = limit*number_ul + negativeOffset;
@@ -15,31 +17,14 @@
       if (typeof page_context != 'undefined') {
         switch (page_context) {
           case 'consumptionator':
-            service_name = 'usanetwork-mpx-video';
+            service_name = file_fid;
+            additional_arguments = '/file';
+            break;
+          case 'consumptionator_node':
+            service_name = node_nid;
             break;
           case 'showpage':
             service_name = 'usanetwork-tv-shows';
-            break;
-          case 'gallery-consumptionator':
-            service_name = 'usanetwork-media-gallery';
-            break;
-          case 'characters-consumptionator':
-            service_name = 'usanetwork-characters';
-            break;
-          case 'episode-consumptionator':
-            service_name = 'usanetwork-tv-episode';
-            break;
-          case 'usanetwork-catchall':
-            service_name = 'usanetwork-catchall';
-            break;
-          case 'usanetwork-timeline-gallery':
-            service_name = 'usanetwork-timeline-gallery';
-            break;
-          case 'quiz-consumptionator':
-            service_name = 'quiz-consumptionator';
-            break;
-          case 'usanetwork-post':
-            service_name = 'usanetwork-post';
             break;
           case 'photos-landing':
             service_name = 'usanetwork-photos-landing';
@@ -146,9 +131,9 @@
         var click = 'click';
         $(this).addClass('disabled');
         if ($(this).hasClass('more-episodes')){
-          Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems();
+          Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems(click);
         } else if($('.ajax-load-block .load-more-link a').hasClass('more-posts')) {
-          Drupal.behaviors.usanetwork_blog_posts_autoloader.loadPageItems();
+          Drupal.behaviors.usanetwork_blog_posts_autoloader.loadPageItems(click);
         } else {
           Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems(click);
         }

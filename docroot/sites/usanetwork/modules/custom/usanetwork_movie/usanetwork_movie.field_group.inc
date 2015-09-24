@@ -55,9 +55,7 @@ function usanetwork_movie_field_group_info() {
   $field_group->data = array(
     'label' => 'Cast/Crew',
     'weight' => '1',
-    'children' => array(
-      0 => 'field_movie_credit',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -114,11 +112,12 @@ function usanetwork_movie_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'body',
-      1 => 'field_movie_cover_media',
-      2 => 'field_summary',
-      3 => 'field_aspot_image',
-      4 => 'field_promo_violator_name',
-      5 => 'title',
+      1 => 'field_aspot_image',
+      2 => 'field_movie_cover_media',
+      3 => 'field_promo_violator_name',
+      4 => 'field_summary',
+      5 => 'field_promo_topic',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -145,9 +144,9 @@ function usanetwork_movie_field_group_info() {
     'label' => 'SEO',
     'weight' => '1',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_seo_h1',
-      2 => 'field_seo_page_title',
+      0 => 'field_seo_h1',
+      1 => 'field_seo_page_title',
+      2 => 'field_usa_og_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -174,9 +173,9 @@ function usanetwork_movie_field_group_info() {
     'label' => 'USA Custom',
     'weight' => '4',
     'children' => array(
-      0 => 'field_usa_tv_tune_in_date',
-      1 => 'field_movie_latest_feed',
-      2 => 'field_movies_latest_lnd_feed',
+      0 => 'field_movie_latest_feed',
+      1 => 'field_movies_latest_lnd_feed',
+      2 => 'field_usa_tv_tune_in_date',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

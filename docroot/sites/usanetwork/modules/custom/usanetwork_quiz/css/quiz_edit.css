@@ -5,6 +5,13 @@
   position: absolute;
   right: 170px;
 }
+.questions-collapse:before {
+  content: '/';
+  display: inline;
+}
+.questions-expand.hide +:before {
+  display: none;
+}
 .expand-collapse a {
   text-decoration: none!important;
 }

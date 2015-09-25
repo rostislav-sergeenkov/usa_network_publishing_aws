@@ -110,7 +110,7 @@
 
       // Quizes omniture tracking. Track restart button
       $('#microsite #quizzes .usanetwork-quiz-results input[type="button"]').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
+        $(this).bindFirst('click', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             $('.usanetwork-quiz-questions .usanetwork-quiz-question').removeClass('shown');
             $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').removeClass('answered');

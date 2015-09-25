@@ -63,7 +63,6 @@
         height: 100%;
         width: 100%;
         .fix-drag {
-          background: rgba(255,255,255, 0.3);
           position: absolute;
           height: calc(100% - 33px);
           top: 0;
@@ -191,14 +190,19 @@
     top: 80px;
   }
   #info-block {
-    background: black;
     display: none;
     height: 100%;
     left: 0px;
-    opacity: 0.7;
     position: absolute;
     top: 0px;
     width: 100%;
+    .info-block-wrapper {
+      background: black;
+      height: 100%;
+      opacity: 0.7;
+      position: relative;
+      width: 100%;
+    }
     .color-text {
       background: none;
     }
@@ -212,7 +216,7 @@
     right: 15px;
     top: 15px;
     width: 40px;
-    z-index: 3001;
+    z-index: 1;
     &:before {
       content: '\e61d';
       display: block;
@@ -224,11 +228,10 @@
       width: 100%;
     }
   }
-  #info-close {
+  .close-button {
     border: 3px solid white;
     border-radius: 50%;
     color: white;
-    display: none;
     cursor: pointer;
     height: 40px;
     position: absolute;
@@ -236,7 +239,7 @@
     text-align: center;
     top: 15px;
     width: 40px;
-    z-index: 3001;
+    z-index: 1;
     &:before {
       content: 'X';
       display: block;
@@ -256,6 +259,12 @@
     position: absolute;
     top: 0;
     width: 100%;
+    .share-block-preview-wrapper {
+      height: 100%;
+      opacity: 0.7;
+      position: relative;
+      width: 100%;
+    }
     .first, .second, .third{
       display: inline-block;
       width: 23%;

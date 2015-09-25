@@ -871,3 +871,17 @@ function usanetwork_media_gallery_get_photos_landing_related_content_ajax($show_
   $response['rendered'] = _usanetwork_media_gallery_landing_page_vbget_photos_block($galleries, $start_from, $lenght);
   return drupal_json_output($response);
 }
+
+
+function _usanetwork_media_gallery_is_multiple($gallery) {
+  if (!is_object($gallery)) {
+    $gallery = node_load($gallery);
+  }
+
+  if (!empty($gallery->field_multiple_show)) {
+    $gallery_wrapper = entity_metadata_wrapper('node', $gallery);
+    return $gallery_wrapper->field_multiple_show;
+  } else {
+    return FALSE;
+  }
+}

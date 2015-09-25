@@ -1410,6 +1410,7 @@ function _usanetwork_menu_consumptionator_block_video($file) {
     $tv_content_node = usanetwork_core_api_get_tv_content_node($file);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
     $field = $tv_content_fields[$tv_content_node->type];
+    $is_show_related = ($tv_content_node->type == 'tv_show') ? TRUE : FALSE;
     $theme_variables = array(
       'sharebar' => usanetwork_menu_render_sharebar($file, 'file', t('Share this video'), $file_wrapper->name->value(), $description),
       'authbar' => !empty($authbar) ? ($authbar) : '',
@@ -1417,18 +1418,21 @@ function _usanetwork_menu_consumptionator_block_video($file) {
       'show_url' => !empty($file->{$field})
           ? url('node/' . $file_wrapper->{$field}->value()->nid)
           : '',
-      'show_name' => !empty($file->{$field})
-        ? $file_wrapper->{$field}->value()->title
-        : '',
+      'show_name' => $is_show_related
+        ? (!empty($file->{$field})
+          ? $file_wrapper->{$field}->value()->title
+          : '')
+        : t('Movies'),
       'h1' => !empty($file->field_seo_h1) ? $file_wrapper->field_seo_h1->value() : '',
       'episode' => array(
-        'video_type' => !empty($file->field_mpx_full_episode)
-            ? (
-            $file_wrapper->field_mpx_full_episode->value()
+        'is_show_related' => $is_show_related,
+        'video_type' => $is_show_related
+          ? (!empty($file->field_mpx_full_episode)
+            ? ($file_wrapper->field_mpx_full_episode->value()
               ? t('Full Episode')
-              : t('Video')
-            )
-            : '',
+              : t('Video'))
+            : '')
+          : t('Movie'),
         'image_url' => !empty($episode_image_uri)
           ? image_style_url('300x169_video', $episode_image_uri)
           : '',

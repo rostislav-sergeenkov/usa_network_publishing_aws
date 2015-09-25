@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="video-wrapper hide-block"
-                 data-src="//player.theplatform.com/p/HNK2IC/dd_usa_vod_noauth/embed/select/EJIlKSvvTE19?autoPlay=false">
+                 data-src="//player.theplatform.com/p/HNK2IC/dd_usa_vod_noauth/embed/select/EJIlKSvvTE19?autoPlay=true">
               <div class="fix-drag"></div>
             </div>
 <!--            <div class="video-wrapper hide-block --><?php //($slide['is_video']) ? print 'is-video' : FALSE; ?><!--"></div>-->
@@ -31,26 +31,31 @@
   </div>
 
   <div id="info"></div>
-  <div id="info-close"></div>
   <div class="container-message">This slide has already chosen!</div>
   <div id="info-block">
-    <div class="top-text">Select your top 3 favorite Todd-isms and then share them with your friends and family!</div>
-    <div class="color-text show-color show-font">How it works</div>
-    <div class="bottom-text">Use the icon shown below to click & drag the thumbnail into the ranking boxes. Fill all 3 boxes and share your personalized page.</div>
-    <div class="help-image"></div>
+    <div id="info-close" class="close-button"></div>
+    <div class="info-block-wrapper">
+      <div class="top-text">Select your top 3 favorite Todd-isms and then share them with your friends and family!</div>
+      <div class="color-text show-color show-font">How it works</div>
+      <div class="bottom-text">Use the icon shown below to click & drag the thumbnail into the ranking boxes. Fill all 3 boxes and share your personalized page.</div>
+      <div class="help-image"></div>
+    </div>
   </div>
   <div id="share-block-preview">
-    <div class="first-text-line">Click and drag the thumbnails over a different box to change the order</div>
-    <div class="first">
+    <div id="share-preview-close" class="close-button"></div>
+    <div class="share-block-preview-wrapper show-color">
+      <div class="first-text-line">Click and drag the thumbnails over a different box to change the order</div>
+      <div class="first preview-item">
 
-    </div>
-    <div class="second">
+      </div>
+      <div class="second preview-item">
 
-    </div>
-    <div class="third">
+      </div>
+      <div class="third preview-item">
 
+      </div>
+      <div class="last-text-line">Generate your custom share link</div>
     </div>
-    <div class="second-text-line">Generate your custom share link</div>
   </div>
   <div id="share-block">
     <div class="first">

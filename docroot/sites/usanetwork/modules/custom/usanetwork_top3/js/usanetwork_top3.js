@@ -4,16 +4,21 @@
 
     var body = document.body,
         dropArea = document.getElementById( 'drop-area' ),
+        dropAreaPreview = document.getElementById( 'share-block-preview' ),
         droppableArr = [],
         dropAreaTimeout,
         dragItemSize = $('.slide-content'),
         top3target = $('.drop-area__item'),
+        top3PreviewTarget = $('.preview-item'),
         ins0 = $('#one').attr('id'),
         ins1 = $('#two').attr('id'),
         ins2 = $('#three').attr('id'),
         slot0 = $('#one'),
         slot1 = $('#two'),
         slot2 = $('#three'),
+        preview0 = $('#share-block-preview .first'),
+        preview1 = $('#share-block-preview .second'),
+        preview2 = $('#share-block-preview .third'),
         dropZone,
         dropZone2,
         sliderContainer = $('#slider-container'),
@@ -200,15 +205,21 @@
                 $('#counter').hide();
                 $('.play-button').hide();
                 $('#info-block').show();
-                $('#info-close').show();
               });
               $('#info-close').click(function(){
-                $(this).hide();
                 $('#info-block').hide();
                 $('.control-button').show();
                 $('#counter').show();
                 $('.play-button').show();
                 $('#info').show();
+              });
+              $('#share-preview-close').click(function(){
+                $('#share-block-preview').hide();
+                $('.control-button').show();
+                $('#counter').show();
+                $('.play-button').show();
+                $('#info').show();
+                $('.drag-group').show();
               });
             })
             .slick({
@@ -247,7 +258,8 @@
               $('.drop-area__item').removeClass('ui-sortable-handle');
 
               var cleanUp = draggableEl;
-              topItem=$(draggableEl).find('.slide-content-inner').clone();
+              topItem=$(draggableEl).find('.slide-content-inner');
+              console.info(topItem);
               console.info(draggableEl);
               instanceDrop = instance.el.id;
 
@@ -277,13 +289,15 @@
                           var carouselTarget = $('#one').find('.slide-content-inner').attr('data-slide-id');
 
                           sliderWrapper.slick('slickGoTo', carouselTarget);
-                          slot0.html(topItem);
+                          slot0.html(topItem.clone());
+                          preview0.html(topItem.clone());
 
                         } else {
 
                           sliderWrapper.slick('slickNext');
                           $('#one').css('opacity',1);
-                          slot0.html(topItem);
+                          slot0.html(topItem.clone());
+                          preview0.html(topItem.clone());
 
                         }
 
@@ -296,13 +310,15 @@
                           var carouselTarget = $('#two').find('.slide-content-inner').attr('data-slide-id');
 
                           sliderWrapper.slick('slickGoTo', carouselTarget);
-                          slot1.html(topItem);
+                          slot1.html(topItem.clone());
+                          preview1.html(topItem.clone());
 
                         } else {
 
                           sliderWrapper.slick('slickNext');
                           $('#two').css('opacity',1);
-                          slot1.html(topItem);
+                          slot1.html(topItem.clone());
+                          preview1.html(topItem.clone());
 
                         }
 
@@ -315,12 +331,15 @@
                           var carouselTarget = $('#three').find('.slide-content-inner').attr('data-slide-id');
 
                           sliderWrapper.slick('slickGoTo', carouselTarget);
-                          slot2.html(topItem);
+                          slot2.html(topItem.clone());
+                          preview2.html(topItem.clone());
 
                         } else {
                           sliderWrapper.slick('slickNext');
                           $('#three').css('opacity',1);
-                          slot2.html(topItem);
+                          slot2.html(topItem.clone());
+                          preview2.html(topItem.clone());
+
                         }
 
                         break;
@@ -414,20 +433,14 @@
             onStart : function() {
 
               console.log($(el).attr('data-slide-id'));
-              console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 
               //finds induvidul all id in drop area
-              console.log('******************************');
-              //console.log($('#one').find('.mainContent').attr('id'));
-              //console.log($('#two').find('.mainContent').attr('id'));
-              //console.log($('#three').find('.mainContent').attr('id'));
               var matchId = $(el).find('.slide-content-inner').attr('data-slide-id');
               var findMatchOne = $('#one').find('.slide-content-inner').attr('data-slide-id');
               var findMatchTwo = $('#two').find('.slide-content-inner').attr('data-slide-id');
               var findMatchThree = $('#three').find('.slide-content-inner').attr('data-slide-id');
 
               var matchArray = [findMatchOne, findMatchTwo, findMatchThree];
-              console.log(matchArray);
 
               for (var i = 0; i < matchArray.length; i++) {
                 if (matchArray[i] == matchId) {
@@ -437,7 +450,7 @@
               }
 
               //if top 3 already selected and user wants to drag again hide top 3 again
-              function isEmpty( el ){
+              /*function isEmpty( el ){
 
                 $('.active').find('.title').hide();
                 $('.active').find('#video-js').hide();
@@ -445,7 +458,7 @@
               }
               if (!isEmpty(slot0 && slot1 && slot2)) {
                 $('#drop-area').css({zIndex:''});
-              }
+              }*/
 
               //check where to drop the selectied item
               clearInterval(dropZone);
@@ -624,7 +637,6 @@
                     $('#slider-container .slider-wrapper').before('<div class="load-more-loader"></div>');
                     html2canvas(shareBlock, {
                       onrendered: function(canvas) {
-                        console.info(canvas);
                         imgShare.append(convertCanvasToImage(canvas));
                         $('.load-more-loader').remove();
                         $('#share-button-temp').show();
@@ -639,8 +651,8 @@
                     $('#share-img img').remove();
                     $('.drop-area__item').removeAttr('style');
                     $('.drop-area__item .slide-content-inner').remove();
+                    $('#share-block-preview .slide-content-inner').remove();
                     dropMargin = $('#one').height()*0.5;
-                    console.info(dropMargin);
                     $('#drop-area').animate({
                       zIndex:'1000',
                       margin:dropMargin+"px 0 0 0"
@@ -654,13 +666,22 @@
                   $('#drop-area').css({
                     zIndex:'1000',
                     margin:"0px"
-
                   });
+
+                  $('#info').hide();
+                  $('.control-button').hide();
+                  $('#counter').hide();
+                  $('.play-button').hide();
+                  $('.drag-group').hide();
+                  $('#share-block-preview').show();
+                  top3Usanetwork.previewDraggable();
+
+
                   setTimeout(function(){
                     classie.add( dropArea, 'show' );
                   },1000);
 
-                  $(function() {
+                  /*$(function() {
                     $('.drag-group').sortable({
                       //observe the update event...
                       update: function(event, ui) {
@@ -701,9 +722,173 @@
                       items: ".drop-area__item"
                     });
                     $('.drag-group').disableSelection();
-                  });
+                  });*/
 
                 }
+              };
+
+              if( !wasDropped ) {
+                afterDropFn();
+              }
+              else {
+                // after some time hide drop area and remove class 'drag-active' from body
+                clearTimeout( dropAreaTimeout );
+                dropAreaTimeout = setTimeout( afterDropFn, 1000 );
+              }
+            }
+          } );
+        } );
+      },
+
+      previewDraggable : function(){
+
+        console.log('previewDraggable initilized');
+
+        //simulation mouse controlls to resize drag contex
+        var mouse_button = false;
+        $('.preview-item')
+            .mousedown(function(){
+              mouse_button = true;
+              $('.preview-item').addClass('preview-item-grab');
+            })
+            .mouseup(function(){
+              mouse_button = false;
+              $('.preview-item').removeClass('preview-item-grab');
+
+            })
+            .mouseout(function(){
+              if (mouse_button) {
+                mouse_button = false;
+                $('.preview-item').removeClass('preview-item');
+              }
+            })
+            .mouseover(function(){
+              if (mouse_button) {
+                mouse_button = false;
+                $('.preview-item').removeClass('preview-item');
+              }
+            });
+
+        //mobile draging
+        $('.preview-item').on('touchstart', function(e){
+          $('.preview-item').addClass('slide-item-grab');
+        });
+
+        $('.preview-item').on('touchend', function(e){
+          $('.preview-item').removeClass('slide-item-grab');
+        });
+
+        // initialize draggable(s)
+        [].slice.call(document.querySelectorAll( '#share-block-preview .preview-item' )).forEach( function( el ) {
+
+          new Draggable( el, droppableArr, {
+
+            draggabilly : { containment: $('#share-block-preview') },
+
+            onStart : function() {
+
+              console.log(el);
+
+              //finds induvidul all id in drop area
+              /*var matchId = $(el).find('.slide-content-inner').attr('data-slide-id');
+              var findMatchOne = $('#one').find('.slide-content-inner').attr('data-slide-id');
+              var findMatchTwo = $('#two').find('.slide-content-inner').attr('data-slide-id');
+              var findMatchThree = $('#three').find('.slide-content-inner').attr('data-slide-id');
+
+              var matchArray = [findMatchOne, findMatchTwo, findMatchThree];
+
+              for (var i = 0; i < matchArray.length; i++) {
+                if (matchArray[i] == matchId) {
+                  console.log('not allowed');
+                  $('.container-message').fadeIn(400).addClass('not-allowed');
+                }
+              }*/
+
+              //check where to drop the selectied item
+              clearInterval(dropZone);
+              dropZone = setInterval(function(){
+
+                for(count=0; count<top3PreviewTarget.length; count++){
+
+                  onDragCount = top3PreviewTarget[count].classList.length == 3;
+                  isHighlighet = top3PreviewTarget[count].classList[2] == 'highlight';
+
+                  //console.log(onDragCount);
+                  //console.log(isHighlighet);
+
+                  if(onDragCount == true && isHighlighet == true){
+                    console.log('this is the drop area', count);
+
+
+                    //finds induvidul id in drop area
+                    //console.log($(top3target[count]).find('.mainContent').attr('id'));
+
+                    //finds induvidul id of dragging el
+                  }
+                }
+              },500);
+
+              // add class 'drag-active' to body
+              classie.add( body, 'drag-active' );
+
+              // clear timeout: dropAreaTimeout (toggle drop area)
+              clearTimeout( dropAreaTimeout );
+
+              // show dropArea
+              classie.add( dropAreaPreview, 'show' );
+
+              //chnage size of drag-item
+              console.log(dragItemSize);
+
+            },
+
+            onDrag : function() {
+
+              /*if($('.container-message').hasClass('not-allowed')){
+                $('#drop-area').css({
+                  zIndex:'0',
+                  margin:"500px 0 0 0",
+                });
+              }
+              else{
+                $('#drop-area').css({
+                  zIndex:'999',
+                  margin:"0px",
+                });
+              }
+
+              $('.num3').css('display','none');*/
+
+
+              inAction = true;
+              dragEnd = false;
+              if(inAction){
+                classie.add( el , 'slide-item-grab');
+              }
+            },
+
+            onEnd : function( wasDropped ) {
+
+              //if element is not dropped please resize
+              setTimeout(function(){
+                classie.remove( el , 'slide-item-grab');
+              },500);
+
+              var afterDropFn = function() {
+
+                clearInterval(dropZone2);
+                clearInterval(dropZone);
+
+                //$('.container-message').fadeOut(500).removeClass('not-allowed');
+
+                // remove class 'drag-active' from body
+                classie.remove( body, 'drag-active' );
+
+                // check if top3 element are empty or full
+                function isEmpty( el ){
+                  return !$.trim(el.html());
+                }
+
               };
 
               if( !wasDropped ) {

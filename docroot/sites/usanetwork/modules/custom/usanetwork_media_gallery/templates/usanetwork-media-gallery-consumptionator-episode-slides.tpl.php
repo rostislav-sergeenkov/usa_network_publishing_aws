@@ -59,7 +59,9 @@
     <?php endif; ?>
   </div>
   <!-- change link to special photo page for show-->
-  <div class="more-items more-photos show-color">
-    <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
-  </div>
+  <?php if (!empty($link)): ?>
+    <div class="more-items more-photos show-color">
+      <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
+    </div>
+  <?php endif; ?>
 </div>

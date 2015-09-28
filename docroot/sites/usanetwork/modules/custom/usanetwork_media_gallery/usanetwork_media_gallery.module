@@ -331,7 +331,6 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         $block_title = t('S!number episode galleries', array('!number' => !empty($season_id) ? $season_id : ''));
         $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type, $gallery_field_season_id_value);
       }
-
       else {
         $block_title = $gallery_type;
         $galleries_list = _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type);
@@ -351,8 +350,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
     foreach ($galleries_list as $gallery_item) {
       $own_promo_lines = _usanetwork_promo_node_get_promo_lines($gallery_item);
       if (!empty($gallery_item->field_promo_image_override)) {
-        $field_image_override = reset(field_get_items('node', $gallery_item, 'field_promo_image_override'));
-        $promo_image_url = $field_image_override['uri'];
+        $promo_image_url = _usanetwork_get_field_item('node', $gallery_item, 'field_promo_image_override', 'uri');
       }
       else {
         $promo_image_url = usanetwork_core_api_get_content_image('node', $gallery_item);
@@ -388,7 +386,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       'slides_vertical' => !empty($rendered_items['slides_vertical']) ? $rendered_items['slides_vertical'] : '',
       'slides_horizontal' => !empty($rendered_items['slides_horizontal']) ? $rendered_items['slides_horizontal'] : '',
       'ad' => isset($advert) ? $advert : NULL,
-      'link' => url('node/' . $show_nid . '/photos'),
+      'link' => isset($show_nid) ? url('node/' . $show_nid . '/photos') : NULL,
     ));
   }
 }
@@ -922,5 +920,38 @@ function _usanetwork_media_gallery_is_multiple($gallery) {
     return $gallery_wrapper->field_multiple_show;
   } else {
     return FALSE;
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter()
+ *
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function usanetwork_media_gallery_form_media_gallery_node_form_alter(&$form, &$form_state, $form_id) {
+  $lang = $form['language']['#value'];
+  //increasing size of field
+  $form['field_multiple_show'][$lang]['#size'] = 10;
+  //setting additional validation
+  $form['#validate'][] = '_usanetwork_media_gallery_multiple_gallery_validate';
+}
+
+/**
+ * See usanetwork_media_gallery_form_media_gallery_node_form_alter()
+ * Validation on setting value only in one field
+ *
+ * @param $form
+ * @param $form_state
+ */
+function _usanetwork_media_gallery_multiple_gallery_validate($form, &$form_state) {
+  $language = !empty($form_state['values']['language']) ? $form_state['values']['language'] : LANGUAGE_NONE;
+
+  $selected_show = $form_state['values']['field_show'][$language][0]['target_id'];
+  $selected_multiple_show = $form_state['values']['field_multiple_show'][$language][0]['target_id'];
+
+  if (!empty($selected_show) && !empty($selected_multiple_show)) {
+    form_set_error('field_show', t('Shows should be defined only in "Show" or only in "Multiple Show"'));
   }
 }

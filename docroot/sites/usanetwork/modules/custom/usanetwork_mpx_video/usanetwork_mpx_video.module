@@ -2002,7 +2002,7 @@ function _usanetwork_mpx_video_file_omniture($entity, $entity_type){
   if ($tv_content) {
     if ($tv_content->type == 'movie') {
       $video_variables['s.prop2'] = t('Movies');
-      $video_variables['s.prop3'] = t('Movies');
+      $video_variables['s.prop3'] = t('Video');
       $video_variables['s.prop4'] = t('Movies : !movie_title', array(
         '!movie_title' => $tv_content->title,
       ));

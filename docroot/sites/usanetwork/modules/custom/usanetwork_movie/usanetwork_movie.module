@@ -1709,7 +1709,7 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
       if ($tv_content->type == 'movie') {
         $omniture_variables = array(
           's.prop2' => t('Movies'),
-          's.prop3' => t('Video'),
+          's.prop3' => t('Movies'),
           's.prop4' => t('Movies : !movie_title', array(
             '!movie_title' => $tv_content->title
           )),

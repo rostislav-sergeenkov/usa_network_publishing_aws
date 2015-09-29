@@ -11,7 +11,7 @@
       <div class="description-second-line"><?php print (!empty($title_line_2))? $title_line_2: ''; ?></div>
     </div>
   <?php endif; ?>
-  
+
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>

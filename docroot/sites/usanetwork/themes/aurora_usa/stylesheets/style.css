@@ -11239,6 +11239,7 @@ footer h2 {
   .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info {
     background: #242424;
     border-left: 1px solid #242424;
+    float: right;
   }
 }
 
@@ -12310,6 +12311,14 @@ footer h2 {
 @media (max-width: 1280px) {
   .consum-sidebar .episodes-list-slider.vertical {
     display: none;
+  }
+}
+.consum-sidebar .episodes-list-slider.vertical.no-all-link {
+  height: calc(100% - 45px);
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.vertical.no-all-link {
+    height: calc(100% - 70px);
   }
 }
 .consum-sidebar .episodes-list-slider.vertical ul, .consum-sidebar .episodes-list-slider.vertical .bx-viewport, .consum-sidebar .episodes-list-slider.vertical .bx-wrapper {

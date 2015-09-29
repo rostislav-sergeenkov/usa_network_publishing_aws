@@ -4,8 +4,14 @@
  */
 ?>
 <div class="landing-main-block movie-all-movies-main-block five-promo-item-block show-border">
-  <?php print $title_line_1; ?>
-  <?php print $title_line_2; ?>
+
+  <?php if (!empty($title_line_1) || !empty($title_line_2)): ?>
+    <div class="movies-main-description">
+      <div class="description-first-line"><?php print (!empty($title_line_1))? $title_line_1: ''; ?></div>
+      <div class="description-second-line"><?php print (!empty($title_line_2))? $title_line_2: ''; ?></div>
+    </div>
+  <?php endif; ?>
+
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>

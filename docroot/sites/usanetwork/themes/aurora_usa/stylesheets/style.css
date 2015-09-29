@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -9488,6 +9488,34 @@ header .tve-help-link.signIn .inlineLoader {
   .five-promo-item-block.landing-main-block ul li.last .advert-block {
     display: none;
   }
+}
+.five-promo-item-block.movie-all-movies-main-block .movies-main-description {
+  color: #5d5d5d;
+  font-size: 2.10416vw;
+  line-height: 1.1;
+  margin-bottom: 35px;
+  text-align: center;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block.movie-all-movies-main-block .movies-main-description {
+    font-size: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block.movie-all-movies-main-block .movies-main-description {
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block.movie-all-movies-main-block .movies-main-description {
+    font-size: 12px;
+  }
+}
+.five-promo-item-block.movie-all-movies-main-block .movies-main-description .description-first-line {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+.five-promo-item-block.movie-all-movies-main-block .movies-main-description .description-second-line {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
 }
 
 .show-latest-block {

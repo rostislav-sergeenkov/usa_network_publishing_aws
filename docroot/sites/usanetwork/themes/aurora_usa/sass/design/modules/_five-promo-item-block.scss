@@ -151,4 +151,28 @@
       }
     }
   }
+  &.movie-all-movies-main-block {
+    .movies-main-description {
+      color: $show-section-title;
+      font-size: get-vw(40px, 1901);
+      line-height: 1.1;
+      margin-bottom: 35px;
+      text-align: center;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 40px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: 16px;
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 12px;
+      }
+      .description-first-line {
+        font-family: $avalon-medium;
+      }
+      .description-second-line {
+        font-family: $avalon-book;
+      }
+    }
+  }
 }

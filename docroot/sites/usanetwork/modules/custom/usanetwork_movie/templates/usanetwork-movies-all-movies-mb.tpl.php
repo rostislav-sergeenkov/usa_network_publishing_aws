@@ -4,6 +4,10 @@
  */
 ?>
 <div class="landing-main-block movie-all-movies-main-block five-promo-item-block show-border">
+  <div class="movies-main-description">
+    <div class="description-first-line">FULL MOVIES ARE NOW AVAILABLE FOR STREAMING.</div>
+    <div class="description-second-line">CHOOSE A TITLE BELOW AND START WATCHING NOW!</div>
+  </div>
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>

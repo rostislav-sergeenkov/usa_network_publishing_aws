@@ -541,6 +541,7 @@
             @include breakpoint($bp-768-width) {
               background: #242424;
               border-left: 1px solid #242424;
+              float: right;
             }
           }
         }

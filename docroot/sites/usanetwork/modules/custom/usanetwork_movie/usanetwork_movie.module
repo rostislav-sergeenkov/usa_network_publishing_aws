@@ -474,13 +474,16 @@ function _usanetwork_movies_all_movies_block_item($movie) {
   if (empty($schedule_data)) {
     $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
   }
+  $has_full_episode = _usanetwork_movie_has_full_episode($movie);
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
     'target_url' => url('node/' . $movie->nid),
     'caption' => $caption,
     'title' => $movie->title,
-    'additional' => $schedule_data,
+    'additional' => isset($has_full_episode->expiration_date)
+      ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)
+      : $schedule_data,
     'image_desktop' => image_style_url('539x303', $image_url),
   );
   return theme('usanetwork_movie_movies_landing_item', $theme_variables);
@@ -546,7 +549,9 @@ function _usanetwork_movies_mb_block() {
             'icon_type' => $has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default',
             'caption' => $caption,
             'title' => $featured_movie->title,
-            'description' => $show_time,
+            'description' => isset($has_full_episode->expiration_date)
+              ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)
+              : $show_time,
             'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
             'is_first' => $is_first,
           );
@@ -578,11 +583,13 @@ function _usanetwork_movie_has_full_episode($movie) {
   $db_select->condition('field_movie.field_movie_target_id', $movie->nid);
   $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = fm.fid');
   $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
+  $db_select->leftJoin('mpx_video', 'mpx_video', 'mpx_video.fid = fm.fid');
+  $db_select->addField('mpx_video', 'expiration_date', 'expiration_date');
 
-  $movie_file = $db_select->execute()->fetchAll();
+  $movie_file = $db_select->execute()->fetchObject();
 
   if (!empty($movie_file)) {
-    return TRUE;
+    return $movie_file;
   }
   else {
     return FALSE;

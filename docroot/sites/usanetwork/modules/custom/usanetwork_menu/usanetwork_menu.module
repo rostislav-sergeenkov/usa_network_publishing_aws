@@ -1162,9 +1162,11 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     else {
       $title = $node_title;
     }
-    $is_multiple_gallery = _usanetwork_media_gallery_is_multiple($node);
+    $is_multiple_gallery = usanetwork_core_api_is_related_with_show($node);
+    $is_show_related = usanetwork_core_api_is_related_with_show($node);
     $theme_variables = array(
       'is_multilple' => !(empty($is_multiple_gallery)) ? TRUE : FALSE,
+      'is_show_related' => $is_show_related,
       'main_url' => url('<front>'),
       'authbar' => isset($authbar) ? $authbar : NULL,
       'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',

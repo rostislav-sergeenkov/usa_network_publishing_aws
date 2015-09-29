@@ -715,7 +715,7 @@ function usanetwork_mpx_video_file_presave($file) {
       }
     }
 
-    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] !== 'Movies on USA')) {
+    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] !== 'Movies On USA')) {
       $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show');
       if (isset($node->nid)) {
         $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
@@ -723,7 +723,7 @@ function usanetwork_mpx_video_file_presave($file) {
       }
     }
 
-    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] == 'Movies on USA')) {
+    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] == 'Movies On USA')) {
       $node = _usanetwork_mpx_video_node_load_by_title($file->filename, 'movie');
       if (isset($node->nid)) {
         $file->field_movie[LANGUAGE_NONE]['0']['target_id'] = $node->nid;

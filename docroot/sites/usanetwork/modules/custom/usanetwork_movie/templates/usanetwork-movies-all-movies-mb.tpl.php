@@ -4,6 +4,8 @@
  */
 ?>
 <div class="landing-main-block movie-all-movies-main-block five-promo-item-block show-border">
+  <?php print $title_line_1; ?>
+  <?php print $title_line_2; ?>
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>

@@ -559,6 +559,8 @@ function _usanetwork_movies_mb_block() {
     $theme_variables = array(
       'promos' => !empty($promos) ? $promos : FALSE,
       'ad' => isset($advert) ? $advert : FALSE,
+      'title_line_1' => t('FULL MOVIES ARE NOW AVAILABLE FOR STREAMING.'),
+      'title_line_2' => t('CHOOSE A TITLE BELOW AND START WATCHING NOW!'),
     );
     return theme('usanetwork_movies_all_movies_mb', $theme_variables);
   }

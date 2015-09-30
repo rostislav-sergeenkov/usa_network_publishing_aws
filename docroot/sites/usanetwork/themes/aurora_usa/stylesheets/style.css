@@ -18559,6 +18559,11 @@ footer h2 {
   }
 }
 
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item {
+    min-height: 31vw;
+  }
+}
 #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .title {
   margin-top: 0;
 }
@@ -18570,6 +18575,11 @@ footer h2 {
 @media (max-width: 640px) {
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .posted-date {
     margin-bottom: 20px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block {
+    min-height: 0;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {

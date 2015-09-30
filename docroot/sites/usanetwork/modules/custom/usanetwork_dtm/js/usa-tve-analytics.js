@@ -187,6 +187,7 @@
 
   function _trackPage(pageName) {
     s.manageVars('clearVars');
+    s.abortDoPlugins = true;
     setup();
 
     if(typeof pageName != 'undefined') {

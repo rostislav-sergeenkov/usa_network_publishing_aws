@@ -578,6 +578,8 @@ function _usanetwork_movie_has_full_episode($movie) {
   $db_select->condition('field_movie.field_movie_target_id', $movie->nid);
   $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = fm.fid');
   $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
+  $db_select->join('mpx_video', 'mpx_video', 'mpx_video.fid = fm.fid');
+  $db_select->condition('mpx_video.status', '1');
 
   $movie_file = $db_select->execute()->fetchAll();
 

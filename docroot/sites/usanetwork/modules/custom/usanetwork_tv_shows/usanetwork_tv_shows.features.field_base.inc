@@ -134,6 +134,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
@@ -142,8 +144,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -525,6 +525,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
@@ -533,8 +535,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1477,6 +1477,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
@@ -1486,8 +1488,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'tv_episode' => 'tv_episode',
         'tv_season' => 'tv_season',
         'usanetwork_static_page' => 'usanetwork_static_page',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1547,6 +1547,43 @@ function usanetwork_tv_shows_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_multiple_show'
+  $field_bases['field_multiple_show'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_multiple_show',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 1,
+          ),
+        ),
+        'sort' => array(
+          'direction' => 'ASC',
+          'property' => 'title',
+          'type' => 'property',
+        ),
+        'target_bundles' => array(
+          'tv_show' => 'tv_show',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_original_air_date'
@@ -1868,6 +1905,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
@@ -1876,8 +1915,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -2027,6 +2064,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
@@ -2035,8 +2074,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -2064,6 +2101,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
@@ -2072,8 +2111,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -2400,6 +2437,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
@@ -2408,8 +2447,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

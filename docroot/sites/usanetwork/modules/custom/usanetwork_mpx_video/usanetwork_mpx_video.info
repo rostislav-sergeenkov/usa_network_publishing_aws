@@ -91,6 +91,7 @@ features[field_instance][] = file-mpx_video_1-field_show
 features[field_instance][] = file-mpx_video_1-field_usa_video_terms
 features[field_instance][] = file-mpx_video_2-field_call_to_action_type
 features[field_instance][] = file-mpx_video_2-field_gigya_share_bar
+features[field_instance][] = file-mpx_video_2-field_movie
 features[field_instance][] = file-mpx_video_2-field_mpx_airdate
 features[field_instance][] = file-mpx_video_2-field_mpx_description
 features[field_instance][] = file-mpx_video_2-field_mpx_duration

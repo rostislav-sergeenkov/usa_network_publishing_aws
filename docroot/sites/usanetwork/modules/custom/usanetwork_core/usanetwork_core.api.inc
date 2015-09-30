@@ -304,3 +304,21 @@ function usanetwork_core_api_check_entity_publish($entity, $entity_type = 'node'
   }
   return TRUE;
 }
+
+/**
+ * Check relation with show.
+ *
+ * @param $entity
+ */
+function usanetwork_core_api_is_related_with_show($entity) {
+  if (!empty($entity->field_multiple_show)) {
+    return TRUE;
+  }
+  elseif (!empty($entity->field_show)) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+

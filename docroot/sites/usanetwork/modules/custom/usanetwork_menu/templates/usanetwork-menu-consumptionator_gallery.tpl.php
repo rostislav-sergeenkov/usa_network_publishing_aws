@@ -13,11 +13,13 @@
 <div class="header-nav-bar">
   <div class="usa-logo show-color hover-avail"><a class="logo" href="<?php print $main_url; ?>"></a></div>
   <div class="nav-bar-tabs">
-    <div class="menu-item show-color hover-avail show-name">
-      <a href="<?php print $show_url; ?>">
-        <span><?php print $show_name; ?></span>
-      </a>
-    </div>
+    <?php if ($is_multilple == FALSE && $is_show_related == TRUE):  ?>
+      <div class="menu-item show-color hover-avail show-name">
+        <a href="<?php print $show_url; ?>">
+          <span><?php print $show_name; ?></span>
+        </a>
+      </div>
+    <?php endif; ?>
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>

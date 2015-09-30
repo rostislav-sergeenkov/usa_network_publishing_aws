@@ -31,7 +31,7 @@
     </div>
     <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>
       <?php if (!empty($slides_vertical)): ?>
-        <div class="episodes-list-slider vertical" data-mode="vertical">
+        <div class="episodes-list-slider vertical<?php print empty($link) ? ' no-all-link' : ''; ?>" data-mode="vertical">
           <ul class="slider-vertical">
             <?php foreach ($slides_vertical as $slide_vertical): ?>
               <li class="slide-item">
@@ -59,7 +59,9 @@
     <?php endif; ?>
   </div>
   <!-- change link to special photo page for show-->
-  <div class="more-items more-photos show-color">
-    <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
-  </div>
+  <?php if (!empty($link)): ?>
+    <div class="more-items more-photos show-color">
+      <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
+    </div>
+  <?php endif; ?>
 </div>

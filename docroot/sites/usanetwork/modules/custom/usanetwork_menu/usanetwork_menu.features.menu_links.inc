@@ -51,25 +51,25 @@ function usanetwork_menu_menu_default_menu_links() {
     'customized' => 1,
   );
   // Exported menu link: main-menu_movies:movies
-//  $menu_links['main-menu_movies:movies'] = array(
-//    'menu_name' => 'main-menu',
-//    'link_path' => 'movies',
-//    'router_path' => 'movies',
-//    'link_title' => 'Movies',
-//    'options' => array(
-//      'attributes' => array(
-//        'title' => '',
-//      ),
-//      'identifier' => 'main-menu_movies:movies',
-//    ),
-//    'module' => 'menu',
-//    'hidden' => 0,
-//    'external' => 0,
-//    'has_children' => 0,
-//    'expanded' => 0,
-//    'weight' => 0,
-//    'customized' => 1,
-//  );
+  $menu_links['main-menu_movies:movies'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'movies',
+    'router_path' => 'movies',
+    'link_title' => 'Movies',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_movies:movies',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
   // Exported menu link: main-menu_schedule:schedule
   $menu_links['main-menu_schedule:schedule'] = array(
     'menu_name' => 'main-menu',

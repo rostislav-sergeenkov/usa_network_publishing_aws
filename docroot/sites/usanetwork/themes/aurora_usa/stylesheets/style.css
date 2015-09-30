@@ -17097,6 +17097,21 @@ footer h2 {
     padding-left: 22px;
   }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .content .all-shows-landing-page-container .section-title .section-title-wrapper, .content .all-movies-landing-page-container .section-title .section-title-wrapper {
+    max-width: calc(100% - 490px);
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .content .all-shows-landing-page-container .section-title .section-title-wrapper, .content .all-movies-landing-page-container .section-title .section-title-wrapper {
+    max-width: calc(100% - 346px);
+  }
+}
+@media (max-width: 640px) {
+  .content .all-shows-landing-page-container .section-title .section-title-wrapper, .content .all-movies-landing-page-container .section-title .section-title-wrapper {
+    max-width: calc(100% - 163px);
+  }
+}
 .content .all-shows-landing-page-container .upper-menu, .content .all-movies-landing-page-container .upper-menu {
   background: none;
   position: absolute;

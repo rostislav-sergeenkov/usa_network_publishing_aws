@@ -577,14 +577,13 @@ function _usanetwork_movies_mb_block() {
  * Define does movie have full episode
  */
 function _usanetwork_movie_has_full_episode($movie) {
-  $db_select = db_select('file_managed', 'fm')
-    ->fields('fm', array('fid'));
-  $db_select->join('field_data_field_movie', 'field_movie' , 'fm.fid = field_movie.entity_id');
+  $db_select = db_select('mpx_video', 'mv')
+    ->fields('mv', array('fid', 'expiration_date'));
+  $db_select->condition('mv.status', '1');
+  $db_select->join('field_data_field_movie', 'field_movie' , 'mv.fid = field_movie.entity_id');
   $db_select->condition('field_movie.field_movie_target_id', $movie->nid);
-  $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = fm.fid');
+  $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = mv.fid');
   $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
-  $db_select->leftJoin('mpx_video', 'mpx_video', 'mpx_video.fid = fm.fid');
-  $db_select->addField('mpx_video', 'expiration_date', 'expiration_date');
 
   $movie_file = $db_select->execute()->fetchObject();
 

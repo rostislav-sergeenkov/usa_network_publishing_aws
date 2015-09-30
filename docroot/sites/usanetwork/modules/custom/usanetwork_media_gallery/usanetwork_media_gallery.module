@@ -966,3 +966,15 @@ function _usanetwork_media_gallery_multiple_gallery_validate($form, &$form_state
     form_set_error('field_show', t('Shows should be defined only in "Show" or only in "Multiple Show"'));
   }
 }
+
+
+function usanetwork_media_gallery_metatag_pattern_alter(&$pattern, &$types, $tag_name) {
+  if (isset($types['node']) && 'media_gallery' == $types['node']->type && 'og:title' == $tag_name) {
+    $node = $types['node'];
+    $is_multiple_gallery = _usanetwork_media_gallery_is_multiple($node);
+    $is_show_related = usanetwork_core_api_is_related_with_show($node);
+    if (!$is_show_related || $is_multiple_gallery) {
+      $pattern = '[node:title] | Photo Galleries | [site:name]';
+    }
+  }
+}

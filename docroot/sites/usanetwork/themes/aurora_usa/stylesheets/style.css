@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -9489,6 +9489,34 @@ header .tve-help-link.signIn .inlineLoader {
     display: none;
   }
 }
+.five-promo-item-block.movie-all-movies-main-block .movies-main-description {
+  color: #5d5d5d;
+  font-size: 2.10416vw;
+  line-height: 1.1;
+  margin-bottom: 35px;
+  text-align: center;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block.movie-all-movies-main-block .movies-main-description {
+    font-size: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block.movie-all-movies-main-block .movies-main-description {
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block.movie-all-movies-main-block .movies-main-description {
+    font-size: 12px;
+  }
+}
+.five-promo-item-block.movie-all-movies-main-block .movies-main-description .description-first-line {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+.five-promo-item-block.movie-all-movies-main-block .movies-main-description .description-second-line {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+}
 
 .show-latest-block {
   background: #e9eaeb;
@@ -11211,6 +11239,7 @@ footer h2 {
   .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info {
     background: #242424;
     border-left: 1px solid #242424;
+    float: right;
   }
 }
 
@@ -12282,6 +12311,14 @@ footer h2 {
 @media (max-width: 1280px) {
   .consum-sidebar .episodes-list-slider.vertical {
     display: none;
+  }
+}
+.consum-sidebar .episodes-list-slider.vertical.no-all-link {
+  height: calc(100% - 45px);
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.vertical.no-all-link {
+    height: calc(100% - 70px);
   }
 }
 .consum-sidebar .episodes-list-slider.vertical ul, .consum-sidebar .episodes-list-slider.vertical .bx-viewport, .consum-sidebar .episodes-list-slider.vertical .bx-wrapper {
@@ -18522,6 +18559,11 @@ footer h2 {
   }
 }
 
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item {
+    min-height: 31vw;
+  }
+}
 #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .title {
   margin-top: 0;
 }
@@ -18533,6 +18575,11 @@ footer h2 {
 @media (max-width: 640px) {
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .posted-date {
     margin-bottom: 20px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block {
+    min-height: 0;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {

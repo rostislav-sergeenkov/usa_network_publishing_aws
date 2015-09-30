@@ -31,7 +31,7 @@
     </div>
     <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>
       <?php if (!empty($slides_vertical)): ?>
-        <div class="episodes-list-slider vertical" data-mode="vertical">
+        <div class="episodes-list-slider vertical<?php print empty($link) ? ' no-all-link' : ''; ?>" data-mode="vertical">
           <ul class="slider-vertical">
             <?php foreach ($slides_vertical as $slide_vertical): ?>
               <li class="slide-item">

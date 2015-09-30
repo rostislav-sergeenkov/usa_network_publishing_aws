@@ -715,7 +715,7 @@ function usanetwork_mpx_video_file_presave($file) {
       }
     }
 
-    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] !== 'Movies on USA')) {
+    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] !== 'Movies On USA')) {
       $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show');
       if (isset($node->nid)) {
         $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
@@ -723,7 +723,7 @@ function usanetwork_mpx_video_file_presave($file) {
       }
     }
 
-    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] == 'Movies on USA')) {
+    if ((count($categories) == 2) && ($categories[0] == 'Series') && ($categories[1] == 'Movies On USA')) {
       $node = _usanetwork_mpx_video_node_load_by_title($file->filename, 'movie');
       if (isset($node->nid)) {
         $file->field_movie[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
@@ -805,7 +805,7 @@ function usanetwork_mpx_video_file_presave($file) {
           $new_path = pathauto_cleanstring(str_replace(' ', '', $show)) . '/videos/' . pathauto_cleanstring($title);
         } elseif (isset($movie)) {
           if ($full_episodes == '1') {
-            $new_path = 'movies/videos/' . pathauto_cleanstring($title);
+            $new_path = 'movies/' . pathauto_cleanstring($title) . '/watch';
           } else {
             $new_path = 'movies/' . pathauto_cleanstring($movie) . '/videos/' . pathauto_cleanstring($title);
           }
@@ -2002,7 +2002,7 @@ function _usanetwork_mpx_video_file_omniture($entity, $entity_type){
   if ($tv_content) {
     if ($tv_content->type == 'movie') {
       $video_variables['s.prop2'] = t('Movies');
-      $video_variables['s.prop3'] = t('Movies');
+      $video_variables['s.prop3'] = t('Video');
       $video_variables['s.prop4'] = t('Movies : !movie_title', array(
         '!movie_title' => $tv_content->title,
       ));

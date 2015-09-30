@@ -725,8 +725,18 @@ function _usanetwork_media_gallery_get_gallery_types($show_id, $params) {
   $query->condition('n.status', '1');
   $query->condition('n.type', 'media_gallery');
   $query->fields('n', array('nid'));
-  $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
-  $query->condition('field_show.field_show_target_id', $show_id);
+  $query->leftJoin('field_data_field_show', 'show_field', 'n.nid=show_field.entity_id');
+  $query->leftJoin('field_data_field_multiple_show', 'multiple_show_field', 'multiple_show_field.entity_id = n.nid');
+  $query->condition(
+    db_or()
+      ->isNotNull('show_field.entity_id')
+      ->isNotNull('multiple_show_field.entity_id')
+  );
+  $query->condition(
+    db_or()
+      ->condition('show_field.field_show_target_id', $show_id)
+      ->condition('multiple_show_field.field_multiple_show_target_id', $show_id)
+  );
   $query->leftJoin('field_data_field_gallery_type', 'field_gallery_type', 'n.nid=field_gallery_type.entity_id');
   $query->fields('field_gallery_type', array('field_gallery_type_value'));
   $query_results = $query->execute()->fetchAll();

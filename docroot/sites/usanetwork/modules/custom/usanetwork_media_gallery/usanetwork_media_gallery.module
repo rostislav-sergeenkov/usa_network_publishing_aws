@@ -349,13 +349,8 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       $galleries_list = _usanetwork_media_gallery_get_multiple_show_galleries();
     }
     else {
-      return theme('usanetwork_media_gallery_consumptionator_episode_slides', array(
-        'block_title' => '',
-        'slides_vertical' => '',
-        'slides_horizontal' => '',
-        'ad' => isset($advert) ? $advert : NULL,
-        'link' => NULL,
-      ));
+      $block_title = '';
+      $galleries_list = _usanetwork_media_gallery_get_multiple_show_galleries();
     }
     $rendered_items = array();
     foreach ($galleries_list as $gallery_item) {

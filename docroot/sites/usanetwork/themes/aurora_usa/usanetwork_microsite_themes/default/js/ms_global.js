@@ -84,9 +84,9 @@
           break;
       }
       if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
-        Drupal.behaviors.ms_global.setOmnitureData(sectionId);
-        Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
+        Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
+        Drupal.behaviors.ms_global.setOmnitureData(sectionId);
         Drupal.behaviors.ms_global.create728x90Ad(sectionId);
       }
     },

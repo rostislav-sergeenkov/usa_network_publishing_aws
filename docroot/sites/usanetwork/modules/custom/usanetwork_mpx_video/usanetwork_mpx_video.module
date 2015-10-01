@@ -2011,6 +2011,7 @@ function _usanetwork_mpx_video_file_omniture($entity, $entity_type){
         '!video_title' => $entity->filename,
       ));
       $video_variables['s.prop10'] = t('Movies');
+      $video_variables['s.pageName'] = $video_variables['s.prop5'];
     }
     else {
       $video_variables = array(

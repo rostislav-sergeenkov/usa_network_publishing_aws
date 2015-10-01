@@ -28,6 +28,17 @@
         text-align: left;
         padding-left: 22px;
       }
+      .section-title-wrapper {
+        @include breakpoint($between-769-1024) {
+          max-width: calc(100% - 490px);
+        }
+        @include breakpoint($between-641-768) {
+          max-width: calc(100% - 346px);
+        }
+        @include breakpoint($bp-640-width) {
+          max-width: calc(100% - 163px);
+        }
+      }
     }
     .upper-menu {
       background: none;

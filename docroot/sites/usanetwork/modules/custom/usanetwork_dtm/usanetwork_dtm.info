@@ -1,0 +1,7 @@
+name = USA Network DTM
+description = Functionality for Dynamic Tag Manager
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_dtm
+dependencies[] = sitecatalyst 

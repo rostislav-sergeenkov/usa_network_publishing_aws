@@ -24,6 +24,7 @@
           $homeUsaLogo = $('#home-usa-logo'),
           $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 0) {
+        //usa_debug('showSiteNav()');
         $siteNav.css({'opacity': 1}).animate({'max-height': '72px'}, 700, function(){
           if (window.innerWidth < 874) {
             $siteNav.css({'overflow': 'visible'}); // to allow hamburger hover state to work
@@ -38,6 +39,7 @@
           $homeUsaLogo = $('#home-usa-logo'),
           $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 1) {
+        usa_debug('hideSiteNav()');
         $homeUsaLogo.animate({'opacity': 1}, 700);
         $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
           $siteNav.css({'opacity': 0});
@@ -46,7 +48,17 @@
     },
 
     setSiteNav: function() {
-      if (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav') || Drupal.behaviors.ms_global.isScrolledIntoView('#home-usa-logo')) {
+//      var wPath = window.location.pathname,
+      var homeAdInView = (Drupal.behaviors.ms_global.isScrolledIntoView('.dart-name-728x90_ifr_reload_home')) ? true : false,
+          homeLogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-logo')) ? true : false,
+          homeTuneInInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-tunein')) ? true : false,
+          homeNavFirstInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:first')) ? true : false,
+          homeNavLastInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:last')) ? true : false,
+          homeFinalePacketImageInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#finale-packet-image')) ? true : false,
+          homeUSALogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-usa-logo')) ? true : false;
+      //usa_debug('setSiteNav()');
+//      if (wPath == '/mrrobot/catchup' || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeFinalePacketImageInView || homeUSALogoInView) {
+      if (homeAdInView || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeFinalePacketImageInView || homeUSALogoInView) {
         Drupal.behaviors.ms_site.hideSiteNav();
       }
       else {
@@ -55,20 +67,9 @@
     },
 
     showInfographic: function() {
-/*
-      var wwidth = $(window).width();
-      if (wwidth > 1000) {
-        $('#character-infographic-overlay').css('display', 'block').animate({'opacity': 1}, 1000);
-        $('#character-infographic-overlay .character-close').click(function(){
-          $('#character-infographic-overlay').animate({'opacity': 0}, 1000).css('display', 'none');
-        });
-      }
-      else {
-*/
-        var wHost = window.location.hostname,
-            wUrl = (wHost == 'www.usanetwork.com') ? 'http://apps.usanetwork.com/mrrobot/catchup/infographic' : 'http://stage-apps.usanetwork.com/mrrobot/catchup/infographic',
-            infographicWindow = window.open(wUrl, '_blank', 'menubar=no,resizable=yes,status=no,toolbar=no,scrollbars=yes', false);
-//      }
+      var wHost = window.location.hostname,
+          wUrl = (wHost == 'www.usanetwork.com') ? 'http://apps.usanetwork.com/mrrobot/catchup/infographic' : 'http://stage-apps.usanetwork.com/mrrobot/catchup/infographic',
+          infographicWindow = window.open(wUrl, '_blank', 'menubar=no,resizable=yes,status=no,toolbar=no,scrollbars=yes', false);
     },
 
     // getFirstEpisodeNumberForMustSeeMomentsVideos
@@ -105,13 +106,6 @@
             if (!firstEpisodeWithVideos) firstEpisodeWithVideos = j;
             childHtml += '<li class="filter-child-item' + childClass + '" data-season-num="' + i + '" data-episode-num="' + j + '">S' + i + ' EP' + j + '<span class="msm-episode-title">' + msmVideosByEpisode[i][j]['title'] + '</span></li>';
             childClass = '';
-/*
-            for (var k=0; k < numVideos; k++) {
-              usa_debug('addMSMVideoInfo() -- season ' + i + ' episode ' + j + ' video ' + msmVideosByEpisode[i][j][k]);
-              $msmVideos.find('li[data-fid="' + msmVideosByEpisode[i][j][k] + '"]').addClass('season' + i + ' episode' + j);
-// jQuery('#videos #thumbnail-list ul.must-see-moments').find('li[data-fid="372006"]').addClass('testing testing2');
-            }
-*/
           }
         }
       }
@@ -168,7 +162,7 @@
           $msmVideosInEpisode = $('#videos #thumbnail-list ul.must-see-moments li.season' + seasonNum + '.episode' + epNum),
           $firstVideoInEpisode = $msmVideosInEpisode.first(),
           $adBlock = $('#thumbnail-list .thumbnail.ad');
-usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
+//usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
       $allMsmVideos.hide();
       $msmVideosInEpisode.show()
       $('#videos #thumbnail-list ul.must-see-moments').animate({'opacity': 1}, 500, function(){
@@ -293,12 +287,6 @@ usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
 
       setTimeout(function(){
         homeSectionHeight = self.getHeightHomeSection();
-        if ($('html').hasClass('ie9')) {
-          self.showSiteNav();
-        }
-        else {
-          self.setSiteNav();
-        }
 
         // add dropdown menu to must see moments (msm) video filter
         self.addMSMVideoFilterMenuDropdown();
@@ -310,6 +298,13 @@ usa_debug('showMSMVideosBySeasonNEpisode(' + seasonNum + ', ' + epNum + ')');
         // designers want the Must See Moments video filter to be
         // second in the list of filters
         self.setVideoFilterOrder();
+
+        if ($('html').hasClass('ie9')) {
+          self.showSiteNav();
+        }
+        else {
+          self.setSiteNav();
+        }
 
         // set click on character infographic
         $('#character-infographic a').on('click', function() {

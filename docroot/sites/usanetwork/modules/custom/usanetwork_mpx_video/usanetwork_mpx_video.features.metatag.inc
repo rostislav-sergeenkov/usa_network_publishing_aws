@@ -13,19 +13,7 @@ function usanetwork_mpx_video_metatag_export_default() {
   // Exported Metatag config instance: file.
   $config['file'] = array(
     'instance' => 'file',
-    'config' => array(),
-  );
-
-  // Exported Metatag config instance: file:mpx_video_1.
-  $config['file:mpx_video_1'] = array(
-    'instance' => 'file:mpx_video_1',
     'config' => array(
-      'title' => array(
-        'value' => '[file:field_mpx_title] | [site:name]',
-      ),
-      'description' => array(
-        'value' => '[file:field_mpx_description]',
-      ),
       'robots' => array(
         'value' => array(
           'index' => 0,
@@ -39,6 +27,25 @@ function usanetwork_mpx_video_metatag_export_default() {
           'noimageindex' => 0,
           'notranslate' => 0,
         ),
+      ),
+      'og:title' => array(
+        'value' => '[file:name]',
+      ),
+    ),
+  );
+
+  // Exported Metatag config instance: file:mpx_video_1.
+  $config['file:mpx_video_1'] = array(
+    'instance' => 'file:mpx_video_1',
+    'config' => array(
+      'title' => array(
+        'value' => '[file:field_mpx_title] | [site:name]',
+      ),
+      'description' => array(
+        'value' => '[file:field_mpx_description]',
+      ),
+      'og:title' => array(
+        'value' => '[file:name]',
       ),
       'og:description' => array(
         'value' => '[file:og-description]',
@@ -59,19 +66,8 @@ function usanetwork_mpx_video_metatag_export_default() {
       'description' => array(
         'value' => '[file:field_mpx_description]',
       ),
-      'robots' => array(
-        'value' => array(
-          'index' => 0,
-          'follow' => 0,
-          'noindex' => 0,
-          'nofollow' => 0,
-          'noarchive' => 0,
-          'nosnippet' => 0,
-          'noodp' => 0,
-          'noydir' => 0,
-          'noimageindex' => 0,
-          'notranslate' => 0,
-        ),
+      'og:title' => array(
+        'value' => '[file:name]',
       ),
       'og:description' => array(
         'value' => '[file:og-description]',

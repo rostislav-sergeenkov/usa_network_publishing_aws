@@ -372,15 +372,15 @@ function usanetwork_movie_entity_insert($entity, $type) {
  */
 function _usanetwork_movie_all_movies_block() {
   $params = drupal_get_query_parameters();
-  if (empty($params['sort_order']) || !in_array($params['sort_order'], array('ASC', 'DESC'))) {
-    $params['sort_order'] = 'ASC';
+  if (empty($params['sort_order']) || !in_array($params['sort_order'], array('ALL', 'NOW'))) {
+    $params['sort_order'] = 'ALL';
   }
   $sorters = _usanetwork_movie_all_movies_landing_page_sorters($params);
   $movies = _usanetwork_movie_all_movies_get_movies($params['sort_order']);
   $movies_block = _usanetwork_movies_all_movies_render_block($movies);
   $video_sorter_title = $sorters[$params['sort_order']]['title'];
   $result = theme('usanetwork_movie_movies_landing', array(
-    'block_title' => t('All Movies'),
+    'block_title' => ($params['sort_order'] == 'ALL') ? t('All Movies') : t('Showing Movies Available to watch now') ,
     'movie_sorters' => $sorters,
     'movie_sorter_title' => $video_sorter_title,
     'movies_block' => $movies_block,
@@ -396,23 +396,23 @@ function _usanetwork_movie_all_movies_block() {
  */
 function _usanetwork_movie_all_movies_landing_page_sorters($params) {
 
-  $data['ASC'] = array(
-    'order' => 'ASC',
-    'title' => t('Sort A - Z'),
+  $data['ALL'] = array(
+    'order' => 'ALL',
+    'title' => t('All Movies'),
     'active' => FALSE,
     'url' => url('movies', array(
       'query' => array(
-        'sort_order' => 'ASC',
+        'sort_order' => 'ALL',
       )
     )),
   );
-  $data['DESC'] = array(
-    'order' => 'DESC',
-    'title' => t('Sort Z - A'),
+  $data['NOW'] = array(
+    'order' => 'NOW',
+    'title' => t('Available To Watch Now'),
     'active' => FALSE,
     'url' => url('movies', array(
       'query' => array(
-        'sort_order' => 'DESC',
+        'sort_order' => 'NOW',
       )
     )),
   );
@@ -433,15 +433,25 @@ function _usanetwork_movie_all_movies_landing_page_sorters($params) {
  *
  * @return array
  */
-function _usanetwork_movie_all_movies_get_movies($sort = 'ASC') {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'movie')
-    ->propertyCondition('status', NODE_PUBLISHED)
-    ->propertyOrderBy('title', $sort);
-  $result = $query->execute();
-  if (!empty($result['node'])) {
-    $nodes = entity_load('node', array_keys($result['node']));
+function _usanetwork_movie_all_movies_get_movies($sort = 'ALL') {
+  $db_select = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('n.type', 'movie')
+    ->condition('n.status', NODE_PUBLISHED);
+
+  if ($sort == 'NOW') {
+    $db_select->join('field_data_field_movie', 'field_movie', 'n.nid = field_movie.field_movie_target_id');
+    $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = field_movie.entity_id');
+    $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
+    $db_select->join('mpx_video', 'mpx_video', 'mpx_video.fid = field_movie.entity_id');
+    $db_select->condition('mpx_video.status', '1');
+  }
+
+  $db_select->orderBy('n.title', 'ASC');
+  $result = $db_select->execute()->fetchAllAssoc('nid');
+
+  if (!empty($result)) {
+    $nodes = entity_load('node', array_keys($result));
     return $nodes;
   }
   return FALSE;
@@ -474,13 +484,16 @@ function _usanetwork_movies_all_movies_block_item($movie) {
   if (empty($schedule_data)) {
     $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
   }
+  $has_full_episode = _usanetwork_movie_has_full_episode($movie);
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
     'target_url' => url('node/' . $movie->nid),
     'caption' => $caption,
     'title' => $movie->title,
-    'additional' => $schedule_data,
+    'additional' => isset($has_full_episode->expiration_date)
+      ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)
+      : $schedule_data,
     'image_desktop' => image_style_url('539x303', $image_url),
   );
   return theme('usanetwork_movie_movies_landing_item', $theme_variables);
@@ -546,7 +559,9 @@ function _usanetwork_movies_mb_block() {
             'icon_type' => $has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default',
             'caption' => $caption,
             'title' => $featured_movie->title,
-            'description' => $show_time,
+            'description' => isset($has_full_episode->expiration_date)
+              ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)
+              : $show_time,
             'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
             'is_first' => $is_first,
           );
@@ -572,19 +587,18 @@ function _usanetwork_movies_mb_block() {
  * Define does movie have full episode
  */
 function _usanetwork_movie_has_full_episode($movie) {
-  $db_select = db_select('file_managed', 'fm')
-    ->fields('fm', array('fid'));
-  $db_select->join('field_data_field_movie', 'field_movie' , 'fm.fid = field_movie.entity_id');
+  $db_select = db_select('mpx_video', 'mv')
+    ->fields('mv', array('fid', 'expiration_date'));
+  $db_select->condition('mv.status', '1');
+  $db_select->join('field_data_field_movie', 'field_movie' , 'mv.fid = field_movie.entity_id');
   $db_select->condition('field_movie.field_movie_target_id', $movie->nid);
-  $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = fm.fid');
+  $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = mv.fid');
   $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
-  $db_select->join('mpx_video', 'mpx_video', 'mpx_video.fid = fm.fid');
-  $db_select->condition('mpx_video.status', '1');
 
-  $movie_file = $db_select->execute()->fetchAll();
+  $movie_file = $db_select->execute()->fetchObject();
 
   if (!empty($movie_file)) {
-    return TRUE;
+    return $movie_file;
   }
   else {
     return FALSE;

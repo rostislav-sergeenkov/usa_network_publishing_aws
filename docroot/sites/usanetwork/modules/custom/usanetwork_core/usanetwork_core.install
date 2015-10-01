@@ -1111,3 +1111,12 @@ function usanetwork_core_update_7177() {
     module_enable(array('custom_add_another'));
   }
 }
+
+/**
+ * Enables usanetwork_dtm module.
+ */
+function usanetwork_core_update_7178() {
+  if (!module_exists('usanetwork_dtm')) {
+    module_enable(array('usanetwork_dtm'));
+  }
+}

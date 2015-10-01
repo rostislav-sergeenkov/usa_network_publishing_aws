@@ -15,3 +15,35 @@ function usanetwork_episodes_update_7100() {
     pathauto_node_update_alias($episode, 'update');
   }
 }
+
+/**
+ * Implements hook_update_N().
+ * Update Episode Guide URL scheme
+ */
+function usanetwork_episodes_update_7101() {
+  $fields_to_delete = array(
+    'field_episode_credit_character',
+    'field_episode_credit_person',
+    'field_episode_credit_role',
+    'field_episode_credit',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_episodes', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+
+  /**
+   * The fields aren't really deleted until the purge function runs, ordinarily
+   * during cron.  Count the number of fields we need to purge, and add five in
+   * case a few other miscellaneous fields are in there somehow.
+   */
+  field_purge_batch(count($fields_to_delete) + 5);
+
+  if ($group = field_group_load_field_group('group_ep_cast_crew', 'node', 'tv_episode', 'form')) {
+    ctools_include('export');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  // THEN, in case of field type change, revert the feature
+  features_revert(array('usanetwork_episodes' => array('field')));
+}

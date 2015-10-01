@@ -8,6 +8,9 @@
     <a href="<?php print $target_url; ?>">
       <div class="meta-wrapper">
         <div class="meta-wrapper-inner">
+          <?php if (!empty($icon)):  ?>
+            <div class="meta-icon <?php print $icon; ?>"></div>
+          <?php endif; ?>
           <div class="meta">
             <?php if (!empty($caption)): ?>
               <div class="caption"><?php print $caption; ?></div>

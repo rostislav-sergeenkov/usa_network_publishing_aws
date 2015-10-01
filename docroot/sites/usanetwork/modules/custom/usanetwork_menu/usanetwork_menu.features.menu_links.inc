@@ -27,7 +27,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -49,
     'customized' => 1,
   );
   // Exported menu link: main-menu_home:<front>
@@ -47,7 +47,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: main-menu_movies:movies
@@ -67,7 +67,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: main-menu_schedule:schedule
@@ -107,14 +107,14 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -50,
     'customized' => 1,
   );
   // Translatables
   // Included for use with string extractors like potx.
   t('Full episodes');
   t('Home');
-//  t('Movies');
+  t('Movies');
   t('Schedule');
   t('Shows');
 

@@ -29,7 +29,11 @@ $timestamp = time();
 $sponsorClass = 'camry2015';
 $sponsorImg = 'graceland-s2catchup-camry-sticky.svg';
 $sponsorPresentedBy = 'Presented by the Bold 2015 Camry';
-if ($timestamp > mktime(0, 0, 1, 8, 16, 2015)): // after Aug 16, 2015 00:00:01 AM ET
+if ($timestamp > mktime(0, 1, 0, 9, 21, 2015)): // after Sept 21, 2015 00:01:00 AM ET
+  $sponsorClass = 'no-sponsor';
+  $sponsorImg = '';
+  $sponsorPresentedBy = '';
+elseif ($timestamp > mktime(0, 0, 1, 8, 16, 2015)): // after Aug 16, 2015 00:00:01 AM ET
   $sponsorClass = 'corolla';
   $sponsorImg = 'graceland-s2catchup-toyotacorolla-sticky.svg';
   $sponsorPresentedBy = 'Presented by Toyota Corolla';
@@ -64,10 +68,12 @@ endif;
           <div id="site-nav-center">
             <div id="site-nav-top" class="<?php print $sponsorClass; ?>">
               <a id="gracelandcu-logo" class="internal <?php print $sponsorClass; ?>" href="javascript:void(0)"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.png" alt="Graceland Catchup HQ logo"></a>
+              <?php if ($sponsorImg != ''): ?>
               <a id="gracelandcu-sponsor" class="<?php print $sponsorClass; ?>" href="http://ad.doubleclick.net/ddm/jump/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" target="_blank">
                 <img class="tracking" src="http://ad.doubleclick.net/ddm/ad/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" border="0" width="1" height="1" alt="Advertisement">
                 <img src="<?php print $themePath; ?>/images/<?php print $sponsorImg; ?>" alt="<?php print $sponsorPresentedBy; ?>">
               </a>
+              <?php endif; ?>
             </div>
             <div id="site-nav-bottom">
               <div id="site-nav-links">

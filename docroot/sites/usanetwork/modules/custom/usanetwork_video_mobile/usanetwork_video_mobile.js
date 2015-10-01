@@ -5,7 +5,6 @@
     performIosRedirect: false,
 
     showMobileVideoModal : function(os) {
-
       if ($('#mobileVideoModalOverlay').length == 0) {
         // create overlay
         $('body').append('<div id="mobileVideoModalOverlay"></div>');
@@ -17,15 +16,19 @@
         // create modal dialog
         var $modal = $('<div id="mobileVideoModal"></div>');
         $modal.append(Drupal.settings.usanetwork_video_mobile.modal);
+        $('body').append($modal);
         $modal.find('.close-reveal-modal').click(function(e) {
           e.preventDefault();
           Drupal.behaviors.video_mobile.hideMobileVideoModal();
         });
-        $('body').append($modal);
+        $modal.find('.download-app-button').click(function(e) {
+          Drupal.behaviors.video_mobile.hideMobileVideoModal();
+        });
       }
       $('#mobileVideoModalOverlay').show();
       $('#mobileVideoModal').show();
     },
+
     hideMobileVideoModal : function() {
       $('#mobileVideoModalOverlay').hide();
       $('#mobileVideoModal').hide();
@@ -58,14 +61,12 @@
       // check if user uses mobile device
       if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
         var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
-        if($('#microsite').length == 0){
-          // show modal dialog
-          Drupal.behaviors.video_mobile.showMobileVideoModal(os);
-          if (os === 'iOS' && Drupal.settings.usa.itunesAppLink) {
-            $('a.download-app-button').attr('href', Drupal.settings.usa.itunesAppLink);
-          } else {
-            $('a.download-app-button').attr('href', Drupal.settings.usanetwork_video_mobile.url[os]);
-          }
+        // show modal dialog
+        Drupal.behaviors.video_mobile.showMobileVideoModal(os);
+        if (os === 'iOS' && Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('itunesAppLink')) {
+          $('a.download-app-button').attr({'href': Drupal.settings.usa.itunesAppLink, 'target': '_blank'});
+        } else {
+          $('a.download-app-button').attr({'href': Drupal.settings.usanetwork_video_mobile.url[os], 'target': '_blank'});
         }
       }
 

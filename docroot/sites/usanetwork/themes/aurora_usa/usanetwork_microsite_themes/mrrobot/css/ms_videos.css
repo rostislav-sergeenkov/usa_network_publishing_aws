@@ -380,7 +380,7 @@
 }
 /* video-filter */
 #videos .filter-wrapper {
-  margin: 20px auto 0;
+  margin: 0 auto;
   width: 80%;
   max-width: 1300px;
 }
@@ -479,6 +479,11 @@
 #microsite #videos .full-pane {
   margin-top: 20px;
 }
+
+#mobileVideoModal {
+  z-index: 10500;
+}
+
 
 /* BEGIN MEDIA BREAKPOINTS */
 @media (min-width: 1780px) {

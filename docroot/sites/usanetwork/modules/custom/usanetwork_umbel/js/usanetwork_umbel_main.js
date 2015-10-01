@@ -24,21 +24,40 @@
 
         if (typeof settigngsParameter1 != 'undefined') {
           umbelParameter1 = settigngsParameter1;
+        } else if (typeof s == 'object') {
+          if (typeof s.prop10 != 'undefined') {
+            umbelParameter1 = s.prop10;
+          }
         } else {
-          umbelParameter1 = s.prop10;
+          if (typeof AdobeTracking.showSite !== 'undefined') {
+            umbelParameter1 = AdobeTracking.showSite;
+          }
         }
 
         if (typeof settigngsParameter2 != 'undefined') {
           umbelParameter2 = settigngsParameter2;
+        } else if (typeof s == 'object') {
+          if (typeof s.prop4 != 'undefined') {
+            umbelParameter2 = s.prop4;
+          }
         } else {
-          umbelParameter2 = s.prop4;
+          if (typeof AdobeTracking.showSiteFeature !== 'undefined') {
+            umbelParameter2 = AdobeTracking.showSiteFeature;
+          }
         }
 
         if (typeof settigngsParameter3 != 'undefined') {
           umbelParameter3 = settigngsParameter3;
+        } else if (typeof s == 'object') {
+          if (typeof s.pageName != 'undefined') {
+            umbelParameter3 = s.pageName;
+          }
         } else {
-          umbelParameter3 = s.pageName;
+          if (typeof AdobeTracking.pageName !== 'undefined') {
+            umbelParameter3 = AdobeTracking.pageName;
+          }
         }
+
         _umbel.push({
           "type": "send",
           "name": "action.tag",

@@ -46,11 +46,11 @@
         s.eVar63 = menu_name;
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
-          s.bcf = function () {
+          s.goToUrl = function () {
             Drupal.behaviors.omniture_tracking.goToUrl($self);
           };
         }
-        s.tl(this, 'o', 'Global Menu Click');
+        s.tl(this, 'o', 'Global Menu Click', null, s.goToUrl);
         s.manageVars("clearVars", s.linkTrackVars, 1);
       }
     },
@@ -63,11 +63,11 @@
       s.linkTrackEvents = s.events = 'event64';
       s.eVar64 = name;
       if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
-      s.tl(this, 'o', 'Global SubMenu Click');
+      s.tl(this, 'o', 'Global SubMenu Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -141,12 +141,12 @@
       s.eVar65 = 'Schedule Bar : ' + item_name;
 
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', 'Schedule Bar Click');
+      s.tl(this, 'o', 'Schedule Bar Click', null, s.goToUrl);
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -161,12 +161,12 @@
       s.eVar74 = name;
 
       if ($self.attr('href') != '#') {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', 'Social Follow');
+      s.tl(this, 'o', 'Social Follow', null, s.goToUrl);
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -181,12 +181,12 @@
       s.eVar64 = link_name;
 
       if ($self.attr('href') != '#') {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', 'Footer Item Clicked');
+      s.tl(this, 'o', 'Footer Item Clicked', null, s.goToUrl);
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -222,12 +222,12 @@
       s.eVar55 = name;
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', name + ' Click');
+      s.tl(this, 'o', name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -247,12 +247,12 @@
       }
 
       if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', pageName + ' ' + name + ' Click');
+      s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -281,12 +281,12 @@
       }
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
-        s.bcf = function () {
+        s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
-      s.tl(this, 'o', name + ' Click');
+      s.tl(this, 'o', name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
     aspotClick: function ($self, pageName, name, slideName) {
@@ -305,14 +305,14 @@
       }
 
       if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
-        s.bcf = function () {
+        s.goToUrl = function () {
           setTimeout(function () {
             window.location = $self.attr('href');
           }, 500);
         };
       }
 
-      s.tl(this, 'o', pageName + ' ' + name + ' Click');
+      s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -836,6 +836,86 @@
             });
           });
         });
+
+        // Quizzes omniture tracking. Track show Question
+        $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function () {
+          $(this).on('show', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              if (!$(this).hasClass('shown')) {
+                $(this).addClass('shown');
+                var quizes = settings.usanetwork_quiz;
+                var quiz_setting = quizes[nid];
+                var quizShow = quiz_setting['quizShow'],
+                    quizTitle = quiz_setting['quizTitle'],
+                    quizType = quiz_setting['quizType'];
+
+                var quizQuestionNumber = $(this).index() + 1;
+                var quizQuestionTitle = $(this).find('.question-title').text();
+                var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
+
+                s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
+                s.linkTrackVars = 'events,prop58,eVar58';
+                s.linkTrackEvents = s.events = 'event88';
+                s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
+                s.tl(this, 'o', 'Poll/Question Shown');
+                s.manageVars('clearVars', s.linkTrackVars, 1);
+              }
+            }
+          });
+        });
+
+        // Quizzes omniture tracking. Track answer Question
+        $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              if (!$(this).hasClass('answered')) {
+                $(this).addClass('answered');
+                var quizes = settings.usanetwork_quiz;
+                var quiz_setting = quizes[nid];
+                var quizShow = quiz_setting['quizShow'],
+                    quizTitle = quiz_setting['quizTitle'],
+                    quizType = quiz_setting['quizType'];
+
+                var $quizQuestion = $(this).parents('.usanetwork-quiz-question');
+                var quizQuestionNumber = $quizQuestion.index() + 1;
+                var quizQuestionTitle = $(this).closest('.usanetwork-quiz-question').find('.question-title').text();
+                var quizQuestionValue = $(this).attr('value');
+                var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
+
+                s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
+                s.linkTrackVars = 'events,prop58,eVar58';
+                s.linkTrackEvents = s.events = 'event89';
+                s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
+                s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
+                s.tl(this, 'o', 'Poll/Question Answered');
+                s.manageVars('clearVars', s.linkTrackVars, 1);
+              }
+            }
+          });
+        });
+
+        // Quizes omniture tracking. Track restart button
+        $('.usanetwork-quiz-results input[type="button"]').once('omniture-tracking', function () {
+          $(this).bindFirst('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              $('.usanetwork-quiz-questions .usanetwork-quiz-question').removeClass('shown');
+              $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').removeClass('answered');
+
+              var quizes = settings.usanetwork_quiz;
+              var quiz_setting = quizes[nid];
+              var quizShow = quiz_setting['quizShow'],
+                  quizTitle = quiz_setting['quizTitle'],
+                  quizType = quiz_setting['quizType'];
+
+              s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType);
+              s.linkTrackVars = 'events,eVar65,prop65';
+              s.linkTrackEvents = s.events = 'event65';
+              s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
+              s.tl(this, 'o', 'Restart');
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
+          });
+        });
       }
       //-------- end --------
 
@@ -850,86 +930,6 @@
           this.trigger(ev);
           return el.apply(this, arguments);
         };
-      });
-
-      // Quizzes omniture tracking. Track show Question
-      $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function () {
-        $(this).on('show', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            if (!$(this).hasClass('shown')) {
-              $(this).addClass('shown');
-              var quizes = settings.usanetwork_quiz;
-              var quiz_setting = quizes[nid];
-              var quizShow = quiz_setting['quizShow'],
-                  quizTitle = quiz_setting['quizTitle'],
-                  quizType = quiz_setting['quizType'];
-
-              var quizQuestionNumber = $(this).index() + 1;
-              var quizQuestionTitle = $(this).find('.question-title').text();
-              var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
-
-              s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-              s.linkTrackVars = 'events,prop58,eVar58';
-              s.linkTrackEvents = s.events = 'event88';
-              s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
-              s.tl(this, 'o', 'Poll/Question Shown');
-              s.manageVars('clearVars', s.linkTrackVars, 1);
-            }
-          }
-        });
-      });
-
-      // Quizzes omniture tracking. Track answer Question
-      $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function () {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            if (!$(this).hasClass('answered')) {
-              $(this).addClass('answered');
-              var quizes = settings.usanetwork_quiz;
-              var quiz_setting = quizes[nid];
-              var quizShow = quiz_setting['quizShow'],
-                  quizTitle = quiz_setting['quizTitle'],
-                  quizType = quiz_setting['quizType'];
-
-              var $quizQuestion = $(this).parents('.usanetwork-quiz-question');
-              var quizQuestionNumber = $quizQuestion.index() + 1;
-              var quizQuestionTitle = $(this).closest('.usanetwork-quiz-question').find('.question-title').text();
-              var quizQuestionValue = $(this).attr('value');
-              var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
-
-              s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-              s.linkTrackVars = 'events,prop58,eVar58';
-              s.linkTrackEvents = s.events = 'event89';
-              s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
-              s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
-              s.tl(this, 'o', 'Poll/Question Answered');
-              s.manageVars('clearVars', s.linkTrackVars, 1);
-            }
-          }
-        });
-      });
-
-      // Quizes omniture tracking. Track restart button
-      $('.usanetwork-quiz-results input[type="button"]').once('omniture-tracking', function () {
-        $(this).on('click', function (e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            $('.usanetwork-quiz-questions .usanetwork-quiz-question').removeClass('shown');
-            $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').removeClass('answered');
-
-            var quizes = settings.usanetwork_quiz;
-            var quiz_setting = quizes[nid];
-            var quizShow = quiz_setting['quizShow'],
-                quizTitle = quiz_setting['quizTitle'],
-                quizType = quiz_setting['quizType'];
-
-            s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType);
-            s.linkTrackVars = 'events,eVar65,prop65';
-            s.linkTrackEvents = s.events = 'event65';
-            s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
-            s.tl(this, 'o', 'Restart');
-            s.manageVars('clearVars', s.linkTrackVars, 1);
-          }
-        });
       });
     }
   }

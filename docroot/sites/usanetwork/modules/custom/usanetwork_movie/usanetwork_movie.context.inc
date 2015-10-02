@@ -66,7 +66,7 @@ function usanetwork_movie_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'all-movies' => 'movies',
+        'movies' => 'movies',
       ),
     ),
   );
@@ -91,11 +91,17 @@ function usanetwork_movie_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
+        'usanetwork_movie-usanetwork_movies_all_movies_tv' => array(
+          'module' => 'usanetwork_movie',
+          'delta' => 'usanetwork_movies_all_movies_tv',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
         'usanetwork_movie-usanetwork_movies_schedule' => array(
           'module' => 'usanetwork_movie',
           'delta' => 'usanetwork_movies_schedule',
           'region' => 'content',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
       ),
     ),

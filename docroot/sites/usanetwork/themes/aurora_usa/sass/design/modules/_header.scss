@@ -1098,6 +1098,16 @@ header {
                     width: 81px;
                   }
                 }
+                .title {
+                  font-family: $tex-gyreschola-italic;
+                  font-size: get-vw(11px, 1025);
+                  letter-spacing: 1px;
+                  line-height: 1.3;
+                  white-space: normal;
+                  @include breakpoint($bp-min-1901-width) {
+                    font-size: 21px;
+                  }
+                }
                 .logo {
                   height: get-vw(37px, 1025);
                   line-height: 1;

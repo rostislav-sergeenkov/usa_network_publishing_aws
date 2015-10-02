@@ -31,7 +31,7 @@
     </div>
     <div class="tab-item movies-tab">
       <div class="movies-tab-wrapper tab-item-wrapper">
-        <?php print $content['reg_tab_full_episodes']; ?>
+        <?php print $content['reg_tab_movies']; ?>
       </div>
     </div>
     <div class="tab-item schedule-tab">

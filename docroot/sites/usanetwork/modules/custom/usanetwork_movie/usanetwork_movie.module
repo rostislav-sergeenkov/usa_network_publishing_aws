@@ -691,7 +691,6 @@ function usanetwork_movie_related_content_block() {
       'related_items_block' => $block_of_items,
       'load_more_link' => $load_more_link,
       'show_nid' => $movie_node->nid,
-      'movie_title' => $movie_node->title,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
     ));
   }

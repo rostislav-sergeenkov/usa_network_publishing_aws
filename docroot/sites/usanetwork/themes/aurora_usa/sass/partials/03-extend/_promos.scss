@@ -2031,6 +2031,44 @@
             }
           }
         }
+        .meta-icon {
+          left: 4%;
+          top: 50%;
+          @include breakpoint($bp-min-1281-width) {
+            height: get-vw(38px, 1280);
+            margin-top: get-vw(-19px, 1280);
+            width: get-vw(38px, 1280);
+          }
+          @include breakpoint($bp-min-1901-width) {
+            height: 56px;
+            margin-top: -28px;
+            width: 56px;
+          }
+          @include breakpoint($between-769-1280) {
+            height: get-vw(30px, 768);
+            margin-top: get-vw(-15px, 768);
+            width: get-vw(30px, 768);
+          }
+          @include breakpoint($bp-768-width) {
+            height: get-vw(30px, 480);
+            margin-top: get-vw(-15px, 480);
+            width: get-vw(30px, 480);
+          }
+          ~ .meta {
+            @include breakpoint($bp-min-1281-width) {
+              padding-left: calc(8% + 2.96875vw);
+            }
+            @include breakpoint($bp-min-1901-width) {
+              padding-left: calc(8% + 56px);
+            }
+            @include breakpoint($between-769-1280) {
+              padding-left: calc(8% + 3.90625vw);
+            }
+            @include breakpoint($bp-768-width) {
+              padding-left: calc(8% + 6.25vw);
+            }
+          }
+        }
       }
     }
   }

@@ -408,5 +408,18 @@ address {
     font-family: $avalon-book!important;
   }
 }
+.watch-now {
+  position: relative;
+  &:before {
+    background: url(../images/watchnow.png) no-repeat;
+    background-size: 100% 100%;
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+}
 
 

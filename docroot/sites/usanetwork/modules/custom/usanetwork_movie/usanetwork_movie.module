@@ -489,6 +489,7 @@ function _usanetwork_movies_all_movies_block_item($movie) {
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
     'target_url' => url('node/' . $movie->nid),
+    'icon' => !empty($has_full_episode) ? 'full-video-icon-default' : NULL,
     'caption' => $caption,
     'title' => $movie->title,
     'additional' => isset($has_full_episode->expiration_date)

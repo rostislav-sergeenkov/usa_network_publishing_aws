@@ -12154,6 +12154,11 @@ footer h2 {
   }
   .consum-sidebar.sticky-sidebar .more-items {
     bottom: auto !important;
+    margin-top: -45px;
+  }
+}
+@media (min-width: 1281px) {
+  .consum-sidebar.sticky-sidebar .more-items {
     margin-top: -40px;
   }
 }
@@ -14921,6 +14926,13 @@ footer h2 {
   .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img {
     max-width: 75px;
     width: 75px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .consumptionator-episode-main-block .consum-sidebar .advert {
+    height: 250px;
+    padding: 0;
   }
 }
 

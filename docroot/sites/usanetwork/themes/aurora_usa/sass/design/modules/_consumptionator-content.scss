@@ -53,6 +53,11 @@
       }
       .more-items {
         bottom: auto!important;
+        margin-top: -45px;
+      }
+    }
+    @include breakpoint($bp-min-1281-width) {
+      .more-items {
         margin-top: -40px;
       }
     }

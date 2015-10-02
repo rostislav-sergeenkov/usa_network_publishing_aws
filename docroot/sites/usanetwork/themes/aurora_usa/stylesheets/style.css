@@ -28454,6 +28454,13 @@ yx-axis
   white-space: nowrap;
 }
 
+.page-movies #block-usanetwork-movie-usanetwork-movies-all-movies .landing-page-container, .page-movies #block-usanetwork-movie-usanetwork-movies-schedule .landing-page-container {
+  background: #dbdcdd;
+}
+.page-movies #block-usanetwork-movie-usanetwork-movies-all-movies-tv .landing-page-container {
+  background: #e9eaeb;
+}
+
 .catchall-takeover #head-leaderboard {
   margin-bottom: 15px;
 }

@@ -3138,6 +3138,58 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
     font-size: 1.5625vw;
   }
 }
+.landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon {
+  left: 4%;
+  top: 50%;
+}
+@media (min-width: 1281px) {
+  .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon {
+    height: 2.96875vw;
+    margin-top: -1.48438vw;
+    width: 2.96875vw;
+  }
+}
+@media (min-width: 1901px) {
+  .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon {
+    height: 56px;
+    margin-top: -28px;
+    width: 56px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon {
+    height: 3.90625vw;
+    margin-top: -1.95313vw;
+    width: 3.90625vw;
+  }
+}
+@media (max-width: 768px) {
+  .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon {
+    height: 6.25vw;
+    margin-top: -3.125vw;
+    width: 6.25vw;
+  }
+}
+@media (min-width: 1281px) {
+  .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon ~ .meta, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon ~ .meta {
+    padding-left: calc(8% + 2.96875vw);
+  }
+}
+@media (min-width: 1901px) {
+  .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon ~ .meta, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon ~ .meta {
+    padding-left: calc(8% + 56px);
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon ~ .meta, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon ~ .meta {
+    padding-left: calc(8% + 3.90625vw);
+  }
+}
+@media (max-width: 768px) {
+  .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon ~ .meta, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta-icon ~ .meta {
+    padding-left: calc(8% + 6.25vw);
+  }
+}
 
 .meta-icon {
   border-radius: 50%;

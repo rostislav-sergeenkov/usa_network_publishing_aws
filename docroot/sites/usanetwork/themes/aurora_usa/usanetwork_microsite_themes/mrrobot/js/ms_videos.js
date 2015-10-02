@@ -107,26 +107,27 @@
           dataFid = activeVideoThumb.attr('data-fid'),
           dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
           ad_728x90 = $('#videos .ad_728x90'),
-          ad_728x90_1 = $('#videos .ad_728x90_1'),
-          ad_300x60_1 = $('#videos #ad_300x60_1'),
-          ad_300x250 = $('#videos #ad_300x250'),
-          ad_300x250_1 = $('#videos #ad_300x250_1'),
+          ad_728x90_1 = $('#videos .ad_728x90_1'), // full episode video displayed
+          ad_300x60_1 = $('#videos #ad_300x60_1'), // full episode video
+          ad_300x250 = $('#videos #ad_300x250'), // not displayed 300x250
+          ad_300x250_1 = $('#videos #ad_300x250_1'), // displayed 300x250
           filter,
           url,
-          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false,
-          defaultDataClass = 'ad_728x90 ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos';
+          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
 
       // if there is no '#videos .ad_728x90' element,
       // but there is an '.ad-leaderboard' element,
       // use the .ad-leaderboard element for the video 728x90 ad
-      if (ad_728x90.length != 1 && $('.ad-leaderboard').length == 1) ad_728x90 = $('.ad-leaderboard');
+      if (ad_728x90.length != 1 && $('#videos .ad-leaderboard').length == 1) ad_728x90 = $('.ad-leaderboard');
 
       if (data) {
         dataPlayerId = data.data.player_id;
         dataFid = data.data.fid;
       }
-//usa_debug('========= micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')\ndataFid: ' + dataFid);
-      if ($('#video-filter').length) {
+
+      //usa_debug('========= micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')\ndataFid: ' + dataFid);
+
+      if ($('#video-filter').length && $('#video-filter .filter-item.active').length) {
         filter = $('#video-filter .filter-item.active').attr('data-filter-name');
         url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
       }
@@ -138,55 +139,42 @@
         videoContainer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
       }
 
+      // handle ads, video description and mobile overlay modal
       if (dataFullEpisode == 'true') {
         Drupal.behaviors.ms_videos.micrositeMobileModal();
+
+        // full episode video, so show 300x60_1 and 728x90_1
         if (ad_300x250_1) {
           ad_300x250_1.closest('li.ad').hide();
           ad_300x250_1.attr('id', 'ad_300x250').empty();
         }
         if (ad_728x90.length == 1 && ad_728x90.attr('id') != 'ad_728x90_1') {
-//usa_debug('ad_728x90: ', ad_728x90);
-/*
-          if (ad_728x90.hasAttribute('class')) {
-            ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
-          }
-          else {
-*/
-            ad_728x90.attr('data-class', defaultDataClass).addClass('ad_728x90').attr('id', 'ad_728x90_1');
-//          }
+          ad_728x90.attr('id', 'ad_728x90_1');
         }
 
         $('#videos .full-pane').addClass('full-desc');
         ad_300x60_1.show();
       }
-      else { // not full episode
+      // else not full episode
+      else {
         $('#videos .full-pane').removeClass('full-desc');
-        ad_300x60_1.hide();
 
+        // show only 300x250 and 728x90 ads
+        ad_300x60_1.hide();
         if (ad_728x90.length == 1 && ad_728x90.attr('id') == 'ad_728x90_1') {
-/*
-          if (ad_728x90.hasAttribute('data-class')) {
-            ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
-          }
-          else {
-*/
-            ad_728x90.attr('class', '').attr('class', defaultDataClass).attr('id', '').empty();
-//          }
+          ad_728x90.attr('id', 'ms-videos-leaderboard-ad').empty();
         }
+
+        setTimeout(function(){
+          if (msGlobalExists && !Drupal.behaviors.ms_global.globalInitialPageLoad) Drupal.behaviors.ms_global.create728x90Ad('videos');
+        }, 1500);
+
         if ($('#videos').find(ad_300x250)) {
           ad_300x250.closest('li.ad').show();
           ad_300x250.attr('id', 'ad_300x250_1');
         }
         if ($('#videos').find(ad_300x250_1)) {
           ad_300x250_1.closest('li.ad').show();
-        }
-
-        // if not a full episode
-        // AND the video leaderboard ad is in view
-        // OR there is no video leaderboard ad but there is a page head leaderboard ad that is in view
-        // then update the leaderboard ad
-        if (dataFullEpisode == 'false' && msGlobalExists && (Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard') || (!Drupal.behaviors.ms_global.globalInitialPageLoad && $('#videos .ad-leaderboard').length <= 0 && $('#head-leaderboard').length >= 0 && Drupal.behaviors.ms_global.isScrolledIntoView('#head-leaderboard')))) {
-          Drupal.behaviors.ms_global.create728x90Ad();
         }
       }
 
@@ -234,7 +222,7 @@
           autoplay = autoplay || false,
           videoContainer = $('#video-container'),
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
-usa_debug('clickThumbnail(elem, ' + autoplay + ')');
+      //usa_debug('clickThumbnail(elem, ' + autoplay + ')');
 
       if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
         $('#thumbnail-list .item-list ul li.thumbnail').removeClass('active');

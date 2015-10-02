@@ -240,3 +240,52 @@ function usanetwork_mpx_video_update_7001() {
     'size' => 'big',
   ));
 }
+
+function usanetwork_mpx_video_change_og_tags($entity_type, $bundle) {
+// Query the selected entity table.
+  $entity_info = entity_get_info($entity_type);
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', $entity_type)
+    ->propertyOrderBy($entity_info['entity keys']['id']);
+
+  if ($entity_type != 'user') {
+    /**
+     * Entities which do not define a bundle such as User fail returning no results.
+     * @see http://drupal.org/node/1054168#comment-5266208
+     */
+    $query->entityCondition('bundle', $bundle);
+  }
+
+  $result = $query->execute();
+  $entity_ids = !empty($result[$entity_type]) ? array_keys($result[$entity_type]) : array();
+  foreach ($entity_ids as $entity_id) {
+    $metatags = metatag_metatags_load($entity_type, $entity_id);
+    if (!empty($metatags)) {
+      $metatags = reset($metatags);
+      $data = $metatags[LANGUAGE_NONE];
+      $og_title_token = $data['og:title']['value'];
+      if ($og_title_token == '[current-page:title]') {
+        $data['og:title']['value'] = '[file:name]';
+        db_update('metatag')
+          ->fields(array(
+            'data' => serialize($data),
+          ))
+          ->condition('entity_type', $entity_type)
+          ->condition('entity_id', $entity_id)
+          ->execute();
+        metatag_metatags_cache_clear($entity_type, $entity_id);
+      }
+    }
+  }
+}
+
+/**
+ * Update meta tags og:title for all videos to [file:name] token.
+ */
+function usanetwork_mpx_video_update_7002() {
+  if (module_enable(array('metatag'))) {
+    module_load_include('inc', 'metatag', 'metatag.admin');
+    usanetwork_mpx_video_change_og_tags('file', 'mpx_video_1');
+    usanetwork_mpx_video_change_og_tags('file', 'mpx_video_2');
+  }
+}

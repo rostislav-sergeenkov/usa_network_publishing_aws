@@ -128,7 +128,7 @@
         offsetDirection = (direction == 'down') ? 1 : -1,
         offsetAmount = 10 * offsetDirection,
         galleriesTop = document.getElementById('galleries').offsetTop + offsetAmount;
-      $('body, html').animate({'scrollTop': galleriesTop}, 1000, 'jswing');
+      $('body').animate({'scrollTop': galleriesTop}, 1000, 'jswing');
 
       Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
 

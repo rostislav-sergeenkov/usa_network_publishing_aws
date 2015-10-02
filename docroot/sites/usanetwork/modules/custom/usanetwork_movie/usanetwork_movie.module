@@ -490,9 +490,7 @@ function _usanetwork_movies_all_movies_block_item($movie) {
   $theme_variables = array(
     'target_url' => url('node/' . $movie->nid),
     'icon' => !empty($has_full_episode) ? 'full-video-icon-default' : NULL,
-    'caption' => !empty($has_full_episode)
-      ? t('Watch Now')
-      : $caption,
+    'caption' => $caption,
     'title' => $movie->title,
     'additional' => isset($has_full_episode->expiration_date)
       ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)
@@ -560,9 +558,7 @@ function _usanetwork_movies_mb_block() {
                 : NULL,
             ),
             'icon_type' => $has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default',
-            'caption' => !empty($has_full_episode)
-              ? t('Watch Now')
-              : $caption,
+            'caption' => $caption,
             'title' => $featured_movie->title,
             'description' => isset($has_full_episode->expiration_date)
               ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)

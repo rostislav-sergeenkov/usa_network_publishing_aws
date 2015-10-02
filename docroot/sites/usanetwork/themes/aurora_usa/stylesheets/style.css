@@ -12137,6 +12137,49 @@ footer h2 {
     width: 100%;
   }
 }
+@media (min-width: 1025px) {
+  .consum-sidebar.sticky-sidebar {
+    height: calc(100vh - 7.12195vw);
+    position: fixed !important;
+    right: 0;
+    top: 7.12195vw;
+  }
+  .consum-sidebar.sticky-sidebar .advert {
+    height: 250px;
+    padding: 0;
+  }
+  .consum-sidebar.sticky-sidebar .items-block {
+    height: calc(100% - 250px) !important;
+    top: 0;
+  }
+  .consum-sidebar.sticky-sidebar .more-items {
+    bottom: auto !important;
+    margin-top: -40px;
+  }
+}
+@media (min-width: 1901px) {
+  .consum-sidebar.sticky-sidebar {
+    height: calc(100vh - 135px);
+    top: 135px;
+  }
+  .consum-sidebar.sticky-sidebar .more-items {
+    margin-top: -70px;
+  }
+}
+@media (min-width: 2500px) {
+  .consum-sidebar.sticky-sidebar {
+    left: calc(1867.5px + (100% - 2500px)/2);
+    right: auto;
+    width: 628px;
+  }
+}
+@media (min-width: 1025px) {
+  .consum-sidebar.sticky-sidebar.related-visible {
+    bottom: 0;
+    position: absolute !important;
+    top: auto;
+  }
+}
 .consum-sidebar .advert {
   width: 100%;
 }

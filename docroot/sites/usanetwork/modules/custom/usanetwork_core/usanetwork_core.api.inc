@@ -338,5 +338,8 @@ function usanetwork_core_api_get_movie_file_by_movie_node($move_node) {
   $query->leftJoin('mpx_video','v','v.fid = f.fid');
   $query->condition('v.status', 1);
   $file_data = $query->execute()->fetchObject();
-  return file_load($file_data->fid);
+  if (is_object($file_data)) {
+    return file_load($file_data->fid);
+  }
+  return FALSE;
 }

@@ -1243,6 +1243,24 @@
 %three-line-video-promo {
   .three-line-video {
     &.usanetwork-tv-shows-video-lmb, &.usanetwork-tv-shows-explore-lmb, &.usanetwork-tv-shows-landing-videos-item-small, &.usanetwork-tv-shows-photo-lmb, &.usanetwork-tv-shows-all-shows-lmb, &.usanetwork-movies-all-movies-lmb {
+      &.watch-now {
+        &:before {
+          height: get-vw(89px, 1901);
+          width: get-vw(95px, 1901);
+          @include breakpoint ($bp-min-1901-width) {
+            height: 89px;
+            width: 95px;
+          }
+          @include breakpoint ($between-769-1280) {
+            height: get-vw(78.6px, 1280);
+            width: get-vw(84px, 1280);
+          }
+          @include breakpoint ($bp-768-width) {
+            height: get-vw(140px, 768);
+            width: get-vw(150px, 768);
+          }
+        }
+      }
       .meta {
         .caption {
           @include breakpoint($between-769-1024) {
@@ -1511,6 +1529,24 @@
 }
 %three-line-video-promo-large {
   .three-line-video-large {
+    &.watch-now {
+      &:before {
+        height: get-vw(180px, 1901);
+        width: get-vw(193px, 1901);
+        @include breakpoint ($bp-min-1901-width) {
+          height: 180px;
+          width: 193px;
+        }
+        @include breakpoint ($between-769-1280) {
+          height: get-vw(136px, 1280);
+          width: get-vw(146px, 1280);
+        }
+        @include breakpoint ($bp-768-width) {
+          height: get-vw(140px, 768);
+          width: get-vw(150px, 768);
+        }
+      }
+    }
     .asset-img {
       height: 100%;
       width: 100%;
@@ -1942,6 +1978,24 @@
 }
 %all-shows-promo {
   .all-shows-promo {
+    &.watch-now {
+      &:before {
+        height: get-vw(87px, 1901);
+        width: get-vw(93px, 1901);
+        @include breakpoint ($bp-min-1901-width) {
+          height: 87px;
+          width: 93px;
+        }
+        @include breakpoint ($between-769-1280) {
+          height: get-vw(77px, 1280);
+          width: get-vw(82px, 1280);
+        }
+        @include breakpoint ($bp-768-width) {
+          height: get-vw(69px, 768);
+          width: get-vw(74px, 768);
+        }
+      }
+    }
     .asset-img {
       height: 100%;
       position: relative;
@@ -2028,6 +2082,44 @@
             }
             @include breakpoint ($bp-768-width) {
               font-size: get-vw(10px, 640);
+            }
+          }
+        }
+        .meta-icon {
+          left: 4%;
+          top: 50%;
+          @include breakpoint($bp-min-1281-width) {
+            height: get-vw(38px, 1280);
+            margin-top: get-vw(-19px, 1280);
+            width: get-vw(38px, 1280);
+          }
+          @include breakpoint($bp-min-1901-width) {
+            height: 56px;
+            margin-top: -28px;
+            width: 56px;
+          }
+          @include breakpoint($between-769-1280) {
+            height: get-vw(30px, 768);
+            margin-top: get-vw(-15px, 768);
+            width: get-vw(30px, 768);
+          }
+          @include breakpoint($bp-768-width) {
+            height: get-vw(30px, 480);
+            margin-top: get-vw(-15px, 480);
+            width: get-vw(30px, 480);
+          }
+          ~ .meta {
+            @include breakpoint($bp-min-1281-width) {
+              padding-left: calc(8% + 2.96875vw);
+            }
+            @include breakpoint($bp-min-1901-width) {
+              padding-left: calc(8% + 56px);
+            }
+            @include breakpoint($between-769-1280) {
+              padding-left: calc(8% + 3.90625vw);
+            }
+            @include breakpoint($bp-768-width) {
+              padding-left: calc(8% + 6.25vw);
             }
           }
         }

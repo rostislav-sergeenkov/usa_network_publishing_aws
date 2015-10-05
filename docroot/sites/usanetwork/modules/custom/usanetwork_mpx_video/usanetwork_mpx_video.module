@@ -2572,7 +2572,7 @@ function _usanetwork_mpx_video_get_related_videos_for_show($tv_content_node, $la
       $query->condition('fs.field_show_target_id', $tv_content_node->nid, '=');
     } else {
       $query->innerJoin('field_data_field_movie', 'fdfm', 'fdfm.entity_id = fm.fid');
-      $query->condition('fdfm.field_movie_target_id', $tv_content_node->nid, '=');
+      $query->condition('mfe.field_mpx_full_episode_value', '1');
     }
     $query->condition('mpx.status', 1);
     $query->condition($db_or);
@@ -2587,8 +2587,14 @@ function _usanetwork_mpx_video_get_related_videos_for_show($tv_content_node, $la
       $query->innerJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = fm.fid');
       $query->condition('fdfml.field_mpx_language_value', $language, '=');
     }
-    $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
-    $query->orderBy('mpx.airdate', 'DESC');
+
+    if ($tv_content_node->type == 'tv_show') {
+      $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
+      $query->orderBy('mpx.airdate', 'DESC');
+    } else {
+      $query->orderBy('mpx.title', 'ASC');
+    }
+
     $query_results = $query->execute()->fetchAll();
     if (!empty($query_results)) {
       $files_array = array();

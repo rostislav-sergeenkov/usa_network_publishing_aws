@@ -63,6 +63,11 @@ function usanetwork_movie_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_movies_all_movies_tv'] = array(
+    'info' => t('Movies: All movies TV'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   $blocks['usanetwork_movies_schedule'] = array(
     'info' => t('Movies: Schedule'),
     'cache' => DRUPAL_NO_CACHE,
@@ -228,7 +233,11 @@ function usanetwork_movie_block_view($delta = '') {
       break;
     case 'usanetwork_movies_all_movies':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_movie_all_movies_block();
+      $block['content'] = _usanetwork_movie_all_movies_block('NOW');
+      break;
+    case 'usanetwork_movies_all_movies_tv':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_movie_all_movies_block('TV');
       break;
     case 'usanetwork_movies_schedule':
       $block['subject'] = '';
@@ -370,58 +379,14 @@ function usanetwork_movie_entity_insert($entity, $type) {
 /**
  * Renders content for photos block.
  */
-function _usanetwork_movie_all_movies_block() {
-  $params = drupal_get_query_parameters();
-  if (empty($params['sort_order']) || !in_array($params['sort_order'], array('ALL', 'NOW'))) {
-    $params['sort_order'] = 'ALL';
-  }
-  $sorters = _usanetwork_movie_all_movies_landing_page_sorters($params);
-  $movies = _usanetwork_movie_all_movies_get_movies($params['sort_order']);
+function _usanetwork_movie_all_movies_block($category = 'NOW') {
+  $movies = _usanetwork_movie_all_movies_get_movies($category);
   $movies_block = _usanetwork_movies_all_movies_render_block($movies);
-  $video_sorter_title = $sorters[$params['sort_order']]['title'];
   $result = theme('usanetwork_movie_movies_landing', array(
-    'block_title' => ($params['sort_order'] == 'ALL') ? t('All Movies') : t('Showing Movies Available to watch now') ,
-    'movie_sorters' => $sorters,
-    'movie_sorter_title' => $video_sorter_title,
     'movies_block' => $movies_block,
-    'sorting_order' => $params['sort_order'],
+    'block_title' => ($category == 'NOW') ? t('AVAILABLE TO WATCH ONLINE NOW') : t('AVAILABLE ON TV'),
   ));
   return $result;
-}
-
-/**
- * Returns default sorters for gallery page.
- *
- * @return array
- */
-function _usanetwork_movie_all_movies_landing_page_sorters($params) {
-
-  $data['ALL'] = array(
-    'order' => 'ALL',
-    'title' => t('All Movies'),
-    'active' => FALSE,
-    'url' => url('movies', array(
-      'query' => array(
-        'sort_order' => 'ALL',
-      )
-    )),
-  );
-  $data['NOW'] = array(
-    'order' => 'NOW',
-    'title' => t('Available To Watch Now'),
-    'active' => FALSE,
-    'url' => url('movies', array(
-      'query' => array(
-        'sort_order' => 'NOW',
-      )
-    )),
-  );
-
-  if (isset($params['sort_order'])) {
-    $data[$params['sort_order']]['active'] = TRUE;
-  }
-
-  return $data;
 }
 
 /**
@@ -468,10 +433,8 @@ function _usanetwork_movie_all_movies_get_movies($sort = 'ALL', $limit = NULL) {
 }
 
 /**
- *
  * Returns block of N items for movies page.
  * @param $items
-
  */
 function _usanetwork_movies_all_movies_render_block($items) {
 
@@ -498,7 +461,9 @@ function _usanetwork_movies_all_movies_block_item($movie) {
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
+    'watch_now' => !empty($has_full_episode) ? 'watch-now' : NULL,
     'target_url' => url('node/' . $movie->nid),
+    'icon' => !empty($has_full_episode) ? 'full-video-icon-default' : NULL,
     'caption' => $caption,
     'title' => $movie->title,
     'additional' => isset($has_full_episode->expiration_date)
@@ -555,6 +520,7 @@ function _usanetwork_movies_mb_block() {
           $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
           $has_full_episode = _usanetwork_movie_has_full_episode($featured_movie);
           $promos[] = array(
+            'watch_now' => !empty($has_full_episode) ? 'watch-now' : NULL,
             'url' => url('node/' . $featured_movie->nid),
             'image' => array(
               'mobile' => !empty($cover_media)
@@ -735,7 +701,6 @@ function usanetwork_movie_related_content_block() {
       'related_items_block' => $block_of_items,
       'load_more_link' => $load_more_link,
       'show_nid' => $movie_node->nid,
-      'movie_title' => $movie_node->title,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
     ));
   }

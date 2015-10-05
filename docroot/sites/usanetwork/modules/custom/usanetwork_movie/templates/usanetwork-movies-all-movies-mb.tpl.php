@@ -18,7 +18,7 @@
     <?php foreach ($promos as $promo): ?>
     <?php if ($promo['is_first']): ?>
     <li class="first">
-      <div class="node node-usanetwork-promo <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
+      <div class="node node-usanetwork-promo<?php if (!empty($promo['class'])) : print ' ' . $promo['class']; endif; ?><?php if (!empty($promo['watch_now'])) :  print ' ' . $promo['watch_now']; endif; ?>">
         <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
           <div class="meta-wrapper">
             <div class="meta-wrapper-inner">
@@ -52,7 +52,7 @@
           <li class="last">
           <?php $second_item = false; ?>
         <?php endif; ?>
-          <div class="node node-usanetwork-promo usanetwork-movies-all-movies-lmb <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
+          <div class="node node-usanetwork-promo usanetwork-movies-all-movies-lmb<?php if (!empty($promo['class'])) : print ' ' . $promo['class']; endif; ?><?php if (!empty($promo['watch_now'])) :  print ' ' . $promo['watch_now']; endif; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">

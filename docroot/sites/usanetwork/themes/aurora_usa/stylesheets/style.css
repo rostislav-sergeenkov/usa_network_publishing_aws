@@ -17222,13 +17222,6 @@ footer h2 {
     margin-bottom: 18px;
   }
 }
-@media (max-width: 640px) {
-  .content .all-shows-landing-page-container .section-title, .content .all-movies-landing-page-container .section-title {
-    margin-bottom: 7px;
-    text-align: left;
-    padding-left: 22px;
-  }
-}
 @media (min-width: 769px) and (max-width: 1024px) {
   .content .all-shows-landing-page-container .section-title .section-title-wrapper, .content .all-movies-landing-page-container .section-title .section-title-wrapper {
     max-width: calc(100% - 490px);
@@ -17266,6 +17259,13 @@ footer h2 {
 @media (max-width: 640px) {
   .content .all-shows-landing-page-container .upper-menu, .content .all-movies-landing-page-container .upper-menu {
     padding-right: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .content .all-shows-landing-page-container .upper-menu ~ .section-title, .content .all-movies-landing-page-container .upper-menu ~ .section-title {
+    margin-bottom: 7px;
+    text-align: left;
+    padding-left: 22px;
   }
 }
 .content .all-shows-landing-page-container .upper-menu .item-filter.sorter-items, .content .all-movies-landing-page-container .upper-menu .item-filter.sorter-items {

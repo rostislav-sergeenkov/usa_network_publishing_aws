@@ -1,4 +1,4 @@
-<h2 class="pane-title">latest movies</h2>
+<h2 class="pane-title">latest online movies</h2>
 <div class="movies-list-wrap">
   <div class="see-all-link">
     <a href="/movies">see more movies</a>

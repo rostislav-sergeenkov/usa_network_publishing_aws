@@ -10,7 +10,7 @@
           <div class="meta-wrapper">
             <div class="meta-wrapper-inner">
               <div class="meta">
-                <div class="meta-icon full-video-icon-default"></div>
+                <div class="meta-icon movie-play-icon"></div>
                 <?php if (!empty($item['title'])): ?>
                   <div class="title"><?php print $item['title']; ?></div>
                 <?php endif; ?>

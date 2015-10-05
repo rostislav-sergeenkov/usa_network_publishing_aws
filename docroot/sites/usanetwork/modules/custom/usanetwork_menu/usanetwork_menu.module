@@ -1986,21 +1986,25 @@ function _usanetwork_menu_movies_block() {
 
   if (!empty($header_movies)) {
     foreach ($header_movies as $needed_show) {
-      $movie = NULL;
+      $movie_node = NULL;
       if (preg_match("/^(.+)\[node:(\d+)\]$/", $needed_show, $matches)) {
-        $movie = node_load($matches[2]);
+        $movie_node = node_load($matches[2]);
       }
-      if (!empty($movie) && $movie->type == 'movie') {
-        if ($movie->status) {
-          $cover_media = usanetwork_core_api_get_content_image('node', $movie);
+      if (!empty($movie_node) && $movie_node->type == 'movie') {
+        if ($movie_node->status) {
+          $movie_file = usanetwork_core_api_get_movie_file_by_movie_node($movie_node);
+          if (!$movie_file) {
+            continue;
+          }
+          $video_image_path = _usanetwork_mpx_video_get_image_path($movie_file);
           $video_image = theme('image_style', array(
-            'path' => $cover_media,
+            'path' => $video_image_path,
             'style_name' => 'full_episodes_633x356',
           ));
           //$video_image = !empty($cover_media) ? image_style_url('full_episodes_633x356', $cover_media) : NULL;
           $items_variables = array(
-            'url' => url('node/' . $movie->nid),
-            'title' => $movie->title,
+            'url' => url('file/' . $movie_file->fid),
+            'title' => $movie_node->title,
             'image' => $video_image,
           );
           $items[] = $items_variables;

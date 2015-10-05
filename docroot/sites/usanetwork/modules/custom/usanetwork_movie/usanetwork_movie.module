@@ -433,13 +433,14 @@ function _usanetwork_movie_all_movies_landing_page_sorters($params) {
  *
  * @return array
  */
-function _usanetwork_movie_all_movies_get_movies($sort = 'ALL') {
+function _usanetwork_movie_all_movies_get_movies($sort = 'ALL', $limit = NULL) {
+  $sort = explode('&', $sort);
   $db_select = db_select('node', 'n')
     ->fields('n', array('nid'))
     ->condition('n.type', 'movie')
     ->condition('n.status', NODE_PUBLISHED);
 
-  if ($sort == 'NOW') {
+  if (in_array('NOW', $sort)) {
     $db_select->join('field_data_field_movie', 'field_movie', 'n.nid = field_movie.field_movie_target_id');
     $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = field_movie.entity_id');
     $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
@@ -447,7 +448,16 @@ function _usanetwork_movie_all_movies_get_movies($sort = 'ALL') {
     $db_select->condition('mpx_video.status', '1');
   }
 
-  $db_select->orderBy('n.title', 'ASC');
+  if (in_array('CREATED', $sort)) {
+    $db_select->orderBy('n.created', 'ASC');
+  }
+  else {
+    $db_select->orderBy('n.title', 'ASC');
+  }
+
+  if ($limit) {
+    $db_select->range(0, $limit);
+  }
   $result = $db_select->execute()->fetchAllAssoc('nid');
 
   if (!empty($result)) {

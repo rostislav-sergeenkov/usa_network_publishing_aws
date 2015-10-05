@@ -1983,16 +1983,24 @@ function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, 
 function _usanetwork_menu_movies_block() {
   $header_movies = variable_get('header_movies', array());
   $items = array();
-
+  $movie_nodes = array();
   if (!empty($header_movies)) {
     foreach ($header_movies as $needed_show) {
-      $movie_node = NULL;
       if (preg_match("/^(.+)\[node:(\d+)\]$/", $needed_show, $matches)) {
-        $movie_node = node_load($matches[2]);
+        $movie_nodes[] = node_load($matches[2]);
       }
+    }
+  }
+  else {
+    $movie_nodes = _usanetwork_movie_all_movies_get_movies('NOW&CREATED', USANETWORK_MENU_MOVIES_NUMBER);
+  }
+
+  if (!empty($movie_nodes)) {
+    foreach ($movie_nodes as $movie_node) {
       if (!empty($movie_node) && $movie_node->type == 'movie') {
         if ($movie_node->status) {
-          $movie_file = usanetwork_core_api_get_movie_file_by_movie_node($movie_node);
+          $movie_file_data = _usanetwork_movie_has_full_episode($movie_node);
+          $movie_file = file_load($movie_file_data->fid);
           if (!$movie_file) {
             continue;
           }

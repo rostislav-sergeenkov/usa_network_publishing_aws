@@ -322,3 +322,24 @@ function usanetwork_core_api_is_related_with_show($entity) {
   }
 }
 
+/**
+ * Get movie file by move node.
+ *
+ * @param $move_node
+ */
+function usanetwork_core_api_get_movie_file_by_movie_node($move_node) {
+  $query = db_select('file_managed', 'f');
+  $query->fields('f', array('fid'));
+  $query->condition('f.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+  $query->leftJoin('field_data_field_movie','movie_field','movie_field.entity_id = f.fid');
+  $query->condition('movie_field.field_movie_target_id', $move_node->nid);
+  $query->leftJoin('field_data_field_mpx_full_episode','full_episode_field','full_episode_field.entity_id = f.fid');
+  $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  $query->leftJoin('mpx_video','v','v.fid = f.fid');
+  $query->condition('v.status', 1);
+  $file_data = $query->execute()->fetchObject();
+  if (is_object($file_data)) {
+    return file_load($file_data->fid);
+  }
+  return FALSE;
+}

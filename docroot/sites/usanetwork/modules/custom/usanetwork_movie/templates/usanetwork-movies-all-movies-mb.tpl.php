@@ -52,7 +52,7 @@
           <li class="last">
           <?php $second_item = false; ?>
         <?php endif; ?>
-          <div class="node node-usanetwork-promo usanetwork-movies-all-movies-lmb<?php if (!empty($promo['class'])) : print ' ' . $promo['class']; endif; ?><?php if (!empty($watch_now)) :  print ' ' . $watch_now; endif; ?>">
+          <div class="node node-usanetwork-promo usanetwork-movies-all-movies-lmb<?php if (!empty($promo['class'])) : print ' ' . $promo['class']; endif; ?><?php if (!empty($promo['watch_now'])) :  print ' ' . $promo['watch_now']; endif; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">

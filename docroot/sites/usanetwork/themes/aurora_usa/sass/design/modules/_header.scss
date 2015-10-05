@@ -1088,24 +1088,45 @@ header {
                 width: 100%;
                 .meta-icon {
                   display: none;
-                  height: get-vw(44px, 1025);
+                  height: get-vw(81px, 1901);
                   margin: 0 auto get-vw(5px, 1025);
                   position: relative;
-                  width: get-vw(44px, 1025);
+                  width: get-vw(81px, 1901);
                   @include breakpoint($bp-min-1901-width) {
                     height: 81px;
                     margin-bottom: 9.3px;
                     width: 81px;
                   }
+                  &.movie-play-icon {
+                    border: 2px solid white;
+                    border-radius: 50%;
+                    height: get-vw(53px, 1901);
+                    width: get-vw(53px, 1901);
+                    @include breakpoint($bp-min-1901-width) {
+                      height: 53px;
+                      width: 53px;
+                    }
+                    &:before {
+                      content: "\e627";
+                      display: block;
+                      font-family: $ico-font;
+                      font-size: get-vw(30px, 1901);
+                      line-height: get-vw(53px, 1901);
+                      @include breakpoint($bp-min-1901-width) {
+                        font-size: 30px;
+                        line-height: 53px;
+                      }
+                    }
+                  }
                 }
                 .title {
-                  font-family: $tex-gyreschola-italic;
-                  font-size: get-vw(11px, 1025);
+                  font-family: $avalon-medium;
+                  font-size: get-vw(42px, 1901);
                   letter-spacing: 1px;
                   line-height: 1.3;
                   white-space: normal;
                   @include breakpoint($bp-min-1901-width) {
-                    font-size: 21px;
+                    font-size: 42px;
                   }
                 }
                 .logo {

@@ -6673,6 +6673,9 @@ header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrap
 header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .additional, header .tab-item.full-episode-tab .latest-movies .node a:hover .meta-wrapper .meta .additional, header .tab-item.movies-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .additional, header .tab-item.movies-tab .latest-movies .node a:hover .meta-wrapper .meta .additional {
   display: block;
 }
+header .tab-item.full-episode-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .title, header .tab-item.full-episode-tab .latest-movies .node a:hover .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-full-episodes .node a:hover .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-movies .node a:hover .meta-wrapper .meta .title {
+  text-shadow: 1px 1px 0.5em #333333;
+}
 header .tab-item.full-episode-tab .latest-full-episodes .node a .asset-img, header .tab-item.full-episode-tab .latest-movies .node a .asset-img, header .tab-item.movies-tab .latest-full-episodes .node a .asset-img, header .tab-item.movies-tab .latest-movies .node a .asset-img {
   background: #1c1c1c;
   height: 100%;

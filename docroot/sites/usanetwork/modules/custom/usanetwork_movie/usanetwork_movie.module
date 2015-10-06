@@ -462,7 +462,7 @@ function _usanetwork_movies_all_movies_block_item($movie) {
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
     'watch_now' => !empty($has_full_episode) ? 'watch-now' : NULL,
-    'target_url' => url('node/' . $movie->nid),
+    'target_url' => empty($has_full_episode) ? url('node/' . $movie->nid) : url('file/' . $has_full_episode->fid),
     'icon' => !empty($has_full_episode) ? 'full-video-icon-default' : NULL,
     'caption' => $caption,
     'title' => $movie->title,
@@ -521,7 +521,7 @@ function _usanetwork_movies_mb_block() {
           $has_full_episode = _usanetwork_movie_has_full_episode($featured_movie);
           $promos[] = array(
             'watch_now' => !empty($has_full_episode) ? 'watch-now' : NULL,
-            'url' => url('node/' . $featured_movie->nid),
+            'url' => empty($has_full_episode) ? url('node/' . $featured_movie->nid) : url('file/' . $has_full_episode->fid),
             'image' => array(
               'mobile' => !empty($cover_media)
                 ? image_style_url('719x414', $cover_media) : NULL,

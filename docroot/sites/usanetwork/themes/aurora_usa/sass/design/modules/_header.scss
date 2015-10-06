@@ -951,7 +951,7 @@ header {
         }
       }
     }
-    &.full-episode-tab {
+    &.full-episode-tab, &.movies-tab {
       padding: get-vw(24px, 1025) get-vw(30px, 1025) get-vw(50px, 1025);
       @include breakpoint($bp-min-1901-width) {
         padding: 48px 53px 96px;
@@ -959,7 +959,7 @@ header {
       @include breakpoint($bp-1024-width) {
         padding: 24px 30px 50px;
       }
-      .full-episode-tab-wrapper {
+      .full-episode-tab-wrapper, .movies-tab-wrapper {
         @include clear;
         margin: 0 auto;
         max-width: 1779px;
@@ -987,8 +987,8 @@ header {
           padding-top: 26px;
         }
       }
-      .latest-full-episodes {
-        .full-episodes-list {
+      .latest-full-episodes, .latest-movies {
+        .full-episodes-list, .movies-list {
           width: 100%;
           @include clear;
         }
@@ -1054,6 +1054,9 @@ header {
                   .additional {
                     display: block;
                   }
+                  .title {
+                    text-shadow: 1px 1px 0.5em $aspot-shadow;
+                  }
                 }
               }
             }
@@ -1088,14 +1091,45 @@ header {
                 width: 100%;
                 .meta-icon {
                   display: none;
-                  height: get-vw(44px, 1025);
+                  height: get-vw(81px, 1901);
                   margin: 0 auto get-vw(5px, 1025);
                   position: relative;
-                  width: get-vw(44px, 1025);
+                  width: get-vw(81px, 1901);
                   @include breakpoint($bp-min-1901-width) {
                     height: 81px;
                     margin-bottom: 9.3px;
                     width: 81px;
+                  }
+                  &.movie-play-icon {
+                    border: 2px solid white;
+                    border-radius: 50%;
+                    height: get-vw(53px, 1901);
+                    width: get-vw(53px, 1901);
+                    @include breakpoint($bp-min-1901-width) {
+                      height: 53px;
+                      width: 53px;
+                    }
+                    &:before {
+                      content: "\e627";
+                      display: block;
+                      font-family: $ico-font;
+                      font-size: get-vw(30px, 1901);
+                      line-height: get-vw(53px, 1901);
+                      @include breakpoint($bp-min-1901-width) {
+                        font-size: 30px;
+                        line-height: 53px;
+                      }
+                    }
+                  }
+                }
+                .title {
+                  font-family: $avalon-medium;
+                  font-size: get-vw(42px, 1901);
+                  letter-spacing: 1px;
+                  line-height: 1.3;
+                  white-space: normal;
+                  @include breakpoint($bp-min-1901-width) {
+                    font-size: 42px;
                   }
                 }
                 .logo {

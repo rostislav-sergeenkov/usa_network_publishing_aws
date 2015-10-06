@@ -1054,6 +1054,9 @@ header {
                   .additional {
                     display: block;
                   }
+                  .title {
+                    text-shadow: 1px 1px 0.5em $aspot-shadow;
+                  }
                 }
               }
             }

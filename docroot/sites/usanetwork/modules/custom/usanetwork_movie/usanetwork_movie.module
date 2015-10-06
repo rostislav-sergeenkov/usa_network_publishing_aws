@@ -411,6 +411,9 @@ function _usanetwork_movie_all_movies_get_movies($sort = 'ALL', $limit = NULL) {
     $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
     $db_select->join('mpx_video', 'mpx_video', 'mpx_video.fid = field_movie.entity_id');
     $db_select->condition('mpx_video.status', '1');
+  } else {
+    $db_select->join('usanetwork_schedule', 's', 's.title = n.title');
+    $db_select->condition('s.start_time', time(), '>=');
   }
 
   if (in_array('CREATED', $sort)) {

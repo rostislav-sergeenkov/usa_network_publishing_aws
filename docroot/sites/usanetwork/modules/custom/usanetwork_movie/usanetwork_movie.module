@@ -381,7 +381,7 @@ function usanetwork_movie_entity_insert($entity, $type) {
  */
 function _usanetwork_movie_all_movies_block($category = 'NOW') {
   $movies = _usanetwork_movie_all_movies_get_movies($category);
-  $movies_block = _usanetwork_movies_all_movies_render_block($movies);
+  $movies_block = _usanetwork_movies_all_movies_render_block($movies, $category);
   $result = theme('usanetwork_movie_movies_landing', array(
     'movies_block' => $movies_block,
     'block_title' => ($category == 'NOW') ? t('AVAILABLE TO WATCH ONLINE NOW') : t('AVAILABLE ON TV'),
@@ -436,11 +436,11 @@ function _usanetwork_movie_all_movies_get_movies($sort = 'ALL', $limit = NULL) {
  * Returns block of N items for movies page.
  * @param $items
  */
-function _usanetwork_movies_all_movies_render_block($items) {
+function _usanetwork_movies_all_movies_render_block($items, $category = 'NOW') {
 
   $theme_variables = array();
   foreach ($items as $item) {
-    $theme_variables['items'][] = _usanetwork_movies_all_movies_block_item($item);
+    $theme_variables['items'][] = _usanetwork_movies_all_movies_block_item($item, $category);
   }
   return theme('usanetwork_movie_movies_landing_block', $theme_variables);
 }
@@ -452,7 +452,7 @@ function _usanetwork_movies_all_movies_render_block($items) {
  *
  * @return mixed|string
  */
-function _usanetwork_movies_all_movies_block_item($movie) {
+function _usanetwork_movies_all_movies_block_item($movie, $category = 'NOW') {
   $schedule_data = _usanetwork_get_field_item('node', $movie, 'field_promo_topic', 'value');
   if (empty($schedule_data)) {
     $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
@@ -461,12 +461,12 @@ function _usanetwork_movies_all_movies_block_item($movie) {
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
-    'watch_now' => !empty($has_full_episode) ? 'watch-now' : NULL,
-    'target_url' => empty($has_full_episode) ? url('node/' . $movie->nid) : url('file/' . $has_full_episode->fid),
-    'icon' => !empty($has_full_episode) ? 'full-video-icon-default' : NULL,
+    'watch_now' => (!empty($has_full_episode) && $category == 'NOW') ? 'watch-now' : NULL,
+    'target_url' => (!empty($has_full_episode) && $category == 'NOW') ? url('file/' . $has_full_episode->fid) : url('node/' . $movie->nid),
+    'icon' => (!empty($has_full_episode) && $category == 'NOW') ? 'full-video-icon-default' : NULL,
     'caption' => $caption,
     'title' => $movie->title,
-    'additional' => isset($has_full_episode->expiration_date)
+    'additional' => (isset($has_full_episode->expiration_date)  && $category == 'NOW')
       ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)
       : $schedule_data,
     'image_desktop' => image_style_url('539x303', $image_url),

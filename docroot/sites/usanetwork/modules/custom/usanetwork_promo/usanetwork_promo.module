@@ -409,8 +409,12 @@ function _usanetwork_promo_file_get_promo_lines($file, $no_video_type = NULL) {
         $result['description'] = t('EP@episode_number', array('@episode_number' => $episode_number));
       }
     } else {
-      if (isset($episode_season)) {
-        $result['description'] = t('@season', array('@season' => $episode_season));
+      if (isset($file->field_mpx_airdate)) {
+        $air_date = $file_wrapper->field_mpx_airdate->value();
+        $air_year = date('Y', $air_date);
+      }
+      if (!empty($air_year)) {
+        $result['description'] = t('@air_year', array('@air_year' => $air_year));
       }
     }
   }

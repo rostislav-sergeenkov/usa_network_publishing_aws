@@ -35,9 +35,11 @@
   <div id="info-block">
     <div id="info-close" class="close-button"></div>
     <div class="info-block-wrapper">
-      <div class="top-text">Select your top 3 favorite Todd-isms and then share them with your friends and family!</div>
-      <div class="color-text show-color show-font">How it works</div>
-      <div class="bottom-text">Use the icon shown below to click & drag the thumbnail into the ranking boxes. Fill all 3 boxes and share your personalized page.</div>
+      <div class="info-text">
+        <div class="top-text">Select your top 3 favorite Todd-isms and then share them with your friends and family!</div>
+        <div class="color-text show-color show-font">How it works</div>
+        <div class="bottom-text">Use the icon shown below to click & drag the thumbnail into the ranking boxes. Fill all 3 boxes and share your personalized page.</div>
+      </div>
       <div class="help-image"></div>
     </div>
   </div>

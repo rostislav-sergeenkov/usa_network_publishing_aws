@@ -1,22 +1,36 @@
 #block-usanetwork-top3-usanetwork-top3-main-block {
   background: black;
-  height: 48.5vw;
-  padding: 156px 156px 100px;
+  height: auto;
+  padding: get-vw(120px, 1901) get-vw(110px, 1901);
   position: relative;
   width: 100%;
+  @include breakpoint($bp-min-1901-width) {
+    padding: 120px 110px;
+  }
   & > .content {
-    height: 100%;
+    @include clear();
+    height: auto;
+    margin: 0 auto;
+    max-width: 1681px;
     position: relative;
     width: 100%;
   }
   #slider-container {
     float: left;
-    height: 100%;
+    height: get-vw(720px, 1901);
     overflow: hidden;
     position: relative;
-    width: calc(100% - 410px);
+    width: get-vw(1280px, 1901);
+    @include breakpoint($bp-min-1901-width) {
+      height: 720px;
+      width: 1280px;
+    }
+    @include breakpoint($bp-1600-width) {
+      height: calc((100% - 320px)*0.5625);
+      width: calc(100% - 320px);
+    }
     .load-more-loader {
-      margin-top: -16px;;
+      margin-top: -16px;
       top: 50%;
       z-index: 1;
     }
@@ -31,21 +45,32 @@
           color: white;
           cursor: pointer;
           display: block;
-          height: 40px;
-          left: 15px;
+          height: get-vw(53px, 1901);
+          left: get-vw(40px, 1901);
           position: absolute;
-          top: 15px;
-          width: 40px;
+          top: get-vw(40px, 1901);
+          width: get-vw(53px, 1901);
           z-index: 1;
+          @include breakpoint($bp-min-1901-width) {
+            height: 53px;
+            left: 40px;
+            top: 40px;
+            width: 53px;
+          }
           &:before {
-            content: '\e60f';
+            content: '\e627';
             display: block;
             font-family: "ico-font";
-            font-size: 32px;
+            font-size: get-vw(40px, 1901);
             height: 100%;
-            line-height: 34px;
+            line-height: calc(2.7vw - 3px);
             position: relative;
+            text-align: center;
             width: 100%;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 40px;
+              line-height: 50px;
+            }
           }
         }
       }
@@ -84,10 +109,15 @@
 
     #counter {
       color: white;
-      font-size: 18px;
-      left: 70px;
+      font-size: get-vw(30px, 1901);
+      left: get-vw(110px, 1901);
       position: absolute;
-      top: 15px;
+      top: get-vw(40px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 30px;
+        left: 110px;
+        top: 40px;
+      }
     }
     .control-button {
       background: rgba(255, 255, 255, 0.3);
@@ -95,28 +125,43 @@
       margin-top: -25px;
       position: absolute;
       top: 50%;
-      height: 50px;
-      width: 30px;
+      height: get-vw(106px, 1901);
+      width: get-vw(40px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        height: 106px;
+        width: 40px;
+      }
       &:before {
         display: block;
         font-family: "ico-font";
-        font-size: 30px;
+        font-size: get-vw(45px, 1901);
         font-weight: bold;
-        line-height: 50px;
+        line-height: get-vw(106px, 1901);
         position: absolute;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 45px;
+          line-height: 106px;
+        }
       }
     }
     .next.control-button {
       right: 0;
       &:before {
         content: "\e608";
-
+        right: get-vw(-10px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          right: -10px;
+        }
       }
     }
     .prev.control-button {
       left: 0;
       &:before {
         content: "\e607";
+        left: get-vw(-10px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          left: -10px;
+        }
       }
     }
     .drag-group {
@@ -150,7 +195,13 @@
   .right-sidebar {
     float: left;
     position: relative;
-    width: 410px;
+    width: calc(100% - 67.33298vw);
+    @include breakpoint($bp-min-1901-width) {
+      width: calc(100% - 1280px);
+    }
+    @include breakpoint($bp-1600-width) {
+      width: 320px;
+    }
   }
   .slick-slider {
     width: 100%;
@@ -198,34 +249,77 @@
     width: 100%;
     .info-block-wrapper {
       background: black;
+      display: table;
       height: 100%;
       opacity: 0.7;
       position: relative;
       width: 100%;
     }
-    .color-text {
-      background: none;
+    .info-text {
+      display: table-cell;
+      font-family: $avalon-medium;
+      line-height: 1.3;
+      text-align: center;
+      text-transform: uppercase;
+      vertical-align: middle;
+      > div {
+        margin: 0 auto;
+        max-width: 70%;
+      }
+      .top-text {
+        font-size: get-vw(33px, 1901);
+        margin-bottom: get-vw(38px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 33px;
+          margin-bottom: 38px;
+        }
+      }
+      .color-text {
+        background: none;
+        font-size: get-vw(38px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 38px;
+        }
+      }
+      .bottom-text {
+        font-size: get-vw(25px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 25px;
+        }
+      }
     }
   }
   #info {
+    border: 3px solid white;
     border-radius: 50%;
     color: white;
     cursor: pointer;
-    height: 40px;
+    height: get-vw(53px, 1901);
     position: absolute;
-    right: 15px;
-    top: 15px;
-    width: 40px;
+    right: get-vw(40px, 1901);
+    top: get-vw(40px, 1901);
+    width: get-vw(53px, 1901);
     z-index: 1;
+    @include breakpoint($bp-min-1901-width) {
+      height: 53px;
+      right: 40px;
+      top: 40px;
+      width: 53px;
+    }
     &:before {
-      content: '\e61d';
+      content: '\e623';
       display: block;
       font-family: "ico-font";
-      font-size: 40px;
+      font-size: get-vw(40px, 1901);
       height: 100%;
-      line-height: 40px;
+      line-height: calc(2.7vw - 3px);
       position: relative;
+      text-align: center;
       width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 40px;
+        line-height: 50px;
+      }
     }
   }
   .close-button {
@@ -233,23 +327,32 @@
     border-radius: 50%;
     color: white;
     cursor: pointer;
-    height: 40px;
+    height: get-vw(53px, 1901);
     position: absolute;
-    right: 15px;
-    text-align: center;
-    top: 15px;
-    width: 40px;
+    right: get-vw(40px, 1901);
+    top: get-vw(40px, 1901);
+    width: get-vw(53px, 1901);
     z-index: 1;
+    @include breakpoint($bp-min-1901-width) {
+      height: 53px;
+      right: 40px;
+      top: 40px;
+      width: 53px;
+    }
     &:before {
-      content: 'X';
+      content: '\e624';
       display: block;
-      //font-family: "ico-font";
-      font-size: 32px;
-      font-weight: bold;
+      font-family: "ico-font";
+      font-size: get-vw(40px, 1901);
       height: 100%;
-      line-height: 34px;
+      line-height: calc(2.7vw - 3px);
       position: relative;
+      text-align: center;
       width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 40px;
+        line-height: 50px;
+      }
     }
   }
   #share-block-preview {

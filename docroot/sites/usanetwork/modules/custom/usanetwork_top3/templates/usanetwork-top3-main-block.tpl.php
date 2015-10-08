@@ -12,6 +12,7 @@
             <div class="img-wrapper">
               <img src="<?php print $slide['image']; ?>">
             </div>
+            <div class="title">test title <?php print $key; ?></div>
           </div>
           <div class="video-wrapper hide-block"
                  data-src="//player.theplatform.com/p/HNK2IC/dd_usa_vod_noauth/embed/select/EJIlKSvvTE19?autoPlay=true">
@@ -41,34 +42,43 @@
         <div class="bottom-text">Use the icon shown below to click & drag the thumbnail into the ranking boxes. Fill all 3 boxes and share your personalized page.</div>
       </div>
       <div class="help-image"></div>
+      <div class="info-drag-group">
+        <div class="info-drag-item"></div>
+        <div class="info-drag-item"></div>
+        <div class="info-drag-item"></div>
+      </div>
     </div>
   </div>
   <div id="share-block-preview">
     <div id="share-preview-close" class="close-button"></div>
     <div class="share-block-preview-wrapper show-color">
       <div class="first-text-line">Click and drag the thumbnails over a different box to change the order</div>
-      <div class="first preview-item">
+      <div class="preview-items-block">
+        <div class="first preview-item" id="preview-one" data-id="one">
 
-      </div>
-      <div class="second preview-item">
+        </div>
+        <div class="second preview-item" id="preview-two" data-id="two">
 
-      </div>
-      <div class="third preview-item">
+        </div>
+        <div class="third preview-item" id="preview-three" data-id="three">
 
+        </div>
       </div>
       <div class="last-text-line">Generate your custom share link</div>
     </div>
   </div>
-  <div id="share-block">
-    <div class="first">
-
-    </div>
-    <div class="img-wrap">
-      <div class="second">
+  <div id="share-block" class="show-color">
+    <div class="share-block-wrapper">
+      <div class="first">
 
       </div>
-      <div class="third">
+      <div class="img-wrap">
+        <div class="second">
 
+        </div>
+        <div class="third">
+
+        </div>
       </div>
     </div>
   </div>
@@ -85,18 +95,19 @@
       </ul>
     </div>
     <div class="drag-group">
-      <div class="drop-area__item show-color" id="one"></div>
-      <div class="drop-area__item show-color" id="two"></div>
-      <div class="drop-area__item show-color" id="three"></div>
+      <div class="drop-area__item show-color show-font" id="one"></div>
+      <div class="drop-area__item show-color show-font" id="two"></div>
+      <div class="drop-area__item show-color show-font" id="three"></div>
     </div>
   </div>
 
 </div>
 <div class="right-sidebar">
   <div class="choose-top3-img">
+    <img src="/sites/usanetwork/themes/aurora_usa/images/top3title.png" alt="">
   </div>
-  <div id="share-button">Share</div>
-  <div id="share-button-temp">Share</div>
+  <div id="share-button" class="show-color">Share</div>
+  <div id="share-button-temp" class="show-color ready">Share</div>
   <div class="node-wrapper advert">
     <div class="advertisement">
       <div id="topbox">

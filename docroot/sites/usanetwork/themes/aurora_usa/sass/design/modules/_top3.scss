@@ -1,5 +1,5 @@
 #block-usanetwork-top3-usanetwork-top3-main-block {
-  background: black;
+  background: url(../images/top3back.png) repeat;
   height: auto;
   padding: get-vw(120px, 1901) get-vw(110px, 1901);
   position: relative;
@@ -32,7 +32,7 @@
     .load-more-loader {
       margin-top: -16px;
       top: 50%;
-      z-index: 1;
+      z-index: 2;
     }
     // start
     .slide {
@@ -99,6 +99,7 @@
 
     .img-wrapper {
       height: 100%;
+      position: relative;
       width: 100%;
       img {
         height: 100%;
@@ -109,14 +110,14 @@
 
     #counter {
       color: white;
-      font-size: get-vw(30px, 1901);
+      font-size: get-vw(28px, 1901);
       left: get-vw(110px, 1901);
       position: absolute;
-      top: get-vw(40px, 1901);
+      top: get-vw(30px, 1901);
       @include breakpoint($bp-min-1901-width) {
-        font-size: 30px;
+        font-size: 28px;
         left: 110px;
-        top: 40px;
+        top: 30px;
       }
     }
     .control-button {
@@ -180,6 +181,9 @@
         float: left;
         height: 30px;
         width: 33.33333%;
+        .title {
+          display: none;
+        }
       }
       #drop-area-item-one {
         background: red;
@@ -202,6 +206,19 @@
     @include breakpoint($bp-1600-width) {
       width: 320px;
     }
+    .choose-top3-img {
+      height: auto;
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .advert {
+      background: grey;
+      height: 250px;
+      margin: 0 auto;
+      width: 300px;
+    }
   }
   .slick-slider {
     width: 100%;
@@ -218,27 +235,31 @@
       }
     }
   }
-  #share-button {
-    background: red;
-    left: 0;
-    opacity: 0.5;
-    position: absolute;
+  #share-button, #share-button-temp {
+    color: $consum-carousel-odd;
+    font-family: $avalon-medium;
+    font-size: get-vw(30px, 1901);
+    line-height: get-vw(67px, 1901);
+    margin: get-vw(40px, 1901) auto get-vw(60px, 1901);
+    position: relative;
+    text-align: center;
     text-transform: uppercase;
-    top: 40px;
+    width: 75%;
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 30px;
+      line-height: 67px;
+      margin: 40px auto 60px;
+    }
+    &:not(.ready) {
+      background: black;
+    }
     &.ready {
-      background: green;
+      color: white;
       cursor: pointer;
-      opacity: 1;
     }
   }
   #share-button-temp {
-    background: green;
-    cursor: pointer;
     display: none;
-    left: 0;
-    position: absolute;
-    text-transform: uppercase;
-    top: 80px;
   }
   #info-block {
     display: none;
@@ -285,6 +306,76 @@
         font-size: get-vw(25px, 1901);
         @include breakpoint($bp-min-1901-width) {
           font-size: 25px;
+        }
+      }
+    }
+    .info-drag-group {
+      left: 0;
+      margin: 0;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .info-drag-item {
+      background: rgba(255, 255, 255, 0.7);
+      position: relative;
+      display: inline-block;
+      height: get-vw(68px, 1901);
+      margin: 0 1% 0 1%;
+      -webkit-transition: -webkit-transform 0.3s, background 0.3s;
+      transition: transform 0.3s, background 0.3s;
+      -webkit-backface-visibility: hidden;
+      opacity: 0.7;
+      overflow: hidden;
+      width: get-vw(242px, 1901);
+      z-index: 2;
+      @include breakpoint($bp-min-1901-width) {
+        height: 68px;
+        width: 242px;
+      }
+      &:nth-child(1) {
+        &:after {
+          content: '1';
+        }
+      }
+      &:nth-child(2) {
+        &:after {
+          content: '2';
+        }
+      }
+      &:nth-child(3) {
+        &:after {
+          content: '3';
+        }
+      }
+      &:before {
+        @include cssRightTriangle(get-vw(68px, 1901), white, top, right);
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        @include breakpoint($bp-min-1901-width) {
+          border-top-width: 68px;
+          border-left-width: 68px;
+        }
+      }
+      &:after {
+        display: block;
+        font-family: $tex-gyreschola-regular;
+        font-size: get-vw(40px, 1901);
+        height: get-vw(40px, 1901);
+        line-height: get-vw(40px, 1901);
+        position: absolute;
+        text-align: center;
+        right: 0;
+        top: 0;
+        width: get-vw(40px, 1901);
+        z-index: 1;
+        @include breakpoint($bp-min-1901-width) {
+          height: 40px;
+          font-size: 40px;
+          line-height: 40px;
+          width: 40px;
         }
       }
     }
@@ -365,32 +456,97 @@
     .share-block-preview-wrapper {
       height: 100%;
       opacity: 0.7;
+      padding-top: get-vw(216px, 1901);
       position: relative;
       width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        padding-top: 216px;
+      }
+      @include breakpoint($bp-1600-width) {
+        padding-top: get-vw(184px, 1600);
+      }
     }
-    .first, .second, .third{
+    .first, .second, .third {
       display: inline-block;
-      width: 23%;
+      position: relative;
+      width: 32%;
+      .title {
+        display: none;
+      }
     }
     img {
       height: 100%;
       width: 100%;
     }
+    .first-text-line {
+      font-family: $avalon-medium;
+      font-size: get-vw(24px, 1901);
+      text-align: center;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 24px;
+      }
+    }
+    .last-text-line {
+      font-family: $avalon-medium;
+      font-size: get-vw(48px, 1901);
+      text-align: center;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 48px;
+      }
+    }
+    .preview-items-block {
+      margin: get-vw(15px, 1901) auto get-vw(30px, 1901);
+      position: relative;
+      width: 70%;
+      @include breakpoint($bp-min-1901-width) {
+        margin: 15px auto 30px;
+      }
+    }
   }
   #share-block {
     height: 100%;
     left: 0;
+    padding: 0 2.5%;
     position: absolute;
     top: 0;
     visibility: hidden;
     width: 100%;
+    .share-block-wrapper {
+
+    }
+    .first, .second, .third {
+      position: relative;
+      .title {
+        bottom: 8%;
+        font-family: $avalon-medium;
+        left: auto;
+        line-height: 1.2;
+        text-align: center;
+        top: auto;
+        width: 100%;
+      }
+    }
     .first {
       display: inline-block;
-      width: 70%;
+      width: 66%;
+      .title {
+        font-size: get-vw(48px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 48px;
+        }
+      }
+    }
+    .second, .third {
+      .title {
+        font-size: get-vw(24px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 24px;
+        }
+      }
     }
     .img-wrap {
       display: inline-block;
-      width: 28%;
+      width: 32%;
     }
   }
   #share-img {
@@ -421,8 +577,7 @@
     width: 100%;
   }
   .slide-content {
-    font-size: 2em;
-    display: inline-block;
+    display: block;
     background: transparent;
     color: #76737C;
     text-align: center;
@@ -444,6 +599,19 @@
     &.inactive {
       display: none;
     }
+    .title {
+      color: white;
+      font-family: $avalon-demi;
+      font-size: get-vw(32px, 1901);
+      left: get-vw(110px, 1901);
+      position: absolute;
+      top: get-vw(70px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 32px;
+        left: 110px;
+        top: 70px;
+      }
+    }
   }
   .slide-content_remove {
     display: none;
@@ -457,11 +625,37 @@
   .slide-item-grab {
     font-size: 2em;
     display: inline-block;
+    height: get-vw(136px, 1901);
     margin: calc(50%*0.5625 - 104px) calc(50% - 136px);
-    width: 8.5em;
-    height: 6.5em;
+    width: get-vw(242px, 1901);
     background: #f9f9f9;
     color: #76737C;
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    text-indent: -9000px;
+    position:absolute;
+    z-index: 500000;
+    @include breakpoint($bp-min-1901-width) {
+      height: 136px;
+      width: 242px;
+    }
+    &:hover {
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+    }
+    &:active {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
+  }
+  .preview-item-grab {
+    display: inline-block;
+    margin: 0;
+    width: 32%;
+    height: auto;
+    background: #f9f9f9;
     text-align: center;
     border-radius: 5px;
     overflow: hidden;
@@ -478,7 +672,7 @@
       cursor: grabbing;
     }
   }
-  .slide-item-grab_remove {
+  .slide-item-grab_remove, .preview-item-grab_remove {
     display: none;
   }
   .is-dropped {
@@ -498,8 +692,8 @@
     transition: all 0.3s ease-out;
   }
   .drop-area {
-    height: calc((100vw - 712px)*0.1125 + 30px);
-    margin: calc((100vw - 712px)*0.05625) 0 0 0;
+    height: get-vw(136px, 1901);
+    margin: 3.577vw 0 0 0;
     position: absolute;
     top: 100%;
     left: 0;
@@ -511,6 +705,10 @@
     transition: transform 0.5s cubic-bezier(0.6,0,0.4,1);
     -webkit-transform: translate3d(0,20px,0);
     transform: translate3d(0,20px,0);
+    @include breakpoint($bp-min-1901-width) {
+      height: 136px;
+      margin: 68px 0 0 0;
+    }
     &.show {
       -webkit-transform: translate3d(0,-100%,0);
       transform: translate3d(0,-100%,0);
@@ -532,45 +730,52 @@
   .drop-area__item {
     position: relative;
     display: inline-block;
-    height: calc((100vw - 712px)*0.1125);
-    margin: 30px 1% 0 1%;
+    height: get-vw(136px, 1901);
+    margin: 0 1% 0 1%;
     -webkit-transition: -webkit-transform 0.3s, background 0.3s;
     transition: transform 0.3s, background 0.3s;
     -webkit-backface-visibility: hidden;
     opacity: 0.7;
     overflow: hidden;
-    width: 20%;
+    width: get-vw(242px, 1901);
+    @include breakpoint($bp-min-1901-width) {
+      height: 136px;
+      width: 242px;
+    }
     &.highlight {
       background: #ff3705;
       -webkit-transform: scale3d(1.08,1.08,1);
       transform: scale3d(1.08,1.08,1);
     }
-    &::before, &::after {
+    &:before {
+      @include cssRightTriangle(get-vw(68px, 1901), white, top, right);
       position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      color: rgba(0,0,0,0.15);
-      font-size: 1.5em;
-      margin-top: -0.35em;
-      font-family: FontAwesome;
-      pointer-events: none;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      @include breakpoint($bp-min-1901-width) {
+        border-top-width: 68px;
+        border-left-width: 68px;
+      }
     }
-    &::before {
-      content: '\f067';
-      font-size: 2.5em;
-      color: rgba(248, 248, 255,0.5);
-    }
-    &::after {
-      color: rgba(255,253,197,0.6);
-      content: '\f00c';
-      font-size: 3em;
-      margin-top: -0.5em;
-      opacity: 0;
-      -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-      transition: opacity 0.3s, transform 0.3s;
-      -webkit-transform: scale3d(2,2,1);
-      transform: scale3d(2,2,1);
+    &:after {
+      display: block;
+      font-family: $tex-gyreschola-regular;
+      font-size: get-vw(40px, 1901);
+      height: get-vw(40px, 1901);
+      line-height: get-vw(40px, 1901);
+      position: absolute;
+      text-align: center;
+      right: 0;
+      top: 0;
+      width: get-vw(40px, 1901);
+      z-index: 1;
+      @include breakpoint($bp-min-1901-width) {
+        height: 40px;
+        font-size: 40px;
+        line-height: 40px;
+        width: 40px;
+      }
     }
     .slide-content-inner {
       height: 100%;
@@ -583,6 +788,24 @@
           width: 100%;
         }
       }
+      .title {
+        display: none;
+      }
+    }
+  }
+  #one {
+    &:after {
+      content: '1';
+    }
+  }
+  #two {
+    &:after {
+      content: '2';
+    }
+  }
+  #three {
+    &:after {
+      content: '3';
     }
   }
 
@@ -660,24 +883,5 @@
     -moz-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s;
-  }
-
-
-  @media screen and (max-width: 50em) {
-    .slide-content {
-      font-size: 1.5em;
-    }
-    .drop-area {
-      font-size: 0.6em;
-    }
-  }
-
-  @media screen and (max-width: 25.5em) {
-    .slider-wrapper {
-      padding: 0 2em;
-    }
-    .slide-content {
-      font-size: 1em;
-    }
   }
 }

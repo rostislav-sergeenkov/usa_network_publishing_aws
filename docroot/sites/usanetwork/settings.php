@@ -47,12 +47,6 @@ if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
     // fallback behavior, e.g., a 404 page
   }
 }
-elseif (file_exists('/var/www/site-php/usanetwork')) {
-  require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
-} 
-elseif (file_exists('/var/www/site-php/nbcuusa')) {
-  require('/var/www/site-php/nbcuusa/nbcuusa-settings.inc');
-} 
 
 // Next, determine the environment we're in.  Environment types (qa, acceptance,
 // stage and prod) are defined in project-config.yml.
@@ -78,6 +72,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     break;
 
   case 'dev':
+
+    require_once('/var/www/site-php/usadev/usadev-settings.inc');
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'DEV SERVER';
     $conf['environment_indicator_overwritten_color'] = '#0000CC';
@@ -86,8 +82,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
-    $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'dev/sites/default/files-private';
+    $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
 
+    $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     // Memchache settings
     $conf['cache_backends'][] = './includes/cache-install.inc';
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';

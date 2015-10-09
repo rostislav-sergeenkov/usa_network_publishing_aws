@@ -49,6 +49,8 @@
       </div>
     </div>
   </div>
+  <div id="drag-icon-block">
+  </div>
   <div id="share-block-preview">
     <div id="share-preview-close" class="close-button"></div>
     <div class="share-block-preview-wrapper show-color">
@@ -86,14 +88,7 @@
   <div class="prev control-button"></div>
   <div class="next control-button"></div>
 
-  <div id="drop-area" class="drop-area show">
-    <div class="numGroup" style="display: none;">
-      <ul>
-        <li class="num1">1</li>
-        <li class="num2">2</li>
-        <li class="num3">3</li>
-      </ul>
-    </div>
+  <div id="drop-area" class="drop-area">
     <div class="drag-group">
       <div class="drop-area__item show-color show-font" id="one"></div>
       <div class="drop-area__item show-color show-font" id="two"></div>

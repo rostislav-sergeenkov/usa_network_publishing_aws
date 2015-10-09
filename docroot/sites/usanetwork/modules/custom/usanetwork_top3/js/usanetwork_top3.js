@@ -30,20 +30,6 @@
         nextArrow = sliderContainer.find('.next'),
         prevArrow = sliderContainer.find('.prev');
 
-    /*var jumpDropzone = setInterval(function(){
-      $('.num1').fadeIn(300).animate({marginTop:'-15px'},110);
-      $('.num1').fadeIn(300).animate({marginTop:'-10px'},90);
-      $('#drop-area').animate({zIndex:'1000',marginTop:'130px'},250);
-      $('#drop-area').animate({zIndex:'1000',marginTop:'120px'},150);
-      $('.num2').fadeIn(300).animate({marginTop:'-15px'},110);
-      $('.num2').fadeIn(300).animate({marginTop:'-10px'},90);
-      $('#drop-area').animate({zIndex:'1000',marginTop:'130px'},250);
-      $('#drop-area').animate({zIndex:'1000',marginTop:'120px'},150);
-      $('.num3').fadeIn(300).animate({marginTop:'-15px'},110);
-      $('.num3').fadeIn(300).animate({marginTop:'-10px'},90);
-    },2000);*/
-
-
     // player service
     var playerService = {
 
@@ -206,6 +192,7 @@
                 $('#counter').hide();
                 slideTitle.hide();
                 $('.play-button').hide();
+                $('.drag-group').hide();
                 $('#info-block').show();
               });
               $('#info-close').click(function(){
@@ -214,6 +201,7 @@
                 $('#counter').show();
                 slideTitle.show();
                 $('.play-button').show();
+                $('.drag-group').show();
                 $('#info').show();
               });
               $('#share-preview-close').click(function(){
@@ -222,8 +210,9 @@
                 $('#counter').show();
                 slideTitle.show();
                 $('.play-button').show();
-                $('#info').show();
                 $('.drag-group').show();
+                $('#drag-icon-block').show();
+                $('#info').show();
               });
             })
             .slick({
@@ -352,25 +341,6 @@
                 }
               },900);
 
-              //resize drag element of drop and removes dropped element
-              // classie.add( draggableEl, 'grid__item_remove' );
-              // setTimeout(function(){
-              //     //augmenting native DOM function to use remove() methoth for IE and other modern broswers
-              //     Element.prototype.remove = function() {
-              //         this.parentElement.removeChild(this);
-              //     };
-              //     NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-              //         for(var i = 0, len = this.length; i < len; i++) {
-              //             if(this[i] && this[i].parentElement) {
-              //                 this[i].parentElement.removeChild(this[i]);
-              //             }
-              //         }
-              //     };
-
-              //     $('.carousel').carousel('next');
-              //     $('.grid__item_remove').parent()[0].remove();
-              // },1000);
-
               $(draggableEl).css('visibility','hidden');
               setTimeout(function(){
                 $(draggableEl).css('visibility','visible');
@@ -398,7 +368,6 @@
             .mousedown(function(){
               mouse_button = true;
               $('.slide-content').addClass('slide-item-grab');
-              $('.numGroup').fadeOut();
             })
             .mouseup(function(){
               mouse_button = false;
@@ -505,38 +474,9 @@
             onDrag : function() {
 
               if($('.container-message').hasClass('not-allowed')){
-                $('#drop-area').css({
-                  zIndex:'0',
-                  margin:"500px 0 0 0",
-                });
-              }
-              else{
-                $('#drop-area').css({
-                  zIndex:'999',
-                  margin:"0px",
-                });
+                classie.add( dropArea, 'not-allowed' );
               }
 
-              $('.num3').css('display','none');
-
-              //stop jumping dropzone
-              //clearInterval(jumpDropzone);
-
-              /*var vidPlaying = $(".active").find('.video-js');
-               console.log('hasClass video-js',+vidPlaying.hasClass('video-js'));
-
-               $('.active').find('#video-js').hide();
-               $('.active').find(playBtn).hide();
-               $('.active').find(playBtn1).hide();
-               $('.active').find(playBtn2).hide();
-               $('.active').find(playBtn3).hide();
-               $('.active').find(playBtn4).hide();
-
-               if(vidPlaying.hasClass('video-js')){
-               vidPlaying[0].player.pause();
-               $('.active .video-js').css('z-index','0');
-               }
-               */
               inAction = true;
               dragEnd = false;
               if(inAction){
@@ -566,42 +506,9 @@
                 $('.active').find('.title').show();
                 $('.container-message').fadeOut(500).removeClass('not-allowed');
 
-                /*setTimeout(function(){
-                 $('.active').find('#video-js').show();
-
-                 console.log('paused',+ $('.active .video-js').paused);
-                 console.log('not paused',+ !$('.active .video-js').paused);
-
-                 var playing = $('.active .video-js').hasClass('vjs-playing');
-                 var paused = $('.active .video-js').hasClass('vjs-paused');
-
-                 console.log('PLAYING',+$('.active .video-js').hasClass('vjs-playing'));
-                 console.log('PAUSED',+$('.active .video-js').hasClass('vjs-paused'));
-
-                 if(paused){
-                 $(playBtn).show();
-                 $(playBtn1).show();
-                 $(playBtn2).show();
-                 $(playBtn3).show();
-                 $(playBtn4).show();
-                 }
-                 else if(playing){
-                 $(playBtn).hide();
-                 $(playBtn1).hide();
-                 $(playBtn2).hide();
-                 $(playBtn3).hide();
-                 $(playBtn4).hide();
-                 }
-                 },500);*/
-
                 // hide dropArea
-                //classie.remove( dropArea, 'show' );
-                var dropMargin = $('#one').height()*0.5;
-                console.info(dropMargin);
-                $('#drop-area').css({
-                  zIndex:'1000',
-                  margin:dropMargin+"px 0 0 0"
-                });
+                classie.remove( dropArea, 'not-allowed' );
+                classie.remove( dropArea, 'show' );
 
                 // remove class 'drag-active' from body
                 classie.remove( body, 'drag-active' );
@@ -614,12 +521,7 @@
                 if(isEmpty(slot0) || isEmpty(slot1) || isEmpty(slot2)){
 
                   // hide dropArea
-                  dropMargin = $('#one').height()*0.5;
-                  console.info(dropMargin);
-                  $('#drop-area').animate({
-                    zIndex:'1000',
-                    margin:dropMargin+"px 0 0 0"
-                  });
+                  classie.remove( dropArea, 'show' );
 
                 }
                 else{
@@ -665,11 +567,7 @@
                     $('.drop-area__item').removeAttr('style');
                     $('.drop-area__item .slide-content-inner').remove();
                     $('#share-block-preview .slide-content-inner').remove();
-                    dropMargin = $('#one').height()*0.5;
-                    $('#drop-area').animate({
-                      zIndex:'1000',
-                      margin:dropMargin+"px 0 0 0"
-                    });
+                    classie.remove( dropArea, 'show' );
                     sliderWrapper.slick('slickGoTo', 0);
                     $('#share-button-temp').hide().unbind('click');
                     $('#share-button').removeClass('ready').unbind('click').show();
@@ -679,12 +577,7 @@
                     $('.play-button').show();
                     $('#info').show();
                     $('.drag-group').show();
-                  });
-
-                  // show dropArea
-                  $('#drop-area').css({
-                    zIndex:'1000',
-                    margin:"0px"
+                    $('#drag-icon-block').show();
                   });
 
                   $('#info').hide();
@@ -693,6 +586,7 @@
                   slideTitle.hide();
                   $('.play-button').hide();
                   $('.drag-group').hide();
+                  $('#drag-icon-block').hide();
                   $('#share-block-preview').show();
                   if(!$('#share-block-preview').hasClass('initialized')){
                     top3Usanetwork.previewDroppables();
@@ -704,49 +598,6 @@
                   setTimeout(function(){
                     classie.add( dropArea, 'show' );
                   },1000);
-
-                  /*$(function() {
-                    $('.drag-group').sortable({
-                      //observe the update event...
-                      update: function(event, ui) {
-                        //create the array that hold the positions...
-                        var order = [];
-                        //loop trought each li...
-                        $('.drag-group .drop-area__item').each( function(e) {
-
-                          //add each li position to the array...
-                          // the +1 is for make it start from 1 instead of 0
-                          order.push( $(this).attr('id'));
-                          //order.push( $(this).attr('id')  + '=' + ( $(this).index() + 1 ) );
-                        });
-
-                        var positions = order;
-                        console.log( positions);
-
-                        var target1 = positions[0];
-                        var index1  = positions.indexOf("one");
-
-                        var target2 = positions[1];
-                        var index2  = positions.indexOf("two");
-
-                        var target3 = positions[2];
-                        var index3  = positions.indexOf("three");
-
-                        var zero = 0;
-                        var one  = 1;
-                        var two  = 2;
-
-                        console.log(target1);
-                        console.log(target2);
-                        console.log(target3);
-                        console.log('------');
-                        console.log(positions = index1);
-
-                      },
-                      items: ".drop-area__item"
-                    });
-                    $('.drag-group').disableSelection();
-                  });*/
 
                 }
               };
@@ -789,36 +640,6 @@
                 $('#'+dragId).html($('#'+dropId).html());
                 $('#'+dropId).html(tempDropItem);
               }
-              // show checkmark inside the droppabe element
-              /*classie.add( instance.el, 'drop-feedback' );
-
-              console.log('draggableEl',draggableEl);
-              console.log('instance', instance.el.id);
-
-              clearInterval(dropZone2);
-              dropZone2 = setInterval(function(){
-                //check drop zone: full or not
-                for(i=0; i<top3PreviewTarget.length; i++){
-
-                  onDragCount = top3PreviewTarget[i].classList.length == 3;
-                  elementDropped = top3PreviewTarget[i].classList[2] == 'drop-feedback';
-                  console.log('after drop', count);
-                  console.info(elementDropped);
-
-                }
-              },900);*/
-
-              /*$(draggableEl).css('visibility','hidden');
-              setTimeout(function(){
-                $(draggableEl).css('visibility','visible');
-                $(draggableEl).attr("disabled","disabled");
-              },1700);*/
-
-              /*clearTimeout( instance.checkmarkTimeout );
-              instance.checkmarkTimeout = setTimeout( function() {
-                classie.remove( instance.el, 'drop-feedback' );
-
-              }, 1000 );*/
 
             }
           } ) );
@@ -873,21 +694,6 @@
             onStart : function() {
 
               console.log(el);
-
-              //finds induvidul all id in drop area
-              /*var matchId = $(el).find('.slide-content-inner').attr('data-slide-id');
-              var findMatchOne = $('#one').find('.slide-content-inner').attr('data-slide-id');
-              var findMatchTwo = $('#two').find('.slide-content-inner').attr('data-slide-id');
-              var findMatchThree = $('#three').find('.slide-content-inner').attr('data-slide-id');
-
-              var matchArray = [findMatchOne, findMatchTwo, findMatchThree];
-
-              for (var i = 0; i < matchArray.length; i++) {
-                if (matchArray[i] == matchId) {
-                  console.log('not allowed');
-                  $('.container-message').fadeIn(400).addClass('not-allowed');
-                }
-              }*/
 
               //check where to drop the selectied item
               clearInterval(dropZone);
@@ -945,8 +751,6 @@
 
                 clearInterval(dropZone2);
                 clearInterval(dropZone);
-
-                //$('.container-message').fadeOut(500).removeClass('not-allowed');
 
                 // remove class 'drag-active' from body
                 classie.remove( body, 'drag-active' );

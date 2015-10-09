@@ -123,13 +123,14 @@
     .control-button {
       background: rgba(255, 255, 255, 0.3);
       cursor: pointer;
-      margin-top: -25px;
+      margin-top: get-vw(-53px, 1901);
       position: absolute;
       top: 50%;
       height: get-vw(106px, 1901);
       width: get-vw(40px, 1901);
       @include breakpoint($bp-min-1901-width) {
         height: 106px;
+        margin-top: -53px;
         width: 40px;
       }
       &:before {
@@ -309,12 +310,33 @@
         }
       }
     }
+    .help-image {
+      background: url('../images/top3_drop_help.png') no-repeat;
+      background-size: contain;
+      bottom: get-vw(80px, 1901);
+      height: get-vw(141px, 1901);
+      left: 50%;
+      margin-left: get-vw(-317px, 1901);
+      position: absolute;
+      width: get-vw(634px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        bottom: 80px;
+        height: 141px;
+        margin-left: -317px;
+        width: 634px;
+      }
+    }
     .info-drag-group {
+      bottom: 0;
       left: 0;
+      height: get-vw(68px, 1901);
       margin: 0;
       position: absolute;
-      bottom: 0;
+      text-align: center;
       width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        height: 68px;
+      }
     }
     .info-drag-item {
       background: rgba(255, 255, 255, 0.7);
@@ -322,9 +344,6 @@
       display: inline-block;
       height: get-vw(68px, 1901);
       margin: 0 1% 0 1%;
-      -webkit-transition: -webkit-transform 0.3s, background 0.3s;
-      transition: transform 0.3s, background 0.3s;
-      -webkit-backface-visibility: hidden;
       opacity: 0.7;
       overflow: hidden;
       width: get-vw(242px, 1901);
@@ -360,6 +379,7 @@
         }
       }
       &:after {
+        color: black;
         display: block;
         font-family: $tex-gyreschola-regular;
         font-size: get-vw(40px, 1901);
@@ -692,38 +712,34 @@
     transition: all 0.3s ease-out;
   }
   .drop-area {
+    bottom: get-vw(-68px, 1901);
     height: get-vw(136px, 1901);
-    margin: 3.577vw 0 0 0;
+    margin: 0;
     position: absolute;
-    top: 100%;
     left: 0;
     z-index: 99;
     width: 100%;
     background: transparent;
     text-align: center;
-    -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.6,0,0.4,1);
-    transition: transform 0.5s cubic-bezier(0.6,0,0.4,1);
-    -webkit-transform: translate3d(0,20px,0);
-    transform: translate3d(0,20px,0);
+    -moz-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+    -o-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+    -webkit-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+    transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
     @include breakpoint($bp-min-1901-width) {
+      bottom: -68px;
       height: 136px;
-      margin: 68px 0 0 0;
     }
     &.show {
-      -webkit-transform: translate3d(0,-100%,0);
-      transform: translate3d(0,-100%,0);
-      & > div {
-        -webkit-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
-      }
+      bottom: 0;
+      z-index: 1000;
+    }
+    &.not-allowed {
+      bottom: -500px;
+      z-index: 0;
     }
     & > div {
       width: 100%;
       height: 100%;
-      -webkit-transition: -webkit-transform 0.4s 0.3s;
-      transition: transform 0.4s 0.3s;
-      -webkit-transform: translate3d(0,50%,0);
-      transform: translate3d(0,50%,0);
     }
   }
 
@@ -883,5 +899,59 @@
     -moz-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s;
+  }
+}
+
+#drag-icon-block {
+  bottom: get-vw(120px, 1901);
+  color: white;
+  height: get-vw(60px, 1901);
+  left: 50%;
+  margin-left: get-vw(-30px, 1901);
+  //pointer-events: none;
+  position: absolute;
+  width: get-vw(60px, 1901);
+  @include breakpoint($bp-min-1901-width) {
+    bottom: 120px;
+    height: 60px;
+    margin-left: -30px;
+    width: 60px;
+  }
+  &:before {
+    content: '\e622';
+    display: block;
+    font-family: $ico-font;
+    font-size: get-vw(60px, 1901);
+    left: 0;
+    line-height: get-vw(60px, 1901);
+    position: absolute;
+    top: 0;
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 60px;
+      line-height: 60px;
+    }
+  }
+  &:after {
+    content: 'click & drag';
+    font-family: $avalon-medium;
+    font-size: get-vw(20px, 1901);
+    display: block;
+    left: 50%;
+    margin-left: get-vw(-70px, 1901);
+    position: absolute;
+    text-align: center;
+    top: 105%;
+    width: get-vw(140px, 1901);
+    white-space: nowrap;
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 20px;
+      margin-left: -70px;
+      width: 140px;
+    }
+  }
+  .touch & {
+    &:after {
+      content: 'drag';
+    }
   }
 }

@@ -174,6 +174,13 @@
         //Drupal.behaviors.omniture_tracking.newPageView(name);
 
         if (typeof s_gi != 'undefined') {
+          if (Drupal.settings.umbel_settings !== undefined) {
+            var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
+                pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
+          }
+          s.linkTrackVars = 'events,prop4';
+          s.prop4 = showName.trim() + ' : ' + pageName.trim();
+
           void (s.t());
         }
       },

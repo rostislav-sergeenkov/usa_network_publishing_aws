@@ -29624,19 +29624,23 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #info-block .info-block-wrapper {
   background: black;
-  display: table;
   height: 100%;
   opacity: 0.7;
   position: relative;
   width: 100%;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #info-block .info-text {
-  display: table-cell;
+  bottom: 13.15097vw;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 1.3;
+  position: absolute;
   text-align: center;
   text-transform: uppercase;
-  vertical-align: middle;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #info-block .info-text {
+    bottom: 250px;
+  }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #info-block .info-text > div {
   margin: 0 auto;
@@ -29667,6 +29671,26 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #info-block .info-text .bottom-text {
     font-size: 25px;
+  }
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #info-block .info-text #start-button {
+  color: white;
+  cursor: pointer;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 1.57812vw;
+  line-height: 3.52446vw;
+  margin: 1.05208vw auto;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 13.15097vw;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #info-block .info-text #start-button {
+    font-size: 30px;
+    line-height: 67px;
+    margin: 20px auto;
+    width: 250px;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #info-block .help-image {
@@ -29881,7 +29905,9 @@ body.blog .view-display-id-blog_content .views-row {
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .first-text-line {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.26249vw;
+  margin: 0 auto;
   text-align: center;
+  width: 70%;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .first-text-line {

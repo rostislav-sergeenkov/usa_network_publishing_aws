@@ -32,7 +32,7 @@
   </div>
 
   <div id="info"></div>
-  <div class="container-message">This slide has already chosen!</div>
+  <div class="container-message">Sorry you have already added that item.</div>
   <div id="info-block">
     <div id="info-close" class="close-button"></div>
     <div class="info-block-wrapper">
@@ -40,6 +40,7 @@
         <div class="top-text">Select your top 3 favorite Todd-isms and then share them with your friends and family!</div>
         <div class="color-text show-color show-font">How it works</div>
         <div class="bottom-text">Use the icon shown below to click & drag the thumbnail into the ranking boxes. Fill all 3 boxes and share your personalized page.</div>
+        <div id="start-button" class="show-color">Start now!</div>
       </div>
       <div class="help-image"></div>
       <div class="info-drag-group">
@@ -54,7 +55,7 @@
   <div id="share-block-preview">
     <div id="share-preview-close" class="close-button"></div>
     <div class="share-block-preview-wrapper show-color">
-      <div class="first-text-line">Click and drag the thumbnails over a different box to change the order</div>
+      <div class="first-text-line">CLICK AND DRAG THE THUMBNAILS OVER A DIFFERENT BOX TO CHANGE THE ORDER OR CLOSE TO CONTINUE PICKING YOUR TOP 3</div>
       <div class="preview-items-block">
         <div class="first preview-item" id="preview-one" data-id="one">
 

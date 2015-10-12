@@ -974,3 +974,22 @@ function _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season_id, $epis
   }
   return $nav_links;
 }
+
+/**
+ * Alter sitecatalyst variables variables.
+ */
+function usanetwork_episodes_usa_omniture_alter(&$omniture_variables, $context) {
+  if ($context['entity']) {
+    $entity = $context['entity'];
+    if ($entity->bundle == 'tv_episode') {
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'media_gallery')
+          ->fieldCondition('field_episode', 'target_id', $entity->nid, '=');
+      $result = $query->execute();
+      if (isset($result['node'])) {
+        $omniture_variables['s.prop5'] = "Episodic Gallery";
+      }
+    }
+  }
+}

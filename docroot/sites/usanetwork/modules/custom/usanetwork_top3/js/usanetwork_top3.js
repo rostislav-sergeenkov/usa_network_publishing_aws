@@ -49,6 +49,16 @@
       $('.drag-group').show();
       $('#info').show();
     }
+    function previewOpen() {
+      $('#info').hide();
+      $('.control-button').hide();
+      $('#counter').hide();
+      slideTitle.hide();
+      $('.play-button').hide();
+      $('.drag-group').hide();
+      $('#drag-icon-block').hide();
+      $('#share-block-preview').show();
+    }
     function previewClose() {
       $('#share-block-preview').hide();
       $('.control-button').show();
@@ -59,6 +69,21 @@
       $('#drag-icon-block').show();
       $('#info').show();
     }
+
+    $('#info').click(function(){
+      infoOpen();
+    });
+    $('#info-close, #start-button').click(function(){
+      infoClose();
+      $('#start-button').once(function(){
+        $('#start-button').remove();
+        $('#info-close').css({display: 'block'})
+        top3Usanetwork.carousel();
+      });
+    });
+    $('#share-preview-close').click(function(){
+      previewClose();
+    });
 
     // player service
     var playerService = {
@@ -196,7 +221,7 @@
         /*this.tourCheck();
          this.createCookie("initload",'1',1000);
          this.dataCall();*/
-        this.carousel();
+        //this.carousel();
         //this.gotoCanvas();
 
 
@@ -216,19 +241,8 @@
 
               currentSlideNum.text(firstSlide);
               totalSlidesNum.text(slide.length);
-              infoOpen();
-              $('#info').click(function(){
-                infoOpen();
-              });
-              $('#info-close, #start-button').click(function(){
-                infoClose();
-                if($(this).attr('id') == 'start-button') {
-                  $(this).remove();
-                }
-              });
-              $('#share-preview-close').click(function(){
-                previewClose();
-              });
+              //infoOpen();
+
             })
             .slick({
               autoplay: false,
@@ -299,6 +313,7 @@
                           sliderWrapper.slick('slickGoTo', carouselTarget);
                           slot0.html(topItem.clone());
                           preview0.html(topItem.clone());
+                          previewOpen();
 
                         } else {
 
@@ -320,6 +335,7 @@
                           sliderWrapper.slick('slickGoTo', carouselTarget);
                           slot1.html(topItem.clone());
                           preview1.html(topItem.clone());
+                          previewOpen();
 
                         } else {
 
@@ -341,6 +357,7 @@
                           sliderWrapper.slick('slickGoTo', carouselTarget);
                           slot2.html(topItem.clone());
                           preview2.html(topItem.clone());
+                          previewOpen();
 
                         } else {
                           sliderWrapper.slick('slickNext');
@@ -541,39 +558,44 @@
                 else{
 
                   classie.add( body, 'selectionComplete' );
-
+                  console.info('test');
                   //highlight share btn
-                  $('#share-button').addClass('ready').click(function(){
-                    $('#share-button').hide();
-                    $('#share-block-preview').hide();
-                    $('#info').hide();
-                    $('.control-button').hide();
-                    $('#counter').hide();
-                    slideTitle.hide();
-                    $('.play-button').hide();
-                    $('.drag-group').hide();
-                    $('#share-block img').remove();
-                    $('#share-block .first').html($('#one .slide-content-inner').clone());
-                    $('#share-block .second').html($('#two .slide-content-inner').clone());
-                    $('#share-block .third').html($('#three .slide-content-inner').clone());
-                    var shareBlock = $('#share-block'),
-                        imgShare = $('#share-img');
-                    shareBlock.css({
-                      visibility: 'visible',
-                      zIndex:'1'
-                    });
-                    $('#slider-container .slider-wrapper').before('<div class="load-more-loader"></div>');
-                    html2canvas(shareBlock, {
-                      onrendered: function(canvas) {
-                        imgShare.append(convertCanvasToImage(canvas));
-                        $('.load-more-loader').remove();
-                        $('#share-button-temp').show();
-                      }
+                  $('#share-button').once('share-button',function () {
+                    $('#share-button').addClass('ready').click(function(){
+                      $('#share-button').hide();
+                      $('#share-block-preview').hide();
+                      $('#info').hide();
+                      $('.control-button').hide();
+                      $('#counter').hide();
+                      slideTitle.hide();
+                      $('.play-button').hide();
+                      $('.drag-group').hide();
+                      $('#share-block img').remove();
+                      $('#share-block .first').html($('#one .slide-content-inner').clone());
+                      $('#share-block .second').html($('#two .slide-content-inner').clone());
+                      $('#share-block .third').html($('#three .slide-content-inner').clone());
+                      var shareBlock = $('#share-block'),
+                          imgShare = $('#share-img');
+                      shareBlock.css({
+                        visibility: 'visible',
+                        zIndex:'1'
+                      });
+                      $('#slider-container .slider-wrapper').before('<div class="load-more-loader"></div>');
+                      html2canvas(shareBlock, {
+                        onrendered: function(canvas) {
+                          imgShare.append(convertCanvasToImage(canvas));
+                          $('.load-more-loader').remove();
+                          $('#share-button-temp').show().click(function(){
+                            location.reload();
+                          });
+                        }
+                      });
                     });
                   });
-                  $('#share-button-temp').click(function(){
+
+                  /*$('#share-button-temp').click(function(){
                     location.reload();
-                    /*$('#share-block').css({
+                    $('#share-block').css({
                       visibility: 'hidden',
                       zIndex:'0'
                     });
@@ -592,23 +614,14 @@
                     $('.play-button').show();
                     $('#info').show();
                     $('.drag-group').show();
-                    $('#drag-icon-block').show();*/
-                  });
+                    $('#drag-icon-block').show();
+                  });*/
 
-                  $('#info').hide();
-                  $('.control-button').hide();
-                  $('#counter').hide();
-                  slideTitle.hide();
-                  $('.play-button').hide();
-                  $('.drag-group').hide();
-                  $('#drag-icon-block').hide();
-                  $('#share-block-preview').show();
-                  if(!$('#share-block-preview').hasClass('initialized')){
+                  $('#share-block-preview').once('share-block-preview',function () {
+                    previewOpen();
                     top3Usanetwork.previewDroppables();
                     top3Usanetwork.previewDraggable();
-                    $('#share-block-preview').addClass('initialized');
-                  }
-
+                  });
 
                   setTimeout(function(){
                     classie.add( dropArea, 'show' );

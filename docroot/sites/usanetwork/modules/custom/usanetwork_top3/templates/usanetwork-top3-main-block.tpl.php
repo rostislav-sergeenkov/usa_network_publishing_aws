@@ -100,7 +100,9 @@
 </div>
 <div class="right-sidebar">
   <div class="choose-top3-img">
-    <img src="/sites/usanetwork/themes/aurora_usa/images/top3title.png" alt="">
+    <div class="top-choose-top3"><div class="first-line">Choose</div> your top <span>3</span></div>
+    <img src="/sites/usanetwork/themes/aurora_usa/images/top3titlesmall.png" alt="">
+    <div class="bottom-choose-top3">& share them with your friends</div>
   </div>
   <div id="share-button" class="show-color">Share</div>
   <div id="share-button-temp" class="show-color ready">Share</div>

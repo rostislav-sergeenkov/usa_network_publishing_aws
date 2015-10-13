@@ -103,11 +103,15 @@
 
 </div>
 <div class="right-sidebar">
-  <?php if (!empty($logo)) : ?>
-    <div class="choose-top3-img">
-      <img src="<?php print $logo; ?>" alt="">
-    </div>
-  <?php endif; ?>
+
+  <div class="choose-top3-img">
+    <div class="top-choose-top3"><div class="first-line">Choose</div> your top <span>3</span></div>
+    <?php if (!empty($logo)) : ?>
+      <img src="/sites/usanetwork/themes/aurora_usa/images/top3titlesmall.png" alt="">
+    <?php endif; ?>
+    <div class="bottom-choose-top3">& share them with your friends</div>
+  </div>
+
   <div id="share-button" class="show-color">Share</div>
   <div id="share-button-temp" class="show-color ready">Share</div>
   <div class="node-wrapper advert">

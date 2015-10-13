@@ -1,11 +1,20 @@
 #block-usanetwork-top3-usanetwork-top3-main-block {
   background: url(../images/top3back.png) repeat;
   height: auto;
-  padding: get-vw(120px, 1901) get-vw(110px, 1901);
+  padding: get-vw(120px, 1901) get-vw(90px, 1901) get-vw(120px, 1901) get-vw(130px, 1901);
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-1901-width) {
     padding: 120px 110px;
+  }
+  @include breakpoint($bp-1600-width) {
+    padding: get-vw(45px, 1280) get-vw(35px, 1280);
+  }
+  @include breakpoint($bp-1280-width) {
+    padding: 0 get-vw(5px, 1280) get-vw(25px, 1280) get-vw(10px, 1280);
+  }
+  @include breakpoint($bp-1024-width) {
+    padding: 0 get-vw(10px, 768) 0;
   }
   & > .content {
     @include clear();
@@ -14,6 +23,18 @@
     max-width: 1681px;
     position: relative;
     width: 100%;
+    @include breakpoint($bp-1280-width) {
+      padding-top: get-vw(126px, 1024);
+    }
+    @include breakpoint($bp-1024-width) {
+      padding-bottom: 300px;
+    }
+    @include breakpoint($bp-768-width) {
+      padding-top: get-vw(108px, 480);
+    }
+    @include breakpoint($bp-640-width) {
+      padding-bottom: calc(26.25vw + 250px);
+    }
   }
   #slider-container {
     float: left;
@@ -25,9 +46,18 @@
       height: 720px;
       width: 1280px;
     }
-    @include breakpoint($bp-1600-width) {
-      height: calc((100% - 320px)*0.5625);
-      width: calc(100% - 320px);
+    @include breakpoint($bp-1280-width) {
+      z-index: 1;
+    }
+    @include breakpoint($bp-1024-width) {
+      height: 53.8vw;
+      width: 100%;
+    }
+    @include breakpoint($bp-768-width) {
+      height: 53.6vw;
+    }
+    @include breakpoint($bp-480-width) {
+      height: 52.8vw;
     }
     .load-more-loader {
       margin-top: -16px;
@@ -44,7 +74,7 @@
           border-radius: 50%;
           color: white;
           cursor: pointer;
-          display: block;
+          display: none;
           height: get-vw(53px, 1901);
           left: get-vw(40px, 1901);
           position: absolute;
@@ -56,6 +86,12 @@
             left: 40px;
             top: 40px;
             width: 53px;
+          }
+          @include breakpoint($bp-1024-width) {
+            height: get-vw(40.5px, 1024);
+            left: get-vw(30.6px, 1024);
+            top: get-vw(30.6px, 1024);
+            width: get-vw(40.5px, 1024);
           }
           &:before {
             content: '\e627';
@@ -70,6 +106,10 @@
             @include breakpoint($bp-min-1901-width) {
               font-size: 40px;
               line-height: 50px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: get-vw(30.6px, 1024);
+              line-height: calc(3.66vw - 3px);
             }
           }
         }
@@ -110,6 +150,7 @@
 
     #counter {
       color: white;
+      display: none;
       font-size: get-vw(28px, 1901);
       left: get-vw(110px, 1901);
       position: absolute;
@@ -119,10 +160,16 @@
         left: 110px;
         top: 30px;
       }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(21.43px, 1024);
+        left: get-vw(84.19px, 1024);
+        top: get-vw(22.96px, 1024);
+      }
     }
     .control-button {
       background: rgba(255, 255, 255, 0.3);
       cursor: pointer;
+      display: none;
       margin-top: get-vw(-53px, 1901);
       position: absolute;
       top: 50%;
@@ -132,6 +179,11 @@
         height: 106px;
         margin-top: -53px;
         width: 40px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(81px, 1024);
+        margin-top: get-vw(-40.5px, 1024);
+        width: get-vw(30.6px, 1024);
       }
       &:before {
         display: block;
@@ -144,6 +196,10 @@
           font-size: 45px;
           line-height: 106px;
         }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(34.4px, 1024);
+          line-height: get-vw(81px, 1024);
+        }
       }
     }
     .next.control-button {
@@ -153,6 +209,9 @@
         right: get-vw(-10px, 1901);
         @include breakpoint($bp-min-1901-width) {
           right: -10px;
+        }
+        @include breakpoint($bp-1024-width) {
+          right: get-vw(-7.65px, 1024);
         }
       }
     }
@@ -164,9 +223,13 @@
         @include breakpoint($bp-min-1901-width) {
           left: -10px;
         }
+        @include breakpoint($bp-1024-width) {
+          left: get-vw(-7.65px, 1024);
+        }
       }
     }
     .drag-group {
+      display: none;
       left: 0;
       margin: 0;
       position: absolute;
@@ -204,14 +267,107 @@
     @include breakpoint($bp-min-1901-width) {
       width: calc(100% - 1280px);
     }
-    @include breakpoint($bp-1600-width) {
-      width: 320px;
+    @include breakpoint($bp-1280-width) {
+      position: absolute;
+      width: 100%;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding-top: 53.8vw;
     }
     .choose-top3-img {
       height: auto;
-      width: 100%;
-      img {
+      margin: 0 auto;
+      position: relative;
+      text-transform: uppercase;
+      width: get-vw(350px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        width: 350px;
+      }
+      @include breakpoint($bp-1600-width) {
+        width: get-vw(325px, 1600);
+      }
+      @include breakpoint($bp-1280-width) {
+        bottom: calc(100% + 2.88vw);
+        position: absolute;
+        text-align: center;
         width: 100%;
+      }
+      @include breakpoint($bp-768-width) {
+        bottom: calc(100% + 1vw);
+      }
+      .top-choose-top3 {
+        font-family: $avalon-xlight;
+        font-size: get-vw(45px, 1901);
+        text-align: right;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 45px;
+        }
+        @include breakpoint($bp-1280-width) {
+          display: inline-block;
+          font-size: get-vw(31px, 1024);
+          width: get-vw(236px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(23px, 480);
+          width: get-vw(180px, 480);
+        }
+        .first-line {
+          line-height: 1.1;
+          text-align: left;
+          @include breakpoint($bp-1280-width) {
+            line-height: 1;
+          }
+        }
+        span {
+          font-size: get-vw(90px, 1901);
+          vertical-align: text-bottom;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 90px;
+          }
+          @include breakpoint($bp-1280-width) {
+            font-size: get-vw(62px, 1024);
+            vertical-align: text-top;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(46px, 480);
+          }
+        }
+      }
+      img {
+        margin-top: get-vw(-20px, 1901);
+        width: 100%;
+        @include breakpoint($bp-min-1901-width) {
+          margin-top: -20px;
+        }
+        @include breakpoint($bp-1280-width) {
+          display: inline-block;
+          margin: 0;
+          width: get-vw(260px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          width: get-vw(190px, 480);
+        }
+      }
+      .bottom-choose-top3 {
+        font-family: $avalon-book;
+        font-size: get-vw(22px, 1901);
+        line-height: 1.7;
+        text-align: center;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 22px;
+        }
+        @include breakpoint($bp-1600-width) {
+          font-size: get-vw(20px, 1600);
+        }
+        @include breakpoint($bp-1280-width) {
+          display: inline-block;
+          font-size: get-vw(20px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          display: block;
+          font-size: get-vw(14px, 480);
+          width: 100%;
+        }
       }
     }
     .advert {
@@ -219,6 +375,18 @@
       height: 250px;
       margin: 0 auto;
       width: 300px;
+      @include breakpoint($bp-1280-width) {
+        margin-left: calc(67.33298vw + (32.66702vw - 320px)/2) ;
+      }
+      @include breakpoint($bp-1024-width) {
+        float: right;
+        margin-left: 0;
+        margin-top: 25px;
+      }
+      @include breakpoint($bp-640-width) {
+        float: none;
+        margin: 0 auto;
+      }
     }
   }
   .slick-slider {
@@ -241,15 +409,39 @@
     font-family: $avalon-medium;
     font-size: get-vw(30px, 1901);
     line-height: get-vw(67px, 1901);
-    margin: get-vw(40px, 1901) auto get-vw(60px, 1901);
+    margin: get-vw(27px, 1901) auto get-vw(53px, 1901);
     position: relative;
     text-align: center;
     text-transform: uppercase;
-    width: 75%;
+    width: get-vw(225px, 1901);
     @include breakpoint($bp-min-1901-width) {
       font-size: 30px;
       line-height: 67px;
-      margin: 40px auto 60px;
+      margin: 27px auto 53px;
+      width: 225px;
+    }
+    @include breakpoint($bp-1600-width) {
+      width: get-vw(243.75px, 1600);
+    }
+    @include breakpoint($bp-1280-width) {
+      margin-left: calc(74.564925vw - 10px);
+      width: get-vw(233px, 1280);
+    }
+    @include breakpoint($bp-1024-width) {
+      float: left;
+      font-size: get-vw(36px, 768);
+      line-height: get-vw(82px, 768);
+      margin-bottom: 0;
+      margin-left: calc((100% - 300px - 41.7vw)/2);
+      margin-top: 25px;
+      width: get-vw(320px, 768);
+    }
+    @include breakpoint($bp-640-width) {
+      float: none;
+      font-size: get-vw(25.5px, 480);
+      line-height: get-vw(57px, 480);
+      margin: get-vw(16px, 480) auto get-vw(40px, 480);
+      width: get-vw(220px, 480);
     }
     &:not(.ready) {
       background: black;
@@ -263,7 +455,7 @@
     display: none;
   }
   #info-block {
-    display: none;
+    display: block;
     height: 100%;
     left: 0px;
     position: absolute;
@@ -286,6 +478,9 @@
       @include breakpoint($bp-min-1901-width) {
         bottom: 250px;
       }
+      @include breakpoint($bp-1024-width) {
+        bottom: get-vw(191.3px, 1024);
+      }
       > div {
         margin: 0 auto;
         max-width: 70%;
@@ -297,6 +492,10 @@
           font-size: 33px;
           margin-bottom: 38px;
         }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(25.26px, 1024);
+          margin-bottom: get-vw(29px, 1024);
+        }
       }
       .color-text {
         background: none;
@@ -304,11 +503,17 @@
         @include breakpoint($bp-min-1901-width) {
           font-size: 38px;
         }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(29px, 1024);
+        }
       }
       .bottom-text {
         font-size: get-vw(25px, 1901);
         @include breakpoint($bp-min-1901-width) {
           font-size: 25px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(19.1px, 1024);
         }
       }
       #start-button {
@@ -328,6 +533,12 @@
           margin: 20px auto;
           width: 250px;
         }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(23px, 1024);
+          line-height: get-vw(51.3px, 1024);
+          margin: get-vw(15.3px, 1024) auto;
+          width: get-vw(191.3px, 1024);
+        }
       }
     }
     .help-image {
@@ -345,6 +556,12 @@
         margin-left: -317px;
         width: 634px;
       }
+      @include breakpoint($bp-1024-width) {
+        bottom: get-vw(61.23px, 1024);
+        height: get-vw(107.9px, 1024);
+        margin-left: get-vw(-242.625px, 1024);
+        width: get-vw(485.25px, 1024);
+      }
     }
     .info-drag-group {
       bottom: 0;
@@ -356,6 +573,9 @@
       width: 100%;
       @include breakpoint($bp-min-1901-width) {
         height: 68px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(52.03px, 1024);
       }
     }
     .info-drag-item {
@@ -371,6 +591,10 @@
       @include breakpoint($bp-min-1901-width) {
         height: 68px;
         width: 242px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(52.03px, 1024);
+        width: get-vw(185.22px, 1024);
       }
       &:nth-child(1) {
         &:after {
@@ -397,6 +621,10 @@
           border-top-width: 68px;
           border-left-width: 68px;
         }
+        @include breakpoint($bp-1024-width) {
+          border-top-width: get-vw(52.03px, 1024);
+          border-left-width: get-vw(52.03px, 1024);
+        }
       }
       &:after {
         color: black;
@@ -417,6 +645,12 @@
           line-height: 40px;
           width: 40px;
         }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(30.6px, 1024);
+          height: get-vw(30.6px, 1024);
+          line-height: get-vw(30.6px, 1024);
+          width: get-vw(30.6px, 1024);
+        }
       }
     }
   }
@@ -424,6 +658,7 @@
     border: 3px solid white;
     border-radius: 50%;
     color: white;
+    display: none;
     cursor: pointer;
     height: get-vw(53px, 1901);
     position: absolute;
@@ -436,6 +671,12 @@
       right: 40px;
       top: 40px;
       width: 53px;
+    }
+    @include breakpoint($bp-1024-width) {
+      height: get-vw(40.5px, 1024);
+      right: get-vw(30.6px, 1024);
+      top: get-vw(30.6px, 1024);
+      width: get-vw(40.5px, 1024);
     }
     &:before {
       content: '\e623';
@@ -451,6 +692,10 @@
         font-size: 40px;
         line-height: 50px;
       }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(30.6px, 1024);
+        line-height: calc(3.66vw - 3px);
+      }
     }
   }
   .close-button {
@@ -458,6 +703,7 @@
     border-radius: 50%;
     color: white;
     cursor: pointer;
+    display: none;
     height: get-vw(53px, 1901);
     position: absolute;
     right: get-vw(40px, 1901);
@@ -469,6 +715,12 @@
       right: 40px;
       top: 40px;
       width: 53px;
+    }
+    @include breakpoint($bp-1024-width) {
+      height: get-vw(40.5px, 1024);
+      right: get-vw(30.6px, 1024);
+      top: get-vw(30.6px, 1024);
+      width: get-vw(40.5px, 1024);
     }
     &:before {
       content: '\e624';
@@ -484,6 +736,10 @@
         font-size: 40px;
         line-height: 50px;
       }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(30.6px, 1024);
+        line-height: calc(3.66vw - 3px);
+      }
     }
   }
   #share-block-preview {
@@ -493,6 +749,9 @@
     position: absolute;
     top: 0;
     width: 100%;
+    .close-button {
+      display: block;
+    }
     .share-block-preview-wrapper {
       height: 100%;
       opacity: 0.7;
@@ -502,8 +761,11 @@
       @include breakpoint($bp-min-1901-width) {
         padding-top: 216px;
       }
-      @include breakpoint($bp-1600-width) {
+      @include breakpoint($bp-1280-width) {
         padding-top: get-vw(184px, 1600);
+      }
+      @include breakpoint($bp-1024-width) {
+        padding-top: get-vw(165.3px, 1024);
       }
     }
     .first, .second, .third {
@@ -521,11 +783,15 @@
     .first-text-line {
       font-family: $avalon-medium;
       font-size: get-vw(24px, 1901);
+      line-height: 1.3;
       margin: 0 auto;
       text-align: center;
       width: 70%;
       @include breakpoint($bp-min-1901-width) {
         font-size: 24px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(18.37px, 1024);
       }
     }
     .last-text-line {
@@ -535,6 +801,9 @@
       @include breakpoint($bp-min-1901-width) {
         font-size: 48px;
       }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(36.74px, 1024);
+      }
     }
     .preview-items-block {
       margin: get-vw(15px, 1901) auto get-vw(30px, 1901);
@@ -542,6 +811,9 @@
       width: 70%;
       @include breakpoint($bp-min-1901-width) {
         margin: 15px auto 30px;
+      }
+      @include breakpoint($bp-1024-width) {
+        margin: get-vw(11.48px, 1024) auto get-vw(22.96px, 1024);
       }
     }
   }
@@ -560,6 +832,7 @@
       position: relative;
       .title {
         bottom: 8%;
+        display: block;
         font-family: $avalon-medium;
         left: auto;
         line-height: 1.2;
@@ -576,6 +849,9 @@
         @include breakpoint($bp-min-1901-width) {
           font-size: 48px;
         }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(36.74px, 1024);
+        }
       }
     }
     .second, .third {
@@ -583,6 +859,9 @@
         font-size: get-vw(24px, 1901);
         @include breakpoint($bp-min-1901-width) {
           font-size: 24px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(18.37px, 1024);
         }
       }
     }
@@ -642,6 +921,7 @@
       display: none;
     }
     .title {
+      display: none;
       color: white;
       font-family: $avalon-demi;
       font-size: get-vw(32px, 1901);
@@ -652,6 +932,11 @@
         font-size: 32px;
         left: 110px;
         top: 70px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(24.49px, 1024);
+        left: get-vw(84.19px, 1024);
+        top: get-vw(53.58px, 1024);
       }
     }
   }
@@ -669,7 +954,6 @@
     display: inline-block;
     height: get-vw(136px, 1901);
     margin: calc(50%*0.5625 - 104px) calc(50% - 136px);
-    width: get-vw(242px, 1901);
     background: #f9f9f9;
     color: #76737C;
     text-align: center;
@@ -677,10 +961,15 @@
     overflow: hidden;
     text-indent: -9000px;
     position:absolute;
+    width: get-vw(242px, 1901);
     z-index: 500000;
     @include breakpoint($bp-min-1901-width) {
       height: 136px;
       width: 242px;
+    }
+    @include breakpoint($bp-1024-width) {
+      height: get-vw(104.8px, 1024);
+      width: get-vw(185.22px, 1024);
     }
     &:hover {
       cursor: move;
@@ -751,6 +1040,10 @@
       bottom: -68px;
       height: 136px;
     }
+    @include breakpoint($bp-1024-width) {
+      bottom: get-vw(-52.03px, 1024);
+      height: get-vw(104.06px, 1024);
+    }
     &.show {
       bottom: 0;
       z-index: 1000;
@@ -780,6 +1073,10 @@
       height: 136px;
       width: 242px;
     }
+    @include breakpoint($bp-1024-width) {
+      height: get-vw(104.06px, 1024);
+      width: get-vw(185.22px, 1024);
+    }
     &.highlight {
       background: #ff3705;
       -webkit-transform: scale3d(1.08,1.08,1);
@@ -795,6 +1092,10 @@
         border-top-width: 68px;
         border-left-width: 68px;
       }
+      @include breakpoint($bp-1024-width) {
+        border-top-width: get-vw(52.03px, 1024);
+        border-left-width: get-vw(52.03px, 1024);
+      }
     }
     &:after {
       display: block;
@@ -809,10 +1110,16 @@
       width: get-vw(40px, 1901);
       z-index: 1;
       @include breakpoint($bp-min-1901-width) {
-        height: 40px;
         font-size: 40px;
+        height: 40px;
         line-height: 40px;
         width: 40px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(30.6px, 1024);
+        height: get-vw(30.6px, 1024);
+        line-height: get-vw(30.6px, 1024);
+        width: get-vw(30.6px, 1024);
       }
     }
     .slide-content-inner {
@@ -858,70 +1165,6 @@
     -webkit-transform: scale3d(1,1,1);
     transform: scale3d(1,1,1);
   }
-
-  .dummy,
-  .dummy::after {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin: 0.25em 0;
-    height: 0.65em;
-    border-radius: 2px;
-    background: rgba(0,0,0,0.15);
-    -webkit-backface-visibility: hidden;
-  }
-
-  .dummy {
-    width: 90%;
-  }
-
-  .dummy::after {
-    width: 60%;
-    content: '';
-  }
-
-  .helper {
-    position: absolute !important;
-    margin: 0;
-  }
-
-  .main {
-    width:100%;
-    height:100%;
-    position: absolute;
-    top: 0;
-    left:0;
-    overflow: hidden;
-    background-size: cover;
-    background-repeat:no-repeat;
-  }
-
-  .spotimg {
-    z-index: 4;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    opacity:1;
-    -webkit-transition: opacity 0.5s;
-    -moz-transition: opacity 0.5s;
-    -o-transition: opacity 0.5s;
-    transition: opacity 0.5s;
-    -webkit-transition-delay: 0s; /* Safari */
-    transition-delay: 0s;
-  }
-
-  #synopsis {
-    z-index: 1007;
-    color: white;
-    position: relative;
-    margin: 5% 10%;
-    font-size:16px;
-    opacity:0;
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -o-transition: opacity 1s;
-    transition: opacity 1s;
-  }
 }
 
 #drag-icon-block {
@@ -939,6 +1182,12 @@
     margin-left: -30px;
     width: 60px;
   }
+  @include breakpoint($bp-1024-width) {
+    bottom: get-vw(91.84px, 1024);
+    height: get-vw(45.92px, 1024);
+    margin-left: get-vw(-22.96px, 1024);
+    width: get-vw(45.92px, 1024);
+  }
   &:before {
     content: '\e622';
     display: block;
@@ -951,6 +1200,10 @@
     @include breakpoint($bp-min-1901-width) {
       font-size: 60px;
       line-height: 60px;
+    }
+    @include breakpoint($bp-1024-width) {
+      font-size: get-vw(45.92px, 1024);
+      line-height: get-vw(45.92px, 1024);
     }
   }
   &:after {
@@ -969,6 +1222,11 @@
       font-size: 20px;
       margin-left: -70px;
       width: 140px;
+    }
+    @include breakpoint($bp-1024-width) {
+      font-size: get-vw(15.3px, 1024);
+      margin-left: get-vw(-53.57px, 1024);
+      width: get-vw(107.14px, 1024);
     }
   }
   .touch & {

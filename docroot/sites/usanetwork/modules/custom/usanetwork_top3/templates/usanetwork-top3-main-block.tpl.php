@@ -9,10 +9,14 @@
         <div class="play-button"></div>
         <div class="slide-content">
           <div class="slide-content-inner" data-slide-id="<?php print $key; ?>">
-            <div class="img-wrapper">
-              <img src="<?php print $slide['image']; ?>">
-            </div>
-            <div class="title">test title <?php print $key; ?></div>
+            <?php if (!empty($slide['image'])) : ?>
+              <div class="img-wrapper">
+                <img src="<?php print $slide['image']; ?>">
+              </div>
+            <?php endif; ?>
+            <?php if (!empty($slide['title'])) : ?>
+              <div class="title"><?php print $slide['title']; ?></div>
+            <?php endif; ?>
           </div>
           <div class="video-wrapper hide-block"
                  data-src="//player.theplatform.com/p/HNK2IC/dd_usa_vod_noauth/embed/select/EJIlKSvvTE19?autoPlay=true">
@@ -99,9 +103,11 @@
 
 </div>
 <div class="right-sidebar">
-  <div class="choose-top3-img">
-    <img src="/sites/usanetwork/themes/aurora_usa/images/top3title.png" alt="">
-  </div>
+  <?php if (!empty($logo)) : ?>
+    <div class="choose-top3-img">
+      <img src="<?php print $logo; ?>" alt="">
+    </div>
+  <?php endif; ?>
   <div id="share-button" class="show-color">Share</div>
   <div id="share-button-temp" class="show-color ready">Share</div>
   <div class="node-wrapper advert">

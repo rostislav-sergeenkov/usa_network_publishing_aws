@@ -71,11 +71,14 @@ function _usanetwork_top3_main_block() {
   }
 
   $node_wrapper = entity_metadata_wrapper('node', $node);
+  $logo_image = $node_wrapper->field_logo->value();
+  if (!empty($logo_image)) {
+    $logo = file_create_url($logo_image['uri']);
+  }
 
   $slides = array();
   if (!empty($node->field_slides_content)) {
     foreach ($node_wrapper->field_slides_content->getIterator() as $delta => $slide_item) {
-      $slide = array();
       $slide_image = $slide_item->field_top3_image->value();
       $slide_video = $slide_item->field_top3_video->value();
       if (empty($slide_image)) {
@@ -83,14 +86,32 @@ function _usanetwork_top3_main_block() {
       } else {
         $slide_image_url = $slide_image['uri'];
       }
-      $slide['image'] = image_style_url('2880x1620', $slide_image_url);
-      $slide['is_video'] = (!empty($slide_video)) ? TRUE : FALSE;
-      $slides[] = $slide;
+      $title = $slide_item->field_episodic_1_title->value();
+      $slides = array(
+        'title' => !empty($title) ? $title : NULL,
+        'image' => !empty($slide_image_url) ? image_style_url('2880x1620', $slide_image_url) : NULL,
+        'is_video' => (!empty($slide_video)) ? TRUE : FALSE,
+      );
     }
   }
 
   $theme_variables = array(
     'slides' => $slides,
+    'logo' => isset($logo) ? $logo : NULL,
   );
   return theme('usanetwork_top_main_block', $theme_variables);
+}
+
+function usanetwork_top3_preprocess_block(&$vars) {
+  if ($vars['block']->delta == 'usanetwork_top3_main_block') {
+    $node = menu_get_object('node');
+    if (!empty($node)) {
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $background_image = $node_wrapper->field_background->value();
+      if (!empty($background_image)) {
+        $background = file_create_url($background_image['uri']);
+        $vars['attributes_array']['style'][] = 'background: url(' . $background . ') repeat';
+      }
+    }
+  }
 }

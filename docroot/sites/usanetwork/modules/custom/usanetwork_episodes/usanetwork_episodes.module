@@ -560,6 +560,14 @@ function _usanetwork_episodes_get_season_ids($tv_show_nid) {
   $query->condition('field_show.bundle', 'tv_season');
   $query->condition('field_season_id.bundle', 'tv_season');
   $query->condition('field_show_target_id', $tv_show_nid);
+
+  $query->condition('season_node.status', '1');
+  $query->join('field_data_field_season', 'season_field', 'season_field.field_season_target_id=season_node.nid');
+  $query->condition('season_field.bundle', 'tv_episode');
+  $query->join('node', 'episode_node', 'season_field.entity_id=episode_node.nid');
+  $query->condition('episode_node.status', '1');
+  $query->distinct();
+
   $query->orderBy('season_number', 'DESC');
 
   return $query->execute()->fetchAll();

@@ -112,6 +112,11 @@
               line-height: calc(3.66vw - 3px);
             }
           }
+          &.play {
+            &:before {
+              content: '\e626';
+            }
+          }
         }
       }
       .play-button, .play-button.inactive {

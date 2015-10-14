@@ -112,7 +112,7 @@ function _usanetwork_top3_main_block() {
         }
 
         if (!empty($slide_video)) {
-          $fid = $slide_video['fid'];
+          $fid = $slide_video->fid;
           $video = '';
         } else {
           $fid = $slide_image['fid'];

@@ -107,13 +107,14 @@
     var playerService = {
 
       createPlayer: function (el) {
-        console.info('createPlayer');
-        var videoBlock = el.find('.video-wrapper'),
-            neighborBlock = el.find('.slide-content-inner'),
+        var elem = el || $('#slider-container .slick-active'),
+            videoBlock = elem.find('.video-wrapper'),
+            neighborBlock = elem.find('.slide-content-inner'),
             src = videoBlock.data('src'),
             frame = "<iframe src=" + src + " id='slide-player' allowfullscreen='' width='100%' height='100%' frameborder='0'></iframe>";
 
         if (!videoBlock.hasClass('active')) {
+          console.info('createPlayer');
           // make image block inactive
           neighborBlock.addClass('inactive');
 
@@ -127,22 +128,19 @@
               });
 
           // add player listeners
-          playerService.bindPlayer();
-
-          $('#slide-player').load(function () {
-
-          });
+          playerService.bindPlayer(elem);
         }
       },
 
       removePlayer: function (el) {
-        console.info('removePlayer');
-        var videoBlock = el.find('.video-wrapper'),
-            neighborBlock = el.find('.slide-content-inner'),
+        var elem = el || $('#slider-container .slick-active'),
+            videoBlock = elem.find('.video-wrapper'),
+            neighborBlock = elem.find('.slide-content-inner'),
             frame = videoBlock.find('#slide-player'),
-            playButton = el.find('.play-button');
+            playButton = elem.find('.play-button');
 
         if (videoBlock.hasClass('active')) {
+          console.info('removePlayer');
           // hide video block
           videoBlock
               .addClass('hide-block')
@@ -157,27 +155,41 @@
 
           // make image block active
           neighborBlock.removeClass('inactive');
-          playButton.removeClass('inactive');
 
+          // reset play button
+          playButton
+              .removeAttr('data-player-status')
+              .removeClass('inactive play');
 
           // reset player listeners
           playerService.resetPlayer();
         }
       },
 
-      bindPlayer: function () {
-        console.info('bindPlayer');
+      bindPlayer: function (elem) {
+
+        var playButton = elem.find('.play-button.inactive');
+
         // check on $pdk object
         if (!($pdk = window.$pdk)) {
+          console.info('bindPlayer return');
           return;
         }
-
+        console.info('bindPlayer');
         $pdk.bind('slide-player');
         $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+        $pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
+
+        function _onMediaStart(pdkEvent) {
+          console.info('_onMediaStart');
+          // change status play button
+          playButton.attr('data-player-status', 'start');
+        }
 
         function _onReleaseEnd(pdkEvent) {
           console.info('OnReleaseEnd');
-          //slideService.resetSlide();
+          // remove player
+          playerService.removePlayer();
         }
       },
 
@@ -212,8 +224,19 @@
           var playButton = $(this),
               parentBlock = playButton.closest('.slide.slick-active');
 
-          playButton.addClass('inactive');
-          playerService.createPlayer(parentBlock);
+          if (!playButton.hasClass('inactive')) {
+            playButton
+                .addClass('inactive play');
+            playerService.createPlayer(parentBlock);
+          } else if(playButton.data('player-status') === 'start') {
+            if (playButton.hasClass('play')) {
+              playButton.removeClass('play');
+              playerService.pausePlayer();
+            } else if (!playButton.hasClass('play')){
+              playButton.addClass('play');
+              playerService.playPlayer();
+            }
+          }
         });
 
         /*$("#loading").fadeIn();
@@ -281,7 +304,6 @@
 
               // remove player
               playerService.removePlayer(currentSlideBlock);
-
             });
 
       },

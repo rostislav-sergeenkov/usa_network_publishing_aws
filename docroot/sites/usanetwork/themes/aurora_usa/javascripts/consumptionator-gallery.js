@@ -178,7 +178,8 @@
             var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
                 pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
           }
-          s.linkTrackVars = 'events,prop4';
+          s.linkTrackVars = 'events,prop3,prop4';
+          s.prop3 = 'Gallery';
           s.prop4 = showName.trim() + ' : ' + pageName.trim();
 
           void (s.t());

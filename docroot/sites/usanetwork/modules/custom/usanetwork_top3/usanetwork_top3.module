@@ -110,18 +110,28 @@ function _usanetwork_top3_main_block() {
         } else {
           $slide_image_url = $slide_image['uri'];
         }
+
+        if (!empty($slide_video)) {
+          $fid = $slide_video['fid'];
+          $video = '';
+        } else {
+          $fid = $slide_image['fid'];
+        }
         $title = $slide_item->field_episodic_1_title->value();
         $slides[] = array(
-            'title' => !empty($title) ? $title : NULL,
-            'image' => !empty($slide_image_url) ? image_style_url('2880x1620', $slide_image_url) : NULL,
-            'is_video' => (!empty($slide_video)) ? TRUE : FALSE,
+          'title' => !empty($title) ? $title : NULL,
+          'image' => !empty($slide_image_url) ? image_style_url('2880x1620', $slide_image_url) : NULL,
+          'is_video' => (!empty($slide_video)) ? TRUE : FALSE,
+          'fid' => $fid,
+          'video' => isset($video) ? $video : NULL,
         );
       }
     }
 
     $theme_variables = array(
-        'slides' => $slides,
-        'logo' => isset($logo) ? $logo : NULL,
+      'slides' => $slides,
+      'logo' => isset($logo) ? $logo : NULL,
+      'nid' => $node->nid,
     );
     return theme('usanetwork_top3_main_block', $theme_variables);
   }
@@ -142,5 +152,6 @@ function usanetwork_top3_preprocess_block(&$vars) {
 }
 
 function _usanetwork_top3_create_url($nid, $first, $second, $third) {
+
   return url('node/' . $nid, array('query' => array('shared' => $first . '|' .  $second . '|' . $third)));
 }

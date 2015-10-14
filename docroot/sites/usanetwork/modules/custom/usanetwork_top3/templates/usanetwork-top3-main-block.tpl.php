@@ -1,14 +1,14 @@
 <?php
 
 ?>
-<div id="slider-container">
+<div id="slider-container" data-nid="<?php print $nid; ?>">
 
   <div class="slider-wrapper">
     <?php foreach ($slides as $key => $slide) : ?>
       <div class="slide">
         <div class="play-button"></div>
         <div class="slide-content">
-          <div class="slide-content-inner" data-slide-id="<?php print $key; ?>">
+          <div class="slide-content-inner" data-slide-id="<?php print $key; ?>" data-fid="<?php print $fid; ?>">
             <?php if (!empty($slide['image'])) : ?>
               <div class="img-wrapper">
                 <img src="<?php print $slide['image']; ?>">

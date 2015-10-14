@@ -107,7 +107,7 @@
   <div class="choose-top3-img">
     <div class="top-choose-top3"><div class="first-line">Choose</div> your top <span>3</span></div>
     <?php if (!empty($logo)) : ?>
-      <img src="/sites/usanetwork/themes/aurora_usa/images/top3titlesmall.png" alt="">
+      <img src="<?php print $logo; ?>" alt="">
     <?php endif; ?>
     <div class="bottom-choose-top3">& share them with your friends</div>
   </div>

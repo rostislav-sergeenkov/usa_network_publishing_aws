@@ -87,7 +87,7 @@ function _usanetwork_top3_main_block() {
         $slide_image_url = $slide_image['uri'];
       }
       $title = $slide_item->field_episodic_1_title->value();
-      $slides = array(
+      $slides[] = array(
         'title' => !empty($title) ? $title : NULL,
         'image' => !empty($slide_image_url) ? image_style_url('2880x1620', $slide_image_url) : NULL,
         'is_video' => (!empty($slide_video)) ? TRUE : FALSE,

@@ -313,7 +313,6 @@
                           sliderWrapper.slick('slickGoTo', carouselTarget);
                           slot0.html(topItem.clone());
                           preview0.html(topItem.clone());
-                          previewOpen();
 
                         } else {
 
@@ -335,7 +334,6 @@
                           sliderWrapper.slick('slickGoTo', carouselTarget);
                           slot1.html(topItem.clone());
                           preview1.html(topItem.clone());
-                          previewOpen();
 
                         } else {
 
@@ -357,7 +355,6 @@
                           sliderWrapper.slick('slickGoTo', carouselTarget);
                           slot2.html(topItem.clone());
                           preview2.html(topItem.clone());
-                          previewOpen();
 
                         } else {
                           sliderWrapper.slick('slickNext');
@@ -367,6 +364,9 @@
                         }
 
                         break;
+                    }
+                    if($('#share-block-preview').hasClass('share-block-preview-processed')){
+                      previewOpen();
                     }
                   }
                 }

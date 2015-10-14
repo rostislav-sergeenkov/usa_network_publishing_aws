@@ -83,7 +83,6 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
     $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
-
     $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     // Memchache settings
     $conf['cache_backends'][] = './includes/cache-install.inc';
@@ -101,7 +100,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["acquia_identifier"] = "AUWZ-71210";
     $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
     $conf["apachesolr_path"] = "/solr/AUWZ-71210";
-    $conf['apachesolr_read_only'] = "1";
+    $conf['apachesolr_read_only'] = "0";
 
     // Turn on display PHP errors
     error_reporting(E_ALL);
@@ -111,6 +110,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
   case 'test':
   case 'stage':
+
+    require_once('/var/www/site-php/usastg/usastg-settings.inc');
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'STAGE SERVER';
     $conf['environment_indicator_overwritten_color'] = '#990099';
@@ -119,8 +120,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
-    $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'stg/sites/default/files-private';
-
+    $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
+    $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     // Memchache settings
     $conf['cache_backends'][] = './includes/cache-install.inc';
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';

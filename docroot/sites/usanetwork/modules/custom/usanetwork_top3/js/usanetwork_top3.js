@@ -30,6 +30,24 @@
         nextArrow = sliderContainer.find('.next'),
         prevArrow = sliderContainer.find('.prev');
 
+    sharebar = new Object();
+    sharebar.gigyaSharebar = {
+      containerID: "gigya-share-top3",
+      iconsOnly: true,
+      layout: "horizontal",
+      shareButtons: "facebook, twitter, tumblr, email",
+      shortURLs: "never",
+      showCounts: "none"
+    };
+
+    var url = window.location.href.split('#')[0];
+    sharebar.gigyaSharebar.ua = {
+      description: 'Test Usanetwork TOP3',
+      imageBhev: "url",
+      imageUrl: '',
+      linkBack: url,
+      title: 'USA Network Live TV Streaming'
+    };
 
     function infoOpen() {
       $('#info').hide();
@@ -77,7 +95,7 @@
       infoClose();
       $('#start-button').once(function(){
         $('#start-button').remove();
-        $('#info-close').css({display: 'block'})
+        $('#info-close').css({display: 'block'});
         top3Usanetwork.carousel();
       });
     });
@@ -585,9 +603,9 @@
                         onrendered: function(canvas) {
                           imgShare.append(convertCanvasToImage(canvas));
                           $('.load-more-loader').remove();
-                          $('#share-button-temp').show().click(function(){
-                            location.reload();
-                          });
+                          if (typeof Drupal.gigya.showSharebar == 'function') {
+                            Drupal.gigya.showSharebar(sharebar);
+                          }
                         }
                       });
                     });
@@ -618,6 +636,7 @@
                   });*/
 
                   $('#share-block-preview').once('share-block-preview',function () {
+                    $('#drag-icon-block').remove();
                     previewOpen();
                     top3Usanetwork.previewDroppables();
                     top3Usanetwork.previewDraggable();

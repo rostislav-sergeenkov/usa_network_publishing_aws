@@ -279,6 +279,11 @@
     @include breakpoint($bp-1024-width) {
       padding-top: 53.8vw;
     }
+    &#gigya-share-top3_gig_containerParent {
+      #gigya-share-top3 {
+        display: block;
+      }
+    }
     .choose-top3-img {
       height: auto;
       margin: 0 auto;
@@ -409,7 +414,7 @@
       }
     }
   }
-  #share-button, #share-button-temp {
+  #share-button {
     color: $consum-carousel-odd;
     font-family: $avalon-medium;
     font-size: get-vw(30px, 1901);
@@ -456,8 +461,77 @@
       cursor: pointer;
     }
   }
-  #share-button-temp {
+  #gigya-share-top3 {
     display: none;
+    height: get-vw(60px, 1901);
+    margin: get-vw(27px, 1901) auto get-vw(53px, 1901);
+    position: relative;
+    text-align: center;
+    width: get-vw(339px, 1901);
+    @include breakpoint($bp-min-1901-width) {
+      height: 60px;
+      margin: 27px auto 53px;
+      width: 339px;
+    }
+    @include breakpoint($bp-1280-width) {
+      margin-left: calc(74.564925vw - 10px);
+      width: get-vw(233px, 1280);
+    }
+    @include breakpoint($bp-1024-width) {
+      float: left;
+      height: get-vw(60px, 1024);
+      margin-bottom: 0;
+      margin-left: calc((100% - 300px - 33.1vw)/2);
+      margin-top: 0;
+      top: 41px;
+      width: get-vw(339px, 1024);
+    }
+    @include breakpoint($bp-640-width) {
+      float: none;
+      height: get-vw(60px, 640);
+      margin: get-vw(40px, 480) auto;
+      top: 0;
+      width: get-vw(300px, 640);
+    }
+    .gig-button-container {
+      display: inline-block;
+      height: get-vw(60px, 1901);
+      margin: 0 get-vw(33px, 1901) 0 0;
+      padding: 0;
+      width: get-vw(60px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        height: 60px;
+        margin: 0 33px 0 0;
+        width: 60px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(60px, 1024);
+        margin: 0 get-vw(33px, 1024) 0 0;
+        width: get-vw(60px, 1024);
+      }
+      @include breakpoint($bp-640-width) {
+        height: get-vw(60px, 640);
+        margin: 0 get-vw(20px, 640) 0 0;
+        width: get-vw(60px, 640);
+      }
+      &.gig-button-container-email {
+        margin: 0;
+      }
+      td {
+        > div {
+          font-size: get-vw(60px, 1901);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 60px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: get-vw(60px, 1024);
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(60px, 640);
+          }
+        }
+      }
+    }
   }
   #info-block {
     display: block;
@@ -831,10 +905,63 @@
     visibility: hidden;
     width: 100%;
     .share-block-wrapper {
-
+      height: get-vw(451px, 1901);
+      line-height: 1;
+      margin-top: get-vw(-225.5px, 1901);
+      top: 50%;
+      position: absolute;
+      width: 95%;
+      @include breakpoint($bp-min-1901-width) {
+        height: 451px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(346px, 1024);
+        margin-top: get-vw(-172.6px, 1024);
+      }
     }
     .first, .second, .third {
       position: relative;
+      &:before {
+        @include cssRightTriangle(get-vw(110px, 1901), white, top, right);
+        border-left-width: get-vw(119px, 1901);
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        @include breakpoint($bp-min-1901-width) {
+          border-top-width: 110px;
+          border-left-width: 119px;
+        }
+        @include breakpoint($bp-1024-width) {
+          border-top-width: get-vw(84px, 1024);
+          border-left-width: get-vw(91px, 1024);
+        }
+      }
+      &:after {
+        display: block;
+        font-family: $tex-gyreschola-regular;
+        font-size: get-vw(60px, 1901);
+        height: get-vw(60px, 1901);
+        line-height: get-vw(50px, 1901);
+        position: absolute;
+        text-align: center;
+        right: 0;
+        top: 0;
+        width: get-vw(80px, 1901);
+        z-index: 1;
+        @include breakpoint($bp-min-1901-width) {
+          height: 60px;
+          font-size: 60px;
+          line-height: 50px;
+          width: 80px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(45.9px, 1024);
+          height: get-vw(45.9px, 1024);
+          line-height: get-vw(38.25px, 1024);
+          width: get-vw(61.2px, 1024);
+        }
+      }
       .title {
         bottom: 8%;
         display: block;
@@ -847,8 +974,40 @@
       }
     }
     .first {
-      display: inline-block;
+      float: left;
+      height: 100%;
       width: 66%;
+      &:before {
+        border-top-width: get-vw(250px, 1901);
+        border-left-width: get-vw(269px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          border-top-width: 250px;
+          border-left-width: 269px;
+        }
+        @include breakpoint($bp-1024-width) {
+          border-top-width: get-vw(191px, 1024);
+          border-left-width: get-vw(205px, 1024);
+        }
+      }
+      &:after {
+        content: '1';
+        font-size: get-vw(125px, 1901);
+        height: get-vw(125px, 1901);
+        line-height: get-vw(125px, 1901);
+        width: get-vw(167px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          height: 125px;
+          font-size: 125px;
+          line-height: 125px;
+          width: 167px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(95.7px, 1024);
+          height: get-vw(95.7px, 1024);
+          line-height: get-vw(95.7px, 1024);
+          width: get-vw(127.8px, 1024);
+        }
+      }
       .title {
         font-size: get-vw(48px, 1901);
         @include breakpoint($bp-min-1901-width) {
@@ -870,8 +1029,22 @@
         }
       }
     }
+    .second {
+      &:after {
+        content: '2';
+      }
+    }
+    .third {
+      &:after {
+        content: '3';
+      }
+      bottom: 0;
+      position: absolute;
+    }
     .img-wrap {
-      display: inline-block;
+      float: right;
+      height: 100%;
+      position: relative;
       width: 32%;
     }
   }
@@ -885,7 +1058,7 @@
   .container-message {
     width: 100%;
     height: 100%;
-    background: red;
+    background: $top-three-not-allow;
     position: absolute;
     opacity: .7;
     display: none;

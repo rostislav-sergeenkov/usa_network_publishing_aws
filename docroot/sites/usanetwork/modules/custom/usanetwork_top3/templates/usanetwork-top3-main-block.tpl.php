@@ -76,14 +76,14 @@
   </div>
   <div id="share-block" class="show-color">
     <div class="share-block-wrapper">
-      <div class="first">
+      <div class="first show-color show-font">
 
       </div>
       <div class="img-wrap">
-        <div class="second">
+        <div class="second show-color show-font">
 
         </div>
-        <div class="third">
+        <div class="third show-color show-font">
 
         </div>
       </div>
@@ -113,7 +113,7 @@
   </div>
 
   <div id="share-button" class="show-color">Share</div>
-  <div id="share-button-temp" class="show-color ready">Share</div>
+  <div id="gigya-share-top3"></div>
   <div class="node-wrapper advert">
     <div class="advertisement">
       <div id="topbox">

@@ -192,7 +192,8 @@ function usanetwork_aspot_validate(&$form, &$form_state) {
         if (!empty($field_values['url'])) {
           $path = drupal_get_normal_path($field_values['url']);
 
-          if (!drupal_valid_path($path)) {
+          $first_slash = strpos($path, '/');
+          if (!drupal_valid_path($path) && ($first_slash !== 0)) {
             form_set_error($field_name, t('Please check URL.'));
           }
         }

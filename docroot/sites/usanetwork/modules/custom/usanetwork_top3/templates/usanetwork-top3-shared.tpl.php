@@ -8,7 +8,7 @@
       <img src="<?php print $logo; ?>" alt="">
     <?php endif; ?>
     <img src="http://usanetwork.local.usanetwork.com/sites/usanetwork/files/public/2015/10/top3titlesmall.png" alt="">
-    <a href="http://usanetwork.local.usanetwork.com/node/62202" class="choose-top3-button show-color">create your own</a>
+    <a href=<?php print $node_path; ?>" class="choose-top3-button show-color">create your own</a>
   </div>
   <div class="chosen-items-block show-color">
     <div class="chosen-items-inner">
@@ -17,20 +17,26 @@
           <div class="img-wrapper">
             <img src="http://usanetwork.local.usanetwork.com/sites/usanetwork/files/public/styles/2880x1620/public/media-mpx/11339675.jpg?itok=qtQS2mXW">
           </div>
-          <div class="title">title tewe</div>
+          <?php if (isset($slides[0]['title'])): ?>
+            <div class="title"><?php print $slides[0]['title']; ?></div>
+          <?php endif; ?>
         </div>
         <div class="img-wrap">
           <div class="second show-color show-font">
             <div class="img-wrapper">
               <img src="http://usanetwork.local.usanetwork.com/sites/usanetwork/files/public/styles/2880x1620/public/media-mpx/10863542.jpg?itok=JfKGmJl_">
             </div>
-            <div class="title">fdsfdf dfdfdf</div>
+            <?php if (isset($slides[1]['title'])): ?>
+              <div class="title"><?php print $slides[1]['title']; ?></div>
+            <?php endif; ?>
           </div>
           <div class="third show-color show-font">
             <div class="img-wrapper">
               <img src="http://usanetwork.local.usanetwork.com/sites/usanetwork/files/public/styles/2880x1620/public/media-mpx/13230263.jpg?itok=fMFJeDNw">
             </div>
-            <div class="title">fddsfdf dfdfdfdfd</div>
+            <?php if (isset($slides[2]['title'])): ?>
+              <div class="title"><?php print $slides[2]['title']; ?></div>
+            <?php endif; ?>
           </div>
         </div>
       </div>

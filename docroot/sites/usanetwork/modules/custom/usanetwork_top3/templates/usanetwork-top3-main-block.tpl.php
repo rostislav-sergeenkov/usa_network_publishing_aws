@@ -8,7 +8,7 @@
       <div class="slide">
         <div class="play-button"></div>
         <div class="slide-content">
-          <div class="slide-content-inner" data-slide-id="<?php print $key; ?>" data-fid="<?php print $fid; ?>">
+          <div class="slide-content-inner" data-slide-id="<?php print $key; ?>" data-fid="<?php print $slide['fid']; ?>">
             <?php if (!empty($slide['image'])) : ?>
               <div class="img-wrapper">
                 <img src="<?php print $slide['image']; ?>">

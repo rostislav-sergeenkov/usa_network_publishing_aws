@@ -628,15 +628,26 @@
                       html2canvas(shareBlock, {
                         onrendered: function(canvas) {
                           imgShare.append(convertCanvasToImage(canvas));
-                          var showNid = $('#slider-container').attr('data-nid');
-                          var serviceUrl = '/ajax/top3_create_url/' + showNid + '/' + Drupal.settings.newSeasonNumber;
+                          var galleryNid = $('#slider-container').attr('data-nid'),
+                              firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),
+                              secondFid = $('#share-block .second .slide-content-inner').attr('data-fid'),
+                              thirdFid = $('#share-block .third .slide-content-inner').attr('data-fid'),
+                              imageSrc = imgShare.find('img').attr('src');
+                          var serviceUrl = '/ajax/top3_create_url';
+                          console.info(serviceUrl);
                           $.ajax({
-                            type: 'GET',
+                            type: 'POST',
                             url: serviceUrl,
                             dataType: 'json',
+                            data: {
+                              galleryNid: galleryNid,
+                              firstFid: firstFid,
+                              secondFid: secondFid,
+                              thirdFid: thirdFid,
+                              imageSrc: imageSrc
+                            },
                             success: function (data) {
-
-
+                              console.info(data);
                               if (typeof Drupal.gigya.showSharebar == 'function') {
                                 Drupal.gigya.showSharebar(sharebar);
                               }
@@ -644,6 +655,7 @@
                             },
                             error: function () {
                               console.info('error');
+                              $('.load-more-loader').remove();
                             }
                           });
 
